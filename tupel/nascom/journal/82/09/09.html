@@ -1,0 +1,131 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Adresse E30H gelegt (weil es sich da gerade an HFORM anschließt und
+noch genügend Platz für die Initialisierungsroutine des Texteditors
+bleibt). Wie das Programm arbeitet, kann man an dieser Ausgabe des
+NASCOM-Journals sehen, die damit erstellt wurde.
+</p>
+<h1 id="article1">
+Tips, Tricks + Käfer
+</h1>
+<h4>
+Grundsätzliches
+</h4>
+<p>
+Diese Kolumne soll ein regelmäßiger Bestandteil des Journals werden.
+In ihr sollen alle die nützlichen Hinweise enthalten sein, die keinen
+eigenen Artikel lohnen, aber dem Leser oft eine Menge Ärger ersparen.
+Wo (Zeitschriften, Bücher) findet man welche Programme und wie kriegt
+man sie auf dem NASCOM ans Laufen? Wie schließt man systemfremde
+Hardware an?
+</p>
+<p>
+Und natürlich die lieben Käferchen!
+</p>
+<p>
+Jeder Hinweis von den Lesern ist willkommen &ndash; Postkarte oder Anruf
+genügt (für ganz Eilige!).
+</p>
+<h4>
+Wenn sich die PIO aufhängt
+</h4>
+<p>
+Wenn man ein Programm testet, bei dem die PIO im Interrupt-Modus
+arbeitet, oder aus einem solchen Programm per RESET aussteigt, kann man
+eine böse Überraschung erleben: Die PIO gibt einfach keine
+Interrupt-Anforderung mehr aus. Hier hilft nur noch das Ausschalten
+des Computers, wenn man nicht den folgenden Trick kennt: Man ruft ein
+Unterprogramm auf, daß nur aus dem Befehl RETI besteht. Die PIO lauert
+nämlich auf diesen Befehl und ist erst dann wieder für einen Interrupt
+bereit, wenn er auf dem Bus erschienen ist. Es gibt auch eine
+Hardwarelösung. RESET wird mit M1 über ein Und-Gatter verknüpft auf den
+M1-Eingang der PIO gegeben. Dann wird die PIO durch RESET zurückgesetzt.
+</p>
+<h4>
+TOOLKIT
+</h4>
+<p>
+Soll das TOOLKIT im Ram laufen, müssen die folgenden Bytes auf 00
+gesetzt werden: B020H, B021H, B23EH, B23FH, B247H, B248H.
+</p>
+<h4>
+Disassembler
+</h4>
+<p>
+Die Zeitschrift ELCOMP hat im Februar 81 einen schönen
+<?php externalLink("Z80","",""); ?>-Disassembler
+veröffentlicht (er wurde im Aprilheft noch entkäfert!), der auch die
+&quot;inoffiziellen&quot; Z80-Befehle verarbeiten kann. Mir war das
+Programm jedenfalls sehr
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+nützlich, aber einmal bin ich daran verzweifelt, als ich ein
+Maschinenprogramm rückübersetzen ließ und dann als Vorlage eines neuen
+Assemblerprogramms benutzte: Das Programm wollte einfach nicht laufen.
+Erst nach vielen Mühen kam ich dahinter, daß der Disassembler einen
+Fehler aufweist: die beiden Befehle RLD und RRD werden vertauscht! Im
+Originallisting steht bei 8368H der Wert CCH und bei 836AH der Wert
+D2H. Das muß vertauscht werden und dann läufts!
+</p>
+<h4>
+Hilferuf
+</h4>
+<p>
+Eine Reihe von NASCOM-Benutzern versucht bislang vergeblich, die
+64K-Speicherkarte aus der Zeitschrift
+<?php externalLink("mc","MC",""); ?>&nbsp;4/81 am NASCOM ans Laufen zu
+bringen. Vor allem beim NASCOM-1 gibt es da Probleme (Ich gehöre selbst
+auch zu den Betroffenen!). Wer die Karte vielleicht schon erfolgreich
+angeschlossen hat, der möchte sich bitte DRINGEND bei der Redaktion
+melden!
+</p>
+<h4>
+Tippgemeinschaft
+</h4>
+<p>
+Die Rechengenauigkeit des NASCOM-Basic reicht für viele Anwendungsfälle
+nicht aus. In seinem Buch
+&quot;<?php externalLink("Basic-Interpreter","Basic Interpreter",""); ?>&quot;
+hat
+<?php externalLink("Rolf-Dieter Klein"); ?>
+das 12K-TDL-Basic veröffentlicht, das mit 11 Stellen rechnet und
+auch sonst einige Vorzüge aufweist. Aber 12K eintippen und dabei
+vollständig relozieren!? &ndash; Für einen allein ist das grausam! Wer macht
+bei einer &quot;Tippgemeinschaft&quot; mit? Interessenten sollen sich
+bitte bei der Redaktion melden.
+</p>
+<p>
+G.K.
+</p>
+
+<br>
+
+<p style="text-align:left">
+Verkaufe mein Schachprogramm (Originalkassette) &nbsp; Preis 70,&ndash;&nbsp;DM<br>
+Peter Urban<br>
+__________. __<br>
+____ _______ _<br>
+Tel.: _____/____ ab 18 Uhr
+</p>
+
+<br>
+
+<p id="article2" style="text-align:left">
+Selbstbau-PLOTTER (siehe Fotos im
+<a href="../../../../81/12/25/text/#article1">Journal 11/12-81</a>)<br>
+-mit zusätzlichen Motoren und Getrieben<br>
+-Software im EPROM<br>
+-Netzteil (2x48V,5V) mit Trafo<br>
+-Software für Plotterschrift und Barcode<br>
+-weitere Programme für Grafik etc.<br>
+-Interface zur Motoransteuerung (Pio-Bus)<br>
+-ideal zum Experimentieren (auch für Schacharm etc.)<br>
+-Preis DM&nbsp;900.&ndash; VB<br>
+Günter Böhm ____/______<br>
+______________ ___. __ _<br>
+____ _________
+</p>
+
+<?php columnEnd(2); ?>

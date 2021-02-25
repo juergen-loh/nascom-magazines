@@ -1,0 +1,131 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Seite(n) für Einsteiger
+</h1>
+<h4 style="text-align:center">
+Sprünge
+</h4>
+<p>
+Heute darf gesprungen werden, von einem Byte zum nächsten oder wohin
+auch immer. Bewegung soll anregen, also lassen wir die Speicherzellen
+rauchen. Die &quot;Intelligenz&quot; eines Rechners wird bekanntlich
+durch zwei Dinge ermöglicht: 1. Er kann sehr schnell fehlerfrei etwas
+immer wieder tun und 2. kann er einfache Entscheidungen treffen.
+Allerdings muß er dabei immer wissen, wo&rsquo;s lang geht.
+</p>
+<p>
+Die Sprünge, die der
+<?php externalLink("Z80"); ?>
+Prozessor kennt, lassen sich nach mehreren
+Gesichtspunkten einteilen, nämlich nach der Art der Bedingung und der
+Form, wie die Bedingung beschrieben wird.
+</p>
+<p>
+Der einfachste Sprung ist derjenige ohne Bedingung. Wenn z.B. der
+Zielort die Hausnummer 4C3F hat, sieht bei einer direkten Adressierung
+der entsprechende Befehlscode so aus: C3 3F 4C&nbsp;. C3 kennzeichnet die
+Sprungart, die beiden Bytes der Adresse folgen in umgekehrter
+Reihenfolge. Soll der Zielort erst innerhalb eines Programmablaufs
+errechnet werden, legt man das Ergebnis im HL- oder eines der
+Indexregisterpaare ab. Geben Sie hier unter NAS-SYS einmal folgendes
+komplexe Programm ein:
+</p>
+<pre class="donthyphenate">
+0D00  DF 63    lese eine Zeile ein
+0D02  DF 64    wandle sie in einen
+               Binaerwert um, speichere Er-
+               gebnis ab 0C21
+0D04  2A 21 0C Lade diese Adresse in das
+               HL Register
+0D07  E9       arbeite ab der Stelle weiter,
+               auf die der Inhalt von  0C21
+               und 0C22 zeigt.
+</pre>
+<p>
+Nach dem Start ED00 wird jetzt eine Adresseingabe erwartet. Das
+Programm springt dann dorthin und arbeitet dann von dieser Stelle
+weiter. Probieren Sie folgende Werte: 0051, 02EB, 0450.
+</p>
+<p>
+Die relative Adressierung hat zwei Vorteile: 1. Programme lassen sich
+ohne Probleme im Arbeitsspeicher verschieben und 2. besteht der OP-Code
+nur noch aus 2 Bytes. Leider aber muß man, wenn keinen Assembler zur
+Verfügung hat, doch etwas umständlich die Sprungweite berechnen. Das 2.
+Byte gibt die Sprungweite bezogen auf den aktuellen Stand des
+Programmzählers (PC) an. Soll der Sprung rückwärts erfolgen, wird das
+8. Bit gesetzt und die restlichen sieben werden in ihrem Wert rückwärts
+gesetzt (2-Komplement).
+</p>
+<p>
+Beispiele:
+</p>
+<pre class="donthyphenate">
+0D00  18 04          JR LABEL
+0D02  26 02          LD H,2
+0D06  00    LABEL    NOP
+</pre>
+<p>
+Die erste Programmzeile wird in den Prozessor eingelesen und der PC um
+die entsprechende Zahl an Bytes erhöht. Um jetzt zum Label zu gelangen,
+müssen 4 Bytes übersprungen werden. Deshalb muß das 2. Byte in der 1.
+Zeile 04 sein. Das 1. Byte steht für einen relativen Sprung.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<pre class="donthyphenate">
+0D00  06 04 LABEL    LD B,4
+0D02  0E 07          LD C,7
+0D06  18 FA          JR LABEL
+</pre>
+<p>
+Um zum LABEL zu gelangen, müssen ab der 3. Zeile insgesamt 6 Bytes
+üebersprungen werden. Will man bei einem Programm mit relativen
+Sprüngen später noch etwas einfügen, müssen die Sprungweiten natürlich
+neu berechnet werden. Relative Sprünge können vorwärts maximal 129
+Bytes, rückwärts 126 Bytes weit reichen. Mit dem folgenden Programm
+darf man mit ED00 ein Gefühl für die Weite erhalten!
+</p>
+<br>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-18-2.jpeg"); ?>
+<p style="text-align:right">
+Wolfgang Mayer-Gürr
+</p>
+
+<?php boxStartJustify(); ?>
+<p>
+Hinweis zum Programm SEESCHLACHT von K. Mombaur
+(<a href="../../../01/12/text/#article1">Heft 1-82</a>):
+</p>
+<p>
+H.Auge hat entdeckt, daß das Programm nicht wegen NASSYS3 auf manchen
+Systemen nicht läuft, sondern wegen der obskuren zweiten BASIC-Version.
+Entgegen der
+<a href="../../../01/16/text/#article1">Hinweise</a>
+der Redaktion ist das Programm so einfacher anzupassen:
+</p>
+<p>
+Durch DOKE 4175,-6670 wird der Zeilenvorschub unterdrückt und die
+Eingabe an der erwarteten Stelle gemacht (&nbsp;Manual Seite 25). Durch DOKE
+4175,-25 kann wieder auf die normale Betriebsart umgeschaltet werden
+(im Spiel nicht nötig).
+</p>
+<p>
+Mehrere Leser hatten Schwierigkeiten mit der Grafikerweiterung aus
+<a href="../../../01/19/text/#article1">Heft 1-82</a>.
+Peter Deege aus Aachen schreibt dazu:
+</p>
+<p>
+Ich habe mir diese einfache
+Grafikerweiterung nachgebaut, aber leider funktionierte sie nicht. Nach
+Durchdenken des Schaltbilds stellte ich fest, daß die Freigabe der
+Schieberegister genau umgekehrt erfolgte. Nach den Änderungen IC 15 Pin
+7 nach Pin 13 (LS 00) und IC 265 Pin 7 nach Pin 4 (LS 00) tat sich
+schon &rsquo;was, aber noch unsaubere Character und Doppeldarstellungen. Ich
+tauschte das LS 74 mit einem Standard 74, und die Karte lief
+einwandfrei.
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

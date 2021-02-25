@@ -1,0 +1,48 @@
+<?php columnStart(1); ?>
+<h4 id="article1">
+<u>'Grafik &quot;Brutal&quot; ' in der Anwendung</u>
+</h4>
+<p>
+Die im
+<a href="../../../../80/06/19/text/#article2">Doppelheft 6/7 1980</a>
+vorgestellte kleine Hardwareänderung eignet
+sich vorzüglich dazu, eine Supergrossschrift zu erzeugen, die
+hauptsächlich für Spiele auf dem Bildschirm geeignet ist. Alleine mit
+der Hardwareänderung a) (siehe
+<a href="../../../../80/06/19/text/#article2">heft 6/7</a>&nbsp;)
+ist diese Schrift schon eine
+grosse Bereicherung für den NASCOM. Die Änderung b) macht sie aber
+erst richtig überzeugend. Dabei hat sich allerdings herausgestellt,
+dass ein Vertauschen der Anschlüsse 5 und 10 am IC 7408 von Vorteil
+ist, da dann der NASCOM nach RESET völlig normal arbeitet, während er
+auf die Befehle 3E 20 D3 00 zur Grafik umschaltet.
+</p>
+<p>
+Wenn keine festgelegten Zeichen verwendet werden sollen, ist es
+möglich, <u>jede einzelne Zelle des Bildschirmspeichers</u> mit
+Grafikzeichen zu programmieren. Sämtliche ASCII Codes sind möglich,
+wobei das Setzen von Bit 7 ein doppelzeiliges Zeichen ergibt. Im
+Prinzip ist es möglich, <u>1536</u> Punkte mit unterschiedlichster
+Zeichen zu füllen. (Probieren Sie selbst aus, welche ASCII Codes für
+Ihre Zwecke am besten geeignet sind!) Der Nachteil besteht darin, dass
+Punkte in den geradzahligen Zeilen nicht alleine setzbar sind. Dies
+muss man beim Erstellen einer Grafik einkalkulieren.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-1.jpeg"); ?>
+<p>
+Hier möchte ich nun ein Programm vorstellen, das &ndash; vorzugsweise in ein
+<?php externalLink("2708"); ?>
+eingebrannt- als Unterprogramm wertvolle &quot;optische&quot;
+Dienste leisten kann.
+</p>
+<p>
+Eine Subroutine mit der Adresse 0449 wandelt einen ASCII Code in eine
+Tabellenadresse um, die den entsprechenden
+&quot;Supergrossbuchstaben&quot; aufsucht. Ein weiteres Unterprogramm
+mit der Adresse 0435 bildet den entsprechenden Grossbuchstaben auf dem
+Bildschirm ab. Das Hauptprogramm&nbsp;, das durch den Befehl CD&nbsp;00&nbsp;04
+aufgerufen wird, wandelt jeden folgenden ASCII Code in Grafikbuchstaben
+um, bis es 00 erkennt und dadurch in das Ursprungsprogramm zurückkehrt.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-2.jpeg"); ?>
+<?php columnEnd(1); ?>

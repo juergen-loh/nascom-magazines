@@ -1,0 +1,79 @@
+<?php columnStart(23); ?>
+<?php columnStart(2); ?>
+
+<?php boxStart("R"); ?>
+<h1 id="article1">
+Postscheck
+</h1>
+<h3>
+von KLAUS MOMBAUR
+</h3>
+<p>
+Ausfüllen einer Postschecküberweisung auf dem Drucker
+<?php externalLink("ITOH 8510"); ?>
+</p>
+<p>
+von Klaus Mombaur ____ Nürnberg __
+</p>
+<p>
+So sieht der Dialog über den Bildschirm aus:
+</p>
+<p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-37-1.jpeg"); ?>
+</p>
+<?php boxEnd(); ?>
+
+<?php columnChange(2); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-37-3.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>
+<br>
+<?php boxStart(); ?>
+<?php columnStart(3); ?>
+<p>
+Wer nun dieses Programm oder das Ausfüllen der Postschecks aus
+<a href="../../../../82/06/05/text/#article1">Heft 6/82</a>
+(mit dem man nat. auch Bankschecks aber keine Euroschecks
+ausstellen kann) so wie ich über die Centronics -
+Parallel-Schnittsteile laufen lassen will, braucht nur noch folgende
+Belegung der NASCOM&nbsp;2 - PIO:
+</p>
+<table>
+<tr><td>Port&nbsp;A:</td><td colspan=5>DB 0 bis DB 7 für die Daten</td></tr>
+<tr><td>Port&nbsp;B:</td><td colspan=5>für die Steuersignale</td></tr>
+<tr><td></td><td>DB</td><td>0:</td><td>frei</td><td colspan=2></td></tr>
+<tr><td></td><td>DB</td><td>1:</td><td>STROBE</td><td>(neg)</td><td>&gt;</td></tr>
+<tr><td></td><td>DB</td><td>2:</td><td>FAULT</td><td>(neg)</td><td>&lt;</td></tr>
+</table>
+
+<?php columnChange(3); ?>
+
+<table>
+<tr><td>DB</td><td>3:</td><td>INP PRIME</td><td>(neg)</td><td>&gt;</td></tr>
+<tr><td>DB</td><td>4:</td><td>INP. BUSY</td><td></td><td>&lt;</td></tr>
+<tr><td>DB</td><td>5:</td><td>SELECT</td><td></td><td>&lt;</td></tr>
+<tr><td>DB</td><td>6:</td><td>PAPER EMPTY</td><td></td><td>&lt;</td></tr>
+<tr><td>DB</td><td>7:</td><td>BUSY</td><td></td><td>&lt;</td></tr>
+</table>
+
+<?php columnChange(3); ?>
+<br>
+<p>
+Dieses Program druckt Ihnen auch ein Nachweisblatt der ausgefüllten
+Überweisungen. Spannen Sie dazu einfach, nachdem der Drucker das
+Formular ausgefüllt hat, ein DIN A4 - Blatt ein und beantworten die
+Computerfrage mit 'n'.
+</p>
+<?php columnEnd(3); ?>
+<?php boxEnd(); ?>
+
+<p>
+. . . . und so eine ausgefüllte Anweisung:
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-37-2.jpeg"); ?>
+
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-37-4.jpeg"); ?>
+
+<?php columnEnd(3); ?>

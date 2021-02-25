@@ -1,0 +1,178 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+SORT
+</h1>
+<h3>
+von CHRISTIAN PETER
+</h3>
+<p>
+Im <a href="../../../../82/03/09/text/#article1">Journal 3-82</a>
+wurde ein Da&shy;ten&shy;ver&shy;wal&shy;tungs-Programm vorgestellt. Das
+Programm
+&quot;<a href="../../17/text/#article1">SORT</a>&quot;
+kann zur Erweiterung dienen. Dies ist
+zunächst die Version, die ich schon fertig habe und die auch schon
+einige Zeit problemlos läuft. Ich möchte (wenn ich die Zeit finde) noch
+folgende Zusätze programmieren:
+</p>
+<ul class="dashed-indent">
+	<li>
+		Sortierfolge laut Tabelle (damit auch Umlaute richtig einsortiert
+		werden)
+	</li>
+	<li>
+		Sortierung mehrer Felder (wenn Gleichheit im ersten Feld: Sort nach
+		zweitem Feld; z.B.: Beier Franz vor Beier Otto, ...)
+	</li>
+</ul>
+<p>
+Es ist meiner Meinung nach auf jeden Fall notwendig das Source-Listing
+abzudrucken, damit jeder die nötigen Änderungen für seine Bedürfnisse
+machen kann.
+</p>
+<h4>
+PROGRAMMBESCHREIBUNG
+</h4>
+<p>
+Das Programm &quot;SORT&quot; ist ein positionsunabhängiger Bubble-Sort
+(d.h. es ist relocierbar oder wie man das auch immer ausdrücken will).
+Es benötigt ca. 512 Byte Hauptspeicher und einen daran anschließenden
+Platz für Variablen in der Größe von 24 Byte.
+</p>
+<p>
+Folgene Konventionen wurden für die Programmbeschreibung
+eingehalten:
+</p>
+<p>
+Die Datei wird als &quot;File&quot; bezeichnet,<br>
+ein einzelner Eintrag heißt &quot;Record&quot;,<br>
+die einzelnen Felder heißen &quot;Fields&quot;.
+</p>
+<p>
+Das Programm kann Files beliebiger Größe
+sortieren, solange sie in den Hauptspeicher passen und jeder Record
+maximal 256 Byte lang ist.
+</p>
+<p>
+Bevor das Programm aufgerufen wird, müssen zuerst die Feldbestimmungen
+definiert werden. Das Programm ist so ausgelegt, daß es möglichst große
+Freiheiten erlaubt, wo ein Field im Record steht.
+</p>
+<p>
+Folgende Variablen müssen eingegeben werden:
+</p>
+<table class="donthyphenate">
+<tr><td>*&nbsp;START</td><td>Startadresse des Files im Hauptspeicher</td></tr>
+<tr><td>*&nbsp;END</td><td>Endadresse + 1 (!)</td></tr>
+<tr><td>*&nbsp;RECSEP</td><td>ASCII-Zeichen zur Trennung der einzelnen Records</td></tr>
+<tr><td>*&nbsp;FLDSEP</td><td>ASCII-Zeichen zur Trennung der einzelnen Fields</td></tr>
+<tr><td>*&nbsp;POSMRK</td><td>ASCII-Zeichen, das die Startposition des zu sortierenden Feldes markiert (z.B. Blank)</td></tr>
+<tr><td>*&nbsp;DISPLC</td><td>entweder +1, 0 oder -1 gibt an, in welcher Richtung vom gefundenen FLDSEP das Feld liegt</td></tr>
+<tr><td>*&nbsp;FLDCNT</td><td>gibt an, vom wievielten FLDSEP aus in Richtung DISPLC nach POSMRK gesucht wird</td></tr>
+</table>
+<p>
+Das Programm findet das Feld, nach dem der File sortiert werden soll,
+indem es zuerst den nächsten RECSEP sucht, von dort aus der Anzahl von
+FLDCNT entsprechend nach FLDSEP&rsquo;s sucht. Wenn DISPLC=0, dann ist das
+Feld gefunden. Wenn DISPLC=-1, dann sucht das Programm rückwärts bis
+zum nächsten Zeichen POSMRK, das erste Zeichen nach POSMRK ist dann das
+erste Zeichen des Feldes. Wenn DISPLC=+1&nbsp;, dann sucht das Programm
+POSMRK in aufsteigender Richtung.
+</p>
+<p>
+Wenn zwei Records ausgetauscht werden (sortieren), wird der erste
+Record anschließend an das Ende des Files zwischengespeichert, während
+der zweite Record an die Stelle des ersten kopiert wird. Es ist daher
+nötig, daß hinter dem File noch Platz (ca. 256 Bytes) gelassen wird.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Während des Sortiervorganges läuft ein Zähler mit, damit man weiß, daß
+das Programm auch wirklich läuft. Am Ende des Sortiervorganges
+erscheint die Meldung &quot;END OF SORT&quot;.
+</p>
+<h4>
+BEISPIEL FÜR DIE DEFINITION DER FELDER
+</h4>
+<p>
+Es soll eine Adressdatei
+sortiert werden, die folgenden Aufbau aufweist:
+</p>
+<p>
++/NAME/STRASSE/ORT/+/NAME/STRASSE/ORT/+ ...
+</p>
+<table>
+<tr><td>&quot;+&quot;</td><td>ist in dem Fall der Recordseparator RECSEP und wird mit 2B definiert</td></tr>
+<tr><td>&quot;/&quot;</td><td>steht für Carriage-return und ist der Fieldseparator; FLDSEP ist daher 0D und wird mit 0D definiert</td></tr>
+</table>
+<p>
+Die Datei soll nun alphabetisch sortiert werden. Das Feld NAME kann
+folgenden Inhalt haben: event. TITEL, VORNAME, NACHNAME. Um den
+Nachnamen zu finden, können wir nicht von vorne anfangen zu suchen,
+weil wir nicht wissen, ob ein Titel vorhanden ist oder nicht. Aber es
+ist bekannt, daß der Nachname direkt vor dem zweiten FLDSEP steht.
+Daher definieren wir FLDCNT mit 2 und DISPLC mit -1 und POSMRK mit 20H
+(wenn VORNAME und NACHNAME durch ein Blank getrennt sind).
+</p>
+<h4>
+BEMERKUNGEN
+</h4>
+<p>
+Es ist für diesen Sort unerheblich, ob alle Records gleiche Länge
+haben. Wichtig ist nur, daß alle Records, soweit sie die
+Feldbestimmungen betreffen, gleich aufgebaut sind.
+</p>
+<p>
+Es werden keinerlei Fehlermeldungen ausgegeben, wenn die Feldbestimmung
+n nicht zutreffen sollten. Wichtig ist auch, daß die Variable START
+direkt auf ein RECSEP-Zeichen zeigt und die Variable END auf das
+nächste Zeichen nach dem letzten RECSEP.
+</p>
+<h4>
+EINGABE DER VARIABLEN
+</h4>
+<p>
+Das Programm wurde (wie gesagt) positionsunabhängig geschrieben. Alle
+Variablen werden daher relativ zum Programmbeginn abgespeichert. Um
+nicht immer ausrechnen zu müssen, wo jetzt was zu stehen hat, werden
+die Variablen am Programmbeginn automatisch in den Datenbereich
+übertragen. An dieser Stelle, kann man daher seine Werte eingeben
+(Zeilen 330 bis 420 im Source-Listing).
+</p>
+<h4>
+ANMERKUNG ZUM PROGRAMMAUFBAU
+</h4>
+<p>
+Das Source-Listing mutet vielleicht ein bißchen seltsam an, wenn man es
+genauer betrachtet:
+</p>
+<p>
+Es sind einige Sprünge im Programm, die wieder auf Sprünge führen.
+Diese Technik wurde deshalb angewandt, um alle Unterprogramm-Aufrufe
+relativ machen zu können. Nachdem die relative Distanz aber beschränkt
+ist, konnte das nur mit Hilfe von solchen Brücken realisiert werden.
+</p>
+<h4>
+ÄNDERUNGEN
+</h4>
+<p>
+Soll das Programm als Unterprogramm laufen,
+dann müssen vor dem Aufruf alle Register
+gerettet werden (einschließlich IX) und die
+Zeile 2390 &quot;SCAL 5BH&quot; muß durch mehrere POPs
+und durch ein RET ersetzt werden.
+</p>
+<p>
+Wenn der Zähler nicht mitlaufen soll, müssen
+die Zeilen 2210 bis 2280 weggelassen werden.
+</p>
+<p id="article2">
+<span id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+</span>
+</p>
+
+<?php columnEnd(2); ?>

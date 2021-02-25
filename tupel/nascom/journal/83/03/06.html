@@ -1,0 +1,216 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Großschrift
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Wie schon
+<a href="../../11/text/#article1">angekündigt</a>,
+brauchten wir zur Erstellung von Überschriften
+für&rsquo;s Journal ein Programm für Großschrift. Dazu sollte das
+TV-Interface die Buchstabenvorlage liefern. Da aber, wie schon früher
+erwähnt, die Kamera eine Menge &quot;Schmutz&quot; liefert, wurde die
+Routine MANIPU erstellt, die es erlaubt, die Klötzchengrafik auf dem
+Bildschirm mit Hilfe der Cursortasten zu manipulieren, bevor das
+&quot;gereinigte&quot; Bild abgespeichert wird. In Bild1 sehen Sie beim
+Buchstaben D, welchen Aufwand man hier manuell treiben müßte, um das
+Alphabet einer Schriftart manuell in eine verwertbare Form zu bringen.
+</p>
+
+<?php boxStart(); ?>
+<br>
+<div class="donthyphenate" style="padding-left: 30px">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+<p>
+BILD 1
+</p>
+</div>
+<?php boxEnd(); ?>
+
+<p>
+(Er entspricht etwa dem Spiegelbild unserer bekannten 7x9 Matrix, die
+mit einer kleinen Programmänderung auch verwendet werden kann).
+</p>
+<p>
+Es wäre
+nicht sehr schwierig, ein Program zu entwerfen, das nun die Punkte der
+Matrix in einer vorgewählten Vergrößerung direkt auf den Drucker
+ausgeben kann. In Bild2 erkennt man aber, daß mit zunehmender
+Vergrößerung die Auflösung immer störender wird. Eine Routine, die alle
+&quot;groben Lücken&quot; ausfüllt, schien mir nicht sinnvoll, da dann auch
+rechte Winkel, die eigentlich erhalten bleiben müßten, durch das
+Programm abgerundet würden. Wenn ich mir allerdings die Buchstaben in
+Bild3 anschaue, scheint mir im nachhinein diese Möglichkeit gar nicht
+mehr so nachteilig.
+</p>
+
+<?php boxStart(); ?>
+<div class="donthyphenate" style="padding-left: 30px">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+<p>
+BILD 2
+</p>
+</div>
+<?php boxEnd(); ?>
+<br>
+<?php boxStart(); ?>
+<div class="donthyphenate" style="padding-left: 30px">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-3.jpeg"); ?>
+<p>
+BILD 3
+</p>
+</div>
+<?php boxEnd(); ?>
+
+<p>
+Ich habe mich jedenfalls für eine interaktive Methode entschieden:
+</p>
+<p>
+Nach Start bei 1000 kann die gewünschte Vergrößerung gewählt werden. (Durch
+verschiedene Zahlen für horizontal und vertikal kann man auch eine
+Breitschrift wie in Bild4 oder eine kondensierte Schrift einstellen).
+</p>
+<p>
+Durch Drücken der entsprechenden Tasten wird der Buchstabe vergrößert
+auf
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+dem Bildschirm dargestellt. Er kann nun manuell verändert werden, wobei
+die Cursortasten den Cursor in jede beliebige Richtung steuern. Folgende
+Tasten können ebenfalls eingesetzt werden:
+</p>
+
+<table class="donthyphenate">
+<tr><td>Backspace&nbsp;&nbsp;</td><td>Cursor nach links und Punkt löschen</td></tr>
+<tr><td>Linefeed</td><td>Cursor an Anfang nächster Zeile</td></tr>
+<tr><td>Curs.Home</td><td>Cursor in linken oberen Bildschirmrand</td></tr>
+<tr><td>Enter</td><td>Punkt setzen</td></tr>
+<tr><td>Space</td><td>Punkt löschen</td></tr>
+<tr><td>M</td><td>neuen Buchstaben wählen (nicht abspeichern)</td></tr>
+<tr><td>S</td><td>neue Vergrößerung wählen</td></tr>
+<tr><td>F</td><td>&quot;Lücken FÜLLEN&quot; (siehe Bild5)</td></tr>
+<tr><td>N</td><td>zurück zu NASSYS3</td></tr>
+<tr><td>Escape</td><td>aktuellen Buchstaben abspeichern</td></tr>
+</table>
+
+<p>
+Bei allen Tasten ist ein Repeat möglich, der mit recht großer
+Geschwindigkeit die Bewegung auf dem Bildschirm erlaubt.
+</p>
+<p>
+Nach dem Abspeichern eines Buchstabens wird der Beginn des noch freien
+Speicherraums angezeigt, so daß man jederzeit auch das aktuelle Ende
+der Buchstabentabelle ablesen kann.
+</p>
+
+<?php boxStart(); ?>
+<div class="donthyphenate" style="padding-left: 10px">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-4.jpeg"); ?>
+<p>
+BILD 4
+</p>
+</div>
+<?php boxEnd(); ?>
+
+<h4>
+Hier noch zwei Hinweise zum Abspeichern:
+</h4>
+<p>
+Das Program errechnet die längste Zeile auf dem Bildschirm und speichert
+alle Zeilen in dieser Länge ab. Dadurch werden die verschieden breiten
+Buchstaben auch mit verschiedener Byte-Anzahl abgespeichert. Es wird der
+Platz für die Leerschritte auf dem Bildschirm eingespart.
+</p>
+<p>
+Die abgelegten Bytes sind auf meinen Tandy-Lineprinter ausgelegt, der
+jeweils nur 7 Nadeln übereinander gleichzeitig ansteuern kann. Um den
+ganzen Bildschirm zu erfassen, werden 6 Reihen zu 7 Bits erzeugt (das
+achte Bit muß für meinen Drucker gesetzt sein! und eine Reihe zu 6 Bits
+(wobei Bit 7 rückgesetzt und Bit 8 nie oben gesetzt wird). Wer das
+Programm für einen anderen Drucker anpassen möchte, muß vor allem
+folgende Programmzeilen beachten:
+</p>
+<pre class="donthyphenate">
+3520    3450    4870 ff
+</pre>
+<p>
+Die einzelnen Zeilen der Buchstaben werden durch #0D getrennt, als
+Endzeichen für einen Buchstaben wird 00 eingefügt. Liest man die Bytes
+vom Speicherbeginn der Reihe nach aus und gibt sie an den Drucker, so
+werden sie untereinander ausgedruckt.
+</p>
+<p>
+Zum Druckprogramm ist nicht sehr viel zu sagen. Es kann leicht an jeden
+Drucker angepaßt werden.
+</p>
+<p>
+Z140 setzt den Tandy in den Grafikmodus<br>
+Z580 Unterprogramm für Tandy Druckausgabe 1 Byte<br>
+Z430 Die Zahl in D gibt an, wie oft der Druck einer Zeile wiederholt
+wird, um die gewünschte Schwärzung des Druckbildes zu erzielen.
+</p>
+<p>
+Bei meinen Drucker kann dazu die Funktion der Steuerzeichen per Schalter
+gewählt werden. Für das Programm muß folgendes gelten:
+</p>
+<p>
+#0D nur Wagenrücklauf<br>
+#0A Wagenrücklauf und neue Zeile
+</p>
+<p>
+Ist dies bei Ihrem Drucker nicht möglich, müßten Sie die Steuerzeichen
+im Programm vertauschen.
+</p>
+<h4>
+Kurz zum Programablauf:
+</h4>
+<p>
+Start bei 1000<br>
+Eingabe einer Textzeile<br>
+Abschluß mit Enter<br>
+Nach Ausdruck der Zeile nächste Zeile eingeben<br>
+Aussteigen nur mit Reset möglich
+</p>
+<p>
+Bitte berichten Sie über Ihre Erfahrungen mit dem Programm. Wenn Fragen
+zur Anpassung entstehen, wissen Sie ja, wohin Sie sich wenden können.
+Die Überschriften in dieses Heft sind übrigens alle mit dem Programm
+gestaltet.
+</p>
+<p>
+Anstelle von bestimmten Buchstaben oder Zeichen kann man auch
+irgendwelche selbstdefinierten Symbole (Firmenzeichen etc) eingeben,
+die dann als Teil des Alphabets eingesetzt werden können. Bild6 ist ein
+einfaches Beispiel.
+</p>
+
+<table style="width: 100%"><tr><td>
+
+<?php boxStart(); ?>
+<div class="donthyphenate" style="padding-bottom: 9px">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-5.jpeg"); ?>
+<p style="text-align: center">
+BILD 5
+</p>
+</div>
+<?php boxEnd(); ?>
+<br>
+
+</td><td style="padding-left: 2em">
+
+<?php boxStart(); ?>
+<div class="donthyphenate">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-6.jpeg"); ?>
+<p style="text-align: center">
+BILD 6
+</p>
+</div>
+<?php boxEnd(); ?>
+
+</td></tr></table>
+
+<?php columnEnd(2); ?>

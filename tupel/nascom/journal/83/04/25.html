@@ -1,0 +1,60 @@
+<?php columnStartJustify(3, 32); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-25-1.jpeg"); ?>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-25-2.jpeg"); ?>
+<?php columnChangeJustify(3); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-25-3.jpeg"); ?>
+
+<?php nowrapStart("margin:0"); ?>
+<?php boxStart("R"); ?>
+<?php hline("100%", 2); ?>
+<h3 id="article1">
+TIPS, TRICKS UND KÄFER
+</h3>
+<h4>
+Käfer im Pascal
+</h4>
+<p style="padding-bottom:1.2em">
+David Kastrup hat uns davon in Kenntnis gesetzt, daß im
+<?php externalLink("Blue Label Software Pascal","BLS-Pascal"); ?>
+die Funktion MOD bei negativen Zahlen versagt. Abhilfe kann man (bei der
+Cassettenversion) dadurch schaffen, daß man ab 1964H drei Bytes ändert
+in D0 18 ED.
+</p>
+<?php boxEnd(); ?>
+<?php nowrapEnd(); ?>
+<?php boxStart("R"); ?>
+<h4>
+Wanzen im M-Code
+</h4>
+<p>
+Beim häufigen Auftreten von Wanzen in Maschinenprogrammen, sollten Sie
+es einmal mit Insektenspray oder in warmer Milch aufgelösten
+Mottenkugeln versuchen.<br>
+<a href="../../../../nascompl/#head" title="NASCOMPL">NASC</a>.
+</p>
+<h4 class="donthyphenate">
+NASSYS-3 zerstört NASPEN
+</h4>
+<p>
+Der Grund ist offensichtlich: ARGN (bei C0BH) muß für den Befehl R
+gleich 0 sein, wird aber beim Start mit E B800 auf 1 gesetzt. Abhilfe
+schafft die folgende kleine Routine, über die NASPEN startet:<br>
+AF 32 0B 0C C3 00 B8<br>
+Red.
+</p>
+<h4>
+Fehler in diesem Heft
+</h4>
+<p>
+Im Assemblerlisting <a href="../../07/text/#article1">X-TAL ADAPT</a>
+muß die Zeile 1561 INC B eingefügt
+werden, da das letzte Byte des Textpuffers sonst nicht auf 0 gesetzt
+wird.Vor dem Programmstart sollte man einmal X-TAL mit E1000
+kaltstarten, damit die Parameter, die den Speicher betreffen, richtig
+geladen werden.<br>
+G.B.
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(3); ?>

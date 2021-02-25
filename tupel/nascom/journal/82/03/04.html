@@ -1,0 +1,172 @@
+<table>
+<tr>
+	<td><p>Parameter</p></td>
+	<td><p>Funktionsname</p></td>
+	<td><p>Lit.Arg.</p></td>
+	<td><p>Ergebnis</p></td>
+	<td><p>Kommentar</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>SYSTEMSCHLEIFEN (MODI)</h4></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>INTERACT</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Benutzer-Interpreter; wartet auf Eingaben bis NEWLINE, führt dann
+		die Operationen aus, druckt den obersten Stackwert und &quot;- als
+		Promptzeichen. Wird bei Systemstart aufgerufen.
+	</p></td>
+</tr><tr>
+	<td><p>-</p></td>
+	<td><p>INTERPRETER</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Vereinfachter Interpreter ohne Stackausdruck und Promptzeichen.</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>EDITOR</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Bildschirm-Editor; erlaubt die Anwendung aller
+		NAS-SYS-Editierbefehle; wird der Cursor an den Anfang einer Zeile
+		gesetzt und &quot;Control P&quot; eingegeben, so wird der INTERPRETER
+		aufgerufen, der nach der Ausführung aller Operationen zum EDITOR
+		zurückkehrt. Siehe auch &quot;EDITOR-Kommandos&quot;!
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>ENTRY</p></td>
+	<td><p>Name</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Ist selbst keine Schleife, sondern ruft den Modus (Name) auf; z.B.:
+		ENTRY EDITOR.
+	</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>EDITOR-KOMMANDOS</h4></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>,</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Verknüpft 2 Zeilen miteinander, da sonst vom INTERPRETER nur jeweils
+		eine Zeile abgearbeitet wird. Ausnahme Compilermodus
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>SAVESCREEN</p></td>
+	<td>-</td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Rettet den Bildschirminhalt nach 2800H.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>GETSCREEN</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Holt den Bildschirminhalt zurück.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>SWAPSCREEN</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Vertauscht den aktuellen Bildschirminhalt mit dem bei 2800H
+		zwischengespeicherten.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>READC</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Liest eine Bildschirmseite von Cassette.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>WRITEC</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Schreibt b Zeilen beginnend bei Zeile a vom Bildschirm auf
+		Cassette.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>PRINT</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Gibt b Zeilen beginnend bei Zeile a auf den Drucker aus. Bei C80H
+		muß ein Sprung auf die Druckerroutine stehen.
+	</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>DEFINIERENDE FUNKTIONEN</h4></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td>:</td>
+	<td><p>Name</p></td>
+	<td>-</td>
+	<td class="justify"><p>
+		Ruft den Compiler auf, der (Name) in das Dictionary einträgt und die
+		folgenden Funktionen und Zahlen compiliert, bis er auf ein
+		&quot;;&quot; trifft.
+	</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>MCODE</p></td>
+	<td><p>Name</p></td>
+	<td>-</td><td class="justify"><p>
+		Trägt (Name) in das Dictionary ein und ruft das MODIFY-Kommando von
+		NAS-SYS auf. Dann können Programme im Maschinencode eingegeben werden.
+		Sie dürfen nicht mit RET oder JP NEXT abgeschlossen werden, da dies
+		MCODE selbst besorgt!
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>VARIABLE</p></td>
+	<td><p>Name</p></td>
+	<td>-</td>
+	<td class="justify"><p>
+		Erzeugt eine Variable mit dem Anfangswert a und trägt deren Namen in
+		das Dictionary ein. Bei Aufruf wird nicht der Wert der Variablen,
+		sondern deren Adresse auf den Stack gegeben!
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>CONSTANT</p></td>
+	<td><p>Name</p></td>
+	<td>-</td><td class="justify"><p>
+		Erzeugt eine Konstante mit dem Wert a und trägt (Name) in das
+		Dictionary ein. Bei Aufruf der Konstante wird deren Wert auf den Stack
+		gegeben.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>MESSAGE</p></td>
+	<td><p>Name</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Trägt (Name) ins Dictionary ein und erwartet die Eingabe eines
+		beliebig langen
+	</p></td>
+</tr>
+</table>

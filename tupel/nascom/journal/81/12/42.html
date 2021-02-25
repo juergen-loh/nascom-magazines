@@ -1,0 +1,107 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Data) schaltet das 4027, so daß je nach Bedarf der niedrige oder hohe
+Ton entsteht. Dann kommt noch ein simpler Tiefpaß, und ab geht&rsquo;s in den
+Recorder. Der Tiefpaß ist etwas nachteilig, der höhere Ton ist dadurch
+etwas leiser, aber es geht ja.
+</p>
+<p>
+Im Empfangsteil (Empfindlichkeit 300 mV)
+werden die Töne linear verstärkt (4069), in einem Schmitt-Trigger
+geformt (1/4 4070) und durch eine Exor-Verzögerung in
+frequenzverdoopelte Nadelimpulse umgewandelt. Der 4520 mißt den
+Abstand zwischen je zwei solchen Impulsen und erkennt auf High oder Low
+(ein fehlender Impuls oder einer zuviel schadet nicht) und setzt das
+4013 entsprechend (Empfangsdaten). Außerdem synchronisieren die
+Nadelimpulse eine 4046-PLL, indem raffinierterweise bei High 4 Impulse
+abgezogen werden (1/4 4011). Damit wird der Takt regeneriert und kann
+als Empfangstakt dienen (Pin 17 vom UART, muß für KC-Betrieb von Pin 40
+getrennt werden.
+</p>
+<p>
+Das ging ja etwas hastig, aber es ist eh schon zu lang. Der einzige
+Abgleich ist die Justierung des 10k-Potis, das das Taktverhältnis des
+getriggerten Empfangstones einstellt. Das sollte möglichst genau 1:1
+sein, man kann aber erst einmal das Poti in der Mitte stehen lassen.
+Abgleich mit Oszi oder Reduzierung der Wiedergabeamplitude, bis es
+gerade noch geht, dann fehlerfrei einstellen, Für dieses Interface
+reicht übrigens i. a. die Amplitude am Diodenausgang aus. Der Nachbau
+müßte eigentlich recht einfach sein, die Probleme kommen bei der
+Umschaltung: Wenn man das Nascom&nbsp;1 Format auch noch lesen können und
+den regenerierten Empfangstakt benutzen möchte, sind recht viele Kabel
+erforderlich. Da hilft nur: über der Schaltung brüten, bis man sie
+verstanden hat, und dann keinen Fehler bei der Verdrahtung der Schalter
+machen, Es sind natürlich mehrere Möglichkeiten für die Schalter
+möglich: Dargestellt ist eine Lösung mit 2 Schaltern, wobei der eine
+(S1) zwischen Cassette und normaler (V24) serieller Schnittstelle mit
+verschiedenen Baudraten umschaltet und S2, der nur wirkt, wenn S1 auf
+&quot;Cassette&quot; steht, schaltet zwischen Nascom&nbsp;1 - Format und
+Kansas-City 300 und 1200Bd um. Wenn man auf die Regenerierung des
+Empfangstaktes verzichtet, entfällt bei S2 eine Schaltebene und beim
+UART (IC 29) bleiben Pin 17 und 40, die man sonst auftrennen muß,
+miteinander
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+verbunden.
+</p>
+<p>
+Zur Nachbausicherheit: Selbst wenn eine Platine verfügbar sein sollte,
+ist er dennoch nicht unproblematisch da man einige Eingriffe in die
+Nascom&nbsp;1 - Schaltung manchen muß, Bei der Verdrahtung der Schalter kann
+viel schiefgehen. Der Abgleich hingegen ist einfach: Mit dem Trimmer in
+Mittelstellung muß es bei 300Bd schon fehlerlos gehen. Auf jeden Fall
+wird mit dem Kansas-City-Interface eine erhebliche
+Geschwindigkeitssteigerung bei herabgesetzter Fehlerrate erreicht und
+der gegenseitige Austausch von Cassetten erleichtert. Also denn viel
+Erfolg!
+</p>
+
+<?php boxStartJustify(); ?>
+<h1 id="article1" style="text-align:center; font-size:1.6em">
+PREISAUSSCHREIBEN
+</h1>
+<p>
+Nachdem unser
+<a href="../../../06/19/text/#article2">erstes Preisausschreiben</a>
+doch einige Leser aktiviert hat,
+interessante Beiträge einzusenden (einige sind in diesem Heft
+abgedruckt, andere folgen noch), wollen wir nun zum neuen Jahr einen
+weiteren Wettbewerb starten. Unter dem Thema <u>&quot;Und es bewegt sich
+doch...&quot;</u> (kommt mir irgendwie bekannt &quot;vor!) sollen Beiträge
+gesammelt werden, die sich mit <u>Bewegung auf dem Bildschirm befassen.</u>
+</p>
+<p>
+Die Einsende- und Auswahlkriterien sind schnell erklärt: Es wird jedes
+Programm akzeptiert, das Bewegung auf dem Bildschirm erzeugt. Das
+könnten Spielprogramme sein, wissenschaftliche Programme mit
+graphischen Darstellungen oder was immer Ihnen zu dem Thema einfällt.
+Bewertet wird wieder nach dem Verhältnis von Aufwand und Wirkung, d.h.
+Speicherplatz und Effekt. Die Programme sollten möglichst mit NASSYS3
+laufen, Maschinenprogramme und BASIC sind zugelassen. Um alle Leser
+teilhaben zu lassen, sollten keine speziellen Graphic-7usatzkarten
+nötig sein, obwohl wir auch die Möglichkeit einer
+Graphic-Hardwareschaltung mit Pfiff als Teilnehmer ins Auge fassen.
+</p>
+<p>
+Als Preis hat MKS einen <u>EINKAUFSGUTSCHEIN IM WERTE VON DM&nbsp;200.&ndash;</u>
+ausgesetzt, was als Anreiz dienen kann. Aber &quot;die Teilnahme ist
+wichtig, nicht der Gewinn&quot;, soll einmal ein berühmter
+Programmierer gesagt haben.
+</p>
+<p>
+Viel Spaß beim Knobeln! (Oder haben Sie
+etwa schon ein fertiges Konzept?)
+</p>
+<p>
+Einsendeschluß ist der 1.März 1982,
+Zeit genug, um den Mitteilnehmern das Fürchten zu lehren.
+</p>
+<p>
+Angeregt wurde das Preisausschreiben von Claus Stehlik,
+Judendorf/Österreich. Sicher hat der schon etwas Raffiniertes auf Lager.
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

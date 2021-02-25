@@ -1,0 +1,110 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+DMA &ndash; Teil 2
+</h1>
+<h3>
+von Josef Zeller
+</h3>
+<p>
+Im <a href="../../../../81/09/05/text/#article1">NASCOM-Journal 9/81</a>
+wurde eine Applikation mit dem
+<?php externalLink("Z80 DMA","Z80-DMA",""); ?>-Baustein
+vorgestellt. Angeregt durch Anfragen soll hier dieser Baustein etwas
+näher beschrieben werden. Anhand von Programmbeispielen (bereits im
+<a href="../../../07/49/text/#article1">NASCOM-Journal 7/8-82</a>
+abgedruckt! RED.) soll die Programmierung dieses
+komplexen Bausteins erläutert werden.
+</p>
+<p>
+Der Beitrag ist die gekürzte
+Fassung eines Artikels, der in MARKT&amp;TECHNIK 16/82 erschienen ist.
+</p>
+<h4>
+1) Z80-DMA &ndash; Funktionsbeschreibung
+</h4>
+<p>
+Der Z80-DMA-Controller soll hier nur
+soweit beschrieben werden, um einen ersten Eindruck über die
+Möglichkeiten dieses intelligenten Coprozessors zu gewinnen. Für
+genauere Details sei auf das Datenblatt verwiesen. Der DMA-Baustein
+verfügt, um mit den anderen Komponenten im Mikrocomputersystem in
+Verbindung zu treten, über eine interne Logik und Anschlüsse nach
+außen, die es erlauben, die Adreß-, Daten- und Kontrolleitungen wie die
+CPU zu steuern, Interrupts zur CPU zu senden und die Busverwaltung mit
+der CPU und anderen DMAs zu koordinieren. Zum Transfer von Daten sind
+dafür die Adreß-, Daten- und Kontrolleitungen (MREQ, IORQ, RD, WR) in
+ihrer Funktion identisch den entsprechenden Anschlüssen der CPU. Auch
+ist das Timing des DMA gleich dem der CPU. Die Logik der
+Interruptanforderung entspricht der aller anderen
+<?php externalLink("Z80","",""); ?>-Peripheriebausteine
+(PIO, CTC, DART, SIO). Sie erlaubt damit über
+IEI und IEO eine hardwaremäßige Zuweisung der Priorität einer
+Interruptanforderung von einem I/O-Baustein und die Z80-spezifischen
+Vektorinterrupts. Anhand von
+<a href="../../../07/50/text/#article1">Programmbeispiel 3</a>
+wird gezeigt, wie das
+Low Byte des Interruptvektors in den DMA geladen wird und bei welchen
+Ereignissen der DMA einen Interrupt auslösen kann. Der Zugriff auf den
+Bus wird gesteuert durch BUSREQ, BAI, und BAO. Ueber BUSREQ (Bus
+Request) teilt der DMA der CPU mit, daß er die Kontrolle über den Bus
+übernehmen will. Die CPU behandelt BUSREQ-Anforderungen noch vor dem
+nichtmaskierbaren Interrupt und dem normalen Interrupt. Ueber den
+BUSACK-Eingang der CPU, der mit dem BAI des höchstpriorisierten DMA
+verbunden ist, meldet die CPU, daß sie den Bus freigegeben hat und der
+DMA den Bus übernehmen kann. Durch BAI
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+und BAO können
+Multi-DMA-Kon&shy;fi&shy;gu&shy;ra&shy;tio&shy;nen
+aufgebaut werden. Dazu wird
+immer BAO vom höherpriorisierten DMA mit BAI vom niederpriorisierten
+DMA verbunden (Daisy-Chain-Prinzip!). Der BUSREQ-Pin der CPU überwacht
+im inaktiven Zustand des DMA den Bus und stellt fest, ob ein anderer
+DMA aktiv ist. Dadurch wird der Zugriff auf den Bus erst erlaubt, wenn
+der andere DMA sich vom Bus zurückgezogen hat. Ein DMA mit hoher
+Priorität kann den aktiven DMA mit niedriger Priorität also nicht
+unterbrechen, sondern muß warten, bis dieser fertig ist. Den Pins CE
+und WAIT sind je zwei verschiedene Funktionen zugewiesen. Im passiven
+Zustand dient CE als Chip-Select und über INT wird das Interruptsignal
+ausgegeben. Durch Programmierung kann der CE als Wait-Eingang dienen
+und der INT-Pin das Puls-Signal aussenden, wenn ein Block von
+programmierbarer Länge übertragen worden ist. Durch den RDY-Eingang
+kann ein Peripherie-Baustein (SIO durch W/RDYA oder W/RDYB) den DMA
+zum Uebertragen auffordern.
+</p>
+<p>
+Der DMA weist 3 Funktionsarten auf, die in den Programmbeispielen auch
+angewandt werden: Übertragung
+(<a href="../../../07/49/text/#article1">Prg. 1</a>),
+Suche
+(<a href="../../../07/49/text/#article1">Prg. 2</a>)
+und kombinierte Suche/Übertragung
+(<a href="../../../07/50/text/#article1">Prg. 3</a>)
+von Daten zwischen 2 Ports. Ein Port kann
+ein Memorybereich oder ein I/O-Baustein sein. Die Startadressen, ab
+denen die Übertragung beginnt, werden in die Port-Start-Register und
+die Übertragungslänge ins Block-Lenght-Register geladen. Es sind
+Blocklängen bis 64&nbsp;K-Byte adressierbar. Die Counter können von der CPU
+ausgelesen werden und zeigen an, bis zu welcher Adresse und wieviel
+Bytes übertragen wurden
+(<a href="../../../07/52/text/#article1">Programm Global</a>).
+Der DMA kann einen Port
+nach einem bestimmten Byte oder einer Bitkombination absuchen. Beim
+Übertragen wird ein Byte von einem Port gelesen und dann zum anderen
+Port geschrieben. Beim Übertragen/Suchen kann so lange übertragen
+werden, bis Gleichheit auftritt. Die Optionen werden hier meistens
+anhand der Übertragung von Daten besprochen. Natürlich gilt das Gesagte
+auch für die Datensuche.
+<span style="text-decoration: line-through">lich gilt das Gesagte
+auch für die Datensuche.</span>
+Der Z80-DMA kann in drei Betriebsarten arbeiten. Im Byte-Mode wird pro
+Busanforderung nur ein Byte übertragen. Die CPU fuhrt dann einen Befehl
+aus, bevor der DMA das nächste Byte überträgt. Um im Byte-Mode zu
+arbeiten, muß RDY aktiv sein. Im Burst-Mode werden Daten so lange
+übertragen, wie RDY aktiv ist, auch wenn die Operation noch nicht
+abgeschlossen ist. Im Continuous-Mode ist der DMA so lange aktiv, bis
+</p>
+
+<?php columnEnd(2); ?>

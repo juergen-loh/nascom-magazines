@@ -1,0 +1,259 @@
+<table>
+<tr>
+	<td><p>Parameter</p></td>
+	<td><p>Funktionsname</p></td>
+	<td><p>Lit.Arg.</p></td>
+	<td><p>Ergebnis</p></td>
+	<td><p>Kommentar</p></td>
+</tr>
+<tr>
+	<td colspan=4></td>
+	<td class="justify"><p>
+		ASCII-Strings, der mit '&quot;' abgeschlossen wird. Im EDITOR-Modus
+		muß der String vorher ab der nächsten Zeile eingegen werden. Bei
+		Aufruf von (Name) wird die Adresse des Strings auf den Stack
+		gegeben.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>DEL</p></td>
+	<td>-</td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Löscht die zuletzt definierte Funktion.</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>::</p></td>
+	<td><p>Name</p></td>
+	<td>-</td>
+	<td class="justify"><p>
+		Wie &quot;:&quot;, doch (Name) wird ins Compiler-Dictionary
+		eingetragen. Kann nicht mit DEL gelöscht werden!
+	</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>BETRIEBSSYTEM-SCHNITTSTELLE</h4></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>NAS-SYS</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Ruft die NAS-SYS-Routine mit der Codenummer a auf. Die Argumente
+		müssen vorher nach C0CH, C0EH, C10H (= 3084, 3086 3088 Dezimal)
+		gepoked werden!
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>MODIFY</p></td>
+	<td>-</td>
+	<td><p>b</p></td>
+	<td class="justify"><p>
+		Ruft das M-Kommando von NAS-SYS auf ab Adresse a. Mit b wird
+		anschließend die nächste freie Speicherstelle übergeben.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>MOTOR</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schaltet den Cassettenrecorder ein/aus.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>GRKL</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td><td class="justify"><p>
+		Schaltet die Tastatur um von Groß- auf Kleinschrift und
+		umgekehrt.
+	</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>STACKOPERATIONEN</h4></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>DUP</p></td>
+	<td><p>-</p></td>
+	<td><p>a a</p></td>
+	<td class="justify"><p>Dupliziert den Wert auf dem Stack.</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>POP</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Entfernt den Wert auf dem Stack.</p></td>
+</tr>
+	<tr><td><p>a b</p>
+	</td><td><p>SWAP</p>
+	</td><td><p>-</p>
+	</td><td><p>b a</p>
+	</td><td class="justify"><p>Vertauscht a und b auf dem Stack.</p>
+	</td>
+</tr>
+<tr>
+	<td><p>a b c</p></td>
+	<td><p>ROT</p></td>
+	<td><p>-</p></td>
+	<td><p>b c a</p></td>
+	<td class="justify"><p>Rotiert a nach oben.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CLEAR</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Setzt den Daten-Stackpointer auf den Anfangswert &ndash; Alle Daten weg!</p>
+	</td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>OVER</p></td>
+	<td><p>-</p></td>
+	<td><p>a b a</p></td>
+	<td class="justify"><p>Kopiert den zweiten Wert auf dem Stack &quot;oben drauf&quot;.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>UNDER</p></td>
+	<td><p>-</p></td>
+	<td><p>b a b</p></td>
+	<td class="justify"><p>Kopiert den obersten Wert nach unten.</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>ARITHMETISCHE, LOGISCHE und VERGLEICHSOPERATIONEN</h4></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>+</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a + b</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>&quot;-&quot;</p></td>
+	<td>-</td>
+	<td><p>c</p></td>
+	<td class="justify"><p>
+		c = a &ndash; b&nbsp;; Die Anführungszeichen sollen klarmachen, daß hier mit
+		&quot;-&quot; sonst gemeint ist: kein Argument!
+	</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>*</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a * b</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>/</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a dividiert durch b</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>MOD</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = Rest der Division a/b</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>/MOD</p></td>
+	<td><p>-</p></td>
+	<td><p>c d</p></td>
+	<td class="justify"><p>c = a / b; d = Rest von a/b</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>INC</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>b = a + 1</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>DEC</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>b = a &ndash; 1</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>MINUS</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>b = Komplement von a</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>OR</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>
+		c = a ODER b; Byteweise logische Funktion a und b müssen kleiner
+		als 256 sein!
+	</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>AND</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a UND b; Arg. wie oben</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>XOR</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a EXCLUSIV-ODER b; Arg. wie oben</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>EQ</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = 0 wenn a ungleich b, sonst c = 65535</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>EQZ</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>
+		b = 0 wenn a ungleich 0, sonst b = 65535; entspricht auch der
+		logischen Verneinung.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>&gt;</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = 65535, wenn a größer als b, sonst 0</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>&lt;=</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = 65535, wenn a kleiner oder gleich b, sonst c = 0.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>MIN</p></td>
+	<td><p>-</p></td>
+	<td><p>o</p></td>
+	<td class="justify"><p>c = a, wenn a kleiner als b, sonst c = b.</p></td>
+</tr>
+</table>

@@ -1,0 +1,120 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für<br>
+Floppy-Einsteiger
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<h4>
+Nachlese
+</h4>
+<p>
+Nachdem nun schon etwa ein Drittel unserer Leser den Anschluß an unser
+Floppy- System mit der
+<a href="../../../07/30/text/#article1">Zippel/Oberle Controller Karte</a>
+gefunden haben,
+scheint es mir gerechtfertigt, in der Aufbauphase diesem Thema einen
+breiten Raum zu geben. Daß die Ausführungen viel Platz beanspruchen
+werden, kann ich schon jetzt abschätzen. Deshalb möchte ich mich bei
+den Lesern entschuldigen, die mit der Floppy nichts im Sinn haben.
+Ihnen zum Trost: Wenn die Floppy bei allen läuft, bieten die Disketten
+ein so bequemes Medium, daß wohl eine ganze Menge an Software auf
+diesem Wege transportiert wird, und nichtinteressierte Leser nicht mehr
+belästigt.
+</p>
+<p>
+Wir haben schon jetzt damit begonnen und bieten eine
+Diskette an, die die folgenden Programme und noch einiges mehr enthält,
+sodaß man sich viel Tipp&shy;ar&shy;beit ersparen kann. Mehr dazu in einer
+<a href="../../03/text/#article1">gesonderten Meldung</a>
+in diesem Heft.
+</p>
+<p>
+Zunächst einige wichtige Ergänzungen zu den Floppy- Seiten der letzten
+Hefte.
+</p>
+<p>
+EMDOS: Bei der Benutzung mehrerer Laufwerke werden diese
+folgendermaßen selektiert (eingeklammerte Zeichen können weggelassen
+werden!):
+</p>
+<table>
+<tr><td>D (A:)</td><td>Directory Laufwerk A</td></tr>
+<tr><td>D B</td><td>Directory Laufwerk B<br>(andere entsprechend)</td></tr>
+<tr><td>(A:)FORMAT.COM&nbsp;</td><td>Command Laufwerk A</td></tr>
+<tr><td>B:FORMAT.COM</td><td>Command Laufwerk B<br>und andere</td></tr>
+<tr><td>L (A:)BASIC</td><td>Laden von Laufwerk A</td></tr>
+<tr><td>L B:BASIC</td><td>Laden von Laufwerk B etc.</td></tr>
+</table>
+<p>
+Bitte beachten Sie, daß zwischen Befehl und Laufwerksnummer ein
+Space, zwischen Doppelpunkt und Laufwerksnummer kein Space stehen muß.
+</p>
+<p>
+Verschiedentlich wurde nachgefragt, was denn eigentlich die Funktion
+des PHEAS sei. Deshalb hier nochmals: EMDOS ist ein Verwaltungsprogramm
+(ähnlich dem BDOS in
+<?php externalLink("CP/M","",""); ?>),
+das rein logisch verschiedene Files nach
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+bestimmten Regeln auf der Diskette &quot;verteilt&quot;. Es verwaltet
+das Inhaltsverzeichnis und kontrolliert, daß die Files an die richtigen
+Stellen geladen werden. EMDOS arbeitet theoretisch mit jeder
+Floppy-Controller Karte. Es benötigt aber eine Schnittstelle zur
+Hardware, und eben diese wird durch PHEAS dargestellt. PHEAS teilt
+EMDOS jeweils mit, wie die Diskette in Spuren und Sektoren aufgeteilt
+ist und übernimmt die direkte physikalische Steuerung der Laufwerke
+(deshalb auch PHysikalisches Ein Ausgabe System).
+</p>
+
+<p>
+Bei den Testroutinen
+(<a href="../../../09/11/text/#article1">Heft 9-83</a>)
+wurde die Geschichte mit den
+Statusmeldungen des Controllers entweder mißverständlich formuliert
+oder aber zum Teil böswillig falsch verstanden. Zur Klärung:
+</p>
+<p>
+Nach Lese- oder Schreiboperationen muß das Statusregister 00 melden,
+dann wurden die Operationen richtig durchgeführt. Wird aber nur ein
+RESTORE (HOME) durchgeführt, lautet die Meldung 04 (=Kopf auf Spur 0),
+Nach einem SEEK muß die Meldung 20 (=Kopf auf Diskette) gegeben werden.
+(Siehe Tabelle TypeI Commands
+<a href="../../../09/08/text/#article1">Heft 9 Seite 8</a>).
+</p>
+<p>
+Nun aber endlich zu den
+aktuellen Meldungen über die Floppy, die mittlerweile mit Double
+Density problemlos läuft (wurde ja auch Zeit).
+</p>
+
+<h4 id="article2">
+Double Density
+</h4>
+<p>
+Inzwischen ist das seit langern angeforderte Assemblerpaket zum
+<?php externalLink("mc-CP/M","mc",""); ?>-Computer
+angekommen, und ich konnte mich endlich mit den
+Aufzeichnungsformaten auseinandersetzen. Hier nun zunächst eine
+Beschreibung, wie sich die
+<?php externalLink("mc-CP/M","mc",""); ?>-Leute
+das Starten eines Betriebssystems (CP/M) vorstellen.
+</p>
+<p>
+Hier existiert als erstes ein sogenanntes Urladeprogramm, das es
+ermöglicht, den ersten Sektor von Spur 0 einzulesen. Die Spur 0 ist
+dabei in Single Density (16 Sektoren zu 128 Bytes), kann also auch von
+Rechnern gelesen werden, die Double Density nicht verarbeiten können.
+</p>
+<p>
+In diesem Sektor ist nun der Booter abgespeichert, der das
+Betriebssystem (CP/M) von Spur 1 bis 3 einlesen und im Rechner ablegen
+soll. Er enthält auch die Information, ob der Rest der Diskette in
+Single oder Double Density formatiert ist (ab Spur 1).
+</p>
+
+<?php columnEnd(2); ?>

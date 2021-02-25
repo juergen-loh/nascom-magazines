@@ -1,0 +1,64 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+WRFILE &nbsp; MEMORY:2280 &nbsp; LAENGE:01A0 &nbsp; START:2280
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+</p>
+
+<h1 id="article1" class="donthyphenate">
+NACHTRAG zu &raquo;FORMAT&laquo;
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Das Formatierprogramm aus dem
+<a href="../../../08/05/text/#article1">Augustheft</a> hat sich bisher gut bewährt.
+Nur ist manchmal die Notwenigkeit aufgetreten, eine Zeile mit einem
+Space beginnen zu müssen oder verschiedene Spalten zu tabulieren. Dazu
+muß das Programm selbst nicht verändert werden; man muß nur Zeichen
+festlegen, die durch das Druckerprogramm entsprechend interpretiert
+werden. Deshalb formatiere ich auch nicht mehr direkt über den UART
+sondern über eine Druckerroutine, die an
+<a href="../../08/text/#article1">anderer Stelle</a>
+beschrieben ist. (Olympia ESW 100 KSR an NASCOM)
+</p>
+<p>
+Der von mir benutzte Drucker benutzt das Zeichen -&gt; (09hex) um eine
+vorher eingestellte Anzahl von Schritten nach rechts zu rücken. Wenn
+Sie also Texte auf Cassette einsenden und dieses Zeichen zum Tabulieren
+verwenden wollen, müßten Sie angeben, wie viele Zeichen der Tabulator
+überspringen soll.
+</p>
+<p>
+Eine andere Möglichkeit des Tabulierens bildet das Festlegen eines
+Zeichens für einen Zwischenraum, der nicht unterdrückt werden darf. Mit
+T&nbsp;4 oder NASSYS ist es kein Problem, das Zeichen &lt;- für BS zu
+erzeugen, das ich als Space z.B. am Zeilenanfang abdrucke. Folgendes
+Programm zum Umwandeln von 08hex in einen Zwischenraum ist durch
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+das Einfügen von &lt;- eingerückt:
+</p>
+<pre class="donthyphenate">
+     CP,#08
+     JR NZ OUT
+     LD A,#20
+ OUT JP Druck(z.B.SRLOUT)
+</pre>
+<p>
+Damit ist das Formatierprogramm wieder ein
+Stück vielseitiger geworden.
+</p>
+<h1 id="article2">
+MINIPROGRAMM
+</h1>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-2.jpeg"); ?>
+<p>
+Das Programm ist voll verschieblich
+</p>
+
+<?php columnEnd(2); ?>

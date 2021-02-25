@@ -1,0 +1,104 @@
+<?php columnStart(2, 2); ?>
+
+<h4 id="article1"><u>
+SYSTEMTEST FÜR DEN NASCOM&nbsp;1
+</u></h4>
+<p>
+Ein Defekt in meinem NASCOM&nbsp;1 System machte mir bewußt, wie hilflos man
+ohne aufwendige und teure Meßtechnik diesem Problem gegenübersteht. Die
+Betriebssysteme helfen bei der Fehlersuche auch nicht weiter. Aus
+diesem Grund habe ich ein einfaches Test-Programm geschrieben. Es wird
+sinnvollerweise in einem EPROM
+(<?php externalLink("2708","",""); ?>)
+abgelegt.
+</p>
+<p>
+Das Programm besteht aus folgenden Teilen:
+</p>
+
+<ol>
+<li>
+&quot;drive LED&quot; setzen
+</li>
+<li>
+Test der statischen Speicher (0800-0FFF)
+</li>
+<li>
+Interner PIO-Test
+</li>
+<li>
+UART-Test
+</li>
+</ol>
+
+<p>
+<u>Beschreibung der einzelnen Programmteile</u>
+</p>
+
+<dl>
+<dt>
+Test 1:
+</dt><dd class="wide">
+Die &quot;drive LED&quot; wird eingeschaltet
+</dd>
+<dt>
+Test 2:
+</dt><dd class="wide">
+Die Speicherplätze der statischen Speicher werden nacheinander
+mit den Prüfmustern AA H und 55 H geladen. Nach jedem Prüfmuster wird
+eine Zeit von 10 Sekunden gestartet, und nach Ablauf der Zeit das
+Muster in allen Speicherzellen getestet. Wird ein Fehler festgestellt,
+so wird der &quot;Test 2&quot; wiederholt. Ist der Speichertest ohne
+Fehler ausgeführt, wird die &quot;drive LED&quot; ausgeschaltet und auf
+dem Bildschirm der Text/Speichertest O.K. ausgegeben. Testdauer etwa 30
+Sek.
+</dd>
+<dt>
+Test 3:
+</dt><dd class="wide">
+Mit diesem Programmteil wird der Datenverkehr zwischen der CPU
+und dem PIO Baustein geprüft. Dazu werden nacheinander die Muster AA H
+und 55 H an die Register A und B ausgegeben. Danach werden
+
+<?php columnChange(2, "</dl>", "<dl>"); ?>
+
+die Register des PIO zurückgelesen und mit dem vorher ausgegebenen
+Muster verglichen. Ist der Vergleich gehlerhaft, wird die &quot;drive
+LED&quot; eingeschaltet und der Programmteil&quot;Test 3&quot;
+wiederholt. Ist der Vergleich O.K., wird der Text /interner PIO-Test
+O.K./ auf dem Bildschirm ausgegeben.
+</dd>
+
+<dt>
+Test 4:
+</dt><dd class="wide">
+Bei diesem Test wird die serielle Schnittstelle des UART
+geprüft. Das ASCII-Zeichen &quot;U&quot; (55 H) wird 256 mal
+ausgegeben. Das Programm wartet nach jeder Zeichenausgabe auf
+&quot;UART ready&quot;. Ist der UART nicht &quot;ready&quot;, wird die
+&quot;drive LED&quot; eingeschaltet. Kommt das &quot;ready Signal, wird
+die &quot;drive LED&quot; ausgeschaltet. Dadurch blinkt die &quot;drive
+LED&quot; in der Frequenz des UART-Taktes und bildet somit einen
+Meßpunkt (trigger).<br>
+Ist das Zeichen &quot;U&quot; 256 mal ausgegeben, werden die Texte /
+UART-Test O.K./ und /NASCOM&nbsp;1 SYSTEMTEST O.K./ auf dem Bildschirm
+ausgegeben. Danach geht die CPU in den &quot;HALT&quot;-Status.
+</dd>
+</dl>
+
+<p>
+<u>Hinweise zur Fehlersuche</u>
+</p>
+<p>
+Mit dem Testprogramm, einem einfachen Logik-Tester (TTL / CMOS
+Prüfstift) und einigen Ersatz-ICs ist es möglich,
+&quot;Hardwarefehler&quot; herauszufinden. Der erste und wichtigste
+Schritt bei der Fehlersuche ist die Kontrolle der Betriebsspannungen.
+Liegen die Spannungen richtig an, wird das System ausgeschaltet und das
+Betriebsprogramm herausgenommen. Danach wrid das EPROM mit dem
+Testprogramm auf den Steckpaltz 0000-03FF eingesteckt und das Programm
+durch die Betätigung der &quot;reset&quot;-TAste gestartet. Der Test
+ist beendet, wenn die &quot;HALT&quot;-LED leuchtet.
+</p>
+
+<?php columnEnd(2); ?>

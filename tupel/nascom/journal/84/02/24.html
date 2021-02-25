@@ -1,0 +1,125 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+SPRITE-Editor
+</h1>
+<h3>
+von PETER BRENDEL
+</h3>
+<h4>
+USR-ROUTINEN
+</h4>
+<p>
+Nascom-User, die mit ihrem Rechner etwas Vernünftiges tun, können
+diesen Beitrag vergessen. Die USR-Routinen sind vor allem als Hilfe für
+Spieleprogrammierer gedacht. Eigentlich ist der Nascom ja alles andere
+als ein Spielcomputer; denn unsere Grafik ist, wie wir alle wissen,
+gelinde gesagt bescheiden. (Du mußt dir eben die neue Grafikkarte
+zulegen! Günter).
+</p>
+<p>
+Durch die USR-Routinen wird die Grafik leider auch nicht besser.
+Allerdings kann man mit ihnen einige Sachen machen, die in Basic nicht
+möglich wären.
+</p>
+<p>
+Vor der Beschreibung der USR-Routinen jedoch die Beschreibung des
+USR-Befehls.
+</p>
+<p>
+Mit USR(xx) kann man das Basic-Programm verlassen, um ein
+Maschinenunterprogramm ausführen zu lassen. Dabei kann man sowohl einen
+Wert aus dem Basic ins Maschinenprogramm als auch umgekehrt übergeben.
+</p>
+<p>
+Vorher muß man die Startadresse des Masch. Progr. in USRLOC (4100 dez)
+ein-&quot;doken&quot;. In den meisten Fällen wird das wohl #C80 d.h.
+3200dez sein. Mit &quot;CALL #E98B&quot; wird der Inhalt der Klammer
+ins DE-Register geladen. Will man ein Rechenergebnis ins Basic
+übergeben,lädt man das Low-Byte ins B, das High-Byte ins A-Register und
+springt mit &quot;JP #F0F2&quot; ins Basic zurück. (Es gibt noch die
+Möglichkeit mit &quot;RET&quot;, aber darüber möchte ich mich nicht
+auslassen, weil ich nicht weiß, warum es funktioniert).
+</p>
+<p>
+Jetzt aber die Beschreibung der USR-Routinen.
+</p>
+<p>
+Grundsätzlich unterscheidet das Programm zwei Eingaben:
+</p>
+<p>
+USR (kleiner 255) und USR (größer 255)
+</p>
+<p>
+&gt;255 wird als ADRESSE behandelt.
+Das Programm hält die Adresse fest, und alle späteren Eingaben beziehen
+sich auf diese Adresse.
+</p>
+<p>
+<b>USR&nbsp;(0-16)</b> sind verschiedene Hilfsprogramme.
+</p>
+<p>
+<b>USR&nbsp;(0)</b> ist die INKEY-ROUTINE (geklaut bei
+<a href="../../../../83/03/30/text/#article1">Pack-Mann</a>
+von Herrn Schröder)
+</p>
+<p>
+<b>USR&nbsp;(12)</b> verschiebt die Zeilen 1-15 um eine Stelle nach
+links, <b>USR&nbsp;(13)</b> nach rechts.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+<b>USR&nbsp;(14)</b> kopiert den Speicherbereich (1024 Bytes), dessen Anfang vorher
+mit USR (xxxx) festgelegt wurde, in den Bildschirm.
+</p>
+<p>
+<b>USR&nbsp;(15)</b> füllt
+einen Bereich von 1024 Bytes, dessen Anfang vorher mit USR (xxxx)
+festgelegt wurde, mit Spaces.
+</p>
+<p>
+<b>USR&nbsp;(16)</b> verschiebt die Zeile 16 um eine
+Stelle nach links (Laufschrift).
+</p>
+<p>
+<b>USR&nbsp;(1-10)</b> rufen Bilder auf, die aus
+einzelnen Grafikzeichen aufgebaut sind. Diese Bilder müssen am Anfang
+des Programms einmal definiert werden. Dazu werden die horizontalen und
+vertikalen Abmessungen in die Speicherzellen 3541=Horiz. und
+3542=Vertik. eingetragen. (POKE)
+</p>
+<p>
+Dann das eigentliche Bild im gleichen Raster in der Reihenfolge, wie
+man liest, wobei die linke obere Ecke der erste Speicherplatz des
+entsprechenden Bildes ist (SIEHE TABELLE).
+</p>
+<p>
+Hat ein Bild mehr als 25
+Speicherplätze, darf die nächste Bild-Nr nicht verwendet werden.
+</p>
+<p>
+Das Bild wird dort erzeugt, wo es vorher mit USR (xxxx) festgelegt
+wurde.
+</p>
+<p>
+<b>USR (11)</b> füllt den Raster, der vorher mit USR (xxxx) festgelegt
+wurde, mit Spaces. (Bild loeschen)
+</p>
+<h4>
+TABELLE
+</h4>
+
+<table style="width: 100%">
+<tr><td><p>BILD 1</p></td><td><p>3543</p></td><td><p>BILD 2</p></td><td><p>3569</p></td></tr>
+<tr><td><p>BILD 3</p></td><td><p>3595</p></td><td><p>BILD 4</p></td><td><p>3621</p></td></tr>
+<tr><td><p>BILD 5</p></td><td><p>3647</p></td><td><p>BILD 6</p></td><td><p>3673</p></td></tr>
+<tr><td><p>BILD 7</p></td><td><p>3699</p></td><td><p>BILD 8</p></td><td><p>3725</p></td></tr>
+<tr><td><p>BILD 9</p></td><td><p>3751</p></td><td><p>BILD 10</p></td><td><p>3777</p></td></tr>
+</table>
+<br>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

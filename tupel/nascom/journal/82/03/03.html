@@ -1,0 +1,90 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php boxStart("R"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-1.jpeg"); ?>
+<?php boxEnd(); ?>
+<h1 id="article1">
+Basic
+</h1>
+<h3>
+von W. Mayer-Gürr
+</h3>
+<h4>
+Adressierbarer Cursor für DOS-<span title="Tippfehler. Richtig ist: Basic">Bascic</span>
+</h4>
+<p>
+Bei dem CLD-DOS Betriebssytem erfolgt die Ein- und Ausgabe über externe
+Geräte (Bildschirm, Tastatur, Drucker usw.) durch sogenannte
+Devicedriver. Die Daten laufen dabei durch eine Softwareschnittstelle.
+Hardwareänderungen erfordern nur eine Anpassung des entsprechenden
+Devicedrivers. Der Vorteil liegt in der Austauschbarkeit von
+Programmen. Deshalb sollte man es möglichst vermeiden, Eingriffe im
+Kern des Betriebssystems vorzunehmen.
+</p>
+<p>
+Die Basic-Versionen, die unter CLD-DOS laufen, sind ursprünglich für
+Terminals, deren Cursor mit Escape Sequenzen gesteuert wird,
+geschrieben worden. Beim Nascom liegt die Bildschirmsteuerung getrennt
+vom TT: Devicedriver im RAM ab 0C00H; das Escapezeichen (ASCII 27)
+löscht nur den Bildschirm.
+</p>
+<p>
+Für manche Zwecke ist ein Scrollen des Schirms unerwünscht (z.B.
+Schablonen für Formulare). Hier hilft ein adressierbarer Cursor. Das
+kleine Basic Unterprogramm greift in zwei Bereichen in das
+Betriebssystem ein. In der RAM Adresse 8408 liegt der Spaltenzähler für
+jedes beliebige Terminal. 3213/4 ergibt die aktuelle Position des
+Cursors im Videoram. Der Bildschirm wird mit seinen Koordinaten so
+organisiert, daß X=1 und Y=1 in der linken oberen Ecke liegt.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-2.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php nowrapStart(); ?>
+<?php boxStart("", "text-align: left"); ?>
+<p>
+VERKAUFE NASCOM&nbsp;1&nbsp;, 32K RAM, BASIC ZEAP 4, TOOLKIT, Debugger auf EPROM,
+Kansas-City-Interf. &nbsp; VB 1000.&ndash;<br>
+Siemens T100- TTY 100 Baud, Großschr., 100 Zeichen/Zeile &nbsp; VB 200.&ndash;<br>
+Olivetti TE 318 ASCII- TTY 110Bd &nbsp; VB 600,&ndash;<br>
+H.Molle &nbsp; Tel. _____/____<br>
+________.__/_<br>
+____ _________
+</p>
+<?php boxEnd(); ?>
+<?php nowrapEnd(); ?>
+
+<h1 id="article2">
+FORTH für den NASCOM
+</h1>
+<h3>
+Teil 6 von Günter Kreidl
+</h3>
+<p>
+Mit diesem Beitrag und einigen im
+<a href="../../../07/47/text/#article1">nächsten Heft</a>
+erscheinenden
+Programmbeispielen soll diese Reihe zunächst einmal beendet werden. Um
+den Gebrauch des Systems zu erleichtern, habe ich ein ausführliches
+Verzeichnis aller verfügbaren Funktionen zusammengestellt. Dazu einige
+Hinweise:
+</p>
+<p>
+In der Spalte &quot;Parameter&quot; sind die Eingangsdaten
+verzeichnet, die eine Routine auf dem Stack vorfinden muß, und zwar von
+links nach rechts in der Reihenfolge, wie sie (vom Benutzer oder von
+einer vorangehenden Routine) auf den Stack gegeben werden müssen. Die
+Reihenfolge auf dem Stack ist dann natürlich genau umgekehrt, d.h. der
+am weitesten rechts stehende Wert liegt oben auf dem Stack. Die Spalte
+Lit.(erale) Arg.(umente) ist deshalb nötig, weil in FORTH die UPN nicht
+vollständig durchgehalten wird. Werden als Argumente einer Funktion
+&quot;Worte&quot;, z.B. Funktionsnamen, gebraucht, so folgen diese
+Worte auf die Funktion. In der Spalte &quot;Ergebnis&quot; sind die
+Parameter aufgeführt, die eine Funktion auf dem Stack hinterläßt, und
+zwar in der gleichen Reihenfolge wie die Eingangsdaten. Ich hoffe, daß
+die Kommentare ausführlich genug sind. Falls Fragen auftauchen sollten,
+stehe ich gerne zur Verfügung.
+</p>
+
+<?php columnEnd(2); ?>

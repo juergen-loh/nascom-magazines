@@ -1,0 +1,93 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Prozessors befindet und über ein Port angesprochen wird. Üblich waren
+Terminals mit serieller Schnittstelle, zumeist mit eigenem Prozessor.
+Heute sind wohl busparallele intelligente Videokarten zum Standard
+geworden (sowohl beim 80-Bus als auch beim
+<?php externalLink("ECB","",""); ?>-Bus),
+die über
+Parallel-Ports angesprochen werden, und eine schnellere
+Datenübertragung ermöglichen. Der schnellste Zugriff auf den Bildschirm
+ist aber in Systemen möglich, in denen der Bildschirmspeicher ein Teil
+des Arbeitsspeichers ist, wie auch beim NASCOM. Dies wird jedoch von
+<?php externalLink("CP/M"); ?>
+nicht unterstützt und außerdem liegen sowohl der
+Bildschirmspeicher als auch das Betriebssystem NA5-SYS in einem
+Speicherbereich, der von CP/M für andere Funktionen reserviert ist. Die
+CP/M-Kompatibilität wird also nicht ohne eine kleine
+Hardwaremodifikation erreicht, mit der wir aber plötzlich die Vorteile
+beider Systeme (Terminal oder Memorymapped) im NASCOM miteinander
+vereinen können. Die unteren 4K des Speicherraums mit NAS-SYS, dem
+Video-RAM und dem Workspace C00H bis FFFH müssen einer eigenen
+Speicher-Bank zugeordnet werden, die über ein Bit eines I/O-Ports
+beliebig ein- oder ausgeblendet werden kann, wobei gleichzeitig 4K-RAM)
+einer anderen Karte z.B. die sonst ausgeblendeten unteren 4K einer
+64K-Karte) eingeblendet werden. Verwendet man z.B. Bit 5 von Port O,
+dann, kann man das mit 2 oder 3 IC&rsquo;s bewerkstelligen (im einzelnen
+hängt das von der verwendeten Speicherkarte ab). Man muß nur dafür
+sorgen, daß bei RESET NAS-SYS eingeblendet wird. Dann kann das
+Betriebssystem von Cassette in den oberen Speicherbereich geladen
+werden. Bei CP/M-Betrieb wird von diesem Betriebssystem aus dann
+NAS-SYS mit dem Bildschirm ausgeblendet und nur bei Bedarf
+eingeschaltet,wenn z.B. der Bildschirm beschrieben oder Unterprogramme
+von NAS-SYS verwendet werden sollen. Wer das 8K-ßasic im ROM behalten
+möchte, kann es ebenso ausblendbar machen. Natürlich ist auch einfach
+Betrieb unter NAS-SYS möglich.
+</p>
+<h4>
+BUS-Schnittstellen
+</h4>
+<p>
+Ebenso wie bei Betriebssystemen haben sich auch bei den Bus-Systemen
+gewisse Standards etabliert, meist weniger durch ihre Qualität als
+durch die Entwicklung der Mikrocomputertechnik bedingt. Wenn man sich
+z.B. den in Deutschland verbreitetsten Bus für
+<?php externalLink("Z80","",""); ?>-Systeme,
+den
+Kontron- bzw. ECB-Bus, auf seine Konzeption hin ansieht, kann man kaum
+Ordnung oder Systematik
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+darin erkennen. Aber diese Busbelegung mit dem Europakartenformat hat
+sich trotzdem durchsetzen können. Wenn erst einmal genügend Systeme und
+Erweiterungskarten für einen Bus auf dem Markt sind, kann sich kaum ein
+Anbieter leisten, ein anderes Bus-System herauszubringen, auch wenn es
+erheblich besser ist. Der Kunde profitiert natürlich von dem Wettbewerb
+der vielen Anbieter: Für den ECB-Bus werden die verschiedensten Karten
+als Leerkarten, Bausätze oder Fertigplatinen angeboten zu ständig
+sinkenden Preisen, sowie eine Menge Zubehör &ndash; Gehäuse, Netzteile,
+Busplatinen und all das Kleinzeug, das manchmal mehr kostet als der
+eigentliche Computer. Der aus England stammende 80-BUS zeigt eine
+ordentlichere Struktur als der ECB-Bus und bietet noch viel Platz für
+spätere Erweiterungen. Weniger schön ist das unhandliche
+Platinenformat. So haben viele NASCOM-Anwender ihr System auf den
+ECB-Bus umgerüstet (vor allem zu der Zeit, als wegen der NASCOM-Pleite
+kaum noch Erweiterungen zu bekommen waren), andere hatten bereits ihr
+System mit dem 80-BUS ausgebaut. Für diese Anwender erwies sich die
+Kompatibilität der GEMINI-Karten mit dem NASCOM als nützlich. Mit den
+GEMINI- und MICROSYSTEM-Anwendern ist natürlich auch der Kreis der
+80-BUS-Benutzer hierzulande wieder angewachsen. Wir wollen hier weder
+für das eine noch für das andere Bus-System Stellung beziehen, aber wir
+haben wieder das Problem der Kompatibilität: In welchem Kartenformat
+und mit welcher Busbelegung sollen die Hardware-Erweiterungen der Leser
+und Mitarbeiter des 80-BUS-JOURNALS entwickelt werden? Man kann es
+niemals allen recht machen und die Gewaltlösung (handverdrahtete
+Busanpassung) ist sicher auch nicht jedermanns Sache. Wir lassen
+deshalb derzeit eine Busschnittstelle entwickeln, einen ECB-Bus-Adapter
+für den 80-BUS. Die Adapterplatine wird in eine Steckerleiste des
+80-BUS gesteckt und kann 2 ECB-Bus-Karten aufnehmen. Mit einem kleinen
+Trick lassen sich dann auch zwei Buskarten der beiden Systeme direkt
+miteinander verbinden, z.B. auch ein Mini-Mother-Board
+im 80-BUS-Format mit einem ECB-System, wenn jemand mit ECB-Bus
+80-BUS-Karten in seinem System verwenden will. Darüber hinaus werden
+wir in den nächsten Ausgaben des 80-BUS-JOURNALS die Koppelung des
+NASCOM-Grundsystems mit ECB-Bus-Systemen beschreiben, z.B. mit dem
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computer
+oder mit Kanten von
+<?php externalLink("Janich &amp; Klass", "Janich&amp;Klass", ""); ?>.
+Dem NASCOM-Anwender steht damit das ganze Angebot
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,125 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Tastatur
+</h1>
+
+<h3>
+von PETER BRENDEL
+</h3>
+
+<h4>
+TASTATUR
+</h4>
+<p>
+Unser Nascom hat eine nicht alltaegliche Tastatur, was sich
+schliesslich in einem Preis aeussert, der viele davon abhaelt, ihren
+Neubau auf
+<?php externalLink("ECB","",""); ?>-Karten
+mit einer solchen Tastatur auszustatten.
+</p>
+<p>
+Moegen
+die Magnettasten noch so gut sein, einfache elektromechanische Tasten
+genuegen auch.
+</p>
+<p>
+Wer auf dem Flohmarkt der UKW-Tagung in Weinheim war, weiss, wie
+preiswert gebrauchte Tastaturen zu haben sind (meine war mit 40&nbsp;DM
+schon teuer.)
+</p>
+<p>
+Diese Tastaturen sind oft mit 10er-Block und anderem Schnickschnack
+ausgestattet, was mich dazu bewogen hat, die Schaltung Abfrage
+elektromechanischer Tasten mit einem Zusatz zu versehen, der es
+gestattet &quot;geshiftete&quot; Zeichen zu erzeugen, ohne dabei die
+Shifttaste zu druecken.
+</p>
+<p>
+z.B. !#$%^&amp;*=()
+</p>
+<p>
+Zum Verstaendnis der Zusatzschaltung zunaechst aber die Beschreibung
+der TASTATUR-ABFRAGE-SCHALTUNG (vielen Dank Herr Frommbold, sie stammt
+doch aus Ihrer Ecke?)
+</p>
+<p>
+Ueber die Taktleitung wird ein Impuls ausgegeben,
+der durch den 74123 die Flipflops 7400 loescht und den Zaehler 7493
+(7490 geht auch) auf &quot;1&quot; setzt. Die &quot;1&quot; wird mit
+dem 7442 decodiert, und die Spalte D1 geht auf &quot;0&quot;, wenn der
+74123 den Freigabeimpuls abgibt.
+</p>
+<p>
+Ueber die gedrueckte Taste wird das Flipflop
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+der entsprechenden Zeile gesetzt.
+</p>
+<p>
+NASSYS fragt den Port 0 ab und
+erkennt anhand des aktuellen Taktes und des Bitmusters an S0-S6 den
+Wert der gedrueckten Taste und setzt ihn intern in ASCII um.
+</p>
+<p>
+Takt 2
+wiederholt den Vorgang mit der Spalte D2, Takt 3 mit Spalte D3 usw. Die
+Leitung &quot;Rueckset&quot; setzt nach dem 7. Impuls den Zaehler auf
+0, und die Spalte D0 wird abgefragt.
+</p>
+<p>
+Soweit die Schaltung, wie ich sie begriffen habe.
+</p>
+<p>
+Das Prinzip der Zusatzschaltung besteht darin, dass mit Druecken einer
+SONDERTASTE z. B.&quot;)&quot; zuerst SHIFT simuliert, dann erst nach
+Ablauf mehrerer Abfragezyklen die eigentliche Taste wirksam wird.
+</p>
+<p>
+Das wird folgendermassen realisiert:
+</p>
+<p>
+Beim Druecken einer Sondertaste
+gelangt +5V ueber die Diode (rechts) ueber die Strobe-Leitung auf die
+Basis des BC&nbsp;547. Dieser wuerde durchsteuern, wenn der Emitter auf 0V
+laege. Das tut er auch, wenn Spalte D0 auf 0 geht und den BC&nbsp;557
+durchsteuert. Die beiden Transistoren bilden ein UND-Gatter mit einem
+invertierenden Eingang und setzen bei E1 UND E2 nicht das Flipflop S5 =
+SHIFT
+</p>
+<p>
+Die +5V von der Strobe-Leitung starten gleichzeitig ein Monoflop
+4011, das nach einiger Zeit (einstellbar mit 4,7k-Poti) auf LOW geht
+und die 8 Transistoren BC&nbsp;557 ansteuert. Nun ist Zeile &amp; Spalte
+ueber die Sondertaste + Diode (links) verbunden und das entsprechende
+Flipflop wird gesetzt.
+</p>
+<p>
+Das ist zugegebenermassen ein wenig
+&quot;Hauruck&quot;, aber der Aufwand ist sehr gering, wenn auch die
+Schaltung etwas verworren aussieht. Das Ganze habe ich gefaedelt und in
+einer Aussparung der Tastatur untergebracht.
+</p>
+<p>
+Die Meinungen ueber das Faedeln gehen ja extrem auseinander, ich
+jedenfalls finde, dass es die schnellste Art und Weise ist, zum Ziel zu
+kommen, wenn es sich nicht gerade um Schaltungen handelt, die hohe
+Sromspitzen aufweisen.
+</p>
+<p>
+Dazu 2 Hinweise fuer Faedler:
+</p>
+<p>
+1.Masse und +UB
+sollten mit Blankdraht auf der Oberseite der Platine gefuehrt werden.
+</p>
+<p>
+2.Loeten mit sehr heisser Spitze. (Glueckllche Besitzer einer
+&quot;Weller-Station&quot; sollten Spitze Nr 8 oder 9 benutzen).
+</p>
+<p>
+Daempfe nicht einatmen, wir sind schon verseucht genug.
+</p>
+
+<?php columnEnd(2); ?>

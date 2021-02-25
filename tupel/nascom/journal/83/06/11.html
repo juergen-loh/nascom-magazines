@@ -1,0 +1,58 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+BASIC-Utilities
+</h1>
+<h3>
+von GERHARD KLEMENT
+</h3>
+<h4 id="article2">
+CLEAR in BASIC
+</h4>
+<p>
+Das Microsoft BASIC erlaubt als hoechstes Argument fuer CLEAR den Wert
+32767. Wer mehr reservieren moechte, erhaelt die Meldung FC
+Error. Die RAM Location 105A Hex enthaelt den Pointer fuer den CLEAR
+Bereich. Durch DOKE 4186,XXXX ist die Reservierung von mehr
+Stringbereich moeglich.
+</p>
+<h4 id="article3">
+VARPROTECT
+</h4>
+<p>
+Das Programm
+<a href="../../../../82/10/24/text/#article2">VARPROTECT</a>
+hat eine Schwaeche, die sich erst nach einiger
+Zeit herausstellte. Befindet sich der Cursor am Anfang einer
+Programmzeile an der Stelle einer Zahl und zum Zeitpunkt, an dem die
+Zahl durch den Cursor Character ersetzt ist, wird ENTER gedrueckt,
+dann erkennt die Routine die Zahl nicht, da diese sich im Stack
+befindet, und die Variablen werden geloescht. Im folgenden Listing wird
+dieser Umstand beruecksichtigt.
+</p>
+<?php boxStart("LTR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart("LBR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-11-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+
+<h4 id="article4">
+CONTROL 0
+</h4>
+<p>
+Eine Unterdrueckung der Ausgabe von Zwischenergebnissen in einem BASIC
+Programm, das im Terminal Mode (X Mode) laeuft, erreicht man durch
+Eingabe von Control 0. Der selbe Effekt wird im N Mode durch POKE
+4165,1 erzielt. Eine Rueckstellung erfolgt automatisch, wenn BASIC auf
+einen Input wartet. Mit POKE 4165,0 kann auch waehrend der Exekution
+rueckgestellt werden. Inwieweit das sinnvoll ist, mag jeder selbst
+entscheiden.
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,136 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+auf einmal verwalten kann. 31K + Directory-Eintrag ergeben dieses
+Maximum. Die neue Version soll 48K verwalten können)&nbsp;,dessen Schreib-
+und Lesezeit abgestoppt wurde.
+</p>
+<p>
+Ohne Skewfaktor und beim Auslassen von 1
+und 2 Sektoren betrug die Zeit ca 31 Sekunden. Bei einem Faktor 3 wurde
+sie drastisch auf die Hälfte gesenkt. Größere Faktoren ließen die Zeit
+wieder ansteigen. Der im Formatierprogramm benutzte Faktor scheint also
+für EMDOS optimal zu sein.
+</p>
+<p>
+Wenn wir die Tabelle betrachten, stellen wir fest, daß bei einer
+Diskumdrehung statt eines Sektors nun 4 Sektoren gelesen werden können.
+</p>
+<p>
+Das Lesen eines Speicherbereichs von 1K dauert 8 Sekunden (vom Drücken
+der Taste bis zur Meldung auf dem Schirm), 31K benötigen 15 Sekunden.
+Man sieht, daß das Suchen im Directory und damit verbundene
+Verwaltungsarbeit, vor allem aber das Anlaufen des Motors und die
+Bereitschaft des Laufwerks eine Menge Zeit schlucken; das Lesen der
+Sektoren selbst geschieht recht schnell.
+</p>
+<p>
+Das
+<?php externalLink("mc-CP/M","mc",""); ?>-Format
+sieht keinen
+Skew-Faktor vor. Dort werden hintereinander jeweils 4 Sektoren gelesen,
+ohne durch Rechenzeit zu unterbrechen. Die Geschwindigkeit bleibt so
+die gleiche, wenn vom
+<?php externalLink("mc-CP/M","mc",""); ?>-Rechner
+eine unserer Disketten gelesen wird,
+Umgekehrt müssen wir etwa die doppelte Lesezeit in Kauf nehmen. Das
+scheint mir kein großes Handikap.
+</p>
+<p>
+Bei Single Density müßte folgende
+Tabelle mit dem Faktor 3 die günstigsten Ergebnisse bringen
+(ausprobiert habe ich sie nicht):
+</p>
+<pre class="donthyphenate">
+1 9 4 7 2 10 5 8 3 6
+</pre>
+
+<br>
+
+<?php boxStartJustify("LTR"); ?>
+<br>
+<h4 id="article1">
+<u>TIPS, TRICKS und KÄFER</u>
+</h4>
+<br>
+<?php boxEnd(); ?>
+<p>
+Tape- Operationen (W+R), die zumeist einen wirren Screen- Salat
+verursachen, arbeiten sauber, wenn man bei NASSYS1 zuerst MC75 eingibt
+und anschließend 86. Bei NASSYS3 anstatt der 86 eine 80.
+</p>
+<p>
+Die CLD-Banked- EPROMkarte von Lampson ist teilweise verkehrt
+beschriftet. Es fehlt die Kennzeichnung der Position der Tantal-Elkos,
+außerdem sind die DIL- Schalter genau entgegengesetzt bezeichnet (16=1
+und 1=16).
+</p>
+<p>
+Rolf Kottke, ____ Berlin
+</p>
+<?php boxStart("LBR"); ?>
+<br>
+<?php hline("60%", "2"); ?>
+<br>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article2">
+IO-Karte
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4>
+IO-Karte mit zwei Z80 PIO und einer Z80 SIO:
+</h4>
+<p>
+In
+<?php externalLink("mc","MC"); ?>
+10/82 ist bei der Beschreibung des
+<?php externalLink("CP/M","",""); ?>-Monitors
+eine
+Initialisierungs, sowie eine Testroutine für SIO und PIO abgedruckt.
+Möglicherweise (ich kann es mir aber nicht vorstellen) gibt es noch
+eine andere Ausgabe von SIO- und PIO- Bausteinen, da diese Routinen die
+Portadressen anders verwenden. So wird jeweils Port 1+3 als Data und
+2+4 als Control programmiert (richtig 1+2 und 3+4), und es hat mich
+viel Zeit gekostet, den Fehler nicht auf meiner IO-Karte, sondern im
+Programm aus
+<?php externalLink("mc","MC"); ?>
+zu finden.
+</p>
+<p>
+Quellenangabe: N1- Schaltplan;
+<?php externalLink("Z80 PIO","Z80- Pio",""); ?>-
+und Z80- SIO Technical Manual;
+TI- Pocket- Guide Nr.1 und 2;
+<?php externalLink("mc"); ?>
+Nr.10/82
+</p>
+<p>
+Informationen zum Bestückungsplan:
+</p>
+<table style="width: 50%">
+<tr><td colspan=4>Portbelegung</td></tr>
+<tr><td>PIO I</td><td>Data:</td><td>x4,</td><td>x5</td></tr>
+<tr><td></td><td>Cont:</td><td>x6,</td><td>x7</td></tr>
+<tr><td>PIOII</td><td>Data:</td><td>x8,</td><td>x9</td></tr>
+<tr><td></td><td>Cont:</td><td>xA,</td><td>xB</td></tr>
+<tr><td>SIO</td><td>Data:</td><td>xC,</td><td>xD</td></tr>
+<tr><td></td><td>Cont:</td><td>xE,</td><td>xF</td></tr>
+</table>
+<br>
+<table style="width: 50%">
+<tr><td colspan=3>INT- Daisy Chain</td></tr>
+<tr><td>SIO-</td><td>PIOI-</td><td>PIOII</td></tr>
+</table>
+<p>
+R1 (10 Mo) und C1, C2 (56 pF) nur einsetzen, wenn 4702 statt 4712
+verwendet wird.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

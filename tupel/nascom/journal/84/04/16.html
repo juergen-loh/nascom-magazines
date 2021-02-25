@@ -1,0 +1,99 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+und Monitore vertrieben.
+</p>
+<p>
+Neu ins Programm aufgenommen wurde das info-s
+<?php externalLink("ECB","",""); ?>-BUS-Kartensystem
+der Firma Computer Elektronik G. Krause.
+</p>
+<p>
+List &amp; Niemann ist hier seit 1.11.84 autorisierter
+Vertragshändler und kann somit auch Systemlösungen aus einer Hand
+bieten.
+</p>
+
+<?php boxStart(); ?>
+<?php boxEnd(); ?>
+
+<p>
+Ein paar Anmerkungen zum Floppy Controller, den Sie verwenden: der 179X
+ist für das
+<?php externalLink("8080","",""); ?>-Timing
+ausgelegt (siehe Bild). Beim
+<?php externalLink("Z80"); ?>
+kommen aber /IORQ, /WR, /RD alle gleichzeitig.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+<?php boxEnd(); ?>
+<br>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-3.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStartNowrap(); ?>
+<div id="article3">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-16-4.jpeg"); ?>
+</div>
+<?php boxEnd(); ?>
+<p>
+Im linken Bild kommt der /CS sogar noch nach /RE, /WE
+(Gatterlaufzeiten). Dadurch kann es zu seltenen, unerklärbaren
+Fehlern kommen
+(&quot;<a href="../../../m1/10/text/#article1">Verschiebefehler</a>&quot;
+der Floppy-Karte? Red.)
+Abhilfe schafft die Schaltung auf der rechten Seite.
+</p>
+<p>
+Uwe Wurditsch, Überlingen
+</p>
+<?php boxStart(); ?>
+<div id="article1">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-16-5.jpeg"); ?>
+</div>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>
+
+<?php boxStart(); ?>
+
+<h4 id="article2">
+<u>FEHLER IM CP/M</u>
+</h4>
+<?php columnStartJustify(2, 2); ?>
+<p>
+Wie wir erfahren haben, befindet sich im Programm MOVCPM.COM bei den
+Beziehern der Seriennummern 1002 bis 1121 (Originnummer 1256) ein
+Fehler.
+</p>
+<p>
+Dabei könnte es geschehen, daß nach Verschieben des
+<?php externalLink("CP/M"); ?>
+beim sequentiellen Schreiben auf Diskette der letzte Record nicht mehr vom
+Deblocking-Buffer auf die Diskette geschrieben wird.
+</p>
+<p>
+Die Korrektur des Fehlers ist sehr einfach:
+</p>
+<pre class="donthyphenate">
+A&gt;DDT MOVCPM.COM (NL)
+DDT VERS 2.2<?php columnChange(2, "</pre>", "<pre class=\"donthyphenate\">"); ?>
+NEXT PC
+2F00 0100
+-S1CD2  (NL)
+1CD02 0D 00  (NL)
+1CD3  0D 00  (NL)
+1CD4  C2 21  (NL)
+1CD5  DF 00  (NL)
+1CD6  12 00  (NL)
+1CD7  F5     (NL)
+-^C (=ControlC)
+A&gt;SAVE 46 MOVCPM.COM  (NL)
+</pre>
+<?php columnEnd(2); ?>
+
+<?php boxEnd(); ?>
+<br>

@@ -1,0 +1,103 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+1. Da Herr Klaassen seine Karte mittels Wire-Wrap-Technik aufgebaut
+hat, mußte ich wegen einer einfacheren Leiterführung im Layout die
+Masse der Gatter- und Treiberanschlüsse ändern (im abgedruckten
+<a href="../../08/text/#article1">Schaltplan</a>
+berücksichtigt).
+</p>
+<p>
+2. Wegen der Single 5V Stromversorgung und einer universelleren
+Einsetzbarkeit habe ich anstelle von 16 KByte RAM-Bausteinen
+(<?php externalLink("4116","",""); ?>)
+solche mit 64KByte
+(<?php externalLink("4164","",""); ?>)
+verwendet. Die hiezu notwendig gewordene
+Ansteuerung der Adresse 7 wird mit der Baugruppe D33, D34 in Verbindung
+mit D3 und D4 gelöst. Da in D18 noch zwei Gatter freigeblieben waren,
+habe ich diese als Umschaltverzögerung mit eingebaut, damit bleibt /RAS
+etwas länger wirksam (siehe
+<a href="../../10/text/#article1">Impulsdiagramm</a>).
+Diese Konzeption
+ermöglicht die Verwendung von vier Bildschirmseiten (so wie in
+<?php externalLink("mc","MC"); ?>
+8 &amp; 9/83 beschrieben) und bietet die Möglichkeit zu verdecktem
+Schreiben in eine andere als die gerade angezeigte Seite und, bei
+Textverarbeitung sehr wichtig, einen schnellen Softwarescroll.
+</p>
+<p>
+Ich habe im Oktober Herrn Klaassen geschrieben und ihm die
+beabsichtigten Änderungen mitgeteilt, leider habe ich seine Antwort
+erst Anfang Dezember erhalten, genau einen Tag nach dem Ätzen der
+Platine. Schuld war der Poststreik in Holland und eine Übersiedlung von
+Herrn Klaassen. So konnte ich auf seinen Wunsch, anstelle der vier
+Schreibseiten eher eine Farbkarte zu machen, nicht mehr eingehen, es
+wäre auch zu wenig Platz auf der Karte gewesen. Da ein Farbmonitor
+derzeit noch sehr teuer ist, glaube ich, daß meine Lösung günstig ist.
+Auch die Anbringung eines in einer zusätzlichen Schaltung von Herrn K.
+entwickelten Hardwarescrolls mit vier IC konnte ich wegen Platzmangels
+leider nicht verwirklichen. Eine von Herrn K. angeregte Pegelanpassung
+zwischen Nascom und Grafikvideosignal habe ich mit T2 realisiert, man
+muß leider am Videomonitor Helligkeit und Kontrast ziemlich weit
+aufdrehen. Ein Lösungsversuch mit einem mehrstufigen Videoausgang zur
+Erhöhung des Signalpegels hat nichts eingebracht.
+</p>
+<p>
+Lt. eines
+mitgesandten Applikationsausschnitts sollte bei einer Systemfrequenz
+von 4MHz ein zusätzliches /WAIT-Signal erzeugt und eingespeist werden.
+Der dafür vorgesehene LS 122 (D35) ist daher nur bei einer Frequenz von
+über 3&nbsp;MHz zu bestücken. Die
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Diode Di1 (Ge) dient als Ersatz für einen o. K.-Ausgang (open
+Kollektor), es sollten auch alle anderen /WAIT-Signal erzeugenden
+Bauteile so abgeblockt werden (außer sie haben einen o.K.).
+</p>
+<p>
+D20 und D30 sind lt. Originalbestückungsplan &quot;S&quot;-Typen, Bei
+Bestückung mit &quot;LS&quot;-IC ist bei mir kein Unterschied
+feststellbar, wahrscheinlich braucht die Karte wegen der kürzeren
+Verbindungen keine schnellen Gatter (die ziehen auch viel mehr Strom).
+Auch funktioniert sie einwandfrei, wenn man anstelle des invertierenden
+LS 240 einen n.i. LS 244 einsetzt. D2 sollte ein normaler 7404 sein,
+das ist bei 4&nbsp;MHz sicherer, noch besser wäre ein S&nbsp;04.
+</p>
+<p>
+Die Karte ist auch für den Einsatz des 9365 mit 516*516 Punkten
+vorbereitet, dieser ist jedoch nicht zu empfehlen, da dann ein
+nachleuchtender Bildschirm notwendig ist.
+</p>
+<h4 id="article2">
+Nun noch ein Wort zur Software:
+</h4>
+<p>
+Die mir vorliegende Software ist ein BASIC-Programm zur
+Demonstration der wirklich vielseitigen Möglichkeiten der Arbeit mit
+dem GDP und wurde von mir eingedeutscht und von meinem Sohn für das
+Arbeiten mit 4 Bildschirmseiten erweitert. Vorhanden ist auch noch ein
+Assembler-Programm von Herrn Klaassen, welches den Bildschirminhalt in
+den, bzw vom Nascom lädt. Dieses Programm mußte ziemlich verändert
+werden, da es nicht für NAS-SYS&nbsp;1/3 geschrieben sein dürfte.
+</p>
+<p>
+Inwieweit
+Software zur echten Text- und Grafikverarbeitung vorhanden ist, weiß
+ich nicht, diese wäre aber notwendig.
+</p>
+<p>
+Mir stand zum Austesten der Karte
+ein ausgeborgtes Handbuch der Fa. Graf-Elektronik über die
+<?php externalLink("mc","MC",""); ?>-Karte
+(TERM-1) zur Verfügung, &ndash; ein sehr brauchbares Hilfsmittel übrigens und
+mit allen notwendigen Angaben-&nbsp;, das Journal sollte sich jedoch eine
+Applikation des EF9366 besorgen und die benötigten Dinge betreffend
+Programmierung und Arbeit mit dem GDP veröffentlichen.
+</p>
+<div id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+</div>
+
+<?php columnEnd(2); ?>

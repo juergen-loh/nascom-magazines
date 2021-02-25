@@ -1,0 +1,53 @@
+<?php columnStartJustify(2, 2); ?>
+<h1 id="article1">
+PRNTGRAF
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Das folgende Programm ermöglicht den Ausdruck von Grafikseiten der
+<?php externalLink("EF9366","EF 9366"); ?>
+Karte mit einem Drucker.
+</p>
+<p>
+Es ist für den
+<?php externalLink("TANDY Lineprinter VI"); ?>
+ausgelegt, kann aber leicht für
+jeden anderen grafikfähigen Drucker angepaßt werden.
+</p>
+<p>
+Der Programmteil
+INIT, initiiert die
+<?php externalLink("mc"); ?>
+<a href="../../../../83/12/23/text/#article2">IN/OUT- Karte</a>,
+die SIOA für die serielle
+Druckerausgabe benutzt und PIOA Bit7 für die Abfrage des BUSY- Signals.
+NASSYS wird in diesem Unterprogramm für die Benutzung der
+mc- Karte
+modifiziert. Dieses Programm ist bei der Verwendung des UART nicht
+notwendig.
+</p>
+<p>
+Der Programmteil DRUCK muß bei den meisten Druckern geändert werden, da
+sie im Gegensatz zum TANDY mit 8 Nadeln drucken.
+</p>
+<p>
+Z1010 setzt den Drucker in den Grafik-Modus<br>
+Z1040 Faktor 32 für 8 Nadeln<br>
+Z1140 Differenz=448<br>
+Z1250 8 Nadeln<br>
+Z1400 entfällt
+</p>
+<p>
+Die direkte Ausgabe an den Drucker PRINT (Z1450 ff) muß natürlich auch
+angepaßt werden.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+</p>
+<?php columnChange(2); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>

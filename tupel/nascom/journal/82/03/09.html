@@ -1,0 +1,107 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Datenverwaltung
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Eben frisch aus dem Assembler: ein Datenverarbeitungsprojekt, das noch
+nicht als fertiges Programm anzusehen ist, sondern als Grundstock für
+ein komfortables Programm, an dessen Fertigstellung hoffentlich viele
+Journal-Leser mitarbeiten werden. Keine Angst, nicht wieder einer der
+theoretischen Vorschläge, die nie in die Praxis umgesetzt werden. Das
+Programm ist schon in der vorliegenden Form praktisch anwendbar, sollte
+aber noch ausgebaut werden. Für die Anpassung an persönliche
+Bedürfnisse ist es modular aufgebaut und sollte auch im Ausbau flexibel
+sein.
+</p>
+<h4>
+<u>Was das Programm schon kann:</u>
+</h4>
+<p>
+Der Nachteil vieler mir bekannter
+Datenverwaltungsprogramme ist die Beschränkung auf bestimmte
+Datenformate, wie z.B. 25 Buchstaben bei Namen etc. Der Vorteil des
+vorliegenden Programms ist die Organisation nach &quot;Files&quot;,
+deren Umfang nur durch die Bildschirmkapazität beschränkt wird, da der
+Schirm als Eingabepuffer verwendet wird. Die einzelnen Daten oder Namen
+können beliebig lang sein; sie werden durch Space oder New Line
+unterschieden. Beim Aufsuchen bestimmter Daten dient dann die
+Reihenfolge im File zur Unterscheidung. So kann also ein File zehn oder
+500 Zeichen lang sein, es wird mit seiner Original-Länge gespeichert,
+ohne unnötigen Platz für überflüssige Spaces zu beanspruchen.
+Interessant ist auch die Möglichkeit, Files zu ändern und somit auf
+eine völlig andere Länge zu bringen; das Programm verkürzt oder
+verlängert seinen Platz und verschiebt die anderen Files entsprechend.
+Beim Löschen eines Files bleibt ein Space mit dem Bell-Zeichen (&nbsp;als
+Kennzeichnung für File-Ende&nbsp;) erhalten, so daß nach versehentlichem
+Löschen wenigstens durch die erhaltene Filenummer eine
+Wiederherstellung der verlorenen Daten möglich ist.
+</p>
+<p>
+Nach der Eingabe
+von Daten können die Files in der vorliegenden Fassung folgendermaßen
+verarbeitet werden:
+</p>
+<p>
+Alle Files werden ausgegeben. Dabei kann man zwischen der Ausgabe auf
+dem Bildschirm oder durch Drucker wählen. Bei der Druckausgabe besteht
+die Möglichkeit, die Files in der abgespeicherten Form oder in
+bestimmte Texte
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+oder Ausgabeformulare eingebunden zu drucken. Die Texte können genauso
+wie die Files eingegeben, geändert oder aufgelistet werden. Um das
+Programm zu verkürzen, werden dafür die gleichen Routinen verwendet,
+nur werden die Parameter für Text oder File zuvor vertauscht, da beide
+in verschiedenen Speichern abgelegt sind. Aber zur Aufbaubeschreibung
+kommen wir noch zu späterem Zeitpunkt! Das Schnecken-A und eine
+folgende zweistellige Ziffer bezeichnen die Nummer des Datenworts im
+File, unbezeichnete Buchstaben oder Ziffern werden wie im Formular
+ausgedruckt.
+</p>
+<p>
+Es können bis zu 9 Formulare gespeichert sein, die mit Ihrer laufenden
+Nummer aufgerufen werden. Ihr Umfang kann bis zu kleinen Formschreiben
+reichen und ist wiederum durch die Bildschirmkapazität begrenzt. Sie
+sehen, das Dateisystem geht ein gutes Stück über die Anlage eines
+Telefonverzeichnisses mit 20 Nummern hinaus.
+</p>
+<p>
+Wie schon erwähnt, können Files oder Formulare geändert oder angehängt
+werden. Dabei wird eine mögliche Speicherüberschreitung durch
+&quot;String too long&quot; angezeigt, und die Änderung kann wiederholt
+werden.
+</p>
+<p>
+Noch ein interessanter Aspekt ist die Suchroutine. Hier ist
+nicht nur ein Suchbegriff möglich, sondern eine Kombination von Wörtern
+mit UND- bzw. ODER- Verknüpfung in beliebiger Anzahl und Länge, nur
+durch Bildschirmkapazität eingeschränkt (klingt so bekannt!), Dabei
+gilt ein Space als UND, ein &quot;/&quot; als ODER. Beispiel: 1947
+Max/Moritz gibt alle Files aus, die entweder Max oder Moritz UND 1947
+enthalten.
+</p>
+<p>
+Ein Return zu NASSYS und das Abspeichern der (evt. geänderten Datei)
+sind ebenfalls vorgesehen. Beim Speichern wird zweckmäßigerweise das
+Programm mit abgespeichert. Auf die paar Bytes kommt es auch nicht mehr
+an, und man spart sich so getrenntes Laden von Programm und Datei. Die
+Dateiparameter, wie Dateianfang - und Ende, Speicherende etc. werden
+ebenfalls auf Cassette festgehalten.
+</p>
+<h4>
+<u>Was das Programm noch können soll:</u>
+</h4>
+<p>
+Bisher ging es nur um die Verwaltung und das Aufsuchen von Files, aber
+nicht um eine wirkliche Verarbeitung der Daten. Es müßten also Routinen
+eingebaut werden, die Daten innerhalb eines Files berechnen,
+manipulieren, ablegen. Ebenso müßten Daten aller Files rechnerisch
+verglichen werden können,
+</p>
+
+<?php columnEnd(2); ?>

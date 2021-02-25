@@ -1,0 +1,103 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Einfache EPROM-<br>
+Erweiterung
+</h1>
+<h3>
+von Günter Brust
+</h3>
+<p>
+Auf einfache Weise läßt sich der PROM-Speicherbereich der Speicherkarte
+durch Austausch der EPROMs
+<?php externalLink("2708"); ?>
+durch solche vom Typ
+<?php externalLink("2716"); ?>
+vergrößern.
+Die erforderlichen Änderungen an der Speicherkarte sind minimal und
+lassen sich leicht durchführen.
+</p>
+<p>
+Als Vorteil ergeben sich doppelter
+Speicherplatz &ndash; 8&nbsp;k gegenüber vorher 4&nbsp;k &ndash; und zusätzlich ein
+geringerer Strombedarf von 2,1 Watt gegenüber 6 Watt. Folgende
+funktionellen Änderungen sind durchzuführen:
+</p>
+<p>
+1. Stromversorgung der EPROMs
+</p>
+<p>
+2. Zuführung der Adresßleitung A10 an die EPROMs
+</p>
+<p>
+3. Umschaltung des EPROM- Auswahldekoders auf die Adreßleitungen A11
+und A12
+</p>
+<h4>
+EPROM Adressierung:
+</h4>
+<p>
+Wie bisher ist auch jetzt der EPROM- Block nur zusammenhängend
+adressierbar (8&nbsp;k-Block). Mit der Verbindung &quot;P5&quot;
+(ROM-Select) sind jetzt jedoch zwei zusammenliegende 4&nbsp;k- Ausgänge des
+Dekoders auszuwerten.
+</p>
+<p>
+Beispiel: Gewünschte EPROM- Adressen:
+</p>
+<p>
+1. EPROM A000-A7FF Dekoderanschluß Nr.15<br>
+2. EPROM A800-AFFF<br>
+<br>
+3. EPROM B000-B7FF<br>
+4. EPROM B800-BFFF Dekoderanschluß Nr.16
+</p>
+<p>
+Verbindung also P5 mit Ausgang 15 und 16.
+</p>
+<p>
+Erforderliche Änderungen an der RAM- Karte im einzelnen:
+</p>
+<p>
+1. Auf der Lötseite ist am IC27, Pin21 die Verbindung zur -5V
+Stromversorgung zu trennen und Pin21 mit Pin24 zu verbinden (+5V
+Stromversorgung).(Bild 1).
+</p>
+<p>
+2. Auf der Bauteileseite ist am IC27, Pin19 die Verbindung zur +12V
+Versorgung zu trennen und eine neue Verbindung zwischen Pin19 und der
+Kartenanschlußleiste Nr. 40 herzustellen (Adreßleitung A10). (Bild 2).
+</p>
+<p>
+3. Auf der Lötseite sind die Anschlüsse, die zum IC24, Pin2 und Pin3
+führen, zu trennen und neu nach Bild 1 zu verschalten. Eine neue
+Verbindung ist zwischen IC24, Pin3 und IC23, Pin13 herzustellen.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<h4>
+Literatur:
+</h4>
+<p>
+NASCOM Memory Card Functional Specification PF/003, Issue No.2
+</p>
+<p>
+Falls es NASCOM Anwender gibt, welche sich nicht trauen, ihre RAM-
+Karte umzubauen, übernehme ich gerne diese Arbeit einschließlich der
+Programmierung von 2716 EPROMs nach vorhandenen 2708.
+</p>
+<p>
+Umbau einschließlich 1x2716 = 55.&ndash;&nbsp;DM, mit 2x2716= 85.&ndash;DM.
+</p>
+<p>
+Ich hoffe, damit der NASCOM- Gemeinde auch &rsquo;mal etwas Gutes tun zu
+können.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-3.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

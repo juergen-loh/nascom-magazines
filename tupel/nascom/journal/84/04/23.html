@@ -1,0 +1,69 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+ZEEMD
+</h1>
+<h3>
+von HELMUT EMMELMANN
+</h3>
+<h4>
+Zeap &ndash; Emdos Anpassung :
+</h4>
+<p>
+Mit dem folgenden Programm werden Zeap und Emdos gekoppelt, sodass
+Quellcodes ohne Probleme geladen und abgespeichert werden koennen.
+Ausserdem ist es moeglich. Assemblertexte in Textfiles zu speichern
+bzw. von Textfiles einzulesen. Hiermit koennen zum Beispiel
+Assemblertexte gemischt werden. Die Textfiles koennen auch direkt unter
+<?php externalLink("CP/M","Cp/m"); ?>
+weiterverarbeitet werden.
+</p>
+<p>
+Erzeugen eines der Datei EMDZEAP, die den gekoppelten Zeap enthaelt :
+</p>
+<p>
+- ZEAP nach D000 laden
+</p>
+<p>
+- Eingeben und Assemblieren des Kopplungsprogramms
+</p>
+<p>
+- Aenderungen 44 00 E0 nach D066 im Zeap vornehmen
+</p>
+<p>
+- EMDZEAP mit S EMDZEAP D000 E0A0 D000 2 abspeichern
+</p>
+<h4>
+Bedienung :
+</h4>
+<p>
+Emdzeap kennt anstelle des J-Kommandos das D-Kommando. Mittels D
+gelangt man direkt in den Emdos-Eingabemodus. Es können beliebige
+Emdos-Kommandos eingegeben werden. Zum Abspeichern des Quellcodes
+genuegt die Eingabe &quot;&nbsp;S Name&nbsp;&quot; ohne Adressangaben, da diese
+intern gespeichert sind. Mit dem Emdos-O-Kommando kann dann ein
+Ausgabetextfile eroeffnet werden. Das Zeap U-Kommando schreibt dann den
+Quellcode, die Option 4 die Programmliste in diese Datei. Achtung! Die
+Datei wird erst beim naechsten Emdos-Aufruf (z.B. D-Kommando)
+endgueltig auf Diskette abgelegt. Analog koennen mit dem Emods-I-
+Kommando Textfiles eingelesen werden. Der Emdos- Eingabemodus kann mit
+I,O,M bzw. N oder der Eingabe des Namens eines Assemlerquellcodes (der
+dann geladen wird) wieder verlassen werden. Anschliessend kann man mit
+beliebigen Zeap-Kommandos weiterarbeiten. Achtung! Falls man
+Quellcodes, die von einer anderen Zeap-Pufferadresse abgespeichert
+wurden, laden moechte, ist das Kommando &quot;L Name
+neue-Pufferadresse&quot; zu verwenden&nbsp;!.
+</p>
+<p>
+(Zum Gebrauch mit dem Pheas des CLD-Soft-Controllers muss ein
+Fehler im Pheas korrigiert werden (IY wird zerstoert) :
+</p>
+<pre class="donthyphenate">
+AB48  &lt;- C3 00 AE . (Pheas + 1)
+AE00  &lt;- FD E5 CD 8 AE FD El C9
+AE08  &lt;- B7 CA 61 AB C3 4B ABB )
+</pre>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-2.jpeg"); ?>
+<?php columnEnd(2); ?>

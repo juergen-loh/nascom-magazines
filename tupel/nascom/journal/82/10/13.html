@@ -1,0 +1,96 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+2732/64 &ndash; EPROM Programmer 1
+</h1>
+<h3>
+von B. Schuhmacher
+</h3>
+<p>
+Die EPROM&rsquo;s vom Typ
+<?php externalLink("2732"); ?>
+und
+<?php externalLink("2764"); ?>
+werden inzwischen auch für den
+Hobbybereich immer interessanter. Aus diesem Grunde soll hier ein
+EPROM-Programmer für diese Typen beschrieben werden, der mit geringem
+Hardwareaufwand und unter 1K Software auskommt.
+</p>
+<p>
+Da nicht jeder über ein teures Datenbuch verfügt oder für die
+vorgenannten EPROM-Typen anschaffen möchte, stelle ich zunächst die
+charakteristischen technischen Daten vor. Die Pinbelegungen,
+Zeitdiagramme und Kurzbeschreibungen für Auslesen und Programmieren
+erlauben eventuell bereits vorhandene
+<?php externalLink("2708","",""); ?>/
+<?php externalLink("2716","",""); ?>-EPROM-Programmer
+selbst zu modifizieren. 2732/2764-EPROM&rsquo;s sind dazu
+&quot;ausreichend&quot; kompatibel.
+</p>
+<h4>
+KURZBESCHREIBUNG EPROM 2732
+</h4>
+<h4>
+Pinbelegung
+</h4>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-13-1.jpeg"); ?>
+<h4>
+Charakteristische technische Daten
+</h4>
+<pre class="donthyphenate">
+Organisation................4K x 8
+Versorgungsspannung Vcc......5V+-5%
+Versorgungsspannung Vpp......25V+-1V
+Stromaufnahme Vcc(aktiv).....85mA typ.
+Stromaufnahme Vcc(standby)...15mA typ.
+Stromaufnahme Vpp............30mA max.
+Verlustleistung aktiv........525mW max.
+Verlustleistung standby......132mW max.
+</pre>
+<p>
+Die Abstufungen hinsichtlich Verzögerungszeiten, Gehäuseformen,
+Temperaturgrenzdaten usw. weichen nicht wesentlich von den bei
+2708/2716-EPROM&rsquo;s bekannten Werten ab.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-13-2.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Die vorliegende Betriebsartenübersicht beschreibt den Zustand der
+Steuereingänge CE und OE/Vpp in der jeweils erwünschten Betriebsart.
+</p>
+<h4>
+Betriebsart &quot;Programmieren&quot; des 2732
+</h4>
+<p>
+Wenn Adressen und Daten stabil anliegen, wird zuerst der Eingang OE/Vpp
+auf 25V vorbereitet. Durch einen Low-Impuls von ca. 50ms auf den
+Eingang CE erfolgt dann die Programmierung der eingestellten Adresse,
+wahlweise sequentiell oder einzeln. Mit OE/Vpp und CE auf Low-Potential
+kann eine Prog.-Kontrolle durchgeführt
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-3.jpeg"); ?>
+</p>
+<p>
+werden. Die Grenzzeiten aufeinander folgender Signale sind im
+Zeitdiagramm eingetragen. Das Löschen des EPROM&rsquo;s erfolgt wie von den
+Typen 2708/2716 her bekannt.
+</p>
+<h4>
+Betriebsart &quot;Lesen&quot; des 2732
+</h4>
+<p>
+Im Zeitdiagramm sind die Bedingungen für die Chip-Enable- und
+Output-Enable-Eingänge (CE und OE) sowie max. Verzögerungszeiten für
+stabile Daten am Ausgang eingetragen, im Grunde nichts Neues.
+</p>
+<p>
+(Fortsetzung im <a href="../../../../83/02/24/text/#article1">80-Bus-Journal 1/83</a>)
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-4.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,118 @@
+<?php columnStartJustify(1); ?>
+<h4 id="article1">
+Integer Pascal Compiler für den Nascom
+</h4>
+
+<p>
+Mittlerweile gibt es zahlreiche Basic Interpreter für die Nascom
+Computer,hier wird zum ersten Mal ein Pascal Compiler vorgestellt.
+</p>
+<p>
+Implementiert ist praktisch das gesamte Standart Pascal, mit einer
+einzigen Ausnahme, wie der Name beinhaltet kann der Compiler nur ganze
+Zahlen im Bereich -32767 bis +32767 verarbeiten (HEX-Integers zwischen
+0000 und FFFF&rsquo;H).
+</p>
+<p>
+Trotz dieser Einschränkung eignet sich dieses Pascal aber besonders gut
+zum Lernen (bis es mit
+<?php externalLink("CP/M"); ?>
+auf dem Nascom die großen Compiler gibt).
+Der niedrige Preis ermöglicht es sparsamen Computerfans auch ohne
+Anschaffung eines Floppy-Systems diese schnelle Alternative zu BASIC zu
+benutzen. Bei 4MHz CPU Takt besiegte dieses Pascal sogar das
+APPLE-PASCAL&nbsp;!
+</p>
+<p>
+Das gesamte Programmpacket ist genau 8,5K lang,benötigt mindestens 16K
+und läuft auf NASSYS1. Es besteht aus einem Command Processor, einem
+Editor, einem 2-pass Compiler und einigen Runtime Routinen.Insgesamt
+gibt es 27 (!) Fehlermeldungen die aus Speicherplatzgründen wie bei
+ZEAP nummerncodiert ausgegeben werden. Die Arbeit mit dem Editor wird
+durch Auto Repeat sehr komfortabel.
+</p>
+<p>
+Im Vergleich zum Standart Pascal gibt es mehrere Erweiterungen,
+z.B. &quot;PEEK&quot; und &quot;POKE&quot;, SHL und SHR (shiftbefehle),
+ELSE und andere. Bei Ein- und Ausgabe kann zwischen hexadezimal,dezimal
+und ASCII gewählt werden.
+</p>
+<p>
+Der Editor bietet folgende Kommandos :
+</p>
+
+<table class="donthyphenate">
+	<tr>
+		<td><p>AMMMM DATA</p></td>
+		<td>:</td>
+		<td><p>Füge Souce Zeile hinzu</p></td>
+	</tr>
+	<tr>
+		<td><p>B</p></td>
+		<td>:</td>
+		<td><p>Gehe zum Source Anfang</p></td>
+	</tr>
+	<tr>
+		<td><p>C</p></td>
+		<td>:</td>
+		<td><p>überprüfe Syntax</p></td>
+	</tr>
+	<tr>
+		<td><p>CMMMM</p></td>
+		<td>:</td>
+		<td><p>Compiliere und lege Objekt ab Adresse MMMM ab</p></td>
+	</tr>
+	<tr>
+		<td><p>DMMMM</p></td>
+		<td>:</td>
+		<td><p>Lösche Zeile Nummer MMMM</p></td>
+	</tr>
+	<tr>
+		<td><p>P</p></td>
+		<td>:</td>
+		<td><p>Gebe Source Text auf Printer aus</p></td>
+	</tr>
+	<tr>
+		<td><p>RNNNN DATA</p></td>
+		<td>:</td>
+		<td><p>Ersetze oder verbessere Zeile MMMM</p></td>
+	</tr>
+	<tr>
+		<td><p>S</p></td>
+		<td>:</td>
+		<td><p>Schreibe Source auf Tanband</p></td>
+	</tr>
+	<tr>
+		<td><p>T</p></td>
+		<td>:</td>
+		<td><p>Springe zu NASSYS</p></td>
+	</tr>
+	<tr>
+		<td><p>Z</p></td>
+		<td>:</td>
+		<td><p>Lösche Source Buffer</p></td>
+	</tr>
+	<tr>
+		<td><p>LMMMM</p></td>
+		<td>:</td>
+		<td><p>gebe Zeile MMMM auf Bildschirm aus</p></td>
+	</tr>
+	<tr>
+		<td><p>NMMMM</p></td>
+		<td><p>:</p></td>
+		<td><p>nummeriere mit Abstand MMMM durch</p></td>
+	</tr>
+</table>
+<p>
+Die nachfolgenden Diagramme erleutern die verfügbare Syntax und den
+Source Aufbau.Das abgedruckte Beispielprogramm liest Zahlen in ein
+ARRAY ein, sortiert sie nach der &quot;Qicksort&quot;-Methode und gibt
+sie in Achter-Gruppen aus.man beachte besonders die rekursiven Aufrufe
+!!.
+</p>
+<p>
+In den Diagrammen brauchen rechteckig eingerahmte Punkte eine weitere
+Definition, runde keine mehr.
+</p>
+
+<?php columnEnd(1); ?>

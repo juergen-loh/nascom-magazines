@@ -1,0 +1,55 @@
+<?php columnStart(2); ?>
+
+<ol start=5>
+
+<li>Bei Wiedergabe wird der Name des gewünschten Programmes
+eingegeben (1 Buchstabe), wenn das Programm &quot;WAS?&quot;
+fragt. Dieser Name wird auf dem Band gesucht und, falls gefunden,
+wird &quot;X=OK&quot; ausgegeben. Wird ein Programmanfang mit
+einem anderen Namen gefunden, wird &quot;X?&quot; ausgegeben.
+Liegt ein Einlesefehler vor, erscheint &quot;::?&quot;.</li>
+
+<li>Weiterhin wird bei Wiedergabe die 1. Adresse angezeigt (bei
+BASIC normal 30D6) und dann alle volle 256 Byte (z.B. 3100/3200
+usw.) bis Programmende. Dort wird hinter der vorletzt gefundenen
+Adresse die zuletzt gefundene angezeigt. (z.B. 3800/3864&gt;_).
+Das Ausrufezeichen besagt, daß die Bytes im letzten Block fehlerlos
+gelesen wurden. War jedoch irgendwo ein Einlesefehler, werden
+ein oder mehrere &quot;?&quot; hinter der Adresse angezeigt, wo
+der Fehler auftrat. Man läßt dann das Band zurücklaufen und
+startet es irgendwo wieder. Es wird jetzt für jedes eingelesene
+Byte ein &quot;?&quot; geschrieben, bis wieder eine gültige
+Adresse gefunden wird. Ab hier wird dann das Programm neu geladen.</li>
+
+<li>Die Datenübertragung ist beendet, wenn das Ladeprogramm
+drei aufeinander folgende Bytes 00 findet, denn diese setzt der
+BASIC-Interpreter an das Programmende. Will man das ändern, weil
+z.B. ein Maschinenprogramm mit vielen NOPs übertragen werden
+soll, so müssen bei Adresse 0D15 (für Aufnahme) und 0D85 (für
+Wiedergabe) die Bytes 00 in den gewünschten Wert abgeändert
+werden. Die Werte FF und 01 können jedoch nicht verwendet
+werden. Nicht vergessen: In dem Maschinenprogramm, das
+gespeichert werden soll, muss die neue &quot;Ende-Kennung&quot;
+dann drei mal eingetragen werden!</li>
+
+<li>Die Übertragungsgeschwindigkeit kann nochmal um ca. 10%
+gesteigert werden, wenn man in den Speicherzellen 0D2A bis 0D2C
+den Delay-Befehl löscht. Die Fehlerquote steigt dann allerdings
+an. Hat man einen Recorder mit schlechten Laufeigenschaften, dann
+kann man bei 0D2D noch einen weiteren Delay-Befehl einfügen. (CD
+35 00).<br><br></li>
+
+</ol>
+
+<?php columnChange(2); ?>
+<div style="text-align:center">
+<p>
+Programmliste für Ladeprogramm:
+</p>
+
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-15-1.gif"); ?>
+</p>
+
+</div>
+<?php columnEnd(2); ?>

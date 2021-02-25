@@ -1,0 +1,109 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+stehen dem Benutzer zehn zusätzliche Befehle zur Verfügung, um die
+Möglichkeiten des Betriebssystems zu erweitern.
+</p>
+<p>
+Die Anfangsadresse des
+DEBUG ist #C000. Es benötigt den Disassembler bei #C400.
+</p>
+<p>
+Der Bereich
+von 0E00 bis 0EFF wird von Disassembler und DEBUG als Arbeitsspeicher
+benötigt und sollte vom Anwender nicht benutzt werden, wenn DEBUG läuft.
+</p>
+<h4 id="article2">
+BASIC TOOLKIT
+</h4>
+<p>
+Das TOOLKIT ist eine Hilfe beim Erstellen von BASIC-Programmen, Nach
+dem Start des TOOLKIT erscheint auf dem Bildschirm das Menue. Sie
+können nun die gewünschte Funktion auswählen. Folgende Befehle können
+gewählt werden:
+</p>
+<p>
+RENUMBER Zeichennummern des Programms können verändert werden.
+</p>
+<p>
+STEP<br>
+BASIC-Programme können schrittweise abgearbeitet werden. Bestimmte
+Variable werden angezeigt.
+</p>
+<p>
+FIND<br>
+Ein String (bis max.48 Zeichen) wird im Programmtext gesucht.
+</p>
+<p>
+HELP<br>
+Nach Eingabe von Help wird die fehlerhafte Zeile angezeigt, und der
+Cursor zeigt auf den Befehl, der den Fehler verursacht hat.
+</p>
+<p>
+HEX<br>
+Bis zu 10 Hex-Zahlen werden in Dezimalzahlen umgewandelt, Mit der
+Editierfunktion kann man sie leicht in ein DATA-Statement übernehmen.
+</p>
+<p>
+INKEY &amp; RINK<br>
+Dies sind keine zusätzlichen Befehle, sondern Unterprogramme, die mit
+USR aufgerufen werden können. INKEY fragt die Tastatur ab, bis eine
+Taste gedrückt wurde. RINK fragt die Tastatur einmal ab und übergibt
+bei gedrückter Taste den ASCII-Wert, andernfalls 0.
+</p>
+<p>
+KEYBOARD REPEAT<br>
+Beim Start des TOOLKIT wird diese Funktion automatisch eingeschaltet.
+(Mit NASSYS&nbsp;3 ist sie nicht mehr nötig).
+</p>
+<p>
+MON<br>
+Dieser Befehl bewirkt einen Rücksprung zu NAS-SYS.
+</p>
+<p>
+APPEND<br>
+Mit diesm Befehl kann ein BASIC-Programm an ein bereits im Speicher
+befindliches angehängt werden.
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+AUTO LINE NUMBER<br>
+Hiermit werden automatisch Zeilennummern erzeugt. Die Parameter mm
+(Beginn) und nn (Zeilenabstand) können mit eingegeben werden.
+</p>
+<p>
+DELETE<br>
+Der Befehl löscht die Programmzeilen von mm bis nn.
+</p>
+<p>
+DUMP<br>
+Mit DUMP werden numerische und String-Variablen (außer
+Variablenfeldern) aufgelistet.
+</p>
+<p>
+Das TOOLKIT stellt auch ein
+Unterprogramm für Drucker mit Handshake zur Verfügung. Seine
+Startadresse ist beliebig, sollte aber B000 sein, dann kann man es mit
+der &quot;JUMP on RESET-Funktion&quot; des NASCOM&nbsp;2 aufrufen.
+</p>
+<p>
+Sowohl
+DEBUG wie auch TOOLKIT bieten also eine Menge von Komfort für die
+Erstellung und vor allem für das &quot;Debugging&quot; von Programmen.
+Vielleicht sind diese &quot;alten&quot; Programme dadurch für viele
+aktuell.
+</p>
+<h1 id="article1">
+WAIT-ZYKLEN
+</h1>
+<h3>
+v. Stefan Bürger
+</h3>
+<p>
+Folgende Schaltung zeigt einen SLP Slow Memory Controller. Bei /WREQ
+auf GND wird durch MREQ eine einstellbare (1-7) Anzahl von Wait-Zyklen
+zugefügt.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

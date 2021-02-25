@@ -1,0 +1,102 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+werden. Zum Modify Programm ist noch anzumerken, daß man dieses durch
+Drücken der &quot;&nbsp;&amp;&nbsp;&quot; Taste verlassen kann.
+</p>
+<p>
+Das eigentliche Formatierprogramm läuft nun folgendermaßen ab: Nach
+Start durch F + Parameter lädt das Programm den Beginn des
+Textspeichers in HL und zählt die eingegebene Zeichenanzahl ab. HL
+zeigt somit auf den Beginn der nächsten Speicherzeile.
+</p>
+<p>
+Nun wird die
+Zeile auf den Bildschirm übertragen, wobei darauf geachtet wird, daß
+kein Text in den Bildschirmrand gespeichert wird. Es können also
+beliebig lange Zeilen formatiert werden. DE zeigt dabei auf das letzte
+Zeichen +1&nbsp;.
+</p>
+<p>
+Nun wird das letzte Zeichen untersucht. Wenn es ein Trennungszeichen
+ist, kann die Zeile gedruckt werden. Wird aber ein Space gefunden, so
+muß dieser in die Zeile eingefügt werden, damit der rechte Rand
+ausgeglichen wird. Ist das letzte Zeichen weder Space noch
+Trennungszeichen, dann nimmt das Programm an, es handelt sich um einen
+Buchstaben. In HL wird nun getestet, ob ein Space oder Trennzeichen auf
+das Wort folgt. Ist dies der Fall, so paßt das Wort in die Zeile, und
+diese wird ausgedruckt.
+</p>
+<p>
+Falls das Wort aber länger ist, wird zunächst
+festgestellt, ob sich der Wortteil in der Zeile durch Spaces ersetzen
+läßt. Sind in der Zeile nicht genügend Spaces zum Einfügen vorhanden,
+so wird der Bediener zu Hilfe gerufen. Das Zeilenende wird dabei durch
+einen Pfeil gekennzeichnet, und das letzte Wort wird über die Zeile
+hinaus dargestellt. Durch Drücken der BACKSPACE Taste schreitet man im
+Wort nun so weit zurück, bis ein trennbarer Wortteil übrig bleibt. Dann
+gibt man einen Trennungsstrich ein und startet mit NEW LINE. Sollte
+jetzt immer noch ein Space am Zeilenende stehen, so kann man diesen
+durch erneutes NL einfügen.
+</p>
+<p>
+Nur ein Fall bringt diesen Programmteil zum Zusammenbruch: Wenn in
+einer Zeile nur ein einziges (langes) Wort steht, findet das Programm
+keine Spaces zum Einfügen und &ndash; bleibt in einer Schleife hängen. Dieser
+Sonderfall tritt aber normalerweise nur bei sehr kurzen Zeilenformaten
+auf. Die Erklärungen zur Handhabung klingen komplizierter als sie sind.
+Wenn Sie das Programm einmal laufen haben, merken Sie sehr schnell, wie
+das Prinzip funktioniert.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Sehr viel eleganter wäre natürlich eine automatische Worttrennung
+gewesen, wie sie anscheinend auch schon angeboten wird. Hier konnte ich
+aber keine Lösung finden. Das liegt nicht an der Programmiertechnik
+sondern an der Rechtschreibung.Es wäre bestimmt nicht schwierig
+gewesen, eine Routine zu schreiben, die die grundsätzliche Worttrennung
+vornimmt.(Bei zwei Konsonanten Trennung der beiden, bei dreien Trennung
+zwei/eins oder Sonderregelung ck, sp, st etc. Beispiele: Af-fe, Punk-te
+; Mük-ke etc.) Was mir Schwierigkeiten bereitete, waren Wortpaare wie
+&quot;Wellen-gang/ lang-atmig&quot;, &quot;Gesangs-partie
+/Breiten-sport&quot; und so weiter. Woher soll nun ein Programm wissen,
+wann -wie in den Beispielen- ng oder sp getrennt werden und wann nicht?
+Vielleicht hat da ein Leser eine Idee, wie man das Problem lösen
+könnte. Bis dahin funktioniert die manuelle Trennung einwandfrei, zumal
+sie relativ selten in Anspruch genommen wird; meist kommt der Computer
+alleine mit den Zeilen zurecht.
+</p>
+<p>
+Der detaillierte Programmablauf kann
+dem Assemblerlisting entnommen werden. Das Programm ist zunächst für T4
+geschrieben, kann aber sehr leicht für T2 geändert werden. Da dieser
+Monitor kein &quot;Cursor Home&quot; kennt, muß zum
+&quot;Rückwärtslesen&quot; im Modify Betrieb eine andere Taste
+verwendet werden. Dazu wird die Zelle 0E66 von 1C zu 25 geändert. Dann
+kann man die Prozent Taste verwenden.
+</p>
+<p>
+Auf der Adresse 0F3B ist noch
+Platz für den Aufruf einer Verzögerung. Diese ist aber nur bei
+automatischer Steuerung des Cassetten Motors nötig. Falls Sie selbst
+keine Subroutine dieser Art zur Verfügung haben, können wir eine
+veröffentlichen. Denken Sie daran, daß Sie beim Einschicken von
+Beiträgen ans Journal den Text mit dem Eingabeprogramm auf Cassette
+speichern können. Wir sind sehr dankbar, wenn wir Texte nicht noch
+einmal abtippen müssen. Achten Sie dann auch bitte darauf, Groß-und
+Kleinbuchstaben zu verwenden&nbsp;.
+</p>
+<p>
+Zum Verschieben des Programmes sind wieder die Adressen unterstrichen.
+Außerdem ist die Relocate Information ab 0F89 angehängt. Achten Sie
+auch auf den Beginn des Textspeichers in den Eingabeprogrammen bzw. im
+Formatierprogramm.
+</p>
+<p>
+Anmerkung zu &quot;INPUT&quot;: Das Programm wird mit @ verlassen und
+zeigt damit im Speicher das Textende an.
+</p>
+
+<?php columnEnd(2); ?>

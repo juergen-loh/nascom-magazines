@@ -1,0 +1,91 @@
+<?php columnStart(2, 2); ?>
+
+<p>
+eine zusätzliche Verschiebung des Programms im Speicher erreicht,
+ohne daß die Relokalisierung davon beeinflußt wird. Dies ist z.B.
+sinnvoll, wenn das Programm noch nicht in den Bereich geladen
+werden kann, in dem es später laufen soll, etwa in den Bereich,
+den der Lader selbst belegt. Wird keine zusätzliche Verschiebung
+gewünscht, muß als erster Wert 0000 eingegeben werden. Die Eingabe
+der beiden Werte wird durch NEW LINE abgeschlossen (INLINE-Routine). Es
+erscheint nun eine weiter Abfrage: C/M?
+</p>
+<p>
+C= Einlegen von Cassette, M= Manuelle Eingabe über die Tastatur.
+</p>
+<p>
+Die Eingabe einer Zeile muß nun mit NEW LINE und &quot;;&quot;
+beginnen. Jeder Eingabefehler (unzulässiges Zeichen,
+Prüfsummenfehler,etc.) wird durch eine Error-Meldung angezeigt. Es
+folgt die gegenwärtige Ladeadresse und die Abfrage: NZ?
+</p>
+<p>
+Antwortet der Benutzer mit &quot;N&quot;, so kann die Zeile neu
+(oder auch eine andere Zeile) geladen werden. Jede andere Eingabe
+führt zum Rücksprung ins Betriebssystem. Ein Programm wird durch
+Eingabe von 00000000 abgeschlossen. Auch dann erscheint die Abfrage:
+NZ?
+</p>
+<p>
+Tritt beim Einladen von einer Cassette ein Lesefehler auf, so folgt
+ebenfalls die Error-Meldung, die Anzeige der letzten Ladeadresse und
+sofort der Rücksprung ins Betriebssystem.
+</p>
+<h2>
+Der Relocator
+</h2>
+<p>
+Wer den Lader in Betrieb genommen hat, kann nun den Relokator an
+eine beliebige Speicheradresse laden. Er belegt wie der Lader
+368Bytes und wird ebenfalls auf der Anfangsadresse gestartet. Er
+meldet sich mit: INP.A/E/T und einem blinkenden Cursor in der nächsten
+Zeile. Es müssen 3 Parameter eingegeben werden: A=Anfangsadresse des
+Programms, von dem eine relokalisierbare File erzeugt werden soll,
+E=Endadresse +1&nbsp;, wobei nur Abstände zwischen A und E zugelassen sind,
+die ein Vielfaches von 8 betragen, T=Textpufferstartadresse. Die
+Eingabe der Parameter erfolgt mit der INLINE-Routine und wird mit NEW
+LINE abgeschlossen. Es wird nun die erste Zeile (Adresse + 8
+Datenbytes) des Programms im Tabulate-Format angezeigt. In der nächsten
+Zeile erscheint die Abfrage: RELOC? mit blinkendem
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+Cursor. Das Programm wartet nun auf die Eingabe der
+Relokalisierungsinformation. Jeweils das erste Byte einer zu
+relokalisierenden Adresse (CALL, JP und 16-Bit-Ladebefehle) muß als
+Zahl eingegeben werden, z.B. &quot;1&quot; für das erste Byte von
+links, &quot;2&quot; für das zweite etc. bis 8. Es können natürlich
+mehere Zahlen eingegeben werden, doch niemals zwei aufeinander
+folgende. Dies führt zwar zu keiner Fehlermeldung beim Relokator,
+zerstört aber die Programmfile, indem sie unübersetzbar wird. Überhaupt
+muß darauf aufmerksam gemacht werden, daß keinerlei Schutz gegen
+falsche Eingaben in das Programm eingebaut ist. Wird ein falsches
+Zeichen eingegeben (nicht 1 - 8, NEW LINE oder eins der unten
+beschriebenen Reset-Zeichen), so muß das Programm mit Reset verlassen
+und neu gestartet werden. Es gibt allerdings die Möglichkeit, falsch
+eingegebene Zahlenwerte (1 - 8) wieder zu löschen, doch keinesfalls mit
+BACKSPACE (!). Es muß jeweils ein zu dem Zahlenwert
+&quot;komplementärer&quot; Wert eingegeben werden und zwar
+&quot;9&quot;, um die Eingabe &quot;1&quot; zu löschen, &quot;:&quot;
+für &quot;2&quot;, &quot;;&quot; für &quot;3&quot; etc. (Man nehme
+eine ASCII-Tabelle zu Hilfe). Das hört sich aber alles komplizierter an
+als es ist. Man kann in wenigen Minuten ein mehrere hundert Bytes
+langes Programm in ein relokalisierbares Format verwandeln.
+</p>
+<p>
+Ist die Eingabe der Relokalisierungsinformation abgeschlossen oder wird
+keine Relokalisierung in der angezeigten Zeile benötigt, so wird NEW
+LINE eingegeben. Es erscheint dann die nächste Zeile im
+Tabulate-Format, und das geht so weiter bis die Endadresse erreicht
+ist. Dann erscheint die Abschlußzeile: 0000000000. Im Textspeicher
+befindet sich nun die relokalisierbare File (die einzelnen Zeilen
+waren bei jeder Eingabe von NEW LINE auch schon auf dem Bildschirm
+sichtbar). Auf die Abfrage:W/N mit blinkendem Cursor kann man sich nun
+entscheiden: W=Write, die File wird auf Cassette geladen, N=NAS-SYS,
+das Programm springt in den Monitor zurück, wobei die letzte Adresse
+des Textpuffers angezeigt wird. Man kann nun also auch diesen Wert und
+die Startadresse des Textpuffers einem Druckerprogramm übergeben und
+den relokalisierbaren Objektcode ausdrucken lassen.
+</p>
+
+<?php columnEnd(2); ?>

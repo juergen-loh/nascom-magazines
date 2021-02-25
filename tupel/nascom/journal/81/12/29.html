@@ -1,0 +1,89 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+16-KANAL A/D-Wandler
+</h1>
+<h3>
+von Peter Bentz
+</h3>
+<p>
+Das Herz dieser Schaltung ist der IC
+<?php externalLink("MK50816","MK-50816"); ?>
+von Mostek (Preis : ca. 30&nbsp;DM), der einen 8-Bit Ana&shy;log/Digital-Wandler und einen
+16-Kanal-Ana&shy;log&shy;mul&shy;ti&shy;ple&shy;xer enthält. Die Analogeingänge sind mit je
+einem Operationsverstärker gepuffert, die Digitalausgänge und die
+Steuereingänge sind direkt mit dem NASCOM über 2 PIO-Ports verbunden.
+</p>
+<p>
+Der Umwandlungsvorgang läuft nun so ab, daß zuerst über Bit 0 bis 3 des
+Ports A die Adresse des gewünschten Analogeinganges an den A/D-Wandler
+übergeben wird. Dann wird ALE (Adress Latch Enable) und START (Bit 5
+und 6 von Port A) auf logisch High gesetzt. Dadurch wird die angelegte
+Adresse in den Decoder des Multiplexers übernommen und der
+entsprechende Kanal wird durchgeschaltet, so daß die zu messende
+Spannung am COMMON-Ausgang des Multiplexers und am COMPARATOR-Eingang
+des Wandlers anliegt.
+</p>
+<p>
+Wenn nun START wieder auf Low gesetzt wird, läuft
+der eigentliche Wandlungsvorgang an und gleichzeitig geht der
+EOC-Ausgang (End of Conversion) auf Low, bis die Umwandlung
+abgeschlossen ist. In einer Abfrageschleife wird abgewartet, bis der
+EOC-Ausgang wieder auf High geht. Wenn nun der TRS-Eingang
+(Three-State) auf High gesetzt wird, werden die Datenausgänge vom
+hochohmigen in den aktiven Zustand gebracht, und die Daten können über
+den Port B der PIO in den NASCOM übernommen werden.
+</p>
+<p>
+Man kann noch zwei Ausgänge des Ports A einsparen, wenn man TRS fest an
++5 Volt legt, d.h. die Datenausgänge des A/D-Wandlers sind immer aktiv,
+und wenn man ALE und START miteinander verbindet und mit nur einem
+Ausgang von Port A gleichzeitig ansteuert.
+</p>
+<p>
+Der A/D-Wandler verfügt über einen internen Taktgenerator, der in Gang
+gesetzt wird, wenn man den CLOCK-Eingang auf Gnd legt, was in der hier
+beschriebenen Schaltung der Einfachheit halber auch gemacht wurde. Laut
+Datenblatt kann man jedoch einen externen Taktgenerator von ca. 640 kHz
+an den CLOCK-Eingang anschließen und kann damit die eigentliche
+Umwandlungszeit von ca. 150&micro;S auf 108&micro;S verkürzen.
+</p>
+<p>
+Zwischen die Ausgänge des A/D-Wandlers und
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+die PIO sind Widerstände eingefügt, um in dem Fall, daß die
+PIO-Eingänge versehentlich auf Datenausgabe gesetzt wurden, einen
+Kurzschluß zu verhindern.
+</p>
+<p>
+An die Referenzspannungseingänge REF+ und REF- wird die höchste und die
+niederste zu messende Spannung angelegt, es sind jedoch nur Spannungen
+zwischen 0 und +5 Volt zulässig. Will man z.B. ohne die
+Eingangsverstärker messen, können die Referenzspannungseingänge direkt
+an Gnd und Vcc gelegt werden und dann kann man den gesamten Messbereich
+von 0 bis +5 Volt erfassen. Die vorgeschalteten Operationsverstärker
+können zwar noch sehr hochohmige Spannungsquellen erfassen, sind aber
+nicht über den gesamten Spannungsbereich linear. Deshalb kann man nur
+den linearen Übrtragungsbereich von ca. 1 bis 4 Volt benützen und dazu
+kann man mit den beiden Potentiometern die Referenzspannungen
+einstellen.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-29-1.jpeg"); ?>
+<p>
+Die Analoganschlüsse erfolgen über 16 Schraubklemmen, zusätzlich können
+noch Schraubklemmen für Gnd und Vcc eingelötet werden&nbsp;. Geätzte
+Platinen (100 x 160 mm) können gegen Unkostenerstattung gerne abgegeben
+werden.
+</p>
+<h4 style="text-align:center">
+Unterprogramm zum Erfassen<br>
+eines Analog-Wertes
+</h4>
+<p>
+Das Register A enthält vor dem Aufruf die Adresse des Kanales, nach dem
+Aufruf den
+</p>
+
+<?php columnEnd(2); ?>

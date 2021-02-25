@@ -1,0 +1,141 @@
+<?php boxStart("R"); ?>
+<h1 id="article1">
+Hisoft Tips
+</h1>
+<h3>
+von CONSTANTIN OLBRICH
+</h3>
+<h4>
+<u>Hisoft Pascal Tips und Tricks:</u>
+</h4>
+<p>
+Das
+<?php externalLink("HiSOFT","Hisoft"); ?>
+Pascal 4T wird in einem eigenen Cassettenformat geliefert,
+und benoetigt einen eigenen Loader um es zu laden. Dieser Loader hat
+die unangenehme Eigenschaft einen Autostart durchzufuehren. Dies waere
+nicht erwaehnenswert, wenn nicht das Pascal gleich nach dem Start, nach
+einigen Fragen zur Speicheraufteilung, sich selbst an eine neue Stelle
+im Speicher legt, bevor man mit NASSYS Back-up Kopien erstellen kann.
+Nachtraegliche Kopien entsprechen stets der gewaehlten
+Speicheraufteilung.
+</p>
+<p>
+Um also eine original Kopie des HP4T einschliesslich der
+Relokatortabelle mit NASSYS machen zu koennen, ist folgende Prozedur
+noetig:
+</p>
+<p>
+In der NASSYS Workspace wird eine 80H in 0C75H (bei NASSYS&nbsp;3)
+eingetragen. Dies ist die einfachste Moeglichkeit einen Autostart von
+Objektprogrammen im 'G' Format zu verhindern. Hiermit wird die serielle
+Schnittstelle in der Eingabe abgeschaltet, und das E xxxx auf dem Band
+bleibt ohne Wirkung. Nun kann man nach Laden des HP4T Loader mit 'R'
+die Cassette stoppen und folgendes eingeben:
+</p>
+<table style="width: 60%">
+
+<tr>
+<td style="width: 50%">B 0CCD</td>
+<td>
+Breakpoint nach letztem Block
+</td>
+</tr>
+
+<tr>
+<td>E 0C80</td>
+<td>
+Start des Loaders
+</td>
+</tr>
+
+<tr>
+<td colspan=2>
+Start der Cassette
+</td>
+</tr>
+
+<tr>
+<td colspan=2 class="donthyphenate">
+Nach einigen Minuten meldet sich NASSYS mit der Breakpointanzeige und
+man gibt ein:
+</td>
+</tr>
+
+<tr>
+<td>B 0CD3</td>
+<td>
+Break auf RET; hier =JP 1000
+</td>
+</tr>
+
+<tr>
+<td>E</td>
+<td>
+ausfuehren bis Break
+</td>
+</tr>
+
+<tr>
+<td colspan=2>
+und nun das File retten mit
+</td>
+</tr>
+
+<tr>
+<td>W 1000 6300</td>
+<td>
+aber nun bitte nicht mit 300
+Baud&nbsp;!!
+</td>
+</tr>
+</table>
+
+<p>
+Der Kaltstart einschliesslich der Reloziierung ist nun 1000&nbsp;H.
+Nach dem Start bei 1000&nbsp;H ist die Adresse 1000&nbsp;H die Startadresse fuer
+Pascal Objektprogramme, ein weiterer Start bei 1000&nbsp;H ist also
+unmoeglich. Kalt- und Warmstart sind dann 101F und 1021&nbsp;H.
+</p>
+<p>
+Wer im
+Hisoft Pascal 4T das Control 'C' als ungewohnt empfindet und lieber
+ESCAPE als Break Funktion mag, kann im original File vor dem
+Reloziieren folgendes aendern: Die Speicherstellen 133A,1513,192F,2A65,
+3FEC, 4AD7, 4C5E und 544D sind von 03 auf 1B zu aendern.
+</p>
+
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article2">
+READPROM
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Sowohl bei der Grafikkarte, als auch bei der FDC- Karte werden PROMs
+verwendt. Wenn beim Testen Fehler auftreten, ist man sich nicht sicher,
+ob nicht etwa die PROMs falsch programmiert oder einfach kaputt sind.
+</p>
+<p>
+Deshalb habe ich mir ein einfaches Programm geschrieben, das den Inhalt
+der PROMs ausliest.
+</p>
+<p>
+Die Hardware ist extrem einfach: sie besteht nur aus einem
+Flachbandkabel, das einen PROM-Sockel mit den entsprechenden Pins eines
+PIO-Ausgangs verbindet.
+</p>
+<p>
+Wenn Sie auf eine genauere Beschreibung der
+Hardware- Anschlüsse scharf sind, drucke ich gerne eine Verbindung der
+entsprechenden Stecker ab.
+</p>
+<p>
+Ansonsten dürfte das Listing selbst genügend Auskunft geben.
+</p>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-50-1.jpeg"); ?>
+<?php columnEnd(2); ?>
+<?php boxEnd(); ?>

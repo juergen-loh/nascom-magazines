@@ -1,0 +1,111 @@
+<?php columnStart(2, 2); ?>
+
+<table style="background-color:#000"><tr><td>
+<h1 id="article1" style="text-align:center; padding: 0px 20px; color: #FFF">
+SOUNDGENERATOR
+</h1>
+</td></tr></table>
+
+<table><tr><td>
+<h2>
+TEIL 2
+</h2>
+</td><td style="width: 10%">
+</td><td style="vertical-align: bottom">
+<h3 style="text-align:right">
+von G.Böhm
+</h3>
+</td></tr></table>
+
+<?php hline("100%", "2"); ?>
+
+<p>
+Mit dem Programm im <a href="../../../06/04/text/#article1">letzten Heft</a>
+konnten Sie die Tonhöhen der 3
+Tongeneratoren variieren und konnten erfahren, wie überhaupt
+Informationen an den PSG gelangen. Im folgenden möchte ich die Funktion
+der restlichen Register besprechen; bei ihrer Programmierung wird
+analog zu den Tonhöhenregistern verfahren. Um die Register zu testen,
+sollten Sie zunächst das BASIC Programm aus dem
+<a href="../../../06/04/text/#article2">letzten Heft</a> laden,
+sodaß der Generator den bekannten Dreiklang mit wiederholter
+abfallender Hüllkurve produziert. Mit den aufgeführten Zusatzprogrammen
+können Sie dann die verschiedenen Register mit veränderten Werten
+füttern, um so die Klänge zu erzeugen, die Sie benötigen.
+</p>
+<h4>
+<u>Register 15 : Hüllkurvenformen</u>
+</h4>
+<p>
+Das Envelope-Register kann 8 verschiedene Hüllkurven erzeugen, die z.T.
+einen andauernd an-und abschwellenden Klang ergeben oder nur einmal
+erklingen. Bei letzterer Form ist es wichtig, die Hüllkurvenform als
+letzten Parameter zu programmieren, sonst kann es geschehen, daß die
+Hüllkurve abläuft,bevor die anderen Parameter geladen sind, und der Ton
+unhörbar bleibt.
+</p>
+<p>
+Besser als jede Beschreibung der Formen ist wohl folgendes Schaubild,
+das die Registerdaten in Hex und Dez und die entsprechenden Kurven
+zeigt.
+</p>
+<p>
+Mit dem kleinen BASIC Zusatzprogramm können Sie sich &quot;unseren
+Dreiklang&quot; mit verschiedenen Hüllkurven anhören. Wenn nach der
+Input-Aufforderung keine neuen Daten eingeben und nur NL drücken,
+erscheint die vorherige Kurve nochmals. Dies ist eine Erleichterung
+beim Testen von &quot;verklingenden&quot; Hüllkurven; mit NL können Sie
+dabei den Anschlag eines Tasteninstruments imitieren.
+</p>
+<pre class="donthyphenate">
+zusatzprogramm zum test der
+<u>huellkurvenformen</u> mit
+<?php externalLink("AY-3-8910","ay-3-8910"); ?>
+</pre>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+</p>
+
+<?php nowrapStart(); ?>
+<h4>
+<u>Register 11 und 12 : Hüllkurvenperiode</u>
+</h4>
+<p>
+In Register 12 wird die Grobstimmung, in Register 11 die Feinstimmung
+der Hüllkurvenperiode eingestellt. Meiner Meinung nach kommt es hierbei
+absolut nicht auf eine große Genauigkeit an, so daß man die
+Feinstimmung
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+
+<?php nowrapStart(); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+</p>
+<br>
+<br>
+<p>
+vernachlässigen kann.(D.h. das Register 11 bleibt immer auf 0).
+</p>
+<?php nowrapEnd(); ?>
+<p>
+Für die Grobstimmung werden 8 Bit verwendet, die Länge der Hüllkurve
+variiert also zwischen 0 und FF hex (bis 255 dezimal).Mit dem kleinen
+Zusatzprogramm können Sie brauchbare Werte testen. Bei der Eingabe
+eines größeren Wertes kehren Sie wieder auf die Kommandoebene zurück.(&nbsp;Dies
+gilt übrigens entsprechend für die anderen BASIC Zusatzprogramme.)
+</p>
+<br><br>
+<br><br>
+<br><br>
+<pre class="donthyphenate">
+test der <u>huellkurvendauer</u>
+(nur fine tune/coarse time bleibt0)
+</pre>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-3.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

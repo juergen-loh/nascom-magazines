@@ -1,0 +1,100 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Variablenwertes auf den Stack.) Im Interpretermodus wird diese Funktion
+nun sofort ausgeführt. Wenn die Funktion &quot;Werte&quot; benötigt,
+nimmt sie sie vom Stack. Diese Werte müssen also vorher in der
+richtigen Reihenfolge eingegeben worden sein oder von einer anderen
+Funktion auf dem Stack hinterlassen worden sein (UPN). Wenn die
+jeweilige Funktion einen Wert als Ergebnis hat, gibt sie ihn ebenfalls
+auf den Stack. In der Regel &ndash; es gibt aber Ausnahmen &ndash; soll eine
+Funktion ihre Argumente &quot;aufbrauchen&quot;. Eine Funktion kann
+auch ein Wort als Argument fordern (in der Regel ebenfalls eine
+Funktion), das dann aber nicht vorangestellt wird, sondern auf den
+Funktionsnamen folgt.
+</p>
+<p>
+Das Besondere an FORTH ist nun, daß diese
+&quot;Programmiersprache&quot; durch sich selbst erweiterbar ist. Mit
+Hilfe der &quot;definierenden Funktionen&quot; (in unserem Fall
+&quot;:&quot;, MCODE, MESSAGE, VARIABLE, CONSTANT) werden neue
+Funktionen erzeugt, die ebenfalls einen Namen erhalten, der in das
+Dictionary eingetragen wird. Es gibt, genau genommen, gar keine
+Unterscheidung zwischen &quot;Programmen&quot; und
+&quot;Funktionen&quot;, also eigentlich gar keine &quot;Programme&quot;
+im üblichen Sinne, sondern nur ein Anwachsen der Funktionen des
+Interpreters und ihrer Namen im Dictionary. Ist FORTH denn nun
+überhaupt eine &quot;Programmiersprache&quot;? Ich glaube, das hängt
+davon ab, wie man das System anwendet. Geht man immer von einem
+bestimmten Standard-Wortschatz aus, wenn man den Computer eine
+bestimmte Aufgabe lösen lassen will, dann kann man sicher von einer
+&quot;Programmiersprache&quot; im üblichen Sinne sprechen. Man kann den
+Interpreter aber auch als eine Art komfortables Betriebssystem
+auffassen oder als eine Bibliothek von Unterprogrammen. Dann wird das
+System bei jedem Anwender sehr schnell eine individuelle Gestalt
+annehmen, die den jeweiligen Bedürfnissen angepaßt ist. Die im
+folgenden beschriebene Funktion stellt eine solche individuelle
+Erweiterung dar, die nun wirklich nichts mehr mit dem Standard-FORTH zu
+tun hat:
+</p>
+<pre class="donthyphenate">
+: TESTKL  DUP 96 &gt; IF
+          125 &lt; IF ZERO ELSE NEGONE THEN
+          ELSE POP NEGONE THEN           ;
+ZERO VARIABLE LASTC
+: MISCHTEXT     REPEAT CIN DUP TESTKL UNTIL
+COUT LOOP DUP 32 EQ IF LASTC PEEKW 32 EQ IF
+</pre>
+
+<?php columnChangeJustify(2); ?>
+
+<pre class="donthyphenate">
+COUT MISCHTEXT THEN THEN DUP LASTC POKEW  ;
+: , 23 COUT READLINE ;
+CADR MISCHTEXT CADR READLINE 16 + POKEW
+</pre>
+<p>
+TESTKL ist eine Hilfsfunktion, die
+prüft, ob es sich bei dem obersten Stackwert um das Zahlenäquivalent
+eines Kleinbuchstabens handelt, und entsprechend 0 oder -1 (FFFFH) auf
+den Stack gibt. Mit Hilfe dieser Funktion wird nun MISCHTEXT definiert.
+Dies ist eine Eingaberoutine, die Kleinbuchstaben und überflüssige
+Leerzeichen ignoriert. Sie wird in die Funktion READLINE an Stelle der
+normalen Eingaberoutine CIN hineinkopiert. Beide Interpreter und der
+Compiler ignorieren nun Kleinschrift, so daß man damit beliebig
+Kommentare einfügen kann, ja man kann sogar in gut verständlichen
+&quot;ganzen Sätzen&quot; Programme schreiben. Anders als bei
+Kommentaren in Basic wird dadurch weder der Speicherbedarf vergrößert
+noch die Ausführung eines Programms verlangsamt. Reizvoll wäre es z.B.
+auch, die englischen Namen im Dictionary durch deutsche zu ersetzen
+(dann wird das Wörterverzeichnis allerdings erheblich länger).
+</p>
+<p>
+Die Funktion &quot;,&quot; koppelt zwei Befehlszeilen oder zwei
+Funktionsdefinitionen aneinander. Man kann damit z.B. eine ganze
+Bildschirmseite mit Befehlen vollschreiben, wobei man jede Zeile mit
+einem Komma abschließt, und dann die ganze Seite auf einmal abarbeiten
+lassen (EDITOR-Modus!). Ebenso kann man mehrere Definitionen
+miteinander verbinden, wenn man hinter das abschließende Semicolon
+einer Definition ein Komma setzt. All diese Funktionen sind für den
+EDITOR-Modus, weniger für den INTERACT-Modus geeignet, da sich dann
+beim Löschen mit &quot;Backspace&quot; in einigen Fällen Fehler ergeben
+können.
+</p>
+<p>
+(Oben kommt wie an einigen anderen Stellen die Funktion
+&quot;&lt;&quot; vor; gemeint ist immer &quot;&lt;=&quot;, ich habe das
+bloß bei mir noch nicht korrigiert!)
+</p>
+<p>
+Zum Abschluß möchte ich noch die angekündigte LIFE-Variante bringen.
+Das Besondere an dieser Version ist, daß als &quot;Lebensraum&quot;
+annähernd eine Kugeloberfläche simuliert wird. Zellgebilde, die z.B.
+über den oberen Bildschirmrand hinauswandern, tauchen am unteren
+Bildschirmrand wieder auf; ebenso gilt dies für den linken und rechten
+Bildschirmrand. Nur an den vier Eckpunkten ergeben sich
+Unregelmäßigkeiten. Das Programm läuft im Editormodus und benutzt die
+Zeilen
+</p>
+
+<?php columnEnd(2); ?>

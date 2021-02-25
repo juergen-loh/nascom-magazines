@@ -1,0 +1,87 @@
+<?php columnStart(2, 2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-1.jpeg"); ?>
+<?php columnChangeJustify(2); ?>
+
+<p>
+Die Speisen sind in 7 Gruppen eingeteilt (Zeile 9-12). Sie können
+natürlich andere oder weitere Speisen einbringen, diese hier sollen nur
+Beispiel sein. Geben Sie unter DATA erst die Gruppe an, dann Komma,
+dann das Gericht, solange der Speicherplatz reicht. Dar Inhalt der
+Zeile 6000 muß aber als letzte DATA-Anweisung stehen bleiben. Und nun
+guten Appetit Ihnen und besonders Ihrer Frau.
+</p>
+<h1 id="article1">
+Mini-PILOT
+</h1>
+<h3>
+von W. Mayer-Gürr
+</h3>
+<p>
+Angeregt durch einen Artikel in der Zeitschrift Byte soll hier ein
+Interpreter für ein Subset der Programmiersprache
+<?php externalLink("Pilot"); ?>
+vorgestellt werden. Ein wesentliches Element dieser Sprache ist der Vergleich einer
+Eingabe mit einem vorgegebenen Zeichen und einer Entscheidung über den
+weiteren Verlauf. Der Interpreter verarbeitet Zeilen, an derem Anfang
+immer ein Befehl stehen muß. Folgende Befehle sind bekannt:
+</p>
+
+<table>
+<tr>
+	<td><p>T:text&nbsp;&nbsp;</p></td>
+	<td><p>bring 'text' auf den Schirm</p></td>
+</tr>
+<tr>
+	<td><p>A:</p></td>
+	<td><p>erwartet Zeichen</p></td>
+</tr>
+<tr>
+	<td><p>M:x</p></td>
+	<td><p>
+		vergleicht x mit dem eingegebenen Zeichen und setzt ein Flag (Y
+		oder N)
+	</p></td>
+</tr>
+<tr>
+	<td><p>J:n</p></td>
+	<td><p>
+		bei n=0 Sprung zum letzten A:<br>
+		bei n=1 bis n=9 Sprung zur n.
+		Markierung
+	</p></td>
+</tr>
+<tr>
+	<td><p>S:</p></td>
+	<td><p>Beendet Programm, Sprung zum Editor</p></td>
+</tr>
+<tr>
+	<td><p>Y N</p></td>
+	<td><p>
+		Bedingung vor einem Befehl, wird nur ausgeführt, wenn Flag gesetzt
+		ist.
+	</p></td>
+</tr>
+<tr>
+	<td><p>*</p></td>
+	<td><p>Markierung für Sprungbefehl</p></td>
+</tr>
+</table>
+
+<p>
+Als guter Interpreter hat Mini Pilot auch einen Texteditor. Das
+Programm wird normal eingeben. Will man zum Programmanfang zurück,
+reicht das '&amp;' Zeichen, mit Backspace läßt sich ein Fehler
+korrigieren, '/' zeigt die nächste Zeile. Soll eine Zeile ersetzt
+werden, werden die vorhergehenden gelistet, dann wird neu eingegeben.
+Die neue Zeile darf nicht größer als die fehlerhafte sein, sie muß mit
+'%' statt Newline abgeschlossen werden. Gestartet wird das Programm mit
+dem '$' Zeichen.
+</p>
+<p>
+Obwohl die Sprache als Einstieg für Kinder gepriesen wird, kann ich
+keine großen Vorteile sehen. Deshalb ist der Interpreter 'nur' in
+Pascal geschrieben, das geht schneller.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

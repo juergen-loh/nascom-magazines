@@ -1,0 +1,59 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-1.jpeg"); ?>
+
+<h1 id="article1">
+Printscreen
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Das Programm PRINTSCREEN0 gibt einen Bildschirm mit Blockgrafik auf
+einen Matrixdrucker aus, wobei jedes Klötzchen als Punkt gedruckt wird.
+Die Beispiele bei
+&quot;<a href="../../28/text/#article1">MASSIVKÖRPERPROJEKTION</a>&quot;
+und das
+<a href="../../01/text/#article1">Titelbild</a>
+in diesem Heft sind mit diesem Programm ausgedruckt.
+</p>
+<p>
+Mein Drucker gibt
+nur 7 Punkte gleichzeitig aus, weshalb das Programm 6 solche
+Druckerzeilen erstellt und dann eine mit nur 6 Punkten (damit wären wir
+wieder bei den 48 Zeilen der Blockgrafik). Das Programm ist aber auch
+leicht auf einen Drucker mit 8 Nadeln umzustellen.
+</p>
+<p>
+Dazu wird in Zeile 640 das Register B mit 7 geladen. Die Zeilen 810 bis
+860 können dann wegfallen. Der Wert in Zeile 670 und 730 wird auf 8
+erhöht, und die Zeilen 1470 bis 1500 fallen gleichfalls weg.
+</p>
+<p>
+In Zeile
+600 wird der Drucker in den Grafik-Modus gesetzt. Diese Zeile und auch
+das Ausgabeprogramm für 1 Byte PRINT (Zeile 1540 ff.) müssen natürlich
+auch noch an den
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+entsprechenden Drucker angepaßt werden.
+</p>
+<p>
+Das Programm rettet alle
+Register außer den Indexregistern. Dies sollte beim Aufruf der Routine
+gegebenenfalls beachtet werden.
+</p>
+<p>
+Als Zwischenspeicher für den jeweiligen
+Zeilenbeginn wird ARG4 verwendet.
+</p>
+<p>
+Das eigentliche Programm beginnt bei
+8C47, der Übersichtlichkeit wegen ist aber am Anfang des
+Maschinencodes ein relativer Sprung vorgesehen, sodaß es bei 8C00
+aufgerufen werden kann.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

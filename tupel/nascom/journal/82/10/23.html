@@ -1,0 +1,90 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Nascom-1
+</h1>
+<h2>
+mit 4&nbsp;MHZ
+</h2>
+<h3>
+von Michael Bach
+</h3>
+<p>
+Kürzlich habe ich das langgehegte Projekt verwirklicht, meinen Nascom&nbsp;1
+auf 4&nbsp;MHz umzurüsten. Einfache Verdoppelung der Taktfrequenz (Brücke
+auf dem Buffer-Bord von 2 auf 4&nbsp;Mhz) hilft nicht. Zwar laufen Programme
+im Ram problemlos, obwohl nicht die
+<?php externalLink("Z80","",""); ?>-&quot;A&quot;
+eingebaut ist.
+Programme im Eprom hingegen &quot;stürzen ab&quot;, obwohl z.B. Daten
+fehlerfrei aus Eproms ausgelesen werden können. Dies liegt daran, daß
+der M1-Zyklus (Einlesen des nächsten Befehls) schnellere Antwortzeiten
+erfordert als normale Speicherzugriffe. Eine Lösung des Problems
+besteht darin, jeden M1-Zyklus mit einem Wait-State zu verlängern. Dies
+leistet die
+<a href="../../22/text/#article2">abgebildete Schaltung</a>.
+Das unterste IC ist keins sondern
+eine Fassung mit DIL-Stecker zum Anschluß ans Buffer-Board und für die
+Widerstände, da bei mir in Wrap-Technik aufgebaut. Mit dem Schalter
+kann man zwischen 2&nbsp;MHz ohne und 4&nbsp;Mhz mit Wait-States wählen. Vorsicht
+beim Umschalten! Da das Umschalten nicht synchronisiert ist
+(wäre machbar) und prellt, kann die CPU durcheinander kommen. Am
+sichersten ist es, die CPU vorher in den Halt-Zustand zu versetzen. Mit
+dieser Lösung läuft bei mir der Monitor, Basic, Assembler usw. fast
+ohne Probleme und fast doppelt so schnell wie früher. Damit ist der
+Nascom&nbsp;1 sogar schneller als der Nascom&nbsp;2, der jeden (nicht nur M1-)
+Speicherzugriff verlängert.
+</p>
+<h1 id="article2">
+Abenteuerspiel:
+</h1>
+<h2>
+'Lost Dutchman&rsquo;s Gold'
+</h2>
+<h3>
+von Michael Bach
+</h3>
+<p>
+In einem älteren BYTE habe ich
+<a href="../../14/text/#article1">dieses Spiel</a>
+gefunden und mit viel
+Aufwand an den Nascom angepaßt. Wahrscheinlich sind noch Fehler drin,
+da es mir noch nicht gelungen ist, bis zum Ende zu gelangen. Aber ich
+finde es doch so nett, daß ich es in dieser Form veröffentliche. Wer
+Fehler findet, kann zur Verbesserung das Original-Listing haben
+(Apple). Ich habe es nicht übersetzt, da im Original ein uriger Dialekt
+vorliegt und die (simple) Grammatik-Analyse ganz auf&rsquo;s Englische
+abgestellt ist. Der Dialog ist in 2-Wort-Eingabe, z.B. &quot;OPEN
+DOOR&quot; oder &quot;LIGHT CANDLE&quot; (=mehr Licht). Die
+Schwierigkeit des Spieles besteht weniger im Erforschen eines komplexen
+Höhlensystems (wie
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+bei Adventure), sondern im Lösen verschiedener Aufgaben (wo kriege ich
+9ne Landkarte her, warum ist das Maultier so störrisch?).
+</p>
+<p>
+Außerdem habe ich noch ein Listing für &quot;Pirate&rsquo;s Adventure&quot;,
+im Original für Tandy, sieher auch nicht leicht anzupassen. Hat jemand
+Lust, das durchzuführen (und mir dann 9ne Kassette damit zu schicken)?
+</p>
+<h1 id="article3">
+Nascom-<br>
+Teufelchen
+</h1>
+<h3>
+von Michael Bach
+</h3>
+<p>
+TIPPE DIESES KURZE &amp; GEMEINGEFÄHRLICHE MASCHINENPROGRAMM EIN
+(NASSYS1/3) UND DU WIRST DICH WUNDERN! EINE ANALYSE DER FUNKTION
+ENTHÜLLT EINIGE GEHEIMNISSE UND TRICKS IN NASSYS (VGL
+<?php externalLink("INMC News 7, page 18","INMC-NEWS 7/1980",""); ?>).
+</p>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<div id="nascompl">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-23-2.jpeg"); ?>
+</div>
+
+<?php columnEnd(2); ?>

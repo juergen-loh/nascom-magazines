@@ -1,0 +1,114 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+ECB-FDC
+</h1>
+<h3>
+von A.ZIPPEL/D.OBERLE
+</h3>
+<h4>
+<u>Floppydiskcontrollerkarte,</u>
+<u><?php externalLink("ECB","",""); ?>-Bus</u>
+<u>kompatibel,</u> <u>gemischter</u> <u>Betrieb</u>
+<u>(8&quot;</u> <u>u.</u> <u>51/4&quot;)</u> <u>mit</u> <u>maximal</u> <u>3</u> <u>Laufwerken.</u>
+</h4>
+<p>
+von A. Zippel und D.Oberle
+</p>
+<p>
+UNIVERSITÄT KARLSRUHE RECHENZENTRUM
+</p>
+<h4>
+<u>Hardwarebeschreibung</u> <u>des</u> <u>FDC</u>
+</h4>
+<p>
+Die Karte übernimmt die Steuerung der
+Laufwerke, die Aufbereitung der Daten und den
+Transport der Daten zwischen Rechner und Laufwerk.
+</p>
+<p>
+Das Herz der Karte ist der Kontrollerbaustein
+<?php externalLink("WD1793","WD&nbsp;1793","\n","Siehe Seite 73 (PDF-Seite 83)"); ?>
+der wegen seiner leichten und universellen Handhabung dem
+<?php externalLink("&micro;PD765","NEC&nbsp;765"); ?>
+vorgezogen wurde. Der Baustein wurde auch dem
+<?php externalLink("WD2793","WD&nbsp;2793"); ?>
+vorgezogen, da letzterer Schwächen mit dem Datenseperator aufweist.
+Um einen kompakten Aufbau zu erhalten, wurde der
+<?php externalLink("FDC9229","FDC&nbsp;9229&nbsp;B"); ?>
+als Datenseperator und Supportbaustein verwendet.
+Er übernimmt die Funk&shy;tio&shy;nen&nbsp;: Datenseperation, Kopfladezeit,
+Schreib&shy;kom&shy;pen&shy;sa&shy;tion,
+Takterzeugung und Um&shy;schal&shy;tung zwischen Mini- und
+Standardlaufwerken. Die Monoflops im 74LS125 dienen zum Simulieren des
+Readysignales für Laufwerke, die dieses Signal nicht haben. Die
+angegebenen Werte haben eine Wartezeit bis zum Readysignal von ungefähr
+800 ms und eine Laufdauer der Laufwerke von ungefähr 3 Sekunden zur
+Folge.
+</p>
+<p>
+Der 16&nbsp;MHz Oszillator ersetzt den nicht funktionstüchtigen Oszillator
+des FDC&nbsp;9229&nbsp;B.
+</p>
+<p>
+Die Datenübergabe kann auf zwei Arten erfolgen. Zum Einen können die
+Daten über NMI&rsquo;s übertragen werden (Jumper J3 geschlossen)&nbsp;, oder aber
+die
+<?php externalLink("Z80 DMA","Z80 DMA"); ?>
+mit Treibern wird bestückt und übernimmt den Tansfer
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+(Jumper J3 offen&nbsp;!!)
+</p>
+<p>
+An Jumper J1 kann die Precompensation ab Spur 43 eingestellt werden.
+</p>
+<p>
+An Jumper J2 kann die Readyerzeugung für jedes Laufwerk getrennt
+aktiviert werden (schließen des entsprechenden Jumpers).
+</p>
+<p>
+Die
+<?php externalLink("Z80 PIO","Z80&nbsp;PIO"); ?>
+übernimmt die Selektion der Laufwerke, die Abfrage der
+Statussignale, die Seitenauswahl und die Interrupterzeugung bei einer
+Diskoperation (ausgelöst durch INTR des
+<?php externalLink("WD1793","WD&nbsp;1793",""); ?>).
+Die PIO muß in der
+Betriebsart Bit-ein-ausgabe betrieben werden. Folgende Bits sind als
+Eingänge zu programmieren :
+</p>
+<p>
+von Port A : 7 und 6<br>
+von Port B : 7, 6, 5, 4
+</p>
+<p>
+die anderen Bits sind als Ausgänge zu programmieren.
+</p>
+<p>
+Der DMA Baustein und die Addresstreiber sind optional und können bei
+4&nbsp;MHz
+<?php externalLink("Z80"); ?>
+Systemen und der Verwendung des NMI&rsquo;s weggelassen werden. Dann
+müssen aber in der DMA Fassung die Pin&rsquo;s 36 und 38 sowie die Pin&rsquo;s 14
+und 15 gebrückt werden. Der Baustein 74LS241 muß auf jeden Fall
+vorhanden sein. Die Pullup Widerstände auf den Leitungen M1, MREQ,
+IORQ dürfen im System nur einmal vorhanden sein. Die Programmierung der
+DMA ist den später folgenden Beispielen zu entnehmen. Zu Beachten ist
+in 6&nbsp;MHz Systemen, daß die I/O Zeiten mit 4 Taktzyklen programmiert
+werden. Außerdem sollten alle Zeiten auf 1/2 Zykluslänge verkürzt
+programmiert werden, da durch die Dekodierung sonst undefinierte
+Zustände entstehen können. Wenn die DMA die erste in der Kette (oder
+die einzige) ist, muß an Jumper J4 B mit C verbunden werden (sonst A
+mit B).
+</p>
+<p>
+Die Steuerung der Buszugriffe und die Bausteinauswahl wird durch
+bipolare 256*4 Prom&rsquo;s vorgenommen. Das Prom P1 ist für die
+Bausteinauswahl und die Interruptacknowlegde zuständig. Prom P2
+übernimmt die Puffersteuerung und die Selektion der DMA. Durch die Art
+der Dekodierung taucht die DMA 4 mal
+</p>
+
+<?php columnEnd(2); ?>

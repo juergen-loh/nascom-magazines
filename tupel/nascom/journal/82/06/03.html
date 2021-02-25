@@ -1,0 +1,132 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+LESERBRIEFE
+</h1>
+<p>
+Nun noch ein anderes Thema: Anglizismen in der Rechner-Literatur.
+Vieles bei Rechnern liest man zunächst im Englischen, einen deutschen
+Begriff dafür weiß man nicht oder es gibt ihn (noch) nicht. Hinzu
+kommen einfache Übersetzungsfehler. Ein paar Beispiele:
+&quot;Control&quot; ist oft nicht mit &quot;Kontroll-&quot; zu
+übersetzen; insbesondere heißt es &quot;Steuerzeichen&quot; und nicht
+&quot;Kontroll-Charakter&quot;, womit gleichzeitig auch darauf
+hingewiesen sei, daß ein &quot;Charakter-Generator&quot; ein
+psychologisches Phänomen wäre. &quot;File&quot; und &quot;Datei&quot;
+sind gleichbedeutend, &quot;Datenfiles&quot; ist doppelt gemoppelt.
+Also: Leute, versucht die Verhunzung der Sprache wenn möglich nicht
+mitzumachen! übrigens ist das Journal auf dem Gebiet ja noch
+verhältnismäßig gut, bei manchen anderen Blättern hat man den Eindruck,
+daß &quot;Fachenglisch&quot; Verständnis ersetzt.
+</p>
+<p>
+Noch eine zusätzliche Information zum Acht Damen-Problem aus dem
+<a href="../../../05/19/text/#article1">letzten Journal</a>:
+die Lösung benötigt mit dem
+<?php externalLink("Blue Label Software Pascal","BLS-Pascal"); ?>
+24sec bei 2MHZ
+Takt.
+</p>
+<p>
+Michael Bach, Stegen
+</p>
+<br>
+<p>
+Damit AUTO LINE NUMBER des Toolkit zusammen mit NASSYS3 wieder richtig
+funktioniert, biete ich eine Lösung an, die nur minimalen Aufwand
+erfordert.
+</p>
+<p>
+Dazu wird in der UOUT-Routine des Toolkit lediglich die Reihenfolge von
+6 Bytes vertauscht:
+</p>
+<pre>
+ALT: # B151  CD AD F9 EF 20 00
+NEU: # B151  EF 20 00 CD AD F9
+</pre>
+<p>
+Dies hat zur Folge, daß nun der Blank vor der Zeilennummer ausgegeben
+wird und damit das von NASSYS3 verursachte Löschen des 1. Zeichens der
+Zeile. wirkungslos bleibt.
+</p>
+<p>
+Wolfgang Haslbeck, ____ Nürnberg
+</p>
+<br>
+<p>
+Heinz Heim, Schwieberdingen und Andreas Dieckmann, Heidelberg, schlagen
+vor, die Adresse B15B im Toolkit mit 0C (statt 08) zu laden, um es mit
+NASSYS3 lauffähig zu machen.
+</p>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Wer sein NASCOM ROM BASIC V.4.7 im RAM laufen läßt oder entsprechend
+abändert, kann mit dem BASIC Befehl INP(0) das Keyboard abfragen. Der
+Befehl liefert den Wert 0, wenn keine Taste gedrückt war. Folgende
+Speicherstellen sind zu aendern:
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-03-2.jpeg"); ?>
+<p style="text-align:center">
+zB : Warten auf ein Zeichen:
+</p>
+<pre>
+      10 A=INP(0):IF A=0 THEN 10
+      20 PRINT CHR&sect;(A)
+</pre>
+
+<p>
+Vorschläge zu Leserbeiträgen:
+</p>
+<p>
+1. Leserinitiative zum Erstellen eines kommentierten
+Disassemblerlistings z.B. von ZEAP und 8K-BASIC oder NASPEN. (Schwach
+kommentiert liegt bereits alles vor).
+</p>
+<p>
+2. Gemeinsam ein Programm erstellen, das es gestattet,
+<?php externalLink("CP/M"); ?>
+Software
+(geladen über z.B. V24) auf einem NASCOM mit 48 kByte und Recorder
+laufen zu lassen.
+</p>
+<p>
+Constantin Olbrich, Berlin
+</p>
+<br>
+<p>
+In <a href="../../../../81/10/02/text/#article1">Heft 10-81</a>
+veröffentlichten wir eine
+Kontaktadresse für Interessenten an lokalen
+Computerbekanntschaften. Die Resonanz war
+nicht gerade überwältigend. Es folgt eine
+Liste der &quot;Kandidaten&quot; mit Angabe des
+Systems.
+</p>
+<p>
+Klaus Bott, _________ ___._<br>
+____ Rastatt &nbsp; Tel.______/_____<br>
+(Steuer-und Regeltechnik) NASCOM&nbsp;2, NASSYS&nbsp;1<br>
+ZEAP 2.0, BASIC, Inter. Cassettentausch
+</p>
+<p>
+Stefan Bürger, ____.___., _____ ___. __<br>
+____ Tamm-Hohenstange &nbsp; Tel._____/______<br>
+(gesch.) ____/___-____<br>
+NASCOM&nbsp;1, NASSYS&nbsp;1, 8K-Tape-BASIC,
+<?php externalLink("ECB","",""); ?>-Bus
+</p>
+<p>
+Anselm Fabig, Berlin<br>
+Tel.___/_______ &nbsp; &nbsp; DD6ES
+</p>
+<p>
+Karlheinz Körner, ___________._<br>
+____ Germersheim &nbsp; Tel._____/____<br>
+NASCOM&nbsp;2, NASSYS
+</p>
+
+<?php columnEnd(2); ?>

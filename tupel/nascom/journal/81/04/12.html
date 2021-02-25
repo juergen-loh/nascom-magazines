@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p id="article1" style="text-align:center">
+<b>Rechnerprogramm</b><br>
+zum Test der &quot;nützlichen Unterprogramme&quot;
+</p>
+<p>
+Das Programm wird gestartet durch E0D54. Der Bildschirm fragt Eingabe
+Hex Dez? Durch Drücken der Taste D oder H wird gewählt, ob die Eingaben
+beim Rechnen als dezimal oder hexadezimal interpretiert werden sollen.
+In der Zeile 16 wird dann D oder H angezeigt. Daraufhin wird nach dem
+Ausgabemodus gefragt, und man verfährt wie oben. Auf diese Weise kann
+man mit Hexzahlen oder dezimal rechnen, oder aber die Ergebnisse von
+einem ins andere Zahlensystem transferieren.
+</p>
+<p>
+Nach Festlegung der Zahlensysteme wählt man durch eine Taste den
+Rechenvorgang und gibt die Werte ein. Nach Erscheinen des Ergebnisses
+kann sofort der nächste Vorgang abgerufen werden. New Line startet
+jeweils das Rechnen.
+</p>
+<p>
+Folgende Buchstaben können gewählt werden:
+</p>
+<p>
+M &nbsp; Multiplizieren<br>
+D &nbsp; Dividieren<br>
+Q &nbsp; Quadrieren<br>
+W &nbsp; Quadratwurzel<br>
+U &nbsp; einfaches Umwandeln in anderes Zahlensystem
+</p>
+<p>
+Bei 0DCC kann ein weiterer Buchstabe und eine Sprungadresse
+programmiert werden, um das Programm in gewünschter Weise zu
+beenden.(z.B. Rücksprung zum Ändern der Zahlensysteme oder Sprung zu
+Monitor)
+</p>
+<p>
+Anwendungsbeispiel
+</p>
+<table>
+<tr><td>ED54</td><td>Start des Programms</td></tr>
+<tr><td>&quot;D&quot;</td><td>Eingabe dezimal</td></tr>
+<tr><td>&quot;H&quot;</td><td>Ausgabe hex</td></tr>
+<tr><td>M6 3</td><td>6 mal 3<br>Ergebnis: 0012</td></tr>
+<tr><td>U255</td><td>Umwandeln in hex<br>Ergebnis: 00FF</td></tr>
+<tr><td>D251 28</td><td>251 durch 28</td></tr>
+<tr><td></td><td>etc</td></tr>
+</table>
+<p>
+Das Rechnerprogramm ist zusammen mit den Unterprogrammen von 0C80 bis
+0E37 gelistet und läuft mit NASBUG&nbsp;T2&nbsp;.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+<?php columnEnd(1); ?>

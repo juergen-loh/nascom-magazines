@@ -1,0 +1,101 @@
+<?php columnStart(712); ?>
+
+<?php boxStart("LBR"); ?>
+<?php columnStart(23); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+
+<?php columnChange(3); ?>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="nascompl">
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+<br>
+<br>
+</div>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-07-3.jpeg"); ?>
+<br>
+<br>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-4.jpeg"); ?>
+
+<?php columnEnd(2); ?>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(512); ?>
+
+<h1 id="article1">
+Hisoft-PASCAL
+</h1>
+<h3>
+von CONSTANTIN OLBRICH
+</h3>
+<h4>
+Review des
+<?php externalLink("HiSOFT","Hisoft"); ?>
+Pascal 4T
+</h4>
+<p>
+Diese Pascal Implementation für den NASCOM ist sehr schnell, kompakt
+und preiswert. Für 35 Pfund Sterling erhält man eine Cassette mit dem
+Compiler und ein 60 Seiten starkes Handbuch. Der Compiler ist etwa 12&nbsp;K,
+das Runtime- Paket etwa 4 K und der integrierte Editor 4&nbsp;K lang,
+sodaß etwa 20&nbsp;K Arbeitsspeicher für&rsquo;s Pascal draufgeht. Der Compiler
+ist für beliebige
+<?php externalLink("Z80","Z-80"); ?>
+Systeme geschrieben und benutzt ein eigenes
+Aufzeichnungs-format für die Cassette, in welchem er auch geliefert
+wird. Deshalb lädt man zunächst einen Urlader, den HPT4 Loader, der
+dann automatisch den Compiler einliest. Diese Prozedur ist für 20K
+Bytes bei 300&nbsp;Baud etwas umständlich. Hat man den Compiler nun geladen,
+muß man einige Fragen zur Speicheraufteilung beantworten, z.B. durch
+Default &lt;cr&gt;, und der Compiler reloziiert sich selbst an die
+gewünschte Stelle. Nach dem Reloziieren kann man Back Up Copien mit
+Nas-sys machen, die dann aber der spezifizierten Speicheraufteilung
+entsprechen.
+</p>
+<p>
+Der Editor ist ein äußerst simpler, zeilenorientierter Editor, der
+keine systemspezifischen Screen- Funktionen kennt. Es gibt aber die
+Möglichkeit, einen eigenen Editor einzubauen. Mit dem mitgelieferten
+Editor ist auch ein 'Substitute' Befehl, also &quot;finden und
+ersetzen&quot;, möglich. Die Bedienung ist alles andere als
+komfortabel, wenn man den NASCOM PASCAL (BLS) Editor als Maßstab
+ansetzt. Doch nun zum Pascal selbst:
+</p>
+<p>
+Der Compiler erzeugt ähnlich dem BLS Compiler Z-80 Op-Code. Dieser Code
+ist sehr schnell und kompakt; beim Vergleich mit dem
+<?php externalLink("Blue Label Software Pascal","BLS Pascal"); ?>
+um
+mindestens das Dreifache beim Datentyp Integer. Es existiert der
+Datentyp Real mit einfacher Genauigkeit (wie MBASIC) sowie
+benutzerdefinierte Typen, Records und Sets. Die Einschränkung zum
+Standard Pascal nach Jensen Wirth liegt im Fehlen des Types File (dafür
+gibt es spezielle Cassetten Routinen), in der Record Beschränkung auf
+festen Recordsatz (&nbsp;kein 'variant Part'), und im Fehlen des
+Parametertypes Funktion, bzw. Procedure (kein PLOT (SIN(f)) möglich).
+</p>
+<p>
+Ansonsten bietet dieser Compiler alles was das Herz begehrt. Die
+ausgezeichneten Compiler Optionen ermöglichen das Beschleunigen
+ausgetesteter Programmsegmente durch Abschalten der einzelnen Prüfungen
+während der Laufzeit, z.B. Prüfung Operator Interrupt (escape im Basic)
+oder Integer Überlauf kann abgeschaltet werden. Es gibt eine Option
+'Include File', die ein File beim Lesen der Cassette compiliert, ohne
+es in den Speicher zu laden. So kann die Unterprogramm Bibliothek auf
+Band bleiben, und man übersetzt nur das, was man braucht, und spart
+Platz. Für diejenigen, die viel mit Pointern arbeiten, gibt es die
+Proceduren MARK und RELEASE, die die Kontrolle des 'Heap' ermöglichen.
+</p>
+<p>
+Weiterhin ist die direkte Ausgabe von Hex-Integern möglich, Hex
+Konstanten ohnehin.
+</p>
+
+<?php columnEnd(2); ?>

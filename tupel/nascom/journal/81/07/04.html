@@ -1,0 +1,147 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+CLD Extended Basic
+</h1>
+<h3>
+W. Mayer-Gürr
+</h3>
+<p>
+Dieses komfortable Basic ist auf Cassette oder in Eproms gebrannt
+erhältlich und belegt die Adressen 1000H bis 3FFFH. Das Basic ist
+eigentlich nur 11K lang, der Rest ist für eigene Ergänzungen
+reserviert. Hier der Befehlssatz (ohne Parameter):
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-04-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Auf einige Besonderheiten will ich in diesem Artikel eingehen. Das
+Basic verwendet einen eigenen Monitor, ist also vom T2,T4 oder NASSYS
+unabhängig. Die notwendigen Hardwareänderungen beschränken sich auf den
+Einbau von 2 zusätzlichen Tasten /Control und Interrupt), 1 LED (zeigt
+Eingabebereitschaft an) und einem Lautsprecher (für ASCII 7 = Bell).
+Zur Ansteuerung werden die freien Bits von Port 0 verwendet. Bei der
+Eingabe erfolgt eine Befehlsvervollständigung. Man braucht also für ein
+Schlüsselwort nur 1-3 Buchstaben eingeben, der Rest wird ergänzt.
+Mit BUILD erzeugt das Programm automatisch Zeilennummern in einem frei
+zu wählenden Abstand.
+</p>
+<h4>
+CNTRL
+</h4>
+<p>
+Mit CNTRL 0 kann man ein interruptähnliches Verhalten nachbilden. Nach
+Drücken der Interrupttaste und Control-B springt das Programm zu einem
+Unterprogramm, arbeitet dieses ab und fährt dann an der
+Unterbrechungsstelle im Hauptprogramm fort. Mit CNTRL 1 und 2 lassen
+sich Ausgabeformate ändern. CNTRL 3 und 4 rufen eigene
+Maschinenspracheunterprogramme auf (ohne Übergabe von Parametern).
+</p>
+
+<?php columnChange(2); ?>
+
+<h4>
+DUMP
+</h4>
+<p>
+Das Basic verwendet auch eigene Cassettenroutinen. Ein Programm wird
+mit einem Filenamen versehen, dieser wird beim Laden überprüft, andere
+werden dann ignoriert. Durch VERIFY kann das gerade abgespeicherte
+Programm auf korrekte Aufzeichnung überprüft werden, ohne daß der
+Originalinhalt im RAM bei einem Fehler zerstört wird. Dies ist ein
+Vorteil, den man bei Cassettenbetrieb nicht hoch genug schätzen kann.
+Mit FDUMP werden außer dem Programm auch die Werte der Variablen
+abgespeichert, mit PUT nur die Variablen.
+</p>
+<h4>
+EDIT
+</h4>
+<p>
+Sehr einfach lassen sich durch diesen Befehl Programmzeilen korrigieren.
+</p>
+<h4>
+MAX, MIN
+</h4>
+<p>
+finden aus einer beliebig großen Variablengruppe
+den größten bzw. kleinsten Wert.
+</p>
+<h4>
+PAUSE
+</h4>
+<p>
+hält das Programm für eine vorgegebene Zeit an
+</p>
+<h4>
+PORT
+</h4>
+<p>
+Hier läßt sich die Datenein-und ausgabe auf einen anderen Port legen,
+z.B. zum Betrieb eines Druckers. Arrays (bis zu 8-dimensional) müssen
+alle durch DIM zum Programmanfang dimensioniert werden; manche Basics
+verlangen dies erst ab einem Inhalt größer 10. Bei der Übernahme von
+Programmen anderer Basic-Dialekte ist auf die Verwendung der Boolschen
+Vergleiche zu achten. Die meisten Basics setzen bei einem Vergleich
+FALSE = -1, das CLD-Basic aber nimmt FALSE =-65535. Bei einem Input
+darf keine Stringvariable erfragt werden, dafür gibt es das LINE INPUT,
+bei dem auch Kommas, Leerstellen und andere Zeichen eingegeben werden
+können. Graphik kann nur über PEEK und POKE verwirklicht werden, da
+intern Bit 7 für andere Zwecke verwandt wird.
+</p>
+
+<?php boxStart(); ?>
+	<table class="donthyphenate">
+		<tr>
+			<td colspan=2 style="vertical-align:middle">
+				<u>LEERKASSETTEN</u>
+			</td>
+			<td style="text-align: center">
+				<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-2.jpeg"); ?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=3>
+				Speziell	geeignet für Datenaufzeichnung. Hochwertiges BASF-Band.
+				Cassette 5-fach verschraubt. Cassette C10, d.h. 10
+				Minuten Spieldauer, daher besonders geeignet für
+				Mikrorechnerprogramme.<br>
+				&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10 Stk<br>
+				20 Stk<br>
+				50 Stk<br>
+				100 Stk<br>
+				&nbsp;
+			</td>
+			<td>
+				19.80<br>
+				36.00<br>
+				87.50<br>
+				160.00<br>
+				&nbsp;
+			</td>
+			<td>
+				Jede Kassette mit selbstklebendem Aufkleber zum Beschriften.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Bei:
+			</td>
+			<td colspan=2>
+				M&nbsp;K &ndash; Systemtechnik<br>
+				__________ __<br>
+				____ Germersheim/Rhein<br>
+				Tel.: _____/____
+			</td>
+		</tr>
+	</table>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

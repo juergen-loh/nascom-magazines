@@ -1,0 +1,90 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Preiswerte Floppy
+</h1>
+<h3>
+von Christoph Rau
+</h3>
+<p>
+Sicher gibt es noch mehr Leser, die so wie ich schon seit einiger Zeit
+mit dem Gedanken an eine Floppy liebäugeln. Immerhin besteht bei einem
+<?php externalLink("Z80","Z&nbsp;80"); ?>
+- System die Möglichkeit, (später einmal&nbsp;?) in den großen
+Benutzerkreis der
+<?php externalLink("CP/M"); ?>
+- User einzusteigen mit fast 8 Megabyte Software
+im Hintergrund!
+</p>
+<p>
+Bis jetzt wurde ich davon abgehalten durch einen ganz simplen aber
+wirkungsvollen Faktor, der mir schon manche Entscheidung abgenommen hat&nbsp;:
+zu teuer. Immerhin kostet die MKS&nbsp;- Floppy mit Gehäuse und Netzteil
+über 2000 Mark, die neue nascom&nbsp;- Floppy sogar fast 3000, und das
+preiswerteste System aus England von Gemini kostet dort knapp 2000 Mark.
+</p>
+<p>
+Bei mir läuft nun ein Floppysystem, dessen Hardware&nbsp;- Realisierung mich
+keine 1000 Mark gekostet hat. Als Controller benutze ich eine
+Floppy&nbsp;-Controller Karte der Firma
+<?php externalLink("Janich &amp; Klass"); ?>
+in Wuppertal, die mir
+schon auf der letzten Hobbytronic aufgefallen waren mit ihren Z&nbsp;80
+Systemkarten. Die Karte ist für den
+<?php externalLink("ECB","",""); ?>&nbsp;-Bus ausgelegt, für den ja von
+vielen Herstellern Erweiterungskarten angeboten werden. Sie arbeitet
+mit dem FD&nbsp;- Controller
+<?php externalLink("&micro;PD765","PD 765"); ?>
+von NEC und wird im Polling bedient, also
+eine Einfachlösung ohne DMA. Laut Beschreibung können bis zu 4 Mini&nbsp;-
+Floppies
+<?php externalLink("BASF 6106"); ?>
+(single sided) oder 6108 (double sided) mit single
+oder double density kontrolliert werden, aber meiner Ansicht nach müßte
+man alle Laufwerke mit Shugart-Bus anschließen können.
+</p>
+<p>
+Die Karte wird über drei I/O Port&nbsp;- Adressen angesprochen, die durch
+ein PROM dekodiert werden. Die Dekodierung wird auf Bestellung
+programmiert, die Standardbelegung benutzt Port 0 bis 2 und ist daher
+für nascom&nbsp;- Benutzer unbrauchbar. Durch Umstellen des DIL&nbsp;- Schalters
+LSW2/8 für die Port&nbsp;- Adressen und Bereitstellung des NAS I/O&nbsp;- Signals
+muß gewährleistet werden, daß die Adressen nicht auf der Hauptplatine
+dekodiert werden. Bei mir legt eine
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+selbstgebaute I/O - Platine dieses Signal auf high für alle
+Portadressen größer 0Fhex.
+</p>
+<p>
+Die Karte kostet als Bausatz DM&nbsp;330,&ndash; + Mwst. und ist in ca. 3 Stunden
+zusammengelötet. Basissoftware wird als Assemblerlisting mitgeliefert,
+und nach einem Telefonat kam auch das Datenblatt für den Controller.
+</p>
+<p>
+Ein einseitiges Laufwerk BASF 6106 für 40 Spuren und double density war
+für DM&nbsp;550,&ndash; bei Homecomputer in Düsseldorf zu bekommen. Ein
+Primitiv&nbsp;-Netzteil, was auch noch ein späteres zweites
+Laufwerk versorgen könnte,
+war für ca. DM&nbsp;45,&ndash; schnell gebastelt, und nach einigen
+Laubsägeblättern war auch alles in einem Gehäuse für DM&nbsp;30,&ndash;
+untergebracht, in dem auch noch Platz für ein zweites Laufwerk ist.
+</p>
+<p>
+Die Testsoftware ist zwar für 6106&nbsp;- Laufwerke ausgelegt, aber die
+Spezifikationen sind falsch angegeben. Daher hatte ich zunächst
+Problem, aber nun läuft das System, und ich bin dabei, ein DOS zu
+schreiben. Das ist zwar nicht ganz einfach, hat aber den Vorteil, daß
+man wenigstens genau weiß, was passiert.
+</p>
+<p>
+Mit dem Gedanken an CP/M im Hinterkopf würde ich mich über
+Gedankenaustausch mit Benutzern freuen, die ähnliches vorhaben oder bei
+denen vielleicht schon CP/M läuft.
+</p>
+<div id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+</div>
+
+<?php columnEnd(2); ?>

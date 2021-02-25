@@ -1,0 +1,53 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" style="text-align:left">
+Software für<br>
+VIDEO-Interface
+</h1>
+<h3>
+von A. Zippel u. D. Oberle
+</h3>
+<p>
+Wie bereits in 
+<a href="../../../05/12/text/#article1">Heft 5/82</a>
+angekündigt hier die Treibersoftware zur dort
+vorgestellten Video-Interfacekarte. Doch zunächst ein paar Hinweise zur
+Programmbenutzung:
+</p>
+<p>
+Da das Programmlisting recht gut mit Kommentaren ausgestattet ist spare
+ich mir hier an dieser Stelle eine detailiertere Programmbeschreibung.
+Die Kommentare sind leider (oder &quot;Gott sei Dank&quot;) in
+Englisch. Ich hoffe dennoch, daß die meisten Leser damit zurechtkommen.
+Es macht sehr viel Arbeit alles nochmal deutsch zu kommentieren.
+</p>
+<p>
+Das Hauptprogramm wird durch die Routine CONOUT (Console Output)
+dargestellt. Der auszugebende Charakter muß dieser Routine in Register
+C übergeben werden, d.h. das darzustellende Zeichen muß vor dem Aufruf
+von CONOUT immer in Register C gespeichert sein. (die NASSYS Routine
+verwendet dazu Register A). Um irgendwelche Fehlfunktionen des
+Programmes zu vermeiden sollten außerdem vor dem Aufruf von CONOUT alle
+Register gesichert werden. Für die Benutzung mit NASSYS&nbsp;I kann eine
+solche Ausgaberoutine z.B. so aussehen:
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+</p>
+<p>
+dabei ist vorher in der Sprungtabelle von NASSYS&nbsp;I als
+USER-Output-Routine die Adresse von USEROU einzutragen, sodaß mit dem
+&quot;U&quot; Befehl jederzeit die Ausgabe auch auf den
+80-Zeichen-Bildschirm umgesteuert werden kann, naturlich auch nur im 48
+Charakter/line Format wenn keine Änderungen im Monitorprogramm
+vorgenommen werden.
+</p>
+
+<?php columnChange(2); ?>
+
+<?php boxStart(); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-12-2.jpeg"); ?>
+<br>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-3.jpeg"); ?>
+<?php boxEnd(); ?>
+<?php columnEnd(2); ?>

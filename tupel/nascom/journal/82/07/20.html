@@ -1,0 +1,56 @@
+<?php columnStartJustify(2); ?>
+
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart("LTR"); ?>
+<h1 id="article1">
+BCD-<br>
+ARITHMETIK
+</h1>
+<h3>
+von Günter Kreidl
+</h3>
+<br>
+<?php boxEnd(); ?>
+<br>
+<h3>
+Günter Kreidl
+</h3>
+<p>
+Im <a href="../../../01/25/text/#article1">Januarheft</a>
+habe ich einige Rechenroutinen für das BCD-Format
+vorgeführt. In einer etwas einfacheren Ausführung laufen diese
+Programme seit anderthalb Jahren in einem Fakturierprogramm. Für die
+Darstellung im NASCOM-Journal habe ich einige Routinen
+&quot;verbessert&quot;. Dabei haben sich leider einige kleine Fehler
+eingeschlichen, die allerdings nur in ganz speziellen Anwendungen
+auftreten. So weigert sich z.B. die Ausgaberoutine RBAUSG beharrlich,
+Zahlen ohne Nachkommastellen auszugeben. Die verbesserten Routinen
+wenden hier nochmals abgedruckt, zusammen mit einer BCD-Division, die
+damals noch nicht enthalten war. Die Speicherbelegung wurde so gewählt,
+daß sich die Routinen direkt an die im
+<a href="../../../01/25/text/#article1">Januarheft</a> veröffentlichten
+anschließen. Die Kommentare habe ich aus Platzgründen weggelassen. Sie
+können im <a href="../../../01/25/text/#article1">Januarheft</a>
+nachgelesen werden. Noch einige Bemerkungen zu dem
+Divisionsprogramm. Es benötigt 3 Rechenregister, die soviele Bytes
+umfassen müssen, wie die Zahlen maximal Steilen aufweisen. R1 und R2
+enthalten die Operanden und zwar in der höherwertigen
+(&quot;rechten&quot;) Hälfte. Wo sich das Komma befinden soll, ist für
+die Routine selbst belanglos, es muß nur bei beiden Zahlen an der
+gleichen Stelle stehen (das besorgt die Eingaberoutine!). R3 enthält
+das Ergebnis und zwar in der zweiten &quot;Hälfte&quot; die Nachkomma-,
+in der ersten die Vorkommastellen. In IX und IY müssen Adresssen der
+Operandenregister (&quot;rechts&quot;) übergeben werden, HL muß auf die
+Mitte des Ergebnisregisters zeigen (bei 16 Stellen auf die 8. Adresse
+des Registers!) und in B wird die
+max. Stellenzahl = Registerbreite in Bytes übergeben. Es werden alle,
+auch die Austauschregister, verändert. Die Programmierung stellt einen
+Kompromiß zwischen Speicherplatzbedarf, Arbeitsgeschwindigkeit und
+Durchsichtigkeit des Programms dar. Die Division zweier 128-steliiger
+Zahlen benötigt ca. 4-5 Sekunden. Auch das Ergebnis hat dann 128
+Stellen. Eine 16-stellige Division benötigt etwa 60 ms.
+</p>
+<?php columnEnd(2); ?>

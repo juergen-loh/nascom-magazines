@@ -1,0 +1,75 @@
+<?php columnStartJustify(2, 22); ?>
+
+<h1 id="article1">
+3-D-Grafik
+</h1>
+<h2>
+BLS-PASCAL Nr. 4
+</h2>
+<h3>
+von MICHAEL BACH
+</h3>
+<p>
+Ich
+<a href="../../../../82/05/21/text/#article1">erwähnte</a>
+schon &rsquo;mal, daß bei meinen Nascom&nbsp;1 die in Pascal
+enthaltene Tastatur-Routine nicht richtig geht. Inzwischen habe ich
+erfahren, daß das auch bei anderen so ist. Deshalb sei die Abhilfe hier
+genauer beschrieben: Bei 219CH (RAM-Version, EPROM: 0D19CH) steht 0FH
+72H (=SCAL NIM), womit der Zeiger auf die &quot;Input table&quot;
+geändert wird. An diesen beiden Adressen braucht man nur 0 einzutragen
+und die Eingabe läuft über die normale Routine (die allerdings auch die
+serielle Schnittstelle abfragt, aber das kann sogar von Vorteil sein.)
+Die angegebenen Adressen sind möglicherweise bei neueren Versionen
+anders, man findet&rsquo;s mit DEBUG aber leicht. Hat übrigens schon jemand
+das Pascal disassembliert? Würde mich ganz außerordentlich
+interessieren!
+</p>
+<p>
+Inzwischen habe ich neben
+<?php externalLink("UCSD Pascal","UCSD-Pascal"); ?>
+auch Erfahrung mit dem
+<?php externalLink("Pascal/MT+","Pascal MT+"); ?>
+für
+<?php externalLink("CP/M"); ?>
+sammeln können: Am komfortabelsten ist die
+Programmentwicklung mit unserem
+<?php externalLink("Blue Label Software Pascal","BLS",""); ?>/NAS-PAS!
+Bei sehr umfangreichen
+Projekten gibt&rsquo;s natürlich Speicherprobleme, aber bei kleineren wird
+die Programmentwicklung unheimlich dadurch beschleunigt, daß
+Editor, Compiler, Quelltext, run-time library und Objektkode
+gleichzeitig im Speicher sind.
+</p>
+<p>
+Noch eine Nebenbemerkung zu meiner neuen Assembler-Grafik: Die
+Titelzeile kann mitbenutzt werden, dadurch gewinnt man 3 Punkte in
+Y-Richtung.
+</p>
+<p>
+Nun zum heutigen Pascal-Programm: Ein dreidimensionales Gebilde (hier
+ein Würfel) wird auf die Bildschirmfläche projiziert; ein
+Betrachtungswinkel wird geändert und wieder projiziert, wodurch eine
+(ruckweise) Drehung zustande kommt. Als Spezialität (und deutliche
+Verbesserung) besteht noch die Möglichkeit, einen Puffer für die
+Bildschirmseite zu benutzen, in den der Würfel erst &rsquo;mal gezeichnet
+wird; dann wird der Puffer &quot;blitzartig&quot; (mit einem
+Maschinenprogramm das LDIR benutzt) zum Schirm kopiert; diese Methode
+hat Herr Klement neulich als &quot;Animation&quot; in seinen Programm
+&quot;<a href="../../../../82/10/24/text/#article3">Swinghouse</a>&quot;
+erwähnt. In der vorliegenden Form funktioniert
+das nur mit der RAM-Version des Pascal, und zwar indem in der
+Plotroutine der Bildschirm-Offset geändert wird. Am besten sollte die
+Frage nach den Puffer erstmal nicht mit &quot;J&quot; beantwortet
+werden. Näheres ersieht man aus dem Programm. Im
+<a href="../../../07/27/text/#article1">nächsten Journal</a>
+erfolgt dann eine Erweiterung dergestalt, daß nicht sichtbare Kanten
+des Gegenstandes verdeckt werden (&quot;hidden line elitmination&quot;).
+</p>
+<div id="article2">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+</div>
+
+<?php columnChange(2); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+<?php columnEnd(2); ?>

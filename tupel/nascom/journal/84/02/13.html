@@ -1,0 +1,102 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h4>
+CMD COMMAND Register
+</h4>
+<p>
+Ins Kommandoregister kann nur geschrieben werden. Jeder Befehl (siehe
+Tabelle) löst eine Aktion des GDP aus. Durch einige Befehle können auch
+Bits in anderen Registern geändert werden.
+</p>
+<p style="text-align:center">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-1.jpeg"); ?>
+</p>
+<h4>
+STATUS Register
+</h4>
+<p>
+Dieses Register kann nur gelesen werden. Es gibt folgende Zustände des
+GDP an:
+</p>
+
+<table style="width: 100%">
+<tr><td>Bit0 &nbsp;</td><td>LOW = ein Lichtgriffel-Durchgang wird gerade ausgeführt</td></tr>
+<tr><td>Bit1</td><td>HIGH während des vertical blanking</td></tr>
+<tr><td>Bit2</td><td>LOW = es wird gerade ein Befehl ausgeführt<br>HIGH= Ready</td></tr>
+<tr><td>Bit3</td><td>HIGH=X-und Y-Register außerhalb des Bildschirmfensters</td></tr>
+<tr><td>Bit4</td><td>HIGH=Lichtgriffeldurchgang mit Int. beendet</td></tr>
+<tr><td>Bit5</td><td>HIGH=vertical blanking interr. erzeugt</td></tr>
+<tr><td>Bit6</td><td>HIGH=Interr. durch Beendigung eines Befehls ausgelöst</td></tr>
+<tr><td>Bit7</td><td>HIGH=ein Interrupt wurde ausgelöst</td></tr>
+</table>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-2.jpeg"); ?>
+</p>
+<?php columnChangeJustify(2); ?>
+
+<h4>
+XLP und YLP Register
+</h4>
+<p>
+Diese Register enthalten die Bildschirmadresse, die durch die erste
+steigende Flanke am Lichtgriffelanschluß LPCK ermittelt wird.
+</p>
+<p>
+Eine detaillierte Beschreibung des internen Aufbaus wollen wir hier
+nicht geben, ebensowenig den genauen Signalverlauf oder die
+elektrischen Grenzwerte. Diese Angaben müssen Sie einem
+<?php externalLink("EF9366","Datenblatt"); ?>
+der Firma Thomson entnehmen.
+</p>
+<p>
+Diese Beschreibung soll aber die notwendigsten Informationen zum Test
+der Grafikkarte liefern (der hoffentlich nicht nötig ist) und vor allem
+bei der Programmierung des GDP behilflich sein.
+</p>
+<h4>
+Programmierung des GDP
+</h4>
+<p>
+Zur Ergänzung der etwas kurz gehaltenen Beschreibung empfehle ich das
+Studium der Listings in
+<a href="../../../01/11/text/#article1">Heft 1/84</a>
+und in dieser Ausgabe.
+</p>
+<h4>
+Plotten von Vektoren
+</h4>
+<p>
+Die Ausgangskoordinaten einer Linie werden durch Register 98H bis 9BH
+(X und Y) festgelegt. Die Register 95H und 97H (DELTAX, DELTAY)
+bestimmen den Abstand auf den Koordinaten- Achsen. Das Vorzeichen von
+DELTAX und DELTAY wird durch Bit1 und Bit2 im Plotbefehl definiert
+(siehe Tabelle).
+</p>
+<p>
+Die X- und Y-Register zeigen nach dem Zeichenvorgang
+auf das Ende der Linie, sodaß durch einfaches Ändern der DELTA- Werte
+kontinuierliche Linienzüge möglich sind.
+</p>
+<p>
+Das Löschen einer Linie
+geschieht durch nochmaliges Plotten der Linie, wobei Bit1 in CNTRL1
+rückgesetzt werden muß (eraser).
+</p>
+<p>
+Durch Kombinationen von Bit0 und Bit1
+in CNTRL2 kann beim Linienzeichnen zwischen 4 verschiedenen Linienarten
+unterschieden werden. (Tabelle)
+</p>
+<p>
+In oben beschriebener Weise wird mit den &quot;basic commands&quot; 11H
+bis 17H (nur die ungeraden Werte, also stets Bit0 gesetzt) gearbeitet,
+indem man sie jeweils ins Command-Register 90H schreibt.
+</p>
+<p>
+Es gibt noch drei andere Arten von Plotbefehlen, die schnelle
+Richtungsänderungen bei kurzen Vektoren erlauben. Hier eine
+Zusammenfassung; die Tabellen sollten zur
+</p>
+
+<?php columnEnd(2); ?>

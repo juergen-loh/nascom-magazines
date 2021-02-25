@@ -1,0 +1,70 @@
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-10-1.jpeg"); ?>
+
+<br>
+
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Die Tabelle bedarf wohl einiger Erläuterung.
+</p>
+<p>
+Nach dem Indexloch auf der Diskette, durch das sich das Laufwerk mit
+einer Lichtschranke orientiert, folgt einmalig das Index-Gap
+(gap=Spalte, Freiraum). Danach einige Nullen zum Synchronisieren und
+das Byte FE, das als ID Address Mark den Beginn des Sektors angibt.
+Darauf folgt die Spurnummer (0-39) und ein Zero zum Trennen. Die
+Sektornummer (1-max.18 bei SD) wird von einem Byte für die Sektorlänge
+gefolgt.
+</p>
+<p>
+Ist Bit3 in den Schreib/Leseroutinen 1, dann gilt für die
+Sektorlänge:
+</p>
+<table style="width: 40%">
+<tr><td>00</td><td style="text-align:right">128&nbsp;</td><td>Bytes</td></tr>
+<tr><td>01</td><td style="text-align:right">256&nbsp;</td><td>Bytes</td></tr>
+<tr><td>02</td><td style="text-align:right">512&nbsp;</td><td>Bytes</td></tr>
+<tr><td>03</td><td style="text-align:right">1024&nbsp;</td><td>Bytes</td></tr>
+</table>
+<p>
+Dies ist bei uns der Fall, und mit den Längen bei rückgesetztem Bit3
+sollten wir uns nicht belasten.
+</p>
+<p>
+Nach der Sektorlänge wird F7 ausgegeben. Mit diesem Befehl erzeugt der
+Controller eine 2Byte-Prüfsumme.
+</p>
+<p>
+Die folgenden FFs (Gap 2) trennen den Sektorkopf vom Datenblock ab, der
+wiederum durch Nullen zur Synchronisation eingeleitet wird.
+</p>
+<p>
+FB signalisiert den eigentlichen Beginn der Daten (Data Address Mark),
+und an die Daten schließt sich wieder die Prüfsumme an (beim Schreiben
+durch F7 erzeugt). Gap 3 schließt den Sektor ab.
+</p>
+<p>
+Alle Sektoren einer Spur sind so gleich aufgebaut. Ans Ende des letzten
+Sektors wird nun noch das Pre-Index-Gap angehängt, das bis zum
+Indexloch reicht. Dieses Format ist in der Format-Tabelle (TRKTAB)
+angelegt. Die &quot;Expand&quot;-Routine nimmt zwei Bytes und
+interpretiert das erste
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+als Anzahl, das zweite als Zeichen. So wird in Zeile 4820 32 mal das
+Byte FF in den Speicher geschrieben. Trifft die Routine ein 00, dann
+kehrt sie zurück.
+</p>
+<p>
+Die Spurnummern werden fortlaufend erhöht, die
+Sektornummern werden der Sektortabelle in Zeile 5000 entnommen. Im
+Falle der Osborne-Formatierung sind sie ebenfalls fortlaufend, in
+nachstehendem Programmausschnitt sind sie so gelegt, daß sie schneller
+eingelesen werden können (Oberle). Das Format des Beispiels entspricht
+dem Shugart-Vorschlag.
+</p>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-10-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

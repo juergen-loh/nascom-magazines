@@ -1,0 +1,73 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-3.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<h3 id="article1">
+ZU DISK3
+</h3>
+<p>
+Endlich hat es einer geschafft: EMDOS liegt im ZEAP Format vor (sogar
+mit einigen Verbesserungen). Da der Quellcode zu lang für eine
+Veröffentlichung ist, werden alle angesprochenen Listings auf Disk3
+angeboten. Hier aber nun die Ausführungen von Georg Böhm:
+</p>
+<p>
+Zunächst einige Anmerkungen zum DOS : Um keinen zusätzlichen
+Eprom-Steckplatz aufbauen zu müssen, habe ich den Coldbooter in&rsquo;s
+NASSYS&nbsp;3-Eprom gesteckt, wodurch die Kommandos A,B,P,G,R,S,V,W verloren
+gehen (aber Original NASSYS wird ja gebootet&nbsp;!). Siehe NASBOOT.ASS&nbsp;.
+WBOOT habe ich nach AE00h (dieser Speicherbereich wird bisher nicht von
+EMDOS benutzt) verlegt, da in der alten Version beim Coldbooten bei
+8C00h Programme überschrieben<br>
+werden. Aus dem selben Grund liegt der NASSYS-Buffer jetzt bei A000h.
+Einzelheiten siehe WBOOT.ASS.
+</p>
+<p>
+Zu EMDOS : Damit EMDOS auch mit Programmen zusammenarbeitet, die
+Interrupts benutzen, wird im PHEAS als erstes eine Routine aufgerufen,
+die das I-register initialisiert und IM 2 einstellt. Im Zusammenhang
+mit dieser Änderungen fiel mir eine Unstimmigkeit in EMDOS auf: Obwohl
+nur 7 Bytes im Fileheader- Zwischenspeicher FH (Zeile 6582) reserviert
+sind, werden von FILEEAS jeweils 8 Bytes abgespeichert (SN020 6122) und
+geladen (LN030 5854); dadurch wird bei Änderung von PHEAS das 1. Byte
+dauernd von der abgespeicherten alten Version überschrieben. Zur
+Abhilfe habe ich ein zusätzliches freies Byte zwischen FILEEAS und
+PHEAS reserviert (6606).
+</p>
+<p>
+Bei Angabe von Laufwerken, für die kein Track-Byte definiert ist,
+überschreibt TRKMEM beim nächsten Aufruf von PSEL die nachfolgenden
+Routinen, da in LWNR noch die zu hohe Laufwerksnummer abgespeichert
+ist. Dies wird durch eine Abfrage in PSEL (6714) vermieden. Wenn man
+die die INIT-Routine etwas ändert (7718..7730), braucht man sich bei
+Änderungen des Laufbereichs von PHEAS um die Anpassung der Werte des
+Interrupt-Vektors nicht mehr zu kümmern (bis auf die geradzahlige
+Adresse).
+</p>
+<p>
+Die wichtigste Änderung bei NASGEN.ASS ist PHEAS EQU #A10C. Es wird
+also jetzt PHEAS über die EMDOS-Sprungleiste erreicht, so daß bei
+Änderungen der PHEAS-Anfangsadresse NASGEN.COM nicht geändert werden
+muß. Dies sollte bei allen Programmen, die PHEAS aufrufen, beachtet
+werden. Außerdem habe ich NASBUF direkt hinter den WBOOT-Buffer gelegt,
+so daß NASSYS mit abgespeichert und NABGEN.COM direkt ausgeführt werden
+kann.
+</p>
+<p>
+<u>GRAFIKA1 ist die ASCII- Routine für die
+Grafikkarte. GRAFIKA2 benötigt GRAFIKA1. Sie ermöglicht das
+grafische Darstellen auf dem Bildschirm und eine Art TURTLE- Grafik.</u>
+</p>
+<p>
+Nasdrive ist der abgeaenderte T4DRIVER der nun auch mit NASSYS laeuft.
+Fuer manche Anwendungen ist es sehr schoen&nbsp;, wenn man im 80 Zeichen
+Modus arbeiten kann. Leider funktioniert der Nasdriver nicht wenn ich
+zB. den ZEAP oder den Toolkit benutze. Das haengt warscheinlich mit den
+User-Routinen
+</p>
+
+<?php columnEnd(2); ?>

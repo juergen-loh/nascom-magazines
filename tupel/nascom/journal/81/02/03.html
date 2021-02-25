@@ -1,0 +1,102 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1" style="text-align:center">
+R A M - T E S T
+</h1>
+<br>
+<h4>
+<u>RAM-Testprogramm für den NASCOM&nbsp;1</u>
+</h4>
+<p>
+Das hier beschriebene Testprogramm läuft auf dem NASCOM&nbsp;1 mit dem
+Monitor NASBUG&nbsp;T&nbsp;2, müßte aber auch mit den NASBUG&nbsp;T&nbsp;4 arbeiten. Es
+belegt die Speicherplätze 0C50 - 0D8B.
+</p>
+<p>
+Bei Speichertest muß natürlich davon ausgegangen werden, daß dieser
+Speicherbereich einwandfrei funktioniert. Nur die außerhalb dieser
+Adressen liegenden Bereiche kann man testen.
+</p>
+<p>
+<u>Programmbeschreibung:</u>
+</p>
+<p>
+Nach dem Start unter Angabe des zu testenden Speicherbereiches führt
+der Rechner zuerst einen groben Vortest auf der Suche nach
+&quot;Totalschäden&quot; durch. Dazu schreibt er in jede Speicherzelle
+erst &quot;FF&quot; und dann &quot;00&quot;. Unter der Überschrift
+&quot;defekte Zellen&quot; listet er alle Adressen schadhafter
+Speicherzellen hexadezimal via Bildschirm auf. Sollte der Bildschirm
+dabei voll werden, was nach 96 Fehlermeldungen der Fall ist,dann hält
+er an und setzt den Test erst nach Betätigen einer beliebigen Taste
+fort. Da im genannten Fall weitere Tests überflüssig sind, springt das
+Testprogramm nach Überprüfung der letzten Speicherzelle ins
+Monitorprogramm zurück.
+</p>
+<p>
+Sollte kein Fehler gefunden worden sein, so wird das Testprogramm
+fortgeführt. Nachdem das Programm unter der Überschrift &quot;defekte
+Zellen:&quot; mit &quot;keine&quot; geantwortet hat, beginnt die Suche
+nach Mehrfachadressierungen. Alle Zellen sind noch durch den Vortest
+auf &quot;00&quot; gesetzt. Nun werden in die Speicherzellen 1.,4.,7.,
+.... Adresse FF und prüft das so entstandene Muster auf Fehler. Dann
+werden 2.,5.,8., ... Adresse FF Beschrieben und geprüft. Desgleichen
+danach mit der 3.,6., 9.....Adresse. Nachdem jetzt der gesamte zu
+testende Bereich FF enthält, wird die gesamte Prozedur mit 00
+wiederholt.
+</p>
+<p>
+Sollte bei diesen insgesamt 6 Durchläufen irgendwo ein Fehler im
+&quot;Muster&quot; festgestellt
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+werden, bricht das Programm ab, schreibt &quot;aber
+Mehrfachadressierungen&quot; auf den Bildschirm und kehrt ins
+Betriebssystem zurück.
+</p>
+<p>
+Ist bis hierher alles fehlerlos abgelaufen, dann beginnt der Dauertest
+unter der gleichnamigen Überschrift.
+</p>
+<p>
+Dazu wird bis zu 256 mal in jede Speicherzelle erst FF und dann wieder
+00 geschrieben. Die laufende Nummer des Durchlaufes wird dabei dauernd
+in der untersten Bildschirmzeile mit &quot;Durchlauf Nr. ii&quot;
+angezeigt. Wird ein Fehler registriert, bricht der Rechner wieder ab,
+hinterläßt aber die Nachricht &quot;Durchlauf Nr. ii fehlerhaft&quot;
+auf dem Schirm. Wurde während aller 256 Durchläufe kein Fehler bemerkt,
+schreibt das Programm &quot;Durchlauf 256 mal fehlerfrei&quot;, um dann
+endgültig abzubrechen.
+</p>
+<p>
+Dieser Programmteil eignet sich besonders gut, um sporadische
+Speicherfehler zu finden. Dazu sollte er allerdings bei erhöhter
+Taktfrequenz der CPU ablaufen. Am besten führt man diese Taktfrequenz
+aus einem einfachen externen RC-Generator mit angeschlossenem Zähler
+zu. Aus der maximal möglichen Taktfrequenz lassen sich dann
+Rückschlüsse auf die Zugriffszeit des getesteten RAMs ziehen. Bei einem
+solchen Test des Bereiches 0E00 ... 0EFF, also eines Bereiches des
+Benutzer-RAM auf der Grundplatine, zeigten sich bis etwa 4&nbsp;MHz
+(normalerweise 2&nbsp;MHz) keine Fehler. Es besteht hier, zumindest bei
+meinem Gerät, ein Sicherheitsfaktor in der Zugriffszeit von zwei, den
+man dann wohl auch auf eine externe Erweiterung anwenden sollte.
+</p>
+<p>
+Ist der Speicher in Ordnung, steht nach
+dem Durchlauf der Programmes auf dem Schirm:
+</p>
+<pre class="donthyphenate">
+&quot;    defekte Zellen:
+     keine,
+     also Dauertest:
+     Durchlauf 256 mal fehlerfrei    &quot;
+</pre>
+<p>
+Da der Rechner das Programm sofort abbricht, sobald ein Fehler
+auftritt, läßt sich durch Ausgabe des getesteten Bereiches auf dem
+Schirm der Fehler erfahrungsgemäß leicht finden. Auf eine Fehleranalyse
+schon im Programm wurde deshalb verzichtet.
+</p>
+
+<?php columnEnd(2); ?>

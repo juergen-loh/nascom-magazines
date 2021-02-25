@@ -1,0 +1,108 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+FDC-Aufbau
+</h1>
+<h3>
+von <u>DIETER OBERLE</u>
+</h3>
+<p>
+Änderungen am
+<a href="../../../07/33/text/#article1">FDC- Schaltplan</a> 7/8-83
+</p>
+<p>
+Anscheinend ist es nie möglich, eine Hardwareschaltung mit Niveau ohne
+Nachlese zu veröffentlichen. Im Falle des Floppy-Controllers ist das
+nicht so schlimm, da die Platine erst jetzt erhältlich ist und die
+Änderungen noch vor der frustrierenden Fehlersuche vorgenommen werden
+können.
+</p>
+<p>
+Nur wenige Änderungen betreffen die Platine selbst;
+hauptsächlich handelt es sich um leicht änderbare Korrekturen im
+Schaltplan oder Bestückungen, die nicht vorgenommen werden müssen. Die
+wirklichen Hardwareänderungen sind (z.&nbsp;B. auf der Rückseite der
+Platine) leicht vorzunehmen.
+</p>
+<ol>
+<li>
+Pull-up Widerstand 1K an 7438 (6) fehlt im Lay-out (einlöten)
+<li>
+Pull-up Widerstand R24 (1K)
+<?php externalLink("WD1793","WD&nbsp;1793"); ?>
+/WE (2) gegen +5V. Im Layout
+ist dieser Widerstand an RE angeschlossen (4), muß aber an (2) angelegt
+werden wie angegeben (ändern).
+</li>
+<li>
+Im Schaltplan ist R17 (1K) Pull-up an 74LS241 (14,13) gegen +5V
+noch nicht eingezeichnet (nachtragen). Im Layout ist dieser Widerstand
+schon vorgesehen.
+</li>
+<li>
+Im Schaltplan fehlt eine Verbindungsleitung von P2 (2) nach
+<?php externalLink("Z80 DMA","DMA"); ?>
+(38) IEI. (einzeichnen).
+</li>
+<li>
+In der Stückliste müssen noch R20 (1k) und C8 (100 pF)
+nachgetragen werden,
+</li>
+<li>
+Die beiden Tiefpässe an P1 (11) und P1 (12) 100&nbsp;&Omega; /100&nbsp;pF
+entfallen und sind im Layout nicht vorhanden.
+</li>
+<li>
+470K Widerstand und Quarz am
+<?php externalLink("FDC9229","9229"); ?>
+darf nicht bestückt werden.
+</li>
+</ol>
+<p>
+Die Zuordnung der Widerstände und Kondensatoren kann mit Hilfe des
+Bestückungsplanes und des Layouts leicht in den Schaltplan übertragen
+werden, falls dies notwendig ist. Des Layout war zum
+Erscheinungszeitpunkt des letzten Heftes leider noch nicht fertig,
+sonst hätten die Änderungen noch vor Abdruck in den Schaltplan
+eingetragen werden können.
+</p>
+<p>
+Hier nun die genaue Liste der Bauteile, die im
+<a href="../../../07/30/text/#article1">letzten Heft</a> dem
+Schaltplan noch nicht eindeutig zugewiesen wurden:
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p id="article3">
+R6 - R13 &nbsp; 8fach SIL 150 &Omega;<br>
+R16, R23 &nbsp; 10K<br>
+R3, R4, R5, R17, R22, R24, R25, R26, R28,
+R29 u. 4*1K (SIL) &nbsp; 1K<br>
+R18, R19, R21 &nbsp; 100 &Omega;<br>
+R14, R15 &nbsp; 330 &Omega;<br>
+R1, R2 &nbsp; 220K<br>
+<br>
+CB &nbsp; 4* 100uF<br>
+CT &nbsp; 10 uF<br>
+C3 &nbsp; 1 uF<br>
+C5, C6, C7 &nbsp; 100pF<br>
+C2 &nbsp; 15 uF<br>
+C1 &nbsp; 47 uF<br>
+Q1 &nbsp; 16MHz Quarz
+</p>
+<p>
+Zur Treibersoftware erfahren Sie etwas in dem Artikel
+&quot;<a href="../../06/text/#article1">Seite für Floppy-Einsteiger</a>&quot;
+an anderer Stelle dieses Heftes. Als
+Programmgrundlage dazu dient das gut kommentierte Listing in 
+<a href="../../../05/10/text/#article1">Heft 5/83 Seite 10</a>.
+(Beachten: die Zeile &quot;inr hl ;niederes Byte von
+Adresse&quot; in der Interruptroutine muß gestrichen werden!) &nbsp; Red.
+</p>
+
+<p id="article2">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

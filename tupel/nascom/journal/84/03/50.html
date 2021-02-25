@@ -1,0 +1,51 @@
+<?php columnStartJustify(2, 2); ?>
+
+<table class="tab-justify donthyphenate">
+<tr><td COLSPAN="2">POINT(X,Y: INTEGER): BOOLEAN:</td></tr>
+<tr><td></td><td>Test, ob Punkt gesetzt, wenn ausserhalb des Schirms, liefert POINT den Wert TRUE.</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td COLSPAN="2">DRAWTO(X,Y: INTEGER):</td></tr>
+<tr><td></td><td>Linie vom aktuellen Punkt aus nach (X/Y). Die Linie kann beliebig lang sein.</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td COLSPAN="2">LINE(X0,Y0,X1,Y1: INTEGER; COLOUR: DRAWMODE):</td></tr>
+<tr><td></td><td>Linie von (X0/Y0) nach (X1/Y1). COLOUR hat gleiche Bedeutung, wie bei PLOT.</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td COLSPAN="2">SECTOR(X, Y, RADIUS: INTEGER; POSITION: SECTORPOS; COLOUR: DRAWMODE):</td></tr>
+<tr><td></td><td>Achtelkreis.</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td COLSPAN="2">CIRCLE&laquo;, Y, RADIUS: INTEGER; COLOUR: DRAWMODE):</td></tr>
+<tr><td></td><td>Kreis.</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td COLSPAN="2">SAVE(VAR F: PICTURE);</td></tr>
+<tr><td COLSPAN="2">LOAD (VAR F: PICTURE):</td></tr>
+<tr><td>&nbsp;</td><td>
+Bild auf Disk speichern bzw. von Disk laden. Als secondary-name
+bitte PIC verwenden, z. B.: A:CIRCLE.PIC.
+</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td>HARDCOPY:&nbsp;</td><td>
+Ausdrucken eines Bilds auf dem Drucker. Dazu wird der LST:-Kanal des
+BIOS verwendet. Die Drucker-Routine darf jedoch keine Interpretation
+der Zeichen vornehmen (z. B.: unterdruecken von LF etc.), sonst werden
+die Daten fuer das Bild verfaelscht und der Drucker laeuft amok.
+Deshalb wird die Druckausgabe auch nicht ueber ein File, sondern ueber
+ein Maschinenprogramm bewerkstelligt, das Sie selbst aendern muessen,
+je nach Lage des BIOS.
+</td></tr>
+</table>
+
+<h1 id="article1">
+Miniprogramme
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-50-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-50-2.jpeg"); ?>
+</p>
+<p id="article2">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-50-3.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>

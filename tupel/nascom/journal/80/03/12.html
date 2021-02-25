@@ -1,0 +1,42 @@
+<?php columnStart(1); ?>
+<h4 id="article1"><u>Verbesserung der Kompatibilität des Disassembler-Programmes
+mit ZEAP beim NASCOM&nbsp;1</u></h4>
+
+<p>Übersetzt man mit dem Disassembler ein größeres (~&nbsp;1K&nbsp;)
+Maschinencodeprogramm in ein Quellprogramm zurück, und liest es mit
+ZEAP wieder in den NASCOM&nbsp;1 ein, so stellt man fest, daß
+nach einer
+gewissen Anfangsphase, in der alles korrekt verläuft, die
+einzelnen
+Zeilen nicht mehr vollständig erfasst und auf den Bildschirm
+geschrieben werden.
+</p>
+<p>
+Dies rührt daher, daß ZEAP eine bestimmte Zeit
+benötigt,
+um eine Zeile, die eingelesen wurde, in den Speicher zu laden. Diese
+Zeit
+wächst mit der Länge des Quellprogrammes. Deshalb empfiehlt es
+sich ja auch, vor Abspeichern eines Quellprogrammes auf
+Kassettenrecorder
+mit dem Q-Befehl eine Pause nach jeder Zeile zu programmieren. Das
+Disassembler-Programm erzeugt ebenfalls eine solche Pause, die aber
+ziemlich
+kurz ist. Bei kleinen Programmen spielt dies keine Rolle, da hier ZEAP
+noch
+mitkommt. Für größere Programme ist es aber wichtig, den
+Zeitfaktor bzw. den Schleifenzähler, der bei 41C6h und 41C7h in das
+Register A geladen wird, zu erhöhen. Man ersetzt also den Wert 20h,
+der im Speicherplatz 41C7h des Disassembler-Programmes steht, durch
+einen
+höheren Wert. Für ein zu disassemblierendes Programm von 1K
+reicht
+ein Wert von 80h aus. Man kann ihn jedoch bis zu 00 erhöhen, was
+einer
+Pause von rund zwei Sekunden nach jeder Zeile entspricht.
+</p>
+<p>
+Peter Bentz
+</p>
+
+<?php columnEnd(1); ?>

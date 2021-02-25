@@ -1,0 +1,66 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<h4>
+<u>Programmbeschreibung</u>
+</h4>
+<p>
+Das Programm zur Druckausgabe muß in den Zeilen 80 und 320 noch mit
+Routinen zum Ein- bzw. Ausschalten des verwendeten Druckers versehen
+werden. Hier können z.B. mit DOKE Befehlen die NASCOM &quot;X20&quot;
+Routinen aktiviert oder deaktiviert werden.
+</p>
+<p>
+Vor dem Programmstart muß der Inhalt des Grafikgenerators in den
+Speicher ab Adresse K2 kopiert werden. K2 muß außerhalb der beim
+Basicstart angegebenen Speichergröße liegen.
+</p>
+<p>
+Nach Starten des Programms gibt der Drucker die Grafikzeichen in
+folgender Form aus:
+</p>
+<pre class="donthyphenate">
+Adr.  Hex Dez
+----------------
+z.B.  ADH 173
+
+      ********
+      ******
+      *****
+      ***
+      **
+      *
+      *
+      *
+      **
+      ***
+      ****
+      *****
+      ******
+      ********
+</pre>
+<p>
+die Anzahl der Zeichen pro Papierbreite kann im Programm mit K3
+vorgegeben werden.
+</p>
+<p>
+Das Programm zum Erstellen, Testen oder Ändern eines beliebigen
+Grafikzeichensatzes fragt nach dem Start ab, ob ein Grafikzeichen aus
+dem Speicher (ab Adresse K2) aus- oder eingegeben werden soll, was mit
+&quot;A&quot; oder &quot;E&quot; zu beantworten ist. Danach wird nach
+der hexadezimalen Zeichenadresse gefragt, die entsprechend von 80h-FFh
+angegeben werden kann.
+</p>
+<p>
+Bei Ausgabe wird das entsprechende Grafikzeichen in einer 8*14 Matrix
+links auf dem Bildschirm ausgegeben und dann eine neue Eingabe erwartet.
+</p>
+<p>
+Bei Eingabe wird eine Matrix aus 8*14 &quot;*&quot; links auf dem
+Bildschirm dargestellt und zu
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,124 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+Inversionsprobleme
+</h1>
+<p>
+Nach Einbau der Zusatzschaltung für die Reversdarstellung
+(<a href="../../../../80/04/08/text/#article2">Heft 4, 80 S. 8-9</a>)
+fiel mir ein unangenehmer Effekt auf: Beim Arbeiten mit dem
+Assembler (Zeap 1.0) stehen, z.B. bei der Eingabe mit dem I-Kommando,
+hinter den eingegebenen Zeichen lauter &quot;reverse Blanks&quot;. Dies
+ist wegen der starken Kontrastunterschiede ziemlich hinderlich. Der
+Mangel läßt sich &quot;beheben&quot;, indem man die Schaltung mit einem
+zusätzlichen Schalter versieht.
+</p>
+<p>
+Man legt nun einfach beim Arbeiten im Assembler den Schalter um, da
+hier die Reversdarstellung nicht benötigt wird.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+</p>
+
+<table style="margin-left: auto; margin-right: 0"><tr><td>
+<p>
+HARALD MOLLE DF7SQ<br>
+___________ __/_<br>
+______ BLAUSTEIN<br>
+Tel. ___ __/__ __<br><br>
+</p>
+</td></tr></table>
+
+<?php nowrapStart(); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+<p>
+Und wieder haben wir einige dieser unangenehmen Wanzen erwischt.
+</p>
+<p>
+Im Programm &quot;Reaktionszeitmesser&quot; aus
+<a href="../../../02/06/text/#article2">Heft 2/81 Seite 6/7</a>
+sind folgende Fehler zu berichtigen:
+</p>
+<p>
+Startadresse nicht 0F18 sondern 0E18
+</p>
+<p>
+In Adr. 0F82 steht &quot;63&quot;. Es muß &quot;62&quot; heißen.
+</p>
+<p>
+Im &quot;Sortierprogramm&quot; aus
+<a href="../../../../80/05/12/text/#article2">Heft 5/80</a> sind folgende Befehle zu
+ändern:
+</p>
+<p>
+0D28 &nbsp; &nbsp; falsch D0 &nbsp; richtig &nbsp; DD<br>
+0D2E &nbsp; &nbsp; falsch 30 &nbsp; richtig &nbsp; 3D<br>
+0D5A &nbsp; &nbsp; falsch 30 &nbsp; richtig &nbsp; 3D
+</p>
+<p>
+Wird hoffentlich nicht wieder vorkommen!
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+
+<?php nowrapStart(); ?>
+<table style="width: 100%">
+<tr><td style="vertical-align:bottom; padding: 0; margin: 0">
+<h3 style="margin: 0" id="article2">
+DEZ HEX UMWANDLUNG
+</h3>
+</td><td style="text-align:right">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-3.jpeg"); ?>
+</td></tr>
+</table>
+
+<p>
+BASIC-Programm:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-4.jpeg"); ?>
+<p>
+Maschinenprogramm (NAS-SYS):
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-5.jpeg"); ?>
+<p>
+Wie arbeitet das Programm?
+</p>
+<p>
+A ist eine Integer-Dezimalzahl, die das
+BASIC-Programm anfordert. Das Maschinenprogramm, dessen Startadresse in
+USRLOC (1004H) eingetragen werden muß, erhält vom Unterprogramm DEINT
+die Zahl A in HEX-Form. Unterprogramm TBCD3 zeigt den HEX-Wert an.
+</p>
+<?php nowrapEnd(); ?>
+
+<h4>
+<u>HEX-DEZ-Umrechnung</u>
+</h4>
+<p>
+Dieses BASIC-Programm ist noch kürzer:
+</p>
+<pre class="donthyphenate">
+  10  PRINT USR(A)
+</pre>
+<p>
+A ist eine (beliebige) Dummy-Variable. Maschinenprogramm NAS-SYS):
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-7.jpeg"); ?>
+<p>
+Nach &quot;RUN&quot; erscheint in der nächsten Zeile ein blinkender
+Cursor; jetzt wird die HEX-Zahl eingegeben und die Entertaste betätigt.
+</p>
+<p>
+Die nächste Zeile bringt dann zuerst die HEX-, dann die entsprechende
+Dezimalzahl.
+</p>
+<p>
+Auch hier muß natürlich USRLOC entsprechend der Startadresse geändert
+werden!
+</p>
+<p style="text-align:right">
+U. Wurditsch
+</p>
+<?php columnEnd(2); ?>

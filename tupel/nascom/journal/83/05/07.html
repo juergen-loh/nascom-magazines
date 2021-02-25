@@ -1,0 +1,112 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php boxStart("RB"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php boxEnd(); ?>
+<h1 id="article1">
+Greyplot
+</h1>
+<h3>
+von JÜRGEN WEIERMANN
+</h3>
+<p>
+Bei dem Mini-Programm GREYPLOT handelt es sich um eine gekürzte Version
+dessen, was ich zur Zeit weiterentwickeln möchte. Benutzt werden soll
+dieses Programm in einer Drucker-Ansteuerung, die es erlaubt mit einem
+normalen Matrix-Drucker und der Grafik-Option waagerecht und
+horizontal, vorwärts und rückwärts Schrift zu drucken. Dabei soll die
+Schrifthöhe und die Schriftbreite variabel bleiben. Kurzum, alle
+Faktoren sollen veränderlich und vom Benutzer definierbar sein. Nun,
+das Programm soll überall da Einsatz finden, wo z.B. große
+Ueberschriften mit besonderen Schrifttypen gebraucht werden, Bedrucken
+von Deckblättern für Skripte etc.. Es gibt nun Schrifttypen, die einen
+räumlichen Effekt haben. Um diesen Effekt auch mit dem Matrix-Drucker
+verwirklichen zu können, kann man sich eines sehr einfachen Tricks
+bedienen, der durch das Programm Greyplot in sehr einfacher Weise
+Anwendung findet. Vor dem Start sollte man ab der Adresse, die man in
+Zeile 120 einsetzt, einen ASCII-String laden. Der Trick ist folgender
+und einigen von Ihnen sicherlich schon bekannt: nach dem Ausdruck einer
+Zeile (ASCII-String) sendet man zuerst kein LINE-FEED an den Drucker,
+sondern erneut einen ASCII-String, der aber diesmal nur noch die
+Zeichen enthält, die im Bild dunkler erscheinen sollen. Macht man dies
+mit genügend Wiederholungen, kann man bis zu 5 sehr deutliche Grauwerte
+erhalten. Dazwischen liegen sehr viele feine Abstufungen.
+Experimentieren Sie ein wenig, indem Sie z.B. den ASCII-String
+verlängern und/oder das Register B ab Zeile 190 mehrmals erniedrigen
+lassen. So wie das Programm abgedruckt ist, liefert es Ihnen einen
+String von 20 Zeichen mit einer Aufloesung von 20 sehr feinen
+Graustufen, deren Unterschied bei Tageslicht schon kaum mehr zu
+erkennen sind (dies hat sicherlich, bezogen auf einen Ausdruck eines
+von einer Videokamera aufgenommen Bildes, etwas Angenehmes), halten Sie
+nun das Blatt vor eine Lampe, dadurch werden die Abstufungen etwas
+deutlicher. Wenn man sich nun einmal überlegt, daß man diese Idee nun
+auch auf die Grafik-Fähigkeiten des Matrix-Druckers anwenden kann, so
+ergibt dies die Möglichkeit ein Bild in hoch auflösender Druckweise und
+mit Grauwerten zu erstellen. Ja, die Idee ging bei mir so weit, ein
+Programm zu erstellen, welches beim Drucken zwei Parameter verarbeiten
+kann. Erstens die Bildinformation, welche im RAM abgespeichert ist, und
+zweitens die Information über die Intensität eines jeden
+darzustellenden Punktes, natürlich auch im RAM abgelegt. Das erste
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Egebniss dieser Idee ist das Programm
+<a href="../../../06/26/text/#article2">PACOH</a>,
+sozusagen ein
+Abfall-Produkt, was ich Ihnen aber trotzdem nicht vorenthalten wollte.
+Bei dem Zusammenschneiden beider &quot;Programmideen&quot; gibt es
+immer noch entscheidende Probleme, denn schließlich soll das Programm
+nicht für lange Wartezeiten sorgen, diese schafft schon der Drucker zur
+Genüge. Sicherlich ist die Wahl der Auflösung, also die Anzahl der
+verwendeten Graustufen und deren technische Abstände, d.h. wieviele
+Oruckvorgänge zwischen den einzelnen Stufen durchzuführen sind (1.Stufe
+nach dem 1.Druck; 2.Stufe nach dem 5.Druck etc.), eine schwierige
+Sache. Sie ist auf jeden Fall von folgenden Faktoren abhängig:
+</p>
+<ol>
+<li>der aufzuwendenden Zeit;</li>
+<li>dem Grad des erzielten Effektes;</li>
+<li>den Intensitätsgrad des abzudruckenden Bildes.</li>
+</ol>
+<p>
+Weil die Entscheidung zu diesem Punkt sicherlich nicht leicht ist, habe
+ich dieses Programm geschrieben. Versuchen Sie nun einmal, durch viel
+Ausprobieren, die richtige (Auf-)Lösung zu finden.
+</p>
+<p>
+Viel Spass!
+</p>
+
+<?php boxStart("LR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<h1 id="article2">
+Floppy-Controller
+</h1>
+<h2>
+für 8" SD/DD und SS/DS Laufwerke
+</h2>
+<h3>
+von A.ZIPPEL/D.OBERLE
+</h3>
+<h4>
+Anwendungsmöglichkeiten
+</h4>
+<p>
+Die im Schaltplan
+(<a href="../../09/text/#article1">Bild 1</a>)
+dargestellte Floppycontroler-Schaltung
+eignet sich für den Betrieb von 8&quot;-Floppylaufwerken. Die Formate
+können frei programmiert werden. Es lassen sich damit Single Density
+(SD), Double Density (DD) und sowohl Ein-Kopf- als auch
+Doppelkopf-Laufwerke (SS bzw DS) betreiben.
+</p>
+<p>
+Die verfügbaren Treiberroutinen arbeiten mit Interuptsteuerung (NMI und
+MI) über PIO bei einer Systemtaktfrequenz von 4&nbsp;MHz und eignen sich für
+den Betrieb mit dem Betriebssystem
+<?php externalLink("CP/M","",""); ?>.
+</p>
+
+<?php columnEnd(2); ?>

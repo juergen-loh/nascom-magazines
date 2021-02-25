@@ -1,0 +1,185 @@
+<?php columnStart(1); ?>
+<h1 id="article1">LIFE</h1>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<h4><u>Das Spiel LIFE für NASCOM&nbsp;1</u></h4>
+
+<p>
+Dieses Spiel wurde im Jahre 1967 von John Conway entwickelt
+und erfreut sich gerade unter Computeranwendern großer
+Beliebtheit. Hier dem Spiel steht der Gedanke, Geburt, Leben und
+Vergehen in einem biologischen Organismus zu simulieren. Dazu
+gibt Conway (siehe: M.Gardner in
+&quot;<?php externalLink("Scientific American, Issue 223","Scientific American",""); ?>&quot; 223,
+oct.120-123(1970) und ebd. 224, feb.112-117 (1971)) einen
+Satz einfacher Regeln an, die sich auch in einem Diagramm
+darstellen lassen:
+</p>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.gif"); ?>
+</p>
+
+<ol>
+<li>
+<p>
+<u>Überleben</u>
+</p>
+<p>
+Eine Zelle, die zwei oder drei Nachbarn hat, überlebt bis zur
+nächsten Generation.<br><br>
+</p>
+</li><li>
+
+<p>
+<u>Tod</u>
+</p>
+<p>
+Eine Zelle mit vier oder mehr Nachbarn stirbt infolge
+&quot;Über&shy;völ&shy;ke&shy;rung&quot;,
+eine Zelle mit nur einem oder keinem Nachbarn an Vereinsamung.<br>
+</p>
+</li><li>
+
+<p>
+<u>Geburt</u>
+</p>
+<p>
+Jeder leere Platz mit genau drei Nachbarn wird in der nächsten
+Generation mit einer Zelle besetzt.
+</p>
+</li>
+</ol>
+
+<h4><u>Programm</u></h4>
+
+<p>
+Untenstehend wird sowohl ein Hex-Dump des Programmes als auch
+ein kommentiertes Assemblerlisting angegeben.
+</p>
+<p>
+Das Programm wird bei Adresse 0C7C gestartet. Es läuft mit
+NASBUG&nbsp;T4 und dem 1k Monitorprogramm NASBUG&nbsp;T2.
+</p>
+<p>
+Folgende Tastenfunktionen können genutzt werden:
+</p>
+
+<ol>
+<li>
+<p>
+Zur Eingabe des Musters, mit dem das Programm arbeiten soll:<br><br>
+</p>
+</li>
+</ol>
+
+<table>
+	<tr>
+		<td style="width: 40%">NEW LINE</td>
+		<td>&nbsp;</td>
+		<td>arbeitet wie gewohnt</td>
+	</tr>
+	<tr>
+		<td>SHIFT+BACKSPACE</td>
+		<td></td>
+		<td>arbeitet wie gewohnt</td>
+	</tr>
+
+<?php columnChange(2, "</table>", "<table>"); ?>
+
+	<tr>
+		<td style="width: 40%">SPACE</td>
+		<td>&nbsp;</td>
+		<td>Der Cursor springt zwei Plätze vorwärts. (Um ein
+			quadratisches Muster erstellen zu können.)
+		</td>
+	</tr>
+	<tr>
+		<td>BACKSPACE</td>
+		<td></td>
+		<td>Der Cursor springt um zwei Plätze zurück. Grund
+			wie bei &quot;SPACE&quot;.
+		</td>
+	</tr>
+</table>
+
+<p>
+2. Zellen setzen:
+</p>
+
+<p>
+Um Zellen zu setzen, wird der Buchstabe &quot;O&quot;
+eingegeben.
+</p>
+
+<p>
+3. Kommandotasten:
+</p>
+
+<p>
+Die Kommandotasten werden direkt abgefragt, d.h., es muß kein
+NEWLINE danach kommen.
+</p>
+<p>
+S &nbsp; &nbsp; Schrittweise Ausführung<br>
+E &nbsp; &nbsp; Kontinuierliche Ausführung<br>
+H &nbsp; &nbsp; Halt
+</p>
+<p>
+Programmparameter:
+</p>
+
+<p>
+Die Geschwindigkeit, mit der eine Generation in die nächste
+umgewandelt werden soll, kann man durch Wahl des
+Spei&shy;cher&shy;in&shy;hal&shy;tes
+der Speicherzelle 0CCCh bestimmen.
+</p>
+<p>
+Der Speicherbereich von 0D60h bis 0EB8h wird als
+Zwi&shy;schen&shy;spei&shy;cher benötigt.
+</p>
+
+<h4><u>Programmablauf</u></h4>
+
+<p>
+Starten Sie das Programm und geben Sie ein beliebiges Mu&shy;ster
+von &quot;0&quot; ein, das das Programm entwickeln soll. Dann betätigen
+Sie entweder die Taste &quot;S&quot; (schrittweiser Ablauf) oder
+&quot;E&quot; (kontinuierlicher Ablauf). Wir haben bei diesem
+Spiel übrigends ein Spielfeld von 15 x 23 Zellen. (Annähernd
+quadratisch.)
+</p>
+<p>
+Ein schönes Testbeispiel für das Programm ist der
+&quot;Blinker&quot;.
+Das ist eine Konfiguration, die nur zwei Zustände kennt, die
+dann abwechselnd auftreten:
+</p>
+
+<table>
+	<tr>
+		<td style="width: 50%"></td>
+		<td style="vertical-align:middle">OOO</td>
+		<td style="width: 20%"></td>
+		<td>O<br>
+			O<br>
+			O</td>
+	</tr>
+</table>
+
+<p>
+LIFE ist in manchen Computerzeitschriften zu einer
+&quot;Fast-Wis&shy;sen&shy;schaft&quot;
+erhoben worden, zumindest aber zu einem recht geistreichen Spiel.
+Da gibt es &quot;Segler&quot;, die langsam über den Bildschirm
+gleiten, da gibt es Gebilde, die periodisch Segler oder
+&quot;Raumschiffe&quot;
+ausstoßen und die tollsten Formen von oszillierenden Figuren.
+Die Möglichkeiten sind unerschöpflich. Probieren Sie&rsquo;s mal
+aus??
+</p>
+
+<?php columnEnd(2); ?>

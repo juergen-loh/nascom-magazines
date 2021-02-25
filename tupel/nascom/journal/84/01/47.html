@@ -1,0 +1,94 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+anstelle der Tastatur von der Diskette lesen, oder die Diskette
+anstelle eines Druckers etc, als Ausgabekanal benutzen. Die Ausgabe ist
+einfach, beim Einlesen muß man aber beachten, daß NASSYS im
+Editiermodus eingelesene Zeichen als Befehle interpretiert und auch
+versucht, sie auszuführen!
+</p>
+<p>
+Nach Ausführung des I- oder O-Befehls wird
+nach NASSYS gesprungen. Wenn Sie nun die Tastatur benutzen, wird
+automatisch auf die Diskette geschrieben. Sollten Sie ein Programm
+starten, das die Disketten-Ausgaberoutine benutzen soll, so wird eben
+auch der Startbefehl auf der Diskette gespeichert.
+</p>
+<p>
+Rückkehr zu EMDOS
+schließt die &quot;geöffnete&quot; Datei erst wieder ab. Vorher dürfen
+Sie nicht die Diskette wechseln, da sonst auf der neuen Diskette wild
+herumgeschrieben wird!
+</p>
+<p>
+Im folgenden finden Sie ein Programm, das von der Diskette auf den
+Bildschirm liest. Es muß allerdings noch optimiert werden, da es nur
+200 Bytes liest und dann auf einen Tastendruck wartet. (Dies, um
+nicht gleich mehrere Bildschirme hintereinander vollzuschreiben). Ich
+wollte mit der Cursoradresse (C29H) arbeiten, um festzustellen, wann
+der Bildschirm voll ist, aber mit EMDOS habe ich das auf die Schnelle
+nicht richtig in den Griff bekommen. Wer macht&rsquo;s?
+</p>
+<p id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-1.jpeg"); ?>
+</p>
+<p>
+Auf der Diskette, die wir zu diesem Heft anbieten, befindet sich als
+Hexdump die Version READIN.NAS. Damit kann man die Dokumentationen auf
+der Diskette, die nur einen
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Bildschirm umfassen, einwandfrei einlesen. Für längere Texte müßte aber
+READIN.ASS verwendet werden, das wie oben beschrieben arbeitet.
+</p>
+<h4 id="article3">
+EMDOS und MASCHINENPROGRAMME
+</h4>
+<p>
+Wenn EMDOS von Maschinenprogrammen benutzt werden soll, wird der Akku
+jeweils mit der benötigten Fuktionsnummer geladen und dann ein CALL
+nach C1DH ausgeführt (=ARG9+1).
+</p>
+<p>
+So würde die Folge
+</p>
+<pre class="donthyphenate">
+LD A,#61
+CALL #C1D
+</pre>
+<p>
+eine Datei auf die Diskette schreiben.
+</p>
+<p>
+Allerdings sind dabei immer
+mehrere Parameter an EMDOS zu übergeben. Ich habe selbst noch nicht
+EMDOS in ein Maschinenprogramm eingebunden. Bisher fehlte die Zeit.
+Vielleicht versucht&rsquo;s mal einer der Leser, damit wir im nächsten Heft
+ein kleines Programm mit Diskettenbenutzung veröffentlichen können.
+Hier nun die Funktionsnummern und die zugehörigen Aktionen von EMDOS:
+</p>
+
+<table>
+<tr><td><p class="donthyphenate">FIREAD&nbsp;&nbsp;</p></td><td><p>#60 File lesen<br>HL=Filename; DE=Ladeadresse; BC=max.Länge</p></td></tr>
+<tr><td><p>FIWRI</p></td><td><p>#61 File schreiben<br>HL=Filename; DE=Adresse<br>BC=Länge</p></td></tr>
+<tr><td><p>FILOAD</p></td><td><p>#62 File laden<br>HL=Filename<br>DE=Ladeadesse oder -1 (wenn abgespeicherte Adresse</p></td></tr>
+<tr><td><p>FISAVE</p></td><td><p>#63 File abspeichern<br>HL=Filename&nbsp;;DE=Adresse<br>Fileheader muß versorgt sein</p></td></tr>
+<tr><td><p>FIHEA1</p></td><td><p>#64 Fileheader versorgen 1<br>HL=Ladeadresse; DE=Länge</p></td></tr>
+<tr><td><p>FIHEA2</p></td><td><p>#65 Fileheader versorgen 2<br>HL=Startadresse; C=Ladefunktion</p></td></tr>
+<tr><td><p>FIHEAR</p></td><td><p>#66 Fileheader lesen<br>HL=Ladeadresse; DE=Länge BC=Startadresse ------</p></td></tr>
+</table>
+
+<p>
+Soweit ich das verstanden habe, ist ---
+------ ------ Adresse in HL, an der der Name
+im Speicher beginnt. Der Name wird durch Space beendet.
+</p>
+<p>
+Und nun drücke ich die Daumen, für eigene Programmierversuche mit EMDOS.
+</p>
+<p id="article2">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-2.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

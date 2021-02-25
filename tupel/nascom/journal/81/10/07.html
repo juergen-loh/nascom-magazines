@@ -1,0 +1,98 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+GRAPHICS-GENERATOR
+</h1>
+<h3>
+VON Günter Böhm
+</h3>
+<br>
+<p>
+Kürzlich habe ich einen Graphics Generator für den NASCOM&nbsp;2 erworben,
+um meinen NASCOM&nbsp;1 um die Graphic Möglichkeiten zu erweitern, Dabei ist
+mir aufgefallen, daß dieser Generator bis auf die Pins 19 und 21
+pinkompatibel mit den Eproms auf meiner Grundplatine ist. So habe ich
+den Generator einfach einmal in einen freien Epromsockel meiner
+Erweiterung gesteckt und mit folgendem Programm die Nullen und Einsen
+durch den Drucker in schwarze und weiße &quot;Punkte&quot; verwandelt.
+Durch Start bei C80 und als zweiten Parameter Eingabe der Startadresse
+im EPROM wird ein Zeichen von 8 Punkten Breite und 16 Punkten Höhe
+abgebildet.
+</p>
+<p>
+Wenn ein Charactergenerator aber nur ein einfaches EPROM
+ist, warum sollte man sich dann nicht seinen eigenen Charactergenerator
+programmieren?
+</p>
+<p>
+Da, wie bereits erwähnt, ein Character aus 8 Spalten und 16 Reihen
+besteht, sollte man sich für selbstprogrammierte Zeichen zunächst ein
+&quot;Schnittmuster&quot; aufzeichnen, und darin die Punkte eintragen,
+die gesetzt werden sollen. Dann wird ein beliebiger Bereich im RAM
+gewählt und von links oben beginnend Zeile für Zeile des Characters als
+Byte eingegeben, wobei jeder gesetzte Punkt als 1 und jeder
+nichgesetzte als 0 betrachtet wird.
+</p>
+<p>
+Die Zeile &nbsp;.&nbsp;.&nbsp;..&nbsp;.&nbsp; wird als 10101101
+betrachtet und als AD gespeichert. Entsprechend verfährt man mit den
+folgenden 15 Zeilen. Daß ein Zeichen exakt 16 Bytes benötigt, macht die
+Speicherung übersichtlicher. Beginnt Ihr &quot;Character-RAM&quot; z.B.
+bei 0D00, so folgt das nächste Zeichen in 0D10, dann 0D20 etc. Man
+verliert also nicht den Überblick.
+</p>
+<p>
+Wenn Sie eine Reihe von Zeichen programmiert haben, müssen sie in ein EPROM
+<?php externalLink("2716"); ?>
+&quot;geschossen&quot; werden, (Maximal sind 128 Zeichen
+möglich), Nach Einstecken des EPROMS in den Graphics Sockel des NASCOM
+2 können Ihre Zeichen abgebildet werden.
+</p>
+<p>
+NASCOM&nbsp;1 Besitzer müssen
+leider in der Lage sein, ein
+<?php externalLink("2732"); ?>
+EPROM programmieren zu können, um mit
+Hilfe der Graphic Karte von Herrn Ploß eigene Zeichen herstellen zu
+können. Die Fassung des NASCOM&nbsp;1 ist leider
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+für 2716 nicht pinkompatibel.
+</p>
+<p>
+Es wurde aber schon einmal eine Graphic
+Karte von MKS angeboten, vielleicht kann die ein selbstprogrammiertes
+EPROM aufnehmen? Ich bin darüber leider nicht informiert.
+</p>
+<p>
+Vor dem
+Brennen des EPROMs empfiehlt es sich, mit obigem Druckprogramm die
+selbsterstellten Zeichen auszudrucken. Man erhält einen Eindruck Ihrer
+Gestalt und kann Fehler verbessern.
+</p>
+<p>
+Drücken von NEW LINE bildet übrigens den nächsten Character ab, eine
+beliebige Taste läßt zum Monitor zurückspringen.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+
+<?php boxStart("TRB"); ?>
+<table style="width: 100%">
+<tr><td colspan=2><?php imageinsert($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?></td></tr>
+<tr><td style="width: 60%"><?php imageinsert($imagepath, $year, $issue, $page, "Image-07-3.jpeg"); ?></td>
+<td>
+Einige Darstellungen aus
+dem Graphics EPROM, Pin
+19 +5V o.0&nbsp;, Pin 21
+liegt an +5V&nbsp;.
+</td>
+</tr></table>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,158 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+ECB-System
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4>
+Z80 Computer auf
+<?php externalLink("ECB","",""); ?>,
+CP/M lauffähig, NASCOM-kompatibel:
+</h4>
+<p>
+Durch Schwierigkeiten bei der Anpassung der 64k Karte aus
+<?php externalLink("mc","MC"); ?>
+an meinen
+NASCOM-1 habe ich mich im vorigen Jahr entschlossen, einen
+<?php externalLink("Z80","Z&nbsp;80"); ?>
+Computer, möglichst NASCOM-kompatibel, für das Europakartenformat zu
+bauen. Da mein System nun mit den Karten: CPU-CP/M;
+<a href="../../../07/29/text/#article1">Video-48x16</a>&nbsp;;
+<a href="../../../09/18/text/#article1">Keyboardanschluß</a>,
+<a href="../../../09/18/text/#article1">NASCOM-2 Kasetteninterface</a>,
+Waitsignalerzeugung;
+256k RAM Karte;
+<a href="../../../03/05/text/#article1">Programm. Videokarte für 80x24</a>;
+<a href="../../../12/23/text/#article2">IO-Karte</a>, mit 4&nbsp;MHz ohne
+Probleme läuft, stelle ich meine Platinenfolien und die notwendigen
+Unterlagen hiezu gerne den Lesern zur Verfügung. (Die programm.
+Videokarte haben wir schon im
+<a href="../../../03/05/text/#article1">80-Bus Journal 3/83</a>
+vorgestellt. Danke, Herr Schulmeister. &nbsp; Red.)
+</p>
+<p>
+Die einzelnen Karten habe ich für eine händische Durchkontaktierung
+ausgelegt, indem ich bei den IC-Sockeln eine doppelte Lochbelegung
+vorgesehen habe. Wenn man die Durchkontaktierung mit sehr dünnem Draht
+(z.B. Wire-Wrap) vornimmt und diesen auf der Bestückungsseite vor dem
+Verlöten umbiegt, kann man die normalen und billigen IC-Sockel
+verwenden, die Karte erhält ein professionelles Aussehen.
+</p>
+<p>
+Vielleicht ist es der Redaktion &ndash; so wie bei der prog. Videokarte &ndash;
+möglich, durchkontaktierte Karten günstig zu besorgen und abzugeben,
+ansonsten könnte ich gerne ein paar Tips und Tricks für händisches
+Durchkontaktieren schreiben (so eine &quot;selbstgestrickte&quot; Karte
+kommt dann incl. Folie auf ca. 12 bis 15&nbsp;DM., Zeit geht allerdings auch
+einige drauf).
+</p>
+<p>
+Inzwischen läuft bei mir auch eine
+<a href="../../../11/48/text/#article1">24K-EPROM/RAM-Platine</a> (24K ROM oder
+16K ROM/8K RAM); Adressenwahl über DIL-Schalter getrennt für 16/8K. ROM
+ist über Port3,Bit1 auf der Karte ausblendbar. Damit habe ich von
+B000-FFFF alles mit der Firmware belegt, kann diese jedoch jederzeit
+ausblenden. Die Karte ist fehlerfrei. Sollte interesse bestehen, werde
+ich einen Schalt- und Bestückungsplan für das Journal anfertigen.
+</p>
+<p>
+Zwischenzeitlich wurde die
+<a href="../../../09/18/text/#article1">Port0/Cassetten-Interf.-Karte</a> noch mit einer
+RS 232 und 20mA Schnittstelle versehen. Die Belegung des Stecksockels
+PL2 entspricht der des N2-Schaltplanes aus
+<a href="../../../../81/12/44/text/#article1">Journal 12-81</a>. Die
+Einstellung der Funktionsart geschieht über Schalter oder Jumper. (Sehr
+gute Erfahrungen habe ich bis jetzt mit einzelnen IC-Fassungskontakten
+gemacht, in die Drahtabfälle von Widerständen oder Kondensatoren als
+Brücken gesteckt werden. Der Systemtakt ist über diese Jumperart nun
+auch leichter einzustellen).
+</p>
+<h4>
+Wichtige Anmerkung der Redaktion:
+</h4>
+<p>
+Um die von Karl Schulmeister erstellten Schaltungen als preisgünstige
+(fertig durchkontaktierte!) Platinen anbieten zu können, müssen wir
+eine Mindestmenge anfertigen lassen. Wenn Sie also daran interessiert
+sind, daß eine Kleinserie in Auftrag gegeben wird, schreiben Sie uns
+bitte (möglichst sofort; spätestens aber bis Ende Juli 83), an welcher
+Platine Sie Interesse haben.
+</p>
+<p>
+Der Preis würde maximal DM&nbsp;50.&ndash; (inkl. Mehrwertsteuer, Verpackung,
+Porto etc.) betragen.
+</p>
+<h4>
+CPU-Platine:
+</h4>
+<p>
+Die Karte weist sowohl eine Pufferung des internen, als auch des
+externen Daten- und Adressbusses auf, wobei durch die logischen
+Verknüpfungen ein gegenseitiges Treiben verhindert wird.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Die Ausblendung der Karte (einschl. der
+<a href="../../../07/29/text/#article1">ECB-Video-Karte 48x16</a>&nbsp;)
+und damit die
+<?php externalLink("CP/M","",""); ?>-Fähigkeit
+erfolgt über das gesetzte Bit&nbsp;1 des Port&nbsp;3
+(LS&nbsp;173). Dieses Bit wird mit dem MRQ-Signal UND-verknüpft (LS&nbsp;32-negative
+Logik) und dem Adressdekodierungsbaustein LS&nbsp;85 zugeführt.
+</p>
+<p>
+Der LS&nbsp;137 ist als Ausgabeport eingesetzt und erzeugt zusätzlich mit
+Bit&nbsp;3 und 5 die Pseudoadressen A-16 und A-17 für die ECB-RAM-Karte. Bit&nbsp;7
+ist für den Benutzer frei und auf einen Lötstift herausgeführt. Das
+CE-Signal für die ECB-Video-Karte 48x16 wird über Pin&nbsp;25a der 64poligen
+Anschlußleiste der Videokarte zugeführt, auf dieser entfallen dann der
+vierpolige DIL-Schalter, sowie der LS&nbsp;85 und LS&nbsp;139. Die CPU-Karte
+erzeugt außerdem das Signal OUTPUT-BUFFER-DISABLE für die 64&nbsp;k-RAM-Karte
+aus der Zeitschrift
+<?php externalLink("mc","MC",""); ?>.
+Durch dieses Signal erfolgt die
+automatische Ausblendung der RAM-Karte, wenn irgend ein Speicherbereich
+auf einer anderen Karte innerhalb der 64&nbsp;k angesprochen wird. Es ist
+das jeweilige CE-Signal, das über eine Open-Collektor-Logik auf Pin&nbsp;26a
+des ECB gelegt wird. Der Arbeitswiderstand hiezu befindet sich auf der
+RAM-Karte. Ich habe mir für mein System die 64&nbsp;k Karte aus
+<?php externalLink("mc","MC"); ?>
+nachgebaut und sie mit 64&nbsp;k Bausteinen
+(<?php externalLink("4164","",""); ?>)
+auf 256&nbsp;k RAMbereich
+aufgestockt. Ein großer Vorteil ist dabei auch die
+Single-5V-Stromversorgung und eine verringerte Störanfälligkeit. Da ich
+das Copyright für diese Karte nicht besitze, kann ich leider meine
+Folie nicht zu Verfügung stellen, die Karte gibt es aber bei den
+Verfassern zu kaufen.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+
+<table>
+<tr><td>Ausblendung&nbsp;</td><td>von 0000-0FFF: Port3,Bit1=1</td></tr>
+<tr><td></td><td>(bei RESET: Bit1=0)</td></tr>
+</table>
+<p>
+Als RAM-Karte ist die 64-K Platine aus
+<?php externalLink("mc","MC"); ?>
+vorgesehen; das Signal
+OUTPUT-BUFFER-DISABLE wird durch die CPU-Karte erzeugt (Pin26a/ECB-Bus).
+</p>
+<p>
+Aus- und Einblendung RAM/ROM erfolgt damit automatisch.
+</p>
+<p>
+Port3, Bit3 und 5: Erzeugung von Adr. 16 und 17 für RAM-Karte. (Bit7
+für User frei).
+</p>
+
+<?php columnEnd(2); ?>

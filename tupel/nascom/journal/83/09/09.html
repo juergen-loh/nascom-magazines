@@ -1,0 +1,97 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageRight($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+<p>
+Von den TypeI-Kommandos habe ich nur die benutzt, die im Listing
+aufgeführt sind (Z100-203).
+</p>
+<p>
+Nun sollten wir an die praktische Erprobung des Controllers gehen.
+</p>
+<p>
+Setzen Sie einen Breakpoint auf 8115H und starten Sie mit E810A. Die
+Initialisierung wird durchgeführt (vorher auf Ihr Laufwerk
+einstellen!), die Schreibdichte auf Single Density eingestellt (für DD
+müßte im Akku 01 stehen), und der Kopf wird auf Spur 00 gefahren. Im
+Akku müßte 00 stehen (kein Error in FDCSTA).
+</p>
+<p>
+Nun entfernen Sie den Breakpoint und setzen ihn auf 811DH. Mit gleicher
+Startadresse wie oben und einem zusätzlichen Argument zwischen 0 und
+27H können Sie den Kopf nun eine der 40 Spuren aufsuchen lassen.
+</p>
+<p>
+Der
+Test der Leseroutine muß aufgeschoben werden, bis eine formatierte
+Diskette vorliegt. Deshalb zunächst zum Formatieren.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-09-2.jpeg"); ?>
+<p style="text-align:center">
+Shugart Vorschlag
+</p>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Bis Zeile 4340 ist der Programmablauf bekannt. Mit dem Aufruf von
+&quot;SAV66&quot; wird die NMI-Routine von NASSYS in Sicherheit
+gebracht und mit &quot;RE66HL&quot; durch eine eigene Routine ersetzt.
+Bei einem NMI, der ja einen Restart bei der Adresse 66H erzeugt, wird
+nun ein OUTI (Inhalt von Register HL nach Port (C) und INC HL)
+abgearbeitet, der die Daten auf die Diskette bringt. Am Ende der
+Routine wird der alte Zustand bei Adresse 66H wiederhergestellt
+(&quot;RE66&quot;).
+</p>
+<p>
+Das Formatieren geht so vor sich, daß im Speicher
+(hier ab 1000H) eine Spur vollständig aufgebaut wird. Diese wird durch
+das WRITE-TRACK-Kommando mithilfe der NMIs in einem Stück auf die
+Diskette geschrieben. Dann wird die nächste Spur aufgebaut etc., bis
+alle 40 Spuren beschrieben sind.
+</p>
+<p>
+Da man die Spuren aber nicht jeweils
+vollständig wieder einlesen möchte (was durch das Kommando E4H möglich
+ist), sondern auch kleinere Datenmengen, sind die Spuren in einzelne
+Sektoren eingeteilt. Und hier beginnt das Problem: Auf welches Format
+möchte man sich einigen? Für uns scheint klar, daß wohl aus der Ecke
+der
+<?php externalLink("mc-CP/M","mc-CP/M",""); ?>-Benutzer
+die meisten mit ähnlich gelagerten Interessen
+kommen, und deshalb wollen wir uns in Zukunft an deren Format
+anschließen. Mehr darüber im
+<a href="../../../12/14/text/#article1">nächsten Heft</a>,
+denn der Aufbau dieses
+Formates ist etwas komplizierter. Hier sollten wir ein Format wählen,
+mit dem wir den Controller testen können, ohne Rücksicht auf
+Kompatibilität.
+</p>
+<p id="article1">
+Mir lagen Disketten vor von folgenden Formaten:
+</p>
+<ol>
+<li>Dieter Oberle Spezialformat (18 Sektoren 128Bytes)</li>
+<li>Osborne 10 Sektoren/256 Bytes;Single Density wie oben</li>
+<li>Osborne Double Density (Format nicht weiter nachgeprüft)</li>
+</ol>
+<p>
+Von diesen Disketten konnte ich die beiden letzteren lesen. Dieter
+Oberles Diskette war nicht zu entziffern, auch eine selbst beschriebene
+in diesem Format brachte keinen Erfolg. Obwohl Dieter schon seit Jahren
+damit arbeitet, scheint sich dieses Format mit unserem Controller nicht
+zu vertragen.
+</p>
+<p>
+Ich habe mich nun zum weiteren Testen für das
+Osborne-Format Single Density entschieden.
+</p>
+<p>
+Den Vergleich mit einem BASF-Vorschlag, der Oberle-Diskette und einem
+Shugart-Vorschlag entnehmen Sie folgender Tabelle:
+</p>
+
+<?php columnEnd(2); ?>

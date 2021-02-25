@@ -1,0 +1,125 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+UNTERPROGRAMME für CLDDOS &ndash; Teil 2
+</h1>
+<h3>
+von Gerhard Baier
+</h3>
+<p class="justify">
+Im <a href="../../../07/05/text/#article1">Teil 1</a>
+wurden Eingabe-Routinen für das NASCOM-CLDDOS-System
+beschrieben. In diesem Teil sollen nun entsprechende Ausgabe-Routinen
+abgedruckt werden. Die erste Routine konvertiert HEX-Ziffern vom
+Binaer- ins ASCII-Format. Dann folgen drei Subroutinen für die Ausgabe
+von HEX-Ziffern, von Bytes und von Worten an das Terminal.
+</p>
+<?php hline("100%", "2"); ?>
+<p>
+$CNVBA<br>
+VERSION 1.0<br>
+20-NOV-80
+</p>
+<p>
+DIE SUBROUTINE $CNVBA KONVERTIERT EINE HEX-ZIFFER VOM BINAER- INS
+ASCII-FORMAT.
+</p>
+<p>
+EINGABE-PARAMETER:<br>
+- A &ndash; ZIFFER IM BINAER-FORMAT
+</p>
+<p>
+AUSGABE-PARAMETER:<br>
+- A &ndash; ZIFFER IM ASCII-FORMAT<br>
+- CARRY=0 &ndash; GUELTIGE ZIFFER IN A<br>
+- CARRY=1 &ndash; KEINE HEX-ZIFFER IN A<br>
+</p>
+<p>
+VERWENDETE REGISTER: AF
+</p>
+<?php hline("100%", "2"); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-18-2.jpeg"); ?>
+<p>
+$OUTHEX<br>
+VERSION 1.0<br>
+25-APR-81
+</p>
+<p>
+DIE SUBROUTINE $OUTHEX GIBT EINE HEX-ZIFFER AN DAS TERMINAL AUS. FALLS
+IM REGISTER A KEINE HEX-ZIFFER ENTHALTEN IST, WIRD EIN '?' AN DAS
+TERMINAL AUSGEGEBEN.
+</p>
+<p>
+EINGABE-PARAMETER:<br>
+- A &ndash; ZIFFER IM BINAER-FORMAT
+</p>
+<p>
+AUSGABE-PARAMETER:<br>
+- A &ndash; ZIFFER IM BINAER-FORMAT
+</p>
+<p>
+VERWENDETE REGISTER: -
+</p>
+<?php hline("100%", "2"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-3.jpeg"); ?>
+
+<?php columnChange(2); ?>
+
+<?php hline("100%", "2"); ?>
+<p>
+$OUTBYT<br>
+VERSION 1.0<br>
+25-APR-81
+</p>
+<p>
+DIE SUBROUTINE $OUTBYT GIBT EIN BYTE IN HEX-DARSTELLUNG AUS.
+</p>
+<p>
+EINGABE-PARAMETER:<br>
+- A &ndash; BYTE
+</p>
+<p>
+AUSGABE-PARAMETER:<br>
+- A &ndash; BYTE
+</p>
+<p>
+VERWENDETE REBISTER: AF
+</p>
+<?php hline("100%", "2"); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-1.jpeg"); ?>
+</p>
+<br>
+<br>
+<br>
+<br>
+<?php hline("100%", "2"); ?>
+<p>
+$OUTWRD<br>
+VERSION 1.0<br>
+25-APR-81
+</p>
+<p>
+DIE SUBROUTINE $OUTWRD GIBT EIN WORD IN HEX-DARSTELLUNG AN DAS TERMINAL
+AUS.
+</p>
+<p>
+EINGABE-PARAMETER:<br>
+- HL &ndash; WORD
+</p>
+<p>
+AUSGABE-PARAMETER:<br>
+- HL &ndash; WORD
+</p>
+<p>
+VERWENDETE REGISTER: -
+</p>
+<?php hline("100%", "2"); ?>
+<br>
+<br>
+<br>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-4.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

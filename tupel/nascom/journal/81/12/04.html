@@ -1,0 +1,124 @@
+<?php columnStartJustify(2, 2); ?>
+
+<pre class="donthyphenate">
+: READSCR  RFLAG PEEKW DUP 48 EQ
+           IF    POP 13 ONE RFLAG POKEW
+           ELSE  INC RFLAG POKEW
+                 CURSADR PEEKW PEEKB THEN ;
+CADR  READSCR CONSTANT RSCR
+</pre>
+<p>
+Nun kann endlich der EDITOR compiliert werden:
+</p>
+<pre class="donthyphenate">
+: EDITOR  REPEAT CIN DUP 16 EQ UNTIL
+          COUT                  LOOP
+          POP RSCR INVAR POKEW
+          INTERPRETER
+          BLADR INVAR POKEW
+          ONE ONE SCREEN              ;
+</pre>
+<p>
+In den EDITOR-Modus kann man ebenfalls mit ENTRY einsteigen. Man kann
+nun beliebig auf den Bildschirm schreiben und dabei auch die
+Cursor-Befehle des Betriebssystems (NAS-SYS!) benutzen. Dabei sollte
+stets die erste Position einer Zeile freibleiben, ebenso die letzte
+(obwohl man dies vermeiden kann, wenn man in der Definition von READSCR
+den Wert 48 durch 49 ersetzt), Mit &quot;CTRL P&quot; kann der
+INTERPRETER aufgerufen werden. Der Cursor muß dabei immer am Anfang der
+Zeile stehen, die ausgeführt bzw. compiliert werden soll. Nach
+Ausführung des Befehls kehrt das Programm wieder in die EDITOR-Schleife
+zurück, wobei der Cursor an den Anfang der ersten Zeile gesetzt wird.
+Es kann zwar der ganze Bildschirm benutzt werden, doch man sollte die
+erste Zeile als Kommandozeile freihalten (besonders, wenn man Befehle
+mehrfach ausführen will). Wenn man die 15. Zeile benutzt, wird der
+Bildschirminhalt nach oben geschoben. Wenn das nicht gewollt wird, muß
+man auch diese Zeile freihalten, Nach einiger Uebung kann man mit dem
+EDITOR sehr schnell arbeiten und wird dann kaum noch den
+Interpretermodus benutzen.
+</p>
+<p>
+Die folgenden Ein- und Ausgaberoutinen für
+Cassettenrecorder und Drucker sind auf den EDITOR-Modus abgestimmt.
+Zunächst brauchen wir einige Hilfsroutinen, die teilweise in
+Maschinencode geschrieben sind und auf das Betriebssystem
+zurückgreifen:
+</p>
+<pre class="donthyphenate">
+MCODE OUTC
+XXXX  21 7A 07 22 73 0C.
+MCODE OUTD
+XXXX  21 7E 07 22 73 0C 21 80
+XXXX  0C 22 78 0C.
+</pre>
+<p>
+(Bei C80H liegt bei mir das Treiberprogramm für den Hofer-Drucker)
+</p>
+<pre class="donthyphenate">
+MCODE OUTN
+XXXX  21 7F 07 22 73 0C 21 2F
+</pre>
+
+<?php columnChangeJustify(2); ?>
+
+<pre class="donthyphenate">
+XXXX  00 22 78 0C.
+: DELAY   1 FOR LOOP ;
+: MOTOR   95 NAS-SYS 5000 DELAY ;
+CADR NORMIN CONSTANT NIN
+</pre>
+<p>
+Die Verzögerungsroutine DELAY besteht
+aus einer einfachen Schleife und erwartet den Endwert der Schleife auf
+dem Stack. Es sind Verzögerungen bis zu einer halben Minute möglich.
+MOTOR schaltet den Recorder ein oder aus. Für die Ausgabefunktionen
+brauchen wir die Routine OUTLINES:
+</p>
+<pre class="donthyphenate">
+: OUTLINES  SWAP LINE ONE FOR
+             REPEAT CIN DUP COUT
+                    13 EQ UNTIL
+             LOOP LOOP           ;
+</pre>
+<p>
+Diese Funktion wird folgendermaßen
+aufgerufen: (Startzeile) (Zeilenzahl) OUTLINES. Nun kann der
+Bildschirminhalt (im EDITOR-Modus!) auf einfache Weise ausgegeben
+werden:
+</p>
+<pre class="donthyphenate">
+: WRITEC  MOTOR OUTC 193 COUT BACKSPACE
+          OUTLINES 197 COUT BACKSPACE
+          OUTN 5000 DELAY MOTOR          ;
+: PRINT   OUTD OUTLINES OUTN             ;
+</pre>
+<p>
+WRITEC schreibt als Startzeichen den Wert des Zeichens &quot;A&quot; +
+128, d.h. mit gesetztem Bit 7 aufs Band und als Schlußzeichen den Wert
+von &quot;E&quot; + 128. Ich hatte es erst ohne Startzeichen versucht
+und dabei häufig Lesefehler erhalten, Nun müssen die auf Cassette
+geschriebenen Programme (oder auch Text, wie dieser Artikel) noch
+eingelesen werden können mit der folgenden Funktion:
+</p>
+<pre class="donthyphenate">
+: READC  NIN INVAR POKEW MOTOR
+      REPEAT CIN DUP 193 EQ UNTIL POP LOOP
+      REPEAT COUT CIN DUP 197 EQ UNTIL LOOP
+      COUT CIN COUT MOTOR ;
+</pre>
+<p>
+Was kann man damit anfangen? In den
+bisherigen Beiträgen wurde vor allem der innere Aufbau dieser
+FORTH-Version behandelt. Wir wollen sie nun einmal von der
+Anwenderseite her betrachten. Wenn man das Programm gestartet hat,
+wartet es auf Eingaben. Dies können Zahlen (in unserem Fall
+auschließlich 16-Bit-Integer/Dezimalzahlen) oder Worte sein. Als
+&quot;Wort&quot; gilt jede Folge von Zeichen, die von Leerzeichen
+eingeschlossen ist. Die Zahlen werden in ihr binäres Äquivalent
+umgewandelt und auf den Stack gegeben. Worte werden im Dictionary
+gesucht. Jedes Wort im Dictionary bezeichnet eine Funktion. (Auch
+Konstante und Variable gelten als Funktion; sie geben den Wert der
+Konstanten bzw. die Adresse des
+</p>
+
+<?php columnEnd(2); ?>

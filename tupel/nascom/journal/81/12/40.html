@@ -1,0 +1,87 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+ABGESPEICHERT, WAS ABER KAUMM INS GEWICHT FAELLT, DA SICH DIES NUR DURCH
+EINE KLEINE VERZOEGERUNG AM ZEILENANFANG BEMERKBAR MACHT.
+</p>
+<p>
+ES BLEIBT NOCH ANZUMERKEN, DASS BEIM ERSCHEINEN DES TEXTES ZUM
+ABSPEICHERN KEIN ANDERES ZEICHEN MEHR ALS &quot;CONTROL&quot;
+ANGENOMMEN WIRD.
+</p>
+<p>
+DER EINSPRUNG IN DAS PROGRAMM IST BEI C80.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-40-1.jpeg"); ?>
+<p>
+Anmerkung der Redaktion: Die abgespeicherten Nullen der Margins werden
+dann störend, wenn der abgespeicherte Text mit einem
+Textverarbeitungsprogramm weiter bearbeitet werden soll. Dann muß man
+die Nullen mühsam wieder löschen. Der Nachteil kann aber im Programm
+sehr einfach ausgebügelt werden;
+</p>
+<p>
+Nach dem INC HL in 0C9B müßte AND A&nbsp;; JR Z 0C96 eingetragen werden. Um
+Platz für diese drei zusätzlichen Bytes zu schaffen (A7 28 F8) könnte
+man die drei Spaces im Text (0CAD-CAF) streichen und das Programm ab
+0C9E um drei Adressen nach unten verschieben. 0C9A müßte dann noch 3
+auf 06 verändert werden.
+</p>
+<br>
+<h1 id="article1">
+CONMOD
+</h1>
+<h3>
+von Jürgen Weiermann
+</h3>
+<p>
+<br>
+Die Idee zum Programm CONMOD kam mir, nachdem ich das Programm
+Reversi,dessen HEX Listing mit Prüfsumme abgedruckt wurde, mit dem
+L-Befehl eingegeben hatte. Was mich an diesem Eingabe Modus störte,
+waren folgende Punkte:
+</p>
+<p>
+1.Die Adressen mußten mit eingetippt werden,<br>
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+2.Es wurde kein Cursor dargestellt.<br>
+3.Fehler konnten nicht verbessert werden.
+</p>
+<p>
+4.Wenn eine Zeile richtig eingegeben war, so wurde sie
+anschließend gelöscht.
+</p>
+<p>
+Diese vier Punkte sorgten dafür, daß die Eingabe
+zur Strapaze wurde. War man nur einen Moment unkonzentriert, so wußte
+man nicht mehr, ob man die Spacetaste gedrückt hatte, oder man hatte
+die Zeilennummer vergessen, All dies führte zu Fehlern, die man nur
+durch Eingabe einer neuen Zeile verbessern konnte.
+</p>
+<p>
+All diese Mängel sollte das neue Programm ändern. Es wird laut meinem
+Listing bei der Adresse 0D00 gestartet, ist aber voll relokatibel. Nach
+der Eingabe des ARG&nbsp;1 wird für ARG&nbsp;2 die Startadresse des einzugebenden
+Programms eingetippt. Das Programm führt Space und Newline automatisch
+aus, sowie die Adressierung der einzelnen Zellen. Man kann nun durch CL
+und CR die eingegebene Zeile bei Bedarf korrigieren. Nach der Eingabe
+der Prüfsumme wird die Zeile auf Fehler hin untersucht, Wird ein Fehler
+festgestellt, so gibt der Computer ein &quot;E&quot; aus und ruft die
+Inline Routine auf. Dadurch wird ermöglicht, daß alle Screen Editing
+Befehle genutzt werden können. Bei der Eingabe der Zeile wurden die
+Edit-Befehle wie BS und SPACE nicht als solche verwendet. Sollte man
+einmal aus Versehen eben genannte Zeichen verwendet haben, so kann man
+Space durch CL rückgängig machen; bei BS wird es schon etwas
+schwieriger: am besten, man merkt sich die Zeilennummer und drückt die
+Reset Taste. Zeilen werden nur übernommen bei richtiger Prüfsumme.
+</p>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-40-2.jpeg"); ?>
+</p>
+<div id="nascompl">
+<?php imageRight($imagepath, $year, $issue, $page, "Image-40-3.jpeg"); ?>
+</div>
+
+<?php columnEnd(2); ?>

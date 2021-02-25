@@ -1,0 +1,183 @@
+<?php columnStart(3); ?>
+<pre class="donthyphenate">
+2730 IFL2&gt;0GOTO1900
+2740 L=L-LO*.85:IFL&lt;20THENGOSUB3200
+2750 IFD&lt;&gt;-1ORRND(1)&lt;.9GOTO1710
+2760 IFRND(1)&gt;.6THENGOSUB5010
+2770 PRINT"Uuups, dieser Pfad ist eine Sackgass e"
+2780 L2=L2+LO:L=L+LO:D=0:GOTO1900
+2790 PRINT"   Die Nymphe ist vollkommen verwirr t"
+2800 PRINT"      Sie verhext dich und geht"
+2810 PRINTTAB(10);"in den Wald zurueck"
+2820 F=0:W=0:K=K-1:RETURN
+2830 PRINT"Du bist verletzt !"
+2840 PRINT"Du musst anhalten und dich ausruhen, "
+2850 L=INT(L*4)/4:L$=CHR$(ABS(L-INT(L))*4+160)
+2860 PRINT"bevor du weitermachen kannst."
+2870 L$=STR$(INT(ABS(L-20)))+L$:IFF=0GOTO2900
+2880 PRINT"Die Nymphe meint, dass das Verlies w eniger"
+2890 PRINT"als";L$;" Yerbs entfernt ist.":GOTO2 920
+2900 PRINT"Du hast schon";INT(ABS(DT-L)*.75);
+2910 PRINT"Farbbel Warfers zurueckgelegt"
+2920 T=0:GOSUB1340:H=H+1+W-F:IFH&lt;4-W+FGOTO29 70
+2930 IFJGOTO2960
+2940 PRINT:PRINT"Du hast gerade deine letzten V orraete ";
+2950 PRINT"gegessen":PRINT:J=1:K=K-RND(1):GOTO2 970
+2960 M=M+1:K=K-RND(1)+.2*F
+2970 IFRND(1)&lt;1-(I+N)/100THENPRINT"Zeit aufz ubrechen"
+2980 GOTO3120
+3000 REM *GESPENSTER*
+3010 PRINT:PRINT"Du bist von Gespenstern gefang engenomm";
+3020 PRINT"en worden.":IFE&lt;&gt;1GOTO3140
+3030 PRINT"Sie wollen das Schwert, das einst de n"
+3040 PRINT"Alten gehoerte  . . .":GOSUB1320
+3050 PRINT"Wirst du es fuer deine Freiheit opfe rn ?"
+3060 GOSUB1350:IFIN=78GOTO3140
+3070 E=0:PRINT"So sei es denn  . . .":GOSUB1330
+3080 PT=FNZ(PT+1)-1:GOSUB1340:IFPT=0GOTO3120
+3090 FORT=1TO50:PRINT"HA,HA,HA,HA,HA,HA,HA,HA,H A,HA";
+3100 PRINT",HA,HA,HA,HA,HA,HA":NEXT:PRINT"Sie s tossen ";
+3110 PRINT"dich ins Loch zurueck !!!!"
+3120 IFM&lt;14THENRETURN
+3130 R4=7:GOTO10010
+3140 Q=FNZ(30):IFG&lt;QGOTO3170
+3150 PRINT"Der Gespenster-Koenig setzt dich fue r":PRINTQ;
+3160 PRINT"Stueck Gold frei.":G=G-Q:DS=DS+.0001 *Q:GOTO3080
+3170 IFW&lt;=0THENR4=8:PRINT"Du wirst versklavt .":GOTO10010
+3180 PRINT"Du wirst an die Zentauren verkauft"
+3190 GOSUB4550:GOTO3120
+3200 IFRGOTO3570
+3500 REM *KERKER*
+3510 PRINT:PRINT"Sieh einmal !  Dort ist der Ei ngang v";
+3520 PRINT"om Verlies":GOSUB1340:PRINT"H";:
+3530 FOREX=1TO43:PRINT"m";:GOSUB1290:NEXT:PRIN T" !"
+3540 PRINT"Da scheint ein Waechter zu sein":GOS UB1340
+3550 PRINT"Zu dunkel hier, um zu sehen -"
+3560 PRINT"mal naeher rangehen  . . .":GOSUB134 0:GOTO3600
+3570 IFL&gt;0THENRETURN
+3580 R4=10+(R=-2)
+3590 GOTO10010
+3600 GOSUB1270:SCREEN1,2
+3610 PRINT"     DEF                    DEF    D ATADEF     DATA"
+</pre>
+<?php columnChange(3); ?>
+<pre class="donthyphenate">
+3620 PRINT"     DEF      RESTOREGOTORESETRESETR UNIF        DEF   DATADEFDEF    DATA"
+3630 PRINT"     DEF     DATA  RUNIF  RUNIF      DEF  DATADEFDEFDATA   DATA"
+3640 PRINT"     DEF     DEF  DEFDEFRUNIF  NEXT     DEF  DEFDEFDATA   DATA"
+3650 PRINT"     DEF     DEF  DEFDEFDEFDEF  DEF     DEF  DEFDATA   DATA"
+3660 PRINT"      RUNIF   DEF  RUNIFDEFDEF  DEF     DEF      DATA"
+3670 PRINT"        RESETRUNIFDEF    RUNIF  DEF     DEF     DATA"
+3680 PRINT"           RESETRUNIF      DEF     D EF    DATA"
+3690 PRINT"              RESETRUNIF   DEF     D EF   DATA"
+3700 PRINT"                 RESETRUNIFDEF     D EF  DATA"
+3710 PRINT"                    RESETRUNIF   DEF DATA"
+3720 PRINT"                       RESETRUNIFDEF DATA"
+3730 GOSUB1330:FORX=1TO3:SCREEN16,6:PRINT"ABSAB S":GOSUB1310
+3740 SCREEN16,6:PRINT"&sup1;&sup1;":GOSUB1310:SCREEN16,6: PRINT"ABSABS"
+3750 GOSUB1310:NEXT:GOSUB1270:SCREEN1,2
+3760 R=1:W=W+1:ONFNZ(4)GOSUB4010,6010,6010,4010
+3770 PRINT:PRINT"Du hast die Prinzessin gefunde n ..."
+3780 PRINT"Jetzt aber nichts wie weg !!!!":GOTO 3570
+4000 REM *TROLL*
+4010 PRINT"Uh! Ein Troll! Deine Kampfkraft betr aegt";
+4020 DS=INT(DS*10000)/10000
+4030 PRINTDS*1000;"%":IFR=1GOTO4080
+4040 PRINT"Wirst du mit ihm kaempfen ?"
+4050 GOSUB1350:IFIN=74GOTO4080
+4060 IFFNZ(3)=1THENDS=DS-.01
+4070 GOSUB4290:RETURN
+4080 TB=0:IFE&lt;&gt;1ORRND(1)&gt;=.2+DSGOTO410 0
+4090 PRINT:PRINT"Der Troll flieht !":PRINT:DS=D S+.01:RETURN
+4100 PRINT"Der Kampf beginnt . . . ";:GOSUB1330
+4110 R4=3:FORZ7=1TOFNZ(PN)*3
+4120 PRINTB$(FNZ(7));:GOSUB1310:NEXT
+4130 PRINT:IFRND(1)+DS+(DS*(E+F*10))&lt;=.5GOTO 4160
+4140 PRINT:PRINT"Der Troll hat genug und zischt ab"
+4150 PRINT:DS=DS+.0036:GOTO4210
+4160 SF=.3:IFE=1THENSF=.5
+4170 IFRND(1)&gt;SF+DS*(E+F)THENPRINT"Uuuuuff ! ":GOTO10010
+4180 PRINT"Ihr beide seid zu erschoepft, um wei ter-"
+4190 PRINT"zumachen."
+4200 TB=1:IFFNZ(3)&lt;&gt;2THENDS=DS-.002
+4210 IFR&lt;&gt;1THENGOSUB2840:RETURN
+4220 IFTB=0GOTO4260
+4230 PRINT"Ihr braucht eine Pause."
+4240 GOSUB1330:FOREX=1TOFNZ(40):PRINT"Pause , " ;
+4250 GOSUB1300:NEXT:PRINT"Nochmal!":GOSUB1300:G OTO4080
+4260 IFR=1THENGOSUB1330:RETURN
+4270 IFRND(1)+.05*E&lt;.4THENGOSUB2840
+4280 RETURN
+4290 PRINT:PRINT"R";:FORT8=1TOPN*5:PRINT"E";:GO SUB1290
+4300 NEXT:PRINT"NN !!!!!!":PRINT:L=L+4*S*(RND(1 )-.7)
+4310 T=T+1:IFRND(1)&gt;.7THENGOSUB5010
+4320 RETURN
+4500 REM *ZENTAUREN*
+4510 PRINT:PRINT"Oh nein !  Zentauren !"
+4520 IFE&lt;=0ORRND(1)&gt;=.5GOTO4550
+4530 PRINT"Ha, sie fluechten vor deinem Schwert !"
+4540 DS=DS+.025:RETURN
+</pre>
+<?php columnChange(3); ?>
+<pre class="donthyphenate">
+4550 PRINT"Sie versprechen dir freien Abzug, we nn du"
+4560 PRINT"gegen ihren Champion antrittst."
+4570 PRINT"Wirst du es tun ?":GOSUB1350
+4580 IFIN=74THENGOSUB6010:IFRND(1)&gt;.2THENRET URN
+4590 DS=DS-.002
+4600 PRINT"Die Zentauren wollen alle Frauen dei ner"
+4610 PRINT"Gruppe":W=0:F=0:IFR=1THENR=-2
+4620 PRINT"Bist du mit dieser Bedingung einvers tand";
+4630 PRINT"en ?":GOSUB1350:IFIN=74GOTO4670
+4640 PRINT"Oh, hast du sie rasend gemacht !"
+4650 PRINT"Sie toeten dich und nehmen die Fraue n"
+4660 R4=6:GOSUB1330:GOTO10010
+4670 PRINT"Sie nehmen die Frauen";
+4680 IFRND(1)&gt;.03THENPRINT", die dich verflu chen":K=K-5
+4690 IFRND(1)&gt;.3THENRETURN
+4700 R4=5:PRINT"Den Zentauren kann man nicht tr auen--"
+4710 PRINT"sie toeten dich so oder so.":GOSUB13 30
+4720 GOTO10010
+5000 REM *LOCH*
+5010 PRINT:PRINT"Du bist in ein finsteres Loch gestuerzt"
+5020 PT=1:IFRND(1)&gt;.5THENGOSUB2840
+5030 PRINT"Du musst wieder herauskommen"
+5040 PRINT"Willst du versuchen zu klettern, ode r"
+5050 PRINT"willst du schreien ?"
+5060 GOSUB15040:IFIN&lt;&gt;75ANDIN&lt;&gt;83GO TO5060
+5070 ZX=0
+5080 IFIN=83GOTO5180
+5090 PRINT"Ok, lass uns einen Versuch machen .. ."
+5100 GOSUB1340
+5110 IFRND(1)&gt;.5-ZX/10GOTO5140
+5120 PRINT"Du hast es geschafft -- du bist drau ssen"
+5130 RETURN
+5140 PRINT"Du bist waehrend deinem Versuch noch weit";
+5150 PRINT"er":PRINT"gestuerzt !!!":PRINT:PRINT
+5160 GOSUB1330:IFRND(1)&lt;.2THENGOSUB2840
+5170 ZX=ZX+1:IFZX&lt;5GOTO5110
+5180 GOSUB1270:SCREEN1,1
+5190 PRINT"  JJJJJJJJJJDIM         LETJJJJJJJJJ J"
+5200 PRINT"  JJJJJJJJJJREAD        LETJJJJJJJJJ JJ"
+5210 PRINT"  JJJJJJJJJJDIM        INPUTJJJJJJJJ JJJ"
+5220 PRINT"  JJJJJJJJJDIM          INPUTJJJJJJJ JJJ"
+5230 PRINT"  JJJJJJJJJ            JJJJJJJJJJ"
+5240 PRINT"  JJJJJJJJJ            JJJJJJJJJJ"
+5250 PRINT"  JJJJJJJJJ           LETJJJJJJJJJJ"
+5260 PRINT"  JJJJJJJJJREAD      &micro;  LETJJJJJJJJJ JJ"
+5270 PRINT"  JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ"
+5280 PRINT"  Verflucht, ist das hier dunkel!":G OSUB1330
+5290 PRINTCHR$(19);CHR$(27),"H I L F E !":GOSUB 1320
+5300 FORX=2075TO2523STEP64:POKEX,148
+5310 GOSUB1310:NEXT:GOSUB1330
+5320 FORX=2523TO2075STEP-64:DOKEX,8224:DOKEX-64 ,-19104:GOSUB1310
+5330 NEXT:GOSUB1270:SCREEN1,1:PRINT"Du bist ger ettet worden,"
+5340 PRINT"und zwar von:":Y=FNZ(4):IFY=1THENGOS UB4010:GOTO5400
+5350 IFY&lt;&gt;2GOTO5380
+5360 GOSUB3010:IFPTGOTO5020
+5370 GOTO5400
+5380 IFFTHENPRINT,"der Nymphe!":GOTO5400
+5390 PRINT,"einer alten Frau!":W=W+1
+5400 PT=0:PRINT"Du musst weiter ...":GOSUB1330: GOTO1960
+</pre>
+<?php columnEnd(3); ?>

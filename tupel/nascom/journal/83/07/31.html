@@ -1,0 +1,117 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+auf, es ist jedoch nur ein Port in der
+<?php externalLink("Z80 DMA","DMA"); ?>
+vorhanden (bei den anderen Bausteinen sind es 4 Port&rsquo;s).
+</p>
+<p>
+Die Karte benötigt dank des
+<?php externalLink("FDC9229","FDC&nbsp;9229&nbsp;B"); ?>
+keinen Abgleich. Es sollten
+jedoch die Siebglieder an den Ausgängen von P2 so knapp wie möglich
+dimensioniert werden, die angegebenen Werte sind jedoch auch bei 6&nbsp;MHz
+und der Verwendung des Typ&rsquo;s
+<?php externalLink("HM7611","HM&nbsp;7611"); ?>
+(von Harris) ein brauchbarer Kompromiss.
+</p>
+<p>
+Die Karte hat im Gegensatz zu anderen Karten eine 25 polige
+Canonbuchse. Dies wurde vorgesehen, um bei modularen Systemen den
+Kabelsalat an den Frontplatten im erträglichen Rahmen zu halten. Mit
+einer Adapterkarte kann dann wieder auf die 50 bzw. 34 poligen Stecker
+für die Laufwerke übergegangen werden. Für die Zukunft ist auch eine
+Karte mit 50 und 34 poligen Stecker geplant, sodaß die Flachbandkabel
+wie gewohnt direkt an die Platine geführt werden können.
+</p>
+<h4>
+<u>Hinweise</u> <u>zum</u> <u>Aufbau</u> <u>der</u> <u>Karte</u>
+</h4>
+<p>
+Die beschriebene Karte wurde von uns bisher in einer Prototypenversion
+aufgebaut und erprobt. Im Augenblick werden noch Korrekturen am Layout
+vorgenommen, sodaß sich unter Umständen die Zuordnung der einzelnen
+Gatteranschlüße noch geringfügig ändern wird.
+</p>
+<p>
+Wir hoffen das Layout bis Ende dieses Monates endgültig fertigstellen
+zu können. Weiter folgt in einem der nächsten Hefte eine Sammlung von
+Unterprogrammen zum Betrieb der FDC-Karte in einem
+<?php externalLink("Z80"); ?>
+<?php externalLink("CP/M"); ?>
+System. Ein
+komplettes BIOS für CP/M 3.0 kann leider nicht vorgestellt werden.
+</p>
+<p>
+Die Leerkarten werden dann voraussichtlich mit den erforderlichen
+Steuerproms ausgeliefert.
+</p>
+<p>
+Den Inhalt und die Programmierung der Steuerproms entnehmen Sie bitte
+den folgenden Tabellen.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Die abgedruckte Stückliste und der noch mit dem Layout
+fertigzustellende Bestückungsplan ermöglichen dann den fehlerfreien
+Aufbau der Karte.
+</p>
+<h4>
+<u>Bauteileliste</u>
+</h4>
+<p>
+2 * 256*4 Prom (z.B. HM 7611&nbsp;, MM 6301)<br>
+3 * 74 LS 245 (&nbsp;2 sind optional für DMA Betrieb)<br>
+1 * 74 IS 241<br>
+2 * 7406<br>
+2 * 74 IS 14<br>
+1 * 74 IS 04<br>
+1 * 7438<br>
+1 * 74 IS 123<br>
+1 * FDC 9229 B (&nbsp;B für doppelte Dichte)<br>
+1 * WD 1793-02<br>
+1 * Z80 Pio<br>
+1 * Z80 DMA (optional)<br>
+3 * AA 119 (kann entfallen wenn keine Readysim.)<br>
+<br>
+1 * 8 fach SIL 150 Ohm<br>
+2 * 10 kOhm<br>
+16 * 1 kOhm<br>
+5 * 100 Ohm<br>
+2 * 330 Ohm<br>
+2 * 220 kOhm<br>
+1 * 470 kOhm<br>
+<br>
+4 * 100 nF (Abblock-Kondensatoren)<br>
+2 * 10 nF<br>
+1 * 1000 pF<br>
+5 * 100 pF<br>
+1 * 15 uF (Tantal)<br>
+1 * 47 uF (wenn möglich Tantal)<br>
+<br>
+1 * 64 polige VG leiste<br>
+1 * 25 polige Canon-Buchse<br>
+1 * 16&nbsp;MHz Quarz
+</p>
+<h4>
+<u>Inhalt</u> <u>der</u> <u>Steuerproms</u>
+</h4>
+<p>
+Prom1 übernimmt die Addressdekodierung. Die Bausteine haben bei der
+obigen Programmierung folgende Addressen :
+</p>
+<p>
+FDC : 0CH - 0FH &nbsp; PIO : 10H - 13H &nbsp; DMA : 14H-17H
+</p>
+<p>
+Sollen andere Adressen programmiert werden so gilt folgendes :
+</p>
+<p>
+für FDC muß 05h gebrannt werden,<br>
+für PIO muß 06H gebrannt werden,<br>
+für DMA muß 03H gebrannt werden.
+</p>
+
+<?php columnEnd(2); ?>

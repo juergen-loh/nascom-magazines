@@ -1,0 +1,104 @@
+<?php columnStart(2, 2); ?>
+
+<h4 id="article1">
+<u>Hochauflösende Graphik für den NASCOM&nbsp;1</u>
+</h4>
+<p>
+a) <u>Hardware</u>
+</p>
+<p>
+Es wurde eine Graphikkarte mit 256 X 256 Bildpunkten verwendet, da sie
+einige Vorteile gegenüber
+anderen Produkten aufweist. Das Setzen eines der 65536 Bildpunkte (mehr
+als APPLE&nbsp;!) dauert maximal
+1,5 &micro;s, ferner ist standardmäßig eine Cursorsteuerung vorhanden.
+Durch eine Erweiterungsschaltung
+kann die Schwarzweißdarstellung auf 16 Graustufen, mit einer
+Europa-Karte sogar auf 16 Farben (FBAS
+oder RGB-Ausgang), gebracht werden. Sowohl das Graphik-Interface als
+auch die Erweiterungen sind
+jeweils auf einer Europa - Karte untergebracht; die
+Gesamt-Verlustleistung ohne Erweiterung beträgt
+nur 5 Watt. Die Ansteuerung der Bildpunkte benötigt lediglich 4
+Speicherstellen, während bei anderen
+Systemen 8K Byte Arbeitsspeicher benutzt werden müßten. Diese 4
+Speicherstellen liegen zwischen D000&rsquo;H
+und D003&rsquo;H und stellen einen günstigen Kompromiß dar, da bei einem 48K
+RAM System dies die erste freie
+Adresse ist. Da in diese vier Speicherstellen nur hineingeschrieben
+wird, gibt es keine Probleme mit
+EPROMs, die diese Adressen belegen, da der EPROM-Inhalt erst bei
+zusatzlichem RD-Aktiv freigegeben wird.
+Dieses bleibt bei Schreiboperationen bekanntlich inaktiv! Die Graphik
+ist intern als x/y-System ausgelegt
+d.h.: zum Setzen eines Punktes wird dem Interface erst die x-Adresse
+des Punktes, danach die y-Adresse
+und schließlich noch ein ein Befehlswort zum Setzen des Punktes
+angegeben (genaue Beschreibung im
+Software-Teil)&nbsp;. Ausgansseitig liefert die Graphik ein Video-Composite
+(BAS) Signal mit einer Amplitude
+von 2,5 Vss und eignet sich damit zur Ansteuerung praktisch aller
+Monitore bzw. modifizierten
+Fernsehgeräte. Ferner sind noch die TTL synchron- und
+horizontal-Signale für Spezialmonitore abgreifbar.
+</p>
+<p>
+Die Anschaltung an den NASBUS ist sehr einfach: es liegt
+höchstens eine LS-TTL Last an.
+</p>
+
+<?php columnChange(2); ?>
+
+<table style="width: 90%">
+	<tr>
+		<td style="border-right: 1px solid #000; border-bottom: 1px solid #000">
+			Graphik
+		</td>
+		<td style="border-bottom: 1px solid #000">
+			NASBUS
+		</td>
+	</tr>
+	<tr>
+		<td style="border-right: 1px solid #000">
+			RS0
+		</td>
+		<td>
+			A0 (Leitung Nr. 30)
+		</td>
+	</tr>
+	<tr>
+		<td style="border-right: 1px solid #000">
+			RS1
+		</td>
+		<td>
+			A1 (Leitung Nr. 31)
+		</td>
+	</tr>
+	<tr>
+		<td style="border-right: 1px solid #000">
+			R/W
+		</td>
+		<td>
+			WR (Leitung Nr. 28)
+		</td>
+	</tr>
+	<tr>
+		<td style="border-right: 1px solid #000">
+			D0...D7
+		</td>
+		<td>
+			D0...D7 (Leitung Nr. 50- 57)
+		</td>
+	</tr>
+</table>
+<p>
+Die drei Chip-Select Eingange der Graphikkarte werden mit folgender
+Dekodierung verbunden :
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+<p style="text-align:center">
+Abbildung 2
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

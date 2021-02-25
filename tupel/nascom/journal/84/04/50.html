@@ -1,0 +1,88 @@
+<?php columnStartJustify(712); ?>
+
+<?php boxStart("RB"); ?>
+<h1 id="article1">
+Soundgenerator
+</h1>
+<h3>
+VON KARL SCHULMEISTER
+</h3>
+<p>
+DAS LAYOUT FÜR DEN SOUNDGENERATOR DIREKT AM
+<?php externalLink("ECB","",""); ?>-BUS
+IST FERTIG. WIR
+VERÖFFENTLICHEN HIER DIE SCHALTUNG FÜR LEUTE, DIE EVT. FÄDELN WOLLEN.
+WER ES LIEBER KOMFORTABEL MAG, SOLLTE SICH NOCH ETWAS GEDULDEN, DENN
+GEORG ASSMANN IST DABEI, DIE SCHALTUNG ZUSAMMEN MIT EINER HARDWAREUHR
+AUF EINER EUROKARTE UNTERZUBRINGEN.
+</p>
+<p>
+BEI INTERESSE AN EINER SERIE BITTE MELDEN!!!
+</p>
+<?php boxStart("L"); ?>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-50-1.jpeg"); ?>
+</p>
+<?php boxEnd(); ?>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-50-2.jpeg"); ?>
+</p>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(512); ?>
+
+<h1 id="article2">
+Scroll
+</h1>
+<h3>
+CONSTANTIN OLBRICH
+</h3>
+<h4 class="donthyphenate">
+<u>HARDWARE SCROLL für 256*512 Graphik&nbsp;Karte</u>
+</h4>
+<p>
+Wer schon einmal probiert hat, mit dem GDP 9366 eine Textdarstellung
+mit Scroll-Funktion zu programmieren, weiß, wie aufwendig dies ist. Das
+ganze Bild muß gelöscht und neu (gescrollt) aufgebaut werden. Dies
+dauert seine Zeit...&nbsp;. Um diesen Nachteil im Ansatz zu vermeiden, wurde
+unabhängig von H. Klaassen ein Hardwarescroll entwickelt. Er besteht
+aus drei zusätzlichen IC&rsquo;s: einem 74LS273 und zwei 74F181; ein
+<span class="donthyphenate">74LS244</span>
+entfällt und wandert wieder in die Bastelkiste.
+</p>
+<p>
+<b><u>Funktion:</u></b> Die gemultiplexten Graphik-Ram Adressen 2*7 Bit werden, bevor
+sie an die Rams gelegt werden, mit einem Offset addiert, der von der
+CPU in einem I/O Port geliefert wird. Die 14 Bit Graphik-Ram Adressen
+teilen sich auf in 8 Bit vertikale Adressen (=&gt; 256 Zeilen) und 6
+Bit horizontale Adressen (6+3 &lt;aus 8 Datenbit&gt; =9 =&gt; 512
+Spalten).
+</p>
+<p>
+Da nur die vertikalen Adressen interessant sind, werden nur
+diese in die Addition einbezogen. Die beiden ALUs 74F181 arbeiten im
+anderen Fall (horizontale Adressen) in der Betriebsart F=A, also keine
+Veränderung des A- Wortes. Leider liegen von den 8 Bit vertikalen
+Adressen nur 7 zu einem Zeitpunkt vor, so habe ich die Auflösung des
+Hardware Scrolls, um die Schaltung nicht unnötig aufzublähen, auf zwei
+Fernsehzeilen antatt einer verringert. Ein Offset von 2 oder 3 (&nbsp;MOD 2)
+ist derselbe, nämlich zwei. Eine Softscrollmöglichkeit ist trotzdem
+gegeben: das Bild 'bewegt' sich trotz Sprüngen von zwei Fernsehzeilen
+ganz homogen.
+</p>
+<p>
+Das Schreiben des Offset sollte aber dann mit VBLANK
+synchronisiert werden (Abfrage des Status- Wortes).
+</p>
+<p>
+<b><u>Aufbau:</u></b> IC D7 74&nbsp;LS244
+entfällt. In die Fassung (die hoffentlich da ist) wird
+irgendetwas gesteckt, woran man löten kann, z.B. Dil-Plattform. Der
+74&nbsp;LS&nbsp;273 wird, nachdem CK, Q0..Q7 hochgebogen wurden, auf den bereits
+vorhandenen 273 gelötet. Somit ist bereits der Datenbus, Reset und
+Versorgungsspannung verdrahtet. Die beiden ALUs mit gekürzten,
+hochgebogenen Beinen mit Doppelklebeband auf den GDP kleben. Alle
+</p>
+
+<?php columnEnd(3); ?>

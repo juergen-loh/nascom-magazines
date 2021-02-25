@@ -1,0 +1,465 @@
+<?php columnStart(23); ?>
+
+<h1 id="article1">
+T-FORTH
+</h1>
+<h3>
+von GERHARD KLEMENT
+</h3>
+<p>
+Version 10.02.1983
+</p>
+
+<table lang=en>
+<tr>
+	<td colspan=5><?php hline("100%", "2"); ?></td>
+</tr>
+<tr>
+	<td></td><td><p>
+		IF<br>
+		THEN<br>
+		ELSE<br>
+		BEGIN<br>
+		UNTIL<br>
+		WHILE<br>
+		LOOP<br>
+		DO</p>
+	</td>
+	<td colspan=3></td>
+</tr>
+<tr>
+	<td colspan=5><?php hline("100%", "2"); ?></td>
+</tr>
+<tr>
+	<td><p>Ö---- T</p></td>
+	<td><p>Statement</p></td>
+	<td><p>Arg.</p></td>
+	<td><p>Ö--- T</p></td>
+	<td><p>Comment</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>DUP</p></td>
+	<td><p>-</p></td>
+	<td><p>x,x</p></td>
+	<td><p>Duplicate</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>DROP</p></td>
+	<td><p>-</p></td>
+	<td><p>Y</p></td>
+	<td><p>Drop value</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>SWAP</p></td>
+	<td><p>-</p></td>
+	<td><p>X,Y</p></td>
+	<td><p>Swap values</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>OVER</p></td>
+	<td><p>-</p></td>
+	<td><p>Y,X,Y</p></td>
+	<td><p>Get 2nd value down</p></td>
+</tr>
+<tr>
+	<td><p>X,n</p></td>
+	<td><p>PICK</p></td>
+	<td><p>-</p></td>
+	<td><p>X,Val</p></td>
+	<td><p>Get n. Element T=1</p></td>
+</tr>
+<tr>
+	<td><p>Z,Y,X</p></td>
+	<td><p>ROT</p></td>
+	<td><p>-</p></td>
+	<td><p>Y,X,Z</p></td>
+	<td><p>Rotate down</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CLEAR</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Stackpointer to init. val</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>R</p></td>
+	<td><p>-</p></td>
+	<td><p>Val.</p></td>
+	<td><p>Copy from R Stack</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>ÜR</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>X to Rstack</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>RÜ</p></td>
+	<td><p>-</p></td>
+	<td><p>X</p></td>
+	<td><p>X fron Rstack</p></td>
+</tr>
+<tr>
+	<td><p>Adr</p></td>
+	<td><p>&sect;</p></td>
+	<td><p>-</p></td>
+	<td><p>Val</p></td>
+	<td><p>16 Bit load</p></td>
+</tr>
+<tr>
+	<td><p>Adr</p></td>
+	<td><p>C&sect;</p></td>
+	<td><p>-</p></td>
+	<td><p>Val</p></td>
+	<td><p>8 Bit load</p></td>
+</tr>
+<tr>
+	<td><p>Val,Adr</p></td>
+	<td><p>!</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Store 16 bit val.</p></td>
+</tr>
+<tr>
+	<td><p>Val,Adr</p></td>
+	<td><p>C!</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Store 8 bit val.</p></td>
+</tr>
+<tr>
+	<td><p>From,To,Len</p></td>
+	<td><p>CMOVE</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Move</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>'</p></td>
+	<td><p>Anne</p></td>
+	<td><p>Adr</p></td>
+	<td><p>Adr. of Constval</p></td>
+</tr>
+<tr>
+	<td><p>Val,Start,Len</p></td>
+	<td><p>FILL</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Fill memory</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>ZERO</p></td>
+	<td><p>-</p></td>
+	<td><p>0</p></td>
+	<td><p>Const.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>ONE</p></td>
+	<td><p>-</p></td>
+	<td><p>1</p></td>
+	<td><p>Const.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NEGONE</p></td>
+	<td><p>-</p></td>
+	<td><p>-1</p></td>
+	<td><p>Const.</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>MINUS</p></td>
+	<td><p>-</p></td>
+	<td><p>Conplm (X)</p></td>
+	<td><p>Complement of X</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>+</p></td>
+	<td><p>-</p></td>
+	<td><p>Y+X</p></td>
+	<td><p>Sum</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Y-X</p></td>
+	<td><p>Difference</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>*</p></td>
+	<td><p>-</p></td>
+	<td><p>Y*X</p></td>
+	<td><p>Product</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>/</p></td>
+	<td><p>-</p></td>
+	<td><p>Y!X</p></td>
+	<td><p>Quotient</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>MOD</p></td>
+	<td><p>- &bull;</p></td>
+	<td><p>mod(Y/X)</p></td>
+	<td><p>Modulo i.e.remainder</p></td>
+</tr>
+<tr>
+	<td><p>Y,X</p></td>
+	<td><p>/MOD</p></td>
+	<td><p>-</p></td>
+	<td><p>Y/X,mod(X/Y)</p></td>
+	<td><p>Modulo</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>U</p></td>
+	<td><p>-</p></td>
+	<td><p>X+1</p></td>
+	<td><p>Increment</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>1-</p></td>
+	<td><p>-</p></td>
+	<td><p>X-1</p></td>
+	<td><p>Decrement</p></td>
+</tr>
+<tr>
+	<td><p>Val,Adr</p></td>
+	<td><p>+ !</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Add to memory</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>STRING</p></td>
+	<td><p>Nase</p></td>
+	<td><p>Adr</p></td>
+	<td><p>Generate new string</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>STRI</p></td>
+	<td><p>Name</p></td>
+	<td><p>Adr</p></td>
+	<td><p>Genr. string var</p></td>
+</tr>
+<tr>
+	<td><p>Val</p></td>
+	<td></td><td>
+	<p>-</p></td><td>
+	<p>-</p></td><td>
+	<p>ROUT nuneric</p></td>
+</tr>
+<tr>
+	<td><p>Val</p></td>
+	<td><p>EMIT</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT ASCII</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>SGNOUT</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT signed integer</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>OUT&pound;</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT HEX (X)</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CR</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT CR</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CLS</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Clear Screen</p></td>
+</tr>
+<tr>
+	<td><p>Lin,Col</p></td>
+	<td><p>SCREEN</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Set Cursor</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>SPACE</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT blank</p></td>
+</tr>
+<tr>
+	<td><p>Adr</p></td>
+	<td><p>?</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT Value at adr</p></td>
+</tr>
+<tr>
+	<td><p>Poistri</p></td>
+	<td><p>PRINTS</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT String</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>PROMPT</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT Ok stk CR</p></td>
+</tr>
+<tr>
+	<td><p>Val,Port</p></td>
+	<td><p>OUTPORT</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Val to Port</p></td>
+</tr>
+<tr>
+	<td><p>X</p></td>
+	<td><p>CRT</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>Out X to CRT</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>ERROR</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.errstri</p></td>
+	<td><p>Set poi to err.string</p></td>
+</tr>
+<tr>
+	<td><p>Tab</p></td>
+	<td><p>.R</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>ROUT advance curs.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>KEY</p></td>
+	<td><p>-</p></td>
+	<td><p>Val</p></td>
+	<td><p>RIN blink</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>RIN</p></td>
+	<td><p>-</p></td>
+	<td><p>Val</p></td>
+	<td><p>RIN no blink</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>&pound;IN</p></td>
+	<td><p>HEX Val</p></td>
+	<td><p>Val</p></td>
+	<td><p>Convert HEX to bin</p></td>
+</tr>
+<tr>
+	<td><p>Port</p></td>
+	<td><p>INPORT</p></td>
+	<td><p>-</p></td>
+	<td><p>Val</p></td>
+	<td><p>Get value from port</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CODBEG</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.codbeg</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CODEADR</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.free</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NEXTADR</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.nxtfnct</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NADR</p></td>
+	<td><p>Name</p></td>
+	<td><p>Adr.dicnam</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CONS</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.consfnct</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>VARBL</p></td>
+	<td><p>-</p></td>
+	<td><p>Adr.varbfnct</p></td>
+	<td><p>Constant</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CADR</p></td>
+	<td><p>Name</p></td>
+	<td><p>Adr.code</p></td>
+	<td><p>Variable</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>SCODE</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td><p>End TIL start MCODE</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>FORGET</p></td>
+	<td><p>Name</p></td>
+	<td><p>-</p></td>
+	<td><p>Delete incl. name</p></td>
+</tr>
+</table>
+
+<br>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-10-1.jpeg"); ?>
+<?php columnEnd(3); ?>

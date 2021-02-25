@@ -1,0 +1,84 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Zwischenräume rein weiß. Eventuell muß von der angegebenen Einstellung (Mitte des
+Bereichs, in dem die LED Control leuchtet) abgewichen werden. Viele
+Vorlagen ließen sich besser einlesen, wenn der Trimmer im
+Gegenuhrzeigersinn so weit gedreht wurde, bis die LED Control ausging.
+Der Hewlett-Packard Stift zeigte sich in dieser Hinsicht überlegen. Er
+verkraftet auch kontrastarme Vorlagen gut.
+</p>
+<p>
+Von Programmen, die im NASCOM-Journal erscheinen sollen, kann ich
+Strichcodes ausdrucken. In diesem Fall bitte ich die Autoren, eine
+Kassette mit dem Programm direkt an mich zu schicken. Im Augenblick
+kann ich allerdings nur Kassetten im NASCOM-1 Format lesen.
+</p>
+<h4 style="text-align:center">
+<u>Strichcodeleseprogramm für NAS-SYS</u>
+</h4>
+<p>
+Das Leseprogramm für die Strichcodes
+ist jetzt bei MK-Systemtechnik und bei mir ab Lager lieferbar
+(DM&nbsp;88.&ndash;incl. MWSt). Das Programm ist für NASSYS und für NASBUG lieferbar.
+Standardadresse ist AC00. Das Programm benutzt Bit 0 vom Port A der
+PIO. Eine andere Adressbelegung bzw. Benutzung eines anderen Ports muß
+bei der Bestellung besonders angegeben werden (DM&nbsp;20.&ndash; Aufpreis). Wird
+der Lesestifft HEDS 3000 von Hewlett-Packard verwendet, benötigt man
+noch einen Pull-up Widerstand von 2,2 k Ohm nach &amp;5 V, der
+Strichcodeleser vom Ing.-Büro Kanis kann direkt angeschlossen werden.
+Auf Anfrage kann das Programm auch in anderen Datenträgern, bei anderen
+Startadressen und für andere Ports geliefert werden.
+</p>
+<p>
+Da inzwischen drei verschiedene Strichcodes zur Darstellung von
+Programmen eingeführt sind, besteht das Programm auch aus drei Teilen.
+Die Darstellung für absoluten und für verschieblichen Code wurde von
+der Zeitschrift Byte vorgeschlagen, die dritte Darstellung wird von der
+Zeitschrift
+<?php externalLink("mc"); ?>
+verwendet.
+</p>
+<p>
+Will man absoluten Code einlesen, wird das Programm mit E AC00
+gestartet. Absoluten Code erkennt man daran, daß am Anfang jeder Zeile
+eine zweistellige
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Zeilennummer und die vierstellige Anfangsadresse stehen. Dann
+verschwindet der Cursor und der Lesestift ist bereit. Jetzt kann man
+Zeile für Zeile einlesen, wobei die Reihenfolge einzuhalten ist. Ist
+eine Zeile richtig eingelesen, erscheint die Zeilennummer und die
+Anfangsadresse auf dem Bildschirm. Erscheint keine Anzeige, dann trat
+ein Lesefehler auf und die Zeile muß nochmals gelesen werden. Will man
+ein absolutes Programm an einen anderen als den vorgesehenen
+Speicherbereich laden, startet man das Leseprogramm mit E AC00 nnnn.
+nnnn ist der Offset zu der Originaladresse.
+</p>
+<p>
+Verschieblichen Code erkennt man daran, daß am Zeilenanfang nur die
+zweistellige Zeilennummer steht. Um solchen Code einzulesen, startet
+man das Leseprogramm mit E AC03 nnnn. Der Code wird dann ab der Adresse
+nnnn in den Speicher geladen. Ansonsten funktioniert das Einlesen von
+verschieblichem Code wie das Einlesen von absolutem Code.
+</p>
+<p>
+Code in der
+<?php externalLink("mc","",""); ?>-Darstellung
+wird etwas anders gehandhabt. Hierbei
+funktioniert der Leser als Eingabegerät wie z.B. auch die Tastatur. Mit
+E AC06 wird der Leser aktiviert und die Eingaberoutine bei &sect;UIN
+(0C77) eingetragen, anschliessend meldet sich NAS-SYS wieder. UIN dient
+jetzt als Eingaberoutine. Dann wird das Programm gestartet, das die
+Eingabedaten aufnehmen soll, z.B. Basic oder Assembler. Dann muß auf
+die Eingaberoutine UIN umgeschaltet werden. In NAS-SYS und in ASM/EPROM
+wird dazueinfach der Befehl U eingegeben, im
+Basic führt man DOKE 3189,1921 aus. Jetzt ist die Tastatur abgeschaltet
+und man kann mit dem Lesestift eingeben. Der Inhalt richtig gelesener
+Zeilen erscheint auf dem Bildschirm, erscheint keine Anzeige muß die
+Zeile nochmals gelesen werden. Ist die letzte Zeile gelesen, wird
+wieder auf die Tastatur als Eingabegerät umgeschaltet. Dieses dritte
+Leseprogramm verwendet den RAM-Bereich 0CB0 bis 0D00 als Textpuffer.
+</p>
+<?php columnEnd(2); ?>

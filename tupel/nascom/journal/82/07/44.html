@@ -1,0 +1,83 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+DISASSEMBLER
+</h1>
+<h3>
+von Christoph Rau
+</h3>
+<p>
+In der
+<?php externalLink("mc"); ?>
+4/82 war ein
+<?php externalLink("Z80","",""); ?>-Betriebssystem
+für den TRS-80
+veröffentlicht. Ein Teil davon ist ein Disassembler, der in
+Maschinensprache programmiert ist und auch im stand-alone betrieben
+werden kann. Dazu muß zuerst das Listing von 7207H bis 7739H eingetippt
+werden. Die Output-Routine des TRS-80 wird in 7571H aufgerufen, dort
+muß also statt CD 33 00 F7 00 00 (oder entsprechendes) eingetragen
+werden.
+</p>
+<p>
+Der Disassembler wird als Unterprogramm mit der Einsprungadresse 7601H
+aufgerufen. Dabei muß die Adresse des Befehls, der disassembliert
+werden soll, in HL stehen. Nach einem &lt;CR&gt; werden die Adresse und
+der disassemblierte Befehl ausgegeben. Die Routine kehrt mit der
+Adresse des folgenden Befehls in HL zurück. Stand an der Adresse kein
+gültiger Z80-Befehl, dann bleibt HL unverändert.
+</p>
+<p>
+Das gesamte Programmpaket benutzt einige Bytes ab 7000H für Flags etc.,
+was man am besten in 7740H umändert. Dazu ersetzt man an den Adresse
+7612H, 7644H und 76A5H 70 durch 72, bei 7611H 00 durch 40 und bei 7643H
+und 76A4H 01 durch 41.
+</p>
+<p>
+Folgende Bytes sind High-Bytes von absoluten Adresse und müssen beim
+Reloziieren geändert werden (z.B. 62H abziehen, wenn das Programm ab
+1000H stehen soll) :
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-44-1.jpeg"); ?>
+<p>
+Mit folgender Änderung schließlich wird erreicht, daß ein &lt;CR&gt;
+nicht zu Beginn sondern am Ende einer Zeile ausgegeben wird :
+</p>
+<p>
+Bei 7602H 5 mal NOP (00) eintragen, bei 76D9H einen JP 773AH (C3 3A
+77), und bei 773AH LD A,0D (3E 0D), CALL 756FH (CD 6F 75) und RET (C9)
+anhängen. Diese absoluten Adresse müssen natürlich beim Reloziieren mit
+beachtet werden.
+</p>
+<p>
+Der folgende Disassembler benutzt den (reloziierten) Disassembler aus
+<?php externalLink("mc"); ?>
+4/82 ab 1000H bis 1540H. Es können Anfangs- und Endadresse für die
+Disassemblierung eingegeben werden, und das Programm kann durch ESCAPE
+angehalten, durch nochmaliges ESCAPE verlassen werden. Einsprungadresse
+ist 1000H.
+</p>
+
+<?php nowrapStart(); ?>
+<?php boxStart(); ?>
+<p>
+Suche folgende Programme:<br>
+&nbsp;&nbsp;TOOLKIT, NASDIS mit DEBUG<br>
+Biete folgende Programme in Original-PROMs an:<br>
+&nbsp;&nbsp;NASPEN, DIS-SYS, ASM (NAS-SYS)<br>
+&nbsp;&nbsp;<a href="../../../../81/12/38/text/#article1">UNICON 1.4</a> und NAS-SYS<br>
+K.Schieferdecker &nbsp; _____/_____ ab 18&deg;&deg; h<br>
+_____________. __&nbsp;, ____ _____
+</p>
+<?php boxEnd(); ?>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+
+<?php boxStart(); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-44-2.jpeg"); ?>
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

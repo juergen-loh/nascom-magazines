@@ -1,0 +1,46 @@
+<?php columnStart(1); ?>
+<p>
+Port B muß im Control-Mode arbeiten; Bit 0-3 sind als Eingang, Bit 4-7
+als Ausgang programmiert. Nun läßt sich der MDCR ansteuern:
+</p>
+
+<table>
+<tr><td ROWSPAN=5>Byte: &nbsp;</td><td>D0H</td><td>&nbsp; &ndash; &nbsp;Ruhezustand</td></tr>
+<tr><td>50H</td><td>&nbsp; &ndash; &nbsp;Vorwärts spulen/lesen</td></tr>
+<tr><td>90H</td><td>&nbsp; &ndash; &nbsp;Rückwärts spulen/rückwärts lesen</td></tr>
+<tr><td>40H</td><td>&nbsp; &ndash; &nbsp;0 schreiben</td></tr>
+<tr><td>60H</td><td>&nbsp; &ndash; &nbsp;1 schreiben</td></tr>
+</table>
+
+<p>
+Da das Band nur eine Geschwindigkeit hat, sind Vorspul- und Lesebefehl
+identisch. Mit handelsüblichen 30-Minuten-Minikassetten dauert die
+Durchlaufzeit des Bandes etwa 90 Sekunden.
+</p>
+<p>
+Das Lesen ist wesentlich einfacher als das Schreiben, da die Daten im
+MDCR bereits dekodiert werden. Bei jeder steigenden Planke des
+RDC-Signals können die an /RDA invertiert anliegenden Daten übernommen
+werden. Dies kann z.b. dadurch geschehen, daß Bit 0 einen Interrupt
+anfordert und das Interruptprogramm Bit 1 dann seriell abspeichert. 2ur
+Verdeutlichung die Zeitdiagramme für Schreiben und Lesen:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.jpeg"); ?>
+<p>
+Soviel zur Hardware. Die dazugehörigen Schreib- und Leseprogramme
+folgen in nächster Zeit, sobald ich mir einen Drucker angeschafft habe
+(ich besitze nicht den Nerv, alles auf der Schreibmaschine zu tippen).
+Ein komfortables Bedienprogramm mit 10 Befehlen ist noch in Entwicklung
+(NAS-SYS-kompatibel). Übrigens wurde in einer der letzten Ausgaben der
+Zeitschrift
+<?php externalLink("Chip","CHIP"); ?>
+ein MDCR-Bedienprogramm veröffentlicht; es ist
+allerdings leider eher ein Paradebeispiel dafür, wie man&rsquo;s nicht machen
+sollte.
+<span id="article1">Noch ein Tip: Aufgrund der Sparkonstruktion des NASCOM-1 ist
+der Datenbus überbelastet.</span>
+Das kann bei einigen Exemplaren in
+Extremfällen dazu führen, daß die PIO nicht sauber angesteuert wird und
+z.b. falsch auf
+</p>
+<?php columnEnd(1); ?>

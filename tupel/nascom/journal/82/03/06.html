@@ -1,0 +1,238 @@
+<table>
+<tr>
+	<td><p>Parameter</p></td>
+	<td><p>Funktionsname</p></td>
+	<td><p>Lit.Arg.</p></td>
+	<td><p>Ergebnis</p></td>
+	<td><p>Kommentar</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>MAX</p></td>
+	<td><p>-</p></td>
+	<td><p>c</p></td>
+	<td class="justify"><p>c = a, wenn a größer als b, sonst c = b</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>SPEICHEROPERATIONEN</h4></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>PEEKW</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>b = Wert an der Adresse a; 16-Bit-Wort</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>PEEKB</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>b = Wert an der Adresse a; 8-Bit-Byte</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>POKEW</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schreibt 16-Bit-Wort a an die Adresse b.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>POKEB</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schreibt Byte a an die Adresse b.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>MEM+</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Addiert a zum Wert an der Adresse b.</p></td>
+</tr>
+<tr>
+	<td><p>a b c</p></td>
+	<td><p>MOVEBYTES</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Kopiert c Bytes von a nach b.</p></td>
+</tr>
+<tr>
+	<td><p>a b c</p></td>
+	<td><p>FILL</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schreibt b-mal das Byte c in den Speicher beginnend bei Adresse a.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>ERASE</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schreibt b Nullen in den Speicher ab Adresse a.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>BLANKS</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Schreibt b Leerzeichen (20H) in den Speieher ab Adresse a.</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>EIN-/AUSGABE (siehe auch EDITOR-KOMMANDOS)</h4></td>
+	</tr>
+<tr>
+	<td>-</td>
+	<td><p>CIN</p></td>
+	<td>-</td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		a = Zeichen, das von der Eingaberoutine, deren Startadresse als
+		Wert der Variablen INVAR gespeichert ist, geholt wird. Bei
+		Systemstart BLINK (NAS-SYS!).
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>COUT</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Gibt das Zeichen a aus über die Ausgaberoutine, deren Startadresse
+		als Wert der Variablen OUTVAR gespeichert ist. Bei Systemstart
+		Ausgabe auf Bildschirm.
+	</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>BLINK</p></td>
+	<td>-</td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		Wartet mit blinkendem Cursor auf Eingabe von der Tastatur bzw. vom
+		UART und gibt das Zeichen (a) auf den Stack.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>BLADR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Konstante, a = Startadresse von BLINK</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NORMIN</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = Zeichen von der Eingaberoutine RIN (NAS-SYS)</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NIN</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Konstante, a = Startadresse von NORMIN</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>READSCR</p></td>
+	<td>-</td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		Liest ein Zeichen (a) vom Bildschirm, die Adresse wird dem
+		Cursorregister (C29H) entnommen. Die Zeichen werden gezählt, jedes
+		48. Zeichen durch NEWLINE ersetzt.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>RSCR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Konstante, a = Startadresse READSCR</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>MISCHTEXT</p></td>
+	<td>-</td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		wie CIN, nur werden Kleinbuchstaben und überflüssige Blanks
+		ignoriert. Dadurch sind Kommentare in Kleinschrift möglich.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>NORMOUT</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Gibt das Zeichen a auf den Bildschirm aus, sofern der
+		Ausgabezeiger von NAS-SYS nicht geändert wird.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>OUTN</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Setzt den Ausgabezeiger auf Bildschirmausgabe.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>OUTC</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Ausgabezeiger auf Bildschirm + Cassette.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>OUTD</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Ausgabezeiger auf Bildschirm + User-0utput, UOUT auf C80H
+		(Drucker!)
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>=</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Druckt a als Dezimalzahl aus.</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>.</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Wie &quot;=&quot;, doch a bleibt auf dem Stack.</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>PRINTHEX</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Druckt a als Hex-Zahl aus.</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>PRINTM</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Druckt den Wert an der Adresse a als Dezimalzahl aus.</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>PRINTS</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>
+		Druckt den String auf den a zeigt; internes Format mit erstem Byte =
+		Stringlänge.
+	</p></td>
+</tr>
+</table>

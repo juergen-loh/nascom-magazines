@@ -1,0 +1,86 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+ERWEITERUNG der NASSYS&nbsp;1 BEFEHLE
+</h1>
+<h3>
+von Otto Fößel
+</h3>
+<p>
+Waehrend man fuer den Aufruf des Basic-Interpreters die Moeglichkeit
+besitzt, dazu einen speziellen kurzen Befehl in NASSYS zu verwenden (J
+oder Z), gibt es so eine Moeglichkeit fuer die anderen Systemprogramme
+nicht. Naspen,Debugger, Zeap und Disassembler muessen alle mit dem
+Execute-Befehl gestartet werden, wobei jeweils die richtige Adresse
+fuer Warm-, bzw, Kaltstart bekannt sein muss. Leicht unuebersichtlich
+kann es werden, wenn man zusaetzliche Programme im Eprom parat hat, wie
+z.B. Treiberprogramme fuer Drucker, EPROMMER-Software oder sonstige
+Hilfsprogramme. Eleganter waere es dann doch, wenn man diese Programme
+ebenfalls mit besonders dafuer vorgesehenen Befehlen aufrufen koennte
+(z.B. Kleinbuchstaben). Mein Loesungsvorschlag dazu erfordert das
+Umprogrammieren von 4 Bytes in NASSYS&nbsp;1 und ein kleines Programm, das
+dann zusaetzlich immer im Speicher vorhanden sein muss. Die Aenderung
+in NASSYS wuerde ich fuer Interessierte kostenlos machen (bitte
+Rueckporto nicht vergessen). Vorher moechte ich aber noch darauf
+hinweisen, dass Herr Maurer im
+<a href="../../../../81/12/15/text/#article2">Heft 11/12</a> eine aehnliche Moeglichkeit
+angekuendigt hat. (Siehe
+<a href="../../../02/09/text/#article1">Heft 2/82</a> &nbsp; Red.) Wahrscheinlich kommt er ohne
+ein Umprogrammieren des Monitors aus, dafuer erscheint mir aber der
+benoetigte Speicherplatz von 2k als sehr gross und, ohne meine Loesung
+anpreisen zu wollen, glaube ich, dass sie flexibler ist, da sich jeder
+ohne Muehe seine eigenen Befehle definieren und anhaengen kann. Aber
+jetzt zu den Aenderungen im Monitor. Bei Adresse 03C9 bis 03F2 liegt in
+Nassys die Haupt-Monitor-Schleife, die jeweils eine Eingabezeile
+uebernimmt und dann den gueltigen Befehl ausfuehrt, bzw. bei
+ungueltigem Befehl eine ERROR-Meldung ausgibt. (Siehe Flussdiagramm
+Bild 1.) Diese Schleife wird einfach durch einen JP-Befehl zum eigenen
+Programm, das die zusaetzlichen Befehle interpretiert, geoeffnet.
+Vorher muss noch die Kontrolle auf gueltige Befehle (A-Z) durch die
+Aenderung eines Bytes erweitert werden (A-Z und a-z). Insgesamt
+muessten dafuer im Monitor diese vier Speicherplaetze dann
+folgendermassen aussehen:
+</p>
+<p>
+03DD: 7B und ab 03EE: C3 xx xx&nbsp;,wobei xx xx
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+die Anfangsadresse des angehaengten Interpreterprogrammes ist. Jetzt zu
+diesem Programm, das fast genauso einfach und kurz ausschaut. Als
+erstes wird noch einmal ueberoruft, ob der Befehlsbuchstabe (ASCII
+Code), der in den Akku geholt wurde, ein grosser Buchstabe ist. Wenn
+ja, kann gleich wieder zurueck in die Monitorschleife gesprungen
+werden. Nachdem aber durch das Einfuegen des JMP-Befehles dort 2
+Befehle ueberschrieben wurden, muessen diese zwei Befehle erst noch
+hier durchgefuehrt werden, (Siehe ab Label &quot;GROSS&quot; im
+Programmlisting Bild 2). Wurde ein kleiner Buchstabe im Akku
+vorgefunden, so wird das Programm bei &quot;NEU&quot; fortgesetzt, und
+dort kann man jetzt seine eigenen Befehle definieren, indem einfach mit
+einem CP-Befehl nachgeschaut wird, ob gerade dieser Buchstabe im Akku
+vorliegt. Ist dies der Fall, wird mit JR Z,xx dort hingesprungen, wo
+festgelegt ist, was auf Grund dieses Befehls gemacht werden soll.
+Dadurch kann nacheinander auf die verschiedenen Buchstaben abgefragt
+werden. Am Ende dieser CP-Abfragen steht der Sprung zurueck in den
+Monitor, wo die ERROR-Meldung ausgegeben wird. Dadurch werden alle
+Buchstaben, die nicht explizit als neue Befehle durch die CP-Abfragen
+ausgesondert wurden, als ungueltig erkannt. Als einfaches Beispiel ist
+gezeigt, wie mit dem Buchstaben &quot;P&quot; das Programmierprogramm
+fuer EPROMs aufgerufen wird und mit dem Buchstaben &quot;z&quot; der
+ZEAP Assembler. Bei letzterem wurde vereinbart, dass der blanke
+Buchstabe &quot;z&quot; einen Kaltstart bedeutet; wird nach dem
+&quot;z&quot; noch eine beliebiege Hexzahl mit eingetippt, so soll das
+als Warmstart interpretiert werden. Uebrigens: die Moeglichkeit, mit
+einem einfachen JMP-Befehl in die Systemprogramme zu springen, ist
+erlaubt. Soll naemlich z.B, von ZEAP zurueck in den Monitor gesprungen
+werden, so geschieht dies nicht mit einem RET-Befehl, denn dann wuerde
+hoechstens der Stack durcheinanderkommen und der Monitor trotzdem nicht
+gefunden. Statt dessen wird dort &ndash; und das sollte man auch fuer die
+eigenen Programme beachten &ndash; mit den Befehlen RST 0 (entspricht Reset)
+oder RST 20 zum Monitor zurueckgekehrt! Zum Schluss noch ein Tip, um
+die Programmierphantasie anzuregen. Ein Befehl &quot;h&quot; (help)
+koennte definiert werden, der eine Tabelle der neuen Befehle und ihrer
+Bedeutung auf dem Bildschirm
+</p>
+
+<?php columnEnd(2); ?>

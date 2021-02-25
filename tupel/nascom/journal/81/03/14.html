@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+Das Programm besteht in zwei Ausführungen, einmal mit Bildschirm,
+zweitens zum Anschluss eines Fernschreibers oder Druckers. Um
+komplizierte Änderungen zu vermeiden, habe ich beide Fassungen
+einzeln gelistet.
+</p>
+<p>
+<u>Bildschirmfassung</u>
+</p>
+<table>
+<tr><td>Start Stichwörter und Antworten in Speicher laden </td><td>04F3</td></tr>
+<tr><td>Start Antworten auf Cassette laden</td><td>04C6</td></tr>
+<tr><td>Start Spiel</td><td>0400</td></tr>
+</table>
+<p>
+Die Adressen. 0C50 bis einschl. 0C53 dienen als Zwischenspeicher
+bei der Stichwortsuche. Soll dieser Speicher verschoben werden,
+müssen die Adressen im Programmteil 042F bis 0441 geändert werden.
+Soll der Beginn des Stichwort/Antwortspeichers verschoben werden,
+(im Progr. ist Speicherbeginn 0C54) so sind 0442 und 047F zu
+ändern.
+</p>
+<p>
+Beim Verschieben des ganzen Programms sollen die unterstrichenen
+Adressen verändert werden.
+</p>
+<p>
+<u>Fernschreiberfassung</u>
+</p>
+<table>
+<tr><td>Start Stichwörter laden</td><td>051A</td></tr>
+<tr><td>Start Antworten auf Cassette</td><td>04ED</td></tr>
+<tr><td>Start Spiel</td><td>0400</td></tr>
+</table>
+<p>
+Nach dem Ausdruck der Antwort kann sofort die nächste Frage gestellt
+werden.
+</p>
+<p>
+Zum Verschieben des Stichwortspeichers gelten die gleichen Angaben wie
+oben, anstatt 04F7 ist aber 051E zu ändern.
+</p>
+<p>
+in 04EA steht ein Sprung zu einer TTY Routine. Dazu kann das
+TTY-Unterprogramm des Einfach-Disassemblers aus
+<a href="../../../../80/06/28/text/#article1">Heft 6/7 80</a> verwendet
+werden, man kann es aber auch zum Ansprung eines anderen
+Fernschreiberprogramms umändern; diese muss aber mit einem
+Rücksprungbefehl C9 enden.
+</p>
+<p>
+Falls ein Druckerprogramm aufgerufen werden soll, müssen natürlich die
+Baudot-Codes für LINE FEED und CARRIAGE RETURN in ASCII Codes
+umgewandelt werden. Diese Codes (0A und 0D) stehen an folgenden
+Adressen:
+</p>
+<p>
+0491 &nbsp; 0496 &nbsp; 04D9 &nbsp; 04DE &nbsp; 04E3
+</p>
+<p>
+Noch ein Hinweis zum Speichern der Stichworttabelle: Wenn beim
+Eintippen in der Bildschirmfassung ein Fehler passiert, kann bequem mit
+Backspace korrigiert werden. Eine Korrektur der Fernschreiberfassung
+ist nicht möglich, da die Backspaces als / mit ausgedruckt werden.
+</p>
+<p>
+<u>Format der Stichwort/Antworttabelle</u>
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+<p>
+<u>Antwortcassettenformat</u>
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+<?php columnEnd(1); ?>

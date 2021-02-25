@@ -1,0 +1,123 @@
+<div id="article1" class="red81">
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-02-1.png"); ?>
+<h1>
+Intern
+</h1>
+<br>
+<p>
+Liebe Leser,
+</p>
+<p>
+endlich haben wir das Oktoberheft fertigstellen können, und hoffen, daß
+die recht vielfältigen Artikel für jeden etwas Interessantes bieten.
+Die versprochenen BASIC Spiele konnten leider nicht mehr aufgenommen
+werden, da sie so umfangreich sind und unser Heft jetzt schon den
+geplanten Umfang überschritten hat. Wir werden die Spiele im
+<a href="../../../12/01/text/#head">Nov. /Dez. Doppelheft</a>
+nachliefern. Dazu werden wir einen BASIC Compiler
+vorstellen, einen Selbstbau-Plotter,
+<?php externalLink("2716"); ?>
+Programmierer mit Software,
+die (nun vollständige) Software für den MDCR und ein Platinen Lay-Out
+für ein verbessertes Interface dazu. Weiterhin erfahren Sie Näheres
+über NASSYS&nbsp;3 und natürlich über die Entwicklung des FORTH.(&nbsp;Der
+&quot;FORTH-<a href="../../../../81/08/02/text/#article2">Rundlauf</a>&quot;
+hat übrigens regen Zuspruch gefunden, was
+man von der Cassettentausch Aktion nicht behaupten kann. Wenn wir bis
+zum nächsten Heft nicht noch einige Interessenten finden (bis jetzt
+sind es erst 3&nbsp;!) werden wir die Aktion einstellen müssen.)
+</p>
+<p>
+Um unser
+<a href="../../../12/01/text/#head">Doppelheft</a>
+auch wirklich zu einer
+&quot;Weihnachtsausgabe&quot; machen zu können, bitten wir weiterhin um
+rege Leserbeteiligung. An dieser Stelle darf ich auch gleich allen
+Einsendern danken, die mit ihren Beiträgen dem Journal zu einem
+wirklich guten Niveau verholfen haben.
+</p>
+<p>
+Die NASSYS3 Aktion hat auch schon einige Interessenten gefunden. Für
+sie ist weiter unten eine kleine &quot;Einbauanleitung&quot; abgedruckt.
+</p>
+<p>
+Nun noch ein Aufruf an alle, die an Kontakten mit NASCOM Benutzern aus
+ihrer Gegend interessiert sind. Senden Sie Namen, Anschrift und
+benutztes System bzw. besondere Interessen an untenstehende Adresse.
+Diese Informationen werden wir veröffentlichen und
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+hoffen, damit zur Förderung lokaler Kontakte von NASCOM Benutzern
+beizutragen.
+</p>
+<p>
+Genug geflirtet &ndash; Viel Spaß mit diesem Heft
+</p>
+<p>
+Ihr Günter Böhm
+</p>
+
+<?php boxStart(); ?>
+<p>
+Kontaktadresse für Interessenten an lokalen
+&quot;Computerbekanntschaften&quot;:<br>
+Werner Öhring<br>
+__________ ___.__<br>
+____ _______<br>
+Tel.___/_______
+</p>
+<?php boxEnd(); ?>
+
+<h4 id="article2">
+<u>Einbauanleitung für NASSYS&nbsp;3 in NASCOM&nbsp;1</u>
+</h4>
+<p>
+Die einfachste Lösung wäre, Sie lassen sich das Betriebssystem in 2
+<?php externalLink("2708"); ?>
+schießen. Wenn das zu viel Mühe macht, hier eine kleine
+Hardwareänderung:
+</p>
+<p>
+Beim NASSYS3 Eprom werden die Pins 19, 20 und 21 herausgebogen. Pin 21
+und 24 werden mit einem kurzen Drahtstück verbunden. Nun muß Pin 19
+durch eine Leitung mit A10 der CPU verbunden werden. (rechts neben IC
+36 bei Pin 16 ist eine Durchkontaktierung leicht zugänglich).
+</p>
+<p>
+Nun muß noch der /CS-Eingang Pin 20 über ein Gatter angeschlossen
+werden, so daß er über den Bereich von 2K aktiv ist, Dazu kann man ein
+74LS00 direkt auf IC 44 setzen. Die Versorgungsspannung und Masse (Pin
+14 und 7) werden direkt mit IC 44 verlötet. Pin 8, 12 und 13 des 74LS00
+werden miteinander verbunden (hochbiegen und mit Draht verlöten) Pin 9
+und 10 jeweils mit Pin 8 und 11 von IC 44 verlöten. Alle übrigen
+Beinchen kann man abzwicken. Pin 11 des Gatters wird nun mit /CS durch
+ein Stück Litze verbunden.
+</p>
+<p>
+Wenn man sich den T4 Monitor in ein 2716
+brennt, kann man ihn in den freien Sockel setzen. Durch einen
+Umschalter, der die Leitung von IC 7400 Pin 11 an an den /CS Eingängen
+der Monitoren umschaltet, kann man ohne Umschaltkarte zwischen zwei
+Betriebssystemen wählen. Ich werde es jedenfalls so machen.
+</p>
+<h1 id="article3">
+FORTH für den NASCOM
+</h1>
+<h3>
+Teil 3 &ndash; von Günter Kreidl
+</h3>
+<p>
+Leider haben sich ins Listing Fehler eingeschlichen: die Zeilen 5480 u.
+5495 sind zu
+ändern:
+</p>
+<pre class="donthyphenate">
+          5480 LD DE, -5
+          5495 LD DE, -9
+</pre>
+
+<?php columnEnd(2); ?>
+</div>

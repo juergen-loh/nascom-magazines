@@ -1,0 +1,100 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für Floppy-Einsteiger
+</h1>
+<h3>
+<u>von GÜNTER BÖHM</u>
+</h3>
+<p>
+Dieser Artikel und die entsprechenden Programme sind der Grund für die
+<a href="../../02/text/#article1">Verspätung</a>
+dieser Ausgabe. Um Ihnen den Aufbau und die Benutzung des
+<a href="../../../07/30/text/#article1">FD-Controllers</a>
+zu vereinfachen, sollte eine Karte zunächst einmal an
+einem Mini-Laufwerk getestet werden. Als Grundlage dienten die Routinen
+von A. Zippel
+(<a href="../../../05/10/text/#article1">Heft 5</a>),
+die allerdings in
+<?php externalLink("CP/M","CPM"); ?>
+eingebunden auf einem
+Rechner in der Uni Karlsruhe laufen und für unsere Zwecke isoliert und
+ergänzt werden mußten, wobei natürlich Fehler auftraten.
+</p>
+<p>
+Vier Wochen hat nun die Fehlersuche gedauert, wobei ich als absoluter
+Floppy-Neuling gewaltig ins Schwitzen kam. Helmut Emmelmann hat mich
+mit viel Zeitaufwand tatkräftig unterstützt. Ohne seine Erfahrungen und
+seine Vorgaben, wie man an so eine Sache überhaupt herangeht, wäre das
+Projekt noch lange nicht am Laufen. Dieter Oberle wurde auch laufend
+belästigt und hat durch viele Tips und die Lieferung der notwendigen
+Informationen und Datenblätter zum Gelingen beigetragen.
+</p>
+<p>
+Dieser Artikel kann keine Information bis ins letzte Detail beinhalten,
+das würde den Rahmen sprengen und auch das Erscheinen des Heftes noch
+weiter verzögern. Es sollen aber die Informationen geliefert werden,
+die zum Verständnis der grundlegenden Funktion des Controllers dienen
+und die auch zum Testen der Software unerläßlich waren. Vielleicht
+können sie Ihnen helfen, etwaige Fehler bei Ihrem Nachbau zu entdecken.
+Sie sind allerdings in dem Vorteil zu wissen, daß die Schaltung und die
+angebotene Software hier schon läuft, während wir beim Testen weder
+Hard- noch Software als funktionstüchtig voraussetzen durften und so
+einer Rechnung mit zwei Unbekannten gegenüberstanden.
+</p>
+<p>
+Die Funktion des
+Controllers soll anhand der Schreib/Leseroutinen erklärt werden
+</p>
+<p>
+Zunächst aber zum Aufbau und Anschluß der Controller-Karte.
+</p>
+<p>
+Die DMA wurde nicht bestückt. Welche Drahtbrücken dabei zu machen sind,
+wurde bereits im <a href="../../../07/30/text/#article1">letzten Heft</a>
+beschrieben. In diesem Heft
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+finden Sie den
+<a href="../../14/text/#article2">Bestückungsplan</a>
+und eine neue
+<a href="../../14/text/#article3">Stückliste</a>.
+Die beigefügten Änderungen gegenüber dem Schaltplan sind z.T. auf der
+Platine schon durchgeführt oder aber leicht vorzunehmen.
+</p>
+<p>
+Wenn der Controller Daten anfordert oder abgeben möchte (beim Lesen
+oder Schreiben), gibt er ein DRQ- (Data Request) Signal an Pin 38 aus.
+Dieses Signal soll an der CPU einen NMI (Hardware Interrupt mit
+absolutem Vorrang) auslösen. Deshalb muß es über die
+<?php externalLink("ECB","",""); ?>-Busleitung
+20c zur CPU geführt werden. Da der NMI im NASCOM über Port 0 zur Single
+Step Routine verwendet wird, muß man diese Verbindung lösen oder aber
+die Leitungen von Port 0 und dem Controller über ein Gatter verbinden,
+sodaß beide wahlweise den Interrupt auslösen können. Ich habe auf der
+Tastaturkarte von List/Niemann einen Jumper in dieser Leitung, den ich
+öffnete und damit auf die Single Step Möglichkeiten verzichtete. Das
+erwähnte Gatter soll aber auf meiner Karte noch nachträglich eingebaut
+werden.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Den Anschluß der Cannon-Buchse über ein 34-poliges Flachbandkabel an
+der Preßstecker des
+<?php externalLink("BASF 6106"); ?>
+Laufwerkes zeigt die Tabelle. Zwischen
+allen Steuerleitungen liegen Masseanschlüsse, die man je zu zwei oder
+drei gebündelt an die vorgesehenen Stifte des Cannon-Steckers löten
+kann.
+</p>
+
+<?php boxStart("LTR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,111 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Außerdem wurde ein freies Gatter dazu verwendet, mit Port0/B2 den
+Bildschirm zwischen Normal- und Inversdarstellung umschalten zu können.
+Dabei ist zu beachten, daß NASSYS bei jeder Tastaturabfrage Port0 auf
+den Wert in 0C00H zurücksetzt. Für Testzwecke trägt man dort mit dem
+Modify- Befehl &quot;4&quot; für invers und &quot;0&quot; für
+Normaldarstellung ein. RESET bewirkt ebenfalls Normaldarstellung.
+</p>
+<p>
+Oben
+erwähnte Synchronisation von CPU und Videoteil wird durch die Ausgabe
+von WAIT-Zyklen gewährleistet. Da der Prozessor warten muß, bis der
+Videoteil eine neue Zeile eines Zeichens in das Schieberegister zur
+seriellen Ausgabe geladen hat, ist die Geschwindigkeitseinbuße auch bei
+häufigem Bildschirmzugriff kaum meßbar.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-22-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Sollten bei Einsatz der Schaltung ab und zu irgendwelche unerwünschten
+Zeichen auf dem Bildschirm erscheinen, so bekommt das Video-RAM,
+bedingt durch die jetzt leicht verzögerte Adreßumschaltung, seine
+Freigabe zu früh. Einfache Abhilfe für dieses Timing-Problem: ein
+22pF-Kondensator von IC 69, Pin 8 nach Masse.
+</p>
+<p>
+Alle IC- und Pinangaben beziehen sich übrigens auf den NASCOM&nbsp;2, beim
+NASCOM&nbsp;1 sind sie analog umzusetzen.
+</p>
+<p>
+Nun aber zur Schaltung:
+</p>
+<p>
+IC 65, Pin
+9 und IC 69, Pin 3 sind herauszubiegen, IC 58 wird nicht mehr benötigt
+und wandert in die Bastelkiste. Dann sind
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Verbindungen zur Hauptplatine entsprechend der Schaltungsskizze
+herzustellen.
+</p>
+<p>
+Wer beide Änderungen durchgeführt hat, kann sich nun an
+einer wirklich schönen Bildschirmdarstellung erfreuen. (Natürlich
+funktioniert jede Modifikation auch für sich allein).
+</p>
+
+<h1 id="article1">
+Grafik
+</h1>
+<h3>
+von JÖRG WITTICH
+</h3>
+<p>
+Mit der folgenden Schaltung, deren Aufbau weniger als DM&nbsp;80.&ndash; kosten
+soll, haben Sie gleichzeitig eine 8K Speichererweiterung, einen
+programmierbaren Zeichengenerator und &ndash; wenn Sie über ein Bit von Port0
+auf 4 Generatoren umschalten &ndash; eine hochauflösende Grafik von 256x256
+Punkten.
+</p>
+<p>
+Jedem der vier Zeichengeneratoren sind auf dem Bildschirm
+abwechselnd senkrechte Streifen von 8 Zeichen Breite zugeordnet.
+Dadurch lassen sich auf dem Bildschirm 65536 einzelne Bildpunkte
+ansprechen.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-22-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Es sind auch folgende Formate möglich:
+</p>
+<p>
+320x160 Punkte + 6 Zeilen<br>
+384x128 Punkte + 8 Zeilen Text.
+</p>
+<p>
+Im Vergleich dazu:
+</p>
+<p>
+280x160 Punkte + 4 Zeilen oder<br>
+280x192 Punkte bei APPLE<br>
+320x200 Punkte bei VC 64
+</p>
+<p>
+Falls die Schaltung von einigen Lesern nachgebaut wird und
+weiteres Interesse besteht, können wir die entsprechende
+Grafik-Software dazu liefern. Es existiert auch eine Anpassung an X-TAL
+BASIC, ähnlich wie in früheren Heften beschrieben, jedoch mit der oben
+erwähnten feinen Auflösung.
+</p>
+<p>
+Auch eine Erweiterung auf Grauwerte könnten
+wir liefern, die beim Autor schon seit einiger Zeit für SC-Television
+benutzt wird und ausgezeichnete Bildqualität liefert.
+</p>
+<p>
+Sollte bei einem
+Nachbau sogar ein Platinen-Layout herausspringen, wären wir sehr
+dankbar für eine Veröffentlichung im Journal.
+</p>
+
+<?php columnEnd(2); ?>

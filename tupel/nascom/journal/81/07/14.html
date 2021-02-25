@@ -1,0 +1,82 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+MDCR-MONITOR
+</h1>
+<h2>
+1.Teil
+</h2>
+<h3>
+Johannes Christian Lotter
+</h3>
+<p>
+In einer <a href="../../../03/02/text/#article1">zurückliegenden Ausgabe</a>
+des NJ versprach ich, mehr über die
+Ansteuerung des MDCR-Laufwerks zu bringen. Dies will ich nun einlösen.
+Wer das damals beschriebene Interface aufgebaut hat, kann das Laufwerk
+über Port B der PIO ansteuern. Den 8 Bits von Port B wurde folgende
+Bedeutung gegeben:
+</p>
+<table>
+<tr><td>Bit 0:</td><td>&nbsp;</td><td>Eingang,</td><td>&nbsp;</td><td>Read Clock</td></tr>
+<tr><td>Bit 1:</td><td>      </td><td>Eingang,</td><td>      </td><td>Read Data</td></tr>
+<tr><td>Bit 2:</td><td>      </td><td>Eingang,</td><td>      </td><td>Begin/End of tape</td></tr>
+<tr><td>Bit 3:</td><td>      </td><td>Eingang,</td><td>      </td><td>Cassette in position</td></tr>
+<tr><td>Bit 4:</td><td>      </td><td>Ausgang,</td><td>      </td><td>Write Command</td></tr>
+<tr><td>Bit 5:</td><td>      </td><td>Ausgang,</td><td>      </td><td>Write Data</td></tr>
+<tr><td>Bit 6:</td><td>      </td><td>Ausgang,</td><td>      </td><td>Move reverse</td></tr>
+<tr><td>Bit 7:</td><td>      </td><td>Ausgang,</td><td>      </td><td>Move forward</td></tr>
+</table>
+<p>
+Weiterhin von Bedeutung ist noch Bit 7 von Port 0, über das das Write
+enable-Signal abgefragt werden kann. Am Strobe-Eingang von Port A liegt
+das 12kHz-Signal, so daß Port A &ndash; richtig programmiert &ndash; alle 83&nbsp;usec
+einen Interrupt anfordern kann. Soviel zur Hardware.
+</p>
+<p>
+Da das Interface
+bereits eine automatische Bandendabschaltung enthält, können Sie den
+MDCR durch einen Softwarefehler nicht kaputtmachen. Nur auf einen Punkt
+müssen Sie achten: Die Bits 0-3 von Port B dürfen nicht als Ausgang
+programmiert werden. Andernfalls werden Sie erleben, wie Ihre PIO unter
+Schall- und Rauchentwicklung in die ewigen Jagdgründe entschwindet.
+</p>
+<p>
+Zur
+Software: Das angekündigte MDCR-Bedienprogramm ist fertig. Es wird auf
+Ihrem NASCOM allerdings noch nicht laufen, da ich meinen auf 64
+Zeichen/Zeile umgebaut habe und das Programm dafür ausgelegt ist. Ich
+muß es also mit neuen I/O-Routinen versehen, was noch einige Wochen
+dauern wird (ich habe momentan sehr viel zu tun). Die endgültige
+Version wird 2KByte umfassen, einen Floppy-ähnlichen Bedienkomfort
+bieten (File-Struktur, Bootstrap-Möglichkeit) und auch durch Basic
+ansteuerbar sein. Mehr darüber (hoffentlich) in der
+<a href="../../../12/35/text/#article1">nächsten Ausgabe</a>.
+</p>
+<p>
+Doch nun zum eigentlichen Kern des Programms, den
+Schreib-Lese-Routinen, die ich Ihnen nicht solange
+vorenthalten möchte. Die wichtigsten Unterprogramme sind im folgenden
+aufgelistet. Damit können Sie sich problemlos ein eigenes
+Bedienprogramm zusammenbauen.
+</p>
+<p>
+Noch ein Tip, falls Sie nun Ihre eigenen Schreib- und Lese-programme
+entwickeln wollen: Die Firma Philips gibt in ihrem
+<?php externalLink("MDCR-Manual"); ?>
+auf Seite 10 bestimmte Vorschriften für das Timing vor und nach Lese- und
+Schreiboperationen an. Diese Vorschriften sind tatsächlich ernst zu
+nehmen- meine ersten Leseprogramme liefen nicht richtig, weil
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+ich nach dem Motto &quot;Ein paar Millisekunden weniger werden schon
+nichts ausmachen&quot; noch ein paar Blöcke mehr aufs Band quetschen
+wollte. Also: Die angegebenen Zeiten dürfen Sie ruhig überschreiten,
+aber beim Unterschreiten gibt&rsquo;s Probleme.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

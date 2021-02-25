@@ -1,0 +1,86 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-1.jpeg", "vertical-align:bottom"); ?>
+&nbsp; und fertig.
+</p>
+
+<br>
+<h1 id="article1">
+KLINGEL
+</h1>
+<h3>
+von Michael Bach
+</h3>
+<p>
+Schon mehrfach habe ich es vermißt, daß das ASCII-Zeichen 07 (BEL) beim
+Nascom keinen Piepston auslöst. Das wäre praktisch für Terminal-Betrieb
+oder auch z.B. bei Basic Programmen, um den Benutzer zu einer Eingabe
+aufzufordern. Das vorgestellte Programm füllt diese Lücke. Einen
+Verstärker oder Lautsprecher an ein Bit in Port 0 anzuschließen, ist ja
+nichts Neues und in dieser Zeitschrift
+<a href="../../../../80/00/04/text/#article2">schon
+beschrieben worde</a>n. Das
+Interessante daran ist vielleicht die Methode, durch Umdefinieren der
+Output-Tabelle und Verwendung der &quot;User&quot;-Funktion diesen
+Piepser von allen Programmen durch einen Output auf den Bildschirm
+einschalten zu können; in Basic z.B. durch den Befehl &quot;PRINT CHR
+(7)&quot;. In der abgedruckten Version erscheint zusätzlich zum
+Piepston auch das BEL-Symbol auf dem Bildschirm&nbsp;. Das Programm ist
+relokatibel, kann also an beliebiger Stelle im Speicher stehen. Es muß
+einmal bei &quot;SUMMER&quot; gestartet werden. Dann kehrt es zum
+Monitor zurück und kann sofort durch Drücken der Tasten Crtl-G getestet
+werden. Es bleibt aktiv, bis die Reset-Taste betätigt wird.
+</p>
+
+<pre>
+0080 ;       **** KLINGEL ****        29.03.81
+0090 ;
+0000 ;M. Bach
+0110 ;__ _________ __
+0120 ;____ Stegen
+0130 ;_____/_____
+0140 ;
+0150 ;Wenn der Kode 07H (ctrl-G) in der CRT-
+0160 ;Routine kommt, wird ein Summer angestellt
+0170 ;Der Summer hängt an Bit 5 von Port 0.
+0180 ;   Das Programm wird initialisiert durch
+0190 ;Start bei SUMMER. Es kehrt zum Monitor
+0100 ;zurück; und solange nicht RESET gedrückt
+0210 ;wird, kann der Summer von allen Program-
+0220 ;men benutzt werden (z.B. BASIC).
+0230 ;Der User-Output wird verwendet und ist
+0240 ;damit nicht anderweitig verfügbar.
+0250 ;
+0260 ;Betriebssystem NAS-SYS
+0270 ;
+0280 ;
+</pre>
+<!--?php imageinsert($imagepath, $year, $issue, $page, "Image-15-2.jpeg"); ?-->
+
+<?php columnChangeJustify(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-3.jpeg"); ?>
+<h1 id="article2">
+TEXTVERARBEITUNG<br>
+in BASIC
+</h1>
+<h3>
+von Thomas E. Schreiner
+</h3>
+<p>
+Das Programm läuft auf NASCOM&nbsp;1 mit NASSYS in Verbindung mit einem
+Ausgabeprogramm, das bei C80 beginnen muß. Das Ausgabeprogramm sollte
+statt einem Semikolon ein Komma setzen. Dies hat einen bestimmten
+Grund, denn das 8K-Basic läßt keine Kommata im String zu. Daher sind
+diese im Bildschirmtext durch Semikolons zu ersetzen. Mit 20&nbsp;000 freien
+Speicherzellen lassen sich bis zu 250 Zeilen schreiben. Je nach
+Einstellung lassen sich Zeilen mit einer Länge von 66 bis 70 Buchstaben
+auf dem Fernschreiber abarbeiten. Das Unterprogramm zur Ausgabe sowie
+die Steuerung der Zeilenlänge werden vom Programm selbst übernommen.
+Mittels zweier Steuerbefehle kommt man sofort aus dem Eingabeprogramm:
+Pfeil nach oben (shift 0) bedeutet Sprung in die Subroutinen,
+&quot;größer als&quot;-Zeichen Sprung zur Ausgaberoutine. Alles
+</p>
+
+<?php columnEnd(2); ?>

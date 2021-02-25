@@ -1,0 +1,176 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+Hobbyprogrammierer sicher von Interesse. An einem
+<a href="../../../../81/08/02/text/#article2">Cassettenrundlauf</a>
+wäre ich ebenfalls interessiert und würde mich gerne beteiligen.
+</p>
+<p>
+Thilo Lauer<br>
+_________. _<br>
+____ Alsbach _
+</p>
+<p>
+Antwort der Redaktion:
+</p>
+<p>
+Die Unterlagen können sicher von einem Leser beschafft werden. Zum
+NASDIS schreibt uns Karl-Heinz Philippi einige Tips zur
+Fehlerbeseitigung (ich selbst hatte allerdings bisher keine
+Schwierigkeiten):<br><br>
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Leider hebe ich mich sehr lange nicht mehr gerneidet, auch weil ich
+zwischendurch Urlaub gemacht habe und einige Dinge noch
+dazwischengekommen sind. Außerdem kann ich Ihr Diskettenformat erst
+seit kurzem schreiben. Jetzt aber bin ich soweit: Ich schicke Ihnen
+eine Diskette mit den Sources von meinem
+<a href="../../36/text/#article1">BIOS</a>.
+Da ich das Bios
+zwischenzeitlich dokumentiert habe, ist es doch unpraktisch groß
+geworden. Ich habe es deswegen in 5 handlichere Module unterteilt. Mehr
+dazu später.<br><br>
+</p>
+
+<?php columnEnd(2); ?>
+
+<?php columnStartJustify(23); ?>
+
+<?php boxStart(); ?>
+<p id="article1" style="text-align: left">
+Benutzern des Nascom Disassemblers fällt auf, daß dieser während der
+Abarbeitung eines Programmes vorzeitig beendet und zum Monitor
+zurückkehrt. Dieser Fehler tritt besonders bei Verwendung von NAS-SYS&nbsp;3
+in Erscheinung. Der Grund befindet sich aber im Programm des NAS-DIS
+selbst. Auf der Adresse CFC5 steht der Befehl: JR NC,&sect;04; if
+nothing continue. Dieser relative Sprungbefehl hätte richtig lauten
+müssen: JR NC,&sect;09&nbsp;; dann wird das Programm so ausgeführt, wie es
+ursprünglich gedacht war und man kann jeuerzeit mit ESC (1BH) den
+Programmlauf abbrechen. Zu ändern ist also: Adr. CFC6 von 04 auf 09.
+</p>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChange(3); ?>
+
+<div id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-1.jpeg"); ?>
+</div>
+<br>
+
+<?php columnEnd(2); ?>
+
+<?php columnStartJustify(2); ?>
+
+<p id="article2">
+Das STARWARS war ursprünglich für CLD-DOS geschrieben und wurde von
+Wolfgang für NAS-SYS umgestrickt. Möglicherweise befinden sich am
+Anfang des Listings noch einige Sprungleisten zum DOS, die aber vom
+Programm nicht benutzt werden sollten.
+</p>
+<p>
+Da die Programmierung schon so lange zurückliegt, kann Wolfgang auf
+die Schnelle keine genaue Auskunft geben, er ist aber gerne bereit,
+interessierten Lesern aufzuhelfen (notfalls sogar mit dem
+Assemblerlisting).
+</p>
+<p>
+Bitte anfragen bei
+</p>
+<p>
+Wolfgang Mayer Gürr<br>
+____________ ___ ___<br>
+___ Recklinghausen<br>
+Tel. _____/_____
+</p>
+<p>
+Was die Erläuterungen und Informationen angeht, so kann ich die Wunsche
+nur weitergeben und unsere Leser/Mitarbeiter bitten, doch etwas für
+diejenigen zu tun, die aus ihren Erfahrungen lernen wollen.
+</p>
+
+<?php boxStart(); ?>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<p id="article3">
+Da Ihr Diskettenformat zwar kompatibel zum
+<?php externalLink("mc-CP/M","mc-CP/M",""); ?>-Format
+ist, jedoch
+die Disketten nicht optimal ausnutzt und den Nachteil der
+Inkompatibilität mit bereits für den Nascom vorhandenen CP/M-Formaten
+aufweist, würde ich ein etwas anderes Format vorschlagen: das
+Gemini-DD-Format.
+</p>
+<p>
+Bei diesem Format werden physische 512-Byte-Sektoren verwendet, wobei
+auf einem Track 10 Sektoren untergebracht werden. Die Floppies werden
+beidseitig beschrieben, wobei die Sektoren auf der Seite 1 logisch
+denen auf der Seite 0 nachfolgen. Die beim Formatieren verwendeten
+Sektornummern laufen auf beiden Seiten von 0-9. Für das Betriebssystem
+wird lediglich ein Track reserviert. Reicht dieser Platz nicht aus
+(aufgrund eines umfangreichen BIOS), so kann man einfach hinter dem
+Directory noch Platz für den Rest reservieren, indem man im DPB in den
+Feldern AL0 und AL1 entsprechend mehr Blöcke als reserviert markiert.
+</p>
+<p>
+Auf diese Art und Weise können Disketten trotz unterschiedlichem
+Platzbedarf für das BIOS zwischen verschiedenen Systemen getauscht
+werden. Allerdings sind diese zumindest nicht Coldboot-fähig, nach
+Kopieren der Systemspur aber immerhin Warmboot-fähig.
+</p>
+<p>
+David Kastrup<br>
+_________ ______ _<br>
+__ Aachen
+</p>
+
+<?php columnEnd(2); ?>
+
+<br>
+
+<?php columnStartJustify(2); ?>
+
+<p id="article4">
+...Gleich noch
+ein Wort zum Skew-Faktor. Um das Programm von Deiner Diskette zu lesen,
+dauerte es ca. 6 sec, bei einer Diskette ohne Skew-Faktor nur 2 sec.
+Das Gleiche auch beim Einlesen von 56 kByte bei meinem Kopierprogramm:
+ca. 13 zu nur 4 sec. Ich habe daher Deine Diskette neu formatiert und
+Du kannst einmal Versuche damit machen. Falls das Einlesen dann sehr
+viel laenger dauern sollte, sind die Ursachen fuer evt. Verzoegerungen
+nicht im EMDOS zu suchen, sondern im PHEAS.(Siehe
+&quot;<a href="../../26/text/#article2">EMDOS SCHNELLER</a>&quot;
+in diesem Heft. &nbsp; Red.)
+</p>
+<p>
+<i>Jörg Wittich, Donaueschingen</i>
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Die Firma List &amp; Niemann hat neue größere Geschäftsräume
+bezogen.
+</p>
+<p>
+Die neue Anschrift lautet:
+</p>
+<p>
+List &amp; Niemann<br>
+_____________ _<br>
+Postfach ______<br>
+D-____ Wiesbaden<br>
+Tel. _____ ______ + __
+</p>
+<p>
+Der Kundenschwerpunkt liegt nach wie vor bei kundenspezifischen
+Mikroprozessorentwicklungen (Hard- und Software).
+</p>
+<p>
+Zusätzlich werden Mikroprozessorperipheriegeräte insbesondere
+EPROM-Programmierer (Eigenentwicklung), Floppylaufwerke, Drucker
+</p>
+
+<?php columnEnd(2); ?>

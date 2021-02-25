@@ -1,0 +1,80 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+verbannen!) RELOCATOR-Programme haben wir schon im
+<a href="../../../../81/06/12/text/#article1">NASCOM-Journal</a>
+<a href="../../../../81/06/17/text/#article1">6/81</a>
+veröffentlicht. Beide Programme hatten den Nachteil, daß der
+verschiebliche Code &quot;von Hand&quot; erzeugt werden mußte. Das von
+<?php externalLink("Gary A. Kildall","Gary Kildall"); ?>
+verwendete Verfahren hat den großen Vorteil, daß dieser
+Code von einem Programm erzeugt wird. Voraussetzung ist, daß ein
+Programm in zwei Versionen vorliegt, die sich nur im Speicherbereich
+unterscheiden, in dem sie lauffähig sind. Dieser Unterschied darf
+keinen &quot;krummen Wert&quot; annehmen, sondern muß stets das
+Vielfache einer &quot;ganzen PAGE&quot; (=100H) betragen. Immer dann,
+wann ein Programm im Assembler-Quellcode vorliegt, kann man auf
+einfache Weise zwei solche Programmversionen erzeugen (durch
+entsprechende &quot;ORG&quot;-Vorgaben). NASDIS habe ich hingegen erst
+in ein ZEAP-Format disassemblieren und editieren müssen, bevor diese
+Bedingung erfüllt war. Das Verfahren ist im Grunde sehr einfach. Die
+Routine RELVEC vergleicht die beiden Programmversionen Byte für Byte
+und erzeugt einen &quot;Verschiebungsvektor&quot;, in dem für jedes
+Byte des Programms ein Bit vorgesehen ist. Wird ein Unterschied
+festgestellt, wird das entsprechende Bit gesetzt, sonst nicht. Der
+Unterschied muß immer gleich dem &quot;Page-Unterschied&quot; sein,
+sonst erfolgt eine Fehlermeldung. Der Verschiebungsvektor zu einem
+Programm kann dann separat gespeichert und bei Bedarf geladen werden.
+Die Routine RELOC verrechnet dann diesen Verschiebungsvektor mit einer
+beliebigen Version des Programms und verändert es dabei so, daß es an
+einer vorgewählten Adresse lauf fähig wird. (Die Verschiebung muß man
+dann mit dem Copy-Befehl vornehmeen!) Das Programm muß nicht an einer
+Stelle stehen, wo es auch lauffähig ist. Es muß nur eine Bedingung
+erfüllt sein: Der Abstand der zwei Programmversionen muß gleich dem
+Unterschied in &quot;Pages&quot; sein. Alles weitere kann man wohl dem
+Assemblerlisting entnehmen.
+</p>
+<p>
+(wird fortgesetzt)
+</p>
+<br>
+<table>
+<tr><th colspan=2><?php externalLink("CP/M","",""); ?>-I/O-FUNKTIONEN</th></tr>
+<tr><td>Nr.</td><td>Bedeutung</td></tr>
+<tr><td>0</td><td>System rücksetzen</td></tr>
+<tr><td>1</td><td>Konsolen-Eingabe</td></tr>
+<tr><td>2</td><td>Konsolen-Ausgabe</td></tr>
+<tr><td>3</td><td>Leser-Eingabe</td></tr>
+<tr><td>4</td><td>Stanzer-Ausgabe</td></tr>
+<tr><td>5</td><td>Drucker-Ausgabe</td></tr>
+<tr><td>6</td><td>Dirkte Konsolen Ein/Ausgabe (s.u.)</td></tr>
+</table>
+
+<?php columnChangeJustify(2); ?>
+
+<table>
+<tr><td>7</td><td>IOBYTE holen</td></tr>
+<tr><td>8</td><td>IOBYTE setzen</td></tr>
+<tr><td>9</td><td>Buffer drucken bis &quot;$&quot;</td></tr>
+<tr><td>10</td><td>Buffer von Konsole füllen</td></tr>
+<tr><td>11</td><td>A=FFH falls Konsoleingabe, sonst=0</td></tr>
+</table>
+<h4>
+Anmerkungen:
+</h4>
+<p>
+Einzelzeichen werden für die Ausgabe immer in
+E übergeben, Pointer (Nr. 9 und 10) in DE
+</p>
+<p>
+Eingaben erfolgen immer über A, ebenso das
+IOBYTE
+</p>
+<p>
+Zu 6: bei Aufruf in E=FFH oder Zeichen, bei
+Rückkehr in A Zeichen oder 0
+</p>
+<p id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>

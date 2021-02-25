@@ -1,0 +1,116 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+ECB-Grafikkarte
+</h1>
+<p>
+Vorbemerkungen zur Entstehung der Grafik-Karte:
+</p>
+<p>
+Die Grafikkarte ist ein typisches Beispiel dafür, was die Gemeinschaft
+der 80-Bus Leser ermöglicht. Die Schaltung wurde zunächst in Holland
+von B.H. Klaassen entwickelt, für den 80-Bus gefädelt und von
+Mitgliedern der holländischen NASCOM-Gruppe nachgebaut. Karl
+Schulmeister hat daraufhin das Layout für den
+<?php externalLink("ECB","",""); ?>-Bus
+erstellt. Eric
+v.d. Vaart hat die Übersetzung der Schaltungsbeschreibung aus dem
+Holländischen übersetzt.
+</p>
+<p>
+Diese Gemeinschaftsarbeit hat allerdings nun
+etwa ein Jahr benötigt, aber die fertige durchkontaktierte Europakarte
+(die hier wohl wirklich ihren Namen verdient hat) ist wohl die Mühe
+wert. &nbsp;	 G.B.
+</p>
+
+<h1 id="article2">
+GRAFICS-BOARD<br>
+</h1>
+<h3>
+von B.H. KLAASSEN<br>
+Übers. von ERIC v.d. VAART<br>
+mit Freundl. Genehmigung von<br>
+NASCOM BULLETIN/HOLLAND
+</h3>
+
+<p>
+Außer den ganz teueren Boards sind für den NASCOM keine Graphik-Karten
+zu bekommen. Dafür erscheinen aber immer wieder neue Graphik-Chips auf
+dem Markt. Viele dieser Chips habe ich untersucht; die meisten hatten
+aber nicht genug graphische Möglichkeiten und wurden aussortiert. Die
+übrigbleibenden Bausteine sind der
+<?php externalLink("TMS9929"); ?>
+(Texas), der
+<?php externalLink("&micro;PD7220","uPD7220"); ?>
+(Nec) und der
+<?php externalLink("EF9366"); ?>
+(von Thomson).
+</p>
+<p>
+Der TMS9929 hat nur wenige zusätzliche Bausteine nötig. Er macht
+Gebrauch von Sprites (das sind Cursor-gesteuerte Objekte, die ihren
+eigenen Cursor haben), und dadurch können sehr schöne Game-graphics
+gemacht werden. Dieser Baustein hat aber den Nachteil, daß im Textmodus
+nur 40 Zeichen dargestellt werden können. Für
+<?php externalLink("CP/M"); ?>
+sind aber 80 Zeichen
+notwendig.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Der uPD7220 benötigt viele externe Bausteine. Die Graphics sind nicht
+vom &quot;Pixeltyp&quot;, sondern vom &quot;Vectortyp&quot;. Für jeden
+Vektor kann man dann den Start, die Länge und die Richtung angeben.
+</p>
+<p>
+Ich habe schließlich aber den EF9366 gewählt. Dieser Baustein hat manche
+Übereinstimmungen mit dem UPD7220, ist aber billiger und hat weniger
+externe Bausteine nötig. Auch die Industrie macht viel Gebrauch von
+diesem Chip (GESPAC, SMP, PEP, MULTIBUS, Q-bus). Der EF9366 hat
+folgende Eigenschaften:
+</p>
+<p>
+1. Kommunikation mit dem Nascom geschieht durch 16 I/O-Ports (sodaß
+der ganze Speicher frei bleibt für Programme). Die benötigten Ports
+sind 90 bis 9F.
+</p>
+<p>
+2. Ein auf dem Chip untergebrachter Zeichengenerator.
+</p>
+<p>
+3. Ein
+<?php externalLink("Lichtgriffel","",""); ?>anschluß.
+</p>
+<p>
+4. Im Graphicmodus sind 512x256 Punkte erzeugbar.
+</p>
+<p>
+5. Standardmäßig sind zwei Farben möglich, erweiterbar durch
+zusätzliche &quot;Bitplanes&quot;. Jedes &quot;Bitplane&quot;
+verdoppelt die Anzahl der möglichen Farben.
+</p>
+<p>
+6. Im Textmodus sind 32 Zeilen von 85 Zeichen möglich. Scrolling
+gechieht unter Software, das heißt Softscrolling ist auch möglich.
+(Bemerkung: wie ich von Herrn Klaassen gehört habe, geschieht das
+Scrolling jetzt unter Hardware, Softscrolling ist aber immer noch
+möglich,ERIC)(Bemerkung:Karl Schulmeister hat das Hardwarescrolling
+aber leider nicht mehr auf der Europakarte unterbringen können, Günter).
+</p>
+<p>
+7. Die Größe der Zeichen kann man angeben (4 Bits für die Abmessungen
+in X-richtung, und für die Y-Richtung).
+</p>
+<p>
+8. Zeichen können sowohl horizontal als auch vertikal abgebildet
+werden.
+</p>
+<p>
+9. Vier verschiedene Linien sind möglich (nicht unterbrochen,
+gestreift, gestrichelt und gestreift-gestrichelt)
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,100 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+festgelegt, daß bei Ende des Blocks oder wenn das Match-Byte gefunden
+wurde, ein Interrupt erzeugt wird. Es besteht noch die Möglichkeit,
+einen Interrupt auszulösen, wenn beim DMA der RDY-Eingang aktiv wird.
+Eine Busanforderung wird dann noch nicht ausgegeben. Zum Schluß dieser
+Programmsequenz folgt die Ausgabe des Low Byte des Interruptvektors.
+Durch das &quot;Status Affect Vector&quot; Bit wird, je nach
+Interruptursache die entsprechende Routine angesprungen.
+</p>
+<p>
+In WR5 wird RDY auf aktiv bei High und der CE-Eingang als WAIT
+definiert. Durch Bit 6 kann der DMA veranlaßt werden, die Operation zu
+wiederholen (Auto Restart) oder abzubrechen. Zum Schluß der
+Programmierung folgen nun einige Steuerbefehle aus der WR6-Gruppe.
+Durch C7H wird Port A an das Standard-CPU-Timing angeglichen (ist aber
+hier nicht unbedingt nötig). Die folgenden Befehle bewirken, daß die
+Startadressen intern geladen und die Statusbits gelöscht werden. Nach
+&quot;Interrupt Enable&quot; und &quot;Enable DMA&quot; kann der DMA
+aktiv werden. Es sei angenommen, daß ein Block eingelesen wird. Dann
+löst der DMA einen Interrupt aus und die CPU springt die
+Interruptroutine IENDBL an. Es wird nun die Meldung ausgegeben, daß
+sich ein Interrupt durch Blockende ereignet hat. Anschliessend werden
+wieder einige Steuerworte zum DMA ausgegeben. Zuerst werden die
+Statusbits gelöscht, durch das Byte D3H die Blocklänge intern neu
+geladen, während die Adreßzähler aber unverändert bleiben. Die
+Übertragung wird also beim momemtanen Adreßstand fortgesetzt. Zum
+Schluß dieser Kommandosequenz muß dem DMA mitgeteilt werden, daß er
+erst nach dem RETI (Return from Interrupt) wieder aktiv werden darf,
+gefolgt vom &quot;Enable DMA&quot; Kommando. Diese letzten beiden
+Steuerworte müssen immer am Ende einer Interruptroutine ausgegeben
+werden, um eine ordnungsgemäße Funktion des DMA zu gewährleisten.
+</p>
+<p>
+Der DMA überträgt die weiteren Blöcke, bis das Match Byte gefunden
+wird. In der Interruptroutine IMATCH wird die Meldung ausgegeben, daß
+die EOT-Marke gefunden und übertragen wurde. Der DMA wird nicht mehr
+initialisiert. Die Interruptroutine MATEND wird angesprungen, wenn ein
+Block übertragen und das letzte Byte gleichzeitig das Match Byte ist.
+</p>
+<p>
+Das Programm COPY kopiert einen Speicherbereich in einen anderen Teil
+des verfügbaren Speichers. Dabei wird ab der Adresse D000H ein Block
+der Länge 01F3H ab 4000H im Continuous
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Mode abgespeichert. Da man bei Übertragungen, die nur auf den Speicher
+zugreifen, kein externes RDY-Signal benötigt, wird diese Bedingung
+durch das Byte B3H (Force RDY Signal) aktiv gesetzt. Das Programm
+SEARCH sucht ab D000H nach einem bestimmten Byte (D8H) und übergibt die
+Adresse, an der das Match Byte gefunden wurde, im Register HL dem
+aufrufenden Programm. Bei Suchoperationen wird nur ein Port benötigt.
+Beide Programme initialisieren den DMA im Continuous Mode und setzen
+das RDY-Signal intern aktiv. Der DMA beginnt nach dem &quot;Enable
+DMA&quot; Kommando sofort mit der Übertragung bzw. Suche. Lädt das
+aufrufende Programm die Speicherzellen, in denen die Portadressen und
+Blockcounter stehen, mit den aktuellen Parametern, so können diese
+beiden Programme die CPU-Befehle LDIR und CPIR ersetzen.
+</p>
+<p>
+Die CPU kann vom DMA die 7 READ-Register RR0
+- RR6 lesen, die die aktuellen Adressen für die beiden Port-Counter und
+den Block-Length-Counter enthalten. RR0 ist das Statusbyte, in dem
+der DMA anzeigt, ob RDY aktiv ist, der DMA aktiv war, Interrupts
+anstehen, Blockende übertragen und ein Byte gefunden wurde. Das
+Statusbyte wird ausgelesen vom Programm STATUS, das es in die
+Speicherzelle RR0 lädt, wo es zur weiteren Bearbeitung für die CPU zur
+Verfügung steht. Das Programm PRINT gibt den DMA-Status im Klartext zum
+Bildschirm aus. Das Programm GLOBAL liest sämtliche READ-Register aus
+und speichert die Werte für den Blockcounter nach RR1RR2, Port A
+Counter nach RR3RR4 und Port B Counter nach RR5RR6, wo die CPU diese
+Werte auslesen kann und im Programm LIST die aktuellen Werte der
+DMA-Counter zum Bildschirm ausgibt. Zum Lesen soll noch angemerkt
+werden, daß durch die Read-Maske definiert wird, welche READ-Register
+von der CPU ausgelesen werden sollen.
+</p>
+<h1 id="article1">
+MDCR-Controller Karte
+</h1>
+<h3>
+von H.G. Ingelaat und U. Forke
+</h3>
+<p>
+Die vorliegende
+<a href="../../07/text/#article1">Schaltung</a>
+für MDCR-Benutzer und solche, die es noch
+werden wollen, basiert auf einer Idee von J. C. Lotter. Nachdem ein
+Programm zur MDCR-Steuerung in einer
+<a href="../../../../81/12/35/text/#article1">Journalausgabe</a>
+des letzten Jahres
+vorgestellt wurde, folgt hier eine komplette Hardwareeinheit, die
+folgende Vorteile bietet:
+</p>
+<p>
+- Eigene Pio auf der Karte; der NASCOM-Pio-Bus
+</p>
+
+<?php columnEnd(2); ?>

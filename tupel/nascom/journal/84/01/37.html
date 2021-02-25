@@ -1,0 +1,125 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h3>
+KLEINANZEIGEN
+</h3>
+
+<p>
+BASF 6108 Doppelkopflaufwerk; kaum gebraucht, incl. sämtlicher
+Unterlagen, sowie
+<?php externalLink("mc","MC"); ?>
+Floppy-Controllerkarte (bestückt) gegen
+schriftliches Höchstgebot oder VHB abzugeben.
+</p>
+<p>
+R.Maurer ____________ _<br>
+____ ___________ _
+</p>
+
+<br>
+
+<p>
+Ich will meinen NASCOM loswerden (habe in den sauren (?)
+<?php externalLink("Apple II","Apfel"); ?>
+gebissen.
+</p>
+<p>
+Gustav Delius&nbsp;, _.-______-___ _<br>
+____ _________ _
+</p>
+
+<br>
+
+<h1 id="article1">
+2764 Eprommer
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4>
+PROM-Programmierkarte für
+<?php externalLink("2716","",""); ?>,
+<?php externalLink("2732","",""); ?>,
+<?php externalLink("2732A"); ?>
+und
+<?php externalLink("2764","",""); ?>:
+</h4>
+<p>
+Mit dieser Karte (sie ist nicht NASCOM spezifisch) und der
+dazugehörenden Software ist es möglich, die genannten EPROMs ohne
+externe Schalter, etc. zu programmieren, lesen oder verifizieren.
+</p>
+<p>
+Die
+Karte wird über 4 zusammenhängende Ports (X0-X3), die zum Teil als Ein-
+und Ausgabe-Ports verwendet werden, angesteuert, wobei die oberen 4
+Adreßbits über einen 4pol. DIL-Schalter eingestellt werden können (die
+Software wurde für E0-E3 erstellt). Der Datenbus ist durch einen LS245
+gepuffert, der Systembus wird daher nicht übermäßig belastet.
+</p>
+<p>
+Die Programmierspannung muß ca 28V betragen, sie kann dauernd an der
+Karte anliegen &ndash; natürlich nur, wenn auch die +5V Versorgungsspannung
+anliegt, sonst könnten der 7406 und die Transistoren Schaden erleiden.
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Ein kombinierter, gemeinsamer Schalter erscheint hier zweckmäßig.
+</p>
+<p>
+Die genaue Programmierspannung von 25-26V für 2716 und 2732, bzw 21V für
+2732A und
+<?php externalLink("2764"); ?>
+wird mittels der Zenerdioden und eventuell
+nachgeschalteter Si-Dioden eingestellt. Möglicherweise muß man auch die
+Eingangsspannung verändern; man muß auf Grund der Bauteilstreuung so
+lange probieren, bis man die richtigen Spannungen beim Programmieren am
+Sockel anliegen hat (beim 28pol. Sockel an Pin22 für 2732 S 32A, bzw.
+Pin23 für 2716 und Pin1 für 2764).
+</p>
+<p>
+Die Programmierspannung, bzw. die
+verschiedenen Steuersignale werden über Port X3 mittels elektronischem
+Schalter bzw Optokopplern geschaltet, wobei die Bauteile zusätzlich
+durch Si-Dioden abgesichert sind. Dabei wird der Ausgabebaustein LS273
+III für Port X3 durch den als Eingabeport verwendeten LS245 II am
+Anfang des Programms überprüft. Sollte sich hier eine Funktionsstörung
+ergeben, wird die Meldung &quot;Gefahr für EPROM, Latch
+überprüfen!&quot; ausgegeben.
+</p>
+<p>
+Für die Bestückung der Optokoppler ist
+wichtig, daß man solche verwendet, die 70V Schaltspannung vertragen,
+wie z.B, den
+<?php externalLink("CNY17-2","CNY&nbsp;17-II",""); ?>.
+</p>
+<p>
+Das 20K Cermetpoti dient zum Einstellen der Impulsdauer für den
+Programmierimpuls von 50ms Dauer, wobei die beim Brennen an Pin27 des
+28pol. Programmiersockels anliegende Impulsdauer mittels Oszilloskop
+genau auf 1ms einzustellen ist. Sie wird dann per Software zu einem
+50ms Impuls zusammengefaßt.
+</p>
+<p>
+Als Programmiersockel empfiehlt es sich,
+gleich einen 28pol. Patentsockel (AMP, Textool o.a.) zu verwenden,
+wobei dieser Sockel über Flachbandkabel (max 30cm lang) abgesetzt am
+Gehäuse angebracht werden kann. Eine LED leuchtet während des
+Brennvorganges.
+</p>
+<p>
+Auf der Karte befindet sich auch noch zusätzlich ein Platz für einen
+16pol. Stecksockel. Es war hier an eine Anpassung der Signale an die
+verschiedenen EPROMs mit Hilfe von verdrahteten DIL-Steckern gedacht.
+Da die Schaltung jedoch mit den elektronischen Schaltern einwandfrei
+funktioniert, wird nicht näher darauf eingegangen.
+</p>
+<p>
+Die Software wurde
+von meinem Sohn entwickelt, ich überlasse ihm für zusätzliche
+Erklärungen
+<a href="../../40/text/#article1">an anderer Stelle</a>
+das Wort.
+</p>
+
+<?php columnEnd(2); ?>

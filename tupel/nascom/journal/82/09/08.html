@@ -1,0 +1,97 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+möglich gewesen. Hier wird deshalb eine andere Lösung vorgestellt: das
+Formatierprogramm ist als Ausgabetreiber geschrieben, der mit dem
+&quot;U&quot;-Befehl des Betriebssystems der normalen Bildschirmausgabe
+zugeschaltet werden kann. Vorher muß die Startadresse des Programms
+HFORM bei C78H eingetragen werden. Damit kann das Formatierprogramm mit
+jedem Texteditor zusammenarbeiten.
+</p>
+<h4>
+Programmanlauf
+</h4>
+<p>
+Der auszugebende Text wird zunächst in einen Zeichenpuffer geschrieben,
+bis die vorgegebene Stellenzahl erreicht ist. Dann wird beim nächsten
+Leerzeichen (jeder Code kleiner als 21H wird als Leerzeichen
+interpretiert!) mit der Formatierung begonnen. Hat die Zeile genau die
+vorgeschriebene Länge, wird sie ausgedruckt. Sonst wird zunächst durch
+Einfügen von Halbschritten anstelle der ganzen Leerschritte eine
+Verkürzung versucht. Ist dies nicht möglich, wird das letzte Wort
+abgetrennt und eine Verlängerung der um dieses Wort verminderten Zeile
+mit anderthalbfachen Leerschritten versucht. Ist dies möglich, wird die
+Zeile ausgedruckt und das nicht berücksichtigte Wort an den Anfang des
+Zeilenpuffers geschoben, damit es bei der nächsten Zeile mitgedruckt
+wird. Dann kehrt die Ausgaberoutine ins Hauptprogramm zurück, das dann
+weitere Zeichen ausgeben kann, bis wieder die vorgegebene Stellenzahl
+erreicht ist. Ist eine Formatierung weder durch Verkürzung noch durch
+Verlängerung möglich, wird der Benutzer zu Hilfe gerufen: die nicht
+formatierbare Zeile wird auf dem Bildschirm angezeigt und kann nun mit
+den Editierfunktionen von NAS-SYS bearbeitet werden. In der Regel wird
+man das letzte Wort trennen und damit eine Formatierung ermöglichen. In
+manchen Fällen ist es auch notwendig, jeweils einen zusätzlichen
+Leerschritt von Hand einzusetzen, wenn eine Trennung des letzten Wortes
+nicht möglich ist. Das Editieren wird mit NEWLINE abgeschlossen. Dabei
+MUSS zwischen dem Cursor und dem letzten Zeichen der Zeile eine
+Leerstelle sein, sonst kann in der nächsten Zeile ein Leerzeichen
+verlorengehen!
+</p>
+<p>
+Der Programmteil EDIT ruft HFORM auf; d.h. das ganze
+Programm ist rekursiv programmiert. Der Vorteil der Rekursion liegt in
+der Einfachheit und Kürze des Programms. Der Nachteil ergibt sich für
+den Benutzer beim Editieren: er darf keine Fehler machen! Wird z.B. das
+letzte Wort so getrennt, daß eine Formatierung immer noch
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+nicht möglich ist (weil die nötige Anzahl von Leerstellen im Text nicht
+vorhanden ist), wird wieder die Editierfunktion aufgerufen. Dabei geht
+aber der bereits abgetrennte Wortteil verloren. Man kann dann nur noch
+mit RESET aussteigen und das Hauptprogramm neu starten. Man muß dann
+dafür sorgen, daß die Ausgabe genau an der Stelle wieder beginnt, wo
+der ausgedruckte Text endet. Nach meiner Erfahrung macht man diesen
+Fehler aber nur einmal!
+</p>
+<p>
+Natürlich soll nicht jede Zeile formatiert
+werden. Bei Überschriften, Absätzen oder am Textende muß die
+Formatierungsfunktion aufgehoben werden können. Dies geschieht mit dem
+Paragraphenzeichen (bzw. dem &quot;Schnecken&quot;-a &ndash; das kann ich
+deshalb auch nicht über den Drucker ausgeben!). Zwischen dem
+Paragraphenzeichen und dem letzten Textzeichen muß wiederum ein
+Leerschritt sein, sonst kann es in bestimmten Fällen zu Fehlfunktionen
+kommen. Folgt auf das Paragraphen-Zeichen ein Leerzeichen (oder
+irgendein Control-Code, z.B. 0D = NEWLINE), so wird dies in die nächste
+Zeile übernommen. Das führt dazu, daß die nächste Zeile um eine ganze,
+halbe oder anderthalbfache Leerstelle (je nach Formatierung) eingerückt
+wird. Das ist in vielen Fällen erwünscht, kann aber auch vermieden
+werden, wenn hinter dem Paragraphenzeichen ohne Zwischenraum gleich
+wieder der Text folgt. Das Programm hat noch 2 weitere Funktionen. Es
+ist ein Zeilenzähler eingebaut, der nach einer vorgegebenen Zeilenzahl
+anhält (Papierwechsel!) und nach Drücken von NEWLINE das Programm
+wieder startet. Der Programmteil EDIT wandelt 2 Tastencodes um (für
+Leute, die ihren NASCOM mit deutschem Zeichensatz versehen haben):
+&quot;SHIFT O&quot; = Ü und &quot;CTRL O&quot; = Ö. Auch ohne deutschen
+Zeichensatz ganz nützlich &ndash; schließ&shy;lich kann die Schreibmaschine
+Deutsch.
+</p>
+<h4>
+Programmparameter
+</h4>
+<p>
+Das
+<a href="../../19/text/#article1">Programm</a>
+habe ich nicht mit Kommentaren versehen. Ich hoffe aber,
+daß die Ablaufbeschreibung und die Namen der Labels und Unterprogramme
+aussagekräftig genug sind. Wichtig sind aber noch die Parameter des
+Programms, die vom Benutzer je nach Bedürfnissen zu ändern sind. COUNT
+enthält die vorgegebene Zeichenzahl pro Zeile; COUNT+1 enthält jeweils
+die aktuelle Anzahl der Zeichen im Puffer. BUFPTR zeigt jeweils auf die
+nächste freie Stelle im Zeichenpuffer. LCOUNT enthält die Anzahl der
+bereits gedruckten Zeilen; LCOUNT+1 die Zeilenzahl, die an einem Stück
+gedruckt werden soll. Das Druckerprogramm habe ich hier an die
+</p>
+
+<?php columnEnd(2); ?>

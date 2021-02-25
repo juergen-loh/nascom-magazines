@@ -1,0 +1,203 @@
+<?php columnStart(1); ?>
+<h4 id="article1">
+TABULATOR PROGRAMM
+</h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Dieses Programm füllt den Schirm genau wie das &quot;T&quot;-Kommando
+mit einem Hexdump, aber bei diesem Programm muß keine zweite Adresse
+eingegeben werden, da es diese selbst errechnet. Außerdem können Bytes
+geändert werden. Dazu stehen folgende Kommando-Tasten zur Verfügung:
+</p>
+
+<table>
+	<tr>
+		<td style="text-align: center">
+			Taste
+		</td>
+		<td style="text-align: center">
+			,
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			CURSOR nach links
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			.
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;
+			rechts
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			L
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;
+			oben
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			H
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;
+			unten
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			N
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			Neuer Schirm
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			V
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			Alter Schirm
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+			&quot;
+		</td>
+		<td style="text-align: center">
+			@
+		</td>
+		<td style="text-align: center">
+			=
+		</td>
+		<td>
+			Zurück zum Monitor (T2)<br>
+			Adresse 4D5C
+		</td>
+	</tr>
+</table>
+
+<p>
+Änderung von Bytes:
+</p>
+<p>
+Neue Zahl eingeben und NEW LINE drücken, damit ist sie auf der
+aktuellen Adresse. Drückt man nur auf NEW LINE, erscheint 00.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-27-1.jpeg"); ?>
+
+<?php columnChange(2); ?>
+
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-27-2.jpeg"); ?>
+<table style="margin-left: auto; margin-right: 0"><tr><td>
+<p>
+E.v.d. Vaart<br>
+__________ __<br>
+NL-____ __ Waddinxveen<br>
+Holland<br>
+(_____) ____
+</p>
+</td></tr></table>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4><u>
+TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP
+</u></h4>
+<h4>
+HEX/DEZ - Umrechnung für Tiny Basic
+</h4>
+<p>
+Mit Hilfe dieses kurzen Programms auf der beliebigen Adresse xxx:
+</p>
+<pre class="donthyphenate">
+11 0E 0C    LD    DE,(ARG 2)
+CD F2 FF    CALL Tiny-Umrechner
+CF  (bzw. C3 86 02) zurück zu T4 (T2)
+</pre>
+<p>
+Aufruf: Exxx HHHH
+</p>
+<p>
+HHHH ist eine max. 4-stellige Hexzahl
+</p>
+<p>
+Ergebnis:
+</p>
+<p>
+Dezimalzahl mit Vorzeichen
+</p>
+<p>
+-32767 &lt;= DEZ &lt;= 32767
+</p>
+<p>
+Wenn man 8000 H eingibt, kommt: HOW?
+</p>
+<p>
+Grund: 8000 H = 32768, und diese Zahl ist für Tiny eine Nummer zu groß.
+</p>
+
+<br>
+
+<h4><u>
+TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP
+</u></h4>
+<h4>
+Eine Bitte an NASCOM&nbsp;1 Programmierer:
+</h4>
+<p>
+Wenn Sie Ihre Programme erst ab 0C80H lokalisieren, können auch NASCOM
+2 Besitzer diese unverändert übernehmen. Daran sollten Sie bei
+Veröffentlichungen denken.
+</p>
+
+<?php columnEnd(2); ?>

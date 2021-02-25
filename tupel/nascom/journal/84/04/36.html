@@ -1,0 +1,157 @@
+<?php columnStartJustify(2); ?>
+
+<h1 id="article1">
+CP/M-BIOS
+</h1>
+<h3>
+von DAVID KASTRUP
+</h3>
+<h3>
+1. CP/M-Bios
+</h3>
+<h4>
+a) BIOSMAIN.MAC
+</h4>
+<p>
+Dieses Modul enthält die Einsprungpunkte des BIOS und die
+Diskettentreiber.
+</p>
+<p>
+Mit meiner jetzigen Version können 2 Laufwerke TEAC FD 55-F angesteuert
+werden. Dabei erkennt es im 2. Laufwerk (B:) 6 verschiedene
+Diskettenformate, die entsprechend behandelt werden. Es wird zwischen
+DD und SD unterschieden, zwischen 35- und 80-Track-Formaten, und bei
+Double-Density können sowohl 256-Byte-Sektoren (ECMA), als auch
+512-Byte-Sektoren verwendet werden. Teile dieses Moduls sind aus Richard
+Beal&rsquo;s BIOS entnommen worden. Der Großteil stammt von mir.
+</p>
+<h4>
+b) BIOSIO.MAC
+</h4>
+<p>
+Dieses Modul enthält die Byte-orientierten Ein-/Ausgabe-Treiber. Es
+werden die Einheiten CON:, RDR:, PUN: und LST: zur Verfügung gestellt.
+Das Intel-I/O-Byte ist voll implementiert. Als Druckereinheiten stehen
+zur Verfügung: der Bildschirm, die serielle Schnittstelle (Portaddresse
+patchbar), die serielle Schnittstelle Handshake (Port 0 Bit 7), und
+eine PIO mit Centronics-kompatiblen Handshake-Signalen. Der Großteil
+dieses Moduls stammt von Richard Beal.
+</p>
+<h4>
+c) BIOSKBD.MAC
+</h4>
+<p>
+Diese Keyboard-Routine läuft über einen 50 ms-Interrupt, der von einem
+<?php externalLink("Z80 CTC", "CTC"); ?>
+generiert wird. Da die Keyboard-Routine komplett von mir selber
+geschrieben wurde, ist die Veröffentlichung unbedenklich. Abgesehen von
+der anderen Tastenbelegung weist die Keyboard-Routine noch einige
+andrere Besonderheiten auf: mit Graph-C wird ein
+<?php externalLink("CP/M","",""); ?>-Warmboot
+durchgeführt (anstelle von RESET, das bei mir NAS-SYS&nbsp;3 einblendet und
+startet), mit Graph-K wird die Funktion der SHIFT-Taste bei Buchstaben
+umgekehrt, mitGraph-R wird immer der Keyboard-Status Not-Ready
+zurückgeliefert, da manche Programme abbrechen, sobald eine Taste
+gedruckt wird und man so nicht im voraus tippen kann, und mit Graph-T
+wird der Interrupt-Buffer (32 Zeichen max.) geleert.
+</p>
+<h4>
+d) BIOSCRT.MAC
+</h4>
+<p>
+Dieses Modul verwendet die AVC-Grafik-Platine als
+96x25-Zeichen-Bildschirm, der wahlweise auch in Single-Resolution mit
+einer Auflösung von 48x25 Zeichen betrieben werden kann. Jedes Zeichen
+wird in einem 8x10 Pixel großen Feld dargestellt, die eigentliche
+Zeichenmatrix beträgt 5x7 mit 2 Pixel Unterlängen. Es können 2
+verschiedene Zeichensätze selektiert werden.
+</p>
+<p>
+Beide Zeichensätze können
+jederzeit umprogrammiert werden. Da große Teile der
+Bildschirmansteuerung von dem BIOS von Lampsson übernommen worden sind,
+ist dieser Teil zur Veröffentlichung ungeeignet.
+</p>
+<div id="nascompl">
+<?php imageRight($imagepath, $year, $issue, $page, "Image-36-1.png", "", "", "", "", "", 197/310); ?>
+</div>
+<h4>
+e) BIOSCSUS.MAC bzw. BIOSCSGR.MAC
+</h4>
+<p>
+Enthalten einen englischen bzw. einen deutschen Zeichensatz für das
+Terminal.<br><br>
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article2">
+CPM/LIFE
+</h1>
+<h3>
+von DAVID KASTRUP
+</h3>
+<p>
+Das bekannte und beliebte
+<a href="../../../../83/05/14/text/#article1">MpdK-Life</a>
+liegt jetzt auch in einer Version für CP/M,
+<?php externalLink("Pascal/MT+","Pascal-MT+"); ?>
+und AVC-Grafik-Karte vor. Der zeitkritische Teil
+ist mit Macro-80 in
+<?php externalLink("Z80","",""); ?>-Assembler
+geschrieben worden, die maximale
+Auflösung betragt ungefähr 384x200. Bei dieser Größe wird die nächste
+Generation normalerweise in weniger als 1-2 sec berechnet. Das ist nur
+durch eine grundlegend verbesserte Kernroutine möglich. Damit die
+meisten Nascom- Benutzer von dieser Verbesserung profitieren können,
+habe ich diese veränderte Routine auch in das alte
+<a href="../../../../83/05/14/text/#article1">Kassetten-Life</a>
+eingebaut. Es rechnet jetzt die Generationen mit einem Schnitt von ca.
+12 Generationen pro Sekunde aus (ich phantasiere nicht, probieren Sie
+es aus!). Damit ist MpdK- Life das schnellste mir bekannte Life, wenn
+man die relativ große Auflösung von 96x45 mitberücksichtigt.
+</p>
+<p>
+Ich schicke die Source-Versionen von beiden Lifes mit. Das
+Kassetten-Life ist leider fast völlig undokumentiert und schlecht strukturiert.
+Die CP/M-Version ist wesentlich lesbarer (auch durch die Verwendung von
+Macros). Außerdem könnte man sie auf jeder Grafik laufen lassen (also
+auch auf der
+<a href="../../../01/03/text/#article2">80-Bus-Journal-Grafik-Karte</a>),
+wenn man die
+Bildschirm-Routinen entsprechend abändert. Da dies der einzige
+maschinenabhängige Bestandteil ist, wäre dies für alle Leute
+interessant, die so etwas wie eine Grafik ihr eigen nennen. Allerdings
+möchte ich darum bitten, die Copyright-Notiz mitzuübernehmen. Ich
+glaube, die Arbeit von Michael Prümm und mir ist zumindest soviel wert.
+</p>
+<p>
+Die Bedienung des Kassetten- Life hat sich nicht verändert, die
+CP/M-Version unterscheidet sich in einigen Punkten davon. Der God-Befehl ist
+gestrichen worden; man kann sich stattdessen sofort mit den
+Cursortasten bewegen und mit Space eine Zelle invertieren. Die Befehle
+zum Abspeichern eines Bildes im Speicher sind gestrichen worden.
+Stattdessen kann man mit W ein Bild auf Diskette abspeichern und es mit
+R wieder einlesen. Mit G erhält man die Anzahl der vergangenen
+Generationen, mit D stellt man die Verzögerung nach der Entwicklung
+einer Generation ein, mit P wird eine Volkszählung veranstaltet, und
+mit Q landet man wieder im CP/M.
+</p>
+<p>
+LIFE.ZEA ist ein ZEAP-Assembler-file. LIFE hat zwei Einsprung-punkte.
+Der erste (beim ORG) ist der normale, der 2. (bei ORG+3) löscht den
+Bildschirm nicht. Dadurch kann man z.B. vom Basic aus den Bildschirm
+per Zufall füllen und dann ins LIFE springen.
+</p>
+<p>
+Allerdings darf der
+Bildschirm kein Blank (20H) enthalten. Das muß durch 0C0H ersetzt wer
+den.
+</p>
+<br>
+<p>
+DA ES DER VORHANDENE PLATZ IN DIESER AUSGABE NICHT GESTATTET, DIE
+LANGEN LISTINGS AB&shy;ZU&shy;DRUCKEN, WURDEN DIE PROGRAMME VON DAVID KASTRUP NUR
+AUF DISK5 ÜBERNOMMEN. &nbsp; RED.
+</p>
+<?php columnEnd(2); ?>

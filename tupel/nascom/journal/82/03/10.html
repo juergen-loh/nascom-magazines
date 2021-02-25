@@ -1,0 +1,141 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Durchschnitt berechnen usw. Für manche Fälle muß eine formatierte
+Eingabe vorhanden sein, bestimmte Datenwörter müssen durch alle Files
+mit Cursor leicht geändert werden können (nicht Eingabe mit
+freibeweglichem Cursor wie vorliegend, sondern mit Cursor auf
+bestimmtem Wort.) Interessant wäre auch eine einfache
+&quot;Programmiersprache&quot; für die Verwaltung z.B. SUCHE X Y/Z
+PRINT NAME TELEFON, eine Sortierroutine (schneller als BASIC!) und und
+und....
+</p>
+<p>
+Hier sind Sie als Leser aufgefordert, noch weitere Ideen
+beizusteuern oder sogar auszuarbeiten.
+</p>
+<p>
+Zur Orientierung ein kleiner Hinweis zum Programmaufbau, eine
+ausführliche Beschreibung ist hier nicht möglich, kann aber auf Wunsch
+nachgeliefert werden.
+</p>
+<p>
+Um die Parameterübergabe bei den einzelnen
+Programmteilen zu erleichtern, wurde ein Speicher angelegt, der die
+benötigten Informationen enthält. Sie müssen bei den Programmen darauf
+achten, welche Informationen aus dem Speicher geholt oder darin
+abgelegt werden. Die Daten sind folgendermaßen verteilt:
+&quot;DATEI&quot; enthält den Beginn des Speichers für die Parameter
+</p>
+<p>
+&quot;ASTFIL&quot; enthält die Anfangsadresse des gerade bearbeiteten
+Files
+</p>
+<p>
+&quot;ALEFIL&quot; enthält die File Länge (inclusive BELL als
+Endzeichen)
+</p>
+<p>
+&quot;DATEND&quot; zeigt auf das augenblickliche Ende der Datei
+</p>
+<p>
+&quot;RAMEND&quot; zeigt auf das Ende des verfügbaren Speicherplatzes
+(im Augenblick 5FFF)
+</p>
+<p>
+&quot;AUSGAB-1&quot; enthält C3 und wird
+aufgerufen, wenn eine Ausgabe (z.B. Bildschirm, Drucker oder auch
+Ändern! des Files)benötigt wird)
+</p>
+<p>
+&quot;AUSGAB&quot; enthält die
+jeweilige Adresse der Ausgaberoutine
+</p>
+<p>
+Daran schließen sich die entsprechenden Parameter für die Formulare an;
+so entspricht &quot;FORMPA&quot; dem Speicher DATEI, er enthält den
+Beginn der Formulardatei
+</p>
+<p>
+An die 5 Formular-Parameter schließt sich eine
+Adresse an, die die Nummer des augenblicklich benötigten Formulars
+enthält
+</p>
+<p>
+Die folgenden 10 Bytes dienen dazu, die Parameter der Filedatei
+aufzunehmen, wenn gerade mit Formularen gearbeitet wird. Nach erfolgter
+Manipulation werden die Formulardaten wieder nach FORMPA etc geschleust
+und die alten Parameter wieder aus dem &quot;Rettungspuffer&quot;
+geholt. (Beachten Sie hier die
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Routinen RETTEN und NORMAL). Ein einfacher Trick mit großer Wirkung.
+</p>
+<p>
+Ein zusätzlicher Puffer bei C80 nimmt die Suchbegriffe auf. Dabei
+enthält BUFFER den Beginn des Suchspeichers, ENDZ enthält das Zeichen,
+bis zu dem ein File durchsucht werden soll (im Augenblick BELL für File
+Ende), BUFWD1 enthält die Adresse des Wortes im Buffer, nach dem gerade
+gesucht wird, und SUCHAN enthält die Anzahl der zu suchenden Wörter.
+</p>
+<p>
+Alle Routinen sind als Unterprogramme angelegt (auch wenn sie im
+Listing als Hauptprogramm bezeichnet werden), die entweder vom Menue
+aufgerufen werden, oder sich gegenseitig aufrufen. Zukünftige Routinen
+sollten ebenfalls mit Return abschließen, um die Flexibilität zu
+erhalten.
+</p>
+<p>
+EINGAB (1000) Einlesen von Daten und Speichern in Datei;
+Abschluß durch ESCAPE. Frei beweglicher Cursor, NL erzeugt ASCII 09 auf
+dem Schirm, um das Abspeichern unnötiger Spaces zu verhindern.
+</p>
+<p>
+INIT (114D) lädt Ausgangsparameter zum Anlegen neuer File- und
+Form-Dateien; ruft EINGAB auf
+</p>
+<p>
+ISTEND (11E3) vergleicht Filebeginn mit Dateiende. Ist Dateiende
+erreicht:Message und Ret zum Menue
+</p>
+<p>
+ALLFLS (120F) gibt alle Files aus, errechnet die jeweilige Filenummer
+und gibt sie (wie bei SUCHEN) auf dem Schirm aus.
+</p>
+<p>
+SCREEN (10ED) lädt
+File von Speicher auf Bildschirm, Verwandelt #09 in New Line.
+</p>
+<p>
+SEARCH
+(122C) durchsucht ein File. Es kehrt zurück mit B=0&nbsp;, wenn alle
+Suchbedingungen erfüllt sind, sonst enthält B einen anderen Wert.
+</p>
+<p>
+INITSE (1286) lädt die Suchbegriffe in den Puffer und errechnet die
+Anzahl aus der UND/ODER Verknüpfung.
+</p>
+<p>
+SUCHEN (12EC) ruft SEARCH so lange, bis alle Files gefunden oder
+Dateiende erreicht ist. PRTALL (133b) gibt alle Files aus. PRTNBR
+(1378) druckt das Wort, dessen Nummer in B steht (BCD-Code)
+</p>
+<p>
+FORM (13AD) druckt ein Formular und darin die angegebenen Wörter aus
+den Files.
+</p>
+<p>
+CHAFOR (141D) lädt die gewählte Ausgaberoutine in den
+Speicher AUSGAB.
+</p>
+<p>
+EXTEND (14C0) ermöglicht das Anhängen von Files an
+bestehende Datei.
+</p>
+<p>
+CHANGE (14C9) springt ins Suchprogramm und wählt als
+Ausgaberoutine AENDER zum Ändern
+</p>
+
+<?php columnEnd(2); ?>

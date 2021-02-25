@@ -1,0 +1,137 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Seite(n) für<br>
+Floppy-Einsteiger
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Der
+<a href="../../../../83/05/09/text/#article1">Schaltplan</a>
+zu unserer
+<a href="../../../../83/07/30/text/#article1">Floppy- Karte</a>
+wird durch nachträgliche
+Änderungen und Einfügungen immer unübersichtlicher, sodaß Andreas
+Zippel darangehen möchte, eine verbesserte Version erneut zu zeichnen.
+Bis dahin müssen wir aber noch einige manuellen Änderungen anbringen.
+</p>
+<p>
+So haben einige Leser festgestellt, daß die BAO- Leitung an Pin 25a
+liegen sollte, und ebenso BAI an 23a (und nicht an c&nbsp;) um der
+<?php externalLink("ECB","",""); ?>-&quot;Norm&quot;
+zu entsprechen. Dies ist kein Versehen, sondern
+ein Ergebnis der Existenz verschiedener Normen.
+</p>
+<p>
+Ein
+<a href="../../35/text/#article2">Versehen</a>
+ist allerdings die Vertauschung der A0 und A1 Anschlüsse
+an der PIO. Sie ist auf der Platine so angeschlossen wie auf der
+<?php externalLink("mc","",""); ?>-Karte,
+und nicht wie im Schaltplan angegeben. Deshalb stimmt auch die
+Programmierung der PIO in den Floppy-Programmen und ist nicht schuld am
+&quot;<a href="../../../m1/10/text/#article1">Verschiebefehler</a>&quot;
+unseres Preisausschreibens, wie der
+Einsender einer Lösung meinte. Ein zweiter schlug vor, den 245 zu
+überbrücken, um den Fehler zu beheben. Dies konnte noch nicht
+ausprobiert werden, würde aber auf einen Steuerfehler der PROMs
+hinweisen, die gerade von Andreas überprüft werden. Die Auflösung muß
+also noch hinausgeschoben werden.
+</p>
+<p>
+Ein weiterer Hinweis war, die Pins 21
+und 22 zu verbinden, wie in
+<?php externalLink("mc"); ?>
+4/84 vorgeschlagen. Bis auf die
+beschriebene Einschränkung funktioniert die Karte allerdings auch ohne
+Änderungen wunderbar, wenn auch ohne DMA. Das werden wir aber auch noch
+in den Griff bekommen.
+</p>
+<p>
+Nach dem Aufruf in der letzten
+&quot;<a href="../../../m1/08/text/#article1">Mini-Ausgabe</a>&quot;
+haben sich nun
+doch ca. 10 Leser gemeldet, bei denen die Floppy-Karte nun einwandfrei
+mit EMDOS läuft. Andere sind noch mit dem Bau der Karte beschäftigt.
+Über die Anpassung verschiedener Laufwerke können Sie in den Berichten
+an anderer Stelle in diesem Heft nachlesen.
+</p>
+<p>
+Nun aber zunächst noch einige &quot;Bugs&quot;, die sich bei einer so
+komplizierten Materie notgedrungen einschleichen.
+</p>
+<?php nowrapStart(); ?>
+<h4>
+1. Druckfehler in
+<a href="../../../../83/12/13/text/#article1">Heft 12/83</a>
+</h4>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+<a href="../../../../83/12/14/text/#article1">Seite 14:</a>
+Im drittletzten Abschnitt muß es heißen &quot;In Zeile
+2330....&quot; (nicht 2030)
+</p>
+<?php nowrapEnd(); ?>
+<p>
+<a href="../../../../83/12/19/text/#article1">Seite 19:</a>
+Zeile 1440 &nbsp; LD A,21 ;Vers. Double
+Dense (Sonst wird der WARMBOOT mit Double Density nicht fertig. Dieser
+Fehler ist leider auch noch auf den alten Versionen der Systemdiskette
+im Assemblerlisting vorhanden. Auf den Systemspuren ist es in Ordnung).
+</p>
+<p>
+Weiterhin müßten ins Assemblerlisting des
+<a href="../../../../83/12/20/text/#article1">NASGEN</a>
+(auch auf der
+Diskette) noch vier Zeilen eingefügt werden, um die Funktion zu
+optimieren.
+</p>
+<pre class="donthyphenate">
+581  LD A,#B7
+582  LD (#A18A),A
+</pre>
+<p>
+Ohne diese Zeilen wird EMDOS im Warmstartmodus auf die Systemspuren
+geschrieben. Nach dem Booten läuft EMDOS zwar einwandfrei, weil es die
+Interruptroutine des Warmbooters bei 8D1E verwenden kann. Wenn man aber
+diesen Bereich mit einem File überschreibt, bricht das Programm
+zusammen. Die zusätzlichen Zeilen veranlassen EMDOS, im Kaltstart die
+PIO für die vorgesehene Interruptroutine zu initiieren.
+</p>
+<pre class="donthyphenate">
+351  LD A,1
+352  CALL PHEAS
+</pre>
+<p>
+Dadurch wird vor der Ausführung von NASGEN ein HOME durchgeführt. Erst
+dann ist das Laufwerk bereit. Ohne diese Zeilen kann NASGEN nur bei
+stehendem Laufwerk gestartet werden, denn dadurch wird automatisch ein
+HOME gemacht.
+</p>
+<p>
+Dieses seltsame (zumindest mir unerklärliche) Verhalten des Controllers
+hat mich auch zu einer erneuten Änderung im PHEAS veranlasst.
+</p>
+<p>
+In der ursprünglichen Version brauchte PHEAS ziemlich lange, bis es ans
+Lesen eines Files ging (siehe &quot;Skew-Factor&quot;
+<a href="../../../../83/12/22/text/#article1">Heft 12/83</a>).
+Diese Verzögerung vor dem ersten Lesen rührte daher, daß nach TSTHOM,
+obwohl das Bit7 Bereitschaft des Laufwerks signalisierte, ein Lesen
+nicht möglich war und zunächst 5 Retries gemacht wurden, die etwa 8
+Sekunden benötigten. Nach den 5 erfolglosen Versuchen machte PHEAS dann
+den CALL HOME, und nun funktionierte die Sache.
+</p>
+<p>
+Deshalb wurde der
+Anfang der TSTHOM- Routine geändert, Die Ausgabe des HOME- Befehls mit
+der anschließenden Warteschleife wurde herausgeworfen und an ihrer
+Stelle ein CALL HOME eingesetzt. Sollte kein Laufwerk angeschlossen
+sein, bleibt die Routine dennoch
+</p>
+
+<?php columnEnd(2); ?>

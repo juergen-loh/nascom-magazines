@@ -1,0 +1,46 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Assemblerlisting ist ebenfalls auf unserer Systemdiskette enthalten.
+</p>
+<p>
+Zunächst wurde der unbenutzte Akkuinhalt &quot;1&quot; beim Aufruf von
+PHEAS in einen Ansprung der Testroutine umfunktioniert. (Zeile 100). So
+kann diese auch von Hilfsprogrammen und nicht nur von PHEAS selbst
+benutzt werden. (siehe READTRK)
+</p>
+<p>
+In die Select-Routinen zur Auswahl der Laufwerke wurden noch zwei
+Abspeicherungen für die Anzahl der Sektoren pro Spur und für die
+Sektoren pro Systemspuren aufgenommen, damit die Umrechnung von
+logischen zu physikalischen Sektoren (ab Zeile 1490 ebenfalls geändert)
+für jedes Format durchgeführt werden kann. Bisher setzte die Umrechnung
+30 Sektoren für das System voraus. Beim neuen Format mußte das geändert
+werden:
+</p>
+<p>
+SD 4 Spuren a 10 Sektoren = 40<br>
+DD 4 Spuren a 16 Sektoren = 64
+</p>
+<p>
+Die einzige Routine, die ein NASSYS-Unterprogramm verwendete (CTDEL
+Verzögerungsroutine) wurde durch ein Unterprogramm ersetzt, das die
+Routine DELAY von PHEAS benutzt. Dadurch ist PHEAS von jedem
+Betriebssystem unabhängig geworden und kann auf jedem Rechner
+laufen.(Zeile 1220).
+</p>
+<p>
+Schließlich wurde in PINIT (Zeile 3750) die
+Initiierung der PIO vor dem Zugriff auf die Karte vorgenommen, damit
+sich nicht beide Laufwerke angesprochen fühlen. Auch hier wurde das
+NASSYS Delay entfernt.
+</p>
+
+<p id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+</p>
+<?php columnChange(2); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-21-2.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>

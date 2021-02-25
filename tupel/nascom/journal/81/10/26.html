@@ -1,0 +1,155 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+KLEINANZEIGEN
+</h1>
+
+<?php boxStartNowrap(); ?>
+<p>
+Jeder Abonnent kann kostenlose Kleinanzeigen bis 40 Wörter aufgeben!
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe Zeap 2, NASDIS, DEBUG auf original 8 X 1 K EPROM
+&nbsp; DM&nbsp;250.&ndash;<br>
+Siemens T 100, Tischgehäuse 75 Bd, Großbuchstaben &nbsp; DM&nbsp;200.&ndash;<br>
+Tel. _____/_____
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Wer hat Interesse an Software-/Hardware-/ Informationsaustausch??<br>
+Uwe Fricke &nbsp; Tel. _____/______<br>
+____________ __<br>
+____ _________
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Suche gegen Gebot Assemblerlisting +Manual-Kopie von NASSYS(i).- &nbsp; Wer
+hat in Hamburg Interesse an einem NASCOM-User-Treffen?<br>
+F.-L. Bruhns<br>
+_________ __ _<br>
+____ _______ __
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe NASBUG&nbsp;T2, T4, TINY-BASIC, GRAPH IC-ROM je EPROM
+(<?php externalLink("2708","",""); ?>)
+&nbsp;
+DM&nbsp;20.&ndash;<br>
+incl. original Dokum.<br>
+Programmiere Sonderzeichen (64 max) für
+NASCOM&nbsp;2 -ROM
+(<?php externalLink("2716","",""); ?>)
+&nbsp; DM&nbsp;40.&ndash;<br>
+Formular bei Manfred Segelke _._._.<br>
+_________. __-___<br>
+____ __________ _
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Elektrotechnikstudent sucht NASCOM&nbsp;1 -Benutzer im Raum Kiel zwecks
+Erfahrungsaustausch.<br>
+Hans-Jürgen Plath (bei ________)<br>
+_____ _______._<br>
+____ ____
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Suche ZEAP 2.0 ASSEMBLER mit :=Command-Funktion, NASSYS&nbsp;3 incl.
+Listing<br>
+Rüdiger Maurer &nbsp; Tel. _____/____<br>
+____________ _<br>
+____ ___________ _
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe NASCOM&nbsp;2, 32 K, mit NASPEN und TOOL-KIT in orig. Pultgehäuse,
+betriebsbereit &nbsp; DM&nbsp;1200.&ndash;<br>
+P.-M. Hax &nbsp; Tel. ____/_____ (Mo-Do ab 17&deg;&deg;)<br>
+____________.__<br>
+____ ______________
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe NASCOM&nbsp;1&nbsp;, 32 K RAM, Graphic, Tastaturerweiterung;
+NASBUG-NASSYS umschaltbar; 20 K ROM (8K BASIC,2K TOOLKIT,3K Assembler
+ZEAP 2&nbsp;, 2K Disassembler NASDIS, 1K Debugger) Preis VB &nbsp; DM&nbsp;1200.&ndash;<br>
+Nach 18&deg;&deg; Uhr &nbsp; Tel. _____/_____
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe NASCOM&nbsp;1 mit NASSYS&nbsp;1, 3 Amp, Netzteil, Buffer-Board,
+Cass.recorder, Schreibm.-Interface (&quot;Hofer-Drucker&quot;) und div.
+Ass.-Programmen: &nbsp; DM&nbsp;1000.&ndash;<br>
+Martin Riedel,_______ ___/______
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStartNowrap(); ?>
+<p>
+Verkaufe NASSYS 5 voll interruptfähig, mit 4 neuen Befehlen in 2716
+(5V) &nbsp; DM&nbsp;50.&ndash;<br>
+in 2X<?php externalLink("2708","",""); ?> &nbsp; DM&nbsp;65.&ndash;<br>
+J.C. Lotter _____/______<br>
+____________.__/___<br>
+____ _________
+</p>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article2" class="donthyphenate">
+PUSH/POP REGISTER
+</h1>
+<p>
+Unterprogramme sollten die Register, die sie benutzen und die nicht zur
+Übergabe von Parametern dienen, unverändert lassen. Deshalb besteht der
+Anfang der meisten Unterprogramme aus etlichen PUSHs und das Ende aus
+POPs. Um in größeren Programmen Platz zu sparen &ndash; und zwar sowohl im
+Objektkode als auch im Quellkode, wobei letzteres die
+&quot;Schallgrenze&quot; für Programme über ca. 4KB darstellt &ndash; habe
+ich die folgenden beiden Programme benutzt. Das erste &quot;PUA&quot;
+rettet alle Register (IX &amp; IY können leicht noch dazu) auf den
+Stack. Dies ist nicht so trivial, wie man zunächst denkt, denn auf dem
+Stack steht ja zunächst die Rückkehradresse von &quot;PUA&quot;. Die
+vorgestelle Version speichert den Inhalt von HL in einem Speicherplatz
+&quot;HLS&quot; ab, der natürlich nicht im Eprom sein darf. Durch
+schauderhafte Stackmanipulationen könnte man das zwar auch umgehen,
+aber es wäre deutlich länger &amp; langsamer.
+</p>
+<p>
+Am Anfang eines Unterprogrammes steht dann &quot;CALL PUA&quot;, Das
+Unterprogramm wird nicht mit RET abgeschlossen, sondern mit &quot;JP
+POARET&quot;. In dem simplen &quot;POARET&quot; werden die Register
+zurückgeladen und der &quot;RET&quot;-Befehl ausgeführt, im
+Unterprogramm braucht man also kein &quot;RET&quot;,
+</p>
+<p>
+Überhaupt möchte ich in diesem Zusammenhang darauf hinweisen, daß man
+beim Aufruf eines zweiten Unterprogrammes am Ende des ersten
+Unterprogrammes mit &quot;JP UP2&quot; statt &quot;CALL UP2, RET&quot;
+den gleichen Effekt erzielt.
+</p>
+<br>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

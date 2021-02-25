@@ -1,0 +1,105 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Entwickeln von Programmen gedacht. RP/M hingegen ist im wesentlichen
+ein mit
+<?php externalLink("CP/M"); ?>
+kompatibles Dateiverwaltungssystem. Speicheraufteilung,
+Softwareschnittstelle und Behandlung von Dateien (Files) ist soweit
+kompatibel mit CP/M, daß z.B. der Microsoft Disk Basic Interpreter ohne
+eine einzige Änderung mit RP/M läuft. Der &quot;Trick&quot; besteht
+darin, daß das Cassettensystem softwaremäßig wie ein Floppylaufwerk
+angesprochen wird, wobei natürlich nur sequentielles Lesen und
+Schreiben möglich ist. Für die eigene Programmierarbeit bedeutet dies,
+daß die mit diesem System erstellten Programme (zunächst auf ein
+Cassettensystem zugeschnitten) beim Umsteigen auf ein
+CP/M-Floppy-System (was natürlich auch wieder ein GEMINI-System sein
+kann &ndash; RP/M enthält bereits die BOOT-Routine) praktisch ohne Änderung
+lauffähig bleiben. Mit RP/M wird also eine Aufwärtskompatibilität von
+Cassetten- zu Floppy-Betriebssystemen erreicht. (Vergl. zu CP/M und
+RP/M auch den &quot;Monitor&quot;-Artikel in
+<a href="../../24/text/#article1">diesem Heft</a>!) Darüber
+hinaus verfügt RP/M nur noch über einige Befehle zur Anzeige und
+Veränderung des Speichers, Port Ein/Ausgabe-Befehle, 2 Befehle zum
+Starten eines Programms, den BOOT-Befehl für die GEMINI-Floppy-Systeme
+und einen &quot;Screen-Edit-Mode&quot;. RP/M belegt die oberen 4K
+(F000-FFFF) im Speicher und benutzt natürlich ebenso wie CP/M die
+Zero-Page (0-100H) als Arbeitspeicher. Benutzerprogramme können dann
+den Bereich ab 100H benutzen, ja bei 100H liegt gewöhnlich der
+Programmstart. Man sieht also: mit der tollen Kompatibilität zu CP/M
+geht andererseits die Softwarekompatibilität zum hardwaremäßig
+kompatiblen Vorläufer NASCOM verloren. Speicherbelegung, Systemaufrufe
+und Cassetten-Aufzeichnung (obwohl ebenso wie beim NASCOM-2 1200 Bd.
+Kansas-City!) passen nicht zusammen und das heißt: beim Übergang vom
+einen System zum anderen müssen alle Programme umgeschrieben werden und
+auch Cassettentausch ist vorläufig nicht möglich. Aber da kann man ja
+was dran tun!
+</p>
+<h4>
+Wie wär&rsquo;s mit &quot;?P/M&quot;
+</h4>
+<p>
+Noch&rsquo;n Monitor? Nach T2 kam T4, dann NAS-SYS-1 jetzt NAS-SYS-3
+(zwischendurch auch noch NASSYS-i) und so ganz kompatibel waren die
+nie! Bitte nicht erschrecken. Wir wollen die Verwirrung nicht
+vergrößern, sondern nur die Kompatibilität zwischen verschiedenen
+Systemen herstellen. Wir (die Redaktion) möchten zusammen mit den
+Lesern ein Betriebssystem
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+entwickeln, das für den NASCOM eine ähnliche Kompatibilität zu CP/M
+herstellt, wie sie zwischen RP/M und CP/M besteht. Durch die gleiche
+Normung der Betriebssystemaufrufe bei CP/M und RP/M werden dann auch
+unter RP/M geschriebene Programme auf dem NASCOM lauffähig;
+entsprechend können mit dem neuen Betriebssystem Programme auf dem
+NASCOM entwickelt werden, die dann ohne Änderung auf GEMINI-Systemen
+laufen (wenn&rsquo;s nicht gerade um das Bildschirmformat geht) und wenn wir
+schon dabei sind, werden wir durch eine entsprechende Sprungleiste auch
+eine Kompatibilität mit dem ZAPPLE-Monitor herstellen; dies ist einer
+der Großväter aller
+<?php externalLink("Z80","",""); ?>-Monitorprogramme,
+der von
+<?php externalLink("Rolf-Dieter Klein","R.D. Klein"); ?>
+in seinem Buch
+&quot;<?php externalLink("Mikrocomputer Hard- und Softwarepraxis","MikroComputer, Hard- und Softwarepraxis",""); ?>&quot;
+veröffentlicht
+wurde und in modifizierter Form auch im
+&quot;<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computer&quot;
+verwendet wird. Es ist deshalb damit zu rechnen, daß in Zukunft mit
+diesem Monitor lauffähige Programme in der Zeitschrift
+<?php externalLink("mc","MC"); ?>
+veröffentlicht werden. Unter diesem Monitor läuft z.B. auch das
+12K-BASIC von TDL (ebenfalls von R.D. Klein veröffentlicht in
+&quot;<?php externalLink("Basic-Interpreter","",""); ?>&quot;),
+von denen auch der ZAPPLE-Monitor
+stammt. Wenn sich dann Benutzer des
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computers
+noch ein
+Cassetteninterface (1200 Bd. Kansas-City) einbauen, ist auch mit ihnen
+ein Programmaustausch möglich. Natürlich soll auch NAS-SYS mit allen
+dafür geschriebenen Programmen weiter verfügbar bleiben und so weit als
+möglich benutzt werden. Der Monitor soll nicht im ROM stehen, sondern
+von der Cassette mit NAS-SYS in den oberen Speicherbereich geladen
+werden. Er soll modular aufgebaut sein, damit die Anpassung an
+verschiedene Hardwarekonfigurationen leicht möglich ist. So kann z.B.
+jeder Benutzer seine eigenen Treiberprogramme selbst einfügen, etwa für
+den Mini-Digital-Recorder, und damit andere Massenspeicher für
+CP/M-kompatible Dateien benutzen, oder auch die Software für die im
+NASCOM-Journal vorgestellte
+<a href="../../../../82/05/12/text/#article1">80-Zeichen-Karte</a>.
+Wir haben tatsächlich
+eine ganz verrückte Vorstellung: jeder NASCOM-Besitzer hat letztendlich
+seine eigene Monitor-Version im Speicher, aber alle sind sie kompatibel
+miteinander &ndash; und mit RP/M und CP/M (und ZAPPLE und ZDOS&nbsp;...).
+</p>
+<h4>
+Ausblenden
+</h4>
+<p>
+Der NASCOM paßt aus 2 Gründen schlecht mit CP/M zusammen: CP/M ist
+Terminal-orientiert, setzt also voraus, daß sich der Bildschirmspeicher
+außerhalb des Adressierungsbereichs des
+</p>
+
+<?php columnEnd(2); ?>

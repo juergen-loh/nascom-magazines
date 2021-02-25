@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+Ein analoger Joystick für den NASCOM
+</h4>
+<p>
+Mit einem analogen Joystick ist es möglich, Bewegungen des
+Steuerknüppels in der X- Y- Ebene proportional dem Rechner mitzuteilen.
+Von dem verwendeten Vierquadranten - Potentiometer werden 2 Potis
+benutzt. Diese bestimmen die Impulsdauer zweier Monoflops. Die
+Digitalisierung erfolgt nach dem Zählverfahren.
+</p>
+<p>
+Der augenblicklichen Stellung des Joysticks wird direkt eine
+Bildschirmadresse zugeordnet. Im Gegensatz zu digitalen Joysticks kann
+hier nach einem &quot;CALL JOYSTICK&quot; dem Hauptprogramm die
+aktuelle Cursoradresse direkt im HL-Register übergeben werden.
+</p>
+<p>
+Die Bilder 1 und 2 zeigen den Hardwareaufwand und den Anschluß an den
+NASCOM. Die relokatierbar Subroutine &quot;JOYSTICK&quot; ist ab 0D00H
+einzugeben. Nach dem Start des Testprogramms ab DD36 H sind die Trimmer
+P1 und P3 so abzugleichen, daß beider Joystickbewegung:
+<?php imagePlain($imagepath, $year, $issue, $page, "Image-06-5.jpeg"); ?>
+der Cursor&quot;0&quot; exakt dieser Bewegung nachkommt.Bei
+Bauteiletoleranzen und Abweichungen in der
+Versorgungsspannung kann ein Feinabgleich von C4 und C6 nötig sein.
+</p>
+<p>
+Eine mögliche Anwendung zeigt das Programm &quot;Snake&quot;. Mit dem
+Joystick läßt sich dann eine &quot;Schlange&quot; aus max. 63 Elementen
+zeichnen, die sich bei einer Fortsetzung automatisch am Ende verkürzt.
+</p>
+<p>
+Werden die Potis P2 und/oder P4 durch NTC-, LDR-Bauelemente ersetzt,
+ergibt sich ein breites Experimentierfeld.
+</p>
+<p style="text-align:right">
+U. Krüger
+</p>
+<?php columnEnd(1); ?>
+
+<br>
+
+<?php columnStart(23); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+<?php columnChange(3); ?>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-06-3.jpeg"); ?>
+<?php columnEnd(2); ?>
+
+<br>
+
+<?php columnStart(2); ?>
+
+<br>
+<p>
+C2,C3,C5 Keramikkondensator<br>
+C4,C6 Folienkondensator (!)
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+</p>
+<br>
+
+<?php columnChange(2); ?>
+
+<h4 style="text-align:center">
+TESTPROGRAMM
+</h4>
+<table style="margin: auto"><tr><td>
+ruft Subroutine Joystick auf<br>
+Start: 0D36 H<br>
+Exit : RESET
+</td></tr></table>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-4.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

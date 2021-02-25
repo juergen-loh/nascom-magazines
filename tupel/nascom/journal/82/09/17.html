@@ -1,0 +1,131 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Leider erzeugt sie unter anderem auch ein M1-Signal, welches mit Hilfe
+von zwei Flipflops (IC 16) den Adreßmultiplexer (IC 2) auf die 4
+DIL-Schalter umsteuert und die obersten 4 Adreßleitungen A12 bis A15
+von der CPU abtrennt.
+</p>
+<p>
+Der Effekt: Die CPU wird arglistig getäuscht, denn statt dem Byte der
+Adresse 0000 muß sie jetzt das Byte der eingestellten 4K-Grenze
+schlucken, und dieses Byte heißt in jedem Fall C3. &quot;Aha&quot;,
+sagt sich die CPU, &quot;ich soll noch zwei Bytes holen und meinen
+Programmzähler damit füttern.&quot; Das macht sie auch prompt, und
+schon arbeitet sie in dem Programmteil, der mit den DIL-Schaltern
+eingestellt wurde. Rein zufällig erschein genau zu diesem Zeitpunkt das
+scheinheilige M1-Signal wieder und schaltet den Adreßmultiplexer auf
+die Leitungen A12 bis A15 der CPU zurück.
+</p>
+<p>
+(Das Umschaltsignal erscheint wirklich nur zweimal. Es ist mit dem
+mono-getriggerten Reset-Impuls verknüpft. Siehe N2-Schaltplan IC 12a).
+</p>
+<p>
+Wenn das so ist wie beschrieben, dann mußten ja alle uns vertrauten
+Firmware-Programme, die auf einer 4K-Grenze beginnen, diesen direkten
+Sprungbefehl enthalten. Schauen wir doch einfach mal nach:
+</p>
+<p>
+<table>
+<tr><td>Programm</td><td>Startadresse</td><td>1.Befehl</td></tr>
+<tr><td>ROM BASIC</td><td>E000</td><td>C3 03 E0</td></tr>
+<tr><td colspan=3>&nbsp;&nbsp;(falls kein Minderheiten-BASIC)</td></tr>
+<tr><td>ZEAP 2.0</td><td>D000</td><td>C3 36 DB</td></tr>
+<tr><td>DEBUG</td><td>C000</td><td>C3 03 C0</td></tr>
+<tr><td>Tool-Kit</td><td>B000</td><td>C3 03 B0</td></tr>
+<tr><td><a href="../../../../81/12/38/text/#article1">UNICON 1.4</a></td><td>A000</td><td>C3 0B A4</td></tr>
+<tr><td colspan=3>&nbsp;&nbsp;(Herr Lotter, gewußt wie oder Zufall?)</td></tr>
+<tr><td><a href="../../../02/09/text/#article1">Menue-Progr.</a></td><td>9000</td><td>21 DF 6F</td></tr>
+<tr><td colspan=3>&nbsp;&nbsp;(Nanu? Lieber Herr Maurer)</td></tr>
+</table>
+<p>
+Hoffentlich sind alle Minderheits-BASIC-Besitzer nicht allzu traurig
+darüber, daß bei ihren Versionen nicht sofort nach Reset die
+Microsoft-Reklame erscheint, sondern daß sie erst noch die J-Taste
+drücken müssen.
+</p>
+<h1 id="article1" style="text-align:left" class="donthyphenate">
+Autostart von Rom-Basic
+</h1>
+<h2>
+Vers. 4.7
+</h2>
+<h3>
+von Peter Urban
+</h3>
+<p>
+Für NASCOM2 MIT NAS-SYS1. Durch längere Untersuchungen mit
+Disassembler, Breakpoint und Debugger ist es mir gelungen eine Routine
+zu finden, die ein Basic-Programm läd und es startet. Da es
+nachweislich verschiedene
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Versionen des Rom-Basics gibt empfiehlt es sich mit dem entscheidenden
+Teil zu beginnen.
+</p>
+<p>
+Als erstes scheibt man ein kleines Basic-Programm, macht einen Reset
+und führt das Maschinenprogramm ab 0D36 aus.
+</p>
+<p>
+Diese Routine schreibt in
+den Textbuffer das Token Run und springt dann nach E816.
+</p>
+<p>
+Prinzipiell
+lässt sich auf diese Art und Weise jedes Basic-Kommando ausführen aber
+(jetzt kommt der Pferdefuss) nur nach dem Befehl Run wird ein Warmstart
+ausgefürt, der den Stackpointer und den Workspace des Basic setzt.
+</p>
+<p>
+Nach der Ausführung anderer Befehle stürzte das Programm früher oder
+später ab.
+</p>
+<p>
+Wurde Ihr Programm ausgeführt dann brauchen Sie jetzt einen durch die
+Cass.-LED ferngesteuerten Kassettenrecorder.
+</p>
+<p>
+Legen Sie eine Kassette mit Basic-Programm ein, machen sie einen
+Basic-Kaltstart und starten Sie die Maschine bei 0DBF. Hat es nicht
+funktioniert haben Sie noch eine Chance. Ändern Sie folgende Zeilen:
+</p>
+<pre class="donthyphenate">
+220 CRD2   CALL IN1
+270        CALL IN1
+290 kann entfallen
+300        CALL IN2
+340 kann entfallen
+350        CALL IN4
+460        CALL IN5
+</pre>
+<p>
+Die entspechenden Routinen finden Sie im Anhang. Jetzt muss noch der
+Basic-Kaltstart getestet werden. Dazu löschen Sie den Workspace von
+1000 bis 1100 mit dem Copy-Befehl und legen die
+Kassette mit dem Basic-Programm ein. Starten sie jetzt bei 0D44 die
+Maschine. Erscheint die übliche Meldung mit dem maximal zur Ferfügung
+stehenden Speicherraum und läuft das Programm nach korrektem Einlesen
+nicht, muss ich passen.
+</p>
+<p>
+Die Praxis sieht folgendermassen aus:
+</p>
+<p>
+Man initialisiert die
+USR-Funktion mit Doke 4100, 3328 und kann dann mit A=USR(n) vom Basic
+aus jedes beliebige File starten. Wenn n=0 ist wird das nächste File
+geladen. Wenn n=65 ist wird File A geladen, ist n=66 wird File B
+geladen ect. Bei Label CRD0 steht der Hexwert des Filenamens dann in
+Register D.
+</p>
+<p>
+Eine weitere Möglichkeit ist das Programm mit G(enerate)
+D00 DC4 D44 am Anfang einer Kassette abzuspeichern, gefolgt von einem
+Basic-Programm. Wenn der Kassettenrecorder beim Abschalten der LED
+nicht sofort abstellt (Verzögerung)&nbsp;, kann man nach dem Einschalten des
+</p>
+
+<?php columnEnd(2); ?>

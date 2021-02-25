@@ -1,0 +1,47 @@
+<?php boxStart("TRB"); ?>
+
+<img src="<?php echo $imagepath; ?>Image-10-1.gif" WIDTH=647 HEIGHT=301 alt="Schaltplan">
+<?php columnStart(2); ?>
+<img src="<?php echo $imagepath; ?>Image-10-2.gif" WIDTH=336 HEIGHT=650 alt="Schaltplan">
+
+<?php columnChange(2); ?>
+
+<br>
+
+<h4 id="article1"><u>Hell-Dunkel-Umschaltung für<br>
+NASCOM&nbsp;1 - Anzeige</u></h4>
+
+<p>
+Eine einfache Möglichkeit für die
+Schwarz/Weiß-Umschaltung
+des NASCOM - Bildschirmes bietet sich bei näherem Betrachten des
+Schaltplanes an. Das Video-Signal steht vor dem Zusammenmischen mit den
+Synchronsignalen an IC15 Pin 9 bereit. Dreht man die Phasenlage dieses
+Signales mit einem Inverter um 180 Grad, so erhält man schwarze
+Schrift auf weissem Grund. Um die Umschaltung möglichst einfach
+zu gestalten bietet sich ein Exklusiv-Oder-Gatter (z.B. 74LS86) an. Es
+hat folgende Wahrheitstabelle:
+</p>
+
+<table style="width: 30%; margin-left:5em">
+<tr style="text-align: center; border-bottom:1px solid; border-color:black">
+                               <th>A</th><th>B</th><th style="width: 40%"></th><th>Q</th></tr>
+<tr style="text-align: center"><td>0</td><td>0</td><td                   ></td><td>0</td></tr>
+<tr style="text-align: center"><td>0</td><td>1</td><td                   ></td><td>1</td></tr>
+<tr style="text-align: center"><td>1</td><td>0</td><td                   ></td><td>1</td></tr>
+<tr style="text-align: center"><td>1</td><td>1</td><td                   ></td><td>0</td></tr>
+</table>
+
+<p>
+Legt man also einen der Eingänge auf log. "0", dann arbeitet das
+Gatter in der gezeigten Schaltung als Treiber, schaltet man ihn auf "1",
+dann arbeitet das Gatter als Inverter.
+</p>
+
+<p>
+Die kleine Bereicherung des NASCOM empfinden viele Anwender als
+angenehm.
+</p>
+
+<?php columnEnd(2); ?>
+<?php boxEnd(); ?>

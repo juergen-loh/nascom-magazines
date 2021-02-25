@@ -1,0 +1,104 @@
+<?php columnStart(2, 2); ?>
+
+<?php boxStart("RB"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-43-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+
+<?php boxStart(); ?>
+<div id="nascompl">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-43-2.jpeg"); ?>
+</div>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<p id="article1">
+Fortsetzung von <a href="../../39/text/#article1">Seite 39</a> (Einsteiger)
+</p>
+<p>
+der PUSH- Befehle beträchtlichen Umfang erreichen kann, ist auch der
+Grund, weshalb man Programme im Speicher ab C80 nicht beliebig nach
+oben ausdehnen kann. Irgendwo im Bereich ab F00 (meist FE0 oder
+ähnlich) wird das Programm dann vom herabwachsenden Stack überschrieben
+und spielt verrückt.
+</p>
+<p>
+Allgemein wäre zu sagen: PUSH und POP &ndash; sehr
+brauchbare Befehle, die aber genau beobachtet sein wollen.
+</p>
+<p>
+Als Abschluß vielleicht noch eine interessante Anwendung. Unter
+bestimmten Bedingungen wird ein gepushter Wert nicht mehr gebraucht;
+dann poppt man ihn einfach in ein nicht benötigtes Register. (Im
+Quelltext liest man dann oft als Kommentar &quot;Throw away HL&quot;,
+was bedeutet, daß man den Wert von HL auf dem Stack
+&quot;wegwirft&quot;. Als Beispiel:
+</p>
+<p>
+Sie rufen ein Unterprogramm auf,
+das wiederum ein Unterprogramm aufruft. Normalerweise würde das zweite
+Unterprogramm am Ende wieder zum ersten zurückkehren (seine
+Rücksprungadresse steht ja auf dem Stack). Nehmen wir an, eine
+Bedingung sei erfüllt, die einen Rücksprung ins Hauptprogramm notwendig
+macht. Dann löschen Sie einfach die aktuelle Adresse durch z.B. POP BC
+(Throw away Return Address). Beim Return des zweiten Unterprogramms
+erfolgt nun der Sprung ins Hauptprogramm, da nun die Rücksprungadresse
+des ersten Unterprogramms oben auf dem Stack liegt.
+</p>
+<p>
+Dies klingt beim ersten Durchlesen alles ein wenig kompliziert. Wenn
+Sie Fragen haben, wenden Sie sich vertrauensvoll ans Journal. Als
+nächstes Thema müßten nun die Block-Transfer- Befehle folgen. Wer wagt
+es?
+</p>
+<p>
+G.Böhm<br>
+</p>
+
+<?php boxStart(); ?>
+<table class="donthyphenate">
+<tr>
+<td>-Verkaufe</td>
+<td>ZEAP 2.0 auf original EPROMs
+4x
+<?php externalLink("2708"); ?>
+&nbsp; DM&nbsp;130&nbsp;.&ndash;<br>
+TINI BASIC ebenfalls origin.
+2x 2708 &nbsp; DM&nbsp;40&nbsp;.&ndash;<br>
+</td>
+</tr>
+<tr>
+<td>
+-Suche
+</td>
+<td>
+CLD- oder MKS- Floppy
+</td>
+</tr>
+<tr>
+<td>
+-Suche
+</td>
+<td>
+PASCAL
+Interessenten zum Kauf der EPROM-Version des
+BLS- PASCALs
+</td>
+</tr>
+<tr>
+<td>
+-Kontakt:
+</td>
+<td>
+Jürgen Weiermann _____/____<br>
+__ ________ __ (ab 18 h)<br>
+____ ________ _
+</td>
+</tr>
+</table>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

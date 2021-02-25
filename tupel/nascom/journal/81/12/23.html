@@ -1,0 +1,122 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Treiberleistung aufbringen, um in einem größeren System viele andere
+ICs anzusteuern, müssen die Busleitungen durch Treiber gepuffert
+werden, Für unidirektionale Leitungen (Daten fließen nur in eine
+Richtung), also Adreßleitungen (A0-A15) und Controlleitungen
+(<?php invertedSignal("MREQ"); ?>,
+<?php invertedSignal("IORQ"); ?>,
+<?php invertedSignal("RD"); ?>,
+<?php invertedSignal("WR"); ?>,
+<?php invertedSignal("RFSH"); ?>,
+<?php invertedSignal("M1"); ?>,
+<?php invertedSignal("HALT"); ?>,
+<?php invertedSignal("BUSAK"); ?>),
+reicht es aus, wenn die
+Leitungen in einer Richtung gepuffert werden. Für den bidirektionalen
+Datenbus ist es nun notwendig, daß die Daten in 2 Richtungen gesendet
+werden können. Die Treiberbausteine müssen also einmal Daten senden
+oder Daten empfangen können. Dieses Umschalten, in welche Richtung die
+Treiberbausteine die Daten puffern sollen, wird nun durch das Signal
+&quot;<?php invertedSignal("DBDR"); ?>&quot;(Data Bus Drive)
+gesteuert. Während
+<?php invertedSignal("WR"); ?>-Zyklen ist
+<?php invertedSignal("DBDR"); ?> auf high.
+Anhand der Schaltung der Buffer-Karte ist ersichtlich, daß bei
+<?php invertedSignal("DBDR"); ?>=high
+der Treiberbaustein IC2 gesperrt ist, während die
+Treiber IC1 und IC8 Daten vom Nascom auf den Nasbus weitersenden. Nur
+wenn man von einer der Speicherkarten oder einer I/O-Platine die CPU
+lesen will
+(<?php invertedSignal("RD"); ?>-Zyklus),
+und während des
+<?php invertedSignal("INTACK"); ?> Zyklus wird die
+<?php invertedSignal("DBDR"); ?>-Leitung
+auf &quot;low&quot; gesetzt. Dann sperren IC1 und 8. Der
+Treiber IC2 gibt die Daten vom Nasbus zum Nascom weiter. Normalerweise
+liegt
+&quot;<?php invertedSignal("DBDR"); ?>&quot;
+auf logisch high. Das &quot;low&quot; Signal
+wird auf der Karte generiert, von der die CPU lesen will. Dazu gibt es
+auf jeder Karte eine Decodierlogik, die erkennt, ob die CPU von dieser
+Karte liest. Sie erzeugt, wenn
+<?php invertedSignal("MREQ"); ?>, bzw.
+<?php invertedSignal("IORQ"); ?> und
+<?php invertedSignal("RD"); ?> aktiv sind,
+durch ein IC mit Open-Collector Ausgang auf
+<?php invertedSignal("DBDR"); ?> &quot;low&quot;. (Beim
+<?php invertedSignal("IORQ"); ?> wird
+getestet, ob ein Pheripheriebaustein auf der Karte
+den Interrupt ausgelöst hat und ob
+<?php invertedSignal("M1"); ?> und
+<?php invertedSignal("IORQ"); ?> aktiv sind). Da es
+möglich ist, daß sich RAM-Speicher mit dem 4K-Memory Block auf der
+Nascomkarte überlagern, wird durch die Decodierlogik auf den
+Memorykarten auch das
+<?php invertedSignal("MEXT"); ?> Signal
+abgefragt, und bei Lesezugriff auf
+diesen Speicherblock wird das
+<?php invertedSignal("DBDR"); ?> nicht auf low geschaltet.
+</p>
+<p>
+Zum
+Schluß sei noch bemerkt, daß bei
+<?php invertedSignal("BUSAK"); ?> und
+<?php invertedSignal("RESET"); ?> aktiv
+die Datenleitungen in beide Richtungen (unabhängig von
+<?php invertedSignal("DBDR"); ?>) gesperrt sind.
+</p>
+<p>
+Der
+<?php invertedSignal("M1"); ?>-Zyklus
+(Instruction OP-Code Zyklus) ist der CPU-Zyklus, in dem
+sich die CPU aus dem Speicher den nächsten auszuführenden
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Befehl (OP-Code) holt und anschließend noch einen Refresh-Zyklus
+durchführt. Der Ablauf ist in Fig.1 dargestellt.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<p>
+Während Taktzyklus 1 (T1) legt die CPU den Wert des Programmzählers PC
+auf den Adreßbus. (PC ist ein internes 16bit Register der CPU, welches
+auf die Speicherzelle zeigt, in welcher der nächste abzuarbeitende
+Befehl steht). Gleichzeitig wird der
+<?php invertedSignal("M1"); ?>-Ausgang
+der CPU aktiv (deshalb
+<?php invertedSignal("M1"); ?>-Zyklus).
+Anschließend werden
+<?php invertedSignal("RD"); ?> und
+<?php invertedSignal("MREQ"); ?> aktiv. Diese beiden
+Kontrolleitungen zeigen an, daß die CPU aus dem Speicher ein Byte lesen
+will. Am Anfang von T3 wird nun das Byte, also der OP-Code, vom
+Datenbus in die CPU übernommen. Das Byte, welches die CPU nun über den
+Datenbus erhalten hat, wird nun während der folgenden zwei Takt-Zyklen
+(T3 und T4) analysiert und intern ausgeführt. Während die CPU damit
+beschäftigt ist, intern den Befehl zu verarbeiten, kann extern der
+Refreshzyklus ablaufen. Damit werden Daten in dynamischen
+Speicherzellen aufgefrischt, die sonst verloren gehen würden.
+</p>
+<?php boxStart(); ?>
+<h4 id="article1">
+<u>Piranha-Korrektur</u>
+</h4>
+<p>
+Um Gottes Willen, wieder nichts! Es muß
+heißen:
+</p>
+<p>
+10<u>E</u>A &nbsp; FE statt EE (CP statt XOR) Sonst ist A
+überschrieben.
+</p>
+<p>
+Mary Jo Kostya, Frankfurt<br>
+<span id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-2.jpeg"); ?>
+</span>
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

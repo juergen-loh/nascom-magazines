@@ -1,0 +1,27 @@
+<?php columnStart(1); ?>
+<h4 id="article1"><u>
+Kompensation des mechanischen Spieles
+</u></h4>
+<p>
+Wie schon im <a href="../../../03/03/text/#article1">Nascom-Journal 3/80</a>
+erwähnt,herrscht bei dem Getriebe,das
+den Schlitten zieht,ein Spiel von 0,5 mm (das sind 18 Schritte&nbsp;). Um
+diesen Fehler zu beseitigen,kann man vor den Aufrufen des
+Unterprogrammes ABPLOT das folgende Korrekturprogramm einschieben. Dies
+geschieht so,daß an Stelle von CF5Bh einfach 0C80h als Adresse von
+ABPLOT verwendet wird.
+</p>
+<p>
+Das Programm überprüft zunächst,ob der Zeichenstift nach rechts oder
+links bewegt werden soll und ob diese Richtung mit der vorhergehenden
+übereinstimmt. Bei Gleichheit ist keine Korrektur notwendig und der
+eigentliche Zeichenvorgang erfolgt sofort. Sind die beiden Richtungen
+jedoch verschieden,so werden in der neuen Richtung 18 zusätzliche
+Schritte ausgeführt,bevor der Zeichenvorgang beginnt. Dadurch bewegen
+sich zunächst nur der Motor und das Getriebe;erst bei den Schritten,die
+über 18 hinausgehen und die schon zum Zeichenvorgang gehören,wird auch
+der Zeichenstift mitbewegt.
+</p>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+<?php columnEnd(1); ?>

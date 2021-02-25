@@ -1,0 +1,91 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+READSECT
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Dies ist ein recht komfortables Programm, das es gestattet, eine Anzahl
+von Sektoren in beliebigem Format in den Speicher einzulesen.
+</p>
+<p>
+Nach dem Start (durch EMDOS Aufruf) kann man zunächst das Laufwerk
+anwählen (habe ich von
+<a href="../../17/text/#article1">LWTEST</a>
+übernommen).
+</p>
+<p>
+Dann wird die Eingabe der Spur und des Sektors verlangt, ab dem gelesen
+werden soll. In der gleichen Zeile gibt man auch noch die Anzahl der zu
+lesenden Sektoren an. Die Eingaben leider wieder in Hex.
+</p>
+<p>
+Die Punkte in
+der Eingabezeile muß man nicht beachten. Wichtig ist nur die Eingabe
+von drei Argumenten und der Abschluß durch ENTER.
+</p>
+<p>
+Danach stellt das Programm fest, aus wieviel Bytes der einzelne Sektor
+aufgebaut ist, meldet das auf dem Bildschirm, zählt die Sektoren pro
+Spur und gibt auch diese aus. So hat man sofort einen Überblick über
+das eingelegte Diskettenformat.
+</p>
+<p>
+Beim Einlesen (das immer mit #1000 im Speicher beginnt) wird die
+Startadresse des gerade eingelesenen Sektors jeweils auf dem Bildschirm
+angezeigt.
+</p>
+<p>
+Das Anwendungsprotokoll kann diese Anzeige nicht richtig wiedergeben,
+da der Drucker beim Löschen des alten Wertes nicht mitspielt.
+</p>
+<p>
+Nach dem letzten Sektor wird dieser angegeben, und das Programm springt
+zu EMDOS zurück.
+</p>
+<p>
+Lesefehler werden gemeldet und das Programm dabei abgebrochen. So kann
+man auf dem Bildschirm feststellen, wo der Lesefehler aufgetreten ist.
+Dieser Fall sollte eigentlich nicht eintreten, da jeweils 10 Versuche
+gemacht werden.
+</p>
+<p>
+Dieses Programm sollte helfen, auch ungewohnte Formate zu
+&quot;entziffern&quot;. Wenn allerdings Texte von Wordstar auf der
+ganzen Diskette verteilt sind, schafft auch dieses Programm keine
+Ordnung.
+</p>
+
+<pre class="donthyphenate">
+
+<?php spChar("lowast"); ?>EMDOS
+B:READSECT.COM
+
+<span class="gesperrt">READSECT</span>    Ver   1 0
+
+Sektor lesen mit FDC-Karte 80-Bus J.
+
+DRIVE (0,1,2) ? <u>1</u>
+MINI (5) / MAXI (8) ? <u>5</u>
+DENSITY (S,D) ? <u>D</u>
+READSECTORS / DRIVE 1 / 5 Zoll / DOUBLE DENSE
+
+
+TRK (0-FF) ab Sekt.(0-FF) Anzahl (0-FF)
+1.            1.          49
+
+
+
+
+Sektoren mit 0100 hex Bytes
+10 hex Sektoren pro Spur
+<?php spChar("lowast"); ?>1000 <?php spChar("lowast"); ?>1100 <?php spChar("lowast"); ?>1200 <?php spChar("lowast"); ?>1300 <?php spChar("lowast"); ?>1400 <?php spChar("lowast"); ?>1500 <?php spChar("lowast"); ?>1600 //
+D00 <?php spChar("lowast"); ?>1E00 <?php spChar("lowast"); ?>1F00 <?php spChar("lowast"); ?>2000 <?php spChar("lowast"); ?>2100 <?php spChar("lowast"); ?>2200 <?php spChar("lowast"); ?>2300 <?php spChar("lowast"); ?>2400
+0 <?php spChar("lowast"); ?>2B00 <?php spChar("lowast"); ?>2C00 <?php spChar("lowast"); ?>2D00 <?php spChar("lowast"); ?>2E00 <?php spChar("lowast"); ?>2F00 letzter Sektor
+<?php spChar("lowast"); ?>EMDOS
+</pre>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+<?php columnEnd(2); ?>

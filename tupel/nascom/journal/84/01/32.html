@@ -1,0 +1,126 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+Nun kann man mit dem bis jetzt nicht verwendeten Bit 7 von Port 3
+(User) die Video-Karte softwaremäßig zu- oder wegschalten, je nach
+Bedarf.
+</p>
+<p>
+Für die Anpassung von EMDOS, CLDOS und
+<?php externalLink("CP/M"); ?>
+kann ich mir vorstellen:
+</p>
+<p>
+Auf der Eprom-Karte befindet sich das Coldbootprogramm
+<a href="../../../../83/12/15/text/#article1">CBOOT</a>
+mit einem
+vorangesetzten Programm, das CBOOT auf die Adresse ab 8800 ins Ram
+kopiert, Nach dem Kopieren von CBOOT blendet dieses Programm nach einer
+Menueabfrage (z.B. &quot;1&quot; für EMDOS (CLDOS); &quot;2&quot; für
+CP/M) den notwendigen Bereich der Page 0 aus, ebenfalls die
+Eprom-Karte. Wenn man z. B. das Kopierprogramm und CBOOT ab B800 im
+Eprom hat, kann man NASPEN ja mittels Floppy auf seine angestammte
+Adresse ins Ram laden.
+</p>
+<p>
+EMDOS+NASSYS müßte nach dem Laden von der Floppy ins Ram durch WARMBOOT
+ohne weitere Änderungen laufen, für die CP/M-Anpassung stelle ich mir
+vor:
+</p>
+<ol class="donthyphenate" style="text-align:left">
+<li>
+Stackpointer auf FFFF setzen<br>
+Für Bildschirmzugriff, Tastaturabfrage, Portverwaltung etc,:
+</li>
+<li>
+Rambereich 0800-0FFF in obere Page retten z.B. auf E800-F7FF
+</li>
+<li>
+Page 0 einblenden (LDA,01; OUT 03 (Port 3: Bit 0=1; Bit 1=0; Bit 7=0))
+</li>
+<li>
+Zugriff auf NASSYS + VideoRam + Workspace
+</li>
+<li>
+Page 0 ausblenden (LDA,83; OUT 03 (Bit 0, 1 und 7=1&nbsp;))
+</li>
+<li>
+Rambereich 0800-0FFF restaurieren
+</li>
+<li>
+Return
+</li>
+</ol>
+<p>
+Soweit die Vorschau, als kleine Nachlese noch etwas für die Spalte
+&quot;Tips und Kniffe&quot;:
+</p>
+<p>
+Zur Herstellung von
+Open-Collector-Anschlüssen genügt es, den Ausgang des signalerzeugenden
+Bausteines mittels einer Diode (am besten Ge-Diode z.B. AA 117) vom Bus
+zu trennen. Der Strich bzw. Punkt der Diode muß dabei bei LOW-aktiven
+Signalen zum Baustein zeigen (lieber Herr Böhm, Jumper für NMI auf
+Ihrer Port-0 Karte mit Diode überbrücken, schon läuft wieder
+Single-Step).(Lieber Herr Schulmeister, bei meiner List/Niemann-Karte
+läuft Single-Step auch bei einfachem überbrücken des Jumpers. Was soll
+man davon halten?)
+</p>
+<p>
+Nachtrag zum Listing für die 80*24 Karte
+(<a href="../../../../83/04/21/text/#article1">Journal 4/83</a>):
+</p>
+<p>
+Das Byte bei Adresse A06D (A8) gehört ebenfalls unterstrichen.<br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<h1 id="article1">
+Bus-Interface
+</h1>
+<h3>
+von HORST DIECKHOFF
+</h3>
+<h4>
+Bus- Interface NASCOM- ECB
+</h4>
+<p>
+Da bekanntlich einige Modifikationen des
+<?php externalLink("ECB","",""); ?>-Bus
+bestehen, hier im
+folgenden ein Vergleich des KONTRON- Bus mit dem
+<?php externalLink("Janich &amp; Klass", "Janich+Klass", ""); ?>-
+Bus. Im wesentlichen sind sie mit der
+<?php externalLink("mc-CP/M","mc"); ?>
+Belegung kompatibel. Zusätzlich haben
+wir noch zwei Leitungen vorgesehen, durch die ein vereinfachtes
+Umschalten zwischen NASSYS und CP/M erreicht werden soll:
+</p>
+<p>
+19c <?php invertedSignal("NAS"); ?>/CPM z.B. Monitor-Eprom on/off<br>
+21a <?php invertedSignal("VWL"); ?>/VWH Adresse der Video-Karte
+</p>
+<p>
+(Wir bitten um Äußerungen aus dem Leserkreis, wie wir eine Verwirrung
+im &quot;Bus-Spiel&quot; vermeiden oder doch zumindest sehr klein
+halten können! &nbsp; Red.)
+</p>
+<h4>
+Zur Decodierung des
+<?php invertedSignal("IOEXT"); ?>- Signals:
+</h4>
+<p>
+Für den NASCOM muß nur das
+<?php invertedSignal("NASCOM IO"); ?>- Signal
+erzeugt werden. Um auch die neue Floppy-Controllerkarte
+mit Adressen zwischen 08H
+und 10H nutzen zu können, muß das
+<?php invertedSignal("NASCOM IO"); ?> nur bei den Adressen 00H bis 07H aktiv (low)
+sein.
+</p>
+<h4>
+Realisierungsmöglichkeiten:
+</h4>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-32-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

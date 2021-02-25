@@ -1,0 +1,155 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+TOOLKIT
+</h1>
+<h2>
+für Tape-BASIC
+</h2>
+<h3>
+von E.v.d. VAART
+</h3>
+<p>
+Da ich (vielleicht wie viele NASCOM Benutzer) eine Menge von
+Unterprogrammen für das BASIC hatte, entschloß ich mich, ein TOOLKIT zu
+schreiben. Nach einer gründlichen Studie des BASIC, fielen mir nur drei
+mögliche Methoden ein:
+</p>
+<p>
+1.&nbsp;Man schreibt einen neuen Interpreter, der genau das gleiche wie das
+BASIC macht.
+</p>
+<p>
+2.&nbsp;Man benutzt die Fähigkeit von NASSYS, eine eigene INPUT Routine
+hinzuzufügen. Dies würde allerdings bedeuten, daß die neuen Statements
+nur außerhalb von BASIC Programmen benützt werden könnten.
+</p>
+<p>
+3.&nbsp;Man führt einige Änderungen im BASIC durch, sodaß das BASIC
+&quot;denkt&quot;, es habe mehr Statements als ursprünglich.
+</p>
+<p>
+Ich habe mich für die dritte Möglichkeit entschlossen, zumal ich das
+TOOLKIT für das Tape-BASIC schreiben wollte, bei dem eine Änderung ja
+leicht durchgeführt werden kann. Nach einigen Versuchen hatte ich schon
+Erfolg. Das abgedruckte Assemblerlisting ist die Version, die bei mir
+nun schon seit über einem Jahr fehlerfrei arbeitet.
+</p>
+<h4>
+Wie muß man das Toolkit einbauen?
+</h4>
+<p>
+1.&nbsp;Sie tippen das TOOLKIT ein.
+</p>
+<p>
+2.&nbsp;Jetzt muß die Tabelle, in der die Anfangsadressen der Statements
+stehen, verschoben werden. Dies macht man mit dem Copy-Befehl
+</p>
+<pre class="donthyphenate">
+I 124F 0F00 4A
+</pre>
+<p>
+3.&nbsp;BASIC muß wissen, wo die neue Tabelle steht; also ändern Sie ab
+183A die Anfangsadresse (0F00).
+</p>
+<p>
+4.&nbsp;Tippen Sie jetzt ab 0F4A die Startadressen der Statements des
+TOOLKIT ein (die Startadresse von ELSE ist nicht 880F sondern 1A83). Ab
+0F4A steht also:
+</p>
+<pre class="donthyphenate">
+83 1A 1A 88 2F 88 55 88 56 88 D0 88 D1 88 E7 88
+</pre>
+<p>
+5.&nbsp;Geben Sie ab 124E im BASIC die neuen Statements ein und schließen
+Sie mit 80 ab. Ab 12E4 steht nun:
+</p>
+
+<?php boxStart("B"); ?>
+<?php columnSubStart(); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-1.jpeg"); ?>
+<?php columnSubChange(); ?>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-03-2.jpeg"); ?>
+<?php columnSubEnd(); ?>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart("TR"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-3.jpeg"); ?>
+<?php boxEnd(); ?>
+<p>
+6.&nbsp;Führen Sie die Änderungen, die im Listing stehen durch.
+</p>
+<p>
+Nun muß das BASIC genau so gut funktionieren wie zuvor. Es hat aber
+zusätzlich folgende Statements bekommen:
+</p>
+<h4>
+ELSE:
+</h4>
+<p>
+Arbeitet genau so wie in den meisten Basics, die eine IF..THEN..ELSE
+Mögligkeit besitzen&nbsp;.Setzen Sie immer ein :-Zeichen für das ELSE.
+</p>
+<h4>
+PRON:
+</h4>
+<p>
+Schaltet einen Printer an. Die Startadresse der Printerroutine müssen
+sie ab 0F80 eingeben. (Falls ihre Printerroutine bei 0C80 startet, muß
+ab OF80 stehen: C3 80 0C).
+</p>
+<h4>
+PROFF:
+</h4>
+<p>
+Schaltet den Printer wieder ab.
+</p>
+<h4>
+LFOFF:
+</h4>
+<p>
+Unterdrückt die CRLF zeichen; ist nach einem INPUT Befehl wichtig.
+</p>
+<h4>
+LFON:
+</h4>
+<p>
+Jetzt arbeiten die CRLF-zeichen wieder.
+</p>
+<h4>
+TRON x:
+</h4>
+<p>
+Nach diesem Befehl werden die Zeilennummern im BASIC Programm
+abgedruckt, und es wird eine bestimmte Zeit gewartet. Diese Zeit ist
+mit x zu bestimmen, wenn Sie es weglassen, wird die alte Zeitdauer
+angenommen.
+</p>
+<h4>
+TROFF:
+</h4>
+<p>
+Die Zeilenzahlen werden nicht mehr abgedruckt.
+</p>
+<h4>
+OLD:
+</h4>
+<p>
+Das Program wird wiederhergestellt (recover) nach einem vesehentlich
+eingestippten NEW oder CLOAD.
+</p>
+<?php columnSubStart(); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-03-4.jpeg"); ?>
+<?php columnSubChange(); ?>
+<?php boxStart("RB"); ?>
+<div id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-03-5.jpeg"); ?>
+</div>
+<?php boxEnd(); ?>
+<?php columnSubEnd(); ?>
+
+
+<?php columnEnd(2); ?>

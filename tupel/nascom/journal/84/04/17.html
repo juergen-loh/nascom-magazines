@@ -1,0 +1,99 @@
+<?php columnStartJustify(2); ?>
+
+<h1 id="article1">
+LWTEST
+</h1>
+<h3>
+von   GÜNTER   BÖHM
+</h3>
+<p>
+Zum Testen meines neu angeschlossenen 8 Zoll Laufwerks war mir der
+Einsatz der Testroutinen aus 
+<a href="../../../../83/09/11/text/#article1">Heft 9/83</a> etwas zu umständlich. So habe
+ich ein neues Programm erstellt, das durch Menüführung die alten
+Routinen benutzerfreundlich einsetzt.
+</p>
+<p>
+Man kann beliebige Laufwerke anwählen und hat immer eine Kontrolle über
+seine Eingaben durch Reaktionen des Programms auf dem Bildschirm.
+</p>
+<p>
+Will man mehrfach die gleichen Parameter testen (z.B. wiederholtes
+Lesen von Spur 10 Sektor 3 in Speicher ab 1000) so wird bei der Anfrage
+&quot;Parametereingabe&quot; einfach die Returntaste gedrückt.
+</p>
+<p>
+Ein Nachteil bei der Eingabe ist es, daß die Zahlen in Hex erwartet
+werden. Dies sollte man beachten.
+</p>
+<p>
+Eine Sache ist mir auf gefallen: nach READ TRACK wird immer der
+Fehlercode &quot;LOST DATA&quot; ausgegeben (und das, obwohl
+nachprüfbar richtig eingelesen wurde). Wer kann herausfinden, weshalb
+der Controller dieses Bit setzt?
+</p>
+<p>
+Zur Demonstration der Eingaben und Bildschirmausgaben hier ein
+Anwendungsprotokoll:
+</p>
+<pre class="donthyphenate">
+
+-- NAS-SYS&nbsp;3 --
+
+
+<span  class="gesperrt">LAUFWERKSTEST</span>  Ver 1.0
+
+FDC-Karte 80-Bus Journal
+
+DRIVE (0,1,2) ? 0
+MINI (5) / MAXI (8) ? 5
+DENSITY (S,D) ? D
+LAUFWERKSTEST / DRIVE 0 / 5 Zoll / DOUBLE DENSE
+
+HOME                       H
+SEEK                       S
+READ                       R
+WRITE                      W
+READ TRACK                 T
+NASSYS                     N
+
+HOME
+
+FDC-STATUS 44
+Write Protect
+Track 0
+
+weiter mit beliebiger Taste
+
+LAUFWERKSTEST / DRIVE 0 / 5 Zoll / DOUBLE DENSE
+
+HOME                       H
+SEEK                       S
+READ                       R
+WRITE                      W
+READ TRACK                 T
+NASSYS                     N
+
+Parameter-Eingabe
+
+Speicherbereich&nbsp;?
+1000
+
+SPUR&nbsp;?
+10
+<?php columnChange(2, "</pre>", "<pre class=\"donthyphenate\">"); ?>
+SEKTOR&nbsp;?
+1
+
+Read Track / Spur 10
+
+FDC-STATUS 04
+Lost Data
+
+weiter mit beliebiger Taste
+
+</pre>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-17-1.jpeg"); ?>
+</p>
+<?php columnEnd(2); ?>

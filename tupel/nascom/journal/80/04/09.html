@@ -1,0 +1,86 @@
+<?php columnStart(2, 2); ?>
+
+<p>
+Muster erzeugen, der Phantasie des Benutzers sind keine Grenzen gesetzt.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+
+<br>
+
+<h4 id="article1">
+<u>Einfacher "Snow-Plough"</u>
+</h4>
+<p>
+Wenn die CPU in schneller Folge auf das Video-RAM zugreift,
+entstehen kleine Störungen auf dem Bildschirm. Um diese Erscheinung zu
+unterbinden, wurden in der Vergangenheit einige Vorschläge gemacht, die
+aber nicht ohne eine zusätzliche IS auskommen. Mein Vorschlag benötigt
+dagegen nur zwei kleinere Bauteile und arbeitet seit ca. drei Monaten
+einwandfrei.
+</p>
+<p>
+Aufbau:
+</p>
+<p>
+Zunächst zieht man IC 11 aus der Fassung, biegt Pin 5 so um, daß er
+waagerecht vom IC absteht und lötet einen PNP-Transistor (z.B. BC 307)
+mit dem Emitter an Pin 5 und Kollektor an Pin 7, dort wo er abgebogen
+ist. Nun wird ein 1,5 nF Kondensator parallel dazu gelötet (also auch
+an die Pins 5 und 7). Man sollte schnell löten, damit der IC nicht
+zerstört wird. Die Basis des Transistors verbindet man mit einem Draht
+mit IC 14, Pin 1. Greift nun die CPU auf das Video-RAM zu, so wird der
+Kondensator durch den Transistor entladen, und es gelangen keine
+Bildinformationen auf den Bildschirm. Erst wenn sich der Kondensator
+durch einen in IC 11 befindlichen Widerstand "langsam" (ca. 30
+microsec.) wieder aufgeladen hat, gelangen neue Informationen zum
+Bildschirm. Dann ist jedoch der Zugriff auf das RAM längst vorbei, und
+es entstehen keine Störungen mehr.
+</p>
+
+<?php columnChange(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-2.jpeg"); ?>
+<p>
+Karl-Horst Poschmann
+</p>
+
+<br>
+<h4 id="article2">
+<u>Recorder-Fernsteuerung mit Optokoppler</u>
+</h4>
+<p>
+Im NASCOM-1 CONSTRUCTION MANUAL wird der Einbau eines Relais
+anstelle der LED 1 ('DRIVE') vorgeschlagen, um den Cassettenrecorder
+vom Computer aus ein- und ausschalten zu können. Vor allem, wenn man
+größere Datenmengen (z.B. Text) mit der Grundversion des NASCOM-1
+verarbeiten will, und das ist durchaus möglich, wenn man keine zu
+großen Anforderungen an die Geschwindigkeit stellt, ist ein
+automatisches Schalten des Recorders unbedingt notwendig. Bald nach
+Inbetriebnahme meines NASCOM-1 versuchte ich also, ein passendes Relais
+aufzutreiben &ndash; leider vergebens. Da ich keine Lust hatte, länger zu
+warten, habe ich die im Folgenden beschriebene Schaltung aufgebaut, die
+zudem eine Reihe von Vorteilen bringt;
+</p>
+
+<ol>
+<li>
+An der Hauptplatine ist praktisch keine Veränderung nötig. (Bei
+Einbau eines 5V-Relais muß zumindest der Vorwiderstand der LED
+überbrückt werden &ndash; wahrscheinlich muß aber auch noch ein Kondensator
+eingebaut werden, um die Entladungsspitzen der Relaisspule aufzufangen)
+</li>
+<li>
+Die Schaltung benötigt nur zwei Bauteile und kann direkt vom
+NASCOM-Netzteil versorgt werden. Der Stromverbrauch des Relais beträgt
+6mA bei 12 V.
+</li>
+<li>
+Die Bauteile sind in jedem Elektronik Laden erhältlich.
+</li>
+<li>
+Beide Bauteile können auf einen einzigen 24-Pin-DIL-Sockel gesteckt
+werden.
+</li>
+</ol>
+
+<?php columnEnd(2); ?>

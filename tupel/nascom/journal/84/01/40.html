@@ -1,0 +1,127 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Eprommer<br>
+Software
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<p>
+Das EPROM-Programmier-Programm ist 55BH Bytes lang, kann in einem EPROM
+laufen (und eigentlich auch mit NASSYS1), benutzt den vollen zweiten
+Registersatz und piepst manchmal am Port0, Bit2 (wenn es mit dem
+Brennen fertig ist und wenn beim Menü etwas falsch eingeg. wurde). Die
+drei benötigten Flags wurden im ARG10
+(&pound;C1F) angesiedelt, sonst sind alle Adressen in Registern
+untergebracht (in IX RAM-Anfangsadr, in IY RAM-Endadr und in DE' die
+Startadr im EPROM. Am Beginn jeder Routine wird die RAM-Anfadr. in HL,
+die Endadr. in DE und die EPROM-Start-Adr. in HL' geladen). Nach
+Eingabe des EPROM-Typs und der Adressen stehen folgende Funktionen zu
+Verfügung:
+</p>
+<p>
+<b>Kopieren</b>: EPROM-Bereich wird ins RAM kopiert.
+</p>
+<p>
+<b>Verify</b>: Das EPROM wird
+mit dem RAM verglichen und die unterschiedlichen Bytes ausgegeben
+(immer fünf auf einmal, mit 'Shift New Line' kommt man ins Menü, auch
+wenn noch nicht alle unterschiedlichen Bytes ausgegeben wurden).
+</p>
+<p>
+<b>Brennen</b>: Es wird vor dem eigentlichen Brennen ein Blank-Check und
+danach ein EPROM-RAM Vergleich durchgeführt. Beim Brennen leuchtet die
+LED. Für den Blank-Check muß nur der EPROM-Typ eingegeben worden sein,
+nach der Länge des EPROMs wird dann automatisch gefragt: (0 bis ????),
+d.h. man kann keine einzelnen Sektoren eines EPROMs herausgreifen und
+nach Blanks überprüfen (das wird sowieso vor dem Brennen gemacht),
+sondern nur ab Adresse 0.
+</p>
+<p>
+Beim Brennen, Kopieren und Verifizieren wird durch das vorgestellte
+Unterprg. OKAYFL zuerst überprüft, ob die Adressen und der Typ
+eingegeben wurden, dann hat man durch Drücken eines anderen Buchstabens
+als 'J' nach der Frage, ob die Daten stimmen, die Möglichkeit, zurück
+ins Menü zu gelangen, und schließlich wird man aufgefordert, '1' zu
+drücken, nachdem man das EPROM in die Fassung gesteckt hat. Drückt man
+eine andere Taste als '1', landet man wieder bei der Frage, ob die
+Daten stimmen.
+</p>
+<p>
+Nun eine kurze Beschreibung des Softwarekonzeptes.
+</p>
+<p>
+Zuerst wird 40H in
+Port X2 (ADR2) geschrieben, um die LED auszuschalten (0=ein) und um das
+Trigger-Bit und das Freigabe-Bit auf 0 zu setzen (s. Tabelle). Als
+nächstes soll das Steuerwort für die jeweilige Spannung in Port X3
+(LAT) geschrieben werden. Für den
+<?php externalLink("2716"); ?> 25H; für
+<?php externalLink("2732"); ?> 5AH; für
+<?php externalLink("2732A"); ?> 9AH; für
+<?php externalLink("2764"); ?> 14H.
+</p>
+<p>
+Beim Lesen (Unterprg. IN) wird zuerst die untere
+Adresshälfte in X1 (ADR1) ausgeg., dann muß in dem Byte mit der oberen
+Adresshälfte das LED-Bit auf 1, Trigger und Freigabe auf 0 gelegt
+werden (AND 1FH, OR 40H) und in X2 (ADR2) geschrieben werden. Vom
+Daten-Port X0 (DAT) kann mann sich dann das Datum holen.
+</p>
+<p>
+Beim Brennen
+wird die LED eingeschaltet und das Freigabe-Bit auf 1 gelegt (80H).
+Dann wird das zu programmierende Datum in Port X0 (DAT), und die untere
+Adrhälfte in Port X1 (ADR1) geschrieben. Folgendes wird fünfzig mal
+wiederholt, damit dann im ganzen mind. 50ms lang programmiert wurde.
+Das Byte mit der oberen Adrhälfte wird so maskiert, daß das Brennen
+freigegeben (Bit7) und das Monoflop getriggert wird (AND 1FH, OR A0H).
+Dann das Trigger-Bit wieder auf 0 setzen (AND DFH) und in einer
+Schleife (BRENN3) das Bit0 des Port&rsquo;s X1 (ADR1) abfragen. Dieses Bit
+ist &ndash; durch das Monoflop &ndash; eine Millisekunde lang logisch 1.
+</p>
+<p>
+Wenn
+dieser Vorgang 50 mal wiederholt wurde, die Adressen erhöhen und von
+vorne anfangen. Mein Brenn-Algorithmus ist nicht gerade einer, den man
+einen intelligenten nennt, aber bis jetzt hat er noch jedes EPROM
+einwandfrei gebrannt.
+</p>
+<p>
+Wem das EPP V0.3 zu lang ist, der kann ja die V1.1 eintippen, sie ist
+bedeutend kürzer, relokatibel und führt auch automatisch vor dem
+Brennen einen Blank-Check und danach einen RAM-EPROM Vergleich durch (es
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+wird nur ein &quot;Bla Error&quot;, wenn ein Blank entdeckt und ein
+&quot;Ver Error&quot; wenn ein Unterschied beim Vergleichen entdeckt
+wurde ausgegeben.)
+</p>
+<p>
+Das Eingabeformat ist folgend:
+</p>
+<pre class="donthyphenate">
+E XXXX AAAA EEEE SSSS YY
+</pre>
+<p>
+XXXX ist beim <u>Brennen</u> die Programm-Anfangsadresse, beim
+<u>Kopieren</u> ist XXXX die <u>Anfangsadresse + 2 (!)</u>.
+</p>
+<p>
+AAAA, EEEE, SSSS ist die Anfangs- und
+End-Adr des RAM-Bereichs und die Start-Adresse im EPR. YY steht für den
+EPR-Typ, also 16, 32, <u>3A</u> (für
+<?php externalLink("2732A","",""); ?>&nbsp;!!)
+und
+<?php externalLink("2764","64",""); ?>.
+Mit 'EPROM!' wird man
+aufgefordert eben dieses einzusetzen. Wenn der RAM-EPROM vergleich
+positiv abgeschlossen wurde, wird &quot;Ok&quot;ausgegeben.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-40-1.jpeg"); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-40-2.jpeg"); ?>
+<?php columnEnd(2); ?>

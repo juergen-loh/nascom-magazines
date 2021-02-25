@@ -1,0 +1,101 @@
+<?php columnStart(1); ?>
+<h4 id="article1"><u>
+EINFACH-DISASSEMBLER FÜR NASCOM
+</u></h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+ 
+<p>
+&quot;Einfach&quot; deshalb, weil der Disassembler nicht alle
+<?php externalLink("Z80","",""); ?>-Befehle
+erkennt. So fehlen z.B. die &quot;Bit&quot;-Befehle und
+die, welche mit den Index-Registern zu tun haben. Dafür kann das
+Programm relative Sprünge ausrechnen und druckt beim Auftauchen des
+Restart Befehls &quot;EF&quot; das zugehörige Datenstring aus. Mehr war
+beim besten Willen nicht auf einem Speicherplatz von 1k unterzubringen,
+zumal noch eine Subroutine enthalten ist, die ASCII in Baudot Code für
+Fernschreiber umsetzt. Dieses Fernschreiberprogramm beginnt bei 0757
+und läßt sich für Systeme, die keinen Fernschreiber über UART
+naschließen können leicht folgendermaßen umschreiben:
+</p>
+<pre class="donthyphenate">
+0757 CD 3B 01 C9  Call CRT Return
+</pre>
+<p>
+Zusätzlich muß eine Programmstelle umgeschrieben werden, die für den
+Fernschreiber Carriage Return und Line Feed ausgibt:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-28-1.jpeg"); ?>
+<p>
+07F9 muß von C7 (Restart 0) auf 76 (Halt) geändert worden.
+</p>
+<p>
+Damit ist der Disassembler für jedes NASCOM&nbsp;1 System verwendbar.
+</p>
+<p>
+Das Programm benötigt den Speicherbereich 0400 bis 07FF. Es kann in
+einem EPROM
+<?php externalLink("2708"); ?>
+im freien EPROM Sockel gespeichert sein, oder man
+benutzt ein 1k Static RAM MK 4118 als Speichererweiterung, wie an
+anderer Stelle beschrieben. Gestartet wird das Programm mit E07E3. Dann
+drückt man die &quot;A&quot; Taste und gibt wie gewohnt Anfangs- und
+Endadresse des Programms ein, das disassembliert werden soll. Dann New
+Line. Vorsicht bei Bildschirmausgabe: Es können hier nur max. 15
+Programmzeilen sichtbar gemacht werden. Erkennt das Programm einen
+Befehl nicht, wird bei TTY Betrieb &#9633; ausgedruckt, auf dem Bildschirm
+erscheint das $ Zeichen.
+</p>
+
+<?php columnChange(2); ?>
+
+<p>
+Hier als kleine Kostprobe den Anfang des Disassemblers, auf einem alten
+Lorenz Fernschreiber ausgegeben.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-28-2.jpeg"); ?>
+<p>
+Günter Böhm, _________________ ____<br>
+__ Karlsruhe __<br>
+Tel.: ____/______
+</p>
+
+<br>
+<?php hline("90%", "2"); ?>
+<br>
+
+<h4 id="article2"><u>
+TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP &ndash; TIP
+</u></h4>
+<h4>
+Löschen des RAM-Speichers (T2, T4, SYS)
+</h4>
+<p>
+nach dem Einschalten oder Reset: CC00 C01 4400
+</p>
+<p>
+Die 4400 gelten für 16k, beim N1 ohne Erweiterung: 400
+</p>
+<p>
+<u>Funktionsweise:</u>
+</p>
+<p>
+Da nach Reset in C00 00 steht, wird durch den Kipierbefehl der gesamte
+Speicherbereich auf 00 gesetzt. Anschließend führt der Monitor
+automatisch E 0000 aus.
+</p>
+<p>
+<u>Anwendung:</u>
+</p>
+<p>
+wichtig beim Arbeiten mit Assembler, wenn dort DEFS verwendet wird.
+</p>
+<p>
+Der Assembler überspringt nämlich den mit DEFS ausgesparten
+Speicherbereich, d.h. falls dort vom Einschalten her noch zufällige
+Bytes stehen, so bleiben sie boshafterweise auch erhalten und führen
+später zum Absturz des assemblierten Programmes.
+</p>
+
+<?php columnEnd(2); ?>

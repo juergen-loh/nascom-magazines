@@ -1,0 +1,114 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Das bedeutet, daß der Benutzer eines Rechners, der hardwaremäßig nur
+Single Density verarbeiten kann, zwar das Bootprogramm einlesen kann;
+wenn das Betriebssystem aber in doppelter Schreibdichte abgespeichert
+ist, mit diesem Bootprogramm nichts anfangen kann. In der Praxis:
+anstatt von vorne weg die Diskette nicht lesen zu können, gönnt man ihm
+das erfolgreiche Laden des Booters und läßt ihn dann um so frustrierter
+sitzen.
+</p>
+<p>
+Für diesen minimalen Aufschub der Enttäuschung (die man sich sowieso
+ersparen könnte, wenn man weiß, daß die Diskette in DD formatiert ist)
+wird aber ein aufwendiges Formatierprogramm benötigt, das die erste
+Spur mit 128 Byte- Sektoren SD und den Rest in 256 Byte- Sektoren DD
+beschreibt, Der gleiche Aufwand muß beim Systemgenerieren (Sysgen),
+d.h. beim Abspeichern des Betriebssystems auf den ersten 4 Spuren
+getrieben werden.
+</p>
+<p>
+Wir wollen aber doch möglicherweise mit
+<?php externalLink("mc-CP/M","mc",""); ?>-Computer
+Benutzern Programme
+tauschen, Wie ist das ohne diesen Programmieraufwand möglich?
+</p>
+<p>
+Nun, die ersten 4 Spuren der Diskette interessieren beide Gruppen
+eigentlich garnicht, denn sie enthalten ja das Bootprogramm (wobei bei
+<?php externalLink("mc-CP/M","mc"); ?>
+15 Sektoren unbeschrieben und somit verschenkt sind), das von der
+Hardware abhängig ist (in erster Linie von der Controller-Karte) und
+das Betriebssystem, das als
+<?php externalLink("CP/M"); ?>
+durch das BIOS ebenfalls
+hardwareabhängig ist und auf verschiedenen Rechnern nicht einfach
+ausgetauscht werden kann, Zudem wollen wir die Möglichkeit haben, auch
+CLD-DOS und NASSYS zu laden (jetzt können wir ja &quot;booten&quot;
+sagen), die wiederum an die Hardware angepaßt sein müssen.
+</p>
+<p>
+So können
+wir den &quot;Standard&quot; der ersten 4 Spuren vergessen, und wir
+legen nur fest, daß das Inhaltsverzeichnis auf Spur 4 Sektor 1 beginnt
+(wie bei
+<?php externalLink("mc-CP/M","mc",""); ?>)
+und die gleiche Länge hat. Damit haben wir mit den
+Hardwareorientierten Diskettenspuren nichts zu tun, können aber Files
+von der Diskette lesen, und unsere Files können gelesen werden.
+</p>
+<p>
+Was man
+mit diesen Files dann anfangen kann, ist ein anderes Problem. Sind es
+<?php externalLink("CP/M","",""); ?>-Programme,
+kann man auf alle Fälle damit arbeiten, auch Textfiles
+können gelesen werden.
+</p>
+<p>
+Wie soll nun unser vereinfachtes Format
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+aussehen?
+</p>
+<p>
+Damit wir keine Konfusion mit der Sektorlänge bekommen, legen wir als
+Standard 256 Bytes pro Sektor fest. Damit bietet sich für Single
+Density das bereits in
+<a href="../../../09/09/text/#article1">Heft 9/83</a>
+beschriebene Osborne-Format an. Als Formatierprogramm kann dabei weiter
+die Version aus
+<a href="../../../11/16/text/#article2">Heft 10/11-83</a>
+dienen.
+</p>
+<p>
+Da die Floppy-Karte ja nun auch mit DMA zum Laufen gebracht
+wurde (mehr dazu hoffentlich auch noch in diesem Heft), könnten aber
+alle Nachbauer (auch mit 2&nbsp;MHz Systemtakt) mit Double Density arbeiten.
+Hier zunächst das
+<?php externalLink("mc-CP/M","mc",""); ?>-Format
+als Tabelle zum Vergleich mit den in
+<a href="../../../09/08/text/#article1">Heft 9-83 Seite 8</a>
+veröffentlichten Formaten. Es entspricht weitestgehend dem
+IBM-Standard.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+<p id="article1">
+Ein Formatierprogramm das die
+<?php externalLink("mc-CP/M","mc",""); ?>-Norm
+benutzt, finden Sie im folgenden
+teilweise abgedruckt. Als Gerüst dazu dient das Programm aus
+<a href="../../../11/16/text/#article2">Journal 10/11 Seite 16</a>.
+Lediglich das Hauptprogramm &quot;FORMAT&quot; und die
+Format-Tabelle wurden neu geschrieben.
+</p>
+<p>
+Ab Zeile 2070 müßte das Listing
+mit &quot;TSTOK&quot; fortgesetzt werden. In Zeile 2030 (des alten
+Listings) muß man &quot;CP 16+1 ;16 Sektoren fertig?&quot; eintragen.
+</p>
+<p>
+Das vollständige Assemblerlisting können auf unserer Sammeldiskette
+finden.
+</p>
+<p>
+Ich wäre froh, wenn alle Nachbauer unserer Floppy-Karte das DD
+Format benützen würden, sonst muß beim Verschickenvon Software auf
+Diskette wieder zweispurig gefahren werden. Wir sollten genug
+Schwierigkeiten mit den NASCOM&nbsp;1 und 2 Cassettenformaten gehabt haben,
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-3.jpeg"); ?>
+
+<?php columnEnd(2); ?>

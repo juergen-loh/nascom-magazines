@@ -1,0 +1,136 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für<br>
+Floppy-Einsteiger
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p style="margin-bottom: 0">
+In der <a href="../../../09/06/text/#article1">letzten Ausgabe</a>
+habe ich Ihnen berichtet, welche Schwierigkeiten
+es gab, bis die Controller-Karte am Laufen war. Dabei handelte es sich
+um den Prototypen von Dieter Oberle. Als ich nun daran ging, meine
+eigene Karte aufzubauen, die aus unserer ersten Kleinserie stammt und
+ja auch schon bei einigen von Ihnen gelandet ist, war die Frustration
+sehr groß; denn die Karte lief zunächst nicht, und so mußte die bereits
+beschriebene Schweißarbeit von neuem beginnen.
+</p>
+<p style="margin-top: 0">
+<i>&nbsp; &nbsp; &nbsp; ^ wichtiges &quot;W&quot; &nbsp;
+<a href="../../40/text/#article1">NASCOMPL</a>
+</i>
+</p>
+<p>
+Es wurden einige Unstimmigkeiten zwischen
+<a href="../../../07/33/text/#article1">Schaltplan</a>,
+<a href="../../../09/13/text/#article1">Layout</a>
+und Prototypen festgestellt, die leicht zu bereinigen waren, aber der
+hartnäckigste Fehler wurde erst gefunden, als der Dieter Metzler eigens
+aus Freiburg hier herauffuhr, um mit einem sehr guten Oszi die
+minimalen Störungen an den Spitzen des 16&nbsp;MHz - Taktes erkennbar zu
+machen. Das Einlöten eines winzigen Kondensators löste dann alle
+Probleme.
+</p>
+<p>
+Inzwischen laufen zwei Karten aus der Serie, und somit
+dürften für alle Nachbauer keine Probleme mehr auftreten.
+</p>
+<p>
+Der
+Übersichtlichkeit wegen möchte ich die korrigierte Stückliste hier
+nochmals abdrucken.
+</p>
+<p>
+R6 - R13 &nbsp; 150&nbsp;&Omega;<br>
+R16, R22, R23 &nbsp; 10K<br>
+R3, R4, R5, R17, R24, R25, R26, R27, R28,
+R29, R30, R31 &nbsp; 1k<br>
+R18, R19, R20, R21 &nbsp; 100&nbsp;&Omega;<br>
+R14, R15 &nbsp; 220 &Omega;<br>
+R1, R2 &nbsp; 220K<br>
+C1 &nbsp; 47uF<br>
+C2 &nbsp; 4,7&nbsp;uF<br>
+C3 &nbsp; 1&nbsp;n<br>
+C4 &nbsp; 10&nbsp;n<br>
+C5, C6, C7, C8 &nbsp; 100p<br>
+C9 &nbsp; 120p<br>
+CB &nbsp; 4x100&nbsp;n
+</p>
+<p>
+R6 - R13 kann ein SIL- Widerstandsarray sein. Es können aber ebenso
+einzelne Widerstände stehend eingelötet werden. Oben verbinden und im
+untersten Lötauge gegen +5V verlöten.<br><br>
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Die <u>4x1K-Pullups</u> bei Prom1 sollten Einzelwiderstände sein, deren
+gemeinsame Verbindung am 3. Lötauge von oben an +5V geht. Die
+Verwendung eines SIL-Arrays setzt hier eine Änderung der Leiterbahnen
+voraus.
+</p>
+<p>
+Der unbezifferte Widerstand auf dem
+<a href="../../../09/14/text/#article2">Bestückungsplan</a>
+ist R19.
+</p>
+<p>
+R50 auf Platinenrückseite zwischen Pin2 und Pin14 des 74LS38 einlöten.
+</p>
+<p>
+R31 zwischen Pin1 und Pin16 von Prom2 auf der Rückseite einlöten.
+</p>
+<p>
+C9 auf der Rückseite zwischen Pin3 des 74LS04 und Masse einlöten (ein
+74S04 könnte von Vorteil sein).
+</p>
+<p>
+Am 7438 müssen Pin12 und Pin13 verbunden werden.
+</p>
+<p>
+Die Brücken an J2 müssen bei Verwendung eines 6106 Laufwerks offen
+sein. (Sie spiegeln ein READY vor, auch wenn das Laufwerk noch nicht
+bereit ist).
+</p>
+<p>
+Vorsicht bei der Bestückung von R2 und R3. Sie dürfen
+nicht zu eng gebogen sein, sonst erwischen Sie das falsche Lötauge. (R2
+muß an Kondensator und Brücke, R3 unterhalb Pin4 des 74LS123.
+</p>
+<p>
+Bei Nichtverwendung der
+<?php externalLink("Z80 DMA","DMA"); ?>
+brauchen I16 und I17 nicht bestückt zu
+werden. Die entsprechenden Kondensatoren CB können dann gleichfalls
+entfallen.
+</p>
+<p>
+Es sind zwar noch einige Unterschiede zum
+<a href="../../../07/33/text/#article1">Schaltplan</a>
+auf der Karte,
+aber die haben keinerlei Einfluß auf die Funktion. So liegt z.B. das
+ENABLE des 74&shy;LS&shy;245 auf Masse, und einige Ein- und Ausgänge von Gattern
+wurden zur besseren Leitungsführung vertauscht, Dies erschwert zwar die
+Fehlersuche etwas, aber Fehler kommen ja bei uns nun nicht mehr vor,
+oder?
+</p>
+<p>
+Nachdem also die Hardware soweit funktionierte (ein zeitlicher Rückfall
+von 14 Tagen und viel Nervensubstanz) konnte ich endlich an die
+Anpassung unseres Dlsketten-Verwaltungsprogramms
+(<a href="../../../07/41/text/#article1">EM&shy;DOS</a>)
+gehen. Dies
+hat mich zwar auch einem Magengeschwür nähergebracht, aber schließlich
+steht ein recht komfortables System zur Verfügung, das sich nicht mit
+den Cassettenverwaltungen vergleichen läßt, was Komfort und vor allem
+Geschwindigkeit angeht. Schon jetzt, wo alles noch mit Single Density
+abläuft, muß ich sagen, daß sich der Aufwand gelohnt hat.
+</p>
+<p>
+<a href="../../19/text/#article1">An anderer Stelle</a>
+ist von Helmut Emmelmann einiges über die Anpassung des
+Programms an einen Controller geschrieben. Das dürfte
+</p>
+
+<?php columnEnd(2); ?>

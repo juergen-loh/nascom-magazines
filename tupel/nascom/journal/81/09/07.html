@@ -1,0 +1,93 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Es soll noch darauf hingewiesen werden, daß einige Besonderheiten des
+<?php externalLink("Z80 DMA","DMA"); ?>
+durch die einfache Schaltung nicht benutzbar sind. So könnte der
+INT-Ausgang, nachdem ein Block (Länge programmierbar) übertragen
+wurde, ein Strobe Signal ausgeben. Zweitens könnte der Chip Select
+Eingang CE, während der DMA aktiv ist, auch als WAIT-Eingang dienen
+(siehe DMA Manual). Dieses Multiplexen ist wahlweise programmierbar.
+Für die hier gezeigte Anwendung sind die Optionen nicht notwendig und
+deshalb nicht in der Schaltung berücksichtigt.
+</p>
+<h4>
+SOFTWARE
+</h4>
+<p>
+Das Programm wird mit der kurzen Routine INIT gestartet. Dies ist nach
+jedem Monitorkaltstart und nach den Monitorroutinen &quot;Read&quot;,
+&quot;Write&quot; und &quot;Generate&quot; zu wiederholen. Dabei wird
+in die Sprungtabelle des Nascommonitors die Startadresse der DMACRT
+Routine abgelegt. Am Anfang von DMACRT wird geprüft, ob zum Bildschirm
+&quot;Backspace&quot; oder &quot;Cursor Home&quot; ausgegeben wird.
+Diese beiden Funktionen werden noch von der Original-CRT-Routine
+erledigt. Die DMACRT ist im wesentlichen genauso aufgebaut wie das
+Original (siehe Assemblerlisting T2 oder T4). Nur dort, wo die CPU das
+Verschieben des Bildschirmspeichers vornimmt, wird nun der DMA mit
+folgender Programmsequenz programmiert:
+</p>
+<pre class="donthyphenate">
+LD C,DMA1
+LD B,TABLAENGE
+LD HL,TAB
+OTIR
+</pre>
+<p>
+wobei der Tabellenanfang in Reg.HL, die Tabellenlänge in Reg.B und die
+I/O Adresse des DMA in Reg.C geladen wird. In der Tabelle stehen eine
+Reihe von Kommandowörtern und Parametern, mit denen der DMA
+programmiert wird, Nach der Ausgabe des letzten Kommandoworts durch den
+OTIR-Befehl übernimmt der DMA die Kontrolle über den Bus und verschiebt
+den Bildschirmspeicher. Nach dem Abarbeiten von &quot;Clear
+Screen&quot;, &quot;New Line&quot; oder Ausgabe eines Zeichens zum
+Bildschirm kehrt das Programm in das Original CRT-Programm zurück und
+arbeitet wie gewohnt weiter.
+</p>
+
+<?php columnChange(2); ?>
+
+<div class="justify">
+
+<p>
+DMACRT ist in der vorliegenden Form nur mit NASBUG&nbsp;T4 lauffähig, da es
+Teile der Monitor CRT-Routine von T4 benutzt. Für T2 User ist die
+Änderung minimal:
+</p>
+<pre class="donthyphenate">
+340 PUSH AF
+350 PUSH BC
+360 PUSH DE
+370 PUSH HL
+</pre>
+<p>
+Von NASSYS liegt mir leider kein Assemblerlisting vor. Sollte jemand an
+DMACRT Interesse zeigen und ein Assemblerlisting zur Verfügung stellen,
+werde ich eine Anpassung an NASSYS vornehmen.
+</p>
+
+<?php boxStart(); ?>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+</p>
+<?php boxEnd(); ?>
+</div>
+<br>
+
+<div id="nascompl">
+<?php imageRight($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+</div>
+<h4>
+KORREKTUR
+</h4>
+<p>
+Im <a href="../../../../80/01/08/text/#article1">Heft 1/80</a>
+ist das Spiel PIRHANAS abgedruckt. Damit der Punktezähler
+richtig funktioniert, muß in Adresse 10FA statt EE der Wert FE
+eingetragen werden.
+</p>
+<p>
+Ulrich Wallis, Heddesheim
+</p>
+
+<?php columnEnd(2); ?>

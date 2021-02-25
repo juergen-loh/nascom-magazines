@@ -1,0 +1,51 @@
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-22-1.jpeg"); ?>
+
+<br>
+<br>
+
+<h4 id="article1" style="text-align:center">
+Interruptuhr
+</h4>
+<p>
+Dieses Programm gibt am Anfang der obersten Zeile des Bildschirms die
+Zeit in Stunden:Minuten:Sekunden aus. Das Besondere daran ist, daß mit
+dem NASCOM normal gearbeitet werden kann. Um dies zu ermöglichen, muß
+ein laufendes Programm mit Hilfe eines Interrupts unterbrochen werden,
+lim einen konstanten Interrupt zu erhalten, ist ein kleiner
+Hardwareaufwand nötig. Das 50 Hz Signal, welches für die
+Bildsynchronisation des Fernsehers verwendet wird, wird zur
+Interruptanforderung benutzt. Dazu muß über einen 33kohm Widerstand
+eine Verbindung von IC 7 Pin 5 zu einem freien Datenkanal eines Ports
+der PIO hergestellt werden (z.B. Port A, Bit 5).
+</p>
+<p>
+Das Programm initialisiert zunächst PIO und CPU für die
+Interruptverarbeitung, und springt dann zum Monitor zurück. Das
+eigentliche Interruptunterprogramm beginnt bei 0F23. nachdem es 50 mal
+aufgerufen wurde, wird der
+Sekundenzähler (0F1F) erhöht (0F3F-0F6B), und die neue Zeit angezeigt
+(0F3C-0FA6). Möchte man einen anderen Port verwenden, so muß die
+Controladresse in 0F06 entsprechend geändert werden. Möchte man auch
+Bit 5 nicht verwenden, so muß folgendes beachtet werden: wird z.B. Bit
+4 verwendet, so muß im Datenrichtungsregister in 0F19 auch Bit 4 auf
+log. 1 sein (Input). Ausserdem muß Bit 4 in 0F1C auf 0 gesetzt werden,
+alle anderen Bits auf 1.
+</p>
+<p>
+Bevor man das Programm bei 0F00 startet, gibt man die aktuelle Zeit zur
+nächsten vollen Minute in die Zellen 0F1D-0F1F in hexadezimaler Form
+ein. Ist die volle Minute erreicht, muß das Programm gestartet werden,
+ebenfalls nach Reset, da die Uhr sonst nicht weiterläuft. Die
+Interruptabarbeitung dauert höchstens 2 msec., es können also auch
+Komandos wie B und L benutzt werden, ohne die Uhr zu stoppen. Eine
+Interruptanforderung wird ignoriert, wenn die CPU den Befehl F3
+abgearbeitet hat.
+</p>
+<?php columnStart(2); ?>
+<?php columnChange(2); ?>
+<table style="margin-left: auto; margin-right: 0"><tr><td>
+Karl-Horst Poschmann<br>
+__________ _<br>
+____ Breuna _
+</td></tr></table>
+<?php columnEnd(2); ?>

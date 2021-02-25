@@ -1,0 +1,154 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+MICROSOFT für CLD
+</h1>
+<h3>
+von Günter Endert
+</h3>
+<p>
+Bas Microsoft ROM Basic speichert die Programme in einer
+platzsparenden, aber leider nicht für andere Betriebssysteme lesbaren
+Form auf der Cassette ab. Um die Programme dennoch übertragen zu
+können, kann man wie folgt vorgehen:
+</p>
+<ul class="asterisk-indent">
+	<li>
+		Das Programm wird unter dem ROM-Basic mit CLOAD geladen
+	</li>
+	<li>
+		LINES 1000 eingeben
+	</li>
+	<li>
+		WIDTH 255 eingeben
+	</li>
+	<li>
+		Reset Taste betätigen
+	</li>
+	<li>
+		X30 eingeben
+	</li>
+	<li>
+		Z eingeben
+	</li>
+	<li>
+		Cassettenrecorder auf Aufnahme schalten und starten
+	</li>
+	<li>
+		LIST eingeben und warten,
+		bis das Basic sich mit OK meldet
+	</li>
+	<li>
+		Recorder weiterlaufen lassen und die Reset Taste betätigen
+	</li>
+	<li>
+		X30 eingeben
+	</li>
+	<li>
+		CNTRL-D drücken
+	</li>
+	<li>
+		Recorder ausschalten
+	</li>
+</ul>
+<p>
+Das Programm befindet sich nun in der List
+Form auf dem Band.
+</p>
+<p>
+Das Zeichen CNTRL-D = ASCII (4) = EOT = End
+of Text teilt später dem Device-Driver mit,
+daß das Programm beendet ist; es läßt sich
+vom Basic aus nicht erzeugen. Der Vorgang
+kann nun für andere Programme wiederholt
+werden.
+</p>
+<p>
+Einlesen des Programms unter CLDDOS:
+</p>
+<p>
+* System booten. Die Diskette muß den Device-Driver AT: der alten
+CLDDOS-Version enthalten. AT: der neuen Version ist mit dem alten nicht
+identisch und arbeitet nur einseitig (Write).
+</p>
+<p>
+* AT: auf PORT 1 (bzw. den Port, an dem der Recorder angeschlossen
+ist) setzen.
+</p>
+<p>
+* Mit COPY FILENAME = AT: das Programm auf die Diskette lesen. Den
+Recorder erst einschalten, wenn die LED im Deckel des Laufwerks nicht
+mehr leuchtet! Er kann abgeschaltet werden, wenn das Zeichen EOT
+gelesen wurde und die LED wieder brennt.
+</p>
+<p>
+* Das Programm in den Editor laden und dort am Anfang und Ende alle
+Zeilen und Leerzeilen löschen. Es dürfen keine Zeilen mehr vorhanden
+sein, die nicht mit einer Zeilennummer anfangen!
+</p>
+<p>
+* Das Programm wieder auf der Diskette
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+abspeichern.
+</p>
+<p>
+* Vom CLD-Basic aus das Programm mit OLD laden. Alle Zeilen, die
+ungültige Befehle enthalten, tragen vor diesem den Vermerk *ERROR* und
+lösen beim Listen ein Bell-Zeichen aus. Sie müssen entsprechend
+geändert und an das neue Basic angepaßt werden, (Mit dem Disk-MBasic
+müßte es im Prinzip genauso gehen; ich habe es noch nicht ausprobiert).
+</p>
+<p>
+* Das Programm nach einem Probelauf mit Replace wieder auf der
+Diskette abspeichern.
+</p>
+<p>
+Dieses Verfahren lohnt natürlich nur bei Programmen, die nicht zuviele
+spezielle ROM Basic-Befehle enthalten. Bei Programmen, die viel mit den
+Befehlen SET,RESET und der Funktion POINT arbeiten, ist es
+normalerweise einfacher, sie neu zu schreiben.
+</p>
+<p>
+Man kann übrigens auch
+Daten vom DOS aus auf dem Band abspeichern und später wieder einlesen
+(z.B. als Backup); man muß nur ein CNTRL-D anschließen (z.B, durch COPY
+AT: = FNAME.EXT, CNTRL-D.DAT, wobei CNTRL-D.DAT durch Basic erzeugt
+wurde: OPEN &quot;CNTRL.DAT&quot; FOR WRITE AS FILE #1:PRINT#1, CHR$
+(4): CLOSE #1)&nbsp;.
+</p>
+<br>
+<h1 id="article2">
+Bildschirm auf Cassette
+</h1>
+<h3>
+von Karl Trust
+</h3>
+<p>
+DAS NACHFOLGENDE PROGRAMM DIENT EBENFALLS WIE DAS IM
+<a href="../../../08/17/text/#article1">NJ 8/81</a>
+VEROEFFENTLICHTE, AUF DESSEN (GRUNDLAGE ES AUCH AUFGEBAUT WURDE, ZUM
+SCHREIBEN VOM BILDSCHIRM AUF KASSETTE, JEDOCH IST ES AUF NAS-SYS
+LAUFFAEHIG, UND ES BIETET EINIGE KLEINERE VORTEILE.
+</p>
+<p>
+1.MAN KANN DEN
+BILDSCHIRM VOLLSCHREIBEN BIS ZUM ANFANG DER ZEILE 15, DANN ERSCHEINT IM
+KOPF DER TEXT &quot;BITTE ERST ABSPEICHERN&quot;. DAS ABSPEICHERN
+ERFOLGT DURCH DRUECKEN DER BEIDEN TASTEN SHIFT/CONTROL, DANN ERSCHEINT
+IN DER ZEILE 15 EIN CONTROL-ZEICHEN UND ES WIRD ABGESPEICHERT,
+ERKENNTLICH AN DER LEUCHTENDEN &quot;DRIVE-LED&quot;,
+</p>
+<p>
+2.IST DAS ABSPEICHERN BEENDET, ERSCHEINT DER TEXT &quot;NEUE SEITE J/N
+?&quot;. BEI JA ERFOLGT DER SPRUNG ZUM ANFANG DES PROGRAMMS, BEI NEIN
+RUECKSPRUNG ZUM MONITOR.
+</p>
+<p>
+3.AUCH TEXTE MIT &quot;SPACES&quot; AM ANFANG KOENNEN JETZT
+ABGESPEICHERT WERDEN. LEIDER HAT DIESES PROGRAMM AUCH EINEN KLEINEN
+NACHTEIL, DIE INHALTE DER &quot;MARGINS&quot; WERDEN MIT
+</p>
+
+<?php columnEnd(2); ?>

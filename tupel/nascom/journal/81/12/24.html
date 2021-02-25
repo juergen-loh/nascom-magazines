@@ -1,0 +1,80 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+GALAXIS
+</h1>
+<h3>
+von Jürgen Weiermann
+</h3>
+<p>
+In einem Feld von 14x14 Feldern sind vier Raumstationen versteckt. Die
+Aufgabe des Spielers besteht nun darin, diese Raumstationen zu finden.
+Damit bei der Suche der Erfolg nicht ganz und gar dem Komissar
+&quot;Zufall&quot; überlassen sein soll, hilft der Computer ein wenig.
+Nach der Eingabe der Koordinaten vom Spieler errechnet er, wieviele
+Funksprüche er von diesem Punkt aus von den Raumstationen über die
+Senkrechte Horizontale und Diagonale empfangen kann. Den errechneten
+Wert zeigt er dann an dem vom Spieler eingegebenen Punkt an. (übrigens:
+das rotierende kleine Quadrat im großen Quadrat soll den sich drehenden
+Radarspiegel darstellen.) Fehler bei der Eingabe können durch BS
+verbessert werden, Findet man nun eine der Raumstationen, so druckt der
+Computer an der betreffenden Stelle das Klingelzeichen als Symbol für
+die gefundene Station. Im oberen rechten Bildrand wird die Anzahl der
+Züge angezeigt; somit steht einem Wettkampf in der Familie oder unter
+Freunden nichts mehr im Wege. Wurden alle vier Stationen gefunden, so
+gratuliert der Computer dem Spieler in Form einer Laufschrift.
+</p>
+<p>
+Sinn des Spiels ist es, das logische sowie kombinatorische Denken zu
+fördern.
+</p>
+<p>
+Das Programm läuft unter NAS-SYS und wurde so konzipiert, daß
+es auch auf der Minimalkonfiguration des NASCOM läuft, damit jeder
+etwas davon hat.
+</p>
+<p>
+Und hier noch einige Unterprogramme und deren Funktionen für den Teil
+der Leser, die Programme disassemblieren und auf ihre Funktion hin
+untersuchen.
+</p>
+<p>
+1.CD 65 0D : gibt den Text&quot;Bitte mehrmals Taste
+&quot;S&quot;druecken.&quot;aus.
+</p>
+<p>
+2.CD BE 0E : ruft den Zufallsgenerator auf.
+</p>
+<p>
+3.CD 0B 0F : erzeugt Spielfeld.
+</p>
+<p>
+4.CD 96 0E : schreibt &quot;Ihre Eingabe&quot;.
+</p>
+<p>
+5.CD AC 0E : holt Eingabe
+</p>
+<p>
+6.CD 68 0E : berechnet Cursorposition im Spielfeld.
+</p>
+<p>
+7.CD 68 0F : erzeugt rotierendes Quadrat.<br>
+CD 98 0F : Time Delay<br>
+CD A3 0F : setzt Cursor um eine Stelle zurück
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+CD A9 0F : bringt A zur Anzeige, setzt Cursor zurück, ruft Time Delay auf<br>
+CD 82 0F : Trefferanzeige
+</p>
+<p>
+8.CD B4 0D : berechnet Treffer;A=0F
+Volltreffer, sonst A=Trefferanzahl
+</p>
+<p>
+9.CD D0 0C : erzeugt Laufschrift.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+<?php columnEnd(2); ?>

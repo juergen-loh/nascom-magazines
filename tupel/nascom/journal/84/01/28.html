@@ -1,0 +1,177 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+folgenden Sektoren liegt ein anderer.
+</p>
+<p>
+Dieses Format bringt kürzeste
+Zugriffszeiten und maximale Speicherausnutzung der Diskette mit sich.
+Bei einfachen, SA-400 kompatiblen Minidisketten wie
+<?php externalLink("BASF 6106", "BASF-6106"); ?>
+kommt man
+so auf eine Kapazität von 200KB (40 Spuren, eine Seite), die
+<?php externalLink("CP/M"); ?>
+Blockgröße ist 1KB, 64 Dateien pro Diskette sind möglich. Dies ist in
+vielen Fällen, spätestens aber bei der Verwendung von
+<?php externalLink("CP/M","CPM",""); ?>-PLUS,
+Hochsprachencompilern wie
+<?php externalLink("Pascal/MT+","PASCAL MT+"); ?>
+oder Programmpaketen wie MUMATH,
+DASOFT oder MULTlPLAN viel zu wenig, weshalb folgene Diskettenlaufwerke
+interessanter sind:
+</p>
+<p>
+-TEAC FD55E: 80 Spuren, eine Seite, Kapazität im obigen Format 400KB,
+2KB-Blockgröße, 128 Dateien
+</p>
+<p>
+-TEAC FD55F: 80 Spuren, doppelseitig,
+Kapazität 800KB, 2KB Blockgröße, 256 Dateien
+</p>
+<p>
+-TEAC FD55G: 80 Spuren,
+doppelseitig, vierfache Dichte, Kapazität 1600KB, 512 Dateien, 2KB
+Blockgröße.
+</p>
+<p>
+Der Softcontroller garantiert den sicheren Betrieb all dieser
+Laufwerke, der Typ FD55G muß jedoch zwingend mit Chromdioxyd-Disketten
+betrieben werden, da die Körnung bei normalen Diskettenmaterial zu grob
+ist. Gute Erfahrungen wurden mit der Marke
+<?php externalLink("Maxell MD2-HD","MAXELL MD2-HD"); ?>
+gemacht.
+</p>
+<p>
+Alle anderen TEAC-Laufwerke stellen sehr geringe Ansprüche an das
+Diskettenmaterial. Man sollte jedoch keine Disketten mit zu rauher
+Oberfläche verwenden, um die Köpfe zu schonen. Ansonsten lohnt sich die
+Anschaffung von teuren Disketten nicht, billige, einseitige Disketten
+wie Disky 1D von Doebelin &amp; Boeder (ca. 7&nbsp;DM) zeigten auf TEAC
+FD55F Laufwerken bei 800KB Kapazität bessere Ergebnisse als teure
+INMAC-PLUS zu DM&nbsp;25,&ndash;.
+</p>
+<p>
+Im Lieferumfang der BIOS-Distribution für den Softcontroller befinden
+sich folgende Dateien und Programme:
+</p>
+<p>
+Auf den Systemspuren befindet sich ein zu CP/M 2.2 absolut kompatibles
+Betriebssystem, welches aber einige Vorteile gegenüber Standard-CP/M
+hat:
+</p>
+<p>
+-Suchpfad auf USER 0, Laufwerk A:, wenn eine Befehlsdatei (COM-Datei)
+nicht auf dem angemeldeten Laufwerk/User gefunden wird.
+</p>
+<p>
+-Kommandoprozeduren (SUBMIT) laufen nicht auf Laufwerk A: ab, sondern
+auf dem angemeldeten Laufwerk.
+</p>
+<p>
+-Einige zusätzliche transiente Befehle wie z.B. ein Druckbefehl
+PRI.
+</p>
+<p>
+-Seitenorientierte Bildschirmausgabe bei TYPE
+</p>
+<p>
+BIOS.SYS ist ein verschieblicher Modul, der alle NASCOM-spezifischen
+Routinen des Betriebssystems enthält. BIOS unterstützt alle oben
+aufgeführten Diskettenformate und bedient die Tastatur per
+Timerinterrupt (durch den Tastaturpuffer geht zu keinem Zeitpunkt ein
+eingegebenes Zeichen verloren). Außerdem besitzt BIOS eigene
+Bildschirmroutinen und kann über die NASCOM-PIO einen
+CENTRONICS-kompatiblen Drucker ansteuern.
+</p>
+<p>
+AVC.COM kann aufgerufen werden, wenn eine AVC-Farbgrafikkarte im System
+existiert. Diese stellt sich dann dem
+CP/M-System
+als intelligentes
+Datensichtgerät dar, 96&nbsp;*&nbsp;25 Zeichen auf dem Bildschirm darstellt. Mit
+standardisierten ESCAPE-Sequenzen und Steuerzeichen sind direkte
+Kursorpositionierung, Kursorabfrage, Umdefinition von Zeichen des
+Zeichensatzes, Programmierung von Funktionstasten auf der
+NASCOM-Tastatur, Attribute wie Inversdarstellung, Grafikzeichen,
+Unterstreichung und doppelte Zeichenbreite anwählbar. Die Zifferntasten
+wirken zusammen mit der GRAPH-Taste als ladbare und freiprogrammierbare
+Funktionstasten, eine Editierung beliebiger
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Zeilen auf dem Bildschirm ist nach Betätigung von GRAPH-E möglich. Mit
+GRAPH-L gelangt man in den lokalen Modus der Terminalsoftware, der eine
+Umprogrammierung aller Funktionen über die Tastatur erlaubt. Alles in
+allem hat man mit AVC.COM ein Werkzeug zum optimalen Einsatz solcher
+Programme wie WORDSTAR, MULTIPLAN, DBASE usw.
+</p>
+<p>
+AVC*.ASM: Dies sind die Quellprogramme zu AVC.COM, sodaß der Anwender
+Änderungen an dieser Software vornehmen kann.
+</p>
+<p>
+GRAF*.ASM: Diese Dateien beinhalten alle Assemblerroutinen der
+NASCOM-Grafiksoftware. Diese Moduln können zu MICROSOFT -REL-Dateien
+übersetzt werden, ein Interface zu der Sprache
+<?php externalLink("Pascal/MT+","PASCAL-MT+"); ?>
+ist
+vorhanden, es kann leicht an andere Sprache wie FORTRAN-80, PL1-80 usw.
+angepaßt werden. Die Grafiksoftware erlaubt mit einfachen Befehlen die
+Darstellung beliebiger Polygonzüge, Kreise, Tortendiagramme, Vektoren
+in jeder Orientierung, Farbe, Projektion und Vergrößerung. Objekte
+können gefüllt werden, bis zu 4000 Farbabstufungen sind durch Rasterung
+erreichbar, Bilder können auf jedem grafikfähigem Drucker oder Plotter
+ausgegeben werden. Diese Software ist den Preis der AVC-Karte mehrfach
+wert&nbsp;!
+</p>
+<p>
+TECO.COM: Dies ist eine Textverarbeitungsprogrammiersprache, ein
+zeichen/zeilenorientierter Editor mit Makromöglichkeiten wie sie sonst
+nur eine höhere Programmiersprache bietet. Dieser Editor ist kompatibel
+zu der Großrechnerversion von
+<?php externalLink("TECO","",""); ?>,
+die sich bei Rechnern von Digital
+Equipment (DEC) großer Beliebtheit erfreut.
+</p>
+<p>
+MACRO.COM und LINK.COM: MACRO ist ein relokierenden Code erzeugender
+<?php externalLink("Z80","",""); ?>-Makro-Assembler.
+Er ist von den Mnenomics her kompatibel zu dem
+Digital Research Macroassembler MAC-80, hat aber umfangreichere
+Macro-Möglichkeiten und ist ein echter Z80-Assembler. LINK ist der
+zugehörige Binder, der die von MACRO erzeugten REL-Module zu einem
+Maschinencodeprogramm bindet.
+</p>
+<p>
+BASIC.COM und RUN.COM: BASIC ist ein dem bekannten Digital-Research
+CBASIC verwandter BASIC-Compiler. Er erzeugt einen sehr kompakten
+Zwischencode, der mit RUN ausgeführt werden kann. Dieses BASIC erlaubt
+strukturierte Programmierung, erzeugt sehr kompakten Code, sodaß sehr
+große Programme geschrieben werden können, die viel schneller ablaufen
+als normal interpretierte Programme.
+</p>
+<p>
+DU.COM: Ein Hilfsprogramm zum direkten Verändern (patchen) von
+Disketten. Es erlaubt einen Zugriff auf beliebige Diskettensektoren,
+CP/M-Dateien und Inhaltsverzeichnis-Einträge. Versehentlich gelöschte
+Dateien lassen sich mit DU wiederbeschaffen&nbsp;!
+</p>
+<p>
+CAT.COM: Ein komfortables Inhaltsverzeichnis-Programm, welches die
+genaue Lage einer Datei auf Disketten, Dateigröße und gesetzte
+Attribute anzeigen kann, Inhaltsverzeichnisse können auf Disk,
+Bildschirm und Drucker ausgegeben werden.
+</p>
+<p>
+TELNET.COM, TELNET.C: Ein Programm, welches neben dein Terminalbetrieb
+des NASCOM an einem Modem noch den Dateitransfer von/zu anderen
+Rechnern ermöglicht. Dies brauchen keine CP/M-Systeme zu sein, da das
+in C geschriebene Quellprogramm auf anderen Systemen auch übersetzbar
+ist, sofern für diese ein C-Compiler existiert!
+</p>
+<p>
+COPYALL.C, COPYALL.COM: Dies Programm erlaubt ein bequemes Kopieren von
+Disketten auf Rechnern mit nur einem Diskettenlaufwerk. Dabei wird im
+</p>
+
+<?php columnEnd(2); ?>

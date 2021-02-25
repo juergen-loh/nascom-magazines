@@ -1,0 +1,89 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+SORTIEREN in BASIC<br>
+Teil 2
+</h1>
+<h3>
+von Wolfgang Mayer-Gürr
+</h3>
+<p>
+Wenn man zeitaufwendige Routinen beschleunigen will, sollte man 2
+Möglichkeiten untersuchen.
+</p>
+<ol>
+<li>
+Muß der Rechner überflüssige Arbeit verrichten?
+</li>
+<li>
+Gibt es einen effektiveren Algorithmus für das Problem?
+</li>
+</ol>
+<p>
+Ein Basic-Interpreter arbeitet ein Programm zeilenweise ab. Dabei wird
+bei jeder Zeile ein Kontrollmechanismus durchlaufen, der die Zeile auf
+mögliche Fehler (Syntax, Overflow usw.) untersuchen muß. Außerdem
+erfordern die einzelnen Operationen natürlich einen unterschiedlich
+hohen Zeitaufwand. Bei dem &quot;Hauruck&quot; Sortierverfahren aus dem
+letzten Journal stellt man fest, daß 3 Arten von Operationen häufig
+benutzt werden:
+</p>
+<ol>
+<li>
+Zuweisungen (z.B. H$=N$(I)
+</li>
+<li>
+FOR NEXT Schleifen
+</li>
+<li>
+Vergleiche (IF N$(I)&lt;H$ THEN)
+</li>
+</ol>
+<p>
+Messen und vergleichen Sie einmal die Rechenzeit für folgende Programme&nbsp;!
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+<p>
+<u>Merke: Wie mache ich mein Programm schnell, aber unübersichtlich?</u>
+</p>
+<p>
+Wenn mit Konstanten gerechnet werden soll, empfiehlt es sich, diese
+immer einer Variablen am Programmanfang zuzuweisen. Das erleichtert
+auch spätere Änderungen. Es muß nur einmal die Umwandlung stattfinden,
+ein
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+späterer Zugriff auf diese Variable beeinflußt intern nur 2 Byte statt
+der 8 Byte des Fließkomma-Akkus, (siehe Beispiel 2 und 3)&nbsp;. REMs
+erhöhen zwar die Lesbarkeit eines Programms, kosten aber Laufzeit. Ein
+Tip: bei der Programmentwicklung ruhig viele REM-Zeilen einbauen. Diese
+sollten aber nie direkt aufgerufen werden. (z.B. 100 GOTO 200; 200 REM;
+210 A=B). Wenn das Programm ausgetestet ist, kann bei einer 2.Version
+eine Laufzeitoptimierung vorgenommen werden. Die Variable nach NEXT
+weglassen (auch hier mit dem Mangel an Übersichtlichkeit erkauft).
+</p>
+<p>
+Möglichst viele Befehle in eine Zeile packen.
+</p>
+<p>
+Wenn dies alles noch nicht genug ist, sollte man den Algorithmus
+überdenken, also die Zahl der Vergleichsoperationen minimieren. Beim
+Haurucksortieren ist der Programmablauf starr, also unabhängig vom
+Aufbau des Feldes. Eine Verbesserung bringt das Sortieren durch
+Einfügen.
+</p>
+<br>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+<p>
+<br>
+<p>
+Hier wird nicht jedesmal das Minimum gesucht, sondern die kleinere
+&quot;Karte&quot; wird sofort zurückgesteckt. Fügt man als Zeile 315
+ein Unterprogramm ein, das den Inhalt der einzelnen Variablen
+ausdruckt, erhält man für die einzelnen Durchläufe bei der Eingabe von
+S&nbsp;P&nbsp;I&nbsp;E&nbsp;L (N=5) folgende Werte:
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,139 @@
+<?php columnStart(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<p>
+Eingang 5 des IC&rsquo;s wird auf volle Lautstärke gestellt und die
+Lautstärkenregelung danach durchgeführt. Der 3k Widerstand ist wichtig,
+damit der Lastwiderstand am NF-Ausgang nicht zu klein wird. Ein
+wichtiger Hinweis zum Schluß. Es dürfen nur Gerate mit Netztrenntrafo
+umgerüstet werden. Ohne Trennung vom Netz besteht Lebensgefahr.
+</p>
+<p>
+Udo v. Mulert<br>
+______ ______ ___<br>
+__ Bonn _
+</p>
+
+<br>
+
+<h4 id="article1">
+<u>Umlaute im NASCOM - System</u>
+</h4>
+<p>
+<u>Das Problem:</u>
+</p>
+<p>
+Für die Textverarbeitung sind Umlaute unerläßlich. Bei NASCOM&nbsp;1+2
+entstehen hier aber an mindestens drei Stellen Schwierigkeiten:
+</p>
+<p>
+1. Auf dem Bildschirm
+</p>
+<p>
+Der erste und einfachste Schritt ist das Auswechseln des
+Zeichengenerators. Der Typ MCM 667700(P) ist für den deutschen
+Zeichensatz geeignet, pinkompatibel zum MCM 6576 und nicht mehr auf die
+-8V-Versorgung angewiesen (kann aber dranbleiben Ä, Ö und Ü werden mit
+&pound;5B, &pound;5C und &pound;5D kodiert; ä,ö und ü mit &pound;7B usw. Das
+Zeichen &quot;ß&quot; hat den Kode &pound;7E.(Bei MK-Systemtechnik
+DM&nbsp;49,&ndash;)
+</p>
+<p>
+2. Die Tastatur
+</p>
+<p>
+Um alle Umlaute auf der Tastatur verfügbar zu haben (ein paar kommen
+mit crtl-Tasten, ausprobieren!), sollte man die Tastatur mit einem
+Umbausatz auf NAS-SYS
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+Tastenzahl erweitern. Die Beschriftungen [ und ] entsprechen den
+Unlauten Ä und Ü, Ö jedoch fehlt. Ich habe Ö auf die CR/LF Taste
+gelegt. Dazu ist eine Änderung im Betriebssystem erforderlich. Dies muß
+man aber auf jeden Fall machen, denn:
+</p>
+<p>
+3. Alpha-Shift
+</p>
+<p>
+funktioniert nur von A - Z. Bei NASBUG&nbsp;T4 muß der Inhalt der Adresse
+&pound;DF von &pound;5B in &pound;5E geändert werden, um drei weitere Tasten
+so wie Buchstaben behandeln zu können. Das Keyboard-Table habe ich ab
+Adresse &pound;63F verändert, und zwar: &pound;FF zu &pound;1E, &pound;FF zu
+&pound;0E und zum dritten Mal &pound;FF zu &pound;16. Dies ergibt die Unlaute
+bei den genannten Tasten. Das Zeichen &quot;ß&quot; kommt mit
+crtl-shift&quot;.&quot;.
+</p>
+<p>
+4. Die meisten Drucker können keine Umlaute,
+</p>
+<p>
+sind aber wegen ihres Schriftbildes sowieso nicht für Textsysteme zu
+gebrauchen. Ich drucke mit einer Kugelkopfschreibmaschine, da geht&rsquo;s.
+</p>
+<p>
+<u>Anm.:</u> &pound; = &pound;&nbsp;, brit. Pfund.
+</p>
+<p>
+Michael Bach, __ __________ __,<br>
+____ Stegen
+</p>
+
+<br>
+<?php hline("90%", "2"); ?>
+<br>
+
+<?php boxStart(); ?>
+	<table class="donthyphenate">
+		<tr>
+			<td colspan=2 style="vertical-align:middle">
+				<u>LEERKASSETTEN</u>
+			</td>
+			<td style="text-align: center">
+				<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=3>
+				Speziell	geeignet für Datenaufzeichnung. Hochwertiges BASF-Band.
+				Cassette 5-fach verschraubt. Cassette C10, d.h. 10
+				Minuten Spieldauer, daher besonders geeignet für
+				Mikrorechnerprogramme.<br>
+				&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10 Stk<br>
+				20 Stk<br>
+				50 Stk<br>
+				100 Stk<br>
+				&nbsp;
+			</td>
+			<td>
+				19.80<br>
+				36.00<br>
+				87.50<br>
+				160.00<br>
+				&nbsp;
+			</td>
+			<td>
+				Jede Kassette mit selbstklebendem Aufkleber zum Beschriften.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Bei:
+			</td>
+			<td colspan=2>
+				M&nbsp;K &ndash; Systemtechnik<br>
+				__________ __<br>
+				____ Germersheim/Rhein<br>
+				Tel.: _____/____
+			</td>
+		</tr>
+	</table>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,41 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+mit der SHIFT - und KB-Select-Leitung der Schreibmaschine verbunden.
+MATCO wird nicht ausgewertet. Damit spart man eine zusätzliche
+Enable-Leitung und kann einen 0-Code ausgeben, der keine Wirkung hat
+und im Interruptbetrieb für zusätzliche Verzögerungen (z.B. nach CRLF)
+als Pseudocode benutzt wird. Man verzichtet damit allerdings auf 4
+Funktionen der Schreibmaschine, die beim Druckerbetrieb auch in der
+Regel nicht benötigt werden.
+</p>
+<h4 id="article1">
+Die Software
+</h4>
+<p>
+Das hier vorgestellte Programm arbeitet zwar im Interruptbetrieb,
+benutzt den Interrupt aber nur anstelle einer Warteschleife. Das
+Programm ist deshalb auch unter NAS-SYS-1 lauffähig. Interessant wäre
+natürlich eine Version, die einen echten Interruptbetrieb ermöglicht,
+wobei z.B. ein bestimmter Speicherbereich ausgedruckt wird, während der
+Computer gleichzeitig andere Aufgaben erfüllt. Eine solche Version wäre
+allerdings unter NAS-SYS-1 nicht lauffähig. Mehr darüber in einem der
+nächsten Hefte. Es wurde eine KBI-Belegung gewählt, die sich etwa für
+den
+<?php externalLink("mc","MC",""); ?>-Texteditor
+oder ähnliche Aufgaben eignet. Eine besondere
+Funktion wurde den CTRL-Codes 1 und 3 zugeordnet. Sie erzeugen einen
+halben bzw. anderthalbfachen Zwischenraum mit Hilfe der
+Halbschrittfunktion. Damit erfolgte auch die Formatierung dieses
+Artikels.
+</p>
+
+<?php nowrapStart(); ?>
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+<?php boxEnd(); ?>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-11-2.jpeg"); ?>
+<?php columnEnd(2); ?>

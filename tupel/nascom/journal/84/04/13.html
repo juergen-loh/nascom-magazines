@@ -1,0 +1,119 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+beim anderen 5 Zoll Drive habe ich es entfernt. Auf dem 8 Zoll Laufwerk
+konnte ich keine Buswiderstände entdecken, und so glaube ich, ist die
+Verbindung in Ordnung.
+</p>
+<p>
+Zuvor hatte ich eine sternförmige Verbindung
+versucht, aber hier gab es Störungen. Obige Verbindung ließ Home und
+Seek einwandfrei ablaufen. (Zum Testen habe ich übrigens eigens ein
+Programm erstellt, das mir die Arbeit sehr erleichterte.
+<a href="../../17/text/#article1">LWTEST</a>
+ist im Heft abgedruckt).
+</p>
+<p>
+Die Steckerbelegung finden Sie im folgenden:
+</p>
+
+<table style="width: 100%">
+<tr><td COLSPAN="2">FDC Karte</td><td><?php externalLink("BASF 6106","",""); ?></td><td>BASF 6101</td></tr>
+<tr><td>23</td><td>/MOTON</td><td>16</td><td>--</td></tr>
+<tr><td>9</td><td>/HEAD LOAD</td><td>2</td><td>V (18)</td></tr>
+<tr><td>6</td><td>/DIR</td><td>18</td><td>S (15)</td></tr>
+<tr><td>7</td><td>/STEP</td><td>20</td><td>F ( 6)</td></tr>
+<tr><td>8</td><td>/WRITE GATE</td><td>24</td><td>H ( 7)</td></tr>
+<tr><td>25</td><td>/LOW CURRENT</td><td>-</td><td>7</td></tr>
+<tr><td>10</td><td>/WRITE DATA</td><td>22</td><td>L (10)</td></tr>
+<tr><td>4</td><td>/READY</td><td>6</td><td>12</td></tr>
+<tr><td>5</td><td>/WRITE PROT</td><td>28</td><td>R (14)</td></tr>
+<tr><td>3</td><td>/TRACK 00</td><td>26</td><td>N (12)</td></tr>
+<tr><td>o</td><td>/INDEX</td><td>8</td><td>E ( 5)</td></tr>
+<tr><td>1</td><td>/RD DATA</td><td>30</td><td>T (16)</td></tr>
+<tr><td>16-22</td><td>GROUND</td><td COLSPAN="2">unger. Anschl.A/1/Z/22</td></tr>
+<tr><td>12</td><td>/DR1</td><td>10</td><td>--</td></tr>
+<tr><td>13</td><td>/DR1</td><td>12</td><td>--</td></tr>
+<tr><td>11</td><td>/DR2</td><td>14</td><td>14</td></tr>
+<tr><td>24</td><td>/SIDE SEL</td><td>--</td><td>--</td></tr>
+<tr><td>15</td><td>/DISK CH.</td><td>34</td><td>--</td></tr>
+<tr><td>14</td><td>/DOUBLE SIDE</td><td>--</td><td>--</td></tr>
+<tr><td COLSPAN="4">/SOFTSECTOR 21 auf Masse</td></tr>
+<tr><td COLSPAN="4">/ERASE ENAB. J (8)Schaltung</td></tr>
+</table>
+
+<p>
+Die Ziffern in Klammer beziehen sich auf die Position der
+Steckeranschlüsse. Hier nochmals die vollständige Steckerbelegung am
+Laufwerk. Die Buchstaben liegen auf der Bestückungsseite den Zahlen auf
+der Lötseite gegenüber
+</p>
+<table>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>H</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>P</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+</table>
+
+<br>
+
+<table>
+<tr><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr>
+<tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+</table>
+
+<p>
+Alle nicht genannten Anschlüsse bleiben offen, bis auf den Anschluß
+/ERASE&nbsp;ENABLE, dessen Behandlung leider eine kleine Zusatz-Schaltung
+erfordert.
+</p>
+<p>
+Dieter Oberle hat die Schaltung entworfen und mir zur Verfügung
+gestellt. Ohne seine Hilfe hätte ich das Laufwerk nicht zum Schreiben
+gebracht.
+</p>
+<p>
+Das /ERASE&nbsp;ENABLE- Signal bewirkt, daß der Tunnel-Lösch-Strom
+eingeschaltet wird. 200 + 10 usec nachdem der Schreibstrom
+eingeschaltet ist, sollte der Löschstrom angeschaltet werden. Er muß
+530 + 10 usec nach Abschaltung des Schreibstroms wieder ausgeschaltet
+werden. Diese Zeiten müssen exakt eingehalten werden (so das
+Datenblatt), um das Überschreiben bzw. Anlöschen von vorher
+geschriebenen Daten zu vermeiden.
+</p>
+<p>
+Ich habe nun die Schaltung von Dieter
+einfach im Huckepackverfahren auf das Laufwerk gelötet. Anstelle der
+zeitbestimmenden Widerstände habe ich Trimmpotis verwendet.
+</p>
+<p>
+Der Abgleich war nach einigen Tips von Dieter nicht besonders schwierig,
+obgleich ich ein sehr dürftiges Oszilloskop besitze. Mit einem vor
+Jahren selbstgebauten bescheidenen Taktgeber legte ich eine Frequenz
+(etwas längere Taktzeit als das zu verzögernde Signal) auf den Trigger-
+und Y-Eingang. Ein Teilstrich auf dem Skop entsprach 100 usec. Dann
+merkte ich mir den Teistrich der abfallenden Flanke. (Durch
+Frequenzveränderung kann man die genau auf einen Teilstrich
+einstellen). Nun wurde die
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Frequenz auf den Eingang der Schaltung gelegt und der Ausgang Q1
+(Pin13) des 74221 auf den Y-Eingang. Ich mmußte nur noch so lange am
+Poti drehen, bis die fallende Flanke zwei Teilstriche nach dem
+Triggersignal erschien. Mit einem Zweistrahloszi wäre das natürlich
+einfacher und exakter gegangen.
+</p>
+<p>
+Die Einstellung der 530 usec war etwas mehr Herumprobieren, weil mein
+Oszi wohl nicht mit einer ansteigenden Flanke zu triggern ist. Hier muß
+die ansteigende Flanke von /Q2 fünf Teilstriche nach dem Triggerimpuls
+erscheinen. So in etwa habe ich das geschafft, denn nach Anschluß der
+Schaltung an die entsprechenden Laufwerkanschlüsse konnte ich
+tatsächlich eine Diskette formatieren.
+</p>
+
+
+<?php boxStart(); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-13-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

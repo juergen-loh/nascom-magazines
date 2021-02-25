@@ -1,0 +1,84 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Data Conversion
+</h1>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<p>
+Ich kann mich den Lobliedern von Michael Bach über das
+<a href="../../../../82/05/21/text/#article1">BLS-PASCAL</a>
+nur anschließen, nachdem ich meine ersten Programmierversuche hinter mir
+habe. Es handelt sich bei dieser PASCAL-Version zwar nur um eine
+Untermenge des Standard-PASCAL, dafür aber um einen echten Compiler
+(kein Zwischencode). Der compilierte Code ist schnell und etwa um den
+Faktor 2-4 mal umfangreicher als optimal assemblierter Code. Dafür
+braucht man aber eine Fülle von Funktionen nicht jedesmal neu zu
+programmieren wie beim Arbeiten in Assembler. Die Programmierzeit
+verkürzt sich entsprechend. Besonders hervorzuheben sind die
+Stringfunktionen (in Standard-PASCAL nicht enthalten), die 11-stellige
+Rechengenauigkeit und die Kombinationsmöglichkeiten mit
+Maschinenprogrammen über die Befehle CODE, EXTERNAL, CALL und MEM.
+Diese Kombinationsmöglichkeit soll hier an einem Beispiel gezeigt
+werden.
+</p>
+<p>
+In kaufmännischen Anwendungen rechnet man häufig mit
+B(inär)C(odierten)D(ezimal)-Zahlen, wobei je ein Halbbyte eine Stelle
+mit einem Wert zwischen 0 und 9 enthält. Rechenroutinen für ein solches
+&quot;gepacktes&quot; BCD-Format habe ich im
+<a href="../../../../82/01/25/text/#article1">NASCOM-Journal 1</a> und
+<a href="../../../../82/07/20/text/#article1">7/8-82</a>
+vorgestellt. Die meisten Interpreter und Compiler können aber
+das BCD-Format nicht verarbeiten (im neuen ANSI-BASIC-Standard wird
+aber die Darstellung der Zahlen im BCD-Format vorgeschrieben!), so auch
+das
+<?php externalLink("Blue Label Software Pascal","BLS-PASCAL",""); ?>.
+Es gibt nun verschiedene Möglichkeiten, hier Abhilfe zu
+schaffen. Man könnte die Rechenroutinen für BCD-Zahlen als Externals
+definieren und so den PASCAL-Befehlssatz erweitern, man kann aber auch
+einfach die Datenformate ineinander umsetzen. Auch hiefür gibt es zwei
+Möglichkeiten: Man könnte ein Maschinenprogramm schreiben, das direkt
+BCD-Code in Binärcode umrechnet und umgekehrt. Ich habe hier aber den
+einfacheren (und langsameren) Weg gewählt, wobei jedes Zahlenformat
+zunächst in &quot;Klartext&quot;, d.h. in einen String umgewandelt wird
+und dieser String dann wiederum in das andere Zahlenformat. Dabei wird
+die Funktion &quot;VALUE&quot; aus dem BLS-Programming-Manual
+verwendet, die zu diesem Zweck aber verändert werden mußte. In der im
+Manual abgedruckten Form ist sie sowieso falsch; außerdem
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+kann sie auch keine führenden Leerstellen verkraften. Die Stellenzahl
+des BCD-Formats kann vorgegeben werden mit folgenden Einschränkungen:
+Es wird die Anzahl in Bytes festgelegt, wobei jedes Byte zwei Stellen
+aufweist; es sind fest zwei Nachkommastellen vorgegeben, wie sie im
+kaufmännischen Rechnen benötigt werden; das &quot;vorderste&quot;
+Halbbyte enthält das Vorzeichen (0 = +, 1 = -). In drei Bytes kann man
+so die Zahlen von -999.99 bis +999.99 unterbringen. Das
+Fließkommaformat des
+<?php externalLink("Blue Label Software Pascal","BLS-Pascal"); ?>
+benötigt 6&nbsp;Bytes pro Zahl. In einem
+Fakturierprogramm konnte ich durch Verwendung des BCD-Formats (dringend
+benötigte) 6&nbsp;KByte Speicherplatz einsparen.
+</p>
+<p>
+Es müssen 3 EXTERNALS definiert werden, die hier im Assemblerlisting
+aufgeführt sind. BCDWRITELN schaltet eine Ausgaberoutine (über UOUT)
+ein. Jetzt kann mit WRITELN die Zahl (REAL) in einen Puffer geschrieben
+werden. CONVERTA (Länge in Bytes) verwandelt den String im Puffer in
+eine BCD-Zahl und übergibt die Anfangsadresse dieser Zahl dem
+aufrufenden PASCAL-Programm zur Weiterverarbeitung. CONVERTB (Länge in
+Bytes, Adresse der BCD-Zahl) wandelt die BCD-Zahl in einen String um,
+der dem aufrufenden PASCAL-Programm übergeben wird. Die PASCAL-Funktion
+VALUE wandelt wiederum den String in eine Zahl vom Typ REAL um. Aus
+diesen Hilfsfunktionen sind die vollständigen Umwandlungsfunktionen
+zusammengesetzt. CONVERT.BCD wandelt eine Zahl vom Typ REAL in eine
+BCD-Zahl um, deren Adresse im Speicher als Ergebnis der Funktion
+übergeben wird. BCD.CONVERT(L,A) berechnet aus einer BCD-Zahl der Länge
+L (in Bytes) an der Adresse A den zugehörigen Zahlenwert vom Typ REAL.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

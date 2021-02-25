@@ -1,0 +1,125 @@
+<?php columnStart(2, 2); ?>
+
+<h1 id="article1">
+NASSYS zu CP/M
+</h1>
+<h3>
+von MICHAEL BACH
+</h3>
+<h4 class="donthyphenate">
+<u>Vom NasSys zu CP/M: Freud &amp; Leid des Programmierers</u>
+</h4>
+<p>
+In Zukunft kann ich keine Nascom-spezifischen Programme mehr
+veröffentlichen, da ich meinen Nascom verkauft habe, einschließlich
+aller Programme. So bleibt denn mein schönes Programm
+&quot;<a href="../../../02/39/text/#article1">Sterne</a>&quot;
+unvollendet, denn es war sehr Nascom-spezifisch da
+der Flug durch den Weltraum nur durch direkten Bildschirmzugriff
+realistisch genug ist, und vor allem das Blitzen beim Zusammenstoß!
+Aber viele neue Pascal-Programme müßten mit wenig Anpassung übertragbar
+sein. Jetzt habe ich ein
+<?php externalLink("CP/M","",""); ?>-System
+aus Modulen vom
+<?php externalLink("Elektronikladen"); ?>
+zusammengestellt mit einer 8&quot; Floppy, kopieren geht über die
+Ram-Floppy. Was ist eine Ram-Floppy? Ein reservierter Bereich im Ram,
+der über das Betriebssystem wie ein Massenspeicher (Datei Struktur mit
+Inhaltsverzeichnis) angesprochen wird. Das lohnt sich natürlich nur,
+wenn man mehr als 64KB Ram hat (je mehr desto besser, bei der
+Adreßerweiterung vom
+<?php externalLink("Elektronikladen"); ?>
+bis 1MB, bei Kontron geht&rsquo;s auf
+einfache Weise nur bis 256KB; aber vor dem Ausschalten nicht vergessen,
+von der Ram- zurück auf Floppy zu kopiern, alles schon passiert!), aber
+die Zugriffszeit erhöht sich enorm, was bei der Programmentwicklung
+dringend nötig ist (dazu später mehr). Ich habe 8&quot; Floppies
+gewählt, da man nur damit sicher sein kann, ein kompatibles Format zu
+haben: Einfache Dichte IBM-kompatibel. Damit ist der Kauf von Software
+kein Problem (doch: ein finanzielles), z.B. von der CP/M-Usergroup
+gibt&rsquo;s sehr viel sehr billig (aber auch viel Überflüssiges). Einfache
+Dichte gibt aber nur 256KB pro Diskette, ein bißchen wenig. Zum Glück
+haben die Systementwickler auch beim
+<?php externalLink("Elektronikladen"); ?>
+das BIOS klug
+genug gemacht, daß es selber merkt ob einfache oder doppelte Dichte im
+Laufwerk ist und stellt sich darauf ein (man muß etwas tricksen wenn
+man nur ein Laufwerk hat, aber es geht auch). Bei doppelter Dichte
+einseitig gibt&rsquo;s 600KB, schon
+akzeptabler. Ich bin gespannt, wie kompatibel das mit dem Nascom-Format
+sein wird.
+</p>
+
+<?php columnChange(2); ?>
+
+<p>
+Nun zu meinen CP/M-Erfahrungen: Schön ist die
+Speicherung auf Disketten, aber sonst war alles beim
+Nascom viel schöner. Es geht los mit der fehlenden
+Möglichkeit, mit dem Cursor auf dem Bildschirm
+&rsquo;rumzufahren. Das ist zwar eigentlich ein Problem
+des BIOS und nicht von CP/M (bei dem CP/M für den
+Nascom soll&rsquo;s gehen, aber das hat auch der Autor
+von Nas-Sys geschrieben) und bei CP/M 3 bzw +
+soll&rsquo;s besser werden (mal sehen) aber erstmal ist
+es ein Rückschritt.
+</p>
+<p>
+Dann die Assembler: Zunächst wird &quot;ASM&quot; (der nur
+<?php externalLink("8080"); ?>
+kann) mit CP/M mitgeliefert. Der hat aber
+(natürlich?) nicht wie der gute alte ZEAP (ASM ist
+älter) einen Editor eingebaut, sondern man muß mit
+einem Texteditor erst mal das Programm schreiben
+(der mitgelieferte ED ist archaisch (zeilenorientiert,
+ohne Cursorsteuerung)), dann &quot;ASM&quot; laufen
+lassen, wieder in den Editor um Fehler zu verbessern,
+dann wieder &quot;ASM&quot;, schließlich fehlerfrei
+(was die Syntax angeht), dann mit einem Lader laden
+(warum verstehe ich nicht weil man sowieso keine
+Bibliotheken dazu laden kann) und dann kann man das
+Programm starten um festzustellen daß es nicht geht.
+Dann geht&rsquo;s los mit DDT (&quot;dynamischer&quot;
+Debugger, Nascom Debug ist/war besser), dem z.B.
+ein Befehl fehlt, um einen Kode im Speicher zu
+suchen, und dann wieder in den Texteditor... Wie
+war das mit ZEAP doch vordem so bequem. Bessere
+Assembler sind MAC80 und RMAC von Digital Research,
+mir gefällt aber M80 von Microsoft am besten. Der
+ist auf
+<?php externalLink("Z80","",""); ?>-Syntax
+einstellbar. Er erzeugt relokatiblen
+Kode und ist makrofähig (soll ich das &rsquo;mal
+erklären?). Dazu gibt&rsquo;s auch einen Linker, mit dem
+man andere Unterprogramme und Bibliotheken dazubinden
+kann, das ist für größere Projekte (über
+4KB) natürlich besser als ZEAP, aber größere
+Projekte sollte man sowieso nicht in Assembler
+schreiben.
+</p>
+<p>
+Den beschriebenen Ablauf kann man natürlich
+teilweise automatisieren mit &quot;SUBMIT&quot;. Darueber
+vielleicht das nächste Mal mehr.
+Ich könnte auch Erfahrungsberichte über PMate
+(Texteditor),
+<?php externalLink("Pascal/MT+","PascalMT+",""); ?>,
+<?php externalLink("dBASE II","DBase",""); ?>,
+<?php externalLink("Microshell"); ?>
+usw.
+schreiben, aber nachher werde ich so arrogant wie
+J.Pournelle in Byte und ich weiß nicht ob dafür
+Interesse besteht. Ein Gegengewicht zu
+<?php externalLink("mc","MC"); ?>
+wäre natürlich ganz gut, denn dort werden meiner
+unmaßgeblichen Meinung nach ganz wesentliche &amp;
+offensichtliche Eigenschaften (meist Nachteile)
+entweder nicht erkannt oder nicht erwähnt;
+Beispiele sind die Berichte über den
+Siemens-Tintenstrahldrucker,
+<?php externalLink("Microshell"); ?>
+und
+<?php externalLink("Pascal/MT+","PascalMT+",""); ?>.
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,102 @@
+<?php columnStartJustify(2); ?>
+
+<h1 id="article1">
+2732 EPROM-Karte
+</h1>
+<h3>
+von JOCHEN HEYDUCK
+</h3>
+<p>
+Ich habe den Schaltplan mit viel Mühe aufgezeichnet (bei mir sind die
+Schaltungen meist auf &quot;Freß&shy;zet&shy;teln&quot;) und hoffe, daß alles
+richtig ist. Vielleicht wundem Sie sich über den 74LS21 und die
+Widerstände? Ich hatte die Freigabe des Datenbusses vorher einfach mit
+/RD OR /MREQ versucht, aber das ging nicht. Jetzt, in dieser Weise,
+funktioniert es wunderbar. Die Widerstände waren auch notwendig. Alles
+läuft bei 4&nbsp;MHz ohne Wait. An jedem EPROM-Baustein habe ich
+selbstverständlich 100nf, aber sonst nichts mehr. Die Bezeichnungen
+links (2c, 14c usw.) sind wohl vom
+<?php externalLink("ELZET80", "ELZET-80", ""); ?>-Bus
+bekannt. Meine
+Buspuffer habe ich wie in dem Buch von
+<?php externalLink("Rolf-Dieter Klein","Rolf Dieter Klein"); ?>
+&quot;<?php externalLink("Mikrocomputer Hard- und Softwarepraxis","Mikrocomputer Hard- und Software-Praxis",""); ?>&quot;,
+S. 20, gebaut,
+allerdings die Adreß-, Daten- und Steuerleitungen nicht an den
+<?php externalLink("Z80"); ?>
+direkt, sondern an NASCOM PL1 gelegt.
+</p>
+
+<br>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+<p style="text-align:center">
+<u><?php externalLink("2732"); ?>
+EPROM-KARTE</u><br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<h1 id="article2">
+N2 mit 2732
+</h1>
+<h3>
+von GERHARD KLEMENT
+</h3>
+<p>
+Angeregt durch die
+<a href="../../../02/24/text/#article1">EPROMMER Bauanleitung</a>
+im 80-BUS-Journal stellte ich meine Maschine auf
+<?php externalLink("2732"); ?>
+EPROM&rsquo;s um. Die in dem Artikel angesprochene
+Spannungserzeugung von 25&nbsp;V funktionierte auf Anhieb, den Widerstand
+zwischen Pin&nbsp;1 und Pin&nbsp;6 ersetzte ich durch einen weniger exotischen
+Wert von 22K, den Widerstand zwischen Pin&nbsp;1 und Masse durch 1K. Beim
+Platinenlayout gab es keine Schwierigkeiten; ich verwendete eine
+beidseitig kaschierte Platte, auf die ich mit Edding 3000 die Bahnen
+einzeichnete. Die Durchkontaktierungen erfolgten durch kurze
+Drahtstückchen, die jedoch durch Umbiegen fixiert werden sollten, da
+mir einige beim Löten wieder herausfielen.
+</p>
+<p>
+Mein erster Versuch mit 2732 scheiterte kläglich, da die EPROMS
+Zugriffszeiten von 450&nbsp;nsec haben und die Maschine nurmehr im
+WAIT-Betrieb einwandfrei arbeitete. Mit
+<?php externalLink("2732A"); ?>
+EPROMS lief dann alles.
+Zu beachten ist bei der Programmierung, daß die Programmierspannung bei
+diesem Typ 21&nbsp;Volt beträgt. Ein 100K Widerstand parallel zum 22K (Pin&nbsp;1
+zu Pin&nbsp;6 des
+<?php externalLink("TL497","TIL&nbsp;497",""); ?>)
+setzt die Spannung soweit herunter.
+</p>
+<p>
+Meine Memory-Konfiguration ist wie folgt: DEBUG und NASDIS C000 bis
+CFFF, TOOLKIT und NASPEN D000 bis DFFF, ZEAP D000 bis DFFF. TOOLKIT ist
+reloktierbar; für NASPEN müssen im Sourcetext die High Adress Bytes ab
+B99F bis BA2C (das ist jedes dritte Byte) geändert werden. (Anm. der
+Redaktion: Der Verschiebungsvektor für NASPEN folgt im nächsten Heft!)
+Hinweis zur Disassemblierung: Databytes sind B84B B85D incl., B93E bis
+B947 und B99A B99C. Da Join und Read mit NAS-SYS-3 nicht arbeiten,
+empfiehlt sich noch folgende Änderung: Ab BDE1 (Originaladresse) ist zu
+ändern: 21 00 00 22 0C 0C CD 49 BF 00 00.
+</p>
+<p>
+Auf der Unterseite des Prints führte ich die Adreßleitungen A11 von
+Pin&nbsp;18 des BASIC ROMS auf Pin&nbsp;21 und A10 von Pin&nbsp;19 des Monitor ROMS an
+Pin&nbsp;19 der entsprechenden Linkblocks.
+(<a href="../../22/text/#article2">Bild 1</a>)
+</p>
+<p>
+Für die beiden zu schaltenden EPROMs ab D000 kam jeweils Pin&nbsp;18 der
+Linkblocks über 1K an +5V. Von jedem der beiden Pin&nbsp;18 führt eine
+Leitung zu einem einpoligen Umschalter, dessen Wurzel am Adreßdekoder
+Linkblock LKS1 für die Adresse D000 liegt. Die Wurzel ist außerdem mit
+RAMGATE 1 oder 2 zu verbinden. Für DEBUG/DIS ist bei mir RAM
+stillzulegen, daher fuhrt Pin&nbsp;18 des entsprechenden Linkblocks auf XROM
+am LKB1. Ein einpoliger Schalter verbindet diese Leitung mit der
+dekodierten Adresse von C000. Bei allen EPROMs ist Pin&nbsp;20 am
+EPROM-Linkblock mit Masse zu verbinden. IC&nbsp;46 wird nicht mehr benötigt.
+Wer
+</p>
+
+<?php columnEnd(2); ?>

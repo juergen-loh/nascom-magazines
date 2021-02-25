@@ -1,0 +1,97 @@
+<?php columnStartJustify(23); ?>
+
+<p>
+Prozeduren schreiben, um die Variablen und Arrays dem Casmon zu übergeben.
+</p>
+<p>
+Beispiel für Speicherung eines Naspen Files:
+</p>
+<p>
+W ; Naspen Write Kommando<br>
+S ; Casmon Save ohne Arg., da schon bekannt<br>
+name ; File Name<br>
+E ; Exit zum Naspen
+</p>
+<p>
+Es brechen also herrliche 'Cassetten' Zeiten an.
+</p>
+<p id="article1">
+Tabelle der hardwareabhängigen Routinen:
+</p>
+<table>
+<tr><td>DPLAY</td><td>#CAFE</td></tr>
+<tr><td>BEEP</td><td>#CAEA</td></tr>
+<tr><td>DREWIND</td><td>#CB21</td></tr>
+<tr><td>WAIT</td><td>#CB18 &nbsp; lang</td></tr>
+<tr><td>DSTOP</td><td>#CB25</td></tr>
+<tr><td>DELAY</td><td>#CB66 &nbsp; kurz</td></tr>
+<tr><td>DPAUSE</td><td>#CB29</td></tr>
+<tr><td>DFORWARD &nbsp;</td><td>#CB2D</td></tr>
+<tr><td>DRECORD</td><td>#CB31</td></tr>
+<tr><td>TAPESTART</td><td>#CB35 &nbsp; entspricht 'X' Cmd</td></tr>
+</table>
+<p>
+Initialisierung der Interrupts: #CA94<br>
+Also Test der Zählwerksimpulse:<br>
+0D00 &nbsp; CD 94 CA CF F7 18 FC. und Recorder an.
+</p>
+<p>
+Tabelle der Änderungen für BASIC und COMPASS:
+</p>
+<p>
+SCAL 'Y' muß Sprung nach C800h bedeuten&nbsp;!!!!
+</p>
+<p>
+Basic: LD A,'Y'<br>
+LD (FE97h),A<br>
+LD (FEB9h),A<br>
+LD (FE7Dh),A<br>
+LD HL,1B18h<br>
+LD (F52Bh),HL<br>
+RET
+</p>
+<p>
+Compass: (ab #E000 reloziiert)<br>
+LD A,'Y'<br>
+LD (E3D1h),A<br>
+LD (E3D9h),A<br>
+LD (E3E7h),A<br>
+LD A,4C ; neue Checksumme<br>
+LD (F97Eh),A<br>
+RET
+</p>
+<p>
+Naspen : SCAL 'V' und SCAL 'W' zu SCAL 'Y' ändern.
+</p>
+<p>
+Tabelle der Filetyp- Kürzel:
+</p>
+<table>
+<tr>
+<td>.pen</td><td>Naspen File</td>
+<td>.ASM</td><td>Compression ASM</td>
+</tr>
+<tr>
+<td>.BAS</td><td>Basic V4.7</td>
+<td>.XBAS</td><td>X-tal Basic</td>
+</tr>
+<tr>
+<td>.FTH</td><td>Hull - Forth</td>
+<td>.OBJ</td><td>Object - file</td>
+</tr>
+<tr>
+<td>.PAS</td><td>Nascom Pascal &nbsp;</td>
+<td>.HPAS &nbsp;</td><td>Hisoft Pascal</td>
+</tr>
+<tr>
+<td>.ZASM &nbsp;</td><td>Zeap ASM</td>
+<td colspan=2></td>
+</tr>
+</table>
+<p>
+Dies sind selbstverständlich nur Vorschläge.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-25-1.jpeg"); ?>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-25-2.jpeg"); ?>
+<?php columnEnd(3); ?>

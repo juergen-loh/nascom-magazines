@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+Z-80 Befehle mit 10 Byte Länge&nbsp;???
+</h4>
+<p>
+Der Autor stellt die Behauptung auf, daß die
+<?php externalLink("Z80 CPU","Z-80 CPU"); ?>
+nicht nur die
+max. 4 Byte langen Befehle (z.B. LD BC,(nn)&nbsp;) auszuführen imstande
+ist,sondern darüberhinaus auch mehrere <u>10</u> Byte lange Befehle
+korrekt abarbeiten kann!!
+</p>
+<p>
+Maschinensprachen-Insider haben die Genugtuung, sich nicht den Beweis
+im nächsten NASCOM JOURNAL anschauen zu müssen.
+</p>
+<p>
+Allen anderen sei zum Trost schon vorab erklärt, daß obige Insider
+garantiert nicht imstande sind, dieses Wissen nutzbringend anzuwenden&nbsp;!
+</p>
+<p style="text-align:right">
+U. Krüger
+</p>
+
+<br>
+<?php hline("25%", "2"); ?>
+<br>
+
+<h4 style="text-align:center">
+Z-80 Befehle mit 10 Byte Länge&nbsp;!?!
+</h4>
+<p>
+Hier der Beweis:
+</p>
+<p>
+Führen Sie das folgende Programm im Single Step aus:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+<p>
+Bei jedem DD-Befehlsbyte wird für die Dauer des nachfolgenden Befehls
+das IX- anstelle des HL-Doppelregisters intern aktiviert.Gleiches gilt
+sinngemäß auch für das IY Register bei einem FD-Byte.
+</p>
+<p>
+In diesem Beispiel wird anschließend 3E 04, also LD ACCU mit 04
+ausgeführt. Auch andere Befehle die <u>nicht</u> die Register H oder L
+betreffen oder mit &quot;CB&quot;,&quot;ED&quot; beginnen,wären
+anschließend normal ausgeführt worden.
+</p>
+<p>
+Nun wird auch deutlich, wie die neuen <u>nützlichen</u> Befehle
+funktionieren, die in der &quot;ELEKTRONIK&quot; (14/80 S.83 und 18/80
+S.24 veröffentlicht wurden.
+</p>
+<p>
+Ansonsten acheint die Z-80 CPU noch einige weitere Geheimnisse zu
+bergen: Die Gesetzmäßigkeit der Befehlsfolge &quot;ED 70&quot; bei
+verschiedenen vorausgegangenen 8 Bit arithmetischen Operationen konnte
+der Autor bisher noch nicht erkennen.
+</p>
+<p style="text-align:right">
+U.Krüger
+</p>
+<?php columnEnd(1); ?>

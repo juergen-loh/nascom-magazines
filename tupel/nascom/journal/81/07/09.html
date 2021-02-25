@@ -1,0 +1,100 @@
+<?php columnStart(2, 2); ?>
+
+<h4>
+<u>Register 8, 9 und 10</u>
+</h4>
+<p>
+Die Steuerung durch den Hüllkurvengenerator funktioniert allerdings
+nur, wenn die Amplitudenregister richtig programmiert sind. Hierbei
+sind Bit 0 bis Bit 3 für die statische Lautstärke verantwortlich, Bit 4
+für die Steuerung durch den Hüllkurvengenerator.
+</p>
+<p>
+Das bedeutet
+praktisch: Werte zwischen 0 und 15 dez. beeinflussen die Lautstärke der
+entsprechenden Kanäle direkt. So kann man z.B. einen Klang erzeugen,
+bei dem die Lautstärke des Grundtones und der beiden
+&quot;Obertöne&quot; verschieden ist, wie etwa bei natürlichen
+Instrumenten.Bei gesetztem Bit 4 wird die Lautstärke des jeweiligen
+Kanals nur von der Hüllkurve beeinflußt. Die Werte 16 bis 31 dez (10
+bis 1F hex) ergeben also alle den gleichen, von der Hüllkurve
+gesteuerten Volumencharakter. Der Einfachheit halber sollte man sich
+also gleich für 16 (10) entscheiden.
+</p>
+<p>
+Selbstverständlich kann auch ein
+Kanal statisch in der Lautstärke eingestellt werden, während man die
+anderen durch die Hüllkurve regeln läßt und umgekehrt. Die Register
+sind den Analogausgängen folgendermaßen zugeordnet:
+</p>
+<table>
+<tr><td>Register 8</td><td>&nbsp; &nbsp;</td><td>Kanal a</td></tr>
+<tr><td>Register 9</td><td></td><td>Kanal b</td></tr>
+<tr><td>Register 10</td><td></td><td>Kanal c</td></tr>
+</table>
+<p>
+Um die Amplitudenwerte zu testen, setzen Sie in das Testprogramm für
+die Hüllkurvenformen in Zeile 310 einfach 1=8 (oder entsprechend 9 bzw.
+10)ein.
+</p>
+<h4>
+<u>Register 7 : ENABLE Register</u>
+</h4>
+<p>
+Dieses Register dürfte wohl das wichtigste sein, denn es entscheidet
+darüber, was überhaupt an die Analogausgänge gelangt.
+</p>
+<p>
+Dabei bedeutet jedes nicht gesetzte Bit die Freigabe für einen
+bestimmten Klangerzeuger. Die Umrechnerei ist etwas zeitraubend. In der
+nachfolgenden Tabelle sehen Sie eine Zusammenstellung der verschiedenen
+Werte. Ein X bedeutet, daß der entsprechende Kanal an den Ausgang
+gelangt.Will ich nur den Tonkanal A programmieren, so muß in Register 7
+62 dez (3E hex) eingespeichert werden.
+</p>
+<pre class="donthyphenate">
+test des <u>enable registers</u>
+</pre>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+</p>
+
+<?php columnChange(2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-2.jpeg"); ?>
+</p>
+<p>
+Jede Kombination zwischen 00 und 3F ist möglich.
+</p>
+<h4>
+<u>Register 6 : Rauschen</u>
+</h4>
+<p>
+Mit diesem Register müssen wir uns nicht lange aufhalten. Es steuert
+die &quot;Rauschfrequenz&quot;, d.h. es erzeugt hohes oder tiefes
+Rauschen. 5 Bit stehen zur Steuerung zur Verfügung, also Werte zwischen
+0 und 31 dez.Sie können sich selbst ein Zusatzprogramm schreiben, das
+Ihnen die einzelnen Klangqualitäten demonstriert.
+</p>
+<h4>
+<u>Testprogramm in Maschinensprache</u>
+</h4>
+<p>
+Alle oben beschriebenen Register können auch auf einfache Weise in
+Maschinensprache getestet werden. Dazu laden Sie zunächst das
+Testprogramm aus dem <a href="../../../06/06/text/#article1">letzten Heft</a>
+ab 0C80. Die Adresse 0C97 (Restart
+Befehl) wird zu C9 (Return) geändert. Jetzt ist das Programm zum
+Unterprogramm umfunktioniert, welches von nachfolgendem Programm (Start
+bei 0CBC&nbsp;) aufgerufen wird.
+</p>
+<br><br>
+<pre class="donthyphenate">
+test einzelner register
+</pre>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-3.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

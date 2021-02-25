@@ -1,0 +1,79 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+Liegt die START-Leitung (Stift 31) auf Low, kippt das nicht
+nachtriggerbare Monoflop IC 6 fuer einige Millisekunden und schaltet
+ueber D3 den Transistor T1 durch. Relais 1 nd 2 ziehen an und schalten
+die zu ueberwachenden Spannungen durch.
+</p>
+<p>
+Liegen alle Spannungen
+innerhalb des eingestellten Fensters, dann bleibt ueber das UND-Gatter
+und D2 der T1 durchgeschaltet und die Relais halten sich. Fehlt eine
+Spannung oder liegt sie nicht innerhalb des Fensters, so ist der
+zugehoerige Komparatorausgang (Pin 3) auf Low, das UND- Gatter sperrt,
+die Relais fallen nach dem Zurueckkippen des Monoflops wieder ab; die
+Schaltung laesst sich nicht starten.
+</p>
+<p>
+Faellt waehrend des Betriebs eine Spannung aus oder die Spannung weicht
+vom eingestellten Fenster ab, dann werden alle Spannungen sofort
+abgeschaltet.
+</p>
+<p>
+Fuer jede zu ueberwachende Spannung ist eine Bruecke J1...J4
+einzulegen.
+</p>
+<p>
+Um beste Langzeitstabilitaet zu erlangen, wurde auf Potis
+zum Einstellen von Fenstermitte und -breite verzichtet und
+Metallfilmfestwiderstaende benutzt(R1...R16).
+</p>
+<p>
+Die Werte der
+Parallelwiderstaende muessen individuell mittels eines Potis
+ausgemessen und sehr genau ausgesucht werden, da durch
+Bauteiltoleranzen nur ungefaehre Werte angegeben werden koennen (s.
+Zeichnung).
+</p>
+
+<p>
+Es duerfte aber nicht schwer fallen, die einzelnen Groessen wie
+Fenstermitte und -breite einzustellen, hierzu dient Bild 3. Fuer T1
+kann jeder beliebige npn-Transistor genommen werden, der ein gutes
+Schaltvermoegen, sowie relativ hohe Belastbarkeit hat (Stroeme bis 200
+mA).
+</p>
+<p>
+Relais 1 und 2 sind handelsuebliche Relais (Dahms-Elektronik), OMRON
+Typ G2L-113P, ERNI Rel. Fuer die +5&nbsp;V-Spannung wurden zwei Relais
+vorgesehen um auch Ströme groesser 5A sicher zu schalten.
+</p>
+<p>
+Damit die Spannungs-Ueberwachunskarte arbeiten kann, muss sie von der
++5&nbsp;V-Versorgung des Systems unabhaengig sein. Es ist empfehlenswert
+hierfuer eine separate 12&nbsp;V Spannungsversorgung aufzubauen.
+</p>
+<p>
+Fertig
+geaetzte und gebohrte Karten koennen von folgender Adresse zum
+Selbstkostenpreis von DM&nbsp;15.&ndash; bezogen werden:
+</p>
+<?php nowrapStart(); ?>
+<p>
+Georg Assmann<br>
+___ _____ __<br>
+____ Herzhausen
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+
+<?php hline("100%", "2"); ?>
+<p>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-36-1.jpeg"); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-36-3.jpeg"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-36-2.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

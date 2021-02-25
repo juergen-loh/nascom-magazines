@@ -1,0 +1,111 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Seite(n) für<br>
+Einsteiger
+</h1>
+<h4>
+BCD-Arithmetik für Einsteiger
+</h4>
+<p>
+Bei der Programmierung arithmetischer Prozeduren sind zwei verschiedene
+Zahlenrepräsentationen üblich, einmal im Binärformat, üblicherweise im
+Zweierkomplement (Damit rechnen z.B. fast alle Basic-Interpreter), zum
+anderen als Binär-Codierte-Dezimalzahlen. Um diese Darstellung zu
+erläutern, sei zunächst auf die hexadezimale Darstellung
+zurückgegriffen, die Günter Böhm im letzten NASCOM-Journal erklärt hat.
+Dabei wird jedes Byte in zwei Hälften (&quot;Nibbles&quot;) zerlegt,
+die durch die Hex-Ziffern 0 - F dargestellt werden. Schränkt man diesen
+Wertebereich nun auf die Werte 0 -9 ein, so kann man mit einem Byte die
+Dezimalzahlen 00 - 99 darstellen, also mit jedem Nibble eine
+Dezimalstelle. Es handelt sich um eine Abbildung des Dezimalsystems auf
+das binäre System des Prozessors, wobei nur eine Untermenge der
+möglichen binären Werte zugelassen ist. Wie kann der Prozessor nun mit
+solchen Werten rechnen?
+</p>
+<h4>
+Der DAA-Befehl
+</h4>
+<p>
+Der
+<?php externalLink("Z80"); ?>
+verfügt wie die meisten Prozessoren über einen besonderen
+Befehl für das Rechnen mit BCD-Werten: Decimal-Adjust-Accumulator. Um
+die Arbeitsweise dieses Befehls zu verstehen, nehmen wir einmal an, der
+Akku enthalte den Wert 09, und wir würden 01 addieren. Der Akku enthält
+dann den Wert 0A, also einen Wert, der im BCD-System nicht zugelassen
+ist. Der Befehl DAA prüft den Akkumulator und addiert (in diesem Fall!)
+den Wert 06 hinzu. Das führt zu einem Uebertrag vom niederwertigen
+Nibble in den höherwertigen. Im Akku steht dann der Wert 10, also ein
+im BCD-System zugelassener Wert. Steht im Akku der Wert 99 und wir
+addieren wiederum 01, so steht zunächst 9A. Lautet der nächste Befehl
+DAA, so wird 66 hinzuaddiert. Das ergibt den Wert 00 und gleichzeitig
+wird das Carry-Flag gesetzt. Damit kann dann ein Uebertrag in die
+nächste Stelle (in einem weiteren Byte) vorgenommen werden. Der
+DAA-Befehl arbeitet nach folgenden Befehlen:
+</p>
+<pre class="donthyphenate">
+ADD, ADC, INC, SUB, SBC, DEC, NEG
+</pre>
+<p>
+Einschränkung: Er wirkt nur auf den Akku und
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+die Operanden müssen BCD-Format haben.
+</p>
+<h4>
+RRD und RLD
+</h4>
+<p>
+Wenn man im BCD-Format Rechenprogramme erstellen will, muß man des
+öfteren auf einzelne Nibble, also Halbbytes zugreifen. Der
+<?php externalLink("Z80"); ?>
+verfügt
+deshalb über zwei spezielle Befehle, die diesen Zugriff auf einfache
+Weise ermöglichen: Rotate Right Decimal und Rotate Left Decimal. Ich
+will die Arbeitsweise am Beispiel RLD erläutern. Das Register HL muß
+auf eine Speicherstelle zeigen. Mit RLD wird dann das niederwertige
+Nibble von A an die Stelle des niederwertiges Nibble von (HL) gesetzt,
+der dort vorher stehende Wert wird in das höherwertige Nibble von (HL)
+geschoben, und der Wert, der zuvor in diesem höherwertigen Nibble
+stand, steht nun im niederwertigen Halbbyte des Akkus. (Graphische
+Darstellung in den
+<?php externalLink("Z80","",""); ?>-Unterlagen
+zu Hilfe nehmen!) Mit RLD und RRD
+kann man also einzelne Stellen des &quot;gepackten&quot; BCD-Formats
+(zwei Stellen pro Byte) in den Akku holen.
+</p>
+<h4>
+Anwendungen
+</h4>
+<p>
+Das BCD-Format kommt hauptsächlich dann zur Anwendung, wenn man mit
+beliebiger, frei programmierbarer Stellenzahl arbeiten will, wenn die
+benötigte Stellenzahl oder Genauigkeit größer ist, als z.B. in den
+arithmetischen Routinen der meisten Basic-Interpreter (Man versuche
+einmal, dem Finanzamt zu verklickern, daß der Heimcomputer eben nur auf
+8 Stellen genau rechnen kann!), oder wenn bei der
+Binär-Dezimal-Umwandlung keine Rundungsfehler auftreten dürfen. Ich
+persönlich finde das Programmieren von arithmetischen Routinen im
+BCD-Format durchsichtiger und leichter zu &quot;entwanzen&quot;. Die
+BCD-Zahlen brauchen jedoch etwa 2,5 mal soviel Speicherplatz wie reine
+Binärzahlen und die Rechengeschwindigkeit ist um den gleichen Faktor
+langsamer.
+</p>
+<p>
+Wer die Arbeitsweise der in diesem Heft vorgestellten BCD-Routinen
+näher kennenlernen will, der sollte einmal das zugehörige Testprogramm
+mit Breakpoints in den Schleifen laufen lassen, und sich bei jedem
+Breakpoint mit dem Tabulate-Kommando die Rechenregister anzeigen lassen.
+</p>
+<p>
+Günter Kreidl
+</p>
+<div id="nascompl">
+<?php imageRight($imagepath, $year, $issue, $page, "Image-25-1.jpeg"); ?>
+</div>
+
+<?php hline("100%", "2"); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,85 @@
+<?php columnStart(2, 2); ?>
+
+<table style="border: 1px solid #000;"><tr><td>
+<!--
+<table rules=all border=1><tr><td>
+-->
+$INHEX
+</td></tr></table>
+<p>
+Version 1.0<br>
+26-Apr-81
+</p>
+<p>
+Die Subroutine $INHEX gibt zunächst einen Prompt-String aus und liest
+dann 1 bis 4 Hex-Ziffern von der Tastatur ein. Diese werden
+rechtsbündig im HL- Register abgelegt
+</p>
+
+<?php columnChange(2); ?>
+
+<?php nowrapStart(); ?>
+<p>
+Eingabe-Parameter:
+</p>
+<p>
+-A- Max. Anzahl der zu lesenden HEX-Ziffern<br>
+-HL- Adresse des Prompt-Strings
+</p>
+<?php nowrapEnd(); ?>
+<p>
+Ausgabe-Parameter:
+</p>
+<p>
+-A- Die zwei niederwertigsten HEX-Ziffern<br>
+-HL- 1 bis 4 stellige HEX-Zahl
+</p>
+<p>
+Verwendete Register: AF, HL
+</p>
+<br>
+
+<?php columnEnd(2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+</p>
+
+<?php hline("100%", "2"); ?>
+<br>
+
+<?php columnStart(2, 2); ?>
+
+<table style="border: 1px solid #000;"><tr><td>
+<!--
+<table rules=all border=1><tr><td>
+-->
+$INSTR
+</td></tr></table>
+
+<p>
+Version 1.0<br>
+26-Apr-81
+</p>
+<p>
+Die Subroutine $INSTR gibt zunächst einen
+Promptstring aus und liest dann einen ASCII
+String vom Terminal-Eingabebuffer ein. Die
+maximale Länge des Strings wird durch das
+Register A vorgegeben. Werden mehr Zeichen
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+eingegeben, so wird die Eingabe-Aufforderung wiederholt.
+</p>
+<p>
+Eingabe- Parameter:
+</p>
+<p>
+-A- Max. Anzahl der einzulesenden Zeichen<br>
+-DE- Adresse des Prompt-Strings<br>
+-HL- Adresse, ab der die eingegebenen Zeichen abgelegt
+werden sollen. Die Länge dieses Feldes soll um 1 größer
+</p>
+
+<?php columnEnd(2); ?>

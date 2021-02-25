@@ -1,0 +1,87 @@
+<table style="border: 1px solid #000;"><tr>
+<td style="padding-right: 30px; padding-top: 5px; padding-bottom: 5px">
+<div style="background-color:#000000">
+<h1 id="article1" style="text-align:center; margin: 3px; padding-bottom: 4px; color: #FFF">
+SOUNDGENERATOR
+</h1>
+</div>
+</td></tr></table>
+
+<br>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Im Januar 1979 stellte die Zeitschrift
+<?php externalLink("Elektor"); ?>
+zum ersten Mal den programmierbaren Soundgenerator
+<?php externalLink("AY-3-8910"); ?>
+vor. Die Hersteller gaben
+damals über eine Londoner Telefonnummer sogar Hörproben dieses Chips,
+welche mich sehr beeindruckten. Seither versuchte ich überall, dieses
+Wunderding zu bekommen. Endlich ist es nun auch in Deutschland
+erhältlich, und die Zeiten des &quot;dünnen Piepsens&quot; sind nun
+auch für den NASCOM vorbei; denn der Generator läßt sich leicht über
+das PIO anschließen.
+</p>
+<p>
+Hier zunächst eine kurze Charakteristik des Generators.
+</p>
+<p>
+Der AY-3-8910 enthält 3 (!) Tongeneratoren, (die allerdings nur
+Rechteckschwingungen erzeugen)&nbsp;, einen Rauschgenerator und einen
+Hüllkurvengenerator; also eine Menge Hardware,mit der man schon
+komplexere Klänge erzeugen kann. Die Ton- und Rauschgeneratoren lassen
+sich direkt in der Lautstärke variieren oder aber (zusammen oder
+getrennt) in Abhängigkeit des Hüllkurvengenerators, der 8 verschiedene
+Hüllkurven produzieren kann, die jeweils in ihrer Zeitdauer
+programmierbar sind.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.jpeg"); ?>
+<p>
+Sämtliche Informationen, die Tonhöhen,Rauschspektrum oder
+Hüllkurvenform erzeugen, werden in 14 Register des AY-3-8910
+eingespeichert und lassen den Generator so lange arbeiten, bis neue
+Informationen eintreffen, d.h. die CPU kann sich anderen Aufgaben
+widmen, während der Generator fröhlich vor sich hin summt.
+</p>
+<p>
+Wenden wir uns zunächst den einzelnen Registern zu. Die Tonhöhen der
+Tongeneratoren werden durch jeweils 2 Register bestimmt: z.B. R1
+Grobstimmung (Coarse Tune = CT) und R0
+Feinstimmung (Fine Tune = FT).
+</p>
+<p>
+Die absolute Tonhöhe hängt allerdings
+mit dem
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+Taktsignal zusammen, mit dem der Generator betrieben wird. Bei 1&nbsp;MHZ
+kann man über größere Bereiche die CT Information auf 0 lassen, dabei
+wird aber ein Frequenzfehler relativ groß, der auf der internen Teilung
+der Daten im Generator beruht, die natürlich keine Kommastellen
+berücksichtigt. Empfehlenswert ist deshalb der Betrieb mit dem 2&nbsp;MHZ
+Systemtakt, wobei der Frequenzfehler so gering bleibt, daß keine
+wirklich störenden Schwebungen auftreten. (Mehr als 2&nbsp;MHZ verkraftet
+der Generator allerdings nicht)
+</p>
+<p>
+Wen die Formel zur Berechnung der Registerdaten zu einer gewünschten
+Frequenz interessiert, der kann sie dem folgenden Basic-Programm
+entnehmen, das nach Eingabe der gewünschten Oktave (C1 = 1; C = 2;
+c = 3; c&rsquo; = 4; c&rsquo;&rsquo; = 5 etc.) sämtliche Frequenzen der zugehörigen
+Halbtöne mit den
+entsprechenden Registerdaten in dez. und hex angibt.
+</p>
+<p>
+Als Beispiel: input &quot;Oktave?&quot; 4 druckt die Töne c&rsquo; bis h&rsquo; auf
+dem Schirm aus, wobei man aus der Tabelle entnehmen kann,
+daß die Daten 1 dez. (= 1 hex) in Register 1 und 28 dez. (= 1 C hex) in
+Register 0 dem Kammerton a&rsquo; auf Kanal A erzeugen.
+</p>
+<p id="article2">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-2.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

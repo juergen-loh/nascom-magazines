@@ -1,0 +1,107 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für Einsteiger
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Diesmal auf dieser Seite etwas über BASIC. Dennoch bleiben wir auf der
+Maschinenebene; denn auf Leserwunsch sollen wir einmal etwas über PEEK,
+POKE, DEEK und DOKE schreiben, Diese Befehle gestatten es, direkt in
+den Speicher &quot;einzusteigen&quot;, und so könnte dieser Artikel
+sowohl für BASIC als auch für Assembler Interessierte nützlich sein.
+</p>
+<p>
+Mit dem Befehl PEEK(x),der auch auf anderen Rechnern üblich ist, kann
+man eine Adresse auf ihren Inhalt untersuchen. Mit PRINTPEEK(x) können
+Sie den Inhalt der Adresse ausgeben lassen. Man muß nur darauf achten,
+daß die Adressen im Hex-System &quot;geladen&quot; sind, die Ausgabe
+aber dezimal erfolgt. Da kann man sich keine Umrechnerei ersparen.
+</p>
+<p>
+Interessanter als PEEK ist der POKE-Befehl. Damit kann man den Inhalt
+von Adressen ändern und somit direkt in Maschinenprogramme eingreifen.
+Wir wollen zur Anschauung einmal die Blinkgeschwindigkeit des Cursors
+ändern, die ja vom Betriebssystem (in meinem Fall NASSYS3), also auf
+Maschinenebene gesteuert wird. Dazu schauen Sie zunächst einmal nach,
+welche Werte die verantwortlichen Adressen normalerweise enthalten. Mit
+PEEK(3122), das ist die Adresse des niederwertigen Bytes, und
+PEEK(3123), der Adresse des höherwertigen Bytes, erhalten Sie die
+entsprechenden Werte (PRINT nicht vergessen!). Setzen Sie das MSB (Most
+Significant Byte=höherwertiges B.) nun durch POKE3123,0 auf Null, und
+geben Sie in die Adresse des LSB (Least Significant Byte) verschiedene
+Werte. PEEK und POKE müssen nicht in ein Programm eingebunden werden,
+sie arbeiten auch als Kommandos direkt vom Keyboard (Entschuldigung,
+Herr Bach: von der Tastatur!).
+</p>
+<p>
+Die Befehle DEEK und DOKE sind eine
+Besonderheit des NASCOM. Sie bewirken das gleiche wie ihre kleineren
+Brüder, nur kann man hiermit zwei aneinanderhängende Adressen
+versorgen; d.h. mit DEEK werden zwei Bytes gelesen, mit DOKE zwei Bytes
+geladen. Man muß darauf achten, daß die &quot;Doppelbytes&quot; in
+umgekehrter Reihenfolge im Speicher liegen (LSB und dann MSB). Der
+Hex-Wert 0C80 liegt also als 80 0C im Speicher. Letzterer Wert muß zum
+Umrechnen in eine Dezimalzahl
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+verwendet werden. Ergibt sich dabei eine Zahl größer als 32767, so muß
+diese von 65536 subtrahiert und als negative 7ahl verwendet werden.
+Unser Beispiel ergibt also 3200 dez. (sehr häufig verwendet als Start
+eines Maschinenprogramms, da es die erste verfügbare Adresse für den
+NASCOM-Benutzer ist). Die Adresse C8D7hex ergibt 51415 und muß als
+-14121 eingegeben werden.
+</p>
+<p>
+Die DEEK und DOKE Befehle haben den Vorteil,
+in den BASIC Zeilen Platz zu sparen. Der Nachteil ist die schwierigere
+Umrechnung von dez in hex und umgekehrt (das DOKE-Programm von Reinhard
+Zickwolf,
+<a href="../../../../81/10/09/text/#article1">Journal 10-81</a>
+hilft dabei) und der Aufwand, Programme mit
+diesen Befehlen für andere Rechner umzuschreiben. Ich werde in Zukunft
+auf das Bißchen Platzersparnis verzichten und nur noch mit PEEK und
+POKE arbeiten. Viele Besitzer anderer Rechner als NASCOM werden Ihnen
+dankbar sein, wenn Sie auch &quot;durchsichtiger&quot; programmieren!!
+</p>
+<p>
+Unser Beispiel mit der Blinkgeschwindigkeit ließe sich natürlich mit
+DOKE3122,X verkürzen, aber....
+</p>
+<p>
+Falls Sie Maschinenprogramme des Betriebssystems aufrufen wollen,
+schaden die DEEKs und DOKEs allerdings nichts, denn zu diesen Routinen
+haben &quot;Fremdbenutzer&quot; sowieso keinen Zugang. Schreiben Sie
+aber dann in der Dokumentation oder in REM Anweisungen genau dazu, was
+die BASIC Zeilen bezwecken, denn eine Rechnereigene Adresse ist für
+einen Besitzer eines anderen Systems selbstverständlich niemals zu
+identifizieren.
+</p>
+<p>
+Hier nun einige Adressen, die zum POKEN interessant
+sein könnten:
+</p>
+<table>
+<tr><td>Bildschirmbeginn links oben</td><td>2058</td></tr>
+<tr><td>Bildschirmende rechts unten</td><td>3001</td></tr>
+<tr><td>Beginn der Titelzeile</td><td>3018</td></tr>
+<tr><td>Ende der Titelzeile</td><td>3065</td></tr>
+<tr><td colspan=2>(eine Position in gleicher Spalte eine Zeile
+tiefer wird jeweils durch +64 ermittelt)</td></tr>
+<tr><td>Cursorposition</td><td>3113</td></tr>
+<tr><td>Tastendruck Verzögerung</td><td>3118</td></tr>
+<tr><td>Repeatgeschwindigkeit</td><td>3120</td></tr>
+<tr><td>Cursor Blinkgeschwindigkeit</td><td>3122</td></tr>
+<tr><td>$UOUT(Adresse der Ausgabe)</td><td>3191</td></tr>
+<tr><td>SRLX (Out über Serial Port)</td><td>91</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td>MTFLP (Drive LED ein/aus)</td><td>81</td></tr>
+<tr><td>Get Input (BIN)</td><td>105</td></tr>
+<tr><td>BLINK until Input</td><td>120</td></tr>
+<tr><td>Get a Line (INLIN)</td><td>752</td></tr>
+</table>
+
+<?php columnEnd(2); ?>

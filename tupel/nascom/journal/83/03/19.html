@@ -1,0 +1,68 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Unterprogramms 6 Stackplätze als RAM benutzen. Die Variablen (bzw. der
+hoch- und niederwertige Teil getrennt) erhalten symbolisch den
+Offset zum Indexregister. Den logischen Variablen NEGX &amp;sw. ist
+jeweils 1 Bit im Byte FLAGS zugeordnet. Das erklärt die lange Latte
+von EQU&rsquo;s am Anfang von LINIE. Eine Macke (mindestens) ist
+in meinem Programm noch drin: Wenn man eine Linie vom
+Negativen ins Positive plotten will klemmt&rsquo;s. Wer sagt mir, woran
+es liegt?
+
+KREIS: Als Parameter wird der Radius in HL
+übergeben, der Mittelpunkt muß vorher mit SETX0Y0 gesetzt werden.
+Auch hier wird der Stack als Variablen-Speicher benutzt. Der
+Kreis-Algorithmus stammt ebenfalls aus der genannten Quelle, ich
+schreibe ihn hier nicht hin, weil er in meinem demnächst kommenden
+Pascal-Programm &quot;Very-Tiny-CAD&quot; drin ist, Bemerkenswert ist
+noch folgendes: Der Maßstab der X- und Y-Ko&shy;or&shy;di&shy;na&shy;ten ist
+unterschiedlich und auch vom verwendeten Monitor/ Femseher (das
+einzig Vernünftige was man mit einem Fernseher anfangen kann:
+a) abschalten oder b) einen Video-Eingang einbauen und als
+Monitor benutzen) abhängig. Bei mir muß der Y-Wert mit ca. 0,75
+multipliziert werden damit&rsquo;s &rsquo;nen Kreis gibt. Wie macht man das
+in Assembler? Nun, 0,75=3/4. Multiplikation mit 3: X*3=X*2+X;
+und die Division durch 4 kann mit zweimaligem arithmetisch rechts
+Schieben erreicht werden. Dies wird im Unterprogramm SCALE erledigt,
+das nur beim Zeichnen eines Kreises benötigt wird.
+
+Nun, so gegen
+Schluß hin ist das Tempo zunehmend schneller geworden. Hoffentlich
+hat&rsquo;s dennoch einen Sinn gehabt das Programm so
+auseinanderzuklamüsern.
+</p>
+
+<h4>
+FOLIENSERVICE
+</h4>
+<p>
+Von einer Reihe von Schaltungen, die im NASCOM-Journal erschienen
+sind bzw. im 80-BUS-Journal erscheinen  werden, sind Ätzfolien
+lieferbar:
+</p>
+<p style="text-align:left">
+<a href="../../../../82/09/05/text/#article1">Interface für Mini-Digitalrekorder</a><br>
+<a href="../../../../82/01/19/text/#article1">Grafikerweiterung</a> (N2 Grafik für NASCOM 1)<br>
+<a href="../../../../81/12/41/text/#article2">Kansas-City-Kassetteninterface</a><br>
+<a href="../../../../82/02/16/text/#article1">A/D-Wandler</a><br>
+<a href="../../../../81/06/04/text/#article1">Soundgenerator</a><br>
+<a href="../../../../81/12/32/text/#article1">Monitor-Umschaltkarte (für 2 verschiedene Betriebssysteme)</a><br>
+<a href="../../../../83/03/05/text/#article1">Video-Karte (80 x 24 Bildschirm)</a><br>
+<a href="../../../../81/12/12/text/#article1">2716-Eprommer</a><br>
+<a href="../../../../83/02/03/text/#article1">Spracherkennung</a>
+</p>
+<?php nowrapStart(); ?>
+<p>
+Der Unkostenbeitrag für eine normale Folie incl. Porto und Verpackung
+beträgt DM&nbsp;7,50. Die großen Folien (doppelseitige Platine) für die
+Videokarte sind für DM&nbsp;12,50 zu beziehen. Als Bestellung genügt eine
+Überweisung auf das Postscheckkonto<br>
+Günter Böhm ______-___ PSchA ____<br>
+mit Angabe der gewünschten Folie.<br><br>
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-19-1.jpeg"); ?>
+<?php columnEnd(2); ?>

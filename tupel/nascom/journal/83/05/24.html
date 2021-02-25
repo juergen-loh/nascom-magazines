@@ -1,0 +1,154 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+MDCR-Controller
+</h1>
+<h3>
+von TOM D. RÜDEBUSCH
+</h3>
+<p>
+Copyright 1983<br>
+by Tom D. Rüdebusch<br>
+__________ ___ __<br>
+____ Giessen<br>
+Tel. ____/_____
+</p>
+<p>
+Dieses Programm wurde zur Steuerung des
+Philips-MDCR-Laufwerkes erstellt. Es arbeitet mit
+Nas-Sys&nbsp;1 oder Nas-Sys&nbsp;3 und stellt deren
+Editiermöglichkeiten zur Verfügung. Als
+<a href="../../../../81/12/37/text/#article1">Interface</a>
+kann das von Johannes Lotter verwendet
+werden, das WEN-Signal wird jedoch an Port 0
+(Input)/Bit 7 abgefragt. Außerdem werden 2
+KByte Speicher für das Programm und knapp 1
+KByte für den Work&shy;space benötigt.
+</p>
+<table>
+<tr><td colspan=6><h4>Speicherbelegung</h4></td></tr>
+<tr><td colspan=2>Workspace&nbsp;</td><td>:&nbsp;</td><td>443EH - 4800H</td><td></td><td></td></tr>
+<tr><td colspan=2>Programm</td><td>:</td><td>4800H - 5000H</td><td></td><td></td></tr>
+<tr><td colspan=2>Drucker-UP&nbsp;</td><td>:</td><td>4FDEH</td><td></td><td></td></tr>
+<tr><td>Start&nbsp;</td><td colspan=3>(initialisiert Nas-Sys)</td><td>:&nbsp;</td><td>4800H</td></tr>
+<tr><td>&nbsp; &nbsp;"</td><td colspan=3>(keine Initialisierung)&nbsp;</td><td>:</td><td>4809H</td></tr>
+</table>
+<p>
+Wird der Quelltext auf einer &quot;ganzen&quot; Adresse assembliert und
+das ganze im EPROM abgelegt, so meldet sich der Tape Controller bei
+entsprechender Einstellung der Schalter auf der Nascom&nbsp;2-Platine direkt
+nach RESET. Das Programm zeichnet sich durch einige Besonderheiten aus:
+</p>
+<p>
+1.&nbsp;Der Kopf des Recorders bleibt bei der aktuellen Position stehen, die
+im Arbeitsspeicher festgehalten wird. Dadurch lassen sich unnötige
+Spulzeiten vermeiden.
+</p>
+<p>
+2.&nbsp;Um ein Reissen des Bandes möglichst auszuschließen, wird nur bei
+einem Neueintrag in das Inhaltsverzeichnis ganz an den Anfang der
+Cassette zurückgespult, ansonsten stoppt das Laufwerk kurz vor
+Erreichen des Anschlages.
+</p>
+<p>
+3.&nbsp;Es wird nicht in 1 KByte-Blöcken aufgezeichnet, sondern byteweise,
+d.&nbsp;h. nur die wirkliche Filelänge. Diese Aufzeichnungsmethode ist
+nicht kompatibel zu
+<a href="../../../../81/12/38/text/#article1">UNICON 1.4</a>.
+</p>
+<p>
+4.&nbsp;Die Directory steht im Workspace, kann also immer eingesehen werden,
+ohne daß deshalb gespult werden muß. Dieses Inhaltsverzeichnis ist
+durch eine Prüfsumme abgesichert; sollte also ein abgestürztes Programm
+den Arbeitsspeicher verändert haben, so liest der Controller
+automatisch das korrekte Verzeichnis von Cassette ein.
+</p>
+<p>
+5.&nbsp;Es handelt sich ausschließlich um ein Steuerprogramm für das
+Mini-Laufwerk und ist nach dem Verlassen vollständig abgeschaltet.
+</p>
+<p>
+6.&nbsp;Leistungsfähige Kommandos, ausführliche Fehlermeldungen und
+Absicherung der Files erhöhen Bedienkomfort und Datensicherheit.
+</p>
+<p>
+7.&nbsp;Schließlich liegt bei 4FDEH noch ein Unterprogramm, das einen
+parallelen Drucker über Port A treibt, das auf Output programmiert
+wird. Die BUSY-Leitung des Druckers wird wie das WEN-Signal über Port 0
+abgefragt; dies ermöglicht ein automatischer Umschalter:
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Das DATA&nbsp;STROBE-Signal für den Drucker wird durch den READY-Impuls
+von Port&nbsp;A wie folgt erzeugt:
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-24-2.jpeg"); ?>
+<p>
+So lassen sich mit einer PIO Drucker und Mini-Laufwerk ansteuern. Zu
+beachten ist, daß beim Drucken keine Cassette eingelegt ist (es genügt
+auch Öffnen der Klappe).
+</p>
+<h4>
+KOMMANDOS:
+</h4>
+<p>
+Das &quot;Ü&quot;-Zeichen zeigt an, daß der Tape Controller auf
+Kommandos wartet. Da das Programm über eine Befehlsvervollständigung
+verfügt, muß jeweils nur das erste Zeichen eingegeben werden. Filenamen
+können maximal 14 Zeichen lang sein und durch &quot;Ü = eckige Klammer
+r.&quot; abgekürzt werden. Die Trennung des Namens von den Adressen
+sollte grundsätzlich durch genau ein Leerzeichen erfolgen. Beim
+Schreiben und Lesen sind die laufenden Bytes als ASCII-Zeichen in der
+rechten, oberen Bildschirmecke sichtbar. Es folgt eine Beschreibung der
+Befehle im einzelnen.
+</p>
+<p>
+1. QUIT Rücksprung in den Monitor.
+</p>
+<p>
+2. FORMAT<br>
+Eine neue Cassette wird formatiert, auf die Frage &quot;Sure (Y)?&quot;
+ist &quot;Y&quot; einzugeben, wenn es sich wirklich um eine
+unbeschriebene Cassette handelt, da sonst alle eventuell vorhandenen
+Files gelöscht werden.
+</p>
+<p>
+3. INITIALISE<br>
+Dieses Kommando sollte man unbedingt ausführen lassen, wenn die
+Cassette gewechselt wurde. Der Controller holt sich das neue
+Inhaltsverzeichnis von Cassette und gibt es auf dem Bildschirm aus.
+</p>
+<p>
+4. REWIND<br>
+Dieser Befehl dient zum Rückspulen des Bandes. Vor jedem Entfernen der
+Cassette sollte man sicherheitshalber &quot;R&quot; eintippen, da -
+falls der Kopf schon in Position 0 steht &ndash; nicht gespult wird und man
+sich sofort wieder im Kommando-Modus befindet.
+</p>
+<p>
+5. DIRECTORY<br>
+Das Inhaltsverzeichnis wird auf dem Schirm ausgegeben. Sollten auf der
+Cassette mehr als 11 Files abgespeichert sein, wird die Ausgabe nach
+dem 11. File unterbrochen. Die Eingabe von &quot;ESC&quot; bewirkt
+Rückkehr in den Kommando-Modus, jede andere Taste setzt das Auslisten
+der Directory fort.
+</p>
+<p>
+6. SAVE<br>
+Nach Eingabe dieses Befehles wird der Benutzer aufgefordert, Anfangs-,
+End- und Startadresse sowie den Filenamen anzugeben. Einfache Eingabe
+von &quot;Ä = eckige Klammer l.&quot; und des Filenamens direkt danach
+bewirkt automatisches Eintragen der aktuellen Adressen für ein
+Basic-Programm. Dies erspart umständliches Aus- und Umrechnen.
+</p>
+<p>
+Das Programm wird nun auf Band geschrieben und von dort aus noch einmal
+mit dem entsprechenden Speicherbereich verglichen, wodurch ein
+zusätzlicher &quot;Verify&quot;-Befehl entfallen kann. Anschließend
+erfolgt ein Eintrag in die
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,138 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Ein weiterer Fehler betrifft die Funktion: &quot;&gt;&quot;. Sie
+erwartet die Argumente genau in der umgekehrten Reihenfolge auf dem
+Stack als es in FORTH üblich ist, und schließt außerdem den Fall A = B
+nicht aus.
+</p>
+<p>
+Hier ist die Korrektur einfach Zeile 6038 wird geändert in:
+</p>
+<pre class="donthyphenate">
+JR NC,TESTE
+</pre>
+<p>
+Die Funktion gibt nun &quot;Wahr&quot; (&nbsp;=&nbsp;FFFFH&nbsp;) auf den Stack, wenn
+T-1 größer als T ist, sonst 0.
+</p>
+<p>
+Die Funktion &quot;ROT&quot; ist zwar richtig beschrieben und
+programmiert, aber leider genau umgekehrt definiert (&nbsp;Abwärtsrotation
+statt Aufwärtsrotation&nbsp;) als es sonst in FORTH üblich ist. Um eine
+Sprachverwirrung auszuschalten, werden wir auch hier eine Änderung
+vornehmen. Es ist die Reihenfolge der PUSH-Befehle zu verändern in:
+</p>
+<pre class="donthyphenate">
+6025  PUSH DE
+6026  PUSH HL
+6027  PUSH BC
+</pre>
+<p>
+Die folgenden Änderungen sollen keine Fehler korrigieren, sondern
+werden uns später beim Programmieren in FORTH sehr nützlich sein. Sie
+verbessern die Zusammenarbeit mit dem Betriebssystem und gestalten sie
+zugleich variabler. Wir nehmen diese Änderungen direkt in
+Maschinensprache vor. Zunächst verwandeln wir die Constante
+&quot;MEMORY&quot; in eine Variable. Wir tragen ab 1171H statt 5C 11
+ein: 75 11.
+</p>
+<p>
+Bevor wir die nächste Veränderung vornehmen führen wir zunächst einen
+Kaltstart des FORTH-Systems aus und kehren dann sofort mit RESET oder
+dem Befehl &quot;91 NAS-SYS&quot; ins Betriebssystem zurück. Nun fügen
+wir eine zusätzliche Routine und ihren Namen direkt in
+Maschinensprache ein mit Hilfe des MODIFY-Kommandos:
+</p>
+<pre class="donthyphenate">
+16AB AD 16 E1 22 0C 0C DF ,M
+16B3 E5 C3 3E 10.
+1E4A 06 ,M ,0 ,D ,I ,F ,Y AB
+1E52 16.
+</pre>
+<p>
+Mit &quot;MODIFY&quot; kann das M-Kommando des Betriebssystems
+aufgerufen werden. Der Startwert wird auf dem Stack übergeben, bei der
+Rückkehr wird die nächste freie Speicheradresse ebenfalls auf dem Stack
+übergeben. (In genau dieser Weise funktioniert das natürlich nur unter
+NAS-SYS. T2/T4-Anwender müssen sich das etwas umschreiben.) Bevor wir
+nun das System wieder starten können, müssen wir noch die Werte der
+beiden Variablen &quot;CODE&quot; und &quot;NAMES&quot; verändern,
+damit die
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+neue Funktion vom Interpreter erkannt und ausgeführt wird, Wir benutzen
+wieder das M Kommando und tragen die neuen Werte ein:
+</p>
+<pre class="donthyphenate">
+1293 B7.
+128F 4A.
+</pre>
+<p>
+Wir staten nun den Interpreter mit E1000 und werden dann dieses
+Tiny-FORTH zunächst dazu benutzen, das System selbst auszubauen und
+Schritt für Schritt eine komfortable Programmiersprache zu entwickeln.
+Wir beginnen mit den bereits bekannten Funktionen CONSTANT und
+VARIABLE. Es sind definierende Funktionen, die einen Namen in das
+Dictionary eintragen und ihnen Routinen im Code zuweisen, die einen
+Wert (CONSTANT) bzw eine Adresse (VARIABLE) auf den Stack geben.
+</p>
+<pre class="donthyphenate">
+: VARIABLE  GETWORD     ENTER
+            VARBL CMPLW CMPLW ;
+: CONSTANT  GETWORD     ENTER
+            CONS  CMPLW CMPLW ;
+4755 CONSTANT CODEADR
+4158 CONSTANT NEXTADR
+</pre>
+<p>
+Diese beiden Konstanten brauchen wir gleich! Die folgende Funktion
+erklärt sich selbst:
+</p>
+<pre class="donthyphenate">
+: CR 13 COUT ;
+</pre>
+<p>
+Wir brauchen sie bereits bei der nächsten Funktion, ohne die man sich
+gar nicht erst an größere Programmierversuche herantrauen sollte:
+</p>
+<pre class="donthyphenate">
+: DEL NAMES PEEKW DUP PRINTS CR
+      FIRST + DUP PEEKW CODEADR POKEW
+      INC   INC   NAMES   POKEW       ;
+</pre>
+<p>
+DEL löscht
+die jeweils zuletzt compilierte Funktion sowie ihren Namen, der dabei
+angezeigt wird. CODEADR gibt dabei die Adresse der Variablen CODE, die
+den nächsten freien Speicherplatz für den FORTH-Code enthält. Mit
+diesem Trick machen wir uns eine Variable zugänglich, die zwar im Code,
+nicht aber im Dictionary enthalten ist.
+</p>
+<p>
+Die folgende Funktion, MCODE,
+ist wiederum definierend. Sie erlaubt den Einbau von Routinen in
+Maschinensprache in den FORTH-Code:
+</p>
+<pre class="donthyphenate">
+: MCODE GETWORD ENTER CODEADR PEEKW
+        DUP INC INC DUP ROT POKEW MODIFY
+		DUP 195 SWAP POKEB  INC DUP
+		NEXTADR SWAP POKEW INC INC
+          CODEADR POKEW
+</pre>
+<p>
+Wir wollen MCODE nun gleich benutzen, um eine Standard-FORTH-Routine in
+Maschinencode zu schreiben:
+</p>
+<pre class="donthyphenate">
+MCODE OVER
+1743 E1 D1 D5 E5 D5.
+</pre>
+<p>
+OVER ist ein Befehl zur Stackmanipulation wie DUP und ROT. Die Funktion
+kopiert den 2.
+</p>
+
+<?php columnEnd(2); ?>

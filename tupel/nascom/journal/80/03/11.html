@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<h4 id="article1"><u>BASIC-ROM auf normaler Speichererweiterung</u></h4>
+
+<p>
+Diese Methode hat den Vorteil, daß sie ohne Schalter
+auskommt:
+</p>
+
+<p>
+Gebraucht werden je ein 7400, 7432 und ein 24p DIL-Sockel;
+von beiden ICs werden alle Ansclüsse ausser 7 und 14 waagerecht
+gebogen und gekürzt. Sodann kann man sie auf eine IC löten,
+die schon auf einer Platine liegt, am besten ein 7402, 7406 o. ä.
+mit gleicher Spannungsversorgung auf 7/14. Die
+<?php invertedSignal("DBDR"); ?>-Leitung von Punkt
+13 des Karten-Sockels wird unterbrochen, ebenso wird der Anscluss vom
+Kartensockel mit der 7400, pin 6 verbunden, der nun offene Anschluss an
+pin 2 (&nbsp;mit "A" bezeichnet). Pin 3,4,5 werden zusammengeschaltet. Vom
+24p-Sockel werden die Anschlüsse 18,19,20,21 hochgebogen und so
+verdrahtet:
+</p>
+
+<?php columnStart(712); ?>
+
+<p style="text-align:center">
+pin 19..... IC 24 p2<br>
+pin 18..... IC 24 p3<br>
+pin 21..... IC 25 p7<br>
+pin 20..... 7432 p3&nbsp;
+</p>
+<p>
+Der Rest des Sockels wird mit dem BASIC-ROM in einen freien
+EPROM-Sockel
+gesteckt. Pin 1 der 7432 führt zu den Decode-Pads 12 &amp; 11, Pin
+2/7432 an IC 33 pin 9. Als letztes wird p3/7432 noch mit p1/7400
+verbunden.
+</p>
+
+
+<p>
+Funktion: ab Adresse E000 bekommt IC 7432 eine 0 von den Decodern und
+eine 0 vom IC 33 (<?php invertedSignal("mrqe"); ?> und
+<?php invertedSignal("rd"); ?>). Dies gibt ein CE für das ROM.
+Die NANDs erzeugen noch ein Signal für die Umschaltung der
+Datenbustreiber auf dem Buffer-Board.
+</p>
+<p>
+Gibt es Ärger, so hilft folgende Notlösung:
+</p>
+
+<p>
+Die Datenanschlüsse für den Sockel des ROMs werden hochgebogen
+wie 18,19,.... und die freiliegenden Anschlüsse des Sockels direkt
+auf den Datenbus gelegt (am besten über Anlöten auf IC 19,
+3/5/7/11/13/15/17).<br><br>
+</p>
+
+<?php columnChange(512); ?>
+
+<?php boxStart("TLB"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-11-1.gif"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(12); ?>
+
+<p>
+Meine persönliche Erfahrung ist, daß die Treiber 8197 sehr
+viel Ärger machen, wenn das ROM zu puffern ist, was sich eventuell
+erst zeigt, wenn Befehle wie "? SQR(2)"gegeben werden.
+</p>
+<p>
+Die angegebene
+Schaltungsänderung läuft bei mir nun einige Tage zur Probe,
+ohne daß irgendwelche Störungen auftraten. Der
+EPROM-Assembler
+ist nun weiterhin in Betrieb, ohne daß Schalter notwendig sind,
+das heisst, auch Unterbringung in einem geschlossenen Gehäuse ist
+möglich.
+</p>
+<p>
+R. Böttchers
+</p>
+<?php columnEnd(1); ?>

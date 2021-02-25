@@ -1,0 +1,140 @@
+<?php columnStart(1); ?>
+<h4 id="article1"><u>Stichwortsuche für NASCOM&nbsp;1</u></h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Mit dem folgenden Programm kann ein bestimmter Speicherbereich
+nach einem Stichwort (z.B. Name, Telephonnummer usw.) untersucht
+werden.
+</p>
+
+<p>
+<u>Prinzip</u> Im RAM ab Adresse 1000 H stehen Textdaten in
+ASCII-Form. Zusammenhängende Daten (Datensatz) sind durch 01H
+abgegrenzt. Das Dateiende ist durch 03H markiert. Wird ein
+Suchbegriff eingegeben, sucht sich der Mikroprozessor sämtliche
+Datensätze heraus, die den Suchbegriff enthalten.
+</p>
+
+<p>
+<u>Bedienung</u> Nach Starten des Programmes mit EC50, stehen
+drei Funktionen zur Verfügung:
+</p>
+
+<p>
+<u>1. Suchen</u> Auf Taste &quot;1&quot; drücken. Es
+erscheint der Text &quot;Suchbegriff?&quot;. Wenn nun ein
+Stichwort eingegeben wird (max. 47 Zeichen), sucht der Computer
+in sämtlichen Datensätzen nach diesem Begriff. Wenn der
+Suchbegriff in einem Datensatz vollständig enthalten ist, wird
+dieser ausgegeben. Vor dem Datensatz wird eine Zahl (Löschadresse)
+ausgegeben, die der Anfangsadresse des Datensatzes entspricht.
+</p>
+
+<p>
+<u>2. Schreiben</u> Auf Taste &quot;2&quot; drücken und Text
+eingeben. Besteht der Text aus mehreren Zeilen, so muß jeweils
+nach Betätigen der &quot;NEW LINE&quot;-Taste die &quot;2&quot;-Taste
+gedrückt werden. Ist der Text vollständig eingegeben, muß die
+&quot;NEW LINE&quot;-Taste gedrückt werden. Der Text wird dann
+an die Datei angehängt. Die Eingabe von Leerzeilen ist möglich.
+Korrekturmöglichkeiten bestehen nur innerhalb einer Zeile
+(Backspace).
+</p>
+
+<p>
+<u>3. Löschen</u> Auf Taste &quot;3&quot; drücken. Es
+erscheint der Text &quot;Löschadresse?&quot;. Nun muß
+die Anfangsadresse (siehe &quot;Suchen&quot;) des zu löschenden
+Datensatzes eingegeben werden. Diese Zahl muß vollständig (auch
+Anfangsnullen!) eingegeben werden. Nach Betätigen der Taste
+&quot;NEW LINE&quot; wird der Datensatz mit den nachfolgenden
+Daten überschrieben. Für die Funktionen &quot;Suchen&quot; und
+&quot;Schreiben&quot; wird ein Zwischenspeicher benötigt, der
+bei 0DD1&nbsp;H beginnt. Darin wird der Suchbegriff bzw. der
+eingegebene Text zwischengespeichert.
+</p>
+
+<?php columnChange(2); ?>
+
+<p>
+Bei der erstmaligen Eingabe muß der Datenspeicher folgendermaßen
+initialisiert sein:
+</p>
+
+<pre>
+    1000        01   (Datensatz-Trennung)
+    1001        03   (Dateiende)
+</pre>
+
+<p>
+<u>Speicherbelegung</u>
+</p>
+
+<p>1. Programm 0C50 bis 0D00</p>
+
+<p>2. Zwischenspeicher 0DD1 bis ca. 0E00</p>
+
+<p>3. Datei 1000 bis 3000</p>
+
+<p>
+Soll der Dateianfang verlegt werden, müssen. folgende
+Adressen geändert werden:
+</p>
+
+<pre>
+0C51/0C52
+0C5E/0C5F
+</pre>
+
+<p>
+Soll der Zwischenspeicher verlegt werden, dann müssen die
+folgenden Adressen geändert werden:
+</p>
+
+<pre>
+0C62/0C63
+0D16/0D17
+0D1A/0D1B
+0D49/0D4A
+0DCA/0DCB
+</pre>
+
+<p>
+Das Programm wurde für einen NASCOM&nbsp;1 mit einer 8k
+Speichererweiterung ausgelegt.
+</p>
+
+<p>
+<u>Ein Beispiel zur praktischen Bedienung</u>
+</p>
+
+<pre class="donthyphenate">
+<u>EC50 nl</u>        Programmstart
+SUCHEN: -1-
+SCHREIBEN: -2-
+LOESCHEN: -3-
+<u>2</u>              Aufruf der Schreibfunktion
+<u>JUERGEN ALTMANN nl</u>      Texteingabe
+<u>2</u>
+<u>nl</u>
+<u>2</u>
+<u>SCHORNDORF nl</u>
+<u>nl</u>             Ende der Eingabe
+SUCHEN: -1-
+SCHREIBEN: -2-
+LOESCHEN: -3-
+<u>1</u>              Aufruf der Suchfunktion
+SUCHBEGRIFF&nbsp;?
+<u>SCHORNDORF nl</u>  Eingabe des Suchbegriffes
+1001:          Ausgabe der Löschadresse
+JUERGEN ALTMANN
+SCHORNDORF
+READY          Datei ganz durchsucht
+</pre>
+
+<p>+++++Benutzereingaben sind unterstrichen&nbsp;!+++++</p>
+
+<?php columnEnd(2); ?>

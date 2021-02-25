@@ -1,0 +1,86 @@
+<?php columnStart(2, 2); ?>
+
+<p>
+Dann sucht der Relocator die Information &quot;RELO&quot;, rechnet die
+folgenden Adressen auf die physikalische Lage des Programms um und
+addiert (oder subtrahiert) das Displacement zu ihren Inhalten.
+</p>
+<p>
+Nach Auffinden von 00 00 meldet der Relocator &quot;Ready&quot; und
+springt zum Monitor zurück. Das Programm ist nun an gewünschter Stelle
+lauffähig. Sie können es von dort auch auf Cassette abspeichern
+(inklusive der Relocator- Informationen). Als Ausgangspunkt für
+weitere Verschiebung muß aber immer die Anfangsadresse verwendet
+werden, für die das Programm ursprünglich geschrieben wurde.
+</p>
+<br>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-1.jpeg"); ?>
+
+<?php columnChange(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-18-2.jpeg"); ?>
+
+<p>
+Dieses Programm läßt sich natürlich nur dann problemlos durchführen,
+wenn die Ursprungsprogramme durchsichtig sind und nicht zu viele
+direkte Sprünge enthalten. (Obwohl das Programmformat immer noch
+kleiner bleibt als bei TDL)&nbsp;.
+</p>
+<p>
+<u>Deshalb ein Aufruf an alle Leser, die Programme veröffentlichen:</u>
+</p>
+<p>
+1. Vermeiden Sie möglichst direkte Sprünge!<br>
+(Falls die Distanz für relative Sprünge zu groß wird, kann man
+Programmteile einfügen, die die Distanz verlängern, z.B............
+</p>
+
+<pre class="donthyphenate">
+            JR MARK 5
+            .
+            .
+     MARK 5 JR ENDE etc.)
+</pre>
+
+<p>
+2. <u>Unterstreichen Sie auf jeden Fall alle Adressen, die bei
+Verschiebung verändert werden müssen.</u> (Wird ja zum größten Teil schon
+gemacht.)
+</p>
+<p>
+3. Komfortabelste Lösung: Hängen Sie die Relocator-Information an Ihre
+Programme an. Für Anwender eines Assemblers:
+</p>
+<p>
+Ans Programm anhängen DEFM &quot;RELO&quot; und dann die Marken
++Displacement, die zu verschiebende Adressen enthalten. Normalerweise
+ist das Displacement &quot;+1&quot; z.B. bei
+</p>
+
+<pre class="donthyphenate">
+     CALL  CD Adresse
+     JP    C3 Adresse
+     LD HL 21 Adresse
+</pre>
+
+<p>
+Nur bei Verwendung der Index-Register wird es &quot;+2&quot;<br>
+z.B. bei
+</p>
+
+<pre class="donthyphenate">
+     LD IX DD21 Adresse
+</pre>
+
+<p>
+Vergessen Sie nicht, die &quot;Ende&quot;-
+Information 00 00&nbsp;! (Assembler: DEFW 0)
+</p>
+<p>
+Hier als Abschluß das Hex-Dump des Relocators.
+(Wie gesagt: klein, voll verschieblich und
+einfach)
+</p>
+
+<?php columnEnd(2); ?>

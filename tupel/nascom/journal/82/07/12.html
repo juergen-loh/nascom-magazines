@@ -1,0 +1,59 @@
+<?php columnStartJustify(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+<?php columnChangeJustify(2); ?>
+
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-12-2.jpeg"); ?>
+
+<?php hline("100%", "2"); ?>
+
+<?php nowrapStart(); ?>
+<h1 id="article1">
+STEREO Aussteue&shy;rungsmesser
+</h1>
+<h3>
+von Günter Brust
+</h3>
+<?php nowrapEnd(); ?>
+<p>
+Der eine oder andere Dia-, Film-, Audio- oder Videofreund hatte sicher
+schon einmal die Gelegenheit, einen Blick in ein Rundfunk- oder
+Plattenstudio zu werfen. Die dort verwendeten Aussteuerungsmesser (nach
+DIN&nbsp;45406) lassen das Herz höher Schlagen, wenn man an seine kleinen
+VU-Meter(chen) denkt, welche vielfach nur eine schöne Verzierung
+darstellen. Die Anschaffungspreise für professionelle
+Aussteuerungsmesser bringen einen aber schnell in die Wirklichkeit
+zurück. Viel wurde in Fachzeitschriften zwar schon geschrieben über den
+Bau derartiger Einrichtungen, im Endeffekt ist der Aufwand für den
+Selbstbau aber ebenfalls erheblich: Meßgleichrichter, logarithmische
+Gleichspannungsverstärker und eine Anzeigeeinrichtung, welche das
+Meßsignal unverfälscht wiedergibt, sind erforderlich.
+</p>
+<p>
+Angeregt durch den
+<?php externalLink("Chip","CHIP",""); ?>-&nbsp;Artikel
+&quot;Wandler&quot; (11/79) kam mir die Idee, mein
+Mikroprozessorsystem als Aussteuerungsmesser zu programmieren. Das
+Video- Display ergibt eine ideale Anzeigeeinrichtung, die
+logarithmische Umwandlung kann softwaremäßig erfolgen. Zwei brauchbare
+A/D- Wandler lassen sich einfach für ca. DM&nbsp;25.&ndash; herstellen. Als
+Meßgleichrichter wurde, da von früheren Experimenten vorhanden, der in
+<?php externalLink("Elektor","ELEKTOR"); ?>
+4/77 beschriebene Gleichrichter verwendet (Preis ca. DM&nbsp;50.&ndash;).
+Das verwendete Prozessorsystem ist der NASCOM&nbsp;1 (ohne Erweiterung) mit
+NAS-SYS.
+</p>
+<h4>
+Hardwarebeschreibung:
+</h4>
+<p>
+Zwei A/D- Wandler, welche leicht auf einer Europakarte aufzubauen sind,
+übernehmen die Digitalisierung des vom Meßgleichrichter gelieferten
+Signals. Es liefert bei Vollaussteuerung (+5&nbsp;dB Anzeige) eine
+Ausgangsspannung von 12V=. Einstellregler für Null- und Maximumabgleich
+sind vorhanden. Die zwei A/D-&nbsp;Wandler werden an Port A und Port B der
+PIO angeschlossen. (Das Hex-Dump ist für diese Ports geschrieben. Bei
+Verwendung anderer Ports fordern Sie bitte das Assemblerlisting an, um
+das Programm anzupassen). für die Komparatorrückmeldung werden die zwei
+freien Eingänge des Port 0 (Tastaturanschluß) verwendet.
+</p>
+<?php columnEnd(2); ?>

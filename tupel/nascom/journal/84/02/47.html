@@ -1,0 +1,107 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+VIDEOINTERFACE
+</h1>
+<h3>
+von Dr. Oberle und A. Zippel
+</h3>
+<p>
+Welcher NASCOM Anwender hat sich nicht schon über das zu anderen
+Rechnern inkompatible Bildschirmformat von 16*48 Zeichen geärgert.
+Besonders dann wenn er Software, z.B. BASIC-Programme, auf seinem
+NASCOM übernehmen wollte oder seinen NASCOM als Terminal für
+Grossrechner und andere Mikrorechner verwenden wollte, wie z.B.
+<?php externalLink("CP/M","",""); ?>-Systeme&nbsp;?
+</p>
+<p>
+Diese Tatsache hat mich dazu veranlasst eine
+programmierbare Videointerfacekarte für NASCOM Computer zu entwickeln
+die am NASBUS als &quot;Memory mapped&quot; Videointerface betrieben
+werden kann. &quot;Memory mapped&quot; bedeutet: der Bildspeicher, in
+diesem Fall 2KB, ist Teil des Adressbereiches der CPU und kann auch
+direkt über Speicherbefehle angesprochen werden. Dies hat den Vorteil,
+dass eine sehr schnelle Ausgabe auf den Bildschirm erfolgen kann und
+auch eine Semigrafik (bei entsprechendem Charaktergenerator) leicht
+implementiert werden kann mit einer höheren Auflösung als beim NASCOM
+Videointerface. Allerdings müsste die Software dazu noch geschrieben
+werden.
+</p>
+<p>
+Die Interfacekarte dient bei mir in Verbindung mit einem Billig-Monitor
+(Fernseher sind wegen der zu geringen Bandbreite nicht geeignet) als
+24*80 Zeichen Display für einen CP/M-Rechner. Sie kann auch für ein
+beliebiges anderes Bildformat bis zu 128*x(je nach Bildspeichergrösse)
+Zeichen umprogrammiert werden. Sollten allerdings mehr als 2K Zeichen
+dargestellt werden so ist der Bildspeicher und der MUX auf der Karte
+entsprechend zu erweitern.
+</p>
+<h4>
+<u>Funktionsbeschreibung</u>
+</h4>
+<p>
+Die Karte ist mit dem weitverbreiteten Videocontrollerchip
+<?php externalLink("MC6845"); ?>
+aufgebaut. Dieses IC übernimmt die gesamte Bildschirmsteuerung und die
+Generierung des Videosignals, sowie der Synchronisationssignale. Es
+ist sogar leicht möglich einen Lichtgriffel für interaktiven
+Bildschirmbetrieb anzuschliessen, wozu jedoch ebenfalls erst die
+Software erstellt werden müsste.
+</p>
+<p>
+Der Controllerbaustein ist per I/O-Befehl über den NASBUS voll
+programmierbar, sodass die Cursosteuerung, das Bildschirmformat und die
+Behandlung von CTRL und ESC Charaktern nur von der Programmierung
+abhängig sind.
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Ebenso ist es per Software möglich die Anpassung an verschiedene
+Videomonitore vorzunehmen die mindestens eine Bandbreite von 16Mhz
+haben müssen. Die im nächsten Heft veröffentlichten Programme sind für
+einen ZENITH Monitor und einen CP/M Rechner ausgelegt.
+</p>
+<h4>
+<u>Adressdecoder und NASBUS-Anpassung</u>
+</h4>
+<p>
+Die Anfangsadresse für den Bildspeicher kann mit 4 DIL-Schaltern in
+Blöcken zu 4KB verschoben werden, wobei die Anfangsadresse immer nur
+x800h sein kann weil die Adressleitung A11 als Freigabesignal für den
+Adresscomperator IC7485 verwendet wird. Dies ist z.B. in CP/M Systemen
+sinnvoll weil damit die letzten 2KB Ram als Bildspeicher verwendet
+werden können. Bei 64K Ram wäre die Adresse F800h zu verwenden.
+</p>
+<p>
+Die I/O Adressdecodierung erfolgt mit dem IC138 in Verbindung mit dem
+8-fach DIL-Schalter ICDIL8. Der Controller MC6845 arbeitet mit 2 I/O
+Portadressen und 16 internen Steuerregistern. Zuerst muss über einen
+I/O Befehl im Control Reg. das gewünschte Steuerregister angewählt
+werden und anschliessend über einen zweiten I/O Befehl das Datenbyte
+gelesen oder geschrieben werden. Die I/O Portadresse ist wählbar und
+setzt sich aus folgenden Adressbits zusammen:
+</p>
+
+<table style="width: 100%">
+<tr><td></td><td>A7</td><td>0</td><td>A5</td><td>0</td><td>A3</td><td>0</td><td>X</td><td>X</td><td></td></tr>
+<tr><td colspan=10>&nbsp;</td></tr>
+<tr><td>z.B.</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>=&gt; 20h</td></tr>
+</table>
+
+<p>
+als Adresse des Control Reg. und damit ist automatisch 21h die Adresse
+des Steuerregisterdatenports. Für jede mögliche I/O Adresse darf nur
+ein DIL-Schalter geschlossen sein womit sich genau 8 verschiedene
+Adressen einstellen lassen die aus A7,A5,A3 gebildet werden. Die RD, WR
+Signale vom NASBUS und der Adressdecoder erzeugen auch die speziellen
+Bussignale MEMEXT, I/OEXT u. DBDR mit Hilfe von zusätzlichen
+Logikgattern. Dabei sind diese Anschlüsse NASBUS seitig wie folgt zu
+ergänzen:
+</p>
+<p>
+I/OEXT u. MEMEXT sind jeweils über einen Widerstand von 500 Ohm an
+Masse zu legen. Die Signale werden dann im Betrieb über die GeDioden
+(Ge wegen Störabstand wichtig) auf
+</p>
+
+<?php columnEnd(2); ?>

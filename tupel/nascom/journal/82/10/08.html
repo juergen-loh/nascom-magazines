@@ -1,0 +1,124 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für Einsteiger
+</h1>
+<h3>
+von Otto Fößel
+</h3>
+<h4>
+Wissenswertes über Interrupts&nbsp;!!
+</h4>
+<p>
+In den Geburtsjahren der Computer galt
+das Hauptinteresse der Verarbeitung von Zahlenmaterial. Die
+Möglichkeiten dieser neue Entwicklung führten zu den bekannten
+Großrechenanlagen in der Größenordnung ganzer Gebäudekomplexe. Erst in
+den 60er Jahren eröffnete sich durch neue Technologien zur
+Miniaturisierung die Möglichkeit, frei programmierbare Geräte auch für
+Steuerungsaufgaben einzusetzen.Mit diesem Ziel vor Augen, entstanden
+die Mikroprozessoren, deren Struktur den neuen Anforderungen angepaßt
+wurde.
+</p>
+<p>
+Man opferte die Fähigkeit zur direkten Verarbeitung von
+Gleitkommazahlen, die Möglichkeit komplexer arithmetischer Operationen
+usw. und beschränkte sich auf 8 Bit breite Datenworte. Mit der
+Abmagerung bekannter Prozessorelemente war es aber nicht getan. Eine
+der wichtigsten neuen Anforderungen war es, den Kontakt mit der
+Außenwelt herzustellen. Die Lösung dieser neuen Aufgabe kennzeichnet
+die Mikroprozessoren und damit sind wir auch (endlich) beim Thema.
+</p>
+<p>
+Wie allen bekannt, geht es in so einem Mikroprozessor, solange er
+funktioniert, recht geordnet und nach strengen Regeln zu. Der
+Ober-Aufpasser ist der Taktgenerator, der sämtliche Abläufe im Griff
+hat, und wenn die Sache einmal läuft, wird mit jedem neuen Takt eine
+neue Operation eingeleitet, aber wie gesagt, immer schön synchron zum
+Takt und streng nach den Regeln und Programmanweisungen.
+</p>
+<p>
+Dem gegenüber
+steht eine Außenwelt, die sich um diesen Taktgenerator überhaupt nicht
+kümmert, weil sie entweder nichts von ihm weiß oder ihm einfach nicht
+folgen kann, da er zu schnell ist. Trotzdem muß bei Steuerungsaufgaben
+diese Umwelt mit in die Abläufe des Computers einbezogen werden. Dafür
+eröffnen sich zwei Möglichkeiten, die zuerst allgemein dargestellt
+werden sollen.
+</p>
+<p>
+1.) Der Mikroprozessor wird so programmiert, daß er regelmäßig durch
+spezielle Befehle bestimmte Zustände der Außenwelt abfragt. Diese
+Möglichkeit, &quot;polling&quot; genannt, beruht alleine auf der
+Software und ist relativ unproblematisch. Bestimmte Zustände, z.B. ob
+ein Schalter geöffnet oder geschlossen ist, werden in
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+entsprechende &quot;TTL-Pegel&quot; (d.h. 0V oder 5V) umgewandelt und über
+ein E/A-Port eingelesen. Dementsprechend kann dann im Programm
+verzweigt und reagiert werden.
+</p>
+<p>
+In der Realisierung stellt sich aber diese
+Möglichkeit als sehr unbefriedigend heraus, da
+der Prozessor im Grunde nichts anderes macht,
+als zyklisch eine Verzögerungsschleife zu
+durchlaufen, an deren Ende das E/A-Port abgefragt
+wird. Viel mehr kann er nebenbei nicht
+machen. Ein weiterer Nachteil ist die eingeschränkte
+Reaktionsfähigkeit auf externe Ereignisse.
+Als Paradebeispiel die Situation des
+Stromausfalls. Würde dies sofort dem Prozessor
+mitgeteilt, könnte er in der kurzen verbleibenden
+Zeit bis auch die Pufferkapazitäten im
+Netzteil entladen sind, die wichtigen Informationen,
+wie Stand des Programmzählers und den
+Zustand der Register, in einen batteriegepufferten
+Speicher retten. Das würde genügen, um
+das Programm später genau dort fortsetzen zu
+können, wo der Strom ausfiel.
+</p>
+<p>
+2.) Die Möglichkeit zu diesem schnellen Eingreifen
+bietet der Interrupt. Die Außenwelt
+wartet nicht mehr, bis sie bedient wird, sondern
+meldet dies sofort, wenn etwas los ist.
+Die interne Steuerung des Prozessors sorgt
+dafür, daß der laufende Befehl noch abgearbeitet
+wird, unterbricht dann den Programmablauf,
+so wie er vom Programmierer geplant
+war, und springt zu einem ganz anderen Programmteil,
+der Interrupt-Service-Routine, die
+dann auf die Unterbrechung reagiert. Danach
+wird dorthin im Programmablauf zurückgekehrt,
+wo die Unterbrechung eintraf.
+</p>
+<p>
+Soweit ganz allgemein das Problem der Interruptbehandlung.
+Was aber, wenn mehrere Geräte
+einen Interrupt senden wollen, was ist, wenn
+zwei Geräte gleichzeitig unterbrechen, woher
+weiß der Prozessor, von wem die Unterbrechung
+kommt, und welche soll er zuerst bedienen, und
+woher weiß er vor allem, wo das entsprechende
+Unterbrechungsprogramm im Speicher liegt?
+</p>
+<p>
+Also genug Probleme, die es noch zu lösen gibt,
+und gerade in der Lösung dieser Probleme liegt
+das Erfolgsrezept eines guten Mikroprozesors.
+Im weiteren soll untersucht werden&nbsp;,wie beim
+<?php externalLink("Z80"); ?>
+dieses Problem in Angriff genommen wurde.
+Wichtig für die Interrupt Struktur des Z80 waren
+die Vorarbeiten von Intel. Nachdem der Z80
+Software-kompatibel zum
+<?php externalLink("8080"); ?>
+von Intel sein
+sollte, d.h. Programme dieses bis dahin schon
+weitverbreiteten Typen sollten unverändert auf
+dem Z80 laufen können, mußten auch die
+</p>
+
+<?php columnEnd(2); ?>

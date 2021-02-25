@@ -1,0 +1,43 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+<u>Telespiel mit Joystick</u>
+</h4>
+<p>
+Als ich die Bauanleitung zu einem analogen Joystick in
+<a href="../../../../80/06/06/text/#article1">Heft 6/7</a> des
+NASCOM Journal sah, fiel mir sofort ein, dass ich vor einiger Zeit
+einige Programme zur Verwendung eines ähnlichen Joysticks entworfen
+habe. Ich habe eines dieser Programme nun so umgeschrieben, dass der
+Joystick aus <a href="../../../../80/06/06/text/#article1">Heft 6/7</a>
+inklusive Subroutine verwendet werden kann, ohne
+auch nur eine Adresse zu verändern.
+</p>
+<p>
+Nach Start des Programmes mit E&nbsp;D36 fliegt ein &quot;Flugzeug&quot; den
+Bildschirm Zeile für Zeile ab. Durch den Joystick wird ein
+&quot;Visier&quot; über den Bildschirm bewegt,das beim Zusammentreffen
+mit dem Plugzeug einen Treffer auf der Anzeige registriert und ihn über
+ein Interface(siehe <a href="../../../../80/06/18/text/#article1">Heft 6/7</a>)
+an Pin 13 des SK&nbsp;1 hörbar macht. Nach
+erreichen einer bestimmten Anzahl von Treffern(im Beispiel beträgt die
+Anzahl 60) ertönt ein längerer Ton, begleitet von einer
+&quot;GEWONNEN&quot; Anzeige. Durch Drücken einer beliebigen Taste
+lässt sich ein neues Spiel starten.
+</p>
+<p>
+Wird die benötigte Trefferzahl nicht erreicht, stellt der Zähler auf 00
+und ein neues Spiel wird automatisch eingeleitet.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+<p>
+Soll das Telespiel an anderer Stelle gespeichert werden, so sind nur
+die Aufrufe der beiden Unterprogramme &quot;Anzeige&quot; und
+&quot;Ton&quot; zu verändern. Diese sind durch * gekennzeichnet.Beide
+Unterprogramme können auch gut in anderen Spielen Verwendung finden.
+</p>
+<p>
+Folgende Variationen des Spieles sind möglich:
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-3.jpeg"); ?>
+<?php columnEnd(1); ?>

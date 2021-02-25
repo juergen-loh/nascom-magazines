@@ -1,0 +1,145 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+BLS Auto Init
+</h1>
+<h3>
+von Jürgen Weiermann
+</h3>
+<p>
+Die Idee der frei definierbaren Drucker-Schnittstelle beim
+<?php externalLink("Blue Label Software Pascal","BLS-PASCAL"); ?>
+hat sicherlich ihre Vorteile, wenn man bedenkt, wie viele verschiedene
+Drucker und somit auch verschiedene Schnittstellen es zur Zeit auf dem
+Markt gibt; ja es ist sicherlich ein &quot;Muß&quot; für den 
+Software-Anbieter, dem Anwender so viel Freiraun zu lassen. Doch hat
+diese Idee auch einen kleinen Nachteil, den ich mit diesem Artikel zu
+beheben versuche. Anwender dieser Pascal-Version werden es sicherlich
+schon als störend empfunden haben, wenn es einmal vergessen wurde, vor
+dem Initialisieren des
+<?php externalLink("Blue Label Software Pascal","BLS-PASCAL"); ?>
+die Druckerroutine einzutippen
+und/oder den Einsprungvektor für die Druckerroutine zu ändern. Dann
+darf man erst ein mal über Umwege sein Versäumnis nachholen. Sollte man
+einmal aus Versehen die RESET-Taste gedrückt haben, darf man von neuem
+die Stelle 0C78H ändern. Diese lästige Begleiterscheinung der
+wohlgepriesenen Flexibilität des Systems kann man auf sehr einfache Art
+und Weise beseitigen, man muß nur den Punkt im Programm finden, an dem
+es zur Druckerroutine springt. Es erschien mir als überaus trickreich
+(so dachte ich damals), an den Anfang des Druckerprogramms den Befehl
+BRKPT RST 20H zu setzen, um dann zusammen mit NASDIS den Stack nach der
+Rücksprungadresse abzusuchen. Diese Methode erwies sich als krasser
+Denkfehler, denn nicht Pascal sprang zur Routine sondern Nas-sys, was
+mir auch sofort einleuchtet, denn müßte man sonst den Sprung $UOUT
+(Benutzer-Ausgabe-Programm) ändern? Nun ja, die Idee zu dem zweiten
+Versuch lag an dieser Stelle sehr nahe.Irgendwie mußte ja schliesslich
+auch Nas-Sys den Weg zurück finden, also untersuchte ich weiterhin den
+Stack nach Adressen, die mir sinnvoll erschienen. Doch fand ich derer
+mehr, als ich erwartet hatte, und alle hatten irgend etwas mit
+Zeichen-Ein/Ausgabe zu tun. Weiterhelfen konnte mir da nur noch das
+Assembler-Listing (Bravo, Sie haben&rsquo;s disassembliert! &ndash; Können Sie der
+Redaktion und Herrn Bach eine Kopie zur Verfügung stellen?) und eine
+genaue Lektüre der betroffenen Programmstellen. (Uebrigens, für
+denjenigen, den es interessiert: für das Ass.-Listing hat mein MX 80 FT
+immerhin geschlagene 2 1/4 Stunden gebraucht, bei einer
+Uebertragungsrate von 19200 Baud mit 101 Seiten Ausdruck (Der Druckkopf
+war nach diesem Non-Stop Einsatz gut warm, aber nicht heiss.)). Um es
+nun kurz zu machen, es fand sich sehr bald die Stelle, an der der
+Editor mit dem Monitor-Unterprogramm NOM (DF 71H) die Ausgabe-Tabelle
+änderte und somit dafür sorgte, daß Nas-Sys die von Benutzer gelieferte
+Ausgaberoutine benutzt. (Diese neue Tabelle zeigt dann auf E710H mit
+den Werten 75H für UOUT und 00 für Tabellen-Ende. Ab der Adresse E727H,
+wo eigentlich der Aufruf von NOM und INC DE steht, habe ich nun einen
+CALL eingebaut, der das Programm veranlaßt, zu einem noch freien
+Bereich des Pascal-Compilers zu springen(E157H - E17D). Uebrigens:
+wußten Sie schon, daß bei den Adressen E17EH und E17FH die Seriennummer
+Ihres Pascal&rsquo;s zu finden ist? (...zensiert...RED)
+</p>
+<p>
+Zurueck zum Thema. An diesen eben aufgeführten Stellen kann man nun
+bequem seine Erweiterung einschieben. Ab der Adresse E158 steht nun der
+Abschnitt AUTO-INIT, der erstens dafür sorgt, daß die zuvor
+gestrichenen Befehle NOM und INC DE nachgeholt werden, und dann wird
+eine Änderung des Vektors für die Ausgabe(Drucker)-Routine vorgekommen.
+Ab der Adresse E162H steht dann ein Programm zur Ansteuerung des
+Druckers. Im Ass.-Listing finden Sie ein Programm, welches einen
+Drucker über den vom Monitor unterstützten seriellen Port ansteuert.
+Man beachte, daß anders als ZEAP das Pascal-System kein Line-Feed
+ausgibt und dies noch in Drucker-Programm erledigt werden muß. Sollte
+jemand von Ihnen bei der Änderung Probleme haben, bin ich gerne bereit,
+weiterzuhelfen; vor allem denke ich an diejenigen, die keinen Prommer
+haben (bitte Rückporto und Angaben über die Druckerroutine bei legen
+(ich kann nur
+<?php externalLink("2716"); ?>
+programmieren)).
+</p>
+<p>
+Hier noch etwas, was man auf jeden Fall wissen muß, was aber nicht im
+Manual erwähnt wird: sollte man aus Gründen der Anpassung an die eigene
+Drucker-Routine das Line-Feed-Problem softwaremäßig lösen wollen, so
+ist der Befehl in Zeile 280 unbedingt notwendig, da sonst der
+Print-Befehl mit 'Control &quot;P,&quot;L' die erwünschte
+Zeilennummerierung nur in der ersten Zeile zustande bringt. Als mir
+dies widerfuhr, dachte ich zuerst, eines der anderen Register, welches
+vielleicht als Zähler benutzt wird, würde von meiner Routine verändert.
+Ein Test der Routine DF 6F mit NAS-DIS zeigte mir aber schließlich das,
+was ich erwartet
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+hatte: es werden keine Register durch diese Routine verändert. Wie
+schon weiter oben erwähnt wurde, war ein Test der gesamten
+Drucker-Routine in Verbindung mit den Pascal-Compiler nicht möglich,
+also blieb mir nur noch das Absuchen des Assembler-Listings als einzige
+Alternative.
+</p>
+<p>
+An dieser Stelle möchte ich gerne eine Frage an unsere
+NAS-SYS-Spezialisten stellen: gegeben sei Folgendes -- das Programm (in
+diesem Fall wäre es der Pascal-Compiler) ändert mit dem Befehl NOM (&nbsp;DF
+71&nbsp;) die Adresse der Ausgabe-Tabelle. In der neuen Tabelle wird dann
+die Ausgabe-Routine UOUT (75H) eingetragen. Wird nun im Laufe des
+Programms ein Zeichen mit dem Befehl ROUT (RST 30H) ausgegeben, so
+springt das Programm bei Erreichen dieses Befehls zu
+&quot;NAS-SYS&quot; mit dem Zeichen im A-Register. Von dort geht es
+dann zur Adresse 0C77H, wo ein Sprung zur Benutzer-Routine steht. Und
+nun die Frage: Warum ist es nicht möglich, in der Benutzer-Routine
+einen Befehl wie z.B. BRKPT (RST 20H) oder MRET (DF 5B) zur Ausführung
+zu bringen, damit man eventuell zu Anfang und zum Ende die Register
+testen kann? Mir ist es auch unter noch so großen Bemühungen nicht
+gelungen, meinen Nascom zu bewegen, mir an den wichtigen Stellen die
+Register zu zeigen. Ich hoffe es kann mir hier jemand weiterhelfen.
+</p>
+<p>
+(Anmerkung der Redaktion: Der Grund, warum die Registeranzeige in einem
+Ausgabeprogramm nicht funktioniert, ist ganz einfach: Auch die
+Registeranzeige ruft ebenfalls dasselbe Ausgabeprogramm auf, das
+untersucht werden soll, um eben die Register anzuzeigen. Dann läuft das
+Programm immer wieder auf den Breakpoint auf; es kommt also gar nicht
+zur Anzeige der Register. Bei NAS-SYS-3 wurde auch das verbessert,
+jedenfalls kann ich damit durch meine Druckerroutine
+&quot;Singlesteppen&quot;. Vermutlich wird der RST-Befehl E7 erst nach
+der Registeranzeige wieder zurückgeschrieben. GK)
+</p>
+<p>
+Im Assembler-Listing fand ich nach langem Suchen bei der Adresse E742H
+die entscheidende Stelle, wo mit den Befehl RST 30H ein Zeichen
+ausgegeben wurde. Erst nachdem das Zeichen über die vom Benutzer
+definierte Schnittstelle ausgegeben wurde, erfolgte der Vergleich, ob
+das im Register A stehende Zeichen ein CR war. Erfolgt ein Zero bei
+diesem Vergleich, so springt das Prgramm zu einem Unterprogramm, mit
+welchem die Zeilennummer generiert und ausgegeben wird. Analog dazu
+steht dann folgendes: kehrt das Programm mit LF (0AH) aus der Routine
+zurück, so heißt das für dieses, daß noch nicht alle Zeichen der Zeile
+gedruckt wurden, und es fährt mit der Ausgabe fort, bis der
+END-BLOCK-MARKER kommt. Bei dieser Untersuchung endeckte ich dann auch
+die Speicherstelle, in der die Zeilennummer zwischengespeichert wird.
+Da man sie für eventuelle Manipulationen gebrauchen kann, soll ihre
+Adresse auch nicht verschwiegen werden: (0C91H).
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

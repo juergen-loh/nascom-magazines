@@ -1,0 +1,105 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php boxStart("R"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<?php boxEnd(); ?>
+<br>
+<?php boxStartJustify(); ?>
+<p>
+SPRACHPLATINE original Elector Dez.81 mit Steckanschluß an NASCOM
+&quot;PIO-Bus&quot; und original Sprach-EPROMs (deutsch u. englisch)
+aufgebaut und getestet DM&nbsp;300&nbsp;.&ndash; (Software gratis dazu).
+</p>
+<p>
+Günter Böhm<br>
+______________ ___. __ _<br>
+____ _________&nbsp;, Tel. ____/______
+</p>
+<?php boxEnd(); ?>
+
+<h1 id="article1" class="donthyphenate">
+ANTI-SNOW für 80-Zeichen-Karte
+</h1>
+<h3>
+von W.ZIPPEL/D.OBERLE
+</h3>
+<h4>
+ANWENDUNGSMÖGLICHKEIT
+</h4>
+<p>
+Bei der Ausgabe von Zeichen auf den Bildschirm gibt es
+Zugriffskonflikte beim Bildspeicher zwischen der CPU und dem
+CRT-Controller, was sich durch sogenannten &quot;Schnee&quot; auf dem
+Bildschirm äußert. Um diese Zugriffskonflikte zu unterbinden kann
+folgende Änderung auf der
+<a href="../../../../82/05/12/text/#article1">80-Zeichen-Karte</a>
+eingebaut werden.
+</p>
+<h4>
+SCHALTUNGS- und FUNKTIONSBESCHREIBUNG
+</h4>
+<p>
+Es wird ein zusätzlicher 74LS74
+und ein &quot;And-Gate&quot; benötigt. Mit dieser Schaltung wird
+verhindert, daß während eines Speicherzugriffs durch die CPU ein
+gleichzeitiges Auslesen des Speichers auf den Bildschirm möglich ist,
+sodaß undefinierte Zeichen &ndash; &quot;Schnee&quot; &ndash; unterbleiben. Ein
+ähnlicher Vorschlag wurde im
+<a href="../../../03/04/text/#article1">letzten Heft</a> bereits gemacht, dürfte
+jedoch nicht ganz
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+so wirkungsvoll sein.
+</p>
+<h4>
+AUFBAU
+</h4>
+<p>
+Die beiden IC&rsquo;s können leicht über zwei andere IC&rsquo;s auf der Platine
+gelötet und entsprechend verdrahtet werden. Eine andere Möglichkeit
+bietet der Aufbau eines kleinen Moduls, das anstelle eines der IC&rsquo;s in
+die Fassung gesteckt wird. Die Leiterbahnen sind entsprechend der
+Schaltungsänderung aufzutrennen und neu zu verdrahten.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-23-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<h1 id="article2">
+LAYOUT FEHLER
+</h1>
+<h3 class="donthyphenate">
+Layoutfehler auf der 80-Zeichenkarte
+(80-BUS-Format)
+</h3>
+<h3>
+von DIETER OBERLE
+</h3>
+<p>
+Am Adreßkomparator IC 74LS85 ist im
+<a href="../../../../82/07/06/text/#article1">Layout</a>
+der Pin (1) mit Pin (8) des
+DIL4-Schalters verbunden. Laut
+<a href="../../../../82/05/14/text/#article1">Schaltplan</a>
+müßte Pin (15) mit Pin (8)
+DIL4-Schalter verbunden sein. Ebenso ist Pin (15) auf den NASBUS A12
+geführt; hier müßte Pin (1) angeschlossen werden. Dieser Layoutfehler
+wirkt sich auf die Funktion der Schaltung nicht aus, da der Komparator
+nur auf &quot;=&quot; vergleicht und nur die Eingänge vertauscht sind.
+</p>
+<p>
+IC 7405 Pin (4) und Pin (11) sind nicht über einen Pull-Up-Widerstand
+R19 an +5V geführt, sondern direkt verbunden, was wohl dann ein sehr
+schwaches Ausgangssignal zur Folge hat. R19 liegt mit beiden
+Anschlüssen an +5V. Dieser Layoutfehler hat leider schlimmere Folgen.
+Wer also kein Ausgangssignal oder nur ein stark abgeschwächtes erhält
+und den Fehler noch nicht bemerkt haben sollte, soll mit neuem Mut doch
+nochmal probieren. Da sich diese Fehler erst bei der Korrektur der
+ersten Layoutversion eingeschlichen haben und ich selbst nur mit der
+ersten Version gearbeitet habe, konnte ich erst jetzt durch den Hinweis
+eines geplagten Nachbauers den Fehler veröffentlichen.
+</p>
+
+<?php columnEnd(2); ?>

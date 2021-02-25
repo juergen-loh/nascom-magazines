@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+NASCOM&nbsp;1 - Routine zur Schreibmaschinen- Ansteuerung
+</h4>
+
+<p>
+Das folgende
+<?php externalLink("Z80","Z-80"); ?>
+Programm ist für den Nascom&nbsp;1 vorgesehen
+und arbeitet mit dem 2kByte Monitor Nasbug&nbsp;T4.
+</p>
+<p>
+Es dient zur Ansteuerung des elektromechanischen Interface für
+elektrische Schreibmaschinen, beschrieben in der
+<?php externalLink("Funkschau","Funk&shy;schau",""); ?>,
+Heft 4/1980, S. 85-89 (Autor ist Rudolf Hofer)
+</p>
+<p>
+Besonderer Wert wurde darauf gelegt, daß das 182 Byte lange
+Programm voll verschiebbar ist und somit ohne
+Än&shy;de&shy;run&shy;gen ab
+beliebiger Adresse gestartet werden kann.
+</p>
+<p>
+Lädt man die Startadresse auf den Bildschirmvektor 0C4B (low
+Byte), 0C4C (high Byte), so wird jedes Bildschirmzeichen
+gleichzeitig ausgedruckt.
+</p>
+<p>
+Beliebige Speicherbereiche lassen sich dann mit der
+Ta&shy;bu&shy;late-Monitorroutine
+hexadezimal ausdrucken.
+</p>
+<p>
+Das Programm arbeitet als Subroutine und kann in Assembler mit
+einem CALL aufgerufen werden. Mit CALL START&shy;ADRES&shy;SE + 5 wird das
+Asciizeichen des Accus ausgedruckt, ohne zur Anzeige zu gelangen.
+</p>
+<p>
+Es wird empfohlen, das Druckerprogramm zunächst ab 0F00&rsquo;H
+einzugeben, um so bequem die unten aufgeführten Anpassungen an
+die verwendete Schreibmaschine durchführen zu können.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.gif"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.gif"); ?>
+<?php columnEnd(2); ?>
+
+<?php columnStart(1); ?>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-3.gif"); ?>
+</p>
+<?php columnEnd(1); ?>

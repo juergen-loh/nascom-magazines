@@ -1,0 +1,89 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+TYPENRADDRUCKER OLYMPIA ESW 100
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Der Anschluß der ESW 100 KSR von OLYMPIA ist absolut kein Hexenwerk und
+ohne große Hardwareänderungen möglich, Die einfachste Lösung ist wohl
+der Anschluß an die TTY (20 mA) Schnittstelle.
+</p>
+<p>
+Dazu sind folgende Pins zu verbinden:
+</p>
+<table style="width: 100%">
+<tr><td>ESW 100 KSR</td><td>NASCOM1 SK2</td></tr>
+<tr><td>Pin 9 TTYT-</td><td>Pin 8 Masse</td></tr>
+<tr><td>Pin 10 TTYT+</td><td>Pin 5 KBD+</td></tr>
+<tr><td>Pin 21 TTYR+</td><td>Pin 12 PTR+</td></tr>
+<tr><td>Pin 25 TTYR-</td><td>Pin 11 PTR-</td></tr>
+</table>
+<p>
+Weiterhin
+sind am Drucker die Pins 2 und 11 und die Pins 3 und 18 jeweils mit
+einander zu verbinden.
+</p>
+<p>
+Um das CTS (Clear to send) Signal zu unterdrücken,
+muß auf der Platine des KSR ein Widerstand 2,7 K eingesetzt
+werden. Seine Position ist aus der mitgelieferten Schaltung ersichtlich,
+</p>
+<p>
+Um den UART auf die 2 Stopbits umzustellen, die der KSR braucht, muß
+Link 2 auf der NASCOM Platine von Masse getrennt werden. Man könnte
+aber ebenso den KSR auf 1 Stopbit umstellen; dazu müßten die Dioden D26
+und D27 aus der KSR Platine entfernt werden.
+</p>
+<p>
+Soweit funktioniert der
+Typenraddrucker schon als Empfänger, Um aber sein Keyboard auch als
+Sender benutzen zu können, muß das Signal des Keyboards noch invertiert
+werden. Glücklicherweise ist dafür noch ein Gatter auf der NASCOM
+Platine frei, Biegen Sie einfach die Pins 5 und 6 aus dem IC 31 heraus
+und legen das Gatter so zwischen Link 3 des NASCOM, daß das
+Eingangssignal invertiert wird. (&nbsp;siehe Schaltung&nbsp;).
+</p>
+<p>
+Um den 1760 Hz
+Takt des NASCOM TTY Clock Generators verwenden zu können, muß man eine
+Drahtbrücke auf der KSR PLatine verändern, (siehe Schaltplan). Besser
+wäre es allerdings in Hinblick auf die Übertragungsgeschwindigkeit, den
+NASCOM Takt durch Verwendung eines kleineren Kondensators am 555 zu
+verändern und so auf max. 17 Zeichen pro Sekunde zu erhöhen.
+</p>
+<p>
+Die Änderungen an Link 2 und 3 und die unterschiedlichen Clocks sollten
+natürlich durch Schalter oder Relais für Cassette und Drucker
+umschaltbar gestaltet werden, Für eventuelle Fragen zu diesem Thema
+stehe ich gerne zur Verfügung.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Da der KSR nicht alle Zeichen abbilden kann, die(vor allem in BASIC)
+benötigt werden&nbsp;, wurde folgendes kleine Programm entwickelt, das die
+Zeichen entsprechend umformt.Sie werden folgendermaßen abgebildet:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+
+<p>
+INIT STARTET das Programm als Ersatz für die CRT Routine, START2 gibt
+ohne CRT aus; für die Verwendung mit dem ASM Assembler wird bei START3
+begonnen (weil sonst zwei Leerzeilen ausgegeben werden), Für BASIC läßt
+sich das Programm mit DOKE, 3147,3207 zum Listen verwenden; es ist aber
+bis auf die Startadressen voll verschieblich.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-3.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

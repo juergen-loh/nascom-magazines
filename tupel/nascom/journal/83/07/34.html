@@ -1,0 +1,183 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Adreßverwaltung
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Im <a href="../../../../82/03/09/text/#article1">Journal 3</a> und
+<a href="../../../../82/05/24/text/#article1">5/82</a>
+habe ich ein Dateiverwaltungsprogramm
+veröffentlicht, das die Grundlage zur hier beschriebenen
+Adreßverwaltung bildet. Durch die laufende Arbeit mit dem Programm für
+den Versand des Journals haben sich bestimmte Schwerpunkte ergeben, die
+die augenblickliche Gestaltung der Version 5.0 fixierten. Nach der
+Lektüre des letzten
+<?php externalLink("mc"); ?>
+wurde mir klar, was ich über die Organisation
+von Dateien noch nicht weiß, aber trotz des einfachen Aufbaus meiner
+Dateien (Trennung der einzelnen Records durch das Beil-Zeichen) ohne
+jegliche Querverweise oder Suchbäume etc. scheint mein Programm (fast)
+jeden Luxus der beschriebenen teuren Adreß-Programme aufzuweisen,
+zumindest auf die relativ geringe Datenmenge bezogen, die ich mit dem
+Programm zu verwalten habe (im Augenblick exakt 555 Adressen).
+</p>
+<p>
+Das Programm wird aus Platzgründen nur als Hexdump abgedruckt, nur die
+Programmteile
+&quot;<a href="../../37/text/#article2">zweispaltiger Ausdruck</a>&quot;
+und
+&quot;<a href="../../36/text/#article1">Suchen mit beliebigen Buchstabenfolgen</a>&quot;
+möchte ich für interessierte Leser
+als Assemblerlisting abdrucken. 90% des Programms wurden ja schon in
+oben erwähnten Heften im Assembler vorgestellt. Leser, die gerne das
+vollständige Assemblerlisting hätten, bekommen es gegen Einsendung
+einer Cassette mit Rückporto gerne zugesandt. Vielleicht legen sie noch
+ein paar Briefmarken für die Mühe bei; immerhin handelt es sich um 24&nbsp;K
+Assemblertext. Fotokopien werden etwas länger dauern und auch nicht
+ganz billig sein, denn für eine Kopie muß ich DM&nbsp;.&ndash;20 bezahlen.
+</p>
+<p>
+Hier nun zunächst auf Wunsch eine ausführliche Bedienungsanleitung.
+</p>
+<p>
+Nach Start des Programms meldet sich das Menü (Bild1).
+</p>
+<?php hline("100%", "2"); ?>
+<pre class="donthyphenate">
+<span class="gesperrt">ADRESSENVERWALTUNG</span>
+SUCHEN                   1
+EINGEBEN                 2
+ÄNDERN                   3
+SORTIEREN                4
+AUSGABE                  5
+EINLESEN (Cass.)         6
+ZÄHLEN                   7
+</pre>
+<?php hline("100%", "2"); ?>
+<p>
+Ich will nun zunächst Adressen eingeben und wähle die Ziffer 2. Das
+Programm schreibt &quot;Data Input&quot; auf den Schirm und wartet auf
+die Eingabe, die sofort (ohne Verwendung zusätzlicher Tasten erfolgt).
+Die Eingabe wird normalerweise mit<br>
+Vorname Nachname &nbsp; &nbsp; &nbsp; begonnen, (wobei der Zwischenraum vor dem Nachnamen
+später als Suchkriterium bei &quot;Name&quot; wichtig ist). Mindestens
+ein Space ist erforderlich. Der letzte kennzeichnet den Nachnamen. So
+wäre die Eingabe &quot;Herbert Holbein jun.&quot; ungeschickt, da als
+Nachname nur &quot;jun.&quot; gefunden werden könnte. Durch Eingabe von
+&quot;Graph+Space&quot;, würde &quot;Holbein&quot; und &quot;jun.&quot;
+zusammengefaßt, und der Nachname kann richtig gefunden werden. Ähnlich
+ist auch bei den anderen Eingaben zu verfahren. (So ergeben sich oft
+zweizeilige &quot;Straßennamen&quot;, wie z.B.
+</p>
+<p>
+Freiherr-vom-Stein-Gymnasium<br>
+Westerholder Weg 113
+</p>
+<p>
+die durch &quot;Shift/Control/Graph J&quot; anstelle von ENTER vom
+Programm als eine Zeile, vom Drucker aber zweizeilig interpretiert
+werden). Das Adressenformat sieht drei Zeilen vor:
+</p>
+<ol class="donthyphenate" style="text-align:left">
+<li>Vorname Nachname Enter</li>
+<li>Straße Hausnummer Enter</li>
+<li>PLZ Wohnort *Zusatzinformationen, die den ganzen Bildschirm füllen
+können</li>
+</ol>
+<p>
+ESCAPE als Zeichen zum Abspeichern der Adresse.
+</p>
+<p>
+Das Sternchen vor den Zusatzinformationen gilt als
+Endzeichen beim Ausdruck von Aufklebern, im einfachen
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Druckmodus werden die Records vollständig ausgedruckt. Wir verwenden
+z.B. *P für Probeheft und *3 für &quot;ab März abonniert&quot;.
+</p>
+<p>
+Eine beliebige Taste läßt wieder &quot;Data Input&quot; erscheinen, und
+das Eingabespiel kann von neuem beginnen. Soll die Eingabe
+abgeschlossen werden, wird nochmals ESCAPE gedrückt, und das Programm
+springt zum Menü zurück.
+</p>
+<p>
+Nun möchte ich mir die eingegebenen Daten anschauen. Ich gebe die
+Ziffer 1 ein, und das Programm bietet die Auswahlmöglichkeiten nach
+Bild2.
+</p>
+<?php hline("100%", "2"); ?>
+<pre class="donthyphenate">
+NACHNAME                 N
+PLZ/WOHNORT              P
+ALLGEMEIN                A
+MENU                     M
+</pre>
+<?php hline("100%", "2"); ?>
+<p>
+Hier ist nun ein gewaltiger Unterschied zur ursprünglichen Version des
+Programms: früher wurden die ganzen Records nach einem Suchbegriff
+durchforscht, sodaß die Suche nach &quot;Michael Bach&quot; auch einen
+Herrn aus der &quot;Bachwiesenstraße&quot; bescherte, und die Eingabe
+&quot;Peter&quot; warf nicht nur &quot;Christian Peter&quot; aus,
+sondern auch &quot;Peter Brendel&quot;. Die Möglichkeit &quot;N&quot;
+durchsucht nur die Nachnamen, &quot;P&quot; die Zeile mit Postleitzahl
+und Wohnort (Karl findet also Karlsruhe und nicht Karl Schulmeister).
+Wer das Programm noch etwas spezieller gestalten will, gibt in Adresse
+1366 anstatt 0D den Wert 29 ein, und erhält dadurch beim Suchen von
+Postleitzahlen mit &quot;70&quot; nur die Postleitzahlen 7000 bis 7099,
+und nicht etwa &quot;1000 Berlin 70&quot;, was ja nicht unbedingt
+wünschenswert ist.
+</p>
+<p>
+Mit &quot;A&quot; wird der ursprüngliche Modus gewählt, der den ganzen
+Record durchsucht. So können Vornamen, zusätzliche Informationen (wie
+unser *3) oder Straßennamen etc. gesucht werden.
+</p>
+<p>
+Nach der Wahl des Suchmodus macht der Rechner je nach gespeicherter
+Datenmenge eine kleine Pause (in meinem Fall ca. 2 sec.), da, wie bei
+Sortieren oder Ändern von Records zunächst die ganze Datei auf
+fehlerhafte Eingabe untersucht wird (Spaces vorhanden? Max. 3 Zeilen?).
+</p>
+<p>
+Nun wird aufgefordert: Suchbegriff eingeben.
+</p>
+<p>
+Der Suchbegriff wird ohne
+zusätzliche Taste eingetippt. Hier nun der zweite große Unterschied zur
+ursprünglichen Version: Nun muß man die exakte Schreibweise des Namens
+nicht mehr kennen, ein &quot;?&quot; kann für eine beliebige
+Zeichenfolge eingegeben werden. (Dabei gilt immer noch die UND/ODER
+Verknüpfung, wobei Space UND und / ODER bedeutet).
+</p>
+<p>
+Ralph (oder Ralf)
+Mayr (oder Maier oder Meyer oder, oder...) wird mit &quot;Ral?
+M?r&quot; zweifelsfrei erkannt; selbst der Austausch von Groß-und
+Kleinbuchstaben spielt hier keine Rolle. Selbstverständlich gibt man
+dem Rechner dadurch einen großen Spielraum, auch ungewünschte
+Adressaten zu finden (M?r findet außer Maier auch Mertenheimer), aber
+die richtige Kombination mit möglichst wenig Ausschuß trotz unbekannter
+Schreibweise findet man schnell (Beispiel Bild3).
+</p>
+<pre class="donthyphenate">
+          WOLFGANG
+          ANZAHL: 0021
+          WOLFGANG M?R
+          ANZAHL: 0003
+          WOLFGANG M?R-GÜRR
+          ANZAHL: 0001
+</pre>
+<p>
+Wird die gesuchte Adresse auf dem Bildschirm ausgegeben, dann zeigt
+eine beliebige Taste die nächste Adresse an, oder das Programm ist
+beendet; es bleibt allerdings im Suchmodus, bis man &quot;M&quot; für
+&quot;Menü&quot; drückt.
+</p>
+
+<?php columnEnd(2); ?>

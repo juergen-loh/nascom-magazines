@@ -1,0 +1,116 @@
+<?php columnStart(1); ?>
+<div class="justify">
+<h4 id="article1">
+ZU VERKAUFEN:
+</h4>
+<p>
+Nasbus Karten<br>
+-Gemini IVC 80 Zeichen Terminal<br>
+-32 K RAM/EPROM Karte<br>
+-Floppy Hardcontroller + Software<br>
+-Gemini I/O Karte (3 x PIO, 1 CTC, Uhr)<br>
+-2 Laufwerke (40Tracks, SS)<br>
+Wolfgang Mayer-Gürr<br>
+_________ ___. _<br>
+____ Recklinghausen &nbsp; Tel. _____/_____
+</p>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4 id="article2">
+<u>ERGÄNZUNG ZUR
+<a href="../../../../84/02/29/text/#article1">KS CPU-KARTE</a></u>
+</h4>
+<p>
+Beim Testen der Karte in letzter Minute festgestellt:
+</p>
+<ol>
+<li>
+Pin 1 des LS 74 muß von Masse auf +5V gelegt werden (bereits im
+<a href="../../../../84/04/39/text/#article2">Journal</a> beschrieben)
+</li>
+<li>
+Brücken A-C und D-F sind bereits im Layout enthalten
+</li>
+<li>
+3. Steueranschlüsse des
+<?php externalLink("6116","",""); ?>,
+<?php externalLink("2732","",""); ?>,
+PIO und CTC liegen anders als im
+Schaltplan direkt an den Anschlüssen der CPU (nicht an den Ausgängen
+des Leitungstreibers LS245):<br><br>
+(es sind die Pin Nummern des jeweiligen Bausteins eingetragen)<br><br>
+<table style="width: 60%">
+<tr><th>CPU</th><th>SIGNAL</th><th>6116</th><th>2732</th><th>PIO</th><th>CTC</th><th>sonst.</th></tr>
+<tr><td>20</td><td>/IORQ</td><td>---</td><td>---</td><td>36</td><td>10</td><td>---</td></tr>
+<tr><td>19</td><td>/MRQ</td><td>---</td><td>---</td><td>---</td><td>---</td><td>LS138III(5)</td></tr>
+<tr><td>21</td><td>/RD</td><td>20</td><td>/OE</td><td>35</td><td>6</td><td>---</td></tr>
+<tr><td>22</td><td>/WR</td><td>21</td><td>(R//W)</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>37</td><td>A7</td><td>---</td><td>---</td><td>---</td><td>---</td><td>LS02 (11)</td></tr>
+</table>
+</li>
+</ol>
+
+<p>
+Es sind noch mehrere freie Gatter u.a. enthalten:
+</p>
+<p>
+LS00 (1,2,3) &nbsp; &nbsp; LS02 (1,2,3,8,9,19)<br>
+LS04 (3,4) &nbsp; &nbsp; &nbsp;&nbsp; LS09 (1,2,3,4,5,6)<br>
+LS14 (8,9,10,11,12,13) &nbsp; 1/2 LS221<br>
+LS32 (1,2,3,4,5,6,8,9,10) der beim 6116<br>
+LS245 (2,18,3,17) der beim LS138<br>
+</p>
+<p>
+zum Teil liegen die freien Anschlüsse an + oder an Masse.
+</p>
+<p>
+Rolf Meyer, Siegburg
+</p>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4>
+<u>KLEINANZEIGE</u>
+</h4>
+<p>
+Verkaufe zwei Laufwerke
+<?php externalLink("BASF 6106","",""); ?><br>
+generalüberholt wegen Umrüstung auf 80-Spur<br>
+Preis VHS<br>
+Georg Assmann<br>
+___ ____ __<br>
+____ __________
+</p>
+
+<br>
+
+<h4 id="article3">
+<u>FEHLER IM LISTING</u>
+</h4>
+<p>
+Im Listing des Programms NASDRIVE
+(<a href="../../../../84/04/31/text/#article2">Heft 4/84 Seite 31</a>) muß Zeile 270
+folgendermaßen geändert werden:
+</p>
+<pre class="donthyphenate">
+TABBLI DEFB #CD
+</pre>
+<p>
+Zudem sollte Cursor Blink Speed und Keyboard Repeat Speed geändert
+werden:
+</p>
+<pre class="donthyphenate">
+C30 10 00
+C32 01 00
+</pre>
+<p>
+Prinzipiell läuft Nassys damit mit der Grafikkarte. Optimal ist die
+Lösung aber noch nicht.
+</p>
+</div>
+<?php columnEnd(1); ?>

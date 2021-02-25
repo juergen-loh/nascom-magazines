@@ -1,0 +1,58 @@
+<?php columnStart(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+<p>
+Die gebräuchlichsten Töne werden wohl c bis h&rsquo;&rsquo; sein, deshalb drucke
+ich hier gleich eine Tabelle für die entsprechenden Töne ab.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-2.jpeg"); ?>
+<p>
+Wie bekommt man aber nun die Information in die entsprechenden Register?
+</p>
+<p>
+Dazu sind die Steuerleitungen BC1 und BDIR des AY.... erforderlich. Sie
+haben folgende Funktion:
+</p>
+<table>
+<tr><td>BDIR&nbsp;&nbsp;</td><td>BC1&nbsp;&nbsp;</td><td></td></tr>
+<tr><td>0</td><td>0</td><td>Chip nicht angesprochen</td></tr>
+<tr><td>1</td><td>1</td><td>Adresse einlesen</td></tr>
+<tr><td>1</td><td>0</td><td>Daten einlesen</td></tr>
+<tr><td>(0</td><td>1)</td><td>(Lesen von Chip, für unsere Zwecke nicht nötig)</td></tr>
+</table>
+
+<?php columnChange(2); ?>
+
+<p>
+Wichtig für die Funktion ist, daß beide Signale wechseln müssen, um die
+entsprechende Aufgabe zu erfüllen. Eine Änderung von 1 1 auf 1 0 geht
+nicht, zunächst müssen beide Leitungen auf 0 gehen. Weiterhin darf der
+Latchimpuls nicht länger als 50 ns dauern, deshalb sind
+Basic-outputbefehle zu langsam, und man muß hier
+Maschinenunterprogramme einfügen, wie es im Basicprogramm
+&quot;Tonerzeugung&quot; geschehen ist.
+</p>
+<p>
+Man geht bei der Programmierung nun so vor, daß man die entsprechende
+Registeradresse (über Port A) anlegt und durch einen 00/11/00 Impuls
+(an Port B) einliest. Dann werden die Daten für die entsprechende
+Adresse angelegt und mit 00/10/00 eingelesen.
+</p>
+<p>
+Das folgende Basicprogramm liest die Daten aus Zeile 270 der Reihe nach
+in die Adressen 0 bis 13. Dabei erzeugt der Soundgenerator einen
+Dreiklang c-e-g und wiederholt ihn immer wieder mit verklingender
+Hüllkurve. Experimentieren Sie mit den Tonhöhen, indem Sie die ersten 6
+Daten (vielleicht unter Verwendung der Tabelle) verändern.
+</p>
+<br>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-05-3.jpeg"); ?>
+<p>
+Das gleiche Programm ist im folgenden als reines Maschinenprogramm
+abgedruckt. (Die Unterprogramme outa bzw. outd mußten im Basicprogramm
+aus oben erwähnten Gründen &quot;gedoked&quot; werden.) Wenn Sie hier
+mit Tonhöhen experimentieren wollen, müssen Sie die Adressen 0CBB bis
+0CB6 (&nbsp;in absteigender Reihenfolge)verändern.
+</p>
+
+<?php columnEnd(2); ?>

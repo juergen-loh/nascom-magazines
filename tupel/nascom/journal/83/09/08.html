@@ -1,0 +1,102 @@
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Nun ist der Controller bereit, vom Rechner
+Befehle entgegenzunehmen. Dafür stellt er
+folgende Register zur Verfügung:
+</p>
+
+<table style="width: 100%">
+<tr><td>FDCCMD</td><td>Kommandoregister</td></tr>
+<tr><td>FDCTRK</td><td>speichert die Spurnummer</td></tr>
+<tr><td>FDCSEC</td><td>speichert die Sektornummer</td></tr>
+<tr><td>FDCDAT</td><td>Speicher für Schreib/Lesedaten</td></tr>
+<tr><td>FDCSTA</td><td>gibt Fehlermeldungen aus</td></tr>
+</table>
+
+<p>
+Mit dem Out-Befehl (Taste O) und der entsprechenden Portadresse (sind
+dem Anfang des
+<a href="../../11/text/#article1">Assemblerlistings</a>
+zu entnehmen) können zu Testzwecken
+direkt Kommandos an den FDC ausgegeben werden.
+</p>
+<p>
+Als Beispiel:
+</p>
+<p>
+O&nbsp;0C&nbsp;03 &nbsp; &nbsp; läßt den Schreib/Lesekopf auf Spur 00 zurückfahren (dazu sollte
+man die Schnecke des Laufwerks manuell vorstellen, damit&rsquo;s auch eine
+Strecke zum fahren gibt)
+</p>
+<p>
+Die möglichen Befehle sind ebenfalls am Beginn
+des Listings zusammengestellt.
+</p>
+<p>
+Nach der Ausführung eines solchen
+Befehls macht der FDC einen Interrupt, der ihn in unserem Programm in
+die Routine FLPINT springen läßt. Zu Testzwecken wird dort das Wort
+&quot;INT&quot; auf den Bildschirm geschrieben gefolgt von der Adresse,
+die nach dem Programmteil steht, der durch den Interrupt unterbrochen
+wurde. Dieser Teil der Interruptroutine wird nach erfolgten Testläufen
+wieder entfernt.
+</p>
+<p>
+Die Hauptaufgabe des Interruptprogramms ist es festzustellen, ob die
+Unterbrechung innerhalb einer Schleife geschah. Ist dies der Fall, wird
+das Programm außerhalb der Schleife fortgesetzt.
+</p>
+<p>
+Dieser Programmiertrick erlaubt es, mit einer Endlosschleife auf einen
+Interrupt zu warten. (z.B. in Zeile 1880). Handelt es sich um NMIs, so
+wird nach Rückkehr aus der NMI-Routine (hier Lesen eines Bytes von
+Diskette) in die Schleife zurückgekehrt und auf den nächsten NMI
+gewartet. Erst der Interrupt von der PIO, der anzeigt, daß die gesamte
+Aktion abgearbeitet ist, entläßt das
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Programm auf oben erwähnte Weise aus der Schleife.
+</p>
+<p>
+Nach diesen Schleifen, die in allen Programmteilen in gleicher Art
+auftauchen, wird jeweils der Inhalt des Statusregisters (FDCSTA) in den
+Akku gelesen. In der gegenwärtigen Form des Programms wird diese
+Information noch nicht weiterverarbeitet. Setzt man aber einen
+BREAKPOINT dahinter (E7H) kann man nach Ausführung des Kommandos im
+Akku die Fehlermeldungen ablesen, die zeigen ob der Befehl vom
+Controller richtig durchgeführt wurde.
+</p>
+<p>
+Mit dem QUERY-Befehl (Taste Q) kann dieses Register auch direkt auf den
+Bildschirm geholt werden.(Q 0C).
+</p>
+<p>
+Die wichtigsten Fehlermeldungen, die uns häufig großes Kopfzerbrechen
+bereitet haben, finden Sie in der folgenden Tabelle:
+</p>
+<table style="width: 100%">
+<tr><td>80 &nbsp;</td><td>Not Ready</td><td>;Laufwerk nicht bereit</td></tr>
+<tr><td>10</td><td>Record Not Found</td><td>;Sektor nicht gefunden</td></tr>
+<tr><td>04</td><td>Lost Data</td><td>;Daten verloren</td></tr>
+<tr><td>08</td><td>CRC Error</td><td>;Prüfsummenfehler</td></tr>
+<tr><td>00</td><td></td><td>;Hurra, gewonnen</td></tr>
+</table>
+<p>
+Da die Fehlermeldungen bei den verschiedenen Befehlen unterschiedlich
+sind, folgt eine Tabelle mit der Bedeutung der Bits:
+</p>
+
+<p id="article1">
+Bild 5
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

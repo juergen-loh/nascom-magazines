@@ -1,0 +1,114 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+FORMATIERPROGRAMM
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Zur Verbesserung des äußeren Erscheinungsbildes des NASCOM Journals war
+es notwendig, für die einzelnen Textblöcke einen rechten Randausgleich
+zu schaffen. Nun wird schon seit langem das Editierprogramm NASPEN
+angeboten, das sicher sehr gut arbeitet, und Herr Kreidl hat in der
+letzten Ausgabe gezeigt, wie man das äußerst leistungsfähige
+Textverarbeitungsprogramm aus der Zeitschrift
+<?php externalLink("mc","MC"); ?>
+an den NASCOM anpassen
+kann. Beide Programme bieten aber viel mehr, als ich benötigte und
+werden dadurch zu kompliziert in der Anwendung. So habe ich mich
+entschlossen, ein Programm zu schreiben, das Text speichern kann, ihn
+nötigenfalls verändert und vor allem einen rechten Randausgleich
+ermöglicht.
+</p>
+<p>
+Das Programm sollte erst sehr kurz und einfach werden, hat sich aber
+von Test zu Test so weit gemausert, daß es nun ca. 750 Byte einnimmt.
+So kann man es aber immer noch ohne Speichererweiterung anwenden, wenn
+man sich auf kurze Texte beschränkt. Der Hauptvorteil des Programmes
+liegt darin, daß der Text völlig unformatiert eingegeben wird. Zum
+Einlesen genügt also eine Cassette, auf der ohne Rücksicht auf
+irgendwelche Konventionen Text in ASCII abgespeichert ist. Man kann
+also Text verarbeiten, der aus einem bestimmten Speicherbereich kopiert
+ist, oder auch Text, der mit der unten aufgeführten Eingaberoutine auf
+Band gespeichert wurde.
+</p>
+<p>
+Diese Ausgabe des Journals ist mit dem Programm gestaltet, was seine
+Funktionsfähigkeit beweist. Es wird uns ungeheuere Arbeit ersparen,
+wenn Sie in Zukunft Ihre Textbeiträge auf Cassette einsenden, die wir
+dann korrigieren und im passenden Format ausdrucken können. Einzige
+Kriterien für die Speicherung sind :
+</p>
+<p>
+1. NASCOM 1 Format (Kansas City Standard können wir hoffentlich
+später verarbeiten)
+</p>
+<p>
+2. 0D als Zeichen für einen Abschnitt im Text.
+</p>
+<p>
+Wenn Sie das unten aufgeführte Programm für die Textspeicherung auf
+Cassette verwenden, kann überhaupt nichts schiefgehen. Interessant wäre
+natürlich die Verwendung von Umlauten; aber aus einem ae können wir im
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Notfall immer noch ein ä bei der Korrektur machen. Deshalb auch keine
+Angst vor Rechtschreibfehlern.
+</p>
+<h4>
+Anwendung des Programmes
+</h4>
+<p>
+Das Programm wird bei F67 gestartet. Es meldet sich dann mit
+&quot;FORMAT&quot; auf dem Bildschirm. Nun kann man durch Eintippen
+eines Buchstabens und eventuell einer Hexzahl die Funktion wählen, die
+durch NEW LINE abgerufen wird.
+</p>
+<p>
+&quot;I&quot; steht für &quot;INPUT&quot; und bedeutet das Eingeben
+eines Textes in den Textspeicher, der im Programm mit 1000 beginnt aber
+auch verschoben werden kann, (siehe Assemblerlisting)
+</p>
+<p>
+&quot;R&quot; steht für &quot;READ&quot;, d.h. Einlesen eines Textes
+von Cassette in den Textspeicher. &quot;W&quot; bedeutet
+&quot;WRITE&quot; und speichert den Text aus dem Speicher auf Cassette.
+</p>
+<p>
+Mit &quot;M&quot; für &quot;MODIFY&quot; kann der TEXT Zeile für Zeile
+gelesen werden. NL schiebt dabei den Text eine Zeile weiter, Shift und
+NL eine Zeile zurück. Mit &gt; wird der Text ab der Pfeilstellung nach
+rechts verschoben, mit &lt; geschieht das gleiche umgekehrt. Man kann
+dann durch Drücken von Tasten neuen Text einfügen. Mit BACKSPACE bzw.
+SPACER wird der PFEIL nach links oder rechts verschoben.
+</p>
+<p>
+&quot;F&quot;
+bedeutet &quot;FORMATIEREN&quot; und bringt beim Druck die Zeilen auf
+die Länge, die durch zwei Hexziffern als Argument mit eingegeben
+werden. Die folgenden zwei Ziffern geben die Anzahl der Zeilen für
+einen Block an.
+</p>
+<p>
+Das Format des Journals ist 44 Zeichen pro Zeile und 54
+Zeilen pro Spalte. Um einen Text auf dieses Format zu bringen, muß
+folgendes eingegeben werden :
+</p>
+<p>
+F2C36 dann NL. Ist eine Spalte fertig
+gedruckt, meldet sich das Programm mit &quot;Block Ende&quot;. Es kann
+dann das Papier gewechselt werden oder eine neue Spalte eingestellt.
+Durch das Drücken einer beliebigen Taste wird der Druckvorgang dann
+fortgesetzt&nbsp;.
+</p>
+<p>
+Wenn der Text zuende ist, meldet das Programm &quot;Text Ende&quot; und
+springt zum Monitor zurück, allerdings mit der programmeigenen
+Befehlstabelle. Zum NASBUG Monitor kann man durch Reset zurückkehren
+oder durch Anfügen eines zusätzlichen Befehls an die Befehlstabelle am
+Programmende. Dort können auch leicht noch weitere Routinen angehängt
+</p>
+
+<?php columnEnd(2); ?>

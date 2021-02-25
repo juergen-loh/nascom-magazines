@@ -1,0 +1,78 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Ausdrücken gei den GraphikBefehlen gearbeitet werden. Die Form
+&quot;3*X/(2+7*Y)&quot; wäre als Längenangabe für eine Linie durchaus
+geeignet. Sogar die Farben sind als BASIC-Variable zugreifbar. Eine
+Änderung der Farben eines Bildes oder eine Abfrage, welche Farbe wo
+ist, stellt kein Problem dar. Es stehen weiterhin acht verschiedene
+Modi des Zeichnens zur Verfügung:
+</p>
+<table style="width: 100%"><tr>
+<td style="width: 30%">&nbsp;</td>
+<td>
+DOMINANT<br>
+OR<br>
+XOR<br>
+AND<br>
+XNOR<br>
+NOT<br>
+NOR<br>
+NAND
+</td>
+<td></td>
+</tr></table>
+<p>
+Dabei ist der Mode &quot;DOMINANT&quot; das, was man gemeinhin unter
+Zeichnen versteht. Dort, wo gezeichnet wird, wird die alte
+Bildschirminformation mit der Neuen überschrieben. Interressant sind
+die anderen sieben Modi. Bei ihnen wird nicht nur einfach in das
+Bildschirm-Ram hineingeschrieben, sondern die neue Information, in
+diesen Falle ein Graphikbild, mit der alten, im Speicher vorhandenen,
+verknüpft. Die Art und Weise, wie das geschieht, kann anhand der
+Bezeichnung des jeweiligen Modus erkannt werden. Die Verknüpfung von
+&quot;OR&quot; ist das logische Oder, &quot;XOR&quot; das exclusive
+Oder, &quot;AND&quot; das logische Und, &quot;XNOR&quot; das
+invertierte exclusive Oder (Vergleicher), &quot;NOT&quot; die
+Invertierung, &quot;NOR&quot; das invertierte logische Oder,
+&quot;NAND&quot; das invertierte logische Und. Diese Operationen können
+die Lösung einiger graphischer Probleme sehr vereinfachen. Beispiel:
+eine kreisförmige Fläche soll zur Markierung eines Gebietes über einer
+Graphik verschoben werden können, ohne daß beim erneuten Weiterwandern
+die &quot;darunterliegende&quot; Graphik zerstört sein soll. Hier kann
+man einfach alles, was innerhalb des Kreises liegt, invertieren. Dabei
+bleibt
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+alle Information erhalten, lediglich ist alles im Kreis genau umgekehrt
+(schwarz wird zu weiß, rot zu cyan, etc.&nbsp;). Bei erneuter Invertierung
+ist alles wieder beim Alten und es kann eine andere Stelle kreisförmig
+invertiert werden. Schließlich gibt es noch Routinen, die ein
+Ausdrucken des Bildes oder ein Abspeichern auf einem externen
+Massenspeicher unterstützen. Dazu ist anzumerken, daß die NASCOM
+Hochauflösende Graphik mit den FloppyDisk-betriebssystemen NASDOS und
+<?php externalLink("CP/M"); ?>
+kompatibel ist. (Zur Beruhigung all jener, die noch keine Floppy
+haben: der NASCOM Graphik Contrioller arbeitet selbstverständlich
+auch unter NASSYS, allerdings dufte das Abspeichern eines Bildes von
+immerhin 48 KByte eine recht mühsame Angelegenheit sein). Einige Leute
+werden jetzt sicher sagen, daß die Unterstützung durch das BASIC ja
+schön und gut ist, sie aber doch lieber in Maschinencode oder
+Assembler programmieren. An sich waren diese BASIC-Routinen ja dafür
+gedacht, Arbeit zu sparen und das Graphikprogrammieren einfach zu
+halten. Aber auch an die Maschinensprachespezialisten, die es lieber
+aufwendig und kompliziert haben wollen (es läuft zwar schneller,
+dauert aber auch länger, bis es endlich läuft), ist gedacht worden.
+Allerdings muß, damit das Graphik Board auf Maschinenebene Befehle
+akzeptiert, die ähnlich leistungsfähig sind wie die des BASIC, erst
+ein BASIC-Befehl gegeben werden. Mancher wird diese Lösung sicher
+nicht für geglückt halten. Abschließend wäre zur NASCOM Hochauflösenden
+Graphik zu sagen, daß es sich um ein Video Board handelt, das man
+getrost in die oberste Klasse unter den GraphikPlatinen einordnen
+kann. Sein Besitzer wird wahrscheinlich kaum offene Wünsche haben, wenn
+er erst einmal anfängt, sich damit zu beschäftigen. Übrigens wird es
+gerade durch die Softwareunterstützung und wegen der
+</p>
+
+<?php columnEnd(2); ?>

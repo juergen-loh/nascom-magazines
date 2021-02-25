@@ -1,0 +1,86 @@
+<?php columnStart(1); ?>
+<p>
+<u>Beispiel eines Zeichenvorganges :</u>
+</p>
+<p>
+Zeichnen eines Dreieckes
+</p>
+<p>
+Wir nehmen an,daß sich der Zeichenstift in einer beliebigen
+Position befindet.
+</p>
+<ol>
+<li>
+<u>Z</u> Diese Position gilt in Zukunft als Ursprung
+</li>
+<li>
+<u>H</u> Der Stift wird angehoben
+</li>
+<li>
+<u>A 800 600</u> Der Stift wird an Punkt 1 gefahren
+</li>
+<li>
+<u>S</u> Der Stift wird abgesenkt
+</li>
+<li>
+<u>A 1400 600</u> oder <u>R 600 0</u> Der Stift zeichnet eine Linie zu Punkt 2
+</li>
+<li>
+<u>A 1100 1200</u> oder <u>R -300 600</u> Linie zu Punkt 3
+</li>
+<li>
+<u>A 800 600</u> oder <u>R -300 -600</u> Linie zu Punkt 1
+</li>
+<li>
+<u>H</u> Heben des Stiftes
+</li>
+<li>
+<u>A 0 0</u> oder <u>R -800 -600</u> Rückkehr zum Ursprung
+</li>
+<li>
+<u>S</u> Absenken des Stiftes
+</li>
+</ol>
+<h4>
+<u>Unterprogrammaufrufe</u>
+</h4>
+<p>
+Auf die oben beschriebene Art ist es natürlich sehr umständlich, eine
+größere Zeichnung zu erstellen;deshalb ist es selbstverständlich
+möglich,sämtliche Zeichenvorgänge als Unterprogramme aufzurufen. Zu
+Beginn des Plottens muß jedoch durch &quot;ECC00&quot; das Programm
+einmal initiiert werden.
+</p>
+<p>
+<u>CF5Bh (ABPLOT)</u>
+</p>
+<p>
+Dieses Unterprogramm wirkt wie das Kommando A,mit dem Unterschied,daß
+die Argumente nicht als Dezimal-,sondern als Binärzahlen übergeben
+werden. Dazu muß vor dem Programmaufruf das X-Argument als 16bit-Zahl
+(MSB ist Vorzeichenbit) in die Speicherplätze 0C54h und 0C55h gebracht
+werden. Entsprechend muß das Y-Argument in 0C56h und 0C57h geladen
+werden.
+</p>
+<p>
+<u>CF75h (RBPLOT)</u>
+</p>
+<p>
+Dieses Unterprogramm wirkt wie das Kommando R. Die Datenübergabe
+erfolgt wie bei ABPLOT.
+</p>
+<p>
+Zusätzlich existieren hier noch weitere Unterprogramme,um den
+Zeichenstift in einer der Hauptrichtungen zu bewegen.
+</p>
+<p>
+<u>CEE5h (LINKS)</u>; <u>CEE8h (RECHTS)</u>
+</p>
+<p>
+<u>CEF3h (UNTEN)</u>; <u>CEF6h (OBEN)</u>
+</p>
+<p>
+Beim Aufruf eines dieser Unterprogramme genügt ein Argument, das im
+Register HL stehen muß.
+</p>
+<?php columnEnd(1); ?>

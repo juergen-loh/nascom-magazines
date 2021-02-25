@@ -1,0 +1,119 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+(&quot;ROOM: xx kByte&quot;). Das Abspeichern dauert, je nach Länge des
+Files, ca. 20-200 sec.
+</p>
+<p>
+- UPDATE nnn überschreibt das File &quot;nnn&quot;. Damit können Files
+nachträglich geändert werden.
+</p>
+<p>
+- LOAD nnn lädt das File &quot;nnn&quot; in den Speicher.
+</p>
+<p>
+- VERIFY nnn vergleicht File &quot;nnn&quot; mit dem Speicher.
+Differenzen werden angezeigt.
+</p>
+<p>
+- DIRECTORY listet alle Files nach Namen und Länge auf. Der Vorgang
+dauert ca. 10 sec.
+</p>
+<p>
+Die Fehlermeldungen erfolgen aus Platzgründen kodiert und bedeuten im
+Klartext folgendes:
+</p>
+<p>
+- ERROR 00: Das File paßt nicht mehr auf die Cassette.
+</p>
+<p>
+- ERROR 05: Die Cassette ist nicht formatiert.
+</p>
+<p>
+- ERROR 06: Auf der Cassette wurde ein Teil der Daten durch starke
+Magnetfelder vernichtet.
+</p>
+<p>
+- ERROR 07: Es ist keine Cassette eingelegt.
+</p>
+<p>
+- ERROR 08: Die Cassette ist schreibgeschützt.
+</p>
+<p>
+- ERROR 20: Die Adressen sind falsch oder unvollständig.
+</p>
+<p>
+- ERROR 30: Das File ist nicht auf der Cassette.
+</p>
+<p>
+- ERROR 31: Ein File dieses Namens ist bereits auf der Cassette.
+</p>
+<p>
+- ERROR 99: Unbekannter Befehl.
+</p>
+<p>
+Ein Lesefehler (der in der Praxis allerdings nicht vorkommen sollte)
+wird folgendermaßen angezeigt:
+</p>
+<p>
+*BB AAAA x&nbsp;? (Lesefehler bei Sector BB, Adresse AAAA, falsches Byte x)
+</p>
+<p>
+Das Programm zeigt während des Schreibens Lesens laufend den Sector,
+die Adresse und das gerade übertragene Byte an.
+</p>
+<p>
+Alle Befehle sind als
+Unterprogramme ausgeführt und können von anderen Programmen aus
+aufgerufen werden. So kann man z.B. in BASIC-Programmen die
+USR-Anweisung zum Steuern des MDCR verwenden.
+</p>
+<p>
+Eine verbesserte Version
+des schon in
+<a href="../../../03/02/text/#article1">Heft 3/81</a>
+beschriebenen Interfaces ist hier nochmals
+abgedruckt. Die Steuerung erfolgt über den PIO-Bus (siehe
+<a href="../../../09/23/text/#article1">Heft 9/81</a>).
+Im Gegensatz zur früheren Version liegt das WEN-Signal
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+jetzt an Port A der PIO; davon abgesehen sind beide Interfaces
+softwarekompatibel.
+</p>
+<p>
+Wie schon erwähnt, können Interessenten eine Eprom-Version von UNICON
+von mir erhalten. Es gibt 2 Ausführungen:
+</p>
+<p>
+-&nbsp;Standardversion in einem
+<?php externalLink("2716","",""); ?>(5V)
+mit Startadresse A000h.
+</p>
+<p>
+-&nbsp;Spezialversion mit individuellen Änderungen, z.B. in zwei
+<?php externalLink("2708","",""); ?>&rsquo;ern
+oder mit anderen Start- und Portadressen.
+</p>
+<p>
+Mitgeliefert wird das Assemblerlisting und eine ausführlichere
+Beschreibung. Die Standardversion kostet 65 Mark, die Spezialversion 95
+Mark. Wer verständlicherweise keine Katze im Sack kaufen möchte, sollte
+das Programm anhand des hier abgedruckten Listings ruhig erstmal testen.
+</p>
+
+<div id="article1">
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-36-1.jpeg"); ?>
+<?php boxEnd(); ?>
+</div>
+<br>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-36-2.jpeg"); ?>
+
+<p>
+Vom obigen Layout können wir als Leserservice Ätzfolien liefern. &nbsp; Red.
+</p>
+
+<?php columnEnd(2); ?>
+

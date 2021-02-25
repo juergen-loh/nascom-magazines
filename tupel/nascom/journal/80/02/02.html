@@ -1,0 +1,144 @@
+<?php columnStart(2); ?>
+<h1 id="article1" style="text-align:center">NAS<i>PEN</i></h1>
+<?php columnChange(2); ?>
+<?php columnEnd(2); ?>
+
+<?php columnStart(2, 2); ?>
+
+<div class="justify">
+
+<p>
+Der Texteditor NASPEN wurde fuer die Betriebssysteme NASSYS
+und NASBUG&nbsp;T4 entwickelt und wird in 2 EPROMS
+(<?php externalLink("2708","",""); ?>)
+geliefert.
+Er belegt die Speicher-Plaetze B800H bis BFFFH fuer das Programm
+und Speicherplaetze ab 1000H fuer Workspace und das eigentliche
+Textfile.
+</p>
+<p>
+NASPEN gestattet es dem Benutzer, Textfiles zu erstellen und
+zu veraendern. Der Editor eignet sich fuer Texte von kleiner bis
+mittlerer Laenge; fuer Zeichnungen, Listen und
+Inhaltsverzeichnisse, fuer Briefvordrucke und Mitteilungen.
+</p>
+<p>
+Ein wichtiger Vorteil ist, dass der Bildschirm immer den
+tatsaechlichen Inhalt des Textspeichers anzeigt und wie ein
+Fenster wirkt, durch das man in den Speicher schauen kann. Der
+Cursor kann an jeder Stelle im Text positioniert werden. In der
+obersten Zeile auf dem Bildschirm wird angezeigt, in welcher
+Zeile sich der Cursor gerade befindet und wieviel Speicherplatz
+noch unbenutzt ist. Nach dem Start wartet das Programm auf
+Kommandoeingabe. Das laufende Kommmando wird in der untersten
+Zeile des Bildschirms angezeigt und bleibt dort solange, bis das
+Kommando beendet wird. Mit NASPEN erstellte Textfiles lassen sich
+auf Cassette schreiben und wieder laden.
+</p>
+<p>
+Dieser Artikel wurde mit NASPEN geschrieben und formatiert. Um
+die Leistungsfaehigkeit von NASPEN darzustellen, folgt jetzt eine
+kurze Beschreibung der 40 Kommandos.
+</p>
+
+</div>
+
+<h4>
+<u>NASPEN KOMMANDOS&nbsp;:</u>
+</h4>
+
+<dl>
+<dt>A</dt><dd>Text kann am Ende eines bestehenden Textfiles angehaengt
+werden. Tabulatorfunktion moeglich. Ende des Kommandos durch
+'ESCAPE'.</dd>
+
+<dt>a</dt><dd>In Verbindung mit dem 'F'-Kommando: sucht erneut das
+naechste Auftreten einer Zeichenkette. Autorepeat moeglich.</dd>
+
+<dt>C</dt><dd>Kontrollzeichen im Text, die einzelne Seiten festlegen oder
+Druckerkontrollzeichen, koennen geloescht werden. Siehe
+'G'-Kommando.</dd>
+
+<dt>c</dt><dd>Das Zeichen, auf das der Cursorkopf zeigt, kann veraendert
+werden.</dd>
+
+<dt>D</dt><dd>Loescht eine Zeile vom Cursorkopf bis zum Anfang der Zeile.</dd>
+
+<dt>d</dt><dd>Einzelnes Zeichen, auf das der Cursor zeigt, wird geloescht.</dd>
+
+<dt>F</dt><dd>Sucht eine Zeichenkette vom Beginn des Textfiles aus.
+Autorepeat moeglich. wenn eine Textstelle gefunden, das Suchen
+durch 'ESCAPE' beendet und die Textstelle veraendert wurde, kann
+durch das 'a'-Kommando erneut die Zeichenkette im Text gefunden
+werden.</dd>
+
+<dt>f</dt><dd>wie 'F'-Kommando. Suche beginnt aber von der momentanen
+Cursorposition aus. Autorepeat moeglich.</dd>
+
+<?php columnChange(2, "<dl>", "<dl>"); ?>
+
+<dt>G</dt><dd>Das Kommando erzeugt Kontrollzeichen, die am Ende einer
+Zeile eingefuegt werden. Durch das Kommando '3' und '4' wird
+festgelegt, nach der wievielten Zeile ein Kontrollzeichen
+eingefuegt werden soll. Mit dem 'G'-Kommando werden Seiten
+mit einer bestimmten Anzahl von Zeilen generiert.</dd>
+
+<dt>H</dt><dd>Setzt den Cursor in die Zeile 1 links oben auf dem
+Bildschirm.</dd>
+
+<dt>I</dt><dd>Fuegt Text an der Stelle ein, wo der Cursor steht. Wie
+'A'-Kommando.</dd>
+
+<dt>i</dt><dd>Fuegt einzelnes Zeichen ein.</dd>
+
+<dt>J</dt><dd>Schreibt ein Textfile, das auf Cassette steht, vor den
+Anfang eines im Speicher stehenden Files.</dd>
+
+<dt>K</dt><dd>Loescht den gesamten Text im Speicher. Ist mit dem 'Y'-Kommando
+abgesichert.</dd>
+
+<dt>L</dt><dd>Formatiert den Text auf eine durch Kommando '1' und '2'
+festgelegte Anzahl von Zeichen pro Zeile. Woerter werden nicht
+getrennt.</dd>
+
+<dt>M</dt><dd>Wenn ein Textblock durch ein bestimmtes Zeichen am Anfang
+und am Ende gekennzeichnet wurde, kann der Block bei der
+momentanen Cursorposition eingeschoben dh. dupliziert werden.</dd>
+
+<dt>N</dt><dd>Ruecksprung ins Monitorprogramm.</dd>
+
+<dt>P</dt><dd>Gibt den gesamten Text ueber eine 'Output Routine' aus. Das
+'P'-Kommando wird gestoppt, wenn im Text ein durch das 'G'-Kommando
+generiertes Zeichen auftritt. So kann zB. Papier beim Drucker
+ausgewechselt (neue Seite) oder das Schriftbild durch Aufsetzen
+eines anderen Kugel Kopfes (bei einer Kugelkopfschreibmaschine)
+veraendert werden.</dd>
+
+<dt>R</dt><dd>Liest einen auf Cassette geschriebenen Text ein.</dd>
+
+<dt>S</dt><dd>Fuehrt nacheinander die Kommandos 'X'und 's' aus. Soll
+in einem durch das 's'-Kommando
+formatierten Text noch etwas verbessert oder eingefuegt werden,
+dann muessen vor dem neuen Formatieren die zusaetzlichen Blanks
+wieder entfernt werden, die durch das 's'-Kommando eingefuegt
+wurden. Siehe 'X' und 's'-Kommando.</dd>
+
+<dt>s</dt><dd>Nach dem 'L'-Kommando sind die Zeilen meistens
+unterschiedlich lang. Mit dem 's'-Kommando kann durch Einfuegen
+von Blanks an geeigneten Stellen ein Randausgleich rechts
+erreicht werden.</dd>
+
+<dt>V</dt><dd>Ein auf Cassette geschriebenes Textfile wird ueberprueft, ob
+es sich korrekt zuruecklesen laesst. Es wird nicht geladen.</dd>
+
+<dt>W</dt><dd>Schreibt ein Textfile auf Cassette.</dd>
+
+<dt>X</dt><dd>Loescht die durch das 's'-Kommando zusaetzlich erzeugten
+Blanks.</dd>
+
+<dt>Y</dt><dd>Sicherung beim 'K'-Kommando.</dd>
+
+<dt>Z</dt><dd>Cursor wird an den Anfang des Textfiles gesetzt.</dd>
+</dl>
+
+<?php columnEnd(2); ?>

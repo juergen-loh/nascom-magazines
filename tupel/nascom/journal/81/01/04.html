@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+Mit dem Programm ergeben sich folgende Möglichkeiten:
+</p>
+<p>
+1.) CD 00 04 entspricht dem EF Befehl im NASCOM Monitor.<br>
+Es können max. 40 Zeichen gleichzeitig dargestellt werden, aufgeteilt
+in 5 Zeilen zu 8 Zeichen. 00 führt zu einem Rücksprung in Ihr
+Programm.<br>
+Ein nachfolgender Befehl 3E 00 D3 00 schaltet von Grafik auf normale
+Schreibweise zurück.
+</p>
+<p>
+2.) Code in Accu (ASCII oder beliebiges von Ihnen in die Tabelle
+programmiertes Zeichen)<br>
+Aufruf der Subroutine 0449 (sucht Tabellenadresse des Codes)<br>
+Beliebige Bildschirmadresse in Register DE<br>
+Aufruf des Unterprogramms 0435 (stellt das Zeichen der6 mal 5
+Punktmatrix dar.<br>
+So kann jedes beliebige Grafikzeichen auf jeder Bildschirmposition
+dargestellt werden.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-04-1.jpeg"); ?>
+<p>
+Ein Programmierbeispiel:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-2.jpeg"); ?>
+<p>
+Mit diesem Programm würden drei Buchstaben des Alphabets
+in Grafik dargestellt.
+</p>
+<p>
+Es lassen sich mit dem Programm 40 Grossbuchstaben oder Zeichen auf
+dem Bildschirm abbilden.
+</p>
+<p>
+Die Buchstaben oder Zeichen können Sie nach eigenem Geschmack leicht
+ändern oder neu gestalten. Im Listing der Tabelle entspricht jede
+Zeile einem Buchstaben oder Zeichen.
+</p>
+<p>
+0456 bis 04E7 enthält die Zahlen 1 bis 9&nbsp;, wobei jede Ziffer, genau
+wie Buchstaben oder Zeichen, 18 Speicherplätze beansprucht.
+</p>
+<p>
+Dabei bedeutet 05 eine einzeilige Flüche, 85 ist zweizeilig, und
+20 bedeutet &quot;Space&quot;.
+</p>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-3.jpeg"); ?>
+<p>
+In der Tabelle besetzen weiterhin die Buchstaben A bis Z den Platz von
+0567 bis 074A. Die übrigen Speicherplätze sind durch zum Teil
+modifizierte ASCII Zeichen belegt; es können aber auch unprogrammierte
+Zeichen dargestellt werden, indem man Codes wie z.B. 20 oder 76
+eingibt, die nicht in der Tabelle enthalten sind, die aber interessante
+Zufallsgrafik erzeugen.
+</p>
+<p>
+Weitere Zeichen der Tabelle:
+</p>
+<table><tr><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-4.jpeg"); ?>
+</td><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-5.jpeg"); ?>
+</td></tr></table>
+<?php columnEnd(1); ?>

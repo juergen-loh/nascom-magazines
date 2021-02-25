@@ -1,0 +1,221 @@
+<?php columnStartJustify(2, 22); ?>
+
+<p>
+daß an der ganzen Sache nichts zu verdienen ist. Interessant wäre so
+etwas, wenn man in große Serien gehen könnte. Seien Sie also
+versichert, daß Preiskalkulationen von den entstehenden Unkosten
+diktiert werden. Inzwischen habe ich ein gesondertes Postscheckkonto
+eingerichtet (so etwas verursacht zum Glück keine Unkosten). Ihre
+Überweisungen betreff Platinen- Service (und möglicherweise in Zukunft
+auch 80-Bus Journal) bitte nur noch auf folgendes Konto
+</p>
+<p>
+Gabi Böhm<br>
+Hard- und Software<br>
+______-___<br>
+PSchA ____
+</p>
+
+<br>
+
+<?php boxStartJustify(); ?>
+<br>
+
+<p>
+KLEINANZEIGE
+</p>
+<p>
+CLD-DOS Floppy- Disk für 1380&nbsp;.&ndash;&nbsp;DM (Neupreis 2000&nbsp;.&ndash;&nbsp;DM) vier Monate
+alt zu verkaufen. Mit Gehäuse, Netzteil, alle Anschlußschnüre, sofort
+an den 80- Bus anzuschließen und lauffähig; umfangreiche Software,
+CLD-DOS Betriebssystem, E-BASIC, Assembler, Debugger, Editor sowie 12
+Disketten sind im Preis inbegriffen.
+</p>
+<p>
+Franz- Josef Bilden&nbsp;, _______. _<br>
+____ __________ &nbsp; &nbsp; Tel. _____/____
+</p>
+
+<br>
+
+<p>
+KLEINANZEIGE
+</p>
+<p>
+Verkaufe:
+<?php externalLink("LO 15"); ?>
+mit Lochstreifen<br>
+VB : 300.&ndash; (Selbstabholer natürlich
+weniger)<br>
+Suche: Wer kann mir helfen, meinem
+NASCOM1 T-Forth beizubringen?
+</p>
+<p>
+Rolf Lohmer&nbsp;, ________. __<br>
+____ _______ &nbsp; Tel._____/____ (nach 17.30&nbsp;h)
+</p>
+
+<br>
+
+<p>
+KLEINANZEIGE
+</p>
+<p>
+Verkaufe
+<?php externalLink("BASF 6106"); ?>
+Floppy- Leiche Interessant für Tüftler, die es durch
+Austausch einiger (oder aller?) ICs wieder zum Laufen bringen oder als
+Ersatzteillager. Schaltpläne werden mit beerdigt.<br>
+Mit 50.&ndash; sind Sie dabei (Porto knöpfe ich Ihnen aber ab)
+</p>
+<p>
+Günter Böhm&nbsp;, ______________ ___. ___<br>
+____ _________ &nbsp; &nbsp; Tel. ____/______
+</p>
+
+<br>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChange(2); ?>
+
+<h1 id="article1">
+Spooler
+</h1>
+<p>
+In vielen Zeitungen liest man etwas zum Thema
+&quot;SPOOLER&quot; oder &quot;DRUCKERSPEICHER&quot;.
+</p>
+<p>
+Ich habe diese Artikel gelesen, ohne mich von diesem
+Thema angegesprochen zu fühlen. Dieses galt jedoch nur
+so lange, bis ich zu einem Matrixdrucker mit parallelem
+Interface kam. Die Druckergeschwindigkeit beträgt 50
+Char./sec.
+</p>
+<p>
+Aus diesem Grunde mußte ich mich mit dem Wandeln
+serieller in parallele Daten beschäftigen.
+</p>
+<p>
+Normalerweise kann man das mit einem Wandler sehr
+einfach lösen, aber was macht man, wenn während des
+Drückens das Papier alle ist? Außerdem ist man beim
+Drucken langer Listen auch recht lange untätig. Gerade
+beim Programmieren in Assembler ist es hin- und wieder
+erforderlich, einmal ein kurzes Listing vom derzeitigen
+Programmteil zu erstellen und man fragt sich dann immer
+wieder: welches ist nun der aktuelle Stand.
+</p>
+<p>
+Aus diesem Grund kann man z.B. jeder Ausgabe an den
+Drucker eine laufende Nummer mitgeben. In meiner
+Spoolerlösung habe ich mich zugunsten einer Uhr entschlossen.
+</p>
+<p>
+Den Impuls für die Uhr lege ich dabei als 1Hz Takt
+an einen Eingang der PIO. Eine Steuerung über Interrupt
+ist in diesem Falle nicht erforderlich, da man die
+Statussignale (UART, SUART oder PIO sowieso dauernd auf
+Datenbewegung prüfen muß (RRDY, TXEMTY).
+</p>
+<p>
+Wenn Daten zum Printen anstehen, so gibt der Spooler
+erst die aktuelle Uhrzeit an den Drucker aus, danach erfolgt
+ein Carriage Return und Linefeed. Erst dann werden die
+Daten abgedruckt. Bei Power &quot;ON&quot; wird die Uhr
+auf Null gesetzt. Wird am System ein &quot;RESET&quot;
+durchgeführt, bleibt der alte Stand der Uhrzeit erhalten.
+Eine Steuerung durch Modewort ermöglicht das Stellen der
+Uhr vom angeschlossenen Rechner aus. Es gibt folgende
+Modeworte:
+</p>
+<ol>
+<li>Laden der Uhrzeit : Escape,L,1234<br>
+(Eingabe ohne Komma)</li>
+<li>Initialisieren der Uhr: Escape,I<br>
+(Eingabe ohne Komma)</li>
+<li>Printen der Uhrzeit : Escape,P<br>
+(eingabe ohne Komma)<br>
+Ausdruck der Uhrzeit: TIME 12:34:00</li>
+</ol>
+<p>
+Vom DOS BASIC kann man die Uhr z.B. so stellen:
+</p>
+<pre class="donthyphenate">
+100 INPUT&quot;UHR STELLEN Z.B. 1944 &quot;A$
+110 OPEN &quot;AT:&quot; FOR WRITE AS FILE #1
+120 PRINT n,CHR$(27);&quot;L&quot;;A$
+130 CLOSE #1
+</pre>
+<p>
+Ich finde es nicht gut, wenn in Zeitschriften
+seitenweise Programmlistings abgedruckt werden (mein
+Assemblerlisting hat 9 Seiten), deshalb möchte ich es bei
+dieser Systembeschreibung belassen.
+</p>
+<p>
+Wer an diesem Thema interessiert ist, kann sich gerne
+mit mir in Verbindung setzen.
+</p>
+
+<table style="margin: auto"><tr><td>
+<p>
+Manfred Stoll<br>
+____________ __<br>
+____ Hamburg __<br>
+Tel. Privat: ___/_______<br>
+Gesch.: ___/________
+</p>
+</td></tr></table>
+
+<br>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<p>
+Wie auf diesem Bild erkennbar, ist auch ein &quot;alter&quot;,
+nicht
+mehr verwendeter NASCOM&nbsp;I, auch ohne große Änderungen, als
+&quot;SPOOLER&quot; zu verwenden. Es muß lediglich die Möglichkeit
+geschaffen werden, eine unterschiedliche XMT und RCV Speed zu
+verwenden.
+</p>
+<p>
+Zum Realisieren dieser oder ähnlicher Probleme biete ich gerne meine
+Mithilfe an.
+</p>
+<p>
+Folgende Fragen sollten geklärt sein:
+</p>
+<ol>
+<li>Welcher I/O Baustein wird am Computer verwendet?</li>
+<li>Eingangs-chip am SPOOLER.</li>
+<li>Ausgabe über UART, PIO, SIO oder ähnliches.</li>
+<li>Kanaladressen der I/O Bausteine.</li>
+<li>Kanaladressen für CTS und Anzeigelampen (Status).</li>
+<li>Betrieb mit oder ohne Uhr.</li>
+</ol>
+<p>
+Nach meiner Ansicht soll ein Spooler auch fehlende
+&quot;Intelligenz&quot;
+des Druckers ausgleichen können. Folgende Anforderungen würde ich an
+einen
+Spooler stellen (je nach eingesetztem Drucker):
+</p>
+<ol>
+<li>Wandeln von Klein- in Großschreibung (wenn der Drucker nur
+&quot;Groß&quot; kann).</li>
+<li>Wandeln der Interfacebedingungen (8DB ODD Parity 2 Stopbit in
+z.B. 7DB ohne Parity).</li>
+<li>Geschwindigkeitsadaption.</li>
+<li>Wandeln von Seriell- in Paralleldaten.</li>
+<li>Wandeln der Daten von ASCII in Baudot.</li>
+<li>Ausgabe der Uhrzeit oder einer Laufnummer.</li>
+<li>Ausführen eines Formfeed, wenn der Drucker es von sich aus nicht
+kann.</li>
+<li>Drucken von ä,ö und ü auch, wenn der Drucker diese Charakter nicht
+im Zeichenvorrat hat (z.B. a Backspace &quot;).</li>
+<li>Signalgabe bei &quot;ERROR&quot; oder Papierende.</li>
+</ol>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,67 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+BASIC Utilities
+</h1>
+<h3>
+von GERHARD KLEMENT
+</h3>
+<h4 id="article3">
+BASIC POP
+</h4>
+<p>
+In der Maerz Nummer von
+<?php externalLink("mc","MC"); ?>
+fand ich einen Artikel, in dem Reinhard
+Grabowski Moeglichkeiten einer rekursiven Programmierung in BASIC
+behandelt. Das Problem ist, dass die Ruecksprungadressen im
+Kellerspeicher (ugh!) liegen, und sich der belegte Speicherplatz bei
+jedem GOSUB vergroessert. Das nachstehende Maschinenprogramm holt die
+letzte Ruecksprungadresse vom Stack, verschiebt den verbleibenden Stack
+und aendert den Stackpointer (Kellerpunkter?) entsprechend. XTAL BASIC
+hat den Befehl POP, der ein BASIC Programm fuer einen Fan
+strukturierter Programmierung noch ekelerregender macht, der aber sehr
+nuetzlich sein kann.
+</p>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+</p>
+<p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-2.jpeg"); ?>
+</p>
+<h4 id="article2">
+BILDSCHIRM MASKE
+</h4>
+<p>
+Ein Versuch mit zwei Zielen. Erstens sollte eine Dateneingabe mit einer
+definierten Bildschirm Maske erfolgen, und zweitens sollte die String
+area bei der Eingabe mit der INKEY Funktion nicht mit toten Strings
+vollgestopft werden. Beide Ideen sind nicht von mir sondern aus
+<?php externalLink("mc","MC",""); ?>;
+ich hab&rsquo;s nur fuer den NASCOM umgeschrieben (und das scheusslich).
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart("R"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-3.jpeg"); ?>
+<?php boxEnd(); ?>
+<h4 id="article4">
+DIRECTORY
+</h4>
+<p>
+Directory, ein Programm das ein Programm vom Band laedt und einen
+Autostart durchfuehrt. Bescheidene Kurz&shy;be&shy;schrei&shy;bung:
+</p>
+<p>
+Die User Routine benuetzt weitgehend Routinen aus dem ROM BASIC fuer
+das Laden und die Anzeige des Filenamens. Nach dem Laden wird in den
+Keyboard-Buffer das RUN Token #69 geschrieben und die Token Execution
+Routine bei #E816 angesprungen; und voila! die Sache laeuft. Mehr ist
+wirklich nicht drinnen.
+</p>
+<?php boxStart("R"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-4.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

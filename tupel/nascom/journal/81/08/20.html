@@ -1,0 +1,108 @@
+<?php columnStartJustify(2, 2); ?>
+
+<div id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+</div>
+
+<br>
+
+<table style="width: 100%"><tr><td style="vertical-align: bottom">
+<h1>
+REVERSI
+</h1>
+</td><td style="vertical-align:bottom">
+<h3>
+von Christoph Rau
+</h3>
+</td></tr></table>
+
+<p>
+Reversi ist &ndash; wie Schach, Dame, Mühle etc. -ein strategisches
+Brettspiel oder, spieltheoretisch ausgedrückt, ein endliches
+Zwei-Personen-Nullsummen-Spiel. Gespielt wird auf einem Brett mit 8x8
+Feldern und mit Spielsteinen, die auf einer Seite weiß und auf der
+anderen schwarz sind. Der eine Spieler setzt die Steine mit der weißen
+Seite nach oben, sein Gegner mit der schwarzen Seite nach oben. In der
+Anfangskonfiguration sind die 4 mittleren Felder mit je 2 schwarzen und
+2 weißen Steinen senkrecht untereinander besetzt. Weiß beginnt, und es
+wird abwechselnd so gesetzt, daß mit einem Stein der eigenen Farbe und
+dem neu gesetzten Stein eine ununterbrochene Reihe gegnerischer Steine
+horizontal, vertikal oder diagonal eingeklammert wird. Diese Reihe,
+also mindestens ein gegnerischer Stein, wird dann umgedreht und damit
+zu eigenen Steinen. Werden durch den neuen Stein mehrere Reihen
+eingeklammert, so werden sie alle umgedreht. Kann ein Spieler durch das
+Setzen eines Steines keine gegnerische Reihe einklammern, so ist sein
+Gegner noch einmal an der Reihe. Das Spiel ist beendet, wenn keiner der
+beiden Spieler mehr setzen kann. Gewonnen hat der, von dessen Farbe die
+meisten Steine auf dem Brett sind.
+</p>
+<p>
+Das Programm läuft unter <u>NAS-SYS&nbsp;1</u> und belegt Speicherplatz von
+1000H bis 16B2H. Gestartet wird das Spiel mit &quot;E 1000&quot;.
+Das Programm fragt dann nach der gewünschten Analysetiefe, die Einfluß
+auf die Qualität der Antwortzüge des Computers hat und ebenso natürlich
+auf die Antwortzeiten. Es sind Eingaben von 1 bis 6 möglich, gut
+spielen läßt sich z.B. mit Tiefe 4, was bedeutet, daß der Computer 2
+eigene und 2 Gegenzüge tief analysiert.
+</p>
+<p>
+Nun zeigt das Programm das Spielfeld mit der Anfangskonfiguration und
+fordert den Spieler (Weiß) zum Setzen auf. Dabei kann der Cursor mit
+den 4 Kontrolltasten über das Brett bewegt werden, aber nur auf Felder,
+auf die Weiß auch setzen darf. Durch Drücken der Enter-Taste setzt Weiß
+auf das Feld, auf dem
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+der Cursor steht, und sämtliche eingeklammerten Reihen werden
+umgedreht. Danach setzt der Computer. Nach jedem Zug werden Anzahl der
+weißen und der
+schwarzen Steine angezeigt. Weiß kann zu jeder Zeit mit &quot;B&quot;
+sich die Situation vor dem Antwortzug des Computers noch einmal ansehen
+und mit &quot;T&quot; die Analysetiefe verändern. Bei Spielende zeigt
+das Programm an, wer wie hoch gewonnen hat und fragt, ob ein neues
+Spiel gewünscht wird. Reversi ist ein Spiel, das sich relativ leicht
+und kompakt programmieren läßt, da es mit sehr einfachen
+Datenstrukturen darzustellen ist. Zuggenerierung und -bewertung
+geschehen mit einem rekursiven Minimax-Algorithmus mit
+Alpha-Beta-Verkürzung. Das Minimax-Theorem von Shannon besagt, daß bei
+einem gegebenen Bewertungsschema das Maximum der für einen Spieler
+mindestens erreichbaren Werte und das Minimum der für seinen Gegner
+maximal erreichbaren Werte gleich sind. Der Algorithmus erzeugt also
+für einen möglichen Zug bis in die gegebene Analysetiefe alle möglichen
+Gegenzüge und deren Gegenzüge und erzeugt so einen Spielbaum. An jedem
+Knoten des Spielbaums wird über die Minima der möglichen Züge maximiert
+und somit die Bewertung für die nächsthöhere Ebene erzeugt. Der
+Alpha-Beta-Algorithmus beschleunigt die Zuggenerierung dadurch, daß die
+Analyse von Unterbäumen, die eine schlechtere Bewertung liefern, als
+bereits
+erzeugt wurde, so früh wie möglich abgebrochen wird. Es wird also nicht
+mehr der gesamte Spielbaum untersucht, sondern nur noch die relevanten
+Teile.
+</p>
+<p>
+Wem dies alles furchtbar theoretisch und kompliziert vorkommt:
+im Grunde ist alles &quot;common sense&quot;, es ist nur schwer
+möglich, hier in wenigen Zeilen mehr als die Grundidee zu skizzieren.
+Wer sich mehr dafür interessiert, den verweise ich auf BYTE November
+1979 sowie die angegebene Literatur.
+</p>
+
+<br>
+<div style="text-align: left">
+<h4>
+Bibliographie:
+</h4>
+<p>
+Shannon, C.E. &quot;Programming a Computer to
+Play Chess&quot;, Philosophy Magazine, Serie 7<br>
+Vol.4.1&nbsp;, März 1950, 256 ff Levy, David,&quot;Chess and Computers,
+Computer
+</p>
+<p>
+Science Press, Woodland Hills CA, 1976 Newborn,Monroe,&quot;Computer
+Chess&quot;, Academic Press, New York, 1975
+</p>
+</div>
+
+<?php columnEnd(2); ?>

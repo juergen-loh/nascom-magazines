@@ -1,0 +1,85 @@
+<?php columnStart(2); ?>
+
+<h4 id="article1"><u>
+BILLIGST-SPEICHERERWEITERUNG MIT MK&nbsp;4118
+</u></h4>
+<p>
+Schon für ca. DM&nbsp;70,&ndash; kann man den NASCOM&nbsp;1 um 1k Speicherplatz
+erweitern, wenn man den freien EPROM-Sockel (IC 39) benutzt. Es sind
+nur sehr wenige Leitungsänderungen vorzunehmen. Installiert man
+entsprechende Umschalter, so ist das System auch weiterhin mit
+zusätzlichen EPROMs zu benutzen, man kann entsprechende Programme vor
+dem &quot;Einbrennen&quot; in EPROM sogar am &quot;richtigen
+Platz&quot; testen (0400 bis (07FF&nbsp;), was für nicht verschiebliche
+Programme ein ungeheurer Vorteil ist. Aber auch bei fester Verdrahtung
+bietet ein zusatzlicher Bereich von 1k schon große Vorteile, vor allem
+für diejenigen, die sich zunächst vor der Ausgabe einiger Hundert Mark
+für eine normale Erweiterung scheuen. (Zumal kein verstärktes Netzteil
+notwendig ist!)
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-19-1.jpeg"); ?>
+<p>
+Am einfachsten lassen sich die notwendigen Anschlüsse folgendermaßen
+bewerkstelligen:
+</p>
+<p>
+Zunächst nimmt man IC&nbsp;44 aus der Fassung. Man biegt Pin 12 heraus und
+lötet ihn mit einer kurzen Leitung an Masse. Am MK&nbsp;4118 (erhältlich bei
+MK-Systemtechnik) biegt man Pin 18,19 und 21 heraus. Am MK&nbsp;4118 werden
+Pin 19 und 24 mit einem kurzen Drahtstück verbunden. Pin 18 verbindet
+man mit dem freigewordenen Anschluß am Sockel des IC&nbsp;44. Nun muß nur
+noch Pin 21 mit dem
+<?php invertedSignal("WR"); ?> Ausgang der CPU
+verbunden werden, und der Zusatzspeicher ist einsatzbereit.<br><br>
+</p>
+
+<?php columnChange(2); ?>
+
+<h4 id="article2"><u>
+NASCOM&nbsp;1 GRAPHIK &quot;BRUTAL&quot;
+</u></h4>
+<p>
+Um mit dem NASCOM&nbsp;1 einigermaßen interessante Graphik zu erzeugen, ohne
+den Character Generator auswechseln zu müssen, ist es notwendig,
+</p>
+<ol type="a">
+<li>
+die Zellenabstände zu entfernen und
+</li>
+<li>
+die Punktmatrix zu verändern.
+</li>
+</ol>
+<p>
+Mit geringen Veränderungen an der Hanrdware ist das folgendermaßen
+möglich.
+</p>
+<ol type="a">
+<li>
+Unterbricht man die Taktleitung von IC 3 zum RS 3 Eingang des Char.
+Generators und legt diesen auf Masse, so werden die Zeichen zweimal
+übereinander abgebildet, und die Leerzeile verschwindet. Man könnte
+hier einen manuellen Schalter einbauen; der Effekt läßt sich aber auch
+per Software steuern. Im Beispiel übernimmt diese Funktion das
+unbenutzte Bit 7 des VDU RAMs.
+<br>
+<br>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-19-2.jpeg"); ?>
+</li>
+<li>
+Folgender Kniff verändert die Form der ASCII-Zeichen und bildet die
+verschiedensten graphischen Formen ab: Der LD-Takt von IC 18 zum
+Schieberegister IC 15 wird unterbrochen und durch den 4MHz Takt von
+Link 6 ersetzt. Anstelle eines Schalters kann auch hier durch Software
+gesteuert werden, z.B. mit Bit 5 von Port 0. Ein einfacher Befehl, wie
+3E 00 oder 3E 20 D3 00,schaltet dann von gewohnten ASCII-Zeichen auf
+Graphik oder umgekehrt.
+</li>
+</ol>
+<p>
+Günter Böhm, _________________ ____<br>
+__ Karlsruhe __<br>
+Tel.: ____/ ______
+</p>
+
+<?php columnEnd(2); ?>

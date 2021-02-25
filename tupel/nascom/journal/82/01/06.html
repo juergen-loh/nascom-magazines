@@ -1,0 +1,74 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+</p>
+<br>
+<h1 id="article1">
+NASPEN-Zusatz
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Das folgende kleine Programm soll es ermöglichen, unformatierte Texte
+in den Textspeicher von NASPEN VS.1 einzulesen. Unter unformatiert
+verstehe ich einfach eine Reihe von ASCII Zeichen ohne Angabe von
+Speicherbereich oder besondere Kontrollzeichen. Solche Texte können
+z.B, durch das Formatierprogramm
+(<a href="../../../../81/08/05/text/#article1">Heft 8-81</a>) oder das Lesen vom
+Bildschirm (<a href="../../../../81/12/39/text/#article2">Heft 11/12-81</a>)
+generiert werden. Zunächst macht man einen
+Kaltstart von NASPEN bei B800. Dann wird das Einleseprogramm bei E00
+gestartet. Die grüne Drive-LED leuchtet auf als Zeichen, daß der Text
+eingelesen werden kann. (&nbsp;Wer den Cassettenrecorder automatisch
+ansteuert, muß eben rechtzeitig die Textcassette einlegen. Der Text
+wird während des Lesens auf dem Bildschirm ausgegeben. Nach Textende (@
+muß als einziges Kontrollzeichen auf derCassette sein.) verlischt die
+LED, und das Programm macht automatisch einen Warmstart von NASPEN.
+Falls sich am Textbeginn vom Start des Einlesens noch Zufallszeichen
+befinden sollten oder der Schirm gar dunkel bleibt, kann man durch
+mehrmaliges Drücken der Space-Taste bis zum richtigen Textanfang
+vorrücken und die überflüssigen Zeichen mit DELETE &quot;d&quot;
+entfernen. Der Text steht nun
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+für weitere Verarbeitung mit NASPEN zur Verfügung. Die Zeilen 250 bis
+270 laden die Adresse der Druckerroutine in die entsprechenden
+Speicherzellen. (Bei mir beginnt sie in #C80) Sie müssen bei Bedarf
+verändert oder weggelassen werden.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+<h1 id="article2" class="donthyphenate">
+Hochauflösende Grafik
+</h1>
+<p>
+1. Ist es möglich, neben dem 62,5 Hz Signal auch ein 31,25 Hz Signal
+an IC 1 zu legen, sodaß es 384*256 Bildpunkte gibt?
+</p>
+<p>
+2. Von welchem IC stammt der zweite Port links unten (der mit Pin 9
+am Pin 4/IC 7 verbunden ist)?
+</p>
+<p>
+W.v.d.Vaart, Waddinxveen/Holland
+</p>
+<br>
+<p>
+zu 1. Man kann auch 384*256 Bildpunkte erzielen. Dazu muß man alle
+Taktfrequenzen vom Videoteil der Reihe nach an die Puffer IC 1 und 2
+anschließen, also nicht wie im Schaltplan eine Frequenz auslassen.
+</p>
+<p>
+zu 2. Es handelt sich um IC 4. Da ich nach meinen Unterlagen nicht
+sicher bin, ob dies das gefragte IC ist, folgt noch einmal der
+anscheinend betroffene Schaltungsteil:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-3.jpeg"); ?>
+<p>
+Mit freundlichen Grüßen<br>
+Ihr H.Martin Pohl
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,96 @@
+<?php columnStart(2, 2); ?>
+
+<table class="donthyphenate">
+<tr><td></td><td>vorher enthält T die 16-Bit-Zahl, nachher den Zeiger auf den Dezimal-String im N-Buffer.</td></tr>
+<tr><td>PROMPT</td><td>:gibt NEWLINE und Promptzeichen aus</td></tr>
+<tr><td>MATCH</td><td>:Stringvergleich; vorher T = Zeiger auf ersten, T-1 auf zweiten String; nachher T = -1 falls gleich, sonst 0, T-1 und T-2 Zeiger auf 1. bzw. 2. String.</td></tr>
+<tr><td>COUT</td><td>:T enthält Zeichen, das ausgegeben wird</td></tr>
+<tr><td>CIN</td><td>:liest Zeichen ein, T enthält nachher das Zeichen</td></tr>
+<tr><td>LOOKUP</td><td>:Sucht im Dictionary nach einem Wort; vorher: T Zeiger auf Dictionary, T-1 Zeiger auf String; nachher: T = -1, falls gefunden, sonst = 0, T-1 enthält Codeadresse, falls gefunden, sonst Zeiger auf String.</td></tr>
+<tr><th colspan=2>Interpreter, Compiler und Verschiedenes</th></tr>
+<tr><td>:</td><td>:ruft den Compiler auf</td></tr>
+<tr><td>ENTER</td><td>:trägt einen neuen Namen ins Dictionary ein, T = Zeiger auf Namen</td></tr>
+<tr><td>CMPLW</td><td>:Compiliert ein Threaded-Code-Wort, T = Code, der eingetragen wird.</td></tr>
+<tr><td>MOVEBYTES</td><td>:Verschiebt T Bytes nach (T-1) von (T-2)</td></tr>
+<tr><td>INTERACT</td><td>:Liest eine Zeile in UPN von der Tastatur ein und ruft sie auf: Benutzer-Interpreter.</td></tr>
+<tr><td>EXECUTE</td><td>:ruft die Routine auf, deren Adresse auf dem Stack liegt.</td></tr>
+<tr><td>CONS</td><td>:gibt die Adresse der CONS-Funktion</td></tr>
+<tr><td>VARBL</td><td>:gibt die Adresse der VARIAB-Funktion (siehe Beispiele unten!)</td></tr>
+<tr><th colspan=2>Constanten und Variablen</th></tr>
+<tr><td>I,J,K</td><td>:geben den Wert der Schleifenvariablen auf den Stack</td></tr>
+<tr><td>NAMES</td><td>:Startadresse des Interpreter-Dict.</td></tr>
+<tr><td>EXEC</td><td>:Die Routine TOP führt in einer endlosen Schleife das Programm aus, dessen Adresse von der Variablenfunktion EXEC auf den Stack gegeben wird. Bei Initialisierung des Systems: INTERACT</td></tr>
+<tr><td>MEMORY</td><td>:Obergrenze RAM</td></tr>
+<tr><td>ONE, ZERO, NEGONE</td><td>:Constanten 1,0,-1</td></tr>
+<tr><th colspan=2>Compiler-Dictionary</th></tr>
+<tr><td>;</td><td>:beendet die Compilierung</td></tr>
+<tr><td>IF ELSE THEN</td><td>:IF testet den Stack; falls T = 0 wird bei ELSE (falls vorhanden) das Programm fortgeführt bzw. bei THEN; Falls T ungleich 0, werden die folgenden Programmschritte ausgeführt bis ELSE</td></tr>
+</table>
+
+<?php columnChange(2); ?>
+
+<table class="donthyphenate">
+<tr><td></td><td>(dort springt das Programm nach THEN) oder, falls kein ELSE vorhanden, bis THEN. Im Standard-FORTH ist THEN durch ENDIF ersetzt, das klingt wenigstens ein bischen logischer! UPN!</td></tr>
+<tr><td>REPEAT UNTIL LOOP</td><td>:Das ist nicht ganz so schlimm: der Programmteil zwischen REPEAT und LOOP wird so lange wiederholt, bis das dazwischen liegende UNTIL einen Wert ungleich 0 auf dem Stack vorfindet. Dann wird das Programm mit der nächsten Routine hinter LOOP fortgesetzt.</td></tr>
+<tr><td>FOR LOOP</td><td>:Die Schleifenvariable (I,J oder K- von innen nach außen) erhält den Anfangswert T und wird bei jeder Schleifenwiederholung incrementiert, bis sie den Wert T-1 erreicht hat. Außer durch die umgekehrte Eingabe unterscheidet sich das nicht von der For-Next-Schleife in BASIC.</td></tr>
+</table>
+
+<p>
+Eins möchte ich zur Beruhigung und Ermutigung hinzufügen: das liest
+sich alles viel komplizierter als es in der Praxis ist: Ausprobieren!
+</p>
+
+<pre class="donthyphenate">
+E 1000
+
+- : CR   13 COUT ;
+1905
+- : GRKL   3111 PEEKB
+                EQZ   IF 1
+                      ELSE 0
+                      THEN
+           3111 POKEB          ;
+1905
+- : TEXT   RKL  REPEAT
+                  CIN DUP
+                  27 EQ  UNTIL
+                  COUT
+                LOOP
+             POP CR
+          GRKL ;
+1905
+-TEXT
+</pre>
+
+<p>
+Mit E 1000 wurde der Interpreter aufgerufen. Es wurden zunächst 2
+Hilfsfunktionen compiliert:
+</p>
+<p>
+CR = NEWLINE ausgeben<br>
+GRKL = Umschaltung der Tastaturoption von Großauf Kleinschreibung und
+umgekehrt.
+</p>
+<p>
+Dann wurde die Funktion TEXT compiliert. Sie erlaubt mir,
+eben diesen Text, den Sie jetzt lesen, auf den Bildschirm zu schreiben
+und mit der eingeschalteten Druckeroption (U-Befehl) auf der
+Schreibmaschine auszugeben. Das Programm kann mit ESCAPE (Hex 7F)
+verlassen werden. Auf dem NASCOM-1 ist das allerdings etwas mühselig:
+da muß man nämlich gleich 3 Tasten betätigen (Control, Shift und /) und
+genau das werde ich jetzt tun!
+</p>
+
+<pre class="donthyphenate">
+1905
+- : X   GETWORD
+        DUP DUP PEEKB
+        INC + 0 SWAP POKEB
+        INC 3086 POKEW
+        100 NAS-SYS
+        3105 PEEKW ;
+1905
+-TEXT
+</pre>
+
+<?php columnEnd(2); ?>

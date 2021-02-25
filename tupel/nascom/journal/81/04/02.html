@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+<u>Gedanken zum Thema Nascom Erweiterung</u>
+</h4>
+<p>
+Die derzeitige Liefersituation für Nascom Teile ist bekanntlich denkbar
+schlecht. Darum sollen hier einige Möglichkeiten aufgezeigt werden wie
+ein N1 zu einem sehr leistungsfähigen Kleincomputer erweitert werden
+kann.
+</p>
+<p>
+1. <u>Auswahl eines geeigneten BUS-Systems:</u>
+</p>
+<p>
+Hier bietet sich der 64polige KONTRON-BUS, der auch vom
+<?php externalLink("ELZET80", "ELZET-80"); ?>
+System
+verwendet wird, direkt an. Dieser BUS führt nahezu alle Signale des
+77poligen NASCOM-BUS; das Europakartenformat ist, auch von mechanischen
+Gesichtspunkt her, sehr universell; und das Wichtigste : Platinen für
+diesen BUS sind einfach und günstig erhältlich.
+</p>
+<p>
+Für die im NASCOM-System zusätzlich notwendigen Leitungen gibt es noch
+genügend freie Stellen, sodaß es sich empfiehlt, die für Bank-Select
+vorgesehenen Adressleitungen zu belassen.
+</p>
+<p>
+Neben 7 Steckplätzen für den KONTRON-BUS habe ich meinem System noch 5
+Plätze hinzugefügt, welche für das von
+<?php externalLink("Elektor","ELEKTOR"); ?>
+verwendete System eingerichtet sind.
+</p>
+<p>
+2. <u>Übergang N1 zum K.-BUS:</u>
+</p>
+<p>
+Hier gibt es zwei Möglichkeiten:
+</p>
+<p>
+a) Verwendung eines bereits vorhandenen Buffer-Boards mit
+Handverdrahtung zum K.-BUS.
+</p>
+<p>
+b) Verwendung des Taktes vom N1 Board, plus Aufbau eines eigenen Buffer
+Boards zum Aufstecken auf den K.-BUS.
+</p>
+<p>
+Dieses Board sollte aufnehmen:
+</p>
+<p>
+Adress-und Datenbuspuffer mit SN 74244/45 &nbsp; &nbsp; 4 IC&rsquo;s<br>
+Resetimpulserzeugung<br>
+NASCOM-MEM und -IO Decodierung<br>
+evt. WAIT-Zyklus Erzeugung<br>
+</p>
+<p>
+Schaltpläne hierzu s.h. Literaturtip.
+</p>
+<p>
+Beide Möglichkeiten wurden erfolgreich erprobt, wobei das B.Board
+auf einer Veroboard Platine handverdrahtet wurde. Ich könnte mir
+jedoch vorstellen, daß sich bei genügendem Interesse jemand finden
+ließe, der eine entsprechende Platine entwickelt.
+</p>
+<p>
+3. <u>Mechanischer Aufbau:</u>
+</p>
+<p>
+z.B. Europakartenträger (ca. 50&nbsp;DM)<br>
+N1-Platine oben längs befestigen
+</p>
+<p>
+4. Will man ebenfalls die
+<?php externalLink("Elektor","ELEKTOR"); ?>
+Ram/Rom (8k ca. 250,&ndash;DM) Karten
+verwenden, so muß man den Karten die Signale
+RD und IORQ zuführen. IORQ dient hier als &quot;Ram disable&quot; sonst
+kann man böse Überraschungen beim Kasettenbetrieb erleben.
+</p>
+<?php columnEnd(1); ?>

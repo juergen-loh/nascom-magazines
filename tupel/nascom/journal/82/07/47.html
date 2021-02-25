@@ -1,0 +1,103 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-1.jpeg"); ?>
+</p>
+
+<?php boxStart("L"); ?>
+<h1 id="article1">
+FORTH für den<br>
+NASCOM
+</h1>
+<h3>
+Teil 7 von Günter Kreidl
+</h3>
+<h4>
+FORTH für den NASCOM &ndash; Abschluß?
+</h4>
+<p>
+Das Fragezeichen in der Überschrift soll die Hoffnung ausdrücken, daß
+die anderen NASCOM-Anwender, die an dem in dieser Artikelserie
+beschriebenen Fädelcode-Interpreter arbeiten, (z.B. an einer Anpassung
+an das Standard-FORTH) oder gar eine eigene Implementation entwickeln,
+das Ergebnis ihrer Arbeit den Lesern des Journals zur Verfügung
+stellen. Die Artikelserie wird aber mit diesem Beitrag beendet.
+</p>
+<p>
+Allen Versprechungen zum Trotz werde ich nochmals eine Erweiterung des
+Systems beschreiben, die erst in den neueren FORTH-Versionen eingeführt
+wurde und die Fähigkeiten der Sprache erheblich verbessert. Die
+Funktionen &quot;(BUILDS&quot; und &quot;DOES)&quot; ermöglichen die
+Erzeugung definierender Funktionen. (Diesen Satz bitte zweimal lesen!)
+Es lassen sich damit Klassen von beliebigen Datenstrukturen erzeugen.
+Einige Beispiele sollen dies erläutern:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-2.jpeg"); ?>
+<p>
+Damit wird die Funktion &quot;ARRAY&quot; definiert, mit der wiederum
+&quot;Arrays&quot; definiert werden können:
+</p>
+<?php boxEnd(); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<pre class="donthyphenate">
+20 ARRAY A1
+</pre>
+<p>
+erzeugt die eindimensionale Matrix A1 mit 20 Elementen. Mit
+</p>
+<pre class="donthyphenate">
+5 A1
+</pre>
+<p>
+erhalten wir die Adresse des 5. Wertes der Matrix A1 (mit PEEKW
+erhalten wir den Wert selbst). Mit
+</p>
+<pre class="donthyphenate">
+20000 7 A1 POKEW
+</pre>
+<p>
+Erteilen wir dem 7. Element der Matrix A1 den Wert 20000.
+</p>
+<p>
+Wir können die Funktion &quot;ARRAY&quot; auch mit einer
+Überlaufkontrolle versehen. Dann muß sie folgendermaßen definiert
+werden:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-3.jpeg"); ?>
+<p>
+Wird eine Matrix z.B. mit 20 Elementen definiert, dann erfolgt bei
+Eingabe eines größeren Index eine Fehlermeldung.
+</p>
+<p>
+Auf ähnliche Weise lassen sich mehrdimensionale Matrizen, BCD- oder
+Stringvariablen oder &quot;Records&quot; (gemischte Datentypen)
+definieren. Allgemein hat jede solche Definition die Form:
+</p>
+<pre class="donthyphenate">
+: (Name) (BUILDS (Code1) DOES) (Code2) ;
+</pre>
+<p>
+Erklären kann man das
+vielleicht am besten anhand der Beispielfunktion &quot;ARRAY&quot;:
+Wird die Matrix A1 definiert, so wird (Code1) ausgeführt, wird die
+Matrix A1 selbst aufgerufen, wird (Code2) ausgeführt. Dabei muß
+berücksichtigt werden, daß auch die Funktion &quot;DOES)&quot; einen
+Beitrag leistet: sie gibt stets die Startadresse des Datensatzes auf
+den Stack. Konkret bedeutet dies: der auf &quot;(BUILDS&quot; folgende
+Code in der (ersten) Definition von &quot;ARRAY&quot; erzeugt in der
+Definition von A1 die 20 freien Speicherplätze; &quot;DOES)&quot; und
+der darauf folgende Code berechnen während des Aufrufs von A1 die
+Adresse des (im Beispiel) 5. Elementes. (Ich hoffe, daß jetzt keiner
+das NASCOM-Journal frustriert in die Ecke pfeffert &ndash; Ich hab das auch
+erst nach etlichen Anläufen kapiert!) Die Erklärung der Programmierung
+von &quot;(BUILDS&quot; und &quot;DOES)&quot; erspare ich mir; das ist
+wirklich nur etwas für Tüftler. Es folgt hier einfach der Code:
+</p>
+<pre class="donthyphenate">
+MCODE R)
+</pre>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-4.jpeg"); ?>
+
+<?php columnEnd(2); ?>

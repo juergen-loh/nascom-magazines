@@ -1,0 +1,88 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+beachten sollte, daß das RTTY-Programm aus
+diesem Heft weit luxuriöser in der Anwendung ist).
+</p>
+<p>
+Start: EC80 HHMM -Uhrzeit
+</p>
+<h4>
+Befehle bei Empfang:
+</h4>
+<table>
+<tr><td>a &nbsp; </td><td>Umschalten auf Senden</td></tr>
+<tr><td>C &nbsp; </td><td>Ändern der Ziffern-/Buchstabenebene</td></tr>
+<tr><td>I &nbsp; </td><td>Inverse Schrift</td></tr>
+<tr><td>N &nbsp; </td><td>Normale Schrift</td></tr>
+<tr><td>Q &nbsp; </td><td>QRM- Betrieb ein/aus (Bu/Zi vor jedem Zeichen)</td></tr>
+<tr><td>+ &nbsp; </td><td>Baudrate erhöhen (45.45, 50, 75, 100)</td></tr>
+<tr><td>- &nbsp; </td><td>Baudrate erniedrigen</td></tr>
+</table>
+<h4>
+Befehle bei Senden:
+</h4>
+<table>
+<tr><td>a &nbsp; </td><td>Umschalten auf Empfang</td></tr>
+<tr><td>% &nbsp; </td><td>Wiederholung einer Zeile mit WR/ZV</td></tr>
+<tr><td>&amp; &nbsp; </td><td>Klingel</td></tr>
+</table>
+<p>
+Nach spätestens 68 Zeichen automatisch WR/ZV, wenn nicht von Hand
+gegeben (NL).
+</p>
+<p>
+Und hier noch der Anschluß der benötigten Hardware:
+</p>
+
+<?php boxStart(); ?>
+<br>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-18-1.jpeg"); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-18-2.jpeg"); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-18-3.jpeg"); ?>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article1">
+I/O-Interface
+</h1>
+<h3>
+<u>von KARL SCHULMEISTER</u>
+</h3>
+<p>
+Tastaturanschluß und NASCOM-2
+Kasetteninterface-<?php externalLink("ECB"); ?>
+Karte:
+</p>
+<p>
+1. Diese Karte wurde bezüglich des Kasetteninterface genau nach dem
+Schaltplan des NASCOM-2 gebaut. Die Baud-Rate ist jeweils über eine
+Steckbrücke für INPUT bzw. OUTPUT auf 300, 1200 oder 2400 Baud
+einzustellen.
+</p>
+<p>
+Da die Karte den Takt für den UART aus dem CPU Takt gewinnt und mit 500
+kHz weiterarbeitet, ist es wichtig, den CPU Takt bei 2&nbsp;MHz mit Pin 12
+des LS 163, bei 4&nbsp;MHz mit Pin 11 zu verbinden (gegenüberliegende
+Lötpunkte unter LS 163).
+</p>
+<p>
+2. Der Anschluß des NASCOM-Keyboards erfolgt über den 16 poligen
+KBD-Socket, die Belegung entspricht dem NASCOM-1 Schaltplan. Außerdem
+wurde das Bit 2 an einen Transistor geführt und kann so einen
+kleinen Lautsprecher ansteuern.
+</p>
+<p>
+3. Auf der Karte werden WAIT-Signale erzeugt (Schaltung gem.
+<?php externalLink("Z80 CPU","techn. Manual"); ?>
+von ZILOG). Es ist das WAIT-Signal für M1 oder MRQ jeweils
+über eine Steckbrücke ansprechbar.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-18-4.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

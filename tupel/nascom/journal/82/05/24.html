@@ -1,0 +1,86 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Datenverwaltung
+</h1>
+<h3>
+Teil 2 von Günter Böhm
+</h3>
+<p>
+Zunächst einige Anmerkungen zu
+<a href="../../../03/09/text/#article1">Teil 1</a>.
+In die Routine REDUZ hat sich
+ein Fehler eingeschlichen. Das Verkürzen der Files funktionierte
+einwandfrei, wenn man nicht ausgerechnet das letzte File verändern
+wollte. Hierbei mußte das ganze Programm zusammenstürzen, da sich für
+den Rest der Datei die Länge 0 ergab und der LDIR Befehl nun den ganzen
+Speicher verschob. Zu beheben ist der Fehler durch Eintragen von INC BC
+vor dem LDIR in Zeile 1590.
+</p>
+<p>
+Nicht so tragisch, aber ärgerlich ist die Tatsache, daß beim Aufruf von
+INPUT auch bei Bearbeitung von Formularen RAMTOP (Speicherende für
+Files) in die Formularparameter geladen wurde. Diese Manipulation muß
+vor INPUT bereits in INIT eingetragen werden.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+<p>
+Beim Ausdrucken von Files in bestimmtem Format hat sich als vorteilhaft
+erwiesen, vor dem Ausdruck des Formulars ein New Line einzufügen, damit
+das nächste Formular nicht mitten in der Zeile beginnt oder (da ja vor
+dem BELL Zeichen immer ein Space steht) eingerückt wird.
+</p>
+<p>
+In der Routine EINGAB wurde beim Drücken von New Line noch die
+automatische Ausgabe eines Space eingefügt. Dies erleichtert das
+Auffinden von Daten in maskierten Files (Teil 2).
+</p>
+<p>
+<u>Die Teilnehmer am
+<a href="../../../../81/08/02/text/#article2">Rundlauf</a>
+müssen zur Korrektur das Hexdump von
+10BE-10EC dem Listing in diesem Heft anpassen.</u>
+</p>
+<p>
+Wie bereits angekündigt,
+soll das Programm laufend erweitert werden, Hier nun die erste
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Erweiterung: die Erstellung und Verarbeitung maskierter Files.
+</p>
+<p>
+Im Menü sind zusätzlich die Möglichkeiten<br>
+&quot;Berechnungen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; B&quot; und<br>
+&quot;Maskierte Files &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; M&quot; vorgesehen worden. Das Drücken von B
+erzeugt vorläufig einen Sprung nach #1C00&nbsp;, wo möglicherweise
+zukünftige Berechnungsroutinen beginnen könnten. Mit M springt man nach
+#1922&nbsp;, wo folgende Programme zur Wahl stehen:
+</p>
+<pre>
+&quot;Maskierte Datei initiieren  1&quot;
+&quot;Maskierte Files ausgeben    2&quot;
+&quot;Eingabe in maskierte Files  3&quot;
+</pre>
+<p>
+Bei der Auswahl von &quot;1&quot; erscheint
+in der Titelzeile die Aufforderung &quot;Data Input&quot;. Nun kann man
+mit frei beweglichem Cursor ein Formular erstellen (in unserem Beispiel
+eine Schülerkartei), wobei der Doppelpunkt, gefolgt von Space, angibt,
+daß nun ein Datenwort folgt, welches im File abgespeichert werden soll.
+Dieses wird durch Space abgeschlossen. Das nächste Datenwort muß wieder
+durch Doppelpunkt eingeleitet werden. Die Anzahl der Zeichen nach dem
+Doppelpunkt ist nun das für alle Files verbindliche Format und
+ermöglicht Berechnungen und auch formatierten Ausdruck.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-2.jpeg"); ?>
+<p>
+Es empfiehlt sich, bei der Eingabe von z.B, Namen zunächst eine
+entsprechende Anzahl von A0 einzugeben (Graph+ Spacer), da diese zwar
+Platz für das formatierte Datenwort freihalten (Space würde als Beginn
+des nächsten Wortes interpretiert), von den meisten Druckern aber
+einfach als Space ausgegeben werden. Aus dem gleichen Grund wird vom
+Programm bei der Eingabe in
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,113 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+&quot;PÄCK-MÄNN&quot;
+</h1>
+<h3>
+von WOLFGANG SCHRÖDER
+</h3>
+<h4>
+für NASCOM-2 mit Graphic-ROM
+</h4>
+<?php columnEnd(1); ?>
+
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Nachdem dieses Spiel inzwischen für fast jedes System zu haben ist,
+habe ich mich in einer ruhigen Minute auch einmal daran gewagt. Da mir
+leider keine genaue Spielregeln vorliegen, hoffe ich doch, trotzdem
+etwa den Kern der Sache getroffen zu haben. Ziel des Spieles ist es,
+mit einer Spielerfigur durch ein Labyrinth zu fahren, dabei so viele
+Punkte wie möglich zu erreichen, ohne vorher von den verfolgenden
+Geistern gefressen zu werden. Dabei stehen jedem Spieler pro Durchgang
+drei Versuche zur Verfügung. Das Spielfeld ist ein Rechteck, in dem
+sich in der Mitte auf beiden Seiten jeweils ein 'Notausgang' befindet,
+durch den sich der Spieler auf die andere Seite des Labyrinth&rsquo;s retten
+kann., wenn er einmal arg in Bedrängnis geraten sollte. Die
+Spielerfigur wird durch das ASCII-Zeichen 07H dargestellt und kann
+mittels der Cursortasten bewegt werden. In der Mitte des Spielfeldes
+befindet sich das 'Geisterhaus' mit drei Geistern. Die Geister werden
+durch die Grafik-Zeichen B5H-B7H dargestellt. Außerdem sind am linken
+Rand noch vier Bonuspunkte (ASCII BCH-BFH) mit ihrem jeweiligen
+Punktewert dargestellt. Die freien Wege sind bei Spielbeginn mit
+Punkten (2EH) und Superpunkten (0FH) belegt. Der Spieler muß nun
+versuchen, soviele Punkte wie möglich zu fressen, bevor ihn die Geister
+erwischen. Dabei hat der Spieler den Vorteil, geringfügig schneller zu
+sein als die Geister. Die erreichte Punktzahl wird dabei laufend
+angezeigt. Wird nun der Spieler von einem Geist 'gefressen', so wird
+das Spielfeld wieder völlig neu aufgebaut, vorausgesetzt es war nicht
+das drittemal, denn dann ist die Runde beendet. Da die Geister bei der
+Verfolgung des Spielers auch ermüden, werden diese von Zeit zu Zeit
+unsichtbar, und man sieht nur noch deren Augen (ASCII 9FH). Jetzt kann
+der Spieler, um noch mehr Punkte zu erreichen, diese Geister angreifen
+und selbst 'auffressen'. Wird nun so ein Geist gefressen, so kommt ein
+neuer ins Geisierhaus und die restlichen sich im Feld befindlichen
+verwandeln sich wieder in normale Geister. In nicht genau festgelegten
+Zeitintervallen werden die sich an der Seite befindlichen Bonuspunkte
+ins Spiel gebracht, und zwar von oben nach unten. Jeder Bonuspunkt
+kommt pro Spielfeld nur einmal ins Spiel, das heißt, haben Sie alle
+Bonuspunkte verbraucht, so erhalten Sie nur wieder neue, wenn Sie alle
+Punkte gefressen haben oder Sie von einem Geist erwischt wurden.
+Sollten Sie wieder Erwarten alle Punkte eingesammelt haben., so
+erhalten Sie ein neues Spielfeld.
+</p>
+<p>
+Nun noch einige Anmerkungen zum Programm: Das Programm benötigt den
+Speicherplatz von 1000H bis ca. 1800H als
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Codeteil und den Speicherlatz von 2000H bis 31C0H als Speicher für die
+Spielfelder. Geben Sie also zuerst das Programm ein und danach das
+Spielfeld. Beachten. Sie, daß zwischen dem Programmteil und den
+Spielfeld min. 900H Bytes frei bleiben müssen. Außerdem können Sie die
+Spielgeschwindigkeit durch Verändern des Wertes an der Stelle 1097H
+variieren. Zudem steuert das Programm den
+<?php externalLink("AY-3-8910"); ?>
+zur Tonerzeugung an
+(dies ist also mal ein Programm mit Ton, wenn dieser auch nicht
+überwältigend ist). Die Ansteuerung erfolgt mit der PIO auf der
+Grundplatine. So, und nun guten Appetit, die Punkte sind serviert.
+</p>
+
+<br>
+<h1 id="article2" style="text-align:left">
+Lollypop
+</h1>
+<h1 style="text-align:center">
+Lady
+</h1>
+<h1 style="text-align:right">
+Trainer
+</h1>
+<h3>
+von MICHAEL BACH
+</h3>
+<p>
+Unter diesem unfreundlichen Titel (Kindermädchendressur) ist vor vier
+Jahren &rsquo;mal ein Programm veröffentlicht worden, das sich vor allem
+durch seine Originalität auszeichnet, ansonsten ist es wie die meisten
+Spiele ziemlich blöd. Ich habe disassembliert und an NAS-SYS angepaßt.
+Das war insofern nicht einfach, als das Programm sich infamerweise
+selbst unterwegs modifiziert, und wenn man im falschen Moment Reset
+betätigte, lief es nicht mehr. Nun, das habe ich &rsquo;rausgeschmissen und
+einige Kleinigkeiten verändert. In der abgedruckten Version läuft es
+auf 4&nbsp;MHz, die Verzögerungsschleife läßt sich einfach für 2&nbsp;MHz
+halbieren. Dies ist wenigstens &rsquo;mal ein Programm, das den 2.
+Registersatz verwendet.
+</p>
+<h4>
+Was man noch machen könnte:
+</h4>
+<p>
+Irgendetwas Unerwartetes, wenn man alle 5 rüberbringt (was allerdings
+reiner Zufall wäre). Gegen Zusendung einer Cassette und addressierten
+und frankierten Rückumschlag schicke ich das Programm als ZEAP-Datei
+oder
+Objektcode gerne jedem zu (Cassettenformat angeben!).
+</p>
+<p>
+Michael Bach, __ __________ __, ____ Stegen
+</p>
+
+<?php columnEnd(2); ?>

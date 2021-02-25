@@ -1,0 +1,100 @@
+<?php columnStartJustify(2); ?>
+
+<?php boxStart("LRB"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-22-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<h1 id="article1">
+N2 Hardware-Tip
+</h1>
+<h3>
+von Peter Brendel
+</h3>
+<p>
+Dies ist ein Hardware-Tip, wie man ein EPROM
+<?php externalLink("2716"); ?>
+in den NASCOM2
+einbaut, ohne irgendwelche Leiterbahnen zu durchtrennen. Ich habe einen
+Sonntagnachmittag damit verbracht, dies auszutüfteln. Warum soll sich
+ein anderer unbedingt dieselbe Arbeit machen?
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-22-2.jpeg"); ?>
+
+<p>
+Widerstand 10 K<br>
+Diode 1N 4448 o.ä.
+</p>
+<p>
+BESCHALTUNG des LKS 1<br>
+je nach Anfangsadresse des <u>bestückten</u> Sockels,
+</p>
+<p>
+Beispiel für B5, B6 Sockel<br>
+Dyn. RAM- Erweiterung<br>
+Eprom auf B000
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-22-3.jpeg"); ?>
+
+<p>
+Um alle Sockel zu nutzen, müßte man wohl das N2MD PROM ändern.<br><br>
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article2">
+ZEAP-ASM
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Für manche Benutzer ist es notwendig, Assemblerlistings von ASM
+Assembler an ZEAP 2.0 anzupassen (z.B. Programmtausch auf Cassette).
+Die Anpassung bereitet keine großen Schwierigkelten.
+</p>
+<p>
+Der Textpuffer des ASM (#1000) beginnt mit der freien Adresse nach dem
+Textpuffer (z.B. #24CC). Er wird durch # 00 FF abgeschlossen.
+</p>
+<p>
+Der Puffer des ZEAP (normalerweise auch
+#1000) ist folgendermaßen aufgebaut:
+</p>
+<p>
+Pufferlänge : LB HB (inklusive Endzeichen)<br>
+Zeilenzahl mal 2 LB MB HB<br>
+dann Nummer der ersten Zeile in Dez wie bei ASM<br>
+Das Endzeichen des Textpuffers ist 00 FF 00,
+</p>
+<p>
+Bei der Anpassung ist also zunächst die Pufferlänge einzutragen (in
+unserem Beispiel CC 14) dann die Anzahl der Zeilen in Hex (deshalb
+empfiehlt es sich durch den Renumber Befehl immer den gleichen
+Zeilenabstand einzuhalten, damit man die Zahl genau errechnen kann).
+Nehmen wir an, der Sourcecode habe eine Länge von 50 Zeilen. Dann wäre
+ab #1002 einzutragen 64 00 00.
+</p>
+<p>
+Nun muß man nur noch das Endzeichen des
+ASM in 00 FF 00 verändern und den ZEAP warmstarten. (Der Kaltstart vor
+der ganzen Prozedur ist selbstverständlich).
+</p>
+<p>
+Die erste Zeile ist nun
+unvollständig, weil ihre Zeilennummer von der Zeilenanzahl
+überschrieben wurde; das kann durch editieren leicht korrigiert werden.
+Das Programm steht nun für ZEAP zur Verfügung.
+</p>
+
+<?php boxStart(); ?>
+<p>
+SUCHE Integer PASCAL auf Cassette für NASSYS&nbsp;1<br>
+Hermann Lottes<br>
+__________._<br>
+____ ________
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

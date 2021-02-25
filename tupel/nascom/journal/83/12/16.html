@@ -1,0 +1,48 @@
+<?php columnStartJustify(2, 2); ?>
+<p>
+Wir wollen also eine Routine im EPROM haben, mit der wir ohne
+&quot;fremde Hilfe&quot; von der Diskette lesen können. Diese recht
+kleine Routine sei hier &quot;Cold-Booter&quot; genannt. Sie erkennt
+automatisch, ob es sich bei einer eingelegten Diskette um Single oder
+Double Density handelt, und liest (immer nur von Laufwerk A) die ersten
+beiden Sektoren der Spur 00. Die Routine kann auf jedem
+<?php externalLink("Z80","",""); ?>-Rechner
+laufen und ist von keinem Betriebssystem abhängig (wenn man die
+Fehlermeldung, die die NASSYS-Break&shy;point&shy;rou&shy;ti&shy;ne benutzt, durch HALT
+ersetzt).
+</p>
+<p>
+Das Cold-Boot Programm (wie erwähnt für beide Formate), ist im EPROM
+abgelegt oder wurde (wie in meinem
+<?php externalLink("mc-CP/M","mc",""); ?>-System)
+nach Einschalten oder
+Reset ins Ram kopiert. Es gäbe die Möglichkeit, ohne residenten Monitor
+nach dem Einschalten des Rechners das Betriebssystem direkt durch den
+Cold-Booter von der Diskette zu laden. Wenn nun aber irgend ein Fehler
+auftreten sollte, sind Sie ohne Monitor völlig hilflos bei der
+Fehlersuche. Deshalb empfiehlt es sich, auch einen (wenn auch kleinen)
+Monitor zur Verfügung zu haben. In meinem Fall
+(siehe <a href="../../../06/09/text/#article1">Heft 6/83</a>) stehen
+4K EPROM zur Verfügung, in die NASSYS und der Cold-Booter bequem
+hineinpassen. Bei der NASCOM Grundplatine, die ja nur 2K EPROM ab 0000H
+faßt, sollte man vielleicht auf den alten Monitor T2 zurückgreifen und
+in den zweiten Sockel den Cold-Booter stecken. Für Besitzer der
+verschiedenen RAM/EPROM- Karten ergibt sich vielleicht eine andere
+Möglichkeit, neben NASSYS noch einen EPROM- Platz freizuhalten, der
+später ausgeblendet werden kann.
+</p>
+<p>
+Ich für meinen Fall habe NASSYS3 so geändert, daß mit dem Drücken von
+&quot;L&quot; der Cold-Booter angesprungen wird. Im folgenden nochmals
+die Routine, die NASSYS3 und den Cold-Booter aus dem EPROM ins RAM
+lädt, NASSYS auf 00 zurückkopiert und NASSYS initiiert.
+</p>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+<br>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-16-3.jpeg"); ?>
+<br>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-4.jpeg"); ?>
+<?php columnEnd(2); ?>

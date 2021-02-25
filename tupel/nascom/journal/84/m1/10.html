@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<div class="justify">
+<table style="width: 100%">
+<tr><td>
+<?php box0Start("LTBRtr"); ?>
+<b>Preisaus&shy;schreiben</b>
+<?php box0End(); ?>
+</td><td>
+<h1 id="article1" style="text-align:right">
+<i>Preisaus&shy;schreiben!!</i>
+</h1>
+</td></tr>
+</table>
+<br>
+
+<?php boxStart("Ltw"); ?>
+<p>
+Dies ist kein Preisausschreiben üblicher Art, bei den man mit einfachen
+Lösungen eine Menge Geld gewinnen kann (und das Los entscheidet),
+sondern hier kann man mit einer kniffliehen Lösung wenig Geld gewinnen
+(jeder fängt einmal klein an)!
+</p>
+<p>
+Der Preis: DM&nbsp;20,&ndash; bar auf die Hand (der
+&quot;moralische&quot; Sieg wiegt viel schwerer).
+</p>
+<p>
+Das Problem:
+</p>
+<p>
+Beim Verschieben des PHEAS ist mir aufgefallen, daß das Programm an
+einigen Adressen nicht läuft. Nach vielem Herumprobieren wurde klar:
+wenn die Warteschleife in SEEK (18 FE) auf einer Adresse liegt, die mit
+0C-0F endet (bevorzugt 0C, der Adresse des Controller-Statusregisters)
+so bleibt das Programm (wahrscheinlich in der Warteschleife) hängen.
+</p>
+<p>
+Ein Leser nahm an, daß nach der Annahme des Interupts (INTA
+Interruptacknowledege) durch die CPU /M1 und /IOREQ mit der
+entsprechenden Adresse auf dem Bus den Controller ansprechen.
+</p>
+<p>
+Nun ist
+aber das PROM so programmiert, daß die Karte nur angesprochen wird,
+wenn /M1 high und /IORQ low ist, Zudem sagt das Datenblatt des
+Controllers, daß der Interrupt nur dann nicht ausgegeben wird (was ja
+in den zweifelhaften Fällen wahrscheinlich auch nicht geschieht), wenn
+während der Abarbeitung eines Befehls (hier z.B. SEEK) auf die Register
+zugegriffen wird. Oben erwähnte Konstellation des INTA würde ja aber
+erst nach dem Interrupt auftreteten.
+</p>
+<p>
+Für mich ist der Fall sehr schleierhaft, und ich hoffe auf die
+Kombinationsfähigkeit der Leser.
+</p>
+<p>
+Ich freue mich schon auf die Lösungsvorschläge.
+</p>
+<p>
+Wer als erster Abhilfe schafft, erhält den Preis.
+Falls Sie als Fehlerursache einen Fehler in meinem eigenen System
+finden sollten, haben Sie natürlich auch Anspruch auf den Preis.
+</p>
+<br id="article2">
+<?php boxEnd(); ?>
+
+<?php box0Start("LTBRtr"); ?>
+<b>CP/M &ndash; Eine Preisfrage</b>
+<?php box0End(); ?>
+<br>
+
+<?php boxStart("Ltw"); ?>
+<p>
+Nachdem nun schon eine ganze Menge Leser die Floppy- Controller-Karte
+erhalten haben, wird so langsam der Wunsch nach
+<?php externalLink("CP/M"); ?>
+(mit BIOS für den
+NASCOM oder unsere Eigenbau-Systeme) wach.
+</p>
+<p>
+Wo kann man CP/M erhalten?
+</p>
+<p>
+Nun, CP/M wird von vielerlei Firmen zu den unterschiedlichsten Preisen
+angeboten. Interessant ist dabei natürlich auch, ob schon eine
+Anpassung an unser System vorhanden ist. Dies dürfte
+</p>
+<?php boxEnd(); ?>
+</div>
+<?php columnEnd(1); ?>

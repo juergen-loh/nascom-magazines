@@ -1,0 +1,114 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+kann. Ist also kein höherwertiger Interrupt in Bearbeitung, so sendet
+unsere PIO das &quot;INT&quot;-Signal und legt anschließend ihr
+Vektor-Register auf den Datenbus. Dieses Vektorregister der PIO muß in
+der Initialisierungsphase vorbelegt werden. Die CPU, die jetzt auf den
+Interrupt reagiert, liest dieses Byte und interpretiert es als das
+niederwertige Byte einer Adresse. Das höherwertige Byte dieser Adresse
+holt sich die CPU aus ihrem I-Register (Interrupt-Register), das
+ebenfalls entsprechend vorbelegt sein muß. Damit wird eine 16-bit
+Adresse generiert, die dann auf den Adreßbus gelegt wird. Diese Adresse
+zeigt in eine Sprungtabelle und dort steht erst die Anfangsadresse der
+Interrupt-Service-Routine. Somit ist also eine echte Speicher-indirekte
+Adressierung mit Hilfe einer Sprungtabelle möglich. Der Umweg über
+diese Sprungtabelle bietet folgende Vorteile:
+</p>
+<p>
+1.) Die dort abgelegte, 16-bit Adresse der Interrupt-Service-Routine
+(ISR) kann zu jeden beliebigen Punkt des 64k-Speicherraumes führen. 2.)
+Es können beliebig viele ISR angesprungen werden. 3.) Die
+Anfangsadresse der ISR in der Sprungtabelle kann während der
+Programmabarbeitung geändert werden. Dies ermöglicht eine dynamische
+Zuweisung zwischen Peripherie und ISR.
+</p>
+<p>
+Zum Schluß noch eine Zusammenstellung der Initialisierungsschritte, die
+beim Betrieb im Interruptmode 2 notwendig sind:
+</p>
+<table class="donthyphenate">
+<tr><td>DI</td><td>Disable Int., für geordnete Anfangsverhältnisse</td></tr>
+<tr><td>OUT&nbsp;...&nbsp;</td><td>Interrupt-Vektor in E/A-Baustein laden</td></tr>
+<tr><td>LD I,A</td><td>Interruptregister der CPU laden</td></tr>
+<tr><td>IM 2</td><td>Interruptmode 2 einstellen</td></tr>
+<tr><td>EI</td><td>Interrupt freigeben</td></tr>
+</table>
+<p>
+Die Beschreibung sollte einen Einblick in die Interruptbehandlung von
+Mikroprozessoren geben. Wenngleich auch im zweiten Abschnitt sehr
+speziell auf die Struktur des
+<?php externalLink("Z80"); ?>
+eingegangen wurde, so kann doch mit
+dem Verständnis dieses Typs relativ leicht die Interruptbehandlung
+anderer Typen verstanden werden. Die Feinheiten liegen, wie auch hier
+schon deutlich wurde, nicht mehr in der CPU selbst, sondern werden in
+zunehmendem Maße in andere Bausteine verlagert. Ob dies, wie beim Z80,
+die E/ABausteine oder spezielle Interrupt-Controler sind, eines haben
+sie gemeinsam: Die Komplexität ihrer Struktur kann es fast mit der der
+CPU
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+aufnehmen und dementsprechend umfangreich sind auch die Beschreibungen
+solcher Bausteine, durch die man sich wohl oder übel durchbeißen muss.
+Viel Spass dabei&nbsp;!
+</p>
+<h1 id="article1">
+Datenausgabe<br>im E- u. F-Format
+</h1>
+<h3>
+von J. Kwasnitza
+</h3>
+<p>
+Bekanntlich hat das Nascom- Microsoft- Basic keine direkt zugaenglichen
+Befehle fuer die formatierte Datenausgabe und waehlt je nach Zahlenwert
+selbststaendig ein passendes Ausgabeformat. Das hat zur Folge, dass die
+Ausgabe ordentlicher Zahlentabellen ohne besondere Massnahmen nicht
+moeglich ist. Anhand des Testprogrammes Nr. 1 wird das noch einmal
+demonstriert.
+</p>
+<p>
+Wer das Arbeiten in Fortran gewoehnt ist wuenscht sich da die
+Verfuegbarkeit der E- und F- Format-Befehle. Fuer alle, die mit Fortran
+nicht vertraut sind, sei hier kurz die Funktion dieser Befehle
+beschrieben.
+</p>
+<p>
+Im E-Format wird eine Variable in folgender Form dargestestellt:
+</p>
+<p>
+nBlanks, Signum Mantisse, ., Mantisse, E, Signum&nbsp;Exponent,
+2-<?php spchar("zwsp"); ?>stelliger Exponent
+</p>
+<p>
+Beispiel:&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-.123456E+21&quot;
+</p>
+<p>
+Durch Befehle kann die Stellenzahl der Mantisse DE und die gesamte
+Feldbreite WE einschliesslich der Blanks festgelegt werden&nbsp;.
+Beispiel: DE=5, WE=12 gibt die Zahl
+</p>
+<p>
+X =-1.23456 als XE$ = &quot; -.12346E+01&quot; aus.
+</p>
+<p>
+Im F-Format wird eine Zahl wie folgt dargestellt:
+</p>
+<p>
+nBlanks, Signum&nbsp;Zahl, Dezimalzahl
+</p>
+<p>
+Mit dem Befehl DF kann die Anzahl der Dezimalstellen einer Zahl
+bestimmt werden, waehrend die gesamte Feldbreite der Zahl
+(einschliesslich der Blanks) ueber WF festgelegt wird.
+</p>
+<table>
+<tr><td>Beispiel:</td><td>DF=2, WF=7 gibt die Zahl<br>
+X=-1.23456 als XF$=&quot; -1.23&quot; aus.</td></tr>
+</table>
+<p>
+Mit den Basic- Unterprogrammen E-Format (GOSUB1000)
+</p>
+
+<?php columnEnd(2); ?>

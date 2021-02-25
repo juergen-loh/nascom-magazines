@@ -1,0 +1,197 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+EMDOS
+</h1>
+<h3>
+von HELMUT EMMELMANN
+</h3>
+<p>
+EMDOS ist ein Diskettenbetriebssystem, das es er&shy;moeg&shy;licht Programme und
+Daten unter bestimmten Dateinamen auf Disketten zu speichern. EMDOS
+wurde so konzipiert, daß es mit dem Cassetten-Monitor NASSYS&nbsp;3 arbeiten
+kann. Es bildet daher eine Art Zwischenlösung, die es erlaubt, alle
+bisher vorhandene Software weiter zu verwenden, was bei den
+Betriebssystemen
+<?php externalLink("CP/M","",""); ?>,
+HDOS oder CLDDOS nicht möglich ist. Andererseits
+ist eine Disketten-Datei Verarbeitung unter EMDOS nur schwer möglich.
+</p>
+<p>
+EMDOS benötigt im Speicher des NASCOM etwas weniger als 4k Byte und
+belegt so gerade eine 4k-Page (z.B. D000-DFFF oder A000-AFFF). Es wird
+von NASSYS aus mit einer E-Anweisung (oder später mit eigenem
+Kommandobuchstaben) oder auch direkt von Basic aufgerufen. Es erwartet
+dann Anweisungen vom Benutzer, mit denen Programme oder Daten geladen
+oder abgespeichert werden können. Anschließend kann man wieder zu
+NASSYS bzw. BASIC zurückkehren und zum Beispiel das geladene Programm
+ablaufen lassen.
+</p>
+<p>
+Zum Verständnis der EMDOS-Anweisungen ist es zunächst notwendig, etwas
+auf die Art der Datenspeicherung auf Diskette einzugehen: Auf einer
+Diskette werden die Programme oder Daten als sogenannte Files
+gespeichert. Jedes File hat einen vom Benutzer frei wählbaren Namen.
+Ein File kann jederzeit neu abgespeichert, verändert oder auch gelöscht
+werden. Außerdem kann das Inhaltsverzeichnis, eine Liste aller Files
+auf der Diskette, angezeigt werden.
+</p>
+<p>
+Der Name eines solchen Files besteht aus zwei Teilen; dem eigentlichen
+Namen und der Extension, durch einen '.' getrennt. Zum Beispiel
+SCHACH.NAS oder TEST.BAK. Der Name besteht aus maximal 8 Buchstaben
+bzw. Ziffern, wobei das erste Zeichen ein Buchstabe sein muß. Die
+Extension besteht aus 3 Buchstaben. Sie wird normalerweise dazu
+verwendet, die Files nach Typen einzuteilen. Zum Beispiel verwendet man
+BAS für Basic-Programme, PAS für PASCAl-Programme oder ABS bzw. COM für
+fertige Maschinenprogramme. Man erkennt dadurch schon am
+Inhaltsverzeichnis den Typ eines Files.
+</p>
+<p>
+Bei EMDOS ist es jedoch nicht
+notwendig, immer eine Extension anzugeben. Schreibt man den Filenamen
+ohne '.' und Extension &ndash;zum Beispiel SCHACH oder TEST &ndash; nimmt EMDOS
+automatisch die Extension NAS an.
+</p>
+<p>
+In einem EMDOS-File wird neben dem
+Programm auch seine Anfangsadresse, seine Endadresse und seine
+Startadresse mit abgespeichert. So muß man beim Laden des Programms nur
+noch den Namen des Programms eingeben, EMDOS weiß dann schon, wohin das
+Programm geladen werden muß und wo es gestartet wird.
+</p>
+<p>
+Es kommt sehr oft vor, daß ein Programm, das gerade verändert wurde,
+erneut unter dem selben Namen abgespeichert werden soll. EMDOS hebt
+dabei immer noch die alte Version des Files auf, sodaß, falls beim
+Abspeichern ein Fehler auftritt oder der Benutzer aus irgendwelchen
+anderen Gründen die alte Version noch benötigt, diese noch verfügbar
+ist. Dies funktioniert folgendermaßen:
+</p>
+<p>
+Vor dem Abspeichern des Files wird die Extension des ursprünglichen
+Files in 'BAK' umgewandelt, ein eventuell vorhandenes File mit dem
+selben Namen und der Extension 'BAK' wird gelöscht. Dann wird das File
+abgespeichert, mit der angegebenen bzw. der angenommenen Extension.
+Nach dem Abspeichern kann der Anwender also noch durch Angabe der
+Extension 'BAK' auf das ursprüngliche File zugreifen. Dies wird unten
+noch anhand eines Beispiels näher erläutert.
+</p>
+<h4>
+Anweisungen an EMDOS:
+</h4>
+<p>
+Wie schon oben erwähnt, können die EMDOS-Anweisungen eingegeben werden,
+nachdem EMDOS mit dem E-NASSYS-Befehl gestartet wurde.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+L Filename [s]
+</p>
+<p>
+Das File, das mit Filename angegeben ist, wird geladen, die
+Anfangsadesse, die Endadresse und die Startadresse werden angezeigt.
+Wahlweise kann der Parameter s angegeben werden, eine Adresse, die
+angibt, wohin das Programm geladen werden soll. In diesem Falle wird
+die mit abgespeicherte Anfangsadresse ignoriert.
+</p>
+<p>
+S Filename a e [ s f ]
+</p>
+<p>
+Der Speicherbereich von der Adresse a bis zu der Adresse e wird
+abgespeichert. Die Hexadezimalzahlen a f werden nur benötigt, wenn das
+Programm automatisch gestartet werden soll, s ist dabei die
+Startadresse und f die Startfunktion (sh. unten).
+</p>
+<p>
+S Filename
+</p>
+<p>
+Das Programm, das vorher geladen wurde, wird mit den selben Parametern
+wieder abgespeichert.
+</p>
+<p>
+B Filename
+</p>
+<p>
+Das im Speicher stehende Basic-Programm wird unter dem angegeben
+Filenamen abgespeichert.
+</p>
+<p>
+D
+</p>
+<p>
+Inhaltsverzeichnis anzeigen.
+</p>
+<p>
+E Filename
+</p>
+<p>
+Das File mit dem angegebenen Namen wird gelöscht.
+</p>
+<p>
+R Filename a l
+</p>
+<p>
+File an die Adresse a mit der maximalen Laenge l einlesen. R verwendet
+wie W (sh.u.) ein anderes Fileformat, bei dem keine Lade- und
+Startadressen mit abgespeichert werden. Dieses Format wird nur aus
+kompatibilitätsgründen unterstützt. Man sollte daher weitgehendst die
+L- und S-Anweisungen verwenden.
+</p>
+<p>
+W Filename a l
+</p>
+<p>
+File ab der Adresse a mit der Laenge l abspeichern, l muß in vielfachen
+von 256 angegeben sein, es können also nur ganze Sektoren geschrieben
+werden.
+</p>
+<p>
+M
+</p>
+<p>
+Rückkehr zum Monitor bzw. zum Basic.
+</p>
+<p>
+Filename
+</p>
+<p>
+Bei Angabe eines Filenames ohne Anweisungsbuchstaben (der Filename muß
+mindestens 2 Buchstaben lang sein) versucht EMDOS, das File zu laden
+und automatisch zu starten. Dabei spielt die beim S-Befehl angegebene
+Startfunktion eine Rolle:
+</p>
+<p>
+Startfunktion =
+</p>
+<ol>
+<li value=0>
+das Programm wird nur geladen, nicht gestartet
+</li>
+<li>
+das Programm wird geladen und anschließend eine K Anweisung
+(Rückkehr zu NASSYS oder zu BASIC) ausgeführt.
+</li>
+<li>
+das Programm wird an der angegebenen Startadresse gestartet.
+</li>
+<li>
+das Programm wird mit einem Call-Befehl gestartet und kann dann mit
+RET zu EMDOS zurückkehren.
+</li>
+</ol>
+<p>
+Alle Anweisungen können auch von Programmen in Maschinensprache aus
+aufgerufen werden. Diese Schnittstelle ist gesondert beschrieben.
+</p>
+<p>
+Neben den eben beschriebenen Anweisungen, gibt es noch weitere Befehle,
+die jedoch nicht immer im Speicher stehen, sondern in Form von
+Programmfiles auf Diskette stehen und je nach Bedarf geladen werden:
+</p>
+
+<?php columnEnd(2); ?>

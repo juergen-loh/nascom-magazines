@@ -1,0 +1,142 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+CBIOS
+</h1>
+<h3 class="donthyphenate">
+BÖHM/EMMELMANN/SCHULMEISTER
+</h3>
+<p>
+ES LÄUFT!
+</p>
+<p>
+Es ist nun fast zwei Jahre her, daß wir uns die ersten Gedanken
+machten, wie wir
+<?php externalLink("CP/M"); ?>
+mit unserem NASCOM zum Laufen bringen. Dazwischen
+lag eine Menge Arbeit und Entwicklung, die die Anpassung von CP/M erst
+möglich machten. Die
+<a href="../../../../83/07/30/text/#article1">Hardwarearbeiten</a>
+von Zippel/Oberle/Schulmeister und der
+<a href="../../../../83/07/41/text/#article1">Softwareeinsatz</a>
+von Helmut Emmelmann haben die Grundlagen ermöglicht.
+</p>
+<p>
+Dieses Heft hat sich deshalb verzögert, weil wir unbedingt noch das
+BIOS hineinbringen wollten, und weil es so ein Meilenstein in der
+Journalentwicklung ist, drucken wir es auch in voller Länge ab (etwas
+kleiner als gewohnt, aber hoffentlich noch lesbar).
+</p>
+<p>
+Da hat sich also
+der Helmut Emmelmann hingesetzt und eine Blocking/Deblocking- Routine
+geschrieben, die notwendig ist, um die 128 Byte Sektoren des CP/M in
+unser 256Byte-Format zu &quot;übersetzen&quot;. Dann hat er das PHEAS
+eingebaut (ich bin also im BIOS auch verewigt) und von irgendwo her
+Tastaturroutinen und noch einiges herbeigezaubert.
+</p>
+<p>
+An meinem Rechner
+wurde das fertige Produkt getestet und entwanzt: nach einem halben
+Nachmittag lief das CP/M in seiner 48x16 Bildschirmversion. Leider lag
+das Assemblerlisting nur für den CP/M Makroassembler vor, und ich mußte
+es ins ZEAP Format bringen, damit die Journalleser eigene Veränderungen
+vornehmen können, um es an ihren individuellen Rechner anzupassen.
+Plötzlich ging nichts mehr, und ich habe einige Tage (gebraucht, um
+herauszufinden, daß der berüchtigte
+&quot;<a href="../../../m1/10/text/#article1">Verschiebefehler</a>&quot;
+der
+Floppy-Karte wieder aufgetaucht war.
+</p>
+<p>
+Deshalb ganz wichtig:
+</p>
+<p>
+Wenn Sie Veränderungen am BIOS vornehmen, achten Sie darauf, daß
+folgende Labels nie auf einer Adresse liegen, die mit C,D,E oder F
+endet.:
+</p>
+<pre class="donthyphenate">
+HOMEW  Zeile 1375
+SEEKW  Zeile 1384
+READW  Zeile 1402
+WRITEW Zeile 1417
+</pre>
+<p>
+In solch einem Falle muß man eben vorher einige NOPs einschieben, wie
+es auch im vorliegenden Listing der Fall ist.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Zum BIOS habe ich den WBOOT umgeschrieben
+(<a href="../../36/text/#article1">Listing</a> abgedruckt). Ab
+Zeile 440 entspricht das Programm dem Abdruck in
+<a href="../../../../83/12/18/text/#article1">Heft 12-83</a>.
+</p>
+<p>
+Um das CP/M erst mal auf die Systemspuren zu bringen, habe ich auch
+das NASGEN
+(<a href="../../../../83/12/20/text/#article1">Heft 12-83</a>)
+zum
+<a href="../../36/text/#article2">CPMGEN</a>
+umfrisiert. An das SYSGEN habe ich
+mich noch nicht herangewagt. Die EMDOS- Programme sind mir im
+Augenblick eben doch viel vertrauter.
+</p>
+<p>
+Die Besteller des CP/M erhalten von uns eine Diskette, die auf den
+Systemspuren das CP/M mit der Grundversion des BIOS enthält und direkt
+gebootet werden kann (mit dem bekannten
+<a href="../../../../83/12/15/text/#article1">COLDBOOT</a>,
+den Sie ja wohl alle im EPROM haben).
+</p>
+<p>
+Das CP/M läuft dann allerdings nur mit einer
+<a href="../../../../83/07/29/text/#article1">48x16 Videokarte</a>
+deren Bildschirmspeicher auf #F800 gelegt ist.
+</p>
+<p>
+Eine Beschreibung, wie die
+<a href="../../../../83/07/29/text/#article1">List&amp;Niemann Karte</a>
+einfach auf diesen
+Bereich umzustellen ist, folgt
+<a href="../../28/text/#article1">weiter unten</a>.
+Bei der NASCOM1 oder
+NASCOM2 Grundplatine müssen Sie sich allerdings selbst eine
+Hardwareumschaltung des Bildschirmspeichers einfallen lassen. Bitte
+schicken Sie Ihre Lösungen an uns ein, damit wir den anderen Lesern
+hier Tips geben können.
+</p>
+<p>
+Aber auch die Benutzer der
+<a href="../../../01/03/text/#article2">Grafikkarte</a>
+(Klaassen/Schulmeister) dürfen
+sich freuen, denn Karl Schulmeister hat eine hervorragende Software für
+den GDP erstellt, und es ist mir überraschend schnell gelungen (nach
+ein paar Ferngesprächen mit Österreich) sie ins BIOS einzubinden.
+</p>
+<p>
+Was macht nun der Besitzer der Grafikkarte, der die Grundversion nicht
+booten kann? Ganz einfach: wir haben ja EMDOS. Mit EMDOS kann der ZEAP
+Sourcecode für die Grafikversion (leider in zwei Teilen GBIOS1 ab 1000H
+und GBIOS2 ab 2000H) eingelesen und assembliert werden. Dann lädt man
+das CP/M ab C400H vorne dran und kann alles zusammen mit CPMGEN auf die
+Systemspuren bringen.
+</p>
+<p>
+Gestartet wird dann mit EDA00 oder mit dem Booten
+der Diskette (bei mir geht das -wie vor langer Zeit beschrieben- mit
+der &quot;L&quot;-Taste.
+</p>
+<p>
+Wer nun weder 48 Zeichen bei #F800 noch die Grafikkarte hat, kann
+versuchen, anhand der Listings seine eigene Bildschirmausgabe
+anzupassen, Für die
+<a href="../../../../83/03/05/text/#article1">80Z-Karte</a>
+(Zippel/Oberle/Schulmeister) werden wir
+jedenfalls die Anpassung noch nachliefern.
+</p>
+
+<?php columnEnd(2); ?>

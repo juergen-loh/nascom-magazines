@@ -1,0 +1,111 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Der neue Monitor
+</h1>
+<h3>
+Teil 2
+</h3>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<h4>
+FEEDBACK ERWÜNSCHT
+</h4>
+<p>
+Bereits im <a href="../../../01/24/text/#article1">Januarheft</a>
+des 80-BUS-Journals erschien der erste Teil
+dieses Artikels. Seither war ich leider zu sehr mit anderen Aufgaben
+beschäftigt, um weiter an dem neuen Monitor arbeiten zu können. Es
+fehlte bislang aber auch an Resonanz aus der Leserschaft. Wie groß ist
+überhaupt das Interessse an
+<?php externalLink("CP/M","",""); ?>-Kompatibilität?
+(Wen der Preis für
+Diskettensysteme immer noch abschreckt, der wird vielleicht von der
+Ankündigung eines billigen Controllers im 80-BUS-Journal getröstet -
+vielleicht kann man auch Sinclairs neue Laufwerke (ca. 240,&ndash;&nbsp;DM!)
+verwenden, wenn sie endlich auf den Markt kommen.) Und welche
+Funktionen soll der Monitor über die CP/M-Schnittstelle hinaus
+übernehmen? (Sollen wir z.B. die Grafikroutinen von Michael Bach
+einbauen? &ndash; Wird eine Singlestep-Funktion benötigt? &ndash; etc.) Also bitte:
+Wünsche, Vorschlage, vielleicht auch schon fertige Routinen an die
+Redaktion schicken. Je mehr Leute sich beteiligen, desto interessanter
+und vielseitiger wird das Betriebssystem.
+</p>
+<h4>
+EINE LANZE FÜR DEN NASCOM
+</h4>
+<p>
+In der letzten Zeit hatte ich Gelegenheit, einige Tage mit einem
+CP/M-System zu arbeiten und auch ein
+<?php externalLink("ELZET80", "ELZET-80", ""); ?>-System
+mit MDCR-Laufwerken auszuprobieren. In beiden Fällen war ich von der
+Systemsoftware recht enttäuscht. Wem das komfortable Editieren auf dem
+ganzen Bildschirm mit NAS-SYS zur Gewohnheit geworden ist, der tut sich
+schwer mit dem CP/M-Editor, und auch auf den direkten
+Bildschirmspeicherzugriff möchte ich beim Programmieren ungern
+verzichten. Und erst das Entwanzen von Programmen! Unter CP/M passiert
+z.B. folgendes: Ein neues Programm bricht zusammen. Der Ausstieg mit
+Reset ruft das Bootstrap-Programm auf. Damit wird CP/M neu geladen, und
+zwar zunächst nach 100H und dann auf den entsprechenden Arbeitsbereich
+verschoben (je nach Konfiguration). Wer die Fehlersuche so gewohnt ist,
+daß er sich zunächst einmal den Speicher daraufhin ansieht, was da
+eigentlich passiert ist, der findet unter CP/M das Programm nicht
+wieder, da es inzwischen beim Neuladen von CP/M
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+überschrieben wurde. Naturlich enthält CP/M einen Debugger mit
+Trace-Modus, mit man das Programm testen kann, aber ich finde das alles
+ganz schön umständlich. Klein aber fein ist unsere NASCOM-Software, und
+das &quot;klein&quot; ist durchaus anerkennend gemeint. Was z.B. ZEAP
+mit einer Programmlänge von 4K an Komfort und Möglichkeiten bietet,
+schafft das Assembler-Editor-Programm ZEDASM für den
+<?php externalLink("ELZET80", "ELZET-80"); ?>
+trotz
+eines Programmumfangs von 9K noch lange nicht. Und wer sich darüber
+geärgert hat, daß fast die ganze NASCOM-System-Dokumentation nur in
+englischer Sprache erhältlich ist, der sollte sich einmal das
+sogenannte &quot;Deutsch&quot; der Verfasser des Handbuchs zum
+<?php externalLink("ELZET80", "ELZET-80", ""); ?>-Monitor
+zu Gemüte fuhren. Haben Sie vielleicht schon einmal
+&quot;Charakterwerte in Ihrem Speicher gefunden&quot;? Wenn nicht,
+können Sie ihm &quot;Charakter eingeben&quot; mit diesem unglaublichen
+Monitor.
+</p>
+<h4>
+WAS WIR BRAUCHEN
+</h4>
+<p>
+Damit sich möglichst viele Leser an der Entwicklung beteiligen können,
+will ich versuchen einen Überblick zu geben über das, was wir für den
+Monitor brauchen.
+</p>
+<p>
+I/O-Treiber: Tastatur, Bildschirm (wahlweise 48*16
+und 80*24)&nbsp;, serielle Schnittstelle, Centronics-Anschluß über PIO; soll
+beliebig vom Benutzer erweiterbar sein.
+</p>
+<p>
+Massenspeicher: Treiberroutinen für Cassette, MDCR, Floppies;
+Dateiverwaltung über Directory mit CP/M-kompatiblen Routinen: Öffnen
+und Schließen von Dateien, Sequentielles Lesen und Schreiben von
+Records für alle Medien (RP/M-kompatibles Cassettenformat!); Wahlfreier
+Zugriff für schnelle Medien (evtl. auch für MDCR!).
+</p>
+<p>
+Kommandointerpreter und Monitor: Eine Schmalspurlösung mit einfacher
+Speicheranzeige und -Veränderung oder ein komfortables FORTH-ähnliches
+Betriebssystem incl. Rechenroutinen und Compiler (mich ärgert es
+eigentlich, daß ich immer wieder zum Taschenrechner greifen muß, wenn
+ich am Computer sitze und nicht gerade BASIC geladen habe).
+</p>
+<p>
+Der Aufwand ist vielleicht geringer als man glaubt, da vieles von dem,
+was wir brauchen, im NASCOM-Journal oder 80-BUS-Journal bereits
+erschienen ist oder in Kürze erscheinen wird. Darum nochmal die Bitte:
+Teilen Sie uns Ihre Wünsche und Vorschläge mit.
+</p>
+<?php Hline("100%", "2"); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,87 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+<p>
+Ein weiterer Käfer betrifft die Benutzung von EMDOS durch
+Maschinenprogramme, wie sie in
+<a href="../../../01/47/text/#article3">Heft 1/84</a> beschrieben wurde. Die
+Aufrufnummern beginnen mit 61 (nicht 60). File lesen wird also durch
+61H, File schreiben durch 62H etc. aufgerufen. Hoffentlich haben Sie
+nicht so lange ergebnislos herumprobiert
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+wie ich! Das werde ich dem Helmut Emmelmann nicht verzeihen!
+</p>
+<p>
+Als Wiedergutmachung hat er dafür einige Informationen über den Aufbau
+der File-Header und des Directory herausgerückt, die ich hiermit
+veröffentlichen will.
+</p>
+<h4>
+Directory
+</h4>
+<p>
+Ein Eintrag umfaßt 32 Bytes. Diese haben folgende Bedeutung:
+</p>
+
+<table style="width: 100%">
+<tr><td>1.</td><td>00 Beginn des Eintrags</td></tr>
+<tr><td>2.-9.</td><td>Filename</td></tr>
+<tr><td>10.-12.</td><td>Name-Extension z.B. BAS, NAS etc.</td></tr>
+<tr><td>13.</td><td>Extension Nr (beim ersten Eintrag 0)</td></tr>
+<tr><td>14.-15.</td><td>unbenutzt</td></tr>
+<tr><td>16.</td><td>Länge des Files in Rec. a 128 Bytes</td></tr>
+<tr><td>17.-32.</td><td>jeweilige Gruppennummern</td></tr>
+</table>
+
+<p>
+Die Sektoren sind zu Gruppen von je 4 (entspricht 1 KByte)
+zusammengefaßt. Das Directory beginnt mit der ersten Gruppe auf der
+Diskette (Gruppe0).
+</p>
+<p>
+Lange Programme belegen 2 Einträge im Directory,
+die hintereinander liegen, wobei aber auch andere Einträge
+dazwischengeschoben sein können. EMDOS kann nur eine solche
+&quot;Extension&quot; verarbeiten, weshalb die Maximallänge eines Files
+auch 31 KByte beträgt.
+</p>
+<h4>
+File Header
+</h4>
+<p>
+Der Beginn eines Files, wie er auf der
+Diskette gespeichert ist, wird File Header
+genannt. Er besteht jeweils aus 16 Bytes mit
+folgender Bedeutung:
+</p>
+<p>
+11 22 44 48 Kennung für Beginn<br>
+Ladeadresse<br>
+Länge<br>
+Startadresse<br>
+Funktion (ausführen,Call etc.)<br>
+4 Bytes unbenutzt
+</p>
+<p>
+Vielleicht geht nun jemand daran, die EMDOS Aufrufe in ZEAP, NASPEN
+etc. einzubauen. Damit wäre ein viel komfortableres Arbeiten möglich.
+</p>
+<p>
+Inzwischen hat sich EMDOS sehr bewährt, und ich kann mir nicht mehr
+vorsteilen, wie ich so lange mit Cassetten arbeiten konnte. Die
+Austauschbarkeit mit den
+<?php externalLink("mc-CP/M","mc",""); ?>-Benutzern
+ist inzwischen auch durch die
+Praxis bewiesen: EMDOS kann Texte lesen, die unter
+<?php externalLink("CP/M"); ?>
+mit einem
+<?php externalLink("mc-CP/M","mc",""); ?>-Computer
+abgespeichert wurden.
+</p>
+<p>
+Bei 8&quot;-Laufwerken hat sich aber herausgestellt,
+</p>
+
+<?php columnEnd(2); ?>

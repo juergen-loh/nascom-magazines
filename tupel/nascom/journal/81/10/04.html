@@ -1,0 +1,161 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Wert auf dem Stack obenauf. Wie man sieht,
+ist bei der Programmierung mit MCODE kein
+Rückkehrbefehl erforderlich; der Rücksprung
+zum Interpreter (NEXT) wird mit Hilfe der
+Konstante NEXTADR (= 103EH) von MCODE an das
+Maschinenprogramm angehängt.
+</p>
+<p>
+Will man von FORTH aus Drucker oder Cassettenrecorder
+betreiben, so kann man sich der
+Ein- und Ausgaberoutinen des Betriebssystems
+bedienen. Es empfiehlt sich jedoch, auch die
+Routinen CIN und COUT zu verbessern. Dazu
+definieren wir zunächst einige Hilfsfunktionen:
+</p>
+<pre class="donthyphenate">
+MCODE  NORMIN
+XXXX CF 6F 26 00 E5.
+MCODE  BLINK
+XXXX DF 7B 6F 26 00 E5.
+MCODE  NORMOUT
+XXXX C1 79 F7.
+</pre>
+<p>
+Die Adressen XXXX werden von MCODE angegeben
+und nicht vom Benutzer. Die folgende Funktion verlangt einen Namen als
+Argument. Wird dieser Namen im Dictionary gefunden, so wird die
+Startadresse des zugehörigen Codes auf den Stack gegeben, andernfalls
+wird der Name ausgedruckt:
+</p>
+<pre class="donthyphenate">
+: CADR GETWORD NAMES PEEKW LOOKUP
+       EQZ IF PRINTS THEN         ;
+</pre>
+<p>
+Wir definieren folgende Variablen, wobei mit
+CADR der Anfangswert berechnet wird:
+</p>
+<pre class="donthyphenate">
+CADR NORMOUT VARIABLE OUTVAR
+CADR NORMIN  VARIABLE INVAR
+</pre>
+<p>
+Wir werden nun neue Ein-/Ausgabefunktionen
+definieren, die an Stelle von CIN und COUT treten sollen. Sie rufen
+diejenige Ein- oder Ausgaberoutine auf, deren Startadresse in den
+Variablen INVAR bzw. OUTVAR gespeichert sind.
+</p>
+<pre class="donthyphenate">
+: VAREX PEEKW EXECUTE ;
+: COUT2 OUTVAR VAREX ;
+</pre>
+<p>
+Im Interpretermodus geben wir nun folgenden Befehl ein:
+</p>
+<pre class="donthyphenate">
+CADR COUT2 CADR COUT 8 MOVEBYTES DEL
+</pre>
+<p>
+COUT2 kann nun unter der Adresse
+von COUT aufgerufen werden und wird deshalb gelöscht. Ebenso verfahren
+wir mit CIN; wir compilieren wiederum vorläufig CIN2, schieben sie an
+die Stelle von CIN, und löschen sie dann wieder, da man sie mit CIN
+aufrufen kann:
+</p>
+<pre class="donthyphenate">
+:/.IN2  INVAR VAREX ;
+CADR CIN2 CADR CIN 8 MOVEBYTES DEL
+</pre>
+<p>
+Nachdem wir nun so ausgiebig an dem System herumgebastelt haben, wollen
+wir nun einige simple FORTH-Funktionen compilieren:
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<pre class="donthyphenate">
+MCODE UNDER
+XXXX E1 D1 E5 D5 E5.
+</pre>
+<p>
+kopiert den obersten Stackwert an die dritte
+Stackposition.
+</p>
+<pre class="donthyphenate">
+: &lt;  &gt; EQZ ;
+: /   /MOD POP ;
+: MOD /MOD SWAP POP ;
+: MAX OVER OVER &gt; IF POP ELSE SWAP POP THEN ;
+: MIN OVER OVER &lt; IF POP ELSE SWAP POP THEN ;
+</pre>
+<p>
+Diese trivialen Funktionen erwarten jeweils
+2 Argumente auf dem Stack.
+</p>
+<p>
+Die nächsten Funktionen sind etwas komplexer
+und greifen direkt auf den Speicher zu:
+</p>
+<pre class="donthyphenate">
+: PRINTM PEEKW CONBXA PRINTS ;
+: MEM+  DUP PEEKW ROT + SWAP POKEW ;
+: FILL SWAP ONE FOR UNDER OVER POKEB
+       INC SWAP LOOP POP POP ;
+: ERASE  0 FILL ;
+: BLANKS 32 FILL ;
+</pre>
+<p>
+PRINTM druckt den Wert an der Adresse (T) aus (dezimal), MEM+ addiert
+den Wert von T-1 an die Adresse (T). FILL schreibt T-1 Bytes vom Wert T
+an die Adresse (T), ERASE und BLANKS schreiben Nullen bzw. Blanks in
+den Speicher, MESSAGE ist dagegen wieder eine definierende Funktion;
+sie erlaubt das Einfügen von Strings in das Programm:
+</p>
+<pre class="donthyphenate">
+: MESSAGE  GETWORD VARBL CMPLW
+    REPEAT  CIN DUP COUT 34 EQ UNTIL
+            DUP 8 EQ IF POP DEC
+                     ELSE OVER POKEB INC
+                     THEN LOOP
+            POP ZERO OVER POKEB INC
+            CODEADR POKEW ;
+</pre>
+<p>
+z.B. eine Error-Meldung:
+</p>
+<pre class="donthyphenate">
+MESSAGE ERROR
+Error&quot;
+</pre>
+<p>
+Die Eingabe wird mit einem Anführungszeichen beendet; sie kann beliebig
+lang sein und auch Leerzeichen enthalten. Mit TYPE können derartige
+Strings ausgegeben werden.
+</p>
+<pre class="donthyphenate">
+: TYPE REPEAT DUP PEEKB DUP EQZ UNTIL COUT
+              INC LOOP POP POP ;
+</pre>
+<p>
+TYPE erwartet eine Adresse auf dem Stack, der Name
+des Strings muß ihr vorausgehen:
+</p>
+<pre class="donthyphenate">
+ERROR TYPE
+Error
+</pre>
+<p>
+Da der Platz im NASCOM-Journal beschränkt ist muß ich hier schließen.
+Im
+<a href="../../../12/03/text/#article1">nächsten Heft</a>
+folgen dann ein Bildschirm-Editor und die
+Cassettenroutinen, sowie ein erstes kleines Programm in FORTH, eine
+neue Version eines &quot;alten&quot; Computerspiels: LIFE in einem
+&quot;geschlossenen Universum&quot;.
+</p>
+
+<?php columnEnd(2); ?>

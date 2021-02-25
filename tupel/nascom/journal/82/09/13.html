@@ -1,0 +1,82 @@
+<?php columnStartJustify(2, 2); ?>
+
+<ol start=3>
+<li>
+Bildinformation hardwaremäßig speichern (bis maximal 5&nbsp;MHz)
+</li><li>
+Bildinformation in Computergerechter Geschwindigkeit auslesen und
+verarbeiten
+</li><li>
+Wenn Halbbild noch nicht vollständig erfaßt, dann n=n+1 und zurück
+zu 1.
+</li>
+</ol>
+
+<p>
+Dazu müssen als Hardware die Komponenten zur Verfugung stehen, die im
+folgenden Blockschaltbild wiedergegeben sind.
+</p>
+<p>
+Der Computer stellt also über PIO die Zeilennummer ein (von 1 bis 156).
+Beim zweiten Halbbild wird der Zähler freigegeben und zählt mit jeder
+2. Zeile rückwärts. Nach der eingestellten Anzahl wird ein Impuls
+ausgegeben (mit einem Monoflop auf 64 usec festgelegt, was etwa der
+Zeit entspricht, die man zum Einlesen einer Zeile benötigt). Dieser
+Impuls läßt einen Oszillator starten, der mithilfe eines Zählers ein
+RAM &quot;hochzählt&quot;, das die digitalisierten Bildpunkte einliest.
+(Aus dem Blockschaltbild ist nicht ersichtlich, daß der RAM- Zähler
+nach 256 Takten automatisch stoppt).
+</p>
+<p>
+Der Rechner schaltet dann den Multiplexer (aus Gattern bestehend) auf
+den Auslesetakt um, den er selbst liefert. Nach dem Auslesen und
+Abspeichern des Zeileninhalts wird die Zeilennummer erhöht und der
+Multiplexer wieder auf Einlesetakt umgeschaltet. Die nächste Zeile kann
+eingelesen werden.
+</p>
+<p>
+Wie bereits erwähnt, kann der Zeileninhalt in Grauwerten abgespeichert
+werden, wenn man die Analogspannung durch A/D-Wandler entsprechend
+umsetzt. Da mir aber mit einem Drucker bei entsprechender Auflösung und
+auch auf dem Bildschirm ohne dazu notwendige Hardwareerweiterung keine
+Möglichkeit gegeben ist, Grauwerte darzustellen, kann ich mir auch den
+Aufwand zur Speicherung sparen. Die Bildinformation soll also nur
+schwarz/weiß verarbeitet werden.
+</p>
+<p>
+Die Digitalisierung der Zeileninhalte besteht also nur darin, daß
+mittels eines Komparators zwischen zwei Helligkeitswerten unterschieden
+wird. Ist der Punkt dunkler als der einstellbare Grenzwert, kippt der
+Komparator, und damit die gespeicherte Information, auf high. Ist er
+heller, wird ein low gespeichert. Dadurch entstehen sehr kontrastreiche
+Bilder, die vielleicht nicht nach jedermanns Geschmack sind. Wie
+weit man da Kompromisse eingehen muß, um Hardware- und Softwareaufwand
+in Grenzen zu halten, kann wohl nur im Versuch festgestellt werden.
+</p>
+<p>
+wird fortgesetzt
+</p>
+
+<?php columnChange(2); ?>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-13-1.jpeg"); ?>
+<p>
+Impulsfolge einer Kamera mit positivem Bildinhalt (weiß=positiv). Ein
+negativer Bildinhalt müßte z.B. durch einen Transistor invertiert
+werden. Bei meiner Kamera beträgt die Amplitude etwa 1 V.
+</p>
+<?php boxEnd(); ?>
+
+<br>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-13-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+
+<p id="nascompl">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-13-3.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

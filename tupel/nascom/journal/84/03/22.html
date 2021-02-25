@@ -1,0 +1,170 @@
+<?php columnStartJustify(2); ?>
+
+<p>
+Um trotzdem zuverlaessig arbeiten zu koennen, sollte man auf keinen
+Fall vergessen, bei jedem Uebergang TTL- CMOS einen Pull-Up-Widerstand
+von etwa 5 kOhm vorzusehen. Vorsicht!! Nicht auf einem terminierten BUS
+!! Fazit: Das Verwenden normaler LS-TTL&rsquo;s ist immer noch das Beste.
+</p>
+<h4>
+Probleme mit Floppy
+</h4>
+<p>
+Nun, mit BASF-Laufwerken funktioniert die Sache ja ganz gut, nur mit
+anderen Laufwerken gibt es immer wieder Probleme. Ich moechte daher an
+dieser Stelle auf einige Kleinigkeiten hinweisen, die mir beim Betrieb
+mit Shugart SA&nbsp;460 Laufwerken untergekommen sind. Das SA 460&nbsp;ist ein
+zweiseitiges Laufwerk mit 96 tpi&nbsp;, also 80 Spuren auf einer Seite. Es
+ist elektrisch kompatibel mit dem SA&nbsp;410, welches jedoch nur eine Seite
+hat.
+</p>
+<h4>
+Softwareprobleme:
+</h4>
+<p>
+Die Zeiten, die das Laufwerk zum Umschalten von Lesen oder Schreiben
+auf einen Track-to-Track - Befehl benoetigt, sind etwas laenger als bei
+BASF. Beim DOS macht sich das nicht bemerkbar, aber beim Formatieren
+verschluckt es einige Track-to-Track - Befehle und ueberschreibt schon
+formatierte Spuren, sodass das DOS bei solchen Spuren eine
+Fehlermeldung bringt, weil es die ueberschriebene Spur vermisst.
+Abhilfe schafft eine kleine Warteschleife vor dem Befehl, den Kopf in
+die naechste Spur zu ruecken, etwa so: 06 FF 10 FE&nbsp;.
+</p>
+<p>
+Ein aehnlicher Effekt trat beim Programm NASGEN auf: Hier ging mir
+immer der erste Block auf Spur 0 verloren. Diesen ersten Block habe ich
+am Ende von NASGEN einfach noch einmal geschrieben (eine unbeholfene
+aber wirksame Loesung.
+</p>
+<p>
+Was ich leider immer noch nicht kann, ist, mehr als 64 Spuren DD zu
+beschreiben, da das DOS in seiner jetzigen Version nur maximal 256 (FF)
+1K-Bloecke verwalten kann. Vielleicht kann mir jemand hierfuer einen
+Tip geben, der ohne groessere Aenderungen im DOS (PHEAS) durchfuehrbar
+ist.
+</p>
+<h4>
+Hardwareproblem:
+</h4>
+<p>
+Dieses Problem betrifft alle Laufwerke ohne READY-Signal. Die beiden
+Monoflops (74&nbsp;LS&nbsp;123) sind normalerweise so nicht funktionsfaehig. An
+diesem IC duerfen laut Datenblatt beim RC-Glied Widerstaende von
+maximal 70 kOhm verwendet werden. In der Schaltung sind jedoch 220 kOhm
+vorgesehen. Die Widerstaende und Kondensatoren sind entsprechend zu
+aendern, sodass gleiche Zeiten erzeugt werden. Es kann dabei von einem
+Verhalten des Monoflops R * C proportional t ausgegangen werden.
+</p>
+
+<br>
+
+<h4>
+KLEINANZEIGE
+</h4>
+<p>
+32 Stück
+<?php externalLink("4116"); ?>
+preiswert abzugeben<br>
+Wofgang Bergmann ____/______<br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<h1 id="article1">
+ECB Karten
+</h1>
+<h3>
+von BERND SCHUHMACHER
+</h3>
+<h4>
+ECB - Karten
+</h4>
+<p>
+Wie viele andere auch, habe ich mich entschlossen, ein NASSYS -
+<?php externalLink("CP/M"); ?>
+- kompatibles System auf Europakartenbasis auf zubauen.
+</p>
+<p>
+Zur Zeit laufen bei mir die
+<a href="../../../../83/06/07/text/#article1">CPU - Karte</a>,
+<a href="../../../../83/09/18/text/#article1">Port&nbsp;0&nbsp;2 Karte</a>
+und
+<a href="../../../../83/07/29/text/#article1">48&nbsp;x&nbsp;16 - Karte</a>
+von K.S. (b. 4MHz). Ich moechte auf diesem Wege ein dickes
+Kompliment an alle am Entwurf und Fertigen der
+<?php externalLink("ECB"); ?>
+- Karten Beteiligten
+verteilen, denn der Nachbau war entgegen jeder Erwartung weitgehend
+problemlos.
+</p>
+<p>
+Auf einige kleine Schwierigkeiten moechte ich nachstehend hinweisen.:
+</p>
+<h4>
+CPU - Karte:
+</h4>
+<p>
+Der 4&nbsp;MHz - Taktgenerator schwingt bei Verwendung eines 7404 nicht
+an. Eventuell muesste die RC - Kombination abgeaendert werden. Mit
+einem 74&nbsp;LS&nbsp;04 jedoch gibt es keine Probleme.
+</p>
+<h4>
+Port 0 - 2 - Karte:
+</h4>
+<p>
+Beim 74&nbsp;LS&nbsp;378 (Loetseite) sind die Leiterbahnen zu den Pins 12
+und 13 in etwa 0,5 cm Abstand vom Sockel miteinander verbunden. Diese
+Verbindung muss aufgetrennt werden. Es ist auf meiner Platine nicht
+erkennbar&nbsp;, ob ein Layoutfehler oder Aetzfehler vorliegt.
+</p>
+<p>
+Im Schaltplan muss am Sockel PL2 die Zahl 6 durch 4 ersetzt werden.
+</p>
+<p>
+Reset fuehrt nicht auf 26c, wie im Schaltplan angegeben, sondern auf
+31c.
+</p>
+<p>
+Weit schwieriger wie diese vergleichsweise harmlosen Fehler ist
+die Besorgung der fuer den Nachbau erforderlichen Bauteile.
+</p>
+<p>
+Seit 3
+Monaten versuche ich vergeblich einige IC&rsquo;s fuer die
+<a href="../../../03/10/text/#article1">256k - Karte</a>
+und die
+<a href="../../../../83/07/30/text/#article1">FDC - Karte</a>
+zu beschaffen.
+</p>
+<p>
+Nicht etwa die Speicher IC&rsquo;s oder die 40 pol. &quot;Schlachtschiffe
+&quot; sind knapp, einfachste IC&rsquo;s wie:
+</p>
+<p>
+7406<br>
+74 LS 393<br>
+74 LS 240<br>
+74 LS 32<br>
+74 S 08<br>
+74132<br>
+74 LS 273
+</p>
+<p>
+versuche ich seit Monaten ohne Erfolg zu bestellen.
+</p>
+<p>
+Meine Anfragen bei zB:
+</p>
+<p>
+Dahms El. Viernheim<br>
+Frank El. Nuernberg<br>
+Buerklin Muenchen<br>
+Reichelt Wilhelmshaven
+</p>
+<p>
+nach Lieferzeiten erbrachten nur ein Schulterzucken. Vielleicht hat
+ein Leser des 80 Bus- Journals hier ein Tip auf Lager.Ich koennte mir
+vorstellen, dass ich nicht ganz allein mit diesem Problem dastehe.
+</p>
+
+<?php columnEnd(2); ?>

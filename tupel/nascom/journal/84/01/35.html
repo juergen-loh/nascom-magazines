@@ -1,0 +1,60 @@
+<?php columnStartJustify(3); ?>
+
+<?php boxStart("R"); ?>
+<p id="article1">
+Der Ausdruck wurde auf einem
+<?php externalLink("Epson MX-80F/T","MX 80FT"); ?>
+mit U-80-HR 3+ Nachrüstmodul von
+Unitronic, gemacht. (Ass. Listing liegt bei).
+</p>
+<p>
+Dabei wurde im Einzelpunkt-Modus mit 2 Nadeln jeweils 2x gedruckt.
+Dadurch entstand pro Punkt eine 2x2 Matrix. Jede Zeile wurde viermal
+gedruckt um mehr Kontrast zu erhalten.
+</p>
+<p>
+Dazu noch ein kleiner Trick: Der Drucker erlaubt für eine Zeile 480
+Punkte, für diese Bildbreite waren aber 256x2, also 512 Punkte
+erforderlich. Dazu habe ich 256 Punkte eingegeben, danach ein BS,
+dadurch wird gedruckt und der Druckerbuffer geleert, danach die
+restlichen 256 Punkte und CR (0DH) bzw. nach viermaligen) Druck der
+gleichen Zeile LF (0AH).
+</p>
+<p>
+Das müsste auch bei neueren Druckern der Epson-Familie und evtl.
+anderen Druckern die ein BS erlauben funktionieren.
+</p>
+<?php boxEnd(); ?>
+<?php boxStartJustify("LBR"); ?>
+<br>
+<p id="article2">
+Mit diesem Problem hat sich Herr Schulmeister in
+<a href="../../../../83/12/23/text/#article2">Heft 12/83</a>
+herumgeschlagen.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-35-1.jpeg"); ?>
+<p>
+Herrn Schulmeisters Vermutung, im
+<?php externalLink("mc","MC"); ?>
+Programm sind Fehler, stimmt also
+nicht. Es kommt nur darauf an, an welchem Pin die Adressleitungen A0
+und A1 jeweils angeschlossen sind.
+</p>
+<p>
+<i>Wolfgang Klemm<br>
+Düsseldorf</i>
+</p>
+<?php boxEnd(); ?>
+
+<p id="nascompl">
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-35-2.jpeg"); ?>
+</p>
+<?php columnChange(23); ?>
+
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-35-3.jpeg"); ?>
+
+<?php boxStart("R"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-35-4.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(3); ?>

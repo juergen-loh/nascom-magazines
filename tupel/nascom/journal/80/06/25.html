@@ -1,0 +1,90 @@
+<?php columnStart(2, 2); ?>
+
+<h4 id="article1"><u>
+DRUCKAUSGABE FÜR DEN NASCOM&nbsp;1
+</u></h4>
+<p>
+Im Folgenden beschreibe ich den Anschluß eines IBM-Kugelkopfdruckers
+3982 an ein NASCOM-System.
+</p>
+<p>
+Inwiefern das auf Kugelkopfschreibmaschinen übertragbar ist, kann ich
+nicht sagen, es soll aber einen Umbausatz (Magnete) zum Nachrüsten
+geben. Auch sonst kenne ich mich mit den Dingern nicht aus und mußte
+das meiste durch Probieren ermitteln.
+</p>
+<p>
+Die Bewegungen werden durch Magnete ausgelöst: für den Kugelkopf 7
+Stück und je einer für M-O (?), rotes Farbband, schwarzes Farbband,
+SP(ace), BS (Backspace), CR (neue Zeile + Kopf zum Zeilenanfang)&nbsp;,
+TAB(ulator), Index (?), UC (upper case = Großschreibung) und LC (lower
+case)&nbsp;. Die Relais werden mit 48 V angetrieben und müssen für ca. 10 ms
+(CR 50 ms) angezogen bleiben, um den entsprechenden Vorgang auszulösen.
+Drucken eines Zeichens dauert ca. 60 ms, CR je nach Zeilenlänge.
+</p>
+<p>
+7 Relais für den Kugelkopf sind naturlich redundant für die 44 Zeichen
+des Kugelkopfes (ohne Shift), man braucht aber leider alle. Ich habe
+den Kode durch Ausprobieren ermittelt und bei mehreren Möglickeiten die
+ausgewählt, bei der weniger Relais aktiviert werden. Um trotzdem mit
+8 Steuerleitungen auszukommen, wird mit Bit 7 zwischen druckbaren
+Zeichen und Sonderzeichen umgeschaltet. Dafür ist im Drucker ein
+Interface eingebaut mit
+4 IC&rsquo;s CD 4001 und Darlington-Transistoren zur Ansteuerung der Relais
+(Freilaufdioden waren schon vorhanden). Die offenen Eingänge ziehen
+die 10k-Widerstände hoch, damit sind die Relais ausgeschaltet&nbsp;. Lo
+aktiviert die Eingänge. Damit beim Einschalten des Rechners der Drucker
+nicht losrattert, habe ich ein 8212 als O-Port benutzt und CLR an Reset
+gelegt. Jede Leitung wird durch 4049-Buffer noch mal invertiert und
+alles stimmt (man könnte auch ein PIO nehmen).
+</p>
+<p>
+Am Besten wär&rsquo;s ja gewesen, den Drucker mit einer seriellen
+Schnittstelle auszustatten,
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+es entstünde jedoch ein ziemlicher Aufwand insbesondere wegen
+Klein-Großumschaltung. Ich habe stattdessen die Alternative eines
+Software-Treibers gewählt. Ein Unterprogramm (SELPRI), das relokatibel
+ist, erfüllt folgende Aufgaben: es erkennt Sonderzeichen (SP, BS, NL)
+und führt sie aus. Druckbare Zeichen werden in den Seletrik
+(=Kugelkopf-)-Kode umgewandelt. Dann wird überprüft, in welchem Shift-
+Zustand der Kopf steht und ggf. wird er gedreht, dann das Zeichen
+gedruckt. Bestimmte Zeichen, die der Kugelkopf nicht hat, die aber
+dringend nötig sind, wie z.B. $,&pound;,*, <s>(</s> (soll 'kleiner' bedeuten) und
+<s>)</s> werden durch Doppeldruck dargestellt: 1. Zeichen, BS, 2. Zeichen.
+</p>
+<p>
+Als Merker für den Shift-Zustand dient Bit 7 in ARGS von NASBUG. Wenn
+ein anderes Bit ungleich 0 ist, wird der Shift-Zustand und ggf. das PIO
+initialisiert. Da ARGS beim Starten des Hauptprogrammes benutzt wird,
+initialisiert das Programm den Drucker beim ersten Aufruf.
+</p>
+<p>
+Zunächst
+hatte ich feste Zeitkonstanten programmiert, das gab aber bei NL
+unnötig lange Verzögerungen (man könnte natürlich auch einen
+Buchstabenzähler einbauen und die Zeit berücksichtigen, die der Kopf
+zur Rückreise braucht), aber man kann insgesamt etwas an
+Geschwindigkeit gewinnen, wenn eine Rückmeldung benutzt wird.
+</p>
+<p>
+Das ist in der Maschine auch schon vorgesehen, es wird aber noch ein
+Eingang benötigt. Ich habe Bit 7 der Tastaturschnittstelle genommen.
+</p>
+<p>
+Näheres geht aus dem schwach kommentierten
+<a href="../../45/text/#article1">Quellkode</a>
+hervor. Die
+Kode-Tabelle gilt nur für eine bestimmte Kugelkopftype, (Courier 12),
+es gibt leider mehrere Ausführungen davon.
+</p>
+<table style="margin-left: auto; margin-right: 0"><tr><td>
+Michael Bach<br>
+__ __________ __<br>
+____ Stegen<br>
+(_____) _____
+</td></tr></table>
+
+<?php columnEnd(2); ?>

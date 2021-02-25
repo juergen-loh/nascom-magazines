@@ -1,0 +1,109 @@
+<?php columnStartJustify(2, 2); ?>
+
+<table>
+<tr><td></td><td>Bildschirmadresse in XLP und YLP</td></tr>
+<tr><td>D0-D7</td><td>Datenbus</td></tr>
+<tr><td>A0-A3</td><td>Adreßbus</td></tr>
+<tr><td>R/W</td><td>Read/Write- Signal</td></tr>
+<tr><td>E</td><td>Enable (Chip Select)</td></tr>
+<tr><td>IRQ</td><td>Interrupt request (durch CTRL1 programmierbar</td></tr>
+</table>
+
+<h3 class="gesperrt">
+REGISTER
+</h3>
+<p>
+Die Grafikkarte ist für die Basisadresse 90H ausgelegt. Der GDP enthält
+nun eine Anzahl von Registern, die von dieser Basisadresse aus zu
+errechnen sind. (Register 0 =90, Reg. 1=91 etc).
+</p>
+<p>
+Die Registeradressen finden Sie in der Tabelle.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+<p>
+Hier möchte ich nun die Funktion der Register beschreiben:
+</p>
+<h4>
+X und Y Register
+</h4>
+<p>
+Beide sind 12-Bit-Register, die die Position des nächsten Punktes
+angeben, der in den Bildschirmspeicher geschrieben wird. Beim
+Y-Register wird nur die untere Hälfte benutzt (8 Bit=256 Punkte), beim
+X-Register wird nur dann die obere Hälfte benutzt, wenn die untere
+(LSBX) 255 überschreitet. Dann wird MSBX auf 1 gesetzt.
+</p>
+<h4>
+DELTAX und DELTAY
+</h4>
+<p>
+Beide 8 Bit- Register geben den Abstand auf X- und Y-Achse beim
+Linienzeichnen an. Sie enthalten vorzeichenlose Ganzzahlen.
+</p>
+<h4>
+CSIZE Register
+</h4>
+<p>
+Vergrößerungsfaktor beim Schreiben von Buchstaben
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+und Symbolen. Das MSB des 8-Bit-Registers gibt den Faktor für X,
+das LSB den für Y an (also beide jeweils von 0 bis F).
+</p>
+<h4>
+CTRL1 Register
+</h4>
+<p>
+Alle 7 Bits dieses Registers haben eine gesonderte Bedeutung:
+</p>
+<p>
+Bit0<br>
+Wenn LOW ist kein Schreiben möglich
+</p>
+<p>
+Bit1<br>
+LOW = löschen &nbsp; HIGH = schreiben
+</p>
+<p>
+Bit2<br>
+LOW = normales Schreiben<br>
+HIGH = schnelles Schreiben ohne Bildschirm
+</p>
+<p>
+Bit3<br>
+LOW = alle 12 Bits von X und Y sind signifikant. Es wir ein Bereich von
+4096x 4096 Punkten verwendet (aber natürlich nicht abgebildet)
+</p>
+<p>
+Bit4<br>
+LOW = unterdrückt den Interrupt, der durch den Lichtgriffel ausgelöst
+wird
+</p>
+<p>
+Bit5<br>
+LOW unterdrückt den Interrupt beim vertical blanking
+</p>
+<p>
+Bit6<br>
+LOW = unterdrückt den Interrupt, der anzeigt, daß das System für einen
+neuen Befehl bereit ist.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-2.jpeg"); ?>
+<h4>
+CTRL2 Register
+</h4>
+<p>
+Durch dieses 4-Bit- Register werden die
+Parameter beim Schreiben von Vektoren und
+Buchstaben festgelegt:
+</p>
+<table style="width: 100%">
+<tr><td>Bit0,1</td><td>4 Linientypen (siehe Tabelle)</td></tr>
+<tr><td>Bit2</td><td>LOW=gerade HIGH=schräg</td></tr>
+<tr><td>Bit3</td><td>LOW=waagrecht HIGH=senkrecht</td></tr>
+</table>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-3.jpeg"); ?>
+
+<?php columnEnd(2); ?>

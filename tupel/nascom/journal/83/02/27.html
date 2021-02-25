@@ -1,0 +1,163 @@
+<?php columnStartJustify(2); ?>
+
+<h1 id="article1" class="donthyphenate">
+FIRMWARE disassembliert
+</h1>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<p>
+NASCOM-Besitzer sind Tüftler, die immer genau wissen wollen, wie alles
+funktioniert, sei es die Hardware oder die Software. (Das ist
+jedenfalls mein Eindruck!) Es haben sicherlich schon verschiedene Leute
+die Firmware entschlüsselt, sprich disassembliert. Wir können so etwas
+aus Copyright-Gründen natürlich nicht abdrucken (auch den Platz dafür
+haben wir nicht!), aber wir können Hinweise darauf geben, wie man das
+selber machen kann. Ich möchte hier mit ZEAP den Anfang machen. Wer
+längere Zeit mit dem Assembler gearbeitet hat, der möchte vielleicht
+auch mal wissen, wie er funktioniert. Vielleicht möchte ihn auch jemand
+verändern. Ich habe relativ leicht mit NASDIS ZEAP in ein ZEAP-File
+verwandeln können. Zunächst muß man die Datenbereiche kennen. Es sind
+nur zwei: D006-D009, D00D-D305. Jetzt kann man NASDIS die
+Disassemblierung vornehmen lassen. Der Quellcode muß nun noch ein
+bißchen editiert werden, aber auch das hält sich in Grenzen. Zurächst
+gibt man den Befehl R 4 2 ein. Dann müssen die Zeilen 660 bis 572
+geändert werden, weil es sich bei den Daten hier teilweise um Adressen
+handelt. Je einem Datenbyte folgt eine Adresse als Hilfestellung seien
+hier die Adressen aufgeführt: D2DC, D2E4, D2E8, D3EC, D2F0. Mit Hilfe
+der freien Zwischenzeilen kann man diesen Bereich nun in folgender
+Weise umschreiben:<br>
+xxxx DEFB Datenbyte<br>
+xxxx DEFW Adresse (als Label, also mit vorgestelltem &quot;L&quot;!).
+Diese Labels müssen jetzt noch im Quelltext an den richtigen Stellen
+(sie liegen am Ende des Datenbereichs!) eingefügt werden. Man kann die
+Stellen mit einer versuchsweisen Assemblierung leicht finden (ORG
+&pound;0000 vorgeben!). In einer der letzten Zeilen des Quelltextes
+steht: LE000 EQU &pound;E000. Das ist zu ändern in: LE000 EQU $. Will
+man feststellen, ob man alles richtig gemacht hat, läßt man jetzt mit
+ORG &pound;0000 und einem Offset assemblieren und vergleicht mit einem
+kleinen Testprogramm Byte für Byte die Originalversion mit der
+assemblierten Version. Sie müssen übereinstimmen. Dann kann man den
+Assembler auch an eine andere Speicherstelle assemblieren und dort
+testen. Wer aber ZEAP nur im Speicher verschieben will, braucht sich
+die Mühe des Disassemblierens nicht zu machen, denn es folgen hier noch
+die Verschiebungsvektoren für
+<a href="../../14/text/#article1">ZEAP</a> und
+<a href="../../13/text/#article1">DEBUG</a>.
+Mit dem im
+<a href="../../../01/26/text/#article1">letzten Heft</a>
+beschriebenen RELOCATOR können beide Programme jetzt an beliebige
+Speicherstellen (Pages!) gelegt werden (bei mir läuft z.B. ZEAP jetzt
+auf F000). DEBUG benötigt NASDIS im direkt anschließenden Speicher. Man
+sollte also nur beide gemeinsam relozieren. Die beiden
+Verschiebungsvektoren können dann zu einem zusammengefaßt werden.<br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<h1 id="article2">
+<span id="impressum">
+IMPRESSUM
+</span>
+</h1>
+<h4>
+HERAUSGEBER:
+</h4>
+<table style="width: 100%">
+<tr><td>Günter Böhm</td><td style="text-align:right">______________ ___. ___</td></tr>
+<tr><td>__ Karlsruhe</td><td style="text-align:right">Tel. ____/______</td></tr>
+<tr><td colspan=2 style="text-align:right">Redaktion, Layout (Grafik), Versand</td></tr>
+
+<tr><td>Günter Kreidl</td><td style="text-align:right">_________ __</td></tr>
+<tr><td>____ Straelen</td><td style="text-align:right">Tel. _____/____</td></tr>
+<tr><td colspan=2 style="text-align:right">Redaktion, Layout (Text), Buchhaltung</td></tr>
+
+</table>
+
+<h4>
+KORRESPONDENTEN:
+</h4>
+
+<table style="width: 100%">
+<tr><td>Wolfgang Mayer-Gürr</td><td style="text-align:right">____________&nbsp;___&nbsp;___</td></tr>
+<tr><td>___ Recklinghausen</td><td style="text-align:right">Tel. _____/_____</td></tr>
+
+<tr><td>Clemens u. Max Ballarin</td><td style="text-align:right">_______ ___. _</td></tr>
+<tr><td>___ Ueberlingen</td><td style="text-align:right">Tel. _____/_____</td></tr>
+
+<tr><td>Michael Bach</td><td style="text-align:right">__ __________ __</td></tr>
+<tr><td>____ Stegen</td><td style="text-align:right">Tel. _____/_____</td></tr>
+
+<tr><td>Peter Brendel</td><td style="text-align:right">__________. __</td></tr>
+<tr><td colspan=2>____ Mannheim</td></tr>
+
+<tr><td>Hans-Jürgen Plath</td><td style="text-align:right">____ _______. _</td></tr>
+<tr><td colspan=2>____ Kiel</td></tr>
+
+<tr><td>Hans Schneider</td><td style="text-align:right">________ ____</td></tr>
+<tr><td colspan=2>____ Esens</td></tr>
+
+<tr><td colspan=2>Oesterreich:</td></tr>
+<tr><td>Gerhard Klement</td><td style="text-align:right">________. ___/_/__</td></tr>
+<tr><td>A-____ Wien</td><td style="text-align:right">Tel. ____/_______</td></tr>
+
+<tr><td colspan=2>Niederlande:</td></tr>
+<tr><td>Eric v.d.Vaart</td><td style="text-align:right">__________ __</td></tr>
+<tr><td colspan=2>NL-____ __ Waddixveen</td></tr>
+
+<tr><td colspan=2>England:</td></tr>
+<tr><td>Frank M. Butler</td><td style="text-align:right">___ ____ ____ ____</td></tr>
+<tr><td colspan=2>Mansfield Woodhouse/Notts</td></tr>
+
+<tr><td colspan=2>Luxemburg:</td></tr>
+<tr><td>Rene Claus</td><td style="text-align:right">_________. __</td></tr>
+<tr><td colspan=2>L-___ Bonneweg</td></tr>
+</table>
+
+<h4>
+VERLAG:
+</h4>
+<table style="width: 100%">
+<tr><td>Günter Kreidl</td><td style="text-align:right">____ Straelen</td></tr>
+</table>
+<h4>
+VERTRIEBSWEISE und BEZUGSPREIS:
+</h4>
+<table style="width: 100%">
+<tr><td>Einzelheft</td><td>DM</td><td style="text-align:right">5,&ndash;</td></tr>
+<tr><td>Doppelheft</td><td>DM</td><td style="text-align:right">10,&ndash;</td></tr>
+<tr><td>Jahresabonnement &nbsp; In- und Ausland</td><td>DM</td><td style="text-align:right">60,&ndash;</td></tr>
+</table>
+<p>
+Es erscheinen 10 Hefte pro
+Jahr, davon zwei Doppelhefte. Es können jeweils nur ganze Jahrgänge
+abonniert werden. Bei Bestellungen nach dem Erscheinungsdatum des
+ersten Heftes eines Jaghrgangs werden die bereits erschienenen Hefte
+nachgeliefert. Die Lieferung von Einzelheften durch den Verlag ist
+nicht möglich. Bitte zahlen Sie direkt bei der Bestellung auf das
+Postscheckkonto:
+</p>
+<table style="width: 100%">
+<tr><td>Günter Kreidl</td><td style="text-align:right">____ __-___ PSchA _____</td></tr>
+</table>
+<h4>
+HAFTUNG und RECHTE:
+</h4>
+<p>
+Für Fehler in Texten, Bilder, Programmen und Schaltungen und daraus
+entstehende Schäden kann keine Haftung übernommen werden.
+</p>
+<p>
+Alle Rechte
+verbleiben grundsätzlich bei den Autoren der Beiträge. Die
+Veröffentlichung von Programmen und Schaltungen geschieht nur für den
+persönlichen Gebrauch der Abonnenten des 80-BUS-Journals; jede
+kommerzielle Auswertung ist nur mit Genehmigung des Verfassers erlaubt.
+Beiträge, die nicht mit einem Copyright-Vermerk versehen sind, dürfen
+für nichtkommerzielle Verwendung vervielfältigt werden, wenn als Quelle
+das 80-BUS-Journal und der Verfasser angegeben werden.
+</p>
+<div id="nascompl">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-27-1.jpeg"); ?>
+</div>
+
+<?php columnEnd(2); ?>

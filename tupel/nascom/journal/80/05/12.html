@@ -1,0 +1,80 @@
+<?php columnStart(2, 2); ?>
+
+<h4 id="article1">
+Programm zum Auszählen und Darstellen mit dem NASCOM&nbsp;1
+</h4>
+<?php hline("100%", "d"); ?>
+<br>
+<p>
+Das Programm besteht aus zwei Teilen:
+</p>
+<p>
+1. Auszählen der Tabelle und Sortieren in eine Liste;
+</p>
+<p>
+2. Darstellen der Tabelle als Histogramm auf dem Bildschirm.
+</p>
+<h4>
+Zu 1.)
+</h4>
+<p>
+Der Rechner sucht sich als Anhaltspunkt für den Beginn der Tabelle und
+die Tabellenlänge erst die größte Zahl in der Tabelle. Er zählt dann,
+wie oft diese in der Tabelle vorkommt, und legt diesen Wert in einer
+zweiten Tabelle ab. Dann subtrahiert er 1 von der Zahl X und zählt, wie
+oft X-1 in der Tabelle vorkommt u.s.w., solange, bis X=0 ist.
+</p>
+<p>
+Dieses Programm hat den Vorteil, daß es alle Zahlen x der Menge der
+natürlichen Zahlen von 1 bis 99 verarbeiten kann und diese bis zu 99
+mal vorkommen können. Nachteilig ist, daß dieses Programm die
+Zwischenräume zwischen zwei Zahlen, z.B. 45 und 52, mit auszählt und
+mit 00 in die Tabelle eingibt. Dadurch treten bei längeren Histogrammen
+gelegentlich Lücken auf.
+</p>
+<h4>
+Zu 2.)
+</h4>
+<p>
+Da der Nascom&nbsp;1 nur 15 Zeilen auf dem Bildschirm darstellen kann, die
+Tabellenlänge aber bis 99 Zeilen gehen kann, ist es erforderlich, die
+einzelnen Spalten nicht gleichzeitig darzustellen, sondern
+nacheinander. Dies wird durch eine Warteschleife erreicht, deren
+Verzögerungszeit von 7,5 ms bis 1,8 s stufenlos geregelt werden kann.
+Diese Subroutine ist übrigens voll verschieblich und universell
+einsetzbar. (Ich gedenke daher, demnächst auch ein Uhrenprogramm,
+basierend auf dieser Schleife, aufzubauen.)
+</p>
+<p>
+Folgende Werte müssen vor dem Start des Programms festgelegt werden:
+</p>
+<p>
+0D00 Startadresse der zu sortierenden
+Tabelle (0D17)
+</p>
+<p>
+0D03 Tabellenlänge (hexadezimal)
+</p>
+<p>
+0D19 Tabellenlänge+1 (hexadezimal)
+</p>
+<p>
+Dieses Programm ist mehr als Grundmuster zu betrachten. Je nach
+Verwendungszweck
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+kann es umgebaut und erweitert werden. So
+läßt sich das Auszählen von Zahlen mit 00 dadurch umgehen, daß man eine
+Schleife mit einem Test auf Null anhängt, welche in einem derartigen
+Falle die Niederlegung in der Tabelle 2 überspringt und von X max im
+Register D 1 subtrahiert. Zum Ausdrucken der Histogramme ließe sich
+z.B. das Druckerprogramm aus dem Programming Manual Seite 64 nehmen und
+anstelle der Warteschleife einsetzen.
+</p>
+<h4 id="article2">
+<u>Sortierprogramm:</u>
+</h4>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,79 @@
+<?php columnStart(2, 2); ?>
+
+<p>
+1 byte 00 als Endkennung
+</p>
+<p>
+Nach &quot;NEW&quot; werden die Speicherstellen
+10FA, 10FB gelöscht, der Rest bleibt
+unverändert.
+</p>
+<p>
+Die Token sind 1 byte-Kürzel, für GOTO
+steht 88, für GOSUB 8C usw..
+</p>
+<p>
+Das Ende des Zellenbuffers ist mit
+0000 gekennzeichnet.
+</p>
+
+<br>
+
+<?php hline("90%", "2"); ?>
+<h4 id="article1" class="donthyphenate" style="text-align:center">
+ANSTEUERUNG EINES 50 BAUD FERNSCHREIBERS ÜBER UART
+</h4>
+<?php hline("100%", "2d"); ?>
+<p>
+Üblicherweise wird ein Fernschreiber über den IN/OUT Port vom NASCOM&nbsp;1
+angesteuert. Wer sich diesen Port aber für andere Zwecke freihalten
+möchte, kann den serienmäßigen UART verwenden, wenn einige kleine
+Änderungen an der Hardware vorgenommen werden. Um den Takt für den
+Fernschreiber bereitzustellen, kann über LK 4 ein externer
+Taktgenerator mit 800 Hz angeschlossen werden, (die der UART intern auf
+50&nbsp;Hz teilt). Einfacher ist es meiner Meinung nach, durch Nachschalten
+eines Teilers 74&nbsp;LS&nbsp;191 an den eingebauten IC&nbsp;33 die benötigte
+Frequenz zu erzeugen. Hier kann es nötig werden, den Kondensator C12 zu
+verändern. (Bei meinem System genügte das Parallelschalten eines 4,4n
+Kondensators. Die Frequenz kann dann am Wendeltrimmer genau eingestellt
+werden).
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+Man benötigt keinen Frequenzzähler, wenn man einfach das Programm
+laufen läßt und dabei solange reguliert, bis der Fernschreiber richtig
+ausdruckt.
+</p>
+<p>
+Einfacher ist die Umstellung auf 5 Bit und die Einstellung des Stop
+Bits. Pin 37 und 38 des UART werden herausgebogen und über einen 10k
+Widerstand mit +5V verbunden. Für TTY-Betrieb werden sie über einen
+Schalter an Masse gelegt. Die Brücke an LK 2 ist so zu verändern, daß
+Pin 36 des UART bei TTY-Betrieb über R27 an +5V liegt, im
+Cassettenbetrieb über Schalter an Masse geschlossen wird. Die
+Stromschleife des Fernschreibers wird durch ein Relais unterbrochen,
+das durch -12V von Pin 14 an SK&nbsp;2 betrieben wird.
+</p>
+<p>
+Damit die Stromschleife im Ruhezustand geschlossen bleibt, muß der
+Ausgang des UART nochmals invertiert werden. Dies kann sehr einfach
+geschehen, Indem man das unbenutzte Gatter IC&nbsp;31&nbsp;c verwendet. Hier
+werden die Pins 4, 5 und 6 herausgebogen und entsprechend verbunden.
+</p>
+<p>
+Die Umschaltung von Cassetten Modus auf Fernschreiber kann mit
+Umschaltern per Hand erfolgen. Eleganter ist die Lösung, ein Relais zu
+verwenden, das durch den Befehl &quot;MFLOP&quot; den Cassettenmotor
+startet, das TTY-Relais ausschaltet und den UART in Cassettenmodus
+bringt.
+</p>
+<p>
+Günter Böhm, _________________ ____<br>
+__ Karlsruhe __<br>
+Tel.: ____/ ______
+</p>
+
+<?php columnEnd(2); ?>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-17-1.jpeg"); ?>
+<br>

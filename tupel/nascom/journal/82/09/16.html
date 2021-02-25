@@ -1,0 +1,131 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+ÖENTERÜ, ist es zum Beispiel möglich, mit GRAPH 1 mehrere Befehle
+ausführen zu lassen. Zum Definieren der Zeichenkette springt man zur
+Routine FUNK mit E D20 und gibt die Zeichenkette ein, eingerahmt von
+einem beliebigen Begrenzungszeichen.
+</p>
+<p>
+2. Software Repeat -- Ein gedrücktes Zeichen wird solange wiederholt,
+wie gleichzeitig die ÖCHÜ Taste gedrückt wird. Dieses Prinzip kennt man
+z.B. vom Apple II. Es funktioniert anders, als der sogenannte
+Auto-Repeat wie man ihn von Schreibmaschinen her gewohnt ist. Eine
+Routine für den letzteren ist von C. Rau im
+<a href="../../../../81/12/11/text/#article2">Nascom Journal 11/12 1981</a>
+veröffentlicht worden.
+</p>
+<p>
+Das Programm wird mit E CC0 initialisiert. Dabei kreiert es einen neuen
+Inputtable. Dies ist schon in dem oben erwähnten Artikel von Christoph
+Rau erklärt.
+</p>
+<p>
+Das Programm ist für NAS-SYS&nbsp;1 geschrieben, läuft aber auch auf anderen
+Monitoren, die in soweit kompatibel sind, dass sie
+Arbeitsspeicheradressen und Routinennummern gleich benutzen. Es ist 76H
+Bytes lang und kann an beliebiger Stelle im Speicher laufen. Zusätzlich
+braucht es 3 Byte Arbeitsspeicher und Raum für die Zeichenkette&nbsp;. Zur
+Anpassung an sein System kann der Benutzer die im Assemblerlisting
+unter ***VARIABLEN*** stehenden Werte verändern.
+</p>
+
+<h1 id="article1">
+Change
+</h1>
+<h3>
+von Constantin Olbrich
+</h3>
+<p>
+Dieses Programm ersetzt eine beliebige Zeichenkette im Quellfile des
+ZEAP 2.0 durch eine andere Zeichenkette beliebiger Länge. Nach dem
+Aufruf des Programms mit EC80 wird eine Zeile mit folgendem Format
+eingegeben:
+</p>
+<pre class="donthyphenate">
+/String1/String2/  (CR)
+</pre>
+<p>
+wobei '/' ein beliebiges Zeichen (Delimiter) außer Space ist, sowie
+String1 die zu ersetzende Zeichenkette und String2 die einzusetzende
+Zeichenkette ist. Wer sein ASM ZEAP 2:0 mit dem ':' Befehl versehen
+hat, (beliebiges NAS-SYS Kommando ist nun gültig) arbeitet weiter im
+Assembler, was sicher wesentlich eleganter ist. Übrigens ist das
+Argument vom Execute Befehl '0C80' nur beim Erstaufruf von CHANGE
+nötig, sonst genügt:
+</p>
+<pre class="donthyphenate">
+&quot;:&quot; (CR) &quot;E&quot; (CR)
+</pre>
+<p>
+Falls das erste Zeichen der Eingabezeile ein Leerzeichen ist, erfolgt
+ein Rücksprung (Warmstart) in den ZEAP 2.0. Abschluß der Zeile ist
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+CR. Es kann danach sofort eine weitere Eingabe (neuer CHANGE Befehl)
+erfolgen, oder CR beendet mit nun leerer Zeile den CHANGE-Modus.
+</p>
+<p>
+Da sich die Länge des Quellfiles verändern kann, erfolgt automatisch
+eine Korrektur der EOF Marke 'Free' in der Überschriftzeile des ZEAP
+beim Rücksprung. Wichtig zu wissen ist, daß beliebig viele Ersetzungen
+pro Zeile möglieh sind, z.B.:
+</p>
+<pre class="donthyphenate">
+/*/$/
+</pre>
+<p>
+würde alle im File vorkommenden '*' in Dollars umwandeln. Wird aus
+Versehen der dritte Delimiter vergessen, (was mir häufig passiert)
+geschieht in der Regel gar nichts, es sei denn der eingangs definierte
+Delimiter steht im Video Ram in den nächsten 45 Bytes, was allerdings
+äußerst unwahrscheinlich ist. Weiterhin ist es möglich, den String2
+wegzulassen, um z.B. gezielte Löschungen vorzunehmen, z.B.:
+</p>
+<pre class="donthyphenate">
+/Name//
+</pre>
+<p>
+löscht alle &quot;Name&quot; im File. Anwendung findet das Programm z.&nbsp;B.
+beim disassemblierten Quellprogramm, um obskuren Labels, wie L1EF9
+einen sinnvollen Namen, z.B. &quot;START&quot;, zu geben.
+</p>
+<h1 id="article2">
+Rom Basic V. 4.7-
+</h1>
+<h2>
+zwei Versionen
+</h2>
+<h3>
+von Gerhard Wilharm
+</h3>
+<p>
+Die im NASCOM-Journal,
+<a href="../../../01/11/text/#article1">Heft 1/82</a>,
+von Günter Böhm diskutierten zwei ROM
+BASIC-Versionen unterscheiden sich dadurch, daß man der
+&quot;anderen&quot; Version den direkten Sprungbefehl C3 03 E0 (JP
+E003) vorangesetzt hat und sich somit die nachfolgenden Bytes um drei
+Adressen nach hinten verschieben. Warum diesen- scheinbar unsinnigen
+&quot;Hopser&quot; am Anfang?
+</p>
+<p>
+Die Lösung ist in der Hardware des NASCOM-2 zu suchen, und zwar in den
+Schaltungsteil, der die &quot;Jump on Reset&quot;-Funktion
+bewerkstelligt. Diese Funktion ergibt die Möglichkeit, daß nach einem
+Reset jede beliebige 4K-Grenze des Speicherbereichs den
+&quot;Nullpunkt&quot; des Systems darstellen kann (einstellbar mit 4
+DIL-Schaltern), also auch unser heißgeliebtes ROM BASIC auf Adresse
+E000. Damit diese Geschichte aber richtig funktioniert, muß das
+Programm, das per Reset angesprochen werden soll, als ersten Befehl
+einen direkten Sprung (also C3 XX XX) aufweisen. Der Programmzähler
+kann sonst nicht richtig &quot;einrasten&quot; und stürzt nach dem
+ersten Befehl ab. Und wie funktioniert das Ganze&nbsp;?
+</p>
+<p>
+Nach einem Reset macht die CPU das einzig Richtige, sie gibt 0000 auf
+den Adreßbus.
+</p>
+
+<?php columnEnd(2); ?>

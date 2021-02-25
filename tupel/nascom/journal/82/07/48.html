@@ -1,0 +1,76 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-48-1.jpeg"); ?>
+<p>
+Die Eingabe muß genau in der hier angegebenen Form erfolgen; nur die
+bei den Maschinencode-Routinen angegebenen Adressen werden je nach
+Ausbau des Systems unterschiedlich sein; sie werden jedoch von den
+Funktionen &quot;MCODE&quot; und &quot;SYSTEM&quot; erzeugt.
+</p>
+<h4>
+Programmbeispiele
+</h4>
+<p>
+Zunächst zwei Beispiele für rekursive Programmierung: (Argument1)
+(Argument2) GGT gibt den größten gemeinsamen Teiler der beiden
+Argumente auf den Stack.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-48-2.jpeg"); ?>
+<p>
+Das zweite Beispiel ist die berühmte Funktion von Ackermann. Die beiden
+Argumente dürfen maximal die Werte (0 60), (1 60), (2 30), (3 3) und (4
+0) annehmen, sonst gibt es einen Stacküberlauf.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-48-3.jpeg"); ?>
+<p>
+Als letztes Beispiel das 8-Damen-Problem, das ich eigentlich in dieser
+Form gar nicht veröffentlichen dürfte, denn es ist schauderhaft
+herunterprogrammiert. Interessant ist aber der Zeitvergleich mit
+anderen Sprachen.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-48-4.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-48-5.jpeg"); ?>
+</p>
+<h4>
+Implementierungshinweise
+</h4>
+<p>
+Das 8-Damen-Programm läuft ca. 6 Minuten &ndash; immer noch erheblich
+schneller als Basic, aber doch langsamer, als ich es erwartet hatte. Um
+den Grund herauszufinden, habe ich die Funktion ABS in Maschinensprache
+programmiert. Das Programm läuft dann bereits 20-30 Sekunden schneller.
+Damit ist auch klar, weshalb das System relativ langsam ist: ca. 80%
+des Interpreters (die Erweiterungen eingerechnet) ist im Fädelcode
+geschrieben. Würde man den gesamten &quot;Kern&quot; des Systems in
+Maschinencode schreiben, würde sich die Arbeitsgeschwindigkeit
+vervielfachen. Den gleichen Hinweis gibt auch
+<?php externalLink("R. Loeliger"); ?>
+in seinem Buch
+&quot;<?php externalLink("THREADED INTERPRETIVE LANGUAGES","",""); ?>&quot;,
+auf das ich zum
+Abschluß hinweisen möchte. In einer sehr klaren Sprache und
+Gedankenführung beschreibt der Autor den Aufbau eines
+Fädelcodeinterpreters für
+<?php externalLink("Z80","Z-80",""); ?>-Systeme.
+Sämtliche Routinen werden in
+Maschinencode und in Fädelcode gezeigt. Das ganze ist eine Art
+Baukastensystem, mit dem man sich seinen eigenen Interpreter
+zusammenstellen kann. Auch für Leute, die keinen Assembler besitzen,
+ist das Buch interessant, den es enthält auch alle Bausteine für einen
+konditionellen Assembler. Ärgerlich an dem schönen Buch ist eigentlich
+nur der Preis in Deutschland (DM&nbsp;65,&ndash;)!
+</p>
+<p>
+Wer sich für die Entstehungsgeschichte von FORTH interessiert, der sei
+auf den sehr schönen Artikel von Charles H. Moore, dem
+&quot;Erfinder&quot; der Sprache, in BYTE, August 1980, S.76 ff.
+verwiesen.
+</p>
+<br>
+<?php hline("100%", "2"); ?>
+
+<?php columnEnd(2); ?>

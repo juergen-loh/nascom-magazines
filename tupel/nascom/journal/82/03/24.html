@@ -1,0 +1,95 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Schnelle<br>Tastatur-Abfrage
+</h1>
+<h3>
+von Josef Zeller
+</h3>
+<h4>
+1)Problemstellung
+</h4>
+<p>
+Die Tastaturabfrage und die Ermittlung des Zeichens ist beim Nascom
+System der CPU uebertragen. Damit wird die CPU mit
+&quot;Verwaltungsaufgaben belastet, die viel Zeit benoetigen. Diese
+Zeitbelastung fuer die CPU faellt natuerlich nicht weiter auf, wenn der
+Rechner darauf wartet, bis der Benutzer eine Taste drueckt. Bei
+Programmen, die waehrend der Laufzeit die Tastatur abfragen, um z.B.
+das Auflisten zu stoppen oder das Programm abzubrechen, nimmt die Zeit
+fuer die Tastaturabfrage einen relativ grossen Teil der
+Programmlaufzeit in Anspruch. Im folgenden soll eine Moeglichkeit
+gezeigt werden, wie die Abfrage, ob eine Taste gedrueckt ist, rapide
+verkuerzt werden kann.
+</p>
+<h4>
+2)Tastaturhardware &ndash; Prinzip
+</h4>
+<p>
+Die Tasten beim
+Nascom&nbsp;1 sind in einer 8mal6 Matrix (8 Spalten und 6 Zeilen)
+angeordnet. Am Anfang der Tastaturroutine setzt die CPU ueber &quot;KBD
+Counter Reset&quot; die Zaehler auf der Tastaturplatine zurueck. Danach
+werden ueber &quot;KBD Counter Clock&quot; die 8 Spalten der Matrix
+jeweils einmal durch die CPU gepulst, d.h. die Leitungen (D0-D7 siehe
+Originalschaltbild) werden jeweils einmal auf low gesetzt. Nachdem eine
+Spalte getaktet wurde, fragt die CPU den Port 00 ab. In diesem
+Port ist der Zustand der 6 Spalten angegeben. Wird z.B. die Taste
+&quot;B&quot; gedrueckt, so wird beim Takten von Spalte D1 die Zeile S3
+auf low gesetzt. Ist eines der Bits 0-5 auf low, erkennt die CPU, dass
+eine Taste gedrueckt wurde, und ermittelt daraus das ASCII-Zeichen.
+Nur um zu ermitteln, ob ueberhaupt eine Taste gedrueckt wurde,
+benoetigt die CPU ca, 940 Taktzyklen.
+</p>
+<h4>
+3)Ergebnis
+</h4>
+<p>
+Es wurde also eine Moeglichkeit gesucht, diese Abfrage erheblich zu
+verkuerzen. Die dazu benoetigte Hardwareaenderung ist minimal. Das
+Programm benoetigt nur noch 124 Taktzyklen und ist damit ueber 7 mal
+schneller als das Original. Der Assembler uebersetzt z.B. eine Quelle
+mit 4,5 Bytes Quelltext statt in 32 sec. in 18 sec.
+</p>
+<?php nowrapStart(); ?>
+<h4>
+4)Hardware
+</h4>
+<p>
+Benoetigt wird dazu ein CTC, durch den die Spalten gepulst werden, und
+ein OR-Gatter,
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+damit entweder der CTC oder die CPU den &quot;KBD Counter Clock&quot;
+takten kann.
+</p>
+<?php nowrapEnd(); ?>
+<h4>
+5)Programm
+</h4>
+<p>
+Das Programm EXTKBD wird anstatt der Nascom Monitorroutine aufgerufen.
+Der CTC wird initialisiert und gibt alle 16 Takte einen Impuls aus. Die
+CPU fragt den Zustand von Port 00 ab und kehrt, wenn keine Taste
+gedrueckt wurde, ins Aufruferprogramm zurueck. Wurde eine Taste
+gedrueckt, wird die Monitorroutine KBD aufgerufen und das Zeichen
+ermittelt.
+</p>
+<h4>
+6)Weiterentwicklung
+</h4>
+<p>
+Eine interruptgesteuerte KBD-Routine ist bei mir ebenfalls im Einsatz.
+Sie ist vom Programmaufwand etwas umfangreicher. Leider ist das
+Programm noch nicht so ausgereift, um es zu veroeffentlichen. Sobald es
+aber zuverlaessig funktioniert, wird es nachgeliefert.
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-24-2.jpeg"); ?>
+<?php boxEnd(); ?>
+<br>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-3.jpeg"); ?>
+<?php columnEnd(2); ?>

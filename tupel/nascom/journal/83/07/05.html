@@ -1,0 +1,60 @@
+<?php columnStartJustify(23); ?>
+
+<p>
+fortlaufenden Text koennen Nachbarfelder mitverwendet werden.
+Ebenso tritt eine Begrenzung bei Zahlen mit Exponenten auf sofern
+sie laenger als 8 Felder sind. Eine Erweiterung der Feldlaenge
+waere moeglich, aber das wuerde die Anzahl der gleichzeitig
+angezeigten Zellen reduzieren. Durch Normalisierung (Division
+oder Multiplikation) ist das Problem individuell zu loesen.
+</p>
+<p>
+Zwei Replikationsfunktionen  erleichtern die Eingabe. Soll
+beispielsweise in das Feld EA die Funktion +AA*BA*CA*DA
+eingetragen werden dann kann durch das Prefix [ das Verfahren
+abgekuerzt werden. Es ist einzutragen +[AA*DA] (das +
+signalisiert numerische Variable). Fuer repetitive Eintragungen
+dient das = Zeichen. Die Eingabe in das CA Feld von [FA=]+AA*BB
+bewirkt folgende Eintragungen:
+</p>
+<pre class="donthyphenate">
+Feld      Inhalt
+CA        AA*BB
+DA        BA*CB
+EA        CA*DB
+FA        DA*EB
+</pre>
+<p>
+Umgekehrt bewirkt eine Eintragung in das AC Feld von [AF=]+AA/BA
+die folgende Replikation:
+</p>
+<pre class="donthyphenate">
+Feld      Inhalt
+AC        AA/BA
+AD        AB/BB
+AE        AC/BC
+AF        AD/BD
+</pre>
+<p>
+Uebliche Spreadsheet Programme werden wie BASIC Programme
+sequentiell abgearbeitet. Im BASIC Listing sieht man, dass zuerst
+die Spalte A dann B usw. abgearbeitet wird. Konkret bedeutet dies
+dass bei einem Eintrag +ZZ in die AA Zelle AA nicht den aktuellen
+Wert anzeigt, da die Berechnung von ZZ erst zu einem spaeteren
+Zeitpunkt erfolgt. Durch Eingabe von ! wird eine Rekalulation
+forciert. Ist eine Abhaengigkeit von hinten nach vorne ueber
+mehrere Programmzeilen programmiert werden entsprechend viele !
+eingegeben.
+</p>
+
+<?php columnStart(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-2.jpeg"); ?>
+<?php columnEnd(2); ?>
+
+<?php columnChange(3); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-3.jpeg"); ?>
+
+<?php columnEnd(3); ?>

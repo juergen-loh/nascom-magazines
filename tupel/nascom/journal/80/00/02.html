@@ -1,0 +1,147 @@
+<?php columnStart(1); ?>
+<h1 id="article1">software</h1>
+<h4><u>Mondlandespiel</u></h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Im Jahre 1979 veranstaltete der britische
+NAS&shy;COM-Mi&shy;kro&shy;com&shy;pu&shy;ter-Club
+INMC einen Wettbewerb für Spiel-Programme. Das Programm, das den
+ersten Preis gewann, möchten wir Ihnen heute vorstellen. Es
+zeigt, wie viel man mit etwas
+Pro&shy;gram&shy;mier&shy;er&shy;fah&shy;rung und einiger
+Überlegung
+in 1k Speicher unterbringen kann. Das Programm läuft mit NASCOM
+1 unter NASBUG&nbsp;T&nbsp;2 oder NASBUG&nbsp;T4.
+</p>
+<p>
+Ziel des Spieles ist es, eine Mondlandefähre auf dem Mond
+weich aufzusetzen. Die Vertikalgeschwindigkeit der Kapsel darf
+dabei nicht größer als 30 sein. Ganz rechts in der oberen
+Bildschirmecke wird dieser Wert angezeigt. Ein Pfeil gibt an, ob
+die Mondlandefähre noch fällt (&darr;) oder aufgrund von zu großem
+Schub schon wieder steigt (&uarr;).
+</p>
+<p>
+Außerdem gibt der Rechner in der obersten Zeile noch die Höhe
+der Fähre über Grund an (&quot;Height&quot;). Befindet sich die
+Kapsel mehr als 2500m über der
+Mond&shy;ober&shy;flä&shy;che, so ist diese nur
+als Strich erkennbar. Gelangt sie darunter, so wird das Bild
+umgeschaltet und man erkennt Einzelheiten der Mondoberfläche.
+Dabei werden auch &quot;Felsbrocken&quot;
+(<img src="<?php echo $imagepath; ?>Image-02-3.gif" alt="Klecks" width="7" height="12">)
+sichtbar, die man bei der Landung auf keinen Fall streifen sollte&nbsp;!
+</p>
+
+<p>
+Weitere Randbedingung bei diesem Spiel ist, daß man möglichst
+nahe am Zielpunkt aufsetzt. Deshalb wird in der obersten
+Zeile angezeigt, wie weit (in horizontaler Richtung) die
+Kapsel noch von ihrem Ziel entfernt ist (Distance). Das
+Vor&shy;zei&shy;chen &quot;-&quot; vor der Distanzangabe zeigt an, daß
+sich die Fähre noch links vom Ziel befindet. Außerdem wird
+angezeigt, mit welcher Geschwindigkeit sich die Mondlandefähre
+nach rechts (&rarr;) oder nach links (&larr;) bewegt.
+</p>
+<p>
+Ein toller Gag ist die Kapselsteuerung. Man kann dazu
+praktisch die gesamte Tastatur verwenden. Als Bezugspunkt wird
+die Mitte zwischen den Tasten H und J verstanden.
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+D.h. man drückt
+die Taste M, wenn die Kapsel Schub von schräg rechts bekommen
+soll. Die Taste C wäre zu drücken, wenn die Kapsel schräg nach
+links liegt und von dort Schub bekommen soll. Im letzteren Fall würde
+die Kapsel sowohl in vertikaler Richtung abgebremst, als auch
+eine Ge&shy;schwin&shy;dig&shy;keits&shy;kom&shy;po&shy;nen&shy;te
+nach rechts bekommen. Simples
+Bremsen bewirkt die Taste N, Beschleunigung nach unten die Taste
+U. Je weiter eine Taste vom Bezugspunkt entfernt ist, umso schwächer
+ist der Schub.
+</p>
+<p>
+Für die Landung haben Sie nur eine begrenzte Menge
+Treib&shy;stoff
+zur Verfügung. Diese Menge wird leider nicht angezeigt. Das
+Raumschiff wird durch das Klingelsybol
+(<img src="<?php echo $imagepath; ?>Image-02-6.gif" alt="Klingel" width="12" height="11">)
+dargestellt. Wenn der Treibstoff ausgeht, wird statt des
+&quot;<img src="<?php echo $imagepath; ?>Image-02-6.gif" alt="Klingel" width="12" height="11">&quot;
+ein kleines &quot;o&quot;
+auf dem Bildschirm ausgegeben. Sollten Sie in eine Ecke des
+Bildschirmes getrieben werden, dann verlieren Sie allen
+Treib&shy;stoff.
+</p>
+<p>
+Das Programm wird bei Adresse 0E6A gestartet. Einige Se&shy;kun&shy;den
+nach Spielende wird das Programm automatisch neu gestartet.
+</p>
+<p>
+Ein Programmlisting befindet sich auf der nächsten Seite.
+</p>
+<p>
+Viel Spaß!
+</p>
+
+<p>
+MK
+</p>
+
+<?php boxStart(); ?>
+	<table class="donthyphenate">
+		<tr>
+			<td colspan=2 style="vertical-align:middle">
+				<u>LEERKASSETTEN</u>
+			</td>
+			<td style="text-align: center">
+				<?php imageinsert($imagepath, $year, $issue, $page, "Image-02-7.gif"); ?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=3>
+				Speziell	geeignet für Datenaufzeichnung. Hochwertiges BASF-Band.
+				Cassette 5-fach verschraubt. Cassette C10, d.h. 10
+				Minuten Spieldauer, daher besonders geeignet für
+				Mikrorechnerprogramme.<br>
+				&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td>
+				10 Stk<br>
+				20 Stk<br>
+				50 Stk<br>
+				100 Stk<br>
+				&nbsp;
+			</td>
+			<td>
+				19.80<br>
+				36.00<br>
+				87.50<br>
+				160.00<br>
+				&nbsp;
+			</td>
+			<td>
+				Jede Kassette mit selbstklebendem Aufkleber zum Beschriften.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Bei:
+			</td>
+			<td colspan=2>
+				M&nbsp;K &ndash; Systemtechnik<br>
+				__________ __<br>
+				____ Germersheim/Rhein<br>
+				Tel.: _____/____
+			</td>
+		</tr>
+	</table>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

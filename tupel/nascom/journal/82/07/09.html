@@ -1,0 +1,102 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Hardware-Tips
+</h1>
+<h3>
+von Tom D. Rüdebusch
+</h3>
+<p>
+Einige Probleme, die einem naechtelanges Kopfzerbrechen bereiten
+koennen und weder bei dem oertlichen noch anderen Computergeschaeften
+oder Distributoren bekannt zu sein scheinen und deren Loesung, so
+einfach sie auch ist, fuer immer in einem undurchsichtigen Nebel von
+Vermutungen verborgen zu bleiben scheint, bis man mehr oder weniger
+durch Zufall darauf kommt oder sogar jemand kompetenten trifft,
+verdienen veroeffentlicht zu werden.
+</p>
+<h4>
+1. Das &quot;A$-Problem&quot;
+</h4>
+<p>
+Geben Sie das folgende kurze Basic-Programm ein.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-09-1.jpeg"); ?>
+<p>
+Sollte bei 4&nbsp;MHz nach einiger Laufzeit der String nur unvollstaendig
+auf dem Bildschirm ausgegeben werden, so sind Sie nicht der einzige
+Nascom&nbsp;2-Besitzer, der sich nach einigem Kopfzerbrechen schon fast
+damit abgefunden hat, Basic nur bei 2&nbsp;MHz zu benutzen. Uebrigens kann
+auch Zeap Schwierigkeiten bereiten.
+</p>
+<p>
+Die Ursache ist beim CPU-Takt zu suchen. Da der Video-Teil eine
+8&nbsp;MHz-Frequenz benoetigt, ist der Taktgenerator mit einem 16&nbsp;MHz-Quartz
+aufgebaut. Das ist fuer den
+<?php externalLink("Z80 CPU","Z-80&nbsp;A"); ?>
+eigentlich unnoetig kritisch, da der
+System-Takt erst durch zweimaliges Teilen erzeugt wird. Und
+tatsaechlich sind einige Rechner dadurch recht unzuverlaessig.
+</p>
+<p>
+Abhilfe:
+Man stellt LSW&nbsp;1/9 nach unten und schliesst am Bus seinen eigenen
+Taktgenerator an. Dabei kann es sein, dass man unversehens auf eine
+ueberraschende Tatsache stoesst.
+</p>
+<h4>
+2. Nascom&nbsp;2 bei 5&nbsp;MHz ohne Wait
+</h4>
+<p>
+Als ich mich an den Aufbau des
+Schwingkreises machen wollte, war ploetzlich in der gesamten Umgebung
+kein 4&nbsp;MHz-Quartz aufzutreiben, Mehr versuchsweise schloss ich also
+einen einfachen, mit Wendelpoti abstimmbaren, RC-Oszillator an, Und
+siehe da, oben aufgefuehrtes Testprogramm lief nicht nur
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+bei 4 sondern bis gut 5&nbsp;MHz ohne Wait-Zyklus fehlerfrei. Bei dieser
+einigermassen beeindruckenden Geschwindigkeit arbeitet mein System mit
+PIO,
+<?php externalLink("2716","",""); ?>-EPROMS
+und RAM &quot;A&quot; Karte seit einem Monat
+problemlos. Wer nicht unbedingt Wert auf Quartz-Stabilitaet legt, kann
+so mit optimaler Einstellung das Letzte aus seinem Rechner herausholen.
+</p>
+<p>
+Wenn man die NMI-Taste nicht unbedingt benoetigt, kommt man sogar ohne
+ein zusaetzliches IC aus. Die Beinchen 12 und 13 von IC&nbsp;11 (74LS14)
+werden herausgebogen und die entsprechenden Anschluesse der Fassung
+durch einen Draht ueberbrueckt. Jetzt ist der Interrupt-Taster nicht
+mehr entprellt, aber damit kann man leben. An den umgebogenen Beinchen
+des IC wird nun der Oszillator wie folgt aufgebaut (unbedingt
+Wendelpoti verwenden und LSW 1/9 nach unten schalten):
+</p>
+
+<?php boxStart(); ?>
+<br>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-09-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<h4>
+3. Memory-Plague (schon wieder?!)
+</h4>
+<p>
+Auch bei meiner RAM &quot;A&quot;-Karte versuchte ich alle
+obligatorischen Mittel, um ihr die &quot;weichen Fehler&quot;
+abzugewoehnen. Entgegen aller anderslautenden Versprechungen war aber
+bei 4&nbsp;MHz kein Programm zum Laufen zu bewegen, bis ich auf der
+Hobby-Elektronik &rsquo;81 in Stuttgart die Moeglichkeit hatte, mich mit dem
+Sales-Manager von Lucas Logic Ltd. zu unterhalten. Der gab mir dann den
+entscheidenden Tip: Alle zusaetzlichen Kondensatoren und Widerstaende
+entfernen und stattdessen nur die Drahtbruecken P8-P9 und P12-P13 durch
+68 Ohm-Widerstaende ersetzen. Meine Karte laeuft seitdem einwandfrei,
+und da ich nicht glaube, dass sich diese einfache Massnahme schon
+allgemein herumgesprochen hat, wollte ich sie nicht unerwaehnt lassen.
+</p>
+<h4>
+4. Toolkit und Nas-Sys
+</h4>
+
+<?php columnEnd(2); ?>

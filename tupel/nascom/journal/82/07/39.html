@@ -1,0 +1,123 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p id="article1">
+etc.
+</p>
+<p>
+Durch einfache 1-Byte- Befehle kann man die ganz schön zum Rotieren
+bringen (allerdings auch den Programmierer)! Gemeint sind die PUSH- und
+POP- Befehle. Dazu muß man wissen daß im RAM- Speicher ein sogenannter
+STACK angelegt ist; d.h. ein Stapelspeicher, dessen Beginn durch den
+STACKPOINTER (=SP= Stapelzeiger &ndash; siehe Registeranzeige
+<a href="../../../02/23/text/#article1">Heft 2-82</a>) im
+NASCOM auf 1000 festgelegt ist. Der Programmierer kann ihn allerdings
+durch den Befehl LD SP,nn (Lade Stapelzeiger mit nn) auf eine
+x-beliebige Adresse legen (und dadurch z.B. verschiedene Stacks im
+Speicher anlegen). Diese Anwendung scheint mir aber schon etwas
+&quot;fortgeschritten&quot;. Lassen wir unseren Stack zunächst einmal
+bei 1000.
+</p>
+<p>
+Durch den PUSH- Befehl wird nun ein Register auf diesen Stack
+geladen; d.h. der Stackpointer wird jeweils um 1 erniedrigt, und die
+beiden Komponenten des Registerpaares werden in die entsprechenden
+Adressen geladen.
+</p>
+<p>
+Beispiel:
+</p>
+<p>
+Stackpointer zeigt auf 1000 (Top of Stack= Obergrenze oder Spitze des
+Stapels)
+</p>
+<pre class="donthyphenate">
+Programm: LD HL,1122
+          PUSH HL
+</pre>
+<p>
+Nach Ausführung mit Single-Step enthalten
+</p>
+<pre class="donthyphenate">
+0FFF  - 22 und
+0FFE  - 11
+</pre>
+<p>
+Wird nun ein anderes Register &quot;gepusht&quot;, dann wächst der
+Stapel in die Tiefe (&nbsp;erniedrigt den Stackpointer weiter),und das
+andere Register liegt obenauf. Daraus folgt, daß das zuletzt
+&quot;gepushte&quot; Register als erstes wieder &quot;gepoppt&quot;
+werden muß. (Man spricht von Last In/First Out= LIFO = als letztes
+hinein, als erstes heraus).
+</p>
+<p>
+Wenn man diese Reihenfolge umgeht, kann man
+auch leicht Register austauschen, die normalerweise nicht getauscht
+werden könnten. Z. B. kann HL mit DE durch den Code EB (EX HL, DE)
+getauscht werden. Für einen Austausch von DE und BC existiert kein
+solcher Befehl, (es sei denn, man tauscht alle Register gleichzeitig,
+was ja wohl nicht immer wünschenswert ist). Um auch hier austauschen zu
+können, legen wir erst DE und dann BC auf den Stack und holen sie in
+gleicher Reihenfolge wieder herein:
+</p>
+<pre class="donthyphenate">
+PUSH DE  first in
+PUSH BC
+POP  DE<?php columnChangeJustify(2, "</pre>", "<pre>"); ?>
+POP  BC  last out
+</pre>
+<p>
+Die Register sind nun vertauscht. Die häufigste
+Anwendung dürfte es allerdings sein, bestimmte Register, deren Inhalt
+später nochmals gebraucht wird, in &quot;Sicherheit&quot; zu bringen,
+wenn sie für andere Zwecke kurzzeitig benötigt werden (z.B, in
+Unterprogrammen). So sieht man häufig vor einem Call- Befehl (Aufruf
+eines Unterprogramms) ein ganzes Sammelsurium von PUSH- Befehlen:
+</p>
+<pre>
+PUSH AF
+PUSH HL
+PUSH BC
+CALL XYZ
+POP  BC
+POP  HL
+POP  AF
+</pre>
+<p>
+Beachten Sie die Reihenfolge (FILO!), damit keine Register vertauscht
+werden!
+</p>
+<p>
+Vor dem Aufruf des Unterprogramms wird übrigens die
+Rücksprungadresse automatisch auf dem Stack abgelegt, damit das
+Programm weiß, wo es nach dem Abarbeiten des Unterprogramms
+weitermachen muß. Hier muß man höllisch aufpassen, damit man in einem
+Unterprogramm nicht versehentlich (z.B. nach einer Verzweigung)
+vergißt, ein Register zu &quot;poppen&quot;, das vorher
+&quot;gepusht&quot; wurde. Dann Springt das Programm nämlich zur
+zuletzt gepushten (ich spare mir jetzt die Anführungszeichen bei diesem
+seltsamen neudeutschen Ausdruck, Herr Bach sei mir gnädig!) Adresse,
+weil seine Rücksprungadresse ja weiter unten im Stack liegt. Wer weiß,
+wo es dann ankommt! Sehr häufig sind Programme beim Test abgestürzt,
+weil man einfach den überblick über die Adressen auf dem Stack verloren
+hatte. Sie können in einem Unterprogramm auch keine Werte vom Stack
+nehmen, weil Sie ja sonst Ihre Rücksprungadresse zerstören, Ich
+schreibe mir jeden PUSH- Befehl gesondert auf und hake dann jeden
+POP-Befehl ab, um einen überblick zu behalten. Dennoch kann ich
+gelegentliche Abstürze nicht vermeiden.
+</p>
+<p>
+Grundsätzlich sollte nach
+Abarbeiten eines Programms der Stackpointer wieder auf 1000 zeigen. Tut
+er das nicht, (was ein Programm bei bestimmten Bedingungen durchaus
+einmal verkraften könnte), liegt ein Programmierfehler vor, der früher
+oder später (wenn der Stack dann systematisch in ein Maschinenprogramm
+hineinwächst) dann doch zum &quot;Absturz&quot; führt.
+</p>
+<p>
+Der Umfang des Stacks, der je nach Anzahl
+</p>
+<p style="text-align:right">
+Fortsetzung <a href="../../43/text/#article1">Seite 43</a>
+</p>
+
+<?php columnEnd(2); ?>

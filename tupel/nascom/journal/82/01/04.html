@@ -1,0 +1,110 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+und durch so hoch wäre. Nein, keine Demontage! Das N.J. soll um
+Himmelswillen so bleiben wie es ist!
+</p>
+<p>
+Nur &ndash; eine kleine, aber wie ich meine, wichtige Bereicherung: Die Seite
+für den Anfänger. (&quot;Ich rede nicht für mich&quot;, sagte der
+Fuchs,&quot;aber man sollte die Hühner in den Wald treiben, damit sie
+immer etwas zu picken haben&quot;).
+</p>
+<p>
+Ich bin nur ein einfacher Elektromechaniker, der gezwungen ist, den
+Computer zu packen, bevor er ihn packt. Unter der Leserschaft gibt es
+bestimmt noch mehr arme Schweine wie mich, die mit ihrem NASCOM allein
+auf weiter Flur stehen und für jeden Tip dankbar sind, über den die
+Spezialisten nur noch müde lächeln können. Doch bei dem für meine
+Bedürfnisse zu hohen Niveau (Herr Wallis ist da bestimmt ganz anderer
+Meinung) halten sich viele Leser (die schweigende Mehrheit?) mit ihren
+Beiträgen und Programmen zurück, nur um sich nicht zu blamieren. So
+beobachtet bei mir selbst. Weiß ich, ob meine Programme mit ihrem
+möglicherweise wahnwitzigen Aufbau in den Augen der Fachleute bestehen
+werden? Ein Blick in das NASCOM JOURNAL bestätigt meine Zweifel: Lauter
+spezielle Artikel von Spezialisten für Spezialisten. Ich schäme mich
+nicht zuzugeben, daß ich das meiste nicht kapiere.
+</p>
+<p>
+Nochmals die Bitte um eine Rubrik &quot;von Anfängern für
+Anfänger&quot; oder so ähnlich. Vielleicht in der Mitte zum
+Heraustrennen, damit das Auge einiger alter Hasen nicht beleidigt
+werde. Vielleicht kommt angesichts solcher Anfängerbeiträge hie und da
+ein guter Tip aus berufenem Munde, wie dieses oder jenes besser zu
+machen wäre. Der Lerneffekt wäre ein ungeheurer.
+</p>
+<p>
+Ich finde, das NASCOM JOURNAL sollte für jeden etwas bieten, auch für
+(noch) Nichtkönner, die es zweifellos gibt. Oder bin ich der einzige?
+Das wäre wohl ein Grund, die ganze Computerei den Profis zu überlassen.
+</p>
+<p>
+P.S. Mein NASCOM ist kein diesjähriges Weihnachtsgeschenk, vielmehr
+raubt er mir schon das 2.Jahr die Zeit und die Nerven. Anscheinend habe
+ich die höheren Weihen noch nicht erhalten. Noch &rsquo;ne Frage: was ist aus
+dem Kurs &quot;Programmieren in Assembler&quot; geworden?
+</p>
+<?php nowrapStart(); ?>
+<p>
+Gruß an
+<a href="../../../../nascompl/#head">Nascompl</a>.
+</p>
+<p>
+Peter Brendel, Mannheim
+</p>
+
+<?php hline("60%", "2"); ?>
+<?php nowrapEnd(); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p id="article1">
+Vorerst möchte ich der gesamten Redaktion des NASCOM JOURNAL zu der
+neuen Erscheinungsform gratulieren. Seit das Journal in der neuen
+Aufmachung erscheint, hat es auch sehr an Qualität gewonnen. Zu Ihrem
+Artikel in der
+<a href="../../../../81/10/17/text/#article3">Ausgabe 10/1981 Punkt 14</a>
+ist anzumerken, daß alle
+bisherigen Betriebssysteme incl. NASSYS&nbsp;1 den Befehl &quot;B0&quot; als
+&quot;Breakpoint an der Stelle 0000 ausgeführt haben.
+</p>
+<p>
+Der Monitor versuchte also, auf die Stelle &quot;0000&quot; im Speicher
+&quot;E7&quot; zu schreiben. Nachdem das Betriebssystem normalerweise
+im ROM steht, wirkt sich das nicht weiter aus. Versucht man aber, das
+Betriebssystem als eine Art Unterprogramm zu verwenden, das ab Hex
+&quot;0000&quot; im RAM (!) steht (was natürlich eine Hardware-Änderung
+erfordert), so bewirkt &quot;B0&quot;, daß der erste OP-Code mit
+&quot;E7&quot; überschrieben wird, und daher der Monitor auch nicht
+mehr das tut, was er soll.
+</p>
+<p>
+Das Betriebssystem NASSYS&nbsp;3 geht da einen anderen Weg. Soweit ich das
+bisher feststellen konnte, (ich habe leider kein Assembler-Listing)
+wird der Code &quot;E7&quot; erst während der Ausführung des
+&quot;Execute&quot;-Befehls in die entsprechende Speicherstelle
+eingeschrieben und bei jeder Rückkehr in NASSYS&nbsp;3 wieder durch den
+Original Op-Code ersetzt. Möglicherweise interpretiert der Monitor
+auch, wie in einer deutschen NASSYS&nbsp;3 Beschreibung zu lesen ist, den
+Befehl &quot;B0&quot; auch wirklich als &quot;Breakpoint
+abschalten&quot;.
+</p>
+<p>
+Zum Programm &quot;Yatzi&quot; aus dem
+NASCOM-JOURNAL vom <a href="../../../../81/07/11/text/#article1">Juli 1981</a>:
+die Routine zur Auswertung einer &quot;Straße&quot; funktioniert
+(wahrscheinlich aufgrund eines Denkfehlers) nicht richtig. Es werden
+z.B, auch folgende Würfe als &quot;Straße&quot; anerkannt: 2,3,3,4,2.
+Das hat folgenden Grund: es wird nicht ausgewertet, ob jede der zur
+betreffenden &quot;Straße&quot; gehörenden Zahl einmal vorkommt,
+sondern, ob jeder der Würfe auf eine der Zahlen paßt. Dadurch werden
+Doppelwürfe nicht erkannt. Diesem Mißstand kann leicht abgeholfen
+werden. Es muß ja &ndash; definitionsgemäß &ndash; nur überprüft werden, ob auch
+wirklich jede Zahl der &quot;Straße&quot; in dem Wurf vorkommt:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.jpeg"); ?>
+<p>
+Ich habe das Programm geändert, so daß
+</p>
+
+<?php columnEnd(2); ?>

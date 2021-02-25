@@ -1,0 +1,239 @@
+<table>
+<tr>
+	<td><p>Parameter</p></td>
+	<td><p>Funktionsname</p></td>
+	<td><p>Lit.Arg.</p></td>
+	<td><p>Ergebnis</p></td>
+	<td><p>Kommentar</p></td>
+</tr>
+<tr>
+	<td colspan=4></td>
+	<td class="justify"><p>führt das Programm an der Adresse b aus.</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>CADR</p></td>
+	<td class="donthyphenate"><p>Funktion</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = Startadresse von (Funktion).</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>READLINE</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Liest eine Zeile in den Textpuffer ein. Im EDITOR-Modus jeweils
+		eine Bildschirmzeile, sonst von der Tastatur bis NEWLINE mit Echo auf
+		dem Bildschirm.
+	</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>GETWORD</p></td>
+	<td><p>Name</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		Holt das nächste Wort aus dem Textpuffer; wenn dieser leer ist, wird
+		READLINE aufgerufen. a = Wortadresse
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>FIRST</p></td>
+	<td><p>&quot;</p></td>
+	<td><p>b c</p></td>
+	<td class="justify"><p>
+		a muß auf ein Wort im Textpuffer zeigen; c = erstes Byte des Wortes
+		(= Wortlänge), b = Zeiger auf den Rest des Wortes.
+	</p></td>
+</tr>
+<tr>
+	<td>-</td>
+	<td><p>SCAN</p></td>
+	<td>-</td>
+	<td><p>a oder b c</p></td>
+	<td class="justify"><p>
+		Holt das nächste Wort im Textpuffer an den Zeilenanfang; wenn
+		Puffer leer, a = 0 sonst c = 65535 und b = Zeiger auf Wort.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>MATCH</p></td>
+	<td><p>-</p></td>
+	<td><p>a b c</p></td>
+	<td class="justify"><p>Stringvergleich; c = 65535, wenn gleich, sonst c = 0.</p></td>
+</tr>
+<tr>
+	<td><p>a b</p></td>
+	<td><p>LOOKUP</p></td>
+	<td>-</td>
+	<td><p>c d</p></td>
+	<td class="justify"><p>
+		Sucht das Wort, auf das a zeigt, im Dictionary, auf das b zeigt; d
+		= 65535, wenn gefunden, und c = Funktionsadresse; sonst d = 0 und c =
+		a.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>CONAXB</p></td>
+	<td>-</td>
+	<td><p>b c</p></td>
+	<td class="justify"><p>
+		Dezimal-Binär-Umwandlung; a zeigt auf Dezimalstring. Wenn Umwandlung
+		möglich, c = 65535 und b = binärer Wert, sonst c = 0 und b = a.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>CONBXA</p></td>
+	<td><p>-</p></td>
+	<td><p>b</p></td>
+	<td class="justify"><p>Wandelt a in Dezimalzahl, auf die b zeigt</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>ENTER</p></td>
+	<td>-</td>
+	<td>-</td>
+	<td class="justify"><p>
+		Trägt Funktionsnamen, auf den a zeigt und Adresse der neuen Funktion
+		in das Interpreter-Dictionary ein.
+	</p></td>
+</tr>
+<tr>
+	<td><p>a</p></td>
+	<td><p>CMPLW</p></td>
+	<td><p>-</p></td>
+	<td><p>-</p></td>
+	<td class="justify"><p>Compiliert a (= Adresse einer Funktion).</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>I</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = aktueller Wert des innersten Schleifenindex</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>J</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>wie I, aber &quot;zweitinnerste Schleife&quot;</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>K</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>wie I, aber &quot;drittinnerste Schleife&quot;</p></td>
+</tr>
+<tr>
+	<td colspan=5><h4><br>SYSTEM-VARIABLEN und KONSTANTEN</h4></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>VARBL</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		a = Adresse der VARIAB-Funktion, die die auf sie selbst folgende
+		Adresse gibt.
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CONS</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>
+		a = Adresse der CONS-Funktion (wie VARIAB nur Inhalt der folgenden
+		Adresse)
+	</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NEGONE</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = 65535</p></td>
+</tr><tr>
+	<td><p>-</p></td>
+	<td><p>ONE</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = 1</p></td>
+</tr><tr>
+	<td><p>-</p></td>
+	<td><p>ZERO</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = 0</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>MEMORY</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält Obergrenze des bel. RAM</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>EXEC</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält Startadresse der Systemschleife.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NAMES</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält Adresse des Int.-Dict.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CODEADR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält nächste freie Programm= Codeadresse.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>NEXTADR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = Adresse der Funktion NEXT</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CNAMES</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = Adresse der Adresse des Comp.-Dict.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>INVAR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält Adresse für COUT.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>OUTVAR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>Adresse a enthält Adresse für CIN.</p></td>
+</tr>
+<tr>
+	<td><p>-</p></td>
+	<td><p>CURSADR</p></td>
+	<td><p>-</p></td>
+	<td><p>a</p></td>
+	<td class="justify"><p>a = Adresse des Cursorregisters (C29H)</p></td>
+</tr>
+</table>

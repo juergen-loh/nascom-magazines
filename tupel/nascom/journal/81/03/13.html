@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+NASCOM&nbsp;1 als Berater in allen Lebenslagen
+</h4>
+<p>
+Wo findet man heutzutage noch jemanden, der einem immer geduldig zuhört
+und in allen Lagen versucht, einem beizustehen? Hier ist der NASCOM der
+richtige Gesprächspartner! Er hilft als Psychotherapeut, als Hausarzt,
+Wetterprophet oder überhaupt als Ratgeber in jeder Lage. Allerdings
+müssen Sie ihm dabei durch Ihre Programmierung helfen.
+</p>
+<p>
+Das folgende Programm, das nicht ganz ernst gemeint ist und dennoch
+jeden Uneingeweihten verblüfft, funktioniert folgendermassen: Nach
+Start mit E 400 tippt der Benutzer seine Frage oder sein Problem ein.
+Die Länge des Problems spielt keine Rolle, solange sie die
+Bildschirmkapazität nicht überschreitet.
+</p>
+<p>
+Nach Drücken der @ Taste wird die Antwort des Computers ausgegeben. Die
+Leertaste erlaubt es, eine nächste Frage zu stellen usw. Das
+&quot;Geheimnis&quot; eines solchen Computergesprächs liegt darin, dass
+zuvor eine Tabelle erstellt wurde, die bestimmte Wörter in der Frage
+des Benutzers erkennt und eine vorprogrammierte Antwort darauf gibt.
+Die Länge der Wörter ist dabei unwichtig, da dem Computer schon die
+ersten vier Buchstaben genügen, um zu antworten. Es kann ein Vorteil
+oder auch Nachteil sein, dass der Computer auf die Wörter
+&quot;UNFALL&quot; und &quot;UNFAEHIG&quot; mit der gleichen Antwort
+reagiert.
+</p>
+<p>
+Auf jeden Fall ist es ein Nachteil, dass wir in unserem Computer über
+so wenig Speicherplatz verfügen, um auch nur annähernd den Wortschatz
+eines normalen Gesprächs zu speichern. Deshalb muss man sich, mit zwei
+Tricks behelfen:
+</p>
+<p>
+1.Man füttert den Speicher nur mit Wörtern, die zu einem bestimmten
+Gesprächsthema gehören wie z.B. Familie, Wetter, Gesundheit, Beruf,
+Träume usw. 2. Wenn der Computer kein Wort aus der Frage erkennt, lässt
+man ihn Antworten von der Cassette holen, die so unbestimmt sind, dass
+sie auf jede Frage passen; z.B. Ich möchte mehr darüber wissen, Das
+kommt häufig vor, Ich verstehe usw.
+</p>
+<p>
+Die Gestaltung des Ablaufs ist hier völlig Ihnen überlassen. Damit aber
+die Programmierung nicht zu umständlich wird, sind im Programm folgende
+Erleichterungen enthalten:
+</p>
+<p>
+<u>1. Speichern von Tabellen</u>
+</p>
+<p>
+Nach Start des Programms einfach ein Stichwort eintippen. Vorsicht:
+Nach dem vierten Buchstaben erscheint ein Pfeil auf dem Bildschirm, der
+besagt, dass nun die passende Antwort dazu gespeichert wird. Am Ende
+der Antwort wird @ gedrückt. Darauf erseheint ein * auf dem Schirm,
+der besagt, dass nun das nächste Stichwort eingetippt werden kann.
+Drückt man nach einer Antwort zweimal @&nbsp;, so wird im Speicher
+automatisch das Ende der Tabelle angezeigt und auf dem Bildschirm
+erscheint die Adresse des nächsten freien Speicherplatzes. Wenn man,
+wie im Programm festgelegt, 0C54 als erste Tabellenadresse benützt,
+kann der Speicher bis 0Fe4 mit einer Unmenge von ASCII Codes belegt
+werden, was, je nach Antwortlänge, ca. 30 Stichwörtern entspricht.
+</p>
+<p>
+<u>2. Speichern von Antworten auf Cassette</u>
+</p>
+<p>
+Nach Start des Programms eine Antwort eintippen, gleich welcher Länge.
+Die Antwort muss immer mit Space (20) begonnen und mit @ abgeschlossen
+werden. Die Aufnahmeroutine kann nur mit RESET beendet werden.
+</p>
+<p>
+Wenn die Cassette mit Antworten geladen ist (und selbstverständlich ein
+Relais zum Starten des Cassetenmotors vorhanden ist) und wenn der
+Stichwortspeicher ab C54 bereit ist, lässt sich NASCOM als
+&quot;Lebenshilfe&quot; einsetzen.
+</p>
+<p>
+Falls Sie auf den Einsatz der Cassette
+als&quot;Speichererweiterung&quot; verzichten wollen, suchen Sie
+einfach das Ende Ihrer Tabelle auf (erkennbar durch 2A 20 20 20 20
+und laden Sie an die entsprechende Stelle anstatt des Sprungbefehls
+C3... den Befehl EF und eine passende &quot;ASCII&quot; Antwort wie
+z.B. &quot;Ich brauche weitere Information&quot;. Die Antwort muss dann
+mit 00 C3 90 04 2A 00 abgeschlossen werden,um einen Rücksprung ins
+Hauptprogramm zu erwirken und das Tabellenende anzuzeigen. NEW LINE
+lässt dann die nächste Frage zu.
+</p>
+<?php columnEnd(1); ?>

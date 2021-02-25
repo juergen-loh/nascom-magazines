@@ -1,0 +1,82 @@
+<?php columnStart(2); ?>
+
+<h1 id="article1">
+LIFE
+</h1>
+<h3>
+von Karl Trust
+</h3>
+<p>
+DAS NACHFOLGENDE LISTING BEZIEHT SICH AUF DAS SPIEL &quot;LIFE&quot;,
+WELCHES BEREITS IM NASCOM JOURNAL VEROEFFENTLICHT WURDE
+(<a href="../../../../80/01/04/text/#article1">Heft 1/80</a>).
+ICH HABE ES ZUNAECHST AUF NAS-SYS UMGESCHRIEBEN UND WEITERHIN LEICHT
+MODIFIZIERT, D.H. ANSTELLE VON &quot;SPACES&quot; BEIM SETZEN DER
+ZELLEN, MUSS MAN JETZT DIE PUNKTTASTE DRUECKEN, SODASS MAN JEDERZEIT
+SEHEN KANN, AUF WELCHEM PLATZ DES BILDSCHIRMS MAN SICH BEFINDET. NACH
+DER ERSTEN GENERATION VERSCHWINDEN DANN ALLE STEUERBEFEHLE UND DIE
+PUNKTE.
+</p>
+<table style="margin: auto"><tr><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-41-1.jpeg"); ?>
+</td></tr>
+<tr><td>
+<pre>0D60 Beginn des Zwischenfeldes</pre>
+</td></tr>
+<tr><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-41-2.jpeg"); ?>
+</td></tr></table>
+<p>
+Mit folgendem kleinen Zusatz kann die Pausendauer vor dem Setzen der
+Zellen eingegeben werden. Bei kurzer Dauer (z. B. 02) ist die fließende
+Veränderung der Strukturen besonders reizvoll, Start bei 0EE5
+&nbsp; Red.
+</p>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-41-3.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<h1 id="article2">
+KANSAS-CITY
+</h1>
+<h3>
+v. Michael Bach
+</h3>
+<h4 class="donthyphenate">
+Kansas-City Interface &amp; Baudratengenerator für Nascom&nbsp;1
+</h4>
+<p>
+Einer der wesentlichen Unterschiede zwischen Nascom&nbsp;1 und 2 ist das
+Kansas-City Interface, das letzterer zur externen Speicherung
+(Cassettenrecorder) verwendet. Dies bietet Vorteile einmal, weil es
+auch bei vielen anderen Rechnern vorhanden ist, und zum anderen, weil
+es neben höherer Datensicherheit auch eine Erhöhung der Geschwindigkeit
+erlaubt: Standart ist 300Bd, 1200Bd ist problemlos zu erreichen, 2400Bd
+soll auch zuverlässig gehen. Zur Definition des KC Codes sei hier nur
+kurz vermerkt, daß es ein serieller Code wie beim Nascom&nbsp;1 ist, die
+Nullen und Einsen jedoch nicht durch Ton an/aus, sondern durch zwei
+Tonhöhen kodiert werden, und zwar High durch 2400 Hz (=8 Schwingungen
+bei 300Bd) und Low durch 1200 Hz, Erhöhung der Baudrate bis 1200Bd ist
+durch mehrfache Halbierung der Bitzelle möglich, oberhalb davon müssen
+die Frequenzen erhöht werden. Ich habe im wesentlichen das Nascom&nbsp;2
+Interface nachgebaut. Es weist im Gegensatz zu manch anderen
+Schaltungen 2 Vorteile auf: 1. Die Umschaltung der Frequenzen erfolgt
+synchron, d.h. im Nulldurchgang. Dadurch ist Vorteil 2 möglich: Durch
+Regeneration des Taktes mit einer PLL wird der Empfangstakt bei
+Geschwindigkeitsschwankungen des Bandes nachgeregelt, dadurch ist auch
+ein Cassettenaustausch zwischen Recordern mit
+Geschwindigkeitsabweichungen möglich! Allerdings habe ich diesen
+Vorteil bei mir bis jetzt noch garnicht ausgenutzt, auch so ist es bei
+1200Bd (fast) völlig fehlerfrei.
+</p>
+<p>
+Eine kurze Schaltungsbeschreibung: Zunächst einmal müssen die
+erforderlichen Baudraten bereitgestellt werden (74LS193 und 4024). Ich
+habe es gleich (im Gegensatz zum Nascom&nbsp;2) so erweitert, daß von
+300-9600Bd umgeschaltet werden kann. Das erleichtert den Anschluß an
+andere Rechner, Terminals usw. Das 74193 dividiert 2&nbsp;Mhz durch 13 und
+erreicht damit haargenau 9600Bd, die weiteren werden durch den 4024
+Teiler hergestellt. Der serielle Ausgang des UARTs (Tx
+</p>
+
+<?php columnEnd(2); ?>

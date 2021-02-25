@@ -1,0 +1,84 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+2 Monitor-Programme auf Eprom-Board
+</h1>
+<h3>
+v.C. Ballarin
+</h3>
+<p>
+Um neben dem T4 und SYS1 auch noch das SYS3 einsetzen zu können, mußten
+wir uns überlegen, wo es am Einfachsten unterzubringen ist. Den beim
+Einsatz des SYS1 auf unserem NASCOM1 entstandenen Hukepack wollten wir
+nicht noch vergrößern. Wir entschlossen uns, das SYS3 auf die N1-Karte
+zu stecken, und die 2 anderen Betriebs Systeme auf einem vorhandenen
+12K NAS-Epromboard&quot;A&quot; unterzubringen. Die erforderliehen
+Änderungen können dem beigefügten Schaltplan entnommen werden. T4
+wurde auf den Block2, SYS1 auf Block3 gelegt. Block1 kann wie bisher
+beliebig verwendet werden. Bei jedem Block werden jeweils nur die
+beiden unteren Fassungen belegt, die oberen 2 bleiben leer. Für die
+Erweiterung ist auf der Platine genügend Platz vorhanden. Die beiden
+erforderliehen ICs sowie Relais wurden unterhalb des Adressier-Feldes
+mittels beidseitig klebendem Band, Beine nach oben, befestigt. Es ist
+darauf zu achten, dass das MEMEXT-Signal auf keiner anderen
+Zusatz-Karte erzeugt wird. Zum Betrieb der Relais sollten nicht die im
+NASCOM verwendeten Spannungsqellen benutzt werden. Wir haben die für
+die RS 232-Schnittstelle vorgesehenen -12V vor dem U-Regler angezapft.
+Auch die Masseseitige Zuleitung sollte direkt an dieser, und nicht an
+irgend einer anderen Stelle der Masseleitung angeschlossen werden.
+Zusätzlich sollten parallel zu den Relaisspulen Schutzdioden angebracht
+werden (für die Betriebsspannung in Sperrichtung). Wird das System nur
+mit 2MHz betrieben, so können auch LS-ICs verwendet werden.
+</p>
+<h4>
+Stückliste
+</h4>
+<p>
+1 * OR-Gatter 74S32<br>
+1 * Inverter 74S0<br>
+3 * Widerstände 2K<br>
+1 * Diode(Germanium oder Schottky<br>
+2 * Diode 1N4148 (Schutzdiode<br>
+2 * Relais 2xU<br>
+1 * Schalter 1xUM Mittelstellung AusI
+</p>
+
+<h1 id="article2">
+Clock-Um&shy;schaltung&nbsp;2/4&nbsp;MHz
+</h1>
+<h3>
+von Clemens Ballarin
+</h3>
+<p>
+Es ist sehr nützlich wenn man 2 verschiedene Ctock-Frequenzen zur
+Verfügung hat. Diese Möglichkeit schufen wir uns durch eine kleine
+Modifikation auf dem NAS-Bufferboard, die dem
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+beiliegenden Schaltplan zu entnehmen ist. Es kann natürlich auch
+zwischen 1 und 2MHz umgeschaltet werden. Die Schaltung wird an den
+Stellen angeschlossen, an denen sonst mit einer Drahtbrücke die
+gewünschte Frequenz gewählt wird. Die Umschaltung kann bei laufendem
+Programm vorgenommen werden (nur 100% sicher bei prellfreiem Schalter).
+Das zusätzlich benötigte IC wurde an einer geeigneten Stelle mittels
+beidseitig klebendem Band, Beine nach oben, befestigt. &nbsp; Stueckliste
+</p>
+<p>
+1 * 74LS7<br>
+1 * 74LS0<br>
+1 * Widerstand 2K<br>
+1 * Schalter 1xEIN<br>
+1 * 74LS00
+</p>
+
+<p style="text-align:center">
+Clock-Umschaltg. auf NAS-Bufferboard
+</p>
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
+<?php boxEnd(); ?>
+<br>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-26-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,59 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Fourier Regression
+</h1>
+<h3>
+von GERHARD KLEMENT
+</h3>
+<p>
+Fourier Analysen erlauben, aus gegebenen Werten die Grundfunktion zu
+errechnen, aus der die Werte entstanden sind. Die Funktion hat die Form:
+</p>
+<p style="text-align:center">
+y=A0+A1*sin(x+PHI1)+A&quot;*sin(2*x+PHI2)+<br>
++A3*sin(3*x+PHI2)+.........
+</p>
+<p>
+Man kann die Funktion auch in dieser Form darstellen:
+</p>
+<p>
+y=a0+a1*cos(x)+b1*sin(x)+<br>
+&nbsp; &nbsp; +a2*cos(2*x)+b2*sin(2*x)+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; +a3*cos(5*x)+b3*sin(3*x)+.....
+</p>
+<p>
+Je mehr Glieder man anhaengt, desto genauer kann eine Funktion
+wiedergegeben werden.
+</p>
+<p>
+Praktische Anwendung ist in der Schwachstromtechnik die Ermittlung von
+Oberwellen. Voraussetzung fuer eine Fourier Analyse sind aequidistante
+Daten, also Messwerte, die nach gleich grossen Phaseninkrementen
+gewonnen werden. Michael BACH zeigte im
+<a href="../../../02/14/text/#article2">Heft 1 1983</a> eine PASCAL Version
+einer Fast Fourier Transformation, die das TV Bild von Guenter Boehm
+analysiert.
+</p>
+<p>
+Bedingt durch das Aufzeichnungsverfahren hatte ich bei einer
+Sonnenfinsternis Messwerte, die nicht aequidistant waren. Eine weitere
+Erschwernis war, dass die Messwerte stark streuten. Ich war also
+gezwungen, von einer Fourier Analyse abzugehen und musste mir eine
+Regression schreiben, die natuerlich viel langsamer laeuft, aber dafuer
+Messwerte mit beliebiger Phasenbesetzung verarbeitet. Es ist beim
+Gebrauch darauf zu achten, dass mehr Messwerte als Freiheitsgrade
+vorhanden sind. Waehlt man beispielsweise eine sehr hohe (noch
+zulaessige) Anzahl von Oberwellen und draengt die Messwerte in der
+Naehe eines Phasenpunktes zusammen, dann sieht man zwar einen guten Fit
+der Messwerte, aber im freien Bereich beginnt die rueckgerechnete Kurve
+wild zu schwingen. Wenn Interesse besteht, schicke ich ein Programm mit
+einer Lagrange Interpolation, bei der das schoen zu sehen ist.
+</p>
+<p>
+(Besteht Interesse&nbsp;? &nbsp; Red.)
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-2.jpeg"); ?>
+<?php columnEnd(2); ?>

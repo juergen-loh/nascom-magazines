@@ -1,0 +1,102 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Wie der Befehl zur automatischen Erzeugung von Zeilennummern auch unter
+Nas-Sys&nbsp;3 zum korrekten Arbeiten zu bringen ist, wurde in der letzten
+Ausgabe der
+<?php externalLink("INMC 80 News", "INMC&nbsp;80-News"); ?>
+beschrieben, wenn auch die Adresse nicht ganz
+stimmte. Liegt Toolkit bei B000, so muss der Inhalt von Adresse B15B
+von 08 auf 0C geaendert werden, Mit folgenden Aenderungen ist er
+uebrigens auch im RAM lauffaehig:
+</p>
+<pre class="donthyphenate">
+B021 3A statt C9
+B23F E1   &quot;   D7
+B248 C1   &quot;   FF
+</pre>
+<h1 id="article1">
+Typenrad-Terminal
+</h1>
+<h3>
+von Günter Kreidl
+</h3>
+<p>
+Im <a href="../../../05/06/text/#article1">Mai-Heft</a>
+habe ich gezeigt, wie man die Olivetti Praxis 30/35 über 18
+I/O-Leitungen als Drucker ansteuern kann. In diesem Heft möchte ich ein
+einfaches Interface vorstellen, das mit den 8 Leitungen eines Pio-Ports
+auskommt und zudem mit Interrupt arbeiten kann (nicht muß). Das
+versprochene Tastatur-Interface ist noch in Arbeit (Es soll ebenfalls
+mit Interrupt arbeiten).
+</p>
+<h4>
+Zur Druckgeschwindigkeit
+</h4>
+<p>
+Ich habe lange herumexperimentiert, um herauszubekommen, warum die
+Maschine nicht die Geschwindigkeit von 12 Z./Sek. erreicht, die vom
+Hersteller angegeben wird. Das Ergebnis war verblüffend: Sie erreicht
+diese Geschwindigkeit wirklich, aber nur gemittelt über die
+unterschiedliche Druckgeschwindigkeit einzelner Zeichen und über die
+Häufigkeit, mit der die einzelnen Zeichen in einem gewöhnlichen Text
+vorkommen. Kleinbuchstaben und Zahlen werden relativ schnell
+verarbeitet, Großbuchstaben und Sonderzeichen um etwa den Faktor 1,5
+langsamer. Besteht ein Text also nur aus Großbuchstaben, kommt die
+Maschine ins Stolpern, wenn die Datenrate größer als etwa 8 Zeichen pro
+Sekunde ist. Für die Textverarbeitung kann man also eine höhere
+Geschwindigkeit wählen als etwa für das Ausdrucken eines Assembler-
+oder Basic-Listings. Ein 2. Problem ist die Umschaltung zwischen den
+beiden Zeichensätzen. Von Hand geschieht dies über einen
+Schiebeschalter an der Tastatur, also relativ langsam. Der
+Mikrocomputer in der Schreibmaschine fragt diesen Schalter immer nur
+dann ab, wenn der Zeichenpuffer leergeschrieben ist, weil man von Hand
+sowieso nicht so schnell umschalten kann. Wechselt
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+man den Zeichensatz nun während des Druckerbetriebs, muß vorher eine
+Pause eingelegt werden, damit zunächst der Textpuffer leergeschrieben
+wird. Kommt ein solcher Wechsel zu häufig vor, dann vermindert sich die
+Druckgeschwindigkeit entsprechend. Man sollte deshalb für jede Aufgabe die
+Zeichenebene so auswählen, daß man mit möglichst wenig Umschaltungen
+auskommt. Braucht man z.B. häufig eines der folgenden Zeichen
+&quot;$,&pound;,*&quot;, sollte man die KBII-Belegung benutzen, KBI
+hingegen, wenn häufig die Zeichen &quot;=,%,&amp;,!&quot; benötigt
+werden. Das betrifft nicht die Schalterstellung an der Maschine (der
+Schalter muß für Computerbetrieb immer auf KBII stehen), sondern die
+Ansteuerung über das Interface: Bit 7 im Normalfall = 1 (KBII) oder = 0
+(KBI). Es empfiehlt sich daher, für verschiedene Aufgaben jeweils
+geeignete Treiberprogramme zu schreiben, um die optimale
+Geschwindigkeit zu erreichen. (Ich habe inzwischen 4 verschiedene
+Druckprogramme für verschiedene Anwendungen in Betrieb und erreiche je
+nach Anwendung Geschwindigkeiten zwischen 8 und 12 Zeichen pro Sekunde.)
+Die Geschwindigkeit kann per Hardware (Interruptbetrieb) oder per
+Software eingestellt werden. Wählt man die Hardwareeinsteilung, sollte
+man die beiden Trimmpotis durch ein Doppelpoti und zwei 10K-Widerstände
+ersetzen.
+</p>
+<h4>
+Das Interface
+</h4>
+<p>
+Die Schaltung besteht aus nur 3 ICs: Der 8/1-Muitiplexer LS251 hört den
+Tastatureingang ab und gibt ein Strobe-Signal auf den 3/8-Decoder
+LS156, wenn die über ein 3-Bit-Wort angewählte Zeile der Tastaturmatrix
+vom internen Mikroprozessor abgefragt wird. Der 3/8-Decoder gibt dann
+den ebenfalls mit 3 Bit angewählten Spaltencode aus und imitiert damit
+das Drücken einer Taste. Dieser Vorgang muß mindestens 3 mal wiederholt
+werden, danach muß etwa ebenso oft die entsprechende Spaltenleitung
+wieder auf log. 1 gesetzt werden, damit der interne Mikrocomputer das
+Signal als &quot;Taste losgelassen&quot; interpretiert. Die Steuerung
+dieses Abiaufs übernehmen die beiden Monoflops des LS123. Das erste MF
+wird über den RDY-Ausgang der Pio getriggert und erzeugt das
+Freigabesignal für das LS251. Dieses Signal wird dann wieder
+zurückgesetzt und gleichzeitig MF2 getriggert. Der invertierte Ausgang
+dieses Monoflops ist mit dem STB-Eingang der Pio verbunden und erzeugt
+im Interruptbetrieb das Unterbrechungssignal, das ein neues Zeichen für
+den Drucker anfordert. Bit 6 und 7 der Pio sind über einen
+Schutzwiderstand direkt
+</p>
+
+<?php columnEnd(2); ?>

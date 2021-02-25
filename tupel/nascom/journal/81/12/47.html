@@ -1,0 +1,56 @@
+<?php columnStartJustify(2, 22); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-47-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php nowrapStart(); ?>
+<h1 id="article1">
+Hochaufl. Graphic Teil 2
+</h1>
+<h3>
+von H.-Martin Pohl
+</h3>
+<p>
+Der normale Video-Teil erzeugt dauernd Adressen, die über Multiplexer
+dem Video-RAM zugeführt werden, wenn nicht gerade der Prozessor auf
+diesen Ram-Bereich zugreift. Die Daten aus dem Video-RAM werden als
+Teiladressen für den Character-Generator benutzt, der restliche
+Adreßteil wird auch durch Zähler erzeugt. Die Daten aus dem
+Character-Generator werden in das Schieberegister geladen und als
+Bildsignal herausgeschoben, über Widerstände (und Dioden) wird das
+Synchronisationssignal addiert und es entsteht das Video-Signal.
+</p>
+<p>
+Da die
+hochauflösende Graphik jeden Bildpunkt einzeln ansprechen soll, müssen
+die Daten für das Schieberegister direkt aus einem RAM-Bereich stammen.
+Die erzeugten Takte, die als Adresse für Video-RAM und als Teiladresse
+für den Zeichen-Generator verwendet werden, können dann zusammen als
+Adresse für den Graphik-RAM-Bereich dienen. Da beliebige freie
+dynamische RAMs verwendet werden sollen, kann die Graphik nur über DMA
+arbeiten. Wenn der Prozessor den Bus freigibt, muß über Puffer die
+Graphikadresse auf den Adreßbus gegeben werden. Die Daten vom Datenbus
+können dann (über ein zweites Schieberegister, dessen LD- und
+Clock-Eingang parallel zu dem des Videoteils geschaltet sind) als
+Graphikbildsignal verwendet werden.
+</p>
+<p>
+Zur Anforderung eines DMA kann das VBLANK. Signal verwendet werden.
+Dann kann der Prozessor in der Zeit zwischen der Ausgabe zweier Bilder
+normal weiterarbeiten. Da die hochauflösende Graphik immer ziemlich
+lange auf den Speicher zugreift, muß sie auch ein Refresh-Lesen
+durchführen. Das kann mit den verwendeten Graphik-Zählern erfolgen, da
+diese ja alle Adressen gleichmäßig durchzählen. Es muß also nur noch
+ein MREQ-, Read- und Refresh-Signal während der Speicherzugriffszeit
+erzeugt werden. Für Refresh kann man den normalen 1MHz-Takt verwenden,
+für MREQ 2 oder 4&nbsp;MHZ, und für Rd einfach 0V, da immer gelesen wird.
+</p>
+<p>
+Ein Problem taucht auf beim Anfordern vom Bus bzw. beim Zurückgeben an
+den Prozessor: es ändern sich einige Speicherzelleninhalte. Mit Hilfe
+der eingezeichneten Flip-Flops
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,79 @@
+<?php columnStartJustify(712); ?>
+
+<?php boxStart("R"); ?>
+<h1 id="article1">
+Printer
+</h1>
+<h3>
+von LUZIAN LINKE
+</h3>
+<p>
+Mehrfach wurde von Lesern eine Printroutine für EPSON Drucker
+gewünscht. Luzian Linke hat nun gleich drei kleine Programme
+eingesandt, um möglichst alle &quot;Druckerwünsche&quot; zu befriedigen.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnChangeJustify(512); ?>
+
+<h1 id="article2" class="donthyphenate">
+EMDOS schneller
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<h4>
+EMDOS rasant schneller
+</h4>
+<p>
+Günter Böhm
+</p>
+<p>
+Nachdem ich Jörg Wittichs
+<a href="../../06/text/#article1">Pheas ohne Interrupts</a>
+ausprobiert hatte,
+bekam ich rote Ohren: das Laden von 30K Speicher auf Diskette flutschte
+wirklich in Sekundenschnelle. Also war unser Skew-Faktor doch falsch
+gewählt? Schnell habe ich aber herausgefunden, daß auch Disketten,
+deren Sektoren sequentiell in der Reihenfolge 1,2,3 usw. formatiert
+waren, von unserem EMDOS auch nicht schneller gelesen werden konnten.
+So mußte das PHEAS noch eine andere Bremse enthalten. Ein Vergleich mit
+dem PHEAS von Jörg und das Nachschlagen in den Datenblättern gaben
+schnell Aufschluß: die Controller Kommandos, die ich damals ungeprüft
+übernommen hatte, bewirkten alle (wegen eines einzigen unnötig
+gesetzten Bits) eine Verzögerung von 15 ms. Zudem verträgt das Laufwerk
+wirklich eine schnellere Steprate. Schnell wurden alle Befehle zum Test
+mit dem Modify folgendermaßen geändert:
+</p>
+<pre class="donthyphenate">
+FHOME #01
+FSEEK #19
+FREAD #80
+FWRITE #A0
+FWRTRK #F0
+FRDTRK #E0
+</pre>
+<p>
+Und wirklich konnte EMDOS nun mehr als doppelt so schnell lesen und
+schreiben. Nur
+<a href="../../../../83/12/14/text/#article1">FORMAT</a>
+und
+<a href="../../../01/49/text/#article1">READTRK</a>
+zeigten keinen
+Geschwindigkeitsgewinn; hier sind die Rechenzeiten zu groß, um einen
+Sektor direkt nach dem vorhergehenden einzulesen.
+</p>
+<p>
+Nach dieser positiven
+Erfahrung habe ich mich darangemacht, alle Programme auf DISK0
+entsprechend zu verändern.
+</p>
+<p>
+<a href="../../../../83/12/18/text/#article1">WBOOT</a>
+habe ich dann noch etwas weitgehender ausgemistet. Hier wird
+unnötigerweise ein neuer Interruptvektor gesetzt. Die Delays sind auch
+nicht notwendig, da nach dem Coldboot die Diskette ja schon läuft. Beim
+</p>
+
+<?php columnEnd(3); ?>

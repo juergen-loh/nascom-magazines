@@ -1,0 +1,32 @@
+<?php columnStartJustify(2, 2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-17-1.jpeg"); ?>
+<?php columnChangeJustify(2); ?>
+
+<p>
+Mit obigem Programm wird die Grafik in 256 Zeilen zu 512 Punkten im
+Maßstab 1:1 ausgegeben. Da nun aber der EF 9366 ein quadratisches Bild
+erzeugt, erscheint die gedruckte Grafik üblicherweise verzerrt, d.h. in
+Y-Richtung gestaucht: aus einem Kreis wird eine Ellipse, aus einem
+Quadrat ein Rechteck,
+</p>
+<p>
+Um nun den Ausdruck im gleichen Verhältnis wie der Bildschirm
+darzustellen, kann von der X-Achse jeder zweite Punkt unterdrückt
+werden. Wie sich das Erscheinungsbild verändert, sehen Sie in den
+abgedruckten Beispielen.
+</p>
+<p>
+Folgende Zeilen sind dazu im Listing zu ändern:
+</p>
+<pre class="donthyphenate">
+Z1190 GETBYT LD DE,-1
+Z1200 NXTBIT INC D
+Z1201        INC D
+</pre>
+<p>
+Dadurch werden nur die ungeraden Bits an den Drucker ausgegeben.
+</p>
+<?php imageRightGap($imagepath, $year, $issue, $page, "Image-17-2.jpeg"); ?>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-17-3.jpeg"); ?>
+
+<?php columnEnd(2); ?>

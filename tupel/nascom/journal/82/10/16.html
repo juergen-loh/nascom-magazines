@@ -1,0 +1,127 @@
+<?php columnStart(2, 2); ?>
+<pre class="donthyphenate">
+978 IF L1=26 AND L=1 AND U1=0 THEN L=L1:GOTO1890
+979 GOTO 1060
+980 IF U1=1 AND L=1 THEN L=26: GOTO 120
+990 IF U1=1 AND M1$="TRA"AND L=26THEN L=1:RETURN
+1000 FOR X1=1 TO 4:M2$=MID$(N$(L,2),X1,1)
+1001 IF M2$&lt;&gt;LEFT$(M1$,1) THEN NEXT X1:GOTO 1010
+1003 FOR X2=43 TO 46
+1004 IF M1$&lt;&gt;R$(X2) THEN NEXT X2:GOTO 1010
+1006 L=VAL(N$(L,X1+3)):IF L&lt;&gt;0 THEN 1060
+1010 IF L=23 THEN T$="It's too slippery.":RETURN
+1020 IF L=25 THEN L=26:RETURN
+1030 IF L=26 THEN L=25:RETURN
+1040 IFL=19THENL=23:PRINT"Nigh broke m'neck!!":RETURN
+1050 T$="Sorry, butcha can't do that.":RETURN
+1060 B=0:GOTO 120
+1080 IF O$(4,3)&lt;&gt;"1" AND O$(6,3)&lt;&gt;"1" THEN 1320
+1083 IF J&lt;&gt;1 THEN 1110
+1086 Z=0:IF O$(J,3)="1" THEN Z=99
+1090 O$(J,3)="-9":O$(1,2)=STR$(L)
+1100 IF Z=99 THEN IN=IN-1
+1110 IF J&lt;&gt;22 GOTO 1120
+1111 PRINT"Ya got one!":PRINT"But the rest got you!"
+1112 GOTO 2220
+1120 IF J=9 THEN T$="Ya hit one!":RETURN
+1130 GOTO 120
+1150 IF O$(18,3)&lt;&gt;"1" THEN 1890
+1152 IF J&lt;0 THEN 511
+1153 IF J=4 OR (J&gt;5 AND J&lt;11) GOTO 1050
+1154 IF J&gt;14 AND J&lt;18 GOTO 1050
+1155 IF J=22 OR J=29 OR J&gt;30 THEN 1050
+1156 IF O$(J,3)="1" THEN IN=IN-1
+1157 O$(J,3)="-7":O$(J,2)=STR$(L)
+1158 IF J&gt;0 THEN 1060
+1160 IF O$(0,3)&lt;&gt;"-7" THEN 1060
+1163 O$(0,2)=STR$(L):FOR J=5 TO 21
+1164 IF O$(J,2)="-1" THEN O$(J,3)="-7"
+1170 NEXT: GOTO 1060
+1190 IF J&lt;&gt;12 THEN 1150
+1193 IF O$(J,3)&lt;&gt;"1" OR O$(18,3)&lt;&gt;"1" THEN 1150
+1195 CL=1: GOTO 120
+1210 IF J&lt;&gt;13 GOTO 1220
+1212 PRINT"Yeeech!!": PRINT"It's kerosene!"
+1214 PRINT"Ya just poisoned yourself.":GOTO 2220
+1220 IF J&lt;&gt;9 THEN 1050
+1230 PRINT"Wheeee!!"
+1232 PRINT"Ya got plastered and lost a day."
+1234 IF CL=1 THEN LN=LN-10
+1235 RETURN
+1250 IF J&gt;32 OR J&lt;0 THEN 1260
+1253 B=VAL(O$(J,2))
+1254 IF O$(J,3)="2" OR B=L OR B=-1 THEN 1260
+1255 IF J&lt;22 THEN 1890
+1257 T$="It aint't here.": RETURN
+1260 IF J&lt;=21 AND J&lt;&gt;1 AND J&lt;&gt;-1 GOTO 1270
+1262 T$="Who the heck ya think ya is?"+C$
+1264 T$=T$+"Paul Bunyon??! Ya ain't strong `nuf."
+1266 RETURN
+1270 IF O$(J,3)&lt;&gt;"-7"GOTO 1280
+1272 T$="It's burnt up `n ruined.": RETURN
+1280 IF IN&lt;=4 GOTO 1283
+</pre>
+<?php columnChange(2); ?>
+<pre class="donthyphenate">
+1281 T$="Ya can't! Yer hands `r full": RETURN
+1283 IF O$(J,3)&lt;&gt;"1" GOTO 1286
+1284 PRINT"Ya already got it!":RETURN
+1286 IF VAL (O$(J,1))=0 AND I&lt;&gt;16 THEN 1290
+1287 IN=IN+1:IF O$(J,2)&lt;&gt;"-1" GOTO 1289
+1288 IM=IM-1:O$(J,2)="":O$(J,3)="1":GOTO 1290
+1289 O$(J,3)="1":O$(J,2)=""
+1290 IF J&lt;&gt;9 AND J&lt;&gt;11 AND J&lt;&gt;2 THEN 120
+1293 IF J=9 AND O$(8,2)="-6"THEN O$(8,2)="6"
+1295 IF J=11 AND O$(12,2)="-8" THEN O$(12,2)="8"
+1297 IF J=2 AND O$(18,2)="-14" THEN O$(18,2)="14"
+1300 RETURN
+1320 IF O$(J,3)="1" GOTO 1325
+1322 T$="Ya don't have it!":RETURN
+1325 T$="Ok":IN=IN-1:O$(J,2)=STR$(L):O$(J,3)=""
+1326 RETURN
+1340 IF O$(5,3)&lt;&gt;"1" THEN 1890
+1350 IF L=7 THEN L=8:GOTO 120
+1360 IF L=12 THEN L=13
+1370 GOTO 120
+1390 GOSUB 120
+1391 ON J+1 GOTO 1400,1430,1440,1460,1470
+1392 ON FNG(J-4) GOTO 1480,1490,1460,1460,1500
+1393 ON FNG(J-9) GOTO 1510,1520,1530,1540,1460
+1394 ON FNG(J-14) GOTO 1460,1460,1460,1460,1560
+1395 ON FNG(J-19) GOTO 1570,1580,1590,1600,1610
+1396 ON FNG(J-24) GOTO 1620,1460,1630,1460,1460
+1397 ON FNG(J-29) GOTO 1460,1640,1460
+1399 GOTO 1460
+1400 IF VAL(O$(0,3))&gt;=1 GOTO 1410
+1402 T$="They's lumpy ole leather saddlebags."
+1404 RETURN
+1410 PRINT"They hold ";
+1412 IF IM=0 THEN PRINT"nothin'.":T$="":RETUR
+1415 FOR I=6 TO 22
+1416 IF O$(I,2)="-1" THEN PRINT " "O$(I,0)",";
+1420 NEXT I:T$=CHR$(8)+"."+C$:RETURN
+1430 T$="Ya see a weary old grey mule.":RETURN
+1440 T$="It's an ole torn sack"
+1442 IF O$(18,2)="-14" THEN O$(18,2)="14"
+1450 RETURN
+1460 T$="Ya see nothin' special.":RETURN
+1470 T$="It's an old winchester single-shot."
+1472 RETURN
+1480 T$="Looks like a map ta th' Lost "
+1481 T$=T$+"Dutchman's Mine! Thar's a sketch "
+1482 T$=T$+"of sum boulders.": RETURN
+1490 T$="Nothin' special,"+C$
+1492 T$=T$+"jus' a loaded six shooter.":RETURN
+1500 IF O$(8,2)&lt;&gt;"-6" GOTO 1505
+1501 T$="Looks like sumthin's `hind the bottles."
+1502 O$(8,2)="6": RETURN
+1505 GOTO 1460
+1510 T$="Thar'r 3 keys, tied with a leather "
+1512 T$=T$+"strap.": RETURN
+1520 IF O$(12,2)&lt;&gt;"-8" GOTO 1460
+1521 T$="Looks like thar's glass under `um."
+1522 O$(12,2)="8": RETURN
+1530 T$="It's an ole kerosene lamp,"+C$
+1532 T$=T$+"full ta the `"+STR$(LN)
+</pre>
+<?php columnEnd(2); ?>

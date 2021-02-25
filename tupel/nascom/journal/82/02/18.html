@@ -1,0 +1,145 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+FORTH für den NASCOM
+</h1>
+<h3>
+Teil 5 von Günter Kreidl
+</h3>
+<h4>
+1) Fehlerkorrektur
+</h4>
+<p>
+Leider hat sich beim Abtippen der FORTH-Erweiterungen im
+<a href="../../../../81/10/02/text/#article3">Oktoberheft</a>
+ein Fehler bei der Funktion MESSAGE eingeschlichen, Richtig lautet sie:
+</p>
+<pre class="donthyphenate">
+: MESSAGE GETWORD ENTER VARBL CMPLW
+CODEADR PEEKW
+REPEAT CIN DUP COUT DUP 34 EQ UNTIL
+DUP 8 EQ IF
+POP DEC ELSE OVER POKEB INC THEN
+LOOP
+POP ZERO OVER POKEB INC CODEADR POKEW ;
+</pre>
+<p>
+Ich hoffe, der Fehler hat nicht zuviel Frust verursacht, und bedanke
+mich bei Herrn Waltenberger, der ihn entdeckt hat.
+</p>
+<h4>
+2) Verbesserung der Initialisierungsroutine
+</h4>
+<p>
+Wer sich bei den
+Erweiterungen bis zum Editor-Modus hindurchgearbeitet hat, der wird
+eine unangenehme Erfahrung machen, wenn er den Editor-Modus einmal mit
+RESET verlassen mußte; der Interpreter läßt sich nicht mehr starten &ndash; es
+hilft nur neues Laden von Cassette. Hier läßt sich leicht Abhilfe
+schaffen, da sich in der Initialisierungsroutine der erweiterten
+Fassung einige &quot;NOP&rsquo;s&quot; befinden (von 1003H bis 100EH), Hier
+kann man nun zwei Befehle eintragen, die den Interpreter auch nach
+RESET im Editor-Modus wieder neu starten lassen. Da die jeweiligen
+Adressen der Variablen INVAR und der Konstanten BLADR bei verschiedenen
+Benutzern je nach Reihenfolge der Eingabe unterschiedlich sein mögen,
+wollen wir sie durch den Interpreter suchen lassen:
+</p>
+<pre class="donthyphenate">
+BLADR PRINTHEX SPACE INVAR PRINTHEX
+1747  1774     (Antwort des Interpreters)
+</pre>
+<p>
+Nun können wir bei 1003H eintragen:
+</p>
+<pre class="donthyphenate">
+1003 21 47 17 22 74 17.
+</pre>
+<p>
+Dadurch wird bei jedem Start als Einleseroutine
+BLINK aufgerufen. (Der Editor-Modus arbeitet
+mit BLINK und READSCR. Der Interpreter-Modus
+hingegen kann nicht mit READSCR arbeiten.)
+</p>
+<h4>
+3) Compilererweiterungen
+</h4>
+<p>
+Die folgende Funktion &quot;&nbsp;::&nbsp;&quot; ermöglicht es, neue
+Compiler-Funktionen zu definieren. Zunächst wird eine
+Interpreter-Funktion compiliert, dann wird deren Name an das Compiler-
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Dictionary angehängt und aus dem Dictionary des Interpreters wieder
+gelöscht, Das Compiler-Dictionary wächst also &quot;nach oben&quot;,
+das Interpreter-Dictionary dagegen &quot;nach unten&quot;,
+</p>
+<pre class="donthyphenate">
+: :: : NAMES PEEKW DUP PEEKB 3 + OVER OVER
+MEMORY PEEKW SWAP MOVEBYTES SWAP
+OVER + NAMES POKEW MEMORY PEEKW +
+DUP MEMORY POKEW ZERO SWAP POKEB ;
+</pre>
+<p>
+Um die folgenden Funktionen zu verstehen,
+die dem Compiler hinzugefügt werden, muß man
+sich noch einmal die Arbeitsweise des Compilers
+vergegenwärtigen: Außer Zahlen erkennt
+er Interpreterfunktionen, die dann compiliert
+werden, und Compilerfunktionen, die
+sofort ausgeführt werden. Manchmal ist es
+aber wünschenswert, im Compiler-Modus eine
+Interpreterfunktion direkt ausführen zu lassen,
+bzw. im &quot;::&quot;-Modus eine Compilerfunktion
+eben nicht ausführen, sondern compilieren
+zu lassen. Dies geschieht durch Voranstellen
+der Zeichen (&nbsp;!&nbsp;, &quot;&nbsp;).
+</p>
+<pre class="donthyphenate">
+:: ! GETWORD NAMES PEEKW LOOKUP
+IF EXECUTE
+ELSE ERROR TYPE PRINTS THEN ;
+4759 CONSTANT CNAMES  zeigt auf variable
+:: &quot; GETWORD CNAMES PEEKW LOOKUP
+IF CMPLW
+ELSE ERROR TYPE PRINTS THEN ;
+</pre>
+<p>
+Nicht als bleibende Erweiterung des Systems,
+sondern als ein Beispiel für die Anwendung
+der oben definierten Funktionen sei eine
+Kommentarfunktion mit &quot;(&quot; und &quot;)&quot; definiert:
+</p>
+<pre class="donthyphenate">
+:: ( REPEAT GETWORD INC PEEKB 41 EQ UNTIL
+LOOP ;
+</pre>
+<p>
+Innerhalb der Klammern kann man nun beliebibigen Text in die Funktion
+einfügen, der vom Compiler ignoriert wird (Vergl. &quot;REM&quot; in
+BASIC!), Ich persönlich ziehe aber die Funktion MISCHTEXT vor, die
+Kommentare in Kleinschrift erlaubt.
+</p>
+<p>
+Ein zweites Beispiel (ebenfalls nicht als bleibende Erweiterung
+gedacht) verwendet die Klammern als Wiederholungsfunktion:
+</p>
+<pre class="donthyphenate">
+:: ( ONE 4302  adresse der funktion tpush
+CMPLW CMPLW &quot; FOR  ;
+: : )  &quot; LOOP ;
+</pre>
+<p>
+Beispiel für die Anwendung:
+</p>
+<pre class="donthyphenate">
+: COUNT  ( I = SPACE ) ;
+</pre>
+<p>
+Auf die Eingabe &quot;5 COUNT&quot; antwortet der Interpreter mit:
+</p>
+<pre class="donthyphenate">
+1 2 3 4 5
+</pre>
+
+<?php columnEnd(2); ?>

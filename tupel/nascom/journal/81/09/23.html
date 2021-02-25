@@ -1,0 +1,84 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Nascom Pio-Bus
+</h1>
+<p>
+Hier nun endlich die Vorstellung des versprochenen I/O Busses, der es
+ermöglichen soll, Platinen möglichst problemlos zwischen NASCOM
+Benutzern auszutauschen und an den PIO anzuschließen. Der Anschluß der
+Bits 0&nbsp;-&nbsp;7 und der RDY und STB Signale von Port A und B sind exakt von
+den PIO Anschlüssen übernommen, ebenso die Ground und +5V Anschlüsse,
+Dazu kommen die Spannungen +12V und -12V. Die 31-polige Steckverbindung
+läßt noch Platz für einige weitere Optionen; zum Beispiel die
+Programmierspannung für Prommer, den Takt für den Soundgenerator und 3
+Anschlüsse für den UART (Clock, IN, OUT). Ein Anschluß könnte
+möglicherweise den 4MHz Takt für ein Interface für den MDCR führen.
+</p>
+<p>
+Für
+folgende Schaltungen existieren bereits Printvorlagen, die obige
+Steckerbelegung aufweisen:
+</p>
+<p>
+Soundgenerator, Siebensegmentanzeige für Testzwecke, AD/DA Wandler,
+Prommer für
+<?php externalLink("2708","",""); ?>,
+FSK-Modulator. Vielleicht könnten künftig entworfene
+Schaltungen so konzipiert werden, daß sie zu diesem &quot;Bus&quot;
+kompatibel sind.
+</p>
+<p>
+Hier noch einige Anmerkungen von Herrn Zeller zu
+diesem Bussystem:
+</p>
+<p>
+Im allgemeinen bin ich gegenüber neuen Buskonzepten
+sehr skeptisch. Es ist ja das große Dilemma, daß jeder MC-Hersteller
+seinen eigenen Bus einführt und damit die Kombination von Platinen
+verschiedener Hersteller fast ausschließt. Dies ist ja auch ein
+Hauptnachteil des NASCOM Systems, das sich nur auf dem 72poligen Nasbus
+weiter ausbauen läßt.
+</p>
+<p>
+Mit dem &quot;PlO-Bus&quot; soll nun die Schnittstelle zwischen dem
+NASCOM (über PIO oder UART) und der Peripherie vereinheitlicht werden.
+Deshalb finde ich den Vorschlag von Herrn Öhring weniger interessant,
+da sich seine Konzeption zu wenig am NASCOM orientiert. Ich finde, man
+sollte, selbst wenn man den PIO-Bus als Vorbild nimmt, den Entwickler
+nicht zu sehr reglementieren und an dieses Buskonzept festnageln. So
+kann z.B. jemand, der keinen Prommer hat, den Pin 28 seinen
+Bedürfnissen nach mit einer anderen Funktion belegen. Der NASCOM User,
+der sich selbst Platinen dazubastelt, hat ja meistens eigene
+Vorstellungen, wie er sein System ausbauen
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+soll; so sehe ich das wenigstens
+aus eigener Erfahrung. Deshalb sollte man den Anwender nicht auf den
+PIO-Bus festnageln.
+</p>
+<p>
+Also Fazit meiner Ausführungen: die Idee und Ausführung des PIO-Busses,
+der es erlaubt, kleine Erweiterungen problemlos anzuschließen, finde
+ich geglückt und sinnvoll, Sie kann dem Leser manche Anregung geben,
+wie er seinen NASCOM erweitern kann; aber wir wollen ihm auch noch
+Spielraum für eigene Ideen lassen,
+</p>
+<p>
+*<br>
+Anmerkung: Die Konzeption von Herrn Öhring wird im
+<a href="../../../10/21/text/#article1">nächsten Heft</a>
+vorgestellt. Es handelt sich dabei um eine Familie von Schnittstellen
+zur parallelen Übertragung von 8 oder 16 Bit breiten Datenworten.
+Ausgegangen wurde dabei von den Erfahrungen mit der V.24 Schnittstelle
+und der Druckerschnittstelle von Centronics.
+</p>
+<br>
+<?php boxStart(); ?>
+<br>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<br>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

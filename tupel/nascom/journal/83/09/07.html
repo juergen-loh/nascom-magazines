@@ -1,0 +1,86 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php boxStart("LBR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Seien Sie beim Anschluß des Laufwerkes an das Netzteil vorsichtig: mein
+Laufwerk döst nun in den ewigen Jagdgründen, weil ich die Anschlüsse
+nicht nachgemessen habe. Mir lagen Unterlagen zu einem neueren Laufwerk
+vor, auf dem die Steckeranschlüsse vertauscht sind. Beim Anlöten des
+Steckers lagen nun 12V an den TTL-Bauteilen. Die ertrugen das 5
+Minuten, dann begann die Sache zu stinken. Messen Sie also vor dem
+Einschalten nach, ob die TTL-ICs auch an der richtigen Leitung hängen!
+</p>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+&quot;Impulsfalle&quot;
+<?php boxEnd(); ?>
+
+<p>
+Wenn der Controller eine Aufgabe erledigt hat (z.B. Spur suchen oder
+Schreib/Lesekopf auf Spur 00 positionieren, gibt er über seinen
+INT-Ausgang ein Signal an die PIOA Bit7, die dadurch einen
+Software-Interrupt auslösen soll. Da beim Testen des Programms hier
+zunächst nichts geschah (das Programm
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+blieb irgendwo hängen), baute ich eine kleine Schaltung, die es
+gestattet, einen Impuls zu &quot;speichern&quot;, denn das Oszilloskop
+ist bei einem einmalig auftretenden sehr schnellen Impuls keine Hilfe.
+Der Eingang der Schaltung wurde dann an die Interruptleitung (21c) oder
+die NMI-Leitung (20c) gelegt. Erfolgte ein Interrupt, so leuchtete die
+LED und zeigte damit den erfolgten Impuls an.
+</p>
+<p>
+Auf diese Weise konnte ich einen gewichtigen Fehler im Programm
+beseitigen. Vielleicht kann Ihnen die Schaltung auch einmal beim
+Verfolgen ähnlicher Signale dienlich sein. Durch Umstecken eines
+Jumpers läßt sie sich auch durch positive Signale ansteuern.
+</p>
+<p>
+Die Hardware ist aufgebaut, das Laufwerk ist angeschlossen. Nun müssen
+wir es zum Laufen bringen. Am besten geht das, wenn eine formatierte
+Diskette zur Verfügung steht, dann hat man eine standardisierte
+Kontrolle. Aber auch mit einer leeren Diskette können wir arbeiten.
+</p>
+<p>
+Zunächst müssen die PIO, der Controller und der
+<?php externalLink("FDC9229","FDC&nbsp;9229B"); ?>
+(Floppy Disk Interface Circuit) initialisiert werden.
+</p>
+<p>
+Die PIO arbeitet im
+Controlmode, d.h. es werden bestimmte Leitungen als Ein-bzw. Ausgänge
+benutzt. Die Bits der I/O-Masken lassen sich anhand des Schaltbildes
+nachvollziehen; 1 ist dabei jeweils ein Eingang.
+</p>
+<p>
+Weiterhin muß PIOA
+interruptfähig gemacht werden; die entsprechenden Kontrollwörter machen
+sie dafür bereit, als Interruptvektor wird für PIO und I-Register in
+unserem Programmbeispiel 8000H eingegeben; d.h. dort ist die Adresse
+eingetragen, zu der das Programm bei einem Interrupt durch Bit7 der PIO
+springt.
+</p>
+<p>
+Der
+<?php externalLink("WD1793","WD-1793"); ?>
+wird durch einen zeitlich genau definierten Impuls rückgesetzt.
+</p>
+<p>
+Als letzter Schritt der Initialisierung wird die
+Laufwerknummer selektiert. (Die Nummer muß auf dem Laufwerk selbst
+mittels einer Drahtbrücke eingestellt werden. Fabrikmäßig ist DRIVE0
+vorgesehen). Hier muß man aufpassen, weil durch die PIO auch der
+FDC9229 programmiert wird. Lange Zeit ist uns beim Testen entgangen,
+daß eine 1 am Pin &quot;MINI&quot; (durch Invertierung eine 0 an der
+PIO A3) der Controller für 8&quot; Laufwerke angesteuert wird. Damit
+Ihnen hier kein Denkfehler unterläuft, sollten Sie nachfolgende Tabelle
+zu Rate ziehen.
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,97 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+reservierte Wörter eingefügt wurden (denn diese bestehen aus
+2-Byte-Token), dann die Sonderbehandlung von INPUT und PRINT (weil ja
+in einem Textstring auch Grafikzeichen vorkommen können, die nicht als
+Token interpretiert werden dürfen) dann... Plötzlich war ein relativ
+umfangreiches Programm daraus geworden.
+</p>
+<p>
+Das X-Tal BASIC hat allerdings
+selbst viel mitgeholfen. So ist es hier nicht notwendig, die Tokens auf
+umständliche Weise selbst aus dem Programmspeicher herauszufinden
+(<a href="../../../../81/10/25/text/#article1">N.Journal&nbsp;10/81</a>
+Wolfgang von Jan&nbsp;; leider ließ er damals die
+Operatoren wie +-* etc. aus). Erstens sind sie im Manual abgedruckt,
+und zweitens liefert die Funktion CMD$(x) die reservierten Wörter für
+die Tokens &quot;x&quot;. Im Beispiel finden Sie die Befehle und Tokens
+(unterstrichen) für die neuen Statements aus dem ersten Artikel.
+</p>
+
+<?php columnTabStart(); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.jpeg"); ?>
+<?php columnTabChange(); ?>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-07-2.jpeg"); ?>
+<?php columnTabEnd(); ?>
+
+<p>
+Die Anwendung des Programme ist vergleichsweise einfach. Zunächst wird
+das Anpassungsprogramm ADAPT geladen, dann das
+Microsoft-BASIC-Programm.
+</p>
+<p>
+Nun wird ADAPT mit E&nbsp;D00 gestartet, und das
+Programm ist umgewandelt. Man sollte sich die Endadresse des Programmes
+in #CB7 (nach dem Editieren!!) anschauen. Sie ist für das Abspeichern
+auf Cassette wichtig, und muß in Zukunft auch manuell in diese Adresse
+geladen werden, wenn das Programm neu für X-Tal eingelesen wird.
+Vielleicht hat ein Leser einen Tip, wie man das eleganter lösen könnte.
+****
+</p>
+<p>
+Nun liest man das X-Tal BASIC ein und startet mit 1002 (wird auf dem
+Bildschirm aufgefordert).
+</p>
+<p>
+Allerdings läßt sich ein Editieren vor dem
+Progranmetart nicht vermeiden (zumindest nicht mit dieser Version). Man
+könnte alle auftretenden Eventualitäten möglicherweise auch per
+Programm umsetzen lassen, aber das war mir einfach zu viel.
+</p>
+<p>
+Beim Editieren sind folgende Satements zu ändern:
+</p>
+<table>
+<tr><td>a</td><td>wird zu Printa</td></tr>
+<tr><td>SET (x,y)</td><td>wird zu SETx,y</td></tr>
+<tr><td>RESET(x,y)&nbsp;&nbsp;</td><td>s.o.</td></tr>
+</table>
+<p>
+INCH tritt bei ursprünglichem USR(X) auf. Falls eine andere
+Maschinenroutine als die Tastaturabfrage gefordert wird, muß CALL
+eingesetzt werden (oder KBD, wenn die Tastatur ohne Warteschleife
+abgefragt werden soll).
+</p>
+<p>
+Sollte ich die eine oder andere Änderung vergessen haben, so wird Sie
+Ihnen beim Programmlauf als spezifische Error-Meldung mitgeteilt und
+kann leicht nachgeholt werden.
+</p>
+<p>
+Denken Sie daran, daß DOKEs für Tastatur-Maschinencodes wegfallen und
+daß andere Maschinenprogramme nur im Bereich E00 bis E7F liegen dürfen;
+der Rest bis 1000 wird vom BASIC benutzt.
+</p>
+<p>
+Das alles klingt wieder einmal sehr kompliziert, sollte Sie aber nicht
+abschrecken. Nach dem Umwandeln Ihres ersten Programms sehen Sie keine
+Schwierigkeiten mehr.
+</p>
+<h4>
+*** &nbsp; &nbsp; NACHTRAG
+</h4>
+<p>
+Das aufwendige Nachschauen, Merken und Nachtragen des Programmendes ist
+nur notwendig, wenn man -wie ich das tue- die Programme auf
+Minicassette abspeichert. Selbstverständlich können sie aber auch mit
+CSAVE und den entsprechenden Variationen, die X-Tal zuläßt, ganz normal
+auf Cassette geschrieben werden, und der oben beschriebene komplizierte
+Vorgang entfällt.
+</p>
+
+<?php columnChange(2); ?>
+<div id="article1">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-3.jpeg"); ?>
+</div>
+<?php columnEnd(2); ?>

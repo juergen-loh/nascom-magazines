@@ -1,0 +1,115 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+&quot;aktiv high&quot; gelegt. Diese Methode ist zwar unkonventionell
+und entspricht in keiner Weise den TTL-Spezifikationen, aber sie ist
+einfach und funktioniert bei mir auf mehreren NASBUS Karten problemlos.
+(u.U. L-Pegel kontrollieren und gegebenenfalls Widerstand verkleinern).
+DBDR wird über die Ge-Diode wie eine normale &quot;wired OR&quot;
+Schaltung angesteuert und ist auch so vorgesehen.
+</p>
+<h4>
+<u>Timing</u>
+</h4>
+<p>
+Die Taktfrequenz für den Videoteil und den Controllerchip wird mit
+IC7404, IC163 und ICS174 (Latch) erzeugt und über Logikgatter
+entsprechend verteilt. (ICS174 muss unbedingt ein Shottky-Typ sein)
+</p>
+<h4>
+<u>Memory</u> <u>und</u> <u>Adress-MUX</u>
+</h4>
+<p>
+Der Bildspeicher ist mit einem 2K*8 Statik Ram
+<?php externalLink("6116"); ?>
+aufgebaut. Er kann
+auf zwei Arten adressiert werden. Zum einen kann der CRT-Controller
+<?php externalLink("MC6845"); ?>
+die Adressierung vornehmen und den Inhalt des Bildspeichers
+verändern und zum anderen kann auch direkt von der CPU aus auf den
+Bildspeicher zugegriffen werden. Die Umschaltung der Adressierungsart
+wird über den Adressmultiplexer, der mit 3 TTL-Chips 74157 aufgebaut
+ist vorgenommen. Mit diesem MUX wird auch die Freigabe des Datenbusses
+auf das Video-Ram über den Baustein IC2452 vorgenommen.
+</p>
+<h4>
+<u>CRT-Controller</u> <u>und</u> <u>Videosignalerzeugung</u>
+</h4>
+<p>
+Der CRT-Controllerchip erzeugt über 4-Adressbits (RA0-RA3) die Adressen
+für die Bildschirmzeilen (max. 16/Charakter) die direkt auf das
+Charakter-ROM
+IC<?php externalLink("2716"); ?>
+gegeben werden. Dazu kommen 7-Bits aus dem
+Video-Ram die über ein 8-Bit Latch IC273 auf den Charaktergenerator
+gelangen. Dieser bildet daraus mit Hilfe des Videoschieberegisters
+IC165 das serielle Videonutzsignal welches dann über zusätzliche
+Steuerlogik auf den Videoverstärker gelangt. Dort wird es mit den
+Horizontal-SYNC und Vertikal-SYNC Impulsen aus dem CRT-Controllerchip
+gemischt und als Composit-Video-Signal auf den angeschlossenen Monitor
+mit Videoeingang ausgegeben. Der Bildschirm zeigt dann den Inhalt des
+Bildspeichers in der durch den Charaktergenerator und die
+Treibersoftware
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+für den
+<?php externalLink("MC6845"); ?>
+festgelegten Form an.
+</p>
+<p>
+Das Video-Ram auf der CRT-Karte
+ist in der hier gezeigten Version und auch im Layout als &quot;write
+only&quot; geschaltet, d.h. es kann nur beschrieben aber nicht gelesen
+werden. Dies hat den Vorteil, dass die CRT-Karte jederzeit an eine
+Ramspeicheradresse gelegt werden kann an der sich bereits Ramspeicher
+befindet. Dann wird praktisch parallel in den Bildspeicher 6116 und
+das dort befindliche Ram geschrieben aber nur aus dem CPU-Ramspeicher
+gelesen. Viele Speicherkarten lassen sich nämlich nur in Blöcken zu 16K
+verschieben, sodass diese Lösung durchaus sinnvoll sein kann. Will man
+diese &quot;WR only&quot; Methode nicht anwenden so müssen folgende
+Änderungen im Layout und im Schaltplan vorgenommen werden:
+</p>
+<p>
+IC7400(8) --&gt; IC7411(11) &nbsp; auftrennen&nbsp;!<br>
+IC7402(8) --&gt; IC7411(11) &nbsp; einfügen&nbsp;!
+</p>
+<p>
+Als Charaktergenerator wird hier ein einfaches EPROM 2716 verwendet
+welches z.B. mit dem in <a href="../../../01/19/text/#article1">Heft 1/82</a>
+von mir beschriebenen BASIC-Programm
+erstellt und programmiert werden kann.
+</p>
+<h4>
+<u>Aufbau</u> <u>der</u> <u>Hardware</u>
+</h4>
+<p>
+Eine Layoutkopie und Bestückungsplan der Interfacekarte ist gegen
+Freiumschlag und Kopierkostenersatz bei der Redaktion erhältlich. Beim
+Aufbau geht man am besten so vor wie es von mir bereits in
+<a href="../../../../81/12/32/text/#article1">Heft 12/81</a>
+beschrieben wurde.
+</p>
+
+<?php hline("100%", "2"); ?>
+<p>
+Die Verbindung der Adressleitung A15 am NASBUS Pin 45 und IC7485 Pin 9
+muss durch einen dünnen Wrap-Draht nachträglich im Layout noch
+eingefügt werden.
+</p>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4>
+<u>LITERATURANGABEN</u>
+</h4>
+<p>
+NASBUS Manual<br>
+NASCOM&nbsp;I und NASCOM&nbsp;II Manuals<br>
+Datenblätter und Applikation Notes
+<?php externalLink("MC6845","",""); ?><br>
+NASCOM-JOURNAL <a href="../../../../81/12/32/text/#article1">12/81</a>,
+<a href="../../../01/19/text/#article1">1/82</a>
+</p>
+
+<?php columnEnd(2); ?>

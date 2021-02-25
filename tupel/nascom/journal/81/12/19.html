@@ -1,0 +1,137 @@
+<?php columnStart(2); ?>
+<pre id="article1" class="donthyphenate">
+1 PRINT"          ___            ,l*************####*"
+2 PRINT"____----~*#~#*~---____   'l*************####'"
+3 PRINT" '~~~~~--*+_+*--\-~'\'       l+l"
+4 PRINT"           ~      \88__\__   l+l"
+5 PRINT"                ]_=l##############*."
+6 PRINT"                ]~=l######l===='~~~'"
+7 PRINT"                     ~'~"
+9 PRINT"_____________________________________ ________"
+10 PRINT"Space the final frontier..."
+11 PRINT"These are the voyages of the starship"
+12 PRINT"    USSS Enterprise      NCC 1701"
+13 PRINT"on its five year mission to seek out new"
+14 PRINT"life and new civilizations and to boldy go"
+15 PRINT"where no man has gone before ..."
+16 DOKE4100,3264:FORI=3264TO3272STEP2:READQ
+17 DOKEI,Q:NEXT:DIM X(7),Y(7)
+18 DATA12,1,12,4,23,7,2,3,36,6,45,2,26,2
+19 FORI=1TO7:READY(I),X(I):NEXTI:A$=" "
+20 FORJ=1TO7:SCREENY(J),X(J):PRINTA$
+21 FORT=1TO30:NEXTT:IFA$=" "THENA$="'":GOTO23
+22 FORT=1TO30:NEXTT:IFA$="'"THENA$=" "
+23 NEXTJ
+28 A=USR(0):IFA&lt;&gt;0THEN 156
+29 X=RND(1):GOTO20
+30 SCREEN1,1:RETURN
+31 GOSUB30:FORI=1TO4:FORR=1TO47:PRINT" ";:NEXTR
+32 NEXTI:GOSUB30:RETURN
+156 CLS:CLEAR:DIMG(9,12),Q(24,10):RESTORE1
+157 INPUT"Do you need instructions ";W$
+159 IFLEFT$(W$,1)="Y"THEN 3900
+220 PRINT;"Difficulty (1-9),Commander ";
+230 INPUTZ$:IFZ$=""THENZ$="9"
+233 PRINT
+235 Z8=INT(ABS(VAL(Z$)))
+242 IFZ8&lt;1THEN220
+243 IFZ8&gt;9THEN220
+245 Z7=10-Z8
+250 PRINT"Please stand by , Commander"
+251 PRINT"...the Galaxy is forming"
+265 GOSUB3265
+330 P1=3000*Z7:P2=1500*Z7:V9=.3:T1=10
+350 E1=FNR(23):E2=FNR(09):Q1=FNR(8): Q2=FNR(11)
+360 PRINT"Type 'HE' for help when needed"
+370 GOSUB2020
+380 GOSUB30:GOSUB2209
+390 GOSUB1790:REM Desaster?
+395 IFQ(E1,E2)=3THENPRINT:GOTO1710
+400 PRINTCHR$(27);
+401 INPUT" What is your command ";C1$
+405 IFK1*K2=0THEN410
+406 IFH2&gt;0THENO1=B1:O2=B2:GOSUB6000:REM Klingon
+407 IFH2=0THENO1=E1:O2=E2:GOSUB6000:REM move
+410 C$=LEFT$(C1$,2):IFLEN(C1$)&lt;3THEN420
+411 G$=MID$(C1$,3,1):IFASC(G$)&lt;49THEN420
+412 IFASC(G$)&gt;56THEN420
+413 IFV9&lt;.1THENV9=0:GOTO600
+414 IFV9&gt;.5THENV9=1
+415 V9=VAL(G$)/10:GOTO420
+420 IFP1+P2&lt;&gt;0THEN440
+430 PRINT"Captain,the Ship is out of fuel !":GOTO 1720
+440 IFC$="SL"THENGOSUB30:GOTO380
+450 IFC$&lt;&gt;"SG"THEN470
+460 GOSUB30:GOSUB2130:GOTO390
+470 IFC$&lt;&gt;"SN"THEN540
+480 GOSUB31
+481 FORJ=Q2+1TOQ2-1STEP-1:PRINTJ;" : ";
+483 FORI=Q1-1TOQ1+1
+</pre>
+<?php columnChange(2); ?>
+<pre class="donthyphenate">
+490 IFI*J&gt;0THEN500
+493 IFI&gt;=9THEN495
+494 GOTO500
+495 IFJ&gt;=12THEN530
+500 IFG(I,J)&lt;1000THENG(I,J)=G(I,J)+1000
+510 IFI=Q1THENIFJ=Q2THENPRINT"+";:GOTO520
+513 PRINT"";
+516 IFG(I,J)&gt;1000THENPRINTG(I,J)-1000; "!";:GOTO530
+520 PRINTG(I,J)-1000;" !";
+530 NEXTI:PRINT:NEXTJ
+531 PRINTTAB(7);Q1-1;"  ";Q1;"  ";Q1+1;
+535 PRINT" Code = ' !ebk* ! '":GOSUB2210:GOTO390
+540 IFC$&lt;&gt;"IM"THEN560
+550 V9=.3:GOTO380
+560 IFC$&lt;&gt;"WP"THEN630
+565 GOSUB31
+570 INPUT"Warp Faktor  (1-8) ";D1:D1=INT(D1)
+580 IFD1&lt;0THEN590
+581 IFD1&gt;8THEN590
+582 GOTO600
+583 IFD1=0THEN600
+585 V9=D1:GOTO610
+590 PRINT"Invalid Warp Speed requested,Sir...":GOTO570
+600 V9=D1:IFV9=0THENPRINT"Aye,Sir ... all engines stopped"
+610 IFV9&lt;&gt;0THENPRINT"Aye,Sir ...Warp ";V9;" set"
+615 FORI=1TO500:NEXT
+620 GOSUB30:GOTO380
+630 IFC$&lt;&gt;"AF"THEN690
+635 GOSUB31
+640 PRINT"Total fuel remaining: ";P1+P2
+650 INPUT"Amount to allocate to screens,Sir ";D1
+660 IFD1&gt;=P1+P2THEN670
+663 IFD1&gt;=0THEN680
+670 PRINT"Allocation impossible,Sir ...":GOTO650
+680 P2=P1+P2-D1:P1=D1:PRINT"Aye,aye,Sir"
+681 GOSUB30:GOTO380
+690 IFC$&lt;&gt;"DO"THEN780
+700 D1=0:GOSUB31
+710 FORI=E1-1TOE1+1:FORJ=E2-1TOE2+1: IFI*J&lt;0THEN730
+720 IFI&gt;=24THEN730
+721 IFJ&lt;12THENIFQ(I,J)=2THEND1=1
+730 NEXTJ:NEXTI:IFD1&lt;&gt;0THEN760
+740 PRINT"Dock,Sir ??? With what?":GOSUB30:GOTO380
+760 V9=0:P1=3000*Z7:P2=1500*Z7:T1=10
+761 PRINT"Docked, Sir":GOSUB30:GOTO380
+780 IFC$&lt;&gt;"HE"THEN890
+785 GOSUB31:CLS
+790 PRINT"    *****  Star Trek Commands  *****"
+795 PRINT:PRINT
+800 PRINT"HE. this Help message/DO. Dock at Star Base"
+810 PRINT"FP.fire Phasers      /FT.fire Photon torpedoes"
+820 PRINT"SL.scan local Quad   /SN.scan neighbor Quads"
+830 PRINT"SG.scan Galaxy map   /AF.allocate fuel"
+840 PRINT"IM.set Impulse Speed /WP.set Warp Speed"
+850 PRINT"BC.Battle Computer   /MD.move the Ship down"
+860 PRINT"MU.move the Ship up  /MR.move the Ship right"
+870 INPUT"ML.move the Ship left/ (struggle on = ENTER ) ";O$
+880 GOTO380
+890 IFC$&lt;&gt;"FP"THEN1080
+900 GOSUB31:IFC9=2THEN915
+910 PRINT"No target, Sir":GOTO390
+915 INPUT"Phasers bearing, Sir ";W
+920 INPUT"Number of fuel units to fire, Sir ";D
+</pre>
+<?php columnEnd(2); ?>

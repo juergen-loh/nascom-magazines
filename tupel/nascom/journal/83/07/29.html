@@ -1,0 +1,107 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Video 48x16
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4>
+ECB-Video-Karte 48x16:
+</h4>
+<p>
+Die Karte ist hardwaremäßig dem NASCOM-1 Schaltplan nachempfunden, als
+Speicherbausteine habe ich zwei <?php externalLink("2114"); ?> verwendet. Die Adressdekodierung
+ist sowohl auf der Karte möglich (X800-XBFF) als auch über Pin 25a der
+Anschlußleiste in Verbindung mit der CPU-Karte. Die beiden
+gegenüberliegenden Lötpunkte (Leitung von Pin 25a zu Pin 6 des LS 139)
+sind hiezu zu verbinden, die beiden Dekodierungs-IC entfallen. Als
+Zeichengenerator ist derjenige vom
+<a href="../../../03/10/text/#article1">80-BUS Journal 3/83, Seite 10</a> zu
+verwenden, da lt. dem mir zu Verfügung gestandenen NASCOM-1 Schaltplan
+die Belegung des Schieberegisters LS 165 leider spiegelverkehrte
+Zeichen erfordert. Ich habe in der Zwischenzeit einen ZG mit Schrift-
+und Grafikzeichen (N-2) erhalten und dabei festgestellt, daß diese
+Zeichen lagerichtig erzeugt werden. Durch die Dekodierung des Bit 7 auf
+der
+<?php externalLink("ECB","",""); ?>-Video-Karte
+ist es möglich, anstelle des
+<?php externalLink("2716"); ?>
+einen
+<?php externalLink("2732"); ?>
+als
+Zeichengenerator mit Grafikzeichen zu verwenden. Hiezu ist lediglich
+Pin 21 des ZG mit 5V (2716) bzw. Bit 7-Lötpunkt (2732) zu verbinden.
+</p>
+<p>
+Da ich mir vorstellen kann, daß zusammengesetzte Grafik mit den
+spiegelverkehrten Zeichen nicht zusammenpaßt, habe ich die beschriebene
+Hardwareänderung am Schieberegister auf meiner Karte durchgeführt. So
+ist es sicher günstiger, wenn man den Original NASCOM Zeichengenerator
+(N2) einsetzt.
+</p>
+<p>
+Das Schieberegister wurde inzwischen so belegt, daß der
+Original-Zeichengenerator (bzw. entsprechendes 2732) eingesetzt werden
+kann, ohne an der Platine herumzufummeln.
+</p>
+<p>
+Bei der Schneebekämpfung habe ich allerdings keinen Erfolg gehabt, es
+ergaben sich noch störende Nebeneffekte. Muß sich halt jeder etwas
+selbst basteln, Platz für einen &quot;Streifenkiller&quot; ist neben
+IC11 vorhanden.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-29-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart(); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-29-2.jpeg"); ?>
+<p>
+4pol. DIL-Schalter, LS85 und LS139
+entfallen bei Adressierung durch die
+CPU-Karte.
+</p>
+<p>
+Die &quot;c&quot; sind Abblock-Kondensatoren 10n
+bis 4,7&micro; (nicht kritisch).
+</p>
+<?php boxEnd(); ?>
+
+<h4>
+<u>Änderungen zum Videoteil von NASCOM&nbsp;1</u>
+</h4>
+<p>
+IC 20 bis 28 entfallen;<br>
+IC 45 c,d entfällt;<br>
+anstelle ZG IC 16: EPROM 2716 oder 2732
+(DB 7 bzw. +5V sind zu Pin 21 geführt,
+Einstellung mittels Drahtbrücke).
+</p>
+<p>
+Für UHF-Video Ausgang (ASTEC E 36) eigene
+Anpassung durch R8a 3,9K und R9a (für BAS-Ausgang
+bleiben R8 und R9).
+</p>
+<h4>
+<u>Mögliche Fehler:</u>
+</h4>
+<p>
+Wenn gescrollte Zeile am Bildschirm ganz
+oben nochmals erscheint, dann IC 8 und 9
+auswechseln gegen 7430 oder anderes Fabrikat
+(wurde auch auf original NASCOM- Platine festgestellt).
+</p>
+<p>
+Bitte melden Sie sich bei der Redaktion, falls Sie
+</p>
+<ol>
+<li>an einer Fertigkarte interessiert sind</li>
+<li>die Karte in den Foliendienst übernommen werden soll</li>
+</ol>
+<p>
+Wenn zu wenige Interessenten für obige Möglichkeiten vorhanden sind,
+werden wir das Platinen-Layout im nächsten Heft abdrucken.
+</p>
+
+<?php columnEnd(2); ?>

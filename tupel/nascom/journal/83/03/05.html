@@ -1,0 +1,108 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" style="text-align:center">
+80*24 Video-Platine
+ECB-BUS kompatibel
+</h1>
+<h3 style="text-align:center">
+von KARL SCHULMEISTER
+</h3>
+<h4>
+Bemerkungen für den Nachbau:
+</h4>
+<p>
+1. Die Schaltung entspricht dem in
+<a href="../../../../82/05/12/text/#article1">Heft 5/82</a>
+vorgestellten
+<a href="../../../../82/05/14/text/#article1">Schaltplan</a>.
+Einige Anschlüsse der TTL-IC wurden wegen einer günstigeren
+Leiterbahnführung vertauscht. Bei folgenden ICs müssen die Nummern der
+Anschlüsse gegen die nachfolgenden ausgebessert weden:
+</p>
+<p>
+IC 7400:4-1;
+5-2; 6-3; 1-9; 2-10; 3-8; 10-4; 9-5; 8-6; 12-13; 13-12.
+</p>
+<p>
+IC 7402:2-11; 3-12; 1-13; die Anschlüsse 11,12 und 13 bleiben
+frei.
+</p>
+<p>
+IC 7411:10-1; 11-2; 9-13; 8-12; 1-10; 2-11; 13-9; 12-8; 4-5;
+5-4.
+</p>
+<p>
+IC 7432:2-9; 1-10; 3-8; 12-2; 13-1; 11-3; 10-4; 9-5; 8-6; 5-12;
+4-13; 6-11.
+</p>
+<p>
+IC 7405: die Anschlüsse 5,6,8 und 9 bleiben frei.
+</p>
+<p>
+Die Europakarte
+erzeugt kein DBDR und IOEX signal für den NASBUS, diese Signale müßten
+durch freie Verdrahtung erzeugt und herausgeführt werden.
+</p>
+<p>
+2. Anstelle des schwer zu bekommenden BSY&nbsp;49 kann der 2N2222
+verwendet werden.
+</p>
+<p>
+3. Möglicherweise aufgrund der kürzeren Verbindungen funktioniert die
+Karte auch mit dem LS&nbsp;74 anstelle des S&nbsp;74 einwandfrei, es ist kein
+Unterschied festzustellen.
+</p>
+<p>
+4. Die in
+<a href="../../../../82/06/12/text/#article1">Heft 6</a>
+beschriebene
+<a href="../../../../82/06/14/text/#article1">Software</a> ist
+ausgezeichnet dokumentiert und enthält viele nützliche Editierroutinen,
+die jedoch mit Masse leider nicht NASCOM-kompatibel sind. Die Software
+wurde daher zum Teil umgeschrieben sowie ergänzt und ist bis auf
+Kleinigkeiten fertiggestellt. Es sind nun in ihr zusätzlich alle
+NASCOM-Steuerzeichen enthalten, sodaß sich überaus vielfältige
+Bildschirm-Editiermöglichkeiten ergeben. Hex-Listing mit Beschreibung
+folgt
+<a href="../../../04/21/text/#article1">in Kürze</a> nach.
+</p>
+<p>
+6. Es kann nicht angeraten werden, den Original
+NASCOM-Zeichengenerator zu verwenden, da dessen Zeichen für das Format
+80*24 viel zu groß und breit sind. Die Unterlängen der Kleinbuchstaben
+überschreiben die nächste Zeile, und wenn man mittels Programmierung
+des
+<?php externalLink("MC6845","6845"); ?>
+die Abstände vergrößert, gehen nicht mehr alle 24 Zeilen auf
+den Bildschirm. Ich habe daher einen neuen Zeichengenerator
+geschrieben. Die Sonderzeichen entsprechen denen des NASCOM. (Das
+<a href="../../10/text/#article1">Listing</a>
+finden Sie im Artikel
+&quot;<a href="../../06/text/#article1">Großschrift</a>&quot;
+in diesem Heft).
+</p>
+<p>
+Abschließend sei bemerkt, daß diese Karte, in Verbindung mit dem NASCOM
+nur eine Zusatzkarte sein kann, da die Adressierung mittels USER-Befehl
+erfolgt und damit die Kassettenverwaltung über die normale Videoplatine
+abgewickelt werden muß. Die Software der Videokarte läuft nur im RAM,
+da sie einen Workspace und internen Stackbereich enthält, und muß in
+ihrem derzeitigen Zustand ebenfalls von der Kassette geladen werden. Es
+wird sich
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+als günstig erweisen, die Videoausgänge der beiden Videokarten mittels
+Umschalter an den Monitor anzuschließen, um sich das Umstecken der
+Kabel zu ersparen. Ideal wäre ein elektronischer Umschalter mit
+Pegelanpassung. Dem NASCOM-BAS-Signal könnte eine Auffettung nicht
+schaden.
+</p>
+
+<h3 style="text-align:center">
+Bestückungsplan
+</h3>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

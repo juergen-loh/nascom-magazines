@@ -1,0 +1,120 @@
+<?php columnStart(1); ?>
+<h1 id="article1">Arbeiten mit Assembler</h1>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Ein Assembler ist das wichtigste Hilfsmittel für den
+Pro&shy;gram&shy;mie&shy;rer,
+der Programme in Maschinensprache schreiben will.
+Mit einem Assembler wird ein Mikrocomputer wie der NAS&shy;COM zu
+einem Entwicklungssytem. Deshalb sollen im NAS&shy;COM-Journal zwei
+Artikel erscheinen, die sich mit
+As&shy;sem&shy;blern befassen. Im ersten
+Teil wird erklärt, was ein Assembler kann und wie man mit ihm
+umgeht. Außerdem soll gezeigt werden, welche Eigenschaften ein
+Assembler haben soll. Im
+<a href="../../../02/12/text/#article1">zweiten Teil</a>
+werden dann die für den
+NASCOM lieferbaren Assembler verglichen und getestet.
+</p>
+<p>
+Zum Betrieb eines Assemblers sind mindestens ein
+NAS&shy;COM-Grundsystem
+und eine Speichererweiterungskarte nötig. Da derzeit wohl nur
+wenige NASCOM-Besitzer eine Floppy-Disc haben, zielt die
+Beschreibung auf &quot;speicherresidente&quot; Assembler. Dabei sind
+gleichzeitig der Assembler, der Quelltext und der erzeugte Code
+im Speicher, ohne daß während des Betriebs auf externe Medien
+zugegriffen werden muß.
+</p>
+<p>
+Assembler für den NASCOM sind lieferbar in EPROMs, dann ist
+der Assembler nach dem Einschalten sofort verfügbar, oder auf
+Kassette, was zunächst ein Einlesen nötig macht (einen
+Assembler in EPROMs kann man natürlich auch nicht versehentlich
+zerstören).
+</p>
+
+<h4>
+<u>Was tut ein Assembler&nbsp;?</u>
+</h4>
+
+<p>
+Die Hauptaufgabe eines Assemblers ist es, ein Programm, das in
+Assemblersprache geschrieben ist, in ausführbaren
+Code zu übersetzen. Ein Assembler nimmt dem
+Pro&shy;gram&shy;mie&shy;rer also
+die &quot;Dreckarbeit&quot; ab, den hexadezimalen Code für die
+Be&shy;feh&shy;le in einer Tabelle nachzuschlagen. Gibt der
+Pro&shy;gram&shy;mierer z.B.
+folgenden Code ein:
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-1.gif"); ?>
+
+<p>
+dann erzeugt der Assembler den zugehörigen Code
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-2.gif"); ?>
+
+<p>
+Ein Assembler übernimmt außerdem die Berechnung von Adressen.
+Gibt der Programmierer z.B. folgende Befehle ein:
+</p>
+
+<?php columnChange(2); ?>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-3.gif"); ?>
+
+<p>
+dann berechnet der Assembler die Adresse der Zeile, in der die
+Marke &quot;NOSET&quot; steht und setzt sie in den Code des
+Sprung&shy;be&shy;fehls
+ein. Dies funktioniert bei allen absoluten und
+relativen Sprüngen und bei Unterprogrammaufrufen.
+Be&shy;son&shy;ders
+hilfreich ist das bei relativen Sprüngen, wo die umständliche
+Adressrechnerei entfällt, aber auch dann, wenn ein Programm
+nachträglich geändert werden soll. Muß z.B. zwischen dem
+Sprungbefehl und der angesprungenen Zeile ein weiterer Befehl
+eingefügt werden, so kann man das im Quelltext ohne sonstige Änderungen
+tun. Erstellt man ein Programm dagegen direkt im hexadezimalen
+Code, dann muß man viele, wenn nicht alle Adressen neu
+berechnen, nachdem man einen zusätzlichen Befehl eingefügt hat.
+</p>
+<p>
+Ein Assembler kann in der Regel auch arithmetische
+Ope&shy;ratio&shy;nen
+zur Berechnung von Operanden ausführen:
+</p>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-4.gif"); ?>
+
+<p>
+Schließlich kann ein Assembler in der Regel auch Klartext in
+ASCII-Code übersetzen:
+</p>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-12-5.gif"); ?>
+
+<h4>
+<u>Was erzeugt der Assembler&nbsp;?</u>
+</h4>
+
+<p>
+Der Assenbler dokumentiert seine Arbeit in der Assembler-Liste.
+Auf der nächsten Seite ist ein (nicht sehr sinnvolles) Programm
+aus den Beispielen zusammengesetzt (die Liste wurde von ASM/EPROM
+V1.1 auf einem NASCOM-1 erzeugt und mit dem Programmpaket
+&quot;TTY&quot;
+auf einem 5-Kanal-Fern&shy;schrei&shy;ber ausgedruckt).
+</p>
+<p>
+Die Assembler-Liste enthält die Programmadressen (1) den
+erzeugten Code (2) die Zeilennummern des Quelltexts (3) und den
+Quelltext (4) sowie eventuelle Kommentare (5) </p>
+
+<?php columnEnd(2); ?>

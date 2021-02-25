@@ -1,0 +1,129 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+ECB-Karten
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4>
+Neue CPU-Karte mit PIO und CTC:
+</h4>
+<p>
+Durch die Festlegung der Portadressen im PROM auf der Floppy- Karte,
+insbesondere des Ports 0C-0F, ergibt sich leider die Tatsache, daß ein
+problemloses Zusammenarbeiten mit meiner IO-Karte nicht mehr gegeben
+ist, da diese ja, wenn man den PIO Port 04-07 des Nascom benützt,
+ebenfalls die Adressen 04-0F (0C-0F für SIO) belegt. Wenn man SIO nicht
+benötigt, so genügt es, die Verbindung von Pin 12 des LS 138 zu Pin 10
+des LS 10 auf der IO- Karte aus
+<a href="../../../../83/12/23/text/#article2">Heft 12/83</a>
+zu unterbrechen und Pin 10
+mit + zu verbinden, dann hat man Port 04-0B mit den beiden PIO belegt
+und kann problemlos die Floppy-Karte verwenden.
+</p>
+<p>
+Da jedoch im Leben
+alles fließt und ein Hobby immer neue Nahrung braucht, habe ich nach
+einer klaren Lösung gesucht und diese in Form einer neuen CPU-Karte
+gefunden, die auf Anhieb ohne Fehler gelaufen ist. (Wird im
+<a href="../../../02/29/text/#article1">nächsten Journal</a>
+vorgestellt. Bei Interesse an einer durchkontaktierten Serie
+bitte vorbestellen!) Das Prinzip ist dasselbe wie das der CPU-Karte aus
+<a href="../../../../83/06/07/text/#article1">Heft 6/83</a>
+geblieben, ich habe jedoch zusätzlich auf diese Karte noch
+die PIO 04 - 07 und einen CTC 08 - 0B gesetzt, die voll interruptfähig
+sind (auf der <a href="../../../../83/12/23/text/#article2">SIO-PIO-Karte</a>
+geht ja leider IM 2 nicht, hier müßte man
+als Abhilfe den LS245 entfernen und beim IC-Sockel die Dateneingänge
+und Ausgänge mit Drahtbrücken verbinden). Daraus ergibt sich, daß man
+die <a href="../../../../83/12/23/text/#article2">SIO-PIO-Karte</a>
+mittels DIL-Schalters auf eine andere Page z.B. 24-2F
+legen kann, die Gesamtzahl der vorhandenen Ports müßte dann wohl für
+die meisten Anwendungen ausreichen.
+</p>
+<p>
+Einen großen Vorteil der neuen
+Karte sehe ich aber, neben dem vorhandenen CTC, in der Tatsache, daß
+man durch das Ändern einiger weniger Jumperverbindungen einen
+vollwertigen
+<?php externalLink("EMUF"); ?>
+(Bezeichnung lt.
+<?php externalLink("mc","MC",""); ?>)
+mit 2K-Eprom, 2K-stat.Ram sowie
+PIO und CTC für Heizungssteuerung, Spooler etc, erhält, wobei auch
+anstelle eines
+<?php externalLink("2716"); ?>
+der schnellere
+<?php externalLink("2732A","2732-A"); ?>
+eingesetzt werden kann.
+Dieser wird zwar nur zur Hälfte ausgenützt, bei 4&nbsp;MHz gibt es aber dann
+sicher keine Probleme. Für den NASCOM wird beim
+<?php externalLink("6116"); ?>
+nur ein
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Speicherbereich von 1K verwendet, Pin 19=A10 ist mit GND verbunden.
+</p>
+<p>
+Ich glaube, man kann alles Notwendige dem Schaltplan entnehmen, es
+würde mich sehr freuen, wenn diesmal eine durchkontaktierte Serie
+zustandekäme, da sehr viele Durchkontaktierungen auf der Karte sind,
+ansonsten werden sicher wieder die Herren Assmann und Trust mit
+geätzten Platinen aushelfen.
+</p>
+<p>
+Nun noch einige Bemerkungen zum Floppyzeitalter (zur Zeit dieses
+Artikels bei Karl Schulmeister noch Theorie, inzwischen läuft sein
+System mit EMDOS &nbsp; Red.):
+</p>
+<p>
+Soweit ich auf Grund des Studiums der
+ausgezeichneten und umfangreichen Entwicklungen des
+&quot;Floppy-Teams&quot; dem Journal entnehmen kann, entspricht das
+Konzept des veröffentlichten
+<?php externalLink("ECB","",""); ?>-Systems
+voll den Anforderungen.
+Zusätzlich ergehen sich einige Erkenntnisse, wobei mir Herr Böhm sicher
+sagen kann, ob ich richtig liege:
+</p>
+<p>
+EMDOS+NASSYS verlangt, daß nur NASSYS im Eprom ausgeblendet wird, NICHT
+jedoch der Bildschirmspeicher von 0800 - 0BFF, während bei
+<?php externalLink("CP/M"); ?>
+der GESAMTE Bereich von 0000 - 0FFF (Page 0) auszublenden ist, da hier ja
+auch von 0800 - 0BFF Programme stehen können. (Sie liegen richtig!
+&nbsp; Red.) Um nun diesen Forderungen zu entsprechen, müssen leider einige
+kleine Hardwareänderungen durchgeführt werden (ich hatte dies in 15
+Minuten erledigt), und zwar:
+</p>
+<h4>
+48*16 Video-Karte:
+</h4>
+<p>
+Bestückungsseite: anstelle des LS 139 einen LS 138 einsetzen. Hierzu
+Leiterbahn zwischen Durchkontaktierung (bei Pin 10 und 11) und Pin 6
+des LS 138 durchtrennen, Pin 6 mit +5V-Leiterbahn (ca. 1 mm dicke Bahn
+auf der Bestückungsseite zwischen LS 85 und LS 138) verbinden.
+</p>
+<p>
+Lötseite: 1. Pin 11 von LS 138 mit Durchkontaktierung ca. 4mm daneben
+verbinden (jener von vorhin)
+</p>
+<p>
+2. Busleitung 23c mit Pin 4 und 5 des LS 138 verbinden. Freigabesignal
+für die Videokarte muß von Busleitung 25a auf 23c verlegt werden, da
+von BAI der FDC-Karte belegt.
+</p>
+<table><tr>
+<td><h4 style="margin-bottom:0">CPU-Karte:</h4></td>
+<td><p>&nbsp; (auf der neuen schon berücksichtigt):</p></td>
+</tr></table>
+<p>
+Lötseite: Leiterbahn zwischen Busleitung 25a und Durchkontaktierung
+unterbrechen, Busleitung 23c mit Pin 6 des LS 173 (Port 3, Bit 7)
+verbinden.
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<h4 id="article1" style="text-align:center">
+<u>Software für den NASCOM-Plotter</u>
+</h4>
+<p>
+Das Programm belegt in einem EPROM
+<?php externalLink("2708"); ?>
+den Speicherplatz von CC00h bis
+CFFFh und benötigt zusätzlich als RAM-Arbeitsspeicher die Plätze 0C50h
+bis 0C1Fh.
+</p>
+<p>
+Start :
+</p>
+<p>
+Der Kaltstart erfolgt durch &quot;ECC00&quot;,dadurch wird der
+RAM-Bereich initiiert,die Koordinaten auf Null gesetzt,die PIO zur
+Datenausgabe initiiert und eine neue Kommandotabelle kreiert. Ein
+Warmstart ist durch &quot;ECC16&quot; möglich,dabei werden die bereits
+vorhandenen Koordinaten beibehalten.
+</p>
+<h4>
+<u>Beschreibung der Kommandos</u>
+</h4>
+<p>
+<u>A: Absolute Positionierung</u>
+</p>
+<p>
+Will man den Zeichenstift an eine bestimmte Stelle positionieren, so
+gibt man den Buchstaben A,gefolgt von zwei Dezimalzahlen (im Bereich
+von -32768 bis +32767),die die X-und Y-Koordinaten des gewählten
+Punktes darstellen,ein und nach &quot;New Line&quot; werden diese
+beiden Zahlen auf dem Bildschirm des NASCOM in der obersten Zeile
+rechts angezeigt. Gleichzeitig laufen die beiden Schrittmotoren an und
+deren aktuellen Koordinaten werden links oben als Hexadezimalzahlen
+angezeigt. Ist das Ziel erreicht,so bleiben die Motoren stehen,der
+Cursor erscheint auf dem Bildschirm und es können neue Kommandos
+eingegeben werden.
+</p>
+<p>
+<u>R: Relative Positionierung</u>
+</p>
+<p>
+Dieses Kommando dient dazu,wie bei einer Vektoraddition beliebige
+Streckenzüge hintereinander ohne Rücksicht auf den Koordinatenursprung
+zu zeichnen. Die Dateneingabe erfolgt wie unter absoluter
+Positionierung beschrieben. In der obersten Zeile werden wieder die
+eingegebenen Dezimalzahlen angezeigt, aber die Hexadezimalzahlen links
+oben geben stets die absolute Position des Zeichenstiftes an. Eine
+dezimale Anzeige auch dieser Werte ist wegen der relativ langsamen
+Binär-Dezimalwandlung nicht sinnvoll.
+</p>
+<p>
+<u>H: Heben des Zeichenstiftes</u>
+</p>
+<p>
+Gibt man dieses Kommando ein,so zieht der Hubmagnet den Zeichenstift
+hoch und nach einer kurzen Pause erscheint wieder der Cursor auf dem
+Bildschirm.
+</p>
+<?php columnEnd(1); ?>

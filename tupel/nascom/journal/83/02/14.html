@@ -1,0 +1,75 @@
+<?php columnStartJustify(3); ?>
+
+<h4 id="article1" style="text-align:center">
+ZEAP-VERSCHIEBUNGS&shy;VEKTOR
+</h4>
+<?php boxStart("R"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+
+<br>
+<h1 id="article2" class="donthyphenate">
+Fourier-Analyse
+</h1>
+<h3>
+von MICHAEL BACH
+</h3>
+<h4 class="donthyphenate">
+Zweidimensionale Fourier-Transformation verändert Bilder!
+</h4>
+<p>
+Da im
+<a href="../../../01/01/text/#head">letzten Journal</a>
+soviel über Einlesen und Darstellen von Bildern
+die Rede war, will ich jetzt schon ein Programm veröffentlichen, das
+eigentlich noch nicht fertig ist: Ich kann hier nicht erklären, was
+Fourier-Trans&shy;for&shy;ma&shy;tion ist, auch nicht was
+</p>
+<?php boxEnd(); ?>
+
+<?php columnChangeJustify(23); ?>
+
+<?php columnStartJustify(12); ?>
+<?php columnChange(23); ?>
+
+<p>
+eine 2-dim FT. ist und auch nicht den FFT- (Fast-Fourier-Transform)
+Algorithmus, über alles gibt es für ernsthaft Interessierte genügend
+Bücher.
+</p>
+<p>
+Das bekannte
+<a href="../../../01/01/text/#article1">Mädchenbild</a>
+wird zunächst in der Auflösung massiv
+zusammengestaucht (aus Speicherplatzgründen). Dann wird es
+2-dimensional fourieranalysiert und das Lei&shy;stungs&shy;spek&shy;trum abgebildet.
+Ebendieses ist noch unbefriedigend. Dann werden nach Belieben
+Frequenzen abgeschnitten. Wenn man hohe Frequenzen abschneidet, wird
+das Bild unschärfer, die Graustufen verschleifen sich. Das sieht man
+aber nicht mit der Klötzchengrafik. Wenn man untere Frequenzen
+abschneidet, entspricht das ungefähr einer Differenzierung: Die helle
+Gesichtsfläche wird dunkel, aber ein Umriss bleibt stehen. Dies sieht
+man, wenn das Bild zurücktransformmiert wird.
+</p>
+<p>
+Das ganze könnte also ein
+interessanter Baustein eines Bildverarbeitungs- oder
+Zeichenerkennungssystems sein. Probleme: Wegen der Darstellung in
+großen Zahlenfeldern (reell- und imaginär-Anteil separat) wird viel
+Speicherplatz gebraucht. Da könnte man aber noch etwas tricksen. Ferner
+dauert es doch fast 10 Minuten (bei 4MHz) bis das Bild einmal hin- und
+dann wieder zurücktransformiert ist. Das liegt nicht zuletzt an der
+ständigen Benutzung 2-dim. Zahlenfelder, dies ist notorisch langsam.
+Viele Möglichkeiten für Maschinenkode-Beschleunigung: Das Umkopieren
+der Zeilen- bzw. Spalten; oder überhaupt die ganze Fourieranalyse
+(dafür gab&rsquo;s mal in Byte ein 6800-Maschinenprogramm). Also für
+interessierte &quot;Bild-Verarbeiter&quot; ein weites Feld.
+</p>
+
+<?php columnChange(12); ?>
+<?php columnEnd(2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+</p>
+
+<?php columnEnd(3); ?>

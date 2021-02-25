@@ -1,0 +1,126 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Video-Kamera-Interface
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Begonnen hat alles vor einigen Jahren, als ich mit meinem kleinen Sohn
+einen Freizeitpark besuchte. Dort konnte man sich ein T-Shirt mit
+seinem Portrait bedrucken lassen, das zuvor mit einer Video-Kamera
+aufgenommen wurde. Diese Möglichkeit des Einsatzes eines Computers hat
+mich damals schon fasziniert. Vor einiger Zeit hat Peter Bentz in
+unserem Journal ein
+<a href="../../../../81/12/53/text/#article2">Beispiel</a>
+gezeigt, wie er mit seinem Plotter und
+einer Fotodiode ein Bild abtastet und als Grauwerte vom Fernschreiber
+ausdrucken läßt. Diese Möglichkeit schien mir sehr umständlich, und ich
+erinnerte mich wieder an die Video-Kamera. So habe ich mir mal
+oberflächlich die Signale meiner
+<?php externalLink("LilBeans", "Kamera"); ?> (ein einfaches Modell, das zur
+Beobachtung von Parkplätzen diente) auf dem Oszilloskop angesehen,
+konnte aber mit dem Geflacker auf der Röhre nichts anfangen.
+</p>
+<p>
+Der Auslöser war nun das kleine Büchlein &quot;KW-Amateurbildfunk SSTV
+und FAX&quot; von H.J. Fletsch
+(<?php externalLink("RPB Taschenbuch 154","",""); ?>,
+Franzis-Verlag),
+das mir ein Leser zuschickte. Einige Kapitel beschrieben sehr schön die
+Umsetzung eines Fernsehbildes in digitale Informationen. Das war genau,
+was ich brauchte. Noch fehlende Informationen holte ich mir aus einem
+weiteren Buch über Fernsehtechnik
+(&quot;<?php externalLink("Fernsehtechnik ohne Ballast","",""); ?>&quot;
+von Otto Limann, Franzis-Verlag), und dann machte ich
+mich an die Planung für ein Video-Kamera-Interface.
+</p>
+<p>
+Die folgenden Ausführungen vollziehen meine Überlegungen nach und
+sollen kein Lehrwerk für Laien sein. Mir helfen sie, die Schaltung und
+die Programme auch noch in einem Jahr zu verstehen, wenn ich wieder aus
+der &quot;Materie herausgewachsen&quot; bin. Für manche Leser können
+sie eine Hilfe sein, die Gedanken nachzuvollziehen und die Schaltung
+möglicherweise sogar zu verbessern. Experten, denen die Grundlagen
+geläufig sind, empfehle ich, diesen Text einfach zu überblättern.
+</p>
+<h4>
+Signale der Kamera
+</h4>
+<p>
+Ein Fernsehbild nach der CCIR- Norm ist aus 625 Zeilen aufgebaut, von
+denen jede 833 Bildpunkte enthält. Die Bildfrequenz beträgt 25 Bilder
+pro Sekunde. (Dadurch ergibt sich eine Zeilenfrequenz von 15625 Hz). Um
+das Flimmern der Bilder zu reduzieren, werden sie in zwei Teilbilder
+zerlegt, die mit einer Frequenz von
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+50 Hz aufeinander folgen. Dabei enthält das erste Teilbild die
+ungeraden Zeilenzahlen, und das zweite die geraden. Jedes Teilbild
+(Raster) enthält 312 (einhalb) Zeilen.
+</p>
+<p>
+Um den Bildschirm und die Kamera synchron laufen zu lassen, gibt die
+Kamera für jeden Raster- und Zeilenwechsel einen Synchronisationsimpuls
+ab.(Dies ist etwas vereinfacht. Tatsächlich bestehen obengenannte
+Impulse jeweils aus mehreren Einzelimpulsen. Dies kann aber für
+Funktion und Verständnis der Schaltung vernachlässigt werden).
+</p>
+<p>
+Der Ablauf der Signale aus der Kamera sieht nun folgendermaßen aus:
+</p>
+<p>
+1. Rasterimpuls (50 Hz)<br>
+2. Zeilenimpuls (15625 Hz)<br>
+3. Bildinhalt (Analogwerte zwischen Min. und Max.)
+</p>
+<p>
+Wenn Sie einmal die Geschwindigkeit durchrechnen, mit der die Kamera
+die einzelnen Bildpunkte ausgibt, kommen Sie auf ca 5&nbsp;MHz. Das liegt
+weit oberhalb der Grenze, die es erlauben wurde, die analoge
+Bildpunktinformation zu digitalisieren und im Rechner abzuspeichern.
+</p>
+<h4>
+Blockschaltung
+</h4>
+<p>
+Auch die Anzahl der Bildpunkte pro Fernsehbild übersteigt wohl die
+Kapazität unseres Rechners. Deshalb muß die Schaltung zwei Bedingungen
+erfüllen:
+</p>
+<ol>
+<li>
+Reduzierung der Punktanzahl
+</li><li>
+Reduzierung der Auslesefrequenz
+</li>
+</ol>
+<p>
+Punkt 1 wird leicht erfüllt, indem man die Geschwindigkeit beim Ein-
+und Auslesen der Bildinformation der Zeile unter 5&nbsp;MHz legt. Es kann
+ebenso nur ein Teil der Zeile erfaßt werden (man speichert z.B. nur die
+ersten 256 Punkte). Eine weitere Reduzierung ergibt die Beschränkung
+auf nur ein Halbbild und hiervon jede 2. Zeile.
+</p>
+<p>
+Punkt 2 läßt sich erreichen, indem man von einem Fernsehbild nur eine
+Zeile speichert und sich dann zur Verarbeitung Zeit läßt. Die nächste
+Zeile wird aus einem beliebigen späteren Teilbild ausgelesen. Dies
+setzt natürlich die Verarbeitung stehender Bilder voraus. Das scheint
+mir aber kein Nachteil; ich wüßte im Augenblick nicht, wie ich bewegte
+Bilder im Rechner verarbeiten sollte.
+</p>
+<p>
+Diese Überlegungen führen zu folgendem Ablaufplan:
+</p>
+<ol>
+<li>
+Zweites Teilbild erkennen
+</li><li>
+n-te Zeile erkennen (einstellbar von 1 bis 156)
+</li>
+</ol>
+
+<?php columnEnd(2); ?>

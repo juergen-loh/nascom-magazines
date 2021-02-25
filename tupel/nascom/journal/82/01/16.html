@@ -1,0 +1,46 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStart("RB"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+
+<?php nowrapStart(); ?>
+<h4 id="article1">
+Anmerkung der Redaktion:
+</h4>
+<p>
+Das Spiel läuft nicht mit NASSYS&nbsp;3, da es zur Tastatureingabe mit
+SCREENx,y den Input an einer bestimmten Stelle auf dem Bildschirm
+erwartet, um ihn durch PEEK an den entsprechenden Adressen auszuwerten.
+NASSYS&nbsp;3 setzt aber den Cursor beim INPUT Befehl grundsätzlich an den
+Anfang der nächsten Zeile, sodaß das Spielfeld &quot;gescrolled&quot;
+wird und die Eingabe in Adressen steht, die der Rechner nicht
+untersucht.
+</p>
+<?php nowrapEnd(); ?>
+<p>
+Mit folgender Änderung wird das Programm auch für NASSYS&nbsp;3 lauffähig.
+Es wird zur Eingabe ein Maschinenprogramm benutzt, das die eingetippten
+Werte direkt in die Adressen lädt, die der Rechner erwartet. Ich hätte
+das Laden des Maschinenprogramms gerne mit READ und DATA etwas
+eleganter gestaltet, aber Herr Mombaur hat da eine Routine eingebaut
+(Zeile 9310), die eine Manipulation mit dem Programm verhindern soll
+und deren Aufruf ich im Programm nicht finden konnte. So werden die
+Opcodes einfach mit DOKE geladen. Etwas umständlich, aber es
+funktioniert. Das Maschinenprogramm läßt sich nicht komfortabler
+schreiben (z.B.Cursoranzeige etc.), da es bei einer Vergrößerung in den
+Stackbereich käme.
+</p>
+<p>
+Ändern Sie also für NASSYS&nbsp;3 einfach die folgenden Zeilen:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-3.jpeg"); ?>
+<p style="text-align:right">
+G.B. Jan.82
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

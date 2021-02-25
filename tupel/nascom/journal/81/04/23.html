@@ -1,0 +1,144 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+<u>p5 &nbsp; (e b005)</u>
+</p>
+<p>
+druckausgabe von naspen aus wird vorbereitet (bei 101e wird die
+druckroutine eingetragen). will man mit naspen arbeiten, macht man
+zunaechst einen kaltstart von naspen, kehrt zu nas-sys zurueck und gibt
+dort den befehl p5 (evtl. vorher p0) ein. dann kehrt man mit einem
+warmstart zu naspen zurueck. in naspen laeuft dann die druckausgabe mit
+dem naspen-befehl p ueber den fernschreiber. diese beschreibung wurde
+uebrigens mit naspen editiert und mit tty-sys gedruckt&nbsp;.
+</p>
+<p>
+betrieb mit anderen systemprogrammen:
+</p>
+<p>
+tty-sys kann zusammen mit dem 8k-basic, mit
+asm/eprom v2.0, mit naspen, mit dis-sys und
+mit zeap verwendet werden. dabei gibt es folgende besonderheiten:
+</p>
+<p>
+8k-basic:
+</p>
+<p>
+vor dem starten des basic wird p0 ausgefuehrt, steuerzeichen werden
+mit chr$ direkt oder vom programm aus abgeschickt. print chr$(1)
+bewirkt z.b. die ausgabe von ctrl a.
+</p>
+<p>
+asm/eprom:
+</p>
+<p>
+vor den start von asm/eprom wird p0 ausgefuehrt. in
+asm/eprom werden dann mit dem befehl l user
+i/o-routinen aktiviert. steuerzeichen kann man dann
+direkt an der tastatur eingeben.
+</p>
+<p>
+naspen:
+</p>
+<p>
+die arbeit mit naspen ist bei dem befehl p5
+beschrieben.
+</p>
+<p>
+dis-sys:
+</p>
+<p>
+vor dem aufruf von dls-sys wird p0 ausgefuehrt und
+die druckausgabe durch eingabe von ctrl a aktiviert.
+</p>
+<p>
+zeap:
+</p>
+<p>
+nach einem kaltstart von zeap kehrt man zu nas-sys zurueck. dann traegt
+man bei 0f05 die adresse von ttyout (b02e) ein, fuehrt p0 aus und gibt
+ctrl a ein (von zeap aus kann man keine Steuerzeichen abschicken). mit
+einem warmstart kehrt man zu zeap zurueck und kann dort mit dem befehl
+u source-listings und mit der Option 4 beim assemblieren
+assembler-listings drucken.
+</p>
+<p>
+doppelzeichen:
+</p>
+<p>
+die folgende tabelle zeigt, fuer welche ascii-zeichen doppelzeichen
+verwendet werden
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<p>
+hardware:
+</p>
+<p>
+die steuersignale fuer den fernschreiber stehen an der pio port b zur
+verfuegung. bit 0 dient zum schalten des linienstroms, bit 0=0
+bedeutet: linienstrom unterbrochen. bit 1 ist der eingang von den
+sendekontakten und bit 6 steuert den motor. bit 6=0 bedeutet: motor
+ein. nach dem abschalten des motors werden alle ausgaenge hochohmig.
+zum anschluss des fernschreibers muss man ein geeignetes interface
+benuetzen, das galvanisch trennen sollte (optokoppler).
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+empfohlen wird das Interface 'fernschreib-interface v 1.1.'.
+</p>
+<p>
+bernd ploss<br>
+datenelektronik &ndash; systementwicklung<br>
+____________ _<br>
+d-____ _______<br>
+tel. _____/_____
+</p>
+<p>
+Falls Sie gerne ein TTY-SYS haben möchten, senden Sie bitte Ihre
+Bestellung an MK-Systemtechnik. Wir liefern Ihnen das TTY-SYS z.Zt. ab
+Lager.
+</p>
+<br>
+<?php hline("90%"); ?>
+<br>
+
+<h4 id="article1">
+STRICHCODEPROGRAMME
+</h4>
+<p>
+Bestimmt ist Ihnen schon einmal der Strichcode aufgefallen, mit dem
+viele Waren gekennzeichnet werden. In vielen Kaufhäusern und
+Supermärkten sind die Kassen schon mit Strichcodelesern ausgerüstet,
+die das umständliche Eintippen von Artikelnummer und Preis überflüssig
+machen.
+</p>
+<p>
+Aber nicht nur zur Kennzeichnung von Waren ist der Strichcode geeignet.
+Eine Anwendung, für die er geradezu ideal ist, sind Computerprogramme.
+Bisher kann man ein Programm entweder in Klartext in einer Zeitschrift
+abdrucken. Dann muß der Leser das Programm mühsam von Hand in den
+Rechner eintippen. Oder man vertreibt das Programm auf einem speziellen
+maschinenlesbaren Datenträger (z. B. Kassette oder EPROM). Dann muß
+aber in der Regel jedes Exemplar einzeln vervielfältigt werden, was das
+Programm natürlich erheblich verteuert.
+</p>
+<p>
+Programme in Strichcode haben die Vorteile beider Verfahren. Das
+Programm kann billig durch Druck oder Fotokopie vervielfältigt werden,
+ist aber direkt maschinenlesbar. Um ein Programm im Strichcode in den
+Rechner zu laden benötigt man einen Strichcodeleser und Software zur
+Dekodierung des Strichcodes.
+</p>
+<p>
+Ein Problem war bislang der Strichcodeleser. Hewlett-Packard liefert
+einen Lesestift für knapp 300&nbsp;DM. Ich war allerdings skeptisch, ob ein
+Lesestift zu diesem Preis für viele Nascom-Besitzer interessant wäre
+oder ob die Mehrheit nicht weiterhin die Programme von Hand eintippen
+würde. Jetzt hat die Zeitschrift
+<?php externalLink("mc"); ?>
+aus dem Franzis-Verlag einen
+Strichcodeleser für ca. 100&nbsp;DM angekündigt und damit wird der
+Strichcode auch für das Nascom-Journal interessant.
+</p>
+
+<?php columnEnd(2); ?>

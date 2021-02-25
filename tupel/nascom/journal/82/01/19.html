@@ -1,0 +1,103 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Grafikerweiterung
+</h1>
+<h3>
+von D. Oberle und H.J. Winter
+</h3>
+<h4>
+<u>Anwendungsmöglichkeiten:</u>
+</h4>
+<p>
+Durch den Einbau der hier beschriebenen Erweiterungskarte ist es auf
+einfache Art und Weise möglich, ohne wesentliche Änderungen auf der
+CPU-Platine die Grafikbefehle des NASCOM-Basic oder auch Grafikausgabe
+über Assemblerprogramme auf dem NASCOM&nbsp;1 auszunutzen.
+</p>
+<p>
+Die Auflösung beträgt bei Anwendung der Basic SET-Funktion dabei
+maximal 48 Pkt. in vertikaler und 96 Pkt. in horizontaler Richtung. Es
+handelt sich lediglich um eine Pseudografik die einen speziellen
+Charaktergenerator benutzt. Für Spielprogramme und einfache
+Grafikanwendungen kann die tatsächliche Auflösung durch sinnvolle
+Auswahl der verwendeten Grafiksymbole erheblich verbessert werden,
+sodaß kaum ein Unterschied zu echter Grafikdarstellung mit Auflösungen
+von 256*384 Punkten festgestellt werden kann. Für den Programmierer
+eröffnen sich damit eine Menge neuer Ausgabe- und
+Darstellungsmöglichkeiten.
+</p>
+<p>
+Außerdem kann durch Umschalten eines Schalters auch inverse
+Videodarstellung der normalen ASCII-Zeichen ausgewählt werden. Bei
+Einsatz des im Handel erhältlichen Schach-Grafikgenerators laufen dann
+natürlich auch die original Schachprogramme für NASCOM Computer.
+</p>
+<p>
+Die Karte kommt gänzlich ohne zusätzliche Kabelverbindungen zur
+CPU-Platine aus und kann nach Umstecken von IC16 u. IC15 auf die
+Erweiterungskarte direkt in deren freie Sockel eingesteckt werden.
+</p>
+<h4>
+<u>Funktionsbeschreibung:</u>
+</h4>
+<p>
+Wie beim NASCOM&nbsp;II wird auch hier das für ASCII Charakter nicht
+benötigte Datenbit 7 am Video-Ram Speicher zur Umschaltung auf den
+Grafikzeichensatz benutzt (Bild 1). Bit 7 wird auf der CPU-Platine an
+IC18 (18) abgegriffen und über ein noch freies Puffer-Flipflop in IC17
+(Pin 18 u. 19) über Pin 10 von IC16 (NC) auf die Erweiterungskarte
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+geführt. Dort muß es über ein Verzögerungsglied (IC7474) der
+Durchlaufzeit der Datenbits 0-6 angepasst werden, da sonst
+Doppeldarstellungen oder unsaubere Charakter auf dem Bildschirm
+erscheinen können.
+</p>
+<p>
+Abhängig vom Zustand von Bit 7 und von der Schalterstellung des
+Schalters &quot;S1&quot; wird jeweils eines der beiden
+Videoschieberegister IC15 oder IC265 freigegeben, sodaß einmal die
+Datenbits aus dem Charaktergenerator IC16 (ASCII) und einmal aus dem
+Grafikgenerator
+IC<?php externalLink("2716"); ?>
+auf den Videoausgang IC7486 (8) geschaltet
+werden.
+</p>
+<p>
+Als Grafikgenerator wird hier ein EPROM
+<?php externalLink("2716"); ?>
+verwendet, sodaß auch der
+original Charakergenerator des NASCOM&nbsp;II verwendet werden kann.
+Außerdem kann mit dem nachfolgend beschriebenen Programm jeder selbst
+einen speziellen Grafikgenerator entwerfen und einfach programmieren.
+</p>
+<h4>
+<u>Funktion</u> <u>und</u> <u>Aufbau</u> <u>des</u> <u>Grafikgenerator-EPROM&rsquo;s</u>
+</h4>
+<p>
+Die Adressierung eines Grafikcharakters geschieht auf folgende Weise:
+</p>
+<p>
+Die Adressbits A0-A3 werden durch den Videotaktgenerator generiert und
+als Grafik-Zeilenadresse interpretiert. Mit diesen 4 Bits können dann
+also genau 16 Grafikzeilen pro ausgewähltem Grafikcharakter erzeugt
+werden, wovon jedoch nur 14 durch den Zähler adressiert werden, was
+multipliziert mit der Zeilenzahl 16 des NASCOM-Bildschirmes eine
+Pseudoauflösung von (256-32)=224 Grafikzeilen ergibt.
+</p>
+<p>
+Die Adressbits A4-A10 werden aus den Datenbits des Video-Ram&rsquo;s direkt
+über einen Puffer-Speicher (IC17) generiert. Je nach Inhalt des
+Video-Ram&rsquo;s wird damit ein ganz bestimmter Charakter ausgewählt und auf
+dem Bildschirm dargestellt. Für einen Charakter mit 16 Grafikzeilen
+(nur 14 werden ausgenutzt) werden genau 16-Bytes EPROM-Speicher
+benötigt, wobei die Matrixbreite eines Charakters genau der Wortbreite
+des Charaktergenerators (hier 8-Bit) entspricht. Mit den Adressbits
+A4-A10 können demnach 128 Grafikcharakter ausgewählt werden, was der
+Speicherkapazität des 2716-EPROM&rsquo;s entspricht. Aus Bild 2 ist der
+Aufbau eines Grafikcharakters und dessen Adressierung ersichtlich.
+</p>
+
+<?php columnEnd(2); ?>

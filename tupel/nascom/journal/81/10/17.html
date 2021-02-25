@@ -1,0 +1,130 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+NAS-SYS&nbsp;3
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Das neue Betriebssystem NASSYS3 ist eine verbesserte Version von
+NASSYS1 und dazu voll kompatibel.  Alle Befehle, ausgenommen die unten
+beschriebenen Änderungen, werden wie gewohnt ausgeführt. Allerdings
+gibt es keinen L-Befehl mehr (d.h. Laden im T2 Format) und der
+Tabulate-Befehl gibt keine Prüfsumme mehr aus. Für manche Benutzer ist
+dies wohl ein Mangel, der aber durch folgende Verbesserungen sicher
+ausgeglichen wird.
+</p>
+<p>
+1. Alle Tasten außer der @ - Taste führen die Repeat-Funktion aus,
+wenn sie niedergedrückt bleiben. Die Zeitdauer bis zur ersten
+Wiederholung und die Wiederholgeschwindigkeit können eingestellt werden.
+</p>
+<p>
+2. Alle Unterprogramme sind interruptfähig.
+</p>
+<p>
+3. Die CRT Routine kann Daten in jeden gewünschten Speicherbereich
+ausgeben. So können Überschriften auch in die Zeile 16 geschrieben
+werden.
+</p>
+<p>
+4. Der Read-Befehl läßt durch eine zusätzliche Eingabe Programme oder
+Daten von Cassette in einen beliebigen Speicherbereich laden.
+</p>
+<p>
+5. Das Tabulate Kommando wurde folgendermaßen erweitert;
+</p>
+<p>
+a) Die ASCII Zeichen der Bytes werden wie die bisherigen Hex-Werte
+ausgegeben.
+</p>
+<p>
+b) Ein vierter Parameter läßt die Ausgabe Zusätzlicher Zeichen pro
+Zeile zu, um Drucker mit verschiedener Zeilenbreite zu berücksichtigen.
+</p>
+<p>
+c) Ein fünfter Parameter unterdrückt die Ausgabe der Hex - oder ASCII
+Werte.
+</p>
+<p>
+6. Alle NASSYS Routinen können mit Single Step durchlaufen werden.
+Durch die Verwendung der Repeat Funktion können die Einzelschritte in
+hoher Geschwindigkeit abgearbeitet werden.
+</p>
+<p>
+7. Die Registeranzeige wurde erweitert.
+</p>
+<p>
+8. Um die Lesbarkeit zu verbessern,wurde die Anzeige beim Modify
+Befehl um zwei Spalten nach rechts verschoben.
+</p>
+<p>
+9. Der External (X) Befehl hat zusätzliche Optionen. Ebenso wird das
+NULL Kommando in BASIC nun korrekt ausgeführt (es gibt nun auch
+wirklich Nullen aus).
+</p>
+<p>
+10. Es gibt drei neue Befehle: P zeigt die gespeicherten User
+Register an, D führt ein Programm bei D000 aus und Y bei B000.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+11. Die Blinkgeschwindigkeit des Cursors ist veränderbar.
+</p>
+<p>
+12. Es gibt drei neue Unterprogramme: Wiederholung der Keyboard
+Abfrage, Ausgabe von zwei Leerzeichen und ein Unterprogramm, das eine
+beliebige Subroutine ausführen kann.
+</p>
+<p>
+13. Sowohl bei Breakpoint als auch bei NMI führt das Programm einen
+Sprung aus, der in $NMI gespeichert ist, bevor die Register angezeigt
+werden. Durch Änderung des Sprunges in $NMI können Programme auch
+anders beendet werden.
+</p>
+<p id="article3">
+14. Der B0 Befehl schaltet den Breakpoint vollständig ab, so daß mit
+der entsprechenden Hardware NASSYS im RAM ausgeführt werden
+kann.(Kapiere ich selbst nicht!)
+</p>
+<p>
+Mit manchen der genannten Veränderungen (die übrigens aus
+<?php externalLink("INMC 80 News", "INMC80"); ?>
+zitiert sind) kann man ohne Listing oder Manual nichts anfangen. Diese
+sollen aber in nächster Zeit zur Verfügung stehen, und dann können wir
+weitere Informationen veröffentlichen.
+</p>
+<p style="text-align:center">
+**********
+</p>
+<h1 id="article2">
+UMBAUANLEITUNG für NASCOM&nbsp;1 Keyboard
+</h1>
+<h3>
+von D. Oberle
+</h3>
+<h4>
+<u>NASCOM</u> <u>Keyboard</u> <u>Funktionsbeschreibung:</u>
+</h4>
+<p>
+Das NASCOM-Keyboard enthält magnetischdynamische Tasten die völlig
+verschleißfrei arbeiten. Eine Taste (Bild 1&nbsp;) besteht aus einem
+Ringkern (1), den zwei Leiterschleifen (2,3) durch den Ringkern, und
+zwei am beweglichen Tastenkopf (4) befestigte Dauermagnetplättchen (5)
+die beim Niederdrücken der Taste die magnetische Induktion für die
+Erzeugung eines Stromimpulses in der Leseleitung des
+Ringkernübertragers liefern.
+</p>
+<p>
+Die Leiterschleifen (2,3) der einzelnen Tasten sind, wie aus dem
+Schaltbild (Bild 4) ersichtlich, zu einer Matrix aus Lese- und
+Schreibleitungen miteinander verbunden. Über einen BCD-Zähler (IC 5)der
+von einem über die Software erzeugten Takt gesteuert wird, wird die
+Tastenmatrix über die Schreibleitung ständig nach gedrückten Tasten
+abgefragt. Eine gedrückte Taste
+</p>
+
+<?php columnEnd(2); ?>

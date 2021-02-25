@@ -1,0 +1,103 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+in den Registern übergeben werden müssen;
+</p>
+<p>
+Beispiel: für &quot;W&quot;
+in ARG1, ARG2; für &quot;I&quot; in HL, DE &amp; BC. Außerdem verändern
+die meisten Monitor-Routinen (mit Ausnahme von &quot;ROUT&quot;,
+&quot;RIN&quot; und so) die Register; z.B. &quot;RKBD&quot; ändert
+außer AF auch B, DE &amp; HL.
+</p>
+<p>
+Na ja, ansonsten ist NAS-SYS&nbsp;3 ja eine
+echte Verbesserung (vor allem kann man sich jetzt die Repeat-Routinen
+sparen) und das fehlende &quot;L&quot;-Kommando zum Eintippen von
+Hex-Listings mit Prüfsumme kann man ja leicht (und verbessert) selber
+schreiben.
+</p>
+<p>
+(Siehe CONMOD in <a href="../../40/text/#article1">diesem Heft</a> &nbsp; Red.)
+</p>
+<br>
+<h4 id="article1">
+NASSYS3 MODIFIKATION
+</h4>
+<p>
+von Rüdiger Maurer
+</p>
+<p>
+Ich möchte hier eine NASSYS3-Modifikation vorstellen, die es
+ermöglicht, bei der Benutzung der T-Funktion die Checksumme auf dem
+Bildschirm mit aufzulisten, vorteilhaft um ein Zeichen nach rechts
+versetzt (siehe auch Ausdruck). Ein weiterer Vorteil dieser
+Modifikation ist der, daß bei der Verwendung des Druckers Seiko GP80
+das T-Kommando ebenfalls benutzt werden kann, da das Hex-Zeichen 08
+nicht ausgesendet wird, was den Drucker nämlich in den Grafik-Modus
+schicken würde.
+</p>
+<p>
+Folgende Bytes sind im Monitor zu ändern:
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+</p>
+<br>
+<h1 id="article2">
+SOFTWARE REPEAT
+</h1>
+<h3>
+von Christoph Rau
+</h3>
+<br>
+<p>
+Mit dieser kleinen Routine simuliere ich die Repeat-Funktion meiner
+Tastatur. NAS-SYS pollt die Tastatur mit der Routine Nr.61H (KBD). Für
+jede Zeile der Tastatur-Matrix merkt das System sich die letzte Eingabe
+in der Workspace. Nur wenn die Eingabe von der Tastatur sich von dem
+Eintrag in der Workspace unterscheidet, geht das Programm davon aus,
+daß ein Zeichen eingegeben werden soll. Deshalb muß für jedes Zeichen
+die Taste einmal gedrückt und wieder losgelassen werden. (Das hat mit
+der Entprellung durch Software nichts zu tub, die muß außerdem noch
+gemacht werden.)
+</p>
+<p>
+Das habe ich nun so geändert, daß bei jedem neuen Niederdrücken einer
+Taste zusätzlich zu der Ausgabe des Zeichens ein Repeat-Zähler mit
+0300H geladen wird. Solange die Taste gedrückt bleibt, wird bei jedem
+Durchlauf der Routine dieser Zähler dekrementiert. Ist er auf 0
+runtergezählt,
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+wird er mit 0080H geladen und das Zeichen wird wieder ausgegeben. Durch
+die verschiedenen Zählerwerte wird am Anfang länger gewartet, der
+Repeat kann dann aber ziemlich schnell laufen. Durch Verändern von INIT
+und INTER (in 0CBFH und in 0CD6H) kann dieses Tempo variiert werden.
+</p>
+<p>
+Das ganze ist natürlich keine vollständige Keyboard-Routine, sondern
+der geänderte Anfang der Monitor-Routine. Es wird dann zum Bestimmen
+des Zeichens etc. absolut in die Routine KBD gesprungen.
+</p>
+<p>
+Um das Programm nun in NAS-SYS einzubinden, muß eine neue Tabelle der
+Input Routinen geschrieben werden, in der nur die Nr.76H steht, gefolgt
+von 00H. Wenn nun der Zeiger $IN (0C75H in der Workspace) auf diese
+Tabelle gesetzt wird, dann wird nur die vom Benutzer definierte Eingabe
+Routine abgearbeitet. Dazu muß noch die Adresse unserer Routine bei
+$UIN (0C7BH) eingetragen werden. Das Umsetzen dieser Tabellen und
+Zeiger besorgt die Initialisierung, die mit &quot;E 0CFB&quot;
+aufgerufen wird.
+</p>
+<p>
+Weil mit $UIN getrickst wird, führt der &quot;U&quot; Befehl des
+Monitors dazu, daß immer 2 Zeichen auf einmal auf dem Bildschirm
+erscheinen, weil dann nämlich sowohl die Standard- als auch die neue
+Routine ausgeführt werden. Das Programm beginnt bei mir bei 0CA5H, weil
+darunter noch die Workspace meines Assemblers liegt.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-11-2.jpeg"); ?>
+
+<?php columnEnd(2); ?>

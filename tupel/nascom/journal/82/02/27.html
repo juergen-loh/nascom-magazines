@@ -1,0 +1,32 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Grafikroutinen in Assembler
+</h1>
+<h3>
+von Michael Bach
+</h3>
+<p>
+Nachdem ich die sehr empfehlenswerte
+<a href="../../../../81/10/13/text/#article1">2732-Grafik</a>
+von B.Ploss in meinen
+Nascom&nbsp;1 eingebaut hatte, stellte ich fest, daß in BASIC zwar die
+Grafik schön ansteuerbar ist, für schnelle Bewegungen aber zu langsam.
+Also habe ich Assembler- Grafik- Routinen geschrieben, die ähnliches
+tun wie die SET, RESET &amp; POINT in BASIC. Näheres geht aus dem
+beiliegenden Listing hervor. Eine Anwendung findet sich in meinem Spiel
+&quot;Doppelwurm&quot;. Es wäre schön, wenn jemand mal als nächstes
+VEKTOR programmierte, wofür ich folgende Parameterübergabe vorschlage:
+Endkoordinate in HL, Anfangskoordinate ist der Endpunkt beim vorherigen
+Aufruf. Carry Set bedeutet Vektor hellzeichnen, Carry gelöscht (durch
+OR A oder so) bedeutet dunkler Vektor (um einen neuen Vektor
+anzufahren). Diese Konvention im Gegensatz zur Übergabe der Anfangs-
+und Endkoordinate erleichtert das Zeichnen geschlossener Linien. Für
+eine einzelne Linie muß man VEKTOR allerdings zweimal aufrufen.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-27-1.jpeg"); ?>
+</p>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-27-2.jpeg"); ?>
+<?php columnEnd(2); ?>

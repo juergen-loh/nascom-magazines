@@ -1,0 +1,194 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Ich habe nun bei Durchsicht meiner Adressen (ein einfaches
+&quot;?&quot; als Suchbegriff zeigt alle Adressen an) einen Fehler
+entdeckt (oder ich muß aus einem *Probeheft einen *7-Abonnenten
+machen). So wähle ich die Ziffer 3.
+</p>
+<p>
+Es erscheint wieder die bekannte Aufforderung zur Eingabe des
+Suchbegriffes (in diesem Modus werden nur Nachnamen gesucht). Nachdem
+der Suchbegriff eingetippt und wie gewohnt durch ESCAPE abgeschlossen
+wurde, wird möglicherweise angezeigt
+</p>
+<pre class="donthyphenate">
+END OF DATA xxyy
+zzzz Records
+</pre>
+<p>
+Dies zeigt, daß der gewünschte Name nicht in der Datei enthalten ist
+(die Meldung erscheint selbstverständlich auch im Suchmodus), gibt
+gleichzeitig den Beginn des möglichen nächsten Records an (in Hex) und
+die Anzahl der bereits gespeicherten Records (in Dez.). Um diese
+Information zu erhalten, kann man auch jederzeit nach dem Namen ZZZZ
+suchen lassen, der wohl wahrscheinlich in keiner Datei enthalten ist.
+</p>
+<p>
+Aber wir wollten ja Records verändern. Ist der Record gefunden, wird er
+auf dem Bildschirm angezeigt. Eine beliebige Taste läßt den Cursor ans
+Ende des Textes springen, an den nun beliebige Informationen angehängt
+werden können, oder der mit den Cursor-Tasten beliebig verändert werden
+kann.
+</p>
+<p>
+Hier ist nun der dritte gravierende Unterschied zur ursprünglichen
+Version: Der Cursor muß vor dem Abspeichern mit ESCAPE nicht mehr ans
+Ende des Textes bewegt werden, er macht das automatisch; das heißt:
+alles was auf dem Bildschirm sichtbar ist, wird abgespeichert. So
+genügt es, aus einem &quot;Böhm&quot; einen &quot;Röhm&quot; zu machen,
+indem man per Cursorsteuerung einen Buchstaben ändert und ESCAPE drückt.
+</p>
+<p>
+Falls bei einem Suchbegriff mehrere Records angezeigt werden (bei
+&quot;Böhm&quot; wird auch die Firma &quot;Böhmer&quot; herausgesucht),
+so genügt, nachdem der Cursor auf das Textende gesprungen ist, die
+ESCAPE-Taste, um den Record unverändert zu übernehmen.
+</p>
+<p>
+Nachdem alle Records, die durch &quot;Ändern&quot; angesprochen wurden,
+durchlaufen sind, springt das Programm zum Menü zurück.
+</p>
+<p>
+Der Einsatz der
+<a href="../../../01/16/text/#article1">Sortierroutine</a>
+(nach Christian Peter, Wien) ist sehr
+einfach. Nach Wahl der Ziffer 4 erscheinen drei Möglichkeiten auf dem
+Schirm (Bild4).
+</p>
+<pre class="donthyphenate">
+             <span class="gesperrt">SORTIEREN</span>
+
+      Nachname       N
+      Postleitzahl   P
+      Wohnort        W
+</pre>
+<p>
+Nach Drücken der gewünschten Taste zeigt ein &quot;*&quot; an, in
+welchem Modus sich das Sortierprogramm befindet und zählt die
+sortierten Records dezimal auf dem Bildschirm durch, wobei die
+angezeigte Zahl nur die umsortierten Records betrifft, und mit der
+tatsächlich vorhandenen Anzahl nicht übereinstimmt, (ist aber ein
+schönes Gefühl, zu sehen, daß sich im Rechner was tut, anstatt auf
+einen leeren Schirm zu blicken). Bei ca. 500 Adressen benötigt das
+Programm ca. 15 Minuten! Etwas langsam (wenn auch bei 2&nbsp;MHz); wer hier
+noch mehr Adressen sortieren möchte, muß notfalls auf ein kommerzielles
+Programm umsteigen (hier würden sich wohl die strukturierten Dateien
+aus
+<?php externalLink("mc"); ?>
+anbieten).
+</p>
+<p>
+Die Wahl des Ausgabemediums ist sehr einfach. Ursprünglich auf den
+Bildschirm eingestellt, wird die Ausgabe durch Wahl der Ziffer 5
+verändert (Bild5).
+</p>
+
+<pre class="donthyphenate">
+      ------------------------------------
+      BILDSCHIRM       B
+      DRUCKER          D
+      AUFKLEBER        A
+      CASSETTE         C
+</pre>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+&quot;B&quot; ist klar, &quot;D&quot; druckt wie erwähnt die ganzen
+Records (zweispaltig), und &quot;A&quot; druckt nur die Adressen
+(ebenfalls zweispaltig) ohne Zusatzinformationen (durch * abgetrennt).
+</p>
+<p>
+Wenn bei einem Suchvorgang nur eine Adresse gefunden wurde, wird Sie
+nicht sofort auf den Drucker ausgegeben. Erst bei Rückkehr zum Menü,
+wird auch eine einzelne Adresse gedruckt. (Dies ist durch die
+Organisation in zwei Spalten bedingt).
+</p>
+<p>
+Wird bei der Ausgabe &quot;C&quot; gewählt, so schaltet sich sofort die
+&quot;Drive-LED&quot; ein. (Bei mir wird damit die Ausgabe auf Cassette
+gewählt; bei manchen Lesern wird damit auch der Cassetten-Motor
+eingeschaltet, was einen unnötigen Platz auf dem Band beansprucht, weil
+erst nach Eingabe des Suchbegriffs die entsprechenden Records
+ausgegeben werden).
+</p>
+<p>
+Nach Ausgabe der Adressen wird das Band mit dem &quot;Schnecken-A&quot;
+abgeschlossen, die Drive-LED ausgeschaltet und das Programm auf
+Bildschirmausgabe umgestellt. Dann erfolgt ein Sprung ins Menü.
+</p>
+<p>
+Die Cassettenausgabe errechnet keine Prüfsummen, ist daher zum
+dauerhaften Abspeichern nicht unbedingt geeignet. Zum Erstellen
+spezieller Dateien tut sie aber gute Dienste; denn so könnten z. B.
+Dateien sämtlicher Empfänger von Probeheften erstellt werden, indem man
+mit *P die Adressen auf Cassette speichert und in eine neue Datei
+einliest. (Das Einlesen von Cassette startet &quot;Drive&quot;, liest
+die Daten ans Dateiende und springt nach Löschen von &quot;Drive&quot;
+ins Menü).
+</p>
+<p>
+Hiermit wären wir bei der Notwendigkeit, eine neue Datei zu erstellen.
+Dazu muß die alte erst gelöscht werden. Dies geschieht durch die
+Eingabe von &quot;X&quot; (ist zwar im Menü nicht angezeigt, kann man
+sich aber leicht merken). Nach diesem Befehl erscheint die Frage
+</p>
+<pre class="donthyphenate">
+LÖSCHEN???
+</pre>
+<p>
+die mit &quot;Y&quot; beantwortet werden muß, um die Zeiger für die
+Datei auf Null zu setzen. Bei Eingabe einer anderen Taste wird das
+Löschen nicht vollzogen. So dürfte unbeabsichtigtes Löschen weitgehend
+vermieden werden.
+</p>
+<p>
+Ein weiterer Befehl ist im Menü nicht angezeigt: &quot;N&quot; für
+Rückkehr zu NASSYS. Auch dies kann man sich ohne Hilfe des Menüs gut
+merken, da es aus anderen Programmen bekannt ist.
+</p>
+<p>
+Ziffer 7 des Menüs ermöglicht das Zählen von Suchbegriffen (Siehe
+Bild3). Die Eingabe erfolgt wie gewohnt. Zur Ausgabesind Bildschirm und
+Drucker vorgesehen. Wer dabei den Drucker nicht einsetzen möchte, kann
+die entsprechenden Änderungen aus dem Anhang ersehen, der auch noch
+weitere notwendige Adressen zur Anpassung ans eigene System enthält.
+</p>
+<p>
+Bei der Beschreibung solch eines komplexen Programms läßt es sich nicht
+vermeiden, daß wichtige Punkte vergessen werden. Falls Sie bei der
+Bedienung Schwierigkeiten haben sollten, genügt eine einfache Anfrage,
+um das Problem über das Journal zu lösen.
+</p>
+<h4>
+Anhang
+</h4>
+<p>
+Um die Ausgabe bei ZÄHLEN nur auf den Bildschirm zu
+beschränken, sind ab folgender Adressen jeweils 3 NOPs
+einzutragen:
+</p>
+<pre class="donthyphenate">
+19E8  00 00 00
+1A09  00 00 00
+</pre>
+<p>
+Die Druckausgaben sind für den TANDY Lineprinter VI
+ausgelegt. In den entsprechenden Speicherplatz müssen
+eigene Druckroutinen eingebaut werden.
+</p>
+<p>
+17DF bis 17EB initiieren den Drucker (Schriftart etc..
+</p>
+<p>
+17F1 bis 1846 enthalten das eigentliche Druckprogramm (Control-Zeichen,
+Umlaute etc.)
+</p>
+<p>
+In 1779 bis 178A werden 4 Bytes in den Druckpuffer eingetragen, die
+einen Tabulator zur rechten Spalte setzen. Das Assemblerlisting hilft,
+hier die richtigen Zeichen einzusetzen, auf die Ihr Drucker reagiert.
+</p>
+
+<?php columnEnd(2); ?>

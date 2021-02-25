@@ -1,0 +1,90 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Beschädigungen eingepackt sein. Meine Adresse:
+</p>
+<p>
+Thomas Metzler<br>
+___________. __<br>
+____ Mainz
+</p>
+<p>
+Man kann sich auch an die Firma Lampson wenden (Adresse im
+<a href="../../01/text/#impressum">Impressum</a>),
+mit dem Vermerk, es an mich weiterzuleiten.
+</p>
+
+<h1 id="article1" style="font-size: 20px">
+KORREKTURVORSCHLAG ZUM MINI-BUFFER-BOARD
+</h1>
+<h3>
+NACHLESE
+</h3>
+<p>
+Bei der Abschaltung der Buffer-ICs scheint, dem
+<a href="../../../10/25/text/#article2">Schaltplan</a>
+nach zu
+urteilen den Entwicklern der ansonsten gelungenen Karte ein kleiner
+Fehler unterlaufen zu sein. Die Leitung, die von dem 15 k-Ohm und dem
+4,7 k-Ohm Widerstand an Pin 25 der CPU und des CPU-Sockels auf dem
+NASCOM geht, sollte besser an Pin 23 der CPU, bzw. des Sockels gehen.
+Das heißt, das zum Abschalten der Buffer-ICs das Signal /BUSACK statt
+/BUSRQ verwendet werden sollte. Begründung:
+</p>
+<p>
+Wenn bei der CPU, von einem Peripheriebaustein, z.B.
+<?php externalLink("Z80 DMA","Z80-DMA",""); ?>,
+oder von
+einer zweiten CPU ausgelöst, das Signal /BUSRQ Low-Pegel hat, gehen
+ihre Ausgänge, bis auf wenige Ausnahmen in Tri-State Zustand über, und
+der verursachende IC hat die volle Kontrolle über den Bus. Vorher führt
+sie aber noch den gerade angefangenen Befehl zuende und gibt dann durch
+Low-Pegel auf Signal /BUSACK dem den Bus anfordernden Baustein zu
+verstehen, daß er den Bus jetzt haben kann. Gerade weil das
+Anforderungssignal /BUSRQ mitten in einen Maschinenbefehl hineinplatzen
+kann, wird es bei der Abschaltung der Buffer-ICs
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+wahrscheinlich Ärger geben. Wenn die CPU, um den angefangenen Befehl zu
+Ende zu führen, noch Schreib- oder Lesezyklen ausführen muß, geht die
+Sache mit bereits abgeschalteten Puffern &quot;voll in die Hose&quot;.
+Bei Abschaltung auf /BUSACK kann sowas nicht passieren, weil da die CPU
+bereits fertig ist.
+</p>
+<p>
+Anzumerken bleibt noch, daß diese Änderung nur dann notwendig ist, wenn
+man auch tatsächlich, so wie es bei mir der Fall ist, eine DMA im
+System hat. Allerdings wird eine DMA bei neueren Floppy-Controllern,
+z.B. dem CLD-Softcontroller, wegen der größeren möglichen
+Übertragungsgeschwindigkeit oft verwendet.
+</p>
+
+<h1 id="article2" style="text-align:center; font-size: 20px">
+NASCOM UND CP/M
+</h1>
+<p>
+NASCOM und
+<?php externalLink("CP/M"); ?>
+- wie und warum&nbsp;?
+</p>
+<p>
+CP/M ist ein Pseudostandard für
+Betriebssysteme geworden. Deshalb bekommt man für CP/M jede nur
+erdenkliche Software in professioneller Qualität zu reellen Preisen.
+Die Standardisierung von CP/M bringt die Übertragbarkeit (Portabilität)
+aller Software (auch Maschinenprogramme) von jedem CP/M-Rechner auf
+jeden anderen mit sich. Die dadurch möglichen, hohen
+Softwarestückzahlen drücken die Preise, auch lohnt sich bei der
+Softwareerstellung ein größerer Aufwand, was dem Komfort und der
+Qualität der Softwareprodukte zugute kommt.
+</p>
+<p>
+Spezialentwicklungen für
+bestimmte Rechner z.B. den NASCOM sind also entweder teuer oder taugen
+nichts (oder beides), weil sie nicht in genügender Zahl absetzbar sind.
+Gute Software unter CP/M wird in der Regel sogar selbst wieder zum
+Standard, so ist der Wordstar der Textprozessor und das Microsoft
+</p>
+
+<?php columnEnd(2); ?>

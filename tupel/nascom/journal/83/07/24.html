@@ -1,0 +1,166 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+werden, andernfalls wird der Befehl ignoriert. Format:
+</p>
+<pre>
+        F     [cr]
+        Y
+</pre>
+<p>
+Den F Befehl kann man durch Drücken der Stop-Taste am Recorder
+frühzeitig beenden (keine Interrupts). Dann dauert es max. eine
+Blocklänge, bis das Band rückgespult wird und die Positionswerte
+geschrieben werden (20 s).
+</p>
+<p>
+Man braucht so nicht das gesamte Band zu formatieren. Nach Ende des
+Cassettenlaufes also bitte Geduld!
+</p>
+<p>
+<u>'L'oad File:</u>
+</p>
+<p>
+Das Load Kommando liest ein spezifiziertes File ein. Format:
+</p>
+<pre>
+        L &lt;offset&gt; &lt;nocatalog&gt;  [cr]
+        Filename                [cr]
+</pre>
+<p>
+wobei &lt;offset&gt; und &lt;nocatalog&gt; optionale Parameter sind.
+Der &lt;offset&gt; ist dem des Nas-sys&nbsp;3 Kommandos Read 'R' identisch
+und &lt;nocatalog&gt; liest, falls gegeben, nicht den Katalog vom Band,
+sondern benutzt den bereits gespeicherten Katalog im RAM. Der Benutzer
+ist dann über die Richtigkeit des Kataloges selbst verantwortlich.
+</p>
+<p>
+<u>'N'assys:</u>
+</p>
+<p>
+Dieser Befehl dient zum Verlassen des Casmon 1.3 in das Betriebssystem
+Nas-sys. Format:
+</p>
+<pre>
+        N      [cr]
+</pre>
+<p>
+<u>'S'ave File:</u>
+</p>
+<p>
+Mit Hilfe dieses Kommandos wird einem File im Speicher eine
+Bandposition zugeordnet und dieses File im Katalog und auf dem Band
+eingetragen. Das Programm ermittelt selbst die erste freie Position für
+das File der spezifizierten Länge. Format:
+</p>
+<pre>
+        S &lt;start&gt; &lt;end&gt; &lt;add. space&gt;  [cr]
+        Filename                      [cr]
+</pre>
+<p>
+Alle Parameter sind optional. Wird Cas-Mon 1.3 von einem übergeordneten
+Programm aufgerufen, darf auf keinen Fall ein Parameter gegeben werden,
+da diese bereits dem Cas-mon bekannt sind und dann von denen des
+Benutzers überschrieben werden. Im Interaktiven Betrieb mit Cas-Mon
+stellt &lt;start&gt; die Anfangsadresse und &lt;end&gt; die Endadresse dar. Mit
+&lt;add. space&gt; können entsprechend viele 4 KByte Blöcke zusätzlich
+auf dem Band für dieses File reserviert werden, falls dieses File noch
+wächst. Weiterhin wird beim Schreiben geprüft, ob das File noch auf das
+Band paßt.
+</p>
+<p>
+<u>'U'pdate a File:</u>
+</p>
+<p>
+Dieser Befehl ist speziell für das Entwikkeln von Programmen gedacht,
+um eine rasche Aktualisierung zu ermöglichen. Format:
+</p>
+<pre>
+        U &lt;start&gt; &lt;end&gt;            [cr]
+        Filename                   [cr]
+</pre>
+<p>
+Existiert das File nicht oder ist es zu groß für die vorhandene Lücke,
+erhält man eine
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Meldung. Da die Fileposition und der Filename gleich bleiben, wird der
+Katalog nicht neu geschrieben und auch nicht neu gelesen. Er muß also
+schon im RAM sein. Somit spart man Spulzeit.
+</p>
+<p>
+<u>'V'erify a File:</u>
+</p>
+<p>
+Identisch mit 'L', aber das File wird nicht in den Speicher übernommen.
+</p>
+<p>
+<u>'X' Kommando:</u>
+</p>
+<p>
+Das Kommando spult das Band an den Anfang, damit man es aus dem
+Recorder nehmen kann. Format:
+</p>
+<pre>
+        X    [cr]
+</pre>
+<h4>
+Grundsätzliche Arbeitsweise von Cas-Mon 1.3:
+</h4>
+<p>
+Um mit Cas-Mon 1.3 arbeiten zu können, wird eine mit dem 'F' Befehl
+formatierte Cassette benötigt. Eine solche Cassette enthält folgende
+Informationen:
+</p>
+<p>
+Nach dem Vorlaufband steht eine Startposition des Kataloges und danach
+der Katalog, der nach dem Formatieren noch keine Filenamen enthält,
+Jedoch die Anzahl der 4 KByte Blöcke des Bandes sowie die absolute
+Position jeder Marke. Da diese Parameter von den Bandgrößen wie
+Bandlänge und Bandstärke abhängen, werden sie über das 'F' Kommando
+individuell bestimmt.
+</p>
+<p>
+Somit ist eine sehr exakte Positionierung des Bandes möglich. Im
+übrigen sind dann nur noch die Marken der 4 KByte Blöcke, einzeln
+durchnumeriert und im zeitlich exakten Abstand, auf dem Band.
+</p>
+<p>
+Falls Cas-Mon 1.3 im Betrieb eine solche Marke findet, wird zunächst
+überprüft, ob diese erwartet wurde, Es erfolgt sonst die Meldung 'Block
+Error', und dann wird im Katalog der absolute Positionswert dieser
+Marke gelesen und der interne Positionszähler eventuell korrigiert.
+Dies hat den Vorteil, daß bei langen Arbeiten mit Cas-Mon 1.3 ohne
+Lesen des Kataloges, also ohne das absolute Positionieren des Bandes
+auf den Anfang, sich keine Fehler aufsummieren können.
+</p>
+<h4>
+Die Softwareschnittstelle:
+</h4>
+<p>
+Die Schnittstelle vom Casmon zum übergeordneten Programm ist nicht
+einfach. Ich habe mich, da meine gesamte Systemsoftware im RAM läuft,
+dazu entschlossen, die Systemsoftware so zu ändern, daß die
+ursprünglichen Cassetten- Befehle erhalten bleiben (z.B CSAVE in Basic).
+</p>
+<p>
+Zunächst definiere ich den SCAL &quot;Y&quot; als Sprung in den Casmon,
+entweder durch neue SCAL Tabelle im RAM oder durch NASSYS&nbsp;3 Änderung.
+Dann kann man alle SCAL &quot;R&quot;,&quot;V&quot; und &quot;W&quot;
+zu SCAL &quot;Y&quot; ändern. Dies genügt für NASPEN (das ich
+allerdings reassembliert habe, deshalb keine abs. Adresse) und
+Compression ASM. Im Basic muß nun noch der EinByte-Header ignoriert
+werden. Beim Zeap weiß man Anfang und Ende und kann dies eintippen. Für
+<?php externalLink("Blue Label Software Pascal","BLS",""); ?>-,
+NASCOM-,
+<?php externalLink("HiSOFT","Hisoft"); ?>
+Pascal, sowie für Hull-Forth sind kleine
+Adaptionsprogramme erforderlich, die ich noch nachliefern werde.
+</p>
+<p>
+Bei allen Pascal Compilern kann man sich für die Variablenspeicherung
+kleine Pascal
+</p>
+
+<?php columnEnd(2); ?>

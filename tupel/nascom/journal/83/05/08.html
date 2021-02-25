@@ -1,0 +1,117 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Der verwendete Controler-Chipsatz von Western Digital gewährleistet
+hohe Zuverlässigkeit und Funktionssicherheit, da die drei LSI-Chips
+optimal aufeinander abgestimmt sind. Die Programmierung des
+<?php externalLink("WD1793","WD&nbsp;1793"); ?>
+ist sehr einfach und leichter verstandlich als z.B. die des
+<?php externalLink("&micro;PD765","uPD&nbsp;765"); ?>
+Controlerchips von NEC, was natürlich durch einen etwas höheren Preis
+erkauft werden muß. Der weitaus größte Teil der am Markt befindlichen
+Microcomputer arbeitet ebenfalls mit den hier verwendeten
+Controlerchips, sodaß viele Systemtreiber softwarekompatibel zu dieser
+Schaltung sind (ausschließlich PIO I/-O-Signale). Die Schaltung ist in
+der hier veröffentlichten Form nicht direkt am 80-Bus betreibbar, da
+die Signale DBDR, I/O-EXT nicht erzeugt werden. Es durfte jedoch nicht
+schwierig sein, diese Anpassung durchzuführen. Es können bis zu drei
+Laufwerke angeschlossen werden.
+</p>
+<h4>
+Funktionsbeschreibung
+</h4>
+<p>
+Als I/O-Adreßdecoder wird das IC 74LS138 (I18) verwendet, das in
+Verbindung mit einem OR-Gate (I8) die /CS-Signale (/ = Aktive Low, RED)
+für den
+<?php externalLink("WD1793"); ?>
+(I1) und die PIO (I2) erzeugt. Die entsprechende
+Auswahl der I/O-Adressen kann aus dem Logikdiagramm des LS138 entnommen
+werden. Zur Freischaltung des Adreßdecoders wird eine zusätzliche
+Bank&nbsp;-&nbsp;Logik verwendet (/BANK0), welche bei Systemen ohne Banking
+(64K-Systeme) entfallen kann.
+</p>
+<p>
+Zur Taktteilung von 4MHz auf die erforderlichen 2&nbsp;MHz für den
+<?php externalLink("WD1793"); ?>
+wird ein einfacher Flip-Flop 7LS74 (I7) eingesetzt. Bei Betrieb mit
+anderen Taktfrequenzen müßten hier evtl. Änderungen vorgenommen werde.
+Bei einem Takt von 2&nbsp;MHz kann das Flip-Flop entfallen. Mit einem
+2-MHz-System ist es allerdings schwer möglich, DD-Floppies zu
+betreiben, da damit sehr zeitkritische I/O-Operationen auftreten, sodaß
+dies nicht zu empfehlen ist. Dies ist nur mit trickreicher
+Programmierung erreichbar. Über die PIO (I2) werden alle zusätzlichen
+Steuersignale ausgegeben bzw eingegeben, wie im folgenden beschrieben.
+Das HLD-Timing (Head Load) wird vom Monoflop 74121 (I16) erzeugt und
+ist für 8&quot;-Standard-Laufwerke (Shugart) ausgelegt. HLD wird von
+der Treibersoftware abgefragt. Das Side-Select-Signal dient zum
+Umschalten der R/W-Heads bei Doppelkopflaufwerken. Ebenso wird die
+Laufwerkauswahl über die PIO vorgenommen. Als weitere Eingabesignale
+werden &quot;Disk Change&quot; und &quot;Double Side&quot; über die
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+PIO kontrolliert und von der Treibersoftware (falls notwendig)
+entsprechend behandelt. Alle anderen Standard-Floppy-Signale werden dem
+<?php externalLink("WD1793","WD&nbsp;1793"); ?>
+in entsprechend gepufferter Form zugeführt.
+</p>
+<h4>
+Aufbau und Abgleich
+</h4>
+<p>
+Die notwendigen Bauteile sind der Stückliste (Bild 2) zu entnehmen. Ein
+Layout ist leider nicht verfügbar, die Bauteile haben jedoch auf einer
+Europakarte ausreichend Platz. Am besten kann die Schaltung in Fädel-
+oder Wrap-Technik aufgebaut werden. Der Abgleich und Test der Schaltung
+kann den folgenden Einstellhinweisen entnommen werden. Einfache
+Treiberroutinen, die auch den Betrieb von
+<?php externalLink("CP/M"); ?>
+ermöglichen, sind in
+<a href="../../10/text/#article1">diesem Heft</a>
+enhalten.
+</p>
+<h4>
+<u>Stückliste :</u>
+</h4>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
+<h4>
+Einstell-Hinweise
+</h4>
+<p>
+Vor der Benutzung der Floppydisk-Controller-Karte muß zuerst die
+PLL-Schaltung eingestellt werden.
+</p>
+<p>
+Zunächst ist IS15 zu entfernen. An
+Pin 2 von I4 werden dann mit P3 1,45 Volt eingestellt. Damit ist die
+Einstellung des Arbeitsbereiches der PLL erfolgt. Mit dem Poti P2 wird
+jetzt an Pin 7 von IS14 eine Frequenz von 4,00&nbsp;MHz eingestellt. Damit
+ist der Abgleich der PLL beendet.
+</p>
+<p>
+Die Einstellung des 4-Phase-Generators I6 wird mit Poti P1 vorgenommen.
+Normalerweise reicht die Einstellung auf den halben Potiwiderstand aus.
+Sollten jedoch Schwierigkeiten bei Double-Density auftreten, gibt man
+auf Pin 11 von I6 Impulse und stellt P1 so ein, daß an den Ausgängen 1,
+3, 5 oder 7 eine Pulsdauer von ca. 150 ns entsteht.
+</p>
+<p>
+Erst jetzt wird IS15 wieder eingesetzt! Bei besonders unwilligen
+Controllern kann man noch folgendes tun:
+</p>
+<ul class="dashed-left">
+	<li> Kleines Programm schreiben, das einen bestimmten Sektor immer wieder
+		einliest.</li>
+	<li> Das Programm sollte nach jeder Statusabfrage diesen anzeigen.
+		Außerdem sollte die Pufferlänge ausgedruckt werden.</li>
+	<li> Jetzt P2 so einstellen, daß der Status =00 hex ist.</li>
+	<li> Wenn jetzt die Pufferlänge ungleich der Sektorlänge ist, dann muß C4
+		verkleinert werden, da der NMI-Impuls möglicherweise zu lang ist.</li>
+</ul>
+<p>
+Wenn sich die Schaltung immer noch weigert, dann bitte bei den Autoren
+anfragen.
+</p>
+
+<?php columnEnd(2); ?>

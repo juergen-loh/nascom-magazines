@@ -1,0 +1,93 @@
+<table style="background-color:#000"><tr><td>
+<h1 id="article1" style="text-align:center; padding: 0 20px; color: #FFF">
+RELOCATOR
+</h1>
+</td></tr></table>
+
+<br>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Hochwertige Assembler ermöglichen die Erzeugung eines
+relokalisierbaren Objektcodes, der mit einem zugehörigen Lader in
+jeden beliebigen Speicherbereich lauffähig geladen werden kann. In
+seinem Buch
+<?php externalLink("Mikrocomputer Hard- und Softwarepraxis","MIKROCOMPUTER HARD- UND SOFTWAREPRAXIS"); ?>
+beschreibt
+<?php externalLink("Rolf-Dieter Klein","R.D.Klein"); ?>
+einen Lader, der sowohl für das Intel-Hex-Format als auch für das
+relokalisierbare TDL-Format geeignet ist. Dieses Programm ist aber
+für ein
+<?php externalLink("CP/M","",""); ?>-System
+ausgelegt und zudem nicht ganz fehlerfrei. Das
+hier beschriebene Programmpaket umfaßt einen Lader und einen
+Relocator, mit denen man relokalisierbaren Code erzeugen und von
+Hand oder Cassette laden kann. Es wird ein modifiziertes
+TDL-Format verwendet, das dem T-Befehl des Monitors angepaßt ist.
+Der Lader kann jedoch auch Standard-TDL verarbeiten, dagegen kein
+Intel-Hex-Format.
+</p>
+<h4>
+<u>Das TDL-Format</u>
+</h4>
+<p>
+Das relokalisierbare TDL-Format ist im Grunde dem Format des
+TABULATE-Kommandos des Monitors sehr ähnlich; es enthält ebenso
+wie dieses die Startadresse einer Zeile, Datenbytes und eine
+Prüfsumme in hexadezimaler Darstellung, darüber hinaus die
+(variable) Anzahl der Datenbytes, die Relokalisierungsinformation und
+Formatierungsanweisungen. Die hier verwendete Modifikation des
+TDL-Formats beschränkt die sonst variable Anzahl der Datenbytes auf
+acht wie beim T-Befehl. Damit ist aber auch eine Veränderung der
+Ladelogik verbunden, denn bei einer fixen Anzahl von Daten wird eine
+Übertragsbildung der Relokalisierungsinformation in die nächste Zeile
+nötig, was bei einer variablen Datenzahl vermieden werden kann.
+Dies ist auch der Grund, warum das von Klein beschriebene
+Ladeprogramm diese modifizierte Form nicht verarbeiten kann. Eine
+Zeile des modifizierten TDL-Formats sieht nun folgendermaßen aus :
+</p>
+<table class="donthyphenate">
+<tr><td style="width: 50%">Zeilenbeginn:</td><td>CRLF (0D) &quot;;&quot; (3&nbsp;B)
+09 (das Byte, das die Relokalisierungsinformation enthält, wird
+mitgezählt)</td></tr>
+</table>
+
+<?php columnChange(2); ?>
+
+<table class="donthyphenate">
+<tr><td style="width: 50%">Ladeadresse der Zeile:</td><td>z.B.0000 (Der Programmanfang wird durch
+den Relokator stets auf 0000 gelegt)</td></tr>
+<tr><td>Kennzeichnung als<br>
+relokalisierbares<br>
+Format:</td><td>01 (ist im modifizierten
+Format eigentlich überflüssig, wurde aber aus Kompatibilitätsgründen
+beibehalten)</td></tr>
+<tr><td>Relokalisierungs-<br>information:</td><td>z.B.08 (Dieser Wert
+gibt an, welches der folgenden Datenbytes relokalisiert werden
+soll. Der Wert wird bitweise ausgewertet, so bedeutet etwa 08: das
+fünfte und sechste Datenbyte werden als Adresse aufgefaßt und
+entsprechend relokalisiert. Dabei entspricht Bit 7 dem ersten Byte
+etc.)</td></tr>
+<tr><td>Datenbytes:</td><td>8 Bytes wie beim
+T-Befehl, jedoch ohne Zwischenräume.</td></tr>
+<tr><td>Prüfsumme:</td><td>Zweierkomplement der
+Summe über alle Bytes außer CRLF und &quot;;&quot;.</td></tr>
+</table>
+<p>
+Als Beispiel kann das Reloktator-Programm dienen, das hier im
+relokalisierbaren Format wiedergegeben wird.
+</p>
+<h4>
+<u>Der LADER</u>
+</h4>
+<p>
+Der Lader wird hier im Hex-Dump angegeben und belegt den
+Speicherbereich von 0C80 bis 0DEF. Erwird auf der Anfangsadresse
+gestartet und meldet sich mit: INP.B/REL, sowie einem blinkenden Cursor
+in der nächsten Zeile. Es müssen nun 2 Parameter eingegeben werden.
+B=Bias (Verschiebung) und REL=Relokalisierungsadresse. REL bestimmt
+die Anfangsadresse des geladenen Programms. Durch B wird
+</p>
+
+<?php columnEnd(2); ?>

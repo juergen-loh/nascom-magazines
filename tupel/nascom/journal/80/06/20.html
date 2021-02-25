@@ -1,0 +1,101 @@
+<?php columnStart(2, 2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+<p>
+Durch eine Kombination beider Möglichkeiten lassen sich verblüffend
+interessante Graphiken auf den Bildschirm zaubern.
+</p>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4 id="article1"><u>
+2 nützliche Unterprogramme
+</u></h4>
+<p>
+Beim Programmieren auf Assembler-Ebene fallen in verschiedenen
+Programmen immer wieder dieselben Probleme an: Zahlen Ein/Ausgabe,
+Multiplikation, Division u.s.w.. Damit nicht jeder diese Räder neu
+erfinden muß, mache ich mal den Anfang mit einer Routine zur
+Zahleneingabe (ASCII-Ziffern werden in Binärzahl gewandelt) und einer
+(dazu nötigen) Multiplikationsroutine (ohne Vorzeichen). Multiplikation
+mit 10 kann man zwar auch einfacher programmieren, aber Multiplikation
+brauchte ich sowieso. Die beiden UP&rsquo;s sind Bestandteil eines größeren
+Programmes (Texteditor); daher auch die krummen Adressen, die ich
+belassen habe, um Fehler zu vermelden (so gehen die Programme, aber
+jedes Abtippen ist gefährlich). Bis auf &quot;CALL MULT&quot;, das bei
+geringerem Abstand mit &rsquo;nem relativen CALL zum machen wäre, sind beide
+UP&rsquo;s relokatibel. Eigentlich erklären sich beide Programme aus dem
+Listing, hier noch ein paar Erklärungen:
+</p>
+<p>
+Zu &quot;DEZIN&quot;: Die zu
+konvertierende Zahl darf maximal 5 Ziffern (max. 65535) haben und muß
+irgendwo im Speicher stehen, z.B. auf Zelle 14 des Bildschirms, wenn
+mit &quot;INLINE&quot; (Nasbug&nbsp;T4) eingelesen wurde. DE muß auf die
+erste Ziffer zeigen, Jedes Nichtzifferzeichen beendet die Konversion
+und DE zeigt auf eben dieses Zeichen.
+</p>
+<p>
+Zu &quot;MULT&quot;: Falls sich
+jemand darüber wundert, daß eine 2-Byte-Zahl (in HL) mit nur einem Byte
+(in A) multipliziert wird: Wenn tatsächlich bei beiden Zahlen das
+höherwertige Byte&nbsp;!=0 wäre, gäbe es einen Oberlauf. Den muß man, je
+nach Anwendung, sowieso abfangen, und dann nur noch dafür sorgen, daß
+die kleinere Zahl in A steht.
+</p>
+<p>
+Das UP &quot;MULT&quot; stammt nicht von mir sondern ist aus dem Buch
+&quot;<?php externalLink("Z-80-Applikationsbuch"); ?>
+von M. Klein und auch viel eleganter als mein &quot;DEZIN&quot;.
+</p>
+
+<?php columnChange(2); ?>
+
+<p>
+Noch was ganz anderes: Aufpassen bei EPROM&rsquo;s
+<?php externalLink("2716"); ?>
+(5V)! Diese Typen
+sind keineswegs pinkompatibel zu 2716 mit 3 Versorgungsspannungen,
+sogar ein Adreßpin ist verschoben! Daher lassen sie sich auch nicht
+ohne Umbau im Ploss-EPROM-Programmierer (zumindest meine Version)
+programmieren.
+</p>
+<p>
+Michael Bach, __ __________ __, ____ Stegen
+</p>
+<br>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-2.jpeg"); ?>
+</p>
+
+<br>
+<?php hline("80%", "2"); ?>
+<br>
+
+<h1 id="article2">
+SPRÜCHE
+</h1>
+<p>
+wir kennen zwar die aufgabe nicht,<br>
+aber wir bringen das doppelte.
+</p>
+<p>
+operative hektik&nbsp;.........<br>
+ersetzt geistige windstille.
+</p>
+<p>
+bei uns kann Jeder werden was er will,<br>
+ob er will oder nicht.
+</p>
+<p>
+Jeder wird solange gefoerdert,<br>
+bis er mit sicherheit unwirksam ist.
+</p>
+<p>
+die hauptsache ist, es geht vorwaerts --<br>
+die richtung ist egal.
+</p>
+
+<?php columnEnd(2); ?>

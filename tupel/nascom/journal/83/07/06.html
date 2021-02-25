@@ -1,0 +1,102 @@
+<?php columnStartJustify(2); ?>
+<p>
+Anmerkung der Redaktion
+</p>
+<p>
+Das NASCALC in der abgedruckten Form kann
+den RAM-Bereich bis 9FFF belegen. Wer mehr
+Speicherplatz zur Verfügung hat, kann den
+Bereich durch Änderung folgender Adressen
+erweitern:
+</p>
+<pre>
+CLEAR 502D  2F98 --&gt;
+RAMTP 5033  FF9F --&gt;
+</pre>
+<p>
+Zur eventuellen Änderung der Ausgaberoutine ist dieser Programmteil als
+Assemblerlisting abgedruckt. Die Ausgabe druckt immer das ganze
+Bildschirmfenster. Vielleicht sollte man die Möglichkeit einbauen, nur
+bestimmte Zellen auszudrucken (z.B. AA bis AZ oder ähnlich). Wer sich
+hier an die Arbeit machen möchte, um seine Ergebnisse zu
+veröffentlichen, bekommt von Gerhard Klement eine Cassette mit dem
+vollständigen Assemblertext zugeschickt.
+</p>
+<p>
+Das angefügte Programm &quot;Belichtungszeiten bei Astroaufnahmen&nbsp;&quot;
+dient als Demonstration zum NASCALC.
+</p>
+<p>
+Tippen Sie es als normales BASIC-Programm ein, gehen Sie zum NASSYS
+zurück und WARM-starten Sie NASCALC.
+</p>
+<p>
+Kaltstart 5000<br>
+Warmstart 5047
+</p>
+<p>
+Das Bild zeigt ein Bildschirmfenster aus diesem Demonstrationsprogramm.
+</p>
+<?php hline("100%", "2"); ?>
+<br>
+
+<?php columnChange(2); ?>
+
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>
+
+<br>
+<?php boxStart(); ?>
+<table style="margin: auto"><tr><td>
+<pre>
+    F        G        H        I        v
+> ch TEDDYSOFT **            mF FLAECHENHELLE
+B    ******                  f BRENNWEITE mm
+C    ******                  EP EINTRITTSPUPILLE
+D )  ******                  OZ OEFFNUNGSZAHL
+E )  ******
+
+A  ** BELICHTUNGSZEITEN BEI ASTRO AUFNAHMEN (na
+B ** DIN =  33      *** f =   500       OEZ
+C OBJEKT     mF     *** EP =  50       10
+D MERKUR   -15.3    -6.0805   7E-04    = t (sec
+E VENUS    -16.9    -6.7205   1E-04    = t (sec
+    A        B        C        D        E
+AJ=ENHELLE
+</pre>
+</td></tr></table>
+<!--
+<p style="text-align:center">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+</p>
+-->
+<?php boxEnd(); ?>
+
+<br>
+
+<?php columnStart(3); ?>
+
+<?php boxStart("LB"); ?>
+<h1 id="article1">
+DEMO
+</h1>
+<h3 style="text-align:right">
+von GERHARD<br>
+KLEMENT
+</h3>
+<br>
+<?php boxEnd(); ?>
+<br>
+
+<?php columnChange(5); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-3.jpeg"); ?>
+<?php columnChange(5); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-4.jpeg"); ?>
+<?php columnChange(5); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-5.jpeg"); ?>
+<?php columnChange(5); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-6.jpeg"); ?>
+<?php columnEnd(5); ?>

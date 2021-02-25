@@ -1,0 +1,150 @@
+<?php columnStartJustify(2); ?>
+
+<h4>
+Nachspiel
+</h4>
+<p>
+Einige Tage, nachdem mein NASCOM wieder ordentlich arbeitete, fiel mir
+ein, daß ja auch bei der
+<?php externalLink("mc","MC",""); ?>-Speicherkarte
+die Steuersignale für den
+Refresh aus dem Takt abgeleitet werden. Da ich noch ein paar
+<?php externalLink("4116","",""); ?>er
+rumliegen hatte, probierte ich gleich aus, ob der Trick auch bei dieser
+Karte funktionierte und siehe da: nach einigen Versuchen brachte ich
+nun auch diese Karte ans Laufen. (Kondensatoren: je 180pf bei MREQ und
+parallel zum
+CAS-Ver&shy;zö&shy;ge&shy;rungs&shy;kon&shy;den&shy;sa&shy;tor,
+1nf parallel zum
+MUX-Ver&shy;zö&shy;ge&shy;rungs&shy;kon&shy;den&shy;sa&shy;tor)
+Da man eine solche Karte natürlich nicht
+rumliegen läßt und da beide Speicherkarten bereits für Banking
+eingerichtet sind, habe ich nun 128K RAM in meinem System, mit einer
+einfachen Banking-Schaltung (NASBANK), die
+<a href="../../05/text/#article1">an anderer Stelle</a>
+in diesem Heft beschrieben wird.
+</p>
+<h1 id="article1">
+Elektor-16K
+</h1>
+<h3>
+von CHRISTOPH RAU
+</h3>
+<p>
+Im April 82 hat die Zeitschrift
+<?php externalLink("Elektor","ELEKTOR"); ?>
+eine 16K dynamische RAM-Karte
+vorgestellt. Sie ist mit dem altbekannten IC 4116 bestückt, für eine
+nähere Beschreibung verweise ich auf den Artikel. Die Karte hat
+allerdings einen Schönheitsfehler: Sie lauft so, wie sie ausgelegt ist,
+nicht auf
+<?php externalLink("Z80","",""); ?>-Systemen.
+</p>
+<p>
+In der Schaltung wird das WR-Signal des Z80 genauso benutzt wie das
+kombinierte R/W-Signal des
+<?php externalLink("6502","",""); ?>.
+Beim Schreiben wird aber WR erst in
+der zweiten Taktphase der Befehlsausführung auf 0 gezogen, nachdem die
+gültigen Daten auf dem Bus liegen. Dadurch sind die Bustreiber, die den
+Speicherinhalt beim Lesen auf den Bus geben, eine Taktphase lang
+aktiviert, und die Daten, die zum Schreiben auf dem Bus liegen, werden
+zerstört. Dieser Fehler ist besonders gemein, weil er nur manchmal
+auftritt. Die Abhilfe ist ganz einfach: Man legt statt WR das
+invertierte RD an Pin&nbsp;9 von IC&nbsp;21. Ein Inverter ist auch noch frei:
+Gatter&nbsp;2 von IC&nbsp;1 wird für Z80-Systeme nicht benötigt.
+</p>
+<p>
+Mit dieser Änderung lauft die 16K RAM-Karte bei mir jetzt seit einiger
+Zeit problemlos bei 4&nbsp;MHz. Es ist eine preiswerte Alternative zu teuren
+<?php externalLink("ECB","",""); ?>-Bus-Karten,
+wenn man sich nicht scheut, ein 6502-Bus-System
+zusätzlich im Computer zu haben. Die Karte kostet als Bausatz ca.
+80&nbsp;Mark.
+</p>
+
+<?php hline("100%", "2"); ?>
+<p>
+SUCHE<br>
+ZEAP 2.1, NAS-DIS und DEBUG in EPROMs
+<?php externalLink("2716"); ?>
+mit Anleitung<br>
+H.J. Plath, ____ _______. _, __ ____
+</p>
+<?php hline("100%", "2"); ?>
+<br>
+
+<?php columnChangeJustify(2); ?>
+
+<?php boxStartJustify(); ?>
+<h4>
+Nachtrag zum 3-D-Labyrinth
+</h4>
+<p>
+Wer sich im
+<a href="../../../04/16/text/#article1">Labyrinth</a>
+schon auskennt, als wäre er dort zuhause, der
+kann durch Ändern von 7 Bytes in einem anderen Labyrinth irren:
+</p>
+<pre class="donthyphenate">
+161C 6A 56 01 00 07 78 FF 6A
+1624 56 03 00 06 80 20 6A 56
+</pre>
+<p>
+Das gilt allerdings nur für die im Heft abgedruckte Version. Wer eine
+Cassettenversion von mir hat, muß in der Gegend von 1616 gucken.
+</p>
+<p>
+Das Byte in Adresse 1622 kann #20 bleiben für Leute, die&rsquo;s gern
+weiträumig haben.
+</p>
+<p>
+Wer die endlose Laufschrift am Anfang nicht mehr ertragen kann (wie
+ich), ändert das Byte in Adresse 1003 auf 00. Das &quot;LD A,&nbsp;68&quot;
+war sowieso doppelt gemoppelt.
+</p>
+<p>
+Peter Brendel
+</p>
+<?php boxEnd(); ?>
+
+<br>
+
+<h1 id="article2">
+64K-RAM
+</h1>
+<h3>
+von CHRISTIAN PETER
+</h3>
+<p>
+Es ist geschafft: Ich habe meinen NASCOM-2 auf 64K aufgerüstet und das
+für (umgerechnet) 200,&ndash;&nbsp;DM!
+</p>
+<p>
+Ich habe ganz einfach die Schaltung des
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computers
+zur Ansteuerung der 64Kx1 DRAMs nachgebaut &ndash; und es
+funktioniert mit nur wenigen NASCOM-spezifischen Änderungen: die
+Delay-Kette (abgeleitet vom /MREQ-Signal) mußte an die
+NASCOM-Verhältnisse angepaßt werden (durch Einfügen zweier zusätzlicher
+Gatter) und es mußte die Möglichkeit vorgesehen werden, verschiedene
+RAM-Bereiche auszublenden. Das geschieht einerseits durch die Leitung
+/ROM&nbsp;SELECT (oder auch /RAM&nbsp;DISABLE), die direkt auf dem NASCOM-Bus
+verfügbar ist, und andererseits durch VRAM (Video-RAM), wofür man eine
+nichtbenutzte Bus-Leitung verwenden kann (wie z. B. auch bei der
+Floppy-Platine).
+</p>
+<h4>
+Anmerkung der Redaktion:
+</h4>
+<p>
+Christian Peter hat die Platine frei verdrahtet &ndash; und sie läuft
+trotzdem problemlos bei 4&nbsp;MHz! Bei 2&nbsp;MHz gab es zunächst
+Schwierigkeiten, die sich aber durch eine Verbreiterung der
+Massezuleitungen zu den DRAMs lösen ließen. Wenn jemand ein Layout
+herstellt, können wir preiswert Platinen fertigen lassen. Wer macht
+sich die Mühe? Ichbin sicher, daß viele Leser über eine solche
+Erweiterungsmöglichkeit froh wären.
+</p>
+
+<?php columnEnd(2); ?>

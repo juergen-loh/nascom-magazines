@@ -1,0 +1,90 @@
+<?php columnStartJustify(2, 2); ?>
+
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+<h4>
+<u>Einbau</u> <u>einer</u> <u>REPEAT-Taste:</u>
+</h4>
+<p>
+Verzichtet man auf eine extra CNTRL-Taste oder auf die GRAFIK-Taste, so
+läßt sich mit geringem zusätzlichem Hardwareaufwand eine dieser Tasten
+als REPEAT-Taste verwenden. Man kann auch eine zusätzliche Taste, die
+allerdings schlecht befestigt werden kann, dazu benutzen.
+</p>
+<h4>
+<u>Funktionsweise:</u>
+</h4>
+<p>
+Da die Entprellung der Tasten von der Software vorgenommen wird, kann
+man durch einen entsprechend der gewünschten Repeatfrequenz von der
+Hardware erzeugten CLEAR-Impuls für die Pufferspeicher, die Software
+dazu bringen bei gleichzeitig gedrückter REPEAT-Taste und einer
+beliebigen anderen Taste einen Charakter wiederholt einzulesen und
+darzustellen.
+</p>
+<p>
+Bei dem hier beschriebenen Beispiel wird davon ausgegangen, daß eine
+Originaltaste verwendet wird. Prinzipiell kann jedoch auch eine andere
+Tastenart verwendet werden. Die Schaltung ist dann dieser Taste
+anzupassen. Für die Magnettaste muß zunächst ein seperater, mit dem
+Softwaretakt synchroner Schreibimpulsgenerator eingebaut werden.
+Außerdem wird noch ein zusätzlicher Leseverstärker notwendig. Dazu wird
+der Doppelmonoflopchip 74LS221, der leicht an einer freien Stelle auf
+der Leiterplatte montiert werden kann, eingesetzt. Der Takt für den
+Schreibimpulsgenerator wird an Pin 3 von IC3 abgegriffen und damit das
+1. Monoflop getriggert. Der invertierte Ausgang Q1 dieses Monoflops
+steuert einen als Schreibimpulstreiber eingebauten Transistor
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+BCY58 (oder ähnlicher Typ) an. Ist die REPEAT-Taste gedrückt, wird über
+den Leseverstärker (2. freier Transistor in IC1) und das zusätzlich
+eingebaute Differenzierglied D10,R43,C30 ein Triggerimpuls an das
+zweite Monoflop gegeben, welches entsprechend der eingestellten
+Impulsdauer einen CLEAR-Impuls am invertierten Ausgang Q2 abgibt.
+Dieser wird über zwei zusätzliche NAND-Gates zusammen mit dem von der
+Software kommenden CLEAR-Impuls auf, die vorher aufgetrennte
+CLEAR-Leitung geschaltet.
+</p>
+<p>
+Um die einwandfreie Funktion zu gewährleisten müssen die Monoflops auf
+den Softwaretakt abgeglichen werden. Es empfiehlt sich deshalb Trimmer
+einzubauen.
+</p>
+<p>
+Eine bessere und unkritischere aber aufwendigere Lösung
+ergibt sich wenn als Schreibtaktgenerator für die REPEAT-Taste ein
+8-Bit Zähler 74LS393 verwendet wird. Damit ist ein voll zum
+Softwaretakt synchroner Tastenabfragezyklus möglich was mit einem
+Monoflop schwierig abzugleichen ist. Die Abgleichprobleme bei der
+Verwendung von zwei Monoflops sind damit weitgehend ausgeschaltet. Es
+muß lediglich noch die Impulsdauer des CLEAR-Signals an einem Monoflop,
+wie in Bild 5 angegeben, eingestellt werden.
+</p>
+<h4>
+<u>Abgleich:</u>
+</h4>
+<p>
+Nach dem Einbau der REPEAT-Taste müssen die Impulszeiten der beiden
+Monoflops wie im Impulsdiagramm angegeben abgeglichen werden. Den
+Feinabgleich nimmt man am besten mit gedrückter SHIFT-Taste und einer
+beliebigen anderen Taste vor. Es dürfen bei gedrückter REPEAT-Taste
+keine &quot;Unshiftet-Characters&quot; mehr auftreten, besonders
+kritisch sind die Zeichen %,=,* die als Testzeichen benutzt werden
+sollten.
+</p>
+<p>
+Bei gedrückter SHIFT- oder GRAFIK-Taste ist die Repeatfrequenz
+teilweise sehr ungleichmäßig, was aber wegen unterschiedlicher
+Softwarebearbeitungszeiten im Monitorprogramm nicht zu vermeiden ist.
+</p>
+<p>
+Die hier beschriebenen Schaltungsvorschläge sind in meinem NASCOM&nbsp;1
+schon längere Zeit im Einsatz und arbeiten störungsfrei.
+</p>
+<p>
+Besonders die
+CURSORPOSITIONING-Tasten sowie die REPEAT-Taste haben sich beim
+Editieren
+</p>
+
+<?php columnEnd(2); ?>

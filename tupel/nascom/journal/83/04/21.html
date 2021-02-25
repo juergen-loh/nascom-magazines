@@ -1,0 +1,104 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+80-Zeichen Karte
+</h1>
+<h3>
+von KARL SCHULMEISTER
+</h3>
+<h4 id="article2">
+Prog. Video Karte nach Zippel/Oberle:
+</h4>
+<p>
+Im <a href="../../../03/05/text/#article1">Journal 3/83</a>
+wurde meine
+<?php externalLink("ECB","",""); ?>-Karte
+für das programm. Video-Interface
+nach
+<a href="../../../../82/05/12/text/#article1">Zippel/Oberle</a>
+vorgestellt. Beim Abdruck des Listings für den
+<a href="../../../03/10/text/#article1">Zeichengenerator</a>
+ist leider ein Irrtum geschehen, es wurde das Listing
+mit den spiegelverkehrten großen Zeichen für die Video-Karte 48x16
+abgedruckt. (Diese Karte werden wir zu späterem Zeitpunkt
+<a href="../../../07/29/text/#article1">veröffentlichen</a>.
+&nbsp; Red.) Das Listing für die richtigen, verkleinerten
+Zeichen folgt
+<a href="../../22/text/#article1">am Ende</a> dieses Artikels.
+</p>
+<p>
+Ich habe schon im
+<a href="../../../03/05/text/#article1">Journal 3/83</a> darauf hingewiesen, daß die
+Steuerzeichen der im
+<a href="../../../../82/06/12/text/#article1">NASCOM Journal 6/82</a>
+abgedruckten Videoroutine
+nicht mit denen des NASCOM übereinstimmen. Mein 16 jähriger Sohn hat
+zwischen den Vorbereitungen für die Schularbeiten dieses Programm
+geändert und ergänzt, es ist jetzt NASCOM-kompatibel. Das Hex-listing
+und die notwendigen Erklärungen folgen anschließend.
+</p>
+<p>
+Das Programm läuft ab Adresse A000, der Bildschirmspeicher wurde auf
+A800 gelegt. Bei Verschiebung in einen anderen Speicherbereich müssen
+die unterstrichenen Bytes geändert werden.
+</p>
+<p>
+Das Programm aus dem
+<a href="../../../../82/06/12/text/#article1">Journal 6/82</a>
+wurde ab der Adresse 0101 um 20H
+verschoben, um Platz für die neuen CTRL-Codes und eine längere Tabelle
+zu schaffen. Nach dem Programm wurden neue Routinen angehängt. Hier nun
+die Tabelle der Tastencodes mit ihren Funktionen:
+</p>
+<p>
+TRL/D: Clear to end of screen<br>
+BACKSPACE: Backspace<br>
+Left arrow, CTRL/Q: Move Cursor left<br>
+CTRL/I: Tabulate<br>
+Down arrow, CTRL/T: Move Cursor down<br>
+Up arrow, CTRL/S: Move Cursor up<br>
+Right arrow, CTRL/R: Move Cursor right<br>
+NEW LINE: CR, LF<br>
+SHIFT/BACKSPACE: Clear Screen<br>
+CTRL/G: Clear to end of line<br>
+CTRL/Z: Clear line (nicht ESC)<br>
+CTRL/Ä: Escape<br>
+CTRL/SHIFT/O: Home up<br>
+CTRL/_ Display CTRL-char&rsquo;s<br>
+CH, CTRL/W: Carriage return<br>
+CTRL/B: Cursor home<br>
+SHIFT/Right arrow, CTRL/V: move line to the right<br>
+SHIFT/Left arrow,CTRL/U: Move line to the left<br>
+CTRL/P: Move Screen to the right<br>
+CTRL/J: Move Screen to the left
+</p>
+<p>
+Die Adressen der neuen Routinen:
+</p>
+<p>
+A230: NEW LINE, A236: BACKSPACE<br>
+A23A: Cursor home, A242: SHIFT/Right arrow<br>
+A250: SHIFT/Left arrow, A261: CTRL/P<br>
+A278: CTRL/J, A28E: CTRL/Z, A29A: CTRL/G<br>
+</p>
+<p>
+Ab A2A0 steht eine Routine, die der alten CPOINT vorgeschaltet
+ist und die richtige (ROW) errechnet, auch wenn man über eine
+Bildschirmzeile hinausgeschrieben hat.
+</p>
+<p>
+Gestartet wird mit EA300, dort befindet sich in Verbindung mit A2F0 die
+Initialisierung des USER Befehls und der Aufruf des Programms.
+</p>
+
+<?php boxStart("LR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnChange(2); ?>
+
+<?php boxStart("LR"); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-21-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

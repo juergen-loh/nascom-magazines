@@ -1,0 +1,50 @@
+<table style="background-color:#000"><tr><td>
+<h1 id="article1" style="text-align:center; padding: 0px 20px; color: #FFF">
+SPEICHERERWEITERUNG
+</h1>
+</td></tr></table>
+
+<h2>
+SPEICHERERWEITERUNG AUF 48 K
+</h2>
+
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Durch die stark gesunkenen Preise für dyn. RAMs ist eine Erweiterung
+des RAM-Bereichs auch für Besitzer der alten 32 K-Speicherkarten
+interessant geworden. Mit nur einem zusätzlichen IC und einem
+Widerstand lassen sich 8 weitere
+<?php externalLink("4116"); ?>
+auf der Karte anschliessen. Um
+keinen zu großen &quot;Drahtverhau&quot; zu erhalten, werden diese mit
+allen Beinen außer PIN 4 auf die 4116 des RAMBLK0 (IC 4-11) gelötet.
+Pin 4 aller zusätzlichen 4116 werden durch einen Draht miteinander
+verbunden. Dieser stellt den Anschluß /RAS-RAM 2 dar.Zur Decodierung
+dieses Signals wird ein 7402 (kein LS&nbsp;!) irgendwo auf der Platine
+befestigt. Die Verbindung von IC 37 PIN 8 zu IC 36 PIN 13 an + 5V wird
+jeweils aufgetrennt. Folgende Verbindungen sind durch Drähte
+herzustellen:
+</p>
+
+<?php columnChange(2); ?>
+
+<table class="donthyphenate">
+<tr><td style="border-right: 1px solid #000; border-bottom: 1px solid #000">von zus. 7402</td><td style="border-bottom: 1px solid #000">nach</td></tr>
+<tr><td style="border-right: 1px solid #000">1+5+9 mit einander</td><td></td></tr>
+<tr><td style="border-right: 1px solid #000">2</td><td>IC 3 PIN 13</td></tr>
+<tr><td style="border-right: 1px solid #000">8</td><td>IC 37 PIN 8</td></tr>
+<tr><td style="border-right: 1px solid #000">10+11+12&nbsp;mit&nbsp;einander</td><td></td></tr>
+<tr><td style="border-right: 1px solid #000">13</td><td>IC 36 PIN 2</td></tr>
+<tr><td style="border-right: 1px solid #000">6</td><td>IC 32 PIN 13</td></tr>
+<tr><td style="border-right: 1px solid #000">7</td><td>GND</td></tr>
+<tr><td style="border-right: 1px solid #000">14</td><td>+5V</td></tr>
+<tr><td style="border-right: 1px solid #000">4</td><td>/RAS 2 (alle zus.<br>4116 PIN 4)</td></tr>
+<tr><td style="border-right: 1px solid #000">3</td><td>IC 36 PIN 13 +R 1k<br>+Speicherdecodes RAMBLK2</td></tr>
+</table>
+<p>
+(dies sind im Normalfall (9000 bis CFFF) die 4K-Dec. 14,15,16,9)
+</p>
+<?php columnEnd(2); ?>

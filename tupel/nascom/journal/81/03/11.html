@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+in folgende richtungen darf gezogen werden:
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4 id="article1" style="text-align:center">
+Reaktionstest ohne Reaktion
+</h4>
+<p>
+Wer den Reaktionstest 2 aus dem
+<a href="../../../../80/05/08/text/#article2">Journal 5/80</a> durchspielen möchte,
+wundert sich über das seltsame Verhalten des Computers; denn ins
+Listing haben sich zwei Fehler eingeschlichen, die unter anderem einen
+Sprung ins Nirgendwo ergeben. Zudem sind einige Stellen unleserlich
+gedruckt. Hier nun die Fehler:
+</p>
+<pre class="donthyphenate">
+0CF4  statt CD A2 0D muss stehen CD 62 0D
+0CA1  statt CD DC 0C muss stehen C3 DC 0C
+</pre>
+<p>
+Völlig unleserlich waren die Adressen 0D51 und 0D75, in die 7B bzw. 05
+eingetragen werden muss.
+</p>
+<p>
+Wer das Spiel noch etwas lebendiger gestalten will, kann durch folgende
+kleine Änderung noch eine Geräuschroutine einfügen:
+</p>
+<pre class="donthyphenate">
+0CE6  statt CD 0D 06 -&gt; CD 9D 0D
+0D9D  3E 04 D3 00 CD 06 0D C9
+</pre>
+<p>
+Der Ton kann, wie schon
+<a href="../../../../80/06/18/text/#article1">öfters beschrieben</a>,
+an SK&nbsp;1 Pin 13 abgenommen werden.
+</p>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<h4 id="article2" style="text-align:center">
+Verbesserung des Disassembler in 
+<a href="../../../../80/06/28/text/#article1">Heft 6/7 80</a>
+</h4>
+<p>
+In der abgedruckten Fassung druckt der Computer ein []Zeichen, wenn er
+einen Befehl nicht erkennt. Er fährt dann fort, den nächsten Code zu
+interpretieren. Da er nicht weiss, wie lang der unbekannte Befehl ist,
+werden z.T. längere Teile des Programms falsch interpretiert.
+</p>
+<p>
+Folgende Veränderungen lassen ihn an den entsprechenden Stellen
+anhalten, so dass man den unbekannten Befehl per Hand eintippen
+kann.Dann gibt man einfach A und den nächsten gültigen Befehl (d.h. die
+nächste Adresse!) ein, und der Computer übersetzt wie zuvor. Die am
+Anfang eingegebene Endadresse bleibt dabei erhalten.
+</p>
+<pre class="donthyphenate">
+0478  3D CA E3 07
+06DB  00 00 24 8F
+</pre>
+<?php columnEnd(1); ?>

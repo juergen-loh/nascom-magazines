@@ -1,0 +1,115 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+00XX0000: &nbsp; Streifenstanzer<br>
+XX000000: &nbsp; Drucker
+</p>
+<p>
+&quot;XX&quot; bestimmt jeweils, welches Gerät bei Aufruf der
+entsprechenden Funktion angesteuert wird. Je nach System ist immer nur
+ein Teil der Gerätenummern belegt; der Rest kann vom Benutzer
+festgelegt werden (z.B. für einen Cassettenrekorder). Im einzelnen
+gelten folgende Zuordnungen:
+</p>
+<table style="width: 100%">
+<tr><td>Konsole:</td><td>00=TTY<br>
+01=CRT<br>
+10=BATCH (s.u.)<br>
+11=USER</td><td></td></tr>
+<tr><td>Leser:</td><td>00=TTY<br>
+01=Streifenleser<br>
+10=USER<br>
+11=USER</td><td></td></tr>
+<tr><td>Stanzer:</td><td>00=TTY<br>
+10=USER<br>
+11=USER</td><td style="text-align:right">01=Streifenstanzer</td></tr>
+<tr><td>Drucker:</td><td>00=TTY<br>
+01=CRT<br>
+10=Zeilendrucker<br>
+11=USER</td><td></td></tr>
+</table>
+<p>
+Alle mit &quot;USER&quot; gekennzeichneten Geräte können vom Benutzer
+oder in manchen Fällen auch vom Konstrukteur eines Computers frei
+definiert werden. Oft tritt auch heute schon ein Cassettenrekorder an
+die Stelle des Streifenlesers bzw. -Stanzers. Unter &quot;BATCH&quot;
+versteht man eine bestimmte Betriebsart, bei der der &quot;Leser&quot;
+als Eingabegerät und der &quot;Drucker&quot; (logisch!) als
+Ausgabegerät dient. Damit hat man wohl früher Lochstreifen in Klartext
+übersetzt. Es ist nun überhaupt nicht mehr schwierig, eine
+entsprechende Software-Schnittstelle für NAS-SYS zu schreiben, sofern
+wir vorher ein kleines Hardware-Problem lösen: Der Speicherbereich von
+0 bis 4K muß zwischen RAM einerseits und EPROM/RAM auf der Grundplatine
+des NASCOM umschaltbar gemacht werden. Vorschlage dazu werden im
+nächsten 80-BUS-Journal folgen.
+</p>
+<h4>
+ZAPPLE&rsquo;S LEISTE
+</h4>
+<p>
+Manchem Leser wenden die oben beschriebenen Unterprogramme und
+Funktionen recht bekannt vorkommen, auch wenn er noch nie etwas mit
+<?php externalLink("CP/M"); ?>
+zu tun hatte. Der von der Firma TDL in den USA vor vielen Jahren
+herausgebrachte &quot;ZAPPLE Monitor&quot; verfügt im wesentlichen über
+die gleichen Unterprogramme incl. der IOBYTE-Funktion. Der Monitor ist
+inzwischen in Deutschland mehrfach veröffentlicht worden von
+<?php externalLink("Rolf-Dieter Klein","R. D. Klein",""); ?>.
+Eine
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+erste Version ist in seinem Buch
+&quot;<?php externalLink("Mikrocomputer Hard- und Softwarepraxis","Mkrocomputer Hard- und Software-Praxis",""); ?>&quot;
+enthalten, eine erweiterte Fassung ist neulich
+als Monitor für den
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computer
+in dieser Zeitschrift erschienen.
+Der Monitor belegt den Speicher ab F000H und beginnt mit einer
+&quot;Sprungleiste&quot; zu den entsprechenden Ein/Ausgaberoutinen. Die
+Registerbelegung der verschiedenen Funktionen scheint auf den ersten
+Blick unterschiedlich zu sein, aber das liegt nur an der
+Software-Schnittstelle. Intern sind es genau die gleichen Funktionen.
+Ein Beispiel zeigt dies deutlicher als komplizierte Erklärungen: die
+Routine C0 gibt das Zeichen, das im Register C steht, auf die Konsole
+aus. Bei CP/M steht aber in C die Funktionsnummer, weshalb das Zeichen
+in E übergeben wird. Intern passiert nun aber folgendes: es wird auch
+bei CP/M eine Routine aufgerufen, die das Zeichen in C, das natürlich
+vorher von E dorthin geladen wurde, auf die Konsole ausgibt. D.h.
+nichts anderes, als daß die einfachsten Ein/Ausgaberoutinen bei beiden
+Betriebssystemen gleich sind. Nur der Zugriff erfolgt einmal über einen
+Unterprogrammaufruf bei 5, im anderen Fall über die Sprungleiste bei
+F000H. Es bereitet nun keinerlei Mühe, unseren neuen Monitor sowohl mit
+dieser Sprungleiste als auch mit der Einsprungstelle bei 5 zu versehen.
+Damit erreichen wir, daß auch Programme, die unter diesem Monitor
+laufen, direkt auf dem NASCOM einsatzfähig sind.
+</p>
+<h4 id="article1">
+GARY&rsquo;S RELOCATOR
+</h4>
+<p>
+Damit nicht alles Theorie bleibt, will ich mit einem kleinen Programm
+schließen, das wir später in den Monitor übernehmen können, das aber
+auch jetzt schon unter NAS-SYS benutzt werden kann. Es beruht auf einem
+<?php externalLink("A simple technique for static relocation of absolute machine code","Aufsatz"); ?>
+von
+<?php externalLink("Gary A. Kildall","",""); ?>,
+dem Entwickler von CP/M, in Dr. Dobb&rsquo;s,
+Februar 1978. Er beschreibt dort ein Verfahren, Programme voll
+verschieblich zu machen, das dann auch in CP/M benutzt wird. Das
+Betriebssystem CP/M selbst kann, mit diesem Verfahren den
+unterschiedlichsten Speicherkonfigurationen angepaßt werden. Wir können
+es z.B. auch benutzen, um NASCOM-Firmware an anderer Stelle als der
+ursprünglich vorgesehenen lauffähig zu machen. Als Beispiel wird der
+&quot;Verschiebungsvektor&quot; für
+<a href="../../27/text/#article1">NASDIS</a>
+mit abgedruckt. Damit ist es
+möglich, den Disassembler in jedem Speicherbereich laufen zu lassen.
+Weitere Verschiebungsvektoren z.B. für
+<a href="../../../02/13/text/#article1">DEBUG</a>,
+<a href="../../../02/14/text/#article1">ZEAP</a>
+und NASPEN) werden
+in den nächsten Heften folgen. (Ich wollte schon immer ZEAP nach F000H
+</p>
+
+<?php columnEnd(2); ?>

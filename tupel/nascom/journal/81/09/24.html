@@ -1,0 +1,52 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Interruptuhr für CLDDOS
+</h1>
+<h3 style="text-align:right">
+von Günter Endert
+</h3>
+<p>
+Der 2&nbsp;ms-Interrupt des CLD-DOS-Betriebssystems läßt sich umleiten und
+steht für eigene Anwendungen zur Verfügung. Das Programm benutzt ihn
+zur Steuerung einer Uhr und zur Abfrage des Ringbufferzählers der
+Tastatureingabe. Der mit dem dicken Strich versehene Teil (er kann auch
+weggelassen werden) erzeugt nach der Übernahme eines Zeichens in den
+Ringbuffer einen Knackton am Lautsprecher. Das erhöht meiner Meinung
+nach die Eingabesicherheit ganz erheblich, da die NASCOM-Tastatur
+keinen exakten Druckpunkt hat. Der mit dem Doppelstrich markierte Teil
+des Programms überprüft, ob die eingegebene Uhrzeit sinnvoll ist; er
+kann ebenfalls weggelassen werden. Die Uhr läuft übrigens bei häufigem
+Zugriff auf die Diskette nicht sehr genau, da bei Schreib/Lesevorgängen
+der Interrupt ignoriert wird. Die Erhöhung der Rechenzeit bei laufender
+Uhr ist unerheblich. (Ich konnte keine feststellen). Das Programm
+belegt bei mir den vom System nicht erfaßten RAM-Bereich von 1000H bis
+zum Beginn des &quot;geschützten RAMs&quot; bei 1400H.
+</p>
+<p>
+Noch ein Vorschlag zum Abdruck von Assemblerprogrammen (nur für
+Disketten-Systeme): Die Veröffentlichung des Quelltextes statt des
+Assemblerlistings spart erheblich an Platz, eine Eingabe des Programms
+in Hex mit DBUG ist ohnehin nicht bequemer, und eventuelle Änderungen
+lassen sich am Quellfile viel leichter ausführen.
+</p>
+<br>
+<h4>
+INTERRUPTGESTEUERTE UHR
+</h4>
+<br>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+</p>
+
+<?php columnChange(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-2.jpeg"); ?>
+<p>
+Der folgende Programmteil dient nur zum Stellen
+und initialisieren der Uhr; er kann dann von
+anderen Programmen überschrieben werden.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-24-3.jpeg"); ?>
+
+<?php columnEnd(2); ?>

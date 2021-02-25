@@ -1,0 +1,96 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+verschiedenen Testroutinen). Es wird zunächst ein RESTORE- Befehl an
+den Controller gegeben, der den Kopf auf Spur0 setzen soll. Der Aufruf
+der Routine HOME wird deshalb nicht gewählt, weil diese eine
+Endlosschleife enthält, aus der das Programm nicht mehr herausfindet,
+wenn kein Interrupt erfolgt, d.h. wenn der Controller den Befehl nicht
+ausführen kann. Stattdessen wird eine Verzögerungsroutine aufgerufen,
+die dem Laufwerk Zeit gibt, den Motor anzuwerfen. Läuft die Diskette,
+kann der Controller an Bit1 das Vorhandensein des Indeximpulses
+feststellen. Fehlt dieser, so ist keine Diskette vorhanden. Bit2 zeigt
+an, daß der Kopf Spur0 erreicht hat. Hat er das nicht, so ist wohl kein
+Laufwerk angeschlossen (oder die Zigarette des Programmierers ist im
+Laufwerk eingeklemmt). In diesen Fällen erfolgt eine Fehlermeldung nach
+Rückkehr zu EMDOS.
+</p>
+<p>
+PREAD ruft wie PWRITE zunächst die Suchroutine PSEEK
+auf, die als erstes oben beschriebenen Test durchführt, falls das
+Laufwerk nicht bereit ist. Fällt dieser Test negativ aus, werden die
+PUSHs von PREAD/PWRITE rückgängig gemacht und ebenso die Returnadresse
+zu diesen Routinen &quot;weggeworfen&quot;. Ein Return kehrt dann
+direkt zu EMDOS zurück.
+</p>
+<p>
+Bei positivem Testverlauf wird Bit7 von HL untersucht. Dieses Bit ist
+rückgesetzt, wenn EMDOS absolute Sektornummern erwartet (es zählt die
+Sektoren auf der Diskette von Anfang bis Ende durch ohne Rücksicht auf
+die Spuren, auf denen sie sich befinden), d.h. der von EMDOS erwartete
+Sektor9 entspricht auch dem physikalischen Sektor9 auf der Diskette.
+Ist das Bit7 gesetzt, so erwartet EMDOS die Sektornummern ab Spur 3
+(die ersten 3 Spuren sind ja für das System reserviert). In unserem
+Fall muß also zur relativen Sektornummer die Anzahl addiert werden, die
+sich auf den ersten 3 Spuren befindet, und das sind 10. So ergibt die
+relative Sektornummer 9 die physikalische 39.
+</p>
+<p>
+Nun wird die Sektornummer durch die Anzahl der Sektoren pro Spur
+dividiert, (Beispiel: 39/10=3 Rest 9). Dabei entspricht das Ergebnis
+der Spur (die werden ja ab 0 gezählt) und der Rest dem Sektor. Da (bei
+Rest 0) der Sektor0 nicht existiert, wird jeweils noch 1 addiert.
+</p>
+<p>
+In Seek wird nun die entsprechende Spur
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+aufgesucht, in Setsek die Sektornummer gespeichert. Dann geht&rsquo;s zurück
+zur aufrufenden Routine.
+</p>
+<p>
+Da man nie sicher sein kann, ob ein Sektor auf Anhieb richtig gelesen
+werden kann, sollen mehrere Versuche gemacht werden. 10
+&quot;Retries&quot; sollen üblich sein, und so werden zunächst einmal 5
+Versuche gemacht und dann ein &quot;HOME&quot;, denn die Spur könnte
+sich ja leicht verstellt haben. Sind weitere 5 Versuche erfolglos, wird
+mit der Fehlermeldung 11H, gesetztem Carry und hängendem Kopf zu EMDOS
+zurückgekehrt. (Verstehen Sie das mit dem Kopf nicht falsch; es ist
+nicht der Schreib/Lesekopf gemeint).
+</p>
+<p>
+Die PWRITE Routine macht es etwas
+einfacher: sie versucht einfach 10 mal zu schreiben und macht dann ihre
+Fehlermeldung (Schreibschutz oder was anderes).
+</p>
+<p>
+Man könnte die Tests sicher noch viel aufwendiger machen, indem man
+statt HOME versucht, einen Schritt des Motors nach innen und außen
+vorzunehmen etc. Hierzu fehlt mir aber der Vergleich mit
+professionellen Programmen. Bis jetzt geht es gut, und ich hoffe nicht,
+Disketten lesen zu müssen, die von total verstellten Laufwerken
+beschrieben wurden.
+</p>
+<div id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-11-1.jpeg"); ?>
+</div>
+<p>
+Die eigentlichen Controllerroutinen sind weitgehend gleich geblieben.
+Hie und da mußten einige PUSHs und POPs eingebaut werden, die
+Bildschirmanzeige beim Interrupt ist entfernt. Wenn Sie die Routinen im
+<a href="../../../09/11/text/#article1">letzten Heft</a>
+vergleichen, werden Sie die kleinen Änderungen erkennen.
+An der grundlegenden Funktion hat sich nichts geändert. Wenn Ihre
+Controllerkarte getestet ist, brauchen Sie nur noch das EMDOS
+einzutippen, die Anpassungsroutine zu assemblieren (oder auch im
+Maschinencode einzugeben) und dann können Sie Ihre ersten
+Speicherbereiche zum Test auf Diskette schreiben. (Hier kann man sich
+die tollsten Filenamen ausdenken. Die wurden bei mir z.T. recht
+unflätig, als die Anpassung noch nicht so recht funktionieren wollte).
+</p>
+<p>
+Auf daß Ihre Filenamen positiv sind!
+</p>
+
+<?php columnEnd(2); ?>

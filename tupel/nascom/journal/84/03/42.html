@@ -1,0 +1,43 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+PTYPE
+</h1>
+<h3>
+von ULRICH GÖDAN
+</h3>
+<h4>
+P T Y P E
+</h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+Um Textdateien etwas komfortabler als mit dem in
+<?php externalLink("CP/M"); ?>
+resistent
+vorhandenen Befehl TYPE ausdrucken zu können, wurde das Programm
+PTYPE.COM geschrieben. Gegenüber dem TYPE Commando, welches eigentlich
+für die Consolenausgabe bestimmt ist, aber mit dem Steuerzeichen CTRL+P
+auch zum Drucken benutzt werden kann, ist es für den Druckerbetrieb
+ausgelegt. Nach 66 Druckzeilen wird ein Seitenvorschub des Druckers
+ausgelöst, wenn kein Steuerzeichen für den Seitenvorschub im Text
+vorgefunden wird. Als Steuerzeichen ist 0CHex=form feed und
+40H=Indexzeichen definiert, das Letztere deshalb, weil bei einigen
+Texteditoren in den Text kein form feed geschrieben werden kann.
+Dateien können bis zu 9 mal fortlaufend ausgedruckt werden, dies ist
+praktisch wenn mehrere Kopien z.B. eines Briefes benötigt werden. Durch
+Drücken einer beliebigen Taste kann der Druckbetrieb abgebrochen
+werden. Aufruf des Programmes: PTYPE DATEI.ART /3 (CTRL+P). Wobei
+DATEI.ART die zu druckende Datei bezeichnet, /3 die Anzahl (kann
+weggelassen werden), und (CTRL+P) die in CP/M übliche Zuschaltung des
+Druckers bewirkt. Das Programm benützt nur die BDOS Schnittstelle auf
+Adr. 0005 und läuft somit auf allen CP/M 2.2 Systemen, welche Ram ab
+Adresse 0000 aufweisen. Angemerkt muß noch werden, daß der Drucker als
+Listner im Bios-Teil von CP/M installiert sein muß und das
+Steuerzeichen 0CH als Seitenvorschub auswertet.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-42-1.jpeg"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-42-2.jpeg"); ?>
+<?php columnEnd(2); ?>

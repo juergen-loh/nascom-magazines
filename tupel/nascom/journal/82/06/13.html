@@ -1,0 +1,98 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Bevor jedoch überhaupt nach dem Einschalten des Rechners die
+80-Zeichenkarte benutzt werden kann muß der CRT-Controller erst einmal
+richtig programmiert bzw.
+</p>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-13-1.jpeg"); ?>
+<p>
+initialisiert werden. Dies geschieht durch einen einmaligen Aufruf der
+Routine INIT$CRT. Die Werte mit denen die einzelnen Register geladen
+werden stehen in der &quot;DB-Zeile&quot; der Routine INIT$CRT der
+Reihe nach als Dezimalwerte. Diese Werte sind für einen Zenith-Monitor
+berechnet und müssen u.U. bei Verwendung von anderen Geräten
+entsprechend deren Timing geändert werden sonst kann es zu
+Synchronisationsproblemen kommen.
+</p>
+<p>
+INIT$CRT löscht den Bildspeicher und
+initialisiert den
+<?php externalLink("MC6845"); ?>
+bei jedem Aufruf. Sie sollte sinnvollerweise
+bei jedem RESET aufgerufen werden.
+</p>
+<p>
+Die Anpassung der IO-Adressen und die Adresseinstellung des
+Bildspeichers können leicht dem Programmlisting entnommen werden.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Hier zum Schluß noch ein kurzer Auszug aus dem Datenblatt des MC6845
+der einen kleinen Überblick über die Register, deren Funktion und deren
+Programmierung geben soll. Es ist unbedingt notwendig das Datenblatt
+des MC6845 und die tech. Unterlagen des Monitors genau zu kennen um
+alle Möglichkeiten kennenzulernen die die Videokarte bietet.
+</p>
+<h4>
+<u>LITERATURANGABEN</u>
+</h4>
+<p>
+Datenblatt
+<?php externalLink("MC6845","",""); ?><br>
+<?php externalLink("Z80"); ?>
+Assemblerhandbuch<br>
+<a href="../../../05/12/text/#article1">NASCOMJOURNAL 5/82</a>
+</p>
+<p>
+Software-Listing auf der <a href="../../14/text/#article1">nächsten Seite</a>
+</p>
+<p>
+Software-Listing auf der <a href="../../14/text/#article1">nächsten Seite</a>.
+</p>
+<h4 id="article1">
+Nachtrag:
+</h4>
+<p>
+Wie zu erwarten, hat sich in den
+<a href="../../../05/14/text/#article1">Schaltplan</a> der Video-Interface-Karte
+ein Fehler eingeschlichen.
+</p>
+<p>
+Die Verbindungsleitung vom CRT-Controller MC&nbsp;6845 Pin 18 DISPLAY ENABLE
+zum Latch IC 273 Pin 11 CLK wurde vergessen.
+</p>
+
+<?php boxStart(); ?>
+<p>
+SUCHE für NASCOM&nbsp;2 Graphik-ROM, I/O Board m/o Optionen, 32k-RAM-Board<br>
+____/______ Haslbeck
+</p>
+<p>
+<br>
+NASCOM&nbsp;1-Original Zeichengenerator DM&nbsp;10.&ndash;<br>
+Komfortabler Texteditor (4K, mit Umlauten) DM&nbsp;40.&ndash;<br>
+ZEAP 1 Original Kassette und Handbuch DM&nbsp;20.&ndash;<br>
+M.Bach &nbsp; Tel._____/_____<br>
+__ __________ __<br>
+____ ______
+</p>
+<p>
+<br>
+VERKAUFE<br>
+Philips MDCR, kaum gebraucht ohne Interface für 350.&ndash;&nbsp;; Graphic
+Character Generator für 50.&ndash;<br>
+Hans-Martin Pohl &nbsp; Tel.____/______<br>
+____________.__<br>
+____ _________ _
+</p>
+<p>
+<br>
+Jeder Abonnent kann kostenlos Kleinanzeigen bis 40 Wörter aufgeben.(Wir
+drucken die dann sogar ab)!
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

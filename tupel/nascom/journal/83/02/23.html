@@ -1,0 +1,56 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+LIFE mit Klötzchengrafik
+</h1>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<p>
+LIFE braucht man wohl nicht mehr vorzustellen. Das besondere an dieser
+Version ist die Verwendung der 96*48-Semigrafik des
+NASCOM-2-Zeichengenerators und die Programmierung in
+<?php externalLink("Blue Label Software Pascal","BLS-Pascal",""); ?>.
+Es
+lassen sich also wahlweise bis zu 4608 &quot;Zellen&quot; auf dem
+Bildschirm darstellen (&quot;Breite&quot; und &quot;Höhe&quot; des
+Feldes kann vorgegeben werden); das sind 12 mal soviel wie mit der
+Maschinensprachenversion, die im NASCOM-Journal
+<a href="../../../../80/01/04/text/#article1">vorgestellt</a>
+wurde.
+Natürlich geht das alles dann etwas langsamer (ca. 2 Bilder/Minute bei
+4608 Zellen). Wer&rsquo;s eilig hat, kann ja auch ein kleineres Spielfeld
+wählen. Sehr organisch sieht das ganze auch nicht aus, aber es
+entstehen interessante geometrische (&quot;Klötzchen&quot;-)Strukturen.
+Das Programm ist auch als Alternative zu den Abschußspielen in diesem
+Heft gedacht, aber wer nicht aufpaßt, kann das ganze Programm
+abschießen. In der vorliegenden Fassung muß es mit dem
+&quot;T&quot;-Befehl nach 2180H compiliert werden, andernfalls muß die
+Adresse BASE angepaßt werden.
+</p>
+<h4>
+Bedienung
+</h4>
+<p>
+Das Programm benutzt 4608 Bytes Zwischenspeicher ab BASE. Dieser
+Bereich oder der verwendete Teil kann zunächst gelöscht werden. Die
+Daten bleiben aber bei einem erneuten Programmstart erhalten und können
+auch vom Betriebssystem aus auf Cassette abgespeichert bzw. von
+Cassette geladen werden. Zunächst muß die Spielfeldbreite vorgegeben
+werden. Dann kann mit der &quot;Aussaat&quot; begonnen werden. Links
+oben erscheint ein blinkendes Klötzchen, das mit den Cursortasten über
+das Feld bewegt wird. Mit &quot;ENTER&quot; wird eine Zelle gesetzt,
+mit &quot;ESC&quot; gelöscht;&quot;E&quot; beendet die Aussaat. Dann
+kann die &quot;Life-Show&quot; beginnen. Nach jedem Bildwechsel bewirkt
+das Drücken einer beliebigen Taste eine Rückkehr in die
+Abfrageschleife. Man kann jetzt weitere Zellen setzen oder löschen oder
+auch die Spielfeldgröße verändern oder auch ganz von vorne anfangen.
+</p>
+<?php nowrapStart(); ?>
+<div id="nascompl">
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+</div>
+<?php nowrapEnd(); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-23-2.jpeg"); ?>
+<?php columnEnd(2); ?>

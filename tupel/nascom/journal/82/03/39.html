@@ -1,0 +1,82 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+akzeptiert. 0DH wird dabei zum Umschalten zwischen den beiden Zeilen
+benutzt (Ausprobieren!). Alle anderen Codes werden ignoriert.
+</p>
+<p>
+Der erste Programmteil besitzt 2 Einsprungadressen. Ein
+Unterprogrammaufruf (CALL) bei 0C80H gibt das Zeichen, das im
+Accumulator steht, aus. Es entspricht in seiner Funktion der ROUT -
+Routine des Monitors, nur eben fuer die Riesenbuchstaben. Ein CALL
+bei 0CDAH wirkt genauso wie die PRS - Routine (RST 28H), d.h. hinter
+dem CALL muss die auszugebende Zeichenkette, abgeschlossen mit 00H,
+folgen.
+</p>
+<p>
+Der dritte Programmteil hat ebenfalls zwei Einsprungadressen. Mit E
+0EB8 vom Monitor aus kann man den ersten Programmteil starten. Es
+erwartet eine Eingabe von der Tastatur und gibt dann das Zeichen in
+Riesenschrift auf dem Bildschirm aus. Mit der Taste GRAPH &ndash; NEW LINE
+und einer anschliessend gedrueckten Zahlentaste kann man den Abstand
+zwischen den einzelnen Zeichen veraendern. Mit ESC (SHIFT &ndash; NEW LINE)
+kann man das Programm verlassen. E 0ED8 vom Monitor aus gibt eine
+Laufschrift aus. Ruecksprung in den Monitor ist nur mit RESET moeglich.
+</p>
+<h4>
+Aenderungen fuer T2/T4
+</h4>
+<p>
+In 0C81H muss 1E, in 0C84 muss CD 3B 01 und in 0C8F muss 1F. Die
+Demonstrationsprogramme ab 0EB8 muessen neu geschrieben werden.
+</p>
+<h4>
+Aenderungen fuer NASCOM&nbsp;2
+</h4>
+<p>
+Das Programm verwendet 0AH (Reverses Blank)* als Grafikzeichen NA 2 -
+Benutzer muessen das in FFH umaendern, und zwar an der Adresse 0CD0.
+</p>
+<p>
+Das Programm belegt im RAM noch die Adressen 0D35H bis 0D38H. In 0D35H
+und 0D36H ist die Adresse des Bildschirms gespeichert, an der das
+naechste Zeichen ausgegeben wird. Sie wird nach jedem NEW LINE oder
+CLEAR SCREEN automatisch neu gesetzt, In 0D37H steht der Wert der
+Verzoegerung, die waehrend der Ausgabe eines Zeichens eingefuegt wird,
+und in 0D38H steht die Anzahl der Zwischenraeume zwischen zwei Zeichen.
+Die letzten beide Speicherstellen muessen, bevor der erste Programmteil
+aufgerufen wird, auf den gewuenschten Wert + 1 gesetzt werden.
+Beispiel: die Befehlsfolge LD HL,0802&nbsp;; LD (0D37),HL setzt die
+Verzoegerung auf 07 und die Zwischenraumbreite auf 01.
+</p>
+<p>
+Zum Schluss noch die Adressen, die beim
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Verschieben des Programms geaendert werden
+muessen:
+</p>
+<p style="text-align:left">
+0C8B 0C93 0CA5 0CB2 0CB8 0CC5 0CD5 0CE4 0CEE
+0D06 0D14
+</p>
+<p>
+0CA5, 0CB8 und 0CE4 sind CALLs, in 0D14
+steht der Tabellenanfang (0D39).
+In allen anderen Adressen wird auf die 4 RAM
+- Zellen zugegriffen.
+</p>
+<p>
+*Anm. d. Red.: Das funktioniert nur, wenn per Hardware eine
+Invertierung der Zeichen durch Bit 7 vorgesehen ist (wie in älteren
+Ausgaben des Journals
+<a href="../../../../80/04/08/text/">mehrfach</a>
+<a href="../../../../80/06/05/text/#article2">beschrieben</a>).
+</p>
+
+<?php boxStart("LTR"); ?>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-39-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

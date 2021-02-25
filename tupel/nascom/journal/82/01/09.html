@@ -1,0 +1,170 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+MDCR Interface
+</h1>
+<h3>
+Teil3 von J. C. Lotter
+</h3>
+<p>
+UNICON stellt fuer allgemeinen Gebrauch eine Anzahl von nuetzlichen
+Unterprogrammen zur Verfuegung, die im folgenden beschrieben werden
+sollen. Die angegebenen UNICON-Adressen beziehen sich auf die
+Standardversion (Startadresse A000h) und sind fuer andere Startadressen
+entsprechend umzurechnen.
+</p>
+<p>
+A004 &nbsp; VCOM
+</p>
+<p>
+Command Interpreter. Erwartet in 0BFCh die Startadresse einer
+Befehlsliste.
+</p>
+<p>
+A0A1 &nbsp; XCALL
+</p>
+<p>
+Springt zu dem Unterprogramm, dessen Startadresse in der Speicherstelle
+steht, auf die HL zeigt. Entspricht dem Pseudo-Opcode JP (HL).
+</p>
+<p>
+A0C9 &nbsp; ERROR XX
+</p>
+<p>
+Gibt die Meldung &quot;*ERROR xx&quot; und einen Piepton aus. Das Byte
+xx steht hinter dem Aufruf (CD C9 A0 xx&nbsp;....). Springt anschliessend in
+die Interpreterschleife.
+</p>
+<p>
+A124 &nbsp; LINE
+</p>
+<p>
+Schreibt eine waagerechte Linie auf den Bildschirm. DE wird veraendert.
+</p>
+<p>
+A138 &nbsp; TIME
+</p>
+<p>
+Startet die Real time clock, DE zeigt auf die Bildschirmzeile, in der
+die Zeit (HHMM) steht.
+</p>
+<p>
+A1BE &nbsp; CLTOP
+</p>
+<p>
+Loescht die oberste Zeile. HL und A werden veraendert.
+</p>
+<p>
+A1CB &nbsp; OUTS p1 b1 ....pn bn 00
+</p>
+<p>
+Port-Ausgabe. Das Byte bx wird an den Port px ausgegeben. Beendet wird
+die Serie durch das Byte 00. A wird veraendert.
+</p>
+<p>
+A1FB &nbsp; BEEP t1 d1 ... tn dn 00
+</p>
+<p>
+Erzeugt eine Tonfolge, tx bestimmt die Hoehe, dx die Dauer des
+x-ten Tones. Ist t groesser als BFh, entspricht dies einer Pause.
+Beendet wird die Folge durch 00. A wird veraendert.
+</p>
+<p>
+A4D3 &nbsp; B2DEC
+</p>
+<p>
+Dezimalausgabe, E enthaelt das auszugebende Byte. A,B und E werden
+veraendert.
+</p>
+<p>
+A27A &nbsp; DEL XX
+</p>
+<p>
+Verzoegerung um (5 * xx) msec. I wird veraendert.
+</p>
+<p>
+A506 &nbsp; SAVE
+</p>
+<p>
+Fuehrt den SAVE-Befehl aus. ARG1 (0C0E) zeigt auf den Filenamen.
+ARG2(0C10) enthaelt
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+die Startadresse, ARG3 (0C12) die Endadresse. ARG4 (0C14) enthaelt
+die Execute-Adresse.
+</p>
+<p>
+A64D &nbsp; UPDATE
+</p>
+<p>
+Fuehrt den UPDATE-Befehl aus. DE zeigt auf den Filenamen.
+</p>
+<p>
+A65C &nbsp; VERIFY
+</p>
+<p>
+Fuehrt den VERIFY-Befehl aus. DE zeigt auf den Filenamen.
+</p>
+<p>
+A776 &nbsp; LOAD
+</p>
+<p>
+Fuehrt den LOAD-Befehl aus. DE zeigt auf den Filenamen.
+</p>
+<p>
+A793 &nbsp; EXECUTE
+</p>
+<p>
+Wie LOAD, nur wird das Programmfile sofort an der Execute-Adresse
+gestartet.
+</p>
+<p>
+A7A6 &nbsp; DIREC
+</p>
+<p>
+Fuehrt den Directory-Befehl aus.
+</p>
+<p>
+Damit duerfte es moeglich sein, MDCR-Befehle direkt in andere Programme
+(Assembler, Editor) einzubauen und deren Cassettenroutinen zu ersetzen.
+</p>
+<p>
+Noch ein paar Tips: Wenn Sie ein Programm auf MDCR abspeichern, dann
+geben Sie ruhig noch ein paar Bytes dazu. So koennen Sie das Programm
+spaeter vergroessern (mit UPDATE), ohne es erst loeschen zu muessen.
+</p>
+<p>
+Zum Abspeichern eines BASIC-Programms nehmen Sie als Startadresse 1000,
+als Execute Adresse FFFD. Die Endadresse ermitteln Sie, indem Sie (in
+BASIC) eintippen;
+</p>
+<p>
+?xxxxx-FRE(0)
+</p>
+<p>
+xxxxx ist Ihre hoechste Speicheradresse. Die so gefundene Endadresse
+müssen Sie noch ins Hex-System umrechnen.
+</p>
+<p>
+-Falls Sie der unglueckliche Besitzer eines NASCOM&nbsp;2 sind, wird auf
+Ihrer Hardware im allgemeinen kein Interruptprogramm laufen. Der Grund:
+Auf dem Bus zur RAM-Erweiterung liegt die IEI-IEO-Leitung parallel und
+nicht, wie erforderlich, seriell. Abhilfe: Trennen Sie die Leitung
+durch oder &ndash; falls Sie noch Geld uebrig haben &ndash; werfen Sie den Bus weg
+und kaufen Sie sich ein Motherboard.
+</p>
+<br>
+<h1 id="article2">
+Lottozahlen-Generator
+</h1>
+<h3>
+von Bernd im Brahm
+</h3>
+<p>
+Der Lottozahlen-Generator liefert auf Tastendruck 6 Zufallszahlen.
+Durch Betätigung der Tasten &quot;Shift/New Line&quot; (ESC) wird das
+Programm beendet (Jede andere Taste liefert
+</p>
+
+<?php columnEnd(2); ?>

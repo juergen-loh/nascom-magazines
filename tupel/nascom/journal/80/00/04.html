@@ -1,0 +1,116 @@
+<?php columnStart(1); ?>
+<h1 id="article1">applikation</h1>
+<h4><u>Tongenerator</u></h4>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>(Manuskript von Ulrich Krüger, Witten)
+</p>
+<p>
+Dieses Programm ist als Unterprogramm ausgeführt, sodaß man
+es für viele Anwendungen ins eigene Programm mit einbauen kann.
+</p>
+<p>
+Der Ton wird am Tastaturstecker, Pin 13 abgenommen und kann
+dem NF-Teil eines Fernsehgerätes (&nbsp;Achtung Netz&shy;tren&shy;nung!) oder
+einem Niederfrequenzverstärker zugeführt werden.
+</p>
+<p>
+Das Unterprogramm selbst ist voll verschieblich. Der Aufruf für
+das Unterprogramm sieht dann so aus:
+</p>
+
+<pre>CD YY XX Z1 Z2</pre>
+
+<p>
+CD ist der hexadezimale Code für den CALL-Befehl
+(Un&shy;ter&shy;pro&shy;gramm&shy;auf&shy;ruf).
+Dann folgt die Startadresse des
+Un&shy;ter&shy;pro&shy;grammes mit XX = High
+Byte der Startadresse YY &ndash; Low Byte der Startadresse
+</p>
+<p>
+Außerdem können noch zwei andere Parameter eingegeben werden.
+Die Tondauer wird durch den hexadezimalen Wert von Z1 bestimmt. Z1
+kann Werte zwischen 00 bis FF annehmen, entsprechend Tondauern
+zwischen 0,02 Sekunden und 5 Sekunden.
+</p>
+<p>
+Die Tonhöhe wird durch den Wert von Z2 bestimmt, der
+ebenfalls zwischen 00 und FF liegen kann.
+</p>
+<p>
+Das zugehörige Programm sieht dann so aus;</p>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.gif"); ?>
+</p>
+
+<?php columnChange(2); ?>
+
+<?php nowrapStart(); ?>
+<p>
+Beispiel:
+</p>
+<p>
+Vorausgesetzt, die Subr. steht ab 0F00. Aufrufeprogramm ab z.B.
+0F50 eingeben:
+</p>
+<?php nowrapEnd(); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-2.gif"); ?>
+</p>
+
+<p>
+Beispielprogr. starten: E F50 (new line)
+</p>
+
+<?php hline("50%", "2d"); ?>
+
+<h4 id="article2"><u>Sprachsynthesizer</u></h4>
+
+<p>
+(Ulrich Krüger, Witten)
+</p>
+<p>
+Ein gutes Beispiel dafür, was man mit etwas Überlegung und
+souveräner Fachkenntnis zustande bringen kann, ist der
+Sprachsynthesizer von Ulrich Krüger. Am faszinierenden an dem
+ganzen Aufbau finde ich, daß so etwas einfaches doch recht
+brauchbare Ergebnisse liefert. Es lohnt sich auf jeden Fall, die
+Sache einmal auszuprobieren.
+</p>
+<p>
+Das Programm verwendet wieder den Port 0
+zur Ausgabe. Es wird dort das Bit 5 belegt, das an Pin 14 des
+Tas&shy;ta&shy;tur&shy;an&shy;schlus&shy;ses zur Verfügung steht.
+</p>
+<p>
+Die ganze &quot;Hardware&quot;, die anzuschließen ist,
+besteht aus einem einfachen Tiefpaß:
+</p>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-3.gif"); ?>
+</p>
+
+<p>
+Wieder reicht ein normaler NF-Verstärker aus, um das Signal hörbar
+zu machen.
+</p>
+<p>
+Die Software besteht aus dem eigentlichen Steuerprogramm, das
+von 0C50 bis 0C88 liegt. Außerdem ist noch die
+Sprach&shy;ta&shy;bel&shy;le nötig,
+in die Ulrich jetzt die Worte &quot;Guten Tag&quot; eingebaut
+hat, die vorher bei der Aufnahme digitalisiert wurden. Die
+Ausgabegeschwindigkeit kann mit dem Byte bestimmt werden, das in
+der Speicherzelle 0C68 steht.
+</p>
+<p>
+Hier die Software:
+</p>
+
+<?php columnEnd(2); ?>

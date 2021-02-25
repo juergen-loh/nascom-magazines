@@ -1,0 +1,92 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+RAM-GRAPHIK
+</h1>
+<h3>
+von Johannes C. Lotter
+</h3>
+<p>
+Viele Beitraege im Nascom-Journal befassten sich in letzter Zeit mit
+der Erzeugung von Graphik, und ich will hier keine Ausnahme machen.
+Normalerweise wird die NASCOM-Graphik ueber einen zweiten Zeichensatz
+erzeugt, der in einem 2k-Eprom gespeichert ist. Umgeschaltet zwischen
+erstem und zweitem Zeichensatz wird ueber Bit 7 des Video-RAM.
+</p>
+
+<?php box0Start(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-20-2.jpeg"); ?>
+<?php box0End(); ?>
+
+<p>
+So weit, so gut; bald wird man sich jedoch wünschen, man
+haette mehr Zeichen zur Verfuegung als die 128 zusaetzlichen. Die
+BASIC -Blockgraphik beansprucht 64 Zeichen, die Schach Graphik 64
+weitere,Indizes und mathematische Sonderzeichen nochmal 64, und ein
+griechisches Alphabet waere auch nicht schlecht. Die beste Loesung ist
+ein Zeichensatz, der sich beliebig softwaremaessig definieren laesst.
+</p>
+<p>
+<span title="Fehler: Wortwiederholung">laesst.</span>
+Der Zeichengenerator muss also ein RAM sein,auf das von der CPU
+zugegriffen werden kann. Es erweist sich als sinnvoll, auch ein Lesen
+aus dem Grafik-RAM zuzulassen.
+</p>
+<p>
+Die hier vorgestellte Schaltung erweitert den NASCOM-Zeichengenerator
+von 2k auf 4k. Der erste Teil ist der originale NASCOM&nbsp;1
+Zeichengenerator&nbsp;, der zweite Teil ein 2k RAM. Als ich die Schaltung
+vor 2 Jahren aufbaute,nahm ich vier <?php externalLink("2114","",""); ?>&rsquo;er;
+heute waere vermutlich ein
+<?php externalLink("6116","",""); ?>&rsquo;er
+guenstiger. Der Zeichengenerator mit nachgeschaltetem Buffer
+laesst sich auch durch ein entsprechend programmiertes Eprom ersetzen.
+Dann kaeme die Schaltung mit 7 IC&rsquo;s aus. Die ganze Logik ist auf einer
+Lochrasterplatte auf der RAM-Karte aufgebaut. Dort
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+ist genuegend Platz direkt am Busstecker, wo auch die Adressen- und
+Datenleitungen sehr schoen zugaenglich sind. Die Verbindung zur
+NASCOM-Grundplatine erfolgt ueber ein Kabel mit 24-poligem Stecker, der
+in die Fassung des Zeichengenerators eingesteckt wird. Zusaetzlich muss
+noch eine Verbindung zwischen folgenden IC&rsquo;s hergestellt werden:
+</p>
+<p>
+IC 20 Pin 12 &ndash; IC 17 Pin 18<br>
+IC 17 Pin 19 &ndash; IC 16 Pin 10<br>
+IC 16 Pin 14 &ndash; IC 15 Pin 6;von Masse abtrennen!
+</p>
+<p>
+Mit der gewaehlten Dekodierung liegt der Grafik-RAM-Bereich von 9000
+- A000. Die folgenden Programme sind fuer diese Dekodierung
+ausgelegt.
+</p>
+<p>
+Wenn die Schaltung eingebaut ist, kann man
+mit der Grafik-Taste (Bit 7 gesetzt) die 128 frei definierbaren Zeichen
+auf den Schirm bringen. Zunaechst wird man nur wirres Gekringel sehen,
+da noch nichts vernuenftiges im RAM steht. Sie koennen nun Ihre Grafik
+testen, indem Sie eingeben:
+</p>
+<pre class="donthyphenate">
+I 9000 9800 800
+</pre>
+<p>
+Dies kopiert den normalen Zeichensatz ins RAM. Folgendes kleine
+Programm erzeugt invertierte Zeichen:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-20-1.jpeg"); ?>
+<p>
+Anschliessend noch zwei weitere Programme.
+</p>
+<p>
+BSET erzeugt die BASIC-
+Blockgrafik und ist auf jeder Adresse lauffaehig. Mit DEFINE koennen
+Sie Ihren eigenen Zeichensatz definieren. Nach dem Start auf Adresse
+D00 wird der Bildschirm aufgeteilt (&nbsp;siehe Bildschirmausdruck); links
+steht der komplette Zeichensatz, rechts koennen Sie einzelne Punkte in
+einem Zeichen setzen oder loeschen. Sie haben folgende Befehle zur
+</p>
+
+<?php columnEnd(2); ?>

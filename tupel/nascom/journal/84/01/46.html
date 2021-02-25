@@ -1,0 +1,113 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+nicht in der Warteschleife hängen, wie ich zunächst vermutete, sondern
+kehrt durch Interrupt zurück, nachdem der Controller 255 Schritte nach
+außen gemacht hat, um Spur0 zu erreichen. Diese Eigenschaft konnte ich
+einem neueren Datenblatt entnehmen.
+</p>
+<p>
+Auf der Diskette ist PHEAS schon
+dementsprechend geändert. Die &quot;Handarbeiter&quot; müßten das
+Listing in
+<a href="../../../../83/12/21/text/#article1">Heft 12/83 auf Seite 21</a>
+folgendermaßen ändern:
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-46-1.jpeg"); ?>
+<p>
+Das zusätzliche Label NOTRDY entdeckt bei meinem Laufwerk die geöffnete
+Tür, die ja kein eigenes Bit zur Abfrage hat. Die entsprechende
+Fehlermeldung &quot;1A&quot; könnte auch noch auf andere Fehler
+hinweisen, die die Bereitschaft des Laufwerks verhindern.
+</p>
+<h4 id="article1">
+NEUES &nbsp; <span class="gesperrt">EMDOS</span>
+</h4>
+<p>
+Wie schon in der
+&quot;<a href="../../../m1/04/text/#article1">Mini-Ausgabe</a>&quot;
+erwähnt, ist die neue Version
+von EMDOS mit einigen zusätzlichen Features ausgestattet. Diese Version
+befindet sich schon auf der Systemdiskette; auf Wunsch drucken wir aber
+auch gerne noch ein Hexdump davon ab. (Bitte melden).
+</p>
+<p>
+Zunächst wird beim Starten von EMDOS in der neuen Version der Stack auf
+$1000 gelegt. Das Fehlen dieser Eigenschaft konnte in der alten Version
+unter bestimmten Bedingungen Komplikationen hervorrufen.
+</p>
+<p>
+Weiterhin kann
+man EMDOS nun durch Drücken der &quot;N&quot;- Taste verlassen. Dies
+ist zwar keine großartige Umwälzung, aber doch eine angenehme
+Eigenschaft für Benutzer, die das &quot;N&quot; im ZEAP, NASPEN etc.
+für diesen Zweck gewohnt sind.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Es wurde schon im
+<a href="../../../../83/12/22/text/#article2">letzten Heft</a>
+erwähnt, daß EMDOS nur Files mit
+maximaler Länge von 31,5 KBytes verarbeiten kann. Helmut Emmelmann fand
+keine Zeit, den Umfang zu erweitern (Scheint eine aufwendige Arbeit zu
+sein. Vielleicht hilft es, wenn ihn einige Leser dringend darum
+bitten?), aber er hat nun zumindest eine Fehlermeldung eingebaut, die
+anzeigt, daß versucht wurde, ein zu großes File abzuspeichern. Der
+Bildschirm zeigt &quot;ERROR 24&quot;, und die Diskette bleibt
+unberührt.
+</p>
+<p>
+Zu diesen Änderungen kamen auch noch eine Reihe neuer Befehle.
+</p>
+<p>
+1. F Laufwerk XXXXhex
+</p>
+<p>
+Dies bewirkt einen CALL PHEAS mit der Laufwerksnummer in C und dem
+Hexwert in HL, A enthält die 5 als Funktion von PHEAS (wie 2 für Selekt
+oder 4 für Schreiben). Helmut verwendet diesen Aufruf, um in seinem
+PHEAS einem Laufwerk ein bestimmtes Format zuzuweisen. Ohne Änderung
+des PHEAS bleibt dieser Befehl bei uns ohne Wirkung.
+</p>
+<p>
+2. C Ziel Quelle Dateiname (Space)(Strichpunkt)
+</p>
+<p>
+z.B. C A B RDTRK.ASS&nbsp;;
+</p>
+<p>
+kopiert die angegebene Datei von einem Laufwerk auf das andere.
+</p>
+<p>
+Man kann auch mehrere Dateien angeben. Besonders praktisch ist das
+Kopieren einer ganzen Diskette durch Ausgeben des Directory auf den
+Bildschirm, dann Cursor mit Cursortasten auf die Zeile oberhalb des
+Directory setzen und C X Y eingeben. Es werden dann alle Files des
+Directory kopiert. Die Systemspuren bleiben unberührt.
+</p>
+<p>
+Bei mir läuft
+dieser Befehl allerdings nicht ganz einwandfrei. Beim Kopieren von 16
+Dateien waren die letzten 8 in Ordnung. Beim Versuch, die ersten 8
+einzulesen ergab sich aber ERROR 22 oder ERROR 40. Deshalb habe ich mir
+nachfolgendes BACKUP-Programm geschrieben, das eine Diskette inclusive
+der Systemspuren kopiert (allerdings nur für Double Density) und
+einwandfrei läuft.
+</p>
+<p>
+Bitte teilen Sie mir mit, wie der C-Befehl bei Ihnen
+funktioniert. Helmut kommt Ende des Monats wieder nach Hause, und erst
+dann können wir auf seinem System die Funktion testen.
+</p>
+<p>
+3. I Dateiname<br>
+4. 0 Dateiname
+</p>
+<p>
+Mit diesen Befehlen wird die Diskette als User-Routine eingesetzt, d.h.
+Sie können
+</p>
+
+<?php columnEnd(2); ?>

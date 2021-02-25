@@ -1,0 +1,73 @@
+<?php columnStartJustify(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-1.jpeg"); ?>
+<p>
+Umrechnung für die Druckroutine:
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-3.jpeg"); ?>
+</p>
+<h1 id="article1">
+AD-Wandlung
+</h1>
+<h3>
+von Michael Bach
+</h3>
+<p>
+Hier eine Anmerkung zum kürzlich veröffentlichten Analog-Interface
+(P.Bentz, <a href="../../../../81/12/29/text/#article1">Heft 11/12-81</a>).
+</p>
+<p>
+Es gibt eine meiner Meinung nach wesentlich einfachere Lösung, wie sie
+im Analog Devices
+<?php externalLink("AD7581"); ?>
+(8 Kanäle a 8 Bit, DM&nbsp;50.&ndash;) verwirklicht ist:
+der ADC wandelt ständig der Reihe nach die Spannungen aller Kanäle um
+und schreibt sie in ein 2-Port-Ram (mit im IO, das nach Bedarf vom
+Rechner ausgelesen wird (8 I/O-Adressen). Dieser Wert ist nie älter als
+0,7ms. Damit spart man sich den ganzen Aufwand für Start Conversion,
+Warten oder gar Interrupt. Für ganz schnelle Anwendungen natürlich
+nicht das Richtige.
+</p>
+<p>
+Ich habe eine I/O-Platine (für ein 6809-System)
+damit gebaut, welches sehr zufriedenstellend fuktioniert.<br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<h1 id="article2">
+Sortieren in Basic
+</h1>
+<h3>
+Teil 7 von W. Mayer-Gürr
+</h3>
+<p>
+Was beim Heapsort schon zu einer Verbesserung der Effizienz &ndash; nämlich
+Vergleiche über eine größere Distanz &ndash; geführt hat, wird beim Quicksort
+noch konsequenter angewandt. Das mittlere Element eines Feldes dient
+als Bezugspunkt. Von links und rechts nähert man sich der Mitte und
+tauscht gegebenenfalls das größere Element auf die rechte Seite. Die
+Feldhälften werden wiederum geteilt und die Hälften, wie oben
+beschrieben, behandelt.
+</p>
+<p>
+Der dazugehörige Algorithmus läßt sich in BASIC nur mit einigen
+Verrenkungen verwirklichen. Er führt aber zu der schnellsten (mir
+bekannten) Sortierung eines Feldes. Wegen des größeren Umfangs des
+Programms lohnt er sich bei kleineren Feldern wohl nicht.
+</p>
+<p>
+Das hier aufgelistete Programm läßt sich auf Kosten der Lesbarkeit noch
+um ca. 10% schneller machen, wenn man die Tips aus
+<a href="../../../../81/08/14/text/#article1">Teil 2</a>
+berücksichtigt. Um 100 Integerzahlen zu sortieren, braucht meine Anlage
+mit CLD-DOS und dem MICROSOFT BASIC etwa 15 Sekunden.
+</p>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-4.jpeg"); ?>
+</p>
+
+<?php columnEnd(2); ?>

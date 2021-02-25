@@ -1,0 +1,72 @@
+<?php columnStartJustify(2, 2); ?>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-21-1.jpeg"); ?>
+<?php columnChangeJustify(2); ?>
+
+<?php nowrapStart(); ?>
+<h1 id="article1">
+NASCOM-Video
+</h1>
+<h3>
+von TOM D. RÜDEBUSCH
+</h3>
+<?php nowrapEnd(); ?>
+<p>
+NASCOM&nbsp;2 (1) Video- Verbesserung
+</p>
+<p>
+Zwei einfache Änderungen am Video- Teil des NASCOM&nbsp;2 werten die
+Bildschirmdarstellung so auf, daß außer der geringen Auflösung von 48
+Zeichen/Zeile wirklich keine Wünsche mehr offen bleiben.
+</p>
+<p>
+1. Bei längerem Arbeiten äußerst unangenehm ist das
+&quot;Schwimmen&quot; des Bildschirms, das besonders im rechten unteren
+Teil auffällt. Es wird dadurch verursacht, daß das Bild nicht mit exakt
+50&nbsp;Hz sondern mit 50,15&nbsp;Hz aufgefrischt wird.
+</p>
+<p>
+Außerdem werden von den einzelnen Zeichen nicht 16 sondern nur 14
+Zeilen ausgegeben. Den Männchen aus dem Grafik-Zeichensatz fehlen
+deshalb die Füße. Beide Schönheitsfehler wurden von NASCOM in Kauf
+genommen, um eine Umschaltung von 50 auf 60&nbsp;Hz zu ermöglichen und so
+Kompatibilität mit zwei Fernsehnormen zu gewährleisten.
+</p>
+<p>
+Mit der Festlegung auf 50&nbsp;Hz bewirkt folgende Änderung ein absolut
+ruhiges Bild, auf dem alle Zeichen vollständig ausgegeben werden:
+</p>
+<p>
+Folgende IC- Beinchen sind herauszubiegen
+</p>
+<p>
+IC 53, Pin 1 und 11<br>
+IC 56, Pin 5 und 6<br>
+IC 68, Pin 1 und 10
+</p>
+<p>
+Außerdem sind diese Verbindungen herzustellen:
+</p>
+<p>
+IC 68, Pin 1 &ndash; Pin 8<br>
+IC 68, Pin 10 &ndash; Pin 16<br>
+IC 53, Pin 11 &ndash; IC 68, Pin 5 &ndash; IC 56, Pin 5<br>
+IC 56, Pin 6 &ndash; IC 44, Pin 11<br>
+IC 53, Pin 1 &ndash; IC 68, Pin 11
+</p>
+<p>
+2. Sowohl bei NASCOM&nbsp;1 als auch bei NASCOM&nbsp;2 sind der Zugriff von CPU
+und Video- Teil auf das Video- RAM nicht synchronisiert.
+</p>
+<p>
+Bei häufigen Zugriffen der CPU resultieren daraus beim NASCOM&nbsp;1 die
+bekannten weißen und beim NASCOM&nbsp;2 die schwarzen Streifen auf dem
+Bildschirm, die jede noch so schöne Grafikdarstellung verstümmeln.
+</p>
+<p>
+Mit
+unten beschriebener Schaltung bekommt man eine saubere bewegte Grafik
+bei Spielen; und auch durchlaufende Listings lassen sich besser
+mitlesen.
+</p>
+
+<?php columnEnd(2); ?>

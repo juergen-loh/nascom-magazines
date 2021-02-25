@@ -1,0 +1,139 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+wobei XXXX die Länge des Programms (in Hex) ist.
+</p>
+<p>
+Das Programm hat nun wohl eine neue Startadresse, lauffähig ist es hier
+allerdings noch nicht, wenn es direkte Sprünge oder
+Unterprogrammaufrufe enthält. Das Programm muß nun also nach solchen
+Befehlen durchforscht werden. Die Adressen werden in oben beschriebener
+Weise abgewandelt.
+</p>
+<p>
+In unserem Beispielprogramm liegt ein Aufruf bei C68 vor. Das
+Unterprogramm liegt innerhalb des eigentlichen
+Programm-Speicherbereichs und wird folgendermaßen geändert:
+</p>
+<pre>
+1C68  CD 01 1D
+</pre>
+<p>
+Liegt die aufgerufene Adresse außerhalb, so wird (hauptsächlich bei
+T2/T4-Programmen) mit größter Wahrscheinlichkeit ein Unterprogramm aus
+dem Betriebssystem vorliegen. Bei Verwendung des gleichen Systems, kann
+die Adresse stehen bleiben, beim Umschreiben auf einen anderen Monitor
+muß die Adresse geändert werden oder (wie bei NASSYS) ein indirekter
+Aufruf eingetragen werden. Mehr zu den monitoreigenen Unterprogrammen
+im nächsten Heft.
+</p>
+<p>
+Die Adressen für direkte Sprünge werden als nächstes modifiziert. So
+wird aus. JP D80 &ndash; JP 1D80 oder aus JP Z F00 &ndash; JP Z 1F00.
+</p>
+<p>
+Wird eine
+Adresse mit einem Wert geladen, so ist auch meist eine Änderung
+notwendig. In unserem Beispiel:
+</p>
+<p>
+1C52&nbsp;: 0F03 liegt innerhalb des Programms und wird geändert (32 03 1F).
+</p>
+<p>
+1C57&nbsp;: 0F07 liegt ebenfalls innerhalb. Die Änderung lautet 32 07 1F.
+</p>
+<p>
+Ebenso verfährt man bei 1C5D. Bei 1C63 liegt wahrscheinlich ein
+Zahlenwert vor, der nicht geändert werden darf, denn 000C liegt nicht
+innerhalb des Programms und auch nicht im Arbeitsspeicher des Monitors
+(hier könnten z.B. die Adressen für ARG1 bis ARG3 mit Werten geladen
+werden).
+</p>
+<p>
+1C60&nbsp;: 0BCA liegt ebenfalls außerhalb des Programms. Es ist eine
+Adresse aus dem Bildwiederholspeicher (Bildschirm 080A bis 0BF9) und
+wird natürlich beibehalten.
+</p>
+<p>
+Man sieht, daß etwas Überlegung dazugehört, um festzustellen, wann es
+sich um Adressen aus dem Programmbereich handelt, die umgeändert werden
+müssen, und wann man es mit festen Werten, Adressen aus dem Monitor
+etc. zu tun hat. Dies ist auch der Grund, warum man kein Programm
+schreiben kann, das Ihnen die lästige Arbeit des Anpassens erspart. Der
+Rechner kann ein Problem eben nicht als Ganzes überblicken.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Das größte Problem dürfte dabei wohl das Erkennen von Tabellen
+innerhalb eines Programms sein, das heißt von Werten, die beim
+Verschieben nicht geändert werden dürfen.
+</p>
+<p>
+In unserem nächsten Beispiel
+ist ab 1F5F der Text für einen Programmtitel abgespeichert. (in 1C5D
+wird darauf hingewiesen). Solche Tabellen erkennt man durch das
+dauernde Erscheinen von ASCII-Codes oder die Folge von Befehlen, die
+einfach keinen Sinn ergeben. So z.B. LD H,D &ndash; LD H,A; allein schon das
+Aufeinandertreffen dieser Codes, von denen der zweite die
+Funktion des ersten aufhebt, macht deutlich,
+daß es sich hier wohl um Werte einer Tabelle
+handelt. (Programmfehler sollten wir einmal
+ausschließen).
+</p>
+<p>
+Vergleichen Sie diese Ausführungen mit den Artikeln im
+<a href="../../../../81/06/12/text/#article1">Journal 6/81</a>
+über den &quot;Relocator&quot;
+und versuchen Sie einmal, ein Programm anhand
+obiger Tips zu verschieben.
+</p>
+<p>
+Nochmals zusammenfassend eine mögliche Verfahrensweise
+</p>
+<p>
+1. Programmstart und Speicherbereich auf ähnliche
+Adresse verschieben (z.B. durch Addition
+von 1000)
+</p>
+<p>
+2. CALL- und JUMP-Aufrufe untersuchen; wenn
+innerhalb des Programms, dann verändern.
+</p>
+<p>
+3. LOAD-Befehle untersuchen; wenn wahrscheinlich
+Adressen des Programms geladen werden,
+dann verändern.
+</p>
+<p>
+4. Bei obigen 3 Punkten darauf achten, daß
+keine Tabelle vorliegt.
+</p>
+<p>
+Bis zum Erscheinen des nächsten Heftes sind
+Sie sicher schon ganz firm in der Anwendung
+dieser Kniffe. Dann soll es direkt an die
+Anpassung der Programme an die verschiedenen
+Betriebssysteme gehen.
+</p>
+<h1 id="article1">
+Funktionstaste-<br>
+Software Repeat
+</h1>
+<h3>
+von Gustav W. Delius
+</h3>
+<p>
+Der Sinn dieses kleinen Programms ist es, dem Nascom-Benutzer möglichst
+viel Tipparbeit zu ersparen. Es bedient sich dazu zweier Methoden:
+</p>
+<p>
+1. Funktionstaste &ndash; Wenn GRAPH 1 getippt wird, erscheint nicht das
+übliche Grafikzeichen, sondern eine vorher festgelegte Zeichenkette.
+Diese Zeichenkette wird vorn Nascom so behandelt, als würden die
+Zeichen einzeln auf der Tastatur gedrückt. Da die Zeichenkette jedes
+beliebiege Zeichen enthalten darf, also auch
+</p>
+
+<?php columnEnd(2); ?>

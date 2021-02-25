@@ -1,0 +1,82 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+mehrere Spieler gleichzeitig am Computer spielen können, und auch der
+Spielstand notiert wird. Anbei das komplette Listing. (Haben wir aus
+Platzgründen nicht abgedruckt. Das Programm kann in einem
+&quot;<a href="../../../../81/08/02/text/#article2">Rundlauf</a>&quot;
+auf Cassette angefordert werden.-Red.)
+</p>
+<p>
+Ich möchte gleich die Gelegenheit nutzen zur
+<a href="../../../../81/12/01/text/#head">Dezember-Ausgabe</a> zu
+gratulieren. Wirklich gut gemacht. Im
+<a href="../../../../81/12/50/text/#article1">Programm &quot;Quest&quot;</a> habe
+ich einen Fehler entdeckt, der wahrscheinlich keinem auffallen wird:
+wenn man nach der ersten Schatzsuche noch nicht genug hat (so wie ich)
+und auf die Frage hin noch eine Schatzsuche fordert (Zeile 1180), hängt
+sich das Programm mit einem &quot;RG-ERROR&quot; auf. Die Zeile 1190
+springt nämlich mit &quot;GOTO&quot; in eine Subroutine. Am besten
+statt der Zeilen 1170 bis 1190 ein Delay einbauen.
+</p>
+<p>
+Christian Peter, Wien.
+</p>
+<br>
+<?php hline("60%", "2"); ?>
+<h1 id="article1">
+Sortieren in Basic
+</h1>
+<h3>
+Teil 6 von Wolfgang Mayer-Gürr
+</h3>
+<p>
+Die bisher vorgestellten Sortieralgorithmen eignen sich nur für
+kleinere Felder, die Rechenzeit ist sonst nicht mehr akzeptabel.
+Schneller geht es mit dem Heap-Sort, das von Williams und Floyd
+entwickelt wurde.
+</p>
+<p>
+Zum Verständnis ist die Kenntnis eines binären Baumes
+sehr hilfreich. üblich ist die Darstellung einer Folge aus Buchstaben
+in einer von links nach rechts verlaufenden Reihe. Andere Formen wären
+von rechts nach links (arabisch) oder von oben nach unten (chinesisch).
+Bei einem binären Baum ordnet man die einzelnen Bestandteile in
+mehreren Ebenen. Jede Ebene enthält die doppelte Anzahl an Buchstaben
+wie die über ihr liegende. Lediglich in der untersten Ebene kann dies
+meist nicht aufgehen.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Jedem Element werden nun 2 (daher binär) unter ihm liegende Elemente
+zugeordnet. Dreht man Abb.1 auf den Kopf, erhält man das Bild eines
+Baumes. Behält man die laufende Numerierung des Feldes bei, gehören zu
+einem Feldinhalt i (&quot;Vater&quot;) die Felder 2i und 2i + 1
+(&quot;Söhne&quot;).
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-2.jpeg"); ?>
+<p>
+Ist der Inhalt von i größer oder gleich dem Inhalt von 2i und auch 2i +
+1, spricht man von einem Heap. Auch ein &quot;kinderloser Vater&quot;
+ist dann ein Heap.
+</p>
+<p>
+Im ersten Teil des Programms (Zeile 280 - 320 mit Unterprogramm 410 -
+520) wird nun der Heap angelegt. Element N/2 ist von rückwärts gesehen
+der erste &quot;Vater&quot; mit einem &quot;Sohn&quot;. Im
+Unterprogramm wird dem &quot;Vater&quot; der größte Wert zugewiesen.
+Nach Abschluß dieses Programmteils befindet sich der größte Wert in der
+Ebene E1 (siehe Abb. 3).
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-3.jpeg"); ?>
+<p>
+Im 2.Teil wird nun der 1.Wert an das Ende gelegt und dann nicht mehr
+beachtet. Der Heap wird nun für die restlichen Felder wieder neu
+angelegt, der größte Wert an die vorletzte Stelle gebracht und so fort.
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-4.jpeg"); ?>
+
+<?php columnEnd(2); ?>

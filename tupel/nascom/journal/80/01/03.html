@@ -1,0 +1,112 @@
+<?php columnStart(2, 2); ?>
+
+<p>
+eine Zeile wird von links nach rechts gedruckt und die
+darauffolgende rückwärts von rechts nach links. Es wird mit
+einem Endlos-Farbband gedruckt, maximal 80 Zeichen pro Zeile.
+</p>
+
+<h4>
+<u>BETRIEB:</u>
+</h4>
+
+<ul class="dashed-indent">
+	<li> Der Drucker wird von einer eigenen <?php externalLink("Z80 CPU","",""); ?> gesteuert.</li>
+	<li> Der Zeichensatz und die Software
+		sind in einem 2K ROM enthalten.Dieses ROM ist mit einen
+		<?php externalLink("2716"); ?>
+		EPROM Pin kompatibel, sodaß der Zeichensatz einfach
+		ausgewechselt werden kann.</li>
+	<li> Der Drucker verfügt über einen internen
+		Zwi&shy;schen&shy;spei&shy;cher von 945 Zeichen.  Sobald 935 Zeichen
+		ein&shy;ge&shy;schrie&shy;ben sind, wird dies mit dem &quot;busy&quot;-Signal
+		angezeigt, um Pufferüberlauf zu vermeiden. Das &quot;busy&quot;-Signal
+		wird wieder abgeschaltet, sobald hinreichend viel
+		Pufferspeicher zur Verfügung steht.</li>
+	<li> Bei Betrieb mit NASSYS und NASBUG&nbsp;T4 wird nach jedem CR-Zeichen
+		(Wagenrücklauf) ein Zeilenvorschub erzeugt. Verschiedene
+		Betriebsarten des Druckers können über Drahtbrücken
+		eingestellt werden. So wird der IMP Drucker auch für
+		andere Microcomputer Systeme verwendbar.</li>
+	<li> Kommentiertes Assembler Listing der Steuersoftware und
+		Schaltpläne sind im Betriebshandbuch enthalten.</li>
+</ul>
+
+<h4>
+<u>DATENÜBERTRAGUNG ZUM DRUCKER:</u>
+</h4>
+
+<p>
+Der IMP Drucker kann einfach auf jede der Standard-Baud&shy;raten
+zwischen 110 und 9600 mit einer Drahtbrücke eingestellt werden:
+</p>
+
+<p>
+110, 150, 200, 600, 1200, 1800, 2400, 5600, 4800, 7200, 9600.
+</p>
+<p>
+Folgende Optionen können gewählt werden:
+</p>
+
+<ul class="dashed-indent">
+	<li> Einstellung der Wortbreite: 7 od. 8 Bit</li>
+	<li> Ein oder zwei Stop Bits</li>
+	<li> Paritätsprüfung ein/aus</li>
+	<li> Wenn Paritätsprüfung eingeschaltet:<br>
+		gerade Parität, ungerade Parität.</li>
+</ul>
+
+<?php columnChange(2); ?>
+
+<p>
+An einem TTL-Ausgang liegt ein Taktsignal mit einer Fre&shy;quenz
+an, die der 16-fachen Baudrate entspricht. Dieses Signal kann dem
+EXT CLK Eingang eines NASCOM-1 oder NASCOM-2 zugeführt werden.
+Damit wird ein zusätzlicher Baudratengenerator überflüssig.
+</p>
+<p>
+Der IMP Drucker wird NASCOM-1 und NASCOM-2 kompatibel
+geliefert und ist bei der Auslieferung auf 500 Baud eingestellt.
+Er wird einfach über vier Leitungen an das Serielle Interface
+des NASCOM angeschlossen.
+</p>
+<p>
+Fehler in der Datenübertragung werden
+durch ein schraffiertes Quadrat (&#9640;) angezeigt und die rote
+Error-LED (in der Resettaste) leuchtet auf.
+</p>
+
+<h4>
+<u>ERFAHRUNGEN WÄHREND DES BETRIEBS:</u>
+</h4>
+
+<p>
+Bei Inbetriebnahme des Druckers zeigt es sich, daß er
+problemlos an den NASCOM angeschlossen werden kann. Die
+Papiereinfädelung ist einfach, hätte aber eleganter gelöst
+werden können, weil man das randgelochte Papier von der
+Bodenplatte aus einfädeln muß.
+</p>
+<p>
+Leider läßt sich die Gummiandruckwalze bzw. der Traktorfeed
+nicht manuell betätigen; es ist daher nicht möglich, das Pa&shy;pier
+von Hand vor oder zurück zu transportieren. Es ist nur eine
+LINEFEED Taste vorhanden, mit der das Papier vorwärts
+transportiert wird.
+</p>
+<p>
+Der Drucker liefert ein gut lesbares, sauberes Druckbild. Die
+Druckzeilen sind manchmal etwas verschoben, sowohl im Abstand
+voneinander, als auch in horizontaler Sichtung gegeneinander, was
+aber normalerweise im Druckbild nicht stört.
+</p>
+<p>
+Sporadisch auftretende Übertragungsfehler sind meist auf Störungen
+in der Verbindungsleitung zurückzuführen. Sie sind leicht mit
+einem zusätzlichen Kondensator zu beseitigen.
+</p>
+
+<p>&nbsp; &nbsp; &nbsp; Preis: 1790.&ndash; incl. MWSt.
+</p>
+
+<?php columnEnd(2); ?>

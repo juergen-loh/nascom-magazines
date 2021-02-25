@@ -1,0 +1,69 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für Einsteiger
+</h1>
+<h3>
+von Peter Brendel
+</h3>
+<p>
+Als Fortsetzung zur letzten
+&quot;<a href="../../../06/20/text/#article1">Seite für Einsteiger</a>&quot;
+nun ein
+Programm von Peter Brendel, das Ihnen die Möglichkeit gibt, die Poke
+Befehle nochmals praktisch zu erproben. Er hat es speziell Hans-Dieter
+Schneider gewidmet und dazu noch einen
+<a href="../../38/text/#article1">Bildschirm-Atlas</a>
+des NASCOM
+beigelegt, um Benutzern von anderen Systemen den NASCOM
+Bildschirm-Aufbau durchsichtiger zu machen. (NASCOM-Benutzer werden
+sicher auch dankbar für diese Programmierhilfe sein).
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-37-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-37-2.jpeg"); ?>
+</p>
+<p>
+Bildschirm-Atlas auf der
+<a href="../../38/text/#article1">nächsten Seite</a>!
+</p>
+
+<br>
+<?php hline("100%", "2"); ?>
+<br>
+
+<p>
+Im <a href="../../../02/23/text/#article1">Journal 2-82</a>
+wurden die Ladebefehle erklärt. Hier nun endlich die
+Fortsetzung, um dieses Thema abzuschließen.
+</p>
+<p>
+In der ersten Folge wurden
+die Register I und R ausgespart. Das I Register ist ein &quot;Interrupt
+(=Unterbrechung) Adressen Register&quot;. Es enthält das höherwertige
+Byte einer Adresse, die nach einem (Hardware-) Interrupt angesprungen
+wird, Dies ist eine besondere Anwendung, die auch in einer gesonderten
+Fortsetzung behandelt werden sollte. (Wäre doch etwas für Sie, Herr
+Fößel!?)
+</p>
+<p>
+Das R (Refresh=Auffrischen)- Register wird von der CPU verwendet, um
+die Speicherinhalte der dynamischen RAM- Bausteine vor dem
+&quot;Verschwinden&quot; zu bewahren. Normalerweise müssen wir uns beim
+Programmieren überhaupt nicht damit beschäftigen, denn die CPU macht
+das automatisch bei jedem Einholen eines Befehls.
+</p>
+<p>
+Eine Möglichkeit, das R-Register auch in einem Programm zu benutzen,
+ist das Erzeugen einer Zufallszahl zwischen 0 und 255 (0 und FF hex),
+Der Befehl ED 4F (=LD A, R) lädt dann eine zufällige Zahl in den Akku,
+Allerdings wird die Zahl nach einer bestimmten Anzahl von
+Maschinenzyklen wiederholt; bei den meisten Anwendungen (z.B. Spielen)
+genügt aber diese &quot;Zufälligkeit&quot;. Nun aber zurück zu unseren
+(inzwischen hoffentlich) vertrauten Registerpaaren AF, HL
+</p>
+
+<?php columnEnd(2); ?>

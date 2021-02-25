@@ -1,0 +1,136 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+aber für Floppy-Neulinge etwas zu hoch sein (ich konnte die Lücken auch
+nur durch einige Telefongespräche schließen). Deshalb möchte ich hier
+eine detaillierte Beschreibung anhand des Programmablaufs geben, wie
+ich es in der letzten Ausgabe mit den Testroutinen gemacht habe. Den
+<a href="../../../09/06/text/#article1">Artikel</a>
+haben allerdings einige Leser nicht aufmerksam verfolgt, sonst
+hätte sich nicht das Gerücht halten können, der Controller liefe nicht
+mit
+<?php externalLink("CP/M","",""); ?>,
+weil auf den Speicher unterhalb 100H durch den NMI
+zugegriffen würde. Deshalb nochmals: der Bereich bei 66H wird vor den
+Floppy-Zugriffen gerettet und danach wieder restauriert. Im Prinzip
+wird der genannte Speicherbereich nicht angegriffen.
+</p>
+<p>
+Nun aber zur Programmbeschreibung.
+</p>
+<p>
+Das EMDOS wird bei A100H gestartet. Nun macht es
+zunächst eine Initialisierung der Controllerkarte und versetzt sich
+selbst in den Warmstart-Modus, d.h. bei erneuten Starts mit EA100 wird
+die Initialisierung nicht mehr durchgeführt. Beim Auftreten
+irgendwelcher Fehler könnte es aber von Vorteil sein, das EMDOS erneut
+kaltzustarten. Zu diesem Zweck können Sie die Speicherzelle A187H mit
+B7 laden, und ein Kaltstart wird wieder möglich. Wenn wir das DOS in
+Zukunft mit einem geeigneten Urlader von der Diskette
+&quot;booten&quot;, wird diese Manipulation nicht mehr nötig sein.
+(Mehr dazu im
+<a href="../../../12/15/text/#article1">nächsten Heft</a>).
+</p>
+<p>
+Im folgenden nochmals die möglichen EMDOS-Anweisungen mit gekürzten
+Erklärungen. Ausführlichere Beschreibungen können Sie in
+<a href="../../../07/41/text/#article1">Heft 7/8 Seite 41</a> nachlesen.
+</p>
+
+<h4>
+EMDOS Anweisungen
+</h4>
+<table>
+<tr><td>L</td><td>Filename</td><td colspan=2>[neue Anfangsadresse]</td></tr>
+<tr><td>S</td><td>Filename</td><td>Anfang Ende [Start&nbsp;</td><td>0 nur laden</td></tr>
+<tr><td colspan=3></td><td>1 laden und RET.</td></tr>
+<tr><td colspan=3></td><td>2 starten</td></tr>
+<tr><td colspan=3></td><td>3 Call von EMDOS]</td></tr>
+<tr><td>S</td><td>Filename&nbsp;</td><td colspan=2>(abspeichern mit gleichen Param.)</td></tr>
+<tr><td>B</td><td>Filename</td><td colspan=2>(abspeichern des BASIC Programms)</td></tr>
+<tr><td colspan=2>D</td><td colspan=2>(Inhaltsverzeichnis)</td></tr>
+<tr><td>E</td><td>Filename</td><td colspan=2>(löschen)</td></tr>
+<tr><td>R</td><td>Filename</td><td colspan=2>Anfang Länge</td></tr>
+<tr><td>W&nbsp;</td><td>Filename</td><td colspan=2>Anfang Länge</td></tr>
+<tr><td colspan=2>M</td><td colspan=2>(NASSYS oder BASIC)</td></tr>
+<tr><td colspan=2>Filename</td><td colspan=2>(laden und starten)</td></tr>
+</table>
+
+<p>
+Durch die Anpassung haben sich noch zusätzliche Fehlermeldungen
+ergeben. Deshalb drucken wir hier nochmals den gesamten Katalog ab.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<?php nowrapStart(); ?>
+<h4>
+Fehlermeldungen des DOS:
+</h4>
+<p>
+Das DOS meldet die Fehler in Form einer Fehlernummer:
+</p>
+<p>
+10 &ndash; Keine Diskette eingelegt<br>
+11 &ndash; Disketten Lesefehler<br>
+15 &ndash; Diskette ist schreibgeschützt<br>
+16 &ndash; Disketten Schreibfehler<br>
+17 &ndash; Falsche Laufwerksnummer<br>
+1F &ndash; Kein Laufwerk angeschlossen<br>
+20 &ndash; File nicht gefunden<br>
+21 &ndash; Diskette voll<br>
+22 &ndash; Fileende erreicht<br>
+23 &ndash; Falscher Filename<br>
+40 &ndash; Falscher Filetyp bei L (mit W abgespeichert)<br>
+41 &ndash; Falsche Anweisung<br>
+42 &ndash; Falscher Parameter bei Load<br>
+43 &ndash; Falscher Parameter bei Save<br>
+44 &ndash; Falscher Parameter bei Read/Write
+</p>
+<?php nowrapEnd(); ?>
+
+<p>
+Die folgenden Ausführungen laufen parallel zum Asseblerlisting. Ein
+Vergleich dürfte Ihnen helfen, die Funktionen zu durchschauen.
+</p>
+<p>
+EMDOS ruft
+<a href="../../12/text/#article1">PHEAS</a>
+(die Schreib/Leseroutinen) auf und enthält in A die Funktion.
+</p>
+<p>
+00 bedeutet dabei &quot;Initiieren&quot;. Den Programmteil INIT kennen
+Sie schon aus der
+<a href="../../../09/11/text/#article1">letzten Ausgabe</a>.
+</p>
+<p>
+01 sollte das Laufwerk abstellen, wird aber nicht benutzt, da unsere
+Controllerkarte das hardwaremäßig selbst besorgt, wenn nicht mehr auf
+die Karte zugegriffen wird.
+</p>
+<p>
+02 selektiert das Laufwerk. Im Register C ist die Laufwerksnummer
+enthalten. Nach dieser Nummer wird die entsprechende Routine
+angesprungen. Hier wird der PIOA das Steuerwort übergeben (siehe
+Tabelle <a href="../../../09/08/text/#article1">Journal 9/83 Seite 8</a>)
+und HL auf die Tabelle des Laufwerks
+gerichtet (DSB). In dieser Tabelle findet EMDOS die Anzahl der
+Sektoren, die für das Betriebssystem reserviert sind (bei meinem
+augenblicklichen Format 3 Spuren mit je 10 Sektoren =30), die Anzahl
+der Sektoren, die auf Spur 3 für das Inhaltsverzeichnis vorgesehen sind
+(hier wurden 8 Sektoren angenommen) und die Anzahl der
+&quot;Gruppen&quot;. Das sind jeweils 4 Sektoren (also zusammen 1
+KByte). Da wir mit unserem Format im Augenblick 92K speichern können,
+entspricht das 92 Gruppen.
+</p>
+<p>
+Entsprechend PINIT und PSEL werden durch 03 und 04 im Akku die Lese-
+bzw. Schreibroutinen aufgerufen.
+</p>
+<p>
+Die Routine TSTHOM testet, woher eine Fehlermeldung kommt, (gesetztes
+Carry-Flag weist immer auf einen Fehler hin. Deshalb auch immer das
+SCF/Set Carry Flag bei den
+</p>
+
+<?php columnEnd(2); ?>

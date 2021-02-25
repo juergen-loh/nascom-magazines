@@ -1,0 +1,99 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+FORTH für den NASCOM
+</h1>
+<h3>
+Teil 2 &ndash; von Günter Kreidl
+</h3>
+<p>
+Im <a href="../../../08/03/text/#article1">letzten Heft</a>
+wurde der prinzipielle Aufbau einer
+Threaded-Code-Sprache beschrieben. In diesem Heft folgt nun das
+Assembler-Listing einer 1. Version, die nach der Anleitung von Richard
+Fritzson (&quot;Write Your Own FORTH Interpreter&quot;,
+<?php externalLink("Kilobaud Microcomputing Magazine (February 1981)", "Microcomputing, Februar 81", ""); ?>;
+&quot;Write Your Own Pseudo-FORTH Compiler&quot;,
+<?php externalLink("Kilobaud Microcomputing Magazine (March 1981)", "ebenda, März 81", ""); ?>)
+geschrieben wurde. Wie der Titel des zweiten Aufsatzes schon
+sagt, hat sich &quot;der Sohn vom Fritz&quot; nicht streng an die
+Terminologie des Standard-FORTH gehalten, falls es so etwas im strengen
+Sinne überhaupt gibt. Erst nach der Fertigstellung dieser Version kam
+mir ein Verzeichnis des Standard-FORTH der FORTH Interest Group in die
+Hände &ndash; zu spät, um noch Anpassungen vorzunehmen. Programmaufbau,
+Threaded-Code-Routinen und Konstruktion des &quot;Dictionary&quot;
+habe ich von Fritzson übernommen. Die Maschinencode-Routinen wurden
+vom
+<?php externalLink("8080","",""); ?>-Assembler-Code
+in
+<?php externalLink("Z80","Z-80",""); ?>-Code
+umgeschrieben und teilweise mit
+den effektiveren Z-80-Befehlen verbessert. Die Hauptschwächen der
+Vorlage (nur positive Zahlen, keine Überlaufkontrolle bei den
+mathematischen Funktionen, keine Syntax-Kontrolle) wurden noch nicht
+verbessert. Ich habe jedoch eine Reihe von logischmathematischen
+Operationen hinzugefügt und eine Software-Schnittstelle zum
+Betriebs-System, die den Einbau fast aller Unterprogramme des Monitors in
+FORTH-Programme ermöglicht. Diese Routine ist allerdings spezifisch auf
+NAS-SYS zugeschnitten und muß von T2/T4-Benutzern neu geschrieben
+werden. Ansonsten ist das Programm auch mit T2/T4 lauffähig, wenn man
+den Aufruf der Ein- und Ausgaberoutinen ändert (es wurde Platz für
+CALL-Befehle gelassen) und die Steuerzeichen für den Bildschirm
+austauscht. Geändert habe ich auch die Speicheraufteilung. Stacks und
+Puffer wurden aus dem Programmbereich entfernt. Sie belegen den Bereich
+von E00 bis 1000 Hex. Das Programm belegt beim erstmaligen Start den
+Speicher von 1000 bis 1871 Hex. Beim Aufruf des Interpreters wird dann
+das &quot;Dictionary&quot; an die Obergrenze des Speichers (im Listing
+2000 Hex) verschoben. Das ursprüngliche &quot;Dictionary&quot; und die
+Verschiebungsroutine werden dann von dem neu compilierten Code
+überschrieben, so daß also der Code von unten
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+nach oben und das &quot;Dictionary&quot; von oben nach unten
+aufeinander zuwachsen. Ein gegenseitiges Überschreiben wird dabei
+verhindert (DICTIONARY FULL). Die Initialisierungsroutine wurde ganz
+neu geschrieben, da die alte keinen Warmstart ermöglichte. Beim ersten
+Start wird die Verschiebungsroutine aufgerufen, bei jedem neuen Start
+(ebenfalls mit E 1000) findet man das System in dem Zustand vor, in dem
+man es verlassen hat. Will man ein durch neu compilierte Befehle
+erweitertes System auf Cassette speichern, muß man den Bereich von 1000
+bis 2000 abspeichern. Man kann aber auch eine Funktion definieren, die
+den Programmtext auf Cassette speichert. (Mehr darüber im
+<a href="../../../10/02/text/#article3">nächsten Heft</a>)
+Überhaupt lassen sich die meisten der gegenüber dem
+Standard-FORTH fehlenden Operationen mit dem System selbst relativ
+leicht compilieren. Die oben beschriebenen Schwächen hingegen lassen
+sich nur durch bessere Maschinenprogramme beheben. Ich hoffe hierbei
+auf die rege Mitarbeit der Leser des Journals.
+</p>
+<h4>
+Zum Assemblerlisting
+</h4>
+<p>
+Da ich bei meinem NASCOM nur 5 KB Speicher für den Quelltext zur
+Verfügung habe, mußte ich das Programm in Blöcken assemblieren. Deshalb
+wurden alle nicht lokalen Marken durch EQU-Definitionen im Block 0
+ersetzt. Damit das Programm trotzdem leicht zu ändern ist, sind die
+Adressen nicht absolut sondern relativ definiert, jeweils durch die
+Länge der vorangehenden Routine. Aus dem gleichen Grund habe ich auf
+alle Kommentare verzichtet, nur der Name der Routine wird jeweils als
+Kommentar angehängt. Es folgt darum unten eine Kurzbeschreibung aller
+Routinen, die von FORTH aus aufgerufen werden können. Die nicht im
+&quot;Dictionary&quot; enthaltenen Unterprogramme werden im
+<a href="../../../10/02/text/#article3">nächsten Heft</a>
+erläutert. In der Beschreibung bedeutet &quot;T&quot; den obersten
+Wert auf dem Stack, &quot;T-1&quot; den zweitobersten etc.
+&quot;X&quot; steht für das brit. Pfundzeichen, &sect; für das
+Dollarzeichen.
+</p>
+<p>
+An das Assemblerlisting schließt sich noch eine Demonstration des
+Programms an. Mit der U-Option lief die Schreibmaschine mit, als das
+Programm aufgerufen wurde. Alle Eingaben und alle Antworten des
+Interpreters bis zum Rücksprung ins Betriebssystem wurden so
+dokumentiert. Ich hoffe, daß dies eine Hilfe bei der Inbetriebnahme des
+Programms darstellt.
+</p>
+
+<?php columnEnd(2); ?>

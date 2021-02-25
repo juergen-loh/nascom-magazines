@@ -1,0 +1,103 @@
+<?php columnStartJustify(2); ?>
+
+<h1 id="article1">
+Leserbriefe
+</h1>
+<p>
+Nachdem ich in der Zwischenzeit die
+<a href="../../../../83/07/30/text/#article1">FDC-Karte</a>
+zwar aufgebaut habe, aber mangels
+<?php externalLink("ECB","",""); ?>-Anschluß
+an meinen NASCOM2 sowie noch fehlender Floppy noch
+nicht betreiben kann, habe ich mich auf die Leiterbahnüberprüfung der
+Karte konzentriert. Die Ergebnisse habe ich auf beiliegendem
+Bestückungsplan eingetragen, richtig scheint mir dabei folgendes:
+</p>
+<p>
+1. Sowohl im Layout als auch auf der Karte (Bestückungsseite) ist die
+unter IC13 zum Pin10 führende Massebahn am Pin19 mit diesem verbunden,
+wodurch Output2 des Proms wirkungslos wird (IC13 ständig aktiv).
+(macht nichts. &nbsp; Red.)
+</p>
+<p>
+2. Im Schaltplan sind Pin6 und 14 des LS 123 mit Masse verbunden, was
+gemäß IC-Handbuch zwar nicht unbedingt erforderlich ist, die Stabilität
+der Monoflopzeiten aber erhöht; im Layout sind die Masseverbindungen
+aber nicht enthalten.
+</p>
+<p>
+3. Die Verbindung von A0 und A1 zu Pin5 bzw 6 des
+<?php externalLink("WD1793"); ?>
+und zur PIO sind im Schaltplan vertauscht.
+</p>
+<p>
+Rolf Meyer&nbsp;;____ Siegburg
+</p>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Ziffern in Klammern beziehen sich auf
+<a href="../../../../83/09/14/text/#article1">Journal 9/83 Seite 14</a>
+</p>
+<p>
+Buchstaben in Klammern entsprechend
+<a href="../../../../83/11/09/text/#article1">Journal 10-11/83 Seite 9</a>
+(Massnahmen mit laufenden Buchstaben versehen).
+</p>
+
+<br>
+
+<p>
+Inzwischen läuft bei mir die
+<a href="../../../../83/07/30/text/#article1">Floppy-Karte</a>
+zuverlässig mit
+Double-Density bei 4&nbsp;MHz. Ich verwende 2 doppelseitige BASF-Laufwerke
+6108. In diesem Zusammenhang interessiert mich, ob Ihrerseits daran
+gedacht wird, EMDOS für doppelseitige Laufwerke zu erweitern. Der
+Floppy-Controller ist ja hardwaremäßig in der Lage.
+</p>
+<p>
+Seit einigen Jahren betreibe ich CLD-DOS und habe inzwischen
+umfangreiche, z.T. professioßelle Software laufen. Allein die Software,
+die Herr Mayer-Gürr in seiner Tauschaktion bietet, lohnt eine Anpassung
+von CLDDOS an den Journal-Controller.
+</p>
+<p>
+Mit
+<?php externalLink("CP/M"); ?>
+und CLD-DOS stehen dem
+Journalleser Softwarequellen zur Verfügung, deren Umfang und
+Leistungsfähigkeit sich Cassettenbenutzer bewußt machen sollten. Aus
+meiner unmaßgeblichen Sicht dürfte es dann keinen einzigen
+Cassettenanwender mehr geben.
+</p>
+<p>
+Reno Hinrichs, 6500 Mainz
+</p>
+
+<br>
+
+<p>
+Antwort der Redaktion:
+</p>
+<p>
+Die einfachste Lösung, doppelseitige Laufwerke anzusprechen, ist wohl
+die, jede Laufwerkseite als eigenes Laufwerk zu definieren. Dazu muß
+EMDOS bzw. PHEAS nicht geändert werden, es ist nur bei einem Laufwerk
+über die PIO die Seitenumschaltung vorzunehmen.
+</p>
+<p>
+Falls jemand einen sehr großen Vorteil darin sieht, ein Doppellaufwerk
+mit 80 Spuren zu definieren, so müßte allerdings eine Änderung
+vorgenommen werden. Wer hat Interesse, wer macht&rsquo;s?
+</p>
+<p>
+Für die Anpassung des CLD-DOS haben wir sogar bereits jemanden
+gefunden. Da aber bisher nur zwei Leser am Kauf einer angepaßten
+Version über LAMPSON und ZERBE interessiert sind, dürfen wir die
+Benutzung von CLD-DOS wohl langsam vergessen. Es wäre schön gewesen!
+</p>
+
+<?php columnEnd(2); ?>

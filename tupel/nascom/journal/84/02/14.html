@@ -1,0 +1,79 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Demonstration ausprobiert werden:
+</p>
+
+<table style="width: 100%">
+<tr><td>11-17H</td><td>(ungerade)</td><td>Basic Commands</td></tr>
+<tr><td>10-16H</td><td>(gerade)</td><td>DELTA nur auf einer Achse</td></tr>
+<tr><td>18-1FH</td><td></td><td>8 Richtungen</td></tr>
+<tr><td>80-FFH</td><td></td><td>0 bis 3 Einzelschritte</td></tr>
+</table>
+<br>
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+Die verbleibenden Werte 20 bis 7FH werden zum schreiben von
+</p>
+<h4>
+Buchstaben und Symbole(n)
+</h4>
+<p>
+verwendet und entsprechen dem normalen ASCII- Code.
+</p>
+<p>
+Bit2 high im CNTRL2 Register stellt die Buchstaben schräg dar; Bit3
+high schreibt auf der Senkrechten.
+</p>
+<p>
+Die Größe der Buchstaben wird im CSIZE Register 93H vorgegeben, 01H ist
+die kleinste, 00 die größte Ausdehnung in einer Richtung.
+</p>
+<p>
+Nach dem Schreiben eines Buchstabens zeigt das X-Register auf zwei
+Einheiten rechts neben dem Buchstaben, sodaß ohne erneute
+</p>
+
+<?php columnChangeJustify(2, ""); ?>
+
+<?php boxStart("LR"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php boxStart("R"); ?>
+<p>
+<br>
+Programmierung weitergeschrieben werden kann.
+</p>
+<p>
+Der Code 0AH und 0BH schreibt einen Block
+von 5x8 bzw 4x4, ebenfalls abhängig von
+CSIZE. Mit CNTRL1 im ERASE-Modus können
+damit leicht Buchstaben gelöscht werden.
+</p>
+<p>
+Dies sollte genügen, um einmal erste Programmierversuche mit dem GDP zu
+machen. Die Praxis wird sicher Fragen aufwerfen, die wir hoffentlich im
+<a href="../../../03/49/text/#article1">nächsten Heft</a>
+klären können.
+</p>
+<p>
+Projekte, die mit der Grafik vielleicht
+gemeinsam gelöst werden könnten, gibt es einige. So z.B. eine
+Schachgrafik (für unser Sargon) oder ein Programm zum Plotten von
+Platinen-Layouts. Letzteres wäre besonders für uns Dauerlöter eine sehr
+Wünschenswerte Sache.
+<br>
+<br>
+</p>
+<?php boxEnd(); ?>
+
+<?php boxStart("LR"); ?>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-14-3.jpeg"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-14-4.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

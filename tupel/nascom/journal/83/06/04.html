@@ -1,0 +1,128 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Euro-NASCOM
+</h1>
+<h4>
+von Günter Kreidl,<br>
+Günter Böhm<br>
+und Karl Schulmeister
+</h4>
+<h3>
+ECB- und 80- Bus
+</h3>
+<p>
+Viele NASCOM-Benutzer haben ihren NASCOM auf den
+<?php externalLink("ECB","",""); ?>-Bus
+umgerüstet.
+Meist beschränkte sich dies jedoch auf eine Handverdrahtung vom
+Grundsystem bzw. Buffer Board auf eine Buskarte für den ECB-Bus oder
+auf eine selbstgestrickte Pufferkarte, die den NASCOM-1 mit dem ECB-Bus
+verband und zugleich die für eine vollständige Dekodierung notwendigen
+Signale /MEMEXT und /IOEXT erzeugte. Dazu sind einige interessante
+Beiträge im
+<a href="../../../../81/04/00/text/#article1">NASCOM-Journal 4/5-81</a> erschienen.
+</p>
+<p>
+Einige Benutzer haben auch die einzelnen Baugruppen des NASCOM nach und
+nach auf (zumeist handverdrahtete) Europakarten übertragen, bis sie
+zuletzt ein von der NASCOM-Grundkarte völlig unabhängiges System
+übrigbehielten, das aber vollständig Software-kompatibel blieb. Karl
+Schulmeister beschreibt in diesem und den folgenden Ausgaben des
+80-BUS-Journals einen vollständigen Satz NASCOM-kompatibler
+Europakarten mit Schaltung und Platinenlayout. Bei genügender Nachfrage
+können wir von allen Baugruppen doppelseitige durchkontaktierte
+Platinen herstellen lassen.
+</p>
+<p>
+Günter Böhm beschreibt die Kombination dieser bzw. entsprechender
+Baugruppen von List &amp; Niemann mit dem
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computer.
+Diese Lösung macht vielleicht auch den NASCOM für die Benutzer eines solchen
+Systems interessant.
+</p>
+<p>
+Günter Kreidl beschreibt schließlich eine andere Lösung, bei der das
+NASCOM-1-Grundsystem als periphere Karte eines ECB-Bus-Systems
+Verwendung findet. Die Hardware ist in allen Fällen so ausgelegt, daß
+sowohl NAS-SYS und die NASCOM-Software als auch ein Boot-Eprom und &ndash;
+bei geeignetem BIOS &ndash; CP/M-kompatible Software eingesetzt werden können.
+</p>
+<p>
+Wer aber ein voll ausgebautes 80-Bus-System besitzt, dem wird durch die
+an anderer Stelle beschriebene Adapterkarte der Einsatz von ECB-Karten
+in seinem System ermöglicht. Auch die beschriebene BOOT-Logik ist
+sicherlich universell verwendbar.
+</p>
+
+<h1 id="article2">
+Huckepack-Bus
+</h1>
+<h3>
+von <span title="Druckfehler, richtig ist: Günter Kreidl">GÜNTER BÖHM</span>
+</h3>
+<p>
+Von Anfang an habe ich meinen NASCOM-1 mit ECB-Karten erweitert.
+Zunächst mit einem handverdrahteten
+<a href="../../../../81/04/06/text/#article1">Mini-Bus</a>
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+mit nur einem Steckplatz, in dem sich zuerst eine stat. 8K-RAM-Karte
+befand, später eine dyn. 64K-Karte. Nur die Signale MREQ, RD und WR
+waren gepuffert und die /MEMEXT-Erzeugung erfolgte mit drei
+Oder-Gattern. Das System arbeitete (nach anfänglichen Problemen mit der
+dyn. Speicherkarte) absolut zuverlässig, aber ein weiterer Ausbau
+verlangte doch eine ordentliche Pufferung. Zuerst wollte ich das
+&quot;Huckepack-Buffer-Board&quot; von Ingelaat und Forke einbauen
+(siehe
+<a href="../../../../82/10/25/text/#article1">NASCOM-Journal 10/11-82</a>),
+doch dann kam mir die Idee, dieses
+Prinzip auf ein komplettes Bus-System auszudehnen. Statt an das
+NASCOM-Grundsystem ein Bufferboard und daran nun den eigentlichen Bus
+anzuschließen, habe ich den umgekehrten Weg eingeschlagen: Ein voll
+gepuffertes ECB-System mit eigener CPU treibt die NASCOM-1-Grundkarte.
+Dazu habe ich die CPU aus dem Sockel der Hauptplatine herausgenommen
+und durch einen Adapterstecker ersetzt. Dieser besteht auf der einen
+Seite aus einem 40-pol. DIL-Sockel, auf der anderen Seite aus einer
+64-pol. VG-Federleiste, wobei die CPU-Signalleitungen entsprechend
+verbunden sind. In die Busplatine habe ich eine Wire-Wrap-Ausführung
+der 64-pol. VG-Leiste gelötet. Die Wire-Wrap-Pfosten lassen sich nun
+leicht in die 64-pol. Leiste des Adapters stecken. Einige wenige
+zusätzliche Verbindungen dienen der vollständigen Dekodierung (/MEMEXT
+und /IOEXT) sowie Sonderfunktionen wie NASBOOT und NASBANK
+(<a href="../../05/text/#article1">siehe unten</a>!).
+Unabhängig von der speziellen Konfiguration läßt sich dieses
+Prinzip (mit nur wenigen Änderungen) universell anwenden, etwa auch in
+Verbindung mit dem
+<?php externalLink("mc-CP/M","MC-CP/M",""); ?>-Computer.
+Auch der mechanische Aufbau
+gestaltet sich einfach, indem man 2 19-Zoll-Rahmen übereinander
+schraubt und die NASCOM-1-Platine dahinter als Rückwand befestigt. Um
+die Möglichkeiten aufzuzeigen, die sich damit ergeben, werde ich meine
+eigene derzeitige Systemkonfiguration etwas näher beschreiben. Andere
+Möglichkeiten ergeben sich beim Einsatz anderer Systemkarten.
+</p>
+<p>
+In meinem System verwende ich eine Busplatine mit 5 Steckplätzen.
+Darauf befinden sich 2 64K-RAM-Karten (die
+<?php externalLink("mc","MC",""); ?>-Speicherkarte
+und eine
+Speicherkarte von
+<?php externalLink("Janich &amp; Klass", "", ""); ?>)
+und eine CPU-Karte von
+<?php externalLink("Janich &amp; Klass", "Janich&amp;Klass", ""); ?>,
+an der ich einige Änderungen vorgenommen habe, die
+ich aber nicht in allen Einzelheiten beschreiben will, da die Karte
+inzwischen durch 2 verbesserte Nachfolgemodelle ersetzt wurde. Auf der
+CPU-Karte befinden sich eine PIO, ein CTC und eine SIO/0, womit die
+Ein/Ausgabe-Möglichkeiten des NASCOM wesentlich erweitert werden.
+Außerdem enthält sie zwei 24-polige Memory-Steckplätze incl. Bootlogik.
+Das habe ich ein bißchen unfrisiert, so daß ich die Karte gleichzeitig
+als Monitor-Umschaltkarte verwenden kann. (Wegen der dollen
+&quot;Kompatibilität&quot; zwischen NAS-SYS-1 und NAS-SYS-3 bin ich
+nämlich gezwungen, beide Betriebssysteme einsatzfähig zu haben, sonst
+stürzt mir immer wieder ein Programm ab, das die Leser einsenden.)
+</p>
+
+<?php columnEnd(2); ?>
