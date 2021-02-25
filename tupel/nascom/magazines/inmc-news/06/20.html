@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<p>
+routine ends by enabling the CPU interrupts again and then
+immediately returns with a RETI, which re-enables the PIO
+interrupts.
+</p>
+<p>
+You may have wondered when the READY line goes low. In both
+modes the READY line goes low when an interrupt is generated. This may
+be used by the external device to acknowledge that an interrupt has
+been received. It could be used to inhibit further interrupts from the
+external device, particularly where a number of PIO&rsquo;s are &lsquo;daisy
+chained&rsquo; together, and higher priority interrupts are already being
+processed, hence there will be a delay before the external device is
+processed. In other words, it says to the external device &ldquo;OK, seen
+you, you are in the queue, don&rsquo;t bother me again until I go high.&rdquo;. It
+has no internal affect on the PIO, save to get it ready to go high
+again when processing of the interrupt is complete.
+</p>
+<h4>
+Example of handshaking sequence
+</h4>
+<p>
+For two PIO&rsquo;s to handshake, the STROBE (input) line of each is
+connected to the READY (output) line of the other. This diagram shows a
+typical sequence of events, starting with a dummy read from. the input
+port to start the process.
+</p>
+<table>
+<tr>
+<td>
+<h4>Output port</h4>
+</td><td>
+<h4>Input port</h4>
+</td>
+</tr><tr>
+<td></td>
+<td>
+IN issued once after PIO
+initialized. READY goes high.<br>
+CPU interrupts enabled with El.
+</td>
+</tr><tr>
+<td>
+The incoming STROBE goes high,
+So there is an interrupt.<br>
+READY goes low.<br>
+Interrupt routine issues an
+OUT, and the READY goes high.<br>
+Interrupt routine ends with
+EI, RETI, so it is ready for
+the next interrupt.
+</td>
+<td></td>
+</tr><tr>
+<td></td>
+<td>
+Incoming STROBE goes high, so
+there is an interrupt.<br>
+READY goes low.<br>
+Interrupt routine issues an
+IN, and the READY goes high.<br>
+Interrupt routine ends with
+EI, RETI, so it is ready for
+the next interrupt.
+</td>
+</tr><tr>
+<td>
+The incoming STROBE goes high,
+So there is an interrupt,<br>
+READY goes low.<br>
+Interrupt routine issues an
+OUT and the READY goes high
+</td>
+<td></td>
+</tr><tr>
+<td>
+And so on.....
+</td><td>
+And so on.....
+</td>
+</tr>
+</table>
+<p>
+You could try this with just one PIO, by making the two ports
+of your PIO talk to each other.
+</p>
+<?php columnEnd(1); ?>

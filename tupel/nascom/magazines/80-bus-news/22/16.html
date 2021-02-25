@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+16
+</p>
+<p>
+Command: SAVE
+Function: To save an image of the TPA to disk starting at 100H.
+Forms: SAVE &lt;nm&gt; &lt;ufn&gt; Save n decimal pages to disk.
+SAVE &lt;mH &lt;ufn&gt; Save n hexadecimal pages to disk.
+SAVE &lt;m &lt;ufnm&gt; 8 Save n decimal sectors to disk.
+SAVE &lt;nm&gt;H &lt;ufn&gt; 5 Save n hexadecimal sectors to disk.
+Command: REN
+Function: To change the name of a disk file.
+Forms: &lt;ufn.new&gt;=&lt;ufn.old&gt; Change the&nbsp;.old name to the&nbsp;.new name.
+Command : USER
+Function: To change the current USER number.
+Forms: USER &lt;user number&gt; Change to new decimal USER number.
+USER &lt;user number&gt;H Change to new hexadecimal USER number.
+Command: DFU
+Function: To temporarily change the default USER number for the command
+hierarchy search.
+Forms: DFU &lt;n&gt; Change default to n decimal.
+DFU &lt;m&gt;H Change default to n hexadecimal. &ndash;
+Command: JUMP
+Function: To &lsquo;CALL&rsquo; the routine at the specified address.
+Forms: JUMP &lt;aaaa&gt; &lt;cmd. parms.&gt; or
+JUMP &lt;aaaa&gt;H &lt;cmd. parms.&gt; Call the routine at &lt;aaaa&gt;H.
+JUMP Call the routine at 0000H (warm boot).
+Command: GO
+Function: To &lsquo;CALL&rsquo; the routine at address 100H.
+Forms: GO &lt;emd. parms.&gt; Call the routine at 100H.
+Command: GET
+Function: To load the specified file to the specified address.
+Forms: GET &lt;aaaa&gt; &lt;ufn&gt; Load the file to address aaaaH.
+</p>
+<p>
+So as you can see CCPZ has a lot to offer in the command mode, the GET and SAVE
+commands are very useful to the machine code programmer.
+</p>
+<p>
+So how do you fit it, well I acquired my copy from Richard (I think) and
+it in turn originated from the UK CP/M User&rsquo;s Group. Four files were supplied, a
+source file, installation documentation, instructions for use and a complete
+history/philosophy commentary. From the documentation it was soon apparent that
+at least one other file was missing, but fortunately a file called STATUS from
+&lsquo;you know who&rsquo;s&rsquo; utilities disk proved to be a similar thing. To assemble it I
+also needed the DRI MAC macro assembler as the macros in the source file
+precluded the use of my particular favourite the Microsoft Macro&nbsp;80 assembler.
+The installation words needed reading twice to understand what it was on about,
+but once the basic idea was grasped the well documented &lsquo;demonstration run&rsquo; was
+easily understood (except the assembly parameters for DRI MAC which as I didn&rsquo;t
+read the manual, I didn&rsquo;t understand).
+</p>
+<p>
+The principle is easy, and works on the philosophy of;
+</p>
+<p>
+&ldquo;Notice you rarely need to change the size of the CP/M system, hence, you
+rarely use MOVCPM. Well as you rarely change the system size, it doesn&rsquo;t really
+matter if the system size becomes fixed, now does it? So decide on your optimum
+system size, find out the start and end addresses of of the CCP within your
+optimum system. Give the CCPZ ORG statement this data and assemble your copy of
+CCPZ to this size. Having got the CCPZ, use MOVCPM to make a system to your
+chosen optimum size, but instead of using SYSGEN to put it on the system tracks,
+</p>
+<?php columnEnd(1); ?>

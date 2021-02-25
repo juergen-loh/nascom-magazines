@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+To the editor of this excellent mag: can you accept contributions on
+Gemini 5.25" disks with ED files, and return the disks afterwards? (Yes
+thanks, but Pen disks would be nicer! &ndash; Ed.)
+</p>
+<p>
+Finally, with so many talking about Nascom 1s running at 4 MHz (&ldquo;they
+work a lot more often than you would think&rdquo;), has anyone tried running a
+Nascom&nbsp;2 at 6 MHz, perhaps with &rsquo;B&rsquo;&rsquo; chips?!!!
+</p>
+<p class="noindent">
+P. Holy, Worthing
+</p>
+<h3>
+TRY THIS INSTEAD
+</h3>
+<p>
+I have only just seen a copy of INMC 80 No.5. and I read with interest
+the article by P. Forrester, but why make the routine decoder so complicated?
+Why not just use the address of the target routine as the USR argument? Then
+if the decoder is at 0C80:&ndash;
+</p>
+<pre class="indent">
+0C80   CD 8B E9 ;   Get argument in DE
+0C83   EB       ;   put into HL
+0C84   E9       ;   jump to this address
+</pre>
+<p>
+The decimal value must be used &ndash; the only problem would be if the
+routine was above 8000H when the appropriate negative value would have to be
+used. If your routine is at 0C90H (or 3216 decimal) then it can be called by
+A=USR(3216), if at 8000H by A=USR(-32768). Both Mr Forrester&rsquo;s and the above
+mean variables must be passed by POKE or DOKE &ndash; or does it? It is quite easy
+to follow the call with arguments and then pick these up in your machine code.
+Passing fixed numbers is easy but Basic variables slightly more complex. If
+anyone is interested send an SAE to the address below and I&rsquo;ll send details.
+</p>
+<p class="noindent">
+Bill Lounds, Cotcliffe Villa, Sunnyside Rd, Ketley Bank, Telford, TF2 ODT.
+</p>
+<h3>
+BLS PASCAL = NASCOM PASCAL
+</h3>
+<p>
+I read with great interest the review of our Blue Label Software
+Pascal in INMC80-5, and I must say that I find it to be accurate in every
+detail. However, in the past eight months some changes have occurred to the
+package, both in terms of modifications and additions, as well as to
+distribution and pricing. Therefore this letter is to keep readers up to date.
+</p>
+<p>
+As from December &rsquo;81 distribution was taken over by Lucas Logic, which
+means that the package should now be available through most (if not all)
+Nascom dealers. At the same time the name was changed to Nascom Pascal, and
+the prices dropped a bit to 45.00 for the tape version, and 70.00 for the
+EPROM version.
+</p>
+<p>
+Nascom Pascal is almost identical to the version of BLS Pascal
+described in the review. The differences are the following additions: Port I/O
+is supported through a predefined procedure called OUT, which sends a byte to
+a port, and a predefined function called INP, which reads a byte from a port.
+CODE procedures and functions give the ability to define machine code
+subroutines within a program through a list of constants (in hex or decimal as
+appropriate) representing Z80 instructions, and hex integers can be input in
+READ and READLN statements.
+</p>
+<p>
+In the review Mr O&rsquo;Farrell expresses his wish that the package, in a
+future version, should include sets, user defined types and records. I do, of
+course, agree that the inclusion of these features would result in an even
+better subset of Pascal, but it would also increase the memory overhead by say
+4-8K bytes, and I am not sure whether the equivalent loss of workspace would
+be worth it or not. The main attraction of Nascom Pascal is that due to its
+compactness, it can reside in memory in full, still leaving considerable room
+</p>
+<?php columnEnd(1); ?>

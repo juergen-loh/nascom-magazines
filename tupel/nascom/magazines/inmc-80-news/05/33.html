@@ -1,0 +1,65 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+Each 4K block used must also be gated into the IC44a/RDB circuitry and this can be
+conveniently effected by wiring small signal diodes from the block pulse (pins 10, 11
+or 12) to pin 7 on LKSI (XROM).
+</p>
+<p>
+<u>Switching EPROMS</u>
+</p>
+<p>
+Sometimes it may be required to switch different EPROMS into a given memory
+location and fig. 1 shows a method of doing this for, in my case, alternative monitors.
+The appropriate block pulse is switched to the appropriate pin 20 but it is necessary
+to disable the non used EPROM by allowing its Pin 20 to go high via a 1K resistor to
++5v. The 1K for the original monitor is already on board (R53) but must be provided
+for any non-used EPROM. The gating diode for the switched monitor is also taken to
+LKS1-7.
+</p>
+<p>
+<u>Multi-Rail EPROMS</u>
+</p>
+<p>
+All the EPROMS used are single rail as these are readily available and hence the +12v
+and -5v connections are not used.
+</p>
+<p>
+<u>4K EPROMS</u>
+</p>
+<p>
+As I am still waiting for delivery of a 4K EPROM programmer, I have not tried this
+yet, but it looks to me as if a 4K EPROM can simply be plugged into a socket with
+A11 on Pin 18, in which case A11 will not be necessary.
+</p>
+<p>
+<u>General</u>
+</p>
+<p>
+Most of the wiring has been on the solder side of the board as I find wiring onto the
+link pins is not easy &ndash; and in any case it does not show on the bottom! Do not try
+using the spare IC7b and IC7h gates as A11 inverters as they are only buffer gates
+&ndash; not buffer inverters. It took me quite a time to realise this.
+</p>
+<p>
+The diagram shows how I have populated my sockets but of course any socket can be
+used by suitable connections of A11 or <?php invertedSignal("A11"); ?> and
+the relevant block pulse to pin 20.
+</p>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-33-1.png"); ?>
+<?php columnEnd(1); ?>
+<?php columnStart(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-33-2.png"); ?>
+<?php columnChange(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-33-3.png"); ?>
+<?php columnChange(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-33-4.png"); ?>
+<?php columnChange(4); ?>
+<p class="noindent" style="text-align: center">
+<u>NASCOM 2</u>
+</p>
+<p class="noindent" style="text-align: center">
+MODS TO POPULATE
+WITH 2K (or 4K?)
+EPROMS
+</p>
+<?php columnEnd(4); ?>

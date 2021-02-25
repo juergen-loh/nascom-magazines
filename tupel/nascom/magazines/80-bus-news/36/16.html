@@ -1,0 +1,354 @@
+<?php columnStart(1); ?>
+<p>
+0029
+6028
+0028
+002A
+002D
+002F
+002c
+0028
+</p>
+<p>
+9C80 F3
+</p>
+<p>
+9C81 3807
+9C83 D32A
+9C85 D32B
+9C87 D32F
+9C89 D32E
+9C8B FB
+</p>
+<p>
+9C8C 3E0F
+9C8E D324
+9C90 D328
+9092 D32E
+</p>
+<p>
+9094 3h4F
+9096 D32F
+</p>
+<p>
+9098 305
+9C9A D32C
+</p>
+<p>
+SC9C CD71A2
+</p>
+<p>
+9COF 215808
+</p>
+<p>
+AAR A aH RRR KAR KERR KKK ER ER RR RRR ERR RE EKER KK
+pA HRI KAA IH RAK ER RHR ERB RRRK EE RRA RE EER ERE R
+</p>
+<p>
++ dee
+&lsquo;
+kk
+:
+ree
+&gt;
+1 ee
+;
+ee
+5
+tke
+&lsquo;
+</p>
+<p>
+EPROM PROGRAMMER FOR 2716
+2532
+2764
+27128
+</p>
+<p>
+ee
+ae
+ke
+**
+wk
+kK
+</p>
+<p>
+5 FAIA He eR HA AH I HE I HI He I I TE ROR ER RR AR RRR
+5 AIH AI AH ee TARR TH RRR RAK REE R RRR ERR RE
+</p>
+<p>
+ORG 9C80H
+LOAD 9C 80H
+</p>
+<p>
+;PIO Addresses
+</p>
+<p>
+LSBADD
+LSBADC
+MSBADD
+MSBADC
+DATA_D
+DATA_C
+CONT _D
+CONT_C
+</p>
+<p>
+BEGINA
+</p>
+<p>
+EQU 29H 3(PIO 2)
+EQU 2BH
+EQU 28H
+EQU 2AH
+EQU 2DH ;(PIO 3)
+EQU 2FH
+EQU 2CH
+EQU 2EH
+</p>
+<p>
+RRR TO a RRR I ee
+</p>
+<p>
+3* Initialise PIO&rsquo;s *
+ROI III IIR I He I a HOOK
+</p>
+<p>
+;ALL PIO&rsquo;s interrupt disabled
+DI
+</p>
+<p>
+LD A, 07
+</p>
+<p>
+OUT (MSBADC),A
+</p>
+<p>
+OUT (LSBADC) ,A
+</p>
+<p>
+OUT (DATA_C),A
+</p>
+<p>
+OUT (CONT C),A
+</p>
+<p>
+EL &ndash;
+</p>
+<p>
+;Address and control ports set to output
+LD A, OFH
+</p>
+<p>
+OUT (MSBADC) ,A
+</p>
+<p>
+OUT (LSBADC),A
+</p>
+<p>
+OUT (CONT_C),A
+</p>
+<p>
+;Data port set to input
+</p>
+<p>
+LD A, 4FH
+</p>
+<p>
+OUT (DATA_C),A
+</p>
+<p>
+OE (bit 0) set high(inactive)
+PGM (bit 1) set low Cinactive)
+</p>
+<p>
+3PGM (bit 2) set high( inactive)
+LD A,LO1B
+OUT CCONT D),A
+</p>
+<p>
+MH RAR IRI RARE RR RR RK
+</p>
+<p>
+3* Display options *
+OR A A ea Heke eae a
+</p>
+<p>
+;Clear screen and write title
+CALL CLSTIT
+</p>
+<p>
+;List menu
+</p>
+<p>
+LD HL, LINE2+17
+</p>
+<p>
+9CA2
+9CA5
+9CA9
+9CAD
+9CAE
+9CBL
+SCB4
+9CB3
+9CBC
+9cBD
+9ccO
+9cc3
+9CC7
+9CCB
+9CCF
+9CD3
+9CD7
+9CDB
+9C DF
+9CE3
+9CE7
+9CEB
+9CEF
+9CF3
+9CF7
+9CFB
+OCFF
+9003
+9D07
+9DOB
+9DOF
+9013
+9D17
+9D1B
+ODIF
+9D23
+9D27
+9D28
+9D 2C
+9D30
+9D34
+9D38
+9D3C
+</p>
+<p>
+9D3D
+9D 3E
+9D40
+9D43
+9045
+9D48
+9D4A
+9D4D
+9D4F
+9D52
+</p>
+<p>
+22290C
+EF4F5054
+494P4E53
+00
+219B08
+222906
+EF 2D2D2D
+2D2D2D2D
+00
+210A09
+22290C
+EF202020
+20202020
+20202756
+272D2056
+65726966
+79204550
+524F4D20
+65726173
+65640D0D
+20202020
+20202020
+20275227
+20205265
+61642069
+6E 204550
+524F4D20
+746F 2052
+414p0bp0D
+20202020
+20202020
+20275027
+2D205072
+6F677261
+6D204550
+524F4D0D
+oD
+20202020
+20202020
+20275127
+2D205175
+69740D0D
+00
+</p>
+<p>
+CF
+FE56
+CA549D
+FES2
+CA259E
+FE50
+CALLOF
+FES1
+C23D9D
+DF 5B
+</p>
+<p>
+MENU2
+</p>
+<p>
+LD (CURSOR) , HL
+</p>
+<p>
+PRS \ DB &ldquo;OPTIONS&rdquo; ,0
+LD HL, LINE2+64+17
+LD (CURSOR) ,HL
+</p>
+<p>
+PRS \ DB &ldquo;w&mdash;--=-=!&rdquo;, 0
+LD HL, LINE2+64*3
+LD (CURSOR) ,HL
+</p>
+<p>
+PRS \ DB&rdquo; &ldquo;V&lsquo;- Verify EPROM erased",NL,NL
+</p>
+<p>
+DB&rdquo; &ldquo;R&rsquo;= Read in EPROM to RAM",NL,NL
+</p>
+<p>
+DB &ldquo;p= Program EPROM&rdquo; ,NL,NI
+</p>
+<p>
+DB&rdquo; &ldquo;Q*= Quit&rdquo;, NL,NL,O
+</p>
+<p>
+sWait for selection
+RIN
+</p>
+<p>
+CP init
+</p>
+<p>
+JP Z, VERIFY
+cP WR
+</p>
+<p>
+JP Z,READIN
+cP pr
+</p>
+<p>
+JP Z,PROGRA
+cp fg
+</p>
+<p>
+JP NZ,MENU2
+SCAL MRET
+</p>
+<p>
+16
+</p>
+<?php columnEnd(1); ?>

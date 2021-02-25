@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+41
+</p>
+<p>
+Polydos File Update By M. J.R. Gibbs
+</p>
+<p>
+This is a program for directly updating files on disk for a Gemini
+GM809/GM815 system with Polydos 2.0.
+</p>
+<p>
+This allows the user to update copies of a file stored on several disks
+without having to enter all the normal commands which can cause problems
+especialy if you are like me and sometimes forget to use the &lsquo;NEW&rsquo; command (I
+have spent many hours trying to sort out the chaos that this causes). The
+required program/data is loaded into RAM between #1000 and #C000 either by
+using the Polydos &lsquo;Read&rsquo; command or by Assembling the program directly into
+RAM.
+</p>
+<p>
+This program is loaded into RAM at #0C80 and executed at #0C80, the user
+is asked for the file name, file extension and the RAM location for the new
+code. The Program asks you to insert the disks and press the &lsquo;Enter&rsquo; key, the
+disk directory is read and the filename checked and, should it exist, the file
+is replaced with the new version. The old file is completely overwritten and
+this means that the number of sectors used by the old file are replaced by the
+program stored in RAM. The user should be careful in ensuring that the new
+version is not going to require more sectors on disk than the original
+otherwise the whole of the new program will not be saved. I normally save
+programs that are common to several disks with a few sectors more than
+required to allow for expansion, this does not normally cause a problem as I
+have found that the maximum number of fifty files means that the disk is not
+often full before the directory is used up. This program can update a disk
+with a full directory because the directory is left unaltered.
+</p>
+<p>
+Should the program not exist on the disk inserted a suitable message is
+printed out telling the user and the disk is left unaltered.
+</p>
+<p>
+The Program informs the user of the start disk sector and the number of
+sectors updated and the RAM location used for the update. Should there be any
+disk errors then a message is printed out and the program repeats the inital
+menu asking the user to insert a new disk. The one thing that I have found is
+that it is easy to forget to remove any write protect tabs and this does not
+cause a problem as you simply take the disk out remove the tab and reinsert
+the disk (do not forget to replace the tab afterwards).
+</p>
+<p>
+A word of warning when testing this program especially when entering it
+from the dump listing, which is always prone to errors, you are strongly
+advised to test it on a copy of an existing disk because it can overwrite
+&lsquo;4rreplaceable portions of disk if anything goes wrong.
+</p>
+<p>
+I suggest that you proceed as follows:&ndash;
+1) Enter the program and save it on disk using Polydos. Use the &lsquo;Read&rsquo;
+</p>
+<p>
+routine to load a file from the disk to say #1000 in RAM.
+</p>
+<p>
+2) Examine and make a note of the number of sectors that this file uses.
+</p>
+<p>
+3) Use SZAP to examine the next file on the disk and make a note of the
+first few bytes.
+</p>
+<p>
+4) Change the first few bytes of the file loaded into RAM with the NAS-SYS
+&lsquo;M&rsquo; (modify command).
+</p>
+<p>
+5) Run this program to update the disk and check the user information for
+the correct sector location, number of sectors and RAM location.
+</p>
+<p>
+6) Use SZAP to verify that the original file has been updated correctly.
+Also that the file following is not corrupted.
+</p>
+<p>
+Below is a full Assembly listing, a sorted symbol table and a dump of the
+</p>
+<p>
+program using a modified version of the disk dump published in Vol.1 iss. 2 of
+30-BUS NEWS (the numbers on the left hand side are the RAM locations).
+</p>
+<?php columnEnd(1); ?>

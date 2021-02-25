@@ -1,0 +1,98 @@
+<?php columnStart(1); ?>
+<p>
+wetter Ce eae te Oa ECE thal SOSEE EOE ate
+</p>
+<p>
+3. Connect a wire from TP10 to LKS1 pin 4.
+</p>
+<p>
+4. Remove IC8 and bend pins 1, 2 and 3 (carefully) out straight so that they
+will clear the socket and replace IC8.
+</p>
+<p>
+5. Remove IC71 and do the same with pin 8.
+</p>
+<p>
+6. Connect a wire from IC71/8 to IC8/2.
+</p>
+<p>
+7. Touch solder a wire onto IC24/12 and connect the other end to IC8/1.
+</p>
+<p>
+8. Touch solder a wire onto IC18//13 and connect the other end to
+1c8/3.
+</p>
+<p>
+The effect of this mod is only to provide a chip select and a RAMDIS
+signal when the tape drive is on. Certainly on my machine, it is always on
+when powered up so SIMON is connected in and any RAM in the system occupying
+those addresses is disabled. Once SIMON is entered other than for booting up
+or once CP/M is loaded and started, port 0 is reset and SIMON disappears from
+the memory map. Plug in and power up and all should be as before (on a 60k max
+CP/M) provided SIMON is not used as a monitor. If the system is powered up
+without a disk in drive A, your machine will crash once port 0 is reset by
+SIMON.
+</p>
+<p>
+Before a full 64k system can be installed, the cold boot loader must be
+modified to switch out SIMON before loading the CP/M system. To do this,
+perform the following sequence of operations:
+</p>
+<p>
+1. Use MOVCPM to generate a 64k system. Allow room for SYS if you use it.
+Save the result as CPM64.COM.
+</p>
+<p>
+2. Load CPM64.COM under DDT or ZSID.
+3. Use the S command to modify the addresses given below to the values
+</p>
+<p>
+indicated.
+</p>
+<p>
+O90B 18 097C 3E
+090C 6C 097D O01
+0979 AF O97E 18
+097A D3 O97F 8D
+097B 00
+</p>
+<p>
+4. Use &ldquo;C or GO and save the modified CPM64.COM.
+</p>
+<p>
+5. Use SYSGEN to put the file on drive A. This can be done by typing:
+SYSGEN CPM64.COM
+after which, specify drive A as the destination.
+</p>
+<p>
+6. Unplug &amp; plug in again with the new system in the A drive and Hey Presto,
+you should have a 64K system up and running with no SIMON in the way. As
+an added bonus, it won&rsquo;t get in the way when paging RAM either.
+</p>
+<p>
+Faulty RAM Board
+</p>
+<p>
+My second bit of first-aid is probably of no use to Kevin Weatherhead who
+</p>
+<p>
+has, by now, probably cured his faulty RAM board himself. If not then here
+oes.
+</p>
+<p>
+Kevin doesn&rsquo;t say which type of RAM board he is using, so I shall go into
+the Nascom RAM A &amp; B boards and the Gemini GM802 64k RAM card. The problem is
+this. When Kevin powers up, his RAM card is full of rubbish as expected. He
+can write zeros to the card but not ones. Fortunately, all three RAM cards use
+the same principle so only a brief &ldquo;how it works&rdquo; is necessary.
+</p>
+<p>
+When the Z80 wants to read data, the address lines contain the required
+address. This address is decoded by the RAM cards to select the appropriate
+RAM chips. The /WR signal from the Nasbus/80-bus provides the /WR signal to
+the RAM chips so that they accept data rather than send it. This signal will
+be a &lsquo;1&rsquo; when reading and this side appears to work. As Kevin can also write
+to the chips, albeit in a limited fashion, this appears to be switching
+correctly. Data to be written to the RAM chips is gated into the RAM after
+</p>
+<?php columnEnd(1); ?>

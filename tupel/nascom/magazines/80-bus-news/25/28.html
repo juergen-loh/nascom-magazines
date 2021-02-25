@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+28
+</p>
+<p>
+IC17 pin 2 &ndash; top right-hand corner of the board &ndash; and hard wiring it to pin 6
+of IC9 &ndash; its immediate neighbour). He then tried ORing /M1 and the /XROM
+signal in an LS32, and using that to drive 1c17/2, which was where failure set
+in. His problem lies in the accumualtion of delays within the circuit. Let&rsquo;s
+try a quick total up:
+</p>
+<p>
+Clock falling edge to /MREQ low &ndash; 85ns max out of Z80
+/MREQ delay through buffer &ndash; 12ns (?)
+</p>
+<p>
+/KROM decoding delay thru IC47 &ndash; 25ns (typ)
+Delay thru&rsquo; LS32 &ndash; i4ns (typ)
+D-type data setup time (IC17) &ndash; 20ns
+</p>
+<p>
+TOTAL =156ns
+</p>
+<p>
+Time available from clock falling edge to rising edge that clocks the wait
+state generator = 125ns (4MHz system in an ideal world). 156 is greater than
+125, so failure! In practice the /MREQ delay is unlikely to be the full 85ns,
+and in fact his letter indicates that the /WAIT input does just make it low
+before the rising edge of the clock, but obviously not soon enough. The
+overall delay must be reduced, and one way is to do the address decoding
+separately (i.e. duplicate the PROM) and remove the dependence on /MREQ. The
+new PROM would be gated by /M1, and the LS32 would be discarded, the decoded
+output of the second prom being connected directly to Ic17/2. (Alternatively
+an LS155, LS138 or similar decoder plus a few gates could be used in place of
+the PROM.) The timing figure would now be:
+</p>
+<p>
+&mdash;
+</p>
+<p>
+Clock rising edge to /M1 low &ndash; 100ns max
+Clock rising edge to Address valid &ndash; 110Ons max (NB 10ns Worse than above)
+Delay through buffers &ndash; 12ns
+PROM (or logic) decoding delay &ndash; 25ns
+D-type data setup time &ndash; 20ns
+TOTAL =167ns
+</p>
+<p>
+Time available to rising edge of clock, 250ns. &ndash; plenty to spare!
+</p>
+<p>
+Notice we have gained in two ways, first the decoding delays have been reduced
+as the LS32 is no longer used, and secondly everything is now refered to the
+rising edge of the system clock and we have an entire clock cycle available,
+rather than just half a cycle that was available previously.
+</p>
+<p>
+Hopefully the above is of some use if all else fails, but I would first
+check the circuit modifications done for the 2716s in the hope that matters
+can be cured there.
+</p>
+<p>
+TRAILER
+</p>
+<p>
+I only seem to have covered one topic this time, but at least there isn&rsquo;t
+a mention of discs anywhere in it. Remember, the above is fueled by your
+letters, so write!
+</p>
+<p>
+References:
+</p>
+<p>
+1. ANDERSON E.P.T., &lsquo;2K&rsquo;s on an N2&rdquo;, INMC80-5, Oct-Dec 1981, pp32-33
+</p>
+<p>
+2. ANDERSON Paul, &ldquo;16K CMOS RAM extension for the Nascom&nbsp;2 main pcb&rdquo;, 80-BUS
+NEWS 1-3 July-Oct 1982, pp21-23
+</p>
+<p>
+3. ROLLASON J., &ldquo;2K 2716 EPROM &amp; 6116 RAM for the Nascom&nbsp;2 Main Board&rdquo;, ibid,
+pp28-29
+</p>
+<?php columnEnd(1); ?>

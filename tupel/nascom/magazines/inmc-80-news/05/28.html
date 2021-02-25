@@ -1,0 +1,83 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+enable line from IC 2a is also used as the NASIO signal.
+Although the NASCOM 2 is fitted with a switch (LSW2/8) to allow either
+on-board or external ports to be used, as it stands you cannot use
+both. The NASIO signal provides a means of achieving this, but
+unfortunately only one signal can be fed to this line (unless you use
+expensive tri-state logic) as TTL outputs don&rsquo;t like mixing with each
+other. So if you intend to use more than one I/O board in the system
+you must be careful. One way of catering for all eventualities is to
+use the circuit in Figure 2. Fit this onto one (only) board which uses
+the bus, switch LSW2/8 to &ldquo;EXT&rdquo; and forget about NASIO. There are
+sufficient unused ICs in the circuit of Figure 1 to build this. If you
+are using the NASCOM I/O board, check how it handles NASIO.
+</p>
+<p>
+Practical details:
+</p>
+<p>
+Vero Electronics make an 8" x 8" copper-tracked perforated card with
+gold-plated &ldquo;fingers&rdquo; (i.e. NAS-BUS compatible) for about #5 (part
+number 09-0092K) and although not glass-fibre, it does present a cheap
+alternative to the prototyping boards currently available for DIY
+circuits, and is more than adequate for this application.
+</p>
+<p>
+Remember that the NAS-BUS contains lines directly linked to the CPU and
+other important chips in the system, so be VERY careful of what happens
+to these lines when they enter your circuit. As a suggestion &ndash; letter
+each track with a felt tip pen as to its function, check and then check
+again before starting work. Cut any tracks carrying unused signals
+(NMI, INT, HALT, A8-A15 etc.).
+</p>
+<p>
+Layout appears not to be critical &ndash; refer to a mood TTL primer (eg. TTL
+Cookbook, Lancaster) if necessary. Check for shorts, tracks still
+needing to be cut etc. Test the board without the chips and check that
+all voltages are in the right places. Fit the TTL devices and adjust
+LSW2/8 to EXT and check that the keyboard still works, if possible
+check the correct operation of the 2 MHz clock (if you are using the
+divider circuit) and the BC1 and 8DIR signals with a scope using the
+following programmes:
+</p>
+<p>
+Routine to check PSG resister latch:
+</p>
+<pre style="margin-left: 30%">
+     LD A,#0F
+LOOP OUT (8),A
+     JP LOOP
+</pre>
+<p>
+The BC1, BDIR, NASIO and all DATA lines should all give simultaneous
+positive pulses.
+</p>
+<p>
+Routine to check data write:
+</p>
+<pre style="margin-left: 30%">
+     LD A, #0F
+LOOP OUT (9),A
+     JP LOOP
+</pre>
+<p>
+The BDIR, NASIO and all DATA lines should all give simultaneous
+positive pulses, BCl is kept low.
+</p>
+<p>
+Routine to check data read:
+</p>
+<pre style="margin-left: 30%">
+LOOP IN A,(9)
+     JP LOOP
+</pre>
+<p>
+BC1 and NASIO should give positive pulses, the data lines will reflect
+the contents of the addressed resister and BDIR should remain low.
+</p>
+<p>
+If WAIT states are used, these should be active (low) within the pulses
+described above.
+</p>
+<?php columnEnd(1); ?>

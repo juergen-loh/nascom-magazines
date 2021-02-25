@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+44
+</p>
+<p>
+was going on, and being a self confessed novice at machine code he admitted he
+didn&rsquo;t have a clue, and as far as he could see the program didn&rsquo;t work. What he
+had done was attach LEDs to the Sinclair I/O connector, which he believed to be
+some sort of I/O port, and was trying to switch the LEDs by machine code
+instructions which he took to be the machine code equivalent of POKEs to a given
+address. As this was his first attempt at machine code programming (I considered
+it a bit ambitious for a first attempt) he was somewhat disappointed when
+</p>
+<p>
+nothing particular happened.
+</p>
+<p>
+Anyway, as I have about as much experience with the 2X81 as I have at
+piloting a 747 (a real one that is, no I can&rsquo;t land the natty Sinclair Spectrum
+Flight Simulation program either, and that&rsquo;s supposed to be a light plane
+although a couple of experienced pilots who have tried it assure me it&rsquo;s more
+like a 747), this was all Dutch to me [Ba. &ndash; apologies to our readers in
+Holland! |. It seemed to me somewhat unlikely that the 2X81 I/O connector was
+controlled by some sort of latched I/O device, and I guess it is nothing more
+than a partially decoded address/data bus. However, he assured me that he could
+flash the LEDs in sequence by poking a 2-4-8-.. sequence to a particular address
+in BASIC, so why could he not do the same thing in machine code. It was then
+that a glimmer dawned. The ZX81 in it&rsquo;s text display mode under its own BASIC is
+about as fast as a superannuated snail, so if anything was happening to the LEDs
+it was probably the speed (or rather the lack of) at which the program ran which
+allowed anything to be visible. I suggested that he take his BASIC program and
+introduce a FOR &ndash; NEXT delay loop to see if the rate of flashing the LEDs was
+reduced, and he went away to try it. A day or so later we came across each other
+again, and he confirmed that the FOR &ndash; NEXT delay did indeed slow down the LEDs,
+so how to do this in machine code.
+</p>
+<p>
+I explained that the BASIC FOR &ndash; NEXT loop simply made the processor
+waste time by counting, and so it is the same in machine code. The only
+difference is that whereas the BASIC loop may only be counting a hundred or s0
+for a delay of about a minute (see what I mean, brother is the 2X81 slow), at
+the machine code level, the few hundreds have to be considered as a few millions
+instead. All he wanted now was a machine code equivalent to the BASIC FOR &ndash; NEXT
+delay loop. So I gave him the very simple counting loop shown in program 2
+(adjacent). Now I know it&rsquo;s simple, but there are many around who still haven&rsquo;t
+mastered (or even tried) the machine code end of the business, so I offer it
+here for all those who have been searching for a delay loop of between about a
+half second to about two minutes. (That includes the guy who wrote the time
+delay routine in the PLUTO colour card demo program, it&rsquo;s awfully complicated to.
+do such a simple little thing.) I have since heard that the chap now has his
+LEDs flashing away in machine code and because of this modest success is now
+only too keen to progress to other things.
+</p>
+<p>
+A Nascom&nbsp;1 &lsquo;feature&rsquo;.
+</p>
+<p>
+That story has very little to do with Nascom is but is at least the sort
+of level applicable to an unexpanded Nascom&nbsp;1. The second story very definitely
+concerns the Nascom&nbsp;1 and one of its shortcomings. Some months ago the shop
+supplied a Mr. Rudd Thornton of Largs with a Gemini GM812 IVC and a SYS7 to run
+it on his CP/M system. Well from that order it was easy to predict the system
+the gentleman has, a Nascom&nbsp;2 with a Henelec/Gemini G805. Imagine our dismay
+when he phoned to say it didn&rsquo;t work because he has a Nascom&nbsp;1. The problem was
+easily pinned down to the ambiguous I/O decoding of the Nascom&nbsp;1 (a design fault
+or feature depending upon which way you look at it). Mr. Thornton has the G805
+plugged into the PIO on the Nascom, and as soon as the IVC was plugged in the
+whole lot predictably stopped working. None of the easy alternatives were at
+first sight agreeable. Telling Mr. Thornton to scrap the idea and accept a
+refund was out as I can&rsquo;t stand the tears and reproachful looks from the boss
+when I ask him for a refund cheque. Similarly, it wouldn&rsquo;t be fair to ask Mr.
+Thornton to cough up another &pound;60 odd quid to fit a Nascom I/O card which would
+</p>
+<?php columnEnd(1); ?>

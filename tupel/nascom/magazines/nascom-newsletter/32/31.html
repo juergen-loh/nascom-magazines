@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+zero when you initialise the system. A simple BASIC program of the
+type listed below would let you set the clock and read it. Because
+of the disabling of interrupts by NAS-DOS this clock will lose tise
+during disc access. Howsver, for many timing applications this dows
+not present any problems, and it is a chmap and easy way of getting
+@ clock/tiner on the computer. Naturally this type of clock will
+not run when the computer is turned off, and the tise data is lost.
+The next memory location (CCA4) contains the buffer length, normally
+the maximum permitted value of 48 (decimal). You can reduce this if
+you wih &ndash; down to one to prevent typing ahead.
+</p>
+<p>
+Note that there is a jump vector at CO0C. This currently points to
+a RET instruction, which will be executed every 1/50 second. You
+could put in this vector a jump to your own routine ta be executed
+every &ldquo;1/50 of a second. You can try using this to display the tiee
+on the top line of the acrean, and update it every second. Note
+that in adding such a routine you should be careful not to change
+any registers, or to make excessive use of the stack.
+</p>
+<p>
+4. Clock read/set fron BASIC
+</p>
+<p>
+&lsquo;The current time can be displayed by typing RUN. To set the clock
+you should type RUN 100.
+</p>
+<p>
+10 REMNCLocK:
+20 REM CLOCK READ AND DISPLAY
+Jo REN &mdash;
+</p>
+<p>
+40 REM,
+</p>
+<p>
+30 T=1244096+124256+160-65536
+60 PRINT
+</p>
+<p>
+70 PRINT &ldquo;Time ="PEEK(1)", "PEEK (+1) *, &ldquo;PEEK (142)
+@0 END
+</p>
+<p>
+100 Tm1204096+124256+160-65536
+</p>
+<p>
+140 cis
+</p>
+<p>
+120 PRINT &ldquo;CLOCK BETTING PROGRAM&rdquo;
+</p>
+<p>
+130 PRINT *&mdash;
+</p>
+<p>
+140 PRINTIPRINT"Typa in time in the form &ldquo;5
+150 PRINT"Hours,minutes,seconds&rdquo;
+</p>
+<p>
+160. INPUTH,M,S
+</p>
+<p>
+170 POKEI&nbsp;,MiPOKEI+1 Js POKEI+2,8
+</p>
+<p>
+100 PRINT
+</p>
+<p>
+190 END
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

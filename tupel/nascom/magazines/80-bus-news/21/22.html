@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+22
+</p>
+<p>
+To configure CP/M for a 64K memory system the command MOVMODV 64 * (CR) is
+entered. This would generate a 64K system for the IVC card with extra reserved
+BIOS space to accomodate &lsquo;SYS&rsquo;. The CBIOS in CP/M would still be OLDBIOS. At this
+stage a copy of this 64K CP/M can be placed on to the System track by using
+SYSGEN, or it can be saved to disk as a named file &ndash; SAVE 43 CPM64.COM (CR). If
+you do this and then use a BUG program on the saved copy, it will look identical
+to MOVMODV.COM except that address high bytes will be changed. (It is interesting
+to try a CPM64 48 * command. It will try to work as if it were a MOVCPM but will
+probably give a SYNC ERROR.)
+</p>
+<p>
+It is now possible to put a copy of this saved file onto a disk using the command
+SYSGEN CPM64.cOM (CR). (Another very poorly documented feature of SYSGEN is its
+ability to read files off disk.) SYSGEN will read in the named file and will
+discard the first S800H bytes (100H-8FFH) which includes the relocation part of
+MOVMODV. Byte 9OOH will be put into the first byte of the first sector of the
+TRACK 0, SIDE O of the disk and so on up thro the CCP, BDOS and BIOS as shown in
+the Track Map. SYSGEN also permits one to READ the SYSTEM off one disk and WRITE
+it to another which is usually the most convenient way of moving the system from
+disk to disk.
+</p>
+<p>
+The file CPM64.COM will be used later as the basis for the new CP/M with SYS
+CBIOS. It might be thought that at this stage it would only be necessary to
+replace the CBIOS in the file with the new one, and the job would be done.
+Unfortunately there is much more to do. First SYS must have all of its internal
+addresses correctly matched to suit a 64K System. As assembled SYS is a self
+relocating program with a base address of 3A00H and it is not amenable to
+assembly for a higher address due to the way in which it is configured. The
+solution to this problem is easy however. If CPM64.COM is put onto the Systen
+track and &lsquo;BOOTED&rsquo; up, and then the required SYS is &lsquo;run up&rsquo; in the usual way,
+there will automatically be a copy of the required SYS in RAM at 0EE00H, with
+correct addresses and workspaces initialized. This relocated SYS can te used as
+the new BIOS, but first it is necessary to look more closely at some other
+problems.
+</p>
+<p>
+oe one we oe ee ee no ct wn ea FRI nn cee ae ce en eee
+</p>
+<p>
+SIMON is the ROM based program that loads the COLD BOOT LOADER that in turn loads
+CP/M. In my case SIMON is loaded to RAM at 0F000H from a paged EPROM card. It can
+be overwritten when it&rsquo;s job is done, allowing use of full 64% RAM. (See Note at
+end.) On RESET, SIMON is loaded and one of the first jobs it does is to RESET the
+IVC card, after which it:&ndash;
+</p>
+<p>
+1)Checks to see if there is a disk in Drive &lsquo;A&rsquo;. If none is found, then SIMON
+outputs a &lsquo;NO DISK&rsquo; message.
+</p>
+<p>
+2)If a disk is found, it checks to see that the disk can be read eorrectiy,
+and if not prints a &lsquo;READ ERROR&rsquo; message.
+</p>
+<p>
+3)If all is well, it reads in the first sector of Track 0 to high RAM and
+then copies some of it to RAM at 0000. This part is the COLD BOOT LOADER.
+SIMON then checks the validity of the disk by comparing the first two
+bytes read with an internal reference. If an error is detected the message
+&lsquo;WRONG DISK&rsquo; is printed on the screen.
+</p>
+<p>
+In the event of an error SIMON enters a MONITOR mode and commands can be executed
+to Tabulate, Alter Memory and so on. This is extremely useful even on &lsquo;good&rsquo; disk
+loads because, after loading the system and any other program of interest, the
+disk can be removed and RESET pressed. The contents of memory can then be
+examined without the disturbing effect of the usual BUG program. (The area 0F000H
+&ndash; 0F400H and around 0FC00H will be overwritten by SIMON)..
+</p>
+<?php columnEnd(1); ?>

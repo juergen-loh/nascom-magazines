@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+55
+</p>
+<p>
+transitions, just a continual high or low to the end of the data block.
+This is an invitation to lost sync, particularly if the clock is an integral
+part of the signal, how can this be overcome? The answer is what is called bit
+stuffing, which gives rise to a highly efficient data transmission system
+known as NRZI.
+</p>
+<p>
+First a look at NRZI, it stands for Non Return to Zero Inverted (it is
+actually used on our disk systems but no-one shouts about it). It&rsquo;s not a case
+of high means a 1 and low means a 0. It is a case of change of input state
+means a change of output data state. Lets assume that the input signal is low,
+and the output data state is currently 0. The next input signal transition
+from low to high will cause a change of output state from O to 1. No different
+from what we already know, but if the output data state were already high when
+the input low to high transition occurred then the data state would change
+from 1 to 0. It is the input transition edges associated with the transition
+which causes the output to change from one data state to another. Thats where
+the Non Return to Zero bit comes in, an input transition to zero does not
+necessarily mean that the data state returns to 0, it could go to 1. None of
+this matters so long as the decoder knows what is to happen, and knows its
+starting states.
+</p>
+<p>
+Tt should be obvious that to be a synchronous data transmission system,
+NRZI must have some sort of sychronising mechanism built in to allow clock
+recovery. It must know how many bits have passed between one input transition
+and the next. A continual steam of 1&rsquo;s or 0&rsquo;s is an invite to lost sync. If we
+sent a stream of 010101010.... then it would be no problem to recover the
+clock from the data itself, a simple phase lock would do it. Given the proven
+&lsquo;sample and hold&rsquo; characteristics of phase locks, we could send quite a lot of
+O&rsquo;s before we needed to send a 1 to regain the sync, likewise we could send a
+lot of 1&rsquo;s before we needed to send a O to regain sync. This is where the &lsquo;bit
+stuffing&rsquo; technique comes in. The HDLC logic counts the number of similar bits
+sent. If five consecutive i&rsquo;s are sent, then the logic will &lsquo;stuff in&rsquo; an
+extra O in the sixth position to regain the sync. Likewise if five consecutive
+O&rsquo;s are sent, then the logic &lsquo;stuffs in&rsquo; an extra 1 in the sixth position. The
+receiving end knows all about this, and if it sees a transition in the sixth
+position it knows to throw that bit away. Very simple.
+</p>
+<p>
+The only time this &lsquo;bit stuffing&rsquo; does not take place is with the flags.
+So, if there are six consecutive 1&rsquo;s received without the necessary &lsquo;stuffed
+pit&rsquo;, then one of two things has happened. It must be that start or end of a
+packet. If it&rsquo;s the start, then no preceding data is of consequence, already
+having been dealt with. If it&rsquo;s the end of a packet then either a data error
+occurred, in which case the preceding two bytes won&rsquo;t add up to the CRC,
+making the packet invalid. Or the extra bit did indicate the end of the
+packet, in which case the CRC does add up and the packet is valid.
+</p>
+<p>
+Of course with a high speed interface all the HDLC logic must be in
+hardware, no way can you do the &lsquo;bit stuffing&rsquo;, phase lock clock recovery and
+CRC checking in software when the data rate is approaching the cycle time of
+the processors involved. Special chips have been developed to handle this and
+although expensive, they can really shift. Another criteria with very high
+speed links is the clock recovery itself. Phase shifts in the connecting
+circuits can cause delays in the arrival of the transitions. These delays can
+be a substantial part of a &lsquo;bit time&rsquo; when high speeds are considered. This
+one of the advantages of &lsquo;bit stuffing, the clock signal is an integral part
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+15
+</p>
+<p>
+MBASIC RANDOM ACCESS FILES, AND SOME OTHER NOTES
+</p>
+<p>
+PEE PEP AD PE RE OD PEO DRED OD ODE ED DD DAE EE DOD OD ADDO OD IDOE PD DID OE OO RE REDE DOD OO AE RE OE
+</p>
+<p>
+By C. Bowden (G30CB)
+</p>
+<p>
+The notes on MBASIC in 80-BUS NEWS Vol 2. Issue 3 by P.D. Coker gave a
+fair summary of many of the commands and functions found in MBASIC. As the
+author states, the manual is not a beginners book. Despite the examples in it
+the manual fails to show the power and scope of many of the commands. In this
+article I will explain a few of the features of MBASIC that are not obvious,
+particularly with regard to RANDOM FILES, which are an essential part of most
+serious programs.
+</p>
+<p>
+First an explanation of what Random files are. There are two main types
+of DATA files in use on Computer systems &ndash; Sequential and Random. (Sometimes a
+mixture of both may beused.) A Data file will consist of something like a
+list of names and addresses, or a list of parts, prices and suppliers, etc. As
+the name implies, items in a Sequential file can only be read in strict
+sequence. Thus a file system on a cassette is almost certainly sequential.
+Disks are essentially Random access devices though, because the head can go to
+any part of the disk at any time. MBASIC supports Sequential and Random access
+files (the latter needs CP/M 2.x or better). I prefer to use Random files
+since they have a number of advantages over Sequential files. These include :&ndash;
+</p>
+<p>
+1) A file can be &lsquo;OPEN&rsquo; for &lsquo;READ&rsquo; and &lsquo;WRITE&rsquo; at the same time.
+</p>
+<p>
+2) Any record (number) can be accessed directly.
+</p>
+<p>
+3) There is no need to use &lsquo;RENAMING&rsquo; routines to avoid losing Data files.
+4) More than one file can be open at a time.
+</p>
+<p>
+A particular advantage of Sequential files is that Data types can be
+mixed (i.e. String and Numeric). With Random files only String Data can be
+used. This does not mean that Numeric data cannot be used, as will be shown.
+Data files of both types are composed of &lsquo;RECORDS&rsquo;. The final output of the
+program may be the result of combining records from several different data
+files. The rest of this article applies only to Random files. You will see
+from the title of this article that I am a Radio Amateur. Let us assume that I
+wish to use Random files to keep a &lsquo;card index&rsquo; of stations contacted, so that
+I can quickly find out if I have contacted a station previously. Assume that I
+decide to save the following data. Obviously I could have chosen to save much
+more Data such as full address, equipment details, radio conditions, signal
+strengths etc.
+</p>
+<p>
+For each separate Record on Disk the following Data items :&ndash;
+</p>
+<p>
+Name &ndash; allow 18 characters
+Callsign &ndash; allow 8 characters
+Town &ndash; allow 20 characters
+</p>
+<p>
+allow 16 characters
+allow 8 characters
+</p>
+<p>
+County/State (etc; )
+Date of First contact
+</p>
+<p>
+The first thing to note is that I have allowed a certain number of
+characters per item. The reason for this is that the length of the Record to
+be saved will be the total length of all of the items. Normally BASIC will not
+allow the length of a Random record to vary so it is necessary to guess at the
+MAXIMUM length of each item, and to add them all together. The total length of
+the above record is 70 characters. This space must therefore be left for each
+</p>
+<?php columnEnd(1); ?>

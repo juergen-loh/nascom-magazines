@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<p>
+statement.) Any syntax errors are dealt with by the original
+code. I have also patched most of the other BASIC routines which
+Use line numbers to make things nice and simple.
+</p>
+<p>
+The characters of the label are then counted and a pointer
+to the first character kept for a search, The routine then
+searches the entire program, starting at the beginning, for an
+identical label. Bath labels must be the same length&rsquo; for the
+search to be successful, and any eabedded keywords in the label,
+such as ON, PRINT etc. &lsquo;will not affect the routine. Blanks
+within the label are significant. There is no limit to the
+length of a label, but Xtal wild restrict the maximum number of
+characters in a line to 90+. If the label cannot be found, then
+this is taken to be an error, similar to a GOTO to a line which
+dows nat exist.
+</p>
+<p>
+When a label is found, the relevant line number is
+returned, and the line is searched for in the normal way. This
+method has the great advantage of simplicity, although the
+program text is searched twice. I did this to make the patches
+to Xtal as simple as possible, and to allow other comands which
+use Line numbers to use the cade. The reauction in spaed. for
+finding a label instead of a line number in a large program is
+appox. 60%. In @ small program, or where the line is near the
+beginning of = program, less. This does not seem to be a
+significant amount, since the label can always be replaced by
+the equivalent line number in speed-critical sections af code,
+(with some loss of Clarity). The routine for skipping over
+labels slows the interpreter by only 1 &ndash; 2% so that program
+with ne labels will not seem elower than normal.
+</p>
+<p>
+The only statement which will not work correctly with this
+modification is READ. A DATA statement after a label&rdquo; will be
+ignored by the interpreter, so that the data cannot be accessed.
+However, Using the format 100&rsquo;LABEL&rsquo;sDATA will fix this,
+</p>
+<p>
+Now for the payoff. A list of the commands shich work with
+the new label
+</p>
+<p>
+1. GOTO &ldquo;LABEL&rdquo;
+2. GOSUB &ldquo;LABEL*
+</p>
+<p>
+5S. RUN &ldquo;LABEL&rdquo;
+</p>
+<p>
+4. ON X GOTO &ldquo;LABEL&rdquo;
+5. ON X GOSUB *LABEL&rsquo;
+6. LIST &lsquo;LABEL&rsquo;
+</p>
+<p>
+7. EDIT *LABEL*
+</p>
+<?php columnEnd(1); ?>

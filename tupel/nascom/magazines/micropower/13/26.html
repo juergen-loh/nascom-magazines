@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+NAS-SYS MONITORS
+</h1>
+<p>
+by J.Haigh
+</p>
+<p>
+LOAD L
+</p>
+<p>
+ln Nas-Sys&nbsp;1 this command is used to load data from a paper tape reader.
+The data must have been stored on the tape in the format used by the standard
+Nas-Sys&nbsp;1 tabulate commands i.e., the address of the first data byte, eight data
+bytes, checksum, all represented in hexadecimal and separated by spaces; the
+line is terminated by a carriage return. As the tape is read the data is displayed on
+the screen; when the end of the line is reached (detected by the carriage return)
+the data is read into the workspace by the same routine which reads the arguments
+supplied with commands. Thus the loading address is read into ARG1 (&pound;0C0C,
+&pound;0C0D), the eight data bytes into ARG2 &ndash; ARG9 (&pound;0C0E to &pound;0C1D), and the
+checksum into ARG10 (&pound;0C1E, &pound;0C1F). The routine then totals the values stored
+in ARG1 &ndash; ARG9 and compares the result with the checksum. If the values are
+identical the eight data bytes are copied from the workspace to the appropriate
+memory location, the cursor is reset to the beginning of the line, and the next block
+is read in, overwriting the last line. lf a checksum error is detected, or if invalid
+characters are detected by the routine which reads the data into the workspace, the
+faulty line is scrolled up the screen and the routine proceeds to the next block.
+</p>
+<p>
+Data can be written to a paper tape punch in the correct format by routing the
+output of the Tabulate command to the serial port by means of the External (X)
+command. However, in Nas-Sys&nbsp;3 the Load command has been dropped; the
+address stored in the subroutine table for command L (at &pound;0798) is &pound;0366, the Error
+subroutine. Because the Nas-Sys&nbsp;3 tabulate command is not restricted to the &ndash;
+format of a Load command it has been made more versatile in the line lengths it can
+produce, and also no longer gives a checksum byte.
+</p>
+<p>
+MODIFY Mxxxx
+</p>
+<p>
+This permits direct insertion of data into memory from the keyboard. When the
+command is entered the address xxxx is displayed, followed by the byte currently
+at that address, the cursor is moved left three spaces after the routine which
+displays the data byte; since this routine outputs the two digits which represent
+this byte in hexadecimal followed by a space, this places the cursor on the first
+character of the byte. Data can now be typed in hexadecimal format, successive
+bytes being separated by one or more spaces. When the newline key is pressed the
+monitor interprets the current line; the first number on the line is taken as the
+address at which data storage is to start. If the first group of characters on the line
+is not a valid hexadecimal number, that is, does not consist only of the ASCII
+characters 0 &ndash; 9 and A &ndash; F representing a hexadecimal number between 0 and
+FFFF the word &lsquo;Error&rsquo; is printed, and the routine restarts at the last valid address.
+</p>
+<?php columnEnd(1); ?>

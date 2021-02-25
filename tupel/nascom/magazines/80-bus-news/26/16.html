@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+16
+</p>
+<p>
+Some of the above I got from Belectra&rsquo;s part of the documentation, which
+is clear, if rather brief; much of the rest of the information about the 9511
+came from &ldquo;Modern Microprocessor System Design&rdquo; by Daniel R McGlynn. Also
+included in the information Belectra give you are details of the ports used by
+the board, but there is no need to repeat them here. If you do reconfigure the
+board to other ports, you can easily patch the Pascal compiler&rsquo;s run time
+routines to take account of this, as the address of the data port is stored at
+&pound;0103, and the address of the control port is at &pound;0104. (Quoted from Hisoft&rsquo;s
+&ldquo;Functional Differences between Hisoft Pascal 5D and Hisoft Pascal 4D&rdquo;, which
+comes with the Pascal manual.)
+</p>
+<p>
+Belectra&rsquo;s documentation gives brief but very clear examples of how to
+program the board using Z80 assembly language, and it is clear that this is
+quite an easy job, when compared with writing your own set of floating point
+routines. The thing is, the rest of the program is going to be a bit of a pig,
+if it uses the calculations the board can do, to any great extent. I once
+wrote a biorhythm program in 1K of Z80 code (and I hasten to point out that I
+do not believe in biorhythms!), and it was no fun at all, especially the bit-
+that drew the sine waves. So I will move hurriedly on to the sensible way of
+doing things, namely with high level languages, pausing only to note that if
+you do program the board in assembler, then there is no reason why the Z80 can
+not get on with something else while the HSA-88B is working. For instance, it
+could be preparing the next data to be worked on. It could just as easily be
+controlling another HSA-88B, if you have the money to run more than one of
+them! Then you would need to write some nice queue handling routines,
+especially if there was another board that also ran independantly, like the
+Pluto. I think you had better forget that sort of programming style, unless
+you are a real masochist. After all, you are supplied with Hisoft Pascal 5
+along with the board, and Hisoft&rsquo;s compilers are renowned for the speed of the
+code they produce. HP5 uses the HSA-88B for all its arithmetical work, which
+means that as well as compiling programs that run faster, it also needs a lot
+less memory space for its completely rewritten run-time routines. (Sometimes
+you can have your cake and eat it too!) If you want to use some other compiler
+with the board, or even an interpreter, this is possible, as long as you know
+how to do things like modifying the run-time routines the compiler churns out,
+or finding the bit of the interpreter you need to change. Belectra give brief
+notes about what is required, but also say &ldquo;The only remaining consideration
+is whether a particular compiler or interpreter is worth modifying; some
+generate code which is so inefficient that even if the HSA-88B performed its
+function in zero time there would not be any noticeable difference in overall
+program execution speed.&rdquo; I haven&rsquo;t tried the patch to MBASIC from the last
+issue, as I can&rsquo;t afford MBASIC...
+</p>
+<p>
+Hisoft Pascal 5D is supplied with the manual for the earlier 4D version,
+and six pages of notes concerning the differences between the two compilers,
+marked &ldquo;provisional&rdquo; on my copy. The major change, obviously, is the use of
+the HSA-88B for all arithmetic. This includes integers, all of which are now
+to 32 bit precision. As a result of this, MAXINT is now 2,147,483,647, which
+is a big number! I am not at all bothered by the compiler&rsquo;s inability to
+handle recursive WITH statements, though there is bound to be someone,
+somewhere who thinks this is a fatal flaw! Instead of RANDOM, you now put
+RANDOM(X), where X is either zero, or a seed for the random number routine. If
+you use 0, the value returned is between 0 and 65535 inclusive, rather than
+the old 0 to 255. GOTO (whatever that is) can not transfer execution to
+another block. I haven&rsquo;t written a GOTO in Pascal yet, and if I ever need to,
+I will be quite surprised. The provisional manual gives the addresses in the
+</p>
+<?php columnEnd(1); ?>

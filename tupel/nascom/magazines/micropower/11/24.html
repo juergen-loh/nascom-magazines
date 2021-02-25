@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<h3>
+WAVEFORM DIAGRAMS
+</h3>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-1.png"); ?>
+<br>
+
+<h3>
+2 MHZ VERSION:
+</h3>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-2.png"); ?>
+<br>
+
+<h3>
+4 MHZ VERSION:
+</h3>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-3.png"); ?>
+<br><br>
+
+<table class="rspace-padding waveform-notes">
+
+<tr>
+<td><h3>NOTES</h3></td>
+<td>1,2,3,4</td>
+<td>- DIFFERENT STARTS OF Z-80 ACCESS CYCLE WITH RESPECT TO 1 MHZ</td>
+</tr>
+<tr><td colspan=3>&nbsp;</td></tr>
+<tr>
+<td></td>
+<td><?php imagePlain($imagepath, $magpath, $issuepath, $pagepath, "Image-24-4.png"); ?></td>
+<td>-THIS POINT IN TIME THAT THE &lsquo;WAIT&rsquo; SIGNAL IS SAMPLED BY THE Z-80</td>
+</tr>
+<tr><td colspan=3>&nbsp;</td></tr>
+<tr>
+<td></td>
+<td>*</td>
+<td>-EFFECT OF ADDING CAPACITOR TO EXTEND WRITE ACCESS &ndash; NOT NORMALLY NEEDED</td>
+</tr>
+<tr><td colspan=3>&nbsp;</td></tr>
+<tr>
+<td></td>
+<td>&uarr;</td>
+<td>-THIS ENSURES THAT &lsquo;WAITS&rsquo; GENERATED FROM DIFFERENT SOURCES DO NOT DISTURB THIS SYNCHRONISATION LOGIC.</td>
+</tr>
+<tr><td colspan=3>&nbsp;</td></tr>
+<tr>
+<td></td>
+<td>#</td>
+<td>--THIS &lsquo;PRELIMINARY PULSE ON
+<?php invertedSignal("RVSEL"); ?> HAS NO EFFECT SINCE CYCLE IS NOT
+COMPLETE, IT IS DURING AN UNUSED PROCESSOR ACCESS &lsquo;SLOT&rsquo;, AND THERE IS NO
+CORRESPONDING WRITE GATE
+<?php invertedSignal("WVSEL"); ?></td>
+</tr>
+
+</table>
+<?php columnEnd(1); ?>

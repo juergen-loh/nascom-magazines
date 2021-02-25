@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<p>
+Program lines similar to the following have been included in many simple
+computer-based learning tests.
+</p>
+<p>
+10 READ A$, B$
+20 PRINT &ldquo;What is the capital of&rdquo;;A$
+30 INPUT C$
+40 IF C$=B$ THEN PRINT &ldquo;Correct&rdquo;: GOTO 10
+50 PRINT &ldquo;Hard Luck &ndash;Try again&rdquo;:GOTO 20
+60 DATA SCOTLAND, EDINBURGH, EIRE, DUBLIN
+70 DATA FRANCE, PARIS, WEST GERMANY, BONN
+</p>
+<p>
+Obviously one would enlarge on the program, with random or sequential
+testing, some system of marking results and suitable messages to &lsquo;humanise&rsquo; the
+exercise.
+</p>
+<p>
+It is self-evident that the basic formula using READ, DATA &amp; RESTORE can be
+adopted in all such programs.
+</p>
+<p>
+SET, RESET, POINT
+</p>
+<p>
+As everyone will know by now, the basic Nascom screen has 16 lines of 48
+characters &ndash; i.e. 768 screen locations into which you can PRINT or POKE any of the
+character set. The commands SET, RESET &amp; POINT give you control of a much
+higher number of smaller areas on the screen. In effect, each character space is
+divided into 6 (2 horizontal x 3 vertical), and each &lsquo; pixel&rsquo; as they are called, can then
+be turned on or off by SET and RESET. This gives and effective screen resolution of
+96 x 48; computer manufacturers have been known to refer to this as &lsquo;high resolution
+graphics), but this term should really be reserved for the much higher resolution
+obtainable with bit-mapped graphics or with a programmable character generator.
+As an illustration, we can randomly set all the pixels thus:
+</p>
+<p>
+10 CLS
+20 REM * SET X TO A RANDOM NO. BETWEEN 0 AND 47
+30 X=INT(RND(1)*47) 40 REM* SET Y IN RANGE 0 &ndash; 95
+50 Y=INT(RND(1)*95)
+60 SET(X,Y) : GOTO 20
+</p>
+<p>
+Eventually the screen would be composed entirely of &lsquo; set&rsquo; pixels. Now we can use
+RESET in a similar fashion. First remove the &lsquo;GOTO 20&rsquo; in line 60 and then enter:
+</p>
+<p>
+70 REM* NOW DO A RANDOM RESET
+80 X=INT(RND(1)*47)
+90 Y=INT(RND(1)*95)
+100 RESET (X,Y) : GOTO 20
+</p>
+<p>
+The pixels will now be randomly reset. To complete the program we could use
+POINT to test whether certain pixels had been set, and if so start at the beginning
+again. Remove the &lsquo;GOTO 20&rsquo; in line 100 and then enter:
+</p>
+<?php columnEnd(1); ?>

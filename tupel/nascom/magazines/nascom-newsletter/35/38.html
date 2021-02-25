@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+Printed if double spaced mode.
+</p>
+<p>
+The fourth flag (bit 7) is set if a page is to be repeated,
+with the nuaber of repeats being found in the second register:
+This is checkey at the end of gach page, the marker for this
+being 01, which needs to be set in 1010H for the Generate
+command. If @ page marker is sent to this routine then a CR is
+output 2s a signal to the printer, then the GR flag is reset in
+Preparation for the next page. @ check is then made for the
+Fepeat flag. If it is not get then the Naspen Text and Window
+pointers are set to the next page (lines 49% 50) and Naspen
+ware started so that it is ready to print it when asked. If the
+flag is set then the stack pointer is reset by popping its top
+two registers. Then, after checking that a&rdquo; number has been
+entered into the register and that the number requested has not
+been printed, the program jumps ta the Naspen routine ta. repeat
+the printing&rsquo; of the page.
+</p>
+<p>
+&lsquo;The ather two routines not yet mentioned are the start and
+finish routines. The first character to be output by Naspen is a
+full. When this is received, the routine jumps to LBL6, where
+the mode flags are checked. The last character is 02 and this is
+converted to a CR to allow the printer to finish.
+</p>
+<p>
+While not being a very comprehensive print rautine and
+&lsquo;though the mades have to be set manually before printing, I have
+found this a very useful addition and I hope that you do&rsquo; too.
+</p>
+<p>
+000 3 NASPEN PRINT ROUTINE
+e061 E&para;
+</p>
+<p>
+0802 FFAGE &mdash;: FOINTS NASPEN TO NEXT PAGE
+003 }END DUTFUTS CR
+</p>
+<p>
+aces ECR OUTPUTS LF FOR CONSECUTIVE
+</p>
+<p>
+8905
+008
+</p>
+<p>
+FLAGS + 4 &ndash; CONSECUTIVE CRS
+= DOUBLE SPACING
+</p>
+<p>
+&amp; = MARGIN. NO. SPACES IN O-3
+</p>
+<p>
+9807
+eae REPEAT PAGE NO. IN 2ND REGTSI.6
+8009 E&para;
+</p>
+<p>
+eto PAGE EDU oar
+</p>
+<p>
+en Fou aaa
+</p>
+<p>
+wiz CR EDU 8D
+</p>
+<p>
+IE REAL LOU a
+</p>
+<p>
+8018 ENDMER EDU OFF
+</p>
+<p>
+ois WINDOW EDU a1ui4
+</p>
+<p>
+ois TEXT EGU e1a18
+017 NPENUS EDU BSUS
+</p>
+<p>
+8018 NERINT EO BABE
+botu
+9020 ORG gucEo
+cee 8021 STOKE EFS 2
+32 D7 0022 REALI RST REAL
+33 SD e023 DFE FNDSTR-RCAL1-2
+</p>
+<?php columnEnd(1); ?>

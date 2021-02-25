@@ -1,0 +1,86 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    88</span>
+
+FAB5 C1         POWER:  POP     BC              ; Get base
+FAB6 D1                 POP     DE
+FAB7 CD13F8             CALL    TSTSGN          ; Test sign of power
+FABA 78                 LD      A,B             ; Get exponent of base
+FABB CAFAFA             JP      Z,EXP           ; Make result 1 if zero
+FABE F2C5FA             JP      P,POWER1        ; Positive base - Ok
+FAC1 B7                 OR      A               ; Zero to negative power?
+FAC2 CAB0E3             JP      Z,DZERR         ; Yes - ?/0 Error
+FAC5 B7         POWER1: OR      A               ; Base zero?
+FAC6 CA34F6             JP      Z,SAVEXP        ; Yes - Return zero
+FAC9 D5                 PUSH    DE              ; Save base
+FACA C5                 PUSH    BC
+FACB 79                 LD      A,C             ; Get MSB of base
+FACC F67F               OR      01111111B       ; Get sign status
+FACE CD5FF8             CALL    BCDEFP          ; Move power to BCDE
+FAD1 F2E2FA             JP      P,POWER2        ; Positive base - Ok
+FAD4 D5                 PUSH    DE              ; Save power
+FAD5 C5                 PUSH    BC
+FAD6 CDE6F8             CALL    INT             ; Get integer of power
+FAD9 C1                 POP     BC              ; Restore power
+FADA D1                 POP     DE
+FADB F5                 PUSH    AF              ; MSB of base
+FADC CD8EF8             CALL    CMPNUM          ; Power an integer?
+FADF E1                 POP     HL              ; Restore MSB of base
+FAE0 7C                 LD      A,H             ; but don't affect flags
+FAE1 1F                 RRA                     ; Exponent odd or even?
+FAE2 E1         POWER2: POP     HL              ; Restore MSB and exponent
+FAE3 22E610             LD      (FPREG+2),HL    ; Save base in FPREG
+FAE6 E1                 POP     HL              ; LSBs of base
+FAE7 22E410             LD      (FPREG),HL      ; Save in FPREG
+FAEA DCA7FA             CALL    C,NEGAFT        ; Odd power - Negate result
+FAED CC3CF8             CALL    Z,INVSGN        ; Negative base - Negate it
+FAF0 D5                 PUSH    DE              ; Save power
+FAF1 C5                 PUSH    BC
+FAF2 CDC7F6             CALL    LOG             ; Get LOG of base
+FAF5 C1                 POP     BC              ; Restore power
+FAF6 D1                 POP     DE
+FAF7 CD08F7             CALL    FPMULT          ; Multiply LOG by power
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    89</span>
+
+FAFA CD44F8     EXP:    CALL    STAKFP          ; Put value on stack
+FAFD 013881             LD      BC,08138H       ; BCDE = 1/Ln(2)
+FB00 113BAA             LD      DE,0AA3BH
+FB03 CD08F7             CALL    FPMULT          ; Multiply value by 1/LN(2)
+FB06 3AE710             LD      A,(FPEXP)       ; Get exponent
+FB09 FE88               CP      80H+8           ; Is it in range?
+FB0B D2EFF7             JP      NC,OVTST1       ; No - Test for overflow
+FB0E CDE6F8             CALL    INT             ; Get INT of FPREG
+FB11 C680               ADD     A,80H           ; For excess 128
+FB13 C602               ADD     A,2             ; Exponent > 126?
+FB15 DAEFF7             JP      C,OVTST1        ; Yes - Test for overflow
+FB18 F5                 PUSH    AF              ; Save scaling factor
+FB19 21B6F6             LD      HL,UNITY        ; Point to 1.
+FB1C CDBEF5             CALL    ADDPHL          ; Add 1 to FPREG
+FB1F CDFFF6             CALL    MULLN2          ; Multiply by LN(2)
+FB22 F1                 POP     AF              ; Restore scaling factor
+FB23 C1                 POP     BC              ; Restore exponent
+FB24 D1                 POP     DE
+FB25 F5                 PUSH    AF              ; Save scaling factor
+FB26 CDCAF5             CALL    SUBCDE          ; Subtract exponent from FPREG
+FB29 CD3CF8             CALL    INVSGN          ; Negate result
+FB2C 213AFB             LD      HL,EXPTAB       ; Coefficient table
+FB2F CD6AFB             CALL    SMSER1          ; Sum the series
+FB32 110000             LD      DE,0            ; Zero LSBs
+FB35 C1                 POP     BC              ; Scaling factor
+FB36 4A                 LD      C,D             ; Zero MSB
+FB37 C308F7             JP      FPMULT          ; Scale result to correct value
+
+FB3A 08         EXPTAB: DEFB    8                       ; Table used by EXP
+FB3B 402E9474           DEFB    040H,02EH,094H,074H     ; -1/7! (-1/5040)
+FB3F 704F2E77           DEFB    070H,04FH,02EH,077H     ;  1/6! ( 1/720)
+FB43 6E02887A           DEFB    06EH,002H,088H,07AH     ; -1/5! (-1/120)
+FB47 E6A02A7C           DEFB    0E6H,0A0H,02AH,07CH     ;  1/4! ( 1/24)
+FB4B 50AAAA7E           DEFB    050H,0AAH,0AAH,07EH     ; -1/3! (-1/6)
+FB4F FFFF7F7F           DEFB    0FFH,0FFH,07FH,07FH     ;  1/2! ( 1/2)
+FB53 00008081           DEFB    000H,000H,080H,081H     ; -1/1! (-1/1)
+FB57 00000081           DEFB    000H,000H,000H,081H     ;  1/0! ( 1/1)
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

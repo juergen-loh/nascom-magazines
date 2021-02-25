@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-16-1.png"); ?>
+</h1>
+<p>
+We&rsquo;ve received the following from John Fisher of Ipswich who
+very kindly sent us a tape which we took to be a Naspen tape. It
+wasn&rsquo;t! We presume the tape was made on a text handler of his own, and
+the tape format was ASCII strings, more like a Basic LIST. Still
+about 5 minutes of thinking had tape loader software prepared, and the
+following into a Naspen file for editing.
+</p>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+HOMEBREW HARDWARE
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by John Fisher.
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+This is the first of a (possible) series of notes for enhancing
+the performance of the NASCOM-2. The author&rsquo;s interests are to do with
+pictures and signal processing and to this end I have tried to increase
+the speed and memory capacity of the processor, to increase the speed
+of the cassette interface and to develop a cheap and flexible way of
+drawing pictures. These requirements happen to co-incide with those of
+&lsquo;dynamic&lsquo; games.
+</p>
+<p class="noindent">
+First of ail the memory.
+</p>
+<p>
+This expands the memory of the &lsquo;32k&rsquo; RAM (A) board from 32k
+(which it has already got sockets for) up to 48k. This is accomplished
+by connecting a further eight dynamic RAM memory chips onto the
+multiplexed address bus internal to the board. This means that only 2
+additional ICs apart from the 4116s are needed and very little extra
+wiring need be done, such that it can be done in an afternoon.
+</p>
+<p class="noindent">
+Here is a step-by-step list of the modifications needed.
+</p>
+<p>
+1) Connect the 8 extra 4116s piggy-backed on top of ICs 12-19,
+(see diagram) with all pins paralleled except the pin 4s.<?php spChar("zwsp"); ?>(Row
+Address Strobe). I used sockets soldered to the backs of the
+existing 4116s with the pin 4s bent up.
+</p>
+<p>
+2) Connect all 8 of the new pin 4s together. This is the new
+RAS3 point.
+</p>
+<p>
+3) Wire up a new RAS3 driving circuit as follows:
+</p>
+<p>
+Create a new address select pad P99. connect this to +5v via a
+1k resistor ( )
+</p>
+<p>
+Mount 2 extra ICs (38 &amp; 39). These are 74LS02 and 7432
+respectively. This can be done by a small strip of Veroboard
+and some doublesided Sellotape. I put the chips on top of
+positions IC 29 &amp; IC 30. ( )
+</p>
+<p>
+CUT the following tracks on the p.c.
+</p>
+<p class="noindent">
+IC Pin to IC Pin<br>
+36 14 +5v 36 13 ( )<br>
+37 8 36 2 ( )
+</p>
+<p>
+CONNECT the following:
+</p>
+<p class="noindent">
+IC Pin to IC Pin ( )<br>
+&ndash; P99 36 13 ( )<br>
+37 8 39 1 ( )<br>
+39 3 36 2 ( )<br>
+&ndash; P99 38 5 ( )
+</p>
+<?php columnEnd(1); ?>

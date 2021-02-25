@@ -1,0 +1,148 @@
+<?php columnStart(1); ?>
+<p>
+Record 12. The source code of the GIPB, as a routine to be linked into a program,
+0700: 00: CO D5 3A 3F 00 5F DB BO AB 28 07 AB 32 3F 00 07 @U:?. [0 +(.+22.. follows.
+</p>
+<p>
+0710: 10: B7 IF D1 C9 3A 03 00 E6 01 C8 3E 1B CD 38 FE 3E 7.Q1:..f&nbsp;.H&gt;&raquo;M8&rdquo;&gt;
+</p>
+<p>
+0720: 20: 6B CD 38 FE CD 42 FE B7 C8 3E 1B CD 38 FE 3E 4B kM8&rsquo;MB&ldquo;7 H&gt;.M8&rdquo;&gt;K title CPMGG Gtant Intelligent Print Buffer (GIPB)
+</p>
+<p>
+0730: 30: CD 38 FE CD 42 FE 37 C9 F5 DB B2 IF 38 FB F1 D3) M8&ldquo;MB&rdquo;7I u[2.8{qS +280
+</p>
+<p>
+0740: 40: Bl C9 DB B2 17 38 FB DB Bl C9 3E 1B CD 38 FE 3R 11[2.8{[ 1I&gt;.M8&rdquo;&gt; Written to enable a Gemini running under RP/M to operate as a
+0750: 50: 3F CD 38 FE CD 42 FE 32 49 00 CD 42 FE 32 48 00 ?M8"MB"2 I.MB&rdquo;2H. giant intelligent print buffer.
+</p>
+<p>
+0760: 60: CD 42 FE C9 3E 1B CD 38 FE 3E 3D CD 38 FE 7C C6 MB&rdquo;I&gt;.M8 &ldquo;&gt;=M8&rdquo; | F Input is via a P10, interrupt driven.
+</p>
+<p>
+0770: 70: 20 CD 38 FE 7D C6 20 CD 38 FE C9 3H 1B CD 38 FE M8&rdquo;}F M 8"1I&gt;.M8&rdquo; Output is to a printer on the serial port.
+</p>
+<p>
+Record 13. Provision is made for the output to be controlled from a keyboard
+0780: 00: 3B 5A CD 38 FE C9 D5 11 08 48 18 04 D5 11 09 40 DZMB-IU. .H..U..@ on the serial port.
+</p>
+<p>
+0790: 10: F5 3A 03 00 E6 O1 28 12 32 1B CD 38 FE 3E 59 CD t.e&pound;.(. &gt;.M8&rsquo;-&gt;YM
+O7A0: 20: 38 FE 7A CD 38 FE 7B CD 38 FE Fl Di C9 DS 11 08 8"2M8"{M B-qQIU..
+O7B0: 30: 08 18 DD 3E 03 D3 BC 21 68 00 C3 C4 FE 3E 07 D3. ..J&gt;.S&lt;! h.CD&rdquo;&gt;.S
+07C0: 40: BC 2A 3B 00 3E 83 D3 BB 7C D3 B9 7D D3 BS 3E 03 &lt;*3.&gt;.8; |S9}S8&gt;..
+O7D0: 50: D3 BB C9 50 00 C4 09 75 O00 83 06 10 O1 70 04 34 S;IP.D.u&nbsp;.....p.4
+O7E0: 60: O1 Al 03 50 01 41 03 00 03 Al O1 00 06 DO 00 00 .!.P.LA.. wl eee Pee
+O7FO: 70: 12 68 00 00 18 45 00 00 20 3F 00 00 24 34 00 00 .h...E.. 7..54..
+Record 14.
+</p>
+<p>
+0800: 00: 36 23 00 00 48 1A 00 00 72 11 00 00 96 OD 00 2F 6&pound;..Hsee Teoeese/
+0810: 10: 19 07 00 4F 38 03 00 OF 56 02 00 00 00 FF FF FF&nbsp;...O8.
+0820: 20: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+0830: 30: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+0840: 40: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+0850: 50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+0860: 60: FF FF FF FF FF FF FF FF FF FF PF FF FF FF FF FF
+0870: 70: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+Record 15. .
+</p>
+<p>
+0880: 00: FF FF FF FF FF FF FF FF FF FF FF FF FF FPF FF FE sesavsae cosvence 3 Select type of parallel interface
+</p>
+<p>
+0890: 10: FF FF FF FF FF FF FF FF FF FF FF FF FF fF FF FF os cent equ true ; Set true to emulate Centronics interface
+O8A0: 20: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF ; Set false for original version
+</p>
+<p>
+O8B0: 30: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+</p>
+<p>
+o8co: 40: FF PF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+O8D0: 50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+O8E0: 60: FF FF FF FF FF FF FF FF FF FF FF FF FF EF FF FF
+O8FO: 70: FE FF FF PF FF FF FF FF FF FF FF FF FF FF FF FF
+</p>
+<p>
+TR em en eR On om
+</p>
+<p>
+Written by Richard Beal in 1982, originally using only port B with
+strobe and ready lines, using interrupt handling on both machines.
+</p>
+<p>
+This version developed in 1985 to add the option to emulate a
+parallel printer using a Centronics interface, so that interrupt
+handling is no longer required on the host.
+</p>
+<p>
+Port B is the input data port in both versions.
+</p>
+<p>
+For the printer emulator version Port A is the control port.
+</p>
+<p>
+From the point of view of the host, bit 0 is an input printer Busy line
+with l=Busy, O=Ready. Bit 1 is an output strobe which is made low
+</p>
+<p>
+for a short time to show when a character is ready to be printed.
+</p>
+<p>
+Beene ee seeeeene
+</p>
+<p>
+Bema neae sen erane
+</p>
+<p>
+wee eenes coeecnce false equ 0
+ee true equ not false
+</p>
+<p>
+be oeceeeee 3; GIPB routine
+ecw eneee global gipb
+</p>
+<p>
+se eee cee eoecenee ; Dummy routines
+global reset&nbsp;,open,close,read,write
+global make,setdma
+</p>
+<p>
+; Set returned value (for dummy routines)
+external bret
+</p>
+<p>
+3; Addresses
+</p>
+<p>
+jbdos equ 0005h
+abdos equ QO006h
+work equ 0100h
+inttab equ 0160h
+stk equ 0200h
+</p>
+<p>
+RP/M entry point
+</p>
+<p>
+Address of top of memory+l
+Start of work area
+Interrupt address table
+Start of buffer
+</p>
+<p>
+3; RP/M routines
+contio equ 6
+prts equ 9
+</p>
+<p>
+Direct console I/O
+Print string
+</p>
+<p>
+eee
+</p>
+<p>
+14
+</p>
+<?php columnEnd(1); ?>

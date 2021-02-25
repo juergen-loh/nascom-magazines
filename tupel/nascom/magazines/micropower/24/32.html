@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+night typing articles into Wordease. Having struggled te
+produce the last one and a half issues I can admire him for
+managing to keep the magazine going for the last year. I hope
+that I&rsquo;can do an wells
+</p>
+<p>
+3) Nasprint Multiple Copies
+</p>
+<p>
+This note came from fr. S, Stubbs of Inverurie,
+Aberdeenshire.
+</p>
+<p>
+&lsquo;Qne of the more obvious ommissions in Naspen is the ability
+to print multiple copies of the same thing, without having to
+press &lsquo;P&rsquo; every time. I produce about 100 copies of a 5000
+Word club newsletter every month so I use the following piece
+GF relocateable code which holds in B the number (in hex) of
+copies required and calls the print routine in Naspen through
+2 loop. The code can go anywhere except in Naspen workspace. I
+Use OCB0 hex.
+</p>
+<p>
+oceo 08 3A LD B,&pound;3A_ 758 copies wanted
+oce? CD C2 BA CALL CBAC? iNaspen print routine
+oces | 10 FB DINZ &pound;0C82 ;Loop back 5B times
+oca7 C3 04 88 JP 8RE06 cReturn to Naspen
+</p>
+<p>
+To use, just enter this code having set the secona byte for
+the number of copies in hex (up to 255 of FF hex) and execute
+at the address loaded. Eneure that when you exit from Naspen
+you leave the cursor pointing at the first character to be
+Printed or use the &ldquo;2&rdquo; command before leaving 1f you want the
+thale text file printing. Ax the loop executes, you mill see.
+Scompleted&rdquo; printed on the screen after every copy. This
+because it is within the print routine in Naspen and before
+the RETurn command.
+</p>
+<p>
+6) Modifying the Nascom&nbsp;2 for 2752 EPROMe Amendment
+</p>
+<p>
+fe. A. Want spotted this error ina drawing in Volume 2,
+Number 2 in the 2752 EPROM article D2 going into the 74LS175
+has been assigned to pin 12 in the diagram but should be
+assigned to pin 13 to work.
+</p>
+<p>
+&pound;000-Foow
+mr &mdash;
+2 iy BS } BRon
+D2 tis Te 744532 DAC 4 bank 4,
+15| 952 XROM J 50052 hagh
+</p>
+<p>
+DI SRO
+</p>
+<p>
+3 los.
+Do z Conlints banka 0 bo 3
+Ve IC He
+</p>
+<?php columnEnd(1); ?>

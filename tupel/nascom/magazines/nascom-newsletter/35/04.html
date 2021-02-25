@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+SYS-EX {s warm started by executing the program efeven
+(0008H) bytes on from the start. e.g. If it is installed
+between 1000H and ISFFH, SYS-Ex is warm started with the NAS-SYS
+command? :
+</p>
+<p>
+E 1008
+</p>
+<p>
+A warm start is 9 useful alternative to the NAS-SYS MRET
+instruction when ending an assembler program. 8.9.
+</p>
+<p>
+eee cS OB Be JP sySK
+</p>
+<p>
+Adding further monitor extensions
+</p>
+<p>
+There are five unused keyboard commands (gj m op) all of
+which cause a routine at @400H beyond the start of SYS-EX to be
+Called. Also, the two called routines USCRI and USCR2 call a
+routine at 0400H beyond the start of SYS-EX. &ldquo;If suitable code
+is located at this address, the commands &ldquo;a&rdquo;, "i&rdquo;, "m&rdquo;, "0",
+&ldquo;p, USCRI and USCR2 may be used to call&rsquo; a further&rsquo; seven
+commands, five of which are accessible directly from the
+keyboard.
+</p>
+<p>
+As SYS-EX is written in relocatable code, it is possible to
+copy SYS-Ex itself into any suitable location in RAM and then to
+Provide the extension commands in following RAM Locations.
+</p>
+<p>
+Gn entry to the extension code located beyond SYS-EX, the
+NAS-SYS stack is in use, Care should therefore be taken to
+ensure that:
+</p>
+<p>
+higher addresses on the stack are not corrupted
+</p>
+<p>
+2. the maximum depth of the stack is not exceeded
+</p>
+<p>
+3. the user code pops the same number af bytes off the stack
+a5 it pushes on to it.
+</p>
+<p>
+A return to SYS-Ek may be made by executing a Z80 RET
+instruction. If the Carry flag is set upon return to SYS-EX,
+the message &ldquo;Error&rdquo; is displayed on the screen prior to the
+acteptance of further input.
+</p>
+<p>
+Upon entry to the extension code, various 760 registers have
+preset values. These values are as follows.
+</p>
+<p>
+REGISTER(S) CONTENTS:
+a routine number or ASCII code
+HL Value from ARGL
+ve value from ARG?
+</p>
+<p>
+Bc Value from ARGS
+SP OCSFH within the NAS-SYS stack
+</p>
+<p>
+Fortytwo bytes are available on the stack for use by the
+</p>
+<?php columnEnd(1); ?>

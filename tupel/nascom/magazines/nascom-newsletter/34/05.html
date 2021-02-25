@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+may be used. The SYS-EX equivalent of MONITOR is to perform
+warm start to SYS-EX. This may be achieved fron BASIC in the
+following way.
+</p>
+<p>
+DOKE the SYS-EXx warm start entry point inte Jocation 4100.
+The warm start entry point is Q@QBH beyond the start of SYS-EX.
+14 SYS-EX is installed at BO@H, the required BASIC command is
+</p>
+<p>
+DOKE 4100,-20469 (ie. B00BH = -20469)
+</p>
+<p>
+BASIC can now be left by calling the USR function. (eg.
+PRINT USR(@? &gt;
+</p>
+<p>
+One example of the usefulness of this feature is shen
+conversion between decimal and hexadecimal ia required. In this
+case, the procedure mould bet
+</p>
+<p>
+1, Leave BASIC using:
+DOKE 4100,-20469 + PRINT USR(G!
+</p>
+<p>
+2. Perform the conversion using &ldquo;d&rdquo; or &ldquo;h&rdquo;
+</p>
+<p>
+3. Return to BASIC using NAS-SYE &ldquo;2".
+</p>
+<p>
+1f you put SYS-EX into EPROM and set the hardware jump to
+start SYS-EX, then # press of the RESET button will take you
+Straight from BASIC to SYS-EX. As this performs a cold starty
+the screen will also be cleared.
+</p>
+<p>
+Now far something for 760 assembler programmers. An earlier
+part mentioned that all of the SYS-EX routines may be called
+from an assembler program. The available routines are all of
+the keyboard commands plus 9 further commands. All routines are
+called by calling the Same entry point within SYS-EX (3 bytes on
+from the start of the monitor extention). The byte following
+the call instruction should contain the required routine number.
+In the case of the keyboard commands, the routine number is the
+ASCIT code of the lower case Routines start at 61H
+&ldquo;1, The 9 additional routines are numbered 75H through
+ast.
+</p>
+<p>
+Parameters required for 2 called command are set up in the
+NAS-SYS arguments before the command is called. Commands do not
+preserve the contents of registers AF, BC, DE, ML, so the user
+must save any values required. If, on return from calling #
+SYS-EX routine, the Carry flag is set ON, an error condition has
+been detected and the command may not have been completed.
+</p>
+<p>
+The 9 routines which are available only by calling from an
+mbler program are now described.
+</p>
+<?php columnEnd(1); ?>

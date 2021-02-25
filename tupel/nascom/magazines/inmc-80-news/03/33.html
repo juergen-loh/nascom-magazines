@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+Enough of the flowery stuff (and I haven&rsquo;t touched a drop all night even
+though it&rsquo;s Christmas. Shows how long ago this was written.) I got out the
+instructions and didn&rsquo;t understand half the words in the book as it was written in
+&lsquo;foriegn&rsquo; disguised as English. But I understood the circuits and layout diagrams, so
+I assembled it. A PSU was hastily designed on the back of a fag packet and the parts
+procured. Three days after my escape from Chesham I switched it on and it worked (no,
+no problems at all). Well it worked. Now what do you do with it?
+</p>
+<p>
+I fumbled through the manuals and discovered that the &lsquo;T&rsquo; and &lsquo;M&rsquo; commands
+worked and that I could alter locations within the memory and then redisplay what I
+had done. I tried to understand the big program in the software book, as an example of
+what to do (it turned out to be a listing of the monitor, but I don&rsquo;t remember that I
+realised this at the time). But there was no clue here. Everything was utterly
+incomprehensible. Well this was a fine start. #200.00 worth of computer I couldn&rsquo;t
+use, when the punters who had paid their deposits saw it, I&rsquo;d be a likely guest at a
+lynching with me as main participant. My govenors would be at the front of the crowd
+making sure the knots were tight, as it was I who had recommended that XXXXX&rsquo;s buy the
+darned things in the first place. I had to make it do something to prove to the
+customers, who would be collecting in a couple of weeks, that they hadn&rsquo;t spent a
+couple of hundred quid on a pile of electronic junk, and that they really didn&rsquo;t want
+their money back.
+</p>
+<p>
+Don&rsquo;t try to be too clever, Dave (Very friendly guy, calls himself by his
+first name&nbsp;!- Ed.), little steps are always the easiest. First define what it is I
+intend to make it do.
+</p>
+<p>
+Always know what it is you intend to do. I was told once that the definition
+of the &lsquo;Genius Level Programmer&rsquo; is someone who writes a program, tests it to find out
+what it does, and then writes the specification. None of us are geniuses, so keep it
+simple, and always know what you are about.
+</p>
+<p>
+So I have about a week to prove that it will do something, but what? How about
+making an asterisk blink on and off on the screen. That would prove that I had some
+control over it. So think!!!
+</p>
+<p>
+First of all it&rsquo;s necessary to get some idea of the syntax of the machine
+instructions. Read and reread the Z80 technical manual. Machine instructions are
+written in mnemonics. That means it&rsquo;s supposed to make it easy to remember. This is
+true of some, like &lsquo;LD&rsquo; stands for &lsquo;load&rsquo;. But others are impossible. Who would know
+that &ldquo;DJNZ&rsquo; meant &lsquo;decrement, jump not zero&rsquo; unless I had just told you. I think it&rsquo;s
+done as a convenient shorthand and saves cramped wrists when hand assembling programs.
+The first thing about the instruction codes is that they are split into groups, 8 bit,
+16 bit, load, logical, arithmetic, etc. Another thing is that when dealing with a
+&lsquo;from &ndash; to&rsquo; type instruction, like a load, the destination is always first, the source
+is always last. So LD A,C means load (remember from the last episode this actually
+means copy) A with C. Or literally, fill A with a copy of C. That load instruction its
+known as a &lsquo;load register direct&rsquo; instruction. Think about it, it&rsquo;s sensible. Another
+one is to &lsquo;load register immediate&rsquo;, that is don&rsquo;t copy the data from anywhere, just
+put it there. These Zilog people seem to use &lsquo;n&rsquo; to represent the data, so LD A,n
+means load A (destination first again, notice) with &lsquo;n&rsquo;, whatever &lsquo;n&rsquo; might be. An
+interesting group of load instructions is the &lsquo;load register indirect&rsquo; (a less
+sensible definition I think), this is where one of the main 16 bit register pairs, HL,
+DE or BC is loaded with a 16 bit address, and then a register is loaded with the data
+&lsquo;pointed at&rsquo; by the 16 bit register pair. LD A,(HL) is one of this group. The brackets
+round the HL indicate that it is indirect, and it is the contents of the location
+pointed to by HL which we are interested in. Yet another of these instruction types is
+the &lsquo;load ext addr&rsquo; where the idea is to either load an address location with the
+contents of a register, or vice versa. So LD A,(nn), two &lsquo;n&rsquo;s indicating a 16 &laquo;bit
+address, means fill A with a copy of the contents of address &lsquo;nn&rsquo;. Note the brackets
+again indicate that it is the contents of the address we are interested in, and not
+the address itself. There are two other types, &lsquo;indexed&rsquo; and &lsquo;implied&rsquo;. I&rsquo;ll let you
+work those out for yourself.
+</p>
+<?php columnEnd(1); ?>

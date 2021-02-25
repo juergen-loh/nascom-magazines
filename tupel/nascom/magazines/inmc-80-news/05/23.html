@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p class="continued">
+knowledge of machine code. (Basic could have been used, but would slow the
+responce of complicated effects.) Within a couple of hours, we had a very
+passable &lsquo;sea lapping on shore&rsquo; sound with nice changes in level for big and
+small waves, with a few random seagulls thrown in for good measure. The
+versatility of the AY-3-8910 is unending, and given a bit of external tone
+forming, limitless (well almost).
+</p>
+<p>
+The AY-3-8910 contains three independant &lsquo;tone&rsquo; channels, each covering
+a range from the sub-sonic to the supersonic. Each &lsquo;tone&rsquo; channel is preset by
+a twelve bit word contained in 2 registers. There is a fourth channel, a
+&lsquo;noise&rsquo; generator, which will produce random width pulses with a spectural
+distribution controlled by a five bit register. It can produce &lsquo;noise&rsquo; from a
+quite throaty &lsquo;shuush&rsquo; to a high pitched &lsquo;sssssss&rsquo; (if you get my meaning). One
+register controls the Functions of the channel mixer. Enabling each of the
+three &lsquo;tone&rsquo; channels independantly, and allowing the &ldquo;noise&rdquo; channel to be
+mixed with any or all of the three &ldquo;tone&rdquo; channels. Three registers control the
+amplitude of the three output channels, these require four bits for each. A
+fifth bit on each amplitude register switches that channel through the
+&lsquo;envelope shaper&rsquo;, ignoring the preset amplitude in the lower four bits. The
+envelope period is controlled by a 16 bit control word in two registers, and
+may be preset from milliseconds to seconds, and affects those channels directed
+to it. The envelope shaper could produce quick annoying clicks with each change
+of envelope level when run close to it&rsquo;s maximum period. These could probably
+be filtered out externally. The last register controls the envelope shape and
+cycle. Allowing positive or negative attack, continuous output, alternate or
+one shot outputs, and lots of other permutations. There are two other registers
+which work on conjunction with an external EPROM/ROM pack for remote and/or
+preset control. Although the PSG board has these connected to a 16 pin&rsquo; socket,
+they play no part in the use of the PSG.
+</p>
+<table class="psg">
+<tr><td></td><td style="text-align: right">Bit</td><td colspan=8></td></tr>
+<tr><td colspan=2>Register</td><td>B7</td><td>B6</td><td>B5</td><td>B4</td><td>B3</td><td>B2</td><td>B1</td><td>B0</td></tr>
+<tr><td>R0</td><td>Channel A Tone Period</td><td colspan=8>8-bit fine tune A</td></tr>
+<tr><td>R1</td><td colspan=5></td><td colspan=4>4-bit course tune A</td></tr>
+<tr><td>R2</td><td>Channel B Tone Period</td><td colspan=8>8-bit fine tune B</td></tr>
+<tr><td>R3</td><td colspan=5></td><td colspan=4>4-bit course tune B</td></tr>
+<tr><td>R4</td><td>Channel C Tone Period</td><td colspan=8>8-bit fine tune C</td></tr>
+<tr><td>R5</td><td colspan=5></td><td colspan=4>4-bit course tune C</td></tr>
+<tr><td>R6</td><td>Noise Period</td><td colspan=3></td><td colspan=5>5-bit noise period</td></tr>
+<tr><td>R7</td><td>Enable</td><td colspan=2>IN/OUT</td><td></td><td>Noise</td><td colspan=2></td><td>Tone</td><td></td></tr>
+<tr><td></td><td></td><td>IOB</td><td>IOA</td><td>C</td><td>B</td><td>A</td><td>C</td><td>B</td><td>A</td></tr>
+<tr><td>R10</td><td>Channel A amplitude</td><td colspan=3></td><td>M</td><td>L3</td><td>L2</td><td>L1</td><td>L0</td></tr>
+<tr><td>R11</td><td>Channel B amplitude</td><td colspan=3></td><td>M</td><td>L3</td><td>L2</td><td>L1</td><td>L0</td></tr>
+<tr><td>R12</td><td>Channel C amplitude</td><td colspan=3></td><td>M</td><td>L3</td><td>L2</td><td>L1</td><td>L0</td></tr>
+<tr><td>R13</td><td>Envelope period</td><td colspan=8>8-bit fine tune envelope</td></tr>
+<tr><td>R14</td><td></td><td colspan=8>8-bit course tune envelope</td></tr>
+<tr><td>R15</td><td>Envelope shape/cycle</td><td colspan=4></td><td>CONT</td><td>ATT</td><td>ALT</td><td>HOLD</td></tr>
+<tr><td>R16</td><td>I/O PORT A data</td><td colspan=8>8-bit parallel I/O</td></tr>
+<tr><td>R17</td><td>I/O PORT B data</td><td colspan=8>8-bit parallel I/O</td></tr>
+</table>
+<p>
+The PHG instruction book gave a machine code routine for updating the
+PSG registers, and although effective was a little tedious. For experimenting,
+we found the update routine below a little more handy. The Nascom screen set up
+with a Tab command to display the register table at the top. Beneath this was
+an Execute command to execute the command then return to NAS-SYS. Beneath this
+was an &lsquo;M&rsquo; command. By entering the M command, the cursor could be skipped
+around the Tabbed register table on the screen, a few registers changed changed
+here and there, and then the cursor skipped down to the &lsquo;E&rsquo; command and the
+routine re-executed to see the affect. That then brought the cursor back to the
+&lsquo;M&rsquo; command ready for the next try.
+</p>
+<?php columnEnd(1); ?>

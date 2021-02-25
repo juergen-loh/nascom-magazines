@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+10
+</p>
+<p>
+The ports are used in a way compatible with the Gemini implementation of
+the Centronics interface, as follows:&ndash;
+</p>
+<p>
+Port A is used in control mode.
+</p>
+<p>
+Bit 0 is an output signal from the GIPB and is high when Busy and low
+when able to accept data.
+</p>
+<p>
+Bit 1 is an input to the GIPB and is a strobe which goes low for a short
+time when data has been sent to port B.
+</p>
+<p>
+Port B is used in control mode, as the GIPB input port. Bit 7 of the
+input data is ignored, and the output to the printer has even parity added to
+follow the normal standards.
+</p>
+<p>
+Operation of the system is completely automatic, and all data received is
+printed as soon as possible. The program uses a circular buffer and
+compresses consecutive spaces to save memory. Up to 128 consecutive spaces
+can be held in one byte. Most listings contain many spaces, so the buffer
+will often be able to hold well over 100K in the 60K available. If the buffer
+becomes full the Busy line remains high so that no data can be lost.
+</p>
+<p>
+If a keyboard is attached the following single character commands are
+available:&ndash;
+</p>
+<p>
+Space Halt the printer, or if halted start printing again. This does not
+affect the input of data to the buffer.
+</p>
+<p>
+D Delete the contents of the buffer and restart the program.
+</p>
+<p>
+T Delete the contents of the buffer and restart the program with a
+minimal buffer of only two bytes.
+</p>
+<p>
+CR Output CR/LF to the console device (normally the printer).
+</p>
+<p>
+M Output a status message to the console device. This shows the
+number of characters waiting to be printed, the number of bytes
+spare in the buffer, and whether or not the printer has been halted.
+</p>
+<p>
+N End the program and pass control to RP/M. RP/M operates as normal
+and can boot a disk system but does not have any cassette handling
+routines. The command G F000 will execute the program from RP/M.
+</p>
+<p>
+! Halt the processor.
+</p>
+<p>
+Technical Notes
+</p>
+<p>
+The GIPB operates on an interrupt driven basis, with an interrupt being
+generated when the input strobe goes high rather than low. It was necessary
+to do it this way because some host software does not initialise the ports
+correctly so that the first character is lost following a Reset. This method
+overcomes this problem and should not cause any problems. Some host software
+will send a null during initialisation. This is sent to the printer which is
+likely to ignore it.
+</p>
+<p>
+The GIPB catches all characters transmitted by enabling interrupts and
+then setting the Busy line to 0. After about 8 instructions the Busy line is
+set back to 1. This should give the host machine plenty of time to notice
+that the line is not Busy, and decide to output the data. The GIPB waits for
+</p>
+<?php columnEnd(1); ?>

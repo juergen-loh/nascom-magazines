@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+81 41 42 45 C4 nn
+</p>
+<p>
+do? Well it will add ABCD to STRDIS, but will also let CONTROL
+know that this is the last routine to be called and so CONTROL
+will be exited leaving PRDIS to be called &ndash; and then the next
+Instruction.
+</p>
+<p>
+Routine 2 &ndash; This adds the Gth item, in the following List, to
+STROIS leaving HL&rdquo; pointing to one after the last. character in
+the list. You can see that this breaks down into 3 parts,
+</p>
+<p>
+1) Move HL&rdquo; to the beginning of the required element of the
+lise.
+</p>
+<p>
+42) Add the element to STRDIS. It may be more than one
+character.
+</p>
+<p>
+112) Move HL&rdquo; to one after the end of the list.
+</p>
+<p>
+If you use, as I did, the &ldquo;Bit 7&rdquo; technique for your list, then
+part Gi) may just be a call to Routine 1- See how much work you
+can save by spending a little time on these routines.
+</p>
+<p>
+Routine 3 &ndash; This is exactly the same as Routine 2, only not for
+G, but for H- not the ia HL. In fact I will nearly do this one
+for you&rsquo;&rsquo;, Store G somewhere. Put Hin Gs place, call Routine
+2, replace G. Easy isn&rsquo;t 1t?
+</p>
+<p>
+When all these routines are done, you will find that sost of
+the higher ones will call one lower, and so nested subroutines
+build up. In fact to single step through the disassembleris
+fascinating as you can watch the stack pointer (SP) drop like a
+stone as all the return addresses get pushed on. Then, as it
+finishes with each routine the stack pointer slowly grovels it&rsquo;s
+may back to where it began. The first few times you match this
+your heart will be in your mouth as you wait with bated breath
+for the return addresses to be removed, or will it crash? It
+still fascinates me.
+</p>
+<p>
+Routine 4 &ndash; This routine is really like accessing a two
+dimensional string array, and adding the string to STRDIS. There
+are six lists of eight elements. Don&rsquo;t worry!! Not sore data,
+no, these lists were discussed last time. The actual list will
+be&rsquo; speci#ied in CONTROL"S command, ie as the data bits (3, 4&amp;5
+="go back if you have forgotten&rsquo;). The string to be added to
+STRDIS is, in&rsquo; fact the Gth item in the specified list. Easy!!
+Now the Iists each have a code (for the data bits for CONTROL)
+</p>
+<p>
+Bits Name
+345,
+</p>
+<p>
+000 etsy
+001 asi)
+010 ad(G&gt;
+O11 n&gt;
+100 et@)
+</p>
+<?php columnEnd(1); ?>

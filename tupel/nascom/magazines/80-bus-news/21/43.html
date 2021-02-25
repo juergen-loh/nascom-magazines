@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+43
+</p>
+<p>
+2. If the stack pointer is in the paged area and you use the stack the paged
+memory will be corrupted. If you depend on the stack contents (such as return
+address) still being there, then the program will crash.
+</p>
+<p>
+MAP Software
+</p>
+<p>
+Most MAP RAM users will probably never want to write their own software for
+controlling the memory paging, so perhaps the information about programming the
+card is not very important. MAP supply a modified version of the Gemini BIOS
+which supports the MAP RAM as a virtual disk of up to 512K, using a GMS811 or a
+GM813. An alternative is to use a new version of SYS (Version 15.0 or later)
+which now provides support for MAP RAM for Nascom and Gemini computers, with a
+virtual disk of up to 960K bytes. (See article on SYS elsewhere in this issue).
+Most users of additional memory at the moment will want to use it as a virtual
+disk, which can be very useful. (See article on virtual disks elsewhere in this
+issue). However CP/M Version 3, otherwise known as CP/M Plus, is on the way
+(slowly &ndash; horribly complicated), and this requires 96K of memorv as a minimum, if
+advantage is to be taken of most of its features. The MAP RAM will then be in
+even greater demand, assuming that CP/M Plus can ever be got to work on it!
+</p>
+<p>
+[Ed.&rsquo;s notes &ndash; from what we have seen so far of CP/M Plus (Gemini have a
+pre-release version running) the MAP RAM board is NOT the best way to provide the
+additional memory that is required, and it looks as though yet another method of
+RAM switching is yet to be born! The main attraction of CP/M Plus is its
+increased speed, gained by keeping various directory and data buffers in
+additional RAM. The way Digital Research have arranged this, it would seem that
+the type of memory switching provided by the MAP board is unsuitable. By the wav,
+there are two versions of CP/M Plus, one running in 64K or less and one running
+in 96K or more, but I wouldn&rsquo;t hold my breath waiting for either as DRI will not
+yet state the anticipated release date of fully debugged versions. Watch this
+nag. for further details. |
+</p>
+<p>
+The Great A19 Debate
+</p>
+<p>
+The MAP manual points out that the GM813 does not bring address line A19 to
+the 830-BUS. While this is quite true, the GM813% was merely following the 80--RUS
+standard, which does not allow for A19 on the BUS. The obvious place for it is
+line 49, which was instead allocated as an additional ground by Nascom some time
+ago. This extra ground line does not appear to be needed, and everyone now seems
+to agree that the 80-BUS specification should have had line 49 as A19. But what
+should be done about it? Without A19 the maximum memory size is limited to 512K
+bytes, and people are already installing systems with a full megabyte. The MAP
+approach has been to unilaterally redefine the 80-BUS and they have used line 49
+for A19. They suggest that anyone with a GM813 who wants to have more than 512K
+should modify it so that it no longer grounds line 49, but connects it to A19
+instead. But if you do this you should be careful to check all the other ecards in
+the system, and the motherboard itself, as any of these may have implemented the
+80-BUS specification and grounded this line. It would be nice if Gemini agreed
+that this was a good idea, but I suspect that instead they may feel that it would
+be better to define some other line as A19, in order to keep to the universally
+agreed specification and avoid telling people to mutilate the GM813 [Ra. &ndash; and
+ail other Gemini boards and some boards of other manufacturers, including Nascom,
+which as per spec. have this line grounded. I and their motherboards. On your
+system it is probably wisest to follow the recommendations which come with the
+large RAM card you buy, and make a note of what your 80-BUS does. See INMC 80
+Issue 4 for the 80-BUS specification.
+</p>
+<?php columnEnd(1); ?>

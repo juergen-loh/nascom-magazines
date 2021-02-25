@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p>
+equal to zero to signify the end of the prices for any one program. The routine
+to enter the prices would skip an element, and the routine to calculate and print the
+royalties would search for those elements equal to zero, and then move onto the next
+program. The calculation is then [2(arr ays) x say 75(programs)] + 75(vacant
+elements) = 225. Multiplying by the 6 bytes per element then gives 1350 bytes.
+</p>
+<p>
+Phew!!
+</p>
+<p>
+On reflection, this method might also be adopted in handling the program
+name information. But since the program was written first and it works, we&rsquo;ll save
+that up our sleeves, in case we need the space in some future enhancement.
+We do not of course have to write one large program containing all the
+options. The tasks to be done can conveniently be split into &lsquo;file maintainence&rsquo; i.e.
+create, amend or delete the standing information, and the &lsquo;operating&rsquo; program
+to enter the prices and numbers sold and print the letters and summary. However,
+since space did not prove a problem, the program has been left as one complete
+entity. The version which now follows has been more or less de-bugged, although
+some improvements, for example, in the print layout, remain to be made.
+In the next issue I will cover some sections of the program in greater detail, and
+discuss the operation of the Basic File Handler.
+</p>
+<p>
+. . . . . . . . . . . . . . . . . .
+</p>
+<p>
+5 DOKE4271,-20482:DOKE4100,-14336:TC$=&rdquo;RESET&rdquo;:TR=USR(0)
+10 CLEAR10000:DIMN$(30),A$(30),B$(30),C$(30)
+15 DIMD$(30),E$(30),P$(30,20),K(100),L(100)
+50 CLS:PRINTAB(17);&ldquo;ROYALTIES PROGRAM&rdquo;
+55 SCREEN8,3:PRINT&ldquo;Options:
+60 SCREEN5,5:PRINT&ldquo;1) New Authors
+65 SCREEN5,6:PRINT&ldquo;2) New Programs
+70 SCREEN5,7:PRINT&ldquo;3) Amend/Delete Authors/Programs
+80 SCREEN5,8:PRINT&ldquo;4) Quarterly Sales/Prices
+85 SCREEN5,9:PRINT&ldquo;5) Print Authors&rsquo; Letters
+90 SCREEN5,10:PRINT&ldquo;6) Print Summary
+93 SCREEN5,11:PRINT&ldquo;7) Read Program File
+96 SCREEN5,12:PRINT&ldquo;8) Write Program File
+100 PRINT:SCREEN5,14:INPUTC
+110 ONCGOTO200,400,600,1000,1200,1400,1600,1800
+120 IFC&lt;1ORC&gt;8THEN50
+200 FORI=1TO30
+205 IFN$(I)=&ldquo;&rdquo;THENZ=I:I=30:GOTO240
+210 NEXT
+220 PRINT&ldquo;No Space for New Author&nbsp;!&rdquo;
+230 FORA=1TO3000:NEXT:GOTO50
+240 CLS:I=Z:INPUT&ldquo;Author&rsquo;s Name&rdquo;;N$(I)
+245 IFLEN(N$(I))=&lt;13THEN250
+247 PRINT:PRINT&ldquo;Max. 13 chrs.&rdquo;:FORC=1TO3000:NEXT:GOTO240
+250 INPUT&ldquo;Correct&rdquo;;L$
+255 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN240
+260 INPUT&ldquo;ADDR 1&rdquo;;A$(I)
+</p>
+<?php columnEnd(1); ?>

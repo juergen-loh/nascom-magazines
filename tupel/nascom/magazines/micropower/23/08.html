@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Snowdinger 2
+</h1>
+<p>
+by G.J.Davies
+</p>
+<p>
+In the first issue of Micropower (you did get your copy of
+the first issue &ndash;Ed), Snowdinger, a circuit to effectively stop
+on-screen disturbances caused by indiscriminate processor access
+of the VDU RAM, was published. The circuit had one major
+disadvantage, it was for a Nascom&nbsp;1 and my own computer 15 a
+Nascom&nbsp;2. Hence after reading the article, the project was
+forgotten. Now having just finished my exams at college, I was
+looking for something to usefully occupy my time with. Since
+mowing the lawn was completely out of the question, I decided to
+look at the problem of converting Snowdinger into Snowdinger 2.
+This article is the result of some two and a half days solid
+work.
+</p>
+<p>
+For those who either didn&rsquo;t get the first Micropower or have
+forgotten the theory behind Snowdinger, the basic approach is as
+fol Low:
+Each line of the TV picture is 64 micraseconds long and in every
+64 microseconds, 16 are blanked (line blanking), thus if 64
+characters are used for one display line, each will take up a
+time slot of 1 microsecond, Also 16 of the 64 will be lost due
+to the line blanking, leaving 48 characters to be displayed
+fully. Hence Nascom screens are 48 characters wide. For every
+character on a TV line there are E&para; possible dots to be
+displayed, because each character cell is an #16 dot matrix, 16
+TV lines are required to praduce one row of 48 complete
+character cells. The VDU circuitry places an eight bit byte of
+data in the serialiser once per microsecond, where upon it is
+sent to the TV one bit at a time. When it 15 empty the next byte
+of data is loaded and the process goes on repeatedly for all 256
+lines of the Tv picture. If this period of 1 microsecond 15
+split into two seperate halves, one half may be used to send the
+necessary data to the serialiser and the other half may be used
+by the Z80 to access the VDU RAM. Using hardware to synchronise
+the processor to these time slots of 500ns, no screen
+disturbance will occur.
+</p>
+<p>
+The theory sounds simple enough, putting it into practice is
+however a little harder. The first thing that I noticed about
+Snowdingers circuit was that it required slight changes to work
+at 4 Mhz. If this could be avoided in Snowdinger 2, then the
+switches on the Nascom&nbsp;2 could be used as normal. By drawing out
+all the clock waveforms on graph paper and looking in the Z80
+technical manual at the timing for the read and write cycles, I
+Soon discovered why Snowdinger needed circuit changes to work at
+4 Mhz. Wait states are sampled on the falling edge of the 2nd
+clock period (12) of both the read and the write cycle. Since
+there are twice as many falling edges in 4Mhz. a S0ons time slot
+has within it, two falling edges of the 4 Mhz clock, compared to
+one falling edge of the 2 Mhz clock. When no wait state is
+found, the fallowing negetive edge of the clock terminates the
+cycle (whether read or write). In the case of the 2 Mhz clack
+this coincides with the access time slat, but for 4 Mhz the read
+or write cycle will be terminated before the access time slot
+occurs (see diagrams for details of the waveforms)
+</p>
+<?php columnEnd(1); ?>

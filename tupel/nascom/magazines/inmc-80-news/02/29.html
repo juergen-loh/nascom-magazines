@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<p>
+Now having got the program in using the &lsquo;M&rsquo; command, go and read up the &lsquo;S&rsquo;
+command. Notice how the register display is presented when using single step. It might
+help if you stuck a piece of masking tape across the top of the monitor screen, with
+the registers written in order across it, saves continually refering to the book. Away
+we go!! Type S 0C80, and provided you did it all right, then a register display will
+appear on the screen. Whats more, the &lsquo;A&rsquo; register will contain 10H and the &lsquo;PC&rsquo; will
+be pointing at the next instruction (0C82H). Hit &lsquo;Enter&rsquo; again, and the &lsquo;PC&rsquo; will
+advance one, pointing to the next instruction, and the &lsquo;A&rsquo; register will be
+decremented by 1. Also at this point the flags may have changed (they were in an
+indeterminate state when we started), now they definitely show the result of the
+decrement. Hit &lsquo;Enter&rsquo; again, and the &lsquo;PC&rsquo; will have skipped back to the address of
+the decrement instruction ready for the next time round. Keep hitting the &lsquo;Enter&rsquo; key,
+watching the &lsquo;A&rsquo; register and the flags. When the &lsquo;A&rsquo; register goes to zero, notice
+the flags change, the &lsquo;Z&rsquo; flag comes on. Take one more step, and notice nothing
+happens, but this time the &lsquo;PC&rsquo; instead of pointing to the decrement instruction, now
+points to the next instruction, the load &lsquo;A&rsquo; with 22H. Nothing happened because the
+processor still has to perform the test on the flags. You know they&rsquo;ve changed, but
+the processor still has to test them and jump (or not jump as the case may be). One
+more step, and lo, the &lsquo;A&rsquo; register contains 22H. There you are, your first assembler
+program. It didn&rsquo;t do much, and it&rsquo;s only safe to single step the program, as it
+doesn&rsquo;t stop when its finished, but you must have learned something. If you didn&rsquo;t
+understand what happened, perhaps a Basic analogy will help.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-29-1.png"); ?>
+<p>
+Having manipulated one register and seen the effects. Two things remain to be
+explained in this episode. The first, a brief explanation of some of the other
+registers, and secondly, how the processor knows what to do.
+</p>
+<p>
+The other main registers of the Z80 are the &lsquo;B&rsquo;, &lsquo;C&rsquo;, &lsquo;D&rsquo;, &lsquo;E&rsquo;, &lsquo;H&rsquo; and &lsquo;L&rsquo;
+registers. As mentioned previously these 8 bit registers are also organised so that
+they may also be loaded as pairs so that each of the 8 bit registers paired together
+give the following 16 bit registers, &lsquo;BC&rsquo;, &lsquo;DE&rsquo; and &lsquo;HL&rsquo;. The &lsquo;A&rsquo; and &lsquo;F&rsquo; registers
+are also paired together, although because of the special nature of the &lsquo;F&rsquo; register,
+the &lsquo;&lsquo;AF&rsquo; pair can not be treated as a single 16 bit register. Presumably there is no
+&lsquo;G&rsquo; register because the name of the other of the pair has already been allotted to
+the &lsquo;F&rsquo; register.
+</p>
+<p>
+When treated as 8 bit registers, the registers act as temporary storage places
+for data or can be used as counters. They also have limited arithmetic capability,
+they may be incremented and decremented, and major changes of status will affect the
+&lsquo;F&rsquo; register just like the &lsquo;A&rsquo; register. There are perhaps more 8 bit registers than
+would be really necessary, (memory locations could be used in place of registers), but
+as it takes the processor markedly less time to get frequently used data from an
+internal register, using them speeds things up.
+</p>
+<p>
+Perhaps more important is the 16 bit capability. Now addresses are 16 bits
+wide, and the 16 bit register pairs have access to the address bus. The &lsquo;HL&rsquo; pair acts
+rather like the &lsquo;A&rsquo; register, in that limited arithmetic can be performed using it as
+a 16 bit accumulator and the results affect the flags accordingly. This means that
+addresses can be calculated directly which saves a lot of time and effort. The
+remaining registers, the &lsquo;SP&rsquo;, &lsquo;IX&rsquo; and &lsquo;IY&rsquo;, &lsquo;I&rsquo; and &lsquo;R&rsquo; all perform special
+functions and we&rsquo;ll make use of them as we come to them.
+</p>
+<p>
+Just in case the above set of registers aren&rsquo;t enough for you, there is also a
+complete duplicate set of the main registers which may be switched in at will. Phewww&nbsp;!!!
+</p>
+<?php columnEnd(1); ?>

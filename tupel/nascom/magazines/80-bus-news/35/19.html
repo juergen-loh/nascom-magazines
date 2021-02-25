@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+19
+</p>
+<p>
+GSX THE GRAPHICS INTERFACE By Dave Russ
+</p>
+<p>
+Who among you has suffered the trauma of having purchased at great
+expense a wonderful new colour card and then realised that you have weeks of
+work ahead of you creating some sort of software interface to your favourite
+language? As is often the case you will have to create a library of low level
+primitives armed only with boundless enthusiasm and a manual whose flashy
+cover does not reflect its contents. Fear not, for the cavalry is on its way.
+The Digital Research GSX graphics system will relieve you of this tiresome
+task, leaving you time to get on with what you originally had in mind (Maybe
+seeing your family and friends once in a while.)
+</p>
+<p>
+GSX (Graphics System Extension) allows you to write application programs
+in any language that supports BDOS calls, and provides you with an environment
+that is independent of the device(s) that will eventually display the end
+product. Along with 2 other DR products, GSS Kernel and GSS Plot, you are able
+to program graphics applications that conform to the emerging Graphical Kernel
+system (GKS), a draft international graphics standard. Kernel and Plot are not
+essential to you, and you do not have to use them in order to produce
+graphical routines, but they do provide a friendlier interface to GSX giving
+you access to a standard library accessable from popular high level languages.
+DR have specified Pascal, Fortran and PL/I so far. The whole thing is similar
+in concept to the relationship between the BDOS and BIOS in that you have a
+standard interface to custom built device drivers.
+</p>
+<p>
+Having decided that this is for you, off you trot to your friendly
+software dealer with your loot in your hand and swop it for the GSX80 (or
+GSX86) disk. For your money you will have received the following:
+</p>
+<p>
+GSX.SYS &ndash; This is the actual GDOS that will load itself into memory and
+process all your graphics calls.
+</p>
+<p>
+GENGRAF.COM &ndash; A utility program which is run against a graphics program once
+it has reached the&nbsp;.COM stage. GENGRAF attaches a GSX loader to your
+program. The GSX loader receives control as soon as the program is run,
+its purpose is to handle the loading of GSX.SYS, the rearrangement of the
+BDOS pointers, and then the loading of the assignment table ASSIGN.SYS
+(see below) along with the first device driver that is specified, which
+must also be the biggest. Once it has finished its work the loader brings
+down the application program from its position above the loader to the
+start of the TPA at 100H and executes it.
+</p>
+<p>
+ASSIGN.SYS &ndash; This is an ASCII file containing the device driver numbers and
+names that you want to use in your particular system. As it is possible
+to have only one device driver in memory at any one time GSX has to refer
+to the table contained in ASSIGN.SYS in order to select new drivers when
+they are required by the system. The copy that you find on your master
+disk will contain the names of a few of the sample device drivers
+supplied to you on the disk, and as such will have to be altered to suite
+the drivers that you will be using.
+</p>
+<p>
+A number of ready to go device drivers &ndash; This sounds good doesn&rsquo;t it? We have
+just bought the disk and we are off already. However, the bottom line
+here is that unless you own a Hewlett Packard 7220 plotter, a Digital
+Engineering Retro-Graphics colour monitor, or an Epson MX--80 with
+Graftrax plus, these drivers are not going to be of much use to you.
+</p>
+<?php columnEnd(1); ?>

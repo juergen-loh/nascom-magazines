@@ -1,0 +1,105 @@
+<?php columnStart(1); ?>
+<table>
+<colgroup>
+	<col style="width: 15%">
+	<col>
+</colgroup>
+<tr><td><pre>
+B7FF
+B000
+====
+</pre></td>
+	<td>Extensions to the operating system
+	or extensions to Naspen.</td></tr>
+<tr><td><pre>
+AFFF
+9800
+====
+</pre></td>
+	<td>Colour graphics RAM or general RAM space.</td></tr>
+<tr><td><pre>
+97FF
+9000
+====
+</pre></td>
+	<td>Programmable grahics RAM or general RAM space.</td></tr>
+<tr><td><pre>
+8FFF
+1000
+====
+</pre></td>
+	<td>General RAM space.<br>
+	Start of general program space.</td></tr>
+<tr><td><pre>
+0FFF
+0F80
+====
+</pre></td>
+	<td>Usual stack space.</td></tr>
+<tr><td><pre>
+0F7F
+0D00
+====
+</pre></td>
+	<td>Workspace for firmware<br>
+	or workspace for programs.</td></tr>
+<tr><td><pre>
+0CFF
+0C80
+====
+</pre></td>
+	<td>Extended operating system workspace.</td></tr>
+<tr><td><pre>
+0C7F
+0C00
+====
+</pre></td>
+	<td>Existing operating system workspace.</td></tr>
+<tr><td><pre>
+0BFF
+0800
+====
+</pre></td>
+	<td>Existing video RAM.</td></tr>
+<tr><td><pre>
+07FF
+0000
+</pre></td>
+	<td>Existing operating system.</td></tr>
+</table>
+<p>
+As you will notice, firmware which is unlikely to be used
+together has been assigned coresidence. For example, no-one is likely
+to want to use the colour graphics firmware (which runs under Basic)
+with REVAS (which is a machine code disassembler). Similarly, any
+extensions to Naspen may be made from B000 &ndash; B7FF, as with a more
+powerful word processor in residence, extensions to the operating
+system would hardly be required, and so on. However, extensions to the
+Basic could imply the use of a more powerful operating system, or a
+software number cruncher such as MAPP1-3Z could be put in place of
+ZEAP, and used to extend the precision of the Basic math to 14 digits
+(if any one has done this please let us know).
+</p>
+<p>
+So please bear these suggestions in mind in writing your
+software, that way maximum portability, and least inconvenience is
+caused.
+</p>
+<?php hLine("20%"); ?>
+<h4>
+<u>S-100</u> (continued from <a href="../../12/text/">page 12</a>)
+</h4>
+<p class="continued">
+more for a real one&rdquo;. Well we don&rsquo;t know, but in general the Nascom
+keyboard costs rather more (not less) than the average ASCII keyboard
+fitted to competing computers, and is a very rugged and superior
+product. We don&rsquo;t know why all the control is done in software, as it
+would have cost little more to make the keyboard truly ASCII. Mind you,
+a software controlled keyboard lets you do lots of clever things which
+a hardware keyboard could never do (look at the N Ray Moonlander
+program for instance). Finally, does it really matter, as ASCII
+keyboards can easily be run into PORT 0 with very little modification
+to the software if required.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

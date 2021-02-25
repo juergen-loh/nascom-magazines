@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-63-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+NOTES ON PROGRAMMING STYLE.
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Rory O&rsquo;Farrell.
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+When writing programs, one is of course anxious to get the program
+finished and running as fast as possible. This is very understandable, but it
+leads to trouble. In one&rsquo;s haste to get running, one usually omits one very
+important item &ndash; COMMENTS! Comment your program fully. If in assembler, use as
+many comments as possible, and if in BASIC use REM statements. Use such
+comments or REMs also to space out the program and make it more legible.
+Admittedly in BASIC the REMs can slow down the speed of execution of the
+program, but they can always be removed with a Toolkit (.K Command in Henry&rsquo;s,
+as reviewed in INMC80 no 2). If intending to do this, please, please don&rsquo;t
+GOTO or GOSUB a REM statement, or you will have errors when you try to run the
+program. In machine language, the comments will slow the assembly slightly,
+but they will not effect the runtime speed. In any event, make sure that you
+have a fully commented or REMed tape of the program to file.
+</p>
+<p>
+Another point of style. Use Manifest Constants as much as possible.
+If in machine language you wish to designate the Top Line of the Screen, don&rsquo;t
+write LD HL, 0BCAH. Instead use an EQU statement at the program start:
+</p>
+<pre class="indent">
+TOPLIN: EQU 0BCAH
+</pre>
+<p class="continued">
+and in the program
+</p>
+<pre class="indent">
+LD HL, TOPLIN
+</pre>
+<p class="noindent">
+Should it now prove necessary for some reason to change the line, e.g. using
+the second line instead, we need only change the EQU statement, like this:
+</p>
+<pre class="indent">
+TOPLIN: EQU 080AH
+</pre>
+<p class="continued">
+and the assembler will change all occurrences of TOPLIN to point to the
+correct line. No chance of missing a LD HL,0BCAH inadvertently. Similarly,
+common values such as for carriage return (0DH) and backspace (08H) should be
+declared in the same way&raquo; This makes the program more readable, and
+consequently helps cut down on the comments. It also has side effects. Suppose
+one writes a program to accept 8 digit numbers, and to sort them into order.
+Obviously, such a program will have a number of occurences of the number 8. It
+will occur wherever backspaces are processed, as one ought to be able to make
+and correct an input error fairly easily, and it will also have 8s in the
+counting loops. Some months after writing this program, you decide, for
+reasons best known to yourself, that you wish to modify this to process 13
+digit numbers. &ldquo;No problem&rdquo;, you say, &ldquo;I&rsquo;ve just got to fly through the
+program and change all the 8s to 13s.&rdquo;
+</p>
+<p>
+So you are sitting down at your trusty Nascom, changing 8s to 13s with
+gusto, and the phone rings. It is a) the hospital to say that the baby has
+arrived, b) the bank manager to say that you can have the extra overdraft, c)
+the Prime Minister to ask you if you&rsquo;d accept a Peerage (delete as
+appropriate), so you have to answer. After a long conversation, you return to
+your patching. Where were you? Was that 8 a backspace or an entry length
+counter? Is that 13 (or 0DH) a carriage return or an entry length counter?
+HELP! All this could have been saved if you had used manifest constants at the
+top of the program (or didn&rsquo;t talk to a) women, b) bank managers, c) Prime
+Ministers).
+</p>
+<?php columnEnd(1); ?>

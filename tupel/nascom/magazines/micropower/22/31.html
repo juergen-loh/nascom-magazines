@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<p>
+upper chips directly on top of the lower chips, but otherwise you would be well
+advised to solder DIL sockets for the upper layer onto the chips of the lower layer,
+as only one chip is put at hazard, and you will retain the option to remove the top
+chip easily in future. Before soldering on the top chip/socket, wrap it in a couple of
+layers of foil as well, with the pins protruding through the foil. Again, the foil acts as
+an insulator and heat sink.
+</p>
+<p>
+One unfortunate by product of this &lsquo; recommended&rsquo; method is that when you
+have finished you have to dig bits of cooking foil from between the pins of your
+newly mated chips, and you may prefer to make yourself a Jig with a spare DIL
+socket which has all its pins commoned in some scrap veroboard. One last thought
+on piggybacking ICs; it is a good idea to make sure that pin 1 is clearly recognisable
+from below on the bottom IC, otherwise just as you finish a beautifully neat soldering
+Job, you realise that you can&rsquo;t remember having checked the orientation of the
+bottom chip. If the end of the 4116 is not clearly notched, lightly scratch the
+underside of the IC next to pin 1, or mark it with a small dot of marker dye; and do
+this before you start any soldering.
+</p>
+<p>
+Now for a quick look at the theory behind the modification. Fig. 12 of the
+instructions which accompany the RAM-B board show the memory ICs arranged in
+three banks of eight, with addresses commoned from the right of the diagram,
+and data commoned vertically. On the left there are essentially three lines to each
+bank; a column address strobe (CAS) which is common to all three banks, a unique
+row address strobe (RASx) to each bank, and a write strobe (WRx), again unique to
+each bank. The logic behind the latter two runs something like this. Each bank
+MUST be individually addressed and if you want to create another bank then you
+MUST create an additional RASx signal from somewhere. Since the existing
+banks are numbered 0 &ndash; 2, with their associated RAS0 &ndash; RAS2 signals, it makes
+sense to number the new bank 3, and call the new signal RAS3. The third signal is
+the WRx signal, which must be taken low when whenever you (the CPU really!)
+want to write to the respective bank. If the WRx signal is held high, bank x will
+become write protected, and if the relevant pins of the upper bank are soldered to
+those of the lower bank, the upper bank will take the same write protect status as
+the lower. At this stage, let me state that it is possible to arrange for the new bank
+of RAMs to have independent write protect&nbsp;, but to be frank, although I have run my
+board in this condition, I have never found the need for separate write protect on
+the new bank of RAMs, and in the end I Just removed the additional wiring as it was
+a bit of an eyesore. For this reason, I shall not cover this aspect of the
+modification, but if any reader is interested in the details, please contact me
+through this magazine.
+</p>
+<p>
+From what I have said, it should be obvious that all 16 pins of the upper and
+lower 4116s can be commoned (is there really such a word in English?) except for
+pins 4, which must be separated between banks but comoned along the new bank.
+</p>
+<?php columnEnd(1); ?>

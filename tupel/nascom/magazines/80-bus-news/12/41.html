@@ -1,0 +1,170 @@
+<?php columnStart(1); ?>
+<p>
+DUMP
+</p>
+<p>
+0000
+0010
+0020
+0030
+0040
+0050
+0060
+0070
+0080
+0090
+00A0
+00B0
+00C0
+00D0
+O0EO
+OOFO
+</p>
+<p>
+TOPPG: LD
+LD
+OR
+RET
+LD
+LD
+INC
+OR
+RET
+</p>
+<p>
+LD
+RST
+RET
+</p>
+<p>
+41
+</p>
+<p>
+HL, (CLINP)
+A, (HL)
+A
+</p>
+<p>
+Z
+HL,PLCT
+A, (HL)
+HL
+</p>
+<p>
+(HL)
+</p>
+<p>
+Z
+</p>
+<p>
+A,FF
+ROUT
+</p>
+<p>
+: Printer output table
+</p>
+<p>
+POUTT: DB
+</p>
+<p>
+; Workspace
+</p>
+<p>
+FCB: DS
+BUFFER: DS
+END
+</p>
+<p>
+ZPOUT&nbsp;, 0
+</p>
+<p>
+20
+256
+</p>
+<p>
+;Point to heading
+</p>
+<p>
+sLoad first character
+;Empty?
+</p>
+<p>
+;Yes =&gt; return
+</p>
+<p>
+;Point to PLCT
+</p>
+<p>
+sLoad it
+</p>
+<p>
+Point to PPOS
+</p>
+<p>
+;Zero if PLCT=PPOS=0
+</p>
+<p>
+;At top of form =&gt; return
+</p>
+<p>
+:Move to top of form
+</p>
+<p>
+:FCB buffer
+sSector buffer
+</p>
+<p>
+DUMP is a utility program for PolyDos 2.0.
+output hex listings of disk files to the porinter. To run
+DUMP, use the following command line:
+</p>
+<p>
+$DUMP filename heading
+</p>
+<p>
+It is used to
+</p>
+<p>
+where filename is a PolyDos file name (drive and extension
+are optional), and heading is any string of ASCII characters,
+seperated from the file name by at least one blank. Each line
+output shows the address of the first byte (starting with
+</p>
+<p>
+0000H),
+</p>
+<p>
+same values in ASCII,
+</p>
+<p>
+the lines are 72 characters wide,
+width is 72 (48H).
+</p>
+<p>
+thenthe values of 16 bytes in hex,
+if they are printable. Note that as
+the minimum printer line
+</p>
+<p>
+and finally the
+</p>
+<p>
+v1.0 PolyDos 2.0 DUMP utility PAGE 01
+06 06 ED 5B 19 CO 21 E6 10 DF 85 DF 8A ED 53 19 ...[..-!.......5.
+CO DF 83 DF 8A CB EO CB&rsquo; E8 DF 86 DF 8A 21 E4 10) .ucceceeceseeltae
+DF 71 CD D3 10 11 00 00 4B 2A F4 10 7C B5 CA CE&nbsp;.q.....-K*.. |...
+10 2B 22 F4 10 D5 C5 21 FA 10 ED 5B F2 10 3A O1 .+"...-!.ee [eet
+CO 4F 06 01 DF 81 DF 8A 13 ED 53 F2 10 Cl D1 E5) .0.... 026 eSeaeee
+D5 2A 19 CO 7E B7 28 3E 21 17 CO 7E 23 B6 20 36 .*..7.(&gt;!..7#. 6
+EF 44 55 4D 50 20 56 31 2E 30 09 00 21 12 C2 7E&nbsp;.DUMP V1.0..!..-
+23 96 D6 18 47 2A 19 CO 7E 23 B7 20 03 2B 3E 20 #...G*..7#. .+&gt;
+F7 10 F5 EF 20 50 41 47 45 20 00 79 C6 01 27 4F&nbsp;.... PAGE&nbsp;.y..&rsquo;O
+DF 68 DF 6A DF 6A El C5 DF 66 Cl E3 E5 06 10 78 .h.j.j...f....6X
+E6 07 20 02 DF 69 7E DF 68 DF 69 23 10 Fl DF 69 .. ..i-.h.i#...i
+El Dl 06 10 7E FE 20 38 04 FE 7F 38 02 3E 2E F7 ....-. 8...8.&gt;..
+23 13 10 FO DF 6A 1C 1D CA 29 10 C3 4F 10 CD D3) #....j.+-)..0..-
+10 DF 5B 2A 19 CO 7E B7 C8 21 17 CO 7E 23 B6 C8 ..[*..-..1..7#..
+3E OC F7 C9 8F 00 00 00 00 00 00 00 00 00 00 00 d.eceeceeveneeee
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 .ceeeesecseeaees
+</p>
+<?php columnEnd(1); ?>

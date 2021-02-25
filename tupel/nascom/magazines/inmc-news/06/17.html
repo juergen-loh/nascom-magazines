@@ -1,0 +1,87 @@
+<?php columnStart(1); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
+<h4>
+Software of the future
+</h4>
+<p>
+What is the perfect memory layout for the future? What software
+should be resident in ROM and what should be loaded from tape? You
+might like to think about these questions in regard to some of the
+software that already exists or is rumoured to be around.
+</p>
+<table>
+<colgroup>
+	<col style="width: 20%">
+	<col>
+</colgroup>
+<tr><td>Nas-sys&nbsp;1</td><td>This must be in ROM, and naturally lives at 0000H,
+	although it is not totally impossible to put it
+	elsewhere with Nascom&nbsp;2.</td></tr>
+<tr><td>Basic</td><td>Both Rom and tape versions exist. Nascom&nbsp;2 has it at
+	E000 &ndash; FFFFH.</td></tr>
+<tr><td>ZEAP</td><td>This assembler is a candidate for ROM as it is so
+	useful. ZEAP 2.0 can be in ROM at D000H or RAM at
+	1000H.</td></tr>
+<tr><td>REVAS</td><td>This disassembler can be located anywhere. Is it used
+	often enough to make it worth having in ROM? It
+	could occupy C400 &ndash; CFFFH</td></tr>
+</table>
+<p>
+All this brings us to memory mapping. So much is going on by
+independent people, hoping to sell products under the Nascom banner,
+that a meeting was held recently between Nascom Engineering, and other
+interested parties. The aim; to ensure that there is room for
+everything, and that everything can be kept under control. The meeting
+primarily discussed a standard Nascom&nbsp;2 expanded to a maximum of 48K
+and fitted with Nas-sys. Non standard Nascoms and disc based Nascoms
+were not discussed as their memory requirements will be entirely
+different. But everything decided is equally relevant to an expanded
+Nascom&nbsp;1 fitted with Nas-sys.
+</p>
+<p>
+One of the mains aims was agreed, and that is that no external
+product can advertise that it is &lsquo;approved by Nascom&rsquo; unless it has
+been submitted to Nascom for approval, and that it conforms to the
+memory mapping laid down. Another aim was to produce a reccommended
+memory map for use with Nascom&nbsp;2, but is was soon discovered that so
+many diverse ideas were around that it was only possible to set out
+guidelines, and that firmware producers would have to look at their
+product to see where it could be sensibly fitted. This is in the
+producer&rsquo;s interest, because if something is located in a daft place
+then it inhibits its own market.
+</p>
+<table>
+<colgroup>
+	<col style="width: 15%">
+	<col style="width: 25%">
+	<col>
+</colgroup>
+<tr><td><pre>
+FFFF
+E000
+====
+</pre></td>
+	<td>8K Basic</td><td></td></tr>
+<tr><td><pre>
+DFFF
+D000
+====
+</pre></td>
+	<td>ZEAP 2.0</td>
+	<td>or general assembler type software<br>
+	or extensions to Basic.</td></tr>
+<tr><td><pre>
+CFFF
+C000
+====
+</pre></td>
+	<td>REVAS</td>
+	<td>or general disassembler software<br>
+	or Colour graphics control software.</td></tr>
+<tr><td><pre>
+BFFF
+B800
+</pre><td>Naspen</td>
+	<td>or related word processing software.</td></tr>
+</table>
+<?php columnEnd(1); ?>

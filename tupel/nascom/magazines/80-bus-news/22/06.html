@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+analysed the circuit diagrams and thinks they understand them should (?) be able
+to pin-point the problem without any more info. than this &ndash; please!
+</p>
+<p>
+Kevin Weatherhead, Sheen, Old Odiham Rd., Alton, Hants. GU34 4BW.
+</p>
+<p>
+HISOFT PASCAL
+</p>
+<p>
+In case Dr Dark hasn&rsquo;t got round to the review of Hisoft Pascal 4 promised in
+80-BUS News,. here are the results I obtained running the PCW Benchmark tests on
+this version of the compiler. Incidentally, because of the speed of the code,
+most of the loops were set to 30,000 and the resulting time divided by three, in
+the case of the Magnifier the routine was enclosed in an outer 100-times loop.
+</p>
+<p>
+Sec. Sec.
+Magnifier 0.22 Forloop 2.7
+Whileloop 4.3 Repeatloop 3.7
+Literalassign 3.3 Memoryaccess 343
+Realarithmetic 14.0 Realalgebra 15.0
+Vector 8.0 Equalif 6.0
+Unequalif 5.7 Noparameters 3.3
+Value 43.7 Reference 3.7
+Maths 6.0
+</p>
+<p>
+No great accuracy is claimed for these figures, but they show some slight
+improvement on the NASPAS 3 timings, save for the REAL tests and the MATHS test
+where the old timings seemed to have been halved. All the tests were run on a
+Nascom&nbsp;2 running at 4MHz with no Wait-states. The options to remove overflow
+checks etc. were used, and the most significant speed improvement came from
+invoking option C-, which removes the keyboard check at the start of each loop.
+</p>
+<p>
+Having only: had this compiler for about a month, I haven&rsquo;t yet been able to try
+out all the features &ndash; well actually the time has been spent on converting one or
+two very lethargic BASIC programs into PASCAL and enjoying the substantial
+increase in speed. During the course of this exercise one or two peculiarities
+came up which appeared not to be covered in the manual. These were:&ndash;
+</p>
+<p>
+1) CASE Statements. The semi-colon after the last statement in the case-list must
+be ommitted.
+</p>
+<p>
+2) RESET &amp; REWRITE. The disk file name can be a variable,permitting filename
+entry from the screen, but it must be formatted as stated in the manual.
+</p>
+<p>
+3) READ. The check on a digit or &lsquo;+&rsquo; or &lsquo;-&rsquo; during an integer read doesn&rsquo;t appear
+to work.
+</p>
+<p>
+4) FILES. This one had me wondering a bit. During the course of a program a
+string included a line Feed character (0AH) that shouldn&rsquo;t have been there. It
+seems that during a disk read, if the end of the buffer coincides with the middle
+0D0AH char cter-pair, then LF is not skipped, and the next character read picks
+it up.
+</p>
+<p>
+I.P. Forbes, Brighton.
+</p>
+<?php columnEnd(1); ?>

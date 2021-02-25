@@ -1,0 +1,53 @@
+<?php columnStart(1); ?>
+<p>
+second key was struck, the system switched to the first screen again and carried out
+the command.
+</p>
+<p>
+I have modified the software to enable this. On system cold boot, the embedded
+command in the Z3 multiple command line buffer is:
+</p>
+<p>
+SAK;-C for system, saving TPA. Other keys load Help and Menus;CSET;
+SWSCR;TYPE TKEYS.TXT;SWSCR;SETUP
+</p>
+<p>
+In turn, this allows the user to go direct to the system (in case of reboot of a crashed
+system where a SAVE is needed), or loads a preferred character set to the SVC,
+Switches to Screen two, Types the -T command menu, switches back to screen
+one, loads a system set-up menu, (SETUP.COM is MENU.COM, renamed and
+modified to load a file named START.MNU.)
+</p>
+<p>
+When the user types &ldquo;T, code in the BIOS keyboard routine detects this and calls
+code within the BIOS similar to that in SWSCR.COM to switch screens, thus
+presenting the user with a more descriptive display of the options available. After
+the second key control key has been entered, the BIOS switches back to SVC screen
+one, and processes the command.
+</p>
+<h2>
+Multi-Operating System Data Corruption Problem
+</h2>
+<p>
+Despite my preference for ZCPR3 as a much more powerful and friendly operating
+system, it is sometimes necessary to use some other system. At work, MAP80 CP/M
+Plus is available, together with a suite of MAP80 programs that allows reading,
+writing and formatting of a large number of disk formats including CP/M, BBC, and
+MSDOS. This suite needs CP/M Plus to run, and so I have a version of CP/M Plus
+set up that will access the Winchester, as well as several floppy formats. Recently I
+was asked to transfer a large number of files from a &lsquo;foreign&rsquo; CP/M format (ICL)
+to IBMPC format. Since I could not do this directly between the floppies, I had to
+read the files on to an unused DU: on the Winchester, and then to load a special
+MSDOS transfer program to write the files to the MSDOS disks. This exercise was
+completed without problem. On completion the ICL files were ERAsed from the
+Winchester.
+</p>
+<p>
+The ZCPR3 system allows access to USER areas up to 31 inclusive, instead of 15
+as with CP/M. The ZCPR3 installation notes suggest that the HLP (system HELP)
+files are held in USER 16. The HELP.COM file supplied with ZCPR3 will find
+these files, and by putting them in USER 16 they are out of the way and will not
+interfere with normal directory displays. Recently I tried to use some of the 500k
+odd bytes of ZCPR3 .HLP files that reside on the Winchester and I found them
+</p>
+<?php columnEnd(1); ?>

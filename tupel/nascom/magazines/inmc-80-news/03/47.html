@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+If Music Be....
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+Musical Nascoms
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by M. L. Trim
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+I started out knowing nothing, but have slowly learned over a period (with a
+little help from articles in the newletter). The back issue articles on the PIO are a
+little heavy going, and being mainly concerned with the use of interrupts (vital
+information I&rsquo;m sure&nbsp;... but), tend to gloss over the obvious. The obvious is how to
+get information into and out of a PIO in the first place. Reading and understanding
+the manuals is most important, but these tend to leave out important points. The
+manual makes it quite clear that before a port within a PIO can be used, a control
+word must be send to its appropriate control port to instruct the port which mode is
+to be used. But how to construct the control word. My PIO manual states on page 10
+that the operating mode is selected as follows:
+</p>
+<table style="margin: auto">
+<tr><td>M1</td><td>M0</td><td>X</td><td>X</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>D7</td><td>D6</td><td>D5</td><td>D4</td><td>D3</td><td>D2</td><td>D1</td><td>D0</td></tr>
+</table>
+<p class="continued">
+(refer to the manual for greater detail), but unless you realise the above is a bit
+pattern which must be converted to a HEX number then its relevance is unknown. For
+example, to select the output mode, Ml and M0 are both 0, and X may be anything, for
+convenience, 0, therefore
+</p>
+<p>
+0 0 X X 1 1 1 1 = 0F
+</p>
+<p class="continued">
+(For more detail on converting bits to HEX refer to the Kiddies Guide part 1,
+INMC80-1.) So to initialize port 4 of the PIO to output use the following piece of
+code, which must be sent to the port 4 control port, port 6:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-47-1.png"); ?>
+<p>
+The PIO port is now initialized to output until another control word changes it. Note
+that HALT could have been used instead of a return to monitor, but this would have
+required RESET to start the processor again, and Nascom&nbsp;2&rsquo;s reset the PIO when RESET
+is pressed. HALT would be quite satisfactory with Nascom&nbsp;1. Having set the PIO to
+output, the &lsquo;0&rsquo; command may be used to test its affect on port 4.
+</p>
+<p class="noindent">
+ie<br>
+0 4 00 sets the PIO output to zero<br>
+0 4 FF sets the PIO output to FF (or max)
+</p>
+<p class="continued">
+use Q 4 to see if the PIO registers echo the data sent.
+</p>
+<p>
+Having mastered sending data to the PIO, it is easy to grasp the opposite,
+inputting data. First send the appropriate control word, to initialize the port to
+input, from then on the PIO will be set to receive data until the control word is
+changed (or the PIO reset). One minor complication, and that is the input to the port
+is latched, and the latches are opened by the STB input going low. This is used to
+cause an interrupt if the interrupt mode is selected. But in the simple case, no
+interrupts are required, and data may be sampled at any time, so the input latches are
+not required. The latches may be &lsquo;opened&rsquo; permanently if the STB input is tied to 0V.
+</p>
+<p>
+Fine, what next? Martin Dyer helps here with his suggestion in INMC80-1, let
+the Nascom produce music. Here is my answer. For this we need a D to A convertor, I
+bought an integrated circuit from Radio Spares (they get &lsquo;up-tight&rsquo; if you call &lsquo;em
+that these days, they prefer RS Components. Ed.) to achieve this, part 309-458. The
+circuit is shown on the attached circuit diagram, along with another IC from RS,
+namely a voltage controlled oscillator, part 307-070. (The circuit also shows an
+unmarked op-amp which from the pinout we presume is an LM741. Ed.)
+</p>
+<p>
+Using a small bit of machine code, and an amplifier attached to the VCO, we
+can program notes. The program initializes the PIO to output, then scans the keyboard
+for a character. When a key is pressed, the character is sent to the port, changing
+the analogue voltage produced by the D to A convertor, which in turn changes the
+frequency of the VCO. The character pressed is sent to the screen for reference.
+</p>
+<?php columnEnd(1); ?>

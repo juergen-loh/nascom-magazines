@@ -1,0 +1,99 @@
+<?php columnStart(1); ?>
+<h1>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-42-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+MULTIMAPPING FOR NASCOM 2 &ndash; UPDATED
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+C. Bowden
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+In INMC80-3 I described my method of switching between the NAS-SYS and
+CP/M operating systems. Since then, there have been a number of exciting
+developments in the hardware field that have greatly increased the power and
+flexibility of the NASBUS/80-BUS system. I refer in particular to Gemini&rsquo;s IVC
+card, Double Density FDC card and 64K RAM card.
+</p>
+<p>
+At the same time, one should not forget that for medium scale software
+development, with a more &ldquo;intimate&rdquo; and &lsquo;operator friendly&rdquo; feel, the standard
+Nascom packages take a lot of beating. The larger characters on the 48 x 16
+screen are also better when introducing the computer to newcomers or older
+people. There are also a number of interesting new pieces of software like
+POLYDOS that make the old system far from redundant.
+</p>
+<p>
+In INMC80-4 Mr David Parkinson described his very powerful system for
+&lsquo;Booting&rsquo; all firmware from a &lsquo;paged&rsquo; EPROM card. This system permits one to
+run all ROM/EPROM Software including BASIC and NAS-SYS in RAM. For full
+implementation 64K of RAM is needed, but variations are possible. I have
+combined Mr Parkinson&rsquo;s idea, and the core of my original scheme to form a
+simpler yet more powerful method of switching between systems and formats.
+</p>
+<p>
+The following attractive features are possible:
+</p>
+<p>
+1) Very little extra &lsquo;wiring&rsquo; needed to permit system switching.
+</p>
+<p>
+2) Switch selection between NAS-SYS, CP/M 48 x 16 and CP/M 80 x 25 video
+formats.
+</p>
+<p>
+3) A full 64K of RAM may be used.
+</p>
+<p>
+4) The RAM has no &lsquo;gaps&rsquo; in it due to ROMs.
+</p>
+<p>
+5) With one EPROM card, 32K of EPROM and 8K ROM may be used.
+</p>
+<p>
+6) No WAIT states need be used on the CPU card.
+</p>
+<p>
+7) It is possible to &lsquo;overwrite&rsquo; parts of firmware on a temporary basis.
+</p>
+<p>
+The essential components required to carry out this scheme, at least
+in part, are:
+</p>
+<p>
+1) An EPROM card. (Page Mode).
+2) Access to an EPROM programmer and ideally, an eraser. I use a small
+&ldquo;Germicidal&rdquo; type of UV tube. (CAUTION &ndash; DO NOT VIEW THE LIGHT).
+3) A copy of the article in INMC80-4, and understanding how it works.
+</p>
+<p>
+The first requirement when using two or more completely different
+types of operating systems is that RESET takes one back to the system in use,
+and not the alternative(s). This is achieved in my system by using two &lsquo;BOOT&rsquo;
+EPROMS, and changing the RESET jump. The EPROMS are:
+</p>
+<p>
+BOOT EPROM A&nbsp;.
+</p>
+<p>
+located at 2000H on EPROM card. This EPROM copies &ldquo;SIMON&rdquo; to RAM at address
+&lsquo;F000H, and then jumps to F000H, paging out the EPROM card on the way.
+</p>
+<p>
+BOOT EPROM B
+</p>
+<p>
+located at 4000H on EPROM card, which copies NAS-SYS to RAM at 0000H, and then
+jumps to it, paging out the EPROM card.
+</p>
+<p>
+It is a very simple matter to arrange the RESET jump to be switched to suit
+the system BOOT required, if the BOOT ROM&rsquo;s are located at EPROM CARD address
+2000H, 4000H or 8000H. Other addresses will require more complex switching.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+Secondly, POKE &amp; DOKE are often used to change options in the monitor. You will
+know that under NAS-SYS the command K1 gives you lower case as the standard
+print output. This can be achieved from BASIC directly, or in the course of a program
+by the statement POKE 3111,1. Similarly, if you want to turn on output to your printer
+in the middle of a program, you can use the various DOKE instructions outlined in the
+manual. N.B. Different values apply in NAS-SYS&nbsp;3 from those in NAS-SYS&nbsp;1.
+</p>
+<p>
+A third use might be to store a value which is to be picked up later by a machine
+code subroutine. The example which follows allows you to generate sounds from a
+BASIC program by flipping Bit 5 of the keyboard port.
+</p>
+<p>
+Sub-routine:
+</p>
+<p>
+6000 DOKE 3200,23533: DOKE 3202,3330: DOKE 3204, 19437
+6010 DOKE 3206,3328:DOKE3208,8254:DOKE3210,211
+6020 DOKE 3212,30731:DOKE3214,8369:DOKE3216,-4613
+6030 DOKE 3218,75:DOKE3220,-20723:DOKE3222,211
+6040 DOKE 3224,30731:DOKE 3226,8369:DOKE 3228,7163
+6050 DOKE 3230,-19590:DOKE 3232,-7648:DOKE 3234,201
+6060 RETURN
+</p>
+<p>
+Main routine:
+</p>
+<p>
+1000 GOSUB 6000:DOKE 4100,3200 (Dec. Addr.of M/C routine)
+1010 DOKE 3330,X (where X=no. of complete loops)
+1020 FOR I=A TO B, STEP C (where different values of A,B &amp; C
+give different sounds)
+1030 DOKE 3328,I:U=USR(0): NEXT I:
+</p>
+<p>
+Memory location 3330 (0D02 hex) is DOKE&rsquo;d with the value which will control the
+length of the sounds generated, while 3328 (0D00 hex) is DOKE&rsquo;d with the frequency
+parameters.
+</p>
+<p>
+Another use to which I have put these instructions was in the creation of an
+array in a large program when I was short of memory. The original array was
+something like A(8,8), i.e. 64 variables, requiring 6 bytes each. By using DOKE to put
+values in memory and DEEK to retrieve them it was possible to use only two bytes
+for each variable, e.g. if the start of the array is 3584, to put the value X into what
+was previously A(I,J), you enter DOKE 3584+[16*(I-1)]+[2*(J-1)],X. The instruction is
+a lot more cumbersome but there is still a significant saving in memory usage.
+</p>
+<p>
+RANDOM NUMBERS
+</p>
+<p>
+Random numbers are very useful in games programming, both in games of
+chance like Pontoon or Fruit Machine and also in more complex programs like Star
+Trek, where you wish to vary the results of selecting a particular option in the course
+of the game.
+</p>
+<p>
+The RND function does not, in fact, generate random numbers at all; it merely
+starts with a pre-determined value and then produces new numbers according to a
+formula. These values are always in the range 0 to 0.999999. If the argument used
+</p>
+<?php columnEnd(1); ?>

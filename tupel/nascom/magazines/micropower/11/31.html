@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p class="continued">
+the program returns to this point the register display will be repeated.
+</p>
+<p>
+But if the restart code is inserted when the Execute command is entered, why
+doesn&rsquo;t the program stop immediately when you try to continue after a breakpoint?
+In fact the &pound;E7 is not inserted until one instruction has been carried out, as the
+following simple experiment shows. Enter the following code at &pound;0C80:
+</p>
+<pre>
+0C80  00             NOP              ; No operation
+0C81  23             INC HL           ; HL register pair incremented
+0C82  C3 80 0C       JP &pound;0C80         ; Jump back to beginning
+</pre>
+<p>
+Press reset, then enter BC81 followed by EC80. The register display will show
+the contents of HL to be 0000; this is because the execute command picks up the
+values in the register save area of the workspace, and these bytes are zeroed
+by a reset. Now press reset, enter BC80 and then EC80. HL will be 0001; the
+restart was not inserted until the first instruction (NOP) had been executed, so HL
+was incremented before it came back to the breakpoint. If you insert &pound;E7 directly in
+the program at &pound;0C80 using the modify command, the program will break
+immediately on execution. The main use of this restart is in &lsquo;debugging&rsquo; &ndash; tracing
+faults in programs that don&rsquo;t work properly. You can also use it as a single byte end
+to a program when you want to know the contents of the registers.
+</p>
+<p>
+The next restart will be familiar to all Nascom users, as it has remained
+virtually unchanged from the earliest monitor. It is the &lsquo;print string&rsquo; routine, &pound;EF, which
+outputs the characters following the code until a zero is reached. The routine can
+handle control codes and graphics characters as well as the standard ASCII
+codes. The bytes in the string are loaded successively into the A register, and
+are then output by restart &pound;F7. At the end of the routine the A register always
+contains 00, the byte that marks the end of the string.
+</p>
+<p>
+The output restart, &pound;F7, operates in a similar way to the subroutine called by
+the input restart; that is, it accesses a table of routines, the address of which is
+stored at &pound;0C73. On initialisation this is set to use only the standard CRT routine,
+but the user can extend the table with the U and X commands, or can provide his
+own routine table. As in the case of the input restart, if one of the routines in the
+table sets the carry flag subsequent routines will not be used.
+</p>
+<p>
+Finally, restart &pound;FF produces a delay depending on the value in the A register
+when the restart is called. When A is one, the delay at 4Mhz, including the call and
+return, is 5.2 microseonds, while the maximum delay, produced when A is zero,
+is 2.7 milliseconds. Of course, the times are doubled with a 2Mhz clock rate.
+</p>
+<p>
+That completes the Z80 restarts; in the next article I shall deal with some of
+the individual subroutine calls.
+</p>
+<p class="article-stopper">
+* + * + * + * + * + * + * + * + *
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+18
+</p>
+<p>
+EXAMPLE 2
+MACHINE CODE SUBROUTINE TO GET COORDINATES
+</p>
+<p>
+Subroutine to request and get the coordinates of
+the light pen from the IVC.
+This routine is for Microsoft&rsquo;s MBASIC
+</p>
+<p>
+os we ee
+</p>
+<p>
+MAKINT EQU 105H s;Address of MAKINT routine
+Ivest QU OB2H ;IVC status register
+</p>
+<p>
+IvepDt EQU OBIH sIVC data register
+</p>
+<p>
+ESCAPE EQU 01 BH sAscii &ldquo;ESC&rdquo; code
+</p>
+<p>
+This routine is invoked by the USR command and returns the
+coordinates as an integer of the form:---
+ROW*256 + COLUMN
+</p>
+<p>
+ee we fee
+</p>
+<p>
+LPEN: IN A, (IVcstT) 3;See if IVC ready to rec.
+RRCA ;Plag to carry
+JR C,LPEN sLoop if not
+LD A, ESCAPE ;Send &ldquo;ESC&rdquo;
+OUT (IVCDT),A
+LPENO: IN A, (Ivest) ;Wait again
+RRCA
+JR C, LPENO
+LD A,"P&rdquo; ;Now send the &ldquo;P&rdquo;
+OUT (IVCDT),A
+3 Command sent, now wait for coordinates
+LPEN1: IN A, (Ivcst) ;Wait for ROW
+RLCA
+JR C,LPEN1
+IN A, (IvcDT) s;Read ROW
+LD H,A ;Put in H
+LPEN2: IN A, (1Ivcest) sWait for COL
+RLCA
+JR C, LPEN2
+IN A, (IveDT) sRead COL
+LD L,A ;Put in L
+PUSH HL sSave the value
+LD HL, (MAKINT) sGet address of return routine
+EX (SP),HL ;Reset HL (MAKINT on stack)
+RET &lsquo; sReturn the value
+END
+</p>
+<p>
+EXAMPLE 3 &ndash; MBASIC
+</p>
+<p>
+This Basic program, which is well sprinkled with REM statements, is provided as a
+guide that others can follow. As it is purely for demonstration purposes the
+program has been coded for clarity.
+</p>
+<p>
+Note: In line 1020 ADDR holds the address of where the USR routine is stored.
+Nascom Basic/Nas-Sys users should pick an area within the workspace RAM
+(0C80H-0FFFH). GM809 users on a Nascom can use the workspace RAM as well, though in
+their case it is located at 0FC00H-0FFFFH. (NB Your CP/M system size should be 63K
+or less if you intend to use the workspace RAM).
+</p>
+<p>
+Por Multiboard users the problem is slightly more complex. Either a CP/M system can
+be used that is 1K less than the available memory size, or the /M option can be
+used when loading MBASIC to leave an area of RAM free for the machine code program.
+</p>
+<?php columnEnd(1); ?>

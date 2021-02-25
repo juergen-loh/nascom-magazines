@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+47
+</p>
+<p>
+In general, there is a suprisingly small impact on performance in taking this
+approach. This can be seen by considering the usual practical overheads in
+displaying a line of text on the screen. To do this an application program
+loads a byte from memory into a register, updates and saves the pointer into
+the character string, and then calls the operating system to output that
+character. The operating system then determines where to send the character,
+(e.g. checking the LOBYTE in CP/M), and finally sends it on its way. A simple
+assumption that can be made in this scenario is that the IVC can put
+characters into the screen display at a maximum rate of one per displayed
+line, i.e. one every 64uS during the line blanking interval. (A remote-terminal
+would have to work at a line rate of 156k baud to match this!) This
+display rate of one byte per 64uS is likely to be of the order of the Host
+system&rsquo;s overhead, if ndt a bit faster, and so the display rate is actually
+limited by something other than the internal display technique of the IVC.
+(Note that once the IVC has accepted the character for display the Host system
+is free to go off and collect the next character. Thus the IVC&rsquo;s &ldquo;average&rdquo;
+waiting time of 32uS to get that character into the display is not wasted
+time, as the Host is not held up by it.)
+</p>
+<p>
+The one time that the display technique does have an impact on the performance
+of the IVC is in the scrolling rate. Don&ldquo;t get me wrong &ndash; the IVC doesn&rsquo;t
+scroll exceptionally slowly &ndash; it&rsquo;s just that it could go faster! I did briefly
+experiment with using a hardware feature of the display controller that
+resulted in a scroll rate of over 1000 lines/sec but dropped it for various
+reasons:
+</p>
+<p>
+i) It was far too fast and would require another escape sequence to let
+users define the scroll rate they wanted.
+</p>
+<p>
+ii) It complicated the monitor software in various places.
+</p>
+<p>
+iii) It made the implementation of the -non-scrolling&rdquo; lines more complicated,
+and if a significant number of lines were -locked&rdquo; on the screen the
+situation returned to the original problem. (Either -locked&rdquo; lines are
+left alone and the rest of the screen memory contents moved, or the main
+screen stays in place in the display memory and the &ldquo;locked&rdquo; lines have
+to be moved to the new display start address!)
+</p>
+<p>
+Keyboards
+The IVC includes a port to which a keyboard can be attached. This makes sense
+</p>
+<p>
+&ldquo;as it effectively turns the IVC into a terminal which is then connected to the
+Host 80-BUS system. (The connection is via the 80-BUS backplane rather than a
+conventional RS232 link.) The IVC continually monitors the keyboard port and
+passes all characters from the keyboard to the Host via an internal 64-
+character buffer. Thus, whenever a key on the keyboard is pressed, the
+character is read and stored in the buffer from whence it is extracted when
+and if the Host system asks for it. Thus a fast typist can hammer away secure
+in the knowledge that nothing will be missed. In fact it is quite useful to be
+able to &ldquo;type ahead&rdquo; with some programs, although this should be done with
+</p>
+<p>
+-eaution until you are sure that the program will accept it. (Some programs
+poll the keyboard often, and -swallow&rdquo; characters they don&rsquo;t recognise. Others
+stop polling as soon as they receive a single character that is not
+immediately applicable, but they hold onto it for later.)
+</p>
+<p>
+The point I&rsquo;m trying to make is that once you are familiar with certain
+programs you can improve your throughput by typing in responses before the
+next prompt appears. For example you can speed up the time taken to load a
+Wordstar file and to get to a certain position within it. Having typed WS to
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,141 @@
+<?php columnStart(2, 2); ?>
+<p>
+with programs 3, 4, &amp; 5 to create an overlay
+demo. If you assemble progs 2,3,4 &amp;5. and then
+enter.
+</p>
+<p>
+LINK ROOT, OVLAY (OV1) (0V2)&lt;RET&gt;
+</p>
+<p>
+The demo will create itself. It only outputs
+messages and will not win any prizes but it proves
+it works.
+</p>
+<p>
+Program 6 is an overlay loader written in &lsquo;C&rsquo;. This
+is the one I use for my GSX tester. It uses &lsquo;C&rsquo;s
+pointers to functions that allow you to call things
+like overlays at absolute addresses and pass
+parameters to them if necessary. Don&rsquo;t worry if it
+all seems like gibberish as &lsquo;C&rsquo; can sometimes
+confuse, it performs in the same manner as the
+assembler version.
+</p>
+<p>
+Using L80 to create overlays
+</p>
+<p>
+There is to my knowledge no facility for creating
+overlay systems from within L80. it can be done but
+is somewhat complex and should be avoided. You
+have to hack the code around a lot in memory and
+I don&rsquo;t like having to admit that I have done it this
+way on occasion.
+</p>
+<p>
+The basic principle used here is that you load the
+root module into memory, and then you load an
+overlay in at a predetermined address. All global
+references will now have been resolved. You now
+exit L80 having saved the program. Using Gemdebug,
+ZSID or DDT you take the program file and
+move the overlay code down to 100H and SAVE it
+as a separate file. Messy but it works. May I suggest
+at this juncture that while you are messing about
+with the overlay, you create overlays that are
+compatible with the LINK format (see previous for
+details).
+</p>
+<p>
+Using the sample assembler programs lets create
+the programs using L80.
+</p>
+<p>
+1. Assemble all programs to REL format.
+</p>
+<p>
+2. Enter the following:
+L80 &lt;RET&gt; Run L80
+</p>
+<p>
+ROOT, OVLAY&lt;RET&gt; Load root module
+and overlay loader
+</p>
+<p>
+At this point you will see where the top of the root
+module is by looking at the Data readout from L80
+(in this case it is 01BE). We have to decide where
+the overlay base is to be. Lets put it at 200H and
+keep things nice and simple. To do this enter:
+</p>
+<p>
+/P:200&lt;RET&gt; Meaning load next bit at 200H.
+OVICRET&gt; and load in the 1st overlay.
+</p>
+<p>
+ROOT/N/E Save ROOT.COM and exit.
+</p>
+<p>
+Now we have to create the overlay from the COM
+file using a debugger. I have used Gemdebug to
+create LINK lookalike overlay files. This is how it is
+done:
+</p>
+<p>
+BUG ROOT. COM&lt;RET&gt;
+</p>
+<p>
+F100, 1FF,0 Fill 256 byte header with 0&rsquo;s
+</p>
+<p>
+Now move the overlay section down to 200H using
+the M command. In this case we have been lucky as
+the overlay was originally loaded into 200. If it had
+started at 0760H for example we would have to
+enter:
+</p>
+<p>
+M760, 800 , 200&lt;RET&gt;
+</p>
+<p>
+assuming that the overlay code finished at 800.
+</p>
+<p>
+To maintain LINK compatibility we now have to
+insert the information concerning the length of
+code and the base address. To do this use the &lsquo;S&rsquo;
+(set) command to insert the details. Our overlay is
+12 bytes long and its base is at 200H. We set 101
+and 102 to 12 and 00, then 107 &amp; 108 to 00 and 02.
+</p>
+<p>
+We now have a&nbsp;.OVL file in memory and we are
+ready to save it, enter:
+</p>
+<p>
+SAVE 2 0V1.0VL
+</p>
+<p>
+and the process is complete.
+Repeat this for OV2.
+</p>
+<p>
+Now create the economy version of the COM file by
+entering:
+</p>
+<p>
+L80 ROOT, OVLAY, ROOT/N/E
+</p>
+<p>
+and its all ready to go.
+</p>
+<p>
+Not very pleasant is it? It involves a lot of effort and
+no mean amount of Hex arithmetic to calculate the
+sizes of the files for the move and save commands.
+As all this is done for you by the LINK program may
+I suggest again that you go out and get it and avoid
+the above.
+</p>
+<?php columnEnd(2); ?>

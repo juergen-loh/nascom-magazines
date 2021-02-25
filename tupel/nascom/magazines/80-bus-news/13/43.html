@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+43
+</p>
+<p>
+In true text book style I leave it as an exercise to the reader to work out the
+timing of the above sections of code!
+</p>
+<p>
+One other point for budding Bios writers to bear in mind &ndash; The most useful (and
+accurate) part of the 1797 data sheet are the various flow charts of command
+execution. For example the text for Read/Write commands goes...
+</p>
+<p>
+..Upon receipt of the Type II command, the busy status Bit is set. If the E flag =
+1 (this is the normal case) HLD is made active and HLT is sampled after a 15ms
+delay..ese.
+</p>
+<p>
+Referring to the flow charts it can be seen that after Busy is set the &ldquo;Ready&rdquo; line
+is checked, and only if it is true will the 1797 continue with the command,
+otherwise it sets IRQ and terminates. If there has been no disk activity for a
+while there will be no Ready signal as the controller will have unloaded the heads
+and as a result deselected the drive. Thus, in order to get the Read/Write commands
+to execute, the software has to ensure that the drive is selected. (My software
+checks the Ready line before all Read/Writes, and issues a Seek command to the
+current track if it is found to be false. This activates HLD without actually
+stepping the heads at all, and ensures that the drive is selected and the Ready
+line represents the true state of the drive. All type I commands, of which SEEK is
+one, execute irrespective of the state of the Ready line &ndash; see the flowcharts).
+</p>
+<p>
+Finally a note about hardware mods. These are covered in the manual supplied with
+the card, but don&rsquo;t forget that as well as changing a few straps some components
+need changing. The frequency of the VCO has to be doubled so capacitor C5 (100pF)
+should be changed to 50pF. The loop filter components (C4 and R12) also need to be
+changed. Early versions of the manual escaped with a misprint, C4 should be changed
+to 0.33uF not 33uF! One thing not noted in the manual is the fact that the &ldquo;Motor
+on&rdquo; and &ldquo;Motor start-up delay&rdquo; monostables are still connected through to the Ready
+line. These connections are not required for 8" drives and their presence is an
+irritant. Rather than butchering your board to get rid of them I suggest that you
+just disconnect one end of resistor R5. This has the effect of making the &ldquo;motor
+on&rdquo; time infinite, and the signals from the monostables will no longer interfere
+with the Ready signal from the selected drive.
+</p>
+<p>
+Please note I have not written a full double-density Bios for GM809 and 8" drives &ndash;
+so don&rsquo;t try ringing up for a copy! (Anyway I&rsquo;ve moved recently). In writing your
+own I suggest you follow the guide lines in the CP/M alteration guide.
+</p>
+<p>
+Start with 8" single density (The only standard format there is!). Most 8" disks
+come ready formatted to this standard so you needn&rsquo;t worry about a format program
+initially. In your current environment write and test a keyboard routine and a
+screen routine. Next write and debug a disk read routine. If you&rsquo;re using the CP/M
+distribution disk at this point ensure it is write protected! Expand this routine
+to &ldquo;GETSYS&rdquo; (see the CP/M alteration guide). Now do the write part (using a scratch
+disk!) and work up to &ldquo;PUTSYS&rdquo;. Then put the various routines together to form your
+Bios. Next use GETSYS to read in the system tracks of the distribution disk. Copy
+your Bios (and Boot) (suitably assembled) over the distribution Bios (and Boot) and
+use PUTSYS to write the system back to a fresh disk. Then, provided you&rsquo;ve made no
+boobs, you&rsquo;re away, and can go on to refine the software in a disk-based
+environment.
+</p>
+<p>
+WOULD YOU BELIEVE IT?
+</p>
+<p>
+&lt;&lt;&lt; SSSI SSS SSIS SSS
+</p>
+<p>
+Dear Dealer, The fault on my Nascom occurs as follows. As you will
+see, the display is stable with some degree of flickery as the CPU works.
+Hitting reset, some characters change, but some stay exactly the same all the
+time. Now and then the computer enters the HALT state.
+</p>
+<p>
+Besides this, the machine is dead. Anon.
+</p>
+<?php columnEnd(1); ?>

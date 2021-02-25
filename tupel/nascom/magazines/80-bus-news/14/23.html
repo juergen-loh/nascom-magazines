@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+23.
+</p>
+<p>
+or a &lsquo;custom&rsquo; version, maybe) the solution is to single-step through TOS until
+the addresses have been copied to RAM, then modify these addresses to suit, then
+proceed.
+</p>
+<p>
+TOS cannot be used with NASSYS running in RAM. This is because the
+catalogue load address depends on the drive in use (i.e. Drive A catalogue must
+be loaded into the Drive A calalogue space in RAM) and not on the drive used to
+create the catalogue. TOS gets round this by &lsquo;throwing away&rsquo; the header bytes
+into &lsquo;ROM&rsquo; at location 0. It should be a simple matter (I haven&rsquo;t tried it) to
+change the address to, say, &pound;800 which is in the video RAM margin. TOS also uses
+absolute addresses to copy over the NASSYS subroutine table. Again, this is
+avoidable. TOS calls STMON, which initialises NASSYS, so just a simple look into
+$STAB should suffice (unless I&rsquo;ve missed something). In fact (I know &lsquo;cos I&rsquo;ve
+done it) rewriting TOS to have its own PARSE routine and to look in $SSTAB as
+above releases a bit more space, enough for FOUR whole new commands! It also
+allows it to run on any version of NASSYS. The bit that initialises the SIO can
+also be rewritten to take up a fraction of its original length. The lack of a
+Save ZEAP command in the original version of TOS is to be deplored, especially,
+as I&rsquo;ve said, there is enough room to slot one in.
+</p>
+<p>
+It may also be of interest to note that a software package is available
+from HS Design in Scotland (from the same guys who designed the HSI1N) for HSIN
+systems, which greatly extends the commands under Crystal BASIC to include many
+disk-like commands. The command set looks very comprehensive, and would certainly
+be worth looking into if you use Crystal BASIC a lot. It will only run on the
+latest version of TOS (not earlier ones, though they will supply the latest
+version free with the BASIC Extension if you return the original ROMs), but I
+doubt very much whether it will run on my &lsquo;custom&rsquo; version. I wouldn&rsquo;t buy it,
+but only because a) I don&rsquo;t have Crystal BASIC, b) I&rsquo;d probably lose the extra
+facilities of &lsquo;my&rsquo; TOS, and c) I don&rsquo;t use BASIC all that much anyway.
+</p>
+<p>
+DOCUMENTATION
+</p>
+<p>
+a co eg he mt a
+</p>
+<p>
+The documentation supplied comes in the form of a small manual which is
+A5 size. I&rsquo;ve mentioned the misleading bit about the /NASIO circuitry, and also
+the appalling circuit diagram (which is so bad it looks more like a wiring
+diagram). No source listing of the software is supplied either, so what does the
+manual contain? Well, basically it explains the operation of the various commands
+fairly well (enough to enable you to save files without getting it wrong) but I
+found the format a little cramped. An A4 size manual with more help on using TOS
+under program control (I keep on about this, but since it is advertised as
+&lsquo;looking like&rsquo; a floppy disk system &amp; all floppy disk users use operating system
+commands to load/save data from their programs, I don&rsquo;t see why TOS users
+shouldn&rsquo;t either) would also be useful (or perhaps a commented sources listing &ndash;
+I&rsquo;ve done it myself but probably didn&rsquo;t get it all right, and there&rsquo;s still one
+or two bits I still don&rsquo;t understand). Some information on the drives themselves
+would also be useful.
+</p>
+<p>
+COMPATABILITY WITH OTHER SYSTEMS
+</p>
+<p>
+I know very little about the &lsquo;Hobbit&rsquo; system except that it uses the PIO,
+so all comments here relate to comparisons with the &lsquo;CFS&rsquo; system. CFS also writes
+in blocks of 2K, also at 6000 bps. CFS commands are &lsquo;menu-driven&rsquo; but are less
+extensive than those of TOS (they do include a &lsquo;save ZEAP&rsquo; command, though). CFS
+data format is a syne. byte, followed by a load address word, followed by a
+length word, followed by the checksum, followed by the data bytes. This is
+therefore incompatible with the HSIN format, and CFS systems will be unable to
+read HSIN tapes, and vice-versa. One day I might &lsquo;con&rsquo; a CFS user to help with
+some routines to overcome this. If and when they are finished I might write it up
+into an article for the mag. (By the way, can 80-Bus News accept NASPEN files
+dumped onto these min-cassettes? No, I thought not).
+</p>
+<?php columnEnd(1); ?>

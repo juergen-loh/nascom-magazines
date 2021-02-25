@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+25
+</p>
+<p>
+relating to RAM FA00H to FC00H was on the disk, the only possible culprit was the
+COLD BOOT. This little program is only about 50H bytes long and was soon taken to
+pieces and once again a sector counter was found to be responsible. The sector
+count byte at address 0009 had been 11H (17 decimal) and SIMON had already loaded
+the first sector for a total of 18. To make the BOOT load the full 20 I set this
+byte to 13H using a PEEK program on the actual disk. This time, when booted in
+drive A, the system worked, and that is nearly the end of the story. The byte at
+909H in the CPMSYS64.COM file was changed to 13H so that all copies of the BOOT
+LOADER on the System track would now load the full BIOS.
+</p>
+<p>
+(A COLD BOOT modified in this way should NOT be used to load the origional GEMINI
+CP/M to a RAM address above D800H. Since the origional CBIOS is just over 2.5K
+jong, the GEMINI CP/M would normally start higher in RAM, uniess spcifically
+configured for say 63K. If loading were tried to the higher address using the
+modified BOOT, then the HL register pair, that hold the destination address of
+the bytes read in from the disk, would be incremented past OFFFFH, and would
+overflow back to C000H. The incoming data would load to low RAM, overwriting the
+BOOT, and soon cause a CRASH.)
+</p>
+<p>
+To complete the job only one or two tasks remained. Richard Beal had included a
+Little routine in the Load/Relocate module of SYS which he calls &ldquo;cinit&rdquo;, which
+is there to remove any &lsquo;stray&rsquo; input characters particularly when using Virtual
+Disk. I have successfully run CPMSYS64 without this routine, as SYS 11 does not
+support my MAP RAM card, and I do not use my G802 or any RAM B&rsquo;s as V.Disk. It
+might be necessary to include it with a later version of SYS that does support my
+MAP RAM though. The other task concerns &lsquo;Sign On&rsquo; messages. The origional CBIOS
+messages have been wiped out by the new BIOS, and since the Load/Relocate Module
+of SYS is not now used, the comprehensive list of features that SYS displays on
+execution has also gone. It is nice to have an impressive list of system Software
+and Hardware features displayed on Cold Boot, to &lsquo;awe&rsquo; the Plastic Box Brigade,
+and some form of Copyright mark should also be shown.
+</p>
+<p>
+There are several places where it is possible to restore &ldquo;signon&rdquo; message
+routines, but &ldquo;&ldquo;cinit&rdquo; should be run by the COLD BOOT, or by SIMON after CP/M is
+in RAM. Since SIMON is overwritten by CP/M in larger size systems though, the
+latter course is not possible directly. There is currently enough room to put
+&ldquo;signon&rdquo; routines and messages into the BIOS area, but this would take up space
+needed for future expansions of SYS, so the BIOS is not the best choice.
+</p>
+<p>
+There are app. 400 bytes free in the first disk sector that might be used for
+initialization routines, since the BOOT is only about 50H bytes long. There is
+another &lsquo;snag&rsquo; though. SIMON loads the first disk sector into high memory, and
+then does a &lsquo;copy&rsquo; to RAM at 0000H before making a jump to location 0002H, to
+start the COLD BOOT. The problem is that only 80H bytes are copied from OFC2EH to
+0000H so any text messages would be largely left behind in high memory to be
+overwritten by CP/M as it is loaded. This means that to use the free space in the
+first sector, it is necessary to modify SIMON so that the whole of the sector is
+copied to low memory. The boot could then be altered so that it executes &ldquo;&ldquo;signon&rdquo;
+and any other initialization routines before jumping to start CP/M.
+</p>
+<p>
+me me eee we oe wn ww KRG a a ee ae ee
+</p>
+<p>
+If however, SIMON is going to be altered, then the EPROM programming effort might
+as well be made worth while. For convenience my present SIMON and the short
+program that copies SIMON to RAM and pages out the EPROM card are all in a 2716
+ROM on the card. There is nearly 1K of space free in the 2716. I decided to use
+up this free space by adding to and by modifying SIMON. The &lsquo;Mods&rsquo; so far are :&ndash;
+</p>
+<?php columnEnd(1); ?>

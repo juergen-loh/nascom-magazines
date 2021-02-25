@@ -1,0 +1,47 @@
+<?php columnStart(1); ?>
+<h3>
+INTELLIGENT COPY Ixxxx yyyy zzzz
+</h3>
+<p>
+This command is used to copy a block od data zzzz bytes long from xxxx to
+yyyy. The routine first subtracts yyyy from xxxx; if xxxx is greater the normal copy
+command is used, as data cannot be overwritten. If yyyy is greater, the pointers to
+the two data blocks (data written from, data written to) are reset to the top ends by
+adding the length of the blocks less one, and the data is then copied from the top
+down; this ensures that data is not overwritten.
+</p>
+<h3>
+BASIC COLD START J
+</h3>
+<p>
+Command J causes a jump to &pound;FFFA, which is the &lsquo;cold start&rsquo; address for the
+ROM version of Nascoms Microsoft Basic. The cold start initialises the Basic
+workspace; as part of this process it uses a small section of memory in the Basic
+Interpreters text area, with the result that a cold start not only &lsquo;kills&rsquo; any program
+already entered, but also corrupts two or three lines near the start of such a program,
+which makes recovery of a program after a cold start a much more fiddly process.
+</p>
+<h3>
+KEYBOARD Kxx
+</h3>
+<p>
+When this command is executed the low byte of the first hex value on the input
+line, which is held in the L register, is stored at a location called $KOPT (&pound;0C27).
+When a character is input from the keyboard it is first converted to ASCII, and the
+value at &pound;0C27 is then tested. If this value is zero, as after a RESET, the keyboard
+character remains unchanged. If bit 0 of (&pound;0C27) is set and the character is a letter,
+bit 6 of the character is inverted. This reverses the effect of the shift key for letters,
+i.e., it changes upper case to lower case, and vice versa; the keyboard now operates
+in the typewriter mode. If bit 2 of (&pound;0C27) is set, bit 7 of the character is inverted; this
+reverses the effect of the graphics key. The value stored at &pound;0C27 is retained until
+changed by a subsequent K command, or returned to zero by RESET.
+</p>
+<p>
+In the next article I hope to conclude the the discussion of the commands, and
+give a listing of an improved Read routine, which does not load data if the checksum
+is incorrect
+</p>
+<h3 class="article-stopper">
+* &gt; &lt; * &gt; &lt; * &gt; &lt; * &gt; &lt; * &gt; &lt; * &gt; &lt; * &gt; &lt; *
+</h3>
+<?php columnEnd(1); ?>

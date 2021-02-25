@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+MONITOR.COM
+</h1>
+<h2>
+By Chris Blackmore
+</h2>
+<h3>
+THE SCENARIO
+</h3>
+<p>
+You have just added a disc drive or two and CP/M to your Nascom&nbsp;2. After a
+few minutes gloating, you try the Digital Research editor, ED.COM) and find that it
+is a pig to use. Then you discover that the assembler provided only knows 8080
+codes, instead of speaking Z80; even worse, it uses weird mnemonics designed
+to confuse anyone who is used to the Zilog set.
+</p>
+<h3>
+THE ANSWER
+</h3>
+<p>
+You could buy Diskpen and Macro-80 to solve your problem &ndash; if you have
+enough money left after lashing out on the discs. If you did, you still won&rsquo;t be able to
+run all your old programs. In this article I provide instructions that will enable you
+to produce a CP/M program that will pretend to be Nas-Sys&nbsp;1. I also provide some
+machine code which enables the new version of Nas-Sys to read from and write to
+the disc.
+</p>
+<p>
+To avoid possible problems with copyright, not to mention space in the magazine,
+the Nas-Sys code is not given. If you got your Nascom by legal means, you will
+find it in your manual.
+</p>
+<h3>
+THE METHOD
+</h3>
+<ol class="indent round-bracket">
+<li>
+Initialise a disc, and copy DDT.COM onto it. This dynamic debugger is the
+closest CP/M comes to a monitor program like Nas-Sys; it can do some
+clever tricks, but is not exactly &ldquo;user friendly".
+</li>
+<li>
+Type DDT followed by Enter. This, of course, runs DDT.COM. In future I
+will put Enter so-and-so for anything that you have to type with Enter
+after it.
+</li>
+<li>
+Clear some memory to work in, otherwise things can get very untidy, and
+you won&rsquo;t be sure if you typed the code you find when you come back
+from a tea break.<br>
+Enter F100, B00 ,0.
+</li>
+<li>
+Type in the section of Nas-Sys&nbsp;1 from 0108H to 07FFH in it&rsquo;s proper
+addresses in memory. Enter S108 to do this. Notice that it isn&rsquo;t as
+easy to type in hexadecimal code with this system as it is with Nas-Sys.
+Also notice that, where the listing should show all of the strings
+following EF, it only shows the first byte. Fortunately, the machine code
+in the listing does show what should be there.
+</li>
+<li>
+Type in the start of Nas-Sys&nbsp;1, normally found between 0000H and
+0107H, at addresses 0800H to 0907H, using the S command instead of
+DDT again.
+</li>
+</ol>
+<?php columnEnd(1); ?>

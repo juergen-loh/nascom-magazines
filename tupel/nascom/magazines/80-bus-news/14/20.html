@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+20.
+</p>
+<p>
+confuse the unwary, the documentation gives the clear impression that the /NASIO
+circuitry must be added by the user, and the manual goes on to suggest a method
+of implementing this (using extra chips, of course). To really confuse matters,
+the actual circuitry used (it IS supplied) lives on the prototyping area and uses
+a completely different circuit to that suggested!! The DBDR circuitry (for
+Nascom-1 owners) also lives on the prototyping area.
+</p>
+<p>
+The circuit itself uses the Z80-SIO to provide the necessary parallel to
+serial conversion. TTL and CMOS logic provide the phase-encoding and the
+interface to the drives. The system uses phase-encoding to store bits of
+information on the tape. Briefly, this entails a change of flux on the tape
+representing a 1 or a 0, depending on whether this happens on a positive or
+negative-going clock edge. This ensures that the tape magnetisation changes at
+least once every clock cycle. Having seen the source listing of the CFS system
+(which uses the PIO) I must say I think that using the SIO was the best approach,
+Since it avoids the machinations required to generate the serial data stream,
+generate checksums, sync. characters, etc., and this is reflected in the command
+set available, which is certainly much more extensive than that on CFS (more
+about the software later). It also allows an easy upgrade to DMA.
+</p>
+<p>
+The data rate used is 6000 bits per second, which, because no start/stop
+bits are used, is the equivalent of 7500 bps (e.g. using CUTS, if you could = get
+it to work that fast!). Data is recorded in blocks of 2K bytes, and the
+catalogue, which is at the start of the tape, also uses a 2K block. This gives a
+capacity of 56K bytes per side, excluding the directory. Any data less than 2K in
+length uses a &lsquo;padded out&rsquo; block. Each data block consists of syne. characters
+(which serve not only to indicate the start of a block but also to synchronise
+the read electronics), the load address, a length word, the data stream itself,
+followed by the CRC characters. Thus, say, a 10 byte &lsquo;file&rsquo; can be loaded without
+the other 2038 bytes &lsquo;above&rsquo; it in RAM being corrupted.
+</p>
+<p>
+The hardware falls down in one very important point: whereas the drive
+buffers use ports &pound;F8-&pound;FB, the SIO uses ports &pound;FC-&pound;FF. This is bad news indeed to
+those using page mode on their RAM/ROM cards, since the page mode circuitry also
+uses port &pound;FF (and port &pound;FE on the MAP 256K RAM and Gemini GM813 CPU-I/O-64K RAM
+boards). Use TOS, and you&rsquo;ll inevitably &lsquo;load&rsquo; a file into ROM. Switch a RAM card
+back into the system &amp; you&rsquo;ll be reprogramming the SIO!!! The solution is to
+reconfigure the SIO at a different I/O address (and change the software to suit).
+The port decoding is hard-wired, but luckily there are a couple of unused
+inverters on the board, so it is just a matter of breaking a track or two and
+inverting an address line to reconfigure the port decoding. This is something I
+have yet to do (spot the RAM-A user!). Neither are the address/data lines
+buffered on the card: some of the lines have several LS-TTL loads attached to
+them. Buffering would then make it easier (neater) to mount the 2708s/4118s on
+the card if your Nascom (&amp; RAM-A) card are already chock full of ZEAP, NASDIS,
+DEBUG, NASPEN, etc., or has been reconfigured for 2716/6116&rsquo;s.
+</p>
+<p>
+The drives themselves (of which no information is supplied) are very
+compact, being about 4" cubed in size. They require a 12 volt power supply, which
+in this case is drawn from the NASBUS. The manual says that if more than 800mA is
+already being drawn from the 12V line, then an extra power supply may be needed.
+The cassettes are very small, being the same type as those used in &lsquo;Dictaphone&rsquo;
+machines, only the ones used are certified free from drop-outs, which they do
+indeed seem to be (unlike &lsquo;computer quality&rsquo; C10 audio cassettes). This means
+that Read/Write errors are definitely a thing of the past! Uncertified cassttes
+may also be used, but on your own head be it!
+</p>
+<p>
+SOFTWARE
+</p>
+<p>
+The operating software (called &lsquo;TOS&rsquo; &ndash; Tape Operating System) occupies 2K
+bytes and is supplied in two 2708 HEPROMS. It resides at location &pound;D0000, and uses
+2K bytes of workspace, which &lsquo;&rsquo;sits&rsquo; on top of TOS at &pound;D800. Two 4118s are
+</p>
+<?php columnEnd(1); ?>

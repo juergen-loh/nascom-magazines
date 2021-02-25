@@ -1,0 +1,207 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 10</p></th></tr>
+
+<tr><td colspan=4><p>
+******** Now for the exciting bit &ndash; The ROM ********
+</p></td></tr>
+
+<tr><td><h4>Name</h4></td><td><h4>Addr</h4></td><td colspan=2><h4>
+What the routine does
+</h4></td></tr>
+
+<tr><td><p>INIT</p></td><td><p>E019</p></td><td colspan=2><p>
+Copy the initial work space conditions into the work space RAM
+at 1000 to 105F.
+</p></td></tr>
+
+<tr><td><p>MSIZE</p></td><td><p>E036</p></td><td colspan=2><p>
+Output &ldquo;Memory size&rdquo; prompt and get response from user.
+If a number is given jump to TSTMEM otherwise start at the
+beginning of RAM and test each successive byte until the end
+of RAM is found. When the end has been found jump to SETTOP.
+</p></td></tr>
+
+<tr><td><p>TSTMEM</p></td><td><p>E05B</p></td><td colspan=2><p>
+Get supplied address.<br>
+If any bad characters output &ldquo;?SN Error&rdquo; and re-initialise
+otherwise try to write a D0H byte into that address. If D9H
+is not read back then there is no RAM at that address so go
+to MSIZE to ask again. If D0H is read back then drop through
+to SETTOP.
+</p></td></tr>
+
+<tr><td><p>SETTOP</p></td><td><p>E06D</p></td><td colspan=2><p>
+Test for minimum memory requirement and if not enough jump to
+MSIZE to ask again otherwise save this address as the highest
+available memory location, allocate 50 bytes for string space
+and output the sign on message and the number of bytes free.
+Then drop through to WARMST.
+</p></td></tr>
+
+<tr><td><p>WARMST</p></td><td><p>E0AE</p></td><td colspan=2><p>
+Clear run-time registers and jump to PRNTOK.
+</p></td></tr>
+
+<tr><td><p>BAKSTK</p></td><td><p>E356</p></td><td colspan=2><p>
+Look back through stack for FOR or GOSUB blocks and exit with
+HL pointing to the block.
+</p></td></tr>
+
+<tr><td><p>CHKSTK</p></td><td><p>E38A</p></td><td colspan=2><p>
+Check for &ldquo;C&rdquo; levels of stack space and output &ldquo;?0M Error&rdquo;
+if not enough stack space.
+</p></td></tr>
+
+<tr><td><p>DATSUR<br>TMERR</p></td><td><p>E3A7 to<br>E3BF</p></td><td colspan=2><p>
+<br>
+I like this section of code because you jump into the routine
+at one of the entry points, this loads the &ldquo;E&rdquo; register with
+the error number and the &ldquo;LD BC,nn&rdquo; opcode (01H) skips all
+the following &ldquo;LD E,n&rdquo; instructions. It is very efficient.
+</p></td></tr>
+
+<tr><td><p>ERROR</p></td><td><p>E3C1</p></td><td colspan=2><p>
+Output error code for error number in the E register, output
+the line number if needed and drop through to PRNTOK.
+</p></td></tr>
+
+<tr><td><p>PRNTOK</p></td><td><p>E3F8</p></td><td colspan=2><p>
+Output &ldquo;Ok&rdquo; message and drop through to GETCMD.
+</p></td></tr>
+
+<tr><td><p>GETCMD</p></td><td><p>E405</p></td><td colspan=2><p>
+Get a direct statement or BASIC line, CRUNCH the text and if
+it is a direct statement go to EXCUTE to execute it. If it is a
+BASIC line then move it to the program text area.
+</p></td></tr>
+
+<tr><td><p>SRCHLN</p></td><td><p>E499</p></td><td colspan=2><p>
+Search for line number in register DE.
+</p></td></tr>
+
+<tr><td><p>NEW</p></td><td><p></p>E4B9</td><td colspan=2><p>
+Set PROGND to start of program text area to effectively remove
+program from memory and execute the null program to clear all
+the other pointers.
+</p></td></tr>
+
+<tr><td><p>RUNSFT</p></td><td><p>E4C5</p></td><td colspan=2><p>
+Execute program from first statement.
+</p></td></tr>
+
+<tr><td><p>INTVAR</p></td><td><p>E4C9</p></td><td colspan=2><p>
+Clear out variables and string space an reset DATA pointer.
+</p></td></tr>
+<!--
+<tr><td><p></p></td><td><p></p></td><td colspan=2><p>
+</p></td></tr>
+-->
+</table>
+
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 11</p></th></tr>
+
+<tr><td><p>CLREG</p></td><td><p>E4DF</p></td><td colspan=2><p>
+Reset stack to top of memory, clear out temporary strings,
+disable CONTinue and execute program.
+</p></td></tr>
+
+<tr><td><p>PROMPT</p></td><td><p>E4FC</p></td><td colspan=2><p>
+Output &ldquo;?&nbsp;&rdquo; prompt for INPUT and go to get input line.
+</p></td></tr>
+
+<tr><td><p>CRUNCH</p></td><td><p>E509</p></td><td colspan=2><p>
+Move text string from HL to BUFFER crunching reserved words
+into tokens as you go.
+</p></td></tr>
+
+<tr><td><p>ENDBUF</p></td><td><p>E5B8</p></td><td colspan=2><p>
+Mark the end of BUFFER with three nulls.
+</p></td></tr>
+
+<tr><td><p>GETLIN</p></td><td><p>E5F2</p></td><td colspan=2><p>
+Get an input line from monitor.
+</p></td></tr>
+
+<tr><td><p>TTYLIN</p></td><td><p>E607</p></td><td colspan=2><p>
+Get an input line by character and save it in BUFFER.
+</p></td></tr>
+
+<tr><td><p>CPDEHL</p></td><td><p>E68A</p></td><td colspan=2><p>
+Compare the DE register with the HL register returning flags:&ndash;<br>
+Z &ndash; Registers are equal, C &ndash; DE &gt; HL and NC- DE &lt;= HL
+</p></td></tr>
+
+<tr><td><p>CHKSYN</p></td><td><p>E690</p></td><td colspan=2><p>
+Make sure the next byte in the code string is the same as the
+byte following the &ldquo;CALL CHKSYN&rdquo;. If not &ndash; output &ldquo;?SN Error&rdquo;.
+</p></td></tr>
+
+<tr><td><p>OUTC</p></td><td><p>E69B</p></td><td colspan=2><p>
+Output character in the A register to the terminal and output a
+CRLF if the current terminal width is exceeded. Character is
+not output if CTLOFG is set.
+</p></td></tr>
+
+<tr><td><p>CLOTST</p></td><td><p>E6CC</p></td><td colspan=2><p>
+Get an input character and flip CTLOFG if it is control &ldquo;O&rdquo;.
+</p></td></tr>
+
+<tr><td><p>LIST</p></td><td><p>E6DD</p></td><td colspan=2><p>
+LIST BASIC program from start (or specified line number) LINESN
+lines at a time. It does not take into account that graphics
+may appear in quotes, DATA or REM statements so the graphic
+character is treated as a reserved word token and expanded to
+the complete word.
+</p></td></tr>
+
+<tr><td><p>FOR</p></td><td><p>E779</p></td><td colspan=2><p>
+Assign the initial value to the index variable and then set up
+a FOR block on the stack.
+</p></td></tr>
+
+<tr><td><p>RUNCNT</p></td><td><p>E7F2</p></td><td colspan=2><p>
+Main execution driver loop. This gets the next statement
+(May be after &ldquo;:&rdquo; or on next line) and gives it to EXCUTE.
+</p></td></tr>
+
+<tr><td><p>EXCUTE</p></td><td><p>E816</p></td><td colspan=2><p>
+Test current statement. If it is a key word then find the
+address of the routine from WORDTB and call it. If it is a
+letter then call LET to try to assign a variable. Otherwise
+generate &ldquo;?SN Error&rdquo;.
+</p></td></tr>
+
+<tr><td><p>GETCHR</p></td><td><p>E836</p></td><td colspan=2><p>
+Get next character in code string and return flags:&ndash;<br>
+Z &ndash; End of statement (&ldquo;:&rdquo; or null)<br>
+C &ndash; Character is a digit otherwise NC.
+</p></td></tr>
+
+<tr><td><p>RESTOR</p></td><td><p>E846</p></td><td colspan=2><p>
+RESTORE routine. Set DATA pointer to start of program or
+to specified line if a line number is given.
+</p></td></tr>
+
+<tr><td><p>TSTBRK</p></td><td><p>E861</p></td><td colspan=2><p>
+Test for break key. If pressed test for control &ldquo;S&rdquo; (pause).
+If another break pressed then stop execution and output break
+message.
+</p></td></tr>
+
+<tr><td><p>STOP</p></td><td><p>E870</p></td><td colspan=2><p>
+STOP routine. Flag &ldquo;STOP&rdquo; an join END.
+</p></td></tr>
+<!--
+<tr><td><p></p></td><td><p></p></td><td colspan=2><p>
+</p></td></tr>
+-->
+</table>
+
+<?php DisAssemblyRomBasicEnd(); ?>

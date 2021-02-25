@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<p>
+It would not be out of place to list here the various control codes and their
+functions:
+</p>
+<p>
+Code 02 (CTRL B) sets bidirectional print. This mode gives maximum throughput
+&ndash; say 65 chars per second!
+</p>
+<p>
+Code 03 (CTRL C) sets unidirectional print. This gives best alignment for
+columns of figures. The command is obeyed immediately on receipt.
+</p>
+<p>
+Code 04 (CTRL D) sets double width printing. This character is queued in the
+buffer, and only takes effect in its appropriate place. It is automatically reset at
+the end of a line.
+</p>
+<p>
+Code 05 (CTRL E) sets single width characters. All lines start out in this
+condition, so you must reindicate by a CTRL D if you want double width after each line
+feed.
+</p>
+<p>
+Code 08 (CTRL H) Backspace. This will only backspace within a line. It will
+not pass a Line Feed (0A), a Carriage Return (0D) or a Form Feed (0C).
+</p>
+<p>
+Code 09 (CTRL I) Horizontal Tab. This will cause the print head to print
+spaces until it is at the next column which is a multiple of 8.
+</p>
+<p>
+Code 0A (CTRL J) Line feed. This prints any preceeding characters in the
+buffer, and advances the paper by one line.
+</p>
+<p>
+Code 0C (CTRL L) Form Feed. This causes 6 line feeds in succession.
+</p>
+<p>
+Code 0D (CTRL M) Carriage return. This causes any preceeding characters in the
+buffer to be printed, and if the strap option is set in the IMP, causes a line feed.
+</p>
+<p>
+Code 1F (CTRL _) Graphics Mode. Prints out the Buffer, and puts head at
+lefthand side on a fresh line. Then it interprets the next 760 Bytes as a dot pattern,
+and prints them across the page. At the end of the line, it feeds enough for another
+graphics line to join below the last one, and the IMP returns to the normal type mode.
+It is necessary to reinvoke the graphics option at the start of each line of graphics.
+</p>
+<p>
+These are the options, with the addition of the self test on reset. Without
+any doubt, the IMPRINT is a very worth while addition to any IMP. The alteration to
+the rub out character to allow continuous bi-directional printing alone allows the
+throughput of the IMP to be nearly doubled (38 chars per sec to 65 chars per sec from
+my measurements!) and may put off the evil hour when a faster printer becomes
+essential. Those who have had to wait two hours for the latest edition of a printout
+will know what I mean (and sympathise?).
+</p>
+<p>
+The IMPRINT comes with a well commented and well printed set of documentation.
+There is one error in it that I found. The reference on page 3 to code 04 should be to
+code 02. With my copy, there was no mention of how to put the EPROM in position. I
+hope that this will be rectified shortly. To open the IMP, you will need a 3/32" Allen
+hex key. Unplug the IMP from the mains (dying is something you usually only get one
+chance at!) and open the two little black studs on each side with the Allen Key, which
+can be got in any good toolshop or engineers providers. Very carefully, slip the case
+off, and lay it on its back beside the machine. It is still connected to the IMP by a
+loom of wire, so try not to put too much tension on these wires. Then, with a long
+handled fine screwdriver, working from the front of the machine, insert the screw
+driver under the EPROM, which is about 1/3 of the way across the machine, pointing
+front to back. Very gently, you can twist the blade to free this EPROM, until it can
+be lifted out. It should be held only by the ends, not by the pins. The new EPROM can
+be placed in position, holding in the same manner, with the orientation dot or dimple
+on the end facing the print mechanism, and pushed down gently into position. The old
+EPROM should be placed into a piece of antistatic foam, or foil wrapped airfoam, and
+kept until a use arises for it. It could be reprogrammed with a new character set for
+an N2, or an N1 with Econographics. Having inserted the EPROM, now is the time to
+lubricate the innards of the IMP. A drop of oil on the polished guide rail, the frame
+edge, the helical cam, and the ribbon driver are all that is required. Now put the top
+back, screw in the screws, thread the paper, and plug in. Turn on, hit reset, while
+holding down the Line feed button. The machine will enter self test mode, and print
+away busily for about 25 seconds. The rest is up to you!
+</p>
+<p>
+The IMPRINT is available from Interface Components (and possibly other Nascom
+distributors&nbsp;?), costing #30 plus VAT. The author, David Parkinson, is to be
+congratulated on having got so much into so little.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

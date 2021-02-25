@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+12
+</p>
+<p>
+review manual came bound with one of those pull-on plastic spines. T have no
+objection to then, I&rsquo;ve used them myself, but when I opened the manual I found
+I could not read the start of most lines as they were lost in the binding.
+Pulling the plastic spine off cured that, but then left me with a pile of
+loose paper. My alternative method of storing manuals &ndash; four-hole punching the
+pages and storing them in a ring binder &ndash; would not be perfect either, as the
+holes would mutilate some of the text. I measured the left and right margins
+at 10mm and 15mm respectively. I reckon they should be 15mm at an absolute
+minimum, 20mm would be better.
+</p>
+<p>
+On glancing through the Hisoft HP5 manual one thing I noticed immediately
+was that the range of the floating point numbers was given as 3.4x10 to
+5.9x107) . However the range that the Am9511 can handle directly is only
+9.221018 to 2.7Tx1 072 . Subsequently I wrote a short program that verified that
+the limits in HP5 are those of the Am9511.
+</p>
+<p>
+Support &ndash;
+The area where a product like this stands or falls is in how easy it is
+to use. All your current software will obviously ignore it, and it is nota
+trivial task to get round this problem. Belectra have taken a step in the
+right direction by ineluding in the price a special version of the Hisoft
+Pascal compiler whose run-time routines make specific use of the arithmetic
+processor. So if you want to &ldquo;nlug-in-and-go&rdquo;, you are currently restricted to
+Hisoft Pascal, or Pascal/MT+ which also has an option for using the Am9511.
+</p>
+<p>
+Trying it out
+</p>
+<p>
+I list below a few comparitive_ benchmarks of the performance. A nice
+benchmark I came across recently [4] is a good test of processor speed and
+accuracy on purely arithmetic routines. This very nicely matches the area in
+which the HSA-88B would be used. Try it on your current favourite interpreter
+and/or compiler for comparison with the figures below. Ideally it should
+produce a result of 2500 in as little time as possible.
+</p>
+<p>
+5 REM Benchmark from DDJ No 83 (Sept &lsquo;83) p120-122
+</p>
+<p>
+10 N%=2500
+</p>
+<p>
+20 A=1
+</p>
+<p>
+30 FOR I%=1 TO N&amp;-1 : A=TAN(ATN(EXP(LOG(SQR(A*A)))) )+1:NEXT 1%
+40 PRINT USING &ldquo;A=&pound;&pound;&pound;&pound;.&pound;&pound;LL"5A
+</p>
+<p>
+Fig 1 &ndash; DDJ Benchmark in BASIC
+Language Result Time
+</p>
+<p>
+Standard MBASIC interpreter: 2304.86 in 225 secs
+</p>
+<p>
+BASCOM compiler : 2304.86 in 183 secs
+*Modified MBASIC interpreter: 2326.94 in 41.8 secs Am9511 support
+Hisoft Pascal (V5) : 2326.94 in 29.1 secs " &ldquo;
+Simple assembly code : 2326.94 in 26.8 secs " &ldquo;
+version of the benchmark
+</p>
+<p>
+* gee below
+Fig 2 &ndash; Benchmark timings (4MHz Z80)
+</p>
+<p>
+Unfortunately several Pascals do not appear to offer TAN as a function,
+(they do have SIN and COS), and only have ARCTAN for the inverse functions.
+So, for the Pascals, I have translated the PCW BMS into Pascal.
+</p>
+<?php columnEnd(1); ?>

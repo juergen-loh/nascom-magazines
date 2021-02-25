@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+For example, let us suppose that an interrupt routine
+for Port A starts at 0E12H, and that the interrupt
+address table will be stored at 0F80H. In order that
+the routine should be found correctly, the I register
+should contain 0FH, the value 80H should be sent to
+the control register of Port A, and finally, memory
+locations 0F80H and 0F81H should contain 12H and 0EH
+respectively (low byte first). At an interrupt, CPU
+interrupts are automatically disabled and must be
+re-enabled, if required, by the programmer.
+</p>
+<p>
+Always end an interrupt service routine with the RETI
+instruction, as this is the only way to indicate to the
+PIO port, that the service routine is finished. This
+feature can cause some dismay to the unwary. Take the
+following example: everything is set up correctly, and
+the PORT interrupts correctly. However, unfortunately
+the interrupt routine crashes. No problem to our intrepid
+experimenter, he presses reset, debugs the interrupt
+routine and tries aqain, remembering to reset IM 2, I
+register and interrupt enable. Dismay! Nothing happens.
+No interrupt.
+</p>
+<p>
+The problem is that the PIO still thinks that is is being
+serviced for its initial interrupt, and is internally
+inhibited from causing another. A useful routine to get
+out of this sort of problem is as follows:&ndash;
+</p>
+<pre>
+21 00 00         LD        HL, 0000H
+ES               PUSH      HL
+ED 5E            RETI
+</pre>
+<p>
+This will tell the PORT that its service routine
+is finished and then restart the monitor by executing
+from 0000H. It can be used at any time, 1f there is any
+doubt as to the status of a PIO.
+</p>
+<p>
+Once the mode and interrupt control have been set, the Port
+interrupt may be enabled or disabled by sending 83H or 03H
+to the control register. This feature could form the basis
+of a generalized interrupt control program for a given
+system. However, it should be noted, that the correct way
+to disable a port interrupt, is to first of all disable CPU
+interrupts before the Port interrupt. This is because an
+interrupt by that Port, during the execution of the instruction
+to disable its interrupt, would cause a system crash.
+</p>
+<p>
+Finally, when a Port has been disabled, an interrupt may be
+pending, so that when the Port is again enabled it will at
+once interrupt the CPU. This Pending interrupt may be
+cleared, if required, by sending an interrupt control word
+with bit 4 set. This is effective in all modes.
+</p>
+<p style="text-align: right">
+/ .. ..
+</p>
+<?php columnEnd(1); ?>

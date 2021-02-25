@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-58-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+The IMPRINT: a review.
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+Rory O&rsquo;Farrell
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+The IMPRINT is a new operating system for the IMP printer. It comes in the
+form of a new EPROM, which is substituted for that provided as standard in the IMP.
+With the addition of this EPROM, your IMP has a number of important new facilities.
+</p>
+<p>
+Firstly it has the facility, under software control, to print either normal
+sized characters, or double sized characters, which it prints 40 to the line. All
+characters can now be printed unidirectionally or bidirectionally, by sending the
+correct control code to the IMP. The IMP can also interpret Control I as a tab
+character, and steps across the page to the next multiple of 8 columns, thus becoming
+compatible with the Tab function under the CP/M disk operating system. Control L (code
+0C) is recognised as a form feed command, and causes the IMP to advance the paper by
+six lines.
+</p>
+<p>
+Connection of the IMP to your system remains unchanged, the Busy line behaving
+as previously. The new system immediately makes the IMP sound different. The reason is
+not hard to find. Examination of the manual discloses that the IMP is effectively
+printing at twice the speed (unless you have been changing the preset power up
+options). Gone is the change to unidirectional printing when there are more than forty
+characters on a line- Why doesn&rsquo;t the head overheat? The manual explains that the head
+is rated for continuous printing, and the only character which caused occasional
+difficulty was the rubout character &ndash; the white block. This character has now been
+changed to an inverted&nbsp;?&nbsp;, and in consequence 80 characters per line can now be
+printed in bidirectional mode. This option can be disabled under software control, so
+that when best alignment is required in the type it can be obtained by selecting the
+unidirectional mode.
+</p>
+<p>
+If the Line Feed button is held down as Reset is pressed on the IMP, it will
+immediately set to, and print its character set four times, both in standard and
+double width. When you have installed the EPROM, this is the easiest way to check that
+all is as it should be.
+</p>
+<p>
+What happens if you have an application which demands heavy lines across the
+page, as it might be, lines of the old 7F white Block? All is not lost! The IMP has
+one surprising addition:
+</p>
+<h4>
+A HI RES GRAPHICS FACILITY!!!
+</h4>
+<p class="noindent">
+This facility, in addition to the previously mentioned facilities, make the IMP
+unsurpassed value for money! It now acquires the facility to plot hi res graphics all
+across the page, on receipt of a 1F code (control _). When it receives this character,
+it prints out what is left of the buffer, goes to the lefthand side of the print area,
+and feeds to a new line. It then proceeds to gather the next 760 Bytes, and interpret
+the 7 least significant bits of each byte as instructions for each print needle (bit
+6=top dot, bit 0=bottom dot). When it has these 760 bytes (they take a fair while to
+send &ndash; over 6 secs at 1200 baud) it prints the line. In printing the line, it takes
+account of the head specification, which says that a dot can not be printed in two
+columns in succession, and if it finds such an illegal condition, it resets a dot or
+dots. To indicate that it has interfered with your data, it turns on the Red Error
+LED, and turns it off at the end of the line. This allows you to plot 380 dots across
+the width of the page at any one time, and you have 760 columns at your disposal. When
+the graphics line is finished, the IMP feeds by the amount of the line only, so that
+another graphics line can be printed below and immediately contiguous. In this way it
+will be possible to plot quite fine resolution graphs, displays and pictures. I have
+in mind using the IMP to plot soil resistivity data from Archaeological surveys, which
+I had been asked to process. The plot from the IMP will very quickly give an
+indication of the result, without having to go to the trouble of doing a detailed
+manual plot.
+</p>
+<?php columnEnd(1); ?>

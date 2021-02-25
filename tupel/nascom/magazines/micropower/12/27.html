@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+enter Wxxxx yyyy to write the memory from xxxx to yyyy to tape, you can obtain a
+second copy of the same region merely by entering W, because the original
+parameters are still in the workspace, providing that you haven&rsquo;t pressed RESET.
+Similarly, if you set the number of lines to be displayed in the tabulate command, this
+value is retained until re-entered, or set to zero by RESET.
+</p>
+<h3>
+THE INDIVIDUAL COMMANDS
+</h3>
+<h3>
+ARITHMETIC Axxxx yyyy
+</h3>
+<p>
+This command gives the sum and difference of the two sixteen-bit values,
+together with the &lsquo;offset&rsquo; for use in relative jump instructions. For example, to perform
+a relative jump from &pound;0C80 to an instruction at &pound;0CA0 the offset necessary is given
+by entering AC80 CA0, when the monitor will respond with 1920 0020 1E. Thus the
+necessary relative jump is:
+</p>
+<pre style="text-align: center">
+&pound;0C80  18 1E     JR &pound;0CA0
+</pre>
+<p>
+Note that the address of the relative jump instruction is entered, not the
+address of the offset byte. If the offset lies outside the permissible range for relative
+jumps two question marks are printed in place of the offset.
+</p>
+<h3>
+BREAKPOINT Bxxxx
+</h3>
+<p>
+The use of the breakpoint command, Bxxxx, to insert restart &pound;E7 at address
+xxxx for the debugging of programs was covered in the first article in this series. The
+breakpoint function is turned off by entering B0. Nas-Sys&nbsp;1 assumes that there is
+ROM at address &pound;0000, so it goes ahead and &lsquo; inserts&rsquo; &pound;E7 at this address; of course,
+this has no effect because you cannot change the ROM by writing to it, so the
+breakpoint is inoperative. In Nas-Sys&nbsp;3 no attempt is made to insert &pound;E7, or to
+replace the original code at the breakpoint, if the breakpoint address is zero. This
+means the breakpoint routine can be used if you have RAM at address 0000, i.e., in
+disc systems.
+</p>
+<h3>
+COPY Cxxxx yyyy zzzz
+</h3>
+<p>
+The command copies a block of data zzzz bytes long from address xxxx to
+address yyyy. For general copying of data it is best to use the intelligent copy
+command, I, which thinks about what it is doing to ensure that data is not overwritten
+(see below). In fact the C command is most useful for filling a block of memory with a
+specific byte. Thus if you modify &pound;1000 to &pound;00, and then execute C1000 1001 400
+you will fill the 1K block starting at &pound;1000 with zeros. Because I never use the Copy
+routine I have replaced it with a command to compare two blocks of memory, for
+which a listing was given in the first article in the series.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+HANDS (FURTHER) ON
+</h1>
+<h2>
+By Viktor
+</h2>
+<h3>
+USING THE CASSETTE INTERFACE
+</h3>
+<p>
+When data from a microcomputer is stored on tape the eight bits of each byte
+being stored are written sequentially onto the tape, usually with the addition of a
+number of bits denoting the start and end of a byte. In many micros this task is
+performed by software, but in the Nascom a device called a UART (Universal
+Asynchronous Receiver Transmitter) does all the work, and the processor merely
+sends each byte to be stored to the UART and then sits an waits while this chip
+writes the bit pattern through the cassette interface.
+</p>
+<p>
+To be effective the method of storing the data bits has to distinguish clearly
+between a 1 and a 0. In the original cassette interface fitted to the Nascom, a 1 is
+stored as a pulse of &lsquo;noise&rsquo; at a frequency of 1.95 kHz, while a 0 is simply
+represented by the absence of such a signal. The system worked fairly well at the
+low speed of operation which was originally chosen, but it is very susceptible to
+spurious signals, caused by poor tapes or by external &lsquo;noise&rsquo; carried along the mains
+leads, which the interface then interprets as a 1.
+</p>
+<p>
+A design for an improved cassette interface, which was much more reliable and
+which would operate at much higher data rates, was published in P.C.W. in
+December 1978, and this interface, always referred to as the &lsquo;Cottis-Blandford&rsquo; after
+the designers, was adopted for the Nascom&nbsp;2. It stores data in the CUTS format
+(Cassette Users Tape Standard, also known as Kansas City format), which
+represents a 1 by a 2400 Hz and a 0 by a 1200 Hz signal. The original Nascom&nbsp;1
+tapes are not compatible with CUTS tapes, but the Cottis-Blandford interface is
+available in kit form, and it can be fitted to a Nascom&nbsp;1.
+</p>
+<p>
+Two recording speeds are available on the standard Nascom&nbsp;2, 300 Baud and
+1200 Baud. The term Baud refers to the data transfer rate in bits/second, but don&rsquo;t
+forget that this includes the start and stop bits, so that at 1200 baud it takes about 9
+seconds to transfer 1K of data. As noted in INMC 80, issue 1, it is possible to run
+Nascom&nbsp;2 interface at 2400 Baud by linking TP20 to TP4 and TP21 to TP5. The
+various Baud rates are selected by switches 1 to 6 on LSW/2. The switch positions
+for the various rates are:
+</p>
+<p>
+U = up (nearest edge of board) D = down X = either
+<table>
+<tr><td></td>                             <td>Switch</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><td style="text-align: right"> 300 Baud</td><td></td><td>D</td><td>D</td><td>D</td><td>D</td><td>D</td><td>D</td></tr>
+<tr><td style="text-align: right">1200 Baud</td><td></td><td>U</td><td>D</td><td>D</td><td>U</td><td>D</td><td>D</td></tr>
+<tr><td style="text-align: right">1200 Baud</td><td></td><td>X</td><td>U</td><td>U</td><td>X</td><td>U</td><td>U</td></tr>
+</table>
+<p>
+At higher Baud rates you will have to use better quality tapes and a better tape
+recorder, because the date is being stored at a higher density, but it is well worth
+persevering, because once your interface is operating reliably at 2400 Baud you will
+find even 1200 to be slow, and 300 will seem interminable. By modifying the board it
+is even possible to operate at higher speeds &ndash; 4800 or 9600! However, the best
+baud rate for exchanging tapes with other Nascom users seems to be 1200.
+</p>
+<?php columnEnd(1); ?>

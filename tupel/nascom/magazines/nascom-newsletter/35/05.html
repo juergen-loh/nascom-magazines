@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+extension cade. Any calls to NAS-SYS or SYS-EX routines from
+within the extension code will require @ number of stack levels
+to be available.
+</p>
+<p>
+Suggested routine to extend SYS-EX at offset 9400H
+</p>
+<p>
+eaeo FE 6A ceony
+0402 DA #* +e JP CyqROUTINE
+0805 CA es +e SP 2, 3ROUTINE
+ea0a FE OF ce &ldquo;a
+</p>
+<p>
+040A DA +4 48 JP Cy@ROUTINE
+ead CA +Y #e JP 7, OROUTINE
+aie FE Bz cr ear
+</p>
+<p>
+@412 DA +e we SPC, pROUTINE
+415 CA se +e SP 7,USCRI
+0418 CS ee ee ge USCRE
+</p>
+<p>
+Compatibility with NAS-SYS monitors
+</p>
+<p>
+Compatibility with both NAS-SYS&nbsp;1 and NAS-SYS&nbsp;3 monitors
+is achieved (ith one exception) by calling the NAS-SYS routines
+in the NAS-SYS recommended manner.
+</p>
+<p>
+The one exception is that SYS-EX requires access to the
+absolute address of the NAS-SYS INLS routine, which is different
+in the twa versions of NAS-SYS, This is achieved by locating the
+Instruction in the main monitor loop PARSE (by using a variant
+of the SYS-EX FCEPI routine? which follows the NAS-SYS call to
+IMLS in both versions of the monitor. The address of IMLS is
+taken from the two bytes priar ta this common instruction.
+</p>
+<p>
+User entry point summary
+</p>
+<p>
+ADDRESS (start ENTRY POINT
+</p>
+<p>
+of SYS-EX plus)
+</p>
+<p>
+0000H s+ + + Cold start when installed at B000H
+&lsquo;only
+</p>
+<p>
+9003H&nbsp;. . . . . . Called routine entry point
+</p>
+<p>
+eos 1 lll ll cod start
+</p>
+<p>
+ooop 2221. &gt; warm start
+</p>
+<p>
+ereon 12) 1.) BASIC named program file entry point
+cold start when installed at B000H
+</p>
+<p>
+only
+</p>
+<p>
+0003H&nbsp;. . s+ Called routine entry point
+</p>
+<p>
+eect 221) l cold start
+</p>
+<p>
+gooet 222 ll warm start
+</p>
+<p>
+o1eoH 21 2) BASIC named program file entry point
+</p>
+<?php columnEnd(1); ?>

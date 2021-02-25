@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<p>
+Unfortunately, the second drive still did not work, and returned &ldquo;Drive Not Ready&rdquo;
+errors via the BIOS, although it did respond to stepping command issued via a
+monitor (the excellent public domain Z8E.COM). By this time there were no more
+drives available, but Scorpio very kindly suggested I keep the dud for spares and
+accept a partial refund. This I did, but was able to send the refund back, as the
+problem was mechanical and (relatively!) easily solved. The main stepper motor
+operates a lead screw which moves the head assembly via a &ldquo;nut&rdquo; (which is biased
+with a set of small springs to keep the head assembly on its guide rails) and an
+intermediate cupped washer. This washer had become displaced, and as a result
+the track 0 position of the stepper motor left the heads several track widths outside
+the genuine track 0.
+</p>
+<p>
+Replacement of this washer brought the second drive into action, and I was off. Or
+so I thought! Both drives could now read and write reliably, and repeated
+verifications of the disks were successful. However, one of my database applications
+involves an alphabetic printout of a large random access file, and during this the
+BIOS would crash out with a &ldquo;Drive not Ready&rdquo; error. Numerous fiddles with head
+settling time etc. failed to cure the fault, which tended to occur at the same pages
+of the printout each time, but occasionally did not happen at all. I also tried all sorts
+of extra decoupling of the power supply to no avail.
+</p>
+<p>
+Eventually the penny dropped! During the printout, there were times when the head
+was unloaded after a period without disk activity, and then immediately loaded
+again as a new sector was requested. If the head-load/door-lock solenoid had not
+returned to its de-energised position before being re-energised, it could not quite
+reload the head. The Drivetec derives the index pulse from pre-formatted data on
+the disk, not from the index hole; the drive motor time-out period elapsed without
+an index pulse being received and the drive appeared to be empty.
+</p>
+<p>
+The solution was to test the head-load status before any disk read or write was
+performed, and if the head was unloaded to wait for a further 100 mS before
+reloading it. This is a rare event, and has no significant effect on performance.
+</p>
+<h2>
+Conclusion
+</h2>
+<p>
+I am very pleased with the addition of these drives to my system, which now offers
+the disk capacity of a small Winchester system but allows me to remove data files
+completely for security and backup purposes. As far as I can tell, they are now
+performing up to specification. I had anticipated some problems in obtaining (and
+paying for!) disks, but these are readily available and cost &pound;18 for 5 plus VAT, which
+is not a lot when their capacity is taken into consideration.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,47 @@
+<?php columnStart(1); ?>
+<p>
+byte, so that the accumulator now contains a 1 at each position corresponding to a
+changed bit. The accumulator is now rotated right so that successive bits pass into
+the carry flag while a single bit is rotated left in the D register and the rotations are
+counted in the C register; this process stops as soon as the carry flag is set. The
+result is that D now contains a single bit set corresponding to the pressed key with
+the lowest column number, and C contains that column number.
+</p>
+<p>
+D is now used as a mask to select the appropriate bit from the second read of
+the row (contained in E), and to compare it with the same bit of the mapping byte. If
+the two are identical, it is assumed that the first &lsquo;change&rsquo; was spurious, and the
+routine continues with the next row. When the two are different, the mapping byte is
+updated and the status of the bit in E is tested. If this bit is zero, the change was
+caused by the release of a key, and no further action need be taken. However, when
+the bit is set a key press has occurred, and the routine now has to determine the
+ASCII code of the key.
+</p>
+<p>
+The information identifying the key pressed is first combined into a single byte in
+which bits 0 &ndash; 2 represent the column number, obtained from the C register, bits 3 &ndash; 6
+represent the row number, from the B register, and bit 7 is set to 1 if the shift key
+was pressed. A table is then searched for this identifying byte; The HL register pair
+is set to the top byte of the table, BC is loaded with the length of the table, and the
+search is carried out by the CPDR instruction (Compare, Decrement, and Repeat).
+The table is arranged in such a way that when the byte is found the C register
+contains tha ASCII code of the corresponding key. If the byte is not found in the
+table, the search is repeated for the unshifted byte (i.e., with bit 7 reset). If this
+second search also fails, the carry flag is reset and the subroutine aborted.
+When an ASCII code has been obtained from the table the subroutine proceeds
+to test the shift, graphics and control keys, and the Keyboard Option byte (&pound;0C27),
+modifying the ASCII code in the appropriate manner. Finally, the carry flag is set, to
+indicate that a valid key press has been detected, and the routine is terminated.
+</p>
+<p>
+If two or more keys are depressed simultaneously, the key in the lowest row will
+be detected first; if the keys are in the same row, the one with the lowest column
+number will be detected first. The corresponding mapping byte will be updated, and
+on the next scan no change will be detected in the first key, so the routine will now
+deal with the next key in the row or column priority. You will note that row 0 is
+scanned twice; once at the beginning of the routine, when its status is stored at
+&pound;0C01, and once at the end of the routine when it is scanned as row 8 and its
+status stored at &pound;0C09. The first scan is a special one carried out because the
+status of the shift key is needed whenever a keypress is detected; in the second scan
+</p>
+<?php columnEnd(1); ?>

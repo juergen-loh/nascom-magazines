@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+|
+{
+</p>
+<p>
+29
+</p>
+<p>
+The file STDIO.H is supplied with a compiler and is -included&rdquo; at the
+beginning of most programs that require 10 capabilities. It is itself &ldquo;Cc&rdquo;
+source code and it declares items to the program such as file control blocks
+and 10 buffers that will be used later on. It also declares things like &ldquo;NULL&rdquo;
+which can be seen in openit, this is analagous to the M80 equates that are
+seen at the beginning of a program. Examples from stdio-h are typically:
+</p>
+<p>
+&pound;define NULL 0
+gdefine TRUE 1
+f&pound;define FALSE 0
+</p>
+<p>
+You can also use the fdefine facility to define equates of your own in
+the identical way. The -C&rdquo; macro preprocessor that most compilers have looks
+through your code and replaces all occurrences of -NULL&rdquo; with -0&rsquo; and so on.
+gdefine entries can also be used for inserting macros into your code.
+</p>
+<p>
+-C&rdquo; data types
+</p>
+<p>
+The next two lines declare permanent storage for the variables -count&rdquo;
+and -fd&rsquo;, don&rsquo;t worry about the -*&rsquo; in front of the -fd* it means that it is
+an integer pointer, more on that later. These variables defined in this way
+outside of any functions declare then as global to all functions in this
+source file and also to any modules that are to be linked in later. Being
+globals they will reside in memory and maintain their set values throughout
+the run of the program. They may be accessed and altered by any of the program
+functions.
+</p>
+<p>
+-C&rsquo; also allows you to use local or, to give them their proper name,
+automatic variables, these are declared inside the body of a function and
+reside in the stack area until a return from the function occurs. Automatic
+variables are declared as follows.
+</p>
+<p>
+functionx()
+</p>
+<p>
+{
+</p>
+<p>
+int var_a, var_b;
+char array[16];
+</p>
+<p>
+The above declares two 16 bit integers and an array of 16 bytes in the
+stack area. So you can see that you are able to create space for storage and
+arrays that you can process inside a function, store a result and discard on
+exit. Once the function has done its stuff the stack pointer is restored to
+its previous value before the routine was called and the stack space made
+available for other uses.
+</p>
+<p>
+The data types available to you sometimes depend upon the compiler that
+you have but a typical -C compiler will have the following types.
+</p>
+<p>
+short or char &ndash; These usually occupy a single byte.
+</p>
+<p>
+int &ndash; Integer data type, usually two bytes long.
+</p>
+<p>
+long &ndash; Long integer, usually four bytes long.
+</p>
+<p>
+float &ndash; Single precision FP variable usually 4 bytes long.
+double &ndash; Double precision FP usually 8 bytes long.
+</p>
+<?php columnEnd(1); ?>

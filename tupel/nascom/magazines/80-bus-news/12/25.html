@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<p>
+25
+</p>
+<p>
+So let&rsquo;s look at the patch areas. The first patch, (although it&rsquo;s not
+obviously so) is the start jump. For either NAS or CP/M versions the three bytes will
+be the same, C3 ODD3, but for the CP/M version, this jump will be located at 100H,
+whilst the NAS version will have the jump at 0C80H. (Don&rsquo;t forget that my assembler
+prints absolute addresses the &lsquo;right way round&rsquo; and not &lsquo;low byte first&rsquo; as they would
+actually require to be loaded, so the above would be loaded as C3 D3 OD.) The next
+patch area is. the one concerned with getting an input. As printed, it contains the
+CP/M version. For the NAS version this becomes a system call to &lsquo;BLINK&rsquo;. However,
+unlike CP/M function 1 (the input function), the keyboard input is not automatically
+echoed to the display, so the call to &lsquo;BLINK&rsquo; is followed by a system restart to
+&lsquo;ROUT&rsquo;. Now &lsquo;BLINK&rsquo; corrupts HL and DE, and my notes about the patches say that all
+registers must be preserved, so HL and DE must be &lsquo;PUSHed&rsquo; before the system calls and
+&lsquo;pOPped&rsquo; afterwards. The next patch is the &lsquo;output to display&rsquo;, with the NAS version,
+this couldn&rsquo;t be simpler, a system restart to &lsquo;ROUT&rsquo;, as &lsquo;ROUT&rsquo; also kindly preserves
+all the registers there is no need to PUSH and POP them, so this patch is all of two
+bytes long and 14 NOPs to fill the empty space. The last patch is also dead easy, 4
+system call to &lsquo;MRET&rsquo; and a NOP to fill the one remaining empty space. So having
+patched the area it should look like this:
+</p>
+<p>
+0C80 C3 ODDS JP START ; Skip round patches and the text
+0C83 F5 GETCHR: PUSH HL ; Save registers
+</p>
+<p>
+0C8B4 D5 PUSH DE
+</p>
+<p>
+0C85 DF RST SCAL : Internal subroutine call
+OC86 7B DEFB BLINK ; Keyboard entry routine
+0C87 F7 RST ROUT ; Display the character
+0C88 D1 POP DE ; Restore registers
+</p>
+<p>
+0c89 Fi POP HL
+</p>
+<p>
+OC8A C9 RET
+</p>
+<p>
+OC8B 00 00 00 00 DEFB O,0,0,0 ; Pad to 16 spaces
+</p>
+<p>
+OC8F 00 00 00 00 DEFB 0,0,0,0
+</p>
+<p>
+0C93 F7 OUTCHR: RST ROUT ; Display a character
+0c94 C9 RET
+</p>
+<p>
+0C95 00 00 00 00 DEFB 0,0,0,0 ; Pad to 16 spaces
+</p>
+<p>
+0c99 00 00 00 00 DEFB 0,0,0,0
+</p>
+<p>
+OcgD 00 00 00 00 DEFB 0,0,0,0
+</p>
+<p>
+OCAI 00 00 DEFB 0,0
+</p>
+<p>
+OCA DF EXIT: RST SCAL ; Internal subroutine call
+OCA4 5B DEFB MRET ; Return to NAS-SYS
+</p>
+<p>
+OCA5 00 DEFB O ; Pad to 3 spaces
+</p>
+<p>
+Good, getting there, now there are a couple of others before we go any further. The
+CP/M version uses code 1AH to clear the screen, and the line feed following a carriage
+return, code 0AH, is explicit and not implied as it is in the NAS version. Well, the
+&lsquo;oOlear screen&rsquo; character, labelled CS only appears once at OCDSH and this is easily
+changed to 0CH for the NAS version. The other one, the line feed, again appears only
+once at ODDiIH and this should be changed to OOH. By the way I haven&rsquo;t tried this
+program under the NAS regime, so if it doesn&rsquo;t work, drop me a line with the correct
+answer, to collect your &lsquo;Prize Dodo of the Month&rsquo; medal.
+</p>
+<p>
+So on to the program. We all know the rules of &lsquo;Hangman&rsquo; don&rsquo;t we, so there&rsquo;s
+no need to reiterate them here. I&rsquo;m one of those people who isn&rsquo;t into flow charts, so
+I&rsquo;m not going to provide one, the program flows in what I would call a linear fashion,
+executing in a straight line, skipping the bits that aren&rsquo;t required as determined by
+the conditions set from the previous operation.
+</p>
+<?php columnEnd(1); ?>

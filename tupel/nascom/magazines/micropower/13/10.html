@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+the values used by Nascom&rsquo;s Basic (Tokens are the single byte codes used for
+reserved words, e.g., PRIN is stored as &pound;9E in the Nascom, as &pound;B2 in the TRS-80).
+Any token which cannot be converted is changed to a REM, and its memory
+location, line number (in decimal) and TRS-80 value are displayed on the screen.
+The first two bytes of each line point to the start address of the next line. As the
+TRS-80 Basic starts at &pound;42E9 and Nascom&nbsp;2 Basic at &pound;10FA, &pound;31EF must be
+subtracted from the value read from the tape. Finally location &pound;10F9 is set to zero,
+and the address of the end of the Basic program is stored at &pound;10D6, 10D8 and
+&pound;10DA. The conversion routine then returns to the monitor.
+</p>
+<p>
+To use the program, first enter Nascom Basic with a cold start by command
+J, then exit by entering MONITOR or by pressing RESET. Next load the tape
+reading/conversion program, with the correct delay values for your clock speed.
+Run the program by entering E0C80, connect your cassette recorder to the input
+port via the given circuit, and start the TRS-80 program tape. After loading is
+completed and control has returned to Nas-Sys, re-enter Basic with a warm start.
+The TRS-80 program can now be listed, and may even run.
+</p>
+<p>
+There are several factors which can prevent the Basic program running. Some
+of the commands used in TRS-80 Basic are not available in the Nascom Basic,
+and the program may have to be modified to carry out these instructions in some
+other way. From the listed program and the table of token values given at the end
+of this article it should be possible to find out what the program is doing. Two
+useful articles are &ldquo;Whose Basic Does What&rdquo;, BYTE, January 1981, page 318, and
+&ldquo;TRS-80 Program Recovery&rdquo;, INTERFACE AGE, December 1980, page 100. &ldquo;The
+Basic Handbook&rdquo;, by David A. Lien, published in the U.S.A. by Compusoft, is an
+invaluable book.
+</p>
+<p>
+Peek and poke addresses may also vary. In particular, the TRS-80 screen
+consists of 16 lines of 64 characters, and is located from &pound;3C00 to &pound;3FFF. The
+decimal values of the screen locations run from 15360 at the top left, 15423 top
+right, to 16320 bottom left, 16383 bottom right. Remember that the Nascom top
+line is not scrolled, and that it is located in memory after the bottom line.
+You will find that the volume and tone settings of the cassette recorder are
+very critical. If nothing appears on the screen, re-run the program with &pound;008E set
+to 00 to stop sync checking, and &pound;0C80 set to 00 to prevent the program ending
+on reading the first null characters, (the program will have to be terminated by
+pressing the RESET button, and the second part of the program, token
+conversion, will not have been executed.) Adjust the volume and tone settings
+until a display appears. Probably the display will not make sense, because the
+characters will be out of sync. Replace the original values at &pound;0C8E and &pound;0CC0,
+and try again.
+</p>
+<p>
+If you load a program and find that when you LIST it starts correctly but
+then produces rubbish, the line address pointers have probably been misread. Try
+adjusting the volume or tone slightly and reloading.
+</p>
+<?php columnEnd(1); ?>

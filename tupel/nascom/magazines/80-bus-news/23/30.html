@@ -1,0 +1,148 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 6</p></th></tr>
+
+<tr><td><p>FPREG</p></td><td><p>10E4</p></td><td colspan=2><p>
+
+<p>Floating point register.<br>
+This is a floating point number for the current value. It is
+a four byte store using 24 bit normalised sign and magnitude
+representation for the mantissa and excess 128 representation
+for the exponent of two.<br>
+Example of the number 35.25 in floating point:-<br><br></p>
+
+<table class=fpta>
+<colgroup><col><col><col></colgroup>
+<tr><td>35.25 in binary is</td><td colspan=2>100011.01</td></tr>
+<tr><td>Which is the same as</td><td colspan=2>100011.01 *2^ 00000000</td></tr>
+<tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
+
+<tr><td colspan=3>The binary point is moved so that it precedes the first &ldquo;1&rdquo;</td></tr>
+<tr><td>This gives</td><td colspan=2>.10001101</td></tr>
+<tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
+
+<tr><td colspan=3>The point was moved left 6 times dividing the number by 2^6 so
+6 must be added to the exponent to re-multiply by 2^6.</td></tr>
+<tr><td>This gives</td><td colspan=2>.10001101 *2^ 00000110</td></tr>
+<tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
+
+<tr><td colspan=3>As the bit after the point is ALWAYS &ldquo;1&rdquo; this bit can be used
+to store the sign of the number &ldquo;0&rdquo; for +ve, &ldquo;1&rdquo; for -ve</td></tr>
+<tr><td>So +35.25 is stored as</td><td colspan=2>.00001101 * 2 ^ 00000110</td></tr>
+<tr><td>Which in 24 bits is</td><td colspan=2>.000011010000000000000000 *2^ 00000110</td></tr>
+<tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
+
+<tr><td colspan=3>128 is added to the exponent so that overflows and underflows
+can be more easily detected.</td></tr>
+
+<tr><td colspan=3>So the whole number in binary is:-</td></tr>
+<tr><td></td><td colspan=2>
+
+<tr><td style="vertical-align:bottom">Which is</td><td colspan=2>
+
+<table class=rbfp>
+<tr><td>00<?php spChar("zwsp"); ?>00</td><td>11<?php spChar("zwsp"); ?>01</td><td>00<?php spChar("zwsp"); ?>00</td><td>00<?php spChar("zwsp"); ?>00</td><td>00<?php spChar("zwsp"); ?>00</td><td>00<?php spChar("zwsp"); ?>00</td><td>10<?php spChar("zwsp"); ?>00</td><td>01<?php spChar("zwsp"); ?>10</td><td></td></tr>
+<tr><td>0</td><td>D</td><td>0</td><td>0</td><td>0</td><td>0</td><td>8</td><td>6</td><td>HEX</td></tr>
+</table>
+
+</td></tr>
+<tr><td colspan=3>The bytes of the mantissa are stored in reverse order.</td></tr>
+<tr><td colspan=2>This gives the value for +35.25 as</td><td>00 00 0D 86</td></tr>
+<tr><td colspan=2>And -35.25 would be stored as</td><td>00 00 8D 86</td></tr>
+<tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
+
+</table>
+
+</td></tr>
+<tr><td><p>SGNRES</p></td><td><p>1088</p></td><td colspan=2><p>
+Sign of result.<br>
+This contains the sign of the result for multiplication. Both
+values to be multiplied are tested and if their signs are
+different then the product will be negative otherwise it will
+be positive. The sign for the product is stored here so that
+it can be tested after to make the result correct.
+</p></td></tr>
+<tr><td><p>PBUFF</p></td><td><p>10E9</p></td><td colspan=2><p>
+Number print buffer.<br>
+When a floating point number has to be converted into ASCII
+for PRINT or STRS the ASCII number is built up in this buffer
+by NUMASC so that it can be output or assigned to a string.
+</p></td></tr>
+<tr><td><p>NULVAL</p></td><td><p>10F6</p></td><td colspan=2><p>
+Multiply value.<br>
+This contains the 24 bit multiplier because there are not
+enough registers to hold the multiplier, multiplicand and
+product all at the same time.
+</p></td></tr>
+<tr><td><p>PROGST</p></td><td><p>10F9</p></td><td colspan=2><p>
+Program start.<br>
+This is the byte before the first line in the program. It must
+be zero to tell the execution driver that the next (actually
+the first) line is to be executed.
+</p></td></tr>
+<!--
+<tr><td><p></p></td><td><p></p></td><td colspan=2><p>
+</p></td></tr>
+-->
+</table>
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 7</p></th></tr>
+
+<tr><td colspan=2></td><td colspan=2>
+<p>******** How a program is stored in memory ********</p>
+</td></tr>
+
+<tr><td><p></p></td><td><p></p></td><td colspan=2><p>
+Example:- The program:-</p>
+<pre>
+  10 FOR A=1 TO 5:PRINT A,SQR(1):NEXT A
+  20 END
+</pre>
+<p>is in memory, it would look like this:-
+</p></td></tr>
+<tr><td><p></p></td><td><p></p></td><td colspan=2>
+
+<table>
+<tr><td>PROGND</td><td>111C	</td><td>Pointer to byte after program<br><br></td></tr>
+<tr><td>10FA</td><td>15 11	</td><td>Pointer to next line (1115)</td></tr>
+<tr><td>10FC</td><td>0A 00	</td><td>Line number (10)</td></tr>
+<tr><td>10FE</td><td>81		</td><td>FOR token</td></tr>
+<tr><td>10FF</td><td>20		</td><td>Space</td></tr>
+<tr><td>1100</td><td>41		</td><td>A</td></tr>
+<tr><td>1101</td><td>B4		</td><td>= token</td></tr>
+<tr><td>1102</td><td>31		</td><td>1</td></tr>
+<tr><td>1103</td><td>20		</td><td>Space</td></tr>
+<tr><td>1104</td><td>A6		</td><td>TO token</td></tr>
+<tr><td>1105</td><td>20		</td><td>Space</td></tr>
+<tr><td>1106</td><td>35		</td><td>5</td></tr>
+<tr><td>1107</td><td>3A		</td><td>:</td></tr>
+<tr><td>1108</td><td>9E		</td><td>PRINT token</td></tr>
+<tr><td>1109</td><td>20		</td><td>Space</td></tr>
+<tr><td>110A</td><td>41		</td><td>A</td></tr>
+<tr><td>110B</td><td>2C		</td><td>,</td></tr>
+<tr><td>110C</td><td>BA		</td><td>SQR token</td></tr>
+<tr><td>110D</td><td>28		</td><td>(</td></tr>
+<tr><td>110E</td><td>41		</td><td>A</td></tr>
+<tr><td>110F</td><td>29		</td><td>)</td></tr>
+<tr><td>1110</td><td>3A		</td><td>:</td></tr>
+<tr><td>1111</td><td>82		</td><td>NEXT token</td></tr>
+<tr><td>1112</td><td>20		</td><td>Space</td></tr>
+<tr><td>1113</td><td>41		</td><td>A</td></tr>
+<tr><td>1114</td><td>00		</td><td>End of line</td></tr>
+<tr><td>1115</td><td>1A 11	</td><td>Pointer to next line (111A)</td></tr>
+<tr><td>1117</td><td>14 00	</td><td>Line number (20)</td></tr>
+<tr><td>1118</td><td>80		</td><td>END token</td></tr>
+<tr><td>1119</td><td>00		</td><td>End of line</td></tr>
+<tr><td>111A</td><td>00 00	</td><td>Pointer to next line (0000 = End of program)</td></tr>
+<tr><td>111C</td><td colspan=2></td></tr>
+</table>
+
+</td></tr>
+
+</table>
+<?php DisAssemblyRomBasicEnd(); ?>

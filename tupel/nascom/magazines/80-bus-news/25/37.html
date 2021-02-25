@@ -1,0 +1,100 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    35</span>
+
+E9CA CAC9E4     CLEAR:  JP      Z,INTVAR        ; Just "CLEAR" Keep parameters
+E9CD CD82E9             CALL    POSINT          ; Get integer 0 to 32767 to DE
+E9D0 2B                 DEC     HL              ; Cancel increment
+E9D1 CD36E8             CALL    GETCHR          ; Get next character
+E9D4 E5                 PUSH    HL              ; Save code string address
+E9D5 2AAF10             LD      HL,(LSTRAM)     ; Get end of RAM
+E9D8 CAEDE9             JP      Z,STORED        ; No value given - Use stored
+E9DB E1                 POP     HL              ; Restore code string address
+E9DC CD90E6             CALL    CHKSYN          ; Check for comma
+E9DF 2C                 DEFB    ","
+E9E0 D5                 PUSH    DE              ; Save number
+E9E1 CD82E9             CALL    POSINT          ; Get integer 0 to 32767
+E9E4 2B                 DEC     HL              ; Cancel increment
+E9E5 CD36E8             CALL    GETCHR          ; Get next character
+E9E8 C2ADE3             JP      NZ,SNERR        ; ?SN Error if more on line
+E9EB E3                 EX      (SP),HL         ; Save code string address
+E9EC EB                 EX      DE,HL           ; Number to DE
+E9ED 7D         STORED: LD      A,L             ; Get LSB of new RAM top
+E9EE 93                 SUB     E               ; Subtract LSB of string space
+E9EF 5F                 LD      E,A             ; Save LSB
+E9F0 7C                 LD      A,H             ; Get MSB of new RAM top
+E9F1 9A                 SBC     A,D             ; Subtract MSB of string space
+E9F2 57                 LD      D,A             ; Save MSB
+E9F3 DAA2E3             JP      C,OMERR         ; ?OM Error if not enough mem
+E9F6 E5                 PUSH    HL              ; Save RAM top
+E9F7 2AD610             LD      HL,(PROGND)     ; Get program end
+E9FA 012800             LD      BC,40           ; 40 Bytes minimum working RAM
+E9FD 09                 ADD     HL,BC           ; Get lowest address
+E9FE CD8AE6             CALL    CPDEHL          ; Enough memory?
+EA01 D2A2E3             JP      NC,OMERR        ; No - ?OM Error
+EA04 EB                 EX      DE,HL           ; RAM top to HL
+EA05 225A10             LD      (STRSPC),HL     ; Set new string space
+EA08 E1                 POP     HL              ; End of memory to use
+EA09 22AF10             LD      (LSTRAM),HL     ; Set new top of RAM
+EA0C E1                 POP     HL              ; Restore code string address
+EA0D C3C9E4             JP      INTVAR          ; Initialise variables
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    36</span>
+
+EA10 CAC5E4     RUN:    JP      Z,RUNFST        ; RUN from start if just RUN
+EA13 CDC9E4             CALL    INTVAR          ; Initialise variables
+EA16 01F2E7             LD      BC,RUNCNT       ; Execution driver loop
+EA19 C32CEA             JP      RUNLIN          ; RUN from line number
+
+EA1C 0E03       GOSUB:  LD      C,3             ; 3 Levels of stack needed
+EA1E CD8AE3             CALL    CHKSTK          ; Check for 3 levels of stack
+EA21 C1                 POP     BC              ; Get return address
+EA22 E5                 PUSH    HL              ; Save code string for RETURN
+EA23 E5                 PUSH    HL              ; And for GOSUB routine
+EA24 2A5C10             LD      HL,(LINEAT)     ; Get current line
+EA27 E3                 EX      (SP),HL         ; Into stack - Code string out
+EA28 3E8C               LD      A,ZGOSUB        ; "GOSUB" token
+EA2A F5                 PUSH    AF              ; Save token
+EA2B 33                 INC     SP              ; Don't save flags
+
+EA2C C5         RUNLIN: PUSH    BC              ; Save return address
+EA2D CDA5E9     GOTO:   CALL    ATOH            ; ASCII number to DE binary
+EA30 CD72EA             CALL    REM             ; Get end of line
+EA33 E5                 PUSH    HL              ; Save end of line
+EA34 2A5C10             LD      HL,(LINEAT)     ; Get current line
+EA37 CD8AE6             CALL    CPDEHL          ; Line after current?
+EA3A E1                 POP     HL              ; Restore end of line
+EA3B 23                 INC     HL              ; Start of next line
+EA3C DC9CE4             CALL    C,SRCHLP        ; Line is after current line
+EA3F D499E4             CALL    NC,SRCHLN       ; Line is before current line
+EA42 60                 LD      H,B             ; Set up code string address
+EA43 69                 LD      L,C
+EA44 2B                 DEC     HL              ; Incremented after
+EA45 D8                 RET     C               ; Line found
+EA46 1E0E       ULERR:  LD      E,UL            ; ?UL Error
+EA48 C3C1E3             JP      ERROR           ; Output error message
+
+EA4B C0         RETURN: RET     NZ              ; Return if not just RETURN
+EA4C 16FF               LD      D,-1            ; Flag "GOSUB" search
+EA4E CD56E3             CALL    BAKSTK          ; Look "GOSUB" block
+EA51 F9                 LD      SP,HL           ; Kill all FORs in subroutine
+EA52 FE8C               CP      ZGOSUB          ; Test for "GOSUB" token
+EA54 1E04               LD      E,RG            ; ?RG Error
+EA56 C2C1E3             JP      NZ,ERROR        ; Error if no "GOSUB" found
+EA59 E1                 POP     HL              ; Get RETURN line number
+EA5A 225C10             LD      (LINEAT),HL     ; Save as current
+EA5D 23                 INC     HL              ; Was it from direct statement?
+EA5E 7C                 LD      A,H
+EA5F B5                 OR      L               ; Return to line
+EA60 C26AEA             JP      NZ,RETLIN       ; No - Return to line
+EA63 3ACC10             LD      A,(LSTBIN)      ; Any INPUT in subroutine?
+EA66 B7                 OR      A               ; If so buffer is corrupted
+EA67 C2F7E3             JP      NZ,POPNOK       ; Yes - Go to command mode
+EA6A 21F2E7     RETLIN: LD      HL,RUNCNT       ; Execution driver loop
+EA6D E3                 EX      (SP),HL         ; Into stack - Code string out
+EA6E 3E                 DEFB    (LD A,n)        ; Skip "POP HL"
+EA6F E1         NXTDTA: POP     HL              ; Restore code string address
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

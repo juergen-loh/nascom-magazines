@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+A report on the Microcode Control battery backed RAM board. B. M. Farrelly
+</p>
+<p>
+Whilst looking for an EPROM board which I could afford, an ad. offering a
+32K battery backed RAM board which would also accomodate single rail EPROMs caught
+my eye. It was too good a chance to miss, especially as the manufacturer was
+willing to supply a bare board at a reasonable cost. I wasn&rsquo;t sure what the
+battery backed RAM would be used for, but no doubt I would think of something.
+</p>
+<p>
+A cheque was despatched, and before long the board arrived, complete with
+manual. Parts were ordered from a certain mail order firm, which had better remain
+annonimous, and after several weeks, and not a few phone calls, TWO parcels
+arrived. The bad news was that two deductions had also been made to my Access
+account, perhaps I should have bought a made up version.
+</p>
+<p>
+For my money I got an 80-BUS compatible double sided board. It is silk
+sereened and solder masked, and is made to a high standard. The only reservation I
+would have is that the supply rail tracks are a bit light, but to be fair it does
+not seem to be causing any problems. There were a couple of minor errors in the
+silk screening, but nothing serious.
+</p>
+<p>
+The documentation was a different story though. It seems I have heard that
+ery before!! One useful feature is a &ldquo;How it works&rdquo; section, which other producers
+would do well to follow. Not so good were the examples of wiring the link options.
+They were WRONG!!!
+</p>
+<p>
+Construction was simple enough, anyone who has built a Nascom will have no
+trouble here. One nice feature was that even though DIL resistor arrays were
+specified, extra rows of holes had been left on the board so that ordinary
+resistors would fit. A small saving but worth having. I also liked the idea of
+having all the 80-BUS lines available &ndash; even those that are not used go to holes,
+making mods. easier.
+</p>
+<p>
+The board will hold 16 memory chips, which may be 6116, 2516 or a mixture of
+both, depending on whether RAM or EPROM is required. Battery packup is provided by
+an on-board PCB battery, and each memory IC may be battery backed or not using the
+link options, but for obvious reasons EPROMS should not use this facility. The
+board may be configured as one 32K, or two 16K pages, in 4K blocks. The blocks
+need not be consecutive, and if two pages are selected the addresses may overlap,
+but if so be sure not to enable them both together. Options are set by wire links.
+The &ldquo;off the peg&rdquo; board uses special, no solder, push-in connectors for this.
+Since I did not have any, wire wrap pins were used instead. Working out what to
+link to where is not too difficult so long as no notice is taken of the examples
+given.
+</p>
+<p>
+Paging is different from the normal Nascom/Gemini method in that the board
+may be enabled on reset regardless of which page it has been set to. If this is
+done however the page control bit works in reverse i.e. to turn the board off the
+appropriate bit must be set.
+</p>
+<p>
+One important point to note is that, although the board responds to RAMDIS
+it does not generate it, a shortcoming in a board which claims to support EPROMs,
+but I can see the problem on a board with interchangeable RAM and EPROM, of
+deciding whether to originate RAMDIS or respond to it. Since my system has 64K of
+RAM, well it doesn&rsquo;t yet but it will have, a RAMDIS output was essential, so a
+slight mod was needed. The only other problem was that the board would not run at
+4MHz without waits. The makers claim 6MHz but maybe I have a slow chip somewhere.
+No matter, a little thought and some more surgery, and I now have an EPROM board
+which will also support battery backed RAM.
+</p>
+<p>
+In conclusion if you want a low cost EPROM board you could do worse, and if
+you need battery backed RAM this is the board for you.
+</p>
+<p>
+I know what that RAM will be used for. A permanent record of which
+programs are on what tapes, preferably automatically updated every time a program
+is saved. All it needs is someone to write the software!
+</p>
+<?php columnEnd(1); ?>

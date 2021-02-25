@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+22
+</p>
+<p>
+The extension file is a chance to add some extra facilities to NASPEN. I
+have included a printer driver for a centronics driven RX80. The main reason
+for this was that I found I had three program modules fighting over the print
+format if I used the built-in POLYDOS routines. It also gave the opportunity
+to invent a way of putting control sequences to printer. The main problem is
+that Naspen will not store an &ldquo;escape&rdquo; character, because this code is used to
+terminate a Naspen command. I have used a &ldquo;Control D&rdquo; which can be stored in
+with the text, to replace the &ldquo;escape&rdquo;. This means that most if not all of the
+print-modes of the EPSON RX80 can be switched on and off, at will, by embedded
+&ldquo;escape&rdquo; strings. A further addition of the extension file is that the system
+can be restarted by a NAS-SYS &ldquo;EB0000&rdquo; command which warm-starts NASPEN. The
+overlay file will have been lost, because the &ldquo;Exec&rdquo; overlay will have been
+loaded by the return to POLYDOS but it is not required once the main Naspen
+programs have been loaded and cold-started the first time. The warm start
+proved most necessary with the disk system, because it is easy to call a wrong
+file-name, or one that already exists. Either of these errors will blast you
+back into POLYDOS command level. (Rather like a touch of the snakes and
+ladders.) Obviously a rather more sophisicated file handling routine would
+allow for default file extensions and would automatically overwrite an
+existing file, renaming the existing version as a &ldquo;.BK&rdquo; backup version. The
+fun of getting that going is all yours!! An even more useful addition would be
+to toggle the screen with some unused memory and allow the operator to view
+the disk directories whilst in Naspen.
+</p>
+<p>
+Some further minor changes were made to Naspen to indicate differences
+from the original prom version, the title was changed to read &ldquo;NASPEN PDOS4".
+The initialisation routine was changed to give 32000 bytes free instead of the
+original 11000. Although this is supposed to slow down the operation of some
+commands, I have not found it as big a disadvantage as the space restriction.
+</p>
+<p>
+There are a few points to take note of before committing your epic novel,
+or autobiography to &ldquo;Polypen&rdquo;. DON&rsquo;T use the &ldquo;NP&rdquo; extension for any other
+files. I use the extension &ldquo;nt&rdquo; for my Naspen text files. Remember to patch
+the printer reflection on your files before you submit them to &ldquo;Polypen&rdquo;. The
+disk save routines save all memory from 1000H.
+</p>
+<p>
+To avoid compromising copyright on the PolyDos listing I have not
+included the comments. If you have bought PolyDos you will have a manual which
+explains all. I was amazed by the ease with which I managed to effect these
+changes, and it speaks volumes for the quality of the manual that the first
+successful assembly of the file-writing routine worked first time. (For a
+comparison note how many non-Digital Research textbooks are recommended for
+cP/M tinkerers ).
+</p>
+<p>
+Next issue
+</p>
+<p>
+Subject to probable change the following items should appear in the next issue
+of 80-BUS News, a special -back-from-holiday- issue&nbsp;!
+</p>
+<p>
+&ndash; a review of the new PEN &ndash; Lawrence back from holiday
+&ndash; Dave Hunt back from holiday &ndash; an improved(?) NAS-SYS&nbsp;3
+&ndash; the FINAL part of the BASIC disassembly &ndash; Aunt Agatha back from holiday
+</p>
+<p>
+128K on a RAM A&nbsp;!!
+</p>
+<p>
+Part 2 of the IVC/SVC Insight
+</p>
+<p>
+Is there any truth in the rumour that Dave Hunt, Aunt Agatha and Lawrence all
+went away together?
+</p>
+<?php columnEnd(1); ?>

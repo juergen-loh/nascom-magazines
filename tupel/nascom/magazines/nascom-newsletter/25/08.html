@@ -1,0 +1,53 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+ScreenCopy
+</h1>
+<h2>
+by B. Johannessen
+</h2>
+<p>
+After reading an article in Computing Today written by Don
+Thomasson, I got an idea to write a program which can copy the
+contents of the Nascom screen directly to an Epson MXG0 F/T type
+2printer by means of &ldquo;Bit Image Mode&rdquo;.
+</p>
+<p>
+Graphics and alphanumerics are directly transferred and you
+can choose between black on white or white on black,
+</p>
+<p>
+The usual MXBO F/T type 1 may only be used if it is equipped
+with GRAFTAX. The GRAFTAX may need some other initialisation.
+</p>
+<p>
+The first thing to be done is to place 2 copy of the Nascom
+CHORACTER and NAS-GRA EPROHs inta the Nascoms memory space. In
+my case it resides from 9000H to 9FFFH.
+</p>
+<p>
+The main program resides in ROM from A000H&nbsp;. To start the
+copy T have used the 1 command in and) altered it to
+paint to A000H and if I add an &ldquo;Fr the copy will be
+Inverted. The program can also be called from BASIC with 2 USR
+routine call to AOOSH.
+</p>
+<p>
+The problem I had in witing the progran was that the Nascom
+characters have 16 lines and the printer only has 8 needles in
+&lsquo;bit image made&rsquo;. The printer has to go 2 lines for each Nascom
+line sal had to use a buffer to store the &lsquo;bit image&rsquo; of one
+Naucom ling before it is Sent to the printer.
+</p>
+<p>
+The program contains its ow printer routine since ay usual
+routine rejects Linefeed code 0AH.
+</p>
+<p>
+2EAP ZBU Assembler &ndash; Source Listing:
+ido GEREENCOPY FOR NASCUN
+S070 5 for the Epson HXEK F/I type Lt
+9000 OCoC FRGY EDU bot
+gone vos SL kuU Ee
+bone Oou cr UU bob
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+Actually, all this &lsquo;groups&rsquo;, &lsquo;immediate&rsquo;, &lsquo;indirect&rsquo;, etc, lark is not all
+that relevant. It&rsquo;s only when it comes to trying to describe the functions of the
+instructions to someone else that it really matters at all. For instance, I use these
+terms so rarely that I had to get the book out to look them up when writing the
+previous paragraph. The important part to learn is the fact that instruction mnemonics
+are always written destination first, and that brackets indicate that we are
+interested in the CONTENTS of the location &lsquo;pointed at&rsquo; by the address (immediate or
+indirect) supplied and not the address itself. No brackets means we are shunting data
+about inside the processor.
+</p>
+<p>
+End of the theory bit, and back to the story. First I must locate the middle
+of the screen. Well there was a memory map that gave the screen area as being from
+0800H to 0BFFH. Good, the middle must be 09FFH (and a half). Well I&rsquo;ll be happy if
+it&rsquo;s anywhere on the screen at this stage. Now how to get an asterisk there. Fumble
+through the Z80 technical book, and there is an instruction which is LD (nn),A. Now if
+I interpet the syntax of that correctly, it means, load nn with the contents of A. But
+(thinks) I don&rsquo;t know what A has in it in the first place. Fumble, fumble, ah-ah!! LD
+A,n. That must mean stick n in A. Well whats the code for an asterisk. Easy, look it
+up in the character set table. Good, I&rsquo;m getting somewhere. If L write the following
+code, I should get an asterisk in the middle of the screen.
+</p>
+<pre>
+3E 2A        LD A,2A
+32 09 FF     LD (09FF),A
+</pre>
+<p class="continued">
+So using the &lsquo;M&rsquo; command I enter 3E 2A 32 09 FF, starting at memory location 0D00H,
+(having already &lsquo;sussed&rsquo; that that was a RAM area I could play with). Exit from the
+&lsquo;M&rsquo; command and execute the program by typing E 0D00. Well, not quite what I expected.
+The screen filled with any old rubbish, and having pressed RESET, even the program had
+disappeared. So back to the drawing board. Oh dear, what a stupid mistake, I forgot to
+tell the thing to stop. So I type it in again and tag 76 (a HALT instruction) on the
+end. Re-execute it, &ndash; and &ndash; , nothing!!! Hitting RESET, and re-examining the program
+(at least it&rsquo;s still there this time), what&rsquo;s wrong now? Back to the technical manual;
+what&rsquo;s this about two byte operands having to be entered low byte first? (What ever
+that means.) Well I think a &lsquo;two byte operand&rsquo; might be the 09FF bit of the LD (nn),A
+instruction. Worth a try. Retype it, 3E 2A 32 FF 09 76. Re-execute it, Oh heck (or
+similar words) still no asterisk on the screen. What can I have done wrong now.
+Looking closely at the video map in the construction manual, I notice that the video
+addresses are not continuous. That is, they start at 080AH to 0839H and then the next
+line starts at 084AH. What happened to addresses 083AH to 0849H? A little mind
+boggling this, so I work out 16 lines times 48 characters across equals 768. Now even
+I know that there are 1,024 bytes in 1K of memory (and the book says it has a 1K video
+RAM) what happened to the other 256 characters? Well after more puzzling T decide that
+there must be a hidden margin in the screen, and if thats so, then my asterisk must
+have been put there. So I set to, using the video map this time, and recalulate where
+the middle of the screen is. I end up with 09E2H, re-enter the program and try it. Ye
+Gods!!!! There&rsquo;s an asterisk in the middle of the screen. It only took all evening to
+put it there.
+</p>
+<p>
+Fantastic, I&rsquo;ve written a program. It did what I wanted (at last). The most
+important lesson learned was that two byte operands are entered low byte first. Now to
+make it flash on and off. Simple methinks, put a space back at the same address I put
+the asterisk. The code for a space is 20H, so now my program looks like this.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-34-1.png"); ?>
+<p class="continued">
+Well having typed it in, I execute it. Nothing again!!! What the&nbsp;..... Oh yes, it did
+it so fast I didn&rsquo;t see it happen. What I must do is replace the HALT instruction with
+a jump back to the start. Ok, so I look up a jump. Yipes, I&rsquo;ve got a choice of &lsquo;jumps
+absolute&rsquo;, &lsquo;jumps relative&rsquo;, jumps on zero, jumps on no zero, carries, no carries, and
+goodness only knows what else. Well JP on looks easiest. &lsquo;nn&rsquo; must be where to jump
+</p>
+<?php columnEnd(1); ?>

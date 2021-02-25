@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+Connect the 8 data lines of port B on the Nascom&nbsp;2 to. the
+coresponding 8 data lines of port B on the Nascom&nbsp;1. Connect the ground
+line of the N2 to pin 9 (ground) of the N1. Connect the B READY line
+from the N2 to the B STRB on the N1 and the B READY line on the N1 to
+the B STRB line on the N2. Do not connect the power lines together! You
+may choose to wire a switch so you can see the N1 or N2 display on the
+monitor screen, but you don&rsquo;t really need the N1 display. If you wire
+such a switch, wire the earth lines together.
+</p>
+<p>
+One further point on hardware is that for some strange reason
+the memory board links togther the IEI and IEO. This doesn&rsquo;t matter on
+the N1, but the N2 brings these lines out correctly to NASBUS, and the
+PIO won&rsquo;t interrupt unless IEI is high. Simply look at the edge of the
+memory board, next to line 19, and you will see that it is connected to
+the next line. Break this join by scraping away with a screwdriver.
+(Ed. Don&rsquo;t do that, the memory board is correct, it is the mini Vero
+bus on the N2 which is wrong. Break track 19 on the Vero board. See
+note under the article about PIOs.)
+</p>
+<p>
+As you will have realised, the key to the Nascom One-Two is in
+the software. We will just cover feature (a) the cassette input via
+Nascom&nbsp;1. This is extremely useful for converting your tapes from N1 to
+N2 format.
+</p>
+<p>
+Since giving you the program listings would make it much too
+easy, here is a description of the little programs which you need to
+put into each computer. (The listings will be put in the library in due
+course.)
+</p>
+<h2>
+Cassete input transfer program for Nascom&nbsp;1
+</h2>
+<p>
+This program initializes the PIO and then goes into a loop
+which does nothing at all. However, each time there is an interrupt the
+interrupt routine waits until there is a character from the cassette
+input, and then outputs it to the PIO and returns. The full list of
+actions is:
+</p>
+<p>
+Disable the CPU interrupts with a DI instruction.<br>
+Disable PIO (03H to control port).<br>
+Ensure PIO is happy by pushing address of next instruction on to the stack, and then using a RETI.<br>
+Load I register.<br>
+Set interrupt mode 2, with IM2.<br>
+Output the interrupt vector (low order half address of the interrupt address table).<br>
+Output 0FH to PIO to set it to output mode.<br>
+Set the interrupt control word by outputting 87H to the PIO.<br>
+Enable the CPU Interrupts with an EI instruction.<br>
+Go into a tight loop (actual code 18 FEH).
+</p>
+<p>
+That is the end of the initialization program, which is executed.
+</p>
+<p>
+Then you need an interrupt address table. The high order part
+of the address of this table has been stored in the I register, and the
+low order part has been sent to the PIO as the interrupt vector (this
+must be an &lsquo;&lsquo;even&rsquo; number, ie. last bit = 0). The interrupt address
+table actually contains just one address, which is the address of the
+</p>
+<?php columnEnd(1); ?>

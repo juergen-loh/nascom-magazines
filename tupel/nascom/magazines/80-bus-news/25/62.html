@@ -1,0 +1,117 @@
+<?php columnStart(1); ?>
+<p>
+62
+</p>
+<p>
+The program goes like this:
+</p>
+<p>
+10 DIM N$(300),P$(300): &lsquo; Set up the maximum size of the arrays.
+20 &lsquo; Reload the names array counting the number of entries in N.
+30 &lsquo; Reload the phone numbers array.
+</p>
+<p>
+40 &lsquo;
+</p>
+<p>
+50 &lsquo; Get the input name
+</p>
+<p>
+60 INPUT &ldquo;What is the name please (enter E to end) &ldquo;;I$
+</p>
+<p>
+70 IF I$="E&rdquo; THEN 270
+</p>
+<p>
+80 ,
+</p>
+<p>
+90 &lsquo; Start the search of N$(A) for a match with I$
+</p>
+<p>
+100 FOR A=0 TO N
+</p>
+<p>
+110 IF N$(A)=I$ THEN 230
+</p>
+<p>
+120 NEXT
+</p>
+<p>
+430 &lsquo;&rsquo;
+</p>
+<p>
+140 &lsquo; No find so see if it&rsquo;s to be added, if so add it
+</p>
+<p>
+150 INPUT &ldquo;The name wasn&rsquo;t found, do you want to add it (Y/N) &ldquo;;J$
+160 IF J$="N&rdquo; THEN PRINT: GOTO 60
+</p>
+<p>
+170 N=N+1
+</p>
+<p>
+180 INPUT &ldquo;What is the new name please &ldquo;;N$(N)
+</p>
+<p>
+190 INPUT &ldquo;What is the new number please &ldquo;;P$(N)
+</p>
+<p>
+200 PRINT: GOTO 60
+</p>
+<p>
+210 &lsquo;
+</p>
+<p>
+220 &lsquo; Name found so print the result
+</p>
+<p>
+230 PRINT I$;"&rsquo;s phone number is &ldquo;;P$(A)
+</p>
+<p>
+240 PRINT: GOTO 60
+</p>
+<p>
+250 *
+</p>
+<p>
+260 &lsquo; End, so save the arrays
+</p>
+<p>
+270 &lsquo; Down load from N$(0) to N$(N) to save the names
+</p>
+<p>
+280 &lsquo; Down load from N$(O) to NS(N) to save the phone numbers
+290 END
+</p>
+<p>
+All very easy stuff, using two parallel one dimensional arrays, one, N$(n) as
+the key, the second P$(n) as the data. Notice that I chose to use a. string
+array for P$(n) even though it only contains numbers. This is because it
+needn&rsquo;t only contain numbers, for instance I always write phone numbers, __-___-____,
+which certainly isn&rsquo;t numeric (that isn&rsquo;t my number by the way, so
+don&rsquo;t try it.) Or P$(n) could contain an address as well as the phone number,
+or recipes (short ones as string length is restricted to 255 characters), or,
+well, you name it.
+</p>
+<p>
+THE HARDER BIT
+</p>
+<p>
+Having looked at both types of commonly used database, the random
+access and the sequential (and the sequential free field type) and having
+looked at the way in which the data would be split up into fields within the
+records in the file (neat summary that, databases consist of fields in a
+record in a file). It is plainly obvious that both types of database have
+snags when it comes to access. The sequential database can usually only be
+looked at in a sequential manner, which means that if the file is of any
+length, then access time to any record will depend on the position of that
+record within the file. If it happens to be at the end of the file it just
+takes a long time to get at, tuff!! The problem with the random access file is
+not so much the access time, it only takes a few milliseconds to move the disk
+head to the correct track/sector position, but how the devil do you know which
+is the correct track/sector position.
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

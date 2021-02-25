@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<table>
+<tr><td>155E</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1581</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>15F5</td><td>1F</td><td>18</td><td></td></tr>
+<tr><td>15FA</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1665</td><td>CD4A0C</td><td>F70000</td><td>CRT Routine</td></tr>
+<tr><td>1669</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1678</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1691</td><td>CD4A0C</td><td>F70000</td><td>CRT Routine</td></tr>
+<tr><td>169D</td><td>CD4A0C</td><td>F70000</td><td>CRT Routine</td></tr>
+<tr><td>16D0</td><td>CD4A0C</td><td>F70000</td><td>CRT Routine</td></tr>
+<tr><td>16DB</td><td>CD4A0C</td><td>F70000</td><td>CRT Routine</td></tr>
+<tr><td>1705</td><td>44554D50</td><td>53415645</td><td>&lsquo;DUMP&rsquo; now &lsquo;SAVE&rsquo;</td></tr>
+<tr><td>175D</td><td>91DE</td><td>9341</td><td>CLEAR is no longer active</td></tr>
+<tr><td>177D</td><td>494E94</td><td>2391DE</td><td>&lsquo;IN&rsquo; vector becomes &lsquo;&pound;&rsquo;</td></tr>
+<tr><td></td><td>AC9440</td><td>944000</td><td></td></tr>
+<tr><td>17A8</td><td colspan=2>Change to E5D5DF7BD1E1C9</td><td>Keyboard routine</td></tr>
+<tr><td>17B3</td><td>CD4D0C</td><td>DF6200</td><td>Keyboard</td></tr>
+<tr><td>17BA</td><td>CD4D0C</td><td>DF6200</td><td>Keyboard</td></tr>
+<tr><td>17CE</td><td>CD4A0C</td><td>F70000</td><td>CRT routine</td></tr>
+<tr><td>17D4</td><td>30FB</td><td>0000</td><td>Not needed if new GETLN used</td></tr>
+<tr><td>17DD</td><td>1D</td><td>08</td><td>Backspace</td></tr>
+<tr><td>17EA</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>17FD</td><td>1F</td><td>0D</td><td></td></tr>
+</table>
+<h4>
+NEW GETLN ROUTINE FOR TINY BASIC TBI-V2
+</h4>
+<pre>
+17C5  F7         GETLN    RST 16              Print prompt char.
+17C6  EF 18 00            PRT CCR             and CRLF
+17C9  E5                  PUSH HL             Save HL
+17CA  AF                  XOR A               Clear Accumulator
+17CB  32 BF 0E            LD (BUFFER-1), A    Clear Marker
+17CE  DF 63               SCAL INLIN          Get screen line
+17D0  21 2F 00            LD HL, 47
+17D3  06 30               LD B, 48
+17D5  19                  ADD HL, DE          Point to end of line
+17D6  7E         SCN1     LD A, (HL)          Look for space
+17T7  FE 20               CP &pound;20              Space character
+17D9  20 10               JR NZ, CHRFND
+17DB  2B                  DEC HL              Move left across
+17DC  10 F8               DJNZ SCN1           line but not off
+17DE  21 C0 0E            LD HL, BUFFR
+17E1  36 0D      ELINE    LD (HL), &pound;0D        Insert CR
+17E3  23                  INC HL
+17E4  23                  INC HL
+17E5  36 FF               LD (HL), &pound;FF        Insert terminator
+17E7  2B                  DEC HL
+17E8  EB                  EX DE, HL
+17E9  E1                  POP HL              Restore HL
+17EA  C9                  RET
+17EB  EB         CHRFND   EX DE, HL
+17EC  11 C0 0E            LD DE, BUFFR        Point at BUFFR
+17EF  48                  LD C, B             Get length in BC
+17F0  06 00               LD B, 0
+17F2  ED B0               LDIR                Copy to BUFFR
+17F4  EB                  EX DE, HL
+17F5  18 EA               JR ELINE
+</pre>
+<p class="continued">
+In addition, change &pound;1042 from &pound;3A to 00.
+</p>
+<h3 class="article-stopper">
+** .. ** .. ** .. ** .. ** .. **
+</h3>
+<?php columnEnd(1); ?>

@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+Each ofthe above listed facilities is self contained and does not inherently need
+any of the others.
+</p>
+<p>
+Each facility takes a significant time, and each one also runs to completion (and
+will thus not be called up twice in succession except in unusual circumstances).
+</p>
+<p>
+Therefore the time taken to load one of these parts would be a change- round
+time which is only encountered once for each unit (within a reasonable time).
+</p>
+<p>
+Thus it is very reasonable to break the program up in this manner. We will
+require a menu section to drive them from, and we must ask whether they all
+fit in memory with a good size data area remaining.
+</p>
+<p>
+In practice I found that the editor and the dot matrix printer dump were the only
+ones which took a significant space, and both could be fitted in quite acceptably on
+a 40K system. There was one extra consideration, which was that I had decided to
+provide help messages which take a large amount of space. These I put in a separate
+file to be read in and displayed as required.
+</p>
+<p>
+The mistake (in my opinion) made on the other version was breaking down the
+individual editing functions. Now I am quite aware that Wordstar does this to some
+extent, however Wordstar has all the common functions available instantly and those
+which it loads from disk remain resident for immediate access until some other
+function overwrites them. The situation I found with the PCB program was that if I
+asked for a DIL pack pad set, I have to wait while the disk whirrs before continuing
+and if the next thing I want to do is put another DIL pack on I have to wait again.
+Placing and deleting tracks was slightly better in that several tracks can be placed
+or deleted in one go, but then a specific instruction had to be given to return to
+normal mode and &ndash; guess what &ndash; the disk starts up again.
+</p>
+<p>
+Now let us suppose for a moment that it is in fact necessary to break down the code
+further. Perhaps the editor won&rsquo;t fit all in one (a very possible problem for my
+current project). How do we approach the problem now. Well, let&rsquo;s look at
+Wordstar again. (Incidentally the reason I refer to Wordstar so often is that I am
+using it to enter this text, so it&rsquo;s an easy example.) Looking at the main editing menu
+I see 21 commands listed. These are the common commands and only one of them
+(delete line) is non-resident. In documents, however, this command is fairly rare so
+that is not a problem. Now let&rsquo;s look at the other menus. The block menu contains
+disk and file handling commands which can be non-resident without making a
+noticeable difference. It also contains the block handling routines, some of which
+will, in long files, often require disk transfers so it would be difficult to tell that they
+are non-resident. Of the 19 commands in the quick menu only find and replace are
+non-resident and then only the opening bits which are used once only. The print
+menu has only one function during editing so it is resident. The on-screen menu has
+only centre text non- resident. The help menu is entirely non-resident since it is all
+messages which occupy vast amounts of memory, and (perhaps more importantly)
+the sort of experienced user who is concerned about speed will not often use it.
+</p>
+<?php columnEnd(1); ?>

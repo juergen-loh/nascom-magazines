@@ -1,0 +1,26 @@
+<?php columnStart(1); ?>
+<h2>
+Appendix
+</h2>
+<p>
+The GM829 problem can be cured by adding a second 270K resistor to the disk
+controller, in parallel across R13. This halves the hardware delay and appears to
+provide a remedy without introducing any other difficulties.
+</p>
+<p>
+The problem with D.COM can be patched out using your favourite debugging tool
+to alter the code thus:
+</p>
+<table style="width: 50%; margin-left: 5%">
+<tr><td>0944</td><td>DD</td><td>-&gt;</td><td>DD</td></tr>
+<tr><td>0945</td><td>54</td><td>-&gt;</td><td>E5</td></tr>
+<tr><td>0946</td><td>DD</td><td>-&gt;</td><td>D1</td></tr>
+<tr><td>0947</td><td>5D</td><td>-&gt;</td><td>00</td></tr>
+</table>
+<p>
+The addresses given are correctt for tbe version of D.COM which I currently use
+(V1.6), other Versions may be different.
+</p>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-10-1.png"); ?>
+<?php columnEnd(1); ?>

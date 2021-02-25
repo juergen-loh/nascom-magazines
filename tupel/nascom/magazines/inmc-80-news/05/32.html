@@ -1,0 +1,87 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-32-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(4); ?>
+<?php columnChange(24); ?>
+<h2 style="text-align: center">
+USING 2K EPROMS ON A NASCOM 2
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+E. P. T. Anderson
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1, "noindent"); ?>
+<p>
+The NASCOM 2 is equipped with eight 24 pin sockets intended for 2K static RAMs or
+1K EPROMS of the 2708 type. Although the initial literature &ndash; and advertising &ndash; stated
+that the use of these sockets was very flexible, it omitted to state how to use them
+for the now economical and hence popular 2516/2716 2K EPROMS. Furthermore the
+writer failed to understand the Block A/Block B etc, connections in spite of help from
+INMC magazine.
+</p>
+<p>
+The N2MD ROM (IC47) give some convenient chip select pulses which are 4K wide so
+together with an A11 or <?php invertedSignal("A11"); ?> signal
+it is quite easy to define 2K boundaries. As well
+as suitably enabling the EPROMS it is also necessary to enable IC44 and this is done
+by the addition of simple diode gating.
+</p>
+<p>
+<u>STEP 1</u> (Solder side of board &ndash; see fig 4)
+</p>
+<p>
+Wire all sockets to A10. This is done by strapping all pins 19 to A10 which is available
+on Pin 19 of the monitor ROM (IC 34)
+</p>
+<p>
+<u>STEP 2</u> (Solder side of board &ndash; see Fig 4)
+</p>
+<p>
+For EPROMS which are to be operated on the lower 2K of a 4K block wire pin 18 to
+A11 which is available on Pin 18 of the BASIC ROM (IC 43)
+</p>
+<p>
+<u>STEP 3</u> (Solder side of board &ndash; see Figs 2 &amp; 4)
+</p>
+<p>
+For EPROMS which are to be operated on the upper 2K of a 4K block wire pin 18 to
+<?php invertedSignal("A11"); ?>. <?php invertedSignal("A11"); ?> does
+not appear to be available so it is necessary to invert A 11. As the
+1K chip select signals from IC46 are not now required, remove the 16 pin 74LS155
+from this socket and replace with a 14 pin 74LS04 (or 7404) to the top of the socket
+(Pin 1 to Pin 1). Luckily, A11 is present on pin 3 which is the input of one of the
+7404 inverters and hence <?php invertedSignal("A11"); ?>
+is then available on pin 4. Hence connect pin 4 to pin
+19 of the upper EPROMS. Pin 7 of the 7404 must be strapped to the now vacant pin
+8 of the socket for the 0v line.
+</p>
+<p>
+From Fig. 2 it can be seen that the five spare inverters on the 7404 are not loading
+any circuits &ndash; the majority of the connections going to the link blocks adjacent to the
+EPROMS.
+</p>
+<p>
+<u>STEP 4</u> (Solder side of board &ndash; see Fig 4)
+</p>
+<p>
+Connect pin 21 of all EPROM sockets to +5 which is present on pin 24.
+</p>
+<p>
+<u>STEP 5</u> (Component side of board &ndash; see Fig 1)
+</p>
+<p>
+Wire the appropriate 4K block pulse available on pins 9 to 16 of LKSI to pin 20 of the
+appropriate EPROM via the link block pin.
+</p>
+<p>
+Generally you will use:
+</p>
+<table style="width: 30%">
+<tr><td>D4</td><td>B000 &ndash; BFFF</td><td>Pin 12</td></tr>
+<tr><td>D5</td><td>C000 &ndash; CFFF</td><td>Pin 11</td></tr>
+<tr><td>D6</td><td>D000 &ndash; DFFF</td><td>Pin 10</td></tr>
+</table>
+<?php columnEnd(1); ?>

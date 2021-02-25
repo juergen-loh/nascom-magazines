@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<p>
+Hz, and then adjust the bias level to give even mark/space at the
+lowest possible input level that will achieve stable square waves at
+IC10. It is also worth reading the article in PCW December 78, which
+describes the interface in detail.
+</p>
+<p>
+After making the above twiddles, the interface now runs reliably at
+2400 bits/secs., ie 10 times the standard Nascom&nbsp;1 speed&nbsp;! I personally
+have standardised on a speed of 1200, and so far the error rate has
+been zero. A word of warning, however: you may find that on the highest
+speeds, the TV display will not scroll fast enough to avoid missing a
+cassette character. Consequently, if an error does occur during a LOAD,
+all subsequent lines can be in error.
+</p>
+<h4>
+Connections to Nascom
+</h4>
+<p>
+The documentation recommends various wire links to be made to the
+serial I/O socket SK2. It makes it easier to retain the ability to use
+the normal Nascom interface if the UART clock at LINK 4, and the Nascom
+generated UART input at LINK 3, are also brought out to spare pins on
+SK2. The normal Nascom configuration can then be re-established, for
+instance, by wiring a &lsquo;dummy&rsquo; plug to fit into SK2. It will still, of
+course, be necessary to change the actual tape recorder connections
+back to the Nascom board.
+</p>
+<?php hline("20%"); ?>
+<br>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-30-1.png"); ?>
+</h1>
+<h2>
+4MHz Without Wait States
+</h2>
+<p>
+After our comment about 8K Basic only running with a wait
+state, we have had a number of letters from people saying that their
+Basic runs fine without a wait state. There are two problems, first the
+ROM is (unbelievably) dynamic. It achieves its refresh from the CE
+signal. The first time it&rsquo;s accessed, it&rsquo;s a bit slow, and sometimes
+doesn&rsquo;t quite make it in time for the read cycle, hence a &lsquo;crash&rsquo;.
+However, the read cycle refreshed the ROM, so if you are quick about
+it, reset and restart the system, then the Basic runs perfectly. It
+won&rsquo;t forget what it was up to unless you write very long &lsquo;USR&rsquo;
+routines which leave the Basic ROM alone for some time. The book says
+2mS, but we&rsquo;ve found that a typical Basic ROM won&rsquo;t forget until about
+15 seconds have elapsed.
+</p>
+<p>
+The second problem is the RAM (A) board not being up to 4MHz
+because of timing problems with the CAS and RAS signals. If you would
+like your system to run at 4MHz without wait states the fixes given on
+pages
+<a href="../../../../inmc-news/07/22/text/#article1">22 and 23 of issue 7 of the INMC News</a>
+may be necessary, In
+Particular item 3 at the top of
+<a href="../../../../inmc-news/07/23/text/#head">page 23</a>.
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

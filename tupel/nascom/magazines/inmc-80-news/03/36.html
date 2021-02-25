@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p class="continued">
+it again when incrementing the HL register. Still zilch!!! Still not a twitch out of
+the F register. It seemed that these flag things had a mind of their own, and only
+worked when they wanted to. The truth was, of course, that I was wrong, INCrement
+instructions are not truly arithmetic and the affect on the flags is somewhat variable
+depending on the conditions. As a general rule, all flag changes except the Z flag
+(associated with 8 bit INCs only) should be ignored.
+</p>
+<p>
+Back to the story. Boring isn&rsquo;t it, or perhaps your ears are burning. Having
+decided that the flags have a will of their own, I had to discover a better way of
+testing whether the HL register had reached zero. I&rsquo;ll put you out of your misery, and
+at the same time save me a modicum of embarrassment, by telling you how it may be done
+rather than the rather ham fisted way I actually did it. The &lsquo;logical OR&rsquo; instruction
+is the trick. Don&rsquo;t expect me to explain &lsquo;logical&rsquo; operations, read it up in a book
+like Martin Healey&rsquo;s &lsquo;Minicomputers and Microprocessors&rsquo; (a bit pricey, but ideal
+fodder for frustrated electronics engineers. What&rsquo;s more, it&rsquo;s British, and part of
+the recommended reading for the Open University Computer Course). The thing about an
+&lsquo;OR&rsquo; instruction is that when one register is &lsquo;ORed&rsquo; with another, the Z flag will be
+set when, and only when, both registers are zero. So, bearing in mind that the HL
+register pair is in fact two registers, the ideal instruction in this case would have
+been OR H with L, but it doesn&rsquo;t exist. Don&rsquo;t forget that aritmetic and logical
+operations can only be performed with (or against) the A register. So the thing to do
+is to copy one register to the A register, and then OR the other register with A. So
+now I can guarantee to set the Z flag when both H and L are zero.
+</p>
+<p>
+Better start learning about conditional jumps. Well these are the same as the
+unconditional jump mentioned earlier, but they only happen when the condition is true.
+So if I want my little delay subroutine to loop round until HL is zero, and I&rsquo;m ORing
+H with L (via the A register) to set the flags, then testing the 2 flag to determine
+this, the appropriate jump is a &lsquo;Jump Not Zero,nn&rsquo;, the mnemonic for which is JP
+NZ,nn. All set, I wrote an experimental program and tried out the &lsquo;B&rsquo; Breakpoint
+command at the same time. My program looked like this:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-1.png"); ?>
+<p class="continued">
+and executed it at 0D00H. After about one second, the HALT LED on the Nascom came on,
+so it looked as if it had worked. But how could I be sure it was doing exactly what I
+wanted. I had already found out that when a program &ldquo;crashed&rdquo; it tended to go away,
+think to itself for a few seconds, and then the HALT LED would light. I suppose I
+could single step it, but pushing the button half a million times didn&rsquo;t sound like my
+idea of a fun evening, so what else? Maybe, step the first few times round the loop to
+see if the registers changed as I expected, and then set a breakpoint at the end where
+it would hit the HALT instruction, and see if the registers made sense. Ok?
+</p>
+<pre>
+S 0D00
+</pre>
+<table><colgroup><col style="width: 50%"><col style="width: 50%"></colgroup>
+<tr><td>1000 0D03 4800 0000 1000 0000</td><td>we&rsquo;ve just loaded HL with 0000
+                                              and PC is pointing to the INC HL</td></tr>
+<tr><td>1000 0D04 4800 0001 1000 0000</td><td>HL has just been INCed by 1
+                                              and PC is pointing to the LD A,L</td></tr>
+<tr><td>1000 0D05 0100 0001 1000 0000</td><td>L has just been copied to A
+                                              and PC points to the OR H</td></tr>
+<tr><td>1000 0D06 0100 0001 1000 0000</td><td>H has just been ORed with A.
+                                              No flags changed notice</td></tr>
+<tr><td>1000 0D03 0100 0001 1000 0000</td><td>As there was no zero, the jump was affected
+                                              and PC now points to INC HL again</td></tr>
+</table>
+<p class="continued">
+looking good, so put a breakpoint at 0D09H to stop it when if &lsquo;falls through&rdquo; the jump
+</p>
+<pre>
+B 0D09
+</pre>
+<p class="continued">
+and now tell it to execute from where it is
+</p>
+<pre>
+E
+</pre>
+<p class="continued">
+about 1 second later, the following appeared
+<table><colgroup><col style="width: 50%"><col style="width: 50%"></colgroup>
+<tr><td>1000 0D09 0044 0000 1000 0000</td><td>The F register has the Z and P/V flags set
+                                              and the HL pair has 0000 in it</td></tr>
+</table>
+<?php columnEnd(1); ?>

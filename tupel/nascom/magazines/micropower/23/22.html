@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+THE NAS-SYS MONITORS
+</h1>
+<p>
+by J. Hargh
+</p>
+<p>
+SCAL SPACE. DF 69
+</p>
+<p>
+This subroutine call outputs a single space by loading
+the accumulator with &pound;20 and calling the ROUT restart, &pound;F7.
+The section of code which does this 15 the end of routine
+TBCD3S (DF 66), which outputs a space after the contents of
+HL have been printed in hexadecimal.
+</p>
+<p>
+SCAL CRLF, DF 6A
+A carriage return/line feed is output by loading the
+</p>
+<p>
+accumulator with 80D and calling restart ROUT. The code
+used is the end of the next. &lsquo;Error message&rsquo;. subroutine
+</p>
+<p>
+SCAL ERRM, DF 6B
+</p>
+<p>
+This subroutine prints the word &lsquo;Error&rsquo;. followed by a
+Carriage return to position the cursor at the start af the
+next line. This call is very useful for reporting input
+errors in machine code programs. Just print the type of
+error and call DF 6By; this saves six bytes (&lsquo;Error&rsquo; + CR/LF
+by the use of two.
+</p>
+<p>
+SCAL TX1, DF 6C
+</p>
+<p>
+The main use of this subroutine call is to print out
+the header on each block of data for tape input/output. fhe
+start address of the block is in the HL register pair, the
+length of the block in E, and the block number in D. After
+the header data has been received from or sent to tape it 15
+Printed out using DF &amp;C; the routine sums H, L. D and &amp; inta
+the C register. and the value obtained is used as a checksum
+by the Read and Write routines. SCAL TX1 really consists of
+@ single routine which prints out the contents of HL by a4
+call to TBCD3 (DF 66) and then exchanges the HL and DE
+registers. Because this section of code is preceded by a
+relative call to itself (D7 00), 1t 15 carried out twice
+The result is that first HL is printed. HL and DE are
+transposed, then DE is printed and Hi and DE are restored ta
+their original positions. If you use this subroutine and
+need the checksum, you must first set register { to zero.
+</p>
+<p>
+SCAL SOUT, DF 6D
+</p>
+<p>
+This routine sends up to 256 bytes of data to the
+serial output. On entry HL must contain the address of the
+start of the data to be sent, and the number of bytes must
+be in B. The C register is first set to zero. then each
+successive byte 15 added into C and sent to the serial port.
+using SCAL SRLX, DF 6F. On exit from the routine Bis zero
+</p>
+<?php columnEnd(1); ?>

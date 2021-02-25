@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?><br><br>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-2.png"); ?>
+<p>
+Each is a discrete character, which when displayed together on the
+screen form a complete &lsquo;Invader&rsquo;.
+</p>
+<?php columnEnd(1); ?>
+<br>
+
+<?php columnStart(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-3.png"); ?>
+<?php columnChange(3); ?>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-4.png"); ?>
+<?php columnEnd(3); ?>
+<br>
+
+<?php columnStart(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-5.png"); ?>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-6.png"); ?>
+<?php columnChange(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-7.png"); ?>
+<?php columnEnd(3); ?>
+<br>
+
+<?php columnStart(1); ?>
+<p>
+So having discovered how a character is built up, how is it
+organised in the ROM&nbsp;? The first thing to realise that a ROM is an
+independant device, the first byte in the ROM is address 000H,
+regardless of where the ROM may sit in a memory map. The first byte of
+the first character starts at address 000H and the character takes up
+16 (10H) bytes. The second character therefore starts at address 010H,
+the third at 020H, etc., the last character starts at address 7F0H.
+Simple really. Now another sneaky trick. Consider the alpha-numeric
+character generator, notice that the character numbers are 00, 01, 02,
+etc. Well relate that to the addresses in the ROM. Character 00 starts
+at address 000H, character 01 starts at address 010H, 02 at 020H etc.
+See the pattern&nbsp;? The character number is the same as the address with
+the least significant &lsquo;0&rsquo; missing. Not difficult. Now the graphics
+characters start at character number 80. So all you have to do to find
+your new character in your new graphics ROM is to start counting at 80
+instead of 00.
+</p>
+<p>
+The characters must first be programmed into RAM, and as the
+graphics start at 80, a convenient place to start is an X800H memory
+boundary, that way you can keep track of the character addresses
+without mental arithmetic to add 80 to each character number. You don&rsquo;t
+have to program all 128 characters at once, but leave all unprogrammed
+bytes at FFH, that way you can &lsquo;over program&rsquo; later. With all the
+characters in RAM, make a tape of them, and then blow the EPROM. At
+long last it can be said that Nascom owners are going dotty&nbsp;!!!!
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

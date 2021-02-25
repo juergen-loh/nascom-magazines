@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+of-record marker delimits data items it is not essential that
+the records are of fixed length. Therefore it is impossible to
+replace an item in the middle of a file directly &ndash; there is 10
+certainty where the record concerned begins,or whether the
+replacement will exactly fit in the space. Editing of these
+files can therefore be laborious, as is access to any point in
+the file. The method which mould need to be used to insert an
+item would be to read each record fram an input file and copy it
+to anew output file. When the point at which the new record is
+to be inserted is reached the new record would be output, and
+then the remainder of the file would be read and copied record
+by record into the new file. The old file could then be deleted
+and the new one re-named.
+</p>
+<p>
+Sequential files are quite convenient when you wish to read all
+the contents of a file into memory and carry out the
+manipulation of the data in memory. When you have finished
+Processing the data in memory the entire data can be witten to
+@ Sequential file. Thus in handling data which can be loaded
+into menory this is a convenient method to use, since operating
+on the data in memory is inevitably quicker than any method
+which requires repeated disc acceas to obtain individual data
+ftems. &lsquo;Small data files and index files can conveniently be
+treated in this way.
+</p>
+<p>
+A random file can be cead/written directly at any point. In
+NAS-DOS &lsquo;the positions in a file are measured in disc sectors (of
+256 bytes) from the start of the file. In its simplest, and
+most common form, each record will be up to 255 bytes long&rsquo; and
+will occupy one sector. You can go to any sector directly by
+Specifying its relative sector number in the file prior to the
+read or weite operation. This is done by 2 DOKE to location
+5365 of the relative sector number, starting at 0 for the first
+sector, eq
+</p>
+<p>
+120 DOKE 3348, 10
+</p>
+<p>
+Since you have direct access in this way to any point ina file
+itis vory simple to amend a specific record simply by rewriting
+the appropriate sector of data on disc. You can if necessary
+arrange your own &lsquo;housekeeping&rsquo; routines to pack two sets of
+data into a sector, or to use&nbsp;? sectors to store each set of
+data. &lsquo;Far example in the latter case you would access the 107th
+item of the data by starting to read at relative sector 18 of
+the file (the first item 15 in sectors 0 and 1, the second in 2
+and Sete).
+</p>
+<p>
+The problem with a random (ile is knowing where to store a new
+item of data, and mare importantly where to find a data item.
+Host records stored an disc will have the most important item in
+the record at the beginning. The individual items of data in a
+record are usually known as fields, and the first of these, or
+the one by which each&rdquo; record ts usually referenced (eg in
+searchesS) 15 the key field. One method of inserting a new
+record into a random file would be to store the records in
+Siphabetical order by their key field. This has two major
+Urawbacts &ndash; firstly to store an item we would have to move all
+records up the file to create the space for the new entry. The
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

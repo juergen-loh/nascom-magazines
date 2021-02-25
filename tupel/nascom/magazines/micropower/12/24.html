@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p class="continued">
+using POKE instructions, because if you get the numbers wrong you may corrupt the
+Basic program, change the value of a variable, or affect the operation of the monitor.
+For example, try typing POKE 3111,1/Enter. You will find that your keyboard is now in
+&lsquo; typewriter&rsquo; mode, and you will have to use the shift key to type upper case letter. To
+change back, enter POKE 3111,0 (Basic will accept commands in lower case).
+Similarly, POKE 3111,4 will change the keyboard to &lsquo;graphics&rsquo; mode.
+</p>
+<p>
+I will now sneak a quick look at the PEEK command (although it isn&rsquo;t in the
+above list), because it is complementary to POKE. PEEK(X) tells you the value stored
+at memory location X. Thus PRINT PEEK(2531) will print the (decimal) value stored at
+the screen centre. This also illustrates the difference between Basic commands and
+Basic functions. A command tells the machine to do something; a function asks it a
+question, but you have to use a command to do something with the answer. Thus
+entering PEEK (2531) has no obvious effect, you must precede it with a PRINT
+command for the answer to appear on screen.
+</p>
+<h3>
+STRINGS
+</h3>
+<p>
+A string is simply a series of characters. In the program above the string
+variable, Z$, is first defined by equating it to the expression between quotation marks,
+PROGRAM TITLE, so that when the program subsequently meets Z$ it knows that it
+refers to this expression.
+</p>
+<h3>
+LEN(Z$)
+</h3>
+<p>
+This function gives the length of Z$, i.e., the number of characters, including
+spaces, in the string. Thus if you enter PRINT LEN (&ldquo;THIS IS A STRING&rdquo;) the
+computer will produce the answer 16. The same result is obtained with PRINT
+LEN(Z$) is Z$ has previously been defined as &ldquo;THIS IS A STRING&rdquo;.
+</p>
+<h3>
+ASC(X$)
+</h3>
+<p>
+This returns the decimal value of the ASCII code of the first character of string
+X$. Thus ASC(&ldquo;FRED&rdquo;) has the value 70, because the ASCII code for F is &pound;46 and
+4x16 + 6 = 70.
+</p>
+<h3>
+MID$(X$,I,J)
+</h3>
+<p>
+You often need to be able to access specific groups of letters in a string, and
+the most versatile of the basic string handling functions for this purpose is MID$(...). It
+extracts J consecutive letters from the middle of a string, starting at the Ith letter. Note
+that this function returns a string, not the ASCII equivalent of a string, so if you type
+PRINT MID$(&ldquo;MISS PIGGY&rdquo;,6,3) the computer will print PIG.
+</p>
+<h3>
+FOR&nbsp;. . TO&nbsp;. . STEP&nbsp;. . NEXT
+</h3>
+<p>
+Since the first thing that most new computer owners do to try out Basic is type:
+</p>
+<pre style="text-align: center">
+10 FOR A = 1 TO 50:PRINT &ldquo;HELLO&rdquo;:NEXT
+</pre>
+<p class="continued">
+FOR&nbsp;. . NEXT loops will presumably be familiar to everyone. STEP can be omitted if
+you want to increment in steps of one; it has only been included in the program
+</p>
+<?php columnEnd(1); ?>

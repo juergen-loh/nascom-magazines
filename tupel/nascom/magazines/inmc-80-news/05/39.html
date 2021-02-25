@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p class="continued">
+attempt is made to keep track of where data was stored. It being up to the
+user to keep a record of that. D-DOS is rather like using a cassette tape
+recorder and keeping notes as to where data went by noting the numbers on the
+tape counter. Make a mistake, and it will lose something. Its advantage is
+that it is easy to understand, easy to modify for your ow purposes if you are
+thinking of writing your own DOS, and, of course, being very simple, it&rsquo;s
+incredibly fast. The next level of cleverness comes with the new NAS-DOS,
+DCS-DOS, and the new Polydos. These work like D-DOS internally, but instead of
+you keeping notes on paper, the notes are recorded on the disk in a reserved
+area known as the directory. The only input to the routines required are
+whether a read or write is required, the name you chose for the program, and
+in the case of some writes, the length of the program. The rest is automatic.
+The DOS looks at the directory for the name required, and the information
+about it is recorded after it.
+</p>
+<p>
+CP/M and the Floppy. Much has been written about CP/M in this
+newsletter of late, but no-one has explained what it is. CP/M stands for
+Control Program for Minicomputers. When that name was coined, minicomputers
+were pretty dumb animals by todays standards, and micros are now more powerful
+that minis then, so for minicomputers, read microcomputers. It was originally
+written to take the chore of handling DOS away, and make the disk system as
+transparent as possible. This end is achieved quite well, although CP/M isn&rsquo;t
+the friendliest piece of software around. Anyway, CP/M is an operating system
+much as Nassys is, but revolves around disks, particularly floppy ones. CP/M
+is divided into 3 parts CBIOS CCP and FDOS The cbios does all the I/O and is
+written for each system, as disk I/O and keyboards differ. Now NAS-SYS and
+CBIOS are much the same, and indeed could be the same if the entry points were
+looked at closely.
+</p>
+<p>
+We all know how NAS-SYS calls routines, so how does CP/M do it?
+</p>
+<p>
+CP/M has a number of routines, 36 for revision 2.0, which are called
+by passing a routine number in C and an address in DE. Results are returned in
+A with double bytes in HL.
+</p>
+<p>
+As CP/M only uses RST 0H, and for the same as NAS-SYS, it should be
+possible to simply move NAS-SYS up to F000H to F800H and the video to FC00H to
+FFFFH and incorporate the CBIOS, plus initialise the RST 1 to 7H addresses to
+jump into NAS-SYS. The only problem then is to modify the VRAM, or rather
+calls to it. ZEAP is the biggest offender here, mainly because I don&rsquo;t have
+the source.
+</p>
+<p>
+The NAS-SYS routines require about 2K, and the disk routines require
+1K, NAS-SYS workspace is 128 bytes, so its a bit of a push, but no doubt it
+can be done. The work space could be put somewhere else. That way it would
+provide the best of both worlds.
+</p>
+<h4>
+CP/M reads the Floppy
+</h4>
+<p>
+CP/M reads the disk by using a directory, that relates the logical
+name (thats what you call the file) and its physical position on the disk.
+CP/M does not use sector and track as in DDOS but uses block numbers, each
+block may be, say, 8 sectors, and may therefore be 1024 bytes. The directory
+entry has 16 bytes set aside to keep the block numbers for that file. If the
+block size is 1K, then each file can have up to 16k bytes per directory entry,
+this is know as an extent. Files longer than 16K require two or more
+consecutive directory entries, the first telling CP/M that it extends to the
+next extent, etc.
+</p>
+<?php columnEnd(1); ?>

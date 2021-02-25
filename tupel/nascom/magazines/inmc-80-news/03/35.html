@@ -1,0 +1,96 @@
+<?php columnStart(1); ?>
+<p class="continued">
+to, and as &lsquo;nn&rsquo; is a two byte operand, I guess it has to be low byte first. So
+</p>
+<pre>
+C3 00 0D     JP 0D00
+</pre>
+<p class="continued">
+was added in place of the HALT. When executed, the screen filled with &lsquo;snow&rsquo; (it was a
+Nascom&nbsp;1 remember), but my asterisk seemed to be flashing on and off like the
+clappers. So fast in fact, that what I saw was the thing beating with the TV line
+scan. Second evening gone but flushed with success, I thought I had it licked. All I
+had to do was add a delay after loading an asterisk to screen and again after loading
+the space. The only problem was that there wasn&rsquo;t an instruction that said &ldquo;DELAY 1
+SECOND&rsquo;.
+</p>
+<p>
+Now what? How do you make the thing hang about for a second before it goes
+onto the next stage. Well the idea of a delay subroutine occurred to me. The only
+problem was how to write one. Make it sit there and count to itself seemed a good
+idea, but how? Now I had read that the HL register pair could do 16 bit arithmetic.
+How about making it count to 65000 odd (from 0000 to FFFF), by using the INC HL
+instruction. That should slow it up a bit. Then another problem came to mind. I could
+see asterisks on the screen, but how was I to know whether the thing was counting. I&rsquo;d
+read about the &lsquo;S&rsquo; single step instruction, but didn&rsquo;t know what it did. Perhaps I
+could use this somehow to see what was going on. Ok, test it. I wrote
+</p>
+<pre>
+21 00 00     LD HL,0000
+23           INC HL
+</pre>
+<p class="continued">
+using the &lsquo;M&rsquo; command, and then typed S 0D00. Well it displayed something
+</p>
+<pre>
+1000 0D03 4800 0000 1000 0000
+</pre>
+<p class="continued">
+Yes, well, what did that all mean. Read the book. 1000, that must be the contents of
+the SP register (why 1000 I wonder), 0D03 that&rsquo;s the program counter, that figures,
+it&rsquo;s pointing to the next instruction. 4800 that must be the AF register pair, and
+look the HL register pair has 0000 in it. Now if I take one more step&nbsp;....
+</p>
+<pre>
+1000 0D04 4800 0001 1000 0000
+</pre>
+<p class="continued">
+Cor, look at that, HL was incremented by one, just as I had instructed. The only thing
+now was to make it do that again and again until it had reached FFFFH.
+</p>
+<p>
+It was about then that I decided that remembering the order of the &lsquo;S&rsquo; command
+register display was a bit of a pain. So I stuck a bit of masking tape (left over from
+respraying the dent the Mrs put in the car) across the top of the monitor screen and
+wrote on it
+</p>
+<pre>
+   SP     PC     AF     HL     DE     BC
+</pre>
+<p class="continued">
+so that as the display scrolled up the screen, I could see what was happening.
+</p>
+<p>
+Well, what happens when it gets to FFFFH? It overflows, and goes back to
+0000H. Read the book. It says an arithmetic overflow sets the Carry flag. Good. But,
+by implication, does a non-overflow unset the Carry flag? The book doesn&rsquo;t say, so try
+it. If I load HL with FFFFH, then increment it twice, the first time should set the
+Carry, and the second time unset it. Away we go
+</p>
+<pre>
+0D00       21 FF FF      LD HL,FFFF
+0D03       23            INC HL
+OD04       23            INC HL
+
+S 0D00
+1000 0D03 4800 FFFF 1000 0000
+</pre>
+<p class="continued">
+So far, so good, lets increment it now, so I hit enter again
+</p>
+<pre>
+1000 OD04 4800 0000 1000 0000
+</pre>
+<p class="continued">
+Odd that!!! Something should have happened to the AF register, but it didn&rsquo;t change.
+Back to the drawing board. As an experiment I tried it with the A register and the
+same thing didn&rsquo;t happen. Or at least the F register changed, but when I set to and
+decoded the HEX number in the F register into its component bits (see part 1), and
+then compared it with the little map of bits in the F register in the book, the Z
+(zero) flag and the P/V (parity) flags had been set. (Now you may be wondering why I
+had to decode the F register bits, as NAS-SYS obligingly prints out the registers set
+at the end of the &lsquo;S&rsquo; command display. Remember this was an original Mk I Nascom&nbsp;1,
+with NASBUG T1, it didn&rsquo;t have such luxuries.) Anyway, it figures, The A register had
+gone to zero, but what happened to my &lsquo;carry&rsquo;? Well as the Z flag had an effect, try
+</p>
+<?php columnEnd(1); ?>

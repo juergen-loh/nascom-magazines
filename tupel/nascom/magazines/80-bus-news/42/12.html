@@ -1,0 +1,154 @@
+<?php columnStart(2, 2); ?>
+<p>
+entered using a text editor such as ED (if you must),
+WordStar or PEN. From the source code program
+(which must have the extension type&nbsp;.BAS), it
+produces an&nbsp;.INT file in which, for example, &lsquo;PRINT&rsquo;
+is stored as 1Ah. The logic behind this is that it
+takes a shorter time to interpret 1 byte such as 1A
+when the semi-compiled program is run than it
+does to deal with 5 letters as in PRINT. To use the
+language, you need to:
+</p>
+<p>
+1. Write a CBASIC source program.
+</p>
+<p>
+2. Use CBASIC to produce the intermediate
+(.INT) file.
+</p>
+<p>
+3. Use CRUN to execute the&nbsp;.INT file.
+</p>
+<p>
+CRUN is a run-time interpreter which takes the INT
+file produced by CBASIC after checking the source
+code for errors, and converts it to machine code.
+The pseudo-code compiler/run-time interpreter
+combination is a compromise between the readily
+alterable but slow-running interpreted and the
+fast-running but not easily alterable compiled
+versions of BASIC.
+</p>
+<p>
+The same procedure could be used for EBASIC,
+which, I believe, is available as Public Domain
+software at a very modest charge from the CP/M
+Users Group.
+</p>
+<p>
+CBASIC appears to be more cumbersome in use
+than MBASIC, but it has a number of very useful
+features which the latter lacks. The major use for it
+has been in the field of business applications
+software where its speed of execution and facilities
+have been most favoured. Unfortunately, it is only
+available for disk-based CP/M systems.
+</p>
+<p>
+The language takes a little getting used to and I
+would not recommend it to anyone who has less
+than a good grasp of BASIC: until one is reasonably
+familiar with its syntax and little peculiarities, it is
+best not to use some of the more advanced
+features. In the following pages, I have attempted
+to provide some information on CBASIC and
+MBASIC (disk version) statements and commands,
+where they differ or where they are peculiar to
+CBASIC. CBASIC has an excellent, if expensive
+User Guide by A. Osborne, G. Eubanks and M.
+McNiff, published by Osborne/McGraw-Hill in
+1981. It is rather costly at &pound;12 (in 1983) for 215
+pages but is essential for the serious user. The
+Guide deals with version 2.07 of the compiler; I
+have used version 2.02 only, but I have not found
+any major problems or incompatibilities. The
+version number of the run-time interpreter CRUN
+used in the book is not stated but mine was 2.04.
+</p>
+<p>
+Data types
+</p>
+<p>
+Both BASICs support integer and floating point
+(real) numbers, with exponential notation for the
+latter. The range for integers is the same in both
+(4.32767 to -32768), but real numbers are stored by
+CBASIC with an accuracy of 14 digits, compared
+</p>
+<p>
+with 7 for single precision and 17 for double
+precision MBASIC. Exponential range for MBASIC
+is 2.9387E-38 to 1.70141E38, whereas CBASIC has
+a range from 9.9999999999999E62 to 1.0E-64,
+which could be very useful!! Both BASICs allow
+hexadecimal notation, but CBASIC allows binary
+and MBASIC permits octal notation in addition. All
+three are, of course, special ways of representing
+integer numeric data in BASIC.
+</p>
+<p>
+Names of variables may be up to 31 characters
+long in CBASIC; although in MBASIC they can be of
+any length, only the first two alphanumeric
+characters are recognized; some characters are not
+allowed but who wants to use *,!,@ or &amp; in a
+variable name? Both BASICs use the $ sign to
+denote string variables, and integers may be
+explicitly declared. This is done in CBASIC by
+adding a % sign to the end of the variable name
+(with not more than 30 preceding characters}; in
+MBASIC, the DEFINT statement does this. The
+ability to use variable names like &lsquo;microcomputer&rsquo;,
+&lsquo;collywobble&rsquo; or &lsquo;knightsbridge&rsquo; may appeal to the
+whimsical but unfortunately, &lsquo;supercalifragilistiexpialidocious&rsquo;
+is too long and would be truncated!
+Variable names should be distinct and descriptive,
+which will help you understand the flow of each
+program you write.
+</p>
+<p>
+DiMension statements have virtually the same
+functions in both BASICs; a little appreciated fact is
+that it is possible to use a constant or a variable to
+declare the highest subscript for an array or vector:
+</p>
+<p>
+2350
+DIM SORTCODE$ (ZZ) , HOUSENUMBER (2)
+</p>
+<p>
+or
+</p>
+<p>
+23(1}=50
+Zh (2)=5
+DIM SORTCODENUMBERS$ (2Z(1),2%(2))
+</p>
+<p>
+Statement construction
+</p>
+<p>
+Line numbers are optional in CBASIC except where
+the line is referenced by a statement elsewhere in
+the program. An additional and somewhat bizarre
+feature is that the numbers can be in any format &mdash;
+integer, real or exponent, but there must be less
+than 31 digits.
+</p>
+<p>
+A single CBASIC statement can be spread over
+several lines by the use of the backslash (\) and
+lower case letters are converted to upper case
+unless the &lsquo;D&rsquo; toggle is used.
+</p>
+<p>
+IF REPT = 0 \
+THEN GOTO 999
+</p>
+<p>
+There seems to be no limit to the length of a
+statement but keep it within reasonable bounds
+otherwise your source will look like one of those
+</p>
+<?php columnEnd(2); ?>

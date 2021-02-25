@@ -1,0 +1,185 @@
+<?php columnStart(1); ?>
+<p>
+Below I have given the complete code needed. It is necessary only to
+create a 2732 EPROM and plug this into a GM813. The listing is shown in two
+halves, for convenience, and the CRCs for the two halves have been calculated
+separately, to make checking simpler.
+</p>
+<p>
+CRC for first half: CRC = 6B A6
+CRC for second half: CRC = A7 42
+</p>
+<p>
+I have also given the source code of the routine which does the GIPB
+operation. It is self contained, and as you can see could easily be adapted
+to operation under any other operating system.
+</p>
+<p>
+First half of the GIPB.
+</p>
+<p>
+Record 0.
+</p>
+<p>
+0100: 00: c3 71 FO C3 5C Fl C3 93 FL Al OL OL 42 C3 00 FO CqpC\qC. q!..BC.p<br>
+0110: 10: C3 03 FO C3 09 FC C3 24 FC C3 DE FC C3 F6 FC C3. C.pc.|cs jcricvic<br>
+0120: 20: OF FD C3 13 FD 21 83 FF 18 1C 21 86 FF 18 17 21) .}C.}L.. walesee!<br>
+0130: 30: 89 FF 18 12 21 8C FF 18 OD 21 8F FF 18 08 21 92 wecelese eleceel<br>
+0140: 40: FF 18 03 21 95 FF ED 5B 4E 00 19 &pound;9 20 62 79 74 &laquo;soteom[ N..i byt<br>
+0150: 50: 65 73 20 2D 20 52 50 2F 4D 20 66 6F 72 20 47 65 es &ndash; RP/ M for Ge<br>
+0160: 60: 6D 69 6E 69 20 56 32 2E 35 20 2D 20 47 49 50 42 mini V2. 5 &ndash; GIPB<br>
+0170: 70: 24 16 64 OL FE FO 1E OF ED 59 1D 78 D6 10 47 30 $.d.-p.. mY.xV.GO<br>
+Record 1.
+</p>
+<p>
+0180: 00: F7 15 20 EF 3E 11 D3 FF D3 B3 21 00 00 36 00 11 w. o&gt;.S. 83!..6..<br>
+0190: 10: O1 00 01 FF 00 ED BO 21 00 00 7E 2F 77 BE 20 12 &laquo;&laquo;+.m0! .."/w&gt;.<br>
+QIAO: 20: 2F 77 23 11 OC 00 1A 3C 12 FE OA 20 ED AF 12 1B /wh....&lt; 2%. m/e.<br>
+O1BO: 30: 18 F4 22 4E 00 11 CO FF 19 F9 11 40 FF 19 3E C3) .t"N..G@. &laquo;y.@..90<br>
+O1CO: 40: 32 05 00 22 06 00 77 23 11 06 FO 73 23 72 23 22 2.."..wi &laquo;.pstrk&rdquo;<br>
+01D0: 50: 46 00 2A 4E 00 11 83 FF 19 32 00 00 22 O1 00 EB F.*Ns... 12s. eck<br>
+Q1EO: 60: 1B 1B 1B 21 OD FO O01 18 00 ED BO 32 38 00 21 2A &laquo;+.!.p.- .m028.!*<br>
+O1FO: 70: FB 22 39 00 3A OB FO 21 03 00 77 DB BE CB 77 28 {"9.:.p! ..w{&gt;Kw(<br>
+Record 2.
+</p>
+<p>
+0200: 00: 04 7E EE Ol 77 O01 FE 00 38 OF ED 79 7E FE C3 ED&nbsp;.7n.w.7. &gt;&raquo;my7"Cm<br>
+0210: 10: 41 20 02 CB CE 21 00 02 22 4C 00 3A OC FO 32 42 A&nbsp;.KNI.. &ldquo;L.:.p2B<br>
+0220: 20: OO DB Bl CD FB FD 2A 09 FO 22 38 00 CD BD FE 3A. .[IM{}*. p";.M=*:<br>
+0230: 30: ID FF FE FF C4 1D FF CD 26 F4 CD 62 FA 21 08 00 ..-.D..M &amp;tMbz!..<br>
+0240: 40: 06 05 7E C6 30 5F E5 C5 CD 69 FA Cl El 23 10 F2 ..*FO_eE MizAaf.r<br>
+0250: 50: 11 4C FO CD 5D PA CD 3A FB CC 49 FB 2A 4E 00 11 .LpMJzM: {LI(*N..<br>
+0260: 60: CO FF 19 F9 21 80 00 22 4A 00 AF 32 41 00 32 45 @..y!..&rdquo; J4/2A.28<br>
+0270: 70: 00 32 53 00 3E FF D3 B6 3E FD D3 B6 3E FF D3 B7 .28.&gt;.86 &gt;}86&gt;.S7<br>
+Record 3.
+</p>
+<p>
+0280: 00: AF D3 B7 D3 BS 2F D3 B4 3A 20 PF FE FF C4 20 FF /S7S85/S4: .&rdquo;.D.<br>
+0290: 10: C3 70 F6 ED 53 57 00 21 O00 00 22 59 00 ED 73 55 CpvmSW.! .."Y.msU<br>
+0240: 20: 00 ED 7B 4E 00 21 F4 Fl E5 79 FE 1B DO 4B 21 BE&nbsp;.m{N.!tq ey&rdquo;.PK!D<br>
+02B0: 30: Fl SF 16 00 19 19 5E 23 56 24 57 00 EB E9 25 FO q_&laquo;++-&pound; VAW.KI%p<br>
+02C0: 460: Bl F3 8E F2 B6 F3 3E FO 39 FO BB F3 D2 F3 D7 F3 Is.r6s&gt;p 9p;sRsWs<br>
+0200: 50: DC F3 DB F2 E2 F3 FD Fi &pound;9 F3 FD Fl E9 F3 E9 F3 \s[rbs}q is}qisis<br>
+O2E0: 60: FD Fl FD Fl FD Fl E9 F3 E9 F3 E9 F3 FD Fl FD Fl }a}q}qis isis}q}q<br>
+O2F0: 70: FD Fl E9 F3 ED 7B 55 00 2A 59 00 7D 44 C9 21 54 }qism{U. *Y.}DIIT<br>
+</p>
+<p>
+An alternate version of the GIPB operates using only port B,
+with the Ready and Strobe lines for handshaking.
+</p>
+<p>
+This requires special with the interrupt
+handling software at the host end.
+</p>
+<p>
+locks up.
+</p>
+<p>
+code in the EPROM.
+</p>
+<p>
+Therefore the PIO can handle only one interrupt and then
+</p>
+<p>
+feature of the card which prevents the PIO
+receiving the RETI instruction from
+itself to the same area in RAM.
+</p>
+<p>
+This is necessary because of a hardware
+because the EPROM has to be paged out during use of the GIPB, and it copies
+at the top of memory, occupying the same addresses as the EPROM.
+The reason that 64K is normally needed is that there must be 4K of RAM
+This is
+</p>
+<p>
+use. of RAM at the start of
+memory i
+</p>
+<p>
+The GIPB adjusts to the size of memory available, so that in fact only 2K
+s needed, although this would be of limited
+</p>
+<p>
+Ss waiting
+for the handshake signal or the UART status to become ready during printing.
+</p>
+<p>
+The GIPB accepts input both when it is inactive, and when it i
+</p>
+<p>
+work perfectly as host machines.
+</p>
+<p>
+All known versions of the BIOS for Gemi
+</p>
+<p>
+This could in theory cause loss of characters.
+ni systems, as well as RP/M itself,
+</p>
+<p>
+interrupts are next enabled.
+</p>
+<p>
+send the strobe after examining the Busy line
+</p>
+<p>
+that the data is held until the
+</p>
+<p>
+possi
+</p>
+<p>
+the Busy li
+not sent.
+</p>
+<p>
+data and make the strobe go low and then high
+ble for someone t
+</p>
+<p>
+Oo Wri
+</p>
+<p>
+:
+</p>
+<p>
+te a Centronics output routine whi
+</p>
+<p>
+ch is so slow to
+</p>
+<p>
+This system should work correctly, although i
+</p>
+<p>
+ne is at once set back to 1 to ensure that a second charact
+</p>
+<p>
+t would in theory be
+</p>
+<p>
+er is
+</p>
+<p>
+Tf an interrupt occurs
+</p>
+<p>
+:
+</p>
+<p>
+again.
+</p>
+<p>
+interrupts.
+</p>
+<p>
+about 40 instructions after it sets the Busy line back to 1 before it disables
+</p>
+<p>
+This gives the host machine more than enough time to send the
+</p>
+<p>
+11
+</p>
+<?php columnEnd(1); ?>

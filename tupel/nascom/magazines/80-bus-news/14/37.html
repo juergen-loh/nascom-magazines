@@ -1,0 +1,597 @@
+<?php columnStart(1); ?>
+<p>
+DRIVE ROUTINES FOR THE GEMINI GM822 RTC MODULE
+</p>
+<p>
+OOAR&rsquo;
+00B2&rsquo;
+O0B6&rdquo;
+OOBT&rsquo;
+OOBB&rsquo;
+OOBF&rsquo;
+o0cs&rsquo;
+ooc7&rsquo;
+oocs&rsquo;
+oocc&rsquo;
+oopo&rsquo;
+oop4&rsquo;
+oops&rdquo;
+</p>
+<p>
+OOFO&rsquo;
+ooF2&rsquo;
+OOF4&rdquo;
+OOF6&rsquo;
+OoF8&rsquo;
+</p>
+<p>
+oor&rsquo;
+OoFB&rsquo;
+ooFD&rsquo;
+OOFF&rsquo;
+o101&rsquo;
+</p>
+<p>
+0102&rdquo;
+0104&rdquo;
+0106&rdquo;
+0108&rdquo;
+O10A&rsquo;
+</p>
+<p>
+O10B&rsquo;
+o1op&rsquo;
+O10F&rsquo;
+ott
+os&rdquo;
+o115?
+o117&rdquo;
+</p>
+<p>
+33 5A 36
+</p>
+<p>
+34
+38
+53
+or
+65
+54
+72
+74
+4A
+65
+72
+4D
+715
+719
+53
+63
+76
+</p>
+<p>
+38
+D3
+3
+DS
+og
+</p>
+<p>
+38
+D3
+35
+D3
+cg
+</p>
+<p>
+35
+D3
+38
+D3
+cg
+</p>
+<p>
+38
+D3
+38
+D3
+35
+D3
+cg
+</p>
+<p>
+3A
+</p>
+<p>
+15
+68
+57
+68
+69
+</p>
+<p>
+64
+62
+</p>
+<p>
+44.
+</p>
+<p>
+61
+6E
+44
+65
+74
+44
+</p>
+<p>
+FF
+iE
+FF
+1B
+</p>
+<p>
+FF
+iF
+FF
+iF
+</p>
+<p>
+FF
+1B
+</p>
+<p>
+1B
+</p>
+<p>
+1D
+PF
+iF
+10
+iF
+</p>
+<p>
+32
+</p>
+<p>
+6E
+54
+65
+5
+53
+</p>
+<p>
+68
+4D
+70
+79
+4A
+75
+70
+48
+65
+</p>
+<p>
+3A
+3A
+</p>
+<p>
+4D
+75
+64
+46
+61
+</p>
+<p>
+46
+61
+72
+4A
+6C
+67
+4F
+6F
+63
+</p>
+<p>
+M-80 14 Sep 1982 14:48 PAGE 1-2
+</p>
+<p>
+3; Data strings
+</p>
+<p>
+INVAL: DEF &ldquo;3:6:4:2:8&rsquo; 3; Input validation
+</p>
+<p>
+DYSTRG: DEFB &ldquo;SunMonTueWedThuFriSat&rsquo;
+</p>
+<p>
+MNSTRG: DEFB &lsquo;JanFebMarAprMay JunJlyAugSep0ctNovDec
+</p>
+<p>
+HE PIO control subroutines
+</p>
+<p>
+ae em en
+</p>
+<p>
+3 Set data port to control mode, all lines input
+INDATA: LD A, CMODE 3 Control mode
+ouT (PCDATA) ,A ; Set mode word
+LD A, ALLIN
+our (PCDATA) ,A 3 Set direction
+RET
+</p>
+<p>
+3 Set command port to control mode, all lines input
+INADDR: LD A, CMODE ; Control mode
+our (PCADDR) ,A ; Set mode
+LD A, ALLIV
+our (PCADDR),A 3 Set direction
+RET
+</p>
+<p>
+3 Set data port to control mode,
+</p>
+<p>
+OUDATA: LD A, CMODE :
+our (PCDATA), A ;
+LD A, ALLOUT
+</p>
+<p>
+ouT (PCDATA), A ; Set direction
+RET
+</p>
+<p>
+all lines output
+Control mode
+Set mode
+</p>
+<p>
+; Set command port to control mode, all lines output
+: EXCEPT the INT line (OB4H)
+</p>
+<p>
+3; Ensure all data lines&nbsp;...
+out (PADDR) ,A :
+;
+</p>
+<p>
+&laquo;ee Will be t&rsquo;s
+LD A, CMODE Set mode
+</p>
+<p>
+our (PCADDR),A
+</p>
+<p>
+LD A, INTOUT 3 Set direction
+our (PCADDR),A
+</p>
+<p>
+RET
+</p>
+<p>
+DRIVE ROUTINES FOR THE GEMINI GM822 RTC MODULE
+</p>
+<p>
+0118&rsquo;
+O11A&rsquo;
+o1ic&rsquo;
+O11E
+o120&rsquo;
+</p>
+<p>
+o121&rsquo;
+0123&rsquo;
+0126&rsquo;
+0128&rdquo;
+O12a&rsquo;
+ot2c&rsquo;
+</p>
+<p>
+o12E*
+ost
+0134&rdquo;
+0137&rdquo;
+0139&rsquo;
+O13B&rsquo;
+O13D&rsquo;
+O13F
+0142!
+o144&rsquo;
+0146&rdquo;
+0148&rsquo;
+O14a&rsquo;
+O14B&rsquo;
+o14ac&rsquo;
+o14p&rsquo;
+O14R&rsquo;
+0150&rsquo;
+</p>
+<p>
+0151&rdquo;
+0154&rdquo;
+</p>
+<p>
+ED
+ED
+DB
+ED
+cg
+</p>
+<p>
+D3
+cD
+ED
+ED
+ED
+18
+</p>
+<p>
+cD
+cD
+ai
+06
+16
+iE
+On
+cp
+E6
+FE
+28
+C6
+77
+25
+15
+1D
+</p>
+<p>
+cg
+</p>
+<p>
+cep
+cD
+</p>
+<p>
+34
+59
+</p>
+<p>
+51
+</p>
+<p>
+1c
+0102&rdquo;
+51
+59
+54
+c2
+</p>
+<p>
+oO10B&rsquo;
+ooFro&rsquo;
+O2BB&rsquo;
+oc
+EC
+8c
+4D
+o11s&rsquo;
+OF
+OF
+E6
+30
+</p>
+<p>
+EF
+</p>
+<p>
+O10B&rsquo;
+0102&rdquo;
+</p>
+<p>
+M-80 14:48
+</p>
+<p>
+REE IN IEEE BEE HHH RAHM EE IE
+</p>
+<p>
+##** Subroutines to read/write to the RIC KeRH
+##88 Called with:- Hee
+wee C=PADDR &ndash; data port for command **#*
+HeEE D&rsquo;RTC register address HE
+</p>
+<p>
+whee EeRTC reg. + strobe (R or W) HRH
+JHE HHI H EEE HEI HEHEHE HEHEHE HHH:
+</p>
+<p>
+14 Sep 1982 PAGE 1-3
+</p>
+<p>
+a
+</p>
+<p>
+; Read a RTC regiater
+READ: OUT (c),D
+ouT (c),8
+</p>
+<p>
+IN A, (PDATA)
+our (c),D
+RET
+</p>
+<p>
+3; Write &lt;A&gt; to a RIC register
+WRITE: ouT (PDATA),A
+CALL OUDATA
+out (c),D
+our (c),E
+our (c),D
+JR INDATA
+</p>
+<p>
+RRER
+HE
+</p>
+<p>
+a on em ae
+</p>
+<p>
+RDRTC: CALL OUADDR
+</p>
+<p>
+CALL INDATA
+</p>
+<p>
+LD HL, WSPACE
+</p>
+<p>
+LD B12
+</p>
+<p>
+LD D, TMONTH+NOSTRB
+LD B, THONTH+RDSTRB
+LD C, PADDR
+</p>
+<p>
+CALL READ
+</p>
+<p>
+AND OFH
+</p>
+<p>
+cP OFH
+</p>
+<p>
+me %,RDRTC
+</p>
+<p>
+ADD A, 30H
+</p>
+<p>
+LD (HL),A
+</p>
+<p>
+INC HL
+</p>
+<p>
+DEC D
+</p>
+<p>
+DEC E
+</p>
+<p>
+DINZ RDRTCL
+</p>
+<p>
+RET
+</p>
+<p>
+RDRTCL:
+</p>
+<p>
+Y
+c
+</p>
+<p>
+CALL
+CALL
+</p>
+<p>
+OUADDR
+OUDATA
+</p>
+<p>
+en se en om
+</p>
+<p>
+Wm ee Rem tom
+</p>
+<p>
+a eS es
+</p>
+<p>
+Write workspace to RTC
+(Used when initializing the RTC)
+</p>
+<p>
+Set up address
+Read strobe on
+Read a nibble
+Strobe off
+</p>
+<p>
+Put data in PIO register
+Set to output
+</p>
+<p>
+Address the RTC
+</p>
+<p>
+WR strobe on
+</p>
+<p>
+WR strobe off
+</p>
+<p>
+Set back to input
+</p>
+<p>
+KEEREEREEE REE EEE EEE ENE EEE EER EDR ERNE ION EEE EEN
+</p>
+<p>
+Routine to read the RIC registers
+to work space in RAM
+</p>
+<p>
+REED
+(HL) RERK
+</p>
+<p>
+at
+Set command port to o/p
+</p>
+<p>
+Set data port to i/p
+</p>
+<p>
+Read into here
+</p>
+<p>
+12 registers to read
+</p>
+<p>
+10&rsquo;s of months + no strobe
+10&rsquo;s of months + read strobe
+8 = control port address
+Get the data
+</p>
+<p>
+Tsolate the lower nibble
+Valid?
+</p>
+<p>
+No, so start again
+</p>
+<p>
+Yes, so make it ASCII
+</p>
+<p>
+Store in workspace
+</p>
+<p>
+Next RIC register
+</p>
+<p>
+Loop if more
+Done
+</p>
+<p>
+HABE
+SHEE
+</p>
+<p>
+Set command port to o/p
+Set data port to o/p
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+39
+</p>
+<p>
+OUT (CENPAC),A bit 1 is the STROBE (output), the rest are inputs
+</p>
+<p>
+3
+LD A, OFFH ; Tell port B it will use the bidirectional/control mode
+OUT (CENPBC),A
+XOR A 3; Send the mask to say which bits are in and which are out
+OUT (CENPBC),A 3; all bits are set to output.
+RET 3; Exit from the initialization routine.
+</p>
+<p>
+So the ports have been set up. The U command in NAS-SYS, or the LST vector in
+RP/M should be set to point to the output routine, and study of the manuals should
+reveal what is required to be done. Like the serial routine the first thing that
+happens is that the character to be printed is PUSHed on the stack whilst the BUSY
+line is examined until it is free. The character is then POPped back and sent to the
+data port. Bit one is then toggled to cause a strobe pulse thus latching the data into
+the printer.
+</p>
+<p>
+PUSH AF ; Push the character out of the way
+</p>
+<p>
+; Examine the BUSY line until free
+</p>
+<p>
+LOOP: IN A, (CENPAD) ; Get port A into the accumulator
+RRA 3; Rotate the byte, shifting bit O into the Carry
+JR C,LOOP ; If the C flag is now set, the printer is BUSY
+</p>
+<p>
+s The printer is now free, send the character
+</p>
+<p>
+POP AF ; Get the character back
+</p>
+<p>
+PUSH AF ; Save it from being corrupted by the strobe pulse
+OUT (CENPBD),A ; Send the byte to the printer
+</p>
+<p>
+NOP 3; Wait for the data to settle
+</p>
+<p>
+LD A,0FH 3; Send a strobe pulse by toggling bit 1
+OUT (CENPAD),A
+</p>
+<p>
+NOP 3; Wait for the strobe pulse to settle
+LD A, OFFH ; Take the strobe pulse away again
+</p>
+<p>
+OUT (CENPAD),a
+</p>
+<p>
+POP AF 3; Get the character back
+</p>
+<p>
+RET 3; Exit from the routine
+</p>
+<p>
+And that is all there is to it. Of course, there will be problems with both
+the serial and the parallel routines, but &lsquo;thinking down&rsquo; to the bit level where it is
+all happening will help. I can offer little practical advise at this stage. Playing
+around with software is fun, and if you don&rsquo;t have a glimmer of insight after all I&rsquo;ve
+written, I&rsquo;m afraid you will be forever doomed to high level languages and their
+restrictions. Playing at the very heart of the machine is my idea of fun. But of
+course it requires a thorough working knowledge of both the hardware and the affects
+of the software.
+</p>
+<p>
+In drawing this series to an end, I like to think I&rsquo;ve helped someone along
+the way. I know what I have written is incomplete and inaccurate in places but that is
+probably not so important as the overview of systems I have presented. To encapsulate
+all that should be written on the subject would require several very fat books, and
+falls into the province of the professional writer. Unfortunately the most prolific
+writers do not necessarily have a deep understanding of what it is they are trying to
+convey. They are quite adapt at disguising this fact, usually with jargon, and the
+indadequacies of this sort of book is often overlooked. There is nothing to beat hands
+on experience.
+</p>
+<p>
+Thank you for reading this series I hope you found it useful.
+D. R. Hunt.
+</p>
+<?php columnEnd(1); ?>

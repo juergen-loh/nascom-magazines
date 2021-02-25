@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+MONITOR.COM and other scribblings by Jeremy Gugenheim
+</p>
+<p>
+Well me dearios, at last I have put Nas-Pen to printer, and what goodies flow
+forth?? Read on, and if you have disks, CP/M, and MONITOR.COM (the best thing since
+sliced Nascoms) all your old Nas-Sys software can burst back into fruity life!!
+Firstly, one and a half mods to MONITOR.COM itself (Gasp!), this one can only be
+done if your MONITOR.COM came from Nas-Sys&nbsp;1 (Tee hee!).
+</p>
+<p>
+Do &lsquo;DDT MONITOR.COM&rsquo;, then &lsquo;S2F5&rsquo; and
+replace
+</p>
+<p>
+79 DF 60 EF 08 08 OD 00
+with
+</p>
+<p>
+EF 2E 00 79 DF 68 DF 6A
+</p>
+<p>
+This gives you back your checksums in the Tabulate routine, separated from your
+bytes proper by a space and a full stop.
+</p>
+<p>
+To change the cursor character, do your DDT etc etc, and change the byte at
+0877H, which should start out as 5FH. It is quite alright to replace it with a
+carriage control character, they won&rsquo;t control the carriage, try 07H, or even B5H if
+you&rsquo;ve got the graphics chip.
+</p>
+<p>
+Something for all you dedicated Nas-Crunchers (compatible) is replacing the
+Y (copyright) command with the repeat keyboard routine from INMC-6 (compatible). You
+can&rsquo;t type it in directly so you need to find some mug who is willing to work out
+the new addresses for you. If you are too lazy even for that, then, well, I&rsquo;ve done
+it for you.
+</p>
+<p>
+Do all your DDT and stuff, and &lsquo;SA67&rsquo; this lot in...
+</p>
+<p>
+OA67 21 C3 OA DF 72 21 80 OA
+OA6F 22 7B OC 21 80 02 22 2E
+OATT OC 21 50 00 22 30 OC C9
+OATF OO DF 61 30 O7 2A 2E OC
+OA87 22 28 OC C9 2A 20 OC 2B
+OA8BF 22 2C OC 7C BS CO 21 02
+OAST OC O01 00 08 16 FF 7D FE
+OAOF 06 20 02 16 BF FE 09 20
+OAAT 02 16 C7 7E A2 28 06 OE
+OAAF O01 7A 2F A6 T7 23 10 E4
+OABT7 79 B7 C8 2A 30 OC 22 20
+OABF OC DF 61 C9 76 70 00.
+</p>
+<p>
+For those of you who just groaned because I&rsquo;m too mean to type in the source, I&rsquo;m
+not, it&rsquo;s exactly the same as the INMC-6 (compatible) one with the addresses changed
+and a RET NOP replacing the original SCAL MRET. So, now the clever ones amongst you
+can work out how, by using the YO and Y1 commands, it is possible to turn the repeat
+on and off. You have 55 bytes to play with, that should be ample, or you could even
+make it execute automatically after a cold start, but note that after the workspace
+has been initialised.
+</p>
+<p>
+Once you&rsquo;ve MONITOR.COM installed, use the READ command to get ZEAP into
+your memory. DON&rsquo;T let the GENERATE command have its evil way here, or you&rsquo;ll really
+be in trouble, &lsquo;cos MONITOR.COM uses the old screen to hold bits of CP/M that it
+requires for disk transfers. If you have Generated ZEAP then you&rsquo;ll have to disable
+the Generate command. How do you do that? Simple, you can even use Nas-Sys for this
+one.
+</p>
+<?php columnEnd(1); ?>

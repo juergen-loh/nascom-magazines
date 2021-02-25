@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SOFTWARE TIPS &ndash; SHUFFLING
+</h1>
+<p>
+Suppose you have a list of values which you want to arrange in
+a random order, such as shuffling a deck of cards. There are
+many possible ways to go about it, and some ways don&rsquo;t perform
+a truly random shuffle and others take a lot of programming or
+a long time to execute. Here are some examples:&ndash;
+</p>
+<p>
+1. <u>SORT METHOD</u>
+</p>
+<p>
+Attach a random number to each of the items to be shuffled.
+Then sort the random numbers into sequence with a sort program.
+Then take the original items in this order. This method works
+correctly, and could be useful if you have a random number
+generator, a sort program, and lots of memory to run it all
+in and store the random numbers. It is impractical for our
+purposes.
+</p>
+<p>
+2. <u>OBVIOUS REPLACEMENT SHUFFLE</u>
+</p>
+<p>
+For each item in the list, i, where there are n items
+(FOR I=1 to N) generate a random integer j in the range 1
+to N and swop item i with item j. This method may seem to
+work but it is incorrect. Some orders are more likely than
+others. Never use this method.
+</p>
+<p>
+3. <u>CORRECT REPLACEMENT SHUFFLE</u>
+</p>
+<p>
+Here is a correct method!<br>
+For each item i in the list of a items, but only up to n-l
+(FOR I=1 to N-1), to as follows :&ndash;
+</p>
+<p>
+a) Generate a random integer j in the range i to n.<br>
+J = I + INT (RND (1) * (N-I+1})
+</p>
+<p>
+b) Swop value i with value j.
+</p>
+<p>
+This method is very fast, is easy to program, works correctly,
+and runs quickly. It can be easily programmed in BASIC or
+in machine code.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<pre>
+LIST
+</pre>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
+<?php columnChange(2); ?>
+<pre>
+RUN
+</pre>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-17-2.png"); ?>
+<?php columnEnd(2); ?>
+
+<?php columnStart(1); ?>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

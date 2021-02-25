@@ -1,0 +1,228 @@
+<?php columnStart(1); ?>
+<p>
+110 REM SEND SECTION
+</p>
+<p>
+120 PRINT B$;"pon,1/s":REM Initialise Sender as system controller
+130 INPUT &ldquo;File name";FS$
+</p>
+<p>
+140 PRINT BS;"wrt,2 &ldquo;;FS$:REM Send filename to be loaded across
+150 OPEN &ldquo;R",1,FS$,128
+</p>
+<p>
+160 R=1:FIELD 1,128 AS x$
+</p>
+<p>
+170 GET 1,1:REM Force dummy file read otherwise EOF function does not work
+180 WHILE NOT EOF(1):REM Main sending loop
+</p>
+<p>
+190 GET 1,R
+</p>
+<p>
+200 R=R+1
+</p>
+<p>
+210 E&para;$1$="":S2$="":REM Generate two ASCII-Hex strings 128 and 129 bytes long
+220 FOR A=1l TO 64:REM the second string has an EOF marker attached.
+230 SS=HEXS$ (ASC(MIDS(X$,A,1))):IF LEN(S$)=1 THEN S$="0"48$
+</p>
+<p>
+240 S1$=S1$+5$
+</p>
+<p>
+250 NEXT A
+</p>
+<p>
+260 FOR A=65 TO 128
+</p>
+<p>
+270 S$=HEXS (ASC (MIDS (X$,A4,1))): IF LEN(S$)=1 THEN S$="0"+S$
+</p>
+<p>
+280 $2$=82$4+8$
+</p>
+<p>
+290 NEXT A
+</p>
+<p>
+300 IF EOF(1) THEN S$="A&rdquo; ELSE S$$="M&rdquo;
+</p>
+<p>
+310 $2$=S$2$+8$
+</p>
+<p>
+320 PRINT BS;"wrt,2 &ldquo;;S1$
+</p>
+<p>
+330 PRINT BS;"wrt,2 &ldquo;;82$
+</p>
+<p>
+340 WEND
+</p>
+<p>
+350 PRINT&rdquo; Complete.&rdquo;
+</p>
+<p>
+360 INPUT &ldquo;Any more files to send";A$
+</p>
+<p>
+370 IF AS="y&rdquo; OR Ag="Y&rdquo; THEN RUN
+</p>
+<p>
+380 END
+</p>
+<p>
+390 REM RECEIVE SECTION
+</p>
+<p>
+400 PRINT B$;"pon,2":REM Power-on the receiver as address 2
+</p>
+<p>
+410 PRINT BS;:INPUT &ldquo;red, 1"; PRS
+</p>
+<p>
+420 PRINT&rsquo;File &ldquo;;FR$;&rdquo; is being received.&rdquo;
+</p>
+<p>
+430 Rel
+</p>
+<p>
+440 OPEN &ldquo;R",1,FRS,128
+</p>
+<p>
+450 FIELD 1,128 AS X$
+</p>
+<p>
+460 REM RE-ENTER HERE
+</p>
+<p>
+470 TEMPS$="&rdquo; &lsquo;
+</p>
+<p>
+480 PRINT BS;:INPUT &ldquo;red,1";S15&rsquo;
+</p>
+<p>
+490 PRINT BS::INPUT &ldquo;red,1";S2$ :TEMPS="&rdquo;
+</p>
+<p>
+500 IF RIGHT$(S2$,1)="A&rdquo; AND LEN(S2$)=129 THEN 610:REM END OF FILE
+510 FOR A=1 TO 128 STEP 2
+</p>
+<p>
+520 TEMP$=TEMPS+CHRS (VAL ("&amp;H"+MIDS (S1$,A,2)))
+</p>
+<p>
+530 NEXT A
+</p>
+<p>
+540 FOR A=1 TO 128 STEP 2
+</p>
+<p>
+550 TEMPS=TEMPS+CHRS$ (VAL ("SH"+MID$ (82$,A, 2)))
+</p>
+<p>
+560 NEXT A
+</p>
+<p>
+570 LSET X$=TEMPS
+</p>
+<p>
+580 PUT 1,R:R=R+1
+</p>
+<p>
+590 IF RIGHTS(S2$,1)="M&rdquo; THEN 460:REM Not EOF yet
+</p>
+<p>
+600 IF RIGHTS (S28,1)&lt;&gt;"A&rdquo; THEN PRINT&rdquo; error&rdquo;: STOP
+</p>
+<p>
+610 CLOSE 1
+</p>
+<p>
+620 PRINT B$;"rdy":REM Read last line-feed from Bus
+</p>
+<p>
+630 RUN
+</p>
+<p>
+100 END
+</p>
+<p>
+20 WIDTH 255
+90 IF A$&lt;&gt;"&rdquo; THEN PRINT CHRS$(7);:GOTO 60
+</p>
+<p>
+10 REM 48810, Written by S.Wood. March 1984
+30 BS=CHRS$(2)
+</p>
+<p>
+50 REM RECEIVER IS ADDRESS 2
+</p>
+<p>
+40 REM SENDER IS ADDRESS 1 &amp; SYSTEM CONTROLLER
+60 INPUT &ldquo;S)END OR R)ECEIVE";A$
+</p>
+<p>
+70 IF AS="R&rdquo; OR AS="r&rdquo; THEN 390
+80 IF AS=""s&rdquo; OR A$="S&rdquo; THEN 110
+</p>
+<p>
+16
+CP/M File Transfer Program Via The IEEE488 Bus.
+</p>
+<p>
+serial interface methods previously used.
+</p>
+<p>
+the amount of data conversion done in BASIC,
+more features will be made available which
+fast indeed (approaching 200 K bytes a second).
+</p>
+<p>
+Below is a simple program written in BASIC-
+to be transfered between them at a reasonable rate.
+</p>
+<p>
+machines fitted with the EV Computing IEEE488 inte
+Shortly
+</p>
+<p>
+be in the disk drives and not in the software or interface.
+</p>
+<p>
+80 which,
+</p>
+<p>
+rface, will allow data files
+</p>
+<p>
+The speed loss is due to
+</p>
+<p>
+but it is still faster than
+</p>
+<p>
+a machine code version with
+</p>
+<p>
+will be able to transfer files very
+The speed limitation then will
+</p>
+<p>
+if present on two
+</p>
+<p>
+By S. Wood
+</p>
+<p>
+sat att ica ic He Sy Be AE i eo eA,
+</p>
+<p>
+fer
+</p>
+<p>
+|
+</p>
+<?php columnEnd(1); ?>

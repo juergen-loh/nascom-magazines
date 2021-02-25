@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<p>
+43
+</p>
+<p>
+The EPROM holding the NAS-SYS BOOT software also holds the &lsquo;MENU&rsquo;, key
+selection and &lsquo;copy across&rsquo; software for the selected program. In my case this
+is in a 2716, and there is over 1K still free so I have incorporated a number
+of &lsquo;utility&rsquo; routines, some of which are described below. The program required
+to copy &lsquo;SIMON&rsquo; across is very short and the remainder of the EPROM may be
+used to hold whatever other software the user desires. (This may be software
+not relating to CP/M, such as more utilities). SIMON is the BOOT software for
+the Gemini CP/M 2.2 implementation which may be overwritten once it has done
+it&rsquo;s job. Users of CP/M 1.4 could copy the relevant software across, but it
+has to be available the whole time, and so the top 4K of RAM would have to be
+</p>
+<p>
+left free.
+</p>
+<p>
+Whilst it is normally the practice to copy programs across to RAM, it
+is quite possible to &lsquo;page in&rsquo; the EPROM card and run software on it (provided
+it&rsquo;s address is correct), but if there is any quantity of software on the
+card, this soon becomes impracticable since all software on the ecard will be
+on at the same time.
+</p>
+<p>
+The Gemini G809 CP/M system, once booted, needs no further interaction
+with the EPROM card, since all the software including the operating systems
+are on disk. The NAS-SYS system needs frequent access to the card. Indeed the
+speed of access and clean memory map are amongst the main reasons for using
+the system. It is therefore necessary to be able to access the &ldquo;MENU&rdquo; easily.
+One method is to use the &lsquo;E&rsquo; command to access the card via a small &lsquo;turn on&rsquo;
+routine. A better method is to change the allocation of a command key. This
+can be done either by modifying the EPROM card copy of NAS-SYS&nbsp;, or by adding
+a little routine to the software in the BOOT EPROM that alters the copy of
+NAS-SYS that it has just copied into RAM. I decided to use key &lsquo;D&rsquo; to access
+the MENU since the &lsquo;cold start&rsquo; of ROM ZEAP is now redundant, so location
+0789H needs to be changed to 08H. (NSI users change 078E and 078F to OOH, 08H
+respectively). The software needed to turn on and jump to the MENU is only 7
+bytes long (p44 INMC80-4). I placed this routine in the VIDEO margin at 08008
+&ndash; 0806H, and have not had any problems by so doing.
+</p>
+<p>
+To give an idea of the versatility of the system, the &lsquo;utility&rsquo;
+routines that I can access from the MENU at present are:
+</p>
+<p>
+1) Handshake for the Imp printer (see below).
+2) Memory test (see below).
+</p>
+<p>
+3) Basic renumber.
+</p>
+<p>
+4) Set PIO ports.
+</p>
+<p>
+5) EPROM programmer (home-brew).
+</p>
+<p>
+6) Block compare.
+</p>
+<p>
+7) Find bytes.
+</p>
+<p>
+8) Improved cassette read.
+</p>
+<p>
+(The last three were described in recent issues of the MICROPOWER mag.)
+</p>
+<p>
+Firmware that can be instantly down loaded includes at present, T4 (so
+that the old favourites like LOLLIPOP LADY can be run to amuse the juniors),
+ZEAP (RAM version), NAS DIS-DEBUG, and NASCOM ROM BASIC. In the near future IT
+hope to add POLYDOS 2 to the firmware; and a real time clock and auto line
+numbering for BASIC to the utilities.
+</p>
+<p>
+HARDWARE IMPLEMENTATION
+Refer to the circuit diagram. It will be seen that the wiring is very
+</p>
+<p>
+simple. In my equipment, a three pole three way switch (obtainable from most
+electronics catalogues) is used to perform three functions:
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+Pin 5 of IC11 should be bent out from the socket and the connections made
+with an insulated &ldquo;soldercon&rdquo; socket. Increase the potentiometer value
+until the flash just disappears.
+</p>
+<p>
+We don&rsquo;t guarantee the results, but we&rsquo;ve tried it and it seems to work!
+</p>
+<h3>
+Cassette Loading
+</h3>
+<p>
+Due to an artwork error, pin 35 of the UART (parity inhibit) has been left
+floating. It should be tied to +5V, and this can be done by adding a small
+link on the solder side of the board between pins 34 and 35.
+</p>
+<p>
+In practice we have found that the absence of a connection to this pin
+generally makes no difference, but it can occasionally cause intermittent
+cassette loading or incompatability between systems. In certain circumstances
+it may be possible to increase the data transfer rate of the cassette load and
+dump. This can be done by increasing the frequency to pins 17 and 40 of the
+UART (IC29). The standard frequency at this point is 3.9 KHz, which is taken
+from IC2 pin 11. The transfer rate may be doubled by taking the UART clock
+from IC2 pin 12 (7.8 KHz) or quadrupled by taking the UART clock from IC2 pin
+13 (15.625).
+</p>
+<p>
+With each increase of speed, however, the record replay levels and the quality
+of the tape and recorder used, and variations between records become much more
+critical. Using a &pound;40 portable cassette recorder and good quality tapes we
+have been achieving a 100% load rate at 4 times the standard speed.
+</p>
+<p>
+If fitting this modification the option of selecting between the normal and
+fast speeds should be available. This could be done by feeding the higher
+frequency into Pin 1 on the Nascom (marked EXT SERIAL CLOCK) and then selecting
+between speeds by means of a switch at link 4.
+</p>
+<p>
+It is recommended that cassette interchange between users should always be done
+with cassettes recorded at the standard speed. The higher transfer rate should
+only be used for loading and dumping the users own programs.
+</p>
+<h3>
+Missing Characters
+</h3>
+<p>
+We have found that the tolerance of some manufacturers components can lead to
+problems with the timing of IC18 (74LS123). The problem manifests itself when a
+character with bit 6 set (e.g. any capital letter) is followed by a character
+with bit 6 clear (e.g. any number). If these are displayed on the screen, the
+first character will disappear!
+</p>
+<p>
+The problem can usually be alleviated by (i) interchanging I.C.s 7 &amp; 18 (ii)
+cutting off either leg 5 or 12 of I.C.18 and then putting a link across the
+solder side of the board between pins 5 &amp; 12. (iii) changing the device for
+that of another manufacturer.
+</p>
+<h3>
+Teletype Interfacing
+</h3>
+<p>
+We have had a number of enquiries about interfacing teletypes and other terminals
+to the Nascom&nbsp;1. Both 20 mA loop and V24/RS232 serial interfaces are brought
+to Sk2. We suggest you make up a cable bringing these signals to a Cannon D
+type socket with the following pin allocations so that it is easy to change
+terminals or swap between systems.
+</p>
+<?php columnEnd(1); ?>

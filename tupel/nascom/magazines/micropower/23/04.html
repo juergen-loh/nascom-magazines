@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+Software
+</p>
+<p>
+If the unit has been built according to the circuit diagram
+you will find that it is addressable at ports 64 to 79 (don&rsquo;t
+forget to switch to external port addressing). I enclose 2
+demonstration programs written in Microsoft 80. The first is
+called to initialise the clock. Lines 100-190 input the date and
+time, and control the validity. Line 230 sets all bits of
+register 14 to 0 thus stopping the clock. Lines 220-380 set up
+the date and time in registers R4-R13. Note, I don&rsquo;t use
+register 10, day of the week. Lines 330-370 set up the correct
+value for the Leap year. Note, the astuce for detecting the year
+on a 0 to S basis in line 330.
+</p>
+<p>
+O=Leap year therefore set register 13 to
+</p>
+<p>
+a
+1 &ldquo;4d &rdquo; * . 13 to 4
+2&rdquo; &ldquo;42 " &rdquo; 13 to 2
+=&rdquo; was " &ldquo; 13 tot
+</p>
+<p>
+Finally, when all registers have been initialised, it
+remains to start the clock by sending a 1 to register 14.
+</p>
+<p>
+The second program is a demonstration of how the clock can
+be read, once set up. Lines 520, 530 and 560 read data from the
+11 registers, starting at register 2 (seconds (units)). Line 540
+checks if data read is valid ie. that a value was present at the
+Data Bus during the address period. Line 550 leaves the BCD
+value. Lines 580-440 are just one example of displaying the date
+and time.
+</p>
+<p>
+Conclusion
+</p>
+<p>
+As you will no doubt appreciate, there are many possible
+uses for this clock, from simple time telling, although it does
+make rather an expensive clock, to sophisticated timing
+requirements in the case of automatic control functions. What
+ever your choice, you will always have the time
+</p>
+<p>
+BD fo aa
+</p>
+<p>
+1
+1
+|
+|
+|
+</p>
+<p>
+1 1
+[aM Only
+</p>
+<p>
+pe pl 32 p3
+</p>
+<?php columnEnd(1); ?>

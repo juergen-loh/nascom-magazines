@@ -1,0 +1,46 @@
+<?php columnStart(1); ?>
+<p>
+The NMI &lsquo;Break&rsquo; can only be used with NASBUG T4 and
+B-BUG. This should be made on a small piece of veroboard
+and mounted somewhere appropriate. To connect
+it, a wire should be run from pin 8 of IC42 (under the
+board)to the input of the circuit. The CPU should be
+lifted from the board and pin 17 carefully bent out
+horizontal, the CPU may then be replaced. The output of
+the circuit is connected to pin 17 of the CPU, using a
+&lsquo;Soldercon&rsquo; pin. DO NOT SOLDER TO THE CPU.
+</p>
+<?php columnStart(3); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-04-1.png"); ?>
+<?php columnChange(3); ?>
+<?php columnChange(3); ?>
+<p>
+Fig 1. &ldquo;Snow Plough&rdquo;
+</p>
+<?php columnEnd(3); ?>
+<?php columnStart(23); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-04-2.png"); ?>
+<?php columnChange(3); ?>
+<p>
+Fig 2. &ldquo;NMI Break&rdquo;
+</p>
+<?php columnEnd(2); ?>
+<h1 id="article1">
+SOFTWARE HINTS
+</h1>
+<p>
+1. Suppose you want to compare HL with DE, without changing
+the contents of either register.
+</p>
+<p>
+Try this:
+</p>
+<pre>
+B7              OR A
+ED 52           SBC HL, DE
+19              ADD HL, DE
+</pre>
+<p style="text-align: right">
+/ .. ..
+</p>
+<?php columnEnd(1); ?>

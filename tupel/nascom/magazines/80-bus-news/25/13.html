@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+13
+</p>
+<p>
+Language Time
+Pascal/MT+ (V5.5) normal : 36.7 secs
+*Pascal/MT+ (V5.5) &ndash; Am9511: 7.42 secs Am9511 support
+Compas Pascal (V1.06) : 57.4 secs
+Hisoft Pascal (V5) : 6.39 secs Am9511 support
+</p>
+<p>
+* Am9511 library routines are already available on the Pascal/MT disc
+Fig 3 &ndash; PCW BM8 timings (4MHz Z80)
+</p>
+<p>
+Using the HSA-88B with other languages.
+</p>
+<p>
+I decided it would be instructive to try to use the processor from
+another language. My current language is C in the form of the C/80 compiler
+from the Software Toolworks (highly recommended). The version I run does not
+support floating point numbers, but then as I don&rsquo;t use them I find this no
+loss. A few moments thought showed that it would be very easy to add support
+for the arithmetic processor with this compiler, (in fact I first tried the
+poard out with a simple C program), but I decided that it would be more
+instructive to try to add support to something like the ubiquitous Microsoft
+Basic80.
+</p>
+<p>
+The benchmark above indicated that the Microsoft interpreter and its
+companion compiler use the same arithmetic subroutines, and as the benchmark
+for the compiler was only&nbsp;.20% faster than the interpreter I decided to use the
+interpreter rather than tackle the run-time routines of the compiler.
+</p>
+<p>
+The easiest (although slightly clumsy) way to interface the card would be
+by the USR or CALL interface, but I decided to try to patch the interpreter
+directly. On turning up appendix C of the MBasic manual I encountered problem
+number one. The two floating formats are not identical (see below). However
+they are basically similar, so it is not out of the question to interface the
+HSA-88B to the interpreter.
+</p>
+<p>
+Am9511 format MBASIC single precision
+The mantissa is expressed as a 24- The mantissa is expressed as a 24-
+pit (fractional) value; the bit (fractional) value with the
+exponent is expressed as an un- leading 1 suppressed (implied) and
+biased two&rsquo;s complement 7-bit value the binary point is to the left of
+having a range of -64 to +63. The the most significant bit; the
+most significant bit is the sign of exponent is expressed as a biased
+the mantissa (0=positive, 8-bit number having a bias of 128.
+1=negative), for a total of 32 The sign of the mantissa is in bit
+pits. The binary point is assumed 23 (O=positive, 1=negative).
+to be to the left of the most The number zero is represented by
+significant mantissa bit (bit 23). a number with an exponent of 0.
+</p>
+<p>
+All floating-point data values must
+</p>
+<p>
+&lsquo; be normalised. Bit 23 must be equal
+</p>
+<p>
+to 1, expect for the value zero,
+which is represented by all zeros.
+</p>
+<p>
+The two are similar, and re-arranging a few of the bits can get them to
+line up, but the only problem is that the Microsoft exponent range is +127 to
+-127, as opposed to the -64 to +63 of the Am9511. As this was just an
+exploratory hack, I took the easy way out and ignored this!
+</p>
+<?php columnEnd(1); ?>

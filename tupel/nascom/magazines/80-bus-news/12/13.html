@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+13
+</p>
+<p>
+bit-slice processors, but I am still reading about them. It remains to be seen
+whether they too are ruled out by their cost, of course. All this extra hardware is
+still at the &ldquo;thinking about it&rdquo; stage, and should really wait until some minor
+speed problems on some of my other boards have been fixed. Recommended reading, if
+you are at all interested in either sixteen bit hardware or bit-slices, is &ldquo;Modern
+Microprocessor System Design&rdquo; by Daniel R. McGlynn, published by Wiley-Interscience
+and not cheap! Of course, in the event of boards with extra processors appearing,
+someone will need to write the software to coordinate the tasks they are each
+</p>
+<p>
+running...
+</p>
+<p>
+Something useful (at last!) for CP/M hackers.
+</p>
+<p>
+&lsquo;me mm vs sy ty ce seem hm et hit iy sa te a te&lsquo; me tw se Sik ey mi emt Ws
+</p>
+<p>
+The subroutine below is one that I have found very useful in programs that
+send a lot of text to the screen. The usual output routine sends all text up to the
+delimiter, which is a dollar sign, direct to the screen, without any regard to what
+is happening to the words at the end of each line. It is, of course, possible to
+write your program in such a way that all the output fits the screen nicely. It also
+happens to be boring work to do this, and the program will be no good at all on a
+system with a different screen width. The routine that follows will output the
+contents of a text buffer of any length, which is terminated with a 00 byte, without
+breaking any words. The text must not contain new line characters, or the output
+will be somewhat bizarre, to say the least.
+</p>
+<p>
+SYSTEM EQU &pound;0005
+PRTBUF EQU &pound;09
+</p>
+<p>
+WIDTH EQU 48 :Or 80, or whatever it is.
+LF EQU &pound;0A sLine feed character.
+CR EQU &pound;0D ;Carriage return character.
+</p>
+<p>
+SPACE EQU &pound;20
+DOLLAR EQU &pound;24
+</p>
+<p>
+OUTPUT LD HL OUTBUF ;Point to the start of the text.
+ouTPO2 LD D E :Set CP/M&rsquo;s text pointer.
+LD E L
+LD B WIDTH ;Set B to screen width given.
+ouTPO4 LD A (HL) ;Get a character from the text.
+OR A :Test for end of text.
+JR NZ OUTPOS ;Jump if it is not.
+OUTPO6 PUSH HL s;Save the text pointer.
+CALL OUTP40 ;Call subroutine to output one line.
+POP HL ;Get text pointer back.
+&ndash; LD (HL) &pound;00 ;Remove dollar sign inserted by OUTP40.
+RET sReturn to caller.
+oUTPO8 INC HL ;Advance lookahead pointer.
+DINZ OUTPO4 ;Loop until looked 1 line ahead.
+LD OA (HL) ;Check for terminator after line.
+OR A
+JR Z OUTPOG ;Jump if it is.
+OUTPIO LD A (HL) ;Read a byte of text.
+cP SPACE ;Suitable place for end of line?
+JR Z OUTP14 ;Jump if it is.
+DEC HL :Move pointer left.
+INC B sIf this not done, no CR LF needed.
+JR OUTP10 ;Loop round to find space.
+OUTP14 CALL OUTP16 ;Prints the line so far.
+LD (HL) SPACE ;Repair damage!
+INC HL s;Advance pointer to next word.
+JR OUTPO2 s;Loop until all text printed.
+OUTP40 PUSH BC ;Save CR LF flag which is in B.
+</p>
+<p>
+LD (HL) DOLLAR ;Insert a CP/M print terminator.
+LD Cc PRTBUF ;CP/M routine number.
+</p>
+<?php columnEnd(1); ?>

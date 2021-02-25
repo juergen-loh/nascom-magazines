@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p style="text-align: center">
+NOTHING!!!
+</p>
+<p>
+After much checking with a cheap multimeter, I discovered that the
+RESET line was low, ie: active. Tracing it back, it appeared that IC12a
+was misbehaving. In fact it was a dud. A replacement chip cleared the
+fault.
+</p>
+<p>
+From here on everthing went smoothly. The memory board was
+built and connected to the buss. Everything else worked first time.
+</p>
+<h2>
+Other Points of Interest
+</h2>
+<p>
+1) The graphics chip which the documentation says should be there
+seems to be an optional extra.
+</p>
+<p>
+2) The Basic chip needs a wait state to run properly, Nascom don&rsquo;t
+say anything about that in their advertising. So what the ads mean is
+that although the Nascom&nbsp;2 runs at 4 MHz, the Basic doesn&rsquo;t. (With the
+wait state, the BASIC averages 1.8 times the speed at 2 MHz without the
+wait state, Ed.)
+</p>
+<p>
+3) The numbering of PL/2/3/4 appears to be as follows, and not what
+you would expect:
+</p>
+<table class="text-align-center-10" style="margin: auto">
+<tr><td>15</td><td>13</td><td>11</td><td>9</td><td>7</td><td>5</td><td>3</td><td>1</td></tr>
+<tr><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td></tr>
+<tr><td colspan=8><br></td></tr>
+<tr><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td><td>.</td></tr>
+<tr><td>16</td><td>14</td><td>12</td><td>10</td><td>8</td><td>6</td><td>4</td><td>2</td></tr>
+</table>
+<p>
+It follows the colours of the ribbon cables, but it doesn&rsquo;t say so.
+</p>
+<p>
+4) R43 is missing from the drawing in the base of TR3
+</p>
+<p>
+5) My cassette interface would not work unless the variable resistor
+was adjusted such that the wiper gave 0 volts.
+</p>
+<p>
+6) The Veroboard tends to buckle in the middle when the edge
+connectors are being soldered.
+</p>
+<p>
+Now for a quick mod.
+</p>
+<p>
+For those of you with Nascom&nbsp;2 who want to run programs from
+Nascom&nbsp;1, the NASBUG monitors may be fitted on the extension memory
+card in location 0 (&amp; 1 for 2K monitors). Connect pin 16 of LSK1 to P5
+on the memory card instead of pin 1 on LSK1. To give quick conversion,
+use a single pole double throw switch as follows:
+</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-14-1.png"); ?>
+<p>
+To switch without ruining anything in memory, execute a &lsquo;HALT&rsquo;
+instruction before changing monitors, and use &lsquo;RESET&rsquo; to recover
+control.
+</p>
+<?php columnEnd(1); ?>

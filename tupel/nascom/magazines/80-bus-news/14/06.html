@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+Doctor Dark&rsquo;s Diary &ndash; Episode 13. Pascal Episode.
+</p>
+<p>
+Well, the new batch of home brew is just about drinkable, so I had
+better get on with this, before the rot sets in...
+</p>
+<p>
+Let&rsquo;s kick off with the &ldquo;Rory is right&rdquo; section. He said that
+P.J.Brown&rsquo;s new book, &ldquo;Pascal from BASIC&rdquo; should be Computer Book of the year,
+and I agree wholeheartedly. If you have been putting off learning Pascal because
+</p>
+<p>
+you didn&rsquo;t like the look of the text books that were available, you now have no
+</p>
+<p>
+excuse. I have found a mistake as well, however, on page 100. The equation for
+the addition of two complex numbers should read:&ndash;
+</p>
+<p>
+(a,b) + (c,d) = (ate, btd)
+but this is a minor quibble, and anyway the Pascal procedure to do the job is
+correct, so perhaps we were being tested to see if we were paying attention...
+</p>
+<p>
+Free procedure number 1.
+</p>
+<p>
+Yet another version of my favourite way of clearing the screen, which I
+have now implemented in four different languages, or was it five? Anyway, here
+is that old chestnut, the spiral screen wipe, yet again...
+</p>
+<p>
+PROCEDURE spiral(col : colour);
+VAR
+lox, hix, loy, hiy, i, j : integer;
+BEGIN
+{Set the size of the first box to be drawn.
+lox := 0; hix := 95; loy := 0; hiy := 44
+REPEAT
+{Draw a box one pixel wide round the screen. }
+BEGIN
+{Line along the top of the screen. }
+FOR i := lox TO hix DO
+BEGIN
+GRAPH(col,i,loy);
+{This line gives a short delay each time it appears.
+There is no reason why it should not itself be a procedure. }
+FOR j := 1 TO 10 DO BEGIN END
+END;
+{Line down the right hand side of the screen. }
+FOR i := loy+1 TO hiy DO
+BEGIN
+GRAPH(col,hix,i);
+FOR j := 1 TO 10 DO BEGIN END
+END; .
+{Line backwards across the bottom of the screen. }
+FOR i := hix-1 DOWNTO lox DO
+</p>
+<p>
+BEGIN
+</p>
+<p>
+GRAPH(col,i,hiy);
+</p>
+<p>
+FOR j := 1 TO 10 DO BEGIN END
+END;
+</p>
+<p>
+{Upwards line on the left of the screen. }
+FOR i := hiy-1 DOWNTO loyt+i DO
+BEGIN
+GRAPH(col,lox,i);
+FOR j:= 1 TO 10 DO BEGIN END
+END;
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

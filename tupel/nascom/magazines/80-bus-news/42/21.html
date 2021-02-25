@@ -1,0 +1,147 @@
+<?php columnStart(2, 2); ?>
+<p>
+later, so my first library file was made up of the bits
+of LU, including the documentation. No I didn&rsquo;t
+then erase LU from the system disk, it stayed there
+until I wanted to use it, then the problem. The
+documentation was in the library, and I couldn&rsquo;t
+remember the syntax to make it work. After about
+half an hour trying all the tricks I could think of that
+wouldn&rsquo;t take too long, (including trying to load the
+library into a debugger but it was too big) I resorted
+to phoneing Richard who promptly reminded me
+that all commands are prefixed with a &lsquo;-&rsquo;. That
+solved the problem and away I went.
+</p>
+<p>
+The documentation for LU is &lsquo;something else&rsquo;. It&rsquo;s
+32K long, and if you reckon I go ona bit, you should
+try reading the LU documentation! I think the
+command summary should take up about half a
+page, after all there are only 9 simple commands.
+And perhaps another page of warnings, tricks, etc.
+That&rsquo;s about 4K at best. I can&rsquo;t say I&rsquo;ve read all the
+guff that came with LU, so perhaps I&rsquo;ve missed the
+one vital command which gives you a list of
+commands from inside the program, but I doubt if
+there is one.
+</p>
+<p>
+To give an idea of space saving with LU, take my
+dBASE master disks, there&rsquo;s five in all and tot up to
+about 900K (allocated on 4K blocks). Squeeze all
+that lot using SOQ or SWEEP brings it down to about
+700K. Then shove the squeezed file into a library,
+the library ended up at about 330K. In fact I got the
+whole of dBASE 2.41 and dBASE 2.43 on to the
+same disk with room to spare. So the space saving
+with LU was quite fantastic.
+</p>
+<p>
+The other problem LU cures is getting things mixed
+up. Lots of different suites of programs have a
+program call INSTALL (or other similarly named
+files). Try running the wrong install on a program,
+and brother, have you got problems. Previously I
+kept different suites of programs on different disk
+user areas, but this still wasted space. With LU, all
+the different parts of a suite of programs are all
+&ldquo;tucked away in one file and can&rsquo;t get lost or mixed
+up.
+</p>
+<h2>
+VIRUS
+</h2>
+<p>
+Back to the wasted space at the end of a block ina
+CP/M directory, someone came up with a real lulu
+of an evil idea. I don&rsquo;t know how far he went with
+the idea, for all I know, it might be out there lurking,
+but it should have been {or will be} a real block
+buster if it&rsquo;s ever done.
+</p>
+<p>
+The program was to be called VIRUS, and like a
+virus, it was to be self propagating and infect the
+world silently until the symptoms struck an
+unsuspecting world computer population almost at
+once. The idea goes something like this:
+</p>
+<p>
+VIRUS is introduced into an executable file by the
+perpetrator of the crime, and that file is given to
+someone else. The next time that program is
+executed, the program loads into the TPA as usual,
+but before the program executes, VIRUS executes
+first, because the start jump of the program has
+been changed to VIRUS instead of the program.
+VIRUS throws a random number and goes and gets
+a directory entry from the unsuspecting persons
+disk. VIRUS then checks four things, first that the
+directory entry is a&nbsp;.COM file, secondly it has a start
+jump (most CP/M programs have, and if it has
+VIRUS saves it), third, that there is space at the end
+of the last block for VIRUS to lurk (could be difficult
+that, but a clever programmer could probably crack
+it), and fourth, VIRUS is not already resident in that
+space.
+</p>
+<p>
+Given that all four conditions are satisfied, VIRUS
+copies itself into the wasted space at the end of the
+last block using the CP/M 2.2 random access
+ability, changes the start jump to itself and changes
+its exit jump to the jump at the start of the program
+so the program will execute after VIRUS. One last
+thing. In copying itself, it decrements an internal
+counter by one.
+</p>
+<p>
+Get the idea, VIRUS has now infected another
+program. Next time either that program or the
+previous program is executed, VIRUS will infect
+another program and so on. The infection process
+would only take a few tenths of a second, and the
+user would be totally unaware of what was
+happening. So the guy with infected disks gives a
+copy of some program to another person, who also
+catches VIRUS, who in turn passes it to someone
+else. All the time the counters are decrementing.
+</p>
+<p>
+When the counters get to zero, the program refuses
+to run and up pops a message:
+</p>
+<pre>
+YOUR PROGRAM HAS VIRUS.  SEND  &pound;5.00 to
+P.O. BOX 1 BRIGHTON FOR DECONTAMINATION PROGRAM!
+</pre>
+<p>
+If the counters were set to a fairly large number,
+and VIRUS were introduced into the right places,
+like NASTUG and the Merseyside Users Group, the
+natural process of swapping disks between folks
+could go on for some considerable time before the
+symptoms break. Exit our hero with a small fortune
+and a lot of angry guys on his tail. Angry guys? Yes
+probably, as VIRUS would have infected proprietory
+programs as well as rip-offs. And as for chasing
+him, well I&rsquo;ll be one jump ahead of the pack, &lsquo;cos I
+know whose idea it was in the first place. Nice
+thought though.
+</p>
+<h2>
+The Gemini GM870 MODEM
+</h2>
+<p>
+They&rsquo;ve arrived at last. The Gemini GM870 MODEM
+cards that is. What a delight, both for me and
+BT. Me because I&rsquo;d been waiting for one for some
+time, and BT because my usually frugal phone bill
+has been taking a walloping.
+</p>
+<p>
+So what do you get? An all &lsquo;bells and whistles&rsquo;
+auto-dial, auto-answer MODEM all on one card
+</p>
+<?php columnEnd(2); ?>

@@ -1,0 +1,86 @@
+<?php columnStart(1); ?>
+<p>
+42
+</p>
+<p>
+The relevant parts of the 1797 data sheet are the boxes READ ENABLE TIMING on page
+19, and WRITE ENABLE TIMING on page 20. Each contains a footnote in minute print in
+the bottom left-hand corner &ndash; there is a &ldquo;worst case service time&rdquo;. The data may be
+coming at the nominal rate of one byte every 16us, but when reading, the byte must
+be read within 13.5us (54 T states) of the DRQ signal appearing, and when writing,
+the next byte must be supplied within 11.5us (46 T states) of the DRQ request &ndash;
+which is even worse! The code developed above does not meet these figures, so how
+can it be compressed further?
+</p>
+<p>
+Fortunately there is a way out of this dilema. It utilises one of the facets of the
+unique Z80 instructions, and is catered for in the hardware of GM809. You may have
+wondered why the additional Status port is provided (at E4h) through which the DRQ
+and IRQ bits can be checked, when the same bits can be accessed through the
+internal status register of the 1797. Looking further at the circuit diagram will
+reveal that, as well as DRQ and IRQ being connected to the external input port,
+there is a connection to the &ldquo;Motor on&rdquo; monostable, (which should present a &lsquo;O&rsquo;
+during normal disk I/O), and that the remaining lines are connected to OV. Turning
+to the I/O instructions in the Z80 data sheets it can be seen that while the 8080
+compatible IN A,(n) does not affect any of the bits in the flag register, the extra
+Z80 instructions &ndash; IN r,(C) where the port address is held in register C &ndash; does-set
+the flags as a result of this operation. So if one of these instructions is used,
+the &ldquo;Input and Test&rdquo; operation can be completed in one go, and a very tight polling
+loop will result. However note that this can only be done if the &ldquo;Wait&rdquo; condition
+sets the flags suitably &ndash; this is why it is necessary to use a special port for the
+DRQ and IRQ inputs, as the internal Status register of the 1797 contains a variety
+of other bits which would prevent this happening. Adding the &ldquo;Motor on&rdquo; signal to
+the same port ensures that, if for some reason neither IRQ or DRQ occur, then the
+loop will be broken when the &ldquo;Motor on&rdquo; monostable finally times out.
+</p>
+<p>
+The revised code for Read and Write now looks like this:
+</p>
+<p>
+3 Y*XEe* Write Section *#*#**
+</p>
+<p>
+eezreaeove
+</p>
+<p>
+ld c, status 3; &copy; -&gt; Special Status port
+write: 1d a, (hl) ; Get the next byte ready
+ine hl
+wwait: in b,(c) ; Input and test
+jr Z,wwait ; Loop if no request
+out (data$reg),a ; Send the byte (in case was a DRQ)
+ap m,write ; Carry on if it was a DRQ
+,
+</p>
+<p>
+IRQ or timeout exit
+</p>
+<p>
+; RREREX Road Section ******
+</p>
+<p>
+ee eeeans
+</p>
+<p>
+id c,status 3 C --&gt; Special Status port
+jr rwait ; Enter the routine
+read: in a, (data$reg) ; Get the byte
+1d (hl) ,a ; Put in memory buffer
+ine hl
+rwait: in a,(c) 3; Input &amp; test
+jr Z,rwait 3; Loop if no request
+Jp m, read ; Jump on DRQ
+#
+</p>
+<p>
+ee eeees TRQ or timeout exit
+</p>
+<p>
+Note that in the WRITE section a byte is pre-fetched and output immediately in
+response to the Status byte being non-zero. This ensures that the worst case
+service time of 11.5us is met, and the final (and extra) byte output this way (on
+the IRQ) will be ignored by the 1797 and so does not matter. However if it is
+intended to use the value of HL on return from the Write routine for any reason
+this point should be remembered.
+</p>
+<?php columnEnd(1); ?>

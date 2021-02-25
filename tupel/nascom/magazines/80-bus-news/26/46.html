@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+46
+</p>
+<p>
+The suggestion made to Richard was to try adding diodes to do this, but
+the same effect can be acheived by using an open-collector AND gate (e.g.
+74L809), or even an open-collector buffer (e.g. 7417). The input(s) to the
+gate(s) are connected to the drive select lines that do not provide a ready
+line, and the output(s) are connected to the Ready line (see fig 3). So, as
+soon as a drive select line connected to one of these added gates goes low,
+the Ready line is also pulled low. N.B. The gate used must be an open-collector
+gate, otherwise it will interfere with the 8" drive when it attempts
+to drive the ready line. In the approach suggested to Richard the diodes
+provide the required isolation, but as they are passive devices there may be
+problems with voltage drops across various components (as he discovered). The
+7TALSO9 approach avoids this.
+</p>
+<p>
+How to find your feet on a Nascom&nbsp;2
+</p>
+<p>
+A letter from Mr Mathison of West Germany has brought the N2 out again.
+He&rsquo;s been chasing the feet of the little men in the N2 character generator,
+put, despite following the suggestions published recently, has had no success. &ndash;
+I&rsquo;ll start by describing the action of the N2 video circuitry before running
+through the solutions. That way any of you who attempt the modifications
+should have some idea of what you&rsquo;re up to. You will need a copy of the N2
+circuit diagram if you want to follow the description below.
+</p>
+<p>
+How it works
+</p>
+<p>
+A 1MHz character clock emerges from 1049/13 (IC43 pin 13). This is
+divided down in the six-bit counter formed by IC51/IC52. The outputs of the
+six-bit counter form the address of a character within a display line, and
+address the video RAM via multiplexors IC62/IC63. The address is also decoded
+by IC55/IC60 to provide the blanking signal that frames the active 48
+characters of the display, out of the total of the 64 characters that make up
+a line. (Remember that the Nascom video RAM has 16 unused characters between
+the end of one display line and the start of the next one). The output of
+IC52/13 triggers the monostable IC57 to provide the horizontal sync pulse, and
+also clocks the four-bit counter IC53, whose outputs form the &lsquo;row address&rsquo; to
+the character generator. The character generator ROM address lines are also
+decoded by IC44c which, when the 625 line option is selected, resets the row
+address counter to zero everytime row 14 is reached. Thus only rows 0-13 of
+the character generator are displayed. Every time 1053/11 returns to 0, the
+five-bit counter formed by IC68/IC13b is clocked. The outputs of IC68 address
+the video ram via multiplexor IC64 and form the &lsquo;character line&rsquo; address.
+Finally the IC68/1C13b counter is decoded in the N2V PROM (1C59). There are
+two outputs from this PROM, D1 provides the vertical blanking signal, and the
+DO output is used to trigger the vertical sync signal (from IC57) and preset
+the five-bit counter IC68/IC13b to 11. (Check the hardwired inputs on IC68 to
+confirm this). The contents of the N2V PROM can be found in the Nascom&nbsp;2
+documentation, and from the listing you should be able to deduce the
+following, starting at the point where TC68/IC13b is reset to 11...
+</p>
+<p>
+Counter Action
+</p>
+<p>
+11-14 Display is blanked.
+</p>
+<p>
+15-30 Display is unblanked. Display lines go 15,0,1,2, 3-013, 14.
+34 Display is blanked again
+</p>
+<p>
+0 Display is blanked. (Counter wraps round to 0).
+</p>
+<p>
+1 Vertical sync triggered &amp; counter immediately reset to 11.
+</p>
+<?php columnEnd(1); ?>

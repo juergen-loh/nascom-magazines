@@ -1,0 +1,59 @@
+<?php columnStart(6); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-12-1.png"); ?>
+</h1>
+<?php columnChange(36); ?>
+<h3>
+EXPAND YOUR RAM A TO 64K
+</h3>
+<?php columnChange(26); ?>
+<h3 class="author">
+by Alberto di Bene, Italy
+</h3>
+<?php columnEnd(6); ?>
+<?php columnStart(1); ?>
+<p>
+I would like to take this opportunity of writing to you, to describe a
+modification I made on the memory board (the old type, RAM A) of my Nascom&nbsp;2,
+to push it to the heights of 64K.
+</p>
+<p>
+An article about this subject has already seen the light in INMC80-3,
+but the expansion was limited to 48K, and as I am planning to connect an IBM
+floppy disk drive 53FD (8" double density, dual side, 1.2 Mbytes!) to the
+Nascom, I needed a full address space, to be able to run a fully fledged CP/M.
+The mods I have made to Mr. Fisher&rsquo;s circuit are mainly concerned with the
+generation of the second additional RAS signal, and with ORing it with the
+previous one, in order to achieve correct enabling of the output buffer. The
+IC count has thus increased to three, which is still an acceptable figure.
+</p>
+<p>
+The step-by-step instructions given by Mr Fisher are still valid, you
+just have an additional address select pad, let&rsquo;s call it P98, and an
+additional RAS (RAS4) which must be connected to the fourth row of 4116&rsquo;s
+piggy-backed on top of ICs 4-11. As already stated in the aforementioned
+article, you must not connect pin 4 of the top 4116s in parallel with pin 4 of
+the ICs below. Instead all pin 4s of the fourth row of 4116s must be wired in
+parallel and then to RAS4.
+</p>
+<p>
+The circuit has been in operation on my Nascom&nbsp;2 for a couple of
+months and has passed all sort of memory tests, op-code fetch included, with
+flying colours, running at 4 MHz without wait states.
+</p>
+<p>
+Should someone be concerned with the problem of where to put in the
+address space of the NAS-SYS monitor, the 8k BASIC and the video-refresh RAM&nbsp;,
+having already 64K on the expansion board, well, this is a false problem...
+</p>
+<p>
+In fact, the RAM board covers the full 64K address space, and the
+various ROMs and the video RAM are simply overlaid on it, thanks to the
+existence of the RAM-DIS signal on the NASBUS, which give precedence to memory
+on the CPU card. So when I&rsquo;m ready for CP/M I&rsquo;ll just have to substitute the
+N2MD PROM on the CPU card with a new one, suitably programmed, and the now
+masked RAM will suddenly appear starting from address 0. Simple, isn&rsquo;t it?
+</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-12-2.png"); ?>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

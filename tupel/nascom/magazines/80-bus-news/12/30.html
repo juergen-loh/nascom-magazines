@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+30
+</p>
+<p>
+number of spaces, these are contained in a message and displayed in the normal way
+through SNDTXT. Now to display the word, this is done in a similar fashion to the one
+already described in LOOP4. The only difference is that each character is tested to
+see if it is flagged. Bach flagged character is &lsquo;visible&rsquo; so it is ANDed with 7FH to
+strip the flag and then displayed directly, each unflagged character is replaced by a
+&lsquo;.&rsquo; which is displayed instead. A space is placed between each character. When OO is
+detected, the loop cops out in the normal way, and a call made CRLF2 to send two
+newlines. After that the program jumps back to LOOP3 to start the whole process again.
+</p>
+<p>
+Well that just about wraps up that program, with the above comments and _ the
+liberal sprinkling of comments all over the program itself, you should be able to
+follow it. Now to improvements, well obviously if you have an assembler you can
+reassemble the whole thing into it&rsquo;s right places for either NAS or CP/M versions. If
+you&rsquo;re going to have a go at the NAS version, then might I suggest that you put the
+ORG at 1000H as you could unwittingly end up with problems if you extended the words
+table from its current end at 0FFCH. You see, NAS-SYS corrupts the bytes 0FFEH and
+0FFFH during its &lsquo;E&rsquo;xecute procedure as it uses them as intermediate stack space, so
+if you had data in those two bytes then some funny things could happen. There is no
+easy way of making the program avoid those bytes so best to reassemble the whole-lot
+above it. If you&rsquo;ve got an assembler it implies that you aren&rsquo;t stuck for RAM space,
+so what the odds. The words table may be extended to 255 words (the largest random
+number that can be generated), make sure NOWRDS contains a count of how many words
+there actually are. There is scope for tidying up the displays although the method
+used here was chosen so I didn&rsquo;t have complications with the output routine. In fact
+it was deliberately made a simple as possible. I remember my handwritten version kept
+the screen in one place and didn&rsquo;t scroll. It achieved this by moving the cursor about
+and overwriting the text for each successive turn round the loop. There is one version
+in Basic I&rsquo;ve seen which incorporates some spectacularly gruesome graphics, complete
+with swinging man and stretchy rope. Lot&rsquo;s more fun to do in assembler. People
+reassembling this for a NAS regime could save quite a bit of space by dispensing with
+the input/output patches and calling B2HEX direct from NAS-SYS. As should be apparent
+B2HEX had to be included in the program as there is no CP/M equivalent within the
+system.
+</p>
+<p>
+IT hope that you&rsquo;ve noticed that by feeding all input and output through simple
+user patch areas this program could be made to work with very little modification on
+almost any Z80 based machine. It could also be modified fairly easily to run an any
+8080 based machine simply by substituting absolute jumps for the relative jumps I&rsquo;ve
+used (and modifying the one or two DJNZ loops used). This technique of providing user
+patches is going to play an ever more important part in programs published in this mag
+due to the diversity of machines we intend to support in future. So if you are
+thinking of writing a program for inclusion in the library then keep in mind that
+flexibility is the name of the game, and user patches will become very useful.
+</p>
+<p>
+Note that the RANDOM routine works completely stand alone, all it needs is its
+three byte work space and to be fed with the maximum number to pick. I&rsquo;m told this
+particular routine is very nicely random, quite a bit better than the ones found in a
+good many Basics.
+</p>
+<p>
+So here endeth the lesson, as I said, I haven&rsquo;t tried it under a NAS regime,
+but it should work. I know it works under CP/M, and as it only uses two system calls
+it has no excuse for failing under RP/M. The 3K waste space penalty is &lsquo;a nothing&rsquo;
+when used with disks, for the RP/M tape types, sorry, but it takes about 45 seconds to
+load when it should only take 4 or 5. I hope you will have a go at it, and that it
+gives you as much fun getting it to work as it gave me in writing it.
+</p>
+<?php columnEnd(1); ?>

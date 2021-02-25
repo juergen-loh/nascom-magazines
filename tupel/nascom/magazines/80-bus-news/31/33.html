@@ -1,0 +1,111 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    73</span>
+
+F61E 68         BNORM:  LD      L,B             ; L = Exponent
+F61F 63                 LD      H,E             ; H = LSB
+F620 AF                 XOR     A
+F621 47         BNRMLP: LD      B,A             ; Save bit count
+F622 79                 LD      A,C             ; Get MSB
+F623 B7                 OR      A               ; Is it zero?
+F624 C240F6             JP      NZ,PNORM        ; No - Do it bit at a time
+F627 4A                 LD      C,D             ; MSB = NMSB
+F628 54                 LD      D,H             ; NMSB= LSB
+F629 65                 LD      H,L             ; LSB = VLSB
+F62A 6F                 LD      L,A             ; VLSB= 0
+F62B 78                 LD      A,B             ; Get exponent
+F62C D608               SUB     8               ; Count 8 bits
+F62E FEE0               CP      -24-8           ; Was number zero?
+F630 C221F6             JP      NZ,BNRMLP       ; No - Keep normalising
+F633 AF         RESZER: XOR     A               ; Result is zero
+F634 32E710     SAVEXP: LD      (FPEXP),A       ; Save result as zero
+F637 C9                 RET
+
+F638 05         NORMAL: DEC     B               ; Count bits
+F639 29                 ADD     HL,HL           ; Shift HL left
+F63A 7A                 LD      A,D             ; Get NMSB
+F63B 17                 RLA                     ; Shift left with last bit
+F63C 57                 LD      D,A             ; Save NMSB
+F63D 79                 LD      A,C             ; Get MSB
+F63E 8F                 ADC     A,A             ; Shift left with last bit
+F63F 4F                 LD      C,A             ; Save MSB
+F640 F238F6     PNORM:  JP      P,NORMAL        ; Not done - Keep going
+F643 78                 LD      A,B             ; Number of bits shifted
+F644 5C                 LD      E,H             ; Save HL in EB
+F645 45                 LD      B,L
+F646 B7                 OR      A               ; Any shifting done?
+F647 CA53F6             JP      Z,RONDUP        ; No - Round it up
+F64A 21E710             LD      HL,FPEXP        ; Point to exponent
+F64D 86                 ADD     A,(HL)          ; Add shifted bits
+F64E 77                 LD      (HL),A          ; Re-save exponent
+F64F D233F6             JP      NC,RESZER       ; Underflow - Result is zero
+F652 C8                 RET     Z               ; Result is zero
+F653 78         RONDUP: LD      A,B             ; Get VLSB of number
+F654 21E710     RONDB:  LD      HL,FPEXP        ; Point to exponent
+F657 B7                 OR      A               ; Any rounding?
+F658 FC65F6             CALL    M,FPROND        ; Yes - Round number up
+F65B 46                 LD      B,(HL)          ; B = Exponent
+F65C 23                 INC     HL
+F65D 7E                 LD      A,(HL)          ; Get sign of result
+F65E E680               AND     10000000B       ; Only bit 7 needed
+F660 A9                 XOR     C               ; Set correct sign
+F661 4F                 LD      C,A             ; Save correct sign in number
+F662 C354F8             JP      FPBCDE          ; Move BCDE to FPREG
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    74</span>
+
+F665 1C         FPROND: INC     E               ; Round LSB
+F666 C0                 RET     NZ              ; Return if ok
+F667 14                 INC     D               ; Round NMSB
+F668 C0                 RET     NZ              ; Return if ok
+F669 0C                 INC     C               ; Round MSB
+F66A C0                 RET     NZ              ; Return if ok
+F66B 0E80               LD      C,80H           ; Set normal value
+F66D 34                 INC     (HL)            ; Increment exponent
+F66E C0                 RET     NZ              ; Return if ok
+F66F C3BCE3             JP      OVERR           ; Overflow error
+
+F672 7E         PLUCDE: LD      A,(HL)          ; Get LSB of FPREG
+F673 83                 ADD     A,E             ; Add LSB of BCDE
+F674 5F                 LD      E,A             ; Save LSB of BCDE
+F675 23                 INC     HL
+F676 7E                 LD      A,(HL)          ; Get NMSB of FPREG
+F677 8A                 ADC     A,D             ; Add NMSB of BCDE
+F678 57                 LD      D,A             ; Save NMSB of BCDE
+F679 23                 INC     HL
+F67A 7E                 LD      A,(HL)          ; Get MSB of FPREG
+F67B 89                 ADC     A,C             ; Add MSB of BCDE
+F67C 4F                 LD      C,A             ; Save MSB of BCDE
+F67D C9                 RET
+
+F67E 21E810     COMPL:  LD      HL,SGNRES       ; Sign of result
+F681 7E                 LD      A,(HL)          ; Get sign of result
+F682 2F                 CPL                     ; Negate it
+F683 77                 LD      (HL),A          ; Put it back
+F684 AF                 XOR     A
+F685 6F                 LD      L,A             ; Set L to zero
+F686 90                 SUB     B               ; Negate exponent,set carry
+F687 47                 LD      B,A             ; Re-save exponent
+F688 7D                 LD      A,L             ; Load zero
+F689 9B                 SBC     A,E             ; Negate LSB
+F68A 5F                 LD      E,A             ; Re-save LSB
+F68B 7D                 LD      A,L             ; Load zero
+F68C 9A                 SBC     A,D             ; Negate NMSB
+F68D 57                 LD      D,A             ; Re-save NMSB
+F68E 7D                 LD      A,L             ; Load zero
+F68F 99                 SBC     A,C             ; Negate MSB
+F690 4F                 LD      C,A             ; Re-save MSB
+F691 C9                 RET
+
+F692 0600       SCALE:  LD      B,0             ; Clear underflow
+F694 D608       SCALLP: SUB     8               ; 8 bits (a whole byte)?
+F696 DAA1F6             JP      C,SHRITE        ; No - Shift right A bits
+F699 43                 LD      B,E             ; &lt;- Shift
+F69A 5A                 LD      E,D             ; &lt;- right
+F69B 51                 LD      D,C             ; &lt;- eight
+F69C 0E00               LD      C,0             ; &lt;- bits
+F69E C394F6             JP      SCALLP          ; More bits to shift
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-42-2.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+BASIC PROGRAMS THAT RUN THEMSELVES
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Richard Beal
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+The Generate command in T4 and Nas-Sys provides an easy way of
+writing a tape which contains a machine code program. When the tape is
+fed in, the program automatically starts to execute.
+</p>
+<p>
+Mr. J. R. Hunt has kindly written to us to point out that the
+same can be done for Basic programs. It is necessary to do the
+following, once the Basic program is in memory.
+</p>
+<p>
+a) Set up an output table for cassette output as well as output to
+the display, and activate this table.
+</p>
+<p>
+b) Use the PRINT statement to output the necessary commands to tape
+which are fed back in. For example PRINT &ldquo;CLOAD&rdquo; will output the
+CLOAD instruction to tape
+</p>
+<p>
+c) Return the output table to normal.
+</p>
+
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(12); ?>
+<?php columnChange(1112); ?>
+
+<table style="width: 100%">
+<tr><td colspan=2>The idea can be extended further with a string of commands:
+<tr><td>Print &ldquo;MONITOR&rdquo; </td><td>(in case Basic is already in use &ndash; will give
+									an error message if it isn&rsquo;t)</td></tr>
+<tr><td>PRINT &ldquo;J&rdquo;       </td><td>(to run Basic)                                                                        </td></tr>
+<tr><td>PRINT                       </td><td>(reply to &lsquo;Memory size&nbsp;?&rsquo; question)                                       </td></tr>
+<tr><td>PRINT &ldquo;CLOAD&rdquo;   </td><td>(to load program)                                                                     </td></tr>
+<tr><td>CSAVE &ldquo;A&rdquo;       </td><td>(to save program to be loaded)                                                        </td></tr>
+<tr><td>PRINT &ldquo;RUN&rdquo;     </td><td>(to run the program that has been loaded).                                            </td></tr>
+</table>
+
+<?php columnEnd(12); ?>
+<br>
+<?php columnStart(1); ?>
+
+<p>
+It is necessary to insert delays between these commands to
+allow time for them to be processed when they are fed back in. The NULL
+command should be used for this. It is easiest to put all this into a
+little program at the end of the main Basic program, and run this when
+you want to create a self loading tape.
+</p>
+<p>
+Below is a listing of a complete program which will create a
+self loading copy of itself, as an example. The tape produced can be
+fed in either after switch on, or when the computer is already in
+Basic. It can be made quite small by removing all the comments.
+</p>
+<pre>
+LIST
+</pre>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-42-1.png"); ?>
+<?php columnEnd(1); ?>

@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<p>
+In setting out text on the screen or for printing there are a number of other useful
+functions in BASIC which you can use with the PRINT statement, viz.
+</p>
+<p>
+SCREEN X,Y&nbsp;. . . places the cursor on the Xth position across and Yth line down.
+</p>
+<p>
+PRINT TAB(I) . . . moves the cursor to the Ith horizontal tab position.
+</p>
+<p>
+PRINT SPC(X) . . . moves the cursor X spaces along from the current position.
+</p>
+<p>
+POS(I) . . . reurns the current position of the cursor. This is useful where the cursor
+might finish up in one of a number of different tab postions after following alternative
+routes to reach the current program line. In order to obtain a satisfactory print layout
+you could insert a line as follows:
+</p>
+<p>
+20 R=POS(I):IF R&gt;25 THEN PRINT
+</p>
+<p>
+Note (I) is only a dummy argument in this instruction, that is, because POS is a
+function, not a command, it has the format of a function, but what you put within the
+brackets is immaterial.
+</p>
+<p>
+SPACE SAVING IN PRINT STATEMENTS
+</p>
+<p>
+Since extra memory chips are so cheap these days saving space by shortening
+Basic lines has few advantages. However, it is quite often annoying to find that you
+are one or two characters in excess of 48 and therefore must have yet another line.
+You will no doubt have discovered by now that in many situations it is not necessary
+to use the second quotation mark when printing or defining strings. (e.g. [X$=&rdquo;FRED]
+is acceptable as a statement on its own or at the end of a multiple-statement line.)
+</p>
+<p>
+Now consider the following lines:
+</p>
+<p>
+20 V=99:X$=&ldquo;15th&rdquo;:Y$=&ldquo;JAN&rdquo;:Z$=&ldquo;1981
+30 PRINT&ldquo;Amount&rdquo;;V;TAB(25);&ldquo;Period &rdquo;;X$;&ldquo; &rdquo;;Y$;&ldquo; &rdquo;;Z$
+T12&lsquo;15th&rsquo; and &lsquo;JAN&rsquo; require closing quotes but &lsquo;1981 &lsquo; does not. Line 30 will not fit
+onto one screen line, and could only be entered by using direct entry of the singlebyte
+reserved words from the keyboard, using the &lsquo;GRAPHICS&rsquo; key. But several
+characters can in fact be left out since the second quotation marks can double for the
+statement separators. i.e.
+</p>
+<p>
+30 PRINT &ldquo;Amount&rdquo;V;TAB(25)&rdquo;Period &rdquo;X$&ldquo; &rdquo;Y$&ldquo; &rdquo;Z$
+</p>
+<p>
+DEEK &amp; DOKE
+</p>
+<p>
+Like PEEK &amp; POKE&nbsp;, DEEK &amp; DOKE allow you direct access to the data held in
+</p>
+<?php columnEnd(1); ?>

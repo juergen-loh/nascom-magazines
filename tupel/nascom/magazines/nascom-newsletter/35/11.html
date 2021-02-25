@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Secondary Uses for the Lucas AVC Graphics Card
+</h1>
+<h2>
+by Stan. Gent
+</h2>
+<p>
+The Lucas Advanced Video Controller provides an easily used,
+moderately high-definition colour graphics facility on the
+Nastom range of computers.
+</p>
+<p>
+However, I have seen no mention of the fact that it can also
+provide a very useful addition to the memory capacity of the
+Machine in non-graphical applications, by virtue of the fact
+that the board contains 48 kilo-bytes of dynamic RAM, arranged
+in&rsquo;3 pages of 18K each.
+</p>
+<p>
+These three pages are all located at the same address
+(normally B0@0H &ldquo;to. BFFFH, although there is provision for
+changicg this by means of Rard-wired links). Page selection is
+Via port B2, but only operates after execution of the AVC
+Control software (G32&rsquo;or G48). As the execution of G32 or G48
+Seems to require the prior initialigation of Basic, aven if all
+subsequent work is to be in machine code, it 25 also a wise
+Precaution to set the Basic memory ceiling below goveH. The
+Fesponse &ldquo;32767&rdquo; or less to the question &ldquo;Memory size?&rdquo; will
+achieve this.
+</p>
+<p>
+Sys, the keyboard command
+</p>
+<p>
+Using Nat
+pez
+</p>
+<p>
+will select page 1 (normally the red page),
+O22
+</p>
+<p>
+wi11 select page 2 (green? and
+oes
+</p>
+<p>
+will select page 3 (blue), all of which are 16K long.
+</p>
+<p>
+14 the Nascom also has its narmal RAM extending over the
+sane address area, 0 B2 0 will select the normal RAM, giving, in
+effect, a choice of 4 separate pages of {4K each, in the
+TacatiGn 8009 to BFFFH.
+</p>
+<p>
+Obviously, the page selection can also be carried out within
+a program, and it is here that the full benefit can be realised.
+Listing 1 shows one way of achieving this in machine code
+wnadsty in Basic, only a single-line instruction is required as
+</p>
+<p>
+Tn listing 2. (If using Basic, the memory ceiling limitation
+referred to earlier should not be applied.)
+</p>
+<p>
+Dont forget, of course, that if your control program is in
+the area of memory that you have just paged out, even&rdquo; a Nascom
+</p>
+<?php columnEnd(1); ?>

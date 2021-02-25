@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SNOWDINGER
+</h1>
+<h2>
+by Dougal
+</h2>
+<p>
+If you have a Nascom&nbsp;1, you will have noticed that certain processor
+activities cause a lot of on-screen disturbance patterns of apparently random
+white speckling all over the TV screen. You may, of course, have modified your
+machine by fitting the &ldquo;snow plough&rdquo; suggested in the first two issues of INMC
+news, or you may have a Nascom&nbsp;2 (or a Video Genie, an Atom, etc., &ndash; they all seem
+to have similar problems). In that case you will still notice on-screen disturbances
+in the form of short black lines chopping up the displayed information. On a mainly
+black screen this can just about be tolerated, but with any sort of graphics
+capability all that the &ldquo;snow-plough&rdquo; approach succeeds in doing is to substitute
+black &ldquo;snow&rdquo; for white.
+</p>
+<p>
+This is a great pity because a clean display is so much more satisfactory, and
+there are, in fact, several ways in which this can be achieved. The method detailed
+in this article is economical, and it has been success-fully implemented by a number
+of Nascom owners in my local club (even O.N.J. managed it).
+</p>
+<p>
+The disturbances are, of course, caused by the need for two functionally
+independent units &ndash; the display logic and the processor &ndash; to access the same
+memory area: the V.D.U. RAM. The display logic cannot be kept waiting for the
+obvious reason that that the televison line scan just keeps right on going, so in the
+Nascom designs (and many others) the processor grabs the address and data
+busses to make its access, and whatever the display logic is trying to do at that
+time is simply not done. Either, with an unmodified Nascom&nbsp;1, it is fooled
+completely, and proceeds as if the data that the processor has just accessed is the
+data that it was itself trying to access &ndash; in which case it looks up in the character
+generator ROM an &ldquo;appropriate&rdquo; bit pattern for the line currently being displayed,
+and merrily puts that up on the screen -or, with a Nascom&nbsp;2 or a &ldquo;snowplough&rdquo;, it
+blanks out any information from the display for a period covering the disturbance,
+which is fine if nothing is supposed to be displayed at that position on screen, but
+not otherwise.
+</p>
+<p>
+So, what approaches can be taken to provide a final solution &ndash; a good, clean
+display with no disturbances whatsoever? Three solutions come to mind, all based
+on the principle that if the display logic must not be disturbed, then the processor
+will have to be.
+</p>
+<p>
+1) A software solution. For about 4 milliseconds in every 20, nothing will
+show on the screen because this is the frame-blanking time. All the screen
+updating can be done during this period, as follows. Two &ldquo;monitor&rdquo; routines are
+needed, one entered by means of a frame-sync interrupt, the other entered by a
+user call. The interrupt routine is given sale and exclusive authority to manipulate
+the contents of the video RAM, which it does by working down and emptying a list of
+demands. These are prepared for it by the other routine, which makes an entry in
+the demand list for every call from a user program.
+</p>
+<p>
+2) A hardware solution. Use &ldquo;wait-state&rdquo; logic to permit processor accesses
+into V.D.U. ram only during the line-blanking time, which is 16 microseconds in every
+64. Of course, during frame-blanking accesses need not be delayed.
+</p>
+<?php columnEnd(1); ?>

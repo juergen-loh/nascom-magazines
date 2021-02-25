@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+10 &nbsp; &nbsp; PRINT &ldquo;8K BASIC PAGE&rdquo;
+</h1>
+<p>
+Not too much about the 8K BASIC at this stage as there aren&rsquo;t
+many about yet, although with Nascom&nbsp;2 just round the corner, there&rsquo;ll
+be plenty more soon.
+</p>
+<p>
+Let&rsquo;s clear up some questions; the BASIC is compatible with
+both NAS-SYS and NASBUG T4 (it also works with T2, but you lose
+&lsquo;CSAVE&rsquo;), and when you execute it, it&rsquo;s clever enough to sort out which
+monitor is in use. The main difference between the behaviour of the
+BASIC under NAS-SYS and NASBUG is the loss of the &lsquo;on screen&rsquo; editing
+facilities under the latter. The 8K BASIC will finally be supplied in
+an 8K by 8 mask programmed ROM of the MK36000 series, and called
+&ldquo;Nascom ROM Basic&rdquo;. Now this is a good choice of chip, as the legs are
+almost 2708 compatible. Where do the extra 3 address lines go, you
+ask? Well as the chip only needs a single +5 volt supply, two pins on
+the 2708 present themselves as obvious choices, and as you don&rsquo;t
+program ROMs, the program pin is the other. All this means that it
+shouldn&rsquo;t be difficult to adapt a Nascom series 1 memory card to take
+the ROM (at the expense of the EPROM sockets), and in theory, only
+three knife cuts and three wire links need to be added to the board to
+make it work. That&rsquo;s theory of course, we&rsquo;ll have to wait till we get
+our paws on one to prove it!
+</p>
+<p>
+Now we have heard of one dealer who has a tape of the ROM (it
+seems that all dealers were supplied with EPROM versions of the ROM
+sometime ago) and is offering copy tapes with interim documentation at
+about &pound;:45.00. What he says is that by paying now and taking the tape,
+you have paid for the ROM when it arrives, and of course have
+preference when his supplies of the ROM arrive. He also says he will
+charge or return any balances if the price of the ROM is different when
+it arrives.
+</p>
+<p>
+This doesn&rsquo;t sound a bad idea for those who are that desparate
+for the BASIC, but of course there has to be a snag. The BASIC is
+designed to run in memory from #E000 to #FFFF and requires text space
+from #1900 onwards. This means that your memory has to be split into
+two halves, one at least of 8K contiguous memory, which in turn has to
+be located so that it will work from #E000 to #FFFF. That means you&rsquo;ve
+got to invest in two 8K boards or have 32K of RAM on one board. Owners
+of 16K on one board (and from the sales thats the majority) don&rsquo;t get a
+look in.
+</p>
+<p>
+So up gallop Nascom, to the rescue on their white charger, but
+like a lot of gallant forays of this nature it may be a mixed blessing.
+Nascom have re-assembled the BASIC to run from #1000 to #2FFF with text
+space starting at #3000, they call this &ldquo;Nascom Tape Basic&rdquo; (&lsquo;CSAVE&rsquo;
+works under T2 as well). The problem is that although the two BASICs
+are identical (in the way they work), tapes of programs generated using
+the &lsquo;CSAVE&rsquo; command are not. The two versions of BASIC use different
+text space areas, and as &lsquo;CSAVE&rsquo; calls &lsquo;Write&rsquo; in NASBUG/NAS-SYS (or
+&lsquo;Dump&rsquo; in T2) to output the data, then on &lsquo;CLOAD&rsquo; the data will be
+reloaded to the wrong place (if at all) if not used with the same
+</p>
+<?php columnEnd(1); ?>

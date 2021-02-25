@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+1
+</p>
+<p>
+Doctor Dark&rsquo;s Diary&mdash; Episode 22.
+</p>
+<p>
+Chaining programs in Hisoft Pascal.
+</p>
+<p>
+One of the great things about Poly-Data&rsquo;s Compas Pascal is that it lets
+you chain programs using the &lsquo;execute&rsquo; procedure. Hisoft Pascal does not have
+this useful facility built in, so I have hacked (at last, Heloise, a correct
+usage of the verb &ldquo;to hack"!) a way round the problem, which I hope will be
+found useful by all ambitious programmers sooner or later. It uses one of the
+features of CP/M to work its crafty trick, and it was a devil of a job to make
+it work properly at first. When I originally had the idea, I thought it would
+be possible to poke the name of the next command file into the command buffer,
+and then just return to CP/M, but that didn&rsquo;t work. CP/M just wiped the
+buffer, and sat there with its usual smug &ldquo;A&gt;&rdquo; prompt. The second attempt
+worked, eventually, and is based on the way each line of a &ldquo;submit&rdquo; file is
+stored on disk as a file full of commands is processed. If you save a file
+called &ldquo;$$$.SUB&rdquo; on a disk in drive B: and then put it in drive A: you will
+see that CP/M reads the file and tries to use it as commands. It also erases
+the file. To create such a file without the bother of using an editor, it
+should be possible to use PIP, as on the Sirius I use at work, where &ldquo;PIP
+BLABLA.TXT=CON:&rdquo; puts whatever you type into the file BLABLA.TXT until you
+type a control Z For some reason, this will not work on my system. (Now that
+I come to think of it, I may have been using MS-DOS, where you use &ldquo;COPY CON:
+BLABLA.TXT&rdquo;, which explains why it refuses to work on Marvin!) So, I wrote a
+few files using an editor instead, and remembered all the trouble I used to
+have trying to get &ldquo;submit&rdquo; to work, before I gave up trying to use it
+altogether. I may be wrong, but I do not think I have ever seen it said that
+the commands in submit files have to have spaces in front of them. Neither
+have I ever read that command lines in Submit files need to be padded out&rsquo; with
+spaces the way I have done below. They must, though, with my CP/M. I wonder
+why? Anyway, here are a couple of programs:&ndash;
+</p>
+<p>
+PROGRAM chainone;
+VAR
+filel : TEXT;
+i: INTEGER;
+</p>
+<p>
+BEGIN
+&ndash; WRITELN(*PROGRAM CHAIN ONE RUNNING);
+REWRITE(filel,- $$$ -SUB&rdquo; );
+</p>
+<p>
+WRITE(filel,&rdquo; CHAINTWO&rdquo;);
+{It won&rsquo;t work without the next line! }
+FOR i := 1 TO 24 DO WRITE(filel,&rdquo; -);
+WRITELN( filel)
+</p>
+<p>
+END.
+</p>
+<p>
+PROGRAM chaintwo;
+</p>
+<p>
+VAR
+filel : TEXT;
+i: INTEGER;
+</p>
+<p>
+BEGIN
+WRITELN(&ldquo; PROGRAM CHAIN TWO RUNNING&rdquo; );
+REWRITE(filel,&rdquo;- $$$ &ndash; SUB&ldquo;);
+WRITE(filel,&rdquo; CHAINONE&rdquo; );
+FOR i := 1 TO 24 DO WRITE(filel,&rdquo; -);
+WRITELN(filel)
+</p>
+<p>
+END.
+</p>
+<?php columnEnd(1); ?>

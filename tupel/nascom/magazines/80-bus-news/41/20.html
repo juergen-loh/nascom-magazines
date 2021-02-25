@@ -1,0 +1,149 @@
+<?php columnStart(2, 2); ?>
+<p>
+CONDITIONAL SUBMIT FILES
+By Steve Willmott
+</p>
+<p>
+The CP/M SUBMIT facility is much like an elementary
+Job Control Language. The public domain
+EXSUB facility is very similar. They both support a
+job submission with parameters which enable
+repetitive jobs like the development cycle edit,
+compile, link and run to be conveniently defined
+and then used generally. When submitted only the
+command file and the parameters which define this
+job (e.g. the source file to be compiled) need be
+supplied. A typical example file called MAC.SUB is:
+</p>
+<p>
+ED $1.MAC
+</p>
+<p>
+M80 =$1
+</p>
+<p>
+L80 /P:100,$1,LIBRARY/S,$1/N/E
+$1
+</p>
+<p>
+and invoked in response to the CCP prompt to
+develop the program DEMO.MAC by
+</p>
+<p>
+SUBMIT MAC DEMO
+</p>
+<p>
+The SUBMIT utility processes the MAC.SUB file
+substituting the parameter string &lsquo;DEMO&rsquo; in place
+of the piace holder $1. it creates a new file called
+$$$.SUB with one command line in each 128 byte
+record in the reverse order. Whenever the CCP runs
+it looks for this file on disk and reads the last record
+into the command area below address 0100 hex,
+removes the last record from the file $$$.SUB and
+obeys the installed command as if it had been
+entered manually. If the CCP finds the file $$$.SUB
+empty then it deletes the file from disk thereby
+ending the job.
+</p>
+<p>
+However, there is at least one annoying deficiency
+in CP/M in this area and that is that the only way to
+stop a submit file is to hit the keyboard while the
+CCP is reading the next command from disk. CP/M
+provides no means of any of the transient programs
+run in the TPA to return a success or failure
+indication such that the CCP could pick up this
+status and automatically abort the submit file. If the
+LIBRARY.REL file used above is large it can take
+minutes to perform the linkage to produce the
+DEMO.COM object file. When the compile fails and
+the linker is entered one is tempted to hit the
+keyboard very hard, particularly if it is a small
+syntax error and a long wait for the linker to
+complete. It seems unsatisfying to just hit the
+restart button.
+</p>
+<p>
+Most decently designed programs output a report
+on how well it has run. Perhaps unsurprisingly the
+report is left on the screen for the user to see. Each
+program normally generates this report in a fairly
+fixed format. A compiler will state how many errors
+</p>
+<p>
+or warnings have or have not been found. With a
+Gemini IVC or SVC video board (or indeed a
+NASCOM with memory mapped display or I
+assume an AVC or whatever) one is able to read
+back from the display and analyse this report. The
+result of the analysis could cause the abortion of
+the submit file. This is what the CHECK utility does
+when it is run as part of a submit file. The program
+has been written for the IVC or SVC, but since the
+M80 source for CHECK is listed here it should not
+be too difficult to modify for other systems. A
+typical use would be in the submit file MAC.SUB:
+</p>
+<p>
+ED $1.MAC.
+</p>
+<p>
+M80 =$
+</p>
+<p>
+CHECK &lsquo;NO FATAL ERROR(S}*/CU
+L80 /P:100,$1,LIBRARY/S, $1/N/E
+$1
+</p>
+<p>
+The command syntax for CHECK is:
+CHECK &lsquo;string&rsquo; /switches
+</p>
+<p>
+The supplied string is compared to a previous fine
+on the display according to the optional switches.
+If the check is successful CHECK merely exits back
+to the CCP and the submit file continues. If the
+check fails then CHECK prompts for abortion of the
+submission. If the answer is Yes the executing
+submit file &lsquo;$$$.SUB&rsquo; is deleted from the disk,
+thereby aborting the submit file. If the answer is No
+CHECK returns to the CCP and everything carries
+on as normal.
+</p>
+<p>
+One can experiment with CHECK by using the
+screen edit facilities provided by the BIOS. However,
+the following provides some of the rationale
+behind the program design. The supplied string
+must be in single quotes, because since the
+&lsquo;switches are optional one cannot supply a string
+of spaces or a null string &ndash; the CCP will not see
+them. The &lsquo;/ separator before the switches merely
+conforms to common syntax. The switches all have
+defaults which allow them to be optional. They can
+be supplied in any order. Some of the switches
+have been built in to increase the pattern matching
+ability of the utility. Considering each switch in
+turn:
+</p>
+<p>
+B indicates that previous blank lines are significant
+and modifies the effect of the L switch.
+The default is to ignore blank lines.
+</p>
+<p>
+Cc indicates that the supplied string must match
+the complete displayed line. The example
+above means that warnings from the M80
+assembler will be trapped as the warning
+report follows the fatal error report on the
+same line. The default is to allow a match
+anywhere in, the line.
+</p>
+<p>
+F indicates that the string must match the finish
+of the displayed line. The default is a match
+</p>
+<?php columnEnd(2); ?>

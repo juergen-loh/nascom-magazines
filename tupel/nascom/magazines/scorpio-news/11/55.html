@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+Enough of the complaining &ndash; If Gemini BIOS 3.x 49 what you have it is still
+a lot better than most CP/M BIOS"s. Tf you are fortunate enough to have SYS18
+then you will have everything that you need except possibly Winchester support
+&lsquo;The MAP CP/M BIOS is very good and easily adi
+formats, including Wincheste
+Screen paging and VBOOT, which can be aeded anyway.
+</p>
+<p>
+you may Like to
+poard activated
+</p>
+<p>
+bupport The reat of this article will describe the sort of thing thet
+</p>
+<p>
+If you do have the source code of your 310s
+Te&rsquo;co include some simple but extrenely useful
+</p>
+<p>
+In order to permit a direct keyboard command it is necessary to trap and
+procese the relevant Keystrokes instead of passing them to CP/M Thir means
+Ehat it is necessary to modify the Lowest Level BYOS routine reading the
+Keyboard. The &lsquo;special: keys must be intercepted and processed and then control
+returned smoothly to CP/M,
+</p>
+<p>
+&lsquo;The first problem vas to find a suitable key for the purpose After a long
+perusal of key allocations I decided to use &ldquo;T This choice was based on t
+</p>
+<p>
+was a synonymous vith printer T)hrow. The keyboard (pkbd: in SYS and
+&lsquo;accordingly modified so that 1f &lsquo;T&rsquo;was typed F
+advanced to top of next page, and the BIOS Lites per page counter wi
+</p>
+<p>
+in key, and to progeam the software to expect # second control key
+depending onthe desired function This had the advantage of allowing &laquo; key to
+be chosen, that related to the function to be achieved in addition, {t alloved
+the option of sending on a &lsquo;T&rsquo;to CP/M if desired
+</p>
+<p>
+As an aid to the user, a message is displayed on the locked top Line of the
+screen whilst the system is waiting for the second character, reminding the user
+of the options available After the second character has been typed, this
+Ressage is erased. After the routine has been processed, a CR character is
+Feturned to CP/M. This also happens if an erroneous second character is typed.
+Keyboard software Ae not noticeably affected since only the first &ldquo;T ie searched
+for Any other character is returned normally ro CP/H
+</p>
+<p>
+&lsquo;A problem became apparent a while after I added a Real Time Clock to ay
+bros.&rdquo; {1 have described this in some detail &ndash; see App. 2 Ref 5) Since the
+article wes published I discovered that if the clock updated during screen SOIT,
+OF operation of screen oriented software, (eg: Cursor Addressing), the Clock
+Could interfere with the &ldquo;ESC&rdquo; sequences and corrupt the screen At firet T
+Solved this problem dy disabling the clock or running a B1OS without the clock
+Since this resulted in incompatibilities in the various CP/M systems, I lever
+Gecided to make the clock &lsquo;passive&rsquo; and provide three way? of updating it
+</p>
+<p>
+The display now updates on Varm/Cold Boot. On CALL from an external
+program. By user initiated demand from the Keyboare ar described below.
+</p>
+<p>
+This has eliminated the screen corruption probleme referred to above. The
+number of functions supported is optional, It ts currently limited in my ca
+by the BIOS size equalling the sk of BIOS space available on the system track.
+</p>
+<p>
+ent added seven functions a di syboard commands. They
+</p>
+<p>
+&ldquo;1, Gall clock routines and Update Date and Time display on Locked
+top Line at Left hand side of the ecreen.
+</p>
+<?php columnEnd(1); ?>

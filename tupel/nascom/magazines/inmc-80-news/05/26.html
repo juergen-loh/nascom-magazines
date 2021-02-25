@@ -1,0 +1,77 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+c) Configure the PSG directly as an I/O port. This is the approach I
+have adopted. It is not too difficult to build, Inexpensive, plugs
+staight into the NAS-BUS (absolutely no wires), very easy to progranme
+and up to 124 (Heaven forbid) PSGs can be used with no modifications
+to the NASCOM (except a IINK to the National Grid to drive them plus a
+rather large mother-board).
+</p>
+<p>
+The working design:
+</p>
+<p>
+The circuit works by controlling the status of the BCl and BDIR inputs
+on the PSG according to the following truth table &ndash;
+</p>
+<table class="bdir-bc1">
+<tr><td>BDIR</td><td>BC1</td><td>Function</td></tr>
+<tr><td>1</td><td>1</td><td>Latch resister address</td></tr>
+<tr><td>1</td><td>0</td><td>Load register with data</td></tr>
+<tr><td>0</td><td>1</td><td>Read resister contents</td></tr>
+</table>
+<p>
+IC 1 decodes the address bus to configure the PSG as ports 8 and 9
+(address lines 8 to 15 are not used for port addressing on the NASCOM
+2). Rearrange these inverters if alternative addresses are required
+(but don&rsquo;t use ports 0 to 7 as these are already dedicated on the main
+board).
+</p>
+<p>
+If the predefined address is received then the output of IC 3 will go
+low. Any I/O instruction will also push the IORQ line low (active).
+These two signals are inverted (ICs 2a and 2b) and fed into the inputs
+of ICs 4a and 4b. Address line A0 is then able, by using IC 2c, to
+select either IC 4a or 4b, giving a low output. As the circuit stands,
+addressing port 8 will give a low output for IC 4a, and port 9 a low
+output for IC 4b.
+</p>
+<p>
+If port 8 is addressed, then the inverted (IC 2d) output from IC 4a
+raises the inputs of ICs 5e and 5d making their outputs low. These
+signals are inverted (ICs 2e and 2f) and fed into the BC1 and BDIR
+inputs of the PSG. As both will then be high, a resister latch
+operation has been performed (see truth table at beginning), and the
+contents of the data bus will select the appropriate resister. This
+operation does not take into account the CPU RD and WR lines. The
+programmer must ensure that &ldquo;OUT&rdquo; intructions only are used for port 8
+(or else the CPU and the PSG will both read the data bus simultaneously
+with no-one supplying the data). If required, the WR line could be
+incorporated but it hardly seems worth the effort.
+</p>
+<p>
+If port 9 is addressed the low output from IC 4b is NORed with the RD
+and WR tines in ICs 5a and 5b respectively. For a read (&ldquo;IN&rdquo;or&ldquo;INP&rdquo;)
+instruction, the output of IC 5a and hence the BC1 input, will so high
+and the PSG will transfer the contents of the currently selected
+register onto the data bus. For a write (&ldquo;OUT&rdquo;) instruction the same
+will apply to IC 5b and the PSG BDIR input, allowing the PSG to load
+the currently selected register from the data bus.
+</p>
+<p>
+Lines BC2, A8 and A9 are additional PSG select signals but as their
+status in this circuit needn&rsquo;t alter, they are tied as show.
+</p>
+<p>
+For 4 MHz operation, the clock is divided (IC 6) to provide the 2 Mhz
+maximum the PSG can handle and is further divided (IC 7) and controlled
+by the address enable output (IC 2d) and the I0RQ line (IC 2a) to give
+a single positive-going pulse which is inverted (note open collector
+inverter) to provide a WAIT state for the CPU, I have used 7472 JK
+flip-flops here because I have a box full of them &ndash; a 7474 may be
+preferable, the unused NAND gate (IC 4c) could be used to link the
+address enable and the IORQ lines into the system to control the
+pulses. If you are using the CPU at 2 MHz then forget about ICs 6 and 7
+and the WAIT states &ndash; just feed the system clock into the PSG.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+present if I include all of my normal Hardware and Software options, so there
+is not enough room to allow inclusion of the extra code and tables needed to
+display the day name unless I omit something else or alter MOVCPM so that CP/M
+leaves room for an even larger CBIOS. Examination of the code listed later
+will show that this option will only be allowed if NKBD is set FALSE. (This is
+the most suitable routine for me to omit, since I normally use the Gemini
+GM827 keyboard.)
+</p>
+<p>
+In some cases, there may well be enough room for the extra code and data
+anyway, since some other features such as Virtual Disk may not be incorporated
+in the CBIOS, and it may not be necessary to omit routines or modify MOVCPM.
+</p>
+<p>
+The final part of this extract shows the RTC ports added to the relevant
+section of SYS.
+</p>
+<p>
+The second set of extracts are the extra code that has been added into
+the Workspace/Boot/High Level I/O routine section of SYS (which is module 4 of
+SYS 16).
+</p>
+<p>
+In order to allow user programs to easily access the Clock, it is
+necessary to set up some method of allowing the &ldquo;calling&rdquo; program to find the
+clock routines. The simplest way of doing this is to add an extra -Jump to
+Clock Routine&rsquo; to the jump table at the start of the CBIOS. Since the offset
+of this jump from the start of the CBIOS is known, it can be used as the
+access point. Some details of how to do this are given in App. l. A look at
+the code for the clock will show that on &lsquo;RET*&rsquo;urn, HL holds the start address
+of STRING (or STRNG1), which holds the clock data for subsequent processing.
+</p>
+<p>
+A marker is also placed after the additional jump in the -jump&rdquo; table.
+The calling program can check for this marker before attempting to read the
+clock, and can thus be made to avoid trying to read a non existent clock. This
+can sometimes cause the program to lock into a permanent loop from which the
+only exit is -RESET&rsquo;, unless additional software is used to &ldquo;time out&rdquo; any
+such loop.
+</p>
+<p>
+Additional space is reserved at the end of the -SYS&rsquo; workspace for clock
+related data and variables. A space of 11 bytes is allocated to -REGS&rdquo;. The
+RTC chip registers are stored in this space as they are read. After some
+further processing, REGS will hold the ASCII equivalents of the clock register
+data. Once the clock has been successfully read, the data is moved to
+-STRING/STRNGI1*, being formatted as it will be printed on the screen in the
+process. Two sizes of output string are possible, depending whether or not the
+day name is to be included, as previously described. If the name is to be
+included, the store starting at &ldquo;STRING is used, but if no name is to be
+output, the space starting at -&ldquo;STRNGI&rdquo; is used. The space UDSTOR is used to
+hold a copy of the Seconds, Tens of Seconds, or Minutes register of the RTC,
+to be used as described later. :
+</p>
+<p>
+The other bit of code added to module 4 will conditionally allow the top
+line of the GM812 IVC card to be locked, to prevent the time/date from
+scrolling. I added the necessary code into the -WARM BOOT&rdquo; routines, just
+before the *SYS&rsquo; code to restore the current default drive. I do not think the
+actual position of the extra code should be very critical. I chose this place
+as it was near the end of the warm boot.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+Upon entry to the user routine, various Z80 registers have
+preset values. These values are: HL = value from ARGI, DE =
+</p>
+<p>
+Value from @RG2, BC = value from ARGS, &ndash; SP = OCSFH &ldquo;within
+the NAS-SYS stack. Forty tno bytes are available on the
+stack for use by the user routine. Calls to | NAS-SYS
+routines or to SYS-EX routines, from within a user routine,
+Mill require a number of stack levels to be available.
+y
+</p>
+<p>
+Call user routine eumber 2
+</p>
+<p>
+Calls a user routine whose execution address has been
+stored in the NAS-SYS argument ARG?
+</p>
+<p>
+The command is identical to the &ldquo;x"command except that
+the argument ARG? is used in place of ARGS.
+</p>
+<p>
+Call user routine number 5
+</p>
+<p>
+Calls a user routine whose execution address has been
+stored in the NAS-SYS argument ARGIO.
+</p>
+<p>
+The command is identical to the &ldquo;x"command except that
+the argument ARGIO is used in place of ARGS.
+</p>
+<p>
+The three user routine calls, &lsquo;x&rdquo;, &lsquo;y&rsquo; and &lsquo;2&rsquo;, provide an
+easy method of attatching individually tailored Commands ta
+the monitor. Uniike the NAS-SYS Execute command, these
+commands allow a return ta the monitor (SYS-EX) with a single
+RET instruction. Also, the &ldquo;Error? message can be output
+under user control by manipulating the carry flag prior to the
+RET. The commands are ideally suited. to. calling individual
+monitor type functions. e.g. &ndash; Display the character
+represented by the ASCII code entered as ARGI -, or &ndash; Print
+screen contents of attatched printer Tt might even be
+possible to directly call some of the functions within Basic.
+</p>
+<p>
+In addition to &ldquo;x&rdquo;, &ldquo;y&rdquo; and &ldquo;2&rdquo;, there is another method
+of calling user routines.&rdquo; The commands &ldquo;9&rdquo;, "37s &ldquo;my &ldquo;oO&rdquo; and
+&ldquo;pr, which are not used directly by SYS-EX, all Call a meaory
+address 0400H (1K) beyond the start &ldquo;of SYS-EX &ldquo;U-e-immediately
+after SYS-EX). If you put your owr code here,
+these commands can be used in a simlar way to &ldquo;x&rdquo;, &ldquo;y&rdquo; and
+2&rsquo;. The register values on entry are the same as&rsquo; for &ldquo;x",
+ty&rsquo; &ldquo;and &ldquo;2&rdquo;. A word of warning here &ndash; if you haven&rsquo;t put any
+cade beyond SYS-EX, don&rsquo;t use &ldquo;9&rdquo;, "3&rdquo;, "m, &ldquo;a&rdquo; or &ldquo;p&rsquo; as the
+results will be unpredictable.
+</p>
+<p>
+That completes the description of the keyboard commands. In
+the next issue of the magazine we will look at, amongst other
+things, how the GK Basic can make use of forty two character
+program names.
+</p>
+<?php columnEnd(1); ?>

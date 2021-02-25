@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+All Change
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+CONVERSION TO NAS-SYS
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+BY RICHARD BEAL
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+Many readers have requested a table showing equivalent codes
+for old monitors and for Nas-Sys. Many new INMC members have only ever
+used Nas-Sys, and have come across old programs they wish to convert.
+Derek Brough has made a tremendous effort in converting the T4 library
+to Nas-Sys, so you will find it easier to get some of these programs
+from the new Nas-Sys machine code program library.
+</p>
+<p>
+To keep the table simple we have compared T4 to Nas-Sys. The
+older T2 and B-Bug monitors were subsets of T4, so the conversion works
+in the same way for them. It is not possible to show every detail
+because there are so many small differences, in particular the method
+of input and output.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(12); ?>
+<?php columnChange(1012); ?>
+<table style="width: 100%">
+<tr><th>Name</th><th>Function performed</th><th></th><th>T4</th><th>Nas-Sys</th></tr>
+<tr><td>RIN</td><td>Get input character</td><td></td><td>CD 3E 00</td><td>CF</td></tr>
+<tr><td>ROUT</td><td>Output a character</td><td></td><td>CD 4A 0C</td><td>F7</td></tr>
+<tr><td></td><td></td><td>or</td><td>F7</td><td></td></tr>
+<tr><td></td><td></td><td>or</td><td>CD 3B 01</td><td></td></tr>
+<tr><td>PRS</td><td>Print a string</td><td></td><td>EF&nbsp;...00</td><td>EF...00</td></tr>
+<tr><td>RCAL</td><td>Relative call</td><td></td><td>D7 ..</td><td>D7 ..</td></tr>
+<tr><td>SCAL</td><td>Subroutine call</td><td></td><td>NONE</td><td>DF&nbsp;..</td></tr>
+<tr><td>RDEL</td><td>Delay</td><td></td><td>FF</td><td>FF</td></tr>
+<tr><td></td><td></td><td>or</td><td>CD 35 00</td><td></td></tr>
+<tr><td>BRKPT</td><td>Breakpoint</td><td></td><td>E7</td><td>E7</td></tr>
+<tr><td>START</td><td>Reset computer</td><td></td><td>C7</td><td>C7</td></tr>
+<tr><td>MRET</td><td>Return to montior</td><td></td><td>C3 86 02</td><td>DF 5B</td></tr>
+<tr><td></td><td></td><td>or</td><td>CF</td><td></td></tr>
+<tr><td>TDEL</td><td>Long delay</td><td></td><td>NONE</td><td>DF 5D</td></tr>
+<tr><td>FFLP</td><td>Flip bits in port 0</td><td></td><td>CA 4A 00</td><td>DF SE</td></tr>
+<tr><td>MFLP</td><td>Flip tape drive LED</td><td></td><td>CD 51 00</td><td>DF 5F</td></tr>
+<tr><td>ARGS</td><td>Load arguments</td><td></td><td>CD 97 06</td><td>DF 60</td></tr>
+<tr><td>IN</td><td>Scan for input character</td><td></td><td>CD 4D 0C</td><td>DF 62</td></tr>
+<tr><td></td><td></td><td>or</td><td>CD 69 00</td><td></td></tr>
+<tr><td>INLIN</td><td>Obtain input line</td><td></td><td>NONE</td><td>DF 63</td></tr>
+<tr><td>NUM</td><td>Convert from ASCII to binary</td><td></td><td>CD 5A 02</td><td>DF 64</td></tr>
+<tr><td>TBCD3</td><td>Output HL in ASCII</td><td></td><td>CD 32 02</td><td>DF 66</td></tr>
+<tr><td>TBCD2</td><td>Output A in ASCII</td><td></td><td>CD 2B 02</td><td>DF 67</td></tr>
+<tr><td>B2HEX</td><td>Output A in ASCII</td><td></td><td>CD 44 02</td><td>DF 68</td></tr>
+<tr><td>SPACE</td><td>Output space</td><td></td><td>CD 3C 02</td><td>DF 69</td></tr>
+<tr><td>CRLF</td><td>Output carriage return</td><td></td><td>CD 40 02</td><td>DF 6A</td></tr>
+<tr><td>ERRM</td><td>Output error message</td><td></td><td>NONE</td><td>DF 6B</td></tr>
+<tr><td>TX1</td><td>Output HL,DE in ASCII</td><td></td><td>CD 5B 04</td><td>DF 6C</td></tr>
+<tr><td>SOUT</td><td>String of characters to serial output</td><td></td><td>CD CC 06</td><td>DF 6D</td></tr>
+<tr><td>SRLX</td><td>Character to serial output</td><td></td><td>CD 5D 00</td><td>DF 6F</td></tr>
+<tr><td></td><td></td><td>or</td><td>CD 5E 00</td><td></td></tr>
+<tr><td>RLIN</td><td>Get arguments from input line</td><td></td><td>NONE</td><td>DF 79</td></tr>
+<tr><td>B1HEX</td><td>Output half of A in ASCII</td><td></td><td>CD 4D 02</td><td>DF 7A</td></tr>
+<tr><td>BLINK</td><td>Blink cursor, get input</td><td></td><td>NONE</td><td>DF 7B</td></tr>
+<tr><td>CPOS</td><td>Find start of line</td><td></td><td>NONE</td><td>DF 7C</td></tr>
+</table>
+<?php columnChange(12); ?>
+<?php columnEnd(6); ?>
+<?php columnStart(1); ?>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

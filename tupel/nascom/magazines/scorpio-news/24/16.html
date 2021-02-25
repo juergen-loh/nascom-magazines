@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<p>
+The C I/O system starts with a set of character level functions: getc(chan),
+putc(chan,char), getchar() and putchar(char). The last two use the default streams.
+Unlike CP/M, UNIX uses NEWLINE (ASCII 10) to separate lines rather than
+CR,LF (13,10). Also unlike CP/M, UNIX knows the exact length of all files, so end
+of file is reported by a value of -1 (which is why getc( ) and getchar( ) return an
+integer rather than a character). Because of these differences, files must be declared
+as either text or binary type. This is not a problem since UNIX versions of C must
+be able to cope with standard terminal devices so the facility is available.
+</p>
+<p>
+Built on the basic I/O above are string I/O functions: puts(str), gets(str),
+fputs(str,chan) and fgets(str,len,chan), and also word I/O getw(chan) and
+putw(word,chan) and block I/O which accounts for a number of similar functions
+which I don&rsquo;t have room to go into here. The behaviour of the string I/O is slightly
+different with the file functions. Specifically, puts( ) adds a newline, fputs( ) does
+not: Also fgets( ) has a length limit and leaves the newline in, whereas gets( )
+overwrites the newline with the NULL.
+</p>
+<p>
+The most useful functions for high level I/O are printf() and scanf(). There-are also
+file based equivalents fprintf( ) and fscanf( ), and string based versions sprintf( )
+and sscanf( ). These both take a variable number of arguments (they are variadic),
+the first of which is a control string (with the string and file versions the control string
+comes second after the file-pointer or string-pointer). The control string declares
+how the output/input should look. For example:
+</p>
+<p style="margin-left: 5%">
+printf ("File %s, Yod records in %dK\n&rdquo;, filename, record_count, size );
+</p>
+<p>
+Which would give, for a file FRED with 25 records in 4K, the output
+</p>
+<p style="margin-left: 5%">
+File FRED, 25 recordsin4dK &lt;newline&gt;
+</p>
+<p>
+The item declarators following % symbols can specify minimum.and maximum field
+widths, left or right justify, and in the case of numeric values the leading zeros can
+optionally be displayed. This is best shown by a table:
+</p>
+<table style="width: 70%; margin-left: 20%">
+<tr><td>Control string</td><td>Values</td><td>Result</td></tr>
+<tr><td>"Toc? &ndash; Tod &lt;Jox&gt;"</td><td>48,48,48</td><td>0&rsquo; -48 &lt;30&gt;</td></tr>
+<tr><td>"*%-15s Yo02d*"</td><td>"Total",5</td><td>*Total 0s*</td></tr>
+<tr><td>"%o3d %o3d Yoo"</td><td>12,683</td><td>12 68</td></tr>
+</table>
+<p>
+The scanf( ) function attempts to match the input to the control and assigns values
+accordingly. For example, if you expect an input like &ldquo;15 : x (4,5)&rdquo;, you might use a
+control such as " %d : Yoc ( Yd&nbsp;, Yd )&rdquo;. The spaces in the control will match any
+space (or no space) on the input.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SOFT SPOTS
+</h1>
+<h3 class="author">
+By Richard Beal (and others)
+</h3>
+<p>
+This tip presupposes that you are a person who assembles
+machine code in HEX, in memory, and then wants to convert it to DATA
+statements for use as machine code subroutines with the 8K BASIC.
+Assuming Nas-sys is in use, try this:
+</p>
+<p>
+Assemble the machine code routines, in HEX, at the correct
+location in memory (and perhaps try them if possible). Go into BASIC
+(making sure that the free memory space does not overwrite the machine
+code routines). Then use the following command:
+</p>
+<pre>
+WIDTH 40:FOR A = B TO C STEP 2:PRINT DEEK(A);:NEXT
+</pre>
+<p>
+Where B is the start address in decimal, and C is the end address. The
+BASIC will print a series of numbers, stopping well short of the right
+hand edge of the screen. Using the Nas-sys edit commands, edit in line
+numbers and commas, and the job is done. No mistakes through trying to
+calculate the decimal equivalents of the HEX, or through copying the
+numbers wrong. What&rsquo;s more the data is in double byte form, which may
+be loaded down using DOKE commands, taking half the time that it would
+take to POKE the data down.
+</p>
+<p>
+Suppose you want to test to see if one of the 16 bit registers
+HL, DE or BC is zero. For example, this could be at the end of a loop
+that was counting down. A version of this in a magazine had the
+following:
+</p>
+<pre>
+    DEC DE
+    LD A, D
+    OR A
+    JR NZ LOOP
+    LD A, E
+    OR A
+    JR NZ LOOP
+</pre>
+<p>
+It would be a lot easier to put:
+</p>
+<pre>
+    DEC DE
+    LD A, D
+    OR E
+    JR NZ LOOP
+</pre>
+<p>
+Suppose you want to jump to a certain address in your program,
+and that this address is currently stored in the HL register. You can
+just code;
+</p>
+<pre>
+    JP (HL)
+</pre>
+<p>
+This works very well.
+</p>
+<p>
+Now suppose that you need to have set HL to a certain value
+when the jump is made. The method above is useless because HL can&rsquo;t be
+at two different values at once. So code:
+</p>
+<pre>
+    LD HL, value of HL
+    PUSH HL
+    LD HL, address to jump to
+    EX (SP), HL
+    RET
+</pre>
+<p>
+or:
+</p>
+<?php columnEnd(1); ?>

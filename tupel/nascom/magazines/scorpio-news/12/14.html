@@ -1,0 +1,104 @@
+<?php columnStart(1); ?>
+<p>
+sing software, we reconfigure the CIC to use the divider mode and system clock
+for 1200/75 baud, and the counter mode and external clock for the Easter
+beudrate of 9600.
+</p>
+<p>
+The configuration tables for the CTC are:
+</p>
+<p>
++ Port initialization table
+</p>
+<p>
+{ Flese byte indicates how many bytes to send
+</p>
+<p>
+Second byte defines port location of device
+</p>
+<p>
+} On board cfc channel 0, include interrupt vector here
+</p>
+<p>
+} This divides input clock of aMhe to provide clock For
+510 channel A receive et 1200 baud
+</p>
+<p>
+Gecrce! &ldquo;bere c2-c1 *&rdquo; byte count
+bere cecte Che pore
+ca: DEFB Low cpercv j Interrupe vector
+DERB 002001118 } Counter mode, neg. edge triggers
+</p>
+<p>
+start on 12 cycle, Count foltows,
+j Reset channel
+DEFB 108 &lsquo;for 1200
+</p>
+<p>
+2
+C This divides system clock of iMhz to provide clock for
+j S10 channel A transmit
+</p>
+<p>
+everens EPS ce-c3 + byte count
+DES cPcrcel 1 ote port
+ca: DEB 001001118 Eimer mode, prescale 256,
+</p>
+<p>
+Count foLlows, Re
+bers 13, Pfor 73,
+</p>
+<p>
+&copy; channel
+</p>
+<p>
+che
+{This divides input clock of 2h, to provide clock for SIO channel B
+</p>
+<p>
+Gecte? &ldquo;DEB Cec 1 byte Coun
+DEFB cpctc+2 { ofc&rsquo; pore
+cs DEFB guogoii18 } Counter mode, neg. edge triggers
+seart on Tz cycle, count follows,
+Reset channel
+Dera 104 } for 1200&rdquo; baud
+6:
+</p>
+<p>
+Uo board CIC channel 3
+Provides tnterrupt control for keyboard
+</p>
+<p>
+cectes: DeeB C8-c7 byte count
+DEFB cperces 1 ote&rsquo; pore!
+cr bere Wiozo1a8 Interrupts, counter,
+Count follows, Reve
+DEFB 1 Divisor
+ce:
+&lsquo;to swatch between 1200/75 and 75/1200 takes a little more work &ndash; I had to design
+</p>
+<p>
+a patch for my MODEM, and for CP/M Plus, bat it is possible T hope that this
+Jong rambling article will persuade orhers ta cry using an unused channel of
+thelr crc &ndash; Jt is a moet useful chip I know of one system where an unused CTC
+bas employed to provide dooropen interrupts for three drives, and the fourth
+Channel wat used fo provide a ceal time clock interrupt to updae the on screen
+ate and tine every Five seconde
+</p>
+<p>
+In the next article, [11 wrzte about the S10 and ite progeamming.
+References
+</p>
+<p>
+80-BUS News Vol 2, No 1, The Interrupt Structure ofthe Z80.
+G0-BUS News Voi 1, No 3, Teach Yourself 260 &ndash; Part 7
+</p>
+<p>
+B0-BUS News Vol 2, No 3, Serial Interface Problens made Easy
+2EL0G Counter Timer Circuit Techaical Manual&rsquo;
+</p>
+<p>
+Z80 Assembly Language Subroutines by Leventhal and Savile,
+Osborne/MeGeaweHtll, p365,
+</p>
+<?php columnEnd(1); ?>

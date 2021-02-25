@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<p>
+are all legal and acceptable. ( Extra spaces for clarity )
+</p>
+<p>
+The author of the Z system, recognising that this freedom destroys any security
+between different users, has provided several security systems. These iicltide the
+&lsquo;Wheel Byte&rsquo;, which can be set to deny users access to selected system commands.
+This can also stop non authorised users for example, from using the system &lsquo;P&rsquo;
+(Peek) command, to read system passwords. It can also be used to prevent remote
+access users from &lsquo;vandalising&rsquo; the system. The system operator or anyone with
+sufficient knowledge of the system can set the wheel byte to allow himself access.
+</p>
+<p>
+The system also allows a limit to be set to the maximum user number that can be
+accessed, By loading a different system overlay, the system operator can allow
+himself access to higher user numbers, where &lsquo;sensitive&rsquo; files like Disk Editors,
+Debuggers and System files may be kept. Programs like these could of course be
+used to read passwords from system files, disk tracks, or RAM.
+</p>
+<p>
+The main security measure provided in ZCPR3 is to &lsquo;Password&rsquo; protect certain
+directories. In the Z system directories are based on simple Disk/User structures,
+rather than on any elaborate &lsquo;tree&rsquo; structure. Depending on the amount of RAM
+one is prepared to allocate to named directories, 14 names are available for each
+256 bytes of RAM. In practice, 14 names seem adequate. The system operator needs
+only decide which DU is to be allocated to a function or operator, and to name the
+DU. Thus if an operator is to be allocated the &lsquo;DIR&rsquo; JOHN: on User 4 of drive A,
+then when the system operator makes up the named directory, the relevant entry
+will be:
+</p>
+<pre>
+DU Name &lsquo; Password
+BYTES &gt; 01 04 4A 4F 48 4E 20 20 20 20 58 45 47 48 20 20 20 20
+A4 JOHN XEGH
+</pre>
+<p>
+The name may be up to 8 characters in length, but this would only make for more
+typing, and up to 4 characters is usually adequate. The second block of 8 bytes may
+be left as spaces, or any ASCII code may be entered, which will be used as the
+password for access to that directory. In this example the password XEGH has been
+allocated.
+</p>
+<p>
+When JOHN wishes to access his directory, he types JOHN: and presses enter.
+Since there is a password, he will be asked to type it in. If he makes a mistake, he is
+given one more try, after which the system defaults to the current DU.
+</p>
+<p>
+If the relevant ZCPR3 was assembled to only allow DIR: type access, then all would
+be well, since attempts to access by typing A4: would fail. Limiting the system to
+allow only DIR: access reduces flexibility however since access to unnamed DU&rsquo;s:
+is frequently very useful. Unfortunately if Z3 is assembled to accept DU and DIR
+</p>
+<?php columnEnd(1); ?>

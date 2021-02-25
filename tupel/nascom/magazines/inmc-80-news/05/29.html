@@ -1,0 +1,73 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+If all is well, plug in the PSG chip (taking precautions against static
+charges), cross your fingers and switch on. Hopefully everything should
+now work,
+</p>
+<p>
+Addressing the PSG:
+</p>
+<p>
+This is very simple &ndash; select a register by writing to port 8 and then
+load it or read from it with port 9.
+</p>
+<p>
+eg. to load register 7 (PSG output enable) with 244 (tone channels A
+and B, noise channel A enabled) simply write:
+</p>
+<pre style="margin-left: 20%">
+(BASIC)      OUT8,7:0UT9,244
+
+(ASSEMBLER)  LD A,#07
+             OUT (8),A
+             LD A,#F4
+             OUT(9),A
+</pre>
+<p>
+And to read, say register 7:
+</p>
+<pre style="margin-left: 20%">
+(BASIC)      OUT8,7:PRINT INP(9)
+
+(ASSEMBLER)  LD A, #07
+             OUT (8),A
+             IN A,(9)
+             :Contents now in A
+</pre>
+<p>
+Further ideas:
+</p>
+<p>
+If you anticipate using several PSGs in your system, try using a 2708
+EPROM to decode the address bus and control signals. The eight outputs
+could be paired to provide the BC1 and BDIR signals for four PSGs.
+Optional simultaneous access to all of them would be possible (in the
+write mode anyway) and the hardware would be much easier and cheaper to
+build.
+</p>
+<p>
+Suggested readings:
+</p>
+<p>
+a) The data manual for the PSG from the retailers
+</p>
+<p>
+b) BYTE, July 1979
+</p>
+<p>
+c) Personal Computer World, October 1989
+</p>
+<p>
+d) Practical Electronics, September 1980
+</p>
+<p>
+e) TTL Cookbook, D. Lancaster
+</p>
+<h2 style="text-align: center">
+FIGURE 2
+</h2>
+<h3 style="text-align: center">
+NASIO CIRCUITRY FOR SEVERAL PORTS ATTACHED TO BUS
+</h3>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-29-1.png"); ?>
+<?php columnEnd(1); ?>

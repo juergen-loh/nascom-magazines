@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+Commands that I have currently available are:
+</p>
+<p>
+^T followed by one of &mdash;
+</p>
+<p>
+P &ndash; Page the Printer and reset BIOS line counter.<br>
+N &ndash; Select attached printer to Normal print.<br>
+V &ndash; Select attached printer to Condensed print.<br>
+I &ndash; Initialise Printer.<br>
+A &ndash; Set paging to 64 (A4) and skip to 6<br>
+J &ndash; Set paging to 66 (12 in paper) and skip to 6<br>
+K &ndash; Set paging to 60 (11 in paper) and skip to 6<br>
+O &ndash; Paging OFF. (Skip set to 0)<br>
+F &ndash; Save current screen tofileS.CPY.<br>
+S &ndash; Turnscreen paging ON. (Cancels *K or &ldquo;W commands)<br>
+D &ndash; Dump current screen to Printer.<br>
+L &ndash; Lock screen Top line.<br>
+U &ndash; Unlock Screen top line.<br>
+Z &ndash; Clear Screen.<br>
+R &ndash; Reset IVC/SVC.<br>
+^T &ndash; Pass ^T to current program.
+</p>
+<p>
+Any other key returns a space character to the current program. Most of the above
+are self explanatory, but a few comments are in order.
+</p>
+<p>
+The &ldquo;TP command will cause the printer to advance to the top of the next page,
+and reset the BIOS internal counters so that the printer can always be controlled
+from the keyboard. (The only time that-problems arise is when lines longer than the
+current maximum printer line are sent to the printer. The BIOS will count 1 line
+when it sees a CRLF sequence, even if this is after&lsquo;200 characters, but the printer
+will put in its own every &lsquo;80/132/233 or whatever, so that misalignment can
+occasionally occur.) I intend to add a Character per line feature to my BIOS, and
+make this alterable to 80/132/233 by means of another &ldquo;T command. This would
+solve the problem.
+</p>
+<p>
+&ldquo;TO will set the BIOS skip count to 0 lines, so that rolls of paper or non standard
+operations can be controlled. To restore the skip, use &ldquo;TA, &ldquo;TJ, or &ldquo;TK as
+appropriate.
+</p>
+<p>
+&ldquo; TF will save the contents of the screen to a disk file called S.CPY. This is a &lsquo;quick
+and dirty&rsquo; routine that will only work from the operating system. It works by putting
+the command SAVE 8 SE&para;.CPY into the (ZCPR3) command buffer, copying the
+screen to RAM at 100H, and then rebooting. I-have not tried it with standard CP/M
+by putting the command into the CPM command buffer, but it works well with
+ZCPR3.
+</p>
+<?php columnEnd(1); ?>

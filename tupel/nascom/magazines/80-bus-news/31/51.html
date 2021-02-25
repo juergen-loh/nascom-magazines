@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+51
+</p>
+<p>
+RANDOM RUMOURS (&amp; TRUTHS?) By S. Monger
+</p>
+<p>
+Ah well, I&rsquo;ve never claimed to be perfect, have I? In the last issue I
+mentioned the Gemini GM886 board containing an iAPX186. Well it seems that
+this idea was dropped a while ago, and in fact it is the GM888 that you will
+see in coming months. What is the difference &ndash; well the GM886 board was to be
+a board interfaced to the 80-BUS via a couple of I/O ports (like the GM812
+Ivc, GM832 SVC and 10828 Pluto). It contained its own 256K RAM and
+consequently would have been very fast, and expensive! It would also have had
+the disadvantage of not being able to drive any I/O peripherals directly, such
+as Pluto, and would have to have passed on the task via the Z80 on the host
+processor board, consequently slowing down the operation quite considerably.
+After a little research Gemini discovered that they could produce a board that
+would drive the 80-BUS directly, and thus be able to use all the I/O on the
+bus. More importantly, from a cost viewpoint, the board would be able to have
+NO memory on it, and would therefore almost certainly be under #200. Of
+course in interfacing to the 80-BUS the processor used has had to be changed
+to one with an external 8-bit interface, and so the 8MHz 8088 has been chosen.
+</p>
+<p>
+So how do you use it? Well the system boots as normal under the Z80, you
+then flip a bit of an 80-BUS I/O port, the 8088 puts out a bus request, the
+Z80 Finishes the instruction that it was executing, and then the 8088 takes
+over control of the entire system. If at any stage you wish to pass control
+back to the Z80 then the 8088 flips the I/O bit back, and the Z80 carries on
+where it left off. In theory, therefore, you can write code that is of mixed
+type, and switch to and fro between processors &ndash; must be of some use!
+</p>
+<p>
+The GM888 board will also contain another of those blasted Real Time
+Clock thingies, with battery back-up. This serves two purposes. First of all
+certain 16 bit operating systems allow time and date stamping of files, and
+secondly the actual chip chosen provides oodles of interrupts if required, and
+this is necessary for task switching with Concurrent-DOS (previously called
+Concurrent-CP/M) and presumably with Multi-tasking MS-DOS. There is also a
+socket for the 8087 high speed arithmetic co-processor. Board availability?
+Don&rsquo;t. know! !
+</p>
+<p>
+And how about the extra memory that the 8088 can support? Well Gemini
+have launched a 256K RAM board that supports the 80-BUS extended address
+lines. It has several modes of operation:
+</p>
+<p>
+1) 4 pages of 64K from address 0 (for use with Nascom 2s and Gemini GM811s).
+</p>
+<p>
+2) 4 pages of 64K from any extended address (EA).
+</p>
+<p>
+3) 1 page (any) of 256K from any extended address.
+</p>
+<p>
+4) 3 pages of 64K from 0 and 1 page of 64K from EAI (allows GM813 users to
+have 4 pages of 64K at 0 without contention.
+</p>
+<p>
+In addition to the above there is a &lsquo;Common Area&rsquo; mode which puts a
+common area of memory (selectable between 4K and 8K) in all four pages.
+</p>
+<p>
+With all these modes it is possible to set up virtually any permutation
+of page mode and extended addressing that any one&rsquo; may want, and systems with
+the GM813 or GM888 will accept up to 8 boards = 2Mbytes! (4 pages of 512K.)
+And the price of all this flexibility&nbsp;? &ndash; #325 + VAT. Available now!!
+</p>
+<p>
+World Domination!
+</p>
+<p>
+With a distinct lack of signs of activity from Lucas, Gemini continues
+its 80-BUS domination campaign! The Climax vector graphics colour board has
+been taken over by Gemini, as the GM837. It is now only available in its
+fully populated form (modulated and R-G-B outputs) and the price has been
+reduced to #165 + VAT. Gemini has also taken over the I0 Research 8-bit A-D
+board, now the GM824, and the price remains the same at #125 + VAT. One 80-
+BUS price has risen, the Belectra arithmetic board. It is now a totally
+horrendous #268 + VAT!!
+</p>
+<p>
+EDO OREO RTH ARNE EOE REN
+</p>
+<?php columnEnd(1); ?>

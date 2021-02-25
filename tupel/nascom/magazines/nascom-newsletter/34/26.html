@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+SCAL_MRET
+PUT EX (SP) ,HL
+LD By HL?
+INC FL,
+oir
+Ex (SP) HL
+RET
+END
+</p>
+<p>
+Now you can read the time in the addres ecezH-acesH and
+time differences can be measured by subtracting tho time values.
+fs TP1 gives S@eHz, you can measure time differences of up to
+3.5 minutes with an accuracy of 1/300 of a wecond. You can reset
+the timer at any time, either from Nas-Sys (using the M cammand)
+or from BASIC (using DOKE). The timer cannot be used under
+Nas-Sys&nbsp;1 as this is not interruptable,
+</p>
+<p>
+5.D.Pedersen,
+Copenhagen,
+Denmark
+</p>
+<p>
+xBASIC tip
+A tip to all bone idle users of XBASIC who, having written their
+</p>
+<p>
+ultimate, high-speed data-handling routine which has lots of
+internal GOTO/GOSUBS, find that when they install it in. their
+main program it runs very slowly because it is located way down
+the program, miles from the start, here is an easy solution:
+</p>
+<p>
+10 program
+</p>
+<p>
+3@ GOSUB routine
+</p>
+<p>
+9999 REN routine
+10000 TEXTPTReDEEK (81004) 1HOLD 10000
+19829 REM routine proper
+</p>
+<p>
+10999 REM REM end of routine
+11@@0 DOKE 41086, TEXTPTR: RETURN
+</p>
+<p>
+You may say &ldquo;why not use MGE before the RETURN, well, it
+doesn t work, it terminates the program end returns &lsquo;to command
+level which is understandabl
+</p>
+<p>
+T have used this method in a program which has a &ldquo;SORT routine
+and two SEARCH&rsquo; routines and all three run mich faster. 1 timed
+the sort routine and it runs 28% faster using the above method.
+Now, can anyone tell me how to set up a type-ahead buffer for
+XBASIC as the authors seem to have used their. Onn heyboard
+routine and I haven&rsquo;t, as yet, managed to find it?
+</p>
+<p>
+1.P. Coole,
+Londen 547
+</p>
+<?php columnEnd(1); ?>

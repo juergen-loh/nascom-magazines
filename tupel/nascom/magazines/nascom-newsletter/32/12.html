@@ -1,0 +1,142 @@
+<?php columnStart(1); ?>
+<p>
+43 oD0E D307 QUT (CLKREG+2)
+</p>
+<p>
+4 OD10 JEO1 &mdash;&laquo;-RESTARTILD As 15Set for initial register
+5 opi2 D420 RDLP: GALL READ jValue returns in E
+</p>
+<p>
+66 ODIS 47 LD ByA sStore value
+</p>
+<p>
+47 OD18 7B Ww AE
+</p>
+<p>
+$8 0017 E6OF AND OFH;Mask off strobes int. line
+89 OD19 FEOF CP OFHSIY OFH, clock has ticked
+70 ince last register read. Print
+</p>
+<p>
+ma W"Fail&rsquo; and start again
+</p>
+<p>
+72 op1p 2B3e SR Z,REBTARTS
+</p>
+<p>
+73 OD1D F430 OR 30H yTurn into ASCII
+</p>
+<p>
+74 ODIF D&amp;S SCAL CRT jPrint value
+</p>
+<p>
+75 opzi 78 LD AB. $Get count back
+</p>
+<p>
+76 opz2 3c INC A&rsquo;sPoint to next register
+</p>
+<p>
+77 OD23 E6OF AND OFN,
+</p>
+<p>
+78 0025 20EB SR NZ,ROLP
+</p>
+<p>
+79 0027 DFeA CAL CRLF
+</p>
+<p>
+80 0029 DFSB EXIT: &mdash;SCAL FRET
+</p>
+<p>
+cr
+</p>
+<p>
+82 OD2B 0&amp;4 = WRITE: LD C,CLKDAT)Set up data on port
+83 oDzD EDS9 QUT (C)sE
+</p>
+<p>
+84 OD2F F470 OR 40N+20H+10H)Select chip, but
+85 sturn off strobe
+</p>
+<p>
+8% ODS1 D305, QUT &lt;(CLKRES) A
+</p>
+<p>
+87 ODS CBA7 RES 4,A | Turn on WR
+</p>
+<p>
+BB OD35 D305 OUT (CLKRES) ,A
+</p>
+<p>
+9 OD37 CBEY SET 4,0 yTurn off WR
+</p>
+<p>
+90 0039 DOS OUT (CLKRES) 0
+</p>
+<p>
+91 ODSB CBB7 RES 6,A ;Deselect chip
+</p>
+<p>
+92 OD3D D305 QUT &lt;CLARES) A
+</p>
+<p>
+93 ODSF E6OF AND OFH;Restore reg no, no strobes
+94 opai C9 RET
+</p>
+<p>
+os
+</p>
+<p>
+9% OD42 OEOS &laquo;= READ: LDC, CLKDAT;Set C for data port
+97 0044 Fa70 OR 40H+20H+10H;Select chip, no strobe
+98 oD46 D505 QUT (CLKRES) A
+</p>
+<p>
+99 0048 CRAF RES_5,A 3Turn on RD
+</p>
+<p>
+100 ODA D305, QUT {CLKRES) ,A;Set up register add.
+101 OD4C EDSE IN E,(C) iGet data
+</p>
+<p>
+102 OD4E CBEF SET 5,A jTurn off RD
+</p>
+<p>
+103 OD50 CBB7 RES 4)A jTurn off chip
+</p>
+<p>
+104 Op52 0305 QUT (CLKRES) ,A
+</p>
+<p>
+105 0054 FS PUSH AF
+</p>
+<p>
+106 0D55 7B LD A,EsMask off top 4 bits in E
+107 0056 E6OF AND OFH
+</p>
+<p>
+108 OD58 SF Lp EA
+</p>
+<p>
+109 oD59 Fi Pop AF
+</p>
+<p>
+110 0958 CF RET
+</p>
+<p>
+au
+</p>
+<p>
+112 0p58 EF RESTARTIIPRS sHare if clock haa ticked
+113 oDSC 4641494c DEFB &ldquo;FAIL&rdquo; ,CR,O
+</p>
+<p>
+113 0060 oD00
+</p>
+<p>
+114 p62 C3100 JP_ RESTART
+</p>
+<p>
+115 ORG ODBOH
+</p>
+<?php columnEnd(1); ?>

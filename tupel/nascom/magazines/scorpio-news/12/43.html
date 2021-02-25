@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+&lsquo;his may have been erating the obvious as T had already said, when referring to
+the example directory entty, that only one block ad been aliocated to the file.
+However, the concept of using zerot to show unallocated blocke ia fundamental to
+the vay directory entries relating to random files are interpreted I shall
+return to candom files shortly.
+</p>
+<p>
+Let&rsquo;s Finish looking at the example directory entry by examining the last four
+bytes of the top few. The firet of the four bytes 14 the extent byte. THs
+ahows &lsquo;che highest extent number accessed by the directory entey In our
+Example, &lsquo;the highest extent accersed is 0. Had the dicectory entry been full om
+2 QDDS disk, the excene number would have been 3 since this directory eatey
+would contrel extents 0-2&rdquo; A subsequent entry would have controlled extents 4-7
+ud would have 7 in the extent byte if the entry wes full. Under CP/M 1 4, as
+Bleeady stated, the highest extent sumber allowed is 15 (16 extents undered 0-
+15) giving # mazinun file size of 256K. Under CP/M 2.2 and CP/M 3 the maximum
+value allowed for the extent byte is 31 (32 extents) giving &laquo; maximum file size
+Of S12K... Hang on a biti Digital Research cold us that the maximum file sizes
+for Ce/H 2.2 and CP/M 3 are GHbytes and S2Mbytes respectively,
+</p>
+<p>
+Under CP/M 2.2 or CR/M 3, when a file exceeds 512K, the $2 byte is used to hold
+the multiples of S12K and the extent byte starts numbering again from sero:
+This use of the 82 byte te pot st ail well documented. In fact 1 have searched
+Migh and Tow through the Digital Research manuals for references to the s2 byte
+and itr use io this context with little joy The result of this Inck of
+Information has led to the production of programs, both commercial (Wordstar)
+and Public Domain (D COM, $0 COM and DU COM) that cannot handle files lurger
+than 512K
+</p>
+<p>
+&lsquo;The maximum value for the $2 byte under CP/M 22 is 15 (06 permutations numbered
+from 0.to 15) and 16 x 512K ir Obytes made up of 65536 records of 128 bytes
+each Under CP/M 3 ite marinum value ie 63 (64 permucations) and of course 64 x
+Si2k de 32Mbytes made up of 267164 records of 128 bytes each, Under CP/M 1-4
+the 32 byte is unused in this context The 81 byte is unused by ail versions of
+CP/M up to 2 2 and is probably not used by CP/M 4, at least I haven&rsquo;t yet found
+whore ituses (t, LF da fact ut doee
+</p>
+<p>
+The Last byte of the four 4s che record count byte and {t shows how wany records
+are stored in the last extent written (Ie. the one indicated by ehe extent
+byte) If this byte has the value 0H then the extent ig full. In our example,
+one record has been written co extent 0. Had the extent number been 3, for
+Guample, then extents 0 2 would be assumed to be full. However, this isa&rsquo;e
+necessarily teue when cefercing to candor files as we shall see now
+</p>
+<p>
+With the block size chosen and having established that we are using 8 bit
+directory entries, as we have slready een, each directory entry controls up to
+Sik of s file th tact the dicectory entry Ls more than piece to stare Block
+numbers, it is Literally # map of the file
+</p>
+<p>
+Directory entries for random Files
+</p>
+<p>
+We cam split the 64K controlled by the entry up into 512 CP/M records of 128
+bytes with chese records being numbered fron 0 to 511 Zach of the sixteen Uk
+block positions will contain 32\CP/M records and therefore the first block will
+contain records 0 to $2, the second 22 to 63 and eo on. If only record number
+52 is weitten to file TEST AWD, ite directory entry will look like the one given
+below with only the second block position containing a block number
+</p>
+<p>
+00544553 54202020 20524844 90000022 + TEST BND... .#
+&lsquo;90200000 00000000 06000000 s0000000 + =. .
+</p>
+<p>
+IE, on the other hand, only the 512th record had been written (record number
+&lsquo;Siiy, only the Last block position would contain a block number,
+</p>
+<p>
+The RC, EXT and 52 bytes will be set up as if the file had been written
+Sequentially, Le writing the last cecord to an extent will cause the RC byte
+tovread 80H,&rdquo; &lsquo;The only way that CP/M knows whether a block has been allocated or
+</p>
+<?php columnEnd(1); ?>

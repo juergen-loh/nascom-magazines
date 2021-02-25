@@ -1,0 +1,86 @@
+<?php columnStart(1); ?>
+<p>
+60
+</p>
+<p>
+If doing a large program, then it is worthwhile using SUBMIT files with
+parameters to lessen the amount of work. These can remarkably shorten the
+repetitive process of assembly and linking. Unfortunately DISZILOG will not
+work off a SUBMIT file (it doesn&rsquo;t use much buffered console input). If it
+did, it would speed up the process even more. Has anyone tried a mod on it to
+do just that? If so I&rsquo;d be very greatful for details. Minor problems arise.
+One needs to keep track of the sections of the file &ndash; so add an index number,
+as FILE1, FILE2 etc. Some problem may arise with ORG statements needing to be
+deleted from the ASM files or with the linker (if used) inserting unwanted
+jumps to where it thinks entry points ought to be.
+</p>
+<p>
+When all is transmitted, and the receiving machine has a disk full of
+FILEB1.HEX, .... FILEn-HEX, one can do two things. Hither PIP
+FILE.HEX=FILE1.HEX, PILE2.HEX,...,FILEn.HEX to concatenate the files into one
+which you then LOAD. Maximum filesize again about 26k &ndash; machine and CP/M
+dependant! or else
+</p>
+<p>
+ZSID &ndash;
+IFILE1 HEX {Insert file control block of that name}
+</p>
+<p>
+R Read file}
+</p>
+<p>
+IFILE2. HEX I&rsquo;ve omitted ZSID&rsquo;s response of filesize}
+</p>
+<p>
+R
+</p>
+<p>
+IFILEn. HEX
+</p>
+<p>
+R
+</p>
+<p>
+START END FREE {Note END address to calculate number of blocks to save}
+GO
+</p>
+<p>
+SAVE xx FILE.COM
+</p>
+<p>
+This entire process is laborious, but it does work. To get the hang of
+this method, start off with a short ASCII program and get that to transmit.
+This proves that your initialisation, baud rates, connections etc. are all
+0.K. Then try a trivial COM file &ndash; I wrote one under ZSID. 100H bytes of A&rsquo;s,
+{00H bytes of B&rsquo;s, 100H of 1A&rsquo;s, 100H of D&rsquo;s, SAVEd 4 FILE.COM, and tried
+disassembling that in 100H blocks. You will become very familiar with your
+Disassembler, your assembler, your linker, and above all, with PIP. Do
+remember that a &ldquo;C may reset PUN: and RDR: to other values. Do check them
+after &lsquo;C&rsquo;s until you are sure what happens. Remember PIP option [Ee] to echo
+all transfer operations to the screen. A little bit of experiment, copious
+notes of parameters and options, and you will soon be in meaningful
+communication with the rest of the world.
+</p>
+<p>
+BACK ISSUES
+</p>
+<p>
+Back issues of INMC, INMC80 and 80-BUS News are available from Interface Data
+at the address shown on the inside front cover. The following issues are
+currently available:
+</p>
+<p>
+INMC Special Compilation Issue&nbsp;. . 6 6 0 1 we ee we we ew ew we we ww &pound;2650
+INMC8O Issues 1, 3, 4, 5-6 ee ee eee ee ee ee we ee (each) &laquo; &pound;1.50
+80-BUS News Volume 1, Issues 1, 2, 3, 4... .... 4... .(each) . &pound;1.50
+80-BUS News Volume 2, Issues 1, 2, 3, 4 . . &laquo;(each) . &pound;1.50
+</p>
+<p>
+Postage.
+UK. Add 25p for one issue, 20p for each additional issue.
+OVERSEAS. " 40p " &ldquo; " 2 5p " &ldquo; " &ldquo; .
+</p>
+<p>
+ie
+</p>
+<?php columnEnd(1); ?>

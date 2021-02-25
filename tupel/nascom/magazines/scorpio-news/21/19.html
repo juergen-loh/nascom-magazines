@@ -1,0 +1,52 @@
+<?php columnStart(1); ?>
+<p>
+enabled me to check that I could read the disks. The next stage was to write a new
+BIOS to use the disks properly. I decided to keep my existing QDDS drives for
+booting the system and to use the new drives without system tracks. The disk
+parameter block was therefore defined thus: &mdash;
+</p>
+<pre>
+Hex Dec Description
+0044&mdash; 68 ; SPT &ndash; CP/M Sector (128 bytes) per Track
+os 5 ; BSH &ndash; Block Shift Factor
+1F 31 ; BLM &ndash; Block Mask
+01 1 ;EXM &ndash; &ndash; Extent Mask
+02A7 679 ; DSM &ndash; Disk Size in biocks &ndash; 1
+00FF 255 ;DR &ndash; Number of directory entries &ndash; 1
+co ; ALO &ndash; Reserved directory..
+00 ;AL1 &ndash; .. blocks
+0040&mdash;is&laquo;iAA ; CKS &ndash; Checksum Size
+0000&mdash;t&mdash;&laquo;ei ; OFF &ndash; Number of system tracks
+02 &laquo;2 ; PSH &ndash; Physical Record Shift Factor
+03 3 ;PHM = &ndash; Physical Record Mask
+</pre>
+<p>
+These parameters are described in M W T Waters&rsquo; article in Scorpio News Volume
+1 Issue 4, and I will not go into them more fully here, except to note that the last two
+are relevant only to CP/M 3.x systems, and to point out that I decided to keep the
+4k block size used in the QDDS system, but to double the directory size to 256
+entries. I have never run into problems with directory overflow with the QDDS
+format, and I expect to have a preponderance of large files on these disks.
+</p>
+<p>
+Those who are familiar with the SYS BIOSs will be aware that the sector read and
+write routines are given track and sector requests in registers D and E respectively.
+The low level routines deal with the arithmetic necessary for side selection. With
+track numbers running from 0 to 319 two bytes are necessary, and CP/M 2.2 and 3.1
+already make requests for track and sector using two bytes. All that was necessary
+therefore was to arrange for the calling routine (that previous passed track in D and
+sector in E) to store two bytes for track and two bytes for sector in RAM for the
+low level routine, which I adjusted accordingly. A minor modification to the disk
+error routine to deal with track numbers greater than 255 completed the
+adjustments.
+</p>
+<h2>
+But!
+</h2>
+<p>
+Full of confidence, I now attached the second drive and powered up. It was obvious
+that the Gemini FDC power supply was inadequate for the purpose, because the
+new drives crashed whenever there were two connected at once, and a high capacity
+switch mode supply was obtained at very reasonable cost from Henry&rsquo;s Radio.
+</p>
+<?php columnEnd(1); ?>

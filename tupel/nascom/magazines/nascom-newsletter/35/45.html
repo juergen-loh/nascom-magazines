@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+An EPROM Emulator for the Nascom
+</h1>
+<h2>
+by P. Burgess
+</h2>
+<p>
+Introduction.
+</p>
+<p>
+This article describes the design and construction of @ unit
+of hardware intended to temporarily replace an EPROM during the
+developesent and debugging of firmware for dedicated Z80 CPU
+based projects. Detail is given to allow the construction of a
+unit, ineluding an example of a loading program in 760 ateeabler
+code, and connections to a Nascom, The article is also intended
+to act as a basis for experigent for anyone who&rdquo; might wisi to
+extend the design.
+</p>
+<p>
+Design Considerations.
+</p>
+<p>
+My own computer interests lie in the application of
+micropracessors to small design projects, often eaploying a 760
+CPU plus minimal RAM and EPROM configurations. A single 2714
+EPROM is often enough for the whole program, ie. 2048 (2K)
+bytes. A Nascom plus and EPROM programmer (such as the Gemini
+one) makes quite a fair development system. However, when
+testing a newly built piece of hardware (or a &ldquo;target&rdquo; system,
+as it le known) it can be necessary to repeatedly blow and erase
+EPROMS to find faults and debug the program. What is required is
+2 chunk of memory which will Jook like an EPROM to the target
+system, but to which a host computer can read and write quickly.
+This would then replace the EPROM until program development is
+complete.
+</p>
+<p>
+Several such emulators are commercially available, but tend
+to be expensive, as they incorporate their om&rsquo; aonitors,
+keyboards and displays. The Nascom, though, already hay its ow
+powerful machine code facilities, so this design relies entirely
+on the Nascom to manipulate the data, resulting in a very simple
+(7 common 1sTTL chips) design, at, perhaps, the cost of a little
+Flexibiliey,
+</p>
+<p>
+The device is controlled from a Z80 PIO, in this case, ports
+A and B of a Nascom&nbsp;1, although, of course, other ports may be
+used.
+</p>
+<p>
+As dram, the emulator plugs in directly in place of the
+single supply rail 2716 EPROM, although it could he extended to
+2732 devices by adding extra RAM and decoding. Components are
+hot criticals higher density RAM packages such as the 6116 have
+becose available since the prototype was bullt and could be
+worth looking at.
+</p>
+<?php columnEnd(1); ?>

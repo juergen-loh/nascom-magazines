@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+21
+16K CMOS RAM extension for the Nascom&nbsp;2 main pcb by Paul Anderson
+</p>
+<p>
+Reprinted from Nascom &ndash; Thames Valley User Group Newsletter No. 5 with permission
+</p>
+<p>
+If you like me are one of those people who purchased a 48K (RAM B) memory card
+and then kicked yourself for not waiting until a 64K version became available and now
+wish you had the full 64K to run your disk system etc., all is not lost. Here are the
+modifications required to turn those eight (spare) 24 pin dil sockets on your Nascom&nbsp;2
+into that extra 16K.
+</p>
+<p>
+I will introduce you to an amazing little beasty called the HM6116-4
+manufactured by Hitachi, available a year ago for the princely sum of &pound;30.00 each &ndash;
+have I frightened you &ndash; but now available for about &pound;4.00 each in 10 up quantities.
+Each of these devices is 2K x 8 bits (16K) so you will need eight chips, one for each
+socket!!!! This will cost about &pound;40.00 inc VAT, sounds a lot, but when you consider
+that to update by that 16K you will have to sell your 48K and buy a new 64K (anyone
+seen any second hand 64K cards), plus the cost of the extra RAM, I suspect it will
+cost about this amount anyway.
+</p>
+<p>
+As I said earlier the HM6116 is an amazing device &ndash; the fastest version will
+run at over 8MHz and the low power version consumes about 0.1uA (I do mean micro-amps)
+in standby mode. I used the standard version (cheapest) and out of a batch of 20
+samples they all exceeded their quoted performance by an enormous margin, particularly
+in terms of their standby mode current consumption. For the standard version a standby
+current of 20uA is quoted, which for eight chips is 160uA, which would be Ok for
+battery backup. However, of the samples I have checked, the worst device had a standby
+current of only 5uA, only three were above 1uA and typical values were between 0.3 and
+O.7uA (almost two orders of magnitude inside the spec.). So if we were to power them
+from one mempack battery (3.6V, 150mA/hours), we would be able to operate them for
+about 15,000 hours on one recharge, assuming a total consumption of about 10uA for the
+eight chips. That&rsquo;s approaching two years, in practice one year would be about right
+taking self discharge of the battery into account, and if we were to float charge the
+batteries at 1mA (milli-Amp) for four hours each week &ndash; I&rsquo;m sure your Nascom is on for
+more than that time per week (if not, there&rsquo;s a little mod) &ndash; then the batteries will
+remain virtually fully charged for the life of your Nascom.
+</p>
+<p>
+Now battery backed up RAM opens up many interesting possibilities, firstly it
+can be used like ordinary RAM, as workspace, to hold programs, for CP/M or whatever,
+secondly it can be used as loadable EPROM, and if a &lsquo;write disable&rsquo; were incorporated
+the data in the RAM would be as safe as if it were in EPROM, but can still be changed
+virtually instantaneously when required. Other advantages of battery backup and write
+disable are when developing programs, where they can be safely tucked away whilst the
+program is tested, or you go away for a-tea break and the wife decides to pull out the
+mains plug so she can use the Hoover. Or, if like me you are plagued by mains dropouts
+and have to save programs after virtually every modification just in case you loose
+the lot &ndash; very time consuming on tape, although I&rsquo;m now disk based, it&rsquo;s still a
+nuisance. I am convinced that battery backed up RAM is preferable to normal RAM, and
+am now seriously considering fitting 64K of CMOS RAM. I noticed an advert the other
+day offering 32K of CMOS RAM on a card suitable for NASBUS/80BUS.
+</p>
+<p>
+So after this extended introduction I will proceed to enlighten those
+interested parties on how it is done. It&rsquo;s based on using the eight EPROM/RAM sockets
+on the Nascom&nbsp;2 peb. (Anyone still using the EPROM sockets?? If so, my next article
+will oe with converting them into 2732 sockets, I&rsquo;ve 64K of &lsquo;em on one card in my
+systen.
+</p>
+<p>
+The eight sockets will accommodate most &lsquo;BYTE WIDE&rsquo; 24 pin devices and the
+HM6116 falls into that category. For straight forward RAM expansion without write
+protect and battery backup, fitting is very similar to fitting MK4116&rsquo;s in these
+positions except that a higher order addressing is required to access all the RAM
+available. The only additional circuitry is to provide RAMDIS on to the Nascom&nbsp;2 to
+disable this new RAM if you are using external RAM or ROM at the address chosen to
+locate your new RAM. It is suggested that this stage is done first anyway to check
+that RAM is operating correctly before introducing the complexities of power down,
+battery backup or write disable.
+</p>
+<?php columnEnd(1); ?>

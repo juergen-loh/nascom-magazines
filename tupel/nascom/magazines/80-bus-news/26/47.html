@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+47
+</p>
+<p>
+From this we can see that the weird order of the lines in the Nascom
+display was done with malice aforethought! (I&rsquo;ve always assumed it was due to
+some quirk of the hardware implementation). By rotating the contents of the
+PROM by one location, and preloading TC68 with 12 instead of 11, the N2 can
+have a conventional video ram where the screen starts at the first address,
+and ends at the last address. If required, a non-scrolling top line can be
+implemented with a zero software overhead in this environment. Why did they do
+it the way they did? &ndash; I suppose an N1 circuit diagram may answer that.
+</p>
+<p>
+However, returning to the matter in hand, it is a very easy matter to get
+</p>
+<p>
+all 16 lines out of the character generator. All that is necessary is to lift
+pin 1 of IC53. (If this is all you do, then this pin should be tied to +5v,
+either direct, or via a ik resistor). This will prevent the row address
+counter being cleared on line 14, and it will now cycle round all the 16 lines
+of the character generator. There are two side-effects to this modification.
+i) The active display height will increase by 32 TV lines, which may require a
+picture height adjustment on your monitor or TV. ii) The frame rate will
+change. There will now be a total of 22x16 TV lines (=352) instead of the
+previous 308. (The 625 line standard actually requires 312.5). This will give
+a frame rate of 44Hz. When I made this modification to my N2 it did not
+disturb the frame hold on my monitor &ndash; you may not be so lucky.
+NOTE The only effects of this modification will be an increase in screen
+height and a possible loss of vertical hold. The extra lines of the character
+generator can only appear in the correct place. Other symptoms may appear if
+you have disturbed dry joints, or other ICs.
+</p>
+<p>
+Getting back into Sync
+</p>
+<p>
+To get back to a 50Hz frame rate some more modifications are necessary.
+Somehow we need to take out about 40 TV lines from a frame. We can remove an
+integral number of 16 lines by changing the address intially loaded into IC68
+at the start of every frame. However the effect of this is to move the display
+upwards on the screen. (The screen is unblanked sooner after the vertical sync
+pulse). It is also a simple matter to remove some lines from the end of the
+display, all you have to do is program a new N2V PROM(!). Ignoring the latter
+suggestion as it is impractical for most people, lift IC68/1 and connect it to
+IC68/8. Lift IC68/10 and connect it to 1068/16. This now arranges for the
+counter to start at a count of 13, rather than 11, and will thus remove 32 TV
+&ldquo;Lines from the start of the frame.
+</p>
+<p>
+This leaves us with a further 8 lines to get rid of if we want to hita
+50Hz frame rate. We can do this by including the row address counter IC53 in
+the &lsquo;frame reset&rsquo; sequence, and preloading it to 8. Unfortunately the &lsquo;LS161
+has a synchronous load although the clear is asynchronous, and the
+modification involves more than a simple strap. So, unless you&rsquo;re a
+perfectionist, I suggest you stop here.
+</p>
+<p>
+(With the &lsquo;LS161 the load occurs synchronously with the clock. i.e. The
+load input has to be taken low, and held low until the clock input makes a
+low-to-high transition, at which point the data on the parallel inputs will be
+loaded into the counter. The clear input is asynchronous, which means that as
+soon as the clear input is taken low the counter is cleared immediately
+irrespective of the state of the input clock.)
+</p>
+<?php columnEnd(1); ?>

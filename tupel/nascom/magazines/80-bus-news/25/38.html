@@ -1,0 +1,104 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    37</span>
+
+EA70 013A       DATA:   DEFB    (LD BC,":")     ; ":" End of statement
+EA72 0E00       REM:    LD      C,0             ; 00  End of statement
+EA74 0600               LD      B,0
+EA76 79         NXTSTL: LD      A,C             ; Statement and byte
+EA77 48                 LD      C,B
+EA78 47                 LD      B,A             ; Statement end byte
+EA79 7E         NXTSTT: LD      A,(HL)          ; Get byte
+EA7A B7                 OR      A               ; End of line?
+EA7B C8                 RET     Z               ; Yes - Exit
+EA7C B8                 CP      B               ; End of statement?
+EA7D C8                 RET     Z               ; Yes - Exit
+EA7E 23                 INC     HL              ; Next byte
+EA7F FE22               CP      '"'             ; Literal string?
+EA81 CA76EA             JP      Z,NXTSTL        ; Yes - Look for another '"'
+EA84 C379EA             JP      NXTSTT          ; Keep looking
+
+EA87 CD2DEF     LET:    CALL    GETVAR          ; Get variable name
+EA8A CD90E6             CALL    CHKSYN          ; Make sure "=" follows
+EA8D B4                 DEFB    ZEQUAL          ; "=" token
+EA8E D5                 PUSH    DE              ; Save address of variable
+EA8F 3AAD10             LD      A,(TYPE)        ; Get data type
+EA92 F5                 PUSH    AF              ; Save type
+EA93 CD5AED             CALL    EVAL            ; Evaluate expression
+EA96 F1                 POP     AF              ; Restore type
+EA97 E3                 EX      (SP),HL         ; Save code - Get var addr
+EA98 22CE10             LD      (BRKLIN),HL     ; Save address of variable
+EA9B 1F                 RRA                     ; Adjust type
+EA9C CD46ED             CALL    CHKTYP          ; Check types are the same
+EA9F CADAEA             JP      Z,LETNUM        ; Numeric - Move value
+EAA2 E5         LETSTR: PUSH    HL              ; Save address of string var
+EAA3 2AE410             LD      HL,(FPREG)      ; Pointer to string entry
+EAA6 E5                 PUSH    HL              ; Save it on stack
+EAA7 23                 INC     HL              ; Skip over length
+EAA8 23                 INC     HL
+EAA9 5E                 LD      E,(HL)          ; LSB of string address
+EAAA 23                 INC     HL
+EAAB 56                 LD      D,(HL)          ; MSB of string address
+EAAC 2A5E10             LD      HL,(BASTXT)     ; Point to start of program
+EAAF CD8AE6             CALL    CPDEHL          ; Is string before program?
+EAB2 D2C9EA             JP      NC,CRESTR       ; Yes - Create string entry
+EAB5 2A5A10             LD      HL,(STRSPC)     ; Point to string space
+EAB8 CD8AE6             CALL    CPDEHL          ; Is string literal in program?
+EABB D1                 POP     DE              ; Restore address of string
+EABC D2D1EA             JP      NC,MVSTPT       ; Yes - Set up pointer
+EABF 21BF10             LD      HL,TMPSTR       ; Temporary string pool
+EAC2 CD8AE6             CALL    CPDEHL          ; Is string in temporary pool?
+EAC5 D2D1EA             JP      NC,MVSTPT       ; No - Set up pointer
+EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"
+EAC9 D1         CRESTR: POP     DE              ; Restore address of string
+EACA CD71F3             CALL    BAKTMP          ; Back to last tmp-str entry
+EACD EB                 EX      DE,HL           ; Address of string entry
+EACE CDAAF1             CALL    SAVSTR          ; Save string in string area
+EAD1 CD71F3     MVSTPT: CALL    BAKTMP          ; Back to last tmp-str entry
+EAD4 E1                 POP     HL              ; Get string pointer
+EAD5 CD6EF8             CALL    DETHL4          ; Move string pointer to var
+EAD8 E1                 POP     HL              ; Restore code string address
+EAD9 C9                 RET
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    38</span>
+
+EADA E5         LETNUM: PUSH    HL              ; Save address of variable
+EADB CD6BF8             CALL    FPTHL           ; Move value to variable
+EADE D1                 POP     DE              ; Restore address of variable
+EADF E1                 POP     HL              ; Restore code string address
+EAE0 C9                 RET
+
+EAE1 CD84F4     ON:     CALL    GETINT          ; Get integer 0-255
+EAE4 7E                 LD      A,(HL)          ; Get "GOTO" or "GOSUB" token
+EAE5 47                 LD      B,A             ; Save in B
+EAE6 FE8C               CP      ZGOSUB          ; "GOSUB" token?
+EAE8 CAF0EA             JP      Z,ONGO          ; Yes - Find line number
+EAEB CD90E6             CALL    CHKSYN          ; Make sure it's "GOTO"
+EAEE 88                 DEFB    ZGOTO           ; "GOTO" token
+EAEF 2B                 DEC     HL              ; Cancel increment
+EAF0 4B         ONGO:   LD      C,E             ; Integer of branch value
+EAF1 0D         ONGOLP: DEC     C               ; Count branches
+EAF2 78                 LD      A,B             ; Get "GOTO" or "GOSUB" token
+EAF3 CA1EE8             JP      Z,ONJMP         ; Go to that line if right one
+EAF6 CDA6E9             CALL    GETLN           ; Get line number to DE
+EAF9 FE2C               CP      ","             ; Another line number?
+EAFB C0                 RET     NZ              ; No - Drop through
+EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
+
+EAFF CD5AED     IF:     CALL    EVAL            ; Evaluate expression
+EB02 7E                 LD      A,(HL)          ; Get token
+EB03 FE88               CP      ZGOTO           ; "GOTO" token?
+EB05 CA0DEB             JP      Z,IFGO          ; Yes - Get line
+EB08 CD90E6             CALL    CHKSYN          ; Make sure it's "THEN"
+EB0B A9                 DEFB    ZTHEN           ; "THEN" token
+EB0C 2B                 DEC     HL              ; Cancel increment
+EB0D CD44ED     IFGO:   CALL    TSTNUM          ; Make sure it's numeric
+EB10 CD13F8             CALL    TSTSGN          ; Test state of expression
+EB13 CA72EA             JP      Z,REM           ; False - Drop through
+EB16 CD36E8             CALL    GETCHR          ; Get next character
+EB19 DA2DEA             JP      C,GOTO          ; Number - GOTO that line
+EB1C C31DE8             JP      IFJMP           ; Otherwise do statement
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

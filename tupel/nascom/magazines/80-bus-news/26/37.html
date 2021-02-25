@@ -1,0 +1,120 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    50</span>
+
+EEBA BCEE       CMPLOG: DEFW    CMPLG1          ; Compare two values / strings
+EEBC 79         CMPLG1: LD      A,C             ; Get data type
+EEBD B7                 OR      A
+EEBE 1F                 RRA
+EEBF C1                 POP     BC              ; Get last expression to BCDE
+EEC0 D1                 POP     DE
+EEC1 F5                 PUSH    AF              ; Save status
+EEC2 CD46ED             CALL    CHKTYP          ; Check that types match
+EEC5 21FEEE             LD      HL,CMPRES       ; Result to comparison
+EEC8 E5                 PUSH    HL              ; Save for RETurn
+EEC9 CA8EF8             JP      Z,CMPNUM        ; Compare values if numeric
+EECC AF                 XOR     A               ; Compare two strings
+EECD 32AD10             LD      (TYPE),A        ; Set type to numeric
+EED0 D5                 PUSH    DE              ; Save string name
+EED1 CD53F3             CALL    GSTRCU          ; Get current string
+EED4 7E                 LD      A,(HL)          ; Get length of string
+EED5 23                 INC     HL
+EED6 23                 INC     HL
+EED7 4E                 LD      C,(HL)          ; Get LSB of address
+EED8 23                 INC     HL
+EED9 46                 LD      B,(HL)          ; Get MSB of address
+EEDA D1                 POP     DE              ; Restore string name
+EEDB C5                 PUSH    BC              ; Save address of string
+EEDC F5                 PUSH    AF              ; Save length of string
+EEDD CD57F3             CALL    GSTRDE          ; Get second string
+EEE0 CD62F8             CALL    LOADFP          ; Get address of second string
+EEE3 F1                 POP     AF              ; Restore length of string 1
+EEE4 57                 LD      D,A             ; Length to D
+EEE5 E1                 POP     HL              ; Restore address of string 1
+EEE6 7B         CMPSTR: LD      A,E             ; Bytes of string 2 to do
+EEE7 B2                 OR      D               ; Bytes of string 1 to do
+EEE8 C8                 RET     Z               ; Exit if all bytes compared
+EEE9 7A                 LD      A,D             ; Get bytes of string 1 to do
+EEEA D601               SUB     1
+EEEC D8                 RET     C               ; Exit if end of string 1
+EEED AF                 XOR     A
+EEEE BB                 CP      E               ; Bytes of string 2 to do
+EEEF 3C                 INC     A
+EEF0 D0                 RET     NC              ; Exit if end of string 2
+EEF1 15                 DEC     D               ; Count bytes in string 1
+EEF2 1D                 DEC     E               ; Count bytes in string 2
+EEF3 0A                 LD      A,(BC)          ; Byte in string 2
+EEF4 BE                 CP      (HL)            ; Compare to byte in string 1
+EEF5 23                 INC     HL              ; Move up string 1
+EEF6 03                 INC     BC              ; Move up string 2
+EEF7 CAE6EE             JP      Z,CMPSTR        ; Same - Try next bytes
+EEFA 3F                 CCF                     ; Flag difference ("&gt;" or "&lt;")
+EEFB C31EF8             JP      FLGDIF          ; "&lt;" gives -1 , "&gt;" gives +1
+
+EEFE 3C         CMPRES: INC     A               ; Increment current value
+EEFF 8F                 ADC     A,A             ; Double plus carry
+EF00 C1                 POP     BC              ; Get other value
+EF01 A0                 AND     B               ; Combine them
+EF02 C6FF               ADD     A,-1            ; Carry set if different
+EF04 9F                 SBC     A,A             ; 00 - Equal&nbsp;, FF - Different
+EF05 C325F8             JP      FLGREL          ; Set current value & continue
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    51</span>
+
+EF08 165A       EVNOT:  LD      D,5AH           ; Precedence value for "NOT"
+EF0A CD5DED             CALL    EVAL1           ; Eval until precedence break
+EF0D CD44ED             CALL    TSTNUM          ; Make sure it's a number
+EF10 CD8BE9             CALL    DEINT           ; Get integer -32768 - 32767
+EF13 7B                 LD      A,E             ; Get LSB
+EF14 2F                 CPL                     ; Invert LSB
+EF15 4F                 LD      C,A             ; Save "NOT" of LSB
+EF16 7A                 LD      A,D             ; Get MSB
+EF17 2F                 CPL                     ; Invert MSB
+EF18 CDF1F0             CALL    ACPASS          ; Save AC as current
+EF1B C1                 POP     BC              ; Clean up stack
+EF1C C369ED             JP      EVAL3           ; Continue evaluation
+
+EF1F 2B         DIMRET: DEC     HL              ; DEC 'cos GETCHR INCs
+EF20 CD36E8             CALL    GETCHR          ; Get next character
+EF23 C8                 RET     Z               ; End of DIM statement
+EF24 CD90E6             CALL    CHKSYN          ; Make sure "," follows
+EF27 2C                 DEFB    ","
+EF28 011FEF     DIM:    LD      BC,DIMRET       ; Return to "DIMRET"
+EF2B C5                 PUSH    BC              ; Save on stack
+EF2C F6                 DEFB    (OR n)          ; Flag "Create" variable
+EF2D AF         GETVAR: XOR     A               ; Find variable address,to DE
+EF2E 32AC10             LD      (LCRFLG),A      ; Set locate / create flag
+EF31 46                 LD      B,(HL)          ; Get First byte of name
+EF32 CD77E9     GTFNAM: CALL    CHKLTR          ; See if a letter
+EF35 DAADE3             JP      C,SNERR         ; ?SN Error if not a letter
+EF38 AF                 XOR     A
+EF39 4F                 LD      C,A             ; Clear second byte of name
+EF3A 32AD10             LD      (TYPE),A        ; Set type to numeric
+EF3D CD36E8             CALL    GETCHR          ; Get next character
+EF40 DA49EF             JP      C,SVNAM2        ; Numeric - Save in name
+EF43 CD77E9             CALL    CHKLTR          ; See if a letter
+EF46 DA56EF             JP      C,CHARTY        ; Not a letter - Check type
+EF49 4F         SVNAM2: LD      C,A             ; Save second byte of name
+EF4A CD36E8     ENDNAM: CALL    GETCHR          ; Get next character
+EF4D DA4AEF             JP      C,ENDNAM        ; Numeric - Get another
+EF50 CD77E9             CALL    CHKLTR          ; See if a letter
+EF53 D24AEF             JP      NC,ENDNAM       ; Letter - Get another
+EF56 D624       CHARTY: SUB     "$"             ; String variable?
+EF58 C265EF             JP      NZ,NOTSTR       ; No - Numeric variable
+EF5B 3C                 INC     A               ; A = 1 (string type)
+EF5C 32AD10             LD      (TYPE),A        ; Set type to string
+EF5F 0F                 RRCA                    ; A = 80H&nbsp;, Flag for string
+EF60 81                 ADD     A,C             ; 2nd byte of name has bit 7 on
+EF61 4F                 LD      C,A             ; Resave second byte on name
+EF62 CD36E8             CALL    GETCHR          ; Get next character
+EF65 3ACB10     NOTSTR: LD      A,(FORFLG)      ; Array name needed&nbsp;?
+EF68 3D                 DEC     A
+EF69 CA12F0             JP      Z,ARLDSV        ; Yes - Get array name
+EF6C F275EF             JP      P,NSCFOR        ; No array with "FOR" or "FN"
+EF6F 7E                 LD      A,(HL)          ; Get byte again
+EF70 D628               SUB     "("             ; Subscripted variable?
+EF72 CAEAEF             JP      Z,SBSCPT        ; Yes - Sort out subscript
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

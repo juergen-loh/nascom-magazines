@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+A list of 45 error numbers is given in the Manual, with a fairly
+helpful explanation of what is wrong. The restriction of available memory
+space prevents the compiler translating the error number into the message on
+screen. If, during compilation, the buffer overflows, then compilation is
+aborted, and an Overflow message is printed. In this case, the MTOP pointer
+should be moved, or compilation to TAPE should be selected. This latter option
+is a very nice one, as it allows programs of very large size to be compiled
+onto tape, which can overlay the text buffer and even the compiler itself,
+provided the runtime support package, which runs from 1000H to 2180H is
+maintained. The normal position of the compiler is from 1000H to 4000H, with
+the text buffer following on immediately. For the tape version, a minimum 32k
+system is recommended, and for the EPROM version, a 16k system will suffice.
+</p>
+<p>
+The Run command will jump to the compiled program and run it, or, if
+no compilation has taken place, will force one, and then execute the program.
+If runtime errors occur, then a message to that effect is printed, and
+execution is aborted, with a return to the operating system or to Nas-Sys.
+With such a runtime error, you are given an address which indicates the
+location of the error relative to the start of the compiled code. Knowing how
+difficult it is to locate such a position, the authors of this compiler have
+given the operating system a new facility, called Find.
+</p>
+<p>
+If you reenter the operating system, and tell it to Find nnnn, then it
+will locate the statement which compiled to live at that address. You may then
+make whatever alteration to the code you wish, and try another compile.
+</p>
+<p>
+The miscellaneous commands are simple: Memory, which prints the extent
+of the text buffer, and if present, the extent of the Code, ZAP, which clears
+the buffer and Quit to return to the monitor. All commands may be abbreviated
+to their first letter only, with the exception of ZAP, which must be spelled
+out in full to avoid accidental erasure.
+</p>
+<p>
+So much for the interface between the operating system and the user.
+How about the Pascal? This Pascal offers the following:
+</p>
+<table class="blstab">
+<tr><td>Statements:</td><td>
+BEGIN END<br>
+FOR TO/DOWNTO DO<br>
+REPEAT UNTIL<br>
+GOTO (bringing joy to Dr Dark&rsquo;s disordered existence)<br>
+IF THEN ELSE<br>
+WHILE DO<br>
+CASE OF OTHERS<br>
+INIT TO (used to initialise data)<br>
+:= (assignment)<br>
+PROCEDURE statement
+</td></tr>
+<tr><td>Data Types:</td><td>
+REAL 11.5 digit arithmetic&nbsp;!!!<br>
+INTEGER &ndash; 32768 to 327677<br>
+STRINGS up to 255 chars of 255 different values<br>
+BOOLEAN logical variables<br>
+ARRAY .. OF with multiple dimensions
+</td></tr>
+<tr><td>Operators:</td><td>
++-*/ DIV MOD SHIFT AND OR EXOR = &lt;&gt; &gt; &lt; &gt;= &lt;=
+</td></tr>
+<tr><td>Procedures:</td><td>
+WRITE WRITELN READ READLN LOAD SAVE CALL SCREEN PLOT
+</td></tr>
+<tr><td>Functions:</td><td>
+ABS SQR SQRT SIN COS ARCTAN LN EXP INT FRAC SUCC PRED ODD TRUNC
+ROUND ORD CHR LENGTH MID LEFT RIGHT CONCAT ADDR RANDOM POINT
+KEYBOARD
+</td></tr>
+<tr><td>Declarations:</td><td>
+LABEL CONST VAR PROCEDURE FUNCTION
+</td></tr>
+</table>
+<?php columnEnd(1); ?>

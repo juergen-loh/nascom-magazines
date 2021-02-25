@@ -1,0 +1,258 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 8</p></th></tr>
+
+<tr><td colspan=4><p>
+******** How variables and arrays are stored ********
+</p></td></tr>
+<tr><td colspan=4><p>
+Variables such as AB AB$ and FN AB are all stored in the simple variable area
+of memory. The start address of this area is held in PROGND and the end address
+is held in VAREND.
+</p></td></tr>
+<tr><td colspan=4><p>
+If AB=10 and AB$="TEXT&rdquo; and FN AB(XY) had been defined then the memory would
+look like this
+</p></td></tr>
+
+<tr><td colspan=4>
+<table class="list2">
+<colgroup><col><col></colgroup>
+
+<tr><td><p>42 41</p></td><td><p>
+Name of AB in reverse (42 41 = &ldquo;B&rdquo; &ldquo;A")
+</p></td></tr>
+<tr><td><p>00 00 20 84</p></td><td><p>
+Floating point value for 10
+</p></td></tr>
+
+</table>
+<tr><td colspan=4>
+<table class="list2">
+<colgroup><col><col></colgroup>
+
+<tr><td><p>C2 41</p></td><td><p>
+Name for AB$ (C2 is &ldquo;B&rdquo; with bit 7 set)
+</p></td></tr>
+<tr><td><p>04</p></td><td><p>
+Length of string (4 characters)
+</p></td></tr>
+<tr><td><p>??</p></td><td><p>
+This byte unused for string
+</p></td></tr>
+<tr><td><p>LL HH</p></td><td><p>
+Address where &ldquo;TEXT&rdquo; is to be found
+</p></td></tr>
+
+</table>
+<tr><td colspan=4>
+<table class="list2">
+<colgroup><col><col></colgroup>
+
+<tr><td><p>42 C1</p></td><td><p>
+Name of FN AB (C1 is &ldquo;A&rdquo; with bit 7 set)
+</p></td></tr>
+<tr><td><p>LL HH</p></td><td><p>
+Address of function (After &ldquo;=")
+</p></td></tr>
+<tr><td><p>59 58</p></td><td><p>
+Argument name in reverse (59 58 = &ldquo;Y&rdquo; &ldquo;X")
+</p></td></tr>
+
+</table>
+</tr>
+
+<tr><td colspan=4><p>
+Arrays such as AB(1,3) and AB$(3,1) are stored in the array area of memory. The
+start address of this area is held in VAREND and the end address is held in
+ARREND.
+</p></td></tr>
+<tr><td colspan=4><p>
+If DIM AB(1,3),AB$(3,1) had been entered then the memory would look like this:-
+</p></td></tr>
+
+<tr><td colspan=4>
+<table class="list2">
+<colgroup><col><col></colgroup>
+
+<tr><td><p>42 41</p></td><td><p>
+Name of array AB in reverse
+</p></td></tr>
+<tr><td><p>25 00</p></td><td><p>
+Bytes used for array (0025 = 37)
+</p></td></tr>
+<tr><td><p>02</p></td><td><p>
+2 dimensions
+</p></td></tr>
+<tr><td><p>04 00</p></td><td><p>
+Size of second dimension including zero element
+</p></td></tr>
+<tr><td><p>02 00</p></td><td><p>
+Size of first dimension including zero element
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(0,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(1,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(0,1)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(1,1)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(0,2)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(1,2)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(0,3)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB(1,3)
+</p></td></tr>
+
+</table>
+<tr class="nopad"><td colspan=4>
+<table class="list2">
+<colgroup><col><col></colgroup>
+
+<tr><td><p>C2 41</p></td><td><p>
+Name of array AB$ in reverse
+</p></td></tr>
+<tr><td><p>25 00</p></td><td><p>
+Bytes used for array (0025 = 37)
+</p></td></tr>
+<tr><td><p>02</p></td><td><p>
+2 dimensions
+</p></td></tr>
+<tr><td><p>02 00</p></td><td><p>
+Size of second dimension including zero element
+</p></td></tr>
+<tr><td><p>04 00</p></td><td><p>
+Size of first dimension including zero element
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(0,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(1,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(2,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(3,0)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(0,1)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(1,1)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(2,1)
+</p></td></tr>
+<tr><td><p>00 00 00 00</p></td><td><p>
+AB$(3,1)
+</p></td></tr>
+
+</table>
+
+<tr><td></td><td></td><td></td><td></td></tr>
+
+</table>
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 9</p></th></tr>
+
+<tr><td colspan=4><p>
+******** Usage of the stack for GOSUB/RETURN and FOR/NEXT ********
+</p></td></tr>
+
+<tr><td colspan=4><h4>
+GOSUB and RETURN usage of the stack
+</h4></td></tr>
+
+<tr><td colspan=4><p>
+When a GOSUB is executed the address of where to RETURN to and the number of
+the line to RETURN to are PUSHed on the stack as follows:&ndash;
+</p></td></tr>
+
+<tr><td colspan=4>
+<table class="list3">
+<colgroup><col><col><col></colgroup>
+
+<tr><td><p>HIGH MEMORY:</p></td><td><p>XX XX</p></td><td><p>Address of where to RETURN to</p></td></tr>
+<tr><td><p></p></td><td><p>XX XX</p></td><td><p>Number of line to RETURN to</p></td></tr>
+<tr><td><p>STACK POINTER:</p></td><td><p>8C</p></td><td><p>GOSUB token as marker</p></td></tr>
+
+</table>
+
+<tr><td colspan=4><p>
+This GOSUB block remains on the stack until a RETURN is executed at which point
+BASIC looks back through the stack until it finds a GOSUB block and then sets
+the stack there and then POPs the line number and the address of the statement
+after the GOSUB and continues execution.
+</p></td></tr>
+
+<tr><td colspan=4><p>
+The fact that the stack is set to this GOSUB block kills all active FOR loops
+which were set up inside the subroutine.
+</p></td></tr>
+
+<tr><td colspan=4><p>
+</p></td></tr>
+
+<tr><td colspan=4><h4>
+FOR and NEXT usage of the stack
+</h4></td></tr>
+
+<tr><td colspan=4><p>
+When a FOR is executed the address of the first statement in the loop,
+the line number of the loop statement, the TO value, the STEP value and
+the sign of the STEP are all PUSHed onto the stack as follows:&ndash;
+</p></td></tr>
+
+<tr><td colspan=4>
+<table class="list3">
+<colgroup><col><col><col></colgroup>
+
+<tr><td><p>HIGH MEMORY:</p></td><td><p>XX XX</p></td><td><p>Address of first statement in loop</p></td></tr>
+<tr><td></td><td><p>XX XX</p></td><td><p>Line number of loop statement</p></td></tr>
+<tr><td></td><td><p>XX XX XX XX</p></td><td><p>TO value in floating point</p></td></tr>
+<tr><td></td><td><p>XX XX XX XX</p></td><td><p>STEP value in floating point</p></td></tr>
+<tr><td></td><td><p>XX</p></td><td><p>Sign of STEP</p></td></tr>
+<tr><td></td><td><p>XX XX</p></td><td><p>Address of index variable</p></td></tr>
+<tr><td><p>STACK POINTER:</p></td><td><p>81</p></td><td><p>FOR token as marker</p></td></tr>
+
+</table>
+
+<tr><td colspan=4><p>
+This FOR block remains on the stack until a matching NEXT is executed. When
+next is executed BASIC looks back through the stack to find the matching FOR
+block. If it is found then the STEP value is added to the value of the index
+variable and the result is compared with the TO value. With the use of the TO
+value and the sign of the step BASIC knows if the loop has been completed or
+not. If it has not been completed then the FOR block remains on the stack until
+the loop has been completed. The stack is set to point to this FOR block and
+effectively kills all FORs nested within this loop. When the loop is completed
+the FOR block is removed from the stack and execution continues from after the
+NEXT instruction.
+</p></td></tr>
+
+<tr class="nopad"><td colspan=4><p>
+If the FOR block cannot be found then a &ldquo;?NF Error&rdquo; occurs.
+</p></td></tr>
+
+<tr><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<?php DisAssemblyRomBasicEnd(); ?>

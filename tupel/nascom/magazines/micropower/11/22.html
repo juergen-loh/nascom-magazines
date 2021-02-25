@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p class="continued">
+suitable time &ndash; in order to complete the access by the end of the 500 nanosecond
+processor time slot.
+</p>
+<p>
+Two other signals are generated. One (<?php invertedSignal("RVSEL"); ?>) is intended to gate the
+address and data steering logic and permit a &ldquo;read-enable&rdquo; to reach the RAM.
+The other (<?php invertedSignal("WVSEL"); ?>) is a signal timed to be contained within this, used to permit
+a &ldquo;write enable&rdquo; to reach the RAM, with satisfactory data set up and hold timing. A
+small capacitor can be fitted to lengthen this signal slightly &ndash; this is only needed for
+slow RAMs and is included because some of the early Nascom&nbsp;1&rsquo;s might then be
+able to use this approach.
+</p>
+<p>
+On the implementation given, these signals are generated twice, for two
+different address fields. One is the V.D.U. RAM, but some readers will be interested
+in the possible application of the other. The club mentioned earlier has become
+dissatisfied with the limited character set imposed by ROM-based graphics, so a
+programmable character generator is being included as part of a P.C.B. we are
+developing (The resulting board will be 8"x8", Nasbus compatible, and also
+contain 64K of RAM and a few other bells and whistles, for those interested). Now
+the immediate use of programmable graphics is to download special characters
+chessmen is a good example &ndash; from tape along with the software that uses them.
+After that, however, is the rather more fascinating possibility of using this
+programmability dynamically to produce smooth movement: watch your Klingons
+grow in size in your starship viewscreen as they sweep in to the attack.
+</p>
+<p>
+Our P.C.B. uses separately addressed RAM, which is expected to be regularly
+accessed by both the video display logic and the processor, so the same conditions
+exist as for the V.D.U. RAM. Not surprisingly, the same solution to on-screen
+disturbances also applies; hence the second pair of signals. Since they require
+no additional I.C.s for their generation, I have included them in the diagram.
+</p>
+<p>
+The instructions constitute a modification for Nascom&nbsp;1, for which I won&rsquo;t
+apologise: there are a lot of you, and also you have lived with the problem longer!
+Nascom&nbsp;2 owners should have little difficulty in working out their own version, but if
+there is sufficient demand then another article is always possible. To assist with
+installation a sketch is included of the veroboard layout as fitted to my own
+machine. It will be noticed that the connections to IC31 are made by adding
+&ldquo;extension legs&rdquo; from the pins of the 7406 down through the veroboard. This
+makes for space saving, wiring minimisation, and a certain amount of
+mechanical support all in one, so is to be recommended. These extension legs
+were taken from a broken DIL headers I suggest that you experiment and search
+your Junk box.
+</p>
+<h3>
+INSTALLATION
+</h3>
+<p>
+In the instructions which follows &ldquo;Lift IC xx pin y&rdquo; means: carefully remove IC xx from
+its socket, with a pair of thin, flat-nosed pliers bend pin y horizontal so that it no
+longer makes contact with the socket, and replace. &ldquo;Connect pin of IC xx/y to&nbsp;...&rdquo;
+means: solder one end wire directly to the pin bent horizontal in a &ldquo;Lift&rdquo; instruction.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<pre>
+1000            0010             ORG    &pound;1000              ; Nascom&nbsp;2 pixel set
+1000   210000   0020             LD     HL 0               ; Put your P.C.G. address here
+1003   110002   0030             LD     DE &pound;200            ; Offset to character &pound;A0
+1006   19       0040             ADD    HL DE
+1007   E5       0050             PUSH   HL                 ; Save HL
+1008   0610     0060             LD     B 16               ; Sixteen bytes to be cleared
+100A   3600     0070   CLRAO     LD     (HL) 0             ; Set all bytes to zero
+100C   23       0080             INC    HL
+100D   10FB     0090             DJNZ   CLRA0
+100F   E1       0100             POP    HL                 ; Recover HL
+1010   19       0110             ADD    HL DE              ; Now go to character &pound;C0
+1011   0EC0     0120             LD     C &pound;C0              ; Character is kept in C
+1013   C5       0130   SBC       PUSH   BC                 ; Save BC
+1014   D70B     0140             RCAL   PIX5               ; Set 5 top bytes as necessa
+1016   D709     0150             RCAL   PIX5               ; Set next 5 bytes
+1018   0606     0160             LD     B 6                ; Set bottom 6 bytes
+101A   D707     0170             RCAL   PIXEL
+101C   C1       0180             POP    BC                 ; Recover BC
+101D   0C       0190             INC    C                  ; Next character
+101E   20F3     0200             JR     NZ SBC             ; Continue until zero
+1020   C9       0210             RET
+1021   0605     0220   PIX5      LD     B 5                ; Routine to set 5 bytes
+1023   AF       0230   PIXEL     XOR    A                  ; Clear A
+1024   CB09     0240             RRC    C                  ; Test bits 0,1 or 2
+1026   C5       0250             PUSH   BC
+1027   3002     0260             JR     NC RRC3            ; Jump if bit = 0
+1029   3EF0     0270             LD     A &pound;F0              ; Draw pixel if bit = 1
+102B   CB09     0280   RRC3      RRC    C                  ; Now test bits 3,4 or 5
+102D   CB09     0290             RRC    C
+102F   CB09     0300             RRC    C
+1031   3002     0310             JR     NC LDHLA           ; Jump if bit = 0
+1033   C60F     0320             ADD    A 15               ; Draw pixel if bit = 1
+1035   77       0330   LDHLA     LD     (HL) A             ; Set number of lines
+1036   23       0340             INC    HL                 ; Stored in B
+1037   10FC     0350             DJNZ   LDHLA
+1039   C1       0360             POP    BC                 ; Recover BC
+103A   C9       0370             RET
+1000            0380             ORG    &pound;1000              ; TRS80 pixel set
+1000   0EC0     0390             LD     C &pound;C0
+1002   210000   0400             LD     HL 0               ; Put your P.C.G. address here
+1005   C5       0410   TPUSH     PUSH   BC
+1006   D70B     0420             RCAL   TRSP5              ; Two sets of 5 lines
+1008   D709     0430             RCAL   TRSP5
+100A   0606     0440             LD     B 6
+100C   D707     0450             RCAL   TRSPIX             ; One set of six lines
+100E   C1       0460             POP    BC
+100F   0C       0470             INC    C
+1010   20F3     0480             JR     NZ TPUSH
+1012   C9       0490             RET
+1013   0605     0500   TRSP5     LD     B 5
+1015   AF       0510   TRSPIX    XOR    A
+1016   CB09     0520             RRC    C                  ; Test bits 0, 2, or 4
+1018   3002     0530             JR     NC TRRC
+101A   3EF0     0540             LD     A &pound;F0              ; Draw pixel if bit = 1
+101C   CB09     0550   TRRC      RRC    C                  ; Test bits 1, 3, or 5
+101E   C5       0560             PUSH   BC
+101F   3002     0570             JR     NC TRR2
+1021   C60F     0580             ADD    A 15               ; Draw pixel if bit = 1
+1023   77       0590   TRR2      LD     (HL) A             ; Set number of lines
+1024   23       0600             INC    HL                 ; Stored in B
+1025   10FC     0610             DJNZ   TRR2
+1027   C1       0620             POP    BC
+1028   C9       0630             RET
+</pre>
+<?php columnEnd(1); ?>

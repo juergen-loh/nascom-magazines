@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+51
+Climax Routine by R. O&rsquo;Farrell
+</p>
+<p>
+As David Hunt has written a comparative review of the three colour boards
+for the 80-BUS, I have willingly left the detailed review of the Climax MV256
+to him. Listing 1 is a program to run on it. This program draws a map of
+Ireland including the major rivers. Included are two extensions to this
+program. Listing 2, also written in MBASIC, is to be inserted into Listing 1
+according to its line numbers. This draws the picture on an EPSON FX80
+installed as the LST: device in Graphics Mode 4. This is slow, taking 27
+minutes to draw the picture!
+</p>
+<p>
+What happens in the printer driver is this: The Y coordinate is set to
+255, and the X coord to 0. GETCOL(X,Y) is called to return the colour of the
+pixel at X,Y. If this is not black, then we calculate the value needed to
+display this bit if we print rows of 8 bits vertically. We work down 8 rows,
+in the first column, building up the value of the byte. Then we move to the
+next column, top row, and carry on. Having finished the screen-width, we
+transmit the graphics line selectors, and the entire row. Then on to the next
+group of 8 raster lines. Because of the looping involved, this is very slow!
+Listing 3 is an improved version of this. It patches into the MVLINK
+primitives and is written in assembly language. It should be inserted into
+MV2.MAC after INIT, and MVLINK.MAC reassembled and linked with M80/L80. Using
+machine code, this performs the same task in 35 seconds! Note that there are
+two other entries needed to use this listing &ndash; an insertion of a call to DUMP
+in the jump table (p53, Appendix B, Microvector Manual), at address O2FA and
+the insertion of a new label in GETP(X,Y), page 59, label name GETCOL at
+address 049A (PUSH BC) in the MVLINK listing. This latter saves a call to
+GETPAR and READY, to speed things up slightly. It is important that the LST:
+device driver should not interfere with the data at all, otherwise spurious
+characters may be printed. This means that users of the SYS BIOS and the MAP80
+BIOS will have to ensure that the page length is set to 0 by changing the byte
+in the BIOS at plpag:, see the system notes for details. If using the new
+primitive, I suggest that it live at MVBASE+99, and be called DUMP. It should
+be called with one parameter, the colour of the background of the screen,
+which will not be printed. All other colours will be. It is possible, using
+this primitive, to print an enlarged picture by drawing on screen four
+successive quadrants, printing each, and winding the printer back up after
+them using the reverse line feed. This is left as an exercise for you!
+</p>
+<p>
+It is important when using the MV256 that the program be saved to disc
+before executing. If through some error or oversight one of the CALLs is not
+properly defined, it will be treated as CALL 0, and the program crashes,
+causing much weeping and gnashing of teeth. While there are methods of
+regaining the source code, it is easier to MVLINK, and LOAD &ldquo;FILENAME!
+</p>
+<p>
+When purchasing the MV256, it is worth getting the disc with the driving
+primitives and demonstration program. The demo programs are quite impressive,
+and give one something to aim at.
+</p>
+<?php columnEnd(1); ?>

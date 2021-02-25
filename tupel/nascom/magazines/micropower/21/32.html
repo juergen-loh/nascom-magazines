@@ -1,0 +1,49 @@
+<?php columnStart(1); ?>
+<p>
+The solution is simple &ndash; after testing the argument the routine should reset ARG1
+to zero. Alternatively, you can POKE the value to zero from Basic.
+That brings us to the end of the Nas-Sys commands, but there are many more
+addresses in the subroutine call table &ndash; 34 in Nas-Sys&nbsp;1 and 37 in Nas-Sys&nbsp;3. These
+SCALs cannot be accessed directly from the keyboard like the command letters.
+Many of them correspond to lower case letters, but if you try to enter them as
+commands you will just get an error message, because the routine which accepts
+commands test the input character to see if it lies in the range A &ndash; Z. Of course they
+are there to be used in programs.
+</p>
+<p>
+SCAL MRET DF 5B
+</p>
+<p>
+This is the normal way to return to the monitor from a program. The routine
+resets the monitor and user stacks, prints the monitor message (-- NAS-SYS&nbsp;3 --, or
+whatever you have substituted) on the screen, restores the byte replaced by any
+breakpoint that has been set, and then waits for an input. The screen is not cleared,
+and the monitor message will appear at whatever point the cursor was left by the
+program &ndash; for tidyness you should shift the cursor to the left of the screen by a
+carriage return if it has been moved. If you want to clear the screen on return
+to the monitor you can use RST 0 (&pound;C7); this will re-initialise the workspace and
+clear the screen before jumping to MRET.
+</p>
+<p>
+SCAL SCALJ DF 5C
+</p>
+<p>
+This enables you to access any Nas-Sys subroutine by storing the
+subroutine &lsquo; number &lsquo; at ARGC (&pound;0C0A). The routine saves the HL, AF and DE
+registers, picks up the routine number from ARGC, and then jumps to section of
+code in the subroutine call restart where the call address is calculated from the
+subroutine number. Of course, any requirements of the normal call must be met if a
+subroutine is accessed &lsquo;indirectly&rsquo; by SCALJ; for example, to call the READ
+command via SCALJ you would have to store &pound;52 (&ldquo;R&rdquo;) at &pound;0C0A, but you would
+also have to place &pound;52 at &pound;0C2B, or the routine would only &lsquo; verify&rsquo; the tape.
+</p>
+<p>
+SCAL TDEL DF 5D
+</p>
+<p>
+This routine calls the &lsquo;delay&rsquo; &pound;FFrestart, RDEL (RST &pound;38, &pound;FF) 512 times. As
+each RDEL takes rate 2.7 msec. with a clock rate of 4 Mhz, the total delay in TDEL
+is 1.38 seconds. Obviously, at 2 Mhz the above times are doubled. Registers A and
+B are both set to zero on return from this routine.
+</p>
+<?php columnEnd(1); ?>

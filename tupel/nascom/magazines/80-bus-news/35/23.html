@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+23
+</p>
+<p>
+Parameter block contents.
+</p>
+<p>
+PB Address of control array
+</p>
+<p>
+PB+2 Address of input parameter array
+</p>
+<p>
+PB+4 Address of input point coordinate array
+PB+6 Address of output parameter array.
+</p>
+<p>
+PB+8 Address of output point coordinate array
+</p>
+<p>
+CONTROL ARRAY
+</p>
+<p>
+This area is used by the GDOS and GIOS for control of the selected
+function. For example control(1) will contain the number of the required
+graphics routine (Remember open workstation &ndash; opcode 1). The remaining fields
+are used to contain values representing the amount of valid data contained in
+the other arrays on both entry to, and return from, the GIOS. These are
+usually extracted by the GIOS and used as loop counters.
+</p>
+<p>
+INTIN ARRAY
+</p>
+<p>
+Contains information to be&rsquo;used by the GIOS in a called function. These
+are not usually point coordinates but colour change values, text strings,
+input device modes and the suchlike.
+</p>
+<p>
+PTSIN ARRAY
+</p>
+<p>
+Contains point coordinates passed to the GIOS from the calling program.
+Used to contain line coordinates for example. This array is scaled to device
+coordinates by the GDOS before control is passed to the GIOS.
+</p>
+<p>
+INTOUT ARRAY
+</p>
+<p>
+Similar to intin but used by the GIOS to return data to the calling
+program. Typical entries are text rotation achieved as opposed to rotation
+asked for, input samples flagged as successful or not, linestyle selected etc.
+</p>
+<p>
+PTSOUT ARRAY
+</p>
+<p>
+Similar to ptsin but used by the GIOS to pass coordinates back to the
+calling program. This array is also scaled by the GDOS before control is
+passed back to the caller, but this time to the 32k X 32k virtual frame size.
+</p>
+<p>
+The GSX standard dictates that all array elements are 16 bit values, even
+ASCII text strings. Ail array references in the documentation are 1 based,
+which can be a source of bugs if you forget that array(l) is really array(0).
+</p>
+<p>
+Memory arrangement.
+</p>
+<p>
+Those of you au fait with the CP/M map may care to take a look at fig 2,
+which shows where the GDOS and GIOS live when at home. All calls to BDOS are
+rerouted through the GDOS first (via a modified 0005h) and passed on to the
+BDOS if it is not a graphics request.
+</p>
+<?php columnEnd(1); ?>

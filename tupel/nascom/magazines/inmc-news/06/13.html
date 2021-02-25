@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<h1 style="text-align: center">
+DOCTOR DARK&rsquo;S DIARY-4
+</h1>
+<h4 style="text-align: center">
+(An every day story of simple programming folk)
+</h4>
+<p>
+Issue five of the INMC News arrived at Zilog Villas just in time
+for Christmas &ndash; this was clearly the result of a prodigious effort
+by both the committee and the post office. Having suggested to
+our illustrious editor that he should print both the episodes I
+had sent in at once if there was a shortage of material, I was
+caught with my pencil down. The pressure is on now, no more
+playing with the piranhas until I have typed this episode out.
+</p>
+<h4>
+MAKING M5 RUN BIGGER PROGRAMS
+</h4>
+<p>
+If you have run Microdigital&rsquo;s M5 interpreter, you will know that
+it can only run programs of about 230 bytes or less, depending on
+how much use is made of the stack. On an expanded Nascom, only
+a few changes need to be made to the M5 interpreter to move the
+program store to the additional memory. The changes are as follows:
+</p>
+<p>
+0DE1 : 00 10<br>
+0E06 : F0 0E<br>
+0H2F : FF 0F<br>
+0FSA : FF 0F<br>
+0EB3 : 00 10<br>
+0EDB : FF 0F
+</p>
+<p>
+As well as changing the program store location, I have also changed
+the variable stores from the top line of the screen, which was
+rather unsightly, and put them where the program used to be. There
+is still plenty of space for the stack to work in, it would take
+about a hundred consecutive pushes to cause problems &ndash; if your
+calculation is that complex, you should be using Fortran! Should
+you happen to write a program in M5 that uses 32K of RAM, you may
+find jumps from the low end of memory to the high end are fairly
+slow. Serve you right for writing such long programs.
+</p>
+<h4>
+TINY DISASSEMBLER
+</h4>
+<p>
+When I first used M5, I wanted to find out how it worked, so I
+decided I would disassemble it. Hand disassembly is incredibly
+tedious, and Personal Computer World still have not printed the
+end of Parkinson&rsquo;s Revas (a Nascom disassembler, which it just
+happens you can buy if you have the money). Half way between the
+two alternatives is a program written by R. M. Lucas, and published
+in Computing Today, October 1979. This program is called Intab
+(short for Intelligent Tabulate) and breaks a program up into its
+separate instructions &ndash; much easier to understand than a rectangular
+block of code. As Intab is probably protected by all sorts of
+copyright laws, I have taken the diabolical liberty of writing an
+improved version, which is fully relocatable, and (sorry!) only
+works with T4.
+</p>
+<?php columnEnd(1); ?>

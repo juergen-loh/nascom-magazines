@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<p>
+If a valid address is obtained subsequent hexadecimal numbers on the line are
+entered into memory until the end of the line is reached (detected by means of the
+nulls with which the screen margins are filled) or until a non-valid entry is found. lf
+all the numbers are valid the modify routine continues on the next line, displaying
+the updated address and the byte at that address, when further data can be entered.
+Although the data to be entered is in bytes, the routine which evaluates the
+successive groups of characters is designed to handle sixteen-bit values, but only
+the least significant eight bits are put into memory, thus FA, 1FA and 37FA will all
+go into memory as FA. lf the number exceeds FFFF an error message will be
+generated and the routine will reset to the address at the start of the line, but
+data will have been entered into memory up to and including the first invalid
+entry.
+</p>
+<p>
+lf a character is encountered which does not lie in the ranges 0 &ndash; 9 or A &ndash; F
+the above error process will normally occur, but here are four exceptions to this.
+A full stop terminates the Modify command and returns control to the monitor.
+An oblique stroke changes the address to be modified to the hexadecimal number
+following the stroke; an error message is produced if the characters following the
+stroke are not in the &lsquo;hexadecimal&rsquo; set, but if no number is entered the address
+changes to zero, A colon causes the routine to backstep one address.
+Because the Modify routine leaves the current line when it encounters one of
+the above three characters, either to return to monitor or to start a new line, you
+cannot use more than one character per line; you cannot, for example, backstep
+three spaces be entering 0C90 ::: N/L; only the first will be effective and address
+0C8F will be displayed.
+</p>
+<p>
+The fourth &lsquo;special&rsquo; character is the comma; this causes the ASCII code of the
+following character to be entered into memory. In this case you can enter as many
+codes as will fit on the line, and you can mix them freely with the usual
+hexadecimal codes. For example
+</p>
+<p>
+EF,H,E,L,L,O 00
+</p>
+<p>
+will be entered as
+</p>
+<p>
+EF 48 45 4C 4C 4F 00
+</p>
+<p>
+Note that you do not need to enter spaces to separate the bytes in addition to a
+comma.
+</p>
+<p>
+NORMAL N
+</p>
+<p>
+This command resets the addresses of the output and input tables, stored at
+&pound;0C73 and &pound;0C75, so that output is routed only to the CRT and input is accepted
+only from the keyboard and serial input port. The U command changes these
+addresses so that input and output first calls user routines previously specified at
+&pound;0C7B and &pound;0C78. Thus once the address of a printer routine, for example, has
+</p>
+<?php columnEnd(1); ?>

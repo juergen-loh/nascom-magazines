@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+address in the monitor to end a program. This will cause
+problems. It is always safe to jump to address 0, which
+restarts the monitor program correctly.
+</p>
+<p>
+If you don&rsquo;t want to clear the screen
+</p>
+<p>
+Reset the stack to 0C33H<br>
+then jump to PARSE
+</p>
+<h1 id="article1">
+Notes on PIO Operation.
+</h1>
+<p>
+The Nascom I has on board two totally uncommitted 8 bit
+parallel I/O ports complete with handshake lines, in the
+shape of an MK3881 Z80 &ndash; PIO. &lsquo;The PIO is, in itself, a
+fairly complicated processor, which needs programming
+before it will operate in any of its 4 modes:
+</p>
+<table style="width: 100%">
+<tr><td>OUTPUT</td><td>MODE 0</td><td></td></tr>
+<tr><td>INPUT</td><td>MODE 1</td><td>(automatically set on PIO Reset)</td></tr>
+<tr><td>BIDIRECTIONAL</td><td>MODE 2</td><td></td></tr>
+<tr><td>CONTROL</td><td>MODE 3</td><td></td></tr>
+</table>
+<p>
+It is not the purpose of these notes to describe in detail
+these operational modes, but to help clear up a few
+common problems encountered in controlling the PIO.
+</p>
+<p>
+One very important fact to note is that the PIO is not
+reset by the RESET button on the keyboard. This resets
+the CPU only, <u>NOT</u> the PIO. It may be reset in two ways.
+The simplest is to switch the power off and on again; a
+bit drastic but the PIO does have automatic power on reset.
+The second method (shown in fig.3&nbsp;) is to apply an M1
+without either <?php invertedSignal("RD"); ?>
+or <?php invertedSignal("IORQ"); ?>. It should, however, be pointed
+out that, since the CPU can be reset, it is always possible
+to regain control of the PIO in software, by simply
+reprogramming it.
+</p>
+<p>
+Now to &lsquo;interrupts&rsquo;. Don&rsquo;t forget that the PIO is designed
+to operate in the Z-80 Interrupt Mode 2, so before doing
+anything put the CPU into this mode by executing &lsquo;IM 2&rsquo;
+(HEX code ED 5E). Remember that a CPU reset puts the Z-80
+back to Interrupt Mode 0 clears the I register, and dissables
+CPU interrupts (having no effect on the PIO).
+</p>
+<p>
+In Interrupt mode 2, the CPU finds the <u>address</u> of the
+interrupt routine, by loading the Program Counter (P.C.)
+with the <u>contents</u> of the memory address. This is formed
+by the I register (high byte), and the interrupt vector
+sent from the interrupting port (low byte).
+</p>
+<p style="text-align: right">
+/ .. ..
+</p>
+<?php columnEnd(1); ?>

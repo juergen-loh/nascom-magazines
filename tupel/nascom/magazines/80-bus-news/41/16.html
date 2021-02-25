@@ -1,0 +1,99 @@
+<?php columnStart(1); ?>
+<p>
+Index file loader for Dbase M-80 17 May 1985 21:53 PAGE 1-1
+</p>
+<p>
+co7c 01 000B ld be, 11
+COTF ED BO ldir
+C081 DS push de
+co82 18 E8 jr srch
+C084 D1 schdon: pop de ; Mark the end of the lis!
+C085 AF xor a
+co86 12 ld (de) ,a
+; Now copy out the files
+C087 21 cloD ld hl, save ; Point to the list
+CO8A OES push hl&nbsp;.
+CO8B cD coco copylp: call clr ; Clear the fcbs
+CO8E 3A C003 ld _a,(dstdrv) &lsquo;; Copy dest. drive to fob;
+C091 32 C027 Id (feb2},a
+C094 El pop hl
+coos E5 push hi
+C096 TE ld a, (hl) ; Test for all done
+cooT B7 or a
+C098 28 17 jr z, copydn
+CO9A 11 co05 ld de,fcbl+1 ; Copy the name to febl
+coop 01 0008 ld bc, 11
+CoAO ED BO ldir
+&lsquo; COA2 El pop hl ; Copy the name to fcb2
+COAS ll co28 ld de, fob2+1
+COAG 01 000B ld be, 11
+COoAg ED BO ldir
+COAB ES push hi ; Save the list pointer
+coac cD cocB call copy
+COAF 18 DA jr copylp
+</p>
+<p>
+; All done, so go home
+</p>
+<p>
+cOBL El copydn: pop hl ; Clear the stack&nbsp;..
+</p>
+<p>
+COB2 cg ret ; .. and go home
+; Subroutines
+; Locate file in directory list
+</p>
+<p>
+COBS 87 loc: add a,a
+</p>
+<p>
+COB4 87 add a,a
+</p>
+<p>
+COBS 87 add a,a
+</p>
+<p>
+COBG 87 add a,a
+</p>
+<p>
+COB? 87 add a,a
+</p>
+<p>
+cOBs 26 00 ld h,0
+</p>
+<p>
+COBA 6F ld lla
+</p>
+<p>
+COBB 11 0081 ld de, dmat+1
+</p>
+<p>
+COBE 1g add hi,de
+</p>
+<p>
+COBF cg ret
+</p>
+<p>
+; Clear out fcbl and fcb2
+</p>
+<p>
+coco AF clr: xor a
+</p>
+<p>
+cocl 06 3A la b,start-foblb
+coc3 21 colo ld hl, feblb
+coce 77 clirl: 1d (hl),a
+</p>
+<p>
+COc7 23 inc hl
+</p>
+<p>
+coce 10 FC djnz elrl
+</p>
+<p>
+COCA cg ret
+</p>
+<p>
+5 coh
+</p>
+<?php columnEnd(1); ?>

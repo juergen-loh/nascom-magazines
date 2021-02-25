@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<p>
+Load Address Block3 &ndash; 16 bits absolute address<br>
+Length of Block 3 &ndash; 7bits sector count + flag<br>
+Load Address Block4 &ndash; 16 bits absolute address<br>
+Length of Block 4 &ndash; _ 7bits sector count + flag
+</p>
+<p>
+This structure takes 16 bytes and allows each section to be broken into up to 4 blocks
+of up to 16K (128 CP/M records). The length bytes have a flag in bit 7 to indicate
+the end of the section. Since I used one logical sector to contain the entire table, I
+could have up to 8 sections, but it would obviously be possible to use more sectors
+and have more sections. To make life simple I wrote a short program to combine
+standard object files (.COM files) to make up an overlay file with addresses
+provided from the console, although a submit file with XSUB can be used to control
+it.
+</p>
+<p>
+The machine code to operate this system takes about 70 bytes once the file is open
+and the reference table is loaded. I have included a listing of it. It will not allow
+returns to the caller since this was not necessary in my application but it should be
+easy to do. Also it does not keep a record of the last section loaded but this should
+not be too difficult either. Naturally it uses random access file handling.
+</p>
+<pre>
+chain: ; Chain next program &ndash; non re-entrant version
+pop hi ;Drop return address
+pop hi ;Get program number (HiSoft C system)
+Id al
+chainl: Id h,0 ;Entry point used by machine code
+add a,a ;Calculate reference address
+add aa
+add aa
+add aa
+Id La
+id de,ovret! ;Reference table has been loaded here
+add hi,de ;HL now points to required entry
+Id e,(hl) ;Get sector number
+inc hi
+id d,(hl)
+inc hi
+id (ovrfcb +33),de ;Set random record number
+1d e,(hl) ;Get entry address
+inc hi
+Id d,(hl)
+inc hl
+push de ;Push it
+chain2: Id e,(hl) ;Get load address
+inc hl
+Id d,(hi)
+inc hi
+Id b,(hl) ;Get length
+res 7,b ;Strip off flag
+push hi ;Save hi
+</pre>
+<?php columnEnd(1); ?>

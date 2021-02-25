@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+SPECIFICATIONS.
+</p>
+<p>
+The Pluto Card.
+The Pluto card is available in a number of different versions and with
+</p>
+<p>
+various options, from the Baby Pluto to the Pluto Palette. The Pluto card I
+shall concern myself with is the standard Pluto with the 8MHz option fitted.
+The optional extended command ROM was not fitted. The cost of this version is
+&pound;450.00. The card is an 8" x 8" card and densely packed. 196K of 4164 RAM is
+fitted, 192K is used for display. The basic resolution is 640 x 288 in two
+pages and eight colours. The two pages may be addressed at will, and the use
+of two pages allows one page to be displayed whilst manipulation is taking
+place on the other. Switching then allows the two display pages to be swopped
+instantly making for very fast apparent frame changes. (A Baby Pluto is the
+same but only has half as much RAM and a single page.)
+</p>
+<p>
+The Card is port driven, control codes being sent to three ports
+addressed in page CXH. The port addresses may be redefined. Output is provided
+in TTL compatible RGB with mixed or separate syncs only, the resolution of the
+Pluto precludes the use of an RF output.
+</p>
+<p>
+Most, but not all the RAM is assigned to the physical display. Areas.
+are set aside for the storage of character sets and shapes as desired. These
+areas are setup dynamically, and are assigned as pages 0 =- 255. Pages O and 1
+are the display pages, setting software switches allows access to any page.
+The card uses an 8088 16 bit processor for control
+</p>
+<p>
+Single and multibyte commands are passed to the on-board 8088 and this
+processor causes the function to take effect. The functions provided in the
+command ROM as supplied are adequate, but the more complex functions such as
+circle drawing and filling and complex fills are only provided with the
+extended command ROM available as an option. Little external software is
+required to drive the Pluto card.
+</p>
+<p>
+The Nascom Card.
+</p>
+<p>
+The Nascom AVC is a 10" x 8" card and is supplied complete with a NAS-DOS
+disk of add-ons to the Nascom Basic and a very extensive manual. The card
+is the cheapest of the trio at &pound;149.95.
+</p>
+<p>
+The Nascom AVC has page moded RAM and uses three overlayed RAM planes
+each of 16K, which could provide a maximum resolution of 512 x 256. However,
+as this RAM is also addressed during line and frame blanking the display is
+actually 392 x 256 pixels. The RAM areas being page mode can be addressed at
+the same address and as supplied are set to 8000H although these addresses may
+be changed to suit at any 16K boundary. As addressing is by page mode, no
+space is normally used in the processor RAM plane, but unlike the Pluto and
+Climax cards, this method allows direct access to the video RAM. Three ports
+are also used for control of AVC via the 6845 video controller allowing non-standard
+video formats to be set up (not advised unless you know exactly how
+the 6845 works), current cursor positions, ete.
+</p>
+<p>
+1 volt video outputs for Red, Green and Blue are provided with both
+separate and mixed syncs. TTL output levels are also available on the card. An
+external connector allows the Nascom PIO to be connected to an area of logic
+which can deselect the colour outputs completely or select different colours
+to the different outputs, for instance, the red output may be turned off or
+may be directed to either the blue or green outputs, and likewise for the
+other outputs. This allows very high speed colour switching and use of this
+feature allows for limited animation graphics. It&rsquo;s a pity that horizontal and
+vertical syncs are not provided as separate ouputs from the card as we had to
+build a primitive RC sync separator to feed frame pulses back into the Nascom
+</p>
+<?php columnEnd(1); ?>

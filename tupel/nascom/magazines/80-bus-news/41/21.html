@@ -1,0 +1,161 @@
+<?php columnStart(2, 2); ?>
+<p>
+anywhere in the line. This switch will be
+overridden by a C switch setting.
+</p>
+<p>
+Ldd_ indicates that the displayed line to be checked
+is the dd&rsquo;th previous to the CHECK command
+line. An error is reported if this line is up off
+the screen. The B switch affects the line
+counting. The default value is one ie. the
+previous line on display.
+</p>
+<p>
+N indicates that the presence of the supplied
+string prompts for abortion of the submission.
+The default condition is that a matching
+string according to the other switches indicates
+that the submit file should continue.
+</p>
+<p>
+S indicates that the string must match the start
+of the displayed line. The default is a match
+anywhere in the line. This switch will be
+overridden by an F switch setting.
+</p>
+<p>
+U indicates that the displayed line should be
+converted to upper case before comparison
+with the supplied string. This is normally
+necessary as the CCP capitalises the command
+when it is put into the command area.
+No capitalisation is an option under CCPZ &mdash;
+the public domain rewrite of CCP for the Z80.
+The default option is no case conversion.
+</p>
+<p>
+W _ indicates that a &lsquo;?&rsquo; in the supplied string is
+wild ie. as with the CP/M ambiguous file
+name convention &lsquo;?&rsquo; will match any character
+in the displayed line. The default is that &lsquo;?&rsquo;
+treated as a normal character.
+</p>
+<p>
+I hope that readers of the 80-BUS News find this
+short article interesting and the supplied program
+useful.
+</p>
+<p>
+Private Advertisements
+</p>
+<p>
+Items For Sale
+</p>
+<p>
+Nascom&nbsp;2 with CP/M and Nas-Dos, MAP 80 RAM
+card (full 256K), Nascom AVC with CP/M and
+Nas-Dos software, Nascom FDC, one SSDD disk
+drive in twin drive box and PSU, Gemini 5A PSU
+and 8 slot backplane in rack frame. Gemini EPROM
+board with all the usual firmware, Bits and PC&rsquo;s
+EPROM programmer &ndash; lots of spare 2708&rsquo;s and
+2716&rsquo;s, PAL encoder card (needs attention). Nascom&nbsp;1
+with 32K RAM A card and BASIC ROM,
+Cottis-Blandford interface, 3A PSU (needs attention}.
+Lots of disk and tape software and all the
+manuals. Offers for whole or parts to: Dr David
+Plews, Tel. Steeton ____ _____ (day), ____ _____
+(evening).
+</p>
+<p>
+TITLE CHECK SUBMIT
+. 280
+-COMMENT |
+</p>
+<p>
+CHECK &lsquo;string&rsquo;/switches
+</p>
+<p>
+This utility is run as part of a submit file. It a
+checks a previous line on display against the supplied
+string. If this string matches the displayed line
+according to the switches the submit continues,
+otherwise it can be aborted after a prompt.
+</p>
+<p>
+The optional switches are:
+</p>
+<p>
+B causes blank lines to be counted with the L
+switch, defaults to ignore blank lines,
+</p>
+<p>
+C the string matches the full displayed line,
+defaults to only part,
+</p>
+<p>
+F the string matches finish of displayed line,
+defaults to anywhere,
+</p>
+<p>
+Ldd causes the dd&rsquo;th previous line to be compared
+with the string, defaults to one,
+</p>
+<p>
+N the string must not be in the displayed line,
+defaults to contained,
+</p>
+<p>
+S the string matches start of displayed line,
+defaults to anywhere,
+</p>
+<p>
+Us the displayed line is converted to uppercase
+before comparison, defaults to no case change,
+</p>
+<p>
+W indicates that &lsquo;?&rsquo; in the supplied string are
+wild cards, defaults to ordinary &lsquo;?&rsquo; for matching.
+</p>
+<p>
+Switch C overrides F which overrides S.
+</p>
+<p>
+It is intended to trap compiler error summaries etc
+and stop the continuation of the submit file. An
+example submit file is:
+</p>
+<p>
+ED $1.MAC
+</p>
+<p>
+M80 =$1
+</p>
+<p>
+CHECK &lsquo;NO FATAL ERROR(S}&rsquo;/CU
+L80 /P:100,$1,$1/N/E
+</p>
+<p>
+$1
+</p>
+<p>
+SC Willmott 26 April 1985
+</p>
+<p>
+DEBUG EQU 6
+</p>
+<p>
+VCDATA QU OBIH VIDEO CARD DATA PORT
+VCSTAT EQU OB2H =: VIDEO CARD STATUS PORT
+</p>
+<p>
+NSWICH EQU Oo :MUST BE LS BIT
+BSWICH EQU 1
+CSWICH EQU 2
+FSWTCH EQU 3
+SSWTCH EQU 4
+USWICH EQU 5
+WSWTCH EQU 6
+</p>
+<?php columnEnd(2); ?>

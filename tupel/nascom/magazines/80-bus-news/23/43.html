@@ -1,0 +1,297 @@
+<?php columnStart(1); ?>
+<p>
+A moo mn
+</p>
+<p>
+endif
+</p>
+<p>
+jr z,sp4
+</p>
+<p>
+pop af
+</p>
+<p>
+out (puartd),a
+ret
+</p>
+<p>
+endif
+</p>
+<p>
+3 Serial input routine
+</p>
+<p>
+serin:
+</p>
+<p>
+st4:
+</p>
+<p>
+; Serial output routine
+</p>
+<p>
+serout:
+</p>
+<p>
+gerd:
+serd4:
+</p>
+<p>
+in a, (uarts)
+if ue250
+rra
+</p>
+<p>
+else
+</p>
+<p>
+rla
+</p>
+<p>
+endif
+</p>
+<p>
+ret ne
+</p>
+<p>
+in a, (uartd)
+ld hi, (abut)
+ld (hi),a
+ine hl
+</p>
+<p>
+ld a, (jbdost2)
+dec a
+</p>
+<p>
+ep h
+</p>
+<p>
+jr ng,st4
+</p>
+<p>
+1d a, (vbusy)
+or 4
+</p>
+<p>
+ret nz
+</p>
+<p>
+ld ec,bell
+</p>
+<p>
+ld c,condir
+dp jbdos
+</p>
+<p>
+id (abuf),hl
+ret
+</p>
+<p>
+ora
+</p>
+<p>
+dp pe,ser2
+xor 80h
+push af
+eall serin
+in a, (uarts)
+if 1u8250
+bit 5,a
+else
+</p>
+<p>
+bit 6,a
+endif
+</p>
+<p>
+jr z,ser4
+</p>
+<p>
+pop af
+</p>
+<p>
+out (uartd),a
+ret
+</p>
+<p>
+; Buffer
+</p>
+<p>
+buffer:
+</p>
+<p>
+end start
+</p>
+<p>
+&lsquo;
+&lsquo;
+</p>
+<p>
++
+</p>
+<p>
+,
+</p>
+<p>
+Store in buffer
+</p>
+<p>
+Check buffer size limit
+</p>
+<p>
+If VDU busy, cannot signal error, so ignore
+</p>
+<p>
+Tgnore char and sound bell
+(Probably losing more chars)
+</p>
+<p>
+Update buffer position
+</p>
+<p>
+Make even parity
+</p>
+<p>
+Scan for serial input
+</p>
+<p>
+Hisoft Pascal 3
+</p>
+<p>
+Ww
+</p>
+<p>
+L
+</p>
+<p>
+9010
+0020
+0030
+o04G
+9050
+9060
+0070
+o080
+Q090
+0100
+e110
+0120
+O120
+0140
+0150
+0160
+O170
+0180
+o190
+0200
+O210
+O220
+O230
+9240
+0250
+0260
+270
+o280
+a290
+O300
+O310
+O320
+O330
+0340
+Q350
+9360
+O379
+0380
+O390
+0400
+O410
+9420
+9430
+0440
+0450
+0460
+0470
+0480
+0490
+Q500
+O510
+a520
+O520
+0540
+O550
+0560
+0570
+9580
+o590
+0600
+0610
+</p>
+<p>
+C RERKEREKEERAAEAREAE AEA
+* The Towers of Hanoi *
+* by J Hunt 12/4/82 *%
+REEKKAERECEERE AERA
+}
+($L--, I+,C-3
+PROGRAM TOWERSof HANOI;
+CONST
+maxdisc=7:
+adisc2pt=153
+flen=47; (maxdisc%#6+5)
+TYPE
+INT=INTEGER;
+VAR
+disc: ARRAY(O..maxdisc] OF
+ARRAYE1..mdise2p1] OF CHAR;
+n :ARRAYD1..3] OF INTEGER;
+floor: ARRAYC1..flen] OF CHAR;
+ary, pchar,dchar,bchar: CHAR;
+peg: ARRAYL1..3,0..maxdisc] OF INTEGER;
+ndisecs,move: INT;
+ok: BOOLEAN;
+{}
+PROCEDURE title;
+REGIN
+POKE (LORCA,
+7 +++ The TOWERS of HANOI +++7);
+END;
+{}
+PROCEDURE screen (x,y2INT);
+CONST cursor=&pound;0C29; vl1=&pound;OBOA;
+BEGIN
+IF (x41) OR (x&gt;468) THEN HALT;
+IF (y&lt;i) OR (y?16) THEN HALT;
+POKE (cursor.vli + 648y-1) + x-1)3
+END;
+(}
+PROCEDURE clearline(x,y:INT);
+BEGIN
+screen(x,y)3
+WRITE(? *348-x)35
+screen (x,y) 3
+END;
+{}
+FUNCTION readint: INTs
+VAR fr :rREAL;
+cr CHAR;
+digits:SET OF CHAR;
+sign: INT;
+BEGIN
+digits:=&pound;&rsquo;0*..79&rsquo; J;
+re=O.03
+sign:=1;3
+READLN; .
+REPEAT READ(c) UNTIL c&lt;&gt;* *3
+IF c=*-* THEN BEGIN
+signs=-13
+READ (c)3
+END
+ELSE IF c=*+&rsquo; THEN
+READ (cc);
+</p>
+<p>
+43
+</p>
+<?php columnEnd(1); ?>

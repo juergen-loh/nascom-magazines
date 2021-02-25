@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+4.5 Formatting
+</p>
+<p>
+The FHT command performs correctly except in the case FHT
+15,n, where the correct number of figures is displayed, but the
+mantissa is rounded to one decimal place less than it should be-fn
+example of thie occurs in Chapter 4, where the result of
+doing:
+</p>
+<p>
+FHT 45,2: PRINT 547.968
+actually gives 5.70E+02, not 5-688+02 as it should.
+</p>
+<p>
+Modify 3168 (was 03) to 04 E6 OF 3C C9 ED E6 OF 3c 21:94
+10 85 1
+</p>
+<p>
+4.6 EVAL
+The use of the EVAL function on a MLS has a catastrophic
+effect.
+</p>
+<p>
+Modify 24D (was OB) to DS ED BO 1B
+</p>
+<p>
+427 Output devices
+</p>
+<p>
+fs stated both device 1 and device 2 may be used for a
+serial device. Homever, device 2 does not include the handshake
+facility of device 1 to allow for those applications where it is
+not required. A simple modification to the 10 list mould allow
+wither the removal&rdquo; of the handshake from device 1 or the
+fnelusion ef it in device 2.
+</p>
+<p>
+8 Manual
+</p>
+<p>
+7. Our daisy wheel printer insists on treating the
+exponentiation symbol (up arrow) as a 3/4 &ndash; you may Find
+instances in the manual where this has not been corrected.
+</p>
+<p>
+2. In Chapter two the cursor movement keys should be indicated
+by the appropriate arrows in the single quotes,
+</p>
+<p>
+3. In Chapter 3 page 19 the assignment LETAR=1+203/4 should of
+course assign the value 2.5, not 4.5, ta AA.
+</p>
+<p>
+4. The format of the IOLIST given in Chapter 4 in the first 50
+copies of the manual 18 incorrect &ndash; the input and output
+devices are transposed. The list should read:
+</p>
+<p>
+IOLIST DEFB 7 + The number of devices used
+DEFW GUTO $ Output device 0
+DEFW INPO 3 Input device 0
+DEFW OUTI + Dutput device 1
+:
+</p>
+<p>
+DEFW INPL Input device 1
+DEFW OUTn-1 3 Gutput device n-1
+DEFW INPn-1 i Input device ni
+</p>
+<p>
+5S. In Chapter 4 the example program given under _ the
+the &lsquo;variable MNTH, not MONTH
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

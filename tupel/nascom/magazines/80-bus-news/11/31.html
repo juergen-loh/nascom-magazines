@@ -1,0 +1,85 @@
+<?php columnStart(1); ?>
+<h3>
+FREE SOFTWARE?
+</h3>
+<p>
+Last summer I made a trip to my local friendly Nascom dealer to buy a
+copy of the source of SYS. Rather than PIP each file across by itself, the guy
+copied the entire disk, and then erased the files that I shouldn&rsquo;t have. These
+files included DISKPEN.
+</p>
+<p>
+CP/M doesn&rsquo;t erase the whole file when a file is deleted, all it does
+is change the first byte of the file&rsquo;s directory entry from 00H to E5H, so
+when I got home, I just changed the byte on the erased files back to 00H using
+D-DOS. All I then had to do was find a way to stop the E and W commands from
+disappearing as soon I used &lsquo;Insert&rsquo;, because, of course the program hadn&rsquo;t
+been initialized, and so didn&rsquo;t work properly. It was an easy job, all I had
+to do was alter a couple of RETurn&rsquo;s to CALL&rsquo;s. Have a look at your disk with
+the source of SYS on it, if you haven&rsquo;t recorded anything else onto it, you
+might be lucky too! (Oh know you won&rsquo;t, they&rsquo;re wise to that one, and the SYS
+source and DISKPEN are now on separate disks, anyway. Watch out, they&rsquo;ll be
+round to collect the royalties! &ndash; Ed.)
+</p>
+<p>
+A couple of criticisms of DISKPEN. It needs a &lsquo;continuous change&rsquo;
+command, which is to &lsquo;c&rsquo; as &lsquo;I&rsquo; is to &lsquo;i&rsquo;. The &lsquo;change keyboard case&rsquo;, U,
+needs to be duplicated by &lsquo;u&rsquo;. (Why, you lost the use of your shift key or
+something, or is it because it was ripped off and you haven&rsquo;t got the
+documentation? &ndash; Ed.) It would be nice if the &lsquo;find&rsquo; commands supported &lsquo;wild&rsquo;
+characters, as CP/M&rsquo;s CCP does, using ?? and *.
+</p>
+<p>
+Incidently, just to save the editor&rsquo;s blushes, I must admit that I
+don&rsquo;t use DISKPEN. I use Michael Shrayer&rsquo;s Electric Pencil II as a text
+editor, I find it far preferable to DISKPEN except for it&rsquo;s lack of on-screen
+formatting, (It will only format what&rsquo;s being sent to the printer), but then,
+it is three times the price of DISKPEN, and only works with a 64 x 16
+character screen.
+</p>
+<h3>
+USING THE TOP LINE
+</h3>
+<p>
+Wouldn&rsquo;t it be nice if we could use the top line of the video display
+as if it were any other line. Some of that information that gets missed
+because it scrolls off the screen before we manage to hit ^S could be read, if
+we could see sixteen lines of text instead of just fifteen. (See earlier &lsquo;Ed.&rsquo;
+&ndash; Ed.)
+</p>
+<p>
+Having the screen handling part of the CBIOS in RAM makes it so easy
+to adapt. Instructions follow: First go to your local friendly dealer and
+purchase the source of SYS, well worth the tenner that it&rsquo;ll cost you, and
+using Electric Pencil, or whatever your favourite text editor is add the
+following code.
+</p>
+<table>
+<colgroup>
+	<col style="width: 3em">
+	<col style="width: 3em">
+	<col style="width: 12em">
+	<col>
+</colgroup>
+<tr><td colspan=4>After</td></tr>
+<tr><td></td><td colspan=3><pre>VLI5 EQU VRAM+038AH</pre></td></tr>
+<tr><td colspan=4>add</td></tr>
+<tr><td></td><td colspan=3><pre>VL16 EQU VRAM+03CAH</pre></td></tr>
+<tr><td colspan=4>Amongst the video switches add</td></tr>
+<tr><td></td><td colspan=2><pre>SCROLL16 EQU TRUE</pre></td><td><pre>;16 lines scrolled</pre></td></tr>
+<tr><td colspan=4>Just after the beginning of the video routines, you&rsquo;ll find</td></tr>
+<tr><td></td><td colspan=3><pre>;Copy down screen.</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>LD BC, VEND-VRAM-16-10-6</pre></td></tr>
+<tr><td colspan=4>From this, remove the &lsquo;-16&rsquo;</td></tr>
+<tr><td colspan=4>A bit further on you&rsquo;ll find:</td></tr>
+<tr><td></td><td colspan=3><pre>;Scroll-up</pre></td></tr>
+<tr><td></td><td><pre>CRT40:</pre></td><td colspan=2><pre>LD DE,VLI</pre></td></tr>
+<tr><td colspan=4>Between CRT40: and LD DE,VL1, add the following:</td></tr>
+<tr><td></td><td></td><td colspan=2><pre>IF SCROLL16</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>LD DE,VLI6</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>LD HL,VL1</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>LD BC, VIDWID</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>LDIR</pre></td></tr>
+<tr><td></td><td></td><td colspan=2><pre>ENDIF</pre></td></tr>
+</table>
+<?php columnEnd(1); ?>

@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+42
+</p>
+<p>
+decoupling capacitor of 0.luF on the board, as it really is necessary with
+power leads this length. If you thread the power leads down through the veroboard,
+then this will make them far less prone to coming off due to metal
+fatigue, after they have been moved about a bit (this is a point worth
+remembering whenever you are connecting flying leads to vero-board). Connect
+the +5V lead to bus line 75-78, and the GND lead to bus line 67 (which SHOULD
+be a ground, if your motherboard is wired properly). Alternatively, connect
+the power leads to the power test points on the CPU board.
+</p>
+<p>
+The circuit should be fairly self-explanatory.
+I also include a circuit for Nascom&nbsp;2 owners to page out Nas-Sys, as noone
+seems to have worked this out. Nas-Sys is paged in after RESET, and when
+port 0 bit 2 goes low.
+</p>
+<p>
+PORT @, bik 2
+</p>
+<p>
+ARG in (LKS4 pe (6)
+</p>
+<p>
+i] 10 p
+RESET &raquo;&mdash;&mdash;4 es [OL ARSM
+&lsquo; (LES 1, pin 1)
+</p>
+<p>
+power ko pins &ldquo;7 &amp; 14 of both IC &lsquo;s
+</p>
+<p>
+ITci= 7486 MONITOR PAGER
+Tcr= VALS 322
+TECHNICAL NOTE ABOUT 1797 DISK CONTROLLER CHIP By Richard Beal
+</p>
+<p>
+During the development of RP/M V2.3 an interesting feature of the 1797
+was investigated. In order to determine if there is a disk card present in
+the system, RP/M outputs a value to the track register of the 1797 and then
+reads the value back. If it is not correct then RP/M assumes there is no disk
+card and gives the &ldquo;No disk&rdquo; message.
+</p>
+<p>
+On page 20 of the Western Digital technical note there is a comment in
+microscopic print that the data cannot be read back correctly for 4
+microseconds. In fact RP/M 2.1 waited 5 microseconds and operated correctly.
+However the delay needed depends on several factors and careful tests have
+revealed that the following number of NOPs (for example) are needed between
+the OUT and IN instructions for the correct value to be read back reliably.
+This value corresponds to the number of microseconds since each NOP uses 4 T
+states and the processor operates at 4 MHz.
+</p>
+<p>
+Disk size Density Microseconds
+5.25 DD 5
+5.25 SD 13
+8 DD 2
+</p>
+<p>
+8 SD 6
+</p>
+<?php columnEnd(1); ?>

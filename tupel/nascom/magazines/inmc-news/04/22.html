@@ -1,0 +1,69 @@
+<?php columnStart(12); ?>
+<?php columnChange(1112); ?>
+<table style="width: 100%">
+<tr><td>V</td><td>Verify a tape</td></tr>
+<tr><td>Z</td><td>Jump to #FFFD &ndash; warm start BASIC</td></tr>
+</table>
+<?php columnEnd(12); ?>
+<br>
+<?php columnStart(1); ?>
+<p>
+Well this not so different from NASBUG so what is so new?
+</p>
+<p>
+Firstly, as NAS-SYS was designed for use with Nascom&nbsp;2, it
+handles a greater number of keys on the keyboard (a Nascom&nbsp;2 has 57
+keys I think), some of these keys are for the cursor control. But as
+NAS-SYS was designed on a Nascom&nbsp;1 (as no-one had a fully working
+Nascom&nbsp;2 at the time, about 28K of ZEAP source by the way), the cursor
+control keys had to be made to work using the Nascom&nbsp;1 keyboard. With a
+Nascom&nbsp;1 you use the control] (@) key to obtain most of the new
+functions.
+</p>
+<p>
+The most important feature covered by the new key functions are
+the cursor control keys. The cursor can be made to move non-destructively
+north, south, east and west, with additional keys to open
+or close a line. This allows comprehensive editing to take place on the
+screen. Now this feature would be pretty useless on its own, so, unlike
+NASBUG, where the line to be entered is always the bottom line, NAS-SYS
+enters what-ever line the cursor happens to be on at the time the &lsquo;new
+line&rsquo; key is pressed. Hence editing an 8K BASIC program is a real
+dream, compared to using the BASIC under NASBUG.
+</p>
+<p>
+Internally, well what can I say, ------ it&rsquo;s different! Nice
+old favourites like CHIN and CRT have disappeared (although not
+completely) to be replaced by single byte (RST) instructions, which in
+turn allow automatic use of the user defined input/output options (just
+in case the ones already provided don&rsquo;t quite do what you want).
+NAS-SYS also uses one RST instruction as the op-code for a two byte
+relative subroutine call, so you can write totally relocatable code if
+you have a mind to.
+</p>
+<p>
+Now for the really clever bit. One RST instruction is used as
+the op-code for a two byte subroutine call to a table in NAS-SYS which
+contains the addresses of all the internal subroutines (the second byte
+being the number in the table). So goodies like TBCD3 and B2HEX are
+still there (and where they perform the same function as NASBUG, given
+the same label), so you simply use a two byte call to the routine
+instead of the usual &lsquo;CD&rsquo; command followed by the address. Further, you
+can call commands from the table, for instance, if you want to write
+something to tape: load the registers with the neccessary &lsquo;from&rsquo; and
+&lsquo;to&rsquo; data, then simply call the Write routine using the ASCII
+equivalent of &lsquo;W&rsquo; as the table number, in this case, #57.
+</p>
+<p>
+All this has two advantages: the programs are shorter, but most
+important, if someone (loony) comes along with a &ldquo;NAS-SYS 2&rdquo;, then,
+provided the routines do the same thing relative to their respective
+numbers in the table, the change of monitor is totally transparent to
+any program written for &ldquo;NAS-SYS&nbsp;1&rdquo;, and apart from the alterations (it
+must have been changed otherwise why bother) totally transparent to the
+Programmer.
+</p>
+<p>
+There&rsquo;s got to be some penalty to pay for all this
+</p>
+<?php columnEnd(1); ?>

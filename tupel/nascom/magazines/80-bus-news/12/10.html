@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+10
+</p>
+<p>
+INPUTting and READing Double Precision Constants by Mike York
+</p>
+<p>
+Some of the purchasers of my Double Precision Package (DPP) extension of the
+Nascom ROM BASIC (marketed by myself at 9 Rosehill Rd, London SW18 and also by
+Business &amp; Leisure and the Microvalue group as &ldquo;MathsPak&rdquo;) have pointed out that it
+does not support the INPUTing or READing of double precision constants. As things
+stand, double precision constants can only be entered as a numerical constant in an
+expression to be evaluated by a call to the DPP. This is inconvenient when it is
+required to enter a large quantity of double precision conctants. .
+</p>
+<p>
+Although I now recognise this to have been an error on my part, it was
+originally a conscious decision to leave out INPUT and READ facilities as
+non-essential when trying to minimise the memory requirements of the package. I had
+intended that INPUT and READ could be implemented in BASIC rather than as part of
+the M/C package and thus would occupy no space when not required. However, the BASIC
+routane required is rather longer than I anticipated and it would probably, with
+hindsight, have been better to include it in the DPP from the start. Still, for
+those of you who wish to see such a routine, here it is: _
+</p>
+<p>
+10 WIDTH 80
+</p>
+<p>
+20 PRINT &ldquo;FACILITY FOR INPUT OR READ OF A &ldquo;;
+30 PRINT &ldquo;DOUBLE PRECISION FLOATING POINT &ldquo;;
+4O PRINT &ldquo;DECIMAL CONSTANT&rdquo;
+</p>
+<p>
+50 PRINT &ldquo;INTO A VARIABLE.&rdquo;
+</p>
+<p>
+60 PRINT &ldquo;GET THE DECIMAL STRING INTO A$ &ldquo;;
+70 PRINT &ldquo;(INPUT, READ OR WHATEVER) AND GOSUB &ldquo;;
+80 PRINT &ldquo;2000.&rdquo;
+</p>
+<p>
+90 PRINT &ldquo;THE BINARY EQUIVALENT IS RETURNED";
+1400 PRINT " IN A$ READY FOR USE IN THE DPP.&rdquo;
+110 PRINT
+</p>
+<p>
+1420 LINES 37:LIST 2000
+</p>
+<p>
+2000 REM CONVERT ASCII DECIMAL TO DP BINARY
+2010 XP=0:PT=-1:MH=0:LH=0:SN$="&rdquo;
+</p>
+<p>
+2020 K=0:D=0
+</p>
+<p>
+2030 L=LEN(AS)
+</p>
+<p>
+2040 K=K+1:IF K&gt;L GOTO 2190
+</p>
+<p>
+2050 DG$=MID$(A$,K,1)
+</p>
+<p>
+2060 IF DG$="_&rdquo; GOTO 2120
+2070 IF DG$="+&rdquo; OR DG$="-&rdquo; GOTO 2160
+2080 IF DG$=".&rdquo; GOTO 2110
+</p>
+<p>
+2090 IF DG$="E&rdquo; GOTO 2180
+2100 GOTO 2040 : REM NEXT CHAR
+2110 PT=K-1 : REM NOTE POSITION OF DECIMAL POINT
+2120 REM DELETE DECIMAL POINT &amp; BLANKS
+2130 A$=LEFT$(A$,K-1)+RIGHTS (A$, L-K)
+2140 K=K-1:GOTO 2030
+2150 REM SAVE SIGN, DELETE IT AND LEADING BLANKS
+2160 SN$=DG$:A$=RIGHTS(A$,L-K):GOTO 2020
+2170 REM SPLIT MANTISSA AND EXPONENT
+2180 XP=VAL(RIGHTS(A$,L-K)):A$=LEFT$(A$,K-1)
+2190 K=K-1:IF PT&lt;O THEN PT=K
+2200 IF K&lt;8 GOTO 2240
+2210 IF K&gt;14 THEN K=14:A$=LEFT$(A$,K)
+2220 REM LH IS LEAST SIGNIFICANT HALF
+2230 LH=VAL(RIGHTS (A$, K-7) )=BREI/ tot (K-7)
+2240 IF K&gt;7 THEN K=7
+(continued elsewhere!)
+</p>
+<?php columnEnd(1); ?>

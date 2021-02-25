@@ -1,0 +1,98 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+DATRON INTEGER PASCAL
+</h1>
+<h2>
+a software review by Richard Beal
+</h2>
+<p>
+It was with considerable excitement that I loaded the cassette from Datron
+containing their new 12K integer Pascal package. Pascal has received much publicity as
+being superior to Basic, and while I feel that both languages have their advantages it
+would be marvellous to see Pascal running on a Nascom. The tape loaded with no
+difficulty, and I cold started the program.
+</p>
+<h3>
+Editor
+</h3>
+<p>
+The editor takes quite a lot of getting used to. When adding lines they don&rsquo;t
+usually have line numbers. A command is entered to renumber all the lines before lines
+are listed or changed. Changing lines would be very tedious if you did not use the
+NAS-SYS version, since the NAS-SYS line editing can be used as in Basic. You can add,
+change or delete individual lines by line number. At this point I found my system
+sometimes &ldquo;crashed&rdquo;, forcing me to reload Pascal and start again. Eventually the
+problem was traced to the fact that entering a command when the file position is not
+at the end of file, instead of giving an error, crashes the system completely.
+</p>
+<h3>
+Compiler
+</h3>
+<p>
+The compiler is very fast indeed, and it operates in two passes. If there are
+any errors in the program these are detected in the first pass. The compiler stops
+after the first error, but it is so fast that this is not much of a disadvantage. The
+error messages just give an error number and display the line where the error was
+found. The actual error may be on the line before. If you don&rsquo;t have a correct &ldquo;END.&rdquo;,
+at the end, some garbage is displayed but a correct message follows it.
+</p>
+<p>
+Remember that only integers are supported, and this limits its usefulness for
+some applications. Character variables did not at first appear to be supported and the
+documentation does not mention them, but in fact they can easily be handled by
+treating them as arrays of integers. READ and WRITE statements support characters.
+</p>
+<p>
+Statements supported are:
+</p>
+
+
+<?php columnStart(6); ?>
+<pre>
+CONST
+END
+READ
+</pre>
+<?php columnChange(6); ?>
+<pre>
+FUNCTION
+IF-THEN-ELSE
+WRITE
+</pre>
+<?php columnChange(6); ?>
+<pre>
+VAR
+CASE-OF
+CALL
+</pre>
+<?php columnChange(6); ?>
+<pre>
+PROCEDURE
+WHILE-DO
+MEM
+</pre>
+<?php columnChange(6); ?>
+<pre>
+BEGIN
+FOR-TO
+</pre>
+<?php columnChange(6); ?>
+<?php columnEnd(6); ?>
+
+<p>
+CALL is an extension allowing machine code routines to be called. MEM allows
+the equivalent of PEEK and POKE operations.
+</p>
+<p>
+I then typed in the demonstration SORT program provided. This included the use
+of recursive calls and was impressively fast. When I came to save it on tape
+everything appeared all right, but when I later tried to read it in, disaster&nbsp;! The
+Pascal did not allow sufficient delay at the end of the line for my tape speed of 2400
+BAUD, and I could not reload the program. A speed of 1200 BAUD is, I am told, the
+maximum it will work with at present.
+</p>
+<p>
+It is not possible to send program listings to your own printer routine, only
+directly to the UART.
+</p>
+<?php columnEnd(1); ?>

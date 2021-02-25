@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<p>
+programming pulse of 50 milliseconds per address. It takes about 2 minutes to
+program either type.
+</p>
+<p>
+While the programming is going on, a display is put on the screen to show that
+something is happening. With 2708s the number of programming cycles left is
+displayed (in hexadecimal). With 2K EPROMS a count is output every 100H (256
+decimal), beginning with 00 at the beginning of the first block.
+</p>
+<p>
+Note that ths software is written for a 4 Mhz clock and NO WAIT STATES. If
+either are changed, then the value 0E0H in the B register (for the 2708 routine), or
+1D00H in BC (2516/2716 routine) will have to be changed. Short delays are written
+into the software to allow time for line stabilisation or chip &lsquo;set-up&rsquo;.
+</p>
+<p>
+C &ndash; COMPARE CONTENTS OF EPROM WITH RAM
+</p>
+<p>
+This routine will compare the EPROM and RAM, byte by byte. It may be used
+to check for correct programming, or to find small discrepancies between EPROMs
+and RAM that should be identical. If a mismatch is found the address of the byte in
+RAM that did not correspond with the &lsquo;EPROM&rsquo; will be printed on the screen, and a
+message that the data did not match will be printed at the end of the routine. If the
+EPROM and RAM match the routine will end with a suitable message.
+</p>
+<p>
+T &ndash; TRANSFER DAT FROM EPROM TO RAM
+</p>
+<p>
+This routine will quickly copy the contents of the chip into RAM, starting at the
+RAM address entered. This data may then be disassembled, modified, relocated, or
+used to make a back-up copy as desired. On completion of the routine a message is
+displayed, as there is no other indication that the routine has run its course.
+</p>
+<p>
+D &ndash; DUMP TO PRINTER
+</p>
+<p>
+This routine was written with the &lsquo; IMP&rsquo; printer in mind, and so it interfaces
+through the serial port. A handshake routine is included (using bit 7 of the keyboard
+port), to avoid having to set up user routines. The program starts by requesting the
+normal address of the EPROM. It prints this address, followed by sixteen bytes of
+data and the ASCII characters correponding to this data (for characters 20H to 7BH;
+all other characters are printed as &lsquo; .&rsquo;). A new line is started, and the address is
+updated, and the routine is continued until all the data in the EPROM has been
+printed out.
+</p>
+<p>
+The routine works by reading sixteen bytes from the chip into a workspace
+buffer (label LINBUF in the source code, pointed to by the IY register). These bytes
+are then printed, another sixteen bytes read in, and so on.
+</p>
+<?php columnEnd(1); ?>

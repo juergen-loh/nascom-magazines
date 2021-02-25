@@ -1,0 +1,389 @@
+<?php columnStart(1); ?>
+<p>
++280
+</p>
+<p>
+title Remote terminal emulation
+</p>
+<p>
+as
+</p>
+<p>
+escape equ
+uartd equ
+uarts equ
+ived equ
+ives equ
+</p>
+<p>
+pollu: in
+and
+ret
+in
+and
+ld
+ine
+ld
+ep
+</p>
+<p>
+limit equ
+ret
+dec
+ret
+</p>
+<p>
+{bh
+Ob8h
+uartd+5
+Obth
+Ob2h
+</p>
+<p>
+*ee* Yart Drivers. *eet
+</p>
+<p>
+a, (uarts)
+Oth
+</p>
+<p>
+z
+</p>
+<p>
+a, (uartd)
+Tfh
+(de),a
+de
+</p>
+<p>
+a,d
+2
+3-4
+ng
+de
+</p>
+<p>
+j
++
+;
+.
+;
+&lsquo;
+;
+</p>
+<p>
++
+</p>
+<p>
+fe om em em te om
+</p>
+<p>
+en ow
+</p>
+<p>
+Remote terminal Emulation for GEC 4065.
+</p>
+<p>
+8250 data port
+8250 status port
+IVC data port
+IVC status port
+</p>
+<p>
+POLLU &ndash; polls the Uart and moves any waiting
+character to (DE)
+</p>
+<p>
+Check status
+</p>
+<p>
+Return if no character
+Get it
+</p>
+<p>
+Strip msb
+</p>
+<p>
+Store in the buffer
+Bump pointer
+</p>
+<p>
+Cheek for limit
+</p>
+<p>
+Return if not there
+Else don&rsquo;t advance pointer
+</p>
+<p>
+; SEROUT &ndash; Outputs the character in &lt;A&gt; to the
+</p>
+<p>
+serout: push
+</p>
+<p>
+seroO: in
+and
+jr
+pop
+or
+dp
+or
+</p>
+<p>
+seroi: out
+ret
+</p>
+<p>
+aN em om em ee
+</p>
+<p>
+getvid: call
+in
+rlca
+jr
+in
+ret
+</p>
+<p>
+af
+</p>
+<p>
+a, (uarts)
+20h
+%,sero0
+af.
+</p>
+<p>
+a
+</p>
+<p>
+pe, serot
+80h
+(uartd),a
+</p>
+<p>
+week TVG drivers *##*
+</p>
+<p>
+pollu
+a, (ives)
+</p>
+<p>
+c,getvid
+a, (ived)
+</p>
+<p>
+an am ae
+</p>
+<p>
+Check ready to accept
+wait if not
+</p>
+<p>
+Get character back
+Check parity
+</p>
+<p>
+Send character
+</p>
+<p>
+GETVID &ndash; gets a character from the IVC.
+PUTVID &ndash; sends character in &lt;A&gt; to the IVC.
+Both poll the Serial Port while waiting.
+</p>
+<p>
+Check for incoming character
+See if IVC ready
+</p>
+<p>
+Loop if busy
+</p>
+<p>
+putvid: push af
+</p>
+<p>
+pvd:
+</p>
+<p>
+ee on
+</p>
+<p>
+const:
+</p>
+<p>
+ee em eR ew
+</p>
+<p>
+start:
+</p>
+<p>
+LoopO0:
+</p>
+<p>
+loopi:
+</p>
+<p>
+-*-
+</p>
+<p>
+stack:
+buffer
+</p>
+<p>
+in a, (ives) ; See if IVC ready
+rrea
+</p>
+<p>
+dr c,pvd
+</p>
+<p>
+pop af 3} Recover character
+out (ived),a ; Send to Ive
+</p>
+<p>
+ret
+</p>
+<p>
+Get a character from the keyboard
+Returns NZ if a character is read
+</p>
+<p>
+1a a, escape ; Send ESC &ldquo;k&rdquo;
+eall putvid
+</p>
+<p>
+1d a,&rsquo;k&rsquo;
+</p>
+<p>
+call putvid
+</p>
+<p>
+call getvid
+</p>
+<p>
+or a
+</p>
+<p>
+ret z
+</p>
+<p>
+ld a,escape
+call putvid
+</p>
+<p>
+ld a,&rsquo;K&rsquo;
+</p>
+<p>
+call putvid
+</p>
+<p>
+eall getvid
+</p>
+<p>
+ep &lsquo;c&rsquo; and 1fh
+ret ne
+</p>
+<p>
+jp QO
+</p>
+<p>
+SERENE MATH LOOP See eE
+</p>
+<p>
+Read reply
+</p>
+<p>
+o
+</p>
+<p>
+return if none
+Send ESC &ldquo;K&rdquo; to get it
+</p>
+<p>
+eA em
+</p>
+<p>
+Read the character
+</p>
+<p>
+-
+</p>
+<p>
+&ldquo;Cc?
+No, return with NZ set
+Yes, abort &amp; reboot
+</p>
+<p>
+Uses a FIFO buffer to handle the data
+DE = Input pointer HL = Output pointer
+</p>
+<p>
+1d sp, stack
+ld a,(7)
+</p>
+<p>
+dec a
+</p>
+<p>
+ld (limit),a
+1d de, buffer
+1d hl, buffer
+call const
+eall ng, serout
+push hl
+</p>
+<p>
+or a
+</p>
+<p>
+sbe hi,de
+</p>
+<p>
+pop hl
+</p>
+<p>
+jr &amp;, loo
+</p>
+<p>
+ld a, (hl
+</p>
+<p>
+ine hl
+</p>
+<p>
+eall putvid $ &laquo;+eand echo it
+dr loop!
+</p>
+<p>
+Get buffer limit
+(Make sure we don&rsquo;t clobber BDOS)
+set the buffer limit
+</p>
+<p>
+en eA an
+</p>
+<p>
+Check keyboard....
+&raquo;s,and echo any character
+See if anything in the buffer
+</p>
+<p>
+ee
+</p>
+<p>
+No, zero pointers
+Yes, get character...
+</p>
+<p>
+am
+</p>
+<p>
+Workspace
+defs 32
+equ $
+</p>
+<p>
+\
+end&rsquo;
+</p>
+<?php columnEnd(1); ?>

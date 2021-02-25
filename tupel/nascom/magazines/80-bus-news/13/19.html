@@ -1,0 +1,115 @@
+<?php columnStart(1); ?>
+<p>
+19
+100 REM Demo program for light pen
+</p>
+<p>
+110 GOSUB 1000 :REM Initialise the code
+120 GOSUB 2000 :REM Get coordinates
+</p>
+<p>
+130 PRINT &ldquo;Row=";ROW;&rdquo; Col=";COL
+</p>
+<p>
+140 GOTO 120 :REM Loop
+</p>
+<p>
+1000 REM KKK KELEKEKEEEER EEE EEEERERE EERE EREEELEREREREE TERRES
+</p>
+<p>
+1001 REM Subroutine to Initialise the USR function
+1002 REM 8YHERERHEKRRERKKAE HEE R ERR ER EERE IEEE MAREE EERE EERE
+</p>
+<p>
+1003 REM
+</p>
+<p>
+1010 ADDR=-128 :REM Machine code Put here
+</p>
+<p>
+1020 DEF USRO=ADDR :REM ***define USRO function ***
+14030 FOR I=ADDR TO ADDR+39 :REM POKE loop
+</p>
+<p>
+1040 READ A
+</p>
+<p>
+1050 POKE I,A :REM Set byte
+</p>
+<p>
+1060 NEXT I
+</p>
+<p>
+1070 RETURN
+</p>
+<p>
+1080 REM ****Machine code subroutine ******
+1090 DATA 219,178,15,56,251 ,62,27,211,177,219
+14100 DATA 178,15,56,251,62,80,211,177,219,178
+1110 DATA&rsquo; 7,56, 251,219,177, 103,219,178, 7,56,251
+4120 DATA 219,177,111,229,42,5,1,227, 201
+</p>
+<p>
+1130 REM
+2000 REM FEXREEK REEL ER EEEH EKER ELE ERE EKER REE EER ERE
+</p>
+<p>
+2001 REM Subroutine to Read back coordinates from LPEN
+2002 REM KLEE EEE EERE ERE EE ER EEREEEEREE LEE ERE EER EEERER ERE
+</p>
+<p>
+2003 REM
+</p>
+<p>
+2005 MAXCOL=80 :REM Screen size
+</p>
+<p>
+2010 OFFSET=1 2 :REM Character offset
+2020 COL=USRO(ROW) :REM Get coordinates
+2030 ROW=INT(COL/256) :REM Isolate ROW number
+2040 COL=COL AND 255 :REM Isolate COL number
+2050 COL=COL-OFFSET :REM Allow for offset
+2060 IF COL&gt;=O0 THEN RETURN :REM return if all ok
+2070 COL=COL+MAXCOL :REM Not,so adjust COL
+2080 ROW=ROW-1 :REM&nbsp;..and correct ROW
+2090 RETURN :REM return ROW and COL
+</p>
+<p>
+Shown below is an example of how the subroutine 2000 can be altered to increase the
+accuracy of the returned value. Here line 2020 obtains four successive readings
+from the Light Pen. These are averaged in the next line, and then a check is made
+that all four lie close to the average value. (If you leave out the check and C1-C4
+vary widely you may find strange values like Col=129 appearing!). The routine might
+be improved by including a small delay between the calls to USRO. Only two calls
+with a reasonable delay between them may be enough....experiment!
+</p>
+<p>
+2000 REM KEELER KK LERKELERERE EER EEE EE EER EERE EEEEEEEEREREERE
+</p>
+<p>
+2001 REM Subroutine to Read back coordinates from LPEN
+2002 REM KEREKEEKRLEREEKEE EK LEEEKEERELEEEREEEKEELELEERELELEEERE
+</p>
+<p>
+2003 REM
+2005 MAXCOL=80 :REM Sereen size
+2010 OFFSET=1 2 :REM Character offset
+</p>
+<p>
+2020 C1i=USRO(A) : C2=USRO(A) : C3=USRO(A) : C4=USRO(A)
+2021 COL=(C1+C2+03+C4) /4 :REM Average four readings
+2022 IF ABS(COL-C1)&gt;2 OR ABS(COL-C2)&gt;2 THEN GOTO 2020
+2023 IF ABS(COL-C3)&gt;2 OR ABS(COL-C4)&gt;2 THEN GOTO 2020
+</p>
+<p>
+2030 ROW=INT(COL/256) :REM Isolate ROW number
+2040 COL=COL AND 255 :REM Isolate COL number
+2050 COL=COL-OFFSET :REM Allow for offset
+2060 IF COL&gt;=0 THEN RETURN &lt;:REM return if all ok
+2070 COL=COL+MAXCOL :REM Not,so adjust COL
+2080 ROW=ROW-1 sREM&nbsp;..and correct ROW
+</p>
+<p>
+2090 RETURN :REM return ROW and COL
+</p>
+<?php columnEnd(1); ?>

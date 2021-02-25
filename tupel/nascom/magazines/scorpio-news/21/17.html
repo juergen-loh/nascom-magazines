@@ -1,0 +1,52 @@
+<?php columnStart(1); ?>
+<p>
+Power requirements are: &mdash;
+</p>
+<p>
++12V dc 1.2 amps maximum during stepping<br>
++ SV dc 0.42 amps maximum
+</p>
+<p>
+After a visual check of the drives when they arrived, I read the &ldquo;Preliminary OEM
+Manual&rdquo; which came with them. I understand that this was all that was supplied to
+Gemini when the drives were purchased for evaluation purposes, and it leaves a
+number of questions unanswered. The signal interface is virtually identical to the
+Shugart interface used for the VFC, and I was able to plug the drives in directly.
+Similarly, the power supply is via astandard + 5vand + 12vsocket. After connecting
+the power and signal connectors, and using a simple program to check the ability
+to step in and out, I found that one drive was not working and that it became very
+hot in the process. Fortunately, Scorpio Systems were able to supply another drive,
+but this too proved to be faulty (though not so dramatically). More of this later.
+</p>
+<p>
+With one drive apparently working mechanically, I had to tackle the problem of the
+clock rates, so as to test its ability to read from the supplied (and pre-formatted)
+disks.
+</p>
+<h2>
+Board Modification
+</h2>
+<p>
+No modifications were required for the signal interface. In common with most
+80-BUS products, the MAP80 VFC card is supplied with a circuit diagram, and
+this was invaluable in dealing with the next stage, switching from a 5-1/4 to an 8 inch
+data rate under software control.
+</p>
+<p>
+The clock signal for the 2797 floppy disk controller (FDC) chip is derived by division
+from the system clock. A wire link option is provided to adjust the clock between
+1MHz for 5-1/4 and 2MHz for 8 inch drives. This is not so useful as it sounds,
+because there is no link to set up pin 17 of the FDC chip, which adjusts the internal
+VCO frequency for the two data rates, the pin being held low to indicate 5-1/4 inch
+data rates.
+</p>
+<p>
+Perusal of the circuit diagram revealed a spare bit in the latch that is used for drive
+and density selection. This bit can be controlled by software, and can therefore
+select the appropriate clock rates. The method is similar to that described by R
+Mohamed in his article &ldquo;GM809 Fast Stepper&rdquo; in Scorpio News Volume 1 Issue 2
+pp 46-49. I used the overkill solution of a multiplexer (741S157), thinking that
+other signals might need to be switched by this latch, but I could as well have used
+the 74LS00.
+</p>
+<?php columnEnd(1); ?>

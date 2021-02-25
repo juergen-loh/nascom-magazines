@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+I have been using Zen for over a year (as well as Zeap), and have
+patched Zen to run on Nas-Sys. It is a very fast assembler with one
+drawback &ndash; a lousy error handling function&nbsp;! It aborts assembly on the
+first error it finds. In &ldquo;Writing Interactive Interpreters and
+Compiliers&rdquo;, P.J. Brown points out that a compiler spends most of its
+time in the error handling mode, and should be designed to do this well
+&ndash; Zen definitely doesn&rsquo;t. I have been tidying it up, and have written a
+number of Pseudo ops; TITLE to title a printed page, LIST and UNLIST to
+allow selective printout of sections during assembly. RCAL and SCAL to
+make life under Nas-Sys easier. I have also taken the DB, DW, DM,
+pseudo ops to Zilog/Mostek standards (DEFB etc). My next miracle will
+be to tidy up the error handling, so that it will do the first pass,
+and point all first pass errors. Then (perhaps) a macro facility&nbsp;?
+</p>
+<br>
+<?php hline("20%"); ?>
+<h1 id="article1">
+STOP&nbsp;!... (please?)
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(3); ?>
+<h2>
+HALT&nbsp;!
+</h2>
+<?php columnChange(23); ?>
+<h3 class="author">
+By Richard Beal
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+If you want to halt a program this can be done by including the code 76
+in your program. When this HALT instruction is executed, the program
+counter stops being incremented and an endless stream of NOPs are
+executed. The Z80 CPU detects that it has halted and a LED on the
+Nascom lights to show that it is in a HALT state.
+</p>
+<p>
+There are two ways to leave a HALT state. The first and most commonly
+used is to press Reset, which restarts the computer and reinitialises
+Nas-Sys.
+</p>
+<p>
+The second method is for there to be ar interrupt. In fact, if you were
+writing a program which was to do nothing at all except when an
+interrupt occurred, you could just code a HALT instruction. Note that
+if you intended the Z80 to re-enter the HALT state after the completion
+of the interrupt, then the code would be as follows:<br>
+76 18 FD<br>
+as the address of the HALT (pushed on the stack) at the start of the
+interrupt, is POPed off and incremented when a RETI instruction is
+encountered.
+</p>
+<p>
+This explains why you can Single-step through HALT instructions. The
+HALT is executed once, but the NMI (Non Maskable Interrupt) generated
+by Single-stepping jumps out of the HALT state at the end of the
+instruction.
+</p>
+<p>
+If you try to execute a program which has a HALT instruction as the
+first byte, you will find that it will not HALT. The reason is that the
+Execute command in fact Single-steps the first instruction and then
+executes normally. So if the program was:
+</p>
+<p>
+76 .. .. .. it would not HALT
+</p>
+<p>
+But if it was:
+</p>
+<p>
+00 76 .. .. it would HALT.
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

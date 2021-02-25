@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+The Use of Overlay Files
+</h1>
+<h3 class="author">
+By R. Pearce
+</h3>
+<p>
+Undoubtedly one of the biggest advantages of the newer 16-bit micros over our old
+Z80 systems is the sheer size of the available memory. This extra memory allows
+more complex programs to carry out more involved operations on larger blocks of
+data with fewer disk accesses. The shortage of memory space can be a major
+drawback on 8-bit systems, but there are ways around it.
+</p>
+<p>
+Perhaps the classic example of memory shortage is the text editor/word processor.
+Here we have a program with many tasks to perform on a large amount of data. The
+more options we put in the less text can be held in memory. Some cheap editors
+such as HiSoft ED80 or GEMPEN simply restrict the facilities and limit the size of
+text file that can be handled. Research Machines TXED allows long files by editing
+one section at a time, which works but is very ugly and rather inconvenient.
+Wordstar, however, manages to do just about everything you could ask of it (except
+fit on an SDSS disk) and handles 32Mbyte files to boot. It achieves this by
+continuously juggling both code and text between memory and disk.
+</p>
+<p>
+In this article I intend to consider only the juggling of code, since data juggling using
+random access files seems a more popular subject and thus there is much more
+written about it.
+</p>
+<p>
+A few months back I wrote a review in this journal of a printed circuit board design
+package. It so happened that as I was writing the review I was in the process of
+developing a similar package of my own. Both packages had run into the problem
+of memory shortage but our approaches differed. I must confess that at least part
+of the reason for this was that the compiler used for the program I reviewed
+supported a chain command which my compiler does not have. I would argue,
+however, that this is fairly irrelevant since my single file solution breaks the file down
+into only 8 parts compared with some eleven files in the other.
+</p>
+<p>
+The question to be asked here is not So much how the two programs go about loading
+the required part but why the divisions occur where they do. Specifically, of course,
+why doI think my version is better. The logic that led to my approach went something
+like this:
+</p>
+<p>
+The program must have facilities for editing, saving, , loading and printing the
+file. Also useful would be a tidy-up facility for plotter dumps.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+46
+</p>
+<p>
+effectively in screen edit mode all the time. This was very useful when, for
+example, editing BASIC programs, as you did not have to remember to enter screen
+edit mode before editing each line. Now this feature is available with SYS and
+CP/M, using the new &lsquo;fixed&rsquo; screen edit mode.
+</p>
+<p>
+To enter &lsquo;fixed&rsquo; screen edit mode, enter screen edit mode, and then again
+press the key which activates full screen editing. This makes the cursor on the
+Ive change to a solid non-blinking block, and this means that vou are permanently
+in screen edit mode. As before, press the Return or Enter key to enter a line as
+input. When CP/M requests the next input character, screen edit mode will
+automatically be reactivated. To escape from this mode, press the key a third
+time. This feature is particularly useful when editing BASIC programs, as a LIST
+command can be followed by extensive editing of the lines displayed, without
+having to remember to enter screen editing mode for each line.
+</p>
+<p>
+Sereen Paging Control
+Another improved feature of SYS is control over screen paging. If too many
+lines are output to the screen without any input being obtained from the
+keyboard, then it is possible that information might roll off the top of the
+display and be lost. Whenever this could occur, the following message is output:&ndash;
+&ldquo;YY% Press &ldquo;C, &ldquo;S, R, W, K or Space ***&rdquo;
+</p>
+<p>
+If you press Control/C or Control/S then this character is returned as the
+next input character to the program being run.
+</p>
+<p>
+If you press R then the screen paging feature is disabled until the next
+user input. For example it would start to operate again if Control/S was used to
+pause the output display.
+</p>
+<p>
+If you press W then the screen paging feature is disabled until the next
+warm boot.
+</p>
+<p>
+If you press K then the screen paging feature is disabled wntil the next
+cold boot, or until SYS is executed.
+</p>
+<p>
+If you press a space then the next page of output is displayed.
+</p>
+<p>
+MAP 256K RAM
+</p>
+<p>
+SYS now provides full support for the MAP 256K RAM card, allowing virtual
+disk systems with up to a total of one megabyte of RAM. This is described in more
+detail elsewhere in this issue. SYS uses the new 32K paging method for the Nascom
+and Gemini GM811, and with the GM813 it uses the full memory mapping capabilities
+of the GM813 and of the MAP RAM. SYS provides warm boot off the virtual disk, and
+this speeds up this process considerably. It also has the advantage that you
+don&rsquo;t need to worry about having the correct data on the system tracks of your
+disks, as these are no longer used except on cold boot.
+</p>
+<p>
+Restructuring of SYS
+</p>
+<p>
+In order to allow the support of three different types of virtual disk, as
+well as the inclusion of two completely separate versions of the disk software,
+SYS has had to be restructured. It is now much more easily maintainable, as the
+different parts are stored in eight separate source modules. These are SYSB1.MAC
+to SYSB7.MAC, and SYSB6A.MAC which contains the alternative standard disk
+software. As usual the user has only to edit SYSB1.MAC, which now contains only
+the option switches and various helpful comments, and then submit SYSB.SUB, which
+does the assembly and link. This takes about five minutes, which is very fast
+considering the size of code which is being processed. M80 actually stops and
+thinks to itself for a bit when it has to generate all the relocation labels, so
+there is no need to worry if your system becomes silent. The M80 assembler and
+L80 linker are required, and I recommend release 3.44, which I know to work
+correctly.
+</p>
+<?php columnEnd(1); ?>

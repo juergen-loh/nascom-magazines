@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+12
+</p>
+<p>
+plotting was very fast indeed. The resolution was all it was supposed to be,
+the 640 x 288 format over filling the screen of the monitors used, and
+resolution patterns were just resolvable on the best monitors. I found the
+lack of circle drawing and fill routines a nuisance, but I suppose I could
+have fitted the extended command ROM (&pound;50.00) had I wished, instead I pinched
+some of the machine code primitives from the Climax card and used those
+instead. The page memory system of the Pluto was very useful, it allowed
+preset shapes to be set up and used quickly, this is most useful for character
+sets which may be created in several fonts for use. The use of text in the 80
+column mode was well displayed, but seemed something of a waste of a very
+expensive monitor if 80 column display were the only use of the card.
+</p>
+<p>
+The Nascom Card.
+</p>
+<p>
+The Nascom card plugged straight into a Nascom system and refused to
+work. This was traced to not having read the manual as a small mod. is
+required to the page modeing of the RAM card to allow the AVC to work without
+corrupting the existing system RAM. Having read the manual and fixed the RAM-card
+the AVC was well behaved and proved easy to use. The software supplied
+linked into the Nascom Basic transparently and provided all the expected
+functions. Overall the speed was good, not as good as the Pluto by a long
+shot, but adequately fast for most purposes. The main drawback as far as
+speeding up the card was not being able to make immediate use of the Nascom
+machine code primitives. Access to the primitives is via a jump table at the
+top of the workspace and although entirely possible by careful reading of the
+manual, the absence of the source listing made life difficult as a lot of
+preset registers required setting up before any primitive could be called.
+</p>
+<p>
+Lots of fun was had using the port addressed colour changing
+facilities and a small binary adder was built to provide colour &lsquo;rotation&rsquo;,
+marvellous for making high speed animated wallpaper effects and baffling
+people who could not understand how the Nascom card did it. All round I don&rsquo;t
+have any moans about the way the Nascom AVC worked.
+</p>
+<p>
+The Climax Card.
+</p>
+<p>
+The Climax plugged in and worked in a Gemini system straight away. The
+problems over the disk primitives was solved by spending an evening typing
+them in, and taking advantage of having to retype them by arranging them for
+easy assembly into stand alone machine code primitives if required. It seems
+that the disk of primitives are supplied as an optional extra at &pound;15.00 + VAT,
+so if you value about four hours typing at more than &pound;15.00, you&rsquo;d better buy
+the primitives. The primitives automatically linked with both versions 5.12
+and 5.2 of MBASIC with no trouble and provided most of the functions I
+required. Two notable ommissions I have supplied as source listings elsewhere
+in this rag, and Climax users may tag these straight on the end of the
+primitives as supplied, but note, the whole lot must be reassembled otherwise
+the relocator tables won&rsquo;t be present.
+</p>
+<p>
+The Climax was notable for its speed. Some of the functions were
+achieved (visually) instantly, the box drawing and filling routines were very
+impressive indeed. The method of sending instructions from Basic to the
+primitives used the Basic CALL function and was very efficient with one nasty
+snag. If the label called was misspelt or otherwise missing, then MBASIC would
+return to the operating system (being effectively a call to 0000H) thus losing
+the whole program. I soon learnt to save ALL programs to disk before running
+them!!!
+</p>
+<?php columnEnd(1); ?>

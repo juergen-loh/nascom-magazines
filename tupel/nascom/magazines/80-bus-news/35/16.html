@@ -1,0 +1,186 @@
+<?php columnStart(1); ?>
+<p>
+3; PIO port B to mode 1, input
+</p>
+<p>
+ld a,4fh
+out (pe2),a
+5; Interrupt control word &ndash; enable interrupts for port B
+1d a,87h
+out Cpe2),a
+</p>
+<p>
+5; Dummy read to start handshake
+</p>
+<p>
+; BC is
+st2:
+</p>
+<p>
+in a,(pd2)
+endif
+</p>
+<p>
+PLO is now ready
+</p>
+<p>
+used to point to the end of the buffertl
+ld be,(abdos)
+</p>
+<p>
+; Set up work area
+</p>
+<p>
+st3:
+</p>
+<p>
+push be
+</p>
+<p>
+ld hl&nbsp;,head
+ld de,work
+ld be&nbsp;,headl
+ldir
+</p>
+<p>
+pop be
+</p>
+<p>
+; Set number of bytes spare
+</p>
+<p>
+siz:
+</p>
+<p>
+; HL is
+</p>
+<p>
+; Reset
+</p>
+<p>
+ld hl,stk ; Start of buffer
+push hl
+</p>
+<p>
+call sparep
+</p>
+<p>
+ine hl
+</p>
+<p>
+or a
+</p>
+<p>
+sbe hl,be
+</p>
+<p>
+add hl,be
+</p>
+<p>
+jr nz,siz
+</p>
+<p>
+used to point to character to be output
+pop hl 3; Set to start of buffer
+</p>
+<p>
+used to point to position to store input
+ld d,b 3 Set to end of buffer
+ld e,c
+</p>
+<p>
+dec de
+</p>
+<p>
+bit 7 to not represent compressed blanks
+xor a
+</p>
+<p>
+ld (de),a
+</p>
+<p>
+3; Scan for keyboard input
+</p>
+<p>
+tin:
+</p>
+<p>
+push hl
+push de
+push be
+</p>
+<p>
+ld e,0ffh
+ld c,conio
+call jbdos
+pop be
+</p>
+<p>
+pop de
+</p>
+<p>
+pop hl
+</p>
+<p>
+or a
+</p>
+<p>
+jr z,noin
+ep &ldquo;a&rdquo; 3; Accept lower case
+drvoc,yinl
+and 5fh
+3 If &ldquo;D&rdquo; restart with empty buffer
+yinl: cp &ldquo;Dp&rdquo;
+jr a,st2
+3 Tf &ldquo;T&rdquo; restart with 2 byte buffer
+ep vqet
+jr nz,yin2
+ld be,stk+2
+jr st3
+; Lf &ldquo;N&rdquo; return to RP/M
+yin2: cp &ldquo;N&rdquo;
+jr nz,yin3
+1d a,07h 3 RS232, ROM
+out Cuartm) ,a
+ret
+; If CR output CR/LF to printer
+yin3: ep cr
+jr nz,yin4
+push hl
+push de
+push be
+ld de,her
+fr yind
+3; 1&pound; &ldquo;M&rdquo; output message to printe
+yin4: ep &ldquo;M&rdquo;
+jr nz,yin6
+push hl
+push de
+push be
+ld de,work
+yinS: ld c,prts
+call jbdos
+jv yine
+3; If " &ldquo; flip &ldquo;Halted&rdquo;
+yine: ep&rdquo; s Space entered
+jv nz,yin8
+push hl
+push de
+push be
+ld de,headh 3 Move to work area
+ld be,6
+ld a,(de)
+cp Wout
+ld hl,haltm 3; Move &ldquo;Halted&rdquo;
+jr 2,yin7
+ld hl&nbsp;,hh ; Move spaces
+yin7: ldir
+yine: pop be
+</p>
+<p>
+tinx: jr tin
+</p>
+<p>
+16
+</p>
+<?php columnEnd(1); ?>

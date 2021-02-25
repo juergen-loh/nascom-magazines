@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+AN IMPROVED NAS-SYS? by Olav Lerflaten
+</p>
+<p>
+Here are some suggested modifications to NAS-SYS&nbsp;3. NAS-SYS&nbsp;3, while an
+excellent piece of software, has a couple of shortcomings from my point of
+view. In particular:
+</p>
+<p>
+&ndash; It does not support a parallel printer.
+&ndash; Access to the ASCII characters &ldquo;{&rdquo;, mn, and &ldquo;}&rdquo; is awkward.
+</p>
+<p>
+The latter point is perhaps of most concern to Scandinavians, as these
+characters are redefined as special Scandinavian letters. To ease word
+processing, the requirements are that the small &ldquo;letters&rdquo; { | } shall
+correspond to the capital &ldquo;letters&rdquo; [ \ ], respectively, each pair of
+&ldquo;letters&rdquo; assigned to its own key on the keyboard.
+</p>
+<p>
+Both these shortcomings are corrected by these modifications to NAS-SYS&nbsp;3. The
+requirements are:
+</p>
+<p>
+NASCOM 2 keyboard (57 keys)
+</p>
+<p>
+Centronics standard printer connector
+</p>
+<p>
+PIO port A (8 lines) to printer DATA lines
+PIO line BO to printer STROBE line
+</p>
+<p>
+PIO line B2 to printer BUSY line
+</p>
+<p>
+&ndash; PIO connector ground to printer LOGIC GROUND
+</p>
+<p>
+|
+</p>
+<p>
+The PIO is initialized during power-up, and reset to the printer requirements;
+this must be taken into account if the PIO is to be used for other purposes.
+</p>
+<p>
+One problem with NASCOM standard software is differences in supplying LF or
+not after each CR, this gives problems when using printers. On EPSON printers
+this is easily fixed, as the CR is not needed, only LF may be used to separate
+lines. Consequently, this NAS-SYS version converts all CRs to LFs, and ignores
+all LF codes sent from some software packages. If your printer insists on CRs,
+it should be possble to convert all CRs to a CR and a LF, still ignoring
+incoming LFs.
+</p>
+<p>
+To make room for the extra facilities inside the alloted NAS-SYS space, it was
+necessary to remove some existing code. I chose to attack the register display
+routine, shortening it so that now it will only display the contents of the
+Program Counter. After all, if you have DEBUG, you never use it anyway.
+</p>
+<p>
+Description of new NAS-SYS facilities
+</p>
+<p>
+a) Keyboard changes
+</p>
+<p>
+{ and [ are on the &ldquo;[\&rdquo; key
+</p>
+<p>
+| and \ are on the &lsquo;CH/LF&rsquo; key
+</p>
+<p>
+} and ] are on the &ldquo;] " key
+</p>
+<p>
+@ is now unshifted, repeating
+</p>
+<p>
+__ is Shift/@
+Remarks: The @ key is no longer available as an extra CTRL key (this facility
+is only needed on NASCOM-1 keyboards). CH and LF are not very important
+control codes, consequently they do not need their own key. CH is still
+</p>
+<p>
+E
+5
+</p>
+<?php columnEnd(1); ?>

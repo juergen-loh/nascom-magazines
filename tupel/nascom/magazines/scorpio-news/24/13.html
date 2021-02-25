@@ -1,0 +1,53 @@
+<?php columnStart(1); ?>
+<p style="margin-left: 5%">
+case constant_expr : statement /* within switch only */<br>
+default : statement /* within switch only */<br>
+break ; /* within loop or switch */<br>
+continue ; /* within loop */<br>
+</p>
+<p>
+Also allowed anywhere in the function body are :&ndash;
+</p>
+<p style="margin-left: 5%">
+return ; /* return from function */<br>
+return expression ; /* return from function with value */<br>
+goto label_name ; /* destination in the same function */<br>
+label_name : statement: /* destination of goto */<br>
+</p>
+<p>
+You may notice that there are no &ldquo;PRINT&rdquo; statements or the like. The basic
+philosophy of C does not allow them as you would find in BASIC, but all the useful
+ones are supplied as functions (which can be evaluated as (part of) an expression)
+in the system library.
+</p>
+<h2>
+Comments
+</h2>
+<p>
+As mentioned earlier, comments in C can occur almost anywhere, even in the middle
+of an expression or between arguments of a function call. A comment starts with
+&ldquo;/*&rdquo; and ends with &ldquo;*/&rdquo; and can contain any characters in between.
+</p>
+<h2>
+Data Names &amp; Types
+</h2>
+<p>
+Variables in C are given names, the number of significant characters depending on
+the implementation, and each has a specific type. The basic types allowed are:
+</p>
+<p style="margin-left: 5%">
+int : Signed integer, usually 16 bit.<br>
+unsigned : Unsigned integer of same size as int.<br>
+short: Signed integer, smaller size than int.<br>
+long : Signed integer, larger size than int.<br>
+char : Byte value, usually a character but can be unsigned integer.<br>
+float : Floating point value ( where implemented ).<br>
+double : Double precision float.<br>
+</p>
+<p>
+On top of these, a variable can be defined as a pointer to any specific&rsquo; type, or as a
+structure (struct ) or union. Structures are the equivalent of PASCAL&rsquo;s record type,
+and are essentially a fixed array whose members can be of different types. For
+example:
+</p>
+<?php columnEnd(1); ?>

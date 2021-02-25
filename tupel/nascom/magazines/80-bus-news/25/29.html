@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+29
+Review of 12K BASIC for Nascoms by G.S. Murray
+</p>
+<p>
+Hisoft Pascals have, rightly, been the subject of much favourable review,
+put I have yet to see any comment on their 12K BASIC. Having had this BASIC
+for over two years and used it extensively during that time, the following
+comments may be of interest, particularly for those readers who still use
+cassette tapes rather than disks.
+</p>
+<p>
+Hisoft supply their 12K BASIC on tape at 300 baud in the format required
+by their (4K) Nasmon monitor. That it needs the latter monitor has probably
+been a limiting factor in BAS12K&rsquo;s popularity. I was drawn to it by my need
+for greater arithmetical capability for payroll and similar programs that I
+was wanting to write in the days before there was a double precision package
+for Nascom ROM BASIC.
+</p>
+<p>
+The Nasmon monitor occupies addresses 0000H to 07FFH and 1000H to 17FFH.
+I overcame the problem of &lsquo;abandoning&rsquo; Nas-Sys by using a dual monitor board
+on my Nascom&nbsp;1. The dual monitor board allows switching between the first half
+of Nasmon and Nas-Sys and, by using a double-pole switch, I am able to select
+petween the monitors on the Nascom and between RAM and EPROM at 1000H to
+17FFH on one of my RAM &lsquo;A&rsquo; boards. My basic system, incidentally, consists of
+Nascom&nbsp;1 and Buffer board with two RAM &lsquo;A&rsquo; boards running at 4MHz without wait
+states; 64K RAM except where disabled by EPROM.
+</p>
+<p>
+And what delights does BAS12K bring to justify all this trouble? Well, of
+course, it does calculations to 12 decimal places with up to 11 places
+displayed. The numeric display may be controlled by a PRECISION command which
+sets the number of places following the decimal point or by the sophisticated
+PRINT USING command. Its other commands, apart from those which it shares in
+common with most 8K BASICs, are somewhat similar to those recently described
+as being in the Microsoft disk BASIC, MBASIC, apart, that is, from the file
+handling routines.
+</p>
+<p>
+But before commenting on those, I want to mention one feature which has
+proved extremely useful; the ability to use MIDS on the left-hand side of an
+assignment statement. This means that a slice of a string can easily be
+altered. Because, if the string is one read from a DATA statement incorporated
+in a program, the computer in READing the data merely creates a pointer to the
+program line in question, any amendment of the string concerned alters the
+DATA statement in the program. This will be SAVEd when the program itself is
+SAVEd and thus one has a ready means of amending stored data in the absence of
+formal file handling routines. If blank DATA lines of appropriate length are
+incorporated in the program they can be READ as blank strings which can later
+have necessary data put in them by the left-hand MIDS$(....) statement. Data
+are incorporated in program lines in a continuous string and chopped up by
+string manipulation rather than by using comma separators in DATA lines.
+</p>
+<p>
+Programs are SAVEd and LOADed by name, which may be up to 10 characters
+long. An adverse feature attaches to SAVE command and that is that it is
+necessary to start the tape before pressing Enter to commence saving; the tape
+autostart doesn&rsquo;t operate before the name is sent to tape.
+</p>
+<p>
+As well as the normal SAVE and LOAD commands, which use tokens for
+reserved words, there are the ASAVE and ALOAD commands which keep reserved
+words in their full ASCII form. Along with these two commands comes an AMERGE
+</p>
+<?php columnEnd(1); ?>

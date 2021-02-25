@@ -1,0 +1,318 @@
+<?php columnStart(1); ?>
+<p>
+inc a 5
+jr pr6
+; Compress first blank
+pra: ld a,80h
+3; Subtract 1 from Spare
+prs: push af
+call sparem
+pop af
+$ Test for end of buffer
+ine de
+1d hyd
+ld l,e
+ora
+sbe hl,be
+jr nz,pr6
+ld de,stk ; Set to
+3 Store character in buffer
+ld (de),a
+to Waiting
+call waitp
+pop hl
+pop af ; Do not
+reti
+</p>
+<p>
+Not too many so increment ascdec:
+</p>
+<p>
+nt zero:
+</p>
+<p>
+start
+</p>
+<p>
+; Add l
+prs:
+</p>
+<p>
+enable interrupts
+wfin:
+wfin2:
+</p>
+<p>
+3 *e**kk ARITHMETIC ROUTINES ****%
+3; Add 1 to chars spare 5
+sparep: push hl
+</p>
+<p>
+ld hl,spare
+ld a,(hl)
+</p>
+<p>
+ep wo
+</p>
+<p>
+jr nz,gotdig
+1d (hl) ,"1&rdquo;
+pop hl
+</p>
+<p>
+ret
+</p>
+<p>
+cp &ldquo;9&rdquo;
+</p>
+<p>
+jr onz,not9
+ld (h1),"0&rdquo;
+dec hl ;
+jr ascine
+ine a
+</p>
+<p>
+ld C(hi),a
+pop hl
+ret
+</p>
+<p>
+sparem:
+</p>
+<p>
+ascine:
+</p>
+<p>
+sn O
+</p>
+<p>
+ut:
+gotdig:
+</p>
+<p>
+out:
+</p>
+<p>
+nots: outl:
+</p>
+<p>
+3; Add 1
+waltp:
+</p>
+<p>
+to chars waiting
+push hi
+</p>
+<p>
+ld hl wait
+</p>
+<p>
+jr ascine
+</p>
+<p>
+out2:
+</p>
+<p>
+; Subtract 1 from chars waiting
+waitm: push hl
+</p>
+<p>
+ld hl,wait
+ascsub: push hi
+</p>
+<p>
+ld a,(hl)
+cp Ngit
+</p>
+<p>
+jr nz,ntzero
+ld (hl) ,"9&rdquo;
+dec hil
+</p>
+<p>
+jv asedec
+dec a
+</p>
+<p>
+ld Chl),a
+ep Hot
+</p>
+<p>
+qv onz,wfin
+dec hl
+</p>
+<p>
+ld a,&rdquo; &ldquo;
+ep (hl)
+</p>
+<p>
+jr nz,wfin
+ine hl
+</p>
+<p>
+ld (hl),a
+pop hl
+</p>
+<p>
+ep (hl)
+</p>
+<p>
+jr nz,wfin2
+ld (hl) ,"0&rdquo;
+pop hi
+</p>
+<p>
+ret
+</p>
+<p>
+pop hi
+</p>
+<p>
+pop hl
+</p>
+<p>
+ret
+</p>
+<p>
+outa:
+</p>
+<p>
+out2b:
+</p>
+<p>
+out:
+</p>
+<p>
+; Subtract 1 from chars spare
+</p>
+<p>
+push hl
+ld hl,spare
+ir ascsub
+</p>
+<p>
+RRAKK OUTPUT ROUTINE **%&amp;x
+Output character to printer
+</p>
+<p>
+or a
+</p>
+<p>
+push af
+</p>
+<p>
+ip pe,outd 3
+xor 80h
+</p>
+<p>
+Make parity even
+</p>
+<p>
+; Decide if interrupts enabled while waiting
+</p>
+<p>
+push af 3
+ld a,(spare-1) ;
+cp ont
+</p>
+<p>
+jv nz,out2
+</p>
+<p>
+ld a,(spare)
+</p>
+<p>
+ep fg&rdquo;
+</p>
+<p>
+jr z,out4
+</p>
+<p>
+ei ; Enable interrupts
+if cent
+</p>
+<p>
+xor a ; Show printer not busy
+out (pdl),a
+</p>
+<p>
+ld a,3 3; Allow time for host to realise
+(assume tight loop)
+</p>
+<p>
+Low level I/O routine
+Test if any spare
+</p>
+<p>
+dec a
+</p>
+<p>
+dr nz,out2a
+ld a,Olh
+out (pdl),a
+ld a,20
+</p>
+<p>
+dec a
+</p>
+<p>
+jr nz,out2b
+endif
+</p>
+<p>
+in a,(uarth)
+bit 4,a
+</p>
+<p>
+di
+</p>
+<p>
+jr z,outl
+</p>
+<p>
+in a,(uarts)
+bit 5,a
+</p>
+<p>
+jr z,outl
+pop af
+</p>
+<p>
+out (uartd),a
+pop af
+</p>
+<p>
+ret
+</p>
+<p>
+end
+</p>
+<p>
+on
+</p>
+<p>
+&gt;
+</p>
+<p>
+Show printer busy again
+</p>
+<p>
+Allow plenty of time for host to send dat
+</p>
+<p>
+Test handshake
+Test CTS
+</p>
+<p>
+Disable interrupts
+See if free yet
+Wait until free
+</p>
+<p>
+Output data
+</p>
+<p>
+18
+</p>
+<?php columnEnd(1); ?>

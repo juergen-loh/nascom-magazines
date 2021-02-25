@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+A few things to note; the subroutine starts at 0C60; if you have
+a Bits &amp; PC&rsquo;s graphics board, put E0 at 0C62. You can also load
+register C with the character of your choice and call 0C6D. Fun,
+isn&rsquo;t it? (It seems to impress non-computer owners, too). Keen
+users of disassemblers will find some very interesting instructions
+mixed in with the well-known ones.
+</p>
+<p>
+I must have been typing E 0C50<sub>NL</sub> for over a year now, and nobody
+told me that the E command will&rsquo; pick up three addresses, if they
+are there, If you type E 0C50 0C60 0C70 the program at 0C50
+will be executed as normal, but all three &ldquo;addresses are in the
+scratchpad RAM, available for use by the program. The 0C60 would
+be at ARG 2 (0C0E/F) and 0C70 at ARG 3 (0C10/1). This would be
+useful if you had a program you wanted to run repeatedly, with
+varying parameters, and couldn&rsquo;t be bothered to put a proper keyboard
+input routine in, or hadn&rsquo;t enough memory to do so.
+</p>
+<h2>
+A NEW MAGAZINE WORTH TEN POUNDS!
+</h2>
+<p>
+The first edition of the Liverpool Software Gazette has arrived at
+Zilog Villas; it is produced by Microdigital, and is well worth
+investigation. For a start, they have included a listing of their
+own Nascom programming language, M5. This is normally sold for
+ten pounds, so you save nine pounds fifty on the first issue!
+There is also an article about running Sargon on a Nascom, which I
+expect will come in handy when I get around to translating all those
+funny TDL mnemonics. There was also a short article on the text
+oriented language, Pilot, which has given me an idea for what to
+write next to perplex poor Marvin. Obviously, a Nascom Pilot
+interpreter.... Yet another setback for the heap of half finished
+programs in my possession. (An example of this is the program
+suggested by Richard Beal, to test/convert programs intended for
+other machines; to tell the truth though, all I had done was draw
+a circle and write &ldquo;start&rdquo; in it....)
+</p>
+<h2>
+AN IDEA FOR A PROGRAM
+</h2>
+<p>
+The code that follows is used to draw a maze on the screen, the
+computer then has to try to solve the maze. The target is represented
+by a @ and the creature that has to solve the maze by a
+symbol I can&rsquo;t type &ndash; 07H. You know the one I mean...Key U,D,L
+or R to draw the maze, E to erase parts you don&rsquo;t want, F to mark
+the finish, and then S to start. The next instruction will be at
+0CB0, only you have to write it.
+</p>
+<pre>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-24-1.png"); ?>
+0CB0 Your turn.....
+</pre>
+<?php columnEnd(1); ?>

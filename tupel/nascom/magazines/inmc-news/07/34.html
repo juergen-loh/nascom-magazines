@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<p>
+Many of the programs themselves were amazing (in the sense that
+I was amazed). Although programming techniques are very much a matter
+of opinion, and I am the first to admit that I am not a very clever
+programmer, some of the programs were mind boggling for their tedium
+and longwindedness. In many instances a pointer (HL) was set to a
+screen location, the C register loaded with the character to be
+displayed, a LD (HL), C instruction performed, HL was then incremented
+by one and the operation repeated for each character of the string.
+Occasionally spurious NOPs would be thrown in for good measure. This
+produces an overhead of at least 3 bytes per character displayed. I
+wonder if Mr. Hopton has forgotten that the Z80 has an LDIR instruction
+which only produces a total overhead of 11 bytes regardless of the
+length of the string. Or as the routine PRS was included in the
+appendix, why was this not used as the total overhead would then be
+only two bytes. A couple of programs are given to display geometric
+figures, which work by setting HL to each location in turn, then using
+what seems to be the author&rsquo;s favourite instuction, LD (HL), C, placing
+an asterisc at the location pointed to by HL. No attempt is made to
+calculate the HL locations within a loop. Whilst this style of
+programming cannot be condemned as bad programming, programming being
+such a matter of opinon, it is at least inelegant and inefficient.
+</p>
+<p>
+Perhaps the most infuriating thing about the whole book is the
+total omission of instruction mnemonics and labelled routines within
+NASBUG, which time and again had me thumbing through the pages of my
+Z80 reference book to disassemble instruction codes that were un-familiar,
+or the NASBUG references for whose labels and purpose I knew,
+but whose absolute address I could not remember. The commenting
+throughout was good, but without the mnemonics and labels, it was very
+difficult to follow which register was doing what, particularly as
+jumps were consistently refered to as just &lsquo;jump&rsquo;, regardless of
+whether it was a jump relative, jump absolute, conditional or not.
+</p>
+<p>
+To summarise, the book is an attempt to fill the gaping void
+between the absolute beginner at programming and the programmer who
+&lsquo;has got it all together&rsquo;. A brave try, as no-one else has attempted
+it. Unfortuantely, the book falls between the two stools, in that
+indequate information is provided for the rank beginner, and the
+programming techniques used are liable to provoke mirth rather than
+serious reflection on the part of the experienced. The commenting is
+very thorough, but the absence of instruction mnemonics and labels
+makes following the programs (by single stepping) almost impossible. It
+is difficult to know who to recommend this book to, as it would be of
+little use to the beginner; hard going and poor programming practice to
+those with a little experience; and rib tickling to those who know what
+it&rsquo;s all about anyway. The only saving grace is perhaps the very
+detailed explanations of those monitor routines listed in the appendix.
+In conjunction with the listings given in the Nascom manuals (to pencil
+in the missing mnemonics), it becomes a relatively simple piece of
+logical thought to see what the monitor is up to. I only wish that the
+monitor listings given with the Nascom were commented in this fashion
+in the first place.
+</p>
+<p>
+I note that the book has &ldquo;Approved by Nascom&rdquo; plastered all
+over it, it makes me wonder who approved it, and exactly what purpose
+he approved it for.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

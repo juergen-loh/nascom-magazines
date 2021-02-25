@@ -1,0 +1,152 @@
+<?php columnStart(2, 2); ?>
+<p>
+MBASIC CBASIC
+= = or EQ
+&lt; &lt; or LT
+</p>
+<p>
+= &lt;= or LE
+O &copy; or NE
+&gt; &gt; or GT
+</p>
+<p>
+= &gt;= or GE
+</p>
+<p>
+The same letters are used for relational operators
+in FORTRAN which also uses the same set of
+logical operators &ndash; NOT, AND, OR and XOR &ndash; as
+both the BASICs.
+</p>
+<p>
+Intrinsic functions
+</p>
+<p>
+Most of the intrinsic functions in CBASIC are found
+in MBASIC. The exceptions are as follows:
+</p>
+<p>
+FLOAT &ndash; converts an implicitly declared integer to
+its real number equivalent; if a real number is used
+instead, it is converted to an integer and then
+reconverted to its real equivalent.
+</p>
+<p>
+INT% &ndash; this truncates a real number at the decimal
+point and returns an integer result. If a real number
+is to be converted, it is first converted to a real
+number before truncation. Note that this is not the
+same as the INT function which actually produces
+a real result.
+</p>
+<p>
+This highlights the fact that unnecessary conversions
+and other operations will slow down a
+program, and to minimize this, one should make
+sure that any conversions are done using the right
+type of number.
+</p>
+<p>
+User-defined functions
+</p>
+<p>
+These are almost identical in both BASICs; the only
+major difference is that, in addition to the letters
+FN, up to 29 other alphanumeric characters may be
+added in CBASIC.
+</p>
+<p>
+String functions
+</p>
+<p>
+Compared with MBASIC, CBASIC has several more
+string functions; the following will give some idea
+of the flexibil&rsquo;ty of this aspect of the dialect:
+</p>
+<p>
+COMMAND$ &ndash; returns the CP/M command line
+without the ndme of the CP/M program being
+invoked. You probably won&rsquo;t use this a lot.
+</p>
+<p>
+MATCH(AS,B$,I%) &ndash; looks for string A$ starting at
+the [%th character in string B$. If it is present, the
+function returns the position in B$ of the first A$
+character; if it is not present, the value 0 is
+returned. .
+</p>
+<p>
+SADD(A$) &ndash; returns the starting address in
+memory where CBASIC has stored A$.
+</p>
+<p>
+UCASE(A$) &ndash; converts lower case letters to upper
+case in string A$.
+</p>
+<p>
+Program logic
+</p>
+<p>
+in addition to the normal IF&nbsp;... THEN&nbsp;... &lt;ELSE&gt;
+statement, CBASIC has an amazing feature called
+the Compound IF statement where many comparisons
+can be made. A program which illustrates
+this and the use of other CBASIC features may help
+explain this very useful facility:
+</p>
+<p>
+REM Silly program in CBASIC to illustrate
+REM ompound IF statement and other features.
+INPUT &ldquo;ENTER THE VALUE OF THE COIN &ldquo;;
+</p>
+<p>
+COIN. VALUEZ
+COIN. COLGUR1$="GOLD-COLOURED&rdquo; : COIN.
+COLOURZ$="SILVER&rdquo;
+COIN. COLOUR3$="BRONZE&rdquo;
+PRINT*YOU INPUT A VALUE OF &ldquo;; COIN. VALUEZ
+IF COIN. VALUEZ GT THAN 100 \
+THEN PRINT&rsquo;CAN&rsquo;T DO THIS ONE!":GOTO 999
+IF COIN. VALUEZ= 20 OR 100 THEN GOTO 10
+IF COIN. VALUEZ=5 OR 10 OR 50 THEN GOTO 20
+IF COIN. VALUEZ=1 OR 2 THEN GOTO 30
+10 IF COIN. VALUEZ=20
+THEN PRINT \
+&ldquo;YOUR COIN IS A 20p PIECE AND IT IS A&rdquo;:
+PRINT&rsquo;DIRTY YELLOW COLOUR":GOTO 999
+IF COIN.VALUEZ EQ 100 &ndash;
+THEN PRINT&rdquo; YOUR &pound;1 COIN IS &ldquo;;
+COIN&nbsp;.COLOURIE: |
+GOTO 999
+20 IF COIN. VALUEZ EQ 50 \
+THEN PRINT&rsquo; YOUR 50p COIN IS &ldquo;05
+COIN. COLOUR2$:GOTO 999
+IF COIN. VALUEZ LT 50 \
+AND GT 5 THEN PRINTS
+&ldquo;YOUR 10p COIN IS &ldquo;;COIN.COLOUR2$:GOTO 999
+IF COIN. VALUEZ = 5 \
+THEN PRINT&rdquo; YOUR 5p COIN IS &ldquo;;.
+COIN. COLOUR2$:GOTO 999
+30 IF COIN.VALUEZ LT 5 THEN PRINT
+&ldquo;YOUR COIN IS A &ldquo;:&rsquo;
+COIN. COLOUR3$:
+IF COIN. VALUEZ NE 1 &lsquo;
+THEN PRINT&rdquo; 2p PIECE&rdquo;
+IF COIN. VALUEZ EQ 1 THEN PRINT&rdquo; ip PIECE&rdquo;
+999 END
+</p>
+<p>
+Another useful pair of statements found in both
+BASICs, is WHILEAVEND; they are essentially a
+variation of the FOR/NEXT statements and will
+allow statements inserted between them to be
+continually executed as long as the expression
+following WHILE is logically true. As soon as it is
+logically false, the sequence terminated and the
+next statement after WEND is executed. This is
+quite a nifty idea and additionally, Compound IF
+statements can be included between them. The
+following example illustrates the action of the
+WHILE/WEND pair:
+</p>
+<?php columnEnd(2); ?>

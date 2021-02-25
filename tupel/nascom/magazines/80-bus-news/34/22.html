@@ -1,0 +1,93 @@
+<?php columnStart(1); ?>
+<p>
+22
+</p>
+<p>
+Henry&rsquo;s CCPZ, BDOSZ, &amp; Utility Disks by W. H. Turner
+</p>
+<p>
+Recently, feeling rich, I sent off to Henry&rsquo;s for BDOSZ, CCPZ and their
+Incredible CP/M Utilities Disk. Having used them now for a month or so I
+thought a few comments on how I found them might be interesting.
+</p>
+<p>
+I expected BDOSZ to have lots of free space to add extra goodies, but it
+didn&rsquo;t. I feel this shows how compact 8080 code can be. Now that BDOSZ is
+installed in my system, I am only aware of the change when I run out of disk
+space or get a select error. There&rsquo;s not much more to say about it except that
+it&rsquo;s nice to be able to look through the code when you want to find something
+out.
+</p>
+<p>
+CCPZ, on the other hand, has had a fundamental effect on my way of
+working. For a start, all my commonly used programs (e.g. PIP, SUBMIT, ERQ
+etc.) now reside on drive A and I do all my work on drive B with a disk for
+each activity (Pascal, assembler, correspondence etc.). I use Gemini&rsquo;s &ldquo;Auto
+Execute&rdquo; facility to log in drive B on reset and although most programs are to
+</p>
+<p>
+be found on drive A, it only takes a second for CCPZ to determine that the &ndash;
+</p>
+<p>
+file is not on drive B. Files are transferred from one working disk to another
+via drive A. I have patched SUBMIT and EXSUB to put the $$$.SUB file on drive
+A where CCPZ expects to find it and Wordstar to find its overlay files there
+too.
+</p>
+<p>
+Initially there was a problem with CCPZ as after the first warm boot, all
+I got was the message:
+</p>
+<p>
+Wrong system size/No system on this disk
+</p>
+<p>
+I have Gemini Bios vers 2.2 2-DM and I traced the problem to the code at
+BIOS+E3H where it compares the byte at CCP+4 to E0H which it is in the
+original CCP, I changed this test to comparing CCP+3 to C3H (jp).
+</p>
+<p>
+I can&rsquo;t leave the subject of CCPZ without saying that I find all the new
+facilities incredibly useful. Its a bit like the TV Times, I didn&rsquo;t realise
+you could get so much in it!
+</p>
+<p>
+Finally to Henry&rsquo;s Incredible Utilities. These are a mixed bag, some
+being extremely useful. Although some of the programs have been mentioned
+before in the magazine, I have never seen a review of the entire contents
+before. The programs come in source form or as COM files (some as both) and
+there is so much on the disk that all the sources are in compressed form but
+by following the directions all can be retrieved.
+</p>
+<p>
+The disk contains the following programs:
+</p>
+<p>
+a) Cataloguing suite
+</p>
+<p>
+b) COMP (file compare program)
+</p>
+<p>
+c) CPU (Z80 processor test)
+</p>
+<p>
+d) Program dating suite (Its all done using bit 7 of the letters in
+the file name)
+</p>
+<p>
+e) CRC (File CRC generation)
+</p>
+<p>
+&pound;) DU (Disk patch utility)
+</p>
+<p>
+g) ERQ (Selective erase)
+</p>
+<p>
+h) FILEMAP (Displays file maps)
+</p>
+<p>
+i
+</p>
+<?php columnEnd(1); ?>

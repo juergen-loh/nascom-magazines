@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+16
+</p>
+<p>
+The Arfon light pen (If you can still get it)
+</p>
+<p>
+The Arfon. light pen is housed in a black anodised aluminium cylinder about 18cm
+long and 2cm in diameter. It&rsquo;s not heavy, weighing in at about 2.5 Ounces (my
+wife&rsquo;s scales aren&rsquo;t metric!), and is supplied with about 130cms of lead
+terminated in a 5-pin DIN plug. This DIN plug will plug directly into the Gemini
+GM8i2 IVC card. I believe there is an interface available for a Nascom, but I have
+not seen this and cannot comment on it. There is a push button mounted in the pen
+body close to the end that carries the photo-diode. This push button falls
+conveniently under the fore-finger when the pen is held in a &lsquo;pen-like&rsquo; manner.
+</p>
+<p>
+The output of the photo-diode is amplified and limited to produce a TTL compatible
+STROBE signal. The switch is debounced and produces a TTL compatible ENABLE signal.
+</p>
+<p>
+Using the light pen
+</p>
+<p>
+Sete te ree eee ree eo
+</p>
+<p>
+I have used the light pen in conjunction with the Gemini IVC and shall thus
+restrict my discussions to this particular combination. :
+</p>
+<p>
+The 6845 CRT controller used on the IVC directly supports a light pen. The STROBE
+output of the light pen is connected through to the LPEN input on the 6845. As
+supplied the light pen provides a negative going strobe pulse. The CRI controller
+uses the rising edge of this strobe as a trigger for latching the screen address,
+and so all coordinates returned will be found to be offset by the strobe pulse
+width. Purists may like to dismantle the light pen and select the opposite polarity
+for the strobe, but this is of little consequence as it can easily be catered for
+in software. Note, however, that if the strobe is left as it is the offset required
+will be dependent on the light pen used, and also on the screen width in use. (A
+strobe width of 6us is 12 characters in the 80-wide mode, and nearly half that in
+the 48-wide mode).
+</p>
+<p>
+The IVC software &ndash; ESC P
+</p>
+<p>
+The video card supports the ESC P command for returning the coordinates of the
+light pen. At the time the IVC software was written no light pen was available to
+try with it, and so the function only performs the simple operations as follows:&ndash;
+</p>
+<p>
+i) Wait until the light pen switch is found to be operated.
+ii) Wait one TV frame.
+iii) Read the light pen register in the CRT controller.
+iv) Adjust the address to account for IVC hardware delays.
+v) Test for a valid screen address.
+vi) If the address is not valid then go to i).
+vii) Convert the address to equivalent Row/Column coordinates.
+viii) Return the coordinates to the host system.
+</p>
+<p>
+This performs the basic function required by a controlling program, but to get the
+best out of it a little more support is required. This is illustrated in the
+following sections using the ESC L and ESC U functions of the IVC. (See IVC
+manual). One small point to take into account with the function is that if the
+switch on the pen is held down the IVC will immediately return a set of
+coordinates whenever the ESC P sequence is received. ie The function is level
+sensitive, not edge triggered. The controlling software will have to decide if the
+coordinate pair represent a new selection, or if the operator has still not yet
+released the switch from his last selection. (See example 4 for a way round this).
+</p>
+<?php columnEnd(1); ?>

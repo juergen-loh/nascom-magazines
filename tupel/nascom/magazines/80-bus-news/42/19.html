@@ -1,0 +1,175 @@
+<?php columnStart(2, 2); ?>
+<p>
+.pa (Page break/go to next record)
+</p>
+<p>
+Avery useful command which instructs the
+program to insert a page throw and go on to
+</p>
+<p>
+use the next record inthe data file.
+</p>
+<p>
+wv &lt;list of variable(s)&gt; (Read a variable)
+</p>
+<p>
+This specifies what data fields are in the data
+</p>
+<p>
+file, and their order.
+The standard letter will have data fields inserted
+into it and bracketed by ampersands (&amp;); by
+placing a /O at the end of a data field, one can
+suppress the space which would be left by any field
+such as a missing post code or county which may
+have been omitted from the data file.
+</p>
+<p>
+Three or four dot commands are required for all
+letters which will be processed by MailMerge.
+These are&nbsp;.op (optional), .df, followed by&nbsp;.rv and
+.pa; the first three are placed at the beginning of
+the letter file and&nbsp;.pa at the end. A typical letter file
+would be as follows, where the dot commands
+should always start in column 1.
+</p>
+<p>
+.Op
+.af silly.dta
+_rv name, company,street.town, county.
+</p>
+<p>
+postcode, goods
+</p>
+<p>
+___ ____ ____,
+London ___ ___.
+&amp;data&amp;
+</p>
+<p>
+&amp;name&amp;
+</p>
+<p>
+&amp;company /0&amp;
+&amp;street&amp;
+</p>
+<p>
+&amp;town&amp;
+</p>
+<p>
+&amp;county&amp; &amp;postcode&amp;
+</p>
+<p>
+Dear &amp;name&amp;
+</p>
+<p>
+Would you kindly send me a copy of your
+current catalogue of export model &amp;goodsk?
+</p>
+<p>
+I would also be interested in receiving
+details of discounts available for cash.
+</p>
+<p>
+Yours faithfully,
+</p>
+<p>
+A.N. Other
+</p>
+<p>
+File this as BEGGING.LET.
+</p>
+<p>
+Then set up a data file with the names and
+addresses of all the firms you wish to bother. Use
+the NON-DOCUMENT mode of WordStar for this.
+The data must be present in the same order as it is
+required by the letter file and if any information
+such as the name of the street, or the county is
+missing, its place in the data file must be marked
+with a comma. Each name and address must take
+up one line of the file and is terminated with a
+carriage return &ndash; the record may be well over 200
+characters long. The following example will show
+how it is done:
+</p>
+<p>
+Top Cat,Tiger Computers, ___ ____, Panthertown,Lynx,
+221 1Z2Z,mice, p186
+</p>
+<p>
+Deputy Dawg,Newbone Computer Store, ,Wulf,
+</p>
+<p>
+Avon, , floppy disks, p186
+</p>
+<p>
+Chris Tandocri,Beebac, ,Oxbridge, ,0X99 BBC,
+</p>
+<p>
+plastic computers, pl8e
+</p>
+<p>
+Store it as SILLY.DTA
+</p>
+<p>
+Note that record 1 is complete, record 2 has no
+street name, or postcode, hence the double
+commas after Store and Avon, and record 3 has no
+street name or county, hence two lots of double
+commas.
+</p>
+<p>
+The command file comes next.
+</p>
+<p>
+in Non-document mode type the following, noting
+that the dot commands must start in column 1.
+</p>
+<p>
+cS
+dm Printing your letters
+</p>
+<p>
+,av Date
+. fi BEGGING. LET
+.dm Finished (Thank goodness!) &ndash; or
+</p>
+<p>
+whatever you want to say.
+</p>
+<p>
+File this as DAFT.CMD
+</p>
+<p>
+You now have three files, BEGGING.LET, SILLY.DTA
+and DAFT.CMD &mdash;&mdash; and you are ready to try
+out the all singing, dancing and generally frolicsome
+MAILMERGE!
+</p>
+<p>
+Connect the printer, and select M from the
+WordStar menu. The program will prompt you for
+the name of the file to merge/print. In the example
+given above, this is DAFT.CMD. You then have to
+give some simple answers to profound questions
+about the output. If you want to, you can save the
+results of your labours in another file; MailMerge
+prompts you for the name. Otherwise, the default
+settings will be quite satisfactory for a trial run.
+Don&rsquo;t make the mistake of specifying more than 1
+copy, since this means that MailMerge will go on
+churning out as many sets of letters as you have
+asked for copies!
+</p>
+<p>
+Having established a reasonably simple format for
+the use of MailMerge, I have found it quite easy to
+use, although a minor bug sometimes manifests
+itself. If one creates new data, letter or command
+files using WordStar and then uses MailMerge
+without exiting to the system, and re-entering
+WordStar, the whole system may lock up, and has
+to be reset.
+</p>
+<?php columnEnd(2); ?>

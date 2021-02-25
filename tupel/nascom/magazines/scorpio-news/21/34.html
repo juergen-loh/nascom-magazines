@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<p>
+but the increased speed wasn&rsquo;t echoed elsewhere, the hard disk strolled along at a
+leisurely 65mS (average seek time) and I guess it took more time getting and storing
+results than it did actually doing the computing bit. Also, it used standard video
+cards so the ability to manipulate the video using standard DOS calls wasn&rsquo;t any
+better. There&rsquo;s been a tendency lately to promote 80386 based AT clones as ordinary
+AT types with &lsquo;Go faster&rsquo; stripes. All well and good, but what a waste of the potential
+crunching power of the 80386, mind you, there isn&rsquo;t exactly a lot of software to make
+use of the 80386 in its native mode yet! Maybe I&rsquo;m wrong, but it looks to me as if
+this year the advertisers and hype boys will all be jumping on the &ldquo;Get the speed up
+and the price down&rsquo; band wagon. If you actually need the speed, it&rsquo;ll still cost a
+fortune for 23mS voice coil hard disks and super fast video and peripheral cards.
+Perhaps it&rsquo;s all sour grapes on my part, in the space of a year my computer which
+was one of the fastest around at the time, has now been overtaken by machines which
+will go twice as fast and actually cost less. Still, mine&rsquo;s got a 35mS hard disk, so for
+most of the stuff I do these days (database crunching) it&rsquo;s still faster than the latest
+&lsquo;Go faster&rsquo; toy fitted with the ubiquitous Seagate ST-255 drives.
+</p>
+<p>
+This brings me neatly round to another topic, actually deciding how fast a computer
+is going. One of my commercial lumps of software has to use real time clocking to
+make it work. In other words, it has to have precision delays in the software and
+rather better than the nominal 18 &lsquo;ticks&rsquo; a second clock built into the IBM. The piece
+of machinery it has to drive has to have timing intervals as short as 1/50th of a second,
+and is very fussy and makes expensive noises if it gets it wrong. As the software is
+supplied for any number of IBM clones, ranging from the Amstrad PCW1512
+(cheapest) and the IBM&nbsp;XT (slowest) through to one which is running on a Compaq
+386 (fastest and most expensive). I&rsquo;ve been faced with the problem of deciding how
+fast a computer actually crunches.
+</p>
+<p>
+The software to produce the delay is simple, it&rsquo;s nicked from NASSYS, and is
+Richard Beal&rsquo;s TDEL routine, but instead of counting down a 16 bit number in HL
+in the Z80, I count down a 48 bit number in the BX, CX and DX registers in the
+8086. The actual number to count is set up in a little data table which is created
+when the software is initialised and in each case, it is finally trimmed by trial and
+error with a special little delay routine and a good old fashioned stop-watch over a
+period of about five minutes. The problem is &ndash; faced with an unknown computer,
+brand X, how fast does it actually go, as opposed to how fast do the manufacturers
+say it goes.
+</p>
+<p>
+Ok, so over a period of time, I&rsquo;ve built up a table of likely numbers for different
+types of computer: an AT at 6MHZ with one wait state is 1.000, a 4.77MHz XT is
+0.3564 &ndash; and so on. These numbers give me ball park figures to get down to the
+final business of honing the number with a stop-watch. But what if I don&rsquo;t know the
+ball park figure? In my travels I&rsquo;ve collected a number of speed testing programs.
+</p>
+<?php columnEnd(1); ?>

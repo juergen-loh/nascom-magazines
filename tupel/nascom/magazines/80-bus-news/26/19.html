@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+19
+</p>
+<p>
+not use quite such big integers, so it seems to be producing less efficient
+code for this benchmark. It is not easy to be sure about this, however, on
+account of the stopwatch and its operator... All the routines using just
+integers suffer from the same &ldquo;negative improvement&rdquo;, but look what happens
+with Realarithmetic! HP5 cuts the time down quite well, while Compas is
+nowhere near even HP4. And when it comes to the (number) crunch, in Program
+Maths, HP5 is probably about 20% faster than HP4, even though it is doing a
+lot more work in the loop counting part of the program. The &ldquo;*&rdquo; mark indicates
+that I didn&rsquo;t believe the timing I got for Program Value, using Compas. Either
+the compiler is very efficient at calling procedures when there are no
+parameters, or this is a result of the fact that Compas procedures are not
+recursive unless you tell it they should be. (In other words, it does not
+normally set up a new local workspace every time a procedure begins, which
+proper Pascal compilers have to do.) Or perhaps I compiled it wrong...
+</p>
+<p>
+Since writing that paragraph, I have read Polydata&rsquo;s remarks in the last
+issue, and appreciate that much of what I have just said about their compiler
+may well be hopelessly wrong, when applied to version 2. It would be nice if
+they could let us know how fast the new version runs the benchmarks. I was
+pleased to see that they are now taking a much more sensible line over
+royalties on your programs, too...
+</p>
+<p>
+Anyway, the bottom line of the table is the one you are buying, and the
+HSA-88B is clearly pulling its weight there. By comparison, the Sage&nbsp;II, with
+its 68000 processor, using the well known p-system, and costing rather a lot
+more than my system, takes 7.6 seconds to run Program Maths. And if you run
+this:
+</p>
+<p>
+1000 PRINT &ldquo;S&rdquo;
+</p>
+<p>
+1010 FOR K% = 1 TO 1000
+1020 X = SIN(K)
+</p>
+<p>
+1030 Y = EXP(X)
+</p>
+<p>
+1040 NEXT KZ
+</p>
+<p>
+1050 PRINT &ldquo;Ek&rdquo;
+</p>
+<p>
+1060 END
+</p>
+<p>
+using MBASIC, you will find it takes about 25 seconds, running at 4MHz, even
+though it is using K%, which is faster than plain K. I have also written some
+other test programs which lean more heavily on the maths processor than the
+benchmarks do, because they don&rsquo;t really probe very deeply into the realms of
+number crunching, and there is an even more noticeable improvement, but space
+does not permit the inclusion of these programs. They don&rsquo;t actually do
+anything useful, anyway, wnless anyone wants a list of all the prime numbers
+lower than MAXINT...
+</p>
+<p>
+If you want the answers to your sums faster, or just want to be the envy
+of all the people with slow computers, then the HSA-88B has to be a good buy.
+As soon as I have taken my Open University exam for this year, and have some
+time to myself and Marvin, I am hoping to write some fancy stuff, using Pluto,
+HSA-88B (pity they couldn&rsquo;t have given it a nice name &ndash; what does the 88B bit
+refer to?) and HP5. Real 3D programs need fast matrix calculating routines to
+make them work. See in particular the article in December PCW for an idea of
+what can be done. Perhaps I need an array of HSA-88B&rsquo;s, say four of them,
+running in parallel...
+</p>
+<?php columnEnd(1); ?>

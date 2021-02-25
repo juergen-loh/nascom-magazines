@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+cays DS 06 ores out (PTOAC) A
+cay? AF 0142 XOR A
+cave DS 07 14s, QUT &mdash;(PIOBC),A yPort B all bite out
+caeA SE 97 14a o&gt; Hinterrupt moda on
+case DS 08 o14s QUT &mdash;(PIOAC) ,A sport A
+Cave 3 7F 014s, LD A,07F_&rdquo; yInterrupt mask for
+Gano DS 08 0147 Gur &mdash;(PIOAC) ,A bit 7 only
+Geaz 3E 20 0148, LD, VECLO&rsquo; Interrupt vector
+Gana DS 04 0149, Our (PIOAC? A
+</p>
+<p>
+0151 yAdjust cursor blink and keyboard speed
+cane 21 90 01 0152 LD HL,400 Slow down cursor
+Gea 22 32 0c (O1SS CD (BLINK) yHL
+Caec 21 1C 02 &laquo;(0154 LD -HL,540. &ldquo;ySpeed up repeat!
+Gear 22 26 oc | (15S LD cKLONS) &raquo;HL
+</p>
+<p>
+0157 sEnable interrupts and return to NAS-SYS
+cap2 3e ca 0158 LD Ay INTVEC
+caps ED 47 0189 oa
+caps ED SE 0140 m 2
+cape FB oes EI
+caB9 DF SB o142 SCAL RET
+</p>
+<p>
+0164 ySpace for future expansion
+</p>
+<p>
+018s DEFS
+</p>
+<p>
+0167
+</p>
+<p>
+0189
+</p>
+<p>
+0170 p=&mdash;&mdash;&mdash;&mdash;&mdash;
+&copy;6900 ED 73 AB CC 0172 INTHND LD (CLKBP),6P jUse special stack
+e904 31 FSCC 0173 LDP, CLCKBT+02F
+6907 FS, 174 PUSH Ae VBave registers used
+908 ES. 0175, PUSH HL
+</p>
+<p>
+0177 yProcess clock tick
+e909 21 as cc (0178 Lp HL, TICK
+c90c 34 0179 Inc (HL)
+90D 3E 32 0180 LD A,50
+c90F BE o1ai cu)
+e910 20 23 0182 SR &mdash;NZ,CONT Second finished?
+912 36 00 0183, LD (HL) ,0_ Yen &ndash; ramet tick
+ceia 21 azcc oles LD HL, CLOCK+2 Jand adjust clock
+C917 34 0185, nc HL)
+918 7E 0168 way cLD
+919 FE 3c 0187 ce 8
+C918 20 18 0168 JR &mdash;NZ,CONT
+91D 36 00 0189 LD HL) ,0 Adjust minutes
+CHiF 21 a1 cc 0190 tp HL, clock+s
+922 34 0191 Inc (HL)
+6923 7 0192 LD Ay cHL)
+6924 FE 3c 0193, cP 68
+6926 20 0D 0194 JR &mdash;&mdash;NZ,CONT
+6928 34 00 0195, Lp ),0 pad just hours
+C92 21 AO CC (196 to HL clock
+920 34 0197 INC (HD
+c92e 7 0198 LD ay CHL)
+C92F FE 18 0199 3 2h
+6931 20 02 0200 JR &mdash;&mdash;NZ,CONT
+6933 34 00 0201 to tly&nbsp;,0
+</p>
+<p>
+0203 jNow scan keyboard
+C935 3A AC CC &copy; 0208 CONT LD A, (NCHAR) jCheck if buffer full
+93a 21 a4 CC 0705 tp HL, BUFLEN
+esp BE 0208, ce wl)
+</p>
+<?php columnEnd(1); ?>

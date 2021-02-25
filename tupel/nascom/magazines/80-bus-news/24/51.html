@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+51
+</p>
+<p>
+attractive. In order. to achieve this and still be compatible with previous
+CP/M software, (and also to allow programs to maintain economical 128-byte
+buffers rather than larger ones), some software is interposed between CP/M
+and the disk drivers. This software maintains a physical sector buffer in
+memory (512 bytes in size in our case) through which all the CP/M data
+transfers are passed.&rdquo;
+</p>
+<p>
+Associated with the buffer are some flags, and a record of which sector
+the buffer contains. (Drive number, track number, physical sector number). Let
+us start by considering what happens when the BDOS wants to read a logical
+sector (128 bytes of data). We will totally ignore writing for the moment. The
+BDOS starts by issuing drive, track and sector requests, followed by a Call to
+the BIOS Read routine. The Read routine starts by converting the CP/M logical
+sector number to a physical sector number. (It divides it by 4 as 512/128=4).
+Next it checks a flag to see if there is anything in the buffer. If there
+isn&rsquo;t, it jumps on to do the actual read. If there is, it checks to see if it
+is the same drive/track/sector as the current request. If it is the same, then
+the read can be skipped as there is no point in overwriting the buffer with
+identical data! Once the buffer is full of data, the flag is set to indicate
+valid data is present, and the buffer pointers are updated to the correct
+drive/track/sector combination. Finally the transfer of 128 bytes of data to
+the BDOS follows. To locate which 128 bytes, the logical sector sector number
+is reloaded, and the lower two bits are isolated, (the remainder when divided
+by 4). These are then used as an index into the appropriate quarter of the
+buffer, which is then copied to the requested destination.
+</p>
+<p>
+Writing follows a similar pattern, but has various extra quirks. The main
+one is that before a logical sector can be written into the buffer, the buffer
+must contain the full physical sector. This is because the BDOS Write is only
+modifying one quarter of the sector, and the other three quarters must be
+maintained intact. Thus a Write might actually require a pre-read to load the
+physical sector into the buffer. However the efficiency of the system can be
+increased by defering the physical write, (following the transfer of the 128
+bytes to the buffer), because the odds are that the BDOS is performing a
+sequential Write, and so will be writing to another quarter of the same
+physical sector on the next Call. If the assumption is wrong, then nothing
+will have been lost, but if it is right, then the time taken to do a physical
+</p>
+<p>
+-Write will have been saved. However a &lsquo;Must Write&rsquo; flag has to be set to say
+that the buffer contains unwritten data in case the next request is a read or
+a write of another physical sector. In fact the code of both the Read and
+Write commands does check this flag, and if necessary Writes the buffer to
+disc before reusing it.
+</p>
+<p>
+The BDOS also passes some additional information in register C to the
+BIOS on every Write Call. If register C is zero, then it is a normal write.
+(i.e. the BIOS handles it in the manner described above). If register C is set
+.to 1, then the write is to a sector of the directory. In this case the buffer
+should be immediately re-written to disc, the write must not be defered. (Note
+This is in keeping with the &lsquo;rugged&rsquo; approach of CP/M, in making it difficult
+for you to accidently destroy directories by removing or changing discs at the
+wrong time). If register C is set to 2, then the write is to the first sector
+of a newly allocated block of sectors on the disc. This last one is another
+&lsquo;tweak&rsquo; to improve system performance. When the BDOS is writing a new file out
+to disc, (or extending an existing one), it tells the BIOS (by setting C=2)
+everytime it starts on a new block of sectors. As the BDOS is writing to an
+</p>
+<?php columnEnd(1); ?>

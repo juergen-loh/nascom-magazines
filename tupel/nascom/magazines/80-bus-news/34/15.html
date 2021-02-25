@@ -1,0 +1,143 @@
+<?php columnStart(1); ?>
+<p>
+PROGRAM PASCALPRINT ;
+</p>
+<p>
+{This program sends the edit buffer of a PASCAL program to a serial printer
+first checking on the busy line connected to Port 0 bit 7. After &ldquo;lines&nbsp;.page&rdquo;
+lines, a new page is produced by outputting &ldquo;spaces&rdquo; lines feeds. Printing
+can be stopped temporarily by pressing the space bar, and discontinued by
+pressing Escape. The text being sent to the printer is displayed in a &ldquo;ticker
+tape&rsquo; window on the screen. The compiled program must have the PASCAL runtime
+system resident in RAM to run properly. Note there is a problem in
+dealing with large files where the size extends to $8000 and beyond, since
+then the integer then represents a negative number. A solution is to print
+the file to $7FFF and then to print the second half using negative numbers}
+</p>
+<p>
+count:=1; {reset counter}
+FOR K:*0 TO spaces DO
+BEGIN
+ready;out(1,$D);ready;out(1,$A)
+END;
+END
+ELSE
+BEGIN
+count:=count + 1; ready;
+out (1, $D);ready ;out(1,$A
+END
+</p>
+<p>
+VAR screen,count&nbsp;,lines.page,spaces&nbsp;,bufferend: INTEGER;
+Ans :STRING([1L]5
+</p>
+<p>
+PROCEDURE CLS;
+CODE SEF,$C,0; {clear screen using NasSys RST 28H}
+</p>
+<p>
+{Check that printer buffer is not full}
+PROCEDURE buffer ;
+</p>
+<p>
+BEGIN
+</p>
+<p>
+WHILE inp(0) AND $80 &copy; $80 DO {nothing}
+END;
+</p>
+<p>
+PROCEDURE ready; {Check serial port is ready to send}
+BEGIN WHILE inp(2) AND 64&lt;&gt;64 DO; buffer END;
+</p>
+<p>
+PROCEDURE Delay; VAR I: INTEGER;
+BEGIN FOR I:=*1 TO 10000 DO END;
+</p>
+<p>
+PROCEDURE Writewindow( point: INTEGER);
+VAR screen, Il: INTEGER;
+BEGIN
+screen:=$910; {set start of screen window }
+FOR I:=0 TO $20 DO BEGIN IF mem[ point+I]=$D
+THEN mem[(screentI]:= 7 {bell}
+ELSE meml screenti ]:=mem[ point+I]
+END
+END;
+</p>
+<p>
+{Alternative version of Writewindow using machine code inser&rsquo;
+PROCEDURE Writewindow( pointer: INTEGER);
+CODE $2A,$92, $C, $11, SFE, SFF, $19, S5E, $23,556, SEB,
+</p>
+<p>
+$11, $10, $9,1,$20,0, SED, $B0;
+</p>
+<p>
+PROCEDURE Printloop( pointer: INTEGER);
+VAR char, K: INTEGER;
+BEGIN
+WHILE keyboard=$20 DO{nothing}; {stop while Spacebar pressed}
+char:=men{ pointer];
+IF char=$D THEN
+BEGIN
+IF count = lines.page {end of page}
+THEN
+BEGIN
+</p>
+<p>
+END
+ELSE
+BEGIN
+ready; Writewindow( pointer);
+ready; out(l,char)
+END
+END; {of Procedure Printloop}
+</p>
+<p>
+PROCEDURE Printbounds(start,finish: INTEGER);
+VAR I: INTEGER;
+BEGIN
+T:=start;
+WHILE (keyboard&lt;&gt;$1B) AND (1&lt;=finish) DO
+BEGIN
+Printloop(1); I:=I+1
+END
+END;
+</p>
+<p>
+BEGIN {main body of program}
+screen: =$910;
+lines.page:=60; spaces:=8; count:=1;
+CLS; WRITELN ;WRITELN ;WRITELN ;WRITE (&ldquo; *);
+WRITELN(&ldquo;Do you wish to change lines/page from 607);
+WRITE(* );
+WRITE(&ldquo;or page spacing from 8? Ans Yor N 7);
+READ( Ans); IF Ans=&ldquo;Y- THEN
+BEGIN
+WRITELN;
+WRITELN ;WRITE(&rsquo; &ldquo;);WRITE(&ldquo;Enter new Lines/page value -);
+READLN( Lines&nbsp;.page);
+WRITELN ;WRITE(* &ldquo;);WRITE(&ldquo;Enter new space value &ldquo;);
+READLN( spaces); CLS;
+END;
+</p>
+<p>
+Delay; CLS;
+buf ferend :=mem[$C82] + 256*mem[$C83];
+IF mem[{$C83] AND $80=$80
+THEN {the buffer extends beyond $7PFF}
+BEGIN
+Printbounds($4000,$7FFE); Printloop($7FFF);
+Printbounds($8000,bufferend)
+END
+ELSE
+Printbounds( $4000, bufferend);
+</p>
+<p>
+END.
+</p>
+<p>
+15
+</p>
+<?php columnEnd(1); ?>

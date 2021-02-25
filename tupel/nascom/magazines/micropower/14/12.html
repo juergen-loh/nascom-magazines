@@ -1,0 +1,228 @@
+<?php columnStart(1); ?>
+<p>
+When the machine code routine is complete a full stop is entered. The loader
+then asks if another command is to be entered. If the response is &lsquo;Y&rsquo;, the program
+continues, adding the next command immediately after the last. Otherwise it changes
+the Basic Text Pointer (at 1283H) to the start of the next 256-byte page. In Xtal Basic
+the text must start on a page boundary.
+</p>
+<p>
+0090
+0100
+0110
+0120
+0130
+;;
+</p>
+<p>
+***********************************************
+; ** COMMAND LOADER BY D. ELLIOT **
+; ***********************************************
+;
+</p>
+<p>
+4E00
+4E00
+4E01
+EF
+0C
+0140
+0150
+0160
+LOADR
+ORG &pound;4E00
+RST 40
+DEFB 12
+; EXECUTION ADDRESS
+; PRINT STRING
+; CLEAR STRING
+4E02 456E7465 0170 DEFM&ldquo;ENTER COMMAND/FUNCTION NAME&rdquo;
+4E1E
+4E20
+4E22
+4E23
+4E25
+4E27
+4E2A
+4E2C
+4E2D
+4E2F
+4E31
+4E32
+4E34
+4E36
+4E37
+4E39
+4E3A
+4E3C
+4E3D
+4E3E
+4E3F
+4E40
+4E42
+4E44
+4E45
+4E47
+4E49
+4E4A
+4E4C
+4E4D
+4E4E
+4E51
+4E52
+4E56
+4E57
+4E58
+4E59
+0D00
+DF63
+1A
+FE20
+2832
+21800E
+0EFF
+7E
+CB7F
+2805
+0C
+FE80
+2803
+23
+18F3
+1A
+CBFF
+77
+23
+13
+1A
+FE20
+2803
+77
+18F6
+3680
+59
+1600
+EB
+29
+11800F
+19
+ED5B8312
+73
+23
+72
+EF
+0180
+0190
+0200
+0210
+0220
+0230
+0240
+0250
+0260
+0270
+0280
+0290
+0300
+0310
+0320
+0330
+0340
+0350
+0360
+0370
+0380
+0390
+0400
+0410
+0420
+0430
+0440
+0450
+0460
+0470
+0480
+0490
+0500
+0510
+0520
+0530
+0540
+LOOP
+NEXT
+ADDNAM
+ADD1
+ADD80
+NCOM
+DEFB 13,0
+SCAL INLIN
+LD A, (DE)
+CP &ldquo;
+JR Z,NOTCOM
+LD HL, NAMES
+LD C,-1
+LD A (HL)
+BIT 7,A
+JR Z,NEXT
+INC C
+CP &pound;80
+JR Z,ADDNAM
+INC HL
+JR LOOP
+LD A (DE)
+SET 7,A
+LD (HL),A
+INC HL
+INC DE
+LD A,(DE)
+CP &ldquo;
+JR Z,ADD80
+LD (HL),A
+JR ADD1
+LD (HL), &pound;80
+LD E,C
+LD D,0
+EX DE,HL
+ADD HL,HL
+LD DE,VECT
+ADD HL,DE
+LD DE,(TEXT)
+LD (HL),E
+INC HL
+LD (HL),D
+RST 40
+CRLF, END OF STRING
+; INPUT LINE
+; GET 1ST CHARACTER
+; NAME ENTERED?
+; JUMP IF NOT
+; SET POINTER
+; RESET COUNTER
+; GET NEXT BYTE
+; STARTOFWORD?
+; IF NOT, TRY NEXT
+; INCREMENT COUNTER
+; END OF TABLE?
+; ADD TO TABLE
+; INCREMENT POINTER
+; NEXT CHARACTER
+; GET NEXT BYTE
+; SET BIT 7
+; SAVE 1ST CHAR.
+; INCR. POINTERS
+; GET CHARACTER
+; END OF NAME?
+; IF SO, INSERT &pound;80
+; SAVE CHARACTER
+; CONTINUE
+; ADD DELIMITER
+; CALCULATE ADDRESS
+; OF VECTOR
+; START OF TABLE
+; SET VECTOR
+; AT END OF BASIC
+; PRINT STRING
+4E5A 456E7465 0550 DEFM /ENTER MACHINE CODE./
+4E6D 0D00 0560 DEFB 13,0 ; CRLF, STRING END
+</p>
+<?php columnEnd(1); ?>

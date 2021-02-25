@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+Next you install a single 2708 on the Nascom. Set the Reset Jump to
+F000H, switch on, insert a disk and hey presto, it works. Well mine worked
+straight away anyway. A friend of mine was not so lucky as he put the 2708 in
+the wrong way round and KILLED SIMON!! What&rsquo;s SIMON &ndash; the 2708 of course,
+SImple MONitor.
+</p>
+<p>
+SIMON is actually very clever for &lsquo;his&rsquo; size. He lives at F000H and
+&lsquo;boots&rsquo; up the disk. If there is no disk present, or a disk without a CP/M
+system installed is inserted, then control is passed to SIMON and an error
+message is output. SIMON also contains a keyboard routine, screen routine and
+several Nas-Sys like commands &ndash; Copy, Execute, Fill, Modify, Output, Query,
+Tabulate and Boot to load the CP/M once you decide what you did wrong last
+time. SIMON allows you to work out (hopefully) where the fault is should
+something fail. The other clever thing about SIMON is that he works out
+whether or not you have got the Gemini 80x25 video card, and uses it if it is
+there!
+</p>
+<p>
+So now we are into CP/M, let&rsquo;s read the CP/M manuals. This is where
+the fun and games begin. There are SEVEN manuals provided by Digital Research,
+the authors of CP/M, and these all come in the G513, PLUS a 23 page manual
+from Gemini on their actual implementation of the CP/M provided. Despairing at
+the look of the DR manuals you open the Gemini one and find it recommending
+yet another book! Zaks, to be precise, and this is in fact good advise. Why?
+Well the Digital Research manuals are concise and extremely useful once you
+have an idea of what you are doing, but as an introduction they are not very
+readable. On the other hand the Gemini manual is very readable, but limits
+itself to the BIOS implementation and the routines supplied by Gemini (a
+Format routine and a very useful Backup routine.) So to the CP/M beginner
+something like &lsquo;The CP/M Handbook&rsquo; by Zaks should be obtained.
+</p>
+<p>
+But what about the CP/M itself? Well several friends, owners of other
+unprintable systems, have had a good look at my Nascom and declared the Gemini
+CP/M implementation to be far better than their own (Tee Hee). Why? Well, for
+a start you get TWO CP/Ms for your money. One is set up for the ordinary
+Nascom memory mapped screen (now residing at F800H), and the other is set up
+for the Gemini 80x25 IVC (Intelligent Video Controller) card. You just choose
+the one you want, neat eh? When I started I used the Nascom screen and the
+relevant CP/M, then, when funds allowed, I bought the IVC and used the other
+CP/M (Ed. &ndash; the author also sent us a review of the Gemini G812 IVC, but
+we&rsquo;re holding that for the next issue.) The Nascom screen driver also
+incorporates a number of the functions available on the IVC. These include
+Cursor addressing, Clear to end of line/screen, plus another very useful
+feature. (See below.)
+</p>
+<p>
+The CP/M BIOS also supports &lsquo;Auto-density&rsquo; on any drive other than
+&lsquo;A&rsquo;. This means that drive A must have a Gemini double density format disk
+installed, but other drives may read or write disks in either double density
+or in the same single density format (SD Systems) as the G805/Henelec,
+completely automatically. (Ed. There is a slight problem here, see elsewhere
+in this issue for the solution.) The FORMAT routine supplied allows either S
+or D density formatting. Also supplied is a BACKUP program that allows entire
+disks, including the system tracks, to be copied very quickly &ndash; even on a
+single drive system. This is much better than having to &lsquo;PIP&rsquo; and &lsquo;SYSGEN&rsquo;.
+</p>
+<p>
+There are several very useful features in the keyboard routine.
+Pressing &lsquo;Control/Enter&rsquo; toggles an &lsquo;Upper Case Lock&rsquo;, handy for assembler
+work and for running some CP/M programs that don&rsquo;t seem to respond to lower
+cases. Another feature is &lsquo;Control/Backspace&rsquo; &ndash; this toggles the function of
+the () keys so that square brackets [] are returned instead. This is
+invaluable to the N1 keyboard owner who otherwise cannot use many of the
+options provided by certain CP/M utilities. And on the N2 keyboard the &lsquo;CH&rsquo;
+acts as a &lsquo;TAB&rsquo; key &ndash; very useful in CP/M editors.
+</p>
+<?php columnEnd(1); ?>

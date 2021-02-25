@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<p>
+20
+</p>
+<p>
+Referring to the last item, it seems that most members of the 80-BUS
+fraternity will have to stop and think at this point. &ldquo;I now have GSX, but
+what about the device drivers for MY system?&rdquo; Well you have a choice of two
+options, the first being to write your own device driver or secondly, wait for
+the one you want to be released.
+</p>
+<p>
+Writing your own does seem to defeat the object of the exercise, doesn&rsquo;t
+it? However it is possible, you are able to implement as much or as little of
+the standard as you wish depending on the capabilities of the device. A word
+of warning here. The device driver specifications supplied with the GSX disk
+are attractivly bound and the contents well laid out, but trying to write a
+CGSX device driver from the knowledge contained therein should not be attempted
+unless you are sure of your sanity and/or you have a hot line to Digital
+Research in Newbury. During the creation of the Gemini device driver for the
+Pluto board I have needed to refer to both the GSX80 and GSX86 manuals for
+information, the GSX86 one being by far the better of the two. Test software
+is yet another problem, as writing your own will not confirm that you have got
+it right. All testing for the Pluto driver so far has been done using the DR
+DRAW drawing package, a fine piece of software, but it will cost you &pound;232 at
+current retail prices. The DR compiled BASIC, CBASIC, will also help you as it
+contains inbuilt commands that allow you access to GSX, and you will find
+yourself &pound;393 the poorer for this experience. So in a nutshell, unless you are
+sure that you are committed to the subject it might be better if you waited
+for your device driver to appear on the scene.
+</p>
+<p>
+But will they arrive? Well Gemini will soon be releasing a device driver
+for the popular Pluto board that will be configurable for the 640 and 768
+versions in both high and low res. Input routines have been written for
+keyboard, digitiser and mouse, and seperate drivers may be supplied for each
+of these devices. They also have a driver for their GM837 colour card under
+development though no release date can be forecast for this just yet. As far
+as other devices are concerned, who knows, but I suppose if the demand is
+there others will appear.
+</p>
+<p>
+So how does it work? Lets first take the source program that you yourself
+will write. You forget all about the target display machine and its
+limitations, frame size, aspect ratio etc, as GSX will sort all that out for
+you. This concept means that your program is capable of being displayed on any
+graphics device for which you have a GSX device driver. You have at your
+disposal up to 33 graphical routines depending on the particular device driver
+you have installed, these include old favourites such as line drawing and text
+display, along with extra goodies like complex polygon fills that will cater
+for a number of fill patterns. Each GSX function is invoked by a special call
+to the BDOS (115 in C register). All the data associated with a function call
+will have been stored in special arrays of your own creation and their start
+addresses passed across using the GDOS parameter passing conventions. (This is
+where GSX starts getting a little complex &ndash; but more on this later.)
+</p>
+<p>
+The 32767 X 32767 virtual frame size means that you can afford to be
+lavish with your coordinates and even include some form of zoom feature in
+your emerging bijou of a program, providing that those around you don&rsquo;t take
+offence at the constant stream of expletives and apparent recurrence of brain
+death associated with such activities.
+</p>
+<?php columnEnd(1); ?>

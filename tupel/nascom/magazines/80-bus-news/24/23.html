@@ -1,0 +1,64 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<h1 id="article1">
+NASCOM<br>
+ROM<br>
+BASIC<br>
+DIS&ndash;ASSEMBLED
+</h1>
+<h2>
+PART <b>2</b>
+</h2>
+<h3 class="author">
+BY CARL LLOYD&ndash;PARKER
+</h3>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    1</span>
+
+                ; GENERAL EQUATES
+
+0001            UARTD   EQU     01H             ; UART data port
+0002            UARTS   EQU     02H             ; UART status port
+0003            CTRLC   EQU     03H             ; Control "C"
+0007            CTRLG   EQU     07H             ; Control "G"
+0008            BKSP    EQU     08H             ; Back space
+000A            LF      EQU     0AH             ; Line feed
+000C            CS      EQU     0CH             ; Clear screen
+000D            CR      EQU     0DH             ; Carriage return
+000F            CTRLO   EQU     0FH             ; Control "O"
+0012            CTRLR   EQU     12H             ; Control "R"
+0013            CTRLS   EQU     13H             ; Control "S"
+0015            CTRLU   EQU     15H             ; Control "U"
+001A            CTRLZ   EQU     1AH             ; Control "Z"
+001B            ESC     EQU     1BH             ; Escape
+001C            TBRK    EQU     1CH             ; "T" monitor break
+001D            TBS     EQU     1DH             ; "T" monitor back space
+001E            TCS     EQU     1EH             ; "T" monitor clear screen
+001F            TCR     EQU     1FH             ; "T" monitor carriage return
+007F            DEL     EQU     7FH             ; Delete
+
+                ; MONITOR LOCATIONS
+
+0000            MONSTT  EQU     0000H           ; Start of monitor
+000D            STMON   EQU     000DH           ; NAS-SYS initialisation
+0051            MFLP    EQU     0051H           ; Flip tape LED ("T")
+008D            MONTYP  EQU     008DH           ; Type of "T" monitor
+03D1            T2DUMP  EQU     03D1H           ; "T2" Dump routine
+0400            T4WR    EQU     0400H           ; "T4" Write routine
+070C            T4READ  EQU     070CH           ; "T4" Read routine
+0800            VDU     EQU     0800H           ; NASCOM Video RAM base
+
+                ; MONITOR WORK SPACE LOCATIONS
+
+0C00            PORT0   EQU     0C00H           ; Copy of output port 0
+0C0C            ARG1    EQU     0C0CH           ; Argument 1
+0C0E            ARG2    EQU     0C0EH           ; Argument 2
+0C18            TCUR    EQU     0C18H           ; "T" monitor cursor
+0C29            CURSOR  EQU     0C29H           ; NAS-SYS Cursor
+0C2B            ARGN    EQU     0C2BH           ; Number of ARGS
+0C4A            TOUT    EQU     0C4AH           ; "T" Output reflection
+0C4D            TIN     EQU     0C4DH           ; "T" Input reflection
+0C75            CIN     EQU     0C75H           ; NAS-SYS Input table
+0C7E            NMI     EQU     0C7EH           ; NAS-SYS NMI Jum
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

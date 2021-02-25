@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+31.
+</p>
+<p>
+board chip select, CS, did not float high as expected but remained resolutely at
+about the two volt level. This, despite the inclusion of a 100K pullup resistor
+on the clock board to ensure the CS line remained high. Taking in to account the
+loading effect of the high impedance meter used to measure this voltage, the
+approximate voltage on this line was guessed as being about the 2.5 volt level.
+Changing the PIO or the buffer made no difference, it remains a mystery where the
+leakage causing the line to be lower than expected is occurring.
+</p>
+<p>
+However, accepting that this leakage does occur, and as this voltage is
+about the threshold of the board chip select buffer, which is a CMOS device with
+a threshold of about 2.5 volts, we thought that any spurious noise on this line,
+and there has to be some, was causing the CMOS buffer on the clock board to
+select the clock chip. This was confirmed with a &lsquo;scope looking at the select pin
+of the clock chip, after the input and power down buffers. A definite short
+glitch was noted on the select pin during a computer reset sequence. The cause,
+like the voltage leakage remains unknown. As the output lines of the PIO are
+directly connected to the clock chip which again is a MOS device, these are also
+susceptible to noise due their high impedance inputs. This appears to cause the
+clock chip write input to open during a computer reset sequence and so to write
+the rubbish on the data lines to the clock chip registers which were being
+addressed by the rubbish on the clock chip address lines, also directly connected
+to the PIO. We were relieved to cure the problem by the simple expedient of
+changing the 100K pullup resistor for a 22K pullup.
+</p>
+<p>
+Unfortunately, this did not remove all the problems, the clock would now
+work correctly whilst the computer was left running, however, on power down and
+subsequent power up the clock was occasionally being corrupted. Having previously
+eliminated the power down and battery backup, this left the power up condition.
+This was confirmed as being the cause by powering down the computer with the
+clock connected, then unplugging the clock and powering the computer up again.
+Reconnecting the clock with the power on and then reading the clock, the clock
+worked correctly. The clock circuitry has a 100K pullup resistor in series with a
+100nF capacitor to stop the CS line becoming active during power up. 100K and
+100nF gives a time constant of 10mS which is the time allowed for the power
+supply rails to settle. This may be adequate for a switch mode power supply, as
+the clock at home had shown no trouble in this respect. However, the works
+computer was fitted with a large conventional power supply. Investigation of the
+power supply start up revealed that the rails did not become stable for at least
+100mS, and during that time the state of the PIO was extremely indeterminate. It
+was obvious then that the 10mS allowed for stabilisation was inadequate for the
+power supply in use, and the 100nF capacitor was changed for a 2uF tantalum,
+giving a 200mS time constant. This cleared the remaining problem.
+</p>
+<p>
+Both the problems noted above could do with further investigation, why
+-were these problems not noted on the prototypes, and are the conclusions drawn
+above and the solutions adopted, the correct ones. Our aim at work was to make
+the clock work, not to conduct an investigation into the behaviour of PIOs and
+power supplies at reset and power up. Perhaps Gemini may like to make some
+comment in a future issue.
+</p>
+<p>
+To sum up then, the Gemini GM822 represents a useful addon which is
+simple to construct and easily added to the system. A one evening project with a
+useful end result. Having cured the problems mentioned above, both clocks have
+behaved well. Taking the cost of the competing clock boards into account, the
+Gemini GM822 seems to be about par for the course in terms of value for money and
+&lsquo;facilities provided.
+</p>
+<p>
+I didn&rsquo;t like the software supplied with the clock so I set to and wrote
+some new routines. These used large chunks of the originals and in this case I
+can not credit them as I do not know who wrote them in the first place, however,
+thank you, whoever you are. The routines are listed elsewhere and are written for
+use under CP/M only, but are otherwise Nascom/Gemini compatible although I have
+maintained port 1CH as the clock port. This could easily be changed on
+reassembly. The most important improvement is that they contain error checking of
+the input, making it impossible to program wrong data into the clock. However,
+</p>
+<?php columnEnd(1); ?>

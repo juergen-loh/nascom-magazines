@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+MODIFICATIONS TO TINY BASIC FOR NAS-SYS
+</h1>
+<h2>
+By Buxton
+</h2>
+<p>
+This article is intended to show how the Tiny Basic Interpreter &ndash;V2, published the
+Merseyside Nascom Users Group program book, can be changed to run under Nas-Sys&nbsp;1/3,
+rather than under monitor T4 for which it was originally intended. In addition,
+the modification provide full screen editing of the source text. Assuming that a copy
+of the interpreter is in store, all that is required is to change the locations specified
+below to the new code, replace the old editor routine at &pound;17C5 with the GETLN
+routine given in the full assembler listing, then save the new version of Tiny Basic on
+tape. Please note that old programs written for TBI-V2 will have to be altered, since
+the end of line marker is now &pound;0D, rather than the &pound;1F used by T4 and the earlier
+monitors. Other changes are:
+</p>
+<ol class="indent round-bracket">
+<li>
+The command separator is now &lsquo; :&rsquo; rather than &lsquo; ;&rsquo;
+</li>
+<li>
+Format control in print now takes the form [5 if you wish the number to be
+printed in 5 spaces
+</li>
+<li>
+&lsquo;CLEAR&rsquo; is no longer active
+</li>
+<li>
+The &lsquo;DUMP&rsquo; command is replaced by &lsquo;SAVE&rsquo;
+</li>
+<li>
+Any number preceded by &pound; is now hexadecimal which makes POKEs
+very much easier. This may be used anywhere,
+e.g. FOR X = &pound;C to &pound;FF
+</li>
+<li>
+When reading a tape you must first poke the ASCII code for the letter R,
+&pound;52 or 82 decimal, into ARGX in the workspace (&pound;C0B, 3083), or the
+tape will be verified, not Read
+</li>
+<li>
+If you are using Nas-Sys&nbsp;3 you must also poke a zero into location ARGN
+(&pound;C2B, 3115), or the program may be loaded at the wrong location.
+</li>
+<li>
+The input function X = IN (port no.) becomes X=CODE(&pound;14AC)(port no.)
+</li>
+</ol>
+<p>
+I hope that these notes and the list of modifications will prove useful to everyone
+who has asked for an updated version of TBI-V2.
+</p>
+<table>
+<tr><td>Address</td><td>Old Code</td><td>New Code</td><td>Comments</td></tr>
+<tr><td colspan=4><br></td></tr>
+<tr><td>1014</td><td>1E</td><td>0C</td><td>Clear screen</td></tr>
+<tr><td>1019</td><td>56</td><td>53</td><td>Change V2 to S2</td></tr>
+<tr><td>103C</td><td>1F</td><td>18</td><td></td></tr>
+<tr><td>103F</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1142</td><td>3B</td><td>3A</td><td>Command separator : not ;</td></tr>
+<tr><td>1145</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>114C</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>114F</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1156</td><td>23</td><td>5B</td><td>[ replaces &pound; for formatting</td></tr>
+<tr><td>1175</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>11C4</td><td>CD0C07</td><td>DF5200</td><td>Read tape</td></tr>
+<tr><td>11D8</td><td>CD0004</td><td>DF5700</td><td>Write tape</td></tr>
+<tr><td>11DE</td><td colspan=2>Change to DF6421210C7E23C9</td><td>&pound; denotes hex. Not Clear</td></tr>
+<tr><td>1343</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>150E</td><td>3B</td><td>3A</td><td>Command separator : not ;</td></tr>
+<tr><td>1517</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1529</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>152D</td><td>1F</td><td>18</td><td></td></tr>
+<tr><td>1533</td><td>1F</td><td>0D</td><td></td></tr>
+<tr><td>1558</td><td>1F</td><td>18</td><td></td></tr>
+</table>
+<?php columnEnd(1); ?>

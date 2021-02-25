@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+The SAVE command is used to transfer a program or data from
+the computers memory to disc. This command has to be told how
+much of the memory you want 1t to save, in 256 byte pages. The
+area saved starts at 0100H, and a typical example of the command
+is SAVE 5S SPLAT.COM which would copy the section of RAM from
+0100H to OSFFH onto the disc and give it the f1le name SPLAT.COM
+in the directory.
+</p>
+<p>
+The final built-in command is TYPE which types out a file.
+It will put it on the screen and 1* CP/M has been tald that the
+printer 15 on, it will send it there as well.
+</p>
+<p>
+So, how do we tell the system to send its output ta the
+printeru This is acomplished using one of the Control key
+commands mentioned earlier, Control P. There are several of
+these commands besides Control P. Control C will {usually
+reboot the system, Control H works like the backspace key
+Control M15 the same as the enter key and Control E&para; stops and
+starts the console display so that you can read all of the
+directory, for example, when 1t would otherwise be scrolled off
+screen. All these commands are covered in the two introductory
+books that I suggest new CP/M users buy, in great detail. The
+books are &ldquo;The CP/M Handbook&rdquo; by Rodney Zaks and &ldquo;Using CP/M&rdquo; by
+Judi Fernandez and Ruth Ashley. Of the two, I prefer the first
+but this a matter of taste. If you like the kind of book where
+you are expected to fill in the answers to the questions as you
+</p>
+<p>
+go along, then the latter book is excellent too. What neither
+of them tells you, much to my disappointment, 15 how the machine
+code addict can make use of CP/M in his programs. The
+</p>
+<p>
+information is in the CP/M documentation. Sadly, it is terse in
+the extreme and does not make several important points at all
+clearly. In future articles I hope to give an insight into the
+ways in which the routines in CP/M can be used by your
+programs.
+</p>
+<p>
+The description of CP/M that I have given so far does not
+</p>
+<p>
+make any mention of how to run a program. It could not be
+simpler, as all you do is type the name of the program and press
+the enter key. The system checks what you have typed and if it
+</p>
+<p>
+is not a built-in command, it looks on the disc for a file of
+that name with a&nbsp;.COM extension. Suppose you type INVADERS and
+press enter; there 15 no built-in command with this name, so
+CP/M looks on the disc for a file called INVADERS.COM. If it
+finds it, 1t loads the file into memory at address 0100H onwards
+and jumps to the start of it. @ program of the kind described
+is called a transient program because it is not in memory al
+the time. Several transient programs are supplied with CP/M
+when you buy it, all intended to make the system easier to use.
+The transient programs supplied with the Gemini implementation
+of CP/M that I use, and doubtless supplied with all the other
+implementations of the system are as follows
+</p>
+<p>
+ASM..COM This is an asembler, more of which later.
+DDT.COM This is a debugging aid also mentioned later.
+DUMP.COM A program for tabulating files in hex.
+ERASIC.COM A compiler for BASIC, not without Limitations,
+</p>
+<p>
+as it does not support POKE and PEEK commands.
+Quite good file handling though.
+</p>
+<p>
+ED.COM @ text file editor I shall malign later
+</p>
+<p>
+ERUN. COM The run-time part of the BASIC compiler
+</p>
+<?php columnEnd(1); ?>

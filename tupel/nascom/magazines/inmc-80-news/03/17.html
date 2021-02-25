@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p class="noindent">
+&ndash; P99 38 6 ( )<br>
+38 4 39 2 ()<br>
+&ndash; P99 38 8 ( )<br>
+3 13 MREQ 38 9 ( )<br>
+38 10 38 11 ( )<br>
+32 13 MREQ. RFSH 38 12 ( )<br>
+38 13 39 9 ( )<br>
+38 13 39 10 ( )<br>
+39 8 RAS3 ( )
+</p>
+<p>
+4) Connect the new address select pad P99 to the appropriate
+decode pin(s). ( )
+</p>
+<p>
+5) Perform the clock modification as described in INMC newsletter
+No 7. (This delays the column address strobe to the 4116s by
+delaying the clock waveform from NASBUS Pin 5 to IC 31 Pin 3
+through 2 inverters).
+</p>
+<p>
+6) Perform the &lsquo;gridding&rsquo; operation described in the NASCOM
+construction article.
+</p>
+<p>
+7) These may be necessary but I have managed to do without them:<br>
+Increase the power supply decoupling in the areas of ICs 40-47
+and at the address multiplexers ICs 20 &amp; 21.<br>
+Increase the values of the series resistors R7-14 to allow for
+the extra capacitance of the added RAM chips.
+</p>
+<p>
+The resulting memory should be fast enough to run with the
+processor at 4MHz without a &lsquo;WAIT&rsquo; state. It was in my case.
+Unfortunately the author (and the INMC) does not hold himself
+responsible for any damage caused by inaccuracies in these notes, and
+the constructor should check that what he is attempting is safe.
+</p>
+<p style="text-align: center">
+==ooOoo==
+</p>
+<p>
+Following on from the above, we can&rsquo;t recommend soldering
+sockets to the tops of very expensive MOS chips. So only attempt. this
+mod. if you are prepared to accept the (remote) possibility of a
+handful of dead 4116s.
+</p>
+<p>
+Having warned you off, now on to how to do it with the least
+risk:<br>
+There are two dangers, first static, and the usual precautions should
+be observed. Secondly, soldering so close to the package allows heat to
+travel through the lead frame to the gold wire bonding that connects
+the lead frame to the chip itself, and damage to the bond can follow.
+</p>
+<p>
+So: cover a piece of polystyrene tile with cooking foil, and
+plug the IC into it. The foil connects all pins together reducing risks
+from static, and also conducts the heat away quickly. Plug the socket
+through another piece of foil, and fold it up (like wrapping a toffee).
+This keeps heat away from the socket. Solder two diagonally opposed
+pins to line everthing up, and if in line, solder the remaining pins.
+Then carefully remove all traces of the cooking foil between the chips
+with tweezers.
+</p>
+<p>
+This method has been used very successfully for piggy-backing
+2708s for use as selectable NASBUG/NAS-SYS monitors on Nascom 1s, and
+Tandy suggest it as a method of mounting the lower case character
+generator chip on the TRS&nbsp;80.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

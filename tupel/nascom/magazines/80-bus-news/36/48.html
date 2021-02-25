@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+The cursor is then restored to its original screen place using -SETCUR&rsquo;,
+the original contents of CURSOR are -POP&rsquo;ed off the stack and then restored,
+and then the cursor is then turned on again, using the appropriate IVC
+command.
+</p>
+<p>
+Finally, -HL&rdquo; is loaded with the address of STRING, or STRNGI as
+appropriate, so that if the clock read module was called from an external
+program, that program would be able to find the address of the clock data for
+subsequent use.
+</p>
+<p>
+This completes the code needed to modify SYS Version 16. I am using -SYS&rdquo;
+modified as described while typing this article in with GEMPEN, and the
+display is showing the Day name, full date, and time, updating every second.
+There is no noticeable effect on the clock display during typing, even if the
+repeat keyboard feature is used. During formatting of this text, which is
+about 28K long, however, the display stops for about a minute and a half. The
+-freezing&rdquo; of the clock display can be made use of, to time activities such as
+formatting, disk I/O and assembly.
+</p>
+<p>
+Appendix 1. Finding the Clock Routine through the added -JUMP&rdquo;
+</p>
+<p>
+Locations 0002 and 0003 in memory hold the -WARM BOOT&rdquo; address, which is
+3 bytes into the BIOS. The -JP READIT instruction is 30 bytes further on, and
+the marker is another 3 bytes on. For example, on my machine, locations 0002
+and 0003 hold OEE03H, so the -clock jump&rdquo; is at OEE33H, and the marker &ldquo;RTC&rdquo;
+starts at OEE36H. The clock can therefore be accessed by a CALL OEE33H
+instruction. The clock access can be performed in a better way as follows :&ndash;
+</p>
+<p>
+LD HL, (0002)
+LD DE, 0030H
+ADD HL, DE
+</p>
+<p>
+CALL CLOKJUMP
+</p>
+<p>
+etc; Routines to process clock data
+</p>
+<p>
+CD we we we
+</p>
+<p>
+LOKJUMP: Jp (HL)
+</p>
+<p>
+we
+</p>
+<p>
+we
+</p>
+<p>
+Appendix 2. Patching in a Clock without Source Code.
+</p>
+<p>
+This will not be very easy, especially for persons unused to getting into
+CP/M with Disassemblers and Debuggers. I think that one feasible approach is
+to carry out the following steps.
+</p>
+<p>
+le Look at CP/M in memory with DDT/ZSID/GEMDEBUG to find the CBIOS start,
+and to see if there is any room at the -top of memory for extra code.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+39
+</p>
+<p>
+5" Pertec GEMDDDS format 8 mins 6 secs (15 tracks)
+5" Microp. GEMQDSS format 8 mins 40 secs (40 tracks)
+8" Standard Single density 6 mins 20 secs (43 tracks)
+RO201 Winchester 1 min 42 secs (85 tracks)
+GM833 RAM--DISK 17 secs
+</p>
+<p>
+The RAM-DISK figure is not a mis-print, it is just 17 seconds. This test
+is perhaps a little artificial, so the next benchmark is the time taken to PIP
+a source file from the Winchester to the destination drive, load M80 (from the
+drive under test), assemble it, then link and load it using L80.
+</p>
+<p>
+5" Pertec GEMDDDS format 2 mins 34 secs
+5" Microp. GEMQDSS format 2 mins 35 secs
+8" Standard Single density 2 mins 39 secs
+RO201 Winchester 2 min OO secs
+GM833 RAM-DISK 1 min 30 secs
+</p>
+<p>
+Here the performance difference is not so marked, but it is still
+significant. (This shows that in this instance the majority of the total time
+taken was in actual processing time and not disk access time.) The floppy
+disks had an edge on the Winchester as they only started off with M80 and L80
+on them. By comparison the Winchester was already holding 3.9Mbytes of data
+and programs, and the files created during the test filled in odd holes here
+and there on the disk, and weren&rsquo;t stored in successive blocks. Also the head
+was on average about 200 tracks away from the directory track for most of the
+</p>
+<p>
+time!
+</p>
+<p>
+CAVEAT
+Using the RAM-DISK requires a careful approach to work to ensure that at
+</p>
+<p>
+the end of the day all changed and new programs end up back on permanent
+storage (disk). Copying a file to disk as soon as it is changed rather defeats
+one of the benefits of the RAM-DISK, but it has to be remembered that the RAM-DISK
+is volatile. Though the Gemini BIOS does not obliterate files if you are
+forced to press the reset switch, it cannot protect you against accidental (or
+deliberate!), powering down.
+</p>
+<p>
+This is the time when the programmable function keys of the Gemini
+keyboard come into their own. At the start of a session one (or more) can be
+programmed up to provide a backup command, (e.g. PIP A:=M:*.MAC&ldquo;M), and then
+this key can be pressed at idle moments when you pause for thought (or answer
+the phone), and, finally, at the end of the session.
+</p>
+<p>
+(Ba. &ndash; In one application that I know a RAM-DISK is being used, its
+volatility does not matter. The application requires as rapid as possible
+access to any record in a very large database. When it is started the program
+copies a number of index files to the RAM-DISK, and uses these to control
+access to the database. If the power fails nothing of importance is lost. |
+</p>
+<p>
+ERROR PROTECTION?
+One area open to debate is whether, with so much memory on the board,
+</p>
+<p>
+GM833 should incorporate some form of error detection/protection? The soft
+error rate of RAMS is very low, but here we have 64 of them in an array (plus
+an additional 8 in the system memory).
+</p>
+<p>
+Error detection and correction would be an overkill in this environment,
+but a possibility lies in a simple parity check on each byte. (I note a number
+of the large memory expansion boards for the IBM&nbsp;PC now offer parity protected
+memory). This would add eight more dynamic RAMs to the board, along with the
+parity generation/check logic (assuming it could all be fitted on). It also
+raises the question of what to do in the event of a parity error being
+detected. Light a LED? Generate an interrupt? Halt?
+</p>
+<?php columnEnd(1); ?>

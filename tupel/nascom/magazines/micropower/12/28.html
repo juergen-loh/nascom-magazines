@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<h3>
+DJUMP D
+</h3>
+<p>
+In Nas-Sys&nbsp;3 command D causes a jump to &pound;D000, which is the start address of
+the ROM version of Zeap 2. Of course, any software which runs &pound;D000, in ROM or
+RAM, for example a printer initialisation routine, can be accessed by the D command.
+The Nas-Sys&nbsp;1 command table contains the address of the error message for
+command D (location &pound;078E). Of course, with an Eprom Programmer it is easy to
+change this address to &pound;D000, or to any other useful address, such as the start of a
+disassembler (&pound;C400 for Nas-Dis).
+</p>
+<h3>
+EXECUTE Exxxx
+</h3>
+<p>
+In many ways this is the most important command, since you use it to run all
+machine code programs. The first thing the execute command routine does is to set
+the value stored at location &pound;0C26, known as CONFLG, to -1. It then throws away its
+address by POPing it off the stack into the AF register pair. Consequently any program
+which is to be accessed with an E command cannot return to the monitor with a simple
+RET instruction, whereas a program accessed by some other command letter, such as
+the Compare routine mentioned above, can end in such a way.
+</p>
+<p>
+The E routine next checks the number of hexadecimal values in the input line,
+ARGN; if it is not zero, HL must contain the specified start address of the program to
+be executed, and this is stored in the workspace at &pound;0C69. If no address has been
+entered, execution will continue from the last address stored here. The registers BC,
+DE, HL, AF and SP are then loaded from the Register save area in the workspace
+(&pound;0C61 &ndash; &pound;0C6C) and the execution address is put at the top of the stack. When a
+program is interrupted at a breakpoint the current registers are saved in the Register
+Save Area. When the program is continued fro the breakpoint the above manipulations
+ensure that all the registers are restored to the values they had before the break.
+However, they have the result that when a program is entered by the E command the
+contents of HL, DE and BC bear no relationship to the first three values in the input
+line; they either contain the values stored at the last breakpoint, or are set to zero if
+there has been a RESET since the last break. Of course, the values are retained in
+the workspace at ARG1, ARG2 and ARG3 and may be recovered if needed.
+</p>
+<p>
+The contents of AF are pushed onto the stack and bit 3 of port 0 is set; this
+activates a circuit which sends a non-maskable interrupt to the processor after 4 M1
+cycles. After recovering AF the routine comes to a return-from NMI instruction, RETN.
+Because the specified start address is at the top of the stack, this caused a jump to
+the routine to be executed. Three M1 cycles have now occurred, therefore as soon as
+the first instruction of this routine has started the NMI line is activated. Consequently,
+the processor is interrupted at the end of the first instruction, and this causes a jump to
+</p>
+<?php columnEnd(1); ?>

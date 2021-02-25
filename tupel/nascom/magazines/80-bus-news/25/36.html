@@ -1,0 +1,111 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    33</span>
+
+E910 0E04       GETHDR: LD      C,4             ; 4 Bytes to check
+E912 CDB4F4     HDRLP:  CALL    RUART           ; Read byte from UART
+E915 B8                 CP      B               ; Same as header?
+E916 C210E9             JP      NZ,GETHDR       ; No - Wait for another
+E919 0D                 DEC     C               ; Count bytes
+E91A C212E9             JP      NZ,HDRLP        ; More needed
+E91D CD44ED     SNDARY: CALL    TSTNUM          ; Check it's a numerical array
+E920 CD8AE6     ARYLP:  CALL    CPDEHL          ; All array data done
+E923 CA37E9             JP      Z,SUMOFF        ; Yes - Do check sum
+E926 F1                 POP     AF              ; CLOAD* or CSAVE* ?
+E927 F5                 PUSH    AF              ; Re-save flags
+E928 7E                 LD      A,(HL)          ; Get byte
+E929 F4BAF4             CALL    P,WUART         ; CSAVE* - Write byte
+E92C FCB4F4             CALL    M,RUART         ; CLOAD* - Read byte
+E92F 77                 LD      (HL),A          ; Save byte in case of CLOAD*
+E930 CD40E9             CALL    ACCSUM          ; Accumulate check sum
+E933 23                 INC     HL              ; Next byte
+E934 C320E9             JP      ARYLP           ; Repeat
+
+E937 CD4DE9     SUMOFF: CALL    DOSUM           ; Do check sum
+E93A CDD5FC             CALL    CASFF           ; Cassette off
+E93D F1                 POP     AF              ; Not needed any more
+E93E E1                 POP     HL              ; Restore code string address
+E93F C9                 RET
+
+E940 E5         ACCSUM: PUSH    HL              ; Save address in array
+E941 2A4A10             LD      HL,(CHKSUM)     ; Get check sum
+E944 0600               LD      B,0             ; BC - Value of byte
+E946 4F                 LD      C,A
+E947 09                 ADD     HL,BC           ; Add byte to check sum
+E948 224A10             LD      (CHKSUM),HL     ; Re-save check sum
+E94B E1                 POP     HL              ; Restore address in array
+E94C C9                 RET
+
+E94D 3ACE10     DOSUM:  LD      A,(BRKLIN)      ; CLOAD* or CSAVE* ?
+E950 B7                 OR      A
+E951 FA60E9             JP      M,CHSUMS        ; CLOAD* - Check if sums match
+E954 3A4A10             LD      A,(CHKSUM)      ; Get LSB of check sum
+E957 CDBAF4             CALL    WUART           ; Write to UART
+E95A 3A4B10             LD      A,(CHKSUM+1)    ; Get MSB of check sum
+E95D C3BAF4             JP      WUART           ; Write to UART and return
+
+E960 CDB4F4     CHSUMS: CALL    RUART           ; Read LSB of check sum
+E963 F5                 PUSH    AF              ; Save it
+E964 CDB4F4             CALL    RUART           ; Read MSB of check sum
+E967 C1                 POP     BC              ; LSB to B
+E968 58                 LD      E,B             ; LSB to E
+E969 57                 LD      D,A             ; MSB to D
+E96A 2A4A10             LD      HL,(CHKSUM)     ; Get accumulated check sum
+E96D CD8AE6             CALL    CPDEHL          ; Are they the same?
+E970 C8                 RET     Z               ; Yes - End CLOAD*
+E971 CDD5FC             CALL    CASFF           ; Cassette off
+E974 C36BF5             JP      OUTBAD          ; Different - Output "Bad"
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    34</span>
+
+E977 7E         CHKLTR: LD      A,(HL)          ; Get byte
+E978 FE41               CP      "A"             ; &lt; "A" ?
+E97A D8                 RET     C               ; Carry set if not letter
+E97B FE5B               CP      "Z"+1           ; &gt; "Z" ?
+E97D 3F                 CCF
+E97E C9                 RET                     ; Carry set if not letter
+
+E97F CD36E8     FPSINT: CALL    GETCHR          ; Get next character
+E982 CD41ED     POSINT: CALL    GETNUM          ; Get integer 0 to 32767
+E985 CD13F8     DEPINT: CALL    TSTSGN          ; Test sign of FPREG
+E988 FAA0E9             JP      M,FCERR         ; Negative - ?FC Error
+E98B 3AE710     DEINT:  LD      A,(FPEXP)       ; Get integer value to DE
+E98E FE90               CP      80H+16          ; Exponent in range (16 bits)?
+E990 DABBF8             JP      C,FPINT         ; Yes - convert it
+E993 018090             LD      BC,9080H        ; BCDE = -32768
+E996 110000             LD      DE,0000
+E999 E5                 PUSH    HL              ; Save code string address
+E99A CD8EF8             CALL    CMPNUM          ; Compare FPREG with BCDE
+E99D E1                 POP     HL              ; Restore code string address
+E99E 51                 LD      D,C             ; MSB to D
+E99F C8                 RET     Z               ; Return if in range
+E9A0 1E08       FCERR:  LD      E,FC            ; ?FC Error
+E9A2 C3C1E3             JP      ERROR           ; Output error-
+
+E9A5 2B         ATOH:   DEC     HL              ; ASCII number to DE binary
+E9A6 110000     GETLN:  LD      DE,0            ; Get number to DE
+E9A9 CD36E8     GTLNLP: CALL    GETCHR          ; Get next character
+E9AC D0                 RET     NC              ; Exit if not a digit
+E9AD E5                 PUSH    HL              ; Save code string address
+E9AE F5                 PUSH    AF              ; Save digit
+E9AF 219819             LD      HL,65529/10     ; Largest number 65529
+E9B2 CD8AE6             CALL    CPDEHL          ; Number in range?
+E9B5 DAADE3             JP      C,SNERR         ; No - ?SN Error
+E9B8 62                 LD      H,D             ; HL = Number
+E9B9 6B                 LD      L,E
+E9BA 19                 ADD     HL,DE           ; Times 2
+E9BB 29                 ADD     HL,HL           ; Times 4
+E9BC 19                 ADD     HL,DE           ; Times 5
+E9BD 29                 ADD     HL,HL           ; Times 10
+E9BE F1                 POP     AF              ; Restore digit
+E9BF D630               SUB     "0"             ; Make it 0 to 9
+E9C1 5F                 LD      E,A             ; DE = Value of digit
+E9C2 1600               LD      D,0
+E9C4 19                 ADD     HL,DE           ; Add to number
+E9C5 EB                 EX      DE,HL           ; Number to DE
+E9C6 E1                 POP     HL              ; Restore code string address
+E9C7 C3A9E9             JP      GTLNLP          ; Go to next character
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

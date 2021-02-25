@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<h3>
+PILOT FEEDBACK
+</h3>
+<p>
+Quite a while ago, I had a letter from R.B.Poate, who said, &ldquo;I would
+suggest that you use Naspen or something similar for your line numberless
+editor.&rdquo; This is in fact, very near to what I actually intended to do. My plan
+was to say something along the lines of &ldquo;Right, here is the specification for
+each of the parts of the Pilot interpreter, now let&rsquo;s each write a bit...&rdquo;
+Nasty, isn&rsquo;t it? The specification for the editor only has to state the way
+the program is stored, and where in memory it actually is, and the task of
+adding your (or somebody else&rsquo;s) editor is left to you. Do I hear howls of
+&ldquo;Cop out!"?&rdquo; Probably, but you see I don&rsquo;t want to write two or more versions
+of the same thing, and my one is to run under CP/M, not Nas-Sys. That is why
+all the monitor calls in the code so far printed go to vectors.
+</p>
+<h3>
+WITHOUT FURTHER ADO...
+</h3>
+<p>
+The editor will be any code you care to write that enables you to
+manipulate the stored program to your own satisfaction. It fits into the free
+code from the earlier episode where lines 1490 to 1500 currently are. Yes,
+Heloise, I do know I forgot to resequence that bit. The program storage area
+starts at location RAM, and the first two bytes hold the address of the last
+byte of the program [low byte first, of course.] Having tried more than once
+to write a decent editor program, I am copping out yet again; I shall be using
+an editor written by the genius at Hi-Soft. See next section... In order that
+the programs we all produce will be compatible, we will all separate lines
+with the combination of characters, CR LF [in other words, 0D 0A]. This will
+cause howls of apathy, or possibly anger I shouldn&rsquo;t wonder, from those of you
+without CP/M and disks, who would have preferred to use 0D on its own. Why
+aren&rsquo;t you writing this?
+</p>
+<p>
+The Load module, which replaces lines 1450 to 1460 of the listing,
+reads from tape, disk, Tibetan prayer wheel, or other mass storage unit into
+the memory, at location RAM. Users of any Nascom monitor, it is your turn to
+be smug, because the monitor will do this for you with very little extra code
+of your own.
+</p>
+<p>
+The Save module, lines 1470 to 1480, it will hardly surprise you to
+learn, transfers the program to the storage medium from the memory. Now do you
+see why RAM and RAM+1 hold the address of the end of the program? [If you
+don&rsquo;t, why are you reading hard core computer magazines?]
+</p>
+<h3>
+A SOFTWARE REVIEW.
+</h3>
+<p>
+This review concerns the &ldquo;Z80 development package&rdquo; currently being
+sold by Hisoft. The package consists of an editor, an assembler, a debugger
+[*** semantics error ***] and another program whose use I have not yet
+discovered. The package sells for 50.00, a price which compares extremely
+favourably with the amount you would need to lash out to buy Diskpen and Macro
+80, [about 150.00, I think.] The assembler works very well, also fast. It can
+handle source files far larger than your computer&rsquo;s memory, as can the editor.
+The editor is a joy to use (I know!! &ndash; Ed.), especially after you have become
+used to the horrors of ED.COM. An especially nice feature is the way it copes
+with very long lines, by scrolling the whole screen across, instead of
+wrapping round to the next line, or crashing, or any of the weird things some
+editors do when you ask more of them than their authors intended. The debugger
+takes a while to get used to, but is very useful, I have found it very good
+indeed at finding the silly errors in my early attempts at converting the
+skeletal Pilot to a CP/M form. If this package does not seriously dent sales
+of both Diskpen and the grossly overpriced Macro&nbsp;80, I shall be very surprised
+indeed. So that you will not think I am being paid by Hi-Soft to say these
+nice things about their product, I will just mention in passing that I was
+very annoyed to have to wait over a fortnight for delivery. It was worth
+waiting for, but why was it necessary to wait?
+</p>
+<p>
+end end end end end end end end end end end end
+</p>
+<?php columnEnd(1); ?>

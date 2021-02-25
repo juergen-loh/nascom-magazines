@@ -1,0 +1,95 @@
+<?php columnStart(1); ?>
+<p>
+De = 1 &ndash; In timer mode, positive edge starts tiner
+Im counter mode, positive edge decrements counter.
+Dh = 0 &ndash; In timer mode, egative edge starts timer
+In counter mode, negative edge decrements counter.
+</p>
+<p>
+D3 = 1 &ndash; de defined in timer mode only. Timer starts immodiat
+DS &gt; 0 [defined in timer mode only Timer starts after tine
+</p>
+<p>
+Ly (well, almost)
+&lsquo;constant&rsquo; has been
+</p>
+<p>
+Toaded.
+D2 = 1 &ndash; Time constant word Je next word to be written to this channel
+D2 = 0 = No tine constant will follow (use the existing one)
+</p>
+<p>
+DL = 1 &ndash; Reset channel. Channel stops counting or timing,
+</p>
+<p>
+DI &lt;0 &copy; Continue current operation.
+</p>
+<p>
+Do Always 1 for control byte
+</p>
+<p>
+To disable a CTC channel from causing an interrupt, the code is simple. Just
+write # Ol to the appropriate channel. Like the other 260 chips, ie is
+Recessary to disable the system interrupts dn case an interrupt occurs wile the
+Sisable instruction is being assimilated by the I/O chip. The code is only
+slightly more complex than above:
+</p>
+<p>
+LDA, oan
+Dr 1: Disable CPU ineercupts
+OUT (cTCn),A Disable CTC channel
+</p>
+<p>
+er fecenable CPU interrupts
+</p>
+<p>
+&lsquo;A-channel may not begin operations in sny mode unless &laquo; valid time constant byte
+has been written into the Time Constant Register. This byte is expected on the
+next write to the channel in question following the write of the channel control
+byte. provided the channel control byte had bit 2 set (1) Tf this time
+consiant byte 12 0-ie is interpreted a4 256. If a new time constant byte
+written to a channel already in operation, the new time constant byte is only
+Feloaded st the
+</p>
+<p>
+The major difference between Counter mode and Timer mode is that Counter mode
+lises the external clock or pulse provided on the CLK/TRCn pin, whereas the Timer
+node uses the system clock, divided by the prescaler (either 16 or 256 according
+fo the setting of bit 5 of the channel contfol byte), &ldquo;in timer mode, the timing
+Speration can be programed to start. from an external teigger to the CLA/TRGR
+pulse, or almost immediacely from the system signals The external starting
+Prigger is usually not required, and the reader {s referred to the
+banufacturer&rsquo;s data sheets for more precise details it is also possible to
+define whether the erigger oc count decrement takes place on the rising or
+falling edge of the timing clock (Bit 4) One constraint that is not very
+openly defined is to be found in the technical details of the data sheet; this
+States that the maximum frequency to be applied to the CLK/TRGn pin is to be
+half of the system clock. This means that one sMilz system, fhe maximum
+external clock to the CHC ls tobe 2 Mis
+</p>
+<p>
+Now for a worked ex:
+</p>
+<p>
+sple. In the case of &amp; standard HAP CPU, we wish to set up
+the CTC as follows
+</p>
+<p>
+TCO ds to drive S10 channel A to receive/t
+</p>
+<p>
+OTCL is to drive SIO channel 3 to receive/trai
+</p>
+<p>
+Gre? is not used
+</p>
+<p>
+CICS is to receive the strobe from the keyboard, and to interrupt on each
+key
+</p>
+<p>
+Rather than give a full listing of code, I will use the method et out tn [5]
+for I/O port initialization, vath comments beside the relevant bytes to explain
+how they are arrived at. These initialization tables are set out Like this:
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+Pate BY ROE LA aE Lay EOE
+</p>
+<p>
+PLUGGING IT IN
+That is almost all you have to do! The board includes one mini-DIP
+</p>
+<p>
+switch, (4 pole), and two links.
+</p>
+<p>
+The mini-DIP switch is used to select the board number in a multi-RAM-DISK-board
+system and, in most cases, will not need changing from its setting of
+0, ({unnese Gemini change their test procedures and they come set to some other
+value!).
+</p>
+<p>
+LK1 will provide you with a NASIO signal if your system requires it, but
+most people will not need it, or will have another board in the system
+supplying it already.
+</p>
+<p>
+LK2 allows the clock input to the board to come from either the CLK line, or
+the AUX CLK line. If you do not have a 4MHz system clock, you will have to cut
+the trace between 1 and 2 on LK2, and connect 1 to 3 in order to pick up 4MHz
+from the AUX CLK line. (Assuming it has been implemented on your system).
+</p>
+<p>
+SOFTWARE SUPPORT
+</p>
+<p>
+Gemini BIOSs Versions 2.3 and higher support GM833. Also the associated
+program CONFIG has been extended to include the board as an option when&mdash;
+setting up the parameters for a &ldquo;Memory drive&rdquo;. If you have an earlier BIOS, a
+BIOS update program (together with CONFIG) should be available through your
+usual dealer.
+</p>
+<p>
+The BIOS supports the drive as drive &ldquo;M&rdquo;, and is so arranged that it does
+not re-initialise the memory drive if you are forced to press Reset.
+</p>
+<p>
+SIZE
+The standard board provides a memory drive of 512k (or O.5Mbyte) capacity
+&ndash; quite a respectable size. However if this is not enough for you further
+boards may be added up to a maximum of 16, so providing the full 8Mbyte
+capacity that CP/M2.2 will support. (N.B. 16 boards are beyond the capacity of
+the currently available commercial 80-BUS backplanes, and may also require
+added power supply capacity!).
+</p>
+<p>
+I find the 512k single-board drive more than adequate. It lets me keep a
+reasonable amount a system software on the drive (such as Wordstar Overlay
+files) along with all the data files. You may like more if you are handling
+particularly large data bases.
+</p>
+<p>
+GM833 in use &ndash; BENCHMARKS
+</p>
+<p>
+To give an example of the benefits of GM833 a few Benchmarks are shown
+below. So that a reasonable assesment can be made of relative performance I
+have also included figures for 5.25" and 8" floppy-disk drives, and the Gemini
+Winchester disk subsystem. As always the figures should be taken as a guide
+only, as the figures for the floppy disk performance can be made to vary
+widely, depending upon where the files are located on the disk. I have
+attempted to position the files in such a way as to produce &lsquo;average&rsquo; figures. |
+</p>
+<p>
+The first benchmark is an example of how a program can be transformed by
+the use of RAM-DISK. The program in question is TRANSLAT, a program that
+translates 8080 mnemonics to Z80 mnemonics. Who ever wrote the program made no
+attempt to optimise the IO &ndash; the internal input and output buffers appear to
+be one sector in size. The result is that the majority of the run time of the
+program is taken up by the disk drive moving the head back and forth between
+the tracks holding the input and output files. The RAM-DISK has no such
+physical problem!
+</p>
+<p>
+(N.B. another such program nearly gave me a heart attack when I used it
+to compare files on two different drives. It briefly turned my system into an
+imitation of a machine gun as the heads on the two 8" drives alternately
+loaded and unloaded several times a second.)
+</p>
+<p>
+Anyway here are the figures for TRANSLAT working on a large 8080 source
+file. The number in brackets is the approximate number of tracks that
+separated the source and destination files.
+</p>
+<?php columnEnd(1); ?>

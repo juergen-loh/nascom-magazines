@@ -1,0 +1,86 @@
+<?php columnStart(1, "noindent nojustify"); ?>
+<p>
+A further point to note is that the clock&rsquo;s interrupt system is not reset on a computer
+reset. This will cause problems if an attempt is made to run another interrupt-using
+program which does not expect clock interrupts, unless the clock&rsquo;s interrupt system is
+first reset by software. This can be done by outputting zero to the interrupt register
+and then reading the register.
+</p>
+<h3>
+Demonstration program
+</h3>
+<p>
+The listing of a demonstration program TIMEDATE 1 is given below. This is written for
+use with NAS-SYS and is entered at 1000H. The program then requests that the starting
+time (hh mm) and date (dd mm yy) be keyed in &ndash; e.g.:
+</p>
+<p class="indent">
+23 59 31 1 82
+</p>
+<p>
+The clock will be started from this time when ENTER is hit. If the line entered starts
+with a space (e.g. if no time is provided}, the existing clock time will be retained.
+</p>
+<p>
+TIMEDATE 1 then returns to NAS-SYS, from which a user program can be entered if
+required. However, NAS-SYS or the user program will be interrupted at intervals of
+514.4 ms while the interrupt routine updates a time and date display on the top line of
+the screen.
+</p>
+<p>
+Note that a separate stack is used by the interrupt program, because the interrupted
+program (such as NAS-SYS) may not have enough spare stack space for the interrupt
+routine. The interrupt pointer address defined by the contents of the I register and
+the vector (00H) returned by the clock is loaded with the start address of the interrupt
+routine.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(12); ?>
+<?php columnChange(1012); ?>
+<?php columnStart(1); ?>
+<h3>
+Components List for real-time clock and calender
+</h3>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<p class="noindent">
+Resistors:<br>
+R1=220R<br>
+R2=4.7K<br>
+R3,R4,R5=10K<br>
+R6=1K<br>
+R7,R8=10K<br>
+<br>
+Capacitors:<br>
+C1,C2=10nF<br>
+C3=10uF	16V<br>
+C4=6-36pF<br>
+<br>
+</p>
+<?php columnChange(2); ?>
+<p class="noindent">
+Integrated circuits:<br>
+IC1=MM58174N<br>
+IC2=74LS00<br>
+IC3=74LS01<br>
+IC4=74LS00<br>
+IC5=74LS00<br>
+IC6,IC7=74LS05<br>
+IC8=74LS145<br>
+<br>
+Transistors and diodes:<br>
+Tr1=BC178<br>
+Tr2=BC108<br>
+ZD1=BZX83C 3V3
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1, "noindent nojustify"); ?>
+<p>
+Miscellaneous:<br>
+XTAL= 32.768 KHz crystal<br>
+Batt.= 2 AA NiCad cells in series
+</p>
+<?php columnEnd(1); ?>
+<?php columnChange(12); ?>
+<?php columnEnd(12); ?>

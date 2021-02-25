@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+additional hardware is used, and in any case both CP/M and NAS=-SYS use page
+one of memory, which is where the -RST&rsquo; locations are operative. Assuming a
+vector can be generated, there is still the problem of where to allow
+interrupts to be active within the program. It would be necessary to use EI
+and DI instructions carefully, avoiding the whole of the CCP and BDOS areas,
+</p>
+<p>
+and most of the CBIOS. The area diminishes until one is left with a few I/O-areas
+such as the Keyboard. Fortunately this conclusion greatly simplifies the
+task, because computers spend nearly the whole time waiting for keyboard
+input.
+</p>
+<p>
+There are occasions when the machine is not awaiting Keyboard input, as
+during Disk I/O, Formatting text, Compiling or Assembling a Source File, or
+perhaps copying files. Some of these activities can last for a few minutes. If
+one is content to allow the clock display to -freeze&rdquo; for these few times, but
+update regularly at all other times, then the solution to the problem becomes
+much simpler. The difficulty of implementing interrupts has been mentioned.
+Since clock updating is restricted to such a -small* area of the program, in
+terms of code, then there is no real advantage in using Interrupts, and
+Polling will give the required performance.
+</p>
+<p>
+The method that I have used is therefore based on integrating the clock
+&ldquo;polling&rdquo; code into the keyboard scan code.
+</p>
+<p>
+A number of short listings of source code are given. These show in full
+the extra code that I have added to SYS vers. 16. to permit conditional
+assembly for the Clock with options for a couple of extra features. Any code
+shown in lower case is -SYS* code, included to show the position of my
+additions, while Upper case code is my added code. (Except for the -headings&rdquo;
+enclosed in &ldquo;*&rdquo; characters.) Modification for other SYS8&rsquo;s or the Gemini BIOSs
+should also be relatively easy, if the Source Code is to hand. In the example
+Listings in this article, it is assumed that the system is using a keyboard
+attached to the Gemini GM812 IVC card, and that the RTC chip is addressed as
+16 Ports from address 20H, as on the Gemini GM816 card. Modification of the
+clock software for PIO format should be along the lines of previous articles
+in the 80-BUS News, and other magazines. I have not looked at the problems
+that might arise in outputting the Clock to a NASCOM format screen. If a
+NASCOM keyboard is used the clock code can probably be fitted into that area,
+but I have not tried this method.
+</p>
+<p>
+Code extract 1 lists additional &lsquo;-EQU&rsquo;ates that need to be inserted into
+module one of SYS. If CLOCK is not true, then all clock related code will be
+omitted in subsequent modules. If Clock is TRUE, then all related clock
+routines will be included in the assembly. Setting LOCK to TRUE will cause
+code to be included into the WARM BOOT routines that will -lock&rdquo; the top line
+of the IVC screen display. This will stop the clock display from scrolling
+-through the top&rsquo; of the screen. I usually have both NASCOM and Gemini
+keyboards on my machine, but the RTC code in this article is relevant to the
+keyboard on the IVC only.
+</p>
+<p>
+Some of the clock code is a straight copy of the examples given in the
+GM816 manual and I make no claim as to its originality. The variable NMRREG is
+set to the number of RTC registers that are to be read. The variable OFFSET
+can be chosen such that the Clock display on the Screen is updated every 1
+Sec., 10 Sec,. or 1 Minute as desired. The RTC chip is of course updating its
+own registers every -1 Second. There is only about 10 Bytes left in SYS at
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+DOCTOR DARK&rsquo;S DIARY
+</h1>
+<h4>
+&ldquo;It isn&rsquo;t in the book, so it doesn&rsquo;t exist&rdquo;
+</h4>
+<p>
+Now that we all know that IX and IY will behave as if they were
+HL when asked nicely &ndash; but not always &ndash; (see issue 3 &ndash; Ed.) it
+must be time for the missing (and mysterious) CB instructions to
+see the light of day. Careful study of page 14 of the Hitch Hikers
+Guide to the Z-80 (alias the Mostek Micro-reference Manual) and
+meditation in a reverent posture has revealed all to me. The
+missing codes are CB 30, CB 31..... to CB 37. All the instructions
+on that page, with one exception, are in pairs; there should be a
+mnemonic SLL, but you won&rsquo;t find it. I think there were supposed
+to be eight instructions which shifted a register, or a byte
+pointed to by HL (and possibly IX and IY as well) one place left
+into the carry flag, feeding a zero in on the right of the register.
+Single step through this small program:&ndash;
+</p>
+<pre>
+    0C50    06 8E         LD B, 8EH
+      52    AF            XOR A
+      53    CB 30         "SLL B"
+</pre>
+<p>
+You will find that bit 7 of register B has arrived in the carry
+flag as expected, but B is not the 1C it should be, A 1 has been
+fed in instead of the zero Zilog intended.
+</p>
+<p>
+Having puzzled all that out for myself (honest!) the result gave
+me a feeling of deja-vu. Get out your copy of Personal Computer
+World (well, you should have bought it) Volume 1, Number 2, and
+turn to an item called &ldquo;Four Easy Pieces&rdquo;. I knew it was there,
+somewhere, the joystick circuit on the same page works, too.
+</p>
+<h4>
+&ldquo;The bit isn&rsquo;t displayed, so it doesn&rsquo;t matter&rdquo;
+</h4>
+<p>
+If you have such a thing as a Nascom handy, execute this complex
+program:&ndash;
+</p>
+<pre>
+       0C50         21 10 08       LD HL, 0810H
+         53         36 7F          LD (HL), 7FH
+         55         76             HALT.
+</pre>
+<p>
+Now, replace the 7F with FF and run it again. Most of you got
+the same result both times, the others have been connecting things
+to the character generator socket. There are, you see, things
+available to the brave soul who wants graphics on his Nascom,
+called Bits and P.C.&rsquo;s Add-on graphics boards, (We believe NM
+are up to something too &ndash; Ed.) These useful items produce another
+128 characters, and make your Nascom even further ahead of those
+plastic boxes from across the Atlantic than it was, Trouble begins
+when you try to run a program that uses 00 and 7F to display the
+pieces for a game like Othello, for example, Mr Beal has written
+a fine program, but it uses FF, and on my screen it looks like
+Martian Hyper-Cricket (see my program, in INMC issue 476), Please
+folks, if you mean 7F then use 7F, Ta.
+</p>
+<?php columnEnd(1); ?>

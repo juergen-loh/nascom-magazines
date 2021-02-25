@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+THE NAS-SYS MONITORS
+</h1>
+<p>
+By J. Haigh
+</p>
+<p>
+SINGLE STEP S xxxx
+</p>
+<p>
+The Single Step command initially uses part of the machine code used by the
+Execute command, described in article 2. It enters the Execute routine at the point at
+which it throws away the return address by POPing it into AF; it thus misses out the
+section which sets the workspace byte CONFLG (&pound;0C26) to -1, and this remains at
+zero. Continuing with the Execute machine code routine, the Single Step command
+saves the specified start address in the monitor workspace, loads registers BC, DE,
+HL, AF and SP from the register save area in the workspace, and pushes the start
+address onto the top of the stack. The AF registers are then saved while bit 3 of port
+0 is set; this activates a TTL circuit which sends a non-maskable interrupt to the
+processor after four M1 cycles. The AF registers are recovered, and this is followed
+by a return-from NMI instruction (RETN, ED 45), which, because the start address
+was pushed on the top of the stack, causes the program to start executing at this
+address. Three M1 cycles have now occurred (one each time a byte is fetched from
+memory), so as soon as the next instruction is started the NMI line is activated, and
+the processor is interrupted at the end of this instruction.
+</p>
+<p>
+This causes the processor to jump to the NMI handling routine. Here bit 3 of port
+0 is reset, and the value stored at CONFLG is tested. If the value is not zero the
+program must have arrived at this point from an Execute command, and the routine
+continues as described in the second article. If CONFLG is zero the top 10 bytes of
+the user stack, which contain the value of the program counter register for the next
+instruction of the program being single-stepped (pushed on the stack as the return
+address by the NMI) and the AF, HL, DE and BC registers, are copied to the register
+save area in the monitor workspace. The contents of these registers, together with
+the user stack pointer, the interrupt register and the index registers IX and IY, are
+then printed on the screen.
+</p>
+<p>
+In Nas-Sys&nbsp;1 the routine which prints the registers is part of the NMI/Breakpoint
+handling routine, but in Nas-Sys3 it is written as a separate subroutine which can be
+accessed by command P or called from other programs. The format of the register
+print out is also different in the two monitors. In Nas-Sys&nbsp;1 only the registers are
+printed out, in the order:
+</p>
+<p>
+SP PC AF HL DE BC I IX IY
+</p>
+<p>
+followed by a string of letters indicating which of the bits in the flag register are set. In
+Nas-Sys&nbsp;3 the display of each of the first six register pairs is followed by the sixteen
+bit value held in the memory location to which the register pair points. Thus if the H
+</p>
+<?php columnEnd(1); ?>

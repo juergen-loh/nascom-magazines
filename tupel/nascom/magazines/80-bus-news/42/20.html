@@ -1,0 +1,147 @@
+<?php columnStart(2, 2); ?>
+<h1 id="article1">
+SHOCK HORROR HEADLINE
+</h1>
+<h3 class="author">
+by David Hunt
+</h3>
+<p>
+In this set of DRH ramblings he looks at a utility
+called LU, a deadly little program called VIRUS, the
+new Gemini GM870 80-BUS MODEM board and its
+software, the new UKM720 program, and Gemini&rsquo;s
+latest BIOS, version 3.2.
+</p>
+<h2>
+DH disk storage crisis
+</h2>
+<p>
+Having sat down to write this sessions&rsquo; pile of
+disjointed bits, I&rsquo;d done about a page&rsquo;s worth and
+for some reason decided to save it.
+</p>
+<pre>
+ERROR Destination disk full
+</pre>
+<p>
+Well perhaps it&rsquo;s not a crisis, I didn&rsquo;t lose anything
+and I&rsquo;ve plenty of secondhand disks knocking
+about, but I had a look at the full disk anyway, sure
+enough 784K with 4K free, and not a&nbsp;.BAK file in
+sight. Oh well, start a new disk; format it and label
+it. The label, -80BUS4 ??? Did that mean I&rsquo;d
+completely filled three disks? It sure did! Almost
+2.4M bytes worth, and that&rsquo;s exclusively this mag
+and its predecessors, and then only what I&rsquo;ve
+bothered to keep. Just as an exercise &ndash; a word
+count; I put everything into one big library using
+LU on the winnie, and then set SPELGARD the
+problem of counting the words whilst I went for a
+bite [Ed. &ndash; byte&nbsp;?] to eat. Well of course,
+SPELGARD gave up at 65000 odd words, not
+surprising really, and I learned for the first time that
+SPELGARD has a 16 bit word counter. Well by now
+I really did want to know how many words had
+been written, so I truncated an average file to
+exactly 8K using a debugger and fed that to
+SPELGARD, then multiplied the result by 295. The
+result, I know you&rsquo;re all dying to know &ndash; just over
+300,000 words. Was it really that much? Well a
+re-count on another file came out about the same,
+so I guess it must be something like that. Just as
+well 80-BUS doesn&rsquo;t pay me at a commercial word
+rate, I&rsquo;d be quite rich and 80-BUS wouid be broke.
+</p>
+<p>
+I mentioned LU; well this program has been lurking
+around the CP/M libraries for some while now, but
+I only came across it a few months ago. It&rsquo;s
+marvelous for archive stuff, you know, the sort of
+thing you are loath to erase, but at the same time
+don&rsquo;t ever intend to look at again whilst begrudging
+the disk space it takes up. In fact your typical DH
+80-BUS article. No in fact DH type articles are too
+long and rambling to make much advantage of
+stuffing them into a library, the only advantage
+being in this case, keeping bits of things together.
+It&rsquo;s much more useful at archiving lots of little
+things, letters, dBASE&nbsp;.CMD files and the like.
+</p>
+<p>
+As you know, CP/M allocates space to files in
+blocks. In the good old days of single density 8"
+</p>
+<p>
+disks with only about 240K of usable capacity, life
+was easy. CP/M builds a map of where things are
+put on the disk, it&rsquo;s part of the directory entry for
+the file, and saved along with the name. That&rsquo;s
+what file control blocks (FCBs) are all about, but
+then if you know about file contro! blocks, you
+know about directory allocation blocks. Anyway,
+the disk is carved up into nice small chunks, and
+allocated an 8 bit number. Now there can only be
+</p>
+<p>
+256 discrete 8 bit numbers, so the maximum
+</p>
+<p>
+number of blocks is 256. If the disk has a capacity
+of 240K, 240 1K blocks can be allocated. But like
+Topsy, disks growed, and double sided double
+density 35 track disk formats came along. These
+had a capacity of about 340K, and you can&rsquo;t have
+340 1K blocks, so the block size was doubled, 170
+2K blocks. Then someone increased the number of
+tracks available by halving the track pitch, and 80
+track disks appeared with a capacity of 788K. So
+now we have 197 4K blocks. Yes I know I&rsquo;ve dodged
+the issue of single sided 80 track disks and the
+&lsquo;double byte&rsquo; block allocation numbers used in
+winnies, but the fact remains that on the Gemini
+high capacity disks systems, we have 197 4K
+blocks.
+</p>
+<p>
+The snag, you ask? Weil, it doesn&rsquo;t matter if a
+program is two bytes long, it&rsquo;s still allocated 4K of
+disk space, and so appears as a 4K file. More
+typically, letters and dBASE&nbsp;.CMD files are usually
+about 1K long, so 3K goes wasted. LU gets round
+this rather neatly. It constructs one file called a
+library file from a number of files, adding them end
+to end, and then puts an internal directory into the
+file. Yes, LU also has an internal biock size, but it&rsquo;s
+only 128 bytes, so not much space is lost.
+</p>
+<p>
+Of course LU must have snags, the biggest is that
+once a file is in the library you can&rsquo;t execute it or
+even look at it, it has to be extracted from the
+library before you can do anything with it. Having
+said it&rsquo;s for archive stuff anyway, this isn&rsquo;t too
+much of a limitation. More annoying perhaps is it&rsquo;s
+quirky syntax, which is also rather unhelpful and
+unforgiving.
+</p>
+<p>
+Having said that you can&rsquo;t do anything with a file in
+the library without extracting it, LU came with a
+couple of utilities, LDIR, so you quickly look at the
+file narnes in the internal directory, and LRUN so
+you can execute a xxx.COM file from within the
+library. Unfortunately if a program is executed
+from the library using LRUN, the program still can&rsquo;t
+access any overlays it might want, they&rsquo;re still
+buried in the library. The one utility that should
+have been there but wasn&rsquo;t was LTYPE, as much of
+my library stuff is ASCII files. Still perhaps there
+wasn&rsquo;t one or it had got lost or something. Or
+worse still, someone out there thinks DH should
+write one &ndash; no way!
+</p>
+<p>
+I made a major mistake when I first got LU. I played
+with it a bit and thought it would come in useful
+</p>
+<?php columnEnd(2); ?>

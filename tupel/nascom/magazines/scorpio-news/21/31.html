@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<p>
+C0:BAK &gt; MCOPY MDSK: = BAK:FILE1L. TYP, FILE2. TYP<br>
+works O.K.
+</p>
+<p>
+MO0:MDSK &gt; MCOPY =853:FILL.TYP,FIL2.TYP<br>
+FIL1 copied O.K. FIL2 gives SRC = DEST err.
+</p>
+<p>
+C0:BAK &gt; MCOPY MDSK: = B3:FIL1.TYP,FIL2.TYP<br>
+FIL1 copied O.K. but MCOPY tries to find FIL2 on CO: and gives a Not Found err.
+</p>
+<p>
+The problems seem to mainly arise if one is not logged into the source directory
+</p>
+<p>
+when using MCOPY. If anyone has a patch for this I would be interested to hear
+from them, since it can cause batch processing to abort.
+</p>
+<h2>
+Appendix. A
+</h2>
+<p>
+Code modifications to ZCPR3 CCP to allow password protection of DU&rsquo;s
+</p>
+<p>
+In general, only changed or extra lines are shown here, or enough of the original to
+allow the correct location to be found.
+</p>
+<pre>
+IF ACCPTDU ;ALLOW DU: FORM
+DUSCAN: on
+;Change target of next IRC
+JRC &mdash;&lsquo; DUSIX &lsquo;IF LESS THAN &lsquo;A&rsquo;, MUST BE DIGIT
+: SET DISK NUMBER (A= 1)
+call? Original code
+JIRZ DUPW? ;Changed from RZ.
+CALL DIGCK&nbsp;,CHECK FOR DIGIT
+RC (ALSO NZ IF &lsquo;C&rsquo;). Original Code.
+&lsquo; JR DUSI ;Now 4 Extra Lines
+: If Digit only entered, we must set TEMPDR to the current Drive
+DUSIX: LDA CURDR &lsquo;GET CURRENT DRIVE
+INRA &ldquo;CONVERT TO DRIVE
+STA TEMPDR &lsquo;SET INTO TEMPORARY USER
+: SET USER NUMBER
+DUS1: ws ;Code here not changed
+ss sto :
+STA TEMPUSR :SAVE USER NUMBER
+</pre>
+<?php columnEnd(1); ?>

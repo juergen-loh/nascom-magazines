@@ -1,0 +1,149 @@
+<?php columnStart(2, 2); ?>
+<p>
+&lsquo;code&rsquo; for &lsquo;a&rsquo;, &lsquo;Idata&rsquo; for &lsquo;b&rsquo;, and &lsquo;alength&rsquo; for
+&lsquo;co&rsquo;. However if you precede the label names
+with a &lsquo;%&rsquo; sign, M80 treats them in a different
+way. Instead of replacing parameter &lsquo;a&rsquo; by the
+character string in the corresponding position
+in the macro call, it replaces it by the VALUE
+of that character string, (assumed to be a
+label), converted to the current radix. That
+brings me to one final &lsquo;tweak&rsquo; to using the
+macro &ndash; we normally think in HEX when
+confronted with addresses and opcodes, (or
+at least I do), and so in order that the
+information is displayed in hex we need to
+change the current radix to 16. So the code in
+the source file should look like:
+</p>
+<p>
+.tadix 16 ; Change radix to 16
+</p>
+<p>
+390 we get Hex display
+show Zlcode,Gldata,Zalength ; Use
+</p>
+<p>
+;the VALUES of the labels
+.radix 10 ; Back to normal radix of 10.
+</p>
+<p>
+If you only want to see the message once, rather
+than on each pass of the assembler, the code
+can be bracketed by:
+</p>
+<p>
+if2 ; If pass 2
+. aS above..
+endif
+</p>
+<p>
+Microsoft&rsquo;s L80
+</p>
+<p>
+lf you have a large program it is sometimes
+convenient to split it into several smaller
+modules. There are then two approaches you
+can take on combining these modules. The
+first is to combine them during assembly by
+using the &lsquo;include&rsquo; command of M80. The
+second is to assemble them separately, and
+combine them at link time with L80. In the
+latter case use is made of the &lsquo;entry&rsquo; and
+&lsquo;extrn&rsquo; commands of M80 to specify which
+labels can be referenced from outside a
+particular module, (the entry points), and
+which tabels are in other modules, (the
+externals). However this approach may give
+you quite a long command line for L80 which
+it can be irritating to keep retyping:
+</p>
+<p>
+e.g. 180 bitmain,bitl, bit2,bitd,
+bit4, bit5, bit6, library/s, fred/n/e
+</p>
+<p>
+Which links together the seven programs bitmain,
+biti &ndash; bit6, items from the library file &lsquo;library&rsquo;,
+and saves the lot under the filename
+&lsquo;FRED.COM&rsquo;. You can save yourself effort by
+creating a submit file with the above in it, or
+by programming up one of the function keys
+on the Gemini keyboard with the command
+string. Alternatively you can make M80 and
+L80 do some of the work. This is done by
+using the &lsquo;.request&rsquo; command of M80. The
+</p>
+<p>
+&lsquo;request&rsquo; causes M80 to code-up a request to
+L80 to search the specified file(s) for the
+routines to satisfy any undefined externals. In
+the above example &lsquo;bitmain&rsquo; could be edited
+to contain the line:
+</p>
+<p>
+-Tequest bitl,bit2, bit3, bit4, bitS, bit6, libry
+and as a result the L80 command would reduce to:
+L80 bitmain, fred/n/e
+</p>
+<p>
+There are two caveats to using this approach:
+Firstly M80 restricts external names to six
+characters, and thus your file names in the
+&lsquo;request&rsquo; command must six characters or
+less. If they are seven or eight characters long
+M80 will truncate them to six characters, and
+then L80 will be unable to find the files.
+Secondly L80 does a library search. i.e. L80
+will only link in those files that contain entry
+points that are in its table of as yet undefined
+externals. e.g. If the entry points in &lsquo;bit2&rsquo; are
+only referenced by &lsquo;bit6&rsquo;, then the file &lsquo;bit2&rsquo;
+will not be loaded when it is reached, as its
+entry points will not match any of the
+&lsquo;wanted&rsquo; externals referenced by &lsquo;bitmain&rsquo;
+and &lsquo;biti&rsquo;. It is only when the file &lsquo;bit6&rsquo; is
+reached that the external references of that
+file to &lsquo;bit 2&rsquo; are added to the &lsquo;undefined
+externals&rsquo; table. Thus the files in the &lsquo;request&rsquo;
+list must be in an order which ensures that
+they are all loaded. (If &lsquo;bitmain&rsquo; references all
+of them you have nothing to worry about.)
+</p>
+<p>
+$MEMRY
+</p>
+<p>
+If you are linking together several routines to form
+a large program, the problem of workspace
+may arise. By workspace I mean &lsquo;where is the
+workspace?&rsquo;. In the case of a single program
+requiring &ndash; say &ndash; two 4k buffers the answer
+is simple. The program can end with:
+</p>
+<p>
+buffl equ $ ; Start of buffer 1
+buf f2 equ buffl+4096 ; Start of buffer 2
+bufend equ buff2+4096 ; End of buffer area
+</p>
+<p>
+(Note the program ended with EQUs. If DEFS had
+been used, the data space would have been
+saved as part of the program &ndash; a total waste
+of disk space.) The same approach can be
+used when you link programs together with
+L80, BUT you must ensure the module with
+the above definition is THE LAST MODULE
+linked in, (including any library modules),
+otherwise the &lsquo;buff1&rsquo; and &lsquo;buff2&rsquo; areas will
+overlay program code. Replacing the EQUs
+with DEFS would solve the problem, but once
+again would lead ta wasted space on disk.
+</p>
+<p>
+However L80 does provide a mechanism for
+getting round this problem, but it is slightly
+clumsy to use. This is the variable $MEMRY.
+When L80 finishes linking a program it looks
+</p>
+<?php columnEnd(2); ?>

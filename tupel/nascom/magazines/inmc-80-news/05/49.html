@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p class="continued">
+which is, of course the ASCII code for 5. Now it wasn&rsquo;t really magic, it was
+knowing the effects of the DAA instruction which is the heart of this whole
+routine. I confess, that given the original specification, my approach would
+have been a lot more long winded, and I don&rsquo;t suppose for one minute that I
+would have thought of using the DAA instruction in this way. The ADC A,40H can
+be thought of as a &lsquo;fiddle factor&rsquo;, but the result is what was required. The
+whole piece of code from line 4525 to 4540 must be though of as a single piece
+of bit manipulation, and can only be arrived be very careful though and
+thorough knowledge of the effects of the instructions.
+</p>
+<p>
+Line 4550. Go and print the character on the screen.
+</p>
+<p>
+Line 4555. Get the return address off the STACK and go back to where
+eve you came from.
+</p>
+<p>
+And here endeth the lesson. What&rsquo;s been learned? Well, firstly and
+most important, the fact that instructions may be intended for one purpose, but
+that does not impose a constraint on their imaginative use for other purposes.
+The two crucial instructions are the DAA and the ADC A,40H. Knowing exactly the
+effect of the DAA allows the programmer to deduce the required &lsquo;fiddle factor&rsquo;
+to make the routine work correctly. Another thing has been the correct and
+orderly use of the STACK. See how neatly the whole thing comes together. The SP
+is always in the right place when data is wanted, and simple PUSH, POP, (not so
+simple) CALL and RET instructions always retrieved the correct data at the
+right time. The way the routine CALLed the second half the first time round,
+but simply dropped through the second time, thus saving one CALL instruction,
+and one additional RET instruction, so saving four bytes. (Not that space is
+usually at a premium, but there is an awful lot crammed into the 2K of
+NAS-SYS). I hope you all understand how the B2HEX routine works now, and
+hopefully, my commenting of the routine made for easier understanding.
+</p>
+<p>
+Try commenting some of the other routines in the monitor. If you can&rsquo;t
+see how they work from the listing, there&rsquo;s nothing to stop you writing a
+simple piece of code which will pre-fill the registers with the right data and
+then CALLing the routine in question via a single step command. It&rsquo;s quite
+revealing when you do it that way, you see all the registers change as the
+routine steps though, and you can see the sometimes hidden effects of the flags
+as it goes along. If you have NAS-DIS and D-BUG, so much the better, the
+display is so much clearer. Personally I find the register display of NAS-SYS&nbsp;3
+a retrograde step, as, although it gives much more information, it&rsquo;s confusing
+to read.
+</p>
+<p>
+Now for the ultimate confession. When I started to write this piece, I
+didn&rsquo;t know how B2HEX worked either. Of course I&rsquo;d looked at, but the
+significance of the DAA instructions hadn&rsquo;t caught my eye. I had just taken it
+as a &lsquo;black box&rsquo; module and not given it any attention. Imagine my surprise
+when I actually sat down and single stepped through it (I&rsquo;ve got to do that,
+&rsquo;cos if I get it wrong, think of the delight you&rsquo;d get writing me rude letters)
+and then tried to figure out exactly how it performed the magic conversion. I
+phoned Richard to confirm I&rsquo;d got it right, and to ask how he&rsquo;d invented that
+particular way of, doing it. It was then I discovered that Richard wasn&rsquo;t the
+perpetrator of the particular piece of code. In writing NAS-SYS&nbsp;1, Richard had
+run out of space by about 20 &ndash; 30 bytes, so he spoke to David Parkinson (of
+REVAS, NAS-DIS and GEMINI disk system fame) and asked if he could think of any
+ways of losing a few bytes. Dave came up with this one, and a couple in the KBD
+routine which saved the day. Incedently, I now know why I&rsquo;ve never been able to
+fully understand how the keyboard routine works. David Parkinson has been at
+it!!!
+</p>
+<p>
+Still, give David his due, he&rsquo;s far cleverer at this programming lark
+than I will ever be. My excuse? I gave that in episode one, when I said that I
+started off knowing nothing, and I don&rsquo;t suppose I learned much since. I&rsquo;ll
+remember B2HEX though!!
+</p>
+<?php columnEnd(1); ?>

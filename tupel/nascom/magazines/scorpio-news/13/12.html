@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+to 4 directory cecord containing four 32 byte directory entries, the total
+required for each checksum vector is (DRM+1)/4 where DIM 48 one Lei
+total number of directory entries permitted on the disk. Tn the ca
+QODS format, the figure 18 128/402 byter
+</p>
+<p>
+Whenever the directory of a dik Le accessed, a checksum 18 produced and
+compared with the appropriate value in the checksum vector. If the checksum is
+Gifferenc, the 8D08 knows that the disk has been changed and will set it R/O
+under CP/M 14 or CP/M 2.2 oF log in the new disk under CP/M 3
+</p>
+<p>
+Clearly, this directory checking is a waste of time for drives, euch as a
+Winchester herd disk, where the disk cannot be changed. This type of drive is
+said to have fixed media. Digital Rerearch had the foresight, when designing.
+CP/M 2.2 and CP/M 3, to allov for this type of drive. If no directory checking
+fs) required, the checkrum vector may be Qnitted with a resultant saving of spac
+in the BIDS.
+</p>
+<p>
+The Allocation Vector
+</p>
+<p>
+location address, This Ls the address
+of a table which che DOS uses to keep track of the date blacks on disk. Th
+ble ie called the allocation vector and it iea bit map of the blocks on the
+&lsquo;such that each individual bit represents one block. Consequently, the
+eof eight dick data blocks (ie allocated toa flle or not) can be shown ta
+fone Byte of the sllocation vector. Block 0 18 represented by bit 7 of the first
+byte in the table, block 1 by bit 6 and eo on for each byte in the table. There
+inan allocation vector for each dick drive in the system and the address of the
+vector for the Logged in drive may be obtained by calling BDOS function 27.
+</p>
+<p>
+The last entry in the DPH ts thi
+</p>
+<p>
+When a drive is logged in for the first tine, the BDOS scans the directory
+entries on the disk and extracte the numbers of che blocks already allocated to
+Hles. For euch block used, the BOOS sete the appropriate bie in the allocation
+vector, Quite simply, when you wish to write to disk, the BDOS searches the
+Ellocation vector for&rsquo;a 0 bit. Tf none are found then the disk iv obviously
+full.&rdquo; Te a Obit te found then the BD08 may allocate the associated block to
+the &pound;41
+</p>
+<p>
+To compute the amouat of fr
+count the number of eros in the allocation vector
+block size. Programs such se STAT.CO obtain theis
+manner&rsquo; and as you will probably noticed do not acre
+example, STAT B. ie typed in wail
+</p>
+<p>
+thae drive B has been accessed tince a &ldquo;C wae last typed.
+</p>
+<p>
+spice on a disk, it isa siaple
+1d then multiply by the
+</p>
+<p>
+The BOOS updates the allocation vector during disk write and delece
+operations $0 that the amount of free space shown by STAT.COM will always be
+correct, Having said that, imagine chat ve are writing tou disk |The BDOS
+Will vet dite in the allocation vector according to wich blocks are being
+Miccatea. If we return to CP/M by executing &laquo; RET instruction so that &laquo; are
+Doot te avoided and, at the same time neglect to close the fle, STAT.COM will
+return an incorrect amount of free space as the allocation vector will not agree
+with the disk directory entries actually weiteen to the disk. This is because
+the final directory entry for a file being written to disk ian&rsquo;t written to the
+directory track until the file te closed. The only way to reclaim the lost disk
+apace and obtain a correce free space figure te to force a disk reset by typing
+</p>
+<p>
+entral Cc.
+</p>
+<p>
+isk 19 changed without performing a wa
+boot to reset th cunt of free space indicated by STAT.COM
+Mill be inaccurate ae te 3008 will have the ailocation vector vet up for the
+Previous disk. Under CP/M 3, as soon ao the BDOS realizes chee a diok has been
+Changed, it logs in the new dick and sets up the allocation vector accordingly.
+</p>
+<p>
+Under CP/M 1.4
+4
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p class="continued">
+Controller card, or the Gemini Intelligent Video Card, to give us the required
+screen size, there&rsquo;s no way that we can see what we want to see nicely
+formatted on the screen. Therefore I was pleased when I found an article by J.
+Baraclough on page 135 of January &rsquo;82&rsquo;s PCW giving the necessary changes to
+ED.COM and DDT.COM for them to fit onto smaller screens. To summarise his
+article: In ED, the number of lines written by the P command are held in
+location 161CH (Version 1.4), and 17DBH (Version 2.2). Change this from 17H to
+0DH. For DDT&rsquo;s D command, the number of bytes displayed per line is held at
+0A15H, change this from 0FH to 07H. The number of bytes in each block
+displayed is held at 09EDH, so change this from 0BFH (16 x 12 lines) to 05F (8
+x 12) or 06F (8 x 14 lines). The number of lines disassembled by the L command
+is held at 09BCH, it&rsquo;s set to 0CH (12 lines) change it if you wish to 0FH for
+your 15 line screen.
+</p>
+<p>
+Spurred on by this information, I sat down and worked on ZSID.COM, and
+came up with the following: For the D command, 12AFH holds the number of bytes
+displayed per line, change this from 0FH to 07H for a screen less than 54
+characters wide. 125EH holds the number of bytes displayed per block, so
+change this from 5FH to 2FH for a standard Nascom screen.
+</p>
+<h3>
+AN OPEN LETTER TO RICHARD BEAL
+</h3>
+<p>
+Oh well, Mr. Beal, it looks as though you&rsquo;re going to have to start
+work now if you&rsquo;re going to get a CBIOS written to support CP/M version 3&rsquo;s
+new features by the time it&rsquo;s released. When you&rsquo;ve finished it, how about
+writing a utility program to run under CP/M that will give us all the
+debugging features of NAS-SYS that we know and love, plus a few extras such as
+Find, Compare, Read and Write programs from/to disk, and Call (like Execute,
+but CD rather than C3). It doesn&rsquo;t need to have any screen handling or support
+for the Nascom keyboard, because that&rsquo;s already in the CBIOS, in fact it can
+lose all the Monitor functions, and there will be no need for us to be able to
+access any of the subroutines unless we want to write &lsquo;illegal&rsquo; programs.
+</p>
+<p>
+It shouldn&rsquo;t be difficult, or take long, because you&rsquo;ve already got
+most of the source code. All it needs is the ability to relocate itself to the
+top of the TPA. I&rsquo;d do it myself, but I&rsquo;d feel tempted to let other people
+have a copy, and that would get me into copyright problems, wouldn&rsquo;t it!
+</p>
+<h3>
+MACRO-80, LINK-80, ZSID, AND SYMBOLS
+</h3>
+<p>
+Those of you who are rich enough to own the Microsoft MACRO-80 macro
+assembler and Digital Research&rsquo;s ZSID Symbolic Instruction Debugger (I once
+knew a singing duo called the Symbolics. Sym was a really nice girl, but her
+partner....) or those who are dishonest and know someone who has these
+packages will know that the symbol table produced by MACRO-80 is incompatible
+with ZSID.
+</p>
+<p>
+However, the table of globals produced by LINK-80 is compatible. So,
+we have to convert all the symbols in the source file for MACRO-80 to globals.
+This is easily done using ED.COM or DISKPEN. Using the F command replace all
+the occurrences of &lsquo;:^I&rsquo; with &lsquo;::^I&rsquo;. This will look for the colons before a
+tab, and replace them with two colons, thus declaring that symbol to be
+public. Using LINK-80, the Switch &lsquo;/Y&rdquo; when used after &lsquo;/N&rsquo; and before &lsquo;/E&rsquo; or
+&lsquo;/G&rsquo; will create a symbol table &lsquo;PROGNAME.SYM&rsquo; which is compatible with ZSID.
+</p>
+<h3>
+ILLOGICAL, CAPTAIN
+</h3>
+<p>
+I find that the Nascom&nbsp;2 keyboard is illogical. Every time I try to
+hit the &ldquo;ENTER&rdquo; key, I usually hit one of the other keys that it hides amongst
+(OK, I&rsquo;m not the best typist around, all those spelling mistakes in this
+article are really tpynig errros!). I usually hit the one that sticks out on
+the end: CH/LF. So, one night in a fit of drunkeness, I attacked my keyboard
+with a blowtorch and some solder, and when I next used my computing machine, I
+</p>
+<?php columnEnd(1); ?>

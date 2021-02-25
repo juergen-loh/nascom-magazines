@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<p>
+3) The program would not normally reside in memory (unless, as in the
+author&rsquo;s case, on an EPROM board that can be paged in or out of the
+system, see INMC80 No. 4). Normally, it would be loaded from disc or
+tape.
+</p>
+<p>
+The listing was written using the CP/M Editor &lsquo;ED&rsquo; for assembly by Macro&nbsp;80,
+because program development is easier with these more powerful utilities. It should
+be easy to alter it to suit ZEAP. The main changes required are:
+Leave out the colons after labels;
+</p>
+<p>
+Remove the assembler directives END,.Z80,ASEG,.PHASE and&nbsp;.DEPHASE;
+</p>
+<p>
+Substitute a suitable memory ORG address;
+</p>
+<p>
+Substitute " in place of &lsquo; in compare instructions.
+</p>
+<p>
+If you have &lsquo;ED&rsquo; or any other editor with MACRO find/substitute commands it
+should be very easy to make the changes needed to the Source code. Otherwise,
+there should be few problems. The PIO ports are defined for the I/O board (using
+ports 14 and 15). These can be changed in the equates section of the listing.
+</p>
+<p>
+SOFTWARE OPERATION
+</p>
+<p>
+The program is written so that the user is reminded, by means of messages on
+the screen, to take suitable precautions when handling chips. User input is in the
+form of single key replies to prompts on the screen. All entries are echoed on the
+screen and the user may change them. The various routines are listed in the form of
+a &lsquo;menu&rsquo;.
+</p>
+<p>
+When the program is executed, the title is placed on the left side of the top
+(unscrolled) line of the screen, and warnings about chip handling appear for a couple
+of seconds. The program then prompts the operator to press key &lsquo;C&rsquo; when he is
+ready to continue. Whilst waiting for a response, the program display a message
+warning the operator to switch off when inserting or removing chips. When key C is
+pressed a prompt asks for the type of EPROM to be handled &ndash; key A should be
+pressed for 2708s, key B for 2516/2716s.
+</p>
+<p>
+When this entry has been made, the user is asked to verify it by a &lsquo;Y&rsquo; or &lsquo;N&rsquo;
+response. If &lsquo;N&rsquo; is entered the program repeats the request for the EPROM type,
+while on receipt of &lsquo;Y&rsquo; the type selected is displayed on the right hand side of the top
+line, and remains there until changed. In addition the value stored in the program
+workspace at the location ROMFLG is set to 04H for 1K EPROMs, or 08H for 2K
+EPROMs.
+</p>
+<p>
+The &lsquo;Menu&rsquo; for the five routines is then displayed, together with a list of the keys
+needed to access the routines. Once a routine has been selected and verified, it is
+</p>
+<?php columnEnd(1); ?>

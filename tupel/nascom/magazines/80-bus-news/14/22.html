@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+change. Since this bug may also be present in other versions (with different
+</p>
+<p>
+addresses) the code which should be changed is just after the prompt for the tape
+number and the three SCALs to process the answer and get it into HL. The code
+</p>
+<p>
+should read:
+</p>
+<p>
+E5 PUSH HL ;
+CDFADO CALL &pound;DOFA ; REWIND TAPE
+</p>
+<p>
+21 ADDT LD HL,&amp;D7AD
+</p>
+<p>
+012700 LD BC,&pound;0027 ; ** WAS &pound;23 **
+</p>
+<p>
+1152DB LD DE, &pound;DB52
+</p>
+<p>
+EDBO LDIR ; WRITE NULL CATALOGUE
+2158DB LD HL,&pound;DB58
+</p>
+<p>
+2231DB LD (&pound;DB31),HL ; SAVE CAT. START
+212100 LD HL, &pound;21 ; LENGTH ** WAS &pound;1D **
+2233DB LD (&pound;DB33),HL ; SAVE LENGTH
+</p>
+<p>
+Another undesirable feature (alright then, a bug) in TOS occurs if any
+errors occur when using TOS under program control. Since errors can occur at
+several &lsquo;depths&rsquo; in TOS (e.g. an error in the number of arguments, no tape
+present, a read/write error, etc.) there could be problems in knowing how many
+return addresses should be &lsquo;thrown away&rsquo; so that TOS can do a quick exit. TOS
+gets round this the easy way by warm-starting itself whenever errors occur. No
+problem when using TOS normally (i.e. from the keyboard) but when using TOS under
+program control, it means that control remains in TOS. No way to get back to your
+program. You can&rsquo;t just type &ldquo;W&rdquo; or &ldquo;R&rdquo; (Write or Read) because the arguments are
+obligatory. You can&rsquo;t return to NASSYS to see what they are because nN&rsquo;
+cold-starts NASSYS, and this resets the workspace. Unless you have designed your
+program carefully, you have lost all the data your program just spent a long time
+building. It would be far better to return, say, to the outer level of the
+Read/Write routines or whatever, and then return to the caller if an error is
+detected. The latest versions of TOS have a &lsquo;Vectored Error handling function&rsquo;
+which I presume means that control is passed through a location in RAM to a
+(user) error routine.
+</p>
+<p>
+The Write command (and B &amp; P) automatically verifies each block after it
+has been written by rewinding to the start of the block and then &lsquo;reading&rsquo; the
+block (but not loading it into RAM) and checking the CRC character at the end. If
+an error occurs, the block is rewritten, and if the error persists, the command
+is aborted &amp; an error message is displayed. A drawback is that the catalogue will
+still contain an &lsquo;entry&rsquo; for the erroneous file, which will have to be deleted.
+</p>
+<p>
+The I command is used to initialise a tape, and all it does is write a
+blank directory to the start of the tape. TOS automatically checks to see whether
+the tape has already been initialised, and displays an error message if it has.
+No command has been provided to delete the catalogue (e.g. so that it may be
+reinitialised with another tape number). This is deliberate, as it avoids the
+accidental &lsquo;erasure&rsquo; of a whole side. It can be done, however, by outputting the
+relevant commands to the ports, and this method is given in the manual. TOS also
+remembers where it is on a tape, so when reading more that one file off a tape,
+there is no need to read in the catalogue both times (or even the once). TOS
+cannot, however detect if a tape has been removed &amp; replaced with another one.
+Thus the &lsquo;R&rsquo; command (no arguments) is best used immediately after inserting a
+cassette.
+</p>
+<p>
+TOS is written for Nascom systems using NASSYS monitors (sorry, all those
+NASBUG fans) and automatically detects whether NASSYS&nbsp;1 or 3 is in use. Much use
+is made of NASSYS routines but not every call is made in the Approved Manner. The
+offenders are the call to Parse and to Errm. I don&rsquo;t see why Errm is called (when
+an invalid command is entered) instead of the address of TOS&rsquo;s own error routine
+(which calls ERRM anyway in the Approved Manner). These routines are called by
+reflections in RAM, so should your NASSYS be different (e.g. NASSYS 4 if &amp; when,
+</p>
+<?php columnEnd(1); ?>

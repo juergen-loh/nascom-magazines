@@ -1,0 +1,156 @@
+<?php columnStart(2, 2); ?>
+<p>
+We are talking &lsquo;Big&rsquo; Programs here!
+</p>
+<p>
+by Dave Russ
+</p>
+<p>
+Way back in the twilight of time itself (about 3 &ndash; 4
+years ago) in a land not too far from here, there
+could be found a new breed of creature. They were
+in general a happy band of beings, though they
+often complained of frequent headaches. You
+would not see them very often, except maybe first
+thing in the morning or last thing at night, and if
+perchance you stumbled upon ore in its lair it
+would seem as if the poor creature was in a trance.
+</p>
+<p>
+Every now and again they would congregate in
+cold halls and back rooms and regale each other
+with stories until the small hours. These tales were
+not of high adventure or epic endurance but how to
+coax an extra 1k of RAM from a small home
+computer thus doubling its capacity and the
+suchlike. For hour upon hour they would feverishly
+tell of how they boldly moved in on video RAM and
+BASIC workspace and worked wonders on a tiny
+system, that once it had set itself up, left you with
+an available workspace that was barely into single
+figures.
+</p>
+<p>
+This was the heroic age of the early home
+computer world. Now lost forever, I&rsquo;m glad to say,
+though some of the tales still linger on as classics.
+</p>
+<p>
+However we still have one legacy from those dark
+days, and I am sure that it is one of Murphy&rsquo;s n
+laws, and that is whatever system you have, a
+program will always expand to fill it. Way back then
+all you could do was read routines into available
+workspace, wherever it may have been, and
+through the magic of having read the manual, link
+it all together to give a running program.
+</p>
+<p>
+Now that we are living in more enlightened times,
+-and have acquired our 8 bit CP/M computer, we
+now have oodles of memory to play with (We
+do???), but still we manage to fill it up somehow.
+We can now afford to program in high level
+languages with little regard for the target object
+code size. Fast, tight assembler type code is now
+not a prerequisite for an efficient program running
+on a small computer.
+</p>
+<p>
+So we still manage to fill our memory up, but these
+days we have better methods of running programs
+larger than memory than poking routines into
+obscure little corners. This is the purpose of this
+awe inspiring (yawn) article.
+</p>
+<p>
+it may be worth mentioning that I was talking to an
+academic type not so long ago who is shortly
+publishing a book on Artificial Intelligence. He said
+</p>
+<p>
+that any machine in design today should be &ndash;
+</p>
+<p>
+capable of addressing at least 16 Megabytes of
+RAM. This seems rather extravagant, doesn&rsquo;t it, but
+it seems that Al applications are not renowned for
+their economy with memory.
+</p>
+<p>
+Getting back to the point, I&rsquo;m trying to say in my
+own roundabout way that everyone ought to stop
+before embarking on a mammoth project and think
+ahead a little to the time when the program begins
+to get bigger than the available memory. It may
+prove difficult to restructure it in six months time,
+and so we should consider the use of overlaying or
+chaining even at this early stage.
+</p>
+<p>
+To give an example, I began a test program for
+GSX device drivers and at the start I realized that
+the main menu would have to contain something
+around 40 options. As it stands this is a prime
+candidate for overlay techniques, as if I were to add
+another 20 options along the way I would never
+have fitted it into memory as a single program. So
+now I have a single menu/controller program that
+reads in and executes options as required. Once
+complete the called subprogram is discarded and
+the next read into the same memory area.
+</p>
+<p>
+This approach is by no means revolutionary and is
+well established. For example take a look at
+Wordstar and diskpen, these make use of overlays,
+DR DRAW and DR GRAPH are into double figures
+with overlay files in their 8 bit versions.
+</p>
+<p>
+What to do about it
+</p>
+<p>
+OK, i hear you shout, so my programs are going to
+get bigger, what the hell do I do about it??
+</p>
+<p>
+Well you have a lot of options but they fall into 2
+main categories.
+</p>
+<p>
+1. Program chaining.
+</p>
+<p>
+2. Program overlays.
+</p>
+<p>
+Chaining
+</p>
+<p>
+Program chaining is simple enough in theory but
+could prove difficult in practice to implement.
+When a program is complete it runs the next
+program in the suite. The first program reads the
+second into memory over its own memory area
+and then executes it. Usually no trace of the
+original program remains.
+</p>
+<p>
+Advantages
+</p>
+<p>
+1. Easy to use if the language used supports
+a chain function. Program creation using a
+suitable chain function is simpler than overlaying.
+</p>
+<p>
+2. Control flow between programs is easy to
+understand.
+</p>
+<p>
+3. With the use of some clever code a
+program management menu could be written
+to control a number of applications.
+</p>
+<?php columnEnd(2); ?>

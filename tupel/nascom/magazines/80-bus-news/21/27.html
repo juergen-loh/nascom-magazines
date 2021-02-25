@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+27
+</p>
+<p>
+The manuals and guides to CP/M should be consulted for more details.
+</p>
+<p>
+CP/M uses RAM below 100H as a Workspace and Buffer area. Above the workspace,
+starting at 100H is the TRANSIENT PROGRAM AREA (TPA). This is where all programs
+other than CP/M reside and operate. The TPA extends up through memory, including
+the CCP area of CP/M. In the systems drawn, the TPA will run from 100H to
+E000H/E400H, which is around 56K or 57K bytes.
+</p>
+<p>
+The CONSOL COMMAND PROCESSOR (CCP) is the area of CP/M that interacts with the
+user. It supports commands like DIR, REN, TYPE, ERA, etc. and allows selection of
+other drives, loading of files etc; When programs are loaded and run, the CCP is
+not needed, so the 2K of space that it occupies can be used by programs.
+</p>
+<p>
+Above the CCP is the BASIC DISK OPERATING SYSTEM (BDOS). The user accesses the
+BDOS through the jump at 0005H, to use the 36 or so Functions that are available
+such as Keyboard input, Screen output. Disk read, and so on. The RBDOS is 3.5K
+long and cannot be overwritten.
+</p>
+<p>
+The final unit, at the very top of memory is the BASIC INPUT OUTPUT SYSTEM
+(BIOS). Often called CBIOS, the C standing for CUSTOMIZED. i.e. altered to
+suit.). This part of CP/M is not supplied by DIGITAL RESEARCH, but by the
+suppliers of the Computer. The job of the BIOS is to marry together the standard
+CCP/BDOS to the thousand and one different Hardwares that have to run CP/M. The
+BIOS will therefore vary from computer to computer. The quality of the BIOS
+varies tremendously from system to system, and CP/M can get a bad name because
+the BIOS is poor. The various BIOS&rsquo;s available to run on the NASCOM/CEMINT
+implementation contain features that are not always common. In some cases they
+are almost unique. RICHARD BEAL, the author of NASSYS seems to have made a
+speciality of writing a very powerful CBIOS for NASCOM/GEMINI systems that he
+calls &lsquo;SYS&rsquo;, and this article describes how to replace the origional CBIOS with
+&lsquo;SYS&rsquo; CBIOS.
+</p>
+<p>
+ee se ct ie oe eee RERRRRERE ee
+</p>
+<p>
+David Parkinson adds..
+</p>
+<p>
+1) If you are overwriting the standard BIOS by one of your own you may find that
+insufficient space is available for it. The obvious solution to this problem is
+to generate a slightly smaller CP/M system to give yourself more room (eg MOVCPM
+63 * in a 64k system). However this results in the loss of 1k of memory from the
+TPA, which seems quite excessive if you only want an extra 100 bytes. By changing
+one byte in the MOVCPM.COM file you can move the memory image of CP/M down (or
+up!) in increments of 256 bytes. The byte is at 23Dh and holds the number of
+256-byte pages that MOVCPM.COM adds on to the system it generates to allow for
+workspace area for the BIOS. Increasing the current value of this byte by one
+will give you an additional 256 bytes of memory, and pro rata.
+</p>
+<p>
+Remember that the extra memory does not appear out of fresh air, CP/M just moves
+down a bit to allow a little more room for the BIOS.
+</p>
+<p>
+2) As Mr. Bowden points out, there is little point in saving a large
+workspace/buffer area on the system track of the disk, and so all workspace
+should be placed at the end of the BIOS so that all the code, (which HAS to be
+saved on the disk), comes first. However an additional saving can be made in the
+BIOS memory requirements by realising that certain sections of the code are used
+once only on start-up. A prime example of this is the sign-on message, which only
+appears when the system starts up from cold, and then is never seen again. All
+the Gemini BIOS&rsquo;s have the sign-on message stored in the area of memory that the
+BIOS uses for workspace, as it will be printed before the BIOS actually uses any
+of that area as workspace.
+</p>
+<?php columnEnd(1); ?>

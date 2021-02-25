@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<p>
+41
+</p>
+<p>
+quicker to walk round to the person concerned and give him a tape of the data than to
+go to the bother of setting up a CB communications link).
+</p>
+<p>
+As already proposed, straight transmission of data is vulnerable and likely to
+attract the attention of jammers, etc, if it is obvious. So a more sneaky method is
+required. One method would be to transmit the data as a sub-audible Pulse Code
+Modulation signal underneath a conversation. This would require the construction of
+extra encoding and decoding equipment to attach to the computer, and would cause the
+generation of extra sideband energy which in turn would require a reduction in
+deviation if the modulation index were not to be exceeded. However, it has the
+advantage of being undetectable unless someone is looking for it. Because of the very
+restricted bandwidth available to the PCM signal the data rate would be necessarily be
+slow. That means that who ever is talking on the speech part of the carrier had better
+have a lot to say as the data transfer could last from minutes to hours.
+</p>
+<p>
+Another method would use a duplex mode of transmission where the two computers
+would work a kind of handshake. First, it should be noted that most CB rigs use Binary
+Coded Decimal channel change logic, so the channel switch could be removed and the
+channel change circuitry fed from the computer&rsquo;s PIO device instead. The transmit &ndash;
+receive circuitry must also come under computer control from a port. The system must
+use a synchronized clock, and when this was discussed some time ago, it was suggested
+the the Rugby MSF time transmission be used for the purpose. At that time the only
+circuit around (short of designing ones own) was one published in Wireless World about
+three years back. This had the disadvantages of being both complex and expensive.
+However, Radio and Electronics World, April 82, have published an interesting design
+which should suit. (The R &amp; EW article is good reading because the MSF receiver feeds
+another board which decodes the signal, and it uses a Z80 to do it. Food for
+thought??) Anyway, here&rsquo;s how the idea works:
+</p>
+<p>
+The programs in both computers are set to a standard time point for the data transfer
+to commence, say on the hour.
+</p>
+<p>
+At that time both computers look up the same number from identical tables of random
+numbers between 1 and 40 and select the channel chosen.
+</p>
+<p>
+The sending computer switches the rig to transmit and sends a burst of data, staring
+with a numbered header, for less than one second.
+</p>
+<p>
+At the next second time blip from the MSF receiver, the receiving computer switches to
+transmit and acknowledges the receipt of the data, correct, otherwise or not at all.
+On the next second time blip, the two computers look up the next channel number in the
+random table and change channel.
+</p>
+<p>
+The sending computer now knows one of three conditions:
+</p>
+<p>
+1) Data received correct
+2) Data received but incorrect or no data received
+3) No acknowledgement received from the receiving computer
+</p>
+<p>
+In condition 1, the next block of data is sent and the sequence repeats
+In condition 2, the same block of data is sent again and the sequence repeats
+In condition 3, as in condition 2
+</p>
+<p>
+So it can be seen that the data will eventually be sent, albeit slowly, by the
+use of all the available channels for a minimum period only. Minimum interference
+would be caused to other users, and any attempt at jamming would be futile as the
+random channel table would be sufficiently long to make following the signal
+impractical. Also, because of the short duration of the data and the constantly
+changing frequency, it would be very difficult to pinpoint the actual location of the
+tranmitter without using broad band direction finding equipment. This method of
+transmission would probably be slower than the sub-audible PCM method, but is simpler
+and could be used overnight for instance. Don&rsquo;t forget, computers are patient beasts
+and will keep trying until the job is complete.
+</p>
+<p>
+So what is my opinion? Well I don&rsquo;t think it&rsquo;s worth trying, round here at any
+rate- Does anyone else have any sneaky ideas which would pass unnoticed. I suppose the
+only answer would be to take the RAE exam and get an amateur ticket. Although that
+won&rsquo;t help much, amateurs are restricted to Baudot code at a maximum of 50 BAUD, and
+then plain text only. Mind you, it would be an interesting exercise to think of a way
+of cramming eight bit data into the five bit Baudot code, some kind of four level
+shift I suppose.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

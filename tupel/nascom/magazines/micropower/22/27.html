@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+EXPANDING THE KEYBOARD OF THE NASCOM
+</h1>
+<p>
+USING NORMAL KEYSWITCHES
+</p>
+<p>
+by J. M. H. Hill
+</p>
+<p>
+An article was published in issue number 2 of Micropower on the expansion of
+the Nascom&nbsp;1 keyboard. Now although the keyboard uses special Licon keys, it is
+possible to expand it using ordinary push-to-make keyswitches. I have been using
+such an expanded keyboard for about a year without any problems, and there seems
+to be no reason why the principle should not be extended further if desired to cover
+a separate numerical keypad.
+</p>
+<p>
+The only modifications to the existing keyboard conductors is the cutting of the
+tracks running between the open collector outputs of IC5 and the original key matrix,
+to allow the insertion of the isolating diodes D3 &ndash; D8. The presence of these siodes
+does not affect the operation of the original keys. Their purpose is to prevent the
+voltages of the inactive drive lines from being affected via the Licon key windings by
+others which are active. A more ambitious expansion would also involve the other
+two outputs from IC5 on pins 7 and 9, which would also need to be fitted with
+isolating diodes.
+</p>
+<p>
+To duplicate any existing key, as in the case of the SHIFT key shown in the
+circuit, it is necessary to connect the right drive line output from IC5 via a keyswitch
+and diode (D9) to the input of the appropriate RS flip-flop. The connections are
+shown for the SHIFT key, but others can be worked out by examining the Nascom
+1 keyboard circuit diagram. A further locking keyswitch could be connected in parallel
+with the SHIFT key to give a shift lock if required. Such a shift lock could be added to
+the standard Nascom&nbsp;2 keyboard to provide the facility requested by Mr. R. C. Taylor
+in issue 2.
+</p>
+<p>
+Duplication of the standard keys will work with any monitor, but the remaining
+keys shown in the diagram are for use with Nas-Sys&nbsp;1 or 3. They give most of the
+facilities of the Nascom&nbsp;2 keyboard, inluding single key cursor movement. The
+GRAPHICS key will of course only work if a suitable graphics unit has been fitted.
+The standard Nascom&nbsp;1 keyboard only uses the lowest six bits of port 0. To
+handle the extra keys a sense line using bit 6 is needed, plus an extra flip-flop.
+Fortunately, there are two unused gates in IC3 which can be used for this purpose,
+as shown in the diagram. An extra wire will be needed to connect the output from
+the new flip-flop to pin 7 of the keyboard socket on the main board.
+</p>
+<?php columnEnd(1); ?>

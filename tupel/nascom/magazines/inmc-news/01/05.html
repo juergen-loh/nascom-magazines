@@ -1,0 +1,38 @@
+<?php columnStart(1); ?>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-05-1.png"); ?>
+<p>
+1) Load the routine using the &lsquo;&rsquo;M&rsquo; Command.
+</p>
+<p>
+2) Execute a copy: C0C62 0C4D 03 &lsquo;NL&rsquo;
+</p>
+<p>
+3) After the copy do not use the &lsquo;Reset&rsquo; until the tape load has been
+completed. If the &lsquo;Reset&rsquo; is used the copy must be repeated.
+</p>
+<p>
+4) Load as normal by &lsquo;L&rsquo; &lsquo;NL&rsquo;.
+</p>
+<p>
+<u>Note: </u> This program can be located anywhere in user RAM by suitable
+modification of line 11 and the copy (Instruction 2)
+</p>
+<h4>
+<u>Explanation</u>
+</h4>
+<p>
+Following a &lsquo;Reset&rsquo; the monitor program loads the scratchpad RAM locations
+0C4E &amp; F with the address 0069. When the &lsquo;L&rsquo; command is executed the monitor
+obtains the address of the routine to be used from 0C4E &amp; F (normally 0069) and
+executes this routine. By use of the copy command to modify the address held
+in 0C4E &amp; F, the monitor calls the modified load routine written in user RAM.
+Consequently, use of the reset must be avoided immediately following the copy
+as this would cause 0069 to be placed back in the scratchpad, and the normal
+load routine would be executed.
+</p>
+<p>
+This routine is suggested for systems where a poor rate of loading has been
+experienced, our demonstration system has achieved a 100% success rate
+following the use of this routine.
+</p>
+<?php columnEnd(1); ?>

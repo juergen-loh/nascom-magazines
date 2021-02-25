@@ -1,0 +1,93 @@
+<?php columnStart(1); ?>
+<p>
+36
+</p>
+<p>
+PUSH AF ; Save the character
+LOOP: IN A, (00) 3; Get the keyboard port
+BIT 7,4 3; Test bit 7
+JR Z, LOOP 3; If O go round again
+POP AF 3; Get the character back again
+RCAL SRLEK ; Call the serial output routine to send it
+RET 3; Leave the handshake routine and carry on
+</p>
+<p>
+That should explain itself, there is nothing complicated about it, it uses the Nascom
+output routines to do the hard work. Note that SRLX is called from within the
+handshake program, this means that it is not necessary to set the X command on,
+although the last parameter given to the X command will be the default protocol for
+the output. If the X command is to be used, simply omit the RCAL SRLX, and the routine
+will work as a handshake routine only.
+</p>
+<p>
+Driving a printer fitted with a Centronics input is a little more complicated.
+As has already been mentioned, the Centronics output is parallel so use is made of the
+Nascom or Gemini onboard PIO device. The PIO device ought to be the subject of an
+article in it&rsquo;s own right. Howard Birkett covered it way way back in INMC 1 or 2, and
+I had a go at describing it in INMC 3. Although these magazines are long since out of
+print, Howard&rsquo;s article is reprinted in the &lsquo;Best of INMC&rsquo; which is still available. I
+will not dwell on the PIO device itself, simply list the actions needed to prime the
+device to make it work as Centonics type interface.
+</p>
+<p>
+Before starting to write an interface program it is necessary to understand
+what it is it is intended to drive. The Centronics interface works like this.
+seven bits of data are placed on the output
+A slight delay to allow the data to settle
+A strobe pulse is generated to cause the printer to latch in the data
+A slight delay to allow the data to be latched
+The strobe pulse is removed
+The printer generates an ACKnowledge pulse
+The printer also generates a BUSY signal which remains active until any print
+action is complete.
+</p>
+<p>
+AA EU Po
+</p>
+<p>
+1, WHEN DATA ARE ACCEPTED :
+</p>
+<p>
+DATA | THT2)73
+</p>
+<p>
+DATA STB | |
+</p>
+<p>
+BUSY LOW
+</p>
+<p>
+}
+|
+&lsquo;
+i
+|
+I
+I
+I
+i
+</p>
+<p>
+INPUT BUSY
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;7
+</p>
+<p>
+1
+i
+ACK
+I
+</p>
+<p>
+pee ee ae
+</p>
+<p>
+t t
+fH TS pO
+</p>
+<p>
+TI-T3: La sec mn.
+T4: 100 nsec mex.
+TS: O:1--0-5 msec
+T6: O-8 wsec
+</p>
+<?php columnEnd(1); ?>

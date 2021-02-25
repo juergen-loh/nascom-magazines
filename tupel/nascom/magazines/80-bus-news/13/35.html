@@ -1,0 +1,173 @@
+<?php columnStart(1); ?>
+<p>
+signals
+</p>
+<p>
+are
+</p>
+<p>
+35
+</p>
+<p>
+the Request To Send (RTS), the Data Set Ready (DSR) and the Data Carrier
+</p>
+<p>
+Detect (DCD) signals. These are primarily concerned with modem control where the
+is attached to a remote computer via a telephone modem. The RTS signal is
+similar to the DTR signal, it is a request sent to the host device to send data. The
+</p>
+<p>
+DSR signal
+would the printer like to accept it. The DCD signal is a signal sent from the host
+</p>
+<p>
+printer
+</p>
+<p>
+device
+</p>
+<p>
+to
+</p>
+<p>
+sent from the host device to indicate data is ready to be sent, and
+</p>
+<p>
+indicate that the modem is receiving a valid signal and that data could
+</p>
+<p>
+arrive at any at any time. As the printer will not print without the DSR and DCD
+being active, these have to be forced to a valid condition. This is done by
+the simple expedient of connecting the RTS output pin to the DSR and DCD input pins.
+In other words, the printer indicates that it is ready to accept data, and sends a
+signal to indicate this, as it is connected back into the DCD and DSR inputs, it
+automatically obliges by setting itself in a condition ready to accept incoming data.
+The DTR signal then acts as a handshake line as before.
+</p>
+<p>
+signals
+</p>
+<p>
+numbers moulded
+</p>
+<p>
+The connector for the RS232 is what is known as D25 connector, and has 25
+pins, one row of 13 pins and 1 row of 12 pins. The female sockets usually have the pin
+numbers moulded in the plastic adjacent to the pins, the plugs usually have the pin
+</p>
+<p>
+on the connection side of the plug. Equipment is usually fitted with
+</p>
+<p>
+sockets, whilst leads usually have plugs at each end. The pin connections are as
+</p>
+<p>
+follows:
+1
+</p>
+<p>
+OI AW WP
+</p>
+<p>
+20
+</p>
+<p>
+TXD
+RXD
+RTS
+CTS
+DTR
+</p>
+<p>
+ped
+DIR
+</p>
+<p>
+Protective ground (chassis ground and mains earth).
+</p>
+<p>
+Transmit data. Output. The signal from the terminal to the host device.
+Receive data. Input. The signal from the host device to the terminal.
+Request to send. Output. From the terminal to the host device.
+</p>
+<p>
+Clear to send. Input. From the host device to the terminal.
+</p>
+<p>
+Data set ready. Input. From the host device to the terminal.
+</p>
+<p>
+Signal ground (Note: May not be common with (1))
+</p>
+<p>
+Data Carrier Detect. From the host device to the terminal.
+</p>
+<p>
+Data terminal ready. From the terminal to the host device.
+</p>
+<p>
+The cable is usually connected pin 1 to pin i, 2 to 2, etc. However, it must be
+apparent from the above that the sense of the RTS, CTS and DTR varies dependent upon
+use, the DTR or RTS signals being connected to the CTS inputs depending upon which is
+the host and which is the receiving device. This usually taken care of by jumper links
+inside the terminal and the host. When connecting an unknown device to another it is
+</p>
+<p>
+helpful
+</p>
+<p>
+to
+</p>
+<p>
+discover which thinks it is the terminal and which thinks it is the host,
+</p>
+<p>
+as the handshaking will not work in the case where two terminals or two hosts are
+connected together. Watch out for the protective and signal grounds. On something like
+a Gemini and a Nascom where the 0 volt rail is usually (or should be) connected to
+mains earth these may be considered as the same thing, but the TI 745 they are not
+connected together, and the signal ground floats about 100 volts above the protective
+if the mains earth of the printer is left wiconnected. If in doubt, always
+connect the mains earth of the printer to the mains earth of the mains plug, and
+connect the signal grounds only.
+</p>
+<p>
+ground
+</p>
+<p>
+and a
+</p>
+<p>
+So to making the handshaking work. This is fully implemented on the Gemini, in
+fact the Gemini serial interface will not work unless the handshake is connected even
+if it is not required. On the Nascom the handshake is not implemented in NAS-SYS and
+therefore must be provided. The scheme is simple. Data to be sent to the printer is
+intercepted by the U command and directed to a small routine which monitors the
+incoming handshake signal and delays until the printer is ready to accept data. Let us
+consider this. The handshake signal will be at the +12 volt level when the printer is
+ready to accept data and at the -12 volt level when the printer is not ready to accept
+data. The hardware interface described above will translate this into a &lsquo;1&rsquo; for ready
+</p>
+<p>
+&lsquo;9&rsquo;
+</p>
+<p>
+for not ready. All that is required then is a program that will read the
+</p>
+<p>
+keyboard port, and go into a loop scanning the keyboard port until such time as the
+</p>
+<p>
+printer
+</p>
+<p>
+is
+</p>
+<p>
+ready. As data is to be read in the A register from the port the current
+</p>
+<p>
+contents of A register which is the character to be sent must be saved. The simplest
+program is as follows:
+</p>
+<?php columnEnd(1); ?>

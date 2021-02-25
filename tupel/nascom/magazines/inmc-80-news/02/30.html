@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+Lastly we come the title of this piece. Op-codes and operands. How does the
+processor know what it is about&nbsp;? Now we&rsquo;ve talked about the &lsquo;PC&rsquo; register pointing at
+each byte of the program in turn. Provided the &lsquo;PC&rsquo; is pointed at the first byte of a
+program, and provided that program is correct, it can&rsquo;t go wrong. It works like this:
+each instruction may be between one and four bytes long. The first byte contains
+important information for the processor, this byte is called the &lsquo;operation code&rsquo; or
+op-code for short. Firstly, it tells the processor how many bytes there are in the
+instruction. Then back to our railway analogy, it sets the points. This first byte
+operates the switches which route the data round the processor. In some instructions
+(the 4 byte ones), the op-code is two bytes long as there is too much for the op-code
+(or instruction) decoder to handle at once.
+</p>
+<p>
+The bytes that follow are known as the operand, that is the bytes that need to
+be worked on. In some instances the operand may be data, like the LD A,10H instruction
+(above), the 10H is data. In other instances the operand might be an address offset
+like the JR NZ instruction. In many instances there is no operand at all, as all the
+information is implied like the DEC A instruction, where &lsquo;A&rsquo; is implicit within the
+instruction, and a decrement simply means subtract 1 from it. The processor is clever
+enough to handle all that in a 1 byte instruction.
+</p>
+<p>
+It can be seen that if instructions are given to the processor properly, then
+by the time the processor has finished with one instruction it is already pointing at
+the next (or has been pointed at another by a jump or call instruction). More often
+than not, with novice programmers, things start going wrong when a jump or call goes
+to the wrong place, or the program is allowed to run on into a data or unprogrammed
+area. The poor little processor doesn&rsquo;t know something is wrong, it faithfully carries
+on and tries to interpret the instructions it finds. Suppose (because you programmed
+it wrong) a jump instruction sent the processor to the middle byte of a LD HL,0123H
+instruction. That looks like this:
+</p>
+<pre>
+21 23 01
+</pre>
+<p class="continued">
+Instead of loading &lsquo;HL&rsquo; with 0123, it will first increment what is already in &lsquo;HL&rsquo;
+because 23H is the instrtuction to increment &lsquo;HL&rsquo;, then, seeing 01H, it will think
+that that is the first byte of a LD BC instruction so the next two bytes will
+interpreted as the operand for the LD BC instruction, which they are not. We needn&rsquo;t
+go on, the program is blown already. From then on the processor will run wild,
+actually, &lsquo;wild&rsquo; is the wrong word. What the processor does is quite logical, if you
+could only find where it had gone. The processor was only doing what it was told, it
+can&rsquo;t know that that is not what was intended. Really it&rsquo;s the program which ran wild.
+The usual result of all this (determined by Sod&rsquo;s Law) is that if the program was not
+saved on tape, it will write rubbish all over it, and then try to execute the rubbish,
+and so on, and so on. This is what is known as a &lsquo;program crash&rsquo;, and one thing will
+be impressive, that is the speed at which it can all happen. After hours of
+painstaking typing putting a program in, there is nothing so humbling as to conduct a
+postmortem on the program, that, because of a single typing error the processor
+managed to completely &lsquo;scramble&rsquo; in a few thousandths of a second. You wouldn&rsquo;t have
+had time to think about hitting the reset button, yet alone do anything about it.
+</p>
+<p>
+So what have we learned. Object code listings. A glimpse at the insides of the
+Z80. How the registers are arranged, and op-codes and operands. In the next episode we
+will go on to discuss the workings of the other registers, and take a closer and more
+detailed look at some of the instructions.
+</p>
+<p>
+One final bit of encouragement. This stuff is not easy, it&rsquo;s rather like
+walking through a fog, and not even knowing where you are supposed to be going. Even
+now, if you are still totally lost, just keep &lsquo;plugging away at it&rsquo;. In my experience,
+and I am certain I am not unique, at some point, after one or two false starts, there
+will come a small glimmer of understanding. Suddenly everything becomes clear. All the
+facts fall into place, and although you may be wrong about some of the details, the
+&lsquo;core&rsquo; or &lsquo;heart&rsquo; of the problem is exposed and to your surprise, you will find that
+you had already learned most of what there is to know. You will kick yourself for not
+having grasped the concepts earlier.
+</p>
+<?php columnEnd(1); ?>

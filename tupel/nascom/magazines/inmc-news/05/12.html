@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+BASIC CHIPS ON NASCOM 1&rsquo;s
+</h1>
+<p>
+So there you are with your brand new (and expensive) MK36271
+BASIC ROM, and wondering where to fit it. There don&rsquo;t seem to
+be any holes for it. When the memory board was designed it
+wasn&rsquo;t envisaged that anyone would want to fit an 8K ROM to
+it, so no holes were provided. Never mind, a little bit of
+surgery, and all will soon be working.
+</p>
+<p>
+Take a careful look at fig. 1, and carefully cut the tracks as
+as shown. Then connect wire jumpers as
+follows:
+</p>
+<?php columnEnd(1); ?>
+<?php columnStart(3); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-12-1.png"); ?>
+<p style="text-align: center">
+IC27 Solder side
+</p>
+<?php columnChange(23); ?>
+<p>
+1) IC26 pin 19 to IC27 pin 20.<br>
+2) IC24 pin 2 to IC27 pin 19.<br>
+3) IC24 pin 3 to IC27 pin 18.<br>
+4) IC25 pin 7 to IC27 pin 21.<br>
+5) Decode pads 11 and 12 together to pad P5.<br>
+6) Check it!<br>
+7) Plug the board back in the Nascom and try
+it. Lot You should have BASIC.
+</p>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+Now this mod. means that you have lost the use of the other 3
+sockets, so for those more adventurous souls, you can get them
+back again. The tracks to pins 19 and 21 were the +12 and -5
+</p>
+<p>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-12-2.png"); ?>
+<?php columnChange(2); ?>
+<p>
+volt supplies to the EPROM sockets
+so these must be restored to make
+ICs 28, 29 and 30 operable. Two
+jumpers from the points where the
+tracks were cut to pins 19 and 21
+on IC28 will restore the juice.
+But this will also put juice back
+on IC27, as these pins are linked
+on the top side of the pcb. Some
+deft knife work is required to cut
+these two tracks between ICs 27 and
+28 sockets (and get it right &rsquo;cos
+you&rsquo;ll never repair a mistake!!!).
+Now the way we have mod&rsquo;ed the chip
+select on the Basic ROM means that
+it will come on regardless, so a
+switch is called for to disable the
+ROM when not required. So make it a
+double pole switch, and use it for
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+selecting the decaodes as well. Note that alternative arrangements
+are shown, for any other decode apart from &lsquo;E&rsquo; and &lsquo;F&rsquo;, and
+decode for &lsquo;F&rsquo;. Why? Well some idiot will want to run Big BASIC
+and Super Tiny BASIC on one board. Apart from that our version of
+Naspen is an early one, and runs from F800 to FFFF. Naspen usually
+resides between B800 and BFFF.
+</p>
+<p>
+Can we make one thing quite clear, these mods have been tried and
+work, but the INMC can not take responsibility for any failures,
+or chewed up pcbs as a consequence of trying them. If you don&rsquo;t
+think you are capable of attempting these mods, DON&rsquo;T TRY. Seek
+the help of someone competant, then you can blame him if he chews
+up half the tracks on the pcb.
+</p>
+<p>
+<u>STOP PRESS</u>; 100nF capacitor required across pins 24 and 12 of the
+BASIC ROM.
+</p>
+<?php hLine("30%"); ?>
+<?php columnEnd(1); ?>

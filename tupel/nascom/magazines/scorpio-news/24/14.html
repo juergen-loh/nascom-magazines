@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p style="margin-left: 5%">
+struct obj { int x;<br>
+int y;<br>
+char obj_type;<br>
+short rotation; };<br>
+</p>
+<p>
+In this case a structure type called obj refers to a pair of integers xy (the
+co-ordinates), a character obj_type (the type of object) and a short integer rotation
+(the direction of the object). Now we can define variables of type &ldquo;struct obj&rdquo;, or
+pointers to such astructure etc.
+</p>
+<p>
+Unions are similar to structures except that all items are at the same place and thus
+only one item is valid at a time. The main use of unions is for shared allocation of
+data: to: teduee overall memory usage.
+</p>
+<p>
+Arays oftanytype ate allowed: &lsquo;using square brackets (&ldquo;[&rdquo; &amp; &ldquo;]&rdquo;) around the index.
+Multi-dimension arrays use multiple brackets. For example: .
+</p>
+<p style="margin-left: 5%">
+char array_of_chars[16];<br>
+int two_dimensional_array[10][10];
+</p>
+<p>
+The &lsquo;name of an array so defined translates as simply a constant of type
+pointer_to_element_type, so array_of_chars above is a constant character pointer
+(written as &ldquo;char * array_of_chars&rdquo;) whose value is the address of the start of the
+array. This fact is not important for the use of arrays, but it does mean that a variable
+ofa pointer type can be used to Point to the base of an array, for example:
+</p>
+<p style="margin-left: 5%">
+char * string: /* define variable:string as a character pointer */<br>
+if ( string[4] = =&rsquo;h&rsquo; ) do _something( ); /* test the fifth character */
+</p>
+<p>
+There i is no string type in C:A String? is stored i in-an&lsquo;array of chars, usually terminated
+by a NULL. Constant strings ve n be etitered, e. 8:
+</p>
+<p style="margin-left: 5%">
+printf ("Hello World&rdquo; );
+</p>
+<p>
+However, the string here evaluates to a constant of type &ldquo;pointer to char&rdquo; which is
+the address of an area of memory containing the twelve bytes (including a
+terminating NULL). Consequently a statement suchas &mdash;-
+</p>
+<p style="margin-left: 5%">
+if (input_string = = &ldquo;YES&rdquo; ).....
+</p>
+<p>
+makes no sense at all in C. The way round this is to use one of the standard functions
+supplied in the library.
+</p>
+<?php columnEnd(1); ?>

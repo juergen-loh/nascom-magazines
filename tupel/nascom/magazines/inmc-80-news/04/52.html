@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<p>
+Two more fields have appeared, the &lsquo;address&rsquo; field and the &lsquo;object&rsquo; field. The
+address field contains the address of the first byte of the instruction. The object
+field contains the byte or bytes which make up the particular instruction starting at
+the the address given, and for subsequent addresses to the start of the next
+instruction
+</p>
+<p>
+Now to the assembled program itself, I&rsquo;ve changed some of the label names. The
+main program loop has been called LOOP1, START would have been inappropriate, as the
+loop no longer goes back to the beginning of the program. Having called the main loop
+LOOP1, then it makes sense to change the label for the delay loop to LOOP2.
+</p>
+<p>
+A &lsquo;quirk&rsquo; of this particular assembler is that it requires a colon at the end
+of the label (to tell it where the label ends), except when the label is followed by
+an assembler directive (EQU or ORG). Some assemblers follow this convention, some
+don&rsquo;t!! This assembler allows an assembler directive called &lsquo;.Comment&rsquo;, and this
+allows me to write a chunk of descriptive text about the program without having to put
+a semicolon at the start of each comment line. Notice that semicolons are still used
+to separate the mnemonics from comments though, it&rsquo;s only provided for convenience.
+This assembler likes another assembler directive, an &lsquo;END&rsquo; at the end of the program,
+some assemblers will chuck this out as an error.
+</p>
+<p>
+See that I defined the characters I want to place on the screen as actual
+characters enclosed in quotes. Most assemblers will allow this, and it a nice practice
+to do this when you actually mean &lsquo;Load A with a character&rsquo;, as opposed to &lsquo;Load A
+with a variable&rsquo;. (To the casual glance, LD A,2AH could mean either). Assemblers will
+usually allow decimal numbers to be entered, and they will automatically convert them
+to HEX for you. Look where I load the B register in the DELAY subroutine. I put LD
+B,200, and the assembler took it as a decimal number because I left off the &lsquo;H&rsquo;
+suffix. Another thing this particular assembler does (and many others don&rsquo;t) is to
+print any two byte operands the &lsquo;right way round&rsquo;, this makes for easy reading of the
+assembled object code because it prints it the way you &lsquo;think&rsquo;, but remember, two byte
+operands are always entered low byte first, so the listed code this particular
+assembler prints is not exactly as it would appear when placed (or automatically
+assembled) in memory.
+</p>
+<p>
+So that&rsquo;s an assembler. The little counter at the top of the screen is down to
+600 odd, so this is where it&rsquo;s got to finish. It&rsquo;s quite likely that there will be
+plenty of assembly listings in this issue. See if you can read them, by looking at the
+labels. You don&rsquo;t have to think too hard about what the code is doing (will that be
+the next part of this never ending saga, I wonder), but given that the programmer has
+thought carefully about the structure of the program and chosen his labels wisely, it
+should make some sort of sense. The moral of this part of the story has been, think of
+your specifications, and think carefully about your choice of labels. You never know,
+you might not be the only one who will read your programs one day, so why make life
+difficult for the other fella?
+</p>
+<?php hline("20%"); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-52-1.png"); ?>
+</h1>
+<p>
+On the following page is a chart showing the complete Nascom video memory map giving
+the Hex addresses. This drawing must have taken a great deal of time to prepare and
+many thanks to the originator. Unfortunately his name has been mislaid, but we&rsquo;ll find
+it by the next issue.
+</p>
+<?php columnEnd(1); ?>

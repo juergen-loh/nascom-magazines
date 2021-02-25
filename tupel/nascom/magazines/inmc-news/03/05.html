@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<h4>
+(h) <u>SOFTWARE &ndash;DISC OPERATING SYSTEM</u>
+</h4>
+<p>
+NASCOM have announced their intention to provide the CP/M
+operating system, for disc users. This will open up the
+possibility of running hundreds of CP/M programs which already
+exists, including larger more powerful versions of BASIC, as
+well as other languages. We hope you will support the
+committee's belief that this is the way that we should go
+for large systems.
+</p>
+<p>
+We hope that we have answered all the questions asked by
+Mr.Griffiths. If not, write back to us. All queries are
+welcome, although we can never hope to answer all of them.
+</p>
+<p>
+The editor
+</p>
+<?php hLine("20%"); ?>
+<p>
+Dear Sir,
+</p>
+<p>
+I thought NASCOM users might be interested in some additional
+Z80 opcodes that I have discovered. They all operate on
+IX or IY and their effectiveness hinges on the fact that
+IX and IY are functioning similar to HL. In general,
+instructions operating on HL will operate on IX or IY if
+preceeded by DD or FD. From this it can be deducted that the
+internal microcode of the Z80 addresses HL, IX, IY indirectly
+by a 2 bit register address pointer which is cleared at the
+start of each new instructions. When this pointer (call it P)
+is 00 the instructions operate on HL when it is 10 they
+operate on IX and when it is 11 they operate on IY. The
+effect of the instruction prefix DD is to set P to 10 and
+the effect of FD to set it to 11. Similarly, there must be
+other flip flops to select between the alternate register
+and accumulator sets.
+</p>
+<p>
+Because of this any instruction normally accessing the
+H or L registers can be used to access the high or low order
+bytes of IX or IY if prefixed by DD or FD. This gives 80
+new instructions. I have tested these on a NASCOM using a
+for rotate and shift, test, set, reset, which would give
+124 more instructions. I have tested EX DE and IY and found
+that they do not work.
+</p>
+<p>
+Your faithfully,
+</p>
+<p>
+W.P.Cockshott<br>
+Edinburgh.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

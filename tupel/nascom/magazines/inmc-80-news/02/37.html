@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Strings
+</h1>
+<p>
+We have recieved the following article from Dr. Michael Hendry, he passes
+some nice remarks about us lot at the INMC (modesty never was one of our better
+virtues), endorses our comments about reading the manuals, and passes a message to
+those in Liverpool (LSG issue 8/1 p36) that, &ldquo;POKEing isn&rsquo;t everything; the POKE they
+suggest is already there as the WIDTH command in Basic.&rdquo; He also comments that if
+anyone is throwing away a NASPEN and a golfball printer, he could find them a nice
+friendly home. He should be so lucky&nbsp;!!
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<h2>
+The Variable Protector
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by M. D. Hendry
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+Nascom owners with Basic, who want to process string data will no doubt
+recognise the scenario.
+</p>
+<p>
+The intrepid programmer has just typed in 200 names and addresses, and called
+the alpha-sort routine, which he has checked with a few names while writing the
+program. To his surprise, it won&rsquo;t handle 200 names, but he spots the bug and
+corrects if at once. He calls the alpha-sort routine, and congratulates himself on
+how fast it now is&nbsp;.... but because he re-RUN (ran) the program, Basic has destroyed
+all the data for him&nbsp;!!
+</p>
+<p>
+Simply dumping the whole Basic program and data section of the memory on to
+tape does not help, as the Basic program can still not be modified without
+re-initializing the various pointers, and there is no provision for SAVEing string
+variables as there is for numeric variables. It is possible to use a subroutine to
+convert each string into a numeric array, which can be SAVEd and LOADed by Basic, but
+this takes a long time, and is error prone, because of the need to stop and start the
+tape under program control. You see, Basic indulges in a periodic &lsquo;garbage hunt&rsquo;,
+which may take ten seconds or so, and you don&rsquo;t know when that will happen.
+</p>
+<p>
+The following short program illustrates another approach, which involved a
+little detective work into the Basic interpreter&rsquo;s use of workspace, and of available
+RAM. The user&rsquo;s Basic program is stored from 10F9H upwards, and is followed by a
+table of variables, numeric variables first, then string variables. The strings
+themselves are saved at the top of memory, and the string variable table comprises
+pointers to these strings. Between the table and the strings is a free section of
+RAM. As a program is entered, the variable table is shifted towards the strings, and
+as strings are encountered they fill the memory towards the variable table. Should
+the user try to make the two overlap, an OM message will be printed, unless Basic can
+make more string space by disposing of unwanted strings (a garbage hunt).
+</p>
+<p>
+This empty RAM between the table and the strings provides the answer to the
+problem. The program copies the table to the top of RAM, just below the strings. The
+Basic program can then be modified. When the modifications are finished the program
+copies the table back down into the new position above the end of the user&rsquo;s program.
+Care must be taken now, not to use the RUN command, but to GOTO a point in the
+program after all the array dimensions have been declared. The former zeroes all
+variables, a mistake in the latter will result in a DD message, signifying that there
+has been an attempt to redefine the dimensions of a variable.
+</p>
+<p>
+Once the various workspace pointers are known, it is not hard to use them in
+a program, and the source listing is (I hope) self-explanitory. Note the use of RST
+18H, the NAS-SYS subroutine call facility to call the NAS-SYS &lsquo;I&rsquo; and &lsquo;Z&rsquo; commands
+(intelligent copy and Basic warm start respectively).
+</p>
+<p>
+With this program to hand, the user can simply dump the whole Basic program
+and its associated string files to tape using NAS-SYS, knowing that he can later make
+modifications to the Basic program, or even manipulate the same data with another
+program.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+18
+</p>
+<p>
+In the example above, we could have written:
+</p>
+<p>
+145 NMS$=NAMES : CL$=CALL$: TNS=TOWNS : CTY$=COUNTYS
+150 IF CL$=CSGNS&nbsp;...+---
+</p>
+<p>
+The problem of the blanks would still remain though. One way of dealing
+with the blanks is simply to read the Field from left to right and discard
+blanks. This is 0.K. until we realize that some Fields contain needed blanks
+(e.g. SOUTH ROAD). A better way to deal with the problem is to deliberately
+mark the end of the required data with a special Character:
+</p>
+<p>
+50 INPUT &ldquo;Enter Name of Town &ldquo;sTn$
+60 TN$=TNS+"*&rdquo;
+70 LSET TOWNS=TNS
+</p>
+<p>
+Assuming use of a 20 byte field, and that the word &lsquo;LONDON&rsquo; is INPUT,
+this would store the Field TOWN$ as &lsquo;LONDON* &lsquo;. To extract the-
+Town from the Disk Record, less blanks and Field terminator, the following
+type of routine can be used :
+</p>
+<p>
+200 TEMP$=CALL$:GOSUB 2010:CL$=0P$: TEMPS=TOWNS : GOSUB 2010: TNS=0P$: ete;
+210 eevee
+</p>
+<p>
+2010 OP$="&rdquo;
+</p>
+<p>
+2020 FOR X=1 TO LEN(TEMPS$)
+</p>
+<p>
+2030 IF MID$(TEMP$,X,1)="*&rdquo; THEN GOTO 2060
+2040 OP$=OP$+MID$ (TEMPS, X, 1)
+</p>
+<p>
+2050 NEXT X
+</p>
+<p>
+2060 RETURN
+</p>
+<p>
+The reason for using the &ldquo;dummy&rdquo; variables TEMP$ and OP$ is that all
+Fields that need processing in this way can then use the same Subroutine.
+</p>
+<p>
+Line 2010 &ndash; Ensures that the dummy variable is empty at the start.
+</p>
+<p>
+Line 2020 &ndash; Sets up a loop equal to the length of the Field.
+</p>
+<p>
+Line 2030 &ndash; Reads the copy of the field stored in TEMP$ from left to right,
+one character at a time. If the character found is a &ldquo;e&rdquo;, the
+program skips to 2060 to return to the main flow.
+</p>
+<p>
+Line 2040 &ndash; The character is added on to OP$.
+</p>
+<p>
+Line 2050 &ndash; The loop continues until a &ldquo;*&rdquo; is found or the whole length of
+</p>
+<p>
+the Field has been processed.
+</p>
+<p>
+There is thus no need to expand the Fields already declared to accomodate
+the &ldquo;*&rdquo; character. If for example a &ldquo;*&rdquo; were added to the date: &ldquo;20/06 /83*",
+then since only 8 bytes have been allowed for the date Field, when LSET the
+&ldquo;*&rdquo; would &ldquo;drop off the end&rdquo;. N.B. A &lsquo;RSET&rsquo; would have stored &ldquo;0/06/83*&rdquo; in
+the Record Date Field.
+</p>
+<p>
+USE of LSET and RSET to &lsquo;FIELD&rsquo; DATA.
+When Data is stored in a Field, it is padded out with Blanks. The command
+that achieves this is LSET or RSET.
+</p>
+<p>
+110 OPEN &ldquo;R",&pound;1,"RADIOLOG. DAT&rdquo; ,70
+120 FIBLD&pound;1,18 AS NAME$,8 AS CALL$,20 AS TOWNS,16 AS COUNTY$,8 AS DATES
+140 INPUT &ldquo;Enter CALLSIGN. &ldquo;;CSGNS
+</p>
+<?php columnEnd(1); ?>

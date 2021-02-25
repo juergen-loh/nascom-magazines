@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+Running (b) resulted in a buffer full of data representing the on/off
+states of the printer solenoids during a printing pass of the print head.
+(Every time the print-head solenoids were &lsquo;fired&rsquo; by the IMP the N2 picked up
+the data via an interrupt from the PIO, and stored it in the buffer). Program
+(c) included an automatic check of the buffer to ensure that the maximum
+permissable duty cycle of the solenoids hadn&rsquo;t been exceded (by leaving one on
+for too long), and also displayed the printed text on the N2 screen using the
+block graphics characters to represent the &lsquo;dots&rsquo; of the printhead. The cursor
+control keys -&gt; &amp; &lt;- were used to scroll the &lsquo;IMP&rsquo; line backwards and forwards
+</p>
+<p>
+across the screen.
+</p>
+<p>
+So the moral of this tale is don&rsquo;t forget the interrupt system of your
+computer &ndash; you can do a lot with it, even use it to measure it&rsquo;s own
+Poy and [3] 1]. Some more words on the Z80 interrupt system can be found in
+</p>
+<p>
+2
+</p>
+<p>
+] ana [3].
+</p>
+<p>
+Printer Interfaces &ndash;
+</p>
+<p>
+Driving the IMP (or any printer) requires a suitable software and
+hardware interface. The IMP uses an RS232 interface, and optionally includes a
+TTL level handshake line. A handshake line, or printer handshake protocol,
+allows characters to be transfered to a printer at arate sufficiently high
+enough to ensure that the printer is never idle. Various aspects of
+interfacing printers to Nascoms or Geminis are covered in [4] and [5]. (Don&rsquo;t
+be deceived by the title of the latter &ndash; it covers both RS5232 and Centronics
+interfaces!).
+</p>
+<p>
+Printers and Wordstar
+</p>
+<p>
+Our esteemed book reviewer writes that he finds Wordstar + Epson FX80
+slower than Naspen + IMP (there&rsquo;s that word again), and he&rsquo;s wondering about
+looking at Wordstar&rsquo;s printer drivers to see what&rsquo;s wrong. If he finds a
+solution I for one would like to know it. The trouble is Wordstar is a very
+powerful wordprocessing program. By powerful I mean that it does a great deal.
+It can handle a variety of printer types, and while printing a file it does
+some further processing on the line (printing alternate lines backwards for
+daisy wheel printers, doing incremental spacing, looking for
+superscript/subscript toggles, underline markers, etc, etc). It also prints in
+a spooling mode, the print being a background task, allowing the user to edit
+another file at the same time. The net result is that the file comes out
+slowly (I would guess at around 1000 baud equivalent rate). I have little
+enthusiasm for looking inside a program as large and as complex as Wordstar,
+and we can only hope that Rory can find a workable solution; mine, is to go
+off and make a cup of coffee.
+</p>
+<p>
+By contrast PEN is a straight forward program, and, as it is not trying
+to do everything under the sun at once, it can zap the file straight out to
+the printer.
+</p>
+<p>
+Blocking/Deblocking
+I have received a request for an explanation of what the
+</p>
+<p>
+blocking/deblocking routines in the CP/M BIOS are up to.
+</p>
+<p>
+First a few words from the BIOS manual: &ldquo;All CP/M software transfers data
+to and from the disk in 128-byte &lsquo;chunks&rsquo;. This is due to the fact that
+this was the sector size on the machine that CP/M was originally written for,
+(and is also a widely used IBM standard). It is only now with new technology
+and increasing packing densities that larger sector sizes become more
+</p>
+<?php columnEnd(1); ?>

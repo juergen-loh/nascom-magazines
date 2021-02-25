@@ -1,0 +1,143 @@
+<?php columnStart(2, 2); ?>
+<p>
+rotate, until some time later, the correct track/
+sector header will pass the head. At this instant, the
+controller looks for the data start mark, and when
+that&rsquo;s found it then reads the following data.
+</p>
+<p>
+Having got the data, control is passed back to CP/M
+which now has to calculate the next track/sector
+required. CP/M decides that the track/sector will be
+4/2, the next sector. An instruction is issued to the
+controlier, and the previous process is repeated,
+except that the controller now knows that it is on
+track 4 (the last sector was on track 4, and nothing
+has changed, so the head must still be on track 4).
+Unfortunately, whilst all this was going on, the disk
+of course continued to rotate, so by the time the
+system has made up its mind that it is sector 2 it is
+looking for, the header for sector 2 has just passed
+the head. This means that the disk must make a full
+rotation before sector 2 again passes the head. As
+the disk rotates at 300 rpm, that means that 200mS
+must elapse before the next sector can be read.
+Considering that a typical Gemini system reads a
+512 byte sector in 20mS, this hanging about is a
+real pain. It would take ten times as long to load a
+program under these circumstances as it would if
+we arrange the sectors to be in the correct places
+when CP/M wanted them.
+</p>
+<p>
+So we introduce &lsquo;skew&rsquo; in to the format program,
+we alter the way the sectors are numbered on the
+disk, on a Gemini system, a &lsquo;straight&rsquo; skew of:
+</p>
+<p>
+Sector number 1 2 3 45 6 7 8 9 10
+becomes something like
+</p>
+<p>
+Sector number 1 6 2 7 3 8 49 5 10
+</p>
+<p>
+I say something like this, as I haven&rsquo;t bothered to
+look at the actual Gemini skew, so I might have it
+slightly out, but no matter. This is a &lsquo;skew&rsquo; of 2, that
+is the sectors appear in order in 2&rsquo;s, read one, skip
+one, and so on. See what happens, having read
+sector 1, and then requiring sector 2, the longest
+wait would be 20mS whilst sector 6 went past.
+Plenty of time to calculate the next track/sector as
+being sector 2.
+</p>
+<p>
+Lets suppose that some program we have written
+is required to read the disk and actually does some
+preprocessing between sector reads, or that the
+system clock is running at 2MHz rather than 4MHz.
+Then things slow up again as even with a skew of
+2, the 20mS between consecutively numbered
+sectors is not long enough. In that case, to restore
+the speed to something like normal, a skew of 3
+may be required.
+</p>
+<p>
+So by now the business of skewing the disk has
+been taken care off, the only remaining question is
+if this problem has been known for a long time,
+why didn&rsquo;t Digital Research do something to CP/M
+to correct the situation instead of skewing the disks
+</p>
+<p>
+on formatting? The answer is that they did, right
+from the start. This is called &lsquo;logical to physical
+sector translation&rsquo;. Inside CP/M is the sector
+translation table. It assumes that the disk is
+formatted in 1, 2, 3, ... order, and therefore the
+CP/M calculation to get a certain logical sector
+must be translated into the appropriate physical
+sector.
+</p>
+<p>
+Lets take the case of a skew of 2 illustrated above.
+CP/M calculates it wants logical sector 1, so it goes
+to the &lsquo;logical &ndash; physical sector translation&rsquo; table
+and looks up logical sector 1 which comes back as
+physical sector 1. For the next sector, it calculates
+logical sector 2 which is translated into physical
+sector 3, logicat sector 3 becomes physical sector 5,
+and so on. There are a couple of good reasons for
+not using the &lsquo;logical to physical sector translation&rsquo;
+one is that you can&rsquo;t alter it easily. But worse, if the
+disk were transported to another machine with a
+different &lsquo;translation&rsquo; the sectors would be read in
+the wrong order, so data would become garbage
+and programs would crash. The advantages of
+using physical disk skewing is that you have
+control of it and even if a disk were transported to
+a different machine and the skew were wrong, then
+the disk would read slowly, but it would get there
+eventually and get it right.
+</p>
+<p>
+The very early Henelec/Gemini GM805 had a
+&lsquo;logical to physical translation&rsquo; of 6 which was
+originally intended for 8" disk systems. (I think it
+was built in permanently to CP/M 1.4, so couldn&rsquo;t
+be changed to something more appropriate.) This
+made the GM805 system slow, and I remember
+sitting down one evening with Eddie Pounce and
+playing with strips of cardboard numbered in
+sectors and sliding one against the other until an
+optimum skew was arrived at. As I remember, it
+ended up as a negative number, as we already had
+a positive skew of 6, we needed to skew the disk
+backwards to improve matters. The skew tables for
+2 and 4MHz were then added into the format
+routine written by Richard Cowdroy supplied with
+the system to become Version 2.0 of the formatter.
+All great fun when you have both physical skewing
+and &lsquo;logical to physical sector translation&rsquo;.
+</p>
+<p>
+Back to the problem
+</p>
+<p>
+So, back to the beginning, how come my stupid
+copy routine took so long to write out its files to
+disk. Simple, the timing was all to pot. But not by
+the obvious skewing problem of the routine taking
+too much time between sectors. It was in fact a
+whole different can of worms called &lsquo;sector
+deblocking&rsquo;, something I&rsquo;ll hold over until another
+time, but brief explanation is required.
+</p>
+<p>
+CP/M was originally designed for use with 8"
+systems conforming to IBM3740 spec. The disks
+had physical 128 byte sectors, so it was sensible to
+make CP/M work internally with 128 byte sectors.
+</p>
+<?php columnEnd(2); ?>

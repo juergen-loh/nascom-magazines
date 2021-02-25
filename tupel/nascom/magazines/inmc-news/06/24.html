@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+The problem is to move the rings from X to Z (using Y) by transferring
+one ring at a time from one pole to another, such that a
+larger ring is never placed on top of a smaller ring.
+</p>
+<p>
+A recursive solution is:&ndash;
+</p>
+<p>
+LET Move N from A to C using B<br>
+BE $( IF N=0 RETURN<br>
+Move N-1 from A to B using C<br>
+Take top ring from A to C<br>
+Move N-1 from B to C using A $)
+</p>
+<p>
+The solution is then a call to &lsquo;Move N from X to Z using Y&rsquo;.
+The solution is easily seen to be intuitively correct &ndash; &lsquo;Take&rsquo;
+represents the action of moving a single ring. We can easily see
+that for N rings, the routine nests to a depth N, and Take is called
+2<sup>N</sup> times.
+</p>
+<p>
+I have sent a program for inclusion in the INMC library that runs
+on a minimal NASCOM and neatly demonstrates the correctness of the
+routine. It moves one ring for each press of any key.
+</p>
+<p>
+In the program BC, DE, HL points at the &lsquo;poles&rsquo; and N is stored
+in A.
+</p>
+<p>
+It is arranged that BC, DE, HL always point at the top ring of a
+pole.
+</p>
+<p>
+This program is also an excellent demonstration of the power of the
+Z80, I am able to keep all the variables in registers, thus saving
+on both execution time and storage space.
+</p>
+<?php hLine("20%"); ?>
+<h4>
+<u>SOFT SPOTS</u> (continued from <a href="../../08/text/">page 8</a>)
+</h4>
+<p>
+However, we hear that ZEAP 2.0 has been produced by the
+producers of ZEAP 1, and that it is a great improvement over the
+original. It has many useful features such as sorted symbol table. Also
+it wilt be available in either RAM (at 1000H) or ROM (at D000H)
+versions. It obviously makes better use of memory to run ZEAP in EPROM.
+It runs in 4K.
+</p>
+<p>
+Zeap 2.0 runs only with Nas-sys, since it was designed for
+Nascom&nbsp;2 owners, but it will of course run on a Nascom&nbsp;1 fitted with
+Nas-sys. A version called ZEAP 1.2 has similar features and runs under
+Nas-bug.
+</p>
+<p>
+Details such as price, and trade in offers for owners of ZEAP 1
+will be available soon, so please don&rsquo;t write to us.
+</p>
+<?php hLine("20%"); ?>
+<p>
+Just a simple little test (no prizes). What command can you
+enter to make Nas--sys un-resettable?
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

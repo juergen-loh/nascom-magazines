@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+RP/M VERSION 2.3 By Richard Beal
+</p>
+<p>
+RP/M is one of the two ROM monitor programs supplied with Gemini GM811
+and GM813 CPU cards. It is designed for use with or without disks and is
+particularly suited to users who wish to develop and test software under CP/M
+which is to be placed in ROM and used in dedicated systems which do not have
+disks. It is however able to boot a floppy disk based system and is therefore
+suitable as a general purpose boot ROM. (It can boot a hard disk based system
+via a floppy disk, but cannot directly boot a hard disk.) It also has a
+variety of simple commands which allow many hardware problems to be analysed
+if the disk system fails to operate.
+</p>
+<p>
+The other ROM monitor program supplied by Gemini is SIMON which is
+specifically designed for use in disk based systems and has the ability to
+boot both floppy and hard disk drives. It too is designed to allow diagnosis
+of hardware problems.
+</p>
+<p>
+RP/M was originally issued as version 0.1 and this was later replaced by
+version 2.0, which had many improvements. See 80-BUS NEWS Vol 2 Issue 1 for
+details. This issue also specifies a small patch to convert version 2.0 to
+version 2.1.
+</p>
+<p>
+This article provides a series of patches to version 2.0 or 2.1 so that
+if you have the ability to program 2732 type EPROMS then you can upgrade your
+copy of RP/M to an enhanced version, called 2.3. (To avoid confusion with CP/M
+V2.2 there is no RP/M version 2.2.)
+</p>
+<p>
+Version 2.3 allows the Boot command to be followed by an optional value
+which makes RP/M attempt to read in and execute a boot sector which is on the
+first track of any disk in the system. It is possible to have the boot sector
+on a 5.25 inch or an 8 inch floppy disk. It may be either single or double
+density. Also the sector number may be specified. For example a normal
+Gemini format 48 or 96 tpi double density system disk with a 512 byte boot
+sector in physical sector 0 in drive B could be booted. So could a standard
+single density 8 inch disk with a 128 byte boot sector in physical sector 1.
+</p>
+<p>
+A particular advantage of this ability is to check out the correct
+operation of the disks should there be a problem with booting the system.
+Before this if the system failed to boot with a &ldquo;Bad disk&rdquo; message then it was
+impossible to determine if the problem was in the disk controller or the disk
+drive without dismantling the drives and altering their physical addresses.
+</p>
+<p>
+Note that since the boot sector on any disk is likely to contain code
+which loads in CP/M from drive A, it is still not possible without a special
+version of CP/M to actually boot CP/M and use it if drive A is out of
+operation. Even if the boot sector is patched so that CP/M is loaded from the
+other drive, as soon as it executes it will attempt to log in drive A.
+</p>
+<p>
+Also note that RP/M loads and executes only the first 128 bytes of a boot
+sector, regardless of its length. For this reason it is not possible to load
+a double density boot sector from an 8 inch disk, for timing reasons
+associated with the Z80 code. Also, as before, if the boot sector does not
+start with the Gemini identifying charaters then the &ldquo;Wrong disk&rdquo; message is
+displayed.
+</p>
+<p>
+RP/M will still attempt as now to boot a standard Gemini disk in drive A
+on power-on if there is a disk card in the system. Also the normal B command
+with no values entered after it works exactly as before.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<p class="continued">
+the NMI handling routine. Here bit 3 of port 0 is reset, and CONFLG is tested to see if
+the program has arrived at this point from an E command (in which case CONFLG is
+not zero), or from some other source, such as a single step command, a breakpoint,
+or a hardware NMI. If it came an E command CONFLG is now set to zero, so that a
+subsequent NMI is handled correctly, if a breakpoint has been entered Restart 32
+(&pound;E7) is inserted, and the NMI handling routine jumps back to the executed program
+with a RETN. At last the program you started with Exxxx is running. You will see what
+happens if CONFLG is zero when we discuss the single step command.
+</p>
+<h3>
+F (Error)
+</h3>
+<p>
+F is not a valid command letter in either Nas-Sys&nbsp;1 or Nas-Sys&nbsp;3, and an error
+message is produced when it is entered. I use the command for a Find routine, which
+searches from a specified address for a string of up to 9 bytes.
+</p>
+<pre>
+2B          FIND      DEC HL              HL holds start address
+3A 0B 0C              LD A, (ARGN)        Get number of values
+FE 02                 CP 2                Must be at least 2
+30 03                 JR NC, VALID        If so, continue
+DF 6B                 SCAL ERRM           iF not, print Error
+C9                    RET                 and end routine
+3D          VALID     DEC A               Get string length
+4F                    LD C, A             Save string length in C
+41          SRCHLP    LD B, C             Transfer to B
+11 0E 0C              LD DE, &pound;0C0E        Point DE to first byte
+1A                    LD A, (DE)          Get first byte
+23          SRCH1     INC HL              Look for first byte
+BE                    CP (HL)             Found it?
+20 FC                 JR NZ, SRCH1        If not, continue to look
+05                    DEC B               Only on byte to find
+28 09                 JR Z, CALLDS        If so, go to display
+13          SRCH2     INC DE              If not, look for second
+13                    INC DE              Get next in string
+1A                    LD A, (DE)          Go to next memory byte
+23                    INC HL              Are they the same?
+BE                    CP (HL)             If not, start again
+20 ED                 JR NZ, SRCHLP       Look for rest of string
+10 F7                 DJNZ SRCH2          All found, so tabulate
+D7 08                 RCAL TAB            Wait for keypress
+CF                    RST 8               Is it an escape?
+FE 1B                 CP &ldquo;ESCAPE&rdquo;         Look for next string
+20 E4                 JR NZ, SRCHLP       Output, CR
+DF 6A                 SCAL CRLF           End routine
+C9                    RET
+</pre>
+<p>
+* * TAB routine starts here * *
+</p>
+<p>
+The TAB routine used by the above program is the same as the one in the
+comparison routine, and the code for this should be entered at the position marked
+above. Of course, if you use both the compare and the Find routine,
+</p>
+<?php columnEnd(1); ?>

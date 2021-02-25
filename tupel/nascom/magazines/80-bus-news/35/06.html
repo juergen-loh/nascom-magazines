@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+BIOS in EPROM
+</p>
+<p>
+in an issue some time ago Richard Beal was discussing the considerable
+hassle of patching a new BIOS into the MOVCPM.COM file for relocating CP/M.
+</p>
+<p>
+I have just finished my own custom BIOS (for a Nascom&nbsp;2 and two 8"
+Shugart drives) and have adopted another system for relocating CP/M which does
+not involve relocating the BIOS.
+</p>
+<p>
+My BIOS sits in EPROMs; ina 56k system these start from E000 where it is
+entered by a reset jump. It contains its own routines for loading the CCP and
+BDOS from disk, to the desired place in RAM. A -56k&rsquo; CCP &amp; BDOS would be
+loaded near the top of RAM, whereas a -32k&rsquo; CCP and BDOS would be loaded about
+half-way up. Having done this, the BIOS then initialises the jump table just
+after the BDOS and transfers control&nbsp;.to the CCP. This has the advantages that
+the BIOS can be in EPROMs since it is always in the same place, one can use
+anybody&rsquo;s system disk to run in your system, regardless of which BIOS is on
+the disk, there is no restriction on the size of the bootstrap loader because
+there isn&rsquo;t one (normally it has to fit on the first sector of the disk and
+has to be short) and full disk read error recovery routines can be implemented
+in it. One therefore has a better chance of loading the system tracks off a
+slightly suspect disk; this is important since without disks one cannot do
+anything except some trivial debugging using SIMON, or reverting the whole
+Nascom back to NAS-SYS3 and ZEAP and writing some test routines to find what
+is wrong. I have found no need for SIMON and a 6k BIOS size limit is handy if
+you want to modify CONOUT to drive one of the flashy graphics/alphanumeric
+cards; some need a lot of software for writing text.
+</p>
+<p>
+I have used the standard MOVCPM to produce a -56k&rdquo; system (with the MDS-800
+BLOS on it which is not used) and my BIOS starts at E000. It can extend up
+to F800, a total of 6k which is enough for most requirements. Even then there
+is a big gap for stack/data and with a slightly smaller BIOS (same size as Mr.
+Beal&rsquo;s I think) a 60k system can be configured. With non-Nascom hardware a 64k
+system is possible, using the IVC card.
+</p>
+<p>
+The only disadvantages I can think of is that EPROMs are bit more
+difficult to patch that the MOVCPM is when in RAM.
+</p>
+<p>
+I feel that people who implement CP/M on their own hardware will be
+interested in this approach, since they will simply buy a CP/M 2.2 disk in
+their chosen format, configure it for the biggest RAM they can get and are not
+trying to produce a licensed and commercially saleable system.
+</p>
+<p>
+Incidentally, I have been told by Digital Research that the [v] option
+should be &ldquo;avoided&rdquo; when copying large files. It does indeed produce spurious
+&lsquo;Verify Error&rsquo; messages and aborts, but my disk read/write routines do not
+report any errors. The appearance of this problem is consistent for a given
+file. Does anyone have any clues why this should be&nbsp;?
+</p>
+<p>
+Yours sincerely, P. Holy, Worthing.
+</p>
+<p>
+Private Wants
+</p>
+<p>
+WANTED: Processor, driver and power supply printed circuit boards for Epson
+MX80 or MX100 printer, either working or not working but must be mechanically
+undamaged to facilitate rebuild of damaged printer. Telephone (____) ______.
+</p>
+<p>
+WANTED: Does anyone have any information on IBM&nbsp;3270 interfacing/operation,
+i.e. manuals etc., OR would like said machine cheap with spares. Cail Tan,
+Ipswich (____) ______.
+</p>
+<?php columnEnd(1); ?>

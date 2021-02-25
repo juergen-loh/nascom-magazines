@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p class="continued">
+you would only need to enter the subroutine once, making the necessary
+adjustments to the subroutine call instructions.
+</p>
+<p>
+The command is entered as Faaaa xx yy zz&nbsp;. . ., where aaaa is the start
+address for the search, and xx, yy, zz&nbsp;. . ., where aaaa is the start address for the
+search, and xx, yy, zz, . . . is the string of bytes (up to 9 bytes long). However, the
+above program was written for use with Nas-Sys&nbsp;1; when used with Nas-Sys&nbsp;3
+strings of three or more bytes can have strange effects on the tabulate command,
+because the extra arguments affect the formatting of the display. The routine is
+relocatable, that is, it may be used at any memory locations. The start address
+should be stored at &pound;0792 for NAs-Sys&nbsp;1; if you must use it with Nas-Sys&nbsp;3, the
+appropriate location is &pound;078C.
+</p>
+<h3>
+GENERATE Gxxxx yyyy zzzz
+</h3>
+<p>
+The command produces a tape copy of a program between addresses xxxx and
+yyyy, which loads automatically and then self executes at address zzzz. The G
+routine first resets the output table to send data to both the CRT and the serial port.,
+and outputs the following characters: Newline, E, 0, Newline, R, Newline. A delay is
+inserted between each character. It then calls the write routine to send data from
+xxxx to yyyy to the tape. Finally, it outputs and E, the start address, zzzz, and a
+Newline. A tape produced by the Generate routine is played directly into the machine
+with the monitor in the INLIN loop. Because this loop scans both the keyboard and
+the serial input the data received is treated as if it had been entered from the
+keyboard. Thus the first Newline sets the cursor to the beginning of a line,
+E0/Newline resets the monitor, and R/Newline, executes the read command. The
+machine then reads in the data stored by the write command, and finally
+Ezzzz/Newline starts the program at address zzzz.
+</p>
+<p>
+The G command suffers from two drawbacks; firstly, the tape LED is not turned
+on until the Write or Read commands are invoked, which makes it inconvenient in
+systems which use the tape LED to control the tape recorder motor; secondly, if the
+program is loaded incorrectly the command still goes ahead and runs it, which can
+have unfortunate results.
+</p>
+<h3>
+HALF DUPLEX TERMINAL H
+</h3>
+<p>
+When the H command is executed, the monitor is put in a loop in which the
+INLIN routine is continually scanned. However, when a Newline is received and the
+INLIN routine is left the input line is not dissected by the PARSE routine, but INLIN is
+recalled. Consequently commands are not accepted, and the only way to escape
+from this command is to press RESET. If your Nascom is connected to a printer, this
+command will enable you to use the system as a typewriter, suppressing the
+machines normal response to valid commands and error messages on invalid input.
+Of course, any commands that you need to give, such as Kn to set the keyboard
+options, U to activate the printer routine, or Xn to control external input /output, will
+have to be entered before the H command.
+</p>
+<?php columnEnd(1); ?>

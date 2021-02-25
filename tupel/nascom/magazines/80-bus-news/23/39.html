@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+39
+</p>
+<p>
+from the Galaxy. Now it does not matter that 5, 6 and 8 are in each case an
+input connected to an input, but it may matter that 4 and 20 are outputs
+connected to outputs, and these outputs may be attempting to assert different
+values. Fortunately RS5232 devices seem very resilient, and I have not heard of
+any damaged printers because of the two devices arguing over lines 4 or 20.
+</p>
+<p>
+Similarly if you want to connect the Galaxy to a modem or acoustic
+coupler, then not only is the socket the wrong type, but lines 2 and 3 need to
+be reversed. But pins 4, 5, 6, 8 and 20 are now correct.
+</p>
+<p>
+How to wire up the connectors correctly
+</p>
+<p>
+The ideal solution is to wire two sockets from the present one. One would
+be as a host, and the other as a terminal. The socket acting as a terminal is
+identical to the present socket with two changes. Firstly it is a male socket,
+and secondly the lines to pins 2 and 3 are reversed. The socket acting as a
+host is identical to the present socket, except that the RTS line from the
+Gemini is wired to pins 5, 6 and 8 of the socket, providing the signals
+expected by a terminal. Also RTS should be wired back to the CTS, DSR and CD
+lines leading to the Gemini UART, since this provides the signals that it
+expects. Pins 4 and 20 on the socket contain signals from the terminal which
+should not be connected to the Gemini board. The RTS line from the Gemini
+should not be connected.
+</p>
+<p>
+To make this clearer, here are the exact connections from the Gemini
+serial connector to a host socket, which should be female.
+</p>
+<p>
+Gemini Serial Connector Cannon D (Female)
+</p>
+<p>
+Data in 3 Kame 2 Data from terminal kbd
+Data out 6 an &gt; 3 Data to printer
+</p>
+<p>
+RTS out 10 --K X-- 4 RTS out
+</p>
+<p>
+cTS in 8 &lt;----&gt;* 5 CTS in
+</p>
+<p>
+DSR in 9 &lt;n &gt; * 6 DSR in
+</p>
+<p>
+Ground 11 Kn--=&gt; 7 Ground
+</p>
+<p>
+CD in 1 Kann &gt; Y 8 CD in
+</p>
+<p>
+DTR out 12 --* X-- 20 DTR out
+</p>
+<p>
+X means no connection. In addition to the connections shown, the DTR
+&ldquo;Signal from the Gemini is connected to 5, 6 and 8 in the Cannon connector.
+</p>
+<p>
+A particular advantage of this wiring is that the DTR signal from the
+Gemini provides a useful indication of the state of the Gemini RS232 interface.
+When the Gemini is Reset, the Data out line gives an invalid data signal, since
+it is not yet conditioned to even operate at the correct speed. But the DTR
+signal informs the terminal that the host is not ready, and the terminal will
+ignore the input. For example when connected to a Diablo terminal, pressing
+Reset causes the audible alarm on the terminal to sound. Then a moment later
+the DTR signal is restored and the terminal will function correctly. This is
+most important if there is no IVC in the system, and a serial terminal is being
+used as the console, either of RP/M or of CP/M. If you simply fix the input
+Signals at the terminal so that it is always ready, then the initial messages
+may be corrupted for about ten characters until bit alignment is achieved.
+</p>
+<p>
+Serial Connections for the Nascom&nbsp;2
+</p>
+<p>
+These connections do not work for the Nascom&nbsp;2 serial connector, since
+this is not fully compatible with the Gemini. [Ea. &ndash; The Nascom&nbsp;2 does not have
+modem control signals, and although a handshake signal can be provided, this is
+not at RS232 levels. | However you may find it useful to modify an N2 to conform
+</p>
+<?php columnEnd(1); ?>

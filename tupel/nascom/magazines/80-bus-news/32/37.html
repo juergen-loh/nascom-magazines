@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+37
+</p>
+<p>
+POKE &ndash; Easiest shown as an example: POKE&amp;C000, 252, 253,254,255 etc. This places
+the hex code for 252d into location C000H, 253d into C001H,254d into C002 etc.
+</p>
+<p>
+DOKE &ndash; As for POKE above only, of course, in double byte form.
+</p>
+<p>
+LIST &ndash; Followed by up to three values. The first value is the line to list
+from, the second is the number of lines to list at a time before pausing and
+the third is the line number to list up to. The default value of lines to list
+at a time, as supplied is 65535 but this can be altered to suit your taste.
+e.g. LIST 300,10,1000 will list lines 300 to 1000 pausing every 10 lines until
+a key is hit to display the next ten. The value of ten lines at a time will
+remain until set otherwise by a command such as LIST,5 when the whole program
+will start to be listed pausing every 5 lines displayed. A nice feature of
+XBASIC is that it is not necessary to press ESC to abort a listing. During a
+pause, any of the cursor keys will abandon the listing while at the same time
+moving the cursor in the desired direction in order to make an edit. Listings
+are made obvious that they are XBASIC format by the fact that the start of
+each line is indented by two spaces on the VDU. Another interesting point is
+that graphic characters are listed as their true representation rather than
+</p>
+<p>
+their reserved word counterpart.
+</p>
+<p>
+MON &ndash; Abreviated form of the MONITOR command available in ROM BASIC.
+</p>
+<p>
+POS &ndash; POS(J) where J is an expression which must evaluate to an integer in the
+range 0 to 255 is used to obtain the current output column or row position
+according to the value of J.
+</p>
+<p>
+Pos(0) returns the print column count up to a maximum of 255 when it is
+zeroed. It is independent of screen size. It is a command mainly used in
+conjunction with printers.
+</p>
+<p>
+POS(1) returns the current column position of the cursor on the VDU.
+</p>
+<p>
+POS(2) returns the current row position of the cursor on the VDU. The
+latter two are designed to be used alongside the PRINT@ facility.
+</p>
+<p>
+PRINT@ &ndash; Allows printing of expressions at specified points on the screen.
+Similar in use to the ROM BASIC SCREEN command except that the coordinates 0,0
+are from the top left of screen. The coordinates may be up to 255 and in this
+case wrap-around will occur.
+</p>
+<p>
+PRINT# &ndash; When data files are open PRINT# followed by strings or numerical
+variables will allow writing to the file. ,
+</p>
+<p>
+INPUT# &ndash; As above but in the reverse direction! Superbly easy to use.
+</p>
+<p>
+SET &ndash; As for ROM BASIC except as with the PRINT@ command above the coordinates
+0,0 are at top left. Incidentally, the SET command is not followed by the
+coordinates within brackets as it must be within ROM BASIC. Similar rules
+apply to the RESET command.
+</p>
+<p>
+RND &ndash; RND(1), as for ROM BASIC, returns a random number in the range 0 to l
+although it is a true random number, the routine making several uses of access
+to the refresh register of the Z80 CPU.
+</p>
+<p>
+RND(O) returns the last random number produced.
+</p>
+<p>
+RND(I) where I is in the range 2 to 65535 will return an integer random
+number ranging from 0 to I-1l. e-g- RND(9) produces an integer tandom number in
+the range 0 to 8. .
+</p>
+<?php columnEnd(1); ?>

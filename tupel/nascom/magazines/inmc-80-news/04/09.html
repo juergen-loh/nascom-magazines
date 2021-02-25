@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<h3>
+Space Invaders
+</h3>
+<p>
+After reading INMC80 Issue 3 I realised I was in a position to help many
+people.
+</p>
+<p>
+The Space Invaders game published in Issue 2 is the same one that a friend of
+mine bought. The program needs a little explanation:
+</p>
+<p class="noindent">
+1. The graphics option that is incorporated is for use with the William Stuart
+Graphics System although gives a reasonable display with NAS-GRA.
+</p>
+<p class="noindent">
+2. The program will work with any Nascom monitor &ndash; T2, T4, B-Bug, NAS-SYS&nbsp;1.
+(NAS-SYS 3?) (Yes &ndash; Ed.)
+</p>
+<p class="noindent">
+3. There is a &lsquo;Pause&rsquo; command, operated by hitting the &lsquo;P&rsquo; Key. This temporarily
+stops the program so you can answer the telephone etc. Hit any key to resume play.
+</p>
+<p>
+The answers to W. Squires&rsquo; letter are:&ndash;
+</p>
+<p class="noindent">
+1. The program was written to run at 2MHz not the normal NASCOM 2 speed of 4MHz.
+</p>
+<p class="noindent">
+2. There are 3 places where the program has to be changed for different keys. The
+first two places display and check for those keys not available as the fire key. The
+bytes at 1058H and 105CH must be changed to check for the ACSII values of these keys.
+Lastly the codes at 1785H must be altered. This piece of code scans the keyboard, then
+looks for various keys in the keyboard map at 0C01H. Using the routine at the end of
+this letter it is possible to work out which bits of which bytes are altered by the
+keys you have chosen.
+</p>
+<p>
+e.g. To substitute the &lsquo;A&rsquo; and &lsquo;X&rsquo; keys for &lsquo;&darr;&rsquo; (CD) and &lsquo;&rarr;&rsquo; (CR)
+respectively.
+</p>
+<pre>
+M1040  N/L
+  1040  0B/1042   N/L   (HEX VALUE FOR A &lsquo;&darr;&ldquo;)
+  1042  09/1058   N/L   ( "    "    "  " &lsquo;&rarr;&ldquo;)
+  1058  14/105C   N/L   ( "    "    "  CURSOR DOWN)
+  105C  12/1785   N/L   ( "    "    "     "   RIGHT)
+  1785  3A 04 0C/178B N/L (CURSOR DOWN KEY ALTERS 0C04H
+  178B  FE 40/1790 N/L  (bit 6.)
+  1790  3A 05 0C   N/L  (CURSOR RIGHT KEY ALTERS 0C05 H
+  1793  FE 40.          (bit 6.)
+</pre>
+<p>
+As regards David Parkinsons letter, I feel that the documentation on the
+Nascom&nbsp;2 is very good indeed, particularly the invaluable listing of NAS-SYS. The
+documentation on his toolkit is more than adequate and I had no problems learning to
+use it.
+</p>
+<p>
+The article entitled &ldquo;WHERE&rdquo; must have been written by a beginner to produce
+such a piece of code. Try the following:&ndash;
+</p>
+<pre>
+      RCAL LOCN     D7 00    (MONITOR RTN).
+LOCN: POP  HL       El
+</pre>
+<p>
+The address of &ldquo;LOCN&rdquo; is popped into HL.
+</p>
+<p>
+Please warn NASCOM owners about writing BASIC programs with variable names
+longer than 2 letters. Although it is acceptable to do so, MICROSOFT BASIC V4.7 only
+stores the first 2 characters of the variable names and therefore cannot distinguish
+between 2 different variables having the same first 2 characters. This also applies to
+strings.
+</p>
+<p>
+Finally could you print your prices for advertising in INMC80, as a friend and
+I have started a software firm to seel NASCOM Software for the NASCOM 2, and we would
+like to advertise in INMC80.
+</p>
+<p class="noindent">
+A. READ, Chelmsford, Essex.
+</p>
+<p class="noindent">
+(Rates are 100.00 per full page, part pages are charged proportionately &ndash; Ed.)
+</p>
+<?php columnEnd(1); ?>

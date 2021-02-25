@@ -1,0 +1,113 @@
+<?php columnStart(1); ?>
+<p>
+org 500h
+.phase 100h
+</p>
+<p>
+Do oeoididdidg, GEMINI OVERLAY HII AKAD IAAT IAS
+if GM811
+</p>
+<p>
+&lsquo;
+</p>
+<p>
+: wee Gemini GM811/813 overlay
+</p>
+<p>
+?
+</p>
+<p>
+; THE GEMINI SOURCE AS 15
+</p>
+<p>
+: kk End of Gemini GM811/813 overlay **e*
+</p>
+<p>
+,
+</p>
+<p>
+else
+</p>
+<p>
+; kx Gemini GM870 Overlay ***
+</p>
+<p>
+,
+</p>
+<p>
+: For ready initialised DART using DIAL type program.
+</p>
+<p>
+&lsquo;
+</p>
+<p>
+80 Bus News
+</p>
+<p>
+jmp 00h ; Absolute start of program
+modctlp set 085h ; Modem control port for send
+noddatp set 084h ; Modem data port for send
+modcrev set modctlp ; Modem control port for receive
+noddrev set moddatp ; Modem data port for receive
+usndb set 4 : Modem send bit (xmit buffer empty)
+msndr set 4 ; Modem send ready
+mrevb set 1 ; Modem receive bit (rx buffer ready)
+mrevr set 1 ; Modem receive ready
+-It is important not to alter the addresses of labels below
+fastclk: db true : 4 MHz or greater processor speed
+bakupbyte: db false ; true=make&nbsp;.BAK file
+xprflg: db true ; true=menu initially off
+twidth: db 79 : Max. terminal columns
+saveflg: db false ; true=terminal filesave initially on
+echoflg: db false : true=terminal echo initially on
+initflg: db true : true=modem port already initialised
+ansbak: db true : true=answerback on &ldquo;E
+inmodclp: in modctlp : Get send port status
+ret
+increv: in modcrcv : Get receive port status
+ret
+outmoddatp: out moddatp ; Send data
+ret
+anisnd: ani usndb ; Bit to test for send ready
+ret
+cpisnd: cpi msndr : Value of send bit when ready
+ret
+-inmoddatp: in moddrev : Get received data
+ret
+anirev: ani mrevb : Bit to test for receive ready
+ret
+cpircv: opi mrevr ; Value of receive bit when ready
+ret
+logmssg: db &lsquo;Dave: Hunt&rsquo;.cr,1f.0
+.dephase
+org 550h
+&laquo;phase 150h : Do not alter this org
+initmod: jap geminit
+olid: db 2 : Overlay identity
+slo: jmp gusetlo
+shi: jmp gausethi
+txwait: jnup gntxw
+hexprt: jmp 0 ; UKM7 fills in address
+geminit: ret
+; Dynamic split baud sets
+gmsetlo: ret
+gmsethi: ret
+gmtxw: ret
+</p>
+<p>
+,
+</p>
+<p>
+endif
+</p>
+<p>
+wee End of Gemini GM870 overlay ***
+</p>
+<p>
+Stoning END OF GEMINI OVERLAY toi
+.dephase
+</p>
+<p>
+27
+</p>
+<?php columnEnd(1); ?>

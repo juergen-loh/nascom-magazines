@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+READING TRS-80 PROGRAM TAPES
+</h1>
+<p>
+by Mike Fox
+</p>
+<p>
+There is a great deal of software available for micro-computers, but it is
+generally not possible to exchange programs between systems because the data
+is stored on tape in different formats. This article describes a method for
+reading and converting TRS-80 tapes for the Nascom. The project needs both
+hardware and software, and is for TRS-80 Level 2 Basic (also Video Genie in the
+U.K., P.M.C-80 in U.S.A, and System 80 in Australia and N.Z.), but it could be
+modified for other machines.
+</p>
+<p>
+The TRS-80 writes tapes at 500 Baud. An 80 microsecond clock pulse is sent
+to the tape every 2 milliseconds. The data bits to be stored are represented by
+inserting an extra 80 microsecond pulse between two clock pulses for a 1, and
+leaving the gap empty for a 0. This of course is incompatible with the CUTS
+standard used in the Nascom II. Therefore a small circuit consisting of one LM3900
+(an IC containing four operational amplifiers) and a couple of dozen discrete
+components is used to input the signal from the cassette via the Nascom
+PIO. Figure 1 shows the circuit diagram of the interface, while a suggested
+Vero layout is shown in figure 2. Make sure that pin 11 of the Nascom&nbsp;2 PIO plug
+is connected to 0 volts on pin 16.
+</p>
+<p>
+COMPONENTS REQUIRED
+</p>
+<p>
+Resistors Capacitors Semiconductors
+</p>
+<p>
+R1 1 kohm
+R2 150 kohm
+R3 330 kohm
+R4 560 kohm
+R5 330 kohm
+R6 1.8 megohm
+R7 470 kohm
+R8 680 kohm
+R9 470 kohm
+R10 470 kohm
+R11 1 megohm
+R12 1 megohm
+R13 10 kohm
+R14 10 ohms
+R15 470 kohm
+R16 470 kohm
+</p>
+<p>
+C1 220 pf
+C2 220 pf
+C3 50  F
+C4 100  F
+C5 0.1  F
+LM3900 Quad.
+Op-Amp.
+D1-D4 Smallsignal
+silicon
+diode
+</p>
+<p>
+SOFTWARE FOR MICROSOFT BASIC
+</p>
+<p>
+The first part of the program reads the tape and loads it into the correct memory
+location for Nascom&nbsp;2 Basic. As the reading is done by software timing, the
+delay values in the program will vary for machines running at 2 Mhz and 4Mhz. At
+the start of the tape there is about 4 seconds of nulls (00), followed by a sync
+character of A5 hex. When this character is detected the program starts to load the
+data from the tape starting at address &pound;10F6; as it is stored, the data is also
+displayed on line one of the screen. The first four characters are SSSn, where n is
+the program identification. These are not used, and the actual Basic program starts
+at &pound;10FA. The end of the program is indicated by three nulls, which cause a jump to
+part two of the tape reading routine.
+</p>
+<p>
+In this second section, the token values used in TRS-80 Basic are converted to
+</p>
+<?php columnEnd(1); ?>

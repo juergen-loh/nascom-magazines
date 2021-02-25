@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+13
+</p>
+<p>
+Full error:
+ld de,fcb
+1d c,close file
+call jbdos
+call swap ; Swap CP/M and NasSys page 0
+rst prs
+defm &ldquo;Disk full.&rdquo;
+defb cr,0
+ret
+</p>
+<p>
+A Fix for Sys
+</p>
+<p>
+Many of you disk users who are running under a certain 0.S. are doubtless
+using Richard Beal&rsquo;s excellent, although unfortunately no longer available,
+Sys overlay BIOS. I certainly am, and excellent though Sys is, I have
+encountered one or two minor problems. The &ldquo;fix&rdquo; I am suggesting here is to
+make the &ldquo;Automatic Page Throw&rdquo; code a bit more intelligent. One problem is
+that although my printer (an MX80 F/T) recognises form feeds, it doesn&rsquo;t do an
+automatic &ldquo;skip over perforation&rdquo;, so I set the appropriate option to allow
+Sys to do this. When you do this, Sys converts form feeds to CR/LFs. I didnt
+like this, so I patched (there&rsquo;s that word again) Sys to output form feeds
+unaltered. A problem exists, however, in that if a form feed is issued when
+the printer is already at the top of a page, an extra page throw is sent which
+results in a page being wasted. Things are further complicated when you
+consider that some utilities may try to &ldquo;help&rdquo; by issuing extra CR/LFs to
+ensure the perforation is skipped. An example may be NasDis running under
+Monitor.Com. With Sys and Revas both supplying extra CR/LFs, the listing can
+get &ldquo;out of step&rdquo;, so to speak.
+</p>
+<p>
+The solution I have come up with is to make the &ldquo;Skip perforation&rdquo; code
+in Sys more intelligent: if the printer is already at the top of the page, Sys
+will &ldquo;throw away&rdquo; any extra form feeds, CRs and LFs that may be sent before
+any printable characters are sent for that page. This code hasn&rsquo;t had the
+fullest of tests, but I have checked it against a few trial runs of outputting
+files which, because I have also got the &ldquo;line length&rdquo; check built into Sys,
+had caused problems before. The listing is the part of module Sysb4.Mac, which
+contains the printer driver. Both &ldquo;new&rdquo; and &ldquo;old&rdquo; code is shown, with switches
+to select the one you want. This should help you if you want to type in my
+&ldquo;additions&rdquo;. .
+</p>
+<p>
+[Ed. &ndash; Mr Perkins article now goes into a discussion as to the rights and
+wrongs of the current legal situation re. BIOS copyright, SYS, etc. As the
+comments he makes are wholly mis-informed they have been removed, as to
+comment on them would be sub-judice.]
+</p>
+<p>
+NASIO
+It*s good to see that the Editor is trying to draw up a map of all the
+</p>
+<p>
+I/O ports used by the various boards available. However, the bit about Nasio
+support perhaps doesn&rsquo;t go far enough, since some manufacturers don&rsquo;t do Nasio
+properly. The 80-Bus specification says that Nasio is taken low to indicate a
+Nascom I/O address, which to me means whenever you try to access ports 0-7
+inclusive, which are the ports used on the N2 card. Therefore it should be
+high at all other times. It is also an open-collector line. Now some
+manufacturers simply invert address line A7 and call it &ldquo;Nasio&rdquo;. I know that
+Map do this on both the ram and vfc. The clue comes in their documentation,
+which says that the Nasio link is to be made &ldquo;...only if no other card is
+generating Nasio&rdquo;. This implies that the line is NOT an OC line, and that bus
+</p>
+<?php columnEnd(1); ?>

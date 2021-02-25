@@ -1,0 +1,56 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+FREE! Here is a simple idea to control the speed of the CRT display by using the User
+output routine.
+</p>
+<p>
+In Basic my version is as follows:<br>
+(The routine starts at 0D00H and is 12 bytes long)
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-05-1.png"); ?>
+<p>
+LINE 10 contains the routine.<br>
+LINE 20 contains the addresses to be changed.
+</p>
+<p>
+To vary display speed, POKE 3330,X where X can be 1 to 255, X=1 is Fast, X#255 is
+Very Slow&nbsp;! This can be done at any point in a program.
+</p>
+<p>
+In Machine Code, it looks like this:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-05-2.png"); ?>
+<p>
+To EXECUTE FROM NAS&nbsp;SYS:<br>
+Load Routine address into 0C78<br>
+Load Table address (0C7E) into 0C73
+</p>
+<p>
+These are the Output Routine Address (UOUT) and Start of &lsquo;table of output routines&rsquo;
+(OUT) respectively in the Nas&nbsp;Sys workspace.
+</p>
+<p>
+Here is a routine which will save the trouble of entering these addresses by hand each
+time:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-05-3.png"); ?>
+<p>
+This can be tacked on to the end of the routine itself (or onto the beginning) and
+should be executed before trying to change display speed. To vary speed, load (Routine
+address +2) with the value required. Remember, &lsquo;0&rsquo; will give you a very slow display,
+but &lsquo;1&rsquo; will give almost normal speed. This is why I have set the initial speed at
+&lsquo;1&rsquo;.
+</p>
+<p>
+Yours byteingly,<br>
+DAVE LORDE<br>
+Pontyclun<br>
+S. Wales.
+</p>
+<p>
+Ed. There is now a tape version of the Sargon chess available. It comes complete with
+the Sargon book, a graphics EPROM containing a Chess set, and a small piggy-back board
+to allow switching between the normal graphics and the chess set. This is produced by
+Bits &amp; PCs, costs 35.00 plus VAT, and is available from various Nascom distributors.
+</p>
+<?php columnEnd(1); ?>

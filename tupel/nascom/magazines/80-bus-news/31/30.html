@@ -1,0 +1,114 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    67</span>
+
+F3EC EB         MID:    EX      DE,HL           ; Get code string address
+F3ED 7E                 LD      A,(HL)          ; Get next byte "," or ")"
+F3EE CD3CF4             CALL    MIDNUM          ; Get number supplied
+F3F1 04                 INC     B               ; Is it character zero?
+F3F2 05                 DEC     B
+F3F3 CAA0E9             JP      Z,FCERR         ; Yes - Error
+F3F6 C5                 PUSH    BC              ; Save starting position
+F3F7 1EFF               LD      E,255           ; All of string
+F3F9 FE29               CP      ")"             ; Any length given?
+F3FB CA05F4             JP      Z,RSTSTR        ; No - Rest of string
+F3FE CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F401 2C                 DEFB    ","
+F402 CD84F4             CALL    GETINT          ; Get integer 0-255
+F405 CD90E6     RSTSTR: CALL    CHKSYN          ; Make sure ")" follows
+F408 29                 DEFB    ")"
+F409 F1                 POP     AF              ; Restore starting position
+F40A E3                 EX      (SP),HL         ; Get string,8ave code string
+F40B 01B8F3             LD      BC,MID1         ; Continuation of MID$ routine
+F40E C5                 PUSH    BC              ; Save for return
+F40F 3D                 DEC     A               ; Starting position-1
+F410 BE                 CP      (HL)            ; Compare with length
+F411 0600               LD      B,0             ; Zero bytes length
+F413 D0                 RET     NC              ; Null string if start past end
+F414 4F                 LD      C,A             ; Save starting position-1
+F415 7E                 LD      A,(HL)          ; Get length of string
+F416 91                 SUB     C               ; Subtract start
+F417 BB                 CP      E               ; Enough string for it?
+F418 47                 LD      B,A             ; Save maximum length available
+F419 D8                 RET     C               ; Truncate string if needed
+F41A 43                 LD      B,E             ; Set specified length
+F41B C9                 RET                     ; Go and create string
+
+F41C CD86F3     VAL:    CALL    GETLEN          ; Get length of string
+F41F CA33F6             JP      Z,RESZER        ; Result zero
+F422 5F                 LD      E,A             ; Save length
+F423 23                 INC     HL
+F424 23                 INC     HL
+F425 7E                 LD      A,(HL)          ; Get LSB of address
+F426 23                 INC     HL
+F427 66                 LD      H,(HL)          ; Get MSB of address
+F428 6F                 LD      L,A             ; HL = String address
+F429 E5                 PUSH    HL              ; Save string address
+F42A 19                 ADD     HL,DE
+F42B 46                 LD      B,(HL)          ; Get end of string+1 byte
+F42C 72                 LD      (HL),D          ; Zero it to terminate
+F42D E3                 EX      (SP),HL         ; Save string end,get start
+F42E C5                 PUSH    BC              ; Save end+1 byte
+F42F 7E                 LD      A,(HL)          ; Get starting byte
+F430 CD1AF9             CALL    ASCTFP          ; Convert ASCII string to FP
+F433 C1                 POP     BC              ; Restore end+1 byte
+F434 E1                 POP     HL              ; Restore end+1 address
+F435 70                 LD      (HL),B          ; Put back original byte
+F436 C9                 RET
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    68</span>
+
+F437 EB         LFRGNM: EX      DE,HL           ; Code string address to HL
+F438 CD90E6             CALL    CHKSYN          ; Make sure ")" follows
+F43B 29                 DEFB    ")"
+F43C C1         MIDNUM: POP     BC              ; Get return address
+F43D D1                 POP     DE              ; Get number supplied
+F43E C5                 PUSH    BC              ; Re-save return address
+F43F 43                 LD      B,E             ; Number to B
+F440 C9                 RET
+
+F441 CD87F4     INP:    CALL    MAKINT          ; Make it integer A
+F444 323F10             LD      (INPORT),A      ; Set input port
+F447 CD3E10             CALL    INPSUB          ; Get input from port
+F44A C301F1             JP      PASSA           ; Return integer A
+
+F44D CD71F4     POUT:   CALL    SETIO           ; Set up port number
+F450 C30610             JP      OUTSUB          ; Output data and return
+
+F453 CD71F4     WAIT:   CALL    SETIO           ; Set up port number
+F456 F5                 PUSH    AF              ; Save AND mask
+F457 1E00               LD      E,0             ; Assume zero if none given
+F459 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
+F45A CD36E8             CALL    GETCHR          ; Get next character
+F45D CA67F4             JP      Z,NOXOR         ; No XOR byte given
+F460 CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F463 2C                 DEFB    ","
+F464 CD84F4             CALL    GETINT          ; Get integer 0-255 to XOR with
+F467 C1         NOXOR:  POP     BC              ; Restore AND mask
+F468 CD3E10     WAITLP: CALL    INPSUB          ; Get input
+F46B AB                 XOR     E               ; Flip selected bits
+F46C A0                 AND     B               ; Result non-zero?
+F46D CA68F4             JP      Z,WAITLP        ; No = keep waiting
+F470 C9                 RET
+
+F471 CD84F4     SETIO:  CALL    GETINT          ; Get integer 0-255
+F474 323F10             LD      (INPORT),A      ; Set input port
+F477 320710             LD      (OTPORT),A      ; Set output port
+F47A CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F47D 2C                 DEFB    ","
+F47E C384F4             JP      GETINT          ; Get integer 0-255 and return
+
+F481 CD36E8     FNDNUM: CALL    GETCHR          ; Get next character
+F484 CD41ED     GETINT: CALL    GETNUM          ; Get a number from 0 to 255
+F487 CD85E9     MAKINT: CALL    DEPINT          ; Make sure value 0 - 255
+F48A 7A                 LD      A,D             ; Get MSB of number
+F48B B7                 OR      A               ; Zero?
+F48C C2A0E9             JP      NZ,FCERR        ; No - Error
+F48F 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
+F490 CD36E8             CALL    GETCHR          ; Get next character
+F493 7B                 LD      A,E             ; Get number to A
+F494 C9                 RET
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

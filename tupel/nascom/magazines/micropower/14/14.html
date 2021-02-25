@@ -1,0 +1,193 @@
+<?php columnStart(1); ?>
+<p>
+4F15
+4F17
+4F18
+4F1A
+4F1D
+2803
+24
+2E00
+228312
+DF5B
+1280
+1290
+1300
+1310
+1320
+OK
+JR Z, OK
+INC H
+LD L,0
+LD (TEXT), HL
+SCAL MRET
+; IF SO, END
+; ADD 256 TO END
+; ZERO LOW BYTE
+; STORE POINTER
+; RETURN TO MONITOR
+&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;
+</p>
+<p>
+The first example of an added command is a routine which provides automatic line
+numbering. The listing of this routine is followed by a demonstration of the entry of the
+corresponding machine code using the loader program.
+</p>
+<p>
+3000
+0090
+0100
+0110
+0120
+0125
+0130
+0135
+0140
+0145
+;;
+************************************************
+; ** AUTO LINE NUMBER BY D. ELLIOT **
+; ************************************************
+;
+ORG &pound;3000
+;
+; ROUTINES IN CRYSTAL BASIC 2.2
+;
+3000
+3000
+3000
+3000
+2BF5
+2781
+1761
+154C
+0150
+0160
+0170
+0180
+OVEC
+PRTHL
+INNUM
+TSTCOM
+EQU &pound;2BF5
+EQU &pound;2781
+EQU &pound;1761
+EQU &pound;154C
+; OUTPUT VECTOR+1
+; PRINT HL IN DEC.
+; GET NUMBER
+; SKIP COMMA
+0185
+0190
+0200
+0210
+0215
+;
+; MODIFIED OUTPUT ROUTINE WHICH CHECKS
+; FOR A NEW LINE, AND THEN OUTPUTS THE
+; NEXT LINE NUMBER
+;
+3000
+3002
+3004
+3005
+3008
+300B
+300E
+3011
+3012
+3015
+3016
+3017
+301A
+301B
+301C
+301D
+3020
+3023
+3026
+3029
+FE5D
+2064
+F7
+222E30
+213030
+22F52B
+2A2A30
+EB
+2A2C30
+D5
+E5
+CD8127
+E1
+D1
+19
+222C30
+210030
+22F52B
+2A2E30
+C9
+0220
+0230
+0240
+0250
+0260
+0270
+0280
+0290
+0300
+0310
+0320
+0330
+0340
+0350
+0360
+0370
+0380
+0390
+0400
+0410
+AOUT CP &pound;5D
+JR NZ, COUT
+RST CRT
+LD (BUFFR), HL
+LD HL, NOUT
+LD (OVEC), HL
+LD HL, (INC)
+EX DE, HL
+LD HL, (LAST)
+PUSH DE
+PUSH HL
+CALL PRTHL
+POP HL
+POP DE
+ADD HL, DE
+LD (LAST), HL
+LD HL, AOUT
+LD (OVEC), HL
+LD HL (BUFF)
+RET
+; NEW LINE?
+; IF NOT, PRINT
+; PRINT CHARACTER
+; SAVE POINTER
+; CHANGE OUT. VECTOR
+; GET INCREMENT
+; INTO DE, AND LAST
+; LINE NO. IN HL
+; HL TO SCREEN
+; AND TO BUFFER
+; CALC. NEXT NO.
+; ANDSTOREITVN
+; RESET VECTOR
+; RESTORE POINTER
+; RETURN
+0415
+0420
+0425
+;;
+VARIABLE STORAGE
+;
+302A 0002 0430 INC DEFS 2 ; INCREMENT
+</p>
+<?php columnEnd(1); ?>

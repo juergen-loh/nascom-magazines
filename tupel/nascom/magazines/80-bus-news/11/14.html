@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<h3>
+MONITOR.COM
+</h3>
+<p>
+This is a program that runs on a Nascom&nbsp;2 under CP/M, and pretends to
+be an improved version of Nas-Sys. The improvements consist of additional
+routines to move sections of the memory to disk, and read them back. The
+details of how to do this have appeared in the second issue of Micropower, a
+magazine that says quite kind things about this magazine. As quite a lot of
+typing is needed, I will repeat here the offer I made in the Micropower
+article. Anyone who wants a copy of MONITOR.COM should send a disk,
+initialised for their system, plus a pound for postage, packing and not a lot
+of profit! Frankly, if you have no desire to use all the programs you wrote
+before you had your disk drive/s, or have a hardware way of switching to
+Nas-Sys, you don&rsquo;t need this, so there! As an aside, I should mention that the
+rather primitive disk read and write routines I have written for the program
+don&rsquo;t work for files longer than 16K. There, saved you the effort of writing
+to tell me!
+</p>
+<p>
+For those who have lost INMC80-3, my name and address is: Chris
+Blackmore, __ _____ ____, Ilminster, Somerset, ____ ___
+</p>
+<h3>
+DISKPEN.COM
+</h3>
+<p>
+I just converted my EPROM Naspen to use the somewhat altered screen
+addressing of my system, in a RAM version loaded from disk by MONITOR.COM, and
+am rather pleased with myself! I wanted Diskpen, but there was no more cash to
+hand, so that was that, for a while. See later in the episode for details of
+another editor.
+</p>
+<p>
+Of course, the files produced by my rather clumsy modifications are
+not quite CP/M compatible, having only Carriage Returns where there should
+also be Line Feeds. I get round this slight problem by using another program,
+whose function is to grab the Naspen file left in memory by the converted
+Naspen, add line feeds to it and store it as a CP/M file on disk. They can
+then be edited again with CP/M compatible editors, if necessary, though I keep
+my working copy on tape, ready to send in for publication.
+</p>
+<p>
+Meanwhile, here for your interest, if any, are the changes to Naspen
+needed if the VDU RAM in your system is at F800H:
+</p>
+<table class="indent" style="width:40%">
+<tr><td>Address</td><td>Change this</td><td>To this</td></tr>
+<tr><td>B869</td><td>11 D0 0B</td><td>11 D0 FB</td></tr>
+<tr><td>B8A2</td><td>11 09 08</td><td>11 09 F8</td></tr>
+<tr><td>B9IC</td><td>11 EA 0B</td><td>11 EA FB</td></tr>
+<tr><td>B94D</td><td>21 8A 0B</td><td>21 8A FB</td></tr>
+<tr><td>B953</td><td>11 4A 0B</td><td>11 4A FB</td></tr>
+<tr><td>BB98</td><td>21 80 0A</td><td>21 80 FA</td></tr>
+<tr><td>BBD3</td><td>21 8A 0B</td><td>21 8A FB</td></tr>
+<tr><td>BBE1</td><td>11 8A 0B</td><td>11 8A FB</td></tr>
+<tr><td>BBF5</td><td>21 8B 0B</td><td>21 8B FB</td></tr>
+<tr><td>BC02</td><td>21 90 0B</td><td>21 90 FB</td></tr>
+<tr><td>BEB6</td><td>11 E3 0B</td><td>11 E3 FB</td></tr>
+</table>
+<p>
+One slightly unexpected problem I had during the conversion of Naspen
+was that the board I was reading it from, a Merseyside Nascom Users Group
+EPROM board, doesn&rsquo;t seem to send out a RAMDIS signal. Filling the RAM
+addresses concerned with FF&rsquo;s enabled me to copy the program to an area that
+wasn&rsquo;t duplicated by more than one board. You may well ask how much RAM there
+is on the new system... I hardly like to go on about this, but it is a certain
+manufacturer&rsquo;s 64K page mode job, and what was memory plague, anyway? I should
+know better than to write that, as I am proposing to reassemble the venerable
+Marvin soon, so that I can play at Nascom&nbsp;1/2 system games.
+</p>
+<?php columnEnd(1); ?>

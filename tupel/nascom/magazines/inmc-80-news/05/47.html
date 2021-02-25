@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+Line 4515 tells us we are about to output the low nibble of A.
+</p>
+<p>
+Line 4520. Now the fun really starts. The rotate instructions have left
+a lot of indeterminate garbage in the high nibble. Indeterminate, because we
+niether knew nor cared what the state of the C flag was before the start of the
+rotates. We want to get rid of the high nibble, so we use a logical AND
+instruction. We AND the X5H with 0FH, which like magic gives us 05H. Ok, so how
+is it done? Well I don&rsquo;t intend to go into a discourse on Boolean algebra here,
+save to say that in the middle of the last century a fella called Boole
+(french, I think), proposed a &lsquo;logical&rsquo; method of performing algebraic
+functions which caused a few sniggers at the time. He suggested that there
+shouldn&rsquo;t only be the normal arithmetic operators like, plus, minus, multiply
+and divide, but there should also be what he call logical operators like AND,
+NOT and OR, etc. No-one payed much attention to him and what he had to say
+didn&rsquo;t really become relevant until way after his death. I often wonder what
+would have happened if Boole and Babbage had got together, may be we would have
+had vast steam driven mechanical computing engines to rival Asimov&rsquo;s Multivac,
+and this in the middle of the last century. The nett result of ANDing a logical
+1 with a logical 1 is 1 (and no carry), and of ANDing logical X (either 1 or 0)
+with 0 is 0.
+</p>
+<table style="margin: auto">
+<colgroup><col><col style="width: 20%"><col></colgroup>
+<tr><td>101X1011</td><td></td><td></td></tr>
+<tr><td></td><td></td><td>AND</td></tr>
+<tr><td style="border-bottom: solid; border-bottom-width: 1px">00001111</td><td></td><td></td></tr>
+<tr><td>00001011</td><td></td><td></td></tr>
+</table>
+<p>
+See!! If you don&rsquo;t, then get Boole&rsquo;s book out of the library, it&rsquo;s still in
+print, and his methods will get more important as you progress in this
+business. Clever, what? We&rsquo;ve got rid of the bits we didn&rsquo;t want, and are left
+with those we want. The process has a name, it&rsquo;s called masking. The 0FH is the
+mask, and it allows through what is required, whilst holding back that which is
+note
+</p>
+<p>
+Line 4525. We&rsquo;ve now got to convert the four bits in a into an ASCII
+character which will represent the four bits in HEX. And that&rsquo;s not so easy. We
+start off by filling the high nibble with the binary pattern for 9, 1001, and
+that is achieved by ADDing 90H to A. The ADD instruction is used, as the C flag
+is still indeterminate, and we don&rsquo;t want any spurious carries added to our low
+nibble. We have used the ADD A,90H instruction, because we are going to use a
+Decimal Add Adjust (DAA) instruction next. By having 9 as the high nibble, it
+is our intention to make the high nibble overflow if there is an overflow from
+the low nibble. The ADD instruction also set the &lsquo;Half Carry&rsquo; flag as the A
+register contents are now 9BH, the overflow being to warn that the low nibble
+contains a number greater than (decimal) 9, in case there is a following DAA
+instruction. Please think carefully, I&rsquo;m doing my best.
+</p>
+<p>
+Line 4530. We have 9BH in the A register, and we perform a Decimal Add
+Adjust on it. Now the low nibble was B, which the DAA instruction takes as 11
+(decimal), so it puts 1 in the low nibble. As the low nibble was 11, the
+previous ADD instruction had already set the &lsquo;Half Carry&rsquo; flag, so there is a
+carry through to the high nibble, making it 10 (decimal), so it puts 0 in the
+high nibble, and sets the Carry flag to show there was an overflow. The A
+register now contains 01H, and the C flag has been set to indicate an overflow.
+</p>
+<p>
+Line 4535. We&rsquo;re half way there, all that&rsquo;s needed now is to add the
+ASCII offset to the number in the A register, take account of any carries, and
+we&rsquo;re all but home. Now, the ASCII code for 0 (nought) is 30H, 1 is 31H, upto
+39H for 9. Fortunately for our purposes, the ASCII code for &lsquo;A&rsquo; is 41H, though
+to 46H for &lsquo;F&rsquo;. Let&rsquo;s add (with carry) 40H to the A register.
+</p>
+<table style="margin: auto">
+<colgroup><col><col style="width: 20%"><col></colgroup>
+<tr><td>00000001</td><td style="text-align: center">1</td><td></td></tr>
+<tr><td style="border-bottom: solid; border-bottom-width: 1px">01000000</td><td></td><td></td></tr>
+<tr><td>01000010</td><td></td><td>which is 42H</td></tr>
+</table>
+<?php columnEnd(1); ?>

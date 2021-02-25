@@ -1,0 +1,84 @@
+<?php columnStart(1, "noindent"); ?>
+<h1 id="article1">
+Reviews
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+Software Review
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by R.O&rsquo;FARRELL
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<h4>
+INTEGER PASCAL:Initial impressions.
+</h4>
+<p>
+From: Datron, _ _________ ____, Sheffield<br>
+Cost 35.00 plus VAT
+</p>
+<p>
+This compiler may well be many microcomputer users introduction to the Pascal
+programming language.
+</p>
+<p>
+It comes in a number of versions which are specific to the monitor you use. My copy
+was designed to run with Nas-Sys&nbsp;1, and in consequence there may be minor differences
+in the monitor dependant routines &ndash; e.g. the Nas-Sys on screen edit, which is not
+available under the other monitors.
+</p>
+<p>
+The program is supplied on a tape, recorded in my case at 300 Baud CUTS, using the
+Block routines rather than the Tabulate format. It is designed to load at 1000H, and
+takes some considerable time to load, occupying memory up to approx 3200H. It contains
+within it a text editor to allow you to build up the program which you wish to
+compile. This test editor is idiosyncratic (that is, it&rsquo;s not like any text editors I
+know), and takes getting used to. It allows a program to be built up, a line
+displayed, or deleted. It also automatically renumbers the lines of the program when
+instructed, and has the ability to output a program listing to the VDU or to a
+printer. It can also save a program on tape, and read it back in. Each line must have
+a number, but the number does not necessarily put the line in its correct position in
+the buffer &ndash; this is done by a location pointer. Any corrections have to be made by
+either retyping the line, or by using the Nas&nbsp;Sys on screen edit.
+</p>
+<p>
+The editor needs each action to be preceeded with a command letter, and the location
+of the line pointer decides where the line you have just typed/replaced/deleted is (or
+was). The editor works fairly well, but I feel that more work could be done on it, to
+bring it more towards the way a Basic interpreter builds up a program, which I think
+would be more familiar to most users.
+</p>
+<p>
+Having entered the program, the Pascal compiler having been started by the following
+command :
+</p>
+<pre>
+E1000 BUFFERSTART BUFFERLENGTH
+</pre>
+<p>
+then you can try a compilation. This you do by using the &ldquo;C&rdquo; command. When entered on
+its own with no ancillary parameter, this command causes a trial compilation to take
+place. As the program compiles, it scrolls up on the screen the lines of the program.
+Should an error be found, the compilation is aborted, and one of 28 hex values is
+displayed with an error message. Reference to the manual is necessary to find out what
+the hex value indicates to be wrong. If the compilation is successful, then you can
+enter the &ldquo;C&rdquo; command again, this time followed by a Hex address, and the Z80 code
+will be generated there. You can now either leave the compiler, and jump to the code
+with the monitor E command, or you can use the compiler &ldquo;G&rdquo; command to execute the
+program and return to the compiler when finished.
+</p>
+<p>
+The compiler occupies Memory 1000H &ndash; 3200H, and uses 3200H &ndash; 3750H as workspace.
+Memory outside this can be used for the source buffer, which is defined on entry to
+the compiler by additional parameters for start and length. If these parameters are
+omitted on first entry to the compiler, an error message is printed, and you are put
+back in the monitor.
+</p>
+<p>
+As can be seen from the above figures, a 32K system would be desirable, particularly
+if you wish to write a long program in Pascal.
+</p>
+<?php columnEnd(1); ?>

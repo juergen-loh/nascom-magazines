@@ -1,0 +1,101 @@
+<?php columnStart(1); ?>
+<p>
+100 FORMAT(SHDATA. FROM, | ,10HBXPERIMENT,13)
+which would print out
+</p>
+<p>
+DATA. FROM
+EXPERIMENT 1 (assuming that L had a value of 1)
+</p>
+<p>
+P80 and Profortran recognite ten different types of I/O field descriptor:
+Alphanumeric [A &ndash; 2, 0 &ndash; 9 ete.)
+</p>
+<p>
+Double precision numerse
+</p>
+<p>
+Exponent form {e g 1 1606 = 11,000]
+</p>
+<p>
+Floating poine [eg 12 34)
+</p>
+<p>
+(cnn be used for floating point or exponent)
+Hollerieh (string)
+</p>
+<p>
+alternative to Hoderith
+</p>
+<p>
+Integer data [e g. 12, $60)
+</p>
+<p>
+Logital [T(rue) c F(alee)] &ndash; not often used.
+optional scaling descriptor used with D.E,P and G
+conversions either ns a maltiple or # fraction
+blank space
+</p>
+<p>
+cor)
+</p>
+<p>
+These are fairly standard for most FORTRANS but NFortran does not have Double
+Precision or the scaling descriptor P. It does have T (tabulation), K
+(hexadecimal) and 2 (inhibit &lt;erj1&pound;&gt; on output) which might be useful
+</p>
+<p>
+Most users will only be concerned with A.&pound;,P.H.1 and X descriptors: apart from
+the Wand Y descriptors, which have the general forms nll or nX where n is the
+umber of coluans each descriptor covers, the rest have the operational form c2y
+where &copy; ig the suaber of repetitions of the field descriptor if this it grater
+than 1, Zap the descriptor type and y giver inforaation sbout the total width
+of field required For each repetition.
+</p>
+<p>
+Some examples vould not come amiss here &ndash;
+</p>
+<p>
+LOA indicates 10 alphanumeric fields each 4 columns vide
+</p>
+<p>
+Fe&rsquo;2 indicates 1 exponent field 8 columns wide, where there are two
+Higures after the decimal point This 12343.6) is represented
+Ss 012605 (where the&rdquo; represents @ blank colunn ia which
+nothing ie printed)
+</p>
+<p>
+B12 5 ie. a single exponent field of 12 columns in which 5 Figure
+Follow the decimal point and = figuee such ay -12.349678 would
+be cepresented ae 012303602 This implies thar the number
+As tfuncared (shortened) and loses some accuracy.
+</p>
+<p>
+F320 shows that a floacing point number oceupying 3 coluans ig
+Involved which has no significant numbers to the cight of the
+Gecinal point, /.0 er 20 would be shows ia thie way
+</p>
+<p>
+F8 4 Shows that the floating point (real) number occupies 6 coluant
+and has 4 digits to the right of the decimal point 123 4367
+{2s suitable example: s real number such as&rsquo;-34 89085 would
+bbe &lsquo;shown se 34 8909, &lsquo;since the field only permits &copy; teximum
+of 4 digite after the decimal point Overflow can occur if the
+umber of digits to the left of the decimal point cannot be
+Fitted Into the space avaliable &ndash; thus 12456 would be
+printed ar *56&rsquo;- the esterisk shows that the field width was
+foo saall
+</p>
+<p>
+413 indicates that there are four 3 digit integer fields involved;
+thus 121, 245, 778 and 200 ave repeesented as: 123249778200
+while -30, 2, 45 and 559 are represented by -30&rdquo; 2.43559.&rdquo; In
+the latter case, the *-&rdquo; sign occupies 1 of the columns in its
+Eleld and the numbers with less than 3 digits are right
+jaseitsea
+</p>
+<p>
+4X thie shows that 4 columns are to be skipped (not read or
+printed)
+</p>
+<?php columnEnd(1); ?>

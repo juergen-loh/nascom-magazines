@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+COTYPE x 4) + F)). Store the most significant byte first. Use a
+couple of shift lefts to aultiply by 2 and 4, and don&rsquo;t corrupt
+</p>
+<p>
+anything! &lsquo;. You may now send your Nascom off to CONTROL. But
+wait&rsquo;! The table of routine addresses is, as yet,
+Unconstructed.
+</p>
+<p>
+This table will start with the address of routine 0 then 1,
+2 etc, finishing with that ef routine 7. CONTROL will work along
+Similar lines to the last routine described. You now want, OK
+need, to know about the other routines. They are. subroutin
+and as such MUST end with a RET (&pound;C9) instruction. This appli
+to all of the routines 0 to 7.
+</p>
+<p>
+Routine 0 &ndash; This is, in effect, a jump but depending on the
+value held in H (not of HL fame). Hcan be 0 through 7. So a
+table will need to be built directly after the &pound;00 byte calling
+this routine. This table will be 1e bytes long and) contain &amp;
+addresses, corresponding to H=0, H=1 ete. Work out which address
+is needed&rsquo; and then put it into HL&rdquo;. This will trick CONTROL into
+effecting = very complex 8 way jump. Note that bit 7 of the
+calling code for this routine must NEVER be set else when
+CONTROL is returned to, it will think that has just finished the
+Tast routine and not loop back to do our carefully prepared
+Jump. For some unknown reason this routine played havoc with ay
+Gisassembler. That is, until [ remembered that Routine O is the
+first routine &ndash; Not Routine 1.
+</p>
+<p>
+If I might digress for a white to give a short analogy as to
+what I see CONTROL as. CONTROL seems ta. be a microprocessor
+itself. It has HL&rsquo; as its program counter. Bits Oy 1 and. 2
+represent the opcode, bits 3, 4 and S the data (if required).
+Routines 0 to 7 are just units, black boxes if you like (you
+haven&rsquo;t heard of the Blach-Box Theory&rsquo;&rsquo;&rsquo;), within the processor.
+Routine 015 just a complex jump instruction. Some of the other
+routines are for handling lists. I hope this analogy is useful
+to you. I know &ndash; Clear as mud!!!
+</p>
+<p>
+And now a description of Routine 1.
+Routine 1 This routine will adda string of characters to
+STRDIS. Don&rsquo;t forget the painter/marker system has to be
+Updated. The first character will be pionted ta by HL&rsquo; and when
+the routine is cimished HL&rdquo; oust point to the byte after the
+last charecter that was added. Confused&rdquo; I was, but if you can
+do this properly then a lot of work (and RAM) is saved later on.
+This routine can be compared to STRDIS-STRDIS+&rdquo;xxxxxx&rdquo; in BASIC.
+Where scone 4 the literal string to be added. May I suggest
+Setting bit 7 of the last character of your literal? Thus, when
+this is sensed your routine will know the last charecter.
+Reaember to reset bit 7 before adding to STRDIS.
+</p>
+<p>
+For example
+01 a1 4z 43 C4 nn
+</p>
+<p>
+will cause ABCD to be added to STRDIS, leaving HL&rsquo; pointing to
+nn. C4 is ASCII for D, but with bit 7&rsquo;set. What will
+</p>
+<?php columnEnd(1); ?>

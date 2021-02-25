@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+10.
+</p>
+<p>
+What is wrong with Pascal? (Shock Horror!)
+</p>
+<p>
+Honestly, tnere really is one thing missing from Pascal, and it just
+happens that-this is the one thing BASIC is better at than almost anything else
+(that takes care of the ones I don&rsquo;t know! PIC X(12), indeed!) String handling
+is easy in Pascal, as long as all the strings are the same length! You can not
+use things like
+</p>
+<p>
+A$ = LEFT$(B$,4) + MID$(A$,3,3) + " Wowee!&rdquo;
+even if you want to. But of course, you can define a set of procedures and
+functions that would make this sort of thing possible. I have started work on
+just such a set of procedures, and have made a little progress, some of it in
+the right direction...
+</p>
+<p>
+It is necessary to learn how to use the &ldquo;dynamic variables&rdquo; of Pascal,
+as the other way of approaching the problem, using a huge array of characters,
+while probably faster, takes up memory all the time. That defeats one of the
+objects, so the dynamic approach it is. The things BASIC can do to its string
+variables include setting them to &ldquo;empty&rdquo;, concatenation, and the ever useful
+LEFT$, MID$ and RIGHT$. Also useful are the ability to type into a string from
+the keyboard, and to print strings out. Some sort of clue as to how difficult
+such things are to program in Pascal can be gained from P. J. Brown&rsquo;s remarks on
+the matter, when his exponent of structured programming, Professor Primple
+remarks, &ldquo;My program to analyse English sentences works well, but there is a
+small restriction that all sentences must contain ten words and each word must
+be of five letters.&rdquo;
+</p>
+<p>
+The stuff I have written so far starts out with these declarations:&ndash;
+</p>
+<p>
+CONST
+longeststring = 256; {Can be more, or less. }
+longestname = 8; {Length of stringnames.
+TYPE
+</p>
+<p>
+stringname = PACKED ARRAY [1..longestname] OF CHAR;
+stringlength = 0..longeststring;
+stringcontents = PACKED ARRAY 1..longeststring | OF CHAR;
+</p>
+<p>
+stringitem =
+RECORD
+name : stringname;
+length : stringlength;
+contents : stringcontents;
+next : &ldquo;stringitem
+END;
+</p>
+<p>
+stringpointer = &ldquo;stringitem
+</p>
+<p>
+In most versions of Pascal, &ldquo;&ldquo;stringpointer&rdquo; would have been declared before
+&ldquo;stringitem&rdquo;, and &ldquo;next&rdquo; would be of type stringpointer. The Hisoft version
+won&rsquo;t let you use the slight forward declaration involved, but this is not a
+handicap, as it is easily avoided, as shown. Anyway, the declarations above show
+the sort of data structure I am trying to use in my string handling routines.
+Whenever a new string is needed, the program includes a NEW(soandso), where the
+&ldquo;soandso&rdquo; is the name of a pointer. Space is then allocated by the run time
+routines for another record of the type shown above. It may prove to be
+unnecessary to write the system after all, since an Apple owner I know has
+suggested that the UCSD string handling routines might work. I&rsquo;ll let you know
+if they do... And now a rest, while I try to beat my score of 232 at Adventure.
+How DO you get past the Plover Room, without falling down a pit?
+</p>
+<?php columnEnd(1); ?>

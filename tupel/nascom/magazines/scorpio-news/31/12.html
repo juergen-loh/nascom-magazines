@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<p>
+advanced. The Company that I work for (AIRO) uses a small number of 80-BUS
+products as controllers for some rather specialized audio systems that we design
+and build for Concert Halls and similar buildings in this Country and overseas. We
+also use Gemini machines in a network for our in-house administrative functions,
+word processing etc.
+</p>
+<p>
+For a current project for an overseas client we needed to incorporate an audio
+frequency oscillator with programmable frequency control to be used for
+installation and subsequent calibration of the system. We decided that this could
+best be achieved by building the oscillator into the control computer itself as this
+would provide us with the flexibility to use the host controller for a number of
+ancillary tasks and to reduce the amount of equipment that we will need to take on
+site with us for the installation work. We therefore commissioned the manufacture
+of an A/D and D/A board that would give us the required level of control in both
+the time and frequency domain.
+</p>
+<p>
+The digital design and production of the board were entrusted to CAT Systems of
+St Albans who have considerable experience with DSP equipment while AIRO was
+responsible for the audio circuitry. The resulting &ldquo;board&rdquo; needed to operate quite
+quickly and to have some intelligence of its own and the designers chose to use the
+Texas Instruments TMS 320C25 digital signal processor chip running at 25 MHz
+and driving a 14 bit D/A convertor (DAC 1200KP- V) and complementary A/D
+device (TDA 1534). The design effectively provides a DSP co-processor board with
+a Z80 control interface. It is equipped with its own 64 k of 16 bit static RAM and
+EPROMS to contain software that can be transferred to RAM if required.
+</p>
+<p>
+The Z80 control interface uses a PIO to drive essential control lines and a DMA to
+transfer commands, data and programs into the TMS memory space or to read
+information back. Although the DMA is a horrible device to program this approach
+does allow the Z80 and TMS processors to operate asynchronously.
+</p>
+<p>
+The Z80 DMA is only a 16 bit device and to enable transfers to be made to and from
+the full 64 k x 16 bit TMS memory space and 512 k x 8 bit area allowed for in the
+80-BUS specification, 4 bits of the PIO are used to latch the high order address lines
+when the DMA is bus master. This means that the full capabilities of the 80-BUS
+range of products are unaffected by this design. However, you do have to know what
+you are doing. We discovered the hard way that using a GM813 or GM811 combined
+with a 64 k dynamic RAM board works very nicely with the memory at Page 0, but
+if the GM811 is teamed with a static RAM card (GM 863) you may think you are
+using the default Page 0 whereas in fact you are using Page 7. This did take quite a
+time to sort out out as unfortunately at the time we did not have the circuit for the
+RAM card!
+</p>
+<?php columnEnd(1); ?>

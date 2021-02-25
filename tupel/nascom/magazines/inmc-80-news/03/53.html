@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+A word of warning about the action of the 74LS74, it fooled me (fortunately I
+know Dave Hunt&rsquo;s phone number, and he provided the answer). The 74LS74 circuit is
+cleverer than it looks, it&rsquo;s primed by the RESET signal, and then counts the first Ml
+signal it sees, it ignores the rising edge of the first Ml signal, but the output is
+tripped on the falling edge of the next Ml. This occurs before the next address from
+the Z80 has stabilized on the bus and not after, as I thought.
+</p>
+<p>
+The selection of the required jump address is made by forcing pins 3, 6, 10
+and/or 13 low (that is, connected to 0V), or leaving the connections open so that the
+10K resistors pull the inputs high.<br>
+A12 = pin 3 &nbsp; A13 = pin 6 &nbsp; A14 = pin 13 &nbsp; A15 = pin 10<br>
+Personally, I use a DIP switch here, but permanent links could be used. You could use
+this circuit to jump straight to Basic on ROM (at E000H) if you wished. If you want to
+move the EPROM area and the video up to F000H (for CP/M, or other uses, then this is
+simply accompished by selecting P4 to 12 on the RAM (A) board. This allows MEXT to
+pick up an F000H decode on &lsquo;reset&rsquo;. Obviously, this may be any one of the 16 possible
+4K boundaries allowed by the RAM decoder.
+</p>
+
+<h4>Parts list</h4>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+
+<table style="width: 100%">
+
+<tr><td style="width: 20%">1</td><td>74LS257</td></tr>
+<tr><td>1</td><td>74L8367 (IC3 from buffer board)</td></tr>
+<tr><td>3</td><td>16 pin dil sockets</td></tr>
+<tr><td>6"</td><td>16 way ribbon cable</td></tr>
+<tr><td>1</td><td>pc Veroboard</td></tr>
+</table>
+
+<?php columnChange(2); ?>
+
+<table style="width: 100%">
+<tr><td style="width: 20%">1</td><td>74L874</td></tr>
+<tr><td>2</td><td>16 pin dil header plugs</td></tr>
+<tr><td>1</td><td>14 pin dil socket</td></tr>
+<tr><td>1</td><td>4 pole, dip switch (optional)</td></tr>
+<tr><td>4</td><td>10K resistors</td></tr>
+</table>
+
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+
+<p class="noindent">
+<br>
+(Ed. &ndash; Gemini Microcomputers have brought out a small kit based on this circuit and it
+uses a wire-wrap socket to plug into the buffer board. Price 10.00 + VAT and available
+from your distributor.)
+</p>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-53-1.png"); ?>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

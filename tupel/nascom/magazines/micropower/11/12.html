@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+PRINTERFACE<br>
+THE EPSON MX-80 F/T
+</h1>
+<h2>
+by P. Whittaker
+</h2>
+<p>
+The Epson MX-80 is a nine-wire dot matrix printer which as supplied has a
+standard Centronics 8 bit parallel interface. This can be connected directly to a
+Nascom PIO, so all that you need to run the printer is the software to interface it to
+the output ports. The first requirement is an initialisation routine to set the eight bits
+of one port to output lines, for transfer of data to the printer, and to configure
+the other port for control of the transfer. The simplest way to synchronise the
+machines only needs the &lsquo;busy&rsquo; line from the printer, which is low whenever the
+printer is able to receive data, and a strobe signal from the computer, which is
+taken low to tell the printer that data is to be read in.
+</p>
+<p>
+In the standard Nascom port A of the PIO is addressed as port 4, and the
+control port which specifies its configuration is port 6; similarly, data for port B is
+output to port 5, and control words to port 7. A suitable PIO initialisation routine
+is thus:
+</p>
+<pre>
+        LD A, &pound;CF               Control word to specify mode 3
+        OUT (6) , A             Send this to port 6
+        XOR A                   Next byte sent to port 6 specifies which
+        OUT (6), A              lines are outputs (0), which inputs (1)
+        LD A, &pound;CF               Now set port B to mode 3
+        OUT (7), A
+        LD A, 1                 Use bit 0 as input (for &lsquo;busy&rsquo; line)
+        OUT (7), A
+        LD A, 2                 Set strobe line high
+        OUT (5), A
+</pre>
+<p>
+If you are using Nas-sys, the initialisation routine should end by storing the
+address of the printer output program at &pound;0C78, so that when the user I/O is
+activated with command U output will be routed to the printer. With the earlier
+monitors the corresponding address is &pound;C4B, but the output program will have to
+call the CRT routine. After a reset the output address will have to be reinserted, but
+the PIO will not need to be initialised again.
+</p>
+<p>
+The output routine has to test the &lsquo;busy&rsquo; line before sending a character to
+the printer; as soon as this line is low, the character is output at port A and the
+strobe line is pulled to zero volts.
+</p>
+<pre>
+        PUSH AF                 Save the character to be printed
+TSTO    IN A, (5)               Read port B
+        RRCA                    Rotate bit 0 to carry flag
+        JR C TSTO               Loop while bit 0 is high
+        POP AF                  Recover character
+        PUSH AF                 Resave
+        OUT (4), A              Output to printer
+        XOR A                   Strobe signal to printer
+        OUT (5), A
+        LD A, 2                 Reset strobe high
+        OUT (5), A
+        POP AF                  Recover character
+        RET                     End of routine
+</pre>
+<?php columnEnd(1); ?>

@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+On completing the wiring, 1 suggest powering up the smulator
+board without any chips inserted. The supply pins may be checked
+at this stage af each IC socket for correct polarity. The chips
+may then be inserted one af a time whilst&rsquo; monitoring supply
+Current for excessive drain.
+</p>
+<p>
+A cable may be made up with a 16 pin header to connect to
+SKT 1 at one end and an appropriate connector for ports A and B
+of the Nascom, in my Case a Canon type. The connection diagram
+shows the pin numbers for direct connection to the two 16 pin
+headers on a Nascom&nbsp;1. Finally, you can put the whole thing in a
+box if you want to be slick
+</p>
+<p>
+Using the Emulator.
+</p>
+<p>
+Being simple-minded, I tend to use one extremely basic
+loader routine which transfers a 2K block of RAN from the Nascom
+to the emulator. The routine is relocatable but resides in ROM
+at address D42F which happens to be convenient in my systee. The
+Foutine is so basic that, as it stands, the data to be
+transferred must reside at aBdress 4000H in the Nascom memory.
+Tt would be easy enough to pick up an extra parameter with
+Nas-Sys E command to improve this...
+</p>
+<p>
+The following table gives the functions of the emulator
+contrel lines, driven by the lower five bits of Port A, which is
+Configured as&rsquo;an output port at all times. Port B is &lsquo;used for
+data transfer and must &ldquo;be configured for output only when
+leading data, otherwise it is left set up for input.
+</p>
+<p>
+Control Lines
+</p>
+<p>
+Port A bit Name Function
+&lsquo; SWITCH Enables access by host when HIGH
+1 ADCLK A low to high transition on this line
+advances IC 1&rsquo;s count by one
+2 &lsquo;ADRES @ high level on this line resets IC
+1
+3 re Write Enable for the RAM, active low
+4 cs Chip. Select for RAM. Note active
+HIGH
+</p>
+<p>
+Port B bits @ to 7 are connected to data bits &copy; to 7 of the
+emulator respectively.
+</p>
+<p>
+To load the eaulator, the program must generate the
+following sequence:&ndash;
+</p>
+<p>
+1. Port A is configured as an output.
+2. The RAM is deselected and a Reset applied to ADRES.
+3. SWITCH must be HIGH to put the computer in control
+4, Pointers are set to indicate the starting address of
+the data to be transferred and the number of bytes
+(normally 2K or 800H).
+</p>
+<?php columnEnd(1); ?>

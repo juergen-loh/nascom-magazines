@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+all of five minutes. I now have an 8 AMP bridge which, although bigger,
+can be easily fitted with the aid of a piece of aluminium which also
+serves as a heat sink.
+</p>
+<p>
+Since the RAM board draws about one and a half amps a healthy
+earth is required &ndash; a thick piece of wire from the power supply to the
+expansion board. However, this creates an earth loop, which perhaps is
+not desirable. (Suggest that all earths then taken from expansion board
+Ed.)
+</p>
+<h4>
+Getting It Working
+</h4>
+<p>
+With the kit now assembled and 8K of RAM plugged in that should
+have been the end of the story, but there were the inevitable problems.
+The memory could be read from and written to&nbsp;, but very soon the
+machine would lock up. On power-up everything looked fine but the
+system would not initialise properly on pressing the reset key. Many
+hours were spent looking for non-existant faults. Eventually it became
+apparent that the MEMEXT signal was at fault but not why. With the
+internal memory select used there was no problem. With external memory
+select used the problem reappeared, but on monitoring MEMEXT with an
+AVO it disappeared again. In an attempt to cure the fault the chips at
+each end of the MEMEXT signal were changed but to no avail. Since the
+AVO cured the problem a resistor was soldered between the signal line
+and earth, this made a minor improvement. Next a capacitor was tried
+between the signal and earth at the NASCOM 1 end, this fixed it.
+Decoupling the expansion board end had no effect.
+</p>
+<h4>
+Conclusion
+</h4>
+<p>
+This board is not easy to build and may require a small
+decoupling capacitor to be added to the main N1 board on the MEMEXT
+line. Having this signal so close to the earth and the +5v lines would
+appear not to be a good idea. A criticism of the design is that
+tri-state buffers are used unnecessarily on the control and address
+lines, surely ordinary buffers would have done the job. Since getting
+this expansion working I have experienced no other problems and am very
+happy with it.
+</p>
+<p>
+Mr. Curtiss neglected to mention the manufacturers of this
+product, but we believe it is the one supplied by Comp Components of
+Barnet.
+</p>
+<p>
+There were a couple of other points in the letter attached to
+Mr. Curtiss&rsquo; article which ought to be mentioned. One of the reasons he
+gave for choosing the S-100 mother board was that it allowed greater
+choice of &lsquo;goodies&rsquo; that may be fitted. Whilst generally true, this
+particular board is not truly S-100 compatible, and may give rise to
+problems under special circumstances. Another reason was that in his
+opinion the Nas-bus was responsible for some of the trouble experienced
+with Nascom expansion. In our opinion the trouble is not concerned with
+the Nas-bus but with the series 1 memory card. Happily these troubles
+can all be cured. Finally Mr. Curtiss asks why a non ASCII keyboard was
+chosen for Nascom and says, &ldquo;Surely it would only cost a few pounds
+</p>
+<p style="text-align: right">
+(continued on <a href="../../18/text/">page 18</a>)
+</p>
+<?php columnEnd(1); ?>

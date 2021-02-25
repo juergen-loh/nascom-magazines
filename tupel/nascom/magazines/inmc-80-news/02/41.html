@@ -1,0 +1,91 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+The compiler contains the run time support routines, which reside from 2D63H to 318AH,
+and a table of the various addresses for these routines is stored at 318BH to 3200H.
+It would be possible to move these routines into EPROM, having made any necessary
+changes to addresses, and to change the position of the address table &ndash; I&rsquo;ll have a go
+in about a months time.
+</p>
+<p>
+The compiler supports only Pascal reserved words in capitals, which I feel to be a
+pity, as the program is harder to read. It has a number of extensions to &ldquo;Standard&rdquo;
+Pascal such as &ldquo;CALL&rdquo; to call a machine language routine at a specified address &ndash;
+&ldquo;MEM[I]&rdquo; to access the value of the byte stored at I, and also<?php spChar("zwsp"); ?>to store a byte at that
+address, and an &ldquo;ELSE&rdquo; addition to the &ldquo;&nbsp;CASE&rdquo; statement.
+</p>
+<p>
+Using a % sign indicates that the number following is in HEX or is to be printed in
+HEX, and a " indicates that the ASCII character having that value is to be printed.
+These are departures from standard Pascal, and as such ought probably to be frowned
+upon, but I feel that they have been introduced with some justification. After all, on
+a micro computer, the ability to specify addresses in HEX is something we all take for
+granted &ndash; it&rsquo;s the way addresses come&nbsp;! Basic please copy&nbsp;! &ndash; and the MEM[I] is the
+equivalent of the Basic PEEK and POKE.
+</p>
+<p>
+This is a brief description of the compiler, after about a week of fiddling with it. I
+would like to run the BENCHMARK programs on it to give a comparison with Basic, but
+that hasn&rsquo;t been possible due to the indisposition of my Nascom, and its subsequent
+hospitalisation in Nascom&rsquo;s repair dept.
+</p>
+<p>
+The parentage of the compiler would appear to be the Yuen and Chung TINY PASCAL
+published in BYTE. It offers one considerable advantage over that implementation &ndash;
+SPEED! and MEMORY. The Chung and Yuen takes about 16K of memory for the first pass,
+plus whatever the source program takes up, and about 9k for the second pass, plus
+whatever the object program takes up, in addition to the basic interpreter. Because it
+is interpreted, it is very slow. The INTEGER PASCAL takes up about 10K (for both
+passes) and the source buffer, and the object code space, but is very much faster to
+compile.
+</p>
+<p>
+The documentation is some 14 leaves of typescript, describing briefly the various
+commands, and giving syntax diagrams, a sample program and a Hex listing. It could do
+with rewriting and considerable extension and elaboration. It would also be a good
+idea if there were given a source listing for the runtime routines, and instructions
+on how to relocate them to allow them to be blown in EPROM. This would obviate having
+to load a compiled code from tape at an address &ndash; say 8000H, &ndash; and the runtime
+routines at 2D63H to 318H. The other problem with this compiler is that it doesn&rsquo;t
+allow you to use certain areas &ndash; for example 1000H to 3200H, or the location of the
+source buffer, to store the object code it creates &ndash; and it is not possible to place
+the object code on tape, and then reload it after you have finished with the compiler.
+</p>
+<p>
+Conclusions: An interesting if rather expensive introduction to Pascal, which could do
+with attention to a few points &ndash; tidy up the editor and extend the documentation in
+particular.
+</p>
+<p>
+Implemented are the following
+</p>
+
+<?php columnStart(2); ?>
+<pre>
+CONST ...;
+VAR ... : INTEGER;
+    ... : ARRAY [...] OF INTEGER;
+BEGIN .... END
+IF....THEN....ELSE
+CASE....OF....:....ELSE....END
+FOR...:=...TO/DOWNTO...DO...
+READ(...)
+END.
+</pre>
+<?php columnChange(2); ?>
+<pre>
+PROCEDURE....(....,;...;
+FUNCTION ....(....,;...;
+MEM[...]:=...
+BEGIN ...:=...
+WHILE...D0...
+REPRAT...UNTIL...
+WRITE(...)
+CALL(...)
+</pre>
+<?php columnEnd(2); ?>
+
+<p>
+Integer arithmetic operations are available but with no precedence ordering &ndash; strictly
+left to right evaluation.
+</p>
+<?php columnEnd(1); ?>

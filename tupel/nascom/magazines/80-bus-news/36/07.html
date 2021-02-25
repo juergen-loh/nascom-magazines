@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+rmstecscennass i RSMMC wen on oe
+</p>
+<p>
+DOCTOR DARK&rsquo;S DIARY &ndash; Episode 23.
+</p>
+<p>
+NASIO Nasties!
+</p>
+<p>
+Thanks to Adrian Perkins&rsquo; article in Volume 3 Issue 2, I have stopped a
+mysterious fault that was occuring on my system. I would go into great detail
+about the various combinations of boards that would or would not work with the
+two different CP/M&rsquo;s I use, but it is so complex to explain that I prefer not
+to go on about it in too much detail. Suffice to say that I was blaming my
+Belectra board when it was not to blame. On putting the old Nascom I/O board
+back into use, I found no more trace of the fault. I suspect, and that is as
+far as I get with my limited hardware knowledge, that the GM809 disk
+controller board I am using, which I thought was supplying NASIO, is not doing
+it in the recommended way. I don&rsquo;t understand all this open collector business
+too well, so I may be wrong. Perhaps an expert on that board will enlighten
+us?
+</p>
+<p>
+MONITOR&nbsp;.COM NASTIES!
+</p>
+<p>
+Nice to see that Adrian has also fixed the bugs in MONITOR.COM for us. I
+knew about the fault where the last block of anything was loaded twice, but
+didn&rsquo;t bother to find out why it was happening. The reasons for this slapdash
+approach? Well, it was doing what it was supposed to do, and that was load in
+the Nas-Sys based games I wanted to run, and the extra block was doing no
+harm. My children, I caution you against spending all your time improving the
+operating system software, when you could be writing application programs for
+money, or even better, playing adventure games! And no, I didn&rsquo;t do my kludges
+in 8080 code, Adrian. I did them on paper in Z80 assembly mnemonies, because
+the program was too small to bother with using assemblers, linkers and the
+like. I like programming in Z80, and when there were only Nascom&nbsp;1&ldquo;s with IK,
+I used to do all my programming directly. Don&rsquo;t be misled by the fact that the
+block moves are not used where the two sections of RAM get interchanged. If
+there was a Z80 operation that would swap two blocks of memory, I would have
+been delighted to use it. Incidentally, if anyone is interested, I have a
+labelled, commented disassembly of my code on disk. I sent it out on the Ring
+of Iron, but that seems to have gone into hyperspace. If anyone wants it for
+the purpose of making improved versions of Nas-Sys for themselves, or indeed
+everyone, then send me a disk (Pertec drives, DDDS).
+</p>
+<p>
+More thoughts about monster programs.
+</p>
+<p>
+Having written up my ideas on chaining programs in Hisoft Pascal, I was
+thinking about ways of writing groups of large programs, when I realised that
+straightforward chaining may not be enough. Suppose you wanted control to be
+returned by a program to the program that had activated it, no matter what
+that program was called? It seemed to me that what was needed was some sort of
+equivalent to GOSUB in BASIC, or procedures in Pascal. It would be nice, I
+decided, if recursion was possible. All this thinking made my brain hurt, so I
+did a bit of drinking instead, and soon realised that a file that behaved like
+a stack was needed, along with a couple of procedures called &ldquo;call&rdquo; and
+&ldquo;return&rdquo;.
+</p>
+<p>
+What &ldquo;call&rdquo; would have to do would be as follows. Create a file called
+&ldquo;$$$.SUB&rdquo; and put the name of the program to be called in it, complete with
+all the extra, unexplained spaces I mentioned last time. Add the name of the
+currently running program to the &ldquo;top&rdquo; of the stack file. End the current
+program.
+</p>
+<?php columnEnd(1); ?>

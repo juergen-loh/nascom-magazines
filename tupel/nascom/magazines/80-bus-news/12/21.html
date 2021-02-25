@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+21
+</p>
+<p>
+Use Modify to change the two bytes at 0621H
+</p>
+<p>
+from 21 7A
+</p>
+<p>
+to DF 5B
+I&rsquo;m sure you can guess what that does, and if you can&rsquo;t, you can look it up in the
+Nas-Sys manual under &lsquo;how to end a program&rsquo;. Excuse the digression. Once you have
+Zeap in your memory use the Modify command on the following:
+</p>
+<p>
+Address Was change to
+1849 F4 04
+</p>
+<p>
+and at 15EB, 1644, 1853, 185B, 1B36, 1B94, 1BFD, 1COE, 1C17, 1020, 1C2c
+1082, 1CBF, 1CC8, 1CD2, 1DE2, 1B20, 1E30, 1E40, 1E73, 1EE7, 1FBA
+change OB FB
+</p>
+<p>
+All the above changes move the screen to the place CP/M expects to find it except
+1849, which took rather a while to find&nbsp;... it&rsquo;s used to locate the cursor on the
+screen, and is the 2&rsquo;s complement of the number they actually mean...
+</p>
+<p>
+I&rsquo;m now working on disk save/get routines from within ZEAP, though where
+I&rsquo;ll put them I don&rsquo;t know; probably I&rsquo;ll remove the +/&nbsp; option adjust. that gives
+me the two command letters I require, and a bit of room inside ZEAP. I guess one of
+the routines will have to appear at 2000H, so I&rsquo;ll have to move the start of text to
+allow for that. Full marks to the writers of ZEAP for making that bit easy, if
+nothing else. By the way, all this surgery upsets the routine that checks that all&rsquo;s
+well within ZEAP, so you&rsquo;ll get Error 90 every time you do a cold start. The way
+around that is to find a unused byte, such as i1FFDH (I hope) and fiddle with it till
+ZEAP starts OK.
+</p>
+<p>
+I&rsquo;ve also got Nas-Pen (compatible) working (guess what I wrote this on)
+under CP/M but I can&rsquo;t for the life of me remember how I did it. Still, someone else
+has done it, and documented it too, so find that and the world is yours.
+</p>
+<p>
+PiP PiP Chaps.
+</p>
+<p>
+&ldquo;INPUTting and READing Double Precision Constants (continued)
+</p>
+<p>
+2250 REM MH IS MOST SIGNIFICANT HALF
+2260 MH=VAL(LEFT$(A$,K))
+2270 XP=XP-K+PT : REM ADJUST EXPONENT
+2280 U=USR(DP)MH+LH&amp;A$ : REM MANTISSA
+2290 IF SN$="-&rdquo; THEN U=USR(DP)-AS&amp;AS : REM SIGN
+2300 REM NOW FLOAT IT
+2310 IF XP=O THEN RETURN
+2320 IF XP&lt;O GOTO 2350
+2330 FOR I=1 TO XP:U=USR(DP)A$S*10&amp;A$:NEXT I
+2340 RETURN
+2350 FOR I=1 TO ABS(XP):U=USR(DP)A$/10&amp;A$:NEXT I
+2360 RETURN
+-- 000 --
+</p>
+<?php columnEnd(1); ?>

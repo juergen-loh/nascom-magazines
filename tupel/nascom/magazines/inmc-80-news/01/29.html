@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h1 id="article1">
+Review of Cottis-Blandford Cassette Interface.
+</h1>
+<?php columnChange(3); ?>
+<h3 class="author">
+By J.R. Keneally.
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+This note describes some experiences in using the cassette interface
+supplied by Newbear Ltd. (Kit form, current price 12.50), and may be of
+use to anyone wishing to upgrade the speed and reliability of the
+cassette interface on their Nascom&nbsp;1.
+</p>
+<h4>
+Technical details.
+</h4>
+<p>
+1. Uses CUTS type encoding (one &ndash; 2400Hz, zero &ndash; 1200Hz).
+</p>
+<p>
+2. Capable of running at 300 to 2400 bits per second.
+</p>
+<p>
+3. Fairly easy to interface to the Nascom, though the method suggested
+by Newbear can be improved upon (eg: see below).
+</p>
+<h4>
+Value for money&nbsp;?
+</h4>
+<p>
+The kit seems reasonable value for money, but there were several
+pitfalls for the unwary. The two main ones were:
+</p>
+<p>
+1. The printed circuit board lay-out is poor, and must be very
+carefully checked for bridges across tracks. Also, it is very easy to
+cause bridges when soldering certain connections.
+</p>
+<p>
+2. The documentation is wrong in places, and vague in others. For
+example, two of the board terminal points were labelled incorrectly on
+the board lay-out diagram, and it was not stated anywhere that all the
+output terminal points had to be wired to go to the outside world via
+spare inverter-buffers in IC3.
+</p>
+<p>
+The moral is to cross-check everything against the various diagrams
+etc.
+</p>
+<h4>
+Does it work&nbsp;?
+</h4>
+<p>
+On first switching on the finished kit, the transmitter section worked
+properly, and the tapes could be read back on the lowest speed of 300
+bits/sec, though with low reliability. Clearly, there were no wiring
+faults. The problem was traced to two causes:
+</p>
+<p>
+1. The amplitudes of the high &amp; low frequency tones on replay were
+different by a factor of about three times. This was due partly to the
+low-pass filtering used on the transmitter output circuitry, and
+possibly also due to poor tape recorder frequency response. When the
+transmitter output circuit was set up so that roughly equal amplitudes
+were obtained on replay, a big improvement in reliability was obtained.
+This required a high-pass RC filter, just the opposite of that
+provided. Obviously, adjustments are required to obtain good results
+with particular recorders.
+</p>
+<p>
+2. The input circuitry from the replay has no means of adjusting the
+D.C. bias level, so as to give an even mark/space ratio on pin 10 of
+IC10 (a). This ratio seems to be very critical for high reliability,
+and the required bias can easily be obtained using a potentiometer
+across the 5V supply. The trick seems to be to record a section of tape
+having no data on it, i.e just a continuous high frequency tone at 2400
+</p>
+<?php columnEnd(1); ?>

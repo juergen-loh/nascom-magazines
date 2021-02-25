@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Notes on CP/M 3 Password Protection
+</h1>
+<h3 class="author">
+by A.G.H. Sibley
+</h3>
+<h2>
+Introduction
+</h2>
+<p>
+The CP/M 3, or CP/M-Plus, operating system for 8080/Z80 machines provides two
+levels of password protection, namely a disk restriction and a file protection system.
+Exactly how the passwords are stored in an encrypted form and how: the
+programmer may access these areas to decode the password, in tlie event of a loss
+of memory faculties, is explained below.
+</p>
+<p>
+In order to use password and date time stamping of files,.a&rsquo;CP/M 3 utility,
+INITDIR.COM, is run to reorganise the directory area. This creates space in the
+disk directory for the date/time stamping and passwords but-at the expense of
+halving the number of directory entries. The area which is created i is known as the
+Extended File Control Block, XFCB. &ndash; Lo
+</p>
+<h2>
+Label XFCB construction
+</h2>
+<p>
+oy ON BR
+If the directory area on a disk (which has been label stamped) is examined using a
+suitable utility like DU.COM, then the following should be seen: &copy; .
+</p>
+<p>
+DISK UTILITY v8.6
+Universal Version under CP/M 3.1
+</p>
+<p>
+Type&nbsp;? for help
+Type X to exit
+</p>
+<pre>
+00 00534554 20202020 20434F4D 00000051 *.SET COM. ..Q*
+10 02030405 06070000 00000000 00000000 *..... eee eee eeee
+20 20544553 54202020 20202020 81440000 * TEST &copy; De.
+30 64646464 75757575 12070000 12070000 *dddduuuu........
+40 00444154 45202020 20434F4D 00000016 *.DATE COM....
+50 08090000 00000000 00000000 O0000000 *... cee ec ec eevee&rsquo;
+60 00444952 20202020 20434F4D 00000072 *.DIR COM...xr*
+70 OAOBOCOD OEOF1011 00000000 O0000000 *... cece cece cee e&reg;
+</pre>
+<?php columnEnd(1); ?>

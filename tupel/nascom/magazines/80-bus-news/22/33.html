@@ -1,0 +1,172 @@
+<?php columnStart(1); ?>
+<p>
+GRAPHPAC COMMAND MANUAL Page 9
+</p>
+<p>
+SCREEN
+</p>
+<p>
+Graphpac format:
+SCREEN CC,RR
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To place the cursor at a specified screen co-ordinate ready for
+subsequent PRINT statements.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+On a 25 line by 80 character display, CC is a column number 1-80, RR
+ia a row number 1-25. SCREEN 1,1 specifies the top left character on the
+screen and SCREEN 80,25 specifies the bottom right character.
+</p>
+<p>
+BAR GRAPH STATEMENTS
+</p>
+<p>
+Three commands have been included to allow the construction of
+vertical bar graphs.
+</p>
+<p>
+VBAR (Vertical bar)
+</p>
+<p>
+Graphpac format:
+VBAR CC,RR,N
+</p>
+<p>
+Purpose:
+To display a solid vertical bar on the acreen.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+The bar which is one character wide, is constructed from the bottom of
+the character box specified by the screen position CC,RR for a height of N
+pixels. CC and RR are screen co-ordinates as used by the SCREEN command.
+</p>
+<p>
+VBARH (half tone vertical bar)
+</p>
+<p>
+Graphpac format:
+VBARH CC,RR,N
+</p>
+<p>
+Purpose:
+To display a shaded vertical bar on the screen.
+</p>
+<p>
+Remarks:
+This command acts in a similar manner to VBAR above.
+</p>
+<p>
+DOWN (vertical print command)
+</p>
+<p>
+Graphpac format:
+DOWN CC,RR " any ascii characters&rdquo;
+</p>
+<p>
+Purpose:
+To easily label graph Y axis or vertical bar charts.
+</p>
+<p>
+Remarks:
+CC and RR are screen co-ordinates as used by SCREEN, VBAR and VBARH.
+</p>
+<p>
+GRAPHPAC COMMAND MANUAL Page 10
+</p>
+<p>
+PSI (Put Screen Image)
+</p>
+<p>
+Mbaslink format:
+RESET:PSI &ldquo;DRIVE: FILENAME&rdquo;: RESET
+</p>
+<p>
+Purpose:
+To save the screen image on disk.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+If Graphpac is running with Microsoft&rsquo;s Mbasic under CP/M care must be
+taken to ensure that the correct directory information is sent to the disk,
+PSI should always be preceded and followed with a RESET statement. This will
+ensure that the latest directory information is written to disk before the
+screen image file is created and that Mbasic is aware of the file afterwards.
+The user should also be aware of the effect RESET has on any disk files in use
+by a BASIC program, consult the documentation which accompanied your BASIC
+interpreter.
+</p>
+<p>
+If drive is not specified the currently logged-in drive will be used.
+If the filename is greater than eight characters only the first eight will be
+used. The filetype extension automatically supplied is&nbsp;.IMG (for image).
+</p>
+<p>
+GSI
+</p>
+<p>
+Graphpac format:
+RESET:GSI &ldquo;DRIVE: FILENAME&rdquo;
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To display on the screen an image previously saved, using the PSI
+command.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+Due to the way Mbasic handles the disk I/O it is neceasary to precede
+PSI with a RESET statement, otherwise rubbish may be displayed on the screen.
+It will be noticed, if the user experiments, that RESET is not always
+necessary, however, it is advised that the user conforma with this procedure
+The closing quotation mark should always be included even if GSI is the last
+command in a BASIC statement line.
+</p>
+<p>
+NS (Normal Screen)
+</p>
+<p>
+Graphpac format:
+NS
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To re-configure the screen format for normal text. i.e. 25 lines of 80
+characters.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+This statement has been included to allow convenient switching to a
+normal screen format so that fast scrolling and a normal width display are
+available if required. On execution the screen will also be cleared.
+</p>
+<p>
+GS (Graphics Screen)
+</p>
+<p>
+Graphpac format:
+Gs
+</p>
+<p>
+33
+</p>
+<?php columnEnd(1); ?>

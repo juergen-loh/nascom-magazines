@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p class="continued">
+example above for completeness. When writing programs FOR&nbsp;. . NEXT loops be
+sure not to change the value of the loop variable within the loop, or you may find the
+program gets &lsquo;hung up&rsquo; in the loop. When the program exits from a loop the loop
+variable is one STEP greater then the value set by the TO limit. Try entering:
+</p>
+<pre style="text-align: center">
+FOR A = 1 to 50:NEXT:PRINT A
+</pre>
+<p class="continued">
+when you will receive the answer 51.
+</p>
+<p>
+Right, we can now analyse the operation of the title printing program. Line 10
+clears the screen, defines Z$ as PROGRAM TITLE, and sets up a loop to scan this
+string letter by letter. Line 30 is merely the NEXT part of this loop. However, line 20
+looks quite complex, and certainly refutes claims that Basic programs bear any
+relationship to simple English.
+</p>
+<p>
+In fact the line consists of a single command of the form POKE X,Y, but here
+both X and Y are complex expressions. The memory location into which data is being
+inserted is 3017 + I + (48 &ndash; LEN(Z$))/2. Now 3017 is one less than the decimal
+address of the start of the top line on the Nascom screen, so as I is increased from 1
+in the loop 3017 + 1 steps through the memory locations at the start of this line. To
+this value an offset (48 &ndash; LEN(Z$))/2 is added. This merely deducts the string length
+from the line length and halves the result, to ensure that the title is centred. If the
+number of characters in the string is odd the offset will not be an integer, but the
+POKE command used only the integral part of the expression, try entering POKE
+2531.7,7.3. Thus as the program cycles round the loop, data is inserted into the
+central LEN(Z$) locations of the top line. The value inserted at the Ith point is
+ASC(MID$(Z$,I,1)), that is, the ASCII code corresponding to the Ith character in the
+string.
+</p>
+<p>
+So one by one the letters of the title appear at the top of the screen. Easy, isn&rsquo;t
+it? Well, perhaps it is too easy that I can be accused of making a simple subject
+complicated, but the point of analysing this short program in such detail is that what
+you learn can be carried over to help you write your next program.
+</p>
+<p>
+Finally, here is a simple program to print out the complete ASCII and graphics
+set, with a space between each character:
+</p>
+<pre style="text-align: center">
+10 CLS:FOR A = 1 TO 255:PRINT CHR$(A);:NEXT
+</pre>
+<p>
+In the next article I shall cover further Basic commands, including the double
+PEEK and POKE commands DEEK and DOKE, and examine the syntax and use of
+the PRINT command.
+</p>
+<h3 class="article-stopper">
+* * * * * * * * * * * * * * * *
+</h3>
+<?php columnEnd(1); ?>

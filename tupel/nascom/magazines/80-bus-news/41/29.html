@@ -1,0 +1,125 @@
+<?php columnStart(2, 2); ?>
+<p>
+to see if a global variable with the name
+S$MEMRY has been declared. If $MEMRY
+exists, then L80 will set it to point to the first
+byte of free memory following the program.
+The code below gives a simple example of its
+use and contrasts it with the straight forward
+approach.
+</p>
+<p>
+single assembly multiple assembly
+</p>
+<p>
+entry $memry ;Define Entry point
+id hi, buffer ld hi, {buffer} ;Point at memry buffer
+ld a,{hl) ld a, (hi) ;Load byte
+ld hl,buffer+128 ld hl,(buffer) ;Point at byte
+</p>
+<p>
+:128 in buffer
+ld de, 128
+add hl,de
+</p>
+<p>
+$memry equ $ :SMEMRY same as BUFFER
+</p>
+<p>
+buffer equ $ buffer defw 0 ;Define buffer
+</p>
+<p>
+The basic difference is that &lsquo;buffer&rsquo; becomes an
+indirect reference to the buffer area. There is
+no real difference in the code when loading
+HL with a pointer to the base of the buffer
+area, {one just becomes an indirect load), but
+the irritation is when you want to load the
+address of a specific location offset within the
+buffer area. In the former case the assembler
+has already done the calculation for you, and
+you are still only loading HL with an immediate
+value, while in the latter case you have to
+explicitly do the calculation in your own code.
+</p>
+<p>
+Happy hacking!
+</p>
+<p>
+fg ole care coi ego &raquo; Wee oo aeer nt tem buses
+</p>
+<p>
+@Qverleoked tire facmt that roa,
+is mot mse a@iffaicult gs tape
+</p>
+<p>
+Fame t Linoudint&nbsp;.
+</p>
+<p>
+Converting WordStar text files
+to improve their readability
+</p>
+<p>
+by P.D.Coker
+</p>
+<p>
+One of the problems associated with using WordStar
+is the lack of clear legibility of the text files it
+produces, unless they are being edited by WordStar
+itself. This is perfectly all right on most
+occasions, but there are times, particularly when
+deciding to delete or dump a lot of text files, when
+the tedious business of loading them into Wordstar,
+reading and then exiting, is a bit too much
+trouble. Using the TYPE command in CP/M gives a
+visually disturbing result with lots of inverse video
+characters at the end of words and no nice tidy
+paragraphs. [Ed. &ndash; this is not true of CP/Ms
+installed with CCPZ, i.e. all Gemini Winchester
+based systems, and all Gemini CP/Ms of BIOS 3.0
+or later.] This WordStar &lsquo;feature&rsquo; is also not
+particularly good if you wish to use PEN on a file
+originally written using WordStar, since the formatting
+commands used by WordStar are totally
+different and a lot more time will have to be spent
+deleting them and substituting the appropriate
+commands for PEN.
+</p>
+<p>
+The strange characters which WordStar inserts are
+used for justification, tabulating and other formatting
+functions and they are not normally displayed
+on the screen when WordStar is in use.
+Characters such as these have ASCII codes greater
+than 127 (dec.) and are interpreted by the video
+controller in an 80-BUS system as inverse (black on
+white) letters or symbols. Normal text and some
+other symbols used by WordStar have ASCII values
+from 0 &ndash; 127, and the formatting commands will
+not interfere with these.
+</p>
+<p>
+There are two approaches to this problem. One is
+to use the [Z] option in PIP which sets the parity bit
+to zero; the following command line will read the
+text file B:RUBBISH.TXT and produce a cleaned-up
+version on drive A as GOOD.TXT:
+</p>
+<p>
+ADPIP GOOD. TXT=B: RUBBISH. TXT[Z]
+</p>
+<p>
+This works nicely because the eighth bit is set to 1
+in characters beyond 127 and these are the ones
+which cause the peculiar effects. The drawback to
+using PIP/[Z] is that you cannot see the edited file
+unless you call it up by using the TYPE command.
+There may be various tweaks to the PIP command
+which will produce a listing on the CON: function
+&mdash; in this case, assigned to the CRT: device, but I
+haven&rsquo;t investigated these, and the thought of
+typing extended PIP command lines (I haven&rsquo;t got
+a programmable set of function keys on my
+machine) didn&rsquo;t appeal!
+</p>
+<?php columnEnd(2); ?>

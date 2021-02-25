@@ -1,0 +1,119 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    63</span>
+
+F2E1 D1         SCNEND: POP     DE              ; Addresses of strings
+F2E2 E1                 POP     HL              ;
+F2E3 7D                 LD      A,L             ; HL = 0 if no more to do
+F2E4 B4                 OR      H
+F2E5 C8                 RET     Z               ; No more to do - Return
+F2E6 2B                 DEC     HL
+F2E7 46                 LD      B,(HL)          ; MSB of address of string
+F2E8 2B                 DEC     HL
+F2E9 4E                 LD      C,(HL)          ; LSB of address of string
+F2EA E5                 PUSH    HL              ; Save variable address
+F2EB 2B                 DEC     HL
+F2EC 2B                 DEC     HL
+F2ED 6E                 LD      L,(HL)          ; HL = Length of string
+F2EE 2600               LD      H,0
+F2F0 09                 ADD     HL,BC           ; Address of end of string+1
+F2F1 50                 LD      D,B             ; String address to DE
+F2F2 59                 LD      E,C
+F2F3 2B                 DEC     HL              ; Last byte in string
+F2F4 44                 LD      B,H             ; Address to BC
+F2F5 4D                 LD      C,L
+F2F6 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
+F2F9 CD7CE3             CALL    MOVSTR          ; Move string to new address
+F2FC E1                 POP     HL              ; Restore variable address
+F2FD 71                 LD      (HL),C          ; Save new LSB of address
+F2FE 23                 INC     HL
+F2FF 70                 LD      (HL),B          ; Save new MSB of address
+F300 69                 LD      L,C             ; Next string area+1 to HL
+F301 60                 LD      H,B
+F302 2B                 DEC     HL              ; Next string area address
+F303 C356F2             JP      GARBLP          ; Look for more strings
+
+F306 C5         CONCAT: PUSH    BC              ; Save prec' opr & code string
+F307 E5                 PUSH    HL              ;
+F308 2AE410             LD      HL,(FPREG)      ; Get first string
+F30B E3                 EX      (SP),HL         ; Save first string
+F30C CDD1ED             CALL    OPRND           ; Get second string
+F30F E3                 EX      (SP),HL         ; Restore first string
+F310 CD45ED             CALL    TSTSTR          ; Make sure it's a string
+F313 7E                 LD      A,(HL)          ; Get length of second string
+F314 E5                 PUSH    HL              ; Save first string
+F315 2AE410             LD      HL,(FPREG)      ; Get second string
+F318 E5                 PUSH    HL              ; Save second string
+F319 86                 ADD     A,(HL)          ; Add length of second string
+F31A 1E1C               LD      E,LS            ; ?LS Error
+F31C DAC1E3             JP      C,ERROR         ; String too long - Error
+F31F CDBFF1             CALL    MKTMST          ; Make temporary string
+F322 D1                 POP     DE              ; Get second string to DE
+F323 CD57F3             CALL    GSTRDE          ; Move to string pool if needed
+F326 E3                 EX      (SP),HL         ; Get first string
+F327 CD56F3             CALL    GSTRHL          ; Move to string pool if needed
+F32A E5                 PUSH    HL              ; Save first string
+F32B 2AC110             LD      HL,(TMPSTR+2)   ; Temporary string address
+F32E EB                 EX      DE,HL           ; To DE
+F32F CD3DF3             CALL    SSTSA           ; First string to string area
+F332 CD3DF3             CALL    SSTSA           ; Second string to string area
+F335 2166ED             LD      HL,EVAL2        ; Return to evaluation loop
+F338 E3                 EX      (SP),HL         ; Save return,get code string
+F339 E5                 PUSH    HL              ; Save code string address
+F33A C3F0F1             JP      TSTOPL          ; To temporary string to pool
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    64</span>
+
+F33D E1         SSTSA:  POP     HL              ; Return address
+F33E E3                 EX      (SP),HL         ; Get string block,save return
+F33F 7E                 LD      A,(HL)          ; Get length of string
+F340 23                 INC     HL
+F341 23                 INC     HL
+F342 4E                 LD      C,(HL)          ; Get LSB of string address
+F343 23                 INC     HL
+F344 46                 LD      B,(HL)          ; Get MSB of string address
+F345 6F                 LD      L,A             ; Length to L
+F346 2C         TOSTRA: INC     L               ; INC - DECed after
+F347 2D         TSALP:  DEC     L               ; Count bytes moved
+F348 C8                 RET     Z               ; End of string - Return
+F349 0A                 LD      A,(BC)          ; Get source
+F34A 12                 LD      (DE),A          ; Save destination
+F34B 03                 INC     BC              ; Next source
+F34C 13                 INC     DE              ; Next destination
+F34D C347F3             JP      TSALP           ; Loop until string moved
+
+F350 CD45ED     GETSTR: CALL    TSTSTR          ; Make sure it's a string
+F353 2AE410     GSTRCU: LD      HL,(FPREG)      ; Get current string
+F356 EB         GSTRHL: EX      DE,HL           ; Save DE
+F357 CD71F3     GSTRDE: CALL    BAKTMP          ; Was it last tmp-str?
+F35A EB                 EX      DE,HL           ; Restore DE
+F35B C0                 RET     NZ              ; No - Return
+F35C D5                 PUSH    DE              ; Save string
+F35D 50                 LD      D,B             ; String block address to DE
+F35E 59                 LD      E,C
+F35F 1B                 DEC     DE              ; Point to length
+F360 4E                 LD      C,(HL)          ; Get string length
+F361 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
+F364 CD8AE6             CALL    CPDEHL          ; Last one in string area?
+F367 C26FF3             JP      NZ,POPHL        ; No - Return
+F36A 47                 LD      B,A             ; Clear B (A=0)
+F36B 09                 ADD     HL,BC           ; Remove string from str' area
+F36C 22C310             LD      (STRBOT),HL     ; Save new bottom of str' area
+F36F E1         POPHL:  POP     HL              ; Restore string
+F370 C9                 RET
+
+F371 2AB110     BAKTMP: LD      HL,(TMSTPT)     ; Get temporary string pool top
+F374 2B                 DEC     HL              ; Back
+F375 46                 LD      B,(HL)          ; Get MSB of address
+F376 2B                 DEC     HL              ; Back
+F377 4E                 LD      C,(HL)          ; Get LSB of address
+F378 2B                 DEC     HL              ; Back
+F379 2B                 DEC     HL              ; Back
+F37A CD8AE6             CALL    CPDEHL          ; String last in string pool?
+F37D C0                 RET     NZ              ; Yes - Leave it
+F37E 22B110             LD      (TMSTPT),HL     ; Save new string pool top
+F381 C9                 RET
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

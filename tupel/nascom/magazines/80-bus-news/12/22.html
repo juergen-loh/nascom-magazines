@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+22
+</p>
+<p>
+THE KIDDIES GUIDE TO Z80 ASSEMBLER PROGRAMMING by D. R. Hunt
+</p>
+<p>
+The Crossroads of personal computing (it goes on and on).
+</p>
+<p>
+Part: The Sixth Getting stuck.
+Nobody&rsquo;s perfect, we all make mistakes don&rsquo;t we!
+</p>
+<p>
+Well it had to happen, four episodes and all I get is fan mail, I had to go
+and blow it on the fifth now didn&rsquo;t I. Yet, strange, only two letters and one phone
+call to tell me. Either no one out there is reading this rubbish, or no one out there
+understands it, or you are all so poor (having taken out a second mortgage to buy the
+darned thing in the first place), you can&rsquo;t afford a stamp. Well, having been caught
+by the way B2HEX worked half way through writing the last episode, I wasn&rsquo;t thorough
+enough in checking the thing myself. When making use of tricks to do useful things in
+programs, I said you needed to know exactly how an instruction worked, and then
+proceeded to waffle on about how the DAA instruction went about its &lsquo;doings&rsquo;. Got it
+wrong didn&rsquo;t I?. Made it up from what I thought it did, didn&rsquo;t I? Didn&rsquo;t look in the
+Zilog bible, did I? Oh what the heck, I made a dogs&rsquo; breakfast of it and now I&rsquo;ve |
+proved what I said in the first episode, that I&rsquo;m not qualified to write this stuff
+anyway. Call that an excuse? Yeah!! Want to make something of it?
+</p>
+<p>
+So it&rsquo;s sackcloth and ashes time, I consulted the Zilog bible (not the little
+one in the Nascom manual, the big fat &lsquo;Zilog Programming Manual&rsquo;), and intoned one
+hundred times as a penance, &ldquo;The DAA instruction works as follows eeeeee&rsquo;s Now I must
+impart the truth and explain exactly how it does work. Fortunately (for me) the
+remainder of my description of the B2HEX routine is correct, even down to the
+introduction of the ADC 40H as a &lsquo;fiddle factor&rsquo;. It was only the way the DAA dealt
+with it which was wrong.
+</p>
+<p>
+So here goes. Firstly, the invisible &lsquo;Half Carry&rsquo; flag is not affected by the
+DAA instruction itself, in fact, it is the preceding arithmetic instruction which sets
+the H flag for the DAA instruction to use. The instructions which affect the H flag
+are ADD, ADC, INC, SUB, SBC, DEC and NEG. The DAA instruction works conditionally in
+</p>
+<p>
+the following manner:
+</p>
+<p>
+Preceding| Result of preceding operation in A and F Action taken and
+operation result of using DAA
+HEX HEX
+Condition | value in}; Condition | value in Number Condition
+of upper of lower added to of
+C flag digit H flag digit A by DAA C flag
+before DAA| (bits 4,| before DAA | (bits 0, after DAA
+5,6,7) | &raquo;2,3) &lsquo;
+0 0-9 0 O-9 00 0
+0 0-8 0 A-F 06 0
+0 0-9 1 O- 3 06 0
+ADD 0 A-F 0 0-9 60 1
+ADC 0 9-F 0 A-F 66 1
+Inc 0 A-fF 1 0 &ndash; 3 66 1
+1 O- 2 0 O- 9 60 1
+1 0-2 0 A &ndash; F 66 1
+1 0 &ndash; 3 j 0 &ndash; 3 66 1
+SUB 0 0-9 0 O-9 00 0
+SBC 0 o-8 1 6-F FA 0
+DEC 1 T-F 0 Oo-9 AO 1
+NEG 1 6 &ndash; F 1 6- F 9A 1
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,95 @@
+<?php columnStart(1); ?>
+<p>
+DEFB Nuaber of bytes to be sent
+</p>
+<p>
+Port to addve
+</p>
+<p>
+This differs slightly from the method used in the MAPAO BIOS {n that th
+Feverse the port addreas and byte count (you have been warned!)
+</p>
+<p>
+cPCTC &mdash;-EQU OBBH =; define base address of CTC on MAPCPU
+</p>
+<p>
+f channel 0 is clocked at 2Milz externally, and ve mist
+</p>
+<p>
+}_inelude the interrupt vector in channel O&rsquo;s data
+Gpctco: DEFE cz&rdquo; Ch. , byte count
+DEFB CPcrc. | define CTC port for channel 0
+a DEFS Lov cecrcv, low byte of interrupt vector
+DEB 010001118 ; Counter mode &lsquo;ai000008
+Count foltows &lsquo;00001008,
+Reset channel &lsquo;900000108,
+channel control byte 0000000:
+DEFB 106 divisor For 1200 Baud (#16 mode)
+ca: &ndash;
+channel 1 (s clocked at 1 Miz externally
+deste: cas 3"; byte count
+</p>
+<p>
+CPctcr ; define CTC port for channel 1
+ca: 010001118 ; cooment as above
+</p>
+<p>
+208 Giviser 300 baud (+26 mode)
+ca
+</p>
+<p>
+1 Mo entry for channel 2
+{Channel 31s to {aterrupt everytime the keyboard strobe
+</p>
+<p>
+fae active
+Gpctes: DEF cB &ndash; C7; byte count
+DEFB CROTCH; define CTC port for channel 3
+on DEFS 110101118; Eneble channel interrupt 100000008
+t Counter mode 10000008
+} Count follows 00001008
+Reset channel &lsquo;00000108
+channel control byte 000000018
+cer
+</p>
+<p>
+Of this, what needs explanation? Channels 0 and 1 are clocked to the CLR/TRGn
+pint with&rsquo;2 Mis and i Mie clocks Waving defined the required baudraces (1200 &ndash;
+End 300), we now need to calculate the divstors. Serial I/O chips usually
+fequire their clocks at 16Y the required beudeace in the case of channel 0,
+</p>
+<p>
+1200 baud demands a frequency of 19&rsquo;2 KHz, So the required divisor Ls:
+</p>
+<p>
+2000000,
+</p>
+<p>
+Channel 0 divisor = = 104 167
+</p>
+<p>
+1200016
+for the purposes of the CTC, a divisor of 104 will be quite adequate.
+</p>
+<p>
+nts a similar calculation:
+</p>
+<p>
+channel 2 pri
+</p>
+<p>
+1000000
+</p>
+<p>
+channel 1 divisor = oe = 208.333,
+300 3 is
+</p>
+<p>
+so we are all right with 208 as the divisor.
+</p>
+<p>
+Channel 3 is explained by the comments. But, T hear someone say, just what is
+happening? The external clock is being divided down by the CTC channel using
+the divivocs set out above&rdquo; Everytime the counter hits zero, it outputs a pulee
+</p>
+<?php columnEnd(1); ?>

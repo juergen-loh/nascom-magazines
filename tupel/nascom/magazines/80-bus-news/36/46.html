@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+In order to keep my extra code to a minimum, I used a number of inbuilt
+&ldquo;SYS&rdquo; routines to carry out certain tasks. These are:
+</p>
+<p>
+SETCUR ;Set cursor on IVC from values in HL, adding any
+soffsets needed. H holds ROW: L holds COLUMN
+</p>
+<p>
+CRIX ; Outputs Char. in -A&rdquo; to IVC card.
+</p>
+<p>
+SAVCUR ; Saves current cursor location in SYS workspace.
+;( In a Store &ldquo;LABELLED&rdquo; &ndash; &ldquo;CURSOR&rdquo; )
+</p>
+<p>
+The first action needed in the lock top line routine, is to store the
+current position of the IVC cursor, which will be well down the screen on
+-COLD BOOT&rsquo;, having just printed the sign-on messages. SETCUR is then called
+to set the cursor to the start of line two, and ESC &ldquo;M&rdquo; is sent to the IVC to
+lock the top line. (see IVC software manual ). The Cursor is then replaced at
+its&rsquo; original location down the screen. Note that CLOCK and LOCK must both be
+&ldquo;TRUE&rdquo; for this code to be assembled.
+</p>
+<p>
+At this point, I ought to mention the meaning of the -R&rdquo; that appears in
+the source code, for those not accustomed to SYS BIOS listings. SYS is
+designed to load from disk, where it is stored as a&nbsp;.COM file. It loads to low
+memory, and then a -Relocation&rdquo; section loads SYS over the origional CBIOS,
+and adjusts all references to memory locations that are position (address)
+sensitive. The only way that SYS knows which bytes to adjust is by being told
+by the person writing the code. The addition of the -R&rsquo; after ALL memory
+references that need to be adjusted will ensure that SYS will include them in
+a table of such addresses, and will carry out the necessary relocation.
+</p>
+<p>
+The final section of SYS that has code added is the Low level I/O
+routines. (Module 5 of SYS 16.) The actual Clock routines are added into the
+IVC Keyboard routines in my SYS if CLOCK is set -TRUE&rsquo;.
+</p>
+<p>
+The first part of the code sets HL to point to UDSTOR which will be
+loaded with the ASCII value of Seconds, Tens of Secs. or Minutes (depending on
+OFFSET). This value is then read in from the clock, checked for validity,
+converted to ASCII, and then placed into UDSTOR. The corresponding data stored
+in REGS at the last clock update is then compared with UDSTOR. If the values
+are the same, then the clock has not changed, and no clock processing occurs,
+but the program goes on to scan the keyboard. If the values are different, the
+clock has changed and so it must be updated. By making the comparison on Data
+that alters either by the Second, ten Seconds, or Minute the clock can be made
+to update accordingly as the operator desires.
+</p>
+<p>
+The keyboard is being scanned many times a second, and if the clock is
+allowed to update every time, the net effect is to greatly reduce the speed of
+many operations. Since the check just described only takes some twenty or
+thirty microseconds, it has no noticeable effect on normal operations, and
+prevents the clock from intruding into them. I have not calculated the time
+that the clock routine takes, but I would guess that it takes about one
+millisecond, and so there is no noticeable effect on operations when it
+updates.
+</p>
+<p>
+If the clock has changed, a call is made to READIT, which is the actual
+clock read and display subroutine. This subroutine may be called from external
+programs via the extra jump that was added to the -jump table&rdquo;. This module
+starts by reading the number of clock registers defined in NMRREG into the
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+31
+</p>
+<p>
+Here we have declared a hundred byte array (0 &ndash; 99) and set up a
+character pointer to the start of it. -&amp;arrayx[0]&rsquo; is the syntax used to
+return the address of array[0] which is then placed into the pointer -point&rsquo;.
+For -C&rsquo; fans everywhere that have noticed that I could have achieved the same
+by saying -point = arrayx;&rsquo;, fear not, I realise this but it is a good example
+of -C&rsquo;s addressing capability.
+</p>
+<p>
+Pointers to functions are also available and are useful in applications
+that require overlay sections. Executable code is read into an area of memory
+with a known base address and using function pointers control is passed to it.
+You are also capable of passing arguments to this function if required.
+</p>
+<p>
+&ldquo;C* functions
+</p>
+<p>
+&ldquo;nain() is the name given to the controlling function of any program and
+always recieves control when the program is entered. Of course you can do what
+you like as soon as you have entered main, but devotees of structured
+programming will realise that this is where the controlling calls of the
+overall program should reside.
+</p>
+<p>
+In main of the first sample program you can see that 4 functions have
+been called, namely openit, wrt_nums, printf and exit. You can see where the
+first two come from, they are in the source listing, but what about the
+others? Well it may come as a bit of a shock but -C&rdquo; contains no 10 capability
+of its own, there are no intrinsic functions such as in BASIC or FORTRAN. What
+this means is that if you compiled this program as it stands into a&nbsp;.COM file
+the linker would declare printf, exit, fopen, fclose, and putw as undefined.
+Pretty useless on its own eh? But this is where -C&rsquo; wins over its rivals in
+some respects. The functions such as printf, which is capable of displaying a
+formatted string on the screen, have to be loaded from function libraries
+supplied to you in REL format on your master disk. The required code is
+extracted from these libraries by using the L80 /s option for example and
+linked into your program. This means that the runnable program contains only
+the code necessary and no unused portions.
+</p>
+<p>
+These function libraries are usually pretty extensive and contain not
+only the routines defined by the -C&rdquo; standard but also some which have been
+added by the compiler writers to make your life easier. You will have guessed
+from this that you are also able to create your own libraries and place them
+into your programs in a similar fashion. I have in the course of my duties at
+Gemini created function libraries for both the SVC and Pluto which are written
+in assembler.
+</p>
+<p>
+As a point of interest the -C&rdquo; standard dictates that arguments passed to
+a function are pushed onto the stack in reverse order before the function is
+called. The value of the argument is pushed and not the address of the
+variable ie. pass by value. So from within your custom written assembler
+routine you can retrieve these values from the stack and send them out to your
+SVC or Pluto as data using the Z80 OUT opcode. In practice though, I have
+noticed that the ECO C compiler only passes integer and character arguments by
+value and any arguments longer than 2 bytes are passed by address. There are
+often idiosyncracies involved with the method by which arguments are passed so
+I&rsquo;m afraid that there is no substitute for reading the manual.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+14
+</p>
+<p>
+Presented with 24k of code of MBasic, it&rsquo;s rather daunting to know where
+to begin, but armed with a copy of &ldquo;Nascom Basic Dis-assembled&rdquo; and Gemdebug,
+it is only a moment&rsquo;s work to discover where the arithmetic routines are in
+Mbasic. (Both interpreters originate from Microsoft, and so there is a certain
+amount of commonality. Use the &ldquo;W&rdquo; command to locate the sequence
+78,B7,C8, 3A.) After this the fun began! I must emphasise that this is a crude
+&lsquo;hack&rsquo;, and is not supposed to be a sophisticated modification. The points
+where I patched my routines in, appear to be correct, but there may be some.
+unexpected side effects, and, as mentioned above, possible exponent overflow
+is ignored. Also without the information I had already to hand, it would have
+been a much harder task.
+</p>
+<p>
+Listing 1 shows the support routines I put together over one evening. The
+explicit test for zero in the format conversion routines turned out to be
+necessary, otherwise odd results like 1.0 + 1.0 = 2.125, and 1.0 &ndash; 1.0 = 0.5
+appeared! The net effect on the benchmark timings can be seen in Fig 2, so a
+significant increase in the execution speed of number-crunching programs could&mdash;
+be expected
+</p>
+<p>
+SUMMARY
+</p>
+<p>
+If you do a lot of number crunching, or have a real-time application that
+requires high-speed crunching, then this is a product you should consider.
+However you should bear in mind that wmless you are prepared to do some work
+yourself, you are currently restricted to Hisoft Pascal for your programming
+language.
+</p>
+<p>
+It is not a trivial task to modify existing compilers/interpreters to
+support the HSA-88B. This is because the existing floating-point routines may
+not use the same floating-point format as the AMD9511, and also it is not an
+easy task to unravel the complexities of floating-point support packages.
+</p>
+<p>
+If you have a dedicated application, then the HSA-88B makes the writing
+of a floating-point package a relatively simple operation. The main effort
+will be in producing the ASCII-to-floating-point, and the floating-point-to-ASCII
+conversion routines. But with the FIX and FLOAT commands available
+within the AMD9511, this shouldn&rsquo;t be too onerous.
+</p>
+<p>
+The revised price of the HSA-88B of &pound;253+VAT seems a little high &ndash;
+especially if you are not interested in the Hisoft Pascal compiler &ndash; but
+perhaps this is to be expected of a low volume product.
+</p>
+<p>
+If you want &lsquo;more bang for your bucks&rsquo;, then consider getting a version
+with a 4MHz Am9511A fitted, you&rsquo;ll get a x2 increase in execution speed, for a
+lesser (x1.3?) increase in cost. The speed increase will only be in the
+arithmetic however, not in the supporting Z80 code.
+</p>
+<p>
+One final observation: if you need higher precision and can manage
+without the derived functions (and Hisoft Pascal 5), I can see no reason why
+an Am9512 couldn&rsquo;t be fitted in the board in place of the Am9511A.
+</p>
+<p>
+References:
+</p>
+<p>
+4. COONEN,J. &ldquo;An Implementation Guide to a Proposed Standard for Floating-Point
+Arithmetic&rdquo;, COMPUTER, Vol 13-1, January 1980, pp68-79
+</p>
+<p>
+2. STEVENSON,D. &ldquo;A Proposed Standard for Binary Floating-Point Arithmetic&rdquo;,
+COMPUTER, Vol 14-3, March 1981, pp51-62.
+</p>
+<p>
+3, DARK,Dr., &ldquo;Doctor Dark&rsquo;s Diary &ndash; Episode 16&rdquo;, 80-BUS NEWS, 2-3, May-June
+1983, pp54-56
+</p>
+<p>
+4. DUNCAN,R., &ldquo;16-Bit Software Toolbox&rdquo;, Dr Dobb&rsquo;s Journal, No 83, Sept 1983
+ppt 20-122
+</p>
+<?php columnEnd(1); ?>

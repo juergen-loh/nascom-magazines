@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+CMOS Battery-backed RAM Update
+</h1>
+<p>
+Micracede (Control) Limited
+</p>
+<p>
+Having read Paul Anderson&rsquo;s excellent article: &lsquo;16K CMOS
+Memory Extension for the Nascom&nbsp;2 Main Board&rsquo;, I would just ike
+to mention a few points of interest.
+</p>
+<p>
+Experience gained in manufacturing the 32k_&mdash;CHOS
+Battery-backed Board (see aur advert. &ndash; will the Editor forgive
+us thiz &lsquo;plug&rsquo;?) has taught us the following lessons with regard
+to the standby current of these amazing @enory chips.
+(imei 16).
+</p>
+<p>
+1. The standby current is extremely temperature dependant and
+for a particular memory chip this may vary aver a ratio of
+1000713 we consider an average Of 1. micro-amp per degree
+Centigrade over the zone 15 to 25 degrees C as about typical
+for the standard &lsquo;P&rsquo; series.
+</p>
+<p>
+2. The best standby current is obtained by pulling the address,
+read, write and chip select signals up to V standby while in
+the &lsquo;standby mode. This obliquely hinted atin the
+specification &ldquo;sheets for these devices. This 15 most
+Conveniently done using 10K DIL resistor networks. Without
+these pull-ups the &lsquo;in-cireuit&rsquo; standby current. will often
+reach over 150 micro-ampe.
+</p>
+<p>
+3S. In order that the pull-up scheme works, it is wise to use
+trastate buffers on these lines. However, this introduces:
+yet another current eink, namely the leakage of the output
+transistor pairs in the tristate drives.
+</p>
+<p>
+We use 7415126 quad tristate non-inverting buffers with
+active-high enable. Reware of the standard 74126 TTL part,
+as this has a wicked diode between the cutput pair and. the
+Vee to catch the unwary (me!). Also the 5.6.5 version of the
+7ALS126 seems to be leakier than other manufacturers.
+</p>
+<p>
+4, If you want really long data retention periods the standby
+currents af the &lsquo;Le&rsquo; versions are of at least an order of
+magnitude better.
+</p>
+<p>
+The &ldquo;LP versions are functionally identical but have paused
+a special &lsquo;low standby current&rsquo; test during the final stage
+Of manufacture. The slightly higher price ts well worth the
+cost in terms Of this performance in our opinion.
+</p>
+<p>
+5. Just recently the Toshibe equivalent device (TCS5I7AP) has
+dropped in price to comete with the Hitachi chip. The
+Toshiba chip does seem to be far superior in all parameters
+and our own tests would seem to verify the manufacturers
+claim.
+</p>
+<?php columnEnd(1); ?>

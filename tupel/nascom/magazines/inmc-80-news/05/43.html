@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+Anyway, to business, to date we&rsquo;ve been through most of the important
+bits of learning to program in machine assembler. Yes believe it or not, you
+have. From now on in it&rsquo;s learning the tricks of the trade and figuring it out
+for yourself. Of course there are thousands of little tricks that can be
+learned, but most of these will either come with practice, or by pinching them
+from elsewhere. As far as pinching ideas from elsewhere goes, every Nascom
+owner has a complete library of software waiting to be lifted. Yup, you got it,
+NAS-SYS (or NASBUG). It&rsquo;s completely within the rules to use bits of the
+monitor as a guide for things that you might find difficult to figure out for
+yourself. That&rsquo;s why the complete listing has been provided, and in Richard&rsquo;s
+view (he wrote NASBUG T4 and both NAS-SYSii) imitation is the sincerest form of
+flattery (I know, &rsquo;cos I asked him). If anyone wanted to make a complete
+mystery of the monitor, they would not have published the listing, like some
+other machines I could mention. So, try to understand the monitor. The comments
+are a bit brief (where they exist), because the monitors were written with the
+aid of the ZEAP assembler, and at the time Richard only had 32K of RAM to work
+in. So it meant that there wasn&rsquo;t much space to waste on comments. I&rsquo;m not
+suggesting you kick the moggie out of the comfy chair and sit down and digest
+the lot in one go. If you did manage it, I doubt that you&rsquo;d remember much of
+what you read, and even less understand it. No, break it up into nice little
+chunks. Pick the shorter and easier routines first, and, if you&rsquo;ll take my
+advice, leave the KBD routine till last. If you start on the KBD routine, you
+WILL end up on the funny farm.
+</p>
+<p>
+As my contribution to the exercise, I&rsquo;m going to attempt to describe
+the routine known as B2HEX. I&rsquo;ve chosen this one, partly because it&rsquo;s short,
+partly because for the most part it&rsquo;s easy, and mainly because the later
+version in NAS-SYS employs one of those programming tricks by way of example.
+The listing below is from NAS-SYS&nbsp;3, but apart from its absolute address, it&rsquo;s
+identical to the NAS-SYS&nbsp;1 version. Now remember from the last episode I
+mentioned the need to make the labels mean something, well B2HEX is the epitome
+of the cryptic label writer&rsquo;s art. Those of you who complete the TIMES
+crossword on the way to work will have got it already. For those not so quick
+on the uptake, B2HEX means &lsquo;Binary To HEX&rsquo;. Neat isn&rsquo;t it?
+</p>
+<p>
+Before we get bogged down in the innards of B2HEX, there are a few
+things that have to be explained. Firstly, lets get a few definitions out of
+the way. A nibble!? This is an expression that has crept into use with 4 bit
+processors. A 16 bit processor works with 16 bits WORDs, an 8 bit processor
+works with 8 bit BYTEs, so some comedian decided that as a &lsquo;4 bit unit&rsquo; was
+half a BYTE, the definition of a ought to be a NIBBLE, and it&rsquo;s stuck. So we
+have:
+</p>
+<table>
+<tr><td>16</td><td>bit WORDS</td></tr>
+<tr><td>8</td><td>bit BYTES</td></tr>
+<tr><td>4</td><td>bit NIBBLES</td></tr>
+</table>
+<p>
+To date we haven&rsquo;t dealt in detail with the STACK POINTER register. Now
+the STACK (that&rsquo;s the area of memory the SP points to) is rather important.
+It&rsquo;s best thought of as a vertical column of pigeon holes, the top being the
+highest address assigned to it, the bottom being the lowest address it reaches
+in normal use. (In abnormal use, it could be anywhere and any depth, and that
+is a common cause of &ldquo;crashes&rdquo; where the stack comes so far down that it
+overwrites the program beneath it.) Now there are many occasions where we need
+to tuck things away out of sight where they won&rsquo;t get corrupted by normal
+processor register manipulations. In other words, we want to save something
+till later, and then retrieve it in one piece. That&rsquo;s what the STACK is for.
+The STACK normally works in pairs of pigeon holes, as more often than not, it&rsquo;s
+two byte addresses we want to save. To make this process a bit more manageable,
+the Z80 looks after the STACK automatically, and saves everything else in pairs
+as well, so if, for instance we wanted to save the B register, we&rsquo;d actually
+save the BC pair. A point to note when retrieveing data from the STACK, as when
+B is restored, C is also restored to its previous value.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p class="noindent">
+And 42H is the letter &lsquo;B&rsquo; in the ASCII code. Weren&rsquo;t we lucky that the ASCII
+code works so neatly in our favour. Well not quite, because we cheated and
+added 40H, which is hardly what you would expect as an ASCII offset. 30H would
+be more likely. Still, lets plod on, and see what&rsquo;s next.
+</p>
+<p>
+Line 4540. Another DAA? Well what purpose could that serve. In this
+instance, none, there are no carries from the low nibble, and none from the
+high nibble, so our 42H remains 42H.
+</p>
+<p>
+Line 4545. Just another comment, telling us were about to print the
+character.
+</p>
+<p>
+Line 4550. The idea is to send the character in A to the screen where
+it will be printed. Of course, it would be simple to CALL the CRT routine, but
+this would seriously reduce the usefulness of the monitor. In NAS-SYS, use is
+made of a generalized output routine called ROUT, ROUT takes the character and
+directs where ever the various output options dictate, this would normally be
+the screen, but not always. There are some very clever ways in which NAS-SYS or
+the user can trap data sent through ROUT and reprocess it. Perhaps well
+discuss some of the cleverer bits of NAS-SYS next time. Anyway, the CALL will
+PUSH the return address on the STACK, go away and do its thing, and return to
+line 4555.
+</p>
+<p>
+Line 4555. This is a simple return. The return address is already on
+the STACK, and (unless some other routine screwed it up, and it won&rsquo;t get it
+wrong without outside help) the SP will be pointing to it. The address in
+retrieved from the STACK and placed in the PC register, decrementing the SP as
+it goes. The routine makes an orderly return to line 4505, with the SP pointing
+to the data placed on the STACK by the PUSH in line 4475.
+</p>
+<p>
+Line 4505. The POP AF instruction puts the original contents of the A
+register back in place, and in so doing, decrements the SP to point at the
+return address of the routine which originally CALLed B2HEX. Now this is one of
+the sneakier tricks of writing machine code programs. Notice, previously, we
+CALLed B1HEX (a meaningless label, except to indicate &lsquo;send one character of
+B2HEX&rsquo;), this time we don&rsquo;t CALL it, all the relevant information is in the
+right place, namely, the low nibble of A now contains the character to be
+converted and sent next. By simply &lsquo;dropping through&rsquo;, we have avoided another
+call, and it&rsquo;s associated return, and made for a nice tidy job.
+</p>
+<p>
+Line 4520. Mask out the high nibble to leave 05H in the A register.
+</p>
+<p>
+Line 4525. ADD 90H, so that any overflow in the low nibble will he
+transferred to the C flag after the following DAA instruction.
+</p>
+<p>
+Line 4530. DAA. In this instance there is no overflow, and the contents
+of the A register remain unchanged, and the C flag is not set.
+</p>
+<p>
+Line 4535. ADD with Carry, the ASCII offset, which previously we had
+&lsquo;fiddled&rsquo; to make the earlier answer right. This time our 95H in the A register
+has become D5H after having 40H added to it. As there was no carry from the
+previous DAA, the low nibble, 5, remains unchanged. D5H is a suspicious number,
+as, if it were treated as decimal, there would be an overflow, and a correction
+in the high nibble, which makes it a likely candidate for the following DAA
+instruction, which last time round seemed to serve no purpose.
+</p>
+<p>
+Line 4540. DAA. Guess what? The previous ADC has not affected the low
+nibble, so there is no &lsquo;Half Carry&rsquo; through to the high nibble. But the high
+nibble, D, is 13 (decimal), so the high nibble is replaced with 3, and the C
+flag is set. So by some sort of jiggery-pokery, the byte in A has become 35H,
+</p>
+<?php columnEnd(1); ?>

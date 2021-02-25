@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+45
+</p>
+<p>
+ouput coupling capacitor). If you do short out C7, and your monitor does
+provide a 75 ohm termination, then you may also improve matters by raising the
+value of the emitter resistor (R6) to 1k or more.
+</p>
+<p>
+(N.B. Nascom&nbsp;2 owners who use a monitor rather than a TV and the on-board
+modulator may like to make similar modifications. I assume the current drive
+levels on the N2 are set up for the modulator, rather than the direct video
+output).
+</p>
+<p>
+Moving on to &lsquo;The sands of time&rsquo;, this interference is obviously being
+caused by crosstalk from the logic on the IVC. (The patterns change depending
+on what job the Host is asking the IVC to perform). I started by decoupling
+the collector of TR1, the top end of the Base bias chain (R3), and adding
+diodes in series with R1 and R5 (the &lsquo;bar&rsquo; towards the output of each gate).
+The thinking behind the latter is that it isolates the &lsquo;Hi&rsquo; output level from
+the video drive, each gate now looking like an open collector driver. As a
+result R5 was changed to 470 ohms, and Ri to 220 ohms to get back to the
+correct video and sync levels. This didn&rsquo;t produce any significant change to
+the visible interference.
+</p>
+<p>
+So finally I resorted to butchery. I cut the thick power track running to
+the collector of TR1, and the corresponding track running to the top end of
+R3. I connected these two isolated points together, and decoupled them with a
+A7aF tantalum capacitor. I finally added a 68 ohm resistor between this point
+and the positive supply. (A few turns of wire on a ferrite toroid would have
+been better, but I had no toroid to hand). This certainly reduced the
+background noise, although a little was still visible if you looked for it. At
+this point I stopped. The next step to try, (if you are seeking perfection),
+is to build a new output stage on a separate board, taking care over the
+layout and postioning of the board. As for me &ndash; I&rsquo;m sticking with what I&rsquo;ve
+got!
+</p>
+<p>
+Mixed 5.25" and 8" drives on GM829
+I suggest you read Richard Beal&rsquo;s article elsewhere in this issue as an
+introduction to the rest of this section.
+</p>
+<p>
+In the case of the 5.25" drives the
+lack of a ready line, though inconvenient
+</p>
+<p>
+TS si from a software point of view, is not a
+| =)&gt;&mdash;__= total disaster. This is because the motor-on
+_ _ monostable will eventually time out and
+| &lsquo;# pam 3st produce a &lsquo;not ready&rsquo; signal. This
+immediately causes any &lsquo;hung-up&rsquo; access to a
+</p>
+<p>
+7&rsquo;s eum 39 5.25" drive to abort. However, when 8"
+roping drives are selected, all the circuitry
+</p>
+<p>
++ ila te abled gle) associated with the motor-on monostable is
+</p>
+<p>
+_* disabled because virtually all 8" drives use
+</p>
+<p>
+4 r &ldquo;-- gay mains powered motors which run continually.
+</p>
+<p>
+As a result there is no abort signal unless
+the 8" ready line is connected through. The
+Fig 3. answer is to insert link 3 &ndash; to connect the
+ready signal through &ndash; and to &lsquo;fake&rsquo; ready
+Signals from those drives that do not
+provide them directly.
+</p>
+<?php columnEnd(1); ?>

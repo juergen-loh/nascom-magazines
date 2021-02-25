@@ -1,0 +1,81 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+We have often been asked what golfball we had on the old IBM. Sorry but we don&rsquo;t know,
+it was 10 pitch and had M2 written on it.
+</p>
+<p>
+Don&rsquo;t forget to type &lsquo;ENTER&rsquo; before going on to a new line.
+</p>
+<p>
+In INMC 7 we talked about the IEI IEO daisy chain priority. We mentioned that the N2
+board could be made either high or low in the chain by its position on the buss
+relative to the I/O devices. If highest priority is not required, then the 10K
+resistor, R40 should be removed.
+</p>
+<p>
+The BAI and BAO lines are never likely to be used in the Nascom, but they are intended
+to give priority to devices which use DMA (direct memory access to take over the buss
+from the Z80). The daisy chain works in the same way as the I/O daisy chain, using a
+DMA controller chip.
+</p>
+<p>
+It seems we&rsquo;ve never mentioned the &lsquo;A$&rsquo; problem at 4MHz on an N2 except in the Basic
+Progs Book. Run this program:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-45-1.png"); ?>
+<p>
+If it runs, then Ok. If after the computer has had time to warm up you get:
+</p>
+<pre>
+?FC Error in 30
+</pre>
+<p>
+then you&rsquo;ve got it. Another symptom is that ZEAP will convert opcode 2A into 21 so you
+get this:
+</p>
+<pre>
+21780C          LD HL,(0C78H)
+</pre>
+<p>
+as a final touch it will drive the Gemini/Henelec disk system mad (if it works at
+all). This all comes about because there is a nasty &lsquo;skew&rsquo; on the 4MHz clock signal.
+It&rsquo;s well and truly out of spec. Connect a 220R resistor between pins 6 and 14 of
+IC11. That helps but does an OoH-nasty to IC11. The laws of physics say that IC11 must
+fail sometime, but it took the shop demo machine&nbsp;!! months to die, and thats on 9
+hours a day 6 days a week. For the 42p the 74LS14 cost it was a small price to pay.
+There are much more elegant cures, but they are messy and complicated (unless, of
+course, someone somewhere has cracked it).
+</p>
+<p>
+Lots of confusion is caused when adding EPROMs to the N2 board. Blocks A and B never
+seem to stay still, and are guaranteed to be wrong whatever you do. Now this is a
+knotty one, and difficult to explain. It all concerns the way IC46 works. The simplest
+way to think of it is that the blocks change over at each 4K boundary, A becomes B, B
+becomes A. This gets even more fraught when non consecutive 4K blocks are addressed.
+Perhaps you should do what I do. Write a small machine code program that continally
+reads the start address I want, and use a scope to see which (if any) of the chip
+enables (pin 20) is waggling up and down. We&rsquo;ll deal with this one with a proper
+article when we can find someone rash enough to write it.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php hline("20%"); ?>
+<br>
+<?php columnStart(1); ?>
+<h3 id="article1">
+Gemini G805 / &lsquo;Henelec&rdquo; Disk System Rules.
+</h3>
+<p>
+Following our comments in the last issue re. competitive disk systems for the
+Nascom, the following figures have been brought to our attention:
+</p>
+<table style="width: 100%; margin-left: 3em">
+<tr><th>SYSTEM</th><th>APPROX. SALES</th><td></td></tr>
+<tr><td>Airamco System</td><td>0</td><td>(Product never taken into production)</td></tr>
+<tr><td>Comp Disk System</td><td>30</td><td></td></tr>
+<tr><td>Gemini G805</td><td>200</td><td>(Uses &lsquo;Henelec&rsquo; controller card)</td></tr>
+<tr><td>&lsquo;Henelec&rsquo; card (kit)</td><td>50</td><td></td></tr>
+</table>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

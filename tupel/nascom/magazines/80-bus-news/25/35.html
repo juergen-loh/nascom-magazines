@@ -1,0 +1,123 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    31</span>
+
+E846 EB         RESTOR: EX      DE,HL           ; Save code string address
+E847 2A5E10             LD      HL,(BASTXT)     ; Point to start of program
+E84A CA5BE8             JP      Z,RESTNL        ; Just RESTORE - reset pointer
+E84D EB                 EX      DE,HL           ; Restore code string address
+E84E CDA5E9             CALL    ATOH            ; Get line number to DE
+E851 E5                 PUSH    HL              ; Save code string address
+E852 CD99E4             CALL    SRCHLN          ; Search for line number in DE
+E855 60                 LD      H,B             ; HL = Address of line
+E856 69                 LD      L,C
+E857 D1                 POP     DE              ; Restore code string address
+E858 D246EA             JP      NC,ULERR        ; ?UL Error if not found
+E85B 2B         RESTNL: DEC     HL              ; Byte before DATA statement
+E85C 22DC10     UPDATA: LD      (NXTDAT),HL     ; Update DATA pointer
+E85F EB                 EX      DE,HL           ; Restore code string address
+E860 C9                 RET
+
+E861 CD40FD     TSTBRK: CALL    CHKBRK          ; Test for interrupts
+E864 B7                 OR      A
+E865 C8                 RET     Z               ; Return if no key pressed
+E866 CDCCE6     STALL:  CALL    CLOTST          ; Get input and test for ^O
+E869 FE13               CP      CTRLS           ; Is it control "S"
+E86B CCCCE6             CALL    Z,CLOTST        ; Yes - Get another character
+E86E FE03               CP      CTRLC           ; Return if not control "C"
+E870 C0         STOP:   RET     NZ              ; Exit if anything else
+E871 F6                 DEFB    (OR n)          ; Flag "STOP"
+E872 C0         PEND:   RET     NZ              ; Exit if anything else
+E873 22CE10             LD      (BRKLIN),HL     ; Save point of break
+E876 21                 DEFB    (LD HL,nn)      ; Skip "OR 11111111B"
+E877 F6FF       INPBRK: OR      11111111B       ; Flag "Break" wanted
+E879 C1                 POP     BC              ; Return not needed and more
+E87A 2A5C10     ENDPRG: LD      HL,(LINEAT)     ; Get current line number
+E87D F5                 PUSH    AF              ; Save STOP / END status
+E87E 7D                 LD      A,L             ; Is it direct break?
+E87F A4                 AND     H
+E880 3C                 INC     A               ; Line is -1 if direct break
+E881 CA8DE8             JP      Z,NOLIN         ; Yes - No line number
+E884 22D210             LD      (ERRLIN),HL     ; Save line of break
+E887 2ACE10             LD      HL,(BRKLIN)     ; Get point of break
+E88A 22D410             LD      (CONTAD),HL     ; Save point to CONTinue
+E88D AF         NOLIN:  XOR     A
+E88E 324510             LD      (CTLOFG),A      ; Enable output
+E891 CD74EB             CALL    STTLIN          ; Start a new line
+E894 F1                 POP     AF              ; Restore STOP / END status
+E895 2150E3             LD      HL,BRKMSG       ; "Break" message
+E898 C2E1E3             JP      NZ,ERRIN        ; "in line" wanted?
+E89B C3F8E3             JP      PRNTOK          ; Go to command mode
+
+E89E 2AD410     CONT:   LD      HL,(CONTAD)     ; Get CONTinue address
+E8A1 7C                 LD      A,H             ; Is it zero?
+E8A2 B5                 OR      L
+E8A3 1E20               LD      E,CN            ; ?CN Error
+E8A5 CAC1E3             JP      Z,ERROR         ; Yes - output "?CN Error"
+E8A8 EB                 EX      DE,HL           ; Save code string address
+E8A9 2AD210             LD      HL,(ERRLIN)     ; Get line of last break
+E8AC 225C10             LD      (LINEAT),HL     ; Set up current line number
+E8AF EB                 EX      DE,HL           ; Restore code string address
+E8B0 C9                 RET                     ; CONTinue where left off
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    32</span>
+
+E8B1 CD84F4     NULL:   CALL    GETINT          ; Get integer 0-255
+E8B4 C0                 RET     NZ              ; Return if bad value
+E8B5 324110             LD      (NULLS),A       ; Set nulls number
+E8B8 C9                 RET
+
+E8B9 06FF       ARRLD1: LD      B,-1            ; Flag array load
+E8BB CD36E8     ARRSV1: CALL    GETCHR          ; Skip "*"
+E8BE 78                 LD      A,B             ; CLOAD* or CSAVE*
+E8BF 32CE10             LD      (BRKLIN),A      ; Save it
+E8C2 3E01               LD      A,1             ; It's an array
+E8C4 32CB10             LD      (FORFLG),A      ; Flag array name
+E8C7 CD2DEF             CALL    GETVAR          ; Get address of array name
+E8CA E5                 PUSH    HL              ; Save code string address
+E8CB 32CB10             LD      (FORFLG),A      ; Clear flag
+E8CE 60                 LD      H,B             ; Address of array to HL
+E8CF 69                 LD      L,C
+E8D0 0B                 DEC     BC              ; Back space
+E8D1 0B                 DEC     BC              ;  to point
+E8D2 0B                 DEC     BC              ;  to the
+E8D3 0B                 DEC     BC              ; array name
+E8D4 3ACE10             LD      A,(BRKLIN)      ; CLOAD* or CSAVE* ?
+E8D7 B7                 OR      A
+E8D8 F5                 PUSH    AF              ; Save CLOAD* / CSAVE* status
+E8D9 EB                 EX      DE,HL           ; Array data length
+E8DA 19                 ADD     HL,DE           ; End of data
+E8DB EB                 EX      DE,HL           ; To DE
+E8DC 4E                 LD      C,(HL)          ; Get dimension bytes
+E8DD 0600               LD      B,0
+E8DF 09                 ADD     HL,BC           ; 2 Bytes each dimension
+E8E0 09                 ADD     HL,BC
+E8E1 23                 INC     HL              ; Over number of dimensions
+E8E2 E5                 PUSH    HL              ; Address of array data
+E8E3 D5                 PUSH    DE              ; End of array data
+E8E4 C5                 PUSH    BC              ; Number of dimensions
+E8E5 3ACE10             LD      A,(BRKLIN)      ; CLOAD* or CSAVE* ?
+E8E8 FEFF               CP      -1
+E8EA CCD5FC             CALL    Z,CASFF         ; CLOAD* - Cassette on
+E8ED 3ACE10             LD      A,(BRKLIN)      ; CLOAD* or CSAVE* ?
+E8F0 FEFF               CP      -1
+E8F2 C4C8FC             CALL    NZ,CASFFW       ; CSAVE* - Cassette on and wait
+E8F5 00                 NOP
+E8F6 00                 NOP
+E8F7 00                 NOP
+E8F8 210000             LD      HL,0
+E8FB 224A10             LD      (CHKSUM),HL     ; Zero check sum
+E8FE C1                 POP     BC              ; Number of dimensions
+E8FF D1                 POP     DE              ; End of array data
+E900 E1                 POP     HL              ; Address of array data
+E901 06D2               LD      B,11010010B     ; Header byte
+E903 C3D6FF             JP      JPLDSV          ; CSAVE-SNDHDR&nbsp;, CLOAD-GETHDR
+
+E906 78         SNDHDR: LD      A,B             ; Get header byte
+E907 CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
+E90A CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
+E90D C31DE9             JP      SNDARY          ; Send array data
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

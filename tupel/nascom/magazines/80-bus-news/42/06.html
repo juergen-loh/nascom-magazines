@@ -1,0 +1,148 @@
+<?php columnStart(2, 2); ?>
+<p>
+L80 is much easier to use, which probably accounts
+for its popularity, but does not give you the same
+facilities as LINK. LINK, for example, will allow you
+to generate overlay files (OVL), page relocatable
+files (PRL), and will output a symbol table to disk
+which could be useful. I only ever use LINK when
+I need to generate any of these special filetypes for
+the simple reason that the copy I have demands
+that all the program modules are entered at the
+start of the loading process and thus is not very
+forgiving of the person that forgets to enter the odd
+module name or two.
+</p>
+<p>
+Back to overlays now, I recommend that you get
+hold of the LINK program as it will make your life
+a lot easier. A word of warning before we start. It
+must be realized that whatever source language
+has been used the first byte of the overlay file must
+be an executable instruction and not a data area as
+some compilers will create. All my &lsquo;C&rsquo; programs
+compile down into MAC files and so I can alter the
+data areas to suit before I create the overlays. Not
+ail of you will have this luxury so beware!
+</p>
+<p>
+I will now explain the ins &amp; outs of overlaying using
+the DR LINK linking loader. Let&rsquo;s assume that we
+have created a program called ROOT and 3 overlay
+modules called OV1, OV2 &amp; OV3, that will be used
+by ROOT and are to be run in the same area of
+memory. The source code has been compiled and
+we have ROOT.REL, OV1.REL, OV2.REL and
+OV3.REL on the disk ready to be turned into a COM
+file with overlays. We now invoke LINK to do its
+stuff by entering the following:
+</p>
+<p>
+LINK ROOT (0V1} (0V2) (0V3) &lt;RETD
+</p>
+<p>
+And off it goes. Easy isn&rsquo;t it? On completion you
+will have created ROOT.COM and 3 overlays,
+OV1.OVL and so on. LINK will have resolved any
+global references between ROOT and the overlays
+allowing an overlay to call routines or access
+variables in the ROOT module. All the overlays will
+have the same base address and that will be at the
+start of the next 128 byte boundary above the top
+of the root module.
+</p>
+<p>
+it is possible to nest overlays using LINK so that
+overlays themselves can call in and execute their
+own overlays (Complex eh?). I will give you the
+example in the book as I have not yet used this
+facility and had better stick to safe ground. If you
+take a look at the systern memory map on the
+overlay techniques diagram it may make the
+following clearer. By way of an example let&rsquo;s say
+we have a six overlay system; OV1 to 4 are to be
+run in the main overlay area, while OV5 &amp; OV6 are
+to be run in the secondary overlay area. 5 &amp; 6 are
+to be called from OV2. If you enter the following:
+</p>
+<p>
+LINK ROOT (OV1) ((OV2) (V5) (0VE)) (OVS) (0V4) 186
+</p>
+<p>
+[&mdash; &mdash;&mdash; |
+|
+</p>
+<p>
+5&amp;6 nested above 2
+</p>
+<p>
+all the overlays will be sorted out for you. Note the
+parentheses are nested to indicate the relationship
+between the overlay sections.
+</p>
+<p>
+So you can see how easy it is once you have got to &ndash;
+this stage but we still have to understand some
+more on the nitty gritty to enable us to program the
+overlay loader that handles it all from the root
+module.
+</p>
+<p>
+When LINK creates a&nbsp;.OVL file it reads the REL file
+and resolves the references as normal. It will
+generate overlay code beginning from the start of
+the next 128 byte boundary above the root end. The
+output file (fname.OVL) is in effect a&nbsp;.COM file but
+</p>
+<p>
+LINK will have added a 256 byte header to the &ndash;
+</p>
+<p>
+beginning of the OVL file. This header area is zero
+filled except for four bytes. Bytes 1 and 2 (0 based)
+will contain the length of the executable overlay
+code, and bytes 7 and 8 will contain the base
+address of the overlay code. What you as the writer
+of the overlay loader have to do is extract this
+information from the header and then read the
+code into memory starting at the given base
+address. Once the load is complete then you simply
+transfer control to the base of the overlay code
+using a CALL and away you go. As each OVL file
+contains its own base address a single overlay
+loading routine is all that is required to load any
+OVL file.
+</p>
+<p>
+The above process is a bit of a cheat as the
+generation of overlay files by LINK was designed
+specifically to interface with the DR PL-| language,
+which has an overlay manager in its library. We can
+use it however if we take note of the little
+idiosyncracies.
+</p>
+<p>
+You will notice that the sample overlay loaders
+(programs 2 &amp; 6) have the variables 7MEMRY and
+?OVLAO in them apparently doing nothing. These
+are looked for by LINK and reported as undefined
+if they do not exist as globals. The 7MEMRY word
+is set to the overall top of program address by LINK
+as it is creating the overlays. In other words it tells
+you what the top address of the biggest overlay is
+and may be used to determine free space or
+whatever without jeopardizing any of the program
+memory.
+</p>
+<p>
+I have not got a clue what 7OVLAO is meant to do,
+if anyone knows, please let me in on the secret. I
+have put it in the programs as a dummy global just
+to get rid of those undefined global messages from
+LINK.
+</p>
+<p>
+Program 2 is an assembler source listing of a
+working overlay loader, it can be used in conjunction
+</p>
+<?php columnEnd(2); ?>

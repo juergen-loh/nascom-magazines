@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Disks
+</h1>
+<h2>
+DISK SYSTEMS
+</h2>
+<p>
+It had to happen, three competing disk systems for Nascoms. Two from the
+States, one via our old friends at Barnett, one via Airamco in Scotland, and the third
+is a British designed one available from a consortium of Nascom dealers, and
+originating from the nether depths of Farnborough, Harrow and Kingston. Now, at this
+stage, we know very little about the Comp system, nothing about the Airamco, and an
+awful lot about the Henelec/Gemini system. In fact the non appearance of the October &ndash;
+November issue of the INMC80 News is directly attributable to the Gemini Disk System.
+You see, the two main editor/typists involved with the INMC have been up to their
+eyeballs getting the thing ready for production. No excuses, but the laws of nature
+still only allow for 24 hours in a day (I&rsquo;m afraid we&rsquo;re still working on that one,
+very tricky&nbsp;!!).
+</p>
+<p>
+We don&rsquo;t intend to review the systems here, as that would be a trifle biassed,
+but by Christmas there will be some 200 Gemini systems around (and who knows how many
+of the others), some points about disk systems ought to get a look in. We haven&rsquo;t
+heard from a single member owning either Comp or Airameo systems, and at the time of
+writing Gemini systems are only just going on stream, so we haven&rsquo;t had any user
+feedback on that either. But as we know a lot about the Gemini, and the majority seem
+to be going to INMC80 members, a few hints and tips won&rsquo;t go amiss.
+</p>
+<p>
+Now the EBASIC supplied with the system works on ASCII disk files, so how do
+you get some of your nicer Nascom Basic programs onto disk without the tedium of
+typing them all out again. Easy. First LIST the Basic program to tape. How? Load the
+program under Nascom Basic, go into the MONITOR, type X0, and warm start Basic. Zap a
+cassette into the recorder, start it up, set the Basic WIDTH to 80, set the LINES to
+32000, and then LIST. Your Basic program goes to tape as an ASCII file. If there are a
+number of programs to be transferred, copy them to tape at the same time, as changing
+from NAS-SYS to CP/M gets a bit tedious if repeated too often. Ok, so now we have a
+tape of the Basic program(s) saved as ASCII strings, how to get it onto disk.
+</p>
+<p>
+Because the inimitable RB had more than a passing influence on the design of
+the software for the Gemini system, there is a routine hidden in it which scans both
+the keyboard and the serial input. Does that ring any bells? If not, you haven&rsquo;t
+understood how NAS-SYS and NASBUG work. Anyway, Under CP/M, PIP.COM is really quite
+clever. It&rsquo;s not just a disk copying program&nbsp;!!! In effect, it can copy anything from
+anywhere, and put it someplace else. We want the tape (which because of the scanning
+of the serial input), comes from the keyboard routine to end up as a disk file. In
+CP/M, the keyboard and video are refered to collectively as CONSOL so we want to PIP
+from CONSOL to disk. Snag, the stuff is coming in as a continual bit stream, so there
+will be no time for the disk system to stop and shovel that data away whilst the data
+is coming in. So effectively we must load it all into a buffer first. PIP has just
+such a command.
+</p>
+<pre>
+A&gt;PIP FILENAME.BAS=CON:[B]
+</pre>
+<p class="continued">
+The [B] is a PIP option to buffer the input in RAM before sending it to disk. Give the
+disk system that command, wait until a prompt appears and start the tape. The ASCII
+strings on tape will be gobbled up into RAM, and when the data is finished, type
+&lsquo;ctrl/S&rsquo; to tell it to write it to disk and &ldquo;ctrl/Z&rsquo; to tell it it&rsquo;s finished. If you
+only have 16K of RAM and the program is a long one, you won&rsquo;t be able to load it all
+at once. Load about 8Ks worth, stop the tape, type &lsquo;ctrl/S&rsquo; to write the first bit to
+disk, rewind the tape a bit, and having written the first half away, restart the
+cassette. The file will be a little screwed up in the middle, but having got it on to
+disk you will have to edit it a bit using ED anyway, so it shouldn&rsquo;t be too difficult
+to unscramble the overlap in the middle. Don&rsquo;t expect to be able to run a Nascom Basic
+program under EBASIC, they&rsquo;re syntactically different, and EBASIC is particularly
+fussy about spaces between reserved words. Unless it is the simplest program
+</p>
+<?php columnEnd(1); ?>

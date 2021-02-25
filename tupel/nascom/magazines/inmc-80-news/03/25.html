@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p class="continued">
+and a 26 way ribbon cable terminated in a plug to fit a Nascom&nbsp;2 PIO socket. The case
+and finish are of a very high standard. Along with the disk drive is a power supply
+which gives +5V at about 1 amp, and +12V at about 2 amps. These supplies are adequate
+for two drives and the controller card. We noted that the controller card also
+requires a -5V supply, but this is derived from a voltage doubler on the controller
+card fed from the clock. Again the power supply and controller card are constructed to
+a very high standard. The controller board uses the Western Digital 1771 Floppy Disk
+Controller (FDC) and is configured to give double sided single density operation on up
+to three drives if required. It is possible to get double density, however, a number
+of problems exist which make this unfeasible. The only reservation we have about the
+controller board is that it uses the internal data/sync separator of the 1771. Western
+Digital themselves recommend an external chip for this function. However, we have had
+no problems in this area, and the board has been made so that one could be fitted at a
+later date if necessary. We also received the complete circuit diagrams of the
+controller card (because we asked for it). We understand the circuits are not normally
+supplied. The Pertec 250 drive, as we have already said, is used in double sided,
+single density mode in this system, and is configured as follows:
+</p>
+<p class="noindent">
+35 tracks per side<br>
+18 sectors per track<br>
+128 bytes per sector<br>
+all to IBM standrds<br>
+161.28K maximum formatted capacity
+</p>
+<p class="noindent">
+Cable is supplied to connect two drives. We don&rsquo;t know what you are supposed to do if
+you wish to run three drives. Worth clarifying with the dealers if you have that
+number in mind.
+</p>
+<h4>
+The Software
+</h4>
+<p>
+D-DOS is normally supplied in two EPROMs assembled to run at B000H, but we
+understand is also available, to special order, in either 2716, or on tape assembled
+to run at 8800H if you already have a Bits &amp; PCs Toolkit sitting at B000H. The first
+1K (B0000-B3FFH) consists of control software for the FDC. This includes a number of
+low level routines to control the PIO. It also initializes the FDC controller, drives,
+and positions the heads on track 0. Re-try software is also included which in the
+event of a read error makes five attempts at reading then moves the head out,
+repositions it, and has five more tries. If this fails, then it returns to the command
+level with an error message. No listing is supplied of this 1K but it is well worth
+disassembling because a number of routines exist which are not otherwise mentioned;
+for example, a power on boot which will load track 0 sector 1 into RAM at 1000H and
+then execute it. Assuming you have the ability to program EPROMs, alter the jump at
+B000H to B385H to make use of this feature. We hope our mentioning this doesn&rsquo;t upset
+the supplier too much. With this in mind, you will have to find the other routines
+yourselves.
+</p>
+<p>
+The second EPROM (B400-B7FFH) consists of the main DOS and gives you four
+simple commands to control the disk, as follows:
+</p>
+<p class="noindent">
+N Return to NAS-SYS<br>
+R Read from disk<br>
+W Write to disk<br>
+F Format disk
+</p>
+<p class="noindent">
+The middle two need five parameters to be specified as follows:
+</p>
+<pre>
+R aaaa nn tt ss dd
+</pre>
+<p class="noindent">
+Which translates thus
+</p>
+<p class="noindent">
+aaaa Initial address to read data to<br>
+nn Number of sectors to be read (128 bytes per sector)<br>
+tt First track to read from<br>
+ss First sector to read from<br>
+dd Drive to read from
+</p>
+<?php columnEnd(1); ?>

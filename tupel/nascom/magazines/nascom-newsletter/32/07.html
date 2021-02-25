@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+The command eliminates the spurious input of random
+characters which is often associated with the switch on and
+switch off of attatched tape recorders. Both the NAS-SYS and
+the SYS-EX read and verify commands (and also NAS-SYS&nbsp;1 Load
+command) are unaffected in their operation by the action of
+the &lsquo;k&rsquo; command. If required, the normal NAS-SYS tables may
+be restored by using the NAS-SYS &lsquo;N&rsquo; command.
+</p>
+<p>
+&lsquo;The command adds 4 to the &lsquo;normal&rsquo; input table value and
+then stores this value using the NAS-SYS NIM function. This
+has the desired effect both in NAS-SYS&nbsp;1 and NAS-SYS&nbsp;3.
+</p>
+<p>
+&ndash; label nane to be written &mdash;&mdash;-
+Label a cassette tape
+</p>
+<p>
+Weites a tape label with a specified name. Once written
+a tape Label will be recognised and displayed by the SYS-EX
+commands &lsquo;q&rsquo;y &lsquo;n&rsquo;y &ldquo;8&rsquo; and &lsquo;v".
+After entry of the &lsquo;1&rsquo; &ldquo;command, the prompt &lsquo;INaser
+appears on the next screen line and the required label nane is
+entered on that line. The tape drive LED is switched on and
+after about two seconds (4"Hz), the tape label is sent to the
+</p>
+<p>
+rial output port for writing&rsquo; to tape. Finally, the tape
+drive LED is switched off.
+</p>
+<p>
+The format of the tape label is as follows)
+</p>
+<p>
+4 x DSH
+0 to 42 characters of label nane
+1 space (OOH if name length is 42)
+oH.
+</p>
+<p>
+File and label names are normally entered on the sane
+line as the prompt *.Na which immediately follows the
+entered command line. However, it is quite possible to enter a
+fame from a different line after first moving the cursor to
+the line required. The name must begin in column 7 and must
+be immediately preceded by the + character (7CH =
+CONTROL/SHIFT/,).. Any characters (including spaces? may be
+included in file and label names. All space characters which
+appear to the right of the final non-space character are
+{gnored.
+</p>
+<p>
+1Y the CLOAD command in the OK Basic causes a tape label
+to be read, Basic will interpret the label as a program file
+with the name DSH (a block graphice character). This is
+Unlikely to cause any problems.
+</p>
+<p>
+Return to NAS-SYS
+</p>
+<p>
+Returns exclusively to NAS-SYS using a NAS-SYS MRET
+instruction.
+</p>
+<p>
+&lsquo;This command will seldom be required all of the
+NAS-SYS keyboard commands are available in the normal way from
+within SYS-EX.
+</p>
+<?php columnEnd(1); ?>

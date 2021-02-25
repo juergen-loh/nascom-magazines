@@ -1,0 +1,241 @@
+<?php columnStart(1); ?>
+<p>
+SUMMARY OF GSX_ OPCODES
+</p>
+<p>
+Opcode
+</p>
+<p>
+10
+</p>
+<p>
+Description.
+</p>
+<p>
+Initialise Workstation. Loads the device driver if necessary and sets
+default values.
+</p>
+<p>
+Close Workstation. Halts graphics output to this workstation.
+</p>
+<p>
+Clear Workstation. This clears the device and is equivalent to CLS if
+used on a CRT device.
+</p>
+<p>
+Update Workstation. Display all pending graphics.
+</p>
+<p>
+Escape. Enable device dependent operation. These deal mainly with
+character output if the device has an alpha mode with addressable
+character cells. Function 5 is called and an escape sequence ID is passed
+to GSXY in control(6).
+</p>
+<p>
+a
+ee
+</p>
+<p>
+Description
+&ndash; Inquire addressable character cells.
+</p>
+<p>
+&ndash; Enter graphics mode.
+</p>
+<p>
+&ndash; Exit graphics mode.
+</p>
+<p>
+&ndash; Alpha cursor up.
+</p>
+<p>
+Alpha cursor down.
+</p>
+<p>
+&ndash; Alpha cursor right.
+</p>
+<p>
+&ndash; Alpha cursor left.
+</p>
+<p>
+&ndash; Home alpha cursor.
+</p>
+<p>
+&ndash; Erase to end of screen.
+</p>
+<p>
+10 = Erase to end of line.
+</p>
+<p>
+ll &ndash; Direct cursor address ( Move to row and column).
+12 &ndash; Output cursor addressable text.
+</p>
+<p>
+13 &ndash; Reverse video on.
+</p>
+<p>
+14 &ndash; Reverse video off.
+</p>
+<p>
+15 = Inquire current cursor address.
+</p>
+<p>
+16 &ndash; Inquire tablet status. ( Is a digitiser connected?)
+17 &ndash; Hard copy. e.g. Dump a graphics screen to printer.
+18 &ndash; Place graphics cursor at location.
+</p>
+<p>
+19 &ndash; Remove graphics cursor. This turns the cursor off.
+</p>
+<p>
+!
+jn Ot IN WR OR
+</p>
+<p>
+20 &ndash; 50
+51 &ndash; 100
+</p>
+<p>
+Reserved for future expansion.
+Unused and available.
+</p>
+<p>
+Polyline. Output lines from data in PISIN array.
+</p>
+<p>
+Polymarker. Output markers at positions given in PTSIN. These markers are
+typically (.* OX+t+).
+</p>
+<p>
+Text. Output text from machine font at specified position.
+Filled area. Display and fill a polygon.
+</p>
+<p>
+Cell array. Create a pixel array from colour data given in the INTIN
+array and at a position given in PISIN.
+</p>
+<p>
+SUMMARY OF GSX OPCODES &ndash; continued
+</p>
+<p>
+Opcode
+</p>
+<p>
+ll
+</p>
+<p>
+12
+</p>
+<p>
+13
+</p>
+<p>
+14
+</p>
+<p>
+15
+</p>
+<p>
+16
+</p>
+<p>
+17
+</p>
+<p>
+18
+</p>
+<p>
+19
+</p>
+<p>
+20
+</p>
+<p>
+21
+</p>
+<p>
+22
+</p>
+<p>
+23
+</p>
+<p>
+24
+</p>
+<p>
+25
+</p>
+<p>
+26
+</p>
+<p>
+27
+</p>
+<p>
+Description.
+</p>
+<p>
+Generalised drawing primitive. These routines give you an easy way to
+display bars, ares, pie slices and circles. These are not always fully
+implemented.
+</p>
+<p>
+Set character height. Not possible of course if the Pluto font is used
+but should be implemented for plotter device drivers and the suchlike.
+</p>
+<p>
+Set character up vector. This allows you to rotate character strings if
+the device will allow it.
+</p>
+<p>
+Set colour representation. Will allow you to specify the red, green and
+blue intensity associated with a colour index. (Presumably this is for
+use in palette systems.)
+</p>
+<p>
+Set linetype. You should be able to choose from solid, dashed, dotted or
+dashed=dotted.
+</p>
+<p>
+Set line width.
+</p>
+<p>
+Set line colour.
+</p>
+<p>
+Set marker type.
+</p>
+<p>
+Set marker scale.
+</p>
+<p>
+Set marker colour.
+</p>
+<p>
+Set hardware text font. (Only one to choose from in Pluto.)
+Set text colour.
+</p>
+<p>
+Set fill interior style. You should be able to choose from outline only,
+solid fill, pattern fill or hatch pattern fill.
+</p>
+<p>
+Set fill style index. This allows you to specify the type of pattern or
+hatch fill you require from the selection available.
+</p>
+<p>
+Set fill colour index, Having chosen the type of fill you require you can
+now say what colour you want it done in.
+</p>
+<p>
+Inquire colour representation. Returns the RGB intensities of a requested
+colour index.
+</p>
+<p>
+Inquire cell array. Returns the pixel colour values of the requested
+area.
+</p>
+<p>
+25
+</p>
+<?php columnEnd(1); ?>

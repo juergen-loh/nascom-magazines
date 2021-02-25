@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+37
+</p>
+<p>
+150uf, as I did not have anything else of suitable value handy, and put the card
+back into the case. This time the POR worked perfectly, and it has done ever
+since. (It should be equally valid to increase R13 to say 12K/15K.)
+</p>
+<p>
+I have not analysed the action of the POR circuits of the N2, but it seems
+that the value of the time constant of C3/R13 can be critical. The time constant
+C2/R11 in the manual reset circuit is identical in component values. In
+consideration of the &lsquo;cure&rsquo; for this fault it seems that C3/R13 should have a
+longer time constant than C2/R11 for correct circuit action. By the laws of
+averages, this should be true for 50% of the Nascom&nbsp;2&rsquo;s with 10K/68uf fitted in
+both positions, allowing for component tolerances. In any case, if this
+assumption is true, the fault will only be noticed in a proportion of those N2&rsquo;s
+that are trying to reset to some other address than 0000H.
+</p>
+<p>
+I am not an expert in digital logic. Perhaps someone can send in an
+article explaining the operation of the circuit, with some timing diagrams, as my
+cure may not be the best one for this problem. It does work though.
+</p>
+<p>
+I would like to thank Alan Stevens and Phil Harvey for the loan of cards,
+which helped me to isolate the problem. I hope that this article may help others
+who have experienced similar problems with the power-on-reset on their system.
+</p>
+<p>
+LARGE RAM SYSTEMS USING THE MAP CARD by Richard Beal
+</p>
+<p>
+INE IRE EP AEE INI IE IEEE RB BBE AE RE IER EOE IA BORED RE ED EN II REE RN Ee
+</p>
+<p>
+This note refers to the review of the MAP 256K RAM card on pages 40 to 44
+of Vol 2 Issue 1 of 80-BUS News. A problem has arisen when using the Gemini
+GM813 CPU/64K RAM card with more than one MAP RAM card. The reason is that the
+GM813 does not provide an A19 signal &ndash; see &ldquo;The Great A19 Debate&rdquo; on page 43
+of that issue for a detailed explanation. This means that the 64K of RAM on
+the GM813 is addressed both at the bottom of the one megabyte of addressable
+memory, and also half way through. This obviously causes problems, since if
+two 256K MAP cards are added, the last 64K of the second card is overlaid by
+the bottom 64K on the GM813.
+</p>
+<p>
+_ The solution is to disable the 64K on the 813, and alter the header plugs
+on the MAP cards so that they provide memory starting at OK, 256K, 512K and
+768K. This is very simple and MAP will happily tell you how to do this.
+</p>
+<p>
+The best way to disable the memory on the 813 is a simple hardware
+modification to permanently disable the RAM. MAP will provide a recommended
+alteration. Alternatively, the 813 RAM could be addressed on a different 64K
+page, using the original paging scheme which has four pages of 64K. This has
+the disadvantage that as well as the GM813 needing modifying, a patch to RP/M
+is needed, which makes it nonstandard. I don&rsquo;t approve of that, but MAP may
+</p>
+<p>
+. prefer to adopt this solution.
+</p>
+<p>
+You may feel that it is incredibly wasteful to effectively throw away 64K
+of RAM, but if you have a system with 512K or more, you probably don&rsquo;t mind!
+</p>
+<p>
+Note that with Gemini&rsquo;s own GM833 512Kbyte RAM-DISK board you can go upto
+8 Megabytes with no mods. to either the GM813 or GM833!
+</p>
+<?php columnEnd(1); ?>

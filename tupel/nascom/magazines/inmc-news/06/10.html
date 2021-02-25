@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<h4>
+Nascom&nbsp;2 RAM board construction notes
+</h4>
+<table>
+<colgroup>
+	<col style="width: 20%">
+	<col>
+</colgroup>
+<tr><td>page 5</td><td>
+	It is reported that certain boards harbour an etching fault
+	whereby the decoupling capacitor for IC8 fails to connect with
+	the ground rail. It is reasonable to check for this fault and
+	to correct it if possible, although its consequences are
+	unlikely to be noticeable and are nothing to do with &lsquo;memory
+	plague&rsquo;.</td></tr>
+<tr><td>page 12</td><td>
+	et seq The memory test programs are written for the T2 monitor
+	and will not operate under Nas-sys&nbsp;1. It is recommended that
+	the advice given on page 15 is followed and that a small test
+	program is written to test for &lsquo;plague&rsquo; only if this condition
+	is suspected. The printed test programs are not specifically
+	designed to reveal plague.&rdquo; (And probably won&rsquo;t. Ed.)</td></tr>
+</table>
+<p>
+(Editors note: We do not like these unspecified references to &lsquo;memory
+plague&rsquo; as unsuspecting purchasers of Nascom 2s would have no idea what
+is meant; only hardened Nascom&nbsp;1 owners who read these newsletters will
+be in the know. For new Nascom&nbsp;2 owners, &lsquo;memory plague&rsquo; is a condition
+which arises in some memories due to noise and speed problems, and
+leads to unreliable memory performance (not to be confused with suspect
+chips). Several notes have been published about &lsquo;memory plague&rsquo;, and we
+hope to collect them all together and publish a compendium of memory
+mods in the next issue. Memory plague may be detected in a Nascom&nbsp;2 by
+the failure of the Basic to initialize properly, or the &lsquo;free memory&rsquo;
+message giving silly or inconsistent answers after initialization. This
+is not the same as the total failure of the Basic to initialize if the
+memory construction notes are followed to the letter (having missed the
+small errata); where the constructor is instructed to connect decode
+pad 12 to P5, thus enabling the RAM board EPROM block to page F,
+thereby totally disabling half of the Basic.)
+</p>
+<h4>
+&ldquo;8K Basic programming manual
+</h4>
+<table>
+<colgroup>
+	<col style="width: 20%">
+	<col>
+</colgroup>
+<tr><td>page 16</td><td>
+	The list of reserved words should include DEEK and MONITOR.</td></tr>
+<tr><td>page 24</td><td>
+	The second sentence should read: &lsquo;It uses locations 1000H to
+	113EH (4414) ....... .&rsquo; The second sentence should read:
+	"Locations 113FH to DFFFH are therefore&nbsp;....... .&rsquo;"</td></tr>
+</table>
+<p>
+(Editors note: Well thats what it said, and we couldn&rsquo;t understand it
+either, so we looked it up in a manual that was a couple of months old.
+That didn&rsquo;t make sense either, suggesting that the Basic used 8K+ of
+workspace, so after a little investigation we think page 24 should read
+as follows:
+</p>
+<p>
+&ldquo;Nascom Basic leaves locations between 0C80H (3200 decimal) and 0FFFH
+(4095 decimal) inclusive for use by user machine code routines. It uses
+locations 1000H (4096) to 10F9H (4345) inclusive for workspace and
+resides in E900H (-8192) to FFFFH (-1) inclusive. Locations 10FAH
+(4346) to DFFFH (-8193) inclusive are therfore available for the users&rsquo;
+Basic program and data.")
+</p>
+<table>
+<colgroup>
+	<col style="width: 20%">
+	<col>
+</colgroup>
+<tr><td>"page 26</td><td>
+program 1 line 40: the word &lsquo;to&rsquo; should be in upper case."</td></tr>
+</table>
+<p>
+For a manual the size of the Nascom&nbsp;2 manual you must expect a
+few mistakes but we bet they haven&rsquo;t all been found (we haven&rsquo;t tried
+looking yet), but if you come across any please let us know. so that
+they can be ammended in later manuals. That way new users of Nascom&nbsp;2
+might not run into some of the problems that have been experienced.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

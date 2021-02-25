@@ -1,0 +1,70 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    14</span>
+
+E38A E5         CHKSTK: PUSH    HL              ; Save code string address
+E38B 2ADA10             LD      HL,(ARREND)     ; Lowest free memory
+E38E 0600               LD      B,0             ; BC = Number of levels to test
+E390 09                 ADD     HL,BC           ; 2 Bytes for each level
+E391 09                 ADD     HL,BC
+E392 3E                 DEFB    (LD A,n)        ; Skip "PUSH HL"
+E393 E5         ENFMEM: PUSH    HL              ; Save code string address
+E394 3ED0               LD      A,LOW -48       ; 48 Bytes minimum RAM
+E396 95                 SUB     L
+E397 6F                 LD      L,A
+E398 3EFF               LD      A,HIGH -48      ; 48 Bytes minimum RAM
+E39A 9C                 SBC     A,H
+E39B DAA2E3             JP      C,OMERR         ; Not enough - ?OM Error
+E39E 67                 LD      H,A
+E39F 39                 ADD     HL,SP           ; Test if stack is overflowed
+E3A0 E1                 POP     HL              ; Restore code string address
+E3A1 D8                 RET     C               ; Return if enough mmory
+E3A2 1E0C       OMERR:  LD      E,OM            ; ?OM Error
+E3A4 C3C1E3             JP      ERROR
+
+E3A7 2AC910     DATSNR: LD      HL,(DATLIN)     ; Get line of current DATA item
+E3AA 225C10             LD      (LINEAT),HL     ; Save as current line
+E3AD 1E02       SNERR:  LD      E,SN            ; ?SN Error
+E3AF 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,DZ"
+E3B0 1E14       DZERR:  LD      E,DZ            ; ?/0 Error
+E3B2 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,NF"
+E3B3 1E00       NFERR:  LD      E,NF            ; ?NF Error
+E3B5 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,DD"
+E3B6 1E12       DDERR:  LD      E,DD            ; ?DD Error
+E3B8 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,UF"
+E3B9 1E22       UFERR:  LD      E,UF            ; ?UF Error
+E3BB 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,OV
+E3BC 1E0A       OVERR:  LD      E,OV            ; ?OV Error
+E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,TM"
+E3BF 1E18       TMERR:  LD      E,TM            ; ?TM Error
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    15</span>
+
+E3C1 CDDFE4     ERROR:  CALL    CLREG           ; Clear registers and stack
+E3C4 324510             LD      (CTLOFG),A      ; Enable output (A is 0)
+E3C7 CD74EB             CALL    STTLIN          ; Start new line
+E3CA 21B9E2             LD      HL,ERRORS       ; Point to error codes
+E3CD 57                 LD      D,A             ; D = 0 (A is 0)
+E3CE 3E3F               LD      A,"?"
+E3D0 CD9BE6             CALL    OUTC            ; Output "?"
+E3D3 19                 ADD     HL,DE           ; Offset to correct error code
+E3D4 7E                 LD      A,(HL)          ; First character
+E3D5 CD9BE6             CALL    OUTC            ; Output it
+E3D8 CD36E8             CALL    GETCHR          ; Get next character
+E3DB CD9BE6             CALL    OUTC            ; Output it
+E3DE 213FE3             LD      HL,ERRMSG       ; "Error" message
+E3E1 CD10F2     ERRIN:  CALL    PRS             ; Output message
+E3E4 2A5C10             LD      HL,(LINEAT)     ; Get line of error
+E3E7 11FEFF             LD      DE,-2           ; Cold start error if -2
+E3EA CD8AE6             CALL    CPDEHL          ; See if cold start error
+E3ED CA12E0             JP      Z,CSTART        ; Cold start error - Restart
+E3F0 7C                 LD      A,H             ; Was it a direct error?
+E3F1 A5                 AND     L               ; Line = -1 if direct error
+E3F2 3C                 INC     A
+E3F3 C4A5F9             CALL    NZ,LINEIN       ; No - output line of error
+E3F6 3E                 DEFB    (LD A,n)        ; Skip "POP BC"
+E3F7 C1         POPNOK: POP     BC              ; Drop address in input buffer
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

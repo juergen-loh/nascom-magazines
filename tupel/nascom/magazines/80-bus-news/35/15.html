@@ -1,0 +1,220 @@
+<?php columnStart(1); ?>
+<p>
+; Characters
+1f equ Oah
+er equ Odh
+</p>
+<p>
+3 Ports
+</p>
+<p>
+uartd equ Ob8h
+uartm equ uartdt+4
+uarts equ uartd+5
+uarth equ uartd+6
+pdl equ Ob4h
+pel equ pdl+2
+pd2 equ ObSh
+pe2 equ pd2+2
+</p>
+<p>
+3; Dummy routines
+</p>
+<p>
+reset:
+</p>
+<p>
+open:
+</p>
+<p>
+close:
+</p>
+<p>
+read:
+</p>
+<p>
+write:
+</p>
+<p>
+make:
+</p>
+<p>
+setdma:
+xor a
+ip bret
+</p>
+<p>
+Line feed
+Carriage return
+</p>
+<p>
+UART data port
+Modem control
+</p>
+<p>
+Line status
+</p>
+<p>
+Modem status
+</p>
+<p>
+PIO data port A
+PLO control port A
+PIO data port B
+PIO control port B
+</p>
+<p>
+AR eR ERE em OR om
+</p>
+<p>
+3; Heading message and work area
+head: defb cr,1f,"* GIPB * &ldquo;
+</p>
+<p>
+hw: defb &ldquo;0 waiting
+hs: defb &ldquo;0 spare
+</p>
+<p>
+hh: defb &ldquo;
+</p>
+<p>
+her: defb cr,1f,"8"
+</p>
+<p>
+headl equ $-head
+</p>
+<p>
+wait equ work+hw-head
+spare equ workt+hs-head
+headh equ work+hh-head
+haltm: defb &ldquo;Halted&rdquo;
+</p>
+<p>
+gipb:
+</p>
+<p>
+w
+</p>
+<p>
+&ldquo;
+</p>
+<p>
+; Length of message
+</p>
+<p>
+; Copy RP/M to RAM at same address to avoid hardware problem
+</p>
+<p>
+ld hl&nbsp;,Q8000h
+</p>
+<p>
+ld be,1000h
+</p>
+<p>
+ldir
+</p>
+<p>
+: Switch out the ROM
+</p>
+<p>
+ld a,0fh
+</p>
+<p>
+out Cuartm),a
+</p>
+<p>
+3 RS232, no ROM
+</p>
+<p>
+3; Write interrupt address table to work area
+</p>
+<p>
+ld hl,procl
+</p>
+<p>
+ld (inttab) ,hl
+</p>
+<p>
+&gt;
+</p>
+<p>
+x
+</p>
+<p>
+Y
+</p>
+<p>
+Disable CPU interrupts
+di
+</p>
+<p>
+Disable PIO
+id a,03h
+out (pe2),a ; Port B disabled
+if cent
+out (pel),a ; Port A disabled
+endif
+</p>
+<p>
+Ensure PIO happy
+ld hl,eph
+push hl
+reti
+</p>
+<p>
+Load I register
+</p>
+<p>
+eph: ld a,high(inttab)
+</p>
+<p>
+3
+</p>
+<p>
+a.
+</p>
+<p>
+ld i,a
+</p>
+<p>
+Interrupt mode
+im 2
+</p>
+<p>
+Interrupt vector
+ld a,low(inttab)
+4f cent
+out (pel),a + Port A
+else
+out (pe2),a 3; Port B
+endif
+</p>
+<p>
+if cent
+PIO port B to mode 3, control
+ld a,Ocfh
+out (pe2),a
+Direction control word &ndash; ail bits are inpu
+1d a,Offh
+out (pe2),a
+PIO port A to mode 3, control
+id a,Ocfh
+out (pel),a
+Direction control word &ndash; define bit 0 as output and rest as input
+ld a,0feh
+out (pel),a
+Output value to data port A to show printer busy
+ld a,Oih
+out (pdl),a
+Interrupt control word &ndash; enable interrupts for low to high, mask follows
+lid a,Ob7h
+out (pel),a
+Interrupt mask &ndash; only interrupt on input bit 1 (when it goes low)
+1d a,0fdh
+out (pel),a
+else
+</p>
+<p>
+15
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+A PROGRAMMABLE CHARACTER GENERATOR FOR NASCOM 1
+</h1>
+<h2>
+by S. Hope
+</h2>
+<p>
+The main drawback of the standard ROM based graphics for Nascom is that
+while many programs use the standard &ldquo;pixel&rdquo; characters, others, for example
+Sargon, need special character sets to be most effective. One solution is to have
+two or more switch-selectable graphics ROMS, but a more effective answer is to
+store the data which defines the graphics characters in RAM. Any special
+characters required in a program can then be loaded into this RAM either from tape
+or by the program itself. In addition, a programmable character generator can
+be used to simulate bit-mapped high resolution graphics.
+</p>
+<p>
+The unit described below is simple and cheap to build. It allows up to 128
+characters to be loaded into RAM and used as normal graphics characters at
+any screen location. Each character consists of 16 rows of 8 dots; the data
+for the character is stored as 16 consecutive bytes in the P.C.G. RAM. A few
+modifications need to be made to the basic Nascom&nbsp;1, but the unit does not need a
+buffer board or any other expansion to be present.
+</p>
+<p>
+The 2K of RAM is mapped as &ldquo;write only&rdquo; memory at addresses &pound;000 &ndash; &pound;7FF,
+coincident with the monitor address space. This reduces the address decoding
+logic required, and ensures that the unit is compatible with the memory allocation of
+machines with different software layouts. This is very effective when the device
+is used purely as a character generator, but has a drawback when it is used in a
+program which needs to keep track of which dots on the screen are &ldquo;on&rdquo;; as
+the processor cannot read the P.C.G. RAM (reading this address space simply
+accesses data in the monitor) a copy of this 2K must be kept at some location in
+the main memory.
+</p>
+<p>
+The unit is built on a prototyping board. Some soldering ability and
+considerable patience is required to hard wire all the address and data lines to the
+RAM. If you are short on either, or have any doubts about the modifications
+needed, you would probably do better to stick to one of the commercial P.C.G.&rsquo;s
+available.
+</p>
+<p>
+To simplify connection to the Nascom, the original 6576 character generator is
+resited on the new board, and a Jumper cable runs from this board to the 6576
+socket on the Nascom. The state of bit 7 in the V.D.U. RAM determines whether the
+data for the display is obtained from the 6576 (bit 7 = 0) or from the RAM (bit 7 = 1).
+Because the outputs of the 6576 have no high impedance state this selection is
+done by means of a set of two multiplexors (74LS157, IC&rsquo;s 10 and 11). The 74157
+is a four-pole two-way switch contolled by a voltage applied to pin 1.
+</p>
+<p>
+The P.C.G. RAM is connected to the character and row select lines from the
+6576, and the Nasbus address lines A0 &ndash; A9, through a further set of multiplexors
+(IC&rsquo;s 1 &ndash; 3). When the Nascom writes to an address in the range &pound;000 &ndash; &pound;7FF,
+these multiplexors are switched to the Nascom address lines, the chip select signal
+for the correct RAMs is taken low, and the write enable signal for all the 2114s is
+low. An 81LS95 octal buffer (IC 4) gates the data from the data bus into the 2114
+I/O lines.
+</p>
+<?php columnEnd(1); ?>

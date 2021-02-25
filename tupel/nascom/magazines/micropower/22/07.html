@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+THE NAS-SYS MONITORS
+</h1>
+<p>
+by J. Haigh
+</p>
+<p>
+SCAL KBD, DF 61
+</p>
+<p>
+The keys of the keyboard are connected in an array of eight rows by seven
+columns (six columns in the case of the Nascom&nbsp;1 keyboard). Each row of keys is
+connected to one output line of a chip known as a &lsquo;BCD to Decimal Decoder/Driver&rsquo;.
+This chip accepts a four-bit binary pattern and if it represents a valid decimal digit
+(i.e., if it is in the range 0 &ndash; 9) it drives the corresponding output line to zero volts.
+Three of the input lines are taken from a binary counter, which merely counts a series
+of clocking pulses and outputs a corresponding binary number; the fourth bit is
+derived from the clocking pulse, in such a way that one of the eight lines used by
+the key rows is activated only for a short period after the clocking pulse has been
+received.
+</p>
+<p>
+Each key is effectively a miniature transformer, the magnetic circuit of which
+is only complete when the key is depressed. Thus as a row is pulled to zero volts by
+the decoder/driver, a pulse is output on by each key in that row which is down. The
+pulses are amplified and output to the data bus via a buffer which is only enabled
+when port 0 is read. Thus the circuitry produces a sequential scan of the keys and
+makes the information on which keys are pressed available to the processor.
+The clocking pulses which step the binary counter for the keyboard scan are
+produced under the control of SCAL KBD. The routine starts by &lsquo;flipping&rsquo; bit 1 of port
+zero, that is, taking this bit to 1 for a short period, and then returning it to 0. This
+sends a pulse along the &lsquo;Keyboard Reset&rsquo; line, which resets the binary counter to
+zero. The status of row 0 is then read, complemented so that keys pressed are
+represented by 1&rsquo;s, and saved in the bottom byte of the KEYMAP region of the
+workspace (&pound;0C01 &ndash; &pound;0C09).
+</p>
+<p>
+The routine now scans each row of the keyboard by flipping bit 0 of port 0
+eight times. Each time bit 0 is flipped the next key row is selected; the routine then
+reads the status of the keys in that row, complements the result, and saves it
+temporarily in the D register. It then looks to see if it differs from the status obtain
+the last time the row was scanned, which is stored in the appropriate byte of
+KEYMAP. If there has been no change the routine continues to scan successive
+rows. After all the rows have been scanned the carry flag is reset and the routine is
+terminated.
+</p>
+<p>
+If a change is detected, a short delay (approximately 2.7 msec at 4 mhz) is
+inserted and the status is re-read. This is designed to remove spurious inputs caused
+by key bounce. The value obtained on this second read is stored in the E register,
+and the first read is recovered from D; this value is &lsquo;Exclusive ORed with the mapping
+</p>
+<?php columnEnd(1); ?>

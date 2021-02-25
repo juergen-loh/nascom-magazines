@@ -1,0 +1,111 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    86</span>
+
+FA0F 3D         MAKNUM: DEC     A               ; Adjust for digits to do
+FA10 3D                 DEC     A
+FA11 E1                 POP     HL              ; Restore buffer address
+FA12 F5                 PUSH    AF              ; Save count
+FA13 1195FA             LD      DE,POWERS       ; Powers of ten
+FA16 05                 DEC     B               ; Count digits before point
+FA17 C220FA             JP      NZ,DIGTXT       ; Not zero - Do number
+FA1A 362E               LD      (HL),"."        ; Save point
+FA1C 23                 INC     HL              ; Move on
+FA1D 3630               LD      (HL),"0"        ; Save zero
+FA1F 23                 INC     HL              ; Move on
+FA20 05         DIGTXT: DEC     B               ; Count digits before point
+FA21 362E               LD      (HL),"."        ; Save point in case
+FA23 CC69F8             CALL    Z,INCHL         ; Last digit - move on
+FA26 C5                 PUSH    BC              ; Save digits before point
+FA27 E5                 PUSH    HL              ; Save buffer address
+FA28 D5                 PUSH    DE              ; Save powers of ten
+FA29 CD5FF8             CALL    BCDEFP          ; Move FPREG to BCDE
+FA2C E1                 POP     HL              ; Powers of ten table
+FA2D 062F               LD      B, "0"-1        ; ASCII "0" - 1
+FA2F 04         TRYAGN: INC     B               ; Count subtractions
+FA30 7B                 LD      A,E             ; Get LSB
+FA31 96                 SUB     (HL)            ; Subtract LSB
+FA32 5F                 LD      E,A             ; Save LSB
+FA33 23                 INC     HL
+FA34 7A                 LD      A,D             ; Get NMSB
+FA35 9E                 SBC     A,(HL)          ; Subtract NMSB
+FA36 57                 LD      D,A             ; Save NMSB
+FA37 23                 INC     HL
+FA38 79                 LD      A,C             ; Get MSB
+FA39 9E                 SBC     A,(HL)          ; Subtract MSB
+FA3A 4F                 LD      C,A             ; Save MSB
+FA3B 2B                 DEC     HL              ; Point back to start
+FA3C 2B                 DEC     HL
+FA3D D22FFA             JP      NC,TRYAGN       ; No overflow - Try again
+FA40 CD72F6             CALL    PLUCDE          ; Restore number
+FA43 23                 INC     HL              ; Start of next number
+FA44 CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG
+FA47 EB                 EX      DE,HL           ; Save point in table
+FA48 E1                 POP     HL              ; Restore buffer address
+FA49 70                 LD      (HL),B          ; Save digit in buffer
+FA4A 23                 INC     HL              ; And move on
+FA4B C1                 POP     BC              ; Restore digit count
+FA4C 0D                 DEC     C               ; Count digits
+FA4D C220FA             JP      NZ,DIGTXT       ; More - Do them
+FA50 05                 DEC     B               ; Any decimal part?
+FA51 CA60FA             JP      Z,DOEBIT        ; No - Do "E" bit
+FA54 2B         SUPTLZ: DEC     HL              ; Move back through buffer
+FA55 7E                 LD      A,(HL)          ; Get character
+FA56 FE30               CP      "0"             ; "0" character?
+FA58 CA54FA             JP      Z,SUPTLZ        ; Yes - Look back for more
+FA5B FE2E               CP      "."             ; A decimal point?
+FA5D C469F8             CALL    NZ,INCHL        ; Move back over digit
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    87</span>
+
+FA60 F1         DOEBIT: POP     AF              ; Get "E" flag
+FA61 CA7FFA             JP      Z,NOENED        ; No "E" needed - End buffer
+FA64 3645               LD      (HL),"E"        ; Put "E" in buffer
+FA66 23                 INC     HL              ; And move on
+FA67 362B               LD      (HL),"+"        ; Put '+' in buffer
+FA69 F270FA             JP      P,OUTEXP        ; Positive - Output exponent
+FA6C 362D               LD      (HL),"-"        ; Put "-" in buffer
+FA6E 2F                 CPL                     ; Negate exponent
+FA6F 3C                 INC     A
+FA70 062F       OUTEXP: LD      B,"0"-1         ; ASCII "0" - 1
+FA72 04         EXPTEN: INC     B               ; Count subtractions
+FA73 D60A               SUB     10              ; Tens digit
+FA75 D272FA             JP      NC,EXPTEN       ; More to do
+FA78 C63A               ADD     A,"0"+10        ; Restore and make ASCII
+FA7A 23                 INC     HL              ; Move on
+FA7B 70                 LD      (HL),B          ; Save MSB of exponent
+FA7C 23         JSTZER: INC     HL              ;
+FA7D 77                 LD      (HL),A          ; Save LSB of exponent
+FA7E 23                 INC     HL
+FA7F 71         NOENED: LD      (HL),C          ; Mark end of buffer
+FA80 E1                 POP     HL              ; Restore code string address
+FA81 C9                 RET
+
+FA82 017494     RNGTST: LD      BC,9474H        ; BCDE = 999999.
+FA85 11F723             LD      DE,23F7H
+FA88 CD8EF8             CALL    CMPNUM          ; Compare numbers
+FA8B B7                 OR      A
+FA8C E1                 POP     HL              ; Return address to HL
+FA8D E2EAF9             JP      PO,GTSIXD       ; Too big - Divide by ten
+FA90 E9                 JP      (HL)            ; Otherwise return to caller
+
+FA91 00000080   HALF:   DEFB    00H,00H,00H,80H ; 0.5
+
+FA95 A08601     POWERS: DEFB    0A0H,086H,001H  ; 100000
+FA98 102700             DEFB    010H,027H,000H  ;  10000
+FA9B E80300             DEFB    0E8H,003H,000H  ;   1000
+FA9E 640000             DEFB    064H,000H,000H  ;    100
+FAA1 0A0000             DEFB    00AH,000H,000H  ;     10
+FAA4 010000             DEFB    001H,000H,000H  ;      1
+
+FAA7 213CF8     NEGAFT: LD  HL,INVSGN           ; Negate result
+FAAA E3                 EX      (SP),HL         ; To be done after caller
+FAAB E9                 JP      (HL)            ; Return to caller
+
+FAAC CD44F8     SQR:    CALL    STAKFP          ; Put value on stack
+FAAF 2191FA             LD      HL,HALF         ; Set power to 1/2
+FAB2 CD51F8             CALL    PHLTFP          ; Move 1/2 to FPREG
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

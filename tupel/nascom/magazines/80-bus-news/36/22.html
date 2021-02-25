@@ -1,0 +1,391 @@
+<?php columnStart(1); ?>
+<p>
+A2EF
+A2Fi
+A2F3
+A2F5
+A2F7
+</p>
+<p>
+A2F9
+A2FA
+A2FC
+A2FD
+</p>
+<p>
+A2FF
+A300
+ASOL
+A302
+A304
+A305
+A306
+</p>
+<p>
+A307
+A30A
+A30E
+A30F
+A312
+</p>
+<p>
+A313
+A315
+A316
+A318
+</p>
+<p>
+A319
+A31B
+A3IC
+A31E
+</p>
+<p>
+A31F
+A321
+</p>
+<p>
+A323
+</p>
+<p>
+A325
+A326
+A328
+A324
+A32B
+</p>
+<p>
+A32C
+A32F
+A331
+A334
+A336
+A337
+</p>
+<p>
+0604
+CB25 LOOPB
+CB14
+cB12
+LOF8
+</p>
+<p>
+F5
+3&pound;00
+</p>
+<p>
+2806
+</p>
+<p>
+81 LOO PW
+</p>
+<p>
+Fl SKIPPY
+</p>
+<p>
+242900 RETCUR
+28 2B2B2B
+</p>
+<p>
+2B
+</p>
+<p>
+222906
+</p>
+<p>
+co
+</p>
+<p>
+E60F PRLSB
+c8
+</p>
+<p>
+DF 7A
+</p>
+<p>
+cg
+</p>
+<p>
+ED61 RDBYTE
+oc
+</p>
+<p>
+ED69
+</p>
+<p>
+oD
+</p>
+<p>
+3E04
+D32C
+</p>
+<p>
+DB2D
+</p>
+<p>
+FS
+3E05
+D32C
+FL
+cy
+</p>
+<p>
+2A290C DELETE
+DF7C
+</p>
+<p>
+22290C
+</p>
+<p>
+3E 18
+</p>
+<p>
+F7
+</p>
+<p>
+c9
+</p>
+<p>
+LD B,4
+</p>
+<p>
+SIA L
+</p>
+<p>
+RL H
+</p>
+<p>
+RL D
+</p>
+<p>
+DJINZ LOOPB
+</p>
+<p>
+;If it is zero then return
+</p>
+<p>
+PUSH AF
+</p>
+<p>
+LD A,O
+</p>
+<p>
+cP D
+</p>
+<p>
+JR Z,SKIPPY
+</p>
+<p>
+;Add &ldquo;D&rsquo; decimal weightings to byte count
+POP AF
+</p>
+<p>
+LD B,D
+</p>
+<p>
+ADD C
+</p>
+<p>
+DJINZ LOOPW
+</p>
+<p>
+PUSH AF
+</p>
+<p>
+POP AF
+</p>
+<p>
+RET
+</p>
+<p>
+;Return cursor (move back 5 spaces)
+LD HL,C( CURSOR)
+</p>
+<p>
+DEC HL \ DEC HL \ DEC HL \ DEC HL \ DEC HL
+LD (CURSOR) ,HL
+</p>
+<p>
+RET
+</p>
+<p>
+3Print LSB of accumulator
+;suppress leading zeroes
+AND OFH
+</p>
+<p>
+RET Z
+</p>
+<p>
+SCAL BLHEX
+</p>
+<p>
+RET
+</p>
+<p>
+sRead in byte from EPROM
+;Output address
+</p>
+<p>
+OUT (C),H
+</p>
+<p>
+INC c
+</p>
+<p>
+OUT (C),L
+</p>
+<p>
+DEC C
+</p>
+<p>
+Set OF low, keep PGM low (inactive)
+</p>
+<p>
+and PGM high Cinactive,
+LD A,100B
+</p>
+<p>
+OUT (CONT_D),A
+</p>
+<p>
+;Read in data byte
+</p>
+<p>
+IN A,(DATA_D)
+</p>
+<p>
+Set OE high, keep PGM low (inactive)
+</p>
+<p>
+; and PGM highCinactive)
+PUSH AP
+</p>
+<p>
+LD A, 101B
+</p>
+<p>
+out (CONT _D),A
+POP AF
+</p>
+<p>
+RET
+</p>
+<p>
+sDelete line
+LD HL,(CURSOR)
+SCAL CPOS
+</p>
+<p>
+LD (CURSOR) ,HL sHL points to LHS of line
+LD A,ESC 3Send ESCAPE
+</p>
+<p>
+ROUT
+</p>
+<p>
+RET
+</p>
+<p>
+A338
+</p>
+<p>
+A342
+</p>
+<p>
+A348
+</p>
+<p>
+A34A
+A34E
+</p>
+<p>
+A34F
+A353
+A357
+A35B
+</p>
+<p>
+00D8
+</p>
+<p>
+0000
+</p>
+<p>
+1600
+</p>
+<p>
+08102040
+80
+</p>
+<p>
+4550524F
+4D205052
+4P475241
+4D4D4552
+</p>
+<p>
+RAMTAB
+RAMSTA
+RAMEND
+RAMLEN
+ROMS IZ,
+ROMBAS
+ROMS TA
+ROMEND
+ROMT YP
+</p>
+<p>
+EPRTAB
+</p>
+<p>
+TITLE
+</p>
+<p>
+END
+</p>
+<p>
+g BRAK R RAH R AE RR RRR
+</p>
+<p>
+3* Data tables *
+j RR AH RRR RR RR EKER
+</p>
+<p>
+DW OD800H ;Tabulate address
+DS sStart of RAM block
+DS 3End of RAM block
+DS sLength of RAM block
+;Size of EPROM in bytes
+;Base address of EPROM
+;Start address for programming
+;End address
+6H ;Type of EPROM (default 2716)
+</p>
+<p>
+NAN NON N +
+RAB
+</p>
+<p>
+Ds
+DW
+</p>
+<p>
+sAllowable EPROM sizes (DIV 256)
+DB 8, 10H, 20H, 40H, 808
+</p>
+<p>
+;Title
+</p>
+<p>
+DB &ldquo;EPROM PROGRAMMER&rdquo;
+</p>
+<p>
+Workarea &ndash; 95D3 to 9B14
+ORG end &ndash; A35F
+LOAD end =- 9C8C
+</p>
+<p>
+22
+</p>
+<?php columnEnd(1); ?>

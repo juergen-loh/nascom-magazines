@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+A third toolkit
+</h1>
+<h2>
+WATKINS TOOLKIT REVIEW
+</h2>
+<p>
+On the closing date for copy for this issue a kind member said to me, &ldquo;I&rsquo;ve
+got the Watkins Basic Toolkit&rdquo;. I was tempted to reply that I hoped it wasn&rsquo;t
+contagious, or perhaps he was boasting about some obscure operation I hadn&rsquo;t heard of,
+but being my normal polite self and deciding to play it safe, I replied, &ldquo;Never heard
+of it.&rdquo;. Anyway, he volunteered to give me a review of it, and as this issue contains
+reviews of the other two toolkits we know about, I asked him if I could have it
+yesterday, as this issue was already &lsquo;put to bed&rsquo;. Well, he was a bit slow for
+yesterday, but the day after (or do I mean two days after yesterday), it was duly in
+my hands. I must admit when I read it, it was a little unclear, but as he had kindly
+provided me with (an almost unreadable) copy of the instructions, I managed to
+unscramble it. This article has had to be edited quite a bit, and as I don&rsquo;t know the
+animal at all, some of it is summize. My apologies to Mr. Watkins and Mr. Mathison if
+I&rsquo;ve misinterpreted anything. &ndash; DRH.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(3); ?>
+<h2>
+The Watkins Basic Toolkit
+</h2>
+<?php columnChange(23); ?>
+<h3 class="author">
+a software review by A. D. Mathison
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<h4>
+What you get
+</h4>
+<p>
+A cassette tape written in either N1 or N2 format containing on one side some
+demonstration and games programs, and on the other, a couple of copies of the toolkit.
+Also a couple of pages of badly copied, and at first reading, slightly misleading
+instructions.
+</p>
+<h4>
+Operation
+</h4>
+<p>
+It appears that the tool kit is a series of machine code subroutines which may
+be called from Basic. The call being made to a small routine which takes the parameter
+passed to it from the USR call, and uses that parameter to determine which routine is
+to be called. There are eight routines in all. I will confine myself to the N2
+version, but I believe that the differences between this and the N1 version are
+minimal. (The instructions make no mention of NAS-SYS/NASBUG compatibility, but it
+certainly works on NAS-SYS&nbsp;1, no tests have been carried out on NASBUG or NAS-SYS&nbsp;3.)
+After power up, initialize Basic as normal using the &lsquo;J&rsquo; command and unless memory
+size is to be restricted for your own reasons, type &lsquo;ENTER&rsquo; in reply to the &lsquo;Memory
+size&rsquo; prompt. Get back into the monitor by using &lsquo;RESET&rsquo; or &lsquo;MONITOR&rsquo; and load the
+toolkit using the &lsquo;R&rsquo; command. It occupies space from 0C80H to 0FE3H. At the end of
+the read, re-enter Basic using the &lsquo;Z&rsquo; command. The functions are now initialized by a
+&lsquo;direct&rsquo; DOKE 4100,3200 command or as statements within a Basic program.
+</p>
+<p>
+Functions 0, 1, 2, 3 and 6 are best called with a<br>
+?USR(X)<br>
+where X equals the function number. Functions 4 and 5 return a value into a variable<br>
+X=USR(4) or X=USR(5)<br>
+7 and 8 are special and are entered as<br>
+U=USR(7)A$ or U=USR(8)A$<br>
+where A$ is the array to be saved or loaded. Functions 0 and 3 can be given maximum
+space by a<br>
+CLEAR 0<br>
+but don&rsquo;t forget to reset the string space otherwise there will be no string space
+available when you come to run the program.
+</p>
+<?php columnEnd(1); ?>

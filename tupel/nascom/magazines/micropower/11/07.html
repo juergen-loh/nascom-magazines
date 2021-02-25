@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<p class="continued">
+free RAM where a copy of the P.C.G. data can be maintained. The
+characters are shown on the right of the screen on a large scale, each bit being
+represented by two pixels. The pixels are turned on and off by the eight leftmost
+alphanumeric keys in the four rows of the keyboard (1-8, Q-I, A-K and Z-,). An
+arrow indicates which set of four lines is currently selected; keys 0, P, ;, and /
+move the arrow so that all 16 lines can be modified. The character being
+defined appears at the cursor, which can be moved around the left half of the
+screen by means of the cursor keys. This character can be left at any position by
+pressing key -, and removed by = (shift/-); you can thus build up blocks of
+characters to draw a complex diagram.
+</p>
+<p>
+At the bottom of the screen the program lists the hex value of the
+character being defined and the 16 bytes of data in that character in hex (for use
+in machine code programs) and in decimal (for use in Basic). You can step
+forwards or backwards through the character set with the N/L and BS keys.
+When you first select a character it will probably contain unwanted data; this can
+be erased by CONTROL/C. Because the program uses the pixel set to produce
+the large-scale diagram of the character only 64 characters can be defined at
+one time; the program will thus work with a P.C.G. system which has only 1K of
+RAM and keeps the pixel set permanently in EPROM. The modifications for
+inverse display are: change (1055) to &pound;0F, (105F) to &pound;F0. (124A) to &pound;01, (1250)
+to 02, and (12A9), (12B3), (12BD), (12D9) to 0E. If your P.C.G. RAM is
+coincident with a block of ROM, its address should be placed at &pound;12EC, &pound;12ED.
+</p>
+<p>
+The fourth program is included as a demonstration of what can be
+produced by programming a block of characters. It displays a picture of the
+space shuttle which moves smoothly across the screen. Most of the program
+consists of a data table which is copied to the P.C.G. RAM to produce the intitial
+image. This is then moved by rotating each byte of the graphics characters
+one bit at a time. If you wish to convert this program for an &ldquo;inverse order&rdquo;
+display you will have to change the byte at &pound;135F to &pound;16, and invert the data
+table. I have included a routine at &pound;13C0 which performs this inversion.
+</p>
+<p>
+Finally, there are two short programs to demonstrate plotting points
+from Basic. The first program plots the orbit of a satellite around two primaries,
+one visible and the other invisible. The second shows how to produce simple
+graphs in Basic. Both routines set the points directly from Basic and could
+obviously be speeded up by using machine code accessed by a USR call. With
+a 128 character P.C.G. you have just enough characters to plot a sine curve
+and the axes at full-screen :Size. If you try to plot multiple curves you will find that
+you run out of characters &ndash; for such displays you need bit-mapped graphics.
+However, it is surprising what effective displays you can obtain with a simple
+P.C.G.; a life program is most impressive on a 384 x 240 array. Now that
+several commercial graphics units are available I hope that software will be
+produced which makes full use of the high resolution possible.
+</p>
+<p class="article-stopper">
+**********************************
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+THE FRENCH CONNECTION
+</h1>
+<p>
+by G.R.Kirby
+</p>
+<p>
+Quelle heure est il? Ever wanted to ask your friendly Nascom
+that question? Well with 4 integrated circuits and a few
+components it is possible to build a &ldquo;real-time&rdquo; clock for your
+Nascom using the National Semiconductor chip MM 58174
+</p>
+<p>
+The MM 58174.
+</p>
+<p>
+The MM 58174 is a 16 pin device containing 16 internal
+registers programmed to give the time in tenths of a second, day
+of the week, day of the month and the month of the year. It does
+not however give the year, although, by telling it during
+initialization the year with respect to the last leap year, it
+will automatically keep the month of Febuary up to date (ie. 28
+or 29 days). The circuit is controlled by its own interna
+oscillator, driven by an external quartz of 32768 KHz which I
+believe is a standard frequency for electronic time pieces
+(therefore, easy to obtain). The registers are addressed by a 4
+bit bus (BCD). The following table gives the purpose and address
+of each register and also the pin connections
+</p>
+<p>
+REGISTER ADS AD2 ADI ADO MODE
+RO Mode Test oO Oo Oo Oo (Write
+Ri Tenths of seconds oO oO oO 1 (Roead
+R2 Seconds (units) oO oO 1 oO R MM 58174
+R3 Seconds (tens) &lsquo; oO 1 1 R
+R4 Minutes (units) &lsquo;o 1 oO oO R/W csy1 1&amp;+-Vdd
+RS Minutes (tens) &copy; 1 &copy; 1 R/WNRDS}2 = 15}xt.in
+R6 Hours (units) oO 1 1 oO R/W NWDS+3 14+Xt.out
+R7 Hours (tens) oO 1 2 &ndash; RAW DBST4 = 13tInt
+RB Days = (units) 1 0 0 &copy; R/W DB2Z15 &ndash; 12+ADO
+R? Days (tens) 1 o oO 1 R/W DBI+6 1LTADL
+R10 Day of the week 1 oO 1 Oo R/W DBO+7 19+AD2
+R11 Month (units) 1 0 1 1 RW Vss{8 etaps
+R12 Month (tens) 1 1 0 0 RW
+R13 Year 0-3 basis 1 1 oO 1 w
+R14 Stop/Go 1 1 1 oO w
+RIS Interrupt a 2 1 2) RW
+</p>
+<p>
+The power requirement of the MM 58174 is a single SV supply.
+there is however a standby made where voltage as low as 2.2V 15
+sufficient to keep the clack running and the time up to date. In
+this mode it is not possible to read or write to the internal
+registers. Power consumption in &ldquo;stand-by&rdquo; mode is less than
+10UA. There are, as you will realise, many possible uses for
+this powerful circuit. The following is a &ldquo;real-time&rdquo; clock
+using 2 Ni-Cad batteries to keep the clock running during
+periods when your Nascom is switched off.
+</p>
+<p>
+The Circuit Diagram
+As you can see, relatively few components are needed to
+build this &ldquo;real-time&rdquo; clock, the principal of course being the
+</p>
+<p>
+tM 58174 from National Semiconductor which is selected by the
+address decoder IC 2. IC 2 is a i-1n-8 decoder being low when
+</p>
+<?php columnEnd(1); ?>

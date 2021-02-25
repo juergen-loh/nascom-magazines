@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Poke, Doke&nbsp;... Moke!
+</h1>
+<h2>
+by Garry Rowland
+</h2>
+<p>
+MOKE is a relocatable USR routine for the Nascom ROM Basic
+version 4.7 that will display menus, title pages and game
+graphics held in data lists. The data is formatted using offsets
+and repeat counters to reduce memory requirements to a minimum.
+The wata is read directly from DATA lists; this avoids the
+duplication af data that results when using string variables or
+literals.
+</p>
+<p>
+&lsquo;The MOKE&rsquo;s formatted lists are mot quite compatible with the
+Format expected by Basic&rsquo;s READ statement. In choosing the
+control characters for offset, repeat and terminate &ndash; the need
+for characters that visually indicate their function and not
+likely to be used in text or graphics was the main
+consideration. The control characters choosen are:
+</p>
+<p>
+1 offset
+* repeat
++ terminate
+</p>
+<p>
+The " (ditto? repeat control character and the absence of
+data separators between each charcter in| the MOKE list will
+Cause a conventional READ statement to read a Q/ock of HOKE
+data. In a large block of data, calculation af the numer of
+READs required to skip a section of MOKE data could be a bit
+tiresome. If each new MOKE list started on anew line, the lists
+can be selected by using the RESTORE n statement, where n is the
+Tine number on which the list starts. I don&rsquo;t think there will
+be many applications where MOKE data lists will need to be read
+by the READ statement, but if that is required, the MOKE will
+recognise data separatars {though inclusion of them will double
+the length ef your data list) and % could be substituted for *
+in the MOKE code.
+</p>
+<p>
+There could have been a fen more features, like repeating
+blocks af the MOKE list, and fewer compromises; the routine,
+could also have been a lot longer. My maxim is : Long USRs get
+filed away, short USRS get used.
+</p>
+<p>
+Using the Moke
+</p>
+<p>
+Data &lsquo;The MOKE reads data items immediately following the
+bata statement, including spaces.
+</p>
+<p>
+: Adata separator mist follow any decimal number that
+is an argument to&rdquo; or /. Tt can also be used to
+separate each item (one character). If the last
+</p>
+<p>
+character on the line is a space then this should be
+followed by a comma, otherwise the space will be
+lost when the line is entered.
+</p>
+<?php columnEnd(1); ?>

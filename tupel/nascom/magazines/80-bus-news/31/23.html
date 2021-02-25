@@ -1,0 +1,52 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<h1 id="article1">
+NASCOM<br>
+ROM<br>
+BASIC<br>
+DIS&ndash;ASSEMBLED
+</h1>
+<h2>
+PART <b>5</b>
+</h2>
+<h3 class="author">
+BY CARL LLOYD&ndash;PARKER
+</h3>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    54</span>
+
+F012 E5         ARLDSV: PUSH    HL              ; Save code string address
+F013 F5                 PUSH    AF              ; A = 00 , Flags set = Z,N
+F014 2AD810             LD      HL,(VAREND)     ; Start of arrays
+F017 3E                 DEFB    (LD A,n)        ; Skip "ADD HL,DE"
+F018 19         FNDARY: ADD     HL,DE           ; Move to next array start
+F019 EB                 EX      DE,HL
+F01A 2ADA10             LD      HL,(ARREND)     ; End of arrays
+F01D EB                 EX      DE,HL           ; Current array pointer
+F01E CD8AE6             CALL    CPDEHL          ; End of arrays found?
+F021 CA4AF0             JP      Z,CREARY        ; Yes - Create array
+F024 7E                 LD      A,(HL)          ; Get second byte of name
+F025 B9                 CP      C               ; Compare with name given
+F026 23                 INC     HL              ; Move on
+F027 C22CF0             JP      NZ,NXTARY       ; Different - Find next array
+F02A 7E                 LD      A,(HL)          ; Get first byte of name
+F02B B8                 CP      B               ; Compare with name given
+F02C 23         NXTARY: INC     HL              ; Move on
+F02D 5E                 LD      E,(HL)          ; Get LSB of next array address
+F02E 23                 INC     HL
+F02F 56                 LD      D,(HL)          ; Get MSB of next array address
+F030 23                 INC     HL
+F031 C218F0             JP      NZ,FNDARY       ; Not found - Keep looking
+F034 3AAC10             LD      A,(LCRFLG)      ; Found Locate or Create it?
+F037 B7                 OR      A
+F038 C2B6E3             JP      NZ,DDERR        ; Create - ?DD Error
+F03B F1                 POP     AF              ; Locate - Get number of dim'ns
+F03C 44                 LD      B,H             ; BC Points to array dim'ns
+F03D 4D                 LD      C,L
+F03E CA54F7             JP      Z,POPHRT        ; Jump if array load/save
+F041 96                 SUB     (HL)            ; Same number of dimensions?
+F042 CAA8F0             JP      Z,FINDEL        ; Yes - Find element
+F045 1E10       BSERR:  LD      E,BS            ; ?BS Error
+F047 C3C1E3             JP      ERROR           ; Output error
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

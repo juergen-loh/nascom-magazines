@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+11
+</p>
+<p>
+WORDSTAR FOR THE GEMINI IVC by Richard Beal
+</p>
+<p>
+ee te ee ee lS Se a a a nl OS me ee nen
+</p>
+<p>
+Wordstar is almost certainly the most widely used microcomputer word
+processing package in the world. Produced by Micropro, it is available ready
+configured for many computers. However, almost any microcomputer can run the
+package, because it comes with an excellent install program and extensive
+instructions on how to patch the program to specify any features not readily
+covered by the install program. This article describes how to patch Wordstar for
+the Gemini IVC and keyboard, making best use of the Gemini features, for example
+the cursor movement keys on the right side of the keyboard.
+</p>
+<p>
+[Ed.&rsquo;s note &ndash; Gemini have recently obtained a number of software licenses,
+including those for Micropro&rsquo;s Wordstar, Spellstar and Mailmerge. These packages
+are therefore now available from Gemini dealers in Gemini disk format, already
+installed for the IVC. |
+</p>
+<p>
+Wordstar can be obtained in its standard form on an 8 inch diskette, and is
+also available on many 5 inch formats such as Superbrain. Having migrated the
+software from the alien disk format to your Gemini format, which may be done
+using a program such as COPYSB, or with the help of a friendly dealer, you are
+ready to install it. You must run the install program, even if you are going ito
+enter all the hand patches for every option. This article does not cover the
+printer patches, which are often unnecessary as you can select the CP/M list
+device and a standard TTY printer.
+</p>
+<p>
+When you run the install program, you will find that the Gemini IVC is not
+a menu option, so you must select the user installed patches option for each
+menu option which you cannot answer. Having written the installed Wordstar back
+to disk, you are ready to load it under the debug utility and patch it. DDT,
+ZSID, or GEMDEBUG are all suitable. If you use DDT or Z5ID, remember to work out
+the number of pages for the SAVE command before you start the debug program.
+</p>
+<p>
+I will simply give you the values which I have found useful, as a complete
+description of all the options can be obtained best by working it out yourself
+from the manual. These patches are for Wordstar Version 3.0, and will not work
+on earlier versions.
+</p>
+<p>
+_ Address New values Meaning
+</p>
+<p>
+see see se ee ie ae ee cate sar cSt ts i se oe sn a ans saat me
+</p>
+<p>
+The following group of changes alter various initial values.
+</p>
+<p>
+0360 02 Change initial help level to 2.
+0361 00 Display helpful message at start of
+first edit.
+</p>
+<p>
+0392 FF Enter Wordstar in non-document mode
+</p>
+<p>
+instead of document mode.
+Useful if you have a version just
+for program text editing.
+</p>
+<p>
+O3E7 Name Name of Wordstar, change if not WS.
+</p>
+<p>
+The next change alters the keyboard to be consistent with CP/M etc.
+</p>
+<p>
+0493 C3 67 Make Backspace delete a character,
+instead of just moving the cursor.
+</p>
+<?php columnEnd(1); ?>

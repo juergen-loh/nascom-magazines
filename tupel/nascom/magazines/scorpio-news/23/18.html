@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<p>
+effort, particularly as we need to know the entry addresses. It is well worth trying to
+ensure that each section of the program works before creating a complex overlay
+structure.
+</p>
+<p>
+The problem of locating re-entrant code is even more difficult if there is no
+intermediate stage in the compilation. One option would be to compile the host
+program several times, with different patches each time. Providing that the patch is
+always the last item, and that the compiler does not put anything significant
+immediately after the compiled code, we should then have all the patches at the
+same location with the necessary space allocated for them. We would obviously have
+to find out where this location is, which could prove somewhat tricky. I have noticed
+that HiSoff C has an extra (undocumented) directive #code, which I presume works
+like #data. Unfortunately there seems to be good reason for its being
+undocumented, namely that it totally confuses the compiler. Presumably it works
+on the non-CP/M systems for which the compiler is also available.
+</p>
+<p>
+Operating a message overlay file is much less demanding. Once again we will want
+to have a reference table at the start of the file so that the program can call up the
+message it wants, but it can be much simpler. The only information we really need
+about the message is where to find it, since we can use a standard end-of-string code
+to stop the printing. Of the three programs where I have used a help file so far, none
+has needed more than 12K of help. This makes life very simple, to the extent that
+the first one does not even use random access. The reason is that there is less than
+one extent of the file, so all that is necessary is te place the sector number in the
+FCB current record byte and then read sequentially. Once. again I arrange for each
+message to start at the beginning of a sector, so I only need one byte to address the
+start of the message. Thus by using one sector for the reference I could have up to
+128 messages. :
+</p>
+<p>
+In practice I use a slightly more coniplex system which includes a coding seed to
+make the file unreadable to over-inquisitive hackers. It would be possible, of course,
+to use some form of data compression to shorten the file, but I did not consider this
+worth while. I also store the reference table-backward, again for no particularly good
+reason, and to&lsquo;add extra: complication each message starts with a heading whith is
+automatically centred on&rsquo;screen when it is read. If a form feed is found in the
+message, the controlling software stops and awaits a key press before continuing.
+As with the program overlays I wrote a short program to generate the help file. It
+simply reads in a Wordstar text file and breaks it every time it finds a comment line
+(one which starts with two dots). The comment becomes the title and all that follows
+is the message up to the next comment (or end of file). At the moment the message
+numbers have to be assigned from the console. because I wanted them to be
+non-contiguous and I could not be bothered to devise a way to declare them in the
+source.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,302 @@
+<?php columnStart(1); ?>
+<p>
+D3
+</p>
+<p>
+D4
+</p>
+<p>
+D5
+</p>
+<p>
+D6
+</p>
+<p>
+D7
+</p>
+<p>
+D8
+</p>
+<p>
+9
+</p>
+<p>
+og
+pe
+</p>
+<p>
+D1
+</p>
+<p>
+LD
+LD
+INC
+SUB
+SUB
+LD
+LD
+: LD
+INC
+OR
+JR
+DEC
+LD
+: RST
+DINZ
+RST
+DB
+LD
+ADD
+DAA
+LD
+SCAL
+SCAL
+SCAL
+: POP
+PUSH
+SCAL
+POP
+EX
+PUSH
+LD
+: LD
+AND
+JR
+SCAL
+: LD
+SCAL
+SCAL
+INC
+DJINZ
+SCAL
+POP
+POP
+LD
+: LD
+CP
+JR
+CP
+JR
+LD
+RST
+INC
+INC
+DINZ
+SCAL
+INC
+DEC
+JP
+JP
+l: CALL
+SCAL
+</p>
+<p>
+se
+a
+</p>
+<p>
+HL,PCPL
+A, (HL)
+</p>
+<p>
+HL
+</p>
+<p>
+(HL)
+</p>
+<p>
+24
+</p>
+<p>
+B,A
+</p>
+<p>
+HL, (CLINP)
+A, (HL)
+</p>
+<p>
+HL
+</p>
+<p>
+A
+</p>
+<p>
+NZ,D4
+</p>
+<p>
+HL
+</p>
+<p>
+A,&rsquo; &lsquo;
+</p>
+<p>
+ROUT
+</p>
+<p>
+D3
+</p>
+<p>
+PRS
+</p>
+<p>
+&lsquo; PAGE &lsquo;,0
+A,l
+</p>
+<p>
+C,A
+ZB2HEX
+ZCRLF
+ZCRLF
+HL
+</p>
+<p>
+BC
+ZTBCD3
+BC
+(SP) ,HL
+HL
+B,16
+A,B
+</p>
+<p>
+7
+NZ,D7
+ZSPACE
+A, (HL)
+ZB2HEX
+ZSPACE
+HL
+</p>
+<p>
+D6
+ZSPACE
+HL
+</p>
+<p>
+DE
+B,16
+A, (HL)
+&lsquo; &lsquo;
+</p>
+<p>
+Cc,bD9
+7FH
+C,D10
+A,&rsquo;.&rsquo;
+ROUT
+HL
+</p>
+<p>
+DE
+</p>
+<p>
+D8
+ZCRLF
+E
+</p>
+<p>
+E
+Z2,D1
+D2
+TOPPG
+Z2MRET
+</p>
+<p>
+:Length of user heading
+sis PCPL-PBMG-24
+</p>
+<p>
+;Put length in B
+;Point to heading
+:Get character
+Point to next
+sEnd of string?
+sNo =&gt; skip
+</p>
+<p>
+3;Back to the null
+s:Load a blank
+sPrint character
+;Loop
+</p>
+<p>
+;Print PAGE message
+</p>
+<p>
+;Get page number
+sIncrement (must ADD)
+:Keep it in decimal
+</p>
+<p>
+;Print page number
+;Do CR/LF
+7Do CR/LF
+:Get dump address
+</p>
+<p>
++Print dump address
+</p>
+<p>
+3Save addr and get buffer ptr
+;Save buffer pointer
+</p>
+<p>
+7Print 16 bytes
+</p>
+<p>
+;First or ninth byte?
+</p>
+<p>
+;No =&gt; skip
+</p>
+<p>
+3;Print a blank
+</p>
+<p>
+7Get byte
+</p>
+<p>
+:Print it
+</p>
+<p>
+;Print a blank
+;Point to next byte
+;Repeat 16 times
+7Print a blank
+;Restore buffer pointer
+;Get dump address
+;Print 16 characters
+7Get byte
+</p>
+<p>
+;Control character?
+7Yes =&gt; skip
+:Graphic or DEL?
+</p>
+<p>
+:;No =&gt; printable
+sNot printable
+3Print it
+</p>
+<p>
+:Point to next byte
+;Increment dump address
+;Repeat 16 times
+</p>
+<p>
+7Do CR/LF
+</p>
+<p>
+;Need a new sector?
+</p>
+<p>
+7Yes =&gt; go get it
+:Print next line
+;Move to top of page
+Back to PolyDos
+</p>
+<p>
+If paginated output is requested, ensure
+that the printer is at the top of a form
+</p>
+<?php columnEnd(1); ?>

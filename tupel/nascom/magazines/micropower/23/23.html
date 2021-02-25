@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+8 contains the checksum for the data. and HL points to the
+next byte following the data. Note that 1f B is zero on
+entry, 256 bytes will be output.
+</p>
+<p>
+SCAL XDUT, DF 6E
+</p>
+<p>
+XOUT provides facilities for communication with
+external serial devices. On entry the contents of the
+accumulator are saved on the stack and HL is set to point to
+$XOPT (&pound;0028), which is the byte used to store the flags for
+the various options available with XOUT. &lsquo;The value stored
+at $XOPT is controlled by the X command; it 15 alsa affected
+by characters input via the XKBD routine.
+</p>
+<p>
+The state of bit 7 of XOPT 15 first tested. If bit 7
+is 1, the character is not output and the routine terminates
+by resetting bit 7 to zero (so that only one character at a
+time 15 suppressed) and recovering the accumulator from the
+stack. If bit 7 15 zero, the character is output by a cal
+to an external serial output routine&nbsp;, XSOF, before the
+routine is terminated as above.
+</p>
+<p>
+XSOP outputs the character in the accumulator by a
+relative call to a subroutine, XSOPO. Here the accumulator
+is ORed, which sets the zero flag if the accumulator
+</p>
+<p>
+contained a null (00). In Nas-Sys&nbsp;1 the subroutine is
+terminated if a null is found; thus the Nas-Sys&nbsp;1 Externa
+output routine will mot send nulls. In Nas-Sys&nbsp;3 however
+</p>
+<p>
+the Return on Zero instruction has been omitted, and nulls
+can be output.
+</p>
+<p>
+@ second effect of the OR A instruction which starts
+XS0PO is to set the parity/overflow flag if the number of
+bits in the accumulator which are &lsquo;1&rsquo; 15 even: otherwise the
+parity/overflaw flag will be reset. If the parity of the
+accumulator was odd, the output routine now changes the
+state of bit 7; the result is that the accumulator now
+contains a code of even parity, the bottom seven bits (bits
+0 &ndash; 6) representing the ASCII character to be output.
+</p>
+<p>
+Next bit 9 of &pound;0028, the external option byte, 15
+tested; if this bit 15 zero, the character is to be output
+with even parity, and the routine jumps straight to the
+final section, where SRLX is called. However, if bit 0 of
+&pound;0028 was 1, bit 7 of the accumulator is first inverted, so
+that all output is of odd parity.
+</p>
+<p>
+After return from subroutine XSOPO, the routine is
+terminated, unless the character that has just been output
+was a Carriage return. In this case, bit 4 of the option
+</p>
+<p>
+byte is checked, and if it is zera the accumulator is loaded
+with the line feed code (&pound;08); this is then output by a
+&lsquo;fall through? to XSOPO
+</p>
+<?php columnEnd(1); ?>

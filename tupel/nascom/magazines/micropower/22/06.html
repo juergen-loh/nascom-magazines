@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+eight pin socket on the rear panel, and that simply taking the required pin to logic
+low briefly was enough to operate an internal latch which enabled the appropriate
+function. This was eventually done direct from the Nascom output port, but could
+easily have been done via a reed relay similarly driven. Only one modification
+was made to the deck internally, and this was to bring a connection out from a
+reed relay which monitored the tape digital counter, pulsing to logic low ten times
+every digit. This enables ECOS to calculate tape speed, and hence use timing to
+fast-forward and reverse the tape, to speed up searching operations.
+Having achieved total control of the tape transport via the computer, the next
+task was to decide upon the features to be included in the operating system, and
+the additional information to be recorded at the start of the tape and as header to
+each program stored. At the start of each tape there is a header which gives the
+tape number and name, and at the start of each program on the tape there is a
+header giving program number; name (up to 16 characters); type of record (machine
+code, zeap file, basic, data file, erased); length of program; and execution address.
+This information enables ECOS to create a catalogue on request by reading off the
+headers, fast-forwarding automatically between programs, and fast rewinding when
+the end of tape marker is found. Any tape erors which occur are handled
+automatically by ECOS which rewinds one block and attempts to reread the faulty
+block up to four times before abandoning it, leaving the standard &lsquo;?&rsquo; to denote an
+uresolved tape error. This sometimes occurs with old tapes not recorded on the
+deck. A dodge sometimes used in this case is to re-read the block with only one of
+the stereo channels, and this usually retrieves the situation. Once recorded on
+the logic deck via ECOS loading is usually foolproof, and the computer can be left
+to &lsquo;do its own thing&rsquo;.
+</p>
+<p>
+Once loaded ECOS is controlled via a menu which gives one letter
+command for:
+</p>
+<p>
+A &ndash; Assembler (warm starts Zeap)
+C &ndash; Catalogue (prints last directory used)
+D &ndash; Directory (print a list of programs on tape)
+E &ndash; Erase program
+G &ndash; Load and execute program
+I &ndash; Initialise tape (create tape header)
+L &ndash; Load program
+N &ndash; Nas-Sys (returns to monitor)
+R &ndash; Read tape (Nas-Sys read)
+V &ndash; Verify (Verify program written under ECOS)
+W &ndash; Write program (under ECOS)
+Z &ndash; WriteZeapfile
+</p>
+<p>
+As it Stands, ECOS is 3K long, and with additional refinements it is
+intended to put it in EPROM and interface Nas-Sys to it, providing
+ECOS functions direct from Nas-Sys. ECOS by its nature is
+inherently machine-specific, but more details of the software will be
+published if there is a demand.
+</p>
+<?php columnEnd(1); ?>

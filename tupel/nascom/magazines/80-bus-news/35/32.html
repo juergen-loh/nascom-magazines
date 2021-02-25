@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+32
+</p>
+<p>
+CONFIG, but I can&rsquo;t be bothered to do it to a machine which doesn&rsquo;t belong to
+me in the first place.
+</p>
+<p>
+All that apart, I use dBASE with the reply prompts highlighted, that is,
+in inverse video, and I like to see a flashing cursor under these
+circumstances anyway. Further, the prompt is usually on the eighth line which
+looks untidy as it overlays the underhangs on characters like lower case g, j,
+y, etc. So I like to see a flashing cursor on the 9th line when using dBASE.
+How can this be achieved?
+</p>
+<p>
+Well the obvious is to send a command string to the SVC/IVC to turn the
+cursor on, blinking, and move it down one line. It appears nice and easy, just
+work out the control words and then print them:
+</p>
+<p>
+STORE CHR(27 )+"Y"+CHR (72 )+CHR(8 ) TO curs
+? curs
+</p>
+<p>
+Not so, dBASE says different. The main problem in this instance is the CHR(8),
+instantly recognisable as 08h, or backspace. Now dBASE does not send a
+backspace, it translates the 08h into a cursor left movement. To achieve a
+back space you use the DEL key and the 7fh code is translated into a three
+byte string: 08h (to move the cursor back one), 20h (to delete the character
+at the cursor, which also advances the cursor) and 08h to move the cursor back
+again. (This problem is not uncommon, several control codes are converted
+either by the BDOS or the application program, so dBASE is not an isolated
+instance. The characters usually affected would be 08h, backspace, 09h, tab,
+0ah, line feed and 0dh carriage return.) The answer is to use the PUTVID
+program in the SVC/IVC manual, but this means making a machine code patch for
+dBASE (or whatever).
+</p>
+<p>
+According to the manual dBASE uses memory up to about A000H, so any
+address above this could be used for the patch, so I chose C000H for
+convenience. The machine code listing is given in Listing Two.
+</p>
+<p>
+All it has is a data table at cOllh and the PUTVID routine enclosed in a
+loop to shove the four characters in turn at the video card. dBASE uses POKES
+like Basic, but the -call&rsquo; procedure is slightly different, you use the SET
+function to set the call address, then use CALL to call it. So the
+(decimalized) dBASE version of the above is as follows, (49152 is the decimal
+equivalent of c000h):
+</p>
+<p>
+* Enable cursor type
+</p>
+<p>
+SET CALL TO 49152
+</p>
+<p>
+POKE 49152,6,4,33,17,192, 219, 178, 15, 56,251, 126, 35, 211,177, 16, 245
+POKE 49168,201,27,89,/72,8
+</p>
+<p>
+CALL
+</p>
+<p>
+You could do the same with MBASIC, using the same POKE addresses and data,
+thus: .
+</p>
+<p>
+10 CURS=49152
+</p>
+<p>
+20 FOR A=49152 TO 49172: READ B: POKE A,B: NEXT
+</p>
+<p>
+30 DATA 6,4,33,17,192,219,178,15, 56,251, 126,35, 211,177,16,245
+40 DATA 201,27,89,72,8
+</p>
+<p>
+50 CALL CURS
+</p>
+<?php columnEnd(1); ?>

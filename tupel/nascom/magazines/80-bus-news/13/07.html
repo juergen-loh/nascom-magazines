@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+The Defence
+</p>
+<p>
+en a a ae ce
+</p>
+<p>
+Hex location Suggested graphic
+4B81 = 1D9D = 1DA5 = BB (main wall)
+1D9B = 1DFE = 1DFF = 1DA5 = 1DA6 = BA (after one hit)
+Space Invader
+Hex location Suggested graphic
+1588 = 1594 = 1501 = 1651 = B3 (left character)
+158B = 15D0 = 1656 = B4 (centre character)
+158E = 1598 = 15BE = 1653 = B3 (right character)
+</p>
+<p>
+Changing all locations marked equal to each other for the same character is
+essential.
+</p>
+<p>
+Reading 80-BUS News issue 1 regarding changing over the &lsquo;line feed&rsquo; and
+&lsquo;newline&rsquo; keys, I made an attempt to do this under software control, the following
+being the result. N.B. EPROM blower is essential.
+</p>
+<p>
+Change Nas-Sys&nbsp;1 location 05A8 to 89, O5AB to OF, 0585 to 09 and O5B9 to 8E
+and swap over the keytops for L.F. and Newline.
+</p>
+<p>
+One problem, ESCape works OK in machine code routines, however to escape
+from BASIC (usually shift and newline twice) requires shift L.F. followed by shift
+newline. I cannot find the reason, I suspect something in the BASIC chip. Has
+anyone the answer? [Ra. &ndash; Yep, the BASIC ROM does shortened keyboard scans directly
+whilst RUNning programs, and is looking for the specific key depressions that
+correspond with the original shift and newline key positions.
+</p>
+<p>
+While in the Nas-Sys EPROM why not change locations O3BC to 03C4 (Nas-Sys&nbsp;1
+message) to your own, my own displays MIKES m/c, a very personal message. Location
+0077, normally 5F, is the cursor blink character, changing to B6 will give you the
+little man.
+</p>
+<p>
+Going back to messages, I have a second EPROM with software for the Ivc
+from Gemini which I fitted at 0494 (load command for paper tapes). If you want a
+longer message than the 8 available at O3BC then put a jump to 0494 from O3BC and
+put your message from 0494. (The software at 0494 is my own and not from Gemini.)
+</p>
+<p>
+Lastly, still in Nas-Sys, I changed location O7BE to OOBO which gives me my
+Bits and PCs toolkit by simply typing D on the keyboard and newline.
+</p>
+<p>
+Mike Trim, Ashton in Makerfield.
+</p>
+<p>
+MONITOR, Naspen &amp; Reset
+</p>
+<p>
+ee ee ee rd
+</p>
+<p>
+As a relatively new convert to the 80-BUS and the associated products I
+have a lot to learn and I am greatly indebted to your magazine and its two
+predecessors for their assistance in my learning process. May I take this
+opportunity of wishing the new title a long and successful publication run.
+</p>
+<p>
+My learning curve has now extended far enough that I am in a position to
+make some rather hesitant contributions to the store of knowledge that I have so
+far drawn on so heavily.
+</p>
+<p>
+MONITOR.COM AGAIN
+</p>
+<p>
+I rather regret that IT did not receive my back copies of MICROPOWER, that
+other magazine, including Chris Blackmore&rsquo;s article on MONITOR.COM until after I
+had devised my own solution to the problem. However, your readers may be interested
+in a different approach. I dis-assembled Nas-Sys&nbsp;3 using NAS-DIS, identified the
+references to VRAM and the work space from the published listing, and then
+re-compiled the resulting source code with a revised origin at 100H, VRAM set to
+F800H and the work space unchanged at 0C00H. Locations 100 &ndash; 102H were changed to a
+jump to new code at 900H &ndash; 0BFFH which writes appropriate jumps into the Restart
+locations, adds support for an EPSON Printer and adds disk routines. One advantage
+</p>
+<?php columnEnd(1); ?>

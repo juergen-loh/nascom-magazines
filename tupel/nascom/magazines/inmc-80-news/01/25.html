@@ -1,0 +1,35 @@
+<?php columnStart(1); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
+<p>
+The program to drive the game replaces the code using the keyboard
+exactly, apart from the delay routine which follows the end of the
+original coding.
+</p>
+<p>
+The program executes from D00H, starting with PIO initialisation and
+then jumping to the original program.
+</p>
+<table style="width: 100%">
+<tr><td>LOCATIONS       </td><td>ROUTINE</td><td>DESCRIPTION                                </td></tr>
+<tr><td>CA9-CC0         </td><td>MLOOP  </td><td>Scans the switches, will allow firing of a
+                                                 missile whilst moving left or right.       </td></tr>
+<tr><td>CC2-CD2         </td><td>FIRW   </td><td>Fires a missile as per original program.   </td></tr>
+<tr><td>CD5-CE4         </td><td>T12    </td><td>Prevents more than one missile being fired </td></tr>
+<tr><td>                </td><td>       </td><td>for each key depression.                   </td></tr>
+<tr><td>CE6-CFC &nbsp; )<br>
+        D0D-D20 &nbsp; )</td><td>LEW    </td><td>Move left, as per original program.        </td></tr>
+<tr><td>D00-D0A         </td><td>START  </td><td>Initialises PIO; Starts program.           </td></tr>
+<tr><td>D22-D4A         </td><td>REW    </td><td>Move right, as per original program.       </td></tr>
+<tr><td>FD2-FDE         </td><td>SLOW   </td><td>Controls speed of movement, by value at FD4</td></tr>
+</table>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-25-2.png"); ?>
+<p>
+In principle, the ideas given above can be adapted to suit many games.
+The unit makes Space Invasion much easier to play and saves wear and
+tear on the keyboard when hitting the keys in the excitment of the
+game.
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

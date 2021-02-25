@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Lucas Hardware/Software &ndash; Points Arising
+</h1>
+<h3 class="author">
+by Dennis McLaren
+</h3>
+<h2>
+AVC and RAM mods
+</h2>
+<p>
+Ifyou have an AVC in your system, you&rsquo;ll know that a &ldquo;simple mod&rdquo; has to be made
+to your RAM card before anything will work. You then find that (RAMDIS no
+longer works properly when any other card brings it low. The reason is that your
+simple mod has caused /RAMDIS to both read and write protect the RAM.
+</p>
+<p>
+This is essential for the AVC, but contrary to the whole philosophy of /RAMDIS
+when used by EPROM cards etc.
+</p>
+<p>
+Fortunately, the cure is simple. The idea is to restore /RAMDIS to its original
+read-disable role and to give the AVC its own /WRITEDIS line to the RAM card.
+Whenever the AVC wishes to read and write protect any RAM overlaid by the video
+planes, it will bring down /RAMDIS by way of a diode and /WRITEDIS via a
+separate lead to the RAM card. Any other card which brings down /RAMDIS will
+be prevented from bringing down /WRITEDIS by the diode.
+</p>
+<p>
+This mod works for my Gemini 64K RAM card at 4MHz. It should work for other
+RAM cards but I don&rsquo;t know anything about those.
+</p>
+<h4>
+GM802 64K RAM card mod.
+</h4>
+<ul>
+<li>Bend up pin 10 of IC 48 (74LS00) but don&rsquo;t connect it to anything for the
+moment (a low on this pin will write protect the card).</li>
+</ul>
+<h4>
+Nas AVC mod.
+</h4>
+<ul>
+<li>
+Bend up pin 8 of IC 56 (7417) and solder a diode (I used a 1N4148) between
+pin 8 and TP 17 (/RAMDIS) immediately adjacent. Arrange for the cathode of
+the diode to be connected to pin 8 of the IC.
+</li>
+<li>
+Make up a length of hook-up wire long enough to reach from pin 8 of the IC
+on the AVC to pin 10 of the IC on the RAM card.
+</li>
+<li>
+Solder a soldercon to one end of the wire and solder the other end to the
+diode/pin 8 junction on the AVC.
+</li>
+<li>
+Plug the cards into your system and clip the soldercon end of the hook-up wire
+to pin 10 of the IC on the RAM card.
+</li>
+</ul>
+<?php columnEnd(1); ?>

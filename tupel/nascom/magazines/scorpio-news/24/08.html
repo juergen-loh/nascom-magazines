@@ -1,0 +1,53 @@
+<?php columnStart(1); ?>
+<p>
+at 8MHz. A Z80A CTC on a home brew board operates perfectly when the system
+clock is set to 4MHz. It seems very likely that Z80B peripherals will have sufficient
+margin to operate successfully at 8MHz. All the NE898 facilities tried to date have
+worked well. These are the CTC and PIO on board the SPCT, and the real time
+clock. The PIO is fully software and plug compatible with that on the GM811 and
+GM813 processors. Swapping from the Nascom only required a change of port
+zddresses in the BIOS to allow the printer to operate. I have run the system with
+Gemini BIOSs VL &ldquo;V2 and V3, and no problems have been experienced. ,
+</p>
+<p>
+It is worth pointing out thati in order to obtain standard RS232 baud rates a separate
+caystab look is:emptoyed, and speed selection is by dip switch: All serial clocks ate
+ighe &ldquo;same: frequency, producing the-same-baud rate except that each
+: sOftware set to /16:0r /64. This is rather limiting if the serial interfaces
+arin puiposes: A split 1200/75, baud rate is Just not possible.
+</p>
+<p>
+provided with the intention of providing: &lsquo;boot options,
+world&rsquo; be possible to use these for other purposes. However, these
+inected via the four most significant PIO lines on port A. If:these
+ki &lsquo;ised-then the: switches should be left. open; and the state of any:external
+device:connected to these &lsquo;lines is liable to alter the cold boot action. One option
+allowed by:the Newburn Monitor is to boot the system from a serial port &ndash; this would
+permit the operation of a diskless: configuration. .
+</p>
+<h2>
+Performance
+</h2>
+<p>
+The Z180 gains in raw processing power over the original Z80 in several ways:
+</p>
+<ul>
+<li>Doubling the clock speed doubles the throughput</li>
+<li>Most instructions complete in fewer clock cycles giving up to 25% increase
+	(Even the the NOP completes in three cycles instead of four &ndash; this must be of some
+	use!) &ndash; however the Z80 uscd these extra clock cycles to perform memory
+	refresh. The Z180 requires to insert additional refresh cycles, although on a less
+	frequent basis.</li>
+<li>The new instructions, in particular the MLT instruction, can be used to good
+	effect in new software</li>
+<li>Use of the other facilities in particular MMU and DMA can offer very
+	worthwhile benefits</li>
+</ul>
+<p>
+Some impression of the performance gains with pure Z80 code can be gauged from
+benchmark results, although these are often criticised for not bearing much
+relationship to real life processing requirements. I have run some of the tests listed
+in Paddy Coker&rsquo;s articles in Scorpio News Issue 1, Volumes 1 &amp; 2. The results are
+as follows:
+</p>
+<?php columnEnd(1); ?>

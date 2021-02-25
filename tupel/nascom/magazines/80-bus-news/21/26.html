@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+26
+</p>
+<p>
+1)I have included &ldquo;signon&rdquo; messages and also a &lsquo;Putvid&rsquo; type of screen
+printing routine. These are copied to RAM at O9000H and &lsquo;Jumped to&rsquo; by
+the COLD BOOT LOADER after CPMSYS64 has been loaded. If I need routines
+like &ldquo;cinit&rdquo; or UART initialization, they can be placed in this area of
+memory as well. After printing the &lsquo;signon&rsquo; messages the routine jumps
+to BIOS to start CP/M. Any CP/M that contains OLDBIOS, and does not have
+a modified COLD BOOT will skip these messages but will display its&rsquo; own
+messages.
+</p>
+<p>
+2)I have modified the &lsquo;TAB&rsquo; routine so that 16 locations are displayed on
+a line, in HEX and ASCII. The HEX is displayed in columns of four bytes.
+This mod. is really more useful with the IVC card display as there is
+a lot of &lsquo;wrap around&rsquo; on the NASCOM 48 wide screen, but it can be used.
+</p>
+<p>
+3)I have also added a few extra bytes so that I can now &lsquo;Dump&rsquo; the &lsquo;TAB&rsquo;
+output to my IMP Printer.
+</p>
+<p>
+4)The &lsquo;SIMON&rsquo; signon messages have been increased to show that a modified
+SIMON is in use. A list of Command keys is also displayed as a reminder
+of the commands available in SIMON.
+</p>
+<p>
+It may be necessary in the future to add a &lsquo;cinit&rsquo; routine, and it would also be
+possible to include any special initialization routines for UARTS etc. By
+reducing the very extensive &lsquo;signon&rsquo; messages, or using an even larger ROM (!)
+there is scope for almost any addition, such as direct Memory dump to
+cassette/disk, and so on.
+</p>
+<p>
+N.B. If the initialization routines in middle memory make any calls to CP/M to
+print messages, or to clear characters as &ldquo;cinit&rdquo; does, then since CP/M has at
+that stage NOT been started, it will be necessary to initialize the &lsquo; BDOS jump &lsquo;
+and IOBYTE in low memory BEFORE making any calls to BDOS otherwise the system
+will &lsquo;die&rsquo;.
+</p>
+<p>
+I hope that this article has been of some help to others who, like me want to
+learn more about some of the less well documented features and operations of CP/M
+systems. ( I must apologise however, to the Authors of the various Programs for
+the liberties that I, an amateur &lsquo;hacker&rsquo;, have taken with their software, and
+hope that this will be accepted in the cause of &lsquo;&lsquo;Learning&rsquo;.)
+</p>
+<p>
+NOTE :- My method of Booting NASSYS and CP/M from EPROM CARD is described in
+8O0BUS NEWS No 1. (N.B. There is an error in the diagram on page 45 of that
+article. The wiper of S1A goes to pin 2 of LKS1, not to pin 3.)
+</p>
+<p>
+we nee ee es nt en a HERE ERREE e e
+</p>
+<p>
+Appendix 1. The Mapping of CP/M in Memory.
+</p>
+<p>
+es sa ee as &lt;= 0 SE SR Shh i SON Ht Se Stam SN St ee ah
+</p>
+<p>
+Above the line, addresses refer to CP/M from MOVMODV
+</p>
+<p>
+00C0H 0100H D800H H000H EE00H PERFFH
+0000H * 01 00H * DC00H * E400H * F200H &lsquo; FRFFH
+1 i 1 1 1
+i 1 1 1 1
+CP/M Workspace TPA CCP BDOS CBIOS
+</p>
+<p>
+Below the line, addresses refer to CP/M from MOVOLD
+</p>
+<p>
+Figure 3. CP/M Memory Addresses for two different CBIOS&rsquo;s, assuming 64K RAM.
+</p>
+<p>
+See com cea em a ts mm rm &lt;i mh mh inh tte te AR mR AA Se SEU SONY OS i tH Se Smt St te ar i! mame a ca
+</p>
+<?php columnEnd(1); ?>

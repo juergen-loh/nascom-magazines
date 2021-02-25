@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+NAS-SYS MONITORS
+</h1>
+<h2>
+by J. Haigh
+</h2>
+<h3>
+INTRODUCTION
+</h3>
+<p>
+The purpose of this series of articles is to dissect the latest Nascom monitors,
+Nas-sys&nbsp;1 and Nas-Sys&nbsp;3, partly to provide a backcloth for a discussion of machine
+code programming; and partly because you can only use monitor routines effectively
+when you understand them and I hope to gain understanding by writing the articles.
+</p>
+<p>
+Anyone who has used other microcomputer systems will realise that the Nascom
+monitors in general are very powerful for their size. This does not mean that they
+should be regarded as sacrosanct &ndash; ideally the standard monitor supplied with your
+machine should be regarded as the starting point for a truly personal system.
+Tampering with monitors has a peculiar fascination; you usually have a strictly limited
+space in which to fit the routine you are rewriting, and it always seems to be too short.
+In the articles I shall try to stick to the authorised versions of Nas-Sys&nbsp;, but I shall
+probably suggest the occasional &lsquo;improvement&rsquo;. I hope this will encourage people to
+write in with their own modifications, or at least to write and say why mine are wrong.
+</p>
+<p>
+I shall assume that the reader is familiar with the commoner &lsquo;buzz words&rsquo; for
+computing and knows what hexadecimal code is (if you have never heard of
+hexadecimal, you should read the series Teach Yourself Z80 in INMC 80). If there is
+anything you don&rsquo;t understand, you can always write and ask.
+</p>
+<h3>
+THE RESTARTS
+</h3>
+<p>
+The Z80 has a set of eight single-byte instructions which call subroutines on
+page zero.
+</p>
+<pre>
+HEX. Assembly Address Nas-Sys
+Code Name Called Function
+
+&pound;C7 RST &pound;00 &pound;0000 Resets the system
+&pound;CF RST &pound;08 &pound;0008 Waits for an input character
+&pound;D7 RST &pound;10 &pound;0010 Relative call routine
+&pound;DF RST &pound;18 &pound;0018 Access to Nas-sys routines
+&pound;E7 RST &pound;20 &pound;0020 Breakpoint code
+&pound;EF RST &pound;28 &pound;0028 Print a character string
+&pound;F7 RST &pound;30 &pound;0030 Output the character in A
+&pound;FF RST &pound;38 &pound;0038 Delay determined by value in A
+</pre>
+<p>
+RST 0 can be used on any monitor to reset the system at the end of a program,
+but any information on display will be lost, so its value is limited.
+</p>
+<p>
+The second restart is the Nas-sys equivalent of the CHIN routine (CD 3E 00) in
+T4 and the earlier monitors; it uses a subroutine in the monitor to scan continuously
+through a table of routines until one of them receives an input. The address of the
+table is stored in the workspace at &pound;0C75, and on initialisation this points to a
+keyboard and a serial input routine. The user can extend or change the table with
+the U and X commands, or he can provide his own input table. If one of the routines
+in the table sets the carry flag, subsequent routines will be skipped.
+</p>
+<?php columnEnd(1); ?>

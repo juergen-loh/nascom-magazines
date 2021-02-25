@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+NAS-DOS owners are catered for by the utilities
+the utilities disc-included on
+</p>
+<p>
+To enable the computer to recognise the handshake signal
+when using printers requiring this, it is necessary to enter the
+following routine in toa suitable memory location 0CBO using
+the NAS-SYS monitor, or the equivalent POKE"s from BASIC:
+</p>
+<p>
+ceo 21 98 of 22 78 OC DF 5B
+0C89 FS DB 00 E6 80 25 FA Fi
+0C90 DF 6E CF
+</p>
+<p>
+To access the printer from NAS-SYS, first enable this
+routine by typing &pound;C80 and then use the U command.
+</p>
+<p>
+In BASIC the routine can be treated as follows (located at
+X, where X=3200 for location OCB0 hex?
+</p>
+<p>
+5 x=3200
+10 FOR I =0 TO 10
+20 READ A
+</p>
+<p>
+30 POKE X + 1,8
+40 NEXT
+</p>
+<p>
+50 DOKE 3192,
+60 DOKE 3187, (EM 1912 IF NAS-SYS&nbsp;3.
+70 DATA 145, 219,0,230, 128, 40,250, 241
+80 DATA 223,110,201
+</p>
+<p>
+90 END
+</p>
+<p>
+In NOS-PEN the routine should be entered and enabled using
+NAS-SYS$ NASPEN should be cold started and then exited, and
+location 101D modified using the command MIOIE DF 75. if the
+NOS-PEN file is saved this modified printer vector is also
+saved, although it is still necessary to enter the code and
+Initialise it.
+</p>
+<p>
+NAS-DOS users are provided with the utility program UTS
+which is loaded at the top of memory and allows printer output
+to a self-contained routine of the type described above
+</p>
+<p>
+3.3 Parallel printers with Centronics interface
+</p>
+<p>
+A suitable driver is included in the UTS file an the NAS-DOS
+utilities disc. The coding for a suitable routine is attached.
+The routine is used as the User output routine under NAS-SYS in
+exactly the same way as described for the serial printer with
+handshake.
+</p>
+<p>
+In NAS-SVS the routine should be entered using the #
+command, and enabled by the EC9B command.
+</p>
+<p>
+From BASIC the procedure is as described above, except that
+the range of the FOR loop should be 0 TO 50 and the DATA
+Statements should be as follows:
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,102 @@
+<?php columnStart(3); ?>
+<?php columnChange(3); ?>
+<table style="width: 100%">
+<colgroup>
+	<col>
+	<col style="width: 10%">
+	<col>
+</colgroup>
+<tr><td style="text-align: right">1000</td><td></td><td>(8 in Decimal)</td></tr>
+<tr><td style="text-align: right">100</td><td></td><td>(4 in Decimal)</td></tr>
+<tr><td style="text-align: right">10</td><td></td><td>(2 in Decimal)</td></tr>
+<tr><td style="text-align: right">1</td><td></td><td>(1 in Decimal)</td></tr>
+<tr><td style="text-align: right">====</td><td></td><td>(1 in Decimal)</td></tr>
+<tr><td style="text-align: right">1111</td><td></td><td>(= 15 in Decimal)</td></tr>
+</table>
+<?php columnChange(3); ?>
+<?php columnEnd(3); ?>
+<p></p>
+<?php columnStart(1); ?>
+<p>
+Don&rsquo;t forget when adding Binary numbers that 1+ 1 = 0, carry 1, and
+not 2, as it would in Decimal.
+</p>
+<p>
+Now what has all this got to do with HEX&nbsp;? Well, that answer is
+managability. If we take a Decimal number, say ten, then we write &lsquo;10&rsquo;,
+If want to express the same amount in Binary, then it becomes the
+cumbersome &lsquo;1010&rsquo;, worse, if we write one thousand three hundred and
+twelve, we write 1312 in Decimal, in Binary this becomes the forbidding
+figure &lsquo;1010010000&rsquo;. You can see that even with fairly modest Decimal
+figures, the Binary equivalents are getting unmanagable. The Z80
+Processor has an addressing capactity of 65535 bytes, which in Binary
+becomes the incredible &lsquo;1111111111111111&rsquo;, which is difficult to read
+yet alone assimilate the actual number. To answer the question at the
+beginning of the paragraph, we&rsquo;ve got to find some more convenient way
+of expressing the Binary digits, or the whole thing becomes Impossible
+from the start. Thats where HEX comes in, but to understand that, we&rsquo;ve
+got to go through the knotty business of Binary to HEX and Decimal to
+HEX conversions.
+</p>
+<p>
+Having established that other &lsquo;bases&rsquo; may be used apart from
+&lsquo;base 10&rsquo;, 16 could be used as a base, in fact that is what HEXadecimal
+means, counting in sixteens. A second thing to realise is that when
+counting to &lsquo;base 2&rsquo; we only need two characters. 0 and 1; counting in
+&lsquo;base 10&rsquo; requires ten characters, 0 1 2 3 5 4 5 6 7 8 9; it therefore
+follows if we are to count in sixteens, sixteen characters are
+required. These are:
+</p>
+<p>
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+</p>
+<p>
+The third thing to notice is that 16 is the fourth power of 2, and we
+can make use of that to make simple conversions. We do it by mentally
+converting a Binary number to Decimal then converting the Decimal to
+HEX. A messy process, and one that is soon forgotten when you get
+familiar with HEX. So think of a Binary number, say 11101101110, now
+split it into groups of four, starting with the right hand end, thus,
+111 0110 1110, add a &lsquo;0&rsquo; to the left hand end to complete the last
+group of four, and we get 0111 0110 1110. Now notice that the maximum
+Decimal number in any group is 15, and with a little practice, the
+convertion becomes dead easy, like this:
+</p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<?php columnChange(3); ?>
+<table style="width: 100%">
+<colgroup>
+	<col>
+	<col style="width: 10%">
+	<col>
+</colgroup>
+<tr><td style="text-align: center">0111</td><td style="text-align: center">0110</td><td style="text-align: center">1110</td></tr>
+<tr><td style="text-align: center">7</td><td style="text-align: center">6</td><td style="text-align: center">14</td></tr>
+</table>
+<?php columnChange(3); ?>
+<?php columnEnd(3); ?>
+<p></p>
+<?php columnStart(1); ?>
+<p>
+Now cheat and look at the first (right hand) column in the next
+Paragraph. Look up the Decimal number, and write down the equivalents.
+So:
+</p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<?php columnChange(3); ?>
+<table style="width: 100%">
+<colgroup>
+	<col>
+	<col style="width: 10%">
+	<col>
+</colgroup>
+<tr><td style="text-align: center">0111</td><td style="text-align: center">0110</td><td style="text-align: center">1110</td></tr>
+<tr><td style="text-align: center">7</td><td style="text-align: center">6</td><td style="text-align: center">14</td></tr>
+<tr><td style="text-align: center">7</td><td style="text-align: center">6</td><td style="text-align: center">E</td></tr>
+</table>
+<?php columnChange(3); ?>
+<?php columnEnd(3); ?>

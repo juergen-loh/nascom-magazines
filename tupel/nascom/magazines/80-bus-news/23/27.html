@@ -1,0 +1,87 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<h1 id="article1">
+NASCOM<br>
+ROM<br>
+BASIC<br>
+DIS&ndash;ASSEMBLED
+</h1>
+<h2>
+PART <b>1</b>
+</h2>
+<h3 class="author">
+BY CARL LLOYD&ndash;PARKER
+</h3>
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 1</p></th></tr>
+
+<tr><td colspan=2></td><td colspan=2>
+<h4>A description of BASIC's usage of the memory</h4>
+<p><br>*** The work space RAM from 1000 to 10F8 ***</p>
+</td></tr>
+
+<tr><td><h4>Name</h4></td><td><h4>Addr</h4></td><td colspan=2><h4>What is it used for</h4></td></tr>
+
+<tr><td><p>WRKSPC</p></td><td><p>1000</p></td><td colspan=2><p>
+Jump to warm start BASIC
+</p></td></tr>
+<tr><td><p>USR</p></td><td><p>1003</p></td><td colspan=2><p>
+Jump for user defined function &ldquo;USR(X)&rdquo;.<br>
+This is initialised to give &ldquo;?FC Error&rdquo;.
+</p></td></tr>
+<tr><td><p>OUTSUB</p></td><td><p>1006</p></td><td colspan=2><p>
+Skeleton for output to port &ldquo;n&rdquo; as the 8080 does not have the
+&ldquo;OUT (C),r&rdquo; instruction. The port &ldquo;n&rdquo; is loaded into 1007.
+</p></td></tr>
+<tr><td><p>DIVSUP</p></td><td><p>1009</p></td><td colspan=2><p>
+Skeleton subtraction routine for division. The dividend,
+divisor and quotient cannot all be held in the registers
+therefore the divisor is loaded into this routine so that
+there are sufficient registers for the dividend and quotient.
+</p></td></tr>
+<tr><td><p>SEED</p></td><td><p>1017</p></td><td colspan=2><p>
+3 byte seed for random number generator.
+</p></td></tr>
+<tr><td><p></p></td><td><p>101A</p></td><td colspan=2><p>
+Table of floating point values used by RND.<br>
+The seed is used to find which value of the eight to multiply
+the last random number by.
+</p></td></tr>
+<tr><td><p>LSTRND</p></td><td><p>103A</p></td><td colspan=2><p>
+Where the last random number &ldquo;RND(0)&rdquo; is kept.
+</p></td></tr>
+<tr><td><p>INPSUB</p></td><td><p>103E</p></td><td colspan=2><p>
+Skeleton for input from port &ldquo;n&rdquo; as the 8080 does not have the
+&ldquo;IN r,(C)&rdquo; instruction. The port &ldquo;n&rdquo; is loaded into 103F.
+</p></td></tr>
+<tr><td><p>NULLS</p></td><td><p>1041</p></td><td colspan=2><p>
+Number of nulls to output after carriage return. This value is
+set by the &ldquo;NULLS n&rdquo; command.
+</p></td></tr>
+<tr><td><p>LWIDTH</p></td><td><p>1042</p></td><td colspan=2><p>
+Width of terminal. This is set by &ldquo;WIDTH n&rdquo; command.
+</p></td></tr>
+<tr><td><p>COMMAN</p></td><td><p>1043</p></td><td colspan=2><p>
+Width of terminal for printing with commas.<br>
+Why this has to be a seperate byte I don&rsquo;t know, however, the
+&ldquo;WIDTH n&rdquo; command sets LWIDTH but does NOT set this value,
+this has an irritating result when using BASIC with a printer
+and trying to have more than three columns using commas in
+&ldquo;PRINT&rdquo; statements, what ever you set &ldquo;WIDTH&rdquo; to you don&rsquo;t get
+more than three columns! This can be overcome in a simple way:
+&ldquo;POKE 4163,252&rdquo; &ndash; This makes &ldquo;WIDTH&rdquo; work correctly.
+</p></td></tr>
+<tr><td><p>NULFLG</p></td><td><p>1044</p></td><td colspan=2><p>
+Nulls after input byte flag.<br>
+This is a flag that is examined and then zeroed by the teletype
+line input routine (TTYLIN). If the character input routine
+sets this flag before returning the input character then a null
+is output before the character. The only use I can think of for
+this ia for VERY slow terminals which need to be &ldquo;woken up&rdquo;
+before a character is sent to them!
+</p></td></tr>
+
+</table>
+<?php DisAssemblyRomBasicEnd(); ?>

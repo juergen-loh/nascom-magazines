@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+46
+</p>
+<p>
+DATABASES by D.R. Hunt
+</p>
+<p>
+Some more about databases, and what to do with them. In the last part,
+we got as far as looking at the way a database file can be split up, into
+records, and each record into fields of a given length. By splitting up
+database records into fields of fixed length, this naturally means that the
+records must also be of fixed length (as a record is composed of fixed length
+fields). This is extremely convenient, as it is relatively easy for the
+programmer of a disk system to enable rapid access to any byte(s) into a disk
+file from a given starting point. Simply, this means that if a record is 50
+bytes long, and we wish to gain access to the 75th record, then the starting
+point of the record must be: 75 x 50 = the 3750th byte from the start of the
+file. Admittedly the arithmetic which takes place inside the DOS is not quite
+as simple, as the disk is itself split up into sectors of fixed length which
+are in turn spaced around a number of disk tracks, but given a map of where
+the DOS has originally placed the file, it is not difficult for the DOS to
+calculate a track/sector address for any given record. This technique is very
+fast and called Random Access because it can pick up any random point within a
+disk. It is commonly used in database controlling programs.
+</p>
+<p>
+A second method of data access, perhaps simpler to understand is the
+Sequential Access method, where a disk file is read in a sequential manner
+from the first byte, counting the bytes read until the correct place is
+reached. In a large file this can take a very long time if the required record
+is towards the end of the file. Random Access is therefore the prefered method
+of gaining access to any record when speed is important.
+</p>
+<p>
+There are of course other ways of organising a database file, one of
+which is the &lsquo;free field&rsquo; method. This may be prefered where the data to be
+contained in a record is likely to be of considerably different length. With
+the fixed field record, the record length must always be of the length of the
+maximum data it is to contain. This is usually fine for financial programs
+where money fields may be perhaps 10 bytes long, and detail fields perhaps no
+more than, say, 30 bytes. The utilisation of space within the records will
+most likely be greater than 70% and the wasted space is more than made up for
+in speed of access. The free field database on the other hand, may contain a
+record of one byte on the one hand, followed immediately by a record of a
+couple of K or more. The utilisation will be 100% in this instance as the
+length of the data determines the length of the field allocated to it. If such
+a file were constructed within fixed fields, the utilisation of space would
+easily fall below 50%, and on the basis that space must be allocated for the
+maximum length field, then the utilisation could end up as a few fractions of
+a percent. This would lead to vast acres of unused disk space. Note that &lsquo;free
+field&rsquo; methods usually treat fields and records as one and the same, one
+record usually being one field long, although field delimiters can often be
+added as a further refinement.
+</p>
+<p>
+The snag with &lsquo;free field&rsquo; methods is, of course, finding the data.
+Sequential access is the only immediately possible method (I&rsquo;m leaving record
+and field indexing till later). In this instance, not even the starting byte
+is known, so a sequential search has to be made for some key which will
+uniquely identify the record concerned. This may be a symbol not used
+elsewhere in any record, followed by a record number of known length (i.e. a
+fixed record number field within the &lsquo;free field&rsquo; structure) or it can be a
+specific keyword put in by the user. In any event, a sequential search must be
+made of the file until the key is found.
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

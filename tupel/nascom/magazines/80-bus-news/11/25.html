@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<h1>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+Uncle Dusty&rsquo;s Notes for CP/M users
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+Dusty Pulver
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+When you&rsquo;re in the command mode of your CP/M&rsquo;ed Nascom or Gemini (i.e.
+when it prompts A&gt;), typing in the name of a .COM file will cause that file to
+be loaded into the computer at location 100H upwards, and then the instruction
+at 100H will be executed. How nice it would be if you could load a program
+without running it, or run a previously loaded program. Well, you can. This is
+how.
+</p>
+<h3>
+LOADING A PROGRAM
+</h3>
+<p>
+To load a program without running it, type in the program name
+followed by a space and ^A. CP/M will load the program, then the CCP will look
+at what follows the space to see what has to be put into the default file
+control block (FCB). Finding ^A which is an &lsquo;illegal&rsquo; character, it will
+output the symbol that represents ^A (a sort of upside down L in a Nascom)
+followed by a &lsquo;?&rsquo;, meaning &lsquo;I don&rsquo;t understand&rsquo;, and will then return to the
+command mode, leaving the program that you wanted loaded into memory, but
+unexecuted, and unaltered.
+</p>
+<h3>
+EXECUTING A PREVIOUSLY LOADED PROGRAM
+</h3>
+<p>
+First of all create a new program called RUN.COM. You don&rsquo;t need an
+assembler or anything like, just type in the following:<br>
+SAVE 0 A:RUN.COM<br>
+This will put the most wholly remarkable program in the entire universe onto
+the disk in drive A. It is 0 (yes, zero) bytes long, and occupies no room on
+the disk, apart from one of the available directory spaces. Whenever I format
+a new disk, this is the second program I put onto it (the first is
+DISKNAME.007, or whatever I&rsquo;ve decided to call that disk. You can&rsquo;t beat a
+good disk catalogue!).
+</p>
+<p>
+When in the command mode, typing RUN will execute the program at
+present in memory, whether you&rsquo;ve just put it there as previously described,
+or whether it&rsquo;s something you&rsquo;ve already run, but want to run again, but
+without the time lag caused by the program being reloaded from disk.
+</p>
+<p>
+More amazing still, RUN.COM will accept entries for the TFCB, so if
+you&rsquo;ve got, for instance, PIP.COM loaded, typing RUN B:=A:PROGRAM.COM[V] will
+copy the file PROGRAM.COM from disk A to disk B and verify it, but without the
+wait while PIP.COM is loaded from disk.
+</p>
+<p>
+Apart from the time advantage when running the same program several
+times, but with different parameters, the main use of this program is that you
+can load a program, change the disks, do a ^C to &lsquo;log in&rsquo; the new disks, and
+then run the program, using data on, and writing to the new disks. For
+instance using PIP.COM you can copy the whole of one disk to the other, even
+though PIP.COM is on neither of them. Also you can load a program and then
+save it onto another disk, without all the hassle of going through DDT or ZSID
+even in a single drive set-up. Just use STAT.COM to find the number of sectors
+a program uses, and then load the program as described. Change disks, use ^C
+to log in the new one, and save the program onto the new disk.
+</p>
+<p>
+Note... RUN.COM will not work repeatedly with some programs, such as
+the CP/M user group&rsquo;s FMAP, because they change themselves when they are run.
+</p>
+<h3>
+USING RUN.COM with MBASIC-80
+</h3>
+<p>
+Microsoft&rsquo;s disk based MBASIC-80 alters itself on initialization so
+that if you exit the program with the command &lsquo;SYSTEM&rsquo; or if the program
+crashes due to a disk error, or you not using &lsquo;RESET&rsquo; when you change disks,
+you can perform a warm start by typing in RUN thereby retaining your program
+in memory, that a cold start would erase!
+</p>
+<?php columnEnd(1); ?>

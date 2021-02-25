@@ -1,0 +1,135 @@
+<?php columnStart(1); ?>
+<p>
+cevncecntn et omnes
+</p>
+<p>
+Vv
+</p>
+<p>
+To Read and then Write a Random file the steps are as follows :
+</p>
+<p>
+O.B8&laquo;
+</p>
+<p>
+OPEN the file
+</p>
+<p>
+Declare the Fields
+</p>
+<p>
+GET the required Record from Disk, if records already exist, or INPUT the
+necessary data and build the record.
+</p>
+<p>
+Process the Fields
+</p>
+<p>
+PUT the record onto Disk.
+</p>
+<p>
+Repeat 3 to 6 until all done
+</p>
+<p>
+CLOSE the File
+</p>
+<p>
+90 INPUT &ldquo;Enter CALL to be found. &ldquo;;CSGNS
+</p>
+<p>
+100
+110
+120
+150
+140
+150
+160
+170
+180
+</p>
+<p>
+&lsquo;do some input error checking here.
+OPEN &ldquo;R",&pound;1, &ldquo;RADIOLOG. DAT&rdquo;, 70
+FIELD&pound;1,18 AS NAMES,8 AS CALL$,20 AS TOWNS,16 AS COUNTY$,8 AS DATES
+</p>
+<p>
+FOR RNUM=X TO Y &ldquo;X,Y define range of record numbers to be read.
+GET&pound;1 , RNUM
+</p>
+<p>
+IF CALL$=CSGN$ THEN GOTO xxxx
+</p>
+<p>
+NEXT RNUM
+</p>
+<p>
+PRINT &ldquo;Record not found. &ldquo;
+</p>
+<p>
+CLOSE&pound;1
+</p>
+<p>
+Line 110 &ndash; OPEN&rsquo;s the file, declares it as RANDOM, and describes it as File
+</p>
+<p>
+&pound;1 until it is closed. The name of the Data file to be known as
+File &pound;1 is RADIOLOG.DAT and it uses Records of 70 bytes.
+</p>
+<p>
+Line 120 &ndash; Sets up the FIELDS for file &pound;1. Each Field is given a Variable
+</p>
+<p>
+&lsquo;Line 140
+</p>
+<p>
+name and its length is set.
+GET&rsquo;s each Record in turn from the Disk until the search either
+succeeds or fails altogether.
+</p>
+<p>
+Line 150 &ndash; Looks for match between INPUT data and Disk record data. (N.B. in
+</p>
+<p>
+this simplified example, Line 150 will probably fail to work since
+&ldquo;430CB&rdquo; does NOT equal &ldquo;G30CB &ldquo;. To work correctly, the trailing
+blanks would have to be removed, or the INPUT callsign padded
+out to 8 characters with blanks.
+</p>
+<p>
+Line 160 &ndash; Continues looping until record found, or all done.
+Line 170 &ndash; Prints appropriate message.
+Line 180 &ndash; CLOSEs the file.
+</p>
+<p>
+FIELDS
+</p>
+<p>
+casement
+</p>
+<p>
+Although it is possible to use the Data in the Fields directly, as in
+</p>
+<p>
+line 150 above, it is normal practice to &lsquo;move&rsquo; the Data out of the Field
+variable into some other variable for processing. There are several reasons
+for this:&ndash;
+</p>
+<p>
+1) The Field data will contain leading or trailing blanks which can lead to
+</p>
+<p>
+unreliable results when Processing or Printing Data.
+</p>
+<p>
+2) Numeric data is stored in Fields as Strings. It must be converted back to
+numeric form for calculations.
+</p>
+<p>
+3) Integers are stored as 2 Byte Fields, Single Precision as 4 Bytes, Double
+Precision as 8 Bytes.
+</p>
+<p>
+4) It is often convenient to have the origional Field in uncorrupted form
+during processing.
+</p>
+<?php columnEnd(1); ?>

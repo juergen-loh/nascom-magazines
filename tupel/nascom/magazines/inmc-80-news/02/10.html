@@ -1,0 +1,69 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+If the C/B board is connected to the N1 with both clocks to the external clock pin,
+then the output clock will cause the receive clock to slave to its own frequency, and
+one might as well not have a phase locked loop at all. The clocks should be connected
+to the UART by a single pole double throw switch, which is thrown to the receive side
+to receive, and to the transmit side to transmit. Alternately, a bit of surgery on the
+board will allow a track to be cut which joint the two clock pins on the UART, and the
+correct leads attached to each pin. In my cases, I took all the connections I required
+to a connector I mounted on the N1 board, and made a connection through a multiple
+switch to allow either Nascom Tape Standard or 1200 CUTS to be selected. The
+reliability this modification (of seperate clocks) has given is unbelievable &ndash; I&rsquo;ve
+almost forgotten about tape errors.
+</p>
+<p>
+With regard to tape quality, I use Microdigital mostly, and for very large files BASF
+LH60 or FUJI FL30, with no problems at all. If available, use a frequency meter to set
+output clock from 555 to 76.8Hz, and if thought desireable, check the capture range of
+the PLL as described by Mr. Cottis in PCW December 1979.
+</p>
+<p>
+Arising from my notes on implementing a Tiny Pascal, I have since optained from LP
+Enterprises a copy of the 8080 runtime support and P code to machine code converter
+written in Basic. These, bound together with a copy of the three original articles so
+that they form a complete unit, cost 11.95, and would form a good starting point for
+someone wishing to get a Pascal up and running. Also of interest are articles in the
+LSG first four issues on the subject of getting this language running on a O*mm*d*r*
+P*t (I don&rsquo;t use dirty words, unlike Dr Dark). As my own machine has packed up, and is
+currently having a holiday in Nascom&rsquo;s repair Dept, I have not been able to progress
+any further with the development of the Pascal. I have however discovered that there
+is available from Springer Verlag: &ldquo;A Concurrent PASCAL Compiler for Minicomputers&rdquo; by
+A.C. Hartman, which describes a seven pass compiler for Concurrent Pascal in detail,
+and from McGraw Hill: &ldquo;&nbsp;the BYTE Book of PASCAL&rdquo;, with &ldquo;two versions of a Pascal
+Compiler, one written in BASIC, and the other in 8080 assembly language&rdquo;. I have both
+of these books on order, and will report on them when they arrive.
+</p>
+<h4>
+General Points:
+</h4>
+<p>
+Weller&rsquo;s assembler has a nice feature &ndash; it can read source from a paper tape, and
+assemble it, which is a nice trick for very large programs. I must have a go at that.
+It could be implemented on Zen fairly easily.
+</p>
+<p>
+Has anyone given any thought to the inelligance of designing for the Z80 as if it were
+an 8080 with a few extra instructions? In my view the Z80 is a very different machine
+to the 8080. For example, in the case of a Nascom, which is not running under
+interrupt control in general, the ancillary bank of registers is there and empty most
+of the time. Zeap uses this to good advantage. The indexing instructions are very
+rarely used, and yet they can very easily lead to a nice neat compact solution to a
+problem. The relative jumps can allow position independant code to be written, which
+can have advantages if you run out of memory on a big assembly. The Nascom BASIC seems
+to be an 8080 Basic with input/output patches all over it, which are concerned with
+deciding which monitor is available, and even emulating it (?). I have discussed the
+disassembly with a fellow Nascom fanatic (a trusted associate) and we are of the
+opinion that were it written in Z80 code from the beginning, it could be made about 20
+o/o smaller and about 15 o/o faster. For example, it could on initialisation look to
+see which monitor it had available and set a flag which it would look at each time it
+wanted input or output, instead of doing all the tests it seems to do. As I am working
+towards a Pascal compiler, I am not inclined to have a go at rewriting it &ndash; I think
+I&rsquo;ll save the 35.00 for the XTAL BASIC and put it towards the price of CP/M V2.2 and a
+floppy disc controller. Can anyone help with details on I.B.M. 33FD 8" floppies &ndash; I
+have two on indefinite loan, and would like to get them running, but have no further
+details other than that they are in working order. I understand them to be single
+sided single density, rather old-fashioned and outmoded really, but still 250K bytes
+on each&nbsp;!
+</p>
+<?php columnEnd(1); ?>

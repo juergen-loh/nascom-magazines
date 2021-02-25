@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+The End of &lsquo;PLAGUE&rsquo; <u>&amp;</u> a NEW Board.
+</h1>
+<h2>
+THE FINAL DEFINITIVE MEMORY PLAGUE NOTE
+</h2>
+<p>
+In the last issue we promised that we would collect together
+all thoughts about &lsquo;Memory Plague&rsquo;, and publish them. We are indebted
+to many members of the IMNC for writing to us detailing various
+symptoms and possible causes. For more recent members of the INMC let
+us first define &lsquo;Memory Plague&rsquo;: this was a euphemism coined to cover
+the small percentage of Nascom Series 1 memory cards (that&rsquo;s the one
+with the four EPROM sockets) that proved to be unreliable through
+causes not otherwise due to faulty or slow chips. &lsquo;Plague&rsquo; soon became
+apparent after the release of the Series 1 card, and the symptoms are
+unreliabilty when working machine code programs in the expansion
+memory. &lsquo;Plague&rsquo; is not usually revealed by Tiny Basic or the memory
+test programs as these represent data stored in memory and not op-code.
+&lsquo;Plague&rsquo; usually affects the op-code fetch (M1) cycle as the timing is
+more critical, and results in the misreading of the op-code byte,
+causing programs to crash. The probable cause is noise generated on the
+Nascom&nbsp;1 busses, although this has never been conclusively proved. A
+number of &lsquo;cures&rsquo; were published, which consisted of basically three
+things:
+</p>
+<p>
+1) Gridding the back of the memory card to reduce power supply noise.
+</p>
+<p>
+2) Pulling up the outputs of the RAMs to increase operational speed.
+</p>
+<p>
+3) Adding a time constant in the form of a capacitor to the RAM pullups
+to damp any noise on the output buffer.
+</p>
+<p>
+On a Nascom&nbsp;1 these work. On a Nascom&nbsp;2, step 3 represents overkill,
+and can cause poor operation at 4MHz, the time constant being
+calculated for 2MHz.
+</p>
+<p>
+Over that intervening period other possible causes have come to
+light. One is the 33R damping resistors in series with the address and
+CAS lines are too low to be properly effective. Another possible is the
+DBDR signal coming off too early. Yet another is the MREQ signal
+(applied to IC31) arriving too late, related to the system clock which
+latches it.
+</p>
+<p>
+With the advent of Nascom&nbsp;2, which is buffered on board, bus
+noise has been much reduced, and plague is almost nonexistent. However,
+Nascom&nbsp;2 has revealed that the memory card will not run reliably at
+4MHz without &lsquo;WAIT states&rsquo;.
+</p>
+<p>
+We therefore now recommend the following:
+</p>
+<h4>
+Nascom&nbsp;1
+</h4>
+<p>
+1) For each row of logic chips, grid the back of the pcb, connecting
+the +5 volt rail from the termination on the logic half of the pcb
+to the +5 volt termination of the 100n decoupiIng capacitor
+immediately opposite. For each row of logic chips connect the 0
+volt rail likewise; where a row is adjacent to pin 12 of each of
+the EPROM sockets, incorporate this into the 0 volt grid.
+</p>
+<p>
+2) Change R7 &ndash; 14 and R17 to 68R, and RAS links LK1 and LK2 should also
+be 68R resistors.
+</p>
+<p>
+3) Where the Basic ROM is fitted, add a 150pF capacitor from pin 1 to
+0 volts of IC9 on the buffer board, this will slightly increase
+MREQ, and thereby increase DBDR.
+</p>
+<?php columnEnd(1); ?>

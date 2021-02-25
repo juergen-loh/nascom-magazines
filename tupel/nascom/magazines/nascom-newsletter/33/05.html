@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+lite a file to cassette tape preceded by a file label
+containing the specified file fame. The file fabel will be
+Fecognised and displayed by the SYS-EX commands &lsquo;q&rsquo;, &lsquo;r&rsquo; and
+</p>
+<p>
+As the command uses the NAS-SYS Write command to write the
+file itself, the format is compatible with files written using
+the NAS-SYS&rsquo;"W&rdquo; command. If required, the NAS-SYS &lsquo;R&rsquo; and 7V&rdquo;
+commands may be used to read and verify files witten by the
+SYS-EX &ldquo;Ww&rdquo; command, although the file label will be ignored by
+NAS-SYS. The content of memory fron address AAAA up to but
+not including BBBB, ts the file which is written to the
+Cassette tape.
+</p>
+<p>
+After entry of the &lsquo;w&rsquo; command, the prompt &lsquo;whame:&rdquo;
+appears on the next screen line and the name of the file to be
+aritten is entered on that line. The tape drive LED is then
+Switched on and after about two seconds (aMHz), the file label
+followed by the file ttself is sent to the&rsquo; serial output
+port for writing to tape. Fenally, the tape drive LED is
+Switched off.
+</p>
+<p>
+The format of the file label is as follows: 3% DSH, 0
+to a2 characters of file name, | space (OOH if name length
+is 42), 00H.
+</p>
+<p>
+Aaa &ndash; fiest memory address to be written to
+tape.
+BBB &ndash; one beyond the last memory addr to be
+</p>
+<p>
+weitten to tape.
+</p>
+<p>
+Many of the comments for the related SYS-EX commands (17,
+tat, r&rsquo;y &lsquo;s&rsquo;, &ldquo;v!) are of use in understanding the operation
+and usage of the &ldquo;w&rdquo; command.
+</p>
+<p>
+A file weitten using the SYS-EX &lsquo;w&rsquo; command will be
+recognised in the 8K Basic by both the CLOAD command and the
+SYS-EX Basic named file facility, However, the file is
+unlikely to be an acceptable Basic program file and problems
+could therefore result if it was read into memory during the
+</p>
+<p>
+execution oF Basie.
+</p>
+<p>
+Call user routine number 1
+</p>
+<p>
+Calls a user routine whose execution address has been
+stored in the NAS-SYS argument ARGS.
+</p>
+<p>
+The execution address aay be set either by entering the
+appropriate number of arguments (8,9 ar 10) on a command line,
+or by using the SYS-EX Tu&rdquo; command. If the execution
+address has a value of 0000H, the command is rejected and
+an error message is displayed.
+</p>
+<p>
+&lsquo;On entry to the user routine the NAS-SYS stack is in use.
+Care should therefore be taken to ensure that: (i) higher
+addresses on the stack are not Corrupted, and (it) the
+maximum depth of the stack is nat exceeded. A return to
+SYS-EX may be made Gy executing a Z80 RET instruction.
+If the carry flag ts set upon return to SYS-EX, the message
+Error&rsquo; is displayed on the screen prior ta the acceptance
+of further input.
+</p>
+<?php columnEnd(1); ?>

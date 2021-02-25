@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+54
+</p>
+<p>
+mainframes at speeds that make the mind boggle, like 250K to 1M BAUD. Nota
+bad thing in itself, but it made my brain ache by having to learn about things
+like HDLC. Anyway HDLC, which stands for High-level Data Link Communication,
+although a bit nasty to get to grips with, is rather clever when it clicks.
+Not only is it efficient, but at can be used at very high speeds.
+</p>
+<p>
+The real sneaky with HDLC is in the way the data is packaged up (hence
+the term Packet Radio). Instead of sending serial data in the form we are
+familiar with, that is, a start bit, a byte of data and a stop bit, each byte
+being sent and received asynchronously with separate clocks; whole chunks of
+stuff are sent at once (typically 128 or 256 bytes at a time) with the clock
+signal as part of the data, in other words synchronously. To make this
+possible an HDLC packet consists of six fields like this:
+</p>
+<p>
+om Te Se ee te A LS A EN SV SG SS a a oe a A 0 A Sn SS SS Se A
+</p>
+<p>
+The first flag is a unique signal, usually 01111110, now thats not unique you
+will think, but we&rsquo;ll come to the way it is unique in a moment. Anyway, the
+flag says &lsquo;Get ready, here comes the packet&rsquo;.
+</p>
+<p>
+The next thing to follow is the address, now the address length is not
+defined by the protocol, except that it must not be less than one byte long.
+Typically the address is two bytes long, and in that 16 bits, it may contain
+the coded address of the sending device within a network, and the coded
+address of the receiver within the same network; it may also contain routing
+instructions through the network. Overall, the address is the code which
+allows the packet to reach its correct destination.
+</p>
+<p>
+The control is again a minimum one byte code, typically two bytes, and
+contains supervisory information, things like the current packet number, the
+length of the following packet, an acknowledgement of the correct receipt of
+the last packet, or a request to resend the last packet, or end of message, or
+anything else of a control nature defined and understood by the other end.
+</p>
+<p>
+Next comes the data. This may be as many bytes as has been decided, it
+could be a standard number, 128 or 256, or if could be a number that has been
+decided by the control byte. Again the minimum is one byte
+</p>
+<p>
+The CRC is a two byte Cyclic Redundancy Check (or checksum) which is
+computed from all the preceding data bits back to the first flag, so it
+encompasses the address and the control as well as the data. CRC&rsquo;s are lot
+better than simple checksums, but whatever it is, it forms a check on the
+validity of the preceding data.
+</p>
+<p>
+Lastly comes the end of packet flag, again the unique code 01111110. This
+signals the end of the packet and also that the preceding two bytes were the
+CRC.
+</p>
+<p>
+So to the uniqueness of the flags. All data is sent as a continual bit
+stream, it starts 01111110..... and finishes.....01111110. There are no start
+bits, no stop bits, nothing to indicate the bytes at all, just a continual bit
+stream from first to last. So what happens if we send a stream of FF&rsquo;&rsquo;s or
+00&rsquo;s, apart from the flags there will be no low-high transitions and no high-low
+</p>
+<?php columnEnd(1); ?>

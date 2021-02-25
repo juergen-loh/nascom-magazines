@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<h2>
+Re. Drivetec drives
+</h2>
+<p>
+Dear Sir
+</p>
+<p>
+I found Michael Hendry&rsquo;s article in the last Scorpio News very interesting and I
+believe that I may have answers to his two outstanding problems.
+</p>
+<p>
+1, Slow writing to disk during disk copy
+</p>
+<p>
+Thad a similar problem to this when fitting 8" disks with the same track format that
+he is using. The problem was found to be in the Bios. After a write operation and
+before doing a step operation, the drive&rsquo;s electronics require a small delay, so that
+it can empty its buffers and allow the flux around the head to collapse. In my BIOS
+this is implemented as a 2 msec delay after EVERY sector write. The fix is to delay
+2 msec before each step operation if the last operation was a write. Disk copies will
+then write at the same rate as the read.
+</p>
+<p>
+2. Lost sectors if motors have timed out before a write,
+</p>
+<p>
+If I understand the drive manual correctly, it appears that the sequence the drive
+goes through is: &mdash;
+</p>
+<p>
+(a) motor starts
+</p>
+<p>
+(b) head load
+</p>
+<p>
+(c) 2 index pulses sensed and READY (pin 34) enabled, (But drive may still not
+be up to speed.)
+</p>
+<p>
+(d) fine stepper centres head on track and READY/SEEK COMPLETE (pin 4)
+is enabled
+</p>
+<p>
+I suspect that Michael Hendry&rsquo;s Bios is writing to a disk-as soon as READY is
+active. This means that he may be attempting to write to disk while the heads are
+still moving or the disk is not yet up to speed.
+</p>
+<p>
+[think that with these drives the Bios should wait for READ Y/SEEK COMPLETE
+before initiating a read or write command. The motor start may also need up toa2
+sec. delay to allow the motor speed to stabilise.
+</p>
+<p>
+From the above you may have guessed that I have managed to purchase 2 Drivetec
+320 drives (from Matmos).
+</p>
+<p>
+Yours faithfully, N.C. Back, Burgess Hill, West Sussex.
+</p>
+<?php columnEnd(1); ?>

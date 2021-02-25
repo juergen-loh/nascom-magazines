@@ -1,0 +1,52 @@
+<?php columnStart(1); ?>
+<p>
+A label directory entry has the first byte as 20H, rather than the normal 00H or user
+number. The password is encrypted in the area normally occupied by the block
+information as shown below.
+</p>
+<p>
+Label header Label name Password &ldquo;key&rdquo;
+20 20544553 54202020 20202020 81440000 * TEST -D..*
+30 64646464 75757575 12070000 12070000 *dddduuuu........ *
+Encrypted password
+</p>
+<p>
+The important part, however, is entry 13 above which is the encryption &ldquo;key&rdquo; used
+to form the encrypted password stored in positions 16 to 23, In this case, the
+password was 1111.
+</p>
+<h2>
+File Protection
+</h2>
+<p>
+Password protection for a file has the user extent type 10H. An example is shown
+below where the file FRED.COM has been protected i in a the following way.
+</p>
+<p>
+A&gt; SET FRED.COM [PASSWORD = FRED]
+</p>
+<p>
+The main directory entry for FRED.COM is unaltered; but the CCP inust scan the
+of th area tofitid ife an vent has the e: extent&nbsp;.: HI. &lsquo;An example is is shown
+</p>
+<p>
+Y orsion wader CP/M 3.1
+</p>
+<p>
+Type&nbsp;? for help
+Type X to exit
+</p>
+<p>
+G= 00:03, F=1,S=4, PS=0
+</p>
+<pre>
+00 00445520 20202020 20434F4D 0000003B *.DU COM...;*
+10. 22232425 00000000 00000000 0000000 *"#S%............*
+20 00444255 47202020 20434F4D 00000030 *.DBUG COM...0*
+30 26272800. 00000000 00000000 00000000 *&amp;&rsquo;(....... wee eee &reg;
+40 00465245 44202020 20434F4D 00000016 *.FRED COM....*
+50 292A0000 00000000 00000000 00000000 *)*... eee eee eee ee &reg;
+60 21000000 00000000 00000000 00000000 *!........eec eee e&reg;
+70 00000000 00000000 00000000 00800000 *.........eeeeeee&reg;
+</pre>
+<?php columnEnd(1); ?>

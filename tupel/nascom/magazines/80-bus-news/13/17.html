@@ -1,0 +1,101 @@
+<?php columnStart(1); ?>
+<p>
+17
+</p>
+<p>
+The IVC and high level languages (eg BASIC)
+</p>
+<p>
+Commands can easily be sent to the IVC via the usual PRINT or WRITE state- ments,
+but the difficulty arises in getting any information back. For someone using the
+IvC on a Nascom&nbsp;1 or 2 with the Nascom Basic and one of the Nascom monitors the
+solution is relatively easy. The ESC P command can be sent by a PRINT statement,
+and the WAIT and INP commands can be used to read the coord- inates back. (See
+</p>
+<p>
+example 1).
+</p>
+<p>
+With the Gemini Multiboard system or the GM809 disk system (with CP/M 2.2) the
+</p>
+<p>
+situation is more complicated. This is because the IVC card is occasionally being
+interrogated by the system software to check if there is any character waiting from
+the keyboard. (This check occurs whether or not a keyboard is actually connected to
+the IVC). Because of this it may not be possible to use the method of example 1 to
+get the light pen coordinates, and a machine code subroutine has to be used. Such a
+subroutine is listed in example 2. This is slightly more long-winded than
+necessary, but it has been written to be position independent so that it may be
+copied directly, and no recoding is necessary wherever you decide to place it. This
+program is included in the Basic routines that follow within the DATA statements.
+</p>
+<p>
+EXAMPLE 1 &ndash; NASCOM BASIC
+</p>
+<p>
+This Basic program is for a Nascom&nbsp;1 or 2 using the Nascom Basic and one of the
+Nascom monitors. It is assumed that the user has already entered a simple routine
+along the lines of PUTVID from the IVC manual in order to use the IVC in this
+environment. (The U command should have been used to activate the IVC driver which
+should also append LFs to CRs).
+</p>
+<p>
+NOTE: The IVC ports OB1H and OB2H are 177 and 178 (decimal). The buffer full/empty
+bit is bit 7 which is equivalent to decimal 128 for use in the WAIT statement.
+</p>
+<p>
+100 REM Demo program for the Arfon light pen
+</p>
+<p>
+110 ROW=INP(177) :REM Ensure IVC port cleared.
+</p>
+<p>
+120 P$=CHR$(27)+"P&rdquo; :REM Set up &lt;ESC&gt; P command string
+130 MAXCOL=80 :REM Screen width
+</p>
+<p>
+140 OFFSET=12 :REM Correction required
+</p>
+<p>
+150 GOSUB 2000 :REM Get the coordinates
+</p>
+<p>
+160 PRINT &ldquo;Row=";ROW; " Col=";COL
+</p>
+<p>
+170 GOTO 150 :REM Loop
+</p>
+<p>
+2000 REM ERRREKEER KERR EERE ER EERE REE EREREEERER EER EEEE EERE
+</p>
+<p>
+2001 REM Subroutine to get a set of light pen coordinates
+2002 REM FERRER ELE KER HERE EEE ERK EEE E EER ERE EEE EEE EE ERE REE EE
+</p>
+<p>
+2010 PRINT P$; :REM Send the command string
+2020 WAIT 178,128,128 :REM Wait for &ldquo;READY&rdquo; flag
+2030 ROW=INP(177) :REM Read back ROW coordinate
+2040 WAIT 178,128,128 :REM Wait for COL
+</p>
+<p>
+2050 COL=INP(177) :REM Read back COL coordinate
+2060 COL=COL-OFFSET :REM Allow for offset
+</p>
+<p>
+2070 IF COL&gt;=0 THEN RETURN :REM Return if all ok
+</p>
+<p>
+2080 COL=COL+MAXCOL sREM Not,so adjust COL..
+</p>
+<p>
+2090 ROW=ROW-1 :REM...&amp; ROW
+</p>
+<p>
+2100 RETURN :REM return ROW &amp; COL
+</p>
+<p>
+Nascom Basic users should also look at the following examples which illustrate
+another way that the coordinates can be obtained.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<span style="font-size: small">RRRRR</span>REPEAT KEYBOARD
+</h1>
+<p>
+In the past we have avoided publishing full assembly listings
+of programs, rather, we have put them in the software library, and
+commented on them when we publish the occasional library list. However,
+interest has suddenly swung round to the ability to add a repeat key
+facility to the Nascom, and we have received four programs which offer
+this feature.
+</p>
+<p>
+Two programs by Dr. P, Curtiss offer full &lsquo;n-key&rsquo; rollover, and
+have been assembled for both Nasbug and Nas-sys. Another (plagiarised
+by myself from those of Mr. Pounce and Dr. Curtiss) has been assembled
+at B000H and is intended to reside in EPROM for use with Nascom&nbsp;2,
+which, by having its reset jump set to page &lsquo;B&rsquo;, automatically
+initialises the repeat key mode on reset. Unfortunately this is only
+directly applicable to Nascom&nbsp;2, as hardware mods for the reset jump
+would be required for Nascom&nbsp;1.
+</p>
+<p>
+The program published here, whilst perhaps not the most
+elegant, is the shortest, and has been assembled for Nascom&nbsp;1 using
+Nasbug or B-Bug, and is therefore the most immediately useful to the
+reader.
+</p>
+<p>
+As some mystery surrounds the workings of the keyboard routines
+we publish Mr. Pounce&rsquo;s article and assembly listing in full.
+</p>
+<h2>
+KEYBOARD REPEATER
+</h2>
+<h3 class="author">
+by E. Pounce
+</h3>
+<p>
+This routine is used to give a repeat facility when a key is
+held down on the keyboard. If a key is pressed and held down, with no
+other key being pressed, then a character will be received as usual
+(eg. from a call to CHIN); but after a set period of time, whilst
+waiting for the next character, the same character will appear to be
+received. This period of time is determined by the value loaded into
+the &lsquo;repeat rate counter&rsquo; at line 280, zero is the longest time, 80H
+would be approx half that time (FFH would be the shortest possible). If
+the operator continues to hold the key down then the relevant character
+will appear to be received again and again, the time period being
+determined by the value loaded into the &lsquo;repeat rate counter&rsquo; at line
+660. C0H is used in the assembly to give a repeat speed of approx. one
+quarter of the initial delay time.
+</p>
+<p>
+Fast operators should not be affected by this routine as there
+are only 23 extra bytes of code executed for each key depression
+compared with the 100 odd + the delay of 7.5mS in the KBD routine.
+</p>
+<p>
+The routine is activated by modifying the reflective address
+from TIN (for T4 monitors) or KBD (for T2 and B-Bug monitors) located
+at address 0C4EH and 0C4FH to point to 0C5AH either as part of a
+program or via a modify command as follows:
+</p>
+<pre>
+M 0C4E
+0C4E XX&gt;5A 0C.
+</pre>
+<p>
+This command must be entered on one line as the first half of the
+address should not be changed without the second half.
+</p>
+<?php columnEnd(1); ?>

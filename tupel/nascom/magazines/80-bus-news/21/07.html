@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+7
+</p>
+<p>
+Having got these two exceptions out of the way, let us now look at the
+effect of an NMI. When the CPU recognises that the NMI line is active, it
+immediately saves the address of the current instruction, performing a call to
+location 0066H. Here, in theory, is the service subroutine for the NMI
+interrupts. This service routine should do whatever is required on an WMI and
+finish with a RETN (RET from NMI) instruction. This RETN instruction behaves like
+an ordinary RET instruction in popping the return address off the stack, but also
+acts as a signal to the CPU that the NMI routine is finished, and that the
+previous status of the normal interrupt structure can be restored. An NMI will
+automatically disable any other interrupts, saving the status until its own
+service routine is finished. So, if interrupts were enabled before an NMI, they
+are enabled afterwards, and contrariwise.
+</p>
+<p>
+On the Nascom, the NMI is used for a specific purpose, well known to
+those of us who are into machine code. This is to provide a Single Step facility.
+(On Gemini systems the NMI is uncommitted, and Single Stepping is provided in
+software by Gemdebug.) The Nascom Single Step works as follows: on Execution of a
+command, a bit is set in Port 0. This bit is clocked through a succession of
+flipflops, ending up toggling the /NMI pin of the CPU. The CPU immediately jumps
+to the service routine, which looks to see if the instruction executed was an F
+or S. If E, the CPU carries on with the next instruction, but if S, it prints the
+register display.
+</p>
+<p>
+As the Nascom has ROM at location 0066H (unless it is set up to run
+CP/M), you might assume that other use of the NMI is out of the question for
+Nascom users. Not so! At 0066H is a jump to 0C7DH, and this address is in RAM, so
+we can patch in here the address of our NMI handler. N2 owners can connect an NMI
+switch to their machine, which triggers a monostable to give a nice clean pulse,
+normally causing the register display to be printed out. N1 users can get this
+with a little modification published in INMC No.2. Its use is for those occasions
+when a program locks in a loop due to a programming flaw. Hitting NMISW can find
+where this loop is, and speed up debugging. N2 owners can also connect an NMI
+Signal to Bus line 21. Zilog suggest that the NMI be used for catastrophic
+events, such as a power failure, where big capacitors on the PSU lines could
+maintain power for a short time after mains failure, long enough to save the data
+to disk perhaps. Using it to provide a single step facility will be regarded by
+most Nascom Users as quite satisfactory, but I deal with the NMI specifically
+because it is a free interrupt handling method, and when using the Z80 as the
+basis for an intelligent controller of some sort, it might provide an elegant
+simplification of the unit. To give you an idea of the potential power of the
+NMI, it is the method by which the IMP printer is driven. Within the IMP, an NMI
+is caused at regular intervals. The internal CPU (a Z80 &ndash; what else!) switches
+the address of the NMI routine around between a number of routines to look after
+checking for new data and printing each column of dots.
+</p>
+<p>
+Now we move on to the &lsquo;normal&rsquo; interrupts. There are three schemes. These
+are called Interrupt Mode 0, 1 and 2, and invoked by instructions IM n, where n
+is the appropriate number.
+</p>
+<p>
+Interrupt Mode O is identical to the 8080 interrupt response mode. At the
+end of each instruction, the CPU looks at /INT (pin 16). If this line has gone
+low, something has requested an interrupt. Note that this line need not be low
+when examined. Its status is internally latched and reset when the CPU reads it.
+The CPU acknowledges this if interrupts have been enabled by making /M1 and /IORQ
+lines go low. The interrupting device is supposed to recognise this signal and to
+place the next instruction to be executed on the bus. Normally this instruction
+is a restart, which is a call to one of 8 specific locations, but it can be an
+actual three byte call if you wish, and if you can sort out how to do it! While
+acknowledging the interrupt, the CPU executes two wait states to allow time for
+the peripheral devices to sort out which one has priority. When it accepts an
+</p>
+<?php columnEnd(1); ?>

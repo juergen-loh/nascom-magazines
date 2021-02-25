@@ -1,0 +1,107 @@
+<?php columnStart(1); ?>
+<p>
+semen
+</p>
+<p>
+*** Printing by GAS *** R. Cutler
+</p>
+<p>
+The time had come when hard copy was an absolute necessity, but how did one
+obtain (other than beg, borrow or steal), a mechanical marvel of reasonable
+quality? A CREED was ruled out since I could not afford any structural
+alteration&rsquo;s like joist support&rsquo;s or double glazing,
+</p>
+<p>
+(I almost bought a QUME daisywheel but they didn&rsquo;t have the right colour),
+Think&rsquo;s,....try the WATER board, GAS board, ELECTRICITY board, GPO even,
+</p>
+<p>
+WATER board:&ndash; Well er...I don&rsquo;t er... we&rsquo;ve got &lsquo;one&rsquo; but when it goes wrong
+</p>
+<p>
+we buy another,
+</p>
+<p>
+GAS board:-YES, IBM magnetic tape typewriter&rsquo;s, (GOLFBALL&rsquo;S to you).
+</p>
+<p>
+Will you be making any redundant in the near future? YES, come over and have a
+look at one,
+</p>
+<p>
+I was there like a shot and came face to face with an IBM MI-typewriter,
+</p>
+<p>
+I&rsquo;m afraid we can&rsquo;t just sell the printer you would have to take the whole
+system, This dampened my enthusiasm because the &lsquo;whole&rsquo; system looked
+completely un-affordable, (have you ever seen an IBM MT-typewriter?).
+</p>
+<p>
+It consist&rsquo;s of a &lsquo;metal&rsquo; three draw desk with the printer on top, and alongside
+that is a rather large tape control unit, The latter, (by the way), just fit&rsquo;s
+into the boot of a MARINA,
+</p>
+<p>
+Anyway, to cut a long story short, I managed to acquire this highly sought after
+piece of equipment for a princely &pound;50,
+</p>
+<p>
+*kk Now to drive it, ***
+</p>
+<p>
+I eventually intend to drive the printer from an RS232 serial port using an 8035
+micro, This will be programmed to recieve RS232 output at whatever speed is
+selected by link&rsquo;s on the RS232 input socket, (If you are not familiar with
+</p>
+<p>
+the 8035/48/51 series micro, perhaps an article would be of interest, it&rsquo;s an
+ideal control micro?),
+</p>
+<p>
+For the time being, however, I wanted hard copy, so decided to use a PIO,
+There are 7, 48 volt print magnet&rsquo;s on an IBM called Rl R2 R2A R5 Tl T2 CK,
+I&rsquo;ve wired these via, drivers to port 5 bit&rsquo;s 0 to 6 respectively,
+</p>
+<p>
+There are also a few control magnet&rsquo;s, I have used CRLF TAB SP LC UC connected
+to bit&rsquo;s 2 to 6 respectively of the same port,
+</p>
+<p>
+A glance at the circuit will show that bit 7 is used to select either print
+magnet&rsquo;s or control magnet&rsquo;s, This was done so that a 12 core cable could be
+used between the computer and printer,
+</p>
+<p>
+Two other signal&rsquo;s are required, a BUSY line and a SHIFT line, These are
+produced as shown in the circuit. When the printer is ready, BUSY=1,
+</p>
+<p>
+The SHIFT line is used to identify which case the printer is in, and also serves
+to &lsquo;time&rsquo; the case change, Port 4 bit 0 is used for SHIFT, and bit 1 for BUSY,
+</p>
+<p>
+The mechanical timing of an IBM is fairly complicated, so to get a
+</p>
+<p>
+correct BUSY line signal, the feedback contact&rsquo;s must be connected in the
+</p>
+<p>
+_ correct sequence as shown,
+</p>
+<p>
+The contact&rsquo;s work on the following principle:&ndash;
+</p>
+<p>
+When the IBM is ready, the N/C contact&rsquo;s are used to set BUSY high.
+</p>
+<p>
+A character is sent.
+</p>
+<p>
+When the N/O contact&rsquo;s have closed, the magnet&rsquo;s may be de-energised,
+</p>
+<p>
+And when the N/C contact&rsquo;s have re-closed the IBM is ready for another character,
+Refer to JAN 79 Practical Computing for more detailed information,
+</p>
+<?php columnEnd(1); ?>

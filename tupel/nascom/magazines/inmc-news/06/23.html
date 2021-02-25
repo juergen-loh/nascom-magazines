@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-23-1.png"); ?>
+<h3 class="author">
+By N.Ray
+</h3>
+<h4>
+ONE OR TWO NOTES ABOUT Z80 MACHINE-CODE PROGRAMMING
+</h4>
+<p>
+Reading other people&rsquo;s Z80 code programs convinces me that many
+people are unaware of some very useful tricks,
+</p>
+<p>
+For instance, although it is well-known that XOR A may be used
+to clear A (and the carry bit) the other operations on A have
+their uses.
+</p>
+<p>
+E.g. AND A and OR A set Z and S flags from contents of A and may
+frequently replace CP 0.
+</p>
+<p>
+AND A (or OR A) can also be used to clear the carry flag if you
+don&rsquo;t mind corrupting the other flags. CP A will clear the Z flag.
+</p>
+<p>
+A warning of general application is in order here,
+</p>
+<p>
+AND A is <u>not</u> the same as CP 0<br>
+INC A is <u>not</u> the same as ADD A,1 (Sim. DEC)<br>
+CPL,INCA is <u>not</u> the same as NEG
+</p>
+<p>
+In each case the code on the left differs from that on the right
+in the way it affects the carry flag (and certain other flags).
+While on the subject of programming dodges, here is an interesting
+example:
+</p>
+<pre>
+    E60F   HEXASC:    AND 0FH
+    C690              ADD A,90H
+    27                DAA
+    CE40              ADC A,40H
+    27                DAA
+    C9                RET
+</pre>
+<p>
+The lower 4 bits in register A are interpreted as a hex digit and
+the corresponding hex character in ASCII is found in A on exit.
+</p>
+<p>
+You should try to convince yourself that it works correctly (HINT&nbsp;:
+watch the half-carry flag).
+</p>
+<h4>
+RECURSION
+</h4>
+<p>
+Recursion can often be used to good advantage in machine-code programming,
+provided there is ample stack space. A recursive routine
+is one that calls itself. As a demonstration, consider the &lsquo;Tower
+of Hanoi&rsquo; problem.
+</p>
+<p>
+N rings are stacked on one of three poles (as indicated)
+</p>
+<?php columnEnd(1); ?>

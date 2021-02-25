@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+WRITE W xxxx yyyy
+</p>
+<p>
+The write routine first switches on the cassette LED; it then waits for
+approximately one second, which allows the cassette recorder speed to stabilise if
+you are using the LED signal to control your recorder. The output table pointer is then
+reset to its normal value, so that output is sent only to screen. This ensures that a
+user routine will not interfere with the operation of the write routine. The address
+stored at &pound;0C73 is saved on the stack, and restored at the end of the write routine.
+After 256 nulls have been output to the serial port the data is output in blocks of
+256 bytes, preceded by a null and four &lsquo;FF&rsquo;s, a header which gives the start address
+of the block, the length and number of the block, and a checksum for the header
+data. The start address and the length and number of the block are printed on the
+screen, but all other bytes are output only to the serial port; output through this port is
+by direct call to the serial routine, and does not use the output table and its pointer.
+The block of data is then output, followed by ten nulls. The purpose of all these nulls
+is to ensure that if several bytes of data are missed when the tape is read, the start of
+the next block header, marked by four &lsquo;FF&rsquo;s, will not be missed. If there were no nulls
+the READ routine would continue until it detected the correct number of bytes,
+accepting one or more of the &lsquo;FF&rsquo;s, and it would then miss the following block and
+only start reading again when the next block start was detected.
+</p>
+<p>
+When all the data has been written the routine jumps to the end of the READ
+routine, using the same code to reset the output pointer. If you wish to make several
+copies of the same data, which is always advisable, you do not need to re-enter the
+arguments &ndash; just enter W and the previous arguments, which are still at 0C0C and
+0C0E, will be used again. If you are too lazy to do even this, a simple modification to
+the WRITE routine will make it unnecessary. Instead of jumping to the end of READ,
+first execute the following code:
+</p>
+<p>
+21 10 0C
+35
+C2 XX XX
+C3 YY YY
+LD HL, &pound;0C10
+DEC (HL)
+JP NZ, REWRT
+JP RDEND
+; Point HL to ARG3
+; Decrement ARG3
+; Continue if non-zero
+; Jump to end of READ
+</p>
+<p>
+For Nas-Sys&nbsp;1 the address XXXX is &pound;04EF; for Nas-Sys&nbsp;3 it is &pound;502. Address
+YYYY is the end of the READ routine, where the table pointer is reset. If you use the
+modified READ routine given in the last article, you will find that there is room for
+extra WRITE code at the end, and the final jump can be a relative one. Incidentally,
+there is a misprint in the listing on page 30 of the last issue; from line 32 it should
+read:
+</p>
+<p>
+CF R2
+3C
+20FA
+RST RIN
+INC A
+JR NZ, R1
+; GET CHARACTER
+; IS IT FF?
+; IF NOT, KEEP LOOKING
+</p>
+<p>
+&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;
+</p>
+<?php columnEnd(1); ?>

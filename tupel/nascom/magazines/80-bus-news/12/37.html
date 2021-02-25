@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+37
+</p>
+<p>
+mauve colour, magenta, would be produced. By combinations of the three primary
+colours eight colours can be produced, ranging from white, where all three signals
+are present at once, through magenta, cyan, yellow, red, green and blue, to black,
+where all three signals are off. Further colours are available by mixing the
+proportions of the above eight colours within a certain area. For instance a green
+dot surrounded by a number of red dots would result in a brownish red colour, the
+&lsquo;prownness&rsquo; being proportional to the number of green dots within a given area. This
+of course implies a coarser resolution than is obtainable with pure colours, but is
+ideal for backgrounds etc. Some 4000 shades are obtainable in this way.
+</p>
+<p>
+The three 16K RAMs are memory mapped into the computer in much the same way
+as the already existing video RAM. However, this does not gobble up vast acres of
+user RAM, as the colour RAM is on different &lsquo;pages&rsquo;. In other words, they are
+&lsquo;paged&rsquo; in place of the user RAM, which is simultaneously &lsquo;paged&rsquo; out, thus
+overlaying user RAM whilst being addressed, when video update is complete they are
+&lsquo;paged&rsquo; out again and the user RAM is &lsquo;paged&rsquo; back in untouched. For those who are
+worried about this paging scheme conflicting with the existing user RAM paging
+scheme, don&rsquo;t. The AVC uses different ports to address the pages and no conflict
+arises. Unfortunately the ports that Nascom have adopted clash with those used by
+Gemini&rsquo;s IVC and, although both the IVC and the AVC can be set to use alternative
+ports, this means some aggravation for those who already have an IVC, want to add an
+AVC for colour, and wart to use the standard software drivers available for each
+ecard. Shame.
+</p>
+<p>
+Nascom have indulged in bit of cleverness in the flexibility in which the
+three colour RAMs can be arranged. As has already been mentioned, the three RAMs are
+effectively laid one on top of the next. Now imagine moving the top RAM sideways (to
+the right or left, it doesn&rsquo;t matter), and dropping it down one layer so that it
+putts against the one on the middle layer. Now double the addressing speed to this
+32K video RAM and a resolution of 780 x 256 results. Now two colour layers are
+available, the bottom one of highish resolution (390 x 256) and the top of very high
+resolution. The backgrounds could be produced by the lower layer to quite acceptable
+resolution whilst very fine detail would be comfortably resolved by the upper 32K
+layer. The outputs of the two RAM planes may be directed to any two of the three
+colour outputs producing an effective result equivalent to the highest resolution
+yet seen on a colour card at this sort of price in any four colours of the eight
+colours previously available. It was interesting to note that it was mentioned that
+by increasing the onboard 16MHz crystal to 20MHz, a screen format of 100 x 25 could
+be achieved. It was not stated whether an equivalent increase in graphics resolution
+to 926 x 256 dots could be achieved at the same time (should be possible).
+</p>
+<p>
+So far we have dealt with the graphics capability. The Nascom AVC is not
+fitted with a character generator. Instead a clever piece of software looks up the
+bit patterns of alpha-numerics from a table and transfers them to the appropriate
+places in the RAM planes. The 360 x 256 mode produces a 40 x 25 screen format in
+eight colours whilst the 80 x 25 screen format is catered for by the 720 x 256 mode
+in four colours. This method of character generation has both advantages and
+disadvantages. One of the &lsquo;prettiest&rsquo; advantages demonstrated was the ability to
+select character sizes and aspect ratios at will. So for instance italics could be
+mixed into ordinary text (in contrast colours if desired) simply by stating the
+&lsquo;gslope&rsquo; angle of the characters to be displayed. Alpha-numeric characters could also
+be placed at odd angles on the screen, and of course things like sub-scripts and
+super-scripts are no problem at all. The potential for this sort of character
+generation is quite considerable. However, there are two penalties. Speed and system
+RAM overhead.
+</p>
+<p>
+The speed of screen scrolling suffers quite a bit because instead of having
+to only copy the character bytes from one line to the next, whole chunks of bit
+patterns have to be copied. Nothing too upsetting though. At first sight,
+&lsquo;soft-scrolling&rsquo; would appear to be easy, and it is. Unfortunately, again, because
+of the enormous amount of &lsquo;bit shunting&rsquo; required to achieve this, it is also
+painfully slow, too slow to be useful in fact. Another problem arises when high
+</p>
+<?php columnEnd(1); ?>

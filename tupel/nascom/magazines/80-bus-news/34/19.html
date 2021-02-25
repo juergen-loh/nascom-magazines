@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+1g
+</p>
+<p>
+* For some reason, which may be historical, SYS supports only 2 Virtual
+memory or RAMDISK pages, and these are Pages 2 and 3 rather than 1 and 2. If
+GM802 boards are used their read and write address switches MUST be set
+accordingly. Because GM862 boards are always supplied fully populated, the
+standard switch settings as shown in the Manual for a Nascom with four memory
+pages (one system page and three virtual pages) may always be used. However
+unless SYS is modified, only two pages of RAMDISK will be available, reducing
+its effective size to 118K or less.
+</p>
+<p>
+SYS MODIFICATIONS
+</p>
+<p>
+As such restrictions were intolerable, SYS (Version 18.1) was modified so
+that it could be assembled to run with 1, 2, or 3 Pages of RAMDISK and also
+allow these pages to be contiguous. That is, starting with the system memory
+on page 0 ,the first disk page will be 1, the next 2, and the last 3. Besides
+enabling all three pages of the GM862 to be accessed, this hardware
+configuration is compatible with that employed with Gemini CONFIG.COM so that
+either operating system can be used without resetting switches or unplugging
+boards. The modifications, made to Modules SYSB3 and SYSB8 of SYS 18.1, are
+shown below. Although, sadly, no longer marketed, there must be quite a few
+SYSes of differing ages and pedigree out there in the vast void of space and
+time, and hopefully this information will also be of use with some at least of
+these:&ndash;
+</p>
+<p>
+N.B. To aid identification of the line to be modified, the nearest
+previous label name is stated, followed by the (inclusive) number of lines to
+count from the label. Blank lines are NOT included in the count. Generally
+only one or two parameters need to be changed, making it easy to identify the
+correct line. Additions are inserted BEFORE the ociginal Line indicated.
+</p>
+<p>
+SYSB3 Modifications &ndash; if vgem
+</p>
+<p>
+change vinit:+11 to 1d a,vnorm*16+02h sRead from page l
+change vinit:+18 to ld a,OeOhivnorm sWrite pages 1, 2, 3
+change be2: +7 to ld a,20h+vnorm ;Write to page l
+</p>
+<p>
+SYSB8 Modifications &ndash; if vgem
+</p>
+<p>
+change dpbv:+5 to defb Oe0h,0 ;ALO 3 directory blks.
+schange is optional
+change vb: +4 to ld a,vnorm*16+02h sRead from page 1
+add at vr: +8 ld a,vnorm*16+02h sRead page 1
+qrvoc,vr2 3;Next page&nbsp;?
+add at vw: +8 ld a,20h+vnorm sWrite page 1
+jr c,vw2 3;Next page&nbsp;?
+</p>
+<p>
+HEAT POWER and LIGAT
+</p>
+<p>
+That should have been the end of the story, but during the first few
+weeks of operation both my systems suffered odd failures at times. The
+original 3A power supplies were overloaded by the additional memory, even
+though the supplies had been -poosted&rsquo; to deliver more power and had yielded
+stirling service in the past. Two 6A switchmode units had to be bought (sob
+sob) and were carefully wired in, but there were still a few odd -happenings&rdquo;
+which were finally exorcized by adding more shielding around the disk drives
+in the Vero rack and fitting an 80mm cooling fan in the console machine. Since
+then all has been sweetness and light.
+</p>
+<?php columnEnd(1); ?>

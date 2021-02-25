@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+IF 30 aS
+</p>
+<p>
+1E 20 mS
+1D iz as
+1c 6 aS
+</p>
+<p>
+The relevant location will depend on the version of NAS-DOS
+which you are using:
+</p>
+<p>
+1a psap
+12 p3ae
+114 sae
+</p>
+<p>
+Those of you with EPROM blowers can change the relevant location
+to suit your drives if necessary. Do remember&rdquo; the usual
+precautions and keep the original chip in case of accidents
+During the modification process.
+</p>
+<p>
+6. DISC FILES
+</p>
+<p>
+As well as allowing programs to be stored on disc NAS-DOS allows
+data to be staredand loaded. Routines are provided within NAS-DOS
+itself to aueist in data storage and retrieval, and these
+can be accensed directly from assembly language and Nascom ROM
+BASIC. &ldquo;ROM BASIC was developed long before discs were available
+fon the Nascom system, and therefore the language 1tsel does not
+provide any disc Commands. Access to the disc 15 therefore
+achieved by patching rn the various NAS-DOS routines. This is,
+Gone by means of the USR) function in BASIC, the argument
+being the number of the NAS-DOS routine to be called. It is. of
+course necessary to DOKE 4100,-10234 ta point the USR routine to
+an appropriate translator in&rsquo; NAS-DOS itself. This slightly
+auknard technique is necessary to allow the commands to be added
+toa ROM BASIC itis nat. &lsquo;a limitation of NAS-DUS. More
+recently implemented languages (eg Extended BASIC) and
+applications programs (eg NAS-CALC) include within them
+meaningful commands for direct access to the discs via NAS-DOS.
+The DIR (directory) command is an example of this facility.
+</p>
+<p>
+Before any disc commands are used in a BASIC program under NAS-DOS
+the command
+</p>
+<p>
+DoKE:
+</p>
+<p>
+100, -10234
+</p>
+<p>
+must be executed by the program to set up a link to the NAS-bOS
+Commands. You must then initialise the NAS-DOS commands and
+data area with an instruction of the form
+</p>
+<p>
+AausR CL)
+When Using subsequent disc commands remember that the nuaber of
+</p>
+<p>
+the disc drive is stored in location %560 (decimal). wo if you
+want to change the dist drive accessed you aust include in the
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<h1>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+NASCOM REAL TIME CLOCK AND CALENDER
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author" style="text-align: inherit">
+by J. R. Williams
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1, "nojustify noindent"); ?>
+<h3>
+National Semiconductor MM58174
+</h3>
+<p>
+The National Semiconductor MM58174 is a CMOS real-time clock and calender chip in a
+16-pin DIL package which is easily interfaced to the Nasbus. This device incorporates
+4-bit registers from which the CPU can read, as BCD digits, the time from 1/10ths secs.
+to tens of hours, the day of the week, and the date from days to tens of months. The
+on-chip oscillator is controlled by a 32768 Hz crystal and timekeeping can be maintained
+by a backup battery when the 5V supply is switched off. In addition, the MM58174
+provides a facility for generating CPU interrupts at intervals of 0.5 sec, 5 sec or 40
+sec.
+</p>
+<h3>
+Interfacing ta Nascom
+</h3>
+<p>
+The circuit used by the writer to interface the MM58174 to his NASCOM&nbsp;1 is shown
+below. The circuit was assembled on a Vero DIL prototyping board which plugged into a
+spare 80-way connector on the NASBUS. Bus timing was not a problem with the NASCOM&nbsp;1
+which runs with a 2 Mc/s clock and should still be acceptable with the 4 Mc/s clock of
+the NASCOM 2 provided that the 500ns MM58174N is used.
+</p>
+<h3>
+Addressing
+</h3>
+<p>
+The clock chip is interfaced onto the bus occupying 16 I/O port addresses (20H to 2FH in
+the writer&rsquo;s system), The bus address lines A0 to A5 connect to the clock register
+address input pins AD0 to AD5. The upper I/O address lines A4 to A7 are decoded by a
+7ALS145 to select addresses in the range 20H to 2FH. The clock chip is selected when an
+address in this range coincides with <?php invertedSignal("IORQ"); ?>.
+</p>
+<h3>
+Data input/output
+</h3>
+<p>
+The clock&rsquo;s data I/O pins DB0 to DB3 connect to the NASBUS data I/O lines D0 ta D3. The
+NASBUS <?php invertedSignal("RD"); ?> and <?php invertedSignal("WR"); ?> lines
+connect directly to the MM58174&rsquo;s NRDS and NWDS pins. The NAS
+data bus is switched to the read direction by pulling <?php invertedSignal("DBDR"); ?> down
+when the clock chip is read by the CPU.
+</p>
+<h3>
+Interrupt Control
+</h3>
+<p>
+Additional logic is included ta enable the MM5174&rsquo;s interrupt facility to be
+used. When the clock&rsquo;s interrupt output goes low, an interrupt is initiated provided
+IEI is high &ndash; i.e. no higher priority interrupt is active. While either the clock
+interrupt or a higher priority interrupt is active, IEO is held low to inhibit any lower
+priority interrupts.
+</p>
+<p>
+Operation in the Z80 interrupt mode 2 is provided for by pulling all eight data lines
+down to return a zero interrupt vector (i.e. 00H) in response to the CPU&rsquo;s interrupt
+acknowledge (<?php invertedSignal("IORQ"); ?> active with <?php invertedSignal("M1"); ?>).
+Simultaneously, <?php invertedSignal("DBDR"); ?> is pulled down to switch the
+data bus to the read direction.
+</p>
+<p>
+All this logic can, of course, be omitted if the interrupt facility is not needed.
+</p>
+<?php columnEnd(1); ?>

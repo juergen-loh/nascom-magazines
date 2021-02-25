@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p class="continued">
+had rather a nice surprise, because I&rsquo;d swapped over the wiring to the two
+keys, so now the &ldquo;ENTER&rdquo; key was by itself on the end. The only trouble was
+that I&rsquo;d lost the key cap for it, and jabbing at the thin stalk of plastic was
+even more difficult than hitting the key in its original place. I searched
+everywhere, but no sign of, the button (I always seem to lose things when I&rsquo;m
+drunk. I once lost my false teeth, I think I must have flushed them down the
+loo after I&rsquo;d been sick.) (Keep it clean please &ndash; Ed.) So a trip was made to
+my local friendly electronic parts shop, who had only red double width caps.
+Bliss! I now have a big distinctive key that I can&rsquo;t miss even if I try. See
+diagram 2 for details of how to change the printed wiring on the back of the
+keyboard.. (If you&rsquo;re using a G805 with SYS, why not change the keyboard table?
+&ndash; Ed.)
+</p>
+<h3>
+SKEWING THE SKEW.
+</h3>
+<p>
+I have the use of another CP/M machine besides my Nascom. This is an
+AVL Eagle, and also uses 18 sectors per track, but with a different skew.
+Problem? How do I transfer programs from one computer to the other.
+</p>
+<h4>
+First Solution.
+</h4>
+<p>
+Ensure that the system on all disks is of the same size, with source
+disks containing a CP/M system from the computer that&rsquo;s being copied from, and
+the receiving disks containing the other system. Log in the source disk, and
+load the program without running it, as described above. Put in the receiving
+disk, and do a ^C to change the BDOS in memory... this doesn&rsquo;t alter the BIOS,
+so now save the program onto the new disk, with the new format. Simple isn&rsquo;t
+it (provided that you remembered how long the program was, and didn&rsquo;t have to
+go back and use STAT, and then start again!). And it works, no matter how many
+sectors there are per track, the only requirement being that both types of
+disk should work in the same drive.
+</p>
+<h4>
+Second solution.
+</h4>
+<p>
+Write a special program to do the job using direct calls to the BDOS
+primitive functions, or simpler, adapt somebody elses&rsquo; program. Practical
+Computing published a fast disk copy program by T. D. Lee in their Sept &rdquo;81
+issue, which uses a skew table to speed things up. By having separate tables
+for reading and writing, the skew can be changed on an entire disk very
+quickly indeed. For your information, the skew table can be found at 311AH in
+a 16K system, 119AH in a file created by MOVCPM, and 121AH in MOVCPM itself.
+The number of sectors is at 313AH, 11BAH, and 123AH respectively.
+</p>
+<h3>
+COMMENTS IN SUBMIT FILES
+</h3>
+<p>
+So you&rsquo;ve got a submit file, but you can&rsquo;t remember exactly what it
+does..... Just put in comments as you would in any source file. CP/M will
+ignore anything from a semicolon(;) up to a carriage return. It will also
+ignore anything after most terminators (:, \, etc), but Digital Research don&rsquo;t
+promise to support anything other than a semicolon in future releases.
+</p>
+<h3>
+FAKE CALLS TO WBOOT
+</h3>
+<p>
+While on the subject of undocumented features of CP/M, on page 16 of
+INMC80/2 David Hunt wonders whether making fake calls to WBOOT in order locate
+the jump vector table, so as to make direct calls to the I/O drivers, is
+legal. Sorry Dave but it ain&rsquo;t. However, John Pierce of Digital Research has
+stated that since everybody uses it, they will try to support it in future
+releases, but it may not be possible, so they will continue to not document
+how to find the jump vector table.
+</p>
+<p>
+CP/M 1.4 contains two undocumented function codes that are documented
+in version 2 onwards. These are used to set (28) and monitor(29) the read only
+status of disk drives.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p>
+and the number of characters in the string in NUMN.
+</p>
+<p>
+SCAL CRT, DF 65
+</p>
+<p>
+This outputs the contents of the accumulator to the screen. The routine
+first tests for a null (00) or a line feed (0AH); these are ignored. The next control
+code to be handled is Clear Screen (0CH). On receipt of this code 48 spaces are
+written in the top line (&pound;080A &ndash; &pound;0839), 16 nulls are written in the margin (&pound;83A &ndash;
+&pound;849), the line is copied 16 times to fill the whole screen, and the cursor is
+repositioned to the top left.
+</p>
+<p>
+The remaining control codes are tested for in turn and the appropriate action
+taken. Normal characters are inserted at the current cursor position and the cursor
+moved one space right. If this takes it into the screen margin, the margin bytes are
+skipped. When the cursor moves beyond the limits of the screen RAM, the screen is
+scrolled by copying the bottom 14 screen lines (&pound;084A &ndash; &pound;0BB9) up one line,
+clearing the bottom line, and repositioning the cursor to the bottom left.
+</p>
+<p>
+SCAL TBCD3, DF 66
+</p>
+<p>
+The contents of the HL register pair are printed as a four-character
+hexadecimal number followed by a space by this routine. The H register is first
+transferred to the accumulator and printed out using SCAL TBCD2, DF 67; the L
+register is then treated similarly, and a space character is then output.
+</p>
+<p>
+SCAL TBCD2, DF 67
+</p>
+<p>
+This routine prints out the contents of the accumulator as two hexadecimal
+digits; it differs from SCAL B2HEX, DF 68, which forms the last part of the
+subroutine, only in that it adds the byte being printed to the checksum in register
+</p>
+<p>
+C.
+</p>
+<p>
+SCAL B2HEX, DF 68
+</p>
+<p>
+The contents of the accumulator are rotated right four times so that the most
+significant nibble becomes the least significant nibble. SCAL B1HEX, DF 7A, is
+then used to print the necessary hex digit. The accumulator contents are recovered,
+and the appropriate digit for the bottom nibble is printed. The method of converting
+each nibble is rather clever; 90H is added to the nibble and the DAA (Decimal
+Adjust Accumulator) instruction is applied to the result. This produces a value in the
+range 90H &ndash; 99H, with the carry flag reset if the original nibble is in the range 0 &ndash; 9.
+When 40H is added with the carry flag, the result lies in the range 30H &ndash; 39H, or
+41H &ndash; 46H; i.e., the appropriate hex digit has been produced!
+</p>
+<?php columnEnd(1); ?>

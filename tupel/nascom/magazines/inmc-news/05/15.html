@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+Having had my moans, Nascom are to be congratulated,
+Nascom&nbsp;2 is a superb machine, and another satisfied customer bites the
+dust.
+</p>
+<h2>
+Other bits of info for Nascom&nbsp;2 from various sources
+</h2>
+<p>
+The video fault mentioned above seems to be fairly common, and
+really comes back to the oscillator. The output of the 74S04 (IC56)
+seems to be almost sinusoidal in shape, and this makes the first
+divider (IC49) a bit unhappy. IC49, in turn feeds IC7la which generates
+the LD signal for IC65, and any jitteriness of IC49 is transferred to
+IC65. The best cure is the 100pF capacitor as mentioned above, but a
+5pF capacitor between pins 12 and 7 of IC56 helps to square up. the
+clock a little. Severe clock jitter can cause some very weird timing
+problems giving rise to overall unreliability.
+</p>
+<p>
+The memory supplied with N2&rsquo;s at present is our old friend
+Nascom Series 1 Memory card, which was the subject of a note about
+&lsquo;Memory Plague&rsquo; in an earlier news letter. Well as an N2 may well ask
+it to run at 4 MHz without any wait states, a little more investigation
+was considered desirable. The buss signals from an N2 are a lot
+cleaner than an N1 which helps, but &lsquo;Plague&rsquo; still raises its head from
+time to time. First, check that you have used the 74157s in the memory
+not the 74LS157s. Both types are used on an N2, and are easily mixed
+up. Secondly, gridding the +5 volt and ground rails is a good idea,
+there is a sheet in the N2 kit about that. Thirdly, change all the 33R
+resistors to 68R, and change the links between P8 and P9, P12 and P13
+for 68R as well.
+</p>
+<p>
+These mods alone cured a board that suffered from severe
+&lsquo;Plague&rsquo; at 2 MHz on an N1. All the other mods (the Rs and Cs from the
+earlier note, etc), were removed. The board worked perfectly at 2 or 4
+MHz on both an unmodified &lsquo;B&rsquo; issue N1 (worst case) and an N2. So it
+seems that proper gridding of the board, and curing any tendency for
+the address and control lines of the 4116s to under-shoot (the 68R
+resistors) will cure &lsquo;Plague&rsquo; on its own.
+</p>
+<?php hLine("30%"); ?>
+<br>
+<?php columnEnd(1); ?>
+<?php columnStart(2, 22); ?>
+<p style="text-align: center; font-size: large">
+<br>
+THIS SPACE<br>
+TO LET
+<br><br>
+</p>
+<!--?php columnChange(2); ?-->
+<table style="margin: auto"><tr><td>
+<p style="font-variant: small-caps"><i>
+<br>
+<u>Stop Press</u> &ndash; Scoop<br>
+<br>
+Mask Patter For 256K<br>
+Ram Chip Reproduced<br>
+Below &ndash; Entirely Free<br>
+And At No Cost.
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-15-1.png"); ?>
+</i></p>
+</td></tr></table>
+<?php columnEnd(2); ?>

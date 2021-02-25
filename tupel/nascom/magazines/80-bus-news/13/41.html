@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+41
+</p>
+<p>
+further test to find out which bit was set as the AND instruction will have also
+set the sign bit in the flag register to indicate the state of bit 7. Thus if it is
+Positive (i.e. bit 7 was 0), then bit O must have been set to create the NZ result
+</p>
+<p>
+of the AND.
+</p>
+<p>
+Turning now to the execution timing of the code: It can be seen that even the
+fastest loop is outside the time limit that has to met, so the code &ndash; simple as it
+is &ndash; needs revising to make the loop tighter. Setting the mask byte of 81H in a
+register and performing the AND with that register will save 3 T states, and making
+the last JR a JP will save a further 2, but that only reduces the loop to 68 T
+states, still 4 over the target. The &ldquo;Exit on IRQ&rdquo; JP in the middle of the code is
+a bit of a time waster as it only serves to terminate the loop and contributes
+nothing to the data transfer itself, and so could be moved with some benefit.
+</p>
+<p>
+With some re-organisation the code could now look like this:
+</p>
+<p>
+eeee
+</p>
+<p>
+LD B,81H 3; Set the mask
+JR LOOP ; Skip
+DRQ: IN A, (DATA) ; Read the DATA byte &ndash; 14
+LD (HL),A 3; Store &ndash; 7
+INC HL ; Bump address &ndash; 6
+LOOP: IN A, (STATUS) ; Wait for DRQ/IRQ &ndash; 11
+AND B 3 Mask/test &ndash; 4
+JR %, LOOP 3; Wait if neither &ndash; 7/12
+JP M,DRQ ; Jump if DRQ &ndash; 10
+eeee ; Else done
+Total states ( no wait for DRQ) = 56
+Total states ( one wait for DRQ)= 56 + 27 = 83
+</p>
+<p>
+The re-organisation has effectively removed one JP from the critical loop (at the
+expense of an extra JR at the start to get into the loop), and has improved the
+timing figures as a result. Going straight through is now well under the 64 T-state
+limit, but the extra 27 T-states that occur when there is a wait for the DRQ are
+slightly worrying. A more detailed cosideration is required to see if they matter.
+</p>
+<p>
+Assume that a DRQ has appeared towards the end of the execution of the IN
+instruction that is checking the status port, and has just been missed. Now the
+number of T states that occur until the data byte is actually read is:
+4+12+11+4+7+10+11 = 59 &ndash; so that byte will be read before the controller assembles
+the next byte (which comes after 64 T states). When the label LOOP is next reached
+the DRQ bit will be set (because it has taken &gt;64 T-sates to get back there) so the
+next data transfer loop will be a short one (56 T states) and some time will be
+caught up. This will continue until the routine overshoots and has to wait again.
+Anyway it all seems possible.
+</p>
+<p>
+The code for a Write transfer is similar:&ndash;
+</p>
+<p>
+DRQ: LD A, (HL)
+OUT (DATA),A
+</p>
+<p>
+So the time has come to code the routines up and to try them out.
+Disaster! They don&rsquo;t work! Why not?
+</p>
+<p>
+When all else fails read the data sheet. For those readers who like a challenge
+read no further until you&rsquo;ve found the answer in the 1797 data sheet.....
+</p>
+<?php columnEnd(1); ?>

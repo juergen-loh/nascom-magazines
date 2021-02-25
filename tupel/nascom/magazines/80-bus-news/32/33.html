@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+33
+</p>
+<p>
+4 &ndash; Edit the contents of the buffer. Allows simple editing of the contents of
+the buffer.
+</p>
+<p>
+5 &ndash; Display the buffer. Displays the buffer contents on the screen using the
+conventional Hex/ASCII display format (as in Gemdebug, Nas-Sys etc).
+6 &ndash; Write the buffer to a disk file. (A prompt for a file name will appear.
+</p>
+<p>
+If the file name you give already exists you will be asked for
+confirmation that it is to be overwritten.)
+&ndash; Write the buffer to an EPROM. (i.e. Program the EPROM.)
+Verify the EPROM is erased. Prints out any locations within the EPROM
+that are not OFFh.
+9 &ndash; Verify an EPROM against the buffer. The two are compared and any
+differences are listed to the screen.
+</p>
+<p>
+CO si
+|
+</p>
+<p>
+The heading also displays three things of interest. i) Whether the memory
+buffer contains any data. ii) The type of EPROM currently selected. iii) The
+name of the last file read/written to/from the memory buffer. Items (ii) and
+(iii) I find quite useful, especially if you&rsquo;re trying to program multiple
+files into multiple EPROMs.
+</p>
+<p>
+The Int&nbsp;,ligent Programming Algorithm
+</p>
+<p>
+The software implements the &ldquo;Int&nbsp;,ligent programming algorithm&rdquo; (IPA) for the
+larger EPROMs (2764 and upwards). For those of you that havent met this, this
+is a technique for vastly speeding up the programming of the latest EPROMs.
+</p>
+<p>
+In general EPROMs are programmed by presenting the appropriate address and
+data to the EPROM along with a suitable write pulse. (Certain -programming&rdquo;
+voltage levels have to be present on other pins.) The write pulse duration is
+specified at 50mS. This figure of 50mS has to cover the worst case, and in
+fact most data cells within an EPROM program in a fraction of this time (Intel
+claim 16% of the time i.e. 8mS), and the difficulty lies is determining when a
+cell is adequately programmed. With devices such as the 2716 the resultant
+programming time of about 100 seconds was not a burden, but 14 minutes for a
+27128 is another matter entirely, (let alone 28 minutes for a 27256!). The
+latest EPROMs have been designed and tested so that a (faster) modified
+programming technique can be used, which still results in the same guaranteed
+long term data retention characteristics. A simplified version of this
+algorithm is as follows:
+</p>
+<p>
+1) Set up the programming conditions and set Vcec=6v (rather than the usual 5v)
+2) Apply address &amp; data and set a software counter N=0.
+3) Apply a imS write pulse. Set N=N+l.
+4) Read back the data (with Vcc still at 6v) and compare with the original.
+If it has not programmed go to 3 (unless N=15).
+5) Apply a pulse of 4NmS to complete the programming.
+6) Verify &amp; move on to next address.
+</p>
+<p>
+i.e. You try in stages until the byte is programmed, then you give it a final
+big -bash&rdquo; (4 x what you&rsquo;ve given it so far) to ensure that the cells are well
+and truly past the threshold. The 6v Vcc level also ensures that the internal
+threshold level that determines whether it is a -1&rsquo; or a &lsquo;O&rsquo; that you are
+reading is back is higher than normal. This gives an increased programming
+margin that leads to increased reliability.
+</p>
+<p>
+In practice I found that 2764s I was using programmed in about 90 seconds
+using this algorithm.
+</p>
+<?php columnEnd(1); ?>

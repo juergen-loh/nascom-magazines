@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p>
+AVC and EPROM card should now co-exist peacefully.
+</p>
+<p>
+Please note, I never bend IC pins or solder to them, it&rsquo;s just that it&rsquo;s easier to describe
+things that way. I use an intermediate DIL socket and bend/solder the pins on that.
+</p>
+<h2>
+Another mod.
+</h2>
+<p>
+When I first tried out my AVC, all I could get on the display was a green screen of
+less than full height. I had chosen to ignore the advice in the manual where you are
+told to connect the N2 video into the AVC as I wanted to use a twin screen set up.
+</p>
+<p>
+After much probing, I discovered that TP 6 (EXT VIDEO) was floating at about
+1.6 volts plus, so I tried grounding it and bingo! everything burst into life! The
+ground pin is not marked as such, but you&rsquo;ll find it immediately to the left of TP&rsquo;s
+8,7 &amp; 5 (SYNC OUT, EXT /SYNC &amp; EXT SYNC).
+</p>
+<p>
+Doctor Dark had a similar problem with his PLUTO. I checked the wiring between
+my AVC and my Microvitec Cub 653 after reading his comments, but could find no
+errors. Which of us is right? Are we both right?
+</p>
+<h2>
+The Lucas FDC.
+</h2>
+<p>
+Dve had a good hard look at my Nas FDC and at its circuit diagram. I think that the
+designer of the card always intended it to be able to handle an 8" drive (as drive D)
+under software control via a spare latched port bit.
+</p>
+<p>
+There are several strategically placed, innocent looking plated through holes in all
+the places where one might wish to tap into various tracks when modifying the card
+for an 8" drive. The holes are big enough to take small test pins and most seem to
+serve no other purpose. Has anyone done the mods? If so I would like to know how.
+T can be contacted on 0483 277500 between 8.00 p.m. and 10.45 p.m. most evenings.
+</p>
+<h2>
+Lucas Software.
+</h2>
+<p>
+Lucas CP/M does NOT require the AVC. It works perfectly well via the N2&rsquo;s 48 x
+16 display. It has screen editing (of the &ldquo;unfixed&rdquo; variety) and there&rsquo;s a feature which
+enables you to send control codes to the printer directly from the keyboard. Also
+supplied are two Resident System Utilities: AVCTXT and AVCTXTS. The first is
+required when using graphics and it occupies 4.5K of RAM. AVCTXTS is a
+&ldquo;switched&rdquo; version which handles text only. The main feature of AVCTXTS is that
+its main and alternate set of characters are stored not in EPROM (as mooted by
+David Parkinson in a previous issue) but in the video margins (up to 4K per colour
+is available). Consequently it only occupies 2K of RAM. You need the AVC to use
+the RSU&rsquo;s.
+</p>
+<?php columnEnd(1); ?>

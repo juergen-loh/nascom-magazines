@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<p>
+in an article written by Kerr Borland for issue one of Personal
+Computer World there was no mention of it, though he did offer
+the 4K RAM board, Yes, you&rsquo;ve guessed it, another &pound;40 hole in
+my pocket, And unfortunately that&rsquo;s as far as I&rsquo;ve got. The
+cash has run out, but not the enthusiasm &ndash; yet.
+</p>
+<p>
+Would someone out there please, write a simple article on learning
+to program the NASCOM in HEX for those of us who are having difficulty
+starting out and for whom the programming manual makes no
+sense at all?
+</p>
+<p>
+By now you must be asking how much does he want for his NASCOM?
+But no, I&rsquo;ve enjoyed every minute of the paperchase in building
+it and trying to expand, and I am enjoying, if struggling, my
+programming, and so the saga will continue, (funds and wife
+permitting).
+</p>
+<p>
+In closing I&rsquo;ve just one final thing to say, and that&rsquo;s to Kerr
+Borland. We, the NASCOM 1 users DEMAND NAS-SYS &ndash; NOW.
+</p>
+<p>
+Les Pickstock<br>
+Wirral
+</p>
+<?php hLine("20%"); ?>
+<h2>
+LITTLE KNOWN FACTS THAT NO-ONE SEEMS TO CARE ABOUT (11)
+</h2>
+<p>
+Did you know that the 8K Basic can be persuaded to accept &lsquo;INPUT&rsquo;
+strings with commas in them&nbsp;? Try this:
+</p>
+<p>
+First set up the machine code input.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
+<p>
+Now go and get the string (including commas)
+</p>
+<pre>
+100 GOSUB 200
+110 PRINT A$:GOTO100
+</pre>
+<p>
+This subroutine replaces the normal &lsquo;INPUT&rsquo; command
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-2.png"); ?>
+<p>
+Two things here, firstly we have setup a machine code &lsquo;INKEY$&rsquo; command,
+then using that, we continually add to A$ until a &lsquo;new line&rsquo; is found
+in line 240. All keyboard characters will be accepted except &lsquo;new
+line&rsquo;, and &lsquo;back space&rsquo; which are treated separately. Note that line 30
+assumes that NASBUG is in use, whilst line 40 resets the pointers if
+NAS-SYS is present. See LITTLE KNOWN FACT (3) and the 8K Basic page for
+further details.
+</p>
+<?php columnEnd(1); ?>

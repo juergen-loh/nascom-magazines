@@ -1,0 +1,123 @@
+<?php columnStart(1); ?>
+<p>
+100 CALL TRANS
+110 LD T4,COMENT &mdash;SCONMENT FLAG
+</p>
+<p>
+This 2s the main program loop,
+</p>
+<p>
+0120 Loo LD Ay (ML) &laquo;SGET THE ZEAP BYTE
+0130 cP &pound;00 FS TT AN END OF LINE MARKER?
+</p>
+<p>
+0140 JR Z,ENOLIN JUMP IF YES
+</p>
+<p>
+0150 cp eke $18 17 A COMMENT DELIMITER?
+</p>
+<p>
+0160 CALL 2,COMLIN CALL IF YES
+</p>
+<p>
+0170 CALL TRANS OUTPUT THE CHARACTER TO WORDEASE FILE
+10 aR LOOP
+</p>
+<p>
+This routine transfers a byte in A to the WordEase file. Current
+Wordease address 18 in BC.
+</p>
+<p>
+0190 TRANS PUSH A SAVE THE CHARACTER
+9200 LD A, c22 HFLIP TO PAGE 1
+</p>
+<p>
+o210 Our (eFF),A
+</p>
+<p>
+9220 POP AF SRECOVER CHARACTER
+</p>
+<p>
+0230 LD (BC),A = SPUT 17 INTO WORDEASE FILE
+ozo Lo ayert FFLIP BACK TO PAGE 0
+</p>
+<p>
+0250 Gur (eFF),A
+</p>
+<p>
+0260 INC HL SNEXT ZEAP_ ADDRESS
+</p>
+<p>
+0270 Ine BC SNEXT WORDEASE ADDRESS
+20 RET
+</p>
+<p>
+Deal with end of Line marker, and output &ldquo;Ni".
+</p>
+<p>
+0290 ENDLIN RES 0,(11) FRESET COMMENT FLAG
+0300 rnc ML $15 -NEXT BYTE THE
+</p>
+<p>
+9310 (Daj(H) 5 END OF FILE MARKER?
+</p>
+<p>
+0320 cP ere
+</p>
+<p>
+0330 JR TEND SOUNP_IF END OF FILE
+</p>
+<p>
+o3k0 ec fa RESTORE POINTER IF NOT
+</p>
+<p>
+0350 LD DE,NEWLIN FFLT"-NL (EA0)&rdquo; AT END OF LINE
+360 Lo 8,&pound;5.
+</p>
+<p>
+0370 cat&rdquo; cODe
+</p>
+<p>
+0380 CALL CINNUM DEAL WITH LENE NUMBER
+</p>
+<p>
+0390 3k LOOF
+</p>
+<p>
+This routine converts a tho byte ZEAP line number into a four byte
+eSCI! string.
+</p>
+<p>
+0400 LINWU INC HL SSECOND BYTE FIRST
+ono CALL GETNO &mdash;SCONVERT BYTE. INTO 2 ASCIT CHARS.
+2420 Dec HL SNOW DEAL WITH FIRST BYTE
+</p>
+<p>
+ase CALL GET -SCONVERT BYTE
+</p>
+<p>
+o4ao ING HL SSTEP OVER ZEAP LINE NUMBER
+</p>
+<p>
+450 ANC HL
+</p>
+<p>
+Checl for a Label or a full Line &ldquo;Conner
+</p>
+<p>
+age &gt; (HL) &laquo;CHECK BYTE FOLLOWING LINE. NUMBER
+0470 cr 820 FIT 15 A SPACE THERE 1S NO LABEL
+</p>
+<p>
+&lsquo;a0 JR 2TH 3 OR COMMENT LINE
+</p>
+<p>
+Labels and &ldquo;Comments&rdquo; both tabbed
+</p>
+<p>
+23&rdquo;
+</p>
+<p>
+0490 Lp De, Tab2s
+</p>
+<?php columnEnd(1); ?>

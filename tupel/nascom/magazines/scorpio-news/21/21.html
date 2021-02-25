@@ -1,0 +1,47 @@
+<?php columnStart(1); ?>
+<p>
+I understand that Verbatim are selling comparable drives at &pound;370 pounds plus VAT,
+and at that price they are really not worth considering for the amateur (or even the
+professional, unless someone else is paying) with Winchesters-on-a-card available
+for less for IBM compatible machines.
+</p>
+<p>
+At the price offered, they are excellent value. Many thanks, Scorpio, for giving me
+many hours of innocent fun, and my elderly NASCOM 2 a substantial new lease of
+life!
+</p>
+<h2>
+Post Script
+</h2>
+<p>
+It took a week or two of routine use before I came across another problem, which
+was more obscure, and I still do not fully understand. During the course of an editing
+session, records of 128 bytes were being written to a file, which might be closed then
+re-opened for use by a &ldquo;chained&rdquo; program. If the drive motors had timed out in the
+interim, some records were lost in the middle of this file, while later records were
+written at the correct relative position in the file.
+</p>
+<p>
+This problem was solved by ensuring that the routine which checked for motor-on
+status would load the heads, and wait for a short settling time before proceeding, if
+the motors had stopped. This appeared to duplicate a head-load and delay section
+in the sector write routine. I had expected that ifthe heads were not properly loaded,
+the relevant physical sector would not be found, a sector-write would not be
+attempted, and an error flag returned to the BIOS. In this instance, the write failure
+was not flagged.
+</p>
+<p>
+I am still not happy with this explanation, but so far all seems to be well!
+</p>
+<h1 id="article1">
+Private Advertisements &ndash; 2
+</h1>
+<p>
+Gemini MultiBoard System in 19" frame. P.S.U., 8-slot backplane, GM813
+CPU/RAM, GM812 IVC, GM829 FDC, GM827 keyboard, GM808 EPROM
+programmer. CP/M 2.2, BBCBASIC (Z80), MBASIC, Tiny BASIC, several disks
+Public Domain software, many manuals, 80-BUS News, etc. Used &lt; 2000 hours. It
+cost me &pound;1200 &ndash; I&rsquo;m open to sensible offers. Telephone: Chris Hellen, Wivenhoe
+(______) ____.
+</p>
+<?php columnEnd(1); ?>

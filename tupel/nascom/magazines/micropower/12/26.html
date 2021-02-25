@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+NAS-SYS MONITORS
+</h1>
+<h2>
+By J. Haigh
+</h2>
+<h3>
+COMMAND INPUT
+</h3>
+<p>
+While waiting for you to enter a command the Nascom is in a routine called
+INLIN, sitting in a loop in which it scans the keyboard and the serial input, prints any
+character received, and continues until it a NEWLINE (&pound;0D) is obtained. It then sets
+the DE register pair to the address of the start of the line that the cursor was on when
+the NEWLINE was received, and returns from INLIN to the main monitor routine,
+which is called PARSE. Here it tests the character at the start of the line entered; if
+this character is a space it looks in the workspace at address &pound;0C2B, which is a
+location called ARGX, to discover what the previous command entered was.
+Normally a line with a space at the start is ignored, that is, the monitor recalls the
+INLIN routine and waits for further input; however, if the previous command was S
+(single step), the monitor behaves as if this command had been re-entered, so that
+you can continue to single step through a program merely by pressing NEWLINE.
+</p>
+<p>
+If the line does not start with a space the first character is tested to find if it is
+an upper case letter; for any character outside the range A &ndash; Z an error message is
+produced, and INLIN is then recalled. When an upper case letter is found this is
+stored at ARGX and also at &pound;0C0A (ARGC), and the monitor proceeds to read any
+hexadecimal values entered on the line, storing them in the workspace in ten
+locations, ARG1 &ndash; ARG10. the number of values found is stored at &pound;0C0B (ARGN). If
+any of the values found are invalid (contain illegal characters, or too many character),
+or if more than 10 values are entered, once again an error message is produced and
+INLIN is recalled.
+</p>
+<p>
+If all the tests are passed, the first three hexadecimal values on the input line
+are loaded into HL, DE and BC, HL is saved on the stack, and the location of the
+subroutine address is calculated by adding twice the value of the ASCII code for the
+command letter to the command table base address &ndash; &pound;0706 for Nas-Sys&nbsp;1, &pound;700 for
+Nas-Sys&nbsp;3. Thus for command A (ASCII &pound;41) the routine address is stored in the two
+bytes &pound;0788, &pound;0789 for Nas-Sys&nbsp;1, and at &pound;0782, &pound;0783 for Nas-Sys&nbsp;3. As usual, the
+low byte of the address is stored in the first location, the high byte in the second. The
+routine address is transferred to HL, and the HL register pair is the exchanged with
+the top two bytes of the stack. This restores ARG1 to HL, and leaves the address of
+the routine to be executed on the stack. The program then performs a RET (return
+from subroutine) instruction, which sets the program counter to a value POPed from
+the top of the stack; the net result is that the machine enters the command routine
+with any hexadecimal values specified in the workspace&nbsp;, and the first three values in
+HL, DE and BC.
+</p>
+<p>
+You should note that on RESET the region of the workspace ARG1 &ndash; ARG10 is
+set to zero. When you enter a command with a given number of arguments only
+these argument locations are changed; the remainder are unaltered. Thus if you
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+13
+</p>
+<p>
+Note that this program is very &ldquo;basic&rdquo; in that at no point does it check
+to see if any disk errors have happened, which in my opinion is not at all
+good practice. The reason I am allowing myself to get away with this
+sloppiness is that it has saved a lot of space. Be sure to put error checking
+in any serious program using these techniques, or you stand to lose serious
+files!
+</p>
+<p>
+More Sneaky Tricks in Hisoft Pascal.
+</p>
+<p>
+Suppose you want your program to erase a file. There is no way of doing
+that in standard Pascal, unless some committee has extended it without telling
+any of us! Hisoft Pascal has the useful predefined function &ldquo;CP/M(V1,V2)",
+which interfaces directly to the CP/M routines in the BIOS that you can
+normally only get %t with machine code programs. It puts the number V1 MOD 256
+in register C, and V2 in register pair DE, then calls address &pound;0005, in
+precisely the way you would program such an act in assembler. You would,
+wouldn&rsquo;t you? Any result that CP/M returns will be passed as the value of the
+function. The first program will erase a file. You don&rsquo;t have to specify the
+file name in the program, as V2 can be the name of a variable. As it stands,
+the program will only erase files called &lsquo;TEST.DAT&rsquo;, but you can experiment to
+your heart&rsquo;s content. (Or until the daft thing erases an important file, at
+which time you will need a file recovery program! Do not make the mistake of
+saving the file recovery program on the disk you are trying to repair!)
+</p>
+<p>
+PROGRAM ERASE; | BEGIN
+</p>
+<p>
+CONST FOR I := 0 TO 35 DO POKE(FCB+I,0);
+FCB = &pound;5C; {File Control Block} POKE(FCB+1, &ldquo;TEST DAT*);
+</p>
+<p>
+VAR DUMMY := CPM(19, FCB)
+I, DUMMY : INTEGER; | END.
+</p>
+<p>
+If there was a returned value, it would be in the variable DUMMY, which
+you would be able to test to see if the erasure had been done properly, but I
+have not bothered. The next program changes the name of a file. Again, there
+is no reason why the names of the files should be constants. Experiment more!
+</p>
+<p>
+PROGRAM RENAME;
+</p>
+<p>
+CONST
+</p>
+<p>
+FCB = &pound;5C;
+VAR
+</p>
+<p>
+I, DUMMY : INTEGER;
+BEGIN
+</p>
+<p>
+FOR I := 0 TO 35 DO POKE(FCB+I,0);
+POKE( FCB+1, &ldquo;TEST DAT&rsquo; );
+POKE(FCB+17, &ldquo;TEST BAK&rsquo;);
+DUMMY := CPM(23, FCB)
+</p>
+<p>
+END.
+</p>
+<p>
+Iam still thinking about how to add a random file facility to Hisoft
+Pascal. So, presumably, are Hisoft, as they announced that they intended to
+</p>
+<p>
+produce one some time ago.
+</p>
+<p>
+END.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SOFTWARE SECTION
+</h1>
+<h2>
+1. <u>Beginners&rsquo; Corner</u>
+</h2>
+<p>
+<u>How to move data around&ndash;quickly</u>!
+</p>
+<p>
+I have seen a program which put a message on the screen
+with a piece of code like this:
+</p>
+<pre>
+            LD   HL, address on Screen
+            LD   A, "M
+            LD   (HL), A
+            INC  HL
+            LD   A, "E
+            LD   (HL), A
+            INC  HL
+</pre>
+<p>
+and so on&nbsp;..... and on&nbsp;....... and on&nbsp;.......
+</p>
+<p>
+This works very well, but it takes a long time and a lot
+of program just to do this simple task. You should see
+the last newsletter for an easy way to display a message
+using code EF, then the message, then a zero.
+</p>
+<p>
+But quite often, one wants to move lots of data around
+and not just output a message at the current cursor
+address. By far the easiest way is by the LDIR
+instruction. Here is an explanation:
+</p>
+<ol>
+<li>Set HL to the address of the data you want to move.</li>
+<li>Set DE to the address you want to move it to.</li>
+<li>Set BC to the length of the data you want moved.</li>
+<li>LDIR instruction &ndash; this does the work.</li>
+</ol>
+<p>
+For example, suppose you had 48 bytes of data at address 0E80,
+and you wanted to put this on the top line of the screen. The
+address of the top line is 0BCA.
+</p>
+<p>
+SO:
+</p>
+<pre>
+1.  21 80 0F     LD HL,0E80 (from)
+2.  11 CA OB     LD DE,0BCA (to)
+3.  01 30 00     LD BC,0030
+</pre>
+<p>
+(Length of data, 0030 = 48 decimal)
+</p>
+<pre>
+4.  ED B0        LDIR
+</pre>
+<p style="text-align: right">
+/
+</p>
+<?php columnEnd(1); ?>

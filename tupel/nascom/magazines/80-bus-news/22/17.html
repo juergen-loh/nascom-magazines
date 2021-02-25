@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+17
+</p>
+<p>
+save it to disk instead. You&rsquo;ve now got two files on the disk, the CCPZ and a
+CP/M system of matching size. Now use DDT or ZSID, or some such to merge the two
+files together putting CCPZ over the top of the original CCP and resave the the
+file. Finally use SYSGEN to put that file onto the system tracks. Bash RESET, and
+</p>
+<p>
+providing all is Ok, it should all fire up.&rdquo;
+</p>
+<p>
+This philosophy is fine provided you don&rsquo;t change system size often. If
+you do, then all you need do is to keep a copy of the merged CCPZ and the CP/M
+system assembled for your favourite size on a disk, and when you change size just
+generate a CP/M to the system tracks using MOVCPM in the normal way. Ok, so you
+lose the features of CCPZ. When you&rsquo;ve done, simply SYSGEN the CCPZ system image
+back onto the system tracks and you&rsquo;re all set up again. (The version of CCPZ
+supplied with the Gemini Winnie has a relocator incorporated and whole thing is
+merged into MOVCPM. You can then use MOVCPM properly. Pity they don&rsquo;t release
+this as a program, but I suspect that permutation problems would win in the end.)
+</p>
+<p>
+Well this was all detailed in the installation documentation, and with
+the help of the dummy run, fairly easily understood. Finding the start of the CCP
+in an active CP/M of the chosen size proved a little difficult because the little
+program that should have been supplied to give you the address wasn&rsquo;t there. So I
+thought about this for a while. My first thought was to use GEMDEBUG (I like
+&lsquo;puG&rsquo; over the others because I find it fairly easy to use even though it&rsquo;s
+nothing like as powerful as ZSID) to find out where the CCP normally resided, but
+that was no use, as &lsquo;BUG&rsquo; overlays the CCP and alters its size, and hence its
+jump location. At least I suppose this to be case with &lsquo;BUG&rsquo;, its&rsquo;s certainly
+true of ZSID and DDT, I couldn&rsquo;t be bothered to phone David to ask him. So using
+a debugger was out, I could calculate it, but as I only had a hazy idea of what I
+was about, this didn&rsquo;t sound too clever, as it would introduce one more variable
+into the system to cause it to crash. Then I remembered STATUS, a little file I
+have rarely used because I thought I knew where everything was on my computer,
+apart from that, STATUS tests all the ports to see if something happens, as soon
+as it hits OBZH, of course the video card resets, so you have to be very quick
+with a &ldquo;S if you hope to see the information prior to the video card reset.
+Anyway, I ran STATUS, and on the second try I caught it before it got to port
+OB3H and, LO, there was my CCP start address.
+</p>
+<p>
+Armed with the start address of the CCP,.I had to modify the ORG
+statement of the source file. Easy? Not so. The source is 52K long and my version
+of PEN will only hold about 50K. I could have used WORDSTAR I suppose, but I
+don&rsquo;t like it, it always wants to fight back at me. I always find it so much
+trouble to find out what the commands are, I find its layout of five sub-menus
+illogical and the commands I want to know about always seem to be scattered about
+in the five sub-menus and never in one. Further, there is no index to the
+sub-menus, so I have to work through them in order to find things. Enough
+slagging WORDSTAR, I know there are people out there who like it, and it is
+capable of jobs that PEN could never do (like writing books). Personally I find
+it all a bit of a pain, so enough personal bias from me. Anyway, horror of
+horrors, I resorted to ED!!! Now if there was something that should have been
+strangled at birth&nbsp;....... With the aid of the CCPZ documentation, I patched the
+ORG statement and a couple of other things in the source, like &ldquo;Do I want the
+prompt on USER O to be displayed as A&gt; or A0&gt;&rdquo;, and things like that, and wrote
+the lot out to disk.
+</p>
+<p>
+DRI MAC to the fore, I typed the assembly parameters exactly as in the
+demo (I have no idea what they meant) and let it get on with it. I ended up with
+a CCPZ.HEX file and a CCPZ.REL file. Ok, take the -.REL file and LINK it, to make
+it appear as a true code file, but the linker wasn&rsquo;t having any. Apart from that
+it was departure from the CCPZ instructions, but I thought I&rsquo;d be clever and do
+it my way. Alright, don&rsquo;t give up, get LOAD out of it&rsquo;s dark drawer, blow the
+moths out of it, and see if that does the trick on the&nbsp;.HEX file. After all it&rsquo;s
+supposed to take a&nbsp;.HEX file and convert it into a&nbsp;.COM file. Of course, LOAD
+</p>
+<?php columnEnd(1); ?>

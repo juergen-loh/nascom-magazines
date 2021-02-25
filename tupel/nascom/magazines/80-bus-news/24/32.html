@@ -1,0 +1,79 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    18</span>
+
+E499 2A5E10     SRCHLN: LD      HL,(BASTXT)     ; Start of program text
+E49C 44         SRCHLP: LD      B,H             ; BC = Address to look at
+E49D 4D                 LD      C,L
+E49E 7E                 LD      A,(HL)          ; Get address of next line
+E49F 23                 INC     HL
+E4A0 B6                 OR      (HL)            ; End of program found?
+E4A1 2B                 DEC     HL
+E4A2 C8                 RET     Z               ; Yes - Line not found
+E4A3 23                 INC     HL
+E4A4 23                 INC     HL
+E4A5 7E                 LD      A,(HL)          ; Get LSB of line number
+E4A6 23                 INC     HL
+E4A7 66                 LD      H,(HL)          ; Get MSB of line number
+E4A8 6F                 LD      L,A
+E4A9 CD8AE6             CALL    CPDEHL          ; Compare with line in DE
+E4AC 60                 LD      H,B             ; HL = Start of this line
+E4AD 69                 LD      L,C
+E4AE 7E                 LD      A,(HL)          ; Get LSB of next line address
+E4AF 23                 INC     HL
+E4B0 66                 LD      H,(HL)          ; Get MSB of next line address
+E4B1 6F                 LD      L,A             ; Next line to HL
+E4B2 3F                 CCF
+E4B3 C8                 RET     Z               ; Lines found - Exit
+E4B4 3F                 CCF
+E4B5 D0                 RET     NC              ; Line not found,at line after
+E4B6 C39CE4             JP      SRCHLP          ; Keep looking
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    19</span>
+
+E4B9 C0         NEW:    RET     NZ              ; Return if any more on line
+E4BA 2A5E10     CLRPTR: LD      HL,(BASTXT)     ; Point to start of program
+E4BD AF                 XOR     A               ; Set program area to empty
+E4BE 77                 LD      (HL),A          ; Save LSB = 00
+E4BF 23                 INC     HL
+E4C0 77                 LD      (HL),A          ; Save MSB = 00
+E4C1 23                 INC     HL
+E4C2 22D610             LD      (PROGND),HL     ; Set program end
+
+E4C5 2A5E10     RUNFST: LD      HL,(BASTXT)     ; Clear all variables
+E4C8 2B                 DEC     HL
+
+E4C9 22CE10     INTVAR: LD      (BRKLIN),HL     ; Initialise RUN variables
+E4CC 2AAF10             LD      HL,(LSTRAM)     ; Get end of RAM
+E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
+E4D2 AF                 XOR     A
+E4D3 CD46E8             CALL    RESTOR          ; Reset DATA pointers
+E4D6 2AD610             LD      HL,(PROGND)     ; Get end of program
+E4D9 22D810             LD      (VAREND),HL     ; Clear variables
+E4DC 22DA10             LD      (ARREND),HL     ; Clear arrays
+
+E4DF C1         CLREG:  POP     BC              ; Save return address
+E4E0 2A5A10             LD      HL,(STRSPC)     ; Get end of working RAN
+E4E3 F9                 LD      SP,HL           ; Set stack
+E4E4 21B310             LD      HL,TMSTPL       ; Temporary string pool
+E4E7 22B110             LD      (TMSTPT),HL     ; Reset temporary string ptr
+E4EA AF                 XOR     A               ; A = 00
+E4EB 6F                 LD      L,A             ; HL = 0000
+E4EC 67                 LD      H,A
+E4ED 22D410             LD      (CONTAD),HL     ; No CONTinue
+E4F0 32CB10             LD      (FORFLG),A      ; Clear FOR flag
+E4F3 22DE10             LD      (FNRGNM),HL     ; Clear FN argument
+E4F6 E5                 PUSH    HL              ; HL = 0000
+E4F7 C5                 PUSH    BC              ; Put back return
+E4F8 2ACE10     DOAGN:  LD      HL,(BRKLIN)     ; Get address of code to RUN
+E4FB C9                 RET                     ; Return to execution driver
+
+E4FC 3E3F       PROMPT: LD      A,"?"           ; "?"
+E4FE CD9BE6             CALL    OUTC            ; Output character
+E501 3E20               LD      A," "           ; Space
+E503 CD9BE6             CALL    OUTC            ; Output character
+E506 C34E10             JP      RINPUT          ; Get input line
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

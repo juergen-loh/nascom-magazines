@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+18
+</p>
+<p>
+wasn&rsquo;t interested in the idea, I kept getting funny totally uninformative error
+messages. Anyway as the linker and LOAD both didn&rsquo;t want to know, and as I didn&rsquo;t
+have the manual for the linker anyway, it was back to the instructions. These
+woffled on about using DDT and reading in the&nbsp;.HEX file with an offset calculated
+from the start address and the destination. Frankly it didn&rsquo;t make a lot of
+sense, as it seemed to mean that DDT could take a HEX file, convert it to code
+and stuff it in the right place. This sounded cleverer than the DDT I know and
+hate, but as I hadn&rsquo;t read all the words about DDT&nbsp;... perhaps&nbsp;... you never
+know. So I did it and it appeared to work. I examined the code at the start of
+the CCP as now overlayed by CCPZ and it was certainly different, but did CCPZ
+work? So save the file and SYSGEN onto the system tracks and find out!!
+</p>
+<p>
+Now this is the natural cliff-hanger, where I should say this is the end
+of part one and watch this space for future developments. Aren&rsquo;t you lucky this
+isn&rsquo;t a serial, because of course it worked. I still don&rsquo;t know why, and if it
+hadn&rsquo;t I&rsquo;d have actually had to read ALL the documentation to find out why. (Have
+you noticed I&rsquo;ma great believer in &ldquo;If it doesn&rsquo;t work try reading the
+instructions&rdquo;.) Anyway it worked, and I proceeded to check all the functions.
+There was one nice little tweek that Gemini have in their modded version on the
+Winnie, and that was to do with the USER command. You could either type: 7
+ADUSER 13
+or
+A&gt;.13
+Now as&nbsp;. is three letters less than USER, this seemed a good idea. So back to the
+source. It was easy enough to find the command jump table, so I added the extra
+command &lsquo;.&rsquo; and reassembled it. Tuf, it now looked for the user number, the &lsquo;13&rsquo;,
+in the wrong place. I could get away with:
+</p>
+<p>
+A&gt;. 13
+or even
+A&gt; 13
+</p>
+<p>
+But of course the routine that actually got the user number wasn&rsquo;t bright enough
+to look for it someplace else if you actually moved it. Oh well, back to the
+source and find the routine, which, surprise surprise, was labelled GETNUM. At
+that point I looked at the clock and noted that it was well passed the witching
+hour and I was in imminent danger of turning into a pumpkin so I left it&nbsp;.....
+and left it&nbsp;..... and left it. One day I&rsquo;ll get round to it but honestly, is it
+worth the bother I ask myself, and of course this is the way it will stay until
+the day when I have to change the user number 99999 times in one evening, THEN
+I&rsquo;LL FIX THE B....RI!!
+</p>
+<p>
+A CHANGE OF TACTICS
+</p>
+<p>
+At long last, and about time too, the bit about the change of operating
+methods that this all brought about. Now I have lots of software, some purchased,
+odd bits stolen, some borrowed, a little &lsquo;liberated&rsquo; and enough of my own to
+cause me considerable grief when trying to find what I&rsquo;m looking for. Have you
+noticed that a lot of proprietary software often has a file called INSTALL, so if
+you are trying to.keep things together, it&rsquo;s a bit daft to put two suites of
+programs on one disk without renaming the INSTALL program of at least one of
+them. Now consider the case where 788K is available on one disk, this problem is
+not going to apply to just a couple of suites of programs, more like half a
+dozen. How to keep them separate? The simplistic answer is to use different user
+areas for each. Fine, but how to find them.
+</p>
+<p>
+A long time ago I came across the cataloguing suite by Ward Christennsen
+in the CP/M users library and to date this has proved ideal, although I took it
+apart a long time ago because I didn&rsquo;t like some of its &lsquo;features&rsquo;. Richard also
+had a go at it soon after. Well of course, this couldn&rsquo;t keep track of things on
+different user areas, but one Sunday evening soon fixed that. Now CATUD can be
+called from any user area, CCPZ will of course find it where I left it, having
+loaded CATUD, CCPZ will switch back to the original user area and then execute
+the program. CATUD then constructs the names list for possible insertion into the
+</p>
+<?php columnEnd(1); ?>

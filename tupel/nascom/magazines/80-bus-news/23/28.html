@@ -1,0 +1,143 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 2</p></th></tr>
+
+<tr><td><p>CTLOFG</p></td><td><p>1045</p></td><td colspan=2><p>
+Control &ldquo;0&rdquo; (Disable output) flag.<br>
+If this flag is set then no output will not appear at the
+terminal. This flag is flipped every time control &ldquo;0&rdquo; is typed
+from the keyboard.
+</p></td></tr>
+<tr><td><p>LINESC</p></td><td><p>1046</p></td><td colspan=2><p>
+&ldquo;LINES&rdquo; counter.<br>
+This is initially set to the value in LINESN and decremented
+after every line. If this value reaches zero then it is loaded
+with the value in LINESN and BASIC waits for a character from
+the keyboard.
+</p></td></tr>
+<tr><td><p>LINESN</p></td><td><p>1048</p></td><td colspan=2><p>
+&ldquo;LINES&rdquo; number.<br>
+This is set by the &ldquo;LINES n&rdquo; command for the number of lines to
+be LISTed at a time.
+</p></td></tr>
+<tr><td><p>CHKSUM</p></td><td><p>104A</p></td><td colspan=2><p>
+Check sum for array loading and saving.<br>
+This accumulates the value of all the bytes in the array 80
+that errors can be detected during &ldquo;CLOAD*&rdquo;
+</p></td></tr>
+<tr><td><p>NMIFLG</p></td><td><p>104C</p></td><td colspan=2><p>
+Non-maskable interrupt flag.<br>
+When an NMI is received this flag is set to let BASIC know that
+the break was caused by an NMI.
+</p></td></tr>
+<tr><td><p>BRKFLG</p></td><td><p>104D</p></td><td colspan=2><p>
+Break flag.<br>
+This flag is set by the input routine to let BASIC know that
+the break key was pressed.
+</p></td></tr>
+<tr><td><p>RINPUT</p></td><td><p>104E</p></td><td colspan=2><p>
+Reflection for &ldquo;INPUT&rdquo; routine.<br>
+When an &ldquo;INPUT&rdquo; instruction is encountered BASIC jumps to the
+input routine via this jump. This value may be changed by the
+user as in the NASCOM BASIC manual. They go to the following:-
+</p>
+<table>
+<tr><td><p>&ldquo;DOKE 4175,-25&rdquo;</p></td><td><p>Output CR,LF and get a line</p></td><td><p>(CRLIN)</p></td></tr>
+<tr><td><p>&ldquo;DOKE 4175,-6670&rdquo;</p></td><td><p>No CRLF, get a line</p></td><td><p>(GETLIN)</p></td></tr>
+<tr><td><p>&ldquo;DOKE 4175,-6649&rdquo;</p></td><td><p>Get a line by character</p></td><td><p>(PTYLIN)</p></td></tr>
+</table>
+</td></tr>
+<tr><td><p>POINT</p></td><td><p>1051</p></td><td colspan=2><p>
+Reflection for &ldquo;POINT (X,Y)&rdquo; function (Unused!)<br>
+This contains a jump to the &ldquo;POINT (X,Y)&rdquo; routine so that the
+user SHOULD be able to change it to be some other function.
+However, due to a &ldquo;mis-firing&rdquo; in someone&rsquo;s brain when the
+&ldquo;POINT&rdquo; routine was added, the function driver (FNOFST) tests
+for &ldquo;POINT&rdquo; and jumps DIRECTLY to the &ldquo;POINT (X,Y)&rdquo; routine!
+</p></td></tr>
+<tr><td><p>PSET</p></td><td><p>1054</p></td><td colspan=2><p>
+Reflection for &ldquo;SET (Z,Y)&rdquo; routine.<br>
+This contains a jump to the &ldquo;SET (X,Y)&rdquo; routine in the same
+fashion as in &ldquo;POINT&rdquo;. The &ldquo;SET (X,Y)&rdquo; routine is called via
+this reflection so that the user CAN change it to add more
+routines to BASIC.
+</p></td></tr>
+<tr><td><p>RESET</p></td><td><p>1057</p></td><td colspan=2><p>
+Reflection for &ldquo;RESET (X,Y)&rdquo; routine.<br>
+This contains a jump to the &ldquo;RESET (X,Y)&rdquo; as in PSET.
+</p></td></tr>
+<tr><td><p>STRSPC</p></td><td><p>105A</p></td><td colspan=2><p>
+Start of string space pointer.<br>
+This contains a pointer to the start of string space. It is
+initially set to 50 bytes below the end of memory but can be
+changed by the &ldquo;CLEAR n&rdquo; statement.
+</p></td></tr>
+
+</table>
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 3</p></th></tr>
+
+<tr><td><p>LINEAT</p></td><td><p>105C</p></td><td colspan=2><p>
+Current line number.<br>
+This contains the value of the current line being executed. If
+a direct statement is being executed then this is -1 and if
+&ldquo;Memory size?&rdquo; is being asked it contains -2. This value is
+examined by the ERROR routine to see if a line number has to
+be printed or not. If this value is -2 then the error must
+have occurred in reply to &ldquo;Memory size?&rdquo; so BASIC is cold
+atarted again.
+</p></td></tr>
+<tr><td><p>BASTXT</p></td><td><p>1058</p></td><td colspan=2><p>
+BASIC program text origin.<br>
+This is a pointer to where the BASIC program is stored in
+memory. It usually points to 10FA which is the usual start of
+a BASIC program. This can be changed if a program is located
+somewhere else in memory such as in ROM.
+</p></td></tr>
+<tr><td><p>BUFFER</p></td><td><p>1061</p></td><td colspan=2><p>
+Terminal input buffer.<br>
+This is a 72 character buffer where all input from the keyboard
+is to be stored such as commands, BASIC lines and &ldquo;INPUT&rdquo;.
+</p></td></tr>
+<tr><td><p>CURPOS</p></td><td><p>10AB</p></td><td colspan=2><p>
+Cursor position.<br>
+This contains the current value returned by &ldquo;POS (X)&rdquo; and it is
+incremented every time a character is printed. When a new line
+is started this value is zeroed, however, when a back space
+is printed it is NOT decremented and when &ldquo;SCREEN X,Y&rdquo; ia done
+it is not set to the new &ldquo;X&rdquo;. This can cause spurious CRLFs to
+be output when &ldquo;SCREEN&rdquo; and back spaces are used. A cure for
+this is to set &ldquo;WIDTH 255&rdquo;.
+</p></td></tr>
+<tr><td><p>LORFLG</p></td><td><p>10AC</p></td><td colspan=2><p>
+Locate / Create variable flag.<br>
+This is used by the variable search routine to tell if it is in
+a &ldquo;DIM&rdquo; statement or not so that it knows if it has to locate
+or create the specified array.
+</p></td></tr>
+<tr><td><p>TYPE</p></td><td><p>10AD</p></td><td colspan=2><p>
+Data type flag.<br>
+This flag contains the &ldquo;type&rdquo; of the current expression.
+That is:- zero = Numeric, non-zero = string.
+</p></td></tr>
+<tr><td><p>DATFLG</p></td><td><p>10AE</p></td><td colspan=2><p>
+Literal statement flag.<br>
+This flag is used to tell BASIC that it is pointing at a
+literal statement such as a string in quotes or a &ldquo;REM&rdquo; or
+&ldquo;DATA&rdquo; statement.
+</p></td></tr>
+<tr><td><p>LSTRAM</p></td><td><p>10AF</p></td><td colspan=2><p>
+Last available RAM pointer.<br>
+This contains the address of the highest location in RAM that
+BASIC will use. It can be changed by the &ldquo;CLEAR,n&rdquo; statement.
+</p></td></tr>
+<!--tr><td><p></p></td><td><p></p></td><td colspan=2><p>
+</p></td></tr-->
+
+</table>
+<?php DisAssemblyRomBasicEnd(); ?>

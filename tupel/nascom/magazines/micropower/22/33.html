@@ -1,0 +1,45 @@
+<?php columnStart(1); ?>
+<p>
+The RAM BLK 0 &ndash; 2 signals are taken to pins 2, 5 and 10 of IC36, where they
+are ANDed with the RFSHB signal, taken to pins 1, 4 and 9. Another gate is
+required to support the RAM BLK 3 signal. Two spare gates are available on IC41,
+which is also a 74LS00. Pins 12 and 13 of IC41 are connected to +5 volts by a
+wide track. After double checking, carefully cut this track to isolate these pins. Join
+pin 13 of IC41 to the new RAM BLK 3 line using light hookup wire, or Verowire; the
+best point to join the wire is at pin 10 of RP5. The RFSHB signal can be tapped from
+the plated through hole beside pins 10 and 11 of IC36; it should be connected to pin
+12 of IC41.
+</p>
+<p>
+If you hold the board up to a strong light, and look at a point halfwasy
+between pins 8 and 9 of IC35 and pins 6 and 7 of IC36 you will see that there
+is quite a large area where there are no tracks on either side of the board. Mark the
+centre of the clear area and, after rechecking, drill a hole through the board. The
+hole only needs to be large enough to permit hookup wire to pass through. One
+end of this wire should be soldered to pin 11 of IC41, and the other end of the wire
+is passed through the hole to the component side of the board where it passes
+between IC36 and C61 and is soldered to a point vertically above pin 1 of IC37.
+We now have to find a new OR gate to generate a RAS signal for the exta
+memory bank, and we do this by piggybacking a new 74LS32 onto IC37. The
+only signals needed from IC37 for the new IC are +5 volts (pin 14), 0 volts (pin 7),
+and RAS, which is at pins 2, 5 and 10. For purey mechanical reasons, pin 2 is
+used, as it spaces the mounting pins evenly.
+</p>
+<p>
+Now make up a DIL socket for the new IC. This requires some &lsquo;nice&rsquo; soldering,
+and I would strongly advise against soldering the new IC directly on top of IC37.
+Take a 14 pin DIL socket and break off pins 6, 8 and 11. Solder pins 2, 7 and 14 to
+the 74LS32; a touch of instant glue between the IC and socket is recommended.
+Carefully bend out pins 1, 3, 4, 5, 9, 10, 12 and 13. Pins 4 and 5 should be taken
+low by linking them to pin 7. Similarly, pins 9, 10, 12 and 13 should be taken to +5
+volts by linking them to pin 14. Insert the joined up IC and DIL socket, and link the
+wire from pin 11 of IC41 to pin 1 of the socket. Next soldedr a hookup wire to pin 3
+of the socket, and connect this through a 33 Ohm resistor to the wire which links the
+pin 4s on the new memory bank. Plug a 74LS32 into the socket, check the board
+thoroughly, and when satisfied insert the board in the Nascom and check for normal
+operation. If all is well, you can rewire the DIL header plug that fits in SK1; the
+only difference from the addressing shown in the RAM-B instructions is that pin
+20 is now used to decode the new memory bank. You should now have a RAM-B
+board which will run 64K of dynamic RAM at 4 Mhz.
+</p>
+<?php columnEnd(1); ?>

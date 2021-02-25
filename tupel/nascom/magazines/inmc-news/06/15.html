@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<h4>
+SHOCK HEADLINE
+</h4>
+<h1 id="article1">
+AUTHOR FINDS OWN
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-15-1.png"); ?>
+IN INMC ARTICLE
+</h1>
+<h3 class="author">
+by Ms D. R. Hunt
+</h3>
+<p>
+No, not a refugee from <a href="../../03/text/">page 3</a> (we got told off by readers last
+time we let a naughty word onto these hallowed pages), but to draw your
+attention to the fact that we all make mistakes. Last issue, we
+published a bit about adapting the series 1 memory card to carry the 8K
+Basic ROM, and went on to describe how to put the remaining three EPROM
+sockets back into use. Well the Basic ROM bit works, but the EPROM bit
+doesn&rsquo;t!!!
+</p>
+<p>
+Having fitted the Basic ROM to the card, and written it up for
+the INMC, in a most un-natural fit of enthusiasm, ! modified the board
+for the EPROMS, &lsquo;zapped&rsquo; in a couple of EPROMS, gave it a quick go and
+wrote it up, but because of the closeness of the copy date, I didn&rsquo;t
+get round to actually testing it thoroughly. Later, (over Christmas),
+horror of horrors, fit some EPROMS and the Basic does funny things.
+Close examination of the circuit reveals that enable of IC24 (pin 1)
+comes on when the Basic ROM comes on, so with EPROMS fitted they are
+enabled along with the Basic ROM resulting in rubbish on the bus. The
+strange thing is though, that in the conflict between the EPROMs and
+the ROM, the ROM usually won, so Basic didn&rsquo;t just crash as you&rsquo;d
+expect, but became unreliable.
+</p>
+<p>
+At first sight this problem looks very difficult, requiring a
+three pole switch (very hard to find) to switch the IC24 enable along
+with the Basic enable, and the decodes. However, look at the circuit
+again, it won&rsquo;t take long to realize that the enable line to IC26
+(which we already use for the Basic ROM) could just as well be used to
+enable IC24 instead of the signal currently used.
+</p>
+<p>
+So, now to the correct version, refer back to the previous
+article, and notice that a 4K7 pull up resistor (on the right hand
+connector) is used to disable the Basic ROM when not in use, leave this
+where it is, but reverse the connections to the other side of the
+switch. Viz: IC26 pin 19 is connected to the pole of the switch, and
+IC27 pin 20 is connected to the left hand connector. Further, another
+4K7 pull up resistor has to be fitted to IC27 pin 20 to pull the Basic
+ROM &lsquo;&lsquo;off&rsquo; when the switch is over the other way. Carefully cut the
+track to IC24 pin 1 (adjacent to the pin), and connect pin 1 to the
+right hand connector of the switch, leaving the existing 4K7 pull up
+resistor in place to turn 1024 &lsquo;off&rsquo; when the switch is over to the
+Basic.
+</p>
+<p>
+All this seems to work satifactorily, but we have heard of a
+few cases of difficulty (even without EPROMs on board), a &lsquo;Stop Press&rsquo;
+was added to the previous article about fitting a 100n capacitor across
+the back of the ROM to decouple the supply lines, I have found that 2u2
+bead tant. is better. You wouldn&rsquo;t believe the &lsquo;crud&rsquo; the Basic ROM
+generates on the supply line as it&rsquo;s enabled, if you&rsquo;ve got a 50MHz
+scope to hand, have a look at it across pins 12 and 24. A further aid
+to quieting down and speeding up the system is to decouple each EPROM
+socket with 10n, and to pull the data outputs of the ROM and EPROM
+block high with 10K resistors.
+</p>
+<?php columnEnd(1); ?>

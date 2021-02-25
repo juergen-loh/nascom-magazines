@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+program a line
+POKES340,n
+</p>
+<p>
+where on represents the disc number &ndash; either a constant or a
+var abt)
+</p>
+<p>
+jefore you can load or save data from within a program the nase
+of the file used has to be identified to NAS-DOS.NAS-DOS
+allows one file name ta be used for input and another for
+Sutput. It does not allow multiple input or output files, so in
+applications here Several input or output files are to be
+handled the appropriate ones must be opened before access is
+attempted. There are three forms of file opening command:
+</p>
+<p>
+USR(11),FNS &ndash; opens a file for reading.
+USR(12),FNS &ndash; opens an existing file for output.
+USRU13),FNS &ndash; opens a new output file.
+</p>
+<p>
+Note that in the case of a new output file the length of this
+file, in sectors of 256 bytes, should have been set by a
+POKES347,n instruction, where nis the number of sectors. If
+there is&rsquo;insufficient space on the disc for this number of
+sectors the masimum available space will be used.
+</p>
+<p>
+FNS is the file name to be used, and must be a string variable
+(not an array) of length 8 characters. If the name is less than
+@ characters long you MUST include extra spaces in declaring the
+name &ndash; &copy;9
+</p>
+<p>
+FNS="MIKE *
+</p>
+<p>
+NAS-DOS returns in the function an indication of whether the
+file name specified existed &ndash; a non-zero result indicates that
+the file name did not exist. Your program should check this
+error condition and trap any error before any further file
+access is attempted.
+</p>
+<p>
+Note that NAS-DUS organises disc {11e so that all the contents
+of a file must be contiguous &ndash; 1e the file is not divided and
+Spread over the disc. Thus it is possible to delete a lot of
+small. files spread around the disc and have an apparently large
+amount of disc space available, but as this is not contiguous it
+fay be impossible to create large disc file, even though its
+Size is less than the total free disc space. The disc utilitiy
+REORG could be used to copy and compress the free space,
+although in practice this is an extremely rare problem. When
+files are deleted in NAS-DOS the space occupied by the file
+itself is freed for future use automatically, although the entry
+in the directory 15 merely marked as a deleted file, rather than
+being removed from the directory. Any deleted files in the
+directroy are removed by the IC command of NAS-DOS. This
+technique can be very useful in sometimes allowing apparently
+deleted files to be found ane recovered relatively easily from
+disc 1f a (user!) program goes berserk and overmrites the
+directory.
+</p>
+<p>
+Most disc access commands using the USR function in ROM BASIC,
+</p>
+<?php columnEnd(1); ?>

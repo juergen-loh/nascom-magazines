@@ -1,0 +1,85 @@
+<?php columnStart(1); ?>
+<p>
+cenwalhyee
+</p>
+<p>
+23
+</p>
+<p>
+Line 310 &ndash; Continue until % Files done.
+Line 320 &ndash; Back to CP/M.
+</p>
+<p>
+The above Program would initialize 3 files of 100 records, each of 582 bytes,
+on drives A and B, marking each record as free, and filling all fields (except
+MK$) with &lsquo;Period&rsquo; characters. There are 9 repetitions of 6 different fields
+in each record in this example.
+</p>
+<p>
+e.g CNS(1),CNAS(1).-.---08(1),C$(1) up to CN$(9),CNAS(9)....--08(9) ,C$(9)
+</p>
+<p>
+Bach File will consist of 100 records x 582 bytes = 58,200 bytes or app 58K.
+Thus the Three Data files will occupy about one half of each Disk space. It
+will sometimes be convenient to try to structure a Data File so that it can be
+kept to less than about 40K (assuming 64K RAM). If this can be done then ifa
+lot of Data processing is going to occur the Data can be RBAD directly into
+ARRAYS in RAM for processing, and WRITTEN out to Disk afterwards. Processing
+will then be a lot faster, and of course Disk and Drive wear will be
+minimized. Another alternative is to use Virtual Disk.
+</p>
+<p>
+Note that in this example the SAME field variables were used for drives A
+and B. Because of this, the two files could not be OPEN and PUT at the same
+time, but only one set of &lsquo;LSET&rsquo;&rsquo; statements was needed. An alternative method
+is to have both files OPEN at the same time. If this is done then the file
+number &lsquo;&pound;1&rsquo; cannot be used for both files and one would have to be referred to
+py another number like &lsquo;&pound;2&rsquo;. The two sets of FIELD statements would then
+have had to use differing Variables, and an additional set of &lsquo;LSET&rsquo;
+statements would also have been needed. A further slight complication is that
+extra DIM statements might be necessary, for any extra FIELD variables that
+use arrays. (Especially where the program is to be compiled and all Arrays
+must be DIM&rsquo;ed.)
+</p>
+<p>
+TO SCROLL or NOT TO SCROLL?
+</p>
+<p>
+When processing Data it is common practice for programmers to use a lot
+of PRINT CHR$(26) statements to clear the screen, and then to loop back to
+reprint updated Data, or to PRINT a succession of INPUT prompts at the pottom
+of the screen. This causes the display to scroll upwards, particularly where
+input errors have occured and Error messages and repeat prompts are printed. A
+much more effective method is available. The Gemini IvC card supports a number
+of commands that enable the cursor to be repositioned, and the screen to be
+cleared from the cursor. If this approach is used, then a much steadier
+display is possible. e.g.
+</p>
+<p>
+150 FLAG=0:GOSUB 3000
+</p>
+<p>
+460 INPUT &ldquo;Enter the name of the circuit. &ldquo;s CIRNAMS
+</p>
+<p>
+170 &ndash; ete; would be error trapping and data storing routines with error
+messages
+</p>
+<p>
+200 FLAG=0:GOSUB 3000 k
+</p>
+<p>
+210 INPUT &ldquo;Enter TIME&nbsp;.... etc; ee
+_ tas
+</p>
+<p>
+3000 RR=18:CC=0 :
+</p>
+<p>
+f
+3010 PRINT CHRS (27); &ldquo;="; CHR$(32+RR) ; CHRS(32+CC)
+3020 IF FLAG=1 THEN RETURN
+3030 PRINT CHR$(27);"S&rdquo; &mdash;&mdash; clea Scseeun
+3040 RETURN &lsquo;
+</p>
+<?php columnEnd(1); ?>

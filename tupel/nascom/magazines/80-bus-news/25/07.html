@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+pew
+</p>
+<p>
+Arithmetic Processor Review by D.W. Parkinson
+</p>
+<p>
+Personally I think that the 8-bit micro has still got a lot of life left
+in it, and in many applications a switch to a 16-bit processor will bring
+little or no improvement. However, one area that can show a very marked
+increase in performance, is in those applications involving a lot of number
+crunching. The direct mathematical ability of microprocessors is limited, and
+anything but the simplest calculations have to be emulated in software. The
+16-bit processors gain here by working with a larger word size which results
+in fewer steps to arrive at a result of similar precision. But even in this
+field the balance can be redressed with the addition of a separate number
+crunching unit.
+</p>
+<p>
+The idea of a &lsquo;bolt-on&rsquo; floating point unit to improve performance pre-dates
+the microprocessor, and in the micro field a few devices have been
+around for while. The early approach was to add a slave processor, though the
+current trend seems to be towards a co-processor. (&rsquo;Slave&rsquo; and &lsquo;Co-&rsquo; are my
+own definitions. Other people&rsquo;s usage may be different.)
+</p>
+<p>
+The co-processor is exemplified by the Intel 8087. This is 4 numeric
+processor specifically designed for the Intel 8088/8086 family to carry out
+high precision integer and floating point instructions. It connects to the
+data bus in parallel with the CPU and effectively becomes an extension of the
+CPU. The 8087 has a few direct connections to the CPU, and by monitoring these
+and the instructions being fetched by the CPU, it can track exactly the
+instructions being executed. There are certain reserved instructions in the
+8086/8 instruction set that are specifically acted upon by the co-processor,
+while the CPU responds to the same instruction in a supporting role. (e.g. It
+may go on to fetch an operand from memory so that 8087 can capture it from the
+data bus.) The co-processor is far more complex than the CPU, and the volume
+of sales is not so high. As a result this is reflected in the price. A recent
+price list puts the one-off price of an 8088 at &pound;16.80, with the companion
+8087 at &pound;173.30. (N.B. IC prices quoted here are distributors prices, NOT
+retail prices.)
+</p>
+<p>
+The slave processor approach is different, although the end result is the
+same. Here an autonomous processor is built, either from discrete logic (e.g.
+using a bit-slice approach), or integrated directly on silicon. In this case
+the arithmetic processor is a peripheral, and not tied to any particular
+microprocessor. In use it is explicitly passed one or more operands by the
+master CPU, followed by an instruction of what it is to with them. (e.g.
+divide one by the other.) The specialist processor then carries out the task,
+and reports when it is complete, at which point the host CPU can read back the
+result. For the single chip implemenation there are two types of processor
+available, low cost or high cost:
+</p>
+<p>
+Examples of the low-end devices are the National MM57109 maths processor,
+and the TMS1018. These are basically off-shoots of calculator ICs &ndash; ie. they
+are cheap, use 4-bit processors, are BCD orientated, and are slow. (The
+MM57109 will multiply two 8-digit mantissa, 2-digit exponent, numbers together
+in about 116ms. It is actually quicker to do the calculations directly on a
+Z80.) At the other end of the spectrum are the Advanced Micro Devices Am9511,
+Am9512, and the Intel 8231, &amp; 8232. The AMD devices have been with us for
+about five years, and are custom designed NMOS 16-bit processors whose sole
+task is to crunch numbers. (e.g. dividing one 32-bit floating point number by
+another takes under 100uS &ndash; over 1000 times faster than the MM57109.) But with
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+of the catalogue its price had fallen by over &pound;100! SYS 19 was reassembled to include
+the Winchester split into two drives of 10M each and run. As usual nothing
+happened! A long read through the manual, combined with a study of the circuit
+for the GM829 finally showed that the SEL line needed to be active for up to 250ms
+before timing out, and RST needed a 25us pulse. Both these lines were being driven
+for the duration of one Z80 output cycle only. The first attempt to correct this added
+a latch which was set and then reset when RDY went active. However the code
+involved was not compatible with SIMON or any Gemini BIOS so the latch was
+replaced by a monostable (74LS123), triggered by SEL and reset by RDY. The
+Winchester then worked, set up in SYS as a Rodime 20M drive, although with BIOS
+3.7 the Command Descriptor Block needs to be found and the last of the six bytes
+set to zero, otherwise an error code is produced.
+</p>
+<p>
+The system also includes a GM833 512K RAM disk. This has been increased to 2M
+bytes by adding a link between all pin is and a further multiplexer (74LS157) to
+drive this line from A19 and A20. The 4164s have been replaced by 41256s.
+</p>
+<p>
+A 3.5" disk drive, also from RS, has been added. Again, a quick read through the
+paperwork suggested no problems,but on trying to format a disk the drive stepped
+very erratically. Yet more research found that a 1.2ms delay was needed after a write
+operation before side change or track access. The drive code was modified to look
+for any track seek/step instruction and add this delay first. BIOS 3 already has a
+suitable delay built in for other reasons.
+</p>
+<p>
+Following Paul&rsquo;s comments on WordStar 4 and how much better it was (WS5 is now
+out for PC&rsquo;s) than Version 3, I have now upgraded to this for use with the GM880
+card. However many problems have come to light. Because CP/M has very limited
+memory available, compared to MS-DOS the programme is much more limited and
+during edit time does not know character widths for proportional spacing, This
+makes is very wasteful of space on the page, as most lines could include more words
+than they do. It also cannot correctly centre a proportional line, asit only adds spaces
+at the start of the line as if for monospacing. I have now worked out a long-winded
+routine to do this, making use of the printer&rsquo;s own centring ability, dot commands
+and custom print functions, QWER. The printer in use is a Facit 9401 typewriter
+with Centronics interface &lsquo;Compatible with Diablo 630&rsquo;. However, it has several
+software bugs itself. It should be able to automatically justify between margins, but
+each line is short by the same number of units as there are spaces in the line (a space
+is ten units). In addition if set to auto back print it misses the last letter from every
+word &ndash; not much use!
+</p>
+<p>
+If anyone wants advice and help on any of the mods and problems above, or can
+give help with WordStar 4 problems, please get in touch with me on Bristol (0272)
+$12719.
+</p>
+<p>
+How about a Bristol area 80-BUS User Group?
+</p>
+<?php columnEnd(1); ?>

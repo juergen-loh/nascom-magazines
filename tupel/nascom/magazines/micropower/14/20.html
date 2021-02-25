@@ -1,0 +1,104 @@
+<?php columnStart(1); ?>
+<p>
+110 REM* TEST A BLOCK OF PIXELS 40 X 30
+</p>
+<p>
+120 FOR S=15 TO 75 STEP 15
+</p>
+<p>
+130 FOR T=15 TO 45 STEP 15
+</p>
+<p>
+140 IF POINT (S,T)=1 THEN 10
+</p>
+<p>
+150 NEXT T,S
+</p>
+<p>
+160 GOTO 20
+</p>
+<p>
+PRINTING CHARACTERS FROM THE KEYBOARD
+</p>
+<p>
+In the manual there is an appendix headed &lsquo;Single Character Input of Reserved
+</p>
+<p>
+Words&rsquo;. From the list you will see that when typing in a program you can use various
+</p>
+<p>
+combinations of keys to obtain single characters (often referred to as &lsquo;Tokens&rsquo;) which
+</p>
+<p>
+the computer interprets as instructions. For example:
+</p>
+<p>
+? = PRINT CTRL/GRA/H =GOTO.
+</p>
+<p>
+This does save time and space when keying in a long program, but also
+</p>
+<p>
+causes a lot of headaches when editing. When the program is listed the tokens are
+</p>
+<p>
+expanded to the full reserved words; consequently lines may exceed 48 characters,
+</p>
+<p>
+and when you try to edit them you loose charactrers from the end. It is all too easy to
+</p>
+<p>
+&lsquo;crash&rsquo;. In Direct Mode, however, they are always useful. E.g. GRA/Space = LIST.
+</p>
+<p>
+You might also make use of this facility when designing graphics shapes for
+</p>
+<p>
+use in a program. It is worthwhile marking the chart supplied in the manual with the
+</p>
+<p>
+key designations. For instance, the first two lines (32 chars.) are obtained by
+</p>
+<p>
+depressing the graphics and control keys plus @, A-Z, [, \, ], ^ and _.
+</p>
+<p>
+Let us look at what happens when we press the graphics and control keys. The
+</p>
+<p>
+former sets Bit 7, while the latter flips Bit 6. E.g. The @ character (shift@) is 40 in
+</p>
+<p>
+hex or 01000000 in binary, the bits being numbered 7 to 0 from left to right. Setting
+</p>
+<p>
+Bit 7 gives 1100 0000, or C0 in hexadecimal, and flipping Bit 6 gives 1000 0000 or 80
+</p>
+<p>
+hex. Thus character 80 hex can be typed with CTRL/GRA/shift@. Similarly, 8F in
+</p>
+<p>
+hexadecimal is obtained with CTRL/GRA/O.
+</p>
+<p>
+Character FF illustrates the effect of flipping Bit 6 from off to on. The&nbsp;? has a
+</p>
+<p>
+hex value of 3F (0011 1111). CTRL/? gives 7FH (01111111) , and GRA/CTRL/?
+</p>
+<p>
+gives 0FFH (11111111)
+</p>
+<p>
+You can always try out various key combinations by typing them directly into a
+</p>
+<p>
+Basic line, and then expanding them by LISTing the &lsquo;program&rsquo;. For example, type in a
+</p>
+<p>
+line number and then hold the Graphics key down while you enter A,B, C, D, E, F.
+</p>
+<p>
+Now press &lsquo;Return&rsquo; and LIST the line. You will find that the interpreter expands it to:
+</p>
+<?php columnEnd(1); ?>

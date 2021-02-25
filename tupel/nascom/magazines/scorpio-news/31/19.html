@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+A Free RAM-Disk
+</h1>
+<h3 class="author">
+by J T Nestor
+</h3>
+<p>
+Well, not really free, but if you have a GM888 8088 board and RAM in excess of 64
+Kbytes, then my program will enable you to use the memory above 0FFFF as a
+RAM-Disk. The principle of operation is very simple. The program runs and sets
+up alternative entry points to SELDRV, READ, WRITE and WBOOT. The code
+at these alternative entry points checks to see if the drive is &ldquo;M&rdquo;, if so it calls the
+8088 to move sectors of 128 bytes into the appropriate section of RAM. If not,
+execution is passed to the original code for these functions. It is an example of
+&ldquo;Co-operating Code&rdquo;, as mentioned in the GM888 manual, from which the
+change-over code was borrowed. Please do not look too carefully at the 8088 code,
+this was my first attempt at writing 8088 pseudo assembler, and I now realise that
+improvements could be made. However, THIS WORKS.
+</p>
+<p>
+A copy of the CCP and BDOS is stored in RAM, and this version is loaded when
+&ldquo; C&rdquo; is typed, reducing the time taken to perform a warm boot and eliminating for
+ever the message &ldquo;Wrong system on this disk&rdquo;.
+</p>
+<p>
+After &ldquo;GENS YS-ing&rdquo; my system, I am told that the system ends at BIOS +OFO0A
+(FFOA) and the new code is therefore assembled to reside there. If, because of a
+different disk system, your end is higher than that, it will be necessary to alter
+BIOSEND, up to a maximum of FF31. If BIOSEND is above that the the reservation
+of another page of workspace will be necessary. Please check the values between
+BIOS V3.2 (or BIOS V3.5) and ENDIF very carefully for your system. WBOOTUSE
+is the length of the original wboot code which reads in the CCP and BDOS from
+disk, DRIVE, SECTOR, TRACK and DMAADR are the stores accessed by the
+SELDRV, SETSEC, SETTRK and SETDMA commands respectively. DIRBUF
+is the directory buffer used by all the disk directories, and can be found by examining
+the SELDRV command. If anyone is unsure of the positions of these areas, or would
+like a copy of this program on disk, they are welcome to contact me via this magazine.
+</p>
+<p>
+The CCP and BDOS live at 1000:0000 to 1000:15FF with the 8088 code at 1000:1FE6,
+the directory at 1000:2000 to 1000:2FFF, and the data areas contiguously up from
+there. It is thus possible to look at files in the RAM-disk using DDT86, but because
+the disk is &ldquo;Standard&rdquo; it can also be inspected and unerased by a disk doctor
+program such as DU.
+</p>
+<p>
+I hope that the code, which is available by contacting me, is self explanatory and
+adequately commented.
+</p>
+<?php columnEnd(1); ?>

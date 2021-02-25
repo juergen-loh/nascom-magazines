@@ -1,0 +1,93 @@
+<?php columnStart(1); ?>
+<p>
+oo rea ace Nae anne alt LE tS Oe setsonctt A
+</p>
+<p>
+10
+</p>
+<p>
+After the usual amount of swearing and cursing, it was finished and
+working, the results of this are now available at a very modest price.
+</p>
+<p>
+Now for what it does:
+</p>
+<p>
+Users of CP/M will have realised by now that the BDOS&rsquo;s error trapping
+and reporting leave a lot to be desired. How many times have you tried to
+erase or change a file only to find that either the disk or file is read only?
+Worse still, if after 6 hours processing, your latest masterpiece tries to
+update its data file and finds it read only. Unless you have the facility to
+change the attributes, all of that time has been wasted because you can only
+reboot, set the file to R/W and start again. Finally, have you got any source
+files that you would like to assemble, producing listing files to disk, but
+the PRN file is larger than the capacity of your disk? Infuriating isn&rsquo;t it
+that you can&rsquo;t just change the disk and carry on?
+</p>
+<p>
+BDOSZ attempts to overcome these and other problems so that your valuable
+time is not wasted and your trusty Nascom or Gemini isn&rsquo;t kicked around the
+floor in temper. An example of each of the BDOS error types and BDOSZ&rsquo;s
+actions in these cases are given below:
+</p>
+<p>
+aod
+</p>
+<p>
+BDOS Err On x: Select
+</p>
+<p>
+In this case, BDOSZ outputs the message &ldquo;Drive x: select error&rdquo; followed
+on a new line by &ldquo;Enter valid drive or -C&rdquo;. The BDOS will then wait for a key
+press and either log in the selected drive or perform a warm boot as
+appropriate. This facility is useful if a program being debugged causes a
+select error and the user wishes to continue testing it.
+</p>
+<p>
+BDOS Err On x: R/O
+</p>
+<p>
+In the case of a R/O disk, BDOSZ will print the message &ldquo;Disk x: is set
+R/O&rdquo; followed by &ldquo;Do it anyway? (Y/N/7C)&rdquo;. If the user types &ldquo;Y&rdquo; then the disk
+</p>
+<p>
+will be reset and the function completed as though the error had never
+existed.
+</p>
+<p>
+BDOS Err On x: File R/O
+</p>
+<p>
+Under CP/M, if the command &ldquo;ERA *.*&rdquo; is given and one of the files to be
+deleted is R/O then the above message will be displayed. The CP/M BDOS doesn&rsquo;t
+tell you which file it is referring to. Under BDOSZ, the message &ldquo;File
+FILENAME.TYP is set R/O&rdquo; followed by the message &ldquo;Do it anyway? (YY/N/*c)&rdquo;. If
+the user types &ldquo;Y&rdquo;, the files R/O attribute bit is cleared and the file will
+be deleted, renamed or written to as requested as though the file had been
+R/W. If the user types &ldquo;N&rdquo; then the queried file will be left unchanged and
+still R/O. If, as in the above example, the command ERA *.* was issued, this
+facility allows the deletion of all R/W files and selected R/O files in the
+Same command.
+</p>
+<p>
+NOTE. BDOSZ will not query a file unless it is R/O.
+</p>
+<p>
+BDOS Err On x: Bad Sector
+</p>
+<p>
+This error is not considered recoverable and most BIOS&rsquo;s_ these days
+contain facilities to re-try. If your BIOS can&rsquo;t sort out the problem, then
+the BDOS has no chance. However, in an attempt to provide meaningful error
+messages, BDOSZ will display either &ldquo;Disk x: read error&rdquo; or &ldquo;Disk x: write
+error&rdquo;. In either case, if &ldquo;C is pressed, a warm boot will be performed.
+Pressing any other key will cause the error to be ignored.
+</p>
+<p>
+Other Errors
+</p>
+<p>
+Iwo other errors of a potentially disastrous nature are treated as
+recoverable by BDOSZ. These are disk directory full and disk full. In the
+</p>
+<?php columnEnd(1); ?>

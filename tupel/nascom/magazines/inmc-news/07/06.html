@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+feelings on seeing my FRUIT MACHINE in Issue 5 but I am only too happy
+for other members to benefit. (Eddie Pounce is the common factor). This
+was the first program I wrote for our NASCOM some 12 months ago. The
+coding is not very elegant and the documentation is hand written and
+covers some 18 sheets so I do not think it worth putting in the
+library, especially now everyone has the object code. For those who
+like to fiddle, the three barrels are 16 bytes long each and occur
+starting from 0C96. As set up, the player makes a steady profit if
+cherry equivalents (&check;) are held whenever possible. The jackpot odds are
+1:4096 with no hold, 1:256 with one hold and 1:16 with two holds. Bon
+chance!
+</p>
+<p>
+Yours,<br>
+Gordon Alabaster<br>
+Berkhamsted, Herts.
+</p>
+<h4>
+BASIC FACTS
+</h4>
+<p>
+Dear INMC,
+</p>
+<p>
+Now for some flattery. I think that INMC news comes close to providing
+the best personal computing magazine going &ndash; no doubt because it only
+deals with Nascoms and not the plastic horrors available elsewhere.
+</p>
+<p>
+The reason I am writing, however, is concerning the Nascom 8K ROM
+BASIC. I recently received my expensive piece of plastic and silicon
+and have been playing with it ever since. In the the course of this
+experimenting I have come up with a few facts that the grotty
+documentation ignores. For all I know I may be reinventing the wheel,
+but as I am an assiduous, not to say compulsive reader of computing
+magazines, and have not seen this info. published elsewhere, it may be
+helpful to pass on to our beloved readership.
+</p>
+<p>
+1) As is well known, the BASIC reserved words, such as READ, DIM, PEEK
+etc. are stored as single bytes, using hex values of 80 and above.
+How to find what byte represents what word?
+</p>
+<p>
+Examination of the BASIC text storage area shows that it always starts
+at address 10FAH and each line of text has the following format:
+</p>
+<p>
+Bytes 1 and 2. : Address of next line, or free memory if line is the
+last line. Least significant byte first.
+</p>
+<p>
+Bytes 3 and 4 : Line number in hex. L.S.B. first.
+</p>
+<p>
+Bytes 5 to N-1l : The text string.
+</p>
+<p>
+Byte N : 00H, which acts as line terminator.
+</p>
+<p>
+For example, the BASIC program,
+</p>
+<pre>
+10 PRINT "HELLO"
+20 END
+</pre>
+<?php columnEnd(1); ?>

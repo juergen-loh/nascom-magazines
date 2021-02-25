@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+12.
+</p>
+<p>
+cable doesn&rsquo;t trail up stairs to the back room. Admittedly, my
+cable is only a couple of feet long but it was all I could find
+when the printer arrived.
+</p>
+<p>
+EPRINT Listing.
+The commented listing of EPRINT should be relatively simple
+</p>
+<p>
+to follow but I shall explain some areas such as setting up the
+PIO and printer. EPRINT by the way stands for Epson Printout
+Ready In No Time or alternatively Extra Playing Round In Nascom
+Trauma.
+</p>
+<p>
+NAS-PEN, ZEAP etc.
+When executed, the first questions asked involve what
+</p>
+<p>
+software you want ta run the printer with. Dependent an the
+replies, the vectors held in RAM for the ZEAP and NAS-PEN
+output routines may be set to OUTCHA, the character output
+routine. Unfortunately NAS-DIS has no RAM vector and $80 can
+only use the printer (as with BASIC) by setting QUTCHA as the
+user output routine. Needless to say, NAS-PEN or ZEAP must be
+initialised before executing EPRINT or they will just overwrite
+the vectors when &lsquo;cold started&rsquo;. If ZEAP is selected, then the
+printer AUTO EEED EXT line will have to be disabled. This is
+because while the ZEAP sends a CR and LF, the printer will
+automatically do a LF on reception of the CR. Hence two LF&rsquo;s
+and double line spacing, very nice but paper is expensive.
+NAS-PEN, and software using the user output routine will only
+send a CR and so AUTO FEED EXT is left low unless ZEAP is
+selected. A value stored in D is used to set this line later
+on.
+</p>
+<p>
+Setting Printer Status.
+Several questions are asked relating to the way you require
+</p>
+<p>
+the printer to be configured. Many more variations could be
+catered for (column width, print size etc.) but it becomes
+tedious setting too many whenever you switch on or start using
+some different software. You will usually configure the printer
+the same way and anyway codes can be embedded in the text toa
+set anything else.
+</p>
+<p>
+As mentioned above AUTO FEED EXT is controlled by the level
+of that line, all the other features are set by sanding cantrol
+codes to the printer. Before any codes are sent to the printer,
+it is reset by holding INIT low for longer than 60
+microseconds. There is no need to compensate for CPU clock
+speeds (2/4 MHz. etc.) as all timing is done assuming a AMHz.
+clock and all delays may be exceeded without effect.
+</p>
+<p>
+The length of page is set by ESC C nn (nn is a hex. value
+Ocnnci2Z7.d.
+</p>
+<p>
+The paper end detector is set on by ESC 9 or off by ESC 4.
+This stops the buzzer going off while using single sheets which
+is annoying because it is LOUD and buzzes for ages.
+</p>
+<p>
+The printer is told to skip over the perforation at the = erd
+of each page by ESC E 6. The 6 tells it to skip &amp; lines which
+with normal spacing is one inch. Note that the DIL switches
+have been left to cause the printer to initialise in the NO
+SKIP condition.
+</p>
+<p>
+Having set all these conditions, the printer status is
+tested and suitable messages output to the screen.
+</p>
+<?php columnEnd(1); ?>

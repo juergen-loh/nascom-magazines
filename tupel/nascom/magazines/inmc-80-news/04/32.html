@@ -1,0 +1,85 @@
+<?php columnStart(1); ?>
+<table class="useful-routines">
+<tr><td colspan=4>Routine to get next non space<br>
+                  character.C flag set if valid</td></tr>
+<tr><td></td><td>ASCII digit</td><td>&ndash;&ndash;</td><td>E836</td></tr>
+<tr><td></td><td>Print HL in decimal</td><td>&ndash;&ndash;</td><td>F9AD</td></tr>
+<tr><td></td><td>Amount of memory</td><td>stored @</td><td>10DA</td></tr>
+<tr><td></td><td>Ctrl &lsquo;0&rsquo; flag</td><td>stored @</td><td>1045</td></tr>
+<tr><td></td><td>End of program</td><td>stored @</td><td>10D6</td></tr>
+<tr><td></td><td>Start of text</td><td>starts @</td><td>10F9</td></tr>
+<tr><td></td><td>Nulls</td><td>stored @</td><td>1041</td></tr>
+<tr><td></td><td>Line length</td><td>stored @</td><td>1042</td></tr>
+<tr><td></td><td>Location of text</td><td>stored @</td><td>1049</td></tr>
+<tr><td></td><td>Line buffer</td><td>stored @</td><td>1048</td></tr>
+</table>
+<p>
+While I was disassembling the BASIC I found a number of things that aren&rsquo;t
+mentioned in the manual such as ctrl &lsquo;O&rsquo;. &ldquo;What is ctrl &lsquo;O&rsquo;?&rdquo;, I hear you ask. It
+suppresses output (long word &lsquo;suppresses&rsquo;). Can I hear shouts of, &ldquo;Useless!&rdquo;? Well its
+not, because a flag is stored in the workspace. Poke the flag and you suppress output,
+useful for passwords and the like. Mind you this only works while the BASIC has
+control of the input buffer. This occurs when the input is in the NAS-SYS or NASBUG X0
+mode, or during an INPUT statement.
+</p>
+<p>
+Ever noticed how slow BASIC is on starting up? Take a look at locations FCCDH
+through to FCD4H these locations form a routine which is simply a delay. At this point
+I will grit my teeth and hope that I&rsquo;m right and that it is all it does.
+</p>
+<p>
+Ever wondered why you can&rsquo;t single step BASIC? It&rsquo;s because it changes the NMI
+jump vector in the workspace. If you want to single step BASIC ignore any calls to
+FEBBH because that&rsquo;s where it changes. Ok so it changes the NMI jump so what does it
+change it to? It changes it to the break function, so if you can generate an NMI you
+can use it as a break key. How do I generate an NMI&nbsp;? Simple connect a push to make
+switch between pin 4 of the keyboard and ground. (Nascom&nbsp;2 only. Ed.)
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<p style="text-align: right">
+Hope that this helps you,<br>
+Nutty Nascom Owner.
+</p>
+<?php columnChange(2); ?>
+<p style="text-align: right">
+Steven Hanselman
+</p>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<br>
+<?php hline("20%"); ?>
+<h2 id="article1">
+HOMILIES
+</h2>
+<h3>
+(&ndash; are they legal&nbsp;!?)
+</h3>
+<p>
+Two little homilies (I&rsquo;ve just looked that up in the dictionary, it said,
+&ldquo;Pedious moralizing discourse.&rdquo;, I didn&rsquo;t know how close my choice of words was). Both
+of these concern the design and/or testing of new equipment, and both are printed here
+for those just on the point of desparation.
+</p>
+<p>
+The first came from my father, who spent a lot of my early childhood
+constructing television sets out of war surplus radar sets. As I remember, they had
+long persistence green screens. When I first cut my teeth on a soldering iron (and
+that hurt), he told me, &ldquo;It will always take so long to build a thing, and then at
+least five times as long to make it work.&rdquo;. That one has always stood me in good stead
+when doubtful homebrew circuits didn&rsquo;t do as expected. I must admit it&rsquo;s preserved my
+sanity, if only in a perverse desire to prove my old man wrong.
+</p>
+<p>
+The origin of the second is more obsure, I may have even invented it myself. I
+certainly use it in the shop when customers present themselves with a handful of dud
+chips. It goes as follows. &ldquo;One dud is too bad, change it, the second is coincdence,
+three is &lsquo;Hmmmm&rsquo;, and four or more, is &lsquo;you&rsquo;ve done something wrong mate&rsquo;.&rdquo; This one
+proved it&rsquo;s worth only yesterday, when a customer came in with no less than eight
+&ldquo;dud&rdquo; CD4028s. Now eight is stretching even my credulity a bit far, so after applying
+the above rule, it turned out that he&rsquo;d forgotten to connect the power rails to any of
+the chips. QED.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

@@ -1,0 +1,166 @@
+<?php columnStart(1); ?>
+<p>
+522
+523
+524
+525
+526
+ADD37A
+ADD37B
+RET
+ADD A, 37H
+JP PRTH1
+ADD A, 37H
+JP PRTH2
+; CONVERT TO ASCII A &ndash; F
+527
+528
+532
+;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+GENERAL SUBROUTINES
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+533
+534
+535
+536
+537
+538
+ENABLE
+STABLE
+LD A, 00
+OUT (BDATA), A
+LD A, 20H
+DEC A
+JR NZ STABLE
+RET
+;;
+;
+ENABLE CHIP
+CONTROL PORT B
+WAIT FOR CHIP
+539
+542
+543
+;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SCROLL TO CLEAR CRT, CURSOR TO BOTTOM
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+;
+CLRCRT
+CLR1
+RESET
+RESET1
+RESET2
+WAIT6
+LD B, 0FH
+DEFB SCAL, CRLF
+DJNZ CLR1
+RET
+LD A, 2AH
+JR RESET2
+LD A, 0AH
+OUT (BDATA), A
+LD B, 10H
+DJNZ WAIT6
+RES 3, A
+OUT (BDATA), A
+RET
+;;;
+;
+;
+;
+SCROLL 15 TIMES
+TO CLEAR SCREEN AND
+LEAVE TOP LINE INTACT
+12V, RESET, WE, OE BITS SET
+RESET, WE, OE BITS SET
+END OF RESET
+558
+559
+560
+;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+O/P SHORT PULSE TO INC. ADDR. COUNTER
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+561
+562
+563
+564
+565
+566
+567
+COUNT
+WASIT7
+LD A, 6
+OUT (BDATA), A
+LD B, 10H
+DJNZ WAIT7
+LD A, 2
+OUT (BDATA), A
+RET
+;
+;
+COUNT PULSE ON
+TURN COUNT PULSE OFF
+568
+569
+570
+571
+;;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+SET PIO PORT A &ndash; INPUT, B &ndash; OUTPUT
+BOTH PORTS TO MODE 3
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+572
+573
+574
+575
+576
+577
+578
+579
+STPIO1
+STPIO2
+LD A, 0FFH
+OUT (BCTRL), A
+LD A, 00
+OUT (BCTRL), A
+LD A, 0FFH
+OUT (ACTRL), A
+OUT (ACTRL), A
+RET
+;
+;
+;;
+MODE 3
+OUTPUT
+MODE 3
+INPUT
+580
+582
+583
+;;;
+* * * * * * * * * * * ** * * * * * * ** * * * * * * ** * * * * * * *
+SET PIO PORT A TO MODE 3, OUTPUT
+* * * * * * * * * * * ** * * * * * * ** * * * * * * ** * * * * * * *
+584
+585
+STPIO3 LD A, 0FFH
+OUT (ACTRL), A ; MODE 3
+</p>
+<?php columnEnd(1); ?>

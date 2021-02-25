@@ -1,0 +1,143 @@
+<?php columnStart(2, 2); ?>
+<p>
+Disadvantages
+</p>
+<p>
+1. For application programs chaining could
+be a slower method of program management
+than overlays.
+</p>
+<p>
+2. Variables used in one program cannot
+</p>
+<p>
+, lusually) be passed across to the following
+program.
+</p>
+<p>
+3. The chain function that you use may error
+if it does not process the command tail in the
+same way as the CCP. For example the
+command:
+</p>
+<p>
+COMP PROG1.COM PROG2.COM
+</p>
+<p>
+when issued normally would call the comparison
+program COMP to compare the two
+specified files. Normally the CCP would take
+this command and load COMP.COM into
+memory at 100H. The rest of the command
+tail is placed in memory at 81H with the
+command tail length at 80H. The command
+tail is then scrutinized and if it contains
+filenames then they are put at 5CH and 6CH
+respectively. The program is then executed.
+</p>
+<p>
+When run COMP will take a look at the two
+File control blocks (FCB&rsquo;s) at 5CH and 6CH in
+order to get the names of the files that it is to
+compare.
+</p>
+<p>
+So you can see from this that the chain
+command will cause an error if it does not
+perform all the above tasks when invoking a
+program that requires information in the
+command tail.
+</p>
+<p>
+Using a simple chain module that simply read
+in the COM file and executed it reaked havoc
+when I chained Wordstar once. Of course the
+name WS.COM was still in the default FCB at
+5C from the reading operation, and so when
+Wordstar took over it tried to open WS.COM
+on the disk as a document file, which is no
+use to anyone. I had forgotten to fill the FCB&rsquo;s
+with spaces before invoking Wordstar.
+</p>
+<p>
+Methods of program chaining
+</p>
+<p>
+Of course the simplest method of all is to use a
+language that has a chain command incorporated
+in it. Beware here, though, for the very reasons that
+are mentioned above, they may not work in all
+cases.
+</p>
+<p>
+Referring back to Dr. Dark&rsquo;s bit on chaining in Hisoft
+Pascal (80-BUS News, Vol 3. Iss 4), he gave us a
+method by which programs can run each other via
+the use of the $$$.SUB file (Read it to find out how)
+and also suggested that any variables could be
+passed across by first storing them in a disk file.
+This is a nice one as it lets the CCP do all the work,
+but will only work on drive A:.
+</p>
+<p>
+I had a peep at the chain function in my ECO C
+library just to get some ideas, and here are the
+basics of how it works in English.
+</p>
+<p>
+chain(filename)
+open chain file using default FCB at SCH.
+if unable to open then error and return.
+read loading routine into area just below BDOS.
+set stack pointer below loading routine.
+jump to loading routine.
+read in chain file.
+set stack pointer to BDOS -1.
+Jump to program at 100H.
+33}
+</p>
+<p>
+You should be able to find a diagram called
+&lsquo;Principles of the CHAIN function&rsquo; somewhere, if
+you take a look at that you will see that it represents
+a memory map type illustration of what is going on
+inside the computers memory.
+</p>
+<p>
+Program 1 is an assembler routine, conceived from
+the above, that will allow you to chain another
+program. It is only a simple demonstration and will
+only chain programs that do not expect any
+information to be contained in the command tail.
+You will notice that the name of the next program
+is held in the routine under the label &lsquo;fcbh:&rsquo;, this
+implies that the name of the next program is
+known. It is possible of course to change this so
+that any program can be chained from this
+standard routine. This routine is deliberately
+simple to demonstrate the basics, if a more
+complex/universal routine is required then you will
+have to add the code required to process the
+command tail and put any valid filenames into the
+default FCB&rsquo;s. I&rsquo;m willingly leaving that up to you!!
+</p>
+<p>
+You will notice that the default FCB at 5CH is filled
+with spaces after the chain file has been read, this
+means that Wordstar or Pen can be run without
+confusing them with odd command tails.
+</p>
+<p>
+Program 1 will run on its own for testing or may be
+included in a larger program.
+</p>
+<p>
+In my search for more information on this subject
+I took a look at the Gemini Utility program
+KEYCHAIN.COM written by David Parkinson, and
+later modified by Richard Beal. This program
+generates a COM file that, when run, will set up the
+Gemini keyboard function keys and then optionally
+run a named program.
+</p>
+<?php columnEnd(2); ?>

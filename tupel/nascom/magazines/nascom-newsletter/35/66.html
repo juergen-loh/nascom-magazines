@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+XTAL IF/THEN/ELSE
+</h1>
+<h2>
+by Robert Gill
+</h2>
+<p>
+The following provides a routine for XTAL Basic to allow
+IF/THEN/ELSE structures to be used &copy;
+</p>
+<p>
+1283 01 30 aMTEXT
+</p>
+<p>
+ese cS 4c 53 45
+</p>
+<p>
+eFa0 1c 2D
+1966 CA e1 2D idivert main IF/THEN routine
+2001 3E 00 Lo a,
+</p>
+<p>
+2oes 25 Inc HL
+</p>
+<p>
+2pea BE cP cH fest oF end of Line
+</p>
+<p>
+2005 CA 1p 2D JP 72,2018
+</p>
+<p>
+2008 2F crt
+</p>
+<p>
+2009 BE cP HL) itest for user-defined
+</p>
+<p>
+reserved word
+2dea cA 31 2D JP 2,2D11
+</p>
+<p>
+2Den 2F cet.
+2D0E C3 @3 2D JP 2003
+</p>
+<p>
+2011 23. TNC HL
+</p>
+<p>
+2012 38 80 LD A,o00 sthis can be changed if ELSE
+2014 BE cp Coamand not represented by
+</p>
+<p>
+2015 ca 69 19 dP 7,196 ;
+Zp1a cs 61 2D Jp 2b01
+201B 2B Dec HL
+2oic &pound;3.87 18 JP 1887
+</p>
+<p>
+the two byte token FF e8e.
+</p>
+<p>
+The routine is simple and only contains a cauple of minor
+bugs:
+</p>
+<p>
+4, IF CEXPR&gt; THEN REM... TELSE&nbsp;.
+The routine ignores REM if the IF/THEN proves false and an
+ELSE statement. follows.
+</p>
+<p>
+2. IF_CEXPRD&gt; THEN PRINT &ldquo;xy&rdquo;
+If a REM or PRINT statement used after a THEN contains the
+characters of @FF and 080, the routine will misinterpret that
+as an ELSE command.
+</p>
+<p>
+The routine is fast causing 2 time delay under worst possible
+conditions of 1.5%.
+</p>
+<?php columnEnd(1); ?>

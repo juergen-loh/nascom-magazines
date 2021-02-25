@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<p>
+with 9K left spare, and while fit can&rsquo;t compare with a good 16K Basic,
+it is a lot better than the arbitary standard &lsquo;8K Basic&rsquo;.
+</p>
+<h4>
+Compatibility
+</h4>
+<p>
+XTAL Basic uses the minimum number of calls to monitor
+routines, and all these are made through a short table of jump
+instructions. This means that these are easily changed to cope with any
+monitor changes. The tape is issued with a NASBUG version recorded in
+Nascom&nbsp;1 format on one side, and a NAS-SYS version recorded in Nascom&nbsp;2
+format on the other. However the manual describes how to change one
+version to the other, and this would only take a few minutes, and the
+changed version stored on your own tape. One criticism here is that the
+NAS-SYS version does not follow the NAS-SYS &lsquo;rules&rsquo;, and uses absolute
+jumps instead of the NAS-SYS restart instructions. However, this is
+easily corrected as shown in the tabulation of the jump table (below)
+which starts at 2BDDH. The tabulation shows the correct values for
+NAS-SYS, and ensures that upward compatibility is maintained.
+</p>
+<p>
+T2BD8 2C00
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-31-1.png"); ?>
+<h4>
+Comparison of commands
+</h4>
+<p>
+XTAL Basic has the following extra commands:
+</p>
+<p>
+EDIT This allows a program to be edited line by line. Characters can
+be changed, inserted and deleted. Users of &lsquo;SUPER TINY BASIC&rsquo;
+will notice a resemblance to the MCE comand. The XTAL Basic
+does not support the convenient NAS-SYS editing, although this
+method does have the advantage of allowing long lines (about
+two lines on the screen). The cursor movement keys are not used
+in the same ways as in NAS-SYS or Nascom Basic. Also CS is used
+instead of ESC.
+</p>
+<p>
+CSAVE &amp; CLOAD are similar to the Nascom Basic but allow names of up to
+six characters. The CLOAD routine stops when the first error is
+encountered, so your cassette recorder must work well if you
+have long programs.
+</p>
+<p>
+PRINT @ X,Y,"ABC" prints ABC at the X,Y coordinate. This is similar to
+using the Nascom Basic SCREEN command, followed by a PRINT
+command.
+</p>
+<p>
+POP Deletes the return of a GOSUB, so that an abnormal exit can
+easily be made from a subroutine.
+</p>
+<p>
+SPEED up. Sets the output speed to allow the Basic display to be slowed
+up.
+</p>
+<?php columnEnd(1); ?>

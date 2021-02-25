@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+24
+</p>
+<p>
+disk as it contains a certain ammount of initialized data). So there are now app.
+400H bytes (1K) of RAM free above SYS. The two Buffers take 280H bytes so
+another 180H (384 decimal) bytes of code could be added without pushing the
+Buffers off the top end of RAM. I understand that a new SYS with support for the
+excellent MAP80 256K RAM card and a number of other extra new features might be
+available soon. I use one of the MAP RAM Cards as a Virtual Disk and it certainly
+speeds things up a bit but I miss the extra features of SYS in the support CBIOS.
+</p>
+<p>
+The disk with CPM64.COM on its System track can now be put to use. Boot it up and
+then &lsquo;RUN UP&rsquo; the modified SYS which will self locate over the OLDBIOS. (from
+0EE00H in this case). Then use a BUG program to load a saved copy of CPM64.COM
+into low memory. (e.g. ZSID CPM64.COM (CR).) Remembering the addresses noted
+earlier, copy the active &lsquo;SYS&rsquo; from CP/M in high memory over the old CBIOS
+starting at 2100H. Since 4K is the maximum ammount that can be added, move 4K
+down to make it easy. (e.g. MEEBOO,FROO,2100 (CR).) will copy it down. Use the &lsquo;D&rsquo;
+command to check at 2100H to see that data has changed and is the same as the
+data at HEOOH. This new CP/M can now be saved. For tidyness though, I first
+filled from the end of the workspace to the highest possible end of the CBIOS
+with 00&rsquo;s using the &lsquo;F&rsquo; command. This makes it easier to see the end of the code
+section when using a PEEK program.
+</p>
+<p>
+The next step is to enter GO (CR) followed by SAVE 48 CPMSYS64.COM. Note the
+changes. The name has been changed to denote the fixed size and the embedded
+&lsquo;SYS&rsquo; function. The ammount to be saved has increased from 43 to 48 Pages. &lsquo;The
+CBIOS started at 2100H and was 4K long (max) so the top address possible is
+3100H. It is thus necessary to save memory from 100H to 3100H which is 48 &ndash; 256
+byte pages. As previously noted SYSGEN will put memory from 900H upwards onto
+disk, but the area {OOH &ndash; 8FFH must be preserved to be compatible with SYSGEN.
+</p>
+<p>
+In theory if we put this file on the System Track of a disk and boot, the job
+should be done, since all addresses should be correct, and there is enough room
+on the disk. So a SYSGEN CPMSYS64.COM (CR) command is issued and the new system
+placed on the disk. Then RESET is pressed to try it. DISASTER&nbsp;!! &ndash; IT DORS NOT
+WORK.
+</p>
+<p>
+At this stage, I tried a PEEK on the System Track. The BIOS all seemed to be
+there, with code and workspace area ending within a few bytes of the top of
+sector 19. That last sector, number 20 though &ndash; it should have been all 00&rsquo;s as
+the top of the BIOS was filled with 00&rsquo;s before saving it.But here I found F5&rsquo;s
+which is the pattern written to disk during formating so for some reason the
+whole of the CPMSYS64.COM file is not being written to disk. This last sector is
+not needed at the moment as all of the CBIOS was present on previous sectors, but
+T could want it with a new larger &lsquo;SYS&rsquo;, so why was it not written. To solve this
+one I disassembled SYSGEN. Luckily this is a short Program of about 1K, with a
+lot of ASCII text in it, so the task was not too bad. It did not take very long
+so find out that it was the sector counting routine that was responsible for the
+problem. It was Programmed to only put 19 Sectors to disk. The count only needed
+to be &lsquo;upped&rsquo; by one to get all 20 sectors actioned. Locations 01BAH/01BBH in
+my copy were 38 14H. (LD A,14H). I used my BUG program to set this to 15H, and
+saved the altered program as SYSGEN1.COM. The revised program now Reads and
+Writes the whole system track.
+</p>
+<p>
+The SYSGEN mod. did not solve the problem though. I needed to see what was
+getting into RAM. I put the disk back into drive A and RESET. After a few
+seconds, I removed the disk, RESET again and used SIMON to explore memory. The
+bottom of RAM contained the COLD BOOT, unaltered, so CP/M had obviously not got
+going. If it had, the jump vectors and IOBYTE at the low end of the memory would
+have been visible. So I checked high RAM. It soon became apparent that the CBIOS
+was missing from FA00H up. This meant that for some reason two whole sectors had
+not been loaded from the system track to the BIOS RAM. Since the vital sector
+</p>
+<?php columnEnd(1); ?>

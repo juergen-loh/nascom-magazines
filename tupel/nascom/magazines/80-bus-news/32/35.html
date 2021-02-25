@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+35
+</p>
+<p>
+REVIEW OF NASCOM ENHANCED BASIC (CRYSTAL BASIC 3) By Roger Dowling
+</p>
+<p>
+GENERAL
+The following review of Enhanced BASIC for the Nascom computer is based
+</p>
+<p>
+upon the version to run under the Nas-Dos disk operating system, although
+presumably the CP/M version is similar and the tape version is lacking the
+disk commands, most of which will be obvious.
+</p>
+<p>
+The Nas-Dos version supplied on disk contains two Crystal BASIC
+interpreters. XBASD is the standard disk version and one other which has
+additional commands for use with the Nascom AVC (GXBASD). The former is
+approxiamately 14k in length and the graphics version is some 22k long. XBASD
+returns 34044 bytes free and GXBASD returns 26304 bytes free when run under a
+48k RAM system. It will run under either Nas-Sys&nbsp;1 or 3.
+</p>
+<p>
+Also on the disk are some demonstration XBASIC programs, some of which
+are also examples of disk (or tape!) file handling given in the manual. The
+manual contains around 90 pages including appendices and is well documented
+although a bit hap-hazard in layout. Nothing like the early Nascom manuals
+though for anyone who goes that far back! The only faults with the manual that
+I could fairly say is that some of the default values in the workspace area
+are incorrectly shown and the examples given for adding extra commands seem to
+assume tape XBASIC and thus the locations for the pointers to the extra tables
+and commands are different for the disk version. No great hardship after half
+an hours work though.
+</p>
+<p>
+Also present on the disk are various pictures and demo programs to be run
+with the AVC under GXBASD. These are virtually the same as those which come
+with the AVC board although I did manage to find one or two extra things in
+there.
+</p>
+<p>
+One other nice program on the disk is a ROM BASIC to XBASIC conversion
+utility which, when run, sets up the command table to accept two extra
+commands namely DLOAD and TLOAD to load and convert a ROM BASIC program from
+disk or tape and then to convert to XBASIC format.
+</p>
+<p>
+_ XBASIC supports up to four disk drives and one tape drive and occupies
+RAM from 1000H to approximately 4660H. Its workspace is from 1006H to 1180H
+and a complete useful listing of the workspace area is given in the manual.
+</p>
+<p>
+Additional commands may be incorporated into the interpreter in two ways
+-permanent extensions to the command set extend the interpreters length by
+</p>
+<p>
+&ldquo;adding the routines and extra word tables onto the end of the XBASIC code. The
+complete interpreter is then re-writtem to disk to include the extra commands.
+Temporary additions such as toolkit type commands which have no use during the
+running of a program are added at the top of RAM and can be removed by a cold
+start. An interesting point is that the Auxiliary Reserved word table (the
+table that contains any extra commands) is scanned before the Standard
+Reserved word table and this means that it is possible to use complete words
+from the existing table as part or whole Auxiliary words.
+</p>
+<p>
+There are a total of 115 commands (including operators), 44 (1 think!)
+that are in addition to those available with ROM BASIC. There are 14 commands
+that are similar to those of ROM BASIC but which have a changed format or are
+enhanced. XBASIC is an interpreter in its own right but where commands are the
+same as in ROM BASIC then their action is similar too. In XBASIC, there is no
+unscrolled top line. Thus all 16 lines scroll. It took a long time to get used
+to the fact that it is the cursor down key rather than the Enter key that
+scrolls the screen. The Enter key merely places the cursor (if it is not
+already there) at the first free line on the VDU. The Editor uses an internal
+&ldquo;ypu&rdquo; high up in RAM and a line length of up to 127 characters is achieved
+using this technique coupled with an input buffer located at 0C80H. By moving
+</p>
+<?php columnEnd(1); ?>

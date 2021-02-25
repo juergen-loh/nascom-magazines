@@ -1,0 +1,112 @@
+<?php columnStart(1); ?>
+<p>
+The patch is a listing of DDT as it is displayed on the screen.
+</p>
+<p>
+DDT MOVCPMY.COM
+DDT VERS 2.2
+NEXT PC
+</p>
+<p>
+3100 0100
+-$2931
+</p>
+<p>
+2931 36 3
+</p>
+<p>
+2932 FE.
+-S2935
+</p>
+<p>
+2935 36 32
+</p>
+<p>
+2936 FE.
+-S2968
+</p>
+<p>
+2968 3B 3A
+</p>
+<p>
+2969 01 B9
+</p>
+<p>
+296A 18 1E&nbsp;.
+296B 02 21
+</p>
+<p>
+296C 3E 3E
+</p>
+<p>
+296D 02 01
+</p>
+<p>
+2968 21 .
+-S29E9
+</p>
+<p>
+2989 00 01
+</p>
+<p>
+29EA Bt
+</p>
+<p>
+-GO
+</p>
+<p>
+SAVE 48 MOVCPM. COM
+</p>
+<p>
+Steve Willmott, West Drayton.
+</p>
+<p>
+a ms
+</p>
+<p>
+This small routine will enable NASPEN users to indent any text from the left
+hand margin without having to insert the indentation directly into the NASPEN buffer.
+It does this by detecting all CARRIAGE RETURNs (0DH) sent to the printer (IMP
+assumed) and printing a pre-determined number of spaces before returning to NASPEN.
+The code can be placed in any convenient part of memory. For those with IMPRINT, code
+02 (bi-directional printing) can also be trapped when it occurs at the end of text.
+This allows unidirectional printing to continue till the IMP print buffer is empty.
+</p>
+<p>
+CP 2 somit if not required
+</p>
+<p>
+RET Z sthis too
+</p>
+<p>
+SCAL &pound;6E
+</p>
+<p>
+CP &pound;D sis it a CR
+</p>
+<p>
+RET NZ sif not return
+</p>
+<p>
+LD A &pound;20 ;space
+</p>
+<p>
+LD B 8 sindent of 8 spaces
+LOOP SCAL &pound;68
+</p>
+<p>
+DJINZ LOOP sprint spaces
+</p>
+<p>
+RET
+</p>
+<p>
+Enter the routine into memory, say at &pound;0C80, then change the NASPEN printer
+reflection to jump to the routine. i.e. modify &pound;101D (DF 6B C9) to C3 80 OC. The
+indent can be changed by loading B with the required number of spaces. Then warm
+start NASPEN.
+</p>
+<p>
+R. Mohamed, Glasgow
+</p>
+<?php columnEnd(1); ?>

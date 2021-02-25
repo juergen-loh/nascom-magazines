@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+12
+</p>
+<p>
+1 &ndash; Move the bytes at #A21 to #A30 inclusive up to #A24 using the I command.
+2 &ndash; Add the following bytes at #A21: B7 20 12.
+</p>
+<p>
+3 &ndash; Add the following bytes at #A34: 18 E3.
+</p>
+<p>
+The code should now look something like this:
+</p>
+<p>
+getblock:
+ld de,fcb
+ld c,read seq
+call jbdos
+; New code follows
+or a 3 set flags
+jr nz,err 3; eof, so jump
+; original code
+1d hl,buffer
+ld de,(arg1)
+ld bc,128
+ildir
+ld (argl),de
+; New code
+jr getblock
+; original code
+err:
+ep l
+oe eet
+</p>
+<p>
+This appears to work: I&rsquo;ve had no more problems since patching this in. I
+also took the opportunity to change the bytes at #996, #9B5, #A50, #A65 and
+#A8D to #C9. This changes the SCAL ZMRET codes to simple RET codes, and
+enables the F and P routines to be called from user programs (eg the &ldquo;:&rdquo;
+command in Zeap).
+</p>
+<p>
+Now for the second problem: the P routine appears to &ldquo;hang&rdquo; when the disk
+is full. The patch ain&rsquo;t so simple: it requires additional code on the end of
+Monitor.Com, and where this goes will depend on where your particular copy
+ends (I had tacked a printer driver onto the end of mine).
+</p>
+<p>
+1 &ndash; Change the bytes at #97C to C3 xx xx where xxxx is some spare memory
+after your Monitor.Com (the code here should look like this):
+</p>
+<p>
+ld de,fcb
+ld c,write seq
+call jbdos
+ep 0 3 Set error flags
+jp z,write block
+; Here if error &ndash; disk full &ndash; New code
+jp full_error
+; original code, no longer executed
+</p>
+<p>
+eee
+</p>
+<p>
+2 &ndash; Add the following code at address xxxx :
+11 5C 00 OF 10 CD 05 00 CD 24 09 EF 44 69 73 6B 20 66 75 6C 6C 2E OD 00 C9.
+</p>
+<p>
+The code should look something like this:
+</p>
+<?php columnEnd(1); ?>

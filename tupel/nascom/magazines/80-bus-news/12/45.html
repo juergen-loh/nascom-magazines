@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+45
+</p>
+<p>
+REVIEW OF EXTENSION BASIC by LEVEL 9 COMPUTING by David J. Plews
+</p>
+<p>
+(Bd.&rsquo;s Note &ndash; As our printer currently has no &lsquo;at&rsquo; sign, for &lsquo;%&rsquo; read &lsquo;at&rsquo;.)
+</p>
+<p>
+WHAT YOU GET :
+One TDK D C46 cassette with Extended BASIC (hereinafter XBASIC) and relocator
+</p>
+<p>
+program and a basic demonstration program (side 1 has copies at 1200 baud, side 2 at
+300 baud), one 28 page manual. y
+</p>
+<p>
+WHAT YOU NEED :
+A NASCOM 1, 2 or 3 running under NAS&nbsp;SYS&nbsp;1 or 3 with the ROM BASIC and a
+</p>
+<p>
+minimum of 16K of RAM.
+</p>
+<p>
+LOADING :
+The 1200 baud version loaded error free first time.
+</p>
+<p>
+RELOCATING IT :
+</p>
+<p>
+The loaded program was a full 8K. This consisted of 4K for the XBASIC program
+itself, a couple of hundred bytes for a relocator program and the rest was an
+advertising and copyright message!! To relocate the XBASIC into memory the program is
+executed at 1000 HEX. There then follows an advertisement and a prompt asking you
+where you would like XBASIC to sit in memory by entering the start address of a 4K
+block. I have 32K of RAM so it&rsquo;s 8000 HEX. There is a delay of less than 1 second
+while XBASIC is relocated and control is then returned to the monitor. The relocated
+version can then be stored on tape. There then follows a tedious rigmarole of starting
+XBASIC up to work with ROM BASIC. The ROM BASIC is cold started and the top of user
+RAM is set by the &lsquo;Memory size&nbsp;?&rsquo; prompt so that XBASIC is not overwritten. The
+appendicies help out here, for 32K RAM it&rsquo;s 32679. After entering this you then have
+to re-enter the monitor and initialise XBASIC by executing it at its start address,
+i.e. for me E8000. After another short commercial control is again returned to the
+monitor. BASIC is then warm started with a Z, and away you go!! If you have to go into
+monitor at any time subsequently, to return to the full 12K basic system warm start
+with a Z% and then enter SET. You get another commercial and you&rsquo;re off. If you get
+mixed up and forget whether you&rsquo;re running under XBASIC&nbsp;, SET- will check for you.
+</p>
+<p>
+COMMANDS :
+So what do you actually get in the 4K program? Well XBASIC gives you 32 (yes
+32 &lsquo;!!) extra commands running under ROM BASIC, and you can add your own&nbsp;!! The new
+commands are:
+AUTO BREAK CALL CHECK COPY DEC DELAY DELETE
+EDIT FIND GET HEX IF.. THEN. .ELSE INKEY INLIN
+LINE LIST PLOT PRINTS PUT REPEAT. .UNTIL RENUMBER
+REDUCE SET SPEED TEST TRACE VDU WHILE. .WEND
+WRAP XLIST XREF
+</p>
+<p>
+Now to describe them all if the editor will let me!!
+</p>
+<p>
+AUTO &ndash; Automatically generates line numbers after each ENTER. You set the starting
+number and subsequent increment. Needs no further comment.
+</p>
+<p>
+CHECK &ndash; This looks through a program to see if there are any calls to unreferenced
+line numbers.
+</p>
+<p>
+DELETE &ndash; This deletes lines in a program. The two arguments needed are inclusive.
+</p>
+<p>
+EDIT &ndash; This command is a real gem!!! On entering the EDIT mode you can write a single
+program line which can fill the entire screen, i.e. over 700 characters!!! The
+demonstration program has a few examples in it. These long lines can be edited as
+normal while in the EDITmode. 0.k. a line 700 characters long with multiple statements
+isn&rsquo;t exactly elegant but it IS exceedingly useful. (Also see WRAP.)
+</p>
+<?php columnEnd(1); ?>

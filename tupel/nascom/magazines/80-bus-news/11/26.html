@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<h3>
+FREE MEMORY!
+</h3>
+<p>
+That is, free as in make available. Oh well, with the price of 4116&rsquo;s
+as low as they are now, I&rsquo;m sure you can afford to buy them (and just be
+thankful that you haven&rsquo;t got a ZX81... nearly fifty quid for 8K of RAM!). But
+I digress.
+</p>
+<p>
+How much storage space have you got on your disks? According to my
+calculations, excluding the three system tracks, and the directory, a double
+sided single density, 5.25" Pertec drive in a Henelec/Gemini C805 System will
+put 148K onto each disk. My system will only put on 143K. Fiddle! Where&rsquo;s my
+other 5K? I can access it using D-DOS and my Zap program, so why not with
+CP/M? A few moments with ZSID gave the answer. The byte in the BDOS which
+tells the system how much memory the disk will hold was set to 90H, that is
+144. Increasing it to 95H gave me back all of my disk. My system was one of
+the very first Gemini CP/M systems sold, so maybe the fault has been corrected
+in later releases of the software. None the less, it may be worth your while
+checking your system. Just use STAT.COM on an empty disk, and see whether is
+states 143K or 148K free. (It was done deliberately to limit the track access
+on side 1 of the Henelec system as some read errors were occurring, you work
+out why!! Ed.) If you want to change it, the disk size byte can be found at
+the following locations in the Henelec/Gemini CP/M 1.4:
+</p>
+<table class="indent" style="width: 30%">
+<tr><td>16K System</td><td>313EH</td></tr>
+<tr><td>46K System</td><td>A93EH</td></tr>
+<tr><td>CPMxx.COM</td><td>11BEH</td></tr>
+<tr><td>MOVCPM.COM</td><td>123EH</td></tr>
+</table>
+<p>
+Obviously it&rsquo;s better to change it in MOVCPM.COM, so that all future systems
+will be correct, but use a back-up copy!
+</p>
+<h3>
+RESET SWITCH
+</h3>
+<p>
+On my Nascom system, I&rsquo;ve removed the reset switch from the keyboard,
+and put it on the front panel of the computer itself. In fact, I&rsquo;ve not put on
+just one switch but two wired as in the diagram below. The idea is that switch
+2 resets to 0000H and switch 1 resets to F000H. Switch 2 therefore cold boots
+CP/M and switch 1 resets NAS-SYS when that&rsquo;s loaded, or gives a WBOOT jump in
+CP/M, at least, that&rsquo;s the idea, so why doesn&rsquo;t the Warm Boot work? Can
+anybody help?
+</p>
+<p>
+&ndash; No reply. Watch my lips.... C.a.n. .a.n.y.b.o.d.y. .h.e.l.p.?.
+</p>
+<h3>
+DR.DARK&rsquo;S DISK BASED NAS-SYS
+</h3>
+<p>
+In the second issue of Micropower (which isn&rsquo;t as bad as I feared it
+might be), Dr. Dark described a method of adapting NAS-SYS&nbsp;1 to run in a CP/M
+environment which is vastly superior to that used by CC Soft in their Disk
+Constructor Package (excepting that that is NAS-SYS&nbsp;3). Using his method, it&rsquo;s
+possible to adapt NAS-SYS&nbsp;3 using the same instructions, except that the video
+address references are in a different position, as is the jump table. He has
+used (P)ut, (F)etch, (D) to exit to CP/M, and (Y) for a copyright notice.
+Altogether a very nice little patch, for the best debugger around.
+</p>
+<p>
+The trouble is that I&rsquo;ve already used F for Find, and NAS-SYS&nbsp;3 uses P
+to display the stored user program registers. So, what do I use? I use D to
+jump into the disk sub-system, from where I have a choice of (R)ead, (W)rite,
+(N)as-sys, and ^C to exit to CP/M. An error takes me back to the disk
+sub-system, but a successful read or write returns me to NAS-SYS. The next job
+is to eliminate the code in NAS-SYS that&rsquo;s duplicated in SYS. The changes from
+Chris Blackmores&rsquo; instructions for NAS-SYS&nbsp;3 are:
+</p>
+<?php columnEnd(1); ?>

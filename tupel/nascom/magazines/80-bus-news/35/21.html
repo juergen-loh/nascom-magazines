@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+21
+</p>
+<p>
+So you have typed in the source, and as usual it has compiled first time
+(bliss), you link and load it to produce the&nbsp;.COM version, nothing new so far.
+Now you enter GENGRAF &lt;filename&gt;&lt;RET&gt; and the utility will attach the GSX
+loader to your program. Your graphics program is now ready to run.
+</p>
+<p>
+When run, the GSX loader gets the first look in as previously mentioned,
+loads GSX.SYS to create the GDOS interface, loads the assignment table and the
+first named device driver contained therein. The space now occupied by the
+device driver is now referred to as the GIOS, which lives just below the BDOS
+and its workmate the BIOS. Refer to -Nuts and bolts&rsquo; for more detail. The
+application program is moved down to 100h and executed.
+</p>
+<p>
+The first command of any program will be GSX opcode 1 &lsquo;open workstation&rsquo;.
+This will inform the GDOS which of the available device drivers is to be used.
+If it is already in memory, entry one of the GIOS is called. If another driver
+is specified, it will be loaded into the GIOS area from disk. It can now be
+seen why the first entry in ASSIGN.SYS must be the name of the biggest driver
+available to the system, as GSX determines the amount of memory to allocate
+the GIOS solely from inquiring the size of this first named driver. If a
+subsequently loaded driver is bigger -than the allocated GIOS size confusion
+will follow.
+</p>
+<p>
+-Open workstation&rdquo; calls the first entry in to the GIOS, and firstly
+informs the GIOS of any defaults that the application requires, such as line
+colour, marker type etc. More importantly though, this function returns to the
+CDOS information concerning the device that it is currently working with. On
+exit from open workstation the GDOS will have details contained in it on the
+exact capabilities of the device. These details include X and Y axis
+resolution, aspect ratios, no. of colours, available fonts, and more. In fact
+57 16 bit values are returned to reflect the device specifications. Not only
+does the GDOS use this to prepare itself for the following commands, but this
+information is also available to the calling pogram if it needs it.
+</p>
+<p>
+So they&rsquo;re off!! Your much awaited graphics program will now spring into
+colourful life, and all the lines and circles etc whos coordinates you
+programmed inside the GSX 32k X 32k virtual frame size now appear on your
+screen or whatever, which may only be 640 X 288 for example. Whats more your
+circles are circular, because the GDOS has received information on the aspect
+ratio of your screen.
+</p>
+<p>
+In the time taken for your display to plot, the GDOS has intercepted all
+calls to the BDOS in which the C register contains the value 115, any others
+it passes on to the BDOS as normal. The control array is interrogated to see
+if you wanted to open a new workstation, if so another device driver is
+loaded, if not all coordinates contained in the array PTSIN are scaled to
+device size and control is passed to the GIOS. So as you can see the job of
+the GIOS has been simplified as the device has been passed coordinates that it
+can understand.
+</p>
+<p>
+If information has to be returned to the calling program, such as in the
+case of &lsquo;Inquire input locator&rsquo;, i.e. where is the graphics cursor now, device
+coordinates are returned to the GDOS and are likewise scaled before control is
+passed back.
+</p>
+<?php columnEnd(1); ?>

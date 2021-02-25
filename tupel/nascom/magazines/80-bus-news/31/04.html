@@ -1,0 +1,99 @@
+<?php columnStart(1); ?>
+<p>
+Lucas Logic apparently have lost their commitment to Nascom
+Microcomputers and products. Their relationship with Dealers is appalling.
+</p>
+<p>
+The sooner Nascom is bought by a decent company the better. In my
+opinion in their hands Nascom is dead.
+</p>
+<p>
+Yours in extreme anger and disappointment,
+</p>
+<p>
+Dr D Plews, MB ChB, Keighley, W Yorks
+</p>
+<p>
+Rory a Sadist?
+Whilst reading Rory O&rsquo;Farrell&rsquo;s article &ldquo;Happy Talk&rdquo;, I got the
+</p>
+<p>
+impression that he is some sort of sadist. The time taken to load a file into
+a disassembler, save it into 4K blocks as a hex file, then finally to transfer
+the file, must be a least 10 minutes per block.
+</p>
+<p>
+For some time now, I have been working on a quick and cheap data transfer
+program for the home enthusiast. The transmitting of data is done via a BASIC
+program which reads any file type and transmits via the serial port. For
+</p>
+<p>
+reasons mentioned in Rory O&rsquo;Farrell&rsquo;s article, the program cannot transmit.
+</p>
+<p>
+pure binary object code, it is therefore necessary to convert the file to some
+form that may be recognised by PIP and not to send it Control Zs. The file is
+received on the second machine via the RDR: into a file. A small BASIC
+program is then required to convert the program back into its binary form.
+</p>
+<p>
+Finally, a little tip for NASCOM CP/M users using the AVC board. When
+most people boot-up CP/M they type AVCTXT straight away to give an 80 column
+screen, or modify the BIOS via the config program to execute a file AUTO.SUB.
+You then create the file AUTO.SUB and enter the command AVCTXT.
+</p>
+<p>
+Have you ever wondered why it takes 15-20 seconds to execute AVCTXT after
+boot-up? The reason is simple, when Auto load is specified, it sets a jump in
+the BIOS, the address jumped to is to load SUBMIT.COM, it is then the job of
+SUBMIT.COM to load AVCTXT and execute it, therefore, taking time loading two
+files to achieve one goal.
+</p>
+<p>
+Pondering on this, I decided to delve into MOVCPM. I found the bytes
+which loaded SUBMIT.COM and changed these to AVCTXT and resaved MOVCPM. CP/M
+now boots-up AND executes AVCTXT in less than 5 seconds. The trick is:
+</p>
+<p>
+DDT MOVCPM.COM
+</p>
+<p>
+&ndash; D 0A00
+Notice that locations 0A08 &ndash; 0A17 contain SUBMIT AUTO.
+</p>
+<p>
+Change these locations to the following:&ndash;
+</p>
+<p>
+0A07 &ndash; This is the length of the command to be executed
+</p>
+<p>
+OA08 41
+0A09 56
+OAOA 43
+OAOB 54
+OAOC 58
+OAOD 54
+OAOE 2E
+</p>
+<p>
+Hp HO &lt;P
+</p>
+<p>
+SAVE 41 MOVCPM.COM
+MOVE 55 *
+</p>
+<p>
+SYSGEN
+</p>
+<p>
+SOURCE (press enter)
+DESTINATION B
+</p>
+<p>
+Yours faithfully, P-A. Dutton, Northfield, Birmingham.
+</p>
+<p>
+ssn ttinnnennnnneeiniis
+</p>
+<?php columnEnd(1); ?>

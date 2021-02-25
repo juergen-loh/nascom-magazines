@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+1f between cne and sight matches are found, the menory address
+of the start of each match is displayed in&rsquo;the response lin
+After the final match, XXXX is displayed to signify that the
+</p>
+<p>
+search continued to the top end of manory. If nine matches are
+found, all nine menory addresses are displayed in the response
+lin
+</p>
+<p>
+After nine matches the command terminates without
+rehing any further.
+&lsquo;AAAA &ndash; memory address at which the search is to start.
+</p>
+<p>
+The logic of this command is really quite involved. A
+full description would require an article on its om.
+Basically, the command obtains the firet byte in the required
+mask and searches through memory until it finds &laquo; match. The
+second byte of the mask is then compared with the next
+location&rsquo;in memory) if that the third byte of the
+ask i&raquo; compared and #0 on. n&rsquo;th byte fails to match,
+the command continues with searching for the first byte at the
+menory location one beyond the previous first byte match.
+Clearly, the command will for most of it&rsquo;s time be searching
+for and&rsquo; failing to find a match on the first byte in the mask
+This matching exercise on the first byte in the mask was
+therefore made as quick as possible, in order to miniaiae the
+execution tine of the comand, However, this approach does
+mean that if the first byte of the mask occurs frequently in
+fenory, the command will take a littl longer. On average, the
+Command will search 44K in a couple of seconds. However, if
+the first two bytes of the mask are &mdash;say- 00 00 (00 usually
+Agena to occur frequently) it may take up to ten seconds to
+wearch 64K. Times are for @ processor running at 4MHz with
+wait atater
+</p>
+<p>
+anna
+Hexadecimal to decimal conversion
+</p>
+<p>
+Converts a hexadecimal integer value in the range 0 to
+FFF, to decimal.
+</p>
+<p>
+The result of the conversion to decimal is displayed on
+the first screen line following the command letter. The
+hexadecimal number is first displayed az it&rsquo;s signed decimal
+equivalent with a preceding minus sign if the value is
+negative. If the number is negative, a further value is
+displayed to show the positive decimal equivalent of the
+unsigned format hexadecimal nunber.
+</p>
+<p>
+In order to determine the sign of the input arguaent
+the command uses the nunber of {nput digits typed to determine
+whether the argument represents a single ora double byte
+Value. If the number of digits typed ts greater than two,
+Gouble byte value is asauned, otherwise a single byte value is
+assumed.&rdquo; If requires ding zeroes may be typed in order to
+</p>
+<p>
+force a double byte conversion.
+AAAA &ndash; hexadecimal value for conversion
+Rather than just describe the operation, a commented
+asseatler listing of the conversion follows, The actual
+BYE-EX code is slightly modified to cater for negative
+</p>
+<p>
+punber:
+</p>
+<?php columnEnd(1); ?>

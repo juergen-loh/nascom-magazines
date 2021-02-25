@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+MAP RAM Green (really red) Light by R. Mohamed
+</p>
+<p>
+Have you ever wondered if your system had died during, say, &laquo; long compilation
+on your RAM-disk? I did, many times, shortly after configuring my MAP RAM card
+fae Gk of memory and &lsquo;a 192K HAM-dirk.
+</p>
+<p>
+Mechanical disk drives can easily be seen to be active (audibly and/or
+vieuaily), RAM-disks are by contrast totally silent and in my case there is also
+no apparent evidence of ite being accessed Very disconcerting! However
+Thepection of the MAP RAM card&rsquo;s cifcule diagram revealed on unexpectedly simple
+solution
+</p>
+<p>
+DESCRIPTION
+</p>
+<p>
+When the RAM card {s used n the 32/64K pege aode, a @ bit Latch (ICK6 which is
+Addressed via port OFEN) forms an extended address vhich is subsequently used to
+Select one bank of GUK of RAM from snother Additional logic allows the
+software to effectively select either the upper or lover 22k of memory (when. In
+32K page mode) from any bank of 64K Three bits from the latch are further
+Gecoded on each card by To47 (L5138), a 3 to 8 Line decoder The decoder
+Eoaverts an input binary number, in the range 0 to 7 {henee 3 bats) into a low
+Voltage at the correspondingly nimbered output [or select Line) The # outputs
+bE the decoder ara used to select a particular row or bank of 64K of RAM
+Situated on the card
+</p>
+<p>
+Secause there are only four banks of 64x on each card, only four of the outputs
+of the decoder are actually used The decoders, one on each coed. are enabied
+(or selected) in pairs Each pair of decoders can select up to # banks of RAM,
+Spread over the tuo boards fach card in a pair will weusily use either the
+Upper of Lower four decoder select lines&rdquo; FoF exanple, card number I&rsquo;s decoder
+{eoiced co be selected when FAM banks 0 to 7 are permissible, and simalarly tor
+Card number 2 &ldquo;suc in card number 1&rsquo;s case, outputs 0 to) of the decoder are
+ited&rsquo; eo che four banks of HAN located on the card. For card number 2, its to
+Tidecoder outputs that are wired to the four banks of RAM on the card.&rdquo; Thus, iF
+the&rsquo; software wisher to access bank 1 then the second row on card number 1 will
+deselected &ldquo;if bank c is to be accessed then the third row on card oumber 2
+WLI be selected
+</p>
+<p>
+After a reset, or when power is applied to the system, all the bits of Tc4s are
+Feset to sera Bit 7 of ICu6 selects operation in Guk page mode and gs the 3
+Addvess bits into the decoder are also zero, bank 0 #3 selected (on card number
+Th. &ldquo;"this&rsquo; bank ef RAM now forms the main addressable memory for the Z80
+microprocessor Whenever another bank is selected, say {0 32K page mode, and
+Accessed (either upper or over 32K) then Line 0 of the decoder on card 1 will
+Bo high. deselect ing bank 0, and one Gf the other outputs of that ot possibly
+Eny other decoder will go low to select the wanted bank of FAM. When the latch
+ie reser to all zeros, output OoF the decoder goer low, selecting bank 0 once
+</p>
+<p>
+Tt s easy co see chat select 1ine 0 on che decoder on card 1 can be used to
+give an indication of vhetner bank 0, the main 260 RAM, is Deing sccersed by the
+Epu&rdquo; &ldquo;Tr the select lane is low then bank Oia selected and the CPU is accessing
+its main memory. Conversely, when the select line 15 high the CPU ip accessing
+Snother bank of RAM. So all that 15 needed is &raquo; simple indicator to reflect the
+Status of select line 0
+</p>
+<p>
+one could attach the indicator, a LED, directly to select Jine o but this
+approach has two disadvantages Firstiy, the &ldquo;sense&rdquo; of the indicator will be
+rong. Je the LED will be Lit when benk&rsquo;o is being accessed and off otherwise
+Secondly, the LEU will add an extra load onto the select line and possibly
+degrade Yes performance
+</p>
+<p>
+Conveniently, there is a spare inverter on card number 1 which has ite output
+and input pins wired to pine 14 and 8 (resp.) on LBL Its use will both correct
+the &lsquo;sense&rsquo; of the indicator and provide a buffer to select line 0. the
+</p>
+<?php columnEnd(1); ?>

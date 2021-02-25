@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+NB. Bit 7 of the control word is used by the software onty.
+When it 15 set, 2716 EPROMS are in use, when reset, 2752 EPROM
+are present. Bit 7 is called TBIT.
+</p>
+<p>
+Now the listing alterations needed to work your board. T use
+the original line numbers, like BASIC, to insert extra lines
+there needed. Even without an assembler you should be able to
+follow the few changes needed and alter your code accordingly.
+Tf not, send me the original cassette and stamps, T will
+re-record it for you. I hope that this does not upset anybody as
+you can not be altering a board you do not have and I am not
+quite copying the original software.
+</p>
+<p>
+ago RP2732 EQU &pound;2
+0570 V25TRG EOU &pound;e
+</p>
+<p>
+9790 DEFM /ROM type 2718 or 2732/
+0950 DEFN /11E@ Blow a ROM(eully erased) /
+1050 DEFM /1543 Blow 2 ROM(nat erased) /
+</p>
+<p>
+110 EFM /12C0 Verify a ROM/
+</p>
+<p>
+1200 DEFM /120G Load data fram donor to RAM/
+1260 DEFM /12A2 Chuck for fully erased ROM/
+1520 LD A,e3z
+</p>
+<p>
+1550 LD DE,409 No. of Locations in ROM
+1740 LD A,E2F $0010 1111 CTRLWD
+</p>
+<p>
+2450 &ldquo;p&gt; B,o1 42732 cycles
+</p>
+<p>
+2520 Delete tine.
+2550 Delete line
+</p>
+<p>
+ear SET V2STRG,A $25 volte for 2732
+eas to cya iSave new control word in &copy;
+</p>
+<p>
+2685 RES RP2732,A }Trigger Ov programming pulse 2732
+2830 SIP NZ,DELI6
+</p>
+<p>
+2534 LD DE;&pound;COO 00 gives about SO maac delay for
+2732
+</p>
+<p>
+2a36 Je BODEL
+</p>
+<p>
+B40 DELI6 LD DE,&pound;SSS Delay for 2716 pulse
+</p>
+<p>
+2965 Lo Aye Get control word
+</p>
+<p>
+2966 RES V2STRG,A 325v off 2732
+967 LD GA 3Save initial word again
+5150 Delete line
+</p>
+<p>
+RP2752,A sSet 2732 recipient to read
+RH2716,A Set 2716 recipient to read
+</p>
+<p>
+RP2732,A Set 2732 recipient te read
+</p>
+<p>
+RP2732,A sDeselect 2732 recipient
+</p>
+<p>
+It takes about four minutes to blow a 2752. 1 have burned
+eight 2752 EPROM: from RAM and copied the eight again. I have
+had no errors. I am really pleased at having saved my achool the
+cout of two &pound;40 EPROM boards and a &pound;60 EPROM burner, at the
+expense of two 1 Meg resistors. Not bad eh! Incidently Mr. Boyd,
+how can I piggy-back anether 4 banks of EPROM on top of my
+present four to give eight banks of BK plus BASIC? I am serious,
+it would really be useful tous. Oh, and if you are ever in. the
+</p>
+<?php columnEnd(1); ?>

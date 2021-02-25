@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<i>2 mysteries &ndash; 1 solved</i>
+</h1>
+<h2>
+MYSTERY PROGRAM FOR NAS-SYS
+</h2>
+<p>
+Type in the mystery program (use the &lsquo;L&rsquo; command with the
+checksums for error free loading), don&rsquo;t contract the NOPs at the
+beginning, they are important. Execute at 0D00H, and when you get fed
+up with it, just RESET.
+</p>
+<p>
+T D00 DB1
+</p>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-2.png"); ?>
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1); ?>
+<?php hLine("20%"); ?>
+<h1 id="article2">
+NASCOM 1 and 8K BASIC
+</h1>
+<h2>
+-- a bit more
+</h2>
+<p>
+In the last two issues we have published details on how to fit
+the Nascom Basic ROM to a series 1 memory card. We have since learned
+the a good few hundred are working successfully, but that a couple of
+dozen did some inexplicable things. We tended to ignore this as &lsquo;finger
+trouble&rsquo; until last week when one of the committee&rsquo;s Nascom&nbsp;1 suffered
+an unfortunate accident. (It was discovered that the PIO input
+protection is not proof against 240V AC&nbsp;!!!).
+</p>
+<p>
+As only about three chips were still working, it was decided to
+re-chip the Nascom from square one. As the Nascom was pretty well fully
+expanded this was expensive, but all worked well except the Basic which
+normally wouldn&rsquo;t initialize, or when it did, only worked a few minutes
+without crashing. We poked around and found the only difference made
+when re-chipping was that IC9 on the buffer was originally a 74S04 (see
+Memory plague notes in INMC 3), and as we didn&rsquo;t have any spare S04s, a
+74LS04 was used instead. Well we never believed that the extra 5nS the
+S04 gave to the leading edge of MREQ was of any signicance, so how
+about the extra capactiance an S04 imposed on MREQ&nbsp;?
+</p>
+<p>
+We tried zapping 150pF across pin 1 of IC9 to ground, and
+lo&nbsp;!!!, working Basic. Just to prove this wasn&rsquo;t a flook, we got in
+touch with a dealer we knew had three boards supposedly not working,
+borrowed them, and without the capacitor the Basic didn&rsquo;t work, with
+the capacitor it worked.
+</p>
+<p>
+So if you have a Basic ROM fitted to a Nascom Series 1 memory,
+and its giving you trouble try 150pF between pin 1 and earth of IC9 on
+the buffer board. Don&rsquo;t ask us what it&rsquo;s doing, we haven&rsquo;t dared look
+(something horrible to MREQ we bet), but its worth a try.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

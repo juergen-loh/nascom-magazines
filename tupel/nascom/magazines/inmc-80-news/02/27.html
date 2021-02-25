@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<p>
+Not all CPUs are all that different to each other (isolated by language),
+there is some compatibilty in this world. An 8080 CPU and a Z80 for instance, may be
+likened to someone with a limited and simple vocabulary speaking english to me. I
+understand the words perfectly, but as the speaker only has command of roughly half
+the vocabulary I have, it takes longer to get the meaning across. Contrarywise, when a
+Z80 speaks to an 8080, its vocabulary must be restricted to the &lsquo;intellectual level&rsquo;
+of the 8080. So beware not all object code has the same meaning. With some practice
+it is possible to determine which is good Z80 code from code for some other processor
+or from rubbish.
+</p>
+<p>
+Having said that this business is not &lsquo;book learning&rsquo; stuff, I must follow on
+by saying that the Z80 Technical Manual is vitally important. Read and digested in
+little doses, it becomes quite understandable. If you read the Technical manual from
+end to end, once, and understand it a11, then sell your Nascom and go and buy an IBM&nbsp;370
+instead, you obviously need something meatier to chew on.
+</p>
+<p>
+The Technical Manual goes on about the registers and describes in great detail
+how they are interconnected. Think of the registers as railway sidings, some connected
+to the two main lines, others connected to one or other of the main lines. The
+Technical manual gives you a nice map to the whole &lsquo;goods yard&rsquo;. On one main line
+there are eight main lines running parallel and on the other there are 16 main lines.
+Each siding has eight parallel tracks connected by points to the 8 wide main line,
+whilst pairs of registers may also be connected to the 16 wide main line. Trains in
+the form of eight wagons each, one on each parallel line, move along the tracks of the
+8 wide main line parallel to each other, and may be directed through points from the
+main line into the sidings. Likewise, groups of wagons, 16 wide move along the 16 wide
+main line, and may be moved to a selected 16 wide siding, composed of a pair of 8 wide
+sidings. That&rsquo;s all the load (LD) group of instructions do. If we want to load the &lsquo;A&rsquo;
+register, eight parallel bits are placed on the (8 wide) data bus, and are directed
+through switches into the &lsquo;A&rsquo; register. Similarly, sixteen bits of data may be moved
+along the (16 wide) address bus to or from either the register pairs, or special
+purpose registers such as the Program Counter. There is one important thing to know
+about the load group of instructions though; when an instruction such as LD A,B (that
+means load the &lsquo;A&rsquo; register with the contents of the &lsquo;B&rsquo; register) is encountered,
+unlike trains, the contents of &lsquo;B&rsquo; is COPIED to &lsquo;A&rsquo;, not moved to &lsquo;A&rsquo;, so the contents
+of &lsquo;B&rsquo; remains unchanged.
+</p>
+<p>
+There are quite a number of registers in the Z80, we&rsquo;ll start with just a few
+of them. Perhaps the two most important are the &lsquo;PC&rsquo; (Program Counter) register and
+the &lsquo;A&rsquo; register. Starting with the &lsquo;A&rsquo; register, this is also refered to as the
+&lsquo;accumulator&rsquo;, for reasons I hope will become obvious in a few moments. It is here
+that it is all done, all arithmetic and logical operations are performed in the
+accumulator. For instance, if we wanted to add two numbers together, we would put one
+in &lsquo;A&rsquo; and one in another register, say, &lsquo;B&rsquo;. When the addition is performed, the
+answer will be in &lsquo;A&rsquo; (&rsquo;B&rsquo; incidentally will be unchanged), hence &lsquo;A&rsquo; accumulates the
+answer.
+</p>
+<p>
+The &lsquo;PC&rsquo; register is a special purpose 16 bit register, and its job is to keep
+an eye on the address where the processor is to get its next byte from. In many
+senses, the &lsquo;PC&rsquo; register is purely automatic, every time the processor fetches a byte
+(as it must do to know what to do next), the &lsquo;PC&rsquo; register is automatically
+incremented (increment means to add 01H to it) to the next byte. When the processor is
+ready for the next byte, the contents of the &lsquo;PC&rsquo; register are placed on the address
+bus, and this forms the address of the next byte to be fetched.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+31
+</p>
+<p>
+And what sort of instructions are there? Well, lots. For a start, there
+are two screens of 640 by 288 dots, and any dot can be individually set to any of
+the colours the board produces. So there is a routine to plot a point, given its
+coordinates; there&rsquo;s another one to plot a point at a given x-y displacement from
+the current position. This latter routine has two forms, one for distances that
+can be expressed in a single byte, and one for longer distances. Then there&rsquo;s the
+line drawing routines, also in three forms. There are routines to move to a given
+point, or by a given displacement. It is possible to read the colour of a pixel,
+again using absolute or relative coordinates. After all that, you could be
+forgiven for thinking I have finished, but not a bit of it! Rectangles can be
+filled, or even copied to another location. Part of one screen can even be copied
+onto the other screen.
+</p>
+<p>
+And each of the operations described above is influenced by two system
+variables called WPROT and STYLE. WPROT is used to write protect one or more
+colour planes, while STYLE determines whether the new information replaces the
+old, or is combined with it in several other possible ways. For instance, the
+colour being printed can be exclusive OR&rsquo;ed with the existing colour of a pixel.
+This sort of thing can be used to produce red/green flashing text on a green/red
+flashing background, if that is what turns you on. Text? But of course! The
+standard ASCII character set is catered for, and an 80 column display can be
+produced. It must be possible to amend CP/M to use this board as its display
+device, somewhat like an amazing IVC, but I may not even try. [Ed. &ndash; I know of
+someone who did this some time ago, and commented on its amazing slowness due to
+all the characters being held as dots, and the consequent amount of memory
+shifting that has to be done when the screen is scrolled. The AVC suffers
+similarly (but even worse I believe). He also commented that backspace was not
+supported, and so &lsquo;cursor left, space, cursor left&rsquo; has to be issued by the CP/M
+BIOS. It&rsquo;s an obvious case of horses for courses &ndash; text cards for text, and
+colour graphics cards for wees | You see, there is a marvellous moment when the
+4X81 owner first notices that your computer has two screens. More to the point,
+really, is the fact that I have a lot of software that uses the old Nascom
+screen, or rather, its relocated equivalent. I don&rsquo;t really think I want to edit
+these articles in colour, unless the magazine is going to change over to using a
+colour plotter instead of the daisy wheel, and start looking like 0%...
+</p>
+<p>
+As part of the Taunton Computer Club&rsquo;s latest theme program writing game,
+I also wrote a thing that draws a picture of a winter scene. In this program, I
+made use of the Pluto facility for defining new characters, of any kind and
+colour whatsoever; these are referred to as symbols. Once a symbol has been
+defined, it can be printed at whatever location is current, just by sending a
+single byte out through the data port. This function is impressively fast, as is
+the other very useful one I left out above. Referred to as &ldquo;polyfill&rdquo;, this filis
+complex shapes in with colour. I saw someone using their BBC computer the other
+day, and their polyfill routine (in BASIC, naturally) took ages, as well as not
+always getting into all the corners. Having this sort of facility readily
+available will make the rapid development of programs much more easy. I should be
+able to do a really nice space invaders in no time...
+</p>
+<p>
+It is a tremendous shame that such a superb lump of hardware is being let
+down by the way IO run their business. They take a long time to send things out,
+which can be forgiven when a firm is building up its business, and may be running
+with less staff than it will have when things level off abit. But they could
+easily send out a card to say they have had your order. They don&rsquo;t even bother to
+answer all the letters they are sent, and this is unforgivable, when they are
+being asked technical questions about the product they have sold you. The only
+way to get answers to this sort of question seems to be to ring them up. Their
+phone is more or less permanently engaged, of course, presumably by people who
+want to know why their letters are ignored! I wanted to write about the
+additional ROM, which contains even more amazing facilities like the marvellous
+&ldquo;wallpaper&rdquo; routine, but after three weeks I am still waiting. Still, it will be
+something to write about next time.
+</p>
+<?php columnEnd(1); ?>

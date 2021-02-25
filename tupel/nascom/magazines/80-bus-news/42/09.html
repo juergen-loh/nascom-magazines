@@ -1,0 +1,228 @@
+<?php columnStart(2, 2); ?>
+<p>
+filfeb:
+</p>
+<p>
+ld (hl), a
+</p>
+<p>
+inc hl
+</p>
+<p>
+dinz filfcb
+</p>
+<p>
+ld sp, (0006h} : set SP to bdos -1
+</p>
+<p>
+dec sp
+</p>
+<p>
+dp 100h : execute program
+codend:
+</p>
+<p>
+nop
+</p>
+<p>
+opener: . outputs error mess &amp; returns
+ld de, errmsg
+ld 6, 9
+call bdos
+</p>
+<p>
+errmsg: defm &lsquo;Chained file open errorg&rsquo;
+</p>
+<p>
+fobh: defb Q : details of the file to chain.
+defm *CHAINFILCOM&rsquo; . Note- this is in standard CP/M
+defb 0 . FCB format
+end
+</p>
+<p>
+Program 2. Assembler version of an overlay loader.
+(OVLAY.MAC)}
+</p>
+<p>
+280
+</p>
+<p>
+feb equ OSch declare default feb
+</p>
+<p>
+bdos equ 05h entry to BDOS
+</p>
+<p>
+currec equ fobt32 . current record byte in {cb
+</p>
+<p>
+fovlay:&ndash;
+ld c, Ofh
+ld de, fcb
+call bdos
+inc a
+ip 2. filerr
+xor a
+ld feurrec! 43
+ld c, lah
+Id de, 80h
+call bdos
+call getsec
+ld hl, (87hi
+push hi
+push hl
+call getsec
+</p>
+<p>
+open overlay file
+</p>
+<p>
+error 1f file not found
+</p>
+<p>
+put 0 to current record
+</p>
+<p>
+set dma buffer to 80h
+</p>
+<p>
+read 1st 12 bytes
+get base page of code
+</p>
+<p>
+and store it, once as buffer addr
+and again for the overlay call later on
+read 2nd 128 bytes
+we are now at start of code
+restore base addr of overlay area
+</p>
+<p>
+pop de
+rdovi:
+</p>
+<p>
+push de
+</p>
+<p>
+ld c, lah
+call bdos
+call getsec : read a sector
+</p>
+<p>
+pop hi restore buffer addr
+</p>
+<p>
+ld de, 128 and add 128 to it so that the next
+add hl, de overlay sectors are read into memorv
+ex de, hl sequentially
+</p>
+<p>
+or a was it the last sector
+</p>
+<p>
+ur z, rdovl no so go get another
+</p>
+<p>
+pop hl pop the base addr into hl
+</p>
+<p>
+store current buffer addr
+set dma current buffer area
+</p>
+<p>
+id de, mess
+</p>
+<p>
+call 0005
+ret &gt; return to root
+</p>
+<p>
+mess: defn &lsquo;In ovl&rsquo;, 10,15, &lsquo;$!
+end
+</p>
+<p>
+Program 5. 2nd overlay for demo program.
+(OV2.MAC)
+</p>
+<p>
+280
+ove:
+id c, 09 ; output id message
+ld de, mess
+call 0005
+ret ; return to root
+</p>
+<p>
+mess: defm &lsquo;In ov2&rsquo;,10,13,&rsquo;$&rsquo;
+end
+</p>
+<p>
+Program 6. An overlay loader written in &lsquo;C&rsquo;. (ECO
+&lsquo;C&rsquo; used).
+</p>
+<p>
+Please note that ECO C translates all underscores in
+variable names to &lsquo;?&rsquo; and so _.memry is translated
+to its correct form&nbsp;?7MEMRY.
+</p>
+<p>
+#define READONLY 0
+#define ERROR 0
+#define OK 1
+</p>
+<p>
+int (kovlad}(). /* 70vla0 used as pointer to func */
+int umemry. /* set to top of mem by LINK */
+/* These are declared as global */
+/&reg; so that they are identified to */
+/* the LINK program when linking. */
+</p>
+<p>
+-oviay( fname} /*&reg; overlay file name passed as arg */
+</p>
+<p>
+char #fname;
+</p>
+<p>
+po?
+</p>
+<p>
+FILE tofd, /* declare overlay file descriptor */
+</p>
+<p>
+int ovlen, /* used to store length of ov code */
+</p>
+<p>
+static char currovl[16]: /*&reg; stores name of current overlay */
+</p>
+<p>
+char buff[128]; /*&reg; local input buffer */
+</p>
+<p>
+int edata_ptr=&amp;buff[ 1]: /* integer pointer used to access */
+/*e int values in input buffer */
+</p>
+<p>
+/7* Start of overlay routine */
+</p>
+<p>
+if((ovlen=stromp(currovl, fname} }==0) /* if the current overlay in memory */
+/* is same as that requested */
+ps7
+(eWovlad}t): /*&reg; then cali the function #/
+return(OK}; /* and return to caller */
+p38
+/* else we have to read it in */
+ofd=open( fname&nbsp;, READONLY): /* open overlay file #/
+iffofd==EOF) return(ERROR), /* if not found return error code */
+read(ofd, buff, 128); /* read ist 128 bytes */
+ovlen=*data_ptr: /* .. &amp; extract code length from it */
+data_ptr+=3; /7* point to byte 7 of input buffer */
+</p>
+<p>
+80 Bus News
+</p>
+<p>
+9
+</p>
+<?php columnEnd(2); ?>

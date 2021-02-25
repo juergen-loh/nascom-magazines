@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+31
+</p>
+<p>
+THE DH BITS By David Hunt
+</p>
+<p>
+A few days ago a customer of ours popped into the shop and gave us a long
+tale about having exported some gear in 1982 and because of some customs
+problem could they have a copy receipt for the goodies? Well much as we try to
+please, trying to find a receipt for goods supplied on an unknown date in 1982
+is alittle too much. So, as we remembered the customer, and were therefore
+pretty certain that he had bought something a long time ago, we suggested that
+we could give him a new receipt, but dated 1982, altogether a lot less hassle.
+This was fine, but could we make sure that the receipt was not dated on a
+Sunday or Bank Holiday or some other such suspicious date? I wonder how many
+of you have a 1982 diary or calendar to hand? We certainly didn&rsquo;t. This whole
+thing was taking on the proportions of a farce, as trying to find a 1982
+calendar looked like turning into as much fun as trying to find the original
+receipt. Then a thought occurred. A very long time ago, when Nascom first grew
+BASIC, I cobbled together a Calendar program. Did it still exist, had it been
+converted to run under CP/M, etc? A quick consult of the CAT program revealed
+CALENDAR.BAS, which when fired up, worked.
+</p>
+<p>
+This turned out to be an interesting program, short and to the point, so
+for my sins, it&rsquo;s offered here. It may even have been published before,
+although a quick look through the old back issues of INMC didn&rsquo;t reveal it.
+Looking closely at the program, I&rsquo;m pretty sure it&rsquo;s not all original DH, so I
+must have pinched it, or bits of it, from somewhere. The basic algorithm for
+working out the start date seems to be attributable to David Ahl&rsquo;s -101 Basic
+Programs&rsquo;, but different, and I&rsquo;m pretty sure, left to my own devices I
+wouldn&rsquo;t have calculated the screen TAB positions the way it&rsquo;s done here, but
+1979 was a long time ago and premature senility is creeping over me, so lI
+don&rsquo;t remember. One thing Ido remember was the trap for the 1752 start for
+the Gregorian calendar, and the nasty business of the (MOD 4000)}+2000 over the
+fact that the year 2000 won&rsquo;t be a leap year when it should be. This doesn&rsquo;t
+happen again until the year 6000, so it looks like I -short cut&rdquo; the procedure
+and checked at the 1000 year boundary. This makes the effective operating
+range the 1250 odd year span from the year 1753 to the year 2999. The 1752
+trap won&rsquo;t allow earlier dates, and the 2999 trap stops the program thinking
+that the year 3000 is not a leap year when it should be. All pretty esoteric
+really as I doubt that anyone will be interested in dates outside a century
+span anyway. See Listing One.
+</p>
+<p>
+Another thing which has been causing problems lately (and still on the
+subject of dates and times) is using machine code routines under dBASE II. Now
+versions 2.4 or later allow machine code calls, and the favourite for these is
+making the cursor display different on the SVC/IVC card, or reading either of
+the Gemini clocks (the clock on the GM816 I/O card or the GM822 RTC) in as
+dBASE data.
+</p>
+<p>
+The cursor first. The various permutations of Gemini CP/M do different
+things with the cursor when either waiting for a CP/M command, or actually
+executing a program (it&rsquo;s documented in the manual, so I won&rsquo;t repeat it
+here). Normally the cursor blinks whilst in the CP/M command mode, and becomes
+a non-blinking cursor when executing a program. I say normally, as the
+Winchester based Quantum machine I borrow when I visit Gemini, turns the
+cursor off completely when executing a program. I find this infuriating if the
+program I*m using doesn&rsquo;t turn it back on again, and of course, dBASE is one
+program that doesn&rsquo;t. I know this is very easily patchable with the program
+</p>
+<?php columnEnd(1); ?>

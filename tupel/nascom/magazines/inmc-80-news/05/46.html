@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+When dealing with a subroutine in isolation, we have to make some
+assumptions, firstly that the data to be printed has already been put in the A
+register, and for the purposes of demonstration, this is going to be B5H. Next
+we assume the routine has been CALLed in an orderly fashion, implying that the
+STACK is already correctly set, and left pointing at the last byte saved (in
+this instance, because the routine was CALLed, pointing at the low byte of the
+return address (as the PC will have already been advanced to the correct return
+address by the CALL instruction before the return data was placed on the STACK,
+see episodes 3 and 4).
+</p>
+<p>
+Ok. Oft we jolly well go!!
+</p>
+<p>
+Line 4470. This is a brief comment as to what we propose to do, viz:
+OUTPUT A.
+</p>
+<p>
+Line 4475. This is the start of the routine, and is labelled B2HEX
+accordingly. The instruction is PUSH AF, which will put the current contents of
+registers A and F onto the STACK. The STACK will contain B5H as it&rsquo;s higher
+byte (because I&rsquo;ve already said that A contains B5H), and XX as it&rsquo;s lower byte
+(because that state of the F register was indeterminate when we PUSHed the AF
+register, and we don&rsquo;t care a damn what it contains). The SP has been
+decremented by two. We PUSHed AF because the calculation process will destroy
+the current contents of the A register, and we need it back to work out the
+second half. As a matter of interest, we could have equally well saved the
+contents of A in some other register, which would have been slightly quicker in
+terms of execution time, but as the specification implies that all other
+registers except A remain unchanged, we would have had to save the contents of
+the other register anyway, so what odds!!
+</p>
+<p>
+Lines 4480 to 4495. This is a fun one! If you think about it, an 8 bit
+byte expressed in HEX contains two alpha numeric characters, and each character
+can be said to represent a nibble of the 8 bit byte. Now the order they appear
+on the screen says that the highest nibble will be printed first. So because of
+the way the routine works (wait for it), we&rsquo;ve got to move the high nibble into
+the place currently occupied by the low nibble. This is done by moving
+everything four places to the right (no political cracks please). More
+precisely, four &lsquo;Rotate Right Arithmetic&rsquo; (RRA) instructions are used (shift
+instructions would have worked just as well, but someone in pre-history
+dictated that rotate instructions would be used). The rotate right moves the
+contents of the C flag into the highest bit, everything else right one place,
+and the bit that drops off the end into the C flag. Lets follow that
+diagramatically:
+</p>
+<table class="rottab">
+<tr><td>B5H equals</td><td>10110101</td><td>X</td><td>in binary bits, the X is the C flag.</td></tr>
+<tr><td></td><td></td><td></td><td>Now rotate it one</td></tr>
+<tr><td></td><td>X1011010</td><td>1</td><td>the C flag, X has been moved into the highest bit
+											everything else has moved right one place, and
+											the lowest bit has moved into the C flag.</td></tr>
+<tr><td></td><td></td><td></td><td>Rotate again</td></tr>
+<tr><td></td><td>1X101101</td><td>0</td><td>Rotate again</td></tr>
+<tr><td></td><td>01X10110</td><td>1</td><td>and for the last time</td></tr>
+<tr><td></td><td>101X1011</td><td>0</td><td></td></tr>
+</table>
+<p>
+Simple really, and the end result is that the &lsquo;B&rsquo; of B5H has been moved into
+the low nibble.
+</p>
+<p>
+Line 4500. Now to call the calculation routine using the NAS-SYS RCAL
+routine. Don&rsquo;t worry how that works, just pretend it&rsquo;s a CALL as per the Z80
+manual. The CALL instruction PUSHes the return address (037C) onto the STACK,
+and loads the PC with the address CALLed, 037D, so we skip along to line 4515.
+</p>
+<?php columnEnd(1); ?>

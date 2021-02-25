@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+22
+</p>
+<p>
+Refer to the link block diagram in your manual (you have got a manual, haven&rsquo;t
+you?) and on each link block, LKB1-8, connect pin 8 to pin 4 (chip select) &ndash; pin 6 to
+pin 2 (output enable to read enable) &ndash; pin 5 to pin 1 (write enable). Finally loop pin
+7 (address line A10) along to the next pin 7 on the next link block, and so on, so
+that all eight pin 7&rsquo;s are connected together, and pick up address line A13 off the
+bus &ndash; best done on pin 12 of IC47 (N2MD). This has the affect of addressing through
+all the lower 1K&rsquo;s of each chip and then through the upper 1K&rsquo;s (the upper and lower
+halves of each chip are then separated by 8K, not a very clever idea for EPROM, but as
+it&rsquo;s RAM it doesn&rsquo;t matter), it&rsquo;s the simplest method. Finally, to make the whole
+thing go, connect the RAM-GATES on the &lsquo;MD&rsquo; link plug to the addresses required, for
+instance D000 to F000 would give memory starting at D000 and finishing at FFFF. If-you
+are using a CP/M type system, then set the memory card to go from 0000 to B000, giving
+memory from 0000 to BFFF, and strap the block addresses C000 + D000 + E/F000 together,
+to RG1 or RG2. This gives 64K from one end to the other.
+</p>
+<p>
+To provide RAMDIS on to th peb requires two ICs, one 74LS832 and one 74LS04.
+These devices will be used to provide the write disable control as well (so you might
+as well go the whole hog). In my system these two chips were piggy backed on to two
+other conveniently placed 14 pin chips close to Link Block LKS1, to which most of the
+connections will be made. Remove IC18 and bend out pin 13 then replace the IC. For the
+remainder of the connections refer to circuit diagram 1 along side the sheet 3 of the
+Nascom&nbsp;2 circuit diagram. Look around the top left hand corner, that&rsquo;s where most of
+the circuitry will be found. I suggest that you now carefully test your Nascom with
+and without external peripherals either addressed, or not addressed to the same area
+as the new RAM. Make sure there is no interaction between the new RAM and the existing
+RAM, any faults should be found and corrected. My system has been operating now for
+many months and there have been no problems.
+</p>
+<p>
+Now for the tricky bit, the battery backup connection, it&rsquo;s not difficult,
+just time consuming, and some care is necessary to ensure that the right connections
+have been made. The idea is to isolate all of the +5V connections to pin 24 of each
+chip and also to pin three of the associated link blocks. This can be done by cutting
+about five tracks and adding a few wire links. I would have included complete details,
+but it&rsquo;s very difficult to get at the underside of my N2 card now to see exactly what
+I did. Check that you still have +5V on your monitor and Basic ROMs, and any other
+RAM/ROMs in the vicinity. I didn&rsquo;t when I did it. Next, replace IC46 with a 74LS156
+(the 7418156 is an open collector version of the 7415155 already fitted) as this is
+necessary to allow correct power down. Fit 8 off 1K resistors between pins 3 and 4 of
+each link block LKB1-8 these provide power to the device selects in the standby mode
+and should be connected to the new +5V backup supply when the battery is fitted.
+</p>
+<p>
+Now for the battery backup, best to refer to diagram 2. The best place for the
+battery is by the &lsquo;power test points&rsquo; adjacent to the Basic ROM. The test points
+provide a convenient point for connection to the battery (via the diode and resistor)
+and is conveniently close to the now separate RAM supply and device select rails. The
+18OR resistor in series with the battery is the charge limiting resistor and is chosen
+to fully charge the batteries on about four hours use a week. If the Nascom is used
+for a lesser amount of time over a weekly period, then the value of the resistor may
+be reduced. Note the value of the resistor must not be made less than 100R. Ensure
+that the battery is connected to the power supply and device selects ONLY. Any wrong
+connections and the battery will get quite hot and be flat in minutes.
+</p>
+<p>
+It&rsquo;s worth considering connecting the monitor into the memory backup with
+another HM6116, with it&rsquo;s own write protect switch, as this allows the monitor to be
+changed at will yet still be there on power up. Further, if the Bits &amp; Pcs
+programmable character generator is fitted, both 4116&rsquo;s can be replaced with a single
+HM6116 or even two HM6116&rsquo;s and the character generators made fully programmable as
+well.
+</p>
+<p>
+The write protect switching is recommended as there is no protection against
+spurious &lsquo;writes&rsquo; during power up or power down. However, to date I have not
+experienced any problems in this respect and have tried to provoke spurious errors
+without &lsquo;success&rsquo;. Anyway, to be safe, always disable the write during power up/power
+down.
+</p>
+<p>
+Having had this facility fitted for some while I wonder how I ever got on
+without it before it was fitted. The time spent fitting it and getting it right was
+well worth the effort.
+</p>
+<?php columnEnd(1); ?>

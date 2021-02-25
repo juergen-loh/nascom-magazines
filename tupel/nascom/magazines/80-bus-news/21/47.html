@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<p>
+47
+</p>
+<p>
+Problems with SYS
+</p>
+<p>
+Various problems have been reported by users of SYS, and most of these have
+been cleared up very easily. For example you should not try to run a Gemini
+computer using a SYS generated for a Nascom. It may be helpful to list a few
+problems which people have encountered which have proved to not be errors in SYS.
+</p>
+<p>
+When a Nascom with SYS is switched on and SYS is executed the system may
+stop and wait for an input character before the configuration messages are
+displayed. This is caused by a simple hardware problem. The serial input port has
+supplied a spurious null on power-up which has activated screen edit mode. The
+solution is either to assemble SYS with the SKBD option set to FALSE, or connect
+the serial input line to ground so that no character is received. Remember that
+the serial input may be set to RS232 or cassette, and ground the appropriate
+line.
+</p>
+<p>
+When spurious input characters appear on the screen there are several likely
+reasons. Check that the GEMINI flag is set correctly, and check the SKBPD, NKBED,
+GKBD and VKBD options carefully. GKBD must be FALSE with the Gemini GM813, as
+there is no keyboard port. If you have a Gemini video card it is best to plug the
+keyboard into it and set VKRD to TRUE.
+</p>
+<p>
+If the system crashes when SYS is executed then it may be configured
+incorrectly. For example it may specify a virtual disk when none is attached.
+Alternatively there may be insufficient memory for the SYS BIOS if the correct
+changes to MOVCPM have not been made (see above).
+</p>
+<p>
+If a virtual disk is used and a different configuration of SYS is executed,
+then the directory of the virtual disk may become corrupt. The system should be
+switched off and on again to be certain of clearing this problem. This is because
+cold boot does not clear the contents of the virtual disk, if it appears to be
+initialised already.
+</p>
+<p>
+Conclusion
+</p>
+<p>
+I hope that you continue to enjoy using SYS. I have to admit, as Gemini
+point out, that it is really only suitable for computing enthusiasts, but that is
+who it was written for. Finally, my thanks to David Parkinson and Gemini for
+their help with the inclusion of the standard disk software.
+</p>
+<p>
+Please direct any queries about SYS to the supplier, as I only have time
+to look into any really difficult problems, as with luck there aren&rsquo;t too many
+of those!
+</p>
+<p>
+Suppliers note.
+</p>
+<p>
+As the Gemini Winchester drivers have been incorporated with the kind
+permission of Gemini, it has been agreed that the version of SYS incorporating
+the Winchester drivers will only be supplied if the user produces evidence of
+owning a Gemini GM835 Winchester. This is unfortunate for those who have the odd
+Winnie knocking about in the junk box and wish to put it into use. On the other
+hand, it does allow those who already have a Gemini GM809/GM815 system running on
+a Nascom and who wish to add a Gemini GM835 to do so without scrapping the whole
+system and starting again. On the whole, Gemini&rsquo;s wish to protect their software
+is understandable.
+</p>
+<p>
+SYS is available from HENRY&rsquo;S RADIO, see their ad. in this issue.
+</p>
+<p>
+VIRTUAL DISKS &ndash; ARE THEY USELESS? by RICHARD BEAL
+</p>
+<p>
+BRR EE IRE BR RE ERD INE NEN RD Ee
+</p>
+<p>
+Are virtual disks a useful invention or are they a desperate attempt to find
+a use for lots of RAM? A virtual disk, also kmown as a memory disk or pseudo
+disk, is a way of using a large quantity of RAM as if it is a real disk. In CP/M
+terms the translation of track and sector to a memory address in the extra paged
+RAM is done by special code in the BIOS.
+</p>
+<?php columnEnd(1); ?>

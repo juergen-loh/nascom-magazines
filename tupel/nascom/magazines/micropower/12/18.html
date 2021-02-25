@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<h4>
+RESET (D,E)
+</h4>
+<pre>
+8007  CD1680   RESET   CALL CSPOS     Calculate screen posn.
+800A  CD58FF           CALL BRESET    Use Basic ROM
+800D  C9 RET
+</pre>
+<p>
+All registers corrupted (except alternate set)
+</p>
+<h4>
+POINT (D,E)
+</h4>
+<pre>
+800E             POINT   CALL CSPOS    Calculate screen posn.
+8011   46                LD B, (HL)    Pick up char. on screen
+8012   CDEDFF            CALL BPOINT   Use Basic ROM
+8015   C9                RET
+</pre>
+<p>
+NZ if point set, Z if reset<br>
+All registers corrupted (except alternate set)
+</p>
+<h4>
+CALCULATE SCREEN POSITION
+</h4>
+<pre>
+8016   6A        CSPOS    LD L, D     Low byte of x co-ord
+8017   2600               LD H, 0     High byte set to zero
+8019   E5                 PUSH HL     Put on stack for ROM
+801A   1600               LD D, 0     Set high of y to zero
+801C   C331FF             JP BCSPOS   Basic ROM does rest
+</pre>
+<p>
+On exit HL = Screen Address<br>
+A = Pixel information<br>
+All other registers corrupted
+</p>
+<h4>
+CHECK CO-ORDS AREWITHIN RANGE AND CONVERT THE
+Y CO-ORDS SO (0,0) IS AT THE BOTTOM LEFT CORNER
+</h4>
+<pre>
+801F   7A         CHECK    LD A, D     X Co-ordinate
+8020   FE60                CP 96       Screen width
+8022   3F                  CCF
+8023   D8                  RET C       End if D &gt; 95
+8024   7B                  LD A, E     Y co-ordinate
+8025   FE30                CP 48       Screenheight
+8027   3F                  CCF
+8028   D8                  RET C       End if E &gt; 47
+8029   FE2D                CP 45
+802B   3005                JR NC,CH2   Jump if 44 &lt; E &lt; 48
+802D   3E2C                LD A, 44
+802F   93                  SUB E       Carry will not be set
+8030   5F                  LD E, A     New y co-ord in E
+8031   C9                  RET
+8032   3E5C       CH2      LD A, 92    Sort out top line
+8034   93                  SUB E       Carry will not be set
+8035   5F                  LD E, A     Carry will not be set
+8036   C9                  RET
+</pre>
+<p>
+On exit D and E contain new co-ords.<br>
+Carry set if out of range
+</p>
+<h3 class="article-stopper">
+.. .. .. .. .. .. .. ..
+</h3>
+<?php columnEnd(1); ?>

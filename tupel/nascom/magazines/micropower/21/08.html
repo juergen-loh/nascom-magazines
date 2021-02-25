@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+BEYOND THE 64K BARRIER
+</h1>
+<p>
+by Chris Blackmore
+</p>
+<p>
+Anyone who has owned a Nascom for any great length of time will tell you
+that, unlike systems that arrive in ready-made plastic cases, Nascoms tend to
+expand almost indefinitely. The abilty to expand was designed into the system
+from the very beginning, and it shows. When you start out, you think that a 32K
+RAM board will never be too small. There is left over space in the memory map,
+and a great many of the expansion boards that are available are memory mapped,
+which means that they appear to the CPU to be memory, and they take up memory
+space. Then one day you upgrade your system to 64K of RAM, or perhaps even
+more than that, because the Nascom will allow you to have enormous amounts of
+RAM (unlike the aforementioned plastic boxes...). Now your memory mapped sound
+generator board, programmable character generator, and home made digital clock
+card become nuisances, as they overlap some of your nice new memory.
+</p>
+<p>
+So you have to find a way of preventing the waste of memory, and the
+Nascom provides it in the form of memory paging. Your main RAM board will be
+on page 0, and all your memory mapped &lsquo;extras&rsquo; (unless you have more than 64K
+of them) will be on page 1, 2 or 3.
+</p>
+<p>
+So this means that you will have to fit a paging circuit to each of these
+boards, doesn&rsquo;t it? No, it doesn&rsquo;t &ndash; one will do! There are some spare lines on the
+bus, called NDEF1 and NDEF2 in the Gemini 80 specification, and shown as
+&lsquo;reserved&rsquo; in the Nasbus specification, which can be used in more or less any way
+you wish. I suggest that they should be used to carry the read and write signals to
+all boards that are on memory page 3.
+</p>
+<p>
+Only a simple modification is needed on each of these boards, instead of
+the quite complex task of adding a paging circuit to each of them. The single paging
+circuit can be built on a prototyping board, of which there tends to be at least one
+in any system that has reached this stage of development.
+Modify each board that is to appear on page 3 as shown in diagram 2, or fit
+the board with equivalent switching if you want the board to be usable on systems
+without the page 3 signals, or with software that has not allowed for the use of
+paged addressing.
+</p>
+<p>
+The circuit to provide the page 3 read and write signals is shown in diagram
+1. It will not take up much space on the prototyping board, as it consists of very
+</p>
+<p>
+few components. It could even be fitted to the end of the mother board if you are
+that short of space. A header should be made up with links from pins 1 to 16 and
+5 to 12 for page 3 operation; different header connections will allow for different
+page selections it is even possible to have the read signal on one page and the
+</p>
+<?php columnEnd(1); ?>

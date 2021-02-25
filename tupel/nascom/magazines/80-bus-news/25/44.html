@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+44
+</p>
+<p>
+CP/M Operating System
+</p>
+<p>
+The Galaxy uses the familiar CP/M version 2.2 as its operating system.
+Little need be said here about CP/M and its utility programs as these have all
+been adequately covered elsewhere. However, the Galaxy features a number of
+small but significant improvements related to the BIOS. Many, criticisms have
+been levelled at CP/M as an operating system, not the least of which refer to
+its &lsquo;unfriendliness&rsquo;. Some criticism is justified, as is probably the case for
+any operating system, but CP/M comes in for a lot of unjustified criticism,
+which is not the fault of Digital Research, but the fault of the programmers
+who wrote the BlOSes for various machines. Gemini amply demonstrate what can
+be done to confound the critics, and deserve the highest praise for both the
+orderly approach and the manner in which they have removed much of the
+supposed unfriendliness of CP/M without touching a byte of CP/M itself.
+</p>
+<p>
+Perhaps the worst areas of CP/M are its very bald and unhelpful disk
+error trapping. Now as the disk access routines are in the BIOS and as stated,
+the BIOS is the province of the system programmer and not Digital Research,
+scope exists to improve things. With the Galaxy the days of &lsquo;BDOS ERROR ON-DRIVE
+x&rsquo;, a very unhelpful statement, are gone. In the event of a disk
+read/write error, the Galaxy BIOS traps it and attempts to reread it four
+times, if that fails, then the heads are drawn back to track 0, repositioned,
+and the read attempted another four times. Only after this is an error
+reported with a message indicating the type of error, the track and sector
+where the error occurred and a polite request to the user to either try again,
+accept the error anyway or boot the system. In the odd instances where disk
+errors have occurred and been reported, the fault can often be cleared by
+removing and replacing the disk in the drive and then requesting a retry.
+</p>
+<p>
+Another notable improvement is the &lsquo;on screen&rsquo; editing using the
+cursor controls. An invaluable feature, particularly for careless two finger
+typists such as the author. The CP/M input works normally until the EDIT key
+is depressed, where upon the cursor changes from its normal underline symbol
+to a solid inverse video block, indicating edit mode. The cursor can then be
+moved around the screen at will and incorrect input lines edited. This feature
+was found to be particularly useful with MBASIC, as most editing could be
+achieved without recourse to the somewhat cumbersome internal Microsoft
+editor. The screen editing suffers from two limitations, the edit line must
+not exceed one displayed line, 80 characters, and it can only be used with
+programs that use the CP/M buffered line input mode. These features are all
+under the control of the programmer who wrote the original BIOS, and not a
+function of the Galaxy hardware, so it is pertinent to ask why these features
+do not seem to have appeared on other machines?
+</p>
+<p>
+In common with most implementations of CP/M, there are a number of :
+default modes, whether to run a program on start up, what type of output
+device to select, etc, which, whilst selectable by the user, are often poorly
+documented (if at all) and usually hard to find. Likewise the hardware also
+has a number of defaults which need to be declared on start up, such as the
+speed of the UART, etc. Gemini overcome this problem by supplying a small
+utility program, CONFIG.COM, which allows all the defaults to be set in the
+most simple manner. This program is a delight to use and works by using a menu
+of the options available and then allowing the particular option to be set
+using the screen editing. The program is self documenting and explains the
+consequences of any particular default set up.
+</p>
+<?php columnEnd(1); ?>

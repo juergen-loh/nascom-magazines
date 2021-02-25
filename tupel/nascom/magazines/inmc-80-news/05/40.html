@@ -1,0 +1,86 @@
+<?php columnStart(1); ?>
+<p>
+Each directory entry is 32 bytes long. Sixteen bytes for the block
+allocation map (telling CP/M where it put the blocks), and sixteen bytes used
+to store the file name, the extent record and the actual number of sectors
+used for that entry. Most files will have only one extent, but large
+programmes like MBASIC take more than 1. (MBASIC is 24k three times the Nascom
+BASIC).
+</p>
+<h4>
+BIT mapping
+</h4>
+<p>
+CP/M knows for each file which sectors (or strictly each block) that
+has been used, but needs to know how many and which blocks or sectors are
+free. This it does with a bit map. It uses a sector of 128 bytes to store the
+sectors used as 1 bit in each byte. It can then know exactly which and how
+many blocks are used up. A second advantage is that if it wants to set aside a
+portion of disk not to be used it only needs to set the bit map and the system
+will not use them. Clever, eh.
+</p>
+<h4>
+CP/M Commands
+</h4>
+<p>
+There are a number of commands within CP/M, such as DIR (directory),
+ERA (erase), etc. Note that these are single word commands. If CP/M was given
+a single word command, but could not find the name, it assumes it is the name
+of a file ending with the &lsquo;file type&rsquo; .COM and loads that in and executes it,
+so you can add your own commands. Better still!
+</p>
+<p>
+For example if you rename BASIC as RUN.COM and you type RUN STARTREK,
+CP/M will load BASIC and then load the basic program STARTREK. It is almost
+friendly.!
+</p>
+<p>
+Well so much for this week/month/quarter/year.
+</p>
+<?php hline("20%"); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-40-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+Review of the Arfon Speech Synthesis Board 
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Steven Hanselman
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+The board comes well packed in a cardboard box. The board itself is
+contained in an anti-static treated bag. The board is Nasbus compatible
+although at 8" x 4" it is half the size of most Nasbus boards. Input to the
+board is through port F6 (hex) that&rsquo;s 246 (decimal). Output from the board is
+audio through a small but adequate speaker attached to the pcb, or a 3.5mm
+jack socket to an external speaker or amplifier. A status bit is returned via
+port F6 to tell you when the board is ready to accept another word. The speech
+synthesis part contains 144 pre-programmed words contained in two 64k bit
+ROMs. These ROMs are the same type of ROMs as the Nascom Basic ROM, so if you
+plug them into the Basic socket of the Nascom, you could tabulate them and
+probably work out how the speech is stored. Having done that you could
+purchase some more 64k roms (Maplins sell them) and find some way of
+programming your own speech set. (Doubtful but interesting premise. Ed.)
+</p>
+<p>
+The board is exceptionally easy to program in Basic, all that is
+required is that you use the WAIT statement to monitor the busy line until
+free and when free output the value of the next word that you want the board
+to say. Although the ROMs only have a 144 word capacity, it is possible to
+make up almost any word that you want by truncating parts of words and using
+truncated parts to make the new word. This is not ideal, as unfortunately, the
+way the Digitalker produces such good quality speech is by adding emphasis to
+certain characteristics within speech, such as raising the tone near the end
+of the word, and because of this when you put pieces of words together you
+sometimes find the words sounding slightly wrong. Apart from this the
+Digitalker board seems to be good value for money and great fun to use. The
+documentation fs splendid as it reveals everything that you require to know
+about the board, how to use it, and how it works.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

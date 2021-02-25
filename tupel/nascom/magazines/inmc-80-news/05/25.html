@@ -1,0 +1,81 @@
+<?php columnStart(1, "noindent"); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
+</h1>
+<h3>
+THE AY-3-8910 PROGRAMMABLE SOUND GENERATOR MEETS THE NAS-BUS
+</h3>
+<h3 class="author">
+Andy Tipler<br>
+Huntingdon
+</h3>
+<p>
+I am sure many readers are aware of the availability of the General
+Instrument&rsquo;s AY-3-8910 programmable sound generator (&rdquo;super-easy to
+interface to the S100 and other buses...&rdquo;) from several suppliers
+currently advertising in the various computer magazines.
+</p>
+<p>
+In my innocence, I bought one of these devices and, although it&rsquo;s not
+too difficult, I found that interfacing is not as straight-forward as
+it first appears. I thought that my experiences and subsequent design
+of a working NAS-BUS compatible board (that&rsquo;s the correct terminology
+isn&rsquo;t it?) may be of interest to other NASCOM 2 users.
+</p>
+<p>
+In the first place any would-be user intending to interface and use the
+PSG chip with a NASCOM 2 would be well advised to study the NASCOM
+documentation (again) and to refer to several publications on using
+the PSG (see list of references at end of this article). In this
+respect I will not give detailed descriptions of the programming
+techniques involved, but rather concentrate on the hardware considerations
+specific to interfacing to the NASCOM&nbsp;,
+</p>
+<p>
+What does the AY-3-8919 PSG chip do?
+</p>
+<p>
+The PSG chip is a complex user-programmable digital to analogue
+converter specifically designed for audio sound output. The logic is
+TTL compatible and is thus able to be linked to the NAS-BUS. The chip
+contains 16 user-accessible resisters, each containing 4 to 8 bits
+depending upon its application. Two of these registers are dedicated to
+supporting the two 8-bit parallel I/O ports provided &ndash; useful for
+Joysticks, A to D converters etc (handshakes and interrupts are not
+catered fer). The remaining registers dictate the type of sound
+generated. Three analogue outputs are provided, these can adjusted
+independently for frequency and amplitude. A noise generator with
+variable pitch can be mixed with any of the above outputs. There is
+also an envelope generator, the profile of which can be programmed for
+frequency and shape. One of the apparent strong selling points of this
+device is that it will operate independently of the host CPU. This is
+certainly true for continuous sounds (boring) or sounds controlled by
+the envelope generator, but almost any &ldquo;interesting&rdquo; sound will require
+a lot of attention by the CPU. One way of improving this situation
+might be to use the Z80 CTC chip to interrupt drive the PSG at
+predefined time intervals leaving the CPU to get on with its business
+most of the time. However despite this, the AY-3-8910 does produce some
+amazing sounds and is very easy to operate.
+</p>
+<p>
+Options available for interfacing the PSG to a NASCOM 2:
+</p>
+<p>
+a) Configure it as part of the memory. The articles in PCW and PE use
+this approach to link the PSG to a rival (?) computer kit, using PEEK
+and POKE to address it. While this is fine if you have odd memory
+locations scattered around your memory map, it does no justice to a
+system such as the NASCOM 2 where every bit of memory may be put to
+more efficient use.
+</p>
+<p>
+b) Attach it to the PIO port. This is very easy to do, however if you
+adopt this approach you will soon find that it does give a large
+software penalty over alternative methods: the PSG is controlled by
+pulses, the timings of which may be critical, so the PIO (which gives a
+latched output) must be repeatably set and reset, applying delays if
+necessary, in a specific order to control the PSG. This effectively
+more than doubles the the amount of software required to drive it,
+making life rather tedious.
+</p>
+<?php columnEnd(1); ?>

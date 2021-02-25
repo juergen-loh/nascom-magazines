@@ -1,0 +1,132 @@
+<?php columnStart(1); ?>
+<p>
+For convenience in programming and display, the numbers 1 to 19 are
+represented by the letters A to S. At the start of the search, and when a solution has
+been found, the program pauses to allow the position to be noted down. Any key
+depression will cause the search to be resumed. The program terminates when there
+are no further possible arrangements.
+The first solution will be found in just over four minutes, and the second in
+another two and a half minutes (at 4 Mhz). Further solutions will require considerably
+more patience, but those interested enough may wish to run the program
+exhaustively in order to uncover all the possible arrangements and discover if there
+exists more than one unique solution.
+</p>
+<p>
+PROGRAM LISTING
+</p>
+<p>
+0C80
+0C82
+0C83
+0C86
+0C89
+0C8C
+0C8E
+0C90
+0C93
+0C95
+0C97
+0C9A
+0C9B
+0C9C
+0C9D
+0C9F
+0CA1
+0CA3
+0CA6
+0CA7
+0CA9
+0CAA
+0CAC
+0CAF
+0CB1
+0CB4
+0CB5
+0CB7
+0CB9
+0CBA
+0CBB
+0CBD
+0CBE
+0CC0
+0CC1
+0CC2
+0CC5
+3E 0C
+F7
+01 11 00
+11 1A 08
+21 A9 0D
+ED B0
+3E 3F
+CD 28 0D
+3E 41
+06 13
+21 99 0B
+77
+3C
+23
+10 FB
+DF 7B
+3E 20
+CD 28 0D
+03
+3E 14
+B9
+28 4D
+CD 15 0D
+3E 40
+21 98 0B
+3CONXTNUM
+FE 54
+28 44
+23
+BE
+20 F7
+12
+36 20
+F5
+E5
+21 5B 0D
+09
+TABLE
+FORWRD
+LD A, 0CH
+RST ROUT
+LD BC, 11H
+LD DE 081AH
+LD HL, TITLE
+LDIR
+LD A, 3FH
+CALL HEXGON
+LD A, 41H
+LD B, 13H
+LD HL, 0B99H
+LD (HL), A
+INC A
+INC HL
+DJNZ TABLE
+SCAL BLINK
+LD A, 20H
+CALL HEXGON
+INC BC
+LD A, 14H
+CP C
+JR Z, SOLN
+CALL HEXLOC
+LD A, 40H
+LF HL, 0B98H
+INC A
+CP &ldquo;T
+JR Z, REPLAC
+INC HL
+CP (HL)
+JR NZ, NXTNUM
+LD (DE) A
+LD (HL), 20H
+PUSH AF
+PUSH HL
+LD HL, CHKLST
+ADD HL, BC
+</p>
+<?php columnEnd(1); ?>

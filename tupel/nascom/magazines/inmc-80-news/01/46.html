@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+ZEAP 1.1 -&gt; 2.0
+</h1>
+<h2>
+HOW TO CONVERT A ZEAP 1.1 FILE TO ZEAP 2.
+</h2>
+<p>
+(The new workspace starts at 2000 HEX).
+</p>
+<p>
+1. Make a note of the number displayed on the top right of the
+screen, when the file is loaded under ZEAP 1.1. Call this
+value TTTT.
+</p>
+<p>
+2. Load the file and copy it to the new location by entering:
+<br>
+I 1B0D 2002 8000
+</p>
+<p>
+3. Examine the address at 2002 &ndash; 2003. Call this LLLL. (Remember
+low order byte is stored first.)
+</p>
+<p>
+4. Calculate TTTT &ndash; LLLL by entering:
+<br>
+A LLLL TTTT
+<br>
+and looking at the second value displayed. This gives the
+symbol table area. Put this value at 2002 &ndash; 2003.
+</p>
+<p>
+5. Calculate LLLL + E4F5 by entering:
+<br>
+A LLLL ESFS
+<br>
+and looking at the first value displayed. This gives the file
+length. Put this value at 2000 &ndash; 2001.
+</p>
+<p>
+6. Enter I 2000 0C80 6 (to store the start of the file).
+</p>
+<p>
+7. Load ZEAP 2.0, and execute it by entering:
+<br>
+E 1000 8000 2000
+<br>
+(E D000 8000 2000 for the EPROM VERSION).
+</p>
+<p>
+8. Enter N to exit from ZEAP.
+</p>
+<p>
+9. Enter I 0C80 2000 6 (to restore the start of the file).
+</p>
+<p>
+10. Execute ZEAP 2.0 by entering:
+<br>
+E 1003
+<br>
+(&ndash; D003 if you have the EPROM version).
+</p>
+<p>
+11. Check that TTTT + 0F45 equals the value now displayed on the
+top line as Free = XXXX.
+</p>
+<?php hline("20%"); ?>
+<h1 id="article2">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-46-1.png"); ?>
+</h1>
+<p>
+It has come to our notice that there is a potential fault on
+the Nascom 8 amp PSU. For some reason the &lsquo;0 volt&rsquo; rail is not
+connected to mains earth, which means that the chassis is &lsquo;floating&rsquo;.
+Now this is alright until the nurk assembling the power transistors on
+the PSU heatsink leaves out the insulating washers. Connect it all up,
+and the chassis floats at about 12 volts. Earth the chassis, and
+bang&nbsp;!!!! Nascom say this has now been put right. But you have been
+warned.
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

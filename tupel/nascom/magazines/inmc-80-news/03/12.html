@@ -1,0 +1,34 @@
+<?php columnStart(1); ?>
+<p class="noindent">
+Now the software, a table driven loop with nothing specific to a
+traffic light application, Each byte of the table is used as follows:
+</p>
+<pre>
+BIT   7 6 5 4 3 2 1 0
+USE   R Y G &lt;-delay-&gt;
+</pre>
+<p>
+Where R Y and G are the outputs to the LED drivers (1=on), and the
+lower 5 bits hold the number of seconds (approx) that the output is
+maintained for. The special code 00 denotes the end of list and causes
+the table pointer to be reset to the start, The program is relocatable
+and will run on NAS-SYS or T1 to T4 monitors, execute at E00:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-12-1.png"); ?>
+<h2 id="article1">
+KEYBOARD BITS
+</h2>
+<p>
+I was surprised to see in INMC80 1 that Martin Dyer was using the
+PIO and push button switches for the controls on a space invaders game.
+The NASCOM keyboard is suitable for this job, providing the correct
+software is used to read it. The KBD routine does give information
+about keys that are held pressed, as anyone with a repeat keyboard will
+confirm. Whenever the routine is called it updates the bit map, KMAP
+from C01 to C09, where each bit in the map represents a key on the
+keyboard (1=pressed), Here&rsquo;s a short program to tell you the byte and
+bit in KMAP for any one key as it is pressed, The program should run
+on NAS-SYS or any of T1 to T4 monitors, and is relocatable, execute at
+F00:
+</p>
+<?php columnEnd(1); ?>

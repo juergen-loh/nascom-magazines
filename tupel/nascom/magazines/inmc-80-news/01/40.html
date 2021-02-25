@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Assemblers
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+ASSEMBLERS &amp; NAS-SYS
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+By R. O&rsquo;Farrell
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+Pending the availability of Zeap 2.0 at a reasonable price to existing
+users of Zeap 1.0 who have changed to Nas-Sys, a patch tape from DJ
+Sotware renders your existing ZEAP fully usable on Nas-Sys. DJ Software
+are the suppliers of Revas tapes (blessed by many who couldn&rsquo;t wait for
+PCW to finish publishing the program), and this patch tape (price 7.50)
+will probably prove more useful. The conversion is child&rsquo;s play for
+T4/B-Buggers (sounds very doubtful, that), but a little bit trickier
+for T2 users. Under your old monitor, you write a copy of the Zeap to
+tape using the &lsquo;W&rsquo; command on T4/B-Bug, or &lsquo;D&rsquo; on T2. Then you power
+down and change from the old monitor to Nas-Sys. Load the Zeap tape you
+have just written (&rsquo;R&rsquo; command on T4/B-Bug) Here is where T2 users have
+difficulty. They will have to write a small input routine to scan the
+input for Nascom backspace, clear screen and new line, and substitute
+ASCII characters for them. In any event, when the Zeap is loaded, do
+NOT attempt to execute it. Instead, play the patch tape into the
+machine. (No need for any commands). The patch tape will perform a
+series of modifications and insertions, which consist for the most part
+of replacing all system calls with the Nas-Sys &lsquo;RST&rsquo; and &lsquo;SCAL&rsquo; number,
+and a padder NOP to fill the three byte space. There are also a number
+of calls to an approx 300 (dec) byte extension at 1B08H. All this is
+done automatically by the tape. When the tape has finished, you can now
+enter Zeap (E F00) in the usual way. The tape is fully commented, in
+the sense that it tells you at all times what it is doing (but not
+necessarily in very great detail) and it is accompanied by a five page
+commentary sheet, which is hard copy of the tape.
+</p>
+<p>
+On entry, you will notice one difference: the top line message is now
+on the second line from the top, and the serial number of your copy is
+replaced by &ldquo;OPTION 00&rdquo;, with whatever option is set displayed. This
+top line performs a very useful function it blanks out when the
+Assembler cannot accept a command, and restores when it can. The V
+(list) command now lists in blocks of eight lines (Newline to continue,
+any other key to terminate) and the F (find) command allows you to tell
+it what line to start or continue the search at. The N (Nas-Sys) exit
+command, when used with two arguments, allows lines of entry to be
+written to tape or externally with no line numbers &ndash; a simple text
+handler.
+</p>
+<p>
+A very useful patch, allowing one to dispence with the schizophrenia of
+using and thinking for two monitors.
+</p>
+<p>
+Zeap 2.0 would be useful as it gives a symbol table, (and possibly
+paginated listing&nbsp;? (no &ndash; Ed.)), but having spent 30.00 on Zeap 1 I
+doubt if many will be tempted to spend the same amount on Zeap 2.
+</p>
+<p>
+Those who are tempted to disassemble their Zeap 1 with Revas, or a
+similar disassembler, will find that F00H to F70H (approx) consist of
+workspace and data areas, and 1003H to 1268H consists of the dictionary
+These should be defined as data areas for the disassembler. There may
+also be minor unpleasantness wherever a Restart is used under Nas-Sys,
+but they can be coped with.
+</p>
+<?php columnEnd(1); ?>

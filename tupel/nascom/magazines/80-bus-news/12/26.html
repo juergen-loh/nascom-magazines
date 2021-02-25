@@ -1,0 +1,104 @@
+<?php columnStart(1); ?>
+<p>
+Program flow is as follows:
+</p>
+<p>
+1) Put up the title
+</p>
+<p>
+2) Initialize the &lsquo;letters tried&rsquo; buffer and the &lsquo;trys&rsquo; counter
+3) Throw a random number from 1 to the maximum number of words
+4) Locate that word and copy it to a &lsquo;word buffer&rsquo;
+</p>
+<p>
+5) Display the &lsquo;I&rsquo;ve chosen a word&rsquo; message
+</p>
+<p>
+6) Test to see if the maximum number of trys has taken place
+6a) If not the maximum number of trys, go on to 7
+</p>
+<p>
+6b) If so, display the &lsquo;lose&rsquo; message
+</p>
+<p>
+6c) Display the word
+</p>
+<p>
+64a) Display the &lsquo;another go&rsquo; message
+</p>
+<p>
+6e) Get an input, validate it and restart or exit as appropriate
+7) Display the &lsquo;what letter&rsquo; message and get a letter
+</p>
+<p>
+8) Check the &lsquo;letters tried&rsquo; buffer
+</p>
+<p>
+8a) If not in the &lsquo;letters tried&rsquo; buffer, go on to 9
+</p>
+<p>
+8b) Display the &lsquo;letter tried&rsquo; message then back to 6 7
+9) Put the letter in the &lsquo;letters tried&rsquo; buffer
+</p>
+<p>
+10) Count this try
+</p>
+<p>
+11) Sean through the word to see if the letter&rsquo;s there
+</p>
+<p>
+11a) If not found go on to 12
+41b) If found flag it by making bit 7 high (adding 80H)
+</p>
+<p>
+12) Test the word to see if all the letters now flagged
+</p>
+<p>
+12a) If not all flagged, then on to 13
+</p>
+<p>
+12b) Display &lsquo;you&rsquo;ve won&rsquo; message, then back to 6c
+</p>
+<p>
+13) Display the &lsquo;trys&rsquo; message, and the number of trys so far
+</p>
+<p>
+14) Display the word, flagged characters as letters, unflagged as&nbsp;.!
+15) Display two newlines then back to 6
+</p>
+<p>
+As you can see the philosophy is simple, and presents no problems to the programmer.
+</p>
+<p>
+Now onto the bits in detail, from the above, it&rsquo;s obvious we need three
+workspaces, one to hold the word, one to hold the letters tried and one to hold the
+number of trys taken. We also need two others, a three byte workspace for the RANDOM
+routine (which must be primed with three numbers, any numbers), and space for the
+program stack.
+</p>
+<p>
+In order then, the workspace &lsquo;RING&rsquo; is the workspace for the RANDOM routine,
+it is primed with the numbers 01H, 02H and 03H, although so long as this work space
+contained any old rubbish it wouldn&rsquo;t matter (it&rsquo;s random after all). The only thing
+the RANDOM routine doesn&rsquo;t like is if all three workspace bytes are OOH.
+</p>
+<p>
+WBUF is the &lsquo;word buffer&rsquo;, this must be one byte longer than the longest word
+it is expected to hold, so this is what limits the word length to 9 characters, and
+subsequently allows me to indulge in a nice fiddle of which more anon.
+</p>
+<p>
+TRYS is the one byte store where we keep count of the number of trys taken. To
+simplify matters, the contents will be in packed BCD, as we are hardly likely to
+indulge in more than 99 trys. ,
+</p>
+<p>
+Next comes the &lsquo;letters tried&rsquo; buffer, CHRTRD, which will be the maximum
+number of trys plus one long. Now in the system equates I defined the maximum number
+of trys, NTRYS, as being 12H (HEX, as the comparison will be done in packed BCD, 12H
+is the representation of 12 in packed BCD), therefore if we make the length of CHRTRD
+equal to NTRYS in HEX, it&rsquo;s got to be longer than the maximum number of trys without
+us having to worry exactly how long it is, let the assembler take the strain, that&rsquo;s
+what I say.
+</p>
+<?php columnEnd(1); ?>

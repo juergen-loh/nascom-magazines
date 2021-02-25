@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+Dateline Algeria
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+from Richard Bateman
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p class="noindent">
+Dear INMC80,
+</p>
+<h4>
+BLACK FLASHES
+</h4>
+<p>
+I agree with S.C. Willmott that the black flashes are irritating. To get rid
+of them should be an easy matter of connecting the BUSREQ line to the video blanking,
+so that the Z80 does not access the video memory during the display time. This would
+cause the Z80 to work a little slower than it does at the moment, but it is only like
+having a 2MHz clock. Note, it could still suffer from the dreaded black flasher&nbsp;, but
+only if the Z80 was making an access to the screen at that moment. The loss of speed
+can be calculated as:
+</p>
+<table style="margin-left: 3em">
+<tr><td>loss%</td><td>= (1&ndash;(16*14*48)/(320*64)</td></tr>
+<tr><td></td><td>= 1&ndash;(time displaying)/(total frame time)</td></tr>
+<tr><td></td><td>= approx 50%</td></tr>
+</table>
+<p class="continued">
+This would be equivalent to a clock rate of 2MHz. The lines must be tied FALSE so that
+they don&rsquo;t do funny things while the bus is idle. I have not tried this but it should
+work.
+</p>
+<h4>
+BASIC TOOLKIT (Parkinson)
+</h4>
+<p>
+With regard to Mr Parkinson&rsquo;s documentation, I think that he has got it about
+right, except that as his toolkit tends to be disabled by any sort of reset, and has
+to be reloaded, (this is a serious drawback), a mention of how to effect a warm start
+would be a help. (You ain&rsquo;t read the instructions, execute an address three bytes less
+than the top address used by &lsquo;Toolkit&rsquo;, and it&rsquo;ll warm start. Ed.) On the toolkit, a
+few unwelcome suggestions are as follows. The find command could be made to translate
+the codes by using the BASIC itself. If the string was entered as a line, say line 0,
+then let the Find do its comparison. After the command, the line could be deleted.
+Long lines could be handled by looking for a &ldquo;\&rdquo; as the first character, and then
+including the previous line as the start of the basic line, using a modified INLIN. It
+is possible to keep making suggestions, but then it gets a bit out of hand. The
+renumber and cross reference are worth it alone, with the others as a bonus. The find
+needs to use reserved words, and a warm start should be enough to make an issue 2.
+</p>
+<h4>
+NEW RAM64 BOARD and THE SON OF PAGE MODE
+</h4>
+<p>
+I have installed a RAM64 board onto my N2, which means that I now have 96k on
+line. The page mode is installed on both RAM B and the RAM64. The RAM64 worked first
+time and without problems, but the RAM B started giving problems for the first time in
+a year. I have not tracked down the problem yet, but sometimes it works and some times
+it doesn&rsquo;t. One of those! Since I only have a 3A psu, it may be loss of power, but I
+will try putting heavy wires from the psu to the bus.
+</p>
+<p>
+An interesting problem arises when I try to use BASIC. The BASIC initialises
+Ok but as soon as I hit a key, it crashes. Particularly when I have the Toolkit
+loaded. It could be something to do with the IO select line used by the page mode
+hardware. It is surprising that Nascom used 128 ports! (What? &ndash; Ed.)
+</p>
+<p>
+A weakness of the N2 memory map means that the workspace of a lot of the
+firmware is not, and cannot be put onto a page. This is a serious draw back to the
+system as designed. Another drawback is the inability to use DMA to the closed page.
+When (if) I design my DMA disk interface to run with my (also yet to be designed)
+super disk system, I won&rsquo;t be able to swap closed pages to provide a disk cache
+memory. I can&rsquo;t think what I would use it for..............
+</p>
+<p>
+That aside, the page mode is a bit limited in its use because the system turns
+off whole boards at a time. That means it is necessary to copy the contents across
+from one page to the other of portions that are common. Also, addresses occupied by
+firmware can&rsquo;t be got at, such as the bottom 4k, the top 8k. A slight modification to
+the board would allow a substantial increase in flexibility. If each card had its own
+port number, and the 8 bit latch was used to enable either blocks of memory (in 16K
+</p>
+<?php columnEnd(1); ?>

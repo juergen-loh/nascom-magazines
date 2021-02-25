@@ -1,0 +1,138 @@
+<?php columnStart(2, 2); ?>
+<p>
+With the advent of high capacity disk systems, and
+the need to make the sectors larger, CP/M had a
+problem as physical sectors were no longer 128
+bytes long. CP/M 2.2 introduced this idea called
+sector deblocking which overcomes the problem of
+different systems with different size sectors, at the
+same time leaving CP/M internally compatible with
+128 byte sectors, which CP/M programs still use
+(compatibility between CP/M 1.4 and CP/M 2.2).
+CP/M now carries out a two stage disk access.
+Firstly it calculates the start of physical track/sector
+containing the 128 bytes it&rsquo;s after. This n-length
+sector (512 bytes in the case of Gemini) is read into
+a work space called the deblocking buffer. Next
+CP/M calculates the place in the buffer where the
+128 byte sector resides and copies it to the DMA
+address as if the 128 bytes came straight from the
+disk in a old CP/M system (or one which still uses
+physical 128 byte sectors).
+</p>
+<p>
+The problem was I was reading and writing 128
+byte logical &lsquo;sectors&rsquo; (in inverted commas, as the
+Gemini physical sector size is 512 bytes). The
+process for one single 128 byte &lsquo;sector&rsquo; goes like
+this:
+</p>
+<p>
+READ (from Winnie)
+CP/M calculates the appropriate physical
+track/sector where the 128 bytes
+required are situated.
+Wait for that sector to appear (very fast
+as the Winnie controller probably
+knows where it is).
+Read in that physical sector to the
+deblocking buffer.
+Calculate the position of the 128 byte
+logical sector.
+Copy the 128 bytes required to the DMA
+area.
+</p>
+<p>
+WRITE (to disk)
+CP/M calculates the appropriate 512
+byte physical track/sector where the
+128 bytes are going to go.
+Wait for that sector to appear (up to
+198mS delay)
+Read that physical sector into the
+deblocking buffer.
+Now write the 128 byte logical sector
+from the DMA buffer into the deblocking
+buffer.
+Wait for the physical 512 byte sector to
+appear again (200mS delay)
+Write out the deblocking buffer to the
+512 byte physical sector on the disk.
+</p>
+<p>
+So you can see, there might be the best part of half
+a second between consecutive 128 byte sectors,
+and there&rsquo;s an awful lot of 128 byte sectors in 650
+odd K!! OK, so conversely, how come it worked so
+well between the Winnie and the RAM disk. Again,
+simple. In the case of the RAM disk, the thing is
+RAM, so no delays in waiting for sectors to come
+past, and it&rsquo;s configured in 128 byte sectors anyway
+(I think). Just calculate the address and shove the
+data at it. The Winnie is less obvious. It&rsquo;s all to do
+with the Xebec controller fitted. The real purpose of
+the Xebec is to act as a high speed interface
+between the Winnie which reels data in and out at
+mega-bits per second, and the computer which is
+quite pedestrian by comparison, only working in
+hundreds of kilo-bits per second. The Xebec
+contains a large RAM buffer for the Winnie to work
+in, so shovelling 128 bytes at a time is just like
+talking to a RAM disk. The Xebec&rsquo;s own processors
+(two wierd dedicated things and a Z80) and RAM
+take over after the data has been captured, so
+again, no hanging about for sectors to appear in
+the right place before a read or write occurs.
+</p>
+<p>
+So how could I speed up the Winnie to disk copy
+routine? Well the cause of the problem is this
+swapping of data about in the deblocking buffer.
+The deblocking logic is quite clever, although if
+you&rsquo;ve read the source, quite messy. It knows not
+to flush the buffer if the same physical track/sector
+information is still current and no data write has
+been made to it. If a write to it has been made, then
+is still doesn&rsquo;t write whilst the same physical
+track/sector remains current. However, as soon as
+the physical track/sector is changed, or the file is
+opened or closed, then the buffer is flushed if no
+writes were made, or written out then flushed if
+writes were made to it.
+</p>
+<p>
+in a sequential read or write situation then, the
+deblocking knows what&rsquo;s going on, so assuming
+that a write of a newly created sector was to be
+made, the 512 bytes of data is accumulated in the
+debiock buffer, and when complete, the whole
+physical sector is written out without any delay
+caused by reading in the sector and then writing it
+out. Likewise on a read, reading sequentially
+means that four 128 byte logical sectors are read
+into the deblock buffer and processed one at a
+time, the next read would be of the next 512
+physical byte sector. (On a Nascom or Gemini the
+normal &lsquo;skew&rsquo; of 2 allows this to happen efficiently.)
+So the answer would be not to read in 128
+bytes then write it out again, but to read in at least
+512 bytes and then to write it out again. In fact 512
+bytes is not really enough. Better still to read in as
+much as possible into the TPA, say from the end of
+the copy program to the base to CCP, and then to
+write it out as a lump. This is how SWEEP or PIP
+work (have you Gemini MultiNet network owners
+noticed that PIP seems slower with the smaller TPA
+on the server using the 24K network system than
+when using the 64K normal system?).
+</p>
+<p>
+I didn&rsquo;t bother to do this with the &lsquo;mini-PIP&rsquo; for
+transfering the indexes about, as the calculation of
+available TPA space and the complications of
+reading and writing buffer-fulis of data wasn&rsquo;t
+worth the effort. Apart from that it meant more
+&lsquo;decimalized&rsquo; POKE space within the dBASE program,
+making the thing more difficult to patch by
+</p>
+<?php columnEnd(2); ?>

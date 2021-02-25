@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+The Interrupt System of the Z80 by R. O&rsquo;Farrell
+</p>
+<p>
+INI EU EE IND BO EEE RD RU EO BE EO
+</p>
+<p>
+The interrupt structure of the 4280 microprocessor chip is one of the
+least understood and at the same time potentially most powerful facilities
+provided by this i.c. My purpose in writing these notes is to survey the
+interrupt structures offered us, to encourage other users to try these out for
+themselves.
+</p>
+<p>
+It should be remarked immediately that it while it is relatively easy to
+use one interrupt at a time, a complex set up is not easily obtained on a general
+purpose machine, although on a dedicated machine such as a process controller it
+is possible. It is very likely that a Nascom or Gemini system will be used as a
+development system, to develop software for a purpose built dedicated controller.
+This possibility underlies the following notes. Whether a dedicated controller
+will be used, or the system software of a Nascom/Gemini modified to support
+multiple interrupts is a matter for the individuals concerned, but it is
+essential that each interrupt be set up and carefully debugged along the lines we
+will examine.
+</p>
+<p>
+By way of an aside, let me remark that a dedicated controller is no great
+deal. Consider a minimum Z80 system. This could comprise a similar configuration
+to that shown in Section 9 of the Mostek manual &ndash; a Z80, an EPROM, some RAM and a
+PIO. It would also need an oscillator to provide a system clock. A minimum system
+of this nature would not need any buffering, and could possibly be expanded with
+another PIO or two before that became necessary. Such a system could be wired up
+on a prototype board. What would it do? The PIO would allow it to sample or
+switch up to 16 lines without getting involved in elaborate multiplexing
+circuitry. A reasonable assumption might be that it would treat eight of these as
+inputs, and the other eight as outputs. An example of what can be achieved in
+this way was published in Micropower, Vol 2, No. 1, where it was shown how a
+Nascom could control a washing machine. Another example of what a dedicated
+system might do is to control a dot matrix printer, such as the IMP or EPSON.
+</p>
+<p>
+As computer enthusiasts, we are concerned always with the finer points of
+Z80 usage. We have two problems &ndash; to get the hardware to work and to get the
+software written and debugged. These two problems are complementary and depend to
+a certain extent one on the other. In these notes, I will deal only with the
+software side of matters and will assume that the hardware is taken for granted
+and assumed correct &ndash; that all signals are clean, bounce free, and of the correct
+voltage levels. This is not always so!
+</p>
+<p>
+The first interrupt structure on the Z80 is the Non Maskable Interrupt,
+known familiarly as the NMI. Those familiar with the pinouts of the CPU chip will
+know that pin 17 is called /NMI. This is an input, negative edge triggered. That
+is, the transition from high level (normal condition) to low level tells the CPU
+that an NMI is required. The CPU examines the state of this pin at the end of
+every instruction, and if the pin is active, then it proceeds to service an NMI.
+There are a small number of conditions which will prevent the NMI being
+recognised, and I&rsquo;ll mention these to get them out of the way. The first, and not
+very likely condition is if WAIT states are continually being requested the
+current instruction is prolonged and never reaches an end. In consequence the NMI
+test is never reached. Such a condition is hardly likely to arise in serious use
+of a Nascom or Gemini, as the dynamic memory would not be refreshed, and the
+program lost. It might happen in use of a Z80 based controller, where the machine
+was executing Wait states, waiting for a very slow peripheral to react &ndash; said
+peripheral having perhaps gone on the blink! The other failure to see an NMI is
+if /BUSRQ is active, i.e. if something like a DMA chip has control of the bus.
+</p>
+<?php columnEnd(1); ?>

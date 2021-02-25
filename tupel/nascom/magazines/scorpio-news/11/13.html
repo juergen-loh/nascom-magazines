@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+EQUIVALENCE (X1),(X2) .. (Xn)
+</p>
+<p>
+= where X1 4m are sequences of two or more variables or array elenents,
+Separaced by commas. Thus,
+</p>
+<p>
+EQUIVALENCE (GROT(6),THTSGROT(3,2))
+= allows the two arrays to share epace happily.
+Variables can also be EQUIVALENCED &ndash;
+EQUIVALENCE (4,0)
+= te allowed.
+Lf EQUIVALENCE Ls used to save program space, then make sure that you do not
+fall into the trap of letting one of the equivalenced variables or array
+overweite the other(s) The EQUIVALENCE statement is very useful if &laquo; program
+</p>
+<p>
+Contains intermediate varaables or arrays which are not fequired in later&rsquo; stages
+of &amp; program
+</p>
+<p>
+&lsquo;The final method of space saving is to use che COMMON block statement in which
+arrays and variables which appese in more than one of the program subroutine
+fare declared as COMMON at the beginning of each:
+</p>
+<p>
+(COMMON X17 A(20,40),NASTY(100,29
+= are put in each subroutine to eave # modicum of space
+</p>
+<p>
+In a Large program this As very handy! In the above example, arrays A and NASTY
+are stored &lsquo;ins COMMON aren called 41 This area is shared by aii subroutines
+dn &lsquo;which this COMMON statement appears
+</p>
+<p>
+EXTERKAL statement
+</p>
+<p>
+Many functions ace provided in the system Library and can he called up (as in
+BASIC) &lsquo;by Lneluding their name &ndash; fof example, SIN, ADS or PEEK (in POO and
+Profortren) Bat othert are not available and have to be provided from another
+Subroutine or external function &ldquo;The ETERNAL statement docs this by allowing
+the programmer to specify the name of the external subroutine that does the
+Fequired job &ndash; thus if you wanted to calculate the volume of a cylinder,
+Subroutine which provided the area of the top could be called in the EXTERNAL
+Statenene as follows:
+</p>
+<p>
+e porry PRooRAM
+EXTERNAL CIRCAR
+</p>
+<p>
+&copy; TuIS&rsquo;TS-AN EXTERNALLY SUPPLIED FUNCTION WHICH GIVES THE 4REX
+</p>
+<p>
+&copy; OF A cracLe.
+READ( 5, 10) HEIGHT
+</p>
+<p>
+ao FORMAT&rsquo; (F803),
+VoL*HETOHTSCIRCAR
+WRETE(5,190) VOL.
+</p>
+<p>
+100 FORMAT( CYL&rsquo; VOL 1S *,F6.3, CUBIC METRES")
+</p>
+<p>
+Goo rurs\Ts FINE AS LONG AS ALL CYLINDERS HAVE THE SAME SIZE TOPtI1
+&lsquo;END
+</p>
+<p>
+Wote thae if the EXTERNAL statement had been omitted, CERCAR would have been
+incorrectly treated as an ordinary REAL variable by the computer
+</p>
+<?php columnEnd(1); ?>

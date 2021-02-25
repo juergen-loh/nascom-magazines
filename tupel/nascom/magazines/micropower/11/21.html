@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+3) Another hardware solution. The display logic accesses the V.D.U. RAM once
+per microsecond &ndash; it is Just possible to arrange for two accesses in every
+microsecond, and hand over alternate ones to the processor when it needs
+them. Wait state logic can then be used to synchronize the processor with these
+time slots.
+</p>
+<p>
+Now all these are perfectly feasible solutions, but each has its own peculiar
+advantages and disadvantages. Approach (1) for example would need a new
+version of Nas-sys, and would meet with displeasure from all those who like the
+flexibility of memory-mapped display (no more Basic pokes to screen for
+example).
+</p>
+<p>
+Approach (2) involves the processor in waits of up to 48 microseconds, and
+also has some wrinkles associated with the fact that the first character displayed on a
+line is actually being accessed 2 microseconds earlier. This approach formed the
+basis of a brave but unfortunately over-simple attempt in issue 3 of INMC 80 &ndash;
+problems such as this cannot be tackled just with Boolean algebra. The best tools
+are sheets of squared paper on which waveform diagrams can be drawn and
+redrawn, an the detailed information provided by the chip manufacturers on how to
+make Z-80s Jump through hoops.
+</p>
+<p>
+A solution to approach (3) is presented here. It too has its disadvantages:
+early Nascom&nbsp;1&rsquo;s may have V.D.U. RAMs which are too slow to permit two
+accesses per microsecond. As it is, the modification is so simple that it is worth
+trying anyway &ndash; if the result produces spurious display misbehaviour then your RAMs
+are too slow, in which case have a go at approach (2) (if you do, be sure that you
+completely understand the display mechanism, prepare careful timing diagrams,
+and study the Z-80 manual on T-states and access cycles),
+</p>
+<p>
+Another disadvantage is that the Z-80 will no longer be able to execute code
+from the V.D.U. RAM &ndash; which is a daft thing to want to do anyway. (This quirk
+occurs because, for reasons best known to the chip designers, M1 cycles &ndash; code
+accesses &ndash; have a different timing requirement to all others. This already creates all
+sorts of problems on Nascoms, such as the need for wait-states to access
+EPROMS on 4MHz machines.)
+</p>
+<p>
+The advantages of approach (3) are, however, persuasive. Unlike (2), the
+maximum wait of the processor is one microsecond &ndash; undetectable in practice. It is
+extremely simple &ndash; there is little more logic involved than was required for
+the &ldquo;snowplough&rdquo;. The 2MHz and 4MHz versions are similar enough to permit a
+speed selection switch, for those of you whose reflexes are not up to landing a
+moon-rocket at 4 MHz, and don&rsquo;t want to modify software.
+</p>
+<p>
+The waveform diagrams contain all of the theory of operation. One very
+important point to realise is that the processor clock is the inverse of that used
+by an unmodified Nascom &ndash; there is an extra inverter in the signal path. This is
+essential to ensure that the &ldquo;wait state&rdquo; generator is sampled by the Z-80 at the only
+</p>
+<?php columnEnd(1); ?>

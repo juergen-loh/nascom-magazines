@@ -1,0 +1,423 @@
+<?php columnStart(1); ?>
+<p>
+SIMPLE HANGMAN
+</p>
+<p>
+0000 &lsquo;
+</p>
+<p>
+0001
+</p>
+<p>
+0002
+000A
+OO1A
+0000
+0005
+</p>
+<p>
+0003
+oooD
+0012
+</p>
+<p>
+0100
+</p>
+<p>
+C3 ODDS
+</p>
+<p>
+MACRO-80 3.43 PAGE = 1=1
+TITLE SIMPLE HANGMAN
+</p>
+<p>
+Demo program for &lsquo;Dodo&rsquo;s&rsquo; guide part 6
+CP/M &ndash; RP/M version
+</p>
+<p>
+on ae
+</p>
+<p>
+29/05/82
+</p>
+<p>
+3; D. R. Hunt
+; 02 /06/82
+</p>
+<p>
+Revision 0.1
+</p>
+<p>
++280
+ASEG
+</p>
+<p>
+; System equates for CP/M &ndash; RP/M
+</p>
+<p>
+CONIN EQU 1 ; Get a character from keyboard
+CONOUT EQU 2 ; Send a character to display
+LF EQU OAH ; Send a line feed
+</p>
+<p>
+cs EQU 1AH ; Clear screen character
+</p>
+<p>
+WBOOT ; Warm boot jump address
+</p>
+<p>
+BDOS ; BDOS jump address
+</p>
+<p>
+EQU 0000H
+EQU 0005H
+</p>
+<p>
+; Equates for the program
+CTRLC QU 3
+</p>
+<p>
+CR BQU ODH
+NTRYS EQU 12H
+</p>
+<p>
+The exit character
+New line character
+The max. number of trys (must be BCD)
+</p>
+<p>
+tn on oe
+</p>
+<p>
+ORG O100H
+</p>
+<p>
+Start of code for CP/M &ndash; RP/M
+JP START
+</p>
+<p>
+Skip round patch area and text
+</p>
+<p>
+wn an
+</p>
+<p>
+Start of program, to be compatible
+</p>
+<p>
+ORG OC83H ;
+; with Nascom min. config. memory.
+</p>
+<p>
+JE EEEEHEE IEEE HEHE IEH
+HERREREREREER SER PATCHES HHH RERE
+JE E A HIHI HEHEHE IEEE IEEE I Ee
+</p>
+<p>
+rd
+</p>
+<p>
+3; The first patch goes to the keyboard and waits for a key
+; press. The character is returned in A. The patch must
+; preserve all registers and end with a RET. The patch may
+3 be up to 16 bytes long.
+GETCHR: PUSH HL &lsquo; ; Save all the registers
+PUSH DE
+PUSH BC
+LD C,CONIN
+CALL BDOS ;
+POP BC ;
+POP DE
+POP HL
+RET
+DEFB 0,0,0,0 ;
+</p>
+<p>
+Wait at keyboard for an input
+Get the registers back again
+</p>
+<p>
+Pad the space to 16 bytes
+</p>
+<p>
+3; The second patch is to send a character to the display.
+; The patch must preserve all registers and end with a RET.
+; The patch may be up to 16 bytes long.
+</p>
+<p>
+SIMPLE HANGMAN
+</p>
+<p>
+0c9%
+0c94
+0cgs
+0696
+OC9T
+0c98
+OC9A
+ocgoD
+OC9E
+OCOF
+OCAO
+OCA1
+OCA2
+</p>
+<p>
+OCAS
+</p>
+<p>
+OCA6
+OCAd
+OCBS
+OCB4
+Occe
+ocDs
+</p>
+<p>
+ocDs
+ocpe
+OCEO
+OCE4
+OCcES
+OCEC
+OcFO
+OCR4
+OCS
+Ocr9g
+OcFD
+ono1
+</p>
+<p>
+0D05
+oDpog
+opoD
+QDOE
+ODOF
+OD13
+OD17
+ODIB
+</p>
+<p>
+PS
+ES
+D5
+cs
+5F
+OF
+cD
+C1
+mM
+Bm
+Ft
+cg
+00
+</p>
+<p>
+C3
+</p>
+<p>
+01
+</p>
+<p>
+1A
+20
+20
+20
+4D
+20
+47
+</p>
+<p>
+49
+76
+75
+74
+67
+6F
+20
+</p>
+<p>
+20
+14
+TT
+</p>
+<p>
+02
+</p>
+<p>
+0005
+</p>
+<p>
+0000
+</p>
+<p>
+02
+</p>
+<p>
+20
+20
+20
+20
+50
+48
+4D
+</p>
+<p>
+20
+65
+13
+68
+68
+66
+</p>
+<p>
+6c
+65
+6F
+</p>
+<p>
+03
+</p>
+<p>
+20
+20
+20
+53
+4c
+44
+44
+</p>
+<p>
+68
+20
+T4
+6F
+T4
+20
+</p>
+<p>
+65
+72
+T2
+</p>
+<p>
+20
+20
+20
+49
+45
+4E
+48
+</p>
+<p>
+61
+6A
+20
+715
+20
+64
+</p>
+<p>
+74
+20
+64
+</p>
+<p>
+MACRO-80 3.43 PAGE 1-2
+QUTCHR: PUSH AF
+PUSH HL
+PUSH DE
+PUSH BC
+LD B,A
+LD C,CONOUT
+CALL BDOS
+POP BC
+POP DE
+POP HL
+POP AF
+RET
+DEFB O ;
+</p>
+<p>
+Save all the registers
+</p>
+<p>
+Put the char in EB (for CP/M or RP/M)
+</p>
+<p>
+=
+</p>
+<p>
+Send the character to the display
+Get the registers back again
+</p>
+<p>
+oA on
+</p>
+<p>
+Pad the space to 16 bytes
+</p>
+<p>
+The third patch area is to exit from the program.
+No special precautions are required. The patch may be
+up to 3 bytes long.
+XIT: JP WBOOT ;
+</p>
+<p>
+te on on fd
+</p>
+<p>
+Jump to CP/M exit
+</p>
+<p>
+JE HEHEHE HEHEHE HEHEHE HEHEHE RE
+JEHHEEEEEHEE WORKSPACES HHHHHMHEHEHEHEEE
+JEEPS EHEIHEI HEHEHE HEHEHE
+</p>
+<p>
+an en en
+</p>
+<p>
+RING: DEFB 1,2,3
+WBUF: DEFS 10
+</p>
+<p>
+; The ring counter used by RANDOM o
+5
+</p>
+<p>
+TRYS: DEFS 4 ;
+5
+</p>
+<p>
+The temporary word buffer
+Trys taken
+</p>
+<p>
+Table of letters tried
+The stack space
+</p>
+<p>
+CHRTRD: DEFS NTRYS
+DEFS 12H
+STACK:
+</p>
+<p>
+RERERREEEREERNE EEE ER EEE EEE EEE EEE EEE EEE
+JAH EREEEIER OES SACS JHMRIME HME ete
+REEEEEEE EBERT EHIME Ee
+</p>
+<p>
+on ae oe
+</p>
+<p>
+TTLMSG: DEFB cs,&rdquo; SIMPLE HANGMAN",O
+</p>
+<p>
+MSGi: DEFB &ldquo;I have just thought of a &ldquo;
+</p>
+<p>
+CHRCNT: DEFS 3
+DEFB " letter word",0O
+</p>
+<?php columnEnd(1); ?>

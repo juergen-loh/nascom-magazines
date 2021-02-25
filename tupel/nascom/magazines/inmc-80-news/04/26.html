@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<table class="bus-80-allocation">
+<tr><td>58</td><td></td><td>RSFU</td><td>Reserved for future use</td></tr>
+<tr><td>59</td><td></td><td>INT 0</td><td>Interrupt</td></tr>
+<tr><td>60</td><td></td><td>INT 1</td><td>request</td></tr>
+<tr><td>61</td><td></td><td>INT 2</td><td>lines</td></tr>
+<tr><td>62</td><td></td><td>INT 3</td><td></td></tr>
+<tr><td>63</td><td></td><td>/PWRE</td><td>Powerfail warning</td></tr>
+<tr><td>64</td><td></td><td>AUX</td><td>PWR Backup power</td></tr>
+<tr><td>65</td><td></td><td>NDEF 1</td><td>Not to</td></tr>
+<tr><td>66</td><td></td><td>NDEF 2</td><td>be defined</td></tr>
+<tr><td>67</td><td></td><td>GND</td><td>Ground to seperate power and signal lines.</td></tr>
+<tr><td>68</td><td></td><td>-5V</td><td></td></tr>
+<tr><td>69</td><td></td><td>-5V</td><td></td></tr>
+<tr><td>70</td><td></td><td>-12V</td><td></td></tr>
+<tr><td>71</td><td></td><td>-12V</td><td></td></tr>
+<tr><td>72</td><td></td><td>keyway</td><td></td></tr>
+<tr><td>73</td><td></td><td>+12V</td><td></td></tr>
+<tr><td>74</td><td></td><td>+12V</td><td></td></tr>
+<tr><td>75</td><td></td><td>+5V</td><td></td></tr>
+<tr><td>76</td><td></td><td>+5V</td><td></td></tr>
+<tr><td>77</td><td></td><td>+5V</td><td></td></tr>
+<tr><td>78</td><td></td><td>+5V</td><td></td></tr>
+</table>
+<h3>
+Notes
+</h3>
+<p class="noindent">
+1) * is an open collector line.<br>
+2) IEI to be linked to IEO on cards not using the interrupt daisy chain.<br>
+3) /BAI to be linked to /BAO on cards not using the DMA daisy chain.<br>
+4) Bus drivers must be able to drive 75/15 U.L.<br>
+5) Bus receivers must not load the bus past I/O.25 U.L.<br>
+6) Bus master to pull up all open collector lines with 2k2.<br>
+7) Bus master to pull up the following lines with 10k, /HALT, /MREQ, /IORQ, /RD, /WR,
+/M1, /RFSH.<br>
+8) Bus timing reference point is pin 6 of the Z80. As the bus is in essence a buffered
+Z80, the timing of bus signals is as the Zilog/Mostek Z80 data book. All Z80 signals
+are buffered onto the bus with 20nS +/&nbsp; 10nS buffers, the sole exception being the bus
+clock which should be 20nS (+/&nbsp; 10nS) ahead of the Z80 clock (pin6). The timing of
+other signals is detailed in the description of the particular signal. All expansion
+card timing must, however be referenced to the bus.<br>
+9) Cards using /BAI, /BAO, IEI &amp; IEO should pull them up with 2k2.<br>
+10) Bus termination. Long buses may require termination. 220R on each line to a 2.6V
+low impedance source should solve 99% of problems.<br>
+11) Grounding. The ground line to the PSU should be as short as possible and as thick
+as possible.<br>
+12) The names of the various bus signals are as detailed above, please do not change
+them or abbreviate them, ie AUX CLK not AUX CLOCK or A CLOCK etc.
+</p>
+<h3>
+Comments
+</h3>
+<p>
+The following is a line by line description of the bus and should help resolve any
+ambiguities.
+</p>
+<h4>
+Lines 1-4, GND.
+</h4>
+<p>
+The quality of the system ground cannot be overemphasised. Ground noise
+problems were at the root of the now infamous Nascom &ldquo;Memory plague&rdquo;. The faster that
+systems go the more critical the noise problem will become. Noise problems will
+manifest themselves as a generally unreliable system with a predilection to do &ldquo;odd&rdquo;
+things.
+</p>
+<?php columnEnd(1); ?>

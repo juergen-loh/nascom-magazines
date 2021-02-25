@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Schizo RAM
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h2>
+NAS-SCHIZOPHRENIA
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by M. Kuczynski
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+Having bought and constructed my Nascom&nbsp;2, it worked first time without a
+single fault&nbsp;... or so I thought. Basic gave me 16067 free, and all my small Basic
+programs worked as well as I wrote them. Then one day INMC 5 arrived, and in it was
+the program Eliza. About halfway through typing it in, the Nascom &lsquo;hung up&rsquo;, so I
+pressed reset, warm started Basic and proceded to LIST the program. As soon as the
+program listing reached the point where it had &lsquo;hung&rsquo;, the screen filled with rubbish.
+&ldquo;Ah&rdquo;, I thought, &ldquo;The end marker has got lost, and the Nascom doesn&rsquo;t know where the
+program ends.&rdquo;.
+</p>
+<p>
+I always heed the advice of Lawrence the Long Haired Wierdo, so fortunately I
+had saved most of the program on tape already. I reloaded, and carried on from there.
+At exactly the same place, the same thing happened, time and again. &ldquo;Damn, &lsquo;memory
+plague&rsquo;.&rdquo; I thought, but it didn&rsquo;t behave like &lsquo;memory plague&rsquo;, as one of &lsquo;plagues&rsquo;
+symptoms is that it happens randomly, and anyway, the thought of having to string
+resitors and wires over my memory did not please me. Hours later after trying
+everything from changing clock speed to swapping memory chips, I had got no further.
+So I did what I always do in desperation. I hit reset and &lsquo;Tabbed&rsquo; the memory. The
+endless rows of Hex digits marching up the screen are very soothing to shattered
+nerves. Odd&nbsp;?? Sections of code written in page 1 of memory were appearing further on
+in memory. Suddenly, all became clear, somewhere along the line the memory was being
+decoded as two parallel blocks of 8K instead of a single block of 16K. In other words
+my RAM had schizophrenia&nbsp;!!
+</p>
+<p>
+Checking through the pcb revealed a track with a piece missing from it. I
+scraped away the green resist and carefully soldered a piece of fuse wire across the
+break. (Ed. Ecolit silver base paint is also very good, and no heat to damage the
+tracks.) On testing the board all was found to be perfect. I have since heard of two
+other Nascom owners who have experienced this trouble and in each case the fault has
+been a broken track adjacent to pin 7 of IC35. Perhaps a duff batch of boards?
+</p>
+<p>
+The moral of the story is, to check your Ram card thoroughly for address &lsquo;wrap
+round&rsquo; and other faults before believing it is in perfect working order. (Ed. The
+memory test in the new RAM (B) documentation does just this, but beware, in early
+issues there was a typing error in the object listing around address 0D0DH, so check
+against the source code given.)
+</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-36-1.png"); ?>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

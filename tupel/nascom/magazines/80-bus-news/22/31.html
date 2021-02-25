@@ -1,0 +1,168 @@
+<?php columnStart(1); ?>
+<p>
+GRAPHPAC COMMAND MANUAL Page 5
+</p>
+<p>
+PENERA
+</p>
+<p>
+Graphpac format:
+PENERA or PE
+</p>
+<p>
+Purpose: &lsquo;
+</p>
+<p>
+All following DRAW, DRAWTO, DOCAP and PLOT commands will cause any
+pixels the CAP passes through to be erased.
+</p>
+<p>
+PENRET
+</p>
+<p>
+Graphpac format:
+PENRET or PR
+</p>
+<p>
+Purpose:
+</p>
+<p>
+This allows the CAP to return to the co-ordinates that existed before
+the last DRAW, DRAWTO or PLOT commands.
+</p>
+<p>
+DRAWTO
+</p>
+<p>
+Graphpac format:
+DRAWTO X,Y
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To draw, erase or invert a line based on co-ordinates specified in
+rectangular notation.
+</p>
+<p>
+Remarka:
+</p>
+<p>
+The CAP co-ordinates are changed to those specified by X,Y and a line
+may be drawn, erased or inverted (depending on the current PEN mode) to these
+co-ordinates from the previous CAP. The previous CAP co-ordinates are saved in
+case of a following PENRET command.
+</p>
+<p>
+DRAW
+</p>
+<p>
+Graphpac format:
+DRAW X,Y
+</p>
+<p>
+Purpose:
+To draw, erase or invert a line based on relative co-ordinates.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+The DRAW command has a similar syntax to the DRAWTO command however
+the X,Y values supplied are added to the current CAP co-ordinates to produce a
+new CAP. Draw is useful if an object or shape has to be produced several times
+but at different screen co-ordinates. The shape is specified by a subroutine
+using the DRAW command and whenever the routine is called, the shape will be
+produced relative to the current CAP.
+</p>
+<p>
+RATIO
+</p>
+<p>
+Graphpac format:
+RATIO N
+</p>
+<p>
+GRAPHPAC COMMAND MANUAL Page 6
+</p>
+<p>
+Purpose:
+</p>
+<p>
+fo adjust for the height to width ratio of the acreen when using PLOT
+or CIRCLE. The argument passed with the RATIO command will be used to modify
+the YY axis co-ordinates.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+Normally the display on the screen is taller than it is wide and a
+circle plotted on the screen would appear oval with the sharp ends in the
+vertical plane. RATIO allows the user to introduce a correction factor
+whenever PLOT or CIRCLE are used so that a circle does in fact appear as a
+circle. RATIO is followed by a single argument. This argument should be in the
+range 0 &ndash; 511. If 511 is exceeded the value will be MOD 512 (513 will be
+treated as 1). A value of 512 (or zero) will cause no correction to take place
+and a true (distorted) display will be produced. A value of one will cause
+maximum correction to take place and in fact a circle will appear as a single
+horizontal line on the screen. The optimum value is somewhere between the two
+and should be decided by the user for his particular hardware configuration.
+</p>
+<p>
+PLOT
+</p>
+<p>
+Graphpac format:
+PLOT A,D
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To draw, erase or invert a line based on co-ordinates given in polar
+notation,
+</p>
+<p>
+Remarks:
+</p>
+<p>
+The new CAP co-ordinates are calculated, based on a specified angle
+&ldquo;A&rdquo; and distance &ldquo;D&rdquo;. &ldquo;AY is an angle between 0 and 359 degrees, which is
+calculated clockwise, zero degrees being towards the top of the screen. This
+value can be exceeded as a wrap around effect takes place, 360 degrees being
+the same as 0 degrees, 450 degrees being the same as 90 degrees etc. &ldquo;D&rdquo; is a
+distance specifying the number of pixels. This distance is modified
+automatically by a value dependant on the argument given in a previous RATIO
+command and also the value of the angle A. As the argument given in the RATIO
+command only modifies calculations in the Y axis, there will be no
+modification to the length of lines plotted at angles 90 and 270 degrees,
+however as the angle nears the vertical (0 or 180 degrees) the modification
+will be at it&rsquo;s greatest. The old CAP co-ordinates are saved in case of a
+following PENRET command.
+</p>
+<p>
+CIRCLE
+</p>
+<p>
+Graphpac format:
+CIRCLE R,A1,A2
+</p>
+<p>
+Purpose:
+To draw a circle or are on the screen.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+A circle or arc is drawn the centre of which is the CAP and radius is
+R. Al and A2 must be positive values with A2 greater than A&lsquo;. An are will be
+drawn from angle 1 (A!) to angle 2 (A2) in a clockwise direction. If angle 1
+is zero and angle 2 is 360 a circle will be drawn. The maximum radius is 511
+</p>
+<p>
+and if this is exceeded the radius will be MOD $12 as for the distance in the
+PLOT command.
+</p>
+<?php columnEnd(1); ?>

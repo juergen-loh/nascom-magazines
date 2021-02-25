@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+50
+</p>
+<p>
+80-Bus + UCSD = Dynamite by Mike York
+</p>
+<p>
+Introduction
+</p>
+<p>
+NEA RA NE RD
+</p>
+<p>
+References have been made in 80-Bus News (and its predecessor) to &ldquo;UCSD&rdquo; and in
+the last issue of 1982, 5S. Monger mentioned that I had implemented it for the
+Nascom then confessed not knowing what it is. Working on the assumption that many
+other readers will not know what it is I am writing this short article to explain
+the origins, subsequent development and current state of the UCSD p-system and
+its implementation for 80-Bus computers. You may also find it worth your while to
+read a series of three articles in PCW (July &ndash; September, 1982) and an article in
+the first issue of Computer Answers (Nov/Dec 1982).
+</p>
+<p>
+What is UCSD?
+</p>
+<p>
+Many people know of UCSD Pascal. It was the first full-scale Pascal implemented
+on micro-computers (and was adopted by Apple as &ldquo;Apple Pascal&rdquo;). The original
+Pascal compiler was then used to develop a complete operating system for
+microcomputers that is not just a rival to CP/M but contains many features which
+CP/M users can only dream of. Subsequently other compilers (FORTRAN, BASIC, Lisp,
+APL, Modula-2 and the new INMOS language Occam) have been added and the only
+remaining attachment to Pascal is now historical (and the fact that the use of
+Pascal naturally influenced that history).
+</p>
+<p>
+I was first introduced to UCSD two years ago and was so impressed that, after a
+year of uselessly wishing that someone would buy me some disk drives or sell an
+automatic cassette deck with UCSD as its operating system, when I finally got my
+disk drives, I decided to forget CP/M and go straight for UCSD on my Nascom and
+have been actively using it now for nearly a year.
+</p>
+<p>
+The major and, I believe, unique feature of the system is its use of &ldquo;pecode&rdquo; or
+pseudo-code. P-code was originally specified as a pseudo-machine code to run on a
+hypothetical stack-oriented processor. This was to facilitate the compilation of
+Pascal in a single pass. (Subsequently a real microprocessor, the Western Digital
+Microengine, was developed to run p-code as its native code.) This p-code is
+subsequently executed by a p-code interpreter which is coded in the native code
+of the microprocessor being used. This use, of p-code gives an incredible
+portability to UCSD software. As long as a p-code interpreter exists, any program
+compiled into p-code (including the whole of the UCSD operating system) will run
+on any microprocessor! Except in special circumstances, the same programs that
+run under UCSD on an Apple, IBM&nbsp;PC, Sirius, Sage&nbsp;II, etc. will also run on a
+Nascom or Gemini without change &ndash; and vice versa.
+</p>
+<p>
+This sort of portability is impossible under CP/M without resorting to expensive
+&ldquo;Z80 cards&rdquo;. (And just look at the mess CP/M has got into in upgrading to 16-bit:
+they have even had to produce their OWN Z80 card for the IBM&nbsp;PC to allow users to
+run their old software!)
+</p>
+<p>
+Of course this portability has been bought at a price. P-code, because it is
+interpreted, runs slower than native code. Supporters of CP/M-based Pascal
+compilers have been quick to point out that the Pascal Benchmarks published in
+PCW run quicker under Z80 compilers than p-code compilers. Of course, the
+importance of execution speed is tremendously exaggerated by these critics.
+(During the last year I have not once been adversely affected by slow execution
+of p-code.) However, even if it were important, such critics are now out of date.
+There now exists a Native Code Generator which can translate a p-code program,
+wholly or partly, into Z80 native code. The resultant code file can then be saved
+and treated as any other p-code file &ndash; except that during execution, those
+passages which are time-critical will now run at native code speed. With UCSD,
+</p>
+<?php columnEnd(1); ?>

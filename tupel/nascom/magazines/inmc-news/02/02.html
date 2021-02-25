@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+All INMC correspondence should be addressed to:
+</p>
+<p>
+The Editor<br>
+INMC Newsletter<br>
+c/o Nascom Microcomputors Ltd<br>
+___ ____ ______<br>
+Berkhamsted<br>
+Herts ___ ___
+</p>
+<p>
+Yours sincerely
+</p>
+<p>
+<u>Dave Hunt</u>
+</p>
+<h1 id="article1">
+<u>NASCOM I</u> &ndash; <u>Various Technical Notes</u>
+</h1>
+<p>
+1. <u>Floating Inputs to PORT 0</u>. Keyboard user in puts.
+</p>
+<p>
+Although the software ignores spurious characters which
+may appear on PORT 0, the keyboard routine still carries
+out a search to determine whether the input was valid. If,
+as is likely, the two user inputs on SKT 1 are left unconnected,
+this could have a detrimental effect on the
+running of any program with interactive keyboard routines.
+</p>
+<p>
+For example, as B-BASIC V1.1 scans the keyboard for change
+at the end of each statement, any spurious input to PORT 0,
+will cause the keyboard routine to &lsquo;waste time&rsquo; searching
+for a character which does not appear in the keyboard lookup
+table. This has the undesirable effect of making a
+&lsquo;FOR &ndash; NEXT&rsquo; timing loop vary with each spurious character
+detected, causing imprecise timings.
+</p>
+<p>
+This flaw may be easily rectified by connecting the two
+user inputs to +5 volts, forcing them permanently &lsquo;high&rsquo;.
+Under these circumstances, no spurious inputs occur.
+</p>
+<p>
+2. <u>UART clocks</u>.
+</p>
+<p>
+The effective speed of Load and Dump (and Read and Write}
+may be doubled by connecting the UART clock link to pin 12
+of IC2 (it is normally connected to pin 11 of IC2, via the
+UART clock link). This modification has been found to
+work on the majority of Nascoms; further, on some Nascoms
+it has been found that the speed may be doubled yet again
+by connecting the link to pin 13 of IC2. It should be noted
+that these modifications are not &lsquo;guaranteed&rsquo; to work.
+</p>
+<p>
+Adjustment of the 1760Hz (10 chars./sec.) UART clock, without
+test equipment. Firstly, it should be noted that this clock
+need not be adjusted until such time as a printer or other
+</p>
+<p style="text-align: right">
+/ .. ..
+</p>
+<?php columnEnd(1); ?>

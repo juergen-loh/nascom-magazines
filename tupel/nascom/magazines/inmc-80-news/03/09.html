@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-1.png"); ?>
+<p class="noindent">
+G.M. Clarke, Edinburgh.
+</p>
+<h3>
+Keyboard Help
+</h3>
+<p>
+I am trying to understand the KBD routine in the T4 Monitor and can get so far
+and then come to a halt! I&rsquo;ll presevere and get there but it strikes me that a useful
+inclusion in the INMC80 issues would be a section on Monitor Software; a nuts and
+bolts break down of the routine. One section could be treated each issue or even
+spread over two issues. I should be pleased if this suggestion were to be adopted and
+would hope that others would benefit also.
+</p>
+<p class="noindent">
+Dave Pyke, Preston, Lancs.
+</p>
+<h3>
+NAS-SYS CAN CHECK SUMS!
+</h3>
+<p>
+Many thanks for the excellent newsletters I have received since becoming an
+&lsquo;INMC80&rsquo; member. All the work put in by committee members is reflected in the
+interesting and helpful articles and tips. For those of you with NASCOM 2s who have
+been wondering how to print out check sums using the &ldquo;T&rdquo; command (re Mr. D.. Tucker&rsquo;s
+program for Nasbug monitors in issue 5), try the following:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-2.png"); ?>
+<p>
+Then activate the following routine by storing its address for the jump vector $UOUT,
+which is at address 0C77:
+</p>
+<pre>
+0C77  C3 80 0C   $UOUT :  JP UOUT
+</pre>
+<p>
+Now, to &ldquo;switch on&rdquo; the facility of ignoring backspaces (as produced by the
+Tabulate command to delete check soms), type U. To revert to normal CRT output, type
+N.
+</p>
+<p>
+If you are using Richard Beal&rsquo;s &ldquo;keyboard Repeater&rdquo;, then type in the routine
+UOUT at address 0C80, and modify address 0CA7 onwards as shown below:
+</p>
+<pre>
+0CA7  21 80 0C   LD  HL,UOUT
+0CAA  22 78 OC   LD  ($UOUT+1),HL
+0CAD  DF 5B      SCAL ZMRET
+</pre>
+<p>
+Now the vector at $UOUT, together with the keyboard repeat data, is loaded for
+you when you type E0C90.
+</p>
+<p class="noindent">
+Yours Nastaligically,<br>
+Rob Sheratt, Taynton.
+</p>
+<?php columnEnd(1); ?>

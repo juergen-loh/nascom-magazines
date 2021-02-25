@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Frequency Counting Nascom
+</h1>
+<h2>
+by Je. Hart
+</h2>
+<p>
+This program measures frequency, time is kept track of using
+register BE. The port is sampled for approx. 2,000,000 1 states
+Or 1 second. The number of cycles are counted in the HL register
+Pair. The number of cycles counted 15 converted to decimal and
+then displayed giving a counting display.
+</p>
+<p>
+The program will work at 2 MHz without wait states or 4 t=
+without wait states, AE 4 Miz location 0CCFH should be ADD HL,HL
+ae the port is only scanned for half a second and the number of
+Cycles counted 15 only half compared to operation at 2. MHz for
+the same input frequency. The accuracy is dependent on the
+Nascom clock oscillator and showld be O.k. for tuning UART
+Serial Clock oreiliaters.
+</p>
+<p>
+cao EF oc 00 ICLEAR SCREEN
+ocas O01 11 00 LD BC, &pound;0011 :
+</p>
+<p>
+ces 11 De OB LD DE, &pound;0RDe SDISPLAY
+ca? 21.07 0D LD HL &pound;0p07 :TeXd
+ocac ED BO coir
+</p>
+<p>
+cee 5E 4F UD A, car IMAKE PORT 4
+ocvo DS 08 cur a : INpur
+0C#? 21 00 00 LD HL, &pound;0000 EFREQUENCY COUNT = 0
+cvs 61 CA 20&rsquo; LD DE, ez0cA STINE COUNT
+0697814 00 Lob, 800 ;
+</p>
+<p>
+ocea 03, INC 41 STATES
+cv DB oa IN 11 1 STATES
+ecyD cB a7 art 8 1 STATES
+cer CA 9A 0c ap 10 1 STATES
+oca2 25 TN 4 1 STATES:
+ocas Os INC T STATES
+ocaa ce RET 1 states
+CAS 03, TNC 1 States
+Cae DB O4 IN A, (a) 1 states
+cas cE 47 BIT o,A 1 stares
+ocAA C2 AS OC JF NZ.&pound;0CAS 01 STATES
+can 78. LD a8 347 STATES,
+ERE Be ce oD 1 STATES:
+ocar C2 9A 0c JP NZ, &pound;0C%0 fo 1 stares
+ck 70 Lo a FUNDER
+Ochs FE 40 cP cao. $16. 384KHe (AT ames)
+ockS 30 18 SR C.&pound;0ccr 4 OTMEN Jum
+Ch? 21 G0 00 LD HL, too00
+</p>
+<p>
+OCHA G1 CA 20 LD BC LE20CA
+</p>
+<p>
+CED 14 00 Lp D. &pound;00
+</p>
+<p>
+CBF 03, Inc BC F stares:
+ecco DB oa IN ALD 11 states.
+oce2 ce a7 BIT oa 38 T STATES:
+occa ca BF oc JP 7, c0cpr fio 1 STATES:
+</p>
+<?php columnEnd(1); ?>

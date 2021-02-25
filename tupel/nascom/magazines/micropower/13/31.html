@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<p>
+10F9 DJNZ R3 ; KEEP GOING TO END OF BLOCK
+CF RST RIN ; GET NEXT BYTE
+B9 CP C ; IS CHECKSUM CORRECT?
+E1 POP HL ; RECOVER HL
+3A0B0C LD A (&pound;0C0B) ; LOAD NUMBER OF ARGUMENTS
+2804 JR Z, R4 ; IF CHECKSUM O.K., JUMP
+FE02 CP 2 ; SECOND ARGUMENT ENTERED?
+20CD JR NZ, R1 ; IF NOT, DON&rsquo;T COPY
+4B R4 LD C, E ; PUT BLOCK LENGTH INTO C
+0D DEC C ; IF C = 0 THE B MUST BE SET
+03 INC BC ; TO 1 FOR COPY ROUTINE
+A7 AND A ; ANY ARGUMENTS TO COMMAND?
+7A LD A, D ; SAVE BLOCK NUMBER IN A
+2805 JR Z, R5 ; NO ARGS., SKIP OFFSET
+ED5B0C0C LD DE (&pound;0C0C) ; GET FIRST ARGUMENT
+19 ADD HL, DE ; ADD OFFSET TO HL
+11000A R5 LD DE, &pound;0A00 ; SET DE TO BUFFER
+EB EX DE, HL ; EXCHANGE REGISTERS AND COPY
+EDB0 LDIR ; FROM SCREEN TO LOAD ADDRESS
+6F LD L, A ; RECOVER BLOCK NO. FROM A
+2609 LD H, 9 ; POSITION FOR BLOCK TALLY
+74 LD (HL), H ; MARK POSITION
+68 LD L, B ; SET L TO ZERO
+7C LD A, H ; PUT TALLY CHARACTER IN A
+BE R6 CP (HL) ; IS TALLY CORRECT?
+23 INC HL ; SCAN TALLY
+2002 JR NZ, R7 ; IF NOT, SKIP
+10FA DJNZ R6 ; CHECK ALL 256
+BE R7 CP (HL) ; NOW CHECK IF END OF TALLIES
+23 INC HL ; KEEP SCANNING
+28AB JR Z, R1 ; IF NOT END, KEEP READING
+10FA DJNZ R7 ; SCAN ALL 256
+E1 POP HL ; RECOVER ORIGINAL INPUT
+</p>
+<p>
+TABLE
+</p>
+<p>
+22750C LD (&pound;0C75), HL ; RESTORE AT &pound;0C75
+EF0C00 DEFB &pound;EF &pound;0C 00 ; CLEAR SCREEN
+DF5F SCAL ZMFLP ; TURN OFF TAPE LED
+C3 3C 07 JP &pound;073C ; RESTORE OUTPUT TABLE
+</p>
+<p>
+No assembly addresses are given in the above listing, because the program is
+essentially relocatable. It will fit in the space used by the standard read routine in
+either Nas-Sys&nbsp;1 (&pound;065E to &pound;06CE) or Nas-Sys&nbsp;3 (&pound;065E to &pound;06CB). The jump
+address with which the program ends should be &pound;0741 for Nas-Sys&nbsp;1 and &pound;073C for
+Nas-Sys&nbsp;3.
+</p>
+<p>
+* &ndash; * &ndash; * &ndash; * &ndash; * &ndash; * &ndash; * &ndash; * &ndash; *
+</p>
+<?php columnEnd(1); ?>

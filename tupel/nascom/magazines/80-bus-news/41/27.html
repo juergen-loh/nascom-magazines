@@ -1,0 +1,165 @@
+<?php columnStart(2, 2); ?>
+<p>
+Things your Mother never told you about M80 and L80
+</p>
+<p>
+by D.W.Parkinson
+</p>
+<p>
+Having looked at some of the comments on
+returned 80-BUS questionnaires, this article will
+please some readers, but irritate others. I trust that
+those that don&rsquo;t use CP/M-80 and Microsoft&rsquo;s M80
+and L80 package will bear with me &ndash; after all this
+article may prompt you to go back and read about
+the more obscure features of your assembler/high
+level language. The article assumes that the reader
+has a reasonable working knowledge of M80 and
+L80.
+</p>
+<p>
+Microsoft&rsquo;s M80
+</p>
+<p>
+First I&rsquo;ll start with Microsoft&rsquo;s M80 macro assembler.
+(CAVEAT &ndash; The features exploited in these
+examples are present in release 3.44 of the
+assembler (09 Dec 1981) and do not necessarily
+apply to earlier releases.)
+</p>
+<p>
+M80 includes a pseudo-op &ndash; &lsquo;.printx&rsquo; &ndash; that prints
+a message on the system console whenever it is
+encountered during an assembly. If you ever
+assemble large files, then this can be used to keep
+you informed of the progress of the assembly and
+is a useful indicator that things are progressing as
+they should. The syntax of the command is:
+</p>
+<p>
+-printx &lt;marker&gt;&lt;text&gt;&lt;marker&gt;
+e.g. .printx * I/O section reached *
+</p>
+<p>
+i.e. Following the &lsquo;.printx&rsquo; command M80 takes the
+first non-space (or non-tab) character that it finds,
+and then sends that character and the following
+text to the console. It stops when it sees the same
+marker character again. I tend to use the &lsquo;x&rsquo;
+character as my marker.
+</p>
+<p>
+As weil as indicating when certain &lsquo;landmarks&rsquo; are
+reached, it can be used to confirm that the
+assembler is actually doing what you think it is
+doing, and also that your assembled program
+matches any particular system requirements. The
+former obviously covers the case where an
+assembler program utilizes the conditional assembly
+feature of M80, and confirms that you have
+your conditional flags set correctly. (If you have
+</p>
+<p>
+_ several slightly different versions of a program to
+</p>
+<p>
+match differing environments, then it is easier to
+maintain one copy of the program than several.) In
+the latter case, you may require a certain point of
+your program to fall at a particular address. This
+can be done with an &lsquo;ORG&rsquo; statement, but you may
+inadvertently add some extra code to the start of
+the program some months later, forgetting that this
+will cause one bit of code to overlay another later
+on in the program!
+8.g.
+</p>
+<p>
+ifdef NASCOM ; If we have defined NASCOM version
+</p>
+<p>
+-printx * NASCOM version *
+</p>
+<p>
+else
+</p>
+<p>
+-printx %* GEMINI version *
+</p>
+<p>
+endif
+</p>
+<p>
+: ; End of section of code
+ret
+</p>
+<p>
+if $.GE.66h ; Check it ends before start of NMI routine
+</p>
+<p>
+-printx * +++ error NMI routine clobbered H+ *
+endif
+org 66h
+</p>
+<p>
+; Start of NMI routine
+</p>
+<p>
+Occasionally you may want to know the size of a
+program &ndash; perhaps it has to fit within an EPROM.
+In the past I used to enter a single line at the end of
+the program consisting of the one word &lsquo;error&rsquo;. The
+assembler always threw this out as an error, and
+from the error message I could see the address that
+the program had reached. With version 3.44 of M80
+a much better way of achieving this effect appeared.
+It makes use of the macro feature of M80
+together with parameter substitution.
+</p>
+<p>
+Suppose you are assembling a program and want
+to know several things:
+{i) The length of the code segment of
+the program.
+(ii) the length of the data segment of
+the program.
+(iii) the length of a particular routine
+within the program. (Perhaps in some
+circumstances it might have to be
+overlayed by an alternative routine.)
+</p>
+<p>
+There are two steps you have to take to achieve
+this:
+Step 1 is to ensure that you have labels within
+the program to which the assembler
+will assign the appropriate values. (e.g.
+&lsquo;lcode equ $-start&rsquo; at the end of the code
+segment.)
+Step 2 is to create a macro to print out what
+you want to see:
+</p>
+<p>
+e.g.
+</p>
+<p>
+show macro a,b,c
+</p>
+<p>
+-printx %* Program code length is a bytes *
+-printx %* Program data length is b bytes *
+-printx * Access subroutine length is c bytes *
+endn
+</p>
+<p>
+If you use the macro in the normal way (show
+Icode,ldata,alength) the result would be the
+useless messages
+</p>
+<p>
+* program code length is lcode bytes *
+</p>
+<p>
+-&raquo; and so on, with just the direct substitution of
+</p>
+<?php columnEnd(2); ?>

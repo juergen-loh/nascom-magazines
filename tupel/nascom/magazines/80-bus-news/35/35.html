@@ -1,0 +1,308 @@
+<?php columnStart(1); ?>
+<p>
+cola
+C016
+cols
+col
+colc
+cole
+</p>
+<p>
+c020
+C022
+C025
+c028
+C023
+c02D
+cO2F
+C032
+C034
+c035
+C036
+c039
+CO3B
+</p>
+<p>
+C03C
+CO3F
+co40
+co4l
+Co44
+c045
+C046
+C048
+co49
+CO4B
+co4p
+CO4E
+CO4F
+c050
+co51
+8052
+c053
+c054
+</p>
+<p>
+co55
+c056
+c057
+co59
+CO5B
+</p>
+<p>
+OE
+06
+21
+oc
+ED
+20
+</p>
+<p>
+21
+OB
+co09
+</p>
+<p>
+A2
+FB
+</p>
+<p>
+04
+c009
+c008
+co3c
+E7
+F9
+C055
+EO
+</p>
+<p>
+cg3c
+Dg
+</p>
+<p>
+co55
+</p>
+<p>
+C055
+</p>
+<p>
+27
+</p>
+<p>
+27
+27
+</p>
+<p>
+OF
+OF
+</p>
+<p>
+start: ld c,clocktl H
+ld b,nmrr eg
+1d hl regs
+read: ine c
+ini
+jr nz&nbsp;,read
+</p>
+<p>
+Read into workspace
+</p>
+<p>
+; Now see if any changed during read and convert into HEX
+</p>
+<p>
+1d b,4
+</p>
+<p>
+ld hl,regs
+</p>
+<p>
+ld de,regs-1
+scan: call seanl
+</p>
+<p>
+jr z,start
+</p>
+<p>
+dinz scan
+</p>
+<p>
+eall test
+</p>
+<p>
+dir z start
+</p>
+<p>
+ld (de),a
+</p>
+<p>
+dec de
+</p>
+<p>
+call sean]
+</p>
+<p>
+jr z,start
+</p>
+<p>
+ret ;
+</p>
+<p>
+Exit, all done
+</p>
+<p>
+3; Take two bytes and convert to HEX
+</p>
+<p>
+scanl: call test $
+ret Zz
+ld c,a
+eall test
+ret z
+push be
+sla a
+ld c
+sla a
+</p>
+<p>
+sla a
+a
+b
+</p>
+<p>
+add
+pop
+add ayc
+</p>
+<p>
+1d (de) ,a
+dec de
+</p>
+<p>
+xor a
+</p>
+<p>
+dec a
+</p>
+<p>
+ret
+</p>
+<p>
+3; Take a byte and test the change
+test: ld a,(hl)
+inc hi
+and ofh
+cp Ofh
+ret
+</p>
+<p>
+end
+</p>
+<p>
+Do the low byte
+</p>
+<p>
+Save it in Cc
+Do the high byte
+</p>
+<p>
+Multiply by 10
+</p>
+<p>
+Add low to high
+Save it in workspace
+</p>
+<p>
+Clear any Z flag
+</p>
+<p>
+flag
+</p>
+<p>
+Mask off top nibble
+Test for change
+</p>
+<p>
+Listing Four
+</p>
+<p>
+* Get the time and display on SVC
+CALL
+IF PEEK(s:timet6 )&lt;#9
+</p>
+<p>
+STORE &ldquo;O"4+STR(PEEK(s:timet6),1) TO hr
+ELSE
+</p>
+<p>
+STORE STR(PEEK(s:timet6),2) TO hr
+ENDIF
+IF PEEK(s:timet+7)&lt; 9
+</p>
+<p>
+STORE &ldquo;O&rsquo;+STR(PEEK(s:timet7),1) TO min
+ELSE
+</p>
+<p>
+STORE STR(PEEK(s:timet+7),2) TO min
+ENDIF
+IF PEEK(s:timet8 )&lt;=9
+</p>
+<p>
+STORE &ldquo;O"+STR(PEEK(s:timet+8),1) TO sec
+ELSE&nbsp;.
+STORE STR(PEEK(s:timet+8),2) TO sec
+ENDIF
+STORE CHR(27)+"t&rsquo;&rsquo;+hr+mint+sect+CHR(27)+"tE&rdquo; TO tt
+2? tt
+</p>
+<p>
+* Get todays date, add to time, store as a logon string
+STORE &ldquo;JanFebMarAprMay JunJlyAugSepOctNovDec&rdquo; TO m.
+STORE &ldquo;SunMonTueWedThuFriSat&rdquo; TO d
+</p>
+<p>
+STORE hrt"."4min TO hm
+</p>
+<p>
+STORE $(m,3*PEEK(s:timet3)-2,3) TO m
+</p>
+<p>
+STORE $(d,3*PEEK(s:timet4)--2,3) TO d
+</p>
+<p>
+STORE &ldquo;Log on time &ldquo;+hm+&rdquo;
+</p>
+<p>
+Listing Five.
+</p>
+<p>
+PORE 49152,195,105,192
+</p>
+<p>
+POKE 49167, 62,255,211, 30,62, 255, 211, 30, 201, 62, 255, 211, 31,62, 255, 211, 31
+POKE 49184, 201, 62,255,211,29, 62,255,211, 31,62, 16,211, 31,201,237, 81
+POKE 49200, 237,89, 219,28, 237,81, 201, 205, 33,192, 205, 15, 192, 33, 3, 192
+POKE 49216, 6,12, 22,236, 30,140, 14,29,205,46, 192, 230,15,254,15,40
+POKE 49232, 230, 119,35, 21,29, 16, 241, 201, 126, 35, 205, 99, 192, 70, 35, 128
+POKE 49248,18,19,201,7,71,7,7, 128,201,205, 15,192,205, 24, 192,205
+POKE 49264,55,192, 33, 3,192, 84, 93, 205, 88, 192, 237, 160, 6, 4, 197, 205
+POKE 49280, 88,192, 193,16,249,201,0,0,0,0,0,0,0,0, 0, 62
+</p>
+<p>
+POKE 49296, 255,211, 30, 62, 255, 211, 30, 201,62, 255, 211, 31,62, 255, 211, 31
+POKE 49312,201,62,255,211,29,62,255,211, 31, 62,16, 211, 31,201, 237, 81
+POKE 49328, 237,89, 219, 28, 237,81, 201, 205, 33, 192, 205, 15, 192, 33, 3, 192
+POKE 49344, 6,12, 22,236, 30,140, 14,29,205, 46, 192, 230, 15,254,15, 40
+POKE 49360, 230,119, 35,21, 29, 16, 241, 201, 126, 35, 205, 99, 192, 70, 35, 128
+POKE 49376,18,19,201,7,71,7,7, 128,201,205, 15,192,205, 24, 192,205
+POKE 49392,55,192, 33,3, 192,84, 93, 205, 88, 192, 237, 160,6
+</p>
+<p>
+&ldquo;d+&rdquo; &ldquo;4STR(PEEK(s:timet5),2)+&rdquo; &ldquo;+m TO s:logonl
+</p>
+<p>
+35
+</p>
+<?php columnEnd(1); ?>

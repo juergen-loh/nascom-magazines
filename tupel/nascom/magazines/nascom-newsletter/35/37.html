@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+NASPEN Print Routine
+</h1>
+<h2>
+by Alan Marshall
+</h2>
+<p>
+This program adds several short routines to the straight
+print routine that I have been using with my printer, a
+Centrontes 737.
+</p>
+<p>
+&lsquo;The aachine-dependent part of the routine has been put at
+the end, so that if you have some other printer you can replace
+the &ldquo;PRINT&rdquo; subroutine With your own. The whole program is fully
+relocatable with the proviso that the two registers immediately
+precede it. The FNDSTR subroutine is only in the program to make
+it fully relocatable and a space has been left so that @C82 to
+ces can be replaced by 21 YY Xx, where XXYY is the address of
+the first register.
+</p>
+<p>
+1f the FNDSTR subroutine is removed then all relative calls
+to the PRINT subroutine will nedd to be recalculated. For those
+of you not familiar with machine code, the Ni Sar command
+canbe used. For example, the new address of PRINT would be
+@CED. To calculate the new RCALZ enter &lsquo;A CBD @CED&rsquo;. On the
+next Jine would appear &ldquo;197A 060 SE&rdquo;. The last figure is the
+relative jum so 65H at CBE would be replaced by SEH.
+</p>
+<p>
+One minor fault with the relative call is that it is
+unconditional so two further bytes can be saved in lines 57 to
+59 and 62 to 64 by replacing the two instructions with &lsquo;CALL
+NZ,LFOUT&rsquo;. The high nibble of the first register is used as a
+flag register with the low nibble as a store for the number of
+spaces to be printed in a margin.
+</p>
+<p>
+The first flag (bit 4) is set after a CR. The Centronics
+printer uses a CR as a print instruction, with a LF being output
+only if there are other characters in the print buffer. If ther
+are consecutive CRs then the subsequent ones will be ignored by
+the printer and so the check is made of the flag and, if set, a
+LF followed by a CR is output. The CR is output in case the
+following line has @@ characters, in which case there would be
+an overflow of the buffer. and the last character mould be
+printed on the following line.
+</p>
+<p>
+The second flag (bit 5) is checked after a CR to see if
+double spacing is required. If so, LF followed by a CR is
+putput.
+</p>
+<p>
+The third flag (it 6) is also checked after each CR. If it
+is set then a margin of up to 15 spaces is printed, the Aumber
+being stored in the lower nibble of the register. This is
+obtained in line &amp;8 where the AND instruction is used to delete
+the high nibble. A check ts made that a umber has been entered
+or the pointer will print a margin of 255 spaces wide. At this
+point the CR flag is reset as if would cause an extra LF to be
+</p>
+<?php columnEnd(1); ?>

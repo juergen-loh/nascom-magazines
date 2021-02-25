@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+32
+</p>
+<p>
+The internal power supply of the progammer provides all the necessary
+voltages, and no power is drawn from the main system. As well as the various
+programming voltages (25V, 21V, 12.5V) the EPROM supply voltage can be raised
+to 6V, the level necessary if the &ldquo;intelligent programming algorithm&rdquo; is to be
+implemented for the larger EPROMs (see below).
+</p>
+<p>
+The programmer&rsquo;s box is made of metal and consists of an interlocking U-shaped
+base (coloured black), and a U-shaped lid (coloured grey). With the
+metal construction of the box and the internal mains transformer the weight of
+the programmer is such that it sits nicely on a flat surface without any
+tendency to scoot about while EPROMs are changed. Taking the lid off the box
+reveals a very neat and compact arrangement. The main programmer logic is
+contained on a single PCB that runs the length of the box. Underneath this PCB
+is a toroidal mains transformer and a smaller pcb that carries the power
+supply components.
+</p>
+<p>
+The Disk: This holds three programs:&ndash;
+PROG. COM The programmer software.
+CPROG. COM A configuration program for PROG.COM
+PROGINIT.MAC The low level assembly language drivers used within
+PROG.COM.
+</p>
+<p>
+The disk is in Gemini QDSS format (i.e. single sided Galaxy format &ndash; 96tpi)
+which can also be read by double-sided sytsems (QDDS format). The manual
+indicates that you should be able (via your dealer) to exchange it for DDDS or
+SDDS formats (the early Gemini 48tpi formats). Failing that you can ask for a
+paper listing of PROGINIT.MAC instead. Some dealers may be able to provide
+other formats.
+</p>
+<p>
+The Manual: The eight page manual covers the installation of the programmer,
+and the use of CPROG and PROG. Also a brief section is included on how
+Microsoft&rsquo;s M80/L80 combination can be used to create ROMable programs, There
+is no description of the internal circuitry of the programmer nor is there any
+information on how it should be driven by any program other than that
+supplied. (But see PROGINIT.MAC below.)
+</p>
+<p>
+Using the Software
+</p>
+<p>
+The configuration program CPROG allows the user to change two parameters
+within PROG. The first is the base address of the PIO that is driving the
+programmer, and the second is the default EPROM type that PROG assumes when it
+is invoked. The latter option saves the user the irritation of having to use
+the -Change EPROM type&rdquo; option every time that PROG is used.
+</p>
+<p>
+The main program PROG drives the programmer, and transfers data in both
+directions between disk files and a EPROMs via a buffer that it maintains in
+memory. When invoked it puts up a heading together with a menu from which the
+following options can be selected:
+</p>
+<p>
+0 &ndash; Return to CP/M.
+</p>
+<p>
+1 &ndash; Change EPROM type. This brings up a sub-menu offering the choice of 2716,
+2732, 2732A, 2764, 27128, and 27256.
+</p>
+<p>
+2 &mdash;- Read an EPROM into the buffer. This prompts for an EPROM to be inserted
+into the socket, and then reads it into the buffer.
+</p>
+<p>
+3 &ndash; Read a disk file into the buffer. (A prompt for a file name will appear.)
+</p>
+<?php columnEnd(1); ?>

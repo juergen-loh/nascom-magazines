@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+from the system Clock. If the System Clock is being used, it ia outed through
+a prescalec, where it is divided by either 16 of 256: The counter can be set to
+Count down from any number between 256 and 1. On reaching zero, the channel
+Sends out a puiee on ite Zero Count/Time Out (ZC/TOn) pin, except for channel. 3
+Which lacks tha pin. The counter can be caueed to automatically reload the
+Tnittal count everytime it reaches sero&rdquo; The important event ie the counter
+Teaching zero, which can cause an output pulee on the 2c/Ton pin, an automstic
+reload of the counter ready to go again, end sn interrupt if required
+</p>
+<p>
+The CTC, being capable of vectored interruptes is best used in that mode A
+typical example ia the MAP CPU board, where channel 3 of the on-board CIC Le
+configuced to interrupt vhen the keyboard has a character ready. This is done
+by telling the CTC channel 4 that it is to count 1 transition on the CLK/TROS
+pin (the Heyboard strobe), cause an interrupt, and automatically reload the
+Fount ready to go again
+</p>
+<p>
+In programming the CTC for a system using vectored interrupts, we must therefore
+Supply a valid interrupt vector. this de the lowest of four consecutive slots
+in the interrupt service table, and is passed to channel 0. Channel 0
+recogaises 1t ae an interrupt vector because the lease three bits are 0 &ndash;
+typically the form of this vector is:
+</p>
+<p>
+by 6 DS De Ds bz BL oo
+</p>
+<p>
+where the least byte of the address of the four word section of the interrupt
+Table ts vivevsvave000. Bite 2-0 are modified by the CTC adding in 000 for
+Channel 0, 010 for channel 1, 100 for channel 2 and 110 for channel 3, depending,
+which originates the interrupt
+</p>
+<p>
+Then to program a channel of the CTC, a control byte and associated but optional
+parameters are written to the Channel Control Register. Each channel of the CTC
+Gan be programmed independently of the others The channel recognises the
+control byte because bit Ois always 1. The other seven bits of the control
+</p>
+<p>
+byte define diffecing alternatives from the channel&rsquo;s operating modes, These
+</p>
+<p>
+bits have the following meanings:
+a)
+</p>
+<p>
+These bits have the following meaning
+</p>
+<p>
+DY = 1 &ndash; Generate interrupt every time dovncounter becomes zero. Before doing
+</p>
+<p>
+this, an interrupt vector gust have been written to the CTC.
+by = 0 &ndash; No dncerrupt from this channel
+</p>
+<p>
+DE=1 &ndash; Select counter mode. Down counter {s decremented by each triggering
+</p>
+<p>
+edge of the external clock from CLK/TRG pin. No prescaler used
+</p>
+<p>
+DE+0 &ndash; Select timer mode System clock feeds through the Prevcaler, thence
+to the Down Counter The 2c/TOn pin is pulsed at a frequency of
+EevPerc, where te is ytten clock period, Pir prescaler factor of 16
+oF 256, a5 set by bit 5, and TCLs the time constant data word.
+</p>
+<p>
+DS 1 &ndash; is defined only in tim
+DS =a &ndash; is defined only in timer mode Frescaler = 16
+</p>
+<?php columnEnd(1); ?>

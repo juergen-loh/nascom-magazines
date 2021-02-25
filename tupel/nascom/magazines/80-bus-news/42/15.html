@@ -1,0 +1,151 @@
+<?php columnStart(2, 2); ?>
+<p>
+N=0
+</p>
+<p>
+1 WHILE N LT 10
+NeN+1
+PRINT"N = &ldquo;5N
+GOTO 1
+</p>
+<p>
+WEND \SKIPS OUT WHEN N = 10
+PRINT*THAT&rsquo;S ALL, FOLKS!&rdquo;
+END
+</p>
+<p>
+WHILEAVEND loops can be nested in the same way
+as FOR/NEXT loops.
+</p>
+<p>
+&lsquo;Subroutines&rsquo;
+</p>
+<p>
+The use of GOSUB...RETURN as a form of
+&lsquo;subroutine&rsquo; in BASIC has been the subject of much
+hot air and plonking arguments, culminating in the
+DEFPROC/PROC/ENDPROC to be found in BBC
+BASIC. If used properly, there is nothing wrong
+with GOSUB, whether straight or computed.
+CBASIC has an additional feature over MBASIC and
+this is the multiple-line function. This clever device
+enables those who are allergic to the use of GOSUB
+to define the &lsquo;subroutine&rsquo; function as follows: (note
+the full stop between the FN and the dummy
+argument)
+</p>
+<p>
+DEF FN.CROSS. SECTION (AREA)
+</p>
+<p>
+In this case, the function name {in this case,
+CROSS.SECTION) is followed by a dummy argument,
+AREA, which is a real numeric variable used
+within the function and CROSS SECTION is treated
+as a variable which may have values assigned to it
+within the function itself &ndash; in this way, values of
+variables needed within the &lsquo;subroutine&rsquo; can be
+input without the need to define them in assignments.
+Constants or expressions cannot be used as
+dummy arguments &ndash; only variables can be used in
+this way. The variable can be a string, integer or
+real type and is treated as local to the function, and
+only able to be modified within the function. The
+_-function must be terminated with a RETURN,
+followed by FEND; FEND is not executed under
+normal circumstances but if RETURN is missed out,
+then CRUN will send an error message and return
+to CP/M.
+</p>
+<p>
+initially, the use of multiple line functions seems a
+little difficult but with experience, the advantages
+of the facility become apparent. Essentially, the
+CBASIC function follows the FORTRAN method.
+The User Guide is reasonably clear on the use of
+_this type of function, and provides some examples
+of its application.
+</p>
+<p>
+Overlaying and Chaining
+</p>
+<p>
+In spite of the suggestive names, these have
+nothing at all to do with S*X, kinky or otherwise!
+Overlaying is employed when a program is too big
+to fit into the available memory; the program is
+broken down into smaller units, called overlays and
+these are stored as separate, compiled programs.
+An overlay is called when the previous program
+reaches a CHAIN statement which explicity names
+the overlay in question before it completes its
+execution. The new overlay can end by calling yet
+another overlay, or the previous one or even by
+stopping program execution. Two important points
+should be borne in mind before using overlays in
+CBASIC.
+</p>
+<p>
+1. An overlay overwrites the previous
+program but the previously used program
+can pass data to the overlay by
+means of COMMON statements which
+leave the data in memory; these COMMON
+statements must be in both the
+calling program and overlay.
+</p>
+<p>
+2. Memory usage is slightly restricted
+by the use of overlays; full details of
+this are to be found in the CBASIC User
+Guide.
+</p>
+<p>
+CHAINing allows COMMON variables to remain
+intact while the area of memory used for storage of
+file buffers, strings and arrays is compacted. If the
+%CHAIN directive is used, the system cunningly
+instructs the first of a series of programs to
+determine the maximum storage capacity of all
+following program overlays; this maximum figure
+will be used to determine how much memory will
+be allocated to each of the areas required by the
+program suite.
+</p>
+<p>
+In its simplest form, CHAIN is used as follows:
+</p>
+<p>
+REM FINISH PREVIOUS PROGRAM THEN
+REM LOAD NEXT OVERLAY
+CHAIN &ldquo;NEWPROG&rdquo;
+</p>
+<p>
+An arrangement which allows an overlay to be
+loaded from a different disk drive follows; this
+assumes that the logged in drive is A and that the
+next program resides on drive B:
+</p>
+<p>
+DISK&nbsp;.DRIVE$ = &ldquo;B:&rdquo;
+INPUT"NAME OF NEXT PROGRAM&rdquo;; PROGRAM. NAMES
+CHAIN DISK. DRIVES+PROGRAN&nbsp;. NAMES
+</p>
+<p>
+The COMMON statement is not found in other
+BASICs, and its use follows the FORTRAN precedent
+as being the first statement in a program,
+agreeing in type and sequence in both sending and
+receiving programs. Thus if variables A, B$ and C%
+are produced by the sending program, the receiving
+program must have either the same variables in
+the same order or different named variables of the
+sare type in the same order, i.e. X, Y$ and Z%.
+</p>
+<p>
+Array variables in COMMON must be followed by
+one parameter which specifies the number of array
+subscripts, and these must appear in a DIMension
+statement.
+</p>
+<?php columnEnd(2); ?>

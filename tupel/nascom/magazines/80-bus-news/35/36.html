@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+36
+</p>
+<p>
+Ok, now on to clocks and dBASE. The same process is used, just the
+programs are different. Firstly the clock call routine for the GM816, this is
+likely to be the more popular. Idon&rsquo;t include any utilities for setting the
+clock as both the GM816 and the GM822 are sufficiently reliable to only
+require setting every now and then by separate utilities described in their
+respective manuals.
+</p>
+<p>
+See Listing Three
+This lot comes down to a neat and tidy little piece so
+</p>
+<p>
+STORE 49152 TO s:time
+SET CALL TO s:time
+</p>
+<p>
+POKE 49152,195,20,192
+</p>
+<p>
+POKE 49172, 14,33, 6,11, 33,9, 192, 12, 237, 162, 32, 251,6,4, 33,9
+</p>
+<p>
+POKE 49188, 192,17, 8,192,205, 60, 192, 40, 231, 16,249,205, 85,192, 40,224
+PORE 49204, 18,27, 205, 60, 192, 40, 217, 201, 205, 85, 192, 200, 79, 205, 85, 192
+POKE 49220, 200, 197,203, 39, 79,203, 39,203, 39,129, 193,129, 18,27,175,61
+POKE 49236, 201, 126,35, 230, 15, 254, 15, 201
+</p>
+<p>
+Note that in this routine the 1l registers are first read into an 11 byte
+workspace, the results are then converted from the decimal one byte per digit
+into HEX numbers in a second workspace, as dBASE requires the numbers stored
+in HEX. It is then a simple matter of PEEKing the workspace to extract the
+time and date. The order is thus:
+</p>
+<p>
+sitimet3 = month
+sitimet4 = day of week
+sitimet5S = day of month
+sitimet6 = hours
+sitimet+t7 = minutes
+</p>
+<p>
+si:timet8 = seconds
+</p>
+<p>
+Listing Four is an extract from my radio logbook program which firstly
+shoves the correct time at the SVC and then picks up a logon string for later
+use. This is for the GM816. The same is true for the GM822 hung on a PIO
+device. The routine is quite a bit larger, but the output format is the same.
+In this instance the port decode was Ich &ndash; 1fh, if you want it any different,
+then you can unscramble it and disassemble it yourself. See Listing Five.
+</p>
+<p>
+Naturally these routines could be used with any high level language which
+has the ability to PEEK and POKE and to CALL user subroutines. The principles
+are the same regardless, but care should be taken as to where they are put as
+some parts of programs could crash into them if they are located at c0000h, or
+worse, they could be moved by the program itself.
+</p>
+<?php columnEnd(1); ?>

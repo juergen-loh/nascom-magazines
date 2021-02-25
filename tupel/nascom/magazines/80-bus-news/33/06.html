@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<p>
+It is best to consider that ALL operations will occur at the
+place pointed to by the arrow. e.g. BS will delete the letter pointed to and
+characters under/after the cursor will move left/up. Any typed Characters will
+be inserted in the &lsquo;gap&rsquo; pointed to, and text under/after the cursor will move
+right/down. This is different to editing in BASIC etc. where characters will
+&lsquo;overtype&rsquo; unless space is created by shift/right arrow. The Insert mode is
+terminated by a -Z.
+</p>
+<p>
+A number of commands (also used in Insert mode) are available to move the
+cursor forwards or backwards through the text by units of one
+character/word/line/paragraph/Quarter page. The main cursor commands are Right
+and Left arrow, to move one character, Shift Right or Shift Left arrow to move
+one Word, Up or Down arrow to move one (logical) line, Shift Up or Shift Down
+arrow to move one Paragraph. In command mode, text can also be scanned in
+&lsquo;Pages&rsquo;. The length of a page can be changed from the default value by using
+the &lsquo;3&rsquo; &amp; &lsquo;4&rdquo; commands, to suit screen or Printer output. Page markers can
+then be inserted into the text, or removed at will, by simple commands. If
+Pages are marked forward and backward scanning is supported (8 or 9 commands).
+Any page may be printed (P command) and if the cursor is not moved, repeated
+printing of a Page is possible. More sophisticated printing is allowed under
+the Spool overlay.
+</p>
+<p>
+It is important to realize that a line MAY NOT mean one line as seen on
+the screen. One normally enters text into a file by just typing words, spaces
+and punctuation, but WITHOUT pressing ENTER at the end of each screen line.
+The text will &lsquo;wrap around&rsquo; onto the next line of the screen, etc., although
+some words may appear broken when the end of screen line is reached. In memory
+though, the text will be continuous. Thus a paragraph of say 200 words may be
+entered, and the cursor may be half way down the screen but the line counter
+will still say line 1, because the logical end of line is marked by a CR,LF
+sequence, which results from pressing ENTER, or from formatting. Half a dozen
+such paragraphs may occupy several K. of memory and take two or three screens
+to display fully, but may only register six lines on the status display.
+</p>
+<p>
+When the text is formatted to the desired length however, the program
+will place a CR,LF at the end of every line of 76 (or whatever length set &ndash;
+N.B. These are -l&rdquo; steps, NOT characters), and the line counter will display
+the correct count. Since the screen can only display 48 or 80 chars. on a
+line, any lines formatted longer than this will &lsquo;wrap around&rsquo;, and this will
+result in the line count indicator not agreeing with lines as counted on the
+screen.
+</p>
+<p>
+Another consequence of the lack of CR,LF before formatting is that the
+UP/DOWN arrow keys will cause the cursor to jump the whole length of the
+logical line. This makes reaching the middle of a paragraph by cursor
+character or word commands tedious. The answer is to format frequently, or to
+press ENTER or RETURN fairly often when near the Right hand side of the
+screen. Formatting takes longer as the ammount of text grows, and it is not
+necessary to put the cursor to the start of the text each time a format is
+done. It can be placed at the end of the previous formatted part. If
+formatting is done on the last one or two paragraphs entered, it is very
+quick. The whole text only need be reformatted if changes are made near the
+start, or some other change is needed such as a different line length.
+</p>
+<?php columnEnd(1); ?>

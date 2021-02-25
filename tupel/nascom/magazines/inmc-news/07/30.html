@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+D-BUG has several commands. These are entered by typing a colon
+followed by the command letter. An excellent feature is the alternate
+video RAM command, :0. This specifies a 1K block of RAM which is spare
+in your system. It can be swapped with the NAS-SYS/D-BUG display by
+using the command :A, pressing Enter returns the display to normal. The
+two pages of the display are automatically swapped over during
+execution (E or S commands), so that use of the screen for debugging
+does not affect the display used by the program. This is invaluable for
+testing programs which output information to the display and read it
+back. (Don&rsquo;t forget to clear the alternate display before running your
+program! Use :A then clear the screen).
+</p>
+<p>
+D-BUG works by trapping all output via the UOUT jump, Since
+this means the the UOUT jump has been used up and is no longer
+available, for example, for driving a parallel printer, D-BUG provides
+a command (:C) to set the address of your own U output routine.
+</p>
+<p>
+A further feature is the :F command, which is used to find a
+string of up to eight consecutive bytes. Even more, one or more of the
+bytes may be specified as &lsquo;wild&rsquo;, for instance, if D-BUG were asked to
+Find 2A &ndash; 0C (the &lsquo;dash&rsquo; means &lsquo;wild&rsquo;), D-BUG would find every location
+where HL was loaded from a location between 0C000H and 0CFFH.
+</p>
+<p>
+The only slight problem you might encounter fs if D-BUG is
+activated while running a program which outputs a colon as the first
+character of a line. D-BUG instantly grabs control and obeys&rsquo; the
+&ldquo;command&rdquo;!
+</p>
+<p>
+D-BUG is acivated by typing the command E C009 and can be
+de-activated by the N command. A Nascom&nbsp;2 can be set to power up at
+C000H, and in this case D-BUG is activated on power up or on pressing
+Reset. It is necessary to re-activate D-BUG after using ZEAP.
+</p>
+<p>
+Remember, you must have NAS-DIS and NAS-SYS in your system
+before you can use D-BUG. We have tried D-BUG thoroughly, and have
+found it to work well, we recommend it as a &lsquo;must&rsquo; for all machine code
+addicts.
+</p>
+<p>
+D-BUG was written for Nascom by Mick Scutt of CC SOFT, and is
+available from Nascom through your local dealer. Contact your dealer
+for details, and again if he doesn&rsquo;t know anything about it, have a go
+at Nascom Sales Department for prices and availability.
+</p>
+<?php hLine("20%"); ?>
+<h2>
+XTAL BASIC V2.2
+</h2>
+<p>
+Some time ago Crystal Electronics announced an 8K Basic for
+Nascom&nbsp;1. They have not stopped at that but have continued work on
+improving it, and recently announced a completely new version Basic
+2.2, which is for Nascom&nbsp;1 or 2 using T2, B-BUG, T4 or NAS-SYS
+monitors. Since it has several major improvements over the previous
+versions, we have decided to review it and compare it with the Nascom
+8K Basic.
+</p>
+<p>
+XTAL is a standard floating point 8K Basic, although in fact it
+is only about 7.25K long. Crystal jokingly describe it as a 16K Basic
+</p>
+<?php columnEnd(1); ?>

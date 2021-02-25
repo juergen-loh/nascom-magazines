@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Disks again
+</h1>
+<h2>
+GEMINI DISK SYSTEM
+</h2>
+<p>
+In the last issue we devoted some space to disk systems, in particular the
+Gemini G805. At the time we said we didn&rsquo;t intend to review it in that issue, as the
+people supplying the hints and tips had too much of a vested interest in the system
+and therefore any review forthcoming from that source could hardly be objective.
+Having said that, a few days later, a letter arrived from the Merseyside Nascom Users
+Group, containing a review on the Gemini system using D-DOS (the simple &lsquo;floppy tape
+recorder&rsquo;) software. Well although their review arrived before the last issue went
+out, it was too late to include it, so we have had to hold it over until this issue.
+Before we start on the review, we&rsquo;ll give a little of the history of the Gemini
+system.
+</p>
+<h4>
+Designing a Disk System<br>
+or How To Go Loony in Six Easy Lessons by Dave Hunt (a suitable case for treatment)
+</h4>
+<p>
+About March last year three people decided that it was about time that Nascom
+pulled its finger out and got the long awaited disk system on the road, failing that,
+they would have to do something themselves. Well it seemed that although the Nascom
+disk system had been seen in the flesh, it was still no nearer completion, so Peter,
+Richard C (not Beal) and I started to look around to see what made disks work, and why
+Nascom were taking so long. Bolstered by a bit of spare loot from Naspen royalties
+(Oh! What a give away.), and the fortuitous publication of a design discussion about a
+simple disk drive system in one of the more obscure industrial magazines, Peter and
+Richard beavered away for about a month, and finally phoned me, saying &ldquo;Come on over,
+we&rsquo;ve got something that works&rdquo;, and it did!! There it was, a huge 10 amp power
+supply, running a hand knitted 4" square vero card, surrounded by a rats nest of wires
+attached to an N2 at one end, and a Shugart drive at the other. It was a rather
+different approach than the American designed disk controllers available, in that
+instead of giving the controller card a list of instructions and then letting the
+controller card take over the bus and get on with it, it made the Z80 do most of the
+work. This meant that the Z80 couldn&rsquo;t do something else whilst disk access was taking
+place (as the American designs envisaged), nor could system interrupts occur during
+disk access. But, what the heck, it brought the chip count down to 8, and made it
+cheap compared along side its imported rivals. 99.99% of applications would not
+require the Z80 to be doing anything else whilst disk access took place, and anyone
+giving priority to system interrupts would just have to put up with it {or buy an
+American one).
+</p>
+<p>
+One problem caused considerable debate amongst us. We chose the Western
+Digital 1771 FDC chip to do all the work, and Western Digital recommend the use of an
+external data/sync separator. Now the trouble with data/sync separators is that they
+usually use monostables and these usually need &lsquo;twiddle pots&rsquo;. &lsquo;Twiddle pots&rsquo; aren&rsquo;t a
+clever idea when it comes to kits, because constuctors usually can&rsquo;t manage to set
+them correctly without sophisticated test gear. A lot of effort went in to designing a
+consistent data/sync separtor which didn&rsquo;t need adjustment, and after a lot of brain
+scratching Richard C came up with one. We wrote special test routines which could
+count (and then recover from) &lsquo;soft errors&rsquo; and set it to work. In theory we should
+get on average about one error an hour, yet after churning back and forth all day,
+still no errors. Fantastic. Then someone muttered darkly that Tandy use a 1771 and get
+away without any data/sync separator at all. So we took it all off and repeated the
+test. 72 hours later, still no errors (except by picking up the drive and shaking it).
+Moral: who needs data/sync separators anyway!!! Just to hedge our bets, we left pads
+on the pcb to connect a data/sync separator, just in case.
+</p>
+<?php columnEnd(1); ?>

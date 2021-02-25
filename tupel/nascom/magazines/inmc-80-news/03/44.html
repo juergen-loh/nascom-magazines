@@ -1,0 +1,75 @@
+<?php columnStart(1, "noindent"); ?>
+<h2 id="article1">
+Instant diagnosis
+</h2>
+<p>
+In my pile of letters I&rsquo;ve found a number of small queries which I haven&rsquo;t
+replied to. I decided that it probably wasn&rsquo;t worth it as most of my mail is at least
+3 months old. So instead I&rsquo;ll precis them here and maybe answer some of those unasked
+questions you feel some one might have the answer to.
+</p>
+<p>
+M. R Hughes asks about the fault on the video where the video dot generator (IC65) on
+a Nascom&nbsp;2 loads the front half of the video data twice. If you use a scope you&rsquo;ll
+notice that the LD waveform on pin 1 of IC65 has a nasty spike in it. It comes from
+IC71. The cure, to change IC71 to a 74LS13.
+</p>
+<p>
+Another is the sideways &lsquo;weave&rsquo; of the N2 display. This is caused by the fact that the
+frame sync pulses are not exactly 50 Hz (about 50.15Hz actually). If you&rsquo;re using a TV
+or monitor with poor smoothing, or there is ripple on your Nascom power supply then
+this will be apparent to a greater or lesser extent as the 50 Hz beats with the 50.15
+Hz, and moves the line sync pulses in sympathy. There is no simple cure except to
+ensure that both Nascom and video monitor PSUs are ripple free. Bits and PCs have a
+mod up their sleeves which alters the frame rate to 50Hz, but this involves cutting
+tracks and wire links.
+</p>
+<p>
+There have been some comments about the INMC book of Basic programs. One thing we
+totally missed when we printed it was that the old faithfull IBM didn&rsquo;t have an
+up-arrow, instead it printed a fullstop. This had the unfortunate affect that some
+thing like X=30^2 got printed as X=30.2, which if course is something else entirely.
+We haven&rsquo;t been through the book to find them, but watch out!!!
+</p>
+<p>
+Another has been about saving a Basic program after a system &lsquo;crash&rsquo;. Now this should
+never ever happen in Basic, and if it does, then suspect a touch of memory plague
+(read the index in INMC 7 for all references to memory speed and plague). Anyway,
+given that something nasty has happened, a Basic program is likely to be complete up
+to a point, followed by rubbish. This is because Basic has lost the pointer to the
+next line. It is possible to reconstruct the program by going into memory using the
+machine code &lsquo;M&rsquo; and &lsquo;T&rsquo; commands, and once you understand the way Basic puts pointers
+into each line, terminate the last valid line with three NOPs. I won&rsquo;t go into detail,
+&rsquo;cos if you&rsquo;re clever enough to figure out how it works, you&rsquo;re clever enough to sort
+the problem yourself. Otherwise &lsquo;LIST&rsquo; the program to tape (refer to INMC 7 again) and
+then reload it just short of the point where the data becomes corrupt. Moral, always
+dump any program to tape before running it.
+</p>
+<p>
+Watch out, pin connections to the serial and parallel outputs of Nascom&nbsp;1 and 2
+differ, make sure which version is meant before connecting anything to these pins.
+</p>
+<p>
+Turning a parallel printer on and off from Basic is easy, assuming the U command is
+used and has already been activated. To turn on simply DOKE 0C78H (3192 decimal&nbsp;... I
+think) with the address of your print handler. To turn off, take a DEEK at 3192 when
+the &lsquo;U&rsquo; command is unactivated (&rsquo;cos it varies between NAS-SYS&nbsp;1 and 3) and use that
+number when DOKEing location 3192.
+</p>
+<p>
+One thats in the manual but yet remains a hardy perennial. You can enter lines up to
+72 characters in length into the 8K Basic by the following sequence. Note that 72 is
+the maximum number of characters that can be entered.
+</p>
+<pre>
+MONITOR
+X0
+Z
+Ok
+1233 REM This is the line you wanted to enter and may be up to 72 chars
+MONTTOR
+N
+Z
+Ok
+</pre>
+<?php columnEnd(1); ?>

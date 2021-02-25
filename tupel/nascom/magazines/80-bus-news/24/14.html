@@ -1,0 +1,152 @@
+<?php columnStart(1); ?>
+<p>
+MV256 Relocating Graphics Drivers N-80 20 Jun 1983 23:54 PAGE 1-J MV256 Relocating Graphics Drivers M-80 20 Jun 1983 23:54 PAGE 1-2
+Disk read/write routines for MV256 Disk read/write routines for MV256
+</p>
+<p>
+OA93 OB 15 LD C, WRFL OADA 38 10 LD A,16
+0A95 = CD -&laquo;0005 CALL &mdash;- BDOS OADC =&mdash;- BB cP E
+oA9S8 BT OR A Test for successful OADD 20 &laquo;EF oR NZ, LOS3
+0A99 &laquo;28 &laquo;OB JR 2,083 write OADF =D DEC EB
+OAOB 11 OCID LD DE, GMESS2 Write failed, OAEO = 7B LGS4: LD A,E
+</p>
+<p>
+R go say so OAR CB 27 SLA A
+</p>
+<p>
+16 pixels yet?
+</p>
+<p>
+-
+</p>
+<p>
+No, go go and get the next
+Fudge the pixel count
+Put the pixel count
+</p>
+<p>
+in MSBs of A
+</p>
+<p>
+on te en om
+</p>
+<p>
+OAAO CD 0005 CALL BDOS OAE5 CB 27 SLA
+OAA3 Bi POP HL Lose AF and HL OABT CB 27 SLA
+OAA4 MA POP AF off the stack OAES 82 ADD A,D
+OAAS cg RET OABA. Dt POP DE
+OAA6 FM GS3: POP AP OAEB 12 LD (DE) ,A
+OAA7 Hi POP HL OAEC 13 INC DE
+OAA8 20 D9 JR NZ,GS2 All done? No, go OAED 7 LD A,H
+round again OAEE BS OR L
+</p>
+<p>
+; Now close the file and go home OAEF cs RET 4
+OAAA 11 0068 LD DE, FCB OAFO 10 DS DINZ Lgs2
+</p>
+<p>
+R OAF2 cg RET
+OAAD Of 10 LD C,CLSFL
+</p>
+<p>
+OAAF cD 0005 CALL BDOS ; Get a pixel
+OAB2 3c INC A Test for successful OAF3 cD O8EO GCOL: CALL READY
+OABS co RET NZ close R
+OAB4 11 0039 LD DE, GMESS3 Close failed, so say so OAF6 7 LD AH
+R OAFT D3 CB out (YCL),A
+OABT OF 09 LD C, PRS OAF9 7D LD AL
+OAB9 CD 0005 CALL BDOS OAFA D3 C9 ouT (XCL),A
+OABC cg RET OAFC 3E OF LD A, OFH
+OAFE =&mdash;-3.- CO. our (CMD) ,A
+Get a buffer full into TBUF OBOO CD OBEO CALL READY
+The four MSBs of each byte represent 1 to 16 pixels R
+of the same colour. OB03 DB DO In A, (GETCOL)
+The four LSBs represent the colour. OBO5 B6 OF AND OFH
+OABD 41 0080 GSt: LD DE, TBUF ; Point to temporary OBOT cg RET
+OACO 06 80 LD B,128 t output buffer
+OAC2 AF XOR A ; Clear out MSBs
+OAC3 D3 CA our (YOM) ,A : of X and Y registers
+oAc5 = sD. CB our (xem) A
+</p>
+<p>
+Add the colour to it
+</p>
+<p>
+Get the TBUF pointer back
+Save the byte
+</p>
+<p>
+Point to next in TBUF
+Teat for end of screen
+</p>
+<p>
+Go home write out anyway
+More required in TBUF
+TBUF full so write it out
+</p>
+<p>
+Send H&amp;L to Y &amp; X
+</p>
+<p>
+Send GET PIXEL command
+</p>
+<p>
+Wait till done
+</p>
+<p>
+Get the pixel
+Get rid of MSBs
+</p>
+<p>
+we ee ee end
+</p>
+<p>
+ROUTINE GLOAD
+Send graphics file to screen
+GLOAD(NS)
+OBO8 CD OBSC Lt CALL FCRI
+Save the TBUF pointer R
+OAC8 =: 1E-00 LD E,0 Set the pixel counter OBOB 11 0C68 LD DE, FCB
+OACA CD OAF3 CALL GcoL Get a pixel R
+</p>
+<p>
+R OBOE OB OF LD C,OPNFL
+OACD 57 LD DA Save it OB10 cD 0005 CALL BDOS
+OACE 23 LGS3: INC HL Point to next pixel OB13 3C INC A
+OACF (33 LD AH Test for end of screen OB14 20 09 JR NZ,GLt
+OADO BS OR L OBI6 11 0051 LD DE, GMESS4
+OAD1 28 OD JR 2, L084 Is end, so write it out R
+OAD3 CD OARS CALL GcoL Get the next pixel OB19 OE 09 LD c, PRS
+</p>
+<p>
+R OBIB CD 0005 CALL BDOS
+OAD6 -=&mdash;s-BA cP D Is it the same OBIE 9c RET
+OAD7 20 07 JR NZ, LGS4 No, write out last colour
+OADS 4c INC E Yes, so inc pixel counter
+</p>
+<p>
+om tm am TY
+</p>
+<p>
+Get name into the FCB
+</p>
+<p>
+OACT DS LGS2: PUSH DE
+Open the file
+</p>
+<p>
+we ee ew
+</p>
+<p>
+Test successful open
+</p>
+<p>
+Open failed, so say so
+</p>
+<p>
+eh ee
+</p>
+<p>
+14
+</p>
+<?php columnEnd(1); ?>

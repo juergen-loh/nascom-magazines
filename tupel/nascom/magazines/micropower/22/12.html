@@ -1,0 +1,157 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+EPROM PROGRAMMER/CHECKER/READER
+</h1>
+<p>
+by C. Bowden
+</p>
+<p>
+This article continues the listing of the controlling software for the Eprom
+programmer.
+</p>
+<p>
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+364
+365
+366
+367
+368
+369
+VERFY4
+VERFY5
+VERFY6
+CALL RESET1
+LD A, (ERRFLG)
+CP 0FFH
+JR Z, VERFY5
+CALL CLRCRT
+LD HL, TEXT16
+LD DE, 090BH
+LD BC, 1BH
+LDIR
+JR VERFY6
+DEFB SCAL, TDEL
+DEFB SCAL, TDEL
+LD HL, TEXT5
+LD DE, 090BH
+LD BC, 24
+LDIR
+DEFB SCAL. TDEL
+DEFB SCAL, TDEL
+JP RESTRT
+;;
+;
+;
+;
+;
+;
+IF 0FFH, THERE WERE ERRORS
+SO SKIP O.K. MESSAGE
+ELSE SAY COMPARISON O.K.
+HOLD DISPLAY 2 SECS
+ERROR MESSAGEREEN 363
+2 SECS PAUSE
+EXIT ROUTINE
+370
+371
+372
+;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ROUTINE TO COPY EPROM INTO RAM
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+TRNFER
+TRNFR1
+TRNFR2
+LD HL, TEXT9
+LD DE, 0A4BH
+LD BC, 11H
+LDIR
+CALL RAMADR
+LD DE, 0000H
+LD A, (ROMFLG)
+CP D
+JR Z, TRNFR2
+CALL ENABLE
+IN A, (ADATA)
+LD (HL), A
+CALL COUNT
+INC HL
+INC DE
+JR TRNFR1
+CALL RESET1
+CALL MESS19
+JP RESTRT
+;
+;
+;;;;;;
+;
+&lsquo;FILLED FROM EPROM&rsquo;
+JUMP IF ALL DONE
+GET BYTE FROM EPROM
+STORE IT IN MEMORY
+INCR. ADD., DISABLE CHIP
+NEXT MEMORY LOCATION
+INCREMENT BYTE COUNTER
+CONTINUE TILL FINISHED
+ALL DONE MESSAGE
+392
+393
+394
+;;;
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ROUTINE TO CHECK IF FULLY ERASED
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+395
+396
+397
+398
+399
+400
+401
+ERASED
+ERA1
+LD DE, 0000
+LD A, (ROMFLG)
+CP D
+JR Z, ERA3
+CALL ENABLE
+IN A, (ADATA)
+CP 0FFH
+;
+;;
+JUMP IF FINISHED
+GET BYTE FROM EPROM
+IS IT &lsquo;FF&rsquo;
+</p>
+<?php columnEnd(1); ?>

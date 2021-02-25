@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+By the way, the 8K Basic works best under NAS-SYS, because you can
+correct lines of program using its editing facilities. Otherwise,
+you have to re-enter the whole line in error. I have got a version
+of the 2K Tiny Basic which runs under NAS-SYS, but it&rsquo;s not really
+worth bothering with &ndash; the 8K Basic is so tremendous. I am
+patiently waiting for ZEAP to be converted to run under NAS-SYS &ndash;
+come on!!
+</p>
+<p>
+Send in any queries about monitors and what they do or don&rsquo;t have,
+and I will try to remember the answers and print replies, Good Luck
+out there!
+</p>
+<p>
+Richard Beal
+</p>
+<p>
+Note: Address contributions to &ldquo;Software Section, INMC&rdquo;
+</p>
+<h2>
+Idea for a Program
+</h2>
+<p>
+Suppose you have a program from a magazine which is assembled to
+run at address 0000-0100, and it uses a data area at F000-F020.
+You want to run it on a NASCOM, with the program at 0C80-0D80 and
+the data area at 0E00-0E20. Now you could convert all the addresses,
+effectively reassembling the program. But suppose you don&rsquo;t have
+the source listing, and don&rsquo;t even know that it uses a data area.
+It would still be possible to disassemble and examine the program,
+but this would take a long time.
+</p>
+<p>
+What I propose is a program to watch over the program that is
+being run. The unaltered program would be loaded into the NASCOM
+at 0C80. The control program would be told:&ndash;
+</p>
+<p>
+All addresses 0000-0100 are to be converted to 0C80-0D80. Any
+other addresses are to be reported out before being executed.
+</p>
+<p>
+The control program would then be run. It would look at each
+instruction in turn and then execute it. Addresses in instructions
+would be examined, and depending on their value, either left alone,
+be adjusted according to instructions given to the control program,
+or else be reported out and the program paused.
+</p>
+<p>
+This suggested control program would also be excellent for debugging
+ordinary programs. For example, on an unexpanded NASCOM, it would
+be told: Run this program. Report any attempt to use an address in
+the range 1000-FFFF.
+</p>
+<p>
+The control program could carry out the single step execution of
+the other program by copying the instruction to another part of
+RAM and following it with a RET, and then calling it as a subroutine.
+Or perhaps NMI single step feature could be used.
+</p>
+<p>
+Please send in any ideas for how to do this, or indeed if it is
+possible.<br>
+Better still, try writing a program to do it!
+</p>
+<p>
+Richard Beal<br>
+Software Co-ordinator<br>
+INMC Committee
+</p>
+<?php columnEnd(1); ?>

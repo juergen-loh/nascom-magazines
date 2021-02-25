@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+43
+</p>
+<p>
+PUT A REAL TIME CLOCK INTO YOUR CBIOS By C. Bowden
+</p>
+<p>
+This article explains how I managed to alter my CBIOS so that I was able
+to display the Date and Time on screen, using a Gemini GM816 I/O card which
+contains a REAL TIME CLOCK. Readers may already have an R.T.C. available on
+either the Gemini GM822 or GM816 card, or some other commercial or homebrew
+card. Many readers will also either have a -source&rsquo; listing of their CBIOS, or
+be using one of the -SYS&rdquo; CBIOS*s, in which case, the method described can be
+used with appropriate modification. If no listing is available, I have given
+at the end of the article some suggestions that may help, although I have not
+tried them.
+</p>
+<p>
+The idea of having a real time clock on my computer has appealed to me
+for some time. I have used a couple at work. One was a simple scheme, using a
+58174A hung onto the PIO of a Nascom&nbsp;2 that is running all the time carrying
+out a control job. The other one, in a Gemini GALAXY 2, used the card produced
+by E.V. Computing that attaches to the Gemini GM812 IVC card. The latter
+solution is particularly nice as it does not interfere with the main CPU at
+all, and the time updates irrespective of any task that the main CPU is doing.
+The card offers several other features too, but the cost is of course higher.
+</p>
+<p>
+Having an RTC in the machine is of course all very weil, but it is
+obviously an advantage to be able to see the date and time displayed on the
+screen at all times, and also to be able to -call&rdquo; up the clock from user
+programs. A number of example programs have been printed in this magazine from
+time to time, describing how to build and/or program such clocks, but little
+has appeared on how to incorporate one into CP/M (versions 1.4 and 2.2 &ndash;
+version 3 supports a clock).
+</p>
+<p>
+After some thought and a bit of trial and error, I succeeded in doing
+this with reasonable success. In this article I will describe how I did this
+with CP/M 2.2, using a Gemini GM816 I/O card and SYS version 16. Much of the
+methods used will be applicable to other software and hardware.
+</p>
+<p>
+When considering the use of a Clock, there are several questions that
+must be answered before it can be decided whether a particular method is
+satisfactory. The first consideration is one of accuracy. How accurate must
+the clock be, and how accurate must the display be? The two are not
+necessarily the same. The Clock hardware used might be highly accurate, with
+errors of less than a few seconds in a year, but if the clock display is only
+updated every hour, then that is the Limit of accuracy that can be obtained
+from the display. (A program might still read the clock much more accurately.)
+For most purposes, it would probably be acceptable for the clock to be
+accurate to better than a few seconds a day, with a display that updates at
+about once every second. This was my target, and it was easily attained, but
+with one minor restriction. There may be occasions when the Screen clock
+display will -freeze&rdquo; for a minute or two, although it will then be corrected
+at the next update.
+</p>
+<p>
+This restriction can best be explained by investigating how a clock might
+be incorporated into CP/M. Most clocks are capable of causing an Interrupt,
+and the clocks mentioned are no exception. There is however a distinct problem
+in using an Interrupt. Firstly, none of the simple clock chip systems generate
+a vector (although one used via a PIO can use the PIO vector). Use of most of
+the RESTART vectors is also not available for the same reason, unless
+</p>
+<?php columnEnd(1); ?>

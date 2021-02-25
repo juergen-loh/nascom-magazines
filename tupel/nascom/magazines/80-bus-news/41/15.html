@@ -1,0 +1,102 @@
+<?php columnStart(1); ?>
+<p>
+Index file loader for Dbase M-80 17 May 1985 21:53 PAGE 1
+Title Index file loader for Dbase
+</p>
+<p>
+. 280
+0000&rsquo; aseg
+</p>
+<p>
+; CP/M equates
+</p>
+<p>
+0005 bdos equ 0005h
+0080 dma equ 0080h
+OOoF opnfil equ 16
+0010 clsfil equ 16
+0011 srchfst equ 17
+0012 srchnxt equ 18
+0013 delfil equ 19
+0014 rdfil equ 20
+0015 wrfil equ 21
+0016 makfil equ 22
+OO1A setdma equ 26
+org 100h
+</p>
+<p>
+-phase 0c000h
+</p>
+<p>
+cooo C3 cO4A jp start
+</p>
+<p>
+; Workspace
+C003 dstdrv: defs 1 ; Destination drive name
+</p>
+<p>
+; Source fcb
+</p>
+<p>
+coo4 febl: defs 1 ; Source drive name&nbsp;..
+co05 fcbla: defs ll : .. file name mask&nbsp;..
+co10 feblb: defs 23 : .. rest of source feb
+C027 feb2: defs 35 ; Destination fcb
+</p>
+<p>
+; Find the files to copy
+</p>
+<p>
+CO4A 11 0080 start: ld de, dma ; Set the DMA address
+co4D OE 1A la c,setdma
+</p>
+<p>
+co4F cD 0005 call bdos
+</p>
+<p>
+C052 cD coco call clr
+</p>
+<p>
+C055 1l co04 ld de, febl ; Search for first
+C058 OE 11 ld c,srchfst
+</p>
+<p>
+COSA cD 0005 call bdos
+</p>
+<p>
+cosp FE FF cp offh ; Quit if not found
+CosF ce ret Zz
+</p>
+<p>
+cose CD COB3 call loc ; Put it in save
+C063 11 c10D la de, save
+</p>
+<p>
+CO66 01 0008 ld be, 11
+</p>
+<p>
+co6s ED BO ldir
+</p>
+<p>
+CO6B DS push de
+</p>
+<p>
+coec ll co04 srch: ld de, febl ; Search for next
+COGF OE 12 ld co, srcehnxt
+</p>
+<p>
+C071 cD 0005 call bdos
+</p>
+<p>
+coT4 FE FF cp Offh ; No more&nbsp;?
+</p>
+<p>
+co76 28 0C jr z,schdon
+</p>
+<p>
+co78 CD COBS call loc ; Put it in save
+</p>
+<p>
+CO7B DL pop de
+</p>
+<?php columnEnd(1); ?>

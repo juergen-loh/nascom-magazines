@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+15
+</p>
+<p>
+be read in and when this has been done the NAS-SYS Tabulate command is used to
+display the contents of the EPROM (note: the addresses shown are RAM
+addresses).
+</p>
+<p>
+3. Program
+</p>
+<p>
+After entering the EPROM type you enter the start and end address
+(inclusive) of the RAM block which holds the data to be blown into the EPROM.
+Next, you are asked for the base address of the EPROM. The default value is
+0000. If you wish you can change the base address to the actual address at
+which the EPROM will reside in memory. When this has been entered the start
+and end addresses of the EPROM will be displayed, assuming programming is to
+start at the first location in the EPROM. If you are programming from a
+different address then change the values accordingly. The next prompt tells
+you to switch the programmer to PROGRAM and then to press key -P&rsquo;.
+</p>
+<p>
+When programming is complete the locations just programmed will be
+verified against RAM by reading in each Location and comparing it with the
+corresponding byte in RAM. If a discrepancy is detected a message is given
+which displays the EPROM location concerned. If there are a lot of errors
+press ESCAPE to abort the verification. Then you can try the same EPROM again
+or a fresh one.
+</p>
+<p>
+The signals used to control the EPROM are /OE which is low to read and
+high to program, and the programming pulses PGM (active high) and /PGM (active
+low). The duration of the pulses is 50ms tor- 5ms and to implement this I used
+a simple delay loop. However a program erash during the middle of the delay
+loop would leave the PGM signals permanently active and the EPROM would not
+like this! So a safer alternative would be to use a 74LS121 monostable to
+provide the 50ms pulse and this would simply need to be triggered from the
+PIO.
+</p>
+<p>
+As I already had a Nascom I/O board which holds up to three PIO&rsquo;s I took
+advantage of this by using two PIO&rsquo;s to provide all the necessary signals and
+therefore simplify the hardware. If you only have the on-board PIO but still
+would like to build the programmer have a look at fig3. This is something off
+the top of my head (yes, I know it&rsquo;s a funny place to keep circuit diagrams!)
+and has not actually been tried but something along these lines should work,
+although the control program will need modifying.
+</p>
+<p>
+Construction
+</p>
+<p>
+The circuitry can be built on a piece of Veroboard and mounted in a
+plastic box with the ZIF and 16-pin dil sockets poking through holes cut in
+the top of the box, together with the switch and LED&rsquo;s. Connection to the PI0Os
+on the I/O board is made using two 26-way ribbon cables with IDC headers. See
+fig 4 for pin connections (but note that I use different addreses for the PIOs
+from those recommended in the manual). The power supply could be included in
+the programmer box or use a separate one. It should be able to deliver 30V at
+about 300ma. Wire up the header sockets as per fig 2 and I strongly suggest
+you clearly mark each one with the EPROM type!
+</p>
+<?php columnEnd(1); ?>

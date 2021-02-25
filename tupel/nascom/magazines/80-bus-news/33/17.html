@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+17
+</p>
+<p>
+sets that can be selected by means of an on-board DIL switch. (The character
+generator is actually intialised with the English character set, and then,
+depending on the DIL switch settings, a small sub-set of characters may be
+overwritten by their foreign language versions.)
+</p>
+<p>
+The two standard alpha display modes are now 80 x 25, (80 characters by
+25 lines) and 40 x 25. With the increase in the size of the alpha screen
+memory from 2k to 4k, (remember the other 4k is used as a character
+generator), it was decided to add the concept of multiple -screens&rdquo; I felt
+that this offered certain advantages over treating the 4k of memory as a
+single screen, although the latter would offer the possibility of being able
+to scroll back through the last 50 lines (or 100 lines in 40-wide format) that
+had been displayed. With the &ldquo;multiple screen&rdquo; concept you can select (via an
+escape sequence) which of the available screens is to be displayed, and which
+is to be updated by the incoming data/commands from the Host. My reasons for
+doing this I list below, but I must confess that reason (1) was perhaps a
+little selfish!
+</p>
+<p>
+1. It required a very small change to the existing software to support it.
+</p>
+<p>
+2. This feature had zero impact on the current performance of the SVC. (The
+alternative approach would have meant scrolling 4k of data, and also added
+the problem of handling any &ldquo;locked&rdquo; screen lines.)
+</p>
+<p>
+3. It allows programs to set up hidden -help&rsquo; screens that can be switched to
+instantly.
+</p>
+<p>
+4. It simplifies (possibly) the implementation of concurrent tasks. (If you
+want to have two tasks running concurrently with independent screens on a
+system with an IVC there is the problem of how the undisplayed screen is
+handled. There are two options open: a) Queue all console output for the
+non-displayed task, wait until its screen image is swapped into the IVC,
+and then send it. Or b) Duplicate all the necessary parts of the IVC
+monitor in the system software so that the screen image can be updated
+immediately.)
+</p>
+<p>
+When set into the graphics mode the SVC uses the entire 8kx8 screen
+memory as a 256 x 256 pixel display. (No colour, it&rsquo;s black-and-white only I*m
+afraid!) As a result the RAM based character set is lost, although the default
+character set is still present within the monitor EPROM. The SVC will still
+display text in this mode, but the format is now 32 characters/line and you
+are restricted to the English character set. (Each incoming ASCII character is
+used to index into the EPROM-based character generator table from whence the
+bit patterns are copied out into the screen RAM. I have not as yet included
+any check for special sub-set characters, nor the subsequent check of the DIL
+switch settings to see if these should be modified.) Any enterprising Dane or
+German who is irritated by this could swop the relavent dot patterns of the
+subset characters in the default table with those in their language table, not
+forgetting to exchange the words &ldquo;English&rdquo; and &ldquo;Danish&rdquo; (or whatever) where
+necessary in the manual.
+</p>
+<p>
+ATTRIBUTES
+</p>
+<p>
+The IVC only offered one attribute &ndash; the selection of the alternate
+character generator. This is normally loaded with the complement of the main
+character set to give video-inverse characters.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,95 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    44</span>
+
+ECF6 110000     NEXT:   LD      DE,0            ; In case no index given
+ECF9 C42DEF     NEXT1:  CALL    NZ,GETVAR       ; Get index address
+ECFC 22CE10             LD      (BRKLIN),HL     ; Save code string address
+ECFF CD56E3             CALL    BAKSTK          ; Look for "FOR" block
+ED02 C2B3E3             JP      NZ,NFERR        ; No "FOR" - ?NF Error
+ED05 F9                 LD      SP,HL           ; Clear nested loops
+ED06 D5                 PUSH    DE              ; Save index address
+ED07 7E                 LD      A,(HL)          ; Get sign of STEP
+ED08 23                 INC     HL
+ED09 F5                 PUSH    AF              ; Save sign of STEP
+ED0A D5                 PUSH    DE              ; Save index address
+ED0B CD51F8             CALL    PHLTFP          ; Move index value to FPREG
+ED0E E3                 EX      (SP),HL         ; Save address of TO value
+ED0F E5                 PUSH    HL              ; Save address of index
+ED10 CDBEF5             CALL    ADDPHL          ; Add STEP to index value
+ED13 E1                 POP     HL              ; Restore address of index
+ED14 CD6BF8             CALL    FPTHL           ; Move value to index variable
+ED17 E1                 POP     HL              ; Restore address of TO value
+ED18 CD62F8             CALL    LOADFP          ; Move TO value to BCDE
+ED1B E5                 PUSH    HL              ; Save address of line of FOR
+ED1C CD8EF8             CALL    CMPNUM          ; Compare index with TO value
+ED1F E1                 POP     HL              ; Restore address of line num
+ED20 C1                 POP     BC              ; Address of sign of STEP
+ED21 90                 SUB     B               ; Compare with expected sign
+ED22 CD62F8             CALL    LOADFP          ; BC = Loop stmt,DE = Line num
+ED25 CA31ED             JP      Z,KILFOR        ; Loop finished - Terminate it
+ED28 EB                 EX      DE,HL           ; Loop statement line number
+ED29 225C10             LD      (LINEAT),HL     ; Set loop line number
+ED2C 69                 LD      L,C             ; Set code string to loop
+ED2D 60                 LD      H,B
+ED2E C3EEE7             JP      PUTFID          ; Put back "FOR" and continue
+
+ED31 F9         KILFOR: LD      SP,HL           ; Remove "FOR" block
+ED32 2ACE10             LD      HL,(BRKLIN)     ; Code string after "NEXT"
+ED35 7E                 LD      A,(HL)          ; Get next byte in code string
+ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
+ED38 C2F2E7             JP      NZ,RUNCNT       ; No - Do next statement
+ED3B CD36E8             CALL    GETCHR          ; Position to index name
+ED3E CDF9EC             CALL    NEXT1           ; Re-enter NEXT routine
+                ; &lt; will not RETurn to here&nbsp;, Exit to RUNCNT or Loop &gt;
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    45</span>
+
+ED41 CD5AED     GETNUM: CALL    EVAL            ; Get a numeric expression
+ED44 F6         TSTNUM: DEFB    (OR n)          ; Clear carry (numeric)
+ED45 37         TSTSTR: SCF                     ; Set carry (string)
+ED46 3AAD10     CHKTYP: LD      A,(TYPE)        ; Check types match
+ED49 8F                 ADC     A,A             ; Expected + actual
+ED4A B7                 OR      A               ; Clear carry&nbsp;, set parity
+ED4B E8                 RET     PE              ; Even parity - Types match
+ED4C C3BFE3             JP      TMERR           ; Different types - Error
+
+                ; &lt;&lt;&lt; NO REFERENCE TO HERE &gt;&gt;&gt;
+
+ED4F CD90E6             CALL    CHKSYN          ; Make sure "=" follows
+ED52 B4                 DEFB    ZEQUAL          ; "="
+ED53 C35AED             JP      EVAL            ; Evaluate expression
+
+ED56 CD90E6     OPNPAR: CALL    CHKSYN          ; Make sure "(" follows
+ED59 28                 DEFB    "("
+ED5A 2B         EVAL:   DEC     HL              ; Evaluate expression & save
+ED5B 1600               LD      D,0             ; Precedence value
+ED5D D5         EVAL1:  PUSH    DE              ; Save precedence
+ED5E 0E01               LD      C,1
+ED60 CD8AE3             CALL    CHKSTK          ; Check for 1 level of stack
+ED63 CDD1ED             CALL    OPRND           ; Get next expression value
+ED66 22D010     EVAL2:  LD      (NXTOPR),HL     ; Save address of next operator
+ED69 2AD010     EVAL3:  LD      HL,(NXTOPR)     ; Restore address of next opr
+ED6C C1                 POP     BC              ; Precedence value and operator
+ED6D 78                 LD      A,B             ; Get precedence value
+ED6E FE78               CP      78H             ; "AND" or "OR" ?
+ED70 D444ED             CALL    NC,TSTNUM       ; No - Make sure it's a number
+ED73 7E                 LD      A,(HL)          ; Get next operator / function
+ED74 1600               LD      D,0             ; Clear Last relation
+ED76 D6B3       RLTLP:  SUB     ZGTR            ; ">" Token
+ED78 DA92ED             JP      C,FOPRND        ; + - * / ^ AND OR - Test it
+ED7B FE03               CP      ZLTH+1-ZGTR     ; &lt; = &gt;
+ED7D D292ED             JP      NC,FOPRND       ; Function - Call it
+ED80 FE01               CP      ZEQUAL-ZGTR     ; "="
+ED82 17                 RLA                     ; &lt;- Test for legal
+ED83 AA                 XOR     D               ; &lt;- combinations of &lt; = &gt;
+ED84 BA                 CP      D               ; &lt;- by combining last token
+ED85 57                 LD      D,A             ; &lt;- with current one
+ED86 DAADE3             JP      C,SNERR         ; Error if "&lt;&lt;" "==" or "&gt;&gt;"
+ED89 22C510             LD      (CUROPR),HL     ; Save address of current token
+ED8C CD36E8             CALL    GETCHR          ; Get next character
+ED8F C376ED             JP      RLTLP           ; Treat the two as one
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

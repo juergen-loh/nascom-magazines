@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Labers for Xtal BASIC
+</h1>
+<p>
+by Stephen Hope
+</p>
+<p>
+This article describes how labels can be added to Xtal
+BASIC. These labels can be used instead of line numbers in such
+commands as GOSUB and GOTO. This helps in producing easy to read
+programs, and allows subroutines to be referenced by meaningful
+Rames. Subroutines and other sections of a program can be moved
+around without the chore of searching the complete program to
+find any subroutine calls, or other references. ft is surprising
+how such a relatively simple extension to BASIC improves the
+Peadabi lity and ease of modification of the code.
+</p>
+<p>
+The basic (ne pun intended) idea is to first change the
+BASIC interpreter so that it will ignore a label on a line, and
+then alter the routines for GOSUB, GOTO etc. so that they&rsquo; will
+work with Iine numbers or labels. The first thing to do is&rdquo; to
+find a suitable format for the labels. I finally settled on a
+string of alphanumeric characters which starts and ends mith a
+Single quote mark, The quote marks make it relatively simple to
+Giutinguish between a label and a line number or anything else,
+tn, for example, an IF.-THEN statement.This will minimise the
+iatrease in execution time for the interpreter.
+</p>
+<p>
+Next, 2 suitable point to patch the program. There #5 a
+section of code in Xtal which is used every time a statement
+Finishes. This code checks for a keyword, a variable ora line
+terminator and executes the appropriate routine. Since all
+eywords are greater than GOH, any character less than this at
+the beginning of a line is assumed to be part of a variable
+name. Any illegal names for variables are detected later in. the
+LET routine. Here I diverted the code to check for a single
+quote. If one is found, then my routine skips aver any
+characters between this and the next. Note that thin particular
+patch allow, a label anywhere on a line at the end of
+Statement. Although labels will anly be used if they occur at
+the beginning of a Jine, this allows comments to be embedded in
+a line, ae long as they are enclosed in single quotes. A missing
+second quate gives a syntax ecrar. Otherwise, the routine siaply
+treats anything after the end of the label as the start of a new
+statement
+</p>
+<p>
+Finally, altering the GOTO and GOSUB statements. Here 1
+again patched the original coe in the interpreter. GOTG, &mdash;GOSUB
+and RUN all use the same code to jump to a line number. The
+Subroutine call to get the line number is changed so that 1
+checks the first character after the keyword. If it is a quat
+</p>
+<p>
+then it is assumed to be the start of a label. If not, something
+which is dealt with by the original routine. (This allows labels
+fo be used with more Complex types of statement, such as an IF
+Statement, where almost anything is legal after the THEN
+</p>
+<?php columnEnd(1); ?>

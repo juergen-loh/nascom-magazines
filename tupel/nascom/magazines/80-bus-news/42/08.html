@@ -1,0 +1,367 @@
+<?php columnStart(2, 2); ?>
+<p>
+Program listings for chain and overlay functions
+</p>
+<p>
+oveall:
+Program 1. A routine to chain another program.
+</p>
+<p>
+280
+bdes
+feb
+currec
+</p>
+<p>
+0005h
+005ch
+fobt20h
+</p>
+<p>
+equ
+equ
+equ
+</p>
+<p>
+BDOS jump address
+Default file control block
+Current record byte in FCB
+</p>
+<p>
+getsec:
+</p>
+<p>
+chain&rsquo;.
+</p>
+<p>
+Start of routine, double colon
+flags routine ag global to
+M80 assembler
+</p>
+<p>
+filerr:
+</p>
+<p>
+ld de, feb
+</p>
+<p>
+ld hl, fobh
+</p>
+<p>
+ld be, 13
+</p>
+<p>
+ldir
+</p>
+<p>
+ld de, feb
+</p>
+<p>
+ld c, 000fh
+call bdas
+</p>
+<p>
+inc a
+</p>
+<p>
+Ip Z, opener
+xOr a
+</p>
+<p>
+ld (curreci, 4
+ld de, tbdos+1}
+dec de
+</p>
+<p>
+ld hl, codend
+ld be. codend-codbeg
+lddr
+</p>
+<p>
+inc de
+</p>
+<p>
+eX de, hl
+</p>
+<p>
+dp thl}
+</p>
+<p>
+load chain file dets into default
+file control block at Och
+</p>
+<p>
+epen up the chain file
+</p>
+<p>
+errmes:
+</p>
+<p>
+tmemry:
+</p>
+<p>
+return on open error (FF hex returned:
+</p>
+<p>
+0 to current record
+</p>
+<p>
+Fovlad: :
+</p>
+<p>
+point DE to top of mem iget from 0006h)
+</p>
+<p>
+HL point to end of transfer code
+</p>
+<p>
+BC contains length of transfer code
+read transfer code into stack area
+transfer code addr to hl
+</p>
+<p>
+and execute 1t root::
+Following is transfer code
+codheg
+1d sp. hl
+ld de, 100
+rdsec
+push de
+ld c, Olah&nbsp;. set dma to current memory addr
+call bdos
+ld de, fob
+la c. 14h
+call bdas
+pop de
+or a
+iv nz, filred :
+ld hl, 80h
+add hl, de
+8x de, hl
+je rdsec
+</p>
+<p>
+&raquo; Sp ne code beginning
+DE points to start of program area
+Read a sector in to memory
+</p>
+<p>
+read next sector
+</p>
+<p>
+last sector %?
+-.. Yes so exit loop
+move memory pointer up 128 bytes
+</p>
+<p>
+fill:
+f112:
+not finished so read another sector
+</p>
+<p>
+mess:
+filred:
+</p>
+<p>
+1d a, 0
+</p>
+<p>
+ld (80h), a
+ld de, 80h
+ld c, lah
+call bdos
+</p>
+<p>
+ld hl, SCH
+ld a, 20H
+ld bt
+</p>
+<p>
+Q length command tail
+</p>
+<p>
+reset DMA to default
+</p>
+<p>
+: f111 FCB with spaces
+ovl:
+</p>
+<p>
+MrT Pah
+</p>
+<p>
+ld
+</p>
+<p>
+call
+</p>
+<p>
+ld
+ld
+call
+ret
+</p>
+<p>
+defn
+defs
+</p>
+<p>
+defs
+end
+</p>
+<p>
+280
+</p>
+<p>
+ld
+ld
+call
+ld
+ld
+ld
+ldir
+call
+ld
+ld
+ld
+idir
+call
+Jp
+</p>
+<p>
+defb
+defn
+</p>
+<p>
+defm
+end
+</p>
+<p>
+280
+</p>
+<p>
+ld
+1d
+</p>
+<p>
+foveall+l}, hl;
+</p>
+<p>
+0000
+</p>
+<p>
+c, 14h
+de, feb
+bdos
+</p>
+<p>
+c, 09
+de,
+bdos
+</p>
+<p>
+&lsquo;Unable to open
+</p>
+<p>
+2
+</p>
+<p>
+2
+</p>
+<p>
+de, mess
+c, 09
+0005
+de, Sch
+hl, fill
+bo, 13
+</p>
+<p>
+&lsquo;ovlayit
+de, Sch
+hl, fi12
+be, 13
+</p>
+<p>
+ovlaywHt
+0
+</p>
+<p>
+0,&rsquo;OV1
+0, 0V2
+</p>
+<p>
+&lsquo;In root&rsquo;, 10,13,
+</p>
+<p>
+c, 09
+de, mess
+</p>
+<p>
+errmes
+</p>
+<p>
+OVL&rsquo;.0
+OVL&rsquo; 0
+</p>
+<p>
+and write it into the call data area
+</p>
+<p>
+call the overlay. The 0000 address will,
+have been altered to the overlay base
+</p>
+<p>
+addr by the previous instruction.
+</p>
+<p>
+8
+</p>
+<p>
+read a sector
+</p>
+<p>
+file error routine
+</p>
+<p>
+80 Bus News
+</p>
+<p>
+overlay file&rsquo;,10,13, &lsquo;$&rsquo;
+</p>
+<p>
+LINK will put the top of program
+address here
+</p>
+<p>
+Link looks for this &ndash; Reason net known
+</p>
+<p>
+Program 3. Root module for overlay demo.
+(ROOT.MAC)
+</p>
+<p>
+output root -&gt;ssage
+</p>
+<p>
+load fob with Ist overlay filename
+</p>
+<p>
+call overlay Insder
+load fob with&nbsp;..u overlay filename
+</p>
+<p>
+call loader again
+exit to CP/M
+</p>
+<p>
+overlay filenames
+</p>
+<p>
+Program 4. 1st overlay for demo program.
+(OV1.MAC)
+</p>
+<p>
+; output id message
+</p>
+<?php columnEnd(2); ?>

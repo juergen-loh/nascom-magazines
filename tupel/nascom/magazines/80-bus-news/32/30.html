@@ -1,0 +1,41 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    90</span>
+
+FB5B CD44F8     SUMSER: CALL    STAKFP          ; Put FPREG on stack
+FB5E 1106F7             LD      DE,MULT         ; Multiply by "X"
+FB61 D5                 PUSH    DE              ; To be done after
+FB62 E5                 PUSH    HL              ; Save address of table
+FB63 CD5FF8             CALL    BCDEFP          ; Move FPREG to BCDE
+FB66 CD08F7             CALL    FPMULT          ; Square the value
+FB69 E1                 POP     HL              ; Restore address of table
+FB6A CD44F8     SMSER1: CALL    STAKFP          ; Put value on stack
+FB6D 7E                 LD      A,(HL)          ; Get number of coefficients
+FB6E 23                 INC     HL              ; Point to start of table
+FB6F CD51F8             CALL    PHLTFP          ; Move coefficient to FPREG
+FB72 06                 DEFB    (LD B,n)        ; Skip "POP AF"
+FB73 F1         SUMLP:  POP     AF              ; Restore count
+FB74 C1                 POP     BC              ; Restore number
+FB75 D1                 POP     DE
+FB76 3D                 DEC     A               ; Cont coefficients
+FB77 C8                 RET     Z               ; All done
+FB78 D5                 PUSH    DE              ; Save number
+FB79 C5                 PUSH    BC
+FB7A F5                 PUSH    AF              ; Save count
+FB7B E5                 PUSH    HL              ; Save address in table
+FB7C CD08F7             CALL    FPMULT          ; Multiply FPREG by BCDE
+FB7F E1                 POP     HL              ; Restore address in table
+FB80 CD62F8             CALL    LOADFP          ; Number at HL to BCDE
+FB83 E5                 PUSH    HL              ; Save address in table
+FB84 CDCDF5             CALL    FPADD           ; Add coefficient to FPREG
+FB87 E1                 POP     HL              ; Restore address in table
+FB88 C373FB             JP      SUMLP           ; More coefficients
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<h2>
+LAST<br>
+PART<br>
+NEXT<br>
+ISSUE
+</h2>
+<?php DisAssemblyRomBasicEnd(); ?>

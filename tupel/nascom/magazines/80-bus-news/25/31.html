@@ -1,0 +1,51 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<h1 id="article1">
+NASCOM<br>
+ROM<br>
+BASIC<br>
+DIS&ndash;ASSEMBLED
+</h1>
+<h2>
+PART <b>3</b>
+</h2>
+<h3 class="author">
+BY CARL LLOYD&ndash;PARKER
+</h3>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    24</span>
+
+E668 FE20       PUTBUF: CP      " "             ; Is it a control code?
+E66A DA10E6             JP      C,MORINP        ; Yes - Ignore
+E66D 78         PUTCTL: LD      A,B             ; Get number of bytes in buffer
+E66E FE49               CP      72+1            ; Test for line overflow
+E670 3E07               LD      A,CTRLG         ; Set a bell
+E672 D282E6             JP      NC,OUTNBS       ; Ring bell if buffer full
+E675 79                 LD      A,C             ; Get character
+E676 71                 LD      (HL),C          ; Save in buffer
+E677 32CC10             LD      (LSTBIN),A      ; Save last input byte
+E67A 23                 INC     HL              ; Move up buffer
+E67B 04                 INC     B               ; Increment length
+E67C CD9BE6     OUTIT:  CALL    OUTC            ; Output the character entered
+E67F C310E6             JP      MORINP          ; Get another character
+
+E682 CD9BE6     OUTNBS: CALL    OUTC            ; Output bell and back over it
+E685 3E08               LD      A,BKSP          ; Set back space
+E687 C37CE6             JP      OUTIT           ; Output it and get more
+
+E68A 7C         CPDEHL: LD      A,H             ; Get H
+E68B 92                 SUB     D               ; Compare with D
+E68C C0                 RET     NZ              ; Different - Exit
+E68D 7D                 LD      A,L             ; Get L
+E68E 93                 SUB     E               ; Compare with E
+E68F C9                 RET                     ; Return status
+
+E690 7E         CHKSYN: LD      A,(HL)          ; Check syntax of character
+E691 E3                 EX      (SP),HL         ; Address of test byte
+E692 BE                 CP      (HL)            ; Same as in code string?
+E693 23                 INC     HL              ; Return address
+E694 E3                 EX      (SP),HL         ; Put it back
+E695 CA36E8             JP      Z,GETCHR        ; Yes - Get next character
+E698 C3ADE3             JP      SNERR           ; Different - ?SN Error
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

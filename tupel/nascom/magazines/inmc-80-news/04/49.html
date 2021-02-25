@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p class="continued">
+Then when the Z80 encountered this, the PC would be pointing to 1000H. The Z80 would
+get the first byte and increment the PC. The Z80 then interprets the first byte
+fetched (the op-code), note that the PC is already pointing at l001H. Having decided
+that the instruction is a two byte instruction, it would fetch the second byte (the
+operand), and increment the PC to 1002 by so doing. At this stage the Z80 has all the
+information it requires, and procedes to add the second byte (the operand of the jump
+relative instruction) to the low byte of the CURRENT contents of the PC. Now the PC
+had already been incremented by the action of fetching the op-code and the operand,
+and is now pointing to 1002H, so 1002H + 05H makes the address in the PC 1007H, ie: +5
+relative to the CURRENT PC position, and not +5 relative to the start of the
+instruction as is commonly assumed. It works exactly the same backwards, except that
+the operand supplied is a negative number. The Z80 still adds this to the CURRENT
+contents of the PC, and so the PC ends up pointing back, but two bytes short of where
+you might expect.
+</p>
+<p>
+Now, out of pure cowardice, part 1 didn&rsquo;t contain any information about
+&lsquo;signed binary arithmetic&rsquo; (that&rsquo;s positive and negative numbers to you). I don&rsquo;t
+intend to rectify that omission now, but refer you to any &lsquo;0 level&rdquo; maths text book.
+(Go on, own up to the kids that you don&rsquo;t know it all, and borrow one of theirs;
+either that, or say you want to find out just how ignorant kids are these days, and to
+check that the text books contain information on binary arithmetic in this computer
+age.) Which ever way you go about it, you will find that signed binary arithmetic is a
+bit of a pain, and the designer of NAS-SYS and Nasbug T4, Richard Beal (God bless his
+little cotton socks) has included the &lsquo;A&rsquo; command to ease this problem. Now I&rsquo;m not
+going to waste paper explaining it here, go and read the NAS-SYS or Nasbug manual and
+in the light of what I said above, all should become clear. The only thing I will add
+is that because the operand of a relative jump instruction is restricted to a single
+byte, the maximum range can only be FFH (256 decimal). Now because of the offset of
+two bytes, this means that the effective range of a relative jump is 80H (equivalent
+to 127 decimal steps backwards) to 7FH (equivalent to 129 decimal steps forward). So
+don&rsquo;t get too clever and try jumping all round the memory in relative jumps, &rdquo;cos it
+just won&rsquo;t work.
+</p>
+<p>
+Well, all that means is that lines 90 and 140 can become relative jumps, thus
+saving two bytes of code.
+</p>
+<pre>
+80               JR START       ; Go back to beginning
+140              JR NZ,LOOP     ; If not both 0 then loop again.
+</pre>
+<p>
+Another thing we can have a go at is the delay routine. Now I wrote that
+because at the time I couldn&rsquo;t think of anything better. (As I admitted in part 3,
+what I actually wrote was worse, and I&rsquo;m ashamed to show you exactly what I did.) How
+many of you realised that NAS-SYS and Nasbug both contain a very nice delay routine as
+part of the keyboard scanning routine, whats more, its location was deliberately
+chosen so that users could have ready access to it. Its label is RDEL, and it starts
+at location 0038H. Now the nice thing about that location is that it is one of the Z80
+&lsquo;restart&rsquo; points. To be compatible with the 8080, the Z80 included the eight restart
+points from the 8080. Now these are &lsquo;implied CALL&rdquo; locations and are a fixed part of
+the Z80 structure. One specific single byte instruction will cause the Z80 to call
+that location. So here we have a delay routine (its actual delay time varies from
+7.5mS to 2.5mS depending upon it being NAS-SYS or Nasbug, or wether the Nascom is
+running at 2 of 4MHz), accessible by a single byte call. All we have to do is to call
+that a number of times, and there is our delay.
+</p>
+<p>
+So now to learn about another very useful Z80 instruction, the &lsquo;DJNZ loop&rsquo;.
+The &lsquo;DJNZ&rsquo; instruction is translated as &ldquo;Decrement, Jump (relative) if Not Zero&rsquo;, and
+what it does is decrement the B register, test it, and if it&rsquo;s not zero, do a relative
+jump to the location specified by the operand. If B was zero, then it simply &ldquo;drops
+through&rsquo; to the next instruction. To use the DJNZ loop we must decide how long the
+delay is going to be, and because the delay varies between versions of the monitor and
+the Nascom speed, we&rsquo;ll choose 5mS as a good compromise. Two hundred times 5mS is one
+</p>
+<?php columnEnd(1); ?>

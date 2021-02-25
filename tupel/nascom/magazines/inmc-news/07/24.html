@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+MORE RAM and a B-BUG note
+</h1>
+<h2>
+RAM IN THE SECOND 1K
+</h2>
+<h3 class="author">
+by G. Alabaster
+</h3>
+<p>
+Minimum Nascom&nbsp;1 with Nasbug T2&nbsp;? Then you NEED more memory and have an
+empty EPROM socket.
+</p>
+<p>
+Well, there is a nice static RAM chip, the MK4118, which is pin
+compatible with the 2708 EPROM. I should say ALMOST pin compatible.
+This is a way to put the chip in, leaving the board and socket
+unadulterated in case you wish to put an EPROM back there.
+</p>
+<p>
+Here are the pin out differences:
+</p>
+<pre>
+Pin No.   2708         4118
+18        Program      CS
+19        VDD (+12V)   L (RD)
+20        CS           OE (RD)
+21        VBB (-5V)    WE (WR)
+</pre>
+<p>
+The pins on the MK4118 would object to being bent out, so put a socket
+with flexible pins between the RAM and board socket (See Dr. Dark&rsquo;s
+Page &ndash; Ed.). Bend out pins 18, 19, 20, 21. Connect leads to these pins
+and connect to the printed circuit as required. The points I used were
+these:
+</p>
+<p>
+Pin 18 to E select line which has a through plated hole near pins 12
+and 13 of IC36.
+</p>
+<p>
+Pins 19 and 20 connected together to the inverted Read Data line which
+has a through plated hole just out from pin 9 of IC44.
+</p>
+<p>
+Pin 21 to the inverted Write Data line which has a through plated hole
+near IC50 going to pin 3 of IC50.
+</p>
+<p>
+As an extra safety measure, put insulating tape over the board socket
+holes for pins 18 to 21 and double check the voltages at the
+intermediate socket without the RAM in.
+</p>
+<p>
+At the time of writing there is a worldwide shortage of MK4118s, but
+this should ease off once the backlog of NM&rsquo;s order for Nascom&nbsp;2
+requirements has been met. Ring around the suppliers, you could be
+lucky as you only need one. With time the price should drop quite a lot
+from the present twenty pound level.
+</p>
+<?php hLine("20%"); ?>
+<h1 id="article2">
+B-BUG &amp; 8K BASIC NOTE
+</h1>
+<p>
+Mr. F. Whitby wrote in to inform us that when using the 8K BASIC (or
+any other program), you get &ldquo;Escape&rdquo; by holding down &ldquo;@&rdquo;, then pressing
+&ldquo;Shift&rdquo; and holding it down, then pressing &ldquo;3&rdquo;.
+</p>
+<p>
+All other control keys are different with B-BUG, as the B-BUG manual
+explains.
+</p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

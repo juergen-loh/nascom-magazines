@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+Since the release of the tape version of Nascom Enhanced
+BASIC a number of minor problems have come to light, both in the
+interpreter and the manual. These have now all been corrected,
+but if you have ane af the earlier copies you should check:
+whether the following bugs have been corrected. When you have
+made any necessary corrections you should save a new copy using
+the M1000 4200 command in NAS-SYS (remember you should nat copy
+over your original incase you made a mistake making these
+changes")
+</p>
+<p>
+4.1 Keyboard operation
+FED and KEDS only work for shifted characters.
+</p>
+<p>
+Modify 1439 (was 3a) to 20
+</p>
+<p>
+Auto repeat works correctly with INCH, but not with KBD.
+This 15 due to the fast keyboard check that is used between
+Statements. You can enable auto-repeat with KBD as fol lows:
+</p>
+<p>
+Modify SASF (was ES) to FE
+</p>
+<p>
+Note, however, that this slows down execution by about 10%
+and so should be Used with care and certainly NOT as a permanent
+modi fication.
+</p>
+<p>
+4.2 ON ERR GOSUB
+An-error occurs after ON ERR GOSUB which results in a return
+to the manitor-
+</p>
+<p>
+Modify 1852 (was C1) tor FE 90 20 18 2A 57 10 C1 cS FD
+7e R720 04 23 25 25 25 25 F1 ES 2A Si 10 ES FS 55 CS
+</p>
+<p>
+4.5 Tape system
+Verify fails on data files of only one block length.
+</p>
+<p>
+Modi fy 37DB (was 38) to 18 03
+</p>
+<p>
+Tape loading and verification leaves the tape LED lit after
+an error has occurred.
+</p>
+<p>
+Modify 3D53 (was CD) to 38 41
+Modi ty 3078 (was CD) to 38 41
+Modify 4138 (was 00) to DF SF C3 CD 15
+</p>
+<p>
+4.4 BND function
+</p>
+<p>
+The use of RND with a real argument of between 0 and 1,
+white of no particular use, causes the system to. lock-up. in
+Sddition the use of negative numbers in the arguments (also of
+ho particular use) returns a constant, rather than giving the
+error seich it should.
+</p>
+<p>
+Modify 2601 (was 1B) to F7 24 7A BS 28 O4 ED 53 IF 10 18
+os
+</p>
+<?php columnEnd(1); ?>

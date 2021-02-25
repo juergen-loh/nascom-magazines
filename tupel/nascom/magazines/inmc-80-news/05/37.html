@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-37-1.png"); ?>
+</h1>
+<h2>
+Disks and the Floppy
+</h2>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h4>
+A brief over view of how they work
+</h4>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Richard Bateman
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+We are all familiar with the cassette recorder attached to our Nascom,
+it provides us with low cost mass storage, and permanent storage for programs
+and data. The method of recording is governed by the type of signal the
+cassette can record. Although stereo recorders allow two channels to be
+recorded, the Nascom in fact is designed to record on only one channel, thats
+because its easier and better to do it that way. In order to store our
+information on to one channel, we have to convert it to a serial stream of
+bits that can be recorded. Now this is the same process used for years with
+teletypes, and why the UART was invented. This device converts the input byte
+into a stream of 10 or 11 bits which consists of a start bit to tell the
+device to get ready, then the 8 bits of the byte, followed by either 1 or 2
+stop bits to say its finished. When the tape is replayed, the reverse occurs.
+</p>
+<p>
+This system is known as asynchronous transmission, as each byte is
+sent independantly of the others. When NAS-SYS records a block using the &ldquo;W&rdquo;
+command and reads it back again with the &ldquo;R&rdquo; command, it knows there are 256
+bytes in the block but the electronics handles each byte quite seperately. As
+far as the electronics is concerned, there is no difference between the typed
+input and the recorded input.
+</p>
+<p>
+Disks are not quite the same. The recording media is the same type of
+material but arranged in a disk. The disk has only one surface for recording
+purposes. (I know they are double sided, but so is paper. You only write on
+one side at a time.) The recording head of the disk can be moved radially on
+the disk surface, but does not move while reading or writing. This allows a
+single head to be moved to sit over different &ldquo;tracks&rdquo; of the disk. As the
+disk turns, the same piece of disk keeps coming round and can be read or
+written to each time it passes. The floppy turns about 5 times per second and
+can record one change of flux (one bit) in 8 micro seconds. Thus a single turn
+would allow 1000000/8/8/5 bytes. Or 3,125 bytes per track.
+</p>
+<p>
+Formatting. To get the most out of this space, a different system of
+coding is used, synchronous data transmission. This way we don&rsquo;t send a start
+bit and a stop bit, and so only send eight bits/byte. We have of course to pay
+a penalty for this, we need to know when the data started, so as to know which
+is the first bit. Because we can move the head about, we also need to know
+where it is, and limit the number of places where it can be. This gives a
+fixed number of tracks on the disk. On 5 inch floppies there are 35 or 40 or
+77 tracks depending on who makes the drive. This gives a maximum drive
+capacity of 3,125*35 (*2 for systems with two heads capable of writing to both
+sides of the disk) bytes. That&rsquo;s a lot of storage, nominally 218,750 bytes for
+a double sided 35 track system. In order to access this data and to check for
+errors, we need to format it. This involves writing data onto the disk which
+does not change, but helps us find where we are.
+</p>
+<p>
+Keep tracking. We divide the track up into sectors, each of which
+holds a nice round (HEXadecimal) number of bytes of data, 128, 256, or perhaps
+512 bytes per sector. A few systems even use as much as 1K per sector.
+However, to know where we are, we must also include a number of bytes that
+will allow error checking and location. The most reliable method of error
+checking is known as &lsquo;CRC&rsquo; or cyclic redundancy checking. This is simple and
+very fast to do in hardware but takes time in software (so CRC checks and
+generation is usually performed as a function of the disk controller chip). We
+also have the address for the sector, that is the track and sector header at
+the start of each sector with its own CRC, plus some spare bytes to allow time
+to switch from reading to writing, so that we do not have to rewrite the
+address data each time.
+</p>
+<?php columnEnd(1); ?>

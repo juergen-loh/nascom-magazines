@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+USING PIXEL GRAPHICS FROM ASSEMBLER
+</h1>
+<h2>
+By G. N. Evans
+</h2>
+<p>
+The Basic ROM on the Nascom contains plenty of useful routines for the
+assembler programmer. The problem is finding out where they are and, more
+importantly, how to drive them. I have discovered most of the useful routines, and I
+am using many of them in a Basic Compiler which I am currently writing.
+</p>
+<p>
+Below I have given details on how to make use of the pixel graphics routines.
+Should you try to access a non-existent point, then Basic would take over, issue an
+error message, and then remain in Basic. To prevent this I have written a routine,
+CHECK, which tests the validity of the co-ordinates; the carry flag is set on return if
+they are not valid. The routine also converts, the y co-ordinates so that y = 0
+corresponds to the bottom of the screen and y = 47 to the top, which is much more
+logical and convenient than Microsoft&rsquo;s ordering of the y axis.
+</p>
+<p>
+Here is an example of the use of the routines to draw a vertical line through the
+centre of the screen:
+</p>
+<pre>
+11 00 18   VERT    LD DE, &pound;1800      POINT (24,0)
+D5         NEXT    PUSH DE           Save current point
+CD 1F 80           CALL CHECK        Legal co-ordinates?
+38 0C              JR C, ERROR       If not, jump
+CD 00 80           CALL SETP         Set point
+D1                 POP DE            Recover current point
+1C                 INC E             Next point up screen
+7B                 LD A, E           Transfer to accumulator
+FE 30              CP 48             Has whole line been set?
+20 F0              JR NZ, NEXT       Repeat if not
+DF 5B              SCAL &pound;5B          Repeat to monitor, etc.
+           ERROR                     ... Put error routine here
+</pre>
+<h3>
+ROUTINES TO USE THE PIXEL GRAPHICS
+</h3>
+<pre>
+                         ORG &pound;8000
+                         ADDRESSES IN BASIC ROM
+                BCSPOS   EQU &pound;FF31
+                BSET     EQU &pound;FF43
+                BRESET   EQU &pound;FF58
+                BPOINT   &pound;FFED
+
+SET (D, E)
+
+8000   CD1680   SETP      CALL CSPOS     Calculate screen posn.
+8003   CD43FF             CALL BSET      Use Basic ROM
+8006   C9 RET
+</pre>
+<p>
+All register corrupted (except alternate set)
+</p>
+<?php columnEnd(1); ?>

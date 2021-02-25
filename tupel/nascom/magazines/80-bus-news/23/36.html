@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+36
+</p>
+<p>
+A PROBLEM WITH POWER-ON RESET ON THE NASCOM 2 C. Bowden
+</p>
+<p>
+INFN EE EI IESE IE END IE BOE ODE IE IE BE IEE ODD ARRESTS REE OE RD OD RE RED EEE EDO EOE
+</p>
+<p>
+I recently discovered a hardware problem on my system that could cause a
+lot of difficulty in some circumstances. It seems that the fault could be fairly
+common, as I found out that another Nascom&nbsp;2 user local to me had also had
+problems.
+</p>
+<p>
+The power-on-reset (POR) on my system had never worked reliably, from the
+beginning, but I had not bothered to look for the cause, as it did not trouble me
+too much and it is not easy to get at my Nascom&nbsp;2 card. I simply used the manual
+reset. This continued even after I multi-mapped my system as described in earlier
+issues of this newsletter. I had adopted the habit of always switching to Nas-Sys
+(i.e. standard Nascom), before switching off, so that the next time the machine
+was switched on, resetting would not cause a CP/M boot, with SIMON looking for
+non-existent disks, thus avoiding &lsquo;HEAD BANGING&rsquo;.
+</p>
+<p>
+My normal procedure was to switch on, and press reset TWICE(!!) in quick
+succession. Nas-Sys would announce itself, and I could proceed to use whatever
+system I desired, using the System Switch. (It was necessary to use 2 resets to
+get Nas-Sys booted correctly.) _
+</p>
+<p>
+A few weeks ago though, I started to interface a Gemini GM822 RTC module,
+and I had trouble with Clock Data corruption. In the search for the cause, I
+decided that it was time to get the POR working, since I did not know what the
+Z80 was doing between the manual Resets, and this could be contributing to the
+data corruption. It did not take long to get the POR working, once I had got the
+N2 card out of its case. In order to test it in this position though, I had to
+run the card on its own, with POR set to address 0000H, and with Nas-Sys in its
+normal socket. The POR appeared to work correctly. However, when the system was
+reassembled in its case, with the POR set to operate at 2000H/4000H (depending on
+the DIL switch LSW1 and my system switch), there were still some very peculiar
+results.
+</p>
+<p>
+With Nas-Sys selected (reset jump to 4000H), a manual reset was STILL
+needed after the POR. However, with CP/M selected (reset jump to 2000H), the POR
+appeared to work correctly. In order to see what was happening under Nas-Sys, I
+connected up a TV to the modulated O/P of the N2, and my video monitor to the IVC
+ecard O/P. On running up the system, I discovered that the POR loaded SIMON and
+looked for a disk, irrespective of the system switch position. I still had to
+make the second, manual reset to get Nas-Sys loaded correctly. Without a logic
+analyser or some other suitable testgear, it is impossible to be sure where the
+POR was going, but it seems likely that it was going to 0000H, and then the Z80
+was charging up through RAM until it found some program to execute. In my case
+this was the CP/M boot ROM at 2000H on the paged in EPROM card. (Which would be
+found irrespective of the position of the system switch.)
+</p>
+<p>
+Having found out what was happening, the next question was why? The
+trouble was almost certainly due to some malfunction of the reset-jump-multiplexer.
+I spent some time poking about with a &lsquo;scope and logic probe, and tried
+changing chips, but all with no result. A colleague who runs identical hardware
+had no problems on his system. He loaned me his EPROM card to try, but the
+results were just the same, so the trouble seemed to be on the CPU card. After a
+lot more thinking and poking about I decided to see if anyone knew the answer, so
+I rang Nascom and a couple of other people, but the fault seemed unknown to then,
+so apart from a couple of suggestions, they could not help.
+</p>
+<p>
+I had been offered the loan of a CPU card by another friend, which I had
+not previously taken up because it meant a ten mile round trip, but it seemed the
+next logical step, so I borrowed the card, and tried it. It ran perfectly. I took
+it out, and decided to check the components of the POR circuit. They were
+identical to mine EXCEPT for the capacitor C3. On Phil&rsquo;s card this was 100uf
+instead of the 68uf supplied and as shown in the circuits and component lists. I
+rang Phil. Yes, he had had trouble with reset at some time in the past and had
+probably altered 03, but he could not remember the details. I changed C3 to
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<h4>
+&ldquo;The program is listed in Z-80 assembly language&rdquo;
+</h4>
+<p>
+The quotation comes from the advertising material for a program
+called SARGON, which is a very good chess program, probably.
+What they should have said was, &ldquo;listed in <u>A</u> Z-80 assembly
+language&rdquo;. It is in fact in something called TDL assembly
+language, and would run instantly on a Wave-Mate Jupiter III,
+which is probably a plastic box we haven&rsquo;t had washed up on our
+shores yet. There are some amazing mnemonics, for example ANI
+or LIYD and what on earth is MOV BOARD(Y),E&nbsp;? To be as fair as
+possible, I should say that they do give a list of the more normal
+equivalents, but the program is very long and will take me years
+at my present rate of translation. Anyone got a program that
+could do the job???
+</p>
+<h4>
+&ldquo;One of you is dead right, the other is less right&rdquo;
+</h4>
+<p>
+If the 8K Basic works best with NAS-SYS, then I would like to use
+NAS-SYS, K*** B****** (the one who <u>swore</u> on page zero!) please note.
+At present, I am using T2, with Darkbug in the spare ROM socket.
+Darkbug? That is another story entirely, and one I propose to
+tell next time.....
+</p>
+<h2>
+LITTLE KNOWN FACTS THAT NO ONE SEEMS TO CARE ABOUT (6)
+</h2>
+<p>
+Did you know that NASBUG T4 and NAS-SYS&nbsp;1 are specifically designed to
+ignore nulls output to the CRT routine. Therefore any program which is
+designed to output nulls via SRLOUT, using the &lsquo;X&rsquo; command will not be
+able to do so, as CRT is called as part of SRLOUT, before the character
+is sent to the output port, and (of course) CRT throws the nulls away.
+</p>
+<p>
+So, what to do? Well the simplest way is to write a routine which will:
+</p>
+<p>
+1) Push AF<br>
+2) Call SRLX<br>
+3) Pop AF<br>
+4) Jump to CRT in T4<br>
+4a) or do a return if you don&rsquo;t want to print on the screen
+</p>
+<p>
+Don&rsquo;t set any &lsquo;X&rsquo; command, but manually change $CRT to the start
+address of the routine (don&rsquo;t forget this must be a double byte
+change).
+</p>
+<p>
+Using NAS-SYS, put DF 6F at 0C79 and activate the &lsquo;U&rsquo; command.
+</p>
+<p>
+Of course this need not only apply to printers, for instance,
+if you wanted to change a tape recorded for Nascom ROM Basic to run on
+Nascom Tape Basic, you would have to make a &lsquo;LIST&rsquo; to tape and output
+about 20 nulls between each line (to allow the text buffer time to
+clear before the next line appears), and this is the only way to do it.
+</p>
+<h2>
+LITTLE KNOWN FACTS THAT NO-ONE SEEMS TO CARE ABOUT (7)
+</h2>
+<p>
+Did you know that Nascom and CC Soft (level B) Tiny Basics are quite
+compatible. The only difference is that whereas the Nascom uses the
+pound (or hash) sign to mean &lsquo;not equal to&rsquo;, the CC Soft uses the &lt;&gt;.
+</p>
+<?php columnEnd(1); ?>

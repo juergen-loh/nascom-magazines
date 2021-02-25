@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+= AAAA BBB
+Erase a byte
+</p>
+<p>
+Delete a single byte at 4 specified memory location and
+mave the contents of higher mesary focations dow to fill the
+gap.
+</p>
+<p>
+The section of memory delinited by: (4) address for
+jetion plus one, (1) top limit for move minus one, is moved
+to the menory locations delimited by (1) address for deletion,
+Gi) top Limit for move minus two. The &lsquo;top limit for nove!
+parameter is the cirst menory address from and above which
+fenory is neither read from nor written to by this command.
+The top limit for move must by greater than the address for
+deletion by at least two bytes,
+</p>
+<p>
+After deletion of the specified byte, the command
+responds by displaying on the following screen line the
+hexadecimal value of the deleted byte,
+</p>
+<p>
+AAAA &ndash; memory address at mhich the byte is to be deleted
+B= top limit for move. Memory addresses from this
+address upwards are not accessed.
+</p>
+<p>
+The conaand uses the 260 block transfer instruction LDIR
+to shift the contents of senory downwards.
+</p>
+<p>
+Find a specified character string, or a
+specified by hexadecimal values, and display
+address(es) at which it occurs.
+</p>
+<p>
+The memory address at which the
+taken from the first argunent (ARGL).
+</p>
+<p>
+After entry of the &ldquo;f* comaand, the cursor is positioned
+at the etart of the next line and the find mask may then be
+entered in one of the following two format:
+1. Character string
+</p>
+<p>
+&lsquo;Theirst position in the mask line @ust contain the
+double-quote character ("), The required character string must
+start in the second position in the line and may contain any
+characters (including spaces) except the double-quote
+character. The string is terminated by a further double-quote
+character or, if this is not present, the end of the line.
+2. Sequence of bytes pacified by hexadecimal valu
+</p>
+<p>
+The mask is entered al sequence of simple byte
+hexadecimal numbers (G to FF), each one separated from the
+next by at Jeast one apace. The first value may start in the
+firat position on the line or may De preceded by as many
+spaces as are required, The entire find mask must be contained
+within a single Line.
+</p>
+<p>
+rch is to start is
+</p>
+<p>
+After entry of the mask, memory is searched from the
+specified start address up to the top end of memory (FFFFH).
+The response is always displayed on the screen line following
+the entered mask. If no match is found, the response {5 XXxxX.
+</p>
+<?php columnEnd(1); ?>

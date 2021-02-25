@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+53
+</p>
+<p>
+I see from another letter that someone out there has been spreading false
+rumours about CP/M block sizes and disk sizes: CP/M (in version 2.2) supports
+logical drives up to 8Mbytes in size. CP/M can allocate the disk space in block
+sizes of ik, 2k, 4k, 8k, or 16k. The one restriction is that if a block size of
+14k is used, then the disk capacity cannot exceed 256 blocks (256k). All the other
+block sizes can be used with any disk capacity up to the limit of 8Mbytes. One
+point to be aware of is that CP/M has a little bit of intelligence built in. If
+the total disk capacity is less than 256 blocks, each directory entry, (which
+records where each file is on the disk), holds the block numbers as 8-bit
+quantities. If the capacity is greater than 256 blocks, then each block number is
+stored as a 16-bit quantity. (i.e. If the capacity of the disk is less than 256
+blocks, each directory entry can hold up to sixteen 8-bit pointers, but if the
+capacity exceeds 256 blocks each entry only holds up to eight 16-bit pointers.)
+</p>
+<p>
+This is the reason why a block size of 4k was chosen for the Gemini Galaxy &amp;
+GM825. As these use Quad density drives (i.e. Double density recording and double
+track density &ndash; 96tpi), the option of offering both single-sided (400k formatted)
+and double-sided (800k formatted) drives was open. If a block size of 2k had been
+used then the directory formats of single-sided disks (400k capacity &ndash; 200 2k
+blocks), and double-sided disks (800k capacity &ndash; 400 2k blocks) would have been
+incompatible. With a block size of 4k the &lsquo;block capacity&rsquo; of both single and
+double sided drives are less than 256, thus ensuring that CP/M uses an identical
+method of recording block numbers in the disk directories. (A single-sided disk
+ean be read/written in a double-sided system, and a less-than-half-full double-sided
+disk can be read/written in a single-sided system).
+</p>
+<p>
+PRODUCT PREVIEW TIME
+</p>
+<p>
+The Gemini GM833 is an 8x8 80-BUS card containing 512kbytes (or O.5Mbytes,
+if you prefer!) of dynamic RAM. This RAM cannot be used as conventional system
+memory, but is configured to appear as a disk. It is accessed via three I/O ports
+which can be regarded as &ldquo;track&rdquo;, "sector&rdquo; and &ldquo;data&rdquo;. To access the memory all
+that has to be done is to output &ldquo;track&rdquo; and &ldquo;sector&rdquo; addresses, and then read or
+write 128 bytes of data to/from the data port (perhaps using INIR or OTIR in a
+pseudo DMA transfer).
+</p>
+<p>
+The software interface matches very nicely to CP/M, and is so simple that an
+application program in a non-disk based system could drive it directly. Unlike
+the &ldquo;page mode&rdquo; scheme, or the extended addressing modes of GM813 or the MAP256
+card, no complex memory management is involved as the RAM-DISK is completely
+independent of the normal system memory.
+</p>
+<p>
+CALL FOR ARTICLES
+</p>
+<p>
+Reverting to the earlier theme, to help me answer yet another question
+perhaps someone out there (a Dealer even?) would like to produce a summary of the
+various DOSs &amp; CP/Ms available for 8OBUS cards? The obvious things to cover are
+the hardware they require to run. The extra hardware they can support (e.g.
+IVCs/AVCs/VFCs/PLUTOs/CLIMAXes/etc). The standard Nascom/Gemini software that
+ean/can&rsquo;t be used under it. How easy it is to customise (can you add a printer?).
+</p>
+<p>
+An alternative might be for YOU to send in a summary for the DOS you use. A
+user&rsquo;s view is perhaps better, as a dealer, though he sees all the products, may
+not have the time/inclination to use everything/anything he sells, and so may
+miss some of the finer points of the DOSs. Your replies can then be collated,
+compared, checked and published. This, (if it ever appears!), will no doubt be
+followed by a deluge of your articles on how to modify X to get it to run under
+</p>
+<p>
+Y.
+</p>
+<p>
+CALL FOR QUESTIONS
+As I said at the start, these pages will be fueled by your letters &ndash; so send
+</p>
+<p>
+them in even if it is only one sentence on the back of a postcard. If you want
+any of the above replies expanded on say so. (More on CP/M directory formats?).
+If I can&rsquo;t answer your questions I&rsquo;ll try and find someone who can.
+</p>
+<?php columnEnd(1); ?>

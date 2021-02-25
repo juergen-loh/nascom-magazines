@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<pre>
+470 FOR I=1 TO L
+480 IF MID$(A$,I,1)&lt;&gt;C$ THEN 510
+490 B$=LEFT$(B$,I-1)+C$+RIGHT$(B$,L-I)
+500 F=1
+510 NEXT
+520 IF F THEN F=0:GOTO 630:REM Good guess
+530 M$(1)=&ldquo; * WRONG * &rdquo;
+532 M$(2)=&ldquo; &rdquo;
+534 M$(3)=&ldquo; &rdquo;
+536 M$(4)=&ldquo; &rdquo;
+540 IF G&lt;10ORG=11ORG=12 THEN 562
+550 M$(3)=&ldquo;This looks dangerous&rdquo;
+560 M$(4)=&ldquo;You&rsquo;ll be hung soon!&rdquo;
+562 GOSUB 920
+570 GOSUB 1000: REM Next step in hanging
+580 IF F THEN F=0:GOTO 600: REM If hung
+590 GOTO 230: REM Loop back for next guess
+600 M$(1)=&ldquo;You lose! The word&rdquo;
+610 M$(2)=&rdquo;was &ldquo;+A$
+620 GOTO 300: REM Another game?
+630 M$(1)=&ldquo; * SUCCESS * &rdquo;
+640 M$(2)=&ldquo; &rdquo;
+650 M$(3)=&ldquo; &rdquo;
+660 M$(4)=&ldquo; &rdquo;
+662 GOSUB 920
+670 GOTO 230: REM Loop back for next guess
+680 M$(1)=&ldquo;You have already made&rdquo;
+690 M$(2)=&ldquo;that guess. &rdquo;
+700 M$(3)=&ldquo;I do not allow such&rdquo;
+710 M$(4)=&ldquo;duplication. &rdquo;
+712 GOSUB 920
+720 GOTO 570:REM Back to wrong guess loop
+900 SCREEN 1,1:PRINT CHR$(23):SCREEN X,Y
+910 RETURN
+920 FOR I=1 TO 4
+930 J=LEN(M$(I))
+932 IF J&gt;20 THEN PRINT &ldquo;Message too long&rdquo;:STOP
+940 IF J&lt;20 THEN M$(I)=M$(I)+&ldquo; &rdquo;:GOTO 930
+950 X=28:Y=11+I:GOSUB 900
+960 PRINT M$(I);
+970 NEXT
+980 RETURN
+1000 H=H+1:IF H=10 THEN F=1
+1010 IF H&gt;1 THEN 1110
+1020 FOR I=1 TO 15:SCREEN 1,I
+1030 PRINT CHR$(255);:NEXT
+1040 FOR I=2 TO 16:SCREEN I,1
+1050 PRINT CHR$(219):NEXT
+1060 FOR I=2 TO 16
+1070 SET(I,18-I):NEXT
+1100 RETURN
+1110 IF H&gt;2 THEN 1190
+1120 FOR I=12 TO 15
+1130 SCREEN 6,I:PRINT CHR$(128);
+1140 SCREEN 26,I:PRINT CHR$(128);:NEXT
+1150 SCREEN 8,12:FOR I=1 TO 17
+1160 PRINT CHR$(129);:NEXT
+1170 POKE 2768,255:POKE 2786,255
+1180 POKE 2832,133:POKE 2850,132
+1182 RETURN
+1190 RESTORE 8000
+</pre>
+<?php columnEnd(1); ?>

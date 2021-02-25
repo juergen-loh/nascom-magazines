@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+Bia e"ebnetare (nate er sae
+</p>
+<p>
+The abbreviations used are thowe wed by Diglal Research w the CP/M 2 Alteration Guide
+Decimal value are gies where appropnate, Nate thal CP/M 14 docert we&rsquo; Dick Parameter Blocks
+snd thatthe DPB for CP/M 3 contin era information about pyscalsetor se.
+</p>
+<p>
+CPIM uses the value SPT to calculate the wack and sector sumbers for a particular dik data
+block. &lsquo;The&rsquo; block umber and an offset showing where in the block the required fecord lies need 10
+be &lsquo;converted #0 that the appropriate ack and sector can be accesied. SPT determined &lsquo;by the
+Physica disk format. Gemunt ia the QDDS format have 10 sectors of 512 bytes on cach track. CP/M
+{see 128 byte records and 0 4 CP/M sectors wil ft on a tack The Gem SDDS formal dicks use
+{figure of 18 for SPT while the Gems DDDS format uses #0. The later figure i possible because
+(Of the method of accesso the disk forthe DDS format Some explanation seems in order
+</p>
+<h2>
+Cylindrical and Track methods of Disk access
+</h2>
+<p>
+&lsquo;There are two methods of accessing disks, The first wethod to start on, sido 1 of the
+ted umber the tacks from sty&rsquo;0 to 7 (ODDS) thes fp de and cll he uacts, 8 to 19.&rdquo; No
+tha &lsquo;hi pst or comvemcace ate tracks on side 2 of the dk a abo psy sumbered
+(0-7, &ldquo;As far as CPIM is concerned, it is aocing a angle sided disk with 160 tacks.&rdquo; Ths ig known
+1 the Track method of accessing a disk
+</p>
+<p>
+The second method ss to have the tracks on both sides of the disk numbered from s4y 0 to H
+(DDDS) and having filled track O on ade 1 we flip sides and cootinue wring to tack 000 side. 2
+&lsquo;of the disk. In this cate. CP/M thinks it serng 1 single ded dick with 38 tracks but the tracks
+fre twice a6 long as before (ie. 80 SPT). Thus method of acces is known as the &lsquo;nelhod.
+&lsquo;You ould note that the Gemioi Quad density format is a susnomer used by a number of companies In
+realty shouldbe called 80 track double denstyor double deasity with double track density
+</p>
+<p>
+gt
+</p>
+<h2>
+BLM, BSH and EXM
+</h2>
+<p>
+&lsquo;The block mask (BLM) is basically one less than the umber of 128 byte records that will Bt ia
+fone block Our figure of 31 means that 32 records will ft in the block This enables the BDOS (0
+Calculate the block size as, you will have noticed, it #0&rsquo;t given in the DPB. if we take the
+</p>
+<p>
+current record count Grom the FCB aad logealy AND i wit the block mask, we wil obtain 8 number
+in the range 031. which (ells us where im a block the particular second may be found. Take, for
+raze, tat the current record count is 92 or O1OL00. &lsquo;If&rsquo;we AND that fighre with 31 or 000
+&lsquo;we get the result 00011100 or 28. &lsquo;This indicates that the record occupies the 25: (0-31 remember)
+&lsquo;ecotd position inthe block,
+</p>
+<p>
+&lsquo;The extent mask (EXM) 1 one less than the umber of extents that may be controlled by one
+rectory entry &ldquo;This depends upon the masimum disk ze. as, uf 16 bit values are. recorded in the
+&lsquo;dzectory, then each directory entry. will refer to hall the oumber of exeals than it &lsquo;woud if 8 bit
+fentner were. being used. In the case of the QDDS format, this value 3 which indicates that 4
+tents may be recorded in a single duectory cary When used as a mask by ANDing the exteat bye
+fof the direcory entry with EXM, we produce &raquo; tumber ia tbe range 0-3 which ell the BDOS which
+&lsquo;neat we are tefernag athe entry
+</p>
+<p>
+&lsquo;The next eld is the Block Shift Factor (BSH), and xs used by the BDOS when converting CPIM
+records and extents into block posivons wn a directory eoty and voce versa, BSH as the
+Igganthm base two. ofthe block far m 128 byte records or, LOG2(BLS/38) where LOG? represents the
+binary logarithm funcoos, That last bit more or less a direct quote from Digital Research and
+&lsquo;probably means as much fo you now asi did vo me
+</p>
+<?php columnEnd(1); ?>

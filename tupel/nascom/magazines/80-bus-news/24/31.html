@@ -1,0 +1,106 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    16</span>
+
+E3F8 AF         PRNTOK: XOR     A               ; Output "Ok" and get command
+E3F9 324510             LD      (CTLOFG),A      ; Enable output
+E3FC CD74EB             CALL    STTLIN          ; Start new line
+E3FF 214BE3             LD      HL,OKMSG        ; "Ok" message
+E402 CD10F2             CALL    PRS             ; Output "Ok"
+E405 21FFFF     GETCMD: LD      HL,-1           ; Flag direct mode
+E408 225C10             LD      (LINEAT),HL     ; Save as current line
+E40B CDF2E5             CALL    GETLIN          ; Get an input line
+E40E DA05E4             JP      C,GETCMD        ; Get line again if break
+E411 CD36E8             CALL    GETCHR          ; Get first character
+E414 3C                 INC     A               ; Test if end of line
+E415 3D                 DEC     A               ; Without affecting Carry
+E416 CA05E4             JP      Z,GETCMD        ; Nothing entered - Get another
+E419 F5                 PUSH    AF              ; Save Carry status
+E41A CDA5E9             CALL    ATOH            ; Get line number into DE
+E41D D5                 PUSH    DE              ; Save line number
+E41E CD09E5             CALL    CRUNCH          ; Tokenise rest of line
+E421 47                 LD      B,A             ; Length of tokenised line
+E422 D1                 POP     DE              ; Restore line number
+E423 F1                 POP     AF              ; Restore Carry
+E424 D216E8             JP      NC,EXCUTE       ; No line number - Direct mode
+E427 D5                 PUSH    DE              ; Save line number
+E428 C5                 PUSH    BC              ; Save length of tokenised line
+E429 AF                 XOR     A
+E42A 32CC10             LD      (LSTBIN),A      ; Clear last byte input
+E42D CD36E8             CALL    GETCHR          ; Get next character
+E430 B7                 OR      A               ; Set flags
+E431 F5                 PUSH    AF              ; And save them
+E432 CD99E4             CALL    SRCHLN          ; Search for line number in DE
+E435 DA3EE4             JP      C,LINFND        ; Jump if line found
+E438 F1                 POP     AF              ; Get status
+E439 F5                 PUSH    AF              ; And re-save
+E43A CA46EA             JP      Z,ULERR         ; Nothing after number - Error
+E43D B7                 OR      A               ; Clear Carry
+E43E C5         LINFND: PUSH    BC              ; Save address of line in prog
+E43F D255E4             JP      NC,INEWLN       ; Line not found - Insert new
+E442 EB                 EX      DE,HL           ; Next line address in DE
+E443 2AD610             LD      HL,(PROGND)     ; End of program
+E446 1A         SFTPRG: LD      A,(DE)          ; Shift rest of program down
+E447 02                 LD      (BC),A
+E448 03                 INC     BC              ; Next destination
+E449 13                 INC     DE              ; Next source
+E44A CD8AE6             CALL    CPDEHL          ; All done?
+E44D C246E4             JP      NZ,SFTPRG       ; More to do
+E450 60                 LD      H,B             ; HL - New end of program
+E451 69                 LD      L,C
+E452 22D610             LD      (PROGND),HL     ; Update end of program
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    17</span>
+
+E455 D1         INEWLN: POP     DE              ; Get address of line,
+E456 F1                 POP     AF              ; Get status
+E457 CA7CE4             JP      Z,SETPTR        ; No text - Set up pointers
+E45A 2AD610             LD      HL,(PROGND)     ; Get end of program
+E45D E3                 EX      (SP),HL         ; Get length of input line
+E45E C1                 POP     BC              ; End of program to BC
+E45F 09                 ADD     HL,BC           ; Find new end
+E460 E5                 PUSH    HL              ; Save new end
+E461 CD79E3             CALL    MOVUP           ; Make space for line
+E464 E1                 POP     HL              ; Restore new end
+E465 22D610             LD      (PROGND),HL     ; Update end of program pointer
+E468 EB                 EX      DE,HL           ; Get line to move up in HL
+E469 74                 LD      (HL),H          ; Save MSB
+E46A D1                 POP     DE              ; Get new line number
+E46B 23                 INC     HL              ; Skip pointer
+E46C 23                 INC     HL
+E46D 73                 LD      (HL),E          ; Save LSB of line number
+E46E 23                 INC     HL
+E46F 72                 LD      (HL),D          ; Save MSB of line number
+E470 23                 INC     HL              ; To first byte in line
+E471 116110             LD      DE,BUFFER       ; Copy buffer to program
+E474 1A         MOVBUF: LD      A,(DE)          ; Get source
+E475 77                 LD      (HL),A          ; Save destinations
+E476 23                 INC     HL              ; Next source
+E477 13                 INC     DE              ; Next destination
+E478 B7                 OR      A               ; Done?
+E479 C274E4             JP      NZ,MOVBUF       ; No - Repeat
+E47C CDC5E4     SETPTR: CALL    RUNFST          ; Set line pointers
+E47F 23                 INC     HL              ; To LSB of pointer
+E480 EB                 EX      DE,HL           ; Address to DE
+E481 62         PTRLP:  LD      H,D             ; Address to HL
+E482 6B                 LD      L,E
+E483 7E                 LD      A,(HL)          ; Get LSB of pointer
+E484 23                 INC     HL              ; To MSB of pointer
+E485 B6                 OR      (HL)            ; Compare with MSB pointer
+E486 CA05E4             JP      Z,GETCMD        ; Get command line if end
+E489 23                 INC     HL              ; To LSB of line number
+E48A 23                 INC     HL              ; Skip line number
+E48B 23                 INC     HL              ; Point to first byte in line
+E48C AF                 XOR     A               ; Looking for 00 byte
+E48D BE         FNDEND: CP      (HL)            ; Found end of line?
+E48E 23                 INC     HL              ; Move to next byte
+E48F C28DE4             JP      NZ,FNDEND       ; No - Keep looking
+E492 EB                 EX      DE,HL           ; Next line address to HL
+E493 73                 LD      (HL),E          ; Save LSB of pointer
+E494 23                 INC     HL
+E495 72                 LD      (HL),D          ; Save MSB of pointer
+E496 C381E4             JP      PTRLP           ; Do next line
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

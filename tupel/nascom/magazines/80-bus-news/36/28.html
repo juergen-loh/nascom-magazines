@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<p>
+28
+</p>
+<p>
+I do not intend to give a detailed description of the language here as it
+would be too long and boring but if I can try to conjure up the flavour of
+&ldquo;The -C&rsquo; programming environment&rdquo; as the yanks call it, I think that would
+serve my purpose better. If by some miracle these documented mumblings
+generate some enthusiasm then I recommend that you go out and buy the standard
+text book for any -C&rdquo; programmer, that is &ldquo;The -c&rsquo; programming language&rdquo; by
+Brian Kernighan and Dennis Ritchie published by Prentice-Hall. It is quite
+good for a computing textbook, and what is more, defines the standard to which
+all compiler writers strive, and all available compilers are compared. Better
+still borrow it from a friend as it probably costs about &pound;19 by now.
+</p>
+<p>
+Ok, enough of the preamble, lets get our hands dirty and walz straight
+into a *C&rsquo; program. This will not shock the computing world with its
+complexity but is a program to open a disk file and write the value of a loop
+counter into it.
+</p>
+<p>
+8include &ldquo;stdio.h&rdquo; /* include standard I0 header file
+fron disk */
+</p>
+<p>
+int count; /* declare a 16 bit integervbl */
+FILE *fd; /* declare file descriptor */
+main()
+printf("A -C* program\n"); /* print opening message */
+openit(); /* call function to open file */
+wrt_nums(); /* call function to write to file*/
+printf&pound;("Program terminating\n"); /* print end message */
+fclose( fd); /* weite buffers &amp; close file */
+exit(0); /* call exit routine */
+}
+openit() /* function to open trivia file */
+{
+fd=fopen("A: TRIVIA. DAT&rdquo; ,"w") ; /* pass name &amp; mode to fopen func*/
+printf("Trivia file: &ldquo;); /* display file id */
+if(fd == NULL) /* is the file open sucessful */
+{
+printf("open error"); /* No &ndash; so print error message */
+exit(0); /* ... and terminate program */
+}
+else printf("open ok\n"); /* file opened ok, so tell em */
+}
+wrt_nums() /* writes value of count to disk */
+{
+</p>
+<p>
+for(count=0; count&lt;=100; count++) putw(count, fd);
+</p>
+<p>
+}
+</p>
+<p>
+So having looked at it what do you think, I know that I have been using
+-c&rsquo; for a while now and I&rsquo;m pretty used to it, but is it really as mumbo
+jumbo&rsquo;ish as some people say?
+</p>
+<?php columnEnd(1); ?>

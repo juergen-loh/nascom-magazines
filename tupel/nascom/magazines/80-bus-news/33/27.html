@@ -1,0 +1,111 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    98</span>
+
+FE45 F5         MONOUT: PUSH    AF              ; Save character
+FE46 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE49 CA4FFE             JP      Z,TMNOUT        ; "T" output
+FE4C F1                 POP     AF              ; Restore character
+FE4D F7                 ROUT                    ; Output it
+FE4E C9                 RET
+
+FE4F F1         TMNOUT: POP     AF              ; Restore character
+FE50 C34A0C             JP      TOUT            ; "T" output
+
+FE53 3A4D10     BREAK2: LD      A,(BRKFLG)      ; Break flag set?
+FE56 C265FE             JP      NZ,RETCTC       ; Yes - Return ^C
+FE59 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE5C CA62FE             JP      Z,TCHINP        ; Get "T" character input
+FE5F DF62               SCAL    RIN             ; Scan for a character
+FE61 C9                 RET
+
+FE62 C34D0C     TCHINP: JP      TIN             ; "T" input a character
+
+FE65 3E00       RETCTC: LD      A,0             ; Clear Break flag
+FE67 324D10             LD      (BRKFLG),A
+FE6A 3E03               LD      A,CTRLC         ; Return ^C
+FE6C C9                 RET
+
+FE6D 3A0100     MONTST: LD      A,(MONSTT+1)    ; "T" monitor or NAS-SYS?
+FE70 FE33               CP      33H             ; 31 00 10 / 31 33 0C
+FE72 C9                 RET
+
+FE73 CD39FE     SAVE:   CALL    FLPLED          ; Flip tape LED
+FE76 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE79 CA7FFE             JP      Z,TSAVE         ; "T" save
+FE7C DF57               SCAL    WRITE           ; Save program
+FE7E C9                 RET
+
+FE7F 3A8D00     TSAVE:  LD      A,(MONTYP)      ; "T2" or "T4" (FLAGS!!!)
+FE82 CA0004             JP      Z,T4WR          ; T4 Write
+FE85 C3D103             JP      T2DUMP          ; T2 Dump
+
+FE88 CD39FE     MONLD:  CALL    FLPLED          ; Flip tape LED
+FE8B CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE8E CA99FE             JP      Z,TLOAD         ; "T" load
+FE91 3E52               LD      A,"R"           ; Set READ
+FE93 322B0C             LD      (ARGN),A
+FE96 DF52               SCAL    READ            ; Load program
+FE98 C9                 RET
+
+FE99 3A8D00     TLOAD:  LD      A,(MONTYP)      ; "T2" or "T4" (FLAGS!!!)
+FE9C CA0C07             JP      Z,T4READ        ; T4 Read
+FE9F C3D103             JP      T2DUMP          ; T2 Dump&nbsp;??????????
+
+FEA2 CD6DFE     MONITR: CALL    MONTST          ; See if NAS-SYS
+FEA5 CA0000             JP      Z,MONSTT        ; Jump to zero if "T"
+FEA8 DF5B               SCAL    MRET            ; Return to NAS-SYS
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    99</span>
+
+FEAA CD39FE     MONVE:  CALL    FLPLED          ; Flip tape LED
+FEAD CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FEB0 CAA0E9             JP      Z,FCERR         ; Verify not available on "T"
+FEB3 3E56               LD      A,"V"           ; Set VERIFY
+FEB5 322B0C             LD      (ARGN),A
+FEB8 DF56               SCAL    VERIFY          ; Verify tape
+FEBA C9                 RET
+
+FEBB 3E00       INITST: LD      A,0             ; Clear break flag
+FEBD 324D10             LD      (BRKFLG),A
+FEC0 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FEC3 CA19E0             JP      Z,INIT          ; "T" - No NMI vector
+FEC6 21DEFE             LD      HL,BREAK        ; Set NMI gives break
+FEC9 227E0C             LD      (NMI),HL
+FECC DDE5               PUSH    IX              ; Get start up condition
+FECE F1                 POP     AF              ; "Z" set if cold&nbsp;, Else clear
+FECF B7                 OR      A               ; "Cold" or "Cool" start?
+FED0 C219E0             JP      NZ,INIT         ; "Cool" don't init NAS-SYS
+FED3 060F               LD      B,15            ; Delay for keyboard clear
+FED5 CDCDFC             CALL    DELAYB          ; Allow time for key release
+FED8 CD0D00             CALL    STMON           ; Initialise NAS-SYS
+FEDB C319E0             JP      INIT            ; Initialise BASIC
+
+FEDE F5         BREAK:  PUSH    AF              ; Save character
+FEDF 3EFF               LD      A,-1
+FEE1 324D10             LD      (BRKFLG),A      ; Flag break
+FEE4 F1                 POP     AF              ; Restore character
+FEE5 ED45       ARETN:  RETN                    ; Return from NMI
+
+FEE7 00                 NOP
+
+FEE8 DF63               DEFB    0DFH,FUNC
+                INLINE: SCAL    INLIN           ; Get an input line
+FEEA D5                 PUSH    DE              ; Save cursor address
+FEEB D5                 PUSH    DE              ; Cursor address to HL
+FEEC E1                 POP     HL
+FEED 112F00             LD      DE,48-1         ; Length of line-1
+FEF0 19                 ADD     HL,DE           ; Point to end of line
+FEF1 7E         ENDLIN: LD      A,(HL)          ; Get end of line
+FEF2 FE20               CP      " "             ; Space?
+FEF4 C202FF             JP      NZ,LINTBF       ; No - Copy to buffer
+FEF7 1D                 DEC     E               ; Back 1 character
+FEF8 3E00               LD      A,0             ; Wasteful test on E
+FEFA B3                 OR      E
+FEFB CA02FF             JP      Z,LINTBF        ; Start of line - Copy it
+FEFE 2B                 DEC     HL              ; Back 1 character
+FEFF C3F1FE             JP      ENDLIN          ; Keep looking for end
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

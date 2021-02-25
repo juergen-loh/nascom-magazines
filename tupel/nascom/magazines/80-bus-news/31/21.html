@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+21
+</p>
+<p>
+with this improved display speed is that fingers 2 and 4 on my left hand had
+to increase their reaction time by a proportional amount, as there was barely
+time to bash &ldquo;S before the thing you wanted to see disappeared off the screen.
+Perhaps a ZZzzz... command could be built into CCPZ to slow it up when not
+actually executing a program.
+</p>
+<p>
+The next feature investigated (for its novelty) was the clock display.
+Once enabled, a changing clock display is written at a user predetermined
+cursor position on the screen. The default cursor position is the extreme top
+right hand corner of the screen, and this suits most software I had a chance
+to try it with. The internal clock generator is interrupt driven from the
+frame sync-, which is divided by 50 to update the clock counter and redisplay
+the clock once a second. As the system clock is crystal controlled, it is
+accurate enough for most purposes although I think reprogramming the 6845
+video controller could upset the clock accuracy. A very simple routine was
+written which read the time from the GM822 RTC and loaded the clock on the
+svc. At the end of the two hour period there was a discepancy of 7 seconds
+between the RTC and the SVC clock.
+</p>
+<p>
+A number of bits of software which were known to be to greater or lesser
+extent video card dependant were tried to see if the compatibility between the
+CGM832 and the now discontinued GM812 were as claimed, and all were found to
+work as before. DISKPEN/GEMPEN required adjustment to the cursor speed patch
+byte, because the cursor flash rate went berserk, but in all other respects
+except the 48 wide mode (the new SVCs second screen mode is now 40 wide)
+DISKPEN/GEMPEN worked well. The increased speed of the card showed to
+advantage with WORDSTAR, screen rewrites being accomplished with very
+acceptable speed. My old CHARGEN program for reprogramming the character sets
+worked, but of course needs rewriting in the light of the SVC as there are now
+two programmable character sets (total 256 characters) instead of one.
+</p>
+<p>
+The SVC has a number of new features including 256 by 256 pixel graphics
+with built in line and circle drawing software, selectable attributes for
+flashing characters with low, half and inverse intensities, inputs for serial
+keyboards, and many other things. As I said, I only laid hands on one for a
+very short period, so it is very difficult to be objective. I didn&rsquo;t find any
+nasty quirks and the board behaved impeccably. Perhaps now Gemini will loan me
+&ldquo;one to play with, and I&rsquo;ll be able to find out what it can really do. The only
+thing that worries me though is the very high degree of sophistication of this
+card, commensurate with its elevated price. In my experience, 992% of users
+were unaware of the potential of the old GM812 card, so is all this cleverness
+</p>
+<p>
+really necessary?
+</p>
+<p>
+The Climax colour card
+</p>
+<p>
+The Climax colour card is to be re-introduced. Gemini have acquired the
+rights to manufacture the card from Climax, and deliveries are to commence
+&lsquo;very shortly. This card was very popular with those owning it, and some very
+clever displays have been seen. But as the card has been unavailable for the
+best part of a year, interest in it has waned. With its welcome reappearance
+perhaps some new and clever software will start to be written. Certainly as
+the video format of the Climax card is the same as the high-res mode of the
+new SVC, there will be demand for a piece of software which will act as an
+interface between the two. Here is an opportunity for CC-SOFT, who have
+written some rather nice graphics software for Gemini gear in the past to come
+up with something. It would be nice to see two interfaces with common inputs
+</p>
+<?php columnEnd(1); ?>

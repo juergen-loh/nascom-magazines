@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<p>
+four CPM. records. We car qumber these physcal sectors from 0 to 7 and the CP/M records within
+them fom O10 3.
+</p>
+<p>
+I me shit the record number (Lu) right PSH.) tines eget the vue 2 i sine
+maser to fad the lied phys Stor ato the Sehocg adr eady&rsquo;to tact&rsquo; de &lsquo;equed
+Di be weeds
+</p>
+<p>
+Finaly, by ANDig the record umber (11) wih PHM.) we get the vale 3. Consquenty the
+</p>
+<p>
+required fecord occupies the last 128 bytes in the physical tector, Le the fourth record in the
+</p>
+<h2>
+Blocking sad Deblocking
+</h2>
+<p>
+luolating separate 128 byte CP/M records ina physical sector is central to the concept involved
+wth blocking and deblocking Al versions of CP/M&rdquo; trader data to and trom she dak im 128 be
+&lsquo;hunks (including CPIM 3) &ldquo;We have alredy seen that dake may be formatted info sector of
+Size and ia sector sue of 128 byes t wed then oo. problems are experenced. Hlowcrer, many dit
+formats use sector waza of 256, 512 and 1024 byta As we have seca, Gemiai wse a 512 byte tector
+suze for their DDDS, ODSS and QDDS dik formats Since CP/M. requires 128 byte records, surely lis
+&lsquo;easier tp format the dik in 128 byte sector.
+</p>
+<p>
+&lsquo;The answer to ths is yes it is easier to use 128 byte sectors but oddly enough at is
+eserally faster to. use larger tector. sues.&rdquo; Why the is wil become apparent as we proceed bul
+Suffice (o say that since we are using seclors that are larger thin 128 bytes, we need a method of
+Droviding CPIM with 128&rdquo; bytes at a time and alowag CPM to write 128 bytes at adie The
+processes for wing and reading inthis manner are known as blocking and dcblockang respectively
+</p>
+<p>
+Blocking and deblockng are umplemented im the BIOS under CP/M 22 and (usually) in the BDOS
+under CP/M 3 although faclties ens! wikia CP/M. 3 (0 allow the BIOS fo do this The method used
+requires a buifer ux RAM that&rsquo;s one physical secioe long (S12 bytes for the Gemisi DD. and OD
+formats)&rdquo; Ths bulfer s simply an area Of RAM reserved by the BIOS for ths purpose and is knows
+i the blckngSblorkng buf Ths ble, Teed wun the BIOS &lsquo;under &lsquo;CHM 22 but der
+CPM 3, the physical record bulfers controled by the BDOS (pomted to by the DTABCEs) are used,
+Frog, lop ball &lsquo;ssue That CPIM 12s ust aad wll asrcbe th &ldquo;method of
+</p>
+<p>
+/deblocang an respect of the CP/M. 22 BIOS. &ldquo;Under CP/M. 3, the BDOS will bave
+seclor aumbers (asag PSH and PHM) and the BIOS reads them diel
+</p>
+<p>
+When deblockng, the BIOS takes the sector aumber provided by the BDOS and comverts it mio a
+physical sector number i.e the physical sector that coutaiag the required CP/M record. This
+Physical sector ss then read into the blocking/dcblocking buffer and the wanted 128 bytes are
+Flentfied &lsquo;and: passed to. CPIM &lsquo;by copnng them to the DMA sddress AI the time of reading t
+piv setr ein ae aboo vars ecorde, &ldquo;Thee the ing, tick and Secor mambet
+forthe physical vector Ar the same tum a lagi et Co say thatthe buffer in use
+</p>
+<p>
+&lsquo;The next time that a read as 1 by CEM, ical sector umber is calculated as
+before Te tne, however the BIOS wl fad at"the bales ain we, Bearings) sod at
+Bost dick reads are done sequentially, us afar bet that the CP/M. record we want is in the
+Buffer already, The BIOS checks the drive, track and sector aumbers for the required sector agaunst
+those. stored for the buffered sector and if they match, the BIOS stops the ak read and simply
+transfers the required 128 byes tothe DMA address.
+</p>
+<p>
+When reading sequently wang dblochng, he dik is accused founh request fom
+cont ad data oe reel) Sow et amped sith be tne eared io aac as to
+RAM, you can now see why this process is faster than simple, disk using 128 byte sectors.
+Goncraly, the larger the phyncal scetor size, the greater the &ldquo;improvement io dak acest te wil
+t
+</p>
+<p>
+Wrinng 10 disk wang blocking ofers 4 similar (but not as great) increase in speed. You wall
+mee cia er ea eet
+</p>
+<p>
+that we wish to write 4 random record 10 disk and that we are updating one record among
+sn ce cent records&rdquo; Since we have to write 10 tbe disk in terme of complete sectors, we
+&lsquo;imply write 128 byes to the dak&rdquo; If we put the CP/M record in the
+hf and wrote that fo dks we would erase he oe hes records inte py eer
+</p>
+<?php columnEnd(1); ?>

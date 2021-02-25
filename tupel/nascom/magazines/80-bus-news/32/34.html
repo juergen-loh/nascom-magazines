@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+34
+</p>
+<p>
+Observations
+</p>
+<p>
+PROG (Version 0.7) is a reasonable program that provides all that is necessary
+(and a little more) for easy straight-forward programming of EPROMs. The
+ability to load and save data to/from various files is a useful feature, as is
+the limited editing. Those requiring more extensive editing features (such as
+block moves or block fills) will have to resort to loading the data file under
+a debugger such as Gemdebug, ZSID, or DDT and using their facilities. The
+display option is useful as it lets you visually check the buffer contents
+before programming. (This ensures that you have loaded the correct file and
+that it does contain what you think it does.)
+</p>
+<p>
+The only obvious omission is the ability to program a limited range of
+addresses within the EPROM. At the moment it is a case of &lsquo;all or nothing&rsquo;.
+(Mind you the software does not bother to program any byte that is OFFh, so
+this can be got around in a roundabout way although the &ldquo;verify&rdquo; code may
+complain rather!)
+</p>
+<p>
+In general the ESCape key acts as an abort key to return you to the main menu.
+However this feature does not work during programming, and there is no visual
+echo of the progress of the programming operation. I assume this is to reduce
+the display/polling overhead that would otherwise occur and cause an increase
+in the overall programming time, but it is a pity that it has been omitted.
+Perhaps this will be changed in a later release of the software. &lsquo;
+</p>
+<p>
+General comments
+</p>
+<p>
+It is nice to see the programmer as a separate unit rather than an 80-BUS
+card. If anyone has ever used a system where the programmer was on a plug-in
+card they will know the frustrations of that approach. (You have to work with
+the lid off the computer and have to juggle the cards around to get the EPROM
+card into a position where you can actually get EPROMs into and out of the
+socket &ndash; The socket is more often than not vertical, and when you flick the
+lever to release the EPROM it often falls out into the guts of the computer!)
+</p>
+<p>
+If you do not have a disk-based system, or want some unusual feature in your
+control software, the file PROGINIT.MAC contains the low level drivers that
+form part of PROG. If you are writing software to be -PROM&ldquo;ed then it is
+likely that you should be able to add your own control routine to PROGINIT
+although you will have to do a certain amount of detective work to work out
+exactly what to do. PROGINIT.MAC -&mdash; I think it should actually be PROGINIT.C
+judging by the comments at the start &ndash; starts off with a section of comments
+that tells you what bits where control what. (e.g. Bit X of the control latch
+selects a Vee of 5v or 6v, set bit Y for 2lv programming voltage, etc.) What
+it leaves you to work out for yourself are the bit. combinations required for
+the various EPROM types.
+</p>
+<p>
+Conclusions
+</p>
+<p>
+The Gemini EPROM programmer is fairly obviously targeted on Gemini Galaxy and
+Quantum users, but any Multiboard/Gemini/Nascom owner running CP/M should be
+able to use the package without any difficulty. (N.B. The screen display of
+PROG.COM is obviously orientated towards the Gemini Ivc/SvC.) Those without
+disk systems will have to write some of the support software themselves.
+</p>
+<p>
+The price of #150 (+VAT) seems a little on the high side to me, but it is
+neatly packaged (unlike the earlier Bits &amp; PC&rsquo;s programmer which came as a
+bare board) and it definitely does work.
+</p>
+<?php columnEnd(1); ?>

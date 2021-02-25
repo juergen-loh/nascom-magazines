@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<p>
+Looking at the bit patterns for the Z80 instruction set
+(they are nicely tabulated in your Nascom manual -.. towards the
+back}, you will notice that many groups of instructions use the
+middie three bite to represent 2 register, condition, arithmetic
+Gperation, or a number from oO to 7 (for the bitwise
+operations)(r, cy a &amp; n respectivelyl.
+</p>
+<p>
+Bits or&nbsp;. a a
+000 8 Nz o abo a
+001 c z 1 Ape
+10 D Ne 2 sup
+on E c 3 sec A
+100 4 Fo a ND
+101 L PE 5 xOR,
+110 INDIsP e oR
+au a " 7 ce
+</p>
+<p>
+INDIS represents an index register HL, IX or IY (and the
+displacenent if necessary). A Similar &lsquo;system operates with
+register pairs.
+</p>
+<p>
+Bits ss ad
+00 BE BC
+oO De De
+10 IND IND
+a SP oF
+</p>
+<p>
+Where IND represents one of the index registers (HL, IX, 1Y)
+but with no displacements. Make sure that you understand this,
+because basically disassembley is analysis of bit patterns. i
+did not, and wrote a disasseabler so complex even I could not
+make head nor tail of it&rsquo;! These tables will have to go inte
+tables in the computer as they are crucial. You will have to
+define a character to represent INDIS and IND as we don&rsquo;t yet
+know which of the index registers to output&rsquo;&rsquo; Remember these as
+Hf they were arrays, eg. r(0) &ndash; r(7) etc.
+</p>
+<p>
+The disasseabler is going to need one vital piece of
+information before it starts. Elementary &ndash; where to start froa.
+This can easily be done using the Nas-Sys routine ARGS. Load
+this disassembly address into BC&rsquo; (the alternate registers are
+identified by&ldquo;). This piece of your program is the first
+encountered on a run and is not used&rdquo; again. From now on the
+disascembley address is always in BC&rsquo;. It must be the first byte
+of an instruction or else there will be havec!&rsquo; Next thing to
+da 14 to set STRDIS to an empty string.
+</p>
+<p>
+Now there are two more variables &ndash; held also in the
+alternate registers (use D&rsquo; and E&rsquo;) &ndash; te be initialised.&rdquo; Call
+one INDEX, the print routine will require this. The other call
+TYPE and this holds information as to whether the instruction
+began with &pound;8, LED or neither. Set both these to zero. Take #
+deep breath and begin!!!
+</p>
+<?php columnEnd(1); ?>

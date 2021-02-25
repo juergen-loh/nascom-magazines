@@ -1,0 +1,107 @@
+<?php columnStart(1, "noindent"); ?>
+<p>
+some of the possible variations are mentioned in the text. However, the system
+described works and offers the following features.
+</p>
+<p>
+1) Support of NAS-SYS, with RAM available up to DFFFH (Basic ROM selected), or
+RAM up to EFFFH (D-DOS selected).
+</p>
+<p>
+2) Support of CP/M, with RAM available to EFFFH.
+</p>
+<p>
+3) All NAS-SYS software (except ROM Basic) has been placed on disk.
+</p>
+<h4>
+Certain points should be made here:
+</h4>
+<p>
+1) Standard (ROM) D-DOS runs from B000H to B7FFH, which would conflict with RAM
+as mapped above.
+</p>
+<p>
+2) ROM ZEAP will not (unless somehow modified), run in RAM, and is sited at
+D000H to DFFFH. There would again be some conflict with RAM.
+</p>
+<p>
+In either case the ROM&rsquo;s would work, but would limit the effective system RAM size.
+</p>
+<h4>
+Possible solutions
+</h4>
+<p>
+ZEAP
+</p>
+<p>
+1) Use a tape version of ZEAP (1000H to 2000H). This would allow up to 52K
+of RAM to remain free.
+<p>
+2) Find out how to modify ROM ZEAP so that a RAM copy of it will run. This
+allows 48K of free RAM.
+</p>
+<p>
+3) Switch off the ROM &lsquo;Block Select&rsquo; signal out of the MD PROM or memory
+board decoder when ZEAP is not in use. (48K with ZEAP selected, 60K max.
+without ZEAP.)
+</p>
+<p>
+D-DOS
+</p>
+<p>
+1) Use the tape version of D-DOS. This is rather unattractive as it means
+a tape has to be loaded each one wishes to use disk.
+</p>
+<p>
+2) Disable the D-DOS ROM&rsquo;s by switching the &lsquo;Block Select&rsquo; signal off when
+ROM&rsquo;s are not in use. This is a better solution, but it means in some
+cases that extra ROM sockets are needed, which are not available, or else
+that two out of four ROM sockets may not be used.
+</p>
+<p>
+3) Change D-DOS to run at F800H &ndash; FFFFH. (Or try to persuade your Nascom
+dealer to supply D-DOS to run at this location.) I altered D-DOS without
+too much difficulty by altering all the jumps etc from BXXXH to FXXXH
+(where the XXX also changes in the second most significant digit).
+</p>
+<h4>
+Important Construction Notes
+</h4>
+<p>
+1) The Nascom&nbsp;2 manual makes reference to Block A and Block B on the main board.
+These locations change depending on several variables, and in order to avoid
+confusion, where BLKA or BLKB are refered to in the following description,
+then BLKA = Pin 6 of LKS1, BLKB = Pin 4 of LKS1.<br>
+The relevant IC&rsquo;s to be inserted are located by the IC socket numbers and not
+by the references A1 &ndash; 4, B5 &ndash; 8 marked on the pcb.
+</p>
+<p>
+2) The switches S1 and S2 should be mounted as near as possible to LKS1 to reduce
+the chance of noise pick-up, and to reduce delays.
+</p>
+<h2>
+Circuit operation and positioning of IC&rsquo;s
+</h2>
+<p>
+1) All standard Nascom&nbsp;2 IC&rsquo;s in normal socket positions.
+</p>
+<p>
+2) CP/M ROM&rsquo;s 1 and 2 in IC sockets IC39 and IC40.
+</p>
+<p>
+3) D-DOS ROM&rsquo;s in either separate 4K block on external RAM (A) board or EPROM
+board, or (if suitably reprogrammed) in IC sockets IC41 and IC42.
+</p>
+<p>
+4) If available, 4 x 4118 RAMs in IC sockets IC35, IC36, IC37 and IC38. If not,
+it will be necessary to use a 4K block of RAM on a separate RAM (A) board. If
+4118s are not used, it may be possible to site the D-DOS ROM&rsquo;s for area B000H
+to B7FFH in this location, and to loop a &lsquo;B&rsquo; decode from an external RAM
+board, but this has not been tried. (B000H to BFFFH is not decoded by the new
+N2/MD/CPM PROM.)
+</p>
+<p>
+5) If available, a 4K block of RAM may be wired to decode E000H to EFFFH. (When
+the Basic ROM is selected on S2, it will disable the RAM and work correctly.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+10
+</p>
+<p>
+is and generates the appropriate ASCII code and a strobe. Fine, it sounds good
+in theory, and given good close proximity of the pad on the key and the pads
+on the peb, it works.
+</p>
+<p>
+How does muck affect the keyboard? Where does it go wrong? The lacquer on
+the peb is quite thick as far as pcb lacquers go, but is still only about
+0.05mm. I haven&rsquo;t worked out the capacitance involved, but the capacitance is
+proportional to the area of the pads, and inversely proportional to the
+distance between them. This is also multiplied by the permittivity (dielectric
+constant) of the lacquer, which I will assume to be about 3 &ndash; 4 (air has a
+dielectric constant of 1). Muck under the keys holds the keypad off the pad,
+and the chunks of stuff I&rsquo;ve found under the keypads is at least as thick as
+the laquer. So the muck halves the coupling capacitance for a start, next,
+because the keypad no longer makes contact with the lacquer (except for a
+small area) the dielectric is now air and not the lacquer, let&rsquo;s be generous
+and assume that this only reduces the permittivity by half. The capacitive
+coupling between the keys and the pads is now only a quarter of what it was,
+so the capacitive change detected by the CPU is now between O and some rather
+less than the 2pF (minus) which was present before.
+</p>
+<p>
+Now this has pugzled Rotec, as the keyboards were designed with a certain
+amount of muck in mind, after all that&rsquo;s why the sense lines have 2pF in
+series, to minimize the affects of the muck. After much poking around, they
+have discovered that a whole batch of keyboards were made with a 10OnF ceramic
+capacitor which was marked as 10% tolerence component (to their spec) which
+was in fact a wrongly marked -40/+100% component intended for use as a
+decoupling capacitor. This of course degraded the sharpness of the scanning
+pulses, with the predictable result that when the coupling capacitance was
+reduced by muck, then the key failed to work.
+</p>
+<p>
+Two further things compound the liability of key failure through muck
+egress, the first batch of keyboards made no attempt to keep muck out, the
+next and susbsequent batches have rubber strips round the edges between the
+peb and the keyframe to stop muck getting in, and between the keys to stop any
+muck that does get in from moving around (and also to cut down noise). All
+well and good, except there are 16 unfilled keyholes on the top of the
+keyboard frame covered with sticky tape (not really tape, it&rsquo;s quite thick).
+Sad to say, this can peel off after a few months use leaving half inch square
+holes on the top of the keyboard for the odd passing brick to drop through.
+Secondly, the pads on the bottoms of the keys seem to be slightly sticky and
+any muck that gets under a key promptly attaches itself to the keypad and
+stays put.
+</p>
+<p>
+So onto the cure. Sling the thing back at your Gemini dealer, who in turn
+will sling it back at Rotec, via Gemini, and shout at them. Actually, I
+understand Rotec have been very good over this and all faulty keyboards
+returned have been sorted out. That of course is the legal recourse and you
+would be entitled to do just that, (provided that it is till under warranty)
+unfortunately, it&rsquo;s not a lot of help if you have just written a couple of
+hours rubbish using PEN (not having backed up of course) and then discover a
+passing brick has got under the CONTROL key, and all PEN does is print 222222
+instead of breaking out of the insert mode (*Z, for those who don&rsquo;t know PEN).
+That&rsquo;s what happened to me once, which is the reason for this bit. The well
+tried cure is to turn the keyboard on its end and &lsquo;thumping it one&rsquo; (known in
+the trade as a technical tap) in the hope that the muck will get dislodged and
+the key will become functional. Needless to say this didn&rsquo;t work. So in my
+wisdom I decided to take the keyboard apart. When I&rsquo;d fixed the keyboard, I
+found that the action of removing or replacing the keyboard had crashed the
+video card, and using RESET to clear it lost about half of what I had written.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<h3 id="article1">
+2400 Baud Cassette, 300 Baud TTY for N2
+</h3>
+<p>
+Here is a very simple mod for Nascom&nbsp;2 owners to give cassette
+I/O at 2400 Baud.
+</p>
+<p>
+Connect TP20 to TP4 and TP21 to TP5. If you now select external
+UART clock you have the cassette interface running at 2400 Baud.
+The switch settings of LSW2 are&nbsp;:&ndash;
+</p>
+<table style="width: 70%">
+<tr><td>Switch</td><td>&ndash;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><td>Setting</td><td>&ndash;</td><td>either</td><td>up</td><td>up</td><td>either</td><td>up</td><td>up</td></tr>
+</table>
+<p>
+where switches 1, 2 and 3 select the transmission speed to the cassette
+and 4, 5 and 6 the receiving speed from the cassette. Switch 7 should
+be down to select cassette input. (Up selects TTY input.)
+</p>
+<p>
+To make 300 Baud TTY available is a little more difficult but
+since many acoustic couplers and teletype devices work at this speed it
+may be necessary. Transmission is the easiest since only the clock
+speed of the transmission side of the UART needs setting and this is
+readily achieved by the existing switches on LSW2.
+</p>
+<table style="width: 60%">
+<tr><td></td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>110 Baud</td><td>either</td><td>up</td><td>down</td></tr>
+<tr><td>300 Baud</td><td>down</td><td>down</td><td>either</td></tr>
+<tr><td>1200 Baud</td><td>up</td><td>down</td><td>either</td></tr>
+<tr><td colspan=4>and with the mod above</td></tr>
+<tr><td>2400 Baud</td><td>either</td><td>up</td><td>up</td></tr>
+</table>
+<p>
+Reception cannot be achieved in the same way because the UART
+receive clock for tape is derived from a Phase Lock Loop (PLL). The TTY
+input must have a &lsquo;hard&rsquo; clock, as the PLL can not regenerate the clock
+from the incoming TTY signal. Therefore, to get different receive
+speeds for TTY Input the appropriate clock signals must be gathered
+from various places and applied to the UART. This may be done by
+connecting the required clock from the input side of the transmit speed
+selection switches to the external receive clock input (TP5). The most
+usual TTY speed required is 300 Baud and the clock for this may be
+picked up from I1C32 Pin 4 with LSW2 switch 1 down or from IC31 Pin 9. A
+switch will then be required to select between the 2400 Baud cassette
+clock (coming from the PLL circuit) and the 300/1200/2400 Baud TTY
+clock going into the external receive clock input (TP5).
+</p>
+<p>
+Happy switching!
+</p>
+<br>
+<?php hline("20%"); ?>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-45-1.png"); ?>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<ol start="4" class="indent" style="padding-bottom: 0">
+<li style="list-style: none">
+2.7 inches from the bottom edge and 3.3 inches from the left edge of the
+board. Cut this track somewhere in the middle.
+</li>
+</ol>
+<ol start="5" class="indent round-bracket">
+<li>
+Connect the left hand plated through hole of the latter track to A12 at the
+edge connector &ndash; this is line 42 of Nasbus.
+</li>
+<li>
+Connect the right hand plated through hole of the track to pin 19 of the
+bottom EPROM socket.
+</li>
+<li>
+Select the addresses for the four sockets by connecting pad 5 to the
+appropriate two decode pads (remember, you&rsquo;ve got 8K there now). The two
+4K blocks selected need not be adjacent, but they must have different
+values for A12, because this line is used in the decoding. For example you
+could use blocks C000 and F000, but not C000 and E000.
+</li>
+<li>
+Because the modifications have inverted the order of the decoding lines the
+addresses of the EPROM sockets are no longer in the correct order. Thus if
+you have selected addresses C000 &ndash; DFFF you will find that the start
+address are:
+</li>
+</ol>
+
+<p>
+IC27 C000 &nbsp; IC28 D000 &nbsp; IC29 C800 &nbsp; IC30 D800
+</p>
+<p>
+That completes the mods for the RAM A card. For just a little work, and using no extra
+chips, you get an extra 4K out of the board by replacing 2708s.
+</p>
+<p>
+The Nascom&nbsp;1 owner can also modify his main board to take 2716s in the monitor
+position; if you put a 2716 in each socket you can have two monitors on your machine,
+selected by a switch on the CS lines. Here are details of the modifications required.
+</p>
+<ol class="indent round-bracket">
+<li>
+On the soldered side of the board a wide track runs from pin 21 of IC38 to a
+plated through hole near the edge of the board. Either cut this track with a
+sharp knife, or break the plated through connection with a small sharp twist
+drill. This disconnects both EPROM sockets from the -5 volt line.
+</li>
+<li>
+Also on the soldered side of the board, a wide track connects pin 19 of IC38
+to the +12 volts lines. This track should be cut with a sharp knife near to pin
+19.
+</li>
+<li>
+Connect pins 21 and 24 of IC38 with a short wire link
+</li>
+<li>
+Connect an insulated wire link from the solder pad of pin 19, IC38 to the
+solder pad of pin 2, IC36. Thus provides address line A10 for the 2716s.
+</li>
+<li>
+Tie pins 4 and 5 of IC36 together. This gives a 2K decode instead of two
+separate 1k decodes.
+</li>
+<li>
+Remove IC44 from its socket, bend pins 8, 11 and 13 to a horizontal
+position, and replace the IC.
+</li>
+<li>
+Fit a single-pole double-throw switch at some convenient point in your
+computer. Link the centre of this switch to pin 8 of IC44. The two outer
+connectors of the switch are tied to +5 volts through 4k7 resistors; they are
+then linked to pads 8 and 11 of IC44.
+</li>
+</ol>
+<p>
+You can now fit a 2K monitor in each of sockets IC38 and IC39. The switch selects
+which monitor is in use.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<p>
+25
+</p>
+<p>
+PRESTEL for Nascom&nbsp;2 &amp; Gemini IVC M-B0 5 Dee 1983 22:22 PAGE 1+6 PRESTEL for Nascom&nbsp;2 &amp; Gemini IVC M-80 5 Dee 1983 22:22 PAGE 1-7
+PREST V8, PRESTEL terminal program. RL. 22/11/83 PREST V8, PRESTEL terminal program. RL. 22/11/83
+</p>
+<p>
+0336 Do exx POLLU &ndash; Polls the UART and moves any
+</p>
+<p>
+%
+O3B7 18 FF 1d e,Offh 3 poll for &ldquo;C 5 waiting character to (DE)
+O3B9 OE 06 ld c,condir 3; {st of a DEL string is converted to O7h and
+O3BB cD 0005 call jbdos 3 rest of string is suppressed. Simplifies subsequent
+O3BE Dg exx ; handling by GEMPEN and saves buffer space.
+O3BF BT or a
+03C0 28 05 jr z,de10 o40D DB 02 POLLU: IN A, (UARTS)
+0302 FE 03 ep cone O40F 17 RLA
+0304 CA 0374 dip z,exit 0410 DO RET NC
+0307 3A O3D3 del0: id a,(ms) 0444 3A 0121 ld a,(delfig)
+O3CA E3 deli: ex (sp),hl 0414 BT or a
+O3CB E3 ex (sp),hl 0415 28 OF jr 2z,pollut
+o3cc 3D dec a 0417 DB O1 in a,(uartd) 3 flg is set
+O3CD 20 FB jr nz,dell 0419 E6 7F and 7fh
+O3CF 10 F6 djnz deld 041B FE 7F ep 7fh ; suppress if DEL
+0301 et pop be O41D ca ret z
+O3D2 cg ret 0418 F5 push af
+O3D3 4B ms: defb 75 3; for 4MHz, no waits O41F AF xor a
+0420 32 0121 ld (delfig),a ; reset flg if not
+O3D4 38 10 pulse: 1d a,10H } open dial relay 0423 Fi pop af
+O3D6 D3 04 out (dialpd),a 0424 18 OD jr pollu2
+03D8 CD O3AB eall dly66
+O3DB 3E 30 id a,30H 3 close dial relay 0426 DB O41 POLLU1: IN A, (UARTD)
+O3DD D3 04 out (dialpd),a 0428 E6 7F AND TFH
+O3DF CD 0382 call dly33 042A FE TF ep 7fh
+O3E2 cg ret 0420 20 05 ir Cette
+0425 32 0121 ld (delflg),a 3; set flg &amp; convert..
+; Connect line and on to term routine 0433 * o7 pounue i aT oA s++to bell symbol
+3 &lt;- from &ldquo;T&rdquo; command : DD DE),
+03E3 3B 30 conlin: 14 a,30h 0434 13 INc DE
+0385 D3 04 out (dialpd),a 0435 TA LD A,D
+0436 PE 02 cp 2
+; Clear screen, and set limit 0437 LIMIT EQU $-4 3 modified on init
+0438 DS RET C
+O3E7 3B 1A DTERM: 1d a,tah 0439 28 02 JR 2, SWITCH
+O3E9 CD O45F call putvid 043B 1B DEC DE
+O3EC 3A 0007 LD A, (7) 043C cg RET
+O3EF 3D DEC A
+O3FO 32 0437 LD (LIMIT) ,A OAs x 69 switch: nop 3 only pass once
+d a,0c9h
+; Start of main processing loop 0440-32 0430 ld (switeh),a
+; Uses a PIFO buffer to handle the data 0443 38 1B id _a,1bh
+; &lt;DE&gt; = Input pointer &lt;HL&gt; = Output pointer es sr &lsquo;o au puyvad invert
+a, 3 Invert screen as..
+O3F3 11 0502 LOOPO: LD DE, BUFFER+2 O4aD 69 O45F call putvid j+-buffer full warniing
+O3F6 21 0502 LD HL, BUFFER+2 re
+O3F9 CD O46C LOOP1: CALL CONST
+O3FC C4 0448 CALL NZ, SEROUT ; SEROUT &ndash; Outputs the character in &lt;A&gt; to
+O3FF ES PUSH &laquo;HL ; the serial port.
+0400 B7 OR A
+0401 ED 52 SBC HL, DE 0448 FS SEROUT: PUSH AP
+0403 Bt PoP HL O44F DB O02 SEROO: IN A, (UARTS)
+0404-28 FS JR Z,LOOP1 ; original (non-store).. 0451 = -B6 40 AND 40H
+0406 TE LD A,(HL) 5 version is jr z,loop0 0453 28 FA JR 2, SEROO
+0407 23 INC HL
+0408 CD O45F CALL PUTVID \
+</p>
+<p>
+O40B 18 EC oR LOOP1
+</p>
+<?php columnEnd(1); ?>

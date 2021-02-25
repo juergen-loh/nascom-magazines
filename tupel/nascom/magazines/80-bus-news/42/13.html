@@ -1,0 +1,158 @@
+<?php columnStart(2, 2); ?>
+<p>
+\
+</p>
+<p>
+nasty Beeb programs! An additional, useful facility
+is that text can be put after the backslash &ndash; a subtle
+form of REM, and, as in MBASIC, two or more
+statements on one line must be separated by a
+colon.
+</p>
+<p>
+IF REPT = 0 \ Check for repetition
+THEN GOTO 999: PRINT"REPEATING TEST&rdquo;
+</p>
+<p>
+The statement can start anywhere on the line &ndash; but
+it is obviously better to use the first 80 columns.
+</p>
+<p>
+Data I/O
+</p>
+<p>
+Both BASICs use the conventional PRINT statement
+with semi-colon or comma separators; in CBASIC,
+the comma indicates a move to the next printing
+field which is every 20th print position and the
+semi-colon leaves one space after the last printed
+item and then starts printing again. PRINT USING,
+WIDTH and TAB are also supported by both but 3
+statements, LPRINTER, CONSOLE and POS are
+specific to CBASIC. LPRINTER directs all PRINT
+statement output to the printer until it is cancelled
+by the CONSOLE statement which routes it back to
+the screen. LPRINTER assumes a print WIDTH of
+132 characters unless a lower figure is set (e.g. 80):
+</p>
+<p>
+LPRINTER WIDTH 80
+</p>
+<p>
+CONSOLE assumes a screen width of 80 characters
+unless otherwise directed.
+</p>
+<p>
+The POS function is used to identify how many
+characters have been printed or displayed on a line
+&mdash; useful if you want to see how much space
+remains. I haven&rsquo;t used this facility very often!
+</p>
+<p>
+File handling
+</p>
+<p>
+in CBASIC there are two types of file, sequential
+and relative. Their use is rather more straightforward
+than in MBASIC. The sequential file type is
+better in terms of disk space usage but the relative
+file can be read or written to at random since it
+assigns a fixed space to each possible record. The
+following remarks apply broadly to both types of
+file but OPENing or CREATEing relative files
+involves the RECL parameter in which the record
+length must be specified:
+</p>
+<p>
+100 OPEN &ldquo;A: ADDRESS&nbsp;.LIS&rdquo; RECL 128 AS 3
+</p>
+<p>
+.Files are opened using CREATE, OPEN or FILE
+</p>
+<p>
+statements and closed by CLOSE (and CHAIN or
+STOP if these statements occur in a program).
+CREATE, as its name suggests, sets up a new file,
+deleting any previous file with the same name,
+OPEN &ndash; well, it just opens a file which has already
+been created in the directory. FILE is very useful
+since it will CREATE a new file and OPEN it if it does
+not currently exist &ndash; and it will OPEN a file for /O
+if it exists. All these commands can be used to
+operate more than one file at a time.
+</p>
+<p>
+OPEN and CREATE have the same syntax, but FILE
+does not need the identifier to be specified &ndash; it
+does this automatically:
+</p>
+<p>
+OPEN &ldquo;B: TEDIOUS&nbsp;.DOC&rdquo; AS 2
+CREATE &ldquo;A: TEST.DOC&rdquo; AS 1
+FILE &ldquo;A: DAVEHUNTSBITS&rdquo;
+</p>
+<p>
+in the first two cases, a file and drive are specified
+and given a numeric identifier &ndash; thus TEDIOQUS.DOC
+was originally set up on disk B and has
+the identifier 2 &ndash; which will be used for subsequent
+file operations using READ # and PRINT
+#:
+</p>
+<p>
+the file on drive A called DAVEHUNTSBITS will be
+assigned 3 as its identifier if it was in the same
+program; this is because it is the third file to be
+specified.
+</p>
+<p>
+READ #2:A$ &ndash; reads string variable
+A$ from file 2 which in
+this example, is TEDIOQUS.DOC
+PRINT #1;A$ &ndash; writes the same string
+variable to file 1 &ndash; TEST.DOC
+</p>
+<p>
+PRINT USING # is a very useful facility if you have
+a number of different types of output format to
+include; both PRINT # and PRINT USING # are
+limited to a maximum number of 20 file identifiers!
+To CLOSE a file, simply type CLOSE &lt;file identifier&gt;
+&mdash; very neat and just like MBASIC.
+</p>
+<p>
+Other useful statements are DELETE &lt;identifier&gt;
+which enables one to delete files when they are no
+longer required in a program and INITIALIZE which
+allows one to change a disk without causing the
+system to become bewildered or risking the
+scrambling of directories. One can also RENAME a
+file, determine its SIZE in 1 Kbyte increments, or
+employ the IF END # statement to do something
+mind-boggling when the contents of a file have
+been read and Marvin or whatever you call your &ndash;
+machine is about to become seriously confused!
+</p>
+<p>
+RENAME (NEWFPILENAMES&nbsp;, OLDFILENAMES )
+PRINT SIZE( &ldquo;FILENAMES&rdquo; }
+IF END 2 THEN 999 &lsquo;STOP THE PROGRAM
+</p>
+<p>
+CBASIC defaults to a record length of 128 bytes for
+RECL; additionally, one can specify the data buffer
+length and sector length using the BUFF and RECS
+parameters; these follow the numeric file identifier.
+Further information on file handling can be gleaned
+from the Guide.
+</p>
+<p>
+Numerical operations
+</p>
+<p>
+The major differences between the two BASICs are
+in the field of relational operators (less than,
+greater than etc.). The conventional combinations
+of &lt;, &gt; and = are supplemented by letters:
+</p>
+<?php columnEnd(2); ?>

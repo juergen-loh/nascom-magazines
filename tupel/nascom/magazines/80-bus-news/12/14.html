@@ -1,0 +1,147 @@
+<?php columnStart(1); ?>
+<p>
+14
+</p>
+<p>
+CALL SYSTEM :Print the line up to the $.
+</p>
+<p>
+POP BC 3Get CR LF flag back.
+</p>
+<p>
+LD A B :Transfer it to A.
+</p>
+<p>
+OR A ;Test to see if it is zero.
+</p>
+<p>
+RET Z@ ;Return if it is, no CR LF needed.
+LD DE OUTP50 ;Point to CR LF text.
+</p>
+<p>
+LD Cc PRTBUF ;CP/M routine number.
+</p>
+<p>
+CALL SYSTEM ;Print a CR LF.
+</p>
+<p>
+RET ;Return to caller.
+</p>
+<p>
+OUTP50 DEFB CR, LF, DOLLAR
+</p>
+<p>
+OUTBUF DEFM &ldquo;Here is a typical line of text which under&rdquo;
+</p>
+<p>
+DEFM &ldquo;ordinary circumstances would be printed
+</p>
+<p>
+with&rdquo;
+</p>
+<p>
+DEFM &ldquo;the word ORDINARY broken. As you can see, this&rdquo;
+</p>
+<p>
+DEFM &ldquo;has not happened.&rdquo;
+DEFB &pound;00
+</p>
+<p>
+And anybody who thinks that a Nas-Sys version of that routine would be
+useful is at liberty to write one. I have decided not to, as I have got to get this
+</p>
+<p>
+article finished soon, or it will miss the deadline.
+And finally, something totally silly.
+</p>
+<p>
+This is a conversion of the lost entry to the
+contest in BASIC. Probably the best thing about it is
+gives it its name. I insist that the game itself was
+think you will find that it is capable of breaking the
+</p>
+<p>
+&mdash;
+</p>
+<p>
+long forgotten Christmas game
+the apalling acronym that
+actually my brother&rsquo;s idea. I
+ice at parties, and could
+</p>
+<p>
+easily be modified to create even more complex situations, that we must not discuss
+here, as this magazine is frequently read by persons of tender years...
+</p>
+<p>
+1000 PRINT &ldquo;Social Contact Recreation Under Micro-control&rdquo;
+</p>
+<p>
+1010 INPUT &ldquo;How many players &ldquo;;NP
+</p>
+<p>
+1020 .IF NP &gt; 2 THEN 1040
+</p>
+<p>
+1030 PRINT &ldquo;Don&rsquo;t be silly...&rdquo; : GOTO 1010
+1040 DEF FNR(X) = INT(RND(1)*X)+1
+</p>
+<p>
+1050 PRINT &ldquo;Here we go then...&rdquo;
+</p>
+<p>
+1060 FOR P = 1 TO NP
+</p>
+<p>
+1070 GOSUB 5000 : CLS
+</p>
+<p>
+1080 PRINT : PRINT &ldquo;Player number &ldquo;;P;
+1090 PRINT " put your &ldquo;;
+</p>
+<p>
+1100 GOSUB 6000
+</p>
+<p>
+1110 PRINT &ldquo;hand on player&rdquo; : PRINT &ldquo;number &ldquo;;
+1120 Q = FNR(NP) : IF Q = P THEN 1120
+</p>
+<p>
+1130 PRINT Q;"&rsquo;s &ldquo;;
+</p>
+<p>
+1140 GOSUB 6000 : GOSUB 7000 : PRINT &ldquo;.&rdquo;
+1150 NEXT P
+</p>
+<p>
+1160 GOTO 1060
+</p>
+<p>
+4990 REM DELAY SUBROUTINE
+</p>
+<p>
+5000 FOR I = 1 TO 5000 : NEXT I : RETURN
+5990 REM PRINT LEFT OR RIGHT
+</p>
+<p>
+6000 IF FNR(2)=1 THEN PRINT &ldquo;left &ldquo;; : RETURN
+6010 PRINT &ldquo;right &ldquo;; +: RETURN
+</p>
+<p>
+6990 REM PRINT A PART
+</p>
+<p>
+7000 RESTORE 7500 : B = FNR(4)
+</p>
+<p>
+7020 FOR IT = 1 T0 B : READ I$ : NEXT I
+7050 PRINT I$; : RETURN
+</p>
+<p>
+7500 DATA foot, knee, elbow, shoulder
+</p>
+<p>
+I hereby nominate this program de facto winner of the Silliest Misuse of
+Unusual Technology (SMUT) award for this year, unless you know better, of course...
+</p>
+<?php columnEnd(1); ?>

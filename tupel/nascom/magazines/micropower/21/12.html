@@ -1,0 +1,176 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+XTAL BASIC EXTRA
+</h1>
+<p>
+by David Elliott
+</p>
+<p>
+Here are six more commands tor Crystal Basic 2.2. OLD recovers a program
+which has been &lsquo;exterminated&rsquo; by a NEW or a cold start. STRING$(nn,cc) creates a
+string of nn characters with ASCII code cc. LOWER$(..) and UPPER$(..) convert a
+given string to lower and upper case respectively, while REVERSE$(..) changes the
+case of the characters in a string. Finally, EVAL(...) returns the value of a given
+string. The assembler listing of the commands is followed by the code to be entered
+using the loader program described in the last issue.
+</p>
+<p>
+2D00 0090
+0100
+0110
+0120
+0130
+0140
+0150
+0160
+0170
+ORG &pound;2D00
+;;
+@@@@@@@@@@@
+; @@ O L D @@
+; @@@@@@@@@@@
+;
+; OLD RECOVERS A PROGRAM PREVIOUSLY
+; ERASED BY A &lsquo;NEW&rsquo; COMMAND
+;
+2D00
+2D04
+2D06
+2D08
+2D09
+2D0B
+2D0E
+2D10
+2D13
+2D15
+2D17
+2D19
+2D1A
+2D1B
+2D1D
+2D1F
+2D21
+2D23
+2D24
+2D27
+2D2A
+2D2B
+2D2E
+2D30
+2D33
+FD2A8312
+FDE5
+DDE1
+AF
+0600
+110400
+FD19
+FDBE00
+2804
+FD23
+18F7
+78
+B7
+200D
+0601
+FD23
+FDE5
+D1
+DD7300
+DD7201
+AF
+FDBE01
+20E5
+FDBE02
+20E0
+0180
+0190
+0200
+0210
+0220
+0230
+0240
+0250
+0260
+0270
+0280
+0290
+0300
+0310
+0320
+0330
+0340
+0350
+0360
+0370
+0380
+0390
+0400
+0410
+0420
+0430
+0440
+0450
+OLD
+OLD1
+OLD2
+;
+OLD3
+;
+OLD4
+;
+LD IY, (1283H)
+PUSH IY
+POP IX
+XOR A
+LD B, 0
+LD DE, 4
+ADD IY, DE
+CP (IY)
+JR Z, OLD3
+INC IY
+JR OLD1
+LD A,B
+OR A
+JR NZ, OLD4
+LD B,1
+INC IY
+PUSH IY
+POP DE
+LD (IX),E
+LD (IX+1),D
+XOR A
+CP (IY+1)
+JR NZ,OLD2
+CP (IY+2)
+JR NZ, OLD2
+; GET TEXT START
+; SET IX TO START
+; DOING FIRST LINE
+; SKIP LINE NUMBER
+; AND LINK ADDRESS
+; END OF LINE?
+; IF SO, JUMP
+; NO, TRY NEXT BYTE
+; END OF 1ST LINE?
+; IF SO, RESET FLAG
+; RESTORE LINK
+; TO SECOND LINE
+; END OF PROGRAM?
+; NO, TRY AGAIN
+; END OF PROGRAM?
+; NO, TRY AGAIN
+0460 ; END OF PROGRAM FOUND
+2D35
+2D38
+110300
+FD19
+0470
+0480
+0490
+;
+LD DE, 3
+ADD IY, DE
+; RESTORE POINTERS
+</p>
+<?php columnEnd(1); ?>

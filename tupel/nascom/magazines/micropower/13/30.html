@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<p>
+buffer? Wherever you put it, sooner or later you will want to load a program to
+that location. The only solution seems to be to use the screen RAM for temporary
+storage. The program therefore starts by clearing the screen; as it uses the margins
+as well as the &lsquo;visible&rsquo; screen RAM, it also clears the screen at the end of the routine
+to restore the zeroes which the delineate the margins. A tally is kept on the
+screen of blocks which have been read correctly, and when all the blocks have
+been obtained the routine stops.
+</p>
+<p>
+The revised Read incorporates the &lsquo;load offset&rsquo; of Nas-Sys&nbsp;3. A second
+argument can be used to force transfer of data from the buffer to memory, even
+when the checksum is wrong. This ensures that if you only have one copy of a
+program, and a persistent error on the tape, you don&rsquo; t loose the whole block.
+Because bad data is not written to memory, it is not necessary to use a separate
+verify command. To verify a tape you have just recorded you merely read it back
+with the R command &ndash; if the recording was faulty it will not corrupt the stored
+program. Therefore the routine does not test the value stored at ARGX (&pound;0C2B),
+which is how the standard Nas-Sys routine distinguishes between Read and
+Verify. Consequently unless you change the address for the V command this will
+also read a tape into memory.
+</p>
+<pre>
+EF0C00 READ DEFB &pound;EF &pound;0C 00 ; CLEAR SCREEN
+DF5F SCAL ZMFLP ; TURN ON TAPE LED
+DF77 SCAL ZNNOM ; RESET OUTPUT TABLE ADDRESS
+E5 PUSH HL ; SAVE OLD ADDRESS ON STACK
+DF78 SCAL ZNNIM ; RESET INPUT TABLE ADDRESS
+E5 PUSH HL ; SAVE OLD ADDRESS ON STACK
+0604 R1 LD B, 4 ; LOOK FOR 4 CHARS.
+CF R2 RST RIN ; GET CHARACTER
+3C JR NZ, R1;T44; IF NOT, KEEP LOOKING
+10FA DJNZ R2 ; HAVE WE GOT 4 YET?
+CF RST RIN ; NOW GET HEADER BYTES
+6F LD L, A ; FIRST BYTE INTO L REG.
+CF RST RIN ; SECOND BYTE
+67 LD H, A ; INTO L REGISTER
+CF RST RIN ; THIRD BYTE
+5F LD E, A ; INTO E REGISTER
+CF RST RIN ; FOURTH BYTE
+57 LD D, A ; INTO D REGISTER
+EF1B00 DEFB &pound;EF &pound;1B 00 ; PUT CURSOR BACK TO START
+4F LD C, A ; SET C TO ZERO
+DF6C SCAL ZTX1 ; PRINT HL, DE: GET CHECKSUM
+CF RST RIN ; GET NEXT BYTE
+B9 CP C ; COMPARE WITH CHECKSUM
+20E6 JR NZ, R1 ; IF WRONG, START AGAIN
+48 LD C, B ; SET C TO ZERO
+43 LD B, E ; PUT BLOCK LENGTH INTO B
+E5 PUSH HL ; SAVE HL
+21000A LD HL, &pound;0A00 ; SET HL TO BUFFER START
+CF R3 RST RIN ; GET DATA BYTES
+77 LD (HL) A ; PUT INTO BUFFER
+23 INC HL ; INCREMENT BUFFER ADDRESS
+81 ADD A, C ; CHECKSUM CALCULATION
+4F LD C, A ; SAVE IN C
+</pre>
+<?php columnEnd(1); ?>

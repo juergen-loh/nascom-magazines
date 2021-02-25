@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+21,
+</p>
+<p>
+supplied for this. This prevents BASIC from overwriting TOS&rsquo;s workspace when
+cold-started. TOS overlays ROM ZEAP, but it is a simple matter to install a
+switch in the 4K decode line (on the N2) to switch between the two. I of course
+encountered difficulty in this task owing to Blocks A &amp; B on the N2 card being in
+different places to that documented (i.e. for block A read block B, and vice
+versa).
+</p>
+<p>
+The TOS command structure is fairly extensive, with commands being
+entered in the true NASSYS fashion, i.e. a single command letter followed by a
+number of arguments. In TOS these arguments are obligatory and are summarised
+</p>
+<p>
+below.
+</p>
+<p>
+Save BASIC file on drive d
+Display catalogue of drive d
+nn Delete file number nn from drive d
+Initialise a blank tape in drive A
+BASIC cold start
+NASSYS cold start
+d Save NASPEN file on drive d
+NASPEN warm start
+Rewind both tapes, read in catalogues
+d mn Read file nn from drive d
+d mun Transfer file nn from drive d to the other drive
+d ssss eeee Write file from f&pound;ssss to &pound;eeee-1 to drive d
+Rewind both tapes prior to removal
+BASIC warm start
+</p>
+<p>
+Ra Qs Os
+</p>
+<p>
+NM SSW OW ea Ho
+</p>
+<p>
+I understand that the latest version of TOS has a multiple-delete
+command, which presumably is of the form Dd nn xx yy --. which would delete file
+numbers nn, xx, yy, etc. from the tape in drive d. I have made alterations to TOS
+</p>
+<p>
+to include the following (extra) commands:
+</p>
+<p>
+E xxxx &ndash; Execute program at address xxxx. Additional arguments
+may be supplied, as with the NASSYS &lsquo;EB&rsquo; command.
+</p>
+<p>
+Rd &ndash; Rewind the tape &amp; read the catalogue of the specified
+drive (TOS only does this for both drives at once).
+</p>
+<p>
+Xd &ndash; Rewind the specified tape to the start prior to removal.
+</p>
+<p>
+YX &ndash; BASIC warm start.
+</p>
+<p>
+Zd &ndash; Save ZEAP file on the specified drive.
+</p>
+<p>
+When saving a file, TOS prompts for a filename, which may be upto 17
+characters long. This gives ample room for, say, the version number and, in the
+case of machine code files, the execution address. With the Write command TOS
+also prompts for a single-character filetype (BASIC &amp; NASPEN default to B and P
+respectively). No check is made to see if there is already a file of the name you
+have specified. Each file is assigned a file number, and this number is used to
+access the file. This reduces the chance of typing errors, which is quite
+possible if one had to type in 17-character filenames each time. It does mean,
+however, that when loading a file under program control (i.e. from another
+program, e.g. loading a data file into RAM) that the file number be specified.
+While (short) routines are given in the manual for saving a (named) file &amp;
+loading a (numbered) file under program control, no routine is given for loading
+a named file. When you consider that the Delete command can cause the assigned
+filenumbers to change, this is a serious drawback. No source listing is supplied,
+but having disassembled the software, writing such a routine shouldn&rsquo;t be too
+difficult.
+</p>
+<p>
+There were a couple of bugs in TOS, which interfere with the operation of
+the &lsquo;I&rsquo; command, in which the blank catalogue written to the tape isn&rsquo;t really
+blank. If any other reader has found this problem, there are a couple of bytes to
+</p>
+<?php columnEnd(1); ?>

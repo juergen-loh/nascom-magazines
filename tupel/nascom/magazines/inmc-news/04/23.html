@@ -1,0 +1,63 @@
+<?php columnStart(1); ?>
+<p>
+cleverness, and three or four not very serious snags go with it.
+</p>
+<p>
+The monitor workspace needs more room; it goes from 0C00 to
+0C7F which whilst not important on a Nascom&nbsp;2 or expanded Nascom&nbsp;1, it
+represents the loss of #30 precious bytes on a minimum system Nascom&nbsp;1.
+</p>
+<p>
+Now because NAS-SYS uses the internal subroutine table itself,
+and because using the table does some pretty intriguing &lsquo;ooh nasties&rsquo;
+to the stack, it&rsquo;s most undesirable to have an interrupt occur whilst
+it&rsquo;s messing about with the stack, cos if an interrupt does occur, you
+could spend weeks trying to figure out where the program went on return
+from the interrupt. So one simple rule here; &ldquo;if you are using interrupts
+disable &lsquo;em before going into any NAS-SYS routine&rdquo;, you can always re-enable
+on the return.
+</p>
+<p>
+The CRT routines are slightly slower than NASBUG, but that shouldn&rsquo;t
+worry anyone except the $6,000,000 man. Who can read that fast Anyway?
+RST #28, which works like it does in NASBUG, can&rsquo;t address the
+top line (line 16), so titles become a Little more difficult. Use an
+LDIR copy instead.
+</p>
+<p>
+Finally I would point out that with the delivery of Nascom&nbsp;2
+which has Basic and NAS-SYS, that the program library will become more
+complicated. Please make sure that any correspondence with the INMC
+about software states what configuration you are discussing.
+</p>
+<?php hLine("20%"); ?>
+<h2>
+STRINGS WITH NAS-SYS&nbsp;1
+</h2>
+<p>
+Here&rsquo;s how to output a string to the top of the screen or
+anywhere else in memory, very efficiently. It is written
+for the 8k BASIC under NAS-SYS, but the same principle applies
+to NAS-SYS machine code programms.
+</p>
+<p>
+I leave it up to you to work out how it works and how to use it.
+You need to study the NAS-SYS manual.
+</p>
+<p>
+HINT: Run it, then look at location 0D00 onwards.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<pre>
+LIST
+</pre>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-23-1.png"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-23-2.png"); ?>
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1); ?>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>

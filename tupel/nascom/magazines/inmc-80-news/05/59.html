@@ -1,0 +1,82 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-59-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+SOFTWARE FOR THE GEMINI VIDEO CARD
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+R. BEAL
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+The Gemini video card is &ldquo;port mapped&rdquo; instead of &ldquo;memory mapped&rdquo;. This
+means that instead of occupying an area of memory in the computer which can be
+accessed directly by the processor, it is instead accessed through the Z80
+ports by IN and OUT instructions.
+</p>
+<p>
+This has the advantage that it doesn&rsquo;t tie up 2K of RAM, which the 80*25
+display requires, and it also means that the screen driving software, which is
+quite complicated, becomes no more than a few instructions to the program
+driving the Z80 processor on the video card. Therefore I think that this was
+the best approach.
+</p>
+<p>
+However, there is also an obvious disadvantage of this method. Many
+programs have been written which access video RAM directly, in particular
+various games programs with fast moving objects. Normal programs tend to
+produce output in the conventional way, and these work with the video card
+without any difficulty.
+</p>
+<p>
+One solution is to modify programs to send the special escape sequences to
+the video card in the normal way to position the cursor and then write the
+characters required. This is quite possible, and will be suitable in some
+cases, but it tends to be a rather complicated and tedious job to program.
+</p>
+<p>
+Therefore after some thought I have developed a little piece of software
+which allows programs to access an area of memory which acts as &ldquo;pseudo video
+RAM&rdquo;. All you have to do is to assemble the code below with VAREA set to the
+start of a 4K area of RAM which is not in use. Then call the routine VINIT at
+the start of your program. You can then read and write to this area exactly
+as if it is video RAM. Then whenever you want to update the screen, just call
+the routine VIDEO. This routine works out the most efficient sequence of
+commands to send to the video card, by maintaining a record of the previous
+screen contents. You can mix calls to VIDEO with conventional I/O to the
+screen, which will not be affected. For example, calls to VIDEO will not
+disturb the cursor position. Using this system, I was able to convert the
+PIRANHA program which was published in an earlier INMC to use the video card,
+with only minor alterations to allow for the increased screen size.
+</p>
+<p>
+Naturally, this system can never give the very high speeds achieved by
+true video RAM displays. Also, the screen area is much larger and this means
+that programs take longer to process the additional data. However, most
+programs of this type spend most of the time sitting in delay loops, and it
+should only be necessary to reduce the delays to get the system running at a
+good speed.
+</p>
+<p>
+The VIDEO routine uses the transparent mode of access to the screen, so
+there is no speckling on the display whatsoever, which is an improvement over
+the black specks on the Nascom&nbsp;2, to say nothing of the snowstorms of the
+Nascom&nbsp;1.
+</p>
+<?php hline("20%"); ?>
+<h2>
+SPECIAL INMC COMPILATION ISSUE
+</h2>
+<p>
+We are pleased to announce that the &lsquo;best&rsquo; and &lsquo;most relevant&rsquo; bits of
+INMC issues 1 &ndash; 7 (Oct. &ldquo;78 to May &lsquo;80) have been compiled to produce a
+special issue. This is available from your distributor for 2.50, or from
+ourselves at 3.00 including postage.
+</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

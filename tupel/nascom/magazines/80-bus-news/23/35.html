@@ -1,0 +1,169 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 16</p></th></tr>
+
+<tr><td><p>LOG</p></td><td><p>F6C7</p></td><td colspan=2><p>
+LOG(X) routine. Get LOG of FPREG.<br>
+Scale the number to be between 0 and 1.<br>
+Add SQR(1/2) to value.<br>
+Divide into SQR(2).<br>
+Subtract from 1.<br>
+Compute the sum of series using LOGTAB for coefficients.<br>
+Subtract 0.5 from result.<br>
+Re-scale the number and then multiply by LOG(2).
+</p></td></tr>
+<tr><td><p>MULT</p></td><td><p>F706</p></td><td colspan=2><p>
+Multiply FPREG by value on stack.
+</p></td></tr>
+<tr><td><p>FPMULT</p></td><td><p>F708</p></td><td colspan=2><p>
+MULTIPLY FPREG by value in BCDE.
+</p></td></tr>
+<tr><td><p>DIV</p></td><td><p>F767</p></td><td colspan=2><p>
+Divide the value on stack by FPREG and leave the result in
+FPREG.
+</p></td></tr>
+<tr><td><p>DVBCDE</p></td><td><p>F768</p></td><td colspan=2><p>
+Divide the value in BCDE by FPREG and leave the result in
+FPREG.
+</p></td></tr>
+<tr><td><p>TSTSGN</p></td><td><p>F813</p></td><td colspan=2><p>
+Test sign of number in FPREG.
+</p></td></tr>
+<tr><td><p>SGN</p></td><td><p>F822</p></td><td colspan=2><p>
+SGN(X) routine.
+</p></td></tr>
+<tr><td><p>ABS</p></td><td><p>F838</p></td><td colspan=2><p>
+ABS(X) routine.
+</p></td></tr>
+<tr><td><p>STAKFP</p></td><td><p>F844</p></td><td colspan=2><p>
+Move value in FPREG to stack.
+</p></td></tr>
+<tr><td><p>PHLTFP</p></td><td><p>F851</p></td><td colspan=2><p>
+Move value at HL to FPREG.
+</p></td></tr>
+<tr><td><p>FPBCDE</p></td><td><p>F854</p></td><td colspan=2><p>
+Move value in BCDE to FPREG.
+</p></td></tr>
+<tr><td><p>BCDEFP</p></td><td><p>F85F</p></td><td colspan=2><p>
+Move FPREG to BCDE.
+</p></td></tr>
+<tr><td><p>LOADFP</p></td><td><p>F862</p></td><td colspan=2><p>
+Move value at HL to BCDE.
+</p></td></tr>
+<tr><td><p>FPTHL</p></td><td><p>F86B</p></td><td colspan=2><p>
+Move Value in FPREG to HL.
+</p></td></tr>
+<tr><td><p>SIGNS</p></td><td><p>F879</p></td><td colspan=2><p>
+Set sign of result depending on signs of operands.
+</p></td></tr>
+<tr><td><p>CMPNUM</p></td><td><p>F88E</p></td><td colspan=2><p>
+Compare numbers.
+</p></td></tr>
+<tr><td><p>FPINT</p></td><td><p>F8BB</p></td><td colspan=2><p>
+Get integer of FP value.
+</p></td></tr>
+<tr><td><p>INT</p></td><td><p>F8E6</p></td><td colspan=2><p>
+INT(X) routine.
+</p></td></tr>
+<tr><td><p>ASCTFP</p></td><td><p>F91A</p></td><td colspan=2><p>
+Convert ASCII floating point number into binary.
+</p></td></tr>
+<tr><td><p>NUMASC</p></td><td><p>F9B8</p></td><td colspan=2><p>
+Convert floating point binary into ASCII.
+</p></td></tr>
+<tr><td><p>SQR</p></td><td><p>FAAC</p></td><td colspan=2><p>
+SQR(X) routine. Uses SQR(X) = X * 0.5
+</p></td></tr>
+<tr><td><p>POWER</p></td><td><p>FAB5</p></td><td colspan=2><p>
+Raise base BCDE to the power FPREG.<br>
+Uses X^Y = EXP( Y*LOG(X) ).
+</p></td></tr>
+
+</table>
+
+<?php DisAssemblyRomBasicChange(); ?>
+<table>
+<colgroup><col><col><col><col></colgroup>
+
+<tr><th colspan=3><p>The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>PAGE 17</p></th></tr>
+
+<tr><td><p>EXP</p></td><td><p>FAFA</p></td><td colspan=2><p>
+EXP(X) routine.<br>
+Scale value to be between 0 and 1<br>
+Compute sum of series using EXPTAB for coefficients.<br>
+Re-scale number.
+</p></td></tr>
+<tr><td><p>SUMSER</p></td><td><p>FB5B</p></td><td colspan=2><p>
+Sum the series using table of coefficients at HL.<br>
+(( N1 * X^2 + N2 ) * X^2 + N3 ) * X^2 ... + Nn
+</p></td></tr>
+<tr><td><p>SUMSER1</p></td><td><p>FB6A</p></td><td colspan=2><p>
+Sum the series using table of coefficients at HL.<br>
+(( N1 * X + N2 ) * X + N3 ) * X&nbsp;... + Nn
+</p></td></tr>
+<tr><td><p>RND</p></td><td><p>FB8B</p></td><td colspan=2><p>
+RND(X) routine.
+</p></td></tr>
+<tr><td><p>COS</p></td><td><p>FC00</p></td><td colspan=2><p>
+COS(X) routine. Uses COS(X) = SIN(X+PI/2).
+</p></td></tr>
+<tr><td><p>SIN</p></td><td><p>FC03</p></td><td colspan=2><p>
+SIN(X) routine.<br>
+Divide angle by 2*PI.<br>
+Get fraction part.<br>
+Move other quadrants around and set what result will be.<br>
+Sum the series using table of coefficients at SINTAB.<br>
+Adjust result.
+</p></td></tr>
+<tr><td><p>TAN</p></td><td><p>FC67</p></td><td colspan=2><p>
+TAN(X) routine. TAN(X) = SIN(X) / COS(X).
+</p></td></tr>
+<tr><td><p>ATN</p></td><td><p>F67C</p></td><td colspan=2><p>
+ATN(X) routine.<br>
+If value &gt; 1 then get 1/value and set PI/2 &ndash; angle.<br>
+Sum the series using table of coefficients at ATNTAB.<br>
+Negate result if original value was &gt; 4.
+</p></td></tr>
+<tr><td><p>WIDTH</p></td><td><p>FDA5</p></td><td colspan=2><p>
+WIDTH routine. Set terminal width but NOT commas width.
+</p></td></tr>
+<tr><td><p>LINES</p></td><td><p>FDAD</p></td><td colspan=2><p>
+LINES routine.
+</p></td></tr>
+<tr><td><p>DEEK</p></td><td><p>FDBC</p></td><td colspan=2><p>
+DEEK(X) routine.
+</p></td></tr>
+<tr><td><p>DOKE</p></td><td><p>FDC7</p></td><td colspan=2><p>
+DOKE A,V routine.
+</p></td></tr>
+<tr><td><p>SCREEN</p></td><td><p>FDE6</p></td><td colspan=2><p>
+SCREEN X,Y routine.
+</p></td></tr>
+<tr><td><p>SCRADR</p></td><td><p>FE11</p></td><td colspan=2><p>
+Get screen address from row and column in DE and BC.
+</p></td></tr>
+<tr><td><p>INLINE</p></td><td><p>FEE8</p></td><td colspan=2><p>
+Get an input line from NAS-SYS.
+</p></td></tr>
+<tr><td><p>GETXYA</p></td><td><p>FF15</p></td><td colspan=2><p>
+Get (X,Y) for SET,RESET and POINT.<br>
+Return address on screen and a bit mask.
+</p></td></tr>
+<tr><td><p>SETB</p></td><td><p>FF40</p></td><td colspan=2><p>
+SET(X,Y) routine.
+</p></td></tr>
+<tr><td><p>RESETB</p></td><td><p>FF55</p></td><td colspan=2><p>
+RESET(X,Y) routine.
+</p></td></tr>
+<tr><td><p>POINTB</p></td><td><p>FF79</p></td><td colspan=2><p>
+POINT(X,Y) routine.
+</p></td></tr>
+<tr><td><p>XYPOS</p></td><td><p>FF96</p></td><td colspan=2><p>
+Convert (X,Y) to a row and column on screen.
+</p></td></tr>
+
+</table>
+
+<?php DisAssemblyRomBasicEnd(); ?>

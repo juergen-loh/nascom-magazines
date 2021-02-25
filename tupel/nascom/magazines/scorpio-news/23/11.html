@@ -1,0 +1,51 @@
+<?php columnStart(1); ?>
+<p>
+So what are the lessons here? Well firstly we see that very few of the editing functions
+are non-resident (from which we can surmise that the overlay file is broken down
+mostly as I described above). Secondly we see that those which are tend to be
+infrequently used ones or ones which are inherently slow due to disk access in any
+case.
+</p>
+<p>
+While on the subject of Wordstar, there are a couple of other points to make.
+Wordstar stores most of its messages on a separate file rather than in memory.
+Because this means they take time to access, a policy is adopted whereby
+non-essential messages are only printed at all if the operator seems uncertain. For
+example, menus are not displayed if the next key is pressed immediately, Another
+aspect of this message system is that individual messages are picked out from the
+file. Thus when the operator requests help, only the relevant information is printed.
+Returning to the PCB example, this means that if I request help while moving a track
+I should not be told how to save the file, print the file, define DIL packs, swap sides
+or do anything else not relevant to moving a track, especially if I can&rsquo;t actually do it
+at the moment! If I ask for help when moving a track I should be told how to move
+the track, how to deposit it and how to abort (if I can).
+</p>
+<p>
+Another useful lesson from Wordstar involves what happens when the non- resident
+code I needed is finished. If it was a major item returning to the opening menu (or
+completion of a PCB printer dump for example) then it is quite acceptable to reload
+the opening menu code. However if you have just deleted a line (perhaps 200 bytes
+of code) you don&rsquo;t want to have to wait while the 15K of the main editor is reloaded.
+This is where chained files are generally rather inappropriate. What we need to do
+is load the special code whilst keeping the existing code in memory. Research
+Machines BASIC has a command to do this. It is called MERGEGO, and operates
+by reading a disk file onto the current program without deleting any of the program
+which does not clash. The big problem here (and it is quite significant) is that the
+program data is erased in the process since the program is being modified. Also,
+MERGEGO is very slow since the input file has to be in ASCII listing format. In
+any case, RM BASIC is interpreted so the program can be instantly made to use
+less memory by compiling.
+</p>
+<p>
+In any program or suite of programs there will be a considerable amount of common
+code (e.g. I/O, disk handling, standard runtime routines). In many compilers much
+of this code occupies standard locations, and in almost all compilers it is possible
+to arrange for the majority of it to occupy standard locations. Once we have done
+this, at no penalty in terms of size or speed, it would seem very silly to reload all this
+code every time. In my PCB system, there are runtimes from 100h to 1100h (the
+compiler always puts them there) and a set of global functions to overcome compiler
+limitations which reside at the top of memory. These blocks of code are loaded at
+the start and remain resident until the user returns to CP/M. Among the code at
+top of memory are two routines to handle the disks. One routine loads and executes
+</p>
+<?php columnEnd(1); ?>

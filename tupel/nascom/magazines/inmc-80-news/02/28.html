@@ -1,0 +1,62 @@
+<?php columnStart(1); ?>
+<p>
+There is another special purpose register in this case uniquely associated
+with the &lsquo;A&rsquo; register, and this is the &lsquo;F&rsquo; register, or &lsquo;Flag&rsquo; register (also
+occasionally called the Status Word Register). Back to the trains. The &lsquo;F&rsquo; siding is
+at the end of the &lsquo;&lsquo;A&rsquo; siding (but also connected back to the main line). If, on
+addition, there is a &lsquo;carry&rsquo; from the &lsquo;A&rsquo; siding, then the extra wagon is shunted into
+a specific location in the &lsquo;F&rsquo; siding reserved for the &lsquo;carry&rsquo; from arithmetic and
+logical operations. So if our addition overflowed, then the &lsquo;Carry flag&rsquo; would become
+set. There is also a flag which will be set if the result of the calculation becomes
+zero, this is known as the &lsquo;Zero flag&rsquo;. There are four other flags as well, we&rsquo;ll deal
+with them another time.
+</p>
+<p>
+An important point has been made here, it&rsquo;s the flags which give the processor
+its intelligence. By testing the condition of the flags a decision can be made. For
+example, suppose we wished to count down from 40H to 0 (remember the &lsquo;H&rsquo; means HEX).
+We could load &lsquo;A&rsquo; with 40H, and then go into a simple loop which subtracted 01H from
+the accumulator then tested the flags to see if the &lsquo;Z&rsquo; flag had been set. If the &lsquo;Z&rsquo;
+flag was still unset, then the program would go through the loop again, round and
+round until such time as the &lsquo;Z&rsquo; flag did become set. Enough reading, let&rsquo;s prove it.
+We&rsquo;ll write a little program that does just that. I expect you to read the Software
+Manual and discover how to use the &lsquo;M&rsquo; command, and I&rsquo;ll write the code in two ways,
+firstly as an object code listing, and secondly as an assembler (or source) listing.
+I&rsquo;ll explain a bit as we go along, but not too much (I believe in making my readers
+work, I had to learn the hard way, so why not you). We&rsquo;ll only count from 10H to 0
+otherwise it will become tedious.
+</p>
+<p class="noindent">
+Object code<br>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-1.png"); ?>
+</p>
+<p class="noindent">
+Source code<br>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-2.png"); ?>
+<p>
+Now what we have said is load the &lsquo;A&rsquo; register with 10H. Decrement the &lsquo;A&rsquo;
+register by 1 (decrements are always by 1). Test the &lsquo;Z&rsquo; flag, and if this says &lsquo;Not
+Zero&rsquo; then move back three places from the start of the next instruction.
+</p>
+<p>
+Why from &ldquo;the start of the next instruction&rdquo;? Well, when the processor meets
+an instruction the first thing that instruction does is to tell the processor how many
+bytes in that instruction. There might be up to four bytes in an instruction. The
+processor has to read each byte in turn, and by the time it has done this the &lsquo;PC&rsquo;
+register has already been incremented so it is already pointing to the next
+instruction. Don&rsquo;t forget it&rsquo;s the job of the &lsquo;PC&rsquo; register to &lsquo;keep tabs&rsquo; on where
+the processor is to get the next byte from. So in the case of a jump like this, the
+&lsquo;PC&rsquo; is already pointing to the next instruction by the time it discovers it should
+have in fact gone backwards not forwards. We didn&rsquo;t deal with negative HEX numbers in
+part 1, just take my word for it FDH is actually -03H. If the &lsquo;Z&rsquo; flag said the result
+was zero, then the program would &lsquo;drop though&rsquo; the jump instruction to the next
+instruction (which it was already pointing at), which in this instance is load the &lsquo;A&rsquo;
+register with 22H. I chose 22H to prove that it was the next instruction, and not a
+magic number the CPU thought of itself. You might like to change the number just to
+prove I&rsquo;m right. The NOP (No OPeration) at the end was thrown in in case the &lsquo;Enter&rsquo;
+key was pressed once too often. This program has no &lsquo;END&rsquo;, so immediately the
+processor found the next byte it would do unpredictable things, as we haven&rsquo;t
+programmed beyond this point. The memory would be full of garbage from the time the
+computer was turned on.
+</p>
+<?php columnEnd(1); ?>

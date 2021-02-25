@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p>
+at the end of the Read routine. This means that the Read routine can be called from
+any program, even if it uses special tables for input/output routines.
+The routine then scans the keyboard and the serial input to find either the four
+consecutive FF&rsquo;s which mark the start of each block of tape data, or the four
+&lsquo;escapes&rsquo; from the keyboard which will abort the Read routine. When the block
+start is found the next four bytes, which indicate the loading address, the block
+length and the block number, are loaded into HL and DE. They are then displayed
+on the screen by routine 6C, which simultaneously adds the four bytes
+together, returning with the value in the C register. The next byte received from
+the tape is compared with this checksum in C, and if the values are not identical a
+qestion mark is printed on the screen and subsequent data is ignored until the next
+&lsquo;start of block&rsquo; marker is found.
+</p>
+<p>
+If the checksum for the block header is correct Nas-Sys&nbsp;3 checks to see if
+an argument has been entered with the Read command. If it has, this argument
+is added to the loading address, so that the data can be loaded to a different
+address from that specified in the write command. In Nas-Sys&nbsp;1 this facility is not
+available.
+</p>
+<p>
+The data is now read from the tape; if the command letter entered is R (i.e., we
+are doing a Read) the data is loaded into memory; if not (for example, if we are
+using the Verify command) data is not stored. In either case the bytes are
+summed into register C as they are received from tape. When a number of bytes
+equal to the block length specified in the header has been received, the total in C
+is compared with the next byte &ndash; the data checksum. If the two are not identical, a
+question mark is printed; however, the faulty data bytes or bytes which caused the
+checksum error have been loaded into memory.
+</p>
+<p>
+lf the checksum test is passed a full stop is printed and the routine then
+checks to see if the block just loaded was the last block. If not, the routine looks for
+the next &lsquo;start of block&rsquo; marker. When the last block is detected the
+input/output addresses are reset and the routine terminates by jumping to the
+subroutine which flips the tape LED.
+</p>
+<p>
+The Read routine has two faults. Firstly, it loads faulty data; if you are trying to
+load a tape which is producing a lot of read errors you cannot load a program
+correctly by reading the tape repeatedly, even if you have several copies of the
+same program on the tape, because blocks which have loaded correctly are
+corrupted by faulty reads in subsequent passes. Of course, you can overcome
+this by copying the program to a different location and then recopying blocks
+which initially read incorrectly as error-free reads are obtained. However, this is a
+fiddly task, and in any case you can&rsquo;t use this method if the program is longer
+than half the available memory. A second fault is that blocks can be missed entirely
+without an error message being produced if one of the FF&rsquo;s in the &lsquo;start of block&rsquo;
+marker is misread.
+</p>
+<p>
+In order to overcome these faults I use a slightly different Read routine,
+which puts the tape data into a buffer and only transfers it to the correct memory
+location if the checksum tests are passed. But where can you locate the
+</p>
+<?php columnEnd(1); ?>

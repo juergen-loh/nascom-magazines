@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p class="continued">
+others, for example DEF, can only operate in indirect mode.
+</p>
+<p>
+The command LIST instructs the computer, to display the lines it has stored. It will
+normally display 5 lines at a time, but this can be changed by entering the command
+LINES x, where x is the number you wish to display. The number x refers to stored
+Basic lines, not to screen lines; thus if any of the program lines contains more than
+48 characters (see below), data may be scrolled off the screen even if the value of
+LINES is less than 15. The value of LINES will remain unchanged until a new value is
+entered, or until you do the next &lsquo; cold start&rsquo; of Basic, when it will be reset to the
+default value of 5.
+</p>
+<p>
+You can break out of a listing at any point by typing &lsquo;escape&rsquo; (shift/enter). You can
+also start a listing at any particular line merely by adding the appropriate line number
+to the LIST command. For example, LIST 800 will list the program from line 800. The
+LIST command is particularly useful for editing purposes, because if you are using
+Nas-Sys, any line on the screen can be modified as required, and when you press
+enter the new version replaces the old, just as if you had re-entered the whole line
+(which you would have to do with most micros). However, if you break out of a
+program (with &lsquo;escape&rsquo;) and then LIST in order to edit the program, be sure to clear
+the screen first, because the interpreter will accept all the characters on a line,
+including any left behind by the program, and some very peculiar lines can be
+produced, particularly when there are graphics characters on the screen.
+</p>
+<h3>
+LINE FORMAT
+</h3>
+<p>
+The Nascom screen holds 16 lines of 48 characters. If you type in a Basic line
+which, including the line number and any spaces in the line, is exactly 48 characters
+long, as the last character is typed the cursor will move to the start of the next line.
+However, the line will not have been stored, because storage does not occur until the
+&lsquo; enter&rsquo; key is pressed. You must return the cursor to some point on the original line
+(anywhere will do) and then press &lsquo;enter&rsquo;.
+In fact, Nascom Basic will accept up to 72 characters on a line, but the power and
+flexibility of Nas-Sys screen editing is lost once you exceed 48. One method of
+entering more than 48 characters per line is to enter the one-byte graphics codes
+which represent the Basic reserved words. For example, pressing the space bar with
+the graphics key depressed give code &pound;A0, which represents the command LIST.
+The PRINT command is a special case &ndash; this can be entered by typing a question
+mark (the reserved word is not, of course, stored as a question mark, the code is
+actually &pound;9E). Try entering a line number, followed by a series of question marks
+separated by colons. Enter the line and list the program &ndash; you will see that the
+interpreter produces a series of PRINT commands. However, you will find that any
+characters that overflow the first line will be lost when you try to edit this monster. If
+you look in the computer&rsquo;s memory by entering T10F8 1110 from the monitor you will
+see a series of &pound;9E codes, separated by &pound;3As, which is how the Basic interpreter
+stores the line.
+</p>
+<p>
+Another method of entering longer lines is to use the monitor&rsquo;s X command, which
+controls the serial output. Return to the monitor by pressing reset, enter X0, and
+</p>
+<?php columnEnd(1); ?>

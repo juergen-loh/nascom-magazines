@@ -1,0 +1,86 @@
+<?php columnStart(1); ?>
+<p>
+12
+</p>
+<p>
+until one instruction later. This is to allow the RETI to take effect. In the
+event that it is possible for it to do so, the Interrupt service routine must
+clear the interrupt condition before it executes the RETI. Otherwise, a further
+interrupt will not show up. Say we interrupt on A0 or Al high. If A0 goes high
+and causes an interrupt, we go to the interrupt service routine. While there, Al
+goes high, but the PIO does not signal for a further interrupt. Why? Its
+instructions are to signal for interrupt if A0 is high OR Al is high (or both).
+This means that the internal flag for an interrupt is set and remains set until
+the RETI. The service routine should clear A0 (if it doesn&rsquo;t clear itself
+automatically), so that on the RETI instruction, the condition that caused the
+interrupt has gone false. If after the RETI the interrupt condition is again
+present &ndash; having gone false &ndash; then a new interrupt is signaled. If the interrupt
+condition has not cleared, for whatever reason, the PIO knows that it has
+signaled for an interrupt for that condition. Remember that the PIO is smart, but
+not smart enough to distinguish between different causes of interrupts. Anything
+that causes a valid interrupt within the PIO is equal to any other valid
+interrupt cause.
+</p>
+<p>
+The CTC is another interesting chip. It contains four channels, which can
+be configured as counters or timers. Each channel can be programmed to count down
+the system clock, divided by specified scaling factors, or to sample transitions
+of an external line, and interrupt on a specified count. This chip could, for
+example, allow you to use the standard Nascom UART so as to give interrupt driven
+cassette handling. In certain machines it is used to give a time of day clock, at
+the annoyance of having to enter the time as part of powerup procedure. I would
+not recommend it in such an application. Instead, I&rsquo;d recommend most strongly a
+Real Time Clock, such as already written about in both INMC80 and Micropower. A
+use for the CTC that Zilog suggest is to use one of these units to prioritise
+four non Z80 system interrupts. The ready lines from these peripherals are
+connected to the four ports of the CTC, and it is configured to react to a count
+of one. Then when one of these lines goes active, the Interrupt service routine
+proceeds to service the appropriate peripheral, as if it were a Z80 type
+peripheral.
+</p>
+<p>
+Those who read David Parkinson&rsquo;s interesting article on finding and
+optimising the most used sections of code in a program may like to know that it
+would be possible to program a CTC to cause regular interrupts to the program for
+profiling purposes, if you are SURE that the program does not disable interrupts
+at any stage. Alternately, an output from one channel could be made to cause an
+NMI at intervals in lieu of the little circuit he used.
+</p>
+<p>
+All this sounds very complex &ndash; put it does work! Moreover, it works even
+if you don&rsquo;t understand why, so long as you do the correct things! What I have
+written above is all contained in the device manuals, and in the event of any
+difference between what I have written and they state, they should take priority.
+I know from my own experience that the interrupts do work, but that it takes a
+considerable amount of study and work on them to master them. T append a list of
+references which I have found to be of use. I hope they will prove useful to
+other Nascom and Gemini users.
+</p>
+<p>
+References:
+</p>
+<p>
+&ldquo;May I Interrupt?&rdquo;, PCW Vol 3, No 6, June 1980, pages 60-63/111
+Notes on PIO operation, INMC No. 2, pages 6-8
+</p>
+<p>
+Understanding the PIO, INMC No. 6, pages 19-20
+</p>
+<p>
+Using the PIO, INMCSO No. 1, pages 24-25
+</p>
+<p>
+DIY Real Time Clock, 80-Bus News No. 1, Pages 17-24
+</p>
+<p>
+Mostek (or Zilog) Parallel I/O Controller Manual
+</p>
+<p>
+Mostek (or Zilog) Counter Timer Circuit Manual
+</p>
+<p>
+Washing Machine controls Nascom, Micropower Vol2, No. 1, pages 2-6
+The French Connection, Micropower Vol 2, No. 3, pages 2-5 (a RTC circuit!)
+Parkinson&rsquo;s Pep-Up, PCW Vol 3, No. 10, October 1980, pages 82-83/123
+</p>
+<?php columnEnd(1); ?>

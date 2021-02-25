@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+ERWSMTFTH.
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+Cartridge Drive or Stringy-Floppy?
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by C.W.Hobbs
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+This article describes the fun that I had interfacing the &ldquo;Electronic R/W
+System Model 25-300&rdquo; to my Nascom&nbsp;1. The peripheral itself, whilst certainly
+electronic and certainly a read/write system, is probably better described as a
+cartridge drive, although I have seen it described in some magazines as a Stringy
+Floppy; a completely misleading and unnecessary name.
+</p>
+<p>
+I ordered the unit by telephone from Breda, Holland one Wednesday morning
+after having all my technical queries answered immediately in excellent English and
+the unit arrived the next day by post (I must admit though that I live in Holland).
+</p>
+<p>
+For 330 Guilders (about 73 pounds and dropping as Mrs. Thatcher pulls the pound
+through the ceiling) I received a deck and control board. For a further 80 Guilders
+(work it out for yourself) a box of cartridges (wafers) of assorted lengths from 5
+feet (20 seconds recording) to 50 feet (200 seconds recording). These cartridges
+consist of an endless loop of tape with an End of Tape (EOT), which is also the
+beginning of tape (BOT), marked by a piece of tin foil.
+</p>
+<p>
+Unlike some pieces of kit, this drive came with very adequate documentation
+but no case and no mounting brackets. Any capable metalworker with nothing more than a
+small lathe, milling machine and borer could knock up a suitable mounting in a few
+weeks. Anyway, I hacked and puffed and blew and finally mounted it in such a way which
+I do not feel like exposing to public ridicule. I feel more confident on the grounds
+of electronics and program design and will hastily move on.
+</p>
+<p>
+The drive demands very modest +5V and +12V supplies and in return offers the
+following interfaces on a small edge connector&nbsp;:&ndash;
+</p>
+<table style="width: 100%; margin-left: 3em">
+<tr><th>Input</th><th>Output</th></tr>
+<tr><td>Start Motor</td><td>EOT Detected</td></tr>
+<tr><td>Fast Speed on Motor</td><td>Cartridge is Write Protected</td></tr>
+<tr><td>Enable Writing</td><td>Serial Data from Cartridge</td></tr>
+<tr><td>Select the Deck</td><td></td></tr>
+<tr><td>Serial Data for Recording</td><td></td></tr>
+</table>
+<p>
+The beauty of the &ldquo;Select the Deck&rdquo; input is that when it is held false
+everything in sight goes into a high impedance state and many decks may be connected
+together.
+</p>
+<p>
+The hardware interface wins no prizes for complexity but is very adequate and
+is shown on another page.
+</p>
+<p>
+The LED&rsquo;s are necessary because once the cartridge is in place it is
+impossible to see whether you remembered to take the write protect tab off. The 100K
+resistor pulling up the Read line to the UART serves not only to make the pulses nicer
+but it is essential because when the deck is not selected the Data Out line goes high
+impedence and picks up all sorts of rubbish. And what does the Nascom do when it is
+idle? It picks the rubbish up and displays it at great speed on the screen making it
+impossible to type a command in to select the deck again to stop the monitor picking
+up the rubbish&nbsp;.... I will be honest and admit that this resistor was not part of
+the original design.
+</p>
+<p>
+After a simple interface and a few test programs I felt ready to fill my
+second 2708 socket with the Hobbs uncopyrighted Cartridge Operating System; surely an
+impressive title. Here I tempered good design techniques (I design computer systems
+all day as well) with the knowledge that it had to all fit onto 1K bytes plus whatever
+I could save by taking Dump and Load out of Nasbug. The original 4 layer design has
+reduced to three layers&nbsp;:&ndash;
+</p>
+<?php columnEnd(1); ?>

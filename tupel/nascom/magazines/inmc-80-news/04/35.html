@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<h3>
+The &ldquo;Let&rsquo;s write an Interpreter&rdquo; section.
+</h3>
+<p>
+All microcomputer users should, at some stage in their programming experience,
+try to design a programming language, and then implement it on their system. This is a
+very good programming excercise, and will also, it is to be hoped, teach them not to
+moan quite so much about the shortcomings of the work of others.
+</p>
+<p>
+The first step, in all cases, is to specify what the language is. Pilot is
+used for writing conversational programs, used in education. A considerable amount of
+information about using Pilot can be found in a series in Computer Age; just as well,
+really, as I have no expertise in the field of educational methods. A program in Pilot
+consists of a series of lines. Each line consists of a label, or an instruction, or
+both. An instruction consists of the following parts:<br>
+1/ A valid Pilot op-code, consisting of one or two capital letters.<br>
+2/ An optional condition code, the possible forms these can take will be described
+later. If the condition is not met, then the line will not be executed.<br>
+3/ A separator, consisting of a colon followed by a space.<br>
+4/ The &ldquo;text field&rdquo;, the contents of which vary, depending on the op-code type.
+</p>
+<p>
+It is, of course, possible to state all the above with far greater precision
+by using the &ldquo;Backus-Naur Form&rdquo; of syntax definition. The actual op-codes can also
+best be defined in this way. BNF is splendad, but takes pages and pages, so we won&rsquo;t
+use it.
+</p>
+<p>
+Some versions of Pilot get round the problems caused by the lack of line
+numbers in the language by adding pseudo-line-numbers. Of course, this is a shameful
+cop out, and we will have none of it. This will mean that the editor will not be as
+wonderful as the one the Nascom BASIC has. For a really good description of why it is
+easier to write an editor if the language has line numbers, see P.J.Brown&rsquo;s book,
+&ldquo;Writing Interactive Compilers and Interpreters&rdquo; at your library. Or buy it, if you
+have that much money, and are that interested.
+</p>
+<p>
+Another thing we are going to do that Brown advises against, is store our
+language in the same form that it is written. This will save the effort of writing a
+translator, of the type the Nascom BASIC uses to convert reserved words into single
+byte tokens. Pilot is particularly suited to this storage format, because it has such
+short op-codes. There&rsquo;s a catch, of course. The section of the program that actually
+runs the Pilot program becomes slightly more complex. With other languages, this can
+be a major problem......
+</p>
+<p>
+The op-codes allowed in this version
+of Pilot are as follows:
+</p>
+<p class="noindent">
+A = Accept input from keyboard.<br>
+C = Calculate.<br>
+E = End subroutine.<br>
+J = Jump to label indicated.<br>
+M = Match the contents of the text field with
+    the contents of the input buffer.<br>
+P = Precondition, or defined process, instructions. PR, in Common Pilot.<br>
+R = A remark.<br>
+S = Stop.<br>
+T = Type, similar to PRINT in BASIC.<br>
+U = The equivalent of GOSUB.<br>
+V = Call machine code subroutine. (This is
+    dreadfully non-standard, but handy.)
+</p>
+<p>
+Purely for the sake of simplicity, I have ignored the standard form of Pilot,
+which may well result in my system being ignored. Not to worry, I can always claim
+that I am really writing about how to write an interpreter! In Brown&rsquo;s book, ignoring
+language standards is described as the fourth deadly sin.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+61
+</p>
+<p>
+MORE HAPPY TALK By Rory O&rsquo;Farrell
+</p>
+<p>
+My note on computer to computer communications in 80-BUS News Vol 2 No 5
+has rapidly been outdated. I wrote then of the method of turning the file into
+HEX. Recently, I found an article in Microsystems (July 83) on the same
+subject, but much more elegant! Giving credit where it&rsquo;s due, the author is
+Steven Fisher.
+</p>
+<p>
+His method of getting the file into HEX is to use a Public Domain utility
+called UNLOAD This utility takes a&nbsp;.COM file, and converts it into a file in
+-HEXformat. He gives the entire object code for this in the form of a HEX
+listing. This is reprinted below. It can be typed up using a suitable editor,
+and saved to disc as UNLOAD.HEX. Then you use the command:
+A&gt;LOAD UNLOAD
+to convert it back to an object file. If you have any mistypings, these will
+show up as checksum errors, causing LOAD to protest and abort. Correct such
+errors by retyping or otherwise editing the lines in question, and go through
+the LOADing process again. When you have UNLOAD on your disc as a COM file,
+then you can try it out.
+</p>
+<p>
+It is used by typing:
+ADUNLOAD FILE 0100
+where FILE must have the extension&nbsp;.COM, which you need not specify, and 0100
+is the address at which it is to live. This will create, on the same drive as
+UNLOAD, a new file called FILE.HEX. So far, so good!
+</p>
+<p>
+Listing 2 is a short HEX listing of a file called PIPIO.HEX. This should
+be typed up in the same way as UNLOAD.HEX. Do not try to LOAD this. It
+contains the patch for PIP for communications.
+</p>
+<p>
+With ZSID or DDT, patch as follows:
+ZSID PIP.COM
+</p>
+<p>
+REE KKH ;ZSID answers with a size
+</p>
+<p>
+&pound;IPIPIO.HEX sInsert the name of the file to be used
+ERO ;Read it, Zero offset
+</p>
+<p>
+&pound;G0 sExit
+</p>
+<p>
+SAVE 30 PIP.COM
+</p>
+<p>
+A copy of PIP with this modification will need to be on both receiving
+and transmitting machines. The easiest way is to PIP the HEX files from one to
+the other, as the HEX files are ASCII, and short enough not to cause any
+problems with data loss through disc accesses.
+</p>
+<p>
+To use this method of transfer, set up the PUN: to be a PTP: and the RDR:
+to be a PTR: on both machines. UNLOAD the file you require to transmit, then
+on the receiving machine type:
+</p>
+<p>
+PIP FILENAME.HEX=INP:
+and on the transmitter:
+PIP PUN: =FILENAME.HEX, EOF:
+</p>
+<p>
+During the course of the transfer, the computers will each respect the
+other&rsquo;s need for disc accesses, and the cursor will be restored when the file
+is finally completely transmitted. Then you need only LOAD it on the receiving
+machine, and voila!
+</p>
+<?php columnEnd(1); ?>

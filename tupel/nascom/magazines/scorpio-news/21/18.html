@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+I describe my method as I know it works on the MAP80 VFC board, but the
+Mohamed method should work, with the relevant pin and chip numbers adjusted.
+</p>
+<ol>
+<li>Extract the 2797 chip and bend pin 17 out at right angles. Connect this
+	pin to IC13 pin 2. (The faint-hearted might prefer to replace the 2797
+	in a wire wrap socket, and bend pin 17 of the socket out at right angles
+	before inserting the whole assembly into the PCB!)</li>
+<li>Connect IC13 pin 2 to pin 1 of 74LS157 (Select pin).</li>
+<li>Connect L3 pin a (2 MHz clock) to 74LS157 pin 3.</li>
+<li>Connect L3 pin c (1 MHz clock) to 74LS157 pin 2.</li>
+<li>Connect L3 pin b (CLK for 2797) to 74LS157 pin 4.</li>
+<li>Connect 74LS157 pin 15 to 74LS157 pin 8.</li>
+<li>Connect 74LS157 pin 16 (VCC) and pin 8 (GND) to +5 and 0 volts
+	respectively.</li>
+</ol>
+<p>
+On reset the latch is set up for 5-1/4 drives, but setting bit 5 of the drive port will
+select the higher clock rates for 8 inch disks.
+</p>
+<p>
+There remained the analogue adjustments to be made. I had originally thought that
+I would have to provide two separate sets of presets for the two data rates, but found
+empirically that both sets of drives would perform correctly with one (compromise)
+set-up procedure.
+</p>
+<ol>
+<li>Press RESET.</li>
+<li>Connect TP to ground.</li>
+<li>Connect frequency counter to pin 16.</li>
+<li>Adjust trimmer VC1 for 200kHz (400kHz for 8").</li>
+<li>Connect scope to pin 29.</li>
+<li>Adjust P3 for a pulse width of 400nS. (leave P2 as before.)</li>
+</ol>
+<p>
+Although these settings appear well away from those recommended in the 2797
+manual, the only loss of performance I have noted is in a fast disk copy utility, which
+reads sectors in physical sequence and writes them in the same order to the
+destination disk. The source disk is read in to the buffer as quickly as before, but
+the sector write routine isn&rsquo;t quite quick enough to pick up the sector address of
+one sector after writing its predecessor, and has to wait a full revolution of the disk
+before trying again. It is possible that further experiment might remove this mild
+nuisance, but at the risk of other problems.
+</p>
+<h2>
+Software
+</h2>
+<p>
+The above compromise settings were arrived at after I had developed a disk verify
+utility to cope with the two byte track numbers required for the Drivetec, which
+</p>
+<?php columnEnd(1); ?>

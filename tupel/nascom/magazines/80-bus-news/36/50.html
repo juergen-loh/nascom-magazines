@@ -1,0 +1,285 @@
+<?php columnStart(1); ?>
+<p>
+Extract 1. Code added to SYS16. Module 1.
+</p>
+<p>
+a) Conditional Equates
+</p>
+<p>
+3; Output devices
+</p>
+<p>
+CLOCK
+LOCK
+NMRREG
+OFFSET
+</p>
+<p>
+EQU TRUE
+EQU TRUE
+EQU ll
+EQU 0
+</p>
+<p>
+s;EQUATE FOR R.T.C.
+</p>
+<p>
+s;LOCK I.V.C. TOP LINE. CLOCK MUST BE TRUE AS WELL
+311 R.T.C. REGS. TO READ
+30 FOR 1 SEC, 1 FOR 10 SEC, 2 FOR 1 MINUTE UPDATE
+</p>
+<p>
+b) Additional Ports.
+</p>
+<p>
+RTC
+</p>
+<p>
+FEI III IO III I TOR FI IR
+KERKRAKKARKKRK PORTS &pound;AAKKARKARRAREREK
+FORO III IIR BI RR FOR IRR IO I
+</p>
+<p>
+IF CLOCK
+EQU 20H
+ENDIF
+</p>
+<p>
+3R.T.C. Base address for GM816 Card
+</p>
+<p>
+seek.
+</p>
+<p>
+Extract 2.
+</p>
+<p>
+a) Addition to Jump Table
+</p>
+<p>
+jp sectrna 3; Sector translation
+r
+</p>
+<p>
+IF CLOCK
+JP READIT
+R
+</p>
+<p>
+DEFB &ldquo;RTC&rdquo;
+ENDIF
+</p>
+<p>
+;CLOCK ROUTINE
+</p>
+<p>
+jMarker to say RTC exists in this SYS.
+</p>
+<p>
+b) Extra Reserved Space and Messages at End of the Workspace
+</p>
+<p>
+5
+REGS:
+STRING:
+</p>
+<p>
+STRNGL:
+UDSTOR:
+</p>
+<p>
+3
+</p>
+<p>
+DAYO:
+DAY1I:
+DAY2:
+DAY 3:
+DAY4:
+DAY5:
+DAY6:
+DAY7:
+</p>
+<p>
+IF CLOCK
+</p>
+<p>
+DEFS lL ;TEMP. STORE FOR REGS
+</p>
+<p>
+Ir NOT NKBD
+</p>
+<p>
+DEFB st ve
+</p>
+<p>
+ENDIF
+</p>
+<p>
+DEFB &ldquo;ff [84 so: &ldquo;0
+</p>
+<p>
+DEFS 1 ;COMPARISON DATA FOR UPDATING CLOCK
+</p>
+<p>
+IF NOT NKB
+DEFB " &ldquo; ;THESE CAN BE PLACED IN ONE LONG
+DEFB &ldquo;Sun&rdquo; ;STRING IF DESIRED, AS ONLY LABEL
+DEFB &ldquo;Mon&rdquo; ;DAYO IS REFERRED TO IN SOURCE CODE.
+DEFB &ldquo;Tuell js egi- * SunMonTueWed ThuFri Sat&rdquo;
+DEFB &ldquo;Wea&rdquo;
+</p>
+<p>
+DEFB &ldquo;Thu&rdquo;
+</p>
+<p>
+DEFB Eri&rdquo;
+</p>
+<p>
+DEFB &ldquo;Sat&rdquo;
+</p>
+<p>
+ENDIF
+</p>
+<p>
+ENDIF
+</p>
+<p>
+c) Code to Lock top line of I.V.C. Screen
+</p>
+<p>
+IF CLOCK
+</p>
+<p>
+IF LOCK
+</p>
+<p>
+CALL SAVCUR
+R
+</p>
+<p>
+LD HL, O100H ;START OF SECOND ROW.
+</p>
+<p>
+CALL SETCUR ;-SYS&rsquo; SET CURSOR ROUTINE
+</p>
+<p>
+R
+</p>
+<p>
+LD A, OLBH
+CALL &ndash; CRTX
+</p>
+<p>
+R
+</p>
+<p>
+LD A,&rdquo;
+CALL &ndash; CRTX
+</p>
+<p>
+R
+</p>
+<p>
+LD HL, (CURSOR)
+R
+</p>
+<p>
+CALL SETCUR
+R
+</p>
+<p>
+ENDIF
+</p>
+<p>
+ENDIF
+</p>
+<p>
+3 ESC&rdquo;
+30/P IT TO IVC
+</p>
+<p>
+;LOCK TOP LINE
+</p>
+<p>
+seek.
+</p>
+<p>
+HRKAKRE BKK KKK RE RRR EREREERERRRER ERE
+</p>
+<p>
+keAKKK KEYBOARD ON VIDEO CARD *#*4ek4x
+HHH KIA ARR RII RIK ARK IRE RI RIKI E IR
+</p>
+<p>
+pkbd: IF CLOCK
+LD HL, UDSTOR
+R
+</p>
+<p>
+AGN: IN A, (RTC+2+0FF SET)
+AND OFH
+cP OFH
+JR 2, AGN ;LOOP IF NOT
+ADD A, 30H
+LD (HL) ,A
+LD A, (REGS+0F FSET)
+</p>
+<p>
+;MAKE ASCII
+;SAVE IN UDSTOR
+</p>
+<p>
+;SAVE CURRENT POSITION OF CURSOR
+</p>
+<p>
+s;NOW SET CURSOR TO ORIG. POSITIOt
+</p>
+<p>
+s;POINTER TO TEMP&nbsp;.STORE
+</p>
+<p>
+;READ APPROPRIATE CLOCK REG.
+</p>
+<p>
+;SEE THAT IT IS VALID
+</p>
+<p>
+;GET VALUE OF CORRESPONDING
+</p>
+<p>
+R. ;DATA ON LAST CLOCK UPDATE
+</p>
+<p>
+cP (HL)
+JR Z,TEXIT
+</p>
+<p>
+CALL READIT
+R
+</p>
+<p>
+5
+TEXIT: ENDIF sORIG. SYS I.V.C.
+</p>
+<p>
+ld a,esc 3; Test for character
+call ertx
+</p>
+<p>
+aoniNORIODSROEEY &copy; &lsquo; vaso
+</p>
+<p>
+;ARE THEY THE SAME&nbsp;?
+;IF EQUAL, NOT TIME TO UPDATE YET
+</p>
+<p>
+;NOT EQUAL SO UPDATE CLOCK
+</p>
+<p>
+ROUTINE FOLLOWS
+</p>
+<p>
+50
+</p>
+<?php columnEnd(1); ?>

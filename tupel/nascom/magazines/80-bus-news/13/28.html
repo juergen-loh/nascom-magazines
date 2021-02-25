@@ -1,0 +1,113 @@
+<?php columnStart(1); ?>
+<p>
+28
+</p>
+<p>
+Handling the printer was the next problem, characters are output at 9600 baud,
+which is a lot faster than the printer can print them. The printer has a 1K buffer,
+but this is soon filled. Fortunately the printer is equipped with a handshake signal
+which may be connected to pin 2 of SK2, signalling when the buffer is full, or the
+printer is out of paper, etc. A simple piece of software supervises the printer.
+Before sending a character the following code is called:
+</p>
+<p>
+PUSH AF 3; Save the flags and the A register
+</p>
+<p>
+?
+BUSY IN A,(0) ; Get the input into the A register
+RLA 3; Move the bit to be tested into the C flag
+JR C, BUSY 3; Test and loop if busy
+POP AF
+</p>
+<p>
+After which the software may direct the character to be sent to the printer.
+</p>
+<p>
+This finishes my summary of the major changes I have made to my Nascom&nbsp;1, I
+</p>
+<p>
+hope the above will be of help to someone, and that it will solve some of their
+problems.
+CEXTENDED Basic)
+F000 &ndash; FRFF booo &mdash;bFFF oR hooo -DFRE 7
+b7
+Basic] | Se] eric 6116 616] [Masa | 66} pore |- [2716] [2716] | vray!
+RAK RAM RAM fan RAM RAM EPpor EPAom
+a. iat I cy o ih a. ron &gt;
+Alo ar Alt
+&copy; ole 6 Polo oOo 7 O*1a 2 ols ob Oo O19 0
+S721 US ot IE: 3335
+</p>
+<p>
+? 90906
+SPECIAL
+</p>
+<p>
+ce Lise hepets
+rd
+</p>
+<p>
+i WY
+</p>
+<p>
+WIRING OF My own
+</p>
+<p>
+SYSTEM GIVING THREE LkSf
+SWITCHABLE CONFIGLZATIONS Mom O-&mdash;&mdash;-&mdash;-&mdash;-_ Oo00
+VAAN @-&mdash;&mdash;-&mdash;-&copy; O00
+</p>
+<p>
+Q@ O-FFF + GOK Ram Gare | Oloos&nbsp;,
+t
+@ s &copy; 8k Bas + SZK RAM &amp; Oren &ndash; sory :
+G2 oe oo &ndash;
+@ " {2k Basic + Bk RAM A Ocvee " ;
+xRom bere f&nbsp;. owe
+My SPSTEM atsa HAS A YE Ghon Eoce FREE&nbsp;,
+fam f Boars usint. Abbnessts
+1Leeo &mdash;CFFF
+</p>
+<p>
+cnn emetic =m ann muna mee nummer: at em mamma iin rue
+</p>
+<p>
+Link SetEcT Link SELEer Link SelecT
+For 4116 Ram Mobi ficarion
+ea last Fea switenaack
+Aja CHies Gib /erie
+Ale Coa 27h /2716 EF)
+CoD o olo o o ofo o oo 0 &copy;
+21 21
+e oe 6 [ [ &ndash; | o 9 gh Anta
+a &lt;
+&ldquo; 3&rsquo; eo 9 &lsquo; eo oo i 3
+LINK @letk AK St RESISTOR
+</p>
+<p>
+Pins 3&amp;1I3
+</p>
+<p>
+CONMELTED To
+</p>
+<p>
+MoDIFICATIONS To ALLOW THE
+</p>
+<p>
+1CG4 Must aE
+</p>
+<p>
+Aiz @ Aal
+</p>
+<p>
+USE
+</p>
+<p>
+ANB EPROMS ON THE NASCOM 2.
+</p>
+<p>
+OF 2ie RAMS
+JEFF ROLLASen 22
+</p>
+<?php columnEnd(1); ?>

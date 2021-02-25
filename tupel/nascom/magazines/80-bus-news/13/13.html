@@ -1,0 +1,85 @@
+<?php columnStart(1); ?>
+<p>
+13
+</p>
+<p>
+What the procedure does is print out the contents of the array REPLY.
+in such a way that no words are broken at the edge of the screen. The
+following declarations must be made either globally or in a higher level
+block.
+</p>
+<p>
+CONST
+WIDTH = 48; {Or 80, if you have an Ivc.}
+VAR
+REPLY : ARRAY [1..number] OF CHAR;
+The value of &ldquo;number&rdquo; must be at least &ldquo;WIDTH&rdquo; characters greater than the
+maximum possible length of the text in REPLY, otherwise a nasty run time error
+will appear. I could have prevented this from happening, but it would have
+made the procedure even longer. Finally, the part of REPLY that is not filled
+with text must be filled with chr(13)&rsquo;s, i.e. carriage returns. This routine
+does, in fact, more or less the same thing as the OUTPUT routine I gave away
+in my last article. You can tell it is a popular thing to want to do because
+the Extended BASIC has the WRAP command to do the same thing...
+</p>
+<p>
+My conclusion is that this Pascal is a &ldquo;must&rdquo; for the CP/M user,
+although I have no experience of any of its rivals (are there any?) [Ba. &ndash;
+Yes, COM=PAS. |
+</p>
+<p>
+A few comments on Dave Hunt&rsquo;s last article.
+</p>
+<p>
+No, it isn&rsquo;t going to be destructive criticism, as that would be
+pretty pointless. I have been enjoying the series, and also marvelling at the
+speed he must be able to type at!
+</p>
+<p>
+One of the things Dave says is that he is not a believer in flow
+charts. Not much further on in the article, is something that I and the lads
+at D.J.A.I. Systems would both call a flowchart. That highly famous program,
+The Last One, uses flow charts that look just like the summary of the program
+flow shown on page 26. I saw a demonstration of The Last One when I went to
+apply for a job there, and it is a really splendid program. Mind you, they did
+not give me a job, so they can&rsquo;t be all that clever!
+</p>
+<p>
+The idea of standardising input and output routines is splendid, and
+is one that I had considered trying to do for this column. What went wrong?
+Well, I found I couldn&rsquo;t remember enough about Nas-Sys to produce the Nas-Sys
+routines to simulate CP/M&rsquo;s more useful routines exactly enough to give
+complete standardisation. Or maybe I never really got used to Nas-Sys before I
+upgraded Marvin again. Dave has approached the idea in what might be a less
+ambitious way, but it does work...
+</p>
+<p>
+One of the things he has done that is much more naughty than writing
+self modifying code is to use a direct call to B2HEX. Surely, that should have
+been &pound;DF &pound;68 instead of &pound;CD &pound;F2 ROE? There are more of these in there, now
+that I look again. Oh, now I see why! For the benefit of the CP/M machines, of
+course. For a moment, I thought I had found a real naughty... I will write out
+a hundred times, &ldquo;I must read all of the documentation.&rdquo;
+</p>
+<p>
+There is a small point concerning the part of the program that reads:
+</p>
+<p>
+LD A (TRYS)
+</p>
+<p>
+INC A
+</p>
+<p>
+DAA
+LD (TRYS) A
+The values of TRYS in the program are such that there will be no problems with
+this bit of code, but it is important to note that INC A does not affect the
+carry flag, which will be in the state produced by the last opcode that
+affected it. This can result in DAA appearing to have made a mistake, and
+formed the basis of a competition in a prehistoric precursor of this magazine.
+If you use ADD A 1, you will not get this problem, although you will use one
+extra byte of RAM. (Obviously, if you are doing BCD arithmetic on multi-byte
+numbers, you may use ADC A 1.) I think I really caught you this time, Dave!
+</p>
+<?php columnEnd(1); ?>

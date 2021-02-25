@@ -1,0 +1,280 @@
+<?php columnStart(1); ?>
+<p>
+PROGRAM explain;
+VAR
+errnum : INTEGER;
+PROCEDURE getnum;
+{This routine extracts the number that followed the &ldquo;explain&rdquo; command from the
+CP/M default buffer. It is easily confused by silly input, although this will
+not do any harm, you just get told that there is no such error number. That&rsquo;ll
+teach yout}
+VAR
+bytes, tens, units : CHAR;
+BEGIN
+tens := CHR(48); units := CHR(48); bytes := PEEK(128,CHAR);
+IF bytes = CHR(2) THEN unite := PEEK(130,CHAR);
+IF bytes = CHR(3) THEN
+BEGIN tens := PEEK(130,CHAR); units := PREK(131,CHAR) END;
+ot := ((ORD(tens)-48)*10)+0RD( units) 48
+Y
+{Main program follows. It consists entirely of a call to the routine &ldquo;getnum&rdquo;
+followed by a monstrous CASE statement that prints out the appropriate error
+message. |
+BEGIN
+getnum;
+CASE errnum OF
+WRITELN(&rsquo;Number too large.&rsquo;);
+WRITELN(&rsquo;Semi-colon expected.&rsquo;);
+WRITELN(&rsquo;Undeclared identifier.&rsquo;);
+WRITELN( &lsquo;Identifier expected.&rsquo; );
+WRITELN(&rsquo;Use &ldquo;=&rdquo;, not &ldquo;:=&rdquo;, in a conatant declaration.&rsquo;);
+WRITELN(&rsquo;"="&rdquo; expected.&rsquo; );
+WRITELN(&rsquo;This identifier cannot begin a statement.&rsquo;);
+WRITELN(&rsquo;":=&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;")&rdquo; expected.&rsquo;);
+WRITELN(&lsquo;Wrong type.&rsquo;);
+WRITELN(&rsquo;".&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;Factor expected.&rsquo;);
+WRITELN(&rsquo;Constant expected.&rsquo;);
+WRITELN(&rsquo;This identifier is not a constant.&rsquo;);
+WRITELN(&rsquo; &ldquo;THEN&rdquo; expected.&rsquo;);
+WRITBLN(&rsquo;"DO&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;&rsquo; &ldquo;TO&rdquo; or &ldquo;DOWNTO&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;"(&rdquo; expected.&rsquo;);
+WRITELN( &lsquo;Cannot write this type of expression.&rsquo;);
+WRITELN(&rsquo;"OF&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;",&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;":&rdquo; expected.&rsquo;);
+WRITELN(&rsquo; &ldquo;PROGRAM&rdquo; expected.&rsquo;);
+BEGIN WRITELN(&rsquo;Variable expected since parameter is a variable&rsquo;);
+WRITELN(&rsquo; parameter.&rsquo;) END;
+WRITELN(&rsquo;"BEGIN&rdquo; expected.&rsquo;);
+WRITELN(&rsquo;Variable expected in call to READ.&rsquo;);
+WRITELN( &lsquo;Cannot compare expressions of this type.&rsquo;);
+WRITELN(&rsquo;Should be either type INTEGER or type REAL.&rsquo; )5
+WRITELN(&rsquo;Cannot read this type of variable.&rdquo; );
+WRITELN(&rsquo;This identifier is not a type. &lsquo;);
+WRITELN(&rsquo;Exponent expected in real number.&rsquo;)
+</p>
+<p>
+eee ce ne ce oe ne
+</p>
+<p>
+we ee oe 08 te oe
+&mdash;-
+-
+</p>
+<p>
+ee Oe oe ae oe te ce te oe 08 oe
+_
+</p>
+<p>
+ee
+</p>
+<p>
+o
+_
+mn
+</p>
+<p>
+*
+&lsquo;
+</p>
+<p>
+WRITELN(&rsquo;Scalar expression (not numeric) expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Null strings not allowed (use CHR(O)).&rsquo;);
+</p>
+<p>
+were expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;&rdquo; |&rdquo; expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Array index type must be scalar.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;"..&rdquo; expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;"]&rdquo; or &ldquo;,&rdquo; expected in array declaration.&rsquo;);
+</p>
+<p>
+WRITELN(*Lowerbound greater than upperbound.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Set too large (more than 256 possible elements).&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Function result must be type identifier.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;",&rdquo; or &ldquo;]&rdquo; expected in set.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;"..&rdquo; or &ldquo;,&rdquo; or &ldquo;|&rdquo; expected in set.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Type of parameter must be a type identifier.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;Null set cannot be the first factor in a non-&rsquo;);
+WRITELN(&rsquo;assignment statement.&rsquo;) END;
+</p>
+<p>
+WRITELN(&rsquo;Scalar (including real) expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Scalar (not including real) expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Sets incompatible.&rsquo; );
+</p>
+<p>
+WRITELN(&rsquo;"&lt;&rdquo; and &ldquo;&gt;&rdquo; cannot be used to compare sets.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;&rdquo; FORWARD&rdquo;, "LABEL&rdquo;, "CONST&rdquo;, &ldquo;VAR&rdquo;, "TYPE&rdquo;, or&rsquo;)
+WRITELN(&rsquo; &ldquo;BEGIN&rdquo; expected.&rsquo;) END;
+</p>
+<p>
+WRITELN (&lsquo;Hexadecimal digit expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Cannot POKE sets.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Array too large (&gt;64K).&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;"END&rdquo; or &ldquo;;&rdquo; expected in RECORD definition.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Field identifier expected.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Variable expected after &ldquo;WITH".&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Variable in &ldquo;WITH&rdquo; must be of RECORD type.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;Field identifier has not had associated &ldquo;WITH"&rsquo;);
+WRITELN(&lsquo;statement.&rsquo;) END;
+</p>
+<p>
+se ne 80 on Se 4 Oe on 06 ne 08 ne Oe oe
+</p>
+<p>
+te oe ee ce oe
+</p>
+<p>
+49
+</p>
+<p>
+a eee ey
+</p>
+<p>
+{Purists should not look at the next four messages, or they will be il1.}
+</p>
+<p>
+59
+60
+61
+62
+63
+64
+65
+</p>
+<p>
+66
+67
+</p>
+<p>
+68
+69
+</p>
+<p>
+70
+Th
+</p>
+<p>
+T2
+13
+</p>
+<p>
+ELSE
+END.
+</p>
+<p>
+WRITELN(&rsquo;Unsigned integer expected after &ldquo;LABEL".&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Unsigned integer expected after &ldquo;GOTO".&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;This label is at the wrong level.&rsquo;);
+</p>
+<p>
+WRITELN(&lsquo;Undeclared label.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Cannot assign or POKE files.&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;Can only use equality tests for pointers.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;The parameter of this procedure/function should&rsquo;);
+WRITELN(&rsquo;be of a FILE type.&rsquo;) END;
+</p>
+<p>
+WRITELN(&rsquo;File buffer too large (&gt;=256 records i.e. 32K)."&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;The only write parameter for integers with two&rsquo;);
+WRITELN(&rsquo;":"&rsquo;&rsquo;s is &ldquo;erm:H".&rsquo;) END;
+</p>
+<p>
+WRITELN(&rsquo;Strings may not contain end of line characters.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;The parameter of NEW, MARK or RELEASE should be&rsquo;);
+WRITELN(&rsquo;a variable of pointer type.&rsquo;) END;
+</p>
+<p>
+WRITELN(&rsquo;The parameter of ADDR should be a variable.&rsquo;);
+</p>
+<p>
+BEGIN WRITELN(&rsquo;Al1] files must be FILEs of CHAR or subrange&rsquo;);
+WRITELN(&rsquo;thereof.&rsquo;) BND;
+</p>
+<p>
+BEGIN WRITELN(&rsquo;Files may only be used as global variables or&lsquo;);
+WRITELN(&rsquo;variable parameters.&rsquo;) END;
+</p>
+<p>
+: BEGIN WRITELN(&rsquo;"RESET&rdquo; and &ldquo;REWRITE&rdquo; may not be used on INPUT&rsquo;);
+</p>
+<p>
+WRITELN(&rsquo;or OUTPUT.&rsquo;) END
+WRITELN(&rsquo;There is no such error number.&rsquo;)
+</p>
+<p>
+ee en ee oe we ee oe
+</p>
+<p>
+oe ee
+</p>
+<p>
+oe oe
+</p>
+<p>
+oe oe
+</p>
+<p>
+o
+</p>
+<?php columnEnd(1); ?>

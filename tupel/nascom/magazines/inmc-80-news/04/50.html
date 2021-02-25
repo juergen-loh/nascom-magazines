@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+second, so two hundred times round the delay loop will be appropriate. So let&rsquo;s draw
+up the spec. of the delay routine:
+</p>
+<p class="noindent">
+1) Set B counter to 200 (decimal)<br>
+2) Delay for 5mS<br>
+3) Do the loop until B is 0
+</p>
+<p class="continued">
+Now before we go ahead and use the routine in NAS-SYS, we ought to check that it&rsquo;s not
+going to muck up anything else. So have a look at it. Go on, see if you can figure out
+how it works before reading on. Got it, good. It works almost like the counting
+routine I wrote originally, except that it counts in the A register, and throws in a
+couple of PUSHes and POPs for no better reason than to waste time. The important point
+is that the only thing that gets changed is the A register, as, for the routine to
+return, the A register has to contain 0, so, on the return the A register will contain
+0. Now that doesn&rsquo;t matter at all, as the next thing we do with the A register is to
+fill it with the next character to be put on the screen. But watch out, NAS-SYS and
+Nasbug usually (but not always) ensure that things are unchanged except where
+neccessary, but don&rsquo;t assume this to always true. CP/M for instance can be relied upon
+to change almost everthing in sight when an internal routine is called.
+</p>
+<p>
+So the delay routine suddenly looks like this:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-48-1.png"); ?>
+<p class="continued">
+Now there is something I&rsquo;ve (deliberately) forgotten. Yup, you got it, there&rsquo;s a
+location there which I fixed as a label, and I didn&rsquo;t declare it. I know what it is,
+and you should know (because I told you earlier. But, as my junior school English
+teacher used to say, &lsquo;What about the man from the moon, he doesn&rsquo;t know what you&rsquo;re on
+about because you haven&rsquo;t told the complete story.&rdquo; Mind you, if there are men in the
+moon, they must be very wise, as they had the good sense to stay out of sight when the
+Yanks arrived. Anyway, a new line, 15:
+</p>
+<pre>
+15      RDEL    EQU 0038H
+</pre>
+<p class="continued">
+Now we have shortened the delay routine considerably, introduced the concept of nested
+subroutines, and ended up making the program monitor dependent. The first one was a
+good idea, short routines are always easier to understand. Nested subroutines are also
+a good idea as they lead to simple, easy to understand modules, and although they take
+longer to execute, the trade off between speed and simplicity must be in favour of
+simplicity for the purposes of this demonstration, after all, the nested subroutine is
+an arbitory delay, so speed in accessing it can hardly be important. The last point
+about making it monitor dependent is very arguable. The program now depends on NAS-SYS
+or Nasbug being present, so it&rsquo;s dedicated to a Nascom using one or other of the
+monitors (I don&rsquo;t know about NAS-MON, I&rsquo;ve never tried it). The program is now monitor
+dependent, unlike my first attempt, where the only requirement was RAM at the point I
+chose for the program to run, and a screen RAM at the point where I put the
+characters. On a little example like this, it&rsquo;s not very relevant, but when you start
+using large chunks of the monitor, routines like &lsquo;KBD&rsquo; and &lsquo;CRT&rsquo; then programs written
+will be several hundred bytes shorter, but will be very definitely monitor dependent.
+</p>
+<p>
+Now for the last part of this lesson. (Thank goodness for the little space
+counter on Diskpen, it tells how close to the end I am before t get there.) The HL
+register has now been freed by the use of RDEL in the monitor. Now HL is a very useful
+register, it is the main &lsquo;pointer&rsquo; register in the Z80, and may be used for &lsquo;pointing
+at&rsquo; a memory location whilst the byte &lsquo;pointed at&rsquo; is manipulated. Lets rewrite the
+whole shooting match, using HL as a pointer, and not get too thorough about the
+explanations, to see how you get on.
+</p>
+<?php columnEnd(1); ?>

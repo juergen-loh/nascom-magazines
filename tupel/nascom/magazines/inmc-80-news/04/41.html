@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-41-1.png"); ?>
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+How to load programs at 1.5Mbaud
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+David Parkinson
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<h4>
+(or the Gemini EPROM board and paging)
+</h4>
+<p>
+Some time ago I took the route to disks, and after a while I had CP/M 2.2 up and
+running on two 8" drives. With the reducing costs of dynamic RAM my system memory had
+grown to 64K &ndash; spread over two RAM-B boards. (The main processor board is a Nascom&nbsp;2
+by the way). My disk software resided from F000-F7FF with the screen at F800-FBFF. I
+did not want to commit the area F000-F7FF to EPROM as it sometimes was required for
+other software that I was developing. The net result was that I had a variety of tapes
+that I used to load, depending on what I wanted to do at the time. The procedure for
+starting CP/M on first switching on was:&ndash;
+</p>
+<p class="indent">
+Ensure Power-on-jump switches set for 0.<br>
+Ensure Nas-Sys switched in and screen at 800.<br>
+Switch on.<br>
+Load Cassette tape @2400 baud to F000-F7FF (Disk &amp; I/O routines).<br>
+Enter short machine code program (&nbsp;00 76&nbsp;).<br>
+Execute it.<br>
+Throw switch which dropped Nas-Sys out and moved the screen from
+800-BFF to F800-FBFF. (RAM appeared at 0 as it was no longer
+overlaid, and the screen now overlaid RAM at the other end of memory).<br>
+Alter the power-on-jump to F000.<br>
+Press Reset.<br>
+Bingo CP/M going!
+</p>
+<p>
+Once in CP/M life wasn&rsquo;t so difficult. New versions of the Disk &amp; I/O software could
+be loaded over the existing ones and tried immediately, and only in catastrophic cases
+would the whole start up procedure have to be repeated. Having the routines sitting
+there in RAM meant that they could be patched easily, or totally changed, and I had no
+worries about slow EPROMs and whether I should have the Wait state generator switched
+on. However it was too much of a rigmarole and there must be a better way! Putting
+everything in EPROM in the sockets on the Nascom&nbsp;2 would not help as EPROM gobbles up
+areas of the memory map and you have programs sitting there that you don&rsquo;t want to
+use. (If you&rsquo;re running Basic you have no interest in Zeap or Nas-Dis have you?). I
+also have the odd CP/M program that will not run in systems under 56K} Also
+occasionally there are various system programs that have conflicting execution
+addresses. This would all have lead to a horrific switching arrangement if I had
+attempted to use the sockets on the N2.
+</p>
+<p>
+I could see only one reasonable way out of the problem, and so gave in to the
+high-pressure salesmanship that I had recently been subjected to from Interface over
+the Gemini EPROM board. (Mind you I think they&rsquo;d given me up by then as the first
+indications I gave that I was about to conceed weren&rsquo;t followed up!).
+</p>
+<p>
+The reason for choosing the Gemini board is because it supports the page-mode scheme.
+This effectively allows you to switch the board on or off by setting or resetting
+certain bits of port FF. When the board is switched off it vanishes from the memory
+map, leaving the full 64K of RAM free for the wanted system. (Not strictly true as the
+screen is still cluttering things up at F800-FC00). RAM-A owners can carry on reading
+as for the application I had in mind the RAM was specifically required NOT to respond
+to the page-mode switching, as it was necessary that the RAM be present along with the
+EPROM board. The two can coexist, as, when the EPROM board appears, it asserts its
+&ldquo;RAM DISABLE&rdquo; line and so overlays any RAM that might lie in its address space.
+</p>
+<p>
+[Note that any RAM on the Nascom&nbsp;2 cannot be overlayed. The RAMDIS signal only emerges
+from the N2, and is not connected back in].
+</p>
+<?php columnEnd(1); ?>

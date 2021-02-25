@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+PIOs &amp; RRRepeat KBDs
+</h1>
+<p>
+A few newsletters back we did an article about the PIO
+(MK3881), and tried to get readers out of the &lsquo;Catch 22&rsquo; situation,
+where the PIO technical manual could only be understood if the reader
+knew something about PIO&rsquo;s. The article dealt with the general aspects
+of the PIO, and how to use it. Well Richard has been busy, and has sent
+us this:
+</p>
+<h4>
+Understanding the PIO
+</h4>
+<p>
+The PIO manual provides a good description of how this powerful
+device works, but there are some aspects of it which are not easy to
+understand. Perhaps the most confusing of all is the use of the
+&lsquo;handshake&rsquo; signals, known as STROBE and READY lines. This article will
+briefly explain how input and output modes work, and then will give an
+example showing how two PIO&rsquo;s can communicate, when one is the output
+and the other is the input.
+</p>
+<h4>
+Input mode
+</h4>
+<p>
+The PIO port must be set to mode 1 and interrupts enabled.
+As usual the I register, interrupt vector and interrupt mode must
+be set up correctly, and the PIO must not think that it is
+already processing an interrupt, so a dummy RETI instruction
+should be executed. Also, when in input mode, a dummy read should
+be issued once at the start to initialize handshaking. At last
+you are ready to enable the CPU interrupts with an EI
+instruction.
+</p>
+<h4>
+The sequence of events is as follows:
+</h4>
+<p>
+The input STROBE line goes from low to high, indicating that
+data is ready in the PIO input register. This change causes an
+interrupt, and the interrupt routine gets the data with an IN
+instruction. Issuing this instruction gets the data and also
+causes the PIO READY output line to go from low to high,
+indicating that the data has been received. The interrupt
+routine ends by enabling the CPU interrupts again and then
+immediately returns with a RETI, which re-enables the PIO
+interrupts.
+</p>
+<h4>
+Output mode
+</h4>
+<p>
+The PIO port must be prepared as for input mode, except
+that it is set to mode 0.
+</p>
+<h4>
+The sequence of events is as follows:
+</h4>
+<p>
+The input STROBE line goes from low to high, indicating
+that the previous output has been received. This change causes
+an interrupt, and the interrupt routine outputs the data with
+an OUT instruction. Issuing this instruction not only outputs
+the data to the PIO, but also causes the PIO READY line to go
+high, indicating that data is ready in the PIO. The interrupt
+</p>
+<?php columnEnd(1); ?>

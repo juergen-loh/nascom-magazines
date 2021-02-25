@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<p>
+You will now be able to get hard copy of machine code tabulations, Basic listings,
+and source and object code from assemblers and disassemblers. If you use the
+printer with Nas-Dis you will come across a strange problem &ndash; the machine goes into doubleprint
+mode. The reason for this is that after accepting the user options Nas-Dis uses an
+ESCAPE (&pound;1B) to get to the beginning of a line, and then prompt &ldquo;Go?&rdquo;. Unfortunately the
+printer interprets ESCAPE/G as an instruction to double print. The only cures are to
+modify Nas-Dis (for example, change to a lower case g), or to use a special printer output
+routine for Nas-Dis which ignores ESCAPE/G.
+</p>
+<p>
+If you try to use the pixel set in the Epson you will find that it is not
+compatible with the Nascom pixels; in fact, it is the TRS&nbsp;80 pixel set, using characters &pound;80 &ndash;
+&pound;BF or &pound;A0 &ndash; &pound;DF (switch selectable). The following section of code carries out the
+necessary conversion. The effect of each step in the process is listed on the right. An X
+indicates that the value is not a copy of a specific original bit.
+</p>
+<pre>
+Operation Current location of Carry Flag Zero Flag
+            Original bits
+RRCA 07654321 0 X
+AND A 07654321 X X
+RRA X0765432 1 X
+RRA 1X076543 2 X
+RRA 21X07654 3 X
+JR NC, ANDA
+SET 5,A 21307654 3 X
+ANDA AND A 21307654 X X
+RRA X2130765 4 X
+BIT 6,A X2130765 4 2
+JR Z, RES6
+SET 7, A 22130765 4 2
+RES6 RES 6, A 2X130765 4 2
+JR NC, RRCA
+SET 6, A 24130765 4 2
+RRCA RRCA 52413076 5 X
+RRCA 65241307 6 X
+RRCA 76524130 7 X
+</pre>
+<p>
+This completes the bit. manipulation; SUB &pound;20 now shifts the characters to &pound;A0 &ndash; &pound;DF,
+SUB &pound;40 converts them to &pound;80 &ndash; &pound;BF.
+</p>
+<p>
+The graphics ROM in the Epson also contains 64 Japanese characters, which can
+be accessed when pin 7 of DIP switch 1, at the back of the printer PCB, is set to ON. These
+characters are coincident with the pixels. If you send control code ESCAPE/5 (i.e., &pound;1B
+&pound;35 in hex., 27 53 in decimal) subsequent characters in the graphics range will produce the
+Japanese set; ESCAPE/4 selects the pixel set. Now, you may not want to print in
+Japanese, but a bit of research into the software inside the machine shows that you could
+easily reprogram these 64 characters to your own design.
+</p>
+<p>
+At a first glance at the beautifully made P.C.B. there appear to be some chips
+missing. There are three 24 pin sockets near the back edge of the board labelled 2716, but
+only one of these contains a chip, which is a 2332! However, this 4K ROM can be
+removed and replaced by two 2716s without any modifications to the board.
+</p>
+<?php columnEnd(1); ?>

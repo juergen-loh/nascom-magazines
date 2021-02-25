@@ -1,0 +1,103 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Get it RIGHT&nbsp;!
+</h1>
+<h4>
+NAS-SYS NAUGHTIES
+</h4>
+<p>
+Over the last few weeks we have become aware of an appalling
+ignorance about NAS-SYS, not only by users like you and me (who should
+try reading the manuals even if they are hard to understand at times),
+but by people who hope to sell software products for Nascom computers.
+For instance, we were sent the drafts of ammendments to a book, which
+incorporated an update for use with NAS-SYS. It said in effect,
+&lsquo;Throughout the book, whenever you see a reference to one of the
+following, change it thus:
+</p>
+<pre>
+NASBUG                NAS-SYS
+CD 3E 00 (CHIN)     = CD 08 00
+CD 3B 01 (CRT)      = CD 4F 01
+CD 44 02 (B2HEX)    = CD 19 03
+CD 32 02 (TBCD3)    = CD 00 03
+</pre>
+<p>
+             etc.&rsquo;
+</p>
+<p>
+Now this is wrong, WRONG, WRONG&nbsp;!!!!! And one of them is doubly WRONG.
+if you can&rsquo;t see anything wrong with that, then you should reread the
+manuals (go on, grin, but we bet there are a few red faces out there).
+The author has missed the whole point about NAS-SYS. This is not the
+only instance, we&rsquo;ll be giving a list of known &lsquo;Goodies&rsquo; and &lsquo;Baddies&rsquo;
+at the end.
+</p>
+<p>
+Now one of the major features of NAS-SYS is the fact that to
+remain compatible with special versions, and, may be, later revisions,
+all calls to internal routines are handled through a table of
+addresses. This allows the software writers freedom to re-assemble
+NAS-SYS as required, yet still maintain compatibility with software
+written for an existing version. It is even possible to turn NAS-SYS
+inside-out and for the using software to be unaware of it.
+</p>
+<p>
+Here are the rules, they are simple enough:
+</p>
+<ol>
+<li>
+Never ever make absolute calls or jumps of any kind to NAS-SYS.
+</li>
+<li>
+The major routines use the Z80 restarts, use them properly.
+</li>
+<li>
+Always use the restarts or SCAL (RST 18H) to gain access to all
+NAS-SYS routines. STMON is the ONLY exception.
+</li>
+<li>
+If calling routine &lsquo;R&rsquo; using SCAL, make sure you put 52H into ARGX
+and that ARGN is set to 00H before the call.
+</li>
+<li>
+Only use routine call numbers 41H to 7CH for full compatibility.
+</li>
+<li>
+If in doubt read the listings and the manuals to understand how the
+SCAL routine works.
+</li>
+</ol>
+<p>
+There, that wasn&rsquo;t difficult was it.
+</p>
+<p>
+One point, if you are writing software which makes monitor
+calls, and you don&rsquo;t know what monitor it is to be used with, make all
+your CALLs to a table of your own, using three bytes for each call.
+Then, to give an example, if you want to call CHIN in NASBUG, the three
+bytes will be JP CHIN:
+</p>
+<pre>
+C3 3E 00
+</pre>
+<p>
+Whereas in NAS-SYS two of the three bytes will become RST RIN, RET, the
+last is a &lsquo;don&rsquo;t care&rsquo; byte:
+</p>
+<pre>
+CF C9 XX
+</pre>
+<p>
+Or in another instance, using B2HEX, the three bytes become JP B2HEX:
+</p>
+<pre>
+C3 4A 02
+</pre>
+<p>
+in NASBUG, whilst the NAS-SYS equivalent is RST SCAL, B2HEX, RET:
+</p>
+<pre>
+DF 68 C9
+</pre>
+<?php columnEnd(1); ?>

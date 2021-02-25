@@ -1,0 +1,82 @@
+<?php columnStart(23); ?>
+<h1 id="article1">
+Disk Formats and CP/M Disk Routines &ndash; Part4
+</h1>
+<?php columnChange(3); ?>
+<h3 class="author">
+by M.W.T. Waters
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+&lsquo;This ig the final part um this senes. But first of all bere is &copy; correction to the 1st part,
+part 3, published in Volume 1, lsue 3, page 1
+</p>
+<p>
+In the article, the autbor bad a brainstorm and said that the directory buffer (DIRBUF) under
+CPM&rdquo; 22&rsquo; 1 one&rsquo; physical sector long.&rdquo; Ths, of course, it quite incorrect The length of ths
+buffer 5 one logical Tecord (128 bytes) long.&rdquo; &lsquo;The description of the dvectory buffers. controled
+by the &lsquo;Buffer Control &lsquo;Blocks under CPIM. Plus 1S corect, however CP/M Plus, as stated inthe
+ticle, controls bulfers, each of whichis one physical sector long
+</p>
+<h2>
+CP/M 3 Buffer Control Block format
+</h2>
+<p>
+&lsquo;The format of a Buffer Control Block x gen below The format 48 ideatcal for both directory
+sand date BB&rsquo;s
+</p>
+<p>
+te
+</p>
+<p>
+DRY indicate the source drive from which the contents of the bufler located at BUFFAD was
+&lsquo;obtained of, alteroatively, the desunanen drive fr the data i the bulfler
+</p>
+<p>
+REC contains the record postion of the current buffer cootents. This figure is an absolute
+</p>
+<p>
+&lsquo;eclor mumber relave to the fest sccior ia the &lsquo;data tacks of the disk &ndash; For example
+</p>
+<p>
+fhe frat sector io block 0. (ie. the fs chrectory sector) is numbered zero, the next is number
+fe aid son forall data blocks on the disk.
+</p>
+<p>
+WFLG is set by the BDOS whe the buffer asocuted with the BCB cootained new data that bas yet
+tobe wniten to the dik When the data has been writen, the fag i thea set t0 zero by the
+BOS,
+</p>
+<p>
+TRACK i the physical track locaton ofthe contents ofthe buffer
+SECTOR contains the physical sector locaton ofthe costents ofthe bufer
+</p>
+<p>
+BUFFAD contuins &laquo; 16 bt address showng the location of the physical sector buffer assocated
+sth this BCB,
+</p>
+<p>
+BANK contuns the memory bank umber holding the buffer Naturally, thi Geld not present
+vw non-banked systems.
+</p>
+<p>
+INK contains the address of the next BCB in the linked lit. if thus the last BCB im the
+lus, this field will contara Zero. This field isn&rsquo;t preseat on son-banked systems as only one
+bafer sn assocuted BCB east
+</p>
+<p>
+Having covered the DPH, XDPH and associated data structures, we can now examine the Disk
+Parameter Block detail.
+</p>
+<h2>
+Disk Parameter Blocks
+</h2>
+<h2>
+The CP/M 2.2 DPB
+</h2>
+<p>
+&lsquo;The disk parameter blocks in the BIOS tell the BDOS all needs to know about the physical
+characteristics ofthe disk, The CP/M 22 DPB fora Gemini QDS format dik looks lke
+</p>
+<?php columnEnd(1); ?>

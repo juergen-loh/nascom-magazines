@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<p>
+17
+</p>
+<p>
+run-time routines which have to be changed (presumably using POKE once your
+program is running) if the HSA-88B is not at ports 80,81H. Another change
+allows underline characters to be used in identifiers, to help with
+legibility. In order to comply with the ISO standard, a variable used as a
+loop control variable must be declared in the block the loop is in, rather
+than globally. This seems quite a good idea. If you are using my &ldquo;explain&rdquo;
+utility, you will need to add a line to the CASE statement, to add error
+message number 74, which says &ldquo;FOR statement control variable must be declared
+in the closest enclosing block.&rdquo; If you are not using &ldquo;explain&rdquo;, I bet you
+spend a lot of time looking in the manual! The new procedures PRON and PROFF
+have the effect of switching output between the printer and the screen, which
+is handy, but far from ISO standard, as are the new functions ARCSIN(X),
+ARCCOS(X) and POWER(X,Y). I expect you can tell what they do, and won&rsquo;t use
+them in programs you want to be portable...
+</p>
+<p>
+That brings us to the question I always used to ask when confronted with
+a new sports car or huge motor cycle, namely &ldquo;Wot&rsquo;ll it do, mister?&rdquo;
+(Nowadays, I don&rsquo;t ask about cars at all, and given the bike, will find out by
+experimental means!) Just for you, I looked up, typed in, compiled and ran the
+Pascal benchmarks suggested by Personal Computer World. The timings were done
+with an aged Post Office hand operated stop watch, so the accuracy is very
+much dependant on the accuracy or otherwise of my own reaction times. I was
+sadly out of home-brew at the time, so the results should be accurate to
+within say half a second (I&rsquo;m older than the stop watch!) As you will see, I
+compiled them with HP4, HP5 and Compas. With HP4, I used the compiler options
+0-,C-,S-,A-,I-to cut out all the checks that slow down a program, and with HP5
+I used 0-,C-,S-,A-. (HP5 has no &ldquo;I-"). I couldn&rsquo;t find the page about compiler
+options in the Compas manual, so I compiled the programs without the benefit
+of any such options. Here are the results, which are not entirely as I would
+have expected them to be, at first sight.
+</p>
+<p>
+Program HP4 HPS Compas
+Magnifier 22 &laquo;6 6
+Forloop 264 8.8 8.8
+Whileloop 4.2 16.4 7.4
+Repeatloop 3.6 15.2 6.6
+Literalassign 3.4 10.2 5.6
+Memoryaccess 3.6 10.6 3.8
+Realarithmetic 14.6 11.2 52.2
+Realalgebra 15.0 16.8 41.6
+Vector 8.0 22.0 14.8
+Equalif 6.0 19.2 8.2
+Unequalif 5.6 19.6 8.0
+Noparameters 3.0 3.6 8 *
+Value 3.4 5.0 7.0
+Reference 3.6 4.2 7.2
+Maths 6.2 5.2 47.8
+</p>
+<p>
+You should be able to spot some obvious and some surprising trends in the
+table. The surprise is that the programs sometimes take longer in HP5 than in
+HPA. This is in fact not so very surprising, because the integers used by HP5
+are twice the length, which probably more than doubles the time taken to
+handle them, even though actually working things out with them will be faster.
+Thus, Program Magnifier, which is just an empty loop, takes&nbsp;.6 seconds instead
+of&nbsp;.2 seconds (bearing in mind what I said about timing accuracy). Compas does
+</p>
+<?php columnEnd(1); ?>

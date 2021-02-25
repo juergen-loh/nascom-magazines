@@ -1,0 +1,74 @@
+<?php columnStart(1); ?>
+<p>
+I was a little concerned about the problem of access time
+for the VDU RAM so the next step was to make absolutely sure
+that this problem was minimised. The most critical cycle.
+timing-wise, 15 the read cycle because data ts read in on the
+falling edge of the last clock of the cycle (T3). With the write
+cycle, data is valid rom the falling edge of T1 until slightly
+afterthe rising edge of T3 and may be written anywhere between
+the falling edge of T2 and the falling edge of T3. Hence as long
+as the falling edge of the T3 clock is before the rising edge of
+the access slot, there 15 less chance of a bad read. At 2 Mhz
+this 15 all well and good as the falling edge of the T3 clock
+can be placed about 375ns into the access period. This gives an
+access time somewhere in the region of 375 to 400ns. With the 4
+Mhz clock, things begin to look dodgy because, with the T2 clock
+falling edge just on the falling edge of the access slot, there
+is only 250ns before the falling edge of TS. So access time to
+the VDU RAM must be better than 250ns in order to allow time for
+the address bus multiplexors to change the address bus over and
+let the RAM settle down. By placing the falling edge of the 4
+Mhz on the falling edge of the access period, you are relying on
+the delay time of the gates to maintain a high output long
+enough to terminate the wait state. This is bad practice as the
+main clack only needs to be delayed by a slow gate and the wait
+state may not be terminated.
+</p>
+<p>
+Now 1t became obvious that Snowdinger 2 would be completely
+different to Snowdinger, due mainly to using the same circuit
+for both 2 and 4 Mhz. Using the 1 Mhz clock ORed with VRAM a
+gated signal is produced for any access to the VDU RAM, ie YRAM
+is synchronised to the 1 Mhz clock. Finding a wait signal for
+the Z80 that would work at 2 and 4 Mhz was some what more
+difficult. However the final waveform is the result of ANDing
+the 2 Mhz with the 4 Mhz clock. For the Z80 to use this wait
+signal, both the clocks need to have there phases changed in
+order to sample the wait gate at the correct times. These phase
+changes are accomplished as follows:
+</p>
+<p>
+1) The 2 Mhz clock is shifted back quarter of it&rsquo;s cycle by
+</p>
+<p>
+exclusive ORing it with the 4 Mhz clock.
+</p>
+<p>
+2) The 4 Mhz clack is shifted back quarter of it&rsquo;s cycle by
+</p>
+<p>
+exclusive ORing it with the 8 Mhz clock
+</p>
+<p>
+The reason for shifting the 4 Mhz clock is, so as to keep
+it&rsquo;s falling edge away from the falling edge of the wait gate
+signal, hence avoiding any static hazards from slow gates, etc
+This has the disadvantage of reducing the access time for the
+RAM by about 62.5ns, but makes the circuit more reliable. Figure
+1 shows all of the waveforms needed to construct the circuit,
+however I soon discovered that this circuit will only work for a
+Nascom&nbsp;1. A quick look with a 100 Mhz oscilloscope confirmed
+that Nascom 2s have different phase clocks, Figure 2 shows
+diagrams af the 4,2,1 and the serialiser load clocks for a
+Nascom&nbsp;2.
+</p>
+<p>
+The Nascom&nbsp;2 uses a 7415193, presettable 4-bit binary
+up/down counter. This circuits clock is positive edge triggered,
+hence all the clock outputs have different phases. At first
+sight this presents no problems, apply the theory to the new
+waveforms and design a new circuit. Unfortunately, changing the
+phases of the clocks also changes the position of the load
+</p>
+<?php columnEnd(1); ?>

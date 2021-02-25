@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+there is still room for improvement, as since writing these I have discovered
+that it is possible for a clock register to become programmed with 0FH as a
+legitimate character, caused by spurious pulses on the PIO lines. Under these
+circumstances the program goes into a permanent loop, thinking that the clock has
+just changed time. Some sort of time-out is required, where say, after having had
+256 goes at reading the clock and failed, the routine returns the register
+contents regardless.
+</p>
+<p>
+Having fitted a real time clock (RTC) some use has to be found to justify
+the clock. In the circles I move in, a couple of people have already found uses
+for the clock. Richard has modified his M80 assembler to include the time and
+date on printed listings, which can be very useful. David has written an elegant
+little utility called INDEX which gives a CP/M directory listing and allows a one
+line comment after each program entry. The date being added to the index created
+at the time of updating. I hope INDEX will see it&rsquo;s way round a larger circle
+goon, although, as it requires the GM822 RTC to be hung on a Z80 PIO at port 1CH,
+it does make it a dedicated program, and therefore not universally usable. Note
+that in each instance port 1CH has been used, and it has been mutually agreed
+amongst ourselves that port 1CH will be the clock port. My own interest has been
+to hook the clock into a compiled Basic program.
+</p>
+<p>
+As was mentioned earlier, the MM58174A clock exhibits a peculiar
+characteristic, in that it gains time if access is made to it over too long a
+time frame. I do not have the National data sheet to hand, but if I remember
+correctly, the clock must be accessed within a period of roughly 15mS from
+reading the first register to reading the last. This means that the access
+software has to be very fast. On the other hand, in instances where it is not the
+intention to display the clock on the screen, reading it back at its fastest
+increment of tenths of seconds, this is of little consequence. The software
+provided by Gemini certainly fails in this respect in that it wastes a lot of
+time within the read loop determining whether the clock has changed time, and if
+not, to convert the incoming nibble to ASCII and to save it in the temporary
+workspace. The obvious method to correct for this would be to copy the registers
+&lsquo;as is&rsquo; to the temporary workspace using the tightest possible loop, perhaps
+using an INI instruction or even an INIR instruction if it could be contrived,
+then, having copied the registers to the temporary workspace, to sort them out
+later. I have not given this approach much thought, but it should be possible.
+The later National MM58174AN chip does not suffer from this problem, but is more
+expensive.
+</p>
+<p>
+Making use of the clock to display the time continually. on the screen,
+whilst a nice idea, is not as easy as it sounds. That is, assuming the computer
+is to be used for other things apart from displaying the time. It is not
+difficult to write a program which will continually read the clock and place the
+result on the screen, Gemini have already provided the clock read routines, and a
+simple change to the software could be made to cause the routine restart itself
+instead of making the clock return to the routine which called it. This is a
+massive waste of time as the processor is 100% wrapped up in reading the clock.
+There is no time left for other things. As the clock is capable of creating
+interrupts, one method would be to use the interrupt output connected to the
+strobe input of the PIO to create an interrupt every time the clock changed
+state. The fastest interrupt rate on the MM58174 is one every half a second, this
+could be used to update the clock display every second, whilst causing minimum
+disruption to processing of other things. As it happens, the interrupt output of
+the GM822 was deliberately not returned to the strobe line of the PIO, as this
+could be the cause of some very strange software faults by the ereation of
+undesired interrupts when used with disk systems (which must not be interrupted),
+or other interrupt driven auxiliaries elsewhere in the system, where the use of
+the EI and DI instructions could cause other problems. The interrupt output is
+connected to one of the output bits which means it can only be used when mode 3,
+the bit masked interrupt mode of the PIO is selected. This mode, whilst more
+flexible is also more difficult to implement.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,125 @@
+<?php columnStart(1); ?>
+<p>
+309:
+310:
+311:
+312:
+313:
+314:
+PRINTD:
+JR Z, PRINTD
+JP PR27A
+LD A, D
+DEFB SCAL, B2HEX
+DEFB SCAL, CRLF
+JP PR27A
+; O/P COUNT TO SCREEN
+315:
+316:
+317:
+318:
+;
+; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+; * ROUTINE TO COMPARE EPROM/1K BLOCK *
+; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+319:
+320:
+321:
+322:
+323:
+324:
+325:
+326:
+327:
+328:
+329:
+330:
+331:
+332:
+333:
+334:
+335:
+336:
+337:
+338:
+339:
+340:
+341:
+342:
+343:
+344:
+345:
+346:
+CMPARE:
+VERFY2:
+VERFY3:
+ERROR:
+;
+LD HL, TEXT8
+LD DE, 0A4BH
+LD BC, 11H
+LDIR
+LD A, 0
+LD (ERRFLG), A
+CALL RAMADR
+LD DE, 0
+LD A, (ROMFLG)
+CP D
+JR Z, VERFY4
+CALL ENABLE
+IN A, (ADATA)
+PUSH AF
+CALL COUNT
+POP AF;
+CP (HL)
+JR NZ, ERROR
+INC HL
+INC DE
+JR VERFY2
+LD A, 0FFH
+LD (ERRFLG), A
+LD A, H
+DEFB SCAL, B2HEX
+LD A, L
+DEFB SCAL, B2HEX
+DEFB SCAL. TDEL
+; &ldquo;COMPARED TO EPROM
+; SET ERROR FLAG
+; GET START ADDRESS
+; CLEAR BYTE COUNTER
+; ALL DONE?
+; IF SO, JUMP TO VERFY4
+; TRUN ON CHIP
+; GET BYTE FROM EPROM
+; SAVE IT
+; INCREMENT ADDRESS, CHIP OFF
+; GET BYTE BACK
+; ARE THEY THE SAME?
+; IF ERROR, PRINT IT
+; NEXT BYTE TO COMPARE
+; INCREMENT BYTE COUNTER
+; ERROR FLAG
+; PRINT ERROR ADDRESS
+; OPTIONAL DELAY
+347: ; IF DELAY REQUIRED, REMOVE FIRST COLON ON ABOVE LINE
+348:
+349:
+DEFB SCAL, CRLF
+JR VERFY3
+; SCROLL DISPLAY
+; NEXT BYTE
+</p>
+<p>
+The remainder of the listing will be published in the next issue. If you don&rsquo;t wish
+to wait that long, or you can&rsquo;t be bothered to type it all in &ndash; after all the source code is
+18K long &ndash; I will provide copies of the source and object codes. Just send me a
+cassette, or a disc with approximately 26K free, and &pound;1 to cover copying and
+postage. Source can be supplied in Zeap compatible form or Macro&nbsp;80 form. Please
+state which you require. Also please state the disc format required; I can supply
+single or double density to suit either CP/M or Polydos, for Nascom/Gemini
+G805/G809
+</p>
+<p>
+C. Bowden, &lsquo;Tregwyn&rsquo;, Stithians, Truro, Cornwall
+</p>
+<?php columnEnd(1); ?>

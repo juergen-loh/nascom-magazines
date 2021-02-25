@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+28
+</p>
+<p>
+By having counted down to 0, the loop leaves HL pointing at the start of the
+word in question. DE is then loaded to point to WBUF, and the characters are copied
+from the location pointed to by HL into the location pointed to by DE. HL and DE are
+both incremented to point to the next character in the word table and WBUF
+resepctively, whilst B is incremented to count the letters. Notice the copy process is
+so arranged that the 00 word delimiter gets copied into WBUF along with the word. That
+saves me having to make the deliberate effort to put an 0O at the end of the word in
+WBUF. By copying the 00 across to WBUF, B now contains a count one count greater than
+the length of the word. So long as we remember this that&rsquo;s ok.
+</p>
+<p>
+Now to the cheeky bit. We want to tell people how many characters there are in
+the word (remember we&rsquo;ve got the count plus one in B). Now as the word length cannot
+exceed 9, dictated by the length of WBUF and hopefully no-one has added any words
+longer than nine characters, and as I suspect that the program might get upset if we
+set up a word of no length, consisting of 00 only, the word length cannot be less than
+1, this means we have a figure between 02H and 0AH in B. If we add 2FH to this, we end
+up with the ASCIT character for the numbers 1 to 9. So, what about stuffing this value
+into the text string that is to display it. Well what about it? Now I&rsquo;m sure I&rsquo;ve
+mentioned (and if not, I&rsquo;m about to) that writing code that alters itself is bad
+practice, if only for the reason that you can&rsquo;t put it into EPROM (there are other
+reasons, but they&rsquo;re a bit deep). So how do I defend myself for suggesting naughty
+practices to you. Simple I don&rsquo;t, I say tut &ndash; tut, shake my head and look the other
+way. Who the hell wants Hangman in EPROM anyway. So the next bit does just that and
+displays the message.
+</p>
+<p>
+Here starteth the main loop. This is where we test to see if the trys equals
+the maximum set and send a &lsquo;lose&rsquo; message, otherwise the program goes on to get an
+input character, decide if it&rsquo;s been used before, and if not, to compare and fill in
+the blanks in the word. Sounds simple, and it really is.
+</p>
+<p>
+Ok, so compare the number of trys taken (from TRYS) with NTRYS. If it&rsquo;s not
+there yet, the program skips past the &lsquo;lose&rsquo; bit and carries on. Have you noticed my
+use of uninspired labels for the main program flow. Simply CONT and LOOP. Sorry, but
+having. said labels should be meaningful, there&rsquo;s not much else you can do in a linear
+flow program. Anyway, if the number of trys equals NTRYS, display the &lsquo;sorry you lose&rsquo;
+message. Now here we have a label RSTART, which is where the program restarts in the
+event of a win. Note that the program goes through this bit, win or lose. This
+displays the word, but we can&rsquo;t simply point HL at it and call SNDTXT as it will have
+gome or all bit 7&rsquo;s set, which will display funny graphics characters. Instead, LOOP4
+gets the characters one by one (up to an 00, as before) these are ANDed with 7FH which
+is a bit mask to strip the flag bit (see last episode) and then sends them to OUTCHR
+one by one. .
+</p>
+<p>
+In the event of a win or a lose, the next thing is to discover if the game is
+to continue. The appropriate message is displayed and the input routine, GETCHR, is
+called. When a character is returned (caused by you hitting a key), the character is
+compared with &lsquo;Y&rsquo;, if it is that character and only that character (no mucking about
+with lower case here) then the program goes right back to the beginning and starts all
+over (no finesse about that bit either). Any character other than &lsquo;y&rsquo; will cause the
+program to jump to the EXIT routine and finish the game.
+</p>
+<p>
+If the number of trys doesn&rsquo;t equal NTRYS, then we must display a message
+inviting an input character, and then call GETCHR to get an input. Having got the
+input character, the character is compared with 03H (which just happens to be
+control/C, the CP/M escape character. For the NAS version the byte at 0E55H could be
+changed to 1BH to change the tested into and &lsquo;ESCape&rsquo; character to be consistent with
+other &lsquo;NAS tyye&rsquo; programs.). If the character is 03H (or whatever) then the program
+jumps to the EXIT routine to finish the game. Otherwise the character is taken as
+valid, so a newline must be sent. Now the CRLF1 subroutine will corrupt both the AF
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+Letters to the Editor
+</p>
+<p>
+Nascoms, Polydos, Graphics &amp; Forth
+</p>
+<p>
+The recent arrival of 80-BUS News (July-August 1984) and some of its
+comments both served to remind me that a letter to the Editor was overdue on
+at least two counts: I have yet to confess to being a Nascom/POLYDOS user and
+have also failed to submit a completed Questionnaire.
+</p>
+<p>
+I am not quite sure why I chose POLYDOS other than that I needed (wanted)
+to replace tape storage with disks and that, since I have no business use for
+my Nascom, POLYDOS seemed friendly, had a nice editor, an adequate assembler
+and some useful extensions to ROM-BASIC in the bundle. (It is also easy to
+convert POLYDOS files to P-system files.) However, like Mr Webber of
+Lewisham, I wanted something other than BASIC as a language. This was not
+simply because I wanted to replace BASIC with a structured and/or compiled
+language but also because, when one&rsquo;s Nascom memory map has POLYDOS, POLYDOS-&mdash;
+BASIC, ROM-BASIC, NAS-SYS and the Nascom AVC G32 code in it, there is precious
+little room for any BASIC code. The SET-CHAIN command of POLYDOS-BASIC helps
+but it struck me that something altogether more compact was required for nontrivial
+graphics programs. I have tackled this problem on two fronts:
+adapating Hi-Soft PASCAL and installing a home-brew FORTH.
+</p>
+<p>
+Again like Mr Webber, I found that, even when armed with the Alteration
+Guide, adapting a tape version of Hi-Soft PASCAL to disks was far from
+straight-forward. Nevertheless, with the expenditure of more time that I care
+to recall, it has been accomplished to some extent. The modified version
+handles Hi-Soft 128 byte record files for the tokenised source code and will
+convert files output by the POLYDOS editor to this form. (I have yet to write
+the de-tokenising program but that is surely trivial.) As for data files, I
+have implemented three primitives OPEN, CLOSE and BLKIO which, with the PASCAL
+routines GETC(har) and PUTC(har), enable me to read text files. Naturally,
+using BLKIO one could read numeric data in binary form but I don&rsquo;t usually
+want to. To drive my Nascom AVC, I have set up a number of types, especially
+COLOUR(!), and routines, such as LINE, to drive the G32 code. It all works
+but even now there is a space problem in that I cannot develop graphics
+programs of any size interactively. My last program, which designs MAT-arrays
+for the AVC on.a grid, was compiled as two lines of code each of which was an
+include statement!
+</p>
+<p>
+FORTH, like APL, fascinates me because of its extensibility and, unlike
+APL, ease of implementation. I put up the first version using R G Loeliger&rsquo;s
+book &ldquo;Threaded Interpretive Languages&rdquo;. (This was reviewed in 80-BUS News a
+little while ago and is the only computing book I have thumbed to
+scruffiness.) Doing this was hard work on a tape Nascom before getting the
+ZEAP assembler, and then POLYDOS. Version 2.0 is nearly complete but the
+luxury of disk-based screens means that I can tinker forever with, for
+example, the ASSEMBLER or EDITOR. Like PASCAL this is used to drive the AVC
+but in a style more reminiscent of LOGO and TURTLES.
+</p>
+<p>
+More generally on the AVC, I have started to think about driving it
+directly rather than through G32. This is not to gain more speed on the
+standard geometrical constructs but for SCROLLING, PANNING and sprites. The
+first two are easily done for the whole screen using the MC6845&rsquo;s own commands
+though not, I suspect, in the middle of a FILL sequence if one wants to use
+the edges to make the picture appear continuous. For similar windows the Z80
+command LDIR would have to be flogged to death. Sprites should just be a
+matter of copying blocks onto the AVC memory.
+</p>
+<p>
+At the moment, I have a problem with the system&rsquo;s memory on which I would
+be grateful for help. I have RAM socketed on the N2 at D800H-DFFFH and the
+</p>
+<?php columnEnd(1); ?>

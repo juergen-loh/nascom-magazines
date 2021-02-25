@@ -1,0 +1,79 @@
+<?php columnStart(1); ?>
+<p>
+35
+</p>
+<p>
+Sinclair speaks to NASCOM &ndash; A snippet on interfacing By Michael Hendry
+</p>
+<p>
+Stimulated by Dr Dark&rsquo;s suggestion in the March-April 1984 issue (Vol 3
+Issue 2) I decided to rake out this program, first written in January, and
+submit it for publication.
+</p>
+<p>
+The Spectrum is a remarkable little machine, but most of the interesting
+games available are in machine code, and difficult to patch (i.e. cheat!)
+without decent tools. I was too mean to buy a machine code package and a
+printer interface for my son&rsquo;s Spectrum, having perfectly good facilities on
+the NASCOM, and I decided to interface the Spectrum to my NASCOM 2 without
+using any extra hardware so that I could disassemble, list, and generally
+tinker with code dumped. from the Spectrum.
+</p>
+<p>
+The Spectrum uses one of its ports (OFEH) for output to the MIC socket
+and to provide the Border colours on the screen, bit 3 for the MIC and bits 0-
+2 for the three primary colours. Its built-in tape routines use a non-standard
+format, but it is possible to use the output bit provided in any format you
+wish, in this case the CUTS standard used in the NASCOM, which outputs 1 cycle
+at 1200 Hz for a zero bit, and 2 cycles at 2400 Hz for a non-zero bit when it
+is set up for 1200 Baud output. I used 300 Baud values (4 cycles and 8 cycles)
+initially, but found that 1200 Baud was more reliable!
+</p>
+<p>
+The crucial routine in the program is labelled SndBit; each bit to be
+output to tape is passed to this routine in the carry flag, and the MIC bit in
+port FE is toggled accordingly, with appropriate delays for the frequencies
+involved. The initial counts for the delay loops have to be calculated from
+the known clock frequency of the Spectrum and the number of T-states used by
+each instruction, and are included in the EQUates at the beginning of the
+listing.
+</p>
+<p>
+SndBit may be regarded as a software emulation of the NASCOM&rsquo;s cassette
+interface, and is sent data bytewise by the UART emulator routine BytOut,
+which is in turn fed by the NAS-SYS &ldquo;Write&rdquo; emulator routine, which is the
+bulk of the remainder of the program. The analogy is not complete, in that the
+NASCOM hardware is continuously sending out a stop bit when the cassette
+output is not in use. The loop labelled PLO is used to provide a short burst
+of this &ldquo;pilot tone".
+</p>
+<p>
+For convenience, the start and end+l addresses are passed to the program
+at 8000 and 8002 (ie 32768 and 32770) and the program itself runs at 8004
+(RANDOMIZE USR 32772). I use a second copy assembled at F000 if code in the
+range 8000 to 80C0 is of interest. You may wish to write a short BASIC program
+to prompt for the necessary addresses and remind you to start the tape, but
+remember that this may encroach on code under examination.
+</p>
+<p>
+The output follows exactly the format of a"W XXXX YYYY&rdquo; command under
+NAS-SYS with all the usual checksums, and may be saved on cassette and then
+loaded directly into memory on the NASCOM using the &ldquo;R&rdquo; command. If NAS-SYS&nbsp;3
+is available, it may be loaded at any address by giving the appropriate offset
+as an argument. With suitable amplification it may be connected directly into
+the tape input on the NASCOM.
+</p>
+<p>
+IMPORTANT NOTE: This program will not operate properly at addresses below
+8000 because the Video circuitry is constantly reading this block of RAM, and
+upsets the timing loops. As the Spectrum keyboard is read under interrupt,
+this must also be disabled while the program is run (and enabled afterwards of
+course!).
+</p>
+<p>
+I have also written code using similar techniques which uses the Spectrum
+LLIST and LPRINT commands to speak to the NASCOM through the cassette
+interface, using the NASCOM as a printer buffer to my Epson. It doesn&rsquo;t handle
+screen dumps yet, but one of these wet Sundays...
+</p>
+<?php columnEnd(1); ?>

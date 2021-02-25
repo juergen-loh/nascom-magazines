@@ -1,0 +1,56 @@
+<?php columnStart(1); ?>
+<p class="continued">
+During the access -the data -to the V.D.U. is disabled by taking the enable lines to
+ICs 10 and 11 to +5 volts. A monostable, IC 16 can be used to lengthen the write
+pulse to reduce flashes on the screen.
+</p>
+<p>
+The 2114 is a 1K x 4 bit static RAM, so a pair of 2114s needed for each 1K
+bytes. Identical address lines on each of the four RAM chips are tied together, and
+simlarly the eight data lines from the two pairs of chips are interconnected. When
+an address is accessed data is only interchanged with the pair of chips for which
+the CS signal is low, which is determined by the state of line 4 from the character
+generator socket for V.D.U. access, and by the state of A10 for processor
+access. The direction of the data transfer is determined by the WR signal.
+</p>
+<p>
+The layout of the circuit is not particularly critical. The commonest problem is
+caused by coupling between the lines from pins 21 &ndash; 24 of the character generator
+socket. These lines carry signals derived from the crystal oscillator on the C.P.U.
+board via a divider chain. If a long ribbon cable is used to connect the unit to the
+main board interaction between these adjacent lines may cause screen Jitter.
+Fortunately the solution is simple &ndash; just separate the lines from the main cable.
+</p>
+<h3>
+MODIFICATIONS TO THE NASCOM
+</h3>
+<p>
+The Nascom character generator socket has two unconnected lines. These
+are used to connect bit 7 of the V.D.U. RAM to the unit and extra data output from
+the unit. This does not affect the operation of the Nascom if the unit is disconnected
+and the 6576 is replaced in its original socket. The following modifications
+should be made to the Nascom board (IC numbers prefixed by an N refer to the
+numbers used in the Nascom&nbsp;1 manual ).
+</p>
+<p>
+Pin 11 of N IC 17 should be bent horizontal so that it is not in contact with its
+socket and connected to N IC 15 pin 1. Similarly, pin 10 of N IC 15 is bent
+horizontal and connected to pin 10 of the character generator socket on the
+Nascom. Pin 12 of N IC 20 is connected to N IC 17 pin 18 and pin 19 of N IC 17 is
+conected to pin 14 of the character generator socket. The connections to N IC 15
+are necessary because in the standard Nascom&nbsp;1 V.D.U. the last bit in each line
+of the characters is set to zero; this leaves a gap between each character, which
+is not wanted in the case of graphics characters. Please note that pin 11 of N IC 17
+and pin 10 of N IC 15 are the only pins which should be bent (this is easier than
+tracing tracks and then cutting the wrong one!).
+</p>
+<p>
+The unit is designed specifically for a Nascom&nbsp;1. It should not be difficult to
+adapt it for a Nascom&nbsp;2, because you already have a socket decoded for a graphics
+ROM. I have not tried adapting the circuit because none of my friends with
+Nascom&nbsp;2&rsquo;s will let me perform the necessary surgery!
+</p>
+<p class="article-stopper">
+* * * * * * * * * * * * * * *
+</p>
+<?php columnEnd(1); ?>

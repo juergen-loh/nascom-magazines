@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+14
+</p>
+<p>
+and A13 (also A14 for future expansion), control lines /OE, PGM and /PGM, and
+power supplies Vcc (+5V), Vpp (+21V and +25V) and GND (OV) are taken to a 16-
+pin dil socket. ZIF socket connections that vary depending on the EPROM being
+used are also taken to this socket. By inserting a header plug with the
+required connections the appropriate EPROM may be programmed. See fig 2 for
+header connections. Note that some EPROMS require a low to high programming
+pulse whereas others require a high to low pulse &ndash; hence the use of two
+signals PGM and /PGM respectively.
+</p>
+<p>
+The +5V supply is provided by a 7805 5V regulator from an unregulated 30V
+supply. The two Vpp voltages are supplied from two separate circuits built
+around two 723 regulators. Although the 723 can deliver the 30ma Vpp current I
+included a bypass transistor to take most of the dissipation away from the
+723. The function switch has 3 positions- OFF, READ (Vcc and Vpp at +5V) and
+PROGRAM (Vcc at +5V and Vpp at +21 and +25V). Two LEDs indicate when Vpp
+and/or Vec is applied. The 5.1V zener stops the Vpp LED lighting when in READ
+mode (Vpp=+5v).
+</p>
+<p>
+Control Program
+</p>
+<p>
+By restricting the EPROM types that can be programmed, and routing the
+signals via the header socket, the control program has been made very
+straightforward and, apart from checking to see if a 2532 is being programmed,
+it does not really need to know which EPROM is in the socket since the
+routines and control signals are the same. However, for convenience of the
+user you are requested to enter the EPROM type so you will be told if you are
+trying to program a 4K block of memory into a 2716! It also uses the EPROM
+type information to work out the number of locations to check for erasure and
+to read in the EPROM contents to RAM.
+</p>
+<p>
+On entering the program a menu gives the options:&ndash;
+</p>
+<p>
+1. Verify EPROM fully erased
+2 Read in EPROM to memory
+</p>
+<p>
+3. Program EPROM (and verify)
+4 Return to NAS-SYS
+</p>
+<p>
+The basic structure of each operation is a simple loop which outputs an
+address, sets the control lines to perform the operation, either writes data
+from RAM to the EPROM or reads data from the EPROM into RAM, increments the
+EPROM address and RAM pointer, and continues until the operation is complete.
+In each case you will first be asked to enter the EPROM type. The previously
+entered type is displayed and if this does not need to be changed just press
+NEWLINE.
+</p>
+<p>
+l. Verify
+</p>
+<p>
+This routine reads in every location from the EPROM and compares it with
+FFh which signifies that it is erased. If the location is not erased, a
+message is displayed together with the address of the offending location. If
+there are a lot of unerased locations you can press ESCAPE to abort the
+verification. Then you may try another EPROM or return to the menu.
+</p>
+<p>
+2. Read in to RAM from EPROM
+</p>
+<p>
+You are first asked for the start address of the RAM block where you want
+the contents of the EPROM to be dumped. A default address is shown so just
+press NEWLINE if this does not need to be changed. The whole of the EPROM will
+</p>
+<?php columnEnd(1); ?>

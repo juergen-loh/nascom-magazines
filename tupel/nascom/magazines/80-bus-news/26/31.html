@@ -1,0 +1,64 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<h1 id="article1">
+NASCOM<br>
+ROM<br>
+BASIC<br>
+DIS&ndash;ASSEMBLED
+</h1>
+<h2>
+PART <b>4</b>
+</h2>
+<h3 class="author">
+BY CARL LLOYD&ndash;PARKER
+</h3>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    39</span>
+
+EB1F 2B         MRPRNT: DEC     HL              ; DEC 'cos GETCHR INCs
+EB20 CD36E8             CALL    GETCHR          ; Get next character
+EB23 CA81EB     PRINT:  JP      Z,PRNTCR        ; CRLF if just PRINT
+EB26 C8         PRNTLP: RET     Z               ; End of list - Exit
+EB27 FEA5               CP      ZTAB            ; "TAB(" token?
+EB29 CAAFEB             JP      Z,DOTAB         ; Yes - Do TAB routine
+EB2C FEA8               CP      ZSPC            ; "SPC(" token?
+EB2E CAAFEB             JP      Z,DOTAB         ; Yes - Do SPC routine
+EB31 E5                 PUSH    HL              ; Save code string address
+EB32 FE2C               CP      ","             ; Comma?
+EB34 CA98EB             JP      Z,DOCOM         ; Yes - Move to next zone
+EB37 FE3B               CP      ";"             ; Semi-colon?
+EB39 CAD2EB             JP      Z,NEXITM        ; Do semi-colon routine
+EB3C C1                 POP     BC              ; Code string address to BC
+EB3D CD5AED             CALL    EVAL            ; Evaluate expression
+EB40 E5                 PUSH    HL              ; Save code string address
+EB41 3AAD10             LD      A,(TYPE)        ; Get variable type
+EB44 B7                 OR      A               ; Is it a string variable?
+EB45 C26DEB             JP      NZ,PRNTST       ; Yes - Output string contents
+EB48 CDB8F9             CALL    NUMASC          ; Convert number to text
+EB4B CDCEF1             CALL    CRTST           ; Create temporary string
+EB4E 3620               LD      (HL)," "        ; Followed by a space
+EB50 2AE410             LD      HL,(FPREG)      ; Get length of output
+EB53 34                 INC     (HL)            ; Plus 1 for the space
+EB54 2AE410             LD      HL,(FPREG)      ; &lt; Not needed &gt;
+EB57 3A4210             LD      A,(LWIDTH)      ; Get width of line
+EB5A 47                 LD      B,A             ; To B
+EB5B 04                 INC     B               ; Width 255 (No limit)?
+EB5C CA69EB             JP      Z,PRNTNB        ; Yes - Output number string
+EB5F 04                 INC     B               ; Adjust it
+EB60 3AAB10             LD      A,(CURPOS)      ; Get cursor position
+EB63 86                 ADD     A,(HL)          ; Add length of string
+EB64 3D                 DEC     A               ; Adjust it
+EB65 B8                 CP      B               ; Will output fit on this line?
+EB66 D481EB             CALL    NC,PRNTCR       ; No - CRLF first
+EB69 CD13F2     PRNTNB: CALL    PRS1            ; Output string at (HL)
+EB6C AF                 XOR     A               ; Skip CALL by setting "Z" flag
+EB6D C413F2     PRNTST: CALL    NZ,PRS1         ; Output string at (HL)
+EB70 E1                 POP     HL              ; Restore code string address
+EB71 C31FEB             JP      MRPRNT          ; See if more to PRINT
+
+EB74 3AAB10     STTLIN: LD      A,(CURPOS)      ; Make sure on new line
+EB77 B7                 OR      A               ; Already at start?
+EB78 C8                 RET     Z               ; Yes - Do nothing
+EB79 C381EB             JP      PRNTCR          ; Start a new line
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<p>
+21
+</p>
+<p>
+ACCESSING PRESTEL with a NASCOM 2 By Robin Luxford
+</p>
+<p>
+Although Prestel was originally designed to reach the home via the
+television receiver and an adaptor with a numeric keypad, this method seems to
+have severe limitations; unless you buy a special printer you cannot have hard
+copy and any form of magnetic storage comes even more expensive.
+</p>
+<p>
+However, with the availability of surplus Post Office approved modem
+cards, and the 300 baud service now being run by Prestel, it becomes a fairly
+straight forward matter to access Prestel with your home computer.
+</p>
+<p>
+The three programs PREST, SAVEPRES and PRINPRES were written for a
+Nascom&nbsp;2 running CP/M 2.2 with a Gemini IVC card, using the N2 keyboard,
+although the principles are applicable to any system.
+</p>
+<p>
+PREST makes your computer run as a dumb terminal storing incoming data
+until all the RAM up to the start of the BDOS is full. When you are up to your
+last page of RAM the screen inverts as a warning but in practice you have to
+be connected to Prestel for a very long time to get that far. When you hit
+CTL/C to exit, the program sends the sign-off string to Prestel then waits a
+few seconds to see if there is a mailbox message for you before warm-booting.
+Because the mailbox facility is only avaiable at present on the Enterprise
+computer and the 300 baud service is only available on the Kipling and Dryden
+computers, I have not yet been able to develop any routines to handle mailbox
+messages. At the start of each new page Prestel sends a string of 40 DELs; in
+order to save buffer space and also to simplify subsequent handling of files
+by GEMPEN, the first DEL is converted to 07H and the rest of the string is
+suppressed.
+</p>
+<p>
+After exiting from PREST you can make a disk file fom the buffer by
+running SAVEPRES or print it on CP/M List device by running PRINPRES.
+</p>
+<p>
+If you are connecting to a telephone jack via a unit such as the GEC
+LTU 11 line coupler (also available on the surplus market), you can have the
+added convenience of being able to dial the Prestel number automatically. The
+PREST program has routines for doing this, also for sending your Customer
+Identity number automatically when the Prestel computer replies.
+</p>
+<p>
+The only hardware mod. to the Nascom required is to connect the uart
+rx clock to the tx clock so that when the tx clock is switched to 300 baud,
+the rx clock will also be switched to it. The 300 baud &ldquo;cassette&rdquo; position of
+the rx clock will not work. The simplest way of achieving this is to connect
+the end of R19 nearest to IC29 to TP5 and switch LSW2/6 to EXT. LSW2/5 must be
+in th EXT/TTY position of couse and LSW2/7 must be in the TTY position to
+receive from the modem.
+</p>
+<p>
+Acknowledgement is due to tha author of the DUMBTERM program published
+in this magazine some time ago, who I think was David Parkinson. Some of his
+program appears in the source code of PREST, mostly the upper case lines.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+GIANT INTELLIGENT PRINT BUFFER FOR GEMINI CPU CARDS By Richard Beal
+</p>
+<p>
+This article gives you all the information and software which you need to
+set up a print buffer for a serial printer, using a Gemini GM813 CPU+RAM card
+with no other cards on its 80-BUS, or alternatively a Gemini GM811 CPU plus
+GM802 64K RAM combination. The print output, in a form suitable for a
+Centronics printer, is sent from the PIO of the host computer via the GIPB to
+the serial printer.
+</p>
+<p>
+A large print buffer allows you to keep using your computer even when you
+have generated a very long printed report such as a program listing, without
+having to wait for the printer. This Giant Intelligent Print Buffer (GIPB)
+operates almost as fast as you can send data to it. For example when listing
+data to the screen using an SVC, which is very fast, there is no noticeable
+slowing up when sending the data to the GIPB at the same time.
+</p>
+<p>
+You may like to develop the idea further, so here are some suggestions:&ndash;
+</p>
+<p>
+&ndash; write a version which runs under a normal RP/M or CP/M;
+&ndash; allow the display of characters in the buffer;
+</p>
+<p>
+&ndash; allow buffering of the characters to an attached disk;
+</p>
+<p>
+&ndash; develop a full automatic print spooling system;
+</p>
+<p>
+&ndash; write a version with serial input and Centronics output.
+</p>
+<p>
+The User Manual for the GIPB &ndash; Version 2.5
+</p>
+<p>
+This program, called GIPB, is a special version of RP/M designed to
+perform the specific function of acting as a giant intelligent print buffer.
+Hardware requirements are:&ndash;
+</p>
+<p>
+(a) a GM813 CPU+RAM card or a GM811 CPU card with extra 64K RAM card.
+</p>
+<p>
+(b) a serial printer for output.
+</p>
+<p>
+(c) a cable connecting the PIO socket to the PIO socket of another computer
+which is set up to output data to a Centronics printer. If the other
+computer if a GM811 or GM813, or a Nascom I/O card, a 26 way ribbon cable
+with a connector at each end is all that is needed.
+</p>
+<p>
+(d) an optional serial keyboard on the printer, or a keyboard on the GM811.
+</p>
+<p>
+No disk card or video card is required. Since there will normally be no
+video card the printer also acts as the console output device. See the RP/M
+documentation for details of operation without a video card. On the GM813 it
+is simply a matter of linking pin 1 to pin 14 on the link block labelled 1C35.
+On the GM811 connect pin 6 to pin 7 on LKBI.
+</p>
+<p>
+The card(s) may easily be added to an existing 80-BUS system by plugging
+it (them) in to the last connector(s) on the BUS. Since this would interfere
+with the BUS signals, cut all the lines on the motherboard except the power
+lines, which are 1 to 4 and 67 to 78.
+</p>
+<p>
+As with RP/M, the UART speed for the printer may be changed by altering
+location F009 in the EPROM to hold the 2 byte UART divisor. This is normally
+417 decimal, stored as 01 Al, giving 300 bps. Printer handshaking is
+supported in the normal way, if required. This is via pin 8 of the serial
+connector, which must be high to operate. Connect it to pin 2 if you have no
+handshake line.
+</p>
+<?php columnEnd(1); ?>

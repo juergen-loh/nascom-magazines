@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+DETERMINING THE NASCOM KEYBOARD STATUS By Geoff Higgs
+</p>
+<p>
+When Nas-Sus scans the keyboard it stores the state of all the
+keys in&nbsp;? &ldquo;KMAF&rdquo; positions, known as KMAFO to KMAFS, at locations O0CO1
+to 0CO9 hex, 3073 to 3081 decimal. These are updated every time the
+keyboard is scanned.
+</p>
+<p>
+The chart shows the Nascom&nbsp;2 keyboard as layed out. Beneath the
+legend for each key is the address and below that it&rsquo;s contents after 3
+keyboard scam when that key is pressed. This is shown in both Hex and
+decimal notation. The contents remain the game on repeated scans until
+the key is released. Since each key is bit-mapped it can be detected
+irrespective of how many keys are simultaneously pressed. When several
+keys sharing the same map address are pressed, the content is the sum
+of the values for all the keys pressed.
+</p>
+<p>
+Note that SHIFT does not chaneae the contents for ary key but
+only puts 10 Chex), 16 (dec) in KMAFO. Similarly GRAPH and CTRL are
+mapped es any other key.
+</p>
+<p>
+When Key presses are required to control features of programmes,
+the use of this table avoids involvement with repeat keyboard routines
+and their associated adjustable delays.
+</p>
+<p>
+Example?
+Assembly
+</p>
+<p>
+SCANKE EQU 62H
+KMAFPO EQU OCOQ1H
+</p>
+<p>
+TESTKY LD HL,&raquo; KMAPO+Z
+SCAL SCANKE
+</p>
+<p>
+BEIT 3, CHL) ; &ldquo;D&rdquo; pressed, other keys &ldquo;don&rsquo;t care
+JR Z,RTNI
+</p>
+<p>
+INC HL
+</p>
+<p>
+INC HL
+</p>
+<p>
+LD A,4
+</p>
+<p>
+CF CHL) ; &ldquo;B&rdquo; pressed but mo others using O0COSH
+JR Z,RTNZ j or CALL Z
+</p>
+<p>
+dR TESTKY 3} aor RET
+</p>
+<p>
+Basic
+</p>
+<p>
+10 K=USRCO)IREM Scan keyboard user routine
+</p>
+<p>
+20 IF FEEK(S3075) AND G=8 THEN 1007RKEM Go to routine 1
+30 TF PEEKC3077)=4 THEN 200?REM or GOSUE
+</p>
+<p>
+40 GOTO 10!RKEMN or RETURN
+</p>
+<p>
+KMAFO is &ldquo;duplicated&rdquo; as KMAF&amp; at OC09&rsquo; hex (3081 decimal) and
+properly should be used instead. In practice I nave never found any
+difficulty either way.
+</p>
+<?php columnEnd(1); ?>

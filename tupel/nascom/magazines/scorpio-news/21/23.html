@@ -1,0 +1,53 @@
+<?php columnStart(1); ?>
+<p>
+For Copyright reasons I cannot sell modified copies of GEMPEN, but I see no
+reason why I cannot &lsquo;patch&rsquo; a serialized copy for a small fee to cover postage, copying
+and patching. If anyone is interested in this, or any of the other software
+modifications as described, or has a patch to MCOPY, I can be reached on.0209 &mdash;
+860480.
+</p>
+<h2>
+Modifications Carried Out On Gempen Text Editor
+</h2>
+<p>
+I first attacked Gempen with a disassembler in 1984. Recently I have had several
+more goes, as a result of requests for certain other features from other users at my
+place of work, and due to my dissatisfaction with the way some commands still
+operated. There are problems about altering any program, and Gempen is no
+exception. Certain areas of the program have to remain compatible with various
+overlays.
+</p>
+<p>
+In order to alter Gempen it was necessary to disassemble it at least to the state where
+reassembly would generate the same code. The next step was to determine as far as
+possible where the various routines were. The keyboard dispatch table was a great
+help here, as were the embedded text messages. The data supplied on the patch
+areas was also of great usefulness. As a result of many evenings work, I arrived at a
+source code, of which I could understand enough for my purposes.
+</p>
+<p>
+By rewriting many of the error messages and prompts, writing out Nascom related
+routines, modifying the keyboard dispatch system, and re-arranging the code I was
+able to save a fair amount of space. As a result of the modifications my version of
+Gempen now provides these extra or altered features, but will not run on Nascom
+systems using the Nascom keyboard and screen, but it should work where a Nascom
+drives an IVC/SVC with attached keyboard.
+</p>
+<p>
+A a result of my hacking, my version of GEMPEN now provides the following
+modified features.
+</p>
+<h4>
+Command Protection.
+</h4>
+<p>
+This has gone through two stages. In earlier versions, I added &ldquo;Are you sure?&rdquo; type
+protection to many commands, together with an SVC &lsquo;Beep&rsquo;, since I had lost text
+by typing things like &lsquo;by&rsquo; when not in insert mode, and often hit the &lsquo;e&rsquo; key and exited
+when not intending to, This added protection was still not entirely satisfactory
+though, since inadvertent keystrokes still led to distracting &lsquo;Sure?&rsquo; queries. The
+frequent occurrence of the invitation to &lsquo;W/w&rsquo; was also thought to be unnecessary,
+since this option is available at all times anyway. This query has been removed. In
+any case it did not make complete sense to protect the &lsquo;W/w&rsquo; command with a query
+</p>
+<?php columnEnd(1); ?>

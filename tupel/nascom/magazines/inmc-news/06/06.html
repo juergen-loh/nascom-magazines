@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+interrupt routine itself. This address is placed at the start of the
+table, low order byte first, as usual.
+</p>
+<p>
+The interrupt routine itself calls its own copy of the SRLIN
+routine and loops until the routine returns with the Carry set. It then
+outputs the character to the PI0, enables the CPU interrupts and
+immediately returns. This last bit of code reads:
+</p>
+<pre>
+      OUT (5), A
+      EI
+      RETI
+</pre>
+<h2>
+Cassette input program for Nascom&nbsp;2
+</h2>
+<p>
+The other half of the software lives in the Nascom&nbsp;2. The
+program initializes the PIO just like the other program, except that
+the PIO mode is 4FH, for input mode. After setting up the PIO, the CPU
+interrupts are not enabled. Instead a dummy READ to the PIO is made to
+ensure that handshaking starts. Then a version of the READ routine,
+copied out of NAS-SYS, is executed. If the routine ends, control
+returns to NAS-SYS. Instead of the need for changing tables and RST RIN
+to get an input, normal calls are made to a new routine called CIN.
+This routine reads as follows:
+</p>
+<pre>
+CIN  OR A
+     EI
+SLP  JR NC SLP
+     RET
+</pre>
+<p>
+This loops until an interrupt occurs, and the interrupt routine sets
+the Carry flag, and puts the input character into A. The interrupt
+routine reads simply:
+</p>
+<pre>
+PROC IN A, (5)
+     SCF
+     RETI
+</pre>
+<p>
+Note that it does not re-enable CPU interrupts.
+</p>
+<p>
+As you can see, the use of the PIO requires a bit of thought,
+but if you read the notes above, and have a look at the PIO manual, you
+should be able to write these routines for yourself, exactly as you
+wish, which is much more interesting than typing in some HEX listings
+from the library.
+</p>
+<p>
+Please write in and let others know if you have any other uses
+for two (or more) machine systems. How about a controlling machine
+loading other slave machines with data, programs, perhaps even
+interpreters as well, then doing other work while the slave machine
+performs the subordinate tasks. This would be one way to tackle a
+multi-user operating system with resources such as printer or disc
+attached to only some machines.
+</p>
+<p>
+Richard Beal
+</p>
+<p>
+PS You could use two Nascom&nbsp;2 computers, if you don&rsquo;t already have a
+Nascom&nbsp;1.
+</p>
+<p>
+PPS Don&rsquo;t blame me if you get your wires mixed up and blow up both
+computers.
+</p>
+<p>
+</p>
+<?php hLine("30%"); ?>
+<?php columnEnd(1); ?>

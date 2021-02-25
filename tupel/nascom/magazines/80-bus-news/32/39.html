@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+39
+</p>
+<p>
+be printed in front of and behind a decimal point.
+</p>
+<p>
+HOLD &ndash; A real beaut. this one &ndash; especially when used with the CHAIN command.
+HOLD followed by up to two line numbers will hold a range of lines for view in
+a program so that another program may be appended to it or so that this range
+only may be renumbered and thus moved to another part of the program. The
+effect is that the rest of the program seems to have disappeared. In fact it
+is still resident in memory but cannot be found with a LIST command nor
+executed with a RUN command. The listable area can be modified however and
+even RUN without affecting the hidden areas. LOADING another program removes
+the listable area and also the upper hidden area 4f there is one but does not
+destroy the lower hidden area. e.g. HOLD100,199 leaves lines 100 to 199 in
+view and a command such as a renumbering command will only renumber that which
+is in view.
+</p>
+<p>
+MGE &ndash; Restores sanity to a held program.
+</p>
+<p>
+HEX$ &ndash; Followed by up to two values returns the hexadecimal string
+corresponding to the first value as a string of characters whose length is
+dependant upon the second value (4 assumed if not specified). GeQe
+HEX$(1234) returns the string 04D2. HEX$(100,2) returns the string 64.
+</p>
+<p>
+INCH &ndash; Returns the ASCII value of the next input character which it waits for.
+e.g A=INCH places the ASCII code of the next key pressed into the variable A
+</p>
+<p>
+INCHS$ &ndash; Returns the next key pressed as for INCH above but as a one character
+string. e.g AS=INCHS$. Also useful in conjunction with tape or disk files when
+certain characters may cause undesired effects under an input condition. See
+later commands on file handling.
+</p>
+<p>
+KBD &ndash; Similar to INCH but scans keyboard and does not wait for a character.
+KBD$ &ndash; As for INCH$ but does not wait for input.
+</p>
+<p>
+RENUM &ndash; Renumbers a held program or the whole of it if a HOLD has not been
+</p>
+<p>
+_previously issued. Used in conjunction with HOLD and MGE it is a very
+</p>
+<p>
+versatile command.
+</p>
+<p>
+IOM &ndash; Followed by two values. This command alters the bits in the IOMOD word
+in the workspace which consists of sixteen one bit flags of which seven are
+used at present in XBASIC. By setting the bits to 0 or 1 the operation of
+certain areas can be modified. These require more explanation than is possible
+here but it is with this command that one prevents the switch from Screen Edit
+mode to Line Edit mode during a program run or disable the use of the break
+</p>
+<p>
+key etc.
+</p>
+<p>
+MOD &ndash; An operator which is the remainder from a division. It can be defined as
+follows: AMODB=A- B* INT(A/B)- e-g 5 MOD 3 returns 2.
+</p>
+<p>
+MULS$ &ndash; Followed by a string and a number returns the string repeated a number
+of times dependant upon the number. e-g- MULS("*",5) returns the string *****.
+</p>
+<p>
+PI &ndash; Returns the value 3.14159. Very useful with the AVC and is faster than
+using a variable to hold the number for pi. This function actually uses
+3.141593 but is only printed to five decimal places.
+</p>
+<?php columnEnd(1); ?>

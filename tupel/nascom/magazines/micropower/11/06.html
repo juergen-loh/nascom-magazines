@@ -1,0 +1,64 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SOFTWARE FOR PROGRAMMABLE GRAPHICS
+</h1>
+<h2>
+by J.Haigh
+</h2>
+<p>
+A character generator is merely a memory device which stores data defining
+which points within the character area are &lsquo;on&rsquo;. In the Nascom each character
+consists of 16 lines of 8 dots and the data is stored as 16 consecutive bytes.
+When the V.D.U. circuitry is displaying a particular character it looks at the data
+stored in the generator, selecting the byte appropriate to the current line. This byte
+is passed to a device which looks at each bit in turn; if the bit is a &lsquo;1&rsquo; the intensity of
+the beam scanning the T.V. screen is intensified and a dot appears.
+</p>
+<p>
+In the Nascom&nbsp;2 the data in the character generator is displayed with the
+least significant bit on the right of the character, while the system fitted to my
+Nascom&nbsp;1, which is a combination of Steven Hope&rsquo;s P.C.G. and an early Bits and
+P.C.s graphics board, displays the bits in the opposite order. In the software
+discussed below I shall stick to the Nascom&nbsp;2 display order, but indicate how to
+change the programs for non-standard machines. A further incompatibilty is caused
+by the fact that the Nascom&nbsp;2 only displays 14 lines per character. However, a
+simple modification has been published in the Liverpool Software Gazette which
+produces the full 16 line display.
+</p>
+<p>
+The simplest way to use a programmable character generator is to store
+sets of characters on tape and load each set as it is required, but this soon becomes
+tedious. Special characters can be incorporated into the program that uses them
+and written to the P.C.G. either by a copy routine, for a machine code program, or
+by a READ, POKE loop in Basic. However, character A0 and the pixel set (C0 &ndash;
+FF) merit individual attention. The Zeap assembler uses character A0 to mark
+the end of a line. In the standard Nascom&nbsp;2 graphics set this character is identical
+to the space character and so is not noticed on the screen; if A0 is not clear, as it will
+not be if you have Just switched on or have been using special characters, the
+Zeap display is very untidy. A similar problem is found with Nas Debug, which uses
+character C0 as a separator. Of course, you can always clear these characters
+directly by a modify command, but a better solution is to have a short routine in
+EPROM which clears A0 and writes the standard pixel set from C0 to FF. A listing
+of such a routine is given below.
+</p>
+<p>
+It is followed by an even simpler program which writes the TRS80 pixel set
+into the Nascom P.C.G. This is quite useful if you are trying to adapt a program
+which uses TRS80 graphics to run on your Nascom. If your machine displays the
+generator bits in inverse order you will have to change line 270 to LD A 15 and line
+320 to ADD A &pound;F0; similarly, the values in lines 540 and 580 should be interchanged.
+On a Nascom&nbsp;1 the upper 4 pixels consist of 5 lines of 4 dots, while the bottom 2
+contain 6 lines. As an unmodified Nascom&nbsp;2 misses out the two bottom lines, in this
+case the lowest pixels are 4 x 4.
+</p>
+<p>
+You will soon want to invent your own characters, either to be used
+singly or in blocks &ndash; you can get very impressive high-resolution pictures with 128
+graphics characters in a 16x8 block. The difficulty is working out what data to put in
+the P.C.G. RAM. One method is to draw the characters on graph paper and then
+convert the diagrams to bytes. The third program below can be used to draw
+characters directly from the keyboard. The program is executed by entering E1000
+AAAA, where AAAA is the address of your P.C.G. RAM or, if your P.C.G.
+address is coincident with an area of EPROM as in Steve Hope&rsquo;s design, an area of
+</p>
+<?php columnEnd(1); ?>

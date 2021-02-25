@@ -1,0 +1,93 @@
+<?php columnStart(1); ?>
+<p>
+which will not be changed by the justification process. This is
+especially useful when laying out tables. The &ldquo;linefeed&rdquo; key
+till put a= on the screen but both of the output ports detect
+this character and change it two a space character.
+</p>
+<p>
+Additional embedded formatting commands.
+</p>
+<p>
+Three additional formatting commands have been added to
+provide centring of lines. and automatic paragraph numbering.
+Lines 1950- 3050 of the source listing code for these
+additions.
+</p>
+<p>
+&lt;M when used at the end of a line, in place of&nbsp;.N will cause
+that line to be centred within the currently set margins. i-e-it
+will assume that leading spaces, inserted by&nbsp;.T or -T
+commands, are a part of the text to be included in the centring.
+CN&rsquo;will be treated like&nbsp;.N by the Adjust command.
+</p>
+<p>
+A Will insert a right-justified, two-digit number. It will
+Automatically fncrement each time it is used. The value starts
+1 and it can be reset at any time by using&nbsp;.A0.
+</p>
+<p>
+from
+</p>
+<p>
+-B is similar to&nbsp;.A except that it inserts lower case letters
+Again it will automatically increment and it can be
+with -Bo.
+</p>
+<p>
+reset to &ldquo;a
+</p>
+<p>
+The remainder of the source listing deals with the many patches
+to the original program which are needed in order to implement
+the changes. The easiest way in which to effect the changes will
+be to use ROM 7EAP if you have it. Power up ZEAP with its
+buffer located above 3000H and type in the object code. Load
+</p>
+<p>
+your original Wordease 2 and assemble to memory.
+Note that I have a modified NAS-SYS so that my parallel printer
+eutput goes via XOUT and that 07H (ctri-G) produces a &ldquo;beep&rdquo; so
+you might need to alter these locations to NOP.
+</p>
+<p>
+0010; PATCHES TO WORDEASE 2
+</p>
+<p>
+0020
+9030 } SUPPORT FOR EPSON 80 VEA XOUT ROUTINE
+</p>
+<p>
+9040 3 IN MODIFIED OPERATING SYSTEM tel.
+</p>
+<p>
+0050 + CTRL/U HAS BEEN MODIFIED SO THAT EMBEDDED
+(060 } ESCAPE SEQUENCES ARE JUSTIFIED CORRECTL Y
+0070
+</p>
+<p>
+0080 } PORT 1 VECTOR HAS BEEN INTERCEPTED AND
+0090 } CONTROL CDES HAVE BIT 7 SET.
+</p>
+<p>
+100 +
+</p>
+<p>
+0110 } 0AH (LF) IS PROCESSED AS 20H (1e = FAD?
+p120 +
+</p>
+<p>
+0130 F CTRL/M USED AT THE END OF A LINE WILL CAUSE
+0180 3 THAT LINE TO BE CENTRED.
+</p>
+<p>
+0150 3
+</p>
+<p>
+0160 2 CTRL/A INSERTS 2-DIGIT, AUTO PARAGRAPH
+00170 % NUMBERING. CTRL/AO RESETS COUNT TO 1.
+</p>
+<p>
+180
+</p>
+<?php columnEnd(1); ?>

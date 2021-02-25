@@ -1,0 +1,88 @@
+<?php columnStart(1); ?>
+<p>
+42
+</p>
+<p>
+giving up to 960K of virtual disk. In this case each card must have a different
+header plug, and the manual supplied shows clearly how to wire these up.
+</p>
+<p>
+It is also possible to buy the card with only 64K RAM and upgrade it later
+by simply adding the extra memory chips. MAP are quite happy that you do this and
+will supply the extra chips as you want them. This has a great advantage as a low
+cost approach, as the price of the 256 kbit chips will no doubt continue to fall.
+This makes the MAP RAM an interesting, although more expensive, alternative to
+the Gemini 64K RAM card.
+</p>
+<p>
+I do have one major complaint about MAP RAM. The documentation is very hard
+to understand, and there is not a circuit diagram. There are no examples of how
+to program the MAP RAM, and not even a clear indication of the programming
+instructions you would use to address it. When so much good work has been done on
+the design of the card, it is a shame that a few hours more were not spent on the
+manual. Also it would be helpful to have a circuit diagram, as manv people like
+to be able to work on their own equipment should anything go wrong. Instead of
+just criticising, I had better try to help! So here is some of the crucial
+information which I eventually deduced &ndash; with some advice from MAP, who are very
+helpful!
+</p>
+<p>
+How to program the MAP RAM if you have a Nascom or GM811 computer
+</p>
+<p>
+The control port is FE. If you output 00 to port FE vou have a normal 644
+ecard, and this is the condition when you turn the system on.
+</p>
+<p>
+If you want to swop the bottom 32K of RAM with other 32K pages, vou output a
+different value to port FE. You output C2 for the first extra 32K page, C3 for
+the next, and so on, all the way up to DF. To switch back to normal, output OO to
+port FF.
+</p>
+<p>
+For example to page in the third extra 32% vage, execute the instructions
+</p>
+<p>
+LD A,OC4H ; C2 is the first extra page, so C4 is the third
+OUT (OFEH),A
+</p>
+<p>
+Then to return to normal
+XOR A
+QUT (OFEH),A
+</p>
+<p>
+How to program the MAP RAM if you have a GM813 computer
+</p>
+<p>
+The control port on the Gemini GM813 is FE. It must be addressed by a Z80
+instruction using the C register to address the port. The top half of the B
+register must contain the logical 4K page (O-F) to which the physical memory is
+to be mapped, and the data value output must contain the number of the physical
+4K block.
+</p>
+<p>
+For example to swop the 4K of memory starting at 2000H with the fourth extra
+4K block, use the instructions
+</p>
+<p>
+LD BC, 20FFH 3; 20 because 2000H, FR is the port
+LD A,13H ; 10H is the first extra page, so 13H is the fourth
+OUT (C),A
+&reg;o then return this area to normal, use the instructions
+LD BC, 20FEH 3; 20 because 2000H, FE is the port
+LD A,02H ; The normal blocks are 000-0F, so 02 for 2000H
+</p>
+<p>
+our (C),A
+</p>
+<p>
+More Advice
+</p>
+<p>
+When paging in and out memory, there are two vital rules to remember (which
+I forgot several times).
+1. If the program code is in the area which is paged out then the system will
+crash.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,83 @@
+<?php columnStart(1); ?>
+<p>
+3) Oddities in the handling of REALs far down the Procedure/Function stack.
+4) Faulty handling of ARRAY types in PEEKs. This has been corrected in the later
+versions of the compiler, but here is the correction anyway.
+</p>
+<p>
+First of all, load the compiler master tape, and relocate as usual, using an
+address for the Runtimes routines which is 10 bytes less than normal, and for the
+compiler which is 35 bytes less than normal (at least, in both cases). Before doing
+anything else it is advisable to have pencil and paper to hand. You should be
+familiar with using the A command of the Nas-Sys to calculate hex addresses and the M
+command to modify memory. COMP will indicate the Compiler address, RUN will indicate
+the Runtime address. The appropriate hex values should be substituted for these
+</p>
+<p>
+labels.
+</p>
+<p>
+1) Calculate RUN + 0CA4H. At this address, you should find CD XX XX (using M
+command). Replace XXXX with RUN + 0FE1H. You are now setting up a jump over the
+runtimes to a patch at their end. At RUN + 0FE1H enter the following code &ndash;
+</p>
+<p>
+CB 74 C2 XX XX 26 40 E3 E1 C9
+where XX XX is RUN + 0DE2H. Remember ALWAYs to enter the low order byte first.
+</p>
+<p>
+ui
+</p>
+<p>
+COMP + 285FH.
+COMP + 285CH.
+</p>
+<p>
+2) At COMP + 0B6CH change OC 06 02 to CD YY YY where YYYY
+At COMP + 1E95H change 06 02 EB to CD 22 ZZ where Z2ZZZ
+At COMP + 1D95H change EB C1 C3 UU UU to 00 Ci C3 W &laquo;VV;
+where VVVV = UUUU + 1.
+At COMP + &pound;285C enter the following code &ndash;
+EB 18 01 OC 06 02 F5 79 32 FE OC AF 32 FF OC M1 C9
+</p>
+<p>
+3) At COMP + 1FB2H replace the current three bytes with CD SS SS where SSSS is the
+address of the byte after the C9 in the previous section.
+At that address, add the following code &ndash;
+DD CB O1 C6 21 TT TT C9 where TITT = COMP + 1FD5H
+</p>
+<p>
+4) At COMP + 1EDEH change bytes from CA NN NN to 28 29 23. If they are already in
+position, then your compiler has had the PEEK bug corrected.
+</p>
+<p>
+Having done all this, now make a tape of the relocated compiler and runtime
+support routines. Remember that the compiler requires four parameters on entry, so
+you can&rsquo;t write a Generate tape. Make allowance for the increased length of the
+compiler and runtimes when saving on tape, and remember that any compilers relocated
+by the master tape will again require the same procedure to be gone through. In all
+cases, the addresses are entered into memory with the low order byte first.
+</p>
+<p>
+I am greatful to the authors of this compiler for details of these fixes, and
+for permission to bring them to you.
+</p>
+<p>
+Rory O&rsquo;Farrell, Ireland.
+</p>
+<p>
+I run CP/M 2.2 on a Nascom&nbsp;2 with Gemini DD/DS drives and an IVC. When using
+PEN I sometimes suffer from not remembering which case the keyboard is in. The
+differences between &ldquo;ad&rdquo; and &ldquo;D&rdquo; can be somewhat frustrating.
+</p>
+<p>
+My original idea was to use the cassette LED to indicate the current case,
+but I found that whenever the keyboard was addressed the LED was put out. Since I
+have an N2 keyboard I have no need for the Control/Backspace toggle provided in the
+BIOS and so I decided to patch the BIOS and use this function to gain positive
+control of the case lock. With the patch below the Control/Backspace input always
+sets the case lock to small letters, the Control/Enter input remains the same &ndash; it
+flips the case lock each time. The last patch causes the case shift to be locked on
+capitals whenever the system is booted from cold.
+</p>
+<?php columnEnd(1); ?>

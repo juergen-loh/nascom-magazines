@@ -1,0 +1,98 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    47</span>
+
+EDD1 AF         OPRND:  XOR     A               ; Get operand routine
+EDD2 32AD10             LD      (TYPE),A        ; Set numeric expected
+EDD5 CD36E8             CALL    GETCHR          ; Get next character
+EDD8 1E24               LD      E,MO            ; ?MO Error
+EDDA CAC1E3             JP      Z,ERROR         ; No operand - Error
+EDDD DA1AF9             JP      C,ASCTFP        ; Number - Get value
+EDE0 CD77E9             CALL    CHKLTR          ; See if a letter
+EDE3 D222EE             JP      NC,CONVAR       ; Letter - Find variable
+EDE6 FEAC               CP      ZPLUS           ; "+" Token&nbsp;?
+EDE8 CAD1ED             JP      Z,OPRND         ; Yes - Look for operand
+EDEB FE2E               CP      "."             ; "." ?
+EDED CA1AF9             JP      Z,ASCTFP        ; Yes - Create FP number
+EDF0 FEAD               CP      ZMINUS          ; "-" Token&nbsp;?
+EDF2 CA11EE             JP      Z,MINUS         ; Yes - Do minus
+EDF5 FE22               CP      '"'             ; Literal string&nbsp;?
+EDF7 CACFF1             JP      Z,QTSTR         ; Get string terminated by '"'
+EDFA FEAA               CP      ZNOT            ; "NOT" Token&nbsp;?
+EDFC CA08EF             JP      Z,EVNOT         ; Yes - Eval NOT expression
+EDFF FEA7               CP      ZFN             ; "FN" Token&nbsp;?
+EE01 CA33F1             JP      Z,DOFN          ; Yes - Do FN routine
+EE04 D6B6               SUB     ZSGN            ; Is it a function?
+EE06 D233EE             JP      NC,FNOFST       ; Yes - Evaluate function
+EE09 CD56ED     EVLPAR: CALL    OPNPAR          ; Evaluate expression in "()"
+EE0C CD90E6             CALL    CHKSYN          ; Make sure ")" follows
+EE0F 29                 DEFB    ")"
+EE10 C9                 RET
+
+EE11 167D       MINUS:  LD      D,7DH           ; "-" precedence
+EE13 CD5DED             CALL    EVAL1           ; Evaluate until prec' break
+EE16 2AD010             LD      HL,(NXTOPR)     ; Get next operator address
+EE19 E5                 PUSH    HL              ; Save next operator address
+EE1A CD3CF8             CALL    INVSGN          ; Negate value
+EE1D CD44ED     RETNUM: CALL    TSTNUM          ; Make sure it's a number
+EE20 E1                 POP     HL              ; Restore next operator address
+EE21 C9                 RET
+
+EE22 CD2DEF     CONVAR: CALL    GETVAR          ; Get variable address to DE
+EE25 E5         FRMEVL: PUSH    HL              ; Save code string address
+EE26 EB                 EX      DE,HL           ; Variable address to HL
+EE27 22E410             LD      (FPREG),HL      ; Save address of variable
+EE2A 3AAD10             LD      A,(TYPE)        ; Get type
+EE2D B7                 OR      A               ; Numeric?
+EE2E CC51F8             CALL    Z,PHLTFP        ; Yes - Move contents to FPREG
+EE31 E1                 POP     HL              ; Restore code string address
+EE32 C9                 RET
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    46</span>
+
+ED92 7A         FOPRND: LD      A,D             ; &lt; = &gt; found&nbsp;?
+ED93 B7                 OR      A
+ED94 C2A8EE             JP      NZ,TSTRED       ; Yes - Test for reduction
+ED97 7E                 LD      A,(HL)          ; Get operator token
+ED98 22C510             LD      (CUROPR),HL     ; Save operator address
+ED9B D6AC               SUB     ZPLUS           ; Operator or function?
+ED9D D8                 RET     C               ; Neither - Exit
+ED9E FE07               CP      ZOR+1-ZPLUS     ; Is it + - * / ^ AND OR&nbsp;?
+EDA0 D0                 RET     NC              ; No - Exit
+EDA1 5F                 LD      E,A             ; Coded operator
+EDA2 3AAD10             LD      A,(TYPE)        ; Get data type
+EDA5 3D                 DEC     A               ; FF = numeric&nbsp;, 00 = string
+EDA6 B3                 OR      E               ; Combine with coded operator
+EDA7 7B                 LD      A,E             ; Get coded operator
+EDA8 CA06F3             JP      Z,CONCAT        ; String concatenation
+EDAB 07                 RLCA                    ; Times 2
+EDAC 83                 ADD     A,E             ; Times 3
+EDAD 5F                 LD      E,A             ; To DE (D is 0)
+EDAE 21A4E2             LD      HL,PRITAB       ; Precedence table
+EDB1 19                 ADD     HL,DE           ; To the operator concerned
+EDB2 78                 LD      A,B             ; Last operator precedence
+EDB3 56                 LD      D,(HL)          ; Get evaluation precedence
+EDB4 BA                 CP      D               ; Compare with eval precedence
+EDB5 D0                 RET     NC              ; Exit if higher precedence
+EDB6 23                 INC     HL              ; Point to routine address
+EDB7 CD44ED             CALL    TSTNUM          ; Make sure it's a number
+
+EDBA C5         STKTHS: PUSH    BC              ; Save last precedence & token
+EDBB 0169ED             LD      BC,EVAL3        ; Where to go on prec' break
+EDBE C5                 PUSH    BC              ; Save on stack for return
+EDBF 43                 LD      B,E             ; Save operator
+EDC0 4A                 LD      C,D             ; Save precedence
+EDC1 CD44F8             CALL    STAKFP          ; Move value to stack
+EDC4 58                 LD      E,B             ; Restore operator
+EDC5 51                 LD      D,C             ; Restore precedence
+EDC6 4E                 LD      C,(HL)          ; Get LSB of routine address
+EDC7 23                 INC     HL
+EDC8 46                 LD      B,(HL)          ; Get MSB of routine address
+EDC9 23                 INC     HL
+EDCA C5                 PUSH    BC              ; Save routine address
+EDCB 2AC510             LD      HL,(CUROPR)     ; Address of current operator
+EDCE C35DED             JP      EVAL1           ; Loop until prec' break
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

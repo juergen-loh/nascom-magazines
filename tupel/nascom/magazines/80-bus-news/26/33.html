@@ -1,0 +1,104 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    42</span>
+
+EC39 CD90E6     NEDMOR: CALL    CHKSYN          ; Check for comma between items
+EC3C 2C                 DEFB    ","
+EC3D CD2DEF     GTVLUS: CALL    GETVAR          ; Get variable name
+EC40 E3                 EX      (SP),HL         ; Save code str" , Get pointer
+EC41 D5                 PUSH    DE              ; Save variable address
+EC42 7E                 LD      A,(HL)          ; Get next "INPUT"/"DATA" byte
+EC43 FE2C               CP      ","             ; Comma?
+EC45 CA65EC             JP      Z,ANTVLU        ; Yes - Get another value
+EC48 3ACD10             LD      A,(READFG)      ; Is it READ?
+EC4B B7                 OR      A
+EC4C C2D2EC             JP      NZ,FDTLP        ; Yes - Find next DATA stmt
+EC4F 3E3F               LD      A,"?"           ; More INPUT needed
+EC51 CD9BE6             CALL    OUTC            ; Output character
+EC54 CDFCE4             CALL    PROMPT          ; Get INPUT with prompt
+EC57 D1                 POP     DE              ; Variable address
+EC58 C1                 POP     BC              ; Code string address
+EC59 DA77E8             JP      C,INPBRK        ; Break pressed
+EC5C 23                 INC     HL              ; Point to next DATA byte
+EC5D 7E                 LD      A,(HL)          ; Get byte
+EC5E B7                 OR      A               ; Is it zero (No input) ?
+EC5F 2B                 DEC     HL              ; Back space INPUT pointer
+EC60 C5                 PUSH    BC              ; Save code string address
+EC61 CA6FEA             JP      Z,NXTDTA        ; Find end of buffer
+EC64 D5                 PUSH    DE              ; Save variable address
+EC65 3AAD10     ANTVLU: LD      A,(TYPE)        ; Check data type
+EC68 B7                 OR      A               ; Is it numeric?
+EC69 CA8FEC             JP      Z,INPBIN        ; Yes - Convert to binary
+EC6C CD36E8             CALL    GETCHR          ; Get next character
+EC6F 57                 LD      D,A             ; Save input character
+EC70 47                 LD      B,A             ; Again
+EC71 FE22               CP      '"'             ; Start of literal sting?
+EC73 CA83EC             JP      Z,STRENT        ; Yes - Create string entry
+EC76 3ACD10             LD      A,(READFG)      ; "READ" or "INPUT" ?
+EC79 B7                 OR      A
+EC7A 57                 LD      D,A             ; Save 00 if "INPUT"
+EC7B CA80EC             JP      Z,ITMSEP        ; "INPUT" - End with 00
+EC7E 163A               LD      D,":"           ; "DATA" - End with 00 or ":"
+EC80 062C       ITMSEP: LD      B,","           ; Item separator
+EC82 2B                 DEC     HL              ; Back space for DTSTR
+EC83 CDD2F1     STRENT: CALL    DTSTR           ; Get string terminated by D
+EC86 EB                 EX      DE,HL           ; String address to DE
+EC87 219AEC             LD      HL,LTSTND       ; Where to go after LETSTR
+EC8A E3                 EX      (SP),HL         ; Save HL&nbsp;, get input pointer
+EC8B D5                 PUSH    DE              ; Save address of string
+EC8C C3A2EA             JP      LETSTR          ; Assign string to variable
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    43</span>
+
+EC8F CD36E8     INPBIN: CALL    GETCHR          ; Get next character
+EC92 CD1AF9             CALL    ASCTFP          ; Convert ASCII to FP number
+EC95 E3                 EX      (SP),HL         ; Save input ptr, Get var addr
+EC96 CD6BF8             CALL    FPTHL           ; Move FPREG to variable
+EC99 E1                 POP     HL              ; Restore input pointer
+EC9A 2B         LTSTND: DEC     HL              ; DEC 'cos GETCHR INCs
+EC9B CD36E8             CALL    GETCHR          ; Get next character
+EC9E CAA6EC             JP      Z,MORDT         ; End of line - More needed?
+ECA1 FE2C               CP      ","             ; Another value?
+ECA3 C2ECEB             JP      NZ,BADINP       ; No - Bad input
+ECA6 E3         MORDT:  EX      (SP),HL         ; Get code string address
+ECA7 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
+ECA8 CD36E8             CALL    GETCHR          ; Get next character
+ECAB C239EC             JP      NZ,NEDMOR       ; More needed - Get it
+ECAE D1                 POP     DE              ; Restore DATA pointer
+ECAF 3ACD10             LD      A,(READFG)      ; "READ" or "INPUT" ?
+ECB2 B7                 OR      A
+ECB3 EB                 EX      DE,HL           ; DATA pointer to HL
+ECB4 C25CE8             JP      NZ,UPDATA       ; Update DATA pointer if "READ"
+ECB7 D5                 PUSH    DE              ; Save code string address
+ECB8 B6                 OR      (HL)            ; More input given?
+ECB9 21C1EC             LD      HL,EXTIG        ; "?Extra ignored" message
+ECBC C410F2             CALL    NZ,PRS          ; Output string if extra given
+ECBF E1                 POP     HL              ; Restore code string address
+ECC0 C9                 RET
+
+ECC1 3F457874   EXTIG:  DEFB    "?Extra ignored",CR,LF,0
+
+ECD2 CD70EA     FDTLP:  CALL    DATA            ; Get next statement
+ECD5 B7                 OR      A               ; End of line?
+ECD6 C2EBEC             JP      NZ,FANDT        ; No - See if DATA statement
+ECD9 23                 INC     HL
+ECDA 7E                 LD      A,(HL)          ; End of program?
+ECDB 23                 INC     HL
+ECDC B6                 OR      (HL)            ; 00 00 Ends program
+ECDD 1E06               LD      E,OD            ; ?OD Error
+ECDF CAC1E3             JP      Z,ERROR         ; Yes - Out of DATA
+ECE2 23                 INC     HL
+ECE3 5E                 LD      E,(HL)          ; LSB of line number
+ECE4 23                 INC     HL
+ECE5 56                 LD      D,(HL)          ; MSB of line number
+ECE6 EB                 EX      DE,HL
+ECE7 22C910             LD      (DATLIN),HL     ; Set line of current DATA item
+ECEA EB                 EX      DE,HL
+ECEB CD36E8     FANDT:  CALL    GETCHR          ; Get next character
+ECEE FE83               CP      ZDATA           ; "DATA" token
+ECF0 C2D2EC             JP      NZ,FDTLP        ; No "DATA" - Keep looking
+ECF3 C365EC             JP      ANTVLU          ; Found - Convert input
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

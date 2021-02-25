@@ -1,0 +1,90 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Jumper.
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+RESTART JUMP MULTIPLEXER FOR NASCOM 1
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by M. V. A. Alberry
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+Shortly, with the advent of new hardware opportunities, ie: disks with CP/M,
+many Nascom&nbsp;1 users will no longer want to RESET to 0000H, as unfortunately CP/M
+requires RAM down there, and system ROM somewhere towards the top of the memory map.
+The circuit used is lifted straight from the Nascom&nbsp;2 circuit diagram, so I claim no
+originality &ndash; however, it works, so I pass it on to others.
+</p>
+<p>
+The object of the exercise is to force the top four address lines (Al2 to A15)
+to some value other than 0000H on &lsquo;reset&rsquo;. This is required for the first instruction
+cycle only, and this forced condition must be released before the next instruction
+cycle. What happens is that on &lsquo;reset&rsquo;, the top four address lines go to 0H (as
+usual), but because of the action of the &lsquo;reset multiplexer&rsquo;, the top four address
+lines are modified to the required address. This condition remains true, commencing at
+the first Ml cycle following the &lsquo;reset&rsquo;, and termiantes on the next following Ml
+cycle.
+</p>
+<p>
+To ensure proper operation of the program thereafter, the first instruction
+encountered at the multiplexed address must be an absolute unconditional jump (C3XXXX)
+to the next instruction. This will force the next instruction address into the program
+counter, and from then on operation will continue normally, and the effect of the
+&lsquo;reset multiplexer&rsquo; can be removed. For example, we wish to &ldquo;reset jump&rdquo; to F000H, and
+then continue the program from that address. On &lsquo;reset&rsquo;, an Ml cycle is put out by the
+Z80, and an op-code fetch occurs. The Z80 address bus is set to 0000H, but due to the
+action of the multiplexer, the op-code is fetched from address F000H. This op-code
+must be an immediate jump instruction, and for sake of argument, we will make this an
+absolute jump to F003H. The code will look like this:
+</p>
+<pre>
+F000  C3 03 F0    JP F003H
+F003  XX          Next instruction
+</pre>
+<p class="continued">
+as the op-code will be translated by the Z80 as an absolute jump, the next two bytes
+will be fetched, advancing the program counter to 0003H, and the multiplexed address
+to F003H. Having fetched the byte at F002H, the address F003H will be placed in the
+program counter. The Z80 will then put out another Ml cycle to fetch the next op-code,
+this time from F003H. The falling edge of the Ml cycle will cancel the &lsquo;reset
+multiplexer&rsquo; and the address bus will carry the next address put out by the Z80, which
+will be F003H as required.
+</p>
+<p>
+The circuit is very simple and uses a 74LS257 (quad tri-state multiplexer) to
+gate the forced address onto the bus, or to gate the processor bus onto the bus
+depending on the condition of pin 1. The 74LS257 may be likened to a 4 pole 2 way
+switch. As we want to intercept the address lines prior to them getting to NASBUS, the
+buffer board is the logical place for it. Fortunately for us, Nascom left a vast open
+space on the buffer board, and this is ideal area for building a small &lsquo;piggyback
+reset multiplexer&rsquo;.
+</p>
+<p>
+The four top address lines, Ml and RFSH all pass through IC3 on the buffer
+board on their way to NASBUS, so by removing this IC and moving it to the &lsquo;reset
+multiplexer&rsquo; board, we have an ideal connector point for the &lsquo;reset multiplexer&rsquo; board
+via a 16 way cable and header plug. Only one minor modification is required to the
+buffer board itself to get the RESET signal on to the &lsquo;reset multiplexer&rsquo; board. Again
+fortunately IC3 has two gating inputs on pins 1 and 15. We only need one gating signal
+to the &lsquo;reset multiplexer&rsquo; board, so one pin is spare. It is most convenient to use
+pin 1 for the RESET and pin 15 for gating. Thus we need to cut the track between pins
+1 and 15 of IC3. As this is on the top side of the pcb, this can be a bit tricky.
+Remove IC3 and you will see two adjacent tracks (See alongside circuit diagram.)
+</p>
+<p>
+Cut the track indicated and try not to cut both (as I did), and connect RESET
+from some suitable point on the buffer board to pin 1 of 1C3 via a flying lead. Use a
+piece of veroboard about 2" square and construct the circuit shown on the circuit
+diagram, bolt (or use double sided sticky) the veroboard to the buffer board as close
+to IC3 socket as is convenient, having prepared a suitable length of 16 way ribbon
+cable with 2 16 way header plugs to connect from the multiplexer board to IC3 socket.
+A tip, my board didn&rsquo;t work first time, so I found 12" of ribbon cable useful, so that
+I could get at the &lsquo;piggyback&rsquo; board to modify it. Having found and corrected the
+fault, the ribbon was shortened, and the board mounted permanently.
+</p>
+<?php columnEnd(1); ?>

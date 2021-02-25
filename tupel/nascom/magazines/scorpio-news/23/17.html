@@ -1,0 +1,55 @@
+<?php columnStart(1); ?>
+<pre>
+chain3: push de ;Save registers
+push be
+Id c,26 ;Set DMA address
+call bdos
+Id de,ovrfcb ;Read next sector
+id c,33 ;(Read Random code)
+call bdos
+Id hl,(ovrfcb +33) ;Increment sector number
+inc hl
+Id (ovrfcb + 33),hl
+pop be ;Restore registers
+pop de
+Id hi,80h &mdash;; Adjust load address
+add hi,de
+ex de,hi
+djnz chain3 &mdash;;Loop back
+pop hl ;Restore reference pointer
+bit 7,(al) ;Check for last
+inc hl
+jr z,chain2 ;No = loop back
+ret ;Jump into new code
+</pre>
+<p>
+Asit stands this system of reference will serve well for most applications, but it could
+be improved. Firstly, where re-entrant sections are used it may be desirable to have
+two or more routines in a common section. An example would be where they have
+considerable common code which is not used elsewhere, or where one would often
+be followed by the other. This could be achieved using a dual table system where
+the routine number would be used as.a reference to a table of entry addresses and
+section numbers, and the section number found would reference a table of disk
+allocations.
+</p>
+<p>
+An obvious second change that could be made concerns the length bytes. An
+accuracy of 128 bytes in the length of blocks is good enough for most cases, but it
+would obviously be possible to use 2 bytes to give the exact length. Of course it would
+then be necessary to buffer the sectors as they are loaded.
+</p>
+<p>
+There remains one very difficult question if we are going to have re- entrant sections
+in the overlay. How, using a high level language compiler, do we arrange for the
+relevant code to occupy a suitable free block of memory? The situation is not as
+troublesome as it could be because we have removed the need to link into the main
+code by our overlay management system. Firstly we must allocate the memory block
+we are going to use. If the compiler produces relocatable object (REL files) we will
+probably have issued /D: and /P: link switches to ensure the data area is constant,
+and we should be able to leave a suitable gap between code and data to take the
+extra bits. Then when we compile and link these we can arrange for them to be where
+we want. If the re-entrant sections need to access runtimes or any of the main code,
+it should be possible to load the host program into the linker for the required
+references. Such a process is naturally very involved and will take some time and
+</p>
+<?php columnEnd(1); ?>

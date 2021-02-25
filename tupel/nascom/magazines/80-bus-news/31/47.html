@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+47
+</p>
+<p>
+ZAP
+</p>
+<p>
+I ordered my copy of ZAP from an old copy of 80-BUS NEWS where the price
+quoted was #15. When it arrived, I was pleasantly surprised to find a refund
+of #8.50 since the price had since been reduced to #6.50. It comes on a good
+quality BASF tape and the manual is just 11 A4 pages stapled together. ZAP
+takes up about 7K and also compresses the source code, so a minimum of 16K RAM
+is sufficient. On cold starting you are greeted with a cheery message and a
+report on the amount of free memory.
+</p>
+<p>
+The editing facilities are the worst feature of this assembler and are
+similar to what you find on most BASICs of a few years vintage. In particular
+there is no pause control on listing to the screen, so you can only list in
+blocks of 14 lines. Also, there is no string search/change command which,
+together with the poor listing facilities, makes editing rather tedious. Once
+you have suceeded in getting the required line on the screen it can be edited
+using the NAS-SYS screen-editing commands. All commands must be entered in
+full (usually four letters). This is far less convenient than single key
+entry. Filenames are not used when saving the source on tape.
+</p>
+<p>
+There are a couple of useful commands however, such as OBEY &ldquo;c&rdquo; where c
+can be any NAS-SYS command, so you can use NAS-SYS commands without having to
+leave the assembler. DUMP will write the assembled object code to tape and if
+you put a RET instruction at the end of the program, RUN will execute the
+program and return control to ZAP when it is finished.
+</p>
+<p>
+ZAP also compresses the source by using l-byte codes for mnemonics,
+labels and macros, and by removing all unnecessary spaces. There is no space
+between the line number and the label and only one space is left between label
+and mnemonic, and mnemonic and comment. This makes it impossible to lay out
+the source in neat columns for readability, since the resultant listing is
+always a scruffy mess!
+</p>
+<p>
+Conditional assembly is possible by enclosing the source within an IF
+(expression)... FI statement. If the expression is evaluated to true (non-zero)
+then the code within the block is assembled, otherwise it is ignored and
+assembly continues from the line following the FI. Macros are also supported &ndash;
+a macro is just a group of instructions which is given a suitable name. When
+the macro name appears in the source, the assembler inserts the machine code
+which makes up the macro. A macro would normally be used where a small group
+of instructions are used many times, but where a subroutine would not be
+appropriate. For example a macro to push registers at the start of each
+stbroutine. Parameters may be passed to the macro so that the same macro may
+operate on different data, which may be registers, labels, expressions, etc.
+In the ZAP assembly listing the macro appears in full with all the mnemonics,
+so that it is still readable by anyone not familiar with macros. Labels and
+macros may be listed at any time but if you have deleted any from the source
+during programming, they still appear in the tables and it is imposible to get
+rid of them! Assembly is aborted at the first error, however the error
+messages given are reasonably full and clear.
+</p>
+<p>
+Multistatement lines may be used with mnemonics separated by colons.
+The NAS-SYS restart mnemonics are supported (although BRKPT and RDEL are
+incorrectly represented by BREAK and KDEL respectively). In addition, &ldquo;for
+convenience&rdquo; as the manual puts it, there are alternative mnemonics for some
+of the more common instructions. e.g. CLA (clear acc) for XOR A, JSR (jump to
+subroutine) for CALL. I really don&rsquo;t see the point of including alternatives
+since their use will only lead to lack of standardisation and the Zilog
+mnemonics are quite logical and clear enough. Another unusual, but more
+interesting feature is the inclusion of the Z80 unknown opcodes, or most of
+them anyway.
+</p>
+<p>
+ay tg PE PERE ROSELLE Tote i gn nee en meri
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,143 @@
+<?php columnStart(2, 2); ?>
+<p>
+default mode. (See page 31 in the manual.) I must
+say that this has caused no real difficulty at all.
+</p>
+<p>
+Yours truly, Tom Gibson, Middlesbrough, TS6
+OHU.
+</p>
+<p>
+Ed. &ndash; see my comments following the next letter.
+</p>
+<p>
+Turbo Pascal &mdash;2
+</p>
+<p>
+I have installed Borland International Turbo Pascal
+onto my Gemini[Nascom system. With the Nascom
+video (generated using MOVCPMN) the
+system works perfectly, but when trying to use the
+IVC (Version 1.0}, the system hangs after trying to
+edit a file. Other commands work perfectly and it
+appears to be only when cursor addressing is used.
+Have you come across this problem before or can
+you suspect a cause?
+</p>
+<p>
+By varying screen size that the Pascal recognizes
+(from 10 x 20 thru&rsquo; 25 x 48 to 25 x 80) and varying
+the delays generated after the cursor addressing, I
+can vary the time between invoking the editor and
+hanging occurring. By this I mean the number of
+characters typed. I would appreciate any help.
+</p>
+<p>
+Yours truly, R T Lea, Sarawak, East Malaysia.
+</p>
+<p>
+Ed. &ndash; Well, Mr Lea, you can either apply the modification
+suggested by Mr Gibson above, or you may like to get to
+the source of the problem. Version 1.0 of the IVC-MON
+(which was not in production for very long) did not
+support any nested escape sequences. Later releases, as
+well as including a number of enhancements, have been
+modified so that certain sequences, including cursor
+addressing, can accept nesting. The differences between
+releases of IVC-MON were published in 80-BUS News
+Volume 3, Issue 2, pages 48 and 49, in an interesting
+article giving an insight into the hardware and software
+design philosophy used in the development of the Gemini
+GM812 IVC, and its successor, the GM832 SVC. You
+should find, as should Mr Gibson, that replacing your
+IVC-MON V1.0 with any later release will eradicate your
+problem.
+</p>
+<p>
+An IVC Problem?
+</p>
+<p>
+I have recently come across an intriguing problem
+with WordStar when used on a system which
+incorporates IVC-MON 2.0 and the keyboard is
+attached to the GM812 video card. If the ESC key is
+pressed (as may be necessary if an error or
+interruption occurs), a List/Edit Function key
+message is produced &ndash; not much use if you haven&rsquo;t
+got the appropriate keyboard and a ***x*
+nuisance as well since the system may lock-up and
+often has to be cold booted to clear the problem.
+</p>
+<p>
+I am currently running SYS and can have the
+keyboard attached to the CPU card or the IVC. By
+</p>
+<p>
+attaching the keyboard to the CPU card, the ESC
+key functions normally and WordStar does not
+become confused. If a version of SYS is not used,
+link 3 on the IVC will need to be adjusted so that the
+keyboard can be used on the CPU card.
+</p>
+<p>
+Yours truly, Dr P D Coker, Orpington, Kent.
+</p>
+<p>
+Ed. &mdash;&mdash; the clue to your problem lies in the fact that the
+keyboard works OK on the CPU board, and not on the IVC.
+Firstly, why use it that way round anyway? I cannot think
+of any advantage to that approach, and a definite
+disadvantage is that you lose the type-ahead buffer.
+Secondly, I bet that you have a GM821 keyboard, and that
+you don&rsquo;t get the &lsquo;List/Edit&nbsp;.... message until you have
+pressed the &lsquo;ESC&rsquo; key twice, right? To explain what is
+happening I&rsquo;ll just give a little history on Gemini
+keyboards.
+</p>
+<p>
+First of all came the GM821 keyboard (very originally
+known as the G613). This has 59 keys and can, with
+various permutations of Normal, Shift, Control, and
+Shift/Control, produce 128 ASCII codes, thus using 7 bits
+of the interface. The 8th bit is used as a strobe, and the
+keyboard can be connected to the keyboard interface on
+the GM811 CPU, GM812 IVC and GM832 SVC boards.
+When Gemini decided to produce the GM827 keyboard,
+with 87 keys, some of the keys were used to obviate the
+necessity for the Shift/Control permutations. In addition
+30 keys were added to be user-definable separately in
+Normal and Shifted modes. These obviously require
+additional codes, but with only 7 bits available the
+question was &lsquo;How?&rsquo;. The answer was to make therm all
+double-byte codes, and to pick one existing code as the
+first byte &lsquo;key&rsquo;. The one chosen was the ESC key, code
+1BH. This key was therefore redefined as the first in the
+double-byte sequence, 1B 00, and all of the function keys
+carried on from there, FO = 1B 01, F1 = 1B 02, ... and so
+on. The IVC-MON (Version 2.0 and later) was modified to
+include support for these codes. One of the user
+selectable links on the IVC (one of the switches on the
+SVC) determines whether the keyboard to be used is the
+GM821 or GM827/GM852. (The GM852 is a low-profile
+version of the GM827 with the only differences being that
+it is also available in a serial version, and that the very
+latest ones extend the user-defined keys into the Controi
+mode as well.) If GM821 is selected then the code is
+passed on directly, if GM827/GM852 is selected then all
+codes are passed on directly unless a 1BH is received, in
+which case it waits for the next code and translates it to
+the user-defined string held in its workspace RAM.
+</p>
+<p>
+And so back to Dr Coker&rsquo;s problem. If the IVC-MON (or
+SVC-MON} believes that the keyboard is a GM827/
+GM852, but it is in fact a GM821, then when the ESC key
+is pressed the keyboard outputs the code 1BH, which tells
+the IVC-MON that this is a special case, and that another
+code will be used to select a user-defined string.
+Consequently nothing will happen until another key is
+pressed, and depending on what this is will determine
+what the [VC/SVC actually passes onto the system. If this
+is the ESC key again (being pressed in the belief that the
+</p>
+<?php columnEnd(2); ?>

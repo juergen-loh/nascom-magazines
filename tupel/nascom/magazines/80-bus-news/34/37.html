@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+37
+</p>
+<p>
+Now onto XBASIC. For sixty odd quid you get a disk with the ordinary
+interpreter plus the GXBASIC, the graphics version for the AVC. With AVCTXT
+sitting at the top of ram to give the 80 column screen (55K System size), the
+former gives you 35122 bytes of ram, the latter only 27105 bytes&nbsp;! I won&rsquo;t
+retramp the areas covered by Roger Dowling, just get straight into the disk
+handling stuff. Well, it&rsquo;s really a bit of a mess, but somehow Lucas Logic
+came out with some twists to almost make up for it. I think they&rsquo;ve gone down
+the road of &ndash; wait for it &ndash; BBC BASIC (sorry, quick, drink a glass of water,
+or something a bit stonger). I&rsquo;ve used MBASIC on a Superbrain and it was quite
+nice. XBASIC lost me three days figuring out how to use the random access
+files without screwing up. The relevant commands are &ndash;
+</p>
+<p>
+DRIVE &lt;letter&gt; &ndash; selects which drive to be logged in, -A&rsquo; is drive 0.
+</p>
+<p>
+CREATE &lt;F&gt;,&lt;SV&gt;,&lt;I&gt; &ndash; creates a file with name &lsquo;F&rsquo;, -SV&rsquo; sets up buffer space
+and system variables, -I determines how long the random record length
+is. The range of -I&rsquo; is 0-65535. If -I&rdquo; is not specified or 0, then the
+file is deemed for sequential access only. Any existing file with the
+same name is first deleted and an empty one then created.
+</p>
+<p>
+OPEN &lt;F&gt;,&lt;SV&gt;,&lt;I&gt; &ndash; this is the same as for CREATE, If the file doesn&rsquo;t exist
+then you get a -No File error&rsquo;.
+</p>
+<p>
+CLOSE &lt;SVl..n&gt; &ndash; closes the named files. CLOSE alone will close ALL open
+files.
+</p>
+<p>
+APPEND &lt;F&gt;,&lt;SV&gt; &ndash; this is useful for sticking data onto the end of sequential
+files without having to read to the end first, so saving a lot of time.
+It doesn&rsquo;t work with random files as you can specify which record you
+want to go to any way.
+</p>
+<p>
+Now comes the daft bit, or B**b method. To get data in and out of files you
+have to direct the computer with the following &ndash;
+</p>
+<p>
+PRINT &pound; &lt;SV&gt;,&lt;I&gt;;&lt;variable(s)&gt; &ndash; the variable(s) are output to the opened file
+with system variable name -SV*. ANY output from now on until otherwise
+redefined will go to that file. So if you forget the drive purrs away
+quite oblivious to the fact that it&rsquo;s just ruined an evenings work.
+</p>
+<p>
+INPUT &pound; &lt;SV&gt;,&lt;I&gt;;&lt;variable(s)&gt; &ndash; this is the opposite of PRINT &pound; (why they
+couldn&rsquo;t have used DISCIN and DISCOUT or similar is beyond my logical
+brain). Like PRINT &pound; if you forget to redefine the input you get one hell
+of a mess. To redefine you can CLOSE &lt;SV&gt;, or do another PRINT &pound; &lt;SV&gt;,&lt;I&gt;
+(or INPUT &pound; &lt;SV&gt;,&lt;I&gt;) or PRINT &pound;0 (or INPUT &pound;0) so that the file(s)
+remain open. To backtrack a bit, the &ldquo;SV&rdquo; has to be a string variable and
+Lucas Logic claim it to be a wonderful idea as you can have lots of files
+open at the same time and because it&rsquo;s a string variable, when not in use
+the memory is a available for use by something else. Sounds good doesn&rsquo;t
+it&nbsp;? So, what took me three days to work out&nbsp;? Well, for one thing I had
+to learn to redefine the output and input. Secondly, when using random
+files the record length is not what you tell the computer. The manual
+doesn&rsquo;t make it clear that the end of record marker (two bytes) is
+INCLUDED in the record length. So if you specify a record length of 50
+bytes and output 50 bytes, two bytes are stuck on the end. When you then
+input the file you run out of string space as the whole file is dragged
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,68 @@
+<?php columnStart(1); ?>
+<p>
+Now routine for GOTO etc.
+change routine to look for line no.
+to point here, and fetch no. oF
+no. given a label.
+</p>
+<p>
+&lsquo;
+</p>
+<p>
+PATCH LOCATIONS
+put the adrress needed in the 2 bytes
+st these adres.
+</p>
+<p>
+3 RUN, GOTO, GoSUB &ndash; 182F
+</p>
+<p>
+ON Ke. = 1909
+3 RESTORE = 1784
+3 LIST = 157F
+S EDIT = 2c04
+LaBc DEC HL sHLmtext ptr.
+CALL &mdash;IGBLK Sapecial entry pt- for ON x
+cr oe
+gp NZ,GETNM snormal number routine
+PusH fit
+Lp E,1 counter
+NXTCHR INC 8 count chars in label
+TNC HL
+Ww ay (HL
+oR a
+ap Z,SYNERR jend of line in label
+cP te eheck for termnatar
+oR NZ, NXTCHR
+Ex (SP) ,HL ysave ptr
+PUSH HL intr to label
+ir AE jeave counter (incl. quotes?
+&gt; (COUNT? A
+Ex (SP), HL sget Label ptr
+PusH BG
+PusH HL
+LD HL, (CEC) jxcan fram beginning ef prog.
+NxTLIN LD JH sfor next line ptr
+ww ce
+Lp AL (HL) tcheck for end
+INC HL
+oR &laquo;aL?
+aR 2, LABERR
+INCH
+Lb E, (HL) ssave Line no.
+INC HL
+wo Dy HL)
+CALL IGBLK $#ind ast char on line
+ce ae
+aR NZ,NOLAB,
+ex DEH
+ex (SP&gt;,HL sate ptr
+PUSH HL
+PusH Be
+Lp (COUNT)
+cb BA
+NxTMAT LD AL (DE) smaten 2 strs in Line
+cr ay
+ar NZ, NOMTCH
+</p>
+<?php columnEnd(1); ?>

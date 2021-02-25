@@ -1,0 +1,146 @@
+<?php columnStart(2, 2); ?>
+<p>
+SUBMIT file, to PIP the indexes back and forth, but
+I don&rsquo;t like SUBMIT files for uneducated use, and
+anyway, they&rsquo;re messy. No the answer is to make
+dBASE do the job as part of the program.
+</p>
+<p>
+Now dBASE can copy data files around with
+impunity, and it can create new files all over the
+place, but can it copy index files from one drive to
+another, no way! The same applies to&nbsp;.CMD, .FMT
+and&nbsp;.MEM files as well, but I can&rsquo;t see why anyone
+would want to copy these.
+</p>
+<p>
+The simplest answer is a &lsquo;mini-PIP&rsquo; program which
+will transfer the indexes to the RAM disk and back
+again. A very simple little program was written to
+open an input file, open an output file and copy it
+sector by sector. Dead simple you might think!
+Let&rsquo;s have a look at the snags which could befall the
+unwary.
+</p>
+<p>
+We need two file control block for a start, and
+because the program is to be used generally, we
+need a space to transfer the names of the files to be
+copied into. No problem there. You can see from
+the first bit of the progam the &lsquo;to&rsquo; drive name, and
+the &lsquo;from&rsquo; drive name and file name space. I put
+them at the front of the program as that&rsquo;s easy to
+find when POKEing around to fill in the names. The
+POKE location for the names is always three bytes
+in from the start of the program no matter how I
+hack the program around and change its length.
+Note that there is no check to see if you&rsquo;re trying to
+write to the same drive. As the program is going to
+get it&rsquo;s parameters from the dBASE program, and
+no user intervention is required, that sort of
+mistake can&rsquo;t happen. Can it?
+</p>
+<p>
+The program starts off by clearing the space behind
+the &lsquo;from&rsquo; name as this is the file control block for
+the following &lsquo;search for first&rsquo;. If you forget to clear
+this fcb, then CP/M does strange things with the
+&lsquo;search for first&rsquo;.
+</p>
+<p>
+The &lsquo;search for first&rsquo; is to check for the presence of
+the named files, if they&rsquo;re not found, then the
+program returns home immediately. Here comes
+the first snag! The &lsquo;search for first&rsquo; returns Offh if
+there are no files present, otherwise, it copies the
+sector of the directory where it found the first entry
+into the current DMA workspace and returns with
+A set to the number of the entry in that sector.
+Checking for Offh is dead easy, anything else in A
+assumes that at least one file was found. Having
+established the presence of the files, where the
+heck is the current DMA, as dBASE, sure as eggs is
+eggs, didn&rsquo;t leave it at the default DMA of 0080h.
+We need this address as we have to copy the file
+name we have found to the file workspace buffer,
+as we intend to make a list of all the files required
+before we start the copy process.
+</p>
+<p>
+A little investigation revealed that different versions
+of dBASE leave the DMA at different addresses.
+All around 98XXh, but not consistent. So
+</p>
+<p>
+putting a fixed address into the program is not on.
+The next thought was that CP/M must know where
+the DMA address is, but there&rsquo;s no command to
+return it. Perhaps it could be found in a CP/M
+workspace someplace? That way I could cheat and
+calculate a fixed offset from some known location
+within CP/M. I looked, it appeared twice, and both
+in the BIOS. Now the notorious thing about BIOSs.
+is that each version is different, so odds on that the
+DMA pointers will move around between versions,
+and anyway, which one of the two pointers to use?
+No forget that approach. The last resort was the
+obvious, set the DMA pointer myself. My objection
+to this was, what would dBASE do? Without
+disassembling large chunks of it, there was (and
+still is) no way I could be sure that dBASE would
+reset the DMA pointer correctly before using one of
+it&rsquo;s overlays, or whatever. Or whether in fact this
+would matter. I took a chance and set the DMA to&mdash;
+0080h. dBASE continued to work, and so far
+nothing odd appears to have happened. But I&rsquo;m
+still unhappy about it.
+</p>
+<p>
+So before the &lsquo;search for first&rsquo;, there is a &lsquo;set DMA&rsquo;
+so I know where to retrieve the data.
+</p>
+<p>
+Unfortunately, having found a file name, you can&rsquo;t
+use it immediately to copy the file to the new drive,
+as the copy process causes the &lsquo;search for first&rsquo; &mdash;
+&lsquo;search for next&rsquo; to forget where it was, so the file
+names must be found first and stored in a
+workspace for copying later. Having found the first
+entry, the position in the DMA buffer is calculated
+and the name found copied to the file workspace
+buffer. The program drops through to the &lsquo;search
+for next&rsquo; and loops until all the names are in the
+buffer. So I know where the end of the buffer is, I
+stuck a null on the end of it.
+</p>
+<p>
+The next bit was a piece of cake. Copy the first
+name found into the first and second fcb&rsquo;s, open
+the files and read a sector from the input file into
+the DMA and then write the DMA out to the output
+file. When the file was all copied, close the output
+file and pick up the next name in the list and do it
+all again until the name in the list was a null,
+indicating the end of the list. Simple and very quick.
+</p>
+<p>
+I didn&rsquo;t bother-to check the validity of the files as
+Winnie to RAM disk copies are always reliable and
+anyway what could I do if there was an error? The
+whole process was quite quick, shovelling about
+200K of indexes in about 30 seconds.
+</p>
+<p>
+From the foregoing, you can see I&rsquo;m all for the KISS
+philosophy. KISS, &lsquo;Keep It Simple, Stupid&rsquo; on the
+grounds that if it&rsquo;s simple it should work Ok,
+anyway, if it didn&rsquo;t then it should be a doddle to fix.
+</p>
+<p>
+Having got the routine working, a thought occurred!
+Why not make the routine make the backup
+copy disks as the machine shuts down. That&rsquo;s
+about 650K from Winnie to disk. I tried it. It took 45
+minutes!!! A very much confused DH sat down to
+</p>
+<?php columnEnd(2); ?>

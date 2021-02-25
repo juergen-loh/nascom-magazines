@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+17
+</p>
+<p>
+date. Each item, the amount, your autograph, etc, are assigned a specific place
+on the cheque. The bank gets cross if you put the wrong data in the wrong slots.
+So lets call the slots for your autograph, the payee, etc, the data fields
+because that is where the data is to go.
+</p>
+<p>
+I hope that&rsquo;s tidied up some definitions for you. A database is a chunk
+(large or small) of data. The database is composed of individual records each
+numbered in some way so they may be identified. Fach record has one or more
+fields, each assigned to a specific purpose in storing the data, quantity, date,
+item number, etc. The data base should be given a name, even if it&rsquo;s something
+uninspired like &lsquo;DATABASE&rsquo;. The records would normally be numbered, and each
+field within a record would probably have a name, such as QTY for quantity, or
+ITEM for guess what. It helps if the field names are appropriate to the field
+use.
+</p>
+<p>
+Now databases can come in many forms, and one of the most commonly sought
+after (but least commonly used) is the implimentation for the smaller machine,
+something like a 16K Nascom without disks for instance. Let&rsquo;s take a fairly
+typical database, a name, address and telephone list. Now I&rsquo;ve found from bitter
+experience that this requires at least 6 fields per record, four fields of 25
+characters and two fields of 10 to 12 characters. Well one thing is certain, a
+16K machine isn&rsquo;t going to hold much data, as even at best using string arrays
+for the fields, the limitation is going to be the memory space available for
+those arrays. Let&rsquo;s be generous, lets&rsquo;s say the program to handle the database is
+no more than 4K long, then that leaves 12K available as string space. Now the way
+Microsoft Basic works is that it sets up a pointer to each string, which is, if I
+remember rightly, five bytes per string, so each field is going to have a five
+byte overhead for starters. So our name and address database is going to be about
+150 characters per field. So we have room for about 85 names and addresses in the
+database before we run out of space. This is plenty big enough for the home user,
+but then the home user isn&rsquo;t going to wait a couple of minutes loading up the
+data from tape just to look up Fred&rsquo;s phone number. Far easier to look it up on
+the jotter by the phone. This is ignoring the difficulty of saving strings as
+data on a Nascom in any event. String saving has been hammered to death in past
+issues of INMC and INMC80 so I&rsquo;m not going to waste time detailing them here.
+</p>
+<p>
+Of course, there are ways of compressing the data, string compression
+where the data is shrunk arithmetically to reduce its size. Three characters into
+two is a typical compression ratio, or even 50% where lower case characters are
+converted to upper. Another way is &lsquo;dynamic&rsquo; allocation of fields where empty
+fields are shuffled so that more space is available from the unallocated space.
+The Nascom version of the Microsoft Basic does this anyway when string space is
+getting tight. Have you ever noticed the Basic &lsquo;hang&rsquo; for a few seconds, well
+that&rsquo;s when it&rsquo;s doing its garbage collection and re-allocating the string space.
+Whatever method is used for compressing data, this is done at the expense of
+program space, and what is gained on the swings is lost on the roundabouts, so
+the nett gain is usually trivial.
+</p>
+<p>
+So what is the answer, well I&rsquo;m afraid disks is (bad grammar, disks are)
+the answer, or of course oodles of RAM and some hairy software to get at it. That
+is, if anyone is intending to use a database seriously. With disk, access is
+slower than in RAM, but at least with sensible organisation at least the whole
+thing becomes feasible and the cost is not too astronomical when looked at in
+terms of price per bit saved. If on the other hand the intention is to simply
+provide a simple telephone numbers program, then a 16K machine is entirely
+adequate provided you can wait whilst the tape loads.
+</p>
+<p>
+So I did get round to my topic after all, next issue I&rsquo;ll be rabbitting
+on about how databases could be organised, starting from humble beginnings with a
+simple program for the Nascom. For those too impatient to wait for the next
+issue, go and get yourself some disks and get hold of Mike Hessey&rsquo;s MANOR
+program. It&rsquo;s well worth a look at and it&rsquo;s simple to use.
+</p>
+<p>
+Time and space preclude any more, so, that&rsquo;s all folks, until next time,
+that is.
+</p>
+<?php columnEnd(1); ?>

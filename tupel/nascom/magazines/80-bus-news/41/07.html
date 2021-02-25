@@ -1,0 +1,156 @@
+<?php columnStart(2, 2); ?>
+<p>
+THE DH BITS
+by Dave Hunt
+</p>
+<p>
+In this section of miscellaneous ramblings, the
+always verbose David Hunt looks at copying files
+via dBASEIl, changes that have occurred in
+different versions of dBASEIl, disk sector skewing,
+disk blocking/deblocking, how to expand a Nascom
+based system, a tip on using the Pretzel
+program, and a look at the Gateway and Pathway
+programs.
+</p>
+<p>
+Speeding up dBASE Ilusing RAM-disks
+</p>
+<p>
+Following on from my other article concerning
+adding machine code patches to dBASEIl, a new
+routine has had to be written lately. So this bit is for
+dBASE aficionados, although it contains a warning
+for all who would write simple file copying
+routines.
+</p>
+<p>
+Now those who know dBASE will know the
+geriatric performance it puts in when indexing files
+with a good few thousand records. Far too slow on
+a floppy disk, somewhat better on a Winnie and
+just reasonable on a RAM disk. Further, versions of
+dBASE earlier than V2.41 get very slow when
+updating files with multiple indexes.
+</p>
+<p>
+An aside about dBASE V2.41
+</p>
+<p>
+By the way, dBASE V2.41 has what appears to be
+horrific change of philosophy which I believe has
+led to its rapid replacement with the current
+version, V2.43, so anyone with version 2.41, watch
+out when trying the following:
+</p>
+<p>
+@ x,y GET input
+</p>
+<p>
+READ
+</p>
+<p>
+FIND &amp;input
+</p>
+<p>
+DO WHILE input=record
+(... do your thing&nbsp;...}
+SKIP
+</p>
+<p>
+ENDDO
+</p>
+<p>
+What all versions of dBASE, except V2.41 do, is that
+the FIND function finds the first occurrence of the
+find criteria, whilst the DO WHILE &ndash; SKIP loop then
+finds all following entries where the input and
+record criteria match, the loop cops out when the
+&lsquo;criteria no longer match. Basically it works through
+a matching list in order of entry until it no longer
+matches. V2.41 is something different. Using the
+same routine, the FIND will find the first occurrence
+as before, but for some unexplained reason, it then
+sets the record pointer to the end of the list, so the
+following DO WHILE &ndash; SKIP loop will immediately
+find the next record does not match and cop out.
+The way round it is to rewrite the program:
+</p>
+<p>
+@ x,y GET input
+</p>
+<p>
+READ
+</p>
+<p>
+FIND &amp;input
+</p>
+<p>
+DO WHILE input=record
+(... do your thing&nbsp;...)
+SKIP -1
+</p>
+<p>
+ENDDO
+</p>
+<p>
+In this case it appears to almost work backwards
+through the list (almost, as the first record found is
+still the first in the list), not a disaster, and in many
+ways more convenient as it&rsquo;s more often than not
+the last in the list you&rsquo;re looking for, not the first.
+But what about all the programs written for other
+versions of dBASE, they&rsquo;re incompatible!!
+</p>
+<p>
+To tell the truth I didn&rsquo;t find this, Trevor at ACC did,
+when it screwed up an invoicing program I had
+written. He phoned me to discover what special
+feature it was that I&rsquo;d added to the latest version of
+the program that didn&rsquo;t work. I started investigating!
+I assumed this was a new feature of V2.41,
+and you now had the option for either backwards
+or forwards search (very useful), but I could find no
+reference to it in the manual and no way of
+switching back to &lsquo;normal&rsquo;. As I said, V2.43
+followed hot on the heals of V2.41, and that works
+&lsquo;normally&rsquo;, so perhaps the V2.41 anomaly was
+considered as a bug. To be fair, I only had one copy
+of V2.41 to test, and this was replaced with V2.43,
+so perhaps it was a corrupt disk or something,
+although I&rsquo;ve yet to hear of a corrupt disk causing
+a complete change in philosophy, corrupt disks
+usually crash.
+</p>
+<p>
+And so back to the indexing problem.
+</p>
+<p>
+Now lets take the real life situation, it&rsquo;s a stock
+control program working on a Gemini with a 10M
+Winnie. The main stock file has something like 2000
+records in it and the transaction file has about 6000
+and increases with each stock movement. The
+stock file has three indexes all on at once, whilst the
+transaction record is indexed by date and the
+paperwork reference number. Believe me there&rsquo;s
+some index churning going on. Given that indexing
+is pretty fast in a RAM disk, the problem is getting
+the indexes there safely.
+</p>
+<p>
+One way round is to copy the files to the RAM disk
+before operating the dBASE program, and then
+copying them back on close down, you&rsquo;ll away
+remember to do it, won&rsquo;t you??!1? But what about
+the idiots who usually use the program, they&rsquo;ll
+either forget to copy the indexes first in which case
+the programs won&rsquo;t work, or worse, they&rsquo;ll forget to
+copy them back when they&rsquo;ve finished. Another
+way would be to reindex the programs onto the
+RAM disk each time the program&rsquo;s started, Ok, and
+no need to copy the files back. But even with a RAM
+disk, the reindexing process takes some time. I
+suppose the whole program could be run under a
+</p>
+<?php columnEnd(2); ?>

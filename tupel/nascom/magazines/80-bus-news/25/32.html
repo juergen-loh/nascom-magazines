@@ -1,0 +1,100 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    25</span>
+
+E69B F5         OUTC:   PUSH    AF              ; Save character
+E69C 3A4510             LD      A,(CTLOFG)      ; Get control "O" flag
+E69F B7                 OR      A               ; Is it set?
+E6A0 C245F2             JP      NZ,POPAF        ; Yes - don't output
+E6A3 F1                 POP     AF              ; Restore character
+E6A4 C5                 PUSH    BC              ; Save buffer length
+E6A5 F5                 PUSH    AF              ; Save character
+E6A6 FE20               CP      " "             ; Is it a control code?
+E6A8 DABFE6             JP      C,DINPOS        ; Yes - Don't INC POS(X)
+E6AB 3A4210             LD      A,(LWIDTH)      ; Get line width
+E6AE 47                 LD      B,A             ; To B
+E6AF 3AAB10             LD      A,(CURPOS)      ; Get cursor position
+E6B2 04                 INC     B               ; Width 255?
+E6B3 CABBE6             JP      Z,INCLEN        ; Yes - No width limit
+E6B6 05                 DEC     B               ; Restore width
+E6B7 B8                 CP      B               ; At end of line?
+E6B8 CC81EB             CALL    Z,PRNTCR        ; Yes - output CRLF
+E6BB 3C         INCLEN: INC     A               ; Move on one character
+E6BC 32AB10             LD      (CURPOS),A      ; Save new position
+E6BF F1         DINPOS: POP     AF              ; Restore character
+E6C0 C1                 POP     BC              ; Restore buffer length
+E6C1 F5                 PUSH    AF              ; &lt;&lt; This sequence &gt;&gt;
+E6C2 F1                 POP     AF              ; &lt;&lt; is not needed &gt;&gt;
+E6C3 F5                 PUSH    AF              ; Save character
+E6C4 C5                 PUSH    BC              ; Save buffer length
+E6C5 4F                 LD      C,A             ; Character to C
+E6C6 CDD9FC             CALL    CONMON          ; Send it
+E6C9 C1                 POP     BC              ; Restore buffer length
+E6CA F1                 POP     AF              ; Restore character
+E6CB C9                 RET
+
+E6CC CD05FD     CLOTST: CALL    GETINP          ; Get input character
+E6CF E67F               AND     01111111B       ; Strip bit 7
+E6D1 FE0F               CP      CTRLO           ; Is it control "O"?
+E6D3 C0                 RET     NZ              ; No don't flip flag
+E6D4 3A4510             LD      A,(CTLOFG)      ; Get flag
+E6D7 2F                 CPL                     ; Flip it
+E6D8 324510             LD      (CTLOFG),A      ; Put it back
+E6DB AF                 XOR     A               ; Null character
+E6DC C9                 RET
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    26</span>
+
+E6DD CDA5E9     LIST:   CALL    ATOH            ; ASCII number to DE
+E6E0 C0                 RET     NZ              ; Return if anything extra
+E6E1 C1                 POP     BC              ; Rubbish - Not needed
+E6E2 CD99E4             CALL    SRCHLN          ; Search for line number in DE
+E6E5 C5                 PUSH    BC              ; Save address of line
+E6E6 CD33E7             CALL    SETLIN          ; Set up lines counter
+E6E9 E1         LISTLP: POP     HL              ; Restore address of line
+E6EA 4E                 LD      C,(HL)          ; Get LSB of next line
+E6EB 23                 INC     HL
+E6EC 46                 LD      B,(HL)          ; Get MSB of next line
+E6ED 23                 INC     HL
+E6EE 78                 LD      A,B             ; BC = 0 (End of program)?
+E6EF B1                 OR      C
+E6F0 CAF8E3             JP      Z,PRNTOK        ; Yes - Go to command mode
+E6F3 CD46E7             CALL    COUNT           ; Count lines
+E6F6 CD61E8             CALL    TSTBRK          ; Test for break key
+E6F9 C5                 PUSH    BC              ; Save address of next line
+E6FA CD81EB             CALL    PRNTCR          ; Output CRLF
+E6FD 5E                 LD      E,(HL)          ; Get LSB of line number
+E6FE 23                 INC     HL
+E6FF 56                 LD      D,(HL)          ; Get MSB of line number
+E700 23                 INC     HL
+E701 E5                 PUSH    HL              ; Save address of line start
+E702 EB                 EX      DE,HL           ; Line number to HL
+E703 CDADF9             CALL    PRNTHL          ; Output line number in decimal
+E706 3E20               LD      A," "           ; Space after line number
+E708 E1                 POP     HL              ; Restore start of line address
+E709 CD9BE6     LSTLP2: CALL    OUTC            ; Output character in A
+E70C 7E         LSTLP3: LD      A,(HL)          ; Get next byte in line
+E70D B7                 OR      A               ; End of line?
+E70E 23                 INC     HL              ; To next byte in line
+E70F CAE9E6             JP      Z,LISTLP        ; Yes - get next line
+E712 F209E7             JP      P,LSTLP2        ; No token - output it
+E715 D67F               SUB     ZEND-1          ; Find and output word
+E717 4F                 LD      C,A             ; Token offset+1 to C
+E718 1143E1             LD      DE,WORDS        ; Reserved word list
+E71B 1A         FNDTOK: LD      A,(DE)          ; Get character in list
+E71C 13                 INC     DE              ; Move on to next
+E71D B7                 OR      A               ; Is it start of word?
+E71E F21BE7             JP      P,FNDTOK        ; No - Keep looking for word
+E721 0D                 DEC     C               ; Count words
+E722 C21BE7             JP      NZ,FNDTOK       ; Not there - keep looking
+E725 E67F       OUTWRD: AND     01111111B       ; Strip bit 7
+E727 CD9BE6             CALL    OUTC            ; Output first character
+E72A 1A                 LD      A,(DE)          ; Get next character
+E72B 13                 INC     DE              ; Move on to next
+E72C B7                 OR      A               ; Is it end of word?
+E72D F225E7             JP      P,OUTWRD        ; No - output the rest
+E730 C30CE7             JP      LSTLP3          ; Next byte in line
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

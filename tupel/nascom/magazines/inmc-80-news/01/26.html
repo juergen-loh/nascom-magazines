@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Reviews
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(23); ?>
+<h2>
+NASCOM I/O BOARD REVIEW
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+D. R. Hunt.
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<p>
+The Nascom I/O board was just too late for the last issue, so
+this review was held over. The I/O board accomodates 3 PIOs, 1 UART and
+1 CTC. The PIOs are the MK3881 type as fitted to the Nascom main board,
+the UART is likewise similar, but has a crystal controlled BAUD rate
+generator giving speeds from 110 to 9600 BAUD, transmit and receive can
+only take place at the same speed, unlike the separate transmit/receive
+arrangement on the Nascom&nbsp;2. The final chip is the MK3882 &ldquo;Counter
+Timer Circuit&rdquo;, an ingeniously simple chip, more details later. The
+board is supplied with sockets for all the chips, but only the
+necessary chips to put the board into action come with the kit. The
+major I/O devices, their attendant decoders, plugs, leads (and in the
+case of the UART, the BAUD rate generator, crystal and sundry Rs and
+Cs) are supplied as &lsquo;add-on&rsquo; packs, to be purchased as required. The
+kit is supplied with documentation and the PIO, UART and CTC technical
+manuals. The three PIOs talk to the outside world through three 26 way
+connectors (a la Nascom&nbsp;2) on the front edge of the pcb. The UART has
+RS232 and 20mA input/output via a 16 pin dil socket. The CTC
+input/output and the BAUD rate select are also via 16 pin dil sockets.
+If I remember correctly, the original published spec. of the I/O board
+included a modem as well. This seems to have fallen by the wayside.
+</p>
+<p>
+The Issue 2 boards supplied have a track error which we
+understand was not spotted until a quantity of pcs had been made, and
+an errata is included giving the small amount of &lsquo;board surgery&rsquo;
+required. This &lsquo;surgery&rsquo; is only required when the UART is brought into
+play. The errata also covers other small documentation errors, but has
+not spotted that PIO 1 and PIO 3 are reversed throughout. The
+documentation rates the &lsquo;INMC FOUR STAR AWARD&rsquo; for incomprehensibility,
+understanding was not helped by the fact that a number of kits escaped
+with the last three pages of the documentation missing. The circuit
+diagram however was clear and detailed, and once one realises that the
+8131 decoders used are only glorified XOR gates (or comparators), then,
+what the documentation lacks, the circuit diagram makes up for.
+</p>
+<p>
+Construction was straight forward and simple, the pcb being of
+the usual high standard, however, the style of pcb layout was entirely
+different to the usual style of Nascom pcbs, which made following
+things through a little more difficult than usual. Nothing wrong here,
+just different. We understand the pcb was laid out by hand rather than
+Nascoms&rsquo; usual practice of using a drafting computer. The manual gave
+details of recommended I/O mapping, although perhaps this was
+uninspired, and not helped by the missing appendix which we presume
+gave an expanded I/O map. Connecting the decode links was carried out
+from the drawings in the manual, no explanation was offered as to why
+things should be linked in the fashion shown. Watch out for the fact
+that the Nascom internal port decode (IOEXT line) can be set to either
+ports 0 &ndash; 4 or 0 &ndash; 8. When used with Nascom&nbsp;1 the onboard PIO has to be
+removed, meaning that the lowest decode address may be 4, whereas the
+PIO in the Nascom&nbsp;2 can remain in situe, if so, then the lowest decode
+address should be set to 2. After a visual check, the board was tried.
+</p>
+<p>
+Then a hidden bug appeared. We&rsquo;ve mentioned before that the IEI
+and IEO tines get connected together on a Nascom&nbsp;2 if you use the
+little mini-bus that was supplied with the 16K versions or a &lsquo;Vero
+bus&rsquo;, and this means that the &lsquo;daisy chain&rsquo; interrupt priority function
+is &lsquo;all screwed up!&rsquo;. Not a serious problem, but requires thought to
+</p>
+<?php columnEnd(1); ?>

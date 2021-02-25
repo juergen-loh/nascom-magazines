@@ -1,0 +1,96 @@
+<?php columnStart(1); ?>
+<p>
+25
+</p>
+<p>
+Pins A and B are the input and output of a sensing coil and C and D are the
+input and output of a driver coil which is pulsed by an output from a 74145
+BCD &ndash; decimal decoder/driver. In the unexpanded keyboard, the keys are
+arranged in a matrix of 8 driver lines (DrO &ndash; Dr7) and 6 sensing lines (S0 &ndash;
+$5) and one of the 48 points is not used. In the expanded version, an
+additional sense line is employed (S6) to give 56 points in the matrix, with
+the new Shift key added to give a total of 57. The sense outputs are processed
+to give data bits 0 &ndash; 5 on the CPU bus (or bits 0 &ndash; 6 in the expanded
+version). A browse through a circuit diagram of the keyboard (CK9009, April
+1978) showed that half of IC1 (CA3086 transistor array) and half of Ic3 (7400
+quad 2&mdash;input NAND gate) are available. The buffering for the sense lines is
+provided by single transistors within each of the two 3086 arrays (IC1 and 9),
+and up to two new sense lines could be connected with the unused part of ICl.
+The circuit diagram also shows each buffered sense line and associated pull-up
+resistor connected to individual flip-flops each formed from 2 of the NAND
+gates in a 7400 (ICs 2,7 and 8). It is a simple matter to implement another
+flip-flop for bit 6 from the two spare gates available in IC3 and connect this
+to pin 7 of the keyboard socket. Fitting in the three resistors for the
+collector pull-up, emitter bias and base of the IC transistor buffer calls for
+some care.
+</p>
+<p>
+The Nascom&nbsp;1 keyboard circuit diagram shows a particular layout of characters
+against sense/driver intersections in the key matrix but the actual order is
+slightly different (Murphy&rsquo;s Law). For the issue B board, the following
+order was found: (issue A boards may be different)
+</p>
+<p>
+Drivers
+0 1 2 3 4 5 6 7
+Sense
+0 &ndash; 5 6 7 8 9 0 4
+3 @ T Y U I 0 P R
+1 BS H J K L ; : G
+2 RET B N M &gt; . / Vv
+5 SHFT x Zz s A Q 1 spc
+4 not F D E W 3 2 C
+used
+</p>
+<p>
+&lsquo; The sense outputs are connected to IC9 and 1 as follows:
+</p>
+<p>
+Sense Ic Pin IC pin for output
+to data bus
+</p>
+<p>
+il
+</p>
+<p>
+8
+</p>
+<p>
+5
+</p>
+<p>
+14
+</p>
+<p>
+14
+</p>
+<p>
+5
+</p>
+<p>
+11
+</p>
+<p>
+rm tO WO 10
+pot et
+WO EN BP &amp; oO wo
+</p>
+<p>
+0
+3
+1
+2
+5
+4
+New sense line 6
+The Driver lines are supplied from IC5 pins 1 &ndash; 7 and 9 (corresponding to Dr0
+&ndash; Dr7). The new sense line could have been connected to ICl pin 6 but the
+</p>
+<p>
+circuit layout means that the connection to pin 9 was easier to arrange.
+</p>
+<p>
+Board surgery can now commence! The holes for the new pins must be drilled
+accurately with a 1 mm bit and for most of the holes required, simply match up
+</p>
+<?php columnEnd(1); ?>

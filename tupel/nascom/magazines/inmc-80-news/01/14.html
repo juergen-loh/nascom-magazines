@@ -1,0 +1,73 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+ZEAP O/P
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(34); ?>
+<h2>
+ZEAP OUTPUT TO PRINTER/&lsquo;TELETYPE&rsquo;
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+by R. Beal
+</h3>
+<?php columnEnd(4); ?>
+<?php columnStart(1); ?>
+<p>
+Mr. J. Addey has written to the INMC saying:&ndash;
+</p>
+<p>
+&ldquo;We bought ZEAP some time ago hoping to use it on our NASCOM 1 which is
+exclusively used in conjunction with an ASR &lsquo;teletype&rsquo;. End of story.
+No-one from NASCOM can offer any advice as to how ZEAP may be used
+except by using the original keyboard + VDU O/P.&rdquo;
+</p>
+<p>
+Here are the answers for both ZEAP 1 and ZEAP 2.
+</p>
+<h4>
+ZEAP 1
+</h4>
+<p>
+The address of the output routine is located at 0F22-0F23, so cold
+start ZEAP, then return to the monitor, then alter this address to your
+own routine and then warm start ZEAP. When you use ZEAP, only output
+from the U command (=list to UART) and assembler output with option 04
+on (TTY option) will be output to the TTY. This is extremely useful as
+updates to text are carried out using the Nascom keyboard and VDU,
+command 04 is entered and then the A command, for hard copy listing.
+</p>
+<p>
+If you are simply using a serial ASCII printer, there is no need to
+change the address at 0F22-0F23 because the default is to send the data
+to the UART in any case. Read pages 43 and 49 of the ZEAP 1 manual
+where it is explained very clearly. If you are using a parallel printer
+(or serial device) which require special print handling routines, then
+this pointer must be changed to direct data to the output handling
+routine.
+</p>
+<h4>
+ZEAP 2
+</h4>
+<p>
+The comments above for ZEAP 1 apply also to ZEAP 2, except that the
+address of the output routine is at 0F05-0F06. See appendix E, and
+appendix G, as well as the description of the U command, all clearly
+set out in the ZEAP 2 manual.
+</p>
+<h4>
+INPUT
+</h4>
+<p>
+You may wish to use an external keyboard for input. ZEAP does nothing
+special when it gets an input character, so you can activate a teletype
+keyboard as described in the Nas-Sys manual under the X command. (Enter
+X0.) This also works with the T4 monitor, and applies to ZEAP 1 and
+ZEAP 2. If you are still back in the dark ages with T2 then bad luck,
+you can&rsquo;t do it without writing a special program. Using the X command
+will not in this case affect output, as ZEAP itself takes control of
+where the output is to go to.
+</p>
+<br>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

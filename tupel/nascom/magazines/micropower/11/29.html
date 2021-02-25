@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<p class="continued">
+The Nas-Sys&nbsp;3 table contains a repeat keyboard routine, which is not available under
+Nas-Sys&nbsp;1.
+</p>
+<p>
+The next two restarts (relative call, &pound;D7, and subroutine call, &pound;DF) both use the
+byte following the restart code to determine the address of the routine they are
+accessing. In a relative call the second byte is used as an offset to the routine being
+accessed, and as in the case of a relative jump instruction the distance is measured
+from the code following the second byte. If the offset lies in the range &pound;80 &ndash; &pound;FF the
+subroutine will precede the instruction calling it.
+</p>
+<pre>
+.
+FB                    &uarr;
+FC
+FD             Negative offsets
+D7 XX          &lt; Position of relative call
+00             &lt; Distances measured from here
+01             Positive offsets
+02
+03                    &darr;
+.
+</pre>
+<p>
+By using the relative call routine you can write programs that are completely
+relocatable &ndash; that is, they will work at any address without modification. This is
+particularly useful for programs that are to be stored in EPROM, as you can plug
+the device in any spare socket. Of course, you don&rsquo;t get this for nothing; the routine
+has quite a lot of software manipulation to carry out, and consequently it is much
+slower than a normal subroutine call. So, if you want a program to run as quickly
+as possible you will have to avoid relative calls in the critical parts of the code.
+</p>
+<p>
+The subroutine call, &pound;DF, uses the second byte to access a table which contains
+the addresses of monitor subroutines. In Nas-sys&nbsp;3 this table starts at &pound;0782; the
+first 26 addresses are the routines for the single letter commands. Only F and L are
+unused, and the table contains the address of the error-message routine for these
+letters. If you have an EPROM blower you can add extra commands by using these
+letters, or by replacing any of the standard commands that you don&rsquo;t use. As an
+example, here is a routine which compares two blocks of memory and list four lines
+of each block whenever it finds a difference.
+</p>
+<pre>
+1B              DEC DE         ; On entry DE and HL point
+2B              DEC HL         ; to the start of the blocks
+13     CPLOOP   INC DE         ; Increment the block pointers
+23              INC HL
+1A              LD A (DE)      ; Get byte from block 1 in
+BE              CP (HL)        ; Is it the same as block 2?
+28 FA           JR Z CPLOOP    ; If so, keep going
+D7 0C           RCAL TAB       ; Tabulate first block
+EB              EX DE HL       ; Swap the pointers to the blocks
+D7 09           RCAL TAB       ; Tabulate the second block
+EB              EX DE HL       ; Swap pointers back
+CF              RST 8          ; Wait for user to press any key
+</pre>
+<?php columnEnd(1); ?>

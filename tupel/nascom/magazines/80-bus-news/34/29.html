@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+29
+</p>
+<p>
+Aunt Agatha&rsquo;s Agony Column by D. W. Parkinson
+</p>
+<p>
+RAM-A
+</p>
+<p>
+A letter from Mr Piper of Sheffield re. problems with his Nascom system:
+&ldquo;Can you explain why selecting start addresses on LSW1 (other than NAS-SYS) no
+longer works after having done 2716 mods on the RAM-A card. -J&rdquo; command and
+others except -Y&rsquo; work Ok. Setting LSW1 to B000 start address fills the screen
+with garbage. I can select A000 where I have Ext. Basic, but this seems to put
+an inhibit on the PIO and I can&rsquo;t use the printer. With the switches set to
+NAS-SYS everything (except -Y7) works Ok.&rdquo;
+</p>
+<p>
+He doesn&rsquo;t give any detail of the modifications, but looking back through
+my pile of back issues I came across an article from the INMC days [1]. This
+is basically a list of cut-and-strap operations on the RAM-A card, and as my
+only copy of the RAM-A circuit diagram dates from the days after Nascom got
+its reducing photo-copier, I&rsquo;ve no idea what the modifications are. (Most IC
+references and pin numbers are unreadable on the miniscule diagram, and not
+all ICs have their pin connections numbered.) However let&rsquo;s start with the
+obvious possibilities and then start guessing.
+</p>
+<p>
+The Nascom&nbsp;2 -Reset-Jump&rdquo; circuit works by forcing the high four address
+lines (A12&ndash;A15) of the Bus to the value set on switches 1-4 of LSW1l. This
+over-ride of the normal addressing persists for only the first three bytes
+fetched from memory, thereafter the four high address lines of the Z80 are
+passed to the Bus. Thus any EPROM that is going to be entered this way must
+start with a JP instruction to set the Z80&rsquo;s program counter correctly so that
+execution continues in the EPROM once the forcing of the high address lines is
+removed. (i.e. if the EPROM is to be located at BO000, and entered by a -jump--
+on-reset&rsquo;, then the first instruction must be JP B0003, or at least JP
+&lt;somewhere-in-the-EPROM&gt; in order to prevent the Z80 fetching its next
+instruction from address 0003.)
+</p>
+<p>
+There is no way that modifications to the RAM card can affect the
+operation of the -Reset-Jump&rsquo; circuit, and as the -Y&rdquo; command (JP B000) does
+not work for Mr Piper either, it is obvious that the problem must lie in the
+hardware modifications. Looking at the RAM-A circuit diagram, one thing is
+immediately apparent: The address lines to the EPROMs are not buffered from
+the Bus. This means that any error here may well affect the operation of the
+RAM, or any other board connected into the Bus. (This includes.the byte-wide
+sockets on the Nascom&nbsp;2.) In replacing 2708s by 2716s, pin 19, which used to
+be connected to the +12v supply, is now used for A10. I was suprised that I
+could find no mention in [1] of removing any decoupling capacitors from this
+line. (I assume the +12v supply line is decoupled around the EPROMs on RAM-A!)
+If these are left behind they will have a rather detrimental effect on ALO to
+put it mildly. (Similarly if you move on to use 2732s, ensure that there are
+no decoupling capacitors left on pin 21 (ex -5v supply) which becomes All.)
+</p>
+<p>
+If there are no capacitors present, run a few tests to try to isolate the
+fault. Do memory tests check out the 32k RAM perfectly? Does BASIC run
+perfectly? If the answer is yes, then you can rule out a catastrophic wiring
+error on the address lines. The next step is to insert a 2716 with known
+contents into one of the sockets. (e.g. a copy of NAS--SYS.) Can you find it in
+the memory map? If you can, when you -T&rsquo;abulate are the contents correct? (Use
+a program to compare it against the original NAS-SYS at 0000.) If you are
+partially successful here, then you may be able to work out where the error
+</p>
+<?php columnEnd(1); ?>

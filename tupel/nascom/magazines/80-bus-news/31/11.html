@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<p>
+11
+</p>
+<p>
+former case, the BDOS will print the message &ldquo;Disk x: directory full&rdquo; and in
+the latter &ldquo;Disk x: full&rdquo;. In both cases, the message &ldquo;Change disks? (Y/N/&ldquo;C)&rdquo;
+will be displayed. If the user types &ldquo;C, the system will perform a warm boot.
+If &ldquo;N&rdquo; is typed, a standard &ldquo;disk full&rdquo; or &ldquo;directory full&rdquo; code will be
+returned to the CCP or calling program. If &ldquo;Y&rdquo; is typed, in the case of a full
+disk, the currently addressed file will be closed. In either case, when the
+BDOS is ready to proceed, it will display the message &ldquo;Change disks then hit
+any key or -C&rdquo;. If the user types &ldquo;-C, the system will be rebooted. If not then
+a new disk should be in the current drive and BDOSZ will reset the new disk to
+make it R/W, log it in, create a new file on this disk with the same name as
+before and continue with the write. The calling program will not be aware of
+the disk change. BDOSZ will erase any file of the same name occurring on the
+replacement disk unless it is R/O. In this case, BDOSZ will query before
+deleting.
+</p>
+<p>
+As standard, BDOSZ sends a BEL character (ASCII 7) to the console device
+for those users with a bleep facility to warn the user that an error has
+occurred.
+</p>
+<p>
+BDOSZ has been in use now for about 12 months on three different
+machines. No bugs have been found to date and the extra facilities provided
+have proved invaluable.
+</p>
+<p>
+[Ed. &ndash; a warning. Owners of Gemini systems with BIOSs of version 2.8 or
+greater beware!&lsquo; These BIOSs do a check on power-up to determine if, and how
+many (up to 4) Gemini GM833 &lsquo;RAM-DISK&rsquo; boards are present. If any are present
+the BIOS copies the CCP and BDOS to drive &lsquo;M&rsquo; and modifies the BDOS to use
+this for warm boots. Whether this will work with BDOSZ or not, who knows?]
+</p>
+<p>
+MDIS
+</p>
+<p>
+The last piece of this software trilogy is for those of you tempted by
+Henrys adverts for MDIS. For those who haven&rsquo;t seen the ad-, MDIS is a CP/M
+disassembler with differences. It includes all of the excellent features found
+in David Parkinson&rsquo;s NAS-DIS and then some. The last version of MDIS to be
+released was 2.1, version 2.2 was substituted after a small wumnexpected
+&ldquo;feature&rdquo; was discovered. But now, version 2.3 is available with oodles of
+extras. [Ed. &ndash; Since the time of writing, vers. 2.6 has appeared.] To those
+who haven&rsquo;t yet obtained a copy, you were possibly right to wait. For those
+who have, never mind, upgrades are available at the cost of a copy charge.
+Simply return it to the dealer you bought it from. Being somewhat biassed in
+</p>
+<p>
+&lsquo;favour of MDIS, I wouldn&rsquo;t attempt to review it but will provide a list of its
+</p>
+<p>
+features (note that features in this case isn&rsquo;t in quotes).
+</p>
+<p>
+1. MDIS produces either Z80 or 8080 mnemonics as requested by the user but
+will default to the mnemonics used by the CPU in use.
+</p>
+<p>
+2. Assembler source files may be produced. Current versions provide 100%
+compatibility with the Microsoft Macro-80 assembler.
+</p>
+<p>
+3. Listing files may be directed to the CON:, PUN: or LST: devices or may be
+sent to a disk file.
+</p>
+<p>
+4a Labels are produced automatically. Labels are a four digit hex number
+</p>
+<p>
+. related to the address where the label is to be inserted. To make the
+labels assembler compatible, they are given an alphabetic prefix. One of
+four prefixes will be used for each label depending on whether MDIS
+thinks the label refers to code, data, both or doesn&rsquo;t know.
+</p>
+<p>
+56 A cross-reference listing may be supplied which lists each label and each
+address where the label is used.
+</p>
+<p>
+6. Allows data areas to be specified as either hex bytes, ASCII, an address
+table (with labels substituted for addresses) or a look-up table in the
+</p>
+<p>
+form:
+</p>
+<?php columnEnd(1); ?>

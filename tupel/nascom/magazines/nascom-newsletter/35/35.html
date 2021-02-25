@@ -1,0 +1,59 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+V&nbsp;&amp;&nbsp;T Assembler Modifications
+</h1>
+<h2>
+by Alan Marshall
+</h2>
+<p>
+The title of this article is somenhat of a misnomer as most
+of the modifications are actually @ade to Nas-Dis, though they
+are made to facilitate its use with the V&nbsp;&amp;&nbsp;T asseabler.
+</p>
+<p>
+One apparently miraculous feature of Nas-Dis is its ability
+to disassemble a program directly into a ZEAP source file.
+Other assemblers are catered for by dis-assembling to tape and
+then reading the tape into the asseabler in its automatic aode.
+Wile this works very well, there ig no doubt that the ability
+to dis-assemble directly to the source area is a great advantage
+and so, using the excellent listing of Nas-Dis, I made the
+following modifications. These enable the tape version of
+Nas-Dis to dis-assemble any program directly to the source area
+of a VE T assembler.
+</p>
+<p>
+As the V&nbsp;&amp;&nbsp;T works in hex, the &lsquo;&pound;7, of hash, sign is not
+required, 80 addresses C4FFH and CF&amp;0H are changed from 23H (&pound;)
+to SeH ().
+</p>
+<p>
+The message delimiter used by ZEAP is a &ldquo;/&rdquo; while V&nbsp;&amp;&nbsp;T uses
+so the following addresses need to be changed from 2FH to
+</p>
+<p>
+274
+</p>
+<p>
+coco
+caps
+e704
+cear
+</p>
+<p>
+fs the V&nbsp;&amp;&nbsp;T can only put one DEFB on one line then the DINZ
+instruction at C6E2/3 needs to be replaced by two NOPs. If this
+course is followed then the program Will assemble with no
+editing. If, however, the 3 at C6ES is replaced by 2 then the V
+4 T DEFW can be used, though you must remember to reverse the
+order of the two bytes while editing. Depending on which course
+you follow, the 3 at CD6B needs to be changed to either 1 or 2.
+</p>
+<p>
+The VAT isa little unusual in that it uses EX AF,AFG
+instead of EX AF,AF&rsquo; to change to the alternate accumulator&rdquo; so
+27H at CAS needs to pe changed to 47H, Another difference is
+that ZEAP uses a null as the end of line marker while Vu T uses
+AFH. CEDEH is the place to change.
+</p>
+<?php columnEnd(1); ?>

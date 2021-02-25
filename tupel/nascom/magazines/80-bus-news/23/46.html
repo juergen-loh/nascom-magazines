@@ -1,0 +1,96 @@
+<?php columnStart(1); ?>
+<p>
+46
+</p>
+<p>
+NASCOM BASIC CROSS-REFERENCE LISTING M. J. R. Gibbs
+</p>
+<p>
+The listing on the following pages is for a utility that I wrote to give a
+variable cross-reference listing of a Nascom BASIC program. One of the problems of
+Nascom BASIC is that only the first two characters of a variable name are used, so
+that AQS, AQ and AQ1, which are all valid names, are considered identical. A
+number of people make this mistake in their programs &ndash; I have certainly done so,
+and for a beginner it is often not obvious what is wrong.
+</p>
+<p>
+This program may help in this respect, and I have also found it useful when
+developing or changing a program sometime after it was originally written. It is
+also very useful when developing a large program where a large number of variable
+names can become a problen.
+</p>
+<p>
+The program is located in RAM between 0C80H and OF65 and will give a sorted list
+of variable names (only the first two characters being displayed to avoid
+confusion). String variables are identified by a &lsquo;$&rsquo; and array variables by a &lsquo;(&rsquo;,
+followed by a list of the statement numbers in which that variable is referenced.
+</p>
+<p>
+For example, the following slightly modified benchmark program:&ndash;
+</p>
+<p>
+100 REM BENCHMARK 7
+110 PRINT &ldquo;S&rdquo;
+</p>
+<p>
+120 K = 0
+</p>
+<p>
+130 DIM MQQQ(5)
+</p>
+<p>
+140 K = K+1
+</p>
+<p>
+150 A = K/2*3+4-5
+160 GOSUB 230
+</p>
+<p>
+170 FOR L=1 T0 5
+180 MQQQ(L) =A
+</p>
+<p>
+190 NEXT L
+</p>
+<p>
+200 IF K &lt; 1000 THEN 140
+210 PRINT &ldquo;E&rdquo;
+</p>
+<p>
+220 END
+</p>
+<p>
+230 RETURN
+</p>
+<p>
+Would result in a screen containing:&ndash;
+</p>
+<p>
+&lt; NASCOM CROSS REFERENCE &gt;
+</p>
+<p>
+A 150 180
+K 120 140 150 200
+L 170 180 190
+</p>
+<p>
+MQ( 130 180
+</p>
+<p>
+The program is very easy to run. Leave BASIC using the MONITOR command. Load the
+utility from tape or disk (once loaded it can be left for future use as BASIC does
+not use that portion of RAM). Run the program by entering EC80, which will give
+you the maximum of a screenful of information for studying. To continue press any
+key, which will give successive screens until the listing is complete, and then
+return to the monitor. BASIC can be re-entered if desired by using the warm start
+command (Z).
+</p>
+<p>
+One word of warning. This program generates a lot of data. This is stored at the
+end of the BASIC program and in normal use presents no problem. However, in the
+case of a very large program the data can overflow the available space with
+unpredictable results. You are therefore advised to save any large BASIC program
+before running this utility. I have never had any program corrupted, but it is
+possible.
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,54 @@
+<?php columnStart(1); ?>
+<p>
+then immediately accessed as described below. At the end of each routine a suitable
+message is output, either confirming the completion, or indicating that errors have
+occurred. This message is held on the screen for approximately 2 seconds, and then
+the program jumps back to the label &lsquo;RESTRT&rsquo;, and the user is asked if he wants to
+carry on with the same type of chip. A response of &lsquo;Y&rsquo; will take him back to the menu,
+while &lsquo;N&rsquo; will return him to the key &lsquo;C&rsquo;/warning mesage routine, followed by chip type
+selection.
+</p>
+<p>
+THE ROUTINES
+</p>
+<p>
+E &ndash; CHECK FOR ERASED EPROM
+</p>
+<p>
+This routine needs no further information from the user and it immediately reads
+each byte in succession from the chip, checking that its value is 0FFH. If all the bytes
+are FF, the routine ends with a message saying that the EPROM is erased. If any
+byte is detected which is not FF, the routine terminates immediately and the
+message &ldquo;EPROM&rdquo; not fully erased&rdquo; appears. The operation of the routine is very
+rapid.
+</p>
+<p>
+The remaining four routines all need a four digit hexadecimal address in order
+to continue. A subroutine is called when the program enters the chosen routine; this
+subroutine prompts the operator to enter the required address. It checks the data as
+it is entered, and only allows valid hexadecimal digits to be stored.
+If an error is made during the entry of the four digits, the user must continue
+until four entries have been made. He will then be given a chance to change the
+whole entry. On exit from the subroutine, the addres will be in the HL register pair,
+and also in the workspace at label STOR1.
+</p>
+<p>
+The address entered will be used as the start of a 1K or 2K block of RAM in the
+computers memory by the program, transfer and compare routines; for the &lsquo;Dump&rsquo;
+routine, the normal operating address of the chip should be entered. This address will
+be printed at the start of each line of data, incrementing by 10H for each line.
+</p>
+<p>
+P &ndash; PROGRAM EPROM FROM DATA IN RAM
+</p>
+<p>
+After obtaining the address to be used as the start of the data to be put in
+EPROM and setting up the counters, etc., the routine tests the value at ROMFLG to
+decide whether 1K or 2K chips are to be programmed. Depending on this value, it
+selects the appropriate programming routine; two separate routines are required
+because the programming requirements of the two types of chip are very different.
+2708s need each address to be cycled a large number of times (100 &ndash; 1000) with a
+programming pulse of between&nbsp;.1 and 1 millisecond., to produce a total &lsquo;burn&rsquo; time of
+100 milliseconds per address. 2516/2716 chips need only one cycle, with a
+</p>
+<?php columnEnd(1); ?>

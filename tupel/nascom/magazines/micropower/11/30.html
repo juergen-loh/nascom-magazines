@@ -1,0 +1,61 @@
+<?php columnStart(1); ?>
+<pre>
+FE 1B             CP &pound;IB           ; Is it an &lsquo;escape&rsquo; ?
+20 EF             JR NZ CPLOOP     ; If not, look for next difference
+DF 6A             SCAL CRLF        ; End of routine; scroll screen
+C9                RET              ; and return to monitor
+E5          TAB   PUSH HL          ; Save current poition of
+D5                PUSH DE          ; pointers to blocks 1 and 2
+01 F0 FF          LD BC -16        ; Tabulate from 16 bytes
+09                ADD HL BC        ; before difference
+54                LD D H           ; Put this address into DE
+5D                LD E L
+01 20 00          LD BC 32         ; Tabulate to 16 bytes
+09                ADD HL BC        ; beyond the difference
+EB                EX DE HL         ; Now get 1st address in HL, 2nd in DE
+DF 54             SCAL &ldquo;T          ; Call the tabulate command
+D1                POP DE           ; Recover pointers
+E1                POP HL
+C9                RET              ; End of subroutine
+</pre>
+<p>
+You will see that the routine is relocatable; to incorporate it into your monitor as
+command F you must put the start address at &pound;078C in Nas-Sys&nbsp;3, at &pound;0792 in Nas-Sys&nbsp;1.
+To compare blocks of memory starting at &pound;1000 and &pound;2000 you simply
+enter F1000 2000. When one of the command letters is entered the first three
+hexadecimal values following the letter are held in HL, DE and BC, but if you want
+to run the program under the E command, entering EXXXX 1000 2000, you will
+have to prefix a routine to pick up the block addresses; for examples:
+</p>
+<pre>
+2A 0E 0C          LD HL (&pound;0C0E)    ; Get block 1 address in HL
+ED 5B 10 0C       LD DE (&pound;0C10)    ; and block 2 in DE
+</pre>
+<p>
+XXXX will be the start address of the modified program. Also the return
+instruction at the end of the program (not the one at the end of the subroutine)
+should be changed to DF 5B, SCAL MRET. Because this means replacing a
+single byte code by a two byte one you will have to move the subroutine down one
+byte and change the values in the relative calls. However, you can avoid this by
+using C7, RST 0, to get back to the monitor.
+</p>
+<p>
+There are 34 remaining subroutine calls in Nas-Sys&nbsp;1 (DF 5B &ndash; DF 7C). These
+cannot be entered as commands from the keyboard, but can all be used in
+programs. Nas-Sys&nbsp;3 has 3 extra subroutine calls, including the repeat keyboard
+facility.
+</p>
+<p>
+Restart &pound;20, &pound;E7, is used by the breakpoint routine to halt the execution
+of a program and display the current state of the processor. When a breakpoint
+is entered at address XXXX by entering BXXXX, the address is stored in the
+workspace at &pound;0C23. The next execute command saves the code it finds at
+XXXX and then, providing that the address entered was not zero, it inserts a
+breakpoint restart. When the program arrives at this restart the original code is
+replaced, and the contents of the registers are saved in the workspace (from
+&pound;0C61 to &pound;0C6C) and displayed on the screen. The program then returns to the
+monitor to wait for the next command. If you now enter E without specifying
+an address execution continues at the replaced code; once again restart
+&pound;E7 will be inserted (because &pound;0C23 still contains address XXXX) and if
+</p>
+<?php columnEnd(1); ?>

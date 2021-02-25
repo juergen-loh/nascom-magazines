@@ -1,0 +1,69 @@
+<?php columnStart(1); ?>
+<p>
+If there is not enough room, use MOVCPM to make a new CP/M that uses a
+little less memory, or alter the MOVCPM program to reserve a little bit
+more CBIOS space. This can be done by changing location 023DH in MOVCPM.
+By adding 1 to this value an extra 256 bytes is added to the BIOS space
+reserved, and so on.
+</p>
+<p>
+If this method is being tried, I assume that the BIOS Source Code is not
+available. I hope that I am not disclosing too much information in the
+following suggestions, which I am basing on my original CBIOS.
+</p>
+<p>
+a) The -Signon&rdquo; messages are at the end of the CBIOS.
+b) The Workspaces are just before this.
+</p>
+<p>
+c) The PUTVID and GETVID routines are just before this.
+d) Keyboard and Editing routines come just before this.
+</p>
+<p>
+If you can find these routines and data areas, then you can try out the
+following suggestions. Choose an address just AFTER your CBIOS, where you
+will place the Clock AND the IVC Keyboard routines. The latter are not
+very long. If you can locate the equivalent IVC routines, it will be
+possible to -CALL* them. If not then they must be added in.
+</p>
+<p>
+Assemble the Clock routines and include the Keyboard code, with &ldquo;ORG&rdquo; set
+for your chosen address. Any Clock workspaces will have to reside here as
+well.
+</p>
+<p>
+Patch this code into the end of the CBIOS, and place a &ldquo;JUMP&rdquo; at the
+start of the code of the original keyboard routine, to the new code.
+</p>
+<p>
+If this all works, use DDT/ZSID/GEMDEBUG to move a copy of CP/M down over
+MOVCPM and save it as CLOKBIOS.SYS or similar name. You can then put it
+on to the SYSTEM tracks of your disk with SYSGEN. Note that this is a
+fixed size BIOS, and if you alter memory size, and regenerate CP/M with
+MOVCPM, you will have to re-assemble and patch the new code.
+</p>
+<p>
+Top line locking might be achieved by jumping to extra code at the end of
+the CBIOS, from the warm boot routines, or by adding the command into the
+&ldquo;update&rdquo; part of the routine. Since it would then be executed every time
+that the keyboard is scanned, there would be an extra time penalty.
+</p>
+<p>
+One final problem might remain. SYSGEN and COLD BOOT may need altering to
+READ/WRITE the increased code in the system tracks.
+</p>
+<p>
+My previous article in the 80-BUS NEWS, on how to insert &ldquo;-SYS&rdquo; into the
+</p>
+<p>
+CBIOS gives quite a bit of information on some of these problems, particularly
+7 and 9.
+</p>
+<p>
+WANTED
+</p>
+<p>
+Wanted, Nascom IMP Printers, need not be in working order. Please write with
+details to D. Torrens, c/o 51 St Martin, Marlborough, Wilts
+</p>
+<?php columnEnd(1); ?>

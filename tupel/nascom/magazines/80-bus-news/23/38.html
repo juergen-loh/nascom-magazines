@@ -1,0 +1,84 @@
+<?php columnStart(1); ?>
+<p>
+38
+</p>
+<p>
+SERIAL INTERFACE PROBLEMS MADE EASY by Richard Beal
+</p>
+<p>
+See eS Sa ky a Nk Sh Ns a A my Sk Se Sam ls se mc sy ce Se se am
+</p>
+<p>
+The serial interface is a simple and convenient way to connect together
+computers, VDU terminals, modems, acoustic couplers, printers and many other
+devices. The RS232 or V24 standard is universal and works very well at speeds
+of at least 9600 bps. The hardware designer has only to incorporate a UART on a
+board, and a few wires to a 25 pin connector, and the cost is very low. The
+software needed is very simple, and nothing can go wrong!
+</p>
+<p>
+But anyone who has tried to plug together two computers using the RS232
+link has probably experienced problems. The difficulty is that the standard is
+intended for the connection of terminals, such as VDUs or printer terminals, to
+a host computer, or to a modem linked to a host computer. But is a
+microcomputer a terminal or a host? When linked to a printer it is clearly the
+host, but when linked to a modem it is a terminal. The connections for hosts
+and terminals are completely different, and this is where the problems start.
+</p>
+<p>
+This article tries to explain how to persuade all these devices to talk to
+each other using RS232, and how to wire up the plugs for all possible cases. &ndash;
+</p>
+<p>
+The first problem is that there are two types of 25 pin connector, one
+male and the other female. Unfortunately most manufacturers are now so confused
+that they seem to randomly fit male or female connectors to their computers. In
+fact Gemini have got rather confused themselves, as you will see. A general
+rule is that hosts should have female sockets that need a cable with a male
+plug, and terminals should have male sockets that need a cable with a female
+plug. Another confusing fact is that the sex of a plug is determined by the 25
+tiny pins and not by the shape of the entire plug. Also the pin numbering is
+forwards on one type and in reverse on the other, as you would expect. The pin
+numbers can usually be read near the pins, if you have good eyesight.
+</p>
+<p>
+The normal RS232 connecting lead consists of a male plug at the host end
+and a female plug at the terminal end. The cable links pins 2, 3, 4, 5, 6, 7, 8
+and 20 to the same pins at the other end. This cable can be used to link modems
+to terminals, or computers to printers. This assumes that neither manufacturer
+got confused. If you try this lead with a Gemini Galaxy, it may work, but you
+are taking a slight risk, because the socket on the Galaxy is wired up partly
+as a host and partly as a terminal.
+</p>
+<p>
+Connections to the Galaxy serial socket
+</p>
+<p>
+RO PO RD EAS II RED EERE RD ADE BE DIES OE EOI IEE RE DEINE OITA AERA IOS
+</p>
+<p>
+Pin 2 Data from device into the Galaxy
+Pin 3 Data to device from the Galaxy
+Pin 7 Ground (always)
+</p>
+<p>
+Now this is correct for a host, and since it is a host type socket, so far
+so good.
+</p>
+<p>
+Pin 4 RTS out
+Pin 5 CTS in
+Pin 6 DSR in
+Pin 8 CD in
+</p>
+<p>
+Pin 20 RTS out
+</p>
+<p>
+Now these look correct, and one can sympathise with the designer for
+deciding to connect these up to the corresponding lines from the UART. But UART
+manuals for some reason always assume that you are building a terminal and
+never a host. In fact if you are connecting to a printer, pins 4 and 20 carry
+signals from the printer, and pins 5, 6 and 8 are expecting to receive signals
+</p>
+<?php columnEnd(1); ?>

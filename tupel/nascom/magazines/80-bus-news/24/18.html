@@ -1,0 +1,77 @@
+<?php columnStart(1); ?>
+<p>
+18
+</p>
+<p>
+Intelligent sound effects board.
+</p>
+<p>
+This board would be very similar to the board proposed above. However, the
+speech synthesiser chip would be replaced by two AY-3-8910 programmable sound
+generators. The outputs of the two chips would be fed to a DIN socket, to
+allow connection to a high fidelity amplifier. Since the AY-3-8910 chip
+provides further output lines, it could control digital to analogue
+converters, also connected to the board output, enabling the synthesis of far
+more sophisticated wave forms than those provided by the AY-3-8910 itself. An
+advantage of this board over the more normal sound board with no processing
+power of its own (such as the late, lamented Winchester Technology sound
+poard) would be the ability to &ldquo;sweep&rdquo; the frequency and other control
+registers of the sound chip without taking up time needed by the main system
+processor.
+</p>
+<p>
+Intelligent sound effects and speech board.
+</p>
+<p>
+This board would consist simply of the above two boards combined into one. The
+output ports of the two AY-3-8910&rsquo;s would control the SC-01 chip, as well as&rdquo;
+two digital to analogue converters. There should be ample space for the port
+decoding logic, a Z80, ROM, RAM, two AY-3-8910&rsquo;s, two DAC&rsquo;s and an SC-01 on an
+eight inch square board. After all, Gemini can fit 512K of RAM in that space!
+</p>
+<p>
+Parallel processor board.
+In many applications, such as chess programs, the speed of the main processor
+is not sufficient to calculate as far ahead as is desirable. If it were
+possible for the main processor to generate moves, and pass the new positions
+created to other processors for evaluation, speed improvements would result.
+This would mean that a comparatively simple program could achieve better
+results by looking further ahead than is usually possible. Sargon, for
+example, does not usually look more than six plies deep, and can take hours to
+do so. A suitable board for this kind of application could be constructed
+using the following: .
+</p>
+<p>
+(a) Port decoding logic for eight ports.
+</p>
+<p>
+(b) Four Z80 processors, each operated via two ports.
+</p>
+<p>
+(c) ROM and RAM for each processor.
+Thus the board would contain, in effect, four subsidiary computer systems,
+each able to run programs independantly of the others, and of the main
+processor. Since there would not be a lot of room for RAM on this board, it
+would be fitted with suitable connectors to enable it to be expanded on
+separate boards. There are many applications besides chess which require rapid
+results from a large number of calculations. For example, the calculation of
+the new coordinates of a complex moving shape, for animated 3-D displays. A
+board of this type would be of considerable assistance in producing fast
+displays with the Pluto graphics board, where it frequently happens that the
+Pluto board has to wait for the main processor to generate the next picture in
+an animated sequence. The matrix multiplication calculations used in creating
+moving displays are just crying out for this sort of parallel processing.
+Anyone feel like writing an Occam compiler for the board? Oh all right, I will
+do it in a spare hour, when one comes along! [wa. &ndash; for the idiots (like me),
+what is Occam? |
+</p>
+<p>
+Add-on 16 (or 32?) bit processor board.
+</p>
+<p>
+This would be similar in concept to the board described above, but would carry
+only one processor, of a considerably more powerful type. As well as the new
+processor, there would be operating software in ROM, large amounts of RAM, and
+the ability to extend the board further. The board could use the Z8000
+</p>
+<?php columnEnd(1); ?>

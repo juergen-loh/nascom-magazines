@@ -1,0 +1,103 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-24-1.png"); ?>
+</h1>
+<h2>
+NASBUS
+</h2>
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<h4>
+- where to&nbsp;?
+</h4>
+<?php columnChange(2); ?>
+<h3 class="author">
+D. R. Hunt
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+For the first time we publish details of &lsquo;80-BUS&rsquo;, which for legal reasons
+can&rsquo;t be called Nasbus, but is for all intents and purposes Nasbus spec. issue 4. Most
+importantly it includes system timing, which has never been published before. This
+includes some minor changes which improve the bus whilst not changing its compatibilty
+with existing Nasbus. (The changes are discussed later.) This is the bus standard that
+the new Gemini computer uses, and it is hoped that it will be made &lsquo;public domain&rsquo; so
+that anything that is designed to use it will remain compatible with both Nascom and
+Gemini products.
+</p>
+<p>
+It is my personal hope that Nascom and Gemini will get together to provide a
+single bus specification under the guidance of a technical committee independant of
+any manufacturer. That way it will be under firm control from day one and the chaos
+that developed around the S-100 bus can be avoided. It took six years before the IEEE
+stepped in and said, &ldquo;Look lads, you&rsquo;ve got a standard, don&rsquo;t keep &lsquo;bending&rsquo; it to
+suit yourselves. We&rsquo;re going to take it over, publish it as a standard, and if you
+don&rsquo;t conform, then you can&rsquo;t call it S-100.&rdquo; Wishful thinking? I think not, if common
+sense prevails at this stage, we could even end up with a European standard Z80 bus to
+rival S-100, to the benefit of all end users. Mind you, manufacturers might not be too
+happy about it. (Manufacturers don&rsquo;t like being told what they can and can not do by
+external committees.)
+</p>
+<p>
+As to the steering committee, I hesitate to volunteer &lsquo;us&rsquo;, although we have
+enough technical expertese available, (including access to the originators of Nasbus).
+It really requires someone with more weight. Some organisation like the BSI or IEE
+would be more suitable (and acceptable to the manufacturers), although they may
+consider &lsquo;some poofling little computer bus&rsquo; as being beneath them.
+</p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<h3 id="article2">
+80-BUS, a functional description
+</h3>
+<?php columnChange(2); ?>
+<h3 class="author">
+by Gemini Microcomputers Ltd.
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p>
+The Nasbus, unlike many other bus systems, has had a very ordered development.
+However, when we started developing a new range of cards it became apparent that a new
+revision was urgently required. After a great deal of careful thought and many hours
+of deliberation the following document was drawn up. It expands on the third issue of
+the Nasbus functional specification and also attempts to anticipate some of the
+possible future developments of the bus.
+</p>
+<p>
+The original Nasbus specification made provision for the extra address and
+data lines of 16 bit processors. Careful consideration reveals that the bus would not
+be suitable for this, and so a number of new signals have been defined for the lines
+made free. The importance of good ground signals can not be overemphasised, and so
+extra ground lines have also been added.
+</p>
+<p>
+When defining this bus a great deal of thought went into deciding whether or
+not to maintain the NAS MEM, NAS IO, and DBDR signals. These signals are particular to
+Nascom&nbsp;1 (and NAS IO also to Nascom&nbsp;2) and are unlikely to be required by any future
+cards. They therefore constitute a &lsquo;nuisance&rsquo;. However, for the sake of compatibility,
+to avoid the S100 situation, and with pressure from INMC80 it was decided that 80-BUS
+would maintain support for these signals.
+</p>
+<p>
+Because of the above considerations 80-BUS remains fully Nascom&nbsp;1 and 2
+compatible. We therefore hope that Lucas will also adapt this specification. 80-BUS
+will probably not be registered by Gemini, and consequently will become public domain.
+It is our wish that an independant committee be set up to &lsquo;guard&rsquo; the specification of
+the bus, and to allow any manufacturer who produces a card that fully complies with it
+to advertise accordingly. The 80-BUS is a Z80 bus and no attempt has been made to make
+it compatible with any other processor.
+</p>
+<p>
+One final point is that all cards, including the bus master, should provide a
+means for being switched out of the memory map under software control. This may be by
+means of implementing the Page Mode structure, or by some alternative method. This
+condition also applies to any I/O card that is memory mapped.
+</p>
+<p>
+Many thanks to David Lewis for the many hours of assistance in drawing up this
+specification.
+</p>
+<?php columnEnd(1); ?>

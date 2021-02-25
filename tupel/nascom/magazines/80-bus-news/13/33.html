@@ -1,0 +1,70 @@
+<?php columnStart(1); ?>
+<p>
+33
+</p>
+<p>
+transmission over short distances is 19200 BAUD, for maximum distance, speeds as low
+as 110 and 300 BAUD are typical. Variations on the RS232 allow for higher data rates
+but at greater complexity and usually by what is known as synchronous transmission
+where the system clock frequency is transmitted either as a component part of the data
+or sent separately along with the data. Synchronous transmission needs the clock to be
+sent over the same path as the data so that the clock suffers similar phase shifts to
+phase shifts which occur in the signals when serial data is transmitted over long
+</p>
+<p>
+distances.
+</p>
+<p>
+The Centronics protocol is almost the reverse of the RS5232. When compared with
+RS232 its noise immunity is poor, and the distances for data transmission should be
+measured in metres rather than kilometres. It is a multiwire system, typically eleven
+wires are needed, and if noise is to be kept at bay, these should be &lsquo;twisted pair&rsquo;
+cables needing twenty or more wires in all. However, it is very fast and transfer
+speeds of 250000 BAUD are typical. The protocol also lends itself to direct
+interfacing with microprocessor equipment. In home and small business installations,
+the advantages offered by RS5232 in terms of noise immunity are minimal as the distance
+between the host device and the printer is usually not more than a metre or so, thus
+the Centronics protocol offers significant advantages, because of its simpler
+interface requirements and lower cost.
+</p>
+<p>
+This leads us to an interesting point concerning both Nascom and Gemini
+equipment. Both processor cards are equipped with the necessary hardware to cater for
+either serial R5232 or Centronics parallel, but both operating systems, NAS-SYS and
+RP/M, are only supplied with the necessary software to drive serial printers, and not
+the Centronics parallel interface. To be fair to Gemini, RP/M 2 now incorporates
+Centronics parallel driving routines, but as far as I know RP/M 2 is not yet available
+as a replacement for RP/M. This anomaly did not come about be accident, but shows the
+speed of change within the world of microprocessing. When NAS-SYS&nbsp;3 was designed, a
+bit over two years ago with RP/M following a year later, only the large Centronics
+printers, type 101 and larger, were available and these cost four figures even second
+hand. On the other hand second hand serial printers whilst still expensive were at
+least available and new ones could be purchased for under a thousand pounds. Now,
+eighteen months later, an entirely adequate printer with a Centronics interface can be
+purchased new for just under &pound;200 if you shop around.
+</p>
+<p>
+The fact that both Nascom and Gemini are equipped with entirely adequate RS232
+hardware and software means that I need not dwell on the RS232 side of things, except
+to cover the aspect of interfacing. Driving the printer is a matter of reading and
+understanding the manuals. It is all there, if you can not understand the words, then
+in the case of NAS-SYS try reading the software. In the case of RP/M if you can not
+understand it try reading my commentary. on RP/M to be published shortly, failing that, &ndash;
+the Zaks or Osbourne CP/M commentaries (Zaks for fun reading with inaccuracies, the
+Osbourne for a weightier and in many instances more abstruse treatment).
+</p>
+<p>
+Handshaking is an important part of any protocol when applied to printers. It
+allows the printer to control the rate at which the data is sent. Put simplistically,
+this is the the case where data is being sent to a printer at, say, 1000 characters
+per second, where the printer is only capable of printing, say, 30 characters a
+second. The printer is either going to miss most of the incoming data or tie itself in
+knots trying to accomplish the impossible. All but the most primitive printers employ
+a handshake signal. This is a signal returned to the host device to indicate that the
+printer is ready to accept data. In an RS232 implementation this is known as the Data
+Terminal Ready (DTR) signal, indicating that the printer is ready to accept incoming
+data, whilst in the Centronics protocol, this is known as the BUSY signal, indicating
+that the printer is busy, so do not send data. With RS232 there is another protocol
+known as the XON/XOFF signal, this is rarely used and does not concern us here.
+</p>
+<?php columnEnd(1); ?>

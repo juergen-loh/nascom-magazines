@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<p>
+The enter key has a very important function; it tells the computer to scan the
+line containing the cursor and carry out any legitimate command on that line.
+However, computers tend to be very fussy about the commands they accept; if you
+put the command in the wrong place, or make a mistake in spelling or punctuation,
+you will upset it and it will come back at you with its favourite message &ndash; Error.
+</p>
+<h3>
+Screen Layout
+</h3>
+<p>
+The Nascom uses a memory mapped display. This means that each
+position at which a character can appear on the screen corresponds to a location
+in a special region of the computers memory, often referred to as the VDU RAM
+(the term &lsquo;RAM&rsquo;, and acronym for Acc ess Memory dating from the early days of
+computing, is now used for any type of memory that can be modified directly by
+the processor during the running of a program). To produce a character on the
+screen you merely have to put the appropriate code into the correct location.
+Special circuitry scans the display memory continuously and converts the data it
+finds there into a signal which writes the characters on a TV screen. You can
+change the contents of the display memory directly from the keyboard and watch
+the characters appear. Clear the screen by typing shift/backspace, and then enter
+M9E3, i.e., type M9E3 and then press &lsquo;enter&rsquo;. Make sure that the letter M is on the
+far left of the screen, otherwise the computer will ignore it. If you have entered
+the command to the computers satisfaction the cursor will jump to the next
+line down the screen where 09E3 20 will be printed, with the cursor flashing at the
+number 2. This shows that the current content of memory location 09E3, which
+represents the middle of the screen, is 20 &ndash; the code for a space. If you now type
+07, when you press &lsquo;enter&rsquo; this character replaces the space and a small bell-shaped
+figure with two legs projecting downwards appears in the middle of the screen. You
+will have noticed that with this method of entry the position at which the change
+occurs is independent of the cursor location.
+</p>
+<p>
+The screen can hold 16 lines of 48 characters. The top line is special; you will
+find that you cannot move the cursor onto the top line by means of the control keys.
+Of course, you can put data directly into the memory locations corresponding to
+the top line; if you modify the contents of location BE3 to 07 the little bell will appear
+in the middle of the top line. If you try to move the cursor off the bottom of the
+screen, you will find that the screen &lsquo;scrolls&rsquo;, that is, the cursor stays on the bottom
+line but all the data on the screen is moved up one line. However, the contents of the
+top line are unchanged, and the data in the second line is lost. The top line is used
+for headings, program names, etc. The Nascom screen is not mapped to the
+display memory in a straighforward way; the start of the memory corresponds to the
+second line of the display, it runs down to the bottom line, and it is then followed by
+the top line. It is thus usual to refer to the scrolling part of the display as lines 1 &ndash; 15,
+and the top line as line 16, which can cause some confusion until you become
+used to it.
+</p>
+<h3>
+Getting Basic
+</h3>
+<p>
+The microprocessor which controls the operation of your Nascom is an
+electrical device, and it only responds to the patterns of electricity known as
+</p>
+<?php columnEnd(1); ?>

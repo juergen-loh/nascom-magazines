@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+15
+</p>
+<p>
+conflicts would ensue if more than one card tried to generate Nasio. This is
+borne out by the circuit diagram for the ram. (Incidentally, Map say that the
+circuit diagram for the VFC is &ldquo;now available".) Now some of you may look up
+the NasBus issue 3 spec (in the N2 manual) and cry &ldquo;Nasio is not an OC line!",
+so who is right? Well, my Nascom I/O card generates Nasio correctly, and
+treats it as an OC line, so I guess it was either a misprint or Nascom
+changed their minds.
+</p>
+<p>
+I know this may seem a trivial point to go on about, it&rsquo;s just that I
+like all I/O peripheral cards to generate Nasio, so that I can unplug, say,
+the I/O card and still have a working Nascom. I initially connected the Nasio
+link on my Map VFC, as well as having the I/O card generating Nasio, and
+consequently took a VERY long time getting the RS232 on the I/O card to work
+properly, all because the I/O card and the VFC were arguing over Nasio.
+</p>
+<p>
+RS232
+This brings me neatly onto my next topic. I was surprised to read that
+</p>
+<p>
+Rory O&rsquo;Farrell has been having problems PIPing COM files over the RS232
+interface. A short time ago I had a similar problem, in that I needed to get
+some files transferred from an ICL PC to my Nascom. I tried using PIP, and
+like Rory didn&rsquo;t have much success. It would open the file, but didn&rsquo;t seem to
+&ldquo;know&rdquo; when the ICL PC had finished transmitting. The file was probably in
+memory, but I didn&ldquo;t know where. I also encountered problems of different
+buffer sizes (no RS232 handshaking!). I solved this by writing a very simple
+program to run under Monitor.Com which read characters from the serial
+interface into memory. Then when the ICL PC had finished transmitting, I
+pressed RESET, re-loaded Monitor.Com, and, because the cold boot loader leaves
+the TPA alone, there was my file in memory, waiting to be saved.
+</p>
+<p>
+The ICL PC had preceeded the file by sending about 40 NULLs, and
+terminated the file with about 40 more nulls (and a control-z character!), but
+by using DDT on the ICL PC I was able to determine the exact size of the file,
+and how it began, so it was easy to identify where the required program was.
+Very simple, and so much easier and quicker than using a disassembler!
+</p>
+<p>
+Re-Inventing The Wheel
+</p>
+<p>
+It has occurred to me while upgrading to CP/M that I would need to
+translate all my Zeap files to Macro-80 format, and all my Nascom Basic files
+to MBasic format. This will doubtless require the writing of some simple (or
+&ldquo;not so simple?) program. Now how many other people have written such
+utilities? Quite a few, I would imagine. What a total waste of time and effort
+if such routines already exist! I wholeheartedly agree with Dr. Darks comments
+about &ldquo;idle bodies&rdquo; in this context. Such routines would be so massively
+useful to Nascom (and Gemini owners who have switched from Nascom?) that I am
+sure Mr Editor would publish such an article were it to be submitted. This is
+why Dr. Dark&rsquo;s &ldquo;Ring of Rust&rdquo; software circle has got to be a good idea, in
+that everyone can swap such useful little utilities. As I write, I am not on
+the &ldquo;ring&rdquo; yet, but then I only wrote to Chris a week or so ago asking to be
+included.
+</p>
+<p>
+Why have I not written such utilities yet? Well, I have just written a
+</p>
+<p>
+Zeap to Macro-80 preprocessor, which will be put on the &ldquo;ring&rdquo; in due course,
+and, of course, written up into an article for this magazine just as soon as I
+have written a Nascom Basic to MBasic preprocessor.
+</p>
+<?php columnEnd(1); ?>

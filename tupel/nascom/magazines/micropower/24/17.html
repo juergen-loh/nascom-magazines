@@ -1,0 +1,66 @@
+<?php columnStart(1); ?>
+<p>
+partial bank decodes and are designed to activate the 16K bank
+of memory rather than a specific 4k block as one might have
+thought fram the circuit and documentation. This means that any
+16k Block of memory can only be properly activated by four
+adjacent decodes since 1t reqmures the lower bits of the address
+</p>
+<p>
+bus to select the memory block. When I connected RAN to the
+1000, 2000H, E000H and F000H decade lines, then 1 was
+connecting two blocks of the same bank. A bit complex, but
+</p>
+<p>
+whenever I wrote to 2000H the result appeared in E000H and
+Vace-versa. I shudder to think what happened when I read from
+2000H&rsquo; Nevertheless, as the first thing that BASIC does is clear
+the menory that it is going to work in, it was inadvertantly
+rubbing itself aut as it went along.
+</p>
+<p>
+It was also the problem of multi-mapping that caused the
+First attempt to copy inte RAM to fail se. miserably. The fact
+that the decodes are partial and rely on the lower address Lines
+moant that the two decodes going to the BASIC ROM were reversing
+the two 3k blocke in the ROM. So the 4 block that was sitting
+at S000H whould have been at F000H and the black at&rdquo; 4000H was
+ineant to be at Evol. Using the single &lsquo;C&rsquo; command to copy the
+Bk block caused the disaster, but if I had copied each block
+seperately to the appropriate destination it would have worked
+Fine (subject to the paragraph above) &laquo;
+</p>
+<p>
+Looking through the information above, you can probably
+deduce that the system I started wth would&rsquo; have worked... IF
+not, then this 12 what you should do, given just 18K.
+</p>
+<p>
+The 1k of RAM needs to be split into two 4K blocks and an
+8k block. The latter goes inte the area E000H to FFFFH, but only
+one of the 4k blocks can sit at 1000H. The last block MUST
+Fes:de at either 4000H, 8000H or C000H because of the partial
+decodes. The BASIC ROM must sit at 2000H, 4000H or A000H to make
+the two halves appear in the right order and be moveable with
+the *E&rdquo; command
+</p>
+<p>
+Of these, the choice of RAM at C000H and ROM at A000H allows
+for the greatest expansion of RAM being easily accomodated
+mithout changes of software, but 1t should net be forgotten that
+there is still a vacant socket (or two) on the Dual Monitor
+board. With the constant dropping of the price of EPROM, it ie
+not outside the bounds of probability that a 2764 (or tho) be
+installed therein, allowing up to 14K of dedicated programs and
+data. These could be used to hold ZEAP, NASPEN, DIS-DEBUG and
+the Bits and P.C.&rsquo;s Toolkit, or Nascom&rsquo;s PASCAL system, for
+example.
+</p>
+<p>
+Doing this would need further study of the layout of your
+memory, and the requirements of each bit of software used but
+the guidelines above should be sufficient for the task. If the
+requirements overlap to any extent, or if the EPROMS prove too
+Slow, then a copy to RAM at the correct place should work.
+</p>
+<?php columnEnd(1); ?>

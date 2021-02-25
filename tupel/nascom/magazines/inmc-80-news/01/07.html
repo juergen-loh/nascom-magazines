@@ -1,0 +1,65 @@
+<?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-07-1.png"); ?>
+<h4>
+Some &ldquo;little known facts&rdquo;:
+</h4>
+<p>
+If you have to write a long DATA table or whatever consisting of very
+similar lines, you can type in the first line and press ENTER, then,
+using the cursor control keys, overwrite the line number with the
+number of the next line required and press ENTER, etc, etc. A LIST
+command wilt then show your series of identical lines for editing as
+necessary.
+</p>
+<p>
+When entering a line of the full 48 characters the act of typing the
+final character places the cursor on the following line and pressing
+ENTER has no effect. It is only necessary, however, to place the cursor
+back up on the line &ndash; at any point &ndash; for a ENTER to enter the whole
+line.
+</p>
+<p>
+I have added a Bits &amp; P.C.&rsquo;s hex pad to my Nascom&nbsp;2, which works well
+for hex and integers but lacks a decimal point. The eventual solution
+must be a hardware fix, but my interim solution is a short series of
+Nas-Sys instructions which copy out the keyboard table from ROM into
+that portion of RAM not accessed by BASIC, switch the values for &ldquo;.&rdquo;
+and &ldquo;FE&rdquo; and gives Nas-Sys the address of the new table. Full credit
+goes to the writer of Nas-Sys for leaving the door open!
+</p>
+<p>
+At switch-on:
+</p>
+<pre>
+C 059E 0C80 0060 (Copy out table)
+M 0CAE
+43 / 0CC6
+21 / 0C6F (Switch values)
+80 0C.
+</pre>
+<p>
+After a Reset:
+</p>
+<pre>
+M 0C6F
+80 0C
+</pre>
+<p>
+Yours faithfully,
+</p>
+<p>
+D. Walker.<br>
+Windsor.
+</p>
+<h3>
+PIO HELP NEEDED
+</h3>
+<p>
+Dear INMC,
+</p>
+<p>
+Could you include some programming hints on the use of the PI0 on
+Nascom&nbsp;1 in some future issue&nbsp;? One useful example would be a traffic
+lights program driving a LED display via the PIO. There is a lot of
+</p>
+<?php columnEnd(1); ?>

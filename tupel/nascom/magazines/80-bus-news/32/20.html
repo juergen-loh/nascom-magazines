@@ -1,0 +1,177 @@
+<?php columnStart(1); ?>
+<p>
+;*kek* NASPEN extension file &lsquo;NASPEX.GO&rsquo;##ss
+3
+</p>
+<p>
+REFS SYSEQU
+</p>
+<p>
+REF
+;This Program is an add-on for NASPEN to allow
+stext files to be loaded and dumped to disk via
+sPOLYDOS using the NASPEN commands W &amp; R -The
+jtape commands are retained by replacing the
+3+ &amp; =- commands by r &amp; w. This program and the
+jmain Naspen code are loaded by the overlay
+;/NPEh.OV&rsquo; which also performs a cold start.
+yThe printer routine intercepts the codes and
+jconverts a &ldquo;CTRL D&rdquo; inte an &ldquo;escape&rdquo; code
+sywhich should allow printer control strings to
+sbe embedded in the text.
+</p>
+<p>
+i
+WARMST EQU 0B 806H
+</p>
+<p>
+noe
+</p>
+<p>
+ORG opooon
+TDONT $,$
+ae WARMST
+R DREAD
+JR DWRITE
+e PRINT
+mR QUIT
+</p>
+<p>
+Quit. -Lb HL,O
+SCAL Tyger
+SCAL ZMRET
+</p>
+<p>
+SET UP FOR
+</p>
+<p>
+ee
+</p>
+<p>
+kekkkkE Text entered from disk *#*kkakkeks
+</p>
+<p>
+wwe
+</p>
+<p>
+DB * Load which file? &lsquo;,0
+SCAL ZINLIN
+LD HL, 20
+ADD AL, DE
+EX DE, HL
+DBL LD HL,SIFCB
+LD B, 110B
+SCAL ZCFS
+SCAL ZCKER
+SCAL ZRDIR
+SCAL ZCKER
+SET 4,B
+SET 5,B
+SCAL ZLOOK
+SCAL ZCKER
+LD AL, (SIFCB+FLDA)
+LD DE, (SLFCB+FSEC)
+LD A, (S1FCB+ENSC)
+LD B,A
+SCAL ZDORD
+SCAL ZCKER
+RET
+</p>
+<p>
+Warm start NASPEN from B000H
+Read file routine is at B003H
+Write file entered from B006H
+Exit routine (resets printer)
+NASSYS KO (UPPER CASE DEFAULT)
+BACK TO POLYDOS
+</p>
+<p>
+READ RST PRS 3; Comments as POLYDOS manual
+</p>
+<p>
+pekeeeak Text saved to disk *tkkkikne
+DWRITE RST PRS ; Comments as POLYDOS manual
+DB * Wile name? *,0
+SCAL ZINLIN
+LD HL, 14
+ADD HL, DE
+Ex DE, HL
+LD HL,S1FCB
+LD B, 1008
+SCAL ZCFS
+SCAL ZCKER
+SCAL ZRDIR
+SCAL ZCKER
+LD AL, 0
+LD (S1PCB+FSFL) HL
+Lb HL, (NXTSEC)
+LD (SLFCB+PSEC) , HL
+EX DE,HL
+LD A, (LOLBH)
+SUB 108
+LD B,A
+LD A, (1O1AH)
+OR A
+JR Z,P1
+INC B
+Pl PUSH BC
+LD HL,O
+LD L,B
+LD (SLFCB+FNSC) , HL
+LD HL, LOO0H
+LD (SLFCB+FLDA) , HL
+LD (S 1FCB+FEXA) ,HL
+PoP BC
+SCAL ZDWR
+SCAL ZCKER
+LD RL, S1FCB
+CALL ENTR
+RET
+ENTR SCAL ZENTER
+RET Z
+ce 318
+RET NZ
+PUSH HL
+LD HL, FSFL
+ADD HL, DE
+BIT 0, (HL)
+LD A, 33H
+IR NZ, SKIP
+SET 1, (HL)
+POP aL
+JR ENTR
+SKIP POP HL
+RET
+; THIS IS A ROUTINE FOR THE EPSON RX80 PRINTER
+swith CENTRONICS INTERFACE
+</p>
+<p>
+GET MSB OF END
+SUBTRACT START ADDR
+STORE IN B
+</p>
+<p>
+GET LSB OF END
+</p>
+<p>
+SET FLAGS
+</p>
+<p>
+oR om eR on Oe
+</p>
+<p>
+STORE FOR LATER
+</p>
+<p>
+-
+</p>
+<p>
+GET NO OF SECT BACK
+</p>
+<p>
+-
+</p>
+<p>
+20
+</p>
+<?php columnEnd(1); ?>

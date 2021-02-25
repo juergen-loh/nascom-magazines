@@ -1,0 +1,81 @@
+<?php columnStart(1); ?>
+<p>
+35
+RAM-DISKS by D. Parkinson
+</p>
+<p>
+SOBUS WARNING
+READING ABOUT RAM-DISKS MAY ADVERSELY AFFECT YOUR WALLET
+</p>
+<p>
+ON-GOING SITUATIONS
+</p>
+<p>
+Starting off back in the Nascom days, the main expansion memory was the
+domestic tape recorder. Using this programs and data were saved for reloading
+later. The data transfer rate varied from about 110 Baud upto 2400 Baud. (A
+few adventurous souls reached the dizzy heights of 4800 baud). In fact there
+must be megabytes of data held on the humble audio cassette, which was
+recorded on ordinary domestic tape recorders. The next step on from this was
+the arrival of the floppy disk in the form of GM805, followed in a little
+while by double and quad density disk drives and the various 80-BUS disk
+controller boards. The disk systems offered far higher performance than the
+cassette, and after a while those who were using disks began to wonder how on
+earth they used to manage with cassette tapes. The trouble is that users&rsquo;
+habits change to meet the capabilities of the equipment they use. With the
+faster access time of disks they started using multipass compilers, linking
+loaders, and a lot of other software that uses disk for the intermediate
+storage of data. So after a while the cry goes out again for higher
+performance. The next step on is the Winchester disk. This offers high
+capacity, (you don&rsquo;t have to keep changing disks), together with faster access
+times. But unfortunately it is expensive, requires a specialised controller
+(which isn&rsquo;t exactly cheap either!), and is still a mechanical device with the
+attendent constraints on access times. By now some programs are manipulating
+large amounts of data, and as the system memory is finite (64k), most of this
+manipulation is done via intermediate storage on disk. Life would be far
+better if more memory was available.
+</p>
+<p>
+MEMORY EXPANSION
+</p>
+<p>
+Various approaches have been used to expand the address space of the Z80.
+The two that 80-BUS readers will be familiar with are the original Nascom
+&ldquo;page-mode&rdquo;, where individual memory boards are paged into and out of the
+system, and the Gemini memory mapping scheme implemented on the GM813
+CPU/Memory board. .
+</p>
+<p>
+Any method of expanding the address space of the Z80 suffers from the
+problem that it tends to be unique to a particular system, and no standard
+software will support it. Only software written specifically for the system
+would be any use, and it is likely that software like that would be extremely
+thin on the ground. So the approach being taken now, by a large number of
+manufacturers, is to use the extra memory in conjunction with disk operating
+systems (DO0Ss), and to make the memory appear as a disk. This solves virtually
+all the problems. The DOS handles the management problem of organising data in
+the extra memory, and all that has to be added to the BIOS of the disk system,
+is a simple driver to convert a disk track/sector read/write request into a
+read/write request to a specific area of this extra memory. All the standard
+disk software still runs perfectly under the DOS, but any read/write request
+to the &ldquo;Memory disk&rdquo; will result in an immediate response. This is because it
+only takes a few microseconds to locate the wanted &ldquo;track&rdquo; and &ldquo;sector&rdquo; on the
+memory drive, as opposed to tens or hundreds of milliseconds on a mechanical
+drive.
+</p>
+<p>
+HOW CAN WE ADD THE MEMORY?
+Let&rsquo;s now consider the various ways of implementing the memory drive.
+</p>
+<p>
+Page-Mode
+</p>
+<p>
+The disadvantage of the RAMB/GM802 page mode is that it switches an
+entire memory board in and out of the system. Considering the case of GM802 (a
+full 64k board) this means that when a board is paged out, the running program
+</p>
+<p>
+AP GRE eH ODO RPI OTE DD IMO LEO EN ERE CTE
+</p>
+<?php columnEnd(1); ?>

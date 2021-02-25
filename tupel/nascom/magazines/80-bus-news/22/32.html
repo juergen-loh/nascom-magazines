@@ -1,0 +1,180 @@
+<?php columnStart(1); ?>
+<p>
+GRAPHPAC COMMAND MANUAL Page 7
+</p>
+<p>
+It is possible to place the CAP on the circumference of a circle after
+it has been drawn by using the PLOT command, with the circle radius given as
+the plot distance. Obviously the same RATIO value must be used for the PLOT
+and CIRCLE commands for the result to be correct.
+</p>
+<p>
+DOCAP
+</p>
+<p>
+Graphpac format:
+BOCAP
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To alter a single pixel at the CAP co-ordinates dependent on the
+current PEN mode.
+</p>
+<p>
+Example:
+The following is a BASIC program that follows the actions taken by the
+CIRCLE command. Execution is slower as the CIRCLE command is a machine code
+</p>
+<p>
+subroutine and does not involve any of the overheads associated with a BASIC
+program.
+</p>
+<p>
+10 STARTAT X,Y +: REM THE MIDDLE OF THE SCREEN
+20 FOR A=O TO 360
+</p>
+<p>
+30 PENUP
+</p>
+<p>
+40 PLOT A,R : REM RIS THE RADIUS OF THE CIRCLE
+50 PENDOWN : DOCAP : PENRET
+</p>
+<p>
+60 NEXT A
+</p>
+<p>
+cap
+</p>
+<p>
+Graphpac format:
+CAP
+</p>
+<p>
+Purpose:
+The CAP command has been added to assist the programmer. It reports
+the CAP comordinates, allowing a programs action to be investigated.
+</p>
+<p>
+\
+</p>
+<p>
+Remarks:
+</p>
+<p>
+CAP reports the co-ordinates on the screen at the current cursor
+location in much the same way as a normal print statement.
+</p>
+<p>
+CAPK
+</p>
+<p>
+Graphpac format:
+CAPEK CC RR
+</p>
+<p>
+Purpose:
+</p>
+<p>
+CAP&reg; CC,RR reports the co-ordinates on the screen at the specified
+CC,RR screen co-ordinates. This action does not effect the cursor address so
+that subsequent print statements will act correctly.
+</p>
+<p>
+LCAP
+</p>
+<p>
+Graphpac format:
+LCAP
+</p>
+<p>
+GRAPHPAC COMMAND MANUAL Page 8
+</p>
+<p>
+Purpose:
+</p>
+<p>
+This reports the CAP co-ordinates on a printer allowing a program&rsquo;s
+action to be investigated.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+LCAP will report the CAP co-ordinates to a printer (or the current
+LST; device if running under CP/M).
+</p>
+<p>
+CLs
+</p>
+<p>
+Graphpac format:
+CLS
+</p>
+<p>
+Purpose:
+To clear the screen of all graphics and alpha-numeric characters.
+</p>
+<p>
+GCLR (Graphics Clear)
+</p>
+<p>
+Graphpac format:
+GCLR
+</p>
+<p>
+Purpose:
+To clear the screen of graphic characters.
+</p>
+<p>
+Remarks:
+</p>
+<p>
+A search is made in the screen memory for any graphic characters. If
+any are found they are replaced with a space character. (20 hex.)
+</p>
+<p>
+CLEOL (CLear To End Of Line)
+</p>
+<p>
+Graphpac format:
+CLEOL
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To clear the display from the current cursor position to the end of
+the current line.
+</p>
+<p>
+SCROLL
+</p>
+<p>
+Graphpac format:
+SCROLL n
+</p>
+<p>
+Purpose:
+</p>
+<p>
+To cause scrolling to affect a number of lines (n) on the video
+display. ,
+</p>
+<p>
+Remarks:
+</p>
+<p>
+The number of lines specified in the scroll command will be situated
+at the bottom of the screen, allowing a display area above to be fixed for
+graphics plotting. Alpha-numerics can still be used on the display area with
+the use of the SCREEN command. If it is wished to return scrolling to normal,
+use the command SCROLL 25. Scrolling will only take place on receipt of a line
+feed while the curser is on the bottom line of the display.
+</p>
+<p>
+32
+</p>
+<?php columnEnd(1); ?>

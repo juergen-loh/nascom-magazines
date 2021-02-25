@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+SOFTWARE
+</h1>
+<h2>
+NAS-DIS/DEBUG/XTAL
+</h2>
+<h2>
+SOFTWARE REVIEWS
+</h2>
+<h3 class="author">
+by R. Beal
+</h3>
+<p>
+Two new items of software are about to be released and these
+have been reviewed by the INMC committee to see how good they are.
+</p>
+<h2>
+NAS-DIS 1.0
+</h2>
+<p>
+NAS-DIS is a disassembler, which means that it takes any
+machine code program and produces an assembler listing from it. This
+source code, if assembled, is certain to generate the original machine
+code program again. Disassemblers are very useful in examining machine
+code programs so that you can work out what they do and make any
+changes required.
+</p>
+<p>
+NAS-DIS is a direct descendent of REVAS, and has been written
+by the same author, David Parkinson. However, It is a vast improvement
+over the original, and this review can only describe some of its many
+features. It comes in two versions, either on a tape which can be used
+to produce a copy of NAS-DIS located at whatever address you choose, or
+as three EPROMs located at C400H &ndash; CFFFH. It is 3K long and runs only
+under NAS-SYS.
+</p>
+<p>
+It is most convenient on the Nascom&nbsp;2 to have a separate memory
+board for RAM, and to use the eight sockets on the CPU board for 2708
+EPROMs. In this case, four can be used for ZEAP 2 (Nascom assembler),
+and three for NAS-DIS. This makes sense, as NAS-DIS is fully compatible
+with ZEAP, which means the output of NAS-DIS can be fed into ZEAP
+without alteration. In fact the assembler output from NAS-DIS can be
+generated in several ways. It can be simply listed on the screen, or
+printed, or output to tape, or can even automatically become a ZEAP
+source file in memory. Printed output can be split into numbered pages
+with titles, and the tape output is also compatible with ZEAP so that
+it can be fed directly back into ZEAP.
+</p>
+<p>
+An option normally selected is the automatic generation of
+labels. All locations addressed within the program are given labels,
+making it easy to read the code. Furthermore, a complete cross
+reference table can be output, showing every address where each label
+is refered to. This is very valuable when tracing backwards through the
+logic of a program.
+</p>
+<p>
+It is also possible to specify that some areas of memory are
+data areas, so that these are not converted to spurious assembler
+codes. In this case DEFB instructions appear.
+</p>
+<p>
+NAS-DIS can, optionally, take account of NAS-SYS restart
+features, namely SCAL, RCAL and Print String (PRS). With SCAL and RCAL,
+the next byte is output as a DEFB. With PRS, NAS-DIS generates as many
+DEFM lines as are needed for the message.
+</p>
+<p>
+If you don&rsquo;t want to spend any time thinking which options to
+use, you can simply execute NAS-DIS and specify the start address to
+disassemble at. This means that any piece of code can be disassembled
+almost instantly.
+</p>
+<?php columnEnd(1); ?>

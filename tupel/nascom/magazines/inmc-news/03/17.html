@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+Next I wrote NASBUG T4, which used up all the rest of the
+available 2K, and contained many improvements and new features.
+Most important, it was still NASBUG compatible, so programs
+written for the other monitors would run under it.
+</p>
+<p>
+At this point it was apparent that there was no further scope
+for significant improvement, because of the need to retain
+complete compatibility with the original old NASBUG 1. At
+this time I got my memory expansion and ZEAP, and re-assembled
+NASBUG T4 using ZEAP, which was fun because all the previous
+work had been done by hand in machine code! NASBUG T4 is the
+best monitor currently available for the NASCOM 1. But&nbsp;.....
+</p>
+<p>
+Some of you have probably heard about NASCOM 2, and you may be
+wondering about its monitor. What happened was this:
+Using my NASCOM 1, with 32K board and ZEAP, I developed a
+completely new and somewhat incompatible monitor, by starting
+with NASBUG T4 and steadily improving it. Several major changes
+were made:
+</p>
+<ol>
+<li>
+The Cursor on the screen is made to blink on and off. It
+is possible to move it anywhere on-the screen. Lines on
+the screen can be edited, and even characters inserted
+and deleted by moving the rest of the line to left or right.
+</li>
+<li>
+The line to be processed is always the line where the cursor
+was when enter (or newline) is pressed.
+</li>
+<li>
+Output starts at the top and scrolls down.
+</li>
+<li>
+The extended NASCOM 2 keyboard is fully supported including
+up, down, left and right arrows to move the cursor. (The
+old keyboard can do these too.)
+</li>
+<li>
+The memory used by the monitor has to occupy addresses
+0C00 to 0C7F.
+</li>
+<li>
+All monitor commands perform comprehensive error checking
+on the line entered. Also, all routines are callable by
+the user program, NOT by a CALL instruction which has an
+actual address, but by a restart instruction followed by
+a (magic) subroutine number.
+</li>
+<li>
+Various errors have been corrected, and lots of extra
+features added. There are very full input/output options,
+to make it easier to use printers, teletypes, etc. Also,
+the machine uses ASCII codes for carriage return, line feed,
+back space and clear screen.
+</li>
+<li>
+This monitor is called NAS-SYS&nbsp;1, and is the only monitor for the
+NASCOM 2. No changes are planned, and it will be completely standard.
+Even if changes are made there are no compatibility problems because
+of the use of subroutine numbers (see 6 above).
+</li>
+</ol>
+<p>
+Now the crucial question &ndash; can NAS-SYS be used on a NASCOM 1, making
+it very like NASCOM 2? &ndash; the answer is yes, and I use my NASCOM 1
+under NAS-SYS most of the time, <u>BUT</u> &ndash; will NASCOM provide if for
+you? Marketing Director, Kerr Borland, says &ldquo;No plans at present.&rdquo;
+If you want it, why not write and tell him what you think about it &ndash;
+he might pay attention (he thinks I&rsquo;m crazy).
+</p>
+<p style="text-align: right">
+/
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,87 @@
+<?php columnStart(1); ?>
+<p>
+where u is the physical or logical unit number, &pound; {8 the #
+dated FORMAT statement and kis. list of variabl
+&lsquo;although it is optionally possible to use the form:
+</p>
+<p>
+READ (U,EERRALL,ENDSL2) kor WRITE (u,f,ERR*LL)
+</p>
+<p>
+where Li is the label of the statement to which control is passed in the event
+of an I/O ERROR and L2 the ent Label &lsquo;to which control {s passed Lf an END
+OF FILE is encountered. These are extensions of data I/O not found in the 1966
+standard)
+</p>
+<p>
+The Logical Unie Numbers referr
+</p>
+<p>
+to above are normally asrigned as follows:
+</p>
+<p>
+Unite 1, 3, 4 and $ are assigned to the console/VDU; Unit 2 Le assigned to the
+printer &lsquo;Units 6 &ndash; 10 are assigned to disk files. Units 11 &ndash; 235 may be
+Bseigned as the user wishes (and units 1-10 may sito be re-assigned if you
+really vant tol)
+</p>
+<p>
+For most purposes the default assignments will be found adequate but for further
+information, the appropriate reference manual ust be consulted
+</p>
+<p>
+&lsquo;A typical READ statement will Look Like
+</p>
+<p>
+READ(S.35) Rob
+35 FORHAT(I3,2%,14)
+</p>
+<p>
+An which two data entries, K and L are read in from the keyboard with field
+widths of 3 and 4 respectively, separated by a blank field of 2 spaces. The
+Seme holds for a WRITE statement since, if it is in the same program subroutine,
+</p>
+<p>
+WRITE(2,35) KL.
+</p>
+<p>
+will cause the values of K and L to be output on the printer, starting in column
+Yland separated by 2 spaces Statement numbers muse not be duplicated in the
+game sutcoutine but more than one READ/WRITE statement may reference &amp; given
+FORMAT statement
+</p>
+<p>
+Alphanumeric text material (letters, symbols and figures) may be used as progr:
+I/O by means of a FORMAT statement in one of two ways which employ Hollerith
+field descriptors the first (and less convenient) method involves the
+Programmer. in countang the exect number of characters and spaces to be input oF
+Durput = tedious for ong tities, while the other simply involves placing the
+entire text between single quotes {") | In both cases, che program statement
+Bust not run beyond column 72, if &raquo; longer text string {s needed, then a
+Continuation line if used, The statements
+</p>
+<p>
+WRITE(&reg; .200) 1.
+4100 FORMAT( ZOHDATA FROM EXPERIMENT, 13)
+</p>
+<p>
+and
+</p>
+<p>
+wWaITE(6 100) L
+400 FORMAT( &ldquo;DATA FROM EXPERIMENT&rdquo; 13)
+</p>
+<p>
+are treated in the same vay by the compiler but the first uses the Hollerith (H)
+field width desceipror &ndash; 20 unite wide in this cage ond the game as the text
+including spaces while the second uses single quotes as text delimiters &ndash; a lot
+easler to use!&rdquo; The expressions mean &ldquo;write to # disk file the text followed by
+the current value of the variable L&rsquo;
+</p>
+<p>
+fon both input and output, text can be split between Lines by using the solidu
+(iy &ldquo;as far ag input ie concerned, this applies to disk input data files 4
+well as to punched cards or paper tape &ndash; both of which are unlikely input media
+For the average micro user. The firet example given above could be rewritten
+</p>
+<?php columnEnd(1); ?>

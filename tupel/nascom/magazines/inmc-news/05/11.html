@@ -1,0 +1,46 @@
+<?php columnStart(1); ?>
+<p>
+This is also the case if you don&rsquo;t want the results where I have
+put them.
+</p>
+<p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-11-1.png"); ?>
+<p>
+Calling 0400 reads both joysticks, to read only one, call either
+0407 or 0415, depending on which socket the joystick is plugged
+into. The format of the results is;
+</p>
+<table>
+<tr><td>0C50</td><td>Trigger A</td><td>00 normal, FF if trigger pressed.</td></tr>
+<tr><td>0C51/2</td><td>Pot A/1, A/2</td><td>One byte for each pot in the joystick.</td></tr>
+<tr><td>0053</td><td>Trigger B</td><td>00 normal, FF if trigger pressed,</td></tr>
+<tr><td>0C54/5</td><td>Pot B/1, B/2</td><td>One for each pot of other joystick.</td></tr>
+<tr><td>0C56</td><td>RANGE SETTING</td><td>The value set in this byte controls the</td></tr>
+<tr><td colspan=3>range of the results. For example, if 10 is used, each pot returns
+a number between 01 and 48, approximately. The smaller the number
+0C56 is, the larger the range of the results becomes.</td></tr>
+</table>
+<h2>
+&ldquo;What else is there in this Darkbug&rdquo;
+</h2>
+<p>
+Quite a lot, is the answer to that question, but a lot of it relates
+to the graphics board I mentioned in my earlier effort. There&rsquo;s
+the spiral screen wipe, for instance; or the automatic graph
+plotting routine. Pretty boring, really, isn&rsquo;t it? NO? In that
+case, here is one I use a lot, in games, and in &ldquo;wall-paper&rdquo;
+programs. It is relocatable, it is called SWAP, and it has the
+effect of replacing all of a given character on the screen with
+another. Just put the character you wish to remove in B and its
+replacement in C, the call this subroutine:
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-11-2.png"); ?>
+<p>
+Those of you with sharp eyes will have spotted that I have used
+something from INMC News No 2, without which the routine would
+have been a lot longer, to compare HL and DE. Finding that proved
+the value of the club to me, and I only hope this lot does as
+much for your programs as that did for mine!
+</p>
+<?php hLine("30%"); ?>
+<?php columnEnd(1); ?>

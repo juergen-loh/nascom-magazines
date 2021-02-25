@@ -1,0 +1,75 @@
+<?php columnStart(1); ?>
+<p>
+4
+i
+|
+|
+i
+|
+i
+:
+</p>
+<p>
+11
+</p>
+<p>
+appears at the output pin Q when R/W goes high. /CAS also acts as an output
+enable; when it is high, Q switches into the high-impedance state. Because
+only one bit is stored for each address pattern, 8 chips are needed to service
+the full data bus. Thus a block of 8 4116s give 16 kbytes and 8 4164s give a
+full 64 kbytes. This is in contrast to the byte-mapped 6116, where a single
+chip can be used to provide a block of 2 kbytes.
+</p>
+<p>
+The other main feature of dynamic RAM is that the charge in the memory
+cells slowly leaks away and has to be replenished periodically by rewriting.
+Fach cell has to be refreshed within a time less than 2 mSec for the 4116 and
+less than 4 mSec for the 4164. This is another feature which has to be
+provided by the memory board designer. Fortunately, the problem is not as
+complex as it first appears since cells in the same column can be refreshed in
+parallel by applying an address to the rows only which is strobed by /RAS.
+Provided all row addresses are strobed during the stated period, refreshis
+assured. During this process, /CAS is held high which minimises power
+consumption and ensures that no data is placed on the data bus during refresh
+cycles. The refresh process occurs during the second half of the opcode fetch
+cycle, and the Z80 provides a J-bit refresh counter which makes this part of
+the memory board design fairly straight-forward. However, when selecting 64k
+chips a little care has to be taken since, for example, the Texas 4164
+requires an 8-bit refresh cycle and therefore presents problems when used with
+the Z80. Also, some chips, such as the Motorola MCM6664, have an internal
+refresh counter but require a strobe pulse to be applied to pin 1 to clock the
+counter on. You should therefore use 7-bit refresh chips which do not utilise
+pin 1, such as the Mostek MK4564, the Fujitsu MB8264, the NEC uPD4164, etc.
+The ones I actually used were Motorola MCM6665AP20s.
+</p>
+<p>
+The 4164 is simpler than the 4116 in that it can operate from a single 5
+volt supply, so the -5 and -12 volt supplies will not be required in the new
+layout. A further advantage of the 4164 is that it actually consumes less
+power than the 4116; the 4116 typically consumes only 125 mW when running and
+17 mW on standby, whereas the correponding figures for the 4116 are 460 and 20
+mW respectively. Let us turn now to the circuit modifications required to add
+a single set of 8 4116s to the RAM A board, and after that we will go into the
+additional circuitry to achieve paging for the 128k RAM. Incidentally, if your
+copy of the circuit diagram is an minute as mine, you will probably find the
+use of a magnifying glass helpful to see the fine details of the circuit.
+</p>
+<p>
+The first item which must be attended to is the address multiplexing. For
+the 4116s, A0 to A6 are multiplexed with A7 to A13 by IC20 and IC21, which are
+74157 quad 2-to-1 line data selectors. The two remaining lines, A14 and A15,
+are decoded by IC24 to produce 4 16k decodes &ndash; we will utilise these for
+paging the 128k RAM. For the 4164s, AQ to A7 must be multiplexed with A8 to
+A15. It does not actually matter which lines are multiplexed together as long
+as the components of each pair come from the two different groupings, and that
+A0 to A6 are coupled as a unit to the RAM chips and latched by /RAS so that
+refreshing is performed correctly. Unfortunately, in the original design, A0
+is switched with A7 which is not allowed, so A7 must be disconnected and
+replaced by A14, which can be picked up from pin 15 of the 74L875 address
+latch 1025. All the remaining pairs can be left unaltered, which leaves A7 and
+A15 to be dealt with. As currently configured, the remaining inputs on IC21
+toggle between 0 and +5 volts to provide the /CAS signal via three buffers in
+IC 3 which provide a short delay to allow the address lines to settle. It
+seemed to me to be more straightforward to use these inputs to toggle between
+</p>
+<?php columnEnd(1); ?>

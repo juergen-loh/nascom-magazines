@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+22
+NUTS &amp; BOLTS.
+</p>
+<p>
+I will now try and explain the technicalities of working with GSX. These
+will be clarified with the aid of diagrams (a picture&rsquo;s worth etc), as is does
+seem rather complex at first. It is worth mentioning that once you, as the
+applications or device driver writer, have created a routine that allows you
+to easily reference the data arrays concerned, the task is not quite so
+daunting as it first seems.
+</p>
+<p>
+As calls to the BDOS involve the use of the BC and DE register to inform
+of your intentions, the problem is how do you manage to pass sometimes large
+amounts of data over using only one 16 bit value. Of course the answer is with
+the use of pointers as usual. Don&rsquo;t forget that the C register contains 115 on
+all calls to GDOS regardless and therefore cannot be used for pointer work.
+</p>
+<p>
+The GSX standard expects the application programmer to have set up 5
+arrays, and to give them their proper names, these are:
+</p>
+<p>
+PARAMETER BLOCK
+</p>
+<p>
+This 5x16 bit array contains the start addresses of the other data arrays
+described below. On a call to GDOS the DE register pair must contain the start
+address of this array.
+</p>
+<p>
+PB pointed to by DE.
+</p>
+<p>
+Fig l. On call to BDOS requiring a GSX function.
+</p>
+<p>
+me th a ee ei ts eat
+</p>
+<p>
+| C REG = 115 |
+| DE REG |
+| | control array
+Points to / enn
+/
+parameter block /
+sonnet &ndash; / /------------------| input parameter array
+| PB | PB+1 = |------- / /
+wana _ /
+| PB+2 | PB+3 |---------- /
+| PB+4 | PB+S = | input point array |
+| PB+6 | PB+7 |----------\
+---- +--+ += \
+| PB+8 | PB+9 |[-------\&mdash;\
+arene nena &ndash; \ \------------------| output parameter array |
+\
+\
+\
+</p>
+<p>
+\------------------- | output point array |
+</p>
+<p>
+</p>
+<?php columnEnd(1); ?>

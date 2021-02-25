@@ -1,0 +1,98 @@
+<?php columnStart(1); ?>
+<p>
+As a brief aside on FILL routines &ndash; You can always tell a recursive based
+FILL routine, as, when it is filling a complex area, there are often pauses
+while nothing apparently happens on the screen. What is actually happening is
+that the FILL routine has just filled to a &lsquo;dead end&rsquo;, and there then follows
+a period where the recursive structure -unwinds&rdquo; itself, returning from layer
+to layer back up the stack until it finds an area that it has not yet filled.
+</p>
+<p>
+BUG TIME
+</p>
+<p>
+Well folks, it had to happen. Between writing the first part of this&nbsp;.
+article and completing this one someone has unearthed a bug that is present in
+both the IVC and SVC monitors. That fact that it has taken so long to surface
+is indicative that none of you are likely to have met it yet (otherwise you
+would have reported it &ndash; wouldn&rsquo;t you?). It is in the ESC &ldquo;e&rdquo; J... sequence
+that allows you to redfine the function keys from a program. I8 you try and
+-undefine&rdquo; a key using this sequence the key is not actually fully deleted
+from the function key table, and if the key is subsequently pressed something
+will be returned to the host system. What the -something&rdquo; is cannot be easily
+predicted. Key definitions can be removed totally from the table, but only by |
+using the Shift/Edit feature direct from the keyboard.
+</p>
+<p>
+TABLE 1: Extra features of the SVC
+</p>
+<p>
+HEX ASCIL DECIMAL COMMAND
+General
+O7 &ldquo;6 7 Bell &ndash; sound on-board buzzer
+</p>
+<p>
+Cursor Movement
+1B OC &lt;ESC&gt; &ldquo;L 27 12 Cursor home
+</p>
+<p>
+Screen format
+1B 34 &lt;ESC&gt; &ldquo;4&rdquo; 27 52 Select graphics mode
+1B 70... &lt;ESC&gt; &ldquo;p"... 27 112... Select display/update partition
+</p>
+<p>
+.
+</p>
+<p>
+Character set
+iB G7... CESC&gt; &ldquo;g"... 27 103... Set Language
+IB 62... &lt;ESC&gt; &lsquo;b!... 27 98... Read back character set
+</p>
+<p>
+256x256 graphics
+</p>
+<p>
+1B 52 &lt;ESC&gt; &lsquo;R&rsquo;... 27 82... Reset point X,Y
+</p>
+<p>
+1B 53... &lt;ESC&gt; &ldquo;S"... 27 83... Set point X,Y
+</p>
+<p>
+1B 54... &lt;ESC&gt; &ldquo;IT"... 27 84... Test point X,Y
+</p>
+<p>
+1B 6C... &lt;ESC&gt; &ldquo;1"... 27 108... Draw/Erase/Complement a line
+1B 6F... &lt;ESCD &ldquo;ol... 27 LI... Draw/Erase/Complement a circle
+1B 6D... &lt;ESC&gt; &ldquo;m"... 27 109... Move cursor to X,Y
+</p>
+<p>
+1B 77 &lt;ESC&gt; &ldquo;wi. 27 119 Fill a polygon
+</p>
+<p>
+IB 64... &lt;ESC&gt; &ldquo;d"... 27 100... Graphics screen dump
+Keyboard
+</p>
+<p>
+iB 3h... &lt;ESC&gt; &ldquo;&gt;"... 27 62... Download soft-key display
+Clock
+</p>
+<p>
+1B 74... &lt;ESC&gt; &ldquo;t"... 27 116... Set clock time
+</p>
+<p>
+1B 74 3D..&lt;ESC&gt; &ldquo;t="... 27 116 61.Position clock display
+</p>
+<p>
+1B 74 45 &lt;ESC&gt; &ldquo;LE&rdquo; 27 116 69 Enable clock display
+</p>
+<p>
+1B 74 44 &lt;ESC&gt; &ldquo;tb&rdquo; 27 116 68 Disable clock display
+</p>
+<p>
+1B 74 3F &lt;ESC&gt; &ldquo;t?&rdquo; 27 116 63 Return clock time
+</p>
+<p>
+Miscellaneous
+IB 61... &lt;ESC&gt; &ldquo;a"... 27 97... Set/reset attributes
+</p>
+<?php columnEnd(1); ?>

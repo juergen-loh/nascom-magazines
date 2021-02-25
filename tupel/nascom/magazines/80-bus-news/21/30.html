@@ -1,0 +1,71 @@
+<?php columnStart(1); ?>
+<p>
+30
+</p>
+<p>
+the usual &amp;FF.This would explain why the new BIOS does not interfere with
+extension memory boards on pages other than page zero, in the Gemini/RAM B paging
+system. Anyway, when I get the chips together and get it all going, I will have a
+nice tidy 64K system with an equally tidy 256K virtual disk. When that is done, I
+intend to produce a couple of file updating programs in Pascal, so that I can
+produce some sort of &ldquo;bench-mark&rdquo;, and give you some indication of what sort of
+difference these changes make to the speed of operation of the system.
+</p>
+<p>
+&lsquo;Pluto review&rsquo;, he said casually.
+</p>
+<p>
+I don&rsquo;t know where the money for all this stuff is going to come from,
+but I have bought it anyway! Unlike MAP 80, IO Research took quite a while to
+send my Pluto out, but then they do say that the board is selling like hot cakes.
+Tt is even being sold to the makers of non-80-Bus computers, for use as a
+graphics unit on their bizarre (i.e. non 80-Bus) computers. I did try asking for
+an OEM discount, but it did no good at all. I bet you thought all the hardware
+manufacturers would be sending out free boards to likely reviewers, in order to
+get favourable reviews printed. Well, it may be like that in glossy magazine
+land, but there ain&rsquo;t no free lunch out here in amateur land, yet! (Of course it
+is a hint, Mr Manufacturer, of course it is.)
+</p>
+<p>
+Anyway. The board is of a high standard of construction, and all those
+things I would write if I thought you wanted to be told. Come on now chaps!
+Anything that costs this much is going to be of a high standard, or you would
+have heard rumours to the contrary. What you get is eight inches square, green,
+and packed with components. There are three rows of RAM chips, making 192K, an
+8088 processor, TTL chips galore, and something with 40 pins whose function is
+unknown to me. The latter is probably some sort of video controller chip. [Ba. &ndash;
+a 6845 CRIC chip, as used on the Gemini IVC and Nascom Avc. | Then there are two
+connection plugs at the outer edge, one with twenty pins, for connection to a
+colour monitor, the other with fifty pins (I think) which is for connection to
+the Pluto Palette, when it appears. Also supplied is a manual. This is somewhat
+terse in its explanations of quite complicated matters. The pages are not all in
+the sequence you expect, there being appendices in the middle of the text. There
+are two example programs, one in BASIC, one in assembler, but they don&rsquo;t do a
+lot. The most useful thing in the whole slim volume is a table of all the control
+codes the board accepts, listing all the parameters they need, and what values
+they return. Sounds like Pascal, doesn&rsquo;t it? A nice touch in the manual is the
+way the routines are described, with headings that look like Pascal procedure and
+function headings. This has made me start thinking about producing some sort of
+software package to interface Hisoft Pascal to the Pluto, along the lines of a
+little known utility called Vortex, that I cobbled together a while ago. This
+time I won&rsquo;t have to write a line drawing routine, that&rsquo;s for sure! The manual
+also telis you how to connect the board up to a video monitor, as long as you
+know which connection is which on the monitor! No, it isn&rsquo;t always obvious, that
+would make life too simple. Just to make life more entertaining, I managed to
+wire mine up wrong, but failed to destroy my nice colour monitor. See later
+section, for a very relieved review...
+</p>
+<p>
+As far as your computer is concerned, the Pluto is just two ports
+(similar to the Gemini IVC), normally &pound;A0 and &pound;A1, although these addresses can
+be changed if you have to. Port &pound;A0 is the status port &ndash; if bit 7 is set when the
+port is read, then Pluto is ready to receive a command. Writing anything at all
+to this port resets Pluto. Port &pound;Ail is the data port, through which you send ali
+the commands and data needed to produce the pretty pictures, and read data sent
+back by Pluto in response to your requests. It might at first seem necessary to
+check the status before you send each byte, but this is not so. Once the command
+byte has been accepted, and the status port says Pluto is ready, data can be sent
+as fast as a 4MHz Z80 is able to do it. This includes the use of the amazing Z80
+block output instructions.
+</p>
+<?php columnEnd(1); ?>

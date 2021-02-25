@@ -1,0 +1,89 @@
+<?php columnStart(1); ?>
+<p>
+A note for Nascom&nbsp;2 owners. The memory card joins the &lsquo;daisy
+chain&rsquo; (IEI and IEO) lines together, and under these conditions the
+interrupts won&rsquo;t work. Cut one of the tracks on the vero buss
+connector. Do not cut the link on the memory board, as this would be
+required if that card were used on a bigger buss with &lsquo;daisy chain&rsquo;
+priority interrupts.
+</p>
+<p>
+Its beginning to look as if this newsletter was written by
+Richard, because this screed also came from Beal mansions.
+</p>
+<h1 id="article1">
+Repeat keyboard for Nas-sys
+</h1>
+<h3 class="author">
+by Richard Beal
+</h3>
+<p>
+In the last issue we printed a repeat keyboard routine for
+Nasbug T4. This can be adapted to Nas-sys, but we have now developed a
+routine which is simpler. This routine has given us an opportunity to
+show you the output of ZEAP 2.0, notice the sorted symbol table; there
+is a listing of the routine and a program to put the routine into use.
+Execute the program at 0C90H.
+</p>
+<p>
+The routine itself is from 0C80 to 0CF5H. After the program is
+executed it returns to Nas-sys. You can then use Nas-sys or execute
+ZEAP 2.0 or Basic and enjoy the benefits of a repeating keyboard. Just
+hold down any key, and after a delay it will repeat quite quickly,
+which is ideal for cursor movements. Try holding down several keys at
+once!! Note that the @ key does not repeat because of its dual function
+on Nascom&nbsp;1. We also attach a tabulation of the code to make it easier
+to type in.
+</p>
+<h4>
+Memory usage and changing the speed
+</h4>
+<p>
+We hereby declare the following memory locations will for all
+time have the specified meanings :&ndash;
+</p>
+<table>
+<colgroup>
+	<col style="width: 30%">
+	<col>
+</colgroup>
+<tr><td>0C2C &ndash; 0C2DH</td><td>KCNT counter tor repeat keyboard</td></tr>
+<tr><td>0C2E &ndash; 0C2FH</td><td>KLONG delay before repeating starts</td></tr>
+<tr><td>0030 &ndash; 0C31H</td><td>KSHORT speed of repeating keys</td></tr>
+</table>
+<p>
+These were unused locations in the Nas-sys work area. To change
+the initial delay before repeating starts, and the speed of repeat,
+change the values at KLONG and KSHORT.
+</p>
+<table>
+<colgroup>
+	<col style="width: 30%">
+	<col style="width: 20%">
+	<col>
+</colgroup>
+<tr><td>Suggested values:</td><td>4MHz</td><td>2MHz</td></tr>
+<tr><td>KLONG</td><td>0280H</td><td>0140H</td></tr>
+<tr><td>KSHORT</td><td>0050H</td><td>0028H</td></tr>
+</table>
+<p>
+The version overleaf is for 4MHz (Nascom&nbsp;2).
+</p>
+<h4>
+Repeating keyboard from Basic
+</h4>
+<p>
+You can also set up a repeating keyboard within Basic, by
+typing in the Basic subroutine at lines 24000 to 24090. To execute it,
+type in: RUN24000
+</p>
+<p>
+You will find that you then have a repeating keyboard. Note that line
+24030 sets the speeds, we suggest the following values:
+</p>
+<table style="width: 70%">
+<tr><td></td><td>4MHz</td><td>2MHz</td></tr>
+<tr><td>Initial delay</td><td>DOKE 3118,640</td><td>DOKE 3118,320</td></tr>
+<tr><td>Repeat rate</td><td>DOKE 3120,80</td><td>DOKE 3120,40</td></tr>
+</table>
+<?php columnEnd(1); ?>

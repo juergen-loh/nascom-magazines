@@ -1,0 +1,47 @@
+<?php columnStart(1); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-51-1.png"); ?>
+<?php hline("20%"); ?>
+<h1 id="article1">
+STRINGS
+</h1>
+<?php columnEnd(1); ?>
+<?php columnStart(34); ?>
+<h2>
+How to save strings or string arrays on tape in BASIC.
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+by David Reddington
+</h3>
+<?php columnEnd(4); ?>
+<?php columnStart(1); ?>
+<p>
+One of the shortcomings of Microsoft&rsquo;s 8k BASIC as implemented on a Nascom is
+its inability to CSAVE string arrays. Even to save numeric data requires the whole
+numeric array to be saved when perhaps only a few elements contain valid data.
+</p>
+<p>
+The way round this problem is to utilise the ability of NAS-SYS to change the
+destination of the output. Change the reflection at SOUT (0C73 or 3187 Decimal) from
+077F (CRT) to 077B (SRLX) thus:
+</p>
+<pre>
+10 DOKE 3187,1915
+</pre>
+<p>
+All subsequent PRINT statements will print to tape until output is switched
+back by a DOKE 3187,1919.
+</p>
+<p class="noindent">
+NOTE: a DOKE 3187,1914 will cause all output to go to both the CRT and the CASSETTE.
+</p>
+<p>
+A typical program might be:&ndash;
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-51-2.png"); ?>
+<p>
+To Load the data you merely:&ndash;
+</p>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-51-3.png"); ?>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>

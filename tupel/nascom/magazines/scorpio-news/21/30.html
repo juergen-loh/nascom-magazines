@@ -1,0 +1,52 @@
+<?php columnStart(1); ?>
+<p>
+nearly all corrupted. Since the corruption was ASCII text, I could read it and
+recognised it as some of the data which had been copied from the ICL disks.
+</p>
+<p>
+Examination of the directory of the Winnie with SPZ.COM showed that the HLP
+files were still described correctly, with USER set to 10H, and block numbers from
+about 0193H upwards. The directory also still held references to some of the files
+transferred from the ICL disks, although they were of course marked E5 in the
+USER byte since they had been erased. The block numbers for these files however
+were in the same region as the&nbsp;.HLP files (0193H upwards). Obviously the
+transferred ICL files had been written to the area of the Winnie that had been
+holding the&nbsp;.HLP files.
+</p>
+<p>
+It appears that when I used CP/M Plus to copy files to the Winnie from the ICL
+disks, CP/M Plus did not overwrite the&nbsp;.HLP file references in the directory,
+probably because the first byte was not OESH. On the other hand it did not mark
+the relevant&nbsp;.HLP file blocks from 0193H up as &lsquo;used&rsquo; in its allocation map, probably
+because the first byte was 10H, an unrecognised user number. Consequently, as
+each ICL file was copied, CP/M Plus opened a new directory entry for it, but used
+blocks from 0193H to store the data. It took some time to recopy the ZCPR3 .HLP
+files back from my floppy backups and &lsquo;USQ&rsquo; many of them en route, but at least
+no valuable files were lost.
+</p>
+<p>
+I rarely revert to CP/M 2.2, and when I have done so the systems loaded have not
+in general been set up to access the Winchester. I suspect however that the problem
+could equally well arise when writing files to the Winnie under a CP/M 2.2 that
+allows Winchester disk access.
+</p>
+<p>
+There are several ways around the problem, such as not using a USER above 15, or
+temporarily moving the files down to a lower user. The program MAKE.COM is
+ideal for this. Unfortunately it will not move them back, since it too baulks ata USER
+above 15. Other alternatives are possible such as not using the Winnie, and letting
+drive A: be a floppy. At least users of ZCPR3 (or any other system that makes use
+of USER areas above 15) who read this will now be aware of the problem.
+</p>
+<h2>
+Problems with the ZCPR3 Utility MCOPY.COM
+</h2>
+<p>
+MCOPY is, in common with most of the ZCPR3 utilities, extremely flexible,
+allowing a string of files and DU&rsquo;s (or DIR&rsquo;s) to be defined in the command line.
+The only thing that it will not do during copying is to rename a file, but this if
+permitted would be inconsistent with its other abilities. At times however, MCOPY
+does not behave correctly. I get SRC=DEST error messages, or No Files error
+messages. 8.&pound;.;
+</p>
+<?php columnEnd(1); ?>

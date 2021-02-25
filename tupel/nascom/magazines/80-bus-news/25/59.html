@@ -1,0 +1,67 @@
+<?php columnStart(1); ?>
+<p>
+59 .
+Happy Talk by R. O&rsquo;Farrell
+</p>
+<p>
+One of the awkward things about CP/M is that it is exceedingly difficult
+to get programs and data from one machine to another, unless they can read
+each others discs, like the Gemini M-F-B system. The patches to the BIOS to
+allow multiple format disc read/write are not easy. One method is a modem
+transfer program (BSTAM or MODEM 7). If one doesn&rsquo;t have one of these, then
+usually one resorts to PIP.
+</p>
+<p>
+One can connect up the serial port on two dissimilar machines, ensuring
+that the same baud rates, parity and so forth are selected, and using STAT
+to change PUN: to be PTP: (paper tape punch) on one and RDR: to be PTR: (paper
+tape reader) on the other. One connects the two serial ports together with an
+appropriate cable, checking that the transmit and receive lines on the
+different machines are connected to their opposites on the other machine. So
+on the reader machine one enters:
+</p>
+<p>
+PIP filename.ext=RDR:
+</p>
+<p>
+and on the transmit machine:
+PIP PUN:=filename.ext
+</p>
+<p>
+For ASCII files, such as assembler listings, this works 0.K. up to a length of
+about 26k, depending on CP/M size. Intoxicated by power, we then try a COM
+file. It may appear to work. But STAT or XDIR or SD the received file, and
+compare the filesize with the untransmitted version. Diasaster has struck!
+Most probably, the received file is dramatically shorter than the original.
+What has happened is that PIP, on receiving a CTRLZ (1AH) from the serial port
+has interpreted that as an end of file character. In the case of an ASCII file
+it would be, as an ASCII file contains only characters 20H to 7FH, with CRs
+and LFs. In the case of a COM file, the 1AH is an instruction, meaning LD
+rape &ndash; most useful! The specification of PIP suggests that selecting option
+[o for PIP should cause it to ignore ignore the normal CP/M end of file mark,
+and look to the Console (keyboard) on the receiving machine for the EOF. If
+this is properly implemented in BDOS, and it usually isn&rsquo;t that I know of,
+then when all disc accesses on the transmitter have ceased and the cursor is
+restored, typing CTRLZ on the keyboard of the receiver will cause it to break
+into a flurry of activity and save the file to disc. Very rarely have I found
+this to work &ndash; why, I don&rsquo;t know.
+</p>
+<p>
+Another method of file transfer is as follows: Using a disassembler, take
+the file you wish to transfer (FILE.COM). Disassemble the first 4k of it
+(say). When you reach the appropriate part of the Disassembler input, tell it
+that the entire 4k block is DEFB instructions. i.e., treat it as a data area.
+This avoids any need to fiddle around trying to sort out labels. Take the
+FILE.ASM produced by the disassembler, and assemble it, linking it if
+necessary, to produce FILE.HEX. Then PIP this from machine to machine. There
+is no need to select any options, as being a HEX file, it is ASCII. On the
+receiver, just LOAD it or ZSID it (can use DDT instead) to convert back into a
+COM file. If the COM file you start off with is longer than 4k, then do it as
+a number of 4k blocks (possibly 6k, depends on your machine and CP/M).
+Remember that a HEX file produced from a COM file multiplies its length by
+approx 2.65. So the 4k block becomes about 11k. It is better to be shorter
+than longer, as with disimmilar machines the buffer lengths can differ
+dramatically. It is disheartening to hear one machine start up its disc to
+save the file on buffer full while the other machine is still transmitting.
+</p>
+<?php columnEnd(1); ?>

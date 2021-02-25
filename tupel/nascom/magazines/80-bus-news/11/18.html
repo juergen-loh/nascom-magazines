@@ -1,0 +1,72 @@
+<?php columnStart(1, "noindent nojustify"); ?>
+<h3>
+Power supply
+</h3>
+<p>
+When the NASCOM 5V supply is available, the clock chip runs with Vdd=5V via TR1. It is
+important that this arrangement, rather than a simple diode, be used to ensure that Vdd
+is close enough to the 5V supply to ensure that an input which is pulled up to 5V does
+not exceed the MM58174&rsquo;s maximum input voltage rating of Vdd+0.3V,
+</p>
+<p>
+Standby power (10uA approx.) is provided by a pair of AA-size NiCad cells. These are
+trickle charged via R1 when the 5V is available.
+</p>
+<h3>
+Clock chip operation
+</h3>
+<p>
+For full information on how the MM58174 is controlled, see the NS data sheet (Feb. 80 or
+later issue). However, it may be useful to note the following points!
+</p>
+<h4>
+1. Data-change flip-flop operation.
+</h4>
+<p>
+Whenever the data registers are updated &ndash; i.e, at 0.1 sec intervals when the clock is
+running &ndash; a data change flip-flop is set. This causes the data value
+&ldquo;1111&rdquo; (i.e, &ldquo;&ndash;&rdquo)
+to be output at the next attempt by the CPU to read a data register. This informs the
+CPU that a data change has occured and also resets the flip-flop so that the new data can
+be read by subsequent CPU input instructions.
+</p>
+<h4>
+2. Clock counter errors.
+</h4>
+<p>
+When testing the MM58174, the writer encountered a problem of counting errors in the
+clock&rsquo;s 0.1 sec. counter and, less frequently, in the seconds counter, These caused the
+clock to gain up to 1 min. per hour when under test although it kept good time when
+running on the NiCad battery with the computer switched off. Investigation eventually
+revealed that this problem was related to the frequency with which the CPU read the data
+registers.
+</p>
+<p>
+The test program being used when the above problem was found read the 0.1 sec. register
+repeatedly while testing for an &ldquo;&ndash;F&rdquo; data value indicating a data change. This meant
+that the register was being read perhaps 30,000 times per sec. With a modified version
+of the test program which tested for the &ldquo;&ndash;F&rdquo; condition at intervals of 50ms, clock
+counter errors were no longer detected.
+</p>
+<h4>
+3. Interrupt operation.
+</h4>
+<p>
+Interrupt operations are controlled via the interrupt register, First, the interrupt
+system is must be initialised by outputting zero to this register, followed by three
+input instructions to condition the interrupt logic. The required interrupt timing
+period will then start when an appropriate non-zero value is output to this
+register. For example, the data value &ldquo;1001&rdquo; (i.e. 9) will initiate a repeated 0.5 sec
+interrupt.
+</p>
+<p>
+In order to reset the clock&rsquo;s interrupt output, the interrupt servicing program must read
+the interrupt register. A second input from this register is required to condition the
+interrupt logic and a third to restart the interrupt timer if in the repeated interrupt
+mode.
+</p>
+<p>
+An irritating feature of the interrupt system is that, even with immediate servicing of a
+repeating 0.5 sec interrupt, the interrupts actually occur at intervals of 516.6 ms.
+</p>
+<?php columnEnd(1); ?>

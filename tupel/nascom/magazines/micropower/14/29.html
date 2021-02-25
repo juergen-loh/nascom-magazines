@@ -1,0 +1,50 @@
+<?php columnStart(1); ?>
+<p>
+per line can be controlled by a fourth argument; if this argument is nn, there will be
+8+nn bytes per line. In addition to the hexadecimal data, Nas-Sys&nbsp;3 outputs the
+ASCII or Graphics codes of the data (codes in the ranges &pound;00 &ndash; &pound;1F, &pound;7F &ndash; &pound;9F, and
+&pound;FF are output as &ldquo;.&rdquo;). A fifth argument, hhll, may be entered to suppress either the
+hexadecimal (if hh is not zero) or ASCII (if ll is not zero) part of the listing.
+If you wish to edit a tabulated listing you must quit the Tabulate command by
+typing &lsquo;Escape&rsquo;, and then enter M to get into the Modify routine. You will now be able
+to move the cursor with the control keys and edit the tabulation. If you are using Nas-Sys&nbsp;3
+it is best to suppress ASCII part of the listing. As this will interfere with the
+modify command, either by producing error messages or, if the ASCII section
+contains a full stop, by terminating the modify routine.
+</p>
+<p>
+USER INPUT/OUTPUT U
+</p>
+<p>
+Input and output is accessed via pointers to tables which list the routines to be
+called. With the pointers, which are stored in the workspace at &pound;0C73 (output) and
+&pound;0C75 (input), set to normal values, as on power-up or after a RESET or N
+command, input scans the keyboard and serial port while output is sent to the
+screen. The U command resets the pointers so that routines provided by the user are
+called before the input or output is performed. The user routines can reside anywhere
+in memory; the start address of the input routine must be stored in the workspace at
+&pound;0C7B, that of the output routine at &pound;0C78. These locations normally contain the
+address of a return instruction in the monitor, so that using the U command without
+providing the addresses of your routines has no effect.
+</p>
+<p>
+Although the I/O procedure also uses the remaining routines in the tables, if for
+any reason you do not wish these routines to be called (for example, you may wish to
+suppress the screen output), you merely have to set the carry flag in the user routine;
+the remaining routines will then be skipped. This can have unfortunate consequences
+&ndash; if a printer routine carries out tests which leave the carry flag set for certain
+characters, these characters will not appear on the screen.
+</p>
+<p>
+VERIFY V
+</p>
+<p>
+The address stored in the command table for the VERIFY command is the same
+as that for the READ command. The two commands use the same code, except that
+as each data byte is obtained the value stored at location &pound;0C2B, which contains the
+last command letter entered,is tested to see if it an R. If it is not, the data bytes are
+not stored in memory, and faulty data cannot corrupt data already in store. If you are
+calling the READ routine from a program you must store an R at &pound;0C2B or data will
+not be loaded.
+</p>
+<?php columnEnd(1); ?>

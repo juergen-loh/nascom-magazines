@@ -1,0 +1,72 @@
+<?php columnStart(1); ?>
+<p>
+The use of manifest constants at the top of the program greatly helps
+the alteration of it in the future, the conversion of it to other systems,
+which may have different parameters to yours (think of the T2/T4/BBUG monitors
+use of different control characters), and considerably improves the legibility
+and hence the clarity of the program. It also, at the expense of a slightly
+longer assembly time, ensures that any changes are correctly installed in the
+program. If your assembler supports multiplication and division, it can also
+calculate displacements up and down tables, and computer constants, so that
+they can be manifested in this way. For example, in preparing a table to hold
+4 byte entries, one can write:
+</p>
+<pre class="indent">
+NUMENT:EQU 131 ;Number of entries expected
+
+ENTSIZ:EQU 4   ;length of individual entry
+
+TABLE:DEFS ENTSIZ*NUMENT
+</pre>
+<p class="continued">
+and if the entry length or the number of entries is changed, the assembler
+makes the change automatically. Should the assembler not support multiplication
+or division, one could write
+</p>
+<pre class="indent">
+TABLE: DEFS NUMENT+NUMENT+NUMENT+NUMENT
+</pre>
+<p>
+This is a bit more cumbersome, but it does clearly show how the size of table
+is allocated, particularly if accompanied by a comment to the effect that each
+entry is four bytes long.
+</p>
+<p>
+We haven&rsquo;t spoken of BASIC for some time. Has this business of
+manifest constants anything for that? Yes! BASIC supports a considerable
+number of variables, which are a letter, followed by a letter digit or space,
+to give a larger number than could reasonably be exhausted in the course of a
+program. It is possible to define a number of variables at the start of a
+program such as:
+</p>
+<pre>
+100 CR=13:BS=8:FF=12:REM values for carriage return, b/s, and form feed
+</pre>
+<p class="noindent">
+Similarly, if testing for a value in a list, one could define:
+</p>
+<pre>
+110 YES=1:NO=0
+</pre>
+<p class="continued">
+and use these as manifest constants. This considerably improves the legibility
+of the program, and anything which does that in BASIC has to be a good idea!
+It also improves the running speed, as BASIC stores all constants in ASCII
+internally, and each time it comes across one, it has to translate it into
+binary, but each variable is already translated ready to go! Notice also that
+it is possible, at the expense of a slight increase in running time, to use
+long variable names. Note however that BASIC only uses the first two
+characters of the name to identify it. This means that FIRST and FIZZ are the
+same to BASIC. An easy way out is to put a unique padder in front of the
+meaningful part of the name (meaningful to you, but not to BASIC) &ndash; say
+Z1FIRST and Z2FIZZ. It becomes very easy to disregard the leading characters,
+which make the variable distinguishable to BASIC, but you the human look
+mainly at the end.
+</p>
+<p>
+In &ldquo;Writing Interactive Compilers and Interpreters&rdquo;, P.J. Brown says
+&ldquo;Thus some compiler writers say that a compiler should contain no numbers at
+all, except perhaps, as a special treat, the occasional zero or one.&rdquo; (p69).
+While this may be a little extreme, it is none the less a good guideline.
+</p>
+<?php columnEnd(1); ?>

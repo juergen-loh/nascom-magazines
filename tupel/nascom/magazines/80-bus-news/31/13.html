@@ -1,0 +1,80 @@
+<?php columnStart(1); ?>
+<p>
+nerareevesemmmnryenmnanvninnnees &copy;
+</p>
+<p>
+13
+</p>
+<p>
+DOCTOR DARK&rsquo;S DIARY &ndash; EPISODE 20.
+</p>
+<p>
+Well, I never thought all those centuries ago that I would end up writing
+this many articles for the magazine! I think I owe you all thanks for putting
+up with me for so long, and to show you that you should not have done, here is
+my latest load of waffle.
+</p>
+<p>
+I read the other day, somewhere or other, that the Nascom&nbsp;1 is alive and
+well, and costs #50 in kit form from Lucas. You can&rsquo;t keep a good machine
+down, and that&rsquo;s a fact. You tell the kids of today you had to pay over #200
+for one, and they&rsquo;ll laugh in your face...
+</p>
+<p>
+Another thing I chanced upon, in a weekly publication called &ldquo;Computing",
+was a review of Boris Allan&rsquo;s book about Logo. At the bottom of the page was a
+picture of lots of school children in a room with lots of Nascom&nbsp;3&rsquo;s. It was
+nice to see that all the claims made by Acron about their monopoly are not
+100% true after all. Apparently, Nasnet works. I have tried to use Acron&rsquo;s
+Ekonet (the names have been changed so that I won&rsquo;t be sued by the guilty!)
+but it is slower than first class post, when more than two people are using
+files on the same day!
+</p>
+<p>
+And now, down to serious stuff, probably not a moment too soon! The Pluto
+graphics board is short of decent software, unless the people who are writing
+it don&rsquo;t want it reviewed, and are advertising it in something I don&rsquo;t read.
+Before you can get round to writing any really big programs for the thing, you
+need some sort of standard software interface to it. The one that follows is
+not quite complete, and one day I will get round to writing the definitive
+version. I have tried several times to write something like this, and have
+learned several interesting things from my failures along the way. My first
+versions were in assembler,.and very effective, but I wanted something on a
+higher level, for ease of programming. The first attempt in Pascal was going
+to have a separate procedure or function for each of the functions of the
+Pluto board itself. As the set of routines grew longer, I kept compiling then,
+to check for errors. At a certain stage, the Hisoft Pascal 4 compiler became
+angry, and would not compile the end of the program. It works well enough with
+longer programs made up of fewer routines, so I can only assume that a stack
+somewhere is filling up, or maybe it is a table of addresses that gets too
+full? Anyway, it was a very ugly program, so I began again with a different
+approach.
+</p>
+<p>
+_ What I really wanted to be able to do was write something along the lines
+of &ldquo;pluto(plot,42,42)&rdquo;, in which the name of the required routine and the
+necessary parameters were passed in the manner shown. But not all of the
+routines take the same number of parameters. And some return values, while
+others do not. Pascal does not provide a construction that will let you do
+anything so variable. So the version that follows is given only the routine
+name in the call, and a set of global variables that mimic the Pluto board&rsquo;s
+internal variables must be set to the values you would have passed as
+parameters, had that been possible in Pascal. All clear? I thought not. If you
+want to set the current colour to red, you have to write:
+: eccol := red;
+</p>
+<p>
+pluto(secol)
+</p>
+<p>
+This is more or less friendly to use, but not by any means perfect! If
+anyone has any good ideas about how to improve matters, I for one would be
+glad to see them.
+</p>
+<p>
+I know it is not as pretty as it should be, but it does work. At least,
+those parts that don&rsquo;t say &ldquo;not yet written&rdquo; work! Any comments will be read
+with interest, and offers of Pluto Palette boards to test the next version
+with will be met with considerable grovelling.
+</p>
+<?php columnEnd(1); ?>

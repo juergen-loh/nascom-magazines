@@ -1,0 +1,78 @@
+<?php columnStart(1); ?>
+<p>
+36
+</p>
+<p>
+(that is doing the switching!) vanishes with it. Therefore the control program
+has to be copied across to the same addresses in all boards in the page mode
+system so that it can continue to run. (An identical copy then appears in the
+place of the version that has just been paged out). If one of the paged memory
+boards is removed for any reason, the system will crash if it attempts to
+switch to that board as no memory will appear. Unfortunately there is no way
+to dynamically determine the presence or absence of a memory board in a
+particular page without crashing.
+</p>
+<p>
+(Users with page-mode Memory drives may have discovered by now that they
+cannot Boot a CP/M system set up for a memory drive if one or more of the.
+expected boards is absent).
+</p>
+<p>
+The problems are not so severe if a common area of memory exists that is
+not paged, (e.g. the workspace RAM on a Nascom&nbsp;2), as checks can be included
+for the presence or absence of paged (or banked) RAM.
+</p>
+<p>
+The standard page mode supports up to four boards, giving the standard
+64k of memory together with a 192k Memory disk.
+</p>
+<p>
+Memory Mapping
+</p>
+<p>
+This approach is neater than page mode, as the memory can be moved around
+(or remapped) in 4k sections, rather than the full 64k amounts. The 19 address
+lines defined on the 80-BUS restrict the total memory size to 512k byte,
+though it could always be combined with page mode to give a total of 2Mbytes.
+</p>
+<p>
+The control software needs a little thought when moving data to ensure
+that there is no clash between source, destination, and the driving program.
+Also it has to cater for the case where a block transfer may straddle a 4k
+boundary (either source, destination, or both).
+</p>
+<p>
+Ram-Disk
+</p>
+<p>
+This finally leads me on to the concept of the Gemini RAM-DISK. Here the
+memory is not a system memory board, but is arranged as a block of memory
+separate from the 80-BUS address lines, which the CPU can only access via a
+few IO ports. To communicate with the memory, the CPU has to write an address
+to two IO ports, and then read/write data from/to another I0 port.
+</p>
+<p>
+B0BUS 49-7
+</p>
+<p>
+Track Sector
+-&mdash;s : 7-bit counter
+&gt; &gt; 7eitcounter| 1 VA
+Co
+A22-Al9 _
+AIS = AIS Al4-A7 A0-A6
+</p>
+<p>
+| 512K
+</p>
+<p>
+Enable
+DIL Memory _
+</p>
+<p>
+switch array
+</p>
+<p>
+FIG |
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<p>
+THE HARDWARE
+</p>
+<p>
+The author&rsquo;s unit is built in two parts. A diecast box, 4.5" x 6.5" x 2", is used as a
+base and contains a small power supply that provides +5, +12, -5, -12 and +26 volts
+(the -12 volt line is not needed by the programmer, but it is easy to include and
+makes the power supply useful for other circuits). The electronics are built on a piece
+of 0.1" matrix Veroboard, that sits on top of the box. Power could be taken from the
+computer supply, as only a few milliamps are needed, but a 26 volt generator would
+still be required. By providing a completely separate power suply the unit can be
+made much more portable.
+</p>
+<p>
+Two EPROM sockets are fitted to the unit; one is for 1K chips, the other for 2K
+chips. To avoid the possibility of damage the sockets should be CLEARLY marked
+with the chip type, and pin 1 should also be marked. The use of zero insertion force
+sockets is strongly recommended, to prevent wear and tear on the chips and
+sockets. Only one socket should be used at a time.
+</p>
+<p>
+The Z80 PIO has a low drive capability, and buffering is desirable. Pin 20 of the
+2708 (WE) rises to 12 volts during programming. Since this is well above TTL levels,
+the use of a high voltage rated buffer is necessary. The 7406 is suitable, as it is rated
+at 30 volts. Double buffering is used in the unit as this provides the required number
+of signal inversions, low loading of the PIO, and the necessary voltage isolation.
+Buffer IC1 is a CMOS 4049 hex inverter chip; IC2 is a 7406, backed by a couple of
+BC108/9 transistors to make up the required number of inverters.
+</p>
+<p>
+IC3 is a CMOS 4040 12 stage binary counter, capable of counting from 0000H
+to 0FFFH (0 to 4095 decimal). In this unit a count of 03FFH is used for 2708s and a
+count to 07FFH for 2K chips. The spare output might be used in the future to extend
+the unit to 4K chips. Port A of the PIO is used for data, and port B for control.
+Normally port A is set to input and port B to output, but during programming both
+ports are output.
+</p>
+<p>
+PORT B BIT ASSIGNMENT
+</p>
+<p>
+BIT 0 Controls the 26 volt programming pulse through the high speed
+switch formed by TR1, TR2 and TR3.
+</p>
+<p>
+BIT 1 Controls the WE/CS signal on pin 20 of the 2708 socket, and the
+OE signal on pin 20 of the 2516/2716 socket.
+</p>
+<p>
+BIT 2 A pulse from this bit is used to increment the address counter.
+</p>
+<p>
+BIT 3 A pulse from this bit is used to reset the address counter at the start
+and end of each routine.
+</p>
+<p>
+BIT 4 Used to switch the PGM input on pin 18 of the 2516/2716 socket.
+</p>
+<?php columnEnd(1); ?>

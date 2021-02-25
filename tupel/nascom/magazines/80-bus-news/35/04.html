@@ -1,0 +1,85 @@
+<?php columnStart(1); ?>
+<p>
+Letters to the Editor
+</p>
+<p>
+Pertec Mods.
+</p>
+<p>
+IT am a Nascom&nbsp;2, Gemini 64K RAM card, GM829 FDC and Gemini IVC user. [I
+am running CP/M 2.2 with Pertec FD250 drives.
+</p>
+<p>
+I purchased surplus Pertec drives from the USA and had lots of problems.
+All the problems were a result of leaky decoupling capacitors. For those of
+you who intend to purchase surplus FD250, I suggest that all the decoupling
+capacitors should be replaced. Other than this, the drives are great.
+</p>
+<p>
+There is a simple hardware and software modification to get these drives
+reading and writing 40 tracks instead of 35 tracks. Though I have done this
+independently, I understand &ldquo;Henry&rsquo;s&rdquo; is offering this modification. For
+those of you who are interested, please write and I will send full details.
+</p>
+<p>
+Those of you who intend to make the printer-buffer as published in the
+June 1984 issue of BYTE, please note that the PIO output of the Nascom&nbsp;2 or
+Gemini should be buffered and properly oriented with pull up resistors before
+it will work. I assume that the readers will have taken care of the other
+errors in the buffer hardware and software as published by BYTE
+</p>
+<p>
+All correspondence on the above and other Nascom/Gemini subjects
+welcomed.
+</p>
+<p>
+Yours truly, Hiten Patel, 4 Navyug Sagar, ___ __________ ____, BOMBAY ___
+___, India.
+</p>
+<p>
+Further thoughts on Hisoft Pascal
+</p>
+<p>
+Following on from the random musings of Dr. Dark in the issue of July-August
+1984, I am writing to tell of some procedures developed for just this
+need. The CP/M manual describes a file control block (FCB) which is used for
+random access, but this is not allowed for in the standard Hisoft Pascal file
+handler &ndash; the Pascal one is three bytes too short. So we want a definition of
+a FCB which can be used for random access, like this &ndash;
+</p>
+<p>
+TYPE
+charll = ARRAY[1..11] OF CHAR;
+</p>
+<p>
+{ charll is for the use of routines manipulating filenames
+unlike the Hisoft filename it coes not contain the : or&nbsp;.
+which are displayed in the directory listing so that
+a file will be filenameext and not filename.ext }
+</p>
+<p>
+febtype.= RECORD
+</p>
+<p>
+DRIVE CHAR;
+NAME : charll;
+EX : CHAR;
+</p>
+<p>
+$123 : ARRAY[1..3] OF CHAR;
+DIRECTY : ARRAY[1..16] OF CHAR;
+CREC : CHAR;
+RNDREC : INTEGER;
+RNDOVF : CHAR
+END;
+VAR
+{ whilst we are about it we can create three (or more) of the FCB&rsquo;s
+so that we can use more than one random file at a time }
+HEADER : ARRAY{1..3] OF fcbtype;
+</p>
+<p>
+The other definitions of types and variables must be placed in the
+program as needed. The most important of these is a buffer area to store the
+record read from the file or about to be written to it. The simplest of
+</p>
+<?php columnEnd(1); ?>

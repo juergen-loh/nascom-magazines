@@ -1,0 +1,76 @@
+<?php columnStart(1); ?>
+<p>
+51
+</p>
+<p>
+AUNT ALICE&rsquo;S AGONY COLUMN D. Parkinson
+</p>
+<p>
+Is there anyone out there? (Dr Dark believes you are all a figment of the
+circulation manager&rsquo;s imagination. [Ed. &ndash; Circulation manager &ndash; who&rsquo;s he? |.) I
+know there are at least five of you, I&rsquo;ve got your letters here courtesy of our
+esteemed Editor. The following few pages attempt to answer some of the questions
+asked in these letters, and are based on the premise that if one person has
+actually taken the trouble to write in with a question, there must be at least a
+thousand of you out there with the same question on your lips. So, as these pages
+are to be fueled by your questions/comments/hints/tips, send them in &ndash; even if it
+is only one sentence on the back of an old envelope. Do not expect a personal
+reply. (Letter writing is not my forte). You may get a reply via 80-BUS News in
+due course. If a few people ask the same question there will almost certainly be
+a reply via the News (unless there are obvious signs of collusion like the same
+handwriting!).
+</p>
+<p>
+This issue I start with a hardware bug in GM812 (the Gemini IVC) that was
+discovered sometime ago by Richard Beal, and has also been found by Nils Nazoa-Ruiz.
+It will only manifest itself if you are using interrupts, and only then in
+special circumstances. If you happen to be unlucky you will find that the IVC is
+reset everytime an interrupt occurs. The explanation for this lies in the way the
+IO addresses are decoded on the card. This is done via a PROM (IC25) which is
+enabled by IORQ. With the standard PROM the four outputs are used to signify
+addresses 00-07 (NASIO), address B1 (data port), address B2 (control port),
+address B3 (card reset). The B1 and B2 outputs are qualified by RD and WR before
+they are used, but the B3 output is taken straight to the RESET input of the
+IvC&rsquo;s Z80. If you look up the interrupt behaviour of the Z80 in its data sheet
+you will see that the Z80 acknowledges an interrupt by putting out an /IORQ
+signal along with an /M1, a unique signal combination that is used at no other
+time. Unfortunately if the lower 8-bits of the address bus just happen to hold
+the address B3, then the IVC is reset.
+</p>
+<p>
+The cure is simple (in theory), and that is to disconnect pin 14 of IC25
+from GND, and connect the backplane /M1 signal to it via a spare inverter on the
+board. Pin 14 is an additional enable input (active low), and with this
+modification the decode PROM will be inhibited during any cycle where M1 is low,
+thus preventing the interrupt acknowledge cycle being misint:r,reted by the IVC.
+The normal IO operations will continue to work as before.
+</p>
+<p>
+Next a letter from Alan Mackay &ndash; here is someone who is actually using his
+computer to compute. I reproduce his letter below in the hope that someone out
+&lsquo;there can help.
+</p>
+<p>
+&ldquo;The most useful of the features of BASIC as originally developed at
+Dartmouth College was the provision of matrix operations; multiplication,
+transposition and inversion being each accomplished by single statements. Most
+implementations for microcomputers do not provide these essential routines. Can
+anyone tell me how I can do matrix inversion on a Nascom&nbsp;2? Does anyone have
+assembly language programs for matrix operations in BASIC or PASCAL? More
+generally, is there a library of serious mathematical subroutines &ndash; such as the
+NAG (Numerical Algorithms Group) provides for Algol and Fortran on large
+computers &ndash; for the Nascom&nbsp;2? Is there anyone doing serious calculations, as
+opposed to computer games, on a micro?&rdquo;
+&ndash; replies to Alan Mackay, __ __________ ____, Highgate, London __ ___. I recall a
+product MAP14Z that was available in 1980/1 from Enertech Ltd, __ _________ ____,
+Eastbourne, East Sussex ____ ___. This was a 40-bit floating point package
+available for the Nascom. It did not support matrix operations, and a review of
+it appeared in INMC80 issue 2 (Sept80-Jan81).
+</p>
+<p>
+Tony Chamberlain writes in with a list of the undocumented op-codes for the
+Z80. These have been covered before in various of the glossies and earlier
+INMC80s/80-BUS News, but if you&rsquo;re new to the Z80 and have missed them and want
+to know more send a note to me asking for it to be published in a later issue.
+</p>
+<?php columnEnd(1); ?>

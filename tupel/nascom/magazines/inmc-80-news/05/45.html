@@ -1,0 +1,60 @@
+<?php columnStart(1); ?>
+<p class="continued">
+in episode one the fact that the contents of the registers is in binary, and
+that binary was somewhat unmanagable for the normal mortal. It was demonstrated
+that HEX was a more useful format for displaying the binary information. So
+everything in the registers has to be converted from binary to HEX before the
+computer lets us have a look at it. In fact, this process becomes so
+transparent after a while, that it is all too easy to think of the registers
+containing only HEX characters, and not binary bits at all. This is a way of
+thought which should be avoided. Anyway, I think there is a conclusive case for
+the existence of routine B2HEX.
+</p>
+<p>
+Now to its specification. Those Nascom owners with NAS-SYS already have
+the specification written out in the software manual, for the benefit of those
+not using NAS-SYS, and for the benefit of those NAS-SYS owners too lazy to look
+it up, it says:
+</p>
+<p class="indent" style="margin-left: 6em">
+Output the value in the A register in ASCII. The A
+register is modified.
+</p>
+<p class="noindent">
+Well, it&rsquo;s not quite as clear as it could be, but what it means is, &lsquo;put a
+binary character in the A register, call this routine, and the contents of the
+the A register will be sent to the screen as two ASCII characters expressing
+the value of the A register in HEX&rsquo;. It also notes that the contents of the A
+register will be something different at the completion of the routine.
+</p>
+<p>
+So the need for B2HEX is established, and what it does. How does it do
+it? Well, it&rsquo;s rewritten here, lavishly smothered in comments. As a pointer,
+there&rsquo;s nothing to stop you smothering your copy of the NAS-SYS listing with
+comments to make it more understandable. Before reading on, see if you can
+follow it.
+</p>
+<h2>
+ROUTINE B2HEX
+</h2>
+<p>
+This routine part of the routine puts the top four bits (most
+significant nibble) of the byte to be printed into the bottom four bits (least
+significant nibble) by rotating the byte to the right four times. It then calls
+the second routine to convert the four lowest bits into an ASCII character and
+then to sends it to the screen.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-45-1.png"); ?>
+<p>
+This half of the routine first gets rid of the top four bits by ANDing
+it with 0FH, then it performs a bit of arithmetic on it to convert it into a
+printable ASCII character. It then calls the screen output routine to print it
+on the screen.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-45-2.png"); ?>
+<p>
+Got it, good, you can forget the rest of this article, and any
+subsequent ones, &lsquo;cos you&rsquo;re there already&raquo; For those who don&rsquo;t thoroughly
+understand it, here follows the detail blow by blow description.
+</p>
+<?php columnEnd(1); ?>

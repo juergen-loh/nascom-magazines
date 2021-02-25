@@ -1,0 +1,57 @@
+<?php columnStart(1); ?>
+<p>
+been stored at &pound;0C78 &ndash; &pound;0C79, commands U and N can be used from the keyboard,
+and DF 55 and DF 4E can be used within programs, to turn the printer on and off.
+</p>
+<p>
+OUTPUT 0 xx yy
+</p>
+<p>
+This routine sends data yy to port xx. The port number, xx, is placed on the
+bottom eight address lines, A0 &ndash; A7, and this is decoded to determine which
+input/output device is activated. The data to be sent, yy, is placed on the data bus,
+and the activated device receives it. The main use of the output command is to
+communicate with external devices via the PIO chip, so perhaps a few words on the
+operation of this device would not be out of place here.
+</p>
+<p>
+The MK3881 PIO chip used on the Nascom is a programmable input/output chip
+which the main processor sees as four ports; of these, two ports each provide
+eight lines, which can be programmed to be input, output or bidirectional, for external
+communication, while the remaining two ports are used to control the operation of
+the chip. On the basic Nascom port A is addressed as port 4, and it is controlled by
+port 6; port B is addressed as port 5 and its control port is port 7.
+A convenient way to study the operation of the PIO chip is to use the 0 and Q
+commands to write to and read from the PIO, while monitoring the state of the lines
+with a logic probe, or with the Bits and P.C.s port probe.
+</p>
+<p>
+PREGS
+</p>
+<p>
+In the Nas-Sys&nbsp;1 monitor command P merely produces an error message; in
+Nas-Sys&nbsp;3 the command prints out the contents of the procesors main registers,
+previously stored in the workspace from &pound;0C61 to &pound;0C6C, together with the
+current contents of the I, IX and IY registers. Virtually the same code is used to
+display the registers in Nas-Sys&nbsp;1, although the format of the display is slightly
+different (see the S command), but it is not written as a subroutine, so it cannot be
+accessed from the keyboard or from user programs.
+</p>
+<p>
+QUERY Q xx
+</p>
+<p>
+Q xx obtains data from port xx and displays it on the screen in
+hexadecimal format. To be able to obtain data via the PIO chip you will have to
+program the chip by writing to the appropriate control port using the 0 command.
+</p>
+<p>
+READ R xxxx (y)
+</p>
+<p>
+The Read command loads data from a cassette tape written in the format used
+by the standard Write command. After turning on the tape LED the routine sets
+the input/output table addresses to their &lsquo;normal&rsquo; values, saving the addresses that
+were at &pound;0C73, &pound;0C75 on the stack, so that they can be restored
+</p>
+<?php columnEnd(1); ?>

@@ -1,0 +1,79 @@
+<?php DisAssemblyRomBasicStart(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    65</span>
+
+F382 0101F1     LEN:    LD      BC,PASSA        ; To return integer A
+F385 C5                 PUSH    BC              ; Save address
+F386 CD50F3     GETLEN: CALL    GETSTR          ; Get string and its length
+F389 AF                 XOR     A
+F38A 57                 LD      D,A             ; Clear D
+F38B 32AD10             LD      (TYPE),A        ; Set type to numeric
+F38E 7E                 LD      A,(HL)          ; Get length of string
+F38F B7                 OR      A               ; Set status flags
+F390 C9                 RET
+
+F391 0101F1     ASC:    LD      BC,PASSA        ; To return integer A
+F394 C5                 PUSH    BC              ; Save address
+F395 CD86F3     GTFLNM: CALL    GETLEN          ; Get length of string
+F398 CAA0E9             JP      Z,FCERR         ; Null string - Error
+F39B 23                 INC     HL
+F39C 23                 INC     HL
+F39D 5E                 LD      E,(HL)          ; Get LSB of address
+F39E 23                 INC     HL
+F39F 56                 LD      D,(HL)          ; Get MSB of address
+F3A0 1A                 LD      A,(DE)          ; Get first byte of string
+F3A1 C9                 RET
+
+F3A2 3E01       CHR:    LD      A,1             ; One character string
+F3A4 CDBFF1             CALL    MKTMST          ; Make a temporary string
+F3A7 CD87F4             CALL    MAKINT          ; Make it integer A
+F3AA 2AC110             LD      HL,(TMPSTR+2)   ; Get address of string
+F3AD 73                 LD      (HL),E          ; Save character
+F3AE C1         TOPOOL: POP     BC              ; Clean up stack
+F3AF C3F0F1             JP      TSTOPL          ; Temporary string to pool
+</pre>
+<?php DisAssemblyRomBasicChange(); ?>
+<pre>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    66</span>
+
+F3B2 CD37F4     LEFT:   CALL    LFRGNM          ; Get number and ending ")"
+F3B5 AF                 XOR     A               ; Start at first byte in string
+F3B6 E3         RIGHT1: EX      (SP),HL         ; Save code string,Get string
+F3B7 4F                 LD      C,A             ; Starting position in string
+F3B8 E5         MID1:   PUSH    HL              ; Save string block address
+F3B9 7E                 LD      A,(HL)          ; Get length of string
+F3BA B8                 CP      B               ; Compare with number given
+F3BB DAC0F3             JP      C,ALLFOL        ; All following bytes required
+F3BE 78                 LD      A,B             ; Get new length
+F3BF 11                 DEFB    (LD DE,nn)      ; Skip "LD C,0"
+F3C0 0E00       ALLFOL: LD      C,0             ; First byte of string
+F3C2 C5                 PUSH    BC              ; Save position in string
+F3C3 CD29F2             CALL    TESTR           ; See if enough string space
+F3C6 C1                 POP     BC              ; Get position in string
+F3C7 E1                 POP     HL              ; Restore string block address
+F3C8 E5                 PUSH    HL              ; And re-save it
+F3C9 23                 INC     HL
+F3CA 23                 INC     HL
+F3CB 46                 LD      B,(HL)          ; Get LSB of address
+F3CC 23                 INC     HL
+F3CD 66                 LD      H,(HL)          ; Get MSB of address
+F3CE 68                 LD      L,B             ; HL = address of string
+F3CF 0600               LD      B,0             ; BC = starting address
+F3D1 09                 ADD     HL,BC           ; Point to that byte
+F3D2 44                 LD      B,H             ; BC = source string
+F3D3 4D                 LD      C,L
+F3D4 CDC2F1             CALL    CRTMST          ; Create a string entry
+F3D7 6F                 LD      L,A             ; Length of new string
+F3D8 CD46F3             CALL    TOSTRA          ; Move string to string area
+F3DB D1                 POP     DE              ; Clear stack
+F3DC CD57F3             CALL    GSTRDE          ; Move to string pool if needed
+F3DF C3F0F1             JP      TSTOPL          ; Temporary string to pool
+
+F3E2 CD37F4     RIGHT:  CALL    LFRGNM          ; Get number and ending ")"
+F3E5 D1                 POP     DE              ; Get string length
+F3E6 D5                 PUSH    DE              ; And re-save
+F3E7 1A                 LD      A,(DE)          ; Get length
+F3E8 90                 SUB     B               ; Move back N bytes
+F3E9 C3B6F3             JP      RIGHT1          ; Go and get sub-string
+</pre>
+<?php DisAssemblyRomBasicEnd(); ?>

@@ -1,0 +1,157 @@
+<?php columnStart(2, 2); ?>
+<p>
+The original version used a &lsquo;Naughty but nice&rsquo;
+method by which, on exiting to CP/M, the program
+altered the BDOS pointer at GO06H to point to one
+of its own routines. When the CCP gained control
+this routine would intercept all BDOS calls and pass
+them on to the BDOS as normal until a &lsquo;Read
+console string&rsquo; came along (Function 10). When
+this happened the custom routine would immediately
+return having placed the name of the chain
+file or command in the CCP command buffer. This
+let the CCP do all the work which meant that a
+program could be called using a command tail.
+However this program has now been modified, and
+the new version (2.0) uses a method similar to the
+one that I have outlined above.
+</p>
+<p>
+I must admit that I have scratched my head a little
+on where to put the stack pointer before the chain
+program is executed. (Sensible answers only
+please.) Keychain V2.0 places it at 80H, and I have
+put it 1 byte below the BDOS. As the CCP is only
+required to point the SP at an &amp; level stack i
+suppose 80H would be OK. But in the case of a
+general purpose chainer the 16 bytes below 80H
+may be occupied with the second filename in the
+command tail and thus confuse the issue. I
+suppose that the ideal answer is to write a chain
+function to suit your particular purpose at the time
+and manage the SP accordingly.
+</p>
+<p>
+And finally, why can&rsquo;t I just read a filename into the
+CCP command buffer and then call the CCP? Both
+Steve and I had a look at this a while back, Steve
+being more conversant with what&rsquo;s what and
+where it is in CP/M. Well we tried it a few ways
+calling both the first and second entry into the CCP
+and neither worked. It seems that the CCP pointer
+to the command buffer start byte is changed during
+the process of reading and executing the program.
+It is not, it seems, restored back to the start of the
+CCP buffer prior to the command being executed.
+</p>
+<p>
+-Thus, the next command that is read into the buffer
+is either truncated or lost altogether. Regarding this
+concept do not forget that the previous program
+may have overwritten the CCP and so the failure of
+this approach to chaining is guaranteed if this is the
+case.
+</p>
+<p>
+Program overlays
+</p>
+<p>
+Program overlays operate on the principle that a
+controlling module is always present in memory,
+this is usually called the Root module. If an overlay
+section is required then the root module will read
+the contents of the overlay file (which is executable
+code) into the memory area allocated for overlays.
+The root module then passes control to the start of
+the overlay code. On completion the overlay
+passes control back to the root module.
+</p>
+<p>
+if, while you are reading all this gumph, you would
+like to refer to the diagram illustrating overlay
+techniques, you may find this text more palatable.
+</p>
+<p>
+Advantages
+</p>
+<p>
+1. Will run faster than a suite of program
+modules chained together.
+</p>
+<p>
+2. Will allow the overlay routines to access
+common variables and utility routines in the
+root program.
+</p>
+<p>
+3. You should be able to pass arguments to
+overlay routines.
+</p>
+<p>
+4. In some cases you are able to nest
+overlay sections.
+</p>
+<p>
+5. The overlay loaders can also be used to
+load data files into memory if modified.
+</p>
+<p>
+Disadvantages
+</p>
+<p>
+1. The initial setting up of the overall
+program is rather complex and can be time
+consuming.
+</p>
+<p>
+2. The individual modules cannot be run as
+separate programs as chained programs can.
+</p>
+<p>
+Methods of overlaying
+</p>
+<p>
+Now this bit can require a little thought. I think that
+an efficient overlaid system should have all the
+common variables and most used utility routines in
+the root module. This means that they are only
+read in once at the beginning. This will keep the
+size of the overlay files down and thus speed up the
+system. So you are going to have to decide what is
+going to go into the root. I know that this has little
+to do with the creation of the files but I put it in to
+emphasize that there is more to it than hacking the
+modules together.
+</p>
+<p>
+Once again I must state that probably the best way
+of doing it is to begin programming in a language
+that supports overlays. However this is not always
+practical and/or efficient. I know of a few languages
+that will do it, namely CIS COBOL, DR PL1 and
+Aztec &lsquo;C&rsquo;. There are certainly more but I have not
+had the pleasure of yet. Overlaying with these is
+just a matter of reading the instructions.
+</p>
+<p>
+Assuming that all the files have to be created by
+hand, and that we are dealing with programs that
+pass through the&nbsp;.REL stage on their way to the
+executable&nbsp;.COM stage, here is how we do it.
+</p>
+<p>
+The whole process depends upon which linking
+loader you are using at the moment. The Microsoft
+LINK-80 (L80) is the most popular, it seems, but
+unless I&rsquo;m wrong it does not allow you to directly
+create overlay files. The equivalent Digital Research
+product which also seems to go under the
+name of LINK-80 does give you this facility.
+</p>
+<p>
+Due to this confusion in names I will call the
+Microsoft product L80 and the DR loader LINK.
+These seem to be the more commonly used
+names.
+</p>
+<?php columnEnd(2); ?>
