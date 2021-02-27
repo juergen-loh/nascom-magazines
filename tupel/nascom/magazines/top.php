@@ -1,6 +1,6 @@
 <?php
 	$include_path = "$tppath/../../../cgi-bin";
-	include "$include_path/redirect.php";
+	include "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
@@ -31,8 +31,8 @@
 
 	$naviBottom = "";
 	$naviBottom
-	.=	"\t\t<a class=\"sm-fill nav-link\" href=\"/datenschutzerklaerung/\">Privacy Statement</a>\n"
-	.	"\t\t<a class=\"sm-fill nav-link\" href=\"/impressum/\">Imprint</a>\n";
+	.=	navBottom("datenschutzerklaerung", "Privacy Statement")
+	.	navBottom("impressum", "Imprint");
 ?>
 <div lang="en">
 

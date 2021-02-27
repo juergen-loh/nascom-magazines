@@ -7,7 +7,7 @@
 	$link      =                       quotemeta(addslashes($_GET['link']));
 	$thumb     = false;
 
-	include "$include_path/redirect.php";
+	include "$include_path/global.php";
 //	$width = 720;
 
 	$html = "$magpath/$issuepath/$pagepath.html";
@@ -542,8 +542,8 @@ function DisAssemblyRomBasicEnd()		{	columnEnd(1);	echo('</div>');		}
 		.	">PDF</a>\n";
 	}
 	$naviBottom
-	.=	"\t\t<a class=\"sm-fill nav-link\" href=\"/datenschutzerklaerung/\">Privacy Statement</a>\n"
-	.	"\t\t<a class=\"sm-fill nav-link\" href=\"/impressum/\">Imprint</a>\n";
+	.=	navBottom("datenschutzerklaerung", "Privacy Statement")
+	.	navBottom("impressum", "Imprint");
 
 	echo "<!-- /The page -->\n";
 	navi($pagepath, $link, $first, $last, $magpath, $issuepath, $thumb);

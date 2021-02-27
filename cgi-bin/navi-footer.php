@@ -18,10 +18,8 @@
 		if (isset($naviBottom)) {
 			echo $naviBottom;
 		} else {
-?>
-		<a class="sm-fill nav-link" href="/datenschutzerklaerung/">Datenschutzerklärung</a>
-		<a class="sm-fill nav-link" href="/impressum/">Impressum</a>
-<?php
+			echo navBottom("datenschutzerklaerung", "Datenschutzerklärung");
+			echo navBottom("impressum", "Impressum");
 		}
 ?>
 	</nav>

@@ -1,6 +1,6 @@
 <?php
 	$include_path = "../../../../cgi-bin";
-	include "$include_path/redirect.php";
+	include "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
 	include "$include_path/navi-head.php";
@@ -14,8 +14,8 @@
 <?php
 	$naviBottom = "";
 	$naviBottom
-	.=	"\t\t<a class=\"sm-fill nav-link\" href=\"/datenschutzerklaerung/\">Privacy Statement</a>\n"
-	.	"\t\t<a class=\"sm-fill nav-link\" href=\"/impressum/\">Imprint</a>\n";
+	.=	navBottom("datenschutzerklaerung", "Privacy Statement")
+	.	navBottom("impressum", "Imprint");
 ?>
 
 <div class="row hyphenate" lang="en">

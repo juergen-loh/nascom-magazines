@@ -1390,6 +1390,21 @@ HEREDOC;
 				addNav("nascom/magazines/issues", "Nascom Magazines", "nascom/magazines");
 				addNav("pico", "PICO");
 				addNav("cpm-plus", "CP/M");
+
+				function navBottom($dir, $desc)
+				{
+					$result = "";
+					if (is_dir("/$dir")) {
+						$result .= "\t\t";
+						$result .= '<a class="sm-fill nav-link" href="/';
+						$result .= $dir;
+						$result .= '/">';
+						$result .= $desc;
+						$result .= '</a>';
+						$result .= "\n";
+					}
+					return $result;
+				}
 ?>
 			</ul>
 		</div>

@@ -9,7 +9,7 @@
 	} else {
 		$include_path = "../../../../../cgi-bin";
 	}
-	include "$include_path/redirect.php";
+	include "$include_path/global.php";
 //	$width = 720;
 
 	if (!$thumb) {
@@ -195,8 +195,8 @@
 	echo "\n";
 */
 	$naviBottom
-	.=	"<a class=\"sm-fill nav-link\" href=\"/datenschutzerklaerung/\">Datenschutzerklärung</a>\n"
-	.	"<a class=\"sm-fill nav-link\" href=\"/impressum/\">Impressum</a>\n";
+	.=	navBottom("datenschutzerklaerung", "Datenschutzerklärung")
+	.	navBottom("impressum", "Impressum");
 
 /*	echo $naviBottom;
 	unset($naviBottom);

@@ -1,6 +1,6 @@
 <?php
 	$include_path = "../../cgi-bin";
-	include "$include_path/redirect.php";
+	include "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
 	include "$include_path/navi-head.php";
@@ -20,7 +20,9 @@
 <p>
 Das Nascom&nbsp;Journal war eine Zeitschrift für die
 <?php externalLink("Z80","",""); ?>-<?php externalLink("Einplatinencomputer"); ?>
-<a href="1/">Nascom 1</a> und Nascom 2. Es wurde ab 
+<?php if (is_dir("1/")) echo '<a href="1/">'; ?>
+Nascom 1
+<?php if (is_dir("1/")) echo '</a>'; ?> und Nascom 2. Es wurde ab 
 <a href="journal/80/00/01/text/#article1"><!--#head"-->Mai 1980</a> monatlich von
 <?php externalLink("Michael Klein"); ?>
 und seiner Firma
