@@ -1362,7 +1362,7 @@ HEREDOC;
 <?php
 				function addNav($dir, $text, $str = "")
 				{
-					global $request;
+					$request = addslashes(getenv('REQUEST_URI'));
 
 					$item_dir = $_SERVER['DOCUMENT_ROOT']."/$dir";
 /*					echo "<!--\n";
@@ -1394,7 +1394,9 @@ HEREDOC;
 				function navBottom($dir, $desc)
 				{
 					$result = "";
-					if (is_dir("/$dir")) {
+					$item_dir = $_SERVER['DOCUMENT_ROOT']."/$dir";
+//					$result .= "<!--item_dir $item_dir-->";
+					if (is_dir($item_dir)) {
 						$result .= "\t\t";
 						$result .= '<a class="sm-fill nav-link" href="/';
 						$result .= $dir;
