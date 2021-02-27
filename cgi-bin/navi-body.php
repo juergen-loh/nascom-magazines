@@ -1365,19 +1365,23 @@ HEREDOC;
 					$request = addslashes(getenv('REQUEST_URI'));
 
 					$item_dir = $_SERVER['DOCUMENT_ROOT']."/$dir";
-/*					echo "<!--\n";
+/*
+					echo "<!--\n";
 					echo $_SERVER['DOCUMENT_ROOT']."\n";
-					echo "$item_dir\n";
+					echo "item_dir $item_dir\n";
+					echo "text     $text\n";
+					echo "request  $request\n";
+					echo "dir      $dir\n";
+					echo "str      $str\n";
 					echo "-->\n";
-*/					echo "\t\t\t\t<li class=\"nav-item";
-
+*/
 					if (is_dir($item_dir)) {
+						echo "\t\t\t\t<li class=\"nav-item";
 						if ($request == "/$dir/"
 						||	strpos($request, "/$str/") === 0
 						) {
 							echo " active";
 						}
-
 						echo "\">\n";
 						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"/$dir/\">$text</a>\n";
 						echo "\t\t\t\t</li>\n";
