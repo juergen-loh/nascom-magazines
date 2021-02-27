@@ -1047,11 +1047,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	$url = "";
 	switch ($link) {
 	case "&micro;PD7220":			$url = "https://www.datasheetarchive.com/upd7220-datasheet.html";				break;
-	case "&micro;PD765":			$url = "http://www.classiccmp.org/dunfield/r/765.pdf";							break;
+	case "&micro;PD765":			$url = "http://dunfield.classiccmp.org/r/765.pdf";								break;
 	case "2114":					$url = "https://de.wikipedia.org/wiki/2114";									break;
 	case "2708":					$url = "http://www.jrok.com/datasheet/TMS2708.pdf";								break;
 	case "2716":					$url = "http://ee-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
-	case "2732":					$url = "http://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
+	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
 	case "2732A":					$url = "https://www.retro-kit.co.uk/user/custom/Acorn/3rdParty/VELA/datasheets/2732A-datasheet.pdf";	break;
 	case "2764":					$url = "http://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";					break;
 	case "2N3819":					$url = "https://www.onsemi.com/pub/Collateral/2N3819-D.PDF";					break;
@@ -1121,7 +1121,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Google über Nascom":		$url = "https://www.google.de/search?q=nascom+computer";						break;
 	case "Greg":					$url = "http://www.lemis.com/grog/Albums/Computers/Kontron-kit.php";			break;
 	case "Gummersbach":				$url = "https://www.f10.th-koeln.de/";											break;
-	case "HiSOFT":					$url = "https://www.hisoft.co.uk/gp/about-hisoft/1/pgid/4/";						break;
+	case "HiSOFT":					$url = "https://hisoft.co.uk/gp/about-hisoft/1/pgid/4/";						break;
 	case "HM7611":					$url = "http://www.retrotechnology.com/restore/hm7602.pdf";						break;
 	case "HOCO Floppy Controller":	$url = "https://forum.classic-computing.de/forum/index.php?thread/11561-hoco-floppy-controller/";	break;
 	case "HTML":					$url = "https://de.selfhtml.org/";												break;
@@ -1129,7 +1129,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "IBM 3740":				$url = "https://www.ibm.com/ibm/history/exhibits/rochester/rochester_4016.html";	break;
 	case "IBM 3270":				$url = "https://de.wikipedia.org/wiki/IBM_3270";								break;
 	case "IBM System/34":			$url = "https://www.ibm.com/ibm/history/exhibits/vintage/vintage_4506VV2236.html";	break;
-	case "ICL7106":					$url = "https://www.renesas.com/eu/en/www/doc/datasheet/icl7106-07-07s.pdf";	break;
+	case "ICL7106":					$url = "https://www.renesas.com/eu/en/document/dst/icl7106-icl7107-icl7107s-datasheet";	break;
 	case "Indische Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1980t/index.htm";					break;
 	case "INMC News":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/";						break;
 	case "INMC News 3, page 24":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/03/24/";				break;
@@ -1182,7 +1182,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Michael Klein":			$url = "http://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
 	case "Micropower":				$url = "https://tupel.jloh.de/nascom/magazines/micropower/";					break;
 	case "Microshell":				$url = "https://www.autometer.de/unix4fun/z80pack/ftp/manuals/Software/microshell.pdf";	break;
-	case "Mike Strange":			$url = "http://www.yourtotalevent.com/";										break;
+	case "Mike Strange":			$url = "https://www.yourtotalevent.com/";										break;
 	case "Mikrocomputer Hard- und Softwarepraxis":	$url = "https://openlibrary.org/works/OL15388891W/Mikrocomputer_Hard-_und_Softwarepraxis";	break;
 	case "MK Systemtechnik":		$url = "http://web.archive.org/web/20131024180436/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=13&amp;Itemid=60";	break;
 	case "MK50816":					$url = "https://www.datasheetarchive.com/MK50816-datasheet.html";				break;
@@ -1224,7 +1224,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Swinghs.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swinghs.cas";						break;
 	case "Swords.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swords.cas";						break;
 	case "TANDY Lineprinter VI":	$url = "https://colorcomputerarchive.com/repo/Documents/Manuals/Hardware/Line%20Printer%20IV%20(Tandy).pdf";	break;
-	case "TANDY Lineprinter VIII":	$url = "http://www.classiccmp.org/dunfield/printer/h/lpviii.jpg";				break;
+	case "TANDY Lineprinter VIII":	$url = "http://dunfield.classiccmp.org/printer/h/lpviii.jpg";					break;
 	case "Technics RS-M250":		$url = "https://www.radiomuseum.org/r/technics_stereo_cassette_deck_rs_m_25.html";	break;
 	case "Technics":				$url = "https://de.wikipedia.org/wiki/Technics";								break;
 	case "Technische Informatik":	$url = "https://www.th-koeln.de/studium/technische-informatik-bachelor-campus-gummersbach_3502.php";	break;
