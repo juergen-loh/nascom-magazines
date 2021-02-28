@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<h1>
+<h1 class="article1">
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-42-1.png"); ?>
 </h1>
 <?php columnEnd(1); ?>
@@ -22,7 +22,7 @@ card, Double Density FDC card and 64K RAM card.
 </p>
 <p>
 At the same time, one should not forget that for medium scale software
-development, with a more &ldquo;intimate&rdquo; and &lsquo;operator friendly&rdquo; feel, the standard
+development, with a more &lsquo;intimate&rsquo; and &lsquo;operator friendly&rsquo; feel, the standard
 Nascom packages take a lot of beating. The larger characters on the 48 x 16
 screen are also better when introducing the computer to newcomers or older
 people. There are also a number of interesting new pieces of software like
@@ -36,62 +36,52 @@ implementation 64K of RAM is needed, but variations are possible. I have
 combined Mr Parkinson&rsquo;s idea, and the core of my original scheme to form a
 simpler yet more powerful method of switching between systems and formats.
 </p>
-<p>
+<p class="noindent">
 The following attractive features are possible:
 </p>
-<p>
-1) Very little extra &lsquo;wiring&rsquo; needed to permit system switching.
-</p>
-<p>
-2) Switch selection between NAS-SYS, CP/M 48 x 16 and CP/M 80 x 25 video
-formats.
-</p>
-<p>
-3) A full 64K of RAM may be used.
-</p>
-<p>
-4) The RAM has no &lsquo;gaps&rsquo; in it due to ROMs.
-</p>
-<p>
-5) With one EPROM card, 32K of EPROM and 8K ROM may be used.
-</p>
-<p>
-6) No WAIT states need be used on the CPU card.
-</p>
-<p>
-7) It is possible to &lsquo;overwrite&rsquo; parts of firmware on a temporary basis.
-</p>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1)</td><td>Very little extra &lsquo;wiring&rsquo; needed to permit system switching.</td></tr>
+<tr><td>2)</td><td>Switch selection between NAS-SYS, CP/M 48 x 16 and CP/M 80 x 25 video
+					formats.</td></tr>
+<tr><td>3)</td><td>A full 64K of RAM may be used.</td></tr>
+<tr><td>4)</td><td>The RAM has no &lsquo;gaps&rsquo; in it due to ROMs.</td></tr>
+<tr><td>5)</td><td>With one EPROM card, 32K of EPROM and 8K ROM may be used.</td></tr>
+<tr><td>6)</td><td>No WAIT states need be used on the CPU card.</td></tr>
+<tr><td>7)</td><td>It is possible to &lsquo;overwrite&rsquo; parts of firmware on a temporary basis.</td></tr>
+</table>
 <p>
 The essential components required to carry out this scheme, at least
 in part, are:
 </p>
-<p>
-1) An EPROM card. (Page Mode).
-2) Access to an EPROM programmer and ideally, an eraser. I use a small
-&ldquo;Germicidal&rdquo; type of UV tube. (CAUTION &ndash; DO NOT VIEW THE LIGHT).
-3) A copy of the article in INMC80-4, and understanding how it works.
-</p>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1)</td><td>An EPROM card. (Page Mode).</td></tr>
+<tr><td>2)</td><td>Access to an EPROM programmer and ideally, an eraser. I use a small
+					&lsquo;Germicidal&rsquo; type of UV tube. (CAUTION &ndash; DO NOT VIEW THE LIGHT).</td></tr>
+<tr><td>3)</td><td>A copy of the article in INMC80-4, and understanding how it works.</td></tr>
+</table>
 <p>
 The first requirement when using two or more completely different
 types of operating systems is that RESET takes one back to the system in use,
 and not the alternative(s). This is achieved in my system by using two &lsquo;BOOT&rsquo;
 EPROMS, and changing the RESET jump. The EPROMS are:
 </p>
-<p>
-BOOT EPROM A&nbsp;.
+<p class="noindent">
+BOOT EPROM A
 </p>
-<p>
-located at 2000H on EPROM card. This EPROM copies &ldquo;SIMON&rdquo; to RAM at address
-&lsquo;F000H, and then jumps to F000H, paging out the EPROM card on the way.
+<p class="noindent">
+located at 2000H on EPROM card. This EPROM copies &lsquo;SIMON&rsquo; to RAM at address
+F000H, and then jumps to F000H, paging out the EPROM card on the way.
 </p>
-<p>
+<p class="noindent">
 BOOT EPROM B
 </p>
-<p>
+<p class="noindent">
 located at 4000H on EPROM card, which copies NAS-SYS to RAM at 0000H, and then
 jumps to it, paging out the EPROM card.
 </p>
-<p>
+<p class="noindent">
 It is a very simple matter to arrange the RESET jump to be switched to suit
 the system BOOT required, if the BOOT ROM&rsquo;s are located at EPROM CARD address
 2000H, 4000H or 8000H. Other addresses will require more complex switching.

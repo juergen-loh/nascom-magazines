@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 If you have the assembly listing you can type it in, modify it and reassemble.
 Or you can put a 2 byte JR to the end of the program in place of the LDI, and
 put the new code at the end with conditional and unconditional jumps back to
@@ -9,16 +9,16 @@ ends at 0D48H with a C9, but the next 2 bytes are used as a store.
 <p>
 BASIC IN RAM. This one led to some embarrassment for me because I
 overlooked the cause and made a long distance telephone call to someone who
-kindly pointed out my &ldquo;basic&rdquo; error. When BASIC is executed it asks how much
-RAM to use&raquo; If you do not wish to reserve any and press enter, BASIC will
-&ldquo;measure&rdquo; the RAM. If there is no ROM or &lsquo;empty&rsquo; RAM at the top, just below
+kindly pointed out my &lsquo;basic&rsquo; error. When BASIC is executed it asks how much
+RAM to use. If you do not wish to reserve any and press enter, BASIC will
+&lsquo;measure&rsquo; the RAM. If there is no ROM or &lsquo;empty&rsquo; RAM at the top, just below
 BASIC, the NASCOM ROM BASIC will corrupt itself as it is not protected against
 this possibility (since it expects to be in ROM). The solution is to enter a
 limit of say 55000 in response to the query SIZE?.
 </p>
 <p>
-NAS=-SYS HANDSHAKE. One of my very few &ldquo;hates&rdquo; about NASCOM Software
-has been the need to have a number of &ldquo;USER&rdquo; routines, each one marginally
+NAS-SYS HANDSHAKE. One of my very few &lsquo;hates&rsquo; about NASCOM Software
+has been the need to have a number of &lsquo;USER&rsquo; routines, each one marginally
 different, to enable printer handshaking to ZEAP, NASPEN, NAS-SYS etc. Since
 it is now easy to overwrite parts of the firmware on a temporary basis, I have
 included a routine, accessed from my MENU, that provides H/S by altering the
@@ -33,11 +33,9 @@ of a program is the &lsquo;M&rsquo; routine. My overwrite routine therefore look
 this (NAS-SYS&nbsp;3):
 </p>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-46-1.png"); ?>
-<p>
+<p class="continued">
 At the end of the program, a RESET restores NAS-SYS to its unmodified state.
 The same overwrite routine could be used with NS1 but addresses would have to
-</p>
-<p>
 be changed.
 </p>
 <p>

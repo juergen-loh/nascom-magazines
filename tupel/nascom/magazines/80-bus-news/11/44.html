@@ -1,44 +1,38 @@
 <?php columnStart(1); ?>
-<p>
-44
-</p>
-<p>
-A) SIA. Position 1: VWRAM to 0800H for NAS-SYS with 48 x 16 screen.
-2: VWRAM to F800H for CP/M with 48 x 16 screen.
-3: VWRAM disabled. IVC card in use.
-</p>
-<p>
-oe em
-</p>
-<p>
-B) S1B. Position 1: VIDEO O/P socket selected to NASCOM 2 by relay.
-2: As position l.
-3: VIDEO 0/P socket selected to IVC card by relay.
-</p>
-<p>
-C) SiC. Position 1: RESET JUMP to 4000H to &lsquo;boot&rsquo; NAS-SYS.
-2: RESET JUMP to 2000H to &lsquo;boot&rsquo; CP/M.
-3: As position 2.
-</p>
-<p>
-LSW1/1 and LSW1/4 Up
-LSW1/2 and LSW1/3 Down
-</p>
-<p>
-The arm of SIA should be connected to LKSI pin 2.
-Pole 1 to LKSI pin 15.
+<table>
+<tr><td>A) S1A. Position</td><td>1: VWRAM to 0800H for NAS-SYS with 48 x 16 screen.</td></tr>
+<tr><td></td><td>2: VWRAM to F800H for CP/M with 48 x 16 screen.</td></tr>
+<tr><td></td><td>3: VWRAM disabled. IVC card in use.</td></tr>
+<tr><td></td><td><?php spChar("zwsp"); ?></td></tr>
+<tr><td>B) S1B. Position</td><td>1: VIDEO O/P socket selected to NASCOM 2 by relay.</td></tr>
+<tr><td></td><td>2: As position l.</td></tr>
+<tr><td></td><td>3: VIDEO O/P socket selected to IVC card by relay.</td></tr>
+<tr><td></td><td><?php spChar("zwsp"); ?></td></tr>
+<tr><td>C) S1C. Position</td><td>1: RESET JUMP to 4000H to &lsquo;boot&rsquo; NAS-SYS.</td></tr>
+<tr><td></td><td>2: RESET JUMP to 2000H to &lsquo;boot&rsquo; CP/M.</td></tr>
+<tr><td></td><td>3: As position 2.</td></tr>
+</table>
+<br>
+<table>
+<colgroup><col style="width: 15em"><col></colgroup>
+<tr><td>LSW1/1 and LSW1/4</td><td>Up</td></tr>
+<tr><td>LSW1/2 and LSW1/3</td><td>Down</td></tr>
+</table>
+<p class="noindent">
+The arm of S1A should be connected to LKSI pin 2.<br>
+Pole 1 to LKSI pin 15.<br>
 Pole 2 to LKSI pin 13.
 </p>
-<p>
-The arm of SIC should be connected to common negative.
-Pole 1 to LSW1/2 pin 19 (or IC2 pin 6).
+<p class="noindent">
+The arm of S1C should be connected to common negative.<br>
+Pole 1 to LSW1/2 pin 19 (or IC2 pin 6).<br>
 Poles 2 and 3 to LSW1/3 pin 18 (or IC2 pin 13).
 </p>
-<p>
+<p class="noindent">
 S1B is unnecessary if no IVC card/VIDEO monitor is used.
 </p>
-<p>
-(N-B. From chats with other N2 owners it is clear that quite a few do not
+<p class="noindent">
+(N.B. From chats with other N2 owners it is clear that quite a few do not
 realize that it is quite permissible to use 64K of RAM and to overlap this
 with RAM or ROM located on the CPU card. The NASCOM 2 produces a signal that
 disables any RAM external to the CPU card that is decoded at the SAME address
@@ -46,17 +40,19 @@ as RAM or ROM on the CPU card. BUS conflict is thus avoided. It would
 therefore be quite in order to insert even more ROM&rsquo;s onto the N2 card and to
 access these by extra switching.)
 </p>
-<p>
+<h4>
 SOFTWARE NOTES
+</h4>
+<p>
 A few points that may be of interest:
 </p>
-<p>
+<p class="noindent">
 Memory test. The test that I use is the one supplied with the RAM B and 64K
 RAM cards. A full assembly listing was supplied with RAM B (the assembly was
 correct but there was an error in the HEX listing that I received). This test
-&ldquo;is very quick and useful but there is a snag. It will not run with NAS-SYS in
+is very quick and useful but there is a snag. It will not run with NAS-SYS in
 RAM as it stands. (The one with the 64K RAM card had the &lsquo;bug&rsquo; removed &ndash;
-Ed.)The reason for this may be found near the end of part 1 of the test. At
+Ed.)<?php spChar("zwsp"); ?>The reason for this may be found near the end of part 1 of the test. At
 location 0CD9H is an LDI instruction. This moves bytes pointed to by HL to the
 location pointed to by DE, whilst counting in BC. In the memory test, DE is
 not being used for anything relevant at this time, but it is pointing to low
@@ -65,17 +61,11 @@ gets corrupted and as soon as the program reaches the RST PRS at 0CDEH
 &lsquo;CRASH&rsquo;. The problem may be resolved by removing the LDI and replacing it
 with:
 </p>
-<p>
+<pre class="indent">
 INC HL
 DEC BC
-</p>
-<p>
 LD A,B
-</p>
-<p>
 OR C
-</p>
-<p>
 JR NZ,ZCHK
-</p>
+</pre>
 <?php columnEnd(1); ?>

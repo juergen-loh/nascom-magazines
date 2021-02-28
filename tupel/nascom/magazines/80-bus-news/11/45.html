@@ -1,46 +1,57 @@
 <?php columnStart(1); ?>
-<p>
-45
-</p>
-<p>
+<h3>
 MULTIMAPPING REVISITED &ndash; CONNECTION DIAGRAM
-</p>
-<p>
-1 1
-1 ol 16 1 S1 &ndash; 3 POLE, 3 WAY ROTARY
-Lo ween 1
-1 oi 115 1 1 RLA &ndash; 12 volt with at least
-1 i 1--------- o 1 1 changeover contact.
-3 l---1 1 l---0 8--o---1 e.g. RS 347-832
-1 le-- 1 &lsquo;
-1 113 3 SIA
-1 1
-1 1
-1 l
-ee LKS1 &ndash; No other connections needed.
-8 9
-1 S1B
-Suggest unregulated l------ oO
-side of +12V supply + ------- XXXXXXXK 1 0 8--0 1
-RLAL 2 0 1
-3 1
-GND ===
-Nascom Video -------------- o RLAL
-0------------&mdash;&mdash; o Video o/p to
-IVC Video senna n------ &lsquo; monitor
-(Reset to 4000H) 1
-LSW1/2 PIN 19 &lsquo; LSW1/1, 1/4 UP
-2 |e--0 8----9------- 1 LSW 1/2, 1/3 DOWN
-1 lL
-LSW1/3 PIN 18 1 &lsquo; 1
-(Reset to 2000H) 3 saomarsrss sic
-Position 1 &ndash; Nas-Sys and normal Nascom Video/Workspace
-&rdquo; 2- CP/M " Nascom Video/Workspace at F800H
-</p>
-<p>
-&rdquo; 3 &ndash; CP/M &ldquo;&rdquo; Gemini GM812 IVC card
-</p>
-<p>
+</h3>
+<pre>
+     ---------------------------
+     1                         1
+     1  1      16              1
+     1   ------                1
+     1   1    1 15             1
+     1   1    1---------o      1
+   3 1---1    1    1---o &lt;--o--1
+         1    1--- 1    o
+         1    1 13       3    S1A
+         1    1
+         1    1
+         1    1
+         ------      LKS1 - No other connections needed
+       8        9
+</pre>
+<br>
+<pre>
+                                                     1    S1B
+Suggest unregulated                         l------o
+side of +12V supply   +-------XXXXXXXX------1-----o &lt;--o-----1
+                                RLA1           2   o         1
+                                                     3       1
+                                                           =====
+                                                        GND ===
+</pre>
+<br>
+<pre>
+Nascom Video -------------o RLA1
+                          O--------------o   Video o/p to
+IVC Video    -------------o                    monitor
+</pre>
+<br>
+<pre>
+                (Reset to 4000H)      1
+LSW1/2 PIN 19 -----------------------o                 LSW1/1, 1/4 UP
+
+                           2   1---o &lt;----o------1     LSW 1/2, 1/3 DOWN
+                               1                 1
+LSW1/3 PIN 18 -----------------1-----o           1
+                (Reset to 2000H)      3        =====        S1C
+                                                === GNS
+</pre>
+<br>
+<table class="multimap">
+<tr><td>Position</td><td>1 &ndash;</td><td>Nas-Sys</td><td>and</td><td>normal Nascom Video/Workspace</td></tr>
+<tr><td>"</td><td>2 &ndash;</td><td>CP/M</td><td>"</td><td>Nascom Video/Workspace at F800H</td></tr>
+<tr><td>"</td><td>3 &ndash;</td><td>CP/M</td><td>"</td><td>Gemini GM812 IVC card</td></tr>
+</table>
+<p class="noindent">
 This is for use with 64K of RAM, however made up. If a lesser amount of RAM is
 used, certain firmware would have to reside on either the Nascom&nbsp;2 board, RAM
 A card or a &lsquo;Paged in&rsquo; EPROM card, and switching would need to be modified
