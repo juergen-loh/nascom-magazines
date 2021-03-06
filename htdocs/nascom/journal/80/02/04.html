@@ -1,0 +1,134 @@
+<table id="article1">
+<tr><td>
+<h4><u>Software-Uhr für z&nbsp;80</u></h4>
+</td><td>
+&nbsp; &nbsp;
+</td><td>
+(Nascom mit NAS-SYS Betriebsystem)
+</td></tr>
+</table>
+
+<!--table style="width: 100%"><tr><td-->
+<?php columnStart(23); ?>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-1.gif"); ?>
+</p>
+
+<table style="width: 100%">
+<tr><td>
+
+<table>
+<tr><td>Sekundenspeicher:</td><td>&nbsp;</td><td>0d0c</td></tr>
+<tr><td>Minutenspeicher:</td><td></td><td>0d0d</td></tr>
+<tr><td>Sekundenspeicher:</td><td></td><td>0d0e</td></tr>
+</table>
+
+</td><td>
+
+<p>
+<br>DL6UP<br>
+8.5.80<br>
+<br>
+</p>
+
+</td></tr>
+</table>
+
+<?php columnChange(3); ?>
+
+<p>
+Tragen Sie die Uhrzeit, mit der das Programm anlaufen soll in
+die Speicherzellen 0D0C bis 0D0E ein (siehe unten). Starten Sie
+dann das Programm bei Adresse 0C80. Das Programm ist für 2&nbsp;Mhz
+Systemtakt ausgelegt. Bitte beachten.<br>
+<br>
+</p>
+
+<?php columnEnd(2); ?>
+
+<?php hline("100%", "2"); ?>
+<br>
+
+<?php columnStart(2, 22); ?>
+
+<h4 id="article2"><u>Verbesserung für NASCOM&nbsp;1 &ndash; Cassetteninterface</u></h4>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-2.gif"); ?>
+</p>
+
+<p>
+Um das Cassetteninterface des NASCOM&nbsp;1 zu verbessern, leistet
+das oben abgebildete Doppel-T-Filter gute Dienste. Es wird
+einfach vor den Cas. in Eingang geschaltet.
+</p>
+<p>
+H. Gundermann, Neulußheim
+</p>
+
+<?php hline("100%", "d"); ?>
+
+<h4 id="article3"><u>Einbau des NASPEN-Textverarbeitungssystemes auf den
+NASCOM&nbsp;2</u></h4>
+
+<p>
+Folgende Schritte sind auszuführen:
+</p>
+
+<p>
+<u>1. Verdrahtung von LKS 1</u>
+</p>
+
+<p>
+Beachten Sie, daß in der Dokumentation die Bezeichnungen für
+/BLOCKB und /BLOCKA genau vertauscht sind.
+</p>
+
+<p>
+<u>2. LSW 1</u> Schalter 7, 8 nach unten
+</p>
+
+<table>
+<tr><td><u>3. EPROMs</u></td><td>&nbsp;</td><td>Adresse B800 ist IC41</td></tr>
+<tr><td></td><td></td><td>Adresse BC00 ist IC42</td></tr>
+</table>
+
+<br>
+<table style="width: 100%">
+<tr><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-3.gif"); ?>
+</td><td>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-4.gif"); ?><br>
+</td></tr>
+</table>
+
+<?php columnChange(2); ?>
+<?php nowrapStart(); ?>
+
+<h4 id="article4"><u>Speicherschutz für den NASCOM&nbsp;1</u></h4>
+
+<p>
+Beim Selbstentwickeln von Software kommt es leider allzu häufig
+vor, daß sich das Programm selbst zerstört. Vor allem geht dann
+oft der gesamte Assembler mit dem Source-Code verloren.
+</p>
+<p>
+Die untenstehende kleine Schaltung blockiert das WR-Signal für
+alle Speichererweiterungen. Somit besteht die Möglichkeit, das
+Programm in einen geschützten Bereich zu kopieren und es nach
+eventuellen Softwarefehlern trotzdem weiter zu benutzen. Zu
+beachten ist nur, daß der Stack-Pointer am Programmanfang auf
+einen nicht geschützten Speicherbereich gesetzt werden muß. Der
+Refresh-Zyklus der dynamischen RAMs wird nicht beeinflußt.
+</p>
+
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-04-5.gif"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-04-6.gif"); ?>
+
+<p>
+Albert Schunck
+</p>
+
+<?php nowrapEnd(); ?>
+<?php columnEnd(2); ?>

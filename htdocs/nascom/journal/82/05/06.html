@@ -1,0 +1,99 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Typenrad-Terminal
+</h1>
+<h2>
+Teil 1
+</h2>
+<h3>
+von Günter Kreidl
+</h3>
+<p>
+Seit einiger Zeit sind preiswerte Typenrad-Schreibmaschinen auf dem
+Markt. Eine von ihnen ist die PRAXIS 30/35 von Olivetti, die unter
+anderem Namen auch vom Versandhaus Quelle für knapp 1100,&ndash;&nbsp;DM
+angeboten wird. Findige und geschäftstüchtige Leute haben natürlich
+schnell gemerkt, daß diese Maschine zwar keinen Computeranschluß
+besitzt, daß man einen solchen aber leicht bauen kann, und bieten in
+Kleinanzeigen &quot;Interfaces mit Normschnittstellen&quot; zu Preisen
+zwischen ca. 400,&ndash; und 1200,&ndash;&nbsp;DM an. In
+<?php externalLink("mc","MC"); ?>
+Nr. 3/82 hat Dr. Ingmar
+Thilo gezeigt, wie man statt eines solchen Interfaces auch ein Kabel
+und ein paar Widerstände nehmen kann. Das &quot;Interface&quot; besteht
+dann in einem Programm, das nach den Prinzipien des
+&quot;Abhörens&quot; und &quot;Täuschens&quot; aufgebaut ist; der in
+die Schreibmaschine eingebaute Ein-Chip-Microcomputer wird bei seiner
+Arbeit belauscht und erhält im geeigneten Augenblick ein Signal, daß
+ihm einen Tastendruck auf der Schreibmschine vortäuscht: damit wird die
+Typenradschreibmaschine zum Schönschreibdrucker für jeden Computer.
+Andererseits kann auch die Tastatur der Schreibmaschine als
+Eingabestelle für den Computer benutzt werden; dabei kann der
+Druckvorgang verhindert werden, indem der interne Microcomputer wieder
+getäuscht wird: Es wird ihm ein Signal übermittelt, das eine
+gleichzeitige Eingabe von 8 Tasten vorgaukelt, die er dann nicht
+akzeptiert. Mit anderen Worten: Mit einem Materialaufwand von ca.
+5,&ndash;&nbsp;DM (Flachkabel, Steckverbinder und 2 Widerstände) wird aus der
+Schreibmaschine ein Typenrad-Terminal.
+</p>
+<h4>
+Der Anschluß
+</h4>
+<p>
+Zum Anschluß der Typenradmaschine werden 18 I/O-Leitungen benötigt. Man
+kann schon mit der Grundversion des NASCOM (ohnen weitere PIO)
+auskommen, wenn man Port 0 mitbenutzt. Dies ist allerdings etwas
+umständlich, da die 4 freien I/O-Leitungen von Port 0 nicht in der
+Datenrichtung programmierbar sind. Ich habe die beiden I/O-Ports des PSG
+<?php externalLink("AY-3-8910"); ?>
+benutzt. Dazu muß man sich das in
+<a href="../../07/text/#article1">diesem Heft</a>
+beschriebene bidirektionale Interface zum PSG bauen. Außerdem werden
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+noch zwei Bits von Port B der PIO benutzt. Der Anschluß in der
+Schreibmaschine wird an den Lötstellen der beiden 13-poligen
+Flachkabel, die die Tastatur mit der Elektronikplatine verbinden, auf
+der Tastaturplatine vorgenommen. Es müssen 19 Verbindungen nach außen
+geführt werden: 8 Eingangsleitungen der Tastatur (MATC 0 ... 7), 8
+Ausgangsleitungen der Tastatur (MATR 0 ... 7), eine Leitung für die
+Shift-Taste und eine für die Keyboard-Selektion (SPEC0A) sowie der
+Masseanschluß (siehe Bild 1 + 2). MATC wird mit Port A des PSG
+verbunden, MATR mit Port B. SHIFT und SPEC0A werden jeweils über einen
+Widerstand von 1K an Bit 0 und 1 von Port B der PIO gelegt. Die in
+<?php externalLink("mc","MC"); ?>
+3/82 angegebenen Pull-Up-Widerstände sind in unserem Fall nicht nötig,
+da die PSG-Ports über interne Pull-Ups verfügen.  Wer aber den Anschluß
+über PIO-Ports vornimmt, der sollte 1K-Widerstände von MATC 0 ... 7
+nach +5V legen. Dieser Anschluß ist aus zwei Gründen nicht mit dem in
+der
+<?php externalLink("mc","MC"); ?>
+beschriebenen identisch: Der MC-Redaktion lag kein Schaltbild
+der Maschine vor, so daß dem Verfasser einige Busleitungen
+durcheinandergerieten. Das stört aber nicht weiter, wenn man von den
+geänderten Ansteuercodes absieht. Außerdem fehlt dort der Anschluß zum
+Keyboard-Selektor, durch den der Computer zwischen den beiden
+Zeichensätzen (9 Tasten sind 3- bzw. 4-fach belegt!) umschalten kann.
+Das ist die ganze Hardware! Man kann nun alle Funktionen der
+Schreibmaschine ansteuern (auch die 14 Funktionstasten!) und alle
+Tasteneingaben in den Computer übernehmen. Nur den Zeilenabstand muß
+man von Hand einstellen.
+</p>
+<h4>
+Die Software
+</h4>
+<p>
+Da die Schreibmaschine erst wenige Tage vor Redaktionsschluß des
+Journals bei mir ankam, war natürlich keine Zeit mehr, das ausführliche
+Terminal-Programm zu schreiben, das ich mir wünsche. Deshalb wird in
+diesem Heft nur ein einfaches Programm wiedergegeben, das die Maschine
+als Drucker ansteuert. Die dabei verwendeten Unterprogramme und die
+Code-Tabellen sind schon für das ausführlichere Programm vorbereitet.
+Das Treiberprogramm erwartet ein Zeichen im Akku, maskiert Bit 7,
+untersucht, ob es sich um ein Steuerzeichen (Hex 0 &ndash; 1F) handelt, von
+denen es nur NEWLINE (Hex 0D)
+</p>
+
+<?php columnEnd(2); ?>

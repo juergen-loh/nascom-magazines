@@ -1,0 +1,109 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+10. Von den zu plottenden Vektoren kann man die Richtung und die
+Länge angeben. Durch diese Möglichkeiten muß eine Linie nicht Punkt für
+Punkt geplottet werden, sondern die CPU kann währenddessen schon die
+nächste Linie berechnen. Falls eine Linie nicht auf den Bildschirm
+paßt, wird sie am Ende des Schirms abgebrochen.
+</p>
+<p>
+11. Das Graphics-Memory kann mit Port 9F ausgelesen werden (zb. zum
+Abdrucken auf dem Printer oder zum Aufzeichnen auf Floppy).
+</p>
+<p>
+12. Laden einer Bildschirmseite von Floppy oder von Cassette ist
+möglich.
+</p>
+<p>
+13. 'Cross-hair'-Funktion. Das heißt, es ist möglich, mit einem Kreuz
+(oder ähnlichem Zeichen), bestimmte Orte auf dem Bildschirm anzudeuten,
+ohne daß die Zeichnung geändert wird (zweimaliges Abbilden des Kreuzes).
+</p>
+<p>
+14. Unter Software kann zwischen der NASCOM-VDU und dem GRAPHICS-BOARD
+umgeschaltet werden. Nach RESET ist die NASCOM-VDU aber wieder
+eigeschaltet.
+</p>
+<p>
+15. Zum Schluß mehrere Interrupt-Möglichkeiten:<br>
+&ndash; ready for new Command<br>
+&ndash; end of lightpen sequence
+</p>
+<p>
+Im Falle eines Zugriffs-Konflikts hat das Display und der Refresh
+Vorrang, was einem schönen Bild zugute kommt.
+</p>
+<h4>
+<u>HARDWARE BESCHREIBUNG:</u>
+</h4>
+<p>
+Damit die Steuersignale vom NASBUS nicht überbelastet und nicht unnötig
+verlängert werden, sind die meistgebrauchten Signale gepuffert (D25 und
+D22).
+</p>
+<p>
+Beim Aufbau des Oszillators ist zu beachten, daß die Komponenten nah
+beieinander gehalten werden (3xD2,C1,R4,R5 und Xtal)(Wurde bei der
+Europakarte berücksichtigt).
+</p>
+<p>
+Für das Quarz wurde ein 14MHz SSB (Single Side Band) Exemplar benutzt.
+</p>
+<p>
+Man sollte nicht vergessen, die Spannung an
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+den 74LS154 zu legen.
+</p>
+<p>
+Für ein sauberes Bild sollten die Komponenten der Ausganstreppe
+zusammengehalten werden (2xD19, R26, R29, R32, R27, R28, T1, R31 und
+R30)
+</p>
+<p>
+Software-Umschaltung zwischen beiden Video-Displays (Graphics on/off
+Bit von D26) geschieht durch 4xD28 und 4xD29. Das Netzwerk R25xC2 sorgt
+dafür, daß es rechts im NASCOM Video keine gestreifte Linie gibt
+(NASCOM SYNC kommt zu spät).
+</p>
+<p>
+Die Cross-hair Funktion (RMW-bit von D26) wurde aufgebaut mit D31,
+3xD24, 1xD19, 1xD20 und R17-R24.
+</p>
+<p>
+Für die Erweiterung der Farben muß man mehrere Bitplanes aufbauen und
+an den gestreiften Gates anschließen. Falls man für die übrigen Farben
+keine Cross-hair Funktion braucht, kann man das Bitplane gleich an D26
+anschließen. Jedes Bitplane besteht aus:
+</p>
+<p>
+&ndash; D8<br>
+&ndash; D9-D16 mit Entkopplungskondensatoren C3-C13 und C18-C21 und
+den Widerständen R6-R15.<br>
+&ndash; D17 und<br>
+&ndash; 1xD18 (der Rot-Ausgang von Plane 1 ist Pin 11 von D18)
+</p>
+<p>
+An die Ausgänge der Bitplanes kommt dann ein RGB-Modulator (siehe z.B.
+<?php externalLink("Elektor","",""); ?>).
+Da ein guter Farb-Monitor sehr teuer ist, sind zwei Farben
+für mich genug. Uni einigermaßen einen Standard zu bekommen, sind die
+Kommandos für die übrigen Bitplanes schon in D26 reserviert.
+</p>
+<h3 id="article1">
+von KARL SCHULMEISTER
+</h3>
+<h4>
+Bemerkungen über die Entwicklung der ECB-Karte:
+</h4>
+<p>
+Zuerst will ich feststellen, daß Herr Klaassen eine sehr gute
+Verwirklichung der hardwaremäßigen Notwendigkeiten und Möglichkeiten
+gelungen ist. Natürlich waren Änderungen gegenüber dem
+Originalschaltplan notwendig, ich habe mich aber im großen und ganzen
+an sein Konzept gehalten:
+</p>
+
+<?php columnEnd(2); ?>

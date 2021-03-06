@@ -1,0 +1,92 @@
+<?php columnStart(1); ?>
+
+<h1 id="article1">
+CLDDOS-SYSTEM
+</h1>
+<h3 class="donthyphenate">
+Nützliche Unterprogramme von Gerhard Baier
+</h3>
+
+<p>
+Beim Programmieren in Maschinensprache gibt es einige Routinen, die
+immer wieder benötigt werden. Dazu zählen Routinen zur Ein- und Ausgabe
+von Ziffern, Bytes und Worten,Routinen zur Datenkonvertierung,
+Stringbehandlung und Fileverwaltung, Routinen, die spezielle Devices
+ansprechen, usw.&nbsp;...
+</p>
+<p>
+Im Prinzip sind derartige Routinen bereits in der Grund-Software eines
+Computer-Systems implementiert. Inwieweit aber dann auch ein Benutzer
+auf diese Routinen zurückgreifen kann, hängt von der Qualität der
+Software und vom Umfang der Dokumentation ab. Diese ist aber oft sehr
+dürftig und unvollständig. Als Benutzer ist man dann gezwungen, sich
+eine eigene Software-Bibliothek mit nützlichen Unterprogrammen
+anzulegen.
+</p>
+<p>
+So ist es nun auch beim NASCOM CLDDOS-System. Es gibt zwar
+eine ganze Reihe von Unterprogrammen, die mehr oder minder gut
+dokumentiert sind (CLDDOS.ACM und RCMSUBS.ACM). Allerdings kann man mit
+diesen Subroutines noch nicht viel anfangen. Zum effektiven
+Programmieren fehlen meiner Ansicht nach noch einige übergeordnete
+Routinen, die sicher irgendwo in der CLDDOS-Software schon vorhanden
+sind. Leider gibt es darüber aber keine Unterlagen.
+</p>
+<p>
+Ich habe mir deshalb eine Reihe von Unterprogrammen geschrieben, die
+ich immer wieder brauche und die wahrscheinlich auch für andere
+NASCOM-Floppy-Besitzer interessant sind. In dieser Ausgabe möchte ich
+eine HEX-Eingabe-, eine String-Eingabe- und eine
+ASCII-HEX-Konvertierungs-Routine für das CLDDOS-System abdrucken.
+</p>
+<p>
+Weitere Routinen folgen in den
+<a href="../../../08/18/text/#article1">nächsten</a>
+NASCOM-Journal Ausgaben.
+</p>
+<?php columnEnd(1); ?>
+
+<br>
+<?php columnStart(2, 2); ?>
+
+<table style="border: 1px solid #000;"><tr><td>
+<!--
+<table rules=all border=1><tr><td>
+-->
+$CNVTAB
+</td></tr></table>
+<p>
+Version 1.0<br>
+20-NOV-80
+</p>
+<p>
+DIE SUBROUTINE $CNVAB KONVERTIERT EINE HEX-ZIFFER VOM ASCII- INS BINAER-FORMAT
+</p>
+
+<?php columnChange(2); ?>
+
+<?php nowrapStart(); ?>
+<p>
+EINGABE-PARAMETER:
+</p>
+<p>
+&ndash; A &ndash; ZIFFER IM ASCII-FORMAT
+</p>
+<p>
+AUSGABE-PARAMETER:
+</p>
+<table>
+<tr><td colspan=2>- A &ndash; ZIFFER IM BINAER-FORMAT</td></tr>
+<tr><td>- CARRY -&nbsp;</td><td>0 : GUELTIGE ZIFFER IN A</td></tr>
+<tr><td></td><td>1 : KEINE HEX-ZIFFER IN A</td></tr>
+</table>
+<p>
+Verwendete Register: AF
+</p>
+<?php nowrapEnd(); ?>
+
+<?php columnEnd(2); ?>
+
+<?php columnStart(1); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-05-2.jpeg"); ?>
+<?php columnEnd(1); ?>

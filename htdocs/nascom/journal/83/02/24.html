@@ -1,0 +1,136 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate" style="font-size:1.5em">
+<span title="Druckfehler, richtig ist: 4/8-K-EPROM-Programmer">418-K-EPROM-Programmer</span>
+</h1>
+<h3>
+von BERND SCHUHMACHER
+</h3>
+<p>
+Mit dem EPROM-Programmer, der hier näher beschrieben wird, können
+EPROM&rsquo;s vom Typ
+<?php externalLink("2732","",""); ?>,
+2564 und
+<?php externalLink("2764"); ?>
+programmiert werden. Der
+Hardware-Umfang läßt sich auf einer Europakarte unterbringen und über
+Port A/B der PIO eines NASCOM-1/2 betreiben. Das dazugehörige Programm
+umfaßt 940 Bytes und ist im Speicher voll verschiebbar.
+</p>
+<h4>
+Hardware-Beschreibung
+</h4>
+<p>
+Der Hardwareaufwand umfaßt zwei Datenpuffer (D-Latch) 74LS373, einen
+7406, einen Transistor BSX48 sowie einige Widerstände und
+Kondensatoren. Hier nun eine kurze Funktionsbeschreibung der Schaltung.
+</p>
+<p>
+Die Adressen A0 &ndash; A12 werden über Port A des NASCOM ausgegeben und über
+die Datenpuffer LS373 an das EPROM angelegt. Port A wird im Input- oder
+Output-Mode betrieben, jeweils abhängig davon, ob nach angelegter
+Adresseninformation aus dem EPROM Daten ausgelesen oder eingeschrieben
+werden sollen.
+</p>
+<p>
+Sämtliche weiteren Steuerfunktionen werden über Port B vorgenommen. B0
+und B1 sind als Eingänge, B2-B7 als Ausgänge definiert. Die beiden
+höchstwertigen Bits von Port B steuern die Datenübernahme von Port A in
+die Datenpuffer LS373. B3-B5 führen unmittelbar Steuerfunktionen aus,
+wie sie in der Betriebsartenübersicht aufgeführt sind. B2 dient zum
+Ein-/Ausscha1ten der Programmierspannung Vpp über einen 7406. Man
+erkennt sicher, daß dieser 7406 nicht notwendigerweise eingesetzt
+werden muß. Er stellt hier jedoch sicher, daß bei nicht verkabeltem
+Port B die volle Programmierspannung Vpp nicht zum EPROM
+durchgeschaltet wird. Von den Herstellern der EPROMS wird zwingend
+vorgeschrieben, die Programmierspannung über ein aktives Bauelement zu
+schalten. In der vorliegenden Schaltung wird dies durch den Transistor
+BSX&nbsp;48 (od. glw.) erfüllt. Bei 2732-EPROMS soll nach Herstellerangaben
+zusätzlich ein Kondensator von 0,1&micro;F zwischen OE/Vpp und Masse
+geschaltet werden. Da die beschriebenen EPROMS nicht voll
+pin-kompatibel sind, muß &quot;leider&quot; ein Schalter eingesetzt
+werden, der die Adressenleitungen und die Programmierspannung
+entsprechend umschaltet.Die Zenerdiode Z3.3 vermindert die
+Programmierspannung Vpp von 25V auf 21V für den EPROM-Typ 2764.
+</p>
+<h4>
+Software-Beschreibung
+</h4>
+<p>
+Das
+<a href="../../25/text/#article1">Programm</a>
+formatiert den Bildschirm zunächst so, wie in
+<a href="../../26/text/#article1">Bild 1</a>
+dargestellt. Nun fragt das Programm Port B (B0,B1) ab, welcher
+EPROM-Typ per Schalter eingestellt worden ist (Kontrollmöglichkeit).
+Die erste Programmeingabe, die mit einem auf dem Bildschirm blinkenden
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+Cursor angefordert wird, ist die Programmvariante. Es stehen folgende
+Varianten zur Verfügung.
+</p>
+<p>
+0 Read (EPROM in Speicher kopieren)<br>
+1 Test (Alle EPROM-Adr. = FFH?)<br>
+2 Prog (Programmierung des EPROMS)<br>
+3 Comp (Vergleich EPROM mit Speicher)<br>
+4 Nassys (Rücksprung)
+</p>
+<p>
+Vom Programm werden nur die vorstehenden Eingaben akzeptiert. Nun
+fordert das Programm die vierstellige Eingabe von:
+</p>
+<p>
+-Speicheranfangsadresse<br>
+-EPROM-Anfangsadresse<br>
+-Anzahl Bytes
+</p>
+<p>
+an. Es werden nur hexadezimale Werte akzeptiert. Erfolgt eine
+fehlerhafte Eingabe (ungl. Hex.), dann wird der Bildschirm neu
+initialisiert und die Eingabe kann wiederholt werden.
+</p>
+<p>
+Der formatierte Bildschirm bleibt während der Programmausführung
+erhalten, außer bei den Programmvarianten Test und Comp, bei denen ein
+Ausdruck auf dem Bildschirm erfolgt, wenn der EPROM-Inhalt ungl. FFH
+ist bzw. EPROM- und Speicher-Inhalt nicht übereinstimmen
+(<a href="../../26/text/#article2">Bild 2</a>).
+</p>
+<p>
+Die im Programm integrierten Zeitroutinen beziehen sich auf einen 4MHz-Takt
+und sind so bemessen, daß die Mindestzeitangaben der Hersteller um mehr
+als den Faktor 10 verlängert werden (zur Sicherheit). Das Auslesen
+eines 2732 dauert damit z.B. 1.5 Sek., eines 2764 ca 3 Sekunden. Nach
+erfolgter Programmierung eines EPROM kann mit der Programmvariante Comp
+überprüft werden, ob das EPROM richtig programmiert worden ist.
+</p>
+<h4>
+Nützliche Tips für den Nachbau
+</h4>
+<p>
+Die vorliegende Schaltung wurde auf Veroboard-Leiterplatten verdrahtet.
+Wenn in einiger Zeit die EPROM&rsquo;s 2732/2564/2764 zum Stand der Technik
+gehören und preislich sich noch etwas tut, dann findet sich sicher
+jemand, der ein Layout erstellen könnte. Probleme bereiteten bei der
+ersten Verkabelung der Schaltung die Spannunsspitzen auf Masse- und
+Versorgungsleitungen Vcc, herrührend vom Umschalten des EPROM&rsquo;s vom
+Standby-Betrieb in den aktiven Zustand und umgekehrt. Also ausreichend
+Entkoppelungskondensatoren vorsehen!
+</p>
+<p>
+Anstelle eines Schalters in der vorliegenden Schaltung können auch
+mehrere EPROM-Sockel direkt verkabelt werden.
+</p>
+<p>
+Im
+<a href="../../../../82/02/08/text/#article1">NASCOM-Journal</a>
+wurde einmal die Erzeugung der Programmierspannung
+aus einer 5V-Versorgung beschrieben, was auch hier eingesetzt werden
+könnte. In jedem Fall ist bei der Dimensionierung der 5V/26V-Versorgung
+darauf zu achten, daß beim Ein- und Ausschaltvorgang die 5V-Versorgung
+zuerst eingeschaltet und zuletzt ausgeschaltet wird.
+</p>
+
+<?php columnEnd(2); ?>

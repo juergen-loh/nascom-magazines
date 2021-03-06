@@ -1,0 +1,142 @@
+<?php columnStart(1); ?>
+<h1 id="article1">
+Speicher-Erweiterungen
+</h1>
+<?php columnEnd(1); ?>
+
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Der Preisverfall bei dyn. und statischen Speicherbausteinen und die
+Verfügbarkeit neuer IC&rsquo;s
+(<?php externalLink("4164","",""); ?>,
+<?php externalLink("6116","",""); ?>,
+<?php externalLink("2764"); ?>
+etc.) ermöglichen heute
+einen preiswerten Ausbau des Speichers, von dem wir noch vor wenigen
+Jahren kaum zu träumen wagten. Die vielen Beitrage, die uns zu diesem
+Thema erreichten, haben wir in diesem Heft zusammengefaßt.
+</p>
+<p>
+Die drei Beiträge von
+<a href="../../23/text/#article1">H. Dieckhoff</a>,
+<a href="../../21/text/#article2">G. Klement</a> und
+<a href="../../22/text/#article1">G. Reinehr</a>
+beschreiben Speichererweiterungen auf der NASCOM-2-Mutterplatine.
+<a href="../../19/text/#article1">C. Rau</a>
+zeigt wie man eine sehr preiswerte 16K-Karte an den NASCOM
+anschließt.
+<a href="../../21/text/#article1">J. Heyduck</a>
+hat eine EPROM-Karte für
+<?php externalLink("2732","",""); ?>-EPROMS
+entwickelt.
+<a href="../../19/text/#article2">Christian Peter</a>
+aus Wien hat eine gängige Schaltung für 4164-RAMS an
+den NASCOM-2 angepaßt. Hier suchen wir noch jemand, der uns ein
+Platinenlayout erstellt; dann werden wir von dieser Schaltung eine
+Platine herstellen lassen.
+<a href="../../18/text/#article2">G. Kreidl</a>
+beschreibt schließlich Probleme
+beim Anschluß von bekannten 64/256K-RAM-Karten an den NASCOM-1. Wohin
+aber dann mit all den EPROMS mit der Systemsoftware, die sich bei
+vielen Benutzern inzwischen angesammelt haben?
+<a href="../../23/text/#article1">H. Dieckhoff</a>
+beschreibt
+ein EPROM-PORT, über das man den Inhalt der EPROMS jederzeit sehr
+schnell ins RAM laden kann.
+</p>
+<p>
+RED
+</p>
+
+<h1 id="article2">
+Timing-Probleme
+</h1>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<h4>
+Des Dramas erster Teil
+</h4>
+<p>
+Im Sommer letzten Jahres versuchte ich erstmals, meinen NASCOM-1 auf
+64K RAM zu erweitern. Ich hatte mir schon einige Monate vorher die
+<?php externalLink("mc","MC",""); ?>-Speicherkarte
+gekauft, war nur nie dazu gekommen, sie aufzubauen. An
+meinem NASCOM-1 hing bis dahin nur eine stat. 8K-RAM-Karte. Ich hatte
+mir überlegt, daß es ja wohl egal war, ob man eine Pufferplatine oder
+direkt eine (aber nur eine) Erweiterungskarte anschloß und einen
+handverdrahteten
+<?php externalLink("ECB","",""); ?>-Steckplatz
+angeschlossen. Nur die arg belasteteten
+Signale MREQ, RD und WR hatte ich gepuffert und eine einfache
+/MEMEXT-Signalerzeugung mit drei ODER-Gattern aufgebaut, die zugleich
+auf den /DESELECT-Eingang der Speicherplatine gelegt wurde, um die
+unteren 4K aus der RAM-Karte auszublenden. Nach dem Einstecken der
+64K-Karte zeigten diverse Speichertests ständig verschiedene Fehler an.
+Es begann eine wochenlange Fehlersuche, die ich hier nicht näher
+beschreiben will, sonst ist in diesem Heft kein Platz mehr für andere
+Artikel. Ich gab einen Hilferuf im NASCOM-Journal auf, weil ich zu Recht
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+vermutete, daß auch andere NASCOM-Benutzer sich die günstige Karte
+zugelegt hatten. Ich bekam eine Menge Antworten, die mir jedoch nicht
+weiterhalfen, da sich bei dieser Gelegenheit herausstellte, daß
+mindestens drei verschiedene Versionen dieser Karte im Umlauf waren. Es
+hatten zwar einige NASCOM-Benutzer nach teilweise erheblichen
+Schwierigkeiten die Karte an ihrem System zum Laufen gebracht, doch war
+es nie meine Version und deshalb nützten mir alle Tips nichts. (Soviel
+ich weiß, sind heute noch Leute mit dem Versuch einer Anpassung
+beschäftigt!). Ich konnte die Fehlerquote zwar stark reduzieren, aber
+niemals auf Null bringen. Endlich kaufte ich mir eine andere Karte der
+Firma
+<?php externalLink("Janich &amp; Klass", "", ""); ?>,
+die ich mit meinen
+<?php externalLink("4116"); ?>
+bestückte (man kann
+diese Karte aber auch mit 4164 bestücken und hat dann 256K RAM). Ich
+steckte die Karte in den Bus, lud das Testprogramm ein und ließ es 24
+Stunden ohne einen einzigen Fehler laufen. Die Karte ist nunmehr seit
+einem dreiviertel Jahr fehlerfrei am ungepufferten NASCOM-1 gelaufen.
+Als einzige Ergänzung hatte ich (nach einem Hinweis im
+Mostek-Z80-Handbuch) ein Latch in die oberen 4 Adreßleitungen gelegt &ndash;
+das stammte noch von meinen Versuchen mit der
+<?php externalLink("mc","MC",""); ?>-Speicherkarte und
+hatte sich dabei als sehr hilfreich erwiesen, so daß ich es drinließ.
+Die
+<?php externalLink("mc","MC",""); ?>-Speicherkarte
+legte ich in die Ecke, überzeugt, daß die Karte
+grundsätzliche Fehler aufwies. Laut Datenblatt waren nämlich die
+LS241-Treiber arg überlastet. Zudem erschien mir die Refresh-Steuerung
+für ein
+<?php externalLink("Z80","",""); ?>-System
+viel zu kompliziert.
+</p>
+<h4>
+Des Dramas zweiter Teil
+</h4>
+<p>
+Vor kurzer Zeit rüstete ich meinen NASCOM-1 vollständig auf den ECB-Bus
+um, wie das an anderer Stelle
+<a href="../../04/text/#article1">in diesem Heft</a>
+ausführlich beschrieben wird. Die Speicherkarte von
+<?php externalLink("Janich &amp; Klass", "Janich&amp;Klass"); ?>
+steckte nun in einem
+ordentlich gepufferten Bus und hätte also erst recht ordentlich laufen
+müssen, vor allem da sie mit einer CPU-Karte des gleichen Herstellers
+zusanmengeschaltet war. Da ich ein vorsichtiger Mensch bin, ließ ich
+zunächst zwei Speichertestprogramme laufen. Das erste zeigte eine
+fehlerfreie Funktion, das zweite ergab aber sporadische Fehler, die
+jedes Programm abstürzen ließen. Es begann eine tagelange Fehlersuche,
+bis mir der Tip eines Computerprofis den richtigen Ansatz lieferte. Er
+meinte, daß bei allen Refresh- und MUX-Schaltungen, bei denen die
+Steuersignale aus dem Takt abgeleitet werden, das Verhältnis zwischen
+MREQ und Takt kritisch sein kann, und empfahl mir, einen
+50-100pf-Kondensator von MREQ (hinter dem Eingangspuffer) gegen Masse
+zu legen. Das half, aber ich mußte den Wert des Kondensators auf 330pf
+vergrößern und noch einen gleich großen Kondensator an die CAS-Leitung
+legen, bis alles wieder richtig lief.
+</p>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,99 @@
+<?php columnStartJustify(2); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-40-1.jpeg"); ?>
+<h1 id="article1">
+FL-Prommer
+</h1>
+<h3>
+von BERND SCHUHMACHER
+</h3>
+<p>
+Vor ca 2 Jahren kaufte ich einen gebrauchten Nascom&nbsp;2. Ich entschied
+mich damals für den Nascom&nbsp;2 wegen seines im Vergleich zu
+&quot;Von-der-Stange-Computern&quot; durchsichtigen Hardware-Aufbaues.
+Da alle ICs auf Sockel sitzen, erhoffte ich im Falle eines Defektes,
+auch mal selbst Hand anlegen zu können. Schließlich werden außer 4 TTL
+&ndash; PROMs nur relativ leicht erwerbbare ICs eingesetzt.
+</p>
+<p>
+So weit, so gut. Eines Tages zuckte der Bildschirm meines Nascom&nbsp;2 auf
+und ab, was sich so weit verschlimmerte, daß ohne Augenbeschwerden kein
+Ablesen mehr möglich war. Nach einiger Diagnosearbeit stellte ich ein
+defektes N2V &ndash; PROM im Videoteil des Nascom&nbsp;2 fest. Nun kann man diese
+PROMs zwar kaufen, aber wie programmieren? Damit sind wir beim Thema.
+</p>
+<p>
+Die nachfolgende Schaltung soll dazu dienen, die beim Nascom&nbsp;2
+verwendeten PROMs selbst zu programmieren, um sich bei eventuellen
+Defekten selbst zu helfen, oder aber um den On &ndash; Board &ndash; Memorybereich
+zu verschieben. Letzterer ist nämlich durch das N2MD &ndash; PROM fest
+vorgegeben.<br><br>
+
+<?php columnChangeJustify(2, "</p>"); ?>
+
+<?php boxStart("LR"); ?>
+<h4>
+FL &ndash; PROMs
+</h4>
+<p>
+FL &ndash; PROMs (Fusable link PROMs) können im Gegensatz zu EPROMs nur
+&quot;einmal&quot; programmiert werden, da für die Programmierung dünne
+Sicherungsdrähte im Chip durchzubrennen sind.
+</p>
+<p>
+Die nachfolgenden PROM &ndash; Typen sind zwar nicht die originalen Nascom &ndash;
+PROMs, sie sind aber von der Pinbelegung, Organisation und
+Geschwindigkeit her voll kompatibel.
+</p>
+<table style="width: 60%">
+<tr><td>SN 74S188</td><td style="text-align:right">32 X 8</td> <td>&nbsp; &nbsp;</td><td style="text-align: center">OC</td></tr>
+<tr><td>SN 74S287</td><td style="text-align:right">256 X 4</td><td>&nbsp; &nbsp;</td><td style="text-align: center">OC</td></tr>
+<tr><td>SN 74S288</td><td style="text-align:right">32 X 8</td> <td>&nbsp; &nbsp;</td><td style="text-align: center">TS</td></tr>
+<tr><td>SN 74S387</td><td style="text-align:right">256 X 4</td><td>&nbsp; &nbsp;</td><td style="text-align: center">TS</td></tr>
+</table>
+<p>
+Die Programmierbedingungen sind äußerst einfach und
+ohne großen Bauteileaufwand realisierbar.
+</p>
+<?php boxEnd(); ?>
+
+<br>
+
+<?php boxStart(); ?>
+<br>
+<?php imageCenterGap($imagepath, $year, $issue, $page, "Image-40-2.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<br>
+<?php boxStart("LR"); ?>
+<h4>
+Schaltung
+</h4>
+<p>
+Die Schaltung wurde in der
+<?php externalLink("Funkschau"); ?>
+Heft 7/82 vorgestellt und ist hier
+leicht modifiziert wiedergegeben. Ein Griff in jede Bastelkiste dürfte
+genügen, um die erforderlichen Bauteile zusammenzustellen. Einziges
+Problem: Man benötigt 2 Versorgungsspannungen, 6V und 10.5V.
+</p>
+<p>
+Als Daten &ndash; und Adressenschalter reichen einfache DIL &ndash; Schalter aus.
+</p>
+<p>
+Zuerst wird C1 mit 10.5V aufgeladen und von der Versorgungsspannung
+abgekoppelt. Nun wird die Schaltung mit 6V versorgt und der Schalter T1
+von Stellung r in Stellung a gebracht. Die zuvor eingestellten
+Datenschalter (&nbsp;H oder L) werden an der anliegenden Adresse
+gleichzeitig (nicht sequentiell) programmiert. Die Schaltung ist nicht
+sehr komfortabel, reicht jedoch für den erwünschten Zweck voll aus.
+Zusätzlich könnte noch eine LED fliegend verdrahtet werden, um nach
+erfolgter Programmierung einen Test durchzuführen.
+</p>
+<p>
+Für das Schießen der PROMs stehen in der Nascom&nbsp;2 &ndash; Dokumentation
+entsprechende Listings zur Verfügung&nbsp;.
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

@@ -1,0 +1,58 @@
+<?php columnStart(1); ?>
+<h1 id="article1">17 &amp; 4</h1>
+
+<p>
+Das recht bekannte Kartenspiel 17 und 4 folgt sehr einfachen Regeln
+und kann deshalb auch ohne Schwierigkeiten in BASIC formuliert werden.
+Die Spielregeln für das hier vorgestellte Programm sind: Ein
+Spieler
+tritt gegen den Computer an, der die Bank hält. Zunächst fragt
+der Computer nach dem Einsatz, den der Spieler höchstens zu
+verspielen
+gedenkt und nach dessem Namen. Dann mischt der Computer die Karten und
+zeigt die erste Karte an, die der Spieler gezogen hat. Der Spieler kann
+nun entscheiden, ob er eine weitere Karte ziehen möchte, oder ob er
+paßt. Wird die Frage "Noch eine Karte?" mit "Nein" beantwortet,
+so zieht der Computer seine Karten. Gewonnen hat derjenige, der 21
+Punkte
+oder mehr als der Gegner, aber weniger als 21 Punkte hat. Wer mehr als
+21 hat, verliert. Die Karten haben folgende Wertigkeit: Bube zählt
+zwei. Dame drei, König vier, das As zählt 11, wenn der Spieler
+jedoch mit dem zuletzt gezogenen As mehr als 21 hätte, zählt
+es nur eins. Alle anderen Karten (zwei bis zehn) haben den
+entsprechenden
+Wert. Sind die beiden zuerst gezogenen Karten Asse, so zählt dies
+21.
+</p>
+<p>
+Das Programm ist weitgehend ohne weiter Erläuterungen
+verständlich, es seien lediglich zwei Besonderheiten
+erklärt:
+</p>
+
+<p>
+Nach der Initalisierung des Basic- Interpreters wird der
+Zufallszahlengenerator immer auf den gleichen Anfangswert gesetzt.
+Dies hätte zur Folge, daß nach dem Start des Spiels immer
+die gleichen Karten gezogen würden. Deshalb wird mit einem kleinen
+Unterprogramm in Maschinensprache eine Zufallszahl erzeugt, indem der
+Akkumulator mit dem Inhalt des Refresh- Registers geladen wird. Dieser
+Wert wird genutzt, um eine zufällige Sequenz von Zufallszahlen
+auszuwählen (Zeilen 200 bis 310).
+</p>
+<p>
+Das Unterprogramm ab Zeile 1000 wird zum Mischen des Kartenstapels
+benutzt. Das eindimensionale Feld B$ enthält die 52 Karten. In
+einer IF&nbsp;... THEN&nbsp;... &ndash; Schleife wird 51 mal eine zufällig
+ausgewählte
+Karte mit einer anderen vertauscht. Damit ist gewährleistet,
+daß die Karten recht gleichmäßig gemischt sind.
+</p>
+<?php columnEnd(1); ?>
+<?php nowrapStart(); ?>
+<?php columnStart(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-1.gif"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-2.gif"); ?>
+<?php columnEnd(2); ?>
+<?php nowrapEnd(); ?>

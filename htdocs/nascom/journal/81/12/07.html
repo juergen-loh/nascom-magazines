@@ -1,0 +1,134 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+Ein Rechner kann aber keine 9 Zustände erfassen (oder 10, wenn man das
+Nichtvorhandensein einer Zähleinheit =0 mitzählt), sondern nur zwei.
+Das entspricht den beiden Zuständen (im
+<?php externalLink("Z80","",""); ?>)
+von ca +5V für 1 und ca 0V
+für 0&nbsp;. Wir müssen also beim Zählen schon nach der Ziffer &quot;1&quot;
+auf die nächste Stelle wechseln. Dieses System heißt Binär,-Dual- oder
+Zweiersystem.
+</p>
+<pre class="donthyphenate">
+Binär Dezimal
+   1 = 1
+  10 = 2
+  11 = 3
+ 100 = 4     etc.
+</pre>
+<p>
+Genauer betrachtet bilden die Stellen des Binärsystems 2er Potenzen
+(wie das Dezimalsystem auf Zehnerpotenzen aufgebaut ist).
+</p>
+<pre class="donthyphenate">
+Dezimal  1084 =  4  mal 10 hoch 0 =  04
+                 +8 mal 10 hoch 1 =  80
+                 +0 mal 10 hoch 2 =  00
+                 +1 mal 10 hoch 3 =1000
+                 ______________________
+                                   1084
+</pre>
+<pre class="donthyphenate">
+Binär     1101 = 1 mal  2 hoch 0 = 1
+                +0 mal  2 hoch 1 = 0
+                +1 mal  2 hoch 2 = 4
+                +1 mal  2 hoch 3 = 8
+                ____________________
+                                  13 dez.
+</pre>
+<p>
+Diese Art der Rechnerei mag zwar einem Computer gefallen, für uns ist
+sie zu unübersichtlich. Deshalb hat man je vier Stellen zusammengefaßt,
+die man dem Rechner als sogenanntes Byte (Datenwort aus 2 mal 4
+Bits=Binärstellen) eingibt. Der wandelt sie wieder intern in sein
+genehmes Binärsystem um.
+</p>
+<p>
+Zählt man, welche Werte ein sogenanntes Halbbyte nacheinander einnehmen
+kann, so kommt man auf 16. (0 &ndash; 15) Und schon sind wir ins 16er-System
+gerutscht (Hexadezimalsystem). Da wir in unserem Sprachschatz aber nur
+10 Ziffern kennen, müssen wir uns für dieses System etwas einfallen
+lassen: man nimmt einfach die Buchstaben A bis F dazu. Das Zählen im
+Hex-System sieht also so aus:
+</p>
+<p>
+Hex 0 1 2 3 4 5 6 7 8 9 A B C D E F 10 11
+12 13 14 15 16 17 18 19 1A 1B 1C 1D etc.
+</p>
+<p>
+In diesem System arbeiten wir also mit 16er Potenzen.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+A325 hex bedeutet also:
+</p>
+<pre class="donthyphenate">
+A (=10 dez.) mal 16 hoch 3 = 40960
+3            mal 16 hoch 2 =   768
+2            mal 16 hoch 1 =    32
+5            mal 16 hoch 0 =     5 dez.
+</pre>
+<p>
+Das Ergebnis ist 41765 dezimal.
+</p>
+<p>
+Glauben Sie nur nicht, man
+könnte auch nach längerer Übung solche umständliche Rechnerei aus dem
+Ärmel schütteln. Dafür benutzt man am besten ein Programm zur
+Umwandlung von Dezimal- in Hexzahlen oder umgekehrt. Aber hie und da
+muß man es eben doch im Kopf rechnen, und es gehört eben einfach dazu,
+um die Zusammenhänge zu verstehen.
+</p>
+<p>
+Bevor wir ins Programmieren
+einsteigen, sollten Sie den Umgang mit den Hexzahlen einmal üben. Mehr
+als 4 Stellen benötigen wir nicht, denn unser NASCOM kann auch nicht
+weiter als FFFF. Beim Rechnen ist hauptsächlich zu beachten, wann der
+Übergang zur nächsten Stelle erfolgt.
+</p>
+<pre class="donthyphenate">
+Ab 4096-65535 ab 256-4095 ab 16-255 0-15
+Hex1000- FFFF    100- FFF    10- FF 0-0F
+</pre>
+<p>
+Ihr Betriebssystem
+T4 oder NASSYS hält eine Routine bereit, die leicht mit Hexzahlen
+rechnen läßt. Die Eingabe AYYYY XXXX gibt auf dem Bildschirm die Summe
+von XXXX und YYYY und deren Differenz aus. Beide Eingaben können
+beliebige Hexzahlen sein. So können Sie das richtige Rechnen im
+Hex-System üben. (Am Anfang ist es sicher sehr frustrierend.)
+</p>
+<p>
+Rechenbeispiel: C0 + 2A
+</p>
+<p>
+Zunächst addiere ich die ersten Stellen 0+A= A,
+es bleibt kein Übertrag. Dann folgen die zweiten Stellen: C (=12dez) +
+2= E (14dez). Das Ergebnis ist EA.
+</p>
+<p>
+C0 &ndash; 2A
+</p>
+<p>
+Die erste Stelle ist 0, Davon kann ich nichts abziehen, also
+&quot;leihe&quot; ich mir eine von der nächsten Stelle. Die ist im
+16er-System logischerweise 16. Also 16 minus A (10dez) ergibt 6 als
+erste Stelle. Da ich mir eine &quot;geliehen&quot; habe, muß ich auch
+eine &quot;behalten&quot;; 2+ die behaltene ist 3. 3 und wieviel ist C
+(12dez)? Ergebnis =9. Die Differenz ist also 96 (müßte auf dem
+Bildschirm nach Eingabe von A2A C0 NL als zweite Zahl ausgegeben
+werden.
+</p>
+<p>
+Nun aber genug mit der Grundschule für Computerfans. Üben Sie
+ein bißchen mit dem A-Befehl zur Kontrolle.
+</p>
+<p>
+Zur Überprüfung Ihrer
+Umwandlungskünste von Dez. und Hexzahlen können Sie das
+</p>
+
+<?php columnEnd(2); ?>

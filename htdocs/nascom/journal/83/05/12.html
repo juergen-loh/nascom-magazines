@@ -1,0 +1,174 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+16k RAM/EPROM
+</h1>
+<h2>
+ECB-Bus kompatibel
+</h2>
+<h3>
+von J.LIST/K.NIEMANN
+</h3>
+<p>
+Ausgangspunkt für die nachfolgend beschriebene Karte war, daß z.B.
+neben ZEAP viele andere Programme auf EPROM&rsquo;s vorlagen und immer wieder
+auch das Problem auftrat, ein Programm auf anderen Rechnern laufen zu
+lassen, ohne erst eine Kopie auf EPROM oder Kassette herstellen zu
+müssen.
+</p>
+<p>
+Ergebnis:Eine Karte mit 8 Steckplätzen, auf denen entweder EPROM&rsquo;s
+<?php externalLink("2716"); ?>
+oder CMOS-RAM&rsquo;s
+<?php externalLink("6116"); ?>
+eingesetzt werden können. Da jeder Platz
+ausblendbar ist, kann man die Karte zur Erweiterung des NASCOM&nbsp;I
+benutzen. Die Karte ist bankingfähig. Man kann z.B. auf einer Karte
+ZEAP u.a. und auf einer anderen BASIC einsetzen. (Die Auswahl zwischen
+den beiden Karten erfolgt hier über eine spezielle Umschaltkarte mit
+einem Ausgabeport.)
+</p>
+<p>
+Für die Datensicherung befindet sich auf der Karte ein Akku und ein
+Schreibschutzzschalter.
+</p>
+<p>
+Konzipiert war die Karte ursrünglich für 2MHz. Sie läuft mit einer
+Bestückungsmodifikation aber auch bei 4&nbsp;MHz.
+</p>
+<h4>
+Aufbau und Funktion:
+</h4>
+<p>
+Die Bussignale D0 &ndash; D7, A0 &ndash; A10, A13, A15, RD, WR u. MRQ sind
+gebuffert (D2, D5 und D8). Die Adreßdekodierung erfolgt durch zwei 3 :
+8 Dekoder (D6 u. D7). Die Kartenadresse wird mit einem Jumper auf X7
+gewählt.
+</p>
+<p>
+Möglich sind die Adressen 0, 16k = 4000H, 32k = 8000H und 48k = C000H.
+</p>
+<p>
+Schalter S1 verbindet Pin 21 der Speicherbausteine wahlweise mit
++5Volt oder über S2 mit WR. Bei Beschaltung mit +5Volt lassen sich
+EPROM&rsquo;s einsetzen. Für RAM-Betrieb muß Pin 21 der jeweiligen
+Speicherplätze mit WE verbunden sein.
+</p>
+<p>
+Bei RAM-Betrieb läßt sich mit S2 in Verbindung mit R23 eine
+Schreibsperre realisieren. In der Stellung s = Sperre wird das
+WR-Signal nicht mehr zum Speicher durchgelassen.
+</p>
+<p>
+D6 hat die Aufgabe, 8 Speicherplätze zu dekodieren. Mit X4, D4 und zwei
+Gattern von D3 besteht die Möglichkeit, jeden Platz auszublenden. Der
+zugeordnete Jumper wird dabei nicht gesteckt. Wenn von der Option
+Ausblendung überhaupt kein Gebrauch gemacht werden soll, braucht D4
+nicht bestückt werden.
+</p>
+<p>
+Beim Auslesen der Karte, d.h. Karte selektiert
+und Rd aktiv, wird über die UND-Verknüpfung V3, V4, R3 und D1 bei
+gestecktem Jumper X6 ein Wait-Zyklus eingefügt. Das kann z.B. beim
+Einsatz langsamer EPROM&rsquo;s erforderlich sein.
+</p>
+<p>
+X3 in Verbindung mit einer der Steuerleitungen MBS 0 &ndash; 7 ermöglicht
+Memory-Paging. Ist kein Jumper auf X3 gesteckt, wird die Kartenadresse
+ausschließlich durch den Jumper auf X7 festgelegt. Befindet sich auf X3
+ein Jumper, muß zusätzlich noch die entsprechende Steuerleitung einen
+aktiv high-Pegel aufweisen.
+</p>
+<p>
+Die Spannungsversorgung im
+Datensicherungsfall erfolgt entweder über den Akku auf der Karte oder,
+bei gestecktem Jumper X5, über den Bus (VCMOS). Bei Versorgung über den
+Bus darf der Akku auf der Karte und R1 nicht montiert sein. Wenn die
+Spannung über den Bus kommt, muß sie kleiner als 5 Volt sein.
+</p>
+<p>
+Der Akku
+wird im Normalbetrieb über V1 und R1 gemäß Herstellerangaben
+dauergeladen. An Pin a von X1 und X2 sowie an Pin apf von X9 liegt dann
+annähernd die Versorgungsspannung.
+</p>
+<p>
+Wird die Karte ohne CMOS-RAM betrieben, müssen die Jumper auf X1 und X2
+in Position n gesteckt sein. (V1 kann sonst zerstört werden).
+</p>
+<p>
+Die Jumper dürfen nur bei Einsatz von CMOS-RAM&rsquo;s auf a gesteckt werden.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Fällt die Versorgunsspannung aus, sperrt V1 und V5, V2 schließt R1 kurz
+und schaltet die Akkuspannung auf die Punkte a und apf an X1, X2 und X9.
+</p>
+<p>
+Je nach Netzteil kann das schon ausreichen, um Datenverlust in diesen
+Fällen zu verhindern. Um die Karte definiert abzuschalten, wird ein
+Powerfail-Sigal vom Netzteil (aktiv low) oder einer speziellen
+Baugruppe benötigt (DPR). Wird dies Signal benutzt, muß D6 eine
+CMOS-Version sein.
+</p>
+<p>
+Undefinierte Zugriffe von der CPU kann es dann nicht mehr geben. Bei
+gewolltem Ausschalten der Versorgungsspannung sollte der
+Schreibschutzschalter vorsorglich in die Stellung s gebracht werden.
+</p>
+<p>
+Bei 4&nbsp;MHz-Betrieb müssen D3, E4 und D7 S Versionen sein.
+</p>
+<p>
+Auf der Lötseite sollte zur Vermeidung von Kurzschlüssen eine
+Schutzplatte montiert sein.
+</p>
+<p>
+Die Karte ist doppelseitig, durchkontaktiert und mit einer
+Lötstoppmaske versehen. Bei den Autoren erhältlich für DM&nbsp;90,&ndash; inkl.
+Porto/Verpackung u. Nachnahmegebühren.
+</p>
+<h1 id="article2">
+<span id="senso">
+SENSO
+</span>
+</h1>
+<h3>
+von JÜRGEN LOH
+</h3>
+<p>
+Unter dem Namen
+<?php externalLink("SENSO"); ?>
+wird ein Geraet angeboten, das seinem Bediener
+Farb- und Tonkombinationen vorgibt, die dieser dann nachspielen soll.
+Dieses Spiel gab mir die Anregung zu meinem Programm.
+</p>
+<p>
+Durch die Tatsache, dass mein Nascom weder Farben noch Toene ausgeben
+kann, hat das Spiel in meinem Programm einige Aenderungen erfahren. Der
+Kern der Sache ist jedoch erhalten geblieben.
+</p>
+<p>
+Gestartet wird das Programm mit E0D42. Wenn man dann noch eine Frage
+durch druecken von &quot;J&quot; beantwortet, erscheint am Anfang der
+naechsten Zeile eine Zahl von 1-8. Hat man diese Zahl getippt,
+erscheint die Zahl nochmals, gefolgt von einer neuen. Die so immer
+laenger werdende Zahlenkolonne muss man sich dabei einpraegen und
+jeweils eintippen. Durch die Kapazitaet einer Bildschirmzeile begrenzt,
+wird das Spiel nach erfolgreichem Nachtippen einer 26-stelligen
+Zahlenkolonne beendet.
+</p>
+<p>
+Falls im Spielverlauf eine andere Taste als die Zahlentasten 1-8
+gedrueckt wird, erscheint eine Meldung auf dem Bildschirm. Die
+jeweilige Zahlenkolonne muss dann nochmals von Anfang an eingetippt
+werden.
+</p>
+
+<?php boxStart("LBR"); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

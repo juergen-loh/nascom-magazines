@@ -1,0 +1,121 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+bleibt frei für andere Anwendungen.
+</p>
+<p>
+&ndash; Portadressen über Dil-Schalter individuell einstellbar.
+</p>
+<p>
+&ndash; Durch Umstecken eines Jumpers auf der Karte läuft diese problemlos
+bei 2 oder 4&nbsp;MHz.
+</p>
+<p>
+&ndash; Voll softwarekompatibel mit
+<a href="../../../../81/12/38/text/#article1">UNICON 1.4</a>.
+</p>
+<p>
+&ndash; Aufbau auf einer doppelseitigen, durchkontaktierten
+Karte, voll NASBUS-kompatibel (77-polige Kontaktleiste).
+</p>
+<p>
+Die Datenbusleitungen sind bidirektional gepuffert, so daß sich auch
+bei längeren Busleitungen keine Störspannungsprobleme ergeben. Die
+Schaltung läuft bei mir seit ca. einem Monat mit 70 cm langen
+Busleitungen. Sollten sich beim Betrieb, besonders bei 4&nbsp;MHz, dennoch
+Probleme ergeben, dann sei an dieser Stelle schon auf eine Abhilfe
+hingewiesen, die voraussichtlich in der nächsten Journalausgabe
+vorgestellt wird:
+</p>
+<p id="article2">
+Eine
+<a href="../../../10/25/text/#article1">Mini-Pufferkarte</a>
+für die CPU des NASCOM-1, die einfach an Stelle
+der CPU in den Sockel gesteckt wird; die Signalform auf dem NASBUS und
+die Störsicherheit werden erheblich verbessert.
+</p>
+<p>
+Besonders beim Schalten elektrischer Verbraucher hat sich der NASCOM
+bei mir als echter &quot;Aussteiger&quot; erwiesen. In solchen Fällen
+kann ich jetzt schon für Abhilfe garantieren. Auch diese Karte ist bei
+mir in Gebrauch und ermöglicht den Betrieb der 32K-Ram-Karte bei 4&nbsp;MHz,
+und zwar ohne Waitzyklen. Vorher war das nicht möglich; auch Tricks und
+Kniffe haben nichts genützt. Wer die MDCR-Karte zusammen mit anderen
+I/O-Bausteinen oder Geräten betreiben will, muß beachten, daß das
+I/O-EXT-Signal an der Grundplatine invertiert werden muß, da ansonsten
+die Ports 0 bis 3 nicht gesperrt werden (Konstruktionsfehler?). Bei
+Verwendung der Mini-Pufferkarte sind die Signale I/O-EXT und DBDR nicht
+erforderlich und IC15 auf der MDCR-Karte kann entfallen. So können auch
+Erweiterungskarten anderer Bussysteme problemlos angeschlossen werden.
+</p>
+<p>
+Anm. der Redaktion:
+</p>
+<p>
+1) Hier liegt wohl ein Mißverständnis vor. Wenn externe I/O-Bausteine
+angeschlossen werden sollen, muß die Adreßdekodierung der internen
+Ports vervollständigt werden. Dazu muß LK1 auf EXT. umgelötet werden
+und auf der jeweiligen Zusatzkarte das Enable-Signal (active low!) für
+die internen Ports erzeugt und über I/O-EXT eingespeist werden.
+</p>
+<p>
+2) Bei der MDCR-Karte würde ich die Ausgänge
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+der LS26 mit Pullup-Widerständen (5.6K bei der Eltec-Karte) nach 12V
+und die Eingänge der 4049 mit Pulldown-Widerständen (68k bei Eltec)
+versehen. GK
+</p>
+<h1 id="article1">
+Typenrad-Terminal
+</h1>
+<h2>
+Teil 3
+</h2>
+<h3>
+von Günter Kreidl
+</h3>
+<h4>
+Halbschrittformatierung
+</h4>
+<p>
+Das im <a href="../../../07/10/text/#article1">letzten Journal</a>
+vorgestellte Drucker-Interface für die Praxis-30
+von Olivetti ermöglicht auch die Ansteuerung fast aller
+Sonderfunktionen der Schreibmaschine. Eine der interessantesten
+Anwendungen für die Textverarbeitung ist die rechtsbündige Formatierung
+von Texten mit Hilfe der Halbschrittfunktion. Der
+<?php externalLink("mc","MC",""); ?>-Texteditor verfügt
+(ebenso wie NASPEN) über eine rechtsbündige Formatierung, doch ist sie
+für anspruchsvolle Anwendungen nicht zu gebrauchen: Das Ding schiebt
+gnadenlos Spaces ein, bis die vorgegebene Stellenzahl erreicht ist
+gelegentlich besteht eine Zeile dann aus 2 (langen) Worten mit einem
+Dutzend Leerstellen dazwischen!
+</p>
+<p>
+Das von Günter Böhm vor einiger Zeit im NASCOM-Journal vorgestellte
+<a href="../../../../81/08/05/text/#article1">Formatierprogramm</a>
+vermeidet diese Schwächen: Wenn eine Formatierung mit
+einfacher Verdoppelung der Leerzeichen (also maximal 2 Leerstellen
+zwischen 2 Worten) nicht möglich ist, wird der Benutzer zu Hilfe
+gerufen er muß dann das letzte Wort trennen, um eine saubere
+Formatierung zu ermöglichen. Mit der Halbschrittfunktion der Praxis-30
+(oder auch eines anderen Druckers bzw. einer anderen Schreibmaschine)
+ist aber noch eine viel elegantere Lösung möglich: Die
+Zwischenräume zwischen 2 Worten werden entweder auf die Hälfte verkürzt
+oder auf das Anderthalbfache verlängert. Dem in der letzten Ausgabe
+enthaltenen
+<a href="../../../07/11/text/#article1">Druckerprogramm</a>
+für die Praxis-30 hatte ich die
+entsprechenden Funktionen bereits eingebaut: Die Control-Codes 01 und
+03 werden als halbe bzw. anderthalbfache Leerstelle ausgegeben. Bisher
+habe ich die eigentliche Formatierung (Einfügen der Control-Codes) von
+Hand besorgt. Das ist bei der Vielzahl von Texten, die ich jetzt zu
+bearbeiten habe, aber zu langwierig. Deshalb wollte ich zuerst Günter
+Böhms Formatierprogramm auf Halbschrittformatierung umschreiben. Dann
+wäre allerdings die Anbindung an verschiedene
+Textverarbeitungsprogramme nicht
+</p>
+
+<?php columnEnd(2); ?>

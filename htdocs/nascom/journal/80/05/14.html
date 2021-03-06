@@ -1,0 +1,86 @@
+<?php columnStart(2, 2); ?>
+
+<h4>
+<u>Warteschleife</u>
+</h4>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-14-1.jpeg"); ?>
+<p>
+Th. E. Schreiner
+</p>
+
+<br>
+
+<h4 id="article1">
+<u>Fehler Fehler Fehler Fehler Fehler</u>
+</h4>
+<p>
+In der Programmsammlung
+&quot;<?php externalLink("Merseyside Nascom Users Group", "", ""); ?>&quot;
+habe ich folgende Fehler feststellen können:
+</p>
+<p>
+Interpreter PICO PILOT:
+</p>
+<p style="text-align:center">
+&ndash; 0C9C &gt; statt F2 &nbsp; 52<br>
+&ndash; 0CA5 &gt; statt 28 &nbsp; 26
+</p>
+<p>
+Peter Deege<br>
+___________ __<br>
+____ Aachen
+</p>
+
+<br>
+
+<?php hline("100%", "2d"); ?>
+
+<h4 id="article2">
+<u>Autoreset mit Synchronisierung</u>
+</h4>
+<p>
+Ein Ärgernis beim NASCOM &ndash; jedenfalls bei meinen Exemplar &ndash; ist das
+unsaubre Reset-Verhalten. Meistens werden dabei einige Speicherzellen
+&ndash; auch die statischen &ndash; überschrieben. Um diesen Fehler, der das
+Austesten von Programmen äußerst mühsehlig macht, zu beheben, müssen
+drei Bedingungen erfüllt sein:
+</p>
+
+<ul class="dashed-indent">
+<li>
+Reset muß ein Impuls von kurzer Dauer sein, weil während des Reset
+keine Refresh-Impulse erzeugt werden.
+</li>
+<li>
+Reset muß durch die fallende Flanke von M1 synchronisiert werden, sonst
+werden kurz danach wild Speicherzellen überschrieben.
+</li>
+
+<?php columnChange(2, "</ul>", "<ul class=\"dashed-indent\">"); ?>
+
+<li>
+Nach dem Einschalten muß ein nicht synchronisierter Autoreset erfolgen.
+Das ist notwendig, weil die CPU nach dem Anlegen der Spannung überhaupt
+keine M1-Zyklen erzeugt.
+</li>
+</ul>
+
+<p>
+Meine Schaltung aus einem 74121 und einem 74LS74 &ndash; ein Flipflop bleibt
+frei &ndash; erfüllt die drei Bedingungen. Es werden invertierte /M1-Signale
+benötigt, die man hinter IC 32a abgreifen kann. In der Nahe ist auch
+eine Stelle auf der Leiterplatte (hinter SK1), wo sich die zur CPU
+führende Reset-Bahn sehr schön unterbrechen läßt.
+</p>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-14-2.jpeg"); ?>
+
+<h4 id="article3">
+<u>Simpel Graphik</u>
+</h4>
+<p>
+Die Möglichkeit, aus ASCII &ndash; Zeichen Graphik zu bilden, sind sehr
+begrenzt, u.a. wegen der großen Zeilenabstände beim NASCOM. Mit einer
+Invertierung der Zeichen läßt sich wenigstens eine
+</p>
+
+<?php columnEnd(2); ?>

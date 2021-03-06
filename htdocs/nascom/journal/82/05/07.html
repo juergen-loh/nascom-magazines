@@ -1,0 +1,102 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+akzeptiert, und gibt das Zeichen auf der Schreibmaschine aus. Dann
+kehrt es mit unveränderten Registern ins Hauptprogramm zurück. Bei
+jedem NEWLINE wird die Zeilenzahl inkrementiert und mit einer
+vorgegebenen Zahl verglichen. Bei Erreichen dieser Zahl, wird der Druck
+unterbrochen (Papierwechsel&nbsp;!) bis von der NASCOM-Tastatur NEWLINE
+eingegeben wird. Durch Drücken einer beliebigen Taste kann man das
+Programm zwischen zwei Zeilen anhalten und ebenfalls mit NEWLINE
+fortfahren. Nach dem Laden wird zunächst INIT aufgerufen mit E F35 XX.
+XX ist die maximale Zeilenzahl, die an einem Stuck gedruckt werden
+soll. Dann ist das Programm einsatzbereit und kann auch mit dem
+U-Befehl der Bildschirmausgäbe zugeschaltet werden. Die Schreibmaschine
+muß während des Computerbetriebs immer in der Stellung KB II stehen und
+die SHIFT-LOCK-Funktion darf nicht eingeschaltet sein.
+</p>
+<h4>
+Anwendungen
+</h4>
+<p>
+Die Schreibmaschine ist vorwiegend für Textverarbeitung geeignet. Als
+Schnelldrucker eignet sie sich wirklich nicht; wenn beide
+Tastaturselektionen verwendet werden, beträgt die
+Schreibgeschwindigkeit etwa 5 Zeichen/Sekunde. Ein weiterer
+Schwachpunkt der ansonsten guten Maschine ist die Papierführung:
+schlichtweg eine Krankheit!
+</p>
+<h1 id="article1">
+I/O Erweiterung mit AY-3-8910
+</h1>
+<h3>
+von Günter Kreidl
+</h3>
+<p>
+Der PROGRAMMABLE SOUND GENERATOR
+<?php externalLink("AY-3-8910"); ?>
+wurde von Herrn Böhm bereits
+im NASCOM-Journal vorgestellt
+(<a href="../../../../81/06/04/text/#article1">6 + </a>
+<a href="../../../../81/07/08/text/#article1">7/81</a>).
+Über seine Piepserqualitäten
+hinaus verfügt er noch über zwei 8-Bit-I/O-Ports. Um sie in beiden
+Richtungen benutzen zu können, muß ein bidirektionales Interface gebaut
+werden. Dies ist möglich über Port A der PIO im MODE 2. Da der PSG
+keine Quittungssignale erzeugt, die für den bidirektionalen PIO-Modus
+nötig sind, müssen diese Signale extern mit ein paar Gattern und
+Monoflops erzeugt werden. Eine entsprechende Schaltung zeigt Bild 3.
+</p>
+<p>
+Die zugehörige Software soll hier noch kurz
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+besprochen werden. READ, WRITE und SETADR sind die Ansteuerroutinen für
+den PSG. PINIT initialisiert die PIO und die beiden Leitungen von Port
+0. Mit dem PSG-Test-Programm sind alle Register des PSG von der
+Tastatur ansteuerbar. Nach dem Programmaufruf kann man bis zu 10
+3-stellige (!) Hexzahlen eingeben (bis NEWLINE). Die erste Stelle gibt
+die Adresse des jeweiligen PSG-Registers an (0 &ndash; F), die beiden
+nächsten Stellen sind der Wert, der in das entsprechende Register
+geladen wird. Das Ergebnis sollte man sich anhören! PSGTST ist ein
+Programm für diejenigen die die Schaltung nachbauen und vor (!) dem
+Einsetzen des PSG testen wollen. Nach dem Aufruf wird zunächst eine
+ein- (Adresse) oder zweistellige Hexzahl eingegeben, dann NEWLINE, dann
+A (Adressieren) oder W (Schreiben) oder R (Lesen). Das Programm gerät
+dann in eine endlose Schleife, in der es ständig die zum Adressieren,
+Lesen oder Schreiben von PSG-Registern notwendigen Signale erzeugt.
+Folgende Signale müssen anliegen (AL = Active Low, AH = Active High):
+</p>
+<p>
+READ: BDIR = LOW, BC1 = 1000 ns AH, BSTB = 500 ns AL; WRITE: BDIR =
+500ns AH, BC1 = LOW, ASTB = 1000 ns AL; ADRESS3 BDIR = 500 ns AH, BC1 =
+500 ns AH, ASTB = 1000 ns. Am Monoflop 3 sollte ein Impuls von ca. 300
+ns erscheinen. Die Zeiten sind nicht kritisch, nur die Verhältnisse
+sollten stimmen.
+</p>
+<p>
+IC&rsquo;s: 2 x LS 08, 1 x LS 00, 1 x LS 32, 2 x LS 123 R1,
+R2, R4 = 10k, R3 = 5k, C1, C2, C3 = 100pf, C4 = 200pf.
+</p>
+
+<br>
+<?php boxStartJustify(); ?>
+<p>
+BIETE Lohn- und Einkommensteuer-Be&shy;rech&shy;nungs&shy;pro&shy;gramm auf Cassette.
+Tausche gegen NAS-DIS, NAS-DEBUG, ZEAP oder andere Programme in EPROM. <br>
+K.Körner, ___________._<br>
+____ ___________ &nbsp; Tel._____/____
+</p>
+<p>
+Suche <?php externalLink("INMC News 7", "INMC Newsletter 7"); ?> (1981)
+zum Kopieren. Suche ständig interessante
+Software zum Tausch gegen NASPEN, DEBUG, CLD-BASIC, TOOLKIT, Schach,
+NASSYS&nbsp;3 u.v.a.<br>
+Johannes C. Lotter, ____________.<br>
+__/___<br>
+____ Darmstadt &nbsp; Tel._____/_____
+</p>
+<?php boxEnd(); ?>
+
+<?php columnEnd(2); ?>

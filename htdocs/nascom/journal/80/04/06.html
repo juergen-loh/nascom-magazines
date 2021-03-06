@@ -1,0 +1,141 @@
+<?php columnStart(2); ?>
+
+<table style="margin: auto; border: 1px solid #000">
+	<tr>
+		<td style="padding: 10px; vertical-align:middle">
+			NAS-SYS&nbsp;1
+		</td>
+		<td style="padding: 10px; border-left: 1px solid #000">
+			0 C 80 -<br>
+			0 D 13
+		</td>
+	</tr>
+</table>
+<br>
+
+<?php columnChange(2); ?>
+<?php columnEnd(2); ?>
+
+<?php columnStart(2, 2); ?>
+
+<p>
+eine Zahl zw. 0-9. Diese "gewürfelte" Zahl kann nun mit Hilfe der
+Tasten 1-3 in die entsprechenden Stellen einer dreistelligen Zahl
+kopiert werden. Dieser Vorgang wird solange durchgeführt, bis alle
+Stellen der Anzeige ausgefüllt sind. Danach wird das Spiel-Ende
+angezeigt und nach einer kurzen Wartezeit erneut gestartet.
+</p>
+<p>Übrigens sind zu diesem Spiel noch viele weitere Variationen
+erdenklich. Zu diesem Zweck muß man nur die Zielsetzung des Spiels
+ändern: niedrige Zahl, die Quersumme der Zahl muß durch 3 teilbar sein,
+oder man macht es sich zur Aufgabe, an eine vorher festgelegte Zahl so
+nahe wie möglich heranzukommen.
+</p>
+
+<table style="margin: auto">
+<tr><td>
+<?php imageRight($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+<p style="text-align:right">
+Start:E 0C80
+</p>
+</td></tr>
+
+<tr><td>
+<p style="margin: 0; padding: 0">
+<br>
+Gerald Möse
+</p>
+</td></tr>
+</table>
+
+<?php /* hline("40%", "2o"); */ ?>
+<p style="font-family: Arial; text-align: center; font-size: 5em; padding: 0; margin-top: 0; margin-bottom: 40px; line-height: 40px">
+<b>,,,,,,,</b>
+</p>
+
+<h4 id="article1">
+<u>Priority &ndash; Scheduler für NASCOM&nbsp;1</u>
+</h4>
+<p>
+Das hier gezeigte Programm ist eine überarbeitete Version eines
+interruptgesteuerten Schedulers, der von J.R. Keneally in der
+Zeitschrift "Computing Today"
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+veröffentlicht wurde. Der Sinn des Programms ist folgender:
+</p>
+<p>
+Nehmen wir an, ein Rechner hat die Aufgabe, verschiedene Prozesse zu
+überwachen (z.B.in einer Alarmanlage Kontakte abfragen, Ein -Ausgabe in
+einem Multi-User System oder Heizungssteuerung). Die eine Lösung wäre,
+daß der Rechner zyklisch die einzelnen Stationen abfragt, ob es etwas
+zu tun gibt; das wäre ein "Polling". Die andere heißt
+Interrupt-Steuerung. Jede Station, die bedient werden will, löst einen
+bestimmten Interrupt aus, der einen Sprung zu der jeweiligen
+Bedienroutine ergibt. Ein Mittelding ist der Scheduler. Dieser hier ist
+speziell für den NASCOM&nbsp;1 geschrieben und nützt die
+Interrupt-fähigkeiten des PIO-Bausteins aus.
+</p>
+<p>
+Die Bedienroutinen für die einzelnen Aktionen (Tasks in der
+Fachsprache genannt) liegen irgendwo im Speicher. Weiterhin werden in
+genauen Zeitabständen durch ein externes Signal Interrupts ausgelöst.
+Diese Interrupts rufen den Scheduler auf, der nun anhand einer
+"Task-Control-Liste" entscheidet, welches Programm als nächstes
+abläuft. Entscheidend sind dabei die Daten in der TCL welche hier so
+liegen:
+</p>
+
+<table class="donthyphenate">
+	<tr>
+		<td>
+			<u>erstes Byte:</u>
+		</td>
+		<td>
+			Anzahl der Zeittakte, die zwischen jedem
+			Task-Aufruf übersprungen werden.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<u>zweites Byte:</u>
+		</td>
+		<td>
+			Anzahl der Zeittakte, bevor die Task zum ersten
+			Mal aufgerufen wird.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<u>drittes Byte:</u>
+		</td>
+		<td>
+			Status der Task<br>
+			00 nicht aufrufen<br>
+			04 Task gültig<br>
+			05 letzte gültige Task
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<u>viertes/fünftes&nbsp;Byte:</u>
+		</td>
+		<td>
+		</td>
+	</tr>
+</table>
+
+<p>
+Einsprungadresse der Task.
+</p>
+<p>
+Jede Task, die nun aufgerufen wird, führt ihre Aktionen aus. Kehrt
+sie dann zum Scheduler zurück, entscheidet dieser anhand der TCL,
+welche Task die nächstniedrigere Priorität hat, worauf diese dann
+weiterlaufen darf, falls sie durch eine höher priorisierte Task
+unterbrochen wurde. Ist keine Task mehr aktiv, wird gewartet bis zum
+nächsten Zeittakt.
+</p>
+
+<?php columnEnd(2); ?>

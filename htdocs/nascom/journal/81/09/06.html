@@ -1,0 +1,64 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+andere Aufgaben einzusetzen. Der Phantasie des Programmierers sind hier
+keine Grenzen gesetzt. Es würde im Rahmen dieser kurzen Beschreibung zu
+weit führen, die Eigenschaften des DMA vollständig zu beschreiben.
+(siehe dazu Zilog
+<?php externalLink("Z80 DMA","Z-80 DMA"); ?>
+Manual)
+</p>
+<h4>
+HARDWARE
+</h4>
+<p>
+Der Schaltungsaufwand ist denkbar einfach.
+Außer dem DMA Baustein wird noch ein Decodierungs-IC
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-2.jpeg"); ?>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+benötigt zur Auswahl der I/O Adresse des DMA. Hierfür wurde
+der 8-bit Comparator AM25LS2521 von AMD verwendet. Damit kann über
+einen DIL-Schalter jede beliebige I/O Adresse eingestellt werden.
+</p>
+<p>
+Die
+beiden ICs werden auf dem leeren Teil des Bufferboards befestigt (z.B.
+IC-Sockel auf die Platine kleben). Die Verdrahtung der Bauteile wird
+gemäß Schaltbild (Fig.1) vorgenommen, Da man hier üblicherweise
+Schaltdraht verwendet, entsteht auf der Unterseite der Platine ein
+wüster Drahtverhau, Damit es nach dem Wiedereinschalten des NASCOM
+nicht zu unliebsamen Überraschungen kommt, ist hier mit großer Sorgfalt
+zu arbeiten.
+</p>
+<p>
+Die Adreß-(A0 &ndash; A15), Daten-(D0 &ndash; D7) und Kontroll-leitungen
+(MREQ, IORQ, RD, WR, M1, INT, BUSAK, TAKT) des DMA werden mit den entsprechenden
+Pins der 43-poligen Steckerleiste auf der Bufferplatine verbunden.
+(Achtung: Nicht mit dem 73 pol. NASBUS).
+</p>
+<br>
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-06-1.jpeg"); ?>
+</p>
+<br>
+<p>
+Als einzige Hardwareänderung auf dem Bufferboard ist die BUSAK-Leitung
+zu unterbrechen. Die BUSAK-Leitung, die direkt von der CPU kommt, wird
+nun mit dem BAI-Pin des DMA verbunden. Der BAO-Pin wird mit Pin 13 IC
+12 und Pin 5 IC 9 verbunden (siehe Fig.2), Der DMA hat damit die
+höchste Buspriorität. Bei Multi-DMA Einsatz hat dieser DMA immer
+Vorrang bei Buszugriffen vor niederpriorisierten DMAs.
+</p>
+<p>
+In der Interrupt Daisy Chain Kette hat der DMA ebenfalls die höchste
+Priorität. IEI des DMA ist gegen +5V und IEO mit IEI NASBUS Pin 19 zu
+verbinden. (Anwender, die den PIO auf der Nascomplatine verwenden,
+müssen diesen IEI Pin von +5V abtrennen und mit IEO Pin des DMA
+verbinden).
+</p>
+
+<?php columnEnd(2); ?>

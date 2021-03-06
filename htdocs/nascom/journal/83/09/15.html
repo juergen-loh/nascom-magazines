@@ -1,0 +1,81 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+RTTY II
+</h1>
+<h3>
+<u>von JÖRG WITTICH</u>
+</h3>
+<p>
+Der Grundgedanke bei der Originalversion des im
+<a href="../../../07/45/text/#article1">letzten Heft</a>
+abgedruckten RTTY-Programms war, dass es ohne Hardwareaenderungen auf
+der Grundplatine des Nascom&nbsp;1 laufen koennen sollte. Durch diese
+Beschraenkung liessen sich jedoch solche Annehmlichkeiten wie
+Vorschreiben bei Em&shy;pfang, Abruf von Festtexten,
+ASCII/Baudot-Umschaltung usw. nicht realisieren. Das hier vorgestellte
+Programm bietet diesen Komfort, erfordert aber eine
+Hardwaremodifikation. Fuer die seriell/parallel- und
+parall./ser.-Wandlung befindet sich auf dem Nascom bereits ein
+spezieller Baustein, der UART. Dieser UART könnte prinzipiell direkt
+ueber den Bus fuer verschiedene Formate, z.B. 5 Bit-Daten und 1.5
+Stopbits, wie es bei Baudot üblich ist, programmiert werden. Leider ist
+diese Moeglichkeit von den Entwicklern des Nascom nicht vorgesehen
+worden und der UART fest fuer 8 Bit-Daten verdrahtet. Ich habe daher
+SBS (Pin 36) direkt und CLS 1, CLS 2 (Pin 37,38) ueber einen Inverter
+(z.B. 74LS04 oder Transistorinverter) mit Bit 2 von Port 0 verbunden.
+Die alten Verbindungen muessen natuerlich auf irgendeine Weise
+aufgetrennt werden. Nach dem Einschalten oder Reset stellt sich
+automatisch das vom Cassetten -Interface benoetigte Format ein. Zum
+Einstellen der Baudrate verwende ich Kanal 1 eines Z80A-CTCs (ZC/T01 an
+die entsprechenden Clockeingaenge des UARTs). Wer keinen CTC besitzt,
+kann die notwendigen Clockfrequenzen auch z.B. mit einem NE 555
+erzeugen und die Baudraten von Hand umschalten.
+</p>
+<p>
+Das Programm kennt
+folgende Befehle, die bis auf die ersten beiden sowohl bei Empfangs-
+als auch bei Sendebetrieb Gueltigkeit haben:
+</p>
+<table>
+<tr><td>Ctrl&nbsp;A:&nbsp;</td><td>ASCII</td></tr>
+<tr><td>Ctrl&nbsp;B:</td><td>Baudot</td></tr>
+<tr><td>Ctrl&nbsp;C</td><td>bei Baudot: Aendern der Bu/Zi-Ebene<br>
+bei ASCII : K1-Option von NAS-SYS ein/ausschalten</td></tr>
+<tr><td>Ctrl&nbsp;D:</td><td>Baudrate erniedrigen (45.45,50,75, 100,110,150,300,600 Baud)</td></tr>
+<tr><td>Ctrl&nbsp;I:</td><td>Baudrate erhoehen</td></tr>
+</table>
+
+<?php columnChangeJustify(2); ?>
+
+<table>
+<tr><td>Ctrl&nbsp;P:&nbsp;</td><td>Text 1</td></tr>
+<tr><td>Ctrl&nbsp;Q:</td><td>Text 2</td></tr>
+<tr><td>Ctrl&nbsp;R:</td><td>Text 3</td></tr>
+<tr><td>Ctrl&nbsp;S:</td><td>Text 4</td></tr>
+<tr><td>Ctrl&nbsp;T:</td><td>Text 5</td></tr>
+<tr><td>Ctrl&nbsp;Z:</td><td>Sender ein/(aus)&nbsp;; Bit 4 von Port 0 kann zum Schalten des
+Senders verwendet werden.</td></tr>
+</table>
+<p>
+Der Vorschreibspeicher ist etwa 2&nbsp;kByte lang und beginnt bei 17D8H, der
+Stack liegt bei 1000H.Festtexte koennen beliebig lang sein und muessen
+mit einer 0 abgeschlossen werden. Bei 0DH (CR) wird immer auch ein 0AH
+(LF) ausgesendet. Die Anfangsadressen der 5 Texte muessen zwischen
+0F00H und 0F09H eingetragen werden. Den Abruf von nicht definierten
+Texten sollte man vermeiden. Fuer die Texte 2-5 koennen auch die
+entsprechenden Cursor-Tasten verwendet werden. Bei Erreichen eines 'a)'
+im Vorschreibspeicher schaltet das Programm nach einer kurzen
+Verzoegerungszeit auf Empfang um, Falls nicht von Hand gegeben, fuegt
+das Programm am Ende einer RTTY-Zeile automatisch CR/LF ein. Am Beginn
+einer neuen Zeile wird bei Baudot immer die Ebenenkennung gegeben, um
+die Synchronisation mit der Gegenstation sicherzustellen. Im
+Assemblerlisting befindet sich eine Zeile mit SCAL 7DH, welches NAS-SYS
+1 Benutzer durch SCAL 61H ersetzen muessen.
+</p>
+<p>
+ZEAP Z80 Assembler &ndash; Source Listing
+</p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-1.jpeg"); ?>
+
+<?php columnEnd(2); ?>

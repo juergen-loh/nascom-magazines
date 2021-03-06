@@ -1,0 +1,116 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Format f. Nassys
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<p>
+Ein Leser fragte an, warum denn trotz meines Lobes auf NASSYS als
+komfortables Betriebssystem das Formatierprogramm in
+<a href="../../../../81/08/05/text/#article1">Heft 8-81</a> für T4
+geschrieben sei. Nun, der Grund dafür ist einfach: ich besaß damals
+noch kein NASSYS. Inzwischen habe ich es mir zugelegt (bin vollkommen
+damit zufrieden). Da nun schon einige Leser nach einer
+&quot;FORMAT&quot; Version für NASSYS fragten, habe ich mich nun
+endlich darangesetzt.
+</p>
+<p>
+Daß sich die Anwendung des vergleichsweise einfachen Programmes trotz
+Bestehen sehr komfortabler Textsysteme lohnt, wurde mir bestätigt, als
+ich versuchsweise einige Texte mit NASPEN editierte. Eine Unmenge von
+Befehlen, die für meine Zwecke (den blockweisen Ausdruck relativ kurzer
+Texte) nicht benötigt werden, das dauernde Eintippen des &quot;c&quot;,
+wenn mehrere Buchstaben geändert werden sollten und einiges an
+umständlicher Bedienung mehr. Nicht zuletzt störte mich die Festlegung
+auf einen bestimmten Speicherbereich. Diese Nachteile finde ich in
+FORMAT nicht; zudem können Texte dafür von jedem erstellt werden, auch
+wenn er kein Textsystem besitzt. FORMAT Texte auf Cassette können
+zwischen allen NASCOM Benutzern ausgetauscht werden.
+</p>
+<p>
+Die Version für NASSYS ist etwas komfortabler als das Original und ein
+kleines bißchen länger geworden. Deshalb kommt das Programm in
+gefährliche Nähe des Stackbereiches und kann z.T. überschrieben werden,
+wenn man es im alten Speicherbereich läßt. So habe ich es auf #1000
+gelegt. (Allerdings habe ich es auch in einer Version ab C000
+vorliegen. Wer Interesse an einer EPROM Version hat, kann ja mal
+anfragen).
+</p>
+<p>
+Der Vorteil gegenüber der Originalversion liegt hauptsächlich darin,
+daß nach jedem Arbeitsgang die Endadresse des Textspeichers angezeigt
+wird.So kann man durch Eingabe dieser Adresse beim Einlesen von
+Cassette oder Eintippen neuen Text anhängen. Auch die Bedientasten
+wurden vereinfacht(auch mit Hilfe der Cursortasten). Hier nun die
+Bedienungsanleitung:
+</p>
+<h4>
+<u>Gestartet</u> wird mit <u>E1335</u>
+</h4>
+<p>
+Das Programm meldet sich mit FORMAT
+</p>
+<p>
+Folgende Arbeitsgänge können nun
+durchgeführt
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+werden:
+</p>
+<h4>
+<u>Eingabe von Text:</u>
+</h4>
+<p>
+IXXXX, wobei das Argument den Beginn des Textspeichers festlegt.
+Beendet wird diese Routine durch ESC (SHIFT NL) oder durch das
+Schnecken A. Die Routine meldet dann &quot;NEXT MEM AT XXXX&quot;,
+wobei das Argument die Adresse meint, ab der man neuen Text eingeben
+kann.
+</p>
+<h4>
+<u>Lesen von Cassetten:</u>
+</h4>
+<p>
+RXXXX &nbsp; Argument ist Speicherbeginn (oder z B. die oben ausgegebene
+Adresse zum Anhängen des Cassettentextes. Während des Lesens wird der
+Text auf dem Schirm ausgegeben. Das Lesen wird jederzeit gestoppt durch
+Anhalten des Recorders und Eingabe von @ (das ja auf dem Band als
+Endmarkierung benutzt wird. Nun erfolgt ebenfalls die NEXT MEM Anzeige.
+</p>
+<p>
+WXXXX &nbsp; Beschreibt eine Cassette mit dem Text ab XXXX. (Es muß nicht der
+Speicheranfang sein). Nach dem Schreiben wieder die obige Anzeige.
+</p>
+<h4>
+<u>Ändern des Textes (Modify):</u>
+</h4>
+<p>
+MXXXX &nbsp; Die Textzeile ab XXXX wird auf dem Schirm ausgegeben. Ein T dient
+als Cursor. Durch Eintippen beliebiger Tasten wird das entsprechende
+Zeichen geändert, und der Cursor springt zum nächsten. So können leicht
+fortlaufende Wörter geändert werden. Durch &ndash;&gt; wird der Cursor nach
+rechts, mit &lt;&ndash; nach links bewegt, v zeigt die nächste Textzeile, ^
+rückt eine Zeile weiter. Das Ende des Textes wird durch @ markiert.
+Beendet wird die Routine wiederum durch ESC, sie zeigt dann auf dem
+Bildschirm die Adresse des Cursors im Textspeicher an. Falls ein Wort
+getrennt werden muß, zeigt der T Cursor auf das Zeilenende. Mit
+BACKSPACE wird nun der abzutrennende Teil nach rechts geschoben. NL
+trennt ohne, &quot;-&quot; mit Trennungszeichen. Will man die ganze
+Zeile nach dem Hinausschieben von z.B. einem ganzen Wort völlig ändern,
+so gibt man ESC ein und kann mit Hilfe der Cursortasten wie gewohnt
+manipulieren. NL gibt dann die geänderte Zeile an den Drucker. Manchmal
+muß mehrmals NL gedrückt werden, wenn mehr als jeweils ein Space
+eingefügt werden muß.
+</p>
+<p>
+Nachzutragen wäre noch die Funktion zweier Tasten: &ndash;&gt; schiebt den
+Text ab Cursor nach rechts und schafft Platz zum Einfügen, mit &lt;&ndash;
+wird der Text rechts neben dem Cursor nach links geschoben und dadurch
+gelöscht. Besonders angenehm ist das Edititieren natürlich mit der
+Repeatfunktion von NASSYS3.
+</p>
+
+<?php columnEnd(2); ?>

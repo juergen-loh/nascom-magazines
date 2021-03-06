@@ -1,0 +1,145 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+BLS+
+</h1>
+<h3>
+von GÜNTER KREIDL
+</h3>
+<p>
+Will man lange Programme in
+<?php externalLink("Blue Label Software Pascal","BLS-Pascal"); ?>
+schreiben, ist es nicht mehr
+möglich, Quelltext und compilierten Code gleichzeitig im Speicher zu
+haben. Dann bleibt nur der
+Weg über die Cassette, und das dauert.......! Das gleiche
+gilt, wenn man das Programm an eine bestimmte Adresse compilieren will.
+Vorher muß man dann natürlich auch noch den Quelltext abspeichern, und
+das dauert ebenfalls lange. Vor allem das Austesten der Programme wird
+dann sehr zeitraubend. Der Einbau einer zweiten Speicherbank in meinen
+NASCOM (im Artikel
+&quot;<a href="../../04/text/#article2">Huckepack-Bus</a>&quot;
+beschrieben) brachte mich
+auf die Idee, den Umweg über die Cassette einzusparen. Ich wollte den
+Compiler dazu bringen, den Code direkt in die zweite Speicherbank zu
+compilieren. Dazu suchte ich alle Stellen heraus, in denen der
+Compiler auf die Cassettenroutinen von NAS-SYS zurückgreift und fügte
+hier die entsprechenden Änderungen ein. Dabei werden Unterprogramme aus
+einem Block von Banking-Routinen benötigt, die bei mir ab 0D00H im
+Speicher stehen und weiter unten noch näher beschrieben werden. (Aus
+Platzgründen mußte das Listing an
+<a href="../../06/text/#article2">anderer Stelle</a>,
+im Anschluß an den Artikel
+&quot;<a href="../../04/text/#article2">Huckepack-Bus</a>&quot;,
+abgedruckt werden!) Ich habe hier
+einfach die Änderungen aufgelistet, die ich an der Tape-Version
+vorgenommen habe, um die Cassettenroutinen auszuschalten und durch die
+Banking-Routine Bank-Write-Repeat (BWREP) bei 0D34 zu ersetzen. Das
+Programm sollte dann auf der zweiten Speicherbank direkt lauffähig
+sein, doch spielt der Execute-Befehl bei meinem Banking-System nicht
+immer ganz richtig mit (liegt an der Verwendung von Port 0!). Dann
+empfiehlt sich, den Inhalt der beiten Speicherbänke mit BSWAP zu
+vertauschen.
+</p>
+<p>
+Folgende Bytes sind auf 0 zu setzen: 2A96/7, 2AA3/4,
+2B53/4, 2B59/A, 36CF/36D0, 36DD &ndash; F, 36E1/2, 36E4/5, 36E9/A, 36F1-4,
+36F6/7. Zu ändern ist außerdem bei<br>
+36DA: 7D DF 6F in 22 1E 0C<br>
+und bei:<br>
+36EE: DF 6D 79 in CD 34 0D.
+</p>
+<h4>
+BANKING-ROUTINEN
+</h4>
+<p>
+Das
+<a href="../../06/text/#article2">Listing</a>,
+enthält einige Unterprogramme, die von
+Anwenderprogrammen aufgerufen werden können, und einige
+Funktionen, die direkt von NAS-SYS im Kommando-Modus
+aufgerufen werden können.
+</p>
+<p>
+SWITCH schaltet von einer Bank auf die andere.
+</p>
+<p>
+BCOPY schreibt ein Byte von der aktuellen Bank auf die
+andere.
+</p>
+<p>
+BWRITE schreibt ein Byte in die andere Bank an die Adresse
+(0C1E); der Adreß-Zeiger bei C1E wird gleichzeitig
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+inkrementiert.
+</p>
+<p>
+BCREP kopiert einen Block der Länge BC von der aktuellen
+Seite (HL) nach (DE) auf der anderen.
+</p>
+<p>
+BWREP schreibt B Bytes in den Bereich ab (C1E) auf der
+anderen Seite.
+</p>
+<p>
+BSW wird mit &quot;E D3C&quot; aufgerufen und schaltet auf die andere
+Bank.
+</p>
+<p>
+BCOP wird mit &quot;E D41 XXXX YYYY ZZZZ&quot; aufgerufen und kopiert
+einen Block der Länge ZZZZ von XXXX auf der aktuellen Seite nach YYYY
+auf der anderen Seite. BSWAP wird mit &quot;E D5C XXXX YYYY&quot;
+aufgerufen und vertauscht den Block der Lange YYYY ab XXXX auf beiden
+Seiten.
+</p>
+<p>
+<a href="../../06/text/#article1">2P/M</a>
+ist eine kleine Zugabe: mein erster Versuch, 2 Programme
+gleichzeitig laufen zu lassen. Es wird ein CTC-Kanal benötigt, der ca.
+alle 20msec einen Interrupt erzeugt. Dann wird zu der Routine PSW
+verzweigt, die alle Register rettet und auf das Programm in der anderen
+Bank umschaltet. Ich benutze hier die Bank-Urnschaltung; es ist aber
+ebensogut möglich, beide Programme auf einer Speicher-Seite ablaufen zu
+lassen. Dann muß das Unterprogramm SWITCH weggelassen werden. Eine
+interessante (und für die Arbeit am Journal sehr wichtige) Anwendung
+ergab sich für mein Formatierprogramm. Ich formatiere den Text jetzt in
+die zweite Speicherbank und lasse ihn dann von einem im Hintergrund
+laufenden Druckprogramm ausdrucken, während ich z. B. bereits mit dem
+Texteditor neuen Text eingebe. Man startet ein Hintergrund-Programm mit
+&quot;ED7A XXXX YYYY&quot;, wobei XXXX die Startadresse und YYYY die
+Obergrenze des Stacks für das Hintergrundprogramm darstellen. Es müssen
+unbedingt verschiedene Stackbereiche für Vorder- und
+Hintergrundprogramm vorgesehen werden. Für eine eventuelle
+Parameterübergabe empfehlen sich Speicherstellen im Bereich C00-FFF,
+der ja beiden Banks gemeinsam ist.
+</p>
+
+<h1 id="article2">
+ZEAP-Utilities
+</h1>
+<h3>
+von DAVID KASTRUP
+</h3>
+<h4>
+Hilfsprogramme fuer ZEAP:
+</h4>
+<p>
+Shift: ED00 disp line verschiebt die Zeilen ab line um disp nach hinten
+(Wer groessere Programme zu editieren hat, weiss das zu schaetzen).
+</p>
+<p>
+Kommentarkill: Kommentar ueberfluessig.
+</p>
+<p>
+Konvert: E1000 start macht aus ASM-Files ZEAP-Files mit Startadresse
+start.
+</p>
+<p>
+G-Entferner: Programme, die mit dem G-Befehl aufgezeichnet worden sind,
+lassen sich damit laden ohne gestartet zu werden. Gibt man Exxxx disp
+so wird (bei NASSYS&nbsp;3&nbsp;) mit Displacement geladen.
+</p>
+
+<?php columnEnd(2); ?>

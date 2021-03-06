@@ -211,7 +211,7 @@ function valignEnd()
 
 function nowrapStart($style = "")
 {
-	echo "<!-- nowrap Start --><div class=\"tupel-nowrap\"";
+	echo "<!-- nowrap Start --><div class=\"style-nowrap\"";
 	if ($style != "") {
 		echo " style=\"$style\"";
 	}
@@ -224,7 +224,7 @@ function nowrapEnd()
 
 function invertedSignal($signal)
 {
-	echo "<!-- inverted signal --><span class=\"tupel-inverted-signal\">$signal</span>";
+	echo "<!-- inverted signal --><span class=\"style-inverted-signal\">$signal</span>";
 }
 
 function DivWithStyle($border, $style = "", $class = "")
@@ -282,7 +282,7 @@ function boxStart($border = "", $style = "", $class = "")
 function boxStartNowrap($border = "", $style = "", $class = "")
 {
 	echo "<!-- Kasten &uuml;ber ganze Spalte: Start -->";
-	DivWithStyle($border, "width: 100%; $style", "tupel-nowrap $class");
+	DivWithStyle($border, "width: 100%; $style", "style-nowrap $class");
 }
 function boxStartJustify($border = "", $style = "", $class = "")
 {
@@ -1335,12 +1335,12 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	}
 ?>
 <body>
-	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light tupel-navbar-top" id="top">
+	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light style-navbar-top" id="top">
 <?php
 		if (is_file($_SERVER['DOCUMENT_ROOT']."/favicon.ico")) {
 			echo <<<HEREDOC
 		<a class="navbar-brand" href="/">
-			<img src="/favicon.ico" title="Tupel BBS" alt="Tupel BBS">
+			<img src="/favicon.ico" width="32" height="32" alt="Home">
 		</a>
 		<button
 			class="navbar-toggler"

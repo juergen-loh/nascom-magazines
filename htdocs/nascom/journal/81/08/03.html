@@ -1,0 +1,110 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+FORTH für den NASCOM
+</h1>
+<h3>
+von Günter Kreidl
+</h3>
+<p>
+Es soll hier nicht wieder, wie es leider schon häufiger im
+NASCOM-JOURNAL geschehen ist, auf mehreren Seiten ein Programm
+ausführlich beschrieben werden, das dann anschließend zum Kauf
+angeboten wird. Andererseits wird hier auch kein
+&quot;betriebsfertiges&quot; FORTH-System vorgelegt, das man nur noch
+einzutippen braucht. Vielmehr verstehe ich diesen und die folgenden
+Beiträge als Einladung an die Leser, gemeinsam ein solches FORTH-System
+zu entwickeln. Um eine Grundlage zu haben, wird in diesem Heft zunächst
+der prinzipielle Aufbau von FORTH erläutert. Im 
+<a href="../../../09/10/text/#article1">nächsten Heft</a>
+erscheint dann das
+<a href="../../../09/16/text/#article1">Assemblerlisting</a>
+einer &quot;Schmalspurversion&quot; bzw.
+eines TINY FORTH, das wir dann gemeinsam ausbauen und verbessern wollen.
+</p>
+<h4>
+&quot;Fädelcode&quot;
+</h4>
+<p>
+Wer öfters größere Programme in Assembler oder Maschinensprache
+schreibt, hat sich vielleicht eine Bibliothek von Routinen
+zusammengestellt, die dann universell einsetzbar sind. Große Teile
+eines solchen Programms sehen dann oft so aus:
+</p>
+<p>
+CALL Routine1<br>
+Registeranpassung<br>
+CALL Routine2<br>
+Registeranpassung usw.
+</p>
+<p>
+Unter Registeranpassung wird hier alles verstanden, was mit dem Retten
+von Registerinhalten über die PUSH-Befehle und der Übergabe von
+Parametern zwischen den Unterprogrammen zusammenhängt. Wenn man nun
+statt der individuellen Registeranpassungen ein Standardsystem der
+Parameterübergabe einführt, vereinfacht sich das Programm erheblich.
+Nehmen wir einmal an, alle Parameter werden über den Stack übergeben.
+Da dann auch keine Registerinhalte mehr gerettet werden müssen, besteht
+das Programm nur noch aus Unterprogrammaufrufen:
+</p>
+<p>
+CALL Routine1<br>
+CALL Routine2 usw.
+</p>
+<p>
+Jetzt kann man sich aber auch noch den CALL-Befehl selbst sparen, wenn
+man stattdessen eine Routine einführt, die eine Reihe von aufeinander
+folgenden Adressen eben als Adressen von Un&shy;ter&shy;pro&shy;gram&shy;men
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+interpretiert. Wir brauchen also einen kleinen INTERPRETER, der diesen
+speziellen Code, der nur aus einer Aneinanderreihung von Adressen von
+Unterprogrammen besteht, abarbeiten kann. Dieser kleine Interpreter,
+der nicht mehr als ca. 50 Bytes Speicherplatz belegt, und dieser
+spezielle Code, den man im Englischen THREADED CODE nennt, was ich hier
+mit Fädelcode übersetzt habe, bilden das Kernstück von FORTH. Der
+Interpreter ist wesentlich kleiner als bei anderen &quot;höheren&quot;
+Programmiersprachen und wesentlich schneller (etwa 10 x so schnell wie
+ein Basic-Interpreter).
+</p>
+<h4>
+Bestandteile von FORTH
+</h4>
+<p>
+Woraus besteht also die Programmiersprache FORTH? Zunächst einmal aus
+einer Bibliothek von Routinen in Maschinensprache (sogenannten
+&quot;Primitives&quot;). Aus diesen Routinen sind dann weitere Routinen
+im Fädelcode zusammengesetzt. Beide Arten von Routinen können von dem
+oben beschriebenen Interpreter aufgerufen werden. Diesen
+THREADED-CODE-INTERPRETER wollen wir den internen Interpreter nennen,
+denn das System verfügt noch über einen anderen, den äußeren oder
+Benutzerinterpreter, der interaktiv die Eingaben des Anwenders (Text
+oder Zahlen) in Startadressen für den internen Interpreter umwandelt.
+Der dritte Bestandteil von FORTH ist ein Compiler, der es ermöglicht,
+der Sprache weitere Befehle als Threaded-Code -Routinen hinzuzufügen.
+Ein ausgebautes FORTH-System enthält darüber hinaus noch einen Editor
+und einen Assembler &ndash; und das alles in 5 &ndash; 6 K Speicherplatz.
+</p>
+<h4>
+Der interne Interpreter
+</h4>
+<p>
+Der interne Interpreter imitiert gewisse Funktionen der CPU. Dazu
+braucht er einen Programmzähler und einen eigenen Stack. Programmzähler
+und Stackpointer befinden sich im Speicher, da die entsprechenden
+CPU-Register natürlich anderweitig benutzt werden. Seine Funktion ist
+einfach: er holt die nächste Adresse (aus dem Fädelcode!) aus dem
+Speicher und führt einen Sprung dorthin aus. Diese Adresse ist entweder
+die Adresse einer Routine in Maschinensprache &ndash; diese wird dann
+ausgeführt und endet nicht mit einem Return-Befehl sondern mit einem:
+</p>
+<p>
+JP NEXT (der Name des Interpreters)
+</p>
+<p>
+&ndash; oder die Adresse einer Routine im Fädelcode. Eine solche muß
+stets mit einer
+</p>
+
+<?php columnEnd(2); ?>

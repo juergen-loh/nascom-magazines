@@ -1,0 +1,91 @@
+<?php columnStart(1); ?>
+<h1 id="article1">hardware</h1>
+<?php columnEnd(1); ?>
+
+<?php columnStart(2, 2); ?>
+
+<h4><u>Sporadische Speicherfehler</u></h4>
+
+<p>
+<u>1. Was ist das?</u>
+</p>
+<p>
+Wer seine Geräte selbst baut, wird den Unterschied zwischen
+&quot;systematischen&quot; und &quot;sporadischen&quot; Fehlern
+zu Genüge kennen. Ein systematischer Fehler ist in einem Gerät
+vorhanden und tritt dann immer in einem bestimmten
+Betriebszustand auf. Man hat seine Auswirkungen so immer in
+gleicher Weise vor Augen. Die Fehlersuche ist oft vergleichsweise
+einfach und vor allem überschaubar zu planen.
+</p>
+<p>
+Die eigentliche Tücke liegt in den sporadischen Fehlern, die
+nur manchmal auftreten und deswegen so schwer zu finden sind.
+</p>
+<p>
+Sporadische Speicherfehler sind solche &quot;Dreckeffekte&quot;.
+Sie treten bei etwa 10% der NASCOM-Speicherkarten auf. Das wirkt
+sich z.B. so aus, daß man einige Speicherzellen mit einem Wert
+beschreibt. Dann schaut man die vorher geschriebenen
+Speicherzelleninhalte an und muß feststellen, daß sie sich verändert
+haben. Typisch ist auch, daß man mithilfe des M-Befehles jede
+Speicherzelle beschreiben und lesen kann, ohne daß etwas
+passiert. Die Inhalte stimmen immer. Füllt man den Speicher aber
+z.B. mithilfe eines COPY-Befehles (C), so enthalten einige
+Speicherzellen hinterher falsche Werte. Angesichts solcher
+Erfahrungen packt manchen
+Zeit&shy;ge&shy;nos&shy;sen das kalte Grausen und er
+fragt sich:
+</p>
+
+<p>
+<u>2. Wie identifiziert man sporadische Speicherfehler?</u>
+</p>
+
+<p>
+Das braucht garnicht so einfach zu sein, ist aber immer
+mach&shy;bar. Oftmals laufen die beiden Speichertest, die im
+Aufbauhandbuch beschrieben sind, einwandfrei. Meist funktioniert
+auch das TINY BASIC ohne Probleme. Sowohl die Speichertests, als
+auch das TINY BASIC übertragen aber nur Bytes in den Speicher
+und holen Werte aus dem Speicher.
+</p>
+<p>
+Hat man nun aber ein Programm, das in dem verdächtigen
+Bereich liegt, so kann sich ein Fehlerverhalten zeigen. Denn es
+wird beim Programmablauf bei jedem Op-Code -Fetch ein M1-Zyklus
+ausgeführt. Der zeitliche
+
+<?php columnChange(2, "</p>", "<p>"); ?>
+
+Ablauf für einen solchen Op-Code &ndash; Fetch
+ist aber sehr viel störempfindlicher als das simple Ein/Auslagern
+von Bytes im Speicher. Deshalb können Sie zum Speichertest auch
+sehr gut große Programme verwenden, die ins RAM geladen werden.
+Gut geeignet sind der
+Cas&shy;set&shy;ten-Assembler ZEAP oder das 8k TAPE
+BASIC. Eben&shy;so gut geeignet ist das nachfolgend angegebene
+Programm von Uwe Wurditsch, Überlingen:
+</p>
+
+<p>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-07-1.gif"); ?>
+</p>
+
+<p>
+Das Programm wird bei Adresse 0D00 gestartet. Als
+Pa&shy;ra&shy;me&shy;ter muß
+man angeben, ab welcher Adresse getestet werden soll und wie
+lange der getestete Block sein soll. Beide
+Ein&shy;ga&shy;ben erfolgen wie
+gewohnt hexadezimal. Will man z.B. einen Block von 8k testen, der
+bei Adresse 1000H beginnt, so gibt man an:
+</p>
+
+<pre>      E0D00 1000 2000 nl</pre>
+
+<p>
+&quot;nl&quot; steht für NEWLINE.
+</p>
+
+<?php columnEnd(2); ?>

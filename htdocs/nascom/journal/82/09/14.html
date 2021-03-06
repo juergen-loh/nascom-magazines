@@ -1,0 +1,132 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1" class="donthyphenate">
+Seite(n) für Einsteiger
+</h1>
+<h3>
+von Günter Böhm
+</h3>
+<h4>
+NASBUG/NASSYS
+</h4>
+<p>
+Immer noch geistern Unmengen von Programmen herum, die ursprünglich für
+das Betriebssystem NASBUG&nbsp;T2 oder T4 geschrieben wurden. Die meisten
+Leser haben aber inzwischen auf NASSYS umgestellt, und da verwundert es
+nicht, daß der Wunsch geäußert wird, doch einmal zu erklären, wie man
+ein Programm für das neue Betriebssystem umschreibt. Dies soll
+hiermit geschehen. Was sind eigentlich die grundsätzlichen Unterschiede
+zwischen den Betriebssystemen NASBUG und NASSYS?
+</p>
+<p>
+1. Die NASBUG-Programme können bei C50 beginnen (und tun es auch meist,
+um die Kapazität des Speichers der Grundversion NASCOM1 voll
+auszunutzen). NASSYS benötigt aber selbst einen Speicher bis C7F,
+weshalb die Programme erst ab C80 beginnen können. Ein NASBUG Programm
+muß also zunächst verschoben werden. Wer einen Disassembler besitzt
+(NASDIS), kann den Maschinencode (das sind diese unendlichen Reihen von
+Ziffern und Buchstaben&nbsp;) disassemblieren und dadurch in eine lesbarere
+Form umwandeln. Der so entstandene Assemblertext kann mit Hilfe eines
+Assemblers (ZEAP oder ASM) durch einfaches Umschreiben der
+Ursprungsadresse (ORG=origin=Ursprung) auf eine beliebige Adresse
+gelegt werden. Noch schöner ist es selbstverständlich, wenn ein
+Programm schon im Assembler vorliegt. Die Möglichkeit, relativ einfach
+Veränderungen an einem Programm vorzunehmen, ist auch der Grund,
+weshalb wir Programme bevorzugt in dieser Form veröffentlichen. Was
+macht man aber, wenn man weder Disassembler noch Assembler besitzt? In
+ersterem Fall bleibt nichts anderes übrig, als in mühsamer Kleinarbeit
+unter Benutzung des
+<?php externalLink("Z80"); ?>
+Manuals den Maschinencode Stück für Stück in
+Assembler zu übersetzen. Die einfachste Art., das Programm dann per
+Hand zu verschieben, ohne unnötige Fehler zu machen, wäre dann wohl,
+vor jede Adresse eine 1 zu schreiben, Dadurch ist das Programm, was
+seine Lage im Speicher betrifft, mit NASSYS lauffähig.
+</p>
+<p>
+Zum besseren
+Verständnis hier ein praktisches Beispiel:
+</p>
+<h4>
+Maschinencode (Hexdump)
+</h4>
+<pre>
+ 0C50  3E FE
+ 0C52  32 03 0F<?php columnChangeJustify(2, "</pre>", "<pre>"); ?>
+ 0C55  3E 05
+ 0C57  32 07 0F
+ 0C5A  EF 1E 00
+ 0C5D  21  5F 0F
+ 0C60  11 CA 0B
+ 0C60  11 CA 0B
+ 0C63  01 0C 00
+0C66 CD 01 0D
+</pre>
+<p>
+(Bis auf die letzte Zeile ist das Hexdump dem
+<a href="../../../../81/02/07/text/#article1">Morsetrainer</a>
+von Herrn
+Toss entnommen. Die weiteren Beispiele stammen aus demselben Programm).
+</p>
+<h4>
+Disassemblierter Text:
+</h4>
+<p>
+0C50  LD A,-2<br>
+0C52 LD(F03),A; (Wer den Original-Quelltext besitzt liest hier LD
+(Klang+1),A. Durch den Namen, der der Adresse gegeben wurde (Label),
+wird das Programm verständlicher. Man weiß dann sofort, daß diese
+Speicheradresse etwas mit der Tonausgabe zu tun haben muß).
+</p>
+<p>
+0C55  LD A, 5<br>
+0C57  LD (F07),A<br>
+0C5A RST 40&nbsp;; (Die RESTART Befehle springen an eine bestimmte Adresse
+im Monitor. Zum Glück sind sie bei allen NASCOM Betriebssystemen gleich
+und bereiten keine Schwierigkeiten. RST 40 ruft die Stringausgabe auf
+den Bildschirm auf (PRS=Print String).
+</p>
+<p>
+0C5B 1E (T4 Clear Screen; das lautet bei NASSYS 0C. Unterschiedlich ist
+auch 1F &ndash; New Line, das bei NASSYS 0D heißen muß. Alle anderen
+Bildschirmsteuerbefehle sind gleich).
+</p>
+<p>
+0C5C 00 Ende des Strings. ZEAP würde beide Befehle als DEFW (Definiere
+Wort) 1E darstellen.
+</p>
+<p>
+0C5D  LD HL,F5F (im Original LD HL,Titel)<br>
+0C60 LD DE,0BCA<br>
+0C63  LD BC,12<br>
+0C66 LDIR<br>
+0C68  Call 0D01 (rufe Unterprogramm)
+</p>
+<p>
+Durch die Eingabe ORG L1000 würde
+der Assembler die Adressen automatisch verschieben:
+</p>
+<p>
+0C50 = 1000<br>
+0C52 = 1002<br>
+0C55 = 1005 und so weiter.
+</p>
+<p>
+Die vorgeschlagene Änderung per Hand ergäbe:
+</p>
+<p>
+0C50 = 1C50
+</p>
+<p>
+0C52 = 1C52 und so weiter (man denkt sich eben immer die EINS dazu).
+</p>
+<p>
+So geschieht das auf dem Papier. Liegt das Hexlisting auf Cassette vor,
+so kann es eingelesen und durch einen &quot;COPY&quot;-Befehl leicht
+verlegt werden. Im Beispiel:
+</p>
+<p>
+CC50 1C50 XXXX
+</p>
+
+<?php columnEnd(2); ?>

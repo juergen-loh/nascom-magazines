@@ -1,0 +1,119 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+HARDWARE TIPS
+</h1>
+<h3>
+VON Otto Fößel
+</h3>
+<p>
+Der nachfolgende Artikel von Otto Fößel führt den Gedanken,
+die CPU durch
+<?php invertedSignal("WAIT"); ?> anzuhalten,
+welchen Josef Zeller im
+<a href="../../../09/05/text/#article1">letzten Heft</a> geäußert
+hat, konsequent weiter. Durch die vorgeschlagene Schaltung ist es
+möglich, die CPU bei jedem
+<?php invertedSignal("MREQ"); ?> oder
+<?php invertedSignal("IOREQ"); ?> &ndash; Zyklus durch den
+<?php invertedSignal("WAIT"); ?> anzuhalten.
+Man sollte noch anmerken, daß während des
+<?php invertedSignal("WAIT"); ?> &ndash; Zyklus
+von der CPU kein Refresh ausgeführt wird, dynamische RAMs also ihre
+Information verlieren.
+</p>
+<p>
+Die nachfolgende Beschreibung soll all denjenigen helfen, die ratlos
+vor ihrer nicht funktionierenden Platine stehen und nicht wissen, wie
+und wo man jetzt mit der Fehlersuche beginnen könnte. Es wird gezeigt,
+wie man alleine mit einem Vielfachmeßgerät, der kleinen Schaltung im
+Bild und ein bißchen Überlegung sehr viele Fehler finden kann.
+</p>
+<p>
+Als Erstes wird sich eine optische Kontrolle anbieten: sind alle Bauteile
+dort, wo sie hingehören, sind alle ICs richtig eingesetzt, alle
+IC-Beinchen im Sockel, alle notwendigen Durchkontaktierungen und
+Lötbrücken gemacht, befinden sich irgendwo noch Reste von Lötzinn, die
+Kurzschlüsse verursachen könnten usw. Dann mit dem Voltmeter: sind die
+Betriebsspannungen in Ordnung, und kommt die Betriebsspannung auch an
+allen ICs an? Wenn man bis hierher noch nichts Ungewöhnliches
+feststellen konnte, hilft erst einmal Nachdenken. Woran kann es liegen,
+daß sich nach dem Reset nicht das Erwartete tut. 1.) Es könnten
+Leitungsbahnen unterbrochen oder schlecht durchkontaktiert sein 2.)
+Kurzschlüsse mit anderen Leitungsbahnen 3.) defekte ICs bzw, Bauteile.
+Die Möglichkeit von dynamischen Fehlern soll hier nicht in Betracht
+gezogen werden, da sie erstens viel seltener vorkommen und mit
+einfachen Mitteln sowieso nicht behoben werden können. Außerdem soll
+davon ausgegangen werden, daß die Systemsoftware (Betriebsprogramm) in
+Ordnung ist.
+</p>
+<p>
+Bei dem Durcheinander von Leitungsbahnen wird man es schnell aufgeben,
+mit dem Ohmmeter alle Leitungen zu verfolgen bzw. Kurzschlüsse mit
+allen möglichen Nachbarleitungen zu suchen. Auch das Testen der ICs
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+scheint auf dem ersten Blick mit dem Vielfachinstrument nicht möglich.
+An diesem Punkt soll deshalb die kleine Schaltung (siehe Bild) zum
+Einsatz kommen.
+</p>
+<p>
+Die Schaltung wird folgendes bewirken: der Prozessor,
+der mit einer Taktfrequenz von 2&nbsp;MHz arbeitet und ein ruhiges
+Beobachten der Signale unmöglich macht, soll in den entscheidenden
+Augenblicken angehalten werden, so daß alle Signale, die irgendwo auf
+einer Leitung liegen, eingefroren werden und dann in aller Ruhe mit dem
+Vielfachmeßinstrument überprüft werden können.
+</p>
+<p>
+Dieses Anhalten
+geschieht mit dem Anlegen eines Null-Pegels an den Eingang
+&quot;<?php invertedSignal("WAIT"); ?>&quot;
+des Mikroprozessors bei jedem
+<?php invertedSignal("MREQ"); ?> oder
+<?php invertedSignal("I/O-REQ"); ?>.
+Erzeugt wird dieses Signal vom D-FF&nbsp;1 durch Rücksetzen am
+CLEAR-Eingang. Dieser CLEAR Eingang bekommt dafür vom Monoflop MF&nbsp;1 bei
+jedem
+<?php invertedSignal("MREQ"); ?> oder
+<?php invertedSignal("IOREQ"); ?> einen
+kurzen Impuls. Durch Schließen von S1 wird
+dieser Impuls verhindert und folglich auch kein
+<?php invertedSignal("WAIT"); ?> Signal an FF1
+erzeugt.
+</p>
+<p>
+Möchte man jetzt, daß der Mikroprozessor genau einen Schritt
+weiterarbeitet, d.h. bis zum nächsten Speicher- oder I/O-Zugriff, so
+wird die Taste S2 kutzgeschlossen. Sie erzeugt ein Taktsignal an FF1
+und schaltet somit die log. &quot;1&quot; vom Eingang zum Ausgang Q
+durch, d.h.
+<?php invertedSignal("WAIT"); ?> = 1.
+Aber schon beim nächsten
+<?php invertedSignal("MREQ"); ?> wird wieder ein
+CLEAR-Impuls erzeugt und der Prozessor über FF1 erneut gestoppt.
+</p>
+<p>
+Der erste Vorteil dieser Schaltung ist ihre Einfachheit und folglich
+auch der problemlose Nachbau&nbsp;. Zweitens kann sie ebenso einfach an den
+Mikrocomputer angeschlossen werden, Indem man die drei Leitungen
+<?php invertedSignal("MREQ"); ?>,
+<?php invertedSignal("IOREQ"); ?> und
+<?php invertedSignal("WAIT"); ?> anzapft.
+Einfacher geht es nicht!
+</p>
+<p>
+Aber jetzt zum Messen. Wie können Leitungsunterbrechungen und
+Kurzschlüsse mit dem Voltmeter erkannt werden? Kurzschlüsse werden wir
+immer erkennen, wenn auf der Leitung eine log.&quot;1&quot; liegen
+soll, aber durch eben einen Kurzschluß mit einer Nachbarleitung auf
+eine Spannung kleiner 2V gezogen wird. Ähnlich ist es bei
+Leitungsunterbrechungen. Hier wird der Eingang an dem das Signal
+ankommen soll infolge der Unterbrechung &quot;in der Luft hängen&quot;.
+Da wir es fast ausschließlich mit TTL- Eingängen zu tun haben, wird
+sich dort eine Spannung zwischen 1 und 2 Volt einstellen. Also auf
+jeden Fall kein
+</p>
+
+<?php columnEnd(2); ?>

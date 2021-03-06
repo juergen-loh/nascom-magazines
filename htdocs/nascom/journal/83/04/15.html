@@ -1,0 +1,142 @@
+<?php columnStartJustify(2, 2); ?>
+
+<h1 id="article1">
+Einsteiger-Seite
+</h1>
+<h3>
+von GÜNTER BÖHM
+</h3>
+<p>
+Im <a href="../../../../82/09/14/text/#article1">NASCOM Journal 9/82</a>
+wurde auf dieser Seite begonnen, etwas Licht in
+das Verschieben von Programmen zu bringen. Als Beispiel diente damals
+der &quot;Morsetrainer&quot; von Dieter Thoss
+(<a href="../../../../81/02/07/text/#article1">N.J. 2/81</a>). Das
+<a href="../../../02/12/text/#article1">80-Bus Journal 2/83</a>
+brachte die Gegenüberstellung der Unterprogrammaufrufe
+T2/4 und NASSYS. Damit war es Ihnen möglich, den
+&quot;Morsetrainer&quot; für NASSYS umzuschreiben. Hier nun die
+umgeschriebene Version mit Start bei 1C50.
+</p>
+<p>
+Das Programm lohnt auch von
+solchen Lesern eingetippt zu werden, die an den
+&quot;Verschiebereien&quot; kein Interesse haben. Zum Einsteigen in das
+Morsen mit gesteigerten Schwierigkeitsgraden eignet es sich optimal.
+Benutzeranweisung und Anschluß des kleinen Lautsprecherinterfaces, das
+eine Klangkontrolle ermöglicht, finden Sie in der oben genannten alten
+<a href="../../../../81/02/07/text/#article1">N.J. Ausgabe</a>.
+Falls bei neuen Lesern Interesse besteht, könnten wir
+dies aber nochmals nachliefern.
+</p>
+<p>
+Die speziellen T4 Routinen, die von dem Programm benutzt wurden und
+geändert werden mußten, sind folgende:
+</p>
+<pre class="donthyphenate">
+RDEL CD3500   &ndash; RDEL FF (RST #38)
+KBD  CD6900   &ndash; DF62     SCAL IN
+CHIN CD3E00   &ndash; RIN  CF (RST 8 )
+CURSORADRESSE C18  &ndash; C29
+CLEAR SCREEN  1E   &ndash; 0C
+</pre>
+<p>
+Dazu kamen natürlich eine Menge Sprünge und CALLs, zu deren High-Byte
+10 addiert werden mußte.
+</p>
+
+<?php columnChangeJustify(2); ?>
+
+<p>
+Nun zu einem völlig anderen Thema: Einige Leser hatten Schwierigkeiten,
+die Treiberroutinen für ihren Fernschreiber oder Drucker in NASCOM
+Programme einzubinden. So stand mancher hilflos da, wenn er ein BASIC
+Programm oder Assemblerlisting ausdrucken wollte. Beide Anwendungen
+sind aber sehr einfach (wenn man&rsquo;s weiß).
+</p>
+<h4>
+BASIC
+</h4>
+<p>
+Sie laden die Adresse $UOUT (Benutzerausgabe) mit der Anfangsadresse
+Ihres Druckerprogrammes wxyz. Das kann durch Modify geschehen
+</p>
+<pre class="donthyphenate">
+M0C77 yz
+0C78 wx
+</pre>
+<p>
+oder Sie benutzen dazu ein kleines Programm
+</p>
+<pre class="donthyphenate">
+21 yzwx 22 78 0C DF 5B
+</pre>
+<p>
+Nach dem Modify oder Programmstart können Sie durch Drücken der U-Taste
+Ihr Druckerprogramm &quot;einschalten&quot;, d.h. bei jeder
+Bildschirmausgabe wird auch gedruckt. Nun springen Sie ins BASIC, und
+auch Ihr LIST wird vom Drucker mitgeschrieben.
+</p>
+<p>
+Das Eintragen in $UOUT kann auch vom BASIC aus gemacht werden:
+</p>
+<p>
+DOKE3192,WXYZ (diesmal als Dezimalzahl)
+</p>
+<p>
+Wenn Sie in die Adresse 47
+dez. &quot;DOKEn&quot;, wird der Drucker wieder abgeschaltet.
+</p>
+<p>
+Ein RESET schaltet die Routine jedenfalls immer aus, danach muß auch
+$UOUT immer wieder neu geladen werden. Ein Ausschalten, das sich wieder
+durch einfaches U rückgängig machen läßt, ist durch die Taste N möglich.
+</p>
+<h4>
+ZEAP 2.0
+</h4>
+<p>
+Hier ist das Einbinden eines Druckprogramms noch viel
+einfacher. Die Adresse OUTCH 0F05/06 (OUT CHARACTER)
+</p>
+<?php columnEnd(2); ?>
+
+<?php columnStartJustify(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-1.jpeg"); ?>
+<?php columnChangeJustify(3); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-2.jpeg"); ?>
+<?php columnChangeJustify(3); ?>
+<?php boxStart("R"); ?>
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-15-3.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<p>
+zeigt auf eine Routine, die die Zeichen direkt zum seriellen Ausgang
+gibt. Haben Sie dort Ihren Drucker angeschlossen, brauchten Sie im
+Idealfall keine weiteren Manipulationen zu unternehmen. Ist aber der
+Einsatz eines Druckprogramms notwendig, so ändern Sie die beiden Bytes
+in OUTCH einfach in die Anfangsadresse Ihres Druckprogramms um. Das ist
+alles.
+</p>
+<pre class="donthyphenate">
+M0F05 yz
+0F06 wx
+</pre>
+<p>
+Bei einem Kaltstart des ZEAP wird diese Adresse wieder verändert. Den
+ZEAP also vor dem Eintragen erst einmal kaltstarten und dann die
+Änderung am besten mit dem : (COMMAND) machen. Diese Möglichkeit bieten
+ja die meisten Versionen. Wenn diese kleinen Tips helfen, daß Ihr
+Drucker läuft, können Sie uns ja einige Programme schicken, wir
+brauchen immer &quot;Stoff&quot; (allerdings vielleicht doch besser auf
+Cassette)!
+</p>
+<p>
+Im Augenblick hoffen wir, daß die dringendsten Bedürfnisse der
+&quot;Einsteiger&quot; befriedigt sind. Falls Sie aber noch Hilfen auf
+dem einen oder anderen Gebiet benötigen, so schreiben Sie uns doch
+bitte. Wir sind zwar recht flexibel, aber mit dem Hellsehen will es
+immer noch nicht klappen.
+</p>
+
+<?php columnEnd(3); ?>

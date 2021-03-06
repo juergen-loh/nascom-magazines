@@ -1,0 +1,101 @@
+<?php columnStartJustify(2, 2); ?>
+
+<p>
+der Datenblock vollständig übertragen wurde, unabhängig von RDY. Hier
+muß eine kleine Einschränkung beim Benutzen von dynamischen Rams
+gemacht werden. Da die Speicherzellen bei Drams alle 2 msec
+aufgefrischt werden müssen, darf die CPU nicht länger angehalten werden.
+</p>
+<p>
+Eine Besonderheit des
+<?php externalLink("Z80 DMA","Z80-DMA"); ?>
+stellt seine Eigenschaft dar, durch
+entsprechende Programmierung das Timing-Verhalten bei Zugriffen auf die
+Ports zu manipulieren. Das READ/WRITE-Timing kann den Zugriffszeiten
+der Speicher und I/O-Bausteine angepaßt werden. Eine Optimierung der
+Datenübertragung ist damit zu erreichen. Die CPU benötigt für
+Speicherzugriffe 3 und für I/O-Zugriffe 4 Taktzyklen. Nach dem RESET
+weist der DMA gleiches Timing-Verhalten auf. Die Schreib/Lese-Zyklen
+sind durch Programmierung des DMA auf 2-4 Taktzyklen einstellbar. Bei
+den heute üblichen Rams mit Zugriffszeiten von 200 nsec sind Zugriffe
+mit 2 Taktzyklen ausreichend. Bei Zugriffen auf Z80-I/O-Bausteine ist
+das Standard-Timing einzustellen, da sie für dieses Verhalten
+ausgelegt sind. Über WAIT kann natürlich der Zugriff auf extrem
+langsame Hardware beliebig verlängert werden. Der DMA kann maximale
+Datenübertragungsraten von 1&nbsp;MHz und Suchraten von 2&nbsp;MHz in der
+Z80A-Version erreichen.
+</p>
+<p>
+Eine weitere Eigenschaft ist die Option
+&quot;Auto Restart&quot;. Der DMA wird nach der Übertragung eines
+Blocks veranlaßt, die Port-Startadressen und den Blockcounter
+zurückzusetzen. Der DMA kann ohne Belastung der CPU seine Arbeit erneut
+aufnehmen. Dies ist für Operationen notwendig, die zyklisch wiederholt
+werden müssen, wie z.B. der Bildschirmspeicherrefresh. Beim Suchen
+wird während des Vergleichs bereits das nächste Byte gelesen
+(Pipeline-Architektur).
+</p>
+<h4>
+2) Programmbeispiele
+</h4>
+<p>
+Zum Schluß soll nun die Programmierung des DMA anhand von
+Programmbeispielen gezeigt werden. Das
+<a href="../../../07/49/text/#article1">Programm 1</a>
+(COPY) zeigt, wie
+Speicherbereiche kopiert werden,
+<a href="../../../07/49/text/#article1">Programm 2</a>
+(SEARCH) die Suche nach
+einem Byte und
+<a href="../../../07/50/text/#article1">Programm 3</a>
+(TRASEA) wird genauer besprochen, da in
+diesem Programm fast alle Optionen, die der DMA anbietet, realisiert
+sind. Es sei folgende Problemstellung gegeben: Der DMA soll von einem
+Peripherie-Baustein (Input) Daten blockweise (256 Bytes) in den
+Hauptspeicher laden, bis die &quot;End of Transmission&quot; Marke
+erreicht wird. Der CPU
+
+<?php columnChangeJustify(2, "</p>", "<p>"); ?>
+
+wird über Interrupt mitgeteilt, wann ein Block gelesen oder die
+EOT-Marke erreicht wurde. Das Programm TRASEA wird vom Hauptprogramm
+aufgerufen und initialisiert den DMA durch Steuerworte. Der DMA wird
+wie ein I/O-Baustein über eine 8-Bit-Adresse angesprochen.
+</p>
+<p>
+Der DMA verfügt über insgesamt 27 WRITE-Register, die in je 7
+Hauptregister (WR0 &ndash; WR6) eingeteilt sind, denen insgesamt 14 weitere
+WRITE-Register untergeordnet sind. In TRASEA werden am Anfang die
+Register in den Stack gerettet, anschließend die Interruptvektoren
+geladen und über den OTIR-Befehl die Steuerworte in der Kommandotabelle
+3 zum DMA ausgegeben. Die CPU kehrt dann ins aufrufende Programm
+zurück, währen der DMA simultan dazu seine Arbeit aufnimmt. In der
+Kommandotabelle sind nun sämtliche Steuerworte abgelegt, mit denen der
+DMA programmiert wird. Sie beginnt immer mit einem &quot;RESET
+DMA&quot;&nbsp;, um den DMA in einen definierten Ausgangszustand zu setzen.
+In WR0 wird die Funktionsart festgelegt, hier: Übertragung/Suche von
+Port A nach Port B. Als nächstes folgen die Startadresse von Port A und
+der Blocklängenzähler. Im Beispiel steht für Port A die Input-Adresse
+000BH und die Blocklänge 00FFH. Für die Adresse von Port A wäre
+ausreichend, nur 0BH anzugeben. Unter Umständen kann aber beim Auslesen
+vom Port-A-Counter das High Order Byte einen falschen Wert aufweisen.
+WR1 legt nun das Verhalten von Port A fest. Hier wird Port A durch eine
+1 in Bit 3 als I/O definiert. Die Bits 4 und 5 legen fest, ob der
+Port-Counter incrementiert oder decrementiert wird oder einen festen
+Wert erhält (I/O: Adresse fest). Bit 6 auf 0 setzt das Timing von Port
+A in den Standardzustand. Analog wie WR1 bezieht sich WR2 auf Port B.
+Port B wird in WR2 definiert als Memory, der Port-Counter wird
+incrementiert, und durch Bit 6 auf 1 weiß der DMA, daß durch das
+folgende Byte das Timing von Port B programmiert wird. In diesem Byte
+wird festgelegt, daß Port B immer mit 2 Taktzyklen auf den Speicher
+zugreift. In WR3 folgt das &quot;Match-Byte&quot;&nbsp;, nach dem gesucht
+werden soll. WR4 legt die Betriebsart fest (hier Byte Mode) und gibt
+an, ob die Startadresse von Port B, der Interruptvektor und die
+Interrupt-Kontrollregister folgen. Nach WR4 wird nun die Port-B-Adresse
+ausgegeben (hier 4000H, d.h. ab der Adresse 4000H werden die
+eingelesenen Daten abgespeichert), gefolgt vom
+Interrupt-Kontrollregister, das definiert, bei welchen Bedingungen ein
+Interrupt erzeugt wird. Hier wird
+</p>
+
+<?php columnEnd(2); ?>

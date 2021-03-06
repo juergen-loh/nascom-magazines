@@ -1,0 +1,168 @@
+<?php columnStart(2, 22); ?>
+
+<p>
+Viele Leser werden sich gefragt haben, was die
+Zahl 1905 zu sagen hat, die oben immer zwischen
+den Zeilen steht.
+</p>
+<pre class="donthyphenate">
+4096
+-CLEAR
+1905
+-TEXT
+</pre>
+<p>
+Da war sie schon wieder. Des Rätsels Lösung:
+Der Interpreter gibt immer den obersten aktuellen
+Stack-Wert aus, wenn er einen Befehl ausgeführt
+hat und dann &quot;-&quot; als Prompt-Zeichen. Bei einer
+Rechenoperation befindet sich auf dem Stack in
+der Regel das Ergebnis:
+</p>
+<pre class="donthyphenate">
+1905
+-123 456 +
+579
+-579 456 &ndash;
+123
+-12 13 *
+156
+&ndash; 14 /MOD
+2
+-POP
+11
+-TEXT
+</pre>
+<p>
+Seit wann ist denn 156/14 gleich 2? ... Das war
+der Rest, erst mit POP kommt das Ergebnis.
+</p>
+<pre class="donthyphenate">
+11
+-X 8A X 9B AND
+138
+-X C0C POKEW X 66 NAS-SYS CR
+008A
+11
+-TEXT
+</pre>
+<p>
+Das sieht aber kompliziert aus! Die erste Zeile
+gibt das Ergebnis der AND-Funktion (bitweise)
+auf den Stack. Der Interpreter zeigt den Wert
+an, aber natürlich dezimal (138). Die nächste
+Zeile wandelt diesen Wert dann in die entsprechen
+de Hex-Zahl um. Man kann diese Funktion natürlich
+auch compilieren, zur Abwechslung mal in dezimaler Schreibweise:
+</p>
+<pre class="donthyphenate">
+11
+&ndash; : DEZHEX  3084 POKEW
+             102 NAS-SYS CD ;
+11
+-1023 DEZHEX
+03FF
+11
+-TEXT
+</pre>
+<p>
+T2/T4-Benutzer müssen hier aufpassen! Wie schon der Name sagt, ist die
+Funktion NAS-SYS die Schnittstelle zum Betriebssystem NAS-SYS&nbsp;1. Dies
+ist übrigens der einzige Befehl des Interpreters, der für T2/T4 völlig
+neu geschrieben werden muß
+</p>
+<p>
+Die folgenden Funktionen sind wieder
+allgemein
+gültig. Sie erlauben die Definition von Konstanten und Variablen:
+</p>
+<pre class="donthyphenate">
+&ndash; : CONSTANT     GETWORD ENTER
+                 CONS    CMPLW
+                         CMPLW ;
+11
+&ndash; : VARIABLE     GETWORD ENTER
+                 VARBL   CMPLW
+                         CMPLW ;
+
+
+11
+-X C29 CONSTANT CURSOR
+11
+-CURSOR
+3113
+-DEZHEX
+0C29
+</pre>
+
+<?php columnChange(2); ?>
+
+<pre class="donthyphenate">
+11
+-X C78 CONSTANT UOUT
+11
+-X D98 VARIABLE TREIBER
+11
+-TREIBER
+5979
+-TREIBER PEEKW DEZHEX
+0D98
+5979
+-X C80 TREIBER POKEW
+5979
+-TREIBER PEEKW UOUT POKE
+5979
+-CLEAR
+19o5
+-TEXT
+</pre>
+<p>
+Da ist sie wieder, die 1905 aber fällt Ihnen
+nichts auf? Die Schreibweise der Null hat sich geändert, da ich mit der
+letzten Programmzeile oben ein anderes Treiberprogramm für die
+Schreibmaschine in den Workspace von NAS-SYS eingetragen habe. Das
+werde ich aber gleich wieder rückgängig machen und zum Abschluß noch
+ein Beispiel für die rekursive Definition einer Funktion zeigen:
+</p>
+<pre class="donthyphenate">
+19o5
+-X D98 X C78 POKEW
+1905
+&ndash; : FAC       DUP EQZ IF
+                        POP 1
+                      ELSE
+                        DUP DEC FAC *
+                      THEN ;
+1905
+-6 FAC
+720
+-X 5B NAS-SYS
+NAS-SYS 1
+</pre>
+<p>
+Die Funktion X (eigentlich das Zeichen für das brit. Pfund, aber das
+gibt&rsquo;s auf meiner Schreibmaschine nicht) erlaubt die Eingabe von
+Hex-Zahle auf den Stack. Einige Beispiele:
+</p>
+<pre class="donthyphenate">
+1905
+-X FFFF
+65535
+-X 1000
+4096
+-TEXT
+</pre>
+<br>
+<br>
+<p id="article1">
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-13-6.jpeg"); ?>
+<span id="nascompl">
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-13-7.jpeg"); ?>
+</span>
+</p>
+<br>
+<br>
+<br>
+<?php hline("100%", "2"); ?>
+
+<?php columnEnd(2); ?>

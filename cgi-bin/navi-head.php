@@ -31,5 +31,5 @@
 	<link rel="stylesheet" href="/cdn/fontawesome/css/solid.min.css">
 	<!--link rel="stylesheet" href="/cdn/fontawesome/css/v4-shims.css"-->
 
-	<link rel="stylesheet" type="text/css" href="/tupel.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 <!-- /navi-head.php -->

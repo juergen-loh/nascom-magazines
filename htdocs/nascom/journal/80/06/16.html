@@ -1,0 +1,62 @@
+<?php columnStart(2, 2); ?>
+
+<h4 id="article1"><u>
+8k BASIC &ndash; Zeilennummernprogramm
+</u></h4>
+<p>
+Das folgende Programm ändert die Zeilennummerierung eines
+BASIC-Programms. Es ist voll verschiebbar, kann also irgendwo im
+Speicher stehen.
+</p>
+<p>
+Wichtig ist nur, daß man nach jedem Kaltstart die Anfangsadresse in
+USRLOC einträgt, beim ROM-BASIC in 1004&nbsp;H, 1005&nbsp;H.
+</p>
+<p>
+Das Programm wird mit Hilfe der USR(x) -Funktion aufgerufen, wobei als
+Argument x die neue erste Zeilennummer angegeben wird.
+</p>
+<p>
+Nun kann man nicht einfach &quot;USR(x)&quot; als Befehl eingeben &ndash; der
+Erfolg wäre ein SN-Error. Die folgenden Möglichkeiten sind erlaubt:
+</p>
+<pre class="donthyphenate">
+PRINT   USR(X)
+A    =  USR(X)
+</pre>
+
+<?php columnChange(2); ?>
+
+<p>
+Die neuen Zeilennummern werden &ndash; ausgehend von der ersten &ndash; jeweils um
+10 erhöht. Die Schrittweite 10 ist in Zelle 70 festgelegt.
+</p>
+<p>
+Was das Programm nicht kann_ es prüft nicht, ob die Zeilennummern noch
+erlaubt sind (d.h. kleiner als 65529), und es ändert auch nicht die
+Nummern nach GOTO, GOSUB.
+</p>
+<p>
+Falls sich jemand an diese Aufgabe setzen will, hier ein par
+Erklärungen zum Aufbau des Zellenbuffers:
+</p>
+<p>
+Der Zeilenbuffer beginnt beim ROM-BASIC auf 10FA. Die einzelnen Zeilen
+sind (nach Zeilen-NR. sortiert) im folgenden Format abgelegt:
+</p>
+<table>
+<tr><td style="white-space: nowrap">2 byte&nbsp;&nbsp;</td><td>Adresse der nächsten Zeile</td></tr>
+<tr><td>2 byte</td><td>Zeilen-Nr. (HEX)</tr>
+<tr><td>n byte</td><td>Zeileninhalt: Ziffern,Space in ASCII;alles andere als
+&quot;Token&quot;</tr>
+</table>
+
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+
+<?php imageinsert($imagepath, $year, $issue, $page, "Image-16-2.jpeg"); ?>
+
+<p>
+Uwe Wurditsch
+</p>
+<?php columnEnd(1); ?>

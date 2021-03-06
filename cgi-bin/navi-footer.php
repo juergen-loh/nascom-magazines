@@ -12,7 +12,7 @@
 			$tierBottom = BootstrapTier("Bottom");
 		}
 ?>
-	<nav class="nav flex-column flex-<?php echo $tierBottom; ?>-row tupel-navbar-bottom robots-nocontent"> <!--nav-pills-->
+	<nav class="nav flex-column flex-<?php echo $tierBottom; ?>-row style-navbar-bottom robots-nocontent"> <!--nav-pills-->
 		<a class="sm-fill nav-link" href="#top"><span title="Nach oben" class="fa fa-chevron-up" aria-hidden=true></span></a>
 <?php
 		if (isset($naviBottom)) {

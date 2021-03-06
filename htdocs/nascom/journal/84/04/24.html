@@ -1,0 +1,99 @@
+<?php columnStart(712); ?>
+
+<?php boxStart("R"); ?>
+<h1 id="article1">
+EMDOS  Help
+</h1>
+<h3>
+von GEORG  BÖHM
+</h3>
+<pre>
+ZEAP Z80 Assembler &ndash; Source Listing
+
+0010 ;HELP FÜR EMDOS 10.12.84  G.B. Köln
+0020 ;----------------------------------------
+0030 ;kann DIRECTORY nach #8000 laden oder
+0040 ;einzelne Sektoren in einen anzugebenden
+0050 ;Speicherbereich laden oder nur ein
+0060 ;Verify (jeden Sektor in die selben
+0070 ;1/4K RAM laden) durchführen.
+0080 ;Sektoren sind jeweils relativ zu den
+0090 ;Systemspuren zu verstehen.
+0100 ;----------------------------------------
+</pre>
+<?php imageinsertGap($imagepath, $year, $issue, $page, "Image-24-1.jpeg"); ?>
+<?php boxEnd(); ?>
+
+<?php columnChangeJustify(512); ?>
+
+<h1 id="article2">
+OBIOS
+</h1>
+<h3>
+CONSTANTIN OLBRICH
+</h3>
+<p>
+Nach etlichen Stunden Arbeit ist es geschafft! Es läuft
+<?php externalLink("CP/M","",""); ?>. Meine
+Erfahrungen sind wahrscheinlich auch für andere Journal-Leser von
+Interesse, aber leider habe ich im Augenblick nun absolut keine Zeit
+mehr für den Rechner; denn ich renoviere die Wohnung. So kann ich Ihnen
+ein erweiterungsbedürftiges BIOS zur Verfügung stellen, welches
+folgende Hardware voraussetzt:
+</p>
+<ol>
+<li>
+64 K RAM 000..FFF
+</li>
+<li>
+NASSYS/VIDEO/Workspace 000..0FFF einblendbar
+</li>
+<li>
+<a href="../../../../83/11/24/text/#article2">EPROM-Port</a> nach H. Dieckhoff
+</li>
+<li>
+ein 8 Zoll Laufwerk
+</li>
+</ol>
+<p>
+Das BIOS benutzt NASSYS für I/O, und so
+gibt es eine von uns vorgeschlagene
+<?php externalLink("ECB","",""); ?>-Leitung
+NAS/CPM 19&nbsp;a, die
+bei 0 NASSYS usw. einblendet und bei 1 dyn. RAM&nbsp;. Im BIOS sind bereits
+die RAM-Disk Routinen für 3 mal 64K integriert. Ich verwende
+zunächst nur 64K RAM-Disk. Die Page-Adressierung erfolgt mit einem
+Latch (273) auf Port FF hex, wobei die unteren vier Bit die
+Page-Adresse und Bit7 die NAS/CPM-Leitung darstellt.
+</p>
+<p>
+Vorläufig arbeitet das BIOS folgendermaßen:
+</p>
+<ul class="dashed-left">
+	<li> Floppy-Routinen arbeiten noch mit Polling ohne DMA</li>
+	<li> Video-Treiber für 16X48 schon mit DMA</li>
+	<li> Es soll später die
+		<a href="../../../01/03/text/#article2">Grafik-Karte</a>
+		mit 25X80 Zeichen eingesetzt werden. Den
+		<a href="../../50/text/#article2">Hardwarescroll</a>
+		habe ich bereits aufgebaut.
+	</li>
+</ul>
+<p>
+Mein BIOS kennt keine
+Systemspuren, und so wird bei WBOOT und BOOT der CCP und das BDOS von
+der EPROM-Port-Karte geladen. Damit geht&rsquo;s wesentlich schneller.
+</p>
+<p>
+Der Videotreiber für die alte NASCOM Bildschirmaufbereitung arbeitet
+mit DMA und kennt einige neue Control- Codes: INSERT LINE. DELETE LINE
+usw. Er ist jedoch im Listing durch den NASSYS SCAL zu ersetzen.
+</p>
+<p>
+Für das ausgezeichnete Turbo Pascal ist jedoch empfehlenswert, solche
+Control Codes zur Verfügung zu stellen. Mit obiger Hardware habe ich
+schon erfolgreich mit Turbo Pascal, M80, L80, M-BASIC, BASCOM,
+WORDMASTER,
+</p>
+
+<?php columnEnd(12); ?>
