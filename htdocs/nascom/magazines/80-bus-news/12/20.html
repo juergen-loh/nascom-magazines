@@ -1,7 +1,13 @@
+<?php columnStart(23); ?>
+<h1 id="article1">
+MONITOR.COM and other scribblings
+</h1>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Jeremy Gugenheim
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
-<p>
-MONITOR.COM and other scribblings by Jeremy Gugenheim
-</p>
 <p>
 Well me dearios, at last I have put Nas-Pen to printer, and what goodies flow
 forth?? Read on, and if you have disks, CP/M, and MONITOR.COM (the best thing since
@@ -9,18 +15,20 @@ sliced Nascoms) all your old Nas-Sys software can burst back into fruity life!!
 Firstly, one and a half mods to MONITOR.COM itself (Gasp!), this one can only be
 done if your MONITOR.COM came from Nas-Sys&nbsp;1 (Tee hee!).
 </p>
-<p>
-Do &lsquo;DDT MONITOR.COM&rsquo;, then &lsquo;S2F5&rsquo; and
+<p class="indent">
+Do &lsquo;DDT MONITOR.COM&rsquo;, then &lsquo;S2F5&rsquo; and<br>
 replace
 </p>
-<p>
-79 DF 60 EF 08 08 OD 00
+<pre class="indent2">
+79 DF 60 EF 08 08 0D 00
+</pre>
+<p class="indent">
 with
 </p>
-<p>
+<pre class="indent2">
 EF 2E 00 79 DF 68 DF 6A
-</p>
-<p>
+</pre>
+<p class=continued>
 This gives you back your checksums in the Tabulate routine, separated from your
 bytes proper by a space and a full stop.
 </p>
@@ -40,12 +48,14 @@ it for you.
 <p>
 Do all your DDT and stuff, and &lsquo;SA67&rsquo; this lot in...
 </p>
+<p>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-20-1.png"); ?>
+</p>
 <p>
 For those of you who just groaned because I&rsquo;m too mean to type in the source, I&rsquo;m
 not, it&rsquo;s exactly the same as the INMC-6 (compatible) one with the addresses changed
 and a RET NOP replacing the original SCAL MRET. So, now the clever ones amongst you
-can work out how, by using the YO and Y1 commands, it is possible to turn the repeat
+can work out how, by using the Y0 and Y1 commands, it is possible to turn the repeat
 on and off. You have 55 bytes to play with, that should be ample, or you could even
 make it execute automatically after a cold start, but note that after the workspace
 has been initialised.
@@ -53,7 +63,7 @@ has been initialised.
 <p>
 Once you&rsquo;ve MONITOR.COM installed, use the READ command to get ZEAP into
 your memory. DON&rsquo;T let the GENERATE command have its evil way here, or you&rsquo;ll really
-be in trouble, &lsquo;cos MONITOR.COM uses the old screen to hold bits of CP/M that it
+be in trouble, &rsquo;cos MONITOR.COM uses the old screen to hold bits of CP/M that it
 requires for disk transfers. If you have Generated ZEAP then you&rsquo;ll have to disable
 the Generate command. How do you do that? Simple, you can even use Nas-Sys for this
 one.

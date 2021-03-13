@@ -1,19 +1,16 @@
 <?php columnStart(1); ?>
-<p>
-30
-</p>
-<p>
+<p class="continued">
 number of spaces, these are contained in a message and displayed in the normal way
 through SNDTXT. Now to display the word, this is done in a similar fashion to the one
 already described in LOOP4. The only difference is that each character is tested to
-see if it is flagged. Bach flagged character is &lsquo;visible&rsquo; so it is ANDed with 7FH to
+see if it is flagged. Each flagged character is &lsquo;visible&rsquo; so it is ANDed with 7FH to
 strip the flag and then displayed directly, each unflagged character is replaced by a
-&lsquo;.&rsquo; which is displayed instead. A space is placed between each character. When OO is
+&lsquo;.&rsquo; which is displayed instead. A space is placed between each character. When 00 is
 detected, the loop cops out in the normal way, and a call made CRLF2 to send two
 newlines. After that the program jumps back to LOOP3 to start the whole process again.
 </p>
 <p>
-Well that just about wraps up that program, with the above comments and _ the
+Well that just about wraps up that program, with the above comments and the
 liberal sprinkling of comments all over the program itself, you should be able to
 follow it. Now to improvements, well obviously if you have an assembler you can
 reassemble the whole thing into it&rsquo;s right places for either NAS or CP/M versions. If
@@ -39,7 +36,7 @@ B2HEX had to be included in the program as there is no CP/M equivalent within th
 system.
 </p>
 <p>
-IT hope that you&rsquo;ve noticed that by feeding all input and output through simple
+I hope that you&rsquo;ve noticed that by feeding all input and output through simple
 user patch areas this program could be made to work with very little modification on
 almost any Z80 based machine. It could also be modified fairly easily to run an any
 8080 based machine simply by substituting absolute jumps for the relative jumps I&rsquo;ve
@@ -63,4 +60,5 @@ when used with disks, for the RP/M tape types, sorry, but it takes about 45 seco
 load when it should only take 4 or 5. I hope you will have a go at it, and that it
 gives you as much fun getting it to work as it gave me in writing it.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

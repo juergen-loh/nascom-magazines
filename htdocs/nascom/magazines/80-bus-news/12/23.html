@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-23
-</p>
-<p>
 Now we can see the affects of the DAA instruction, or at least it will become
 clear if you can unscramble the above table. Remember, the DAA instruction is to
 enable the use of packed BCD arithmetic. All right, what is packed BCD arithmetic.
@@ -10,27 +7,27 @@ Well you all know we&rsquo;ve got eight bits available in the accumulator, and t
 been plugging it with data in HEX, two digits at a time, the characters 0 thro&rsquo; F. Now
 BCD stands for Binary Coded Decimal, and uses four bits to represent a decimal number,
 0 thro&rsquo; 9. As we&rsquo;ve got eight pits in the accumulator we can accommodate two decimal
-numbers, giving a decimal number range of O thro&rsquo; 99. The packed bit in &lsquo;packed BCD&rsquo;
+numbers, giving a decimal number range of 0 thro&rsquo; 99. The packed bit in &lsquo;packed BCD&rsquo;
 simply means that there is more than one digit.
 </p>
 <p>
 OK, so let&rsquo;s add two numbers in decimal:
 </p>
-<p>
-15
+<pre class="indent2">
+ 15
 +27
-</p>
-<p>
-42
-</p>
-<p>
+---
+ 42
+</pre>
+<p class="noindent">
 Now lets add the packed binary representations of the two numbers
 </p>
-<p>
-0001 0101 see that 0001 is the 1 and 0101 is the 5
-+0010 0111
-0011 1100 Something went wrong, the result is 3C
-</p>
+<table class="indent2">
+<tr><td><pre> 0001 0101</pre></td><td><p class="indent2">see that 0001 is the 1 and 0101 is the 5</p></td></tr>
+<tr><td><pre>+0010 0111</pre></td><td></td></tr>
+<tr><td><pre>----------</pre></td><td></td></tr>
+<tr><td><pre> 0011 1100</pre></td><td><p class="indent2">Something went wrong, the result is 3C</p></td></tr>
+</table>
 <p>
 Well it&rsquo;s obvious what has happened, the numbers were added in pure binary and not in
 packed BCD, now the Z80 doesn&rsquo;t have an &lsquo;ADD packed BCD&rsquo; instruction, but the DAA
@@ -38,30 +35,24 @@ instruction is provided to affect the result in such a way that the effect of ha
 an &lsquo;ADD packed BCD&rsquo; instruction IS provided. The reason for doing it this way is
 because only one &lsquo;correction&rsquo; instruction is required for seven operations, whereas
 seven additional instructions would be needed in the Z80 if this were to be
-implemented directly. Add up the numbers, low nibble first, 0101 + O111 = 1100 = C,
+implemented directly. Add up the numbers, low nibble first, 0101 + 0111 = 1100 = C,
 notice there is no &lsquo;carry&rsquo; into the high nibble, so the invisible &lsquo;half carry&rsquo; flag,
-H, is not set. By the same process, Q0001 + 0010 = 0011 = 3, again, there is no carry,
+H, is not set. By the same process, 00001 + 0010 = 0011 = 3, again, there is no carry,
 so the C flag wasn&rsquo;t set. The result is 3C with neither the H or C flags set. Now to
 determine what the DAA instruction will do with it. By inspection, it looks as if the
-second row in the table satisfies these conditions, the upper digit is between O and 8
-and there was no C, the H flag is O and the lower digit is between A and F. So the
+second row in the table satisfies these conditions, the upper digit is between 0 and 8
+and there was no C, the H flag is 0 and the lower digit is between A and F. So the
 table says the DAA instruction will add 06 to the 3C in the accumulator and there will
-</p>
-<p>
 be no carry. Let&rsquo;s try it:
 </p>
+<table class="indent2">
+<tr><td><pre> 0011 1100</pre></td><td></td></tr>
+<tr><td><pre>+0000 0110</pre></td><td></td></tr>
+<tr><td><pre>----------</pre></td><td></td></tr>
+<tr><td><pre> 0100 0010</pre></td><td><p class="indent">Well the result is now 42 which is what we wanted.</p></td></tr>
+</table>
 <p>
-0011 1100
-+0000 0110
-</p>
-<p>
-se ie se me te oem ws se ms
-</p>
-<p>
-0100 0010 Well the result is now 42 which is what we wanted.
-</p>
-<p>
-Got it, w- e- 1-1, I know it&rsquo;s difficult, but if you indulge in a bit of
+Got it, w - e - l - l, I know it&rsquo;s difficult, but if you indulge in a bit of
 practice you&rsquo;ll soon see how it works. Go on try a few random two digit numbers and
 see if you can work it out from the table. Anyway, if you relate the above to the
 previous episode you&rsquo;ll see how it all falls into place. As I said then, the trick is

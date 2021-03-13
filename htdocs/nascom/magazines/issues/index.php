@@ -154,6 +154,9 @@ Series
 <h2>
 Dr. Dark&rsquo;s Diary
 </h2>
+<h3>
+by Chris Blackmore
+</h3>
 <p>
 	<a href="../inmc-news/04/15/">Episode 1</a><br>
 	<a href="../inmc-news/05/10/">Episode 2</a><br>
@@ -187,8 +190,26 @@ Dr. Dark&rsquo;s Diary
 	<a href="../scorpio-news/31/09/">Episode 30</a><br>
 </p>
 <h2>
-NASCOM ROM BASIC DIS&ndash;ASSEMBLED
+Z80 made simple
 </h2>
+<h3>
+by David Hunt
+</h3>
+<p>
+	<a href="../inmc-80-news/01/19/">Part 1</a><br>
+	<a href="../inmc-80-news/02/26/">Part 2</a><br>
+	<a href="../inmc-80-news/03/32/">Part 3</a><br>
+	<a href="../inmc-80-news/04/45/">Part 4</a><br>
+	<a href="../inmc-80-news/05/42/">Part 5</a><br>
+	<a href="../80-bus-news/12/22/">Part 6</a><br>
+	<a href="../80-bus-news/13/30/">Part 7</a><br>
+</p>
+<h2>
+NASCOM ROM BASIC disassembled
+</h2>
+<h3>
+by Carl Lloyd–Parker
+</h3>
 <p>
 	<a href="../80-bus-news/23/27/text/#article1">Part 1</a><br>
 	<a href="../80-bus-news/24/23/text/#article1">Part 2</a><br>
@@ -212,7 +233,7 @@ Lawrence
 	<a href="../inmc-80-news/05/71/text/#article1">Lawrence and the &ldquo;new&rdquo; printer?</a><br>
 	<a href="../80-bus-news/13/45/">Lawrence is back (despite popular demand)</a><br>
 	<a href="../80-bus-news/14/48/">Lawrence meets the commercial software syndrome</a><br>
-	<a href="../80-bus-news/22/52/">Lawrence and PolyDos</a><br>
+	<a href="../80-bus-news/22/52/">Lawrence has bought PolyDos...</a><br>
 	<a href="../80-bus-news/24/53/">Lawrence meets dangers of VIDEO.</a><br>
 	<a href="../80-bus-news/31/52/">Lawrence lands a helping hand.</a><br>
 	<a href="../80-bus-news/33/49/">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>

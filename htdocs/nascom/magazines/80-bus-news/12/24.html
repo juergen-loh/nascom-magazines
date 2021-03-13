@@ -1,15 +1,12 @@
 <?php columnStart(1); ?>
 <p>
-24
-</p>
-<p>
 I thought perhaps describing the bones of writing a games programme wouldn&rsquo;t
 be a bad idea this time. &lsquo;Battleships&rsquo; I thought. But then at the time of writing
 (late May), I thought that might not be too appropriate. Then I thought of a new game
 &lsquo;Bomb the Argies&rsquo;, but couldn&rsquo;t quite work out the rules, in fact there didn&rsquo;t seem to
 be any. Someone might accuse me of being tasteless (same as the writers of the game
 &lsquo;Three Mile Island&rsquo; were likewise abused after their game came on the market three
-weeks after a certain nuclear power station nearly blew up- Must admit it was quite
+weeks after a certain nuclear power station nearly blew up. Must admit it was quite
 good, particularly the colour graphics of the glowing reactor, played on an Apple by
 the way.). So we need a program which will be short, with well defined rules and
 totally uncontentious, taking these criteria into account, it&rsquo;s easy to deduce that it
@@ -25,7 +22,9 @@ rummaged about for it, I found a Nascom&nbsp;1 format tape which I couldn&rsquo;
 sign of the source. It then occurred to me that it was written in pre-assembler days,
 and if there ever was a source, it would have been handwritten and not machine
 readable anyway. So I might as well write a new one. So &lsquo;Simple Hangman&rsquo; saw the light
-of day last evening. It&rsquo;s printed somewhere in the mag. It&rsquo;s not buried in this
+of day last evening. It&rsquo;s printed
+<a href="../../31/text/">somewhere</a>
+in the mag. It&rsquo;s not buried in this
 article so that whoever does the paste up on this issue isn&rsquo;t going to get a headache
 trying to fit a monumental chunk of DH&rsquo;s stuff in one place. Apart from that, it runs
 stand alone, so anyone wishing to use it can do so. Rewriting Hangman has served a
@@ -39,7 +38,7 @@ reading this rubbish. Don&rsquo;t write to tell me your findings, I know, I know
 Ok then, let&rsquo;s think about the special parameters required in writing a
 program like this. Now the first one is that people reading this article will have
 different systems, notably, Nascom&rsquo;s running NAS-BUG 1, 2 or 4 (heaven forbid),
-Nascom&rsquo;s: running NAS-SYS&nbsp;1 or 3, Gemini&rsquo;s running RP/M, or Nascom&rsquo;s or Gemini&rsquo;s
+Nascom&rsquo;s running NAS-SYS&nbsp;1 or 3, Gemini&rsquo;s running RP/M, or Nascom&rsquo;s or Gemini&rsquo;s
 running CP/M, or some other combination I haven&rsquo;t thought of. To complete the
 &lsquo;foul-up&rsquo;, I&rsquo;m running a homebrew mixture which features a Nascom&nbsp;2 with Gemini CP/M
 and a number of other assorted odds and sods. Now that adds up to a lot of system
@@ -61,7 +60,7 @@ To make life easier, I&rsquo;m going to concentrate on only two &lsquo;generic&r
 A version which will run under NAS-SYS&nbsp;1 or 3, which I will call the &lsquo;NAS version&rsquo;
 from now on, and a version which will work under CP/M &ndash; RP/M, which I will call the
 &lsquo;CP/M version&rsquo; from now on. Differences for the NAS-BUG version simply require the
-input patch to be changed, such that it saves all the registers, CALIs S$KBD, CALLs
+input patch to be changed, such that it saves all the registers, CALLs $KBD, CALLs
 $CRT, then restores all the registers, whilst the output patch again saves all the
 registers, CALLs $CRT then restores the registers. The exit should be either an
 absolute jump to PARSE (but watch out as this does not reset the monitor stack), or an

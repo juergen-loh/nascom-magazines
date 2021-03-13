@@ -1,24 +1,21 @@
 <?php columnStart(1); ?>
 <p>
-25
-</p>
-<p>
 So let&rsquo;s look at the patch areas. The first patch, (although it&rsquo;s not
 obviously so) is the start jump. For either NAS or CP/M versions the three bytes will
-be the same, C3 ODD3, but for the CP/M version, this jump will be located at 100H,
+be the same, C3 0DD3, but for the CP/M version, this jump will be located at 100H,
 whilst the NAS version will have the jump at 0C80H. (Don&rsquo;t forget that my assembler
 prints absolute addresses the &lsquo;right way round&rsquo; and not &lsquo;low byte first&rsquo; as they would
-actually require to be loaded, so the above would be loaded as C3 D3 OD.) The next
-patch area is. the one concerned with getting an input. As printed, it contains the
+actually require to be loaded, so the above would be loaded as C3 D3 0D.) The next
+patch area is the one concerned with getting an input. As printed, it contains the
 CP/M version. For the NAS version this becomes a system call to &lsquo;BLINK&rsquo;. However,
 unlike CP/M function 1 (the input function), the keyboard input is not automatically
 echoed to the display, so the call to &lsquo;BLINK&rsquo; is followed by a system restart to
 &lsquo;ROUT&rsquo;. Now &lsquo;BLINK&rsquo; corrupts HL and DE, and my notes about the patches say that all
 registers must be preserved, so HL and DE must be &lsquo;PUSHed&rsquo; before the system calls and
-&lsquo;pOPped&rsquo; afterwards. The next patch is the &lsquo;output to display&rsquo;, with the NAS version,
+&lsquo;POPped&rsquo; afterwards. The next patch is the &lsquo;output to display&rsquo;, with the NAS version,
 this couldn&rsquo;t be simpler, a system restart to &lsquo;ROUT&rsquo;, as &lsquo;ROUT&rsquo; also kindly preserves
 all the registers there is no need to PUSH and POP them, so this patch is all of two
-bytes long and 14 NOPs to fill the empty space. The last patch is also dead easy, 4
+bytes long and 14 NOPs to fill the empty space. The last patch is also dead easy, a
 system call to &lsquo;MRET&rsquo; and a NOP to fill the one remaining empty space. So having
 patched the area it should look like this:
 </p>
@@ -27,9 +24,9 @@ patched the area it should look like this:
 Good, getting there, now there are a couple of others before we go any further. The
 CP/M version uses code 1AH to clear the screen, and the line feed following a carriage
 return, code 0AH, is explicit and not implied as it is in the NAS version. Well, the
-&lsquo;oOlear screen&rsquo; character, labelled CS only appears once at OCDSH and this is easily
+&lsquo;clear screen&rsquo; character, labelled CS only appears once at 0CD8H and this is easily
 changed to 0CH for the NAS version. The other one, the line feed, again appears only
-once at ODDiIH and this should be changed to OOH. By the way I haven&rsquo;t tried this
+once at 0DD1H and this should be changed to 00H. By the way I haven&rsquo;t tried this
 program under the NAS regime, so if it doesn&rsquo;t work, drop me a line with the correct
 answer, to collect your &lsquo;Prize Dodo of the Month&rsquo; medal.
 </p>

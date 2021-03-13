@@ -1,72 +1,37 @@
 <?php columnStart(1); ?>
-<p>
+<p class="noindent">
 Program flow is as follows:
 </p>
-<p>
-1) Put up the title
-</p>
-<p>
-2) Initialize the &lsquo;letters tried&rsquo; buffer and the &lsquo;trys&rsquo; counter
-3) Throw a random number from 1 to the maximum number of words
-4) Locate that word and copy it to a &lsquo;word buffer&rsquo;
-</p>
-<p>
-5) Display the &lsquo;I&rsquo;ve chosen a word&rsquo; message
-</p>
-<p>
-6) Test to see if the maximum number of trys has taken place
-6a) If not the maximum number of trys, go on to 7
-</p>
-<p>
-6b) If so, display the &lsquo;lose&rsquo; message
-</p>
-<p>
-6c) Display the word
-</p>
-<p>
-64a) Display the &lsquo;another go&rsquo; message
-</p>
-<p>
-6e) Get an input, validate it and restart or exit as appropriate
-7) Display the &lsquo;what letter&rsquo; message and get a letter
-</p>
-<p>
-8) Check the &lsquo;letters tried&rsquo; buffer
-</p>
-<p>
-8a) If not in the &lsquo;letters tried&rsquo; buffer, go on to 9
-</p>
-<p>
-8b) Display the &lsquo;letter tried&rsquo; message then back to 6 7
-9) Put the letter in the &lsquo;letters tried&rsquo; buffer
-</p>
-<p>
-10) Count this try
-</p>
-<p>
-11) Sean through the word to see if the letter&rsquo;s there
-</p>
-<p>
-11a) If not found go on to 12
-41b) If found flag it by making bit 7 high (adding 80H)
-</p>
-<p>
-12) Test the word to see if all the letters now flagged
-</p>
-<p>
-12a) If not all flagged, then on to 13
-</p>
-<p>
-12b) Display &lsquo;you&rsquo;ve won&rsquo; message, then back to 6c
-</p>
-<p>
-13) Display the &lsquo;trys&rsquo; message, and the number of trys so far
-</p>
-<p>
-14) Display the word, flagged characters as letters, unflagged as&nbsp;.!
-15) Display two newlines then back to 6
-</p>
-<p>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1)</td><td>Put up the title</td></tr>
+<tr><td>2)</td><td>Initialize the &lsquo;letters tried&rsquo; buffer and the &lsquo;trys&rsquo; counter</td></tr>
+<tr><td>3)</td><td>Throw a random number from 1 to the maximum number of words</td></tr>
+<tr><td>4)</td><td>Locate that word and copy it to a &lsquo;word buffer&rsquo;</td></tr>
+<tr><td>5)</td><td>Display the &lsquo;I&rsquo;ve chosen a word&rsquo; message</td></tr>
+<tr><td>6)</td><td>Test to see if the maximum number of trys has taken place</td></tr>
+<tr><td>6a)</td><td>If not the maximum number of trys, go on to 7</td></tr>
+<tr><td>6b)</td><td>If so, display the &lsquo;lose&rsquo; message</td></tr>
+<tr><td>6c)</td><td>Display the word</td></tr>
+<tr><td>6d)</td><td>Display the &lsquo;another go&rsquo; message</td></tr>
+<tr><td>6e)</td><td>Get an input, validate it and restart or exit as appropriate</td></tr>
+<tr><td>7)</td><td>Display the &lsquo;what letter&rsquo; message and get a letter</td></tr>
+<tr><td>8)</td><td>Check the &lsquo;letters tried&rsquo; buffer</td></tr>
+<tr><td>8a)</td><td>If not in the &lsquo;letters tried&rsquo; buffer, go on to 9</td></tr>
+<tr><td>8b)</td><td>Display the &lsquo;letter tried&rsquo; message then back to 6</td></tr>
+<tr><td>9)</td><td>Put the letter in the &lsquo;letters tried&rsquo; buffer</td></tr>
+<tr><td>10)</td><td>Count this try</td></tr>
+<tr><td>11)</td><td>Sean through the word to see if the letter&rsquo;s there</td></tr>
+<tr><td>11a)</td><td>If not found go on to 12</td></tr>
+<tr><td>11b)</td><td>If found flag it by making bit 7 high (adding 80H)</td></tr>
+<tr><td>12)</td><td>Test the word to see if all the letters now flagged</td></tr>
+<tr><td>12a)</td><td>If not all flagged, then on to 13</td></tr>
+<tr><td>12b)</td><td>Display &lsquo;you&rsquo;ve won&rsquo; message, then back to 6c</td></tr>
+<tr><td>13)</td><td>Display the &lsquo;trys&rsquo; message, and the number of trys so far</td></tr>
+<tr><td>14)</td><td>Display the word, flagged characters as letters, unflagged as &lsquo;&ndash;&rsquo;</td></tr>
+<tr><td>15)</td><td>Display two newlines then back to 6</td></tr>
+</table>
+<p class="noindent">
 As you can see the philosophy is simple, and presents no problems to the programmer.
 </p>
 <p>
@@ -80,7 +45,7 @@ program stack.
 In order then, the workspace &lsquo;RING&rsquo; is the workspace for the RANDOM routine,
 it is primed with the numbers 01H, 02H and 03H, although so long as this work space
 contained any old rubbish it wouldn&rsquo;t matter (it&rsquo;s random after all). The only thing
-the RANDOM routine doesn&rsquo;t like is if all three workspace bytes are OOH.
+the RANDOM routine doesn&rsquo;t like is if all three workspace bytes are 00H.
 </p>
 <p>
 WBUF is the &lsquo;word buffer&rsquo;, this must be one byte longer than the longest word
@@ -90,7 +55,7 @@ subsequently allows me to indulge in a nice fiddle of which more anon.
 <p>
 TRYS is the one byte store where we keep count of the number of trys taken. To
 simplify matters, the contents will be in packed BCD, as we are hardly likely to
-indulge in more than 99 trys. ,
+indulge in more than 99 trys.
 </p>
 <p>
 Next comes the &lsquo;letters tried&rsquo; buffer, CHRTRD, which will be the maximum

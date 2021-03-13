@@ -1,20 +1,15 @@
 <?php columnStart(1); ?>
 <p>
-ai
-</p>
-<p>
-The last work space is the stack space. This started at 50H bytes long. Having
+The last work space is the stack space. This started at 30H bytes long. Having
 written the program I then loaded it under the debugging tool, filled the stack space
-with OO&rsquo;s and ran the game some half a dozen times, trying all combinations of winning
+with 00&rsquo;s and ran the game some half a dozen times, trying all combinations of winning
 and losing. Having done that, I stopped the game and examined the stack space to see
-how many of my 0O&rsquo;s had been overwritten. Eighteen bytes had been overwritten,
+how many of my 00&rsquo;s had been overwritten. Eighteen bytes had been overwritten,
 indicating a stack depth of 9 (as each stack operation takes two bytes) so I set the
-stack space to 18 (12H). As I haven&rsquo;t tried the WAS version I don&rsquo;t know if it
+stack space to 18 (12H). As I haven&rsquo;t tried the NAS version I don&rsquo;t know if it
 requires more stack space, although it&rsquo;s unlikely. Anyway I&rsquo;ve deliberately placed the
 stack next to CHRTRD, and that will always have some spare space in the end of it, so
 the stack can probably come down something like 24 bytes without crashing into the
-</p>
-<p>
 used part of CHRTRD.
 </p>
 <p>
@@ -29,7 +24,7 @@ next instruction in the main program. The choice of 00 as a text delimiter was
 deliberate, as it is very easy to test for. Having loaded a character into A, A is
 ORed with itself, now if this is anything other that 00, the character is unchanged
 and the Z flag is reset. If it is 00, then the Z flag is set. In fact I&rsquo;ve used this
-scheme of using OO as a delimiter throughout the program, for marking the end of
+scheme of using 00 as a delimiter throughout the program, for marking the end of
 CHRTRD and WBUF. You might like to note that ORing A with itself will also always
 clear the C flag. Handy thing to remember if the C flag starts getting in the way of
 some arithmetic operation at any time. Anyway, using 00 as a delimiter makes life very
@@ -50,7 +45,7 @@ CRLF2 calls CRLF1 and then drops through to CRLF1, hence two newlines are sent.
 The next bit is obvious, set the stack, then on to initializing the
 workspaces. XORing A with itself will always result in A being 00 and the Z flag being
 set, a simple one byte method of clearing A. The 00 thus generated is put in TRYS, to
-set it to O and into the first space in CHRTRD, because it is empty and 00 is the
+set it to 0 and into the first space in CHRTRD, because it is empty and 00 is the
 delimiter. Then comes the displaying of the title using SNDTXT bit. I require two
 newlines after the title, so CRLF2 is called.
 </p>
@@ -59,14 +54,14 @@ Now comes the picking of a word from the table of words. The first thing is to
 pick a random number. A subroutine is used to do this (even though it&rsquo;s only used once
 within the loop) as this is a stand alone module. All it needs to know is where the
 three byte workspace RING is located, and for A to contain the maximum number (n) on
-entry to the subroutine. It returns A containing a random number between O and n-1.
-Tt&rsquo;s a rather complicated routine and I&rsquo;m going to gloss over it until some later
+entry to the subroutine. It returns A containing a random number between 0 and n-1.
+It&rsquo;s a rather complicated routine and I&rsquo;m going to gloss over it until some later
 episode when I&rsquo;ve worked out what makes it tick. Having chosen a random number, the
 next thing is to locate the word picked, from the start of the word table. This is
 done by putting the number in B, pointing HL to the start of the words and testing
 them byte for byte. If the character picked up is a letter then it is ignored. Where
 the character is an 00, then the little test mentioned above detects this and the
 character is counted by the DJNZ instruction. Effectively, this counts the 00 word
-delimiters downwards from n to O in B.
+delimiters downwards from n to 0 in B.
 </p>
 <?php columnEnd(1); ?>

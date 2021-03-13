@@ -26,7 +26,7 @@ function BootstrapTier($context = "")
 	}
 }
 
-function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1)
+function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1, $noscale=false)
 {
 	global $magpath, $issuepath, $gWidth;
 	$alt = imageDesc($year, $issue, $page, $imagename);
@@ -50,7 +50,7 @@ function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $c
 		$path_parts = pathinfo($imagename);
 		$ext = $path_parts['extension'];
 		$scanned = "$magpath/$issuepath/$page.$ext";
-		if (file_exists($scanned)) {
+		if (!$noscale && file_exists($scanned)) {
 			list($iwidth, $iheight, $itype, $iattr) = getimagesize($scanned);
 			$factor = $gWidth / $iwidth;
 			if ($factor < 1) {
@@ -157,6 +157,18 @@ function imageRightGap($imagepath, $year, $issue, $page, $imagename, $style="", 
 {
 	// mit einer Zeile Abstand nach dem Bild
 	imageRight($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br>");
+}
+
+function imageNoscale($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
+{
+	// unskaliert (magazines)
+	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "", "", "", 1, true);
+}
+
+function imageNoscaleGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
+{
+	// unskaliert (magazines), mit einer Zeile Abstand nach dem Bild
+	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>", "", "", 1, true);
 }
 
 function InsertArrow($s)

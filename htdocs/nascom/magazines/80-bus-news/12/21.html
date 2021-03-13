@@ -1,42 +1,39 @@
 <?php columnStart(1); ?>
-<p>
-21
-</p>
-<p>
+<p class="continued">
 Use Modify to change the two bytes at 0621H
 </p>
+<table class="indent">
+<colgroup><col style="width: 6em"><col></colgroup>
+<tr><td>from</td><td>21 7A</td></tr>
+<tr><td>to</td><td>DF 5B</td></tr>
+</table>
 <p>
-from 21 7A
-</p>
-<p>
-to DF 5B
 I&rsquo;m sure you can guess what that does, and if you can&rsquo;t, you can look it up in the
 Nas-Sys manual under &lsquo;how to end a program&rsquo;. Excuse the digression. Once you have
 Zeap in your memory use the Modify command on the following:
 </p>
-<p>
-Address Was change to
-1849 F4 04
-</p>
-<p>
-and at 15EB, 1644, 1853, 185B, 1B36, 1B94, 1BFD, 1COE, 1C17, 1020, 1C2c
-1082, 1CBF, 1CC8, 1CD2, 1DE2, 1B20, 1E30, 1E40, 1E73, 1EE7, 1FBA
-change OB FB
-</p>
-<p>
+<table>
+<colgroup><col><col><col><col></colgroup>
+<tr><td></td><td>Address</td><td>Was</td><td>change to</td></tr>
+<tr><td></td><td>1849</td><td>F4</td><td>04</td></tr>
+<tr><td>and at</td><td colspan=3>15EB, 1644, 1853, 185B, 1B36, 1B94, 1BFD, 1C0E, 1C17, 1020, 1C2C</td></tr>
+<tr><td></td><td colspan=3>1082, 1CBF, 1CC8, 1CD2, 1DE2, 1B20, 1E30, 1E40, 1E73, 1EE7, 1FBA</td></tr>
+<tr><td></td><td>change</td><td>0B</td><td>FB</td></tr>
+</table>
+<p class="continued">
 All the above changes move the screen to the place CP/M expects to find it except
-1849, which took rather a while to find&nbsp;... it&rsquo;s used to locate the cursor on the
+1849, which took rather a while to find ... it&rsquo;s used to locate the cursor on the
 screen, and is the 2&rsquo;s complement of the number they actually mean...
 </p>
 <p>
 I&rsquo;m now working on disk save/get routines from within ZEAP, though where
-I&rsquo;ll put them I don&rsquo;t know; probably I&rsquo;ll remove the +/&nbsp; option adjust. that gives
+I&rsquo;ll put them I don&rsquo;t know; probably I&rsquo;ll remove the +/&ndash; option adjust. that gives
 me the two command letters I require, and a bit of room inside ZEAP. I guess one of
 the routines will have to appear at 2000H, so I&rsquo;ll have to move the start of text to
 allow for that. Full marks to the writers of ZEAP for making that bit easy, if
 nothing else. By the way, all this surgery upsets the routine that checks that all&rsquo;s
 well within ZEAP, so you&rsquo;ll get Error 90 every time you do a cold start. The way
-around that is to find a unused byte, such as i1FFDH (I hope) and fiddle with it till
+around that is to find a unused byte, such as 1FFDH (I hope) and fiddle with it till
 ZEAP starts OK.
 </p>
 <p>
@@ -47,11 +44,12 @@ has done it, and documented it too, so find that and the world is yours.
 <p>
 PiP PiP Chaps.
 </p>
-<p>
-&ldquo;INPUTting and READing Double Precision Constants (continued)
-</p>
+<?php hline("20%"); ?>
+<h4 id="article1">
+INPUTting and READing Double Precision Constants (<a href="../../10/text/#article1">continued</a>)
+</h4>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-20-1.png"); ?>
-<p>
+<p style="text-align: center">
 -- o0o --
 </p>
 <?php columnEnd(1); ?>
