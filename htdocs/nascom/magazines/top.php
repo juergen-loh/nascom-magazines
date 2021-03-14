@@ -1,10 +1,11 @@
 <?php
 	$include_path = "$tppath/../../../cgi-bin";
+	$gHtmlRoot = "$tppath/../..";
 	include "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 //	$width = 720;
 /*
 	echo "<!--\n";
@@ -27,7 +28,7 @@
 	echo " - Table of Contents";
 	echo "</title>\n";
 
-	include "$include_path/navi-body.php";
+	include "$navi_body_php";
 
 	$naviBottom = "";
 	$naviBottom
@@ -37,19 +38,19 @@
 <div lang="en">
 
 <?php
-	$t0s = "<a href=\"/nascom/magazines$tail/\" style=\"display:block\">";
+	$t0s = "<a href=\"$gHtmlRoot/nascom/magazines$tail/\" style=\"display:block\">";
 	$t0e = "</a>";
-	$t1s = "<a href=\"/nascom/magazines/inmc-news$tail/\" style=\"display:block\">";
+	$t1s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-news$tail/\" style=\"display:block\">";
 	$t1e = "</a>";
-	$t2s = "<a href=\"/nascom/magazines/inmc-80-news$tail/\" style=\"display:block\">";
+	$t2s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-80-news$tail/\" style=\"display:block\">";
 	$t2e = "</a>";
-	$t3s = "<a href=\"/nascom/magazines/80-bus-news$tail/\" style=\"display:block\">";
+	$t3s = "<a href=\"$gHtmlRoot/nascom/magazines/80-bus-news$tail/\" style=\"display:block\">";
 	$t3e = "</a>";
-	$t4s = "<a href=\"/nascom/magazines/micropower$tail/\" style=\"display:block\">";
+	$t4s = "<a href=\"$gHtmlRoot/nascom/magazines/micropower$tail/\" style=\"display:block\">";
 	$t4e = "</a>";
-	$t5s = "<a href=\"/nascom/magazines/nascom-newsletter$tail/\" style=\"display:block\">";
+	$t5s = "<a href=\"$gHtmlRoot/nascom/magazines/nascom-newsletter$tail/\" style=\"display:block\">";
 	$t5e = "</a>";
-	$t6s = "<a href=\"/nascom/magazines/scorpio-news$tail/\" style=\"display:block\">";
+	$t6s = "<a href=\"$gHtmlRoot/nascom/magazines/scorpio-news$tail/\" style=\"display:block\">";
 	$t6e = "</a>";
 
 	if (!isset($path)

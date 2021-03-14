@@ -1,11 +1,16 @@
 <?php
-	$include_path = "../../../cgi-bin";
-
 	$magpath   =                       quotemeta(addslashes($_GET['magazine']));
 	$issuepath = sprintf("%02d", (int) quotemeta(addslashes($_GET['issue'])));
 	$pagepath  = sprintf("%02d", (int) quotemeta(addslashes($_GET['page'])));
 	$link      =                       quotemeta(addslashes($_GET['link']));
 	$thumb     = false;
+
+	$include_path = "../../../cgi-bin";
+	if ($link == "text") {
+		$gHtmlRoot = "../../../../../..";
+	} else {
+		$gHtmlRoot = "../../../../..";
+	}
 
 	include "$include_path/global.php";
 //	$width = 720;
@@ -37,7 +42,7 @@
 	}
 
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 
 //---------------------------------------------------------------------------
 
@@ -477,7 +482,7 @@ function DisAssemblyRomBasicEnd()		{	columnEnd(1);	echo('</div>');		}
 		echo "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../style.css\">\n";
 	}
 
-	include "$include_path/navi-body.php";
+	include "$navi_body_php";
 
 	echo "<table class=\"style-table-zeropadding\" style=\"width: 100%\">\n";
 		echo "<tr>\n";
@@ -548,7 +553,7 @@ function DisAssemblyRomBasicEnd()		{	columnEnd(1);	echo('</div>');		}
 	echo "<!-- /The page -->\n";
 	navi($pagepath, $link, $first, $last, $magpath, $issuepath, $thumb);
 
-	include "$include_path/navi-footer.php";
+	include "$navi_footer_php";
 	echo "\n";
 	echo "<!-- /page.php -->";
 ?>

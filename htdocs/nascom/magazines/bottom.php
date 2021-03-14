@@ -13,7 +13,7 @@
 	Based on a work of
 	<?php externalLink("Mike Strange"); ?>
 	who collected an overall
-	<a href="/nascom/magazines/Nascom%20Magazine%20Index.xls">table of contents</a>
+	<?php echo "\t<a href=\"$gHtmlRoot/nascom/magazines/Nascom%20Magazine%20Index.xls\">table of contents</a>\n"; ?>
 	of Nascom magazines.
 </p>
 
@@ -21,6 +21,6 @@
 
 <?php
 	bottomGap();
-	include "$include_path/navi-footer.php";
+	include "$navi_footer_php";
 ?>
 <!-- /bottom.php -->

@@ -1349,10 +1349,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 <body>
 	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light style-navbar-top" id="top">
 <?php
-		if (is_file($_SERVER['DOCUMENT_ROOT']."/favicon.ico")) {
+		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
+		if (is_file("$document_root/favicon.ico")) {
+			echo "\t<a class=\"navbar-brand\" href=\"$gHtmlRoot/\">\n";
+			echo "\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"Home\">\n";
 			echo <<<HEREDOC
-		<a class="navbar-brand" href="/">
-			<img src="/favicon.ico" width="32" height="32" alt="Home">
 		</a>
 		<button
 			class="navbar-toggler"
@@ -1374,28 +1375,31 @@ HEREDOC;
 <?php
 				function addNav($dir, $text, $str = "")
 				{
+					global $document_root;
+					global $gHtmlRoot;
 					$request = addslashes(getenv('REQUEST_URI'));
 
-					$item_dir = $_SERVER['DOCUMENT_ROOT']."/$dir";
-/*
+					$item_dir = "$document_root/$dir";
+
 					echo "<!--\n";
-					echo $_SERVER['DOCUMENT_ROOT']."\n";
+					echo "document_root	$document_root\n";
 					echo "item_dir $item_dir\n";
 					echo "text     $text\n";
 					echo "request  $request\n";
 					echo "dir      $dir\n";
 					echo "str      $str\n";
+					echo "gHtmlRoot	$gHtmlRoot\n";
 					echo "-->\n";
-*/
+
 					if (is_dir($item_dir)) {
 						echo "\t\t\t\t<li class=\"nav-item";
-						if ($request == "/$dir/"
+						if ("$request" == "/$dir/"
 						||	strpos($request, "/$str/") === 0
 						) {
 							echo " active";
 						}
 						echo "\">\n";
-						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"/$dir/\">$text</a>\n";
+						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"$gHtmlRoot/$dir/\">$text</a>\n";
 						echo "\t\t\t\t</li>\n";
 					}
 				}
@@ -1409,17 +1413,20 @@ HEREDOC;
 
 				function navBottom($dir, $desc)
 				{
+					global $gHtmlRoot;
+					global $document_root;
 					$result = "";
-					$item_dir = $_SERVER['DOCUMENT_ROOT']."/$dir";
+					$item_dir = "$document_root/$dir";
 //					$result .= "<!--item_dir $item_dir-->";
 					if (is_dir($item_dir)) {
-						$result .= "\t\t";
-						$result .= '<a class="sm-fill nav-link" href="/';
-						$result .= $dir;
-						$result .= '/">';
-						$result .= $desc;
-						$result .= '</a>';
-						$result .= "\n";
+						$result .=
+							"\t\t"
+						.	'<a class="sm-fill nav-link" href="'."$gHtmlRoot/"
+						.	$dir
+						.	'/">'
+						.	$desc
+						.	'</a>'
+						.	"\n";
 					}
 					return $result;
 				}

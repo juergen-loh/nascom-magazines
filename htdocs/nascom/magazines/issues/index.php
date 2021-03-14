@@ -1,15 +1,16 @@
 <?php
 	$include_path = "../../../../cgi-bin";
+	$gHtmlRoot = "../../..";
 	include "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 ?>
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
 
-<?php include "$include_path/navi-body.php";	?>
+<?php include "$navi_body_php";	?>
 
 <?php
 	$naviBottom = "";
@@ -252,4 +253,4 @@ Lawrence
 </div></div>
 
 <?php	bottomGap();	?>
-<?php	include "$include_path/navi-footer.php";	?>
+<?php	include "$navi_footer_php";	?>

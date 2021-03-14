@@ -4,10 +4,19 @@
 		include "$redirect_php";
 	}
 
-//	$include_path		=   $_SERVER['DOCUMENT_ROOT'] .   "/../../cgi-bin";
-	$navi_body_php		= /*$_SERVER['DOCUMENT_ROOT'] .*/ "$include_path/navi-body.php";
-	$navi_head_php		= /*$_SERVER['DOCUMENT_ROOT'] .*/ "$include_path/navi-head.php";
-	$navi_footer_php	= /*$_SERVER['DOCUMENT_ROOT'] .*/ "$include_path/navi-footer.php";
+	$navi_body_php		= "$include_path/navi-body.php";
+	$navi_head_php		= "$include_path/navi-head.php";
+	$navi_footer_php	= "$include_path/navi-footer.php";
+
+	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);
+	if ($document_root == "..") {
+		$document_root = ".";	// only valid in rootdir
+	} else {//if (substr($document_root, 0, 3) == "../") {
+		$document_root = substr($document_root, 3);	// remove ../
+//	} else {
+//		echo "document_root = $document_root";	// fehler
+	}
+//	echo "<!-- include_path = $include_path document_root = $document_root -->";
 
 	function httpLastModified($files, &$lastModified)
 	{
@@ -46,5 +55,4 @@
 //		echo "--".$_SERVER['HTTP_IF_MODIFIED_SINCE']."--".$_SERVER['HTTP_IF_NONE_MATCH']."--\n";
 		echo "-->\n";
 */	}
-
 ?>

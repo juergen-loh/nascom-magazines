@@ -2,12 +2,18 @@
 	if ($thumb) {
 		if ($link == "graphic") {
 			$include_path = "../../../../../../cgi-bin";
-		}
-		if ($link == "text") {
+			$gHtmlRoot = "../../../../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/03/thumb/
+		} else if ($link == "text") {
 			$include_path = "../../../../../../../cgi-bin";
+			$gHtmlRoot = "../../../../../..";
 		}
 	} else {
 		$include_path = "../../../../../cgi-bin";
+		if ($link == "graphic") {
+			$gHtmlRoot = "../../../../..";
+		} else if ($link == "text") {
+			$gHtmlRoot = "../../../../../..";
+		}
 	}
 	include "$include_path/global.php";
 //	$width = 720;
@@ -32,7 +38,7 @@
 	}
 
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 
 	echo "\n";
 	echo "<!-- page.php -->";
@@ -43,7 +49,7 @@
 //	echo "\t<title> $magazine ", (int) $year + 1900, " </title>\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
-	include "$include_path/navi-body.php";
+	include "$navi_body_php";
 
 /*	echo "\n";
 	echo "<table class=\"robots-nocontent\" style=\"width: 100%\">\n";
@@ -59,135 +65,149 @@
 			$aEnd   = "/a";//'br><br></a></td';
 
 			$naviBottom = "";
-//			<a class="sm-fill text-sm-center nav-link" href="/datenschutzerklaerung/">Datenschutzerklärung</a>
 
 			if ($thumb) {
 				if ($link == "graphic") {
-					$naviBottom .= "\t\t<$aStart href=\"../$first2/text/\"$aMid>Text";
-//					$naviBottom .= "-Version";
-					$naviBottom .= "<$aEnd>\n";
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "<$aStart href=\"../$first2/\"$aMid>Grafik";
-//					$naviBottom .= "-Version";
-					$naviBottom .= "<$aEnd>\n";
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "$tStart";
-//					$naviBottom .= "<b>";
-					$naviBottom .= "Miniatur&shy;bilder";
-//					$naviBottom .= "</b>";
-					$naviBottom .= "$tEnd\n";
+					$naviBottom .=
+						"\t\t<$aStart href=\"../$first2/text/\"$aMid>Text"
+//					.	"-Version"
+					.	"<$aEnd>\n"
+					.	"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"<$aStart href=\"../$first2/\"$aMid>Grafik"
+//					.	"-Version"
+					.	"<$aEnd>\n"
+					.	"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"$tStart"
+//					.	"<b>"
+					.	"Miniatur&shy;bilder"
+//					.	"</b>"
+					.	"$tEnd\n";
 				} else {
-					$naviBottom .= "\t\t<$aStart href=\"../../$first2/text/\"$aMid>Text";
-//					$naviBottom .= "-Version";
-					$naviBottom .= "<$aEnd>\n";
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "<$aStart href=\"../../$first2/\"$aMid>Grafik";
-//					$naviBottom .= "-Version";
-					$naviBottom .= "<$aEnd>\n";
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "$tStart";
-/*					$naviBottom .= "<b>";
-					$naviBottom .= "Miniatur&shy;bilder";
-*///				$naviBottom .= "</b>";
-					$naviBottom .= "$tEnd\n";
+					$naviBottom .=
+						"\t\t<$aStart href=\"../../$first2/text/\"$aMid>Text"
+//					.	"-Version"
+					.	"<$aEnd>\n"
+					.	"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"<$aStart href=\"../../$first2/\"$aMid>Grafik"
+//					.	"-Version"
+					.	"<$aEnd>\n"
+					.	"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"$tStart"
+/*					.	"<b>"
+					.	"Miniatur&shy;bilder"
+*///				.	"</b>"
+					.	"$tEnd\n";
 				}
 			} else {
 				if ($text) {
 					if ($link == "text") {
-						$naviBottom .= "\t\t$tStart";
-//						$naviBottom .= "<b>";
-						$naviBottom .= "Text";
-//						$naviBottom .= "-Version";
-//						$naviBottom .= "</b>";//</td>\n";
-						$naviBottom .= "$tEnd\n";//</td>\n";
+						$naviBottom .=
+							"\t\t$tStart"
+//						.	"<b>"
+						.	"Text"
+//						.	"-Version"
+//						.	"</b>";//</td>\n"
+						.	"$tEnd\n";//</td>\n"
 					} else {
-						$naviBottom .= "\t\t<$aStart href=\"text/\"$aMid>Text";
-//						$naviBottom .= "-Version";
-						$naviBottom .= "<$aEnd>\n";
+						$naviBottom .=
+							"\t\t<$aStart href=\"text/\"$aMid>Text"
+//						.	"-Version"
+						.	"<$aEnd>\n";
 					}
 				}
 				if ($graphic) {
 					if ($link == "graphic") {
-						$naviBottom .= "\t\t";
-/*						$naviBottom .= "$tStart";
-//						$naviBottom .= "&middot;";
-						$naviBottom .= "&nbsp;";
-						$naviBottom .= "$tEnd";
-*/						$naviBottom .= "$tStart";
-//						$naviBottom .= "<b>";
-						$naviBottom .= "Grafik";
-//						$naviBottom .= "-Version";
-//						$naviBottom .= "</b>";
-						$naviBottom .= "$tEnd\n";
+						$naviBottom .=
+							"\t\t"
+/*						.	"$tStart"
+//						.	"&middot;"
+						.	"&nbsp;"
+						.	"$tEnd"
+*/						.	"$tStart"
+//						.	"<b>"
+						.	"Grafik"
+//						.	"-Version"
+//						.	"</b>"
+						.	"$tEnd\n";
 					} else {
-						$naviBottom .= "\t\t";
-/*						$naviBottom .= "$tStart";
-//						$naviBottom .= "&middot;";
-						$naviBottom .= "&nbsp;";
-						$naviBottom .= "$tEnd";
-*/						$naviBottom .= "<$aStart href=\"../\"$aMid>Grafik";
-//						$naviBottom .= "-Version";
-						$naviBottom .= "<$aEnd>\n";
+						$naviBottom .=
+							"\t\t"
+/*						.	"$tStart"
+//						.	"&middot;"
+						.	"&nbsp;"
+						.	"$tEnd"
+*/						.	"<$aStart href=\"../\"$aMid>Grafik"
+//						.	"-Version"
+						.	"<$aEnd>\n";
 					}
 				}
 				if ($link == "graphic") {
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "<$aStart href=\"../thumb/\"$aMid>Miniatur&shy;bilder<$aEnd>\n";
+					$naviBottom .=
+						"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"<$aStart href=\"../thumb/\"$aMid>Miniatur&shy;bilder<$aEnd>\n";
 				} else {
-					$naviBottom .= "\t\t";
-/*					$naviBottom .= "$tStart";
-//					$naviBottom .= "&middot;";
-					$naviBottom .= "&nbsp;";
-					$naviBottom .= "$tEnd";
-*/					$naviBottom .= "<$aStart href=\"../../thumb/text/\"$aMid>Miniatur&shy;bilder<$aEnd>\n";
+					$naviBottom .=
+						"\t\t"
+/*					.	"$tStart"
+//					.	"&middot;"
+					.	"&nbsp;"
+					.	"$tEnd"
+*/					.	"<$aStart href=\"../../thumb/text/\"$aMid>Miniatur&shy;bilder<$aEnd>\n";
 				}
 			}
 			if ($pdf) {
-				$naviBottom .= "\t\t";
-/*				$naviBottom .= "$tStart";
-//				$naviBottom .= "&middot;";
-				$naviBottom .= "&nbsp;";
-				$naviBottom .= "$tEnd";
-*/				$naviBottom .= "<$aStart href=\"/nascom/journal/pdf/$year-$issue.pdf";
-				$naviBottom .= "\" download$aMid>PDF";
-//				$naviBottom .= "-Version";
-//				$naviBottom .= " (ganzes Heft)";
-				$naviBottom .= "<$aEnd>\n";
+				$naviBottom .=
+					"\t\t"
+/*				.	"$tStart"
+//				.	"&middot;"
+				.	"&nbsp;"
+				.	"$tEnd"
+*/				.	"<$aStart href=\"$gHtmlRoot/nascom/journal/pdf/$year-$issue.pdf"
+//				.	"#page=".(int)$page
+				.	"\""
+//				.	" target=\"_blank\""
+				.	" download$aMid"
+				.	">PDF"
+//				.	"-Version"
+//				.	" (ganzes Heft)"
+				.	"<$aEnd>\n";
 			}
 /*			if ($link == "graphic") {
-				$naviBottom .= "\t\t";
-/ *				$naviBottom .= "$tStart";
-//				$naviBottom .= "&middot;";
-				$naviBottom .= "&nbsp;";
-				$naviBottom .= "$tEnd";
-* /				$naviBottom .= "<$aStart href=\"../\"$aMid>Inhalts&shy;verzeichnis<$aEnd>\n";
+				$naviBottom .=
+					"\t\t
+/ *				.	"$tStart"
+//				.	"&middot;"
+				.	"&nbsp;"
+				.	"$tEnd"
+* /				.	"<$aStart href=\"../\"$aMid>Inhalts&shy;verzeichnis<$aEnd>\n";
 			} else if ($link == "text") {
-				$naviBottom .= "\t\t";
-/ *				$naviBottom .= "$tStart";
-//				$naviBottom .= "&middot;";
-				$naviBottom .= "&nbsp;";
-				$naviBottom .= "$tEnd";
-* /				$naviBottom .= "<$aStart href=\"../../text/\"$aMid>Inhalts&shy;verzeichnis<$aEnd>\n";
+				$naviBottom .=
+					"\t\t"
+/ *				.	"$tStart"
+//				.	"&middot;"
+				.	"&nbsp;"
+				.	"$tEnd"
+* /				.	"<$aStart href=\"../../text/\"$aMid>Inhalts&shy;verzeichnis<$aEnd>\n";
 			}
 */
 /*		echo "\t</tr>\n";
@@ -974,7 +994,7 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 		echo "\n\t<p class=\"nas-link\">";	externalLink("Swords.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
 	}
 
-	include "$include_path/navi-footer.php";
+	include "$navi_footer_php";
 
 	echo "\n";
 	echo "<!-- /page.php -->";

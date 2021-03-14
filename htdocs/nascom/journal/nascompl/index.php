@@ -1,17 +1,18 @@
 <?php
 	$include_path = "../../../../cgi-bin";
+	$gHtmlRoot = "../../..";
 	include "$include_path/global.php";
 //	$width = 700;
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 
 	echo "\t", '<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">', "\n";
 	echo "\t", '<title>NASCOMPL</title>', "\n";
 
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
-	include "$include_path/navi-body.php";
+	include "$navi_body_php";
 
 function nascomplInsert($year, $issue, $page, $file)
 {
@@ -175,5 +176,5 @@ function nascomplInsert($year, $issue, $page, $file)
 	echo "</div>\n";
 //	echo "</td></tr></table>\n";
 
-	include "$include_path/navi-footer.php";
+	include "$navi_footer_php";
 ?>

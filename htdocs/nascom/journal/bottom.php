@@ -2,5 +2,5 @@
 </table>
 
 <?php	bottomGap();	?>
-<?php	include "$include_path/navi-footer.php";	?>
+<?php	include "$navi_footer_php";	?>
 <!-- /bottom.php -->

@@ -1,10 +1,21 @@
 <?php
 	$include_path = "$tppath/../../../cgi-bin";
+	if ($tail == "/") {
+		$gHtmlRoot = "$tppath/../..";
+	} else if ($tail == "/text/") {
+		if (isset($path)) {
+			$gHtmlRoot = "$tppath/$path../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/00/text/
+		} else {
+			$gHtmlRoot = "$tppath/../..";		// http://nascom-magazines.jloh.de/new/nascom/journal/80/text/
+		}
+	} else {
+		$gHtmlRoot = "$tppath/../../..";
+	}
 	include "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
-	include "$include_path/navi-head.php";
+	include "$navi_head_php";
 //	$width = 720;
 /*
 	echo "<!--\n";
@@ -13,32 +24,34 @@
 	echo "dirname=" . dirname(__FILE__) . "\n";
 	echo "-->\n";
 */
+//	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
 <!-- top.php -->
 
-	<meta name="keywords" content="Jahresinhaltsverzeichnis, Inhaltsverzeichnis,
-		Nascom Journal, Nascom Computer, Nascom 1, Nascom 2, 80-Bus Journal">
+	<meta name="keywords" content="Inhaltsverzeichnis,
+		Nascom Journal, 80-Bus Journal,
+		Nascom Computer, Nascom 1, Nascom 2">
 <?php
 	echo "\t<title>$title";
 	if (isset($issue)) echo " &ndash; $issue";
 	echo " &ndash; Inhaltsverzeichnis</title>\n";
 
-	include "$include_path/navi-body.php";
+	include "$navi_body_php";
 
-	$t00s = "<a href=\"/nascom/journal$tail\" style=\"display:block\">";
+	$t00s = "<a href=\"$gHtmlRoot/nascom/journal$tail\" style=\"display:block\">";
 	$t00e = "</a>";
-	$t80s = "<a href=\"/nascom/journal/80$tail\" style=\"display:block\">";
+	$t80s = "<a href=\"$gHtmlRoot/nascom/journal/80$tail\" style=\"display:block\">";
 	$t80e = "</a>";
-	$t81s = "<a href=\"/nascom/journal/81$tail\" style=\"display:block\">";
+	$t81s = "<a href=\"$gHtmlRoot/nascom/journal/81$tail\" style=\"display:block\">";
 	$t81e = "</a>";
-	$t82s = "<a href=\"/nascom/journal/82$tail\" style=\"display:block\">";
+	$t82s = "<a href=\"$gHtmlRoot/nascom/journal/82$tail\" style=\"display:block\">";
 	$t82e = "</a>";
-	$t83s = "<a href=\"/nascom/journal/83$tail\" style=\"display:block\">";
+	$t83s = "<a href=\"$gHtmlRoot/nascom/journal/83$tail\" style=\"display:block\">";
 	$t83e = "</a>";
-	$t84s = "<a href=\"/nascom/journal/84$tail\" style=\"display:block\">";
+	$t84s = "<a href=\"$gHtmlRoot/nascom/journal/84$tail\" style=\"display:block\">";
 	$t84e = "</a>";
-	$t85s = "<a href=\"/nascom/journal/85$tail\" style=\"display:block\">";
+	$t85s = "<a href=\"$gHtmlRoot/nascom/journal/85$tail\" style=\"display:block\">";
 	$t85e = "</a>";
 
 	if (isset($issue)) {
