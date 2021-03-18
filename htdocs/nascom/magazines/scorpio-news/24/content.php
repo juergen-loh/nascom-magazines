@@ -1,4 +1,4 @@
-<!-- scorpio-news/88/24/content.php -->
+<!-- scorpio-news/24/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -60,4 +60,4 @@
 	,	31
 	);
 ?>
-<!-- /scorpio-news/88/24/content.php -->
+<!-- /scorpio-news/24/content.php -->

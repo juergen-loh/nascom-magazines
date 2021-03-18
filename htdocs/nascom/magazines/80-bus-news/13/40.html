@@ -1,12 +1,6 @@
 <?php columnStart(1); ?>
 <p>
-oes
-</p>
-<p>
 GM809 and Eight Inch Drives oth by D. Parkinson
-</p>
-<p>
-SS Sh Se Se Se ee ee ee es
 </p>
 <p>
 Every once in a while I get an enquiry (or statement!) passed to me about the
@@ -53,32 +47,7 @@ command. All it has to do is transfer a byte every time a DRQ (Data ReQuest)
 occurs, and exit when an IRQ (Interrupt ReQuest) occurs. Note that it uses the
 externally read status bits.
 </p>
-<p>
-code T states
-</p>
-<p>
-&lt;== a ae So
-</p>
-<p>
--..set up all the registers...
-</p>
-<p>
-LOOP: IN A, (STATUS) ; Read DRQ/IRQ bits &ndash; 11
-AND 81H 3; Mask DRQ and IRQ &ndash; 7
-JR Z, LOOP ; Loop if no request &ndash; 7/12
-JP P,IRQ 3; Exit on IRQ &ndash; 10
-IN A, (DATA) ; Read the data byte &ndash; 11
-LD (HL),A ; Store in memory buffer- 7
-INC HL ; Bump the address &ndash; 6
-JR LOOP ; Get next byte &ndash; 12
-</p>
-<p>
-IRQ: sc eseeeeee
-Total T states (no wait for DRQ) =73
-</p>
-<p>
-Total T states (one wait for DRQ) =73+37=110
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-40-1.png"); ?>
 <p>
 The AND 81H masks out the DRQ and INTRQ status bits. If neither is set the Z flag
 gets set and so the routine waits. Once one or other bit is set it will fall

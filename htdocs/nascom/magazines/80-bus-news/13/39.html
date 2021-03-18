@@ -1,18 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-39
-</p>
-<p>
-OUT (CENPAC),A bit 1 is the STROBE (output), the rest are inputs
-</p>
-<p>
-3
-LD A, OFFH ; Tell port B it will use the bidirectional/control mode
-OUT (CENPBC),A
-XOR A 3; Send the mask to say which bits are in and which are out
-OUT (CENPBC),A 3; all bits are set to output.
-RET 3; Exit from the initialization routine.
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-39-1.png"); ?>
 <p>
 So the ports have been set up. The U command in NAS-SYS, or the LST vector in
 RP/M should be set to point to the output routine, and study of the manuals should
@@ -22,47 +9,7 @@ line is examined until it is free. The character is then POPped back and sent to
 data port. Bit one is then toggled to cause a strobe pulse thus latching the data into
 the printer.
 </p>
-<p>
-PUSH AF ; Push the character out of the way
-</p>
-<p>
-; Examine the BUSY line until free
-</p>
-<p>
-LOOP: IN A, (CENPAD) ; Get port A into the accumulator
-RRA 3; Rotate the byte, shifting bit O into the Carry
-JR C,LOOP ; If the C flag is now set, the printer is BUSY
-</p>
-<p>
-s The printer is now free, send the character
-</p>
-<p>
-POP AF ; Get the character back
-</p>
-<p>
-PUSH AF ; Save it from being corrupted by the strobe pulse
-OUT (CENPBD),A ; Send the byte to the printer
-</p>
-<p>
-NOP 3; Wait for the data to settle
-</p>
-<p>
-LD A,0FH 3; Send a strobe pulse by toggling bit 1
-OUT (CENPAD),A
-</p>
-<p>
-NOP 3; Wait for the strobe pulse to settle
-LD A, OFFH ; Take the strobe pulse away again
-</p>
-<p>
-OUT (CENPAD),a
-</p>
-<p>
-POP AF 3; Get the character back
-</p>
-<p>
-RET 3; Exit from the routine
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-39-2.png"); ?>
 <p>
 And that is all there is to it. Of course, there will be problems with both
 the serial and the parallel routines, but &lsquo;thinking down&rsquo; to the bit level where it is

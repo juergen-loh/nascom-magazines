@@ -1,4 +1,4 @@
-<!-- nascom-newsletter/83/32/content.php -->
+<!-- nascom-newsletter/32/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -38,7 +38,7 @@
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"News From  Nascom"
+	,	"News From Nascom"
 	,	"Mike Hessey"
 	,	""
 	,	22
@@ -68,4 +68,4 @@
 	,	28
 	);
 ?>
-<!-- /nascom-newsletter/83/32/content.php -->
+<!-- /nascom-newsletter/32/content.php -->

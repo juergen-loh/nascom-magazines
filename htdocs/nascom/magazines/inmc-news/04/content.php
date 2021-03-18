@@ -1,4 +1,4 @@
-<!-- inmc-news/79/04/content.php -->
+<!-- inmc-news/04/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -182,14 +182,14 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Random Buz-Word Linker"
-	,	"Richard  Beal<br>"
+	,	"Richard Beal<br>"
 	.	"David Hunt"
 	,	"Assembler"
 	,	27
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Life"
-	,	"Richard  Beal"
+	,	"Richard Beal"
 	,	"Assembler"
 	,	28
 	);
@@ -206,4 +206,4 @@
 	,	30
 	);
 ?>
-<!-- /inmc-news/79/04/content.php -->
+<!-- /inmc-news/04/content.php -->

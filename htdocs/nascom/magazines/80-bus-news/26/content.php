@@ -1,4 +1,4 @@
-<!-- 80-bus-news/83/26/content.php -->
+<!-- 80-bus-news/26/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -162,4 +162,4 @@
 	,	65
 	);
 ?>
-<!-- /80-bus-news/83/26/content.php -->
+<!-- /80-bus-news/26/content.php -->

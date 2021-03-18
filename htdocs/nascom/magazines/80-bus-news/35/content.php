@@ -1,4 +1,4 @@
-<!-- 80-bus-news/84/35/content.php -->
+<!-- 80-bus-news/35/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -66,7 +66,7 @@
 	,	28
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The DH  Bits "
+	,	"The DH Bits "
 	,	"David Hunt"
 	,	"Basic"
 	,	31
@@ -102,4 +102,4 @@
 	,	38
 	);
 ?>
-<!-- /80-bus-news/84/35/content.php -->
+<!-- /80-bus-news/35/content.php -->

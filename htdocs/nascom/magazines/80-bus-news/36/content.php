@@ -1,4 +1,4 @@
-<!-- 80-bus-news/84/36/content.php -->
+<!-- 80-bus-news/36/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -42,7 +42,7 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"EPROM Programmer for NASCOMS for 2516, 2716, 2532, 2764, 27128 and possibly 27256  (excludes 2708 and 2732) with circuits and source code"
+	,	"EPROM Programmer for NASCOMS for 2516, 2716, 2532, 2764, 27128 and possibly 27256 (excludes 2708 and 2732) with circuits and source code"
 	,	"Stephen Weir"
 	,	"Hardware"
 	,	11
@@ -96,4 +96,4 @@
 	,	53
 	);
 ?>
-<!-- /80-bus-news/84/36/content.php -->
+<!-- /80-bus-news/36/content.php -->

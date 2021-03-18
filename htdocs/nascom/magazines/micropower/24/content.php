@@ -1,4 +1,4 @@
-<!-- micropower/82/24/content.php -->
+<!-- micropower/24/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -114,4 +114,4 @@
 	,	34
 	);
 ?>
-<!-- /micropower/82/24/content.php -->
+<!-- /micropower/24/content.php -->

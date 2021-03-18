@@ -1,4 +1,4 @@
-<!-- nascom-newsletter/82/26/content.php -->
+<!-- nascom-newsletter/26/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -70,7 +70,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Review of NASPIC<br>"
-	.	"for production  of &lsquo;pages&rsquo; of graphics for BASIC"
+	.	"for production of &lsquo;pages&rsquo; of graphics for BASIC"
 	,	"D.J. Plews"
 	,	"Review"
 	,	25
@@ -136,4 +136,4 @@
 	,	38
 	);
 ?>
-<!-- /nascom-newsletter/82/26/content.php -->
+<!-- /nascom-newsletter/26/content.php -->

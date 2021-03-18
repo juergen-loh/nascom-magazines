@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-338
-</p>
-<p>
 The Centronics connector is different to the D25 connector. It is a 36 way
 connector arranged so that all signal leads are on the top row, whilst the opposite
 pins on the bottom row are all signal grounds. This allows for the use of twisted pair
@@ -66,29 +63,5 @@ the computer will return the PIO device to it&rsquo;s default mode, and the rout
 need to be called again. These routine are due to Richard Beal (again) as they are
 more elegant than my original version, although somewhat more complex.
 </p>
-<p>
-BASE HQU XX
-CENPAD EQU BASE
-CENPBD EQU BASH+1
-CENPAC EQU BASE+2
-CENPBC EQU BASE+3
-</p>
-<p>
-Base address, 04H for Nascom, OB4H for Gemini
-Port A data I/O
-Port B data I/O
-Port A control
-Port B control
-</p>
-<p>
-we ee es we we
-</p>
-<p>
-3; Initialize the ports, port B to output, port a to bidirectional
-LD A, OFFH ; Force all outputs high, default condition is output.
-OUT (CENPAD),A
-OUT (CENPBD),A
-OUT (CENPAC),A ; Tell port A it will use the bidirectional/control mode
-LD A,OFDH ; Send the mask to say which bits are in and which are out
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-38-1.png"); ?>
 <?php columnEnd(1); ?>

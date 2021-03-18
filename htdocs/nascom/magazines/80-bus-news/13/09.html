@@ -28,27 +28,11 @@ One of the niggling omissions from the Nascom ROM BASIC is a RANDOMISE
 function, to make the RND function produce unpredictable numbers. This USR callable
 subroutine should help a bit.
 </p>
-<p>
-LD A,R ED 5F
-LD B,A 47
-XOR A AF
-LD HL, (OOD) 2A OD EO
-JP (HL) EQ
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-1.png"); ?>
 <p>
 This can be put anywhere in unused memory by a series of DOKEs, such as:
 </p>
-<p>
-50 FOR I=0 TO3
-</p>
-<p>
-60 READ A: DOKE 3360 + 2*I,A
-70 NEXT I
-</p>
-<p>
-80 DATA 24557,-20665, 3370, -5664
-90 DOKE 4100, 3360
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-2.png"); ?>
 <p>
 It uses the neglected Z80 instruction which reads the refresh register. If
 the computer has been waiting for an input from an unpredictable source such as the

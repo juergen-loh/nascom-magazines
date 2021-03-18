@@ -1,13 +1,8 @@
 <?php columnStart(1); ?>
 <p>
-41
-</p>
-<p>
 further test to find out which bit was set as the AND instruction will have also
 set the sign bit in the flag register to indicate the state of bit 7. Thus if it is
 Positive (i.e. bit 7 was 0), then bit O must have been set to create the NZ result
-</p>
-<p>
 of the AND.
 </p>
 <p>
@@ -23,23 +18,7 @@ nothing to the data transfer itself, and so could be moved with some benefit.
 <p>
 With some re-organisation the code could now look like this:
 </p>
-<p>
-eeee
-</p>
-<p>
-LD B,81H 3; Set the mask
-JR LOOP ; Skip
-DRQ: IN A, (DATA) ; Read the DATA byte &ndash; 14
-LD (HL),A 3; Store &ndash; 7
-INC HL ; Bump address &ndash; 6
-LOOP: IN A, (STATUS) ; Wait for DRQ/IRQ &ndash; 11
-AND B 3 Mask/test &ndash; 4
-JR %, LOOP 3; Wait if neither &ndash; 7/12
-JP M,DRQ ; Jump if DRQ &ndash; 10
-eeee ; Else done
-Total states ( no wait for DRQ) = 56
-Total states ( one wait for DRQ)= 56 + 27 = 83
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-41-1.png"); ?>
 <p>
 The re-organisation has effectively removed one JP from the critical loop (at the
 expense of an extra JR at the start to get into the loop), and has improved the

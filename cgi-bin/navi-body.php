@@ -1349,10 +1349,10 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 <body>
 	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light style-navbar-top" id="top">
 <?php
-		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
+//		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
 		if (is_file("$document_root/favicon.ico")) {
 			echo "\t<a class=\"navbar-brand\" href=\"$gHtmlRoot/\">\n";
-			echo "\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"Home\">\n";
+			echo "\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"\">\n";
 			echo <<<HEREDOC
 		</a>
 		<button
@@ -1380,7 +1380,7 @@ HEREDOC;
 					$request = addslashes(getenv('REQUEST_URI'));
 
 					$item_dir = "$document_root/$dir";
-
+/*
 					echo "<!--\n";
 					echo "document_root	$document_root\n";
 					echo "item_dir $item_dir\n";
@@ -1390,7 +1390,7 @@ HEREDOC;
 					echo "str      $str\n";
 					echo "gHtmlRoot	$gHtmlRoot\n";
 					echo "-->\n";
-
+*/
 					if (is_dir($item_dir)) {
 						echo "\t\t\t\t<li class=\"nav-item";
 						if ("$request" == "/$dir/"

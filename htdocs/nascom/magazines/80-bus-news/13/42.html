@@ -36,45 +36,7 @@ loop will be broken when the &ldquo;Motor on&rdquo; monostable finally times out
 <p>
 The revised code for Read and Write now looks like this:
 </p>
-<p>
-3 Y*XEe* Write Section *#*#**
-</p>
-<p>
-eezreaeove
-</p>
-<p>
-ld c, status 3; &copy; &ndash;&gt; Special Status port
-write: 1d a, (hl) ; Get the next byte ready
-ine hl
-wwait: in b,(c) ; Input and test
-jr Z,wwait ; Loop if no request
-out (data$reg),a ; Send the byte (in case was a DRQ)
-ap m,write ; Carry on if it was a DRQ
-,
-</p>
-<p>
-IRQ or timeout exit
-</p>
-<p>
-; RREREX Road Section ******
-</p>
-<p>
-ee eeeans
-</p>
-<p>
-id c,status 3 C --&gt; Special Status port
-jr rwait ; Enter the routine
-read: in a, (data$reg) ; Get the byte
-1d (hl) ,a ; Put in memory buffer
-ine hl
-rwait: in a,(c) 3; Input &amp; test
-jr Z,rwait 3; Loop if no request
-Jp m, read ; Jump on DRQ
-#
-</p>
-<p>
-ee eeees TRQ or timeout exit
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-42-1.png"); ?>
 <p>
 Note that in the WRITE section a byte is pre-fetched and output immediately in
 response to the Status byte being non-zero. This ensures that the worst case

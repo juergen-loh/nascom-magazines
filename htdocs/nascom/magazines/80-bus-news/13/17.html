@@ -43,57 +43,8 @@ should also append LFs to CRs).
 NOTE: The IVC ports OB1H and OB2H are 177 and 178 (decimal). The buffer full/empty
 bit is bit 7 which is equivalent to decimal 128 for use in the WAIT statement.
 </p>
-<p>
-100 REM Demo program for the Arfon light pen
-</p>
-<p>
-110 ROW=INP(177) :REM Ensure IVC port cleared.
-</p>
-<p>
-120 P$=CHR$(27)+"P&rdquo; :REM Set up &lt;ESC&gt; P command string
-130 MAXCOL=80 :REM Screen width
-</p>
-<p>
-140 OFFSET=12 :REM Correction required
-</p>
-<p>
-150 GOSUB 2000 :REM Get the coordinates
-</p>
-<p>
-160 PRINT &ldquo;Row=";ROW; " Col=";COL
-</p>
-<p>
-170 GOTO 150 :REM Loop
-</p>
-<p>
-2000 REM ERRREKEER KERR EERE ER EERE REE EREREEERER EER EEEE EERE
-</p>
-<p>
-2001 REM Subroutine to get a set of light pen coordinates
-2002 REM FERRER ELE KER HERE EEE ERK EEE E EER ERE EEE EEE EE ERE REE EE
-</p>
-<p>
-2010 PRINT P$; :REM Send the command string
-2020 WAIT 178,128,128 :REM Wait for &ldquo;READY&rdquo; flag
-2030 ROW=INP(177) :REM Read back ROW coordinate
-2040 WAIT 178,128,128 :REM Wait for COL
-</p>
-<p>
-2050 COL=INP(177) :REM Read back COL coordinate
-2060 COL=COL-OFFSET :REM Allow for offset
-</p>
-<p>
-2070 IF COL&gt;=0 THEN RETURN :REM Return if all ok
-</p>
-<p>
-2080 COL=COL+MAXCOL sREM Not,so adjust COL..
-</p>
-<p>
-2090 ROW=ROW-1 :REM...&amp; ROW
-</p>
-<p>
-2100 RETURN :REM return ROW &amp; COL
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-2.png"); ?>
 <p>
 Nascom Basic users should also look at the following examples which illustrate
 another way that the coordinates can be obtained.

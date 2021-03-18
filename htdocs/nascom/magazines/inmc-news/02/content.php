@@ -1,4 +1,4 @@
-<!-- inmc-news/79/02/content.php -->
+<!-- inmc-news/02/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -84,4 +84,4 @@
 	,	18
 	);
 ?>
-<!-- /inmc-news/79/02/content.php -->
+<!-- /inmc-news/02/content.php -->

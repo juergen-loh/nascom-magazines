@@ -1,4 +1,4 @@
-<!-- nascom-newsletter/83/33/content.php -->
+<!-- nascom-newsletter/33/content.php -->
 <?php
 	//-----------------------------------------------------------------------
 //	include "$path/../../issue.php";
@@ -84,4 +84,4 @@
 	,	35
 	);
 ?>
-<!-- /nascom-newsletter/83/33/content.php -->
+<!-- /nascom-newsletter/33/content.php -->
