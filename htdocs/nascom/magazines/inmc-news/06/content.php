@@ -56,7 +56,7 @@
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary -4<br>"
+	,	"Doctor Dark&rsquo;s Diary &ndash;4<br>"
 	.	"Using M5 &ndash; Microdigital&rsquo;s Interpreter"
 	,	"Chris Blackmore"
 	,	""

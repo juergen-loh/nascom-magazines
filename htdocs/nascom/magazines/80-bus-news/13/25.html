@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 are produced on each negative going transition of the clock signal. This causes the
 signal to have a positive going edge when the data bit is 0 and a negative going edge
 when the data bit is 1. When there is no change of data between consecutive clock
@@ -14,9 +14,9 @@ the signal is longer that half a clock period. The pulse from the monostable tri
 a flipflop, the output of which will echo the original recorded data, assuming that
 the data start was synchronised in the first place.
 </p>
-<p>
+<h4>
 The Manchester II encoder
-</p>
+</h4>
 <p>
 The bit train for the encoder is provided by the Nascom UART as before. As the
 data rate is to be 3900 baud, and the UART clock must be sixteen times the baud rate,
@@ -24,24 +24,25 @@ a clock frequency of 62.5KHz is required. On the Nascom&nbsp;1 this may be obtai
 pin 11 of IC1. To avoid complication within the encoder (fig. 1), a 4040 divider is
 used, fed with 62.5KHz from the same point, the incoming frequency being divided by 16
 to produce the 3.9KHz clock rate for the encoder, to match the data rate coming from
-the UART. A 40135 flipflop is used to ensure that the data changes with the positive
+the UART. A 4013 flipflop is used to ensure that the data changes with the positive
 edge of the 3.9KHz clock before being fed to one quarter of a 4070 quad NOR gate which
 does the actual encoding. The output signal is fed to a resistive divider and the
 recorder signal may be taken from the high or low level output depending upon the
 recorder requirements.
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
-<p>
-Cx &ndash; 10nF for 3900 baud DATA &ndash; from Nascom&nbsp;1 IC29 pin 25
-&ndash; 6n8F for 4800 baud CLOCK &ndash; from Nascom&nbsp;1 IC1i pin 11
-&ndash; also connect to central posn. of LK4
-</p>
-<p>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
+<table style="width: 100%">
+<colgroup><col><col style="width: 40%"><col><col></colgroup>
+<tr><td>Cx</td><td>&ndash; 10nF for 3900 baud</td><td>DATA</td><td>&ndash; from Nascom&nbsp;1 IC29 pin 25</td></tr>
+<tr><td></td><td>&ndash; 6n8F for 4800 baud</td><td>CLOCK</td><td>&ndash; from Nascom&nbsp;1 IC1i pin 11</td></tr>
+<tr><td></td><td></td><td></td><td>&ndash; also connect to central posn. of LK4</td></tr>
+</table>
+<h4>
 The Manchester II decoder
-</p>
+</h4>
 <p>
 Fig. 2 is the circuit diagram of the decoder. The cassette output is fed into
-a cheap voltage comparator IC, TLO81, which squares the signal, the output of which is
+a cheap voltage comparator IC, TL081, which squares the signal, the output of which is
 fed to a quarter of a 4070 which further improves the signal shape. The shaped signal
 is fed to both the data input of the output flipflop, and the positive trigger input
 of half of a 4038 monostable which regenerates the clock. The time constant of the

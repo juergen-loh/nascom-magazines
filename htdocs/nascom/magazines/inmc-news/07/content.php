@@ -41,7 +41,7 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary -5<br>"
+	,	"Doctor Dark&rsquo;s Diary &ndash;5<br>"
 	.	"Bits and P.C.s dual Monitor board and control keypad"
 	,	"Chris Blackmore"
 	,	""

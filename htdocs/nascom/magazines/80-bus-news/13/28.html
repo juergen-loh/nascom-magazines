@@ -7,36 +7,46 @@ which may be connected to pin 2 of SK2, signalling when the buffer is full, or t
 printer is out of paper, etc. A simple piece of software supervises the printer.
 Before sending a character the following code is called:
 </p>
-<p>
-PUSH AF 3; Save the flags and the A register
-</p>
-<p>
-?
-BUSY IN A,(0) ; Get the input into the A register
-RLA 3; Move the bit to be tested into the C flag
-JR C, BUSY 3; Test and loop if busy
-POP AF
-</p>
-<p>
+<pre class="indent">
+        PUSH AF 3         ; Save the flags and the A register
+BUSY    IN A,(0)          ; Get the input into the A register
+        RLA 3             ; Move the bit to be tested into the C flag
+        JR C, BUSY 3      ; Test and loop if busy
+        POP AF
+</pre>
+<p class="continued">
 After which the software may direct the character to be sent to the printer.
 </p>
 <p>
 This finishes my summary of the major changes I have made to my Nascom&nbsp;1, I
-</p>
-<p>
 hope the above will be of help to someone, and that it will solve some of their
 problems.
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-1.png"); ?>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-2.png"); ?>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-3.png"); ?>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-4.png"); ?>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-28-5.png"); ?>
-<p>
-MODIFICATIONS TO ALLOW THE USE OF 2K RAMS
-AND EPROMS ON THE NASCOM 2.
-</p>
-<p>
-JEFF ROLLASON 82
-</p>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-28-1.png"); ?>
+<?php hLine("100%", "2d"); ?>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-28-2.png"); ?>
+<?php columnChange(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-28-3.png"); ?>
+<?php columnChange(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-28-4.png"); ?>
+<?php columnChange(4); ?>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-28-5.png"); ?>
+<?php columnEnd(4); ?>
+<?php columnStart(4); ?>
+<?php columnChange(24); ?>
+Pins 3 &amp; 13 of IC46 must be<br>
+connected to A12 &amp; A11
+<?php columnChange(4); ?>
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1); ?>
+<h4 class="indent2">
+<u>
+MODIFICATIONS TO ALLOW THE USE OF 2K RAMS<br>
+AND EPROMS ON THE NASCOM 2. &nbsp; &nbsp; JEFF ROLLASON 82
+</u>
+</h4>
 <?php columnEnd(1); ?>

@@ -1,16 +1,13 @@
-<?php columnStart(1); ?>
-<p>
-16
-</p>
-<p>
+<?php columnStart(1, "noindent"); ?>
+<h2>
 The Arfon light pen (If you can still get it)
-</p>
+</h2>
 <p>
-The Arfon. light pen is housed in a black anodised aluminium cylinder about 18cm
+The Arfon light pen is housed in a black anodised aluminium cylinder about 18cm
 long and 2cm in diameter. It&rsquo;s not heavy, weighing in at about 2.5 Ounces (my
 wife&rsquo;s scales aren&rsquo;t metric!), and is supplied with about 130cms of lead
 terminated in a 5-pin DIN plug. This DIN plug will plug directly into the Gemini
-GM8i2 IVC card. I believe there is an interface available for a Nascom, but I have
+GM812 IVC card. I believe there is an interface available for a Nascom, but I have
 not seen this and cannot comment on it. There is a push button mounted in the pen
 body close to the end that carries the photo-diode. This push button falls
 conveniently under the fore-finger when the pen is held in a &lsquo;pen-like&rsquo; manner.
@@ -19,15 +16,12 @@ conveniently under the fore-finger when the pen is held in a &lsquo;pen-like&rsq
 The output of the photo-diode is amplified and limited to produce a TTL compatible
 STROBE signal. The switch is debounced and produces a TTL compatible ENABLE signal.
 </p>
-<p>
+<h2>
 Using the light pen
-</p>
-<p>
-Sete te ree eee ree eo
-</p>
+</h2>
 <p>
 I have used the light pen in conjunction with the Gemini IVC and shall thus
-restrict my discussions to this particular combination. :
+restrict my discussions to this particular combination.
 </p>
 <p>
 The 6845 CRT controller used on the IVC directly supports a light pen. The STROBE
@@ -42,22 +36,22 @@ will be dependent on the light pen used, and also on the screen width in use. (A
 strobe width of 6us is 12 characters in the 80-wide mode, and nearly half that in
 the 48-wide mode).
 </p>
-<p>
+<h2>
 The IVC software &ndash; ESC P
-</p>
+</h2>
 <p>
 The video card supports the ESC P command for returning the coordinates of the
 light pen. At the time the IVC software was written no light pen was available to
 try with it, and so the function only performs the simple operations as follows:&ndash;
 </p>
 <p>
-i) Wait until the light pen switch is found to be operated.
-ii) Wait one TV frame.
-iii) Read the light pen register in the CRT controller.
-iv) Adjust the address to account for IVC hardware delays.
-v) Test for a valid screen address.
-vi) If the address is not valid then go to i).
-vii) Convert the address to equivalent Row/Column coordinates.
+i) Wait until the light pen switch is found to be operated.<br>
+ii) Wait one TV frame.<br>
+iii) Read the light pen register in the CRT controller.<br>
+iv) Adjust the address to account for IVC hardware delays.<br>
+v) Test for a valid screen address.<br>
+vi) If the address is not valid then go to i).<br>
+vii) Convert the address to equivalent Row/Column coordinates.<br>
 viii) Return the coordinates to the host system.
 </p>
 <p>

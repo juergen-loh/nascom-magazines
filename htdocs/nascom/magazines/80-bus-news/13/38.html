@@ -5,43 +5,62 @@ connector arranged so that all signal leads are on the top row, whilst the oppos
 pins on the bottom row are all signal grounds. This allows for the use of twisted pair
 cables to improve the noise immunity. To confuse the issue, Centronics refer to the
 eight data lines as DATA 1 thro&rsquo; DATA 8, whilst computer people think of these as Bits
-O thro&rsquo; 7. DATA 1 is connected to BIT 0, DATA 2 to BIT 1, etc. Beware, as has already
+0 thro&rsquo; 7. DATA 1 is connected to BIT 0, DATA 2 to BIT 1, etc. Beware, as has already
 been noted, there are some variations on the theme, Epson for instance use one of the
 lower pins as a device select pin on some models, so it pays to read the manual
 referring to an individual printer before connecting up. A typical Centronics
 configuration is as follows:
 </p>
-<p>
-1 DATA STROBE 19 Twisted pair ground for pin 1
-2 DATA 1 20 Twisted pair ground for pin 2
-3 DATA 2 21 Twisted pair ground for pin 3
-4 DATA 3 22 Twisted pair ground for pin 4
-5 DATA 4 23 Twisted pair ground for pin 5
-6 DATA 5 24 Twisted pair ground for pin 6
-7 DATA 6 25 Twisted pair ground for pin 7
-8 DATA 7 26 Twisted pair ground for pin 8
-9 DATA 8 27 Twisted pair ground for pin 9
-10 ACK 28 Twisted pair ground for pin 10
-11 BUSY 29 Twisted pair ground for pin 11
-12 30 Twisted pair ground for pin 31
-13 34 INPUT PRIME
-</p>
-<p>
-14 System ground 32
-</p>
-<p>
-15 33
-</p>
-<p>
-16 System ground 34
-</p>
-<p>
-17 Protective ground 35
-</p>
-<p>
-18 36
-</p>
-<p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1</td><td>DATA STROBE</td></tr>
+<tr><td>2</td><td>DATA 1</td></tr>
+<tr><td>3</td><td>DATA 2</td></tr>
+<tr><td>4</td><td>DATA 3</td></tr>
+<tr><td>5</td><td>DATA 4</td></tr>
+<tr><td>6</td><td>DATA 5</td></tr>
+<tr><td>7</td><td>DATA 6</td></tr>
+<tr><td>8</td><td>DATA 7</td></tr>
+<tr><td>9</td><td>DATA 8</td></tr>
+<tr><td>10</td><td>ACK</td></tr>
+<tr><td>11</td><td>BUSY</td></tr>
+<tr><td>12</td><td></td></tr>
+<tr><td>13</td><td></td></tr>
+<tr><td>14</td><td>System ground</td></tr>
+<tr><td>15</td><td></td></tr>
+<tr><td>16</td><td>System ground</td></tr>
+<tr><td>17</td><td>Protective ground</td></tr>
+<tr><td>18</td><td></td></tr>
+</table>
+<?php columnChange(2); ?>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>19</td><td>Twisted pair ground for pin 1</td></tr>
+<tr><td>20</td><td>Twisted pair ground for pin 2</td></tr>
+<tr><td>21</td><td>Twisted pair ground for pin 3</td></tr>
+<tr><td>22</td><td>Twisted pair ground for pin 4</td></tr>
+<tr><td>23</td><td>Twisted pair ground for pin 5</td></tr>
+<tr><td>24</td><td>Twisted pair ground for pin 6</td></tr>
+<tr><td>25</td><td>Twisted pair ground for pin 7</td></tr>
+<tr><td>26</td><td>Twisted pair ground for pin 8</td></tr>
+<tr><td>27</td><td>Twisted pair ground for pin 9</td></tr>
+<tr><td>28</td><td>Twisted pair ground for pin 10</td></tr>
+<tr><td>29</td><td>Twisted pair ground for pin 11</td></tr>
+<tr><td>30</td><td>Twisted pair ground for pin 31</td></tr>
+<tr><td>31</td><td>INPUT PRIME</td></tr>
+<tr><td>32</td><td></td></tr>
+<tr><td>33</td><td></td></tr>
+<tr><td>34</td><td></td></tr>
+<tr><td>35</td><td></td></tr>
+<tr><td>36</td><td></td></tr>
+</table>
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1); ?>
+<p class="noindent">
 The DATA lines are connected to the PIO port B, bits 0 to 7, the STROBE is connected
 to PIO port A, bit 1, whilst the BUSY line is connected to PIO port A bit 0. The
 warnings given earlier about system and protective grounds apply equally in the
@@ -55,8 +74,8 @@ port for each half of the PIO device to program it&rsquo;s respective mode. The 
 for the PIO is addressed at the port address + 2. On a Nascom the actual input/output
 port for the A half of the PIO is port 04H whilst its control port is port 06H,
 likewise, the B half input/output is port 05H and its control is port 07H. On the
-Gemini Multiboard machines port A I/O is port OB4H and its control is OB6H, port B I/O
-is port OB5H and its control is 0B7H. If we use labels for these addresses, the
+Gemini Multiboard machines port A I/O is port 0B4H and its control is 0B6H, port B I/O
+is port 0B5H and its control is 0B7H. If we use labels for these addresses, the
 following listing will make sense regardless of the actual port addresses. The
 initialization routine need only be called once prior to use, but note that RESETting
 the computer will return the PIO device to it&rsquo;s default mode, and the routine will

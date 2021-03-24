@@ -1,15 +1,15 @@
+<?php columnStart(912); ?>
+<h3 id="article1">
+2K 2716 EPROM &amp; 6116 RAM for the Nascom&nbsp;2 Main Board
+</h3>
+<?php columnChange(312); ?>
+<h3 class="author">
+by J. Rollason
+</h3>
+<?php columnEnd(12); ?>
 <?php columnStart(1); ?>
 <p>
-29
-</p>
-<p>
-2K 2716 EPROM &amp; 6116 RAM for the Nascom&nbsp;2 Main Board by J. Rollason
-</p>
-<p>
-208 es Un Ss Sh the Se he a i AS SN NS SS ls I NS SO ts EE UR ERS HS
-</p>
-<p>
-Having read E.P.T. Anderson&rsquo;s interesting article (rinmcs0-5) on installing
+Having read E.P.T. Anderson&rsquo;s interesting article (INMC80-5) on installing
 2K EPROMs on the Nascom&nbsp;2, I endeavoured to use the same technique to instal 6116
 2K static RAMs but without success. Eventually I had to resort to the last option
 of actually trying to understand the address decoding on the Nascom&nbsp;2 in order to
@@ -17,7 +17,7 @@ come up with an alternative solution to the problem.
 </p>
 <p>
 I found that it was only necessary to increase the 1K bandwidth pulses from
-the address Multiplexer Ic46 (CSO &ndash; CS7) to 2K and to connect pin 19 of the
+the address Multiplexer IC46 (CS0 &ndash; CS7) to 2K and to connect pin 19 of the
 linkblock to A10 on the address bus.
 </p>
 <p>
@@ -25,65 +25,58 @@ The resulting solution is simple and flexible and can also be used with
 2716 EPROMs requiring no extra components and less wiring than the published
 solution (without which I would not have attempted this).
 </p>
-<p>
+<p class="noindent">
 The modifications for 6116 Rams are:
 </p>
-<p>
+<p class="noindent">
 1. Wire up the link blocks as for 4118 static RAM except pin 19 which should be
 connected to A10 available on the link block below the VRAM IC 48 (I prefer to keep
 all my wiring on the component side of the board).
 </p>
-<p>
+<p class="noindent">
 2. Lift out IC46 and bend out pins 3 and 13 to the horizontal position and
-carefully solder wires from A12 &amp; Att (available on the linkblock as above) to
-</p>
-<p>
+carefully solder wires from A12 &amp; A11 (available on the linkblock as above) to
 these.
 </p>
-<p>
-%3. Wire the appropriate decode pads as normal on LKS1. Note that since each block
+<p class="noindent">
+3. Wire the appropriate decode pads as normal on LKS1. Note that since each block
 is now 8K and not 4K then extra decode addresses will need to be connected to each
 block e.g. to assign block A to addresses 1000-2FFF would require pins 5, 6, 13 and
 14 to be mutually connected.
 </p>
-<p>
-8
-</p>
-<p>
+<p class="noindent">
 4. Switches LSW1/7,8 both need to be down (Open)
 </p>
-<p>
+<p class="noindent">
 If 2716&rsquo;s are required then the Link block should be configured as in the diagram.
 </p>
-<p>
+<h3>
 Switching RAM/EPROM or EPROM/EPROM
-</p>
+</h3>
 <p>
-_ fo do this it is necessary to pull pin 18 to +5 volts using a 1K resistor.
+To do this it is necessary to pull pin 18 to +5 volts using a 1K resistor.
 The appropriate chip pulse can then be switched to or from the relevant chip
 without the chip enable causing spurious read/writes to occur. If it is only
 desired to select Block A instead of Block B or external memory /Block A or B, then
 it is only necessary to switch the address decodes on LKS1 to the appropriate
 RAM/ROM selects on pins 1 to 8 (or to open circuit).
 </p>
-<p>
+<h3>
 Warning!
-</p>
+</h3>
 <p>
 Note that &ldquo;even&rdquo; 4K blocks (e.g. 2000, 4000 etc.) will normally occur on
 the lower 2 chips in each block, whereas odd 4K addresses will occur on the upper 2
 chips i.e. it is not possible to select two odd addresses to the same block (e.g.
 B000 &amp; D000). This should not be a problem. Note&nbsp;!!! Pin 9 on LKS1 is for
-EH000-FFFF, not E000-EFFF as claimed!
+E000-FFFF, not E000-EFFF as claimed!
 </p>
-<p>
+<h3>
 4K RAMS and EPROMs
-</p>
-<p>
-A he Ne A HN a So
-</p>
+</h3>
 <p>
 It appears that the same technique could be applied for 4K chips, in which
 case pins 3 &amp; 13 of IC46 would be connected to A13 &amp; A12.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

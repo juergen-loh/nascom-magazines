@@ -21,23 +21,44 @@ device to make it work as Centonics type interface.
 <p>
 Before starting to write an interface program it is necessary to understand
 what it is it is intended to drive. The Centronics interface works like this.
-seven bits of data are placed on the output
-A slight delay to allow the data to settle
-A strobe pulse is generated to cause the printer to latch in the data
-A slight delay to allow the data to be latched
-The strobe pulse is removed
-The printer generates an ACKnowledge pulse
-The printer also generates a BUSY signal which remains active until any print
-action is complete.
 </p>
-<p>
-1, WHEN DATA ARE ACCEPTED :
-</p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-2.png"); ?>
-<p>
-TI-T3: La sec mn.
-T4: 100 nsec mex.
-TS: O:1--0-5 msec
-T6: O-8 wsec
-</p>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1</td><td>seven bits of data are placed on the output</td></tr>
+<tr><td>2</td><td>A slight delay to allow the data to settle</td></tr>
+<tr><td>3</td><td>A strobe pulse is generated to cause the printer to latch in the data</td></tr>
+<tr><td>4</td><td>A slight delay to allow the data to be latched</td></tr>
+<tr><td>5</td><td>The strobe pulse is removed</td></tr>
+<tr><td>6</td><td>The printer generates an ACKnowledge pulse</td></tr>
+<tr><td>7</td><td>The printer also generates a BUSY signal which remains active until any print
+					action is complete.</td></tr>
+</table>
 <?php columnEnd(1); ?>
+<br>
+<?php columnStart(34); ?>
+<h4 class="indent">
+<u>1. When data are accepted:</u>
+</h4>
+<p class="indent">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-2.png"); ?>
+</p>
+<?php columnChange(4); ?>
+<p>
+</p>
+<p class="noindent">
+<u>&nbsp;FIG.2&nbsp;</u>
+</p>
+<?php columnEnd(4); ?>
+<br>
+<?php columnStart(3); ?>
+<?php columnChange(3); ?>
+<?php box0Start(); ?>
+<table>
+<tr><td style="text-align: right">T1 ~ T3:</td><td>1&micro; sec min.</td></tr>
+<tr><td style="text-align: right">T4:</td><td>100 nsec max.</td></tr>
+<tr><td style="text-align: right">T5:</td><td>0&middot;1 ~ 0&middot;5 msec</td></tr>
+<tr><td style="text-align: right">T6:</td><td>6 ~ 8 &micro;sec</td></tr>
+</table>
+<?php box0End(); ?>
+<?php columnChange(3); ?>
+<?php columnEnd(3); ?>

@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-8
-</p>
-<p>
+<p class="noindent">
 is that you do end up with a machine readable version of the source code but if
 anyone else follows this path I would strongly advise them to spend more time than
 I did on identifying the DATA areas before dis-assembling!
@@ -13,7 +10,7 @@ relocated, all parts of Nas-Sys are still in the same relationship to each other
 am using a CP/M system to develop software that will then run on &lsquo;standard&rsquo;
 NASCOMs, (without disk) which are used to drive other equipment and if I write the
 software with all absolute references to parts of Nas-Sys (such as revised command
-tables) of the form &ldquo;Location + Offset&rdquo;, I can initialize &ldquo;Offset&rdquo; to O or 100H and
+tables) of the form &ldquo;Location + Offset&rdquo;, I can initialize &ldquo;Offset&rdquo; to 0 or 100H and
 produce two versions of the same program very easily. VRAM must be modified also,
 of course.
 </p>
@@ -22,13 +19,13 @@ For the Disk routines I use the &ldquo;F&rdquo; command to switch between tape a
 and to set up the filenames. &ldquo;R&rdquo; &amp; &ldquo;W&rdquo; then Read and Write from the designated
 devices. &ldquo;D&rdquo; is used to Delete files from disk. One facility that would be nice
 would be the ability to obtain a directory listing from within Nas-Sys. It galls me
-to have to write the code myself when the &lsquo;built in&rsquo; CP/M commands are loitering in.
+to have to write the code myself when the &lsquo;built in&rsquo; CP/M commands are loitering in
 the top of memory. Can anyone tell me whether it is possible to call the built-in
 routines (DIR &amp; REN in particular) as subroutines?
 </p>
-<p>
+<h4>
 NASPEN
-</p>
+</h4>
 <p>
 Following the advice given in Dr Dark&rsquo;s diary I have now converted my EPROM
 Naspen to a RAM version. However, the end result irritated me and I have made two
@@ -39,16 +36,16 @@ Having the printer routines called via the Nas-Sys UOUT routine is a
 necessary evil when the program is in ROM, but a RAM version can be easily modified
 so that the printer is directly accessed when the P command is used.
 </p>
-<p>
+<p class="noindent">
 The required changes are:
 </p>
-<p>
-Existing Replace with
-B859 DF) C3 JP ppaq
-B85A 6B +) SCAL UOUT qq
-</p>
-<p>
-B85B C9 RET pp
+<table class="indent2" style="width: 70%">
+<tr><td></td><td></td><th>Existing</th><td></td><td></td><th>Replace with</th></tr>
+<tr><td>B859</td><td>DF</td><td>)</td><td></td><td>C3</td><td>JP ppqq</td></tr>
+<tr><td>B85A</td><td>6E</td><td>)</td><td>SCAL UOUT</td><td>qq<br><br></td><td></td></tr>
+<tr><td>B85B</td><td>C9</td><td></td><td>RET</td><td>pp</td><td></td></tr>
+</table>
+<p class="noindent">
 where ppqq is the start address of a printer subroutine.
 </p>
 <p>
@@ -60,23 +57,24 @@ looks silly with the Upper and Lower case convention reversed! I have added the
 following code to the end of the program where the original authors have
 conveniently left 5 spare bytes:
 </p>
-<p>
-BFFB cD )
-BFFC OD ) CALL STMON
-BFFD OO )
-BFFE DF ) &pound;SCAL MRET
-BFFF 5B )
-</p>
-<p>
+<table class="indent2" style="width: 40%">
+<tr><td>BFFB</td><td>CD</td><td>)</td><td></td></tr>
+<tr><td>BFFC</td><td>0D</td><td>)</td><td>CALL STMON</td></tr>
+<tr><td>BFFD</td><td>00</td><td>)</td><td></td></tr>
+<tr><td>BFFE</td><td>DF</td><td>)</td><td>SCAL MRET</td></tr>
+<tr><td>BFFF</td><td>5B</td><td>)</td><td></td></tr>
+</table>
+<p class="noindent">
 (If you don&rsquo;t understand this you haven&rsquo;t read your Nas-Sys manual)
 </p>
 <p>
 This new segment is called by modifying the execution address of the N
 command in the Naspen command table as follows:
 </p>
-<p>
-Existing Replace with
-B99A 00 FB ) the start address of
-B99B 00 BF ) the new segment above
-</p>
+<table class="indent2" style="width: 70%">
+<colgroup><col><col style="width: 30%"><col><col><col></colgroup>
+<tr><th colspan=2>Existing</th><th colspan=3>Replace with</th></tr>
+<tr><td>B99A</td><td>00</td><td>FB</td><td>)</td><td>the start address of</td></tr>
+<tr><td>B99B</td><td>00</td><td>BF</td><td>)</td><td>the new segment above</td></tr>
+</table>
 <?php columnEnd(1); ?>

@@ -1,38 +1,37 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 Note: Example 3 has used Microsoft&rsquo;s MBASIC in a CP/M environment. Other versions
 of Basic may be used in a similar way, but the syntax may need adjusting to suit.
 (eg The Nascom version of Basic supports only a single USR function which is
-accessed ina slightly different way). The same technique may be employed in other
+accessed in a slightly different way). The same technique may be employed in other
 langauges, the exact approach to take depending upon the way the language executes.
 If there is a poll of the keyboard inbetween statements (as in the Basic
 interpreter), then the machine code subroutine approach will be necessary,
 otherwise the direct port access (WAIT/INP etc) can be used satisfactorily.
 </p>
-<p>
+<h4 style="text-align: center">
 EXAMPLE 4 &ndash; &ldquo;SINGLE SHOT&rdquo; OPERATION
-</p>
+</h4>
 <p>
 This example is in fact an extension to example 3, and uses the ESC L and ESC U
 commands to provide a &ldquo;single shot&rdquo; operation of the light pen switch. This is done
 by downloading a very short program to the IVC and calling it before requesting
-(or after reading) the light pen coordinates. What the routine does to sit ina
+(or after reading) the light pen coordinates. What the routine does to sit in a
 loop until the switch on the light pen is released, and so the switch has to be
 released before another pair of coordinates can be read.
 </p>
-<p>
-Subroutine for the USER area of the IVC card.
-</p>
-<p>
-This subroutine does nothing other than sit in a loop
-if the light pen switch is found to be operated.
-</p>
-<p>
-The code will be loaded to the user area at O&amp;400H
-put it is position independent anyway.
-</p>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-20-1.png"); ?>
+<p>
+Try adding the above subroutines to the code of example 3. Also include
+</p>
+<pre class="indent">
+ 125 GOSUB 3000
+
+2015 PRINT CHR$(27);"U";   :REM Do ESC U. (ie Hang up until
+                                 he/she lifts his/her finger).
+</pre>
 <p>
 These are only suggestions &ndash; take and develop as you see fit.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

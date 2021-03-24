@@ -399,11 +399,13 @@ function columnStart($column, $multi/*$class*/ = "")
 	case 4:		echo "<!-- 4 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3\">\n";			break;
 	case 34:	echo "<!-- 4 columns: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 3/4
 	case 6:		echo "<!-- 6 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\">\n";			break;
-	case 56:	echo "<!-- 6 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";			break;
+	case 56:	echo "<!-- 6 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";		break;	// 5/6
 	case 12:	echo "<!-- 12 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-1\">\n";		break;
 	case 412:	echo "<!-- 12 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 5/12
 	case 512:	echo "<!-- 12 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12
 	case 712:	echo "<!-- 12 columns: start 7 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-7\">\n";		break;	// 7/12
+	case 912:	echo "<!-- 12 columns: start 9 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 9/12
+	case 1012:	echo "<!-- 12 columns: start 10 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";	break;	// 10/12
 	default:	echo "<columnStart($column)>\n";																		break;
 	}
 }
@@ -439,6 +441,7 @@ function columnChange($column)
 	case 46:	echo "<!-- 6 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 4/6
 	case 56:	echo "<!-- 6 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-10\">\n";		break;
 	case 12:	echo "<!-- 12 columns: change --></div><div class=\"col-".BootstrapTier()."-1\">\n";		break;
+	case 212:	echo "<!-- 12 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-2\">\n";		break;	// 3/12
 	case 312:	echo "<!-- 12 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-3\">\n";		break;	// 3/12
 	case 412:	echo "<!-- 12 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 4/12
 	case 512:	echo "<!-- 12 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12

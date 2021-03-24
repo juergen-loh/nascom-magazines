@@ -1,14 +1,11 @@
 <?php columnStart(1); ?>
-<p>
-9
-</p>
-<p>
+<p class="noindent">
 The N command should now work correctly but I am afraid that it still prints that
 damned n! The warm start back into Naspen is still achieved by EB806.
 </p>
-<p>
+<h4>
 RESET SWITCHES
-</p>
+</h4>
 <p>
 I would like to thank Dusty Pulver for all his CP/M notes which are of
 tremendous value to a CP/M novice like me, but just in case no one else has pointed
@@ -17,54 +14,62 @@ because the switch is activating the NASCOM reset line and the NASCOM at that po
 clears all the Port set up for the disk drive controller card! He will just have to
 be content with EO enter from MONITOR.COM.
 </p>
-<p>
+<p class="noindent">
 Robert Hill, Hemel Hempstead
 </p>
-<p>
+<h3>
 RANDOMISE FOR NASCOM ROM BASIC
-</p>
+</h3>
 <p>
 One of the niggling omissions from the Nascom ROM BASIC is a RANDOMISE
 function, to make the RND function produce unpredictable numbers. This USR callable
 subroutine should help a bit.
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-1.png"); ?>
 <p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-1.png"); ?>
+</p>
+<p class="noindent">
 This can be put anywhere in unused memory by a series of DOKEs, such as:
 </p>
+<p>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-09-2.png"); ?>
+</p>
 <p>
 It uses the neglected Z80 instruction which reads the refresh register. If
 the computer has been waiting for an input from an unpredictable source such as the
-</p>
-<p>
 user, this will provide a number in the range 0 to 127. This can be used to send
 the RND function as in:
 </p>
-<p>
+<pre class="indent">
 100 A = RND(-USR (0))
-</p>
+</pre>
 <p>
 This will start one of 127 different sequences of random numbers, which may
 still be too predictable for some purposes. In this case, a subroutine to step
 through the sequence would be better. This can be called after each INPUT line if
 necessary:
 </p>
-<p>
-50000 FOR I=0 TO USR(O):A=RND(1 ): NEXT: RETURN
-</p>
-<p>
+<pre class="indent">
+50000 FOR I=0 TO USR(0):A=RND(1):NEXT:RETURN
+</pre>
+<p class="noindent">
 Peter Dishart, Wembley.
 </p>
-<p>
+<h3>
+ERROR
+</h3>
+<p class="noindent">
 Please publish the following erratum to my article &ldquo;INPUTting and READing
 Double Precision Constants&rdquo; in 80-BUS News Vol. 1, Issue 2:
 </p>
 <p>
+<p class="noindent">
 Line 2230 of the routine published should read:
-LH = VAL(RIGHTS(A$,K-7))/10*(K-7)
 </p>
-<p>
-My thanks to Adrian Sauter for pointing this out to me. Mike York.
+<pre>
+LH = VAL(RIGHTS(A$,K-7))/10*(K-7)
+</pre>
+<p class="noindent">
+My thanks to Adrian Sauter for pointing this out to me. &nbsp; Mike York.
 </p>
 <?php columnEnd(1); ?>

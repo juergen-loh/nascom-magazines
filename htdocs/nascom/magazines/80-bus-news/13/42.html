@@ -1,7 +1,4 @@
-<?php columnStart(1); ?>
-<p>
-42
-</p>
+<?php columnStart(1, "noindent"); ?>
 <p>
 The relevant parts of the 1797 data sheet are the boxes READ ENABLE TIMING on page
 19, and WRITE ENABLE TIMING on page 20. Each contains a footnote in minute print in
@@ -19,11 +16,11 @@ wondered why the additional Status port is provided (at E4h) through which the D
 and IRQ bits can be checked, when the same bits can be accessed through the
 internal status register of the 1797. Looking further at the circuit diagram will
 reveal that, as well as DRQ and IRQ being connected to the external input port,
-there is a connection to the &ldquo;Motor on&rdquo; monostable, (which should present a &lsquo;O&rsquo;
-during normal disk I/O), and that the remaining lines are connected to OV. Turning
+there is a connection to the &ldquo;Motor on&rdquo; monostable, (which should present a &lsquo;0&rsquo;
+during normal disk I/O), and that the remaining lines are connected to 0V. Turning
 to the I/O instructions in the Z80 data sheets it can be seen that while the 8080
 compatible IN A,(n) does not affect any of the bits in the flag register, the extra
-Z80 instructions &ndash; IN r,(C) where the port address is held in register C &ndash; does-set
+Z80 instructions &ndash; IN r,(C) where the port address is held in register C &ndash; does set
 the flags as a result of this operation. So if one of these instructions is used,
 the &ldquo;Input and Test&rdquo; operation can be completed in one go, and a very tight polling
 loop will result. However note that this can only be done if the &ldquo;Wait&rdquo; condition

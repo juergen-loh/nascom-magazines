@@ -1,18 +1,17 @@
 <?php columnStart(1); ?>
 <p>
-13
-</p>
-<p>
 What the procedure does is print out the contents of the array REPLY.
 in such a way that no words are broken at the edge of the screen. The
 following declarations must be made either globally or in a higher level
 block.
 </p>
-<p>
+<pre class="indent2">
 CONST
-WIDTH = 48; {Or 80, if you have an Ivc.}
+  WIDTH = 48; {Or 80, if you have an Ivc.}
 VAR
-REPLY : ARRAY [1..number] OF CHAR;
+  REPLY : ARRAY [1..number] OF CHAR;
+</pre>
+<p>
 The value of &ldquo;number&rdquo; must be at least &ldquo;WIDTH&rdquo; characters greater than the
 maximum possible length of the text in REPLY, otherwise a nasty run time error
 will appear. I could have prevented this from happening, but it would have
@@ -25,11 +24,11 @@ the Extended BASIC has the WRAP command to do the same thing...
 <p>
 My conclusion is that this Pascal is a &ldquo;must&rdquo; for the CP/M user,
 although I have no experience of any of its rivals (are there any?) [Ed. &ndash;
-Yes, COM=PAS.]
+Yes, COM-PAS.]
 </p>
-<p>
+<h3>
 A few comments on Dave Hunt&rsquo;s last article.
-</p>
+</h3>
 <p>
 No, it isn&rsquo;t going to be destructive criticism, as that would be
 pretty pointless. I have been enjoying the series, and also marvelling at the
@@ -56,7 +55,7 @@ ambitious way, but it does work...
 <p>
 One of the things he has done that is much more naughty than writing
 self modifying code is to use a direct call to B2HEX. Surely, that should have
-been &pound;DF &pound;68 instead of &pound;CD &pound;F2 ROE? There are more of these in there, now
+been &pound;DF &pound;68 instead of &pound;CD &pound;F2 &pound;0E? There are more of these in there, now
 that I look again. Oh, now I see why! For the benefit of the CP/M machines, of
 course. For a moment, I thought I had found a real naughty... I will write out
 a hundred times, &ldquo;I must read all of the documentation.&rdquo;
@@ -64,15 +63,13 @@ a hundred times, &ldquo;I must read all of the documentation.&rdquo;
 <p>
 There is a small point concerning the part of the program that reads:
 </p>
-<p>
+<pre class="indent2">
 LD A (TRYS)
-</p>
-<p>
 INC A
-</p>
-<p>
 DAA
 LD (TRYS) A
+</pre>
+<p>
 The values of TRYS in the program are such that there will be no problems with
 this bit of code, but it is important to note that INC A does not affect the
 carry flag, which will be in the state produced by the last opcode that

@@ -1,8 +1,8 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 further test to find out which bit was set as the AND instruction will have also
 set the sign bit in the flag register to indicate the state of bit 7. Thus if it is
-Positive (i.e. bit 7 was 0), then bit O must have been set to create the NZ result
+Positive (i.e. bit 7 was 0), then bit 0 must have been set to create the NZ result
 of the AND.
 </p>
 <p>
@@ -40,10 +40,11 @@ Anyway it all seems possible.
 <p>
 The code for a Write transfer is similar:&ndash;
 </p>
-<p>
-DRQ: LD A, (HL)
-OUT (DATA),A
-</p>
+<pre>
+DRQ:    LD      A,(HL)
+        OUT     (DATA),A
+		.......
+</pre>
 <p>
 So the time has come to code the routines up and to try them out.
 Disaster! They don&rsquo;t work! Why not?

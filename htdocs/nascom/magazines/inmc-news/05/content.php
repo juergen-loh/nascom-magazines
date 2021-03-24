@@ -60,7 +60,7 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s diary -2<br>"
+	,	"Doctor Dark&rsquo;s diary &ndash;2<br>"
 	.	"Z80 Opcodes"
 	,	"Chris Blackmore"
 	,	"Assembler"
