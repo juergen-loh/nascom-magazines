@@ -1,72 +1,75 @@
+<?php columnStart(23); ?>
+<h2 id="article1">
+Interfacing the EPSON MX80.
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author" style="text-decoration: none">
+by Big H
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
-<p>
-11,
-</p>
-<p>
-rfiac th PS MX80. by Big Hi
-</p>
 <p>
 The following article(s) if this prose is worthy of print,
 will attempt to describe the ins and outs (ups and downs) of
 getting that very expensive printer PRINTING. Although specific
-references apply to the MX80 type ITI, much is applicable to
-the whole MX--range. Since the interface is a standard
+references apply to the MX80 type III, much is applicable to
+the whole MX-range. Since the interface is a standard
 &lsquo;Centronics type&rsquo;, the general principle applies to any number
 of printers. I refuse to class that race of tanks dressed up as
-printers (you know... S bit code etc.) as printers. By the way,
-dees any one want a slightly footmarked Creed 4447 Advertising
-over &ndash; Included will be notes on how ta patch into NAS-FEN,
-NAS-DIS and ZEAP (if it isnm*t already obvious) and a listing of
+printers (you know... 5 bit code etc.) as printers. By the way,
+does any one want a slightly footmarked Creed 444? Advertising
+over &ndash; Included will be notes on how to patch into NAS-PEN,
+NAS-DIS and ZEAP (if it isn&rdquo;t already obvious) and a listing of
 a fairly comprehensive relocatable routine to set up and drive
-the printer through the on board FIO. Later on for those with
-the MX80O types TI or III (and a larger overdraft than everyone
+the printer through the on board PIO. Later on for those with
+the MX80 types II or III (and a larger overdraft than everyone
 else), use of the HI-RES graphic facilities is described. These
 can be used to define your own characters and with suitable
 software.... produce a dot for dot dump of the Nascom screen.
-Do I hear cries of &lsquo;Cor &ndash; What a cop aut&rsquo;? Well you can take it
+Do I hear cries of &lsquo;Cor &ndash; What a cop out&rsquo;? Well you can take it
 all back because a listing of such a program will be given.
 With luck, it will not only provide a simple screen dump but
 also true/inverted and half/normal/double width images of any
-defined screen window. (This guy is just unbelievable! -&mdash; Ed.)
+defined screen window. (This guy is just unbelievable! &ndash; Ed.)
 </p>
-<p>
+<h3>
 Epson Interface.
-But first the basic printer interface and its driving
-</p>
+</h3>
 <p>
+But first the basic printer interface and its driving
 software. The rightmost columns of Table 1 show the pin
-connections of the Epsan interface. All signals are (naturally)
-TTL compatible. Synchronisation is achieved by the STROBE
-signal and handshaking provided by either ACKNCG or BUSY. I
+connections of the Epson interface. All signals are (naturally)
+TTL compatible. Synchronisation is achieved by the <?php invertedSignal("STROBE"); ?> signal
+and handshaking provided by either <?php invertedSignal("ACKNLG"); ?> or BUSY. I
 have chosen to use the BUSY line, but for no particular reason.
 Data transfer is achieved by waiting for the printer to be &lsquo;NOT
 BUSY&rsquo;, applying the data, waiting for it to stablise and then
-asserting STROBE for ai minimum of 0.5 microsec. Apart from
-ACKNLG, the only other signals (on the printer I/F) not used
-are SLOT IN and SLCT. The function of these (to select the
+asserting <?php invertedSignal("STROBE"); ?> for a minimum of 0.5 microsec. Apart from
+<?php invertedSignal("ACKNLG"); ?>, the only other signals (on the printer I/F) not used
+are <?php invertedSignal("SLCT IN"); ?> and SLCT. The function of these (to select the
 printer/tell you it is selected respectively) was disabled
 using the Epson&rsquo;s internal DIL switches. This is OK as I don&rsquo;t
-see me operating a bank of MX*s fram my Nascom &ndash; not this year
+see me operating a bank of MX&rsquo;s fram my Nascom &ndash; not this year
 at least!
 </p>
+<h3>
+DIL Switches.
+</h3>
 <p>
-DIL. Switches.
 The internal DIL switches definitely deserve a mention as
-</p>
-<p>
 they allow you to set up many of the programmable functions
 immediately en power up. Things like character size, form
 length, line spacing and even whether or not your zero has a
 slash across it can all be set.
 </p>
-<p>
+<h3>
 The Electric String.
-</p>
+</h3>
 <p>
-The assignment of the PIO perts is shown by diagram 1 and
+The assignment of the PIO ports is shown by diagram 1 and
 the actual connections made by the cable is shown by the middle
 columns of table 1. The Epson manual tells you to use twisted
 pair cable and the return earth signals. Twisted cable is not
-@asy to get hold of and shouldn&rsquo;t be necessary so long as the
+easy to get hold of and shouldn&rsquo;t be necessary so long as the
 </p>
 <?php columnEnd(1); ?>

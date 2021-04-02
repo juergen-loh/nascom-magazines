@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-31.
-</p>
-<p>
+<p class="continued">
 board chip select, CS, did not float high as expected but remained resolutely at
 about the two volt level. This, despite the inclusion of a 100K pullup resistor
 on the clock board to ensure the CS line remained high. Taking in to account the
@@ -16,7 +13,7 @@ However, accepting that this leakage does occur, and as this voltage is
 about the threshold of the board chip select buffer, which is a CMOS device with
 a threshold of about 2.5 volts, we thought that any spurious noise on this line,
 and there has to be some, was causing the CMOS buffer on the clock board to
-select the clock chip. This was confirmed with a &lsquo;scope looking at the select pin
+select the clock chip. This was confirmed with a &rsquo;scope looking at the select pin
 of the clock chip, after the input and power down buffers. A definite short
 glitch was noted on the select pin during a computer reset sequence. The cause,
 like the voltage leakage remains unknown. As the output lines of the PIO are
@@ -50,7 +47,7 @@ giving a 200mS time constant. This cleared the remaining problem.
 </p>
 <p>
 Both the problems noted above could do with further investigation, why
--were these problems not noted on the prototypes, and are the conclusions drawn
+were these problems not noted on the prototypes, and are the conclusions drawn
 above and the solutions adopted, the correct ones. Our aim at work was to make
 the clock work, not to conduct an investigation into the behaviour of PIOs and
 power supplies at reset and power up. Perhaps Gemini may like to make some
@@ -62,7 +59,7 @@ simple to construct and easily added to the system. A one evening project with a
 useful end result. Having cured the problems mentioned above, both clocks have
 behaved well. Taking the cost of the competing clock boards into account, the
 Gemini GM822 seems to be about par for the course in terms of value for money and
-&lsquo;facilities provided.
+facilities provided.
 </p>
 <p>
 I didn&rsquo;t like the software supplied with the clock so I set to and wrote

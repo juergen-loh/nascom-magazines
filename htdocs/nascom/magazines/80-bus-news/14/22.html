@@ -1,35 +1,12 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 change. Since this bug may also be present in other versions (with different
-</p>
-<p>
 addresses) the code which should be changed is just after the prompt for the tape
 number and the three SCALs to process the answer and get it into HL. The code
-</p>
-<p>
 should read:
 </p>
 <p>
-E5 PUSH HL ;
-CDFADO CALL &pound;DOFA ; REWIND TAPE
-</p>
-<p>
-21 ADDT LD HL,&amp;D7AD
-</p>
-<p>
-012700 LD BC,&pound;0027 ; ** WAS &pound;23 **
-</p>
-<p>
-1152DB LD DE, &pound;DB52
-</p>
-<p>
-EDBO LDIR ; WRITE NULL CATALOGUE
-2158DB LD HL,&pound;DB58
-</p>
-<p>
-2231DB LD (&pound;DB31),HL ; SAVE CAT. START
-212100 LD HL, &pound;21 ; LENGTH ** WAS &pound;1D **
-2233DB LD (&pound;DB33),HL ; SAVE LENGTH
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-22-1.png"); ?>
 </p>
 <p>
 Another undesirable feature (alright then, a bug) in TOS occurs if any
@@ -41,7 +18,7 @@ gets round this the easy way by warm-starting itself whenever errors occur. No
 problem when using TOS normally (i.e. from the keyboard) but when using TOS under
 program control, it means that control remains in TOS. No way to get back to your
 program. You can&rsquo;t just type &ldquo;W&rdquo; or &ldquo;R&rdquo; (Write or Read) because the arguments are
-obligatory. You can&rsquo;t return to NASSYS to see what they are because nN&rsquo;
+obligatory. You can&rsquo;t return to NASSYS to see what they are because &lsquo;N&rsquo;
 cold-starts NASSYS, and this resets the workspace. Unless you have designed your
 program carefully, you have lost all the data your program just spent a long time
 building. It would be far better to return, say, to the outer level of the

@@ -1,34 +1,43 @@
-<?php columnStart(1); ?>
-<p>
-BB Bliza 0.35
-With this program loaded, your Nascom is especially trained in
-psychoanalysis. What are your particular hangups?
-</p>
-<p>
-BS Camel 0.25
-You have stolen the priceless idol belonging to a tribe of knock-kneed
+<?php columnStart(1, "noindent"); ?>
+<table class="program-library">
+<tr><td>B8</td><td>Eliza</td><td></td><td>0.35</td></tr>
+<tr><td></td><td colspan=3>With this program loaded, your Nascom is especially trained in
+psychoanalysis. What are your particular hangups?</td></tr>
+
+<tr><td>B9</td><td>Camel</td><td></td><td>0.25</td></tr>
+<tr><td></td><td colspan=3>You have stolen the priceless idol belonging to a tribe of knock-kneed
 pigmies. They want it back and are in hot pursuit. Can you reach safety
-before the pigmies (or wild Neringi Berbers) catch you?
-</p>
-<p>
-BIO Comrade X 0.50
-You are the premier of the communist island of Niatrib. You must decide
+before the pigmies (or wild Neringi Berbers) catch you?</td></tr>
+
+<tr><td>B10</td><td>Comrade X</td><td></td><td>0.50</td></tr>
+<tr><td></td><td colspan=3>You are the premier of the communist island of Niatrib. You must decide
 your country&rsquo;s budget, harvest and economic strategy. You have 8 years in
-oores)i can you survive before the peasants revolt or you are exiled (or
-worse}!
-</p>
+office, can you survive before the peasants revolt or you are exiled (or
+worse}!</td></tr>
+</table>
+
 <p>
 Please indicate clearly what programs you want, e.g. S3, 73 or B43 along with some
 possible alternatives. Add up the program costs, plus the postage charge, and
 send cheques, money orders, postal orders, payable to *80-BUS News&rsquo; to:
 </p>
-<p>
-Program Offers, Interface Data Ltd., Oakfield Corner, ________ __.,
+<p style="text-align: center">
+Program Offers, Interface Data Ltd., Oakfield Corner, ________ __.,<br>
 Amersham, Bucks. ___ ___.
 </p>
-<p>
-Modifying Nascom RAM A board for 2732 EPROMs John Harrison
-</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(34); ?>
+<h2 id="article1">
+Modifying Nascom RAM A board for 2732 EPROMs
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+John Harrison
+</h3>
+<?php columnEnd(4); ?>
+<?php columnStart(1); ?>
 <p>
 I decided to modify my system to take 4K EPROMs, and having read the two
 articles in INMC80-5 I chose the RAM board as an easier mod. than the main board.
@@ -40,11 +49,11 @@ The published scheme covered 2K and 4K chips, but the 4K version will not
 work. The problem with taking the 4K decodes direct to the chip slects (p20)
 instead of using them to enable IC24, is that P5 also drives the data highway
 buffer, IC26. There are two ways around this: P5 can be driven with 4 wire ORed 4K
-decodes and IC24 fed with A13 and A12 and used to drive the chip slect lines, i-e.
+decodes and IC24 fed with A13 and A12 and used to drive the chip slect lines, i.e.
 the 2K scheme but bigger. Alternatively the decodes can be taken direct to the chip
 select lines, and diode ORed to P5. The advantage of this approach is that it gives
 freedom to choose any set of addresses, whereas the other method constrains the 4
-blocks used to have different values of A12/A13, e-g- to be 4 contiguous blocks.
+blocks used to have different values of A12/A13, e.g. to be 4 contiguous blocks.
 With 32K of RAM and a toolkit in 2 x 1K EPROMs at B000 I could not accept this
 constraint.
 </p>
@@ -54,20 +63,21 @@ mounted them on a minimally sized piece of 0.1" Verostrip which just fitted betw
 IC24 and the decode pads. I araldited this copper side up onto the board which
 could just be done without covering any tracks. To allow room for the tails of the
 diode leads, I used an extra thickness of Veroboard as a spacer. The rest of the
-modification is as the original one except that I cut the tracks to TC27 pins 19
+modification is as the original one except that I cut the tracks to IC27 pins 19
 and 21 on the non component side. This allowed the links to be added also on that
 side using the through hole thus made available.
 </p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
 <p>
-[c2k
+IC24 is made redundant by this mod.
 </p>
-<p>
-TC24 is made redundant by the mod.
-</p>
-<p>
-Toa
-</p>
-<p>
-r 3 DECODES
-</p>
+<?php imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, "Image-44-1.png"); ?>
+<?php columnChange(2); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-44-2.png"); ?>
+<?php columnEnd(2); ?>
+<br>
+<?php columnStart(1); ?>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

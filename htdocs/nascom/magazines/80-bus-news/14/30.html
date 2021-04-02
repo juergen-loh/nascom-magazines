@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-30.
-</p>
-<p>
+<p class="continued">
 an adjacent PIO chip with double sided, foamed, particularly tenacious sticky
 tape, making for tidy mechanical assembly. On test the clock functioned
 perfectly.
@@ -14,7 +11,7 @@ is adjustment over a long period, days or weeks, carefully taking up any errors
 in time noted. Connecting any external device such as a frequency counter will
 load the onboard clock and render inaccurate readings, also the accuracy of most
 cheaper frequency counters is likely to be less than the accuracy required for
-setting the clock to +/&nbsp; 5 seconds a day, 80 the only choice is long term
+setting the clock to +/&nbsp; 5 seconds a day, so the only choice is long term
 adjustment. There is also a second problem associated with clock accuracy, and
 that is that unless the chip is addressed completely within a specified minimum
 time frame, the clock will gain about 1/100th of a second each time it is
@@ -29,7 +26,7 @@ importance.
 The second clock constructed a few days later at work, however, behaved
 in a most erratic fashion. This clock was connected to the onboard port of a
 Gemini GM811 CPU card, and the software, which had worked correctly on the home
-built clock, was reassembled to port OB4H. Due note was taken of the warning in
+built clock, was reassembled to port 0B4H. Due note was taken of the warning in
 the clock documentation concerning the Gemini CP/M initialisation routines
 setting the port for Centronics printer operation causing rubbish to be written
 into the clock registers, and these were duly bypassed. Regardless of how the
@@ -38,12 +35,12 @@ was placed across the crystal and then it would always return completely
 repeatable rubbish. After much checking of the PIO, the software and almost
 complete component substitution, the conclusion was reached that the crystal
 oscillator was either running at low level or not at all, and that the only item
-that ceuld be at fault was the peb board itself. This being patently ridiculous,
+that could be at fault was the pcb board itself. This being patently ridiculous,
 we must have missed something. None the less, the pcb was rigorously cleaned to
 remove any last vestige of flux that could be causing the clock to run at low
-level as it had been noted that attaching a &lsquo;scope to the crystal would produce a
+level as it had been noted that attaching a &rsquo;scope to the crystal would produce a
 visible increase in clock level, although this was probably a byproduct of the
-capacitance of the &lsquo;scope probe.
+capacitance of the &rsquo;scope probe.
 </p>
 <p>
 Then, by accident, light started to dawn. In desparation, we had by now
@@ -52,16 +49,16 @@ component substitution. Tim removed the clock chip with all power on and replace
 it with another, and it all appeared to work. This caused some investigation of
 the clock power down circuitry and battery backup. However, this was not found to
 be at fault, and another lucky accident revealed the true cause. Having persuaded
-the clock to work by plugging in the chip with the power on, the failed condition.
+the clock to work by plugging in the chip with the power on, the failed condition
 could be caused by either powering up or by resetting the computer. It was
 apparent that it was the reset state which caused the problem, and that under
 this condition the clock chip was being fed with a register combination which not
 only jammed the clock chip, but made the chip incapable of accepting new data
 during any subsequent initialisation process, powering down the computer made no
-&ndash; difference to the jammed clock as the battery backup on the clock poard took over
+difference to the jammed clock as the battery backup on the clock board took over
 automatically. Once jammed the clock chip remained jammed. In fact the only way
 to unjam a jammed clock chip was to remove it from the board and then plug it
-pack in (having initialised the port to address the chip).
+back in (having initialised the port to address the chip).
 </p>
 <p>
 On the Nascom&nbsp;2 (not Nascom&nbsp;1) and the Gemini, the PIO device is reset
@@ -69,7 +66,7 @@ when the computer is reset and also on power up, causing the PIO to go to an
 input condition and to float the input/output pins which are left in a high
 impedance state. Normally the input/output pins float high. By attaching our in
 line port analyser, which sounds complicated but consists of no more than a CMOS
-non inverting buffer sensing each port line and lighting a LED when a *high&rsquo;
+non inverting buffer sensing each port line and lighting a LED when a &lsquo;high&rsquo;
 appears on the port line, we noted that the port line which addressed the clock
 </p>
 <?php columnEnd(1); ?>

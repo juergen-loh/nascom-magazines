@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-21,
-</p>
-<p>
+<p class="continued">
 supplied for this. This prevents BASIC from overwriting TOS&rsquo;s workspace when
 cold-started. TOS overlays ROM ZEAP, but it is a simple matter to install a
 switch in the 4K decode line (on the N2) to switch between the two. I of course
@@ -14,57 +11,41 @@ versa).
 The TOS command structure is fairly extensive, with commands being
 entered in the true NASSYS fashion, i.e. a single command letter followed by a
 number of arguments. In TOS these arguments are obligatory and are summarised
-</p>
-<p>
 below.
 </p>
-<p>
-Save BASIC file on drive d
-Display catalogue of drive d
-nn Delete file number nn from drive d
-Initialise a blank tape in drive A
-BASIC cold start
-NASSYS cold start
-d Save NASPEN file on drive d
-NASPEN warm start
-Rewind both tapes, read in catalogues
-d mn Read file nn from drive d
-d mun Transfer file nn from drive d to the other drive
-d ssss eeee Write file from f&pound;ssss to &pound;eeee-1 to drive d
-Rewind both tapes prior to removal
-BASIC warm start
-</p>
-<p>
-Ra Qs Os
-</p>
-<p>
-NM SSW OW ea Ho
-</p>
+<table class="indent">
+<!--colgroup><col style="width: 3em"><col></colgroup-->
+<tr><td>B d</td><td>Save BASIC file on drive d</td></tr>
+<tr><td>C d</td><td>Display catalogue of drive d</td></tr>
+<tr><td>D d nn</td><td>Delete file number nn from drive d</td></tr>
+<tr><td>I</td><td>Initialise a blank tape in drive A</td></tr>
+<tr><td>J</td><td>BASIC cold start</td></tr>
+<tr><td>N</td><td>NASSYS cold start</td></tr>
+<tr><td>P d</td><td>Save NASPEN file on drive d</td></tr>
+<tr><td>Q</td><td>NASPEN warm start</td></tr>
+<tr><td>R</td><td>Rewind both tapes, read in catalogues</td></tr>
+<tr><td>R d nn</td><td>Read file nn from drive d</td></tr>
+<tr><td>T d ssss</td><td>Transfer file nn from drive d to the other drive</td></tr>
+<tr><td>W d ssss eeee</td><td>Write file from &pound;ssss to &pound;eeee-1 to drive d</td></tr>
+<tr><td>X</td><td>Rewind both tapes prior to removal</td></tr>
+<tr><td>Z</td><td>BASIC warm start</td></tr>
+</table>
 <p>
 I understand that the latest version of TOS has a multiple-delete
-command, which presumably is of the form Dd nn xx yy --. which would delete file
+command, which presumably is of the form D d nn xx yy ... which would delete file
 numbers nn, xx, yy, etc. from the tape in drive d. I have made alterations to TOS
-</p>
-<p>
 to include the following (extra) commands:
 </p>
-<p>
-E xxxx &ndash; Execute program at address xxxx. Additional arguments
-may be supplied, as with the NASSYS &lsquo;EB&rsquo; command.
-</p>
-<p>
-Rd &ndash; Rewind the tape &amp; read the catalogue of the specified
-drive (TOS only does this for both drives at once).
-</p>
-<p>
-Xd &ndash; Rewind the specified tape to the start prior to removal.
-</p>
-<p>
-YX &ndash; BASIC warm start.
-</p>
-<p>
-Zd &ndash; Save ZEAP file on the specified drive.
-</p>
+<table class="indent">
+<colgroup><col style="width: 3em"><col><col></colgroup>
+<tr><td>E xxxx</td><td>&ndash;</td><td>Execute program at address xxxx. Additional arguments
+					may be supplied, as with the NASSYS &lsquo;E&rsquo; command.</td></tr>
+<tr><td>R d</td><td>&ndash;</td><td>Rewind the tape &amp; read the catalogue of the specified
+					drive (TOS only does this for both drives at once).</td></tr>
+<tr><td>X d</td><td>&ndash;</td><td>Rewind the specified tape to the start prior to removal.</td></tr>
+<tr><td>Y</td><td>&ndash;</td><td>BASIC warm start.</td></tr>
+<tr><td>Z d</td><td>&ndash;</td><td>Save ZEAP file on the specified drive.</td></tr>
+</table>
 <p>
 When saving a file, TOS prompts for a filename, which may be upto 17
 characters long. This gives ample room for, say, the version number and, in the

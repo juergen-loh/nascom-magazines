@@ -1,19 +1,18 @@
 <?php columnStart(1); ?>
-<p>
-10.
-</p>
-<p>
+<h3>
 What is wrong with Pascal? (Shock Horror!)
-</p>
+</h3>
 <p>
-Honestly, tnere really is one thing missing from Pascal, and it just
-happens that-this is the one thing BASIC is better at than almost anything else
+Honestly, there really is one thing missing from Pascal, and it just
+happens that this is the one thing BASIC is better at than almost anything else
 (that takes care of the ones I don&rsquo;t know! PIC X(12), indeed!) String handling
 is easy in Pascal, as long as all the strings are the same length! You can not
 use things like
 </p>
-<p>
-A$ = LEFT$(B$,4) + MID$(A$,3,3) + " Wowee!&rdquo;
+<pre class="indent">
+A$ = LEFT$(B$,4) + MID$(A$,3,3) + " Wowee!"
+</pre>
+<p class="continued">
 even if you want to. But of course, you can define a set of procedures and
 functions that would make this sort of thing possible. I have started work on
 just such a set of procedures, and have made a little progress, some of it in
@@ -36,31 +35,25 @@ be of five letters.&rdquo;
 <p>
 The stuff I have written so far starts out with these declarations:&ndash;
 </p>
-<p>
+<pre>
 CONST
-longeststring = 256; {Can be more, or less. }
-longestname = 8; {Length of stringnames.
+  longeststring = 256; {Can be more, or less.}
+  longestname = 8; {Length of stringnames.}
 TYPE
-</p>
+  stringname = PACKED ARRAY [1..longestname] OF CHAR;
+  stringlength = 0..longeststring;
+  stringcontents = PACKED ARRAY [1..longeststring] OF CHAR;
+  stringitem =
+    RECORD
+      name     : stringname;
+      length   : stringlength;
+      contents : stringcontents;
+      next     : ^stringitem
+    END;
+  stringpointer = ^stringitem
+</pre>
 <p>
-stringname = PACKED ARRAY [1..longestname] OF CHAR;
-stringlength = 0..longeststring;
-stringcontents = PACKED ARRAY 1..longeststring | OF CHAR;
-</p>
-<p>
-stringitem =
-RECORD
-name : stringname;
-length : stringlength;
-contents : stringcontents;
-next : &ldquo;stringitem
-END;
-</p>
-<p>
-stringpointer = &ldquo;stringitem
-</p>
-<p>
-In most versions of Pascal, &ldquo;&ldquo;stringpointer&rdquo; would have been declared before
+In most versions of Pascal, &ldquo;stringpointer&rdquo; would have been declared before
 &ldquo;stringitem&rdquo;, and &ldquo;next&rdquo; would be of type stringpointer. The Hisoft version
 won&rsquo;t let you use the slight forward declaration involved, but this is not a
 handicap, as it is easily avoided, as shown. Anyway, the declarations above show
@@ -73,4 +66,5 @@ suggested that the UCSD string handling routines might work. I&rsquo;ll let you 
 if they do... And now a rest, while I try to beat my score of 232 at Adventure.
 How DO you get past the Plover Room, without falling down a pit?
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

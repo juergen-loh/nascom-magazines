@@ -1,30 +1,27 @@
 <?php columnStart(1); ?>
 <p>
-34.
-</p>
-<p>
 In the above case, TM$ will be the variable space for the machine code
 clock read routine. All that is required is to pass the address of TM$ to the
 machine code routine. When the Microsoft Basic CALL is used, upto three variables
 may be passed to the machine code routine in HL, DE and BC. If there are more
 variables, BC is set to the address of a table of variables and that is passed
-for the machine code routine to pick up. In this instance only the address of TMS
+for the machine code routine to pick up. In this instance only the address of TM$
 is required. The VARPTR function returns the address of the string pointer, which
 holds:
 </p>
-<p>
-1) The string length
-</p>
-<p>
+<p class="noindent">
+1) The string length<br>
 2) The actual string address, low byte first
+</p>
+<p class="continued">
 Line 1010 returns the actual address of TM$, ADDR%. Note that this must be an
 integer variable, as only a 16 bit number can be sent to the machine code routine
-in HL. Line 1020 CALLs the the machine code routine and ADDRZ is passed in HL.
+in HL. Line 1020 CALLs the the machine code routine and ADDR% is passed in HL.
 The machine code routine places the month, day of week, day, hour, minute and
 seconds in the first six bytes of TM$ and lines 1030 and 1040 read these back. I
 would have thought that as the CALL function within Basic can pass variables to a
 machine code routine, it ought to be able to pass them back, however I can not
-find out how to do this, so if anyone kmows, drop me a line.
+find out how to do this, so if anyone knows, drop me a line.
 </p>
 <p>
 The machine code read subroutine is very simple (refer to the program
@@ -45,7 +42,7 @@ the declared string, the addresses would be absolute and the absolute code
 adjusted to suit. Note that this idea will only work with a specific version of
 the Microsoft Mbasic, as Microsoft have a tendency to move the source buffer
 addresses about between different versions; also that this technique makes the
-first line of the program wnlistable, as it will contain some 128 bytes of
+first line of the program unlistable, as it will contain some 128 bytes of
 reserved words, junk, and other nasty things.
 </p>
 <p>
@@ -55,33 +52,11 @@ GMT, 21 Sep 1982. Not a difficult job, but shows some of the more useful
 attributes of string manipulation in Basic. Those who have read through the
 machine code clock setting routines will have noticed similar routines.
 </p>
-<p>
-2000 MN$="JanFebMarAprMayJunJlyAugSep0ctNovDec&rdquo;
-</p>
-<p>
-2010 DY$="SunMonTueWedThuFriSat&rdquo;
-</p>
-<p>
-2020 IF DAY&gt;9 THEN D$=RIGHTS(STRS(DAY),2)+&rdquo; " ELSE D$="0"+RIGHTS(STRS(DAY),1)+&rdquo; &ldquo;
-2030 IF HOURD9 THEN H$=RIGHT$(STR$(HOUR),2)+".&rdquo; ELSE H$="0"+RIGHT$(STRS(HOUR),1)+".&rdquo;
-2040 IF MIND9 THEN MIN$=RIGHTS(STRS(MIN),2) ELSE MINS="0"+RIGHTS(STRS(MIN),1)
-</p>
-<p>
-2050 DY$=MID$(DY$, 3*DYWK-2,3)+&rdquo; &ldquo;
-</p>
-<p>
-2060 MNS=MID$ (MNS, 3*MONTH-2,3)+&rdquo; &ldquo;
-</p>
-<p>
-2070 YR$="1982&rdquo;
-</p>
-<p>
-2080 DATES=H$+MINS+&rdquo; GMT, &ldquo;+DY$S+MNS+YRS
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-34-1.png"); ?>
 <p>
 The points to note are the way in which the day and month are picked from
 the string by calculating the relevant point in the string and then using the
-MID$ function. Note also the way the STR$ function is used within a RIGHTS
+MID$ function. Note also the way the STR$ function is used within a RIGHT$
 function to trucate the numeric variable and return it as a string. In line 2080
 it simply becomes process of adding up the strings.
 </p>

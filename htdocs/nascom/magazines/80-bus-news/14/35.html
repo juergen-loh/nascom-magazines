@@ -2,7 +2,7 @@
 <p>
 An off shoot of presenting the date is the ability to use the date in
 numerical sorts. The obvious method is split a date into its component parts,
-using the tens and units of the year, the month and the day; so that 21 /09 /82
+using the tens and units of the year, the month and the day; so that 21/09/82
 would end up as 820921. This would work as each day is a unique number and days
 increase in ascending order. However, the number sequence is not contiguous which
 could cause a number of problems, not the least of which is the complicated
@@ -27,63 +27,13 @@ number has a lot going for it.
 To convert an input date to a Julian number the following simple routine
 may be used, it does assume that the date will be this century.
 </p>
-<p>
-3000 INPUT &ldquo;Date (DD/MM/YY) &ldquo;;DT$
-</p>
-<p>
-3010 DAY=VAL(LEFT$(DT$,2)) : MONTH=VAL(MID$(DT$,4,2)) : YEAR=1900+VAL(RIGHTS(DT$,2))
-3020 DT=INT(30.57*MONTH )+INT(365.25*YEAR-395 .25+.5)+DAY
-</p>
-<p>
-3030 IF MONTH &gt;2 THEN IF INT(YEAR/4)=YEAR/4 THEN DT=DT-1 ELSE DT=DT-2
-</p>
-<p>
-3040 &lsquo; DT now equals the Julian number.
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-35-1.png"); ?>
 <p>
 This is all very good, the conversion back again is also simple, with the
 addition in this case to convert the number to a string in the same form as the
 input.
 </p>
-<p>
-A000 Y=INT(DT/365.26)+1
-</p>
-<p>
-4010 D=DT+INT (395 .25-365.25*Y+.5)
-</p>
-<p>
-4020 IF INT(Y/4)*4=Y THEN Di=1 ELSE D1=2
-</p>
-<p>
-4030 IF D&gt;91-D1 THEN D=D+Di
-</p>
-<p>
-4040 MONTH=INT(D/30.57)
-</p>
-<p>
-A050 DAY=D-INT(30.57*MONTH )
-</p>
-<p>
-4060 IF M12 THEN M=1 : Y=Y+1
-</p>
-<p>
-4070 YEAR=Y-1 900
-</p>
-<p>
-4080 D$=RIGHTS(STRS(DAY),LEN(STR$(DAY))-1) : IF DAY&lt;=9 THEN D$="0"+D$
-4090 J$=SPACE$(2) : LSET J$=D$ : DT$=J$+"/&rdquo;
-</p>
-<p>
-4100 M$=RIGHT$(STR$(MONTH) , LEN(STRS(MONTH))-1) : IF MONTH&lt;=9 THEN M$="0"+M$
-4110 J$=SPACE$(2) : LSET J$=M$ : DTS=DT$+M$+"/&rdquo;
-4120 Y$=RIGHT$(STR$(YEAR) , LEN(STR$ (YEAR) )-1 )
-</p>
-<p>
-4130 J$=SPACE$(2) : LSET J$=Y$ : DI$=DT$+J$
-</p>
-<p>
-4140 &lsquo; DT$ now equals the date string
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-35-2.png"); ?>
 <p>
 So having started with clock hardware, I have finished with Julian dates.
 Time is an interesting subject, you can do so much with it. I only wish there

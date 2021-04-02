@@ -1,47 +1,42 @@
 <?php columnStart(1); ?>
 <p>
-13,
-</p>
-<p>
-SETUF has been written as a subroutine so that it may be
+SETUP has been written as a subroutine so that it may be
 used by other programs such as the screen dump to be described
 later. There is one other section of code that probably
-warrants explanation, setting up the FIO which is described
-</p>
-<p>
+warrants explanation, setting up the PIO which is described
 below.
 </p>
+<h3>
+Configuring the PIO.
+</h3>
 <p>
-Confiquring the FIO.
 In keeping with explaining setting up the printer before
-</p>
-<p>
 explaining setting the PIO, I have configured PORT B first and
 will explain it last. Confused?
 </p>
+<h4>
+PORT A:
+</h4>
 <p>
-FORT As
 This is set up in bit (control) mode with all the bits as
-</p>
-<p>
 outputs. In order, the bytes sent to PACONT to do a this
-arer:fFFio:733. &pound;FF selects mode 3 (control mode) and the
-following &copy; makes all the bits outputs. The 7 is the interrupt
+are:&pound;FF;0;7;3. &pound;FF selects mode 3 (control mode) and the
+following 0 makes all the bits outputs. The 7 is the interrupt
 control word which is set to prevent any interrupts. The final
-= disables all interrupts on PORT A just to be sure,
+3 disables all interrupts on PORT A just to be sure.
 </p>
-<p>
+<h4>
 PORT B:
-This is identical to the configuring of PORT A exept for the
-</p>
+</h4>
 <p>
-second byte. This is &pound;FS (1111 1000) because we require bits
-O,1 and 2 to be outputs and bits 3,4 and 5 to be inputs. We
+This is identical to the configuring of PORT A exept for the
+second byte. This is &pound;F8 (1111 1000) because we require bits
+0,1 and 2 to be outputs and bits 3,4 and 5 to be inputs. We
 don&rsquo;t care about 6 and 7 and so could have sent &pound;38 etc.
 </p>
-<p>
+<h3>
 The next installment.
-</p>
+</h3>
 <p>
 The screen dump program will have to wait until next time,
 while I think of some suitable abbreviated names for it. I hope
@@ -51,20 +46,5 @@ cassette of the ZEAP source ta those too busy (lazy) to type it
 all in. A cheque for &pound;1-50 (ta cover costs) to COMFWARE at __
 ______ Dr. Haslington Crewe Cheshire ___ ___ will secure this.
 </p>
-<p>
-Diaeream |: SeuemaTic SunmARy OF CONNECTIONS.
-Nascom PIO Eeson I/F
-PoRT A Do Do
-Dy &mdash;) D,
-Poar B Deo &gt; STROBE
-D. ____p INIT
-NoT useb: D, SEP ENT
-+Sv_, ASTB,; ARDY, Dy g Busy
-BsTe, BRDY Dd Pe Not uSeD:
-&ldquo;evn 10 ACKNTA
-Dy &lt;-&mdash;&mdash;_ ERROR 12 Suet
-RD, Se 86 SCOR
-D, 3s +Sv Puc ur
-Ov (16,13) Ov (19-30, 16,33)
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-13-1.png"); ?>
 <?php columnEnd(1); ?>
