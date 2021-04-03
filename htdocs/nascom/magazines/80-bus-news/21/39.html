@@ -1,89 +1,71 @@
 <?php columnStart(1); ?>
-<p>
-39
-</p>
-<p>
+<h3 class="indent">
 THE KEYBOARD
-</p>
+</h3>
 <p>
-te te me ae
-</p>
-<p>
-If the CPU card is a GM813 then bit 1 of location 0003 (IOBYTR) is
+If the CPU card is a GM813 then bit 1 of location 0003 (IOBYTE) is
 automatically set to 1 on power-on or reset. This disables the operation of the
 keyboard attached directly to the CPU card, since this is not provided for on the
 GM813.
 </p>
 <p>
-Screen edit mode is entered by Controi-% (Bd. &ndash; *%=&rsquo;at&rsquo;) instead of DEL to be
-consistent with the various disk BlOSes.
+Screen edit mode is entered by Control-&permil; (Ed. &ndash; &permil"=&lsquo;at&rsquo;) instead of DEL to be
+consistent with the various disk BIOSes.
 </p>
 <p>
 Screen dump operates only within screen edit mode to be consistent with SYS
 and to allow the control code previously used to be available for program use.
 </p>
-<p>
+<h3 class="indent">
 RESETTING RP/M
-</p>
+</h3>
 <p>
 On reset the system is tested to see if a disk card is present. If it is
 then an attempt is made to boot from the disk. If this fails an appropriate
 message is output as from the B command.
 </p>
-<p>
+<h3 class="indent">
 COMMANDS
-</p>
+</h3>
 <p>
 The D command may be cancelled during output by typing a Space.
 </p>
-<p>
+<h3 class="indent">
 SCREEN EDITING
-</p>
+</h3>
 <p>
-Use Control-% [% = &lsquo;at&rsquo;] (Mull) to enter screen edit mode. The cursor
+Use Control-&permil; [&permil; = &lsquo;at&rsquo;] (Null) to enter screen edit mode. The cursor
 changes to a blinking block while in this mode. Entering Control-C exits screen
 edit returning a Control-C and a carriage return, instead of performing a warm
 boot.
 </p>
-<p>
+<h3 class="indent">
 SCREEN DUMP
-</p>
+</h3>
 <p>
 The contents of the screen may be printed by pressing Control-B while in
 screen edit mode. When the screen has been printed screen edit mode is terminated
 automatically. The output is directed via the I/O jump table, allowing users who
 modify this table to obtain screen dumps.
 </p>
-<p>
+<h3 class="indent">
 PRINTER SUPPORT
-</p>
+</h3>
 <p>
 Both serial and parallel printers are supported. To use a parallel printer
-use the S command to change location 000% (IOBYTE). Bit 7 is tested to determine
+use the S command to change location 0003 (IOBYTE). Bit 7 is tested to determine
 which type of printer to use. If it is 1 then the parallel printer is selected,
-so change the value from 01H to S1H or 03H to 83H. The parallel printer interface
+so change the value from 01H to 81H or 03H to 83H. The parallel printer interface
 uses Centronics conventions. Port B is the output data port, and port A is used
-to control the data transfer. Rit O of port A is connected to the BUSY line from
+to control the data transfer. Bit 0 of port A is connected to the BUSY line from
 the printer, and bit 1 is the strobe which indicates to the printer that data is
 available.
 </p>
+<h3 class="indent">
+OPERATION WITHOUT VIDEO CARD
+</h3>
 <p>
-=
-&lt;4
-feof
-to
-ea
-&copy;
-CR
-&gt;
-ew
-gy
-</p>
-<p>
-OPERATION WITHOU
-</p>
-<p>
-RP/M is designed to be used with the Gemini GMai2 intelligent video card.
+RP/M is designed to be used with the Gemini GM812 intelligent video card.
 However for some applications it is useful to be able to operate the system with
 minimal hardware. RP/M will now operate without a video card if bit 0 of location
 0003 (IOBYTE) is set to 0. Since this needs to be set on power-on, this bit is
@@ -94,8 +76,6 @@ used, so ensure that this is provided. If there is a video card in the system it
 will be reset but it will not be used and its keyboard will not operate. If there
 is a disk card then an attempt will be made to boot a disk, as normal. All
 messages are output to the serial printer, and input may be from a serial
-</p>
-<p>
 keyboard or from a keyboard on the CPU card (GM811 only).
 </p>
 <?php columnEnd(1); ?>

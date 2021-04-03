@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-11
-</p>
-<p>
+<p class="continued">
 In this, the LSB 4 bits of 0111 indicate Interrupt Control Word. Bits 4 to 6 are
 only used in Mode 3, and Bit 7 enables or disables the Port to interrupt. If Bit
 7 = 1, then Interrupts are enabled. If 0, then disabled. If an interrupt
@@ -14,14 +11,14 @@ for AND condition, i.e. they must all be active for interrupts. If bit 7 = 0,
 then any one of them can be active and cause an interrupt. Bit 5 =1 indicates
 that they should be monitored for High level, = 0 for low level. Bit 4 = 1
 indicates that the next word sent to the port must define a mask. Only those
-lines whose mask bit is O will be monitored for generating an interrupt. To
+lines whose mask bit is 0 will be monitored for generating an interrupt. To
 enable or disable a Port interrupt without modifying the rest of the Interrupt
 Control Word, we write the following word to the port.
 </p>
-<p>
-EI x xx0011
-</p>
-<p>
+<pre class="indent">
+EI x x x 0 0 1 1
+</pre>
+<p class="continued">
 Problems have occurred with the PIO&rsquo;s little peculiarities. Disabling interrupts
 by writing the above control word to the port is subject to them. For example,
 you write the disable control word to the port. As you do so, an interrupt
@@ -34,19 +31,19 @@ eccentric behaviour of the interrupt structure. The cure for this is to disable
 CPU interrupts, send the disable control word, and reenable the CPU interrupts.
 Here is the sequence of instructions:
 </p>
-<p>
-LD A,03H ;Disable word
-DI sDisable CPU
-OUT (PIO),A sDisable PIO
-EI :Enable CPU
-</p>
-<p>
+<pre class="indent">
+LD A,03H        ;Disable word
+DI              ;Disable CPU
+OUT (PIO),A     ;Disable PIO
+EI              ;Enable CPU
+</pre>
+<p class="continued">
 This causes the CPU to ignore any such spurious interrupts while the PIO is
 turning its own interrupt structure off.
 </p>
 <p>
 So much for the actual instructions for setting up the interrupts in the
-PTO. Now we have to consider what the Interrupt handling routine is to do.
+PIO. Now we have to consider what the Interrupt handling routine is to do.
 Obviously, without knowing the precise form of your peripheral, this is something
 I can&rsquo;t deal with in particular, but there are a few points to draw to your
 attention. First of all, an interrupt automatically disables any further
@@ -59,7 +56,7 @@ printer is connected up to a port, and interrupts for more data. Usually a
 printer has a buffer within it, and a print rate of 60 &ndash; 120 chars per sec. So
 long as the printer has about 100 chars in its buffer, it won&rsquo;t need any further
 attention for about a second. This means that we could, for example, allow our
-cTc to interrupt the printer routine every half second or so with the time. We
+CTC to interrupt the printer routine every half second or so with the time. We
 can only interrupt a routine when it is in a safe state, so we need to have saved
 any data resulting from the interrupt before permitting another. Reenabling
 interrupts is done by executing the EI instruction within the interrupt service

@@ -5,7 +5,7 @@
 	$desc =
 		'This is an overall table of contents of '
 	.	'<a href="issues/">English Nascom magazines</a>, '
-	.	"published between 1979 and 1989.</p>\n\t<p>"
+	.	"published between 1978 and 1989.</p>\n\t<p>"
 	.	'There is also an <a href="../journal/text/">overall table of contents</a> of '
 	.	'<a href="../">German Nascom publications</a>.';
 	$bottom =

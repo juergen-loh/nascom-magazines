@@ -4,5 +4,5 @@
 	$offset = 2;
 	$first = -1;
 	$last = 33;
-	$desc = "August 1981, Volume 1, Number 1";
+	$desc = "Volume&nbsp;1, Number&nbsp;1 &ndash; August&nbsp;1981";
 ?>

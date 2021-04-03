@@ -1,13 +1,13 @@
-<?php columnStart(1); ?>
-<p>
-20
-</p>
-<p>
-UNDERSTANDING CP/M &ndash; CUSTOMIZING YOUR CBIOS by C. Bowden
-</p>
-<p>
-em Sth LS ON SO NS SE EO El SON OL A HE ES SO HC
-</p>
+<?php columnStart(34); ?>
+<h2 id="article1">
+UNDERSTANDING CP/M &ndash; CUSTOMIZING YOUR CBIOS
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+by C. Bowden
+</h3>
+<?php columnEnd(4); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 This article has been written mainly to try to assist those who would like to
 learn more about some of the operations of CP/M or its support utilities. As a
@@ -17,7 +17,7 @@ others eager to get more out of their system. At the end of the article is a
 summary of the CP/M memory map, and showing the main addresses for CP/M as
 supplied by GEMINI for the Nascom, and also as altered to allow space for a &lsquo;SYS&rsquo;
 CBIOS. Terms such as CBIOS, BDOS, CCP and so on are also briefly explained. There
-are aiso diagrams in the text, showing the internal details of MOVCPM and the
+are also diagrams in the text, showing the internal details of MOVCPM and the
 System Track of the disk.
 </p>
 <p>
@@ -37,27 +37,19 @@ CBIOS.
 <p>
 I had several reasons for wanting to change the CBIOS.
 </p>
-<p>
-1) Primarily to learn how to do it, so as to increase my understanding of what
-was happening.
-</p>
-<p>
-2) To avoid the extra wait required for SYS to load.
-</p>
-<p>
-3) To clear the &lsquo;SYSxx&rsquo; command from the CP/M Buffer so that some other
-program could be Auto-Run. (Although SYS could probably be made to put
-another name into the Command Buffer.)
-</p>
-<p>
-4) The origional CBIOS supplied by GEMINI is very good, but &lsquo;SYS&rsquo; does offer
-extra features in certain circumstances, so it can become the preferred
-CBIOS.
-</p>
-<p>
-5) Perhaps rather trivial &ndash; a gain of 8K bytes of extra disk space as the
-SYSxx.COM file does not need to be on the disk.
-</p>
+<table>
+<tr><td>1)</td><td>Primarily to learn how to do it, so as to increase my understanding of what
+		was happening.</td></tr>
+<tr><td>2)</td><td>To avoid the extra wait required for SYS to load.</td></tr>
+<tr><td>3)</td><td>To clear the &lsquo;SYSxx&rsquo; command from the CP/M Buffer so that some other
+		program could be Auto-Run. (Although SYS could probably be made to put
+		another name into the Command Buffer.)</td></tr>
+<tr><td>4)</td><td>The origional CBIOS supplied by GEMINI is very good, but &lsquo;SYS&rsquo; does offer
+		extra features in certain circumstances, so it can become the preferred
+		CBIOS.</td></tr>
+<tr><td>5)</td><td>Perhaps rather trivial &ndash; a gain of 8K bytes of extra disk space as the
+		SYSxx.COM file does not need to be on the disk.</td></tr>
+</table>
 <p>
 I eventually succeeded in my task, but on the way I encountered a number of
 difficulties, the solution of which greatly increased my understanding of what
@@ -67,32 +59,18 @@ of this article I will be referring to certain programs that I used to carry out
 the job. To avoid having to repeat multiple names, I will define one suitable
 common name for the job:&ndash;
 </p>
-<p>
-1 ) PEEK &ndash; A DISK UTILITY such as DDISK or REPAIR that allows direct
-access to the Disk, with facilities to &lsquo;patch&rsquo; if required.
-</p>
-<p>
-2) BUG &ndash; A UTILITY such as DDT, ZSID or GEMDEBUG.
-</p>
-<p>
-3)OLDBIOS &ndash; the origional CBIOS, as supplied within CP/M by GEMINI.
-4)SYS &ndash; The new CBIOS. In my case SYS Vn 11.0 at present.
-</p>
-<p>
-5)MOVOLD &ndash; The MOVCPMN or V supplied by GEMINI. (N = version for NASCOM
-</p>
-<p>
-Screen, and V = version for the IVC Intelligent Video Card).
-6)MOVMODV &ndash; A version of MOVOLD for the IVC screen modified to reserve
-</p>
-<p>
-extra room at the top of RAM for a larger BIOS. ( See SYS.DOC
-</p>
-<p>
-as supplied with SYSxxxx.MAC). Use MOVCPMN as the starting
-</p>
-<p>
-point if NASCOM screen output is required.
-7)MOVCPM &ndash; Any version of MOVCPM as appropriate.
-</p>
+<table>
+<tr><td>1)PEEK</td><td>&ndash;</td><td>A DISK UTILITY such as DDISK or REPAIR that allows direct
+		access to the Disk, with facilities to &lsquo;patch&rsquo; if required.</td></tr>
+<tr><td>2)BUG</td><td>&ndash;</td><td>A UTILITY such as DDT, ZSID or GEMDEBUG.</td></tr>
+<tr><td>3)OLDBIOS</td><td>&ndash;</td><td>the origional CBIOS, as supplied within CP/M by GEMINI.</td></tr>
+<tr><td>4)SYS</td><td>&ndash;</td><td>The new CBIOS. In my case SYS Vn 11.0 at present.</td></tr>
+<tr><td>5)MOVOLD</td><td>&ndash;</td><td>The MOVCPMN or V supplied by GEMINI. (N = version for NASCOM
+		Screen, and V = version for the IVC Intelligent Video Card).</td></tr>
+<tr><td>6)MOVMODV</td><td>&ndash;</td><td>A version of MOVOLD for the IVC screen modified to reserve
+		extra room at the top of RAM for a larger BIOS. (&nbsp;See SYS.DOC
+		as supplied with SYSxxxx.MAC). Use MOVCPMN as the starting
+		point if NASCOM screen output is required.</td></tr>
+<tr><td>7)MOVCPM</td><td>&ndash;</td><td>Any version of MOVCPM as appropriate.</td></tr>
+</table>
 <?php columnEnd(1); ?>

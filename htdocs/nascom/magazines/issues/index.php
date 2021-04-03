@@ -24,7 +24,7 @@
 <h1 id="head" class="FirstHeading">Nascom Magazines</h1>
 
 <p>
-	Between 1979 and 1989, a number of English publications were produced.
+	Between 1978 and 1989, a number of English publications were produced.
 	These were centred on the Nascom range at first, then expanded to include
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
@@ -45,7 +45,7 @@
 <div class="row hyphenate" lang="en"><div class="col-sm-6">
 
 <h2><a href="../inmc-news/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a></h2>
-<h3>1979 &ndash; 1980</h3>
+<h3>1978 &ndash; 1980</h3>
 <p>
 	INMC News was the original magazine to support the Nascom pro&shy;duct range.
 </p>

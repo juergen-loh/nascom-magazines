@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-40
-</p>
-<p>
 It is even possible to operate the system with no video card and no serial
 terminal, but with a keyboard on the CPU card (GM811 only) and a parallel printer
 for output, by turning on the computer and immediately using the S command
@@ -10,41 +7,41 @@ without being able to see the serial output, to turn on the parallel printer.
 </p>
 <p>
 There are several limitations on the facilities provided if there is no
-video card. No screen edit mode or screen dump is availabie. Also, no cassette
+video card. No screen edit mode or screen dump is available. Also, no cassette
 input or output will operate, and use of the R or W commands results in an error
 message.
 </p>
-<p>
+<h3 class="indent">
 FIXED LOCATIONS IN RP/M
-</p>
+</h3>
 <p>
-For certain applications it may be convenient to modifv certain default
+For certain applications it may be convenient to modify certain default
 values used by RP/M. These may easily be changed when using RP/M by using the
 appropriate command, but if access to an EPROM programmer is available then some
 initial values may be changed. These are stored at fixed locations in RP/M.
 </p>
 <p>
-F0009 contains the two byte value used as the UART divisor. The normal value
-is 417 decimal, O1A1 hex, which is stored as Al O01. This gives a speed of 300 bps
+F009 contains the two byte value used as the UART divisor. The normal value
+is 417 decimal, 01A1 hex, which is stored as Al 01. This gives a speed of 300 bps
 (30 characters per second).
 </p>
 <p>
-FOOB contains the initial value of the IOBY"E. This is 01H, giving a serial
+F00B contains the initial value of the IOBYTE. This is 01H, giving a serial
 printer. Change to 81H for a parallel printer.
 </p>
 <p>
-FOOC contains the number of lines per page. This is set to 66 decimal, 42
+F00C contains the number of lines per page. This is set to 66 decimal, 42
 hex.
 </p>
-<p>
-THER FEATURES
-</p>
+<h3 class="indent">
+OTHER FEATURES
+</h3>
 <p>
 If a form feed character (0CH) is output to the video card by a program,
 this is translated to a carriage return and line feed.
 </p>
 <p>
-While the console input routine is waitine for an input the cursor is
+While the console input routine is waiting for an input the cursor is
 displayed as a blinking underline. Otherwise the cursor is displayed but does not
 blink. This overcomes problems relating to programs that scan the console for an
 input instead of calling the console input routine.
@@ -56,25 +53,34 @@ command to be issued, providing another means of moving data between an RP/M and
 a CP/M system.
 </p>
 <p>
-If an attempt is made to boot a disk without a disk card in the svstem, then
+If an attempt is made to boot a disk without a disk card in the system, then
 an error message is output. Previously this could cause the system to hang up.
 </p>
 <p>
 The screen editing logic has been improved to return the correct console
 status when an edit buffer is pending.
 </p>
-<p>
+<h3 class="indent">
 CONCLUSION
-</p>
+</h3>
 <p>
 Please notify us of any problems with RP/M, as well as any suggestions for
 its improvement. We hope that this new and more advanced version will be as free
 of errors as the original version.
 </p>
-<p>
-REVIEW OF THE MAP 256K RAM CARD by RICHARD BEAL 8&amp; D. R. Hunt
-</p>
-<p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<h2 id="article1">
+REVIEW OF THE MAP 256K RAM CARD
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by RICHARD BEAL &amp; D. R. Hunt
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1); ?>
+<p class="noindent">
 The DH bit:
 </p>
 <p>
@@ -86,7 +92,7 @@ However, Richard has not covered the obvious points concerning the hardware so I
 will detail them here.
 </p>
 <p>
-The card is a NASBUS/SOBUS 8" x 8" card similar in appearance to all the
+The card is a NASBUS/80BUS 8" x 8" card similar in appearance to all the
 existing RAM cards, and particularly the Gemini GM802, in that it contains a
 block of RAM surrounded by the necessary decoding and driving logic. The board is
 </p>

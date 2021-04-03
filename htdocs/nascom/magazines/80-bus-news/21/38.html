@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-38
-</p>
-<p>
+<p class="continued">
 serial port. This could make a very economical solution to many engineering
 problems. It would be interesting to know what applications RP/M is being used
 for &ndash; why not write an article about yours?
@@ -14,7 +11,7 @@ successful as a first attempt, since it had no reported bugs! However there were
 a number of areas for improvement to the design, and when the GM813 was produced
 and the Micropolis eighty track drives appeared, a new version was required.
 Version 2.0 was issued in June 1982, and like the original still has no reported
-bugs. The description of Version 2.0 below, which describes the changes made, mav
+bugs. The description of Version 2.0 below, which describes the changes made, may
 convince you to try to persuade a Gemini dealer to sell you one.
 </p>
 <p>
@@ -22,7 +19,7 @@ The introduction of add-on memory mapped RAM cards introduced a small
 problem since if you put together a system comprising a Gemini GM811 CPU card,
 RP/M Version 2.0 and the MAP 256K RAM card then unfortunately it doesn&rsquo;t work at
 all. Any other combination is all right, so if the CPU is a GM813, or if the
-system is a GM811 with RP/M VO.1 (which is more likely anyway), then there is no
+system is a GM811 with RP/M V0.1 (which is more likely anyway), then there is no
 problem. The reason is to do with the memory addressing ports chosen by MAP,
 which unfortunately conflict with the way RP/M finds out whether it is plugged
 into an 811 or an 813.
@@ -34,34 +31,37 @@ are used up) be issuing RP/M Version 2.1 as standard for 811 and 813, but for
 those of you with V2.0 and an EPROM programmer able to cope with the 2732, here
 is a complete description of the changes between 2.0 and 2.1.
 </p>
-<p>
-Address V2.0 Vo.4
-FO68 30 44
-F108 20 ED
-F109 04 44
-PIOA ED 20
-FIOB 41 02
-</p>
+<table class="indent">
+<tr><td><u>Address</u></td><td><u>V2.0</u></td><td><u>V2.1</u></td></tr>
+<tr><td>F068</td><td>30</td><td>31</td></tr>
+<tr><td>F108</td><td>20</td><td>ED</td></tr>
+<tr><td>F109</td><td>04</td><td>41</td></tr>
+<tr><td>FI0A</td><td>ED</td><td>20</td></tr>
+<tr><td>FI0B</td><td>41</td><td>02</td></tr>
+</table>
 <p>
 The first change simply updates the version number, and the rest reverses
 two instructions. Please note that some people investigating this problem have
 suggested other changes. These will cause bad things to happen if the RP/M is
 used in an 813, and the changes described here are the only official ones. By the
 way, please do not ask Gemini to replace your V2.0 with V2.1, as they will not be
-amused! I suspect that since most GM811s have VO.1, less than 10 people in the
+amused! I suspect that since most GM811s have V0.1, less than 10 people in the
 world will ever put together a system which requires this change, and these
-people should ask MAP for help. Credit goes to Gemini for issuing V2.1 at ali,
+people should ask MAP for help. Credit goes to Gemini for issuing V2.1 at all,
 since MAP are in competition with them. This reflects their awareness of the
-benefits that result from cooperation over the 80-RUS and keeping the whole array
+benefits that result from cooperation over the 80-BUS and keeping the whole array
 of products from different suppliers compatible.
 </p>
 <p>
-As promised, here is the description of RP/M V2.0, which ali V0.1 owners
+As promised, here is the description of RP/M V2.0, which all V0.1 owners
 should study carefully.
 </p>
-<p>
+<h2 id="article1">
 RP/M VERSION 2.0 (OR 2.1) &ndash; ASUMMARY OF CHANGES TO VERSION 0.1
-</p>
+</h2>
+<h3 class="indent">
+NEW FEATURES
+</h3>
 <p>
 The disk boot routine operates with both Pertec DD/DS drives and Micropolis
 DD/&lt;SS or DS&gt; double tracking drives.

@@ -6,5 +6,5 @@
 	$last = 36;
 	$splitPage = 1;
 	$splitOffset = 1;
-	$desc = "May 1983, Volume 3, Number 2";
+	$desc = "Volume&nbsp;3, Number&nbsp;2 &ndash; May&nbsp;1983";
 ?>

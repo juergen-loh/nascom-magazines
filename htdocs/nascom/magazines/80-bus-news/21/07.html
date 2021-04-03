@@ -1,13 +1,10 @@
 <?php columnStart(1); ?>
 <p>
-7
-</p>
-<p>
 Having got these two exceptions out of the way, let us now look at the
 effect of an NMI. When the CPU recognises that the NMI line is active, it
 immediately saves the address of the current instruction, performing a call to
 location 0066H. Here, in theory, is the service subroutine for the NMI
-interrupts. This service routine should do whatever is required on an WMI and
+interrupts. This service routine should do whatever is required on an NMI and
 finish with a RETN (RET from NMI) instruction. This RETN instruction behaves like
 an ordinary RET instruction in popping the return address off the stack, but also
 acts as a signal to the CPU that the NMI routine is finished, and that the
@@ -23,7 +20,7 @@ those of us who are into machine code. This is to provide a Single Step facility
 software by Gemdebug.) The Nascom Single Step works as follows: on Execution of a
 command, a bit is set in Port 0. This bit is clocked through a succession of
 flipflops, ending up toggling the /NMI pin of the CPU. The CPU immediately jumps
-to the service routine, which looks to see if the instruction executed was an F
+to the service routine, which looks to see if the instruction executed was an E
 or S. If E, the CPU carries on with the next instruction, but if S, it prints the
 register display.
 </p>
@@ -56,7 +53,7 @@ are called Interrupt Mode 0, 1 and 2, and invoked by instructions IM n, where n
 is the appropriate number.
 </p>
 <p>
-Interrupt Mode O is identical to the 8080 interrupt response mode. At the
+Interrupt Mode 0 is identical to the 8080 interrupt response mode. At the
 end of each instruction, the CPU looks at /INT (pin 16). If this line has gone
 low, something has requested an interrupt. Note that this line need not be low
 when examined. Its status is internally latched and reset when the CPU reads it.

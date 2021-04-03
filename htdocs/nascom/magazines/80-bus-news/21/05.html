@@ -1,8 +1,10 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 has, giving the example:
-AS = LEFT$(B$,4) + MID$(A$,3,3) + " Wowee!&rdquo;
 </p>
+<pre class="indent">
+A$ = LEFT$(B$,4) + MID$(A$,3,3) + " Wowee!"
+</pre>
 <p>
 In fact, Pascal has these facilities in exactly the same way as BASIC:
 they may or may not be provided with the compiler/interpreter as &ldquo;standard&rdquo; or
@@ -18,9 +20,9 @@ the full Jensen and Wirth specification will also fling such functions in as
 standard intrinsics as a matter of course. In UCSD Pascal, for instance, Dr.
 Dark&rsquo;s line of BASIC could be re-written as:
 </p>
-<p>
-astring := concat(copy(bstring,1,4),copy(astring,3,3),&rdquo; Wowee!");
-</p>
+<pre>
+   astring := concat(copy(bstring,1,4),copy(astring,3,3)," Wowee!");
+</pre>
 <p>
 where astring and bstring (and the functions copy and concat) are STRING types
 (equivalent to PACKED ARRAY OF CHAR of dynamic length).
@@ -34,49 +36,37 @@ digits and can then be used with the usual arithmetic operations.
 </p>
 <p>
 Big H, in the same issue, details his method of utilising other
-&ldquo;Gentronics"&rdquo; signals besides BUSY and /STROBE. However, his PIO Port assignments
+&ldquo;Centronics"&rdquo; signals besides BUSY and /STROBE. However, his PIO Port assignments
 are not consistent with existing conventions for BUSY and /STROBE. Both Nascom
 and Gemini, I believe, now employ the convention that Port B is used for data and
-Port A for control with bit O assigned to BUSY and bit 1 to /STROBE. It would be
+Port A for control with bit 0 assigned to BUSY and bit 1 to /STROBE. It would be
 helpful if other pioneers could maintain consistency as they progess further into
 the jungle!
 </p>
 <p>
 On my own system I am experimenting with the assignment for Port A:
 </p>
-<p>
-BIT FUNCTION I/O?
-0 BUSY T
-</p>
-<p>
-1 /STROBE 0
-</p>
-<p>
-2 PE (Paper Empty) I
-</p>
-<p>
-4 Not used
-</p>
-<p>
-4 Not used
-</p>
-<p>
-5 /INIT 0
-</p>
-<p>
-6 /AUTO FEED XT 0
-</p>
-<p>
-T /ERROR I
-</p>
-<p>
+<table class="indent">
+<colgroup><col style="width: 3em"><col style="width: 12em"><col></colgroup>
+<tr><td>BIT</td><td>FUNCTION</td><td>I/O?</td></tr>
+<tr><td>0</td><td>BUSY</td><td>I</td></tr>
+<tr><td>1</td><td>/STROBE</td><td>O</td></tr>
+<tr><td>2</td><td>PE (Paper Empty)</td><td>I</td></tr>
+<tr><td>3</td><td>Not used</td><td></td></tr>
+<tr><td>4</td><td>Not used</td><td></td></tr>
+<tr><td>5</td><td>/INIT</td><td>O</td></tr>
+<tr><td>6</td><td>/AUTO FEED XT</td><td>O</td></tr>
+<tr><td>7</td><td>/ERROR</td><td>I</td></tr>
+</table>
+<p class="continued">
 /ERROR, in particular, is assigned to bit 7 so that a simple RLA will enable the
 Carry flag to show its status.
 </p>
-<p>
-Hope this is helpful.....-.
+<p class="noindent">
+Hope this is helpful......
 </p>
-<p>
+<p class="noindent">
 Mike York, London.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

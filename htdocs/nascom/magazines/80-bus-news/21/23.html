@@ -1,70 +1,41 @@
-<?php columnStart(1); ?>
-<p>
-23
-</p>
+<?php columnStart(1, "noindent"); ?>
 <p>
 If no errors occur, SIMON transfers program control to 00002H, in the COLD Boot.
 The first instruction is a LD HL, ADDR where ADDR is the start address of the CCP
-&ndash; DS00H in the case under discussion. The BOOT now reads in more sectors from the
+&ndash; D800H in the case under discussion. The BOOT now reads in more sectors from the
 disk, loading the data direct to D800H and so on, until the system is all loaded.
-Near the end of the BOOT isa JP ADDR1 instruction, where ADDR1 is the cold start
-address of the CBIOS. (OEREOOH in this case).
+Near the end of the BOOT is a JP ADDR1 instruction, where ADDR1 is the cold start
+address of the CBIOS. (0EE00H in this case).
 </p>
 <p>
 (N.B. ADDR and ADDR1 are both relocation addresses, altered by MOVCPM, and they
 will vary with system size.)
 </p>
-<p>
-in at sk te i ee i i KEEREEEEE
-</p>
-<p>
+<p class="noindent" style="text-align: center">-------------*****-------------</p>
+<h3>
 The System Track on the Disk.
-</p>
-<p>
-ee tS NS SS Sm Sm
-</p>
-<p>
-Ke ee ee 20 x 512 bytes = 10K bytes total--------------.-.. &gt;
-</p>
-<p>
-Sec.No=0 1 2 3 4 5 6 7 8 9 1011 121314 15 1617 18 19
-[--] [--1--1--1--] [--1--1--1--1--1--1--] [--1--1--1--1--1--1--1--]
-</p>
-<p>
-sector 0 = .5K 1 1 1
-including 1 1 L
-Cold Boot Loader i i 1
-1 1 1
-</p>
-<p>
-Sectors 1 &ndash; 4 Sectors 5 &ndash; 11 Sectors 12 &ndash; 19
-</p>
-<p>
-= 2K CP/M CCP = 4.5K BDOS Space for CBIOS
-</p>
-<p>
-(4K Maximum )
-</p>
-<p>
-Figure 2. System Track Layout
-</p>
+</h3>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-23-1.png"); ?>
+<h4>
+<u>Figure 2. System Track Layout</u>
+</h4>
 <p>
 Fig.2 shows diagramatically how CP/M relates to the Disk. The GEMINI DS/DD system
-uses Tracks of 10 sectors on each side of the disk. The tracks of side O and side
+uses Tracks of 10 sectors on each side of the disk. The tracks of side 0 and side
 1 combine to make up one 20 sector track. Fach sector holds 512 bytes (.5K) of
 data so the total capacity of one track is 10K bytes. There are 35 tracks,
 numbered from 0 to 34, so disk capacity is 350K. Track 0 is reserved for the CP/M
 system, and eight sectors (4K) of track 1 are reserved for the Directory. This
 leaves 336K for user programs. Fig. 2 shows that sector 0 of the system track
 holds the COLD BOOT LOADER. The CCP is in sectors 1-4, and the BDOS in sectors
-5-11. This leaves a maximum of &reg; sectors for the CBIOS. (4K)
+5-11. This leaves a maximum of 8 sectors for the CBIOS. (4K)
 </p>
 <p>
-A look at the RAM MAP in Fig. 3 shows that CBIOS space is available from OREOOH
-to OFFFFH, equal to 4.5K. When I assemble SYS the final size is around 4.5%
-including workspaces and buffers (and also includes neariy 400 bytes for code
+A look at the RAM MAP in Fig. 3 shows that CBIOS space is available from 0EE00H
+to 0FFFFH, equal to 4.5K. When I assemble SYS the final size is around 4.5K
+including workspaces and buffers (and also includes nearly 400 bytes for code
 expansion). There is enough of room in RAM for SYS CBIOS but there is a shortfall
-of&nbsp;.5K on the disk.
+of .5K on the disk.
 </p>
 <p>
 The clue to the solution of this problem lies in the paragraph above. There is no
@@ -72,7 +43,7 @@ real need to hold Buffer space on the Disk as it is only used when the system is
 running in RAM. There are 512 bytes for a sector byffer and 128 bytes for a
 directory buffer located near the start of the Disk Routines in the SYS Source
 code. If the System track is examined with a PEEK program, these Buffers appear
-as large blocks of OO characters within the BIOS sectors. I moved these two
+as large blocks of 00 characters within the BIOS sectors. I moved these two
 Buffers by deleting their definition statements at the old position in the &lsquo;SYS&rsquo;
 source code, and re-entering them after the CBIOS Workspace at the end of the
 Source Code. To make the addresses come right it was also necessary to delete

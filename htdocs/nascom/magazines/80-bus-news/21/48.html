@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-48
-</p>
-<p>
 The SYS BIOS has supported a virtual disk for about a year and a half, using
 the original Nascom four 64K page system, but this was prohibitively expensive
 and was limited to a virtual disk size of about 128K. The introduction of the MAP
@@ -30,8 +27,8 @@ pressed Reset. This proved easy, as I simply put in a check to see if it was
 already initialised, and if it was then the initialisation was skipped.
 </p>
 <p>
-Text I thought about how the speed of executing Submit files could be
-speeded up, since they are so amazingly slow. If the $$8.SUB file was written to
+Next I thought about how the speed of executing Submit files could be
+speeded up, since they are so amazingly slow. If the $$$.SUB file was written to
 the virtual disk instead of to a real disk, then the Submit overhead time ought
 to vanish. This needed several changes, because the virtual disk would have to be
 drive A, as I don&rsquo;t believe in modifying the BDOS. At the same time I didn&rsquo;t like
@@ -49,13 +46,13 @@ it, so I had to log in to drive P! The solution to this problem was to make driv
 P the default logged in drive, so that on cold boot or after a drive select
 error, the system would come up with the prompt &ldquo;P&gt;&rdquo;. A strange sight. Now I
 really thought that I had solved the problem. But when I tried SUBMIT it didn&rsquo;t
-work! Of course the reason was that SUBMIT writes the S$$$.SUB file to the logged
-in drive, and only executes $$$.SUB if it is on drive A. Now I could see that T
+work! Of course the reason was that SUBMIT writes the $$$.SUB file to the logged
+in drive, and only executes $$$.SUB if it is on drive A. Now I could see that I
 was getting near to the answer. I had the source code of the excellent program
 EXSUB, which I had debugged earlier, and it is designed to be easily modified to
 force the writing of $$$.SUB to drive A regardless of the logged in drive.
 Success at last &ndash; using SUB was now a pleasure, and the EXSUB facility of being
-able to submit several commands without using a text editor to create a&nbsp;.SUB file
+able to submit several commands without using a text editor to create a .SUB file
 became more useful.
 </p>
 <p>
@@ -65,7 +62,7 @@ available from the CP/M Users Group. This CCP implements a very clever search fo
 programs which you try to execute. For example if you are logged in to drive P,
 as user 4, and you try to execute a program, first it looks on drive P user 4. If
 this fails it looks on drive P user 0. If this fails then it looks on drive A
-user Q. And of course this is now the virtual disk. So if you put programs on the
+user 0. And of course this is now the virtual disk. So if you put programs on the
 virtual disk then they will always run even if you type in the command while
 logged in to another drive. CCPZ has lots of advantages, including making the
 User number feature work sensibly, which is very useful particularly if you have

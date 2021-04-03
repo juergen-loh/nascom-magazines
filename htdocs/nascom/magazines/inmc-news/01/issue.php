@@ -3,5 +3,5 @@
 	$offset = 1;
 	$first = 0;
 	$last = 9;
-	$desc = "Early 1979, Issue 1";
+	$desc = "Winter 1978, Issue 1";
 ?>

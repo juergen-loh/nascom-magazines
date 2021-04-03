@@ -1,14 +1,11 @@
 <?php columnStart(1); ?>
-<p>
-8
-</p>
-<p>
+<p class="continued">
 interrupt, the Z80 CPU automatically disables interrupts, that is, it won&rsquo;t
 accept any more until it is told to. This has the advantage that you can control
 where your routines are interrupted. Say for example, that you had a disk unit,
 which was driven under interrupt control. Every time it needs data, it interrupts
 for it. Some disk units read data every 25uS, and if the data is not accepted in
-time by the CPU they report an error. In addition&rsquo; to this disk, suppose you have
+time by the CPU they report an error. In addition to this disk, suppose you have
 a RTC which ticks every 1/10 sec. Each tick is signalled by an interrupt, and the
 CPU writes the time to the corner of the screen.
 </p>
@@ -24,7 +21,7 @@ is finished. Fair enough &ndash; a read is so quick that it won&rsquo;t matter i
 on the screen is not updated for a few 1/10s of secs. There is another way to
 deal with the problem &ndash; interrupt priority. This assigns to each device a certain
 priority, and only devices of higher priority than the device under service can
-interrupt. We&rsquo;ll come to this in a moment or two. The 8080 interrupt response CIM
+interrupt. We&rsquo;ll come to this in a moment or two. The 8080 interrupt response (IM
 0) is automatically invoked after a reset, with interrupts disabled. This mode
 allows (using the restarts) eight different interrupt handling routines. It is
 possible to make a number of devices share common handing routines, or for the
@@ -34,18 +31,18 @@ overhead. In S100 systems, which were originally 8080 based, interrupt response
 was often obtained by using unintelligent devices. When the peripheral response
 was required, they did nothing. Using open collector bus drivers, the effect of
 the pull up resistors was to make the bus read as high, so the CPU thought that
-there was a byte OFFH on the bus. This meant that RST 38H was most frequently
-used. This provoked Zilog into providing Interrupt Mode ij.
+there was a byte 0FFH on the bus. This meant that RST 38H was most frequently
+used. This provoked Zilog into providing Interrupt Mode 1.
 </p>
 <p>
-IM 1 is similar to the NMI response. On interrupt, the CPU executes a4
+IM 1 is similar to the NMI response. On interrupt, the CPU executes a
 call to location 0038H. This allows only one interrupt handling routine, but has
 the advantage of hardware simplicity. In a controller, there could be two
 interrupts, the more important one on the NMI line, and the lesser on IM1. The
 lesser interrupt could be disabled by the program at will, and by the NMI
-routine. The NMI routine would alwavs take priority. In IM1, the peripheral
+routine. The NMI routine would always take priority. In IM1, the peripheral
 device need not place any byte on the bus. Use of that mode will automatically
-get you to location O38H on interrupt.
+get you to location 038H on interrupt.
 </p>
 <p>
 The last interrupt mode of the Z80 is IM2. This is at once the most

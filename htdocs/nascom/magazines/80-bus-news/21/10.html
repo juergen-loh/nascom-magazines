@@ -1,13 +1,8 @@
 <?php columnStart(1); ?>
-<p>
-10
-</p>
-<p>
+<p class="continued">
 modification involving one gate, detailed in INMC no 2. This mod. has been
 implemented on Nascom&nbsp;2, Gemini GM811 and 813, and both the Nascom and Gemini I/O
 boards. When in a reset state, the PIO remains that way until instructed
-</p>
-<p>
 otherwise.
 </p>
 <p>
@@ -19,19 +14,19 @@ the address of the interrupt service table. The high byte is supplied by the I
 register of the CPU. Now, we select an operating mode. This is built up of two
 parts:
 </p>
+<pre class="indent">
+M1 M0 x x 1 1 1 1
+</pre>
 <p>
-Mi MOxxt111
-</p>
-<p>
-The 1111 indicates that this is the mode word. The M1 MO values differ according
+The 1111 indicates that this is the mode word. The M1 M0 values differ according
 to the Mode, and the x x are don&rsquo;t care values. The mode is easy:
 </p>
-<p>
-Output = O } in binary 0 0 Modeword O = 0FH
-Input = 1 in binary 0 1 Modeword 1 = 4FH
-Bidir = 2 in binary 1 0 Modeword 2 = 8PFH
-Bit = 3 { in binary 11 } Modeword 3 = OCFH
-</p>
+<table class="indent">
+<tr><td>Output</td><td>= 0</td><td>{ in binary 0 0 }</td><td style="width: 2em"></td><td>Modeword 0 = 0FH</td></tr>
+<tr><td>Input </td><td>= 1</td><td>{ in binary 0 1 }</td><td                   ></td><td>Modeword 1 = 4FH</td></tr>
+<tr><td>Bidir </td><td>= 2</td><td>{ in binary 1 0 }</td><td                   ></td><td>Modeword 2 = 8FH</td></tr>
+<tr><td>Bit   </td><td>= 3</td><td>{ in binary 1 1 }</td><td                   ></td><td>Modeword 3 = 0CFH</td></tr>
+</table>
 <p>
 When Mode 0 is selected, the data byte written to the port is enabled onto the
 output lines, and the Ready handshake line goes high to let the peripheral know
@@ -42,7 +37,7 @@ indicate that the next byte of output data is required.
 <p>
 Mode 1 is the Input mode. To start the handshake operation, the CPU has to
 perform a Read from the PIO. This empties the Input buffer, and sets the Ready
-line to let the peripheral know that the CPU is listening out for it. &lsquo;The
+line to let the peripheral know that the CPU is listening out for it. The
 peripheral loads the data onto the input register, and strobes the handshake
 line. This causes an interrupt, if enabled, and turns off the Ready signal. Note
 that if your peripheral is smart enough, the Ready line can be ignored, provided
@@ -51,17 +46,17 @@ that you are careful not to load data too quickly.
 <p>
 Mode 2 is the bidirectional mode. This uses all four handshake lines, so that it
 is only possible on Port A. Port A handshake lines are used for Output control
-and Port B for input control.There is a difference from Mode 0. In Mode 0, the
+and Port B for input control.<?php spChar("zwsp"); ?>There is a difference from Mode 0. In Mode 0, the
 data is on the Port output lines, and the Ready line (A RDY) is high. In Mode 2,
 A RDY goes high, but doesn&rsquo;t put the data on the lines until the strobe line goes
 active.
 </p>
 <p>
 Mode 3 is the mode we use most often. It uses no handshake signals, and hence can
-be of use to control a number of wrelated events, such as switching sections of
+be of use to control a number of unrelated events, such as switching sections of
 a machine on and off, and reading status of input lines. When we have selected
 Mode 3, we must then send a control word to the Control Port to signal which
-lines are input and which output. This is easy to remember, as is are In and Os
+lines are input and which output. This is easy to remember, as 1s are In and 0s
 are Out. During mode 3 operation, data can be read from or written to the port at
 any stage, with restrictions only when Port A is in mode 2 and Port Bin mode 3.
 When reading a mode 3 port, the data returned is the values of the lines defined
@@ -71,7 +66,7 @@ as inputs plus the values currently being output on the output lines.
 To enable the interrupts, we must write an Interrupt Control Word to each
 port. This has the following format:
 </p>
-<p>
-EI &amp;/. H/LMO1 11
-</p>
+<pre class="indent">
+EI &amp;/. H/L M 0 1 1 1
+</pre>
 <?php columnEnd(1); ?>
