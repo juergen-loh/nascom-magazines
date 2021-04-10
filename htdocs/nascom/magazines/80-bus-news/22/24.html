@@ -1,36 +1,34 @@
-<?php columnStart(1); ?>
-<p>
-NAS-GRAPHPAC SYSTEM MANUAL Page 2
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>NAS-GRAPHPAC SYSTEM MANUAL</th><th>Page 2</th></tr></table>
+<p class="continued">
 The Graphpac workspace will be located just below the relocated package at
 6F00 hex.
 </p>
 <p>
 If it is intended to run Nas-Graphpac in ROM it will be necessary to
-locate the Graphpac workspace in the low memory area ODOO &ndash; 1000 hex. This can
+locate the Graphpac workspace in the low memory area 0D00 &ndash; 1000 hex. This can
 be achieved by entering the following command line.
 </p>
+<pre style="text-align: center">
+E 1000 aaaa L (enter)
+</pre>
 <p>
-E 1000 aasa L (enter)
-</p>
-<p>
-where asaa is the address at which the program will run and where L is
+where aaaa is the address at which the program will run and where L is
 the letter D,E or F to indicate which 100 hex bytes in the low memory area
-is to be used. D equates to ODOO hex etc. This decision will depend on what
-other software is running on the syaten.
+is to be used. D equates to 0D00 hex etc. This decision will depend on what
+other software is running on the system.
 </p>
 <p>
 The relocation process in both cases is straight forward and when
 complete the user will be prompted to make a tape copy of the generated
-version at its execution sddress (a copy is placed at 4000 hex. if RAM is not
+version at its execution address (a copy is placed at 4000 hex. if RAM is not
 available at the target address). Once this tape is made the original
 Nas-Graphpac tape will not be needed unless a new version is required at a
 different address, and should be kept in a safe place as a master backup tape.
 </p>
-<p>
-WARNTNG.... .
-</p>
+<h4>
+WARNING.....
+</h4>
 <p>
 It is essential that you do not ask the relocator to configure
 Nas-Graphpac so that it crosses the 32K address boundary. If you have a 16k
@@ -39,22 +37,22 @@ have a Nascom equipped with 32K or more, never ask the relocator to address
 Graphpac between 7801 hex and 7FFF hex. as it is probable that the package
 will not work correctly.
 </p>
-<p>
+<h3>
 EXECUTING NAS-GRAPHPAC (COLD START)
-</p>
+</h3>
 <p>
-It is important that if CGsort&rsquo;s Nas-Debug is active on the system, it
+It is important that if CCsoft&rsquo;s Nas-Debug is active on the system, it
 should be disabled by pressing RESET or executing Nas-sys at address zero or
 by using the Nas-sys N command before Nas-Graphpac is used.
 </p>
 <p>
 Your generated Nas-Graphpac must first be loaded using the Nas-sys
-READ command. Execute WNas-Graphpac at the first address that was displayed
+READ command. Execute Nas-Graphpac at the first address that was displayed
 during the READ process, i.e.
 </p>
-<p>
-B 7000 (enter)
-</p>
+<pre style="text-align: center">
+E 7000 (enter)
+</pre>
 <p>
 where Graphpac was relocated originally at 7000 hex.
 </p>
@@ -66,44 +64,41 @@ resides in ROM, the MEMORY SIZE message will be printed and the
 normal BASIC cold start procedure is used.
 </p>
 <p>
-If it is wished to set the MEMORY SIZE Manually this can be achieved
+If it is wished to set the MEMORY SIZE manually this can be achieved
 by entering a second argument on execution.
 </p>
-<p>
-&amp; 7000 SYFF (enter)
-</p>
+<pre style="text-align: center">
+E 7000 5FFF (enter)
+</pre>
 <p>
 Graphpac will be executed at address 7000 hex and the MEMORY SIZE will
-be set at SFFF hex. This will be confirmed on entry to BASIC as the free
+be set at 5FFF hex. This will be confirmed on entry to BASIC as the free
 memory size will be printed in decimal. If the second argument entered is
-invalid, the MEMORY SIZE message will de displayed and the user will be
-prompted to enter the correct value (in decimal). DO NoT just press the enter
+invalid, the MEMORY SIZE message will be displayed and the user will be
+prompted to enter the correct value (in decimal). DO NOT just press the enter
 key without entering a decimal value if this point is reached, unless
 Nas-Graphpac resides in ROM.
 </p>
-<p>
+<h3>
 EXECUTING NAS-GRAPHPAC (warm start)
-</p>
+</h3>
 <p>
 If the user has returned to Nas-sys, Nas-Graphpac and BASIC may be
 re-entered by executing Nas-Graphpac at it&rsquo;s normal execution address. (The
 same as cold start.)
 </p>
-<p>
-EB 7000 (enter)
-</p>
+<pre style="text-align: center">
+E 7000 (enter)
+</pre>
 <p>
 A second argument should not be entered unless the user is aware of
-</p>
-<p>
 the consequences as explained in appendix 2.
 </p>
-<p>
-NAS-GRAPHPAC SYSTEM MANUAL Page 3
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>NAS-GRAPHPAC SYSTEM MANUAL</th><th>Page 3</th></tr></table>
+<h3>
 ENTERING NAS-GRAPHPAC COMMANDS
-</p>
+</h3>
 <p>
 Nas-Graphpac commands can be entered in the DIRECT MODE or as part of
 a statement line. If the command is to be entered while in the DIRECT MODE, it
@@ -117,29 +112,29 @@ BASIC variable and array names should not match Nas-Graphpac command
 names. (although this is usually acceptable if a LET is not implied and the
 word LET is used in a statement line.)
 </p>
-<p>
+<h3>
 BASIC PROGRAM EXECUTION TIME
-</p>
+</h3>
 <p>
 Every care has been taken to ensure the graphic routines execute as
 fast as possible and speed problems should not be encountered while actually
-producing graphic displays, however, there ig a time overhead caused by
+producing graphic displays, however, there is a time overhead caused by
 searching the Graphpac command table, before deciding whether Graphpac or
 BASIC is to take control. In long program loops that do not include
 Nas-Graphpac commands (i.e. setting up a large array) it may be worth while
 disabling Graphpac temporarily. This is achieved by the following line which
 POKE&rsquo;s the N.M.I. flag in BASIC&rsquo;s workspace.
 </p>
-<p>
-POKE 41&rsquo;73,0
-</p>
+<pre style="text-align: center">
+POKE 4173,0
+</pre>
 <p>
 Before a Nas-Graphpac command is executed, the N.M.I. flag must again
-</p>
-<p>
 be modified with the following line
-POKE 4175,1
 </p>
+<pre style="text-align: center">
+POKE 4173,1
+</pre>
 <p>
 This facility should only be used in a program where the execution
 speed is critical. An INPUT statement, keyboard interrupt or a return to the
@@ -152,18 +147,18 @@ so much so, that if this process is repeated in a FOR NEXT loop the line may
 appear to be plotted in slow motion due to the blanking effect. The following
 program illustrates the problem (on a 4 Mhz Nascom&nbsp;2).
 </p>
-<p>
-10 CLS : STARTAT 48,23 ; PENFLIP
+<pre class="indent2">
+10 CLS : STARTAT 48,23 : PENFLIP
 20 FOR A=1 TO 400
-30 DRAW 8,8 : PR: NEXT
-</p>
+30 DRAW 8,8 : PR : NEXT
+</pre>
 <p>
 Insert extra colons before the PENRET command to vary the timing and
 observe the results.
 </p>
-<p>
+<h3>
 PLOTTING ON THE SCREEN
-</p>
+</h3>
 <p>
 Graphic co-ordinates have been changed slightly while using Nas-Graphpac.
 &ldquo;Y&rdquo; co-ordinates 45, 46 and 47 no longer appear on the top
@@ -183,10 +178,4 @@ appear on the screen. Arguments given to Nas-Graphpac commands must not exceed
 The location which has to be PEEKed after a PTEST command is executed
 can be found the the ROM BASIC workspace at 4177 decimal (1051 hex).
 </p>
-<p>
-\
-</p>
-<p>
-24
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

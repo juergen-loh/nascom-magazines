@@ -1,73 +1,81 @@
-<?php columnStart(1); ?>
-<p>
-GRAPHPAC COMMAND MANUAL Page 5
-</p>
-<p>
-PENERA
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 5</th></tr></table>
+<h3>
+<span>PENERA</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PENERA or PE
 </p>
-<p>
-Purpose: &lsquo;
-</p>
-<p>
+<h5 class="purpose">
+Purpose:
+</h5>
+<p class="purpose">
 All following DRAW, DRAWTO, DOCAP and PLOT commands will cause any
 pixels the CAP passes through to be erased.
 </p>
-<p>
-PENRET
-</p>
-<p>
+<h3>
+<span>PENRET</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PENRET or PR
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 This allows the CAP to return to the co-ordinates that existed before
 the last DRAW, DRAWTO or PLOT commands.
 </p>
-<p>
-DRAWTO
-</p>
-<p>
+<h3>
+<span>DRAWTO</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 DRAWTO X,Y
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To draw, erase or invert a line based on co-ordinates specified in
 rectangular notation.
 </p>
-<p>
-Remarka:
-</p>
-<p>
+<h5 class="remarks">
+Remarks:
+</h5>
+<p class="remarks">
 The CAP co-ordinates are changed to those specified by X,Y and a line
 may be drawn, erased or inverted (depending on the current PEN mode) to these
 co-ordinates from the previous CAP. The previous CAP co-ordinates are saved in
 case of a following PENRET command.
 </p>
-<p>
-DRAW
-</p>
-<p>
+<h3>
+<span>DRAW</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 DRAW X,Y
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To draw, erase or invert a line based on relative co-ordinates.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 The DRAW command has a similar syntax to the DRAWTO command however
 the X,Y values supplied are added to the current CAP co-ordinates to produce a
 new CAP. Draw is useful if an object or shape has to be produced several times
@@ -75,28 +83,29 @@ but at different screen co-ordinates. The shape is specified by a subroutine
 using the DRAW command and whenever the routine is called, the shape will be
 produced relative to the current CAP.
 </p>
-<p>
-RATIO
-</p>
-<p>
+<h3>
+<span>RATIO</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 RATIO N
 </p>
-<p>
-GRAPHPAC COMMAND MANUAL Page 6
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 6</th></tr></table>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
-fo adjust for the height to width ratio of the acreen when using PLOT
+</h5>
+<p class="purpose">
+To adjust for the height to width ratio of the screen when using PLOT
 or CIRCLE. The argument passed with the RATIO command will be used to modify
-the YY axis co-ordinates.
+the Y axis co-ordinates.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 Normally the display on the screen is taller than it is wide and a
 circle plotted on the screen would appear oval with the sharp ends in the
 vertical plane. RATIO allows the user to introduce a correction factor
@@ -109,26 +118,28 @@ maximum correction to take place and in fact a circle will appear as a single
 horizontal line on the screen. The optimum value is somewhere between the two
 and should be decided by the user for his particular hardware configuration.
 </p>
-<p>
-PLOT
-</p>
-<p>
+<h3>
+<span>PLOT</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PLOT A,D
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To draw, erase or invert a line based on co-ordinates given in polar
-notation,
+notation.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="reamrks">
 The new CAP co-ordinates are calculated, based on a specified angle
-&ldquo;A&rdquo; and distance &ldquo;D&rdquo;. &ldquo;AY is an angle between 0 and 359 degrees, which is
+&ldquo;A&rdquo; and distance &ldquo;D&rdquo;. &ldquo;A&rdquo; is an angle between 0 and 359 degrees, which is
 calculated clockwise, zero degrees being towards the top of the screen. This
 value can be exceeded as a wrap around effect takes place, 360 degrees being
 the same as 0 degrees, 450 degrees being the same as 90 degrees etc. &ldquo;D&rdquo; is a
@@ -141,28 +152,30 @@ however as the angle nears the vertical (0 or 180 degrees) the modification
 will be at it&rsquo;s greatest. The old CAP co-ordinates are saved in case of a
 following PENRET command.
 </p>
-<p>
-CIRCLE
-</p>
-<p>
+<h3>
+<span>CIRCLE</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 CIRCLE R,A1,A2
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To draw a circle or are on the screen.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 A circle or arc is drawn the centre of which is the CAP and radius is
-R. Al and A2 must be positive values with A2 greater than A&lsquo;. An are will be
-drawn from angle 1 (A!) to angle 2 (A2) in a clockwise direction. If angle 1
+R. Al and A2 must be positive values with A2 greater than A1. An arc will be
+drawn from angle 1 (A1) to angle 2 (A2) in a clockwise direction. If angle 1
 is zero and angle 2 is 360 a circle will be drawn. The maximum radius is 511
-</p>
-<p>
-and if this is exceeded the radius will be MOD $12 as for the distance in the
+and if this is exceeded the radius will be MOD 512 as for the distance in the
 PLOT command.
 </p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

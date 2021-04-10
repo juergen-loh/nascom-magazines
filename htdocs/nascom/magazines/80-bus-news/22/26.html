@@ -1,13 +1,11 @@
-<?php columnStart(1); ?>
-<p>
-NAS-GRAPHPAC SYSTEM MANUAL Page 8
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>NAS-GRAPHPAC SYSTEM MANUAL</th><th>Page 6</th></tr></table>
+<h3 style="text-align: center">
 APPENDIX 2
-</p>
-<p>
-USING THE PARKINSON TOOLKIT WITH NWAS-GRAPHPAC
-</p>
+</h3>
+<h4>
+USING THE PARKINSON TOOLKIT WITH NAS-GRAPHPAC
+</h4>
 <p>
 There are several different BASIC toolkits available for the Nascom
 from various sources, none of them official Nascom software products. One of
@@ -26,14 +24,12 @@ First Load Nas-Graphpac at it&rsquo;s execution address (if not in ROM).
 <p>
 Load the toolkit at 1200 hex and execute. The second argument must be
 used to limit the amount of memory used by BASIC to ensure that Nas-Graphpac
-</p>
-<p>
 is not over-written. If Nas-Graphpac was loaded at 9000 hex use the following
 line.
 </p>
-<p>
-E 1200 SEFF (enter)
-</p>
+<pre style="text-align: center">
+E 1200 8EFF (enter)
+</pre>
 <p>
 This leaves Nas-Graphpac and the workspace situated in the memory
 below it untouched. BASIC will now be initialised and entered. Use the MONITOR
@@ -43,12 +39,12 @@ command to restore control to Nas-sys.
 Execute Nas-Graphpac at it&rsquo;s normal execution address + 3. In the
 example above this would be 9003 hex. The second argument must specify the
 address to jump to after Nas-Graphpac has been initialised, in this case, the
-Toolkit. The line would therefore read aa follows, the Toolkit warm start
+Toolkit. The line would therefore read as follows, the Toolkit warm start
 being 2 below the maximum address of the toolkit program.
 </p>
-<p>
-E 9003 SEFD (enter)
-</p>
+<pre style="text-align: center">
+E 9003 8EFD (enter)
+</pre>
 <p>
 All Nas-Graphpac and Toolkit commands can now be used.
 </p>
@@ -58,15 +54,14 @@ reserved words are. For this reason Parkinson&rsquo;s Toolkit (or indeed any
 other) cannot recognise Nas-Graphpac command words, these will appear as two
 letter variable names while using the cross reference facility.
 </p>
-<p>
-NAS-GRAPHPAC SYSTEM MANUAL Page 7
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>NAS-GRAPHPAC SYSTEM MANUAL</th><th>Page 7</th></tr></table>
+<h3 style="text-align: center">
 APPENDIX 3
-</p>
-<p>
+</h3>
+<h4>
 USING THE USR FUNCTION TO OPERATE NAS-GRAPHPAC.
-</p>
+</h4>
 <p>
 If for any reason Nas-Graphpac does not run correctly on your system
 due to, for example, software associated with your discs or high speed tape
@@ -84,25 +79,15 @@ be described by the use of a short BASIC program.
 Lets assume that Nas-Graphpac has been loaded at 9000 hex. and that
 BASIC has already been entered.
 </p>
-<p>
+<pre class="indent2">
 10 DOKE 4100, -28666
-</p>
-<p>
 20 CLS
-</p>
-<p>
-30 C=USR(O): STARTAT 48,23: PENFLIP
+30 C=USR(0): STARTAT 48,23: PENFLIP
 40 FOR A= 0 TO 359
-</p>
-<p>
 50 C=USR (0): PLOT A,18: PENRET
-</p>
-<p>
 60 NEXT A: GOTO 40
-</p>
-<p>
 70 END
-</p>
+</pre>
 <p>
 Line 10 sets up the address that the USR will jump to. In our case as
 Nas-Graphpac was relocated for 9000 hex the address to use was 9000 + 6, which
@@ -110,17 +95,14 @@ equates to &ndash;28666 decimal.
 </p>
 <p>
 Now every time that a USR function is now reached Nas-Graphpac is
-enterec. C is a dummy variable but any variable name may be used.
+entered. C is a dummy variable but any variable name may be used.
 </p>
 <p>
 The whole of the remaining line MUST contain only valid Nas-Graphpac
 commands or a syntax error will occur. Normal BASIC statements cannot be mixed
 with Nas-Graphpac commands. Any number of Nas-Graphpac commands may be
 included in a line following a USR provided they are separated by a colon.
-Nas-Graphpac commands can be used in the direct mode but C=USR(O) must still
+Nas-Graphpac commands can be used in the direct mode but C=USR(0) must still
 be typed, which makes the facility almost useless.
 </p>
-<p>
-26
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

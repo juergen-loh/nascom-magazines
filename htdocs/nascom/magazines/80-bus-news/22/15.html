@@ -1,188 +1,67 @@
 <?php columnStart(1); ?>
-<p>
-default USER area on the final default drive using the
-hierarchical
-drive B:, USER 2, and PEN was stored
-sequence would
-search failed, then on to the default (or
-</p>
-<p>
-this
-</p>
-<p>
-15
-</p>
-<p>
-DFU command). Further,
-extends through the CP/M USER areas. Suppose I was on
-on drive A:, USER 0; then the search
-default (or specified) drive and USER, if the
-specified) drive, USER 0, if that
-</p>
-<p>
-search
-</p>
-<p>
-start with the
-</p>
-<p>
+<p class="continued">
+default USER area on the final default drive using the DFU command). Further,
+this hierarchical search extends through the CP/M USER areas. Suppose I was on
+drive B:, USER 2, and PEN was stored on drive A:, USER 0; then the search
+sequence would start with the default (or specified) drive and USER, if the
+search failed, then on to the default (or specified) drive, USER 0, if that
 failed then on to the final CCPZ default, USER 0. Only then, if the search failed
 would any error message be displayed. Note also that the hierarchical search does
-</p>
-<p>
-not take
-</p>
-<p>
-Having found PEN, the whole
-for S80BUS6-2.PEN
-looking for then PEN says so. So the important thing to note is
-</p>
-<p>
-searches
-</p>
-<p>
-does the
-</p>
-<p>
-command extension, in this instance the 80BUS6-2.PEN.
-lot resets to the original conditions. So PEN
-on the original default. If PEN can&rsquo;t find what it&rsquo;s
-that CCPZ only
-hierarchical bit when searching for the command file, what follows is
-</p>
-<p>
-place on the
-</p>
-<p>
+not take place on the command extension, in this instance the 80BUS6-2.PEN.
+Having found PEN, the whole lot resets to the original conditions. So PEN
+searches for 80BUS6-2.PEN on the original default. If PEN can&rsquo;t find what it&rsquo;s
+looking for then PEN says so. So the important thing to note is that CCPZ only
+does the hierarchical bit when searching for the command file, what follows is
 not the business of CCPZ, it&rsquo;s up to the command file to decide where it gets the
 command extension from.
 </p>
 <p>
 Another nice little tweek is the prompt itself, when you change USER
-</p>
-<p>
-area,
-</p>
-<p>
-the
-</p>
-<p>
-new area number is displayed in the prompt. So that you can see at a
-</p>
-<p>
+area, the new area number is displayed in the prompt. So that you can see at a
 glance that:
 </p>
-<p>
-Bi2&gt;
-you are
-</p>
-<p>
-mind, the ERA command, when you erase a file(s) the ERA command displays what
-</p>
-<p>
-on default drive B: USER area 12. Nice isn&rsquo;t it. Yet another comes to
-</p>
-<p>
-it
-</p>
-<p>
+<pre>
+B12&gt;
+</pre>
+<p class="continued">
+you are on default drive B: USER area 12. Nice isn&rsquo;t it. Yet another comes to
+mind, the ERA command, when you erase a file(s) the ERA command displays what it
 has erased. (Even better if it stopped after displaying the list and asked you if
 you meant it, but it doesn&rsquo;t.) Well you at least know what you erased, and if you
-</p>
-<p>
-find
+find one you didn&rsquo;t mean, then a little utility I have called UNERA does, guess
 what?
 </p>
 <p>
-As to the commands, well all the original CP/M
-</p>
-<p>
-one you didn&rsquo;t mean, then a little utility I have called UNERA does, guess
-</p>
-<p>
-commands are there of
-</p>
-<p>
+As to the commands, well all the original CP/M commands are there of
 course, but some work differently:
 </p>
-<p>
-Command:
-Function:
-Forms:
-</p>
-<p>
-Note:
-</p>
-<p>
-Command:
-Function:
-Forms:
-Notes:
-</p>
-<p>
-Command:
-Function:
-Forms:
-Notes:
-</p>
-<p>
-Command:
-Function:
-Forms:
-</p>
-<p>
-Notes:
-</p>
-<p>
-DIR
-To display a listing of the names of the files on the disk.
-</p>
-<p>
-DIR &lt;afn&gt; , Displays $DIR files
-DIR &lt;afm&gt; S Displays $SYS files
-DIR &lt;afn&gt; A Displays both $DIR and $SYS files
-</p>
-<p>
-If the directory is scanned for a name and no such name exists on the
-disk the message &lsquo;No Files&rsquo; will be displayed. However, if the search
-was for $DIR files and the file existed as a $SYS file or vice versa,
-then no message will be displayed indicating that the file does exist
-but the file attribute is not as specified.
-</p>
-<p>
-BRA
-</p>
-<p>
-To erase the specified R/W file from the directory.
-</p>
-<p>
-ERA &lt;afn&gt; Erase both $DIR and $SYS files from disk.
-The name(s) of the file(s) erased is displayed as a cross check.
-</p>
-<p>
-LIST
-</p>
-<p>
-To print the specified file to the CP/M LST: device.
-</p>
-<p>
-LIST &lt;ufn&gt; Print the file (no paging).
-</p>
-<p>
-The file will be printed regardless of the $DIR or $SYS attribute.
-</p>
-<p>
-TYPE
-</p>
-<p>
-To print the specified file to the CP/M CON: device.
-</p>
-<p>
-TYPE &lt;ufm Type the file with the paging default.
-</p>
-<p>
-TYPE &lt;ufn&gt; P Type the file with the paging default negated.
-Any character will continue typing at the end of a page. &ldquo;C will
-terminate typing, &ldquo;P and &ldquo;S will work as usual.
-</p>
+<table>
+<tr><td>Command:</td><td colspan=2>DIR</td></tr>
+<tr><td>Function:</td><td colspan=2>To display a listing of the names of the files on the disk.</td></tr>
+<tr><td>Forms:</td><td>DIR &lt;afn&gt;</td><td>Displays $DIR files</td></tr>
+<tr><td>		</td><td>DIR &lt;afn&gt; S</td><td>Displays $SYS files</td></tr>
+<tr><td>		</td><td>DIR &lt;afn&gt; A</td><td>Displays both $DIR and $SYS files</td></tr>
+<tr><td>Note:</td><td colspan=2>If the directory is scanned for a name and no such name exists on the
+				disk the message &lsquo;No Files&rsquo; will be displayed. However, if the search
+				was for $DIR files and the file existed as a $SYS file or vice versa,
+				then no message will be displayed indicating that the file does exist
+				but the file attribute is not as specified.</td></tr>
+<tr><td colspan=3><br></td></tr>
+<tr><td>Command:</td><td colspan=2>ERA</td></tr>
+<tr><td>Function:</td><td colspan=2>To erase the specified R/W file from the directory.</td></tr>
+<tr><td>Forms:</td><td>ERA &lt;afn&gt;</td><td>Erase both $DIR and $SYS files from disk.</td></tr>
+<tr><td>Notes:</td><td colspan=2>The name(s) of the file(s) erased is displayed as a cross check.</td></tr>
+<tr><td colspan=3><br></td></tr>
+<tr><td>Command:</td><td colspan=2>LIST</td></tr>
+<tr><td>Function:</td><td colspan=2>To print the specified file to the CP/M LST: device.</td></tr>
+<tr><td>Forms:</td><td>LIST &lt;ufn&gt;</td><td>Print the file (no paging).</td></tr>
+<tr><td>Notes:</td><td colspan=2>The file will be printed regardless of the $DIR or $SYS attribute.</td></tr>
+<tr><td colspan=3><br></td></tr>
+<tr><td>Command:</td><td colspan=2>TYPE</td></tr>
+<tr><td>Function:</td><td colspan=2>To print the specified file to the CP/M CON: device.</td></tr>
+<tr><td>Forms:</td><td>TYPE &lt;ufn&gt;</td><td>Type the file with the paging default.</td></tr>
+<tr><td>		</td><td>TYPE &lt;ufn&gt; P</td><td>Type the file with the paging default negated.</td></tr>
+<tr><td>Notes:</td><td colspan=2>Any character will continue typing at the end of a page. &ldquo;C will
+		terminate typing, &ldquo;P and &ldquo;S will work as usual.</td></tr>
+</table>
 <?php columnEnd(1); ?>

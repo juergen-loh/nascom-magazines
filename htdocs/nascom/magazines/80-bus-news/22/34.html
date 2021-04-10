@@ -1,173 +1,179 @@
-<?php columnStart(1); ?>
-<p>
-GRAPHPAC COMMAND MANUAL Page 11
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 11</th></tr></table>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To re-activate the graphics format screen.
 </p>
-<p>
-LOWRES
-</p>
-<p>
+<h3>
+<span>LOWRES</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 LOWRES
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To select the low resolution graphics mode for all subsequent graphics
 plotting.
 </p>
-<p>
-HIRES
-</p>
-<p>
+<h3>
+<span>HIRES</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 HIRES
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
+To select the high resolution graphics mode for all subsequent
+graphics plotting.
 </p>
-<p>
-To select the high resolution graphics
-</p>
-<p>
-mode for all sub
-graphics plotting. ubsequent
-</p>
-<p>
+<h2>
 Line clipping and error trapping.
-</p>
+</h2>
 <p>
 On systems where it has been possible to implement a wrap around
 affect, the commands WRAP and CLIP have been included (to enable the wrap
 around affect or clip lines at the edge of the screen respectively). As an
 alternative where this has not been possible the commands, FCON and FCOFF have
+been implemented so that the user has the choice of error trapping if
+required.
 </p>
-<p>
-been implemented so that the user has the choice of
-vequired of error trapping if
-</p>
-<p>
-WRAP
-</p>
-<p>
+<h3>
+<span>WRAP</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 WRAP
 </p>
-<p>
-Purpose: ;
+<h5 class="purpose">
+Purpose:
+</h5>
+<p class="purpose">
+To cause subsequent line plotting that leaves the edge of the screen
+to wrap around and re-enter the screen on the opposite side.
 </p>
-<p>
-To cause subsequent line plotting that leaves the edge of the
-screen
-to wrap around and re-enter the screen on the opposite side. 8
-</p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 This command together with CLIP are only implemented on systems where
 the screen resolution allows a wrap around effect to take place.
 </p>
-<p>
-CLIP
-</p>
-<p>
+<h3>
+<span>CLIP</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 CLIP
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To disable the wrap around feature of the graphics
 </p>
-<p>
-GRAPHPAC COMMAND MANUAL Page 12
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 12</th></tr></table>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 Lines that leave the screen in any direction are clipped and do not
 re-appear on the opposite side of the screen. Any graphic statement that
-attempts to act on an X,Y co-ordinate outside the. specified screen range will
+attempts to act on an X,Y co-ordinate outside the specified screen range will
 have no effect, however the CAP will still be updated. This command disables
 the wrap around effect caused by WRAP. It should be noted that CLIP only acts
-on PLOT,DRAW, DRAWTO and CIRCLE commands, normal pixel control using
+on PLOT,<?php spChar("zwsp"); ?>DRAW, DRAWTO and CIRCLE commands, normal pixel control using
 PSET,PRESET and PTEST will always act on the screen the wrap around feature
 always being operational.
 </p>
-<p>
-FCON
-</p>
-<p>
+<h3>
+<span>FCON</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 FCON
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To enable error trapping when a Graphpac command is asked to act on an
-X,Y co-ordinate that ig not on the screen.
+X,Y co-ordinate that is not on the screen.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
+</h5>
+<p class="remarks">
 After FCON has been executed any attempt to use X,Y co-ordinates that
-</p>
-<p>
 are not on the screen will cause an illegal function call error. FCON is
 active when the package is first executed.
 </p>
-<p>
-ECORF
-</p>
-<p>
+<h3>
+<span>FCOFF</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 FCOFF
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To disable error trapping when X,Y co-ordinates that are off the
 screen are used.
 </p>
-<p>
+<h5 class="remarks">
 Remarks;
-</p>
-<p>
+</h5>
+<p class="remarks">
 Graphpac commands which are called to act on X,Y co-ordinates that are
 off the screen may be executed. No physical change to the screen contents will
 occur however, the CAP will be updated where applicable.
 </p>
-<p>
-SPOKE (Screen POKE)
-</p>
-<p>
+<h3>
+<span>SPOKE</span> (Screen POKE)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 SPOKE A,V
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To POKE a location inside the video screen memory.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 Where the design of the hardware causes the video memory to be outside
 the normal Z80 64K memory map, SPOKE has been implemented. The normal BASIC
 POKE statement cannot reach the video RAM. SPOKE has been included to give
 this facility. The syntax is the same as the POKE statement. &ldquo;A&rdquo; represents a
 location in the video memory, the value represents an offset (in characters)
-from the start of the display. &ldquo;v&rdquo; ia the byte to be POKE&rsquo;d.
+from the start of the display. &ldquo;v&rdquo; is the byte to be POKE&rsquo;d.
 </p>
-<p>
-\
-</p>
-<p>
-\
-</p>
-<p>
-34
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

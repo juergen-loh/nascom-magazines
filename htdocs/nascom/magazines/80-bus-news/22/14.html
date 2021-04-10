@@ -1,12 +1,7 @@
 <?php columnStart(1); ?>
-<p>
-14
-</p>
-<p>
+<p class="continued">
 the Gemini GM817 PSU but without the RF shielded case). An ICL Keyedit monitor
 and a NEC PC-8023B-C printer all mounted in, on, or about the MFI desk complete
-</p>
-<p>
 the ensemble.
 </p>
 <p>
@@ -15,13 +10,11 @@ stuff) using the just available DISKPEN (GEMPEN) 3, running the radio logbook
 program (the subject of my discussion on data bases elsewhere in this issue), the
 development of stock control and financial programs using DBASE II for work, and
 the odd bit of assembler work as and when I have a bright idea and, of course,
-</p>
-<p>
 find the time.
 </p>
-<p>
-CCOPZ
-</p>
+<h4>
+CCPZ
+</h4>
 <p>
 Now on to CCPZ. It was designed by a whole group of bods from the US CP/M
 Users&rsquo; group and for a committee effort it&rsquo;s quite good. This is another overlay
@@ -36,7 +29,7 @@ of CP/M, and is where CP/M makes the decisions as to where it has to store or
 retrieve things from disk of differing sizes and formats. The BDOS has so far
 been left strictly alone. The CCP is where all commands from the various inputs
 are interpreted and the way in which CP/M acts on its own internal instructions,
-DIR, ERA, etc. The CCP is what is of interest when investigating CCP2.
+DIR, ERA, etc. The CCP is what is of interest when investigating CCPZ.
 </p>
 <p>
 The approach adopted by the CCP committee has been to write an entirely
@@ -52,23 +45,39 @@ degree wasteful of space, the CCP produced by the committee was originally much
 shorter than the original. This allowed room for expansion. CCPZ has grown some
 extra commands, all very useful to the machine code programmer.
 </p>
-<p>
+<h4>
 CCPZ FEATURES
+</h4>
+<p>
 So what has CCPZ got to offer over the normal CP/M CCP, well the major
 feature is not a command at all. It&rsquo;s primary use is when the CP/M USER areas are
 in use, and it is the way in which it looks for files. Imagine the situation
 where I am using drive B: as the default, and I want to edit this piece of text,
 I forget that drive B: is the default and type:
-B&gt;PEN B:80BUS6-2. PEN
+</p>
+<pre>
+B&gt;PEN B:80BUS6-2.PEN
+</pre>
+<p class="noindent">
 to get this file in. Well of course PEN is on A: isn&rsquo;t it, so the result will be
 the error message:
+</p>
+<pre>
 PEN?
+</pre>
+<p class="noindent">
 won&rsquo;t it? Not so with CCPZ, the process is as follows:
+</p>
+<p class="noindent">
 Look on the default for the command file, if found, execute it
+</p>
+<p class="indent">
 Nothing found so select the specified default drive (I specified A: when
 I assembled CCPZ).
-Command file found, so load it.
-Reselect the original defaults.
+</p>
+<p class="indent2">
+Command file found, so load it.<br>
+Reselect the original defaults.<br>
 Now execute it.
 </p>
 <p>

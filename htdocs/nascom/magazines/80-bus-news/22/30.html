@@ -1,61 +1,73 @@
-<?php columnStart(1); ?>
-<p>
-GRAPHPAC COMMAND MANUAL Page 3
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 3</th></tr></table>
+<h5 class="example">
 Example:
+</h5>
+<pre class="example">
 10 CLS
 20 FOR A=0 T0 30
 30 PSET A,A
 40 NEXT A
-</p>
+</pre>
 <p>
 This short routine will draw a diagonal line on the screen.
 </p>
-<p>
-PRESET (pixel reset)
-</p>
-<p>
+<h3>
+<span>PRESET</span> (pixel reset)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PRESET X,Y
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To RESET a pixel.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
+</h5>
+<p class="remarks">
 X and Y are graphic co-ordinates.
 </p>
-<p>
+<h5 class="example">
 Example:
+</h5>
+<pre class="example">
 10 CLS
 20 FOR A=0 TO 30
 30 PSET A,A
 40 NEXT A
-50 FOR A=O TO 30
+50 FOR A=0 TO 30
 60 PRESET A,A
 7O NEXT A
 80 GOTO 20
-</p>
+</pre>
 <p>
 This routine will continuously draw and erase a line on the screen.
 </p>
-<p>
-PTEST (pixel teat)
+<h3>
+<span>PTEST</span> (pixel test)
+</h3>
+<h5 class="format">
+Graphpac format:
+</h5>
+<p class="format">
+PTEST X,Y: A=PEEK (PVALUE)
 </p>
-<p>
-Graphpae format:
-PTEST X,Y: A&reg;PEEK (PVALUE)
-</p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To test if a specified pixel on the screen is dark or bright.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 Normally PTEST is implemented as a BASIC function, so that the line
 A=PTEST X,Y would be valid. It has been impossible in the space allocated for
 Mbaslink to include functions in its command table, therefore this function
@@ -63,20 +75,19 @@ has to be completed in two stages. PTEST X,Y tests the specified pixel and
 stores the result in a memory location. It is then the responsibility of the
 BASIC program to retrieve this value by PEEKing this location. In the
 statement line above, the numeric variable would hold the result of the pixel
-teat. If the test confirmed that the pixel was bright, the result in A would
+test. If the test confirmed that the pixel was bright, the result in A would
 be 1. If the pixel was dark the result would be 0. If the specified X,Y
 coordinate does not lie within the screen display area the result would be 2.
 </p>
 <p>
-The address of (PYALUE), the location to PEEK is given in the Graphpac
+The address of (PVALUE), the location to PEEK is given in the Graphpac
 System Manual.
 </p>
-<p>
-GRAPHPAC COMMAND MANUAL Page 4
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 4</th></tr></table>
+<h2>
 PEN COMMANDS
-</p>
+</h2>
 <p>
 A collection of PEN commands have been made available in Graphpac. The
 PEN commands control an invisible graphics cursor. The position of this cursor
@@ -92,69 +103,79 @@ operation to 32767. It is therefore probable that moving the CAP from the
 centre of the screen to X,Y co-ordinates &ndash;32767,&ndash;32767 in one operation may
 introduce a small error which can be confirmed by using the CAP command.
 </p>
-<p>
-STARTAT (Start at)
-</p>
-<p>
+<h3>
+<span>STARTAT</span> (Start at)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 STARTAT X,Y or SA X,Y
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 This command allows the CAP to be moved unconditionally to the
-specified X,Y graphics co-ordinate aa if the PENUP mode is effective.
+specified X,Y graphics co-ordinate as if the PENUP mode is effective.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 STARTAT would normally be used as part of the first graphic statement
 of a program, to position the CAP ready for subsequent plotting. The current
 PEN mode is not altered. PENRET will now be inactive until a subsequent
 DRAWTO, DRAW or PLOT command is encountered.
 </p>
-<p>
-PENUP
-</p>
-<p>
+<h3>
+<span>PENUP</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PENUP or PU
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To allow the CAP to be moved around the display area using DRAW,
 DRAWTO or PLOT commands without producing a trace or changing the existing
 display.
 </p>
-<p>
-PENDOWN
-</p>
-<p>
+<h3>
+<span>PENDOWN</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PENDOWN or PD
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 All following DRAW, DRAWTO, PLOT or DOCAP commands will cause any
 pixels the CAP passes through to be set bright.
 </p>
-<p>
-PENFLIP
-</p>
-<p>
+<h3>
+<span>PENFLIP</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PENFLIP or PF
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 All following DRAW, DRAWTO, DOCAP and PLOT commands will cause any
-pixels the CAP passeg through to be inverted, that is, dark pixels will be SET
+pixels the CAP passes through to be inverted, that is, dark pixels will be SET
 bright and bright pixels will be RESET dark.
 </p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

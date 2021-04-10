@@ -1,103 +1,122 @@
-<?php columnStart(1); ?>
-<p>
-GRAPHPAC COMMAND MANUAL Page 9
-</p>
-<p>
-SCREEN
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 9</th></tr></table>
+<h3>
+<span>SCREEN</span>
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 SCREEN CC,RR
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To place the cursor at a specified screen co-ordinate ready for
 subsequent PRINT statements.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 On a 25 line by 80 character display, CC is a column number 1-80, RR
-ia a row number 1-25. SCREEN 1,1 specifies the top left character on the
+is a row number 1-25. SCREEN 1,1 specifies the top left character on the
 screen and SCREEN 80,25 specifies the bottom right character.
 </p>
-<p>
+<h2>
 BAR GRAPH STATEMENTS
-</p>
+</h2>
 <p>
 Three commands have been included to allow the construction of
 vertical bar graphs.
 </p>
-<p>
-VBAR (Vertical bar)
-</p>
-<p>
+<h3>
+<span>VBAR</span> (Vertical bar)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 VBAR CC,RR,N
 </p>
-<p>
+<h5 class="purpos">
 Purpose:
-To display a solid vertical bar on the acreen.
+</h5>
+<p class="purpose">
+To display a solid vertical bar on the screen.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 The bar which is one character wide, is constructed from the bottom of
 the character box specified by the screen position CC,RR for a height of N
 pixels. CC and RR are screen co-ordinates as used by the SCREEN command.
 </p>
-<p>
-VBARH (half tone vertical bar)
-</p>
-<p>
+<h3>
+<span>VBARH</span> (half tone vertical bar)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 VBARH CC,RR,N
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To display a shaded vertical bar on the screen.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
+</h5>
+<p class="remarks">
 This command acts in a similar manner to VBAR above.
 </p>
-<p>
-DOWN (vertical print command)
-</p>
-<p>
+<h3>
+<span>DOWN</span> (vertical print command)
+</h3>
+<h5 class="format">
 Graphpac format:
-DOWN CC,RR " any ascii characters&rdquo;
+</h5>
+<p class="format">
+DOWN CC,RR " any ascii characters"
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To easily label graph Y axis or vertical bar charts.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
+</h5>
+<p class="remarks">
 CC and RR are screen co-ordinates as used by SCREEN, VBAR and VBARH.
 </p>
-<p>
-GRAPHPAC COMMAND MANUAL Page 10
-</p>
-<p>
-PSI (Put Screen Image)
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 10</th></tr></table>
+<h3>
+<span>PSI</span> (Put Screen Image)
+</h3>
+<h5 class="format">
 Mbaslink format:
-RESET:PSI &ldquo;DRIVE: FILENAME&rdquo;: RESET
+</h5>
+<p class="format">
+RESET:PSI "DRIVE: FILENAME": RESET
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To save the screen image on disk.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 If Graphpac is running with Microsoft&rsquo;s Mbasic under CP/M care must be
 taken to ensure that the correct directory information is sent to the disk,
 PSI should always be preceded and followed with a RESET statement. This will
@@ -110,63 +129,66 @@ interpreter.
 <p>
 If drive is not specified the currently logged-in drive will be used.
 If the filename is greater than eight characters only the first eight will be
-used. The filetype extension automatically supplied is&nbsp;.IMG (for image).
+used. The filetype extension automatically supplied is .IMG (for image).
 </p>
-<p>
-GSI
-</p>
-<p>
+<h3>
+<span>GSI</span>
+</h3>
+<h5 class="format">
 Graphpac format:
-RESET:GSI &ldquo;DRIVE: FILENAME&rdquo;
+</h5>
+<p class="format">
+RESET:GSI "DRIVE: FILENAME"
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To display on the screen an image previously saved, using the PSI
 command.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 Due to the way Mbasic handles the disk I/O it is neceasary to precede
 PSI with a RESET statement, otherwise rubbish may be displayed on the screen.
 It will be noticed, if the user experiments, that RESET is not always
-necessary, however, it is advised that the user conforma with this procedure
+necessary, however, it is advised that the user conforms with this procedure
 The closing quotation mark should always be included even if GSI is the last
 command in a BASIC statement line.
 </p>
-<p>
-NS (Normal Screen)
-</p>
-<p>
+<h3>
+<span>NS</span> (Normal Screen)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 NS
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
-</p>
-<p>
+</h5>
+<p class="purpose">
 To re-configure the screen format for normal text. i.e. 25 lines of 80
 characters.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 This statement has been included to allow convenient switching to a
 normal screen format so that fast scrolling and a normal width display are
 available if required. On execution the screen will also be cleared.
 </p>
-<p>
-GS (Graphics Screen)
-</p>
-<p>
+<h3>
+<span>GS</span> (Graphics Screen)
+</h3>
+<h5 class="format">
 Graphpac format:
-Gs
+</h5>
+<p class="format">
+GS
 </p>
-<p>
-33
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

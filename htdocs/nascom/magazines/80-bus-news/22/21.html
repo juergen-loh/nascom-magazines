@@ -1,57 +1,50 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
-21
+connector, and is as follows:
 </p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-21-1.png"); ?>
 <p>
-cannectoar, and is as follows:
-+12V
-REL
-From sub
-tape BK
-z
-WA 4 =f 6 To Nascom
-it A +
-t WA 3LTu
-OnF BiK2 thi
-loo
-= +
-Sb 1O.F
-1OnF
-ov
+I would also like to correct the impression that a Biphase signal
+contains only frequencies between half the Baud rate and the Baud
+rate itself. By chance I had been experimenting with FFT&rsquo;s (Fast
+Fourier Transforms) and had calculated spectra for NRI. Biphase and
+Biphase-M encoded random data streams shortly before the arrival of
+issue 3. These show that in fact the spectra of both Biphase signals
+reach a peak at the Baud rate, and have minima at 0 frequency (ie DC)
+and twice the Baud rate. NRZ on the other hand has a minimum at the
+Baud rate but is not DC free and so cannot be used for taping data.
+This is not to say however that Biphase data cannot be recovered
+after passing it through a bandpass filter such as a tape recorder.
+(My FFT program is written in Hisoft Tape Pascal 4, and takes about
+30 seconds to calculate a 512 point spectrum.)
 </p>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<h2 id="article1">
+INTERFACING THE EPSON MX80
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+John R. Hunt
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
-Powauid alsa like to correct the impression that a Biphase Signal
-contains ani, frequencies between half the Baud rate and the Baud
-rate itself. By chance I had been experimenting with FFT*"s (Fast
-Fourier Transforms) and had calculated spectra for NRI. Hiphase and
-Biphase-M encoded random deta streams shortly before the arrivel af
-iesue 3. These show that in fact the spectra of both Biphase signals
-reach a peak at the Baud rate, and have minima at &copy; frequency fie BO?
-amd twice the Baud rate. NAZ on the other hand has a minimum at the
-Baud rate but is mat DC free and so cannot be used for taping data.
-This is nok to say however that Biphase data cannot be recovered
-atter 84@Ssing it through a bandpass filter such as a tape recorder.
-(My FRY program is written in Hisoft Tape Fascal 4, and takes about
-SO seconds toa calculate a Sif peintk enectrum. }
-INTERFACING THE EPSON MXBo John R Hunt
-fan it be that Io am the only reader of 30-bus News to realise that
-the PIO*&rsquo;s DY and /STR lines are ideally suited to handshaking with
+Can it be that I am the only reader of 80-bus News to realise that
+the PIO&rsquo;s RDY and /STB lines are ideally suited to handshaking with
 the printer&rsquo;s /STROBE and /ACKNLG lines? All that is required is the
-addition of an LS TTL inverters
+addition of an LS TTL inverter:
+</p>
+<p class="indent">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-21-2.png"); ?>
 </p>
 <p>
-ARDY Eo STROGE
-Plo MXsO
-</p>
-<p>
-ASTB ACKNLG
-</p>
-<p>
-The port must be in mode 0 (output). Busy should still be taken Back
-to an input line on the other port ta allow the driver software ta
+The port must be in mode 0 (output). Busy should still be taken back
+to an input line on the other port to allow the driver software to
 monitor the printer status, unless that is you drive the printer on
 interrupt. My printer is at the end of 3m of ribbon cable, but I have
-had mo preblem with spurious signals oar the lack of a program
+had no problem with spurious signals oar the lack of a program
 determined settling time.
 </p>
 <?php columnEnd(1); ?>

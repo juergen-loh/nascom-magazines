@@ -467,9 +467,17 @@ function columnEnd($column)
 	}
 }
 
-function DisAssemblyRomBasicStart()		{					echo('<div class="DisAssemblyRomBasic">');	columnStart(1);	}
-function DisAssemblyRomBasicChange()	{	hLine("100%");	}//echo("<br>");		}//columnEnd(1);		columnStart(1);	}
+//---------------------------------------------------------------------------
+
+function DisAssemblyRomBasicStart()		{	echo('<div class="DisAssemblyRomBasic">');	columnStart(1);	}
+function DisAssemblyRomBasicChange()	{	hLine("100%", "2");	}//echo("<br>");	}//columnEnd(1);	columnStart(1);	}
 function DisAssemblyRomBasicEnd()		{	columnEnd(1);	echo('</div>');		}
+
+//---------------------------------------------------------------------------
+
+function GraphpackStart()	{	echo('<div class="graphpack">');	columnStart(1);	}
+function GraphpackChange()	{	hLine("100%", "2");	}//echo("<br>");	}//columnEnd(1);	columnStart(1);	}
+function GraphpackEnd()		{	columnEnd(1);	echo('</div>');		}
 
 //---------------------------------------------------------------------------
 

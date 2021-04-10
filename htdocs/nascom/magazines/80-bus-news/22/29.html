@@ -1,109 +1,81 @@
-<?php columnStart(1); ?>
-<p>
-GRAPHPAC COMMAND MANUAL Page 1
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 1</th></tr></table>
+<h2 id="article1">
 GRAPHPAC
-</p>
+</h2>
 <p>
 The documentation for Graphpac is in two parts.
 </p>
-<p>
-The Command Mannal.
-</p>
+<h4>
+The Command Manual.
+</h4>
 <p>
 This gives the general description of the commands and features
 provided by all current versions of Graphpac.
 </p>
-<p>
+<h4>
 The System Manual.
-</p>
+</h4>
 <p>
 This gives specific details for implementing Graphpac on your computer
 and a summary of relevant commands.
 </p>
-<p>
+<h4>
 Copyright and right to make backup copies
-</p>
+</h4>
 <p>
-&lsquo;On receipt of this computer program and associated documentation, you
+On receipt of this computer program and associated documentation, you
 are granted a non-exclusive license to execute the enclosed software and to
 make backup copies of the computer program for single user use only. Mbaslink
 and Graphpac are subject to copyright and all rights are reserved.
 </p>
-<p>
+<h4>
 Disclaimer
-No representations or warranties with respect to the contents hereof
-</p>
+</h4>
 <p>
+No representations or warranties with respect to the contents hereof
 are made and any implied warranties of merchantability or fitness for any
 particular purpose are specifically disclaimed.
 </p>
-<p>
+<h3 style="text-align: center">
 INDEX
-</p>
-<p>
-MANUAL DESCRIPTION AND COPYRIGHT NOTICE
-INTRODUCTION TO GRAPHPAC
-GRAPHPAC COMMANDS
-</p>
-<p>
-PSET
-</p>
-<p>
-PRESET and PTEST
-</p>
-<p>
-PEN COMMANDS
-</p>
-<p>
-LINE DRAWING COMMANDS
-</p>
-<p>
-CAP COMMAND
-</p>
-<p>
-SCREEN MANAGEMENT COMMANDS
-BAR GRAPH COMMANDS
-</p>
-<p>
-10 DISK HANDLING COMMANDS
-</p>
-<p>
-10 GRAPHIC OPTION COMMANDS
-</p>
-<p>
-12 SPOKE
-</p>
-<p>
-en WN AN EINE OO
-</p>
-<p>
-GRAPHPAC COMMAND MANUAL (c) 1983 Gemini Microcomputers Ltd.
-</p>
-<p>
-ste ea
-</p>
-<p>
-GRAPHPAC COMMAND MANUAL Page 2
-</p>
-<p>
+</h3>
+<table class="indent">
+<tr><td>1</td><td>MANUAL DESCRIPTION AND COPYRIGHT NOTICE</td></tr>
+<tr><td>2</td><td>INTRODUCTION TO GRAPHPAC</td></tr>
+<tr><td>2</td><td>GRAPHPAC COMMANDS</td></tr>
+<tr><td>2</td><td>PSET</td></tr>
+<tr><td>3</td><td>PRESET and PTEST</td></tr>
+<tr><td>4</td><td>PEN COMMANDS</td></tr>
+<tr><td>5</td><td>LINE DRAWING COMMANDS</td></tr>
+<tr><td>7</td><td>CAP COMMAND</td></tr>
+<tr><td>8</td><td>SCREEN MANAGEMENT COMMANDS</td></tr>
+<tr><td>9</td><td>BAR GRAPH COMMANDS</td></tr>
+<tr><td>10</td><td>DISK HANDLING COMMANDS</td></tr>
+<tr><td>10</td><td>GRAPHIC OPTION COMMANDS</td></tr>
+<tr><td>12</td><td>SPOKE</td></tr>
+</table>
+<br>
+<table class="heading"><tr><td>GRAPHPAC COMMAND MANUAL</td><td>(c) 1983 Gemini Microcomputers Ltd.</td></tr></table>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>GRAPHPAC COMMAND MANUAL</th><th>Page 2</th></tr></table>
+<h2>
 GRAPHPAC COMMAND MANUAL
-</p>
-<p>
+</h2>
+<h3>
 Introduction.
-</p>
+</h3>
 <p>
 Graphpac allows the user to SET, RESET, INVERT or TEST any pixel on
 the screen. Routines are also supplied to draw lines using rectangular (based
 on X,Y values) or polar co-ordinates (described by an angle and distance).
 This manual gives a general description of Graphpac features and commands in a
 similar format and notation to Microsoft Mbasic documentation. An entry is
-given for each command showing the syntax uged.
+given for each command showing the syntax used.
 </p>
-<p>
+<h3>
 Plotting on the screen.
-</p>
+</h3>
 <p>
 The resolution of the graphics is determined by the hardware used and
 can range from 96 pixels across the screen by 46 pixels down, to 512 X 256 or
@@ -121,27 +93,25 @@ before passing a value to Graphpac.
 <p>
 Note that if Graphpac is used with Microsoft Mbasic or BASIC-80,
 numbers between +32768 and +65535 will be accepted. Graphpac will interpret
-these values and all values in between as negative numbers between --32768 and
-&ldquo;1.
+these values and all values in between as negative numbers between &ndash;32768 and
+&ndash;1.
 </p>
 <p>
 As a general rule numbers greater then 32767 should not be passed to
 Graphpac.
 </p>
-<p>
+<h3>
 GRAPHPAC COMMANDS
-</p>
+</h3>
 <p>
 Not all the commands described in this document will be available in
 the software supplied. Some would be unsuitable or impractical on your
-particular hardware, in other cases they may juat be unnecessary. The
+particular hardware, in other cases they may just be unnecessary. The
 documentation specific to your hardware (Graphpac System Manual) will inform
 you which commands are available.
 </p>
 <p>
 Graphpac commands are stored in memory usually as normal ASCII
-</p>
-<p>
 characters and not as one byte tokens which represent normal BASIC reserved
 words.
 </p>
@@ -149,28 +119,29 @@ words.
 The PLOT DRAW and DRAWTO commands may have more than one set of values
 passed at a time by separating each set with a semi colon.
 </p>
-<p>
-i-e, 10 DRAWTO 0,0 ; 20,0 3; 20,20 ; 0,20
-</p>
-<p>
-PSET (pixel set)
-</p>
-<p>
+<pre class="indent">
+i.e.    10 DRAWTO 0,0 ; 20,0 ; 20,20 ; 0,20
+</pre>
+<h3>
+<span>PSET</span> (pixel set)
+</h3>
+<h5 class="format">
 Graphpac format:
+</h5>
+<p class="format">
 PSET X,Y
 </p>
-<p>
+<h5 class="purpose">
 Purpose:
+</h5>
+<p class="purpose">
 To SET a pixel.
 </p>
-<p>
+<h5 class="remarks">
 Remarks:
-</p>
-<p>
+</h5>
+<p class="remarks">
 X and Y are graphic co-ordinates. If a pixel is already bright there
 will be no change.
 </p>
-<p>
-29
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>

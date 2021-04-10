@@ -1,57 +1,54 @@
-<?php columnStart(1); ?>
-<p>
-NAS-GRAPH PAC
-</p>
-<p>
+<?php GraphpackStart(); ?>
+<h1 id="article1" style="text-align: center">
+<u>NAS-GRAPHPAC</u>
+</h1>
+<p class="noindent">
 Written by CCaoft, NAS-GRAPHPAC links with the standard Nascom ROM BASIC to
 provide twenty additional commands for controlling the Nascom&nbsp;2&rsquo;s low-resolution
 graphics. We are grateful to CCsoft for giving us permission to
 publish the object code and System Manual for this package, and to Gemini
-</p>
-<p>
 Microcomputers for giving us permission to publish the Command Manual. The
 documentation, therefore, is in two parts.
 </p>
-<p>
+<h4>
 The System Manual.
-</p>
+</h4>
 <p>
 This gives specific details for implementing Graphpac on the Nascom
 and a summary of relevant commands.
 </p>
-<p>
+<h4>
 The Command Manual.
-</p>
+</h4>
 <p>
 This gives the general description of the commands and features
 provided by all current versions of Graphpac.
 </p>
-<p>
+<h4>
 Copyright and right to make backup copies
-</p>
+</h4>
 <p>
 On receipt of this computer program and associated documentation, you
 are granted a non-exclusive license to execute the enclosed software and to
 make backup copies of the computer program for single user use only. Mbaslink
 and Graphpac are subject to copyright and all rights are reserved.
 </p>
-<p>
+<h4>
 Disclaimer
-</p>
+</h4>
 <p>
 No representations or warranties with respect to the contents hereof
 are made and any implied warranties of merchantability or fitness for any
 particular purpose are specifically disclaimed.
 </p>
-<p>
-NAS-GRAPHPAC SYSTEM MANUAL Page 1
-</p>
-<p>
+<?php GraphpackChange(); ?>
+<table class="heading"><tr><th>NAS-GRAPHPAC SYSTEM MANUAL</th><th>Page 1</th></tr></table>
+<h2 id="article2">
 NAS-GRAPHPAC SYSTEM MANUAL
-</p>
-<p>
+</h2>
+<h3>
 INTRODUCTION
-</p>
+</h3>
 <p>
 This package has been introduced for the Nascom microcomputer to give
 greater flexibility while controlling the low resolution graphics. It is
@@ -69,32 +66,32 @@ without modification.
 The MONITOR command will re-initialise Nas-sys by jumping to location
 zero instead of doing an SCAL MRET.
 </p>
-<p>
+<h3>
 HARDWARE REQUIREMENTS
-</p>
+</h3>
 <p>
 This package requires a Nascom&nbsp;1 or 2 fitted with the Nascom graphics
 ROM and at least 16k of RAM.
 </p>
-<p>
-MEMORY&rsquo; USAGE
-</p>
+<h3>
+MEMORY USAGE
+</h3>
 <p>
 The program is supplied in relocatable format and once configured for
 the host system, it will be 2K in length and can reside anywhere in the memory
 map above 4800 hex. (including ROM if required). Workspace RAM can optionally
-be set at ODOO, OHOO, OFOO hex or just below the relocated package.
+be set at 0D00, 0E00, 0F00 hex or just below the relocated package.
 </p>
-<p>
+<h3>
 COMPATIBILITY WITH OTHER SOFTWARE
-</p>
+</h3>
 <p>
 Nas-Graphpac is fully software compatible with the Nas-sys series of
 Monitors, however, because provision was not made for extending the command
 table in the Nascom ROM BASIC it has been necessary to use the flexibility of
-the Nas-sys monitor to achieve the interface. The inethod used is to copy out
+the Nas-sys monitor to achieve the interface. The method used is to copy out
 the SCAL table from the Nas-sys ROM into workspace RAM. Various modifications
-are then made to the entries allowing BASIC to link with Nas--Graphpac. Once
+are then made to the entries allowing BASIC to link with Nas-Graphpac. Once
 Nas-Graphpac is active on the system it fools the Nascom ROM BASIC into
 thinking a non-maskable interrupt has occurred. Control then passes to
 Nas-Graphpac via the Nas-sys SCAL table. As the SCAL table is copied into RAM
@@ -106,18 +103,18 @@ Because of the number of different system software and hardware
 options available on the Nascom it is impossible to support them all,
 Nas-Graphpac has therefore only been tested on a standard cassette based
 system running an unmodified Nas-sys monitor. Having said this, we would like
-to hear of successful interfacing to Polydos 1, Polydos 2, Nas-dos ete.
+to hear of successful interfacing to Polydos 1, Polydos 2, Nas-dos etc.
 </p>
 <p>
 If Nas-Graphpac does not operate correctly on your system because of
-software incompatibility with your uprated operating syatem, all is not lost.
+software incompatibility with your uprated operating system, all is not lost.
 A USR mode has been incorporated inside Nas-Graphpac and graphic commands can
 be used via the USR function. See appendix 3 at the back of this document for
 detailed descriptions.
 </p>
-<p>
+<h3>
 CONFIGURING NAS-GRAPHPAC
-</p>
+</h3>
 <p>
 Load Nas-Graphpac into memory from the listing given at 1000 hex and
 using the Nas-sys Write command make a tape copy. Decide where you want Nas-Graphpac
@@ -127,13 +124,10 @@ whether you have system firmware in ROM (Nas-Dis/Debug or Zeap). Execute Nas-Gra
 at 1000 hex followed by the address where the program is to
 eventually run:
 </p>
+<pre style="text-align: center">
+E 1000 7000 (enter)
+</pre>
 <p>
-EB 1000 &lsquo;7000 (enter)
+will generate a Nas-Graphpac that will run at 7000 to 77FF hex.
 </p>
-<p>
-will generate a Nas-Graphpac that will run at 7000 to &lsquo;77FF hex.
-</p>
-<p>
-23
-</p>
-<?php columnEnd(1); ?>
+<?php GraphpackEnd(); ?>
