@@ -1,53 +1,56 @@
 <?php columnStart(1); ?>
-<p>
-17
-</p>
-<p>
+<h4>
 File Handling:
-MBASTIC has excellent disk file handling capabilities; the statements
-</p>
+</h4>
 <p>
+MBASIC has excellent disk file handling capabilities; the statements
 &lsquo;OPEN&rsquo; and &lsquo;CLOSE&rsquo; do just that. Files may be sequential or random as far as
 input and output are concerned. The &lsquo;OPEN&rsquo; statement has the following format:
-OPEN &ldquo;&lt;mode&gt;",&lt;file number&gt;,"&lt;filename&gt;",[ &lt;drive no.&gt; |
 </p>
+<pre>
+OPEN "&lt;mode&gt;",&lt;file number&gt;,"&lt;filename&gt;",[&lt;drive no.&gt;]
+</pre>
 <p>
-&lt;mode&gt; is a single letter string (0,I, or R), which indicates the type of input
-or output to or from the file. 0 implies that the file is opened for results to
-be written INTO it (i-e., an output file); I shows that the file is opened so
+&lt;mode&gt; is a single letter string (O,I, or R), which indicates the type of input
+or output to or from the file. O implies that the file is opened for results to
+be written INTO it (i.e., an output file); I shows that the file is opened so
 that data can be read FROM it (i.e., an input file). In both cases, the data
-movement is sequential (in order). The R mode is used for random input/output in
+movement is sequential (in order). The R mode is used for random input/<?php spChar("zwsp"); ?>output in
 groups of up to 128 character records, and any record of a file can be read or
 written to at any time; unlike the sequential file, a random file can be written
-to or read from at any time.
+to or read from at any time.<br>
 &lt;file number&gt; is the number of the file as used in the program and is an integer
-from 1 to 15; it refers to the file in later I/O operations.
-&lt;filename&gt; is the name of the file, and must be enclosed in double quotes.
+from 1 to 15; it refers to the file in later I/O operations.<br>
+&lt;filename&gt; is the name of the file, and must be enclosed in double quotes.<br>
 &lt;drive no.&gt; is the number, usually either 0 or 1, of the disk on which the file
-resides, or will be written to. [See Editors&rsquo; note under SAVE. |
-For example:
-OPEN &ldquo;I",1,"INPUT.DAT&rdquo; &ndash; will open file INPUT.DAT so that data from it can be
-read by the program.
-OPEN &ldquo;0",2,"RESULTS&rdquo; &ndash; opens file RESULTS so that data from the program can be
-written into it.
+resides, or will be written to. [See Editors&rsquo; note under SAVE.]
+</p>
+<p class="noindent">
+For example:<br>
+OPEN "I",1,"INPUT.DAT" &ndash; will open file INPUT.DAT so that data from it can be
+read by the program.<br>
+OPEN "O",2,"RESULTS" &ndash; opens file RESULTS so that data from the program can be
+written into it.<br>
 OPEN M$,N,F$ &ndash; opens the file whose name is in F$ (supplied earlier in the
+program, together with M$ and N) as file number N in mode M$.
 </p>
-<p>
-rogram, together with M$ and N) as file number N in mode M$.
-</p>
-<p>
-Hd. &ndash; Mine is different again, in the form:
-OPEN &lt;mode&gt;,&lt;file number&gt;,"&lt;[ drive name: |filename&gt;",[ record length |
+<p class="noindent">
+[Ed. &ndash; Mine is different again, in the form:<br>
+OPEN &lt;mode&gt;,&lt;file number&gt;,"&lt;[drive name:]filename&gt;",[record length]<br>
 All is as above, except that the random access file mode may vary the length of
-the records saved between 1 and 128 thus saving disk space. |
+the records saved between 1 and 128 thus saving disk space.]
 </p>
-<p>
+<h4>
 Input and Output to sequential files:
-</p>
+</h4>
 <p>
 This involves the use of the INPUT and PRINT statements: INPUT is used to
 read data from a file as follows:
-INPUT &amp;&lt;file number&gt;,&lt;variable list&gt;
+</p>
+<pre>
+INPUT &pound;&lt;file number&gt;,&lt;variable list&gt;
+</pre>
+<p class="noindent">
 where &lt;file number&gt; is the number of the file OPENed for INPUT and &lt;variable
 list&gt; is the list of variables which are to be read in as would be the case with
 a normal INPUT statement, although no &lsquo;?&rsquo; prompt is printed. When numeric values
@@ -55,32 +58,22 @@ are input, leading spaces are ignored but everything else is assumed to be part
 of the number, which terminates when a space, &lt;cr+lf&gt; or comma is read. When
 string items are input, the first character which is not a leading space or line
 feed is assumed to be the start of a string item; if this first character is
-found to be a&rsquo; " &lsquo;, the item is taken to be a quoted string and all characters
+found to be a &rsquo;&nbsp;"&nbsp;&lsquo;, the item is taken to be a quoted string and all characters
 between the first quote and a matching second quote are returned as characters in
 the string value. The string may not be more than 255 characters long and will be
-terminated before this if a comma, &lt;cr&gt; or &lt;1f&gt; are encountered.
+terminated before this if a comma, &lt;cr&gt; or &lt;lf&gt; are encountered.
 </p>
-<p>
+<p class="noindent">
 PRINT &pound;&lt;file number&gt;,&lt;variable list&gt; is used to save results to a file.
 </p>
-<p>
+<p class="noindent">
 CLOSE &lt;file number&gt; terminates input or output to that file; CLOSE without a file
 number, terminates I/O to all files previously opened.
 </p>
-<p>
+<p class="noindent">
 The following example of sequential file I/O for numeric items may be useful:
-1000 OPEN &ldquo;0",1, &ldquo;RESULTS&rdquo;
 </p>
-<p>
-1010 PRINT &pound;1,A,5,D &lsquo;Write the contents of &ldquo;RESULTS&rdquo; to the file
-</p>
-<p>
-1020 CLOSE 1 &ldquo;Close it for writing, set pointer to start of file
-1030 OPEN &ldquo;I",1,"RESULTS&rdquo; &lsquo;Open &ldquo;RESULTS&rdquo; for reading in data
-</p>
-<p>
-1040 INPUT &pound;1,A,S,D &ldquo;Read in the data
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
 <p>
 Files are also closed when the &lsquo;END&rsquo; statement or &lsquo;NEW&rsquo; command are executed; the
 &lsquo;STOP&rsquo; command does not close files.

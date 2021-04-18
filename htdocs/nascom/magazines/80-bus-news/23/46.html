@@ -1,10 +1,13 @@
-<?php columnStart(1); ?>
-<p>
-46
-</p>
-<p>
-NASCOM BASIC CROSS-REFERENCE LISTING M. J. R. Gibbs
-</p>
+<?php columnStart(23); ?>
+<h2 id="article1">
+NASCOM BASIC CROSS-REFERENCE LISTING
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+M. J. R. Gibbs
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 The listing on the following pages is for a utility that I wrote to give a
 variable cross-reference listing of a Nascom BASIC program. One of the problems of
@@ -17,10 +20,10 @@ and for a beginner it is often not obvious what is wrong.
 This program may help in this respect, and I have also found it useful when
 developing or changing a program sometime after it was originally written. It is
 also very useful when developing a large program where a large number of variable
-names can become a problen.
+names can become a problem.
 </p>
 <p>
-The program is located in RAM between 0C80H and OF65 and will give a sorted list
+The program is located in RAM between 0C80H and 0F65 and will give a sorted list
 of variable names (only the first two characters being displayed to avoid
 confusion). String variables are identified by a &lsquo;$&rsquo; and array variables by a &lsquo;(&rsquo;,
 followed by a list of the statement numbers in which that variable is referenced.
@@ -28,52 +31,16 @@ followed by a list of the statement numbers in which that variable is referenced
 <p>
 For example, the following slightly modified benchmark program:&ndash;
 </p>
-<p>
-100 REM BENCHMARK 7
-110 PRINT &ldquo;S&rdquo;
-</p>
-<p>
-120 K = 0
-</p>
-<p>
-130 DIM MQQQ(5)
-</p>
-<p>
-140 K = K+1
-</p>
-<p>
-150 A = K/2*3+4-5
-160 GOSUB 230
-</p>
-<p>
-170 FOR L=1 T0 5
-180 MQQQ(L) =A
-</p>
-<p>
-190 NEXT L
-</p>
-<p>
-200 IF K &lt; 1000 THEN 140
-210 PRINT &ldquo;E&rdquo;
-</p>
-<p>
-220 END
-</p>
-<p>
-230 RETURN
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-46-1.png"); ?>
 <p>
 Would result in a screen containing:&ndash;
 </p>
 <p>
-&lt; NASCOM CROSS REFERENCE &gt;
-</p>
-<p>
-A 150 180
-K 120 140 150 200
-L 170 180 190
-</p>
-<p>
+&lt; NASCOM CROSS REFERENCE &gt;<br>
+<br>
+A 150 180<br>
+K 120 140 150 200<br>
+L 170 180 190<br>
 MQ( 130 180
 </p>
 <p>

@@ -1,101 +1,103 @@
 <?php columnStart(1); ?>
-<p>
-19
-</p>
-<p>
-LLIST:
-</p>
-<p>
+<h4>
+LLIST:<br>
 LPRINT:
-These have the same functions as LIST and PRINT in 8k ROM BASIC, but
-</p>
+</h4>
 <p>
+These have the same functions as LIST and PRINT in 8k ROM BASIC, but
 output is directed to the printer. If a program halts for no obvious reason and
 LPRINT has been used, check that the printer is switched on and &lsquo;on-line&rsquo;!
 </p>
-<p>
+<h4>
 DEFUSR:
+</h4>
+<p>
 This has the function of defining the starting addresses of assembly
-</p>
-<p>
 language subroutines; up to 10 such subroutines can be used. The format is:
+</p>
+<pre>
 DEFUSR &lt;digit&gt;=&lt;X&gt; where X is the starting address.
-</p>
-<p>
+</pre>
+<h4>
 ERASE:
+</h4>
+<p>
 The arrays or vectors specified are deleted and may be redimensioned if
+required. The format is:
 </p>
-<p>
-required. The format is: ERASE &lt;array name 1&gt;, ....--. &ldquo;array name m&gt;
-</p>
-<p>
+<pre>
+ERASE &lt;array name 1&gt;, ....... &ldquo;array name n&gt;
+</pre>
+<h4>
 PRINT USING:
-</p>
-<p>
 LPRINT USING:
-</p>
-<p>
+</h4>
+<p class="noindent">
 The format of these statements is:
 </p>
-<p>
+<pre>
 (L)PRINT USING &lt;string&gt;;&lt;list&gt;
-</p>
-<p>
+</pre>
+<p class="noindent">
 These print (on screen or printer) the values of the expressions in the &lt;list&gt; in
 a manner dictated by the &lt;string&gt;; the &lt;list&gt; contains constants, variables or
 expressions to be printed, separated by punctuation as in the PRINT statement.
 </p>
-<p>
+<h4>
 ON ERROR GOTO:
+</h4>
+<p class="noindent">
 The format for this statement is:
 </p>
-<p>
+<pre>
 ON ERROR GOTO &lt;line number&gt;
+</pre>
+<p>
 When an error occurs, it diverts to the specified line; sets the variable ERR to
 the error code and ERL to the offending line number. ON ERROR GOTO O is used to
-</p>
-<p>
 disable error trapping.
 </p>
-<p>
+<h4>
 RESUME:
-</p>
+</h4>
 <p>
 This is used to restart program execution after error trapping. Normally,
 a line number is specified but if it is omitted or set to zero, then the program
 resumes at the statement where the error occurred. RESUME NEXT causes program
 execution to resume at the statement after the one where the error occurred.
 </p>
-<p>
+<h4>
 SWAP:
-</p>
+</h4>
 <p>
 A facility which allows the values of two variables to be exchanged. They
 must be of the same type &ndash; e.g. strings, integers or reals. The format is: SWAP
-8variable 1&gt;,&lt;variable 2&gt;.
+&lt;variable 1&gt;,&lt;variable 2&gt;.
 </p>
-<p>
+<h4>
 TRON:
-Enables the trace flag; this prints the line numbers of statements as
-</p>
+</h4>
 <p>
+Enables the trace flag; this prints the line numbers of statements as
 they are executed and is useful for debugging. It can be used both as a command
 and as a statement.
 </p>
-<p>
+<h4>
 TROFF:
+</h4>
+<p class="noindent">
 Disables TRON; TRON is also automatically disabled by the &lsquo;NEW&rsquo; command.
-Operators:
 </p>
+<h4>
+Operators:
+</h4>
 <p>
 Operators are used to add, subtract, multiply etc. in statements; there
 is an established order of precedence as follows: parentheses &ndash; &lsquo;brackets&rsquo; have
-</p>
-<p>
 the highest precedence and the rest follow in decreasing order; exponentiation
-(*), negation (-), multiplication (*) and division (/), integer division (\),
+(^), negation (-), multiplication (*) and division (/), integer division (\),
 modulo (MOD), addition (+) and subtraction (-) (subtraction is not the same as
-negation!), then the relational operators = , &lt;&gt;, &lt;, &gt;, &lt;=, =&lt; , &gt;= , =&gt;. The
+negation!), then the relational operators =&nbsp;, &lt;&gt;&nbsp;, &lt;&nbsp;, &gt;&nbsp;, &lt;=&nbsp;, =&lt;&nbsp;, &gt;=&nbsp;, =&gt;. The
 logical operators which follow are also in decreasing order of precedence: NOT,
 AND, OR, XOR, EQV and IMP. (XOR is exclusive OR, EQV is Equivalence and IMP is
 Implication.) All the logical operators are &lsquo;bitwise&rsquo;.

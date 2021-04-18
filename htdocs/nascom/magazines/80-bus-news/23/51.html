@@ -1,10 +1,13 @@
+<?php columnStart(23); ?>
+<h2 id="article1">
+AUNT ALICE&rsquo;S AGONY COLUMN
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+D. Parkinson
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
-<p>
-51
-</p>
-<p>
-AUNT ALICE&rsquo;S AGONY COLUMN D. Parkinson
-</p>
 <p>
 Is there anyone out there? (Dr Dark believes you are all a figment of the
 circulation manager&rsquo;s imagination. [Ed. &ndash; Circulation manager &ndash; who&rsquo;s he?].) I
@@ -13,7 +16,7 @@ esteemed Editor. The following few pages attempt to answer some of the questions
 asked in these letters, and are based on the premise that if one person has
 actually taken the trouble to write in with a question, there must be at least a
 thousand of you out there with the same question on your lips. So, as these pages
-are to be fueled by your questions/comments/hints/tips, send them in &ndash; even if it
+are to be fueled by your questions/<?php spChar("zwsp"); ?>comments/<?php spChar("zwsp"); ?>hints/<?php spChar("zwsp"); ?>tips, send them in &ndash; even if it
 is only one sentence on the back of an old envelope. Do not expect a personal
 reply. (Letter writing is not my forte). You may get a reply via 80-BUS News in
 due course. If a few people ask the same question there will almost certainly be
@@ -31,7 +34,7 @@ enabled by IORQ. With the standard PROM the four outputs are used to signify
 addresses 00-07 (NASIO), address B1 (data port), address B2 (control port),
 address B3 (card reset). The B1 and B2 outputs are qualified by RD and WR before
 they are used, but the B3 output is taken straight to the RESET input of the
-IvC&rsquo;s Z80. If you look up the interrupt behaviour of the Z80 in its data sheet
+IVC&rsquo;s Z80. If you look up the interrupt behaviour of the Z80 in its data sheet
 you will see that the Z80 acknowledges an interrupt by putting out an /IORQ
 signal along with an /M1, a unique signal combination that is used at no other
 time. Unfortunately if the lower 8-bits of the address bus just happen to hold
@@ -42,13 +45,13 @@ The cure is simple (in theory), and that is to disconnect pin 14 of IC25
 from GND, and connect the backplane /M1 signal to it via a spare inverter on the
 board. Pin 14 is an additional enable input (active low), and with this
 modification the decode PROM will be inhibited during any cycle where M1 is low,
-thus preventing the interrupt acknowledge cycle being misint:r,reted by the IVC.
+thus preventing the interrupt acknowledge cycle being misinterpreted by the IVC.
 The normal IO operations will continue to work as before.
 </p>
 <p>
 Next a letter from Alan Mackay &ndash; here is someone who is actually using his
 computer to compute. I reproduce his letter below in the hope that someone out
-&lsquo;there can help.
+there can help.
 </p>
 <p>
 &ldquo;The most useful of the features of BASIC as originally developed at
@@ -61,6 +64,8 @@ generally, is there a library of serious mathematical subroutines &ndash; such a
 NAG (Numerical Algorithms Group) provides for Algol and Fortran on large
 computers &ndash; for the Nascom&nbsp;2? Is there anyone doing serious calculations, as
 opposed to computer games, on a micro?&rdquo;
+</p>
+<p class="continued">
 &ndash; replies to Alan Mackay, __ __________ ____, Highgate, London __ ___. I recall a
 product MAP14Z that was available in 1980/1 from Enertech Ltd, __ _________ ____,
 Eastbourne, East Sussex ____ ___. This was a 40-bit floating point package

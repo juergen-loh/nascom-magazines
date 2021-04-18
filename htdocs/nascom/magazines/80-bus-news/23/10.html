@@ -1,43 +1,38 @@
 <?php columnStart(1); ?>
 <p>
-10
-</p>
-<p>
 It can be seen that the output to the ports is now held at a LOW state. If
-the pen is now activated a 26us pulse will be sent to both the OUTFUT1 and the
-RESET input of the counter. @3 now goes LOW, and thus ICZ(b) goes HIGH, enabling
+the pen is now activated a 20us pulse will be sent to both the OUTPUT1 and the
+RESET input of the counter. Q3 now goes LOW, and thus IC3(b) goes HIGH, enabling
 the clock input and allowing the count to begin again. The output2 has now gone
 HIGH indicating a hit. As long as the frequency from the clock generator is
-lower than 2@ms &raquo; 16 ie about S@@Hz, then ICZ can not count up to 14 before the
+lower than 20ms x 16 ie about 800Hz, then IC2 can not count up to 14 before the
 receipt of another reset pulse. Therefore, if the pen is struck by the raster
-every 20ms, IC2 will be reset and 03 will remain LOW and the output2 HIGH.
+every 20ms, IC2 will be reset and Q3 will remain LOW and the output2 HIGH.
 </p>
 <p>
 Even though the pen has moved from a white area to a black area, it will
-not register the change until 16 clock pulses have been received, and RVi can be
-used ta slow down the clock and increase the time taken to register a change in
-state. This can be used to effectively slaw down the speed of the pen.
+not register the change until 16 clock pulses have been received, and RV1 can be
+used to slow down the clock and increase the time taken to register a change in
+state. This can be used to effectively slow down the speed of the pen.
 Similarly, the frequency can be increased to a point where the reset pulse has
-no effect. The two LEDs indicate the pen&rsquo;s status. LEDI indicates whether the
+no effect. The two LEDs indicate the pen&rsquo;s status. LED1 indicates whether the
 pen has registered a hit, and LED2 shows if the data has been enabled into the
-ports. &ndash;
+ports.
 </p>
 <p>
 The prototype was built on a small piece of veroboard and housed in a small
-diecast aluminium box, and seems ta have tolerated an immense amount af
+diecast aluminium box, and seems to have tolerated an immense amount of
 knocking. The pen was constructed using a small length of plastic tube with a
-S-pin plug and socket to allow it to be disconnected from the system. I found
+5-pin plug and socket to allow it to be disconnected from the system. I found
 that it was easier to assemble the pen in three pieces than to try and poke
 everything down the tube. If the sensor is glued into a smaller tube, (I used a
-drilled, solid piece of plastic for this) and then that inserted inta a larger
+drilled, solid piece of plastic for this) and then that inserted into a larger
 tube, the pen can be easily separated for modificaction. Similarly, the switch
 can be set at the junction of two tube halves to facilitate re-wiring if
-</p>
-<p>
 necessary.
 </p>
 <p>
-It should be possible for most peaple toa construct a light pen using the
+It should be possible for most people to construct a light pen using the
 above design, though I am quite sure that most readers will be aware that this is
 only one way of obtaining information as to the whereabouts of the raster.
 </p>
@@ -51,11 +46,23 @@ Now that ARFON have gone into receivership, it may be that this
 do-it-yourself light pen will be the cheapest on the market, and I see no reason
 why it can not be used for the GEMINI video board.
 </p>
-<p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(4); ?>
+<?php columnChange(24); ?>
+<h2 id="article1">
 CLASSIFIED ADS.
-PLUTO Colour Graphics Card with Extended Command ROM.
-Suitable for any 80-BUS System.
-Retail price including VAT over &pound;500.
-Will accept &pound;320. Ring Bob on 01-542-0873.
+</h2>
+<p class="noindent">
+PLUTO Colour Graphics Card with Extended Command ROM.<br>
+Suitable for any 80-BUS System.<br>
+Retail price including VAT over &pound;500.<br>
+Will accept &pound;320. Ring Bob on __-___-____.
 </p>
+<?php columnChange(4); ?>
+<?php columnEnd(4); ?>
+<br>
+<?php columnStart(1); ?>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

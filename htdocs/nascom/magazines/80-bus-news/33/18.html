@@ -32,18 +32,18 @@ On the face of it all that has to be done is to connect the &ldquo;display enabl
 (or -display active&rsquo;) signal from the display controller via a few gates to
 the Z80 /WAIT input. Thus, if the processor attempts to access the screen
 memory while the display is active, it is made to wait until the end of the
-display period, after which the Z80 is free to continue with its read/write
+display period, after which the Z80 is free to continue with its read/<?php spChar("zwsp"); ?>write
 cycle. However a problem arises when the Z80 finds, on going to access the
 display memory, that the display is inactive. The dilema here is that although
 the display memory is free at that instant, the display controller may start a
 new display line at any moment (like in the middle of the forthcoming
-read/write cycle of the Z80). If it does, this will lead to one of two
-outcomes: a corrupted read/write cycle, or interference down the left hand
+read/<?php spChar("zwsp"); ?>write cycle of the Z80). If it does, this will lead to one of two
+outcomes: a corrupted read/<?php spChar("zwsp"); ?>write cycle, or interference down the left hand
 side of the display depending on which controller gets priority.
 </p>
 <p>
 This is where ESP comes in. The arbitration circuit has to know whether
-there is time for the Z80 to complete its read/write cycle without
+there is time for the Z80 to complete its read/<?php spChar("zwsp"); ?>write cycle without
 interruption, or whether the /WAIT signal should be applied immediately as the
 display controller is about to start a new display line. Those of you who have
 followed the description so far are probably thinking &ndash; -ah! you just generate

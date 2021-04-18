@@ -819,7 +819,7 @@ function imageDescInmc80News($issue, $page, $file)
 	case "01 43 Image-43-2.png":	return "interface software";
 	case "01 46 Image-46-1.png":	return "WARNING~8A";
 	case "01 16 Image-16-3.png":	return "DOTS";
-	case "01 18 Image-18-1.png":	return "HEX~?";
+	case "01 18 Image-18-1.png":	return "HEX~&gt;?";
 	case "01 19 Image-19-1.png":	return "Z80 made simple";
 	case "01 30 Image-30-1.png":	return "4MHZ";
 	case "01 31 Image-31-1.png":	return "PASCAL Notes";

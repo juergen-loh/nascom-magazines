@@ -1,91 +1,83 @@
 <?php columnStart(1); ?>
-<p>
-15
-</p>
-<p>
-D Characters may be deleted by the use of this command. nD deletes n
+<p class="noindent">
+D &nbsp; Characters may be deleted by the use of this command. nD deletes n
 characters to the right of the cursor where n is an integer in the range 0 to 255
-(O defaults to 1 and if n is omitted, a default of 1 character is assumed). The
+(0 defaults to 1 and if n is omitted, a default of 1 character is assumed). The
 deleted character(s) are enclosed in backslashes and the cursor will be
 positioned just to the right of the last character which has been deleted.
 </p>
-<p>
-5 Searching for a character is carried out by this command which has the
+<p class="noindent">
+S &nbsp; Searching for a character is carried out by this command which has the
 general form nSx where n is the nth occurrence of the character &lsquo;x&rsquo;. The default
-value for nis 1 and the search begins with the second character to the right of
+value for n is 1 and the search begins with the second character to the right of
 the cursor. All characters passed over by the cursor in its search are printed
 and if the sought-for character is not found, the cursor will stop at the end of
 the line; if the search was successful, the cursor will print the character and
 stop to its right.
 </p>
-<p>
-K This has a similar function to the 5 command but instead of printing all
+<p class="noindent">
+K &nbsp; This has a similar function to the S command but instead of printing all
 characters as it passes over them, the command deletes them. The command has the
-</p>
-<p>
-&lsquo;
-</p>
-<p>
 general form nKx where n is the nth occurrence of character &lsquo;x&rsquo;; a default of 1
-</p>
-<p>
 is assumed.
-C The C command is used for character replacement in a line. It has the
 </p>
-<p>
+<p class="noindent">
+C &nbsp; The C command is used for character replacement in a line. It has the
 general form Cx and changes the character on the right of the cursor to the
 character &lsquo;x&rsquo;.
 </p>
-<p>
-iE The E command terminates editing and outputs a carriage return; unlike
+<p class="noindent">
+E &nbsp; The E command terminates editing and outputs a carriage return; unlike
 the &lt;cr&gt; command, the remainder of the line is not printed.
 </p>
-<p>
-Q Typing of Q restores the original line and control is passed to command
+<p class="noindent">
+Q &nbsp; Typing of Q restores the original line and control is passed to command
 level.
 </p>
-<p>
-L If the L command is used, the remainder of the line is printed&nbsp;, a &lt;crm
-</p>
-<p>
+<p class="noindent">
+L &nbsp; If the L command is used, the remainder of the line is printed&nbsp;, a &lt;cr&gt;
 is output and then the line number is printed; editing is restarted at the
 beginning of the line.
 </p>
-<p>
+<p class="noindent">
 NOTE &ndash; If, during the running of a program, a SYNTAX ERROR is found, MBASIC will
 automatically enter the EDIT mode, printing the message &lsquo;Syntax error in nn&rsquo;,
 followed by the line number of the offending line. Editing can then start.
 </p>
 <p>
 The best way to find out how the Editor works is to practice before you
-write your Pan-galactic Black Hole Simulation program. (Ra. &ndash; This is all
+write your Pan-galactic Black Hole Simulation program. [Ed. &ndash; This is all
 superfluous if you use the Gemini on screen edit mode or Richards&rsquo; SYS, although
-under nese circumstances the line length must not exceed the width of the
-screen.
+under these circumstances the line length must not exceed the width of the
+screen.]
 </p>
+<h4>
+SYSTEM:
+</h4>
 <p>
-SYSTEM: .
 The SYSTEM command exits from MBASIC and returns to the disk operating
+system.
 </p>
-<p>
-systen.
-</p>
-<p>
+<h4>
 LOAD:
-The LOAD command has the format &lsquo;LOAD &ldquo;&lt;filename&gt;&rdquo;&rsquo; and locates and loads
-</p>
+</h4>
 <p>
+The LOAD command has the format &lsquo;LOAD &ldquo;&lt;filename&gt;&rdquo;&rsquo; and locates and loads
 the file into memory ready for use. On completion of a successful load, the &lsquo;Ok&rsquo;
 prompt is given. The first double quote (") is mandatory but the second can be
-omitted. [ md. &ndash; For drive selection see the note under SAVE.
+omitted. [Ed. &ndash; For drive selection see the note under SAVE.
 </p>
-<p>
+<h4>
 SAVE:
-</p>
+</h4>
 <p>
 The SAVE command is used, as its name suggests, to save a program from
 memory to disk. It has the following format:
-SAVE &ldquo;&lt;filename&gt;",[&lt;disk drive no-&gt; |
+</p>
+<pre>
+SAVE "&lt;filename&gt;",[&lt;disk drive no.&gt;]
+</pre>
+<p class="noindent">
 The effect of the SAVE command is to leave the current version of the program in
 the computer&rsquo;s RAM and to copy an exact replica to disk where it is stored under
 the &lt;filename&gt;. A frequent cause of program losses is when one inadvertently uses
@@ -94,7 +86,7 @@ case, the previous program is deleted from disk and replaced with a copy of the
 current program under the old name &ndash; which can be frustrating! The moral is to
 remember your filenames or to backup your program disks. SAVEing an ASCII file is
 done by specifying the disk no. (usually 0 or 1), followed by an A &ndash; for example,
-SAVE &ldquo;TEXT.BAS",O,A saves THEXT.BAS as an ASCII file on drive 0. ASCII files are
+SAVE "TEXT.BAS",0,A saves TEXT.BAS as an ASCII file on drive 0. ASCII files are
 larger than the normally saved files and are both slower to load and more
 extravagant of disk space; their chief advantage is that they can be used as
 direct input to other programs if required.

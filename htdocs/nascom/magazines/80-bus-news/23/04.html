@@ -1,11 +1,17 @@
+<?php columnStart(23); ?>
+<h2 id="article1">
+A LIGHT PEN FOR THE NASCOM&nbsp;2
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+J. AUCKLAND
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
 <p>
-A LIGHT PEN FOR THE NASCOM 2 J. AUCKLAND
-</p>
-<p>
-D.Parkinson&rsquo;s article on light pens, in VOL.1 Issue 3 of 86-BUS, prompted
+D.Parkinson&rsquo;s article on light pens, in VOL.1 Issue 3 of 80-BUS, prompted
 me to finish writing this piece on the design of a light pen for use with the
-Nascom&nbsp;2. The pen has been in use for quite some time and seems toa be reasonably
+Nascom&nbsp;2. The pen has been in use for quite some time and seems to be reasonably
 accurate, taking in to account the minimum resolution available with the
 standard Nascom Graphics chip.
 </p>
@@ -16,23 +22,21 @@ routines were to be used to input data by using the screen. I wanted a routine
 that would enable me to define the envelope shape of a particular sound that was
 to be generated in a micro-processor controlled synthesiser. Thus a peripheral
 was needed that would permit the definition of envelope shapes by drawing the
-envelope shapes directly on ta the screen. It seemed that a light pen would&mdash;- be
-the most obvious device ta use and so I locked to various manufacturers for a
+envelope shapes directly on to the screen. It seemed that a light pen would be
+the most obvious device to use and so I locked to various manufacturers for a
 suitable light pen. Unfortunately, it transpired that the majority of pens were
 either out of my price range, or not quite the design that I required, and so I
 decided to build a pen specifically for the Nascom&nbsp;2. The design works with my
 system, and the pen and its associated hardware is far cheaper than any other
-</p>
-<p>
 pen that I know of.
 </p>
-<p>
+<h3>
 PEN DESIGN
-</p>
+</h3>
 <p>
 Having looked at the various photo-electric devices that could be employed
 in the design of the pen I decided to use a Light Activated Switch, which is an
-RS component type 305-434 (Sv), as the photo-sensitive device. This device
+RS component type 305-434 (5v), as the photo-sensitive device. This device
 includes a variable-threshold switch that not only enables the sensitivity of
 the pen to be altered, but also reduces the component count by having the
 threshold switch as an integral part of the sensor.
@@ -40,17 +44,17 @@ threshold switch as an integral part of the sensor.
 <p>
 Refering to figure 1 it can be seen that the output from pin 4 of the
 sensor is usually buffered by a TTL gate to bring the switched output to a clean
-TTL compatable level. The time-constant components, Ri and Ci, set the
+TTL compatable level. The time-constant components, R1 and C1, set the
 sensitivity of the device, large values of RC give a high degree of sensitivity.
 It would be quite possible to use the circuit in figure 1 to directly interface
-with an input port. On the prototype, a pulse of 2@us duration was output from
+with an input port. On the prototype, a pulse of 20us duration was output from
 the photo-sensor every time the raster struck the active area of the pen. This
 could be used to identify an individual pixel, or sub-pixel, on the screen area.
 By loading each successive VIDEO RAM location with the data FFH and by scanning
 the input ports for a HIGH from the pen, it is possible to identify the pen
 location on the video display unit. For a higher degree of accuracy, each VIDEO
-RAM memory location can be sequentially loaded with the data CiH, C2H, C4H, CSH,
-D@H, E@H. This data will then enable the pixel to be subdivided into 6
+RAM memory location can be sequentially loaded with the data C1H, C2H, C4H, C8H,
+D0H, E0H. This data will then enable the pixel to be subdivided into 6
 sub-pixels, and will put a small block of white at the top left-hand corner of
 the pixel, then at the middle left-hand side, and then at the bottom left-hand
 corner of the pixel. The last three bytes of data put the small block at the top
@@ -58,8 +62,8 @@ right, mid right, and bottom left-hand corners of the pixel. Therefore, by
 successively loading each contiguous pixel with the six bytes of data, it
 becomes possible to identify the pen location on a screen with a resolution of
 </p>
-<p>
-(49 x 2) x 6 *&raquo; 3) = 4608 locations
+<p class="noindent" style="text-align: center">
+(48 x 2) x (16 x 3) = 4608 locations
 </p>
 <p>
 If the output from the pen were connected to bit 7 of port 4, a program for

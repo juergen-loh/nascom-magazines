@@ -9,65 +9,59 @@ blanking signal, gives rise to a screen full of random dots which, interesting
 though it may be for the first 10 secs., does not really solve the problem in
 hand. Also, if the scan program has to wait for the beginning of a new picture
 scan before it can load the screen with one of the six sub-pixels, it can he
-seen that each pixel will take at least &amp; x 2@ms to scan. So to scan all of the
+seen that each pixel will take at least 6 x 20ms to scan. So to scan all of the
+768 locations will take
 </p>
-<p>
-7468 locations will take
-</p>
-<p>
-4&amp; x 769 x 2Oms = 92.146 seconds
+<p class="noindent" style="text-align: center">
+6 x 768 x 20ms = 92.16 seconds
 </p>
 <p>
 With no stretch of the imagination can I say that this is satisfactory. A
 faster method would be to fill the screen with white and to scan the input ports
 for a HIGH from the pen. When the raster strikes the light-activated switch the
-ather port could latch in the memory address of the VIDEQ RAM that was being
-accessed at the time of the raster strike. As there are i@24 VIDEO RAM
-locations, it would be necessary ta load in &amp; bits to one port, and another 2
+other port could latch in the memory address of the VIDEQ RAM that was being
+accessed at the time of the raster strike. As there are 1024 VIDEO RAM
+locations, it would be necessary to load in 8 bits to one port, and another 2
 bits into the other port. This method would give the pen location on any of the
 768 screen pixels. If the screen were successively filled with the six sub-pixel
+bytes, the resolution could be increased to the full 4608 locations.
 </p>
 <p>
-bytes, the resolution could be increased to the full 4668 locations.
-</p>
-<p>
-As the VIDEQ RAM is scanned under hardware control it is possible ta tap
+As the VIDEQ RAM is scanned under hardware control it is possible to tap
 off the required address lines and to feed them directly to the input ports. The
 program that I was using at the time of the pen&rsquo;s design, required the
 identification of the pen location as it traversed the screen in a left-right
-direction. This would enable me to draw a wave-shape directly on ta the screen
-and then store it for later use. Also routines had ta be identified from a
+direction. This would enable me to draw a wave-shape directly on to the screen
+and then store it for later use. Also routines had to be identified from a
 selection of menus, and so the pen location was required for selection
+identification.
 </p>
 <p>
-identificatian.
-</p>
-<p>
-Refering to figure 4 it can be seen that the VIDEO RAM is addressed by A&reg;
-to AS, the address lines A&reg; to AS sequentially address 64 screen memory
-locations, 48 of which are displayed, in a left-right manner. AG to AX select
+Refering to figure 4 it can be seen that the VIDEO RAM is addressed by A0
+to A9, the address lines A0 to A5 sequentially address 64 screen memory
+locations, 48 of which are displayed, in a left-right manner. A6 to A9 select
 the 16 rows of 64 locations in a top-bottom manner, though it must be noted that
-the screen top row is in fact the last memory row to be addressed, ie. SBCAH to
-@BF0H. Even though the Video ram-scanning hardware is scanning from @66@H ta
-@2ZFFH on the address lines, 1047, which is the N2MD PROM, selects the VIDEO RAM
-write-enable when memory locations @B00H ta OGBFFH are addressed. Thus there is
-an offset of @8@@H to consider when evaluating the pen location from the VIDEO
-RAM hardware address lines A&reg; ta A.
+the screen top row is in fact the last memory row to be addressed, ie. 0BCAH to
+0BF9H. Even though the Video ram-scanning hardware is scanning from 0000H to
+03FFH on the address lines, IC47, which is the N2MD PROM, selects the VIDEO RAM
+write-enable when memory locations 0800H to 0BFFH are addressed. Thus there is
+an offset of 0800H to consider when evaluating the pen location from the VIDEO
+RAM hardware address lines A0 to A9.
 </p>
-<p>
+<h3>
 VIDEO ADDRESS LINES
-</p>
+</h3>
 <p>
 To obtain the address lines, a small amount of soldering is required. It is
 possible to tap off the address lines directly from the board, though I prefer
 to keep all soldering and additions to the component side of the board, and it
-was for this reason that I decided to adopt ai &ldquo;&ldquo;piggy-back&rdquo; approach to the
+was for this reason that I decided to adopt a &ldquo;piggy-back&rdquo; approach to the
 address line location.
 </p>
 <p>
 There are a number of ways to find the pen location by using the address
-lines. the approach that I took was to identify 1 sub-pixel ina column of 48
-sub-pixels. As lang as I knew which column I was addressing I could find the pen
+lines. the approach that I took was to identify 1 sub-pixel in a column of 48
+sub-pixels. As long as I knew which column I was addressing I could find the pen
 location on that column. It would be possible to find the pen position on the
 left-right axis as well as the up-down axis, as long as I looked at all the
 </p>

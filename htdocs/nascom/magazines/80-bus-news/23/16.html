@@ -1,90 +1,89 @@
 <?php columnStart(1); ?>
-<p>
-16
+<p class="noindent">
+[Ed. &ndash; My version of MBASIC works differently, in the form of:<br>
+SAVE "&lt;[disk drive name:]filename&gt;",[protect or ASCII option]<br>
+So SAVE "B:FRED",A means save file FRED to drive B: in ASCII format. This format
+also holds true for LOAD, KILL, OPEN, NAME &ndash; AS, MERGE and CHAIN.]
 </p>
-<p>
-[ Bd. &ndash; My version of MBASIC works differently, in the form of:
-</p>
-<p>
-SAVE &ldquo;&lt;[ disk drive name: |filename&gt;",[ protect or ASCII option |
-</p>
-<p>
-So SAVE &ldquo;B:FRED",A means save file FRED to drive B: in ASCII format. This format
-also holds true for LOAD, KILL, OPEN, NAME &ndash; AS, MERGE and CHAIN. |
-</p>
-<p>
+<h4>
 KILL:
+</h4>
+<p>
 This command erases a specified file from disk; if the file does not
-</p>
-<p>
 exist, an error message is output as is also the case if an attempt is made to
-erase a file which is in use. The format of the KILL command is: :
-KILL &ldquo;&lt;filename&gt;".
+erase a file which is in use. The format of the KILL command is:
 </p>
-<p>
+<pre>
+KILL "&lt;filename&gt;".
+</pre>
+<h4>
 NAME:
-</p>
+</h4>
 <p>
 Renaming of files is achieved by the use of the NAME command which has
 the following form:
-NAME &ldquo;old filename&gt;&rdquo; AS &ldquo;&lt;new filename&gt;&rdquo;
+</p>
+<pre>
+NAME "&lt;old filename&gt;" AS "&lt;new filename&gt;"
+</pre>
+<p class="noindent">
 If the proposed new file name already exists, an appropriate error message is
 printed.
 </p>
-<p>
+<h4>
 MERGE:
-The MERGE command is used when it is desired to put part or all of two
-</p>
+</h4>
 <p>
+The MERGE command is used when it is desired to put part or all of two
 programs together to form a new program. It should be used with care since the
 results of merging two programs can be unpredictable (or just plain messy!). It
 has the following form:
 </p>
-<p>
-MERGE &ldquo;&lt;filename&gt;&rdquo;
-</p>
-<p>
+<pre>
+MERGE "&lt;filename&gt;"
+</pre>
+<p class="noindent">
 The effect of this command is to load &lt;filename&gt; into the program already in RAM.
 Where the loaded program and the original program have identical line numbers,
 the loaded line numbers replace the existing line numbers. The file name to be
-loaded must specify an ASCII format saved program, otherwise a &ldquo;BAD FILE MODE
+loaded must specify an ASCII format saved program, otherwise a &lsquo;BAD FILE MODE
 ERROR&rsquo; will occur.
 </p>
-<p>
+<h4>
 FILES:
-</p>
+</h4>
 <p>
 This command is used to print out the names of ALL files, regardless of
 type, on the current disk. It is equivalent to the &lsquo;CAT&rsquo; or &lsquo;CATALOG&rsquo; commands in
 mainframe BASICS, and to the &lsquo;DIR&rsquo; command when at disk operating system level.
 </p>
-<p>
+<h4>
 Naming of files:
-</p>
+</h4>
 <p>
 In MBASIC, all program and data files have a filename. This is a &lsquo;string&rsquo;
-</p>
-<p>
 expression between 1 and 8 characters in length; the first character must not be
 a null (0) or a byte of 255 (dec.). The format of a filename permits the addition
 of an extension, which can be used to convey further information about the file.
 The usual way of naming files is to give the filename, followed by a full stop
-and a %3 character extension. Thus FUNNYONE is a valid filename and so are
-FUNNYONE.BAS, FUNNYONE.DAT or FUNNYONE.123 but OFUNNY is invalid because it has a
-&lsquo;o&rsquo; as its first character. As a matter of sensible programming technique, it is
+and a 3 character extension. Thus FUNNYONE is a valid filename and so are
+FUNNYONE.BAS, FUNNYONE.DAT or FUNNYONE.123 but 0FUNNY is invalid because it has a
+&lsquo;0&rsquo; as its first character. As a matter of sensible programming technique, it is
 wise to&rsquo; name BASIC program files with &lt;filename.ext&gt;, e.g. COUNTER.BAS for the
 program or COUNTER.DAT if it is a data file. Note that, then loading a BASIC
-program file with &lsquo;LOAD&rsquo;, inclusion of the&nbsp;.BAS extension is optional, although
+program file with &lsquo;LOAD&rsquo;, inclusion of the .BAS extension is optional, although
 it might be wise to include it if you have, for example, a data file as well as a
 program file under the same filename. The same holds true when SAVEing a program.
 File names can consist totally of numbers, or have some non-alphanumeric
-characters &ndash; 135&rsquo;79081.BAS is allowed, as is FILE$$1 or PROG&pound;2. Filenames in lower
+characters &ndash; 13579081.BAS is allowed, as is FILE$$1 or PROG&pound;2. Filenames in lower
 ease are the same as their equivalents in upper case &ndash; SHEAR and shear&nbsp;, for
 example.
-[Hd. &ndash; Careful!!! If given a lower case file name, MBASIC will save and load it
+</p>
+<p class="noindent">
+[Ed. &ndash; Careful!!! If given a lower case file name, MBASIC will save and load it
 as such. However, if say an ASCII file were saved with a lower case file name for
 the purpose of loading into an editor for instance, then CP/M would not be able
 to find it as all CP/M command line input is converted to upper case
-automatically. |
+automatically.]
 </p>
 <?php columnEnd(1); ?>

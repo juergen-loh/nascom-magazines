@@ -404,8 +404,10 @@ function columnStart($column, $multi/*$class*/ = "")
 	case 412:	echo "<!-- 12 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 5/12
 	case 512:	echo "<!-- 12 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12
 	case 712:	echo "<!-- 12 columns: start 7 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-7\">\n";		break;	// 7/12
+	case 812:	echo "<!-- 12 columns: start 8 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 8/12
 	case 912:	echo "<!-- 12 columns: start 9 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 9/12
 	case 1012:	echo "<!-- 12 columns: start 10 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";	break;	// 10/12
+	case 1112:	echo "<!-- 12 columns: start 11 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-11\">\n";	break;	// 11/12
 	default:	echo "<columnStart($column)>\n";																		break;
 	}
 }
@@ -447,6 +449,7 @@ function columnChange($column)
 	case 512:	echo "<!-- 12 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12
 	case 612:	echo "<!-- 12 columns: change 6 --></div><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 6/12
 	case 712:	echo "<!-- 12 columns: change 7 --></div><div class=\"col-".BootstrapTier()."-7\">\n";		break;	// 7/12
+	case 812:	echo "<!-- 12 columns: change 8 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 8/12
 	case 912:	echo "<!-- 12 columns: change 9 --></div><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 7/12
 	case 1012:	echo "<!-- 12 columns: change 10 --></div><div class=\"col-".BootstrapTier()."-10\">\n";	break;	// 10/12
 	case 1112:	echo "<!-- 12 columns: change 11 --></div><div class=\"col-".BootstrapTier()."-11\">\n";	break;	// 11/12
@@ -469,15 +472,9 @@ function columnEnd($column)
 
 //---------------------------------------------------------------------------
 
-function DisAssemblyRomBasicStart()		{	echo('<div class="DisAssemblyRomBasic">');	columnStart(1);	}
-function DisAssemblyRomBasicChange()	{	hLine("100%", "2");	}//echo("<br>");	}//columnEnd(1);	columnStart(1);	}
-function DisAssemblyRomBasicEnd()		{	columnEnd(1);	echo('</div>');		}
-
-//---------------------------------------------------------------------------
-
-function GraphpackStart()	{	echo('<div class="graphpack">');	columnStart(1);	}
-function GraphpackChange()	{	hLine("100%", "2");	}//echo("<br>");	}//columnEnd(1);	columnStart(1);	}
-function GraphpackEnd()		{	columnEnd(1);	echo('</div>');		}
+function DoublePageStart($class)	{	echo("<div class=\"$class\">");	columnStart(1);	}
+function DoublePageChange()			{	hLine("100%", "2");								}
+function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 //---------------------------------------------------------------------------
 

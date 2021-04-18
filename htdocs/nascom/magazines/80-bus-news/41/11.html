@@ -10,7 +10,7 @@ same time leaving CP/M internally compatible with
 128 byte sectors, which CP/M programs still use
 (compatibility between CP/M 1.4 and CP/M 2.2).
 CP/M now carries out a two stage disk access.
-Firstly it calculates the start of physical track/sector
+Firstly it calculates the start of physical track/<?php spChar("zwsp"); ?>sector
 containing the 128 bytes it&rsquo;s after. This n-length
 sector (512 bytes in the case of Gemini) is read into
 a work space called the deblocking buffer. Next
@@ -30,7 +30,7 @@ this:
 <p>
 READ (from Winnie)
 CP/M calculates the appropriate physical
-track/sector where the 128 bytes
+track/<?php spChar("zwsp"); ?>sector where the 128 bytes
 required are situated.
 Wait for that sector to appear (very fast
 as the Winnie controller probably
@@ -45,7 +45,7 @@ area.
 <p>
 WRITE (to disk)
 CP/M calculates the appropriate 512
-byte physical track/sector where the
+byte physical track/<?php spChar("zwsp"); ?>sector where the
 128 bytes are going to go.
 Wait for that sector to appear (up to
 198mS delay)
@@ -90,12 +90,12 @@ routine? Well the cause of the problem is this
 swapping of data about in the deblocking buffer.
 The deblocking logic is quite clever, although if
 you&rsquo;ve read the source, quite messy. It knows not
-to flush the buffer if the same physical track/sector
+to flush the buffer if the same physical track/<?php spChar("zwsp"); ?>sector
 information is still current and no data write has
 been made to it. If a write to it has been made, then
 is still doesn&rsquo;t write whilst the same physical
-track/sector remains current. However, as soon as
-the physical track/sector is changed, or the file is
+track/<?php spChar("zwsp"); ?>sector remains current. However, as soon as
+the physical track/<?php spChar("zwsp"); ?>sector is changed, or the file is
 opened or closed, then the buffer is flushed if no
 writes were made, or written out then flushed if
 writes were made to it.

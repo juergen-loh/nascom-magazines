@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-37
-</p>
-<p>
+<p class=continued>
 150uf, as I did not have anything else of suitable value handy, and put the card
 back into the case. This time the POR worked perfectly, and it has done ever
 since. (It should be equally valid to increase R13 to say 12K/15K.)
@@ -28,12 +25,19 @@ I would like to thank Alan Stevens and Phil Harvey for the loan of cards,
 which helped me to isolate the problem. I hope that this article may help others
 who have experienced similar problems with the power-on-reset on their system.
 </p>
-<p>
-LARGE RAM SYSTEMS USING THE MAP CARD by Richard Beal
-</p>
-<p>
-INE IRE EP AEE INI IE IEEE RB BBE AE RE IER EOE IA BORED RE ED EN II REE RN Ee
-</p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>
+<br>
+<?php columnStart(23); ?>
+<h2 id="article1">
+LARGE RAM SYSTEMS USING THE MAP CARD
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by Richard Beal
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
 <p>
 This note refers to the review of the MAP 256K RAM card on pages 40 to 44
 of Vol 2 Issue 1 of 80-BUS News. A problem has arisen when using the Gemini
@@ -46,8 +50,8 @@ two 256K MAP cards are added, the last 64K of the second card is overlaid by
 the bottom 64K on the GM813.
 </p>
 <p>
-_ The solution is to disable the 64K on the 813, and alter the header plugs
-on the MAP cards so that they provide memory starting at OK, 256K, 512K and
+The solution is to disable the 64K on the 813, and alter the header plugs
+on the MAP cards so that they provide memory starting at 0K, 256K, 512K and
 768K. This is very simple and MAP will happily tell you how to do this.
 </p>
 <p>
@@ -57,9 +61,7 @@ alteration. Alternatively, the 813 RAM could be addressed on a different 64K
 page, using the original paging scheme which has four pages of 64K. This has
 the disadvantage that as well as the GM813 needing modifying, a patch to RP/M
 is needed, which makes it nonstandard. I don&rsquo;t approve of that, but MAP may
-</p>
-<p>
-. prefer to adopt this solution.
+prefer to adopt this solution.
 </p>
 <p>
 You may feel that it is incredibly wasteful to effectively throw away 64K
@@ -69,4 +71,5 @@ of RAM, but if you have a system with 512K or more, you probably don&rsquo;t min
 Note that with Gemini&rsquo;s own GM833 512Kbyte RAM-DISK board you can go upto
 8 Megabytes with no mods. to either the GM813 or GM833!
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

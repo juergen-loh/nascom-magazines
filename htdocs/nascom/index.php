@@ -22,8 +22,8 @@
 Das Nascom&nbsp;Journal war eine Zeitschrift für die
 <?php externalLink("Z80","",""); ?>-<?php externalLink("Einplatinencomputer"); ?>
 <?php if (is_dir("1/")) echo '<a href="1/">'; ?>
-Nascom 1
-<?php if (is_dir("1/")) echo '</a>'; ?> und Nascom 2. Es wurde ab 
+Nascom&nbsp;1
+<?php if (is_dir("1/")) echo '</a>'; ?> und Nascom&nbsp;2. Es wurde ab 
 <a href="journal/80/00/01/text/#article1"><!--#head"-->Mai 1980</a> monatlich von
 <?php externalLink("Michael Klein"); ?>
 und seiner Firma

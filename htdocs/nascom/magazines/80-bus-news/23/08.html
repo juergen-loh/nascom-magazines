@@ -1,82 +1,70 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 address lines, but this would mean looking at more than 1 input port, and I was
-</p>
-<p>
 already using that for something else.
 </p>
 <p>
-Address lines A4 to A? can be used ta identify which of the 16 character
-lines is being addressed. This brings the pen location resolutien to 1 in 14. To
+Address lines A4 to A9 can be used to identify which of the 16 character
+lines is being addressed. This brings the pen location resolution to 1 in 14. To
 increase the resolution-we can lock at either all 14 raster lines, or, as the
 minimum sub-pixel is only 4 raster lines, we can look at the address lines that
-relate to the selection of each group of 4 raster lines. The RS lines, RSO&reg; to
-RSS, are used to select the appropriate raster lines for each pixel, and soa by
-looking at RS2 and RSS it becomes possible to identify on which of the
+relate to the selection of each group of 4 raster lines. The RS lines, RS0 to
+RS3, are used to select the appropriate raster lines for each pixel, and so by
+looking at RS2 and RS3 it becomes possible to identify on which of the
 sub-pixels the pen is resting.
 </p>
 <p>
-A&amp; to AP can, therefore, be treated as the Most Significant Bits, and R52
-and RSS as the Least Significant Bits, of a six-bit address that can identify a
-</p>
-<p>
+A6 to A9 can, therefore, be treated as the Most Significant Bits, and RS2
+and RS3 as the Least Significant Bits, of a six-bit address that can identify a
 location in a column of 48 locations.
 </p>
 <p>
 To tap off these address lines, I soldered 14-pin header-plugs directly on
-to IC6@ and ICSS. This method allowed me to solder wires to the plug with ease,
-and gave test-points to see if I had blown the chip by soldering too close ta
+to IC68 and ICS3. This method allowed me to solder wires to the plug with ease,
+and gave test-points to see if I had blown the chip by soldering too close to
 it! The six address lines were taken along the board and put on to the bus at
-pins 59 ta 64. On the Gemini 86-BUS, these pins are now allocated as interrupt
+pins 59 to 64. On the Gemini 80-BUS, these pins are now allocated as interrupt
 request lines, powerfail warning, and backup power, so it might be advisable not
 to put the video address lines on to the bus if you can help it. The Video
 Blanking signal, VBLANK, was also taken to the bus so that the screen data would
 be updated only in the screen blanking period. this prevents screen flicker when
-</p>
-<p>
 drawing images on to the screen.
 </p>
-<p>
+<h3>
 OTHER HARDWARE
-</p>
+</h3>
 <p>
 For certain routines, I wanted to know if the pen was in the same place, or
 whether it had moved from an area of white to an area of black. Unfortunately,
-you can not merely test the pen status. This 15 because the sub-pixel consists
+you can not merely test the pen status. This is because the sub-pixel consists
 of 4 raster lines, each being 64us in duration, and each raster-strike on the
 active area of the pen produces a pulse of 20us duration. As the picture frame
 is re-displayed every 20ms, the sub-pixel will produce a train of four 20us
-pulses every 26ms. It is only through the persistance of vision that the image
-</p>
-<p>
+pulses every 20ms. It is only through the persistance of vision that the image
 appears to be constantly displayed.
 </p>
 <p>
 It now becomes necessary to build a circuit that will output two pulses.
-One pulse will be of 2@us duration, to indicate that the pen has been struck by
+One pulse will be of 20us duration, to indicate that the pen has been struck by
 a raster, the other pulse will go high when the pen has been struck, and remain
-high for period of time that is greater than 26ms and will also be kept high
+high for period of time that is greater than 20ms and will also be kept high
 every time that the pen is struck. By doing this, a high state is output as long
 as the pen remains over the displayed area, even though the area is being
-refreshed every 2ems and being displayed for only &amp;@us.
+refreshed every 20ms and being displayed for only 80us.
 </p>
 <p>
-Figure S is the circuit diagram for the pen interface. Ici is an NESSS
+Figure 5 is the circuit diagram for the pen interface. IC1 is an NE555
 timer configured as an astable multivibrator, the frequency of which is adjusted
-by RVi. ICP is a 7493 Binary counter and ICS and 4 are 7400 NAND gates and
+by RV1. IC2 is a 7493 Binary counter and IC3 and 4 are 7400 NAND gates and
+74LS126 TRI-STATE buffers.
 </p>
 <p>
-74LS5124 TRI-STATE buffers.
-</p>
-<p>
-On power-up, the 7493 0 outputs are in a low state and so I83ta), in
+On power-up, the 7493 Q outputs are in a low state and so IC3(a), in
 conjunction with the inverted output of IC2 and the output from the clock
-generator, begins&lsquo;*to clock the counter through 16 counts until @2 goes high. At
-this point, one of the inputs ta IC3(a) becames low and sa the clock pulses are
-inhibited and the 749% ceases ta count. The HIGH at @3 is inverted by ICS(b) and
+generator, begins to clock the counter through 16 counts until Q3 goes high. At
+this point, one of the inputs to IC3(a) becomes low and so the clock pulses are
+inhibited and the 7493 ceases to count. The HIGH at Q3 is inverted by IC3(b) and
 buffered by the TRI-STATE buffer IC4(a), the output of which will be enabled
-</p>
-<p>
-only when SWI is closed.
+only when SW1 is closed.
 </p>
 <?php columnEnd(1); ?>

@@ -1,26 +1,25 @@
 <?php columnStart(1); ?>
-<p>
-14
-</p>
-<p>
+<h4>
 RENUM
-This is an extremely handy command and allows program lines to be spread
-</p>
+</h4>
 <p>
+This is an extremely handy command and allows program lines to be spread
 or packed, particularly after editing; new lines can be inserted between existing
 lines. To use RENUM, type:
 </p>
-<p>
-renum [&lt;A&gt;[&lt;B&gt;[,&lt;m&gt;]]]
+<pre>
+RENUM [&lt;A&gt;[&lt;B&gt;[,&lt;I&gt;]]]
+</pre>
+<p class="noindent">
 where A is the new line number of the first line to be renumbered, B, the line
-</p>
-<p>
 number, numbers below which will NOT be renumbered. I is the increment. Default
 values for A and I are 10, and if B is omitted, the whole program will be
 renumbered in sequence. For example:
-RENUM &ndash; renumbers the whole program in increments of 10, starting with line 10.
+</p>
+<p class="noindent">
+RENUM &ndash; renumbers the whole program in increments of 10, starting with line 10.<br>
 RENUM 150,,20 &ndash; renumbers the whole program which will then start at 150 and line
-numbers will be incremented by 20.
+numbers will be incremented by 20.<br>
 RENUM 1000,100,50 &ndash; renumbers lines from 100 so that they start at 1000,
 incrementing by 50.
 </p>
@@ -30,75 +29,65 @@ GOSUB, IF....THEN, ON....GOTO or ON....GOSUB. RENUM cannot be used to change the
 order of program lines nor can it (in common with AUTO) create line numbers
 greater than 65529; an error message will result!
 </p>
-<p>
-&mdash;
-</p>
-<p>
+<h4>
 REM:
-Apart from the normal use of &lsquo;REM&rsquo; after the line number for program
-</p>
+</h4>
 <p>
-comments, it is possible to use a single quote (&rsquo;) which may be placed anywhere
+Apart from the normal use of &lsquo;REM&rsquo; after the line number for program
+comments, it is possible to use a single quote (') which may be placed anywhere
 on the line, after the line number. Everything on the same line which follows the
-&ldquo;&rsquo; " Will be ignored; this can be particularly useful for detailed comments &ndash;
+&ldquo;&nbsp;'&nbsp;&rdquo; will be ignored; this can be particularly useful for detailed comments &ndash;
 for example:
 </p>
-<p>
-400 FOR I=1 TO 255 &lsquo;GO THROUGH THE ASCII CHARACTER SET
-</p>
-<p>
-110 PRINT I,CHR$(I) &lsquo;PRINT THE APPROPRIATE CHARACTER ON THE SCREEN
-</p>
-<p>
-420 FOR T=1 TO 500 &lsquo;WAIT A BIT SO THAT YOU CAN SEE IT
-</p>
-<p>
+<!--pre>
+100 FOR I=1 TO 255 'GO THROUGH THE ASCII CHARACTER SET
+110 PRINT I,CHR$(I) 'PRINT THE APPROPRIATE CHARACTER ON THE SCREEN
+120 FOR T=1 TO 500 'WAIT A BIT SO THAT YOU CAN SEE IT
 130 NEXT T
-</p>
-<p>
-140 NEXT I &lsquo;GO ROUND AGAIN! (AND AGAIN!)
-</p>
-<p>
+140 NEXT I 'GO ROUND AGAIN! (AND AGAIN!)
+</pre-->
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-1.png"); ?>
+<h4>
 EDIT:
-</p>
+</h4>
 <p>
 The EDIT command in MBASIC is quite sophisticated and only a few of its
 features will be covered here. Editing can be carried out both while the program
 is being typed in and on the finished program. Single characters can be changed
 either by typing &lt;backspace&gt; or &lt;delete&gt;. In the latter case, the deleted letter
 is enclosed by backslashes (\) and a carriage return occurs if there are no
-preceding characters. In this version of MBASIC, the typing of &lt;*A&gt; instead of
+preceding characters. In this version of MBASIC, the typing of &lt;^A&gt; instead of
 the &lt;cr&gt; at the end of the line puts you into EDIT mode and allows the use of
 almost all the features of the EDIT command. If, having typed a &lt;cr&gt; you wish to
 edit the line just typed, use &lsquo;EDIT&nbsp;.&rsquo; &ndash; the full-stop indicates to the EDIT
 command that the current line is to be edited.
 </p>
-<p>
+<h4>
 EDIT Commands:
-</p>
-<p>
-T Inserts new characters into the line which is being edited (to a maximum
+</h4>
+<p class="noindent">
+I &nbsp; Inserts new characters into the line which is being edited (to a maximum
 of 255 characters including the original text). Insertion is stopped by typing
-&lt;ese&gt; or &lt;altmode&gt;, depending on your keyboard.
+&lt;esc&gt; or &lt;altmode&gt;, depending on your keyboard.
 </p>
-<p>
-&lt;del&gt; The delete key typed during an Insert command will delete the character
+<p class="noindent">
+&lt;del&gt; &nbsp; The delete key typed during an Insert command will delete the character
 to the left of the cursor.
 </p>
-<p>
-&lt;er&gt; If a carriage return is typed during an Insert command, the effect is to
+<p class="noindent">
+&lt;cr&gt; &nbsp; If a carriage return is typed during an Insert command, the effect is to
 terminate the Insertion and print the rest of the line; the edited version will
 then replace the original.
 </p>
-<p>
-x The action of the X command is similar to the I command, but it causes
-the printing of all characters to the right of the cursor, then it enters the &lsquo;IT&rsquo;
+<p class="noindent">
+X &nbsp; The action of the X command is similar to the I command, but it causes
+the printing of all characters to the right of the cursor, then it enters the &lsquo;I&rsquo;
 mode. This is a useful facility when new statements are to be added to the end of
 an existing line (but don&rsquo;t forget the colon which is used as a statement
 separator).
 </p>
-<p>
-H The H command has a similar action to the X command but it deletes,
+<p class="noindent">
+H &nbsp; The H command has a similar action to the X command but it deletes,
 rather than prints all characters to the right of the cursor, before entering the
 I mode.
 </p>
