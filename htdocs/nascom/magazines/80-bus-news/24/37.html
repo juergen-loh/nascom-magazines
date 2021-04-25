@@ -1,9 +1,6 @@
 <?php columnStart(1); ?>
 <p>
-37
-</p>
-<p>
-If the RAM-DISK. memory was addressed on a byte-by-byte basis, the data
+If the RAM-DISK memory was addressed on a byte-by-byte basis, the data
 transfer rate would be slowed, and the board would be rather clumsy to use.
 However Gemini have optimised the board for use with CP/M, and have made the
 interface disk-like. (See Fig 1).
@@ -11,7 +8,7 @@ interface disk-like. (See Fig 1).
 <p>
 One can regard the three IO ports as &lsquo;track&rsquo;, &lsquo;sector&rsquo;, and &lsquo;data&rsquo;. The
 address applied to the memory array is made up of three components: A0-A6
-coming from the seven-bit counter, A7-A1i4 from the &lsquo;sector&rsquo; latch, and A15-A18
+coming from the seven-bit counter, A7-A14 from the &lsquo;sector&rsquo; latch, and A15-A18
 from the &lsquo;track&rsquo; latch. In addition, the four high &lsquo;address&rsquo; lines from the
 &lsquo;track&rsquo; latch are compared with an on-board DIL switch to provide an enable
 signal to the memory array.
@@ -26,35 +23,7 @@ register), and with 128 bytes per sector, (the seven bits of address from the
 counter). So transfers to and from the RAM-DISK occur in blocks (or &lsquo;sectors&rsquo;)
 of 128 bytes each. A typical CP/M driver for the board would look like:
 </p>
-<p>
-1d a, (track) Get track number
-</p>
-<p>
-out (track _port),a Set it
-1d a, (sector) Get sector number
-out (sector _port),a ; Set it
-</p>
-<p>
-1d b,128
-</p>
-<p>
-1d c,data port
-ld hl, (dmaadr)
-inir
-</p>
-<p>
-Sector length
-</p>
-<p>
-Point at data port
-</p>
-<p>
-Set transfer address
-Move data (OTIR for out)
-</p>
-<p>
-we we OO we OH ee ewe
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-37-1.png"); ?>
 <p>
 &ndash; very simple and fast!
 </p>
@@ -64,14 +33,14 @@ requirements for support software, is also economical in hardware. In the case
 of a paged or mapped memory board, the memory has to be designed to work at
 the full speed of the shortest Z80 memory cycle &ndash; the M1. and refresh cycle.
 With the IO approach the memory array only has to meet the more relaxed
-specification of an I0 cycle, thus allowing slower and cheaper RAMs to be
+specification of an IO cycle, thus allowing slower and cheaper RAMs to be
 used, and leading to a more reliable board with larger margins on critical
-</p>
-<p>
 timing paths.
 </p>
-<p>
+<h3>
 GM833 &ndash; What you get
+</h3>
+<p>
 Now we&rsquo;ve covered the principles &ndash; what about the product?
 </p>
 <p>
@@ -80,9 +49,7 @@ find a ready assembled 8x8 board. The board is to the usual Gemini standard,
 with plated-through holes, silk screen component identification, and solder
 resist. The first thing you notice is that almost exactly half the board holds
 a dense array of ICs, the 64 64k dynamic RAMS of the RAM-DISK. The remaining
-</p>
-<p>
-Ics, (15 in all), handle the BUS interface, and the control of the array.
+ICs, (15 in all), handle the BUS interface, and the control of the array.
 </p>
 <p>
 Accesses to the memory array, and refresh of the memory array, are
@@ -100,8 +67,5 @@ of how the circuit works, together with a small section on software to drive
 the board. The software section is not extensive, and assumes that the board
 will be used in conjunction with a CP/M BIOS. (See below). It also gives an
 indication of how a BASIC program could drive the board directly.
-</p>
-<p>
-PLL SOP EOSIN LI TOA 8
 </p>
 <?php columnEnd(1); ?>

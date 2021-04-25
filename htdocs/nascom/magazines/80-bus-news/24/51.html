@@ -1,9 +1,6 @@
 <?php columnStart(1); ?>
-<p>
-51
-</p>
-<p>
-attractive. In order. to achieve this and still be compatible with previous
+<p class="continued">
+attractive. In order to achieve this and still be compatible with previous
 CP/M software, (and also to allow programs to maintain economical 128-byte
 buffers rather than larger ones), some software is interposed between CP/M
 and the disk drivers. This software maintains a physical sector buffer in
@@ -42,9 +39,7 @@ bytes to the buffer), because the odds are that the BDOS is performing a
 sequential Write, and so will be writing to another quarter of the same
 physical sector on the next Call. If the assumption is wrong, then nothing
 will have been lost, but if it is right, then the time taken to do a physical
-</p>
-<p>
--Write will have been saved. However a &lsquo;Must Write&rsquo; flag has to be set to say
+Write will have been saved. However a &lsquo;Must Write&rsquo; flag has to be set to say
 that the buffer contains unwritten data in case the next request is a read or
 a write of another physical sector. In fact the code of both the Read and
 Write commands does check this flag, and if necessary Writes the buffer to
@@ -54,7 +49,7 @@ disc before reusing it.
 The BDOS also passes some additional information in register C to the
 BIOS on every Write Call. If register C is zero, then it is a normal write.
 (i.e. the BIOS handles it in the manner described above). If register C is set
-.to 1, then the write is to a sector of the directory. In this case the buffer
+to 1, then the write is to a sector of the directory. In this case the buffer
 should be immediately re-written to disc, the write must not be defered. (Note
 This is in keeping with the &lsquo;rugged&rsquo; approach of CP/M, in making it difficult
 for you to accidently destroy directories by removing or changing discs at the

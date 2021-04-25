@@ -1,23 +1,17 @@
-<?php columnStart(1); ?>
-<p>
-&mdash;
-</p>
-<p>
-21
-</p>
-<p>
+<?php columnStart(1, "noindent"); ?>
+<h2 id="article1">
 80&mdash;BUS IO MAP &ndash; PART 2.
-</p>
+</h2>
 <p>
-In the last issue a brief summary of the I/O ports currently occupied by 80-
-BUS/Nasbus compatible boards was given, along with a request for any
+In the last issue a brief summary of the I/O ports currently occupied by
+80-BUS/<?php spChar("zwsp"); ?>Nasbus compatible boards was given, along with a request for any
 corrections to this and for any information on products not included. The
 following paragraphs are extracts from various letters received in response to
 the above request. Thanks to all concerned.
 </p>
-<p>
+<h3>
 Pluto
-</p>
+</h3>
 <p>
 Doctor Dark writes: &ldquo;Only two I/O ports are required for communication with
 Pluto. The ports have consecutive addresses that may be selected to be on any
@@ -35,20 +29,20 @@ addressing switch must be set to enable external addressing. For compatibility
 with Nascom&nbsp;1 systems, a DBDR option is provided by linking the points
 marked.&rdquo;
 </p>
-<p>
+<h3>
 Graphics Board
-</p>
+</h3>
 <p>
-Mr R. BE. Moyle writes: &ldquo;You may not be aware of S. Holmes&rsquo; Graphics Board.
+Mr R. E. Moyle writes: &ldquo;You may not be aware of S. Holmes&rsquo; Graphics Board.
 This board uses ports 8 &ndash; 31 to control a Texas Colour Graphics chip, two
 sound generators, a RTC, CMOS scratchpad memory and eight ADCs. Unfortunately
 the board is not fully 80-BUS compatible as it omits the &ldquo;obsolete&rdquo; signals
 and daisy-chain protocols. These are easily added, however, and moving the I/O
 addresses to 32 &ndash; 63 is also simple.&rdquo;
 </p>
-<p>
+<h3>
 CMOS RAM and RTC
-</p>
+</h3>
 <p>
 CHS Data Sciences write: &ldquo;We have produced a board which:
 </p>
@@ -57,7 +51,7 @@ a) has 16K of CMOS RAM and a Real Time Clock which also detects power up/down
 and reset conditions.
 </p>
 <p>
-b) standard I/O address is DO-D3, no alternative is suggested until such time
+b) standard I/O address is D0-D3, no alternative is suggested until such time
 as an I/O map is produced, the link selectable header plug may be changed for
 any contiguous block of 4 on a boundary of 4, paged memory is also on port
 FFH.
@@ -71,23 +65,19 @@ d) the board is fully Nasbus 4 compatible
 </p>
 <p>
 e) the memory is page selected by port FFH, additionally it will always be
-selected on page O (selected by reset) regardless of page switch setting, this
+selected on page 0 (selected by reset) regardless of page switch setting, this
 ensures that the board controls power up/down and &lsquo;manual&rsquo; resets
 </p>
 <p>
 This board does not use the National Semiconductor Real Time Clock and so it
-</p>
-<p>
-&lsquo; does produce the Year Date, the clock is supplied via a on-board battery so
-</p>
-<p>
+does produce the Year Date, the clock is supplied via a on-board battery so
 maintaining clocking integrity.&rdquo;
 </p>
-<p>
+<h3>
 IO Research A/D Board
-J. Da Silva Alvoeiro writes: &ldquo;I have one IO Research A/D Convertor Board and
-</p>
+</h3>
 <p>
+J. Da Silva Alvoeiro writes: &ldquo;I have one IO Research A/D Convertor Board and
 it uses ports 20-23, NOT 30-33 as described in your magazine.&rdquo;
 </p>
 <?php columnEnd(1); ?>

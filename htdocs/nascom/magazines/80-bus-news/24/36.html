@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-36
-</p>
-<p>
+<p class="continued">
 (that is doing the switching!) vanishes with it. Therefore the control program
 has to be copied across to the same addresses in all boards in the page mode
 system so that it can continue to run. (An identical copy then appears in the
@@ -14,7 +11,7 @@ particular page without crashing.
 </p>
 <p>
 (Users with page-mode Memory drives may have discovered by now that they
-cannot Boot a CP/M system set up for a memory drive if one or more of the.
+cannot Boot a CP/M system set up for a memory drive if one or more of the
 expected boards is absent).
 </p>
 <p>
@@ -26,9 +23,9 @@ for the presence or absence of paged (or banked) RAM.
 The standard page mode supports up to four boards, giving the standard
 64k of memory together with a 192k Memory disk.
 </p>
-<p>
+<h4>
 Memory Mapping
-</p>
+</h4>
 <p>
 This approach is neater than page mode, as the memory can be moved around
 (or remapped) in 4k sections, rather than the full 64k amounts. The 19 address
@@ -41,38 +38,18 @@ that there is no clash between source, destination, and the driving program.
 Also it has to cater for the case where a block transfer may straddle a 4k
 boundary (either source, destination, or both).
 </p>
-<p>
+<h4>
 Ram-Disk
-</p>
+</h4>
 <p>
 This finally leads me on to the concept of the Gemini RAM-DISK. Here the
 memory is not a system memory board, but is arranged as a block of memory
 separate from the 80-BUS address lines, which the CPU can only access via a
 few IO ports. To communicate with the memory, the CPU has to write an address
-to two IO ports, and then read/<?php spChar("zwsp"); ?>write data from/to another I0 port.
+to two IO ports, and then read/<?php spChar("zwsp"); ?>write data from/to another IO port.
 </p>
-<p>
-B0BUS 49-7
-</p>
-<p>
-Track Sector
--&mdash;s : 7-bit counter
-&gt; &gt; 7eitcounter| 1 VA
-Co
-A22-Al9 _
-AIS = AIS Al4-A7 A0-A6
-</p>
-<p>
-| 512K
-</p>
-<p>
-Enable
-DIL Memory _
-</p>
-<p>
-switch array
-</p>
-<p>
-FIG |
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-36-1.png"); ?>
+<h1 style="text-align: center">
+FIG 1
+</h1>
 <?php columnEnd(1); ?>
