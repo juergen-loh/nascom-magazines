@@ -1,8 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+Happy Talk
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by R. O&rsquo;Farrell
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-59 .
-Happy Talk by R. O&rsquo;Farrell
-</p>
 <p>
 One of the awkward things about CP/M is that it is exceedingly difficult
 to get programs and data from one machine to another, unless they can read
@@ -20,15 +25,17 @@ appropriate cable, checking that the transmit and receive lines on the
 different machines are connected to their opposites on the other machine. So
 on the reader machine one enters:
 </p>
-<p>
+<pre style="text-align: center">
 PIP filename.ext=RDR:
-</p>
-<p>
+</pre>
+<p class="noindent">
 and on the transmit machine:
-PIP PUN:=filename.ext
 </p>
+<pre style="text-align: center">
+PIP PUN:=filename.ext
+</pre>
 <p>
-For ASCII files, such as assembler listings, this works 0.K. up to a length of
+For ASCII files, such as assembler listings, this works O.K. up to a length of
 about 26k, depending on CP/M size. Intoxicated by power, we then try a COM
 file. It may appear to work. But STAT or XDIR or SD the received file, and
 compare the filesize with the untransmitted version. Diasaster has struck!
@@ -37,8 +44,8 @@ What has happened is that PIP, on receiving a CTRLZ (1AH) from the serial port
 has interpreted that as an end of file character. In the case of an ASCII file
 it would be, as an ASCII file contains only characters 20H to 7FH, with CRs
 and LFs. In the case of a COM file, the 1AH is an instruction, meaning LD
-rape &ndash; most useful! The specification of PIP suggests that selecting option
-[o for PIP should cause it to ignore ignore the normal CP/M end of file mark,
+A,(DE) &ndash; most useful! The specification of PIP suggests that selecting option
+[O] for PIP should cause it to ignore ignore the normal CP/M end of file mark,
 and look to the Console (keyboard) on the receiving machine for the EOF. If
 this is properly implemented in BDOS, and it usually isn&rsquo;t that I know of,
 then when all disc accesses on the transmitter have ceased and the cursor is

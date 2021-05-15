@@ -1,35 +1,17 @@
 <?php columnStart(1); ?>
 <p>
-20
-</p>
-<p>
 There are also three special functions to extract numeric values from a
 Field string. They are:
 </p>
-<p>
-CVI = Convert String to Integer number.
-cvs = Convert String to Single Precision number.
-CVD = Convert String to Double Precision number.
-</p>
-<p>
+<table>
+<tr><td style="padding-right: 6em;">CVI</td><td>= Convert String to Integer number.</td></tr>
+<tr><td>CVS</td><td>= Convert String to Single Precision number.</td></tr>
+<tr><td>CVD</td><td>= Convert String to Double Precision number.</td></tr>
+</table>
+<p class="noindent">
 For example:
 </p>
-<p>
-20 DEFDBL A-H
-</p>
-<p>
-80 OPEN ....
-</p>
-<p>
-90 FIELD&pound;1,8 AS NUMBERS, etc
-</p>
-<p>
-130 GET&pound;1,6 &lsquo;ie; READ record number 6
-140 NUM=CVD(NUMBER$ )
-</p>
-<p>
-150 ete
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-20-1.png"); ?>
 <p>
 Here record number 6 is read and the Field &lsquo;NUMBER$&rsquo; is converted into a
 Double Precision value that is stored in variable &lsquo;&rsquo;NUM&rsquo; for further
@@ -37,72 +19,36 @@ processing. Note the declaration of the precision of numeric variables in 20.
 The main advantage of the use of CV and MK functions is that less space is
 required in the records, and on disk.
 </p>
-<p>
+<h3>
 EXTENDED FIELDS and ARRAYS.
-</p>
+</h3>
 <p>
-Tt is often necessary to store a lot of Data in the Fields of one Record.
+It is often necessary to store a lot of Data in the Fields of one Record.
 For example the amount spent per month on Petrol. It would be very tedious to
-have to type in something like ....., 4 AS JAN$S, 4 AS FEBS etc. (It is also
+have to type in something like ....., 4 AS JAN$, 4 AS FEB$ etc. (It is also
 convenient to restrict line lengths to less than 80 characters to allow as
 much use as possible of the extended screen editing features of SYS/GEMINI
 CP/M). Fortunately it is possible to continue FIFLD statements on to several
 lines, and to use FOR-NEXT loops in their construction:&ndash;
 </p>
-<p>
-10 DIM MTH$(11),DATESS(11),BALANCES(11),etc
-20 MTH$(0)="JAN&rdquo; :MTH$(1)="FEB&rdquo;: ete
-</p>
-<p>
-70 OPEN &ldquo;R",&pound;1, &ldquo;SALARY. DAT&rdquo;, 214
-</p>
-<p>
-80 FOR X=0 TO 11
-</p>
-<p>
-90 FIELD&pound;1,20 AS NAME$,24 AS STREET$S,18 AS TOWN$S,8 AS POSTCODES
-</p>
-<p>
-100 FIELD&pound;1,70 AS DUMMY$,(12*X) AS SPACE$,4 AS BALANCES (X),8 AS DATESS(X)
-110 NEXT X
-</p>
-<p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-20-2.png"); ?>
+<p class="noindent">
 This example is not so easy to understand.
 </p>
-<p>
-Line 20 &ndash; The names of the months are stored in an array so that they can
-be printed using a FOR-NEXT loop as desired later.
-</p>
-<p>
-The file is OPEN&rsquo;ed. It is assumed that it stores the Monthly
+<table>
+<tr><td>Line&nbsp;20</td><td>&ndash;</td><td>The names of the months are stored in an array so that they can
+be printed using a FOR-NEXT loop as desired later.</td></tr>
+<tr><td>Line&nbsp;70</td><td>&ndash;</td><td>The file is OPEN&rsquo;ed. It is assumed that it stores the Monthly
 salary and Date of payment for the person named in the record. The
-Record is 214 bytes long as will be shown.
-</p>
-<p>
-Sets up Fields for the self evident bits of Data.There is not
+Record is 214 bytes long as will be shown.</td></tr>
+<tr><td>Line&nbsp;90</td><td>&ndash;</td><td>Sets up Fields for the self evident bits of Data.There is not
 sufficient room in 90 to continue unless a non-screen editable
-line is entered. The Fields in line 90 occupy 70 bytes.
-</p>
-<p>
-The first Field is a &lsquo;dummy&rsquo; to ensure that all the Fields in
-line 100 start later than Fields in line 90.As long as no Data is
+line is entered. The Fields in line 90 occupy 70 bytes.</td></tr>
+<tr><td>Line&nbsp;100</td><td>&ndash;</td><td>The first Field is a &lsquo;dummy&rsquo; to ensure that all the Fields in
+line 100 start later than Fields in line 90. As long as no Data is
 LSET or RSET into the Field DUMMY$ then Data in the Fields of
 line 90 is not corrupted. SPACE$ is another dummy, used as
-described below.
-</p>
-<p>
-Continue the loop until 12 &lsquo;BALANCE&rsquo; and &lsquo;DATE&rsquo; fields are set.
-</p>
-<p>
-Line 70
-</p>
-<p>
-Line 90
-</p>
-<p>
-Line 100
-</p>
-<p>
-Line 110
-</p>
+described below.</td></tr>
+<tr><td>Line&nbsp;110</td><td>&ndash;</td><td>Continue the loop until 12 &lsquo;BALANCE&rsquo; and &lsquo;DATE&rsquo; fields are set.</td></tr>
+</table>
 <?php columnEnd(1); ?>

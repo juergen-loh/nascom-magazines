@@ -1,116 +1,6 @@
-<?php columnStart(1); ?>
+<?php columnStartReverse(34); ?>
 <p>
-eee ee erento pone
-</p>
-<p>
-@eeeeeseeeecene
-</p>
-<p>
-pootkshce
-</p>
-<p>
-eeveseneseosn
-</p>
-<p>
-@eeeeeeeonee
-</p>
-<p>
-soepe
-</p>
-<p>
-es
-</p>
-<p>
-Aeeseee
-</p>
-<p>
-al
-</p>
-<p>
-oe
-</p>
-<p>
-eeoeee
-</p>
-<p>
-Peseece
-</p>
-<p>
-eecon&gt;
-</p>
-<p>
-@ 8 ejeie
-</p>
-<p>
-eeseee
-</p>
-<p>
-pesecoos
-</p>
-<p>
-eee,
-</p>
-<p>
-peeeceee
-</p>
-<p>
-MonrtoR
-</p>
-<p>
-ee eee
-</p>
-<p>
-ee
-</p>
-<p>
-weceeceoe
-</p>
-<p>
-woabh
-</p>
-<p>
-wpeeseve
-</p>
-<p>
-eeeeue
-</p>
-<p>
-eeey&raquo;
-</p>
-<p>
-weteovse
-</p>
-<p>
-eeeypy
-</p>
-<p>
-weeeees
-</p>
-<p>
-coeesroeecsoce
-</p>
-<p>
-eeoes
-</p>
-<p>
-Basic
-</p>
-<p>
-weooeese
-</p>
-<p>
-Wait States
-</p>
-<p>
-Returning briefly to the original question. Bill had already carried out
-the standard modification of only enabling Wait states during M1 cycles, not
-every memory cycle. (Looking at my N2 I see I did this by lifting the leg of
-</p>
-<p>
-27
-</p>
-<p>
-Reingert IC46 while making sure that pins 3 and 13 remain
+Reinsert IC46 while making sure that pins 3 and 13 remain
 out of their respective holes. Connect the wire from pin 3
 (decoder address A0) to pin 12 of workspace link block
 (LKB9). (Connects to A11). Connect the wire from pin 13
@@ -124,22 +14,22 @@ signal). TEST.
 Now we come to setting up the decoding. What you do
 now is a matter of taste. What I did was: Ensure LSW1
 switch 8 up, switch 7 down. On LKS1 connect 4 to 6 and on
-to TP13 (OV in bottom right corner) &ndash; this permanently
+to TP13 (0V in bottom right corner) &ndash; this permanently
 enables the decoder IC46. Connect any two desired 4k
 blocks from their respective pins on LKS1 to pin 7
 (/XROM). This gives a memory map of:
 </p>
-<p>
-0000-O7FF Nas-Sys
-O800-OFFF VideotWorkspace
-1000-BFFF Ram B(?)
-C000-DFFF 4 x 2716 EPROMs
-E000-FFFF Basic.
+<p class="indent">
+0000-07FF &nbsp; Nas-Sys<br>
+0800-0FFF &nbsp; Video+Workspace<br>
+1000-BFFF &nbsp; Ram B(?)<br>
+C000-DFFF &nbsp; 4 x 2716 EPROMs<br>
+E000-FFFF &nbsp; Basic.
 </p>
 <p>
 Adding an external switch between IC6 pin 13 (or
 lower end of R56) and Ground allows either bank of four
-27168 to be switched in to the C000-DFFF address range. If
+2716s to be switched in to the C000-DFFF address range. If
 the full 16K is wanted on line together, then IC6 could be
 connected to A13 rather than a switch. In either case it
 might be advisable to lift the leg of IC6 from its socket
@@ -166,5 +56,19 @@ The more adventurous among you might like to replace
 the switches by a 74LS74 and some additional logic, and
 have software controlled selection of the EPROM banks via
 an IO port .... even more like the BBC!
+</p>
+<?php columnChangeReverse(4); ?>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-27-1.png"); ?>
+<?php columnEnd(4); ?>
+<br>
+<?php columnStart(1); ?>
+<h4>
+Wait States
+</h4>
+<p>
+Returning briefly to the original question. Bill had already carried out
+the standard modification of only enabling Wait states during M1 cycles, not
+every memory cycle. (Looking at my N2 I see I did this by lifting the leg of
 </p>
 <?php columnEnd(1); ?>

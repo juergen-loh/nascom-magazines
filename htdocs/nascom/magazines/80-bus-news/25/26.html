@@ -1,81 +1,7 @@
-<?php columnStart(1); ?>
-<p>
-pee]
-</p>
-<p>
-eee
-</p>
-<p>
-ee 6
-* es @
-</p>
-<p>
-|
-</p>
-<p>
-oe oe
-es ea
-</p>
-<p>
-eet eee
-</p>
-<p>
-eo of
-</p>
-<p>
-r&lt;46
-</p>
-<p>
-Basic
-</p>
-<p>
-Mon
-</p>
-<p>
-*co8
-* ef
-</p>
-<p>
-I
-</p>
-<p>
-ee c
-ee
-</p>
-<p>
-[
-</p>
-<p>
-[:&rsquo;: 122:
-* e eof [fF
-</p>
-<p>
-Tit
-</p>
-<p>
-eevee
-</p>
-<p>
-*eeet
-</p>
-<p>
-ee 86
-</p>
-<p>
-@eeet
-</p>
-<p>
-(seace
-</p>
-<p>
-SB tke BAB Oa EE PRESTO NEEL ELEN BaXd fy
-</p>
-<p>
-26
-</p>
+<?php columnStartReverse(34); ?>
 <p>
 If we now turn to the N2 memory decoding you will see
-a. simplified version in Fig 1. As you can see, the address
+a simplified version in Fig 1. As you can see, the address
 decoder IC46 is only enabled by the decode PROM when /MREQ
 goes low. This is fine for the 2708s, as their /CS access
 time is 120ns, but is not suitable for connection to the
@@ -90,15 +16,15 @@ when /MREQ goes low, the high order address bits are
 decoded in the PROM (1C47). If it is a valid access to the
 EPROMs, then the Output Enable pin of all the EPROMs will
 be taken low, and the one that has been selected by its
-/CE line will output its data onto the Bus. (In this case.
+/CE line will output its data onto the Bus. (In this case
 the /OE signal has to appear at least 120ns before the
 data is required). If it is not an EPROM access, then the
 outputs are not enabled, and the only penalty paid is that
 one EPROM has been powered up but not used.
 </p>
-<p>
+<h4>
 How to do it.
-</p>
+</h4>
 <p>
 The following description will assume the
 modification is being performed on a standard N2 to which
@@ -115,8 +41,8 @@ and makes a neat job of the modification.
 Start by removing the N2 from its card frame and
 placing it in front of you. Remove any EPROMs already
 fitted in IC sockets 35-42. Remove any associated links
-from LKS1. (This should just have the standard 3, 1-16 2-
-15 8-9). Remove all links from the strapping fields LKBi-LKB8.
+from LKS1. (This should just have the standard 3, 1-16 2-15
+8-9). Remove all links from the strapping fields LKB1-LKB8.
 TEST. Put the card component side down with the
 EPROM sockets along the bottom. Ignoring the workspace RAM
 at the right hand end, wire together all pin 19s of the
@@ -124,11 +50,14 @@ byte-wide sockets including the Monitor and the Basic ROM.
 (This connects in A10.) See Fig. TEST. Next wire together
 all pin 20s, this time only do the 8 empty sockets, DO NOT
 INCLUDE THE MONITOR OR BASIC. TEST. Next wire together all
-pin 218, once again only do the 8 empty sockets, DO NOT
+pin 21s, once again only do the 8 empty sockets, DO NOT
 INCLUDE THE MONITOR OR BASIC. TEST. Turn the card over. On
 the eight link blocks link pin 4 to pin 8. (Connects /CS
 from decoder to /CE) &ndash; see Fig. TEST. Remove IC46 (LS155
 decoder) from its socket and gently bend up pins 3 and 13.
 Solder two lengths of thin insulated wire to these pins.
 </p>
-<?php columnEnd(1); ?>
+<?php columnChangeReverse(4); ?>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-26-1.png"); ?>
+<?php columnEnd(4); ?>

@@ -1,30 +1,27 @@
 <?php columnStart(1); ?>
 <p>
-21
-</p>
-<p>
 The facility of moving along the Record to the next Field is used in a
 &lsquo;dynamic&rsquo; way. The first value of X in the FOR-NEXT loop of line 80 is 0.
 SPACE$ is a&rsquo;dummy&rsquo; field that &lsquo;grows&rsquo; in size. The first time round its size
-is 0 bytes (since 12*0=0), so the Field BALANCES(O) will be the 4 bytes
-immediately after the Field POSTCODES. The Field DATES$S(0) will be the next 8
+is 0 bytes (since 12*0=0), so the Field BALANCE$(0) will be the 4 bytes
+immediately after the Field POSTCODE$. The Field DATES$(0) will be the next 8
 bytes.
 </p>
 <p>
 Note the use of ARRAYS to store the Balance and Date Fields. The second
-iteration of the loop will fix SPACES at 12 bytes and so Fields BALANCES(1),
-DATES$(1) will be pushed just beyond BALANCESS(0), DATES$(0). The process
+iteration of the loop will fix SPACES at 12 bytes and so Fields BALANCE$(1),
+DATES$(1) will be pushed just beyond BALANCES$(0), DATES$(0). The process
 continues until the 12 Fields (0) to (11) have been set up.
 </p>
 <p>
 The total size of the Record is thus 70+(12*12), or 214 bytes. Data can
 be set into the BALANCES$(), DATESS() array Fields from loops, or directly as
-the program dictates. Again so long as no Data is &lsquo;SET&rsquo; into SPACESS, then no
+the program dictates. Again so long as no Data is &lsquo;SET&rsquo; into SPACES$, then no
 corruption of other Data occurs.
 </p>
-<p>
+<h3>
 DYNAMIC DATA FILES and AUTOMATIC BACKUP.
-</p>
+</h3>
 <p>
 It is always good practice to make at least two (separate disk) copies of
 all Files, and DATA files are no exception. It is quite easy to make the BASIC
@@ -32,35 +29,17 @@ program save Records to Disks on two or more drives during processing.
 </p>
 <p>
 Another problem that can often arise is that one might wish to run a
-certain program on one of.a number of data files. For example I might have my
-Callsign files organised as &ldquo;A-CG.DAT&rdquo;, "H-M.DAT&rdquo;, "N-R.DAT&rdquo; or &ldquo;S-Z.DAT&rdquo; .The
+certain program on one of a number of data files. For example I might have my
+Callsign files organised as &ldquo;A-G.DAT&rdquo;, "H-M.DAT&rdquo;, "N-R.DAT&rdquo; or &ldquo;S-Z.DAT&rdquo;. The
 problem here is not too great as I could offer a choice of the 4 files, and
 open the appropriate one. One program that I wrote needed to access 99
 different small DATA files of 2 or 4K bytes each, and so a better method was
 needed.
 </p>
-<p>
-140 DIM CLASS(20),
-</p>
-<p>
-20 INPUT &ldquo;Which Class (1 to 20). &ldquo;;CN$
-</p>
-<p>
-30 CN=VAL(CNS$)
-</p>
-<p>
-40 REM CHECK ROUTINE HERE &ndash; Check &lsquo;CN&rsquo; for Errors
-50 FNAM$="CLASS"+"CN$"+&rdquo;. DAT&rdquo;
-</p>
-<p>
-60 OPEN &ldquo;R",&pound;1, FNAM$,78
-</p>
-<p>
-70 FIELD ete;
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-21-1.png"); ?>
 <p>
 When I use Random files, I always like to &lsquo;Initialize&rsquo; my Data files
-pefore running my Data handling program for the first time (assuming that I
+before running my Data handling program for the first time (assuming that I
 know how many Records the file will contain). There are several reasons for
 this. The main reason is that I can then be sure that I know exactly what Data
 is in any Field of any Record. If Data is read from an unwritten and un-initialized
@@ -68,24 +47,8 @@ record, sometimes peculiar things can happen, since this can
 contain any &lsquo;junk&rsquo; depending what that part of the disk was used for
 previously. I usually set up Fields as all blank, or all &lsquo;Periods&rsquo; as these
 are convenient for immediate printing. It may sometimes be useful to set up a
-</p>
-<p>
-&ndash; gmall field as a &lsquo;Marker&rsquo; to indicate whether the Record is Free or not. There
-</p>
-<p>
+small field as a &lsquo;Marker&rsquo; to indicate whether the Record is Free or not. There
 is scope here for the use of FOR-NEXT loops.
 </p>
-<p>
-140 REM FILE INITIALIZATION &ndash; INITAREA.BAS 06/09/83
-</p>
-<p>
-20 PRINT CHR$(26):PRINT TAB(20) &ldquo;AREA FILE INITIALIZATION&rdquo;
-30 FOR X=1 TO 3
-</p>
-<p>
-40 FNAM$="AREA"+STR$(X)+&rdquo;. DAT&rdquo;
-</p>
-<p>
-50 FOR RN=1 TO 100
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-21-2.png"); ?>
 <?php columnEnd(1); ?>

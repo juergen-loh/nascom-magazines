@@ -416,6 +416,8 @@ function columnStartReverse($column)
 {
 	switch ($column) {
 	case 2:		echo "<!-- 2 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6 order-".BootstrapTier()."-last\">\n";	break;
+	case 4:		echo "<!-- 4 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3 order-".BootstrapTier()."-last\">\n";	break;
+	case 34:	echo "<!-- 4 columns reverse: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9 order-".BootstrapTier()."-last\">\n";	break;
 	default:	echo "<columnStartReverse($column)>\n";																		break;
 	}
 }
@@ -424,6 +426,7 @@ function columnChangeReverse($column)
 {
 	switch ($column) {
 	case 2:		echo "<!-- 2 columns reverse: change --></div><div class=\"col-".BootstrapTier()."-6 order-".BootstrapTier()."-first\">\n";		break;
+	case 4:		echo "<!-- 4 columns reverse: change --></div><div class=\"col-".BootstrapTier()."-3 order-".BootstrapTier()."-first\">\n";		break;
 	default:	echo "<columnChangeReverse($column)>\n";																		break;
 	}
 }

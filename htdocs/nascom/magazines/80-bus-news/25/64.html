@@ -1,23 +1,12 @@
 <?php columnStart(1); ?>
-<p>
-64
-</p>
-<p>
+<p class="continued">
 record numbers and N is the number of records a search for I$ would go
 something like this:
 </p>
 <p>
-10 OPEN &ldquo;R",&pound;1,"FRED.DAT&rdquo;
-20 FOR R=0 TO N
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-64-1.png"); ?>
 </p>
-<p>
-30 IF K$(R) = I$ THEN 50
-4O NEXT
-</p>
-<p>
-50 GET &pound;1,R(R)
-</p>
-<p>
+<p class="noindent">
 This would acceptably fast as the search of the arrays would only take a
 second or so, but the limitation would be the space available for the arrays.
 Even if the contents of the key array were kept small, and the record number
@@ -35,20 +24,7 @@ theme would be to perform the search for the record number directly from disk,
 thus:
 </p>
 <p>
-10 OPEN &ldquo;R",&pound;1, &ldquo;PRED. DAT&rdquo;
-</p>
-<p>
-20 OPEN &ldquo;I",&pound;2,"FRED.NDX&rdquo;
-</p>
-<p>
-30 IF BOF(2) THEN PRINT &ldquo;Not found&rdquo;: END
-40 INPUTE&pound;2, J$
-</p>
-<p>
-50 IF LEFT$(J$,4) &lt;&gt; I$ THEN 30
-</p>
-<p>
-60 GET &pound;1,VAL(RIGHT$(J$,4))
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-64-2.png"); ?>
 </p>
 <p>
 Now this would be somewhat slower, but has the advantage that any number of
@@ -74,7 +50,5 @@ sequentially, test if I$ is greater or lesser that the current input J$, if it
 is not write out the current J$ to a new file. If the current J$ is greater
 than I$ then write out the current I$, followed by the current J$, and then
 continue copying J$ to the end of the file. Something like this.
-</p>
-<p>
 </p>
 <?php columnEnd(1); ?>

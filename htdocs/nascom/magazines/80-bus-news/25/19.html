@@ -1,44 +1,28 @@
 <?php columnStart(1); ?>
-<p>
-19
-</p>
-<p>
-150 INPUT &ldquo;What TOWN. &ldquo;sTNS
-</p>
-<p>
-160 INPUT etc;
-</p>
-<p>
-170 LSET CALLS=CSGN$: LSET TOWNS=TNS &lsquo;etc;
-180 PUTS&pound;1 , NEXTRECORD
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-19-1.png"); ?>
 <p>
 Suppose that CSGN$="G30CB&rdquo;. Then since the CALL$ Field is 8 Bytes long,
-the effect of 180 is to produce a LEFT justified Field &ldquo;G30CB &ldquo;, i.e. 3
+the effect of 180 is to produce a LEFT justified Field &ldquo;G30CB &nbsp; &ldquo;, i.e. 3
 trailing spaces are added to &lsquo;pad out&rsquo; the variable. It does not normally
 matter whether the field is LEFT or RIGHT justified as long as the same
 standard is used throughout the program. It is obviously essential to know how
 the Field is justified. In some cases such as the Date Field, there will be no
-padding and the length will be constant. Thus the Field DATES can often be
-</p>
-<p>
+padding and the length will be constant. Thus the Field DATE$ can often be
 used directly.
 </p>
-<p>
+<h3>
 NUMERIC FIELDS.
-</p>
+</h3>
 <p>
 Much of the above discussion is correct only in respect of String data.
-It is usually 0.K. to store some types of numbers directly into strings and
+It is usually O.K. to store some types of numbers directly into strings and
 such numbers can be retained in this way. e.g.
 </p>
-<p>
-470 INPUT &ldquo;Enter Telephone Number &ldquo;; TELS
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-19-2.png"); ?>
 <p>
 Numbers to be used in calculations may also be input in this way if
 preferred. In fact it may be a good idea to input all data in string form as
-this can mean easier and. better Error trapping. Note that numbers stored in
+this can mean easier and better Error trapping. Note that numbers stored in
 this way will usually require more Disk space. Data stored in this way must
 however be converted to Numeric form by use of the VAL function before any
 calculations can be carried out.
@@ -47,37 +31,24 @@ calculations can be carried out.
 The alternative way to store Numeric data still requires that it be
 LSET or RSET. Before this can be done the number must be converted into String
 form by the use of a special function. One of three possible choices must be
-</p>
-<p>
 made:
 </p>
-<p>
-MKI$ = Make Integer Number into a 2 byte string.
-MKS$ = Make Single Precision Number into 4 byte string.
-MKD$ = Make Double Precision Number into 8 byte string.
-</p>
-<p>
+<table>
+<tr><td style="padding-right: 6em;">MKI$</td><td>= Make Integer Number into a 2 byte string.</td></tr>
+<tr><td>MKS$</td><td>= Make Single Precision Number into 4 byte string.</td></tr>
+<tr><td>MKD$</td><td>= Make Double Precision Number into 8 byte string.</td></tr>
+</table>
+<p class="noindent">
 And typical usage:
-20 DEFSNG A-H
 </p>
-<p>
-60 FIELD&pound;2,4 AS BBAL$, etc
-120 INPUT &ldquo;Enter Bank Balance &ldquo;;BAL
-130 LSET BBALS=MKS$ (BAL)
-</p>
-<p>
-Line 20 &ndash; Defines that all numeric variables from A-H are to be treated as
-Single Precision.
-</p>
-<p>
-Line 60 &ndash; Since BBAL$ is the Field for the Bank Balance, assumed single
-Precision, a space of 4 bytes is set.
-</p>
-<p>
-Line 120 = The balance is entered as a number.
-</p>
-<p>
-Line 130 &ndash; The balance is made into a single precision string, and LSET
-into the Field.
-</p>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-19-3.png"); ?>
+<table>
+<tr><td>Line&nbsp;20</td><td>&ndash;</td><td>Defines that all numeric variables from A-H are to be treated as
+Single Precision.</td></tr>
+<tr><td>Line&nbsp;60</td><td>&ndash;</td><td>Since BBAL$ is the Field for the Bank Balance, assumed single
+Precision, a space of 4 bytes is set.</td></tr>
+<tr><td>Line&nbsp;120</td><td>&ndash;</td><td>The balance is entered as a number.</td></tr>
+<tr><td>Line&nbsp;130</td><td>&ndash;</td><td>The balance is made into a single precision string, and LSET
+into the Field.</td></tr>
+</table>
 <?php columnEnd(1); ?>
