@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+MORE HAPPY TALK
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+By Rory O&rsquo;Farrell
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-61
-</p>
-<p>
-MORE HAPPY TALK By Rory O&rsquo;Farrell
-</p>
 <p>
 My note on computer to computer communications in 80-BUS News Vol 2 No 5
 has rapidly been outdated. I wrote then of the method of turning the file into
@@ -14,11 +17,15 @@ Steven Fisher.
 </p>
 <p>
 His method of getting the file into HEX is to use a Public Domain utility
-called UNLOAD This utility takes a&nbsp;.COM file, and converts it into a file in
--HEXformat. He gives the entire object code for this in the form of a HEX
+called UNLOAD. This utility takes a .COM file, and converts it into a file in
+.HEX format. He gives the entire object code for this in the form of a HEX
 listing. This is reprinted below. It can be typed up using a suitable editor,
 and saved to disc as UNLOAD.HEX. Then you use the command:
+</p>
+<pre class="indent2">
 A&gt;LOAD UNLOAD
+</pre>
+<p class="continued">
 to convert it back to an object file. If you have any mistypings, these will
 show up as checksum errors, causing LOAD to protest and abort. Correct such
 errors by retyping or otherwise editing the lines in question, and go through
@@ -27,8 +34,12 @@ then you can try it out.
 </p>
 <p>
 It is used by typing:
-ADUNLOAD FILE 0100
-where FILE must have the extension&nbsp;.COM, which you need not specify, and 0100
+</p>
+<pre class="indent2">
+A&gt;UNLOAD FILE 0100
+</pre>
+<p class="continued">
+where FILE must have the extension .COM, which you need not specify, and 0100
 is the address at which it is to live. This will create, on the same drive as
 UNLOAD, a new file called FILE.HEX. So far, so good!
 </p>
@@ -39,21 +50,15 @@ contains the patch for PIP for communications.
 </p>
 <p>
 With ZSID or DDT, patch as follows:
+</p>
+<pre class="indent2">
 ZSID PIP.COM
-</p>
-<p>
-REE KKH ;ZSID answers with a size
-</p>
-<p>
-&pound;IPIPIO.HEX sInsert the name of the file to be used
-ERO ;Read it, Zero offset
-</p>
-<p>
-&pound;G0 sExit
-</p>
-<p>
+*** ***        ;ZSID answers with a size
+&pound;IPIPIO.HEX    ;Insert the name of the file to be used
+&pound;R0            ;Read it, Zero offset
+&pound;G0            ;Exit
 SAVE 30 PIP.COM
-</p>
+</pre>
 <p>
 A copy of PIP with this modification will need to be on both receiving
 and transmitting machines. The easiest way is to PIP the HEX files from one to
@@ -65,11 +70,15 @@ To use this method of transfer, set up the PUN: to be a PTP: and the RDR:
 to be a PTR: on both machines. UNLOAD the file you require to transmit, then
 on the receiving machine type:
 </p>
-<p>
+<pre class="indent2">
 PIP FILENAME.HEX=INP:
+</pre>
+<p class="continued">
 and on the transmitter:
-PIP PUN: =FILENAME.HEX, EOF:
 </p>
+<pre class="indent2">
+PIP PUN:=FILENAME.HEX,EOF:
+</pre>
 <p>
 During the course of the transfer, the computers will each respect the
 other&rsquo;s need for disc accesses, and the cursor will be restored when the file

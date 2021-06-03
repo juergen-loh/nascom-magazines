@@ -1,10 +1,7 @@
 <?php columnStart(1); ?>
 <p>
-30
-</p>
-<p>
 On studying the 829 manual, it became apparent that it was impossible
-to configure the card for both 8" with Ready line, and 5.25 inch without Ready
+to configure the card for both 8&Prime; with Ready line, and 5.25 inch without Ready
 line. If the 5.25 inch drives had been Micropolis there would not have been a
 problem. Therefore I consulted the designer of the 829, who kindly advised a
 simple modification to the card which enhances it so that it can support this
@@ -16,7 +13,7 @@ this disables the Ready line input. This link should now be reinserted. Link 1
 is left as before, linking B to C only. At this point the system will not
 work, since the 1797 will not operate without a Ready signal, and when the
 5.25 inch drives are selected, no signal is provided. Therefore two diodes are
-added so that when drive O or 1 is selected, a Ready signal is provided. When
+added so that when drive 0 or 1 is selected, a Ready signal is provided. When
 drive 2 is selected, the 8 inch drive Ready signal operates as normal. Insert
 a diode between pin 22 and pin 26, also pin 22 to pin 28 underneath the 8 inch
 connector on the card. A hole in the card running from pin 22 to link 1 (A)
@@ -25,29 +22,27 @@ cathode) must be at the pin 26 and pin 28 ends. In addition it is essential to
 alter the value of R18 from 150 to 3K3 (or rather more if you prefer) as
 otherwise the diodes cannot pull down the Ready line enough to activate it.
 </p>
-<p>
+<h3>
 Summary of Modification
+</h3>
+<p>
 Applies to GM829 with Pertec or Teac 5.25 inch drives at addresses 0
 and 1, and 8 inch drive(s) at addresses 2 and optionally 3.
 </p>
-<p>
-Link 1: B to C only.
-</p>
-<p>
-Link 3: Inserted.
-</p>
-<p>
-Diode from PL3 pin 22 to PL3 pin 26 (cathode end at pin 26).
-Diode from PL3 pin 22 to PL3 pin 28 (cathode end at pin 28).
+<p class="noidnent">
+Link 1: B to C only.<br>
+Link 3: Inserted.<br>
+Diode from PL3 pin 22 to PL3 pin 26 (cathode end at pin 26).<br>
+Diode from PL3 pin 22 to PL3 pin 28 (cathode end at pin 28).<br>
 R18 changed from 150 to 3K3 or rather more.
 </p>
-<p>
+<h3>
 Further Difficulty
-</p>
+</h3>
 <p>
 One further problem was encountered. When PIPing files to the 8 inch
 drive, it would sometimes fail to give the drive ready signal. It was being
-used as-a single sided drive with a single sided disk. The drive can tell
+used as a single sided drive with a single sided disk. The drive can tell
 whether a single or double sided disk has been inserted, because 8 inch disks
 have the index hole in different places to allow this to be distinguished.
 Although the software was attempting only to use the first side (side 0),
@@ -63,6 +58,5 @@ single sided disks may be used as if they are double sided, without the drive
 objecting. This generally works perfectly, just as 5.25 inch single sided
 diskettes generally work perfectly when used as double sided.
 </p>
-<p>
-</p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

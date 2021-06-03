@@ -11,26 +11,26 @@ GM809, GM829 compatibility/<?php spChar("zwsp"); ?>upgrading
 <p>
 This is a question that has cropped up several times recently. The answer
 is that the Gemini GM829 FDC/SASI board can be regarded as a GM809HL. With the
-&lsquo;HL&rsquo; level of trim you gain software controlled 5.25"/8" switching together
+&lsquo;HL&rsquo; level of trim you gain software controlled 5.25&Prime;/8&Prime; switching together
 with a SASI interface. Other than that the products are identical (ports,
 software interface etc). For some one currently running a system with GM809,
 upgrading is a matter of a) getting a GM829; b) Checking the straps; c)
 Plugging it in. That&rsquo;s all there is to it.
 </p>
 <p>
-The software controllable 5.25"/8" switching of GM829 is quite useful &ndash;
-even if you don&rsquo;t have 8" drives connected to your system. This is because the
+The software controllable 5.25&Prime;/8&Prime; switching of GM829 is quite useful &ndash;
+even if you don&rsquo;t have 8&Prime; drives connected to your system. This is because the
 Western Digital Floppy disk controller used on GM809/GM829 is limited in the
 maximum rate it can step the head between tracks on the attached drives. When
-set for 5.25" drives it can only achieve a 6ms stepping rate, but the modern
+set for 5.25&Prime; drives it can only achieve a 6ms stepping rate, but the modern
 Japanese drives (e.g. TEAC FD55Es &amp; Fs) can be stepped at 3ms/step. Running
 them at the slower rate results in reduced performance and a &lsquo;graunching&rsquo;
 noise from the drive (non destructive!). However, with GM829, whenever a SEEK
-is required, the 5.25"/8" control can be flipped to 8&rdquo;. The main effect of
+is required, the 5.25&Prime;/8&Prime; control can be flipped to 8&Prime;. The main effect of
 this is to double the clock frequency to the Controller chip, which results in
 all stepping times being halved. Thus drives can now be stepped as fast as
 3ms/step, leading to increased performance and much quieter stepping. (Once
-the seek is complete, the control bit is obviously flipped back to the 5.25"
+the seek is complete, the control bit is obviously flipped back to the 5.25&Prime;
 setting before doing the read/<?php spChar("zwsp"); ?>write operation.)
 </p>
 <p>

@@ -1,24 +1,23 @@
 <?php columnStart(1); ?>
-<p>
-44
+<p class="noindent">
+1) A few words telling me what to expect (e.g. Naspen file &permil; 1200 baud, or
+48tpi Poly-Dos disk). and
 </p>
-<p>
-1) A few words telling me what to expect (e.g. Naspen file % 1200 baud, or
-A48tpi Poly-Dos disk). and
+<p class="noindent">
 2) a stamped addressed label (or envelope) for the return of your media if so
+required.
 </p>
 <p>
-required.
 So put your fingers to the keyboard and send the results to 80-BUS News.
 </p>
-<p>
+<h3>
 VIDEO OUTPUT STAGES
-</p>
+</h3>
 <p>
 I was recently doing some work with a video output stage, and, having a
 reasonable &lsquo;scope to hand as a result, I decided to look at the ouput stage of
 Gemini IVC. There were two points I wanted to deal with, a) the low level of
-output ( &lt; standard 1V p-p), and b) &lsquo;The marching sands of time&rsquo;. (Background
+output (&nbsp;&lt; standard 1V p-p), and b) &lsquo;The marching sands of time&rsquo;. (Background
 interference patterns that are noticeable when using large areas of inverse
 video).
 </p>
@@ -28,9 +27,7 @@ follower driven by the video signal from IC3a (via R5), and the mixed syncs
 from IC5f (via R1). The ideal output waveform is shown in Fig 2. This consists
 of a three level signal whose peak-to-peak amplitude is 1V (when driving into
 a 75 ohm load). The three levels of the signal are white, black, and sync, and
-</p>
-<p>
-+5y their relative amplitudes are also given
+their relative amplitudes are also given
 in Fig 2. Assuming a perfect emitter
 follower with an output impedance of 75
 ohms, we want to aim for a 2v p-p signal
@@ -43,45 +40,35 @@ output of IC3a is high, (dot on), and the
 output of IC5f is high (no sync signal).
 For the &lsquo;Black&rsquo; level we have the output of IC3a low (dot off), and the output
 of IC5f is high (no sync signal). Finally for the &lsquo;Sync&rsquo; level the outputs of
-both [03a and IC5f are low. Armed with this information it is only a case of
+both IC3a and IC5f are low. Armed with this information it is only a case of
 applying Ohm&rsquo;s Law and Kirchoff&rsquo;s Law to the circuit...or is it? One problem
 is that the high level output voltage from a TTL gate is not very well
-</p>
-<p>
-. defined, and it also has an appreciable
-</p>
-<p>
-White output impedance. With the ICs fitted to
-\ my card the high level seemed to be
-</p>
-<p>
-Sync o-Ty around 3V, so, as I just happened to have
-</p>
-<p>
+defined, and it also has an appreciable
+output impedance. With the ICs fitted to
+my card the high level seemed to be
+around 3V, so, as I just happened to have
 picked 3V for my white level, I could
-</p>
-<p>
-ar o}v conveniently ignore Ri and R5 and
-</p>
-<p>
+conveniently ignore R1 and R5 and
 calculate a suitable value for R3. This
-</p>
-<p>
-Fie 2 then left me with two unknowns, and two
-</p>
-<p>
-4 equations (for the Black level and the
-</p>
-<p>
-Syne level). The result of the
-</p>
-<p>
+then left me with two unknowns, and two
+equations (for the Black level and the
+Sync level). The result of the
 calculations (followed by a small adjustment after an actual trial) is shown
-</p>
-<p>
 in Fig 2. (Compare the values against those of the IVC circuit diagram). These
 values resulted in a reasonable video signal driving out from the card.
 </p>
+<table><tr><td style="text-align:center;">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-1.png"); ?>
+<h4>
+Fig 1
+</h4>
+</td></tr></table>
+<table><tr><td style="text-align:center;">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-2.png"); ?>
+<h4>
+Fig 2
+</h4>
+</td></tr></table>
 <p>
 One other small change I would recommend, especially if you use inverse
 video or occasionally have large white areas on your screen, is to short out

@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-55
-</p>
-<p>
+<p class="continued">
 transitions, just a continual high or low to the end of the data block.
 This is an invitation to lost sync, particularly if the clock is an integral
 part of the signal, how can this be overcome? The answer is what is called bit
@@ -15,7 +12,7 @@ actually used on our disk systems but no-one shouts about it). It&rsquo;s not a 
 of high means a 1 and low means a 0. It is a case of change of input state
 means a change of output data state. Lets assume that the input signal is low,
 and the output data state is currently 0. The next input signal transition
-from low to high will cause a change of output state from O to 1. No different
+from low to high will cause a change of output state from 0 to 1. No different
 from what we already know, but if the output data state were already high when
 the input low to high transition occurred then the data state would change
 from 1 to 0. It is the input transition edges associated with the transition
@@ -26,19 +23,19 @@ this matters so long as the decoder knows what is to happen, and knows its
 starting states.
 </p>
 <p>
-Tt should be obvious that to be a synchronous data transmission system,
+It should be obvious that to be a synchronous data transmission system,
 NRZI must have some sort of sychronising mechanism built in to allow clock
 recovery. It must know how many bits have passed between one input transition
 and the next. A continual steam of 1&rsquo;s or 0&rsquo;s is an invite to lost sync. If we
 sent a stream of 010101010.... then it would be no problem to recover the
 clock from the data itself, a simple phase lock would do it. Given the proven
 &lsquo;sample and hold&rsquo; characteristics of phase locks, we could send quite a lot of
-O&rsquo;s before we needed to send a 1 to regain the sync, likewise we could send a
-lot of 1&rsquo;s before we needed to send a O to regain sync. This is where the &lsquo;bit
+0&rsquo;s before we needed to send a 1 to regain the sync, likewise we could send a
+lot of 1&rsquo;s before we needed to send a 0 to regain sync. This is where the &lsquo;bit
 stuffing&rsquo; technique comes in. The HDLC logic counts the number of similar bits
-sent. If five consecutive i&rsquo;s are sent, then the logic will &lsquo;stuff in&rsquo; an
-extra O in the sixth position to regain the sync. Likewise if five consecutive
-O&rsquo;s are sent, then the logic &lsquo;stuffs in&rsquo; an extra 1 in the sixth position. The
+sent. If five consecutive 1&rsquo;s are sent, then the logic will &lsquo;stuff in&rsquo; an
+extra 0 in the sixth position to regain the sync. Likewise if five consecutive
+0&rsquo;s are sent, then the logic &lsquo;stuffs in&rsquo; an extra 1 in the sixth position. The
 receiving end knows all about this, and if it sees a transition in the sixth
 position it knows to throw that bit away. Very simple.
 </p>

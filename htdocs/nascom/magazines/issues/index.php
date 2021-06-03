@@ -114,6 +114,7 @@
 	<a href="../scorpio-news/24/01/"><img src="../scorpio-news/24/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 4"></a>
 	<a href="../scorpio-news/31/01/"><img src="../scorpio-news/31/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 3, Issue 1"></a>
 </p>
+<p></p>
 
 </div><div class="col-sm-6">
 

@@ -1,24 +1,21 @@
 <?php columnStart(1); ?>
 <p>
-46
-</p>
-<p>
 The suggestion made to Richard was to try adding diodes to do this, but
 the same effect can be acheived by using an open-collector AND gate (e.g.
-74L809), or even an open-collector buffer (e.g. 7417). The input(s) to the
+74LS09), or even an open-collector buffer (e.g. 7417). The input(s) to the
 gate(s) are connected to the drive select lines that do not provide a ready
 line, and the output(s) are connected to the Ready line (see fig 3). So, as
 soon as a drive select line connected to one of these added gates goes low,
 the Ready line is also pulled low. N.B. The gate used must be an open-collector
-gate, otherwise it will interfere with the 8" drive when it attempts
+gate, otherwise it will interfere with the 8&Prime; drive when it attempts
 to drive the ready line. In the approach suggested to Richard the diodes
 provide the required isolation, but as they are passive devices there may be
 problems with voltage drops across various components (as he discovered). The
-7TALSO9 approach avoids this.
+74LS09 approach avoids this.
 </p>
-<p>
+<h3>
 How to find your feet on a Nascom&nbsp;2
-</p>
+</h3>
 <p>
 A letter from Mr Mathison of West Germany has brought the N2 out again.
 He&rsquo;s been chasing the feet of the little men in the N2 character generator,
@@ -28,11 +25,11 @@ through the solutions. That way any of you who attempt the modifications
 should have some idea of what you&rsquo;re up to. You will need a copy of the N2
 circuit diagram if you want to follow the description below.
 </p>
-<p>
+<h3>
 How it works
-</p>
+</h3>
 <p>
-A 1MHz character clock emerges from 1049/13 (IC43 pin 13). This is
+A 1MHz character clock emerges from IC49/13 (IC43 pin 13). This is
 divided down in the six-bit counter formed by IC51/IC52. The outputs of the
 six-bit counter form the address of a character within a display line, and
 address the video RAM via multiplexors IC62/IC63. The address is also decoded
@@ -45,31 +42,23 @@ also clocks the four-bit counter IC53, whose outputs form the &lsquo;row address
 the character generator. The character generator ROM address lines are also
 decoded by IC44c which, when the 625 line option is selected, resets the row
 address counter to zero everytime row 14 is reached. Thus only rows 0-13 of
-the character generator are displayed. Every time 1053/11 returns to 0, the
+the character generator are displayed. Every time IC53/11 returns to 0, the
 five-bit counter formed by IC68/IC13b is clocked. The outputs of IC68 address
 the video ram via multiplexor IC64 and form the &lsquo;character line&rsquo; address.
-Finally the IC68/1C13b counter is decoded in the N2V PROM (1C59). There are
+Finally the IC68/1C13b counter is decoded in the N2V PROM (IC59). There are
 two outputs from this PROM, D1 provides the vertical blanking signal, and the
-DO output is used to trigger the vertical sync signal (from IC57) and preset
+D0 output is used to trigger the vertical sync signal (from IC57) and preset
 the five-bit counter IC68/IC13b to 11. (Check the hardwired inputs on IC68 to
 confirm this). The contents of the N2V PROM can be found in the Nascom&nbsp;2
 documentation, and from the listing you should be able to deduce the
-following, starting at the point where TC68/IC13b is reset to 11...
+following, starting at the point where IC68/IC13b is reset to 11...
 </p>
-<p>
-Counter Action
-</p>
-<p>
-11-14 Display is blanked.
-</p>
-<p>
-15-30 Display is unblanked. Display lines go 15,0,1,2, 3-013, 14.
-34 Display is blanked again
-</p>
-<p>
-0 Display is blanked. (Counter wraps round to 0).
-</p>
-<p>
-1 Vertical sync triggered &amp; counter immediately reset to 11.
-</p>
+<table class="indent">
+<tr><td>Counter</td><td>Action</td></tr>
+<tr><td>11-14</td><td>Display is blanked.</td></tr>
+<tr><td>15-30</td><td>Display is unblanked. Display lines go 15,0,1,2,3...13,14.</td></tr>
+<tr><td>34</td><td>Display is blanked again</td></tr>
+<tr><td>0</td><td>Display is blanked. (Counter wraps round to 0).</td></tr>
+<tr><td>1</td><td>Vertical sync triggered &amp; counter immediately reset to 11.</td></tr>
+</table>
 <?php columnEnd(1); ?>

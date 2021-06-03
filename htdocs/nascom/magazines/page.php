@@ -527,7 +527,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 		$src = "../$pagepath.png";
 		$lnk = "text/";//"../$img";
 		$outWidth = $gWidth - 30//$width
-		+ 15+15 /*padding*/
+		+ 15 + 15 /*padding*/
 		- 2 /*border*/;
 
 		list($imgWidth, $imgHeight, $type, $attr) = getimagesize($img);
@@ -556,6 +556,40 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 		$naviBottom .= "\t\t<a class=\"sm-fill nav-link\" "
 		.	"href=\"$server/publications/magazines/$name$number.pdf#page=$pdfPage\" target=\"_blank\""
 		.	">PDF</a>\n";
+	}
+	{
+		$basic8k = null;
+//		echo "<!-- $magpath - $issuepath - $pagepath -->\n";
+		if ($magpath == "80-bus-news") {
+			switch ($issuepath) {
+			case 23: switch ($pagepath) { case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35:
+				$basic8k = $link; break; } break;
+			case 24: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34:
+				$basic8k = $link; break; } break;
+			case 25: switch ($pagepath) { case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38:
+				$basic8k = $link; break; } break;
+			case 26: switch ($pagepath) { case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38:
+				$basic8k = $link; break; } break;
+			case 31: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34:
+				$basic8k = $link; break; } break;
+			case 32: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30:
+				$basic8k = $link; break; } break;
+			case 33: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30:
+				$basic8k = $link; break; } break;
+			}
+		}
+		if ($basic8k != null) {
+			switch ($basic8k) {
+			case "text":
+				$basic8kPath = "../../..";
+				break;
+			case "graphic":
+				$basic8kPath = "../..";
+				break;
+			}
+			echo "<p>\n\tNASCOM ROM BASIC source code is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
+			echo "\t and <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
+		}
 	}
 	$naviBottom
 	.=	navBottom("datenschutzerklaerung", "Privacy Statement")

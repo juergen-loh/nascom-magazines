@@ -1,20 +1,10 @@
 <?php columnStart(1); ?>
-<p>
-12
-</p>
-<p>
+<p class="continued">
 piece of relocatable code which loads the B register with the number of copies
 to be printed, calls the Naspen print command, and loops until the B register
 is zero. The code can go anywhere except the Naspen workspace. I use 0C80H.
 </p>
-<p>
-ocso0 06 3A LD B, 3AH ; 58 copies wanted
-ocs2 CD BAC2 CALL BAC 2H ; Naspen print routine
-ocs5 10 FB DINZ 0C82 ; Loop 58 times
-</p>
-<p>
-OC87 C3 B806 JP B806 ; Return to Naspen
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-12-1.png"); ?>
 <p>
 Load the text into Naspen and leave the cursor pointing at the first character
 to be printed. Exit from Naspen using the &lsquo;N&rsquo; command. Enter the above code,
@@ -22,50 +12,34 @@ setting the second byte for the number of copies required (in HEX) and execute
 at the address loaded. As Naspen prints each copy, the word &lsquo;complete&rsquo; will be
 displayed on the screen, this is because this is in the Naspen print command.&rdquo;
 </p>
+<h3>
+SYS
+</h3>
 <p>
-sys
-</p>
-<p>
-&ldquo;Lastly, from Mr Hill of Newhaven a little tweek to SYSN7, the last of the
+Lastly, from Mr Hill of Newhaven a little tweek to SYSN7, the last of the
 series of SYS for the Henelec/<?php spChar("zwsp"); ?>Gemini G805 disk sysetm. Mr. Hill uses the
 system under CP/M 1.4 with a Gemini GM812 video card:
 </p>
-<p>
-&ldquo;The modification allows me to use *X to switch between the two keyboard
+<p class="noindent">
+&ldquo;The modification allows me to use ^X to switch between the two keyboard
 options. Each successive use of ^X flips between the alternative options. The
 control can be used inside all the CP/M packages that I possess, although
 there may be some exceptions to this. The listing below shows my modification
 to the CP/M 1.4 version of SYS.
 </p>
-<p>
-CICRT1 LD HL,CHCD ; Existing program
-cP (HL)
-JR NZ, CICRTX ; Jump to new section
-LD A,BS ; Existing program
-LD (BOPT),A
-JR CONIN
-3; NEW CODE
-CICRIX LD HL,KOPT ; Point to new keyboard option flag
-cP 18H ; Is it &ldquo;Xx
-JR NZ,CICRT2 ; Skip if not
-LD A,1
-XOR 1 ; Flip the keyboard option flag ..
-LD (HL),A 3&raquo;. and put it back
-JR CONING 3; Done
-CICRT2 sees ; Continue with SYS&rdquo;
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-12-2.png"); ?>
 <p>
 Looking at the code, something seems a little wrong, where does the
 contents of register A come from at CICRTX? I&rsquo;ve just rechecked what I have
 typed in and that&rsquo;s correct, but as I don&rsquo;t have a copy of SYSN7 to hand I
 hope the code works.
 </p>
-<p>
+<h3>
 NASPAS Review
-</p>
+</h3>
 <p>
 Here endeth the letters and, lastly, on to a mini review of the Nascom
-WASPAS sent in some time ago by Mr. Pennell who doesn&rsquo;t live a million miles
+NASPAS sent in some time ago by Mr. Pennell who doesn&rsquo;t live a million miles
 away from me, in Pinner Middlesex, although we&rsquo;ve never met except perhaps
 unknowingly over a pile of bean cans in the local Safeways.
 </p>
