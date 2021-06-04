@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+Polydos File Update
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+By M. J.R. Gibbs
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-41
-</p>
-<p>
-Polydos File Update By M. J.R. Gibbs
-</p>
 <p>
 This is a program for directly updating files on disk for a Gemini
 GM809/GM815 system with Polydos 2.0.
@@ -51,39 +54,28 @@ the disk (do not forget to replace the tab afterwards).
 A word of warning when testing this program especially when entering it
 from the dump listing, which is always prone to errors, you are strongly
 advised to test it on a copy of an existing disk because it can overwrite
-&lsquo;4rreplaceable portions of disk if anything goes wrong.
+irreplaceable portions of disk if anything goes wrong.
 </p>
-<p>
+<p class="noindent">
 I suggest that you proceed as follows:&ndash;
-1) Enter the program and save it on disk using Polydos. Use the &lsquo;Read&rsquo;
 </p>
-<p>
-routine to load a file from the disk to say #1000 in RAM.
-</p>
-<p>
-2) Examine and make a note of the number of sectors that this file uses.
-</p>
-<p>
-3) Use SZAP to examine the next file on the disk and make a note of the
-first few bytes.
-</p>
-<p>
-4) Change the first few bytes of the file loaded into RAM with the NAS-SYS
-&lsquo;M&rsquo; (modify command).
-</p>
-<p>
-5) Run this program to update the disk and check the user information for
-the correct sector location, number of sectors and RAM location.
-</p>
-<p>
-6) Use SZAP to verify that the original file has been updated correctly.
-Also that the file following is not corrupted.
-</p>
+<table>
+<colgroup><col style="width: 3em"><col></colgroup>
+<tr><td>1)</td><td>Enter the program and save it on disk using Polydos. Use the &lsquo;Read&rsquo;
+		routine to load a file from the disk to say #1000 in RAM.</td></tr>
+<tr><td>2)</td><td>Examine and make a note of the number of sectors that this file uses.</td></tr>
+<tr><td>3)</td><td>Use SZAP to examine the next file on the disk and make a note of the
+		first few bytes.</td></tr>
+<tr><td>4)</td><td>Change the first few bytes of the file loaded into RAM with the NAS-SYS
+		&lsquo;M&rsquo; (modify command).</td></tr>
+<tr><td>5)</td><td>Run this program to update the disk and check the user information for
+		the correct sector location, number of sectors and RAM location.</td></tr>
+<tr><td>6)</td><td>Use SZAP to verify that the original file has been updated correctly.
+		Also that the file following is not corrupted.</td></tr>
+</table>
 <p>
 Below is a full Assembly listing, a sorted symbol table and a dump of the
-</p>
-<p>
 program using a modified version of the disk dump published in Vol.1 iss. 2 of
-30-BUS NEWS (the numbers on the left hand side are the RAM locations).
+80-BUS NEWS (the numbers on the left hand side are the RAM locations).
 </p>
 <?php columnEnd(1); ?>

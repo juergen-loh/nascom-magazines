@@ -1,13 +1,16 @@
+<?php columnStart(23); ?>
+<h2 id="article1">
+AUNT AGATHA&rsquo;S AGONY COLUMN
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+By David Parkinson
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
-<p>
-35
-</p>
-<p>
-AUNT AGATHA&rsquo;S AGONY COLUMN By David Parkinson
-</p>
-<p>
+<h3>
 GM809, GM829 compatibility/<?php spChar("zwsp"); ?>upgrading
-</p>
+</h3>
 <p>
 This is a question that has cropped up several times recently. The answer
 is that the Gemini GM829 FDC/SASI board can be regarded as a GM809HL. With the
@@ -33,37 +36,51 @@ all stepping times being halved. Thus drives can now be stepped as fast as
 the seek is complete, the control bit is obviously flipped back to the 5.25&Prime;
 setting before doing the read/<?php spChar("zwsp"); ?>write operation.)
 </p>
-<p>
+<h3>
 BASIC mathematics
+</h3>
+<p>
 A letter from Phil Dunglinson on the topic of a BASIC program that
 doesn&rsquo;t work provides me with my next topic. The listing is shown below:
 </p>
-<p>
-10 FOR N3=1 TO 9 It should print out the results of
-20 FOR N2=0 TO 9 153,370,371,407 but doesn&rsquo;t. Can anyone see why
-30 FOR N1=0 TO 9 not?
-40 A= N173 + N273 + N373 The answer is simple, and reminds me of that old
-50 B= NI + N2*10 + N3*100 adage about not blindly accepting the answer
-60 IF A=B THEN 80 that comes out of a computer. Just because your
-70 GOTO 90 computer tells you that 2&lt;&gt;2 or 3=2 does not
-80 PRINT B necessarily mean that it is true. Remember that
-90 NEXT NI your computer is an idiot and tries to do
-100 NEXT N2 exactly what you tell it. It can do mundane
-110 NEXT N3 operations very quickly, but it does have
-120 END limitations and this example highlights twoof
+<?php columnEnd(1); ?>
+<?php columnStart(2); ?>
+<p></p>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-35-1.png"); ?>
+<?php columnChange(2); ?>
+<p class="noindent">
+It should print out the results of
+153,370,371,407 but doesn&rsquo;t. Can anyone see why
+not?
+</p>
+<p class="noindent">
+The answer is simple, and reminds me of that old
+adage about not blindly accepting the answer
+that comes out of a computer. Just because your
+computer tells you that 2&lt;&gt;2 or 3=2 does not
+necessarily mean that it is true. Remember that
+your computer is an idiot and tries to do
+exactly what you tell it. It can do mundane
+operations very quickly, but it does have
+limitations and this example highlights twoof
 them.
 </p>
-<p>
+<?php columnEnd(2); ?>
+<p></p>
+<?php columnStart(1); ?>
+<h4>
 Point 1: Derived Arithmetic Functions.
-</p>
+</h4>
 <p>
-To us normal Human Beings N173 (N1 raised to the power 3) in line 40 of
-the above program means NI*NI1*N1. However to Nascom BASIC it means:
--EXP(3*LOG(N1)), where both the LOG() and the EXP() are calculated by
+To us normal Human Beings N1^3 (N1 raised to the power 3) in line 40 of
+the above program means N1*N1*N1. However to Nascom BASIC it means:
+EXP(3*LOG(N1)), where both the LOG() and the EXP() are calculated by
 evaluating polynomial approximations of the form:
 </p>
+<p style="text-align: center">
+C0 + C1*X + C2*X^2 + C3*X^3 + ... + CN*X^N
+</p>
 <p>
-CO + CL*AX + C2*X72 + C3*X73 + .2+ + CN*X&rsquo;N
 X is the value passed to the approximation routine, and C0,C1,..CN are
 constants whose value depend upon the approximation required (EXP, LOG, SQR
 etc). Usually X has to be scaled to lie within a certain range for the

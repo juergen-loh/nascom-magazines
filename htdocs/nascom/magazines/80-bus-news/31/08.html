@@ -1,27 +1,26 @@
 <?php columnStart(1); ?>
-<p>
-wetter Ce eae te Oa ECE thal SOSEE EOE ate
-</p>
-<p>
-3. Connect a wire from TP10 to LKS1 pin 4.
-</p>
-<p>
-4. Remove IC8 and bend pins 1, 2 and 3 (carefully) out straight so that they
+<ol start="3">
+<li>
+Connect a wire from TP10 to LKS1 pin 4.
+</li>
+<li>
+Remove IC8 and bend pins 1, 2 and 3 (carefully) out straight so that they
 will clear the socket and replace IC8.
-</p>
-<p>
-5. Remove IC71 and do the same with pin 8.
-</p>
-<p>
-6. Connect a wire from IC71/8 to IC8/2.
-</p>
-<p>
-7. Touch solder a wire onto IC24/12 and connect the other end to IC8/1.
-</p>
-<p>
-8. Touch solder a wire onto IC18//13 and connect the other end to
-1c8/3.
-</p>
+</li>
+<li>
+Remove IC71 and do the same with pin 8.
+</li>
+<li>
+Connect a wire from IC71/8 to IC8/2.
+</li>
+<li>
+Touch solder a wire onto IC24/12 and connect the other end to IC8/1.
+</li>
+<li>
+Touch solder a wire onto IC18//13 and connect the other end to
+1C8/3.
+</li>
+</ol>
 <p>
 The effect of this mod is only to provide a chip select and a RAMDIS
 signal when the tape drive is on. Certainly on my machine, it is always on
@@ -38,50 +37,52 @@ Before a full 64k system can be installed, the cold boot loader must be
 modified to switch out SIMON before loading the CP/M system. To do this,
 perform the following sequence of operations:
 </p>
-<p>
-1. Use MOVCPM to generate a 64k system. Allow room for SYS if you use it.
+<ol>
+<li>
+Use MOVCPM to generate a 64k system. Allow room for SYS if you use it.
 Save the result as CPM64.COM.
-</p>
-<p>
-2. Load CPM64.COM under DDT or ZSID.
-3. Use the S command to modify the addresses given below to the values
-</p>
-<p>
+</li>
+<li>
+Load CPM64.COM under DDT or ZSID.
+</li>
+<li>
+Use the S command to modify the addresses given below to the values
 indicated.
-</p>
-<p>
-O90B 18 097C 3E
-090C 6C 097D O01
-0979 AF O97E 18
-097A D3 O97F 8D
+<pre>
+090B 18     097C 3E
+090C 6C     097D 01
+0979 AF     097E 18
+097A D3     097F 8D
 097B 00
-</p>
-<p>
-4. Use ^C or GO and save the modified CPM64.COM.
-</p>
-<p>
-5. Use SYSGEN to put the file on drive A. This can be done by typing:
+</pre>
+</li>
+<li>
+Use ^C or G0 and save the modified CPM64.COM.
+</li>
+<li>
+Use SYSGEN to put the file on drive A. This can be done by typing:
+<pre>
 SYSGEN CPM64.COM
+</pre>
 after which, specify drive A as the destination.
-</p>
-<p>
-6. Unplug &amp; plug in again with the new system in the A drive and Hey Presto,
+</li>
+<li>
+Unplug &amp; plug in again with the new system in the A drive and Hey Presto,
 you should have a 64K system up and running with no SIMON in the way. As
 an added bonus, it won&rsquo;t get in the way when paging RAM either.
-</p>
-<p>
+</li>
+</ol>
+<h3>
 Faulty RAM Board
-</p>
+</h3>
 <p>
 My second bit of first-aid is probably of no use to Kevin Weatherhead who
-</p>
-<p>
 has, by now, probably cured his faulty RAM board himself. If not then here
-oes.
+goes.
 </p>
 <p>
 Kevin doesn&rsquo;t say which type of RAM board he is using, so I shall go into
-the Nascom RAM A &amp; B boards and the Gemini GM802 64k RAM card. The problem is
+the Nascom RAM&nbsp;A &amp; B boards and the Gemini GM802 64k RAM card. The problem is
 this. When Kevin powers up, his RAM card is full of rubbish as expected. He
 can write zeros to the card but not ones. Fortunately, all three RAM cards use
 the same principle so only a brief &ldquo;how it works&rdquo; is necessary.

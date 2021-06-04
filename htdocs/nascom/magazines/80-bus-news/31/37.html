@@ -1,11 +1,8 @@
 <?php columnStart(1); ?>
-<p>
-37
-</p>
-<p>
+<p class="continued">
 Next a minor bug but slightly more serious. Old habits die hard, and in some
-C/80 source files I entered a few hexadecimal constants with a trailing &ldquo;HY
-(e.g. OxAH rather than the correct O0xA). The compiler accepted these with out
+C/80 source files I entered a few hexadecimal constants with a trailing &lsquo;H&rsquo;
+(e.g. 0xAH rather than the correct 0xA). The compiler accepted these with out
 comment and interpreted the &lsquo;H&rsquo; as part of the Hex number so I ended up with
 an incorrectly evaluated constant. Finally my latest encounter has been with
 an unforgiveable bug from Microsoft in an 8086 cross assembler. Being
@@ -13,8 +10,8 @@ relatively inexperienced in 8086-assembly language programming my initial
 programs contained some glaring errors like loading a segment register with an
 immediate 16-bit value. (Although you can load normal registers with immediate
 data, the segment registers can only be loaded with data from another
-register, or from memory-) The Microsoft assembler accepted my illegal
-instructions without complaint, and proceeded to generate an opeode for a
+register, or from memory.) The Microsoft assembler accepted my illegal
+instructions without complaint, and proceeded to generate an opcode for a
 completely different instruction. It was only by manually dis-assembling the
 opcodes on the assembly listing that I found the error. (Luckily, as I was
 just starting to familiarise myself with the 8086, the program was only some
@@ -27,14 +24,12 @@ for example by writing a four or five line program to illustrate it, and send
 the print-outs in with your comments. DON&rsquo;T ASSUME SOMEBODY ELSE MUST HAVE
 ALREADY REPORTED IT. You might find that your report vanishes into a black
 hole, or, as I did with the Software Toolworks, get a polite note back and
-find the bugs corrected in the next release of the software (c/80 version
-</p>
-<p>
+find the bugs corrected in the next release of the software (C/80 version
 3.0).
 </p>
-<p>
+<h3>
 Do-it-yourself Electrocution.(c-f. Richard Beal in the last issue!)
-</p>
+</h3>
 <p>
 Next a request from Mr E.Jones for an article covering the general
 principles of converting a domestic TV set to a monitor, and interfacing a
@@ -47,13 +42,13 @@ I still advise you to leave the back on the set. With the proliferation of
 home computers and video recorders that has occured in recent years it should
 be possible to pick up a cheap black-and-white monitor, or to buy a TV set
 that already has a video input socket on the rear. For those who want to
-_ progress further I offer the following suggestions/<?php spChar("zwsp"); ?>observations.
+progress further I offer the following suggestions/<?php spChar("zwsp"); ?>observations.
 </p>
-<p>
+<p class="noindent">
 (1) Before doing anything buy a copy of the service sheet or service manual
 for the set in question.
 </p>
-<p>
+<p class="noindent">
 (2) Look at the power supply section of the diagram. Many sets directly
 rectify the mains input and then use the filtered DC supply either directly,
 (old Valved sets), or via a switch-mode step-down power supply (newer
@@ -66,10 +61,10 @@ into the TV. (A small black-and-white portable offering mains/<?php spChar("zwsp
 operation will almost certainly have a mains transformer providing the
 required isolation.)
 </p>
-<p>
+<p class="noindent">
 (3) The signal present at the VIDEO pin on the Nascom&nbsp;2 circuit board is a
 convential composite video signal containing a mixture of Video and the
 horizontal and vertical sync pulses. This is similar to the signal present at
-the output of the detector following the IF stages in the TV. I haven&rsquo;t Looked
+the output of the detector following the IF stages in the TV. I haven&rsquo;t looked
 </p>
 <?php columnEnd(1); ?>

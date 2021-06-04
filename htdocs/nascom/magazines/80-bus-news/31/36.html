@@ -1,17 +1,14 @@
 <?php columnStart(1); ?>
-<p>
-36
-</p>
-<p>
+<p class="continued">
 point of view, the shorter the polynomial, the faster it can be evaluated. For
 those who wish to pursue matters further various books can be found covering
 the topic. One fairly comprehensive book I have encountered is {1].
 </p>
 <p>
-So point one is that derived functions such as nom LOG, EXP, ete are
+So point one is that derived functions such as &ldquo;^&rdquo; LOG, EXP, etc are
 written for the general case and have approximate results. (They may be
 accurate, but not necessarily exact.) They do not recognise specific cases
-(such as the exponent in a &ldquo;&ldquo;&rdquo; expression being a small integer) and do not
+(such as the exponent in a &ldquo;^&rdquo; expression being a small integer) and do not
 adjust their algorithms accordingly. This means that the instruction in line
 60 (IF A=B THEN...) is almost certainly going to be false. If A=2 and
 B=1.999999999..... then they are not equal in the eyes of the computer
@@ -24,18 +21,18 @@ After making this change the program above will run successfully.
 </p>
 <p>
 Alternatively the program can be recoded to make the calculation more
-accurate. By recoding line 40 as ... NI*NL*N1 + N2*N2.... we replace the
+accurate. By recoding line 40 as ... N1*N1*N1 + N2*N2.... we replace the
 approximation by an accurate calculation. (Accurate in this case as we are
-dealing with reasonably sized INTEGERS. In other circumstances &mdash;- e.g. NL etc
+dealing with reasonably sized INTEGERS. In other circumstances &ndash; e.g. N1 etc
 being REAL numbers like 2.345 and 7.916 &ndash; there would be rounding errors and
 possible dynamic range problems affecting the accuracy of the result.) This
 change also has the side effect of speeding up the program as the two
-multiplications are faster than the &ndash; function. In making this change to line
+multiplications are faster than the ^ function. In making this change to line
 40, line 60 can be left as IF A=B... (but remember the caveat above).
 </p>
-<p>
+<h4>
 Point 2: Binary Arithmetic
-</p>
+</h4>
 <p>
 While we are on the topic of computer accuracy I&rsquo;ll just mention one
 other point. Computers that use binary arithmetic cannot hold most decimal
@@ -46,19 +43,19 @@ arithmetic. That way the books generally balance exactly rather than
 approximately as the arithmetic exactly matches the human &lsquo;pencil &amp; paper&rsquo;
 mode. Details of BCD algorithms can be found in [2].
 </p>
-<p>
+<h3>
 Software Testing
-</p>
+</h3>
 <p>
 The example above highlights another important point that we are all
 frequently guilty of, and that is inadequate testing of programs. This program
 is not perhaps the best example as it does not process any external data in
 order to produce its result. The important point though is that Phil
 Dunglinson knew what the program should do (in its present form) and when the
-correct results didn&rsquo;t emerge he knew there was-a bug to find. Software
+correct results didn&rsquo;t emerge he knew there was a bug to find. Software
 testing is an art. (Think of the unlimited character combinations possible in
 the source input file for an assembler or compiler.) There are various books
-on the topic that you can read if you are interested [3] [4}- I don&rsquo;t intend to
+on the topic that you can read if you are interested [3] [4]. I don&rsquo;t intend to
 cover software testing here, but one thing to remember is that any program
 that processes data, as well as producing correct output from correct input,
 must not accept incorrect input without complaining, or crash when presented

@@ -1,6 +1,6 @@
 <?php columnStart(1); ?>
-<p>
-buffering by a 74LS244 whose enables are always tied to Ov. When reading, the
+<p class="continued">
+buffering by a 74LS244 whose enables are always tied to 0v. When reading, the
 /RD signal is used to enable a similar LS244 for buffering the data leaving
 the card. Assuming that the LS244 is faulty, swapping the two buffers should
 give an indication of whether this is so. If on power up, all of the RAM
@@ -8,20 +8,20 @@ appears to contain either all ones or all zeros and no attempt to change them
 succeeds then replace the LS244. A table of chip numbers for all three RAM
 cards is given below.
 </p>
-<p>
+<p style="text-align: center">
 LS244&rsquo;s used as write buffers:
 </p>
+<table class="writebuffers">
+<tr><td>RAM&nbsp;A card</td><td>RAM&nbsp;B card</td><td>Gemini G802</td></tr>
+<tr><td>ICl</td><td>IC26</td><td>IC44</td></tr>
+</table>
 <p>
-RAM A card RAM B card Gemini G802
-Icl IC 26 IC44
-</p>
-<p>
-Tf changing the chip specified doesn&rsquo;t cure the problem then I can only
+If changing the chip specified doesn&rsquo;t cure the problem then I can only
 suggest that the board is returned to the manufacturers via your dealer.
 </p>
-<p>
+<h3>
 CCPZ
-</p>
+</h3>
 <p>
 The last bit of what appears to be a takeover bid by me concerns three
 bits of software that should by this time, be available from Henrys. The first
@@ -32,14 +32,12 @@ V4.1. After this version, CCPZ was made available in Macro-80 source code
 command. Since then, another bug has come to light when using SUBMIT files
 with the GET command. Try typing:
 </p>
-<p>
+<pre class="indent2">
 GET ADDR FILENAME.TYP
-</p>
-<p>
 DIR A:
-</p>
-<p>
 DIR B:
+</pre>
+<p class="noindent">
 If you get the first command repeated three times then you have the bug. This
 is because CCPZ changes the default DMA address when getting the requested
 file and forgets to change it back. The result is that further SUBMIT commands
@@ -48,9 +46,9 @@ buffer and of course finds the last command which is repeated. With version
 4.3, this bug has been fixed and there is no reason why everyone shouldn&rsquo;t be
 using CCPZ now. Order yours tomorrow! (No I don&rsquo;t work for Henry&rsquo;s).
 </p>
-<p>
+<h3>
 BDOSZ
-</p>
+</h3>
 <p>
 My second bit of software news concerns a Z80 implementation of the CP/M
 BDOS, by some strange coincidence, called BDOSZ. In true CCPZ fashion, the

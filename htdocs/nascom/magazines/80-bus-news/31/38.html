@@ -1,19 +1,16 @@
 <?php columnStart(1); ?>
-<p>
-38
-</p>
-<p>
+<p class="continued">
 at any TV circuit diagrams recently, but with transistorised sets this point
 can be found relatively easily. With a modern set full of ICs you may find
 that the point you&rsquo;re after lies within an IC. You need to inject the
 composite video signal (of the appropriate amplitude and polarity) at a point
 just before the video and sync signals are separated.
 </p>
-<p>
+<p class="noindent">
 (4) ALWAYS SWITCH OFF AND ALLOW TIME FOR HIGH VOLTAGES TO DISCHARGE BEFORE
 MAKING ANY CHANGE TO YOUR CIRCUITS.
 </p>
-<p>
+<p class="noindent">
 (5) If you must make any internal adjustments on a live set always use only
 one hand, keeping the other well out of the way (like in your pocket). DON&rsquo;T
 GROPE ROUND THE BACK OF THE SET. If you need to see the screen while you make
@@ -23,9 +20,9 @@ resistors in the set. If you touch one of those inadvertantly who knows what
 your reflex action may make you come in contact with, and you may end up with
 far more than a burnt hand.
 </p>
-<p>
+<h3>
 CP/M Users Group
-</p>
+</h3>
 <p>
 Some time ago I mentioned the CP/M Users Group. The CP/M Users Group (UK)
 publishes a magazine (quarterly?) that varies in content. It normally contains
@@ -34,44 +31,42 @@ magazine was a listing of the new UK and SIG/M disks that have recently been
 added to the library. Currently a years subscription costs #7.50. The CP/M
 Users Group can be found at __ ____ ____, Hawley, Dartford, Kent ___ ___.
 </p>
-<p>
+<h3>
 Using a Nascom as a counter-timer.
-</p>
+</h3>
 <p>
 Next on the pile is a rather confused letter from someone in Southampton
 who had better remain nameless. (Anyway we reckon the name was a pseudonym.)
 He is wanting to use the interrupt line on a Nascom to measure the duration
 and frequency of a pulse stream. For some obscure reason (not stated) he wants
-to use interrupt mode l. This effectively executes a &lsquo;RST 38&rsquo; in response to
+to use interrupt mode 1. This effectively executes a &lsquo;RST 38&rsquo; in response to
 an interrupt, vectoring to address 38H. However Nas-Sys has its &ldquo;RDEL&rdquo; routine
 at that address which is not much use in measuring anything! As a result he
 has got tied up in knots trying to get a RAM based version of Nas-Sys going.
 He is trying to do this so that he can patch the RST 38 location to jump to
 his own routine. I&rsquo;ll ignore the mire he has got into with his attempt to get
-Nas--Sys into RAM and point out the large errors he has made and a possible
-</p>
-<p>
+Nas-Sys into RAM and point out the large errors he has made and a possible
 approach to the problem.
 </p>
-<p>
+<h4>
 1) The interrupt problem.
-</p>
+</h4>
 <p>
 Use Mode 2. There is nothing mysterious about it, it just needs a little
 thought as there are two levels of indirection to go through before you arrive
 at your service routine which can be anywhere in memory. If you must use mode
 1 why not use NMI instead of INT? In response to an NMI, Nas-Sys&nbsp;3 vectors via
-a JP stored in RAM at OC7D. (i.e. At address 66 &ndash; the NMI execution address &ndash;
-Nas-Sys has a JP O0C7D. It intialises 0C7D to a JP &lt;register display routine&gt;.)
+a JP stored in RAM at 0C7D. (i.e. At address 66 &ndash; the NMI execution address &ndash;
+Nas-Sys has a JP 0C7D. It intialises 0C7D to a JP &lt;register display routine&gt;.)
 Thus anyone wanting to use the NMI for another purpose can change the JP
 stored in the workspace area so that control passes to their routine, rather
 than back into Nas-Sys. (If necessary you connect your interrupt signal via a
 2-input OR gate (e.g. 74LS32) to the NMI input. By connecting the other input
 of the OR gate to a spare bit on the PIO you can have a &lsquo;maskable&rsquo; NMI).
 </p>
-<p>
+<h4>
 2) Why there is no point in doing it anyway.
-</p>
+</h4>
 <p>
 To go back to his original requirement. &ldquo;To input a stream of variable
 length pulses direct into the Z80 pin 16 /INT, and thereafter analyse their
