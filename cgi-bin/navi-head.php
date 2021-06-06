@@ -23,13 +23,10 @@
 
 	<!--bootstrap-->
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n"; ?>
-<?php //<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"?>
 
 	<!--font awesome-->
-<?php //<link rel="stylesheet" href="/cdn/fontawesome/css/all.css"?>
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/fontawesome.min.css\">\n"; ?>
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/solid.min.css\">\n"; ?>
-<?php //<link rel="stylesheet" href="/cdn/fontawesome/css/v4-shims.css"?>
 
 	<?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$gHtmlRoot/style.css\">\n"; ?>
 <!-- /navi-head.php -->

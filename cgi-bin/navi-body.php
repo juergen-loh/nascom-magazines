@@ -1348,6 +1348,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 ?>
 <body>
 	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light style-navbar-top" id="top">
+	<div class="container-fluid">
 <?php
 //		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
 		if (is_file("$document_root/favicon.ico")) {
@@ -1358,8 +1359,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 		<button
 			class="navbar-toggler"
 			type="button"
-			data-toggle="collapse"
-			data-target="#navbarSupportedContent"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent"
 			aria-expanded="false"
 			aria-label="Toggle navigation"
@@ -1433,6 +1434,7 @@ HEREDOC;
 ?>
 			</ul>
 		</div>
+	</div>
 	</nav>
 
 <?php
