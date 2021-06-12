@@ -1,4 +1,4 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 Odd features of the IVC stem from the Nascom background. e.g. the alternative
 screen format being 48 characters per line. The block graphics are those of
@@ -10,7 +10,7 @@ The IVC accepts 8-bit characters from the host system. All the standard
 printable ASCII characters (whose codes are in the range 20-7F), and all
 characters for the alternate character generator (whose codes are in the range
 80H-FFH), are placed directly into the display at the current cursor position.
-Characters in the range OO0-1FH are interpreted as control characters, and are
+Characters in the range 00-1FH are interpreted as control characters, and are
 used to control the extensive features of the IVC.
 </p>
 <p>
@@ -18,12 +18,12 @@ One reason why I have been looking for a review of the IVC is to see if anbody
 feels that important features are lacking from the escape sequences. (Do you
 all want protected fields? Do you want a &ldquo;page&rdquo; mode as well as a &ldquo;Scroll&rdquo;
 mode?) My feeling, echoed recently in these pages by David Hunt, is that 97%
-of users do not use anything other than the few basic functions like &ldquo;cursor
-addressing&rdquo; that are used by programs such as Wordstar and dBase II.
+of users do not use anything other than the few basic functions like &lsquo;cursor
+addressing&rsquo; that are used by programs such as Wordstar and dBase II.
 </p>
-<p>
+<h3>
 Attributes
-</p>
+</h3>
 <p>
 The IVC supports a single flexible attribute. This is the programmable
 character generator (pcg), sometimes refered to in the IVC documentation as
@@ -31,18 +31,18 @@ the alternate or upper character generator. On power-up the contents of the
 standard character generator (an EPROM) are copied to the alternate character
 generator and are inverted on the way. This means that by using the alternate
 character generator, (either by setting the msb of a character before it is
-sent to the IVC, or using the sequence &lt;ESC&gt; A to make the IVC do it for you),
+sent to the IVC, or using the sequence &lt;ESC&gt;&nbsp;A to make the IVC do it for you),
 video-inverse characters can be displayed. (e.g. to highlight headings and
 menus within Wordstar and other such programs.) Note that inverse video is the
 default setting, there is nothing to stop you programming other bit
 combinations into the character boxes. For example you could set up a Greek
 alphabet or a series of specialist mathematical symbols for use by a custom
-wordprocessing package. The Henry&ldquo;s package HI-RES uses the pcg to offer a
+wordprocessing package. The Henry&lsquo;s package HI-RES uses the pcg to offer a
 pseudo high resolution graphics mode on the IVC.
 </p>
-<p>
+<h3>
 Transparent access
-</p>
+</h3>
 <p>
 As I mentioned earlier, the absence of visual interference on the screen when
 the on-board processor accesses the screen memory is essential. There are
@@ -61,7 +61,5 @@ blanking signal from the display controller are routed to a port so that the
 Z80 can monitor their state. Thus, by monitoring this port, it knows when it
 can safely &ldquo;barge in&rdquo; and update the screen memory without causing any
 interference on the display.
-</p>
-<p>
 </p>
 <?php columnEnd(1); ?>

@@ -1,7 +1,7 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 ports. This now gives you parallel processing. The main CPU can pass a
-character over to the slave CPU saying -deal with this please&rdquo;, and can then
+character over to the slave CPU saying &ldquo;deal with this please&rdquo;, and can then
 get on immediately with its job of running your program.
 </p>
 <p>
@@ -11,33 +11,31 @@ package to run on his Nascom, and had run into trouble because he couldn&rsquo;t
 incoming characters into the display fast enough. The IVC can suffer from a
 similar problem, (scrolling takes an appreciable time), but this can be
 circumvented very easily by implementing a small circular buffer and
-alternately polling the UART and the Ivc [1]. Here one processor is handling
+alternately polling the UART and the IVC [1]. Here one processor is handling
 the display and keyboard while the other is acting as a postman between it and
 the UART, and the postman can temporarily hold onto things if the display is
 busy. However with the AVC the problem is more fundamental as the postman and
 display driver programs can only run sequentially, not concurrently. Having
 given the output routine a character to display the AVC driver was sometimes
 taking so long to return that several incoming characters were lost. This
-could be circumvented in two ways: &ndash;
+could be circumvented in two ways:
 </p>
-<p>
-i) duplicate the screen driving code, and add &ldquo;poll UART &amp; buffer&rdquo; calls to
-it in the middle of all routines that take an appreciable length of time
-to execute. (i.e. Combine the -postman&rsquo; and &ldquo;display driver&rdquo; in a single
-program, interleaving the two like a &ldquo;riffle shuffle&rdquo; with a pack of
-cards.)
-</p>
-<p>
-ii) Run the UART under interrupts.
-</p>
+<table class="indentCol1">
+<tr><td>i)</td><td>duplicate the screen driving code, and add &ldquo;poll UART &amp; buffer&rdquo; calls to
+		it in the middle of all routines that take an appreciable length of time
+		to execute. (i.e. Combine the &lsquo;postman&rsquo; and &ldquo;display driver&rdquo; in a single
+		program, interleaving the two like a &ldquo;riffle shuffle&rdquo; with a pack of
+		cards.)</td></tr>
+<tr><td>ii)</td><td>Run the UART under interrupts.</td></tr>
+</table>
 <p>
 The latter approach needs careful thought if the screen driver is busy paging
 various parts of the memory in and out! Also it may interfere with any
 software approach to transparent screen access.
 </p>
-<p>
+<h3>
 The IVC hardware
-</p>
+</h3>
 <p>
 The IVC is basically a small SBC (single board computer) containing the
 following: A Z80A, 6845 display controller, 2K of shared screen memory, 4k of
@@ -52,15 +50,15 @@ resets the IVC&rsquo;s processor.
 <p>
 Within that hardware context the features of the IVC are provided in software
 by the on-board monitor IVC-MON. There have been several versions of the
-monitor, and in the following sections I will eover various aspects of the
+monitor, and in the following sections I will cover various aspects of the
 monitor, finishing off with a description of the differences between each
 version.
 </p>
+<h3>
+IVC-MON
+</h3>
 <p>
-IVC-&mdash;MON
-</p>
-<p>
-I dont intend to regurgitate the software manual here &ndash; those that are
+I don&rsquo;t intend to regurgitate the software manual here &ndash; those that are
 interested should be able to obtain a copy through their friendly Gemini
 dealer &ndash; but table 1 is a copy of the command summary from the manual for
 those that are not familiar with it.

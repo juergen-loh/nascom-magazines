@@ -1,9 +1,9 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 invoke Wordstar wait until Wordstar has loaded and has started on its first
-screen display. (It seems to -swallow&rdquo; the odd character if you start too
+screen display. (It seems to &lsquo;swallow&rsquo; the odd character if you start too
 soon.) You can than type (without any pauses) a command like
-DART ICLE.DOC&lt;RETURN&gt;- QFKeyboards&lt;RETURN&gt;2&lt;RETURN&gt;. This magic invocation (for
+<b>DARTICLE.DOC<?php spChar("zwsp"); ?>&lt;RETURN&gt;<?php spChar("zwsp"); ?>^QFKeyboards<?php spChar("zwsp"); ?>&lt;RETURN&gt;<?php spChar("zwsp"); ?>2<?php spChar("zwsp"); ?>&lt;RETURN&gt;.</b> This magic invocation (for
 those unfamiliar with Wordstar) would open a document file ARTICLE.DOC, start
 to load it into the memory buffer, search through the file and put the cursor
 at the second occurrence of the word &ldquo;Keyboards&rdquo;. WORDSTAR would do this
@@ -20,8 +20,8 @@ character strings for them (including the numeric pad). Note the use of the
 word &ldquo;strings&rdquo;. If required, pressing one of these keys can result in an
 entire sentence (or paragraph!) being returned by the IVC. I find them useful
 in a variety of contexts: During program development they can be used as an
-instantaneous SUBMIT feature (e.g. define a key as &lt;M80 =PROG&rsquo;M L80
-PROG, PROGLIB,PROG/N/E&ldquo;M&gt; &mdash;- which runs the assembler followed by the linking
+instantaneous SUBMIT feature (e.g. define a key as <b>&lt;M80 =PROG^M L80
+PROG,<?php spChar("zwsp"); ?>PROGLIB,<?php spChar("zwsp"); ?>PROG<?php spChar("zwsp"); ?>/N/E^M&gt;</b> &ndash; which runs the assembler followed by the linking
 loader). For standard programs they can be set up to suit the program&rsquo;s
 command codes. (e.g. Keys for INSERT, DELETE etc in editors). Oft used words
 or phrases can be put a single key (e.g. Please send the money).
@@ -47,16 +47,18 @@ in the table marks the start of the string that is to be sent in place of the
 function key. IVC-MON then sets a flag to say &ldquo;get characters from this string
 rather than the keyboard buffer&rdquo;, which remains set until the string is
 exhausted. One point to notice from this is that a function key only uses up
-one byte of the &ldquo;type ahead&rdquo; buffer. So, if you&rdquo;re somebody who often goes
+one byte of the &lsquo;type ahead&rsquo; buffer. So, if you&rsquo;re somebody who often goes
 charging ahead of PIP or your assembler, and occasionally &ldquo;bust&rdquo; the buffer,
 the answer is to put some of your typing under function keys (if this is
 possible). The programmable function keys I find a powerful feature, and this
 the IVC provides at zero overhead to the Host system thanks to it having its
 own processor on-board.
 </p>
-<p>
+<h3>
 IVC-MON Release history.
-Vers.
-1.0 The original release.
-</p>
+</h3>
+<table class="indentCol1">
+<tr><td colspan=2>Vers.</td></tr>
+<tr><td>1.0</td><td>The original release.</td></tr>
+</table>
 <?php columnEnd(1); ?>

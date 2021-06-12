@@ -1,380 +1,126 @@
-<?php columnStart(1); ?>
-<p>
+<?php DoublePageStart("noindent"); ?>
+<h2 class="center">
 Command Summary
-</p>
-<p>
+</h2>
+<h3>
 NOTE:
-</p>
-<p>
-1.
-</p>
-<p>
-2.
-</p>
-<p>
-3.
-</p>
-<p>
-These are the control codes that the IVC responds to. They are
-normally sent to the IVC by a User program or the Host&rsquo;s operating
-system. (See section 4 &ndash; PUTVID).
-</p>
-<p>
-Programs that request information from the IVC will have to read the
-information back from the IVC. (See section 4 &ndash; GETVID).
-</p>
-<p>
-It may not be possible to issue commands to the IVC direct from the
-keyboard attached to a system, as the operating system may modify the
-charactera typed. (eg the standard CP/M line input routine would echo
-&ldquo;*[&rdquo; to the IVC if the ESCAPE key were pressed, rather than the
-ESCAPE code. &ndash; However note that this problem can be solved in Gemini
-CP/M systems by selecting &ldquo;EDIT mode&rdquo;, where all characters are
-echoed to the IVC exactly as typed).
-</p>
-<p>
-(Also see section 6.2 &ndash; Nested Escape sequences).
-</p>
-<p>
+</h3>
+<table class="indentCol1">
+<tr><td>1.</td><td>These are the control codes that the IVC responds to. They are
+		normally sent to the IVC by a User program or the Host&rsquo;s operating
+		system. (See section 4 &ndash; PUTVID).</td></tr>
+<tr><td>2.</td><td>Programs that request information from the IVC will have to read the
+		information back from the IVC. (See section 4 &ndash; GETVID).</td></tr>
+<tr><td>3.</td><td>It may not be possible to issue commands to the IVC direct from the
+		keyboard attached to a system, as the operating system may modify the
+		charactera typed. (eg the standard CP/M line input routine would echo
+		&ldquo;*[&rdquo; to the IVC if the ESCAPE key were pressed, rather than the
+		ESCAPE code. &ndash; However note that this problem can be solved in Gemini
+		CP/M systems by selecting &ldquo;EDIT mode&rdquo;, where all characters are
+		echoed to the IVC exactly as typed).<br>
+		(Also see section 6.2 &ndash; Nested Escape sequences).</td></tr>
+</table>
+<h3>
 General
-</p>
-<p>
-07
-08
-OA
-10)3)
-</p>
-<p>
-&laquo;
-</p>
-<p>
-Bell
-</p>
-<p>
-Backs pace
-Linefeed
-Carriage return
-</p>
-<p>
-om
-&lt;&lt;
-</p>
-<p>
-&laquo;
-</p>
-<p>
+</h3>
+<table class="ivctab3">
+<tr><td>07</td><td>^G</td><td>Bell</td></tr>
+<tr><td>08</td><td>^H</td><td>Backspace</td></tr>
+<tr><td>0A</td><td>^J</td><td>Linefeed</td></tr>
+<tr><td>0D</td><td>^M</td><td>Carriage return</td></tr>
+</table>
+<h3>
 Cursor movement
-</p>
-<p>
-1c
-iD
-1E
-\F
-1B
-</p>
-<p>
-. Cursor left
-</p>
-<p>
--) Cursor right
-</p>
-<p>
-Cursor up
-</p>
-<p>
-_ Cursor down
-</p>
-<p>
-3D... &lt;ESC&gt; &ldquo;*&rdquo; RR CC Cursor addressing
-</p>
-<p>
-aan
-</p>
-<p>
-a
-</p>
-<p>
+</h3>
+<table class="ivctab3">
+<tr><td>1C</td><td>^\</td><td>Cursor left</td></tr>
+<tr><td>1D</td><td>^]</td><td>Cursor right</td></tr>
+<tr><td>1E</td><td>^^</td><td>Cursor up</td></tr>
+<tr><td>1F</td><td>^_</td><td>Cursor down</td></tr>
+<tr><td>1B</td><td>3D...</td><td>&lt;ESC&gt; &ldquo;=&rdquo; RR CC &nbsp; &nbsp; Cursor addressing</td></tr>
+</table>
+<h3>
 Additional cursor operations
-</p>
-<p>
-1B
-1B
-1B
-1B
-</p>
-<p>
-3F &lt;psc&gt; &ldquo;9&rdquo; Return cursor coordinates and character
-44 &lt;Esc&gt; &ldquo;p&rdquo; Delete cursor
-</p>
-<p>
-45 &lt;ESC&gt; &ldquo;EB&rdquo; Enable cursor
-</p>
-<p>
-59.. &lt;ESC&gt; &ldquo;Y".. Define cursor type
-</p>
-<p>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 3F</td><td>&lt;ESC&gt; &ldquo;?&rdquo;</td><td>Return cursor coordinates and character</td></tr>
+<tr><td>1B 44</td><td>&lt;ESC&gt; &ldquo;D&rdquo;</td><td>Delete cursor</td></tr>
+<tr><td>1B 45</td><td>&lt;ESC&gt; &ldquo;E&rdquo;</td><td>Enable cursor</td></tr>
+<tr><td>1B 59..</td><td>&lt;ESC&gt; &ldquo;Y&rdquo;..</td><td>Define cursor type</td></tr>
+</table>
+<h3>
 Screen editing
-</p>
-<p>
-OB
-OE
-16
-17
-1A
-</p>
-<p>
-1B
-1B
-1B
-1B
-1B
-</p>
-<p>
-a
-</p>
-<p>
-Delete line and scroll up
-Insert line
-</p>
-<p>
-Delete character in line
-Insert character in line
-Clear screen
-</p>
-<p>
-&lt;
-</p>
-<p>
-&lt;
-</p>
-<p>
-&laquo;
-</p>
-<p>
-MEP eN
-</p>
-<p>
-16 &lt;ESC&gt; *V Delete character in screen
-</p>
-<p>
-17 &lt;ESO&gt; &ldquo;W Insert character in screen
-</p>
-<p>
-25 &lt;ESC&gt; &ldquo;S&rdquo; Delete to end-of-screen
-</p>
-<p>
-2A &lt;gsc&gt; &ldquo;*&rdquo; Delete to end-of-line
-</p>
-<p>
-SA &lt;Esc&gt; &ldquo;Z&rdquo; Return contents of current line
-</p>
-<p>
+</h3>
+<table class="ivctab3">
+<tr><td>0B</td><td>^K</td><td>Delete line and scroll up</td></tr>
+<tr><td>0E</td><td>^N</td><td>Insert line</td></tr>
+<tr><td>16</td><td>^V</td><td>Delete character in line</td></tr>
+<tr><td>17</td><td>^W</td><td>Insert character in line</td></tr>
+<tr><td>1A</td><td>^Z</td><td>Clear screen</td></tr>
+</table>
+<p></p>
+<table class="ivctab32">
+<tr><td>1B 16</td><td>&lt;ESC&gt; ^V</td><td>Delete character in screen</td></tr>
+<tr><td>1B 17</td><td>&lt;ESC&gt; ^W</td><td>Insert character in screen</td></tr>
+<tr><td>1B 25</td><td>&lt;ESC&gt; &ldquo;%&rdquo;</td><td>Delete to end-of-screen</td></tr>
+<tr><td>1B 2A</td><td>&lt;ESC&gt; &ldquo;*&rdquo;</td><td>Delete to end-of-line</td></tr>
+<tr><td>1B 5A</td><td>&lt;ESC&gt; &ldquo;Z&rdquo;</td><td>Return contents of current line</td></tr>
+</table>
+<p></p>
+<?php DoublePageChange(); ?>
+<h3>
 Screen format
-</p>
-<p>
-1B
-1B 32
-1B 33
-1B 46..
-1B 42
-1B 56
-1B 49
-1B 4A
-1B At
-iB 4E
-1B 4D
-1B 4F
-</p>
-<p>
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-</p>
-<p>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 31</td><td>&lt;ESC&gt; &ldquo;1&rdquo;</td><td>Select 80 wide format</td></tr>
+<tr><td>1B 32</td><td>&lt;ESC&gt; &ldquo;2&rdquo;</td><td>Select 48 wide format</td></tr>
+<tr><td>1B 33</td><td>&lt;ESC&gt; &ldquo;3&rdquo;</td><td>Select user-defined format</td></tr>
+<tr><td>1B 46..</td><td>&lt;ESC&gt; &ldquo;F&rdquo;..</td><td>Define user format</td></tr>
+<tr><td>1B 42</td><td>&lt;ESC&gt; &ldquo;B&rdquo;</td><td>Blank screen</td></tr>
+<tr><td>1B 56</td><td>&lt;ESC&gt; &ldquo;V&rdquo;</td><td>Video on (unblank screen)</td></tr>
+<tr><td>1B 49</td><td>&lt;ESC&gt; &ldquo;I&rdquo;</td><td>Video Invert screen</td></tr>
+<tr><td>1B 4A</td><td>&lt;ESC&gt; &ldquo;J&rdquo;</td><td>Video normal screen</td></tr>
+<tr><td>1B A1</td><td>&lt;ESC&gt; &ldquo;A&rdquo;</td><td>Alternate character generator is the default</td></tr>
+<tr><td>1B 4E</td><td>&lt;ESC&gt; &ldquo;N&rdquo;</td><td>Normal character generator is the default</td></tr>
+<tr><td>1B 4D</td><td>&lt;ESC&gt; &ldquo;M&rdquo;</td><td>Memory lock on</td></tr>
+<tr><td>1B 4F</td><td>&lt;ESC&gt; &ldquo;O&rdquo;</td><td>Memory lock off</td></tr>
+</table>
+<h3>
 Character set
-</p>
-<p>
-1B 43..
-1B 63..
-1B AT
-1B 48
-1B 68
-</p>
-<p>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 43..</td><td>&lt;ESC&gt; &ldquo;C&rdquo;..</td><td>Define character</td></tr>
+<tr><td>1B 63..</td><td>&lt;ESC&gt; &ldquo;c&rdquo;..</td><td>Define character set</td></tr>
+<tr><td>1B 47</td><td>&lt;ESC&gt; &ldquo;G&rdquo;</td><td>Construct block graphics character set</td></tr>
+<tr><td>1B 48</td><td>&lt;ESC&gt; &ldquo;H&rdquo;</td><td>Duplicate lower character set in upper but invert</td></tr>
+<tr><td>1B 68</td><td>&lt;ESC&gt; &ldquo;h&rdquo;</td><td>Duplicate lower character set in upper c/gen</td></tr>
+</table>
+<h3>
 Block graphics
-</p>
-<p>
-1B 47
-</p>
-<p>
-1B 52..
-1B53..
-1B 54..
-</p>
-<p>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 47  </td><td>&lt;ESC&gt; &ldquo;G&rdquo;</td><td>Construct block graphics character set</td></tr>
+<tr><td>1B 52..</td><td>&lt;ESC&gt; &ldquo;R&rdquo; X Y</td><td>Reset point X,Y</td></tr>
+<tr><td>1B 53..</td><td>&lt;ESC&gt; &ldquo;S&rdquo;..</td><td>Set point X,Y</td></tr>
+<tr><td>1B 54..</td><td>&lt;ESC&gt; &ldquo;T&rdquo;..</td><td>Test point X,Y</td></tr>
+</table>
+<h3>
 Keyboard
-</p>
-<p>
-1B 66.
-&ldquo;1B 6B
-1B 4B
-1B 58
-</p>
-<p>
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-</p>
-<p>
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-</p>
-<p>
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-</p>
-<p>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 66..</td><td>&lt;ESC&gt; &ldquo;f&rdquo;</td><td>Define Function Key(s)</td></tr>
+<tr><td>1B 6B</td><td>&lt;ESC&gt; &ldquo;k&rdquo;</td><td>Test Keyboard status</td></tr>
+<tr><td>1B 4B</td><td>&lt;ESC&gt; &ldquo;K&rdquo;</td><td>Get Keyboard character</td></tr>
+<tr><td>1B 58</td><td>&lt;ESC&gt; &ldquo;X&rdquo;</td><td>Get one line of input</td></tr>
+</table>
+<h3>
 Miscellaneous
-</p>
-<p>
-1B 57..
-1B 4C..
-1B 55
-1B 50
-{1B 76
-</p>
-<p>
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-&lt;ESC&gt;
-</p>
-<p>
-&ldquo;4 &ldquo;
-&ldquo;on
-&ldquo;3 &ldquo;
-&ldquo;pe we
-&ldquo;5&rdquo;
-nyt
-er
-ey&rdquo;
-&ldquo;A&rdquo;
-&ldquo;yr
-tye
-&ldquo;on&rdquo;
-</p>
-<p>
-&ldquo;c &ldquo;
-</p>
-<p>
-Select 80 wide format
-</p>
-<p>
-Select 48 wide format
-</p>
-<p>
-Select user-defined format
-</p>
-<p>
-Define user format
-</p>
-<p>
-Blank screen
-</p>
-<p>
-Video on (unblank screen)
-</p>
-<p>
-Video Invert screen
-</p>
-<p>
-Video normal screen
-</p>
-<p>
-Alternate character generator is the default
-Normal character generator is the default
-Memory lock on
-</p>
-<p>
-Memory lock off
-</p>
-<p>
-Define character
-</p>
-<p>
-Define character set
-</p>
-<p>
-Construct block graphics character set
-</p>
-<p>
-Duplicate lower character set in upper but invert
-Duplicate lower character set in upper c/gen
-</p>
-<p>
-Construct block graphics character set
-</p>
-<p>
-&ldquo;R&rdquo; X Y Reset point X,Y
-</p>
-<p>
-&ldquo;gt we
-nptt we
-</p>
-<p>
-&rdquo; f s
-* k &ldquo;
-&ldquo;y &rdquo;
-&rdquo; Xx &ldquo;
-</p>
-<p>
-yr&rdquo;
-oe
-</p>
-<p>
-&ldquo;Le
-</p>
-<p>
-Haye
-</p>
-<p>
-Set point X,Y*
-Test point X,Y
-</p>
-<p>
-Define Function Key(s)
-Test Keyboard statua
-Get Keyboard character
-Get one line of input
-</p>
-<p>
-High speed Write to display
-Load user program
-</p>
-<p>
-Execute user program
-</p>
-<p>
-Return light pen coordinates
-Return version number
-</p>
-<p>
-45
-</p>
-<?php columnEnd(1); ?>
+</h3>
+<table class="ivctab32">
+<tr><td>1B 57..</td><td>&lt;ESC&gt; &ldquo;W&rdquo;..</td><td>High speed Write to display</td></tr>
+<tr><td>1B 4C..</td><td>&lt;ESC&gt; &ldquo;L&rdquo;..</td><td>Load user program</td></tr>
+<tr><td>1B 55</td><td>&lt;ESC&gt; &ldquo;U&rdquo;</td><td>Execute user program</td></tr>
+<tr><td>1B 50</td><td>&lt;ESC&gt; &ldquo;P&rdquo;</td><td>Return light pen coordinates</td></tr>
+<tr><td>1B 76</td><td>&lt;ESC&gt; &ldquo;v&rdquo;</td><td>Return version number</td></tr>
+</table>
+<?php DoublePageEnd(); ?>

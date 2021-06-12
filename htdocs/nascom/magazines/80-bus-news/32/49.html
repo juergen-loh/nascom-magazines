@@ -1,45 +1,34 @@
-<?php columnStart(1); ?>
-<p>
-49
-</p>
-<p>
-1.1 Various small items were changed. (The unlikely sequence ESC ESC Z% Z% used
-to crash the system). &ldquo;Delete line and scroll up&rdquo; now cleared the bottom
-line of the display if the cursor was there. (Previously nothing
-happened.) Cursor addressing, Set, Reset, and Test now accepted nested
-escape sequences during the coordinate string.
-</p>
-<p>
-1.2 A few small internal changes made. The input buffer (used to hold
-incoming characters while the screen is being scrolled) was reduced to 64
-bytes from 128 bytes, (128 bytes was a bit of a waste), and the internal
-stack area was increased.
-</p>
-<p>
-2.0 Support for the Rotec keyboard and programmable function keys added,
-hence the jump to 2.0. The monitor size now exceeded 2k and required a
-2732 rather than the 2716 of the earlier releases.
-</p>
-<p>
-2.1 The current release of IVC-MON. Sections of the monitor code were
-restructured to give a faster response to keyboard poll requests. This
-has a noticable effect on the screen update rate for operating systems
-such as CP/M where the BDOS polls the keyboard everytime it outputs a
-character. Another Escape sequence was added to allow lines to be
-&ldquo;locked&rdquo; at the bottom of the screen.
-</p>
-<p>
-(3.07) Although the IVC has now been discontinued one further update of the
-software is envisaged. (When time permits &ndash; don&rsquo;t expect it tomorow!)
-This will include SOME of the features that have appeared in the SVC
-monitor (see below).
-</p>
-<p>
+<?php columnStart(1, "noindent"); ?>
+<table class="indentCol1">
+<tr><td>1.1</td><td>Various small items were changed. (The unlikely sequence ESC ESC % % used
+		to crash the system). &lsquo;Delete line and scroll up&rsquo; now cleared the bottom
+		line of the display if the cursor was there. (Previously nothing
+		happened.) Cursor addressing, Set, Reset, and Test now accepted nested
+		escape sequences during the coordinate string.</td></tr>
+<tr><td>1.2</td><td>A few small internal changes made. The input buffer (used to hold
+		incoming characters while the screen is being scrolled) was reduced to 64
+		bytes from 128 bytes, (128 bytes was a bit of a waste), and the internal
+		stack area was increased.</td></tr>
+<tr><td>2.0</td><td>Support for the Rotec keyboard and programmable function keys added,
+		hence the jump to 2.0. The monitor size now exceeded 2k and required a
+		2732 rather than the 2716 of the earlier releases.</td></tr>
+<tr><td>2.1</td><td>The current release of IVC-MON. Sections of the monitor code were
+		restructured to give a faster response to keyboard poll requests. This
+		has a noticable effect on the screen update rate for operating systems
+		such as CP/M where the BDOS polls the keyboard everytime it outputs a
+		character. Another Escape sequence was added to allow lines to be
+		&lsquo;locked&rsquo; at the bottom of the screen.</td></tr>
+<tr><td>(3.0?)</td><td>Although the IVC has now been discontinued one further update of the
+		software is envisaged. (When time permits &ndash; don&rsquo;t expect it tomorow!)
+		This will include SOME of the features that have appeared in the SVC
+		monitor (see below).</td></tr>
+</table>
+<h3>
 The SVC
-With a new design on the drawing board Gemini was faced with the usual
-</p>
+</h3>
 <p>
-decision &ndash; Do they use a &ldquo;state-of-the-art&rdquo; device and design a system around
+With a new design on the drawing board Gemini was faced with the usual
+decision &ndash; Do they use a &lsquo;state-of-the-art&rsquo; device and design a system around
 that and accept the attendant constraints? (e.g. the in-built character set
 and screen formats offered by some graphics controllers.) Or should they
 remain as far as possible compatible with the IVC? They &ndash; wisely in my view &ndash;
@@ -48,33 +37,26 @@ opted for the latter case.
 <p>
 So following the IVC came the SVC. Why SVC? well they had to call it something
 and it does bear some relationship to the IVC. In fact it is upwards
-</p>
-<p>
-&ldquo;compatible with the IVC. (i.e. You can replace an IVC by an SVC and 99.9% of
-</p>
-<p>
+compatible with the IVC. (i.e. You can replace an IVC by an SVC and 99.9% of
 programs will continue to run as before.) So what do you get by moving from an
-&ldquo;I&rdquo; to an &ldquo;S"? Well the Z80A changes to a Z80B (6MHz operation), the screen
+&ldquo;I&rdquo; to an &ldquo;S&rdquo;? Well the Z80A changes to a Z80B (6MHz operation), the screen
 memory goes up in size from 2k to 8k (although some of it doubles as the
 character generator), a 256x256 pixel graphics mode appears, a 40 x 25 display
 option is provided (the 0.01% incompatibility), a UART can be added on a
 piggy-back board to make the SVC a stand-alone terminal, a range of attributes
 appears, a buzzer is added, a Gemini serial keyboard can be used and finally
-</p>
-<p>
 you get ESP.
 </p>
 <p>
 I think that is about enough for now, and so I&rsquo;m afraid you will have to wait
-</p>
-<p>
 until the next issue for part II to find out about the ESP.
 </p>
-<p>
+<h3>
 REFERENCES.
-1. PARKINSON D.W., &ldquo;Remote Terminals and the Galaxy&rdquo;, 80-BUS NEWS 1-4 Nov-Dec
-</p>
+</h3>
 <p>
+1. PARKINSON D.W., &ldquo;Remote Terminals and the Galaxy&rdquo;, 80-BUS NEWS 1-4 Nov-Dec
 1982, pp45-46.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

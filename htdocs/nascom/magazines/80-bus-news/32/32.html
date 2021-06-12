@@ -1,7 +1,4 @@
-<?php columnStart(1); ?>
-<p>
-32
-</p>
+<?php columnStart(1, "noindent"); ?>
 <p>
 The internal power supply of the progammer provides all the necessary
 voltages, and no power is drawn from the main system. As well as the various
@@ -21,10 +18,12 @@ is a toroidal mains transformer and a smaller pcb that carries the power
 supply components.
 </p>
 <p>
-The Disk: This holds three programs:&ndash;
-PROG. COM The programmer software.
-CPROG. COM A configuration program for PROG.COM
-PROGINIT.MAC The low level assembly language drivers used within
+<b>The Disk:</b> This holds three programs:&ndash;
+</p>
+<p class="indent">
+<b>PROG.COM</b> The programmer software.<br>
+<b>CPROG.COM</b> A configuration program for PROG.COM<br>
+<b>PROGINIT.MAC</b> The low level assembly language drivers used within
 PROG.COM.
 </p>
 <p>
@@ -36,41 +35,35 @@ paper listing of PROGINIT.MAC instead. Some dealers may be able to provide
 other formats.
 </p>
 <p>
-The Manual: The eight page manual covers the installation of the programmer,
+<b>The Manual:</b> The eight page manual covers the installation of the programmer,
 and the use of CPROG and PROG. Also a brief section is included on how
 Microsoft&rsquo;s M80/L80 combination can be used to create ROMable programs, There
 is no description of the internal circuitry of the programmer nor is there any
 information on how it should be driven by any program other than that
 supplied. (But see PROGINIT.MAC below.)
 </p>
-<p>
+<h3>
 Using the Software
-</p>
+</h3>
 <p>
-The configuration program CPROG allows the user to change two parameters
-within PROG. The first is the base address of the PIO that is driving the
+The configuration program <b>CPROG</b> allows the user to change two parameters
+within <b>PROG.</b> The first is the base address of the PIO that is driving the
 programmer, and the second is the default EPROM type that PROG assumes when it
 is invoked. The latter option saves the user the irritation of having to use
-the -Change EPROM type&rdquo; option every time that PROG is used.
+the &lsquo;Change EPROM type&rsquo; option every time that PROG is used.
 </p>
 <p>
-The main program PROG drives the programmer, and transfers data in both
+The main program <b>PROG</b> drives the programmer, and transfers data in both
 directions between disk files and a EPROMs via a buffer that it maintains in
 memory. When invoked it puts up a heading together with a menu from which the
 following options can be selected:
 </p>
-<p>
-0 &ndash; Return to CP/M.
-</p>
-<p>
-1 &ndash; Change EPROM type. This brings up a sub-menu offering the choice of 2716,
-2732, 2732A, 2764, 27128, and 27256.
-</p>
-<p>
-2 &mdash;- Read an EPROM into the buffer. This prompts for an EPROM to be inserted
-into the socket, and then reads it into the buffer.
-</p>
-<p>
-3 &ndash; Read a disk file into the buffer. (A prompt for a file name will appear.)
-</p>
+<table class="indentCol1">
+<tr><td>0 &ndash;</td><td>Return to CP/M.</td></tr>
+<tr><td>1 &ndash;</td><td>Change EPROM type. This brings up a sub-menu offering the choice of 2716,
+		2732, 2732A, 2764, 27128, and 27256.</td></tr>
+<tr><td>2 &ndash;</td><td>Read an EPROM into the buffer. This prompts for an EPROM to be inserted
+		into the socket, and then reads it into the buffer.</td></tr>
+<tr><td>3 &ndash;</td><td>Read a disk file into the buffer. (A prompt for a file name will appear.)</td></tr>
+</table>
 <?php columnEnd(1); ?>

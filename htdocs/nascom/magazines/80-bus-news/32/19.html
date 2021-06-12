@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+A POLYDOS Version Of NasPen
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+By Alan Melia
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-19
-</p>
-<p>
-APOLYDOS Version Of NasPen By Alan Melia
-</p>
 <p>
 Because many Nascom users, who, like myself, started with cassette
 systems, would have bought and installed NASPEN, it was felt that a POLYDOS
@@ -25,42 +28,40 @@ byte entry for each command, the table being terminated by a catch-all jump to
 a &lsquo;command error&rsquo; subroutine.The first byte is the ASCII value of the command
 symbol,the second and third give the address of the routine to execute the
 command (bytes reversed, of course). I determined to reallocate the &ldquo;R&rdquo; and
-ty&rdquo; commands to the new disk routines to retain some compatibility with the
+&ldquo;W&rdquo; commands to the new disk routines to retain some compatibility with the
 original usage. I further decided that I required to keep the cassette
 routines to retain compatibility with several other local &lsquo;Nascomaniacs&rsquo;. A
 skim through the handbook for Naspen will confuse by offering duplicate
-commands for cursor-up and cursor-down, &ldquo;+ &amp; -&rdquo; as well as the normal cursor
-keys. Thus I determined to replace the &ldquo;+ &amp; -&rdquo; with commands &ldquo;r &amp; w&rdquo; for
+commands for cursor-up and cursor-down, &ldquo;+ &amp; &ndash;&rdquo; as well as the normal cursor
+keys. Thus I determined to replace the &ldquo;+ &amp; &ndash;&rdquo; with commands &ldquo;r &amp; w&rdquo; for
 cassette read and write, and altered the &ldquo;R &amp; W&rdquo; entries in the table to point
 to the new disk routines in the overlay. This means that only a simple patch
 is required, rather than a full re-assembly job. A further modification that
 was found necessary was to re-program the &ldquo;return to Nas-sys&rdquo;. The original
 Naspen return reinitialises Naspen by jumping to 0000H rather than that well-loved
 line, DF 5B. Unfortunately it was not sufficient to add the &ldquo;DF 5B&rdquo;
-code, as the rentry to PolyDos leaves the keyboard in &ldquo;typewriter&rdquo; mode So a
-few more bytes of code were required to reset &ldquo;KO&rdquo;. First, a seperate file
+code, as the rentry to PolyDos leaves the keyboard in &ldquo;typewriter&rdquo; mode. So a
+few more bytes of code were required to reset &ldquo;K0&rdquo;. First, a seperate file
 was written and debugged. This file contained the code nessessary to access
 the PolyDos routines, and had to be loaded before Naspen was called. The ploy
-</p>
-<p>
-_worked quite well, but flushed with success, I decided that it would be far
+worked quite well, but flushed with success, I decided that it would be far
 tidier if the extra file was loaded automatically when Naspen was called. The
 proceedure used was to rename Naspen with an extension &ldquo;NP&rdquo; instead of the
 more usual &ldquo;GO&rdquo; machine-code extension. An overlay routine was then written
 and called &ldquo;NPfh.OV&rdquo;. The overlay program is loaded and executed automatically
-when you type &lsquo;NASPEN&rsquo;.The overlay loads NASPEN at B800 and the extension file
+when you type &ldquo;NASPEN&rdquo;.The overlay loads NASPEN at B800 and the extension file
 &ldquo;NASPEX&rdquo; at B000. It then initialises the printer and cold-starts NASPEN.
 The sequence of operations is then as follows:&ndash;
 </p>
-<p>
-1) Call Naspen by typing &lsquo;NASPEN&rsquo; after the &ldquo;S"prompt
+<p class="noindent">
+1) Call Naspen by typing &lsquo;NASPEN&rsquo; after the &ldquo;S&rdquo;prompt
 </p>
-<p>
+<p class="noindent">
 2) PolyDos sees that NASPEN has the extension &ldquo;NP&rdquo; so it loads the file
-&lsquo;nPfh.OV&rsquo; into the overlay area (C800 onwards), and executes it.
+&lsquo;NPfh.OV&rsquo; into the overlay area (C800 onwards), and executes it.
 </p>
-<p>
-3) NP&pound;h.OV loads the NASPEN file and the extensions &ldquo;NASPEX.GO&rdquo; and jumps to
+<p class="noindent">
+3) NPfh.OV loads the NASPEN file and the extensions &ldquo;NASPEX.GO&rdquo; and jumps to
 the start of NASPEN at B800H. If this confuses, read the POLYDOS manual
 on overlay file handlers.
 </p>
