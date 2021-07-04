@@ -435,6 +435,7 @@ function columnChange($column)
 {
 	switch ($column) {
 	case 2:		echo "<!-- 2 columns: change --></div><div class=\"col-".BootstrapTier()."-6\">\n";			break;
+	case 22:	echo "<!-- 2(2) columns: change -->\n";														break;	// multi
 	case 3:		echo "<!-- 3 columns: change --></div><div class=\"col-".BootstrapTier()."-4\">\n";			break;
 	case 23:	echo "<!-- 3 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 2/3
 	case 4:		echo "<!-- 4 columns: change --></div><div class=\"col-".BootstrapTier()."-3\">\n";			break;
@@ -464,6 +465,7 @@ function columnEnd($column)
 {
 	switch ($column) {
 	case 1:		echo "<!-- 1 column: end --></div>"/*</div>*/."\n";		break;
+	case 22:	echo "<!-- 2(2) columns: end --></div></div>\n";		break;	// multi
 	case 2:		echo "<!-- 2 columns: end --></div></div>\n";			break;
 	case 3:		echo "<!-- 3 columns: end --></div></div>\n";			break;
 	case 4:		echo "<!-- 4 columns: end --></div></div>\n";			break;

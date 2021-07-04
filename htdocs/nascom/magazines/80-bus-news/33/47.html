@@ -1,40 +1,52 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
+<h4>
+d) NAS-DIS
+</h4>
 <p>
-47
+Use in Direct mode (NAS-SYS U command).
 </p>
 <p>
-d) NAS-DIS
-Use in Direct mode (NAS-SYS U command).
 As NAS-DIS asks for memory addresses, unpredictable things may happen to the
 printer. This is because the subroutine outputs an ESC code, which the printer
 takes as the start of a control code. The cure:
-&ndash; Either turn the printer momentarily off when NAS-DIS signals &ldquo;Go?&rdquo;
-&ndash; Or change these memory locations in NAS-DIS:
-cboo0 00 NOP
-cDol 00 NOP
-CD02 00 NOP
 </p>
 <p>
+&ndash; Either turn the printer momentarily off when NAS-DIS signals &ldquo;Go?&rdquo;<br>
+&ndash; Or change these memory locations in NAS-DIS:
+</p>
+<pre class="indent2">
+CD00   00   NOP
+CDO1   00   NOP
+CD02   00   NOP
+</pre>
+<h4>
 e) ZEAP
+</h4>
+<p>
 Change printer reflection:
-OF 04 DF 4C C9 SCAL &ldquo;L RET
+</p>
+<pre class="indent">
+0F04    DF 4C C9    SCAL "L RET
+</pre>
+<p>
 ZEAP U command will now list the source file, and ZEAP A command will, with
 option 04, give assembly listing.
 </p>
-<p>
+<h4>
 f) BASIC
+</h4>
+<p>
 Use in direct mode (NAS-SYS U command). It is possible to turn printing on and
 off from BASIC with DOKE statements:
 </p>
-<p>
-Printer on &ndash; DOKE 3187,1912
-</p>
-<p>
+<p class="indent">
+Printer on &ndash; DOKE 3187,1912<br>
 Printer off &ndash; DOKE 3187,1913
 </p>
-<p>
+<?php hline("20%"); ?>
+<h1 id="article1">
 Private Sales
-</p>
+</h1>
 <p>
 Nascom&nbsp;2 in Kenilworth case with fan; 40K RAM, I/O board with UART &amp; 1 PIO.
 Cassette deck and display monitor. Nas-Sys&nbsp;3, BASIC toolkit in ROM. Hullforth,
@@ -52,14 +64,14 @@ Nascom&nbsp;2 with 64K RAM (GM802), spare RAM&nbsp;A board (32K), Kenilworth cas
 disk system with CP/M, 3 assemblers, 6 languages (including C and Fortran),
 Soundbox, GM822 real time clock, Sargon Chess and many other games, Nascom I/O
 board (2 x PIO + CTC), IMP printer and paper. &pound;475 or offers. Call Julian on
-__-___-____ between 10 am. and 5 pm.
+__-___-____ between 10 a.m. and 5 p.m.
 </p>
 <p>
 64K Gemini MultiBoard with GM812 IVC, GM809 FDC, GM802 RAM and GM811 CPU
 cards. All in aluminium case with PSU, fan and 5 slot motherboard. GM827
 keyboard in sloping case. GM825 dual disk drive (800K each). Reasonable
-offers for the lot (or might haggle over individual units). Dr P.D.Coker, 23
-Darwin Close, Farnborough, Orpington, Kent BR6 JEP. (____ _____)
+offers for the lot (or might haggle over individual units). Dr P.D.Coker, __
+______ _____, Farnborough, Orpington, Kent ___ ___. (____ _____)
 </p>
 <p>
 Nascom&nbsp;2 with Graphics ROM, ZEAP(2.1), Castle cassette interface, mini-motherboard,
@@ -70,4 +82,5 @@ audio/<?php spChar("zwsp"); ?>video outputs. Complete documentation for the abov
 tapes, leads to cassette etc + serial and parallel port leads. &pound;299 ono for
 quick sale. Dr M.R Goulding Towcester (____) _____ eve, _____ ext. 366 day.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

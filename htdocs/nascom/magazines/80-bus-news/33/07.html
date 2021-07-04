@@ -5,7 +5,7 @@ formatting the cursor always moves to the start of the text. I would have
 preferred it to display from the position at which the format command was
 given. This is usually what I want to see after formatting so I have to step
 through the text until I find the required position again, which is a little
-annoying, although use of &lsquo;* and &lsquo;=&rdquo; commands (which are cursor position
+annoying, although use of &lsquo;*&rsquo; and &lsquo;=&rsquo; commands (which are cursor position
 markers) would probably help. Source Code files are not formatted of course,
 and normally ENTER would be pressed at the end of each line.
 </p>
@@ -20,44 +20,44 @@ PEN has around 16 commands to control printing.
 <p>
 A nice feature of PEN is that TAB characters show on the screen as a row
 of little dots. Since &lsquo;TABs&rsquo; can upset formatting, it is useful to be able to
-&lsquo;see&rsquo; them. (A formattable TAB character (&ldquo;A) is available as an alternative.)
-Any area of text may be marked (&ldquo;U) to exclude it from formatting, so that
+&lsquo;see&rsquo; them. (A formattable TAB character (^A) is available as an alternative.)
+Any area of text may be marked (^U) to exclude it from formatting, so that
 tables or lists that would be destroyed by normal formatting may be included.
-The ^U command is cancelled by a -F command, to allow formatting to
-recommence. PEN also supports an Indent command (&ldquo;R), which indents in steps
+The ^U command is cancelled by a ^F command, to allow formatting to
+recommence. PEN also supports an Indent command (^R), which indents in steps
 of 4 spaces, and appears on the screen as (different) dots. This can help in
 building tables or lists, or just to indent the whole text. The Indent is
-reduced by the -X command. If the commands are placed into the text in insert
+reduced by the ^X command. If the commands are placed into the text in insert
 mode, variable ammounts of indent are possible. In command mode, the ^R and ^X
 commands operate on the whole text, so could be used to set a print margin,
 for example.
 </p>
-<p>
+<h3>
 Some Other Commands
-</p>
+</h3>
 <p>
-It is impossible to describe all of the commands ina review, so only a
+It is impossible to describe all of the commands in a review, so only a
 few will be described in any detail. Many commands are straightforward, no
 option commands. Potentially fatal commands are protected by &lsquo;Are you sure?&rsquo;.
 </p>
-<p>
+<h3>
 Block Move/<?php spChar("zwsp"); ?>Delete
-</p>
+</h3>
 <p>
 Any block of text may be marked with a &lsquo;backslash&rsquo; character at start and
 end. If the cursor is then moved to another place, the &lsquo;M&rsquo; command will cause
 the marked block to be inserted at the cursor position. The origional block is
 not deleted. The markers may be removed by the &lsquo;N&rsquo; command. Alternatively a
-&ldquo;&ldquo;p&rsquo; command will allow block(s) to be deleted, but PEN first checks that it
+&ldquo;^D&rsquo; command will allow block(s) to be deleted, but PEN first checks that it
 has the right block, as there could be several marked blocks throughout the
 text. Using backslash for the move markers can be inconvient to the C
 programmer as these are used as remark delimters within C. The information
 supplied with PEN makes it an easy task to choose some other less used
 character instead.
 </p>
-<p>
+<h3>
 Change Keyboard Case
-</p>
+</h3>
 <p>
 The &lsquo;U&rsquo; command will reverse the Keyboard case, which is very useful
 since this saves much operation of the Shift key, depending on the type of

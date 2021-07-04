@@ -4,95 +4,60 @@ As a brief aside on FILL routines &ndash; You can always tell a recursive based
 FILL routine, as, when it is filling a complex area, there are often pauses
 while nothing apparently happens on the screen. What is actually happening is
 that the FILL routine has just filled to a &lsquo;dead end&rsquo;, and there then follows
-a period where the recursive structure -unwinds&rdquo; itself, returning from layer
+a period where the recursive structure &lsquo;unwinds&rsquo; itself, returning from layer
 to layer back up the stack until it finds an area that it has not yet filled.
 </p>
-<p>
+<h3>
 BUG TIME
-</p>
+</h3>
 <p>
-Well folks, it had to happen. Between writing the first part of this&nbsp;.
+Well folks, it had to happen. Between writing the first part of this
 article and completing this one someone has unearthed a bug that is present in
 both the IVC and SVC monitors. That fact that it has taken so long to surface
 is indicative that none of you are likely to have met it yet (otherwise you
-would have reported it &ndash; wouldn&rsquo;t you?). It is in the ESC &ldquo;e&rdquo; J... sequence
-that allows you to redfine the function keys from a program. I8 you try and
--undefine&rdquo; a key using this sequence the key is not actually fully deleted
+would have reported it &ndash; wouldn&rsquo;t you?). It is in the ESC &ldquo;f&rdquo; ... sequence
+that allows you to redfine the function keys from a program. If you try and
+&lsquo;undefine&rsquo; a key using this sequence the key is not actually fully deleted
 from the function key table, and if the key is subsequently pressed something
-will be returned to the host system. What the -something&rdquo; is cannot be easily
-predicted. Key definitions can be removed totally from the table, but only by |
+will be returned to the host system. What the &lsquo;something&rsquo; is cannot be easily
+predicted. Key definitions can be removed totally from the table, but only by
 using the Shift/<?php spChar("zwsp"); ?>Edit feature direct from the keyboard.
 </p>
-<p>
+<h4 class="center">
 TABLE 1: Extra features of the SVC
-</p>
-<p>
-HEX ASCIL DECIMAL COMMAND
-General
-O7 &ldquo;6 7 Bell &ndash; sound on-board buzzer
-</p>
-<p>
-Cursor Movement
-1B OC &lt;ESC&gt; &ldquo;L 27 12 Cursor home
-</p>
-<p>
-Screen format
-1B 34 &lt;ESC&gt; &ldquo;4&rdquo; 27 52 Select graphics mode
-1B 70... &lt;ESC&gt; &ldquo;p"... 27 112... Select display/<?php spChar("zwsp"); ?>update partition
-</p>
-<p>
-.
-</p>
-<p>
-Character set
-iB G7... CESC&gt; &ldquo;g"... 27 103... Set Language
-IB 62... &lt;ESC&gt; &lsquo;b!... 27 98... Read back character set
-</p>
-<p>
-256x256 graphics
-</p>
-<p>
-1B 52 &lt;ESC&gt; &lsquo;R&rsquo;... 27 82... Reset point X,Y
-</p>
-<p>
-1B 53... &lt;ESC&gt; &ldquo;S"... 27 83... Set point X,Y
-</p>
-<p>
-1B 54... &lt;ESC&gt; &ldquo;IT"... 27 84... Test point X,Y
-</p>
-<p>
-1B 6C... &lt;ESC&gt; "1"... 27 108... Draw/<?php spChar("zwsp"); ?>Erase/<?php spChar("zwsp"); ?>Complement a line
-1B 6F... &lt;ESCD "ol... 27 LI... Draw/<?php spChar("zwsp"); ?>Erase/<?php spChar("zwsp"); ?>Complement a circle
-1B 6D... &lt;ESC&gt; "m"... 27 109... Move cursor to X,Y
-</p>
-<p>
-1B 77 &lt;ESC&gt; &ldquo;wi. 27 119 Fill a polygon
-</p>
-<p>
-IB 64... &lt;ESC&gt; &ldquo;d"... 27 100... Graphics screen dump
-Keyboard
-</p>
-<p>
-iB 3h... &lt;ESC&gt; &ldquo;&gt;"... 27 62... Download soft-key display
-Clock
-</p>
-<p>
-1B 74... &lt;ESC&gt; &ldquo;t"... 27 116... Set clock time
-</p>
-<p>
-1B 74 3D..&lt;ESC&gt; &ldquo;t="... 27 116 61.Position clock display
-</p>
-<p>
-1B 74 45 &lt;ESC&gt; &ldquo;LE&rdquo; 27 116 69 Enable clock display
-</p>
-<p>
-1B 74 44 &lt;ESC&gt; &ldquo;tb&rdquo; 27 116 68 Disable clock display
-</p>
-<p>
-1B 74 3F &lt;ESC&gt; &ldquo;t?&rdquo; 27 116 63 Return clock time
-</p>
-<p>
-Miscellaneous
-IB 61... &lt;ESC&gt; &ldquo;a"... 27 97... Set/reset attributes
-</p>
+</h4>
+<table class="svc-extra center">
+<tr><td>HEX</td><td>ASCII</td><td>DECIMAL</td><td>COMMAND</td></tr>
+<tr><th colspan=4>General</th></tr>
+<tr><td>07</td><td>^G</td><td>7</td><td>Bell &ndash; sound on-board buzzer</td></tr>
+<tr><th colspan=4>Cursor Movement</th></tr>
+<tr><td>1B 0C</td><td>&lt;ESC&gt; ^L</td><td>27 12</td><td>Cursor home</td></tr>
+<tr><th colspan=4>Screen format</th></tr>
+<tr><td>1B 34</td><td>&lt;ESC&gt; &ldquo;4&rdquo;</td><td>27 52</td><td>Select graphics mode</td></tr>
+<tr><td>1B 70...</td><td>&lt;ESC&gt; &ldquo;p&rdquo;...</td><td>27 112...</td><td>Select display/<?php spChar("zwsp"); ?>update partition</td></tr>
+<tr><th colspan=4>Character set</th></tr>
+<tr><td>1B 67...</td><td>&lt;ESC&gt; &ldquo;g&rdquo;...</td><td>27 103...</td><td>Set Language</td></tr>
+<tr><td>1B 62...</td><td>&lt;ESC&gt; &ldquo;b&rdquo;...</td><td>27 98...</td><td>Read back character set</td></tr>
+<tr><th colspan=4>256x256 graphics</th></tr>
+<tr><td>1B 52</td><td>&lt;ESC&gt; &ldquo;R&rdquo;...</td><td>27 82...</td><td>Reset point X,Y</td></tr>
+<tr><td>1B 53...</td><td>&lt;ESC&gt; &ldquo;S&rdquo;...</td><td>27 83...</td><td>Set point X,Y</td></tr>
+<tr><td>1B 54...</td><td>&lt;ESC&gt; &ldquo;T&rdquo;...</td><td>27 84...</td><td>Test point X,Y</td></tr>
+<tr><td>1B 6C...</td><td>&lt;ESC&gt; &ldquo;l&rdquo;...</td><td>27 108...</td><td>Draw/<?php spChar("zwsp"); ?>Erase/<?php spChar("zwsp"); ?>Complement a line</td></tr>
+<tr><td>1B 6F...</td><td>&lt;ESC&gt; &ldquo;o&rdquo;...</td><td>27 111...</td><td>Draw/<?php spChar("zwsp"); ?>Erase/<?php spChar("zwsp"); ?>Complement a circle</td></tr>
+<tr><td>1B 6D...</td><td>&lt;ESC&gt; &ldquo;m&rdquo;...</td><td>27 109...</td><td>Move cursor to X,Y</td></tr>
+<tr><td>1B 77</td><td>&lt;ESC&gt; &ldquo;w&rdquo;...</td><td>27 119</td><td>Fill a polygon</td></tr>
+<tr><td>1B 64...</td><td>&lt;ESC&gt; &ldquo;d&rdquo;...</td><td>27 100...</td><td>Graphics screen dump</td></tr>
+<tr><th colspan=4>Keyboard</th></tr>
+<tr><td>1B 3E...</td><td>&lt;ESC&gt; &ldquo;&gt;&rdquo;...</td><td>27 62...</td><td>Download soft-key display</td></tr>
+<tr><th colspan=4>Clock</th></tr>
+<tr><td>1B 74...</td><td>&lt;ESC&gt; &ldquo;t&rdquo;...</td><td>27 116...</td><td>Set clock time</td></tr>
+<tr><td>1B 74 3D..</td><td>&lt;ESC&gt; &ldquo;t=&rdquo;...</td><td>27 116 61.</td><td>Position clock display</td></tr>
+<tr><td>1B 74 45</td><td>&lt;ESC&gt; &ldquo;tE&rdquo;</td><td>27 116 69</td><td>Enable clock display</td></tr>
+<tr><td>1B 74 44</td><td>&lt;ESC&gt; &ldquo;tD&rdquo;</td><td>27 116 68</td><td>Disable clock display</td></tr>
+<tr><td>1B 74 3F</td><td>&lt;ESC&gt; &ldquo;t?&rdquo;</td><td>27 116 63</td><td>Return clock time</td></tr>
+<tr><th colspan=4>Miscellaneous</th></tr>
+<tr><td>1B 61...</td><td>&lt;ESC&gt; &ldquo;a&rdquo;...</td><td>27 97...</td><td>Set/reset attributes</td></tr>
+</table>
+<p></p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

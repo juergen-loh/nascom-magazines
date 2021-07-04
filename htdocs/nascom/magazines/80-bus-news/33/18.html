@@ -1,15 +1,12 @@
 <?php columnStart(1); ?>
 <p>
-18
-</p>
-<p>
 The SVC offers a variation on this theme. For various reasons the screen
 memory word width remains at 8 bits. This, as before, leaves a single bit that
 can be used as an attribute bit. But the SVC, unlike the IVC, allows this bit
 to select a variety of attributes. So setting bit 7 of a character can select
-one or more of the following attributes:- use the alternate character
+one or more of the following attributes:&ndash; use the alternate character
 generator, blink the character, half intensity character, and, display the
-character with a half-tone background. Note that I said &ldquo;one or more&rdquo;. The SVC
+character with a half-tone background. Note that I said &lsquo;one or more&rsquo;. The SVC
 supports an escape sequence that is used to select which attributes you want.
 You can select any combination of the above, eg. blink + half-intensity, but
 the one thing to remember is that with only one attribute control bit
@@ -23,13 +20,13 @@ video. This was originally included as a specific attribute, but was later
 dropped in favour of the half-tone background. It is assumed that inverse
 video is provided in the usual way via the alternate character generator.
 </p>
-<p>
+<h3>
 TRANSPARENT ACCESS &amp; ESP
-</p>
+</h3>
 <p>
 With the SVC, a hardware technique is used to achieve transparent access.
-On the face of it all that has to be done is to connect the &ldquo;display enable&rdquo;
-(or -display active&rsquo;) signal from the display controller via a few gates to
+On the face of it all that has to be done is to connect the &lsquo;display enable&rsquo;
+(or &lsquo;display active&rsquo;) signal from the display controller via a few gates to
 the Z80 /WAIT input. Thus, if the processor attempts to access the screen
 memory while the display is active, it is made to wait until the end of the
 display period, after which the Z80 is free to continue with its read/<?php spChar("zwsp"); ?>write
@@ -46,15 +43,15 @@ This is where ESP comes in. The arbitration circuit has to know whether
 there is time for the Z80 to complete its read/<?php spChar("zwsp"); ?>write cycle without
 interruption, or whether the /WAIT signal should be applied immediately as the
 display controller is about to start a new display line. Those of you who have
-followed the description so far are probably thinking &ndash; -ah! you just generate
-or tap off an earlier version of the Display Enable signal and use that&rdquo;.
-Unfortunately this is easier said than done as the &ldquo;display enable&rdquo; signal
+followed the description so far are probably thinking &ndash; &lsquo;ah! you just generate
+or tap off an earlier version of the Display Enable signal and use that&rsquo;.
+Unfortunately this is easier said than done as the &lsquo;display enable&rsquo; signal
 generation circuits are buried deep inside the 40-pin plastic package of the
 display controller and only the final signal emerges on one of the pins.
 (That&rsquo;s what modern LSI does for you!) There is a way around this problem and
 that is to apply a classic wartime (and peacetime) ploy of mis-information.
 What happens with the SVC is that some external delay has been added to the
-&ldquo;Display Enable&rdquo; signal, and in setting up the internal registers of the
+&lsquo;Display Enable&rsquo; signal, and in setting up the internal registers of the
 controller, the SVC monitor informs it that the first address of the display
 is a byte earlier than in fact it is.
 </p>

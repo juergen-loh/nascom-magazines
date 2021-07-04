@@ -1,18 +1,16 @@
 <?php columnStart(1); ?>
-<p>
-13
-</p>
-<p>
+<p class="continued">
 required if only the 64k version is to be used. It is then sufficient to tie
 the reset pin to the OR gate output as indicated by the dotted line. The
 inverter for the clock input to the flip-flop can be taken from pin 9 (input)
 and pin 8 (output) of IC 34 which does not appear to be used in the original
-design. Both the extra address line A7&rdquo; and the /CAS signal should be coupled
+design. Both the extra address line A7&rsquo; and the /CAS signal should be coupled
 to the RAM via 33R resistors to reduce electrical noise and ringing.
 </p>
-<p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-13-1.png"); ?>
+<h4 class="center">
 FIGURE 3
-</p>
+</h4>
 <p>
 When it was first tested by writing a block of identical bytes using the
 NasSys C command, the RAM showed a lot of corrupted bytes. The reason for this
@@ -22,7 +20,7 @@ pulses of about 50 nSec duration. These pulses occurred every time the /RAMDIS
 signal was activated. This line goes low about 50 to 60 nSec after /MREQ;
 thus, with /CS on P6 or P7 held low, the buffer is put into the read state as
 soon as /RD and /MREQ go active. Now if this is the start of a read-cycle of
-&ldquo;memory on the main board, the read buffer on the RAM board should not be
+memory on the main board, the read buffer on the RAM board should not be
 activated, but it does not know that for 50 nSec or so, until /RAMDIS goes
 active. As designed, P6 or P7 are fed from the decoders IC 22 and IC 23, or IC
 24, and these, together with the address latch IC 25, produce sufficient delay

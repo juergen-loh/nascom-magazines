@@ -1,15 +1,12 @@
 <?php columnStart(1); ?>
 <p>
-14
-</p>
-<p>
 If you do not like the thought of cutting up the tracks of your board
 until you are sure that these modifications will work, you can get round this
 by putting the ICs which require circuit changes to be made into new sockets;
 they should be the type with the pins oriented so that they can be plugged
 directly into the original IC sockets (you may have some difficulty finding
 this type). The new sockets have those pins which require modifications bent
-out so that they are accessible for soldering; they are then inserted into the &mdash;
+out so that they are accessible for soldering; they are then inserted into the
 original sockets and the rerouting of the wiring made to the bent-out pins.
 This technique can be used for a permanent modification and leads to quite a
 neat job but do not forget that the 5 volt line should be decoupled at each
@@ -19,14 +16,14 @@ memory chip.
 So that is all you have to do to produce a full 64k conversion job.
 Adding another 64k follows along the same lines, with the /CS for that block
 being taken from P7. The 74LS32 OR gate needs to be added to ensure that the
-flip-flop reset pin goes high when either block 1 or block 2 is selected. &ndash;
+flip-flop reset pin goes high when either block 1 or block 2 is selected.
 However, adding this additional gate led to another problem; on my board, the
 rising edge of the clock occurs almost simultaneously with the generation of
 the /RAS signal so that SWMx is produced within a few nanoseconds after /RAS.
 Even though the RAM specification states that the address should remain stable
 for 20 nS following /RAS, the unmodified board and the 64k version appear to
 work happily. However, the delay introduced by the OR-gate (even using the
-higher speed 74832) causes the flip-flop reset to go high after the clock
+higher speed 74S32) causes the flip-flop reset to go high after the clock
 transition, which upsets the correct phasing of SWMx and /CAS. The solution is
 to delay the clock signal applied to the flip-flop by inserting four 74LS04
 inverting buffers coupled in series between the clock signal from the bus and
@@ -46,17 +43,17 @@ in any 16k page from either block. One way of doing this is shown in Fig. 4;
 the 74LS75 4-bit latch is partly decoded as port 3 &ndash; this fits in with the
 partial decoding of the other ports used on the N2 main board; you can, of
 course, fully decode it to be any other number between 9 and 255, but then
-/10EXT must be generated too. The four Q outputs from the latch are ANDed with
+/I0EXT must be generated too. The four Q outputs from the latch are ANDed with
 the four 16k decodes which appear at the points labeled 0 to 3 on the RAM
 board, and the outputs ORed to produce a /CS for the first block of RAMs on
 P6. The /Q outputs are treated similarly and fed to P7. This ensures that
 there can be no contention between the two RAM blocks. Since /CS acts as the
 output buffer control line, it must only activate one block at a time; this is
-ensured using the 74L$32 to create logic-low AND gates with the inputs P6 and
+ensured using the 74LS32 to create logic-low AND gates with the inputs P6 and
 P7 to give two /CS lines, one for each block. Control of the paging can then
-be done by writing to Port 3, either statically by using the NasSys 0 command
-or as part of a program by using the out instruction. 0 3 0 selects the whole
-of block 1, and similarly 0 3 F selects block 2, while 0 3 3, for example,
+be done by writing to Port 3, either statically by using the NasSys O command
+or as part of a program by using the out instruction. O 3 0 selects the whole
+of block 1, and similarly O 3 F selects block 2, while O 3 3, for example,
 maps pages 1 and 2 of block 2 and pages 3 and 4 of block 1 into the memory
 map.
 </p>

@@ -1,11 +1,8 @@
 <?php columnStart(1); ?>
-<p>
-21
-</p>
-<p>
+<p class="continued">
 ii) Any over-sized plots that go off the screen re-appear in the correct place
-when they return within the bounds of the display. There are no sudden -wrap--
-around&rdquo; problems that wreak havoc on some displays.
+when they return within the bounds of the display. There are no sudden &lsquo;wrap-around&rsquo;
+problems that wreak havoc on some displays.
 </p>
 <p>
 The graphics origin has been placed at the bottom left of the screen to
@@ -15,30 +12,14 @@ computers, (98XX series, series 200, etc). These are widely used throughout
 Industry mainly in engineering applications.
 </p>
 <p>
-There is also a &ldquo;flood fill&rdquo; routine that, given starting coordinates
-X,Y, will fi11 the enclosed area that includes X,Y. This routine will fill
+There is also a &lsquo;flood fill&rsquo; routine that, given starting coordinates
+X,Y, will fill the enclosed area that includes X,Y. This routine will fill
 polygons of any shape, and is fast in operation. The hardest part of
-developing the &ldquo;fill&rdquo; algorithm was reducing the amount of workspace required
+developing the &lsquo;fill&rsquo; algorithm was reducing the amount of workspace required
 by it. In escence a fill routine is very simple if recursion is allowed and a
-simple -C&rdquo; implementation is shown below.
+simple &lsquo;C&rsquo; implementation is shown below.
 </p>
-<p>
-&pound;111(X,Y)
-</p>
-<p>
-int x,y;
-</p>
-<p>
-{ if(test(x,y) return; /* stop if point is already set */
-set(x,y); /* ..else turn point ON */
-fill(xtl,y); /* Now check adjacent points x /
-fill(x-l,y);
-fill(x,ytl);
-fill(x,y-1);
-</p>
-<p>
-}
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-21-1.png"); ?>
 <p>
 This routine will do the job. The drawbacks of it as it stands are
 various. If it fills an empty 256 x 256 screen in the worst possible order the
@@ -52,29 +33,29 @@ amount of memory.
 I ended up using an algorithm that utilised a FIFO (First in First Out)
 buffer rather than recursion. (You could regard recursion as a LIFO &ndash; Last In
 First Out &ndash; buffer.) This reduced the workspace requirements considerably. In
-&ndash; fact I found that I could fill very complex shapes with only 128 bytes of
+fact I found that I could fill very complex shapes with only 128 bytes of
 workspace. However the FILL routine did drop out when I was filling a
 particularly complex shape with the software clock also present on the
 display. (It gave up as it was filling around the numbers of the clock
-display.) Up to then I had managed to keep my hands off the lk of memory on
+display.) Up to then I had managed to keep my hands off the 1k of memory on
 the SVC that was reserved for downloading user programs into. As this memory
 sits there unused in 99% of cases I decided to grab it for the FILL routine,
-but to temper this impudence by implementing an -intelligent&rdquo; grab. What
+but to temper this impudence by implementing an &lsquo;intelligent&rsquo; grab. What
 actually happens is this:
 </p>
 <p>
 If no user program has been downloaded the FILL routine will use the full
-lk as its workspace.
+1k as its workspace.
 </p>
 <p>
 If a user program has been downloaded, then the FILL routine will use 3/4
 of the remaining space as workspace. (i.e. If a program 227 bytes long is
-downloaded, the FILL routine will grab the last (1024-227)*3/4 bytes of the lk
+downloaded, the FILL routine will grab the last (1024-227)*3/4 bytes of the 1k
 RAM area for its buffer.)
 </p>
 <p>
 This I believe is an acceptable approach as it is only likely to affect
-the 0.000001% of users who download lk user programs while using the graphics
+the 0.000001% of users who download 1k user programs while using the graphics
 fill command at the same time.
 </p>
 <?php columnEnd(1); ?>

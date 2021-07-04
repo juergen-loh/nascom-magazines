@@ -1,15 +1,21 @@
-<?php columnStart(1); ?>
-<p>
-AN IMPROVED NAS-SYS? by Olav Lerflaten
-</p>
+<?php columnStart(2); ?>
+<h2 id="article1">
+AN IMPROVED NAS-SYS?
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by Olav Lerflaten
+</h3>
+<?php columnEnd(2); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 Here are some suggested modifications to NAS-SYS&nbsp;3. NAS-SYS&nbsp;3, while an
 excellent piece of software, has a couple of shortcomings from my point of
 view. In particular:
 </p>
-<p>
-&ndash; It does not support a parallel printer.
-&ndash; Access to the ASCII characters &ldquo;{&rdquo;, mn, and &ldquo;}&rdquo; is awkward.
+<p class="indent">
+&ndash; It does not support a parallel printer.<br>
+&ndash; Access to the ASCII characters &ldquo;{&rdquo;, &ldquo;|&rdquo;, and &ldquo;}&rdquo; is awkward.
 </p>
 <p>
 The latter point is perhaps of most concern to Scandinavians, as these
@@ -22,24 +28,13 @@ correspond to the capital &ldquo;letters&rdquo; [ \ ], respectively, each pair o
 Both these shortcomings are corrected by these modifications to NAS-SYS&nbsp;3. The
 requirements are:
 </p>
-<p>
-NASCOM&nbsp;2 keyboard (57 keys)
-</p>
-<p>
-Centronics standard printer connector
-</p>
-<p>
-PIO port A (8 lines) to printer DATA lines
-PIO line BO to printer STROBE line
-</p>
-<p>
-PIO line B2 to printer BUSY line
-</p>
-<p>
+<p class="indent">
+&ndash; NASCOM&nbsp;2 keyboard (57 keys)<br>
+&ndash; Centronics standard printer connector<br>
+&ndash; PIO port A (8 lines) to printer DATA lines<br>
+&ndash; PIO line B0 to printer STROBE line<br>
+&ndash; PIO line B2 to printer BUSY line<br>
 &ndash; PIO connector ground to printer LOGIC GROUND
-</p>
-<p>
-|
 </p>
 <p>
 The PIO is initialized during power-up, and reset to the printer requirements;
@@ -60,32 +55,22 @@ necessary to remove some existing code. I chose to attack the register display
 routine, shortening it so that now it will only display the contents of the
 Program Counter. After all, if you have DEBUG, you never use it anyway.
 </p>
-<p>
+<h3>
 Description of new NAS-SYS facilities
-</p>
-<p>
+</h3>
+<h4>
 a) Keyboard changes
+</h4>
+<p class="indent">
+{ and [ are on the &ldquo;[\&rdquo; key<br>
+| and \ are on the &ldquo;CH/LF&rdquo; key<br>
+} and ] are on the &ldquo;]_&rdquo; key<br>
+@ is now unshifted, repeating<br>
+_ is Shift/@
 </p>
 <p>
-{ and [ are on the &ldquo;[\&rdquo; key
-</p>
-<p>
-| and \ are on the &lsquo;CH/LF&rsquo; key
-</p>
-<p>
-} and ] are on the &ldquo;] " key
-</p>
-<p>
-@ is now unshifted, repeating
-</p>
-<p>
-__ is Shift/@
 Remarks: The @ key is no longer available as an extra CTRL key (this facility
 is only needed on NASCOM-1 keyboards). CH and LF are not very important
 control codes, consequently they do not need their own key. CH is still
-</p>
-<p>
-E
-5
 </p>
 <?php columnEnd(1); ?>

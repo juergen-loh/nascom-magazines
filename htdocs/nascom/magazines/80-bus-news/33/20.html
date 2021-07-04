@@ -1,15 +1,12 @@
 <?php columnStart(1); ?>
-<p>
-20
-</p>
-<p>
+<p class="continued">
 general performance of the SVC. Thus the NMI software is written for speed,
 and tries to avoid specialised checks for unlikely occurences. (See below for
 the ramifications.)
 </p>
-<p>
+<h3>
 THE SOFTWARE CLOCK
-</p>
+</h3>
 <p>
 The SVC supports supports a software clock that works on the basis that
 NMIs are occuring at the rate of one every 20ms. (This assumes that the CRT
@@ -24,9 +21,9 @@ on the screen.
 </p>
 <p>
 Note that the clock software in the NMI routine only spends time updating
-the screen once per second when the internal ASCII clock is advanced. For the &copy;
-other 49 &ldquo;ticks&rdquo; of the clock no time is wasted updating a (probably)
-unchanged display. One other -feature&rdquo; that resulted from the basic NMI
+the screen once per second when the internal ASCII clock is advanced. For the
+other 49 &lsquo;ticks&rsquo; of the clock no time is wasted updating a (probably)
+unchanged display. One other &lsquo;feature&rsquo; that resulted from the basic NMI
 philosophy of minimum overhead is that the SVC supports a 60 hour clock rather
 than the more usual 24 hour clock! The updating software does not include a
 check for the special case of the hours. This fact will only be noticed by
@@ -35,15 +32,15 @@ have kept quiet about this, and seen if it was ever reported as a bug. My
 feeling is that it would have been a year or two before anyone noticed it, and
 then it would probably have been by accident.)
 </p>
-<p>
+<h3>
 GRAPHICS SOFTWARE
-</p>
+</h3>
 <p>
 My intention with the initial graphics software was to provide the
 fundamental routines on-board where the graetest speed advantage could be
 obtained, and to leave the neat user interface and extended features to an
 intermediate interface program. (e.g. The Gemini/<?php spChar("zwsp"); ?>CCSOFT GRAPHPAC package.)
-Thus for example there are no Escape sequences for -pen-up&rdquo; and -pen-down&rsquo;, or
+Thus for example there are no Escape sequences for &lsquo;pen-up&rsquo; and &lsquo;pen-down&rsquo;, or
 for relative plotting. The basic escape sequences deal with absolute
 coordinates, and include the pen-up-down command within them.
 </p>
@@ -55,7 +52,7 @@ Circle drawing. Flood fill.
 The algorithms I used were simple and orientated towards speed. They only
 use addition, subtraction. There is no multiplication or division involved
 other than by a simple shift for division by 2. In this first release of the
-SVC=-MON I concentrated on simplicity, and so certain possibly desirable
+SVC-MON I concentrated on simplicity, and so certain possibly desirable
 features have not been included. (e.g. All the line drawing is done with a
 single line type &ndash; a solid line. There is as yet no option for dotted lines,
 dashed lines, or whatever.) The circle routine draws a true circle, there is
