@@ -1,21 +1,24 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+Aunt Agatha&rsquo;s Agony Column
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by D. W. Parkinson
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-29
-</p>
-<p>
-Aunt Agatha&rsquo;s Agony Column by D. W. Parkinson
-</p>
-<p>
+<h3>
 RAM-A
-</p>
+</h3>
 <p>
 A letter from Mr Piper of Sheffield re. problems with his Nascom system:
 &ldquo;Can you explain why selecting start addresses on LSW1 (other than NAS-SYS) no
-longer works after having done 2716 mods on the RAM-A card. -J&rdquo; command and
-others except -Y&rsquo; work Ok. Setting LSW1 to B000 start address fills the screen
+longer works after having done 2716 mods on the RAM-A card. &lsquo;J&rsquo; command and
+others except &lsquo;Y&rsquo; work Ok. Setting LSW1 to B000 start address fills the screen
 with garbage. I can select A000 where I have Ext. Basic, but this seems to put
 an inhibit on the PIO and I can&rsquo;t use the printer. With the switches set to
-NAS-SYS everything (except -Y7) works Ok.&rdquo;
+NAS-SYS everything (except &lsquo;Y&rsquo;) works Ok.&rdquo;
 </p>
 <p>
 He doesn&rsquo;t give any detail of the modifications, but looking back through
@@ -28,21 +31,21 @@ all ICs have their pin connections numbered.) However let&rsquo;s start with the
 obvious possibilities and then start guessing.
 </p>
 <p>
-The Nascom&nbsp;2 -Reset-Jump&rdquo; circuit works by forcing the high four address
-lines (A12&ndash;A15) of the Bus to the value set on switches 1-4 of LSW1l. This
+The Nascom&nbsp;2 &lsquo;Reset-Jump&rsquo; circuit works by forcing the high four address
+lines (A12-A15) of the Bus to the value set on switches 1-4 of LSW1. This
 over-ride of the normal addressing persists for only the first three bytes
 fetched from memory, thereafter the four high address lines of the Z80 are
 passed to the Bus. Thus any EPROM that is going to be entered this way must
 start with a JP instruction to set the Z80&rsquo;s program counter correctly so that
 execution continues in the EPROM once the forcing of the high address lines is
-removed. (i.e. if the EPROM is to be located at BO000, and entered by a -jump--
-on-reset&rsquo;, then the first instruction must be JP B0003, or at least JP
+removed. (i.e. if the EPROM is to be located at B000, and entered by a &lsquo;jump-on-reset&rsquo;,
+then the first instruction must be JP B003, or at least JP
 &lt;somewhere-in-the-EPROM&gt; in order to prevent the Z80 fetching its next
 instruction from address 0003.)
 </p>
 <p>
 There is no way that modifications to the RAM card can affect the
-operation of the -Reset-Jump&rsquo; circuit, and as the -Y&rdquo; command (JP B000) does
+operation of the &lsquo;Reset-Jump&rsquo; circuit, and as the &lsquo;Y&rsquo; command (JP B000) does
 not work for Mr Piper either, it is obvious that the problem must lie in the
 hardware modifications. Looking at the RAM-A circuit diagram, one thing is
 immediately apparent: The address lines to the EPROMs are not buffered from
@@ -52,17 +55,17 @@ sockets on the Nascom&nbsp;2.) In replacing 2708s by 2716s, pin 19, which used t
 be connected to the +12v supply, is now used for A10. I was suprised that I
 could find no mention in [1] of removing any decoupling capacitors from this
 line. (I assume the +12v supply line is decoupled around the EPROMs on RAM-A!)
-If these are left behind they will have a rather detrimental effect on ALO to
+If these are left behind they will have a rather detrimental effect on A10 to
 put it mildly. (Similarly if you move on to use 2732s, ensure that there are
-no decoupling capacitors left on pin 21 (ex &ndash;5v supply) which becomes All.)
+no decoupling capacitors left on pin 21 (ex &ndash;5v supply) which becomes A11.)
 </p>
 <p>
 If there are no capacitors present, run a few tests to try to isolate the
 fault. Do memory tests check out the 32k RAM perfectly? Does BASIC run
 perfectly? If the answer is yes, then you can rule out a catastrophic wiring
 error on the address lines. The next step is to insert a 2716 with known
-contents into one of the sockets. (e.g. a copy of NAS--SYS.) Can you find it in
-the memory map? If you can, when you -T&rsquo;abulate are the contents correct? (Use
+contents into one of the sockets. (e.g. a copy of NAS-SYS.) Can you find it in
+the memory map? If you can, when you &lsquo;T&rsquo;abulate are the contents correct? (Use
 a program to compare it against the original NAS-SYS at 0000.) If you are
 partially successful here, then you may be able to work out where the error
 </p>

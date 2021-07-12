@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+Polydos File Update
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by M. J. R. Gibbs
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-31
-</p>
-<p>
-Polydos File Update by M. J. R. Gibbs
-</p>
 <p>
 This is a program for directly updating files on disk for a Gemini
 GM809/<?php spChar("zwsp"); ?>GM815 system with Polydos 2.0.
@@ -12,16 +15,16 @@ GM809/<?php spChar("zwsp"); ?>GM815 system with Polydos 2.0.
 <p>
 This allows the user to update copies of a file stored on several disks
 without having to enter all the normal commands which can cause problems
-especialy if you are like me and sometimes forget to use the &ldquo;NEW&rdquo; command (I
+especialy if you are like me and sometimes forget to use the &lsquo;NEW&rsquo; command (I
 have spent many hours trying to sort out the chaos that this causes). The
 required program/<?php spChar("zwsp"); ?>data is loaded into RAM between &pound;1000 and &pound;C000 either by
-using the Polydos &ldquo;Read&rdquo; command or by Assembling the program directly into
+using the Polydos &lsquo;Read&rsquo; command or by Assembling the program directly into
 RAM.
 </p>
 <p>
 This program is loaded into RAM at &pound;0C80 and executed at &pound;0C80, the user
 is asked for the file name, file extension and the RAM location for the new
-code. The Program asks you to insert the disks and press the &ldquo;Enter&rdquo; key, the
+code. The Program asks you to insert the disks and press the &lsquo;Enter&rsquo; key, the
 disk directory is read and the filename checked and, should it exist, the file
 is replaced with the new version. The old file is completely overwritten and
 this means that the number of sectors used by the old file are replaced by the
@@ -43,7 +46,7 @@ The Program informs the user of the start disk sector and the number of
 sectors updated and the RAM location used for the update. Should there be any
 disk errors then a message is printed out and the program repeats the inital
 menu asking the user to insert a new disk. The one thing that I have found is
-that it is easy to forget to. remove any write protect tabs and this does not
+that it is easy to forget to remove any write protect tabs and this does not
 cause a problem as you simply take the disk out remove the tab and reinsert
 the disk (do not forget to replace the tab afterwards).
 </p>
@@ -51,41 +54,37 @@ the disk (do not forget to replace the tab afterwards).
 A word of warning when testing this program especially when entering it
 from the dump listing, which is always prone to errors, you are strongly
 advised to test it on a copy of an existing disk because it can overwrite
+irreplaceable portions of disk if anything goes wrong.
 </p>
-<p>
-&ldquo;irreplaceable portions of disk if anything goes wrong.
-</p>
-<p>
+<p class="noindent">
 I suggest that you proceed as follows:&ndash;
 </p>
-<p>
-1) Enter the program and save it on disk using Polydos. Use the &ldquo;Read&rdquo;
+<p class="noindent">
+1) Enter the program and save it on disk using Polydos. Use the &lsquo;Read&rsquo;
 routine to load a file from the disk to say &pound;1000 in RAM.
 </p>
-<p>
+<p class="noindent">
 2) Examine and make a note of the number of sectors that this file uses.
 </p>
-<p>
+<p class="noindent">
 3) Use SZAP to examine the next file on the disk and make a note of the
-first few bytes. ,
+first few bytes.
 </p>
-<p>
+<p class="noindent">
 4) Change the first few bytes of the file loaded into RAM with the NAS-SYS
+&lsquo;M&rsquo; (modify command).
 </p>
-<p>
-: &lsquo;M&rsquo; (modify command).
-</p>
-<p>
+<p class="noindent">
 5) Run this program to update the disk and check the user information for
 the correct sector location, number of sectors and RAM location.
 </p>
-<p>
+<p class="noindent">
 6) Use SZAP to verify that the original file has been updated correctly.
 Also that the file following is not corrupted.
 </p>
 <p>
 Below is a full Assembly listing, a sorted symbol table and a dump of the
-program using a modified version of the disk dump published in Vol.1]l iss. 2 of
+program using a modified version of the disk dump published in Vol.1 iss. 2 of
 80-BUS NEWS (the numbers on the left hand side are the RAM locations).
 </p>
 <?php columnEnd(1); ?>

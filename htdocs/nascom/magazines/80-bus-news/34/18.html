@@ -1,21 +1,8 @@
 <?php columnStart(1); ?>
-<p>
-18
-</p>
-<p>
-START QU FOL5H sStart of code after
-sthe jump table in SIMON 1
-F000 C313F3 JP PAGEON :Changed jump to select Page 1
-F313 F5 PAGEON: PUSH AF sSave A and Flags
-F314 3E11 LD A, 11H s;Load System Page No.(0) in A
-F316 D3FF OUT (FFH),A sSelect Page 0
-F318 Fl POP AF ;Recover A and Flags
-F319 C315F0 JP START ;Go boot CP/M
-END
-</p>
-<p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-18-1.png"); ?>
+<h3>
 CONFIGURING SOFTWARE
-</p>
+</h3>
 <p>
 There are other ways to do it, but the above code works on both of my
 Nascoms, and CP/M, CCPZ etc, boot up and run with either GM862 or GM802 RAM
@@ -29,9 +16,9 @@ selecting the appropriate number of pages, CONFIG can accommodate up to three
 additional 64K GM802 boards in the same manner, but do NOT specify more boards
 or pages of RAM than are installed because the system will crash and/or fail
 to boot. Test the system by typing M: to select the RAMDISK, when the M&gt; or
-MO&gt; prompt should appear. A DIR command should respond with a NO FILE message.
-Return to *normal&rsquo; via an A: command and type STAT M: when the response should
-indicate between 172K and 178K &ldquo;bytes free&rdquo; if three 60K pages are in use. If
+M0&gt; prompt should appear. A DIR command should respond with a NO FILE message.
+Return to &lsquo;normal&rsquo; via an A: command and type STAT M: when the response should
+indicate between 172K and 178K &lsquo;bytes free&rsquo; if three 60K pages are in use. If
 only one 60K page is in use the response will be a (disappointing) 52K to 58K
 depending upon the size of the BIOS and the allocated RAMDISK Directory. Try
 PIPing and STATing programs around between Disk and RAM to ensure that all is
@@ -42,38 +29,13 @@ with RAMDISKs. The proven configuration on the Disk system tracks may now be
 SYSGENed onto other disks or the configuration process can be repeated as
 required.
 </p>
-<p>
+<h3>
 SYS ASSEMBLY
-</p>
+</h3>
 <p>
 To activate Page mode RAMDISK operation under later versions of SYS
 requires that module SYSB1 be re-assembled using M80 with the appropriate
 software switches set as follows:&ndash;
 </p>
-<p>
-vdisk equ true sVirtual disk i.e. RAMDISK support
-</p>
-<p>
-vboot equ true(or false) ;Boot from virtual disk (best set to
-sfalse at first, but recommended)
-</p>
-<p>
-vdrive equ 12(or15) ;Drive letter (12=M,15=P) as preferred
-</p>
-<p>
-vflip equ false ;Else on own your head be it!
-</p>
-<p>
-vgem equ true ;Set map32, map4 and g833 false
-</p>
-<p>
-vbmem equ 60 360K when SIMON is in EPROM at F000H
-</p>
-<p>
-vnum equ 2(1,0r3) s;Number of boards/<?php spChar("zwsp"); ?>pages see * below
-</p>
-<p>
-smay be 3 only if SYS is modified
-vnom equ 1(or2) ;System page, normally 0 (1=Pg0)
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-18-2.png"); ?>
 <?php columnEnd(1); ?>

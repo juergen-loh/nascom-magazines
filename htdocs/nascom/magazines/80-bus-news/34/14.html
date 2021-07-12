@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+A Pascal Print Routine
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by P. A. Forrester
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-14
-</p>
-<p>
-A Pascal Print Routine by P. A. Forrester
-</p>
 <p>
 Dr. Dark has frequently extolled the virtues of Pascal as a programming
 language and I admit to sharing his enthusiasm; however, the programs which
@@ -29,10 +32,10 @@ receive a character. The edit buffer only uses 0DH for carriage-return (CR),
 so the program has to add an 0AH to produce a line feed (LF). It also counts
 the number of CRs transmitted and when this equals the value held in
 &lsquo;lines.page&rsquo;, a number of CRLFs is sent which is determined by the value
-stored in &ldquo;spaces*; this gives automatic pagination. The values can be set at
+stored in &lsquo;spaces&rsquo;; this gives automatic pagination. The values can be set at
 the start of the program or the default values of 60 and 8 used. Printing can
 be stopped temporarily by pressing the space-bar or aborted by ESC. As the
-text is transmitted, the procedure &ldquo;Writewindow displays the next 32
+text is transmitted, the procedure &lsquo;Writewindow&rsquo; displays the next 32
 characters in a ticker-tape fashion in the centre of the screen and gives a
 good indication that all is progressing well. The procedure produces a slight
 delay to the print rate of an Epson FX-80 run at full speed when written in
@@ -45,36 +48,10 @@ However, the program then starts to become quite complex by the time you have
 devised a means of entering numbers in hex or a suitable means of coping with
 markers which stray into the negative integer region.
 </p>
-<p>
-; This code is used by the PASCAL
-</p>
-<p>
-; program PASCALPRINT as the CODE LD HL CWSP)
-</p>
-<p>
-; Procedure Writewindow( pointer); LD DE -2
-</p>
-<p>
-; it pokes 20H characters to the screen ADD HL DE 3; get pointer
-3; starting at the current pointer position LD E (HL) : load (HL)
-</p>
-<p>
-; to create a moving &ldquo;ticker tape&rdquo; display INC HL ; into HL
-; LD D (HL)
-</p>
-<p>
-; EX DE HL
-</p>
-<p>
-LEN EQU &pound;20 ; length of screen window LD DE SCRN
-</p>
-<p>
-SCRN EQU &pound;910 ; start of screen window LD BC LEN
-</p>
-<p>
-WSP EQU &pound;092 3; workspace stack pointer LDIR 3; copy to
-</p>
-<p>
-3 RET ; screen
-</p>
 <?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(2, 22); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-1.png"); ?>
+<?php columnChange(22); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-2.png"); ?>
+<?php columnEnd(22); ?>

@@ -399,6 +399,7 @@ function columnStart($column, $multi/*$class*/ = "")
 	case 4:		echo "<!-- 4 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3\">\n";			break;
 	case 34:	echo "<!-- 4 columns: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 3/4
 	case 6:		echo "<!-- 6 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\">\n";			break;
+	case 46:	echo "<!-- 6 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 4/6
 	case 56:	echo "<!-- 6 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";		break;	// 5/6
 	case 12:	echo "<!-- 12 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-1\">\n";		break;
 	case 412:	echo "<!-- 12 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 5/12

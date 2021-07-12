@@ -1,19 +1,16 @@
-<?php columnStart(1); ?>
-<p>
-25
-</p>
+<?php columnStart(1, "noindent"); ?>
 <p>
 Pins A and B are the input and output of a sensing coil and C and D are the
 input and output of a driver coil which is pulsed by an output from a 74145
 BCD &ndash; decimal decoder/<?php spChar("zwsp"); ?>driver. In the unexpanded keyboard, the keys are
-arranged in a matrix of 8 driver lines (DrO &ndash; Dr7) and 6 sensing lines (S0 &ndash;
-$5) and one of the 48 points is not used. In the expanded version, an
+arranged in a matrix of 8 driver lines (Dr0 &ndash; Dr7) and 6 sensing lines (S0 &ndash;
+S5) and one of the 48 points is not used. In the expanded version, an
 additional sense line is employed (S6) to give 56 points in the matrix, with
 the new Shift key added to give a total of 57. The sense outputs are processed
 to give data bits 0 &ndash; 5 on the CPU bus (or bits 0 &ndash; 6 in the expanded
 version). A browse through a circuit diagram of the keyboard (CK9009, April
-1978) showed that half of IC1 (CA3086 transistor array) and half of Ic3 (7400
-quad 2&mdash;input NAND gate) are available. The buffering for the sense lines is
+1978) showed that half of IC1 (CA3086 transistor array) and half of IC3 (7400
+quad 2-input NAND gate) are available. The buffering for the sense lines is
 provided by single transistors within each of the two 3086 arrays (IC1 and 9),
 and up to two new sense lines could be connected with the unused part of ICl.
 The circuit diagram also shows each buffered sense line and associated pull-up
@@ -30,63 +27,33 @@ against sense/<?php spChar("zwsp"); ?>driver intersections in the key matrix but
 slightly different (Murphy&rsquo;s Law). For the issue B board, the following
 order was found: (issue A boards may be different)
 </p>
+<table class="kbd-matrix">
+<tr><td></td><td colspan=8>Drivers</td></tr>
+<tr><td></td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+<tr><td>Sense</td><td colspan=8></td></tr>
+<tr><td>0</td><td>&ndash;</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td><td>4</td></tr>
+<tr><td>3</td><td>@</td><td>T</td><td>Y</td><td>U</td><td>I</td><td>0</td><td>P</td><td>R</td></tr>
+<tr><td>1</td><td>BS</td><td>H</td><td>J</td><td>K</td><td>L</td><td>;</td><td>:</td><td>G</td></tr>
+<tr><td>2</td><td>RET</td><td>B</td><td>N</td><td>M</td><td>,</td><td>.</td><td>/</td><td>V</td></tr>
+<tr><td>5</td><td>SHFT</td><td>X</td><td>Z</td><td>S</td><td>A</td><td>Q</td><td>1</td><td>SPC</td></tr>
+<tr><td>4</td><td>not<br>used</td><td>F</td><td>D</td><td>E</td><td>W</td><td>3</td><td>2</td><td>C</td></tr>
+</table>
 <p>
-Drivers
-0 1 2 3 4 5 6 7
-Sense
-0 &ndash; 5 6 7 8 9 0 4
-3 @ T Y U I 0 P R
-1 BS H J K L ; : G
-2 RET B N M &gt; . / Vv
-5 SHFT x Zz s A Q 1 spc
-4 not F D E W 3 2 C
-used
+The sense outputs are connected to IC9 and 1 as follows:
 </p>
+<table class="kbd-pins">
+<tr><td></td><td>Sense</td><td>IC</td><td>Pin</td><td>IC pin for output<br>to data bus</td></tr>
+<tr><td></td><td>0</td><td>9</td><td>9</td><td>11</td></tr>
+<tr><td></td><td>3</td><td>9</td><td>6</td><td>8</td></tr>
+<tr><td></td><td>1</td><td>9</td><td>4</td><td>5</td></tr>
+<tr><td></td><td>2</td><td>9</td><td>12</td><td>14</td></tr>
+<tr><td></td><td>5</td><td>1</td><td>12</td><td>14</td></tr>
+<tr><td></td><td>4</td><td>1</td><td>4</td><td>5</td></tr>
+<tr><td>New sense line</td><td>6</td><td>1</td><td>9</td><td>11</td></tr>
+</table>
 <p>
-&lsquo; The sense outputs are connected to IC9 and 1 as follows:
-</p>
-<p>
-Sense Ic Pin IC pin for output
-to data bus
-</p>
-<p>
-il
-</p>
-<p>
-8
-</p>
-<p>
-5
-</p>
-<p>
-14
-</p>
-<p>
-14
-</p>
-<p>
-5
-</p>
-<p>
-11
-</p>
-<p>
-rm tO WO 10
-pot et
-WO EN BP &amp; oO wo
-</p>
-<p>
-0
-3
-1
-2
-5
-4
-New sense line 6
 The Driver lines are supplied from IC5 pins 1 &ndash; 7 and 9 (corresponding to Dr0
 &ndash; Dr7). The new sense line could have been connected to ICl pin 6 but the
-</p>
-<p>
 circuit layout means that the connection to pin 9 was easier to arrange.
 </p>
 <p>

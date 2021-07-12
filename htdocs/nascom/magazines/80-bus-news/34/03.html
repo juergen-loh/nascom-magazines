@@ -1,14 +1,10 @@
 <?php columnStart(1); ?>
-<p>
-:
-|
-</p>
-<p>
+<h2 id="article1">
 Letters to the Editor
-</p>
-<p>
+</h2>
+<h3>
 HS-1N Micro Cassette
-</p>
+</h3>
 <p>
 Adrian Perkins writes in the March-April 1984 issue of 80-BUS News about
 his defection from HS-1N to disk, and mentions a problem with ageing drives.
@@ -19,7 +15,7 @@ away from the specified speed with age, and difficulties may arise when an old
 tape is edited.
 </p>
 <p>
-HS-1IN tapes are initialised by writing a blank catalog at the beginning
+HS-1N tapes are initialised by writing a blank catalog at the beginning
 of the tape; apart from this the tapes are not formatted in any way. At this
 stage all 28 remaining 2k blocks are available, and when a file is saved the
 blocks at the beginning of the tape are filled first, always back-spacing one
@@ -27,9 +23,9 @@ block and running forwards before writing the next block (to allow for a
 check-read and to get the tape running up to a consistent speed).
 </p>
 <p>
-If large files are used (say 20k source files, occupying 10 HS1N blocks
+If large files are used (say 20k source files, occupying 10 HS-1N blocks
 on tape) then it may be possible to fit only two on one side of a tape. When
-the first file is deleted, blocks 1 to 10 on ths tape are released for re-use,
+the first file is deleted, blocks 1 to 10 on the tape are released for re-use,
 and if the drive is running at a different speed corruption may take place.
 </p>
 <p>
@@ -40,28 +36,28 @@ the eleventh block (the first block of the original second file) may fail
 because of this, but you may be able to recover by advancing the tape over the
 garbage thus:&ndash;
 </p>
-<p>
-1. Read the new file in the normal way (tape stops after block 10), using
+<ol>
+<li>
+Read the new file in the normal way (tape stops after block 10), using
 Drive A.
-</p>
+</li>
+<li>
+Return control to NAS-SYS.
+</li>
+<li>
+Run the tape forward a fraction by entering O 78 1 and O 78 0 one after
+the other (previously set up on the screen using the cursor keys). Use O
+F8 1 and O F8 0 if yours is one of the earliest HS-1Ns.
+</li>
+<li>
+Warm start HS-1N (E D003).
+</li>
+<li>
+Try to load the &ldquo;lost file&rdquo; in the normal way.
+</li>
+</ol>
 <p>
-26 Return control to NAS-SYS.
-</p>
-<p>
-3. Run the tape forward a fraction by entering 0 78 1 and 0 78 0 one after
-the other (previously set up on the screen using the cursor keys). Use 0
-F8 il and OF8 Oif yours is one of the earliest HS-INs.
-</p>
-<p>
-4. Warm start HS-1N (E D003).
-</p>
-<p>
-5. Try to load the &ldquo;lost file in the normal way.
-</p>
-<p>
-&ldquo; If the drives are running faster than before, the tenth block of the new
-</p>
-<p>
+If the drives are running faster than before, the tenth block of the new
 file may overwrite the first block of the previous one, and this block is
 therefore lost for ever. By using the above technique, and editing the HS-1N
 catalogue workspace, you may be able to recover the later blocks. Data loss
@@ -78,11 +74,13 @@ when saving edited versions of old files.
 <p>
 Yours sincerely, Dr M.D. Hendry, Cupar, Fife.
 </p>
-<p>
+<h3>
 Lucas, NasDos, and Colour
-</p>
+</h3>
 <p>
 Perhaps the following news/<?php spChar("zwsp"); ?>viewpoints would be of interest:&ndash;
+</p>
+<p class="noindent">
 a) There have been several recent letters suggesting that Lucas are not very
 helpful on some occasions. I can only say that over the last 6 months or so,
 I have written to them 3 times asking for help or information on various

@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-7
-</p>
-<p>
+<p class="continued">
 is the only authorised method of implementing GM862/802 RAM on this system.
 Explicit examples are shown in the GM862 Manual of how to select each 64K page
 via switch ICl, disable Extended addressing and enable Page mode via poles 4 &amp;
@@ -14,11 +11,11 @@ Common Area is NOT required to run CP/M 2 etc. on the GM862. Future
 developments like CP/M PLUS may need this facility however, and dedicated
 experimenters could find it interesting.
 </p>
-<p>
+<h3>
 A HARDWARE FIX
-</p>
+</h3>
 <p>
-; When the GM862&rsquo;s DIL switches were carefully set up as per the manual to
+When the GM862&rsquo;s DIL switches were carefully set up as per the manual to
 provide 4 pages of 64K, the Nascom refused to work under CP/M and other DOSs,
 or even good old Nas-Sys. It would run all systems as usual with the old 802
 board without page mode selected, but would not boot CP/M when this board was
@@ -40,15 +37,17 @@ not laid tracks between the resistor pads and these points. Only short links
 are needed however, and the layout allows the resistor to be inserted and its
 leads bent and soldered neatly to the capacitor pad and edge pin track.
 </p>
-<p>
+<h3>
 MODIFYING SIMON
+</h3>
+<p>
 With the resistor fitted, each 64K page of the 256K RAM could be accessed
--via Nas-Sys and, with page 0 selected, would support programs and DOSs running
+via Nas-Sys and, with page 0 selected, would support programs and DOSs running
 under Nas-Sys. CP/M still refused to boot-up however, and the clue to the
 solution of that problem is to be found in the manual under Note 1 of Section
 4 &ndash; SOFTWARE IMPLICATIONS. This states that the GM862 Page-Mode latch is
 cleared on RESET, disabling its memory until any given page is selected by
-writing to Port OFFh. The standard Gemini CP/M auto-boot EPROMS and versions
+writing to Port 0FFh. The standard Gemini CP/M auto-boot EPROMS and versions
 2.0 or later of RP/M for the GM811 and GM813 CPU boards, include
 initialisation code to select Page 0 on start-up or RESET. Earlier software
 and firmware for the Nascom has no such code and so it must be modified. The
