@@ -1,70 +1,49 @@
+<?php columnStart(34); ?>
+<h2 id="article1">
+SYSTEM ROUTINES IN POLYDOS AND POLYDOS DISK BASIC
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+By Geoff Higgs
+</h3>
+<?php columnEnd(4); ?>
 <?php columnStart(1); ?>
 <p>
-37
-</p>
-<p>
-SYSTEM ROUTINES IN POLYDOS AND POLYDOS DISK BASIC By Geoff Higgs
-</p>
-<p>
-The values of $TAE, #00UT, $U0UT, IN, UTN and 8NMI are
-variously initialized by Nes-Sus 3, FROM BASTC, FolyuBbos arn Folybos Disc
+The values of $TAB, $0UT, $UOUT, $IN, $UIN and $NMI are
+variously initialized by Nas-Sys&nbsp;3, ROM BASIC, PolyDos and PolyDos Disc
 Basic. A table of these values might save some head scratching when
-incerporating user routines or petches.
+incorporating user routines or patches.
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-37-1.png"); ?>
+<p class="noindent">
+* The byte at 0C7D is set to &pound;C3 (jump) by Nas-Sys initialization.
+0C7E/F is set to 0475 by Nas-Sys PARSE calling INLS at 02E8 each time,
+Therefore if am power up neither Nas-Sys or ROM BASIC is implemented
+then state of 0C7E/F is indeterminate. If Nas-Sys STMON is called (as by
+PolyDos) but Nas-Sys command input is not used then the byte &pound;C3 is set
+but not the subsequent address.
 </p>
 <p>
-Fetnon Whepe. Add. Nas-Sys&nbsp;3 FROM BASTC FolyDos Dise Basic
-TAF OC71 (3185) 0700 81792) 6700 (1792) CO7E c8-16258) CO7E (-16258)
+Note that PolyDos copies out the routine table STABA to its
+workspace. The base is C07E and the table actually begins at C100.
+Within this table the addresses of MRET, CRT, NNIM, and BLINK are
+altered. RKBD, SP2 and SCALI are altered as these routines are written
+into PolyDos so as to make it compatible with Nas-Sys&nbsp;1.
 </p>
 <p>
-$0UT OC73 (3187) G779 (1913) O779 (1913) O779 (1913) B1i38 c-20168)
-$U0OUT 0078 83192) OO2ZF c 47) OO02F 8 47) C240 (-15808) BISA (-20164)
-</p>
-<p>
-$IN 0C75 (3189) O770 (19146) O77C (19146) D416 (-11242) D416 (-11242)
-$UIN OQC7E (3195) G02F c 473 GO2F 8c 47) OO2F 8 47) OO2F c 47)
-</p>
-<p>
-$NMT OC7E (3198) G475 (1141) FEDE (-290) unaltered (see note *)
-</p>
-<p>
-* The byte at OC7D is set to &pound;C3 Cjumpd) by Nas-Sys initislizetion.
-OC7E/F is set to 0475 by Nas-Syus PARSE calling INLS at @27E8 each time,
-Therefore if am power up meither Nas-Sys or ROM EASTC is implemented
-then stete of OC7E/F is indeterminate, If Nas-Sys STMON is called Cas by
-FolyDoas) but Nas-Sys command input is mat used then the byte &pound;03 is set
-but mot the subsequent address.
-</p>
-<p>
-Note that FolyvDos copies out the routine table STABA to its
-workspace, The base is CO7E and the table actually begins at C100.
-Within this teble the addresses of MRET, CRT, NNIM;, and ELINK are
-altered. RKED;, SF2 and SCALIT are altered as these routines are written
-into FPolyDos so as to make it compatible with Nas-Sys&nbsp;1.
-</p>
-<p>
-Note further that Folubos Disc Basic extension to ROM basic once
+Note further that PolyDos Disc Basic extension to ROM basic once
 again alters the address of MRET and also alters the address of INLIN.
 </p>
 <p>
 These changes are tabulated below. (decimal values in brackets)
 </p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-37-2.png"); ?>
 <p>
-Routine PI tec tee ae mene ae ea Pol yDaog (rr er ee
-address address table pos&rsquo;n Basic add.
-NRET OSFE c8 1022) DOD 8-12140) C134 (c-16076) BEO79 (-20359)
-CRT 0190 c 400) D3C7 (8-11321) C148 c8-16056)
-NNIM 0742 c 1858) D410 (c-11248) CIie6E (-16016)
-BLINK 0078 c 41203 D419 8-11299) C174 c8-16012)
-REED 0082 8 142) D461 (8-11135) C178 (-16008)
-SF2 0362 c 844) D504 (8-11004) C1i7A (-16004)
-SCALT OSES c8 1461) DSO9 (8-10999) Give c-16004)
-INLIN O2F0 c 7&amp;2) not aitered C144 (--16060) EDEC c8-146916)
+Since PolyDos keeps STABA in RAM then a routine to trap carriage
+returns before the CRT routine, such as shown above, can be &ldquo;patched in&rdquo;
+rather than written as an user routine. It is only necessary to alter
+the address at C148 (-16056), normally D3C7 (-11321) to the &ldquo;patch&rdquo;
+address and end the &ldquo;patch&rdquo; routine with a jump to CRT (&nbsp;C3 C7 D3&nbsp;).
 </p>
-<p>
-Since FolyDos keeps STABA in RAM then a routine to trap carriage
-returns before the CRT rowtine, such as shown above; can be &ldquo;patched in&rdquo;
-tather than written as an user routine. It is only mecessary to alter
-the address at C148 (-16056), normally D3C7 (8-11321) to the &ldquo;patch&rdquo;
-address and end the &ldquo;patch&rdquo; routine with @ jump to CRT c 83 C7 O39 &gt;.
-</p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

@@ -114,7 +114,7 @@ function imageCenter($imagepath, $year, $issue, $page, $imagename, $style="", $c
 function imageRight($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1)
 {
 //	echo "<div style=\"margin-left:auto; margin-right:0\">";
-	echo "<div class=\"text-right\">";
+	echo "<div class=\"text-end\">";
 	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "</div>$append", $link, $target, $scale);
 }
 
@@ -1144,14 +1144,14 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "ICL7106":					$url = "https://www.renesas.com/eu/en/document/dst/icl7106-icl7107-icl7107s-datasheet";	break;
 	case "Indische Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1980t/index.htm";					break;
 	case "INMC News":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/";						break;
-	case "INMC News 3, page 24":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/03/24/";				break;
-	case "INMC News 5, page 29":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/05/29/";				break;
-	case "INMC News 6, page 33":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/06/33/";				break;
-	case "INMC News 7":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/";					break;
-	case "INMC News 7, page 18":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/18/";				break;
+	case "INMC News 3, page 24":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/03/24/text/#article1";	break;
+	case "INMC News 5, page 29":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/05/29/text/#article1";	break;
+	case "INMC News 6, page 33":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/06/33/text/#article1";	break;
+	case "INMC News 7":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/text/";				break;
+	case "INMC News 7, page 18":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/18/text/#article1";	break;
 	case "INMC 80 News":			$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/";					break;
-	case "INMC 80 News 1, page 15":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/01/15/";			break;
-	case "INMC 80 News 5, page 50":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/05/50/";			break;
+	case "INMC 80 News 1, page 15":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/01/15/text/#article1";	break;
+	case "INMC 80 News 5, page 50":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/05/50/text/#article1";	break;
 	case "80-Bus News":				$url = "https://tupel.jloh.de/nascom/magazines/80-bus-news/";					break;
 	case "INVASION.NAS":			$url = "http://www.nascomhomepage.com/games/INVASION.NAS";						break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;

@@ -522,7 +522,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 		echo "\n<br></div></div>\n";
 		echo "<p>\n\tThis is an ";
 		externalLink("Optical character recognition", "OCR", "");
-		echo "&rsquo;d version of the <a href=\"../\">scanned page</a> and likely contains recognition errors.\n</p>\n";
+		echo "&rsquo;d\n\tversion of the <a href=\"../\">scanned page</a> and likely contains recognition errors.\n</p>\n";
 		$naviBottom .= "\t\t<a class=\"sm-fill nav-link\" href=\"../\">Graphic</a>\n";
 		break;
 	case "graphic":

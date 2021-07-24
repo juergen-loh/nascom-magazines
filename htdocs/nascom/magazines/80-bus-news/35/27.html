@@ -1,10 +1,13 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+CRC PROGRAM &ndash; VERSION 5.0
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+By Richard Beal
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-<p>
-27
-</p>
-<p>
-CRC PROGRAM -&mdash; VERSION 5.0 By Richard Beal
-</p>
 <p>
 There is a program in the CP/M user group library which is so useful that
 if you don&rsquo;t have it and you don&rsquo;t have access to the library then it is worth
@@ -16,14 +19,22 @@ which are a special almost infallible type of checksum, on files. The program
 can be used to confirm that a file has not been corrupted, even if it has
 passed through many different computer systems and communications links.
 </p>
-<p>
+<p class="indent">
 In its simplest form, you enter the command:&ndash;
+</p>
+<pre class="indent2">
 CRC filename
+</pre>
+<p class="indent">
 and the CRC for the file is displayed, as two hex numbers.
 </p>
-<p>
-The filename can be ambiguous, so if for example you type:&ndash;
+<p class="indent">
+The filename can be ambiguous, so if for example you type:&ndash;<br>
+</p>
+<pre class="indent2">
 CRC B:*.*
+</pre>
+<p class="indent">
 all the files on drive B are read and the CRCs displayed.
 </p>
 <p>
@@ -32,17 +43,17 @@ to know what its original CRC was in order to be sure that the current CRC was
 correct. But this is where CRC is so useful, because if you enter an F after
 the command as in:&ndash;
 </p>
-<p>
+<pre class="indent2">
 CRC B:*.* F
-</p>
-<p>
+</pre>
+<p class="continued">
 then the resulting CRCs are not only displayed on the screen but are also
 written to a file called CRCKLIST.CRC. So when a disk of software is
 prepared, just before it is issued the CRC program is run, and the
 CRCKLIST.CRC file is added to the disk. The user of the disk has only to run
 the CRC program to the screen, or using Control-P to a printer, and compare
 the results with the values in the CRCKLIST.CRC file, which can be seen or
-printed using the TYPE command. Wouldnt it be a good idea if Gemini did
+printed using the TYPE command. Wouldn&rsquo;t it be a good idea if Gemini did
 this!
 </p>
 <p>
@@ -56,17 +67,19 @@ they are different to those in the CRC file. It also reports on missing
 files. This means that with a single command you can verify the entire
 contents of a disk and be certain that it is the same as when it left the
 supplier. And if the software doesn&rsquo;t work, the supplier can&rsquo;t get away with
-the old excuse &ldquo;It must be a bad disk &ndash; send it back and we&rsquo;ll replace it".
+the old excuse &ldquo;It must be a bad disk &ndash; send it back and we&rsquo;ll replace it&rdquo;.
 And suppliers can save the trouble of replacing disks which are in fact
 correct.
 </p>
 <p>
 For those who are curious to know how the CRCs are calculated, here is
 the equation, which is a CCITT standard polynomial:
-X716 + X7*15 + X&rsquo;13 + X77 + X74 + X72 + X 4+ 1
+</p>
+<p class="indent2">
+X^16 + X^15 + X^13 + X^7 + X^4 + X^2 + X + 1
 </p>
 <p>
-I don&rsquo;t have a copy of the source code unfortunately, and I havent found
+I don&rsquo;t have a copy of the source code unfortunately, and I haven&rsquo;t found
 it in the CP/M library, so perhaps an enterprising person will disassemble it
 and comment it nicely. If they do, 80-BUS NEWS would like to print it, as it
 is quite short and must be a fine example of compact software.

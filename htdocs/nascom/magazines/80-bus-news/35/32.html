@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
-<p>
-32
-</p>
-<p>
+<p class="continued">
 CONFIG, but I can&rsquo;t be bothered to do it to a machine which doesn&rsquo;t belong to
 me in the first place.
 </p>
@@ -19,10 +16,10 @@ Well the obvious is to send a command string to the SVC/IVC to turn the
 cursor on, blinking, and move it down one line. It appears nice and easy, just
 work out the control words and then print them:
 </p>
-<p>
-STORE CHR(27 )+"Y"+CHR (72 )+CHR(8 ) TO curs
+<pre>
+STORE CHR(27)+"Y"+CHR(72)+CHR(8) TO curs
 ? curs
-</p>
+</pre>
 <p>
 Not so, dBASE says different. The main problem in this instance is the CHR(8),
 instantly recognisable as 08h, or backspace. Now dBASE does not send a
@@ -43,41 +40,17 @@ address above this could be used for the patch, so I chose C000H for
 convenience. The machine code listing is given in Listing Two.
 </p>
 <p>
-All it has is a data table at cOllh and the PUTVID routine enclosed in a
+All it has is a data table at c011h and the PUTVID routine enclosed in a
 loop to shove the four characters in turn at the video card. dBASE uses POKES
-like Basic, but the -call&rsquo; procedure is slightly different, you use the SET
+like Basic, but the &lsquo;call&rsquo; procedure is slightly different, you use the SET
 function to set the call address, then use CALL to call it. So the
 (decimalized) dBASE version of the above is as follows, (49152 is the decimal
 equivalent of c000h):
 </p>
-<p>
-* Enable cursor type
-</p>
-<p>
-SET CALL TO 49152
-</p>
-<p>
-POKE 49152,6,4,33,17,192, 219, 178, 15, 56,251, 126, 35, 211,177, 16, 245
-POKE 49168,201,27,89,/72,8
-</p>
-<p>
-CALL
-</p>
-<p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-32-1.png"); ?>
+<p class="noindent">
 You could do the same with MBASIC, using the same POKE addresses and data,
-thus: .
+thus:
 </p>
-<p>
-10 CURS=49152
-</p>
-<p>
-20 FOR A=49152 TO 49172: READ B: POKE A,B: NEXT
-</p>
-<p>
-30 DATA 6,4,33,17,192,219,178,15, 56,251, 126,35, 211,177,16,245
-40 DATA 201,27,89,72,8
-</p>
-<p>
-50 CALL CURS
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-32-2.png"); ?>
 <?php columnEnd(1); ?>

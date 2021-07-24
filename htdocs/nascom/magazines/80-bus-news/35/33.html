@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-33
-</p>
-<p>
 But be warned, MBASIC starts it&rsquo;s workspace and stack from the top of the
 TPA. The stack and/or workspace could come crashing through the program if
 you&rsquo;re not careful. So POKEing this into RAM in MBASIC is not a clever idea.
@@ -30,38 +27,32 @@ assemble the program using M80 and L80 as usual, then I load it up under ZSID,
 DDT, GEM-DEBUG or some other debugger. I then clear out the memory around the
 location where the program is to reside and move the program to the working
 address. This gives me the program in memory at its correct place with some
-OOh&rsquo;s before and after it. (Nice and identifiable that way.)
+00h&rsquo;s before and after it. (Nice and identifiable that way.)
 </p>
 <p>
 Next into MBASIC, work out the start and end addresses using the &amp;H
 function in BASIC, note that this gives negative answers if not treated right.
 Take the instance above:
 </p>
-<p>
+<pre>
 ? 65536 + &amp;Hc000
 49152
-</p>
-<p>
 Ok
-</p>
-<p>
-? 65536 + &amp;HcO011
+? 65536 + &amp;Hc011
 49169
-</p>
-<p>
 Ok
-</p>
-<p>
+</pre>
+<p class="noindent">
 Now for the crafty bit, open a sequential file and write the code to it, I do
 this in the command mode like so:
 </p>
-<p>
+<pre>
 OPEN "0",&pound;1,"CODE": FOR A=49152 TO 49169: PRINT&pound;1,PEEK(A);: NEXT: CLOSE
-</p>
-<p>
+</pre>
+<p class="noindent">
 Surpise surpise, this gives me an ASCII file that I can bash into a text
 editor and edit to suit. My favourite address for machine code to be used in
-this way is c0000h, as for some reason I can always remember 49152. When it
+this way is c000h, as for some reason I can always remember 49152. When it
 comes to the end addresses of these programs, having calculated it I usually
 have a quick PEEK around the calculated address to see if I got right, hence
 the nulls either end of the program. The whole process takes about as long as

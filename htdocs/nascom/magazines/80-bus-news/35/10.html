@@ -1,8 +1,5 @@
 <?php columnStart(1); ?>
 <p>
-10
-</p>
-<p>
 The ports are used in a way compatible with the Gemini implementation of
 the Centronics interface, as follows:&ndash;
 </p>
@@ -34,36 +31,38 @@ becomes full the Busy line remains high so that no data can be lost.
 If a keyboard is attached the following single character commands are
 available:&ndash;
 </p>
-<p>
-Space Halt the printer, or if halted start printing again. This does not
+<table class="tab-gipb">
+<tr><td>
+Space</td><td>Halt the printer, or if halted start printing again. This does not
 affect the input of data to the buffer.
-</p>
-<p>
-D Delete the contents of the buffer and restart the program.
-</p>
-<p>
-T Delete the contents of the buffer and restart the program with a
+</td></tr>
+<tr><td>
+D</td><td>Delete the contents of the buffer and restart the program.
+</td></tr>
+<tr><td>
+T</td><td>Delete the contents of the buffer and restart the program with a
 minimal buffer of only two bytes.
-</p>
-<p>
-CR Output CR/LF to the console device (normally the printer).
-</p>
-<p>
-M Output a status message to the console device. This shows the
+</td></tr>
+<tr><td>
+CR</td><td>Output CR/LF to the console device (normally the printer).
+</td></tr>
+<tr><td>
+M</td><td>Output a status message to the console device. This shows the
 number of characters waiting to be printed, the number of bytes
 spare in the buffer, and whether or not the printer has been halted.
-</p>
-<p>
-N End the program and pass control to RP/M. RP/M operates as normal
+</td></tr>
+<tr><td>
+N</td><td>End the program and pass control to RP/M. RP/M operates as normal
 and can boot a disk system but does not have any cassette handling
 routines. The command G F000 will execute the program from RP/M.
-</p>
-<p>
-! Halt the processor.
-</p>
-<p>
+</td></tr>
+<tr><td>
+!</td><td>Halt the processor.
+</td></tr>
+</table>
+<h3>
 Technical Notes
-</p>
+</h3>
 <p>
 The GIPB operates on an interrupt driven basis, with an interrupt being
 generated when the input strobe goes high rather than low. It was necessary
