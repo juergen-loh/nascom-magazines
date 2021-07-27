@@ -1,80 +1,72 @@
 <?php columnStart(1); ?>
 <p>
-10
-</p>
-<p>
 The format of the Boot command is now as follows:&ndash;
 </p>
-<p>
-B Boot drive A, double density, sector 0, 5.25 inch
-or
-B sscd Where sscd is a single hexadecimal value.
-</p>
-<p>
-Leading zeroes may be omitted.
-ss is the physical sector number to be read. Normally this is 0 or 1.
-c is the command digit which has the following possible values:&ndash;
-0 5.25 inch, double density
-1 5.25 inch, single density
-3 8 inch, single density
-</p>
-<p>
-d is the drive select digit which has the following possible values:&ndash;
-1 drive A
-2 drive B
-4 drive C
-8 drive D
-</p>
-<p>
+<table class="rpm-patch-1">
+<tr><td colspan=2>B</td><td colspan=3>Boot drive A, double density, sector 0, 5.25 inch</td></tr>
+<tr><td colspan=2></td><td colspan=3>or</td></tr>
+<tr><td colspan=2>B sscd</td><td colspan=3>Where sscd is a single hexadecimal value.</td></tr>
+<tr><td colspan=2></td><td colspan=3>Leading zeroes may be omitted.</td></tr>
+<tr><td></td><td>ss</td><td colspan=3>is the physical sector number to be read. Normally this is 0 or 1.</td></tr>
+<tr><td></td><td>c</td><td colspan=3>is the command digit which has the following possible values:&ndash;</td></tr>
+<tr><td colspan=3></td><td>0</td><td>5.25 inch, double density</td></tr>
+<tr><td colspan=3></td><td>1</td><td>5.25 inch, single density</td></tr>
+<tr><td colspan=3></td><td>3</td><td>8 inch, single density</td></tr>
+<tr><td></td><td>d</td><td colspan=3>is the drive select digit which has the following possible values:&ndash;</td></tr>
+<tr><td colspan=3></td><td>1</td><td>drive A</td></tr>
+<tr><td colspan=3></td><td>2</td><td>drive B</td></tr>
+<tr><td colspan=3></td><td>4</td><td>drive C</td></tr>
+<tr><td colspan=3></td><td>8</td><td>drive D</td></tr>
+</table>
+<h3>
 Examples of the enhanced Boot command
-</p>
-<p>
-B 2 Sec 0, 5.25 inch, DD, drive B
-</p>
-<p>
-B lll Sec 1, 5.25 inch, SD, drive A
-</p>
-<p>
-B 134 Sec 1, 8 inch, SD, drive C
-</p>
-<p>
+</h3>
+<table class="rpm-patch-2">
+<tr><td>B 2</td><td>Sec 0, 5.25 inch, DD, drive B</td></tr>
+<tr><td>B 111</td><td>Sec 1, 5.25 inch, SD, drive A</td></tr>
+<tr><td>B 134</td><td>Sec 1, 8 inch, SD, drive C</td></tr>
+</table>
+<h3>
 PATCHES REQUIRED
+</h3>
+<p>
 First make the patches to bring V2.0 to V2.1, if needed.
 </p>
-<p>
-Address V2.0 V2.1
-F068 30 31
-F108 20 ED
-F109 04 Al
-FIOA ED 20
-F10B 4l 02
-</p>
+<table class="rpm-patch-3">
+<tr><th>Address</th><th>V2.0</th><th>V2.1</th></tr>
+<tr><td>F068</td><td>30</td><td>31</td></tr>
+<tr><td>F108</td><td>20</td><td>ED</td></tr>
+<tr><td>F109</td><td>04</td><td>A1</td></tr>
+<tr><td>FI0A</td><td>ED</td><td>20</td></tr>
+<tr><td>F10B</td><td>41</td><td>02</td></tr>
+</table>
 <p>
 Then make the patches to bring V2.1 to V2.3.
 </p>
-<p>
-At F068 change 31 to 33
-At FBO8 change 3A 60 00 to CD EF FF
-At FCO3 change 11 99 FC to 3D 20 FD
-At FC11 change 20 27 3E DO CD 8C FC 3E O1 D3 E4 36 5B
-to 11 99 FC 20 24 3E DO CD 8C FC CD DE FF
-At FC42 change AF D3 E2 to 00 00 00
-At FFDE there are FF characters to the end &ndash; change these to
-3A 61 00 B7 20 01 3C D3
-E4 3A 62 00 D3 E2 3E 5B
-c9 3A 60 00 B7 20 06 21
-00 00 22 61 00 FE 02 DO
-AF C9
-</p>
+<table class="rpm-patch-4">
+<tr><td>At F068 change</td><td>31 to 33</td></tr>
+<tr><td>At FB08 change</td><td>3A 60 00 to CD EF FF</td></tr>
+<tr><td>At FC03 change</td><td>11 99 FC to 3D 20 FD</td></tr>
+<tr><td>At FC11 change</td><td>20 27 3E D0 CD 8C FC 3E 01 D3 E4 36 5B</td></tr>
+<tr><td>to</td><td>11 99 FC 20 24 3E D0 CD 8C FC CD DE FF</td></tr>
+<tr><td>At FC42 change</td><td>AF D3 E2 to 00 00 00</td></tr>
+<tr><td colspan=2>At FFDE there are FF characters to the end &ndash; change these to</td></tr>
+<tr><td></td><td>3A 61 00 B7 20 01 3C D3</td></tr>
+<tr><td></td><td>E4 3A 62 00 D3 E2 3E 5B</td></tr>
+<tr><td></td><td>C9 3A 60 00 B7 20 06 21</td></tr>
+<tr><td></td><td>00 00 22 61 00 FE 02 D0</td></tr>
+<tr><td></td><td>AF C9</td></tr>
+</table>
 <p>
 These changes have been carefully checked and the results fully tested,
 so you should have no difficulty. You can check that you have typed in the
 changes correctly by using the standard CRC calculating program. For your
 convenience this program has been run separately on the first 2K of RP/M V2.3
 (CRC = EF 24) and the second half (CRC = 58 CD). Therefore you can easily
-confirm that your new RP/M&nbsp;2.3 is correct. The CRC calculating program is
+confirm that your new RP/M 2.3 is correct. The CRC calculating program is
 called CRC.COM and is the subject of another article in this issue.
 </p>
 <p>
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

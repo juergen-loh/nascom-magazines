@@ -1,11 +1,8 @@
 <?php columnStart(1); ?>
-<p>
-14
-</p>
-<p>
+<p class="continued">
 and A13 (also A14 for future expansion), control lines /OE, PGM and /PGM, and
-power supplies Vcc (+5V), Vpp (+21V and +25V) and GND (OV) are taken to a 16-
-pin dil socket. ZIF socket connections that vary depending on the EPROM being
+power supplies Vcc (+5V), Vpp (+21V and +25V) and GND (0V) are taken to a 16-pin
+dil socket. ZIF socket connections that vary depending on the EPROM being
 used are also taken to this socket. By inserting a header plug with the
 required connections the appropriate EPROM may be programmed. See fig 2 for
 header connections. Note that some EPROMS require a low to high programming
@@ -17,14 +14,14 @@ The +5V supply is provided by a 7805 5V regulator from an unregulated 30V
 supply. The two Vpp voltages are supplied from two separate circuits built
 around two 723 regulators. Although the 723 can deliver the 30ma Vpp current I
 included a bypass transistor to take most of the dissipation away from the
-723. The function switch has 3 positions- OFF, READ (Vcc and Vpp at +5V) and
+723. The function switch has 3 positions&ndash; OFF, READ (Vcc and Vpp at +5V) and
 PROGRAM (Vcc at +5V and Vpp at +21 and +25V). Two LEDs indicate when Vpp
-and/or Vec is applied. The 5.1V zener stops the Vpp LED lighting when in READ
+and/or Vcc is applied. The 5.1V zener stops the Vpp LED lighting when in READ
 mode (Vpp=+5v).
 </p>
-<p>
+<h3>
 Control Program
-</p>
+</h3>
 <p>
 By restricting the EPROM types that can be programmed, and routing the
 signals via the header socket, the control program has been made very
@@ -39,14 +36,12 @@ to read in the EPROM contents to RAM.
 <p>
 On entering the program a menu gives the options:&ndash;
 </p>
-<p>
-1. Verify EPROM fully erased
-2 Read in EPROM to memory
-</p>
-<p>
-3. Program EPROM (and verify)
-4 Return to NAS-SYS
-</p>
+<ol class="indent2">
+<li>Verify EPROM fully erased</li>
+<li>Read in EPROM to memory</li>
+<li>Program EPROM (and verify)</li>
+<li>Return to NAS-SYS</li>
+</ol>
 <p>
 The basic structure of each operation is a simple loop which outputs an
 address, sets the control lines to perform the operation, either writes data
@@ -56,9 +51,9 @@ In each case you will first be asked to enter the EPROM type. The previously
 entered type is displayed and if this does not need to be changed just press
 NEWLINE.
 </p>
-<p>
+<h4>
 1. Verify
-</p>
+</h4>
 <p>
 This routine reads in every location from the EPROM and compares it with
 FFh which signifies that it is erased. If the location is not erased, a
@@ -66,9 +61,9 @@ message is displayed together with the address of the offending location. If
 there are a lot of unerased locations you can press ESCAPE to abort the
 verification. Then you may try another EPROM or return to the menu.
 </p>
-<p>
+<h4>
 2. Read in to RAM from EPROM
-</p>
+</h4>
 <p>
 You are first asked for the start address of the RAM block where you want
 the contents of the EPROM to be dumped. A default address is shown so just

@@ -288,7 +288,7 @@ function DivWithStyle($border, $style = "", $class = "")
 
 function boxStart($border = "", $style = "", $class = "")
 {
-	echo "<!-- Kasten &uuml;ber ganze Spalte: Start -->";
+	echo "<!-- Kasten über ganze Spalte: Start -->";
 	DivWithStyle($border, "width: 100%; $style", $class);
 }
 function boxStartNowrap($border = "", $style = "", $class = "")
@@ -1147,7 +1147,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "INMC News 3, page 24":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/03/24/text/#article1";	break;
 	case "INMC News 5, page 29":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/05/29/text/#article1";	break;
 	case "INMC News 6, page 33":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/06/33/text/#article1";	break;
-	case "INMC News 7":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/text/";				break;
+	case "INMC News 7":				$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/";					break;
 	case "INMC News 7, page 18":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-news/07/18/text/#article1";	break;
 	case "INMC 80 News":			$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/";					break;
 	case "INMC 80 News 1, page 15":	$url = "https://tupel.jloh.de/nascom/magazines/inmc-80-news/01/15/text/#article1";	break;

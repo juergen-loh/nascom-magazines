@@ -1,12 +1,9 @@
 <?php columnStart(1); ?>
-<p>
-47
-</p>
-<p>
-memory store REGS. The -C* register of the Z80 points to the first clock port,
-and they are read in via an &ldquo;INI&rdquo; instruction, which automatically increments
--C&rsquo; and -HL&rsquo;, decrements -B&ldquo;, and loops until -B&rdquo; is Zero. The values read are
-then -scanned&rsquo;in turn, and -ANDed&rdquo; with 0FH to mask off the four high order
+<p class="continued">
+memory store REGS. The &lsquo;C&rsquo; register of the Z80 points to the first clock port,
+and they are read in via an &lsquo;INI&rsquo; instruction, which automatically increments
+&lsquo;C&rsquo; and &lsquo;HL&rsquo;, decrements &lsquo;B&lsquo;, and loops until &lsquo;B&rsquo; is Zero. The values read are
+then &lsquo;scanned&rsquo;in turn, and &lsquo;ANDed&rsquo; with 0FH to mask off the four high order
 bits, which are not determined by the R.T.C. chip. The data is then compared
 with 0FH. If it is equal to this value, then the clock register in question
 was updating when it was read. If the clock was updating, then REGS contains
@@ -16,62 +13,54 @@ the same memory location in REGS again. All bytes in REGS are checked in this
 way. When all data is valid, the program then just has to set the data up in a
 printable form. Unfortunately, the order of the registers as read from the
 clock does not match too well the type of format that we normally use in the
-U.Ke How the data is presented is a matter of preference, but I have chosen
+U.K. How the data is presented is a matter of preference, but I have chosen
 output in the format&nbsp;:&ndash;
 </p>
-<p>
-Sat 25/04/84 18:33:55 i.e. &ndash; Day Name &ndash; Date &ndash; Time
+<p class="center">
+Sat 25/04/84 18:33:55
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+i.e. &ndash; Day Name &ndash; Date &ndash; Time
 </p>
 <p>
-If the day name is to be processed, the -DE&rdquo; register is pointed to the
-start of the name table, -BC&rsquo; is set to three, since the names are three
-characters long, and the &ldquo;day of week value stored in REGS is read. The value
-read is then -multiplied&rdquo; by three and added to &ldquo;HL&rdquo;. Finally -DE&rdquo; is added to
-*HL&rsquo; so that the latter points to the correct name. If the value read back is
-either 0 or greater than 7, due to some error, the blank name of DAYO is used.
--DE&rsquo; is then set to point to the start of STRING, which will hold the
+If the day name is to be processed, the &lsquo;DE&rsquo; register is pointed to the
+start of the name table, &lsquo;BC&rsquo; is set to three, since the names are three
+characters long, and the &lsquo;day of week&rsquo; value stored in REGS is read. The value
+read is then &lsquo;multiplied&rsquo; by three and added to &lsquo;HL&rsquo;. Finally &lsquo;DE&rsquo; is added to
+&lsquo;HL&rsquo; so that the latter points to the correct name. If the value read back is
+either 0 or greater than 7, due to some error, the blank name of DAY0 is used.
+&lsquo;DE&rsquo; is then set to point to the start of STRING, which will hold the
 formatted data for printing. The three byte name is then copied into STRING
-using -LDIR&rsquo;, and -DE&rdquo; is incremented once more to point to the units of the
-day of the month. (i.e. To STRNGI.)
+using &lsquo;LDIR&rsquo;, and &lsquo;DE&rsquo; is incremented once more to point to the units of the
+day of the month. (i.e. To STRNG1.)
 </p>
 <p>
 If the day name was not processed however, (i.e. NKBD was TRUE), then
-</p>
-<p>
-&ldquo;DE&rdquo; is set to this value as a definite instruction. Two very similar routines
-</p>
-<p>
+&lsquo;DE&rsquo; is set to this value as a definite instruction. Two very similar routines
 follow, that move the two byte data values associated with Day of month,
-</p>
-<p>
-Month, Hour, Minutes and Seconds into the appropriate place in STRNGI. The
-</p>
-<p>
--DE&rsquo; registers act as a pointer into the string, and &ldquo;HL&rdquo; points to the data
-</p>
-<p>
-source in REGS. *B* and -C&rdquo; act as counters. The code is commented and fairly
+Month, Hour, Minutes and Seconds into the appropriate place in STRNG1. The
+&lsquo;DE&rsquo; registers act as a pointer into the string, and &lsquo;HL&rsquo; points to the data
+source in REGS. &lsquo;B&rsquo; and &lsquo;C&rsquo; act as counters. The code is commented and fairly
 straightforward, so it will not be described in greater detail here.
 </p>
 <p>
-On completion of this code, the data will be in STRNGI, and possibly also
+On completion of this code, the data will be in STRNG1, and possibly also
 STRING, ready to be printed on the screen. Before printing, the cursor must be
 set to the right place. SYS provides a store in its workspace called CURSOR
 that can be used to save the location of the cursor. To play safe, I decided
 to save whatever was in this store before I used it, in case it was holding
 data relevant to some other program that might be running when the clock is
-updated. The data in -CURSOR&rdquo; is copied to HL and then -PUSH&rsquo;ed on to the
-stack. The current cursor location is then saved, using the -SAVCUR&rdquo; routine,
+updated. The data in &lsquo;CURSOR&rsquo; is copied to HL and then &lsquo;PUSH&rsquo;ed on to the
+stack. The current cursor location is then saved, using the &lsquo;SAVCUR&rsquo; routine,
 The cursor is then temporarily turned off, using an IVC command, to stop it
 flashing as the clock display is updated.
 </p>
 <p>
-The &ldquo;SETCUR&rdquo; routine is then used to place the cursor at the clock
+The &lsquo;SETCUR&rsquo; routine is then used to place the cursor at the clock
 display position in the top line of the screen. Thes position depends on
-whether the Day name is to be displayed. The -H&rdquo; register holds the row data,
-and &lsquo;L&rsquo; the column. The data is then printed on the screen, using &ldquo;HL&rdquo; to
+whether the Day name is to be displayed. The &lsquo;H&rsquo; register holds the row data,
+and &lsquo;L&rsquo; the column. The data is then printed on the screen, using &lsquo;HL&rsquo; to
 point to the source of the data to be printed from STRING/<?php spChar("zwsp"); ?>STRNG1, and the SYS
--CRTX&rsquo; routine is used to send each byte to the IVC. The routine stops when it
-finds the &ndash;0* character that is used to mark the end of the output string.
+&lsquo;CRTX&rsquo; routine is used to send each byte to the IVC. The routine stops when it
+finds the &lsquo;0&rsquo; character that is used to mark the end of the output string.
 </p>
 <?php columnEnd(1); ?>

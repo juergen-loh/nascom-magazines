@@ -1,36 +1,36 @@
 <?php columnStart(1); ?>
 <p>
-|
-{
-</p>
-<p>
-29
-</p>
-<p>
-The file STDIO.H is supplied with a compiler and is -included&rdquo; at the
-beginning of most programs that require 10 capabilities. It is itself &ldquo;Cc&rdquo;
+The file STDIO.H is supplied with a compiler and is &lsquo;included&rsquo; at the
+beginning of most programs that require IO capabilities. It is itself &lsquo;C&rsquo;
 source code and it declares items to the program such as file control blocks
-and 10 buffers that will be used later on. It also declares things like &ldquo;NULL&rdquo;
+and IO buffers that will be used later on. It also declares things like &lsquo;NULL&rsquo;
 which can be seen in openit, this is analagous to the M80 equates that are
-seen at the beginning of a program. Examples from stdio-h are typically:
+seen at the beginning of a program. Examples from stdio.h are typically:
 </p>
-<p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<?php columnChange(23); ?>
+<pre class="indent">
 &pound;define NULL 0
-gdefine TRUE 1
-f&pound;define FALSE 0
-</p>
+&pound;define TRUE 1
+&pound;define FALSE 0
+</pre>
+<?php columnEnd(3); ?>
+<p></p>
+<?php columnStart(1); ?>
 <p>
-You can also use the fdefine facility to define equates of your own in
-the identical way. The -C&rdquo; macro preprocessor that most compilers have looks
-through your code and replaces all occurrences of -NULL&rdquo; with &ndash;0&rsquo; and so on.
-gdefine entries can also be used for inserting macros into your code.
+You can also use the &pound;define facility to define equates of your own in
+the identical way. The &lsquo;C&rsquo; macro preprocessor that most compilers have looks
+through your code and replaces all occurrences of &lsquo;NULL&rsquo; with &lsquo;0&rsquo; and so on.
+&pound;define entries can also be used for inserting macros into your code.
 </p>
+<h3>
+&lsquo;C&rsquo; data types
+</h3>
 <p>
--C&rdquo; data types
-</p>
-<p>
-The next two lines declare permanent storage for the variables -count&rdquo;
-and -fd&rsquo;, don&rsquo;t worry about the -*&rsquo; in front of the -fd* it means that it is
+The next two lines declare permanent storage for the variables &lsquo;count&rsquo;
+and &lsquo;fd&rsquo;, don&rsquo;t worry about the &lsquo;*&rsquo; in front of the &lsquo;fd&rsquo; it means that it is
 an integer pointer, more on that later. These variables defined in this way
 outside of any functions declare then as global to all functions in this
 source file and also to any modules that are to be linked in later. Being
@@ -39,21 +39,24 @@ the run of the program. They may be accessed and altered by any of the program
 functions.
 </p>
 <p>
--C&rsquo; also allows you to use local or, to give them their proper name,
+&lsquo;C&rsquo; also allows you to use local or, to give them their proper name,
 automatic variables, these are declared inside the body of a function and
 reside in the stack area until a return from the function occurs. Automatic
 variables are declared as follows.
 </p>
-<p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<?php columnChange(23); ?>
+<pre class="indent">
 functionx()
-</p>
-<p>
 {
-</p>
-<p>
 int var_a, var_b;
 char array[16];
-</p>
+</pre>
+<?php columnEnd(3); ?>
+<p></p>
+<?php columnStart(1); ?>
 <p>
 The above declares two 16 bit integers and an array of 16 bytes in the
 stack area. So you can see that you are able to create space for storage and
@@ -64,19 +67,13 @@ available for other uses.
 </p>
 <p>
 The data types available to you sometimes depend upon the compiler that
-you have but a typical -C compiler will have the following types.
+you have but a typical &lsquo;C&rsquo; compiler will have the following types.
 </p>
-<p>
-short or char &ndash; These usually occupy a single byte.
-</p>
-<p>
-int &ndash; Integer data type, usually two bytes long.
-</p>
-<p>
-long &ndash; Long integer, usually four bytes long.
-</p>
-<p>
-float &ndash; Single precision FP variable usually 4 bytes long.
-double &ndash; Double precision FP usually 8 bytes long.
-</p>
+<table class="indent">
+<tr><td>short or char</td><td>&ndash;</td><td>These usually occupy a single byte.</td></tr>
+<tr><td>int</td><td>&ndash;</td><td>Integer data type, usually two bytes long.</td></tr>
+<tr><td>long</td><td>&ndash;</td><td>Long integer, usually four bytes long.</td></tr>
+<tr><td>float</td><td>&ndash;</td><td>Single precision FP variable usually 4 bytes long.</td></tr>
+<tr><td>double</td><td>&ndash;</td><td>Double precision FP usually 8 bytes long.</td></tr>
+</table>
 <?php columnEnd(1); ?>

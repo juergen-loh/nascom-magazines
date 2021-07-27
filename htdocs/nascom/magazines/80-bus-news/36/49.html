@@ -1,69 +1,71 @@
 <?php columnStart(1); ?>
-<p>
+<ol start="2">
+<li>
 If there is not enough room, use MOVCPM to make a new CP/M that uses a
 little less memory, or alter the MOVCPM program to reserve a little bit
 more CBIOS space. This can be done by changing location 023DH in MOVCPM.
 By adding 1 to this value an extra 256 bytes is added to the BIOS space
 reserved, and so on.
-</p>
-<p>
+</li>
+<li>
 If this method is being tried, I assume that the BIOS Source Code is not
 available. I hope that I am not disclosing too much information in the
 following suggestions, which I am basing on my original CBIOS.
-</p>
-<p>
-a) The -Signon&rdquo; messages are at the end of the CBIOS.
-b) The Workspaces are just before this.
-</p>
-<p>
-c) The PUTVID and GETVID routines are just before this.
-d) Keyboard and Editing routines come just before this.
-</p>
-<p>
+<br><br>
+a) The &lsquo;Signon&rsquo; messages are at the end of the CBIOS.<br>
+b) The Workspaces are just before this.<br>
+c) The PUTVID and GETVID routines are just before this.<br>
+d) Keyboard and Editing routines come just before this.<br>
+</li>
+<li>
 If you can find these routines and data areas, then you can try out the
 following suggestions. Choose an address just AFTER your CBIOS, where you
 will place the Clock AND the IVC Keyboard routines. The latter are not
 very long. If you can locate the equivalent IVC routines, it will be
-possible to -CALL* them. If not then they must be added in.
-</p>
-<p>
-Assemble the Clock routines and include the Keyboard code, with &ldquo;ORG&rdquo; set
+possible to &lsquo;CALL&rsquo; them. If not then they must be added in.
+</li>
+<li>
+Assemble the Clock routines and include the Keyboard code, with &lsquo;ORG&rsquo; set
 for your chosen address. Any Clock workspaces will have to reside here as
 well.
-</p>
-<p>
-Patch this code into the end of the CBIOS, and place a &ldquo;JUMP&rdquo; at the
+</li>
+<li>
+Patch this code into the end of the CBIOS, and place a &lsquo;JUMP&rsquo; at the
 start of the code of the original keyboard routine, to the new code.
-</p>
-<p>
+</li>
+<li>
 If this all works, use DDT/<?php spChar("zwsp"); ?>ZSID/<?php spChar("zwsp"); ?>GEMDEBUG to move a copy of CP/M down over
 MOVCPM and save it as CLOKBIOS.SYS or similar name. You can then put it
 on to the SYSTEM tracks of your disk with SYSGEN. Note that this is a
 fixed size BIOS, and if you alter memory size, and regenerate CP/M with
 MOVCPM, you will have to re-assemble and patch the new code.
-</p>
-<p>
+</li>
+<li>
 Top line locking might be achieved by jumping to extra code at the end of
 the CBIOS, from the warm boot routines, or by adding the command into the
-&ldquo;update&rdquo; part of the routine. Since it would then be executed every time
+&lsquo;update&rsquo; part of the routine. Since it would then be executed every time
 that the keyboard is scanned, there would be an extra time penalty.
-</p>
-<p>
+</li>
+<li>
 One final problem might remain. SYSGEN and COLD BOOT may need altering to
 READ/<?php spChar("zwsp"); ?>WRITE the increased code in the system tracks.
-</p>
+</li>
+</ol>
 <p>
-My previous article in the 80-BUS NEWS, on how to insert &ldquo;-SYS&rdquo; into the
-</p>
-<p>
+My previous article in the 80-BUS NEWS, on how to insert &lsquo;SYS&rsquo; into the
 CBIOS gives quite a bit of information on some of these problems, particularly
-7 and 9.
+7 and 9&nbsp;.
 </p>
-<p>
+<?php hline("20%"); ?>
+<p></p>
+<div class="noindent">
+<h2 id="article1">
 WANTED
-</p>
+</h2>
 <p>
 Wanted, Nascom IMP Printers, need not be in working order. Please write with
-details to D. Torrens, c/o 51 St Martin, Marlborough, Wilts
+details to D. Torrens, ___ __ __ ______, Marlborough, Wilts
 </p>
+<?php hline("20%"); ?>
+</div>
 <?php columnEnd(1); ?>

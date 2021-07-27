@@ -1,68 +1,66 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 default routine is executed, in this case the output of an error message and
 the setting of an error flag.
 </p>
 <p>
-Now we have introduced the -break&rdquo; statement, I think that we should give
-it a further airing along with its bedmate the -continue&rdquo; statement. Although
--c&rsquo; allows the use of the -goto&rdquo; statement, it should never be necessary to
+Now we have introduced the &lsquo;break&rsquo; statement, I think that we should give
+it a further airing along with its bedmate the &lsquo;continue&rsquo; statement. Although
+&lsquo;&rsquo; allows the use of the &lsquo;goto&rsquo; statement, it should never be necessary to
 use it. Let us say that we are in the body of an executing loop and we come
 across the following:
 </p>
+<pre class="center">
+if( vbll_1 == 0 ) break;
+</pre>
 <p>
-if( vbl1_1 == 0 ) break;
-</p>
-<p>
-vbl lis tested for a zero value and if it is found to be true the loop
+vbl_1 is tested for a zero value and if it is found to be true the loop
 is exited and control is passed to the statement immediatly following the loop
 statements. A nice clean way don&rsquo;t you think to conditionally exit an
 executing loop.
 </p>
 <p>
 if the following was encountered:
-if( vbl_1 == 0 ) continue;
 </p>
+<pre class="center">
+if( vbl_1 == 0 ) continue;
+</pre>
 <p>
--C&rsquo; would interpret this as, if vbl1_1 is found to be 0 then forget about
+&lsquo;C&rsquo; would interpret this as, if vbl_1 is found to be 0 then forget about
 the remainder of the looping statements and continue with the next iteration.
-This is not an exit from the loop but the forcing of a premature &ldquo;NEXT&rdquo;, to
+This is not an exit from the loop but the forcing of a premature &lsquo;NEXT&rsquo;, to
 give a comparison in BASIC.
 </p>
 <p>
-It did occur to me a while back that if you used &ldquo;f&pound;define goto
-structured repass&rsquo; the preprocessor would replace -structured repass&rdquo; with
+It did occur to me a while back that if you used &lsquo;&pound;define goto
+structured_repass&rsquo; the preprocessor would replace &lsquo;structured_repass&rsquo; with
 goto, which means that you could have as many goto&rsquo;s in your code as you
 wanted and no one would be any the wiser, especially if you put it in STDIO.H
 where it could not be found in a source listing. If you want to get your own
-back, using methods like that, -C&rdquo; could be the ideal medium for &ldquo;drop
+back, using methods like that, &lsquo;C&rsquo; could be the ideal medium for &lsquo;drop
 through&rsquo; spaghetti programmers!
 </p>
-<p>
+<h3>
 Arithmetic operators
-</p>
+</h3>
 <p>
 All the normal operators are supported and usually conform to the
 standard rules of operator precedence. As you may have already noticed there
-are two ways that arithmetic syntax can be entered. I call these -longhand&rdquo;
-and &ldquo;shorthand&rdquo; for convenience. Here is some equivalent syntax.
+are two ways that arithmetic syntax can be entered. I call these &lsquo;longhand&rsquo;
+and &lsquo;shorthand&rsquo; for convenience. Here is some equivalent syntax.
 </p>
-<p>
-longhand shorthand desc
-</p>
-<p>
-x=xt] KH increments x by 1
-x=xK+3 X+=3 increments x by 3
-K=xX*3 x*s3 multiplies x by 3
-</p>
+<table>
+<tr><th>longhand</th><th>shorthand</th><th>desc</th></tr>
+<tr><td>x=x+1</td><td>x++</td><td>increments x by 1</td></tr>
+<tr><td>x=x+3</td><td>X+=3</td><td>increments x by 3</td></tr>
+<tr><td>x=x*3</td><td>x*=3</td><td>multiplies x by 3</td></tr>
+</table>
 <p>
 In addition to these you will also have bitwise logical operators at your
 beck and call, some examples below.
 </p>
-<p>
-x&gt;&gt;=4 shifts x four bits to the right
-</p>
-<p>
-x&lt;&lt;=6 shifts x six bits to the left
-</p>
+<table>
+<tr><td>x&gt;&gt;=4</td><td>shifts x four bits to the right</td></tr>
+<tr><td>x&lt;&lt;=6</td><td>shifts x six bits to the left</td></tr>
+</table>
 <?php columnEnd(1); ?>

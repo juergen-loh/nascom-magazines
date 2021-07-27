@@ -1,26 +1,35 @@
 <?php columnStart(1); ?>
-<p>
-32
-</p>
-<p>
+<h3>
 Control mechanisms
+</h3>
+<p>
 All the usual controlling mechanisms are available to you these are
 </p>
-<p>
+<pre class="indent2">
 if&lt;condition&gt; ... else...
-for(&lt;loop start&gt; ; &lt;loop end conditiom&gt; ; &lt;loop step&gt; )...
+</pre>
+<pre class="indent2">
+for(&lt;loop start&gt; ; &lt;loop end condition&gt; ; &lt;loop step&gt; )...
+</pre>
+<pre class="indent2">
 do ... while&lt;condition&gt;
+</pre>
+<pre class="indent2">
 while&lt;condition&gt;...
-and the very handy -switch&reg;&rdquo; multiple condition mechanism.
+</pre>
+<p class="continued">
+and the very handy &lsquo;switch&rsquo; multiple condition mechanism.
 </p>
 <p>
 if.. else and do.. while require no explanation but I would just like to
-run through the for loops and switch statements. &ndash;
+run through the for loops and switch statements.
 </p>
 <p>
 The for loop in the example program went like this:
-for(count=0; count &lt;= 100; count++) putw(count, fd);
 </p>
+<pre class="indent2">
+for(count=0; count &lt;= 100; count++) putw(count, fd);
+</pre>
 <p>
 This translates as set count to 0, WHILE count is less than or equal to
 100 call the putw function to output the value of count to the disk file, and
@@ -36,31 +45,26 @@ The switch statement is a pearl and saves you the agony of entering
 multiple if conditions. It is ideal for menu driven applications. A typical
 example may be:
 </p>
+<pre>
+switch(value)                 /* value is a variable */
+     {
+     case 1:
+          function1();
+          break;
+     case 2:
+          function2();
+          break;
+     case 3:
+          function3();
+          break;
+     default:
+          printf("ERROR - illegal option");
+          errflag = TRUE;
+     }
+</pre>
 <p>
-switch( value) /*&reg; value is a variable */
-{
-case I:
-functionl();
-break;
-</p>
-<p>
-case 2:
-function2();
-break;
-</p>
-<p>
-case 3:
-function3();
-break;
-</p>
-<p>
-default:
-printf&pound;("ERROR &ndash; illegal option");
-errflag = TRUE;
-</p>
-<p>
-Tests are done on &ldquo;value&rdquo; and if it is found to be 1, 2, or 3 then the
+Tests are done on &lsquo;value&rsquo; and if it is found to be 1, 2, or 3 then the
 appropriate function is called and on return the case structure is exited via
-the -break&rsquo; statement. If none of the valid cases are found to be true the
+the &lsquo;break&rsquo; statement. If none of the valid cases are found to be true the
 </p>
 <?php columnEnd(1); ?>

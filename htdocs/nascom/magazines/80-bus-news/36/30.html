@@ -1,61 +1,41 @@
 <?php columnStart(1); ?>
 <p>
-30
-</p>
-<p>
 Mixed mode arithmetic between these data types is made easy for you as
 the compiler should sort your assignments out for you. I have in the passed
 assigned the result of a calculation which was held in a double precision FP
 variable directly into an integer simply by entering:
 </p>
-<p>
+<pre class="center">
 int var = double var;
-</p>
+</pre>
 <p>
 Of course the compiler uses library functions to achieve this
 transformation which are also available to you for use if required, but it is
 nice to think that the compiler is intelligent enough to sort this out for
 you.
 </p>
-<p>
+<h3>
 Pointer variables
-</p>
+</h3>
 <p>
--C&rdquo; is also very adept at handling pointers and doing arithmetic with
-them. You declare pointer variables using the syntax, char *ch ptr or int
+&lsquo;C&rsquo; is also very adept at handling pointers and doing arithmetic with
+them. You declare pointer variables using the syntax, char *ch_ptr or int
 *int_ptr, where ch_ptr and int_ptr are variable names. These variables will be
-used as pointers to character or integer fields and are typically used for_
+used as pointers to character or integer fields and are typically used for
 processing arrays. An example of how pointers may be put to good use is the
-alteration of the 10 byte under program control. We know that the tobyte lives
+alteration of the 10 byte under program control. We know that the iobyte lives
 at 0003h so here is how we get at it:
 </p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-30-1.png"); ?>
 <p>
-char oldiob; /* storage for old iobyte value */
-</p>
-<p>
-char *iob=3; /* pointer to 0003h &ndash; the iobyte */
-setiob(value) /* changes iobyte to &ldquo;value&rdquo; */
-</p>
-<p>
-char value;
-</p>
-<p>
-{
-</p>
-<p>
-oldiob = *iob; /* store contents of 0003h in oldiob */
-*iob = value; /* set 0003h to new value passed as arg */
-}
-</p>
-<p>
-The character pointer -iob&rdquo; is declared as a pointer to 0003h it will be
+The character pointer &lsquo;iob&rsquo; is declared as a pointer to 0003h it will be
 a 16 bit field of course and contains the value 3. If during processing an
 asterisk is placed infront of iob as in the above example, the contents of the
 byte that iob is addressing is used.
 </p>
 <p>
 Should we now wish to do something with the contents of 0004h all we have
-to do is increment -iob&rdquo; using -iob = iob + 1;&rsquo; or more simply -iob++;&rdquo;, iob
+to do is increment &lsquo;iob&rsquo; using &lsquo;iob = iob + 1;&rsquo; or more simply &lsquo;iob++;&rsquo;, iob
 now points to 0004h.
 </p>
 <p>
@@ -69,20 +49,18 @@ final .COM version -C&rdquo; provides you with a mechanism whereby you can locat
 the address of a variable or data structure. This is normally used to
 initialise the values of pointers. Take the example:
 </p>
-<p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<?php columnChange(23); ?>
+<pre class="indent">
 functiony()
-</p>
-<p>
 {
-</p>
-<p>
 char arrayx[100];
 char *point;
+point = &amp;arrayx[0];
+</pre>
+<p class="indent">
+..... and so on
 </p>
-<p>
-point = earrayx[0];
-</p>
-<p>
-eeeee and so on
-</p>
-<?php columnEnd(1); ?>
+<?php columnEnd(3); ?>

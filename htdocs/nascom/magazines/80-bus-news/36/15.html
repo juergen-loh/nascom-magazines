@@ -1,15 +1,12 @@
 <?php columnStart(1); ?>
-<p>
-15
-</p>
-<p>
+<p class="continued">
 be read in and when this has been done the NAS-SYS Tabulate command is used to
 display the contents of the EPROM (note: the addresses shown are RAM
 addresses).
 </p>
-<p>
+<h4>
 3. Program
-</p>
+</h4>
 <p>
 After entering the EPROM type you enter the start and end address
 (inclusive) of the RAM block which holds the data to be blown into the EPROM.
@@ -19,7 +16,7 @@ which the EPROM will reside in memory. When this has been entered the start
 and end addresses of the EPROM will be displayed, assuming programming is to
 start at the first location in the EPROM. If you are programming from a
 different address then change the values accordingly. The next prompt tells
-you to switch the programmer to PROGRAM and then to press key -P&rsquo;.
+you to switch the programmer to PROGRAM and then to press key &lsquo;P&rsquo;.
 </p>
 <p>
 When programming is complete the locations just programmed will be
@@ -32,8 +29,8 @@ or a fresh one.
 <p>
 The signals used to control the EPROM are /OE which is low to read and
 high to program, and the programming pulses PGM (active high) and /PGM (active
-low). The duration of the pulses is 50ms tor- 5ms and to implement this I used
-a simple delay loop. However a program erash during the middle of the delay
+low). The duration of the pulses is 50ms +or- 5ms and to implement this I used
+a simple delay loop. However a program crash during the middle of the delay
 loop would leave the PGM signals permanently active and the EPROM would not
 like this! So a safer alternative would be to use a 74LS121 monostable to
 provide the 50ms pulse and this would simply need to be triggered from the
@@ -48,13 +45,13 @@ the top of my head (yes, I know it&rsquo;s a funny place to keep circuit diagram
 and has not actually been tried but something along these lines should work,
 although the control program will need modifying.
 </p>
-<p>
+<h3>
 Construction
-</p>
+</h3>
 <p>
 The circuitry can be built on a piece of Veroboard and mounted in a
 plastic box with the ZIF and 16-pin dil sockets poking through holes cut in
-the top of the box, together with the switch and LED&rsquo;s. Connection to the PI0Os
+the top of the box, together with the switch and LED&rsquo;s. Connection to the PIOs
 on the I/O board is made using two 26-way ribbon cables with IDC headers. See
 fig 4 for pin connections (but note that I use different addreses for the PIOs
 from those recommended in the manual). The power supply could be included in
@@ -62,4 +59,5 @@ the programmer box or use a separate one. It should be able to deliver 30V at
 about 300ma. Wire up the header sockets as per fig 2 and I strongly suggest
 you clearly mark each one with the EPROM type!
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

@@ -1,10 +1,13 @@
+<?php columnStart(34); ?>
+<h2 id="article1">
+Sinclair speaks to NASCOM &ndash; A snippet on interfacing
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+By Michael Hendry
+</h3>
+<?php columnEnd(4); ?>
 <?php columnStart(1); ?>
-<p>
-35
-</p>
-<p>
-Sinclair speaks to NASCOM &ndash; A snippet on interfacing By Michael Hendry
-</p>
 <p>
 Stimulated by Dr Dark&rsquo;s suggestion in the March-April 1984 issue (Vol 3
 Issue 2) I decided to rake out this program, first written in January, and
@@ -17,12 +20,12 @@ without decent tools. I was too mean to buy a machine code package and a
 printer interface for my son&rsquo;s Spectrum, having perfectly good facilities on
 the NASCOM, and I decided to interface the Spectrum to my NASCOM&nbsp;2 without
 using any extra hardware so that I could disassemble, list, and generally
-tinker with code dumped. from the Spectrum.
+tinker with code dumped from the Spectrum.
 </p>
 <p>
-The Spectrum uses one of its ports (OFEH) for output to the MIC socket
-and to provide the Border colours on the screen, bit 3 for the MIC and bits 0-
-2 for the three primary colours. Its built-in tape routines use a non-standard
+The Spectrum uses one of its ports (0FEH) for output to the MIC socket
+and to provide the Border colours on the screen, bit 3 for the MIC and bits 0-2
+for the three primary colours. Its built-in tape routines use a non-standard
 format, but it is possible to use the output bit provided in any format you
 wish, in this case the CUTS standard used in the NASCOM, which outputs 1 cycle
 at 1200 Hz for a zero bit, and 2 cycles at 2400 Hz for a non-zero bit when it
@@ -44,8 +47,8 @@ interface, and is sent data bytewise by the UART emulator routine BytOut,
 which is in turn fed by the NAS-SYS &ldquo;Write&rdquo; emulator routine, which is the
 bulk of the remainder of the program. The analogy is not complete, in that the
 NASCOM hardware is continuously sending out a stop bit when the cassette
-output is not in use. The loop labelled PLO is used to provide a short burst
-of this &ldquo;pilot tone".
+output is not in use. The loop labelled PL0 is used to provide a short burst
+of this &ldquo;pilot tone&rdquo;.
 </p>
 <p>
 For convenience, the start and end+1 addresses are passed to the program
@@ -56,7 +59,7 @@ to prompt for the necessary addresses and remind you to start the tape, but
 remember that this may encroach on code under examination.
 </p>
 <p>
-The output follows exactly the format of a"W XXXX YYYY&rdquo; command under
+The output follows exactly the format of a &ldquo;W XXXX YYYY&rdquo; command under
 NAS-SYS with all the usual checksums, and may be saved on cassette and then
 loaded directly into memory on the NASCOM using the &ldquo;R&rdquo; command. If NAS-SYS&nbsp;3
 is available, it may be loaded at any address by giving the appropriate offset

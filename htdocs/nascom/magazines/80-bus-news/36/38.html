@@ -1,15 +1,18 @@
+<?php columnStart(34); ?>
+<h2 id="article1">
+INTERRUPT DRIVEN PRINTER FOR GEMINI 2
+</h2>
+<?php columnChange(4); ?>
+<h3 class="author">
+By Bill Turner
+</h3>
+<?php columnEnd(4); ?>
 <?php columnStart(1); ?>
-<p>
-38
-</p>
-<p>
-INTERRUPT DRIVEN PRINTER FOR GEMINI 2 By Bill Turner
-</p>
-<p>
+<h3>
 Introduction
-</p>
+</h3>
 <p>
-T hear so much these days about the advantages of having a 16 or even 32
+I hear so much these days about the advantages of having a 16 or even 32
 bit computer that I start becomming depressed when sitting down to my humble 8
 bitter. However, with so much Z80 software I have a made considerable
 investment which I can&rsquo;t throw away lightly. So now the Z80 fights back. I&rsquo;m
@@ -21,22 +24,22 @@ Instead I am going to use interrupts to handle some of the devices. The
 first is going to be the printer which is after all attached to a PIO making
 the whole thing pretty simple.
 </p>
-<p>
+<h3>
 The Hardware
-</p>
+</h3>
 <p>
-My humble 8 bitter is a Gemini Galaxy 2 running CP/M 2.2 with an Epson&rsquo;
+My humble 8 bitter is a Gemini Galaxy 2 running CP/M 2.2 with an Epson
 FX80 connected via the PIO using the Centronics protocol. The printer is
 reputed to have a 2K internal buffer but this doesn&rsquo;t seem to make printing a
 smooth operation. No hardware changes are required except to the IVC as
 described in 80-BUS News Vol 2 Issue 3. (If the system has an SVC then no
 changes are required at all.)
 </p>
-<p>
+<h3>
 The Theory
-</p>
+</h3>
 <p>
--- &ldquo;The new printer driving routines are built around a 256 byte buffer which
+The new printer driving routines are built around a 256 byte buffer which
 with single byte pointers provides automatic wrap around making the buffer
 appear circular. There is an input pointer which points to the next free entry
 for the next character to be printed and an output pointer which points to the
@@ -46,9 +49,9 @@ behind the output pointer (i.e. the input pointer has gone right round and
 caught up with the output pointer). The printer generates an interrupt when
 busy goes low provided that interrupts are enabled.
 </p>
-<p>
+<h3>
 The Software
-</p>
+</h3>
 <p>
 The full listing is somewhere else in the magazine and shows a test
 program which illustrates the theory. The routine labels correspond to those
@@ -72,9 +75,9 @@ placed in the disk driver routines would have been the answer, as they could
 be patched to DI and EI if required. This addition would also make it possible
 for users to attempt multi-tasking.
 </p>
-<p>
-Ivc Mods
-</p>
+<h3>
+IVC Mods
+</h3>
 <p>
 The first thing I noticed when the code started to run was that the IVC
 was being reset every so often. I found the answer in Vol 2 Issue 3 of 80-BUS
