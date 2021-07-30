@@ -1,8 +1,10 @@
 <?php columnStart(2, 2); ?>
-<p>
+<h2 id="article1">
 CONDITIONAL SUBMIT FILES
+</h2>
+<h3>
 By Steve Willmott
-</p>
+</h3>
 <p>
 The CP/M SUBMIT facility is much like an elementary
 Job Control Language. The public domain
@@ -15,27 +17,23 @@ command file and the parameters which define this
 job (e.g. the source file to be compiled) need be
 supplied. A typical example file called MAC.SUB is:
 </p>
-<p>
+<pre class="indent">
 ED $1.MAC
-</p>
-<p>
 M80 =$1
-</p>
-<p>
 L80 /P:100,$1,LIBRARY/S,$1/N/E
 $1
-</p>
+</pre>
 <p>
 and invoked in response to the CCP prompt to
 develop the program DEMO.MAC by
 </p>
-<p>
+<pre class="indent">
 SUBMIT MAC DEMO
-</p>
+</pre>
 <p>
 The SUBMIT utility processes the MAC.SUB file
 substituting the parameter string &lsquo;DEMO&rsquo; in place
-of the piace holder $1. it creates a new file called
+of the place holder $1. it creates a new file called
 $$$.SUB with one command line in each 128 byte
 record in the reverse order. Whenever the CCP runs
 it looks for this file on disk and reads the last record
@@ -70,11 +68,9 @@ on how well it has run. Perhaps unsurprisingly the
 report is left on the screen for the user to see. Each
 program normally generates this report in a fairly
 fixed format. A compiler will state how many errors
-</p>
-<p>
 or warnings have or have not been found. With a
-Gemini IVC or SVC video board (or indeed a
-NASCOM with memory mapped display or I
+<i>Gemini</i> IVC or SVC video board (or indeed a
+<i>NASCOM</i> with memory mapped display or I
 assume an AVC or whatever) one is able to read
 back from the display and analyse this report. The
 result of the analysis could cause the abortion of
@@ -85,23 +81,21 @@ M80 source for CHECK is listed here it should not
 be too difficult to modify for other systems. A
 typical use would be in the submit file MAC.SUB:
 </p>
-<p>
-ED $1.MAC.
-</p>
-<p>
+<pre class="indent">
+ED $1.MAC
 M80 =$
-</p>
-<p>
-CHECK &lsquo;NO FATAL ERROR(S}*/CU
-L80 /P:100,$1,LIBRARY/S, $1/N/E
+CHECK 'NO FATAL ERROR(S)'/CU
+L80 /P:100,$1,LIBRARY/S,$1/N/E
 $1
-</p>
+</pre>
 <p>
 The command syntax for CHECK is:
-CHECK &lsquo;string&rsquo; /switches
 </p>
+<pre class="indent">
+CHECK 'string'/switches
+</pre>
 <p>
-The supplied string is compared to a previous fine
+The supplied string is compared to a previous line
 on the display according to the optional switches.
 If the check is successful CHECK merely exits back
 to the CCP and the submit file continues. If the
@@ -118,9 +112,9 @@ screen edit facilities provided by the BIOS. However,
 the following provides some of the rationale
 behind the program design. The supplied string
 must be in single quotes, because since the
-&lsquo;switches are optional one cannot supply a string
-of spaces or a null string &ndash; the CCP will not see
-them. The &lsquo;/ separator before the switches merely
+/switches are optional one cannot supply a string
+of spaces or a null string &mdash; the CCP will not see
+them. The &lsquo;/&rsquo; separator before the switches merely
 conforms to common syntax. The switches all have
 defaults which allow them to be optional. They can
 be supplied in any order. Some of the switches
@@ -128,22 +122,21 @@ have been built in to increase the pattern matching
 ability of the utility. Considering each switch in
 turn:
 </p>
-<p>
-B indicates that previous blank lines are significant
+<table>
+<tr><td>B</td><td>indicates that previous blank lines are significant
 and modifies the effect of the L switch.
 The default is to ignore blank lines.
-</p>
-<p>
-Cc indicates that the supplied string must match
+</td></tr>
+<tr><td>C</td><td>indicates that the supplied string must match
 the complete displayed line. The example
 above means that warnings from the M80
 assembler will be trapped as the warning
 report follows the fatal error report on the
 same line. The default is to allow a match
 anywhere in, the line.
-</p>
-<p>
-F indicates that the string must match the finish
+</td></tr>
+<tr><td>F</td><td>indicates that the string must match the finish
 of the displayed line. The default is a match
-</p>
+</td></tr>
+</table>
 <?php columnEnd(2); ?>

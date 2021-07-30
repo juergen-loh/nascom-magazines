@@ -1,130 +1,13 @@
 <?php columnStart(2, 2); ?>
-<p>
-GETLIN: LD A,&rsquo;2&rsquo;
-</p>
-<p>
-;GET LINE FROM VIDEO CARD
-</p>
-<p>
-PROMSG: DEFB BEL,CR,LF,&rsquo;CHECK fail &ndash; abort SUBMIT (Y/N)? $&rsquo;
-</p>
-<p>
-CALL PVESC ;GET LINE COMMAND ABOMSG: DEFB CR,LF, &lsquo;SUBMIT aborted&rsquo;,CR,LF,&rsquo;$&rsquo;
-LD C,0 ;C=COUNT OF CHARS IN LINE CONMSG: DEFB CR,LF,&rsquo;CHECK overridden &ndash; continuing&rsquo;,CR,LF, &lsquo;$&rsquo;
-LD DE, LINE ;DE = BUFFER @ OKMSG: DEFB &lsquo;CHECK okay &ndash; continuing&rsquo;,CR,LF,&rsquo;$!
-GTLIN: CALL GVID ;GET CHAR
-CP CR SWICH: DEFS 1
-RET Z ;IF CR THEN END OF LINE LIN: DEFS 1
-LD (DE),A ;ELSE STORE IN BUFFER STRLEN: DEFS 1
-INC DE ;BUMP BUFFER @ CURPOS: DEFS 2
-Inc c ; COUNT CHAR LINE: DEFS 80
-JR GTLIN ;FOR MORE DEFS 32
-</p>
-<p>
-GETCUR: LD A,&rsquo;?!
-</p>
-<p>
-;HL := CURRENT CURSOR POSITION
-</p>
-<p>
-STK: DEFS 2
-</p>
-<p>
+<?php imageNoscaleGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-1.png"); ?>
+<?php imageNoscaleGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-2.png"); ?>
+<?php imageNoscaleGap($imagepath, $magpath, $issuepath, $pagepath, "Image-24-3.png"); ?>
+<?php hline("100%", 2); ?>
+<h2 id="article1" class="center">
 NEW GEMINI BIOS
-</p>
+</h2>
 <p>
-CALL PVESC ;GET CURSOR COMMAND END
-CALL GVID ;GET ROW
-</p>
-<p>
-LD OL,A
-</p>
-<p>
-CALL GVID ;GET COLUMN
-</p>
-<p>
-LD OHA
-</p>
-<p>
-CALL GVID ;GET CHAR
-</p>
-<p>
-RET
-</p>
-<p>
-PUTCUR: PUSH HL
-LD BC, 2020H
-ADD HL, BC
-LD A,&rsquo;=!
-CALL PVESC
-LD OA,L
-CALL PVID
-LD A,H
-CALL PVID
-POP HL
-RET
-</p>
-<p>
-PVESC: PUSH AF
-LD ALES
-CALL PVID
-POP AF
-</p>
-<p>
-PVID: PUSH AF
-</p>
-<p>
-PvO: IN A, (VCSTAT)
-RRCA
-JR C,PVO
-POP AF
-</p>
-<p>
-OUT (VCDATA),A
-RET
-</p>
-<p>
-GVID: IN A, (VCSTAT)
-</p>
-<p>
-RLCA
-</p>
-<p>
-JR C,GVID
-</p>
-<p>
-IN A, (VCDATA)
-RET
-</p>
-<p>
-MSG: LD C,9
-JP FDOS
-</p>
-<p>
-;CURSOR POSITION := HL
-;ADD OFFSET
-</p>
-<p>
-;POSITION CURSOR COMMAND
-;PUT ROW
-</p>
-<p>
-;PUT COLUMN
-</p>
-<p>
-:OUTPUT ESCAPE (A)
-</p>
-<p>
-;OQUTPUT (A} TO VIDEO CARD
-</p>
-<p>
-; INPUT A FROM VIDEO CARD
-</p>
-<p>
-;OUTPUT MESSAGE (DE}
-</p>
-<p>
-Gemini have now released their new BIOS V3.2
+<i>Gemini</i> have now released their new BIOS V3.2
 incorprating many advanced features not
 normally found in CP/M 80 systems. Features
 include the ability to add different types of
@@ -152,19 +35,5 @@ original Gemini Master CP/M disk together
 with a cheque for 35.65 inc Vat &amp; postage
 to: &ldquo;BIOS Upgrade&rdquo;, QUANTUM COMPUTER SYSTEMS
 LID. ___________ ____,Chesham,Bucks, ___ ___.
-</p>
-<p>
-SUBFCB: DEFB 0, &lsquo;$$$ SUB&rsquo;,0,0,0,0
-</p>
-<p>
-CMDFAL: DEFB BEL,&rsquo;??9? Bad command: CHECK &lsquo;&lsquo;string&rsquo;&rsquo;/switches&rsquo;,CR,LF
-DEFB &lsquo;where optional /switches maybe B, C, F, Ldd, N, S, U and/or W&rsquo;
-DEFB CR,LF,&rsquo;$&rsquo;
-</p>
-<p>
-TOPFAL: DEFB BEL,&rsquo;??? No previous non-blank line&rsquo;,CR,LF,&rsquo;$&rsquo;
-</p>
-<p>
-DELFAL: DEFB BEL,CR,LF,&rsquo;??? No SUBMIT file found&rsquo;,CR,LF,&rsquo;$&rsquo;
 </p>
 <?php columnEnd(2); ?>

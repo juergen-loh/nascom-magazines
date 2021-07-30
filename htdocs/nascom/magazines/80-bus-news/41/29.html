@@ -1,33 +1,28 @@
 <?php columnStart(2, 2); ?>
 <p>
 to see if a global variable with the name
-S$MEMRY has been declared. If $MEMRY
+$MEMRY has been declared. If $MEMRY
 exists, then L80 will set it to point to the first
 byte of free memory following the program.
 The code below gives a simple example of its
 use and contrasts it with the straight forward
 approach.
 </p>
-<p>
-single assembly multiple assembly
-</p>
-<p>
-entry $memry ;Define Entry point
-id hi, buffer ld hi, {buffer} ;Point at memry buffer
-ld a,{hl) ld a, (hi) ;Load byte
+<pre>
+single assembly  multiple assembly
+                 entry $memry   ;Define Entry point
+ ......          ......
+ld hl,buffer     ld hl,{buffer} ;Point at memry buffer
+ld a,(hl)        ld a,(hl)      ;Load byte
 ld hl,buffer+128 ld hl,(buffer) ;Point at byte
-</p>
-<p>
-:128 in buffer
-ld de, 128
-add hl,de
-</p>
-<p>
-$memry equ $ :SMEMRY same as BUFFER
-</p>
-<p>
-buffer equ $ buffer defw 0 ;Define buffer
-</p>
+                                ;128 in buffer
+                 ld de,128
+                 add hl,de
+ ......          ......
+ ......          ......
+                 $memry equ  $   ;$MEMRY same as BUFFER
+buffer equ $     buffer defw 0   ;Define buffer
+</pre>
 <p>
 The basic difference is that &lsquo;buffer&rsquo; becomes an
 indirect reference to the buffer area. There is
@@ -45,23 +40,24 @@ explicitly do the calculation in your own code.
 <p>
 Happy hacking!
 </p>
+<br>
+<?php hline("100%", 2); ?>
+<br>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-29-1.png"); ?>
 <p>
-fg ole care coi ego &raquo; Wee oo aeer nt tem buses
+My dear chap, we seem to have
+overlooked the fact that &lsquo;C&rsquo;
+is not as difficult as we
+first thought.
 </p>
-<p>
-@Qverleoked tire facmt that roa,
-is mot mse a@iffaicult gs tape
-</p>
-<p>
-Fame t Linoudint&nbsp;.
-</p>
-<p>
+<?php nowrapStart(); ?>
+<h2 id="article1">
 Converting WordStar text files
 to improve their readability
-</p>
-<p>
+</h2>
+<h3>
 by P.D.Coker
-</p>
+</h3>
 <p>
 One of the problems associated with using WordStar
 is the lack of clear legibility of the text files it
@@ -74,7 +70,7 @@ reading and then exiting, is a bit too much
 trouble. Using the TYPE command in CP/M gives a
 visually disturbing result with lots of inverse video
 characters at the end of words and no nice tidy
-paragraphs. [Ed. &ndash; this is not true of CP/Ms
+paragraphs. [Ed. &mdash; this is not true of CP/Ms
 installed with CCPZ, i.e. all Gemini Winchester
 based systems, and all Gemini CP/Ms of BIOS 3.0
 or later.] This WordStar &lsquo;feature&rsquo; is also not
@@ -85,6 +81,7 @@ different and a lot more time will have to be spent
 deleting them and substituting the appropriate
 commands for PEN.
 </p>
+<?php nowrapEnd(); ?>
 <p>
 The strange characters which WordStar inserts are
 used for justification, tabulating and other formatting
@@ -105,9 +102,9 @@ to zero; the following command line will read the
 text file B:RUBBISH.TXT and produce a cleaned-up
 version on drive A as GOOD.TXT:
 </p>
-<p>
-ADPIP GOOD. TXT=B: RUBBISH. TXT[Z]
-</p>
+<pre class="indent">
+A&gt;PIP GOOD.TXT=B:RUBBISH.TXT[Z]
+</pre>
 <p>
 This works nicely because the eighth bit is set to 1
 in characters beyond 127 and these are the ones

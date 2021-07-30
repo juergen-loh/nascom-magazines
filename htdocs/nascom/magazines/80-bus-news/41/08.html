@@ -51,12 +51,12 @@ this fcb, then CP/M does strange things with the
 The &lsquo;search for first&rsquo; is to check for the presence of
 the named files, if they&rsquo;re not found, then the
 program returns home immediately. Here comes
-the first snag! The &lsquo;search for first&rsquo; returns Offh if
+the first snag! The &lsquo;search for first&rsquo; returns 0ffh if
 there are no files present, otherwise, it copies the
 sector of the directory where it found the first entry
 into the current DMA workspace and returns with
 A set to the number of the entry in that sector.
-Checking for Offh is dead easy, anything else in A
+Checking for 0ffh is dead easy, anything else in A
 assumes that at least one file was found. Having
 established the presence of the files, where the
 heck is the current DMA, as dBASE, sure as eggs is
@@ -70,8 +70,6 @@ before we start the copy process.
 A little investigation revealed that different versions
 of dBASE leave the DMA at different addresses.
 All around 98XXh, but not consistent. So
-</p>
-<p>
 putting a fixed address into the program is not on.
 The next thought was that CP/M must know where
 the DMA address is, but there&rsquo;s no command to
@@ -79,7 +77,7 @@ return it. Perhaps it could be found in a CP/M
 workspace someplace? That way I could cheat and
 calculate a fixed offset from some known location
 within CP/M. I looked, it appeared twice, and both
-in the BIOS. Now the notorious thing about BIOSs.
+in the BIOS. Now the notorious thing about BIOSs
 is that each version is different, so odds on that the
 DMA pointers will move around between versions,
 and anyway, which one of the two pointers to use?
@@ -90,7 +88,7 @@ disassembling large chunks of it, there was (and
 still is) no way I could be sure that dBASE would
 reset the DMA pointer correctly before using one of
 it&rsquo;s overlays, or whatever. Or whether in fact this
-would matter. I took a chance and set the DMA to&mdash;
+would matter. I took a chance and set the DMA to
 0080h. dBASE continued to work, and so far
 nothing odd appears to have happened. But I&rsquo;m
 still unhappy about it.
@@ -124,7 +122,7 @@ all again until the name in the list was a null,
 indicating the end of the list. Simple and very quick.
 </p>
 <p>
-I didn&rsquo;t bother-to check the validity of the files as
+I didn&rsquo;t bother to check the validity of the files as
 Winnie to RAM disk copies are always reliable and
 anyway what could I do if there was an error? The
 whole process was quite quick, shovelling about

@@ -365,9 +365,11 @@ function RemoveEntities($s)
 
 //---------------------------------------------------------------------------
 
-function columnStart($column, $multi/*$class*/ = "")
+function columnStart($column, $multi/*$class*/ = "", $class = "")
 {
-	$class = $multi;
+	if ($class == "") {
+		$class = $multi;
+	}
 	switch ($column) {
 	case 1:		echo "<!-- 1 column: start --><div";
 				if ($class != "") {
@@ -378,7 +380,11 @@ function columnStart($column, $multi/*$class*/ = "")
 	case 2:		echo "<!-- 2($multi) columns: start -->";
 				switch ($multi) {
 				case 2:
-					echo "<div><div class=\"style-multi-column-2\">\n";
+					echo "<div><div class=\"style-multi-column-2 hyphenate";
+					if ($class != "") {
+						echo " $class";
+					}
+					echo "\">\n";
 					break;
 				case 22:
 					echo "<div><div"
@@ -516,7 +522,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	$naviBottom = "";
 	switch ($link) {
 	case "text":
-		echo "<div class=\"row\" lang=\"en\"><div class=\"col-".BootstrapTier()."-12 "./*"hyphenate ".*/"mag-$magpath mag-$magpath-$issuepath page-$pagepath\" style=\"border: 1px solid #000;\" lang=\"en\" id=\"page\"><br>\n";
+		echo "<div class=\"row\" lang=\"en\"><div class=\"col-".BootstrapTier()."-12 "./*"hyphenate ".*/"mag-$magpath issue-$issuepath page-$pagepath\" style=\"border: 1px solid #000;\" lang=\"en\" id=\"page\"><br>\n";
 		$imagepath = "../../";
 		include "$html";
 		echo "\n<br></div></div>\n";

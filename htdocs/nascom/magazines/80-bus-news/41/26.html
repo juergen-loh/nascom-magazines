@@ -1,31 +1,30 @@
 <?php columnStart(2, 2); ?>
-<p>
-26 __&mdash;s&laquo;80 Bus News
-</p>
-<p>
+<h2 id="article1">
 PRESTEL UPDATE
+</h2>
+<h3>
 by Robin Luxford
+</h3>
+<p>
+A review of the <i>Henelec Prestel</i> Terminal program
+and some installation notes on the <i>GEC</i> LTU-II kit.
 </p>
 <p>
-A review of the Henelec Prestel Terminal program
-and some installation notes on the GEC LTU-II kit.
-</p>
-<p>
-Although the 300 BAUD Preste/ service has been
+Although the 300 BAUD <i>Prestel</i> service has been
 accessible to CP/M 80-BUS computers for some
 time (see 80-BUS NEWS Vol 2. iss 6.), the
 appearance of the new Henelec PRETZEL 2 software
-from Henry&rsquo;s has made the 75/1200 BAUD
+from <i>Henry&rsquo;s</i> has made the 75/1200 BAUD
 service readily available. Since the 300 BAUD ports
-on the Prestel computers strip all the graphics
+on the <i>Prestel</i> computers strip all the graphics
 characters and replace them with asterisks, the
 graphics are pretty dull. The full set of characters
-and mosaics loaded into the Gemini SVC/IVC video
+and mosaics loaded into the <i>Gemini</i> SVC/IVC video
 boards by PRETZEL 2 makes the display of pages
 far more interesting and represent a fair compromise
 as the SVC/IVC can not reproduce colour.
-PRETZEL 2 also reprograms the SVC/VC to the
-Prestel screen format of 40 columns by 24 lines,
+PRETZEL 2 also reprograms the SVC/IVC to the
+<i>Prestel</i> screen format of 40 columns by 24 lines,
 making text and graphics appear in the correct
 aspect ratio, a considerable improvement over the
 normally cramped output of the 300 BAUD service
@@ -37,11 +36,11 @@ pages to and from disk (either on or off line), and
 also for dumping the current screen image to
 printer. The program contains a screen editor
 allowing the user to alter and experiment with
-pages without being connected to the Prestel
+pages without being connected to the <i>Prestel</i>
 computer. On line the system works in the
-approved Preste/ full duplex mode where all
+approved <i>Prestel</i> full duplex mode where all
 keyboard input except the program&rsquo;s command
-codes is echoed to the screen via the Prestel
+codes is echoed to the screen via the <i>Prestel</i>
 computer. Off line all keyboard entry is direct.
 </p>
 <p>
@@ -50,7 +49,7 @@ directory facility, coupled with the fact that the
 program stores the screen images individually
 rather than in the form of a random access file. The
 latter is wasteful of disk space as each image is
-only 1K long but with a Gemini CP/M block size of
+only 1K long but with a <i>Gemini</i> CP/M block size of
 4K, three quarters of the space allocated is wasted.
 The former is simply inconvenient as the number
 of saved pages soon mounts up, and it is difficult
@@ -65,12 +64,10 @@ assembler. All documentation is supplied on the
 disk along with some twenty demonstration pages.
 The user has to patch the I/O section to accommodate
 the modem used and select the various
-options for Nascom/<?php spChar("zwsp"); ?>Gemini processor cards and
+options for <i>Nascom/<?php spChar("zwsp"); ?>Gemini</i> processor cards and
 either SVC or IVC and then assemble the program
 for use. One assembly option is to include the
 users&rsquo; identity number and password which are
-</p>
-<p>
 then sent automatically on log-on. Minor text
 changes would make the source file suitable for
 most other Z80 assemblers. Another advantage of
@@ -83,21 +80,21 @@ require such as those described on page 22 of
 Overall I have found PRETZEL 2 an excellent piece
 of software particularly at the &pound;30.00 charged for it.
 The well chosen graphics more than make up for
-lack of colour on the screen and&rsquo;its storage and
+lack of colour on the screen and its storage and
 printer facilities offer much more comprehensive
-use of Prestel than an adaptor connected to a TV
+use of <i>Prestel</i> than an adaptor connected to a TV
 set.
 </p>
 <p>
 My modem is the 75/1200 BAUD modem available
 as a surplus unit from the same source as the
-program. The GEC LTU-11 modem was designed
-for a GEC Preste/ terminal, but slight hardware
+program. The <i>GEC</i> LTU-11 modem was designed
+for a <i>GEC Prestel</i> terminal, but slight hardware
 modifications make it entirely suitable for use with
-either Nascom or Gemini processors. The unit is
+either <i>Nascom</i> or <i>Gemini</i> processors. The unit is
 supplied in two parts, as a printed card about 6 x 4
 inches, without circuit diagrams but with full
-descriptive manual, and a sealed box contdining
+descriptive manual, and a sealed box containing
 the auto-dial relays and isolation transformer,
 measuring some 3 x 5 x 2 inches (oddly enough the
 isolation box is supplied with circuit diagrams but
@@ -105,33 +102,33 @@ no description). The modest power supplies are
 derived from the computer. The modem card
 expects TTL level inputs and outputs so a simple
 interface is required to make it suitable for the
-RS232 from either a Gemini or Nascom. Additionally
+RS232 from either a <i>Gemini</i> or <i>Nascom</i>. Additionally
 the data to and from the card is inverted so use
 is made of a simple 74LS04 to buffer the data, and
 provide the inversions.
 </p>
 <p>
 Data out from the RS232 is clipped using two
-resistors and zener diode to convert the + and-12V
+resistors and zener diode to convert the + and &ndash; 12V
 RS232 swing to a swing between 0 and 5 volts, this
 is then inverted by one of the inverters in the
 74LS04. Data output from the modem is inverted
 by another inverter in the 74LS04 and fed directly
 to the RS232 input. Although this input is not at
-RS232 levels, both the Gemini and Nascom input
+RS232 levels, both the <i>Gemini</i> and <i>Nascom</i> input
 circuitry cope quite adequately. Dialing information
 is taken from a port and fed directly to the
 dialing/<?php spChar("zwsp"); ?>isolation box which requires TTL level
-inputs. A word of warning about the dialing/
-isolation box. All inputs including the power supply
+inputs. A word of warning about the dialing<?php spChar("zwsp"); ?>isolation
+box. All inputs including the power supply
 are protected by what appear to be fusible zener
 diodes, which go short circuit if a voltage across
 any line exceeds 6V. These devices, which are
 probably included to protect the computer from
 lightning strikes on the telephone line are, i) very
 fast, and, ii) very unforgiving. So care is required to
-ensure correct working voltages on the dialing/
-isolation box.
+ensure correct working voltages on the dialing<?php spChar("zwsp"); ?>isolation
+box.
 </p>
 <p>
 The whole system works extremely well and
@@ -141,4 +138,5 @@ the whole lot, modem and software cost less than
 sorting it all out, I consider it money well
 spent.
 </p>
+<?php hline("100%", 2); ?>
 <?php columnEnd(2); ?>

@@ -14,7 +14,7 @@ The program asks for the names of the source and
 destination files and then reads the data from the
 source file, character by character. The file names
 must be in upper case letters and if either of them
-does not reside on the logged-in disk, the disk
+does not reside on the logged&mdash;in disk, the disk
 name must be quoted &ndash; e.g. B:WORKING.DOC. If
 a character is found whose ASCII value is greater
 than 127, it is converted back to a value less than
@@ -25,73 +25,17 @@ be deleted.
 </p>
 <p>
 A trial run will show that certain print control
-characters are not converted properly &mdash;- such as
-&ldquo;B, &ldquo;D, &ldquo;Q, or &ldquo;E. This is because their ASCII
+characters are not converted properly &mdash; such as
+^B, ^D, ^Q, or ^E. This is because their ASCII
 equivalents are less than 127 (control characters
 have ASCII codes between 0 and 31). This means
 that there will be normal video graphics symbols
 corresponding to these codes in the destination file
 and on the screen. The overall effect isn&rsquo;t too
 serious, however, except where a lot of fancy
-printing is invoived in the source file.
+printing is involved in the source file.
 </p>
-<p>
-10 PRINT&rsquo; WordStar tidy--up program&rdquo;
-</p>
-<p>
-20 PRINT: PRINT"File names must be in UPPER
-CASE&rdquo;: PRINT
-</p>
-<p>
-30 INPUT"Source [dsk:] filename.ext";F1$
-</p>
-<p>
-40 INPUT&rsquo;Destination [dsk:] filename.ext";
-F2c
-</p>
-<p>
-50 OPEN *"I",1,F1$
-</p>
-<p>
-60 OPEN &ldquo;0",2,F2$
-</p>
-<p>
-70 Z$=INPUT$(1,#1)
-</p>
-<p>
-80 IF ASC(Z$}&gt;127 THEN 2$=CHR$(ASC(Z$)-128)
-</p>
-<p>
-90 PRINT 2$;
-</p>
-<p>
-100 PRINT #2, Z$;
-</p>
-<p>
-110 IF EOF({1} THEN 120 ELSE 70
-</p>
-<p>
-120 CLOSE 1:CLOSE 2
-</p>
-<p>
-130 PRINT: PRINT"Finished&rdquo; : PRINT
-</p>
-<p>
-140 PRINT"Delete Source File &ldquo;;F1$: INPUT Rc
-</p>
-<p>
-150 IF R$="Y&rdquo; THEN KILL Fig
-</p>
-<p>
-160 PRINT&rsquo;Delete Destination File &ldquo;;F2$:
-INPUT RG
-</p>
-<p>
-170 IF R$="Y&rdquo; THEN KILL Peg
-</p>
-<p>
-180 END
-</p>
+<?php imageNoscale($imagepath, $magpath, $issuepath, $pagepath, "Image-30-1.png"); ?>
 <p>
 The interpreted BASIC program implies that
 MBASIC.COM must be on one of the drives in the
@@ -100,8 +44,6 @@ slower than would be the case if a compiled BASIC
 program was used. With a largish file, the difference
 in execution time of the .COM version can be
 less than half that of the .BAS, and one has the
-</p>
-<p>
 added advantage that MBASIC is no longer
 required. To give some idea of the time taken, this
 article took 54 seconds to &lsquo;tidy&rsquo; using interpreted
@@ -109,61 +51,10 @@ BASIC and 26 seconds using the compiled version.
 To produce the compiled version, one needs
 access to BASCOM.COM, L80.COM and OBSLIB.REL;
 the resultant .COM file does not need
-BRUN.COM &ndash; which would be the case if BASLIB.REL
+BRUN.COM &mdash; which would be the case if BASLIB.REL
 were used instead of OBSLIB.
 </p>
-<p>
-NASCOM/<?php spChar("zwsp"); ?>GEMINI/<?php spChar("zwsp"); ?>80-BUS SOFTWARE
-</p>
-<p>
-Price P&amp;P
-.CP/M-80:
-AllDisc (Read/<?php spChar("zwsp"); ?>Write most other formats) .............. &pound;150 &pound;1
-Turbo Pascal 3.0 oo. eescsssscsssssnssessnssscesscectensesenenenees &pound;55 &pound;1
-Turbo Toolkit (B-tree ISAM file management) ........ &pound;49 &pound;1
-ReadUCSD &pound;25 &pound;1
-</p>
-<p>
-HUGH PRICE REDUCTION ON UCSD P-SYSTEM
-</p>
-<p>
-UCSD Development System (IV.13}: including
-</p>
-<p>
-filer, editor, developmenttools and 1 compiler
-</p>
-<p>
-(Pascal, FORTRAN, BASIC) This premiere system
-</p>
-<p>
-offers dynamic segmentation and separate
-</p>
-<p>
-compilation to libraries ...........0..... . w. &pound;195 &pound;2
-(Nascom requires AllBoot EPROM ..........csccceeenee &pound; 25)
-Extra Compiler &pound;95 &pound;1
-</p>
-<p>
-Advanced Development Tool Kit (Native Code
-Generator, Z80 Assembler, Linker &amp; Analysis
-</p>
-<p>
-Tools) &pound;95 &pound;1
-AllDisc enhancement (p-system only) ..........:ccc0 &pound;75 &pound;1
-Pluto Graphics LIDrary 0.00... esseeseeneereccereesenatereee &pound;75 &pound;1
-ReadCPM &pound;25 &pound;1
-</p>
-<p>
-Complete systems (hardware and software)
-supplied to order.
-</p>
-<p>
-VAT at 15% to be added to all prices. Please send cash
-with order and full details of the hardware you are
-running onto:
-</p>
-<p>
-Mike York Microcomputer Services
-_ ________ ____, LONDON ____ ___. Tel: __-___ ____.
-</p>
+<?php hline("100%", 2); ?>
+<br>
+<?php imageNoscale($imagepath, $magpath, $issuepath, $pagepath, "Image-30-2.png"); ?>
 <?php columnEnd(2); ?>

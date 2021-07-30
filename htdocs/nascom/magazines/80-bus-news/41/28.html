@@ -1,7 +1,7 @@
 <?php columnStart(2, 2); ?>
 <p>
-&lsquo;code&rsquo; for &lsquo;a&rsquo;, &lsquo;Idata&rsquo; for &lsquo;b&rsquo;, and &lsquo;alength&rsquo; for
-&lsquo;co&rsquo;. However if you precede the label names
+&lsquo;lcode&rsquo; for &lsquo;a&rsquo;, &lsquo;ldata&rsquo; for &lsquo;b&rsquo;, and &lsquo;alength&rsquo; for
+&lsquo;c&rsquo;. However if you precede the label names
 with a &lsquo;%&rsquo; sign, M80 treats them in a different
 way. Instead of replacing parameter &lsquo;a&rsquo; by the
 character string in the corresponding position
@@ -9,39 +9,35 @@ in the macro call, it replaces it by the VALUE
 of that character string, (assumed to be a
 label), converted to the current radix. That
 brings me to one final &lsquo;tweak&rsquo; to using the
-macro &ndash; we normally think in HEX when
+macro &mdash; we normally think in HEX when
 confronted with addresses and opcodes, (or
 at least I do), and so in order that the
 information is displayed in hex we need to
 change the current radix to 16. So the code in
 the source file should look like:
 </p>
-<p>
-.tadix 16 ; Change radix to 16
-</p>
-<p>
-390 we get Hex display
-show Zlcode,Gldata,Zalength ; Use
-</p>
-<p>
-;the VALUES of the labels
-.radix 10 ; Back to normal radix of 10.
-</p>
+<pre class="indent">
+.radix 16   ; Change radix to 16
+            ;so we get Hex display
+show %lcode,%ldata,%alength   ; Use
+            ;the VALUES of the labels
+.radix 10   ; Back to normal radix of 10.
+</pre>
 <p>
 If you only want to see the message once, rather
 than on each pass of the assembler, the code
 can be bracketed by:
 </p>
-<p>
-if2 ; If pass 2
-. aS above..
+<pre class="indent">
+if2         ; If pass 2
+... as above..
 endif
-</p>
-<p>
+</pre>
+<h4>
 Microsoft&rsquo;s L80
-</p>
+</h4>
 <p>
-lf you have a large program it is sometimes
+If you have a large program it is sometimes
 convenient to split it into several smaller
 modules. There are then two approaches you
 can take on combining these modules. The
@@ -53,18 +49,18 @@ latter case use is made of the &lsquo;entry&rsquo; and
 &lsquo;extrn&rsquo; commands of M80 to specify which
 labels can be referenced from outside a
 particular module, (the entry points), and
-which tabels are in other modules, (the
+which labels are in other modules, (the
 externals). However this approach may give
 you quite a long command line for L80 which
 it can be irritating to keep retyping:
 </p>
-<p>
-e.g. 180 bitmain,bitl, bit2,bitd,
-bit4, bit5, bit6, library/s, fred/n/e
-</p>
+<pre>
+e.g. l80 bitmain,bit1,bit2,bit3,
+     bit4,bit5,bit6,library/s,fred/n/e
+</pre>
 <p>
 Which links together the seven programs bitmain,
-biti &ndash; bit6, items from the library file &lsquo;library&rsquo;,
+bit1 &ndash; bit6, items from the library file &lsquo;library&rsquo;,
 and saves the lot under the filename
 &lsquo;FRED.COM&rsquo;. You can save yourself effort by
 creating a submit file with the above in it, or
@@ -73,19 +69,17 @@ on the Gemini keyboard with the command
 string. Alternatively you can make M80 and
 L80 do some of the work. This is done by
 using the &lsquo;.request&rsquo; command of M80. The
-</p>
-<p>
 &lsquo;request&rsquo; causes M80 to code-up a request to
 L80 to search the specified file(s) for the
 routines to satisfy any undefined externals. In
 the above example &lsquo;bitmain&rsquo; could be edited
 to contain the line:
 </p>
-<p>
--Tequest bitl,bit2, bit3, bit4, bitS, bit6, libry
+<pre>
+.request bit1,bit2,bit3,bit4,bit5,bit6,libry
 and as a result the L80 command would reduce to:
-L80 bitmain, fred/n/e
-</p>
+L80 bitmain,fred/n/e
+</pre>
 <p>
 There are two caveats to using this approach:
 Firstly M80 restricts external names to six
@@ -102,7 +96,7 @@ only referenced by &lsquo;bit6&rsquo;, then the file &lsquo;bit2&rsquo;
 will not be loaded when it is reached, as its
 entry points will not match any of the
 &lsquo;wanted&rsquo; externals referenced by &lsquo;bitmain&rsquo;
-and &lsquo;biti&rsquo;. It is only when the file &lsquo;bit6&rsquo; is
+and &lsquo;bit1&rsquo;. It is only when the file &lsquo;bit6&rsquo; is
 reached that the external references of that
 file to &lsquo;bit 2&rsquo; are added to the &lsquo;undefined
 externals&rsquo; table. Thus the files in the &lsquo;request&rsquo;
@@ -110,26 +104,26 @@ list must be in an order which ensures that
 they are all loaded. (If &lsquo;bitmain&rsquo; references all
 of them you have nothing to worry about.)
 </p>
-<p>
+<h4>
 $MEMRY
-</p>
+</h4>
 <p>
 If you are linking together several routines to form
 a large program, the problem of workspace
 may arise. By workspace I mean &lsquo;where is the
 workspace?&rsquo;. In the case of a single program
-requiring &ndash; say &ndash; two 4k buffers the answer
+requiring &mdash; say &mdash; two 4k buffers the answer
 is simple. The program can end with:
 </p>
-<p>
-buffl equ $ ; Start of buffer 1
-buf f2 equ buffl+4096 ; Start of buffer 2
-bufend equ buff2+4096 ; End of buffer area
-</p>
+<pre>
+buff1    equ $           ; Start of buffer 1
+buff2    equ buff1+4096  ; Start of buffer 2
+bufend  equ buff2+4096  ; End of buffer area
+</pre>
 <p>
 (Note the program ended with EQUs. If DEFS had
 been used, the data space would have been
-saved as part of the program &ndash; a total waste
+saved as part of the program &mdash; a total waste
 of disk space.) The same approach can be
 used when you link programs together with
 L80, BUT you must ensure the module with

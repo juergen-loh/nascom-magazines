@@ -2,7 +2,7 @@
 	$tail = "";
 	$title = "Nascom Newsletter";
 	$tppath = "..";
-	$desc = 'Scorpio News was an '
+	$desc = 'Nascom Newsletter was an '
 	.	'<a href="../issues/">English Nascom magazine</a>, '
 	.	'published between 1982 and 1984, in parallel to '
 	.	'<a href="../80-bus-news/">80-Bus News</a>.'

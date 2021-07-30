@@ -1,24 +1,26 @@
 <?php columnStart(2, 2); ?>
-<p>
+<h2>
 THE DH BITS
+</h2>
+<h3>
 by Dave Hunt
-</p>
+</h3>
 <p>
 In this section of miscellaneous ramblings, the
 always verbose David Hunt looks at copying files
-via dBASEIl, changes that have occurred in
-different versions of dBASEIl, disk sector skewing,
-disk blocking/<?php spChar("zwsp"); ?>deblocking, how to expand a Nascom
+via dBASEII, changes that have occurred in
+different versions of dBASEII, disk sector skewing,
+disk blocking/<?php spChar("zwsp"); ?>deblocking, how to expand a <i>Nascom</i>
 based system, a tip on using the Pretzel
 program, and a look at the Gateway and Pathway
 programs.
 </p>
-<p>
-Speeding up dBASE Ilusing RAM-disks
-</p>
+<h4>
+Speeding up dBASE II using RAM-disks
+</h4>
 <p>
 Following on from my other article concerning
-adding machine code patches to dBASEIl, a new
+adding machine code patches to dBASEII, a new
 routine has had to be written lately. So this bit is for
 dBASE aficionados, although it contains a warning
 for all who would write simple file copying
@@ -33,9 +35,9 @@ just reasonable on a RAM disk. Further, versions of
 dBASE earlier than V2.41 get very slow when
 updating files with multiple indexes.
 </p>
-<p>
+<h4>
 An aside about dBASE V2.41
-</p>
+</h4>
 <p>
 By the way, dBASE V2.41 has what appears to be
 horrific change of philosophy which I believe has
@@ -43,30 +45,22 @@ led to its rapid replacement with the current
 version, V2.43, so anyone with version 2.41, watch
 out when trying the following:
 </p>
-<p>
+<pre class="indent">
 @ x,y GET input
-</p>
-<p>
 READ
-</p>
-<p>
 FIND &amp;input
-</p>
-<p>
 DO WHILE input=record
 (... do your thing ...}
 SKIP
-</p>
-<p>
 ENDDO
-</p>
+</pre>
 <p>
 What all versions of dBASE, except V2.41 do, is that
 the FIND function finds the first occurrence of the
 find criteria, whilst the DO WHILE &ndash; SKIP loop then
 finds all following entries where the input and
 record criteria match, the loop cops out when the
-&lsquo;criteria no longer match. Basically it works through
+criteria no longer match. Basically it works through
 a matching list in order of entry until it no longer
 matches. V2.41 is something different. Using the
 same routine, the FIND will find the first occurrence
@@ -76,23 +70,15 @@ following DO WHILE &ndash; SKIP loop will immediately
 find the next record does not match and cop out.
 The way round it is to rewrite the program:
 </p>
-<p>
+<pre class="indent">
 @ x,y GET input
-</p>
-<p>
 READ
-</p>
-<p>
 FIND &amp;input
-</p>
-<p>
 DO WHILE input=record
 (... do your thing ...)
 SKIP -1
-</p>
-<p>
 ENDDO
-</p>
+</pre>
 <p>
 In this case it appears to almost work backwards
 through the list (almost, as the first record found is
@@ -122,12 +108,12 @@ although I&rsquo;ve yet to hear of a corrupt disk causing
 a complete change in philosophy, corrupt disks
 usually crash.
 </p>
-<p>
+<h4>
 And so back to the indexing problem.
-</p>
+</h4>
 <p>
 Now lets take the real life situation, it&rsquo;s a stock
-control program working on a Gemini with a 10M
+control program working on a <i>Gemini</i> with a 10M
 Winnie. The main stock file has something like 2000
 records in it and the transaction file has about 6000
 and increases with each stock movement. The
@@ -142,7 +128,7 @@ the indexes there safely.
 One way round is to copy the files to the RAM disk
 before operating the dBASE program, and then
 copying them back on close down, you&rsquo;ll away
-remember to do it, won&rsquo;t you??!1? But what about
+remember to do it, won&rsquo;t you??!!? But what about
 the idiots who usually use the program, they&rsquo;ll
 either forget to copy the indexes first in which case
 the programs won&rsquo;t work, or worse, they&rsquo;ll forget to

@@ -342,6 +342,9 @@ function spChar($spChar)
 	case "zwsp":
 		echo "&#x200b;";	// zero width space
 		break;
+	case "starf":
+		echo "&starf;";		// filled star
+		break;
 	case "nbhy":
 		echo "&#x2011;";	// non breaking hyphen
 		break;
@@ -1165,7 +1168,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Kilobaud Microcomputing Magazine (March 1981)":		$url =  "https://archive.org/details/kilobaudmagazine-1981-03";	break;
 	case "Kommentar von Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
 	case "Kontron":					$url = "https://www.kontron.de/";												break;
-	case "Kornkraft Genossenschaft":	$url = "https://www.nadir.org/nadir/initiativ/bs/texte/c195-02.htm";		break;
+	case "Kornkraft Genossenschaft":$url = "http://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://de.wikipedia.org/wiki/Lichtgriffel";							break;
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;

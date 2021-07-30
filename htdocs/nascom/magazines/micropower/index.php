@@ -8,7 +8,7 @@
 	.	'<a href="../inmc-80-news/">INMC 80 News</a> and '
 	.	'<a href="../80-bus-news/">80-Bus News</a>.'
 	.	"</p>\n<p>"
-	.	"Micropower later became the <a href=\"../nascom-newsletter/\">Nascom Newsletter</a> with the original issue numbers.";
+	.	"Micropower became the <a href=\"../nascom-newsletter/\">Nascom Newsletter</a> with the original issue numbers.";
 	$bottom = "Micropower became the <a href=\"../nascom-newsletter/\">Nascom Newsletter</a> with the original issue numbers.";
 	$path = ".";
 	$pict = "logo.jpeg";

@@ -4,21 +4,21 @@ default mode. (See page 31 in the manual.) I must
 say that this has caused no real difficulty at all.
 </p>
 <p>
-Yours truly, Tom Gibson, Middlesbrough, TS6
-OHU.
+Yours truly, Tom Gibson, Middlesbrough, ___
+___.
 </p>
 <p>
 Ed. &ndash; see my comments following the next letter.
 </p>
+<h3>
+Turbo Pascal &ndash; 2
+</h3>
 <p>
-Turbo Pascal &mdash;2
-</p>
-<p>
-I have installed Borland International Turbo Pascal
-onto my Gemini[Nascom system. With the Nascom
+I have installed <i>Borland International</i> Turbo Pascal
+onto my <i>Gemini/<?php spChar("zwsp"); ?>Nascom</i> system. With the <i>Nascom</i>
 video (generated using MOVCPMN) the
 system works perfectly, but when trying to use the
-IVC (Version 1.0}, the system hangs after trying to
+IVC (Version 1.0), the system hangs after trying to
 edit a file. Other commands work perfectly and it
 appears to be only when cursor addressing is used.
 Have you come across this problem before or can
@@ -47,15 +47,15 @@ addressing, can accept nesting. The differences between
 releases of IVC-MON were published in 80-BUS News
 Volume 3, Issue 2, pages 48 and 49, in an interesting
 article giving an insight into the hardware and software
-design philosophy used in the development of the Gemini
+design philosophy used in the development of the <i>Gemini</i>
 GM812 IVC, and its successor, the GM832 SVC. You
 should find, as should Mr Gibson, that replacing your
 IVC-MON V1.0 with any later release will eradicate your
 problem.
 </p>
-<p>
+<h3>
 An IVC Problem?
-</p>
+</h3>
 <p>
 I have recently come across an intriguing problem
 with WordStar when used on a system which
@@ -64,15 +64,13 @@ attached to the GM812 video card. If the ESC key is
 pressed (as may be necessary if an error or
 interruption occurs), a List/<?php spChar("zwsp"); ?>Edit Function key
 message is produced &ndash; not much use if you haven&rsquo;t
-got the appropriate keyboard and a ***x*
-nuisance as well since the system may lock-up and
+got the appropriate keyboard and a <?php spChar("starf"); ?><?php spChar("starf"); ?><?php spChar("starf"); ?><?php spChar("starf"); ?> nuisance
+as well since the system may lock-up and
 often has to be cold booted to clear the problem.
 </p>
 <p>
 I am currently running SYS and can have the
 keyboard attached to the CPU card or the IVC. By
-</p>
-<p>
 attaching the keyboard to the CPU card, the ESC
 key functions normally and WordStar does not
 become confused. If a version of SYS is not used,
@@ -83,15 +81,15 @@ keyboard can be used on the CPU card.
 Yours truly, Dr P D Coker, Orpington, Kent.
 </p>
 <p>
-Ed. &mdash;&mdash; the clue to your problem lies in the fact that the
+Ed. &ndash; the clue to your problem lies in the fact that the
 keyboard works OK on the CPU board, and not on the IVC.
 Firstly, why use it that way round anyway? I cannot think
 of any advantage to that approach, and a definite
 disadvantage is that you lose the type-ahead buffer.
 Secondly, I bet that you have a GM821 keyboard, and that
-you don&rsquo;t get the &lsquo;List/<?php spChar("zwsp"); ?>Edit .... message until you have
+you don&rsquo;t get the &lsquo;List/<?php spChar("zwsp"); ?>Edit ....&rsquo; message until you have
 pressed the &lsquo;ESC&rsquo; key twice, right? To explain what is
-happening I&rsquo;ll just give a little history on Gemini
+happening I&rsquo;ll just give a little history on <i>Gemini</i>
 keyboards.
 </p>
 <p>
@@ -102,7 +100,7 @@ Shift/<?php spChar("zwsp"); ?>Control, produce 128 ASCII codes, thus using 7 bit
 of the interface. The 8th bit is used as a strobe, and the
 keyboard can be connected to the keyboard interface on
 the GM811 CPU, GM812 IVC and GM832 SVC boards.
-When Gemini decided to produce the GM827 keyboard,
+When <i>Gemini</i> decided to produce the GM827 keyboard,
 with 87 keys, some of the keys were used to obviate the
 necessity for the Shift/<?php spChar("zwsp"); ?>Control permutations. In addition
 30 keys were added to be user-definable separately in
@@ -113,7 +111,7 @@ double-byte codes, and to pick one existing code as the
 first byte &lsquo;key&rsquo;. The one chosen was the ESC key, code
 1BH. This key was therefore redefined as the first in the
 double-byte sequence, 1B 00, and all of the function keys
-carried on from there, FO = 1B 01, F1 = 1B 02, ... and so
+carried on from there, F0 = 1B 01, F1 = 1B 02, ... and so
 on. The IVC-MON (Version 2.0 and later) was modified to
 include support for these codes. One of the user
 selectable links on the IVC (one of the switches on the
@@ -121,7 +119,7 @@ SVC) determines whether the keyboard to be used is the
 GM821 or GM827/<?php spChar("zwsp"); ?>GM852. (The GM852 is a low-profile
 version of the GM827 with the only differences being that
 it is also available in a serial version, and that the very
-latest ones extend the user-defined keys into the Controi
+latest ones extend the user-defined keys into the Control
 mode as well.) If GM821 is selected then the code is
 passed on directly, if GM827/<?php spChar("zwsp"); ?>GM852 is selected then all
 codes are passed on directly unless a 1BH is received, in
@@ -130,14 +128,14 @@ the user-defined string held in its workspace RAM.
 </p>
 <p>
 And so back to Dr Coker&rsquo;s problem. If the IVC-MON (or
-SVC-MON} believes that the keyboard is a GM827/
-GM852, but it is in fact a GM821, then when the ESC key
+SVC-MON) believes that the keyboard is a GM827/<?php spChar("zwsp"); ?>GM852,
+but it is in fact a GM821, then when the ESC key
 is pressed the keyboard outputs the code 1BH, which tells
 the IVC-MON that this is a special case, and that another
 code will be used to select a user-defined string.
 Consequently nothing will happen until another key is
 pressed, and depending on what this is will determine
-what the [VC/SVC actually passes onto the system. If this
+what the IVC/SVC actually passes onto the system. If this
 is the ESC key again (being pressed in the belief that the
 </p>
 <?php columnEnd(2); ?>
