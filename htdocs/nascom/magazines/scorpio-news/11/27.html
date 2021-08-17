@@ -1,81 +1,79 @@
 <?php columnStart(1); ?>
 <p>
-translation table (known ae logical sectors). In other words, using the table,
-when sector 0 ie required we find that the data will be read from sector 0 but
-when sector 1 13 required, we actually read from sector 3. If you compare the
-te of the skew table &lsquo;and the translation table you wiil see thet they have
-identical effect vith one exception A disk that has been written using
-Sector translation
-zubbich will re
-a skewed disk is re
-factor (ie: perhaps the skew wae set up for a 2Mlt processor and we
-fon # iis processor), the only penelty vould be one of speed of acces
-worth noting perhaps that Gemini skew the systen track of the disk differently
-From the date tracks On the system track, the kectors are recorded in the order
-shown below while the sectors on the data tracks are skewed by 0. 1, 20034
-Chosen by che user The example sector skew shown a little earlier hada skew
-factor of 2
+translation table (known as logical sectors). In other words, using the table,
+when sector 0 is required we find that the data will be read from sector 0 but
+when sector 1 is required, we actually read from sector 3. If you compare the
+results of the skew table and the translation table you will see that they have
+identical effect with one exception A disk that has been written using
+Sector translation must be read using the same translation table, otherwise
+rubbich will result as the sectors will be read in the wrong order. If, however
+a skewed disk is read on a machine that would normally use a different skew
+factor (ie: perhaps the skew was set up for a 2MHz processor and we are reading
+on a 4MHz processor), the only penalty would be one of speed of access. It is
+worth noting perhaps that Gemini skew the system track of the disk differently
+from the date tracks. On the system track, the sectors are recorded in the order
+shown below while the sectors on the data tracks are skewed by 0, 1, 2 or 3 as
+chosen by the user. The example sector skew shown a little earlier had a skew
+factor of 2.
 </p>
 <p>
 Example of sector skew on the system track:
-ozseeias79
+</p>
+<p class="center">
+0 2 4 6 8 1 3 5 7 9
 </p>
 <p>
-Getting back to the physical disk format, Let us now look at what {s physically
-Written to the Wisk during formatting. Most dlek controllers format the disk by
-writing &laquo; complete track at a time To do this, the host microcomputer will have
-Tesembied a memory image of the track which it will then transfer to the FOC
-(Eloppy disk controller) chip The data consists of gaps, index and address
-marke, track, side and sector numbers, CRC bytes and of course the areas for
-Saving the date.
+Getting back to the physical disk format, let us now look at what is physically
+written to the disk during formatting. Most disk controllers format the disk by
+writing a complete track at a time. To do this, the host microcomputer will have
+assembled a memory image of the track which it will then transfer to the FDC
+(Floppy disk controller) chip. The data consists of gaps, index and address
+marks, track, side and sector numbers, CRC bytes and of course the areas for
+saving the data.
 </p>
 <p>
 Let us break the track up into its component parts and examine them in detail
-starting with the track, side and sector information and the area for che dat
+starting with the track, side and sector information and the area for the data.
 </p>
 <p>
 Each disk sector is preceded by an identification block containing information
-about that sector. thie block is six bytes in length and is identified to che
-Hbe chip by an 1D addrese mark immediately before the block. The data in the
-block is #8 follows:
+about that sector. This block is six bytes in length and is identified to the
+FDC chip by an ID address mark immediately before the block. The data in the
+block is as follows:
 </p>
+<table class="center">
+<tr><td>1 byte</td><td> &nbsp; &ndash; &nbsp; Track Number</td></tr>
+<tr><td>1 byte</td><td> &nbsp; &ndash; &nbsp; Side Number</td></tr>
+<tr><td>1 byte</td><td> &nbsp; &ndash; &nbsp; Sector Number</td></tr>
+<tr><td>1 byte</td><td> &nbsp; &ndash; &nbsp; Sector Length</td></tr>
+<tr><td>2 bytes</td><td> &nbsp; &ndash; &nbsp; CRC byte</td></tr>
+</table>
 <p>
-1 bye &ndash; Track Number
-Lbyte &gt; Side wumber
-i byte &copy; Sector Number
-L byte &ndash; Sector Length
-2 bytes = ORE byt
-</p>
-<p>
-The track and sector numbers on the disk may Lie in the range 0 to 255 although
+The track and sector numbers on the disk may lie in the range 0 to 255 although
 this will obviously be limited to the number of tracks that the disk drive is
-Capable of accessing and the number of sectors thet vill fit on one track of the
-Gssk The side number takes the value 0 or 1 The gector length byte (with the
-PD1797) may f211 in the range 0 to 3 and the values correspond to sector sizes
-of 128, 256, 312 or 1024 bytes respectively The two CRC bytes are automatically
-Computed by&rsquo; the FDC chip and will be written to the disk when instructed to do
-Se&rsquo;by the host computer
+capable of accessing and the number of sectors that will fit on one track of the
+disk. The side number takes the value 0 or 1 The sector length byte (with the
+FD1797) may fall in the range 0 to 3 and the values correspond to sector sizes
+of 128, 256, 512 or 1024 bytes respectively. The two CRC bytes are automatically
+computed by the FDC chip and will be written to the disk when instructed to do
+so by the host computer.
 </p>
 <p>
-When the POC fe instructed to read a sector, it first waits for an ID address
-mark and then reads the 1D block Tf the side, track and sector information
-fatches the values given by the host computer, and if no CRC ercor has occurred,
-the FOC will transfer data from the dats area following the TD block. The data
-area will be of the Length indicated by the sector length byte and is preceded
-by a Data Address mark on the disk. Initially, the date contains the value
-OBSH for every byte. This value 49 set during formatting but in fact any value
-could have been used. OSH because TEM used this
+When the FDC is instructed to read a sector, it first waits for an ID address
+mark and then reads the ID block. If the side, track and sector information
+matches the values given by the host computer, and if no CRC error has occurred,
+the FDC will transfer data from the data area following the ID block. The data
+area will be of the length indicated by the sector length byte and is preceded
+by a Data Address mark on the disk. Initially, the data contains the value
+0E5H for every byte. This value is set during formatting but in fact any value
+could have been used. 0E5H is used, by convention, because IBM used this value
+in their original floppy disk formats (back in the dim and distant past when 8&Prime;
+floppies were used with mainframe computers and micros had not yet been
+invented). Finally, the data area is terminated with 2 CRC bytes for error
+checking.
 </p>
 <p>
-{n thelr original floppy aii
-</p>
-<p>
-floppies were used with computers not yet. be
-invented). Finally, the daca area is terminated with 2 CRC bytes for error
-checking
-</p>
-<p>
-Writing @ sector is eimilar to reading but after the correct ID block has been
-found, a data address mark is written to the disk followed by the nunber of dal
+Writing a sector is similar to reading but after the correct ID block has been
+found, a data address mark is written to the disk followed by the number of data
 </p>
 <?php columnEnd(1); ?>

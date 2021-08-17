@@ -3,23 +3,19 @@
 entered using a text editor such as ED (if you must),
 WordStar or PEN. From the source code program
 (which must have the extension type .BAS), it
-produces an& .INT file in which, for example, &lsquo;PRINT&rsquo;
+produces an .INT file in which, for example, &lsquo;PRINT&rsquo;
 is stored as 1Ah. The logic behind this is that it
 takes a shorter time to interpret 1 byte such as 1A
 when the semi-compiled program is run than it
 does to deal with 5 letters as in PRINT. To use the
 language, you need to:
 </p>
-<p>
-1. Write a CBASIC source program.
-</p>
-<p>
-2. Use CBASIC to produce the intermediate
-(.INT) file.
-</p>
-<p>
-3. Use CRUN to execute the .INT file.
-</p>
+<ol class="indent">
+<li>Write a CBASIC source program.</li>
+<li>Use CBASIC to produce the intermediate
+(.INT) file.</li>
+<li>Use CRUN to execute the .INT file.</li>
+</ol>
 <p>
 CRUN is a run-time interpreter which takes the INT
 file produced by CBASIC after checking the source
@@ -57,7 +53,7 @@ MBASIC (disk version) statements and commands,
 where they differ or where they are peculiar to
 CBASIC. CBASIC has an excellent, if expensive
 User Guide by A. Osborne, G. Eubanks and M.
-McNiff, published by Osborne/<?php spChar("zwsp"); ?>McGraw-Hill in
+McNiff, published by Osborne/&shy;McGraw-Hill in
 1981. It is rather costly at &pound;12 (in 1983) for 215
 pages but is essential for the serious user. The
 Guide deals with version 2.07 of the compiler; I
@@ -66,17 +62,15 @@ any major problems or incompatibilities. The
 version number of the run-time interpreter CRUN
 used in the book is not stated but mine was 2.04.
 </p>
-<p>
+<h4>
 Data types
-</p>
+</h4>
 <p>
 Both BASICs support integer and floating point
 (real) numbers, with exponential notation for the
 latter. The range for integers is the same in both
-(4.32767 to &ndash;32768), but real numbers are stored by
+(+32767 to &ndash;32768), but real numbers are stored by
 CBASIC with an accuracy of 14 digits, compared
-</p>
-<p>
 with 7 for single precision and 17 for double
 precision MBASIC. Exponential range for MBASIC
 is 2.9387E-38 to 1.70141E38, whereas CBASIC has
@@ -92,7 +86,7 @@ Names of variables may be up to 31 characters
 long in CBASIC; although in MBASIC they can be of
 any length, only the first two alphanumeric
 characters are recognized; some characters are not
-allowed but who wants to use *,!,@ or &amp; in a
+allowed but who wants to use <?php spChar("starf"); ?>,!,@ or &amp; in a
 variable name? Both BASICs use the $ sign to
 denote string variables, and integers may be
 explicitly declared. This is done in CBASIC by
@@ -101,33 +95,33 @@ adding a % sign to the end of the variable name
 MBASIC, the DEFINT statement does this. The
 ability to use variable names like &lsquo;microcomputer&rsquo;,
 &lsquo;collywobble&rsquo; or &lsquo;knightsbridge&rsquo; may appeal to the
-whimsical but unfortunately, &lsquo;supercalifragilistiexpialidocious&rsquo;
+whimsical but unfortunately, &lsquo;super&shy;cali&shy;fragi&shy;listi&shy;expi&shy;ali&shy;docious&rsquo;
 is too long and would be truncated!
 Variable names should be distinct and descriptive,
 which will help you understand the flow of each
 program you write.
 </p>
 <p>
-DiMension statements have virtually the same
+DIMension statements have virtually the same
 functions in both BASICs; a little appreciated fact is
 that it is possible to use a constant or a variable to
 declare the highest subscript for an array or vector:
 </p>
-<p>
-2350
-DIM SORTCODE$ (ZZ) , HOUSENUMBER (2)
-</p>
+<pre>
+Z%=50
+DIM SORTCODE$(Z%),HOUSENUMBER(Z%)
+</pre>
 <p>
 or
 </p>
 <p>
-23(1}=50
-Zh (2)=5
-DIM SORTCODENUMBERS$ (2Z(1),2%(2))
+Z%(1)=50
+Z%(2)=5
+DIM SORTCODENUMBERS$(Z%(1),Z%(2))
 </p>
-<p>
+<h4>
 Statement construction
-</p>
+</h4>
 <p>
 Line numbers are optional in CBASIC except where
 the line is referenced by a statement elsewhere in
@@ -142,10 +136,10 @@ several lines by the use of the backslash (\) and
 lower case letters are converted to upper case
 unless the &lsquo;D&rsquo; toggle is used.
 </p>
-<p>
+<pre>
 IF REPT = 0 \
 THEN GOTO 999
-</p>
+</pre>
 <p>
 There seems to be no limit to the length of a
 statement but keep it within reasonable bounds

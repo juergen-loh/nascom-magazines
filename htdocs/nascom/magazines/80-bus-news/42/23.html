@@ -1,19 +1,19 @@
 <?php columnStart(2, 2); ?>
 <p>
 transformer is sampled via a high impedance pad
-and fed to an LM386, which is a smail audio
+and fed to an LM386, which is a small audio
 amplifier. An 8R speaker output is thus provided to
 monitor the line. Useful if you keep dialing
 engaged numbers or keep finding noisy lines. A
 software on/off switch is provided for the audio
-output, and the audio level is adjustabie from zero
+output, and the audio level is adjustable from zero
 to full volume using a preset pot. Maximum audio
 output was not measured, but was certainly loud
 enough!
 </p>
-<h2>
+<h4>
 The Computer Hardware
-</h2>
+</h4>
 <p>
 So on to the system side of the hardware, the bit
 the computer side of the coupling transformer and
@@ -29,7 +29,7 @@ little detail was provided about any of these
 devices in the manual. Not a problem as we shall
 see, but unusual, as Gemini manuals tend to go
 into detail describing unfamiliar devices. The usual
-VO buffers were provided, handing the usual bus
+I/O buffers were provided, handing the usual bus
 signals and providing NASIO. More typical of
 present technology, I/O decoding was provided by
 a PAL rather than discrete logic, with no options for
@@ -72,7 +72,7 @@ connect.
 <p>
 The guts of the matter revolves around the
 MODEM chip, I haven&rsquo;t got the full words for this
-device (1 borrowed and read the words some time
+device (I borrowed and read the words some time
 ago) and information in the MODEM manual is
 sparse (like the CTC, PIO and DART). This chip is
 the all laughing dancing singing thingy capable of
@@ -81,7 +81,7 @@ five address lines, the first two being connected to
 the PIO, the remainder being returned to patch
 plugs which are sealed with paint. Now the words
 say that if you remove and change the links, the
-card will be forced to work outside BT regulations,
+card will be forced to work outside <i>BT</i> regulations,
 which translated means it will start working in the
 BELL mode. What the manual does not say is what
 exactly happens when you do swop the plugs
@@ -89,12 +89,12 @@ about. So for that you need the AMD manual.
 What&rsquo;s on offer with the standard setup as
 supplied:
 </p>
-<pre>
-V.21 300/300     originate    full duplex
-V.21 300/300     answer       full duplex
-y.23 75/1200     originate    asymmetrical duplex
-v.23 1200/75     answer       asymmetrical duplex
-</pre>
+<table style="width: 100%">
+<tr><td>V.21 300/300</td><td>originate</td><td>full duplex</td></tr>
+<tr><td>V.21 300/300</td><td>answer   </td><td>full duplex</td></tr>
+<tr><td>V.23 75/1200</td><td>originate</td><td>asymmetrical duplex</td></tr>
+<tr><td>V.23 1200/75</td><td>answer   </td><td>asymmetrical duplex</td></tr>
+</table>
 <p>
 This is standard for most things found in the UK,
 and the likelihood of BELL protocols being encountered
@@ -106,7 +106,7 @@ which must be something to do with the hardware.
 I wonder if it has occurred elsewhere? I haven&rsquo;t
 looked into it yet, but it goes as follows:
 </p>
-<p>
+<p class="exdent">
 Conditions:<br>
 Computer mains off but not unplugged from
 mains<br>
@@ -115,21 +115,21 @@ Video recorder on play back in another room
 Incoming call, phone ringing
 </p>
 <p>
-Symptoms:<br>
+<p class="exdent">
 Ringing &lsquo;burr&rsquo; heard quite loudly from the TV
 set when an incoming call occurs??? Now, as
-Il say I haven&rsquo;t looked for it, I just unplug the
+I say I haven&rsquo;t looked for it, I just unplug the
 MODEM when not in use, but I haven&rsquo;t the
 foggiest idea what causes it!!
 </p>
-<h2>
+<h4>
 The Manual
-</h2>
+</h4>
 <p>
 A pretty comprehensive manual is supplied which
 runs to 52 pages, and covers all the major aspects
 of the card and its software. Details are missing
-about the /O devices used, referring you to the
+about the I/O devices used, referring you to the
 respective device manuals. Instead of blow by blow
 accounts of the devices used, source listings of the
 setup and I/O procedures are provided. As can be

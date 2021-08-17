@@ -1,82 +1,84 @@
 <?php columnStart(1); ?>
+<table class="fdc-format-data">
+<tr><td>*</td><td>1</td><td>Sector No</td><td>Sector No</td><td></td></tr>
+<tr><td>*</td><td>1</td><td>02</td><td>02</td><td>; Sector Length (512 bytes)</td></tr>
+<tr><td>*</td><td>1</td><td>F7</td><td>CRC1</td><td></td></tr>
+<tr><td>*</td><td></td><td></td><td>CRC2</td><td></td></tr>
+<tr><td>*</td><td>22</td><td>4E</td><td>4E</td><td></td></tr>
+<tr><td>*</td><td>12</td><td>00</td><td>00</td><td></td></tr>
+<tr><td>*</td><td>3</td><td>F5</td><td>A1</td><td>; Resets CRC generator</td></tr>
+<tr><td>*</td><td>1</td><td>FB</td><td>FB</td><td>; Data Address mark</td></tr>
+<tr><td>*</td><td>512</td><td>E5</td><td>E5</td><td>; Empty Data area</td></tr>
+<tr><td>*</td><td>1</td><td>F7</td><td>CRC1</td><td></td></tr>
+<tr><td>*</td><td></td><td></td><td>CRC2</td><td></td></tr>
+<tr><td>*</td><td>30</td><td>4E</td><td>4E</td><td></td></tr>
+<tr><td><br></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>**</td><td>512</td><td>4E</td><td>4E</td><td></td></tr>
+</table>
+<p></p>
+<table class="fdc-format-legend">
+<tr><td>*</td><td>Write this field 10 times.<br>
+<tr><td>**</td><td>Continue writing 4EH until next index pulse received<br>
+			(Physical end of track).</td></tr>
+</table>
 <p>
-sa Sector No Sector No
-rt v2 02&Prime;; Sector Length (512 bytes)
-rs &ldquo;7 crea
-: Ree
-+ 22 oa aE
-* 2 00 oo
-7 3 F: AL Resets CRC generator
-soa A 5
-+ 2 BS 5
-1 7 onc
-+ cxcz
-+ 30 ae aE
-&ldquo;512 4 &laquo;
+As can be seen from the examples, there are gaps containing zero and/or 4EH
+bytes between the ID blocks and data areas, before and after the index mark (if
+present) and at the end of the track. These gaps are there to allow the FDC to
+synchronize with the disk to read the data and ID blocks.
 </p>
 <p>
-+ Write this field 20 times
-+ Continue writing #E until next index pulse received
-(Physical end of track)
-</p>
-<p>
-&lsquo;As can be seen from the examples, there are gaps containing zero and/or SEH
-bytes beeween the 1D blacks and da &lsquo;Defore ane after the index mark (if
-present) and at the end of the trac gape are there co allow the FDC to
-Synchronize with the disk to read the data and ID blocks.
-</p>
-<p>
-The gaps before the index mark and at the end of the track are known
-The gap after the sadex mark and before the first ID block is known
-Gap Peeparaces, &lsquo;TD block from Its ascoctated data area while Gap 3
-</p>
-<p>
-Separates the data area from the next ID block on the disk.
+The gaps before the index mark and at the end of the track are known as Gap 4.
+The gap after the index mark and before the first ID block is known as Gap 1.
+Gap 2 separates each ID block from its associated data area while Gap 3
+separates the data area from the next ID block on the disk.
 </p>
 <p>
 The values of the bytes used to create the gaps are different for single density
-and double deneity mades as are the number of bytes uted. Below is an extract
-from the manufacturers data sheet for the PD1797 showing the byte values and
-byte counts for the gaps. The values shown for the byte count# are minimum
+and double density modes as are the number of bytes used. Below is an extract
+from the manufacturers data sheet for the FD1797 showing the byte values and
+byte counts for the gaps. The values shown for the byte counts are minimum
 except where shown.
 </p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(12); ?>
+<?php columnChange(1112); ?>
+<table class="fdc-format-gap">
+<tr><th></th><th>Single Density</th><th>Double Density</th></tr>
+<tr><td><br></td><td></td><td></td></tr>
+<tr><td>Gap 1</td><td>16 bytes FF</td><td>32 bytes 4E</td></tr>
+<tr><td><br></td><td></td><td></td></tr>
+<tr><td>Gap 2</td><td>11 bytes FF</td><td>22 bytes 4E</td></tr>
+<tr><td>*</td><td>6 bytes 00</td><td>12 bytes 00</td></tr>
+<tr><td></td><td></td><td>3 bytes A1</td></tr>
+<tr><td><br></td><td></td><td></td></tr>
+<tr><td>Gap 3</td><td>10 bytes FF</td><td>26 bytes 4E</td></tr>
+<tr><td><br></td><td></td><td></td></tr>
+<tr><td>**</td><td>4 bytes 00</td><td>8 bytes 00</td></tr>
+<tr><td></td><td></td><td>3 bytes A1</td></tr>
+<tr><td><br></td><td></td><td></td></tr>
+<tr><td>Gap 4</td><td>16 bytes FF</td><td>16 bytes 4E</td></tr>
+</table>
+<?php columnEnd(12); ?>
+<p></p>
+<?php columnStart(1); ?>
+<table class="fdc-format-legend">
+<tr><td>*</td><td>Byte counts must be exact.</td></tr>
+<tr><td>**</td><td>Byte counts are minimum except exactly 3 bytes of A1 must be written.</td></tr>
+</table>
 <p>
-Single Density Double Density
-</p>
-<p>
-Gap 1 16 bytes HF 32 bytes 4E
-cap 2 11 bytes FF 22 bytes 4E
-&lsquo; 6 bytes 00 12 bytes 07
-</p>
-<p>
-3 bytes AL
-</p>
-<p>
-ap 3 10 bytes FF 26 bytes ue
-&rdquo; 4 bytes 00 8 bytes 00
-</p>
-<p>
-3 bytes AL
-</p>
-<p>
-Gap &amp; 16 bytes FF 16 bytes 4E
-</p>
-<p>
-+ Byte counts must be exact
-t+ Byte counts are minimum except exactly 3 bytes of Al must be written,
-</p>
-<p>
-The physical data is held on the disk surface as # serial data stream. In double
-density mode a 250s pulse is cont to the disk drive for each flux transition
+The physical data is held on the disk surface as a serial data stream. In double
+density mode a 250ns pulse is sent to the disk drive for each flux transition.
 This would imply that a pulse is sent to the drive each time the data changed
-from Otol or 1 to0. Inaddition to the data, a clock 1a recorded on the disk
-surface This clock {s picked off when reading the disk to synchronize the date
-being read. The presence of a clock on the disk ig ured to good effect by the
-FDI797 &lsquo;when sending control bytes to che disk.
+from 0 to 1 or 1 to 0. In addition to the data, a clock is recorded on the disk
+surface. This clock is picked off when reading the disk to synchronize the date
+being read. The presence of a clock on the disk is used to good effect by the
+FD1797 when sending control bytes to the disk.
 </p>
 <p>
-sn in the example track for byte values of OFSH and OF6H ge
-Yalues OALH and OC2H on the dlck surface. However, #0 that these bytes can be
-&lsquo;Meeinguished from data bytes of the same values, clock pulses ace delibecately
+An in the example track for byte values of 0F5H and 0F6H generate the
+values 0A1H and 0C2H on the dick surface. However, so that these bytes can be
+distinguished from data bytes of the same values, clock pulses are deliberately
 </p>
 <?php columnEnd(1); ?>

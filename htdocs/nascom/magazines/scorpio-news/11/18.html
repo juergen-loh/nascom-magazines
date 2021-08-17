@@ -1,98 +1,88 @@
 <?php columnStart(1); ?>
 <p>
-Field descriptors can be mixed in a format statement Lf a particular mode of I/O
-is required. Thus {fa record such ae a batch identifier and number, followed
-by various parameters iy to be read or weitten, the associated Format&rsquo; statement
-could Look Tike thie:
+Field descriptors can be mixed in a format statement if a particular mode of I/O
+is required. Thus if a record such as a batch identifier and number, followed
+by various parameters is to be read or written, the associated format statement
+could look like this:
+</p>
+<p class="center">
+FORMAT(A4,2X,I3,2X,3F6.3)
 </p>
 <p>
-FORMAT(AG,2X,13,2%,3F6 3)
+This looks complicated but means that a letter batch identifier and 3 digit
+batch number are followed by details of 3 parameters expressed as floating point
+numbers, the batch i/d and serial numbers are separates by 2 spaces as are the
+serial number and parameters. The output would appear as?:
 </p>
-<p>
-This looks complicated but means that &laquo;4 Letter batch identifier and 3 digit
-batch number are followed by detaile of 3 parameters expressed ag floating point
-numbers, the batch i/d and serial numbers are separates by 2 spaces ae ace the
-Serial umber and parameters The output would appear as?
-</p>
-<p>
-&ldquo;vor 32323.34517.27011.535
+<p class="center">
+&macr;LOT&macr;&macr;123&macr;&macr;23.34517.27011.555
 </p>
 <p>
 This looks a bit messy and the parameters should be spaced out; this can be done
-simply by amending pare of the format description to include spaces:
+simply by amending part of the format description to include spaces:
 </p>
 <p>
-edther &ndash; (4.2K, 3,2K,76.3,2%,P6.3,2%,76.3)
-which works but ie untidy
-or = (AM, 2K, 13,3(28,76.39)
+either &ndash; (A4,2X,I3,2X,F6.3,2X,F6.3,2X,F6.3)
+</p>
+<p class="indent">
+which works but is untidy
 </p>
 <p>
-which also works but is better programming practic!
+or &ndash; (A4,2X,I3,3(2X,F6.3))
+</p>
+<p class="indent">
+which also works but is better programming practice!
 </p>
 <p>
-The effect of the change ts as follows:
-&ldquo;yor 12323. 34549. 270-21. 555
+The effect of the change is as follows:
+</p>
+<p class="center">
+&macr;LOT&macr;&macr;123&macr;&macr;23.345&macr;&macr;17.270&macr;&macr;11.555
 </p>
 <p>
-The overall effect 4s to carry out the reading or printing of 3 sets of similar
+The overall effect is to carry out the reading or printing of 3 sets of similar
+combined fields and it should be noted that combinations of field descriptors
+used in this way should be enclosed in round brackets.
 </p>
+<h3>
+CONTROL STATEMENTS
+</h3>
 <p>
-Combined fields and it should &lsquo;be noted that combinations of Field descriptors
+These guide the flow of the program and are of ten types (some of which are
+identical to their BASIC equivalence)
 </p>
+<table class="control-statements">
+<tr><td>1. GO TO</td><td>2. IF</td><td>3. STOP</td><td>4. ASSIGN</td><td>5. DO</td></tr>
+<tr><td>6. CONTINUE</td><td>7. CALL</td><td>8. PAUSE</td><td>9. RETURN</td><td>10. END</td></tr>
+</table>
+<h4>
+GO TO statements
+</h4>
 <p>
-sed in thir way should be enclosed in round brackets.
-</p>
-<p>
-CONTROL, STATEMENTS
-</p>
-<p>
-1d are of ten types (some of which are
-</p>
-<p>
-ide the flow of the progra
-i to heir BASIC equivalence)
-</p>
-<p>
-Th
-i
-</p>
-<p>
-1.6070 2 IF 3, STOR, A. ASSIGN 5. DO
-S. CONTINUE 7.CaLL 8 PAUSE 9. RETURN 10&rdquo; END
-</p>
-<p>
-0 70 statements
-</p>
-<p>
-These may be unconditional (e c GOTO 100 which transfers control ta another
+These may be unconditional (e.g. GOTO 100 which transfers control ta another
 part of the program just as in BASIC), computed (e.g. GOTO (80,90,100,123) K,
-Where K is an integer variable auch that {Khas a value of 3, chen control is
-passed tothe statement label which is third in the list &ndash; inthis case, 100].
-Note that if the value of K is 0 or greater than the nunber of statemene numbers
-inthe List (4 in this case), then control passes to the next logical statement
-in the progeam sequence
+Where K is an integer variable such that if K has a value of 3, then control is
+passed to the statement label which is third in the list &ndash; in this case, 100).
+Note that if the value of K is 0 or greater than the number of statement numbers
+in the list (4 in this case), then control passes to the next logical statement
+in the program sequence
 </p>
 <p>
-&lsquo;Assigned O70 statements are not often weed and the ASSION
+Assigned GO TO statements are not often used and the ASSIGN statement label(s)
+must be declared before they are used in this way &ndash; thus:
 </p>
+<table class="fortran-control">
+<tr><td>ASSIGN 100 TO MILK</td><td>&ndash;</td><td>ensures that in an assigned GOTO of the form</td></tr>
+<tr><td>GOTO MILK</td><td>&ndash;</td><td>control is only passed to statement number 100</td></tr>
+</table>
 <p>
-statemene Label(s)
+More than one ASSIGN statement can be used so that if:
 </p>
-<p>
-Be declared before they are used in thie way &ndash; thusy
-ASSIGN 100 TO MILK &ndash; ensures that {n an assigned GOTO of the form
-Goro milk J control is only passed to statement number 100
-</p>
-<p>
-More than one ASSIGN statement can be used #0 that ifs
-</p>
-<p>
-ASSION 212 TO MILK &ndash; che next assigned GOTO which mentions the variable
-MILK will Look like:
-</p>
-<p>
-Goto MILK, (100,222) &ndash; and control vill be passed to whichever statement
-humber corresponds with the current value of the
-variable MILK
-</p>
+<table class="fortran-control">
+<tr><td>ASSIGN 212 TO MILK</td><td>&ndash;</td><td>the next assigned GOTO which mentions the variable
+MILK will Look like:</td></tr>
+<tr><td>GOTO MILK,(100,212)</td><td>&ndash;</td><td>and control will be passed to whichever statement
+number corresponds with the current value of the
+variable MILK.</td></tr>
+</table>
 <?php columnEnd(1); ?>

@@ -1,22 +1,22 @@
 <?php columnStart(2, 2); ?>
+<div class="indent">
 <p>
-.pa (Page break/go to next record)
+<b>.pa</b> (Page break/go to next record)
 </p>
 <p>
 Avery useful command which instructs the
 program to insert a page throw and go on to
+use the next record in the data file.
 </p>
 <p>
-use the next record inthe data file.
-</p>
-<p>
-wv &lt;list of variable(s)&gt; (Read a variable)
+<b>.rv</b> &lt;list of variable(s)&gt; (Read a variable)
 </p>
 <p>
 This specifies what data fields are in the data
-</p>
-<p>
 file, and their order.
+</p>
+</div>
+<p>
 The standard letter will have data fields inserted
 into it and bracketed by ampersands (&amp;); by
 placing a /O at the end of a data field, one can
@@ -33,56 +33,14 @@ the letter file and .pa at the end. A typical letter file
 would be as follows, where the dot commands
 should always start in column 1.
 </p>
-<p>
-.Op
-.af silly.dta
-_rv name, company,street.town, county.
-</p>
-<p>
-postcode, goods
-</p>
-<p>
-___ ____ ____,
-London ___ ___.
-&amp;data&amp;
-</p>
-<p>
-&amp;name&amp;
-</p>
-<p>
-&amp;company /0&amp;
-&amp;street&amp;
-</p>
-<p>
-&amp;town&amp;
-</p>
-<p>
-&amp;county&amp; &amp;postcode&amp;
-</p>
-<p>
-Dear &amp;name&amp;
-</p>
-<p>
-Would you kindly send me a copy of your
-current catalogue of export model &amp;goodsk?
-</p>
-<p>
-I would also be interested in receiving
-details of discounts available for cash.
-</p>
-<p>
-Yours faithfully,
-</p>
-<p>
-A.N. Other
-</p>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-19-1.png"); ?>
 <p>
 File this as BEGGING.LET.
 </p>
 <p>
 Then set up a data file with the names and
 addresses of all the firms you wish to bother. Use
-the NON-DOCUMENT mode of WordStar for this.
+the <b>NON-DOCUMENT</b> mode of WordStar for this.
 The data must be present in the same order as it is
 required by the letter file and if any information
 such as the name of the street, or the county is
@@ -93,22 +51,14 @@ carriage return &ndash; the record may be well over 200
 characters long. The following example will show
 how it is done:
 </p>
-<p>
-Top Cat,Tiger Computers, ___ ____, Panthertown,Lynx,
-221 1Z2Z,mice, p186
-</p>
-<p>
-Deputy Dawg,Newbone Computer Store, ,Wulf,
-</p>
-<p>
-Avon, , floppy disks, p186
-</p>
-<p>
-Chris Tandocri,Beebac, ,Oxbridge, ,0X99 BBC,
-</p>
-<p>
-plastic computers, pl8e
-</p>
+<pre>
+Top Cat,Tiger Computers,Zoo Road,Panthertown,Lynx,
+ZZ1 1ZZ,mice,pl86
+Deputy Dawg,Newbone Computer Store,,Wulf,
+Avon,,floppy disks,pl86
+Chris Tandocri,Beebac,,Oxbridge,,0X99 BBC,
+plastic computers,pl86
+</pre>
 <p>
 Store it as SILLY.DTA
 </p>
@@ -123,27 +73,23 @@ commas.
 The command file comes next.
 </p>
 <p>
-in Non-document mode type the following, noting
+In Non-document mode type the following, noting
 that the dot commands must start in column 1.
 </p>
-<p>
-cS
-dm Printing your letters
-</p>
-<p>
-,av Date
-. fi BEGGING. LET
-.dm Finished (Thank goodness!) &ndash; or
-</p>
-<p>
+<pre>
+.cs
+   .dm Printing your letters
+   .av Date
+   .fi BEGGING.LET
+   .dm Finished (Thank goodness!) - or
 whatever you want to say.
-</p>
+</pre>
 <p>
 File this as DAFT.CMD
 </p>
 <p>
 You now have three files, BEGGING.LET, SILLY.DTA
-and DAFT.CMD &mdash;&mdash; and you are ready to try
+and DAFT.CMD &mdash; and you are ready to try
 out the all singing, dancing and generally frolicsome
 MAILMERGE!
 </p>
@@ -172,4 +118,5 @@ without exiting to the system, and re-entering
 WordStar, the whole system may lock up, and has
 to be reset.
 </p>
+<?php hline("100%", 2); ?>
 <?php columnEnd(2); ?>

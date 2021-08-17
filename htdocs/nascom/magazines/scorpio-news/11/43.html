@@ -1,86 +1,77 @@
 <?php columnStart(1); ?>
+<h3>
+DOCUMENTATION
+</h3>
 <p>
-DOCIRENTATION
+This is adequate and consists of a detailed explanation of the port allocations
+and their functions, program examples for the insertion of support for the VFC
+into a CP/M BIOS or interfacing the VFC with NAS-SYS, and details of the control
+codes which the VFC recognizes. In view of the large number of possible
+combinations of VFC and Nascom&nbsp;2/<?php spChar("zwsp"); ?>Gemini/<?php spChar("zwsp"); ?>MAP CPU or FDC cards, the implementation
+notes are quite extensive. They are also easy to follow which makes a pleasant
+change from some systems; unfortunately, no details are included for the Nascom&nbsp;1
+and I gather that there are difficulties in using the VFC with it. In the
+full version, 15 or so links are involved but not all of these have to be used.
+Details are also given of modifications which need to be carried out if RAM
+boards (Gemini and Nascom) are to be used. No modifications are needed if the
+MAP RAM card is used. A final section gives details of pin assignments on the
+VFC and a useful note on TEAC, Pertec end Micropolis drive pin assignments.
 </p>
 <p>
-This ie adequate and consists of a detailed explanation of the port allocations
-and their functions, program examples for the insertion of support. for the VEC
-into a CP/M BIOS oi ing. the VFC with NAS-SYS, and details of she control
-codes which the VFC recognizes. In view of the
+If the fully implemented VFC or the FDC-only system is purchased, MAP-80 Systems
+can supply s fully licensed version of CP/M 2.2 or 3.0 with a customised BIOS.
+This is supplied with a short instruction manual which explains how linkages are
+made or modified on the various types of CPU cards, gives details of disk error
+messages as well as how to customise the BIOS for other features. Both parallel
+and serial printer output and screen editing using ^@ are supported A special
+boot PROM is supplied which replaces the RP/M boot EPROM if the CPU card it a
+GM813.
 </p>
 <p>
-Combinations of VEC and Naccom 2
+In addition to the usual CP/M files on the disk, and the customised MOVCPM.COM
+or CPM3.SYS, a multi-utility program is supplied, which allows users to format,
+verify or copy disks. MAP will also customise existing users&rsquo; CP/M on request
+at a reasonable cost.
 </p>
-<p>
-notes ace quite exter
-</p>
-<p>
-change from some systems; unfortunately, no details are included for the
-Land gather that there are difficulties in using the VFC with it. In the
-fell re involved but not ali of these have to be used
-Detasle are aleo given of modifications which need to be carried out if RAM
-hoards (Gemini and Nescom) are to be used. No modifications are needed if the
-MAP RAM card is used A Zinal section gives details of pin assignments on the
-VEC and a useful note on TEAC, Pertec end Micropolis drive pin assignments
-</p>
-<p>
-If the fully implemented VEC or the FOC-only aystem is purchased, HAP-00 Systeme
-can supply s fully licensed version of CP/M 2 2 or 3 c with a Customised BIOS.
-This te supplied wich a short instruction manual which explains how linkages are
-</p>
-<p>
-de or modified on the various types of CPU cards, gives details of disk error
-Rerenges ae well os how co customise the 8105 for other features. Both parallel
-and serisl printer output and screem editing using &ldquo;# are supported A&rsquo;spectal
-boot FROM is supplied which replaces the RP/M boot EPROM If the CPU card it &amp;
-owes.
-</p>
-<p>
-In addition to the usual CP/M files on the disk, and the customised MOVcPH.COM
-or CPMS.SYS, a multi-utility program is supplied, which allows users to format,
-verify or copy dicks. MAP will also customise existing users&rsquo; CP/M on request
-at a ceasonable cost.
-</p>
-<p>
-THE vec TH USE
-</p>
+<h3>
+THE VFC IN USE
+</h3>
 <p>
 The fully implemented card has two 3 pin connectors for the video input and
-output, which are incompatible with the Gemini CM&amp;12 IVC video output which is a
-Standard jack socket requiring en enormovt plug. Why Gemini use this gargantuan
-imeans of taking Out. the video pussies ne since Nascom found some small coaxial
-Connectors for their AVC which are really neat. I&rsquo;m nor all that keen on MAP-80&rsquo;s
-connector either and I&rsquo;m sure that there must be ail sortt of impedance
-Rismatches pince neither type is likely to approach 75 ohms of whatever a
-Monitor is upposed to need to produce a good display The keyboard and disk
-drives are plugged in to the board &ndash; using non-latched 1D connectors which are a
-Little difeicele to unplug when needed.
+output, which are incompatible with the Gemini GM812 IVC video output which is a
+standard jack socket requiring an enormous plug. Why Gemini use this gargantuan
+means of taking out the video puzzles me since Nascom found some small coaxial
+connectors for their AVC which are really neat. I&rsquo;m not all that keen on MAP-80&rsquo;s
+connector either and I&rsquo;m sure that there must be all sorts of impedance
+mismatches since neither type is likely to approach 75 ohms or whatever a
+monitor is supposed to need to produce a good display. The keyboard and disk
+drives are plugged in to the board &ndash; using non-latched ID connectors which are a
+little difficult to unplug when needed.
 </p>
 <p>
-On booting up, a aysten message 12 dtaplayed together with the CP/M prompr:
-Connands aay then be entered the display ic 80 counts wide and because of th
-alternative character&rsquo; set, both noradl or laverse (black on waite) character
-Can be displayed, or an alvernative character set which can be progreamed into @
-Gis or 2782 EPROM and plugged Into the second 20M socket
+On booting up, a systen message is displayed together with the CP/M prompt;
+commands may then be entered. The display is 80 columns wide and because of the
+alternative character set, both normal or reverse (black on white) characters
+can be displayed, or an alternative character set which can be programmed into a
+2716 or 2732 EPROM and plugged into the second ROM socket.
 </p>
 <p>
-The memory-mapped display appears to be quite fase and free from visible
-Interference as a consequence of CPU and ORT controller interaction, # has
-already been mentioned, the GeaJal video controllers have Z80 CPUs on beard and
-lunder Certain circumstances on the IVC some interference can take place which
-Produces a faint diagonal patterning on the screen &ndash; which can be irritating
-Under some screen display conditions The cause possibly lies in the layout of
+The memory-mapped display appears to be quite fast and free from visible
+interference as a consequence of CPU and CRT controller interaction; as has
+already been mentioned, the Gemini video controllers have Z80 CPUs on board and
+under certain circumstances on the IVC some interference can take place which
+produces a faint diagonal patterning on the screen &ndash; which can be irritating
+under some screen display conditions. The cause possibly lies in the layout of
 the IVC board where one or two long-ish tracks radiated noise which was picked
-up by other parts of the system This problem appears to have been resolved
-with the Gemini SVC which hess auch more legible screen display than ite
+up by other parts of the system. This problem appears to have been resolved
+with the Gemini SVC which has a much more legible screen display than its
+predecessor.
 </p>
 <p>
 I experienced no problems with the floppy disk controller when using Pertec (48
-TI) &lsquo;and TEAC, &lsquo;Canon or Miteublehi (96 TP) drives &ndash; which are plu ble.
-The Mitsubishi drives were quietest in operation.
-</p>
-<p>
-experienced when using 96 TPI Nicropolis drives &ndash; I&rsquo;m not sure why &ndash; per
+TPI) and TEAC, Canon or Mitsubishi (96 TPI) drives &ndash; which are plug-compatible.
+The Mitsubishi drives were quietest in operation. Some problems were
+experienced when using 96 TPI Micropolis drives &ndash; I&rsquo;m not sure why &ndash; perhaps
 they objected to the fast track stepping rate which suits the TEAC and
 </p>
 <?php columnEnd(1); ?>

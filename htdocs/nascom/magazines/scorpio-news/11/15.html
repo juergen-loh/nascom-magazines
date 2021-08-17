@@ -1,76 +1,78 @@
 <?php columnStart(1); ?>
 <p>
-&lsquo;The form of the FUNCTION statement is as follows:
+The form of the FUNCTION statement is as follows:
 </p>
-<p>
+<p class="indent">
 FUNCTION name (dummy arguments &ndash; if needed)
 </p>
 <p>
-or, more explicitly.
-type FUNCTION neme (dummy arguments)
+or, more explicitly,
+</p>
+<p class="indent">
+type FUNCTION name (dummy arguments)
 </p>
 <p>
 The reason for the second form is that the type can be explicitly declared a
-INTEGER, REAL, DOUBLE PRECTSTON, LOGICAL or (In Profortran) COMPLEX. Thus, if
-che function required was called LENGTH and it was a REAL number rather than sn
+INTEGER, REAL, DOUBLE PRECISION, LOGICAL or (in ProFortran) COMPLEX. Thus, if
+the function required was called LENGTH and it was a REAL number rather than an
 INTEGER, the correct form for the FUNCTION subprogram which gave the single
-value for LENGTH would
+value for LENGTH would be:
 </p>
-<p>
+<pre class="indent">
 REAL FUNCTION LENGTH
-</p>
+</pre>
 <p>
-The same rule applies {f the function name is one which by default would bea
-REAL If an INTEGER value was required Por example:
+The same rule applies if the function name is one which by default would be a
+REAL if an INTEGER value was required for example:
 </p>
-<p>
+<pre class="indent">
 INTEGER FUNCTION AREA
-</p>
-<p>
+</pre>
+<h3>
 INTRINSIC FUNCTIONS
-</p>
+</h3>
 <p>
 In all high-level languages, there is a range of particular functions for which
-the necessary code ie supplied &ndash; such as INT or ANG in BASIC. These are termed
-Intrinsic functions and afe called by name to produce &laquo; particular velue. There
-ire rather gore intrinsic functions in FORTRAN than will be found in most, BASICS
-ince some are available in integer, real and double precision forms There is
-Alvays &raquo; list of these in the documentation associated with the version of
-FORTRAN &lsquo;you are using. Some old favourites Like CHRS and LEFTS ere never found
-in FORTRAN, othere are spelt differently = SIGN rather than SGN &ndash; but most are
-readily interpreted
+the necessary code is supplied &ndash; such as INT or ABS in BASIC. These are termed
+intrinsic functions and are called by name to produce a particular value. There
+are rather more intrinsic functions in FORTRAN than will be found in most BASICS
+since some are available in integer, real and double precision forms. There is
+always a list of these in the documentation associated with the version of
+FORTRAN you are using. Some old favourites Like CHR$ and LEFT$ are never found
+in FORTRAN, others are spelt differently &ndash; SIGN rather than SGN &ndash; but most are
+readily interpreted.
 </p>
-<p>
-[EXTERNAL FupcTIONs
-</p>
+<h3>
+EXTERNAL FUNCTIONS
+</h3>
 <p>
 Again, these have their counterparts in BASIC although many are available in
-Goubis precision or even complex number forms in addition to the conventional
-Feal number form &ndash; typical of these are the etigonometric functions, SIM, 00S OF
-TAN, and Sgat spelt differently to the BASIC way (SQR). There is 10g base &copy;
-(ALG) &lsquo;and log base 10 &lt;ALOGIO) and a random number generator &ndash; variously spelt
-BND or RAND, &lsquo;A&rsquo;list of these will also be found in the documentation, together
-with a Llse of restrictions on the type of variable with which they can be used
-&ldquo;thus i8&rsquo;you want the equare root of # variable {t must be of type real of
-Gouble precision and if it ta an integer, this must be converted to eal by the
-vse of &amp; cunning Litele intrinsic function called FLOAT. Failure co do th:
-First will lead to an execution error and the progran grinding to an
-unprofitable halt An external function called TPIK dees just that to REAL
-hunbers, converting thes to INTEGER type.
+double precision or even complex number forms in addition to the conventional
+real number form &ndash; typical of these are the trigonometric functions, SIN, COS or
+TAN, and SQRT &ndash; spelt differently to the BASIC way (SQR). There is log base e
+(ALOG) and log base 10 (ALOG10) and a random number generator &ndash; variously spelt
+RND or RAND. A list of these will also be found in the documentation, together
+with a list of restrictions on the type of variable with which they can be used
+&ndash; thus if you want the square root of a variable it must be of type real or
+double precision and if it is an integer, this must be converted to real by the
+use of a cunning little intrinsic function called FLOAT. Failure to do this
+first will lead to an execution error and the program grinding to an
+unprofitable halt. An external function called IFIX does just that to REAL
+numbers, converting them to INTEGER type.
 </p>
+<h3>
+DATA INPUT/OUTPUT
+</h3>
 <p>
-DATA Inpor /oozPoT
-</p>
-<p>
-on fizet acquaintance, this appears co be rather more complicated than in BASIC,
-but it is a great deel more flexible. Data to be read into or results output
-fron s progtam can dein alaoat any desired form provided the machine is
-properly instructed by meant of t FORMAT statement. Data is read in from either
-Keyboard or disk file uring @ READ statement and written to the screen, disk
-Eile&rsquo;oe peincer by means of WRITE statement in their beste form these a
+On first acquaintance, this appears to be rather more complicated than in BASIC,
+but it is a great deal more flexible. Data to be read into or results output
+from s program can be in almost any desired form provided the machine is
+properly instructed by meant of a FORMAT statement. Data is read in from either
+keyboard or disk file using a READ statement and written to the screen, disk
+file or printer by means of WRITE statement in their basic form these are as
 follows:
 </p>
-<p>
-READ (uf) k of &copy; WRITE (u,) k
+<p class="center">
+READ (u,f) k &nbsp; &nbsp; &nbsp; &nbsp; or &nbsp; &nbsp; &nbsp; &nbsp; WRITE (u,f) k
 </p>
 <?php columnEnd(1); ?>

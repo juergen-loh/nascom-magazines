@@ -1,108 +1,96 @@
 <?php columnStart(1); ?>
 <p>
-missed out by the FDC. In fact, when sending the AIH byte, there is no clock
-Pulse sent berwaen dite 4 and S Similarly, when sending the OC2H byte, the
-Flock pulse between bite Sand 4 is mis
+missed out by the FDC. In fact, when sending the A1H byte, there is no clock
+pulse sent between bits 4 and 5. Similarly, when sending the 0C2H byte, the
+clock pulse between bits 3 and 4 is missed.
 </p>
 <p>
-In single density, vardous other clock pulses are mitsed when sending control
-bycte&rsquo;Borehe dish: nthe cable below, vhen sending &laquo; date bytey if alt E&para; clock
-</p>
-<p>
-t nesockated vith that Byte are present then the clock can be considered
-Raving the value OFF Amissing clock tn any position may be represented by
-gera bit in the clock byte. The table also sows the values writen to the diek
+In single density, various other clock pulses are missed when sending control
+bytes to the disc. In the table below, when sending a data byte, if all 8 clock
+pulses associated with that byte are present then the clock can be considered
+having the value 0FFH. A missing clock in any position may be represented by a
+zero bit in the clock byte. The table also shows the values written to the disk
 for the values sent to the FDC.
 </p>
-<p>
-Byte sent Single Density Double Density
-00 to Fe Write 00 to FA with Clit Weite 00 to Fe
-</p>
-<p>
-8 Not allowed fs Write AL, preset cae
-</p>
-<p>
-6 Not allowed Mette c2
-</p>
-<p>
-PD Generate 2 CRC bytes Genecate 2 CRC bytes
-Fe to FS Write FS to FB, Clkecu, preset CRC Write FS to FB
-</p>
-<p>
-Fe Weite FC with Clk=bu Weite Yc
-</p>
-<p>
-FD Weite FD with CLkFF Weite =D
-</p>
-<p>
-Fe Weite FE, Clkec7, preset CRC Weite FE
-</p>
-<p>
-FF Weite FF with ClkepP Weite FF
-</p>
-<p>
-Missing clock transition between bite 4 and
-Missing Clock transition between bite 3 and
-</p>
-<p>
-5
-i
-</p>
-<p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(12); ?>
+<?php columnChange(1112); ?>
+<table class="fdc-format-bytes">
+<tr><th>Byte sent</th><th>Single Density</th><th></th><th>Double Density</th></tr>
+<tr><td><br></td><td></td><td></td><td></td></tr>
+<tr><td>00 to F4</td><td>Write 00 to F4 with Clk-FF</td><td></td><td>Write 00 to F4</td></tr>
+<tr><td>F5</td><td>Not allowed</td><td>*</td><td>Write A1, preset CRC</td></tr>
+<tr><td>F6</td><td>Not allowed</td><td>**</td><td>Write C2</td></tr>
+<tr><td>F7</td><td>Generate 2 CRC bytes</td><td></td><td>Generate 2 CRC bytes</td></tr>
+<tr><td>F8 to FB</td><td>Write F8 to FB, Clk=C7, preset CRC</td><td></td><td>Write F8 to FB</td></tr>
+<tr><td>FC</td><td>Write FC with Clk=D7</td><td></td><td>Write FC</td></tr>
+<tr><td>FD</td><td>Write FD with Clk=FF</td><td></td><td>Write FD</td></tr>
+<tr><td>FE</td><td>Write FE, Clk=C7, preset CRC</td><td></td><td>Write FE</td></tr>
+<tr><td>FF</td><td>Write FF with Clk=FF</td><td></td><td>Write FF</td></tr>
+</table>
+<?php columnEnd(12); ?>
+<p></p>
+<?php columnStart(1); ?>
+<table class="fdc-format-legend">
+<tr><td>*</td><td>Missing Clock transition between bits 3 and 5.</td></tr>
+<tr><td>**</td><td>Missing clock transition between bits 3 and 4.</td></tr>
+</table>
+<h4>
 File sizes, disk sizes and directories
-</p>
+</h4>
 <p>
-+ we can at last return to CP/M and
+Having well and truly taken a disk to pieces we can at last return to CP/M and
+the questions asked at the beginning of this article. (Can anyone remember what
+they were?) Well, you&rsquo;ll have to wait until the next episode.
 </p>
+<?php hline("20%"); ?>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(3); ?>
+<h2 id="article1">
+A Look at MultiNet 2 
+</h2>
+<?php columnChange(23); ?>
+<h3 class="author">
+by P.A. Greenhalgh
+</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
+<h3>
+MultiNet Design Philosophy
+</h3>
 <p>
-Maving vell and truly taken a disk to ples
-ber wha
-</p>
-<p>
-the questions asked at the beginning of this article. (Can anyone ret
-they wereu) Well, you&rsquo;ll have to wade until the next episode.
-</p>
-<p>
-ALook at MultiNet2 by P.A. Greenhalgh
-</p>
-<p>
-Multilet Design Philosophy
-</p>
-<p>
-The aim of Gemini&rsquo;s Multinet networking system is to provide computing
-Facilities toa number of people for the minioum possible cost Ara very
+The aim of Gemini&rsquo;s MultiNet networking system is to provide computing
+facilities to a number of people for the minimum possible cost. As a very
 significant proportion of the cost of any system is in the mass storage and hard
-Copy devices, the overall cost of a multiple system installation can be
-dramatically reduced by allowing # number of users to share these fa
+copy devices, the overall cost of a multiple system installation can be
+dramatically reduced by allowing a number of users to share these facilities.
+&lsquo;Share&rsquo; in this instance means the ability for any user to be able to
+of the mass storage device, but not, in general, the sharing of the stored data.
+</p>
+<h3>
+CP/M Compatibility
+</h3>
+<p>
+As Gemini MultiBoard systems are all capable of running the CP/M operating
+system, and given the amount of applications software available for that
+operating system, MultiNet is designed to provide a CP/M &lsquo;compatible&rsquo;
+environment, the major difference being that the user need not have physical
+disk drives present at his Workstations but the MultiNet software refers all
+disk requests to a Fileserver.
 </p>
 <p>
-Share&rsquo; in this instance means the ability for any user to be able to
-of the mass storage device, but mot, in general, the sharing of the stored data
-</p>
-<p>
-(P/M Compatibility
-</p>
-<p>
-As Gemini Multioard systems ace all capable of cunning the CP/M operatin
-System, and given the amount of applications software available for that
-operating system, MultiNec ds designed to provide a CP/M. -compatibie
-Shvironment, the major difference being that the user need nov have Physical
-ink deives present at his Workstations but the Hultinet software refere all
-ise requests to a Fileserver
-</p>
-<p>
-To achieve this, software has to be written that Looks to the applications
-program as though it te CP/M, but in reality this software contains no disk
-driver or file Mandiing routines, but instead re! foto the Fileserver
-that is controlling the mae etorage.
-</p>
-<p>
-documentation is used to write software that meets the given specif
-closely as possible, given the major premise that there are no. physi
-present &ldquo;Unfortunately, in practice, it is found that certain progeai
-Sr certain quirke&rsquo; of &ldquo;undocumented features of CP/M, and so the emulatior
-Software hes &pound;0 be modified in order to provide as identical an environment
-possible. It is chus extremely difficult, if not impossible, to achieve 100 per
-cent compatibility
+To achieve this, software has to be written that looks to the applications
+program as though it is CP/M, but in reality this software contains no disk
+driver or file handling routines, but instead refers these to the Fileserver
+that is controlling the mass storage. To achive this the relevant CP/M
+documentation is used to write software that meets the given specifications as
+closely as possible, given the major premise that there are no. physical drives
+present. Unfortunately, in practice, it is found that certain programs make use
+of certain &lsquo;quirks&rsquo; of &lsquo;undocumented features&lsquo; of CP/M, and so the emulation
+Software has to be modified in order to provide as identical an environment as
+possible. It is thus extremely difficult, if not impossible, to achieve 100 per
+cent compatibility.
 </p>
 <?php columnEnd(1); ?>

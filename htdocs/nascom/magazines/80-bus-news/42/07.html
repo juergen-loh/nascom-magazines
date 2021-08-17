@@ -4,9 +4,9 @@ with programs 3, 4, &amp; 5 to create an overlay
 demo. If you assemble progs 2,3,4 &amp;5. and then
 enter.
 </p>
-<p>
-LINK ROOT, OVLAY (OV1) (0V2)&lt;RET&gt;
-</p>
+<pre>
+LINK ROOT,OVLAY (OV1) (OV2)&lt;RET&gt;
+</pre>
 <p>
 The demo will create itself. It only outputs
 messages and will not win any prizes but it proves
@@ -22,12 +22,12 @@ all seems like gibberish as &lsquo;C&rsquo; can sometimes
 confuse, it performs in the same manner as the
 assembler version.
 </p>
-<p>
+<h4>
 Using L80 to create overlays
-</p>
+</h4>
 <p>
 There is to my knowledge no facility for creating
-overlay systems from within L80. it can be done but
+overlay systems from within L80. It can be done but
 is somewhat complex and should be avoided. You
 have to hack the code around a lot in memory and
 I don&rsquo;t like having to admit that I have done it this
@@ -51,17 +51,16 @@ details).
 Using the sample assembler programs lets create
 the programs using L80.
 </p>
-<p>
-1. Assemble all programs to REL format.
-</p>
-<p>
-2. Enter the following:
-L80 &lt;RET&gt; Run L80
-</p>
-<p>
-ROOT, OVLAY&lt;RET&gt; Load root module
-and overlay loader
-</p>
+<ol class="indent">
+<li>Assemble all programs to REL format.</li>
+<li>Enter the following:</li>
+</ol>
+<pre>
+L80 &lt;RET&gt;         Run L80
+
+ROOT,OVLAY&lt;RET&gt;   Load root module
+                  and overlay loader
+</pre>
 <p>
 At this point you will see where the top of the root
 module is by looking at the Data readout from L80
@@ -69,25 +68,24 @@ module is by looking at the Data readout from L80
 the overlay base is to be. Lets put it at 200H and
 keep things nice and simple. To do this enter:
 </p>
-<p>
-/P:200&lt;RET&gt; Meaning load next bit at 200H.
-OVICRET&gt; and load in the 1st overlay.
-</p>
-<p>
-ROOT/N/E Save ROOT.COM and exit.
-</p>
+<pre>
+/P:200&lt;RET&gt;       Meaning load next bit at 200H.
+
+OV1&lt;RET&gt;          and load in the 1st overlay.
+
+ROOT/N/E          Save ROOT.COM and exit.
+</pre>
 <p>
 Now we have to create the overlay from the COM
 file using a debugger. I have used Gemdebug to
 create LINK lookalike overlay files. This is how it is
 done:
 </p>
-<p>
-BUG ROOT. COM&lt;RET&gt;
-</p>
-<p>
-F100, 1FF,0 Fill 256 byte header with 0&rsquo;s
-</p>
+<pre>
+BUG ROOT.COM&lt;RET&gt;
+
+F100,1FF,0   Fill 256 byte header with 0's
+</pre>
 <p>
 Now move the overlay section down to 200H using
 the M command. In this case we have been lucky as
@@ -95,9 +93,9 @@ the overlay was originally loaded into 200. If it had
 started at 0760H for example we would have to
 enter:
 </p>
-<p>
-M760, 800 , 200&lt;RET&gt;
-</p>
+<pre>
+M760,800,200&lt;RET&gt;
+</pre>
 <p>
 assuming that the overlay code finished at 800.
 </p>
@@ -113,20 +111,22 @@ and 102 to 12 and 00, then 107 &amp; 108 to 00 and 02.
 We now have a .OVL file in memory and we are
 ready to save it, enter:
 </p>
-<p>
-SAVE 2 0V1.0VL
-</p>
+<pre>
+SAVE 2 OV1.OVL
+</pre>
 <p>
 and the process is complete.
+</p>
+<p>
 Repeat this for OV2.
 </p>
 <p>
 Now create the economy version of the COM file by
 entering:
 </p>
-<p>
-L80 ROOT, OVLAY, ROOT/N/E
-</p>
+<pre>
+L80 ROOT,OVLAY,ROOT/N/E
+</pre>
 <p>
 and its all ready to go.
 </p>
@@ -138,4 +138,5 @@ As all this is done for you by the LINK program may
 I suggest again that you go out and get it and avoid
 the above.
 </p>
+<?php hline("100%", 2); ?>
 <?php columnEnd(2); ?>

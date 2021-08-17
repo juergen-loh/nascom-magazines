@@ -1,85 +1,76 @@
 <?php columnStart(1); ?>
 <p>
 rotation by an index hole which marks the start of all of the tracks on the
-Glek, This index hole passes over an optical sensor, once every revolution of
-the disk, thus indicating to the disk drive that the head Le about to find the
+disk. This index hole passes over an optical sensor, once every revolution of
+the disk, thus indicating to the disk drive that the head is about to find the
 beginning of the currently selected track.
 </p>
 <p>
-Two standards have evolved for the number of tracks on 4 5.25&Prime; disk These are
-43 tracks per inch (tpi) and 96 tpi although drives are now available which will
-achieve 192 tpi The useful recording aren of a 5.25&Prime; disk 4s just under one
-inch band and #0 40 or 80 track drives are usual although we all know of the
-Gemini and Superbrain 35 track 48 tpi formate, when the earliest drives had only
-that number of tracks Ie is fairly obvious that in order to increase the number
-Of tracks on a dick, che read/<?php spChar("zwsp"); ?>write heed must write oarrower stripe to the disk.
+Two standards have evolved for the number of tracks on a 5.25&Prime; disk. These are
+48 tracks per inch (tpi) and 96 tpi although drives are now available which will
+achieve 192 tpi. The useful recording area of a 5.25&Prime; disk is just under one
+inch band and so 40 or 80 track drives are usual although we all know of the
+Gemini and Superbrain 35 track 48 tpi formats, when the earliest drives had only
+that number of tracks. It is fairly obvious that in order to increase the number
+of tracks on a disk, the read/<?php spChar("zwsp"); ?>write head must write narrower stripe to the disk.
 </p>
 <p>
-number of sectors, Thes
+Each track on the disk is divided up into number of sectors, These sectors are
+generally one of 128, 256, 512 or 1024 bytes long depending upon the disk format
+chosen by the manufacturer. The Gemini SDDS format uses 128 byte sectors while
+the DDDS, QDSS and QDDS format use 512 byte sectors. On most disk systems, the
+sectors are written to the disk by the format program and disks formatted in
+this way are known as soft sectored disks. Some systems (Apple for instance) use
+hard sectored disks where the sectors are physically marked on the disk by small
+holes similar to the index hole.
 </p>
 <p>
-Each track on the disk {2 divided up into
-generally one of 128, 25
-</p>
-<p>
-fhe DDDS, QDsS and QDDS format
-Sectors are written to the disk by the format progr:
-this way ace known ae soft sectored disks. Som (apple for instance) use
-hurd Sectored diske where the physically marked on the disk by email
-holes similar to the index hol
-</p>
-<p>
-Consider, for a moment, the Gemini QDDS disk format. Diake in this format have
-two sides, 60 tracks per side with ten 512 byte sectors per track. The sides are
-pumbered 0 and 1, the tracks are numbered 0 to 79 and the sectors are numbered 0
-to&rdquo;. On some systems, the sector numbering atarte at tector 1 to thet the
-Bectors would be numbered from 1 to 10. Some computer manufacturers start vith
-Other numbers but G and 1 are the most common velvet track and
-tector information is physically written to the diek during formatting so that
-the disk controller chip can identify the current side, track and vector by
-Atk will be looked at
-</p>
-<p>
-rreheld on the disk
-eeoller can find &laquo;
-ctor on the track.
-Zee Be
+Consider, for a moment, the Gemini QDDS disk format. Disks in this format have
+two sides, 80 tracks per side with ten 512 byte sectors per track. The sides are
+numbered 0 and 1, the tracks are numbered 0 to 79 and the sectors are numbered 0
+to 9. On some systems, the sector numbering starts at sector 1 to so that the
+sectors would be numbered from 1 to 10. Some computer manufacturers start with
+other numbers but 0 and 1 are the most common values. The side, track and
+sector information is physically written to the disk during formatting so that
+the disk controller chip can identify the current side, track and sector by
+reading the disk. How this information is written to the disk will be looked at
+shortly but suffice to say that because the sector numbers are held on the disk
+as a prefix to the data held in those sectors, the disk controller can find a
+sector and read its data irrespective of the order of the sectors on the track.
+If the sectors on a track are not held in numerical order (ie: 0, 1, 2,..., 8,
+9) then they are said to be skewed,
 </p>
 <p>
 Sector skew and its companion sector translation are used to improve access
-times when reading from Or writing toe disk, Imagine that a disk has its
+times when reading from or writing to a disk. Imagine that a disk has its
 sectors numbered sequentially from say 0 to 9 and that we wish to read sectors 0
-and 1 in that order&rsquo; Having found and read sector 0, there will probably be &amp;
-delay while the processor is deciding that the next sector it wante 18 #ector 1
-Meanuhile che disk will still be turping and by the time that &laquo; request is sent
-tothe disk controller to read sector 1, that sector will have probably passed
+and 1 in that order. Having found and read sector 0, there will probably be a
+delay while the processor is deciding that the next sector it wants is sector 1.
+Meanwhile the disk will still be turning and by the time that a request is sent
+to the disk controller to read sector 1, that sector will have probably passed
 under the disk head and the controller will have to wait until sector 1 comes
-around again To overcome this problem, some manufacturers including Gemini
-iisks sectors to be physically skewed during formatting. If ve look at
-4a track on the disk, the sector tumbers&rsquo; aay Look Like thii
+around again. To overcome this problem, some manufacturers including Gemini
+allow the disk sectors to be physically skewed during formatting. If we look at
+a track on the disk, the sector numbers may look like this:
+</p>
+<p class="center">
+0 7 4 1 8 5 2 9 6 3
 </p>
 <p>
-o7s1es2963
+In the example given, if we now read sector 0, two sectors will be allowed to
+pass under the disk head before sector 1 comes round and the processor should
+now have plenty of time to make its mind up. Obviously, the amount of skew
+employed depends very much on the speed of the processor and too much skew is as
+bad as too little when it comes to slowing down disk access.
 </p>
 <p>
-two sectors vill be allowed to
-found and the processor should
-</p>
-<p>
-sple given, if we now read sector
-the disk head before sector 1 cor
-Row have plenty of time to make ite mind up. Obviously, the amount of skev
-fonployed depends very much on the speed of the processor and too much skew is as
-bad ax too Little when it comes to slowing down disk acce
-</p>
-<p>
-Sector translation uses # similar principle to sector skew except that it i 8
-Software measure to achieve the sane result. With sector translation, a table of
+Sector translation uses a similar principle to sector skew except that it is a
+software measure to achieve the same result. With sector translation, a table of
 sector numbers is held in the computer memory. This table may look Like that
 given below:
 </p>
-<p>
-oseszseia7
+<p class="center">
+0 3 6 9 2 5 8 1 4 7
 </p>
 <p>
 What happens now is that although the physical sectors will be in sequential

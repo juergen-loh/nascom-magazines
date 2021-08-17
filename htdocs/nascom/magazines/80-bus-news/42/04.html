@@ -1,29 +1,27 @@
 <?php columnStart(2, 2); ?>
-<p>
+<h4>
 Disadvantages
-</p>
-<p>
-1. For application programs chaining could
+</h4>
+<p class="indent">
+1. &nbsp; For application programs chaining could
 be a slower method of program management
 than overlays.
 </p>
-<p>
-2. Variables used in one program cannot
-</p>
-<p>
-, lusually) be passed across to the following
+<p class="indent">
+2. &nbsp; Variables used in one program cannot
+(usually) be passed across to the following
 program.
 </p>
-<p>
-3. The chain function that you use may error
+<p class="indent">
+3. &nbsp; The chain function that you use may error
 if it does not process the command tail in the
 same way as the CCP. For example the
 command:
 </p>
-<p>
+<pre class="indent">
 COMP PROG1.COM PROG2.COM
-</p>
-<p>
+</pre>
+<p class="indent">
 when issued normally would call the comparison
 program COMP to compare the two
 specified files. Normally the CCP would take
@@ -35,20 +33,20 @@ tail is then scrutinized and if it contains
 filenames then they are put at 5CH and 6CH
 respectively. The program is then executed.
 </p>
-<p>
+<p class="indent">
 When run COMP will take a look at the two
 File control blocks (FCB&rsquo;s) at 5CH and 6CH in
 order to get the names of the files that it is to
 compare.
 </p>
-<p>
+<p class="indent">
 So you can see from this that the chain
 command will cause an error if it does not
 perform all the above tasks when invoking a
 program that requires information in the
 command tail.
 </p>
-<p>
+<p class="indent">
 Using a simple chain module that simply read
 in the COM file and executed it reaked havoc
 when I chained Wordstar once. Of course the
@@ -59,9 +57,9 @@ on the disk as a document file, which is no
 use to anyone. I had forgotten to fill the FCB&rsquo;s
 with spaces before invoking Wordstar.
 </p>
-<p>
+<h4>
 Methods of program chaining
-</p>
+</h4>
 <p>
 Of course the simplest method of all is to use a
 language that has a chain command incorporated
@@ -84,18 +82,27 @@ I had a peep at the chain function in my ECO C
 library just to get some ideas, and here are the
 basics of how it works in English.
 </p>
-<p>
+<pre>
 chain(filename)
-open chain file using default FCB at SCH.
+
+      open chain file using default FCB at SCH.
+
 if unable to open then error and return.
+
 read loading routine into area just below BDOS.
+
 set stack pointer below loading routine.
+
 jump to loading routine.
+
 read in chain file.
-set stack pointer to BDOS &ndash;1.
+
+set stack pointer to BDOS -1.
+
 Jump to program at 100H.
-33}
-</p>
+
+{,33}
+</pre>
 <p>
 You should be able to find a diagram called
 &lsquo;Principles of the CHAIN function&rsquo; somewhere, if

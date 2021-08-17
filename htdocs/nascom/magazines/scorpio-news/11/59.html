@@ -1,88 +1,87 @@
 <?php columnStart(1); ?>
 <p>
-Aditionally, I ran Microsoft BASICRS and Digital Research Personal BASIC (both
-interpreted rather than compiled), on &laquo; CMB 8088 co-processor ina
-MultiBoard sytem with the Ceninl &lsquo;The clock frequency is
-BHHs, but according to their catalogue Gemini reckon that with the interaction
-With che 4Mite 60-BUs it Lt more Like OMBE overall; however, the mccucacy and
-Timing of boeh were somewhat poor!
+Additionally, I ran Microsoft BASIC86 and Digital Research Personal BASIC (both
+interpreted rather than compiled), on a GM888 8/16 bit 8088 co-processor in a
+MultiBoard system with the Gemini version of CP/M 86. The clock frequency is
+8MHz, but according to their catalogue Gemini reckon that with the interaction
+with the 4MHz 80-BUS it is more like 6MHz overall; however, the accuracy and
+timing of both were somewhat poor!
 </p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(212); ?>
+<?php columnChange(712); ?>
+<table class="bench-cpm">
+<tr><th></th><th>Time (secs.)</th><th>Value</th></tr>
+<tr><td>BASIC86</td><td>130</td><td>2179.85</td></tr>
+<tr><td>Personal BASIC</td><td>186</td><td>1080.76</td></tr>
+</table>
+<?php columnChange(312); ?>
+<?php columnEnd(12); ?>
+<p></p>
+<?php columnStart(1); ?>
 <p>
-Time (eece.) Value
-aastces 130 2179.05
-Personal BASIC ae 1080.76
-</p>
-<p>
-T understand that this version of BASIC86 (5.21) is the genuine, non-patched
-article but the version number is exactly the sane as ny version of MBASIC
-(Z80). &ldquo;res preciaion would have been Improved by using double precision for
-variable A, but the time penalty would be quite severe, The DRI BASIC tc an
-Interesting&rsquo; version capable of running MBASIC. programs which, in spite of ite
-poor precision in this application (6 figure accuracy) and its slowness, isa
-Getight to use.
+I understand that this version of BASIC86 (5.21) is the genuine, non-patched
+article but the version number is exactly the same as my version of MBASIC
+(Z80). Its precision would have been improved by using double precision for
+variable A, but the time penalty would be quite severe. The DRI BASIC is an
+interesting version capable of running MBASIC programs which, in spite of its
+poor precision in this application (6 figure accuracy) and its slowness, is a
+delight to use.
 </p>
 <p>
 Incidentally, I was surprised to see that Parkinson appeared not to have tried
-COMPAS with the HSA-888 cince T would have expected some improvement in
-execution ti
+COMPAS with the HSA-88B since I would have expected some improvement in
+execution time.
 </p>
-<p>
+<h3>
 Factors affecting Benchmark timings
-</p>
+</h3>
 <p>
-Several factors will ultimately affect the timing (and accuracy) of &laquo; Benchmark
+Several factors will ultimately affect the timing (and accuracy) of a Benchmark
 test:
 </p>
-<p>
+<h3>
 Hardware
-systen configuration and architecture vill have important effects on disk i/o,
-</p>
+</h3>
 <p>
+System configuration and architecture will have important effects on disk i/o,
 memory and screen access timings. Unless a test is specifically designed to
-test these, their usage should be as low a8 possible.
+test these, their usage should be as low as possible.
 </p>
+<h3>
+System clock frequency
+</h3>
 <p>
-Syatem clock frequency
+The importance of this is self-evident. A test which is run at 4 MHz should
+normally complete in a shorter time then one run at 2 MHz unless the language
+implementation is less than optimal (as, for example, the patching of the 8080-based
+Microsoft language is to run on the Z80 processor).
 </p>
-<p>
-The importance of this ie
-normally complete ina shorter
-implementation
-</p>
-<p>
-bated Microsoft Language
-</p>
-<p>
-&lsquo;ime then one run at 2 Mz unless the language
-je, the patching of the 6
-aor).
-</p>
-<p>
+<h3>
 Software
-</p>
+</h3>
 <p>
-&lsquo;The use of a compiled Language rather than one vhich is interpreted will always
-Speed things up and the accuracy will aot be affected. The main problem at far
-ae both accuracy and speed ace concerned lies in the efficiency of the
-Gigorithas which are used by the particular version of BASIC or whatever
-language, and the extent to which rounding excore may affect the results of
-calculations
+The use of a compiled Language rather than one which is interpreted will always
+speed things up and the accuracy will not be affected. The main problem as far
+as both accuracy and speed are concerned lies in the efficiency of the
+algorithms which are used by the particular version of BASIC or whatever
+language, and the extent to which rounding errors may affect the results of
+calculations.
 </p>
 <p>
 Om micros, most BASICS work (in single precision) to an accuracy of 8 digits but
 the BBC version uses 9 digits and CBASIC, 14. Rounding errors will be
-marginally 1 iais and uch ieee in ie digit, &lsquo;alenaugh, the
-er &ldquo;PASCAL, and&rsquo; both versione
-of this hae to be supplied as (SIN/COS)
+marginally less in 9 digit than 8 digit and much less in 14 digit, although
+the speed penalty may well be too great. Some versions of PASCAL and both versions
+of FORTRAN lack a TAN function; this has to be supplied as (SIN/COS), either as
+a user-supplied function included at compile-time, or possibly as an additional
+line of code such as TAN=SIN(A)/COS(A) (which will slow things down rather
+less). My FORTRAN tests used the latter approach.
 </p>
 <p>
-@ user-supplied function included at compile-time, or possibly a
-Line of code such as TAN-SIN(A)/COS(A) (which will slow things
-Tees). My FORTRAN teste used the latter approach.
-</p>
-<p>
-&lsquo;The Z80 version of BBC BASIC appears to be a lot faster and only margis
-accurate than the 6502 version. It is available for 60-BUS machin
-would certainly seem to bea good buy both in terms of price and facilities
+The Z80 version of BBC BASIC appears to be a lot faster and only marginally less
+accurate than the 6502 version. It is available for 80-BUS machines and it
+would certainly seem to be a good buy both in terms of price and facilities
 </p>
 <?php columnEnd(1); ?>

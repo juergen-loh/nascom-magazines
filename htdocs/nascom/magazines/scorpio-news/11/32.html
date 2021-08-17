@@ -1,106 +1,110 @@
 <?php columnStart(1); ?>
-<p>
-2) = Shut-down after 1 off. No new logon is allowed, and shut-di
-occurs when the 1 Loge-off. If a print epool file Le in progres
-Chis will be aborted and spooling of that file will commence again, from
-the beginning, the next time the network ie run.
-</p>
-<p>
-3) &ndash; Shut-down after last log-off and end of spool file. No new log-on is
-allowed. &ldquo;spooling &lsquo;continues. When the Last user hae logged off the file
-that is being spooled at that time ie completed, and then Server operation
-is&rdquo; aboreed
-</p>
-<p>
-4) &ndash; Shut-down after last Log-off and last spool-file. No new log-on is
-alloued&rdquo; &lsquo;spooling continues&rdquo; Wien the Iast user has logged off ALL spool
-files are printed, and then the Server operation is aborted
-</p>
-<p>
-5) = Ignore this shut-down request, and return to normal Server operation.
-</p>
+<table>
+<tr><td>
+2)&nbsp;&ndash;</td><td>Shut-down after last log-off. No new logon is allowed, and shut-down
+occurs when the last user logs-off. If a print spool file is in progress
+this will be aborted and spooling of that file will commence again, from
+the beginning, the next time the network is run.
+</td></tr>
+<tr><td>
+3)&nbsp;&ndash;</td><td>Shut-down after last log-off and end of spool file. No new log-on is
+allowed. Spooling continues. When the last user has logged off the file
+that is being spooled at that time is completed, and then Server operation
+is aboreed
+</td></tr>
+<tr><td>
+4)&nbsp;&ndash;</td><td>Shut-down after last log-off and last spool-file. No new log-on is
+allowed. Spooling continues. When the last user has logged off ALL spool
+files are printed, and then the Server operation is aborted.
+</td></tr>
+<tr><td>
+5)&nbsp;&ndash;</td><td>Ignore this shut-down request, and return to normal Server operation.
+</td></tr>
+</table>
 <p>
 As soon as the first &lt;ESC&gt; Ctrl C is hit, all NEW logons will be refused, but
-NDOS Function 41 (User Logon) will be honoured to allow user area change:
-Providing the station is already Logged on.
+NDOS Function 41 (User Logon) will be honoured to allow user area changes,
+providing the station is already logged on.
 </p>
 <p>
-he Broadcast 1 set
-</p>
-<p>
-Once @ Closedoun option 2-4 has been selected, an auto
-iv about to clow
-</p>
-<p>
-1 logged in Seatione, intorming th
-</p>
-<p>
-&ldquo;ston the Logon diepl
-&lsquo;Gelved the broadcast&rdquo; &lsquo;This tutouatic 7
-NGgsc&gt; Ctrl C&rsquo; to restore the Closedown menu, and then Fe
+Once a Closedoun option 2-4 has been selected, an automatic Broadcast is set up
+for all logged in Stations, informing them that the system is about to close.
+The absence of a &lsquo;*&rsquo; on the Logon display indicates that the Station has
+received the broadcast. This automatic message may be re-sent by entering
+&lsquo;&lt;ESC&gt; Ctrl C&rsquo; to restore the Closedown menu, and then reselecting the required
 option.
 </p>
-<p>
+<h4>
 Display Directory Space
-Ths shows the number of directory entries free on the Server drives.
-</p>
+</h4>
 <p>
-DOs calls
-New Function calls have been added for use from Workstations and Superstations:
+This shows the number of directory entries free on the Server drives.
 </p>
+<h4>
+NDOS calls
+</h4>
 <p>
-Function $1
+New function calls have been added for use from Workstations and Superstations:
 </p>
-<p>
-Return Free Space on Server Drives
-Funcelon 32 B
-</p>
-<p>
-Return Count of Free Directory Entries on Server Drives
-</p>
-<p>
-Function 33 _ Return HultiNet Station Logon Vector
-Function 34 = Return Spool Queue Length
-</p>
-<p>
-Function 55 &ndash; is Reserved for internal use by NDOS
-Function 56 &ndash; is Reserved for internal are by NDOS
-Function 37 &ndash; Return Current User Logon Number
-</p>
-<p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(12); ?>
+<?php columnChange(1112); ?>
+<table>
+<tr><td>Function&nbsp;51</td><td>&ndash;</td><td>Return Free Space on Server Drives</td></tr>
+<tr><td>Function&nbsp;52</td><td>&ndash;</td><td>Return Count of Free Directory Entries on Server Drives</td></tr>
+<tr><td>Function&nbsp;53</td><td>&ndash;</td><td>Return MultiNet Station Logon Vector</td></tr>
+<tr><td>Function&nbsp;54</td><td>&ndash;</td><td>Return Spool Queue Length</td></tr>
+<tr><td>Function&nbsp;55</td><td>&ndash;</td><td>is Reserved for internal use by NDOS</td></tr>
+<tr><td>Function&nbsp;56</td><td>&ndash;</td><td>is Reserved for internal are by NDOS</td></tr>
+<tr><td>Function&nbsp;57</td><td>&ndash;</td><td>Return Current User Logon Number</td></tr>
+</table>
+<?php columnEnd(12); ?>
+<p></p>
+<?php columnStart(1); ?>
+<h4>
 NETWORK BROADCAST
-Both Superstations and Workstations eive Brosdcast messages These vill
-appear in the top three lines of the screen displey, and all operation will be
-helted until the message is acknowledged by pressing the &lt;ESC&gt; key twic
-</p>
+</h4>
 <p>
-PAsswoRDs
-When a user responds to a request to enter a Pi
-makes is no longer displayed on the screen
+Both Superstations and Workstations may receive Broadcast messages These will
+appear in the top three lines of the screen display, and all operation will be
+halted until the message is acknowledged by pressing the &lt;ESC&gt; key twice.
 </p>
+<h4>
+PASSWORDS
+</h4>
 <p>
-word, the entry that the user
+When a user responds to a request to enter a Password, the entry that the user
+makes is no longer displayed on the screen.
 </p>
+<h3>
+New Utilities
+</h3>
+<h4>
+SETBOOT
+</h4>
 <p>
-Hew Ueiiiete
+This is equivalent to the standard Gemini disk based CONFIG program, and it may
+be used to see various user options in the Workstation boot file, such as
+default List device, serial port parameters (baud rate, data Bits etc), auto-execute
+file etc.
 </p>
+<h4>
+CU
+</h4>
 <p>
-seraoot
-This is equivalent to the standard Gemini disk based CONFIG program, and it
-be used to see various user options in the Workstation boot file, such a
-decaule List device, serial port parameters (baud rate, data Bits ete},
+This utility may be used to display various information on the current status of
+the network. Options include: Space remaining on Server drives. Number of
+directory entries available. Current users on the system. Number of files in
+the print spool queue. Current and original user number and station umber.
 </p>
+<h4>
+MAIL
+</h4>
 <p>
-cu
-&lsquo;This utility may de used to display variou
-the network. Options include: Space vei
-directory entries available. Current usera on the system.
-the print spool queue Current and original user number and station umber
-</p>
-<p>
-Mart
 This utility allows messages or files to be sent by any user to a &lsquo;postbox&rsquo; for
-receipe by another specified user. Tr also allows that user to fecelve any
-items &lsquo;that are in che &ldquo;postbox&rdquo; addressed &lsquo;co him.
+receipt by another specified user. It also allows that user to receive any
+items that are in the &lsquo;postbox&rsquo; addressed to him.
 </p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

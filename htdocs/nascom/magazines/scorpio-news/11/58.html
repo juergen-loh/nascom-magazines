@@ -1,79 +1,76 @@
+<?php columnStart(212); ?>
+<?php columnChange(712); ?>
+<table class="bench-cpm">
+<tr><th>         </th><th> CP/M 2.2</th><th>CP/M 3.0 </th></tr>
+<tr><td>COMPAS   </td><td>48.2 secs</td><td>47.1 secs</td></tr>
+<tr><td>HP4      </td><td> 8.0 secs</td><td> 7.9 secs</td></tr>
+<tr><td>ProPascal</td><td>11.5 secs</td><td>11.3 secs</td></tr>
+</table>
+<?php columnChange(312); ?>
+<?php columnEnd(12); ?>
+<p></p>
 <?php columnStart(1); ?>
 <p>
-ceyM 22 CP/M 3.0
-compas 4e2 secs 47. secs
-Pe 8.0 secs 7.9 gece
-ProPancal ALS secs 11,3 gece
+Parkinson (1983) utilized a version of a much more rigorous benchmark while
+testing the HSA-88B High Speed Arithmetic processor. None of the PCW benchmarks
+tested the accuracy of the particular language/<?php spChar("zwsp"); ?>machine combinations using the
+intrinsic arithmtic/<?php spChar("zwsp"); ?>trigonometrical functions of BASIC or PASCAL, but Parkinson
+found an excellent test in Duncan (1983) which provides some interesting
+results. The program used is as follows:
+</p>
+<pre class="indent">
+5 REM Benchmark from Dr Dobbs' Journal no. 83 (120-122)
+10 NZ=2500
+20 A=1
+30 FOR IZ=1 TO NZ-1:A=TAN(ATN(EXP(LOG(SQR(A*A)))))+1:NEXT IZ
+40 PRINT USING "A = &pound;&pound;&pound;&pound;.&pound;&pound;&pound;&pound;";A
+</pre>
+<p>
+The purpose of the program is to produce a result as close as possible to 2500
+in as shore a time as possible. Parkinson produces, results using both compiled
+and interpreted MBASIC as well as a modified MBASIC. HiSoft HP5 Pascal and a
+simple assembly language version; the last three were run using the HSA-88B, and
+all were run at 4MHz.
 </p>
 <p>
-Parkinson (1983) utilized # version of a much more rigorous benchmark whili
-testing the HSA-e68 High Speed Arithaetic processor. None of the PCY benchmarks
-tested the accuracy of the particular language/<?php spChar("zwsp"); ?>auchine combinations using the
-intrinsic arithetic/<?php spChar("zwsp"); ?>erigonometrical funcefons of BASIC or PASCAL, but Parkinson
-Found an excellent test in Duncan (1983) whick provides some interesting
-results. The program used is a8 follows:
+I used CBASIC, COMAL-80, PASCAL and FORTRAN versions of the program and also
+tried it out on a UK101 and BBC B (both in its standard version and with the
+TORCH Z80 processor). The results are shown below, with the MBASIC results for
+comparison.
 </p>
 <p>
-5 REM Benchmark from Dr Dobbs&rdquo; Journal no, 83 (120-122)
-Jo&rsquo;nz=2500
-</p>
-<p>
-20 And
-</p>
-<p>
-30 FOR 1201 70 NZ-1:A-TAN(ATN(EXE(LOG(SQR(AYA)))))#2:NEXT 1
-0 PRINT USING &ldquo;A = E&pound;eC.E0EE".A
-</p>
-<p>
-2 possible to 2500
-og both complied
-an
-</p>
-<p>
-The purpose of the program is Co produce
-ina shore a time as possible. Parkinson produces, resul!
-weil as A modified HEASIC, HiSoft HPS Pascal
-</p>
-<p>
-ions of the program and also
-tried Lt out one UKIOL onda BBC 8 (both in its standard version and with the
-TORCH 260 processor). The results are shown below, with the MEASIC results for
-comparixon:
-</p>
-<p>
-MBASIC and Fortran 80 vork to 8 digit, ProFortran and ProPascal to 7 digit
-accuracy in single precision snd respectively, to 17 and 14 digit precision when
-In double precision. COMPAS and COMAL have no double precision facility and
-work respectively to 12 and 7 digit accuracy. The BBC BASICs (both 6502 and 260
-Versions) use 9 digit accuracy.
-</p>
-<p>
-cpm 22 &copy; CP/M 3.0
-MBASIC (interpreted) 2304.86 in 225 gece 218 gece,
-* (compiied) 2304.86 in 183 sece
-</p>
-<p>
-BASIC (semi-compiled) 2485.76 in 2200 sece*
-GOMAL-80 (interpreted) 240710 in 69 sec:
-</p>
-<p>
-Profortean (compiled) 2775.50 4n 107 secet# 103
-Fortran 86 ( *) 2506.86 in 183 seces* 180 gece
-conpas c 2500.00 in 330 sece* 306 secs
-ape 319.67 in 54 secs! 52 secs!
-</p>
-<p>
-&lsquo;
-Propascal (0 * 2772-60 in 106&rsquo;secs** 102 &ldquo;secs
-</p>
-<p>
-BEC B Basic (interpreted) 2499.69 in 340 secs
-Bac z00 Basie ( 2498.82 in 188 secs
-MHi0i sk tcronofe BASIC Ds0sas in 301 see
-</p>
-<p>
-+ 4 digit accuracy
-sy TAN nok Implemented: weer supplied function (S1H/ Cos)
-1 &ldquo;Tcannot understand thie result at all &ndash; any offers?
+MBASIC and Fortran 80 work to 8 digit, ProFortran and ProPascal to 7 digit
+accuracy in single precision and respectively, to 17 and 14 digit precision when
+in double precision. COMPAS and COMAL have no double precision facility and
+work respectively to 11 and 7 digit accuracy. The BBC BASICs (both 6502 and Z80
+versions) use 9 digit accuracy.
 </p>
 <?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(12); ?>
+<?php columnChange(912); ?>
+<table class="bench-parkinson">
+<tr><th></th><th></th><th>CP/M 2.2</th><th>CP/M 3.0</th></tr>
+<tr><td>MBASIC</td><td>(interpreted)</td><td>2304.86 in 225 secs</td><td>218 secs</td></tr>
+<tr><td> &nbsp; &nbsp; &nbsp; "</td><td>(compiled)</td><td>2304.86 in 183 secs</td><td></td></tr>
+<tr><td>CBASIC</td><td>(semi-compiled)</td><td>2485.76 in 2200 secs*</td><td></td></tr>
+<tr><td>COMAL-80</td><td>(interpreted)</td><td>2407.10 in 89 secs</td><td></td></tr>
+<tr><td><br></td><td></td><td></td><td></td></tr>
+<tr><td>ProFortran</td><td>(compiled)</td><td>2775.50 in 107 secs**</td><td>103 secs</td></tr>
+<tr><td>Fortran 80</td><td>( &nbsp; &nbsp; &nbsp; " &nbsp; &nbsp; &nbsp; &nbsp; )</td><td>2304.86 in 185 secs**</td><td>180 secs</td></tr>
+<tr><td>COMPAS</td><td>( &nbsp; &nbsp; &nbsp; " &nbsp; &nbsp; &nbsp; &nbsp; )</td><td>2500.00 in 330 secs**</td><td>306 secs</td></tr>
+<tr><td>HP4</td><td>( &nbsp; &nbsp; &nbsp; " &nbsp; &nbsp; &nbsp; &nbsp; )</td><td>319.67 in 54 secs!</td><td>52 secs!</td></tr>
+<tr><td>ProPascal</td><td>( &nbsp; &nbsp; &nbsp; " &nbsp; &nbsp; &nbsp; &nbsp; )</td><td>2772.60 in 106 secs**</td><td>102 secs</td></tr>
+<tr><td><br></td><td></td><td></td><td></td></tr>
+<tr><td>BBC B Basic</td><td>(interpreted)</td><td>2499.69 in 310 secs</td><td></td></tr>
+<tr><td>BBC Z80 Basic</td><td>( &nbsp; &nbsp; &nbsp; &nbsp; " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</td><td>2498.82 in 188 secs</td><td></td></tr>
+<tr><td colspan=2>UK101 8k Microsoft BASIC</td><td>2506.44 in 301 secs</td><td></td></tr>
+</table>
+<p></p>
+<table>
+<tr><td>*</td><td>14 digit accuracy</td></tr>
+<tr><td>**</td><td>TAN not implemented; user supplied function (SIN/COS)</td></tr>
+<tr><td>!</td><td>I cannot understand this result at all &ndash; any offers?</td></tr>
+</table>
+<?php columnChange(212); ?>
+<?php columnEnd(12); ?>

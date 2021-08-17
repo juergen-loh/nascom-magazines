@@ -1,131 +1,100 @@
 <?php columnStart(1); ?>
 <p>
-&lsquo;The accuracy of the results obtained with a computer depends critically upon the
-</p>
-<p>
-level of precision to which the language implementation does its calcdlattons &ndash;
-</p>
-<p>
-(or any do which the accuracy of the result bad co be
-</p>
-<p>
-i) would need to be structured
-</p>
-<p>
-pos eof algnitcant flgures were employed snd 0
-</p>
-<p>
-plied. can be achieved by the use of double precision
-</p>
-<p>
-arithmetic but there ie a time and memory penalty for its use. On the other
-</p>
-<p>
-hand. Le program to calculate the acess of triangles or to work out
-</p>
-<p>
-nts needs only single precision arithmetic &ndash; the default on most
-</p>
-<p>
-&ldquo;and rounding off may be permissible. The use of built-in &lsquo;trace&rsquo; oF
-</p>
-<p>
+The accuracy of the results obtained with a computer depends critically upon the
+level of precision to which the language implementation does its calculations &ndash;
+so an engineering program (or any in which the accuracy of the result had to be
+guaranteed to a larger number of significant figures) would need to be structured
+so that the largest possible number of significant figures were employed and no
+&lsquo;rounding off&rsquo; was applied. This can be achieved by the use of double precision
+arithmetic but there is a time and memory penalty for its use. On the other
+hand, a simple program to calculate the areas of triangles or to work out
+interest payment needs only single precision arithmetic &ndash; the default on most
+systems &ndash; and rounding off may be permissible. The use of built-in &lsquo;trace&rsquo; of
 debugging facilities can allow intermediate results to be examined if final
+results are not as would be expected. One should not accept the computer&rsquo;s
+results uncritically.
 </p>
-<p>
-Fesults ate not at would be expected. One should not accept the computer&rsquo;s
-Feaults uneritically&rdquo;
-</p>
-<p>
+<h3>
 Resource efficiency
+</h3>
+<p>
+Two major constraints on most microcomputer users are the amount of directly
+addressable memory and the execution time of a program; a large adventure
+program may use most if what is available &ndash; this is not usually a problem but
+tends to slow things down a bit unless the code is efficient written. Multi-statement
+lines can help economize on memory usage but this should be employed
+with care if the legibility of the program is not to suffer. Some maths
+programs in which large arrays of data are processed may use lots of memory and
+take a long time to do it. In both cases, the use of memory and time can  be
+optimized by cutting out unnecessary steps and optimizing where possible. A few
+examples may help illustrate this point.
 </p>
 <p>
-&lsquo;Two major constraints on most microcomputer users are the anount of directly
-Sie memory and the execution tise of progcam, c large adventure
+It is quicker to use addition and subtraction rather than multiplication so
+X=Y+Y is faster than X=2*Y. Multiplication is faster than division so:
+</p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(6); ?>
+<?php columnChange(6); ?>
+T=1/Z<br>
+U=X*T<br>
+V=Y*T<br>
+W=A*T
+<?php columnChange(26); ?>
+<br>is faster than<br><br>
+<?php columnChange(6); ?>
+U=X/Z<br>
+V=Y/Z<br>
+W=A/Z
+<?php columnChange(6); ?>
+<?php columnEnd(6); ?>
+<p></p>
+<?php columnStart(1); ?>
+<p>
+Exponentiation is very slow, particularly when the &lsquo;power&rsquo; used is a non-integer.
+It is a lot quicker to multiply:
 </p>
 <p>
-ost of what aly ape
+T=X*X*X is quicker than T=X^3 (or T=X**3) and a lot quicker than T=X**3.0 which
+implies that a non-integer power is used (this does not apply to BASIC as far as
+I am aware).
 </p>
 <p>
-it down a bit unl
-</p>
-<p>
-&lsquo;cant help economize on menor
-</p>
-<p>
-re if the legibility of the program i
-</p>
-<p>
-ys in which large arcaye of dat
-</p>
-<p>
-Tong time vo do tt
-</p>
-<p>
-&lsquo;optimized By cutting out unnecessary steps and optimizing whece possible. A few
-</p>
-<p>
-ckanples may help iilusteate this point.
-</p>
-<p>
-It 2 quicker to use addition and subtraction rather than multiplication #0
-Aovey fa faever than Xe20Y. Multiplication is faster chan division s
-</p>
-<p>
-rere vexy2
-exer is faster than vo/z
-vover woalz
-went
-</p>
-<p>
-caponentiation is very slow, particularly when the &lsquo;power&rsquo; used is a non-Integer.
-Te de &laquo; lot quicker to multiply:
-</p>
-<p>
-ToXeKeK {9 quicker than TeX"3 (or ToX*#3) and a lot quicker than Tox
-Implies that a non-integer pover is used (this does not apply to BASIC
-1am avare).
-</p>
-<p>
-&lsquo;Always use the supplied functions such
-</p>
-<p>
-SQR or SQRT; the results are usually
-ore accurate and more quickly obtained than If you devise your own vers
-</p>
-<p>
-Use a fractional exponent! If you need to write your own functions (such
-which {en&rsquo;e found in most PASCALe oF PORTRANS) do check your vereion welng
-Suitable values and paper&rsquo; and penctl
+Always use the supplied functions such as SQR or SQRT; the results are usually
+more accurate and more quickly obtained than if you devise your own version or
+use a fractional exponent! If you need to write your own functions (such as TAN
+which isn&rsquo;t found in most PASCALs or FORTRANs) do check your version using
+suitable values and paper and pencil.
 </p>
 <p>
 Inefficient programmers often repeat calculations within the same statement or
+loop:
 </p>
-<p>
-Toop:
+<p class="indent">
+A=B+C-X+4*(B+C)/Y &nbsp; could run faster as two statements:
 </p>
-<p>
-AcBec-K+4*(BtC)/Y could run faster a two statements:
-</p>
-<p>
-panic
-ASPoasAAPY
+<p class="indent">
+P=B+C<br>
+A=P-X+4*P/Y
 </p>
 <p>
 Further savings in time can be gained by examining the way in which arrays are
-</p>
-<p>
-fcceased. ff an ar a several times in a
-Calculations, the valu ay element, can be aesigned to&rsquo;s variable and
-this variable deed in the calcuZatione which follow:
-</p>
-<p>
-2X13) Aepexct,s)
-</p>
-<p>
-Asbo, ds better than Tacexcr. 3)
-</p>
-<p>
-tncez
+accessed. If an array element is used several times in a series of
+calculations, the value of the array element, can be assigned to a variable and
+this variable used in the calculations which follow:
 </p>
 <?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(6); ?>
+<?php columnChange(6); ?>
+Z=X(I,J)<br>
+A=B*Z<br>
+L=C*Z
+<?php columnChange(26); ?>
+<br>is better than<br><br>
+<?php columnChange(6); ?>
+A=B*X(I,J)<br>
+L=C*X(I,J)
+<?php columnChange(6); ?>
+<?php columnEnd(6); ?>

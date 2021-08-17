@@ -1,83 +1,83 @@
 <?php columnStart(1); ?>
+<table>
+<tr><td>
+b)&nbsp;^T,^P&nbsp;&ndash;</td><td>Send a Form Feed to printer, causing it to advance to top of
+next page, and reset BIOS lines per page count.
+</td></tr>
+<tr><td>
+c)&nbsp;^T,^R&nbsp;&ndash;</td><td>Reset IVC/SVC to 80 wide. Useful for the (very) rare time
+when screen corrupts or gets out of vertical sync.
+</td></tr>
+<tr><td>
+d)&nbsp;^T,^N&nbsp;&ndash;</td><td>Switch attached (Epson) Printer to Normal Print.
+</td></tr>
+<tr><td>
+e)&nbsp;^T,^C&nbsp;&ndash;</td><td>Switch Printer to Compressed Mode.
+</td></tr>
+<tr><td>
+f)&nbsp;^T,^S&nbsp;&ndash;</td><td>Reset Screen Paging Flag to 0, to enable paging if a &lsquo;W&rsquo; or
+&lsquo;K&rsquo; was issued and a Warm/<?php spChar("zwsp"); ?>Cold Boot is undesirable.
+</td></tr>
+<tr><td>
+g)&nbsp;^T,^T&nbsp;&ndash;</td><td>Pass ^T on to calling program.
+</td></tr>
+</table>
 <p>
-b) &lsquo;T,7P &ndash; Send a Form Feed to printer, causing it to advance to top of
-next page, and reset&rsquo; BIOS Tines per page count.
+The listing above, on pages 48 and 50, shows in upper case part of the
+original BIOS code (MAP BIOS), and lower case shows the modifications, but note
+that the cursor definitions have been moved into CURON/<?php spChar("zwsp"); ?>CUROFF to fit in with
+other BIOS modifications.
 </p>
 <p>
-8) &ldquo;TR = Reset IVC/SVC to 60 wide. Useful for the (very) rare time
-when screen corrupts or gets out of vertical sync
+If there is plenty of spare space in the BIOS, quite a number of printer
+support features could be incorporated, and even function key redefinitions.
 </p>
+<h3>
+Appendix 1
+</h3>
 <p>
-*W &ndash; Switch attached (Epson) Printer to Normal Print
-</p>
-<p>
-= Switch Printer to Compressed Mode
-</p>
-<p>
-&ndash; Reser Screen Paging Flag to 0, to enable paging 1f &laquo; &ldquo;Y&rdquo; oF
-&lsquo;K&rsquo; was issued and a Wara/<?php spChar("zwsp"); ?>Cold Boot {s undesirabl
-</p>
-<p>
-B) 71.7 &ndash; Pass ^T on to calling program.
-</p>
-<p>
-Listing abor in upper case part of the
-original BIOS code (MAP BIOS), fe shows the modifications, but note
-that the cursor definicions have been moved (nto CURON/<?php spChar("zwsp"); ?>CUROFF to fit in with,
-&lsquo;other BIOS modifications
-</p>
-<p>
-If there is plenty of spare space in the BI05, quite a number of printer
-support Features could be incorporated, and even function Key redefinitions.
-</p>
-<p>
-&lsquo;Appendix 1
-</p>
-<p>
-I have detected &laquo; problem with BDOSZ. Recently I have added a Winchester
-isk to a Gemini system. Despite the fact that CP/M Plus is available, CP/H 2.2
-fon the machine in question has been customized extensively slong the lines of
-this article and thie operating aystem is still preferred for many purposes.
-Consequently T needed compatibility between CP/M 2.2 and CP/M Plus in Winchester
-support eventually cobbled together # CBIOS with all of the re:
-fFetlures and compatiote Disk format by using&rsquo; couple of MAP CP/M 2.2 BIOS&rsquo;s end
+I have detected a problem with BDOSZ. Recently I have added a Winchester
+disk to a Gemini system. Despite the fact that CP/M Plus is available, CP/M 2.2
+on the machine in question has been customized extensively along the lines of
+this article and this operating system is still preferred for many purposes.
+Consequently I needed compatibility between CP/M 2.2 and CP/M Plus in Winchester
+support eventually cobbled together a CBIOS with all of the required
+features and compatible Disk format by using a couple of MAP CP/M 2.2 BIOS&rsquo;s and
 some routines from SYS.
 </p>
 <p>
-CP/M 22 at that stage had CPZ and BDOSZ in operation I then found that
-</p>
-<p>
-th CP/M 2.2 and CP/M Plus were treating the floppy drives the same in respect
+CP/M 2.2 at that stage had CCPZ and BDOSZ in operation. I then found that
+with CP/M 2.2 and CP/M Plus were treating the floppy drives the same in respect
 of the way the Directory Block allocation war being written, but wrote them
-Gicferently to the Winchester. CP/M Plus was putting a 00 byte between. block
-Bumbers on the Winnie directory, but CP/M 22 was not. After reverting to
-standard CP/M 2.2 BOOS the Directory on the Winnie was the same on both versions
-of CP/M The 00 byte is not present on the floppy directory under either
-operating system but present on the Winnie under both. If anyone knows of &amp;
-patch for BD0S2 to make it treat the Winnie properly, I would be pleased to
-Obtain detail
+differently to the Winchester. CP/M Plus was putting a 00 byte between block
+numbers on the Winnie directory, but CP/M 2.2 was not. After reverting to
+standard CP/M 2.2 BDOS the Directory on the Winnie was the same on both versions
+of CP/M. The 00 byte is not present on the floppy directory under either
+operating system but present on the Winnie under both. If anyone knows of a
+patch for BDOSZ to make it treat the Winnie properly, I would be pleased to
+obtain details.
 </p>
-<p>
+<h3>
 Appendix 2
-</p>
+</h3>
 <p>
 Some useful References:
 </p>
-<p>
-2) Disks and CP/M L.m.c.00 Neus
-2) Customizing your caros 80BUS News. Vol
-5) SYS-Latest Development: 80BUS News Vol
-4) sys is dead &ldquo;long Live 7 8080S News. Vol
-5) CBIOS Real time Clock BOBUS News: Vol
-6) CP/M Features &amp; Facilities ceMuG UK&rdquo; Vol
-1) The BIOs Geme UK Vol
-8) The Console Command Processor CPMUG U.K. Vol
-9) Z0PR Replacement CCP Cems U.K. Vol
-10) The SB180.- Software Byte. oct 1985
-</p>
-<p>
-11) Sour of cra Sams 4 C0. (U-S-A.
-12) Mastering CP/M Sybex (U.5.A.)
-13) CPym mantals. Digital Research.
-</p>
+<table style="width: 100%">
+<tr><td>1) </td><td>Disks and CP/M					</td><td>I.N.M.C.80 News No. 5</td></tr>
+<tr><td>2) </td><td>Customizing your CBIOS			</td><td>80BUS News. Vol 2, Iss 1</td></tr>
+<tr><td>3) </td><td>SYS-Latest Developments			</td><td>80BUS News. Vol 2, Iss 1</td></tr>
+<tr><td>4) </td><td>SYS is dead &ndash; long Live ?	</td><td>80BUS News. Vol 2, Iss 4</td></tr>
+<tr><td>5) </td><td>CBIOS Real time Clock			</td><td>80BUS News. Vol 2, Iss 6</td></tr>
+<tr><td>6) </td><td>CP/M Features &amp; Facilities	</td><td>CPMUG U.K. Vol 1, No 1.</td></tr>
+<tr><td>7) </td><td>The BIO							</td><td>CPMUG U.K. Vol 1, No 5.</td></tr>
+<tr><td>8) </td><td>The Console Command Processor	</td><td>CPMUG U.K. Vol 1, No 8.</td></tr>
+<tr><td>9) </td><td>ZCPR Replacement CCP			</td><td>CPMUG U.K. Vol 2, No 2.</td></tr>
+<tr><td>10)</td><td> The SB180 &ndash; Software		</td><td>Byte. Oct 1985</td></tr>
+<tr><td>11)</td><td> Soul of CP/M					</td><td>Sams &amp; Co. (U.S.A.)</td></tr>
+<tr><td>12)</td><td> Mastering CP/M					</td><td>Sybex. (U.S.A.)</td></tr>
+<tr><td>13)</td><td> CP/M manuals.					</td><td>Digital Research.</td></tr>
+</table>
+<p></p>
+<?php hline("20%"); ?>
 <?php columnEnd(1); ?>

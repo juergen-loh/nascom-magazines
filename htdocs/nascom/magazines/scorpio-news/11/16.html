@@ -1,87 +1,85 @@
 <?php columnStart(1); ?>
 <p>
-where u is the physical or logical unit number, &pound; {8 the #
-dated FORMAT statement and kis. list of variabl
-&lsquo;although it is optionally possible to use the form:
+where u is the physical or logical unit number, f is the statement label of the
+dated FORMAT statement and k is a list of variable names, separated by
+commas although it is optionally possible to use the form:
+</p>
+<p class="center">
+READ (u,f,ERR=L1,END=L2) k &nbsp; &nbsp; &nbsp; or &nbsp; &nbsp; &nbsp; WRITE (u,f,ERR=?L1) k
 </p>
 <p>
-READ (U,EERRALL,ENDSL2) kor WRITE (u,f,ERR*LL)
-</p>
-<p>
-where Li is the label of the statement to which control is passed in the event
-of an I/O ERROR and L2 the ent Label &lsquo;to which control {s passed Lf an END
+where L1 is the label of the statement to which control is passed in the event
+of an I/O ERROR and L2 the statement label to which control is passed if an END
 OF FILE is encountered. These are extensions of data I/O not found in the 1966
-standard)
+standard).
 </p>
 <p>
-The Logical Unie Numbers referr
+The Logical Unit Numbers referred to above are normally assigned as follows:
 </p>
 <p>
-to above are normally asrigned as follows:
-</p>
-<p>
-Unite 1, 3, 4 and $ are assigned to the console/VDU; Unit 2 Le assigned to the
-printer &lsquo;Units 6 &ndash; 10 are assigned to disk files. Units 11 &ndash; 235 may be
-Bseigned as the user wishes (and units 1-10 may sito be re-assigned if you
-really vant tol)
+Units 1, 3, 4 and 5 are assigned to the console/VDU; Unit 2 is assigned to the
+printer. ;Units 6 &ndash; 10 are assigned to disk files. Units 11 &ndash; 255 may be
+assigned as the user wishes (and units 1 &ndash; 10 may also be re-assigned if you
+really want to!)
 </p>
 <p>
 For most purposes the default assignments will be found adequate but for further
-information, the appropriate reference manual ust be consulted
+information, the appropriate reference manual must be consulted.
 </p>
 <p>
-&lsquo;A typical READ statement will Look Like
+A typical READ statement will Look like:
 </p>
-<p>
-READ(S.35) Rob
-35 FORHAT(I3,2%,14)
-</p>
+<pre class="indent">
+   READ(5,35) K,L
+35 FORMAT(I3,2X,I4)
+</pre>
 <p>
 An which two data entries, K and L are read in from the keyboard with field
 widths of 3 and 4 respectively, separated by a blank field of 2 spaces. The
-Seme holds for a WRITE statement since, if it is in the same program subroutine,
+same holds for a WRITE statement since, if it is in the same program subroutine,
 </p>
-<p>
-WRITE(2,35) KL.
-</p>
+<pre class="indent">
+   WRITE(2,35) K,L
+</pre>
 <p>
 will cause the values of K and L to be output on the printer, starting in column
-Yland separated by 2 spaces Statement numbers muse not be duplicated in the
-game sutcoutine but more than one READ/<?php spChar("zwsp"); ?>WRITE statement may reference &amp; given
-FORMAT statement
+1 and separated by 2 spaces. Statement numbers muse not be duplicated in the
+same subroutine but more than one READ/<?php spChar("zwsp"); ?>WRITE statement may reference a given
+FORMAT statement.
 </p>
 <p>
-Alphanumeric text material (letters, symbols and figures) may be used as progr:
+Alphanumeric text material (letters, symbols and figures) may be used as program
 I/O by means of a FORMAT statement in one of two ways which employ Hollerith
 field descriptors the first (and less convenient) method involves the
-Programmer. in countang the exect number of characters and spaces to be input oF
-Durput = tedious for ong tities, while the other simply involves placing the
-entire text between single quotes {") | In both cases, che program statement
-Bust not run beyond column 72, if &raquo; longer text string {s needed, then a
-Continuation line if used, The statements
+programmer in counting the exact number of characters and spaces to be input or
+output &ndash; tedious for long titles, while the other simply involves placing the
+entire text between single quotes ('). In both cases, the program statement
+must not run beyond column 72; if a longer text string is needed, then a
+continuation line if used. The statements:
 </p>
-<p>
-WRITE(&reg; .200) 1.
-4100 FORMAT( ZOHDATA FROM EXPERIMENT, 13)
-</p>
-<p>
+<pre class="indent">
+    WRITE(6,200) L
+100 FORMAT(20HDATA FROM EXPERIMENT,I3)
+</pre>
+<p class="indent">
 and
 </p>
+<pre class="indent">
+    WRITE(6,100) L
+100 FORMAT('DATA FROM EXPERIMENT',I3)
+</pre>
 <p>
-wWaITE(6 100) L
-400 FORMAT( &ldquo;DATA FROM EXPERIMENT&rdquo; 13)
-</p>
-<p>
-are treated in the same vay by the compiler but the first uses the Hollerith (H)
-field width desceipror &ndash; 20 unite wide in this cage ond the game as the text
+are treated in the same way by the compiler but the first uses the Hollerith (H)
+field width descriptor &ndash; 20 unite wide in this case and the same as the text
 including spaces while the second uses single quotes as text delimiters &ndash; a lot
-easler to use!&rdquo; The expressions mean &ldquo;write to # disk file the text followed by
-the current value of the variable L&rsquo;
+easier to use! The expressions mean &lsquo;write to a disk file the text followed by
+the current value of the variable L&rsquo;.
 </p>
 <p>
-fon both input and output, text can be split between Lines by using the solidu
-(iy &ldquo;as far ag input ie concerned, this applies to disk input data files 4
+On both input and output, text can be split between lines by using the solidus
+(/). As far as input is concerned, this applies to disk input data files as
 well as to punched cards or paper tape &ndash; both of which are unlikely input media
-For the average micro user. The firet example given above could be rewritten
+for the average micro user. The first example given above could be rewritten
+as:
 </p>
 <?php columnEnd(1); ?>

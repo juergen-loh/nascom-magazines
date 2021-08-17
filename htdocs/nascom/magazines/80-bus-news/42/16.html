@@ -1,11 +1,11 @@
 <?php columnStart(2, 2); ?>
-<p>
-COMMON A,B(1),C%,D$, me
-DIM B(10),&pound;2(2,3,4), Po)
-</p>
-<p>
+<pre>
+COMMON A,B(1),C%,D$,F(2)
+DIM B(10),E%(2,3,4),F(10)
+</pre>
+<h4>
 Creating and using library programs
-</p>
+</h4>
 <p>
 In CBASIC one has the ability to include programs
 &mdash; such as graphics or screen handling routines
@@ -16,35 +16,41 @@ library programs may be incorporated by means of
 the %INCLUDE statement; it is important to make
 sure that the INCLUDEd program (or program
 segment) does not include a STOP or END
-statement &ndash; for obvious reasons. Up to 6 levels of
+statement &mdash; for obvious reasons. Up to 6 levels of
 %INCLUDE nesting are permitted which should be
 enough for most people!
 </p>
-<p>
+<h4>
 Other statements, functions and directives
-</p>
+</h4>
 <p>
 CBASIC is full of other goodies to excite the keen
 programmer or to depress the less able! Some
 useful ones are listed briefly.
 </p>
-<p>
+<h5>
 Statements
-</p>
+</h5>
 <p>
-CALL &ndash; summons a machine code routine, and has
+CALL &mdash; summons a machine code routine, and has
 the syntax:
+</p>
+<p class="indent">
 CALL &lt;integer expression&gt; &ndash; the expression
 may be in hex
 </p>
 <p>
-INPUT ... LINE &ndash; reads an entire entry from the
+INPUT ... LINE &mdash; reads an entire entry from the
 display and assigns it to a special string variable.
-INPUT&rdquo; Message&rdquo;; LINE SILLY.ANSWERS$
+</p>
+<p class="indent">
+INPUT"Message"; LINE SILLY.ANSWERS$
 </p>
 <p>
-OUT &ndash; puts out an 8 bit integer value to an V/O
+OUT &mdash; puts out an 8 bit integer value to an I/O
 port.
+</p>
+<p class="indent">
 OUT &lt;integer expression,integer expression&gt;
 sends a low order byte of the
 second expression to the output port
@@ -52,51 +58,49 @@ addressed by the low order byte of the
 first expression.
 </p>
 <p>
-RANDOMIZE &ndash; seeds the random number generator
+RANDOMIZE &mdash; seeds the random number generator
 called by the RND function; the seeding
 depends upon the operator&rsquo;s response time to a
 request from a previously executed INPUT statement.
 </p>
-<p>
-INPUT&rdquo;&rsquo;Do you need to use a random
-</p>
-<p>
-number&rdquo;; A$
-</p>
-<p>
+<p class="indent">
+INPUT"Do you need to use a random
+number"; A$<br>
 RANDOMIZE
 </p>
 <p>
-READ # ... LINE &ndash; reads one record from the
-</p>
-<p>
+READ # ... LINE &mdash; reads one record from the
 selected file and assigns it to a string variable.
-READ #2; LINE X$ &ndash; reads one record from
+</p>
+<p class="indent">
+READ #2; LINE X$ &mdash; reads one record from
 file no. 2 and places it in X$
 </p>
 <p>
-SAVEMEM &ndash; reserves space for a file which will be
+SAVEMEM &mdash; reserves space for a file which will be
 loaded when SAVEMEM is executed; normally, the
 file will be a machine code type.
 </p>
-<p>
+<h5>
 Functions
-</p>
+</h5>
 <p>
-CONCHAR% &ndash; waits for and accepts one character
+CONCHAR% &mdash; waits for and accepts one character
 from the keyboard.
 </p>
 <p>
-CONSTAT% &ndash; returns a &ndash;1 (true) if a key has been
+CONSTAT% &mdash; returns a &ndash;1 (true) if a key has been
 pressed or 0 (false) if not.
 </p>
 <p>
-INP &ndash; returns a byte from a selected [/O port
+INP &mdash; returns a byte from a selected I/O port
+</p>
+<p class="indent">
 INP(port.no.)
 </p>
-<p>
+<h5>
 Compiler directives
-</p>
+</h5>
 <p>
 There are six of these; two, %INCLUDE and
 %CHAIN have already been covered and the rest
@@ -106,22 +110,18 @@ running of the program and they must always be at
 the beginning of the line.
 </p>
 <p>
-%LIST and %NOLIST &ndash; turn the program listing on
+%LIST and %NOLIST &mdash; turn the program listing on
 or off which could be handy if you only want to see
 part of a program: they affect both console and
 printer listings and also operate on disk files.
 </p>
 <p>
-%EJECT &ndash; as its name suggests, operates on the
-</p>
-<p>
+%EJECT &mdash; as its name suggests, operates on the
 printer when it is enabled and performs a control-L
-</p>
-<p>
 function to start printing at the top of the next page.
 </p>
 <p>
-%PAGE &ndash; sets up the number of printed lines per
+%PAGE &mdash; sets up the number of printed lines per
 page on the printer. It defaults to 64 and must be
 altered if another page length is needed. Thus
 PAGE(60) specifies 60 lines per page of print.
@@ -132,48 +132,38 @@ Apart from compiler directives, there are six
 command line. The toggles are preceded by a $
 sign.
 </p>
-<p>
-B &ndash; suppresses source file listing at the console,
-but allows compilation statistics to appear.
-</p>
-<p>
-C &ndash; suppresses the creation of an .INT file which
+<table>
+<tr><td>B &mdash;</td><td>suppresses source file listing at the console,
+but allows compilation statistics to appear.</td></tr>
+<tr><td>C &mdash;</td><td>suppresses the creation of an .INT file which
 helps in initial error checking for a new
-program since compilation is a lot faster.
-</p>
-<p>
-D &ndash; suppresses the conversion of lower to upper
+program since compilation is a lot faster.</td></tr>
+<tr><td>D &mdash;</td><td>suppresses the conversion of lower to upper
 case letters when these are used in variable
-names.
-</p>
-<p>
-E &ndash; a useful debugging facility which pinpoints
+names.</td></tr>
+<tr><td>E &mdash;</td><td>a useful debugging facility which pinpoints
 source lines in the .INT file in which an error
 occurred. It must also be used if you wish to
-employ the TRACE facility.
-</p>
-<p>
-F &ndash; produces a listing of the program on the
-printer as well as the console.
-</p>
-<p>
-G &ndash; produces a listing on a disk file as well as the
-console.
-</p>
-<p>
-Atypical CBASIC compilation command line would
-be:
-ADCBASIC TESTPROG first run of the
-revised version $EF
+employ the TRACE facility.</td></tr>
+<tr><td>F &mdash;</td><td>produces a listing of the program on the
+printer as well as the console.</td></tr>
+<tr><td>G &mdash;</td><td>produces a listing on a disk file as well as the
+console.</td></tr>
+</table>
+<p class="exdent">
 A typical CBASIC compilation command line would
 be:
-ADCBASIC TESTPROG first run of the
-revised version SEF
 </p>
+<pre>
+&gt;CBASIC TESTPROG first run of the
+                  revised version $EF
+</pre>
 <p>
-&mdash;&mdash; oe
+A typical CBASIC compilation command line would
+be:
 </p>
-<p>
-&gt; &laquo;mh
-</p>
+<pre>
+&gt;CBASIC TESTPROG first run of the
+                  revised version $EF
+</pre>
 <?php columnEnd(2); ?>

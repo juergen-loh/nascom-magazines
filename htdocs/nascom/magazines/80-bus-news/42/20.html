@@ -12,9 +12,9 @@ new Gemini GM870 80-BUS MODEM board and its
 software, the new UKM720 program, and Gemini&rsquo;s
 latest BIOS, version 3.2.
 </p>
-<h2>
+<h4>
 DH disk storage crisis
-</h2>
+</h4>
 <p>
 Having sat down to write this sessions&rsquo; pile of
 disjointed bits, I&rsquo;d done about a page&rsquo;s worth and
@@ -29,15 +29,15 @@ and I&rsquo;ve plenty of secondhand disks knocking
 about, but I had a look at the full disk anyway, sure
 enough 784K with 4K free, and not a .BAK file in
 sight. Oh well, start a new disk; format it and label
-it. The label, &ndash;80BUS4 ??? Did that mean I&rsquo;d
+it. The label, &ndash;80BUS4&nbsp;??? Did that mean I&rsquo;d
 completely filled three disks? It sure did! Almost
 2.4M bytes worth, and that&rsquo;s exclusively this mag
 and its predecessors, and then only what I&rsquo;ve
-bothered to keep. Just as an exercise &ndash; a word
+bothered to keep. Just as an exercise &mdash; a word
 count; I put everything into one big library using
 LU on the winnie, and then set SPELGARD the
 problem of counting the words whilst I went for a
-bite [Ed. &ndash; byte&nbsp;?] to eat. Well of course,
+bite [Ed. &mdash; byte&nbsp;?] to eat. Well of course,
 SPELGARD gave up at 65000 odd words, not
 surprising really, and I learned for the first time that
 SPELGARD has a 16 bit word counter. Well by now
@@ -50,7 +50,7 @@ result, I know you&rsquo;re all dying to know &ndash; just over
 re-count on another file came out about the same,
 so I guess it must be something like that. Just as
 well 80-BUS doesn&rsquo;t pay me at a commercial word
-rate, I&rsquo;d be quite rich and 80-BUS wouid be broke.
+rate, I&rsquo;d be quite rich and 80-BUS would be broke.
 </p>
 <p>
 I mentioned LU; well this program has been lurking
@@ -70,22 +70,16 @@ things, letters, dBASE .CMD files and the like.
 <p>
 As you know, CP/M allocates space to files in
 blocks. In the good old days of single density 8&Prime;
-</p>
-<p>
 disks with only about 240K of usable capacity, life
 was easy. CP/M builds a map of where things are
 put on the disk, it&rsquo;s part of the directory entry for
 the file, and saved along with the name. That&rsquo;s
 what file control blocks (FCBs) are all about, but
-then if you know about file contro! blocks, you
+then if you know about file control blocks, you
 know about directory allocation blocks. Anyway,
 the disk is carved up into nice small chunks, and
 allocated an 8 bit number. Now there can only be
-</p>
-<p>
 256 discrete 8 bit numbers, so the maximum
-</p>
-<p>
 number of blocks is 256. If the disk has a capacity
 of 240K, 240 1K blocks can be allocated. But like
 Topsy, disks growed, and double sided double
@@ -103,7 +97,7 @@ high capacity disks systems, we have 197 4K
 blocks.
 </p>
 <p>
-The snag, you ask? Weil, it doesn&rsquo;t matter if a
+The snag, you ask? Well, it doesn&rsquo;t matter if a
 program is two bytes long, it&rsquo;s still allocated 4K of
 disk space, and so appears as a 4K file. More
 typically, letters and dBASE .CMD files are usually
@@ -111,7 +105,7 @@ about 1K long, so 3K goes wasted. LU gets round
 this rather neatly. It constructs one file called a
 library file from a number of files, adding them end
 to end, and then puts an internal directory into the
-file. Yes, LU also has an internal biock size, but it&rsquo;s
+file. Yes, LU also has an internal block size, but it&rsquo;s
 only 128 bytes, so not much space is lost.
 </p>
 <p>
@@ -128,7 +122,7 @@ unforgiving.
 Having said that you can&rsquo;t do anything with a file in
 the library without extracting it, LU came with a
 couple of utilities, LDIR, so you quickly look at the
-file narnes in the internal directory, and LRUN so
+file names in the internal directory, and LRUN so
 you can execute a xxx.COM file from within the
 library. Unfortunately if a program is executed
 from the library using LRUN, the program still can&rsquo;t

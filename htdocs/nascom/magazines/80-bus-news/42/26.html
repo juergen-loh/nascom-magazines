@@ -18,7 +18,7 @@ disks back to Gemini for upgrade.
 So what does BIOS 3.2 offer? Apart from all the
 drive permutation twiddles, basically all the normal
 Gemini features, screen editing, screen dump, etc.
-Also the usual /O byte support for serial and
+Also the usual I/O byte support for serial and
 parallel printers, serial transmission protocols and
 all the rest. Nothing radically new, just the latest
 versions with extensions to the patch area so that
@@ -49,7 +49,7 @@ MFB series of machines. All the past and present
 Gemini formats are supported, naturally, that&rsquo;s
 both 96 and 48 tpi double density and the original
 double sided single sided GM805 format. Additionally,
-Superbrain 48 tpi single sided, IBM&nbsp;PC 48 tpi
+Superbrain 48 tpi single sided, <i>IBM</i>&nbsp;PC 48 tpi
 single and double sided 8 sector formats, DEC
 Rainbow, both Nascom formats and dear old
 fashioned 8&Prime; single sided single density. What&rsquo;s
@@ -60,13 +60,13 @@ formats, the following works a treat.
 </p>
 <p>
 </p>
-<pre>
-Logical Drive A:  Gemini 5M winnie
-Logical Drive B:  Gemini QDDS   Physical drive 0
-Logical Drive C:  Gemini QDDS   Physical drive 1
-Logical Drive D:  Gemini DDDS   Physical drive 1
-Logical Drive E:  Gemini SDDS   Physical drive 1
-</pre>
+<table style="width: 100%">
+<tr><td>Logical Drive A:</td><td colspan=2>Gemini 5M winnie</td></tr>
+<tr><td>Logical Drive B:</td><td>Gemini QDDS</td><td>Physical drive 0</td></tr>
+<tr><td>Logical Drive C:</td><td>Gemini QDDS</td><td>Physical drive 1</td></tr>
+<tr><td>Logical Drive D:</td><td>Gemini DDDS</td><td>Physical drive 1</td></tr>
+<tr><td>Logical Drive E:</td><td>Gemini SDDS</td><td>Physical drive 1</td></tr>
+</table>
 <p>
 By sticking disks in either drive 0 or drive 1 as
 appropriate, I can copy anything that comes my
@@ -80,7 +80,7 @@ format to the standard in current use by the drive.
 Pity that, I&rsquo;d have loved to have sent this disk to
 Paul in say DEC Rainbow format and then see how
 long it would take him to sus what I&rsquo;d done. Never
-mind, ll invent a wierd format of my own using
+mind, I&rsquo; invent a wierd format of my own using
 ALLDISC, that should fox him completely and give
 Gemini&rsquo;s new MFB2 something to get upset over.
 </p>
@@ -96,7 +96,7 @@ either a 48 tpi drive or double step (still equalling 48
 tpi) to a 96 tpi drive, the boot sector being correctly
 set up for the 48 tpi format. This brings me to the
 second big feature of BIOS 3.2. Each physical drive
-can be specified separately. One drive could: be an
+can be specified separately. One drive could be an
 8&Prime; for instance, another, a double sided 96 tpi with
 3ms head stepping and no head load delays,
 another, a 96 tpi single sided with 20mS head
@@ -118,7 +118,7 @@ specified to a 96 tpi drive, then the drive is forced
 to double step to read and write like a 48 tpi.
 </p>
 <p>
-Reading 48 tpi disks with a 96 tpi drive works weil,
+Reading 48 tpi disks with a 96 tpi drive works well,
 writing needs care, as the disk should be wiped
 clean with a magnet and reformatted using the 96
 tpi drive before data is written, using the 96 tpi

@@ -1,101 +1,82 @@
 <?php columnStart(1); ?>
+<pre class="center">
+100 FORMAT(9HDATA FROM,/,10HEXPERIMENT,I3)
+</pre>
 <p>
-100 FORMAT(SHDATA. FROM, | ,10HBXPERIMENT,13)
 which would print out
 </p>
+<pre>
+DATA FROM
+EXPERIMENT 1   (assuming that L had a value of 1)
+</pre>
 <p>
-DATA. FROM
-EXPERIMENT 1 (assuming that L had a value of 1)
+F80 and ProFortran recognise ten different types of I/O field descriptor:
 </p>
+<table class="for-formats">
+<tr><td>A</td><td>Alphanumeric [A &ndash; Z, 0 &ndash; 9 etc.]</td></tr>
+<tr><td>D</td><td>Double precision numeric</td></tr>
+<tr><td>E</td><td>Exponent form [e.g. 1.1E04 = 11,000]</td></tr>
+<tr><td>F</td><td>Floating point [e.g. 12.34)</td></tr>
+<tr><td>G</td><td>(can be used for floating point or exponent)</td></tr>
+<tr><td>H</td><td>Hollerith (string)</td></tr>
+<tr><td>(or) &nbsp; '</td><td>alternative to Hollerith</td></tr>
+<tr><td>I</td><td>Integer data [e.g. 12, 560)</td></tr>
+<tr><td>L</td><td>Logical [T(rue) c F(alse)] &ndash; not often used.</td></tr>
+<tr><td>P</td><td>optional scaling descriptor used with D,E,F and G
+				conversions either as a multiple or a fraction</td></tr>
+<tr><td>X</td><td>blank space</td></tr>
+</table>
 <p>
-P80 and Profortran recognite ten different types of I/O field descriptor:
-Alphanumeric [A &ndash; 2, 0 &ndash; 9 ete.)
-</p>
-<p>
-Double precision numerse
-</p>
-<p>
-Exponent form {e g 1 1606 = 11,000]
-</p>
-<p>
-Floating poine [eg 12 34)
-</p>
-<p>
-(cnn be used for floating point or exponent)
-Hollerieh (string)
-</p>
-<p>
-alternative to Hoderith
-</p>
-<p>
-Integer data [e g. 12, $60)
-</p>
-<p>
-Logital [T(rue) c F(alee)] &ndash; not often used.
-optional scaling descriptor used with D.E,P and G
-conversions either ns a maltiple or # fraction
-blank space
-</p>
-<p>
-cor)
-</p>
-<p>
-These are fairly standard for most FORTRANS but NFortran does not have Double
+These are fairly standard for most FORTRANs but NFortran does not have Double
 Precision or the scaling descriptor P. It does have T (tabulation), K
-(hexadecimal) and 2 (inhibit &lt;erj1&pound;&gt; on output) which might be useful
+(hexadecimal) and Z (inhibit &lt;cr,lf&gt; on output) which might be useful.
 </p>
 <p>
-Most users will only be concerned with A.&pound;,P.H.1 and X descriptors: apart from
-the Wand Y descriptors, which have the general forms nll or nX where n is the
-umber of coluans each descriptor covers, the rest have the operational form c2y
-where &copy; ig the suaber of repetitions of the field descriptor if this it grater
-than 1, Zap the descriptor type and y giver inforaation sbout the total width
-of field required For each repetition.
+Most users will only be concerned with A,E,F,H,I and X descriptors; apart from
+the H and X descriptors, which have the general forms nH or nX where n is the
+number of columns each descriptor covers, the rest have the operational form rZy
+where r is the number of repetitions of the field descriptor if this it grater
+than 1, Z is the descriptor type and y giver information about the total width
+of field required for each repetition.
 </p>
 <p>
-Some examples vould not come amiss here &ndash;
+Some examples would not come amiss here &ndash;
 </p>
-<p>
-LOA indicates 10 alphanumeric fields each 4 columns vide
-</p>
-<p>
-Fe&rsquo;2 indicates 1 exponent field 8 columns wide, where there are two
-Higures after the decimal point This 12343.6) is represented
-Ss 012605 (where the&rdquo; represents @ blank colunn ia which
-nothing ie printed)
-</p>
-<p>
-B12 5 ie. a single exponent field of 12 columns in which 5 Figure
-Follow the decimal point and = figuee such ay &ndash;12.349678 would
-be cepresented ae 012303602 This implies thar the number
-As tfuncared (shortened) and loses some accuracy.
-</p>
-<p>
-F320 shows that a floacing point number oceupying 3 coluans ig
-Involved which has no significant numbers to the cight of the
-Gecinal point, /.0 er 20 would be shows ia thie way
-</p>
-<p>
-F8 4 Shows that the floating point (real) number occupies 6 coluant
-and has 4 digits to the right of the decimal point 123 4367
-{2s suitable example: s real number such as&rsquo;-34 89085 would
-bbe &lsquo;shown se 34 8909, &lsquo;since the field only permits &copy; teximum
-of 4 digite after the decimal point Overflow can occur if the
-umber of digits to the left of the decimal point cannot be
-Fitted Into the space avaliable &ndash; thus 12456 would be
-printed ar *56&rsquo;- the esterisk shows that the field width was
-foo saall
-</p>
-<p>
-413 indicates that there are four 3 digit integer fields involved;
-thus 121, 245, 778 and 200 ave repeesented as: 123249778200
-while &ndash;30, 2, 45 and 559 are represented by &ndash;30&rdquo; 2.43559.&rdquo; In
-the latter case, the *-&rdquo; sign occupies 1 of the columns in its
-Eleld and the numbers with less than 3 digits are right
-jaseitsea
-</p>
-<p>
-4X thie shows that 4 columns are to be skipped (not read or
-printed)
-</p>
+<table class="format-examples">
+<tr><td>10A4</td><td>indicates 10 alphanumeric fields each 4 columns wide</td></tr>
+
+<tr><td>E8.2</td><td>indicates 1 exponent field 8 columns wide, where there are two
+			figures after the decimal point. Thus 12345.67 is represented
+			as 0.12E&macr;05 (where the &macr; represents a blank column in which
+			nothing is printed)</td></tr>
+
+<tr><td>E12.5</td><td>is a single exponent field of 12 columns in which 5 figures
+			follow the decimal point and a figure such as &ndash;12.345678 would
+			be represented as &ndash;0.12345E&macr;02. This implies that the number
+			is truncated (shortened) and loses some accuracy.</td></tr>
+
+<tr><td>F3.0</td><td>shows that a floating point number occupying 3 columns is
+			involved which has no significant numbers to the right of the
+			decinal point, 7.0 er 2.0 would be shown in this way</td></tr>
+
+<tr><td>F8.4</td><td>shows that the floating point (real) number occupies 6 columns
+			and has 4 digits to the right of the decimal point. 123.4567
+			is a suitable example: a real number such as &ndash;34.89088 would
+			be shown as 34.8909, since the field only permits a maximum
+			of 4 digits after the decimal point. Overflow can occur if the
+			number of digits to the left of the decimal point cannot be
+			fitted into the space available &ndash; thus 1234.56 would be
+			printed as *.56 &ndash; the asterisk shows that the field width was
+			too small.</td></tr>
+
+<tr><td>4I3</td><td>indicates that there are four 3 digit integer fields involved;
+			thus 123, 245, 778 and 200 are represented as: 123245778200
+			while &ndash;30, 2, 45 and 559 are represented by &ndash;30 &nbsp; 2 45559. In
+			the latter case, the &lsquo;&ndash;&rdquo; sign occupies 1 of the columns in its
+			field and the numbers with less than 3 digits are right
+			justified</td></tr>
+
+<tr><td>4X</td><td>this shows that 4 columns are to be skipped (not read or
+			printed)</td></tr>
+</table>
 <?php columnEnd(1); ?>
