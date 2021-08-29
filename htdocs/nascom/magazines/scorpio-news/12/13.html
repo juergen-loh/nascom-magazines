@@ -1,84 +1,84 @@
 <?php columnStart(1); ?>
 <p>
-on the 2C/TOn pin. This stream of pulses is then fed ass clock to the
-appropelate channel of the S10&rdquo; This situation covers the MAP CPU with the
-defaule Links a8 provided:
+on the ZC/TOn pin. This stream of pulses is then fed as a clock to the
+appropriate channel of the SIO. This situation covers the MAP CPU with the
+default links as provided:
+</p>
+<table style="width: 100%">
+<tr><td>LB2/2 &nbsp; &ndash; LB2/10</td><td>LB2/3 &nbsp; &ndash; LB2/9</td><td>LB2/13 &ndash; LB2/12</td><td>LB2/1 &nbsp; &ndash; LB2/14</td></tr>
+<tr><td>LB1/18 &ndash; LB1/4</td><td>LB1/19 &ndash; LB1/3</td><td>LB1/17 &ndash; LB1/5+6</td><td>LB1/16 &ndash; LB1/7</td></tr>
+<tr><td>LB1/20 &ndash; LB1/1</td><td></td><td></td><td></td></tr>
+</table>
+<p>
+One other point which should be mentioned. Always use the assembler to
+calculate byte counts and ratios as far as possible. Remember that it does only
+16 bit arithmetic, so we can&rsquo;t use it to compute the division ration, but we
+certainly can and should use it to work out the byte count.
 </p>
 <p>
-us2/2_ &ndash; LE2/i0 up2/3. = up2/9az/is- use/a2 baja Lesa
-Let/ie = B74 tenis &gt; tpi/3 &copy; CBn/i7 = Lai/ses &mdash;uBt/ae &ndash; Lai/7
-UB /20 &gt; Lan
+Suppose we require to use a modem? The CCITT V23 standard will require that we
+can receive and transmit at different baud rates (1200/75). Under the set up
+above, we have the receive and transmit clocks for SIO channel A tied to the
+same channel of the CTC (LB1/17 - LB1/5+6), so we can&rsquo;t manage just as we are
+presently linked. We have spare CTC channel 2, and we could use channels 1 and
+2 to provide 1200 baud and 75 baud clocks, and channel 2 to feed the second SIO
+channel. First of all, we must remake the links a follows:
 </p>
+<table style="width: 100%">
+<tr><td>LB2/1 &nbsp; &ndash; LB2/14</td><td>LB2/12 &ndash; LB2/13</td><td>LB2/1 &nbsp; &nbsp;&nbsp; &ndash; LB2/11</td><td>LB2/2 &nbsp; &ndash; LB2/9+10</td></tr>
+<tr><td>LB1/1 &ndash; LB1/20</td><td>LB1/2 &nbsp; &ndash; LB1/19</td><td>LB1/3+4 &ndash; LB1/18</td><td>LB1/5 &nbsp; &ndash; LB1/17</td></tr>
+<tr><td>LB1/6 &nbsp; &ndash; LB1/16</td><td>LB1/7 &nbsp; &ndash; LB1/15</td><td></td><td></td></tr>
+</table>
 <p>
-one other point which should be mentioned. Always uso the assembler to
-calculate byte counts and ratioe af far as possible. kemember thar it does only
-16 bit arithmetic, 20 we can&rsquo;t use it to compute the division ration, but we
-Certainly can and should use it co work out the byte count
+(These are as taken from my system Work. them out carefully &ndash; you may not need
+them all!). If we feed CTC channels 0 and 1 from the same clock (2MHz external)
+can we get the baud rates required? We have already done the calculation for
+the 1200 baud and know that 104 is the divisor. How about 75 baud?
 </p>
+<table class="center" style="width: 60%">
+<tr><td></td><td>2000000</td><td></td></tr>
+<tr><td>divisor = </td><td>-----------</td><td>= 1666.7</td></tr>
+<tr><td></td><td>75*16</td><td></td></tr>
+</table>
 <p>
-Suppose we require to modem? The CCITT Y23 standard will require that we
-can ceceive and transmit at different baud cates (1200/75). Under the set up
-above, we have the receive and transmit clocks for S10 channel A tied to the
-Sane channel of the CTC (LB1/17 -Usl/5+6), so ve can&rsquo;t manage just as we are
-Presently inked. We have space CTC channel 2, and we could use channels 1 and
-BYto provide 1200 baud and 73 baud clocks, and &lsquo;channel 2 to feed the second S10
-channel. Piret of ali, we gust remake the Links a follows:
-</p>
-<p>
-baz/a &ndash; up2/is-uaz/i2 &ndash; basis Leesa tessa Lele &ndash; uaz/snio
-gana cupaias beae cpa ten tara darts &gt; bales
-tei/e &gt; upi/ie Lat? uai/as
-</p>
-<p>
-(These ae as taken from ny system Work them out cazefully &ndash; you may not need
-them alll). If we feed CTC channels 0 and 1 from the same clock (2Hiz external)
-Gen we get the baud rates required? We have already done the calculation for
-the 1200 baud and know that 10c is the divivor How about 75 baud?
-</p>
-<p>
-2000000
-divigor = Senne = 16667
-75816
-</p>
-<p>
-We can&rsquo;t fit that into one byte Even using 64* mode on our Sto, we can&rsquo;t do
-in &ldquo;TE we went to a1 Hiiz clock, we can just manage Unfortunately, I like to
-ative printers very fast, and for computer/<?php spChar("zwsp"); ?>compure: Links, with no modems, T
-Like &lsquo;9600 baud. TE we use 1 Miz clock, T can&rsquo;t get 9600 baud.&rdquo; Ta there another
-vay?
+We can&rsquo;t fit that into one byte. Even using 64* mode on our SIO, we can&rsquo;t do
+it. If we went to a 1&nbsp;MHz clock, we can just manage. Unfortunately, I like to
+drive printers very fast, and for computer/<?php spChar("zwsp"); ?>computer links, with no modems, I
+like 9600 baud. If we use 1&nbsp;MHz clock, I can&rsquo;t get 9600 baud. Is there another
+way?
 </p>
 <p>
 Suppose we consider using the timer mode and consider first the 1200/75 baud
+problem. If we divide the system clock (4Mhz) by 256 in the prescaler, could we
+get the 75 baud we need? Let&rsquo;s try:
 </p>
-<p>
-probles. if we divide the system clock (4Mhz) by 256 in the presesler, could we
-Bet the 75 baud we need?&rdquo; Let&rsquo;s try:
-</p>
-<p>
-&lsquo;4000000
-158168256
-</p>
-<p>
-divisor &copy;
-</p>
+<table class="center" style="width: 60%">
+<tr><td></td><td>4000000</td><td></td></tr>
+<tr><td>divisor = </td><td>-----------</td><td>= 13</td></tr>
+<tr><td></td><td>75*16*256</td><td></td></tr>
+</table>
 <p>
 Lovely! Now we try for the 1200 baud. Immediately we realise that we&rsquo;ll have
-to use che [16 preacaler rather than the [256
+to use the /16 prescaler rather than the [/256
 </p>
+<table class="center" style="width: 60%">
+<tr><td></td><td>4000000</td><td></td></tr>
+<tr><td>divisor = </td><td>-----------</td><td>= 13</td></tr>
+<tr><td></td><td>1200*16*16</td><td></td></tr>
+</table>
 <p>
-4000000
-divisor = Sven = 28
-adootibens
 No problems here! How about 9600 baud?
-&lsquo;4000000
-divisor = senenee = 16
-preererests
 </p>
+<table class="center" style="width: 60%">
+<tr><td></td><td>4000000</td><td></td></tr>
+<tr><td>divisor = </td><td>-----------</td><td>= 1.6</td></tr>
+<tr><td></td><td>9600*16*16</td><td></td></tr>
+</table>
 <p>
 So that won&rsquo;t work for 9600 baud. We are in the position that we can get
-1200/75 baud clocks by using che divider mode of the CTC, but can&rsquo;t get 9600
-baud. &ldquo;rf &lsquo;we apply a 2 Miix external clock, we can get 9600 baud clock, and
-slower, but aot 75 beud. What do we doi We set up the links as sbover
-supplying&raquo; 2 Mz clock to the CLK/TAG pins of the appropriate channels, and
+1200/75 baud clocks by using the divider mode of the CTC, but can&rsquo;t get 9600
+baud. If we apply a 2&nbsp;MHz external clock, we can get 9600 baud clock, and
+slower, but not 75 baud. What do we do? We set up the links as above,
+supplying a 2&nbsp;MHz clock to the CLK/TRG pins of the appropriate channels, and
 </p>
 <?php columnEnd(1); ?>

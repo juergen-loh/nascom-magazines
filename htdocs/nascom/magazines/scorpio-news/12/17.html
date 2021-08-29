@@ -1,78 +1,72 @@
 <?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-17-1.png"); ?>
 <p>
-FOR I := 1 To 2499 Do
-&lsquo;A: TAM(ARCTAN( EXP (LN(SQRT(AA))))) 415
-WRITELNC&rsquo; Finished...)
-WRITELNCA = *,A:10:6)
-en.
+What it does is start with the number 1, and carry out a string of functions on
+it, which are intended to get back to the same value they started with, i.e. 1.
+This is then incremented, and the process repeated. So, if the computer is
+working to absolutely exact values in all its calculations, the final result
+will be 2500.
 </p>
 <p>
-What it does is start with the number 1, and carry out a string of Functions on
-ity which are atended to get back to the same velue they started with, i.e. 1.
-Thig&rsquo;ds then increaented, and the process repeated. So, if the computer is
-working to absolutely exact values in all dts calculations, the final result
-SLD bet 2500
+I ran this program using various Hisoft Pascals, and used a 20 year old Seiko
+automatic watch to time it. The results were as follows:&ndash;
+</p>
+<table class="pascal-bench">
+<tr><td>HP4</td><td>44sec</td><td>320.347881</td><td></td></tr>
+<tr><td>HP5 using the Belectra HSA-88B</td><td>29sec</td><td>2.327E+03</td><td>(ie 2327)</td></tr>
+<tr><td>HP Pedigree</td><td>44sec</td><td>320.347881</td><td></td></tr>
+</table>
+<p>
+Now all of these are faster than the times quoted by P D Coker in issue 1, and
+the HP5 time, using that lovely floating point board, is miles faster than any
+of the competition. This pleases me immensely. But I know what you are
+thinking, &ldquo;Those answers are miles out!&rdquo;. Well, Paddy Coker did ask if anyone
+could explain the apparently awful result the Hisoft Pascals give on this
+benchmark, and I&rsquo;am volunteering as I have done the Open University course M351,
+Numerical Computation (and I even passed!).
 </p>
 <p>
-Lean this program using various Kisoft Pascals, and used a 20 year old Seiko
-dutonatic wateh to time st. The results were a2 followe:&ndash;
+The program carries out 6x2500 = 15,000 floating point calculations, one after
+another. Any inaccuracy caused by the need to truncate the values to fit into
+the space allocated to a real variable will obviously mount up considerably over
+such a sequence of calculations. This tendency to reduce slightly the value of
+each result that will not fit in a real probably accounts for a large part of
+the deficit.
 </p>
 <p>
-Pe Ausee 320 347081
-RPS using the Belectra HSA-888 29sec 23276403 (ie 2327)
-HP Pedigree seeee 320.34 7881
-</p>
-<p>
-Now all of these are faster than the times quoted by PD Coker in tesue 1, and
-the HPS time, using that lovely floating point board, is giles faster than any
-of the competition. This pleases ae inmencely &lsquo;But 7 know what you are
-thinking, &ldquo;Those answers are milps outi&rdquo;. Weil, Paddy Coker did ask if anyone
-could explain the apparently avful result the Hisoft Pazeals give on this
-benchaark, and I&rsquo;am volunteering as 1 have done the Open University course M351,
-Numerical Computation (and 1 even&rsquo; pased!).
-</p>
-<p>
-&lsquo;The program carries out 6x2300 = 15,000 floating point calculations, one after
-Another Any inaccuracy caused by the need to truncate the values to fit into
-the space allocated te a real varvable will obviously mount up considerably over
-Such a sequence of calculations. This tendency vo reduce slightly the value of
-Gach result that will not fit in a real probably accounts for a Lirge part of
-the defile
-</p>
-<p>
-Clearly, anyone who {s stil] awake will be wondering why all the other languages
-get a0 much closer to the right&rsquo; anewer &ldquo;They might feel that Tam trying
-Gesperately to defend &raquo; compiler that I like, with no Justification In an
-ateaupt to find out what was at the root of the matter, I asked Hisoft how their
-fan and arctan functions &lsquo;worked I thought they might use a Taylor series, or
-Some such idea Thad, by fiddling sbout with the oFiginal program, discovered
-that almost all the inaccuracy was being created by the ten and acctan functions
-OF HPL Unlike every other software firm f have ever written to, isoft
-answered my enquiry 1 quote
+Clearly, anyone who is still awake will be wondering why all the other languages
+get so much closer to the &ldquo;right&rdquo; answer. They might feel that I am trying
+desperately to defend a compiler that I like, with no justification. In an
+attempt to find out what was at the root of the matter, I asked Hisoft how their
+tan and arctan functions worked. I thought they might use a Taylor series, or
+some such idea. I had, by fiddling about with the original program, discovered
+that almost all the inaccuracy was being created by the tan and arctan functions
+of HP4. Unlike every other software firm I have ever written to, Hisoft
+answered my enquiry. I quote...
 </p>
 <p>
 &ldquo;As you probably realise the Trig routines for the Pascal were written rather a
-Yong&rsquo; time ego. I think it was in March 1961! they were originglly wratten in
-Pareal and then hand coded into assembler attempting to make the cuntrolling
-cade a3 tight 2s possible and with speed rather than space un mand L can&rsquo;t
-actually remember viether they were written on a dick machine or on cassette
-But either way the original Parcal source hes Long since disappeared. The
-Slgorithne geet are mainly continuous frectione having divided the 0-90 degree
-Fange into a number of sections Look at the assembler source; it doesn&rsquo;t make
-hhuch sense since the only comments refer to the vartables and constants rom the
-Pascal version The TAN function seems to wee two entirely separate algorithms
-depending on the input value One of the constants hed Co be fudged to avoid
-discontinuity which sadly leads to snaccuracy near 90 The algorithms were
-developed fron # book published by HMSO in 1959 when speed of the algocithns
-Gred way really &lsquo;mportant Ican&rsquo;t remenber its titie but tim pretty sure it
-Involves &lsquo;digital computers&rsquo;.&rdquo;
+long time ago. I think it was in March 1981! They were originally written in
+Pascal and then hand coded into assembler attempting to make the controlling
+code as tight as possible and with speed rather than space in mind. I can&rsquo;t
+actually remember whether they were written on a disk machine or on cassette.
+But either way the original Pascal source has long since disappeared. The
+algorithms used are mainly continuous fractions having divided the 0-90 degree
+range into a number of sections. Look at the assembler source; it doesn&rsquo;t make
+much sense since the only comments refer to the variables and constants from the
+Pascal version. The TAN function seems to use two entirely separate algorithms
+depending on the input value. One of the constants had to be fudged to avoid
+discontinuity which sadly leads to inaccuracy near 90. The algorithms were
+developed from a book published by HMSO in 1959 when speed of the algorithms
+used was really important. I can&rsquo;t remember its title but I&rsquo;m pretty sure it
+involves &lsquo;digital computers&rsquo;.&rdquo;
 </p>
 <p>
-1 would be prepared to bet that the &ldquo;inaccuracy near 90&rsquo; is the main reason for
-the bad reauit PD Coker got using HPl Calculations carried out sensibly will
-Bive good results, &lsquo;while 15000 floating point operations ina row on a variable
-Will indicate a Silly peogram end will give silly results. All the usual
-Femarks about the usefulness or otherwise of benchmark programs are given even
-more emphasis by this result&rdquo; I just wonder how the other languages gave #0
+I would be prepared to bet that the &ldquo;inaccuracy near 90&rdquo; is the main reason for
+the bad result. P D Coker got using HP4. Calculations carried out sensibly will
+give good results, while 15000 floating point operations in a row on a variable
+will indicate a silly program, and will give silly results. All the usual
+remarks about the usefulness or otherwise of benchmark programs are given even
+more emphasis by this result. I just wonder how the other languages gave so
 </p>
 <?php columnEnd(1); ?>

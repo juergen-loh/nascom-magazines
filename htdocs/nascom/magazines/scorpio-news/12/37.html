@@ -1,77 +1,84 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+MAP RAM Green (really red) Light
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by R. Mohamed
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
 <p>
-MAP RAM Green (really red) Light by R. Mohamed
-</p>
-<p>
-Have you ever wondered if your system had died during, say, &laquo; long compilation
+Have you ever wondered if your system had died during, say, a long compilation
 on your RAM-disk? I did, many times, shortly after configuring my MAP RAM card
-fae Gk of memory and &lsquo;a 192K HAM-dirk.
+as 64k of memory and a 192K RAM-disk.
 </p>
 <p>
 Mechanical disk drives can easily be seen to be active (audibly and/or
-vieuaily), RAM-disks are by contrast totally silent and in my case there is also
-no apparent evidence of ite being accessed Very disconcerting! However
-Thepection of the MAP RAM card&rsquo;s cifcule diagram revealed on unexpectedly simple
-solution
+visually), RAM-disks are by contrast totally silent and in my case there is also
+no apparent evidence of its being accessed. Very disconcerting! However
+inspection of the MAP RAM card&rsquo;s circuit diagram revealed on unexpectedly simple
+solution.
 </p>
-<p>
+<h3>
 DESCRIPTION
+</h3>
+<p>
+When the RAM card is used in the 32/64K page mode, a 8 bit latch (IC46 which is
+addressed via port 0FFH) forms an extended address which is subsequently used to
+select one bank of 64K of RAM from another. Additional logic allows the
+software to effectively select either the upper or lower 32K of memory (when in
+32K page mode) from any bank of 64K. Three bits from the latch are further
+decoded on each card by IC47 (LS138), a 3 to 8 line decoder. The decoder
+converts an input binary number, in the range 0 to 7 (hence 3 bits) into a low
+voltage at the correspondingly numbered output (or select line). The 8 outputs
+of the decoder are used to select a particular row or bank of 64K of RAM
+situated on the card.
 </p>
 <p>
-When the RAM card {s used n the 32/64K pege aode, a @ bit Latch (ICK6 which is
-Addressed via port OFEN) forms an extended address vhich is subsequently used to
-Select one bank of GUK of RAM from snother Additional logic allows the
-software to effectively select either the upper or lover 22k of memory (when. In
-32K page mode) from any bank of 64K Three bits from the latch are further
-Gecoded on each card by To47 (L5138), a 3 to 8 Line decoder The decoder
-Eoaverts an input binary number, in the range 0 to 7 {henee 3 bats) into a low
-Voltage at the correspondingly nimbered output [or select Line) The # outputs
-bE the decoder ara used to select a particular row or bank of 64K of RAM
-Situated on the card
+Because there are only four banks of 64K on each card, only four of the outputs
+of the decoder are actually used. The decoders, one on each card, are enabled
+(or selected) in pairs. Each pair of decoders can select up to 8 banks of RAM,
+spread over the two boards. Each card in a pair will usually use either the
+upper or lower four decoder select lines. For example, card number 1&rsquo;s decoder
+is wired to be selected when RAM banks 0 to 7 are permissible, and similarly for
+card number 2. But in card number 1&rsquo;s case, outputs 0 to 3 of the decoder are
+wired to the four banks of RAN located on the card. For card number 2, its 4 to
+7 decoder outputs that are wired to the four banks of RAM on the card. Thus, if
+the software wishes to access bank 1 then the second row on card number 1 will
+deselected. If bank 6 is to be accessed then the third row on card number 2
+will be selected.
 </p>
 <p>
-Secause there are only four banks of 64x on each card, only four of the outputs
-of the decoder are actually used The decoders, one on each coed. are enabied
-(or selected) in pairs Each pair of decoders can select up to # banks of RAM,
-Spread over the tuo boards fach card in a pair will weusily use either the
-Upper of Lower four decoder select lines&rdquo; FoF exanple, card number I&rsquo;s decoder
-{eoiced co be selected when FAM banks 0 to 7 are permissible, and simalarly tor
-Card number 2 &ldquo;suc in card number 1&rsquo;s case, outputs 0 to) of the decoder are
-ited&rsquo; eo che four banks of HAN located on the card. For card number 2, its to
-Tidecoder outputs that are wired to the four banks of RAM on the card.&rdquo; Thus, iF
-the&rsquo; software wisher to access bank 1 then the second row on card number 1 will
-deselected &ldquo;if bank c is to be accessed then the third row on card oumber 2
-WLI be selected
+After a reset, or when power is applied to the system, all the bits of IC46 are
+reset to zero. Bit 7 of IC46 selects operation in 64K page mode and as the 3
+address bits into the decoder are also zero, bank 0 is selected (on card number
+1). This bank of RAM now forms the main addressable memory for the Z80
+microprocessor. Whenever another bank is selected, say in 32K page mode, and
+accessed (either upper or lower 32K) then Line 0 of the decoder on card 1 will
+go high, deselecting bank 0, and one of the other outputs of that or possibly
+any other decoder will go low to select the wanted bank of RAM. When the latch
+is reset to all zeros, output 0 oF the decoder goes low, selecting bank 0 once
+more
 </p>
 <p>
-After a reset, or when power is applied to the system, all the bits of Tc4s are
-Feset to sera Bit 7 of ICu6 selects operation in Guk page mode and gs the 3
-Addvess bits into the decoder are also zero, bank 0 #3 selected (on card number
-Th. &ldquo;"this&rsquo; bank ef RAM now forms the main addressable memory for the Z80
-microprocessor Whenever another bank is selected, say {0 32K page mode, and
-Accessed (either upper or over 32K) then Line 0 of the decoder on card 1 will
-Bo high. deselect ing bank 0, and one Gf the other outputs of that ot possibly
-Eny other decoder will go low to select the wanted bank of FAM. When the latch
-ie reser to all zeros, output OoF the decoder goer low, selecting bank 0 once
+It is easy to see that select line 0 on the decoder on card 1 can be used to
+give an indication of whether bank 0, the main Z80 RAM, is being accessed by the
+CPU. If the select lane is low then bank 0 is selected and the CPU is accessing
+its main memory. Conversely, when the select line is high the CPU is accessing
+another bank of RAM. So all that is needed is a simple indicator to reflect the
+status of select line 0.
 </p>
 <p>
-Tt s easy co see chat select 1ine 0 on che decoder on card 1 can be used to
-give an indication of vhetner bank 0, the main 260 RAM, is Deing sccersed by the
-Epu&rdquo; &ldquo;Tr the select lane is low then bank Oia selected and the CPU is accessing
-its main memory. Conversely, when the select line 15 high the CPU ip accessing
-Snother bank of RAM. So all that 15 needed is &raquo; simple indicator to reflect the
-Status of select line 0
+One could attach the indicator, a LED, directly to select line 0 but this
+approach has two disadvantages. Firstly, the &lsquo;sense&rsquo; of the indicator will be
+wrong, i.e. the LED will be lit when bank 0 is being accessed and off otherwise.
+Secondly, the LED will add an extra load onto the select line and possibly
+degrade its performance.
 </p>
 <p>
-one could attach the indicator, a LED, directly to select Jine o but this
-approach has two disadvantages Firstiy, the &ldquo;sense&rdquo; of the indicator will be
-rong. Je the LED will be Lit when benk&rsquo;o is being accessed and off otherwise
-Secondly, the LEU will add an extra load onto the select line and possibly
-degrade Yes performance
-</p>
-<p>
-Conveniently, there is a spare inverter on card number 1 which has ite output
-and input pins wired to pine 14 and 8 (resp.) on LBL Its use will both correct
-the &lsquo;sense&rsquo; of the indicator and provide a buffer to select line 0. the
+Conveniently, there is a spare inverter on card number 1 which has its output
+and input pins wired to pine 14 and 8 (resp.) on LB1. Its use will both correct
+the &lsquo;sense&rsquo; of the indicator and provide a buffer to select line 0. The
 </p>
 <?php columnEnd(1); ?>

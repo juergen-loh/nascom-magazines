@@ -1,80 +1,83 @@
 <?php columnStart(1); ?>
 <p>
-not {a by whether there {8 a zero in the block position of the directory entry.
-Wha CP/M doesn&rsquo;t know is which records have been written to the block; this ie
-Left for the programmer to determin
+not is by whether there is a zero in the block position of the directory entry.
+What CP/M doesn&rsquo;t know is which records have been written to the block; this is
+left for the programmer to determine.
 </p>
 <p>
-one vay of doing this {s to use the write random with zero 111 function when
-weiting to 4 previously unallocated block. To establish, from within &laquo; progran,
-hatnge or not&rsquo;a bigck has bean allocated to&rsquo;s file ta to read the desired
-Fecord using the read rand
-trying to read a block tha 7
-Felevant position in the directory entry.
-ith sero fill, If no error code i
-Tocated which could contain the. wanted record. If you previously weed
-ro Fil function when writing &laquo; record to this block, examination of the
-contents of the cequired record will reveal zeros 1f nothing has been written to
-Stor data 18 something hav been written.
+One way of doing this is to use the write random with zero fill function when
+writing to a previously unallocated block. To establish, from within a program,
+wheather or not a block has bean allocated to a file is to read the desired
+record using the read random function. If an error code is returned, you are
+trying to read a block that has not been allocated, i.e. CP/M found a zero
+in the relevant position in the directory entry. If this happens, you can write
+the record with zero fill. If no error code is returned, a block has already
+bee allocated which could contain the wanted record. If you previously used
+the zero fill function when writing a record to this block, examination of the
+contents of the required record will reveal zeros if nothing has been written to
+it or data if something has been written.
 </p>
 <p>
-A point vorth noting is that the CP/M DIR command will only show a file if
-aurectory entry exitte for extent 0. For thie reason, writing one Fecord to
-Fecord position 63535, for example, will result in two directory entries being
-Greaved; an empty one covering extent 0 and one covering the 128th record of
-extent 512
+A point worth noting is that the CP/M DIR command will only show a file if a
+directory entry exists for extent 0. For this reason, writing one record to
+record position 63535, for example, will result in two directory entries being
+created; an empty one covering extent 0 and one covering the 128th record of
+extent 512.
 </p>
 <p>
-Another observation about random files {a the vay that PIP.COM handles them (or
-more accurately, it doesn&rsquo;t). PIP,COM reade and writes files sequentially and
-Will thecefore get an end of file code from the BDOS when it encounters an
-Unallocated block ina file. Normally, this vould be adequate ae most files
-indeed end thie vay If faced with the example of a file that contains only
-record 65535, PIP.COM will only copy the empty directory entry for extent &copy;
+Another observation about random files is the way that PIP.COM handles them (or
+more accurately, it doesn&rsquo;t). PIP,COM reads and writes files sequentially and
+will therefore get an end of file code from the BDOS when it encounters an
+unallocated block in a file. Normally, this would be adequate as most files
+indeed end this way. If faced with the example of a file that contains only
+record 65535, PIP.COM will only copy the empty directory entry for extent 0.
 </p>
-<p>
+<h3>
 BIOS date structures
+</h3>
+<p>
+Some questions that still need to be answered are: how does CP/M know how many
+block the disk contains, what size are they, how many of them are reserved for
+the directory and how does it keep track of which ones are free for use? The
+short answer is that the BIOS contains this information but to amswer these
+questions in detail, some information about BIOS data structures is required.
 </p>
 <p>
-tne dlcectory
-Questions in detail, some information about BIOS dace structures 18 required.
-</p>
-<p>
-The disk routines in the BX
-</p>
-<p>
-contain data areas and buffer epace that will be
+The disk routines in the BIOS contain data areas and buffer space that will be
 used by the BDOS when it needs to have information that is system dependent.
-These areas ave known as the Disk Parameter Headere (DPil&rsquo;s), Disk Parameter
-Blocks &ldquo;(DPB&rsquo;s}, Checksum Vectors and Allocation Vectors We&rsquo;ll Look at these in
-the next. issue.
+These areas are known as the Disk Parameter Headers (DPH&rsquo;s), Disk Parameter
+Blocks (DPB&rsquo;s}, Checksum Vectors and Allocation Vectors. We&rsquo;ll look at these in
+the next issue.
 </p>
+<?php hLine("20%"); ?>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(23); ?>
+<h2 id="article1">
+MAP 80 Multi-Purpose Interface (MPI) Review
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author">
+by P.D. Coker</h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1); ?>
 <p>
-MAP 80 Multl-Purpose Interface (MPI) Review by P.D. Coker
-</p>
-<p>
-Theater of 0-BUS compatible products
-</p>
-<p>
-controllers &ndash; initially by the G then the GH829 with SAst
-Suppose Tor a Winchester, ciesely followed by the even more&rsquo; supportive CMoCd
-Yap 80&rsquo;s VEC vas also capable of controlling 5.25&Prime; drives and Nescon/<?php spChar("zwsp"); ?>Lucat. also
+The user of 80-BUS compatible products has been quite well served for floppy
+controllers &ndash; initially by the Gemini GM809, then the GM829 with SASI
+support for a Winchester, closely followed by the even more supportive GM849 &ndash;
+Map 80&rsquo;s VFC was also capable of controlling 5.25&Prime; drives and Nascom/<?php spChar("zwsp"); ?>Lucas also
 produced an FDC card. So why have Map produced yet another card?
 </p>
 <p>
-been quite well served for floppy
-,,
-</p>
-<p>
-The MPI is more than Just an PDC, catering for the usual range of disk size
-with support fore Winchester drive or two. By changing a few Linke and the
-Foc &lsquo;chip one can convert co Nascom FOC compatibility rather then the more usual
-Gensni Map vacandard- Ip aleo nes a CTC and two channels of S10, one of which
-Seva teandacd 2230 and the other Conforms to the proposed standasd for KECes
-(ign speed aulti-deop incerface)-. The ETC can Yo used to generate soteware
-Selfccable baud cates or, if the user, wishes, on-board crystals can be ue
-Generate two frequencies&rsquo; on the HPI board which are independent of the syst
-Clock. Ie une 26 porte and, in ay experience, can substitute for either of the
-tvo earlier Gemini &ldquo;OCs &ndash; T&rsquo;have po experience of the mort recent Gemini FDC.
+The MPI is more than just an FDC, catering for the usual range of disk size
+with support for a Winchester drive or two. By changing a few links and the
+FDC chip one can convert to Nascom FDC compatibility rather then the more usual
+Gemini/<?php spChar("zwsp"); ?>Map &ldquo;standard&rdquo;. It also has a CTC and two channels of SIO, one of which
+is a standard RS232 and the other conforms to the proposed standard for RS485
+(high speed multi-drop interface). The CTC can be used to generate software
+selectable baud rates or, if the user wishes, on-board crystals can be used to
+generate two frequencies on the MPI board which are independent of the system
+clock. It uses 16 ports and, in my experience, can substitute for either of the
+two earlier Gemini FDC&rsquo;s &ndash; I have no experience of the most recent Gemini FDC.
 </p>
 <?php columnEnd(1); ?>

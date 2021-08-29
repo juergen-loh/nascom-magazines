@@ -1,89 +1,90 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+The Z80 CTC
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by Rory O&rsquo;Farrell
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
 <p>
-The Z80CTC &mdash;_by Rory O&rsquo;Farrell
-</p>
-<p>
 Some time ago [1] I wrote on aspects of the Z80 microcomputer&rsquo;s interrupt
-Structure In tha article, I&rsquo;dealt mainly with the 260 PIO. Since then there
-have been many requests for another articie to deal with the other Z80 Family
-Chips tn this aad a subsequent article ic is my intention to cover the
-Ineeleactes of programming the following chips
+structure. In the article, I dealt mainly with the Z80 PIO. Since then there
+have been many requests for another article to deal with the other Z80 family
+chips. In this and a subsequent article it is my intention to cover the
+intricacies of programming the following chips:
+</p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(4); ?>
+<?php columnChange(34); ?>
+<table>
+<tr><td>The CTC</td><td>(Counter Timer Circuit)</td></tr>
+<tr><td>The SIO</td><td>(Serial Input/<?php spChar("zwsp"); ?>Output Controller)</td></tr>
+<tr><td>The DART</td><td>(Dual Asynchronous Receiver/<?php spChar("zwsp"); ?>Transmitter)</td></tr>
+</table>
+<?php columnEnd(4); ?>
+<p></p>
+<?php columnStart(1); ?>
+<p>
+Fortunately, the DART is a reduced specification SIO, providing only the
+asynchronous facilities, so for brevity I will simply refer to the SIO, and in
+general the DART will also be implied.
 </p>
 <p>
-The CTC (Counter Timer circuit
-The S10 (Serial. Inpue/<?php spChar("zwsp"); ?>oueput Control Ler)
+For ease of understanding, I propose to discuss the CTC/SIO pair as used on the
+MAP CPU and MAP MPI boards. On these boards the CTC/SIO group provide a most
+powerful, fully programmable, serial input/<?php spChar("zwsp"); ?>output unit. This is not the only
+possible use for these chips, but it will serve well as an introduction, besides
+being the most common configuration for them.
 </p>
 <p>
-The DART (Dual Aeynchconous Receiver/<?php spChar("zwsp"); ?>Tranemitter)
+Serial I/O interconnections have been very adequately dealt with in [2] and [3],
+and interested readers are referred to those articles for detail coverage of the
+subject. For the newcomer, it is appropriate to give a minimum explanation to
+set the scene. A Serial I/O chip is one which is given a byte of data and
+which squirts it out bit by bit onto a pair of wires &ndash; rather like a lump of
+dough being fed through a spaghetti maker &ndash; our new improved modified spaghetti
+maker which makes only one strand at a time! That is the act of transmission.
+Such a chip is also capable of receiving the individual bite of data and
+reassembling them into a byte &ndash; scrunching up all the fresh spaghetti to end up
+with a lump of dough again. There are other concerns, which need not affect us
+here, such as level shifting from TTL levele (0-5 volt) to RS232 levels (+/&ndash;
+12 volt), as these problems are dealt with in the articles cited.
 </p>
 <p>
-Fortunately, the DART is a reduced epectfication S10, providing only the
-asynchronous facilities, so for brevity 1 will simply refer to the S10, and in
-general the DART will eiso be Laplied.
-</p>
-<p>
-of understanding, I propose to discuss the CTC/SIO pair as used on the
-MAP CPU and HAP HPI boards. On these boards the CTC/ SIO group provide # most
-powerful, fully programmable, &ldquo;seriel input/<?php spChar("zwsp"); ?>output unit &lsquo;This is not the only
-possible use for these chips, but it vill serve well aa an introduction, besides
-Being the most common configuration for them:
-</p>
-<p>
-For es
-</p>
-<p>
-Serial I/O intecconnections have been very adequately dealt with in (2) and (31.
-ana interested readers are referred to those articles for detail coverage of the
-Subject Por the newcomer, it is appropriste to give s minimum explanation to
-Set the scene A Serial I/O chip is one which is givens byte of data and
-Which squirts {cout bit by bit onto s pair of wires &ndash; rather like &raquo; Luap of
-Sough elng fas encough &amp; spaghect! saker our new Laproved ogified spaghertt
-</p>
-<p>
-Which makes only one trend at a timel That is the act of transmiseion.
-Such a chip de alse capable of receiving the individual bite of data and
-Feaseembling them inco s byte &ndash; scrunching up all the fresh spaghetti to end UP
-with a lump of dough egein. There are other concerns, which need not affect us
-here, suchas Lovet shifting from Til Levele (0-5 volt) to RSt3z Levels (#/-
-12 volt), ae these problens are dealt with in the articles cited.
-</p>
-<p>
-If we imagine that we have &laquo; spaghetti maker at one end of facturing
-a alngle strand of speghetti, and a reverae spaghetti aker at the other, we Can
+If we imagine that we have a spaghetti maker at one end of a table manufacturing
+a single strand of spaghetti, and a reverse spaghetti maker at the other, we can
 hove pieces of dough from one end of the table to the other by feeding the
-Output of one machine into the input of the other it is easy to see that if
-the generator makes the spaghetti faster than the ather machine contumes st, ve
-wilt&rdquo; soon have # big Pile of spaghett: on the table If the coneuming. machine
-Coneumer faster than the maker, then the strand of spaghetti keeps getting
-pulled tight end breaking So it Becomes obvious that both machines mutt. work
-Rt the sane pace. Siailerly when transmitting date from one serial device 0
-another, they must bork work at the same tate, or in jargon, be &ldquo;clocked at the
-fame rate&rsquo; One of the major problems with serial communications is finding the
-tate of transmission or reception, loosely called the &lsquo;baudrate&rsquo; Ke will
-Consider the use of # CTC to provide differing baudrates or &lsquo;clocks&rsquo; for en S10
+output of one machine into the input of the other. It is easy to see that if
+the generator makes the spaghetti faster than the other machine consumes it, we
+will soon have a big pile of spaghetti on the table. If the consuming machine
+consumes faster than the maker, then the strand of spaghetti keeps getting
+pulled tight end breaking. So it becomes obvious that both machines must work
+at the same pace. Similarly when transmitting data from one serial device to
+another, they must both work at the same rate, or in jargon, be &lsquo;clocked at the
+same rate&rsquo;. One of the major problems with serial communications is finding the
+rate of transmission or reception, loosely called the &lsquo;baudrate&rsquo;. We will
+consider the use of a CTC to provide differing baudrates or &lsquo;clocks&rsquo; for an SIO.
 </p>
 <p>
-The CTC chip ss a 28 pin member of the Z80 family _ Tt comprises four channels,
-</p>
-<p>
-intially the same. Addressed as four I/O porte, one for each
-&ldquo;it can return an interrupt vector from each channel on the occurrence
-fertain conditions, which criteria can be programmed inte thet channel. FOr
-of reference, we sunber the channels from 0 to 3 Channel 0 differs from
+The CTC chip is a 28 pin member of the Z80 family. It comprises four channels,
+which are substantially the same. Addressed as four I/O ports, one for each
+channel, it can return an interrupt vector from each channel on the occurrence
+of certain conditions, which criteria can be programmed into that channel. For
+ease of reference, we number the channels from 0 to 3. Channel 0 differs from
 the others in that it remembers the interrupt vector for channel 0, and the
-onboard circuitry of the CTC {s able to modify this interrupt vector to indicate
-the interrupting channel This we will deal with shortly Channel 3 differs
-from the other channels in that t (due to Limitations of pin numbers) cannot
-output pulees, {t can only count thes.
+onboard circuitry of the CTC is able to modify this interrupt vector to indicate
+the interrupting channel. This we will deal with shortly. Channel 3 differs
+from the other channels in that it (due to limitations of pin numbers) cannot
+output pulses, it can only count them.
 </p>
 <p>
-The manu
-</p>
-<p>
-for the CTC [4] says that the CTC can be configured as &laquo; counter oF
-as atiner. This ie crue, but confusing. I find the following picture easier
-to grasp: each channel of the CTC is a counter- &lsquo;The channel can be tet up to
-count pulses arriving on the input pin for that channel (CLock/<?php spChar("zwsp"); ?>TRiGger input.
-GLR/TRon, where n refers to the channel number), of to count pulses arriving
+The manual for the CTC [4] says that the CTC can be configured as a counter or
+as a timer. This is true, but confusing. I find the following picture easier
+to grasp: each channel of the CTC is a counter. The channel can be set up to
+count pulses arriving on the input pin for that channel (CLocK/<?php spChar("zwsp"); ?>TRiGger input,
+GLK/TRGn, where n refers to the channel number), or to count pulses arriving
 </p>
 <?php columnEnd(1); ?>

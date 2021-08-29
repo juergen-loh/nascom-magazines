@@ -93,7 +93,7 @@
 	,	"The Dave Hunt Sundry Bits"
 	,	"D.R. Hunt"
 	,	""
-	,	51
+	,	54
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom I&#x2f;O Board modification to provide handshake line"

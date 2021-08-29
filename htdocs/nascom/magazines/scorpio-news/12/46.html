@@ -1,65 +1,57 @@
+<?php columnStart(2); ?>
+<h2 id="article1">
+GM809 Fast Stepper
+</h2>
+<?php columnChange(2); ?>
+<h3 class="author">
+by R. Mohamed
+</h3>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
 <p>
-GM809 Fast Stepper by R. Mohamed
+This article describes a simple hardware modification for the Gemini GM809
+floppy disk controller board to allow full speed stepping of modern 5&nbsp;1/4&Prime;
+drives.
 </p>
 <p>
-This article describes a simple hardware
-Floppy disk controller board to allow full.
-driver.
+About two years ago I upgraded my Nascom&nbsp;2 by replacing the exciting drives with
+a couple of TEAC FD-55s. They provided my system with a very worthwhile boost
+in performance and disk capacity (from 80K to 800K). Unfortunately they sound
+like a couple of machine guns every time the disk heads moved. Altering the
+stepping rate from 20 to 6 mSec (still twice the minimum for the TEACs) reduced
+the noise to a slightly less objectionable burrrr.
 </p>
-<p>
-About two years ago T upgraded my Nescom 2 by replacing the exteting drives with
-Peouple of TEAC FD-Sseet they provided ay vystwa with a very worthwhile bee
-in peftormance and disk capacity (From Unfortuaately hey sound
-Llxe&rsquo;s couple of machine guns every time the disk heads moved. Altering the
-stepping rete from 20 to 6 asec (#till twice the minimum for the TEAGS) reduced
-the noise to&rsquo;s slightly Leve objectionable bucrrr.
-</p>
-<p>
+<h3>
 DESCRIPTION
-</p>
+</h3>
 <p>
-&lsquo;At about thie time, I learned that the never GM829 FDC board could support the
-faster 3 mec stepping rate of modern floppy disk drives by doubling the clock
-frequency into the FOE controller chip The GH829 board controle the FDC clock
-frequency, amongst other things, by using the upper most bit (bit s) of a six
-bit resetting latch Examining the M809 circuit diagram revealed that this
-je bit ie present and uncommitted on the board. LK 1 on the GMOS provides a
-ction of 3 clock frequencies, one of which ie selected by 4 soldered Link
-jd te to add a eimple (digital) 2 way avitch in place of
+At about this time, I learned that the never GM829 FDC board could support the
+faster 3 mSec stepping rate of modern floppy disk drives by doubling the clock
+frequency into the FDC controller chip. The GM829 board controls the FDC clock
+frequency, amongst other things, by using the upper most bit (bit 5) of a six
+bit resetting latch. Examining the GM809 circuit diagram revealed that this
+same bit is present and uncommitted on the board. LK&nbsp;1 on the GM809 provides a
+selection of 3 clock frequencies, one of which is selected by a soldered link.
+Thus all that is needd is to add a simple (digital) 2 way switch in place of
+the soldered link.
 </p>
-<p>
-2&rsquo; Ey
-</p>
-<p>
-[&laquo;)&mdash; unt
-</p>
-<p>
-we pte
-</p>
-<p>
-A
-resis
-</p>
-<p>
-pat 5.
-</p>
-<p>
-Ligure 4 741800 digital switch
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-46-1.png"); ?>
+<p class="center">
+figure 1:74LS00 digital switch
 </p>
 <p>
 The simple circuit in figure 1 can switch through one of 2 clocks under control
-of a single input lines The tvo clock frequencies (1 2 Mz) are each
-Connected to one input of &amp; pair of HAND &lsquo;which are functioning as digital
-Switches. &ldquo;The other input to the gates afe connected to the clock select Lin
-Logic 0 (low) on the clock select fine opene the evitch and logic 1 (high) will
-close the awiteh Letting the clock pulser through to the output of the relevant
-te. An inverter on the select Line (made from another NAND gate) ensures
-that only one switch is open and the other closed at all times A fourth NAND
-gate combines the outputs from the two digital ewitches nto a tingle oueput
-ting the software selected clock frequency&rdquo; Af ald atx bite
-Tate (IC3) are set to logic 0 (low). By sui
-clocks, the standard iMiiz clock is selected on rY
-Teave sll well behaved disk routines unaffected by the modification.
+of a single input lines. The two clock frequencies (1 &amp; 2 MHz) are each
+connected to one input of a pair of NAND gates which are functioning as digital
+switches. The other input to the gates are connected to the clock select line.
+Logic 0 (low) on the clock select line opens the switch and logic 1 (high) will
+close the switch. Letting the clock pulses through to the output of the relevant
+NAND gate. An inverter on the select line (made from another NAND gate) ensures
+that only one switch is open and the other closed at all times. A fourth NAND
+gate combines the outputs from the two digital switches into a single output
+representing the software selected clock frequency. After a reset all six bits
+of the latch (IC5) are set to logic 0 (low). By suitably arranging the two
+clocks, the standard 1MHz clock is selected on reset. This provision should
+leave all well behaved disk routines unaffected by the modification.
 </p>
 <?php columnEnd(1); ?>

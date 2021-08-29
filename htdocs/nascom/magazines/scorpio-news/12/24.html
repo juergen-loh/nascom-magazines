@@ -1,92 +1,83 @@
 <?php columnStart(1); ?>
 <p>
-The buffer is (normally) 200 bytes long
-&lsquo;A0&gt;4B0 =BIOS:ECHO Linking:L80 BIOS/N,BIOS/Bs
+The buffer is (normally) 200 bytes long. Commands like:
 </p>
+<pre class="indent">
+A0&gt;M80 =BIOS;ECHO Linking;L80 BIOS/N,BIOS//E;ECHO Erasing;ERA *.BAK
+</pre>
 <p>
-HO EeasingcERA *.2AK
+then become possible which is very useful to the user. The MCB is in fact
+widely utilized by the Z system utilities for maximum power and flexibility. If
+a commend string is found in this buffer on cold boot, the command(s) will be
+executed. Unless the multiple command facility is enabled, the Z system cannot
+function to any real advantage.
 </p>
-<p>
-then ble which ie very useful to the user. The MCB is in fact
-widely uel py the Z system utilities for maxiqum power and flexibility. &ldquo;Tf
-2 commend string &lt;2 found in this buffer on cold boot, the command(e) will be
-executed. Unless tl ed, the Z system cannot
-Function to any real sdvantay
-</p>
-<p>
+<h3>
 Memory Based Named Directory Segment.
-</p>
+</h3>
 <p>
-&lsquo;As intimated above, I feel that this facility is not of any especial advantage
-On a single user system based on a couple of smallish floppies. On a aysten
-Wich &lsquo;several users, eapecially where @ Winchester 1a used, the situation te
-Complecely different. If this facility Le enabled, up to 14 (Could be extended
+As intimated above, I feel that this facility is not of any especial advantage
+on a single user system based on a couple of smallish floppies. On a system
+with several users, especially where a Winchester is used, the situation is
+completely different. If this facility is enabled, up to 14 (Could be extended
 at cost of more memory) Names may be allocated to Drives and USER areas. Thus
-Ates*containa wily files Als: containe moat ayaten ueilitien, etc. Typical
-ame ellocations are:
+A16: contains HLP files. A15: contains most system utilities, etc. Typical
+name allocations are:
+</p>
+<p class="center">
+A16 &mdash; HELP, &nbsp; &nbsp; &nbsp; A15 &mdash; ROOT, &nbsp; &nbsp; &nbsp; A0 &mdash; BASE, &nbsp; &nbsp; &nbsp; C0 &mdash; BAK, &nbsp; &nbsp; &nbsp; P0 &mdash; MDSK
 </p>
 <p>
-Ab == HELP, ALS &ndash; ROOT, AO &ndash; BASE, CO &ndash; BAK, PO -&mdash; HDSK
+The names allocated are a matter of user preference. I keep Z3 System
+development files in B0, so this I call Z3, and BASIC in A4: so this is called
+BAS. The main benefit of this is that one does not have to remember which DU
+one has allocated to a certain function. The directory name is displayed in the
+prompt:
+</p>
+<p class="center">
+A0:BASE&gt; &nbsp; &nbsp; &nbsp; C0:BAK&gt; &nbsp; &nbsp; &nbsp; B6:PAS&gt; &nbsp; &nbsp; &nbsp; P0:MDSK&gt; etc;
 </p>
 <p>
-The names allocaced are a matter of user preference. I kt
-development files in 80, 20 this T-call Z3, and BASIC In AA: 20)
-BAS. &lsquo;The main benefit of this ia that one does not have to reuent!
-fone has ailocated to s certain function, The directory name iv displayed in the
-proape:
+To move about one may use either the DU: or DIR: form and so&ndash;
 </p>
+<table class="center">
+<tr><td>A0:BASE&gt;ROOT:</td><td>(enter)</td><td>&mdash;&mdash;&gt;</td><td>A15:ROOT&gt;</td><td>is a valid as</td></tr>
+<tr><td>A0:BASE&gt;A15:</td><td>(enter)</td><td>&mdash;&mdash;&gt;</td><td>A15:ROOT&gt;</td><td></td></tr>
+</table>
 <p>
-AO:BASE&gt; &mdash;&mdash;CO:BAK&gt;. = BG:PAS&gt;&mdash;&mdash;PO:MDSK&gt; ets
-To move about one may use either the DU: or DIR form and so-
+In addition Z system utilities recognize either DU: or DIR: form so&ndash;
 </p>
+<table class="center">
+<tr><td>MCOPY ROOT:=BAK:THISFILE.BAS</td><td>or
+<tr><td>MCOPY ROOT:=C0:THISFILE.BAS</td><td>or
+<tr><td>MCOPY Al5:=C0:THATFILE.DOC</td><td>or
+<tr><td>MCOPY A15:=BAK:*.*</td><td>
+</table>
 <p>
-ADsBASE&gt;ROOT: (enter)
-AD:BASEDALS: | {enter}
-</p>
-<p>
-&lt;&gt; ASiROOT&gt; |e @ valid as
-cS MS:toor&gt;
-</p>
-<p>
-In addition Z system utilities recognize either DU: or DIR: form s0-
-</p>
-<p>
-MCOPY ROOT:=BAK:THISPILE BAS oF
-HCOPY ROOT:=CO:THISFILE.BAS oF
-MCOPY AlS+=CO:THATFILE.DOC oF
-copy ALSs=BAK:#.*
-</p>
-<p>
-fare ALL equally valid Directory nai
-&lsquo;optionally be password protected by
-</p>
-<p>
-yy be up to 8 characters long, and may
-&lsquo;password of up to 8 characters Long. For
+are ALL equally valid. Directory names may be up to 8 characters long, and may
+optionally be password protected by a password of up to 8 characters long. For
 more security, the DU: form of access may be disabled, so that password
-Protected directories become more secure, eopecially to non technical user
-Bheel protection of Disabling of the &ldquo;Peek conaand, and removal of debug
-urilities would be strictly necessary to give added protection where mor
-experienced users were using the system A moderately secure system is possible
-however, in a mule! user environment
+protected directories become more secure, especially to non technical user.
+Wheel protection of Disabling of the &lsquo;Peek&rsquo; command, and removal of debug
+utilities would be strictly necessary to give added protection where more
+experienced users were using the system. A moderately secure system is possible
+however, in a multi user environment.
 </p>
 <p>
-fone perescular point about allowing DIR names and USER areas to be displayed in
-the CCP prompts is thet the screen edit feature of Gost of our BI0S&rsquo;s needs to
-be modified This Feature starts by looking for the &lsquo;&gt;&rsquo; prompt in the EDIT Line
-returned from che Screen, and in both SYS and MAP BYOs&rsquo;s Starts at aboue the sth
-Character out from the start of the Line. I have modified this to start out at
-about the 12th character ae the extra data before the &lsquo;&gt;&rdquo; can ove this prompt
-Character well out Lato the Line If the BIOS source is available this can be
-eesily changed, otherwise it becomes # question of asking the supplier co tell
-you which byte changes the start point of this routine, or doing a Dit of work
-Mith&rsquo;e debugger or disastembler Generally no extra code is needed, (in fact T
-Fewrote the routine in my BIOS and saved # number of &lsquo;by f
-sddreve to point Fucthey dntothe edit bitter and tnd
-eg the original code
-</p>
-<p>
-LouL,eDBUFfI2, LD 8.12, EDBUF a a block of about 63 &ndash; 00 ch
+One particular point about allowing DIR names and USER areas to be displayed in
+the CCP prompts is that the screen edit feature of most of our BI0S&rsquo;s needs to
+be modified. This Feature starts by looking for the &lsquo;&gt;&rsquo; prompt in the EDIT line
+returned from the Screen, and in both SYS and MAP BIOS&rsquo;s starts at about the 4th
+character out from the start of the line. I have modified this to start out at
+about the 12th character as the extra data before the &lsquo;&gt;&rsquo; can move this prompt
+character well out into the line. If the BIOS source is available this can be
+easily changed, otherwise it becomes a question of asking the supplier to tell
+you which byte changes the start point of this routine, or doing a bit of work
+with a debugger or disassembler. Generally no extra code is needed, (in fact I
+rewrote the routine in my BIOS and saved a number of bytes). &ndash; just a change of
+address to point further into the edit buffer and increase the loop counter.
+e.g. the original code in SYS18 was LD HL,EDBUF+3, LD B,3 and I changed this to
+LD HL.EDBUF+12, LD B,12. EDBUF a a block of about 83 &ndash; 00 characters in a
 system image, and the code to be modified usually lies just before this buffer.
 </p>
 <?php columnEnd(1); ?>

@@ -1,80 +1,74 @@
 <?php columnStart(1); ?>
 <p>
-The characters shown between the
-Hex characters on the left. A ful
+The characters shown between the asterisks are the ASCII representation of the
+Hex characters on the left. A full stop is used to show unprintable characters.
 </p>
 <p>
-&lsquo;The format for the directory entry corr most exactly to that of a cP/H
-Elle control block and for goad &lsquo;Apart. from the first byte, the
-directory entey is a direct copy of the first 32 bytes of the FCB
+The format for the directory entry corresponds almost exactly to that of a CP/M
+file control block and for good reason. Apart from the first byte, the
+directory entry is a direct copy of the first 32 bytes of the FCB.
 </p>
 <p>
-The disk dicectory information is stored on the date tracks of the Sisk (
-</p>
-<p>
-sd to the system tracks) and occupees the First one or evo (usually) blocks
-onthe disk. Each directory entry requires 32 bytes and so ie follows that. for
-2&rsquo;1K Block size, each block will hold 32 direceory entries If you should wish
-to double the number of directory entries available to 64, then 2 Blocks will
+The disk directory information is stored on the data tracks of the disk (as
+opposed to the system tracks) and occupies the first one or two (usually) blocks
+on the disk. Each directory entry requires 32 bytes and so it follows that for
+a 1K Block size, each block will hold 32 directory entries. If you should wish
+to double the number of directory entries available to 64, then 2 blocks will
 have to be set aside for the directory. Therefore, the number of directory
-entries available and consequently the maximum number of files that may De
-Stored on a dick is a trade off against the size of the disk and the number of
+entries available and consequently the maximum number of files that may be
+stored on a disk is a trade off against the size of the disk and the number of
 blocks that can be spared for directory information. Gemini opted for 128
-directory entries per ditk with a 4K block size, so only one block ts lest to
-the divectory Leaving 196 blocks for the files themselves
+directory entries per disk with a 4K block size, so only one block is lost to
+the directory leaving 196 blocks for the files themselves.
 </p>
 <p>
-Looking at the entry for TESTFILE.COM, the first byte tells us chat the file Js
+Looking at the entry for TESTFILE.COM, the first byte tells us that the file is
 stored in user area 0. The user number is held in the lover four bits of the
-Bye. The upper four bits are cesecved by Digital Research and slthough they
-are unused in CP/M versions up to 22, CP/M 3 dovs use them #0, if anyone was
-Thinking of having 256 user aress, think again if you wish to tenmin compatible
-with future releases of CP/M,
+byte. The upper four bits are reserved by Digital Research and although they
+are unused in CP/M versions up to 2.2, CP/M&nbsp;3 does use them so, if anyone was
+thinking of having 256 user areas, think again if you wish to remain compatible
+with future releases of CP/M.
 </p>
 <p>
-A value of OESH in this position indicates to the BOOS that the file has been
-Grated This makes utiJities euch as UNERASE possible as, to restore a file,
-fll thet is necessary is to change this byte toe value between 0 and 15
-depending upon which user ares 4a required co hold the file. Unfortunately,
-this may not elways work as if a file hes been written to the disk since
+A value of 0E5H in this position indicates to the BDOS that the file has been
+erased. This makes utilities such as UNERASE possible as, to restore a file,
+all that is necessary is to change this byte to a value between 0 and 15
+depending upon which user area is required co hold the file. Unfortunately,
+this may not always work as if a file has been written to the disk since
 erasure, some of the data blocks used in the erased file may have been
-Feallocated to the nev file, Por usere of CP/M 1.4, t {8 not possible to
-Gnerase a file as the ERA command completely wipes the directory entries for the
-erased File by Filling them with OBSH bytes:
+reallocated to the new file. For users of CP/M&nbsp;1.4, it is not possible to
+unerase a file as the ERA command completely wipes the directory entries for the
+erased file by filling them with 0E5H bytes.
 </p>
 <p>
-CPIM 3 uses different values of the firet byte of the directory entry to
-identify disk labels, password information and date/<?php spChar("zwsp"); ?>time stanps, all of vhich
-occupy directory space and consequently reduce the number of Figs that may be
-Etored on the disk The disk Label occupies one directory entry and aay be
-identified by &raquo; 20H value for the first byte Date/<?php spChar("zwsp"); ?>Time stanps aad passwords
-are invoked by formatting the Gicectory uring the utility INITDIR COM which
-feserves one directory entry for every three {ile sateles in the directory,
-Fererved entries boing identified by the value 71# in their firet byte. You
-will see that IF Date/<?php spChar("zwsp"); ?>Time stamping ie invoked under CP/M 3, the naximin number
-Of files that may be stored on the disk it immediately reduced by one quacter
+CP/M&nbsp;3 uses different values of the first byte of the directory entry to
+identify disk labels, password information and date/<?php spChar("zwsp"); ?>time stamps, all of which
+occupy directory space and consequently reduce the number of files that may be
+stored on the disk. The disk Label occupies one directory entry and may be
+identified by a 20H value for the first byte. Date/<?php spChar("zwsp"); ?>Time stamps and passwords
+are invoked by formatting the directory using the utility INITDIR.COM which
+reserves one directory entry for every three file entries in the directory;
+reserved entries being identified by the value 21H in their first byte. You
+will see that if Date/<?php spChar("zwsp"); ?>Time stamping is invoked under CP/M&nbsp;3, the maximum number
+of files that may be stored on the disk it immediately reduced by one quarter.
 </p>
 <p>
-Next in the dicectory entry comes the 11 bytes for the file name and type &lsquo;The
-E four bytes in the top cow give flle size informacion and vill be looked at
-inter. Lastly, the 16 bytes inthe bottom row contain the Block numbers that
-have been allocated to the file CP/M gets clever here and the block numbers
-are stoed differentiy depending on whether the disk has more than 255 ar less
-than&rsquo; 256 blocks available, If there are Leas than 256 blocks on the disk, CP/M
-Stores the block numbers as @ bit values and can consequently hold information
-on 16 blocks Tf, hovever, the disk has 26 of more blocks, the numbers are
-Stored as 16 bit values (etored in Low-High order) with the result that only 8
-Blocks may be allocated per directory entry Ia the example given we can see
-that only ope block has been allocated to the file although ie asa&rsquo;t apparent
-from the entry whether 8 or 16 bit numbers are being used.&rdquo; The decision es to
-whether 8 or 16-bit numbers are used is made by the CP/M BOOS and is totally
-\cturers of the Tatung Einstein force thet
-&lsquo;even though their disks have less
-ip attempt to make their disks
-Hunt though).
-</p>
-<p>
-than 256 blocks. This, presumably,
-Unceadable on other systems (Didn&rsquo;t fool
+Next in the directory entry comes the 11 bytes for the file name and type. The
+last four bytes in the top row give file size information and will be looked at
+later. Lastly, the 16 bytes in the bottom row contain the block numbers that
+have been allocated to the file. CP/M gets clever here and the block numbers
+are stored differently depending on whether the disk has more than 255 or less
+than 256 blocks available. If there are less than 256 blocks on the disk, CP/M
+stores the block numbers as 8 bit values and can consequently hold information
+on 16 blocks. If, however, the disk has 256 of more blocks, the numbers are
+stored as 16 bit values (stored in Low-High order) with the result that only 8
+blocks may be allocated per directory entry. In the example given we can see
+that only one block has been allocated to the file although it isn&rsquo;t apparent
+from the entry whether 8 or 16 bit numbers are being used. The decision as to
+whether 8 or 16-bit numbers are used is made by the CP/M BDOS and is totally
+transparent to the user but the manufacturers of the Tatung Einstein force their
+implementation of CP/M to use 16 bit values, even though their disks have less
+than 256 blocks. This, presumably, was an attempt to make their disks
+unreadable on other systems (Didn&rsquo;t fool Dave Hunt though).
 </p>
 <?php columnEnd(1); ?>

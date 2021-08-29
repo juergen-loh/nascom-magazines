@@ -9,7 +9,9 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-
+	<style>
+		h2 { margin-top: 2em; }
+	</style>
 <?php include "$navi_body_php";	?>
 
 <?php
@@ -44,8 +46,12 @@
 <br>
 <div class="row hyphenate" lang="en"><div class="col-sm-6">
 
-<h2><a href="../inmc-news/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a></h2>
-<h3>1978 &ndash; 1980</h3>
+<h2>
+	<a href="../inmc-news/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
+</h2>
+<h3>
+	1978 &ndash; 1980
+</h3>
 <p>
 	INMC News was the original magazine to support the Nascom pro&shy;duct range.
 </p>
@@ -59,8 +65,12 @@
 	<a href="../inmc-news/07/00/"><img src="../inmc-news/07/cover.jpeg" width="100" height="142" title="INMC News, Issue 7"></a>
 </p>
 
-<h2><a href="../inmc-80-news/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a></h2>
-<h3>1980 &ndash; 1981</h3>
+<h2>
+	<a href="../inmc-80-news/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
+</h2>
+<h3>
+	1980 &ndash; 1981
+</h3>
 <p>
 	After Nascom&rsquo;s financial difficulties, INMC News was re-born as a magazine called INMC 80 News.
 </p>
@@ -72,8 +82,12 @@
 	<a href="../inmc-80-news/05/01/"><img src="../inmc-80-news/05/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 5"></a>
 </p>
 
-<h2><a href="../80-bus-news/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a></h2>
-<h3>1982 &ndash; 1985</h3>
+<h2>
+	<a href="../80-bus-news/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
+</h2>
+<h3>
+	1982 &ndash; 1985
+</h3>
 <p>
 	INMC 80 News mutated once more and became 80-Bus News.
 </p>
@@ -98,8 +112,12 @@
 	<a href="../80-bus-news/42/01/"><img src="../80-bus-news/42/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 2"></a>
 </p>
 
-<h2><a href="../scorpio-news/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a></h2>
-<h3>1987 &ndash; 1989</h3>
+<h2>
+	<a href="../scorpio-news/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
+</h2>
+<h3>
+	1987 &ndash; 1989
+</h3>
 <p>
 	80-Bus News changed once again and became Scorpio News.
 </p>
@@ -118,8 +136,12 @@
 
 </div><div class="col-sm-6">
 
-<h2><a href="../micropower/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a></h2>
-<h3>1981 &ndash; 1982</h3>
+<h2>
+	<a href="../micropower/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
+</h2>
+<h3>
+	1981 &ndash; 1982
+</h3>
 <p>
 	Another magazine appeared in parallel, Micropower.
 </p>
@@ -134,8 +156,12 @@
 	<a href="../micropower/24/-1/"><img src="../micropower/24/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 4"></a>
 </p>
 
-<h2><a href="../nascom-newsletter/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a></h2>
-<h3>1982 &ndash; 1984</h3>
+<h2>
+	<a href="../nascom-newsletter/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
+</h2>
+<h3>
+	1982 &ndash; 1984
+</h3>
 <p>
 	Micropower became the Nascom Newsletter with the original issue numbers.
 </p>
@@ -151,78 +177,201 @@
 </p>
 
 <h1>
-Series
+	Series
 </h1>
 <h2>
-Dr. Dark&rsquo;s Diary
+	Dr. Dark&rsquo;s Diary
 </h2>
 <h3>
-by Chris Blackmore
+	by Chris Blackmore
 </h3>
 <p>
-	<a href="../inmc-news/04/15/">Episode 1</a><br>
-	<a href="../inmc-news/05/10/">Episode 2</a><br>
-	<a href="../inmc-news/05/23/">Episode 3</a><br>
-	<a href="../inmc-news/06/13/">Episode 4</a><br>
-	<a href="../inmc-news/07/08/">Episode 5</a><br>
-	<a href="../inmc-80-news/01/34/">Episode 6</a><br>
-	<a href="../inmc-80-news/02/17/">Episode 7</a><br>
-	<a href="../inmc-80-news/03/20/">Episode 8</a><br>
-	<a href="../inmc-80-news/04/33/">Episode 9</a><br>
-	<a href="../80-bus-news/11/13/">Episode 10</a><br>
-	<a href="../80-bus-news/12/11/">Episode 11</a><br>
-	<a href="../80-bus-news/13/10/">Episode 12</a><br>
-	<a href="../80-bus-news/14/06/">Episode 13</a><br>
-	<a href="../80-bus-news/21/29/">Episode 14</a><br>
-	<a href="../80-bus-news/22/35/">Episode 15</a><br>
-	<a href="../80-bus-news/23/54/">Episode 16</a><br>
-	<a href="../80-bus-news/24/17/">Episode 17</a><br>
-	<a href="../80-bus-news/25/47/">Episode 18</a><br>
-	<a href="../80-bus-news/26/15/">Episode 19</a><br>
-	<a href="../80-bus-news/31/13/">Episode 20</a><br>
-	<a href="../80-bus-news/32/17/">Episode 21</a><br>
-	<a href="../80-bus-news/34/11/">Episode 22</a><br>
-	<a href="../80-bus-news/36/07/">Episode 23</a><br>
-	<a href="../scorpio-news/11/38/">Episode 24</a><br>
-	<a href="../scorpio-news/12/16/">Episode 25</a><br>
-	<a href="../scorpio-news/13/05/">Episode 26</a><br>
-	<a href="../scorpio-news/14/25/">Episode 27</a><br>
-	<a href="../scorpio-news/21/08/">Episode 28</a><br>
-	<a href="../scorpio-news/22/15/">Episode 29</a><br>
-	<a href="../scorpio-news/31/09/">Episode 30</a><br>
+	<a href="../inmc-news/04/15/text/#article1">   Episode  1 &nbsp; </a>
+	<a href="../inmc-news/05/10/text/#article1">    &nbsp;  2 &nbsp; </a>
+	<a href="../inmc-news/05/23/text/#article1">    &nbsp;  3 &nbsp; </a>
+	<a href="../inmc-news/06/13/text/#article1">    &nbsp;  4 &nbsp; </a>
+	<a href="../inmc-news/07/08/text/#article1">    &nbsp;  5 &nbsp; </a>
+	<a href="../inmc-80-news/01/34/text/#article1"> &nbsp;  6 &nbsp; </a>
+	<a href="../inmc-80-news/02/17/text/#article1"> &nbsp;  7 &nbsp; </a>
+	<a href="../inmc-80-news/03/20/text/#article1"> &nbsp;  8 &nbsp; </a>
+	<a href="../inmc-80-news/04/33/text/#article1"> &nbsp;  9 &nbsp; </a>
+	<a href="../80-bus-news/11/13/text/#article1">  &nbsp; 10 &nbsp; </a>
+	<a href="../80-bus-news/12/11/text/#article1">  &nbsp; 11 &nbsp; </a>
+	<a href="../80-bus-news/13/10/text/#article1">  &nbsp; 12 &nbsp; </a>
+	<a href="../80-bus-news/14/06/text/#article1">  &nbsp; 13 &nbsp; </a>
+	<a href="../80-bus-news/21/29/text/#article1">  &nbsp; 14 &nbsp; </a>
+	<a href="../80-bus-news/22/35/text/#article1">  &nbsp; 15 &nbsp; </a>
+	<a href="../80-bus-news/23/54/text/#article1">  &nbsp; 16 &nbsp; </a>
+	<a href="../80-bus-news/24/17/text/#article1">  &nbsp; 17 &nbsp; </a>
+	<a href="../80-bus-news/25/47/text/#article1">  &nbsp; 18 &nbsp; </a>
+	<a href="../80-bus-news/26/15/text/#article1">  &nbsp; 19 &nbsp; </a>
+	<a href="../80-bus-news/31/13/text/#article1">  &nbsp; 20 &nbsp; </a>
+	<a href="../80-bus-news/32/17/text/#article1">  &nbsp; 21 &nbsp; </a>
+	<a href="../80-bus-news/34/11/text/#article1">  &nbsp; 22 &nbsp; </a>
+	<a href="../80-bus-news/36/07/text/#article1">  &nbsp; 23 &nbsp; </a>
+	<a href="../scorpio-news/11/38/"> &nbsp; 24 &nbsp; </a>
+	<a href="../scorpio-news/12/16/"> &nbsp; 25 &nbsp; </a>
+	<a href="../scorpio-news/13/05/"> &nbsp; 26 &nbsp; </a>
+	<a href="../scorpio-news/14/25/"> &nbsp; 27 &nbsp; </a>
+	<a href="../scorpio-news/21/08/"> &nbsp; 28 &nbsp; </a>
+	<a href="../scorpio-news/22/15/"> &nbsp; 29 &nbsp; </a>
+	<a href="../scorpio-news/31/09/"> &nbsp; 30 &nbsp; </a>
 </p>
 <h2>
-Z80 made simple
+	The DH Bits
 </h2>
 <h3>
-by David Hunt
+	by David Hunt
 </h3>
 <p>
-	<a href="../inmc-80-news/01/19/">Part 1</a><br>
-	<a href="../inmc-80-news/02/26/">Part 2</a><br>
-	<a href="../inmc-80-news/03/32/">Part 3</a><br>
-	<a href="../inmc-80-news/04/45/">Part 4</a><br>
-	<a href="../inmc-80-news/05/42/">Part 5</a><br>
-	<a href="../80-bus-news/12/22/">Part 6</a><br>
-	<a href="../80-bus-news/13/30/">Part 7</a><br>
+	<a href="../inmc-news/02/01/text/#article1">       Bit  0 &nbsp; </a>
+	<a href="../inmc-news/05/02/text/#article1">    &nbsp;  1 &nbsp; </a>
+	<a href="../inmc-news/07/01/text/#article1">    &nbsp;  2 &nbsp; </a>
+	<a href="../inmc-80-news/01/02/text/#article1"> &nbsp;  3 &nbsp; </a>
+	<a href="../inmc-80-news/02/02/text/#article1"> &nbsp;  4 &nbsp; </a>
+	<a href="../inmc-80-news/03/02/text/#article1"> &nbsp;  5 &nbsp; </a>
+	<a href="../inmc-80-news/04/02/text/#article1"> &nbsp;  6 &nbsp; </a>
+	<a href="../inmc-80-news/05/02/text/#article1"> &nbsp;  7 &nbsp; </a>
+	<a href="../80-bus-news/25/54/text/#article1">  &nbsp;  8 &nbsp; </a>
+	<a href="../80-bus-news/31/17/text/#article1">  &nbsp;  9 &nbsp; </a>
+	<a href="../80-bus-news/33/31/text/#article1">  &nbsp; 10 &nbsp; </a>
+	<a href="../80-bus-news/35/31/text/#article1">  &nbsp; 11 &nbsp; </a>
+	<a href="../80-bus-news/36/23/text/#article1">  &nbsp; 12 &nbsp; </a>
+	<a href="../80-bus-news/41/07/text/#article1">  &nbsp; 13 &nbsp; </a>
+	<a href="../scorpio-news/21/33/"> &nbsp; 14 &nbsp; </a>
+	<a href="../scorpio-news/22/23/"> &nbsp; 15 &nbsp; </a>
 </p>
 <h2>
-NASCOM ROM BASIC disassembled
+	Z80 made simple
 </h2>
 <h3>
-by Carl Lloyd–Parker
+	by David Hunt
 </h3>
 <p>
-	<a href="../80-bus-news/23/27/text/#article1">Part 1</a><br>
-	<a href="../80-bus-news/24/23/text/#article1">Part 2</a><br>
-	<a href="../80-bus-news/25/31/text/#article1">Part 3</a><br>
-	<a href="../80-bus-news/26/31/text/#article1">Part 4</a><br>
-	<a href="../80-bus-news/31/23/text/#article1">Part 5</a><br>
-	<a href="../80-bus-news/32/23/text/#article1">Part 6</a><br>
-	<a href="../80-bus-news/33/23/text/#article1">Part 7</a><br>
+	<a href="../inmc-80-news/01/19/text/#article1">   Part 1 &nbsp; </a>
+	<a href="../inmc-80-news/02/26/text/#article1"> &nbsp; 2 &nbsp; </a>
+	<a href="../inmc-80-news/03/32/text/#article1"> &nbsp; 3 &nbsp; </a>
+	<a href="../inmc-80-news/04/45/text/#article1"> &nbsp; 4 &nbsp; </a>
+	<a href="../inmc-80-news/05/42/text/#article1"> &nbsp; 5 &nbsp; </a>
+	<a href="../80-bus-news/12/22/text/#article1">  &nbsp; 6 &nbsp; </a>
+	<a href="../80-bus-news/13/30/text/#article1">  &nbsp; 7 &nbsp; </a>
 </p>
 <h2>
-Lawrence
+	NASCOM ROM BASIC disassembled
+</h2>
+<h3>
+	by Carl Lloyd-Parker
+</h3>
+<p>
+	<a href="../80-bus-news/23/27/text/#article1">   Part 1 &nbsp; </a>
+	<a href="../80-bus-news/24/23/text/#article1"> &nbsp; 2 &nbsp; </a>
+	<a href="../80-bus-news/25/31/text/#article1"> &nbsp; 3 &nbsp; </a>
+	<a href="../80-bus-news/26/31/text/#article1"> &nbsp; 4 &nbsp; </a>
+	<a href="../80-bus-news/31/23/text/#article1"> &nbsp; 5 &nbsp; </a>
+	<a href="../80-bus-news/32/23/text/#article1"> &nbsp; 6 &nbsp; </a>
+	<a href="../80-bus-news/33/23/text/#article1"> &nbsp; 7 &nbsp; </a>
+</p>
+<p>
+	NASCOM ROM BASIC source code is available in
+	<a href="../80-bus-news/files/8kbasic.asm">ASM</a> and
+	<a href="../80-bus-news/files/8kbasic.lst">LST</a> file format. 
+</p>
+<h2>
+	Hands-On!
+</h2>
+<h3>
+ 	by Viktor
+</h3>
+<p>
+	<a href="../micropower/11/16/">   Part 1 &nbsp; </a>
+	<a href="../micropower/12/20/"> &nbsp; 2 &nbsp; </a>
+	<a href="../micropower/13/03/"> &nbsp; 3 &nbsp; </a>
+	<a href="../micropower/14/18/"> &nbsp; 4 &nbsp; </a>
+</p>
+<h2>
+	NAS-SYS monitors dissected
+</h2>
+<h3>
+ 	by J.​ Haigh
+</h3>
+<p>
+	<a href="../micropower/11/28/">   Part 1 &nbsp; </a>
+	<a href="../micropower/12/26/"> &nbsp; 2 &nbsp; </a>
+	<a href="../micropower/13/26/"> &nbsp; 3 &nbsp; </a>
+	<a href="../micropower/14/27/"> &nbsp; 4 &nbsp; </a>
+	<a href="../micropower/21/30/"> &nbsp; 5 &nbsp; </a>
+	<a href="../micropower/22/07/"> &nbsp; 6 &nbsp; </a>
+	<a href="../micropower/23/22/"> &nbsp; 7 &nbsp; </a>
+</p>
+<h2>
+	EPROM Programmer
+</h2>
+<h3>
+ 	by C.​ Bowden
+</h3>
+<p>
+	<a href="../micropower/14/02/">   Part 1 &nbsp; </a>
+	<a href="../micropower/21/18/"> &nbsp; 2 &nbsp; </a>
+	<a href="../micropower/22/12/"> &nbsp; 3 &nbsp; </a>
+</p>
+<h2>
+	XTAL BASIC XTRA 2.2 updates
+</h2>
+<h3>
+ 	by David Elliot
+</h3>
+<p>
+	<a href="../micropower/14/11/">   Part 1 &nbsp; </a>
+	<a href="../micropower/21/12/"> &nbsp; 2 &nbsp; </a>
+</p>
+<h2>
+	Co-ordinate Life
+</h2>
+<h3>
+ 	by P.​ Whittaker
+</h3>
+<p>
+	<a href="../micropower/22/34/">   Part 1 &nbsp; </a>
+	<a href="../micropower/23/32/"> &nbsp; 2 &nbsp; </a>
+</p>
+<h2>
+	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
+</h2>
+<h3>
+	by David G.​ Johnson
+</h3>
+<p>
+	<a href="../nascom-newsletter/31/16/">   Part 1 &nbsp; </a>
+	<a href="../nascom-newsletter/32/02/"> &nbsp; 2 &nbsp; </a>
+	<a href="../nascom-newsletter/33/02/"> &nbsp; 3 &nbsp; </a>
+	<a href="../nascom-newsletter/34/02/"> &nbsp; 4 &nbsp; </a>
+	<a href="../nascom-newsletter/35/03/"> &nbsp; 5 &nbsp; </a>
+</p>
+<h2>
+	Disk Formats and CP/M Disk Routines
+</h2>
+<h3>
+	by M.W.T. Waters 
+</h3>
+<p>
+	<a href="../scorpio-news/11/25/">   Part 1 &nbsp; </a>
+	<a href="../scorpio-news/12/40/"> &nbsp; 2 &nbsp; </a>
+	<a href="../scorpio-news/13/11/"> &nbsp; 3 &nbsp; </a>
+	<a href="../scorpio-news/14/15/"> &nbsp; 4 &nbsp; </a>
+</p>
+<h2>
+	Digital Imaging Systems
+</h2>
+<h3>
+	by D.​R.​ Hunt
+</h3>
+<p>
+	<a href="../scorpio-news/22/27/">   Part 1 &nbsp; </a>
+	<a href="../scorpio-news/23/33/"> &nbsp; 2 &nbsp; </a>
+	<a href="../scorpio-news/24/25/"> &nbsp; 3 &nbsp; </a>
+</p>
+<h2>
+	Lawrence
 </h2>
 <p>
 	<a href="../inmc-news/03/26/text/#article1">Saga One: C.E.G.B. brutality</a><br>
@@ -233,15 +382,15 @@ Lawrence
 	<a href="../inmc-80-news/01/48/text/#article1">Very Official – To whom it may concern</a><br>
 	<a href="../inmc-80-news/03/48/text/#article1">Very Official</a><br>
 	<a href="../inmc-80-news/05/71/text/#article1">Lawrence and the &ldquo;new&rdquo; printer?</a><br>
-	<a href="../80-bus-news/13/45/">Lawrence is back (despite popular demand)</a><br>
-	<a href="../80-bus-news/14/48/">Lawrence meets the commercial software syndrome</a><br>
-	<a href="../80-bus-news/22/52/">Lawrence has bought PolyDos...</a><br>
-	<a href="../80-bus-news/24/53/">Lawrence meets dangers of VIDEO.</a><br>
-	<a href="../80-bus-news/31/52/">Lawrence lands a helping hand.</a><br>
-	<a href="../80-bus-news/33/49/">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>
-	<a href="../80-bus-news/34/42/">Lawrence (super-programmer...).</a><br>
-	<a href="../80-bus-news/36/53/">Lawrence and the PolyDos Users Group.</a><br>
-	<a href="../80-bus-news/41/31/">Lawrence Lipshitz – the voice of reason.</a><br>
+	<a href="../80-bus-news/13/45/text/#article1">Lawrence is back (despite popular demand)</a><br>
+	<a href="../80-bus-news/14/48/text/#article1">Lawrence meets the commercial software syndrome</a><br>
+	<a href="../80-bus-news/22/52/text/#article1">Lawrence has bought PolyDos...</a><br>
+	<a href="../80-bus-news/24/53/text/#article1">Lawrence meets dangers of VIDEO.</a><br>
+	<a href="../80-bus-news/31/52/text/#article1">Lawrence lands a helping hand.</a><br>
+	<a href="../80-bus-news/33/49/text/#article1">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>
+	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
+	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
+	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
 	<a href="../scorpio-news/22/18/">Lawrence the long-haired wieredo....</a><br>
 </p>
 

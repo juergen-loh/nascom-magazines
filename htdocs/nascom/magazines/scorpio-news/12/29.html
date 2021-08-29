@@ -1,96 +1,85 @@
 <?php columnStart(1); ?>
 <p>
-Normal SUBMIT type operation is
-&lsquo;aux command processor, and ALIAS
-for wultiple command
+Batch processing is supported in several ways. Normal SUBMIT type operation is
+possible. In addition to this Z3 provides <b>ZEX</b> command processor, and <b>ALIAS</b>
+alias generator. ALIAS is very easy to use. It prompts for multiple command
+input line exactly as one might type at the console, and converts this into a
+small .COM file that can then be invoked at any time to run the commands.
+Parameters are supported, so the facility is both powerful and quick to set up.
+ZEX is more sophisticated, and to date I have not had a chance to explore its
+potential.
 </p>
 <p>
-Batch processing, is supported in
-poseible In addition to this
-Elias generator. ALIAS 19 very ef
-input line exactly as one might type at
+<b>MU3</b> is a memory debug utility. It may be loaded as a transient, or is the TPA
+is to be preserved, a version is provided that loads to the RCP area. MU3
+enables memory to be displayed and edited. Several other commands are also
+available. <b>DU3</b> is a Disk Editor similar to the various DU&rsquo;s in the libraries.
+It is rather more interactive than these, with a better display.
+</p>
+<h3>
+General Utilities&nbsp;&ndash;
+</h3>
+<p>
+<b>PATH.COM</b> allows inspection and redefinition of the PATH.
 </p>
 <p>
-1 .COM file that can then be invoke:
-Parameters are supported, eo the facility
-ZEX is more sophisticated, and to date 1 have not had a chance to explore its
-potential
+Z3 supports comments. A &lsquo;;&rsquo; in the first character position marks the line as a
+comment. The RCP and command file NOTE also mark the line as a comment. The
+command <b>COMMENT.COM</b> goes a little further, and replaces the CCP prompt with the
+word COMMENT.
 </p>
 <p>
-U3 1 a memory debug utility. Tt may be loaded as a transient, or Af the TPA
-fe to be preserved, # version ie provided that loads ta the RCP area. MUS
-enables memory to be displayed and edited Several other commands are also
-ivailable. DUS ie&raquo; Disk Editor similar to the various DU&rsquo;s in the Libraries.
-Be"fe Tather more interactive than these, with # better display.
+The <b>ECHO</b> RCP and transient command will &lsquo;ECHO&rsquo; the text that follows to the
+screen or printer The main purpose of ECHO is to send messages to the screen
+during multiple command processing. Otherwise there might be no output for long
+periods, and one could wonder what was happening. Since characters are sent
+without modification, this can be used to reprogram the printer. Output to the
+printer must be preceded by a &lsquo;$&rsquo; character. ECHO $^L would send a form feed.
+</p>
+<h3>
+Menu Systems&nbsp;&ndash;
+</h3>
+<p>
+If the system is to be used by several persons, or where the users are non
+technical, extensive <b>MENU</b> type operation it provided. It is possible to lock
+the user into a MENU that does not permit escape back to the Z3 system. A menu
+check utility is also provided to ensure that the MENU is correct in format. A
+screen oriented system <b>VMENU</b>, is also available, with associated format checker.
+The Menu and Vmenu commands look for a command file of type .MNU/.VMN, and read
+it to obtain the commands to be processed. Menu&rsquo;s may access other menu&rsquo;s.
+Extensive .HLP files are provided for both these commands. Both MENU and VMENU
+are shells.
+</p>
+<h3>
+Flow control&nbsp;&ndash;
+</h3>
+<p>
+Beyond the flow control available in the FCP segment, additional Flow control is
+provided in the command <b>IF.COM</b>. Several options are supported that may be
+tested for True/<?php spChar("zwsp"); ?>False, such as Null Files, Error Flags, File Existence, Null
+afn, Wheel, Register value, matching afn&rsquo;s.
 </p>
 <p>
-General Utilities &ndash;
-PATH.COM allows inspection and redefinition of the PATH.
-</p>
-<p>
-23 supports comments A&rsquo;&rsquo;;* in the first character position mazks the line as a
-Comment. The ECP and command f11c NOTE x&rsquo;the Line ass comment. The
-command COMMENT.COM goes a little further, &lsquo;the CCP prompe wich the
-&lsquo;word COMMENT
-</p>
-<p>
-The ECHO RCP and transient command will &lsquo;ECHO&rsquo; the text that follows to the
-Screen or printer The main purpore of ECHO is to send messages to the screen
-Guring multiple command processing Otherwise there might be no output for Long
-periods, and one could vender what was heppening- Since characters are sent
-Sithout &lsquo;edification, this can be used to reprogram the printer Output to the
-Printer must be preceded by a &ldquo;E&para;&rdquo; character. ECHO S"L would send a form feed.
-</p>
-<p>
-Menu Systems &ndash;
-</p>
-<p>
-TE the system is to be used by several persons, or where the users are non
-technical, extensive MENU type operation it provided it is possible to lock
-the user nto # MENU that dogs not perit escape back to the 23 system. A menu
-Check utility is also provided co ensure that the MEW is correct in format. A
-Screen oriented system VHENU, is alco available, with associated format checker
-The Hens and Yaenu commands look for &laquo; command file of type -HNU/-VHN, end read
-ft&rsquo;eo obtain the commands to be processed Menu&rsquo;s may access other menu&rsquo;s
-Extensive &laquo;MLP files are provided for both these commands. Both MENU and VMENU
-are shells
-</p>
-<p>
-Flow coateol &ndash;
-</p>
-<p>
-Beyond the flow control available in the FOP segment, additional Flow control is
-provided in the command IP.cOM Severei options are supported that may be
-tested for True/<?php spChar("zwsp"); ?>False, auch as Mull Files, Error Plugs, Fide Existence, Null
-ain, Wheel, Register value, matching afn&rsquo;e
-</p>
-<p>
-The above summary covers the majority of the 23 utilities There are others,
-Due they will generally be more specialized, concerning things Like redirected
+The above summary covers the majority of the Z3 utilities. There are others,
+but they will generally be more specialized, concerning things like redirected
 I/O and are fully described in the HELP files.
 </p>
+<h3>
+ZCPR3 in Use.
+</h3>
 <p>
-ZCPRS in Use.
 </p>
 <p>
-14 should be altered to announce
-</p>
-<p>
-If possible the BIOS cold boot &lsquo;sign-on&rsquo; meses
-Tae installation of 23 will be
-</p>
-<p>
-the use of 23, &lsquo;and any other enhanced feature
+If possible the BIOS cold boot &lsquo;sign-on&rsquo; messages should be altered to announce
+the use of 23, and any other enhanced features. The installation of Z3 will be
 gone into later, but the cold boot must also initialize some areas, and should
-</p>
-<p>
-tithe Wheel byte, set up the default Path, and any startup commands. These
+set the Wheel byte, set up the default Path, and any startup commands. These
 can be quite extensive since there is room for 200 characters in the command
-butter
+buffer.
 </p>
 <p>
-On my system, T send a different character set to the SVC (CPMUG Software), and
-use&rsquo;a 23 command ECHO, to prompt for ^C or any key, and the Z3 commend SAK
-(Strike a key), to walt for input. If it isa &ldquo;C, the system goes to the COP
+On my system, I send a different character set to the SVC (CPMUG Software), and
+use a Z3 command ECHO, to prompt for ^C or any key, and the Z3 command SAK
+(Strike a key), to wait for input. If it is a ^C, the system goes to the CCP
 </p>
 <?php columnEnd(1); ?>

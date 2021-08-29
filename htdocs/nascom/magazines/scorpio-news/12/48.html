@@ -1,73 +1,59 @@
 <?php columnStart(1); ?>
 <p>
-figure 2, notch or dot towards you. Turn the board
-co OV and pin 1e to the solder pad of R21 with come
-&lsquo;have now mechanically secured
+4) Insert the 74LS00, see figure 2, notch or dot towards you. Turn the board
+over and solder pin 7 to 0V and pin 14 to the solder pad of R21 with some
+thickish tinned copper wire, The two wires have now mechanically secured
+the chip to the board.
 </p>
 <p>
-4) Insert the 741800, 6
-over and solder pil
-thicken tinned copper wire, &ldquo;The two wir:
-the chip to the beard.
-</p>
-<p>
-5) Interconnect the pine of che 74LS00
+5) Interconnect the pine of the 74LS00 as shown in figure 3, using some thin
 connecting wire, single core preferably.
 </p>
-<p>
-showa in figure 3, using some thin
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-48-1.png"); ?>
+<p class="center">
+figure 3:Wiring diagram, viewed from component side.
 </p>
 <p>
-figure 3.Viring diagran, vieved from component side
+6) Now connect the four additional links as follows&nbsp;..
 </p>
+<table class="fdc-lk-links">
+<tr><td>LK1/b</td><td>to</td><td>74LS00</td><td>pin</td><td>5</td><td>(your original 1MHz clock)</td></tr>
+<tr><td>LK1/c</td><td>"</td><td>"</td><td>"</td><td>12</td><td>(your 2MHz clock)</td></tr>
+<tr><td>LK1/a</td><td>"</td><td>"</td><td>"</td><td>8</td><td>(output clock)</td></tr>
+<tr><td>IC5/15</td><td>"</td><td>"</td><td>"</td><td>1 &amp; 2</td><td>(clock select line)</td></tr>
+<tr><td colspan=6>(i.e. IC5 pin 15)</td></tr>
+</table>
 <p>
-5) Now connect the four sdditional Links as follows
+7) finalkly double check all the wiring for any mistakes or shorts.
 </p>
-<p>
-Lxa/p to 74LS00 pin 5 (your original mie eteck)
-tae ttt ae (our 2m clock)
-</p>
-<p>
-tale 2 5 ot 8 (Output clock)
-</p>
-<p>
-tesyis* + Lea (clock select Line)
-</p>
-<p>
-(Per&rsquo;te 5 pin 18)
-</p>
-<p>
-or shores.
-</p>
-<p>
-7) Finally double check all the wiring for any mistal
-vestiNc
-</p>
+<h3>
+TESTING
+</h3>
 <p>
 Re-install the FDC card into your system and reconnect the drive cabling. Power
-up and boot up in your normel disk operating system Everything should work as
-before, 1f not check the voltege Level on 1c5 pin 15 which should be low. IF
-rhis ie ok then check that the two clock lines are not svapped. I had 10
-problems, everything worked first time when 1 booted up the disk system,
+up and boot up in your normal disk operating system. Everything should work as
+before, if not check the voltage level on IC5 pin 15 which should be low. If
+this is ok then check that the two clock lines are not swapped. I had no
+problems, everything worked first time when I booted up the disk system.
 </p>
-<p>
-&lsquo;THE SOFTWARE
-</p>
+<h3>
+THE SOFTWARE
+</h3>
 <p>
 Modifying existing software should be quite straight forward. Changes only need
 to be made whenever commands that (potentially) move the disk drive&rsquo;s head are
-iseued eo the Wp1797 disk controller chip. I include details of 2 versions of
-software, one where peisitive disk coutines communicate directly with the MD1797
-Foc chip and secondly where the routines communicate Indirectly via s single
-call (1&rsquo;e SYS users)
+issued to the WD1797 disk controller chip. I include details of 2 versions of
+software, one where primitive disk routines communicate directly with the WD1797
+FDC chip and secondly where the routines communicate indirectly via a single
+call (i.e. SYS users).
 </p>
 <p>
-Firstly, for routines that send commands to FDC directly, 11st{og 1 shows the
-raggested alterations (in lower case) to the existing code &ldquo;The existing code is
-presented in a hypothetical form, and you may have to alter it slightly in Light
-SF your own circumstances. The &ldquo;FDCHUB?&rdquo; aubroueine call nay in fact be 9 jump
-fo tome common code shared by &ldquo;HOME:&rdquo;, "SEEK:&rdquo; and aaybe other routiner as well.
-In this case Just append the source of the &lsquo;stepsiow-&rsquo; at the end for your
-fepeBusy&rsquo; routine
+Firstly, for routines that send commands to FDC directly, listing 1 shows the
+suggested alterations (in lower case) to the existing code. The existing code is
+presented in a hypothetical form, and you may have to alter it slightly in light
+of your own circumstances. The &lsquo;FDCBUSY&rsquo; subroutine call may in fact be a jump
+to some common code shared by &lsquo;HOME:&rsquo;, &lsquo;SEEK:&rsquo; and maybe other routines as well.
+In this case just append the source of the &lsquo;stepslow:&rsquo; at the end for your
+&lsquo;FDCBUSY&rsquo; routine.
 </p>
 <?php columnEnd(1); ?>

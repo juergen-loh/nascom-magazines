@@ -1,71 +1,58 @@
 <?php columnStart(1); ?>
 <p>
-specification sheets say the daverter (an L504) can sink a current of Sua
-Beximum. I choose &amp; to be 330 ohms ae &laquo; good compromise between Light output
-and eink current (e
+specification sheets say the inverter (an LS04) can sink a current of 8mA
+maximum. I choose R to be 330 ohms as a good compromise between light output
+and sink current (see figure 1).
 </p>
 <p>
-&lsquo;ftgure 2).
-</p>
-<p>
-This te not quite the full story. The
-special case and the output Line of the decoder iv first logic
-</p>
-<p>
-Tesulee of latch bits 6 c 7 and address Line ALS.
-rie Lad indicater,&rsquo;es shown in figure 1, wil be active (Lie)
-52k page mode is selected. I have aot found this any problem but purists may
-wish to use the &ldquo;RO&rdquo; output at pin 13 of LBZ tnatead of select Line 0 ae shown
+This is not quite the full story. The select line of bank 0 is treated as a
+special case and the output line of the decoder is first logically ANDed with
+the combined results of latch bits 6 &amp; 7 and address line A15. The net result
+is that the LED indicator, as shown in figure 1, will be active (lit) whenever
+32k page mode is selected. I have not found this any problem but purists may
+wish to use the &lsquo;RO&rsquo; output at pin 13 of LB2 instead of select Line 0 as shown
 in Figure 1.
 </p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-38-1.png"); ?>
+<p class="center">
+figure 1:circuit diagram
+</p>
+<h3>
+WIRING
+</h3>
 <p>
-Lect Line of bank 0 is treated
+The only components required are an LED and 330 ohm 1/8 or 1/4 watt resistor.
+The LED should be small (3mm) type but can be any colour, I just happened to
+have a red one to hand. Figure 2 shows the connections in both plan and frontal
+views.
 </p>
 <p>
-figure 1:circutt diagram
+1) Solder the 330 ohm resistor onto pins 9 and 14 on LB2 (component side) of
+card number 1.
 </p>
 <p>
-wmmrac
-</p>
-<p>
-&lsquo;The only components required are an LED and 330 ohm 1/8 or 1/4 watt resistor.
-The LED should be small (3mm) type but can be any colour, T just happened to
-have a red one Co hand. Figure 2 shove the connections in both plan and frontal
-views
-</p>
-<p>
-1) Solder the 330 ohm resistor onto pins 9 and 14 on LB2 (component #ide) of
-card &lsquo;number i.
-</p>
-<p>
-2) Using single cored connection wire (wire wrapping cable {e ideal) m
+2) Using single cored connection wire (wire wrapping cable is ideal) make the
 following connections on the underside of the board.
 </p>
-<p>
-the
+<p class="center">
+LB1 pin 8 to LB2 pin 9<br>
+<br>
+LB1 pin 14 to LB2 pin 2
 </p>
 <p>
-Lb pin 6 to LB2 pin 9
-Ler pin 16 to LB2 pin 2
+3) Carefully bend and crop the leads of the LED as shown in figure 2. Note
+that the LED is correctly orientated, the cathode end (flat on package) is
+free. Solder the anode to the positive pin of C46 on the component side of
+the board.
 </p>
 <p>
-3) Carefully bend and crop the leads of the LED as shown in figure 2. Mote
-that the LED is correctly orientated, the cathode end (flat on package) 2
-Free, Solder the anode co the positive pin of C46 on the component side of
-the board
-</p>
-<p>
-4) Now solder # Length of single cored wire to the LED cathode (free end),
-then poke the wire through the plate through hole adjacent to Ic7 ac shows
-in figure 2. &lsquo;Solder the free end of the wire to LBZ pin 14. Since the
-Hinai &lsquo;Link involves the wire parsing through the hole, it ie advisable to
-</p>
-<p>
-age wire that hae &laquo; thick insu! Le wi if
-you plan to use enamelled wire, then I re of
-Insulacion over the wire and position 1 ah
-</p>
-<p>
-prevent the edges of the hole piercing the vire&rsquo;s insulation.
+4) Now solder a length of single cored wire to the LED cathode (free end),
+then poke the wire through the plate through hole adjacent to IC7 as shown
+in figure 2. Solder the free end of the wire to LB2 pin 14. Since the
+final link involves the wire parsing through the hole, it is advisable to
+use wire that has a thick insulation layer, i.e. wire wrapping wire. If
+you plan to use enamelled wire, then I recommend you place a small piece of
+insulation over the wire and position it inside the hole. This will
+prevent the edges of the hole piercing the wire&rsquo;s insulation.
 </p>
 <?php columnEnd(1); ?>

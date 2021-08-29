@@ -1,51 +1,50 @@
+<?php columnStart(2); ?>
+<?php imageinsertGap($imagepath, $magpath, $issuepath, $pagepath, "Image-39-1.png"); ?>
+<?php columnChange(2); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-39-2.png"); ?>
+<?php columnEnd(2); ?>
+<p></p>
 <?php columnStart(1); ?>
-<p>
-cas ficcer
-LE ay
-Lp cas i
-insulation * 7
-LED
-View trom front View fron above
-</p>
-<p>
-figure 2:viring disgren
+<p class="center">
+figure 2:wiring diagram
 </p>
 <p>
 5) Insulate the free end of the LED with some heat shrink sleeving or a spare
 piece of PVC tubing
 </p>
 <p>
-6) Finally double check che wiring.
-This completes the modification Depending on the type of LED used, you may
+6) Finally double check the wiring.
 </p>
 <p>
-need to ad just the value of the 330 ohm resistor, but try to keep the current
-Below 8a
+This completes the modification. Depending on the type of LED used, you may
+need to adjust the value of the 330 ohm resistor, but try to keep the current
+below 8mA.
 </p>
+<h3>
+TESTING
+</h3>
 <p>
-estING
-</p>
-<p>
-Re-install the card and switch on The LED should be off. If you have a BIOS
-that supports a RAM-disk on the HAP RAM card (eg. SYS) then boot at up and
+Re-install the card and switch on. The LED should be off. If you have a BIOS
+that supports a RAM-disk on the MAP RAM card (e.g. SYS) then boot it up and
 watch the results. If not then use the Monitor ROM to output values to port
-Oren.
+0FEh.
 </p>
+<table class="indent2" style="width: 30%">
+<tr><td>O FE 00</td><td>;LED off</td></tr>
+<tr><td>O FE 80</td><td>;LED on</td></tr>
+<tr><td>O FE 8x</td><td>;LED on</td></tr>
+<tr><td>O FE 00</td><td>;LED off</td></tr>
+</table>
+<h3>
+CONCLUSION
+</h3>
 <p>
-0 FE 00 LED off
-0 FE 80 LED on
-&copy; FE bx LED on
-0 FE 00 LED off
+The modification will work for both NASCOM&nbsp;2 and GM811 users. I have
+successfully used it for the past year with no problems at all. Unfortunately
+the modification is not suitable for GM813 users who are using the MAP RAM board
+in its memory mapping mode. Additional logic is needed to detect when the
+extended address lies outside the first 64K (0 &ndash; FFFFh) i.e when address lines
+A16-A19 are all zero.
 </p>
-<p>
-&lsquo;concLustoM
-</p>
-<p>
-The modification will work for both NASCOM&nbsp;2 and GMS11 users. 1 have
-successfully used it for the past year with no probleas at all. Uafortunavely
-the modificacion is not suitable for GMBL3 users who are using the MAP RAM boscd
-in ite memory mapping mode Additional logic is needed vo detect when the
-extended address Lies outeide the first 64K (0 &ndash; PFFPh) i.e when addrese Lines
-A16-A19 are ail. zero
-</p>
+<?php hLine("20%"); ?>
 <?php columnEnd(1); ?>

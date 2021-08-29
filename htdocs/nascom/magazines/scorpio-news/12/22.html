@@ -1,95 +1,83 @@
 <?php columnStart(1); ?>
 <p>
 The diagram of Fig 1. shows the segments and buffers that would be present in a
-Full implementation of 22 or 23, although the addresses are flexible, and the
-size of the redirected I/O gegment is variable or nil
+full implementation of Z2 or Z3, although the addresses are flexible, and the
+size of the redirected I/O segment is variable or nil.
+</p>
+<h3>
+USER areas and moving about.
+</h3>
+<p>
+The only way in which the software can be effectively controlled on a Winchester
+drive is to use the USER facility of CP/M. To a non-technical user of the
+system, it appears that the disk is divided into a number of &lsquo;watertight&rsquo;
+compartments, and these know nothing about other user areas. This is
+rather how CP/M treats USER areas. In fact all that happens is that the first
+byte in the directory entry for any file is marked with a number that may be
+0E5H, which means that the file is erased, or between 0 and 0Fh (01FH &ndash; Z system
+supports users to 31).
 </p>
 <p>
-UsER areas and moving about.
+This number indicates the USER area in which the file would be displayed for
+example by a DIR command, or be &lsquo;seen&rsquo; by PIP command.
 </p>
 <p>
-The only way in which the software can be effectively controlled on # Winchester
-drive de to use the USER facility of CP/M. To &laquo; non-technical user of the
-Syste, {v appears that che Gia ie divided into a a
+CP/M utilities are unable (in general) to access files not in their USER area.
+The Z system and its utilities have much greater ability however, and can reach
+across USER areas, EVEN on different drives. Thus commands like:
+</p>
+<p class="center">
+A0&gt;DIR C6: &nbsp; &nbsp; &nbsp; &nbsp; or &nbsp; &nbsp; &nbsp; &nbsp; C4&gt;ERA A2:MYFILE.TXT
 </p>
 <p>
-Father. how CP Pe
-byte in the dicectory entry for any file 1a marked wich a number that may Dy
-GBsH, which meune that the File is erased, or between 0 and OPW (O1FH = 2 aysten
-Supports urers &pound;0 31).
+are perfectly legal. The CP/M method of accessing an USER area is also
+extremely inflexible. To move from A4: to B3: needs one to type B: and then
+USER 3. The Z method permits one to go as follows:
+</p>
+<p class="center">
+A4&gt;B0: &nbsp; &nbsp; ---&gt; &nbsp; &nbsp; B0&gt;6: &nbsp; &nbsp; ---&gt; &nbsp; &nbsp; B6&gt;C: &nbsp; &nbsp; ---&gt; &nbsp; &nbsp; C6:&gt;D2: &nbsp; &nbsp; ---&gt; &nbsp; &nbsp; D2&gt;
 </p>
 <p>
-This number indicates the USER
-example by # DIR command, or be
+which is much easier. The Named Directory facility of Z3 adds even more
+flexibility, as will be described.
+</p>
+<h3>
+CCP and RCP Commands
+</h3>
+<p>
+The size limitation of 2k restricts the Z2 CCP to virtually the same commands as
+are provided with ZCPR/<?php spChar("zwsp"); ?>CCPZ, and prevents the CCP from being able to deal with
+Named directories itself, but does allow the movement described above. The USER
+command has been removed from Z2 and Z3 since it is redundant.
 </p>
 <p>
-n which the &pound;118 would be displayed for
-yen&rsquo; by PIP command.
-</p>
-<p>
-CP/M utilities are unable (in general) to access files not in their USER
-The 2 system and its utilities have Buch greater ability however, and can reach
-Across USER areas, EVEN on different drives. Thue commands Like:
-</p>
-<p>
-AO&gt;DDIR C5: of &mdash;CADERA AZ:MYPILE.TXT
-</p>
-<p>
-ace perfectly legal. The CP/M method of accessing an USER ari
-Gxtremely inflexible Ta move from At: to 8:
-USER&rsquo;S.&rdquo; The Z method permite one to go ae follow
-</p>
-<p>
-Ae also
-and then
-</p>
-<p>
-Ab&gt;BO: ===&gt; BO&gt;G: &gt; cbpas
-</p>
-<p>
-which is much easier. The Mi
-</p>
-<p>
-ed Directory facility of 23 adds even more
-Heeibility, ae will be desersbe
-</p>
-<p>
-CoP and RCP Commands
-</p>
-<p>
-The size Limitation of 2k restricts the 22 COP to virtually the same commands as
-are provided with ZCPR/<?php spChar("zwsp"); ?>CCPZ, and prevents the CCP from being able to deal vith
-Named directories itself, pot does allow the movement described above. The USER
-Command has been removed from 22 and 23 since it is redundant
-</p>
-<p>
-The size problem ir overcome in 23 by providing #7 additional 2k Command package
-inthe RCP segment. This brings several edvantages The number and power of
-Gommands is extended. The RCP segment may be changed at any tame to being In
-ther overlays with different features, The 23 CCP can optionally be assembled
-tovdeal wath Named directories, Password protection of directories, minimize the
-Seareh &ldquo;path, give preference to DU: forms or t0 DIR: forme {Le to Drive/<?php spChar("zwsp"); ?>User
-Gr Named Forms) and so on &lsquo;Thi dncresses che amount of code eo the extent that
-there is little room for the standard and extra commands Tt becomes a
-balancing act, trying various TRUE or FALSE combinations until the minial
+The size problem is overcome in Z3 by providing an additional 2k Command package
+in the RCP segment. This brings several advantages. The number and power of
+commands is extended. The RCP segment may be changed at any time to bring in
+other overlays with different features. The Z3 CCP can optionally be assembled
+to deal with Named directories, Password protection of directories, minimize the
+search &lsquo;path&rsquo;, give preference to DU: forms or to DIR: forms (i.e. to Drive/<?php spChar("zwsp"); ?>User
+or Named Forms) and so on. This increases the amount of code to the extent that
+there is little room for the standard and extra commands. It becomes a
+balancing act, trying various TRUE or FALSE combinations until the minimum
 amount of memory it wasted in the CCP area, and then providing the remaining
-Commands in ehe RCP
+commands in the RCP.
 </p>
 <p>
-Options available in the CCP are DIR, LIST, TYPE, Go, ERA, SAVE, REN, GET, JUMP,
-NOTE, In my system the 23 CCP provides ERA, SAVE, GO, and NOTE. GO will run
-prograa in the TPA at loOH NOTE allows x Comment line to be displayed on the
-BeREEN
+Options available in the CCP are DIR, LIST, TYPE, GO, ERA, SAVE, REN, GET, JUMP,
+NOTE. In my system the Z3 CCP provides ERA, SAVE, GO, and NOTE. GO will run a
+program in the TPA at 100H. NOTE allows a comment line to be displayed on the
+SCREEN.
 </p>
+<pre class="indent">
+A0&gt;NOTE This is a comment
+A0&gt;NOTE A semicolon will have the same effect
+A0&gt;;Like this
+</pre>
 <p>
-AO&gt;NOTE This ie @ comment
-AODNOTE A&rdquo; semicolon wil have the same effect
-&lsquo;o&gt; Like this
-</p>
-<p>
-The RCP segment .LIB source code, Like that for the CCP, will allow selection of
-hore commands than will fit into 2k, so a compromise is necessary. In practice
-thie ie not much of a problem. The commands available for selection are CP,
-DIR, ERA, LIST, TYPE, PEEK, POKE, PROT, REG, REN, NOTE, ECHO, HL and WLQ
+The RCP segment .LIB source code, like that for the CCP, will allow selection of
+more commands than will fit into 2k, so a compromise is necessary. In practice
+this is not much of a problem. The commands available for selection are CP,
+DIR, ERA, LIST, TYPE, PEEK, POKE, PROT, REG, REN, NOTE, ECHO, WHL and WHLQ.
 </p>
 <?php columnEnd(1); ?>

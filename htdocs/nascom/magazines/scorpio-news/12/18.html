@@ -1,90 +1,73 @@
 <?php columnStart(1); ?>
 <p>
 much &lsquo;better&rsquo; results? In the case of ComPas, this would be mostly due to its
+use of 6 bytes for a real number, instead of 4 almost everywhere else. This
+explains why David Parkinson didn&rsquo;t bother fixing ComPas to use the HSA-88B, as
+there would be quite a lot of work involved a that kind of patch! The time
+taken by ComPas was 330 seconds, seven times as long as HP4 and eleven times as
+long as HP5. Very much a case of horses for courses, I suppose...
 </p>
 <p>
-This
+The best esult I have seen for the benchmark, in case you are still interested
+after all that, was 2.50000000000117e+05 given by a DEC VAX under VMS. Alas, we
+don&rsquo;t know how long it took, as the job put its results in a spooled file, and
+printed them later. My contact is hoping to get the program to send the
+&ldquo;Started&rdquo; and &ldquo;Finished&rdquo; to his terminal next time he runs it! Soon I will try
+it on the Open University DEC 20 mainframe...
 </p>
+<h3>
+Gratuitous Attacks on Other Contributors!
+</h3>
 <p>
-eeplaing why David Parkinson didn&rsquo;t bother firing ComPas to use the HSA
-there would be quite &laquo; lot of work involved a that Lind of patcht
-</p>
-<p>
-5330 seconds, seven ti &lsquo;at HPS and eleven times
-mach a case of horses 7
-</p>
-<p>
-after all that, ws
-don&rsquo;t know how Jong it took, a
-Printed thea, le Hy contact ie hoping to get the program to send the
-FSeareed&rsquo; and *Finished&rsquo; to his terminal next time he rune {t1 Soon T will try
-it&rsquo; on the Open University DEC 20 malafra
-</p>
-<p>
-Gratuitous Attacks on Other Contributors
-</p>
-<p>
-Wot really, just a few comments on the content of issue 1. Quite &laquo; lot of it
-vasnie really directly concerned with the hardware Listed on the front cover of
-The magazine. In particular, there were a lot of pages about Fortran, &amp;
-Language that should have died out youre ago. And Dave Hunt&rsquo;s dictionary was
+Not really, just a few comments on the content of issue 1. Quite a lot of it
+wasn&rsquo; really directly concerned with the hardware listed on the front cover of
+the magazine. In particular, there were a lot of pages about Fortran, a
+language that should have died out years ago. And Dave Hunt&rsquo;s dictionary was
 rather incomplete. Items of this nature should be up to date, and include
-Gefinitions relating to important languages Like Pascal. You know the sort of
-thing T mean, &ldquo;Recureion, see recursion&rdquo;
+definitions relating to important languages like Pascal. You know the sort of
+thing I mean, &ldquo;Recursion, see recursion&rdquo;
 </p>
 <p>
-Anterested by the article about Gemini&rsquo;s Multinet, as I think there is far
-&lsquo;tn having oh user than having Lote of
+I was interested by the article about Gemini&rsquo;s Multinet, as I think there is far
+more sense in having at least one processor for each user than having lots of
+terminals tied onto one micro. Also, it sounds as if Multinet works properly,
+unlike the awful Econet. That being so, I wonder why it isn&rsquo; mentioned in
+Network magazine? Back to Dave Hunt, whose reply to Bert Martin&rsquo;s letter was
+four times as long as the letter itself. Methinks he doth protest too much!
+</p>
+<h3>
+Installing ED80 for use with the SVC.
+</h3>
+<p>
+ED80 is the program editor I use, which is supplied with just about every
+language Hisoft produce. It comes with an installation progam, to enable the
+user to set it up for a particular system&rsquo;s display hardware, and very good it
+is, too. What it doesn&rsquo;t do is word processing, with the word-wrapping and
+justification that implies. Programs tend not to need that sort of thing.
 </p>
 <p>
-tied onto If Multinet vorke properly,
+When I finished installing mine, following the instructions carefully (and the
+manual does explain the process clearly), I found I had a problem. The SVC was
+not showing any cursor. After a few minutes trying to work by pressing a key
+and watching where a character appeared, I decided I had to do something. Going
+back to the manual, I found out how to get ED80 to send an initialisation string
+to the SVC, and set it up to enable the cursor, in the form of a flashing block.
+I happen to prefer that sort to the more usual underline character. On running
+ED80, there was my flashing cursor blob. However, as soon as I touched a key
+it vanished. Further investigation suggested that CP/M wee resetting it to the
+original invisible type for inscrutable reasons of its own. So I dug out the
+CP/H BIOS listings, and found the routine that was doing it I made a CP/M with
+that routine removed, and ran ED80 again. The cursor still vanished as soon as
+in was moved from the top left of the screen. I went to the pub...
 </p>
 <p>
-unlike the awful Econe why it dene mentioned in
-</p>
-<p>
-Network magazine? Back to Dave Wont, ply to Bert
-</p>
-<p>
-four times ae long as the letter itself Methinks he doth protest too much!
-</p>
-<p>
-Installing HDsO for use with the SVC.
-</p>
-<p>
-EDS is the progcam editor T use, which {s suppiied with
-Language Hisoft produce Iv comes with an installation prog
-tiser to set it up for a particular system&rsquo;s display hardware, and very good it
-Uet"eo0., What st doesn&rsquo;t dois word processing, with the vord-veapping and
-justification tha implies. Programs tend not eo need that sort of thing.
-</p>
-<p>
-When 1 finished installing mine, following the instcuctions carefully (and the
-manual does explain the process clearly), I found I had a problem The SVC was
-Rot showing any cursor &lsquo;After a few minutes trying to work by pressing a key
-fand watching where # character appeared, I decided Thad to do something.&raquo; Going
-back to the manual, T Found out how to get EDO to send an initialisation string
-fo the SVC, and set it up to enable the cursor, in the form of a flashing block:
-Whappen to prefer that sort to the more weual underline character. on running
-EDGO there wee ay flashing cursor blob | However, as soon ae T touched a Fe
-it vanished, Further investigation suggested that CP/M wee resetting it to ti
-original invisible type for inscrutable reasons of ite own. So T dug out the
-Ch/H BIOs Liscings, and found the routine that was doing it I made a CP/M with
-that routine eemoved, and can EDSO again The cursor still vanished ag soon as
-in wan moved from the top left of the screen. T went to the pub
-</p>
-<p>
-In the end, 1 had @ look at the code of E080, using Hisoft&rsquo;s MON COM utility,
-and found that being Jolly good chaps, and tidy progranmers, they had routed all
+In the end, I had a look at the code of ED80, using Hisoft&rsquo;s MON.COM utility,
+and found that being jolly good chaps, and tidy programmers, they had routed all
 calls to the CP/M screen writing routine to a single routine of their own. Even
-better, there vere useful areas of zeros dn the progeam, whith looked as if &amp;
-patch ingerted in them would do no harm. So I cobbled together a patch, and put
-Pein &ldquo;Te may be ugly. it may be longer than it needs to be, ie may even break
-</p>
-<p>
-obscure lew of Dijkstra or Codd, for all T know, but it alsa happens to
-</p>
-<p>
-Here it is, In case anybody needa it:
+better, there were useful areas of zeros in the program, which looked as if a
+patch inserted in them would do no harm. So I cobbled together a patch, and put
+it in. It may be ugly, it may be longer than it needs to be, it may even break
+some obscure law of Dijkstra or Codd, for all I know, but it also happens to
+work. Here it is, in case anybody needs it:
 </p>
 <?php columnEnd(1); ?>

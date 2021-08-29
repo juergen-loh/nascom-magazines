@@ -1,111 +1,84 @@
+<?php columnStart(3); ?>
+<h2 id="article1">
+The ZCPR3 System
+</h2>
+<?php columnChange(23); ?>
+<h3 class="author">
+by C. Bowden &nbsp; G30CB
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
-<p>
-The ZCPR3 System by C. Bowden G30CB
+<h3>
 Part 1 &ndash; ZCPR Concepts and Features
+</h3>
+<p>
+In Issue 1 of Scorpio News I described some of the ways in which CP/M (Vers. 2)
+could be improved. In the article I described the ZCPR/<?php spChar("zwsp"); ?>CCPZ improved CCP, and
+briefly mentioned the ZCPR2 and ZCPR3 systems. I have now had a chance to try
+both of these upgrades, and in this article I will describe the features of this
+software. (Which I will call Z2 or Z3 from here onwards.) I will also describe
+some aspects of the various installation procedures, since these are not always
+explained in terms that are easy for less experienced programmers to easily
+follow. In some cases, there are a several different ways to implement the Z
+system, and these options are nor always obvious. The installation information
+also assumes that the installer has the source code of his BIOS available. It
+is possible to install Z3 without this code, and several ways around this
+problem are suggested.
 </p>
 <p>
-In Tetue 1 of Scorpio News I described some of the ways in which CP/M (Vers. 2)
-could be improved. article T&rsquo;deveribed the ZCPR/<?php spChar("zwsp"); ?>CCPZ Improved CCP, and
-tioned the ZCPR2 and ZCPRS systems, I have now had a chatce to try
+At the time that the article in Issue 1 was written, I did not have the most
+recent CP/M User Group Library Catalogue, and the one that I had included the Z2
+disks. I assumed that this was the most recent upgrade of the Z system, and
+sent off my disks for the suite, (which occupies some 13 &ndash; 8in. disks and is
+between 2 and 3 Mb of software&nbsp;!) I also sent off for a new library catalogue.
+When it came I found chat Z3 was available too. (Occupying another 2-3 Mb of
+disk space.) I probably drove poor Derek Fordred, the Librarian mad with so
+many requests for copies. Anyway, I resolved the confusion in my mind about the
+references to Z3 in the SB180 articles in BYTE, and ended up with a lot of disks
+full of programs.
 </p>
 <p>
-&lsquo;upgeades, and in this article I will describe the features of this
+There were a few weeks in between getting Z2 and Z3, which was useful, because
+the installation information with Z2 is rather more descriptive, and the
+installation less complex. Coming to Z3 after Z2 made the process much easier.
+I think that lets experienced programmers starting straight off with Z3 would
+find the task rather difficult.
 </p>
-<p>
-(high I wiil eal? 22 of 23 from here onwards.) I will alt
-</p>
-<p>
-Some aspects of the various inscallation
-</p>
-<p>
-explained in terms that
-</p>
-<p>
-Follow In rome cases, t
-</p>
-<p>
-systen, and these options are nor alvays obvious. The installation information
-</p>
-<p>
-also aceumes that the installer Aas the source code of hit BIOS available. Tt
-</p>
-<p>
-{s&rsquo;poseible to inaeall 23 without thie code, and several ways around this
-</p>
-<p>
-problem ave suggested
-</p>
-<p>
-At the time that the article in Isque 1 was written, I did not have the most
-Fecent CP/M User Group Library Catalogue, and the one chat I hed included the 22
-disks 1 aeaumed that this was the most recent upgrade of the Z system, and
-sent off my disks for the suite, (which occupies some 13 &ndash; Sin. dfake and is
-Between 2&rsquo;and 3.Mb of software 1) Ivalso sent off for a new library caealogue.
-When it came I found chat 23 vas available too. (Occupying enother 2-3 MB of
-aise space) I probably drove poor bi ibs
-</p>
-<p>
-many requests for copies, Anyway, Tc
-</p>
-<p>
-Fefecences to 23 in the SB180 articles in BYTE, and ended up with &laquo; lot of dia
-</p>
-<p>
-Full of programs.
-</p>
-<p>
-There were a few weeks in between getting 22
-the installation information with 22 ther more descriptl
-ingealiation Less complex. Coming to 23 after 22 made the process much easier.
-I&rsquo;think that lets experienced programmers starting straight off with 23 would
-Find the task rather difficule
-</p>
-<p>
-nd 23, which was ui
-</p>
-<p>
+<h3>
 System Concepts
-</p>
+</h3>
 <p>
-The original ZCPR/CCP2 brought the &lsquo;Path&rsquo; concept to CP/M, displayed the USER
-umber in the Prompt, and displayed the name of files being erased, and added a
-few extta useful features to CP/M which did greatly help make tho system aore
-Eriendly. Further expacsion appeared to be restricted by the memory space
-allocations The CCP and 00S sizes vere required to be kept to 2k and 3.sk for
-Compatibility The BIOS was the only place where extra features could be sdde
+The original ZCPR/CCPZ brought the &lsquo;Path&rsquo; concept to CP/M, displayed the USER
+number in the Prompt, and displayed the name of files being erased, and added a
+few extra useful features to CP/M which did greatly help make the system more
+friendly. Further expansion appeared to be restricted by the memory space
+allocations. The CCP and BDOS sizes were required to be kept to 2k and 3.5k for
+compatibility. The BIOS was the only place where extra features could be added,
 but these would be system specific, such as the screen edit, paging and dump
-features available in the US equipment
+features available in the BIOS&rsquo;s that we use on 80-BUS equipment.
 </p>
 <p>
 The Z systems were written by Richard Conn, in the USA, and made available to
-all vin the CP/M User Group Network I do not know if other similar
+all via the CP/M User Group Network. I do not know if other similar systems
+exist for CP/M, but the main feature of the Z system is that it uses extra
+memory ABOVE CP/M, thus retaining the unique structure of CP/M, and retaining
+compatibility with virtually all software.
 </p>
 <p>
-exist for CP/M, but the main feature of the Z system is that it use
-eaory ABOVE CP/M, thus retaining the unique structure of CP/M, and retaining
-compacibility with virtually all software.
+The penalty to be paid for this is one of reduced T.P.A. size. Z2 requires 300H
+bytes extra for implementation which is not too bad, but Z3 requires about 5-6k
+for FULL implementation. It should be made clear however that it is entirely at
+the discretion of the user or installer which features of Z2 or Z3 will by
+implemented, and which omitted. Some features are virtually essential even on a
+&lsquo;small&rsquo; system &ndash; i.e. one with say 2 floppy disks only, of about 300k capacity,
+such a an Alphatronic PC, but others are much more suited to a &lsquo;large&rsquo; system
+&ndash; i.e. 10Mb Winchester, 512k Vdisk, 2 &ndash; 800k floppies. Then again, some
+segments may be more or less desirable depending on the sort of application.
+The Flow Control Package and Redirected I/O Package might fall into this
+category.
 </p>
 <p>
-The penalty to be paid for this is one of reduced TPA. size 27 requires 300%
-bytes extra for implementation which is not too bad, but 23 requires &lsquo;about 5-5k
-for FULL implementation it should be made clear however that it is entisely
-the dlacretion of the user or installer which features of 22 or 23 will by
-Implemented, and which omitted Some features are virtually eerential even on c
-fimall&rdquo; system ie. one wich say 2 floppy disks only, of about 300k capacity,
-such # an Alphacronic PC, but others are auch more suited to a &lsquo;large&rsquo; syste
-S&ldquo;Lles 10Mb Winchester, &lsquo;sizk Vdfsk, 2 &ndash; 800k floppies, Then again, some
-Segments may be more or less desirable depending on the sort of application
-The Flow Control Package and Redirected I/O Package might fall into thie
-Category
-</p>
-<p>
-around this problem could be to have eeveral operating systemy
-</p>
-<p>
-one
-i
-</p>
-<p>
-available, froma &lsquo;No frills&rsquo; maximum TP.A CP/M where every bit of T.?.
+One way around this problem could be to have several operating systems
+available, from a &lsquo;No frills&rsquo; maximum T.P.A CP/M where every bit of T.P.A. is
 </p>
 <?php columnEnd(1); ?>

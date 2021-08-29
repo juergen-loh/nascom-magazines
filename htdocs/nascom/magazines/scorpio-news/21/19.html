@@ -15,15 +15,15 @@ os 5 ; BSH &ndash; Block Shift Factor
 00FF 255 ;DR &ndash; Number of directory entries &ndash; 1
 co ; ALO &ndash; Reserved directory..
 00 ;AL1 &ndash; .. blocks
-0040&mdash;is&laquo;iAA ; CKS &ndash; Checksum Size
-0000&mdash;t&mdash;&laquo;ei ; OFF &ndash; Number of system tracks
-02 &laquo;2 ; PSH &ndash; Physical Record Shift Factor
+0040&mdash;isaiAA ; CKS &ndash; Checksum Size
+0000&mdash;t&mdash;aei ; OFF &ndash; Number of system tracks
+02 a2 ; PSH &ndash; Physical Record Shift Factor
 03 3 ;PHM = &ndash; Physical Record Mask
 </pre>
 <p>
 These parameters are described in M W T Waters&rsquo; article in Scorpio News Volume
 1 Issue 4, and I will not go into them more fully here, except to note that the last two
-are relevant only to CP/M 3.x systems, and to point out that I decided to keep the
+are relevant only to CP/M&nbsp;3.x systems, and to point out that I decided to keep the
 4k block size used in the QDDS system, but to double the directory size to 256
 entries. I have never run into problems with directory overflow with the QDDS
 format, and I expect to have a preponderance of large files on these disks.
@@ -32,7 +32,7 @@ format, and I expect to have a preponderance of large files on these disks.
 Those who are familiar with the SYS BIOSs will be aware that the sector read and
 write routines are given track and sector requests in registers D and E respectively.
 The low level routines deal with the arithmetic necessary for side selection. With
-track numbers running from 0 to 319 two bytes are necessary, and CP/M 2.2 and 3.1
+track numbers running from 0 to 319 two bytes are necessary, and CP/M&nbsp;2.2 and 3.1
 already make requests for track and sector using two bytes. All that was necessary
 therefore was to arrange for the calling routine (that previous passed track in D and
 sector in E) to store two bytes for track and two bytes for sector in RAM for the

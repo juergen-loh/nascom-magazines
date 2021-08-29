@@ -237,7 +237,7 @@
 	,	26
 	);
 	trJournal($path, $tail, $magazine
-	,	"Clock-Umschaltung 2&#x2f;4 MHz"
+	,	"Clock-Umschaltung 2&#x2f;4&nbsp;MHz"
 	,	"Clemens Ballarin"
 	,	"Hardware"
 	,	1982
