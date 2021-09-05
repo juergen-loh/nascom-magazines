@@ -1,98 +1,76 @@
 <?php columnStart(1); ?>
 <p>
-ding the characters into an 18
+the file name is fairly complex and involves adding the characters into an 18
+bit of partial result. Characters whose ASCII values are odd numbers are simply
+added in while even ones are right shifted first. The position of the character
+in the file name determines whether the partial result is left shifted none, one
+or two places after the addition.
 </p>
 <p>
-the file name is fairly complex and involves
-r &lsquo;odd tunbers are. ai
+The directory entry number for the file is calculated by dividing the
+absolute extent number by EXM+1 where EXM is the extent mask as defined in the
+disk parameter block. The absolute extent number is formed by joining the S2
+and EXT bytes end to end to form an 11 bit number. (Under CP/M&nbsp;3, there are 6
+bits for the S2 byte and 5 bits for the EXT byte.) This number represents the
+highest extent number addressed by the current directory entry end falls in the
+range 0 to 2048 (2048 * 16K = 32Mbytes).
 </p>
 <p>
-BEE percia asec oye A607 wane ret ata
-ether the partial serait in tof shite
-ution.
+Considering the Gemini QDDS format for a moment, we know that each
+directory entry can control 4 extents. If we take the absolute extent number
+and divide this by 4, we will have calculated the directory entry number for the
+current entry.
 </p>
 <p>
-id by dividing the
-&lsquo;a5 defined in the
-the absolute extent number is formed by joining the $2
+All this is fine but why hash the directory entries of a disk at all? CP/M&nbsp;3
+maintains a table of hashed directory entries for each drive in the system.
+Each table is (DRM+1)*4 bytes long allowing four bytes per directory entry as
+previously stated. When CP/M&nbsp;3 needs to access a directory entry for a file, it
+is a relatively simple matter to hash the file control block and search the hash
+table for a matching entry. Once this entry is found, its position in the hash
+table tells CP/M 3 precisely which physical disk sector contains the entry and
+enables it to directly access the wanted sector rather than having to
+sequentially read the disk directory from the start. Of course, if the wanted
+physical sector is already in a physical record buffer, this makes the process
+faster still.
 </p>
 <p>
-(Under CP/M&nbsp;3, there are
-Bits for the $2 byte and 5 bite for the EXT byte.) This number represents the
-Righese extent number addrested by the current directory entry and falls in the
-Fange 0 to 2068 (2068 * 16K&rsquo;= 32Mbyt
+HBANK refers to the memory bank containing the hash table for the
+associated drive.
 </p>
 <p>
-Considering the Gemini Qbps format for a moment, we know thet each
-directory entry can control 4 extente, If we take the absolute extent number
-&lsquo;and divide thie by 4, we will dave calculated the directory entry number for the
-Current entry.
+That's all again for this issue. The concluding part of this article will
+be in the next issue of Scorpio News.
+</p>
+<?php hLine("20%"); ?>
+<h2 id="article1">
+Dealer Profile - Off Records
+</h2>
+<p>
+[Ed. &ndash; In our continuing series looking at the roots of various 80-BUS dealers,
+this issue it is the turn of Battersea based OFF Records.]
 </p>
 <p>
-ALL this de fine but why hash the directory entries of &amp; disk at all? CP/M
-</p>
-<p>
-intatae a table of hashed directory entries for euch drive in the syst
-</p>
-<p>
-wh table is (DEM+1)*4 bytes long allowing four bytes per directory entry
-&lsquo;ied. hen Gf/i&rsquo;3 needs to ncceee a directory entcy for a file, i
-</p>
-<p>
-{y #imple matter to hash the file control block and search the hash
-</p>
-<p>
-watching entry. Once this fs found, ite
-</p>
-<p>
-fequentielly read the disk directory from the stare.
-hysical sector is already in a physical record buffer, this makes the proces!
-yaoter still.
-</p>
-<p>
-EBANK refers to the
-associated drive
-</p>
-<p>
-jory bank containing the hash table for the
-</p>
-<p>
-&lsquo;That&rsquo;s all again for this {asue. The concluding part of this article will
-be in the next issue of Scorpio News
-</p>
-<p>
-Dealer Profile &ndash; Off Records
-</p>
-<p>
-(44. &ndash; tn our continuing ing at the roote of various 80-BUS dealers,
-thie issue it in the turn of Battersea based OFF Record
-</p>
-<p>
-By the year 1973 computing on mainframes had become quite tedious. A
-single machine had to support eo many usera that it was impossible to do the
+By the year 1975 computing on mainframes had become quite tedious. A
+single machine had to support so many users that it was impossible to do the
 more interesting experiments on them and computing centres had become
-bureaucratic enpites which stified ali work other than the trivial and routine.
+bureaucratic empires which stifled all work other than the trivial and routine.
 People who have only worked on personal computers find it difficult to visualize
-the straight Jacket {mposed by&rsquo;s Large time-shared aachine, They are Fine if
+the straight jacket imposed by a large time-shared machine. They are fine if
 you happen to be a physicist running your application programs, but if you are
-actually interested in the machine itself, the lack of access to the innarde of
+actually interested in the machine itself, the lack of access to the innards of
 the machine becomes quite frustrating.
 </p>
 <p>
-tice department at South Bank Polytechnic was fortunate in
-&lsquo;Lier the firee Gti in the country, 40
-</p>
-<p>
-Yor most of the time this
-ery nice computer it was tool
-hhad to be done on tt
-</p>
-<p>
-The&rsquo; powels- thats
-</p>
-<p>
-pahance it to cope with changing
-Feguicemanta, Even such a simple device as floppy disk drive could not be
-added to enable students to look after thelr own di
+The mathematics department at South Bank Polytechnic was fortunate in
+having acquired three years earlier the first GT11 in the country, an early
+version of a PDP11 with graphics capability. For most of the time this machine
+could be used as a personal computer, and a very nice computer it was too!
+Gradually, however, more and more basic teaching had to be done on it and
+inevitably the machine became time-shared losing all of its early advantages.
+The powers-that-be also had the curious notion that, once you had bought a
+computer, there was no need to maintain or enhance it to cope with changing
+requirements. Even such a simple device as a floppy disk drive could not be
+added to enable students to look after their own data.
 </p>
 <?php columnEnd(1); ?>

@@ -1,95 +1,76 @@
 <?php columnStart(1); ?>
 <p>
-During installation of 23 on ana friend&rsquo;s Alphatronic PC, some very peculiar
-errors aro 2 &lsquo;ing been
-Loaded oF
+During installation of Z3 on an a friend&rsquo;s Alphatronic PC, some very peculiar
+errors arose. An oversight had resulted in the SYS.NDR segment not having been
+loaded or initialized, and the locations in question were filled with random
+rubbish. The data found there by the Z3 CCP was being interpreted as the NDR
+segment, and select errors were prominent amongst the reported errors.
 </p>
 <p>
-rubbish. The data found there by the 23 CCP &lsquo;the NDE
+The installation notes suggest clearing (part of) each discreet segment or
+buffer area in turn. This works well, but it requires rather more code, since
+the code required is virtually repeated for each area to be preset. It is much
+simpler and does not take much longer to clear all of the Z3 memory area.
+Initialization of startup commands, paths etc, can then follow. This reduces
+the total amount of code needed for cold boot patches, and could simplify
+installation where BIOS source is not available.
 </p>
 <p>
-Segment, and select errors w
+The standard method of system initialisation in the Cold Boot routines is to
+clear buffers and segment areas, initialize the path, wheel byte, and startup
+commands, print signon messages and then boot the system. The startup command
+uses the supplied utility LDR.COM to load the required segments. On a floppy
+based system, there does not usually appear to be much alternative to this
+method of booting due to space limitations on the system tracks of the disk, but
+if one has spare space on the floppy system track, or a Winchester, there is a
+better way.
 </p>
 <p>
-prominent anonge!
+A track on a Winchester disk may be 8k &ndash; 8.5k bytes long. If two tracks are
+reserved for the system, then about 16 &ndash; 17k of space is available. After
+subtracting BDOS, CCP and Cold Boot Loader, over 10k is available for the BIOS
+end Z3 segments and buffers, and BIOS workspaces. This means that the Z3
+extensions can be considered to be part of the system, and loaded with the
+system at cold boot. Since the buffers can be optionally loaded from the system
+tracks as well, already initialized to zeroes, or with set messages, commands,
+etc, the amount of cold boot initialisation becomes minimal, with only the
+default path and wheel byte needing setting up, although these could be defined
+somewhere in the Z3 memory area and loaded with the system too. This has the
+further advantage that no BIOS modifications are needed, except in the Screen
+Edit routine. It then also becomes unnecessary to use LDR.COM, except to change
+the default segments for special purposes.
 </p>
 <p>
-&lsquo;The inetallation notes
-buffer aves in turn.
-the code required {s virtually repeat
-Simpler and does not take much Longer te cle
-Initialiestion of startup commands, paths etc, can then follow.
-the total amount of code needed Zor cold boot patches, and could eimplify
-Installation where BIOS source ie not avaliable.
+If this approach is used, but only some of the areas are loaded from disk (e.g.
+where on say a floppy system there is some spare room on the system track, but
+not enough for ALL of Z3), then initialisation of non-loaded Z3 segment and
+buffer areas must be selective, to avoid erasing data that have just arrived in
+RAM from the system tracks. It then becomes a good idea to group the program
+segments together just above the BIOS workspace, and to group buffers above
+this.
 </p>
 <p>
-ed method of system initialization in the Cold Boot routines is to
-vr buffers and segment areas, initialize the path, wheel byte, and startup
-commands, print signon
-</p>
-<p>
-che supplied utility LDR.COH to load the required on a floppy
-sd system, there does not usually appear to be much alternative to this
-method of booting due to space limitations on the aysten tracks of the diek, but
-Ef one has aparevepece on the floppy system track, or # Winchester, there is 8
-etter way.
-</p>
-<p>
-If two tracks are
-avallable.. after
-lable &lsquo;for the BIOS
-</p>
-<p>
-&lsquo;A track on a Winchester disk may be 8k &ndash; 6.5k byt:
-Feserved for the system, thea about 16 &ndash; i7k of
-subtracting BDOS, CCP and Cold Boot Loader,
-snd 25 sequence! end buffers, and 3108 workepac that the 23
-ons can be considered to be part of the system, and loaded with the
-&lsquo;Cold boot. Since the buffers can be opeionaliy Load
-tfacks as woll, already initialized to zeroes, or with eet
-ate, the amount of cold boot initialization becomes minimal, with only the
-Gefault path and wheel byte needing setting up, although these could be defined
-somewhere in the Z3 memory aren and loaded with the system too. This Nas the
-Earcher advantage chat no S105 modifications are needed, except in the sere
-Edit routine Te then also becomes Unlecessary to use LORCOM, except to change
-the default segmonte for spectal purposes.
-</p>
-<p>
-If this approach ie used, but only some of the areas are loaded from disk (e.g.
-where on sey afloppy there &lsquo;fe some spare room on the system track, but
-not enough for ALL of 23), then initialisation of non-loaded 23 segment and
-Duffer areas must be selective, to avoid erasing data that have just arrived in
-RAH fro &lsquo;ke. Te then deco! &lsquo;idea to group the progran
-</p>
-<p>
-&lsquo;above the BIOS wos sad to group buffers above
-</p>
-<p>
-Whatever the system adopted, disk space for the aysten Ls not a proble
-amount of RAM allocated to the system is a problem however, sinc
-</p>
-<p>
-Of the BIOS or 23 eat into the #PA. My extensively customized BIOS, toi
-yith workspaces, takes Up just under sk, and the 23 system uses 3k ceculting
-ina total system size of idk, including CoP, &lsquo;and I am determined not to allow
-Ae to get any bigger. Since Iam aleo always trying to add features to the
-BIoS, Yan aleo looking for ways to economiee on space. One thing that T have
+Whatever the system adopted, disk space for the system is not a problem. The
+amount of RAM allocated to the system is a problem however, since all extensions
+of the BIOS or Z3 eat into the TPA. My extensively customised BIOS, together
+with workspaces, takes up just under 5k, end the Z3 system uses 3.5k resulting
+in a total system size of 14k, including CCP, and I am determined not to allow
+it to get any bigger. Since I am also always trying to add features to the
+BIOS, I am also looking for ways to economise on space. One thing that I have
 recently done is to utilize some 80 spare bytes in the TCAP part of the ENV
-Seguent, to hold the system message and Clock string that are displayed on the
-(normaily locked) top Line of the screen. This has released 80 bytes in the
-BIOS ares for more code, but of course, means that that particular configuration
-of the BYOS will only work correctly 1a # 23 environment
+segment, to hold the system message Clock string that are displayed on the
+(normally locked) top line of the screen. This has released 80 bytes in the
+BIOS area for more code, but of course, means that that particular configuration
+of the BIOS will only work correctly in a Z3 environment.
 </p>
 <p>
-&lsquo;The BIOS plus Workspace size 1c one of the important considerations, since this
-ie considerably Larger than BIOS plus Cold boot routines. T have no problea in
+The BIOS plus Workspace size is one of the important considerations, since this
+is considerably larger then BIOS plus Cold boot routines. I have no problem in
 expanding cold boot activities, and in providing extensive signon messages. The
-Maount of workepace aren needed 14 determined by the hardware used, and 20,
-</p>
-<p>
-Felatively constant for a given system. This means that the BIOS peraanent cod
+amount of workspace area needed is determined by the hardware used, and so is
+relatively constant for a given system. This means that the BIOS permanent code
 is the part that needs to be kept in check. I have recently helped two friends
-Anetal &pound;3 on systems based on Nascome, and the big problen was in the amount of
-space required by the BI0S code for the Keyboard routines. With a Winchester
+instal Z3 on systems based on Nascoms, and the big problem was in the amount of
+space required by the BIOS code for the keyboard routines. With a Winchester
 </p>
 <?php columnEnd(1); ?>

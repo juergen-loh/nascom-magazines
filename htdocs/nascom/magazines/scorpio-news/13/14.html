@@ -1,93 +1,79 @@
 <?php columnStart(1); ?>
 <p>
-and the drive cos
-Foutines (in variable @cdrv).
+When a drive is logged in by calling the SELDSK entry in the BIOS jump
+table, the BIOS uses the drive code supplied by the BDOS as an index into the
+drive table and it then extracts the address of the XDPH for the required drive.
+If this address is zero then no physical drive exists and an appropriate error
+code is returned to the BDOS. If the drive does exist, the drive is logged in
+and the drive code is stored away for reference by the disk read and write
+routines (in variable @cdrv).
 </p>
 <p>
-Similarly, when the READ or WRITE entry pointe in the BIOS Jump table are
-called, &ldquo;these coltines uae the stored code Zor the current drive to index ato
-the drive table and fetch the addrees of the appropriate XDPH, Bear in mind
-that any ercors due to there being no physical drive present should have already
+Similarly, when the READ or WRITE entry pointe in the BIOS jump table are
+called, these routines use the stored code for the current drive to index into
+the drive table and fetch the address of the appropriate XDPH. Bear in mind
+that any errors due to there being no physical drive present should have already
 been found by the SELDSK routine.
 </p>
 <p>
-once armed with the address of the correct XDPH, the SELDSK, READ and WRITE
-outines use it eo extract any other infor: A detasied
-a
+Once armed with the address of the correct XDPH, the SELDSK, READ and WRITE
+routines use it to extract any other information they require. A detailed
+description of each field of the XDPH is given below.
 </p>
 <p>
-The NTT {1014 provides the
-with the drive by the
-Eating cold boot. other shan
-</p>
-<p>
+The INIT field provides the address of an initialisation routine for use
+with the drive addressed by the XDPH. The drives are initialised by the BIOS
+during cold boot. Other than this, the INIT routine will not be used except,
 perhaps, during error recovery.
 </p>
 <p>
-&lsquo;The READ and WRITE field
-ds provide the
-elected drive and ai
-</p>
-<p>
-set the track and sector numbers, set the DMA
-&lsquo;and indicated which memory bank is to be used in the coming disk
-transfer. All that de required of tne BIOS in ite simplest form is to select
+The READ and WRITE fields of the XDPH are fairly self explanatory. These
+fields provide the addresses of the sector read and write routines for the
+selected drive and are extracted from the XDPH by the BIOS when called at the
+appropriate place in its jump table. Before either of these routines is called,
+other calls to the BIOS will have performed any necessary sector translation,
+logged in the appropriate drive, set the track and sector numbers, set the DMA
+address and indicated which memory bank is to be used in the coming disk
+transfer. All that is required of the BIOS in its simplest form is to select
 the required memory bank and transfer data to or from one physical disk sector.
 </p>
 <p>
-A factiity existe within CP/M&nbsp;3 for the BDOS to instruct the BIOS to
+A facility exists within CP/M&nbsp;3 for the BDOS to instruct the BIOS to
+transfer multiple sequential sectors to a contiguous area of RAM, starting at
+the DMA address. The BDOS tells the BIOS how many sectors to read or write and
+the BIOS will, if this facility has been implemented, continue transferring
+sectors to or from disk until the required number have been copied. In case
+this facility has not been implemented by the writer of the BIOS, the BDOS will
+continue to set track and sector numbers and DMA address and will call the BIOS
+the appropriate number of times. It is up to the BIOS to ignore the surplus
+calls if it has already transferred the required amount of data.
 </p>
 <p>
-fer multipte sequential sectors cos contiguous area of RAM, &lsquo;starting st
+The LOGIN field is used by SELDSK to find the address of the routine
+appropriate to the disk drive being selected.
 </p>
 <p>
-the DHA address. The BboS tells the BIOS how many sectore to read&rsquo; or weite and
-</p>
-<p>
-the Br0s vill, Af thts facility Tenented, continue transfercing
-</p>
-<p>
-ore to of from disk until th &lsquo;been copied: in case
-</p>
-<p>
-ty the writer of the BIOS,&rdquo; the 3005 will
-</p>
-<p>
-DHA address and will call. the 3103
-</p>
-<p>
-Te is up co the BIOS Co Sgnore the surplus
-celue EE Ge has alvendy teanafected the required amount of dat,
-</p>
-<p>
-The LOGIN field de used by SELDSK to find the address of the routine
-appropriate to the disk drive being aelected.
-</p>
-<p>
-The UNIT &pound;1014 Le a single dyte chat holds the FOC relative drive code,
-Le. the sctual value that fe output to the disk controller to select the
-Fequired drive for use. The BIOS extracts thie code when any of the SELDSK,
+The UNIT field is a single byte that holds the FDC relative drive code,
+i.e. the actual value that is output to the disk controller to select the
+required drive for use. The BIOS extracts this code when any of the SELDSK,
 READ or WRITE routines is called.
 </p>
 <p>
-The TYPE entry of the XDPH Je a ecratchpad location for use by the BIOS.
-weeh recommend that At is used to
-density in systems that support
+The TYPE entry of the XDPH is a scratchpad location for use by the BIOS.
+It may be used for any purpose but Digital Research recommend that it is used to
+hold drive relevant information such as current density in systems that support
+single and double density.
 </p>
 <p>
-The CSV entry und
-checksums contained in the
-Snstead of adding together all. 228 by
-gub-totals for each of the four 32 byte ry
-four tub-totals are then exclusive ORed together to produce the checksum byte.
-This KORing together reduces the number of bits lost due to overflow (due to
+The CSV entry under CP/M 3&nbsp;is identical to that of CP/M&nbsp;2.2 but the
+checksums contained in the vector are calculated in a slightly different manner.
+Instead of adding together all 128 bytes in a directory record, CP/M&nbsp;3 produces
+sub-totals for each of the four 32 byte directory entries in the record. These
+four sub-totals are then exclusive ORed together to produce the checksum byte.
+This XORing together reduces the number of bits lost due to overflow (due to
 adding as for CP/M&nbsp;2.2) and therefore each checksum byte contains more
-information about the directory record, For this reason, the likelihood of
-Adentical checksums being returned for directory records on different disks is
-reduced and hence the possibility of a disk change being missed is aleo reduced.
-</p>
-<p>
-identical to that of CP/M&nbsp;2.2 but the
-lated ina slightly different manne:
+information about the directory record. For this reason, the likelihood of
+identical checksums being returned for directory records on different disks is
+reduced and hence the possibility of a disk change being missed is also reduced.
 </p>
 <?php columnEnd(1); ?>

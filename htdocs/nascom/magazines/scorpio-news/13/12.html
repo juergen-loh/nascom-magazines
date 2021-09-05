@@ -1,89 +1,74 @@
 <?php columnStart(1); ?>
 <p>
-to 4 directory cecord containing four 32 byte directory entries, the total
-required for each checksum vector is (DRM+1)/4 where DIM 48 one Lei
-total number of directory entries permitted on the disk. Tn the ca
-QODS format, the figure 18 128/402 byter
+to a directory record containing four 32 byte directory entries, the total
+required for each checksum vector is (DRM+1)/4 where DRM is one less than the
+total number of directory entries permitted on the disk. In the case of the
+QDDS format, the figure is 128/4=32 bytes.
 </p>
 <p>
-Whenever the directory of a dik Le accessed, a checksum 18 produced and
+Whenever the directory of a disk is accessed, a checksum is produced and
 compared with the appropriate value in the checksum vector. If the checksum is
-Gifferenc, the 8D08 knows that the disk has been changed and will set it R/O
-under CP/M&nbsp;1.4 or CP/M&nbsp;2.2 oF log in the new disk under CP/M&nbsp;3
+different, the BDOS knows that the disk has been changed and will set it R/O
+under CP/M&nbsp;1.4 or CP/M&nbsp;2.2 or log in the new disk under CP/M&nbsp;3.
 </p>
 <p>
-Clearly, this directory checking is a waste of time for drives, euch as a
-Winchester herd disk, where the disk cannot be changed. This type of drive is
-said to have fixed media. Digital Rerearch had the foresight, when designing.
-CP/M&nbsp;2.2 and CP/M&nbsp;3, to allov for this type of drive. If no directory checking
-fs) required, the checkrum vector may be Qnitted with a resultant saving of spac
-in the BIDS.
+Clearly, this directory checking is a waste of time for drives, such as a
+Winchester hard disk, where the disk cannot be changed. This type of drive is
+said to have fixed media. Digital Research had the foresight, when designing
+CP/M&nbsp;2.2 and CP/M&nbsp;3, to allow for this type of drive. If no directory checking
+is required, the checksum vector may be omitted with a resultant saving of spaca
+in the BIOS.
 </p>
-<p>
+<h3>
 The Allocation Vector
-</p>
+</h3>
 <p>
-location address, This Ls the address
-of a table which che DOS uses to keep track of the date blacks on disk. Th
-ble ie called the allocation vector and it iea bit map of the blocks on the
-&lsquo;such that each individual bit represents one block. Consequently, the
-eof eight dick data blocks (ie allocated toa flle or not) can be shown ta
-fone Byte of the sllocation vector. Block 0 18 represented by bit 7 of the first
-byte in the table, block 1 by bit 6 and eo on for each byte in the table. There
-inan allocation vector for each dick drive in the system and the address of the
-vector for the Logged in drive may be obtained by calling BDOS function 27.
-</p>
-<p>
-The last entry in the DPH ts thi
+The last entry in the DPH is the allocation address. This is the address
+of a table which the DOS uses to keep track of the date blocks on disk. This
+table is called the allocation vector and it is a bit map of the blocks on the
+disk such that each individual bit represents one block. Consequently, the
+state of eight disk data blocks (ie allocated to a file or not) can be shown in
+one byte of the allocation vector. Block 0 is represented by bit 7 of the first
+byte in the table, block 1 by bit 6 and so on for each byte in the table. There
+is an allocation vector for each disk drive in the system and the address of the
+vector for the logged in drive may be obtained by calling BDOS function 27.
 </p>
 <p>
 When a drive is logged in for the first tine, the BDOS scans the directory
-entries on the disk and extracte the numbers of che blocks already allocated to
-Hles. For euch block used, the BOOS sete the appropriate bie in the allocation
-vector, Quite simply, when you wish to write to disk, the BDOS searches the
-Ellocation vector for&rsquo;a 0 bit. Tf none are found then the disk iv obviously
-full.&rdquo; Te a Obit te found then the BD08 may allocate the associated block to
-the &pound;41
+entries on the disk and extracts the numbers of the blocks already allocated to
+files. For each block used, the BDOS sets the appropriate bit in the allocation
+vector. Quite simply, when you wish to write to disk, the BDOS searches the
+allocation vector for a 0 bit. If none are found then the disk is obviously
+full. If a 0 bit is found then the BDOS may allocate the associated block to
+the file.
 </p>
 <p>
-To compute the amouat of fr
-count the number of eros in the allocation vector
-block size. Programs such se STAT.CO obtain theis
-manner&rsquo; and as you will probably noticed do not acre
-example, STAT B. ie typed in wail
+To compute the amount of free space on a disk, it is a simple matter to
+count the number of zeros in the allocation vector and then multiply by the
+block size. Programs such as STAT.COM obtain their free space figures in this
+manner and as you will probably noticed do not access the disk at all when, for
+example, STAT B: is typed in while currently logged into drive A and assuming
+that drive B has been accessed since a ^C was last typed.
 </p>
 <p>
-thae drive B has been accessed since a ^C was last typed.
-</p>
-<p>
-spice on a disk, it is a simple
-1d then multiply by the
-</p>
-<p>
-The BOOS updates the allocation vector during disk write and delece
-operations $0 that the amount of free space shown by STAT.COM will always be
-correct, Having said that, imagine chat ve are writing tou disk |The BDOS
-Will vet dite in the allocation vector according to wich blocks are being
-Miccatea. If we return to CP/M by executing a RET instruction so that a are
-Doot te avoided and, at the same time neglect to close the fle, STAT.COM will
+The BDOS updates the allocation vector during disk write and delete
+operations so that the amount of free space shown by STAT.COM will always be
+correct. Having said that, imagine chat we are writing to a disk. The BDOS
+will set bits in the allocation vector according to which blocks are being
+allocated. If we return to CP/M by executing a RET instruction so that a warm
+boot is avoided and, at the same time neglect to close the file, STAT.COM will
 return an incorrect amount of free space as the allocation vector will not agree
-with the disk directory entries actually weiteen to the disk. This is because
-the final directory entry for a file being written to disk ian&rsquo;t written to the
-directory track until the file te closed. The only way to reclaim the lost disk
-apace and obtain a correce free space figure te to force a disk reset by typing
+with the disk directory entries actually written to the disk. This is because
+the final directory entry for a file being written to disk isn&rsquo;t written to the
+directory track until the file is closed. The only way to reclaim the lost disk
+space and obtain a correct free space figure is to force a disk reset by typing
+Control C.
 </p>
 <p>
-entral Cc.
-</p>
-<p>
-isk 19 changed without performing a wa
-boot to reset th cunt of free space indicated by STAT.COM
-Mill be inaccurate ae te 3008 will have the ailocation vector vet up for the
-Previous disk. Under CP/M&nbsp;3, as soon ao the BDOS realizes chee a diok has been
-Changed, it logs in the new dick and sets up the allocation vector accordingly.
-</p>
-<p>
-Under CP/M&nbsp;1.4
-4
+Under CP/M&nbsp;1.4 and CP/M&nbsp;2.2, if a disk is changed without performing a warm
+boot to reset the disk system, the amount of free space indicated by STAT.COM
+will be inaccurate as the BDOS will have the allocation vector set up for the
+previous disk. Under CP/M&nbsp;3, as soon as the BDOS realizes that a disk has been
+changed, it logs in the new dick and sets up the allocation vector accordingly.
 </p>
 <?php columnEnd(1); ?>

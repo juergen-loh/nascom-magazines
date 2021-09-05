@@ -1,100 +1,91 @@
+<?php columnStart(3); ?>
+<h2 id="article1">
+The ZCPRS System
+</h2>
+<?php columnChange(23); ?>
+<h3 class="author">
+by C. Bowden G30CB
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
+<h3>
+Part 2 &ndash; ZCPR3 Installation - Software Tools
+</h3>
 <p>
-&lsquo;The ZCPRS System by C. Bowden G30CB
-Part 2 &ndash; 20783 Installation &ndash; Software Toole
+Although Z3 is accompanied by a considerable amount of documentation on its
+installation it is sometimes difficult to pick out the important points, and
+often, there are easier or better methods of carrying out the work. This is
+particularly true in respect of the choice of software tools and methods. In my
+opinion, the installation information provided on patching the Cold Boot
+routines is rather too specific to the particular BIOS used by the author of Z3,
+and made to appear very rigid in application. Those without such experience in
+machine code and operating systems might find it difficult to understand or
+implement. Some tips and alternative methods of installation are suggested in
+this article.
 </p>
 <p>
-inetal digficule co pick out the important points, and
-often, there are easier or better methods of cars thie te
-particularly true in respect of the choice of softwai methods, In my
-Spinion, the inetallation information provided Cold Boot
-routines is rather too specific to the particular BIOS used by the author of 23,
+The installation of Z3 falls into several operations.
 </p>
 <p>
-fand made to appear very rigid in application. Those without auch experience in
-Machine code and operating systems might find it difficuit to understand oF
-Implement. Some tipe and alternative methods of installation are euggested in
-thie article.
-</p>
-<p>
-The installation of 23 falls into several operations.
-</p>
-<p>
-Chooeing the conmands required in the 23 CCP and ECP. Choosing names for
-the named directory. Deciding on the Default &ldquo;PATH&rdquo; and startup commands.
+a) Choosing the commands required in the Z3 CCP and RCP. Choosing names for
+the named directory. Deciding on the Default &lsquo;PATH&rsquo; and startup commands.
 Choosing the segment and buffer memory mapping to be utilized.
 </p>
 <p>
-by Ellcing che 25 LIB fiteu for the generation of 23 and each of the required
-Segmente, and asuenbling the asociated -ASM &pound;11
+b) Editing the Z3 .LIB files for the generation of Z3 and each of the required
+segments, and assembling the associated .ASM files.
 </p>
 <p>
-sting the 73.0
-ae appropriate.
+c) Creating the Z3 segments from the .HEX files, and renaming them as SYS.xxx,
+as appropriate.
 </p>
 <p>
-2 and renaming then as SYS.xxx,
+d) Generating a CP/M image file with the CCP, BDOS and BIOS at the desired
+addresses.
 </p>
 <p>
-a file with the CCP, BDOS and BIOS at the desired
+e) Modifying the BIOS, and reassembling, or patching the CP/M image.
+Alternatives, avoiding BIOS modifications, are also possible.
 </p>
 <p>
-c) Modifying the Bros, ang
-Aleernatives, avolding BIOS modifications
+f) Overlaying the CCP, BIOS (and BDOS?), and saving this new system,
+optionally with the Z3 segments and Buffers included. (See Later.)
 </p>
 <p>
-&pound;) Qverlaying the CCP, BI08 (and BDOS?), and saving this new systen,
-&lsquo;optionslly with the 23 segmente and Buffere included. &ldquo;(See Later.)
+6)  Sysgening or Syswinning this new system, and &lsquo;Booting&rsquo; it.
 </p>
 <p>
-Anning this new system, and &lsquo;Booting&rsquo; it.
-hb) Installing the 70 odd 23 uesiitie
+h) Installing the 70 odd Z3 utilities.
 </p>
 <p>
-or patching the CP/M im
-ae Hao possible,
+At this stage, Z3 should be fully operational. Further changes can be carried
+out after experience of the system has been gained, and since the source codes
+of all of the utilities is provided, these may be customized as well, if
+desired, although in general, most people will be happy with them as they are.
 </p>
 <p>
-8) Syagening or 8;
+Some of the above operations will be described in more detail under &lsquo;Methods&rsquo;,
+but it is useful to consider the many options available to the installer in
+carrying them out.
 </p>
 <p>
-&lsquo;At this etage, 23 should be fully operational.
-Out after experience of the system hae been jource code
-of all of the utilities is provi euptouised an well iE
-Sesized, although in general, Bort people will be happy with them as they are,
+An essential pert of the installation is to assemble the .ASM source files
+needed to create ZCPR3 and the system segments. These files are written in 8080
+mnemonics, and use several macros to define Z80 opcodes.
 </p>
 <p>
-Some of the above operations will be described 4n more detail under &lsquo;Methode",
-Dut it 42 useful to consider the many options available to the installer in
-carrying then out,
+This means that the DRI Macro Assembler MAC.COM must be utilized to assemble
+these files as they stand. If one does not have MAC, then one could resort to
+trying one of several other methods. If M80 is available, it might assemble
+these files, with minor alterations and removal of the macros. Alternatively
+the macros could be removed, and the code translated into Z80. I did this with
+Z2, as an experiment, using the public domain (PD) program XLATE3.
 </p>
 <p>
-Tucther changes can be carcied
-noe the,
-</p>
-<p>
-et of the installation is to assemble the .ASM source files
-heeded to create ZCPRS and the system eegnents. These files are written in 6080
-Bhemonice, and use several macros to define 260 opcodes,
-</p>
-<p>
-&lsquo;This means that the DRI Macro Assembler MAC.COM must be utilized to
-or) ie
-</p>
-<p>
-&lsquo;Aeernacively
-x did thie with
-</p>
-<p>
-After the first try at assembly with M60 there
-were easily resolved by editing the source cod:
-Produced code compatible with that from the 6
-Alternative, the macros in the relevant .ASH file
-&lsquo;that would aisow
-</p>
-<p>
-0 source via MAC. As another
-wuld possibly substituted
-bly with ASM.COK.
+After the first try at assembly with M80 there were about a dozen errors that
+were easily resolved by editing the source code, and I soon obtained a file that
+produced code compatible with that from the 8080 source via MAC. As another
+alternative, the macros in the relevant .ASM file could possibly substituted
+with some alternative coding, that would allow assembly with ASM.COM. As a last
 </p>
 <?php columnEnd(1); ?>

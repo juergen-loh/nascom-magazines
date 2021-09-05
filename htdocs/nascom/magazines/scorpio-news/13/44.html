@@ -1,42 +1,37 @@
 <?php columnStart(1); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-44-1.png"); ?>
 <p>
-mec DIAGRAM eHOWING LAYOUT
-</p>
-<p>
-The test program (listing no, 1) e not an exhaustive test but it do
-verify that the mapping works, In it all the forty eight 4k blocks from
-addresses 10000H to SYFFFH are mapped into the 4k block starting at 1000H ang
-the Block number ie written into the firet byte of the block. The process is
-then ropeated mapping the blocks back and checking that the first byte ie still
-what &lsquo;ahd been written. Te outpute &lsquo;Success&rsquo; or &ldquo;Failed&rdquo; depending on the
-Fesult. I didn&rsquo;t have any problems so I haven&rsquo;t bothered to extend the program
+The test program (listing no. 1) is not an exhaustive test but it does
+verify that the mapping works. In it all the forty eight 4k blocks from
+addresses 10000H to 3FFFFH are mapped into the 4k block starting at 1000H and
+the block number is written into the first byte of the block. The process is
+then repeated mapping the blocks beck and checking that the first byte is still
+what had been written. It outputs &lsquo;Success&rsquo; or &lsquo;Failed&rsquo; depending on the
+result. I didn&rsquo;t have any problems so I haven&rsquo;t bothered to extend the program
 to explore which blocks failed.
 </p>
 <p>
-Having all this additions) memory, what 414 T do with it and was {t worth
-itu The first thing T discovered was that it was no use for programs as there
-is no way of linking sections of code or
-Therefore the first thing I did with the extra RAM
-RAM disk (see Lis! &lsquo;The sector size wi
+Having all this additional memory, what did I do with it and was it worth
+it?) The first thing I discovered was that it was no use for programs as there
+is no way of linking sections of code or data at a particular address.
+Therefore the first thing I did with the extra RAM was to use it as a 192k byte
+RAM disk (see listing no. 2). The sector size was made 128 bytes to avoid the
+need for deblocking and the track size was made 4k bytes so that the track
+number for a read or write gave me the 4k block number to map.
 </p>
 <p>
-je 128 byte:
-bytes so chat the track
-jo the sk block number to map.
-</p>
-<p>
-To make full use of it T changed SUBMIT and the CCP to use the BAM disk for
-the *$E&para;5.5UB&rdquo; file. Then I reduced the disk size by 4k and reloaded the COP and
-2008 from it at each warm boot. Finally I patched Wordstar to look on drive Mt
-for ate overiay Fllge| What an improvement&rsquo; (provided T remembered v0 copy them
-acrose firec}, particularly the speed up in editing. But Ido regret that the
+To make full use of it I changed SUBMIT and the CCP to use the RAM disk for
+the &ldquo;$$$.SUB&rdquo; file. Then I reduced the disk size by 4k and reloaded the CCP and
+BDOS from it at each warm boot. Finally I patched Wordstar to look on drive M:
+for its overlay files. What an improvement (provided I remembered to copy then
+across first), particularly the speed up in editing. But I do regret that the
 disk will never be big enough to use as a source disk.
 </p>
 <p>
 For some time I considered the possibility of writing disk cache software
-to use the memory nore efficiently, bie eventually opted to try a banked version
-of CP/M Plus which already includes all the disk cache softvare. This meant
-Chat I&rsquo;had to allocate sk blocks of memory to banks, a 4k block to common memory
-and then write ay own bank switching routine (Listing no, 3).
+to use the memory more efficiently, but eventually opted to try a banked version
+of CP/M Plus which already includes all the disk cache software. This meant
+that I had to allocate 4k blocks of memory to banks, a 4k block to common memory
+and then write my own bank switching routine (listing no. 3).
 </p>
 <?php columnEnd(1); ?>

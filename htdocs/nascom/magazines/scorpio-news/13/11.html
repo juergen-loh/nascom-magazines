@@ -1,89 +1,86 @@
+<?php columnStart(23); ?>
+<h2 id="article1">
+Disk Formats and CP/M Disk routines &ndash; Part 3
+</h2>
+<?php columnChange(3); ?>
+<h3 class="author" style="text-align: right">
+by M.W.T. Waters
+</h3>
+<?php columnEnd(3); ?>
 <?php columnStart(1); ?>
+<h3>
+Disk Parameter Headers
+</h3>
+<h3>
+The CP/M&nbsp;2.2 DPH
+</h3>
 <p>
-Disk Formats and CP/M Disk routines &ndash; Part 3 by M.W.T. Waters
-Dink Parameter Heedere
-&lsquo;The CP/M&nbsp;2.2 DPB
+A DPH for CP/M&nbsp;2.2 is a table of eight 16 bit words broken up as follows:
 </p>
+<table class="indent2" style="width: 70%">
+<tr><td>DPH:</td><td>XLT</td><td>; Translate table address</td></tr>
+<tr><td></td><td>0000</td><td>; 6 bytes scratchpad for BDOS use</td></tr>
+<tr><td></td><td>0000</td><td></td></tr>
+<tr><td></td><td>0000</td><td></td></tr>
+<tr><td></td><td>DIRBUF</td><td>; Address of a buffer used<br>
+								; for reading directory information</td></tr>
+<tr><td></td><td>DPB</td><td>; Disk Parameter Block Address</td></tr>
+<tr><td></td><td>CSV</td><td>; Checksum Vector address</td></tr>
+<tr><td></td><td>ALV</td><td>; Allocation Vector address</td></tr>
+</table>
 <p>
-A DPM for CP/M&nbsp;2.2 de a table of eight 26 bit words broken up as follows:
-</p>
-<p>
-Deu: HLT; Translate table addres
-000 | 6 bytes scratchpad for BDOS use
-000
-000
-DIREUF Addrese of a buffer used
-for reading directory information
-De Disk Parameter Block Addrer
-csv Checksum Vector addre
-aly &lsquo;AMiveation Vector address
-</p>
-<p>
-Mote thet CP/M&nbsp;1.4 doesn&rsquo;t use DPH&rsquo;e and that the DPi&rsquo;s for CP/M&nbsp;3 are
+Note that CP/M&nbsp;1.4 doesn&rsquo;t use DPH&rsquo;s and that the DPH&rsquo;s for CP/M&nbsp;3 are
 longer.
+</p>
+<p>
 The BIOS has a DPH for each drive supported by the system. When a drive is
+logged in, the BIOS returns the address of the appropriate DPH to the BDOS. The
+BDOS then uses the DPH to locate any remaining data structure that it requires.
 </p>
 <p>
-Logged in, the BIOS fe address of the appropriate DPH to the 300s. The
-BOOS then&rsquo; uses the DPH to locace any remaining that te requir
+The first entry is the the address of a sector translate table which the BIOS
+will use to convert from logical to physical sector numbers before accessing the
+disk. If no sector translation is required, this word will contain zero.
+Sector translation is discussed in some detail elsewhere so all that will be
+said at this point is that CP/M&nbsp;2.2 only allows for translation of 128 byte
+sectors. If sector translation is required on systems using sector sizes of
+more than 128 bytes, XLT must be set to zero and the BIOS should do the
+translation separately. CP/M&nbsp;3 doesn&rsquo;t suffer from this limitation as all disk
+transfers and sector translation are done in terms of physical disk sectors.
 </p>
 <p>
-The first entry ts the x translate table which the BIOs
-will use to convert from log fore accessing the
-Giok. Te no sector transla word will cont
-Sector translation Le di Leewhere so all that will be
-id-at this poine ie tl aly allows for translation of 128 byte
-Sectors. If sector translation is required on systems using sector sizes of
-more than 126 bytes, HLT must be sat to sero and the BIOS should do the
-Eranelation separately. CP/M&nbsp;3 doesn&rsquo;t suffer from chis iimitation as all disk
-transfers and sector eranslation are done in terms of physical disk sectors.
+The next 6 bytes are reserved for use by the BDOS as workspace. Their
+initial value is immaterial.
 </p>
 <p>
-eved for use by the BDOS as workspace. Their
+DIRBUF is the address of a buffer used by the BDOS and BIOS when reading
+directory information. This buffer is one physical sector long (512 bytes for
+Gemini DDDS, QDDS and QDSS formats, 128 bytes for SDDS format) and may be shared
+by all drives in the system. CP/M&nbsp;1.4 is different in that it uses the default
+buffer at address 80H for this purpose. CP/M&nbsp;3 buffers the directory records
+differently end consequently CP/M&nbsp;3 does do not contain this field.
 </p>
 <p>
-The next 6 bytes are x
-Anieial value Le immaterial.
+DPB is the address of a Disk Parameter Block for the drive concerned. A
+separate DPB is required for each disk format handled. DPH&rsquo;s for drives using
+the disk format may all address the same DPB. The DPB is explained in full
+later.
 </p>
+<h3>
+The Checksum Vector
+</h3>
 <p>
-DIRBUF de the addr
-</p>
-<p>
-of a buffer used by the BDOS and BIOS when &copy;
-directory information. This buffer Le one physical sector lor
-oe
-</p>
-<p>
-&ldquo;(S12 Bye
-</p>
-<p>
-[af DDS, QbDS and QOSS formats, 128 bytes for SDDS format) and may De shared
-by all drives in the system. CP/M&nbsp;1.4 Le different in that it uses the default
-buffer at address 80m for this purpose. CP/M&nbsp;3 buffers the directory records
-</p>
-<p>
-differently end consequently CP/M&nbsp;3 Deus do not contain this field.
-</p>
-<p>
-Ae the address of # Disk Parameter Block for the drive concerned. A
-pp ts required for each disk format handled. DPH&rsquo;s for drives using
-fe disk format may all address the some DPB, The DP is explained in full
-</p>
-<p>
-The Checkeum Vector
-</p>
-<p>
-CSV de the address of # table that CP/M uses to check whether a disk has
-been changed. The table ig used to store @ checksum byte thar uniquely
-Identifies a directory 8 bytes containing 4 directory entries). A
-good dafinivion of @ cha in this case, a ingle byte which Ls derived
-From a block of data and vhove value ig unique to that block. As fax as
-concerned, a block is 4 directory entedes totalling 128 byter (is, one
-record) and the checksun byte 1a obtained by adding together all of the byte
-the record, &lsquo;ignoring overflow, &lsquo;to produce a total, &lsquo;This total, and the tote
-for the ining directory records are stored in a part of the BIOS known a
-the eh vector and its address te given ex CSVin the DPS. There
-checksum vector for auch detve supported by the system. The Longeh of
-vector depends upon the number of dicectory entries. Since the checkvum applies
+CSV is the address of a table that CP/M uses to check whether a disk has
+been changed. The table is used to store a checksum byte that uniquely
+identifies a directory record (128 bytes containing 4 directory entries). A
+good definition of a checksum is, in this case, a single byte which is derived
+from a block of data and whose value is unique to that block. As far as we are
+concerned, a block is 4 directory entries totalling 128 bytes (i.e. one CP/M
+record) and the checksum byte is obtained by adding together all of the bytes in
+the record, ignoring overflow, to produce a total. This total, and the totals
+for the remaining directory records are stored in a part of the BIOS known as
+the checksum vector and its address is given as CSV in the DPH. There is a
+checksum vector for each drive supported by the system. The length of each
+vector depends upon the number of directory entries. Since the checksum applies
 </p>
 <?php columnEnd(1); ?>

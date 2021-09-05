@@ -1,104 +1,78 @@
 <?php columnStart(1); ?>
 <p>
-1d system, apace was not available in RAM for all of the featur
-normally
+based system, space was not available in RAM for all of the features that I
+normally assemble into my BIOS, unless the code was allowed to expand beyond 5k.
 </p>
 <p>
-yenble into my B10S, unlese the code was allowed to expand
+Each installer must come to his own decision on what is considered to be the
+optimum trade off between TPA, BIOS size and Z3 support. Some of the
+considerations above show how adaptable the installation may have to be.
 </p>
 <p>
-ach installer must cone to his own decision
-optinum trade off &ldquo;A. BIOS
-Considerations above show how a
+It is necessary, during installation, to find out the current address at which
+the CCP, BDOS and BIOS are residing. Before CP/M is relocated lower in memory
+to make room for Z3, the current operating address is needed, so that, after
+subtracting the extra RAM to be allocated to Z3, the new addresses are known.
+BIOS workspaces must also be allowed for, and it would not be safe to just look
+for the end of the cold boot in the system image (which is normally sign-on
+messages), subtract 2100H (start of BIOS in standard Gemini system Image), and
+take the result as indicating the BIOS length. A better guide is to find the
+BIOS starting address on a running CP/M system and to subtract this from the top
+of RAM, (or ROM address if ROM based software is used in the system, as in the
+Alphatronic PC).
 </p>
 <p>
-room for 23, the current eperatit {Sneeded, so that, after
-subtracting the extra RAM to be allocated to 23, the new addresses are known,
-BIOS workspaces must also be allowed for, and it would not be safe to Just look
-for the end of the cold boot in the system image (which ie normally sign-on
-e eubteact 2100H (atart of BIOS in standard Gemini system Image), and
-fake the reault ae indicating the BIOS length. A better guide is to find the
-BIOS stacting address on a running CP/M system and to subtract this from the top
-Of RAM, (or HOM address df ROM based software ie used dn the system, ae in the
-Alphatronie PC),
+Having decided on the addresses of each segment and buffer to be incorporated,
+the files Z3HDR.LIB and Z3BASE.LIB must be edited. This will allow the correct
+assembly of the Z3 CCP and will provide the information needed by other assembly
+operations that also read these .LIB files. Z3BASE defines the system addresses
+that have been chosen, and Z3HDR defines the commands and parameters available
+or trance to the Z3 CCP. The .LIB files for SYSFCP, SYSRCP, SYSENV, SYSIOP
+and SYSNDR may then be edited, but if any one or more of these segments is not
+to be used, edit of those .LIB's may be skipped.
 </p>
 <p>
-ach
+These files may then be assembled (e.g. MAC ZCPR3 $SZ PZ) to produce the
+relevant .HEX files. The $SZ and $PZ parameters suppress output of the Symbol
+and .PRN listing files otherwise produced during assembly. If MLOAD is
+available, the .HEX files may be loaded, and the resulting .COM files should be
+given the name SYS.RCP, SYS.ENV, SYS.NDR, SYS.FCP and SYS.IOP as appropriate,
+since the names used MUST be acceptable to LDR.COM. If MLOAD is not available,
+DDT or ZSID will have to be used to read the .HEX. This is explained in more
+detail later.
 </p>
 <p>
-jegnent and buffer to be incorporated,
-An fit allow the correct
+Once SYS.NDR and SYS.ENV have been constructed, any future mods. to these could
+well be made with SPZ.COM or a debug program, since these files are very short.
+Reference to the installation manual for the .ENV and TCAP will give the
+required information. There is little in the SYS.ENV that would need to be
+altered, once set up, unless a system &lsquo;shuffle&rsquo; is made. Several different
+named directory segments could quickly be made by copying, renaming and editing
+with SPZ or DU.
 </p>
 <p>
-operations that also
-chee have, bean chow he commande and paramet
-or ace eo the is COP. The ah ites for Saree atc, stan.&rdquo; SYSI0P
-thd SYEHDE say ches be edived, bu dE Ir more Of these segments ie not
-te be ueed, edit of thoce -LiB&rsquo;s aay be skipped.
+The BIOS cold boot alterations are made to appear unnecessarily complex in the
+installation manual. If the source code of the BIOS is available, revised
+signon messages and all sorts of frills are possible, but all that is really
+needed, just before the jump to warm boot, from cold boot, ie:
 </p>
 <p>
-smblad (e.g. HAC ZCPRS $82 P2) to produce the
-&lsquo;output of che Symbol
-sably.. &ldquo;Lf MLOAD i
+a) Code to clear Buffers and segments.<br>
+b) Code to set the Wheel Byte.<br>
+c) Code to set up the Default Path.<br>
+d) Code to set up the Startup Command string.
 </p>
 <p>
-These files may then be a
-relevant HEX files The $82 and $PZ parameters suppres
-and -PRW Iisting files otherwise produced during
-Available, the aHEX files may be loaded, and the resulting .COM files should be
-Given the name SYS.RCP, SYS-ENV, SYS.NDR, SYS.FCP and SYS.10P a appropriate,
-Since the names used MUST be acceptable to LDR.COH. If MUOAD is not available,
-DDT or 25D will have to be used to read the HEX. This is explained in wore
-detail lever.
+If the BIOS code is available, or an installer is prepared to do some work with
+a debug program or disassembler, then the necessary code can be &lsquo;patched&rsquo; into
+the BIOS.
 </p>
 <p>
-once SYS.NDR and SYS.ENV have been constructed, any future mods. to these could
-flew are very short.
-</p>
-<p>
-nd give th
-</p>
-<p>
-S.ENV that would need to.
-</p>
-<p>
-&lsquo;Several different
-jpmente could quickly be made by copying, renaming and editing
-</p>
-<p>
-Up, unless a syste
-famed directory
-</p>
-<p>
-with SPZ oF DU.
-</p>
-<p>
-&lsquo;The BIOS cold boot alterations are made to appear unneci p
-Installation manual. If the aource code of the BIQ5 is available, revised
-signon m nd all sorte of frille are posesble, but all that ie really
-Aeeded, Just Before the jump to warm boot, from cold boot, 1a:
-</p>
-<p>
-1) Code to clear Buffers and segnente,
-3) ode to set the Wheel Byte.
-</p>
-<p>
-c) Code to set up the Default Path.
-</p>
-<p>
-4) Code to set up the Startup Command string.
-</p>
-<p>
-IE the BIOS code is available, or an installer 18 prepared to do some work with
-&lsquo;8 debug program or diva
-the Bros
-</p>
-<p>
-Appendix A Liste
-1Pited ascumes
-Listing indicates additional modificetions, in chat are required
-to be patched into the actual BIOS code to redirect the cold boot Jump to acces
-the new code before it jumps to the warm boot. It alvo assumes that there is
-enough room on the disk system tracks for the extra code, If this is a problem,
+Appendix A lists an example of the code needed in source code form. The code
+listed assumes that the source code of the BIOS may not be available, and so the
+listing indicates additions] modifications, in mnemonic form, that are required
+to be patched into the actual BIOS code to redirect the cold boot jump to access
+the new code before it jumps to the warm boot. It also assumes that there is
+enough room on the disk system tracks for the extra code. If this is a problem,
 </p>
 <?php columnEnd(1); ?>

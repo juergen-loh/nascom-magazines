@@ -1,81 +1,73 @@
 <?php columnStart(1); ?>
 <p>
-the newer processors all contain the
-&lsquo;and thi
+the newer processors all contain the 8086 instruction set as a sub-set of their
+own instructions, and the new instructions are primarily (but not solely)
+concerned with extended (over 1 Mbyte) addressing modes. The book falls down on
+the subject of the segment registers and how these are programmed (I still
+occasionally have trouble with these as the numbers which magically turn up is
+the registers tend to have no relation to numbers I told them, or expected them
+to contain). I&rsquo;ve mostly got this sorted out with the aid of the examples in
+the Microsoft MASH (Assembler) Manuals and the Morten book, but they still catch
+me by surprise every now and then. When I&rsquo;ve got this aspect fully sorted, then
+maybe I&rsquo;ll revamp the &lsquo;Dodo&rsquo;s Guide to Z80 Assembler&rsquo;, you know, the thing I
+wrote all those years back, turn it into the &lsquo;Dodo&rsquo;s Guide to 8086 Assembler&rsquo;,
+and see if this mag. will republish it.
+</p>
+<h3>
+IBM Compatibility Problems
+</h3>
+<p>
+The problem with IBM compatibility all stems from the fact that IBM from
+the outset allowed direct memory addressing to the screen RAM and the use of
+direct BIOS calls. This, of course, completely blows the idea that all I/O
+should be done through the DOS and therefore be machine independent, as it
+firmly fixes the hardware to a certain form. I&rsquo;m quite sure this was not
+Microsoft&rsquo;s intention, and seems a step backwards.
 </p>
 <p>
-&lsquo;or expected that
-to-contain). I&rsquo;ve mostly got thie sorted out with the aid of the examples
-Microsoft MASM (Assembler) Manuals and the Worton book, but they etili catch
-&lsquo;by surprise every now and then. When I&rsquo;ve got thie aspect fully sorted, then
-Baybe I&rsquo;ll revamp the &ldquo;Dodo&rsquo;s Guide to 260 Assembler&rsquo;, you know, the thing T
-all chose yeare back, turn it into the &lsquo;Dodo&rsquo;s Guide to 6086 Assembler:
-Me thie mag. will republish it,
-</p>
-<p>
-10M Compatibility Problems
-</p>
-<p>
-The problem with ISM compatibility all stems from the fact that IBM from
-the outset allowed direct memory addressing to the screen RAN and the use of
-Girect BIOS calls. This, of course, completely blows the dea that all I/O
-should be done through the DOS and therefore be
-</p>
-<p>
-firmly fixes the hardware to a certain fora. 1
-Microsoft&rsquo;s intention, ac
-</p>
-<p>
-Many of ue are avare on the incompatibilities which come about by crying to
+Many of us are aware on the incompatibilities which come about by trying to
 transport CP/M software from machine Brand X, where the software rules have been
-broken and direct
+broken and direct screen and BIOS addressing has been allowed, to machine Brand
+Y, where the I/O and BIOS are at different addresses. One of the sneakier
+tricks of a certain piece of early software, which was written for the IBM
+alone, was to make it look at the bog inning of the BIOS, where the message &lsquo;IBM
+CORP. (C) 1981&rsquo; is held. If the software didn&rsquo;t find the message, it wouldn&rsquo;t
+go. One entrepreneurial type soon got round that one in his clone by including
+the message &lsquo;NOT IBM CORP. (C) 1981&rsquo; in his BIOS starting four bytes to the
+left. After that, attempts to make software machine exclusive seem to have
+ceased. The new Microsoft operating system, OS2 has the same publicly declared
+intention that a11 I/O will take place through the DOS itself, and Microsoft say
+that they have made it next to impossible to use direct addressing effectively.
+We shall see; and also wait to see how long it takes Big Blue to get round that
+one.
 </p>
-<p>
-certain phece of
-to make Le&rsquo; look ae
-</p>
-<p>
-Te held. If the software didn&rsquo;t fi jee, it wouldn&rsquo;t
-</p>
-<p>
-wriai eype soon. got round that one in his clote&rsquo; by including
-je HoT TBH Conf. (C) 198i&rdquo; dn hin BIOS stareing four bytes to the
-Lefer &ldquo;After that, atteapts to make software aachine exclusive sten to have
-ceased, &ldquo;The new Hicrowoft operating system, OS? has the same publicly declared
-GSeencion that ail I/O will cate place through the DOs itaclt&rsquo; fod Kicvorsit #5)
-that&rsquo; they have made it next to impossible to use direct addressing effectively.
-We shall seo; and algo wait to eee how Long it tales Big Blue to get round that
-</p>
-<p>
+<h3>
 Back to the Books
+</h3>
+<p>
+So given that the DOS, the BIOS and the hardware are all much more closely
+woven together than in a CP/M machine, what are the most useful references? MS-DOS,
+the BIOS and hardware architecture related software points are very
+adequately covered by Peter Norton in his book &ldquo;The Programmer&rsquo;s Guide to the
+IBM PC&rdquo;. This book unashamedly covers IBM machines only, but points out that
+most of what is said applies to a good clone. The book covers all versions of
+DOS from version 2.0 (with passing reference to DOS 1) to version 3.2, the
+differences, the enhancements and the bugs. IBM appear to have made fewer
+B1OS&rsquo;s than Microsoft have made versions of MS-DOS, and the book covers the
+different versions adequately. It also has thorough extensions related to the
+greater facilities available within the XT and AT BIOS&rsquo;s. It also notes the
+differences and implications of different hardware / DOS / BIOS permutations,
+although these can get quite hairy. It can not and does not cover all possible
+permutations, but suggests a &lsquo;try it and see&rsquo; approach to some of the weirder
+perms. The information on the BIOS and DOS is adequate to allow you to spot
+&lsquo;compatibility&rsquo; problems without resorting to the source listings in the IBM
+Technical Manuals.
 </p>
 <p>
-So given that the DOS, the BIOS and the hardware are all much ore closely
-woven together than in a CP/M machine, what are the
-</p>
-<p>
-were TBM
-most of what is seid applies to a good clo
-Dos from version 2.0 (with passing reference to DOS 1) to veraton 3.2, the
-aifterences, the endancements end the buge, IBM appear to heve made fewer
-S105&rsquo;s &lsquo;chan Microsoft have made versions of WS-DoS, and the book covers the
-different versions adequately. Te also. hae thorough extensions related to the
-Greater facilities aveleble within the XT and AY BiOS&rsquo;s, It also notes the
-Eifferences and implications of different hardware / DOS] BIOS
-</p>
-<p>
-although these can get quite hairy. It can not and does not cover&rsquo; ail possibl
-Seruutetione, put Suggests a very At and see&rsquo; approach to tome of the welder
-</p>
-<p>
-&ldquo;The infor fon the 105
-</p>
-<p>
-Another book, the title of which I forget, a
-</p>
-<p>
-inner naughties of &lsquo;the various versions of DOS, including lumps of source code
-and bug Liste (very useful). This book 18 confined to MS-DOS and as such Le not
-TEM dependent.
+Another book, the title of which I forget, as I&rsquo;ve loaned my copy to
+someone &ndash; something like &lsquo;Advanced MS-DOS&rsquo; by the Microsoft Press, cowers the
+inner naughties of the various versions of DOS, including lumps of source code
+and bug lists (very useful). This book is confined to MS-DOS and as such is not
+IBM dependent.
 </p>
 <?php columnEnd(1); ?>

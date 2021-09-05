@@ -1,88 +1,51 @@
 <?php columnStart(1); ?>
 <p>
-2) Set up a correctly configured SYS.mWv fie
+a) 6Set up s correctly configured SYS.ENV file.
 </p>
 <p>
-&gt;) Led, using an editor. This file
-should &lsquo;be given a name with an extension &ldquo;INS. (A ZCPRS.INS file
-</p>
-<p>
-Included on the 23 disks, but {t does not include the .COM files on sig.
-</p>
-<p>
-Vol. 200. Nesther does it allow for any renaming. e.g 1 prefer to cali
-</p>
-<p>
+b) Create a simple list of files to be installed, using an editor. This file
+should be given a name with an extension .INS. (A ZCPR3.INS file is
+included on the Z3 disks, but it does not include the .COM files on Sig.
+Vol. 200. Neither does it allow for any renaming. e.g. I prefer to call
 MCOPY.COM &ndash; COPY.COM.).
 </p>
 <p>
-c) Put the fifes to be installed, SYS.ENV, 231N5.COM and the .INS file in one
-ser area, and issue the command &ndash;2SINS SYS.ENV KOOLINS
+c) Put the files to be installed, SYS.ENV, Z3INS.COM and the .INS file in one
+user area, and issue the command &ndash;Z3SINS SYS.ENV XXXX.INS.
 </p>
 <p>
-&lsquo;The files named in the file XXKLINS will be installed for the current data a#
-hela dn Sys ENV.
+The files named in the file XXXX.INS will be installed for the current data as
+held in SYS.ENV.
 </p>
 <p>
-This completes the discuseion on some of the devious ways in which one can
-Sgplement the 23 systen.T&rsquo;hope thav chore of you ou here who have not. cried
-yacouraged co have a go. The results are well vorth it. Ihave heerd
-yy be further developments of 23 that may include bank ewitching end
+This completes the discussion on some of the devious ways in which one can
+implement the Z3 system. I hope that those of you out there who have not tried
+Z3 are encouraged to have a go. The results are well worth it. I have heard
+that there may be further developments of Z3 that may include bank switching and
+multi tasking, but I have no details.
 </p>
-<p>
-but have no detaile.
+<p class="center">
+***************************
 </p>
+<h3>
+Appendix A. Typical BIOS modifications.
+</h3>
 <p>
-Appendix A. Typical BIOS modifications
+This part could be in the equates section of your BIOS source, if you have it.
+It assumes Z3 segments end buffers start at 0F200H and occupy RAM to 0FFFFH.
+Address 0F200H is where the Z3 area starts in my system. Yours could be
+different. The same applies to the other addresses.
 </p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-33-1.png"); ?>
 <p>
-This part could be in the equates section of your BIOS source, {f you have it.
-Te assumes 23 vegmence and buffers start at OFZ00 and occupy RAM to 0FFFFH
-Address &lsquo;OF200H &lsquo;fo where the 23 area stazte in ay systex Yours could be
-different The same applies to the other addr:
-</p>
-<p>
-Bator equ 0FFFFH&nbsp;!Top of menory
-</p>
-<p>
-Stcst equ OF20cH Stare of 23 Seguent and Buffer a
-whiadr equ 038K tAddress of Wheel Byte
-</p>
-<p>
-patadr equ 0040H Start of defined default path
-Relede equ 0FF00H Multiple Comand Buffer
-</p>
-<p>
-elbuff equ 200 HCoomand Buffer ie 200 bytes Long.
-</p>
-<p>
-8 edit code to work with DIR: names in the Prompt.
-sn Edit Buffer and look for some code nearby like &ndash;
-STRIP: LD ML EDBUF+S
-</p>
-<p>
-3,3
-</p>
-<p>
-Or te HEX equivalent in the BIOS Imag
-jchange che code, or patch the BIOS Inage to be
-</p>
-<p>
-STRIP! LD ML, EDBUP#I2
-wp Biz
-</p>
-<p>
-iNow To the Cold Boot area of your BIOS, neer the end.
-</p>
-<p>
-&lsquo;The Warm Boot Jump must be found. The code below assumes your BIOS has the Cold
-Boot routines in the BIOS workspace a they will be overlaid when the
-ayeten te running. The Warm Boot rout: wuatiy located near the start of
-the Bios: &ldquo;Examine the First two jumps in the jump table at the start of the
-310s (normelly 17 Jump instructions) to get the Cold and Varm boot routine srart
-Adare: Hote that the jump to WBo0Tl found near the end of the cold boot
-foutines as shown below will probably not be to the start of the Warm boot
-Foutines as found from the second jump table address, but rome tens of bytes
-Into the Warm boot routine
+The Warm Boot Jump must be found. The code below assumes your BIOS has the Cold
+Boot routines in the BIOS workspace area, where they will be overlaid when the
+system is running. The Warm Boot routines are usually located near the start of
+the BIOS. Examine the First two jumps in the jump table at the start of the
+BIOS (normally 17 jump instructions) to get the Cold and Warm boot routine start
+Addresses. Note that the jump to WBOOT1 found near the end of the cold boot
+routines as shown below will probably not be to the start of the Warm boot
+routines as found from the second jump table address, but some tens of bytes
+into the Warm boot routines.
 </p>
 <?php columnEnd(1); ?>

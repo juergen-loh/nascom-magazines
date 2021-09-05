@@ -1,89 +1,79 @@
 <?php columnStart(1); ?>
 <p>
-are usually output
+discrete trimming of the signon messages might help. These are usually output
+until a 0 is found.
 </p>
 <p>
-jages might help. Th
+If the BIOS source code is available, the modifications can be made tidier. The
+extra code could be added just before signon messages are printed, and the extra
+data could be placed after the jump to warmboot, but before the actual signon
+message.
 </p>
 <p>
-discrete tet
-until a 04
-</p>
-<p>
-be made tidier The
-printed, and the exera
-ut before the actual #ignon
-</p>
-<p>
-XE the B10 source code {4 available, the modification
-</p>
-<p>
-eructions. &ldquo;Te const
-Z80 code and about 75 bytes of data, which could be trimmed by sone 20 bytes if
-desired by removal of the 23 welcome message that Js included in the startup
+The code listed is really ALL that is needed to implement Z3, but it is rather
+obscured in the Z3 installation instructions. It consists of about 45 bytes of
+Z80 code and about 75 bytes of data, which could be trimmed by some 20 bytes if
+desired by removal of the Z3 welcome message that is included in the startup
 command string. You can be more elaborate if you wish, but there is no need.
 </p>
 <p>
-Note that 1f segments are loaded to memory from disk files by LDR.COH, the
-SYSENV segment MUST be Loaded first if Le 1a not already present, since LOR.COM
-then refere to it to find out where to load the other segments.
+Note that if segments are loaded to memory from disk files by LDR.COM, the
+SYS.ENV segment MUST be loaded first if it is not already present, since LDR.COM
+then refers to it to find out where to load the other segments.
 </p>
-<p>
+<h3>
 Installation without BIOS modifications.
+</h3>
+<p>
+If the Z3 segments and buffers are loaded from the system tracks of a Winchester
+or Floppy, all that is needed in the cold boot is to set the Wheel byte, and
+path unless they are also defined in the system track area, for example in the
+spare space in the TCAP.
 </p>
 <p>
-Ig the 23 segments and buffere are Loaded from the system tracks of a Winchester
-of Floppy, ail that 18 needed in the cold boot is to set the Wheel byte, and
-path untes jefined in the system track area, for example in the
+In the case where insufficient system track space is available, and BIOS
+modifications are to be avoided, there seems to be a possible solution. During
+implementation of Z3 on a friend's Alphatronic PC, I had booted a system that
+loaded the segments and initialized the buffers, and Z3 was running. A little
+later I booted, by mistake, a disk that did not have LDR.COM or any of the SYS
+segment files on it, but did have e Z3 CCP in the system on the system tracks.
+When this disk booted, I got the error message:
+</p>
+<p class="indent">
+&lsquo;LDR SYS.ENV,SYS.NDR,SYS,RCP?&rsquo;
 </p>
 <p>
-available, and BIOs
-poreible solution. During
-implemen &lsquo;of 23 on a friend&rsquo;s Aiphatronic PC, Thad booted a system that
-ionded the segments and initialized the bufvers, and 23 was cunning A little
-later 1 booted, by mistake, a disk that did not have LDR.COM or any of the SYS
-Segment files on it, but did have a 23 CCP in the system on the syeten tracks
-When this disk booted, T got the error me
+since these files could not be found or loaded. When Z3 commands were given
+however, they all worked correctly, since all necessary data was in RAM already
+from the previous BOOT. So, provided they have not been corrupted, it is
+sufficient to get the Z3 segments, etc, into RAM only once, on the initial Cold
+boot. They do NOT need to be reloaded unless they are later corrupted for some
+reason. This suggests that the problem can be solved as follows.
 </p>
 <p>
-&ldquo;LDR SYS.ENV, SYS.NDR, SY
+A CP/M system is created that has the CCP, BDOS and BIOS at the same addresses
+as the Z3 system, but with a CCPZ or ZCPR Vers. 1 CCP. This can be booted, and
+will it will not use RAM in the area to be used by Z3 segments and buffers. The
+&lsquo;GET&rsquo; command of this CCP then can be used to load a complete Z3 composite
+&lsquo;SEGMENT.BIT&rsquo; file from the disk to the Z3 RAM area. (This could be made an
+auto run command.) Once this file has been loaded, a disk with a Z3 CCP in the
+system track can be booted, and it will find everything ready in RAM when it
+starts up. Alternative ways of loading the &lsquo;SEGNEMT.BIT&rsquo; might also be devised,
+such as loading and relocating from the Z3 boot disk itself. The method
+described above is probably the simplest though. The &lsquo;SEGMENT.BIT&rsquo; file can be
+made up in a similar way to that used to build up the Z3 part of a complete
+Winchester based system, as will now be described.
 </p>
+<h3>
+Generating a ZCPR3 System for Direct Booting.
+</h3>
 <p>
-crt
-</p>
-<p>
-fince these flee could not be found or loaded. When 12 commands vere given
-however, they all worked correctly, &lsquo;since all necessary data was in RAM alr
-from the previous BOOT. So, provided they have not been corrupted, it 1t
-sufficient to get the 23 segments, etc, into RAM only once, on the initial Cold
-boot. They do NOT need to be reloaded unl Tater corrupted for some
-Feason, that the problem can
-</p>
-<p>
-A CP/M system Le created that has the CCP, BDOS and BIOS at the
-ae the 23 system, but with a CCPZ or ZCPR Ve:
-</p>
-<p>
-&lsquo;ili&rsquo;ie wilt not use RAM in the area to be used by 23 segments and buffe:
-&ldquo;GET command of this CCP then can be used to load &copy; complete 23 ci
-&lsquo;SEGMENT BIT! file from the disk to the 23 RAM area. (This could be
-sasto run command.) Once thie file has been loaded, a disk with a23 COP in the
-System track can be booted, and it will find everyehing ceady in RAM vhen It
-starts up. Alternative ways of loading the &ldquo;SEGMENT.BIT might also be devised,
-such a6 loading and relocating from the Z3 boot disk itself. The method
-described above Le probably the simplest though The &lsquo;SECMENT BIT&rsquo; file can be
-ade up in a similar way to that used to bulld up the Z3 pare of a complete
-Winchester based eystem, 48 will now be described.
-</p>
-<p>
-Generating &copy; ZCPRS system for Direct Booting.
-</p>
-<p>
-Wig. 1 shows in diagrammatic form
-except redirected I/O.
-</p>
-<p>
-fon the right
-that io &pound;0 be written to the syst
+Fig. 1 shows in diagrammatic form a typical Z3 system supporting all features
+except redirected I/O. The addresses on the left hand side are those that the
+various parts would start at when the system is in RAM. Those on the right are
+referenced to a system &lsquo;image&rsquo; file, that is to be written to the system tracks
+of a Winchester, and will subsequently load to RAM. Note that these addresses
+and those given below represent only one of many possible configurations of CP/M
+and Z3.
 </p>
 <?php columnEnd(1); ?>

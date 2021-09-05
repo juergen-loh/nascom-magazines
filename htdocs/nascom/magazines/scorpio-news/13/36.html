@@ -1,43 +1,26 @@
 <?php columnStart(1); ?>
 <p>
 If the jump instructions are present, the system size is checked to determine
-whether warm boot should be off ROH (standard system) or disk (non-standard
-System). &ldquo;In each case a small piece of code, to turn off the ROM board and jump
-fol the correct entry point, &lsquo;Le copied to an ares of free RAM (0020h) and
+whether warm boot should be off ROM (standard system) or disk (non-standard
+system). In each case a small piece of code, to turn off the ROM board and jump
+to the correct entry point, is copied to an area of free RAM (0020h) and
+executed.
 </p>
 <p>
-4 keye and Force jump accordingly,
-Force BaSiG to be loaded and executed.
+The soft switch can be used with any CPU card that has jump-on-reset hardware
+(e.g. Nascom&nbsp;2) and a GM803 or GM853 EPROM card. The EPROM card must be
+configured to be paged in after a reset.
 </p>
 <p>
-OPERATING SYSTEM FOR GH802 EPROM BOARD
+Individual users may wish to add other features to the soft switching mechanism,
+such as forced jumps to, say, BASIC or Naspen. This could be implemented in a
+similar fashion to that on the BBC Microcomputer. That is, check for any
+pressed keys and force jump accordingly, i.e. pressing &lsquo;B&rsquo; at reset time will
+force BASIC to be loaded and executed.
 </p>
-<p>
-Version 1.3 5/5/85
-&lsquo; GHB03 must select page 0 on systen reset
-Anended a8 follove
-</p>
-<p>
-1) CP/M boot is now at OB800H
-(this to be the auto density boot)
-</p>
-<p>
-i 2) CP/M warm boot 18 recognised
-i (Guten warm boot fron EPROM image)
-</p>
-<p>
-Sino scesl Sress on es
-</p>
-<p>
-+ 9103 contro}
-1 ode for here
-</p>
-<p>
-ali; de
-SE gee i aes i
-bead fH
-</p>
-<p>
-Listing continued on page 41,
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-1.png"); ?>
+<?php imageNoscale($imagepath, $magpath, $issuepath, $pagepath, "Image-36-2.png"); ?>
+<h4 class="center">
+Listing continued on page 41.
+</h4>
 <?php columnEnd(1); ?>

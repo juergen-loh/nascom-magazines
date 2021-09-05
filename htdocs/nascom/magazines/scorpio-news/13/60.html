@@ -1,84 +1,75 @@
 <?php columnStart(1); ?>
 <p>
-Af something has nicked it, if the
+the keyboard interrupt vector to see if something has nicked it, if the
+application has changed it, SIDEKICK changes it back. Result, the program which
+&lsquo;took&rsquo; the keyboard has now lost it, so SIDEKICK works, but the application
+doesn&rsquo;t. Moral, if you&rsquo;ve acquired a piece of &lsquo;foreign&rsquo; or &lsquo;liberated&rsquo; software
+which doesn&rsquo;t seem to work, and SIDEKICK is resident, don&rsquo;t give up on it until
+you&rsquo;ve turned SIDEKICK off and tried again.
 </p>
 <p>
-che keyboard interrupt vector to
-&lsquo;whieh
-</p>
-<p>
-jpldcation has changed it, SIDEKICK changes it back. Result, the
-Cook&rsquo; the keyboard has now lost it, 20 SIDEKICK wor!
-</p>
-<p>
-doesn&rsquo;t. Moral, if you&rsquo;ve acquired a piece of &lsquo;foreign&rsquo; OF
-which doesn&rsquo;t seem to work, and SIDEKICK 1 resident, don&rsquo;t give upon it until
-you&rsquo;ve turned SIDEKICK OFF and tried again.
-</p>
-<p>
-A worse situation theo that is where two or more menory resident programs
-are asked to covexist together, perhaps SIDEKICK and something else, say FRED.
-Can you imagine the fight if they are both polling for keyboard interrupts
+A worse situation than that is where two or more memory resident programs
+are asked to co-exist together, perhaps SIDEKICK and something else, say FRED.
+Can you imagine the fight if they are both polling for keyboard interrupts.
 Problems of this sort can often be solved by the order in which the programs are
 loaded. For instance, we already know that SIDEKICK picks up the original
-keyboard incerrupt vector and replaces it with its own, having processed the
-Keyboard interrupt it passes it on to the original vector. so if we Loaded
-SIDEKICK Cire and then FRED, SIDEKICK would know that the keyboard vector had
-been changed by FRED and so change it back. Hovever, if FRED vere loaded first,
-ie would change the vector to suit iteelf, then SIDEKICK comes along eecond,
-seen the new vector to FRED, picks that up as the output direction vector and
-Eaplaces it wieh its own. All should work Ok, as SIDEKICK will seo any keypress
-First, and if it&rsquo;s not for itself, it will then pass it on to FRED. Of court
-all that presupposes chat PRED doesn&rsquo;t indulge in je tricks as SIDEKICK in
-the first place
+keyboard interrupt vector and replaces it with its own, having processed the
+keyboard interrupt it passes it on to the original vector. So if we loaded
+SIDEKICK first and then FRED, SIDEKICK would know that the keyboard vector had
+been changed by FRED and so change it back. However, if FRED were loaded first,
+we would change the vector to suit itself, then SIDEKICK comes along second,
+sees the new vector to FRED, picks that up as the output direction vector and
+replaces it with its own. All should work Ok, as SIDEKICK will see any keypress
+first, and if it&rsquo;s not for itself, it will then pass it on to FRED. Of course,
+all that presupposes that FRED doesn&rsquo;t indulge in the same tricks as SIDEKICK in
+the first place.
 </p>
-<p>
+<h3>
 Mystery Time
+</h3>
+<p>
+Here&rsquo;s one for the people who like mysteries. The utility called MODE,
+supplied with DOS, is used amongst other things to set the speed of, and to
+direct output to, the serial I/O. When executed for the first time, it leaves
+part of itself memory resident. Now the general way memory resident programs
+are handled are that they are loaded into low memory and a pointer is set to the
+top of the program pointing to the next &lsquo;paragraph&rsquo; of memory usable as
+transient program area. Not that it concerns us here, but all programs for 8086
+et al ere relocatable in &lsquo;paragraphs&rsquo; (16 byte boundaries). Suffice to say, DOS
+knows where to starting loading the next program. All this takes place with
+MODE. One of my proprietary programs makes use of this relocatable bit, as
+there are times when I want to change the UART parameters from inside the
+program, and it was convenient to &lsquo;RUN&rsquo; MODE from inside the program rather than
+hack some assembler together to do the job properly. It just so happened that
+there&rsquo;s oodles of room available on top of the program to accommodate MODE, so
+no problem &ndash; or at least I thought there wasn&rsquo;t!
 </p>
 <p>
-Here&rsquo;s one for the people who like mysteries. The utility called KODE,
-supplied with 005, is weed amongst other chings to get the spted of and to
-Gizect output to, the serial I/O. When executed for the firet time, it Leaves
-part of itself memory resident, Now the generel wey memory resident progrs
-ate handled are that they are loaded into low memory and a pointer is set to the
-top of the program pointing to the next. &lsquo;paragraph&rsquo; of memory usable
-transient program ares, Wot that it concerns uy hete, but all programs for 8086
-Ghul tre Kelocatable in &lsquo;pacagrapha&rsquo; (16 byte boundaries), Suffice to any, DOS
-knows where ro starting loading the next program. All thie takes place with
-MODE. &ldquo;One of my proprietary programs makes Uve of this relocatable bit
-there are times when I &lsquo;che UAR iG
-</p>
-<p>
-together to do the job properly
-Of room available on top of the program to accommodate MODE, #0
-no problem &ndash; of at Least T thought there wasn&rsquo;t!
-</p>
-<p>
-woile, it was found that the applications prog:
-{ndulged ins Lot of UART parameter
-fevery tine MODE vas run, it didnre recogneze that it had been Tun
-Before.&lsquo; fo loft she reraert (pact Sehing) Fence they fond parageap olstes
-&lsquo;eda, and s0 slowly &pound;ilied the menory until che application Mecupped and
-opped outs Ok? &ldquo;But How come MODE Kaew 1f it had elresdy been run from DOS ond
-aidnvt Leave the residen part behind then? Well I dida&rsquo;t twig thee quite so
-soon, ae 1 didn&rsquo;e initialize the serial I/O from the AUTOEREC-BAT, but I did
-Fire up SIDEKICK in the AUTGEXEC. I checked with couple of other customers &pound;0
-seo if this problem had occurred, 1t hadn&rsquo;t, the only apparent difference was
-hae they infeialized the seria? I/O in the AUTOEKEC and weren&rsquo;t ueing. SIDEKICK.
-Feewarned. that SIDEKICK did. naughty things, 1 turned {t off, &ldquo;but it 20
-Siffecence, the menory still filled up So 4 Looked as 4f SIDERICK could be
+After a while, it was found that the applications program ran out of memory
+if someone indulged in a lot of UART parameter swapping. The answer was
+obvious, every time MODE was run, it didn&rsquo;t recognize that it had been run
+before, and so left the resident part behind, reset the load paragraph pointer
+upwards, and so slowly filled the memory until the application hiccupped and
+copped out. Ok? But how come MODE knew if it had already been run from DOS and
+didn&rsquo;t leave the resident part behind then? Well I didn&rsquo;t twig that quite so
+soon, as I didn&rsquo;t initialize the serial I/O from the AUTOEXEC.BAT, but I did
+fire up SIDEKICK in the AUTOEXEC. I checked with a couple of other customers to
+see if this problem had occurred, it hadn&rsquo;t, the only apparent difference was
+that they initialized the serial I/O in the AUTOEXEC and weren&rsquo;t using SIDEKICK.
+Prewarned that SIDEKICK did naughty things. I turned it off, but it no
+difference, the memory still filled up. So it looked as if SIDEKICK could be
 eliminated.
 </p>
 <p>
-Then I tried executing MODE before executing the program, and the probles
-went away. In other words, I guess (but I&rsquo;m not &lsquo;sure) this is what it
-happening by executing MODE first, eis left in the rock
-bottom Lowest pert of RAM. The next ti it checks to see if
-Et already exists, but it only checks at the lowest address&rsquo; in RAM. if it finds
-itself, it doesn&rsquo;t bother to Leave the resident part behind, if it&rsquo;s not found,
-then the resident part gets left. So now MODE gete executed in the AUTOBXEC,
-Followed by SIDEKICK &ndash; end of problem &ndash; only I&rsquo;m not entirely happy about ay
-explanation &ndash; they don&rsquo;t say anything about that in the manual, 4c seems right,
+Then I tried executing MODE before executing the program, and the problem
+went away. In other words, I guess (but I&rsquo;m not sure) this is what is
+happening. By executing MODE first, the resident part is left in the rock
+bottom lowest part of RAM. The next time MODE is executed, it checks to see if
+it already exists, but it only checks at the lowest address in RAM. If it finds
+itself, it doesn&rsquo;t bother to leave the resident part behind, if it&rsquo;s not found,
+then the resident part gets left. So now MODE gets executed in the AUTOEXEC,
+followed by SIDEKICK &ndash; end of problem &ndash; only I&rsquo;m not entirely happy about my
+explanation &ndash; they don&rsquo;t say anything about that in the manual, it seems right,
 but does anyone know for sure?
 </p>
 <?php columnEnd(1); ?>

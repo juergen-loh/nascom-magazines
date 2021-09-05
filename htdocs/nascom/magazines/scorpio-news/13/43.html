@@ -1,78 +1,75 @@
 <?php columnStart(1); ?>
-<p>
+<h3>
 The Theory
-</p>
+</h3>
 <p>
 The theory starts with the 256k chips being pin compatible with 64k ones
-except that pin 1 is now used ae Ad (the additional address line necersary to
-Sdirees all the extra memory) By connecting this AB via a multiplexer to Als
-and Al? &pound;&pound; should be possible to address the whole of the 236k. It doesn&rsquo;t
-Batter that AS on the RAM chip should be multiplexed between A&reg; and Al? bus
-Address lines and all the other address lines moved up to match as it is not
-heceseary to use consecutive cells in the RAM, the only requirement being to
-Gnsure that the same location 1 addressed consistently.
+except that pin 1 is now used as A8 (the additional address line necessary to
+address all the extra memory) By connecting this A8 via a multiplexer to A16
+and A17 it should be possible to address the whole of the 256k. It doesn&rsquo;t
+matter that A8 on the RAM chip should be multiplexed between A8 and A17 bus
+address lines and all the other address lines moved up to match as it is not
+necessary to use consecutive cells in the RAM, the only requirement being to
+ensure that the same location is addressed consistently.
 </p>
 <p>
-Looking at the circuit diagram reveled thet I would atill only be able to
-the lower 64k as the chips are only selected vhen the top three address
-</p>
-<p>
-&lsquo;are all. zero.&rdquo; Working backwards crom the PAL. through which all onbosrd
-addressing is done, the onboard RAH Je selected via AEO (pin 18) which is high
-Whenever A16 &ndash; A13 are all low (1. ie in the Lover Suk bytes) To
-Gelect the onboard RAM for any lower&rsquo; 256k bytes, AEO has to
-go high regardless of the state nd AL? go it becomes the inverse of AB
-Unfortunately the signal AEC {e alee used to determine when the boot EPROM is
-selected as this is expected to be at 0F000H &ndash; 0FFFFH. The vay round this is to
-Sever the connection between A15 A18 and A20, leaving Ale AS to be used to
-Select the EPROM and take A18 via an nverter to AEO on the PAL co select the
+Looking at the circuit diagram revealed that I would still only be able to
+the lower 64k as the chips are only selected when the top three address
+are all zero. Working backwards from the PAL, through which all onboard
+addressing is done, the onboard RAM is selected via AEO (pin 18) which is high
+whenever A16 &ndash; A13 are all low (i.e. the address is in the lower 64k bytes). To
+select the onboard RAM for any address within the lower 256k bytes, AEO has to
+go high regardless of the state of A16 and A17 so it becomes the inverse of A18.
+Unfortunately the signal AEO is also used to determine when the boot EPROM is
+selected as this is expected to be at 0F000H &ndash; 0FFFFH. The way round this is to
+sever the connection between A16 &ndash; A18 and AEO, leaving Al6 &ndash A18 to be used to
+select the EPROM and take A18 via an inverter to AEO on the PAL to select the
 onboard RAM.
 </p>
+<h3>
+The Modifications
+</h3>
 <p>
-The Hodifiestions
+Now to the actual modifications (refer to diagram) The first step is to
+remove the eight 64k bit RAMs from their sockets (ICs 8,11,17,18,25,31,32,38).
+Very carefully take the eight 256k bit RAMs and bend up pin 1 on them all. Then
+insert them into the sockets making sure that they are the correct way round.
+On my board, manufactured in 1983, all the RAM chips were socketed making this
+step very easy. However, photographs in the current Gemini catalogue show the
+RAM chips soldered directly into the board which means a lot more work for some
+people. Wire all the lifted pins together and to earth which I found at a post
+near IC43. Then check that the board still works before proceeding.
 </p>
 <p>
-Now to the actual modificatfons (refer to diagram) The first step is to
-remove the eight ik bit RAMs from their sockets (ICs 8,11,17,18,25,31,32,38)
-Very carefully take the eight 256k bit RAMs and bend up pin i on them all &lsquo;Then
-insert them into the sockets making sure that they are the correct vay round
-on my board, &lsquo;manufactured in 1903, ail the RAM chips were socketed making this
+The second step is to take a new 74LS257A quad multiplexer chip and bend up
+pins 2 &ndash; 7 and 9 &ndash; 14. Then solder it directly above IC&nbsp;43, also a 74LS257A,
+with the same orientation so that it can pick up power and some control signals
+from it (i.e. pins 1, 6, 15 and 16 are all soldered onto the same pins on the
+chip below). Unsolder the wire from the earth pin connected in step two and
+solder it to pin 9 of the new 74LS257A. Connect pin 10 to Al6 which can be
+conveniently found near the edge connector, and pin 11 to Al7 which is next to
+Al6. Now check the board before proceeding.
 </p>
 <p>
-&lsquo;ia the current Gemini catalogue show the
+The last hardware modification is to enable all the memory to be addressed.
+Take a new 74LS04 hex inverter chip and bend up pins 1 &ndash; 6 and 8 &ndash; 13, then
+solder it above IC&nbsp;27 (the same way round) connecting the power pins 7 and 14 to
+the chip below. Solder pin 13 to Al8 (next to Al7 near the edge connector).
+Carefully remove the PAL chip, IC&nbsp;26, and bend up pin 18 and replace it in its
+socket. Connect this pin to pin 12 on the new 74LS04 and check that the board
+still works before finally closing up the case.
 </p>
-<p>
-The second step Ls to take a new 7415257A quad aultiplerer chip and bend up
-</p>
-<p>
-: &lsquo;then solder it directly above 1c 43, also a 74152574,
-&lsquo;oteneation so that it can pick up power and tome control. signals
-From it (lee. ping 1; 6, 25 and 16 are all soldered onto the same pins on the
-ehip below). Unvolder &lsquo;the wire from the earth pin consected in step two and
-Solder it to pin sof the sev T6Lsz57A Connect pin 10 to Alo which can be
-Conveniently found sear the dge connector, and pin a1 t0 Al? which 1a next eo
-Aer &ldquo;Now check the board before proceeding,
-</p>
-<p>
-&lsquo;The last hardware modification is to enable all the memory to be addressed.
-Take 2 new 76L508 hex inverter chip and bend up pins I- 5 and B= 13, then
-solder ft above 1c 27 (the seme way round) connecting the power pins 7 and 14 to
-the chip below Solder pin 13 to A18 (next co Al? near the edge connector).
-Carefully remove the PAL chip, 1628, and bend up pin 18 and replace Tt in tt
-socket. Connect this pin to pin 12 cn the new 74L804 and check that the board
-SELII works before finally closing up the case
-</p>
-<p>
+<h3>
 Software
-When it comes to using the mapp by a
-of the &pound;80 OUT instruction &lsquo;out (c).e&rdquo; where the memory mapping port (Ofeh) is
-</p>
+</h3>
 <p>
-in the *e* register and during execution, the *b&rdquo; register contents are also
+When it comes to using the mapping registers, these can be altered by use
+of the Z80 OUT instruction &ldquo;out (c),r&rdquo; where the memory mapping port (0feh) is
+in the &ldquo;c&rdquo; register and during execution, the &ldquo;b&rdquo; register contents are also
 placed on the address bus where the most significant four bits select the
-sapping register. The *r&rdquo; register contains the 4k block number 0 &ndash; 07th which
-Is written into the mapping register. The boot EPROM ensures that the mapping
-registers are initially set up to map the bottom 64k bytes ina one to one
-mapping (i.e the registere contain 00h, Ol, 02h, up to Ora)
+mapping register. The &ldquo;r&rdquo; register contains the 4k block number 0 &ndash; 07fh which
+is written into the mapping register. The boot EPROM ensures that the mapping
+registers are initially set up to map the bottom 64k bytes in a one to one
+mapping (i.e. the registers contain 00h, 01h, 02h, up to 0fh).
 </p>
 <?php columnEnd(1); ?>

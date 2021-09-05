@@ -1,109 +1,78 @@
 <?php columnStart(1); ?>
 <p>
-ESTE F_sbows L9n0H-1500H bye
-fonded From the Disk. Tt 18 net
-Winchester Boot Loader it is located at 093AH in the syetet
-in the Floppy loader. The value wae 13H in both cases. Ie will need to be
-Ancreased. The value of O1CH will load a system configured as shown in Fig. 1.
-Too large a value vill load a system over the top of RAM, crashing the Lot
+grown by about 1000H-1500H bytes in length, these extra sectors have to be
+loaded from the Disk. It is necessary to adjust the sector counter. In my
+Winchester Boot Loader it is located et 093AH in the system image, and at 0909H
+in the Floppy loader. The value was 13H in both cases. It will need to be
+increased. The value of 01CH will load s system configured as shown in Pig. 2.
+Too large a value will load a system over the top of RAM, crashing the Load
+process. Too small a value will read insufficient date from the disk.
 </p>
 <p>
-&lsquo;Too small a value will read insufficient data from the dick:
+The debug program can now be exited, and the new system saved &ndash; SAVE 66
+FULLZ3.SYS. This will save all of the TPA from 0100H to 4300H. It only remains
+to write this to the Winchester. Note that the bytes from 0100H to 08FFH in the
+system image file are discarded by SYSGEN and SYSWIN. The actual write starts
+at 0900H. These bytes MUST be save in the system image file however, in order
+that the required data starts at 0900H.
 </p>
 <p>
-300K. &ldquo;Te only remains
-&lsquo;from 01008 to O8FPH in the
-iscacded by SYSGEN and SYEVIN. The actual write starts
-MUST De ave nthe system inuge file however, in order
+The utility SYSWIN.COM is used to write a system to a Winchester, but the other
+remaining problem now becomes apparent. SYSWIN is set to write a normal sized
+syetem. The sector counter must again be altered. It is necessary to write all
+of the much larger system to the Winnie and the Cold Boot Loader sector must be
+written as well. In my version of SYSWIN this count (at 050FH) was 013H, and I
+have set it to 01DH.
 </p>
 <p>
-syeten image file a
-af&rdquo; 0900. These &lsquo;byt
-that the required da
+N.B. I have found that SYSWIN will not work correctly if run from the Winnie
+itself, or if the system image file is on the Winnie - probably due to hard
+coded disk drivers. I use both these files from a floppy.
 </p>
 <p>
-but ehe other
+There is another way to get the system written to the Winnie. SYSGEN will carry
+out a part of the process, but fails part way along &ndash; I can&rsquo;t remember where.
+If you are really masochistic, you can use the scratchpad feature of SPZ to
+write 128 byte chunks of your FULLZ3.SYS file to the Winnie system tracks.
 </p>
 <p>
-&lsquo;The utility sYswr.com
-&lsquo;normal sized
+For the system to boot correctly from the Winnie on reset or startup, SIMON&nbsp;4 is
+needed. (Other Versions may be O.K.) or the utility BOOT.COM can be used.
+These are not PD programs. Your friendly Gemini dealer should be able to supply
+you with SIMOM4, BOOT.COM and SYSWIN.COM, unless Gemini have become as difficult
+about System Utilities as they have about source code. They might insist on you
+buying or upgrading to BIOS&nbsp;3.x.
 </p>
 <p>
-to write a system to a Winchester,
-SYSWIN te eet to. wr!
+If Gemini intend to continue supporting 80-BUS products (as they say they intend
+to do), then it is in their interests to serve their customers requirements. If
+they intend to let these products lapse, then they have nothing to loose in
+supplying existing users with the programs and information. Either way I think
+their attitude is wrong - riding my hobby horse again !!
 </p>
 <p>
-written ae well. In ay version of SYSWIN this count (at 050FH) wae O138, and T
-have set it to O1DH.
+If the Z3 area from 03500H to 04300H only is needed, in order to load as a
+complete &lsquo;SEGMENT.BIT&rsquo; so as to avoid BIOS mods. as described above, it is
+suggested that a debug program is run, but without loading a system image.
+(e.g. run DDT or ZSID if .HEX files are to be processed). Memory from 100H to
+about 05000H should be first filled with 00's. The segment parts can then be
+read in at 3500H, etc; as described above. The default startup command can be
+set as described above. Wheel and Path could be defined in the spare space in
+the TCAP of the SYS.ENV segment.
 </p>
 <p>
-N.B. T have found that SYSWIN will not work correctly if run from the Winnie
-Ktuelf, or 4f the ayatem image File te on the Winnie &ndash; probably due to hard
-coded disk drivers. I use both these filer from a floppy.
+Then the required data area can be moved to 100H &ndash; M3500,4300,100. This will
+move a block 0E00 long down to 100H. Exit from the debug program and 13 pages
+saved &ndash; SAVE 13 SEGMENT.BIT. This file can then be loaded to 0F200H by any
+appropriate means to furnish Z3 with its requirements. Note that LDR.COM cannot
+load this file, but a CCPZ GET command could be used as already suggested. (Or
+maybe LDR.COM modified via the .MAC file so as to be able to load it).
 </p>
+<h3>
+ZCPR3 Utility Installation.
+</h3>
 <p>
-the system written to the Winnte. SYSCEN will carry
-file part way,
-Th
-</p>
-<p>
-There 42 another way to g
-out a pare of the proc
-Tf you are really aso
-wette 128 byte chun
-</p>
-<p>
-to boot correctly from the Winnie on reset or startup, SIMON 4 is
-(Other Versione may be OE.) or the utility BooT-cOM can 8.
-Your friendly Genin dealer should be abl
-</p>
-<p>
-ini have become
-they have about source code, They might ne!
-Buying or upgrading to BIOS x.
-</p>
-<p>
-to supply
-ateeieute
-yt on you
-</p>
-<p>
-TE Gemini intend to) continue supporting 80-BIS products (ae they say they intend
-to do), then it da in their interests to serve their customers requirements,
-they intend to ee these products Lapse. chen they have noxhing co loo i
-&lsquo;fuppiying existing usere with the progeams and information. Either way 1 think
-thelr attitude de&rsquo;wrong &ndash; riding my Hobby horee agein 11
-</p>
-<p>
-IE the 23 area from 03500H to 043008 only te n
-</p>
-<p>
-complete &lsquo;SEGHENT.BIT&rsquo; 0 as to avoid BIOS mods
-ted that a debug program is run, but withou!
-fun DDT or 251D 1c (HEX &pound;111
-</p>
-<p>
-je4, in order to load a a
-&lsquo;described above, it te
-</p>
-<p>
-Land Path could be defined in the spare
-the TCAP of &lsquo;the SYS.ENV&rsquo; segment.
-</p>
-<p>
-&lsquo;Then the required data area can be moved to 100H &ndash; H3300,4300,100, This will
-&lsquo;ove a block 0&pound;00 long down to 1008. Exit from the &lsquo;and 13. pages
-</p>
-<p>
-jad&rsquo; &ndash; SAVE 13 SEGMENT.BIT.. This Eile can then be to OF200H by any
-Appropriate means to furnish 23 with ite requirements. Note that LUR.COM cannot
-1804 Ehie file, but a CCPZ GET command could be used ae ale (Or
-maybe LDR.COM modified via the .MAC file #0 as to be
-</p>
-<p>
-&lsquo;CPRS Ueility Installation.
-</p>
-<p>
-The installation of the 23 utilities is straightforward. Tt ie necessary to
+The installation of the Z3 utilities is straightforward. It is necessary to
+carry out three steps.
 </p>
 <?php columnEnd(1); ?>

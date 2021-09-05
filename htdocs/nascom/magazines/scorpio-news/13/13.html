@@ -1,103 +1,73 @@
 <?php columnStart(1); ?>
 <p>
-Long, rounder &lsquo;whole byte.
-thie Le quoted DEM Le
+The length of the vector is calculated to be (Number of blocks)/8 bytes
+long, rounded up to the nearest whole byte. In the Digital Research manuals,
+this is quoted as (DSM/8)+1 where DSH is one less than the total number of
+blocks contained on the disk. Here is another good reason for having larger
+block sizes in that the bigger the block size, the fewer blocks there will be
+and the smaller the allocation vector will be (i.e. the BIOS will be smaller and
+the TPA, consequently, may be larger).
 </p>
-<p>
-&lsquo;the allocation vector will be (ise. the BIOS will be smaller and
-the TPA, &ldquo;consequently, may be Larger).
-</p>
-<p>
+<h3>
 The CP/M&nbsp;3 DPH
+</h3>
+<p>
+By contrast, a CP/M/&nbsp;3 DPH is given below. Digital Research needed to
+increase the amount of date provided by the DPH while providing upwards
+compatibility with CP/M&nbsp;1.4 and CP/M&nbsp;2.2, Further, they have come to realise
+that many systems require to access disks of different formats and that few
+systems use a 128 byte sector size on their disks.
+</p>
+<table class="indent2" style="width: 70%">
+<tr><td></td><td>READ</td><td>; Address of sector read routine</td></tr>
+<tr><td></td><td>WRITE</td><td>; Address of sector write routine</td></tr>
+<tr><td></td><td>LOGIN</td><td>; Address of disk login routine</td></tr>
+<tr><td></td><td>INIT</td><td>; Address of disk initialisation routine</td></tr>
+<tr><td></td><td>UNIT</td><td>; FDC relative drive code for this drive (Byte)</td></tr>
+<tr><td></td><td>TYPE</td><td>; BIOS scratchpad, Current density etc. (Byte)</td></tr>
+<tr><td>XDPH:</td><td>XLT</td><td>; Translate table address</td></tr>
+<tr><td></td><td>0000</td><td>; 9 bytes scratchpad</td></tr>
+<tr><td></td><td>0000</td><td></td></tr>
+<tr><td></td><td>0000</td><td></td></tr>
+<tr><td></td><td>0000</td><td></td></tr>
+<tr><td></td><td>00</td><td></td></tr>
+<tr><td></td><td>MF</td><td>; Media Flag (Byte)</td></tr>
+<tr><td></td><td>DPB</td><td>; Disk Parameter Block address</td></tr>
+<tr><td></td><td>CSV</td><td>; Checksum Vector address</td></tr>
+<tr><td></td><td>ALV</td><td>; Allocation Vector address</td></tr>
+<tr><td></td><td>DIRBCB</td><td>; Directory Buffer Control Block address</td></tr>
+<tr><td></td><td>DTABCB</td><td>; Data Buffer Control Block address</td></tr>
+<tr><td></td><td>HASH</td><td>; Hash Table address</td></tr>
+<tr><td></td><td>HBANK</td><td>; Hash Table Memory Bank (Byte)</td></tr>
+</table>
+<p>
+The major differences between a CP/M&nbsp;2.2 and CP/M&nbsp;3 DPH are quite obvious
+at a glance. The DPB entry is as  described in the section concerning the CP/M
+2.2 DPH and will not be repeated here. Under CP/M&nbsp;3, all disk transfers are in
+terms of physical disk sectors and the sector translation table, at long last,
+now also applies to physical sectors of whatever size. This means that it is no
+longer necessary to provide special translation routines in the BIOS for sectors
+that are larger than 128 bytes. Note also that the BDOS scratchpad area has
+been increased to 9 bytes and that there is no entry for DIRBUF.
 </p>
 <p>
-By contrast, 4 CP/M 3 DPH Ls given below. Digital Research needed to
-Ancrease the amount of date provided by &lsquo;the DPH while providing upwards
-compatibility with CP/M&nbsp;1.4 and CP/M&nbsp;2.2, Purther, they have cone ro realise
-that many systons require to access disks of different formats and that few
+Additionally, the DPH for CP/M&nbsp;3 has been extended and is now known as the
+extended Disk Parameter Header or XDPH. For compatibility with CP/M&nbsp;2.2, the
+BIOS still returns the address of the DPH when a drive is logged in and in fact
+returns the address of the XLT field of the DPH as with CP/M&nbsp;2.2.
 </p>
 <p>
-systems use a 128 byte sector size on thelr disks
-READ, Address of sector read routine
-WRITE | Address of sector write routine
-LogIn Address of disk login routine
-INIT | Addrese of disk initialisation routine
-UNIT} FDC relative drive code for thie drive (Bye.
-TYPE BIOS acratchpad, Current deneity etc. (Byte)
+Before examining the XDPH fields in detail, a word or two is required about.
+the CP/M&nbsp;3 Drive Table.
 </p>
 <p>
-XDPH: aALT=; Tranolate table addres
-000; 9 bytes scratchpad
-</p>
-<p>
-9000
-0000
-</p>
-<p>
-&lsquo;0000
-</p>
-<p>
-00,
-</p>
-<p>
-MP Modia Flag (Byte)
-</p>
-<p>
-DPB j Diok Parameter Block addre
-</p>
-<p>
-CSV} Checksum Vector address
-</p>
-<p>
-ay. &lsquo;Allocation Vector adsrese
-</p>
-<p>
-Diuacs ; Directory Buffer Control Block addrese
-DIABCE j Data Butfer Control Block addre
-</p>
-<p>
-HASH&rdquo; Hash Table addr
-</p>
-<p>
-BANK &copy; Hash Table Memory Bank (Byte)
-</p>
-<p>
-&lsquo;The major differences between &copy; CP/M&nbsp;2.2 and CP/M&nbsp;3 DPH are quite obvious
-ataglance. the DPB entry fe a5 described in the section concerning the CP/M.
-2.2 DPH and &lsquo;will not be repeated here Under CP/M&nbsp;3, all disk transfers ar:
-isk sectors and the sector translation table
-</p>
-<p>
-&lsquo;to physical sectors of whatever size. This means that 1
-eereary to provide special translation routines in the S105 for
-that are larger then 128 bytes. ote also that the BDOS scratchpa
-&lsquo;een increased to&rsquo;9 bytes and that there Ja no entry for DIRBUF.
-</p>
-<p>
-Addiedonally, the DPE for CP/M&nbsp;3 has been extended and is now known as the
-</p>
-<p>
-exconded Disk Parameter Header or XDPH.&rdquo; For compatibility with CP/M&nbsp;2.2, the
-</p>
-<p>
-BIOs still returns the address of the DP when a drive 1e logged in and in fact
-&lsquo;of the XLT field of the DP ae with CP/M&nbsp;2.2,
-</p>
-<p>
-Before examining the XDPH fields in
-Te
-</p>
-<p>
-ail, a word or two ie required about.
-</p>
-<p>
-te compriy
-</p>
-<p>
-ancey cay is sero
-but there muse be an tort for each of the 15 drives that may be
-Fe of the drive cable by&rsquo; ceiling #108
-Fabteion 22 (ie extling address WBO0T+SFH in che BIOS Jump table) out foF most
-purposes, the S105 {e the main weer of the eabl
+The drive table (@dtbl in the CP/M&nbsp;3 manuals) is a 32 byte area of RAM that
+is comprised of 16 addresses. Each entry in the table points to the XDPH for
+its associated drive so that the first entry applies to drive A and the last
+entry applies to drive P. If no physical drive exists, the table entry is zero
+but there must be an entry of some sort for each of the 16 drives that may be
+supported. The BDOS can obtain the address of the drive table by calling BIOS
+function 22 (ie calling address WBOOT+3FH in the BIOS jump table) but for most
+purposes, the BIOS is the main user of the table.
 </p>
 <?php columnEnd(1); ?>

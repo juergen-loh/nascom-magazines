@@ -1,99 +1,76 @@
 <?php columnStart(1); ?>
 <p>
 ALV is similar to that for CP/M&nbsp;2.2 in that the BDOS uses the allocation
-vector to identify which data blocks have been ailocated co files and which are
-Free for use. CP/M&rsquo;3,, hows
+vector to identify which data blocks have been allocated to files and which are
+free for use. CP/M&rsquo;3, however, uses two bite in the allocation vector for each
+block on the disk. The only exception to this is in a non-banked CP/M&nbsp;3
+where the option is given to use single bit entries as with CP/M&nbsp;2.2.
+Since there should be no non-banked CP/M&nbsp;39 sold commercially (the non-banked
+version of CP/M&nbsp;3 is merely an aid in the generation of a banked system),
+all users of CP/M&nbsp;3 can assume that their system uses double bit entries in the
+allocation vector.
 </p>
 <p>
-aa f
+Obviously, a double bit allocation vector is going to occupy twice as much
+memory as a single bit allocation vector so why then use two bits per entry?
+Remember how STAT.COM calculates free disk space under CP/M&nbsp;2.2 and how it is
+possible to fool it by forgetting to close a file. The only way to update the
+allocation vector under CP/M&nbsp;2.2 is to hit ^C to reset the disk system and log
+in the drives again. This of course takes time and CP/M&nbsp;3 boasts better disk
+performance. Digital Research have gone to great lengths to avoid resetting the
+disk system with each warm boot &ndash; particularly since CP/M&nbsp;3 has also spent time
+buffering both directory and data blocks to reduce disk accesses still further.
+Control C is still available under CP/M&nbsp;3, when running the CCP, to allow the
+user to force a disk reset but, to improve performance, this should be done as
+little as possible.
 </p>
 <p>
-wer, sae two bite in the allocation vector for each
-block on the disk. The only exception to this is ine non-banked CP/M&nbsp;3
-where the option is given to use single bit entries ae with CP/M&nbsp;2.2
-should be no noncbanked CP/M&nbsp;39 &lsquo;sold commercially (the. non
-banked version of CP/M&nbsp;3 ly an aid in the generation of a benked system!
-1 users Of CP/M&nbsp;3 can atsune hat their aystem uses double bit entries in the
+To eliminate the need for disk resets on warm boot, Digital Research came
+up with the double bit allocation vector. If, as before, a file is written to
+disk, the BDOS will keep track of which data blocks it is allocating by using
+one of the two bit in the allocation vector for each of those blocks. When a
+file is closed, the second set of bits for the affected blocks are updated to
+match the first. If, on the other hand, the file is not closed before returning
+to CP/M the first set of bite can be reset to their original state because the
+second set provide a record of which blocks remain free. Consequently, the disk
+free apace shown by SHOW.COM (CP/M/nbsp;3&rsquo;s equivalent to STAT.COM) is always correct
+and the need for a disk access has been alleviated. Unlike CP/M.2.2, the size
+of the allocation vector for CP/M&nbsp;3 is calculated as (DSM/4)+2. The &ldquo;2&rdquo; gives
+us the clue that the double bit allocation vector is in fact configured as two
+single bit allocation vectors joined end to end.
 </p>
 <p>
-face. th
+MF is referred to as the media flag. This byte is set to zero by the BDOS
+when a drive is logged in. If the disk/<?php spChar("zwsp"); ?>computer hardware supports &ldquo;door open&rdquo;
+interrupts, the BIOS can set this byte to 0FFH when a drive door is opened. If
+this is the case, before the BDOS next performs a file operation on the affected
+drive, it will check for a disk change and perform a login if necessary.
+</p>
+<p class="noindent">
+NOTE. The Media Flag is used in conjunction with the variable @MEDIA contained
+in the CP/M&nbsp;3 System Control Block and will normally only be implemented on
+systems supporting &ldquo;door open&rdquo; interrupt.
 </p>
 <p>
-Obviously, a double bit allocation vector is going to occupy twice as auch
-mory 40 single bit allocation vector so why then use two bits per entryT
+DIRBCB is the address of the directory buffer control block on non-banked
+CP/M&nbsp;3 systems. On banked systems, DIRBCB points to the head of a list of
+buffer control blocks (BCB&rsquo;s). The list head is a 16 bit address which points
+to the first BCB in the list. The first and subsequent BCB&rsquo;s contain a 16 bit
+address field which points to the next BCB in the list while the last BCB
+contains a zero value in this field. This type of list is, for obvious reasons,
+known as a linked list. A comprehensive description of the BCB format is given
+later so, all I shall say at this point is that each BCB contains the address of
+a directory buffer which will be one physical sector in length (sound familiar
+to CP/M&nbsp;2.2 users?). The maximum number of directory buffers required will be
+(DRM+1}*32/Physical sector size. For the Gemini QDDS format, this figure will
+be 8 per drive. Different drives may share directory buffers under CP/M&nbsp;3 and
+consequently one or more drive XDPH&rsquo;e may refer to the same BCB list.
 </p>
 <p>
-ber how STAT.COM calculates free disk space under CP/M&nbsp;2.2 and how Lt fs
-possible co fool 4c by forgecting to close a file, &lsquo;The only way co update the
-Sllocetion vector under CP/M&nbsp;2.2 1a to hit ^C to reset the disk system and Log
-inthe drives again. This of course takes time and CP/M&nbsp;3 boasts better disk
-Performance. Digital Revearch have gone to great Lengths to avoid resetting the
-Sine syotem with each warm boot &ndash; particularly since CP/M&nbsp;3 das also spent time
-buffering both directory and data blocks to reduce diek accesses still further
-Control c {2 scill available under CP/M&nbsp;3, when running the CCP, to allow the
-user to force a diek reset but, to improve performance, thie should be done a
-Tete ae poserble
-</p>
-<p>
-To eliminate the need for disk retets on warm boot, Digital Research came
-up with the double bic allocation vector, If, a0 before, a file is written to
-Esk, the 9008 will keep track of which daca blocks &pound;c {a allocating by using
-one of the two Bite in the allocation vector for each of those blocks. when &amp;
-file de closed, the second set of bits for the affacted blocks are updated to
-atch che first If, on the other hand, che {ile 1e not closed before &lsquo;returning
-fo Gr/H the Firat see of bite can be feret to thelr original state because the
-Second set provide record of which blocks remain free. Consequently, the disk
-Free apace shown by SHOW COM (GP/H S&rsquo;e equivalent to STAT.COM) ie always correct
-and the need for c disk access has been sileviated. Uniike CP/M.2.2, the size
-Of the stlocation vector for CP/M&nbsp;3 in calculated se (DSH/4)#2 The &ldquo;#2 gives
-Se the clue thatthe double bie allocation wector is in fact configured as two
-Hlagle bit allocation vectors Joined end to end.
-</p>
-<p>
-ie
-</p>
-<p>
-MP de referred to an the media flag. This byte La set to zero by the BDOS
-</p>
-<p>
-when a drive is logged in, If the disk/<?php spChar("zwsp"); ?>computer hardware supports &ldquo;door open&rdquo;
-</p>
-<p>
-foterrupte, the BIOS can set this byte to OFFH when a drive door is opened. If
-</p>
-<p>
-hfe e the case, before the BDOS next performs a file operation on the affected
-&lsquo;seh check for a Gisk change and perform # login 1f necessary.
-</p>
-<p>
-MOTE, The Media Flag 4s used in conjunction with the variable @HEDIA contained
-CP/M-3 System Control Block and will normally only be implemented on
-18 supporting &ldquo;door open* interrupt.
-</p>
-<p>
-DIRBCB ie the address of the directory buffer control block on non-benked
-CP/M&nbsp;3 systems. On banked wyetema, DIRBCB points to the head of a list of
-buffer control blocks (BCB&rdquo; fa-16 bit addreve which points
-to the firee BCB in the list. rhe firer and subsequent BOB&rsquo;s contain a 16 bit
-address field which points to the next BCD in the list while the lest BCB
-Contains a zero value in this field. This type of List is, for obvious reasons,
-Known as a Linked list. A comprehensive description of the cB format is given
-later Go, all 1 shall say at thie point ie that each BCB contains the address of
-a directory buffer which will be one physical sector in length (sound fanilier
-fo CP/M&nbsp;2-2 useret).. The maximum number of directory required will be
-(DaM+1}*32/Physical sector sixe, For the Gemini QO0s format, this figure will
-</p>
-<p>
-be 8 per drive. Different drives ay CP/M&nbsp;3 and
-consequently one or more drive XDPH&rsquo;e may 1 .
-DIABCB 18 che adds data buffer control block on non-banked CP/M&nbsp;3
-</p>
-<p>
-or a List hes is identical to that
-</p>
-<p>
-&lsquo;data buffer which will
-phyedcel physical record buffers for
-Blocking snd deblocking the shyaical sector inte 120 byce PIM records and
+DTABCB is the address of the data buffer control block on non-banked CP/M&nbsp;3
+systems or a list head on banked systems. THE BCB format is identical to that
+for directory BCB&rsquo;s except that each BCB points to a data buffer which will
+be one physical sector in length. CP/M&nbsp;3 usys the physical record buffers for
+blocking and deblocking the physical sector into 128 byte CP/M records and
 </p>
 <?php columnEnd(1); ?>

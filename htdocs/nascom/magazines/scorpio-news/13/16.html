@@ -1,84 +1,77 @@
 <?php columnStart(1); ?>
 <p>
-sctor size ta 128 byt
+consequently doesn&rsquo;t require buffers where the physical sector size is 128 bytes
+(Blocking and Deblocking are discussed later). When used, CP/M&nbsp;3 discards these
+buffers and overwrites the date in them on a least recently used (LRU) basis so
+that when access is required to a recently used sector, CP/M&nbsp;3 reads the data
+from memory rather than from the disk giving an appropriate increase in
+performance. CP/M&nbsp;3 doesn&rsquo;t use the buffers at all if it knows that one or more
+complete physical sectors are to be read and hence deblocking of the data will
+not be required. In this case, the BIOS is instructed to read the disk data
+directly to the TPA at the DMA address.
 </p>
-<p>
-gnuaguently,doeyn&rsquo;t require buftere where the payescal
-ing and x 2a Mikes used: crit 2 divearde &copy;
-</p>
-<p>
-(Blocking and Deblocking exe diec
-maffere and overwrites the data in them on a least recently used (LRU) basi
-that when access 19 required to a recently used sector, CP/M&nbsp;3 reads the
-from me from the disk Giving en appropriace. incr
-pecformanc tues the buffers at ail if it knove that one or more
-Complete physical sectors are to de read and hence deblocking of the data will
-not be required. &lsquo;In this case, the BIOS 1e inotructed to Tead the disk date
-directly to the TPA at the DMA sddrees.
-</p>
-<p>
+<h3>
 CP/M&nbsp;3 directory hashing
-</p>
+</h3>
 <p>
 The HASH parameter contains the address of a table used for directory
 hashing. Hashing is a term used to refer to the process of converting a string
-of characters into a single number that Ls unique to that string. There are
-Vast umber of methods of doing this, ail varying in complexity. The probl
-encountered with hashing are guaranteeing that the mumber produced is in fact
-unique to the pareicular string involved (and no other) while Keeping the number
+of characters into s single number that is unique to that string. There are a
+vast number of methods of doing this, ail varying in complexity. The problems
+encountered with hashing are guaranteeing that the number produced is in fact
+unique to the particular string involved (and no other) while keeping the number
+small enough to be manageable.
 </p>
 <p>
-T1&rsquo; enough to be bie
+The problem of uniqueness can be explained with the use of an example. A
+simple way of converting a character string into a number is to add the ASCII
+values of the characters together. Taking combinations of the characters A-D
+for simplicity, there are 16 permutations of those characters that will give the
+same result. If we then permit characters to repeat, the number of combinations
+giving identical results increases still further. A few examples are given
+below, values are in decimal:
+</p>
+<p class="indent">
+&ldquo;ABCD&rdquo; = 65 + 66 + 67 + 68 = 266<br>
+&ldquo;BDAC&rdquo; = 66 + 68 + 65 + 67 = 266<br>
+&ldquo;AADD&rdquo; = 65 + 65 + 68 + 68 = 266<br>
+&ldquo;ACCC&rdquo; = 65 + 67 + 67 + 67 = 266
 </p>
 <p>
-&lsquo;The problem of uniqueness can be explained with the use of an example. A
-simple vay of converting a character string into a number fe to add the ASCII
-&lsquo;combinations of tha characters A.D
+One solution to this problem is to weight the character values differently
+depending upon which position they occupy in the string. If we were to assign
+values to the characters such that A=1, B=2 etc., and multiply the character
+values by multiples of 27 depending upon their position, the same strings as we
+used above would give different results as shown below:
 </p>
 <p>
-selon of those characters that will give the
-fers to Fepeat, the aumber of combinations
-till further. A fev examples are given
+&ldquo;ABCD&rdquo; = 1 + (2 * 27) + (3 * 54) + (4 * 81) = 541
+&ldquo;BDAC&rdquo; = 2 + (4 * 27) + (1 * 54) + (3 * 81) = 407
+&ldquo;AADD&rdquo; = 1 + (1 * 27) + (4 * 54) + (4 * 81) = 568
+&ldquo;ACCC&rdquo; = 1 + (3 * 27) + (3 * 54) + (3 * 81) = 487
 </p>
 <p>
-One solution to thie problem is to weight the character values differently
-depending upon which position they occupy in the string. If we were to sssign
-values to the characters such that Avl, Bez ete., and multiply the character
-eigen! by sulttplea&rsquo; of 27 depending upon eneir positon, &ldquo;the sane strings
+This example is fine as far as it goes but we want to hash a directory
+entry of 11 characters. Using the method described above, the lowest number
+produced will be 1486 for as file &ldquo;AAAAAAA.AAA&rdquo; and the highest number will be
+28636 for file &ldquo;ZZZZZZZZ.ZZZ&rdquo;. However, filenames can also contain figures,
+spaces and some other characters in addition to upper case letters. CP/M&nbsp;3
+needs to include the user area byte and both extent bytes (EXT and S2) so that
+it can differentiate between files with the same name in different user areas
+and also between different extents of the same file. All of this serves to
+increase the range of numbers generated as a result of hashing.
 </p>
 <p>
-&lsquo;above would give die &lsquo;thown below:
-</p>
-<p>
-sea
-tor
-368
-aay
-</p>
-<p>
-Thie example is fine it goer but we want to hash a directory
-entry of 11 characters | Using the method described above, the Jowest number
-reduced will be 1496 for a file &ldquo;AAAAMMAA.AAAY and the highest number will be
-686 for file *227z2222.202&rdquo; However, filenames can also contain figures,
-&lsquo;Spaces and some other charactere in addition to upper case letters. CP/M E&para;
-Reeds to include the user area byte and both extent bytes (EXT and 82) #0 that
-ie can digferentiate between files with the same oame in different user areas
-and also between different extents of the same file, ALL of this serves to
-Increase che range of numbers ult of hashing.
-</p>
-<p>
-In CP/M&nbsp;3, Digital Research hash the file na
-into a four byte nunber
-he weer ar
-</p>
-<p>
-directory entry nunt
-&copy; and directory entry fumber &lsquo;x&rsquo; is numbe
-Bel. &lsquo;This entry number fe truncated to fora a9 bit value and ie stored so that
-the mab ds held as che 6th bit (bit s) of the first byte of che hash table entey
-and the lower 8 bite are stored in the last byte. The method of hashing used on
-</p>
-<p>
-such that the first entry number
+In CP/M&nbsp;3, Digital Research hash the file name, user area and extent bytes
+into a four byte number which constitutes the hash table entry for the directory
+entry. The user area number is stored as the 4 least significant bits (lsbs) of
+the first byte. The file name is reduced to an 18 bit number of which the lower
+16 bits are stored in the two middle bytes of the hash table entry and the 2
+most significant bits (msbs) are stored in the 2 msbs of the first byte. The
+extent and S2 bytes are combined to form a directory entry number for the file
+such that the first entry number is 0 and directory entry number &lsquo;n&rsquo; is numbered
+a-1. This entry number is truncated to form a 9 bit value and is stored so that
+the msb is held as the 6th bit (bit 5) of the first byte of the hash table entry
+and the lower 8 bits are stored in the last byte. The method of hashing used on
 </p>
 <?php columnEnd(1); ?>
