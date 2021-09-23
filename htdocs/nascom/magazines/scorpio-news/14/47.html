@@ -1,101 +1,82 @@
-<?php columnStart(23); ?>
-<h1 id="article1">
-730K Disks In an AT
-</h1>
-<?php columnChange(3); ?>
+<?php columnStart(2); ?>
+<h2 id="article1">
+730K Disks in an AT
+</h2>
+<?php columnChange(2); ?>
 <h3 class="author">
 by D.R. Hunt &amp; J. Parrott</h3>
-<?php columnEnd(3); ?>
+<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
+<h3>
+Dave Hunt Begins
+</h3>
 <p>
-:
+My bit in the last issue about making AT High Density drives format 730K normal double density
+disks has caused quit a lot of fun and burrowing into the undocumented realms of IBMs, clones, MS-DOS
+PC-DOS. Incidentally, the last article referred to 720K disks, no, the disks haven&rsquo;t grown
+an extra 10K in the space of three months, just that I got it wrong. I bad done those experiments
+some time before I wrote it up and at the time I simply said two 360 is 720 and there you are!
+The actual size is 731K, so from now on, they&rsquo;ll be referred to as 730K disks in sympathy with the
+MS-DOS habit of rounding down to the nearest 10K.
 </p>
 <p>
-for vanous dik parameters and the syatar fv sinilar to that given ue
-Examples of the sr of DRIVERSYS are given in Joke&rsquo;s leer below &ldquo;Secondly, what flows ony
-{ppl to AT type compulers ited with IBM&nbsp;AT type dk controle and ose or more High Dessy
-Fess Th 70d ik wil work wits moat Ber 1BYte and clones which are NOT AT pes.
+Firstly, the DRIVPARM statement only applies to MS-DOS 3.2 and later, Microsoft have provided a
+for various disk parameters and the syntax is similar to that given for DRIVPARM in the last issue.
+Examples of the use of DRIVER.SYS are given in John&rsquo;s letter below. Secondly, what follows only
+applies to AT type computers fitted with IBM&nbsp;AT type disk controllers and one or more High Density
+drives. The 730K disk trick will work with most other IBMs and clones which are NOT AT types.
 </p>
 <p>
-ve
+Now we (the collective is John and myself, with phone calls to Paul and Brian) think we&rsquo;ve got
+to the bottom of it and we&rsquo;re fairly sure who&rsquo;s to blame. It all comes down to the IBM spec. for
+the controller card for the IBM&nbsp;AT, and clone manufacturers being in the business of cloning Big
+Blue, clone away, warts and all. Put simply, the IBM controller card is physically incapable of
+formatting a disk with 80 tracks and in normal density.
 </p>
 <p>
-Now we (he colecive is Jobe aod mel, with phooe cals o asl and Brita) think we
-to te bettas Sf iad were fy sire"wast to bane&rsquo; ital camer down to he IBM
-wee taauele cad al&rdquo; Liat A and &lsquo;Ce nanacirrs ing the bane of
-Ble loe svoj, wars apd al. Bat simpy, he BM coulet card. poyscaly
-fortng +k wh rack ain noel eat
+For starters, I suppose I&rsquo;d better explain a bit about High Density drives and disks. The
+drive itself looks and feels, and to all intents and purposes IS, a fairly normal 5&frac14;&Prime; drive. The
+only real difference is pin 2 on the drive connector which for a normal drive is marked &lsquo;Reserved&rsquo;.
+Actually, on a normal drive it isn&rsquo;t usually connected to anything, it just sits there. The HD
+drive uses this pin to switch it into HD mods. Put a logical 1 on the pin and two things happen;
+firstly, the drive increases rotational speed from 300 r.p.m. to 360 r.p.m., secondly, the
+electronics switch into a mode suitable for use at double the normal data rate, 500K bits instead
+of the usual 250K bit/s. In other words, it now behaves like an 8&Prime; drive, only smaller.
 </p>
 <p>
-A
+The problem is the data packing density on the disk, related to the disk speed. Obviously, the
+angular velocity of an 8&Prime; disk is a lot higher (the tracks are near the outer edge of the disk as is
+the case for 5&frac14;&Prime; disks) than the smaller disk. When it comes to 5&frac14;&Prime; disks, the normal disk can&rsquo;t
+cope, the packing density is too high to make it reliable. Two approaches are made to overcome
+this, the first is to increase the angular velocity by jacking up the speed from 300 r.p.m. to 360
+r.p.m., the second is to use disks coated with a magnetic pudding of higher coercivity, we call
+these HD disks. Higher coercivity magnetic coatings means lower head currents which don&rsquo;t saturate
+the disks to the that is on normal disks, so it means that HD disks format unreliable (if
+at all) when used in place of &lsquo;normal&rsquo; disks.
 </p>
 <p>
-Ha ih
+So back to the IBM controller card. Why IBM? Because that&rsquo;s the one I&rsquo;ve got the circuit
+diagrams for. Now, apart from s real genuine Big Blue AT at work, the rest of us use an assortment
+of clones with an amazing variety of controller cards, and despite the different chippery on the
+controller cards, they share two things in common. They were intended for AT clone computers and
+they are all capable of running two floppy disks (not more) and two hard disks.
 </p>
 <p>
-For starters, 1 Td better explain 2 bit about High Density drives and The
-drive teell looks and feels, and to all snents and 1S a fury&rdquo; aormal $0 The
-&lsquo;aly real diference xs pm i on the drive connecter which for a gormal dene u marked &ldquo;Reserved&rdquo;
+Now there are three possible permutations covered by the combinations of drives we could fix.
 </p>
-<p>
-&lsquo;Actually, on s normal drive it iss&rsquo;t usually coaaected to anything, it just sits there The HD
-rive usee this. pin 10. switch i into HD mode. Put a lopial 1 oo the pin and two things appen;
-firstly, the delve increases rotational &lsquo;speed from 300 f.p.m- (0.360 rpm. secondly, the
+<p class="drive-capabilities">
+<span>80 track HD drive should be able to do:</span><br>
+<span>a) 1.2M HD disks (80 tracks 15 sectors)</span><br>
+<span>b) 730K Normal density (80 tracks 9 sectors)</span><br>
+<span>c) 360K Normal density (40 tracks 9 sectors) double step</span><br>
+<span>80 track &rsquo;Normal&rsquo; drive should be able to do:</span><br>
+<span>b) 730K Normal density (80 tracks 9 sectors)</span><br>
+<span>c) 360K Normal density (40 tracks 9 sectors) double step</span><br>
+<span>40 track &rsquo;Normal&rsquo; drive should be able to do:</span><br>
+<span>c) 360K Normal density (40 tracks 9 sectors) double step</span>
 </p>
-<p>
-&lsquo;witch into a mode sultable for we at double the oormal data rate, S0OK bids tastead
-&lsquo;ofthe sual 290K bids.&rdquo; tn other words, it now behaves like an &amp;* deve, only smaller
-</p>
-<p>
-the case for 3Y&rdquo; disks) than the smaller disk When it or
-</p>
-<p>
-{hin the Gratis 10 increase the angular
-Fpim, the second to use disks coated wih a maj
-</p>
-<p>
-these HD disks. Hy magnetic coatings means lower bead
-ref tia
-</p>
-<p>
-the disks to the le oo normal dis, sos means that HD&rdquo; disks tiably
-all) when sed in place of oormaf disks
-&lsquo;So back to the IBM controller card. IBM? Because tha&rsquo;s the one Tre got the crctt
-</p>
-<p>
-iagrams for Now, apart from a real genuine Big Blue AT at work, the real of us wean ascoriment
-fof clones with an amazing variety of controller cards, and despite the different chippery on the
-Controller cards, they share two things an common. &lsquo;were intended for AT clone comptters and
-{hey ar al capable of running wo Doppy disks (aot more) and two hard disks.
-</p>
-<p>
-[Now there ae three posible permutations covered by the combinations of drves we could ft.
-</p>
-<p>
-{0 rack HD dive sould be ble do
-</p>
-<p>
-3 TTS a a an)
-</p>
-<p>
-S} Fat Normal dey (60 acs 9 aetn)
-</p>
-<p>
-&copy;) 30K Normal density 0 ack 9 sector) doublet
-co wack Nora dre shouldbe ale odo MP
-</p>
-<p>
-i) TSH Normal deny (treks 9 sector)
-</p>
-<p>
-8} 3aIK Normal Senay (0 tack 9 sector) double step
-so rck Nowa de shoal bale oor
-</p>
-<p>
-) SK Nora ey (cs 9 tos)
-</p>
-<p>
-rere, oer perms. at wll all hold be capable of the oer 8 sector format in bth double
-Gisele alas ar sat ese se du cont)
+<p class="noindent">
+(There are other perms. as well, all should be capable of the older 8 sector format in both double
+and single sided, but as far as I&rsquo;m concerned, these don&rsquo;t count.)
 </p>
 <?php columnEnd(1); ?>

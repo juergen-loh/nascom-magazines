@@ -1,74 +1,65 @@
 <?php columnStart(1); ?>
 <p>
-1 had never touched MS-DOS uni I picked up my AT, so when { got my machine bome, 1 set about
-the &lsquo;MS-DOS 32 musual and discovered that i wan, in ay opinion, jst a nip! of CPIM. 22
-But with the addition of tree directories, directory hathing. sad&rsquo; more &lsquo;support for program
-Fendeney I i&rsquo;s presentation and. thendiess are poor und sapdash (eg you ype DIR te haves
-ise diapres oh top of the, screen, oF DIR. to tn wid ithout tual space
-cecupied ele). i more cemincent of CPIM&rdquo; 11 i ite (rendisess And. tks. veruoa 3,
-God knows what the early versions wore ike! CP/M&nbsp;22 patched wits CCPZ leaves sanding and 2CPR
-Seven better
+I had never touched MS-DOS until I picked up my AT, so when I got my machine home, I set about
+reading the MS-DOS 3.2 manual and discovered that it was, in my opinion, just a rip-aff of CP/M 2.2
+but with the addition of tree directories, directory hashing and more support for program co-residency.
+It&rsquo;s presentation and friendliness are poor and slapdash (e.g. you type DIR to have a
+list disappear off the top of the screen, or DIR/W to to get an unsorted directory without total space
+occupied etc.). It is more reminiscent of CP/M&nbsp;1.1 in it&rsquo;s friendliness. And this is version 3.2,
+God knows what the early versions wore like! CP/M&nbsp;22 patched with CCPZ leaves it standing and ZCPR
+is even better.
 </p>
 <p>
-My Get ak then as to ge the OK die configured for relbie,operaton and then, the
-720k format oo the HD drive would be an easy nex task. I constructed a CONFIGSYS file with EDLIN
-(uch though. basic, is quite adequate and stable for the creation of batch fies). 1 &ldquo;worked out
-that for a system with 2 floppies and 1 wisnie, the first memory device ia the list would be
-sllocated 0 logical device D, the next to ete. wed the atement
+My first task then was to get the 360K disk configured for reliable operation and then the
+730k format on the HD drive would be an easy next task. I constructed a CONFIG.SYS file with EDLIN
+(which though basic, is quite adequate and suitable for the creation of batch files). I worked out
+that for a system with 2 floppies and 1 winnie, the first memory device in the list would be
+allocated to logical device D:, the next to E:, etc. I used the statement:
+</p>
+<pre class="center">
+DEVICE=DRIVER.SYS /D:1 /T:40 /F:0
+</pre>
+<p class="continued">
+rebooted, did FORMAT D: and the disk formatted perfectly. I must admit that I did mess around with
+the /S, /H and /C parameters before I arrived at the above, and I have to say that the results were
+peculiar. The only logic I could make of it was that MS-DOS didn't like being told something it
+didn&rsquo; need to be told, even though it was true, or possibly there was an undocumented limit on the
+number of parameters that could be passed. Anyway why worry I thought, after ass it works. So,
+full of confidence that I had mastered MS-DOS and shown the &ldquo;experts&rdquo; to be wrong, I set about an
+entry in CONFIG.SYS for the the HD drive and settled on:
+</p>
+<pre class="center">
+DEVICE=DRIVER.SYS /D:0 /F:2
+</pre>
+<p>
+I had by this time come to some conclusions about the way MS-DOS handles disk formats: It does
+an &ldquo;intelligent&rdquo; analysis of the drives present at system initialisation, it sometimes does an
+&ldquo;intelligent&rdquo; analysis of the disk, it gets both analyses wrong from time to time and the two
+imperfections taken together produce low reliability and high inscrutability.
 </p>
 <p>
-rebooted, did FORMAT D: and the disk formated perfectly 1 mast admit that I id mess around with
-ther, and (parameters bere I ard a he sive, aed I bie fo ty that the. uate sere
-Peculir &ldquo;The only Topi could make &lsquo;of w was thal MS-DOS dda Ute being told something.
-Ei oced to be toldtcven hough i was te,&rsquo;cr pou there oan vedocuseaed fn co the
-umber of parameters that could be paued.&rdquo; Anyway. why worry T though -aftr all i works So,
-fuel cones tnt I ind tauered&rdquo; MS-DOS ald thows the aperafo be wrong. 1 sc abou ab
-&lsquo;nry in CONFIG.SYS for the the HD drive and sted on.
+I therefore decided that I would by-pass any &ldquo;auto density searching&rdquo; by having distinct
+entries in my CONFIG.SYS file for each density I would be using and not depend on the MS-DOS logical
+devices A: and B: My CONFIG SYS file now looked something like this:&ndash;
+</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-49-1.png"); ?>
+<p>
+I was getting pretty confident, including 3&frac12;&Prime; and 8&Prime; drives still to be connected, a tape drive
+which was a figment of my imagination and a ramdisk using the space between 640K and 1024K which MS-DOS
+seems unable to handle as ordinary memory. I was now able to format 360K, 730K and 1.2M discs
+without problems, or so I thought.
 </p>
 <p>
-had by ths
-&ldquo;intelligent&rdquo; analysis of tbe a
-uelligeat&reg; analysis of the disk, wt gets both
-imperfections taken together produce low reliability and hgh inscrata
+It was about this time that I read an article in Scorpio News by one D.R.H. Could it be that I
+knew something he did not? The answer is no or not much, for after our sequeane of &rsquo;phone
+conversations it became evident that the 730K disks, although verifying as 731016 bytes were in fact
+only 360K with only even numbered tracks recorded plus track 79 recorded 40 times.
 </p>
 <p>
-I therefore decided that 1 would by-pass any &lsquo;auto density 4 distinct
-cntnes in my CONFIGSYS fle for each deasty 1 would be using and sot depend on the MS-DOS logical
-devices A. and B. My CONFIG SYS file now looked something like tisa
-</p>
-<p>
-10 128)
-(oa)
-(3)
-(eo)
-eter |
-bent ar (ea ut a ent
-Sintceourvn afd ht (ate mt a
-</p>
-<p>
-(ite)
-fren ea
-(rice wry sat)
-</p>
-<p>
-1 was getung prety confident, cluding 34&rsquo; and 8&rsquo; des sill to be connected, a tape deve
-which was-a figment Of my umagination and a randisk using the space between 640K. and 1024K which MS:
-BOS se ute tae odinry menor. 1 wa how alo Tormat 30K, TOK and 12M ick
-without problems, o so I hou
-</p>
-<p>
-1k was bout this me that I read an arucle in Scorpio News by one DRH Could it be that 1
-new &lsquo;something he didnot?&rdquo; The answer is no&rdquo; of ol much, (or afer our sequence of &lsquo;phone
-fsomversatons it became evideat that the 730K. disks, although veriffing. as TSIOI6 bytes were in Tack,
-aly 360K with ony even numbered tracks recorded plus tack 79 recorded #0 times.
-</p>
-<p>
-Aso at this ume I was impag to connect my BYSH&rdquo; dive subsystem which I had been sing with
-txy Gemini I didet work. Tue scope showed that 2 dover cee line were amg driven for
-ive 10.0 &amp; 1 for DO and 2-&amp; 3 lor Del, weaning tha it was impose to add thi
-</p>
-<p>
-ie&rdquo; The oly parent and ety wpaling reat fr wan the asipoon wn
-Sequence of the DO"DI D3 and Motor ies for D:O and leaving them alone for D:1 meaning that all
+Also at this time I was trying to connect my 8&Prime/3&frac12;&Prime; drive subsystem which I had been using with
+my Gemini. It didn&rsquo; work. The scope showed that 2 device select lines were being driven for each
+drive i.e. 0 &amp; 1 for D:0 and 2 &amp; 3 for D:1, meaning that it was impossible to add a third or fourth
+drive. The only apparent and pretty appalling reason for this was the transposition of the wiring
+sequence of the D0 D1 D3 and motor lines for D:0 and leaving them alone for D:1 meaning that all
 </p>
 <?php columnEnd(1); ?>

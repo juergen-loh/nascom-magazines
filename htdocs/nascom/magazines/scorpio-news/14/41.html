@@ -1,71 +1,86 @@
 <?php columnStart(1); ?>
-<p>
-or you can doit simply and quicker:
+<pre class="center">
+var1 = ""
+var2 = ""
+.
+.
+var&lt;n&gt; = ""
+</pre>
+<p class="continued">
+or you can do it simply and quicker:
+</p>
+<pre class="center">
+store "" var1 = var2,....,var&lt;n&gt;
+</pre>
+<p class="continued">
+All round a big improvement for the better, and it makes programs shorter.
 </p>
 <p>
-&lsquo;Allround a big improvement for the better, and it makes programs shorter
+What else has changed? Well an oddity is the ERASE command, that word was perhaps not the best
+choice for clearing the screen, but more convenient than the current word, CLEAR. Let me explain
+the word CLEAR in DBIII and DBIII+ has several uses, CLEAR clear the screen, CLEAR MEMORY clears
+all the memory variables (but not the screen), CLEAR ALL clears everything in sight including
+losing the databases (but doesn&rsquo; clear the screen) and CLEAR GETS chucks all pending inputs away
+(but still doesn&rsquo; clear the screen. So why CLEAR to clear the screen? Incidentally, the word
+ERASE which no longer appears in the DB list of commands, used in the following fashion:
+</p>
+<pre class="center">
+ERASE filename.typ
+</pre>
+<p class="continued">
+will, none the less, erase a file without checking if you meant it!
 </p>
 <p>
-What else has changed? Well an oddiy isthe ERASE command, that word was perhaps not the best
-choice for clearing the screen, but more coaveniont thas the current word, CLEAR Let me
+Another little change is the use of the underscore character instead of the colon as a
+separator in variable names so that a variable
+</p>
+<pre class="center">
+mstr:list
+</pre>
+<p class="continued">
+would be written as
+</p>
+<pre class="center">
+mstr_list
+</pre>
+<p class="continued">
+Not that this made much difference, in fact, it appears more natural for as far as I know, DBII was
+the only programming language which uses a colon as a separator, whereas many use an underscore.
 </p>
 <p>
-the word CLEAR ia DBI and DBI + has several ues, CLEAR clear the sereea, CLEAR MEMORY clears
-fall the memory variables (but not the sereea), CLEAR ALL clears everything in sight including
-losing the databases (Dut docsat clear the screet) and CLEAR GETS. chucks al pending inputs away
-(at doen lea &ldquo;the &lsquo;ree So why CLEAR 10 lear the cee,&rdquo; Tnudentay, the word
-ERASE which no longer appears in the DB tof commands, wed in the following fashion.
+Perhaps the biggest pain (for me at least) was the much improved method specifying logical data
+types. In DBII, four different characters can be used to specify true or false; they are &lsquo;t&rsquo; and
+&lsquo;y&rsquo; for true and &lsquo;f&rsquo; and &lsquo;n&rsquo; for false. So the assignment:
+</p>
+<pre class="center">
+STORE y TO var
+</pre>
+<p class="continued">
+would be interpreted by DBII as either a logical assignment or the assignment of a variable, y,
+depending upon whether y existed before the assignment, and what type of assignment it was
+previously. If in doubt, DBII would assume it to be logical, and would interpret it so if it
+hit a conditional statement which used it, and the syntax of the conditional was such that it appear
+as a logical assignment in the first place.
 </p>
 <p>
-wil, none the les, eras a file without checking if you meant it
+Very messy, but once you realised what was happening you could live with it. DBIII draws a
+definite distinction between other data-types and the logical data-type but placing a dot before and
+after the assignment variable to denote its use as a logical. Sound thinking that, it&rsquo;s exactly the
+same construct they use to indicate logical operators in a command statement. Anyway, the logical
+assignment above becomes:
 </p>
+<pre class="center">
+var = .y.
+</pre>
 <p>
-Another litle chasge 1 the use of the underscore chat
-separator i variable names so that 3
-</p>
-<p>
-er instead of the colon as
-</p>
-<p>
-&lsquo;would be writen as
-</p>
-<p>
-NNot that this made much diference, infact, it appears more natural for as far a8 1 know, DBI was
-Sen reggae wich ie io apr wer ny es eden
-</p>
-<p>
-Perhap the (or me at leas) was the uch improved method specthing loeal dats
-pee &ldquo;in DBL Gr rest characte can be ued To speely ave orale Thy are and
-&lsquo;For wre and or&lsquo; for au. So the sult
-</p>
-<p>
-would be interpreted by DBU as cither 2 lopeal cot of he aime ofa varaa
-depending pee wheter 4 xed belore thet &lsquo;d what type of assignment it wis
-</p>
-<p>
-va doubt, DBL would assume X10 be lopeal, and would interpret itso. i
-&lsquo;conditional statemcat which used iy and the syotix"cf the conditional vas sch&rsquo; that i appear
-logical assignment inthe Sa! place.
-</p>
-<p>
-Very messy, but once you realised what was happening you could lve with i DBI draws a
-efintc. distinction between other datatypes and the aetype but placing adot before and
-er the &ldquo;iment variable tg dense se a Togeat sound uoking That, ts acy te
-</p>
-<p>
-construct they use 10 indicate logical operators ina command alement, Anyway, the logcal
-</p>
-<p>
-ttgameat above becomes:
-</p>
-<p>
-J ted yuh Dan mtd of dag gil I cane wo comet tad of ull om, DBI we
-Dell using che supped uly DCONVERT-EXE, which, amongst &lsquo;ter tgs whi &lsquo;ours
-Aievcomerg SPPERASED to, CLEARS, al colons in surable same qo anderreoree aed
-eeu gan fo lepel asemmen gyn of cone te Te oien
-Star tbe toured &lsquo;soltare id aot of postionng ef etlowce sot ua ee &lsquo;Blotter
-{eetully mowng piece of microfilm (@ predetermined&rdquo; postions looked up i the database), and I
-fia&rdquo; axed"the viables %e andy to sndeale pois wihin the plot Al my &ldquo;y poston! turd
-into lopicel assignments, and t spent Sours looking through the software for machine introduced
+I lived with DBII method of doing things until I came to convert a load stuff from DBII to
+DBIII using the supplied utility DCONVERT.EXE, which, amongst other things, whips through source
+file converting all ERASEs to CLEARs, all colons in variable names to underscores and all
+occurrences of &lsquo;y&rsquo;, &lsquo;n&rsquo;, &lsquo;t&rsquo; and &lsquo;f&rsquo; to logical assignments regardless of context, etc. The problem
+was, the source software did a lot of positioning of a device not unlike a graphics plotter
+(actually moving a piece of microfilm to predetermined positions locked up in the database), and I
+had used the variables &lsquo;x&rsquo; and &lsquo;y&rsquo; to indicate the plot. All my &lsquo;y&rsquo; positions turned
+into logical assignments, and I spent hours looking through the software for machine introduced
+errors.
 </p>
 <?php columnEnd(1); ?>

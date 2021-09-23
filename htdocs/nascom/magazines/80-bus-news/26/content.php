@@ -90,7 +90,7 @@
 	,	44
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	'Mixing 5&#x2e;25" and 8" drives on GM829'
+	,	'Mixing 5&#x2e;25&Prime; and 8&Prime; drives on GM829'
 	,	"David Parkinson"
 	,	"Hardware"
 	,	45

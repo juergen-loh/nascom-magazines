@@ -1,7 +1,7 @@
 <?php columnStart(23); ?>
-<h1 id="article1">
-Disk Formats and CP/M Disk Routines &ndash; Part4
-</h1>
+<h2 id="article1">
+Disk Formats and CP/M Disk Routines &ndash; Part 4
+</h2>
 <?php columnChange(3); ?>
 <h3 class="author">
 by M.W.T. Waters
@@ -9,74 +9,80 @@ by M.W.T. Waters
 <?php columnEnd(3); ?>
 <?php columnStart(1); ?>
 <p>
-&lsquo;This ig the final part um this senes. But first of all bere is &copy; correction to the 1st part,
-part 3, published in Volume 1, lsue 3, page 1
+This is the final part in this series. But first of all here is a correction to the last part,
+part 3, published in Volume 1, Issue 3, page 11:
 </p>
 <p>
-In the article, the autbor bad a brainstorm and said that the directory buffer (DIRBUF) under
-CPM&rdquo; 22&rsquo; 1 one&rsquo; physical sector long.&rdquo; Ths, of course, it quite incorrect The length of ths
-buffer 5 one logical Tecord (128 bytes) long.&rdquo; &lsquo;The description of the dvectory buffers. controled
-by the &lsquo;Buffer Control &lsquo;Blocks under CPIM. Plus 1S corect, however CP/M Plus, as stated inthe
-ticle, controls bulfers, each of whichis one physical sector long
+In the article, the author had a brainstorm and said that the directory buffer (DIRBUF) under
+CP/M&nbsp;2.2 is one physical sector long. This, of course, it quite incorrect. The length of this
+buffer is one logical record (128 bytes) long. The description of the directory buffers controlled
+by the Buffer Control Blocks under CP/M Plus IS correct, however. CP/M Plus, as stated in the
+article, controls buffers, each of which is one physical sector long.
 </p>
-<h2>
+<h3>
 CP/M&nbsp;3 Buffer Control Block format
-</h2>
+</h3>
 <p>
-&lsquo;The format of a Buffer Control Block x gen below The format 48 ideatcal for both directory
-sand date BB&rsquo;s
+The format of a Buffer Control Block is given below. The format is identical for both directory
+and data BCB&rsquo;s
+</p>
+<table class="bcb-format">
+<tr><td>DRV</td><td>;</td><td>8 bits</td><td>&ndash;</td><td>Source drive of buffered data</td></tr>
+<tr><td>REC</td><td>;</td><td>24&nbsp;bits</td><td>&ndash;</td><td>Record Position on disk</td></tr>
+<tr><td>WFLG</td><td>;</td><td>8 bits</td><td>&ndash;</td><td>Flag indicating unwritten data</td></tr>
+<tr><td>00</td><td>;</td><td>8 bits</td><td>&ndash;</td><td>BDOS scratchpad</td></tr>
+<tr><td>TRACK</td><td>;</td><td>16 bits</td><td>&ndash;</td><td>Track number for buffered data</td></tr>
+<tr><td>SECTOR</td><td>;</td><td>16 bits</td><td>&ndash;</td><td>Sector number for buffered data</td></tr>
+<tr><td>BUFFAD</td><td>;</td><td>16 bits</td><td>&ndash;</td><td>Address of buffer for this BCB</td></tr>
+<tr><td>BANK</td><td>;</td><td>8 bits</td><td>&ndash;</td><td>Bank no of buffer for this BCB</td></tr>
+<tr><td>LINK</td><td>;</td><td>16 bits</td><td>&ndash;</td><td>Address of next BCB in list</td></tr>
+</table>
+<p>
+DRV indicates the source drive from which the contents of the buffer located at BUFFAD was
+obtained or, alternatively, the destination drive for the data in the buffer.
 </p>
 <p>
-te
+REC contains the record position of the current buffer contents. This figure is an absolute
+sector number relative to the first sector in the data tracks of the disk. For example
+the first sector in block 0 (i.e. the first directory sector) is numbered zero, the next is number
+one and so on for all data blocks on the disk.
 </p>
 <p>
-DRY indicate the source drive from which the contents of the bufler located at BUFFAD was
-&lsquo;obtained of, alteroatively, the desunanen drive fr the data i the bulfler
+WFLG is set by the BDOS when the buffer associated with the BCB contained new data that has yet
+to be written to the disk. When the data has been written, this flag is then set to zero by the
+BDOS.
 </p>
 <p>
-REC contains the record postion of the current buffer cootents. This figure is an absolute
+TRACK is the physical track location of the contents of the buffer.
 </p>
 <p>
-&lsquo;eclor mumber relave to the fest sccior ia the &lsquo;data tacks of the disk &ndash; For example
+SECTOR contains the physical sector location of the contents of the buffer.
 </p>
 <p>
-fhe frat sector io block 0. (ie. the fs chrectory sector) is numbered zero, the next is number
-fe aid son forall data blocks on the disk.
+BUFFAD contains a 16 bit address showing the location of the physical sector buffer associated
+with this BCB.
 </p>
 <p>
-WFLG is set by the BDOS whe the buffer asocuted with the BCB cootained new data that bas yet
-tobe wniten to the dik When the data has been writen, the fag i thea set t0 zero by the
-BOS,
+BANK contains the memory bank umber holding the buffer. Naturally, this field is not present
+in non-banked systems.
 </p>
 <p>
-TRACK i the physical track locaton ofthe contents ofthe buffer
-SECTOR contains the physical sector locaton ofthe costents ofthe bufer
-</p>
-<p>
-BUFFAD contuins a 16 bt address showng the location of the physical sector buffer assocated
-sth this BCB,
-</p>
-<p>
-BANK contuns the memory bank umber holding the buffer Naturally, thi Geld not present
-vw non-banked systems.
-</p>
-<p>
-INK contains the address of the next BCB in the linked lit. if thus the last BCB im the
-lus, this field will contara Zero. This field isn&rsquo;t preseat on son-banked systems as only one
-bafer sn assocuted BCB east
+LINK contains the address of the next BCB in the linked list. If this the last BCB in the
+list, this field will contain zero. This field isn&rsquo;t present on non-banked systems as only one
+buffer and associated BCB existm
 </p>
 <p>
 Having covered the DPH, XDPH and associated data structures, we can now examine the Disk
 Parameter Block detail.
 </p>
-<h2>
+<h3>
 Disk Parameter Blocks
-</h2>
-<h2>
+</h3>
+<h3>
 The CP/M&nbsp;2.2 DPB
-</h2>
+</h3>
 <p>
-&lsquo;The disk parameter blocks in the BIOS tell the BDOS all needs to know about the physical
-characteristics ofthe disk, The CP/M&nbsp;22 DPB fora Gemini QDS format dik looks lke
+The disk parameter blocks in the BIOS tell the BDOS all it needs to know about the physical
+characteristics of the disk. The CP/M&nbsp;2.2 DPB for a Gemini QDDS format disk looks like this:
 </p>
 <?php columnEnd(1); ?>

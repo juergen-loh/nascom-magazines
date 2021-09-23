@@ -1,68 +1,79 @@
 <?php columnStart(1); ?>
 <p>
-DRM conians the number of disectory entnes oo the disk less one. Again, the directory eatnes
-are numbered from 0 to DRM (0-127 or OTFH forthe ODDS format)
+DRM contains the number of directory entries of the disk less one. Again, the directory entries
+are numbered from 0 to DRM (0-127 or 0-7FH for the QDDS format).
 </p>
 <p>
-ALO and ALI cootum the frst two bytes of the allocation vector for the drive for whuch the DPB
-applies &ldquo;These wo&rsquo; byte are coped ito the allocation Wectos whss the drive fogged ix
-Remembering that the rectory ocruples the first block or two on the dick we need (0 reser. the
-reqused aumber of locks by filing&rsquo; i the appropnate &lsquo;ots i the allocation vector In our case,
-Wwe only need to reserve one block and ths bat been done by setting bit 7 of ALL, hence the valve
-OH.&rdquo; Clearly, we can ow sce that 3 manmum of 16 blocks may be reserved for diectory eatnes (by
-setting all 16&rsquo; bits in ALD and ALI), &ldquo;With a LK block size, a maximum of SIZ directory entries may
-Derallocated at 32 dicectory entries ia each block If&rsquo;a 6K block size is used, the maximum sumbet
+AL0 and AL1 contain the first two bytes of the allocation vector for the drive for which the DPB
+applies. These two bytes are copied into the allocation vector when the drive is logged in.
+Remembering that the directory occupies the first block or two on the disk we need to reserve the
+required number of blocks by filling in the appropriate bits in the allocation vector. In our case,
+we only need to reserve one block and this has been done by setting bit 7 of AL0, hence the valve
+80H. Clearly, we can now see that a maximum of 16 blocks may be reserved for directory entries (by
+setting all 16 bits in AL0 and AL1). With a 1K block size, a maximum of 512 directory entries may
+be allocated at 32 directory entries in each block. If a 16K block size is used, the maximum number
+of directory entries will now be 8192.
 </p>
 <p>
-of directory entries will now be 8192
+CKS is known as the check size and simply tells the BDOS the length of the checksum vector for
+the currently logged in drive. If fixed media drives are in use, the value of CKS may be set to
+zero to prevent directory checking.
 </p>
 <p>
-COKS is known as the check size and simply tls the BDOS the length of the checksum vector for
-the currealy logged in drive. Uf fed media&rsquo; drives tre ia usc, the value of CKS may be sett
-ro to prevent dveciory cbecang.
+OFF is the number of system tracks on the disk. This figure depends upon the physical disk
+format and the CP/M system size. Clearly, a single density disk will require more system tracks
+than a double density disk in order to save the system. As an example, the SDDS format 3 system
+tracks, the QDDS and QDSS formats have 2 and the DDDS format has 1. The discrepancy between the QD
+and DD formats is again because of the apparent length of the tracks in the DD which uses the
+cylindrical method of disk access. CP/M uses the OFF parameter when calculating track numbers for
+pending read or write so that it effectively ignores system tracks. This is particularly useful
+whee partitioning a high capacity drive (i.e. a Winchester) into a number of logical drives. If,
+say, the first 50 tracks are defined as logical drive A, logical drive B could have a value of 50
+for the OFF parameter so that it would start at the 51st track of the physical drive.
+</p>
+<h3>
+The CP/M 3 DPB
+</h3>
+<p>
+Now that we have exhausted the CP/M&nbsp;2.2 Disk Parameter Block, we can now examine the CP/M&nbsp;3 DPB.
+An example of the later is given below:
+</p>
+<table class="cpm3-dpb">
+<tr><th>Hex</th><th>Dec</th><th></th><th colspan=3>Interpretation</th></tr>
+<tr><td>0028H</td><td>40</td><td>;</td><td>SPT</td><td>&ndash;</td><td>CP/M Sectors (128 bytes) per track</td></tr>
+<tr><td>05H</td><td>5</td><td>;</td><td>BSH</td><td>&ndash;</td><td>Block Shift Factor</td></tr>
+<tr><td>1FH</td><td>31</td><td>;</td><td>BLM</td><td>&ndash;</td><td>Block Mask</td></tr>
+<tr><td>03H</td><td>3</td><td>;</td><td>EXM</td><td>&ndash;</td><td>Extent Mask</td></tr>
+<tr><td>00C4H</td><td>196</td><td>;</td><td>DSM</td><td>&ndash;</td><td>Disk Size in blocks-1</td></tr>
+<tr><td>007FH</td><td>127</td><td>;</td><td>DRM</td><td>&ndash;</td><td>Number of directory entries-1</td></tr>
+<tr><td>80H</td><td></td><td>;</td><td>AL0</td><td>&ndash;</td><td>Reserved directory..</td></tr>
+<tr><td>00H</td><td></td><td>;</td><td>AL1</td><td>&ndash;</td><td>..blocks</td></tr>
+<tr><td>0020H</td><td>32</td><td>;</td><td>CKS</td><td>&ndash;</td><td>Checksum Size</td></tr>
+<tr><td>0002H</td><td>2</td><td>;</td><td>OFF</td><td>&ndash;</td><td>Number of system tracks on disk</td></tr>
+<tr><td>02H</td><td>2</td><td>;</td><td>PSH</td><td>&ndash;</td><td>Physical Record Shift Factor</td></tr>
+<tr><td>03H</td><td>3</td><td>;</td><td>PHM</td><td>&ndash;</td><td>Physical Record Mask</td></tr>
+</table>
+<p>
+A brief examination of the CP/M&nbsp;3 Disk Parameter Block will reveal that it is identical to the
+CP/M&nbsp;2.2 DPB apart from the last two entries so I shall only explain these additions.
 </p>
 <p>
-OFF w the aumier of em ts the ks Th pe depends pon tp
-footed SE SMES SE HS te EE Greer mee
-fe adhe GPM gee,&rdquo; ge dena ge ra
-a ee et ee oe ad naa fe See ee
-wa DDS and QDs Fr ae Zand he DOS mat a1 Ts span eee
-SSE BO orm pt Cece of ppt tog fh enki DD Tomy hee
-peels fk ee CU ee OW prune ag se ae
-shew poe Bk cwpety ele Weel) tg names toe ne
-Bee es ied ge ae es
-</p>
-<h2>
-The CPM 3 DPB
-</h2>
-<p>
-[Now that ve have exhausted the CP/M&nbsp;22 Disk Parameter Block, we ca now examine the CP/M&nbsp;3 DPB.
-&lsquo;An example of the later Is given below
+PSH is the physical record shift factor and is described by Digital Research at being
+LOG2(physical sector size/128). For the Gemini QDDS format which uses 512 byte physical sectors,
+this value is 2.
 </p>
 <p>
-BT cary (38 ae per ck
+PHM is the physical record mask and calculated to be (physical sector size/128)-1.
 </p>
 <p>
-&lsquo;A brief examination of the CP/M&nbsp;3 Disk Parameter Block will reveal that it is identical 19 the
-(CP/M&nbsp;22 DPB apart rom the lat two entries 20 I shall only explain these addons.
+PSH and PHM are used in exactly the same way as BLM sod BSH except that instead of converting
+CP/M records and extents to block numbers, they are now converting CP/M records to physical sector
+numbers. Imagine that we have extracted a block and CP/M record number from the directory using
+BSH, BLM and EXM. The value that we obtained when explaining BSH and BLM were block number 36 on
+the disk and record number 11 within that block.
 </p>
 <p>
-PSH is the physical record shift factor and i described by Digital Research at bemg
-Loduipyseal sector se/28) For the Gemisi ODDS format which wes S12 bye pal secon,
-fe 2
-</p>
-<p>
-&lsquo;PHM is the physical record mask and calculated to be (physical sector sz/128)-1.
-</p>
-<p>
-PSH and PHM are used sn exactly the same way as BLM sod BSH except that istead of converting
-(CPNA records and extets to block mumbers, they are now converting CP/M. records to physical sector
-&lsquo;sumbers. Image that we have extracted a block and CP/M record: aumber trom ahe directory Using
-BSH, BLM and EXM &ldquo;The value that we obtaned when explanng BSH and BLM were block suber 36 on
-the disk and record suber 11 within that block
-</p>
-<p>
-&lsquo;Tere are 32 CPIM record inthe Bock sumbered from 0 1931 at described before. Additional,
-we now know that there are eight physical sectors (of SIZ bytes cach) in the block, cach contang
+There are 32 CP/M record in the block numbered from 0 to 31 as described before. Additional,
+we now know that there are eight physical sectors (of 512 bytes each) in the block, each containing
 </p>
 <?php columnEnd(1); ?>

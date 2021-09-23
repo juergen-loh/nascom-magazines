@@ -1,64 +1,72 @@
 <?php columnStart(1); ?>
+<ul>
+<li>MULTIPLY and DIVIDE instructions are included, for both signed and un-signed bytes amp;& words.</li>
+<li>16-BIT INDEXED where an instruction such as (IX + d) bas d as 16 bits, in addition to the 8-bit
+usual Z80 instructions. This instruction works the HL, IX and IY registers and is useful
+for indexing larger (over 256byte) arrays of data. Indexing on HL is new.
+</li>
+<li>PROGRAM COUNTER RELATIVE addressing for example,<br>
+&nbsp; &nbsp; &nbsp; &nbsp; Ld A,[PC + d] &nbsp; &nbsp; where d is 8 or 16 bits.
+</li>
+<li>STACK POINTER RELATIVE addressing is useful where the stack contains a date array of known
+format, passing parameters on stack, etc. Previously to access a position on the stack, the SP
+had to be added to, or subtracted to point to a byte, modified, then the reverse operation to
+the stack was required. The same operation now takes one instruction to load or save to
+somewhere in the stack. (8 or 16 bit displacements). The addressing mode alone will
+dramatically speed-up any (Z280 specific) compiler, where the method of parameter passing is
+usually on the stack.
+</li>
+<li>BASE INDEX addressing allows the effective address of the operand to be computed by adding the
+contents of any 2 of the HL, IX or IY registers. For example Ld A,[HL+IX].
+</li>
+<li>EXCHANGE H with L. The contents of the H and L can be exchanged with one instruction
+(EX H,L) Possible include correcting the significance of the MS & LS bytes of a word.
+Without this added instructions, three instructions are required and a third register.
+</li>
+<li>WORD COMPARE instructions e.g. CP [HL],BC simplifies this operation from 5 instructions to one.
+</li>
+<li>EXTEND SIGN extents the sign of a byte into another register, correctly converts a signed byte
+to signed word.
+</li>
+<li>SYSTEM CALL NN instructions. The CPU jumps straight tu the address found at the contents of the
+&ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap vector Table pointer&rdquo; + 50H, the call number (NN) is left on the stack. Returns
+to the user programs via the new &ldquo;RETIL&rdquo; (return from Interrupt long) instruction. This is
+similar to the software interrupt on 8088 based machines. It enables an operating system to
+have a standard set of calls for all Op. System fractions.
+</li>
+<li>WORD I/O allows IN[W] HL,(C) and OUT[W] (C),HL to ipput/<?php spChar("zwsp"); ?>output 2 consecutive bytes to/from the
+HL register. Also INDW &amp; INIW, input word to (HL) and decrement (or increment) HL twice.
+</li>
+<li>INDRW, INIRW, OUTDRW & OUTIRW input/<?php spChar("zwsp"); ?>output word to/from (HL), HL +/&ndash;2, B-1, until B = 0.
+</li>
+<li>TEST I/O DATA &nbsp; TSTI allows an input port to be tested, without actually inputting data.
+This is very convenient, and fast, for say &ldquo;Test keypress&rdquo; type instructions, where the input
+data can be (non destructively) tested. With the Z80, we had to do a real input of the data,
+then store it somewhere.</li>
+</ul>
 <p>
-+ MULTIPLY and DIVIDE instroctions are included for both vigned mad unsigned bytes &amp; word
-+ GR DED, ohm marae sch dls 4 1 Ns aon he 38
-&lsquo;usual 730 inutruction &lsquo;This ineraction works 1X aad TY ogitore and ie
+There are other commands for &ldquo;Extended Architecture&rdquo; which apparently extend
+the CPU instruction set, but I have not looked into these yet.
 </p>
-<p>
-Ia lndecag larger (re 25cb) eve of dan ng oc HL mo.
-</p>
-<p>
-= PROGRAM COUNTER RELATIVE addreatng for example,
-LAAIPC+d] where dis 8 or 16 bi
-</p>
-<p>
-&gt;
-ss &lsquo;seca plo fie te toe&nbsp;.
-Ae swe ogee, &ldquo;Tie tne&rsquo; opr, Sow tks io Tada
-fSmewbere"In 1 nck (For 16 Ok duplcemens), &lsquo;iis adaresng mote &lsquo;lone wil
-feses &ldquo;
-</p>
-<p>
-&lsquo;unl Be ack &rdquo;
-</p>
-<p>
-+ BASE INDEX sdreing slows the eine ads of te opt 0 be computed
-&lsquo;Contents of any 2of the BE, Cor IY rogers, Por emmmple Ld AHL + DX). &rdquo;
-</p>
-<p>
-* ipa Sena m0 a ome von
-</p>
-<p>
-. a ee ee nee eg ae ne a
-</p>
-<p>
-asr to Data_2 ve mt tn
-EUS Pe BO sere i ce tae eee
-thea store it somewhere. bea
-</p>
-<p>
-Thee ae ctee commands for &ldquo;send procemcr Arcee&rsquo; (PA), which apparently exc
-&lsquo;the CPU instruction set, but I have not looked into these yet. sila
-</p>
-<h2>
+<h3>
 MEMORY MANAGEMENT
-</h2>
+</h3>
 <p>
-The 2200 oppor ashe for sow programs became of the
-memory minaguncl wat OMG) The MM es sto ap ech AK ie Ue UD adding
-rage
+The Z280 supports 16MByte of memory. This is fully usable for new programs because of the
+memory management unit (MMU). The MMU uses 12 bits to map each 4K within the 16MBytes addressing
+rage.
 </p>
 <p>
-The MMU tanilted &ldquo;opeal adireucs into &lsquo;popicl adecowc, A oimcept wed ia all the
-swodere, danced operating ss.
+The MMU translated &ldquo;logical&rdquo; addresses to physical. A concept used in all the
+modern, advanced operating systems.
 </p>
 <p>
-Stuy he NAL pac Lgl are 1 pees wen camden The
-box BPRow fe zaion Saino &lsquo;Oe bootup it map DRAM ato the bot
-hain ely alacard CEM pope ae eda
+On startup the MMU passes logical addresses to physical addresses without translation. The
+boot EPROM is at physical location 000000 onwards. On  boot-up it maps DRAM into the bottom
+256KBytes, allowing all standard CP/M programs to execute immediately.
 </p>
 <p>
-Baap of 4K lock son scone tht I cold Tema he eating Com pag mde
-oa
+Being of 4K block size, it is conceivable that it could &ldquo;emulate&rdquo; the existing Gemini page mode
+structure, if required.
 </p>
 <?php columnEnd(1); ?>

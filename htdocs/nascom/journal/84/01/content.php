@@ -272,7 +272,7 @@
 	,	50
 	);
 	trJournal($path, $tail, $magazine
-	,	"- Shugart 8&quot; Anschluß"
+	,	"- Shugart 8&Prime; Anschluß"
 	,	"Uwe Brockmöller"
 	,	"Hardware"
 	,	1984

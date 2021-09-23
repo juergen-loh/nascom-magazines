@@ -1,39 +1,84 @@
 <?php columnStart(1); ?>
-<h2>
+<h3>
 INTERRUPTS
-</h2>
-<h2>
-TRAPS
-</h2>
-<h2>
-64K OF I/O PORTS
-</h2>
-<h2>
-AND THE REST...
-</h2>
+</h3>
 <p>
-serburaer amy ageing MG.
+The Z280 processor has a compatible interrupt structure with the Z80 in modes 0, 1 and 2 both
+maskable and non-maskable interrupts are completely compatible with the Z80.
 </p>
-<h2>
+<p>
+In addition to these original modes, Zilog have added a fourth, more advanced interrupt mode,
+IM3. This is upwards compatible with the Z80. This mode is similar to mode 2, except that instead
+of saving only the return address, also the &ldquo;Master Status Register&rdquo; and 16-Bit &ldquo;Reason code&rdquo; are
+saved. A new &ldquo;Master States Register&rdquo; and Program counter are fetched from the &ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap
+vector table&rdquo;. The &ldquo;Reason code&rdquo; is the vector address of the interrupting device. The contents of
+the &ldquo;Master Status Register&rdquo; decides, amongst other things, the interrupt levels that are enabled
+and whether the interrupt routine is user or System mode.
+</p>
+<p>
+A further enhancement is that there are 3 (Maskable) interrupt lines to the CPU. This is a
+binary coding of 7 different interrupt levels. Each level can be separately enabled or disabled (by
+7 bits in the MSR). This means that certain interrupt devices can optionally interrupt lower-level
+interrupt routines. This provides a nested interrupt structure, nice.
+</p>
+<p>
+There is a separate stack used to store the return address of interrupted code. This
+keeps the user stack free for use within the program. No problem any more with user stack space,
+its just not used at all.
+</p>
+<p>
+I remember the old Nascom monitor (Nas-Sys&nbsp;1) had a problem, where data was left vulnerably
+(bad programming) on the stack. Any interrupt overwrote this data producing a bombed-out system.
+This would not happen to the Z280. Perhaps Nascom should have usd the Z280 for the Nascom (you can
+interrupt me if you like, but don&rsquo;t expect me still to be there when you return) 2 monitor.
+</p>
+<p>
+Also, unlike the Z80, Block moves, Block compare and Block I/O can all be interrupted before
+the end of the block.
+</p>
+<h3>
+TRAPS
+</h3>
+<p>
+Traps are Software interrupts, similar to the external interrupts, except that they originate
+from the codes or condition code. Eight trap are implemented for Single-step, Breakpoint-on-halt,
+Divide by zero, Stack overflow, memory transgression, system call and privileged instructions.
+</p>
+<h3>
+64K OF I/O PORTS
+</h3>
+<p>
+Paged blocks of I/O addresses, giving 256x256 or 64K ports. That&rsquo;s probably enough for most of
+us. Again, cleverly completely compatible with existing Z80 code.
+</p>
+<p>
+Access to more than the usual 256 ports is (yes..you guessed it) via the processor &ldquo;I/O Page
+register&rdquo;. Pity that 80-BUS boards only decode the bottom 8 bits. What about decoding whole racks
+though&nbsp;!!!
+</p>
+<h3>
+AND THE REST...
+</h3>
+<p>
+In this short (?) overview of this board, the Editor would not let me mention in detail the 3
+16-bit counter/<?php spChar("zwsp"); ?>timers, Full duplex UART, 10 bit DRAM refresh, Multi CPU design, 4 DMA channels, Auto
+program bootstrap via UART, Dual Stack pointers (User &amp; system), Single Step operation, etc.
+</p>
+<h3>
 CONCLUSION
-</h2>
+</h3>
 <p>
 I have found the board to be an excellent addition to my system, akin to putting a Concorde
-&lsquo;ap to 4 GMBb0s on the samo bus.
+afterburner on my ageing MG.
 </p>
 <p>
-Gemini tell me that the new version will probably hurwe muli-proceming capabilities, allowing
+Gemini tell me that the new version will probably have multi-processing capabilities, allowing
+up to 4 GM890s on the same bus..
 </p>
 <p>
-a i wee
-Li
-</p>
-<p>
-&lsquo;Traps are Software Interrupts,
-from the&rdquo; code or comdtion code.
-</p>
-<p>
-&lsquo;except that they originate
+I have just read that a Z280 assembler is available. Named the XZ280, it supports all Z80
+instructions, together with all additional Z280 instructions. The assembler is from Real
+Time Systems, in the Isle Of Man. Phone ____-_____.
 </p>
 <?php hLine("20%"); ?>
 <?php columnEnd(1); ?>

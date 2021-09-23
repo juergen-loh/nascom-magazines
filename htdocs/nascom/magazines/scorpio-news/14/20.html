@@ -1,82 +1,79 @@
 <?php columnStart(1); ?>
-<p>
-four CPM. records. We car qumber these physcal sectors from 0 to 7 and the CP/M records within
-them fom O10 3.
+<p class="continued">
+four CP/M records. We can number these physical sectors from 0 to 7 and the CP/M records within
+them from 0 to 3.
 </p>
 <p>
-I me shit the record number (Lu) right PSH.) tines eget the vue 2 i sine
-maser to fad the lied phys Stor ato the Sehocg adr eady&rsquo;to tact&rsquo; de &lsquo;equed
-Di be weeds
+If we shift the record number (11) right PSH (2) times we get the value 2. It is a simple
+matter to read the third physical sector into the deblocking buffer ready to extract the required
+128 byte record.
 </p>
 <p>
-Finaly, by ANDig the record umber (11) wih PHM.) we get the vale 3. Consquenty the
+Finally, by ANDing the record number (11) with PHM (3) we get the value 3. Consequently, the
+required record occupies the last 128 bytes in the physical sector, i.e. the fourth record in the
+sector.
+</p>
+<h3>
+Blocking and Deblocking
+</h3>
+<p>
+Isolating separate 128 byte CP/M records in a physical sector is central to the concept involved
+with blocking and deblocking. All versions of CP/M transfer data to and from the disk in 128 byte
+chunks (including CP/M&nbsp;3). We have already seen that disks may be formatted info sectors of varying
+size and if sector size of 128 byes is used then no problems are experienced. However, many disk
+formats use sector sizes of 256, 512 and 1024 bytes. As we have seen, Gemini use a 512 byte sector
+size for their DDDS, QDSS and QDDS disk formats. Since CP/M requires 128 byte records, surely it is
+easier to format the disk in 128 byte sectors.
 </p>
 <p>
-required fecord occupies the last 128 bytes in the physical tector, Le the fourth record in the
-</p>
-<h2>
-Blocking sad Deblocking
-</h2>
-<p>
-luolating separate 128 byte CP/M records ina physical sector is central to the concept involved
-wth blocking and deblocking Al versions of CP/M&rdquo; trader data to and trom she dak im 128 be
-&lsquo;hunks (including CPIM 3) &ldquo;We have alredy seen that dake may be formatted info sector of
-Size and ia sector sue of 128 byes t wed then oo. problems are experenced. Hlowcrer, many dit
-formats use sector waza of 256, 512 and 1024 byta As we have seca, Gemiai wse a 512 byte tector
-suze for their DDDS, ODSS and QDDS dik formats Since CP/M. requires 128 byte records, surely lis
-&lsquo;easier tp format the dik in 128 byte sector.
+The answer to this is yes. It is easier to use 128 byte sectors but oddly enough it is
+generally faster to use larger sector sizes. Why this is will become apparent as we proceed but
+suffice to say that since we are using sectors that are larger thin 128 bytes, we need a method of
+providing CP/M with 128 bytes at a time and allowing CP/M to write 128 bytes at a time. The
+processes for writing and reading in this manner are known as blocking and deblocking respectively.
 </p>
 <p>
-&lsquo;The answer to ths is yes it is easier to use 128 byte sectors but oddly enough at is
-eserally faster to. use larger tector. sues.&rdquo; Why the is wil become apparent as we proceed bul
-Suffice (o say that since we are using seclors that are larger thin 128 bytes, we need a method of
-Droviding CPIM with 128&rdquo; bytes at a time and alowag CPM to write 128 bytes at adie The
-processes for wing and reading inthis manner are known as blocking and dcblockang respectively
+Blocking and deblocking are implemented in the BIOS under CP/M&nbsp;2.2 and (usually) in the BDOS
+under CP/M&nbsp;3 although facilities exist within CP/M&nbsp;3 to allow the BIOS to do this. The method used
+requires a buffer in RAM that is one physical sector long (512 bytes for the Gemini DD and QD
+formats). This buffer is simply an area of RAM reserved by the BIOS for this purpose and is known
+as the blocking/<?php spChar("zwsp"); ?>deblocking buffer. This buffer is located within the BIOS under CP/M&nbsp;2.2 but under
+CP/M&nbsp;3, the physical record buffers controlled by the BDOS (pointed to by the DTABCBs) are used.
+From now on I shall assume that CP/M&nbsp;2.2 is in use and will describe the method of
+blocking/<?php spChar("zwsp"); ?>deblocking in respect of the CP/M&nbsp;2.2 BIOS. Under CP/M&nbsp;3, the BDOS will have calculated
+physical sector numbers (using PSH and PHM) and the BIOS reads them directly.
 </p>
 <p>
-Blocking and deblockng are umplemented im the BIOS under CP/M&nbsp;22 and (usually) in the BDOS
-under CP/M&nbsp;3 although faclties ens! wikia CP/M. 3 (0 allow the BIOS fo do this The method used
-requires a buifer ux RAM that&rsquo;s one physical secioe long (S12 bytes for the Gemisi DD. and OD
-formats)&rdquo; Ths bulfer s simply an area Of RAM reserved by the BIOS for ths purpose and is knows
-i the blckngSblorkng buf Ths ble, Teed wun the BIOS &lsquo;under &lsquo;CHM 22 but der
-CPM 3, the physical record bulfers controled by the BDOS (pomted to by the DTABCEs) are used,
-Frog, lop ball &lsquo;ssue That CPIM 12s ust aad wll asrcbe th &ldquo;method of
+When deblocking, the BIOS takes the sector number provided by the BDOS and converts it into a
+physical sector number. i.e the physical sector that contains the required CP/M record. This
+physical sector is then read into the blocking/<?php spChar("zwsp"); ?>deblocking buffer and the wanted 128 bytes are
+identified and passed to CP/M by copying them to the DMA address. At the time of reading the
+physical sector, certain facts about it are recorded. These are the drive, track and sector number
+for the physical vector. At the same time a flag is set to say that the buffer in use.
 </p>
 <p>
-/deblocang an respect of the CP/M. 22 BIOS. &ldquo;Under CP/M. 3, the BDOS will bave
-seclor aumbers (asag PSH and PHM) and the BIOS reads them diel
+The next time that a read is requested by CP/M, the logical sector number is calculated as
+before. This time, however, the BIOS will find that the buffer is in use. Bearing in mind that
+most disk reads are done sequentially, it is a fair bet that the CP/M record we want is in the
+buffer already. The BIOS checks the drive, track and sector numbers for the required sector against
+those stored for the buffered sector and if they match, the BIOS skips the disk read and simply
+transfers the required 128 byes to the DMA address.
 </p>
 <p>
-When deblockng, the BIOS takes the sector aumber provided by the BDOS and comverts it mio a
-physical sector number i.e the physical sector that coutaiag the required CP/M record. This
-Physical sector ss then read into the blocking/<?php spChar("zwsp"); ?>dcblocking buffer and the wanted 128 bytes are
-Flentfied &lsquo;and: passed to. CPIM &lsquo;by copnng them to the DMA sddress AI the time of reading t
-piv setr ein ae aboo vars ecorde, &ldquo;Thee the ing, tick and Secor mambet
-forthe physical vector Ar the same tum a lagi et Co say thatthe buffer in use
+When reading sequentially using deblocking, the disk is accessed only every fourth request from
+CP/M. As disk drives are relatively slow when compared with the time required to extract data from
+RAM, you can now see why this process is faster than simple disk using 128 byte sectors.
+Generally, the larger the physical sector size, the greater the improvement in disk access time will
+be.
 </p>
 <p>
-&lsquo;The next time that a read as 1 by CEM, ical sector umber is calculated as
-before Te tne, however the BIOS wl fad at"the bales ain we, Bearings) sod at
-Bost dick reads are done sequentially, us afar bet that the CP/M. record we want is in the
-Buffer already, The BIOS checks the drive, track and sector aumbers for the required sector agaunst
-those. stored for the buffered sector and if they match, the BIOS stops the ak read and simply
-transfers the required 128 byes tothe DMA address.
+Writing to disk using blocking offers a similar (but not as great) increase in speed. You will
+see why writing is not as fast as reading in a moment.
 </p>
 <p>
-When reading sequently wang dblochng, he dik is accused founh request fom
-cont ad data oe reel) Sow et amped sith be tne eared io aac as to
-RAM, you can now see why this process is faster than simple, disk using 128 byte sectors.
-Goncraly, the larger the phyncal scetor size, the greater the &ldquo;improvement io dak acest te wil
-t
-</p>
-<p>
-Wrinng 10 disk wang blocking ofers 4 similar (but not as great) increase in speed. You wall
-mee cia er ea eet
-</p>
-<p>
-that we wish to write 4 random record 10 disk and that we are updating one record among
-sn ce cent records&rdquo; Since we have to write 10 tbe disk in terme of complete sectors, we
-&lsquo;imply write 128 byes to the dak&rdquo; If we put the CP/M record in the
-hf and wrote that fo dks we would erase he oe hes records inte py eer
+Imagine that we wish to write a random record to disk and that we are updating one record among
+many adjacent records. Since we have to write to the disk in terms of complete sectors, we
+cannot simply write 128 bytes to the disk. If we put the CP/M record in the blocking/<?php spChar("zwsp"); ?>deblocking
+buffer and wrote that to disks, we would erase the other three records in the physical sector.
 </p>
 <?php columnEnd(1); ?>

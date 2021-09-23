@@ -1,77 +1,74 @@
 <?php columnStart(1); ?>
 <p>
-In addiuon to the types described for the Turbo Modula 2 an additional type LONGCARDINAL (32
-bit unsigned integer) is available. A aight difference between the wo seveons im the range of
-REALS, FTL reals are. described us about 16 dap accuracy with an exponential range of &ndash;105 to. +105,
-sserly 2 comparison wath Turbo, but better by a loog way than soy Foruaa Ihave used. As with
-&lsquo;Turbo any type canbe crested fom the sunple types and BYTE, WORD and ADDRESS are predefined,
+In addition to the types described for the Turbo Modula 2 an additional type LONGCARDINAL (32
+bit unsigned integer) is available. A slight difference between the two versions is in the range of
+REALS, FTL reals are described as about 16 digit accuracy with an exponential range of -105 to +105,
+miserly in comparison with Turbo, but better by a long way than any Fortran I have used. As with
+Turbo any type can be created from the simple types and BYTE, WORD and ADDRESS are predefined.
 </p>
 <p>
-fk sory yall featur of this vero i that al he sree of the modules hve been
-supplied, s feature that caables you to overcome any shortcomings, teal OF imagioary sa. thit
-Peta Ina &lsquo;the cor oped Sone i he mow adh eftors&rsquo;| ne tak&rdquo; 1,
+A very valuable feature of this version is that all the sources of the modules have been
+supplied, a feature that enables you to overcome any shortcomings, real or imaginary in this
+package. In addition the editor supplied is one of the most friendly editors I have used. It is
+like the Turbo editor in being Wordstar like, but is considerably faster. The Turbo editor often
+has to perform disk access to call an overlay, to perform a function such as block moves.
 </p>
 <p>
-c the Turbo edntor so bog&rsquo; Wordsar Uke, but is considerably taser The Turbo &lsquo;eitr often
-&lsquo;aso perform disk access 0 eal an overlay 0 perform a funcuoa suc as Block moves.
+The FTL editor, besides being fast, enables up to three files to be edited at once with the
+screen split to three windows This may seem a luxury, but in Modula 2 you will often need to look up
+a definition module to find the exact form of the procedure call. (This is particularly true for
+Turbo which has very strong typing.) You can copy code between the windows, which if you are a cut
+and paste programmer like me, is very useful.
 </p>
 <p>
-&lsquo;The FTL editor, bendes being fis, enables up to tice flee to be edited at once wath the
-screen split wo three windows, &ldquo;Ths may seem 1 loeury, bul 1m Module 2&Prime; you offea aced to ook &lsquo;up
-2 efiiion &lsquo;module to ad the exact Tora of the procedure cal. (This ws partielary tue. for
-Turbo which has very strong type) You can copy code between &lsquo;be windows, which if you afe a cul
-sod paste programmer Uke me, very useful
+The code for the editor, written in Modula 2, can be obtained, allowing you to customise the
+editor. You can already customise to a large extent, as many keys have macros attached to them,
+e.g. ESC T is THEN, and you can define your own macros. A minor niggle is that backspace is NON
+destructive and Del. deletes backwards instead of forwards. Though I have changed the Del, key
+macro definition so that it the same as Turbo&rsquo;s, I couldn&rsquo;t change the backspace definition.
 </p>
 <p>
-The code for the editor, writen in Modula 2 can be obtained, allowing you to customse the
-cditor &ldquo;You can already cusiomue to a lage exeal, as aay keys have emacfos altacbed To them,
-fg ESC Tis THEN, and you can define your own macros, A minor niggle is that backspace is NON
-&lsquo;structive and Del. &lsquo;deletes backwards stead of forwards. " Though have changed the Del, kev
-&lsquo;macro definition eo tha isthe same as Turbo&rsquo;, f coulda&rsquo; chang the backspace definition,
+The compiler can be run from the editor, ether in Fast check mode which produces no output, or
+compiling to relocatable native code. In both cases, when an error is found editor is reinvoked
+at the error location, with reasonable explanations of the error. It is possible to force further
+compilation ignoring the error. This can not be done with the Turbo compiler, but it also invokes
+the editor, and when the error is fixed it starts recompiling from the beginning of the module in
+error, instead of the beginning of the source, a vast improvement over Turbo Pascal. Other than
+these features it is an unremarkable, very fast compiler
 </p>
 <p>
-&ldquo;The compiler can be run from the editor, ether m Fast check mode wich produces 09 output of
-comping fo felecatale salve code. ta both cat when an extort (ound. be&rdquo; edaor ts reked
-atthe error location, with reasonable explanations of the error it is possible to force further
-Compton ignonag the error &ldquo;This can not be done. wih the Turbo compiler, but i aso takes
-the tor tnd wen the cor weed twa seeompiing fom the begin of th module
-rion, stead of the. begining of the source a vast improvement over Turbo. Pascal.&rdquo; Other than
-thee Tetures wan nreiarka, very fast compiler
+The linker can also be made to run from the editor, but I have failed to do so. This is
+probably due to my poor understanding of the MSDOS operating system, in particular the PATH command.
+The linker produces .COM files. Again it is unremarkable in its behaviour, just well behaved.
+Rather than remove the last comment I have decided to point out it was my misunderstanding of the
+path command SET PATH= works, SET PATH&nbsp;= (which is the correct form in RTE) docs not work. The
+linker can be invoked as well from the editor and the object program run, all with out leaving the
+editor.
 </p>
 <p>
-&lsquo;The linker can also be made to run ftom the editor, but I have failed to do so. This is
-otal die to wy poo uneraning ofthe MSDOS operating Sem, partir the PATH command
-Fhe linker produces COM flee &ldquo;Ageia i 1 varemarkable in iis behaviour, just well behaved
-Rather than remove the last comment T have decided (0 poiat oul it was my misunderstanding of the
-th command SET PATH= works, SET PATH = (which w the correct form in RTE) docs not work. The
-an be invoked as well from the editor end the object program rus, all wih oul leaning the
-ctor
+A surprising part of this package is an 8088 assembler, using the standard small memory model
+(64K data, 64k code). It is included so that you can compile the assembly languages library
+modules of any assembly languages modules that you write yourself. This assembler is really a tiny
+assembler and I would have been happier with the approach adopted by Borland; it would be so much
+nicer to be able to link in Microsoft macro assembler and Microsoft Fortran 77 modules.
 </p>
 <p>
-&lsquo;A surpnsig part of this package is an SORB assembler, using the standard small memory model
-(64x &ldquo;data, Gak code) Its included a0&rdquo; that you can Compile the assembly languages brary
-SSodules of any asembly languages modules that you wre yursel, &ldquo;This auembler i realy 8 tay
-Siembler und 1 would hive Bees bapper wih the approuch adopted by &lsquo;Borland: i would be 10 mich
-tee Tobe able fo linkin Microsoft macro ssembler and Microsoft Fortran 7 modules.
+The librarian is again LU like, not quite as friendly as the Turbo Librarian or LU
 </p>
 <p>
-&lsquo;The lbearan is aguin LU Hike, aot quite a fnenly as the Turbo Libranan of LU
+Also provided is a debugger, but it would be more exact to describe it as a tracer rather than
+a debugger. If the trace option is switched on in the compiler and linker, the modules. when
+executed will printout their progress on the screen.
 </p>
 <p>
-Alo provided is a debugger, but it would be more exact to describe it as a tracer rather than
-a debugger If the trace option is switched on in the compiler and linker, the modules. whea
-txecuted wll printout their progress onthe sereee
+In completion the package contains a sort module and maths module which contain such useful
+items, such as matrix inversion (Gauss method, with Partial pivot) &ndash; this is restricted to 10 x 10
+matrices, but if you want to solve larger matrices, perhaps you should be using a mini anyway.
 </p>
 <p>
-In completion the package contans a tort, module and maths module which contin such useful
-items, such as sunt inversion (Gauss method, &lsquo;wth. Paral pret) = ths ws restricted 10-10 % 10
-satrices, but you want to solve larger matnces, perhaps you should be using a mai anyway
+In conclusion, both of these packages are good value for money, proving a cheap entry into
+the world of Modula 2. I hope this review, in addition to showing the strength of these packages,
+will also tempt you to try writing programs in this new language
 </p>
-<p>
-ta conclusion, both of these packages ze goad value for money, proving a cheap catty ato
-the world of Male &reg; &ldquo;I hope thr reneny a wddion fo sbowng the&rdquo; sens &lsquo;of tite packages,
-</p>
-<p>
-will also tempt you to try wong programs inthis new language
-</p>
+<?php hLine("20%"); ?>
 <?php columnEnd(1); ?>

@@ -1,59 +1,85 @@
 <?php columnStart(1); ?>
-<h2>
-Yes &ndash; let&rsquo; disassemble clones.
-</h2>
-<p>
-ti Hy
+<h3>
+Yes &ndash; let&rsquo;s disassemble clones.
+</h3>
+<p class="noindent">
+Dear Sir,
 </p>
 <p>
-it
-wi
-th a
-aA
-fi
-i
+On the general point of whether to move the mag. to support the IBM&nbsp;PC world, as Dave Hunt
+suggests, I would afree with him, though I should state my bias as an owner of both close and
+Gemini/<?php spChar("zwsp"); ?>Nascom hybrid.
 </p>
 <p>
-1.2!
-&ldquo;HY
+The expertise of the early group of enthusiasts who built their own machines and managed to
+squeeze programs into 1k of memory is still valid, and perhaps more so in the clone world where
+information is sadly lacking &ndash; no circuit diagrams or port maps in the Taiwanese PC world (or even
+with the Greenock real ones), or very expensive &ndash; the technical reference manual cost a
+staggering &pound;70 or thereabouts. The skill of the average MultiBoard enthusiast, most being hardware-software
+hybrids, should, put together, rapidly disassemble the hidden store of information on these
+machines.
 </p>
 <p>
-pnt
+Finally, beloved 8 bit CP/M machines are long in the tooth, and through superior 16 bit
+machines when dealing with text applications, we will have to admit they are coming to the end of
+their golden age.
 </p>
 <p>
-i
+Doug Taylor, London.
 </p>
-<p>
-wt i
+<p class="noindent">
+<i>Ed. &ndash; some &ldquo;compatibles&rdquo; DO come with circuit diagrams, see the review in the last Scorpio News,
+although I understand that most do not. As to your beloved machine coming to the end of its age,
+perhaps the new product information in this issue will change your mind?</i>
 </p>
-<p>
-a
-a
-</p>
-<p>
-fig!
-</p>
-<p>
-it
-</p>
-<h2>
+<h3>
 A few points
-</h2>
-<p>
-1d find the &ldquo;ret* instruction at the ead (3 lines
+</h3>
+<p class="noindent">
+Dear Sir,
 </p>
 <p>
-ra space, but tho space can be recovered by removing two uanecestary BDOS cals in
+I thought I should write to inform you (and the readership) of a few points which have come to
+my notice, but before I start moaning I must say how mech I enjoy reading <i>Scorpio News</i>. It must be
+just about the only computer / electronics related magazine which dows not send me barmy with
+technical errors.
 </p>
 <p>
-Ths
-SE Shoby ater reaing te nw Se ae
-yoo wil fd:
+I have had a rather funny week since receiving the Scorpio Systems SVC-03 disk that I ordered.
+During the week I found bugs in MLINKS, PCB and finally in my newly aquired copy of HiSoft C, and
+all this with my untrusty old GM809 FDC board giving up on me. No doubt you will be glad to know
+that the MLINKS bug is very easily fixed. It relates to the PCI and GPS commands which, on my copy
+at least, write and read garbage. This is because they assume the default CP/M DMA at 80h without
+checking that MBASIC has not moved it. MBASIC, of course, has moved it. The solution is quite
+simple, just use the BDOS function &ldquo;Set DMA address&rdquo; (cods 26). This cam be done at the end of the
+disk commons routines thus only needing to be written once.
 </p>
 <p>
-oy
+Find &ldquo;discom:&rdquo;&nbsp;, move dons to &ldquo;endlin:&rdquo; and find the &ldquo;ret&rdquo; instruction at the end (3 lines
+down) and insert:
 </p>
-<p>
-ony
+<table class="center">
+<tr><td>ld</td><td>de,thuff</td><td>; This is 80h</td></tr>
+<tr><td>ld</td><td>c,26</td><td>; Set DMA address</td></tr>
+<tr><td>call</td><td>bdos</td><td></td></tr>
+</table>
+<p class="noindent">
+This occupies extra space, but the space can be recovered by removing two unnecessary BDOS calls in
+PSI. Shortly after creating the new with:
 </p>
+<table class="center">
+<tr><td>ld</td><td>de,fcb</td><td></td></tr>
+<tr><td>r</td><td></td><td></td></tr>
+<tr><td>ld</td><td>c,16h</td><td>; create file</td></tr>
+<tr><td>call</td><td>bdos</td><td></td></tr>
+</table>
+<p class="noindent">
+you will find:
+</p>
+<table class="center">
+<tr><td>ld</td><td>de,fcb</td><td></td></tr>
+<tr><td>r</td><td></td><td></td></tr>
+<tr><td>ld</td><td>c,0fh</td><td>; open file</td></tr>
+<tr><td>call</td><td>bdos</td><td></td></tr>
+</table>
 <?php columnEnd(1); ?>

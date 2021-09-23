@@ -1,64 +1,80 @@
 <?php columnStart(1); ?>
-<h2>
+<h3>
 SEPARATE USER/<?php spChar("zwsp"); ?>SUPERVISOR MODES
-</h2>
+</h3>
 <p>
-System mode is used for all operating system code,
-race debugged). &ldquo;Any tanigreasions
+This when very important when advanced, fully protected operating systems are used. The User
+program is usually in &ldquo;User&rdquo; mode. All the special (&ldquo;Privileged&rdquo;) instructions are only allowed
+in &ldquo;System&rdquo; mode. This prevents a user writing code that causes a &ldquo;whoopsie&rdquo; in the system. In
+user mods, the programmer is protected from modifying someone else&rsquo;s data, or code. A program
+jump to somewhere unknown does not the system. Instead, the system can return a message such
+as &ldquo;Not allowed, please try again... etc.).
 </p>
 <p>
-smencry canes &ldquo;Page fat Rape Tae COU funy drag fo the iets fam stents of
-en jo aig tee a neha
-= Nt tale yin Sul ew Se the sured elie aon,
+System mode is used for all operating system code, where the special instructions are all
+available (and hopefully de-bugged). Any transgressions by the user program are reported to the
+system by &ldquo;Trap&rdquo; (see below).
 </p>
 <p>
-i tpn tothe ter, ea ri tthe tee popr ag eae
+An interesting by-product of this is being able to translate memory &amp; I/O addresses, all
+completely transparent to the user. If bit 2 of the trap control is set then any direct
+I/O in user mode causes a &ldquo;Privileged Instruction Trap&rdquo;. The CPU jumps straight to the address
+found at the contents of the &ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap vector pointer&rdquo; +54H. Here we do the direct I/O
+using en I/O conversion table, then return to the user program, using the new &ldquo;RETIL&rdquo; (return from
+Interrupt long) instruction.
 </p>
-<h2>
+<p>
+Similarly, the MMU can be &ldquo;write  protected&rdquo; at a block of memory. Any access to this block of
+memory causes a &ldquo;Page fault Trap&rdquo;. The CPU jumps straight to the address found at the contents of
+the &ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap vector Table pointer&rdquo; +4CH. Here we do the required address translation, or
+anything else required, all transparent to the user, then return to the user program using the new
+&ldquo;RETIL&rdquo; (return from Interrupt long) instruction.
+</p>
+<p>
+It should be possible, using this method, to simulate my Z80 system. For example, Nascom&nbsp;1/2
+code can be made to run directly on the GM890 board, using the required I/O translation table and
+screen driver.
+</p>
+<h3>
 256 BYTE CACHE
-</h2>
+</h3>
 <p>
-&lsquo;This 1 found was an extremely weful feature which connderably speeded up the running of the
-program when it&rdquo; wer in a short repeating loop. The cache i transparent to the user, il
-til &ldquo;oni asrucons tod Gata fom the ma memory daring any fe, tine the proser
-ight &lsquo;means that 3c processor i ready to process ks ex tastruction a takes Wt
-from the cache rather than main memory ths ctting down On the numberof external bus scores.
+This I found was an extremely useful feature which considerably speeded up the running of the
+program when it was in a short repeating loop. The cache is transparent to the user, it
+continually loads instructions and date from the main memory during any time the processor
+might have. This means that when the processor is ready to process its next instruction it takes it
+from the cache rather than main memory thus cutting down on the number of external bus accesses.
 </p>
 <p>
-&lsquo;The cache may be enabled for data, instructions or both, on bus 5 and 6
-of the &ldquo;Cache &lsquo;On restt the cache i eaubled for instructions oaly.. The. PCACHE
-&lsquo;eorre validates the 256 &lsquo;byte on-chip cache, &ldquo;Instead of using. the fast memory
+The cache be enabled for data, instructions or depending on bits 5 and 6 respectively
+of the &ldquo;Cache Control register&rdquo;. On reset, the cache is enabled instructions only. The PCACHE
+instruction (purge Cache) invalidates the 256 byte on-chip cache. Instead of using the fast memory
+as a cache, the 256 bytes can be used as 256 of extremely fast physical memory, so bus access
+is required.
 </p>
-<h2>
+<h3>
 SEPARATE BLOCKS FOR PROGRAM, DATA &amp; OPERATING SYSTEM
-</h2>
+</h3>
 <p>
-1 have found when programming that due to the size and amount of variables I use that the data
+I have found when programming that due to the size and amount of variables I use that the data
+takes up quite a lot of the 64K into which my complied code has to fit. Sometimes the data takes up
+as much as half and then I still have to room for the run-time package. This then does not
+leave a great deal of room for the program and what I generally have to do is split the program into
+numerous parts and use overlays or chain to separate programs. How much better I have found this
+new board, which allows me to have separate blocks each of 64K for the program, data and operating
+system. This board also allows me to have more than one program block each using the same data
+block. This feature is not enabled on reset. It must be enabled on the MMU.
 </p>
-<p>
-ty
-i
-E
-a
-2
-zg;
-e
-i
-&pound;
-i
-z
-FE!
-</p>
-<h2>
+<h3>
 THE INTERRUPT/<?php spChar("zwsp"); ?>TRAP VECTOR TABLE
-</h2>
+</h3>
 <p>
-The UT vector table consists of pairs of Master status register and Program counter words, one
-pir foreach interrupt or trap 04ree.
-&lsquo;The CPU contains an additional register, the &ldquo;InterruptTrap Vector Table Pointer&rsquo; I This
+The I/T vector table consists of of Master status register and Program counter words, one
+pair for each interrupt or trap source.
 </p>
 <p>
+The CPU contains an additional register, the &ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap Vector Table Pointer&rdquo;. This
 contains the top 12 bits of the physical address of the contents of the &ldquo;Interrupt/<?php spChar("zwsp"); ?>Trap Vector
-&lsquo;Table &ldquo;Any interrupt or trap, finds the address ofits service routine fom this abe,
+Table&rdquo;. Any interrupt or trap, finds the address of its service routine from this table.
 </p>
 <?php columnEnd(1); ?>

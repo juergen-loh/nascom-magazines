@@ -1,7 +1,7 @@
 <?php columnStart(23); ?>
-<h1 id="article1">
+<h2 id="article1">
 The MAP-80 VFC, MPI and 256K RAM Cards
-</h1>
+</h2>
 <?php columnChange(3); ?>
 <h3 class="author">
 by Michael Newson
@@ -9,80 +9,76 @@ by Michael Newson
 <?php columnEnd(3); ?>
 <?php columnStart(1); ?>
 <p>
-&lsquo;When faced with the choice of what S-BUS disk coatrller or video card to. buy, there are
-several choices on the market The final choice enust depend oot only on the dep af pocket, but ca
-the eventual planned requtemeats ofthe system. So, whal are these fr a dk based system?
+When faced with the choice of what 80-BUS disk controller or video card to buy, there are
+several choices on the market. The final choice must depend not only on the depth of pocket, but on
+the eventual planned requirements of the system. So, what are these for a disk-based system?
 </p>
 <p>
-If we want to run CPIM, then we need some means of &lsquo;booting&rsquo; from the system dick This can
-either take the form of a program loaded from tape running under some olher monitor, or as is more
-&lsquo;ual, (0 load the system boot sector direct om Wisk using&rsquo; an EPROM routine running upon RESET
-&lsquo;Ths boot sector m turn pages out the EPROM, loads the maun system, and eventually we get the CP/M
-prompt
+If we want to run CP/M, then we need some means of &lsquo;booting&rsquo; from the system disk. This can
+either take the form of a program loaded from tape running under some older monitor, or as is more
+usual, to load the system boot sector direct from disk using an EPROM routine running upon RESET.
+This boot sector in turn pages out the EPROM, loads the main system, and eventually we get the CP/M
+prompt.
 </p>
 <p>
-&lsquo;The most common Boot EPROM are Gemun&rsquo;&rsquo;s SIMON and RP/M, and the Map-80 VSOFT The Gem
-versons sis on the CPU card. RPM. is unguable forthe Nascom&rsquo;-? It ean, however be used on is
-Bate card with 90 problem. There is a version of SIMON Tor the Nascom&rdquo; Maprai&rsquo;s VSOFT &copy; the
-&lsquo;controling software for the Map-80 VPC. &ldquo;Whichever boot syeiem i chosen rellecs on the choice of
-Supplier of CP/M as they include ehecks on the oot secor to determine that ais in fact a system
-RE being toad I eas abo aller your choee of RAM card), a8 some CBIOSS wil support Some
-types and not others
+The most common Boot EPROM are Gemini&rsquo;s SIMON and RP/M, and the Map-80 VSOFT. The Gemini
+versions sits on the CPU card. RP/M. is unsuitable for the Nascom-2. It can, however be used on its
+native card with no problem. There is a version of SIMON for the Nascom. Map-80&rsquo;s VSOFT is the
+controlling software for the Map-80 VFC. Whichever boot system is chosen reflects on the choice of
+supplier of CP/M as they include checks on the boot sector to determine that it is in fact a system
+disk being read. It can also affect your choice of RAM card(s), as some CBIOSs will support some
+types and not others.
+</p>
+<h3>
+MAP-80 VFC &ndash; Video / Floppy Controller
+</h3>
+<p>
+This card, consists of a 25x80 video display, a parallel keyboard port, a floppy disk controller
+and the controlling software (VSOFT) EPROM. The card is available either ready built, or in kit
+form. The advantage of the kit approach is that you only need to pay for the options you require.
+(VSOFT is part of the base card &ndash; you can choose any or all of the Video, Video Switch, Floppy or
+Keyboard options.) It will work with the Nascom-2, GM811, GM813, and Map-CPU cards.
 </p>
 <p>
-MAP-80 VPC Video / Poppy Controller
+How does it compare&nbsp;? The standard card uses 16 ports addressed ED &ndash; EF but alternate ports
+C0 &ndash; CF are available on request. (This is necessary if using the GM809 FDC or Map-80 MPI.)
 </p>
 <p>
-&lsquo;This card, conssts of a 25:80 vdeo display, 2 parallel keyboard port, &amp; floppy disk comroller
-sod the controling sofware&rsquo; (VSOFT) EPROM.&rdquo; The card is avaable ether ready&rdquo; bull, or im kil
-form, &ldquo;rhe advantage of the tat approach is that you only aced to pay for the options you require
-(SOFT ss part of the base card " jou can chooue any oF all of the&rsquo; Video, Video Swatch, Floppy or
-Keyboard options) twill work withthe Nascom-2, GMB11, GMBL3, ad Map-CPU cards
+The video section is controlled by a 6845, and all character handling is done by the main
+system CPU running routines in VSOFT, unlike the Gemini IVC and SVC. It should therefor be
+slightly slower, as the IVC and SVC contain their owe Z80s. Because the system CPU runs VSOFT, both
+VSOFT and the video RAM can be individually paged into the memory map under port control when
+required. (The overlaid system RAM is available at all other times.) The address at which VSOFT
+executes is also flexible &ndash; it can reside at a software controlled 4K boundary, and told where it is
+in an initialisation call. In addition, the auto-boot facility is link and software selectable.
+The card does not have a programmable character set, but does have a socket for a 2716/<?php spChar("zwsp"); ?>2732 second
+character generator. This socket is under software control &ndash; you can select character generator 1
+or 2, and normal 00H-FFH, or normal 00H-7FH + inverse video of 00H-7FH for 8OH-FFH with the selected
+set.
 </p>
 <p>
-How does it compare? The standard card uses 16 ports addressed ED &ndash; EP but alternate ports
-(CD. CF are available on request. (This occeatar if wing the GMBOD FDC of Map-80 MPL)
+The final (optional) part of the video circuitry as a video switch which selects the output to
+be either the VFC screen, or pass through an external video signal &ndash; e.g. normal output from the
+Nascom-2 under software control. This means that although the VFC cannot generate the old Nascom
+format screen, (which would be at the wrong address anyway), the original Nascom screen can still be
+displayed when running NAS-SYS (as modified to MONITOR.COM to work with disks or loaded from disk
+and executed for standard NAS-SYS operation). This theoretically allows you to use your old
+software provided it doesn&rsquo;t attempt to change the non-existent EPROM or corrupt VFC work areas.
+The parallel Keyboard input consists of a strobed latch which is read via VSOFT. The strobe
+polarity is link selectable.
 </p>
 <p>
-The deo secuon is controled by a 6845, and all character handling i done by the
-&lsquo;gion CPU rintiog routines a VSOFT, take ihe Geman IVC and SVC. I shold heels
-pity slower, as the IVC and SVC contain thir owe Z0s. Because the system CPU tuns VSOFT.
-SOFT and the video RAM can be individually paged into the memory map under port contol&rsquo; when
-requied.&rdquo; (The overaid system RAM se avalible a all other times)&rdquo; The address u which VSOFT
-frecutes i alzo enble it can reside at a software controled SK boundary. and told where i i
-foam is call&rdquo; Tg"addition, she auto boot facility is link and software selectable
-&lsquo;The card docs not havea programmable character sel, but docs have a socket for&rsquo;a 27162732. second
-havacter generator This &lsquo;socket is under software control = you can select character geaerator 1
-fr 2, and normal OOH-FFH, of normal OOH TFH + Laverse deo of OOH 7FH for SOH-FFH with the selected
+The final section is the Floppy Disk Controller. This uses the WD2797, and is GM809
+compatible. As with the GM809, however, the clock frequency of the FDC is link selectable, meaning
+that selection between 5.25&Prime; and 8&Prime; drives can only be done by link changing. If you want software
+selection, go for the Map-MPI card or Gemini GM829 or GM849 instead.
 </p>
 <p>
-Esk
-</p>
-<p>
-&lsquo;The final (optional) part of the wudeo cwcuitry as a vdeo swntch which selects the output to
-be either the VFC screen, or pass through an exlera? video sgaal- eg sormal output from the
-Nascom2 under software control Thus means that although the VPC canaoi generate the old Nascom
-format screen, (which would be at the wrong. address anyway), the ongaal Nascom screen can will be
-</p>
-<p>
-say whe runing NAS&nbsp;SYS (ee modiied to MONTTOR COM io work wih dt or loaded fom it
-fand executed for standard NAS-SYS operation) This theoretically allows you to use Your old
-foliware pronded it doesat allempt 10 &lsquo;the os-cnsteat EPROM or corrupt VEC work seas
-&lsquo;The parallel Keyboard input consists of a strobed latch which is read via VSOFT The strabe
-polanty tink selectable
-</p>
-<p>
-&lsquo;The final section is the Floppy Disk Controller This usee the WD2797, and ss GMBO9
-compatible &ldquo;As with the GMBO, however, the clock frequency of the FDC is lak stlecable, meaning
-That selection between 525&rsquo; and &amp; drives can only be dove &lsquo;by link changing. If you want software
-Selection, go for the Map-MPI card or Gemust GMS29 or GMB49 instead
-</p>
-<p>
-Control codes for the Map VC are similar 1 the Gemini IVC, but since there ic 20 onboard CPU,
-there to facity to load or up wer programs oo the card Alot al screen and character
-&lsquo;itnding commands are deat, bu differences creep_it concerang. character set tlection, fort
-and graphics. The VFC has a programmable (an) Key sting table, whereas the IVC ean only reprogram
-is fiction keys, The VEC &lsquo;does aot support a ght pea. (Many of these are. of concern, you
-should naturally obtain and compare the relevant manuals)
+Control codes for the Map VFC are similar to the Gemini IVC, but since there is no onboard CPU,
+there is no facility to load or run user programs on the card. Almost all screen and character
+editing commands are identical, but differences creep it concerning character set selection, format
+and graphics. The VFC has a programmable (any) key string table, whereas the IVC can only reprogram
+its function keys. The VFC does not support a light pen. (If any of these are of concern, you
+should naturally obtain and compare the relevant manuals.)
 </p>
 <?php columnEnd(1); ?>

@@ -1,76 +1,78 @@
 <?php columnStart(1); ?>
+<h3>
+MAP-80 MPI &ndash; Multi Purpose Interface
+</h3>
 <p>
-&lsquo;MAP-S0 MPI &ndash; Muli Purpose Inteaface
+This card is primarily a disk interface card, capable of talking to 3&Prime;, 5.25&Prime; and 8&Prime; floppy
+disk drives. A SASI bus interface also allows connection to winchester drives, via a hard disk
+controller card. As well as these, it provides communications via an onboard CTC and SIO with RS-232
+and RS-485 (high speed multi-drop) interfaces. The board is addressed as 16 ports, starting at
+00H, 20H, 40H ... etc. (link selectable: E0H is recommended with VSOFT).
 </p>
 <p>
-&lsquo;This card ig primarily a dick interface caed, capable of talking to 3&Prime;, 5.25&Prime; and 8&Prime; floppy
-disk drives.&rdquo; A SASI bus interface also allows coauection (0 winchester drives, vas hard dak
-outlier card. As well as thts, i provides communicalione wa an onboard CTC and&rsquo; SiO wth RS-Bn
-and &lsquo;HS-485&rdquo; (high speed muli-dfop) uaterfaces. The board i addressed as 16 ports, sarung. at
-(OH, 20H, ADH ee. (ik selectable: EDM i recommended Wih VSOFT)
+The floppy disk controller section uses the WD2797 as standard, configured to make it
+compatible with the GM809, GM829 and GM849. Optionally, the WD2793 can be fitted instead and a few
+links changed to make the MPI operate as the Lucas-Nascom FDC. SASI, 5.25&Prime; and 8&Prime; drive cables may
+all be attached simultaneously. The drive size (clock) is software selectable, and with suitable
+software switching the maximum stepping rate of 6mS for 5.25&Prime; drives can be reduced to 3mS by
+selecting 8&Prime; mode while stepping.
 </p>
 <p>
-The Moppy disk controller section ses the WD2797 ax standard, configured to make it
-compatible with the GMOS, GMS29 aod GMB. Optionally, the WD27Y3 can be ited ustead and a few
-like to make the MPI operate as the Lucas Nascom FDC. SASI, 5.25&Prime; and 8&Prime; drive cables may&rsquo;
-All be attached simultaneously.&rdquo; &lsquo;The drive size (clock) ws software selectable, and wh suitable
-oftware switching the manmom stepping vale af GaS for 525&Prime; dees can be redused 10 3m8 by
-felecung &amp; mode while stepping.
+The CTC may be clocked either from the system clock or from two (user supplied) crystals.
+Output from the CTC can be link selected to clock the SIO for communications: 1 x RS232 input, 1 x
+RS-232 output, and 1 x RS-485 bi-directional high-speed multi-drop (2 x data, 2 clock lines).
+</p>
+<h3>
+MAP-80 256K RAM
+</h3>
+<p>
+While the Nascom-2 on-board RAM can be used in conjunction with another RAM card e.g. Gemini
+GM802, the system really takes off when more RAM is available for use as a virtual disk as it allows
+programs to run at RAM rather than disk-based speeds.
 </p>
 <p>
-&lsquo;The CTC may be clocked either [om the system clock or from wo (user supplied) crystals
-Quiput from the CIC can be tak selected to clock the SIO or commumcations 1x RSI32 mpul, 1 *
-&lsquo;RS-E32 output, and 1 x RS-485 b-divectionalugh-speed mulindrop (2 x data, 2 clock ine).
+The 256K RAM card pages memory into the Z80 memory map, unlike the Gemini RAM-Disks, which are
+accessed on a port basis. When used as virtual disk there; doesn&rsquo; seem to be much to choose between
+them, BUT if you plan to run Map-80&rsquo;s implementation of CP/M PLUS, then you will need the banking
+facility offered by the 256K RAM boards. This is because parts of the OS are held in different
+banks, and the TPA is actually in bank 1. Don&rsquo;t bother with Non-banked CP/M Plus on a 64K system,
+it doesn&rsquo;t have the full range of facilities &ndash; use CP/M&nbsp;2.2 instead. Both 2.2 and Plus are
+available, configured, from Map-80. If you already have CP/M, they will customise yours to suit.)
 </p>
 <p>
--MAP-0 256K RAM
+The size of page paged depends upon the processor card used. With the Nascom-2 and GM811 the
+page size is 32K. With the GM813, any 4K block can be mapped into any 4K slot in the Z80 memory map
+(A19 may need to be connected to the bus &ndash; see &ldquo;The Great A19 Debate&rdquo; 80-BUS News Vol2 Iss.1 p43).
+Selections of the mode and card addressing is performed via two link blocks. When these cards are
+supplying all the memory in a system, there is a facility to force Page 0 into place (link and
+software selectable) so that there is a common area of memory in place for program execution. The
+maximum paged RAM supported as standard is 1Mbyte, but there is no reason why Gemini Ram-disks
+(GM833 &amp; GM873, which are port accessed) should not exist in a system at the same time &ndash; if you&rsquo;re
+rich enough. Even if you only have a GM802 64K RAM card, modification details are given to use it
+in conjunction with the Map 256K RAM. The minimum memory which can be fitted to the card is 64K,
+and further 3 banks can be fitted as funds permit to make up the full 256K.
 </p>
 <p>
-While the Nascom-? on-board RAM can be used in conjunction with another RAM card eg, Genial
-GMB02, the system really takes off when more RAM w avalable for use-as a virtual die ar it allows
-programs (0 ruo at RAM rather than disk-based speeds
+The GM862 256K Dynamic RAM card is limited to a single card with the GM811 CPU card (and
+probably Nascom-2 too), although up to 2Mbyte (8 cards) can be added to a GM813 based system. Its
+mapping arrangements are different to those employed by the Map 256K RAM, paging 56K, 60K or 64K
+pages with 8K, 4K or 0K of common memory when m page mode; or usable in 4K mappable blocks when
+used with the GM813.
 </p>
 <p>
-&lsquo;The 256K RAM card pages memory iato the Z80 memory map, ualike the Gem RAM-Disks, which ae
-scoessed on 4 port bats.&rdquo; When wsed at virtual Gist there&rsquo; doce seem to be much to. choore etwees
-them, BUT 2 you plan fo run Map-80&rsquo;s inplemestauon of CP/M FLUS, then you will need the banking
-facilty offered&rsquo; by the 256K RAM boards &lsquo;Thus w because parts of the OS are held in diflereat
-banks end the TPA ss actually un bask I. Doa&rsquo;t bother with Now-basked CP/M lus on a 6K system,
-Ne doese&rsquo;t bave the full range of facihues &ndash; use CP/M&nbsp;22 uastead. Both 22 aad Plus ate
-lable, configured, foe Map-80. Ifyou already have CPIM, they wil customise your (6 it)
+All in all, a very powerful and flexible system can be assembled as described above, but never
+lose sight of what you aim to achieve with your system. It can only ever be as good as its
+software, and you must either ensure that software support is available for the products you wish to
+incorporate, or be prepared to do it yourself. (Map-80 are able to supply modifications for SIMON
+and RP/M to allow them to work with their various products.)
 </p>
 <p>
-&lsquo;The se of page paged depends pon the procesor card ased. With tbe Netcom? and GMI the
-page size aK: &ldquo;Witte GMA any 0K Wook can be mapped ilo aay 4K soto the 0 memory ea
-[AIS may need to be connected fo the bus see &lsquo;The Great AID Debae&rdquo; BOBUS News Vol? dard pa)
-SSleetoo&rsquo;of the mode and ard addresang = pefocncd va two ink Docksa When these ard are
-Supplying all he memory ia a system, there Is a favity to force Page O &lsquo;ato. place (ink and
-feline Selecubie so thal there aa common are of temory i. place Ter progam &lsquo;secuton The
-&lsquo;Suuimuim paged RAM supported as standard w IMiyte, but there ino reason hy &lsquo;GemnRam dks
-{Gian a Estas what te port secesed) should Not enst a a stem atthe sane une &ndash; i youre
-&lsquo;Reh enough Even i jou only bane&rsquo; a GMBO? 8&amp;K RAM card, modication details tre pen 10 Que
-m2 conpinction Sih the Map 230K RAM. &lsquo;The minimus memory winch can be ited to We cad O&amp;K,
-{hd futher 3 banks canbe fied as fands perma fo make up the ll 235K.
+On that point, I close by stating that although I have no links with Map-90 (other than Adam!),
+they have always been most helpful with any questions or problems. The provision of circuits and
+sources is also most welcome as it is always better to have them and never need them than the
+reverse. I do not mean to slight Gemini is any way for their products are first-rate, it&rsquo;s just
+that while I developed my system over the years, I made my choices with an eye to future flexibility
+based on what was available as well as cost.
 </p>
-<p>
-Zhe GMB2 25 Dynamic RAM cad inte to single card i te OMAN) CPU ead (and
-probably Nascom2 tog), although up to. 2Mbyte (8 cards) caa be added to a GMBI3 based system. Ie
-Eiappmg arrangements are diferent to those employed by the Map 256K RAM, paging SOK, GOK or 64K
-Ber wah BAR or OK of common memory whee m pige mode or wble AK mappable Dicks wien
-</p>
-<p>
-&lsquo;All n all, a very powerful and Dexble sytem can be assembled as described above, but never
-lose sight of What&rdquo; You&rdquo; aim. to achieve with pour System It-can only ever be as good as its
-seltware, and you mus cther ensure that software support is aYalable for the products You wish (0
-scorer, or be prepared io det youre.&rdquo; (Maps are able (0 supply odicatos or SIMON
-and RPM fo allow then to work with thelr various products)
-</p>
-<p>
-On that pois, 1 close by sing that although I have ao links wth Map-90 (other than Ads).
-they have alwys been most hep wih aay guealons Gr problems&rdquo; The provson of ces and
-{ouroes is alo&rdquo; most welcome at au alvayt beter to have them&rdquo; and&rsquo; ever need. tenn than the
-fever &lsquo;T&rsquo;o gota to. sight Goma is any way for thew products ae festa, it. jst
-hat wie 1 Gevloped ay sytem over the Jeary T&rsquo;made my ches wah an oye (0 four Deabty
-tsed on what was sralaiear wl scot
-</p>
+<?php hLine("20%"); ?>
 <?php columnEnd(1); ?>

@@ -1,81 +1,79 @@
 <?php columnStart(1); ?>
 <p>
-The PCB program is, rather ited, but apparently it a only a taser&rdquo; for a beuer_vernoa
-&lsquo;ingle sided! PCH less than 3 aches square and doot mind
+The PCB program is rather limited, but apparently it is only a &ldquo;taster&rdquo; for a better version
+(see later). If you are designing a single sided PCB less than 3 inches square and don&rsquo;t mind
+copying it off the screen (or writing your own dump routine), and also are of a patient
+nature then it is very good. I have found two bugs in it. One relates to track delete and is
+mentioned in my letter. The other bug is in track move, where if, having chosen and marked your
+track, you move the end over the end of another track then the second track is picked up and moved
+as well. This is not so easily fixed, but armed with the knowledge it can be avoided. I have used
+my re-written version of this program (which supports extra facilities) to design an interface board
+for my Galaxy and have found that it does speed up the process considerably. I had to take a dozen
+intermediate hard-copies (this was mostly because I was doing a 5&Prime; x 4&Prime; double sided board, but not
+entirely) so I feel that the lack of a hard-copy facility is probably the most serious drawback.
 </p>
 <p>
-: &lsquo;om dump rostiae) and &lsquo;so oreo patea
-(One rltes 10 tack. delete nd is
+The other program supplied on SVC-03 is the source for the GM575 SVC-graphpac. Doctor Dark has
+covered this briefly in the last issue so I shall not cover it again here. What I shall say is that
+I found a bug in in it within half an hour. I mentioned this in my letter in which I also mentioned
+how to correct it. For my troubles I received a copy of GM575 to check. The bug. for I still feel
+it to the such, is indeed present here, but all the demonstration programs cater for it by using the
+MBasic RESET instruction immediately before any use of GSI or PSI. I don&rsquo;t know whether the manual
+instructs this but the modification I gave removes the need for it.
 </p>
 <p>
-&ldquo;The
-tack, you move the tad over the end
-swell Th wnat so easly. fad, but
-&lsquo;By re-writen version of {hs progrss (which supports est Tacies) to. design. an. trace board
-{or my Galty sod have found that i docs speed up the proces conndersbyT tad fo lake a dozen
-&lsquo;Btermedate Rardcopis (tie wat mosly because wat doing a Sx 4 double sided board, boot
-ciel a0 Ife hat the lack of a hardcopy Inc probebly the most senous drawback
+As regards the claim that this &ldquo;could be used as the basis for own commands&rdquo;, I
+feel this is a little hopeful as the source is sparsely commented and written in a very confusing
+manner, but what do you expect ?
 </p>
 <p>
-&ldquo;The other program supplied on SVCO3 ws the source forthe GMS7S SVC-raphpsc. Doctor Dark has
-covered ine BiB we tet ace Sokal &lsquo;not caer apa bete Wee shal tay tat
-{PTound bug sm i witha Naif an boar I menloned this inay fei a which 7 also meaboned
-how fo corred it For my troubles I recaved 5 copy of GMSIS fo check The bug. for I all Tel
-ito bea indeed een tge taal the eons, rope er fi Dy tig, te
-Maisie RESET instruction immediatly before any use of GSI or PSE P dont now wheter the manual
-{nstrt this but the modification 1 gave removes the aed for
+All in all a good package, well worth the &pound;20 (this includes P&P and VAT).
+</p>
+<h3>
+A Better PCB Package
+</h3>
+<p>
+And one which does most of what mine does! Actually it does some things mine doesn&rsquo;t (yet).
 </p>
 <p>
-As regards. the clam that this &ldquo;could be wed at the basis for adding your own command&rsquo;, 1
-fect thi,&rdquo; litle opel ax the source i sparsely commented. and wea, in avery confusing
-&lsquo;nner, but wha do you expect?
+The version I have is a &ldquo;pre-release&rdquo; (nth revision prototype) version, so I shall attempt to
+be &ldquo;honest but not too destructive&rdquo; as my instructions say. It has been written by the same person
+as the simple version in SVC-01 and -03, and he will be selling it directly for &pound;20 + VAT.
 </p>
 <p>
-&lsquo;All all good package, well worth the &pound;20 (his includes PAP and VAT).
+I noticed immediately that the bugs I mentioned have been fixed. This version caters for
+boards up to 8.6&Prime; x 8.6&Prime;, handles double sided boards and includes a dump routine for Epson
+compatibles (the width is restricted to 8&Prime; for this) Also added are 3 new types of pad and rotated
+versions of two asymmetric types. The IC package facility is extended to include 64 pin packs,
+but for some obscure reason it docs not support 20 pin ones.
 </p>
 <p>
-&lsquo;ABetterPCBPackagt
-&lsquo;And ove which does most of what mine does? Actalit does some things mine does&rsquo; (yet)
+Well those are the good points.....
 </p>
 <p>
-&lsquo;The version I have is a &lsquo;pre-elease&rdquo; (ath rension protoype) verion, so 1 shall atempt 10
-be neat Bl soto esate ary maracas any PHC ga bese ten by the sane po
-&pound;5 the ample version ia SVC-OT and 03, and be willbe sling it dzetly for &pound;20 + VAT.
+I&rsquo;m afraid I have to say there are several things I would want done differently. These relate
+mostly to the methods used to implement the improvements.
 </p>
 <p>
-I noticed immediately that the bugs I meationed have bees fixed. This version eaters for
-boards up to 86&Prime; x 8.6&Prime;, handles double sided boards and includes = dump routine for Epson
-compatibles (the width ve restncted t0 8&Prime; for ths). Algo added are&rsquo; 3 new Types of pad and rotated
-&lsquo;ernions of the two asymmetnc types The IC package facility i extended 10 include 64&Prime; pn packs,
-&lsquo;at for some obscure reaaon it does ot support 20 pone.
+Firstly, the extended size capability. Because the SVC display is too small it is obviously
+necessary to have only a section of the board displayed at any one time, at least while work is
+being done. The system used divides the board into 9 segments roughly 3 inches square. At any one
+time there will be one of these on the screen and the others not visible. Unfortunately the
+boundaries are fixed and there is no overlap. The result is that there is a &ldquo;noughts and crosses
+board&rsquo; of almost un-usable bits which are impossible to see clearly. Anyone who has tried
+navigating across the boundary between overlapping maps without being able to see at once
+will know how tricky it is. The solution would be to allow any section (or at least one of 16 or
+more overlapping sections) to be displayed.
 </p>
 <p>
-&lsquo;Wel those are the good points
+To make this worse, the boundary zones cannot be crossed by tracks so you have to find the
+meeting point and define two tracks. This process is painful, and on the demo. PCB file it has
+obviously caused some confusion at one point.
 </p>
 <p>
-Tm sfesid 1 have to say there are several things 1 would want done differently. These relate
-mostly 10 the methods weed a orplemeat Ihe provements
-</p>
-<p>
-Firstly, the extended size capability Because the SVC display is too small it is obviously
-ccs 1 fv ony seca the, boar duped st atte a ead we work
-&lsquo;omg done.&rdquo; The system wed. dies the board nto oughly 3 aches square At aay one
-time, there wilt be one &lsquo;of there&rsquo;on the screen and the othere ect vaible. Unfortanatey the
-boundanes are fsed tnd there ts ao. owl &lsquo;The revit &amp; that there sf &ldquo;aoughls and roses
-Surf, most unosae ht which e_impouible to se clearly Anyone who bat ted
-anganng. scrote the boondary non-overlapping, maps wihout being able To sce both at once
-&lsquo;ellinow bow teky tris TR souion would be Yalow aay secon&rsquo; (or at least be of 16 oF
-TBoce cverlaping seco) 1 be duplayed.
-</p>
-<p>
-To make this worse, the boundary zones cannot be crossed by tracks 20 you have (0 fad the
-point and define (wo (aeks&rdquo; Ths process is painful and oa the demo. PCB ile it bas
-&lsquo;obviously enuted tome confusion atone point
-</p>
-<p>
-&lsquo;The double sided facility 4 also bound to cause problems with the two colour (on / off)
-display &ldquo;This has been done by displaying ove. side or the other but not both. This makes sense but
-Without the facility to display both sides simultaneously (at least temporarily) it is still-quite
-ical vo ute
+The double sided facility is also bound to cause problems with the two colour (on / off)
+display. This has been done by displaying one side or the other but not both. This makes sense but
+without the facility to display both sides simultaneously (at least temporarily) it is still quite
+difficult to use.
 </p>
 <?php columnEnd(1); ?>

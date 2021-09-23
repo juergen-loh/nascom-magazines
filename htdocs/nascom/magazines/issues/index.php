@@ -186,36 +186,36 @@
 	by Chris Blackmore
 </h3>
 <p>
-	<a href="../inmc-news/04/15/text/#article1">   Episode  1 &nbsp; </a>
-	<a href="../inmc-news/05/10/text/#article1">    &nbsp;  2 &nbsp; </a>
-	<a href="../inmc-news/05/23/text/#article1">    &nbsp;  3 &nbsp; </a>
-	<a href="../inmc-news/06/13/text/#article1">    &nbsp;  4 &nbsp; </a>
-	<a href="../inmc-news/07/08/text/#article1">    &nbsp;  5 &nbsp; </a>
-	<a href="../inmc-80-news/01/34/text/#article1"> &nbsp;  6 &nbsp; </a>
-	<a href="../inmc-80-news/02/17/text/#article1"> &nbsp;  7 &nbsp; </a>
-	<a href="../inmc-80-news/03/20/text/#article1"> &nbsp;  8 &nbsp; </a>
-	<a href="../inmc-80-news/04/33/text/#article1"> &nbsp;  9 &nbsp; </a>
-	<a href="../80-bus-news/11/13/text/#article1">  &nbsp; 10 &nbsp; </a>
-	<a href="../80-bus-news/12/11/text/#article1">  &nbsp; 11 &nbsp; </a>
-	<a href="../80-bus-news/13/10/text/#article1">  &nbsp; 12 &nbsp; </a>
-	<a href="../80-bus-news/14/06/text/#article1">  &nbsp; 13 &nbsp; </a>
-	<a href="../80-bus-news/21/29/text/#article1">  &nbsp; 14 &nbsp; </a>
-	<a href="../80-bus-news/22/35/text/#article1">  &nbsp; 15 &nbsp; </a>
-	<a href="../80-bus-news/23/54/text/#article1">  &nbsp; 16 &nbsp; </a>
-	<a href="../80-bus-news/24/17/text/#article1">  &nbsp; 17 &nbsp; </a>
-	<a href="../80-bus-news/25/47/text/#article1">  &nbsp; 18 &nbsp; </a>
-	<a href="../80-bus-news/26/15/text/#article1">  &nbsp; 19 &nbsp; </a>
-	<a href="../80-bus-news/31/13/text/#article1">  &nbsp; 20 &nbsp; </a>
-	<a href="../80-bus-news/32/17/text/#article1">  &nbsp; 21 &nbsp; </a>
-	<a href="../80-bus-news/34/11/text/#article1">  &nbsp; 22 &nbsp; </a>
-	<a href="../80-bus-news/36/07/text/#article1">  &nbsp; 23 &nbsp; </a>
-	<a href="../scorpio-news/11/38/"> &nbsp; 24 &nbsp; </a>
-	<a href="../scorpio-news/12/16/"> &nbsp; 25 &nbsp; </a>
-	<a href="../scorpio-news/13/05/"> &nbsp; 26 &nbsp; </a>
-	<a href="../scorpio-news/14/25/"> &nbsp; 27 &nbsp; </a>
-	<a href="../scorpio-news/21/08/"> &nbsp; 28 &nbsp; </a>
-	<a href="../scorpio-news/22/15/"> &nbsp; 29 &nbsp; </a>
-	<a href="../scorpio-news/31/09/"> &nbsp; 30 &nbsp; </a>
+	<a href="../inmc-news/04/15/text/#article1">   Episode&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../inmc-news/05/10/text/#article1">    &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../inmc-news/05/23/text/#article1">    &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../inmc-news/06/13/text/#article1">    &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../inmc-news/07/08/text/#article1">    &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/01/34/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/02/17/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/03/20/text/#article1"> &nbsp;&nbsp;8&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/04/33/text/#article1"> &nbsp;&nbsp;9&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/11/13/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/12/11/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/13/10/text/#article1"> &nbsp;&nbsp;12&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/14/06/text/#article1"> &nbsp;&nbsp;13&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/21/29/text/#article1"> &nbsp;&nbsp;14&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/22/35/text/#article1"> &nbsp;&nbsp;15&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/23/54/text/#article1"> &nbsp;&nbsp;16&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/24/17/text/#article1"> &nbsp;&nbsp;17&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/47/text/#article1"> &nbsp;&nbsp;18&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/15/text/#article1"> &nbsp;&nbsp;19&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/13/text/#article1"> &nbsp;&nbsp;20&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/32/17/text/#article1"> &nbsp;&nbsp;21&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/34/11/text/#article1"> &nbsp;&nbsp;22&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/36/07/text/#article1"> &nbsp;&nbsp;23&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/11/38/"> &nbsp;&nbsp;24&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/12/16/"> &nbsp;&nbsp;25&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/05/"> &nbsp;&nbsp;26&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/14/25/"> &nbsp;&nbsp;27&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/21/08/"> &nbsp;&nbsp;28&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/22/15/"> &nbsp;&nbsp;29&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/31/09/"> &nbsp;&nbsp;30&nbsp;&nbsp;</a>
 </p>
 <h2>
 	The DH Bits
@@ -224,20 +224,20 @@
 	by David Hunt
 </h3>
 <p>
-	<a href="../inmc-news/02/01/text/#article1">       Bit  0 &nbsp; </a>
-	<a href="../inmc-news/05/02/text/#article1">    &nbsp;  1 &nbsp; </a>
-	<a href="../inmc-news/07/01/text/#article1">    &nbsp;  2 &nbsp; </a>
-	<a href="../inmc-80-news/01/02/text/#article1"> &nbsp;  3 &nbsp; </a>
-	<a href="../inmc-80-news/02/02/text/#article1"> &nbsp;  4 &nbsp; </a>
-	<a href="../inmc-80-news/03/02/text/#article1"> &nbsp;  5 &nbsp; </a>
-	<a href="../inmc-80-news/04/02/text/#article1"> &nbsp;  6 &nbsp; </a>
-	<a href="../inmc-80-news/05/02/text/#article1"> &nbsp;  7 &nbsp; </a>
-	<a href="../80-bus-news/25/54/text/#article1">  &nbsp;  8 &nbsp; </a>
-	<a href="../80-bus-news/31/17/text/#article1">  &nbsp;  9 &nbsp; </a>
-	<a href="../80-bus-news/33/31/text/#article1">  &nbsp; 10 &nbsp; </a>
-	<a href="../80-bus-news/35/31/text/#article1">  &nbsp; 11 &nbsp; </a>
-	<a href="../80-bus-news/36/23/text/#article1">  &nbsp; 12 &nbsp; </a>
-	<a href="../80-bus-news/41/07/text/#article1">  &nbsp; 13 &nbsp; </a>
+	<a href="../inmc-news/02/01/text/#article1">       Bit&nbsp;0&nbsp;&nbsp; </a>
+	<a href="../inmc-news/05/02/text/#article1">    &nbsp;&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../inmc-news/07/01/text/#article1">    &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/01/02/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/02/02/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/03/02/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/04/02/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/05/02/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/54/text/#article1">  &nbsp;&nbsp;8&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/17/text/#article1">  &nbsp;&nbsp;9&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/31/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/35/31/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/36/23/text/#article1"> &nbsp;&nbsp;12&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/41/07/text/#article1"> &nbsp;&nbsp;13&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/21/33/"> &nbsp; 14 &nbsp; </a>
 	<a href="../scorpio-news/22/23/"> &nbsp; 15 &nbsp; </a>
 </p>
@@ -248,13 +248,13 @@
 	by David Hunt
 </h3>
 <p>
-	<a href="../inmc-80-news/01/19/text/#article1">   Part 1 &nbsp; </a>
-	<a href="../inmc-80-news/02/26/text/#article1"> &nbsp; 2 &nbsp; </a>
-	<a href="../inmc-80-news/03/32/text/#article1"> &nbsp; 3 &nbsp; </a>
-	<a href="../inmc-80-news/04/45/text/#article1"> &nbsp; 4 &nbsp; </a>
-	<a href="../inmc-80-news/05/42/text/#article1"> &nbsp; 5 &nbsp; </a>
-	<a href="../80-bus-news/12/22/text/#article1">  &nbsp; 6 &nbsp; </a>
-	<a href="../80-bus-news/13/30/text/#article1">  &nbsp; 7 &nbsp; </a>
+	<a href="../inmc-80-news/01/19/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/02/26/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/03/32/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/04/45/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/05/42/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/12/22/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/13/30/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
 <h2>
 	NASCOM ROM BASIC disassembled
@@ -263,13 +263,13 @@
 	by Carl Lloyd-Parker
 </h3>
 <p>
-	<a href="../80-bus-news/23/27/text/#article1">   Part 1 &nbsp; </a>
-	<a href="../80-bus-news/24/23/text/#article1"> &nbsp; 2 &nbsp; </a>
-	<a href="../80-bus-news/25/31/text/#article1"> &nbsp; 3 &nbsp; </a>
-	<a href="../80-bus-news/26/31/text/#article1"> &nbsp; 4 &nbsp; </a>
-	<a href="../80-bus-news/31/23/text/#article1"> &nbsp; 5 &nbsp; </a>
-	<a href="../80-bus-news/32/23/text/#article1"> &nbsp; 6 &nbsp; </a>
-	<a href="../80-bus-news/33/23/text/#article1"> &nbsp; 7 &nbsp; </a>
+	<a href="../80-bus-news/23/27/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/24/23/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/31/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/31/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/23/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/32/23/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/23/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
 <p>
 	NASCOM ROM BASIC source code is available in
@@ -283,10 +283,10 @@
  	by Viktor
 </h3>
 <p>
-	<a href="../micropower/11/16/">   Part 1 &nbsp; </a>
-	<a href="../micropower/12/20/"> &nbsp; 2 &nbsp; </a>
-	<a href="../micropower/13/03/"> &nbsp; 3 &nbsp; </a>
-	<a href="../micropower/14/18/"> &nbsp; 4 &nbsp; </a>
+	<a href="../micropower/11/16/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/12/20/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/13/03/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../micropower/14/18/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
 <h2>
 	NAS-SYS monitors dissected
@@ -295,13 +295,13 @@
  	by J.​ Haigh
 </h3>
 <p>
-	<a href="../micropower/11/28/">   Part 1 &nbsp; </a>
-	<a href="../micropower/12/26/"> &nbsp; 2 &nbsp; </a>
-	<a href="../micropower/13/26/"> &nbsp; 3 &nbsp; </a>
-	<a href="../micropower/14/27/"> &nbsp; 4 &nbsp; </a>
-	<a href="../micropower/21/30/"> &nbsp; 5 &nbsp; </a>
-	<a href="../micropower/22/07/"> &nbsp; 6 &nbsp; </a>
-	<a href="../micropower/23/22/"> &nbsp; 7 &nbsp; </a>
+	<a href="../micropower/11/28/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/12/26/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/13/26/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../micropower/14/27/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../micropower/21/30/"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../micropower/22/07/"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../micropower/23/22/"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
 <h2>
 	EPROM Programmer
@@ -310,30 +310,30 @@
  	by C.​ Bowden
 </h3>
 <p>
-	<a href="../micropower/14/02/">   Part 1 &nbsp; </a>
-	<a href="../micropower/21/18/"> &nbsp; 2 &nbsp; </a>
-	<a href="../micropower/22/12/"> &nbsp; 3 &nbsp; </a>
+	<a href="../micropower/14/02/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/21/18/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/22/12/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
-<h2>
+<!--h2>
 	XTAL BASIC XTRA 2.2 updates
 </h2>
 <h3>
  	by David Elliot
 </h3>
 <p>
-	<a href="../micropower/14/11/">   Part 1 &nbsp; </a>
-	<a href="../micropower/21/12/"> &nbsp; 2 &nbsp; </a>
-</p>
-<h2>
+	<a href="../micropower/14/11/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/21/12/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+</p-->
+<!--h2>
 	Co-ordinate Life
 </h2>
 <h3>
  	by P.​ Whittaker
 </h3>
 <p>
-	<a href="../micropower/22/34/">   Part 1 &nbsp; </a>
-	<a href="../micropower/23/32/"> &nbsp; 2 &nbsp; </a>
-</p>
+	<a href="../micropower/22/34/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/23/32/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+</p-->
 <h2>
 	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
 </h2>
@@ -341,11 +341,11 @@
 	by David G.​ Johnson
 </h3>
 <p>
-	<a href="../nascom-newsletter/31/16/">   Part 1 &nbsp; </a>
-	<a href="../nascom-newsletter/32/02/"> &nbsp; 2 &nbsp; </a>
-	<a href="../nascom-newsletter/33/02/"> &nbsp; 3 &nbsp; </a>
-	<a href="../nascom-newsletter/34/02/"> &nbsp; 4 &nbsp; </a>
-	<a href="../nascom-newsletter/35/03/"> &nbsp; 5 &nbsp; </a>
+	<a href="../nascom-newsletter/31/16/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/32/02/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/33/02/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/34/02/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/35/03/"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Disk Formats and CP/M Disk Routines
@@ -354,10 +354,21 @@
 	by M.W.T. Waters 
 </h3>
 <p>
-	<a href="../scorpio-news/11/25/">   Part 1 &nbsp; </a>
-	<a href="../scorpio-news/12/40/"> &nbsp; 2 &nbsp; </a>
-	<a href="../scorpio-news/13/11/"> &nbsp; 3 &nbsp; </a>
-	<a href="../scorpio-news/14/15/"> &nbsp; 4 &nbsp; </a>
+	<a href="../scorpio-news/11/25/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/12/40/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/11/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/14/15/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+</p>
+<h2>
+	The ZCPR3 System
+</h2>
+<h3>
+	by C.​ Bowden
+</h3>
+<p>
+	<a href="../scorpio-news/12/20/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/25/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<!--a href="../scorpio-news/21/22/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
 </p>
 <h2>
 	Digital Imaging Systems
@@ -366,9 +377,9 @@
 	by D.​R.​ Hunt
 </h3>
 <p>
-	<a href="../scorpio-news/22/27/">   Part 1 &nbsp; </a>
-	<a href="../scorpio-news/23/33/"> &nbsp; 2 &nbsp; </a>
-	<a href="../scorpio-news/24/25/"> &nbsp; 3 &nbsp; </a>
+	<a href="../scorpio-news/22/27/">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/23/33/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/24/25/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Lawrence
@@ -398,7 +409,8 @@
 <br>
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
 <p>
-	80-BUS publications spanned nearly 12 years from simple Z80 computers to the rise of IBM PC compatibles. Here ends the 8 bit era.
+	80-BUS publications spanned nearly 12 years from simple Z80 computers to the
+	rise of IBM PC compatibles. Here ends the 8 bit era.
 </p>
 </div></div>
 

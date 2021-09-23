@@ -2,7 +2,7 @@
 <p>
 ALV is similar to that for CP/M&nbsp;2.2 in that the BDOS uses the allocation
 vector to identify which data blocks have been allocated to files and which are
-free for use. CP/M&rsquo;3, however, uses two bite in the allocation vector for each
+free for use. CP/M&rsquo;3, however, uses two bits in the allocation vector for each
 block on the disk. The only exception to this is in a non-banked CP/M&nbsp;3
 where the option is given to use single bit entries as with CP/M&nbsp;2.2.
 Since there should be no non-banked CP/M&nbsp;39 sold commercially (the non-banked
@@ -31,9 +31,9 @@ disk, the BDOS will keep track of which data blocks it is allocating by using
 one of the two bit in the allocation vector for each of those blocks. When a
 file is closed, the second set of bits for the affected blocks are updated to
 match the first. If, on the other hand, the file is not closed before returning
-to CP/M the first set of bite can be reset to their original state because the
+to CP/M the first set of bits can be reset to their original state because the
 second set provide a record of which blocks remain free. Consequently, the disk
-free apace shown by SHOW.COM (CP/M/nbsp;3&rsquo;s equivalent to STAT.COM) is always correct
+free apace shown by SHOW.COM (CP/M&nbsp;3&rsquo;s equivalent to STAT.COM) is always correct
 and the need for a disk access has been alleviated. Unlike CP/M.2.2, the size
 of the allocation vector for CP/M&nbsp;3 is calculated as (DSM/4)+2. The &ldquo;2&rdquo; gives
 us the clue that the double bit allocation vector is in fact configured as two

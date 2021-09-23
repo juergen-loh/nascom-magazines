@@ -1,83 +1,76 @@
 <?php columnStart(1); ?>
 <p>
-In Modula 2 the definiuon as been Jef quite vague. The implementer bas. to certain
-modules auch a8 system, torts, ta/out, files efe, but the exact definition of what ieee modules
-contain has been left open. Never ihe less the spirit of the language is that there should&rsquo; be 0
-&lsquo;ode that could not be wrttea by 8 Wer of the language.
+In Modula 2 the definition has been left quite vague. The implementer has to provide certain
+modules such as system, texts, in/out, files etc., but the exact definition of what these modules
+contain has been left open. Never the less the spirit of the language is that there should be no
+code that could not be wrtten by a user of the language.
 </p>
 <p>
-vie odin, be aged tk sng lst eb sad ew
-con Sei adc aes pes a
-coy Sesser inte Tare hc oe ye ae
-See tact bo ace See br ree cae
+Here Borland have infringed on this suggestion, in providing procedures <i>write</i> and <i>writeln</i> which
+can have a variable number of parameters, i.e. they are like the Pascal equivalents, but in the same
+way as Turbo Pascal has become the de facto standard for pascal, as it provided users with the
+extensions they wanted, Turbo Modula 2 may also become a de facto standard for the same reasons.
 </p>
 <p>
-In the Borland implemeatati ofthe language the following simple types are available:
-INTEGER 32,768 0 32.757,
+In the Borland implementation of the language the following simple types are available:
+</p>
+<table class="indent">
+<tr><td>INTEGER</td><td>-32,768 to 32.767,</td></tr>
+<tr><td>LONGINT</td><td>-2,147,483,648 to 2,147,483,647,</td></tr>
+<tr><td>CARDINAL</td><td>0 to 65535,</td></tr>
+<tr><td>REAL</td><td>-6.80565E+38 to -6.80565e+38,</td></tr>
+<tr><td>LONGREAL</td><td>-3.59538626967246D+308 to 3.5....D+308</td></tr>
+<tr><td>CHAR</td><td></td></tr>
+<tr><td>BOOLEAN</td><td></td></tr>
+</table>
+<p>
+In Modula 2 as with Pascal it is possible to define any datatype that can be constructed from
+simple types. Also in most versions of Modula 2 is the SYSTEM module, or to be more correct pseudo-module,
+in which version dependent code is located and the dirty tricks definitions are included.
+In this version the types BYTE, WORD, ADDRESS and PROCESS are defined, the first three are obvious,
+I hope, but the last is a facility for allowing concurrent processes to occur allowing transfer
+of information between processes. An analogy in another high level language is hard to think of,
+the use of system common, or shared EMA in Fortran is similar but much more limited. To achieve a
+similar effect in Fortran usually involves direct operating system calls.
 </p>
 <p>
-LONGINT &mdash;,ie7a8h,oa8 t02,267483647,
-CARDINAL (1065535,
+In this version of Modula 2, you can supply modules written in Microsoft Macro 80 compatible
+code, (as .REL files), which can be linked into main code once the appropriate definition module
+has been written. The Turbo environment is a particularly friendly environment to work in, you can
+set various options when compiling, for example you can turn the extensions to the standard off, you
+can make the compiler ignore case, in standard identifiers (such as END). Range and maths checks
+can be switched on or off, but the usual comments about wearing a lifebelt on load and taking it off
+when you go to sea apply in these cases and a listing of compilation can be obtained.
 </p>
 <p>
-REAL. &ldquo;GHOSESE + 380 60S65e + 38,
-LONGREAL 3 s9sS862577246D + 30810 3.5..D +308
-CHAR
-BOOLEAN
-In Modula 2 as with Pascal ts possible to define any that can be constructed from
-imple types Also tm most versions of Modula 2 us the SYSTEM, cor to be more correct pseudo.
+An interesting feature of this compiler is that it may compile to interpreted code or to native
+code the choice m left up to the user. Usually code is compiled to the interpreted form, for
+testing and then compiled to native code when fully debugged, but sometimes for compactness of code,
+it will be left as interpreted code. There are some bugs in the compiler in this area, I have had
+interpreted code work and native code then produced and turn its toes up.
 </p>
 <p>
-Bier ERD, Sibel os ll&rsquo; det haa
-Lee ee ee eee ee ene ee Oe
-Peta phe&rdquo; Meee SS Oi, ace a
-Mey pa mide Sathana be teat teed&rdquo; 1 et
-SSC ct etn
+The linker can produce either a .COM file, of can link together interpreted modules to reduce
+disk search time. The linker can be controlled in much the same way as linkers on super-minis and
+main frames, allowing direct formation of overlays and control of initialisation. Remember in
+Modula 2, each module may have a <i>main</i> as well as procedures.
 </p>
 <p>
-fn the vernon of Modula 2, you cas supply modules writen in. Micosol Macro&nbsp;80 compatible
-cade, (a REL fies), which can br&rsquo;laked to We tun code onor the appropriate defiaiuon tule
-&ldquo;heen waten &ldquo;The Tuto enmronmen &ldquo;a pare iendy cawoumem fo. work im, you can
-Set vnriour options when compling for example You san tira the cxensons 0 the sapdard Of, You
-fan make the comple vgiore cast, so standard Wentiers such as END) &ldquo;Range and maihs checks
+The librarian is also an essential item of any Modula 2 system and the Turbo one is easy to
+use, quite like LU in its behaviour.
 </p>
 <p>
-fan be switched on or off but the usual comments aboot 2 feels on land and taking it off
-&lsquo;when you goto sea apply a these cates and a listng of compilation can be obtained.
-&lsquo;An interesting feature of ths compiler u that it may compile to interpreted code or 10 naive
+The shell is particularly friendly, allowing access to the editor, compiler linker and
+librarian, without leaving its environment. Particularly useful to hard disk users is the ease of
+moving from one user area to another and the ability to produce a directory list across the disk
+including all user areas. Access to file management utilities such as rename, copy, and delete are
+also provided.
 </p>
 <p>
-code &lsquo;the chowce ts left up to the user Usually code i compiled tothe uterpreted. form, for
-fesung and. then compiled to native code when fully debugged, but sometimes for compactness of &ldquo;ode,
-wall be eft as interpreted code. There are some bugr im the compiler ia ths area, I have. bad
-interpreted code work and naive code then produced and turn oes up.
-</p>
-<p>
-&lsquo;The linker can_ produce cither a COM file, oF can lnk topether interpreted modules 10 reduce
-lik search time.&rdquo; The linker can be controled In much the same way as Unkers oo super-munis and
-tmain frames, silowing direct formation of overlays and coatrol of initialisation Remember 12
-Modula 2, cach module may have a main aswell as procedures
-</p>
-<p>
-&lsquo;The bravian 16 also an euscatial tem of any Moduli 2 system and the Turbo one is easy 10
-ase, quite tke LU ints behaviour
-</p>
-<p>
-The shell ss particularly friendly, allow compiler linker snd
-</p>
-<p>
-rtbout leaving is eovironsieat " Parteulrly etal to bard disk ues tthe ease of
-&lsquo;moving from one user afea to another and the billy to produces diectory st arose the dik
-SEcludog ll wer areas&rdquo; Access to fie management tines tuch as rename, copy, abd lee ae
-ts provided.
-</p>
-<p>
-The FTL Modula 2 (MSDOS version) comes with two manual, one of 90 pages explaining the
-cooler in tlavon to the MSDOS uperaug stem, and the secod (of 105 pages) Sciebag the
-gout oot be pose ory the ngage fom th unt lee but they Go
-Gian to teach the language dnd should ot be expected Yo do so. &lsquo;The mantal const sone&rdquo; em
-&lsquo;of code but these tend to be notes describing features rather than full program code. vs
-</p>
-<p>
+The FTL Modula 2 (MSDOS version) comes with two manuals, one of 90 pages explaining the
+compiler in relation to the MSDOS operating system, and the second (of 105 pages) describing the
+language. It would not be possible to learn the language from these manuals alone, they do not
+claim to teach the language and should not be expected to do so. The manual contains some examples
+of code but these tend to be notes describing features rather than full program code.
 </p>
 <?php columnEnd(1); ?>
