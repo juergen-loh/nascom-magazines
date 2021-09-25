@@ -1,6 +1,6 @@
 <?php columnStart(1); ?>
 <p>
-that itself asked &lsquo;W/w&rsquo;, and which on exit asked:
+that itself asked &lsquo;W/w&rsquo;, and which on exit asked:<br>
 &ldquo;BACKUP DONE &ndash; PROCEED (with original command)?".
 </p>
 <p>
@@ -11,19 +11,19 @@ output or change the printer or screen format is protected in some way.
 <p>
 All lower case (a-z) commands, except &ldquo;f&rdquo;, are converted to upper case, allowing
 great shortening of the dispatch table code. Protection is applied to ALL A-Z
-commands EXCEPT 1,J,M,D,F,f,V. (M,D,F,f require parameters anyway, so they
+commands EXCEPT I,J,M,D,F,f,V. (M,D,F,f require parameters anyway, so they
 can be aborted, and I,J and V commands do not cause serious problems if invoked
 in error.)
 </p>
 <p>
-The remaining A &mdash;Z commands can have unwanted results if accessed in error, so
-they are ALL accessed via a lead-in key. I have chosen &lsquo;- Q&rsquo; for this purpose, since
+The remaining A-Z commands can have unwanted results if accessed in error, so
+they are ALL accessed via a lead-in key. I have chosen &lsquo;^Q&rsquo; for this purpose, since
 it was not used as a command, and &lsquo;Q&rsquo; is near the control key. A small amount of
 extra code has been added which has widened the scope of this, so that a total of
 four key sequences are available to access the required protected commands. e.g.;
 </p>
 <p>
-&ldquo;QE or &ldquo;Qe or *Q*E or *Q&ldquo;%e keys will ALL access the &lsquo;E&rsquo; command.
+^QE or ^Qe or ^Q^E or ^Q^e keys will ALL access the &lsquo;E&rsquo; command.
 </p>
 <p>
 Where the command in question can have particularly awkward results, such as &lsquo;E&rsquo;,
@@ -32,7 +32,7 @@ security keys are only used a few times in a session, this double protection is 
 problem.
 </p>
 <p>
-In some cases like formatting, the &ldquo;Q protected command requests extra
+In some cases like formatting, the ^Q protected command requests extra
 parameters, and so this request provides a way of escape, without the need for
 GEMPEN to ask if it is safe to proceed.
 </p>
@@ -42,12 +42,16 @@ Modifications to Commands.
 <p>
 a) F/f &ndash; Find and Replace
 </p>
-<ol>
-<li>^X during string input will abort command without cursor moving.
-Originally once a string was started there was no way to abort, and &ndash; Z. would
+<ol class="indent">
+<li>
+^X during string input will abort command without cursor moving.
+Originally once a string was started there was no way to abort, and ^Z would
 cause the cursor to move to some other place which depended on what had
-been entered.</li>
-<li>Find and Replacement Strings now allow&nbsp;? wildcard Characters. (Advisable
-not to use&nbsp;?&rsquo;s in replacement string since they will be left in the text.)</li>
+been entered.
+</li>
+<li>
+Find and Replacement Strings now allow ? wildcard Characters. (Advisable
+not to use ?&rsquo;s in replacement string since they will be left in the text.)
+</li>
 </ol>
 <?php columnEnd(1); ?>

@@ -4,7 +4,7 @@ forms, then anyone typing A4: would succeed in entering JOHN:, since Z3 does not
 check to see if there is a password associated with a DU before granting access.
 </p>
 <p>
-The modified code listed in Appendix &lsquo;A&rsquo; will cause the 7.3 CCP to check DU forms
+The modified code listed in Appendix &lsquo;A&rsquo; will cause the Z3 CCP to check DU forms
 as well as DIR forms for password protection. Space is a problem in the Z3 CCP.
 Not all routines in the CCP are available in the RCP segment, and some perform
 slightly differently. In order to get the modified code into the CCP, I had to reduce
@@ -21,8 +21,6 @@ hard, and there are probably more that could be saved.
 </p>
 <p>
 By modifying the ZCPR3.ASM file as described and re-assembling, then the Z3
-</p>
-<p>
 CCP will check both DU: and DIR: forms of address for passwords before granting
 access.
 </p>
@@ -31,10 +29,10 @@ Using the SVC Alternative Screen as a Command List
 </h2>
 <p>
 Some time ago I described in 80-BUS News how I had modified my BIOS so that
-a lead in key (&ldquo;T) provided access to a number of single key operations, From
+a lead in key (^T) provided access to a number of single key operations, From
 relatively simple beginnings, this direct command feature grew into an extremely
-useful tool. For example a " P would page the Printer and BIOS, &ldquo;S$ would toggle
-the screen paging, &ndash; D would do a screen dump, and several keys would alter lines
+useful tool. For example a ^P would page the Printer and BIOS, ^S would toggle
+the screen paging, ^D would do a screen dump, and several keys would alter lines
 per page, skip-over, change the printer type, etc. In more recent versions, it was
 possible to strike ^F as the second key, and this would switch SVC screens. This
 appeared to me to be an attractive operation, but subsequently I never found much

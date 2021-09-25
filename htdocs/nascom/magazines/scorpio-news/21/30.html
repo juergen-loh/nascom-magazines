@@ -16,7 +16,7 @@ holding the .HLP files.
 <p>
 It appears that when I used CP/M Plus to copy files to the Winnie from the ICL
 disks, CP/M Plus did not overwrite the .HLP file references in the directory,
-probably because the first byte was not OESH. On the other hand it did not mark
+probably because the first byte was not 0ESH. On the other hand it did not mark
 the relevant .HLP file blocks from 0193H up as &lsquo;used&rsquo; in its allocation map, probably
 because the first byte was 10H, an unrecognised user number. Consequently, as
 each ICL file was copied, CP/M Plus opened a new directory entry for it, but used
@@ -33,7 +33,7 @@ allows Winchester disk access.
 <p>
 There are several ways around the problem, such as not using a USER above 15, or
 temporarily moving the files down to a lower user. The program MAKE.COM is
-ideal for this. Unfortunately it will not move them back, since it too baulks ata USER
+ideal for this. Unfortunately it will not move them back, since it too baulks at a USER
 above 15. Other alternatives are possible such as not using the Winnie, and letting
 drive A: be a floppy. At least users of ZCPR3 (or any other system that makes use
 of USER areas above 15) who read this will now be aware of the problem.
@@ -47,6 +47,6 @@ allowing a string of files and DU&rsquo;s (or DIR&rsquo;s) to be defined in the 
 The only thing that it will not do during copying is to rename a file, but this if
 permitted would be inconsistent with its other abilities. At times however, MCOPY
 does not behave correctly. I get SRC=DEST error messages, or No Files error
-messages. 8.&pound;.;
+messages. e.g.;
 </p>
 <?php columnEnd(1); ?>

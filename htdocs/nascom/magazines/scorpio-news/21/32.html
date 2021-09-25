@@ -1,38 +1,8 @@
 <?php columnStart(1); ?>
-<pre>
-; Now Extra code from here to XRA
-DUPW?: This Label must be left, in case
-. &lsquo;DUPWCK is set FALSE
-; SEARCH FOR PASSWORD ASSOCIATED WITH THE REQUIRED DU:
-IF DUPWCK ;Additional Equate in Z3HDR.LIB
-LX1 H,Z3NDIR ;sPOINT TO NDR
-LX] D,0018 ;OFFSET TO START OF NEXT ENTRY
-ANYPW: MOV A.M ;GET 1ST BYTE
-CPIO IF 0, IS END OF NDR
-RZ ;SO NO PW FOUND. EXIT and CONTINUE
-LDA TEMPDR ;GET DEST. DRIVE
-CMP M ;SAME AS NDR ENTRY&nbsp;?
-JIRNZ NOMAT ;SKIP IF NOT
-INX H ;POINT TO USER IF DRIVE O.K.
-LDA TEMPUSR ;REQD. USER TO &lsquo;A&rsquo;
-CMP M ;SAME AS NDR USER&nbsp;?
-DCX H ;MOVE POINTER BACK TO START OF ENTRY
-JRZ MAT ;IF USER MATCHED, EXIT SEARCH
-NOMAT: DAD D ;ELSE ADD IN OFFSET TO NEXT ENTRY
-JR ANYPW ;LOOP AND CONT. SEARCH
-MAT: LXI D,10 ;OFFSET TO 1ST BYTE OF POSSIBLE PW.
-DAD D ;ADD OFFSET TO POINTER TO NDR ENTRY
-CALL PASSCK ;CHECK PASSWORD
-RZ IF &lsquo;Z?, PW WAS O.K.
-JR DUSE1 ;EXIT WITH &lsquo;NZ&rsquo;
-ENDIF ;End of Extra Code. (Except for PWOK:)
-PWOK: XRA A ;SET OK
-RET
-DUSE:
-POP H ;CLEAR STACK
-DUSE1: ...
-Cd
-</pre>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-32-1.png"); ?>
+<p>
+<?php enterHalmos(); ?>
+</p>
 <h1 id="article1">
 WordStar 4 for CP/M-80
 </h1>
@@ -40,9 +10,10 @@ WordStar 4 for CP/M-80
 by P.A. Greenhalgh
 </h3>
 <p>
-In the last issue-of Scorpio News I wrote a brief review of WordStar 4, and ended
+In the last issue of Scorpio News I wrote a brief review of WordStar 4, and ended
 it by saying that I felt it unlikely that WordStar 4 would find its way to CP/M. Well,
 you&rsquo;ll be pleased to hear that I was wrong, and also that MicroPro are offering an
-upgrade service from your current WordStar to WS4 for CP/M--80 for c.&pound;135. @
+upgrade service from your current WordStar to WS4 for CP/M-80 for c.&pound;135.
+<?php enterHalmos(); ?>
 </p>
 <?php columnEnd(1); ?>
