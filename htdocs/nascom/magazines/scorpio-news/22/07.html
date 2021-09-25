@@ -9,9 +9,9 @@ Dear Sir
 I found Michael Hendry&rsquo;s article in the last Scorpio News very interesting and I
 believe that I may have answers to his two outstanding problems.
 </p>
-<p>
-1, Slow writing to disk during disk copy
-</p>
+<h3>
+1. Slow writing to disk during disk copy
+</h3>
 <p>
 Thad a similar problem to this when fitting 8&Prime; disks with the same track format that
 he is using. The problem was found to be in the Bios. After a write operation and
@@ -21,26 +21,20 @@ this is implemented as a 2 msec delay after EVERY sector write. The fix is to de
 2 msec before each step operation if the last operation was a write. Disk copies will
 then write at the same rate as the read.
 </p>
-<p>
-2. Lost sectors if motors have timed out before a write,
-</p>
+<h3>
+2. Lost sectors if motors have timed out before a write.
+</h3>
 <p>
 If I understand the drive manual correctly, it appears that the sequence the drive
-goes through is: &mdash;
+goes through is:&ndash;
 </p>
 <p>
-(a) motor starts
-</p>
-<p>
-(b) head load
-</p>
-<p>
+(a) motor starts<br>
+(b) head load<br>
 (c) 2 index pulses sensed and READY (pin 34) enabled, (But drive may still not
-be up to speed.)
-</p>
-<p>
+	be up to speed.)<br>
 (d) fine stepper centres head on track and READY/<?php spChar("zwsp"); ?>SEEK COMPLETE (pin 4)
-is enabled
+	is enabled
 </p>
 <p>
 I suspect that Michael Hendry&rsquo;s Bios is writing to a disk-as soon as READY is
@@ -48,8 +42,8 @@ active. This means that he may be attempting to write to disk while the heads ar
 still moving or the disk is not yet up to speed.
 </p>
 <p>
-[think that with these drives the Bios should wait for READ Y/SEEK COMPLETE
-before initiating a read or write command. The motor start may also need up toa2
+I think that with these drives the Bios should wait for READY/<?php spChar("zwsp"); ?>SEEK COMPLETE
+before initiating a read or write command. The motor start may also need up to a 2
 sec. delay to allow the motor speed to stabilise.
 </p>
 <p>

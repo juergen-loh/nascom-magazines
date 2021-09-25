@@ -1,18 +1,11 @@
 <?php columnStart(1); ?>
 <p>
 (XFCB)
-G=00:06, T=1,S=7, PS=1
 </p>
-<pre>
-00 00534944 20202020 20434F4D 0000003E *.SID COM: 2. &gt;
-10 50515253 00000000 00000000 00000000 *PQRS......... oe *
-20 00535745 45502020 20434F4D 00000056 *.SWEEP COM...V*
-30 54555657 58590000 00000000 00000000 *TUVWXY..........*
-40 10465245 44202020 20434F4D 80A10000 *. FRED COM.!..*
-50 81818181 E5E4F3E700000000 00000000 *....edsg........ *
-60 21000000 00000000 @0000000 O0000000 *!........ cor ee ee &reg;
-70 00000000 00000000 00000000 00000000 *..... eee ecccce *
-</pre>
+<p>
+G=00:06,T=1,S=7,PS=1
+</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-11-1.png"); ?>
 <p>
 Again, the XFCB structure is similar, but the header can extend from 10H to 1FH
 according to the user number. The &ldquo;key&rdquo; byte at entry 13 is again used to encrypt
@@ -23,27 +16,29 @@ The Encryption
 </h2>
 <p>
 The &ldquo;key&rdquo; byte at entry 13 must be stored, along with the encrypted password, on
-the disk for the-CCP to check if the correct password is specified. The key byte is
+the disk for the CCP to check if the correct password is specified. The key byte is
 constructed from the initial password specified in SET.COM, as shown below:
-SET FRED.COM [PASSWORD = FRED]
 </p>
 <p>
-PASSWORD = FRED- -*- = 46+52+45+44+20+20+20+20&rsquo;= 1A1H
+SET FRED.COM [PASSWORD=FRED]
+</p>
+<p>
+PASSWORD = FRED^^^^ = 46+52+45+44+20+20+20+20 = 1A1H
 </p>
 <p>
 A1H is therefore stored at entry 13 and used to encrypt the password in the following
 way:
 </p>
-<p>
-FRED = 4 52 45 44 20 20 20 20
-KEY = Al Al Al Al Al Al Al Al.
-RESULT = E7 F3 E4 ES 81 81 81 81
-</p>
+<table>
+<tr><td>FRED</td><td>= 46 52 45 44 20 20 20 20</td></tr>
+<tr><td>KEY</td><td>= A1 A1 A1 A1 A1 A1 A1 A1</td></tr>
+<tr><td>RESULT</td><td>= E7 F3 E4 ES 81 81 81 81</td></tr>
+</table>
 <p>
 The string is then reversed and stored in the XFCB position for the encrypted
-password. * ,
+password.
 </p>
 <p>
-STORED ENCRYPTED PASSWORD = 81 81 81 81 ES E4 F3 E7
+STORED ENCRYPTED PASSWORD = 81 81 81 81 E5 E4 F3 E7
 </p>
 <?php columnEnd(1); ?>

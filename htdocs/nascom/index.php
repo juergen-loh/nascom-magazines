@@ -262,7 +262,7 @@ In England, dem Mutterland des Nascom Computers, sind ebenfalls
 <a href="magazines/issues/">Nascom-Magazine</a>
 erschienen. Für sie hat
 <?php externalLink("Mike Strange"); ?> die
-<a href="magazines/">Inhaltsverszeichnisse</a>
+<a href="magazines/">Inhaltsverzeichnisse</a>
 gesammelt.
 </p>
 </div>

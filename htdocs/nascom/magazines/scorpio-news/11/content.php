@@ -13,7 +13,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Editorial"
-	,	""
+	,	"P.A. Greenhalgh"
 	,	""
 	,	3
 	);

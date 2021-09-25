@@ -485,6 +485,13 @@ function columnEnd($column)
 
 //---------------------------------------------------------------------------
 
+function enterHalmos()
+{
+	echo "&#x220E;";	// todo
+}
+
+//---------------------------------------------------------------------------
+
 function DoublePageStart($class)	{	echo("<div class=\"$class\">");	columnStart(1);	}
 function DoublePageChange()			{	hLine("100%", "2");								}
 function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
