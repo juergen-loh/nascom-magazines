@@ -6,17 +6,17 @@ the relevant file. Since both these tables are also constant, and since both fil
 constantly open, the tables and the file control blocks are resident also.
 </p>
 <p>
-This raises another drawback of-chained files. As I mentioned, I leave the overlay
+This raises another drawback of chained files. As I mentioned, I leave the overlay
 file open. This can cause problems if the disk is changed, but this is the case
 whenever code is juggled. If each section of code is in a separate file, it will obviously
 be necessary to open t the file before loading the code, which means extra disk
-accesses,
+accesses.
 </p>
 <p>
-To. reeap,,then, if, -we cannot fit the..whole program in memory (along with a
-reasonably large data area) our first-step should be.to attempt to identify distinct,
+To recap then, if we cannot fit the whole program in memory (along with a
+reasonably large data area) our first step should be to attempt to identify distinct,
 non-related, self-contained, units which run to completion so as to be used only
-eceasionally:and never twice in succession. If we cannot do this, or if we need to
+occasionally and never twice in succession. If we cannot do this, or if we need to
 break one of these sections further, we should separate only the most infrequently
 used parts and leave space for one at a time so that they can return instantly. We
 should also keep a record of which one was loaded last so that we do not load it
@@ -33,11 +33,11 @@ The Gemini CP/M BIOS does this with its introductory message simply by storing
 it in what will become the sector deblock buffer. This approach is very useful for
 the assembler programmer, who can very often put such messages in disk I/O buffers
 or above the other code in an area which will become data storage. Unfortunately,
-high level languages do.not often lend themselves to this sort of treatment. If,
+high level languages do not often lend themselves to this sort of treatment. If,
 however, we are going to use overlays then we can always put the opening bits in the
 overlay patch area. In the case of my PCB package I had to write assembler code
-to eperate the overlay which then had to be relocated on loading. This code, which
-forms the opening .COM file, is some 18K in total of which only 1K &lsquo;is resident.
+to operate the overlay which then had to be relocated on loading. This code, which
+forms the opening .COM file, is some 18K in total of which only 1K is resident.
 Another 1K is the relocator, system checks, and code to open the overlay files and
 analyse the command line. This leaves 16K of introductory graphics which may seem
 excessive, but it does not significantly delay the system and takes no room after it

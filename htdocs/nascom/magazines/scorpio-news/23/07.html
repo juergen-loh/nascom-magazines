@@ -1,53 +1,53 @@
 <?php columnStart(1); ?>
 <p>
 Both the winnie &amp; controller card use standard Floppy drive power connectors for
-+5v &amp; +12v, good quality cable &amp; short runs (2 feet or less say) is the order: &lsquo;Bo
-check correct polarity before connecting winnie or controller, and check
++5v &amp; +12v, good quality cable &amp; short runs (2 feet or less say) is the order. Do
+check correct polarity before connecting winnie or controller, and check good
 voltages &amp; ripple after connecting them.
 </p>
 <p>
-Three ribbon type cables are required. A 50-way cable connects the SAST port to
+Three ribbon type cables are required. A 50-way cable connects the SASI port to
 the controller card, which should have a 220/300 ohm pack terminating near the
 connector. A 34-way ribbon cable using a similar layout to that of 5.25&Prime; Floppy
 drives, takes control signals to the winnie (or winnie&rsquo;s), the last winnie on this cable
-should have a termination resistor pack. A separate 20-way ribbon: cable takes
+should have a termination resistor pack. A separate 20-way ribbon cable takes
 read/<?php spChar("zwsp"); ?>write data to &amp; from each winnie drive, the first drive should connect to J2 on
 a Xebec.
 </p>
 <p>
 Up to 8 controller cards can run from one SASI port!! The address for your one
-controller should be 0, linked near the SASF Connector. In addition the Xebec can
+controller should be 0, linked near the SASI connector. In addition the Xebec can
 store data in 256 byte or 512 byte sectors on the winnie, the link should be set to 512
-for Gemini/MAP CP/Ms;, the link is typically three pin; marked with 2 &amp; 5.
+for Gemini/<?php spChar("zwsp"); ?>MAP CP/Ms;, the link is typically three pin; marked with 2 &amp; 5.
 </p>
 <p>
 The winnie should be set as drive 0, on Rodimes is set by a switch accessed
-through the side casing. " :
+through the side casing.
 </p>
 <p>
 Configuring the software is the final job, for Gemini CP/M, you merely select which
-type of drive you&rsquo;re using in the SYSTEM.CFG file&lsquo;and configure anew system onto
-a new disk (i.e. keep the old floppy system handy i in case things don&rsquo;t go!). For a
+type of drive you&rsquo;re using in the SYSTEM.CFG file and configure a new system onto
+a new disk (i.e. keep the old floppy system handy in case things don&rsquo;t go!). For a
 MAP CP/M, where you are using a winnie not in the MAP data, you need to know
 the following winnie details:
 </p>
 <p>
-Cylinders
+<b>Cylinders</b><br>
 This is the number of tracks on one platter surface (if the drive has 152 cylinders &amp;
 2 surfaces, it has 304 tracks).
 </p>
 <p>
-Heads
-This tells the BIOS how many surfaces are in use. @ drive with one plate has 2
-surfaces, hence 2 heads. a
+<b>Heads</b><br>
+This tells the BIOS how many surfaces are in use. (A drive with one platter has 2
+surfaces, hence 2 heads.
 </p>
 <p>
-Reduced Write- &lsquo;Cylinder
+<b>Reduced Write Cylinder</b><br>
 Many drives require the write current to be reduced beyond a certain cylinder.
-Micro controlled ones often do: this automatically, hence this may not be relevant.
+Micro controlled ones often do this automatically, hence this may not be relevant.
 </p>
 <p>
-Write Precompensation Cylinder
+<b>Write Precompensation Cylinder</b><br>
 The data is written in a different&lsquo;manner beyond a certain cylinder (some times all
 cylinders, hence enter 0) by the Controller to improve readability.
 </p>

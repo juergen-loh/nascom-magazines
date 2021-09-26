@@ -1,21 +1,21 @@
 <?php columnStart(1); ?>
 <p>
 (In this case, gbase() is a function returning a func_ptr_ptr whose value is stored
-three bytes after the address pointed to at location 6 (in C code this would be :
+three bytes after the address pointed to at location 6 (in C code this would be&nbsp;:
 *( cast(int_ptr)( *( cast(int_ptr)6 ) + 3) ). GET_DATA is a defined constant
 corresponding to the vector for a particular global function.)
 </p>
 <p>
 This is all very well if you program in C, and providing you know how your particular
-compiler passes arguments ete. If your compiler uses a post- linker (for instance if
-it generates. .REL files), then it should be possible to write some machine code to
-do the linking. and link it with the compiler output. Once again it will probably be
+compiler passes arguments etc. If your compiler uses a post- linker (for instance if
+it generates .REL files), then it should be possible to write some machine code to
+do the linking and link it with the compiler output. Once again it will probably be
 necessary to know how the compiler calls functions or procedures and how the
 parameters are passed. If the manual does not say (and most don&rsquo;t) the best way to
-find ott is. to write a very simple program which calls a function with arguments,
-compile it; and dis-assemble. it (ZSID or GEMDEBUG are good tools for this, or
-MBIS if you:prefer to wade through a listing). Finding your bit of code among all
-the:runtime support can be a pain, but there-are ways around it. Compilers which
+find out is to write a very simple program which calls a function with arguments,
+compile it; and dis-assemble it (ZSID or GEMDEBUG are good tools for this, or
+MDIS if you prefer to wade through a listing). Finding your bit of code among all
+the runtime support can be a pain, but there are ways around it. Compilers which
 don&rsquo;t use a linker often tell you where the runtimes end. If not you can be fairly
 certain anyway that the compiled code is the last part of the object file. If your
 compiler uses .REL files, then you can instruct L80 to put your bit exactly where
@@ -36,15 +36,15 @@ of information is essential for writing machine code to link with compiled code.
 <p>
 If your compiler does not generate intermediate files (i.e. if it directly generates
 .COM files) then this linking process is not so easy. Some compilers allow small
-sections of machine code to be defined directly within.a function (e.g. HiSoft use
+sections of machine code to be defined directly within a function (e.g. HiSoft use
 inline(...), some have mini-assemblers etc.), and although this facility is not usually
-suitable for any significant code it-should be possible to encode a-call to. some
+suitable for any significant code it should be possible to encode a call to some
 previously loaded resident machine code. It is simplest if the resident code is at a
 fixed address, but above the BDOS vector is quite easy to use. There should
 obviously be a jump vector table at some easily found address. The relevant jump
 address can, of course, be found using high level code and stored in a static variable
-for the low level code to read. This overcomes one difficulty,.namely-finding the
-function parameters. There remains one problem, which ishowto return to the main
+for the low level code to read. This overcomes one difficulty, namely finding the
+function parameters. There remains one problem, which is how to return to the main
 code. It may be possible to push a return address and allow the compiled function
 to do the work, but this can involve some rather messy code. I prefer to put the
 </p>

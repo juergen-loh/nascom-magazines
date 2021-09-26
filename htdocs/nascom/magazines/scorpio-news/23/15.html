@@ -3,30 +3,11 @@
 correct return system into the main machine code routines. This obviously requires
 knowledge of the compiler&rsquo;s workings, but it means the code can be jumped to (using
 JP (HL) for instance) which is considerably simpler than calling. An alternative
-would be to call a fixed address which is known to contain a JP (Hi:):instruction.
-</p>
-<p>
+would be to call a fixed address which is known to contain a JP (HL) instruction.
 There will almost certainly be one somewhere in the runtimes. In PASCAL this
-</p>
-<p>
 might look something like:
 </p>
-<pre>
-FUNCTION GLOBAL ( FUNC, PARAM : INTEGER ) : INTEGER;
-VAR
-ADDRESS, PSTORE : INTEGER; {Providing these will not be stack relative}
-BEGIN
-{Work out the address to call. base is a variable or constant which points
-to the jump table.}
-ADDRESS := BASE + (3 * FUNC);
-PSTORE := PARAM; {So the machine code can get it}
-INLINE (42, ADDR(ADDRESS), {Id hl, (address) }
-237, 91, ADDR(PSTORE), {Id de, (pstore)}
-205, JPHL, {call a jp (hl)}
-34, ADDR(PSTORE) {Id (pstore),hl} );
-GLOBAL := PSTORE
-END;
-</pre>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-15-1.png"); ?>
 <p>
 So how do we actually go about loading sections from our overlay file? First we must
 define a structure whereby the various code sections in the overlay can be identified.
@@ -34,16 +15,12 @@ It would be highly inappropriate to enforce a standard length or standard positi
 for the sections, so it will clearly be necessary for the file to contain a reference table
 giving the relevant data on the sections. We will probably need the following :
 </p>
-<p>
-Load address &ndash; where to put it
-</p>
-<p>
-Entry address &ndash; where to run it from
-</p>
-<p>
-File position &ndash; where in the file to find it
-Length &ndash; howmuch to load
-</p>
+<table class="indent">
+<tr><td>Load address</td><td>&ndash;</td><td>where to put it</td></tr>
+<tr><td>Entry address</td><td>&ndash;</td><td>where to run it from</td></tr>
+<tr><td>File position</td><td>&ndash;</td><td>where in the file to find it</td></tr>
+<tr><td>Length</td><td>&ndash;</td><td>how much to load</td></tr>
+</table>
 <p>
 Often it will be useful to have a section of code broken down into several segments
 which load at different memory addresses. Obviously there is no reason why these
@@ -53,12 +30,12 @@ we may well have both major program sections (such as the editor) in the same fi
 with small re-entrant routines (such as delete line). A possible table structure (the
 one I actually used for my PCB package) would consist of:
 </p>
-<p>
-First Sector Number &ndash; 16 bits absolute sector<br>
-Entry Address -&mdash; 16 bits absolute address<br>
-Load Address Block 1 &ndash; 16 bits absolute address<br>
-Length of Block 1 &ndash; 7bits sector count + flag<br>
-Load Address Block2 &ndash; 16 bits absolute address<br>
-Length of Block 2 &ndash; 7bits sector count + flag
-</p>
+<table class="indent">
+<tr><td>First Sector Number</td><td>&ndash;</td><td>16 bits absolute sector</td></tr>
+<tr><td>Entry Address</td><td>&ndash;</td><td>16 bits absolute address</td></tr>
+<tr><td>Load Address Block 1</td><td>&ndash;</td><td>16 bits absolute address</td></tr>
+<tr><td>Length of Block 1</td><td>&ndash;</td><td>7 bits sector count + flag</td></tr>
+<tr><td>Load Address Block 2</td><td>&ndash;</td><td>16 bits absolute address</td></tr>
+<tr><td>Length of Block 2</td><td>&ndash;</td><td>7 bits sector count + flag</td></tr>
+</table>
 <?php columnEnd(1); ?>

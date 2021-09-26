@@ -1,11 +1,11 @@
 <?php columnStart(1); ?>
 <p>
-the main program sections must interact. The simplest approach in the-leng run is
+the main program sections must interact. The simplest approach in the long run is
 to relocate this code to the top of the TPA on loading and move the BDOS vector
 (which is used to define RAMTOP) to below it. Because the C compiler I used for
-the PCB package does not provide facilities for transferring global data from-one
-program to another, I also put the two arrays on which the program works, above
-the BDOS vector. The machine code includes routines to find the arrays:and: the C
+the PCB package does not provide facilities for transferring global data from one
+program to another, I also put the two arrays on which the program works above
+the BDOS vector. The machine code includes routines to find the arrays and the C
 code then addresses them using pointer type variables. This approach also means
 that a computer with more RAM actually can hold more data rather than just having
 more wasted space. Unfortunately it is not nearly as easy in languages other than C
@@ -24,7 +24,7 @@ by the last #data before their declaration and, providing none of the areas over
 (and that there were no variables declared before the first #data), the program will
 compile and run correctly. However, only the last data area defined will be
 automatically filled with zero bytes when the program is run so all the other variables
-will be retained (providing they are:defined in the same order in all programs). Note
+will be retained (providing they are defined in the same order in all programs). Note
 that the last data area should be the highest, otherwise the stack checking will not
 work properly.
 </p>
@@ -33,8 +33,8 @@ The task of actually interfacing the high level code with the (relocated) machin
 code can also be tricky. My approach in C, which is totally portable and really quite
 neat, was to define a data type &ldquo;func_ptr_ptr&rdquo; as
 </p>
-<p>
-typedef char * (* * func_ptr_ptr)Q;
+<p class="indent">
+typedef char * (* * func_ptr_ptr)();
 </p>
 <p>
 This type code comes out as a pointer to (an array of) pointers to functions which
@@ -43,9 +43,9 @@ return a pointer to character. I then defined a variable of this type which was 
 function addresses with a pointer just after the new BDOS vector, it is now possible
 to call these functions directly.
 </p>
-<p>
-static func_ptr_ptr global_function;
-global function = gbase(); &ndash;
-(*global_function{ GET_DATA ])( &amp;pads, &amp;padpos, &amp;tracks, &amp;trackpos );
+<p class="indent">
+static func_ptr_ptr global_function;<br>
+global function = gbase(); &ndash;<br>
+(*global_function[ GET_DATA ])( &amp;pads, &amp;padpos, &amp;tracks, &amp;trackpos );
 </p>
 <?php columnEnd(1); ?>
