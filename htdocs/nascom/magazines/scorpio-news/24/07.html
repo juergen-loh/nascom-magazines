@@ -1,47 +1,47 @@
 <?php columnStart(1); ?>
 <p>
-Cautiously the board was initially installed set to 4MHz. On power-up orteset the
-Monitor starts by displaying the text &lsquo;ABC&rsquo; on the screen. If auto-boot is:selected,
+Cautiously the board was initially installed set to 4MHz. On power-up or reset the
+Monitor starts by displaying the text &lsquo;ABC&rsquo; on the screen. If auto-boot is selected,
 then both the first floppy and then the Winchester drive are polled in turn, It won&rsquo;t
-boot my winchester since I modified the SAS] interface on the GM829 aboutuiyear
-ago in order to facilitate DMA transfers. However, booting a floppy &lsquo;sysgednedu
+boot my winchester since I modified the SASI interface on the GM829 about a year
+ago in order to facilitate DMA transfers. However, booting a floppy &lsquo;sysgenned&rsquo;
 with the winnie on drive A works a treat.
 </p>
 <p>
-If the monitor setting is selected then the Monitor antiounces its presencs with the
+If the monitor setting is selected then the Monitor announces its presence with the
 text &lsquo;Newburn Monitor&rsquo;, followed by a rather untidy menu of options on a wrapped
-round line. Perhaps this is attended to in the new version (1.1) of the:monitar
+round line. Perhaps this is attended to in the new version (1.1) of the monitor
 PROM, which I am told is already in the post. I gather that Newburn operate a free
 update service, for the first year after purchase. No problems were encountered in
-this first.period of use, and the clock was soon re-set to 8MHz. The improvement
-in performance was immediately noticeable: Everything happens much more
-quickly and display of a full screen of text almost gives the i impression of a memory
+this first period of use, and the clock was soon re-set to 8MHz. The improvement
+in performance was immediately noticeable. Everything happens much more
+quickly and display of a full screen of text almost gives the impression of a memory
 mapped display!
 </p>
 <p>
-One:minor problem soon became apparent &ndash; with-the floppy drive motors:stopped
-disk access produces.a &lsquo;Drive: not ready&rsquo; message. Immediately selecting the re-try
-option causes a resumption of-service. The cause of this &lsquo;is the one second delay
+One minor problem soon became apparent &ndash; with the floppy drive motors stopped
+disk access produces a &lsquo;Drive: not ready&rsquo; message. Immediately selecting the re-try
+option causes a resumption of service. The cause of this is the one second delay
 which the GM829 inserts after starting the drive motors, before allowing the drive
-ready bit to be asserted. Most of the existing 80-BUS BIOSs incorporate a.software
+ready bit to be asserted. Most of the existing 80-BUS BIOSs incorporate a software
 delay loop before forcing the time-out. The improved performance of the NE898
-shortens this delay to the extent that it is shorter than the hardware delay.-The
+shortens this delay to the extent that it is shorter than the hardware delay. The
 author&rsquo;s BIOS source code was soon modified, assembled and the whole MOVCPM
-image re-linked. Users of proprietary BIOSs may not have the-facilities to carry out
+image re-linked. Users of proprietary BIOSs may not have the facilities to carry out
 this modification, so I have investigated an alternative solution in hardware. This
 appears to effect a cure for all the Gemini BIOSs. Newburn-claim that no problems
-are encountered with the-GM849, so presumtably the same delay is not implemented
-on that board.-Users of other FDC boards should: beware of this possible problem.
+are encountered with the GM849, so presumably the same delay is not implemented
+on that board. Users of other FDC boards should beware of this possible problem.
 </p>
 <p>
 Another problem was discovered when using the public domain utility D.COM. If
-the files were held in the directory: in alphabetic sequence, then all was OK: However
+the files were held in the directory in alphabetic sequence, then all was OK. However
 if a sort was required, then the disk access proceeded as usual but no output was
-produced before the next system prompt. After much investigation i it was discovered
+produced before the next system prompt. After much investigation it was discovered
 that D.COM employs two undocumented Z80 opcodes in the sort. The Z180 detects
 these and merely sets an internal flag before trapping to address zero, hence causing
-a harmless warm boot. I intend to modify my OE&para; to report detection of. illegal
-opcodes, which will save. much time in tracking down other similar &lsquo;problems. In this
+a harmless warm boot. I intend to modify my OS to report detection of illegal
+opcodes, which will save much time in tracking down other similar problems. In this
 particular case the four bytes of offending code were replaced by three bytes of
 legitimate Z80 code, plus a NOP. Other cases may not be so obliging!
 </p>

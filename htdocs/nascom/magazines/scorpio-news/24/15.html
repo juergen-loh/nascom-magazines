@@ -3,46 +3,44 @@
 Operators
 </h2>
 <p>
-The standard operators are all available in C, but there are some interesting aistes.
-The logical operators are called &amp; (and), | (or) arid &ndash; (xor)::Also available aremek&amp;
-and || which perform logical (as opposed to bitwise) AND :and: OR. &lsquo;Ehese
-operators have the very useful feature that they do not evaluate the secondkargn
+The standard operators are all available in C, but there are some interesting notes.
+The logical operators are called &amp; (and), | (or) and ^ (xor). Also available are &amp;&amp;
+and || which perform logical (as opposed to bitwise) AND and OR. These
+operators have the very useful feature that they do not evaluate the second argument
+if there is no need. For example,
 </p>
-<p>
-if there is no need. For example, ,
-</p>
-<p style="margin-left: 5%">
+<p class="indent">
 mflg &amp;&amp; !timeout()
 </p>
 <p>
-will not evaluate&nbsp;!timeout( ) (logical not of function timeout( )&rsquo;s result)&rsquo; if ml is
-false. a&gt;
+will not evaluate !timeout() (logical not of function timeout()&rsquo;s result) if mflg is
+false.
 </p>
 <p>
-The equality operator is &ldquo;== =&rdquo; to to distinguish from the assignment operator. There
+The equality operator is &ldquo;==&rdquo; to to distinguish from the assignment operator. There
 are a set of useful shorthand-notations for amendment assignments. For example,
 we need not write:
 </p>
-<p style="margin-left: 5%">
-total = total + exitry
+<p class="indent">
+total = total + entry
 </p>
 <p>
-because we. can use
+because we can use
 </p>
-<p style="margin-left: 5%">
-total + = entry
+<p class="indent">
+total += entry
 </p>
 <p>
-Similarly we can have -=, *=, /=, &amp; = etc, Also available are + + and &ndash; which
+Similarly we can have -=, *=, /=, &amp;= etc. Also available are ++ and &ndash;&ndash; which
 increment or decrement the value to which they are attached. If they occur before
 the reference they operate before the value is taken otherwise the operate after.
-Thus if a=2 and b= : a
+Thus if a=2 and b=5,
 </p>
-<p style="margin-left: 5%">
-at++bt++ == +ttat++b==
+<p class="indent">
+a++ + b++ == 7 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ++a + ++b == 9
 </p>
 <h2>
-Input &amp; Output.
+Input &amp; Output
 </h2>
 <p>
 As mentioned earlier, there are no input or output commands as such in C.
@@ -52,8 +50,8 @@ file or whatever, Under UNIX, all console I/O is treated as a group of streams w
 can consequently be redirected if desired. UNIX allows stdin and stdout (the
 default console streams) to be redirected on the command line which invokes the
 program. Since CP/M does not do this, the extent to which this particular feature is
-supported will depend. on the implementation. HiSoft will operate. correctly
-providing the program calls a standard library function &ldquo;cpm_cmd_line( )&rdquo; before
+supported will depend on the implementation. HiSoft will operate correctly
+providing the program calls a standard library function &ldquo;cpm_cmd_line()&rdquo; before
 doing anything else. The compiler used to compile the Gemini utilities I mentioned
 earlier does not support command line redirection.
 </p>

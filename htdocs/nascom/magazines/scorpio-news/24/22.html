@@ -1,41 +1,40 @@
 <?php columnStart(1); ?>
 <p>
 I have modified my BIOS so that screen paging is OFF when the system boots. By
-typing &ldquo;TS the screen paging flag is set to restore paging, and most of the SYS
+typing ^TS the screen paging flag is set to restore paging, and most of the SYS
 paging commands are operative. The problem with the SYS method was that if
 paging had been turned off, a Warm or Cold boot was needed to restore it. With
 my method it can be turned ON or OFF at will. The BIOS screen paging routine
 has been further modified so that control characters are needed to control the
-paging options. (ie; -C, -S, -R, &ldquo;K). The Space key is the only exception, and
+paging options. (ie; ^C, ^S, ^R, ^K). The Space key is the only exception, and
 this functions as in SYS. The &lsquo;W&rsquo; option is now redundant.
 </p>
 <p>
-Screen Dump control (* TD) has been transferred to this function, rather than from
+Screen Dump control (^TD) has been transferred to this function, rather than from
 EDIT mode, so that it is universally available.
 </p>
 <p>
-&lsquo; .
 No originality is claimed for the various support subroutines in the listing, but I have
 included them to show how they inter-relate with the direct keyboard commands,
 or how extra space can be saved.
 </p>
 <p>
 The routine SIVCMD is used to send command strings to the IVC/SVC. It saves a
-considerable amount of code overall compared multiple blocks of code like &ndash;
+considerable amount of code overall compared multiple blocks of code like&nbsp;&ndash;
 </p>
+<table class="indent">
+<tr><td>LD</td><td>A,ESC</td><td></td></tr>
+<tr><td>CALL</td><td>CRTA</td><td></td></tr>
+<tr><td>LD</td><td>A,'M'</td><td></td></tr>
+<tr><td>CALL</td><td>CRTA</td><td>10 bytes</td></tr>
+</table>
 <p>
-LD A,BSC<br>
-CALL CRTA<br>
-LD _ AM&rsquo;<br>
-CALL CRTA 10 bytes<br>
+The above is replaced by&nbsp;&ndash;
 </p>
-<p>
-The above is replaced by &ndash;
-</p>
-<p>
-CALL SIVCMD<br>
-DB ESC,M&rsquo;,0 6 bytes
-</p>
+<table class="indent">
+<tr><td>CALL</td><td>SIVCMD</td><td></td></tr>
+<tr><td>DB</td><td>ESC,'M',0</td><td>6 bytes</td></tr>
+</table>
 <p>
 The actual routine SIVCMD only takes 8 bytes, so if more than two blocks like the
 first example above are used, there is a real saving in BIOS size, allowing room for
@@ -47,8 +46,8 @@ shares the Printer Centronics port. I use several of these cards, at home and at
 and they are very successful, keeping good time, and not interacting with printer
 operation or being corrupted by it in any way. The main benefit of this card is that
 it does not require an extra port. I have also successfully used the RTC on the
-GM6816 I/O card for this purpose. I was not able to overcome the clock corruption
-problems when I tried the GM822 RTC.card, some years ago. I have added an extra
+GM816 I/O card for this purpose. I was not able to overcome the clock corruption
+problems when I tried the GM822 RTC card, some years ago. I have added an extra
 &lsquo;JUMP&rsquo; to the jump table at the start of the BIOS, so that the clock routine can
 always be found by external programs, by calling this address at BIOS + 33H. On
 EXIT from the clock routines, HL contains the address of the Date and Time string

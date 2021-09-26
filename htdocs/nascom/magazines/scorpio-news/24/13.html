@@ -1,19 +1,19 @@
 <?php columnStart(1); ?>
-<p style="margin-left: 5%">
-case constant_expr : statement /* within switch only */<br>
-default : statement /* within switch only */<br>
-break ; /* within loop or switch */<br>
-continue ; /* within loop */<br>
-</p>
+<table class="indent">
+<tr><td>case constant_expr : statement</td><td>/* within switch only */</td></tr>
+<tr><td>default : statement</td><td>/* within switch only */</td></tr>
+<tr><td>break ;</td><td>/* within loop or switch */</td></tr>
+<tr><td>continue ;</td><td>/* within loop */</td></tr>
+</table>
 <p>
 Also allowed anywhere in the function body are&nbsp;:&ndash;
 </p>
-<p style="margin-left: 5%">
-return ; /* return from function */<br>
-return expression ; /* return from function with value */<br>
-goto label_name ; /* destination in the same function */<br>
-label_name : statement: /* destination of goto */<br>
-</p>
+<table class="indent">
+<tr><td>return ;</td><td>/* return from function */</td></tr>
+<tr><td>return expression ;</td><td>/* return from function with value */</td></tr>
+<tr><td>goto label_name ;</td><td>/* destination in the same function */</td></tr>
+<tr><td>label_name : statement:</td><td>/* destination of goto */</td></tr>
+</table>
 <p>
 You may notice that there are no &ldquo;PRINT&rdquo; statements or the like. The basic
 philosophy of C does not allow them as you would find in BASIC, but all the useful
@@ -35,18 +35,18 @@ Data Names &amp; Types
 Variables in C are given names, the number of significant characters depending on
 the implementation, and each has a specific type. The basic types allowed are:
 </p>
-<p style="margin-left: 5%">
-int : Signed integer, usually 16 bit.<br>
-unsigned : Unsigned integer of same size as int.<br>
-short: Signed integer, smaller size than int.<br>
-long : Signed integer, larger size than int.<br>
-char : Byte value, usually a character but can be unsigned integer.<br>
-float : Floating point value ( where implemented ).<br>
-double : Double precision float.<br>
-</p>
+<table class="indent">
+<tr><td>int :</td><td>Signed integer, usually 16 bit.</td></tr>
+<tr><td>unsigned :</td><td>Unsigned integer of same size as int.</td></tr>
+<tr><td>short:</td><td>Signed integer, smaller size than int.</td></tr>
+<tr><td>long :</td><td>Signed integer, larger size than int.</td></tr>
+<tr><td>char :</td><td>Byte value, usually a character but can be unsigned integer.</td></tr>
+<tr><td>float :</td><td>Floating point value (&nbsp;where implemented&nbsp;).</td></tr>
+<tr><td>double :</td><td>Double precision float.</td></tr>
+</table>
 <p>
-On top of these, a variable can be defined as a pointer to any specific&rsquo; type, or as a
-structure (struct ) or union. Structures are the equivalent of PASCAL&rsquo;s record type,
+On top of these, a variable can be defined as a pointer to any specific type, or as a
+structure (struct) or union. Structures are the equivalent of PASCAL&rsquo;s record type,
 and are essentially a fixed array whose members can be of different types. For
 example:
 </p>
