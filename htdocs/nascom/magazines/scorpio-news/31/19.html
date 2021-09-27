@@ -6,8 +6,8 @@ A Free RAM-Disk
 by J T Nestor
 </h3>
 <p>
-Well, not really free, but if you have a GM888 8088 board and RAM in excess of 64
-Kbytes, then my program will enable you to use the memory above 0FFFF as a
+Well, not really free, but if you have a GM888 8088 board and RAM in excess of 64&nbsp;Kbytes,
+then my program will enable you to use the memory above 0FFFF as a
 RAM-Disk. The principle of operation is very simple. The program runs and sets
 up alternative entry points to SELDRV, READ, WRITE and WBOOT. The code
 at these alternative entry points checks to see if the drive is &ldquo;M&rdquo;, if so it calls the
@@ -20,12 +20,12 @@ improvements could be made. However, THIS WORKS.
 </p>
 <p>
 A copy of the CCP and BDOS is stored in RAM, and this version is loaded when
-&ldquo; C&rdquo; is typed, reducing the time taken to perform a warm boot and eliminating for
+&ldquo;^C&rdquo; is typed, reducing the time taken to perform a warm boot and eliminating for
 ever the message &ldquo;Wrong system on this disk&rdquo;.
 </p>
 <p>
-After &ldquo;GENS YS-ing&rdquo; my system, I am told that the system ends at BIOS +OFO0A
-(FFOA) and the new code is therefore assembled to reside there. If, because of a
+After &ldquo;GENSYS-ing&rdquo; my system, I am told that the system ends at BIOS+0F0A
+(FF0A) and the new code is therefore assembled to reside there. If, because of a
 different disk system, your end is higher than that, it will be necessary to alter
 BIOSEND, up to a maximum of FF31. If BIOSEND is above that the the reservation
 of another page of workspace will be necessary. Please check the values between
@@ -47,5 +47,6 @@ program such as DU.
 <p>
 I hope that the code, which is available by contacting me, is self explanatory and
 adequately commented.
+<?php enterHalmos(); ?>
 </p>
 <?php columnEnd(1); ?>
