@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<table>
+<table class="tbi-v2">
 <tr><td>155E</td><td>1F</td><td>0D</td><td></td></tr>
 <tr><td>1581</td><td>1F</td><td>0D</td><td></td></tr>
 <tr><td>15F5</td><td>1F</td><td>18</td><td></td></tr>
@@ -27,41 +27,39 @@
 <h4>
 NEW GETLN ROUTINE FOR TINY BASIC TBI-V2
 </h4>
-<pre>
-17C5  F7         GETLN    RST 16              Print prompt char.
-17C6  EF 18 00            PRT CCR             and CRLF
-17C9  E5                  PUSH HL             Save HL
-17CA  AF                  XOR A               Clear Accumulator
-17CB  32 BF 0E            LD (BUFFER-1), A    Clear Marker
-17CE  DF 63               SCAL INLIN          Get screen line
-17D0  21 2F 00            LD HL, 47
-17D3  06 30               LD B, 48
-17D5  19                  ADD HL, DE          Point to end of line
-17D6  7E         SCN1     LD A, (HL)          Look for space
-17T7  FE 20               CP &pound;20              Space character
-17D9  20 10               JR NZ, CHRFND
-17DB  2B                  DEC HL              Move left across
-17DC  10 F8               DJNZ SCN1           line but not off
-17DE  21 C0 0E            LD HL, BUFFR
-17E1  36 0D      ELINE    LD (HL), &pound;0D        Insert CR
-17E3  23                  INC HL
-17E4  23                  INC HL
-17E5  36 FF               LD (HL), &pound;FF        Insert terminator
-17E7  2B                  DEC HL
-17E8  EB                  EX DE, HL
-17E9  E1                  POP HL              Restore HL
-17EA  C9                  RET
-17EB  EB         CHRFND   EX DE, HL
-17EC  11 C0 0E            LD DE, BUFFR        Point at BUFFR
-17EF  48                  LD C, B             Get length in BC
-17F0  06 00               LD B, 0
-17F2  ED B0               LDIR                Copy to BUFFR
-17F4  EB                  EX DE, HL
-17F5  18 EA               JR ELINE
-</pre>
-<p class="continued">
-In addition, change &pound;1042 from &pound;3A to 00.
-</p>
+<table class="indent" style="width: 90%">
+<tr><td>17C5</td><td>F7</td><td>GETLN</td><td>RST 16</td><td>Print prompt char.</td></tr>
+<tr><td>17C6</td><td>EF 18 00</td><td></td><td>PRT CCR</td><td>and CRLF</td></tr>
+<tr><td>17C9</td><td>E5</td><td></td><td>PUSH HL</td><td>Save HL</td></tr>
+<tr><td>17CA</td><td>AF</td><td></td><td>XOR A</td><td>Clear Accumulator</td></tr>
+<tr><td>17CB</td><td>32 BF 0E</td><td></td><td>LD (BUFFER-1), A</td><td>Clear Marker</td></tr>
+<tr><td>17CE</td><td>DF 63</td><td></td><td>SCAL INLIN</td><td>Get screen line</td></tr>
+<tr><td>17D0</td><td>21 2F 00</td><td></td><td>LD HL, 47</td><td></td></tr>
+<tr><td>17D3</td><td>06 30</td><td></td><td>LD B, 48</td><td></td></tr>
+<tr><td>17D5</td><td>19</td><td></td><td>ADD HL, DE</td><td>Point to end of line</td></tr>
+<tr><td>17D6</td><td>7E</td><td>SCN1</td><td>LD A, (HL)</td><td>Look for space</td></tr>
+<tr><td>17T7</td><td>FE 20</td><td></td><td>CP &pound;20</td><td>Space character</td></tr>
+<tr><td>17D9</td><td>20 10</td><td></td><td>JR NZ, CHRFND</td><td></td></tr>
+<tr><td>17DB</td><td>2B</td><td></td><td>DEC HL</td><td>Move left across</td></tr>
+<tr><td>17DC</td><td>10 F8</td><td></td><td>DJNZ SCN1</td><td>line but not off</td></tr>
+<tr><td>17DE</td><td>21 C0 0E</td><td></td><td>LD HL, BUFFR</td><td></td></tr>
+<tr><td>17E1</td><td>36 0D</td><td>ELINE</td><td>LD (HL), &pound;0D</td><td>Insert CR</td></tr>
+<tr><td>17E3</td><td>23</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>17E4</td><td>23</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>17E5</td><td>36 FF</td><td></td><td>LD (HL), &pound;FF</td><td>Insert terminator</td></tr>
+<tr><td>17E7</td><td>2B</td><td></td><td>DEC HL</td><td></td></tr>
+<tr><td>17E8</td><td>EB</td><td></td><td>EX DE, HL</td><td></td></tr>
+<tr><td>17E9</td><td>E1</td><td></td><td>POP HL</td><td>Restore HL</td></tr>
+<tr><td>17EA</td><td>C9</td><td></td><td>RET</td><td></td></tr>
+<tr><td>17EB</td><td>EB</td><td>CHRFND</td><td>EX DE, HL</td><td></td></tr>
+<tr><td>17EC</td><td>11 C0 0E</td><td></td><td>LD DE, BUFFR</td><td>Point at BUFFR</td></tr>
+<tr><td>17EF</td><td>48</td><td></td><td>LD C, B</td><td>Get length in BC</td></tr>
+<tr><td>17F0</td><td>06 00</td><td></td><td>LD B, 0</td><td></td></tr>
+<tr><td>17F2</td><td>ED B0</td><td></td><td>LDIR</td><td>Copy to BUFFR</td></tr>
+<tr><td>17F4</td><td>EB</td><td></td><td>EX DE, HL</td><td></td></tr>
+<tr><td>17F5</td><td>18 EA</td><td></td><td>JR ELINE</td><td></td></tr>
+<tr><td colspan=5>In addition, change &pound;1042 from &pound;3A to 00.</td></tr>
+</table>
 <h3 class="article-stopper">
 ** .. ** .. ** .. ** .. ** .. **
 </h3>
