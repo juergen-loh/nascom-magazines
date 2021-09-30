@@ -1,60 +1,60 @@
 <?php columnStart(1); ?>
-<pre>
-0010 ; PROGRAM TO READ TRS-80 LEVEL 2
-0020 ; BASIC PROGRAM TAPES INTO NASCOM
-0030 ; AND THEN CONVERT TO RUN UNDER
-0040 ; NASCOM MICROSOFT BASIC
-0050 ;
-0060 ; BY MIKE FOX
-0070 ; AUCKLAND, NEW ZEALAND
-0080 ;
-0090 ; 14th JULY, 1981
-0100 ;
-0C80 0110 ORG &pound;0C80
-0C80 0E00 0120 LD C, 0 ; RESET COUNTER
-0C82 210A08 0130 LD HL, &pound;080A ; VDU LINE 1
-0C85 11F610 0140 LD DE, &pound;10F6 ; BASIC START
-0C88 CDC50C 0150 NSYSC CALL SUB ; GET A BIT
-0C8B FEA5 0160 CP &pound;A5 ; SYNC BYTE A5?
-0C8D 20F9 0170 JR, NZ, NSYSC ; IF NOT, LOOP
-0C8F CDC50C 0180 NEXT CALL SUB ; NOW GET 8 BITS
-0C92 CDC50C 0190 CALL SUB
-0C95 CDC50C 0200 CALL SUB
-0C98 CDC50C 0210 CALL SUB
-0C9B CDC50C 0220 CALL SUB
-0C9E CDC50C 0230 CALL SUB
-0CA1 CDC50C 0240 CALL SUB
-0CA4 CDC50C 0250 CALL SUB
-0CA7 77 0260 LD (HL), A ; LOAD TO SCREEN
-0CA8 12 0270 LD (DE) A ; LOAD TO MEMORY
-0CA9 7D 0280 LD A, L
-0CAA FE39 0290 CP &pound;39 ; END OF LINE?
-0CAC 2803 0300 JR Z, EOL
-0CAE 2C 0310 INC L ; CONTINUE ON THIS LINE
-0CAF 1802 0320 JR INLINE
-0CB1 2E0A 0330 EOL LD L, 10 ; BACK TO LINE START
-0CB3 1A 0340 INLINE LD A (DE) ; RECALL BYTE
-0CB4 13 0350 INC DE
-0CB5 FE00 0360 CP 0 ; IS IT ZERO?
-0CB7 2008 0370 JR NZ, NOZERO ; CHECK FOR END
-0CB9 0C 0380 INC C ; INCREMENT COUNTER
-0CBA 79 0390 LD A, C
-0CBB FE03 0400 CP 3 ; 3 IN A ROW?
-0CBD 2004 0410 JR NZ, NOTEND
-0CBF 184F 0420 JR TOKEN ; TO TOKEN PROGRAM
-0CC1 0E00 0430 NOZERO LD C, 0 ; RESET COUNTER
-0CC3 18CA 0440 NOTEND JR NEXT ; LOPP FOR NEXT BYTE
-0450 ;
-0460 ; SUBROUTINE TO GET A BIT
-0470 ;
-0CC5 C5 0480 SUB PUSH BC
-0CC6 F5 0490 PUSH AF
-0500 ; *******************************************************
-0CC7 0653 0510 LD B, &pound;53 ; 4 Mhz, &pound;26 FOR 2 Mhz
-0520 ; *******************************************************
-0CC9 10FE 0530 LP1 DJNZ LP1 ; DELAY LOOP
-0CCB DB04 0540 LP1A IN A, (04) ; READ PORT A0
-0CCD EEFF 0550 XOR &pound;FF ; INVERT IT
-0CCF 1F 0560 RRA ; ROTATE TO CARRY
-</pre>
+<table style="width: 100%">
+<tr><td></td><td></td><td>0010</td><td colspan=3>; PROGRAM TO READ TRS-80 LEVEL 2</td></tr>
+<tr><td></td><td></td><td>0020</td><td colspan=3>; BASIC PROGRAM TAPES INTO NASCOM</td></tr>
+<tr><td></td><td></td><td>0030</td><td colspan=3>; AND THEN CONVERT TO RUN UNDER</td></tr>
+<tr><td></td><td></td><td>0040</td><td colspan=3>; NASCOM MICROSOFT BASIC</td></tr>
+<tr><td></td><td></td><td>0050</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0060</td><td colspan=3>; BY MIKE FOX</td></tr>
+<tr><td></td><td></td><td>0070</td><td colspan=3>; AUCKLAND, NEW ZEALAND</td></tr>
+<tr><td></td><td></td><td>0080</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0090</td><td colspan=3>; 14th JULY, 1981</td></tr>
+<tr><td></td><td></td><td>0100</td><td colspan=3>;</td></tr>
+<tr><td>0C80</td><td></td><td>0110</td><td></td><td>ORG &pound;0C80</td><td></td></tr>
+<tr><td>0C80</td><td>0E00</td><td>0120</td><td></td><td>LD C, 0</td><td>; RESET COUNTER</td></tr>
+<tr><td>0C82</td><td>210A08</td><td>0130</td><td></td><td>LD HL, &pound;080A</td><td>; VDU LINE 1</td></tr>
+<tr><td>0C85</td><td>11F610</td><td>0140</td><td></td><td>LD DE, &pound;10F6</td><td>; BASIC START</td></tr>
+<tr><td>0C88</td><td>CDC50C</td><td>0150</td><td>NSYSC</td><td>CALL SUB</td><td>; GET A BIT</td></tr>
+<tr><td>0C8B</td><td>FEA5</td><td>0160</td><td></td><td>CP &pound;A5</td><td>; SYNC BYTE A5?</td></tr>
+<tr><td>0C8D</td><td>20F9</td><td>0170</td><td></td><td>JR, NZ, NSYSC</td><td>; IF NOT, LOOP</td></tr>
+<tr><td>0C8F</td><td>CDC50C</td><td>0180</td><td>NEXT</td><td>CALL SUB</td><td>; NOW GET 8 BITS</td></tr>
+<tr><td>0C92</td><td>CDC50C</td><td>0190</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0C95</td><td>CDC50C</td><td>0200</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0C98</td><td>CDC50C</td><td>0210</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0C9B</td><td>CDC50C</td><td>0220</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0C9E</td><td>CDC50C</td><td>0230</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0CA1</td><td>CDC50C</td><td>0240</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0CA4</td><td>CDC50C</td><td>0250</td><td></td><td>CALL SUB</td><td></td></tr>
+<tr><td>0CA7</td><td>77</td><td>0260</td><td></td><td>LD (HL), A</td><td>; LOAD TO SCREEN</td></tr>
+<tr><td>0CA8</td><td>12</td><td>0270</td><td></td><td>LD (DE) A</td><td>; LOAD TO MEMORY</td></tr>
+<tr><td>0CA9</td><td>7D</td><td>0280</td><td></td><td>LD A, L</td><td></td></tr>
+<tr><td>0CAA</td><td>FE39</td><td>0290</td><td></td><td>CP &pound;39</td><td>; END OF LINE?</td></tr>
+<tr><td>0CAC</td><td>2803</td><td>0300</td><td></td><td>JR Z, EOL</td><td></td></tr>
+<tr><td>0CAE</td><td>2C</td><td>0310</td><td></td><td>INC L</td><td>; CONTINUE ON THIS LINE</td></tr>
+<tr><td>0CAF</td><td>1802</td><td>0320</td><td></td><td>JR INLINE</td><td></td></tr>
+<tr><td>0CB1</td><td>2E0A</td><td>0330</td><td>EOL</td><td>LD L, 10</td><td>; BACK TO LINE START</td></tr>
+<tr><td>0CB3</td><td>1A</td><td>0340</td><td>INLINE</td><td>LD A (DE)</td><td>; RECALL BYTE</td></tr>
+<tr><td>0CB4</td><td>13</td><td>0350</td><td></td><td>INC DE</td><td></td></tr>
+<tr><td>0CB5</td><td>FE00</td><td>0360</td><td></td><td>CP 0</td><td>; IS IT ZERO?</td></tr>
+<tr><td>0CB7</td><td>2008</td><td>0370</td><td></td><td>JR NZ, NOZERO</td><td>; CHECK FOR END</td></tr>
+<tr><td>0CB9</td><td>0C</td><td>0380</td><td></td><td>INC C</td><td>; INCREMENT COUNTER</td></tr>
+<tr><td>0CBA</td><td>79</td><td>0390</td><td></td><td>LD A, C</td><td></td></tr>
+<tr><td>0CBB</td><td>FE03</td><td>0400</td><td></td><td>CP 3</td><td>; 3 IN A ROW?</td></tr>
+<tr><td>0CBD</td><td>2004</td><td>0410</td><td></td><td>JR NZ, NOTEND</td><td></td></tr>
+<tr><td>0CBF</td><td>184F</td><td>0420</td><td></td><td>JR TOKEN</td><td>; TO TOKEN PROGRAM</td></tr>
+<tr><td>0CC1</td><td>0E00</td><td>0430</td><td>NOZERO</td><td>LD C, 0</td><td>; RESET COUNTER</td></tr>
+<tr><td>0CC3</td><td>18CA</td><td>0440</td><td>NOTEND</td><td>JR NEXT</td><td>; LOPP FOR NEXT BYTE</td></tr>
+<tr><td></td><td></td><td>0450</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0460</td><td colspan=3>; SUBROUTINE TO GET A BIT</td></tr>
+<tr><td></td><td></td><td>0470</td><td colspan=3>;</td></tr>
+<tr><td>0CC5</td><td>C5</td><td>0480</td><td>SUB</td><td>PUSH BC</td><td></td></tr>
+<tr><td>0CC6</td><td>F5</td><td>0490</td><td></td><td>PUSH AF</td><td></td></tr>
+<tr><td></td><td></td><td>0500</td><td colspan=3>; *******************************************************</td></tr>
+<tr><td>0CC7</td><td>0653</td><td>0510</td><td></td><td>LD B, &pound;53</td><td>; 4 Mhz, &pound;26 FOR 2 Mhz</td></tr>
+<tr><td></td><td></td><td>0520</td><td colspan=3>; *******************************************************</td></tr>
+<tr><td>0CC9</td><td>10FE</td><td>0530</td><td>LP1</td><td>DJNZ LP1</td><td>; DELAY LOOP</td></tr>
+<tr><td>0CCB</td><td>DB04</td><td>0540</td><td>LP1A</td><td>IN A, (04)</td><td>; READ PORT A0</td></tr>
+<tr><td>0CCD</td><td>EEFF</td><td>0550</td><td></td><td>XOR &pound;FF</td><td>; INVERT IT</td></tr>
+<tr><td>0CCF</td><td>1F</td><td>0560</td><td></td><td>RRA</td><td>; ROTATE TO CARRY</td></tr>
+</table>
 <?php columnEnd(1); ?>

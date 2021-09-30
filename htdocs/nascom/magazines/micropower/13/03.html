@@ -2,37 +2,41 @@
 <h1 id="article1">
 HANDS-ON
 </h1>
-<p>
+<h2 class="author">
 by Viktor&nbsp;. . . . . Part, the third
-</p>
-<p>
+</h2>
+<h3>
 PRINT
-</p>
+</h3>
 <p>
 Since most of us cut our programming teeth on the PRINT statement, there is
 not much point in covering acres of paper in explanations and illustrations &ndash; however
 for the benefit of those just beginning I will summarise the ground rules. [INPUT
 &ldquo;Enter SKILL LEVEL&rdquo;; X$:IF X$= &ldquo;ADVANCED&rdquo; THEN GOTO(next section)]
+</p>
+<p>
 The PRINT statement outputs to a terminal, usually the screen or a printer(or
 both). It operates from the current position of the cursor. If used on its own, a
 carriage return/<?php spChar("zwsp"); ?>line feed(CR/LF) is output, thus placing the cursor at the start of the
 next line.
 </p>
-<p>
+<p class="noindent">
 You can also print numbers [PRINT 5] , the answers to calculations [PRINT 5*6
 (=30)], the value of variables [PRINT A (=10 where A=10)], string literals [PRINT
 &ldquo;Fred&rdquo;], strings [PRINT X$ (Nascom-where X$ has been defined as &ldquo;Nascom&rdquo;), plus
 a whole series of intrinsic functions which are listed in the manual. Useful examples
-are:
+are:-
 </p>
-<p>
+<p class="noindent">
 PRINT CHR$(X) &ndash; where X has any ASCII value from 0 to 255. For example,
 CHR$(65) prints the letter A, CHR$(181) prints a small human figure, if your system
 is equipped with the Nascom&nbsp;2 graphics ROM.
+</p>
+<p class="noindent">
 PRINT FRE(0) &ndash; gives you the remaining memory space available for your BASIC
 program.
 </p>
-<p>
+<p class="noindent">
 PRINT SQR(X) &ndash; outputs the square-root of X.
 </p>
 <p>
@@ -43,15 +47,17 @@ the next PRINT statement will begin at the start of the next line, the Nascom ha
 output a CR/LF. However, if you end the statement with a semi-colon, the next
 PRINT statement will start at the next available space; e.g.
 </p>
-<p>
-10 FOR A=1 to 5:PRINT A;:NEXT will give you:
+<p class="noindent">
+10 FOR A=1 to 5:PRINT A;:NEXT will give you:-
 </p>
-<p>
+<p class="noindent">
 1 2 3 4 5
 </p>
-<p>
+<p class="noindent">
 Note that a space is output in front of each number &ndash; if you PRINT a negative
 number this space will be occupied by a minus sign.
+</p>
+<p>
 A further modification, available within the PRINT statement itself, is the use of
 commas to divide the output into zones. PRINT 1,2,3 puts 1 in position 0,2 in position
 14 and 3 in position 28. If you not redefined WIDTH then the third zone is 20

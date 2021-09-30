@@ -1,11 +1,11 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 been stored at &pound;0C78 &ndash; &pound;0C79, commands U and N can be used from the keyboard,
 and DF 55 and DF 4E can be used within programs, to turn the printer on and off.
 </p>
-<p>
-OUTPUT 0 xx yy
-</p>
+<h3>
+OUTPUT O xx yy
+</h3>
 <p>
 This routine sends data yy to port xx. The port number, xx, is placed on the
 bottom eight address lines, A0 &ndash; A7, and this is decoded to determine which
@@ -25,9 +25,9 @@ A convenient way to study the operation of the PIO chip is to use the 0 and Q
 commands to write to and read from the PIO, while monitoring the state of the lines
 with a logic probe, or with the Bits and P.C.s port probe.
 </p>
-<p>
+<h3>
 PREGS
-</p>
+</h3>
 <p>
 In the Nas-Sys&nbsp;1 monitor command P merely produces an error message; in
 Nas-Sys&nbsp;3 the command prints out the contents of the procesors main registers,
@@ -37,17 +37,17 @@ display the registers in Nas-Sys&nbsp;1, although the format of the display is s
 different (see the S command), but it is not written as a subroutine, so it cannot be
 accessed from the keyboard or from user programs.
 </p>
-<p>
+<h3>
 QUERY Q xx
-</p>
+</h3>
 <p>
 Q xx obtains data from port xx and displays it on the screen in
 hexadecimal format. To be able to obtain data via the PIO chip you will have to
 program the chip by writing to the appropriate control port using the 0 command.
 </p>
-<p>
+<h3>
 READ R xxxx (y)
-</p>
+</h3>
 <p>
 The Read command loads data from a cassette tape written in the format used
 by the standard Write command. After turning on the tape LED the routine sets

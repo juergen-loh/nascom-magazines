@@ -5,56 +5,55 @@
 30 REM SET UP M/C CODE AND PUT UP TITLE
 40 REM -------------------------------
 42 CLEAR 500:DIM M$(4):Z$=CHR$(0)
-44 DATA27085,14336,-13564,6399,18178,10927,-817
-9,233
+44 DATA27085,14336,-13564,6399,18178,10927,-8179,233
 50 DATA 31711, 1080, -53,536,-20665,3370,-5664,0
 52 IF PEEK(1)=0 THEN RESTORE 50
 60 DOKE 4100,3340:FOR I=3340 to 3354 STEP 2
 70 READ J:DOKE I,J:NEXT
-80 CLS:F=0:A$= &ldquo;* HANGMAN *&rdquo;:FOR I=1 TO 11
+80 CLS:F=0:A$= "* HANGMAN *":FOR I=1 TO 11
 90 POKE 3036+I, ASC(MID$(A$,I,1)):NEXT
 100 REM SEARCH FULL LIST AND CHOOSEWORD
 110 REM ----------------------------------
 130 RESTORE 9000:W=-1
-140 READ A$:W=W+1:IF A$ &lt;&gt; &ldquo;.&rdquo; THEN 140
+140 READ A$:W=W+1:IF A$ &lt;&gt; "." THEN 140
 150 RESTORE 9000
 160 I=0 TO INT(RND(1)*W):READ A$:NEXT
 162 FOR J=1 TO LEN(Z$)
 164 IF I=ASC(MID$(Z$,J,1)) THEN F=1
 166 NEXT: IF F THEN F=0:GOTO 150
 168 Z$=Z$+CHR$(I)
-170 B$= &ldquo;&rdquo;:C$= &ldquo;&rdquo;: G$= &ldquo;&rdquo;: G=0: H=0: L=LEN(A$)
-180 FOR I=1 TO L:B$=B$+ &ldquo;_&rdquo;:NEXT
+170 B$= "":C$= "": G$= "": G=0: H=0: L=LEN(A$)
+180 FOR I=1 TO L:B$=B$+ "_":NEXT
 190 S=48-2*L:IF S&gt;28 THEN S=28
 200 REM START
 210 REM -----
-220 X=S:Y=5:GOSUB 900:PRINT &ldquo;Your guess&rdquo;
+220 X=S:Y=5:GOSUB 900:PRINT "Your guess"
 230 X=S:Y=3:GOSUB 900
 240 FOR I=1 TO L
-250 PRINT MID$(B$,I,1); " &rdquo;;
+250 PRINT MID$(B$,I,1); " ";
 260 NEXT
 270 IF B$&lt;&gt;A$ THEN 350
-280 M$(1)=&ldquo;Well done! You win!&rdquo;
-290 M$(2)=&ldquo; &rdquo;
+280 M$(1)="Well done! You win!"
+290 M$(2)=" "
 292 IF RND(1)&gt;.2 THEN 300
-294 M$(1)=&ldquo;O.K. Smartie! But I&rdquo;
-296 M$(2)=&ldquo;will still hang you!&rdquo;
+294 M$(1)="O.K. Smartie! But I"
+296 M$(2)="will still hang you!"
 298 H=1:GOSUB1000:H=2:GOSUB1000:H=9:GOSUB1000
-300 M$(3)=&ldquo;If you would like&rdquo;
-310 M$(4)=&ldquo;another game press y&rdquo;
+300 M$(3)="If you would like"
+310 M$(4)="another game press y"
 312 GOSUB 920
 320 C=USR(0):IF C&lt;0 THEN 320
-330 IF CHR$(C)=&ldquo;Y&rdquo; THEN 80
+330 IF CHR$(C)="Y" THEN 80
 340 CLS:X=20:Y=7:GOSUB 900
-342 PRINT &ldquo;Goodbye!&rdquo;:END
+342 PRINT "Goodbye!":END
 350 G=G+1
 360 X=S:Y=6:GOSUB 900
-362 PRINT &ldquo;No. &rdquo;;G;&ldquo; please.&rdquo;
+362 PRINT "No. ";G;" please."
 370 X=27+G:Y=9:GOSUB 900
 380 C=USR(0): IF C&lt;0 THEN 350
 390 C$=CHR$(C): PRINT C$
 400 FOR I=1 TO 4
-410 M$(I)=&ldquo; &rdquo;
+410 M$(I)=" "
 420 NEXT
 430 GOSUB 920
 440 FOR I=1 TO LEN(G$)

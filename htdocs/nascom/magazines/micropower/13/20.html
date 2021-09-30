@@ -8,7 +8,7 @@ have some form of graphics capability, either by means of the sadly-departed
 Econographics kit or a locally-produced or commercial system. Often there is need
 to switch between two sets of graphics if you use special characters &ndash; for
 example, to display the pieces for a chess program such as Sargon.
-This can be done by switching the CE lines of the chips on and off with
+This can be done by switching the<?php invertedSignal("CE"); ?>lines of the chips on and off with
 mechanical keys, or, even worse, by using one line from the PIO as a latch to enable
 the required ROM; this ties up the PIO needlessly.
 </p>
@@ -21,20 +21,20 @@ way until set back to zero by a program command, or until the RESET button is
 pressed. lf a program uses the special graphics ROM, you merely have to include
 the following machine code routine at the start of the programs :
 </p>
-<p>
-3E 04 LD A, 4 ; BIT 2 &ndash; USE LD A, 32 FOR BIT 5
-32 00 0C LD (&pound;0C00), A ; CHANGE TO 2ND GRAPHICS ROM
-</p>
-<p>
+<table class="indent" style="width: 80%">
+<tr><td>3E 04</td><td>LD A, 4</td><td>; BIT 2 &ndash; USE LD A, 32 FOR BIT 5</td></tr>
+<tr><td>32 00 0C</td><td>LD (&pound;0C00), A</td><td>; CHANGE TO 2ND GRAPHICS ROM</td></tr>
+</table>
+<p class="continued">
 and at the end of the programs:
 </p>
-<p>
-AF XOR A ; SET A TO ZERO
-32 00 0C LD (&pound;0C00), A ; RESTORE STANDARD GRAPHICS
-</p>
-<p>
+<table class="indent" style="width: 80%">
+<tr><td>AF</td><td>XOR A</td><td>; SET A TO ZERO</td></tr>
+<tr><td>32 00 0C</td><td>LD (&pound;0C00), A</td><td>; RESTORE STANDARD GRAPHICS</td></tr>
+</table>
+<h3>
 CONSTRUCTION
-</p>
+</h3>
 <p>
 Make up a &ldquo;piggy-back&rdquo; board, using a small piece of Veroboard or a
 small PCB, with one 24-pin wirewrap socket, one normal 24-pin socket, and one 14-

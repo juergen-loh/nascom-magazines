@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 memory, so that you can modify or read its contents. However, because PEEK &amp;
 POKE operate only on single bytes the highest value that you can POKE into a
 memory is 255; similarly, PEEK(X) returns the value held in the single byte whose
@@ -13,41 +13,43 @@ specific address, the least significant byte is stored at the next byte above. W
 they stored in that order? Simply because that is the normal order in which the Z80
 microprocessor stores sixteen-bit values. In order to cope with negative numbers the
 most significant bit of the high order byte is used to indicate the sign; if this bit is set,
-then the number is to be read as negative. The range of available values is thus &ndash;
-32768 to + 32767.
+then the number is to be read as negative. The range of available values is thus
+&ndash;32768 to +32767.
 </p>
-<p>
-Let&rsquo;s try an example:
+<p class="noindent">
+Let&rsquo;s try an example:-
 </p>
-<p>
+<p class="noindent">
 Enter DOKE 3200,32767. If you now return to NAS-SYS and tabulate from 0C80, you
-will find 0C80 contans FF (low-order byte with all bits set) and 0C81 contains 7F
+will find 0C80 contains FF (low-order byte with all bits set) and 0C81 contains 7F
 (high-order byte having all bits except the most significant one set).
+</p>
+<p class="noindent">
 Now try DOKE 3200,-1:DOKE 3202,-2:DOKE 3204,-32767
 </p>
-<p>
-The result should be as follows:
+<p class="noindent">
+The result should be as follows:-
 </p>
-<p>
-0C80 (low byte) FF
+<p class="noindent">
+0C80 (low byte) FF<br>
 0C81 (high byte) FF
 </p>
-<p>
+<p class="noindent">
 Note computer holds this as 65536-1 i.e. (15x4096) + (15x256) + (15x16) + (15x1)
 </p>
-<p>
-0C82 (low byte) FE
+<p class="noindent">
+0C82 (low byte) FE<br>
 0C83 (high byte) FF
 </p>
-<p>
-The computer has 65536-2, i.e. (15x4096) + (15x2 56) + (15x16) + (14x1)
+<p class="noindent">
+The computer has 65536-2, i.e. (15x4096) + (15x256) + (15x16) + (14x1)
 </p>
-<p>
-0C84 (low byte) 01
+<p class="noindent">
+0C84 (low byte) 01<br>
 0C85 (high byte) 80
 </p>
-<p>
-The computer stores 65536-32767, i.e. (8 x 409 6) + (1 x1)
+<p class="noindent">
+The computer stores 65536-32767, i.e. (8x4096) + (1x1)
 </p>
 <p>
 Why, though, do we have to bother with all this complicated nonsense? Let us

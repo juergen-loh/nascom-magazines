@@ -1,60 +1,60 @@
 <?php columnStart(1); ?>
-<pre>
-1680 ; NO MATCH, SO CONVERT TO REM AND DISPLAY
-1690 ;ADDRESS, LINE NUMBER (DECIMAL) AND CODE
-1700 ;
-0D5F F1 1710 NOTM POP AF
-0D60 E1 1720 POP HL ; DISPLAY ON SCREEN
-0D61 E5 1730 PUSH HL ; DETAILS OF EACH
-0D62 DF66 1740 SCAL &pound;66 ; DISPLAY HL IN HEX
-0D64 62 1750 LD H, D
-0D65 6B 1760 LD H, E
-0D66 CD890D 1770 CALL HEXDEC ; CONVERT HEX. TO DEC.
-0D69 DF69 1780 SCAL &pound;69 ; OUTPUT ONE SPACE
-0D6B E1 1810 POP HL
-0D6C 7E 1820 LD A, (HL)
-0D6D DF68 1830 SCAL &pound;68 ; PRINT ACC. IN HEX
-0D6F DF7E 1840 SCAL &pound;7E ; OUTPUT TWO SPACES
-0D71 DF69 1850 SCAL &pound;69 ; OUTPUT ONE SPACE
-0D73 3E8E 1890 LD A, &pound;8E ; LOAD CODE FOR REM
-0D75 773 1900 LD (HL), A ; REWRITE AS REM
-0D76 3A2A0C 1910 LD A, (&pound;0C2A) ; SCREEN FULL?
-0D79 FE0B 1920 CP &pound;0B ; CURSOR POSITION
-0D7B 200B 1930 JR NZ, NOTFUL ; PASS UNLESS
-0D7D 3A290C 1940 LD A, (C29) ; NEXT OUTPUT SCROLLS
-0D80 FEAA 1950 CP &pound;AA
-0D82 2004 1960 JR NZ, NOTFUL
-0D84 CF 1970 RST 8 ; WAIT FOR KEY PRESS
-0D85 3E0C 1980 LD A, &pound;0C ; CLEAR SCREEN CODE
-0D87 F7 1990 RST &pound;30 ; NAS-SYS OUTPUT
-0D88 C9 2000 NOTFUL RET ; RETURN
-2010 ;
-2020 ; SUBROUTINE TO CONVERT HEX LINE NUMBER
-2030 ; TO DECIMAL (NUMBER IN HL REGS.)
-2040 ;
-0D89 0E04 2050 HEXDEC LD C, A ; MAX. LEADING SPACES
-0D8B 0600 2060 LD B, 0
-0D8D D5 2070 PUSH DE
-0D8E 110A00 2080 LD DE, 10
-0D91 D5 2090 PUSH DE
-0D92 C5 2100 PUSH BC
-0D93 CDBC0D 2110 DODIV CALL DIVIDE ; DIVIDE SUB ROUTINE
-0D96 78 2120 LD A, B
-0D97 B1 2130 OR C ; IF ZERO, FINISHED
-0D98 CAA30D 2140 JP Z, DIVEND
-0D9B E3 2150 EX (SP), HL ; ANOTHER DIV LOOP
-0D9C 2D 2160 DEC L
-0D9D E5 2170 PUSH HL
-0D9E 60 2180 LD H, B ; PUT VALUE IN HL
-0D9F 69 2190 LD L, C
-0DA0 C3930D 2200 JP DODIV
-0DA3 C1 2210 DIVEND POP BC
-0DA4 0D 2220 LEADSP DEC C ; DEC. LEADING SPACES
-0DA5 79 2230 LD A, C
-0DA6 B7 2240 OR A ; CHECK SPACES LEFT
-0DA7 FAB00D 2250 JP M, DONESP ; IF MINUS, DONE
-0DAA 3E20 2260 LD A, &pound;20 ; ASCII SPACE CODE
-0DAC F7 2270 RST &pound;30 OUPUT ROUTINE
-0DAD C3A40D 2280 JP LEADSP
-</pre>
+<table style="width: 100%">
+<tr><td></td><td></td><td>1680</td><td colspan=3>; NO MATCH, SO CONVERT TO REM AND DISPLAY</td></tr>
+<tr><td></td><td></td><td>1690</td><td colspan=3>; ADDRESS, LINE NUMBER (DECIMAL) AND CODE</td></tr>
+<tr><td></td><td></td><td>1700</td><td colspan=3>;</td></tr>
+<tr><td>0D5F</td><td>F1</td><td>1710</td><td>NOTM</td><td>POP AF</td><td></td></tr>
+<tr><td>0D60</td><td>E1</td><td>1720</td><td></td><td>POP HL</td><td>; DISPLAY ON SCREEN</td></tr>
+<tr><td>0D61</td><td>E5</td><td>1730</td><td></td><td>PUSH HL</td><td>; DETAILS OF EACH</td></tr>
+<tr><td>0D62</td><td>DF66</td><td>1740</td><td></td><td>SCAL &pound;66</td><td>; DISPLAY HL IN HEX</td></tr>
+<tr><td>0D64</td><td>62</td><td>1750</td><td></td><td>LD H, D</td><td></td></tr>
+<tr><td>0D65</td><td>6B</td><td>1760</td><td></td><td>LD H, E</td><td></td></tr>
+<tr><td>0D66</td><td>CD890D</td><td>1770</td><td></td><td>CALL HEXDEC</td><td>; CONVERT HEX. TO DEC.</td></tr>
+<tr><td>0D69</td><td>DF69</td><td>1780</td><td></td><td>SCAL &pound;69</td><td>; OUTPUT ONE SPACE</td></tr>
+<tr><td>0D6B</td><td>E1</td><td>1810</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>0D6C</td><td>7E</td><td>1820</td><td></td><td>LD A, (HL)</td><td></td></tr>
+<tr><td>0D6D</td><td>DF68</td><td>1830</td><td></td><td>SCAL &pound;68</td><td>; PRINT ACC. IN HEX</td></tr>
+<tr><td>0D6F</td><td>DF7E</td><td>1840</td><td></td><td>SCAL &pound;7E</td><td>; OUTPUT TWO SPACES</td></tr>
+<tr><td>0D71</td><td>DF69</td><td>1850</td><td></td><td>SCAL &pound;69</td><td>; OUTPUT ONE SPACE</td></tr>
+<tr><td>0D73</td><td>3E8E</td><td>1890</td><td></td><td>LD A, &pound;8E</td><td>; LOAD CODE FOR REM</td></tr>
+<tr><td>0D75</td><td>77</td><td>1900</td><td></td><td>LD (HL), A</td><td>; REWRITE AS REM</td></tr>
+<tr><td>0D76</td><td>3A2A0C</td><td>1910</td><td></td><td>LD A, (&pound;0C2A)</td><td>; SCREEN FULL?</td></tr>
+<tr><td>0D79</td><td>FE0B</td><td>1920</td><td></td><td>CP &pound;0B</td><td>; CURSOR POSITION</td></tr>
+<tr><td>0D7B</td><td>200B</td><td>1930</td><td></td><td>JR NZ, NOTFUL</td><td>; PASS UNLESS</td></tr>
+<tr><td>0D7D</td><td>3A290C</td><td>1940</td><td></td><td>LD A, (C29)</td><td>; NEXT OUTPUT SCROLLS</td></tr>
+<tr><td>0D80</td><td>FEAA</td><td>1950</td><td></td><td>CP &pound;AA</td><td></td></tr>
+<tr><td>0D82</td><td>2004</td><td>1960</td><td></td><td>JR NZ, NOTFUL</td><td></td></tr>
+<tr><td>0D84</td><td>CF</td><td>1970</td><td></td><td>RST 8</td><td>; WAIT FOR KEY PRESS</td></tr>
+<tr><td>0D85</td><td>3E0C</td><td>1980</td><td></td><td>LD A, &pound;0C</td><td>; CLEAR SCREEN CODE</td></tr>
+<tr><td>0D87</td><td>F7</td><td>1990</td><td></td><td>RST &pound;30</td><td>; NAS-SYS OUTPUT</td></tr>
+<tr><td>0D88</td><td>C9</td><td>2000</td><td>NOTFUL</td><td>RET</td><td>; RETURN</td></tr>
+<tr><td></td><td></td><td>2010</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>2020</td><td colspan=3>; SUBROUTINE TO CONVERT HEX LINE NUMBER</td></tr>
+<tr><td></td><td></td><td>2030</td><td colspan=3>; TO DECIMAL (NUMBER IN HL REGS.)</td></tr>
+<tr><td></td><td></td><td>2040</td><td colspan=3>;</td></tr>
+<tr><td>0D89</td><td>0E04</td><td>2050</td><td>HEXDEC</td><td>LD C, A</td><td>; MAX. LEADING SPACES</td></tr>
+<tr><td>0D8B</td><td>0600</td><td>2060</td><td></td><td>LD B, 0</td><td></td></tr>
+<tr><td>0D8D</td><td>D5</td><td>2070</td><td></td><td>PUSH DE</td><td></td></tr>
+<tr><td>0D8E</td><td>110A00</td><td>2080</td><td></td><td>LD DE, 10</td><td></td></tr>
+<tr><td>0D91</td><td>D5</td><td>2090</td><td></td><td>PUSH DE</td><td></td></tr>
+<tr><td>0D92</td><td>C5</td><td>2100</td><td></td><td>PUSH BC</td><td></td></tr>
+<tr><td>0D93</td><td>CDBC0D</td><td>2110</td><td>DODIV</td><td>CALL DIVIDE</td><td>; DIVIDE SUB ROUTINE</td></tr>
+<tr><td>0D96</td><td>78</td><td>2120</td><td></td><td>LD A, B</td><td></td></tr>
+<tr><td>0D97</td><td>B1</td><td>2130</td><td></td><td>OR C</td><td>; IF ZERO, FINISHED</td></tr>
+<tr><td>0D98</td><td>CAA30D</td><td>2140</td><td></td><td>JP Z, DIVEND</td><td></td></tr>
+<tr><td>0D9B</td><td>E3</td><td>2150</td><td></td><td>EX (SP), HL</td><td>; ANOTHER DIV LOOP</td></tr>
+<tr><td>0D9C</td><td>2D</td><td>2160</td><td></td><td>DEC L</td><td></td></tr>
+<tr><td>0D9D</td><td>E5</td><td>2170</td><td></td><td>PUSH HL</td><td></td></tr>
+<tr><td>0D9E</td><td>60</td><td>2180</td><td></td><td>LD H, B</td><td>; PUT VALUE IN HL</td></tr>
+<tr><td>0D9F</td><td>69</td><td>2190</td><td></td><td>LD L, C</td><td></td></tr>
+<tr><td>0DA0</td><td>C3930D</td><td>2200</td><td></td><td>JP DODIV</td><td></td></tr>
+<tr><td>0DA3</td><td>C1</td><td>2210</td><td>DIVEND</td><td>POP BC</td><td></td></tr>
+<tr><td>0DA4</td><td>0D</td><td>2220</td><td>LEADSP</td><td>DEC C</td><td>; DEC. LEADING SPACES</td></tr>
+<tr><td>0DA5</td><td>79</td><td>2230</td><td></td><td>LD A, C</td><td></td></tr>
+<tr><td>0DA6</td><td>B7</td><td>2240</td><td></td><td>OR A</td><td>; CHECK SPACES LEFT</td></tr>
+<tr><td>0DA7</td><td>FAB00D</td><td>2250</td><td></td><td>JP M, DONESP</td><td>; IF MINUS, DONE</td></tr>
+<tr><td>0DAA</td><td>3E20</td><td>2260</td><td></td><td>LD A, &pound;20</td><td>; ASCII SPACE CODE</td></tr>
+<tr><td>0DAC</td><td>F7</td><td>2270</td><td></td><td>RST &pound;30 OUPUT ROUTINE</td><td></td></tr>
+<tr><td>0DAD</td><td>C3A40D</td><td>2280</td><td></td><td>JP LEADSP</td><td></td></tr>
+</table>
 <?php columnEnd(1); ?>

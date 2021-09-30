@@ -1,60 +1,59 @@
 <?php columnStart(1); ?>
-<pre>
-0D14 7E 1130 NEXTL LD A, (HL) ; LOW BYTE OF POINTER
-0D15 D6EF 1140 SUB &pound;EF ; SUBTRACT &pound;EF
-0D17 77 1150 LD (HL), A ; RE-WRITE
-0D18 23 1160 INC HL
-0D19 7E 1170 LD A, (HL) ; HICH BYTE OF POINTER
-0D1A DE31 1180 SBC A, SUBTRACT &pound;31
-0D1C 77 1190 LD (HL), A ; RE-WRITE
-0D1D 23 1200 INC HL
-0D1E 5E 1210 LD E, (HL) ; SAVE LINE NUMBER
-0D1F 23 1220 INC HL
-0D20 56 1230 LD D, (HL) ; SAVE LINE N UMBER
-0D21 23 1240 LOOP INC HL
-0D22 7E 1250 LD A, (HL) ; GET BYTE OF BASIC
-0D23 D600 1260 SUB 0
-0D25 2805 1270 JR Z, CHECKE ; IF EOL, CHECK FOR
-PROG. END
-0D27 FC480D 1280 CALL M, SUBT ; IF GREATER THEN &pound;80
-1290 ; TRANSLATE TOKEN
-0D2A 18F5 1300 JR LOOPO;LOOP AGAIN
-0D2C 23 1310 CHECKE INC HL
-0D2D 23 1320 INC HL
-0D2E 7E 1330 LD A, (HL) ; LOAD BYTE
-0D2F D600 1340 SUB 0
-0D31 2803 1350 JR Z ENDT ; IF ZERO, PROG. END
-0D33 2B 1360 DEC HL
-0D34 18DE 1370 JR NEXTL ; NOT ZERO, CONTINUE
-0D36 23 1380 ENDT INC HL
-0D37 22D610 1390 LD (&pound;10D6), HL ; SAVE END ADDRESS
-A 0D3A 22D810 1400 LD (&pound;10D8), HL
-0D3D 22DA10 1410 LD (&pound;10DA), HL
-0D40 21F910 1420 LD HL, &pound;10F9 RESTORE ZERO @ &pound;10F9
-0D43 3600 1430 LD (HL), 0
-0D45 E1 1440 POP HL
-0D46 DF5B 1450 SCAL MRET ; RETURN TO NAS-SYS
-1460 ;
-1470 ;
-1480 ; SUBROUTINE TO CONVERT TOKENS
-1490 ;
-0D48 E5 1500 SUBT PUSH HL
-0D49 21D90D 1510 LD HL, TABLE ; LOAD TBLE ADDRESS
-0D4C F5 1520 AGAIN PUSH AF ; SAVE DATA BYTE
-0D4D 7E 1530 LD A, (HL) ; LOAD BYTE FROM TABLE
-0D4E D600 1540 SUB 0
-0D50 280D 1550 JR Z, NOTM ; END OF TABLE?
-0D52 F1 1560 POP AF ; NO, SO RESTORE DATA
-0D53 BE 1570 CP (HL) ; COMPARE WITH TABLE
-0D54 2804 1580 JR Z EQUAL ; EQUAL?
-0D56 23 1590 INC HL ; NO &ndash; GO TO NEXT
-0D57 23 1600 INC HL
-0D58 18F2 1610 JR AGAIN ; GO AROUND AGAIN
-0D5A 23 1620 EQUAL INC HL ; MATCH FOUND
-0D5B 7E 1630 LD A, (HL) ; GET NEW TOKEN
-0D5C E1 1640 POP HL ; RESTORE BASIC ADDRESS
-0D5D 77 1650 LD (HL), A ; STORE NEW TOKEN
-0D5E C9 1660 RET ; RETURN
-1670 ;
-</pre>
+<table style="width: 100%">
+<tr><td>0D14</td><td>7E</td><td>1130</td><td>NEXTL</td><td>LD A, (HL)</td><td>; LOW BYTE OF POINTER</td></tr>
+<tr><td>0D15</td><td>D6EF</td><td>1140</td><td></td><td>SUB &pound;EF</td><td>; SUBTRACT &pound;EF</td></tr>
+<tr><td>0D17</td><td>77</td><td>1150</td><td></td><td>LD (HL), A</td><td>; RE-WRITE</td></tr>
+<tr><td>0D18</td><td>23</td><td>1160</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>0D19</td><td>7E</td><td>1170</td><td></td><td>LD A, (HL)</td><td>; HICH BYTE OF POINTER</td></tr>
+<tr><td>0D1A</td><td>DE31</td><td>1180</td><td></td><td>SBC A,</td><td>; SUBTRACT &pound;31</td></tr>
+<tr><td>0D1C</td><td>77</td><td>1190</td><td></td><td>LD (HL), A</td><td>; RE-WRITE</td></tr>
+<tr><td>0D1D</td><td>23</td><td>1200</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>0D1E</td><td>5E</td><td>1210</td><td></td><td>LD E, (HL)</td><td>; SAVE LINE NUMBER</td></tr>
+<tr><td>0D1F</td><td>23</td><td>1220</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>0D20</td><td>56</td><td>1230</td><td></td><td>LD D, (HL)</td><td>; SAVE LINE NUMBER</td></tr>
+<tr><td>0D21</td><td>23</td><td>1240</td><td>LOOP</td><td>INC HL</td><td></td></tr>
+<tr><td>0D22</td><td>7E</td><td>1250</td><td></td><td>LD A, (HL)</td><td>; GET BYTE OF BASIC</td></tr>
+<tr><td>0D23</td><td>D600</td><td>1260</td><td></td><td>SUB 0</td><td></td></tr>
+<tr><td>0D25</td><td>2805</td><td>1270</td><td></td><td>JR Z, CHECKE</td><td>; IF EOL, CHECK FOR PROG. END</td></tr>
+<tr><td>0D27</td><td>FC480D</td><td>1280</td><td></td><td>CALL M, SUBT</td><td>; IF GREATER THEN &pound;80</td></tr>
+<tr><td></td><td></td><td>1290</td><td></td><td></td><td>; TRANSLATE TOKEN</td></tr>
+<tr><td>0D2A</td><td>18F5</td><td>1300</td><td></td><td>JR LOOPO</td><td>; LOOP AGAIN</td></tr>
+<tr><td>0D2C</td><td>23</td><td>1310</td><td>CHECKE</td><td>INC HL</td><td></td></tr>
+<tr><td>0D2D</td><td>23</td><td>1320</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>0D2E</td><td>7E</td><td>1330</td><td></td><td>LD A, (HL)</td><td>; LOAD BYTE</td></tr>
+<tr><td>0D2F</td><td>D600</td><td>1340</td><td></td><td>SUB 0</td><td></td></tr>
+<tr><td>0D31</td><td>2803</td><td>1350</td><td></td><td>JR Z ENDT</td><td>; IF ZERO, PROG. END</td></tr>
+<tr><td>0D33</td><td>2B</td><td>1360</td><td></td><td>DEC HL</td><td></td></tr>
+<tr><td>0D34</td><td>18DE</td><td>1370</td><td></td><td>JR NEXTL</td><td>; NOT ZERO, CONTINUE</td></tr>
+<tr><td>0D36</td><td>23</td><td>1380</td><td>ENDT</td><td>INC HL</td><td></td></tr>
+<tr><td>0D37</td><td>22D610</td><td>1390</td><td></td><td>LD (&pound;10D6), HL</td><td>; SAVE END ADDRESS</td></tr>
+<tr><td>A 0D3</td><td>A 22D810</td><td>1400</td><td></td><td>LD (&pound;10D8), HL</td><td></td></tr>
+<tr><td>0D3D</td><td>22DA10</td><td>1410</td><td></td><td>LD (&pound;10DA), HL</td><td></td></tr>
+<tr><td>0D40</td><td>21F910</td><td>1420</td><td></td><td>LD HL, &pound;10F9</td><td>; RESTORE ZERO @ &pound;10F9</td></tr>
+<tr><td>0D43</td><td>3600</td><td>1430</td><td></td><td>LD (HL), 0</td><td></td></tr>
+<tr><td>0D45</td><td>E1</td><td>1440</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>0D46</td><td>DF5B</td><td>1450</td><td></td><td>SCAL MRET</td><td>; RETURN TO NAS-SYS</td></tr>
+<tr><td></td><td></td><td>1460</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>1470</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>1480</td><td colspan=3>; SUBROUTINE TO CONVERT TOKENS</td></tr>
+<tr><td></td><td></td><td>1490</td><td colspan=3>;</td></tr>
+<tr><td>0D48</td><td>E5</td><td>1500</td><td>SUBT</td><td>PUSH HL</td><td></td></tr>
+<tr><td>0D49</td><td>21D90D</td><td>1510</td><td></td><td>LD HL, TABLE</td><td>; LOAD TBLE ADDRESS</td></tr>
+<tr><td>0D4C</td><td>F5</td><td>1520</td><td>AGAIN</td><td>PUSH AF</td><td>; SAVE DATA BYTE</td></tr>
+<tr><td>0D4D</td><td>7E</td><td>1530</td><td></td><td>LD A, (HL)</td><td>; LOAD BYTE FROM TABLE</td></tr>
+<tr><td>0D4E</td><td>D600</td><td>1540</td><td></td><td>SUB 0</td><td></td></tr>
+<tr><td>0D50</td><td>280D</td><td>1550</td><td></td><td>JR Z, NOTM</td><td>; END OF TABLE?</td></tr>
+<tr><td>0D52</td><td>F1</td><td>1560</td><td></td><td>POP AF</td><td>; NO, SO RESTORE DATA</td></tr>
+<tr><td>0D53</td><td>BE</td><td>1570</td><td></td><td>CP (HL)</td><td>; COMPARE WITH TABLE</td></tr>
+<tr><td>0D54</td><td>2804</td><td>1580</td><td></td><td>JR Z EQUAL</td><td>; EQUAL?</td></tr>
+<tr><td>0D56</td><td>23</td><td>1590</td><td></td><td>INC HL</td><td>; NO &ndash; GO TO NEXT</td></tr>
+<tr><td>0D57</td><td>23</td><td>1600</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>0D58</td><td>18F2</td><td>1610</td><td></td><td>JR AGAIN</td><td>; GO AROUND AGAIN</td></tr>
+<tr><td>0D5A</td><td>23</td><td>1620</td><td>EQUAL</td><td>INC HL</td><td>; MATCH FOUND</td></tr>
+<tr><td>0D5B</td><td>7E</td><td>1630</td><td></td><td>LD A, (HL)</td><td>; GET NEW TOKEN</td></tr>
+<tr><td>0D5C</td><td>E1</td><td>1640</td><td></td><td>POP HL</td><td>; RESTORE BASIC ADDRESS</td></tr>
+<tr><td>0D5D</td><td>77</td><td>1650</td><td></td><td>LD (HL), A</td><td>; STORE NEW TOKEN</td></tr>
+<tr><td>0D5E</td><td>C9</td><td>1660</td><td></td><td>RET</td><td>; RETURN</td></tr>
+<tr><td></td><td></td><td>1670</td><td colspan=3>;</td></tr>
+</table>
 <?php columnEnd(1); ?>

@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 buffer? Wherever you put it, sooner or later you will want to load a program to
 that location. The only solution seems to be to use the screen RAM for temporary
 storage. The program therefore starts by clearing the screen; as it uses the margins
@@ -21,39 +21,39 @@ which is how the standard Nas-Sys routine distinguishes between Read and
 Verify. Consequently unless you change the address for the V command this will
 also read a tape into memory.
 </p>
-<pre>
-EF0C00 READ DEFB &pound;EF &pound;0C 00 ; CLEAR SCREEN
-DF5F SCAL ZMFLP ; TURN ON TAPE LED
-DF77 SCAL ZNNOM ; RESET OUTPUT TABLE ADDRESS
-E5 PUSH HL ; SAVE OLD ADDRESS ON STACK
-DF78 SCAL ZNNIM ; RESET INPUT TABLE ADDRESS
-E5 PUSH HL ; SAVE OLD ADDRESS ON STACK
-0604 R1 LD B, 4 ; LOOK FOR 4 CHARS.
-CF R2 RST RIN ; GET CHARACTER
-3C JR NZ, R1;T44; IF NOT, KEEP LOOKING
-10FA DJNZ R2 ; HAVE WE GOT 4 YET?
-CF RST RIN ; NOW GET HEADER BYTES
-6F LD L, A ; FIRST BYTE INTO L REG.
-CF RST RIN ; SECOND BYTE
-67 LD H, A ; INTO L REGISTER
-CF RST RIN ; THIRD BYTE
-5F LD E, A ; INTO E REGISTER
-CF RST RIN ; FOURTH BYTE
-57 LD D, A ; INTO D REGISTER
-EF1B00 DEFB &pound;EF &pound;1B 00 ; PUT CURSOR BACK TO START
-4F LD C, A ; SET C TO ZERO
-DF6C SCAL ZTX1 ; PRINT HL, DE: GET CHECKSUM
-CF RST RIN ; GET NEXT BYTE
-B9 CP C ; COMPARE WITH CHECKSUM
-20E6 JR NZ, R1 ; IF WRONG, START AGAIN
-48 LD C, B ; SET C TO ZERO
-43 LD B, E ; PUT BLOCK LENGTH INTO B
-E5 PUSH HL ; SAVE HL
-21000A LD HL, &pound;0A00 ; SET HL TO BUFFER START
-CF R3 RST RIN ; GET DATA BYTES
-77 LD (HL) A ; PUT INTO BUFFER
-23 INC HL ; INCREMENT BUFFER ADDRESS
-81 ADD A, C ; CHECKSUM CALCULATION
-4F LD C, A ; SAVE IN C
-</pre>
+<table style="width: 100%">
+<tr><td>EF0C00</td><td>READ</td><td>DEFB &pound;EF &pound;0C 00</td><td>; CLEAR SCREEN</td></tr>
+<tr><td>DF5F</td><td></td><td>SCAL ZMFLP</td><td>; TURN ON TAPE LED</td></tr>
+<tr><td>DF77</td><td></td><td>SCAL ZNNOM</td><td>; RESET OUTPUT TABLE ADDRESS</td></tr>
+<tr><td>E5</td><td></td><td>PUSH HL</td><td>; SAVE OLD ADDRESS ON STACK</td></tr>
+<tr><td>DF78</td><td></td><td>SCAL ZNNIM</td><td>; RESET INPUT TABLE ADDRESS</td></tr>
+<tr><td>E5</td><td></td><td>PUSH HL</td><td>; SAVE OLD ADDRESS ON STACK</td></tr>
+<tr><td>0604</td><td>R1</td><td>LD B, 4</td><td>; LOOK FOR 4 CHARS.</td></tr>
+<tr><td>CF</td><td>R2</td><td>RST RIN</td><td>; GET CHARACTER</td></tr>
+<tr><td>3C</td><td></td><td>JR NZ, R1;T44</td><td>; IF NOT, KEEP LOOKING</td></tr>
+<tr><td>10FA</td><td></td><td>DJNZ R2</td><td>; HAVE WE GOT 4 YET?</td></tr>
+<tr><td>CF</td><td></td><td>RST RIN</td><td>; NOW GET HEADER BYTES</td></tr>
+<tr><td>6F</td><td></td><td>LD L, A</td><td>; FIRST BYTE INTO L REG.</td></tr>
+<tr><td>CF</td><td></td><td>RST RIN</td><td>; SECOND BYTE</td></tr>
+<tr><td>67</td><td></td><td>LD H, A</td><td>; INTO L REGISTER</td></tr>
+<tr><td>CF</td><td></td><td>RST RIN</td><td>; THIRD BYTE</td></tr>
+<tr><td>5F</td><td></td><td>LD E, A</td><td>; INTO E REGISTER</td></tr>
+<tr><td>CF</td><td></td><td>RST RIN</td><td>; FOURTH BYTE</td></tr>
+<tr><td>57</td><td></td><td>LD D, A</td><td>; INTO D REGISTER</td></tr>
+<tr><td>EF1B00</td><td></td><td>DEFB &pound;EF &pound;1B 00</td><td>; PUT CURSOR BACK TO START</td></tr>
+<tr><td>4F</td><td></td><td>LD C, A</td><td>; SET C TO ZERO</td></tr>
+<tr><td>DF6C</td><td></td><td>SCAL ZTX1</td><td>; PRINT HL, DE: GET CHECKSUM</td></tr>
+<tr><td>CF</td><td></td><td>RST RIN</td><td>; GET NEXT BYTE</td></tr>
+<tr><td>B9</td><td></td><td>CP C</td><td>; COMPARE WITH CHECKSUM</td></tr>
+<tr><td>20E6</td><td></td><td>JR NZ, R1</td><td>; IF WRONG, START AGAIN</td></tr>
+<tr><td>48</td><td></td><td>LD C, B</td><td>; SET C TO ZERO</td></tr>
+<tr><td>43</td><td></td><td>LD B, E</td><td>; PUT BLOCK LENGTH INTO B</td></tr>
+<tr><td>E5</td><td></td><td>PUSH HL</td><td>; SAVE HL</td></tr>
+<tr><td>21000A</td><td></td><td>LD HL, &pound;0A00</td><td>; SET HL TO BUFFER START</td></tr>
+<tr><td>CF</td><td>R3</td><td>RST RIN</td><td>; GET DATA BYTES</td></tr>
+<tr><td>77</td><td></td><td>LD (HL) A</td><td>; PUT INTO BUFFER</td></tr>
+<tr><td>23</td><td></td><td>INC HL</td><td>; INCREMENT BUFFER ADDRESS</td></tr>
+<tr><td>81</td><td></td><td>ADD A, C</td><td>; CHECKSUM CALCULATION</td></tr>
+<tr><td>4F</td><td></td><td>LD C, A</td><td>; SAVE IN C</td></tr>
+</table>
 <?php columnEnd(1); ?>

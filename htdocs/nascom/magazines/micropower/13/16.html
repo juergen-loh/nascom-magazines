@@ -1,49 +1,52 @@
 <?php columnStart(1); ?>
-<pre>
-0DB0 5D 2290 DONESP LD E, L ; FIRST DIGIT
-0DB1 7B 2300 OUTPUT LD A, E ; LOAD EACH DIGIT
-0DB2 FE0A 2310 CP &pound;0A ; COMPARE WITH TEN
-0DB4 D1 2320 POP DE ; FOLLOWING DIGIT
-0DB5 C8 2330 RET Z RETURN TO MAIN PROG.
-0DB6 C630 2340 ADD A, &pound;30 ; DECIMAL TO ASCII
-0DB8 F7 2350 RST &pound;30 ; OUTPUT DIGIT
-0DB9 C3B10D 2360 JP OUTPUT
-2370 ; DIVIDE SUBROUTINE
-0DBC E5 2380 DIVIDE PUSH HL ; DIVIDE HL BY DE
-0DBD 6C 2390 LD L, H ; PUTTING RESULT N BC
-0DBE 2600 2400 LD H, 0 ; AND REMAINDER IN HL
-0DC0 CDC70D 2410 CALL DIVLOP
-0DC3 41 2420 LD B, C
-0DC4 7D 2430 LD A, L
-0DC5 E1 2440 POP HL
-0DC6 67 2450 LD H, A
-0DC7 0EFF 2460 DIVLOP LD C, &pound;FF
-0DC9 0C 2470 DIVADD INC C
-0DCA CDD20D 2480 CALL DIVSUB
-0DCD D2C90D 2490 JP NC, DIVADD
-0DD0 19 2500 ADD HL, DE ; ADD TEN IF CARRY
-0DD1 C9 2510 RET
-0DD2 7D 2520 DIVSUB LD A, L ; LEAST SIG. BYTE
-0DD3 93 2530 SUB E ; SUBTRACT TEN
-0DD4 6F 2540 LD L, A
-0DD5 7C 2550 LD A, H ; MOST SIG. BYTE
-0DD6 9A 2560 SBC A, D ; SUB 0 PLUS CARRY
-0DD7 67 2570 LD H, A
-0DD8 C9 2580 RET
-2590 ;
-2600 ; CONVERSION TABLE TRS-80 THEN NASCOM
-2610 ;
-0DD9 2620 TABLE EQU &pound;0DD9
-2630 ;
-2640 ; HEX DUMP OF TABLE
-0DD9 80 80 81 81 82 9D 83 9C 84 99 87 82 88 83 89 84
-0DE9 8A 85 8B 86 8C 87 8D 88 8E 89 8F 8A 90 8B 91 8C
-0DF9 92 8D 93 8E 94 8F A0 90 A1 91 B0 94 B1 95 B2 9E
-0E09 B3 9F B4 A0 B8 A1 B9 A2 BA A3 BB A4 BC A5 BD A6
-0E19 BE A7 C1 B9 C6 C7 CA A9 CB AA CC AB CDAC CE AD
-0E29 CF AE D0 AF D1 B0 D2 B1 D3 B2 D4 B3 D5 B4 D6 B5
-0E39 D7 B6 D8 B7 D9 B8 DA BA DB BB DC BC DDBD DE BE
-0E49 DF BF E0 C0 E1 C1 E2 C2 E3 C3 E4 C4 E5 C5 F3 C8
-0E59 F4 C9 F5 CA F6 CB F7 CCF8 CDF9 CE FA CF 00 00
-</pre>
+<table style="width: 100%">
+<tr><td>0DB0</td><td>5D</td><td>2290</td><td>DONESP</td><td>LD E, L</td><td>; FIRST DIGIT</td></tr>
+<tr><td>0DB1</td><td>7B</td><td>2300</td><td>OUTPUT</td><td>LD A, E</td><td>; LOAD EACH DIGIT</td></tr>
+<tr><td>0DB2</td><td>FE0A</td><td>2310</td><td></td><td>CP &pound;0A</td><td>; COMPARE WITH TEN</td></tr>
+<tr><td>0DB4</td><td>D1</td><td>2320</td><td></td><td>POP DE</td><td>; FOLLOWING DIGIT</td></tr>
+<tr><td>0DB5</td><td>C8</td><td>2330</td><td></td><td>RET Z</td><td>; RETURN TO MAIN PROG.</td></tr>
+<tr><td>0DB6</td><td>C630</td><td>2340</td><td></td><td>ADD A, &pound;30</td><td>; DECIMAL TO ASCII</td></tr>
+<tr><td>0DB8</td><td>F7</td><td>2350</td><td></td><td>RST &pound;30</td><td>; OUTPUT DIGIT</td></tr>
+<tr><td>0DB9</td><td>C3B10D</td><td>2360</td><td></td><td>JP OUTPUT</td><td></td></tr>
+<tr><td></td><td></td><td>2370</td><td colspan=3>; DIVIDE SUBROUTINE</td></tr>
+<tr><td>0DBC</td><td>E5</td><td>2380</td><td>DIVIDE</td><td>PUSH HL</td><td>; DIVIDE HL BY DE</td></tr>
+<tr><td>0DBD</td><td>6C</td><td>2390</td><td></td><td>LD L, H</td><td>; PUTTING RESULT N BC</td></tr>
+<tr><td>0DBE</td><td>2600</td><td>2400</td><td></td><td>LD H, 0</td><td>; AND REMAINDER IN HL</td></tr>
+<tr><td>0DC0</td><td>CDC70D</td><td>2410</td><td></td><td>CALL DIVLOP</td><td></td></tr>
+<tr><td>0DC3</td><td>41</td><td>2420</td><td></td><td>LD B, C</td><td></td></tr>
+<tr><td>0DC4</td><td>7D</td><td>2430</td><td></td><td>LD A, L</td><td></td></tr>
+<tr><td>0DC5</td><td>E1</td><td>2440</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>0DC6</td><td>67</td><td>2450</td><td></td><td>LD H, A</td><td></td></tr>
+<tr><td>0DC7</td><td>0EFF</td><td>2460</td><td>DIVLOP</td><td>LD C, &pound;FF</td><td></td></tr>
+<tr><td>0DC9</td><td>0C</td><td>2470</td><td>DIVADD</td><td>INC C</td><td></td></tr>
+<tr><td>0DCA</td><td>CDD20D</td><td>2480</td><td></td><td>CALL DIVSUB</td><td></td></tr>
+<tr><td>0DCD</td><td>D2C90D</td><td>2490</td><td></td><td>JP NC, DIVADD</td><td></td></tr>
+<tr><td>0DD0</td><td>19</td><td>2500</td><td></td><td>ADD HL, DE</td><td>; ADD TEN IF CARRY</td></tr>
+<tr><td>0DD1</td><td>C9</td><td>2510</td><td></td><td>RET</td><td></td></tr>
+<tr><td>0DD2</td><td>7D</td><td>2520</td><td>DIVSUB</td><td>LD A, L</td><td>; LEAST SIG. BYTE</td></tr>
+<tr><td>0DD3</td><td>93</td><td>2530</td><td></td><td>SUB E</td><td>; SUBTRACT TEN</td></tr>
+<tr><td>0DD4</td><td>6F</td><td>2540</td><td></td><td>LD L, A</td><td></td></tr>
+<tr><td>0DD5</td><td>7C</td><td>2550</td><td></td><td>LD A, H</td><td>; MOST SIG. BYTE</td></tr>
+<tr><td>0DD6</td><td>9A</td><td>2560</td><td></td><td>SBC A, D</td><td>; SUB 0 PLUS CARRY</td></tr>
+<tr><td>0DD7</td><td>67</td><td>2570</td><td></td><td>LD H, A</td><td></td></tr>
+<tr><td>0DD8</td><td>C9</td><td>2580</td><td></td><td>RET</td><td></td></tr>
+<tr><td></td><td></td><td>2590</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>2600</td><td colspan=3>; CONVERSION TABLE TRS-80 THEN NASCOM</td></tr>
+<tr><td></td><td></td><td>2610</td><td colspan=3>;</td></tr>
+<tr><td>0DD9</td><td></td><td>2620</td><td>TABLE</td><td>EQU &pound;0DD9</td><td></td></tr>
+<tr><td></td><td></td><td>2630</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>2640</td><td colspan=3>; HEX DUMP OF TABLE</td></tr>
+</table>
+<p></p>
+<table>
+<tr><td>0DD9</td><td>80</td><td>80</td><td>81</td><td>81</td><td>82</td><td>9D</td><td>83</td><td>9C</td><td>84</td><td>99</td><td>87</td><td>82</td><td>88</td><td>83</td><td>89</td><td>84</td></tr>
+<tr><td>0DE9</td><td>8A</td><td>85</td><td>8B</td><td>86</td><td>8C</td><td>87</td><td>8D</td><td>88</td><td>8E</td><td>89</td><td>8F</td><td>8A</td><td>90</td><td>8B</td><td>91</td><td>8C</td></tr>
+<tr><td>0DF9</td><td>92</td><td>8D</td><td>93</td><td>8E</td><td>94</td><td>8F</td><td>A0</td><td>90</td><td>A1</td><td>91</td><td>B0</td><td>94</td><td>B1</td><td>95</td><td>B2</td><td>9E</td></tr>
+<tr><td>0E09</td><td>B3</td><td>9F</td><td>B4</td><td>A0</td><td>B8</td><td>A1</td><td>B9</td><td>A2</td><td>BA</td><td>A3</td><td>BB</td><td>A4</td><td>BC</td><td>A5</td><td>BD</td><td>A6</td></tr>
+<tr><td>0E19</td><td>BE</td><td>A7</td><td>C1</td><td>B9</td><td>C6</td><td>C7</td><td>CA</td><td>A9</td><td>CB</td><td>AA</td><td>CC</td><td>AB</td><td>CD</td><td>AC</td><td>CE</td><td>AD</td></tr>
+<tr><td>0E29</td><td>CF</td><td>AE</td><td>D0</td><td>AF</td><td>D1</td><td>B0</td><td>D2</td><td>B1</td><td>D3</td><td>B2</td><td>D4</td><td>B3</td><td>D5</td><td>B4</td><td>D6</td><td>B5</td></tr>
+<tr><td>0E39</td><td>D7</td><td>B6</td><td>D8</td><td>B7</td><td>D9</td><td>B8</td><td>DA</td><td>BA</td><td>DB</td><td>BB</td><td>DC</td><td>BC</td><td>DD</td><td>BD</td><td>DE</td><td>BE</td></tr>
+<tr><td>0E49</td><td>DF</td><td>BF</td><td>E0</td><td>C0</td><td>E1</td><td>C1</td><td>E2</td><td>C2</td><td>E3</td><td>C3</td><td>E4</td><td>C4</td><td>E5</td><td>C5</td><td>F3</td><td>C8</td></tr>
+<tr><td>0E59</td><td>F4</td><td>C9</td><td>F5</td><td>CA</td><td>F6</td><td>CB</td><td>F7</td><td>CC</td><td>F8</td><td>CD</td><td>F9</td><td>CE</td><td>FA</td><td>CF</td><td>00</td><td>00</td></tr>
+</table>
 <?php columnEnd(1); ?>

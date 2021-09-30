@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 with the RND function is negative, a new sequence of numbers will be started. While
 different negative numbers produce different sequences, any particular negative
 number will always produce the the same sequence. If the argument is greater than
@@ -9,34 +9,38 @@ reproduces the previous number output in the current series.
 <p>
 To vary the start of a game you need a random start somewhere in the list, so
 to speak, of the numbers being generated. One method would be as follows:
-10 INPUT&rdquo;Enter a no.&rdquo;;N:IF N &gt; 0 THEN N= -N 20 A = RND(N)
-When the player enters a number he selects a new sequence for the game.
 </p>
+<pre>
+10 INPUT"Enter a no.";N:IF N &gt; 0 THEN N= -N 20 A = RND(N)
+</pre>
 <p>
+When the player enters a number he selects a new sequence for the game.
 However, this allows players to cheat &ndash; they can affect the random sequence, and
 hence the course of the game, by there initial selection. A better method is to use the
 keyboard scan user routine referred to above (see the manual for the m/c code and
 the decimal equivalents):
 </p>
-<p>
+<pre>
 10 DOKE 4100, 3200:REM Tell BASIC where routine is located
-20 PRINT &ldquo;When you are ready, press any key&rdquo;
+20 PRINT "When you are ready, press any key"
 30 A=RND(1):B=USR(0):IF B=0 THEN 30
-</p>
-<p>
+</pre>
+<p class="noindent">
 Here, each time you start, the generation of numbers will stop at a different point due
 to the varying time taken to react to the message.
+</p>
+<p>
 Another helpful routine which uses the RND function is the generation of
 integers within a given range e.g. a number between 1 and 12. Some BASICS
-already have this as a built &ndash; in function. On the Nascom you need to adopt a formula
+already have this as a built-in function. On the Nascom you need to adopt a formula
 similar to the following:
 </p>
-<p>
+<pre>
 10 A=INT((RND(1)*T)+B)
-</p>
-<p>
+</pre>
+<p class="continued">
 where T equals the top of the range and B equals the bottom. If we substitute 12 and
-1 for T and B we get 12 x ( no. between 0 and 0.999999) which should be less than
+1 for T and B we get 12 x (no. between 0 and 0.999999) which should be less than
 12. If we then add 1 and then reduce the answer to integer format the result in most
 cases will be in range 1 to 12. However, due to the rounding system in the BASIC a
 number larger than 0.999995 is treated as being equal to 1, and the computer will
@@ -48,7 +52,7 @@ Next issue will probably see the last look at various statements and functions
 within BASIC. After that we can perhaps dissect a few programs or interesting parts
 of programs, and in doing so cover various points not looked at so far.
 </p>
-<p>
+<p class="noindent">
 HAPPY KEYBOARD BASHING&nbsp;!!
 </p>
 <?php columnEnd(1); ?>
