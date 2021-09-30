@@ -38,19 +38,18 @@ THE RESTARTS
 The Z80 has a set of eight single-byte instructions which call subroutines on
 page zero.
 </p>
-<pre>
-HEX. Assembly Address Nas-Sys
-Code Name Called Function
-
-&pound;C7 RST &pound;00 &pound;0000 Resets the system
-&pound;CF RST &pound;08 &pound;0008 Waits for an input character
-&pound;D7 RST &pound;10 &pound;0010 Relative call routine
-&pound;DF RST &pound;18 &pound;0018 Access to Nas-sys routines
-&pound;E7 RST &pound;20 &pound;0020 Breakpoint code
-&pound;EF RST &pound;28 &pound;0028 Print a character string
-&pound;F7 RST &pound;30 &pound;0030 Output the character in A
-&pound;FF RST &pound;38 &pound;0038 Delay determined by value in A
-</pre>
+<table style="width: 80%">
+<tr><td>HEX.<br>Code</td><td>Assembly<br>Name</td><td>Address<br>Called</td><td>Nas-Sys<br>Function</td></tr>
+<tr><td colspan=4><br></td></tr>
+<tr><td>&pound;C7</td><td>RST &pound;00</td><td>&pound;0000</td><td>Resets the system</td></tr>
+<tr><td>&pound;CF</td><td>RST &pound;08</td><td>&pound;0008</td><td>Waits for an input character</td></tr>
+<tr><td>&pound;D7</td><td>RST &pound;10</td><td>&pound;0010</td><td>Relative call routine</td></tr>
+<tr><td>&pound;DF</td><td>RST &pound;18</td><td>&pound;0018</td><td>Access to Nas-sys routines</td></tr>
+<tr><td>&pound;E7</td><td>RST &pound;20</td><td>&pound;0020</td><td>Breakpoint code</td></tr>
+<tr><td>&pound;EF</td><td>RST &pound;28</td><td>&pound;0028</td><td>Print a character string</td></tr>
+<tr><td>&pound;F7</td><td>RST &pound;30</td><td>&pound;0030</td><td>Output the character in A</td></tr>
+<tr><td>&pound;FF</td><td>RST &pound;38</td><td>&pound;0038</td><td>Delay determined by value in A</td></tr>
+</table>
 <p>
 RST 0 can be used on any monitor to reset the system at the end of a program,
 but any information on display will be lost, so its value is limited.

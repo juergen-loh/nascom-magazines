@@ -56,13 +56,13 @@
 	INMC News was the original magazine to support the Nascom pro&shy;duct range.
 </p>
 <p class="image-issue-thumb">
-	<a href="../inmc-news/01/00/"><img src="../inmc-news/01/cover.jpeg" width="100" height="142" title="INMC News, Issue 1"></a>
-	<a href="../inmc-news/02/00/"><img src="../inmc-news/02/cover.jpeg" width="100" height="142" title="INMC News, Issue 2"></a>
-	<a href="../inmc-news/03/00/"><img src="../inmc-news/03/cover.jpeg" width="100" height="142" title="INMC News, Issue 3"></a>
-	<a href="../inmc-news/04/00/"><img src="../inmc-news/04/cover.jpeg" width="100" height="142" title="INMC News, Issue 4"></a>
-	<a href="../inmc-news/05/00/"><img src="../inmc-news/05/cover.jpeg" width="100" height="142" title="INMC News, Issue 5"></a>
-	<a href="../inmc-news/06/00/"><img src="../inmc-news/06/cover.jpeg" width="100" height="142" title="INMC News, Issue 6"></a>
-	<a href="../inmc-news/07/00/"><img src="../inmc-news/07/cover.jpeg" width="100" height="142" title="INMC News, Issue 7"></a>
+	<a href="../inmc-news/01/00/text/"><img src="../inmc-news/01/cover.jpeg" width="100" height="142" title="INMC News, Issue 1"></a>
+	<a href="../inmc-news/02/00/text/"><img src="../inmc-news/02/cover.jpeg" width="100" height="142" title="INMC News, Issue 2"></a>
+	<a href="../inmc-news/03/00/text/"><img src="../inmc-news/03/cover.jpeg" width="100" height="142" title="INMC News, Issue 3"></a>
+	<a href="../inmc-news/04/00/text/"><img src="../inmc-news/04/cover.jpeg" width="100" height="142" title="INMC News, Issue 4"></a>
+	<a href="../inmc-news/05/00/text/"><img src="../inmc-news/05/cover.jpeg" width="100" height="142" title="INMC News, Issue 5"></a>
+	<a href="../inmc-news/06/00/text/"><img src="../inmc-news/06/cover.jpeg" width="100" height="142" title="INMC News, Issue 6"></a>
+	<a href="../inmc-news/07/00/text/"><img src="../inmc-news/07/cover.jpeg" width="100" height="142" title="INMC News, Issue 7"></a>
 </p>
 
 <h2>
@@ -75,11 +75,11 @@
 	After Nascom&rsquo;s financial difficulties, INMC News was re-born as a magazine called INMC 80 News.
 </p>
 <p class="image-issue-thumb">
-	<a href="../inmc-80-news/01/01/"><img src="../inmc-80-news/01/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 1"></a>
-	<a href="../inmc-80-news/02/01/"><img src="../inmc-80-news/02/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 2"></a>
-	<a href="../inmc-80-news/03/01/"><img src="../inmc-80-news/03/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 3"></a>
-	<a href="../inmc-80-news/04/01/"><img src="../inmc-80-news/04/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 4"></a>
-	<a href="../inmc-80-news/05/01/"><img src="../inmc-80-news/05/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 5"></a>
+	<a href="../inmc-80-news/01/01/text/"><img src="../inmc-80-news/01/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 1"></a>
+	<a href="../inmc-80-news/02/01/text/"><img src="../inmc-80-news/02/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 2"></a>
+	<a href="../inmc-80-news/03/01/text/"><img src="../inmc-80-news/03/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 3"></a>
+	<a href="../inmc-80-news/04/01/text/"><img src="../inmc-80-news/04/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 4"></a>
+	<a href="../inmc-80-news/05/01/text/"><img src="../inmc-80-news/05/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 5"></a>
 </p>
 
 <h2>
@@ -92,24 +92,24 @@
 	INMC 80 News mutated once more and became 80-Bus News.
 </p>
 <p class="image-issue-thumb">
-	<a href="../80-bus-news/11/01/"><img src="../80-bus-news/11/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 1"></a>
-	<a href="../80-bus-news/12/01/"><img src="../80-bus-news/12/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 2"></a>
-	<a href="../80-bus-news/13/01/"><img src="../80-bus-news/13/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 3"></a>
-	<a href="../80-bus-news/14/01/"><img src="../80-bus-news/14/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 4"></a>
-	<a href="../80-bus-news/21/01/"><img src="../80-bus-news/21/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 1"></a>
-	<a href="../80-bus-news/22/01/"><img src="../80-bus-news/22/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 2"></a>
-	<a href="../80-bus-news/23/01/"><img src="../80-bus-news/23/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 3"></a>
-	<a href="../80-bus-news/24/01/"><img src="../80-bus-news/24/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 4"></a>
-	<a href="../80-bus-news/25/01/"><img src="../80-bus-news/25/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 5"></a>
-	<a href="../80-bus-news/26/01/"><img src="../80-bus-news/26/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 6"></a>
-	<a href="../80-bus-news/31/01/"><img src="../80-bus-news/31/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 1"></a>
-	<a href="../80-bus-news/32/01/"><img src="../80-bus-news/32/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 2"></a>
-	<a href="../80-bus-news/33/01/"><img src="../80-bus-news/33/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 3"></a>
-	<a href="../80-bus-news/34/01/"><img src="../80-bus-news/34/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 4"></a>
-	<a href="../80-bus-news/35/01/"><img src="../80-bus-news/35/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 5"></a>
-	<a href="../80-bus-news/36/01/"><img src="../80-bus-news/36/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 6"></a>
-	<a href="../80-bus-news/41/01/"><img src="../80-bus-news/41/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 1"></a>
-	<a href="../80-bus-news/42/01/"><img src="../80-bus-news/42/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 2"></a>
+	<a href="../80-bus-news/11/01/text/"><img src="../80-bus-news/11/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 1"></a>
+	<a href="../80-bus-news/12/01/text/"><img src="../80-bus-news/12/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 2"></a>
+	<a href="../80-bus-news/13/01/text/"><img src="../80-bus-news/13/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 3"></a>
+	<a href="../80-bus-news/14/01/text/"><img src="../80-bus-news/14/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 4"></a>
+	<a href="../80-bus-news/21/01/text/"><img src="../80-bus-news/21/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 1"></a>
+	<a href="../80-bus-news/22/01/text/"><img src="../80-bus-news/22/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 2"></a>
+	<a href="../80-bus-news/23/01/text/"><img src="../80-bus-news/23/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 3"></a>
+	<a href="../80-bus-news/24/01/text/"><img src="../80-bus-news/24/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 4"></a>
+	<a href="../80-bus-news/25/01/text/"><img src="../80-bus-news/25/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 5"></a>
+	<a href="../80-bus-news/26/01/text/"><img src="../80-bus-news/26/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 2, Issue 6"></a>
+	<a href="../80-bus-news/31/01/text/"><img src="../80-bus-news/31/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 1"></a>
+	<a href="../80-bus-news/32/01/text/"><img src="../80-bus-news/32/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 2"></a>
+	<a href="../80-bus-news/33/01/text/"><img src="../80-bus-news/33/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 3"></a>
+	<a href="../80-bus-news/34/01/text/"><img src="../80-bus-news/34/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 4"></a>
+	<a href="../80-bus-news/35/01/text/"><img src="../80-bus-news/35/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 5"></a>
+	<a href="../80-bus-news/36/01/text/"><img src="../80-bus-news/36/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 3, Issue 6"></a>
+	<a href="../80-bus-news/41/01/text/"><img src="../80-bus-news/41/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 1"></a>
+	<a href="../80-bus-news/42/01/text/"><img src="../80-bus-news/42/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 2"></a>
 </p>
 
 <h2>
@@ -122,15 +122,15 @@
 	80-Bus News changed once again and became Scorpio News.
 </p>
 <p class="image-issue-thumb">
-	<a href="../scorpio-news/11/01/"><img src="../scorpio-news/11/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 1"></a>
-	<a href="../scorpio-news/12/01/"><img src="../scorpio-news/12/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 2"></a>
-	<a href="../scorpio-news/13/01/"><img src="../scorpio-news/13/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 3"></a>
-	<a href="../scorpio-news/14/01/"><img src="../scorpio-news/14/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 4"></a>
-	<a href="../scorpio-news/21/01/"><img src="../scorpio-news/21/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 1"></a>
-	<a href="../scorpio-news/22/01/"><img src="../scorpio-news/22/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 2"></a>
-	<a href="../scorpio-news/23/01/"><img src="../scorpio-news/23/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 3"></a>
-	<a href="../scorpio-news/24/01/"><img src="../scorpio-news/24/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 4"></a>
-	<a href="../scorpio-news/31/01/"><img src="../scorpio-news/31/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 3, Issue 1"></a>
+	<a href="../scorpio-news/11/01/text/"><img src="../scorpio-news/11/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 1"></a>
+	<a href="../scorpio-news/12/01/text/"><img src="../scorpio-news/12/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 2"></a>
+	<a href="../scorpio-news/13/01/text/"><img src="../scorpio-news/13/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 3"></a>
+	<a href="../scorpio-news/14/01/text/"><img src="../scorpio-news/14/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 4"></a>
+	<a href="../scorpio-news/21/01/text/"><img src="../scorpio-news/21/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 1"></a>
+	<a href="../scorpio-news/22/01/text/"><img src="../scorpio-news/22/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 2"></a>
+	<a href="../scorpio-news/23/01/text/"><img src="../scorpio-news/23/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 3"></a>
+	<a href="../scorpio-news/24/01/text/"><img src="../scorpio-news/24/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 2, Issue 4"></a>
+	<a href="../scorpio-news/31/01/text/"><img src="../scorpio-news/31/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 3, Issue 1"></a>
 </p>
 <p></p>
 
@@ -209,13 +209,13 @@
 	<a href="../80-bus-news/32/17/text/#article1"> &nbsp;&nbsp;21&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/34/11/text/#article1"> &nbsp;&nbsp;22&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/36/07/text/#article1"> &nbsp;&nbsp;23&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/11/38/"> &nbsp;&nbsp;24&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/12/16/"> &nbsp;&nbsp;25&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/13/05/"> &nbsp;&nbsp;26&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/14/25/"> &nbsp;&nbsp;27&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/21/08/"> &nbsp;&nbsp;28&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/22/15/"> &nbsp;&nbsp;29&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/31/09/"> &nbsp;&nbsp;30&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/11/38/text/#article1"> &nbsp;&nbsp;24&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/12/16/text/#article1"> &nbsp;&nbsp;25&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/05/text/#article1"> &nbsp;&nbsp;26&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/14/25/text/#article1"> &nbsp;&nbsp;27&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/21/08/text/#article1"> &nbsp;&nbsp;28&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/22/15/text/#article1"> &nbsp;&nbsp;29&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/31/09/text/#article1"> &nbsp;&nbsp;30&nbsp;&nbsp;</a>
 </p>
 <h2>
 	The DH Bits
@@ -238,8 +238,8 @@
 	<a href="../80-bus-news/35/31/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/36/23/text/#article1"> &nbsp;&nbsp;12&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/41/07/text/#article1"> &nbsp;&nbsp;13&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/21/33/"> &nbsp; 14 &nbsp; </a>
-	<a href="../scorpio-news/22/23/"> &nbsp; 15 &nbsp; </a>
+	<a href="../scorpio-news/21/33/text/#article1"> &nbsp; 14 &nbsp; </a>
+	<a href="../scorpio-news/22/23/text/#article1"> &nbsp; 15 &nbsp; </a>
 </p>
 <h2>
 	Z80 made simple
@@ -354,10 +354,10 @@
 	by M.W.T. Waters 
 </h3>
 <p>
-	<a href="../scorpio-news/11/25/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/12/40/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/13/11/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/14/15/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/11/25/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/12/40/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/11/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/14/15/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
 <h2>
 	The ZCPR3 System
@@ -366,9 +366,9 @@
 	by C.​ Bowden
 </h3>
 <p>
-	<a href="../scorpio-news/12/20/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/13/25/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<!--a href="../scorpio-news/21/22/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
+	<a href="../scorpio-news/12/20/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/25/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<!--a href="../scorpio-news/21/22/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
 </p>
 <h2>
 	Digital Imaging Systems
@@ -377,9 +377,9 @@
 	by D.​R.​ Hunt
 </h3>
 <p>
-	<a href="../scorpio-news/22/27/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/23/33/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/24/25/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/22/27/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/23/33/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/24/25/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Lawrence
@@ -402,7 +402,7 @@
 	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
 	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
 	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
-	<a href="../scorpio-news/22/18/">Lawrence the long-haired wieredo....</a><br>
+	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wieredo....</a><br>
 </p>
 
 </div></div>

@@ -1,23 +1,23 @@
 <?php columnStart(1); ?>
-<pre>
-FE 1B             CP &pound;1B           ; Is it an &lsquo;escape&rsquo; ?
-20 EF             JR NZ CPLOOP     ; If not, look for next difference
-DF 6A             SCAL CRLF        ; End of routine; scroll screen
-C9                RET              ; and return to monitor
-E5          TAB   PUSH HL          ; Save current poition of
-D5                PUSH DE          ; pointers to blocks 1 and 2
-01 F0 FF          LD BC -16        ; Tabulate from 16 bytes
-09                ADD HL BC        ; before difference
-54                LD D H           ; Put this address into DE
-5D                LD E L
-01 20 00          LD BC 32         ; Tabulate to 16 bytes
-09                ADD HL BC        ; beyond the difference
-EB                EX DE HL         ; Now get 1st address in HL, 2nd in DE
-DF 54             SCAL &ldquo;T          ; Call the tabulate command
-D1                POP DE           ; Recover pointers
-E1                POP HL
-C9                RET              ; End of subroutine
-</pre>
+<table style="width: 100%">
+<tr><td>FE 1B</td><td></td><td>CP &pound;1B</td><td>; Is it an &lsquo;escape&rsquo; ?</td></tr>
+<tr><td>20 EF</td><td></td><td>JR NZ CPLOOP</td><td>; If not, look for next difference</td></tr>
+<tr><td>DF 6A</td><td></td><td>SCAL CRLF</td><td>; End of routine; scroll screen</td></tr>
+<tr><td>C9</td><td></td><td>RET</td><td>; and return to monitor</td></tr>
+<tr><td>E5</td><td>TAB</td><td>PUSH HL</td><td>; Save current poition of</td></tr>
+<tr><td>D5</td><td></td><td>PUSH DE</td><td>; pointers to blocks 1 and 2</td></tr>
+<tr><td>01 F0 FF</td><td></td><td>LD BC -16</td><td>; Tabulate from 16 bytes</td></tr>
+<tr><td>09</td><td></td><td>ADD HL BC</td><td>; before difference</td></tr>
+<tr><td>54</td><td></td><td>LD D H</td><td>; Put this address into DE</td></tr>
+<tr><td>5D</td><td></td><td>LD E L</td><td></td></tr>
+<tr><td>01 20 00</td><td></td><td>LD BC 32</td><td>; Tabulate to 16 bytes</td></tr>
+<tr><td>09</td><td></td><td>ADD HL BC</td><td>; beyond the difference</td></tr>
+<tr><td>EB</td><td></td><td>EX DE HL</td><td>; Now get 1st address in HL, 2nd in DE</td></tr>
+<tr><td>DF 54</td><td></td><td>SCAL &ldquo;T</td><td>; Call the tabulate command</td></tr>
+<tr><td>D1</td><td></td><td>POP DE</td><td>; Recover pointers</td></tr>
+<tr><td>E1</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>C9</td><td></td><td>RET</td><td>; End of subroutine</td></tr>
+</table>
 <p>
 You will see that the routine is relocatable; to incorporate it into your monitor as
 command F you must put the start address at &pound;078C in Nas-Sys&nbsp;3, at &pound;0792 in Nas-Sys&nbsp;1.
@@ -27,10 +27,10 @@ hexadecimal values following the letter are held in HL, DE and BC, but if you wa
 to run the program under the E command, entering EXXXX 1000 2000, you will
 have to prefix a routine to pick up the block addresses; for examples:
 </p>
-<pre>
-2A 0E 0C          LD HL (&pound;0C0E)    ; Get block 1 address in HL
-ED 5B 10 0C       LD DE (&pound;0C10)    ; and block 2 in DE
-</pre>
+<table style="width: 100%">
+<tr><td>2A 0E 0C</td><td>LD HL (&pound;0C0E)</td><td>; Get block 1 address in HL</td></tr>
+<tr><td>ED 5B 10 0C</td><td>LD DE (&pound;0C10)</td><td>; and block 2 in DE</td></tr>
+</table>
 <p>
 XXXX will be the start address of the modified program. Also the return
 instruction at the end of the program (not the one at the end of the subroutine)

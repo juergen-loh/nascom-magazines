@@ -11,18 +11,18 @@ accessed, and as in the case of a relative jump instruction the distance is meas
 from the code following the second byte. If the offset lies in the range &pound;80 &ndash; &pound;FF the
 subroutine will precede the instruction calling it.
 </p>
-<pre>
-.
-FB                    &uarr;
-FC
-FD             Negative offsets
-D7 XX          &lt; Position of relative call
-00             &lt; Distances measured from here
-01             Positive offsets
-02
-03                    &darr;
-.
-</pre>
+<table style="width: 100%">
+<tr><td>.</td><td></td></tr>
+<tr><td>FB</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &uarr;</td></tr>
+<tr><td>FC</td><td></td></tr>
+<tr><td>FD</td><td>Negative offsets</td></tr>
+<tr><td>D7 XX</td><td>&lt; Position of relative call</td></tr>
+<tr><td>00</td><td>&lt; Distances measured from here</td></tr>
+<tr><td>01</td><td>Positive offsets</td></tr>
+<tr><td>02</td><td></td></tr>
+<tr><td>03</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &darr;</td></tr>
+<tr><td>.</td><td></td></tr>
+</table>
 <p>
 By using the relative call routine you can write programs that are completely
 relocatable &ndash; that is, they will work at any address without modification. This is
@@ -42,18 +42,18 @@ letters, or by replacing any of the standard commands that you don&rsquo;t use. 
 example, here is a routine which compares two blocks of memory and list four lines
 of each block whenever it finds a difference.
 </p>
-<pre>
-1B              DEC DE         ; On entry DE and HL point
-2B              DEC HL         ; to the start of the blocks
-13     CPLOOP   INC DE         ; Increment the block pointers
-23              INC HL
-1A              LD A (DE)      ; Get byte from block 1 in
-BE              CP (HL)        ; Is it the same as block 2?
-28 FA           JR Z CPLOOP    ; If so, keep going
-D7 0C           RCAL TAB       ; Tabulate first block
-EB              EX DE HL       ; Swap the pointers to the blocks
-D7 09           RCAL TAB       ; Tabulate the second block
-EB              EX DE HL       ; Swap pointers back
-CF              RST 8          ; Wait for user to press any key
-</pre>
+<table style="width: 100%">
+<tr><td>1B</td><td></td><td>DEC DE</td><td>; On entry DE and HL point</td></tr>
+<tr><td>2B</td><td></td><td>DEC HL</td><td>; to the start of the blocks</td></tr>
+<tr><td>13</td><td>CPLOOP</td><td>INC DE</td><td>; Increment the block pointers</td></tr>
+<tr><td>23</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>1A</td><td></td><td>LD A (DE)</td><td>; Get byte from block 1 in</td></tr>
+<tr><td>BE</td><td></td><td>CP (HL)</td><td>; Is it the same as block 2?</td></tr>
+<tr><td>28 FA</td><td></td><td>JR Z CPLOOP</td><td>; If so, keep going</td></tr>
+<tr><td>D7 0C</td><td></td><td>RCAL TAB</td><td>; Tabulate first block</td></tr>
+<tr><td>EB</td><td></td><td>EX DE HL</td><td>; Swap the pointers to the blocks</td></tr>
+<tr><td>D7 09</td><td></td><td>RCAL TAB</td><td>; Tabulate the second block</td></tr>
+<tr><td>EB</td><td></td><td>EX DE HL</td><td>; Swap pointers back</td></tr>
+<tr><td>CF</td><td></td><td>RST 8</td><td>; Wait for user to press any key</td></tr>
+</table>
 <?php columnEnd(1); ?>

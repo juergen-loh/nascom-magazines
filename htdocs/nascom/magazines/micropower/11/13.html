@@ -16,28 +16,27 @@ compatible with the Nascom pixels; in fact, it is the TRS&nbsp;80 pixel set, usi
 necessary conversion. The effect of each step in the process is listed on the right. An X
 indicates that the value is not a copy of a specific original bit.
 </p>
-<pre>
-Operation Current location of Carry Flag Zero Flag
-            Original bits
-RRCA 07654321 0 X
-AND A 07654321 X X
-RRA X0765432 1 X
-RRA 1X076543 2 X
-RRA 21X07654 3 X
-JR NC, ANDA
-SET 5,A 21307654 3 X
-ANDA AND A 21307654 X X
-RRA X2130765 4 X
-BIT 6,A X2130765 4 2
-JR Z, RES6
-SET 7, A 22130765 4 2
-RES6 RES 6, A 2X130765 4 2
-JR NC, RRCA
-SET 6, A 24130765 4 2
-RRCA RRCA 52413076 5 X
-RRCA 65241307 6 X
-RRCA 76524130 7 X
-</pre>
+<table class="location-of-bits">
+<tr><td></td><td>Operation</td><td>Current location of<br>Original bits</td><td>Carry Flag</td><td>Zero Flag</td></tr>
+<tr><td></td><td>RRCA</td><td>07654321</td><td>0</td><td>X</td></tr>
+<tr><td></td><td>AND A</td><td>07654321</td><td>X</td><td>X</td></tr>
+<tr><td></td><td>RRA</td><td>X0765432</td><td>1</td><td>X</td></tr>
+<tr><td></td><td>RRA</td><td>1X076543</td><td>2</td><td>X</td></tr>
+<tr><td></td><td>RRA</td><td>21X07654</td><td>3</td><td>X</td></tr>
+<tr><td></td><td>JR NC, ANDA</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>SET 5,A</td><td>21307654</td><td>3</td><td>X</td></tr>
+<tr><td>ANDA</td><td>AND A</td><td>21307654</td><td>X</td><td>X</td></tr>
+<tr><td></td><td>RRA</td><td>X2130765</td><td>4</td><td>X</td></tr>
+<tr><td></td><td>BIT 6,A</td><td>X2130765</td><td>4</td><td>2</td></tr>
+<tr><td></td><td>JR Z, RES6</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>SET 7, A</td><td>22130765</td><td>4</td><td>2</td></tr>
+<tr><td>RES6</td><td>RES 6, A</td><td>2X130765</td><td>4</td><td>2</td></tr>
+<tr><td></td><td>JR NC, RRCA</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>SET 6, A</td><td>24130765</td><td>4</td><td>2</td></tr>
+<tr><td>RRCA</td><td>RRCA</td><td>52413076</td><td>5</td><td>X</td></tr>
+<tr><td></td><td>RRCA</td><td>65241307</td><td>6</td><td>X</td></tr>
+<tr><td></td><td>RRCA</td><td>76524130</td><td>7</td><td>X</td></tr>
+</table>
 <p>
 This completes the bit. manipulation; SUB &pound;20 now shifts the characters to &pound;A0 &ndash; &pound;DF,
 SUB &pound;40 converts them to &pound;80 &ndash; &pound;BF.

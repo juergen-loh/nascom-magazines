@@ -8,11 +8,11 @@ doesn&rsquo;t the program stop immediately when you try to continue after a brea
 In fact the &pound;E7 is not inserted until one instruction has been carried out, as the
 following simple experiment shows. Enter the following code at &pound;0C80:
 </p>
-<pre>
-0C80  00             NOP              ; No operation
-0C81  23             INC HL           ; HL register pair incremented
-0C82  C3 80 0C       JP &pound;0C80         ; Jump back to beginning
-</pre>
+<table style="width: 100%">
+<tr><td>0C80</td><td>00</td><td>NOP</td><td>; No operation</td></tr>
+<tr><td>0C81</td><td>23</td><td>INC HL</td><td>; HL register pair incremented</td></tr>
+<tr><td>0C82</td><td>C3 80 0C</td><td>JP &pound;0C80</td><td>; Jump back to beginning</td></tr>
+</table>
 <p>
 Press reset, then enter BC81 followed by EC80. The register display will show
 the contents of HL to be 0000; this is because the execute command picks up the
@@ -45,7 +45,7 @@ table sets the carry flag subsequent routines will not be used.
 <p>
 Finally, restart &pound;FF produces a delay depending on the value in the A register
 when the restart is called. When A is one, the delay at 4Mhz, including the call and
-return, is 5.2 microseonds, while the maximum delay, produced when A is zero,
+return, is 5.2 microseconds, while the maximum delay, produced when A is zero,
 is 2.7 milliseconds. Of course, the times are doubled with a 2Mhz clock rate.
 </p>
 <p>

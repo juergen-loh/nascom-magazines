@@ -1,67 +1,67 @@
 <?php columnStart(1); ?>
-<pre>
-1000            0010             ORG    &pound;1000              ; Nascom&nbsp;2 pixel set
-1000   210000   0020             LD     HL 0               ; Put your P.C.G. address here
-1003   110002   0030             LD     DE &pound;200            ; Offset to character &pound;A0
-1006   19       0040             ADD    HL DE
-1007   E5       0050             PUSH   HL                 ; Save HL
-1008   0610     0060             LD     B 16               ; Sixteen bytes to be cleared
-100A   3600     0070   CLRAO     LD     (HL) 0             ; Set all bytes to zero
-100C   23       0080             INC    HL
-100D   10FB     0090             DJNZ   CLRA0
-100F   E1       0100             POP    HL                 ; Recover HL
-1010   19       0110             ADD    HL DE              ; Now go to character &pound;C0
-1011   0EC0     0120             LD     C &pound;C0              ; Character is kept in C
-1013   C5       0130   SBC       PUSH   BC                 ; Save BC
-1014   D70B     0140             RCAL   PIX5               ; Set 5 top bytes as necessa
-1016   D709     0150             RCAL   PIX5               ; Set next 5 bytes
-1018   0606     0160             LD     B 6                ; Set bottom 6 bytes
-101A   D707     0170             RCAL   PIXEL
-101C   C1       0180             POP    BC                 ; Recover BC
-101D   0C       0190             INC    C                  ; Next character
-101E   20F3     0200             JR     NZ SBC             ; Continue until zero
-1020   C9       0210             RET
-1021   0605     0220   PIX5      LD     B 5                ; Routine to set 5 bytes
-1023   AF       0230   PIXEL     XOR    A                  ; Clear A
-1024   CB09     0240             RRC    C                  ; Test bits 0,1 or 2
-1026   C5       0250             PUSH   BC
-1027   3002     0260             JR     NC RRC3            ; Jump if bit = 0
-1029   3EF0     0270             LD     A &pound;F0              ; Draw pixel if bit = 1
-102B   CB09     0280   RRC3      RRC    C                  ; Now test bits 3,4 or 5
-102D   CB09     0290             RRC    C
-102F   CB09     0300             RRC    C
-1031   3002     0310             JR     NC LDHLA           ; Jump if bit = 0
-1033   C60F     0320             ADD    A 15               ; Draw pixel if bit = 1
-1035   77       0330   LDHLA     LD     (HL) A             ; Set number of lines
-1036   23       0340             INC    HL                 ; Stored in B
-1037   10FC     0350             DJNZ   LDHLA
-1039   C1       0360             POP    BC                 ; Recover BC
-103A   C9       0370             RET
-1000            0380             ORG    &pound;1000              ; TRS80 pixel set
-1000   0EC0     0390             LD     C &pound;C0
-1002   210000   0400             LD     HL 0               ; Put your P.C.G. address here
-1005   C5       0410   TPUSH     PUSH   BC
-1006   D70B     0420             RCAL   TRSP5              ; Two sets of 5 lines
-1008   D709     0430             RCAL   TRSP5
-100A   0606     0440             LD     B 6
-100C   D707     0450             RCAL   TRSPIX             ; One set of six lines
-100E   C1       0460             POP    BC
-100F   0C       0470             INC    C
-1010   20F3     0480             JR     NZ TPUSH
-1012   C9       0490             RET
-1013   0605     0500   TRSP5     LD     B 5
-1015   AF       0510   TRSPIX    XOR    A
-1016   CB09     0520             RRC    C                  ; Test bits 0, 2, or 4
-1018   3002     0530             JR     NC TRRC
-101A   3EF0     0540             LD     A &pound;F0              ; Draw pixel if bit = 1
-101C   CB09     0550   TRRC      RRC    C                  ; Test bits 1, 3, or 5
-101E   C5       0560             PUSH   BC
-101F   3002     0570             JR     NC TRR2
-1021   C60F     0580             ADD    A 15               ; Draw pixel if bit = 1
-1023   77       0590   TRR2      LD     (HL) A             ; Set number of lines
-1024   23       0600             INC    HL                 ; Stored in B
-1025   10FC     0610             DJNZ   TRR2
-1027   C1       0620             POP    BC
-1028   C9       0630             RET
-</pre>
+<table style="width: 100%">
+<tr><td>1000</td><td></td><td>0010</td><td></td><td>ORG</td><td>&pound;1000</td><td>; Nascom&nbsp;2 pixel set</td></tr>
+<tr><td>1000</td><td>210000</td><td>0020</td><td></td><td>LD</td><td>HL 0</td><td>; Put your P.C.G. address here</td></tr>
+<tr><td>1003</td><td>110002</td><td>0030</td><td></td><td>LD</td><td>DE &pound;200</td><td>; Offset to character &pound;A0</td></tr>
+<tr><td>1006</td><td>19</td><td>0040</td><td></td><td>ADD</td><td>HL DE</td><td></td></tr>
+<tr><td>1007</td><td>E5</td><td>0050</td><td></td><td>PUSH</td><td>HL</td><td>; Save HL</td></tr>
+<tr><td>1008</td><td>0610</td><td>0060</td><td></td><td>LD</td><td>B 16</td><td>; Sixteen bytes to be cleared</td></tr>
+<tr><td>100A</td><td>3600</td><td>0070</td><td>CLRAO</td><td>LD</td><td>(HL) 0</td><td>; Set all bytes to zero</td></tr>
+<tr><td>100C</td><td>23</td><td>0080</td><td></td><td>INC</td><td>HL</td><td></td></tr>
+<tr><td>100D</td><td>10FB</td><td>0090</td><td></td><td>DJNZ</td><td>CLRA0</td><td></td></tr>
+<tr><td>100F</td><td>E1</td><td>0100</td><td></td><td>POP</td><td>HL</td><td>; Recover HL</td></tr>
+<tr><td>1010</td><td>19</td><td>0110</td><td></td><td>ADD</td><td>HL DE</td><td>; Now go to character &pound;C0</td></tr>
+<tr><td>1011</td><td>0EC0</td><td>0120</td><td></td><td>LD</td><td>C &pound;C0</td><td>; Character is kept in C</td></tr>
+<tr><td>1013</td><td>C5</td><td>0130</td><td>SBC</td><td>PUSH</td><td>BC</td><td>; Save BC</td></tr>
+<tr><td>1014</td><td>D70B</td><td>0140</td><td></td><td>RCAL</td><td>PIX5</td><td>; Set 5 top bytes as necessa</td></tr>
+<tr><td>1016</td><td>D709</td><td>0150</td><td></td><td>RCAL</td><td>PIX5</td><td>; Set next 5 bytes</td></tr>
+<tr><td>1018</td><td>0606</td><td>0160</td><td></td><td>LD</td><td>B 6</td><td>; Set bottom 6 bytes</td></tr>
+<tr><td>101A</td><td>D707</td><td>0170</td><td></td><td>RCAL</td><td>PIXEL</td><td></td></tr>
+<tr><td>101C</td><td>C1</td><td>0180</td><td></td><td>POP</td><td>BC</td><td>; Recover BC</td></tr>
+<tr><td>101D</td><td>0C</td><td>0190</td><td></td><td>INC</td><td>C</td><td>; Next character</td></tr>
+<tr><td>101E</td><td>20F3</td><td>0200</td><td></td><td>JR</td><td>NZ SBC</td><td>; Continue until zero</td></tr>
+<tr><td>1020</td><td>C9</td><td>0210</td><td></td><td>RET</td><td></td><td></td></tr>
+<tr><td>1021</td><td>0605</td><td>0220</td><td>PIX5</td><td>LD</td><td>B 5</td><td>; Routine to set 5 bytes</td></tr>
+<tr><td>1023</td><td>AF</td><td>0230</td><td>PIXEL</td><td>XOR</td><td>A</td><td>; Clear A</td></tr>
+<tr><td>1024</td><td>CB09</td><td>0240</td><td></td><td>RRC</td><td>C</td><td>; Test bits 0,1 or 2</td></tr>
+<tr><td>1026</td><td>C5</td><td>0250</td><td></td><td>PUSH</td><td>BC</td><td></td></tr>
+<tr><td>1027</td><td>3002</td><td>0260</td><td></td><td>JR</td><td>NC RRC3</td><td>; Jump if bit = 0</td></tr>
+<tr><td>1029</td><td>3EF0</td><td>0270</td><td></td><td>LD</td><td>A &pound;F0</td><td>; Draw pixel if bit = 1</td></tr>
+<tr><td>102B</td><td>CB09</td><td>0280</td><td>RRC3</td><td>RRC</td><td>C</td><td>; Now test bits 3,4 or 5</td></tr>
+<tr><td>102D</td><td>CB09</td><td>0290</td><td></td><td>RRC</td><td>C</td><td></td></tr>
+<tr><td>102F</td><td>CB09</td><td>0300</td><td></td><td>RRC</td><td>C</td><td></td></tr>
+<tr><td>1031</td><td>3002</td><td>0310</td><td></td><td>JR</td><td>NC LDHLA</td><td>; Jump if bit = 0</td></tr>
+<tr><td>1033</td><td>C60F</td><td>0320</td><td></td><td>ADD</td><td>A 15</td><td>; Draw pixel if bit = 1</td></tr>
+<tr><td>1035</td><td>77</td><td>0330</td><td>LDHLA</td><td>LD</td><td>(HL) A</td><td>; Set number of lines</td></tr>
+<tr><td>1036</td><td>23</td><td>0340</td><td></td><td>INC</td><td>HL</td><td>; Stored in B</td></tr>
+<tr><td>1037</td><td>10FC</td><td>0350</td><td></td><td>DJNZ</td><td>LDHLA</td><td></td></tr>
+<tr><td>1039</td><td>C1</td><td>0360</td><td></td><td>POP</td><td>BC</td><td>; Recover BC</td></tr>
+<tr><td>103A</td><td>C9</td><td>0370</td><td></td><td>RET</td><td></td><td></td></tr>
+<tr><td>1000</td><td></td><td>0380</td><td></td><td>ORG</td><td>&pound;1000</td><td>; TRS80 pixel set</td></tr>
+<tr><td>1000</td><td>0EC0</td><td>0390</td><td></td><td>LD</td><td>C &pound;C0</td><td></td></tr>
+<tr><td>1002</td><td>210000</td><td>0400</td><td></td><td>LD</td><td>HL 0</td><td>; Put your P.C.G. address here</td></tr>
+<tr><td>1005</td><td>C5</td><td>0410</td><td>TPUSH</td><td>PUSH</td><td>BC</td><td></td></tr>
+<tr><td>1006</td><td>D70B</td><td>0420</td><td></td><td>RCAL</td><td>TRSP5</td><td>; Two sets of 5 lines</td></tr>
+<tr><td>1008</td><td>D709</td><td>0430</td><td></td><td>RCAL</td><td>TRSP5</td><td></td></tr>
+<tr><td>100A</td><td>0606</td><td>0440</td><td></td><td>LD</td><td>B 6</td><td></td></tr>
+<tr><td>100C</td><td>D707</td><td>0450</td><td></td><td>RCAL</td><td>TRSPIX</td><td>; One set of six lines</td></tr>
+<tr><td>100E</td><td>C1</td><td>0460</td><td></td><td>POP</td><td>BC</td><td></td></tr>
+<tr><td>100F</td><td>0C</td><td>0470</td><td></td><td>INC</td><td>C</td><td></td></tr>
+<tr><td>1010</td><td>20F3</td><td>0480</td><td></td><td>JR</td><td>NZ TPUSH</td><td></td></tr>
+<tr><td>1012</td><td>C9</td><td>0490</td><td></td><td>RET</td><td></td><td></td></tr>
+<tr><td>1013</td><td>0605</td><td>0500</td><td>TRSP5</td><td>LD</td><td>B 5</td><td></td></tr>
+<tr><td>1015</td><td>AF</td><td>0510</td><td>TRSPIX</td><td>XOR</td><td>A</td><td></td></tr>
+<tr><td>1016</td><td>CB09</td><td>0520</td><td></td><td>RRC</td><td>C</td><td>; Test bits 0, 2, or 4</td></tr>
+<tr><td>1018</td><td>3002</td><td>0530</td><td></td><td>JR</td><td>NC TRRC</td><td></td></tr>
+<tr><td>101A</td><td>3EF0</td><td>0540</td><td></td><td>LD</td><td>A &pound;F0</td><td>; Draw pixel if bit = 1</td></tr>
+<tr><td>101C</td><td>CB09</td><td>0550</td><td>TRRC</td><td>RRC</td><td>C</td><td>; Test bits 1, 3, or 5</td></tr>
+<tr><td>101E</td><td>C5</td><td>0560</td><td></td><td>PUSH</td><td>BC</td><td></td></tr>
+<tr><td>101F</td><td>3002</td><td>0570</td><td></td><td>JR</td><td>NC TRR2</td><td></td></tr>
+<tr><td>1021</td><td>C60F</td><td>0580</td><td></td><td>ADD</td><td>A 15</td><td>; Draw pixel if bit = 1</td></tr>
+<tr><td>1023</td><td>77</td><td>0590</td><td>TRR2</td><td>LD</td><td>(HL) A</td><td>; Set number of lines</td></tr>
+<tr><td>1024</td><td>23</td><td>0600</td><td></td><td>INC</td><td>HL</td><td>; Stored in B</td></tr>
+<tr><td>1025</td><td>10FC</td><td>0610</td><td></td><td>DJNZ</td><td>TRR2</td><td></td></tr>
+<tr><td>1027</td><td>C1</td><td>0620</td><td></td><td>POP</td><td>BC</td><td></td></tr>
+<tr><td>1028</td><td>C9</td><td>0630</td><td></td><td>RET</td><td></td><td></td></tr>
+</table>
 <?php columnEnd(1); ?>

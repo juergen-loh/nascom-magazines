@@ -487,7 +487,7 @@ function columnEnd($column)
 
 function enterHalmos()
 {
-	echo "&#x220E;";	// todo
+	echo '<span class="enter-halmos">&#x25CF;</span>';	// todo
 }
 
 //---------------------------------------------------------------------------

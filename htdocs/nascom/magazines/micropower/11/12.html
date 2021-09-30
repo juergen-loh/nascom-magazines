@@ -21,20 +21,20 @@ taken low to tell the printer that data is to be read in.
 In the standard Nascom port A of the PIO is addressed as port 4, and the
 control port which specifies its configuration is port 6; similarly, data for port B is
 output to port 5, and control words to port 7. A suitable PIO initialisation routine
-is thus:
+is thus:-
 </p>
-<pre>
-        LD A, &pound;CF               Control word to specify mode 3
-        OUT (6) , A             Send this to port 6
-        XOR A                   Next byte sent to port 6 specifies which
-        OUT (6), A              lines are outputs (0), which inputs (1)
-        LD A, &pound;CF               Now set port B to mode 3
-        OUT (7), A
-        LD A, 1                 Use bit 0 as input (for &lsquo;busy&rsquo; line)
-        OUT (7), A
-        LD A, 2                 Set strobe line high
-        OUT (5), A
-</pre>
+<table class="indent2" style="width: 100%">
+<tr><td>LD A, &pound;CF</td><td>Control word to specify mode 3</td></tr>
+<tr><td>OUT (6) , A</td><td>Send this to port 6</td></tr>
+<tr><td>XOR A</td><td>Next byte sent to port 6 specifies which</td></tr>
+<tr><td>OUT (6), A</td><td>lines are outputs (0), which inputs (1)</td></tr>
+<tr><td>LD A, &pound;CF</td><td>Now set port B to mode 3</td></tr>
+<tr><td>OUT (7), A</td><td></td></tr>
+<tr><td>LD A, 1</td><td>Use bit 0 as input (for &lsquo;busy&rsquo; line)</td></tr>
+<tr><td>OUT (7), A</td><td></td></tr>
+<tr><td>LD A, 2</td><td>Set strobe line high</td></tr>
+<tr><td>OUT (5), A</td><td></td></tr>
+</table>
 <p>
 If you are using Nas-sys, the initialisation routine should end by storing the
 address of the printer output program at &pound;0C78, so that when the user I/O is
@@ -48,19 +48,19 @@ The output routine has to test the &lsquo;busy&rsquo; line before sending a char
 the printer; as soon as this line is low, the character is output at port A and the
 strobe line is pulled to zero volts.
 </p>
-<pre>
-        PUSH AF                 Save the character to be printed
-TSTO    IN A, (5)               Read port B
-        RRCA                    Rotate bit 0 to carry flag
-        JR C TSTO               Loop while bit 0 is high
-        POP AF                  Recover character
-        PUSH AF                 Resave
-        OUT (4), A              Output to printer
-        XOR A                   Strobe signal to printer
-        OUT (5), A
-        LD A, 2                 Reset strobe high
-        OUT (5), A
-        POP AF                  Recover character
-        RET                     End of routine
-</pre>
+<table class="indent" style="width: 100%">
+<tr><td></td><td>PUSH AF</td><td>Save the character to be printed</td></tr>
+<tr><td>TSTO</td><td>IN A, (5)</td><td>Read port B</td></tr>
+<tr><td></td><td>RRCA</td><td>Rotate bit 0 to carry flag</td></tr>
+<tr><td></td><td>JR C TSTO</td><td>Loop while bit 0 is high</td></tr>
+<tr><td></td><td>POP AF</td><td>Recover character</td></tr>
+<tr><td></td><td>PUSH AF</td><td>Resave</td></tr>
+<tr><td></td><td>OUT (4), A</td><td>Output to printer</td></tr>
+<tr><td></td><td>XOR A</td><td>Strobe signal to printer</td></tr>
+<tr><td></td><td>OUT (5), A</td><td></td></tr>
+<tr><td></td><td>LD A, 2</td><td>Reset strobe high</td></tr>
+<tr><td></td><td>OUT (5), A</td><td></td></tr>
+<tr><td></td><td>POP AF</td><td>Recover character</td></tr>
+<tr><td></td><td>RET</td><td>End of routine</td></tr>
+</table>
 <?php columnEnd(1); ?>
