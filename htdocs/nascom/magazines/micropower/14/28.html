@@ -1,9 +1,9 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 register contains &pound;10, the L register contains &pound;00, and memory locations &pound;1000 and
 &pound;1001 contain &pound;22 and &pound;33 respectively, they will appear in the register display as
 </p>
-<p>
+<p class="center">
 1000 3322
 </p>
 <p>
@@ -11,10 +11,10 @@ Note that the memory bytes are printed in the order (1001), (1000). This is in l
 the order in which the registers themselves are displayed, because if the contents of
 HL were stored at address &pound;1000 by the instruction.
 </p>
-<p>
-LD (&pound;1000), HL 22 00 10
+<p class="center">
+LD (&pound;1000), HL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 22 00 10
 </p>
-<p>
+<p class="continued">
 register L would be stored at &pound;1000, register H at &pound;1001.
 After the registers have been displayed, the program returns to the monitor at the
 routine PARSE, where it waits for a further command input. If you enter command E or
@@ -28,9 +28,9 @@ This is particularly useful with Nas-Sys&nbsp;3, which has a repeat-key routine;
 Newline down will cause the program to single-step at a rate which can be controlled
 by the value stored at &pound;0C30,&pound;0C31
 </p>
-<p>
+<h3>
 TABULATE T xxxx yyyy zz
-</p>
+</h3>
 <p>
 This command prints out the hexadecimal values of the machine code stored between
 addresses xxxx and yyyy. The starting address (in hex) and first printed, and this is
@@ -46,6 +46,8 @@ The checksum is quite useful for the direct entry of machine code as it makes it
 to spot errors. You can make your Nascom print the checksum on the screen by
 routing the output through a short program which suppresses the backspaces, or, if
 you have access to an EPROM programmer, by removing them from the monitor.
+</p>
+<p>
 The Nas-Sys&nbsp;3 tabulate command does not evaluate the checksum, but it has
 extra facilities for formatting the displayed data. The number of bytes of data output
 </p>

@@ -5,128 +5,56 @@ represented by the letters A to S. At the start of the search, and when a soluti
 been found, the program pauses to allow the position to be noted down. Any key
 depression will cause the search to be resumed. The program terminates when there
 are no further possible arrangements.
+</p>
+<p>
 The first solution will be found in just over four minutes, and the second in
 another two and a half minutes (at 4&nbsp;Mhz). Further solutions will require considerably
 more patience, but those interested enough may wish to run the program
 exhaustively in order to uncover all the possible arrangements and discover if there
 exists more than one unique solution.
 </p>
-<p>
+<h2>
 PROGRAM LISTING
-</p>
-<p>
-0C80
-0C82
-0C83
-0C86
-0C89
-0C8C
-0C8E
-0C90
-0C93
-0C95
-0C97
-0C9A
-0C9B
-0C9C
-0C9D
-0C9F
-0CA1
-0CA3
-0CA6
-0CA7
-0CA9
-0CAA
-0CAC
-0CAF
-0CB1
-0CB4
-0CB5
-0CB7
-0CB9
-0CBA
-0CBB
-0CBD
-0CBE
-0CC0
-0CC1
-0CC2
-0CC5
-3E 0C
-F7
-01 11 00
-11 1A 08
-21 A9 0D
-ED B0
-3E 3F
-CD 28 0D
-3E 41
-06 13
-21 99 0B
-77
-3C
-23
-10 FB
-DF 7B
-3E 20
-CD 28 0D
-03
-3E 14
-B9
-28 4D
-CD 15 0D
-3E 40
-21 98 0B
-3CONXTNUM
-FE 54
-28 44
-23
-BE
-20 F7
-12
-36 20
-F5
-E5
-21 5B 0D
-09
-TABLE
-FORWRD
-LD A, 0CH
-RST ROUT
-LD BC, 11H
-LD DE 081AH
-LD HL, TITLE
-LDIR
-LD A, 3FH
-CALL HEXGON
-LD A, 41H
-LD B, 13H
-LD HL, 0B99H
-LD (HL), A
-INC A
-INC HL
-DJNZ TABLE
-SCAL BLINK
-LD A, 20H
-CALL HEXGON
-INC BC
-LD A, 14H
-CP C
-JR Z, SOLN
-CALL HEXLOC
-LD A, 40H
-LF HL, 0B98H
-INC A
-CP &ldquo;T
-JR Z, REPLAC
-INC HL
-CP (HL)
-JR NZ, NXTNUM
-LD (DE) A
-LD (HL), 20H
-PUSH AF
-PUSH HL
-LD HL, CHKLST
-ADD HL, BC
-</p>
+</h2>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>0C80</td><td>3E 0C</td><td></td><td>LD A, 0CH</td></tr>
+<tr><td>0C82</td><td>F7</td><td></td><td>RST ROUT</td></tr>
+<tr><td>0C83</td><td>01 11 00</td><td></td><td>LD BC, 11H</td></tr>
+<tr><td>0C86</td><td>11 1A 08</td><td></td><td>LD DE 081AH</td></tr>
+<tr><td>0C89</td><td>21 A9 0D</td><td></td><td>LD HL, TITLE</td></tr>
+<tr><td>0C8C</td><td>ED B0</td><td></td><td>LDIR</td></tr>
+<tr><td>0C8E</td><td>3E 3F</td><td></td><td>LD A, 3FH</td></tr>
+<tr><td>0C90</td><td>CD 28 0D</td><td></td><td>CALL HEXGON</td></tr>
+<tr><td>0C93</td><td>3E 41</td><td></td><td>LD A, 41H</td></tr>
+<tr><td>0C95</td><td>06 13</td><td></td><td>LD B, 13H</td></tr>
+<tr><td>0C97</td><td>21 99 0B</td><td></td><td>LD HL, 0B99H</td></tr>
+<tr><td>0C9A</td><td>77</td><td>TABLE</td><td>LD (HL), A</td></tr>
+<tr><td>0C9B</td><td>3C</td><td></td><td>INC A</td></tr>
+<tr><td>0C9C</td><td>23</td><td></td><td>INC HL</td></tr>
+<tr><td>0C9D</td><td>10 FB</td><td></td><td>DJNZ TABLE</td></tr>
+<tr><td>0C9F</td><td>DF 7B</td><td></td><td>SCAL BLINK</td></tr>
+<tr><td>0CA1</td><td>3E 20</td><td></td><td>LD A, 20H</td></tr>
+<tr><td>0CA3</td><td>CD 28 0D</td><td></td><td>CALL HEXGON</td></tr>
+<tr><td>0CA6</td><td>03</td><td>FORWRD</td><td>INC BC</td></tr>
+<tr><td>0CA7</td><td>3E 14</td><td></td><td>LD A, 14H</td></tr>
+<tr><td>0CA9</td><td>B9</td><td></td><td>CP C</td></tr>
+<tr><td>0CAA</td><td>28 4D</td><td></td><td>JR Z, SOLN</td></tr>
+<tr><td>0CAC</td><td>CD 15 0D</td><td></td><td>CALL HEXLOC</td></tr>
+<tr><td>0CAF</td><td>3E 40</td><td></td><td>LD A, 40H</td></tr>
+<tr><td>0CB1</td><td>21 98 0B</td><td></td><td>LF HL, 0B98H</td></tr>
+<tr><td>0CB4</td><td>3C</td><td>NXTNUM</td><td>INC A</td></tr>
+<tr><td>0CB5</td><td>FE 54</td><td></td><td>CP "T</td></tr>
+<tr><td>0CB7</td><td>28 44</td><td></td><td>JR Z, REPLAC</td></tr>
+<tr><td>0CB9</td><td>23</td><td></td><td>INC HL</td></tr>
+<tr><td>0CBA</td><td>BE</td><td></td><td>CP (HL)</td></tr>
+<tr><td>0CBB</td><td>20 F7</td><td></td><td>JR NZ, NXTNUM</td></tr>
+<tr><td>0CBD</td><td>12</td><td></td><td>LD (DE) A</td></tr>
+<tr><td>0CBE</td><td>36 20</td><td></td><td>LD (HL), 20H</td></tr>
+<tr><td>0CC0</td><td>F5</td><td></td><td>PUSH AF</td></tr>
+<tr><td>0CC1</td><td>E5</td><td></td><td>PUSH HL</td></tr>
+<tr><td>0CC2</td><td>21 5B 0D</td><td></td><td>LD HL, CHKLST</td></tr>
+<tr><td>0CC5</td><td>09</td><td></td><td>ADD HL, BC</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

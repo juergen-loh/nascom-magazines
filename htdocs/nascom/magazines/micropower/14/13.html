@@ -1,278 +1,61 @@
-<?php columnStart(1); ?>
-<p>
-4E6F
-4E73
-4E75
-4E76
-4E7A
-4E7B
-4E7D
-4E7F
-4E81
-4E84
-4E88
-4E8A
-4E8B
-4E8D
-4E8F
-4E90
-4E92
-4E94
-4E96
-4E97
-4E99
-4E9B
-FD2A8312
-FDE5
-E1
-ED4B8312
-B7
-ED42
-DF66
-DF63
-CDBB4E
-FD2A8312
-FD09
-1A
-FE20
-2003
-13
-18F8
-FE2E
-284D
-B7
-28DA
-FE2B
-2014
-0570
-0580
-0590
-0600
-0610
-0620
-0630
-0640
-0650
-0660
-0670
-0680
-0690
-0700
-0710
-0720
-0730
-0740
-0750
-0760
-0770
-0780
-IN3
-IN0
-IN1
-COMND
-LD IY, (TEXT)
-PUSH IY
-POP HL
-LD BC, (TEXT)
-OR A
-SBC HL, BC
-SCAL TBCD3
-SCAL INLIN
-CALL NUM16
-LD IY, (TEXT)
-ADDIY, BC
-LD A, (DE)
-CP &ldquo;
-JR NZ COMND
-INC DE
-JR IN1
-CP &ldquo;.
-JR Z, END
-OR A
-JR Z, IN3
-CP &ldquo;+
-JR NZ, IN2
-; ZERO POINTER
-; CALCULATE ADDRESS
-; BASE ADDRESS
-; RESET CARRY FLAG
-; SUB. BASE ADD.
-; PRINT ADDRESS
-; INPUT LINE
-; GET ADD. IN BC
-; CALCULATE PROPER
-;ADDRESS
-; GET CHARACTER
-; A SPACE?
-; IF NOT, JUMP
-; TRYNEXT
-; CHARACTER
-; END OF PROGRAM
-; END OF LINE?
-; GET NEXT LINE
-; RELATIVE NUMBER?
-; IF NOT, 8 BIT NO.
-0785
-0790
-0800
-0805
-;
-; IF YES, THEN INPUT A 16 BIT NUMBER
-; AND ADD OFFSET TO PROPER ADDRESS
-;
-4E9D
-4EA0
-4EA1
-4EA4
-4EA5
-4ECC
-4ECD
-4ECF
-4ED1
-4ED5
-4ED8
-4EDA
-4EDC
-4EDD
-4EE1
-4EE3
-2A8312
-13
-CDBB4E
-09
-FD7500
-C9
-DF64
-380C
-ED4B210C
-3A200C
-FE02
-2001
-C9
-ED53290C
-189C
-EF
-0810
-0820
-0830
-0840
-1010
-1020
-1030
-1040
-1050
-1060
-1070
-1080
-1090
-1100
-1110
-1120
-CHK
-NUM8
-ERROR
-END
-LD HL, (TEXT)
-INC DE
-CALL NUM16
-ADD HL, BC
-JR NZ, ERROR
-RET
-SCAL NUM
-JR C, ERROR
-LD BC (NUMV)
-LD A, (NUMN)
-CP 2
-JR NZ, ERROR
-RET
-LD (CURSR), DE
-JR IN0
-RST 40
-; GET BASE ADD.
-; START OF NUMBER
-; OFFSET IN BC
-; CALCULATE ADDRESS
-; IF NOT, ERROR
-; RETURN
-; GET 8 BIT NUMBER
-; ERROR DETECTED
-; GET NUMBER
-; CORRECT LENGTH?
-; TWO CHARACTERS
-; IF NOT, ERROR
-; RETURN
-; POSITION CURSOR
-; RE-INPUT LINE
-; PRINT STRING
-4EE4 416E6F74 1130 DEFM &ldquo;ANOTHER COMMAND (Y/N)&rdquo;
-4EFB
-4EFD
-4EFF
-4F01
-4F03
-4F04
-4F08
-4F0B
-4F0D
-4F0F
-4F10
-4F12
-4F13
-4F14
-1100
-DF7B
-FE59
-2008
-F7
-FD228312
-C3004E
-FE4E
-20EE
-F7
-FDE5
-E1
-7D
-B7
-1140
-1150
-1160
-1170
-1180
-1190
-1200
-1210
-1220
-1230
-1240
-1250
-1260
-1270
-END0
-END1
-DEFB CUL, 0
-SCAL BLINK
-CP &ldquo;Y
-JR NZ, END1
-RST CRT
-LD (TEXT), IY
-JP LOADR
-CP &ldquo;N
-JR NZ, END0
-RST CRT
-PUSH IY
-POP HL
-LD A, L
-OR A
-; GET ANSWER
-; IS IT &lsquo;YES&rsquo;
-; PRINT IT
-; RESET POINTER
-; AND CONTINUE
-; ANSWER NO?
-; INPUT AGAIN
-; PRINT N
-; TRANSFER TO HL
-; IS IT ON A PAGE
-; BOUNDARY?
-</p>
+<?php columnStart(1, "table-responsive"); ?>
+<table style="width: 100%">
+<tr><td>4E6F</td><td>FD2A8312</td><td>0570</td><td></td><td>LD IY, (TEXT)</td><td>; ZERO POINTER</td></tr>
+<tr><td>4E73</td><td>FDE5</td><td>0580</td><td>IN3</td><td>PUSH IY</td><td>; CALCULATE ADDRESS</td></tr>
+<tr><td>4E75</td><td>E1</td><td>0590</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>4E76</td><td>ED4B8312</td><td>0600</td><td></td><td>LD BC, (TEXT)</td><td>; BASE ADDRESS</td></tr>
+<tr><td>4E7A</td><td>B7</td><td>0610</td><td></td><td>OR A</td><td>; RESET CARRY FLAG</td></tr>
+<tr><td>4E7B</td><td>ED42</td><td>0620</td><td></td><td>SBC HL, BC</td><td>; SUB. BASE ADD.</td></tr>
+<tr><td>4E7D</td><td>DF66</td><td>0630</td><td></td><td>SCAL TBCD3</td><td>; PRINT ADDRESS</td></tr>
+<tr><td>4E7F</td><td>DF63</td><td>0640</td><td>IN0</td><td>SCAL INLIN</td><td>; INPUT LINE</td></tr>
+<tr><td>4E81</td><td>CDBB4E</td><td>0650</td><td></td><td>CALL NUM16</td><td>; GET ADD. IN BC</td></tr>
+<tr><td>4E84</td><td>FD2A8312</td><td>0660</td><td></td><td>LD IY, (TEXT)</td><td>; CALCULATE PROPER</td></tr>
+<tr><td>4E88</td><td>FD09</td><td>0670</td><td></td><td>ADDIY, BC</td><td>; ADDRESS</td></tr>
+<tr><td>4E8A</td><td>1A</td><td>0680</td><td>IN1</td><td>LD A, (DE)</td><td>; GET CHARACTER</td></tr>
+<tr><td>4E8B</td><td>FE20</td><td>0690</td><td></td><td>CP ' '</td><td>; A SPACE?</td></tr>
+<tr><td>4E8D</td><td>2003</td><td>0700</td><td></td><td>JR NZ COMND</td><td>; IF NOT, JUMP</td></tr>
+<tr><td>4E8F</td><td>13</td><td>0710</td><td></td><td>INC DE</td><td>; TRYNEXT</td></tr>
+<tr><td>4E90</td><td>18F8</td><td>0720</td><td></td><td>JR IN1</td><td>; CHARACTER</td></tr>
+<tr><td>4E92</td><td>FE2E</td><td>0730</td><td>COMND</td><td>CP '.'</td><td>; END OF PROGRAM</td></tr>
+<tr><td>4E94</td><td>284D</td><td>0740</td><td></td><td>JR Z, END</td><td></td></tr>
+<tr><td>4E96</td><td>B7</td><td>0750</td><td></td><td>OR A</td><td>; END OF LINE?</td></tr>
+<tr><td>4E97</td><td>28DA</td><td>0760</td><td></td><td>JR Z, IN3</td><td>; GET NEXT LINE</td></tr>
+<tr><td>4E99</td><td>FE2B</td><td>0770</td><td></td><td>CP '+'</td><td>; RELATIVE NUMBER?</td></tr>
+<tr><td>4E9B</td><td>2014</td><td>0780</td><td></td><td>JR NZ, IN2</td><td>; IF NOT, 8 BIT NO.</td></tr>
+<tr><td></td><td></td><td>0785</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0790</td><td colspan=3>; IF YES, THEN INPUT A 16 BIT NUMBER</td></tr>
+<tr><td></td><td></td><td>0800</td><td colspan=3>; AND ADD OFFSET TO PROPER ADDRESS</td></tr>
+<tr><td></td><td></td><td>0805</td><td colspan=3>;</td></tr>
+<tr><td>4E9D</td><td>2A8312</td><td>0810</td><td></td><td>LD HL, (TEXT)</td><td>; GET BASE ADD.</td></tr>
+<tr><td>4EA0</td><td>13</td><td>0820</td><td></td><td>INC DE</td><td>; START OF NUMBER</td></tr>
+<tr><td>4EA1</td><td>CDBB4E</td><td>0830</td><td></td><td>CALL NUM16</td><td>; OFFSET IN BC</td></tr>
+<tr><td>4EA4</td><td>09</td><td>0840</td><td>CHK</td><td>ADD HL, BC</td><td>; CALCULATE ADDRESS</td></tr>
+<tr><td>4EA5</td><td>FD7500</td><td>1010</td><td></td><td>JR NZ, ERROR</td><td>; IF NOT, ERROR</td></tr>
+<tr><td>4ECC</td><td>C9</td><td>1020</td><td></td><td>RET</td><td>; RETURN</td></tr>
+<tr><td>4ECD</td><td>DF64</td><td>1030</td><td>NUM8</td><td>SCAL NUM</td><td>; GET 8 BIT NUMBER</td></tr>
+<tr><td>4ECF</td><td>380C</td><td>1040</td><td></td><td>JR C, ERROR</td><td>; ERROR DETECTED</td></tr>
+<tr><td>4ED1</td><td>ED4B210C</td><td>1050</td><td></td><td>LD BC (NUMV)</td><td>; GET NUMBER</td></tr>
+<tr><td>4ED5</td><td>3A200C</td><td>1060</td><td></td><td>LD A, (NUMN)</td><td>; CORRECT LENGTH?</td></tr>
+<tr><td>4ED8</td><td>FE02</td><td>1070</td><td></td><td>CP 2</td><td>; TWO CHARACTERS</td></tr>
+<tr><td>4EDA</td><td>2001</td><td>1080</td><td></td><td>JR NZ, ERROR</td><td>; IF NOT, ERROR</td></tr>
+<tr><td>4EDC</td><td>C9</td><td>1090</td><td></td><td>RET</td><td>; RETURN</td></tr>
+<tr><td>4EDD</td><td>ED53290C</td><td>1100</td><td>ERROR</td><td>LD (CURSR), DE</td><td>; POSITION CURSOR</td></tr>
+<tr><td>4EE1</td><td>189C</td><td>1110</td><td></td><td>JR IN0</td><td>; RE-INPUT LINE</td></tr>
+<tr><td>4EE3</td><td>EF</td><td>1120</td><td>END</td><td>RST 40</td><td>; PRINT STRING</td></tr>
+<tr><td>4EE4</td><td>416E6F74</td><td>1130</td><td></td><td colspan=2>DEFM "ANOTHER COMMAND (Y/N)"</td></tr>
+<tr><td>4EFB</td><td>1100</td><td>1140</td><td></td><td>DEFB CUL, 0</td><td></td></tr>
+<tr><td>4EFD</td><td>DF7B</td><td>1150</td><td>END0</td><td>SCAL BLINK</td><td>; GET ANSWER</td></tr>
+<tr><td>4EFF</td><td>FE59</td><td>1160</td><td></td><td>CP 'Y'</td><td>; IS IT 'YES'</td></tr>
+<tr><td>4F01</td><td>2008</td><td>1170</td><td></td><td>JR NZ, END1</td><td></td></tr>
+<tr><td>4F03</td><td>F7</td><td>1180</td><td></td><td>RST CRT</td><td>; PRINT IT</td></tr>
+<tr><td>4F04</td><td>FD228312</td><td>1190</td><td></td><td>LD (TEXT), IY</td><td>; RESET POINTER</td></tr>
+<tr><td>4F08</td><td>C3004E</td><td>1200</td><td></td><td>JP LOADR</td><td>; AND CONTINUE</td></tr>
+<tr><td>4F0B</td><td>FE4E</td><td>1210</td><td>END1</td><td>CP 'N'</td><td>; ANSWER NO?</td></tr>
+<tr><td>4F0D</td><td>20EE</td><td>1220</td><td></td><td>JR NZ, END0</td><td>; INPUT AGAIN</td></tr>
+<tr><td>4F0F</td><td>F7</td><td>1230</td><td></td><td>RST CRT</td><td>; PRINT N</td></tr>
+<tr><td>4F10</td><td>FDE5</td><td>1240</td><td></td><td>PUSH IY</td><td>; TRANSFER TO HL</td></tr>
+<tr><td>4F12</td><td>E1</td><td>1250</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>4F13</td><td>7D</td><td>1260</td><td></td><td>LD A, L</td><td>; IS IT ON A PAGE</td></tr>
+<tr><td>4F14</td><td>B7</td><td>1270</td><td></td><td>OR A</td><td>; BOUNDARY?</td></tr>
+</table>
 <?php columnEnd(1); ?>

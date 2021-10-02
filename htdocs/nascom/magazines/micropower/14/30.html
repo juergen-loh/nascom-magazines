@@ -1,7 +1,7 @@
 <?php columnStart(1); ?>
-<p>
+<h3>
 WRITE W xxxx yyyy
-</p>
+</h3>
 <p>
 The write routine first switches on the cassette LED; it then waits for
 approximately one second, which allows the cassette recorder speed to stabilise if
@@ -9,6 +9,8 @@ you are using the LED signal to control your recorder. The output table pointer 
 reset to its normal value, so that output is sent only to screen. This ensures that a
 user routine will not interfere with the operation of the write routine. The address
 stored at &pound;0C73 is saved on the stack, and restored at the end of the write routine.
+</p>
+<p>
 After 256 nulls have been output to the serial port the data is output in blocks of
 256 bytes, preceded by a null and four &lsquo;FF&rsquo;s, a header which gives the start address
 of the block, the length and number of the block, and a checksum for the header
@@ -29,42 +31,28 @@ copies of the same data, which is always advisable, you do not need to re-enter 
 arguments &ndash; just enter W and the previous arguments, which are still at 0C0C and
 0C0E, will be used again. If you are too lazy to do even this, a simple modification to
 the WRITE routine will make it unnecessary. Instead of jumping to the end of READ,
-first execute the following code:
+first execute the following code:&ndash;
 </p>
-<p>
-21 10 0C
-35
-C2 XX XX
-C3 YY YY
-LD HL, &pound;0C10
-DEC (HL)
-JP NZ, REWRT
-JP RDEND
-; Point HL to ARG3
-; Decrement ARG3
-; Continue if non-zero
-; Jump to end of READ
-</p>
+<table class="indent2" style="width: 80%">
+<tr><td>21 10 0C  </td><td>  LD HL, &pound;0C10</td><td>    ; Point HL to ARG3     </td></tr>
+<tr><td>35        </td><td>  DEC (HL)          </td><td>    ; Decrement ARG3       </td></tr>
+<tr><td>C2 XX XX  </td><td>  JP NZ, REWRT      </td><td>    ; Continue if non-zero </td></tr>
+<tr><td>C3 YY YY  </td><td>  JP RDEND          </td><td>    ; Jump to end of READ  </td></tr>
+</table>
 <p>
 For Nas-Sys&nbsp;1 the address XXXX is &pound;04EF; for Nas-Sys&nbsp;3 it is &pound;502. Address
 YYYY is the end of the READ routine, where the table pointer is reset. If you use the
 modified READ routine given in the last article, you will find that there is room for
 extra WRITE code at the end, and the final jump can be a relative one. Incidentally,
 there is a misprint in the listing on page 30 of the last issue; from line 32 it should
-read:
+read:&ndash;
 </p>
-<p>
-CF R2
-3C
-20FA
-RST RIN
-INC A
-JR NZ, R1
-; GET CHARACTER
-; IS IT FF?
-; IF NOT, KEEP LOOKING
-</p>
-<p>
-&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;
-</p>
+<table class="indent2" style="width: 80%">
+<tr><td>CF R2  </td><td>   RST RIN   </td><td>    ; GET CHARACTER         </td></tr>
+<tr><td>3C     </td><td>   INC A     </td><td>    ; IS IT FF?             </td></tr>
+<tr><td>20FA   </td><td>   JR NZ, R1 </td><td>    ; IF NOT, KEEP LOOKING  </td></tr>
+</table>
+<h4 class="article-stopper">
+&ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &ndash;
+</h4>
 <?php columnEnd(1); ?>

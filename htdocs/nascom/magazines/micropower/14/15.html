@@ -1,177 +1,61 @@
 <?php columnStart(1); ?>
-<p>
-302C
-302E
-0002
-0002
-0440
-0450
-LAST
-BUFF
-DEFS 2
-DEFS 2
-; LAST NUMBER
-; NEXT CHAR. ADD.
-0455
-0460
-0470
-0475
-;
-; PRINT CHARACTER ON SCREEN AND
-; INTO BASIC INPUT BUFFER
-;
-3030
-3031
-3034
-3035
-3036
-3039
-303A
-303B
-E5
-2A2E30
-77
-23
-222E30
-E1
-F7
-C9
-0480
-0490
-0500
-0510
-0520
-0530
-0540
-0550
-NOUT PUSH HL
-LD HL, (BUFF)
-LD (HL), A
-INC HL
-LD (BUFF), HL
-POP HL
-RST CRT
-RET
-; GET LAST ADDRESS
-; SAVE CHARACTER
-; INCREMENT ADDRESS
-; SAVE ADDRESS
-0555
-0560
-0565
-;
-; AUTO COMMAND
-;
-303C
-303F
-3043
-3045
-3048
-304B
-304F
-3052
-3055
-3059
-110030
-ED53F52B
-3EC3
-32F42B
-CD6117
-ED532C30
-CD4C15
-CD6117
-ED532A30
-C9
-0570
-0580
-0590
-0600
-0610
-0620
-0630
-0640
-0650
-0660
-AUTO LD DE, AOUT
-LD (OVEC), DE
-LD A, &pound;C3
-LD (OVEC-1),A
-CALL INNUM
-LD (LAST), DE
-CALL TSTCOM
-CALL INNUM
-LD (INC), DE
-RET
-; CHANGE VECTOR
-; SET UP JUMP
-GET START NUMBER
-; SKIP COMMA
-; GET INCREMENT
-0665
-0670
-0675
-;
-; AOFF COMMAND
-;
-305A
-305B
-305E
-3061
-3062
-3064
-3067
-E5
-216830
-22F52B
-E1
-3EC3
-32F42B
-C9
-0670
-0680
-0690
-0700
-0710
-0720
-0730
-AOFF PUSH HL
-LD HL, COUT
-LD (OVEC), HL
-POP HL
-LD A, &pound;C3
-LD (OVEC-1),A
-RET
-; RESTORE OUTPUT
-; VECTOR TO NORMAL
-; SET UP JUMP
-0735
-0740
-0745
-;
-; CRT OUTPUT ROUTINE
-;
-3068
-3069
-F7
-C9
-0750
-0760
-COUT RST CRT
-RET
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>302C</td><td>0002</td><td>0440</td><td>LAST</td><td>DEFS 2</td><td>; LAST NUMBER</td></tr>
+<tr><td>302E</td><td>0002</td><td>0450</td><td>BUFF</td><td>DEFS 2</td><td>; NEXT CHAR. ADD.</td></tr>
+<tr><td></td><td></td><td>0455</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0460</td><td colspan=3>; PRINT CHARACTER ON SCREEN AND</td></tr>
+<tr><td></td><td></td><td>0470</td><td colspan=3>; INTO BASIC INPUT BUFFER</td></tr>
+<tr><td></td><td></td><td>0475</td><td colspan=3>;</td></tr>
+<tr><td>3030</td><td>E5</td><td>0480</td><td>NOUT</td><td>PUSH HL</td><td>; GET LAST ADDRESS</td></tr>
+<tr><td>3031</td><td>2A2E30</td><td>0490</td><td></td><td>LD HL, (BUFF)</td><td>; SAVE CHARACTER</td></tr>
+<tr><td>3034</td><td>77</td><td>0500</td><td></td><td>LD (HL), A</td><td>; INCREMENT ADDRESS</td></tr>
+<tr><td>3035</td><td>23</td><td>0510</td><td></td><td>INC HL</td><td>; SAVE ADDRESS</td></tr>
+<tr><td>3036</td><td>222E30</td><td>0520</td><td></td><td>LD (BUFF), HL</td><td></td></tr>
+<tr><td>3039</td><td>E1</td><td>0530</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>303A</td><td>F7</td><td>0540</td><td></td><td>RST CRT</td><td></td></tr>
+<tr><td>303B</td><td>C9</td><td>0550</td><td></td><td>RET</td><td></td></tr>
+<tr><td></td><td></td><td>0555</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0560</td><td colspan=3>; AUTO COMMAND</td></tr>
+<tr><td></td><td></td><td>0565</td><td colspan=3>;</td></tr>
+<tr><td>303C</td><td>110030</td><td>0570</td><td>AUTO</td><td>LD DE, AOUT</td><td>; CHANGE VECTOR</td></tr>
+<tr><td>303F</td><td>ED53F52B</td><td>0580</td><td></td><td>LD (OVEC), DE</td><td></td></tr>
+<tr><td>3043</td><td>3EC3</td><td>0590</td><td></td><td>LD A, &pound;C3</td><td>; SET UP JUMP</td></tr>
+<tr><td>3045</td><td>32F42B</td><td>0600</td><td></td><td>LD (OVEC-1),A</td><td></td></tr>
+<tr><td>3048</td><td>CD6117</td><td>0610</td><td></td><td>CALL INNUM</td><td>; GET START NUMBER</td></tr>
+<tr><td>304B</td><td>ED532C30</td><td>0620</td><td></td><td>LD (LAST), DE</td><td></td></tr>
+<tr><td>304F</td><td>CD4C15</td><td>0630</td><td></td><td>CALL TSTCOM</td><td>; SKIP COMMA</td></tr>
+<tr><td>3052</td><td>CD6117</td><td>0640</td><td></td><td>CALL INNUM</td><td>; GET INCREMENT</td></tr>
+<tr><td>3055</td><td>ED532A30</td><td>0650</td><td></td><td>LD (INC), DE</td><td></td></tr>
+<tr><td>3059</td><td>C9</td><td>0660</td><td></td><td>RET</td><td></td></tr>
+<tr><td></td><td></td><td>0665</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0670</td><td colspan=3>; AOFF COMMAND</td></tr>
+<tr><td></td><td></td><td>0675</td><td colspan=3>;</td></tr>
+<tr><td>305A</td><td>E5</td><td>0670</td><td>AOFF</td><td>PUSH HL</td><td>; RESTORE OUTPUT</td></tr>
+<tr><td>305B</td><td>216830</td><td>0680</td><td></td><td>LD HL, COUT</td><td>; VECTOR TO NORMAL</td></tr>
+<tr><td>305E</td><td>22F52B</td><td>0690</td><td></td><td>LD (OVEC), HL</td><td></td></tr>
+<tr><td>3061</td><td>E1</td><td>0700</td><td></td><td>POP HL</td><td></td></tr>
+<tr><td>3062</td><td>3EC3</td><td>0710</td><td></td><td>LD A, &pound;C3</td><td>; SET UP JUMP</td></tr>
+<tr><td>3064</td><td>32F42B</td><td>0720</td><td></td><td>LD (OVEC-1),A</td><td></td></tr>
+<tr><td>3067</td><td>C9</td><td>0730</td><td></td><td>RET</td><td></td></tr>
+<tr><td></td><td></td><td>0735</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0740</td><td colspan=3>; CRT OUTPUT ROUTINE</td></tr>
+<tr><td></td><td></td><td>0745</td><td colspan=3>;</td></tr>
+<tr><td>3068</td><td>F7</td><td>0750</td><td>COUT</td><td>RST CRT</td><td></td></tr>
+<tr><td>3069</td><td>C9</td><td>0760</td><td></td><td>RET</td><td></td></tr>
+</table>
+</div>
 <p>
 The AUTO command format is AUTO xxxx, yyyy, where xxxx is the starting line number, and
 yyyy is the increment.
 The automatic line numbering routines are entered using the loader program as follows:
 </p>
-<p>
-ENTER COMMAND/<?php spChar("zwsp"); ?>FUNCTION NAME.
-</p>
-<p>
-ENTER MACHINE CODE
-</p>
-<p>
-0000 FE 5D 20 64 F7 22 +002E 21 +0030 22 F5 2B 2A +002A
-0011 EB 2A +002C D5 E5 CD 81 27 E1 D1 19 22 +002C
+<p class="noindent">
+ENTER COMMAND/<?php spChar("zwsp"); ?>FUNCTION NAME.<br>
+<br>
+ENTER MACHINE CODE<br>
+<br>
+0000 &nbsp; &nbsp; FE &nbsp; &nbsp; 5D &nbsp; &nbsp; 20 &nbsp; &nbsp; 64 &nbsp; &nbsp; F7 &nbsp; &nbsp; 22 &nbsp; &nbsp; +002E &nbsp; &nbsp; 21 &nbsp; &nbsp; +0030 &nbsp; &nbsp; 22 &nbsp; &nbsp; F5 &nbsp; &nbsp; 2B &nbsp; &nbsp; 2A &nbsp; &nbsp; +002A<br>
+0011 &nbsp; &nbsp; EB &nbsp; &nbsp; 2A &nbsp; &nbsp; +002C &nbsp; &nbsp; D5 &nbsp; &nbsp; E5 &nbsp; &nbsp; CD &nbsp; &nbsp; 81 &nbsp; &nbsp; 27 &nbsp; &nbsp; E1 &nbsp; &nbsp; D1 &nbsp; &nbsp; 19 &nbsp; &nbsp; 22 &nbsp; &nbsp; +002C
 </p>
 <?php columnEnd(1); ?>

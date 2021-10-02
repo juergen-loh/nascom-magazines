@@ -4,107 +4,54 @@
 </p>
 <p>
 As a final point on this topic, I thought it would be interesting to take a look at
-</p>
-<p>
 the way the BASIC stores reserved words. First enter the command NEW, and then
-</p>
-<p>
 type in the following line:
 </p>
 <p>
-10 PRINT&ldquo;MIKE&rdquo;:END:SCREEN 15,12
+10 PRINT"MIKE":END:SCREEN 15,12
 </p>
 <p>
 Now reset and tabulate from 10FA hex. You will find the following code:
 </p>
-<p>
-10FA
-</p>
-<p>
-1102
-</p>
-<p>
-110A
-</p>
-<p>
-10 11 0A 00 9E 22 4D 49
-</p>
-<p>
-4B 45 3A 80 3A 97 20 31
-</p>
-<p>
-31 35 2C 31 32 00 00 00
+<p class="indent">
+10FA 10 11 0A 00 9E 22 4D 49<br>
+1102 4B 45 3A 80 3A 97 20 31<br>
+110A 31 35 2C 31 32 00 00 00
 </p>
 <p>
 The first two bytes, 10 11, store the address of the start of the next line, the
-</p>
-<p>
 next two bytes, 0A 00, hold the line number, and then come the bytes which
-</p>
-<p>
 represent the data stored in the line. The first data byte, 9EH, represents the
-</p>
-<p>
 reserved word PRINT; as a line is entered the text is scanned, and if the Basic
-</p>
-<p>
 recognises a reserved word it is replaced by a hexadecimal number in which bit 7 is
-</p>
-<p>
 set. This speeds up programs, because the interpreter can more quickly recognise a
-</p>
-<p>
 reserved word and access the necessary machine code routines.
 </p>
 <p>
 PRINT is followed by the ASCII codes for &ldquo;MIKE&rdquo; (22 4D 49 4B 22) and the
-</p>
-<p>
 separating colon (3A). Two more reserved words then appear, END (represented by
-</p>
-<p>
 80H) and SCREEN (97H).
 </p>
 <p>
 The end of the line is marked in the store by a zero, which is followed by a
-</p>
-<p>
 pointer to the start of the next line, a line number, more data, and so on. At the end
-</p>
-<p>
 of the program the zero marking the end of the line is followed by two further zeros in
-</p>
-<p>
 place of the line pointer.
 </p>
 <p>
 You will notice that although there is no &lsquo;space&rsquo; character (20H) after the line
-</p>
-<p>
 number bytes, the LIST command always inserts a single space to improve legibility.
-</p>
-<p>
 No matter how many spaces you put between the line number and the start of the
-</p>
-<p>
 text when you enter the program, the interpreter always removes them &ndash; and then
-</p>
-<p>
 puts one back when listing. This makes it difficult to use &lsquo;pretty printing&rsquo; &ndash; that is,
-</p>
-<p>
 formatting of the text by use of different indentations to make the underlying structure
-</p>
-<p>
 of the program obvious at a glance. You can always indent a line by inserting a colon
+before the required spaces. For example:&ndash;
 </p>
 <p>
-before the required spaces. For example:
+10 : PRINT "THIS IS AN INDENTED LINE"
 </p>
-<p>
-10 : PRINT &ldquo;THIS IS AN INDENTED LINE&rdquo;
-</p>
-<p>
-* &ndash; * &ndash; * &ndash; * &ndash; * &ndash; * &ndash; *
-</p>
+<h4 class="article-stopper">
+* &nbsp; &ndash; &nbsp; * &nbsp; &ndash; &nbsp; * &nbsp; &ndash; &nbsp; * &nbsp; &ndash; &nbsp; * &nbsp; &ndash; &nbsp; * &nbsp; &ndash; &nbsp; *
+</h4>
 <?php columnEnd(1); ?>

@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 programming pulse of 50 milliseconds per address. It takes about 2 minutes to
 program either type.
 </p>
@@ -15,9 +15,9 @@ either are changed, then the value 0E0H in the B register (for the 2708 routine)
 1D00H in BC (2516/2716 routine) will have to be changed. Short delays are written
 into the software to allow time for line stabilisation or chip &lsquo;set-up&rsquo;.
 </p>
-<p>
+<h4>
 C &ndash; COMPARE CONTENTS OF EPROM WITH RAM
-</p>
+</h4>
 <p>
 This routine will compare the EPROM and RAM, byte by byte. It may be used
 to check for correct programming, or to find small discrepancies between EPROMs
@@ -26,24 +26,24 @@ RAM that did not correspond with the &lsquo;EPROM&rsquo; will be printed on the 
 message that the data did not match will be printed at the end of the routine. If the
 EPROM and RAM match the routine will end with a suitable message.
 </p>
-<p>
+<h4>
 T &ndash; TRANSFER DAT FROM EPROM TO RAM
-</p>
+</h4>
 <p>
 This routine will quickly copy the contents of the chip into RAM, starting at the
 RAM address entered. This data may then be disassembled, modified, relocated, or
 used to make a back-up copy as desired. On completion of the routine a message is
 displayed, as there is no other indication that the routine has run its course.
 </p>
-<p>
+<h4>
 D &ndash; DUMP TO PRINTER
-</p>
+</h4>
 <p>
 This routine was written with the &lsquo; IMP&rsquo; printer in mind, and so it interfaces
 through the serial port. A handshake routine is included (using bit 7 of the keyboard
 port), to avoid having to set up user routines. The program starts by requesting the
 normal address of the EPROM. It prints this address, followed by sixteen bytes of
-data and the ASCII characters correponding to this data (for characters 20H to 7BH;
+data and the ASCII characters corresponding to this data (for characters 20H to 7BH;
 all other characters are printed as &lsquo; .&rsquo;). A new line is started, and the address is
 updated, and the routine is continued until all the data in the EPROM has been
 printed out.

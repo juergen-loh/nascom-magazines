@@ -1,193 +1,65 @@
 <?php columnStart(1); ?>
-<p>
-4F15
-4F17
-4F18
-4F1A
-4F1D
-2803
-24
-2E00
-228312
-DF5B
-1280
-1290
-1300
-1310
-1320
-OK
-JR Z, OK
-INC H
-LD L,0
-LD (TEXT), HL
-SCAL MRET
-; IF SO, END
-; ADD 256 TO END
-; ZERO LOW BYTE
-; STORE POINTER
-; RETURN TO MONITOR
-&ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash; &ndash;
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>4F15</td><td>2803</td><td>1280</td><td></td><td>JR Z, OK</td><td>; IF SO, END</td></tr>
+<tr><td>4F17</td><td>24</td><td>1290</td><td></td><td>INC H</td><td>; ADD 256 TO END</td></tr>
+<tr><td>4F18</td><td>2E00</td><td>1300</td><td></td><td>LD L,0</td><td>; ZERO LOW BYTE</td></tr>
+<tr><td>4F1A</td><td>228312</td><td>1310</td><td>OK</td><td>LD (TEXT), HL</td><td>; STORE POINTER</td></tr>
+<tr><td>4F1D</td><td>DF5B</td><td>1320</td><td></td><td>SCAL MRET</td><td>; RETURN TO MONITOR</td></tr>
+</table>
+</div>
+<h4 class="article-stopper">
+&ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash; &nbsp; &nbsp; &ndash; &ndash;
+</h4>
 <p>
 The first example of an added command is a routine which provides automatic line
 numbering. The listing of this routine is followed by a demonstration of the entry of the
 corresponding machine code using the loader program.
 </p>
-<p>
-3000
-0090
-0100
-0110
-0120
-0125
-0130
-0135
-0140
-0145
-;;
-************************************************
-; ** AUTO LINE NUMBER BY D. ELLIOT **
-; ************************************************
-;
-ORG &pound;3000
-;
-; ROUTINES IN CRYSTAL BASIC 2.2
-;
-3000
-3000
-3000
-3000
-2BF5
-2781
-1761
-154C
-0150
-0160
-0170
-0180
-OVEC
-PRTHL
-INNUM
-TSTCOM
-EQU &pound;2BF5
-EQU &pound;2781
-EQU &pound;1761
-EQU &pound;154C
-; OUTPUT VECTOR+1
-; PRINT HL IN DEC.
-; GET NUMBER
-; SKIP COMMA
-0185
-0190
-0200
-0210
-0215
-;
-; MODIFIED OUTPUT ROUTINE WHICH CHECKS
-; FOR A NEW LINE, AND THEN OUTPUTS THE
-; NEXT LINE NUMBER
-;
-3000
-3002
-3004
-3005
-3008
-300B
-300E
-3011
-3012
-3015
-3016
-3017
-301A
-301B
-301C
-301D
-3020
-3023
-3026
-3029
-FE5D
-2064
-F7
-222E30
-213030
-22F52B
-2A2A30
-EB
-2A2C30
-D5
-E5
-CD8127
-E1
-D1
-19
-222C30
-210030
-22F52B
-2A2E30
-C9
-0220
-0230
-0240
-0250
-0260
-0270
-0280
-0290
-0300
-0310
-0320
-0330
-0340
-0350
-0360
-0370
-0380
-0390
-0400
-0410
-AOUT CP &pound;5D
-JR NZ, COUT
-RST CRT
-LD (BUFFR), HL
-LD HL, NOUT
-LD (OVEC), HL
-LD HL, (INC)
-EX DE, HL
-LD HL, (LAST)
-PUSH DE
-PUSH HL
-CALL PRTHL
-POP HL
-POP DE
-ADD HL, DE
-LD (LAST), HL
-LD HL, AOUT
-LD (OVEC), HL
-LD HL (BUFF)
-RET
-; NEW LINE?
-; IF NOT, PRINT
-; PRINT CHARACTER
-; SAVE POINTER
-; CHANGE OUT. VECTOR
-; GET INCREMENT
-; INTO DE, AND LAST
-; LINE NO. IN HL
-; HL TO SCREEN
-; AND TO BUFFER
-; CALC. NEXT NO.
-; ANDSTOREITVN
-; RESET VECTOR
-; RESTORE POINTER
-; RETURN
-0415
-0420
-0425
-;;
-VARIABLE STORAGE
-;
-302A 0002 0430 INC DEFS 2 ; INCREMENT
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td></td><td></td><td>0090</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0100</td><td colspan=3>; <b>************************************************</b></td></tr>
+<tr><td></td><td></td><td>0110</td><td colspan=3>; <b>** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AUTO LINE NUMBER BY D. ELLIOT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  **</b></td></tr>
+<tr><td></td><td></td><td>0120</td><td colspan=3>; <b>************************************************</b></td></tr>
+<tr><td></td><td></td><td>0125</td><td colspan=3>;</td></tr>
+<tr><td>3000</td><td></td><td>0130</td><td></td><td>ORG &pound;3000</td><td></td></tr>
+<tr><td></td><td></td><td>0135</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0140</td><td colspan=3>; ROUTINES IN CRYSTAL BASIC 2.2</td></tr>
+<tr><td></td><td></td><td>0145</td><td colspan=3>;</td></tr>
+<tr><td>3000</td><td>2BF5</td><td>0150</td><td>OVEC</td><td>EQU &pound;2BF5</td><td>; OUTPUT VECTOR+1</td></tr>
+<tr><td>3000</td><td>2781</td><td>0160</td><td>PRTHL</td><td>EQU &pound;2781</td><td>; PRINT HL IN DEC.</td></tr>
+<tr><td>3000</td><td>1761</td><td>0170</td><td>INNUM</td><td>EQU &pound;1761</td><td>; GET NUMBER</td></tr>
+<tr><td>3000</td><td>154C</td><td>0180</td><td>TSTCOM</td><td>EQU &pound;154C</td><td>; SKIP COMMA</td></tr>
+<tr><td></td><td></td><td>0185</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0190</td><td colspan=3>; MODIFIED OUTPUT ROUTINE WHICH CHECKS</td></tr>
+<tr><td></td><td></td><td>0200</td><td colspan=3>; FOR A NEW LINE, AND THEN OUTPUTS THE</td></tr>
+<tr><td></td><td></td><td>0210</td><td colspan=3>; NEXT LINE NUMBER</td></tr>
+<tr><td></td><td></td><td>0215</td><td colspan=3>;</td></tr>
+<tr><td>3000</td><td>FE5D</td><td>0220</td><td>AOUT</td><td>CP &pound;5D</td><td>; NEW LINE?</td></tr>
+<tr><td>3002</td><td>2064</td><td>0230</td><td></td><td>JR NZ, COUT</td><td>; IF NOT, PRINT</td></tr>
+<tr><td>3004</td><td>F7</td><td>0240</td><td></td><td>RST CRT</td><td>; PRINT CHARACTER</td></tr>
+<tr><td>3005</td><td>222E30</td><td>0250</td><td></td><td>LD (BUFFR), HL</td><td>; SAVE POINTER</td></tr>
+<tr><td>3008</td><td>213030</td><td>0260</td><td></td><td>LD HL, NOUT</td><td>; CHANGE OUT. VECTOR</td></tr>
+<tr><td>300B</td><td>22F52B</td><td>0270</td><td></td><td>LD (OVEC), HL</td><td></td></tr>
+<tr><td>300E</td><td>2A2A30</td><td>0280</td><td></td><td>LD HL, (INC)</td><td>; GET INCREMENT</td></tr>
+<tr><td>3011</td><td>EB</td><td>0290</td><td></td><td>EX DE, HL</td><td>; INTO DE, AND LAST</td></tr>
+<tr><td>3012</td><td>2A2C30</td><td>0300</td><td></td><td>LD HL, (LAST)</td><td>; LINE NO. IN HL</td></tr>
+<tr><td>3015</td><td>D5</td><td>0310</td><td></td><td>PUSH DE</td><td></td></tr>
+<tr><td>3016</td><td>E5</td><td>0320</td><td></td><td>PUSH HL</td><td></td></tr>
+<tr><td>3017</td><td>CD8127</td><td>0330</td><td></td><td>CALL PRTHL</td><td>; HL TO SCREEN</td></tr>
+<tr><td>301A</td><td>E1</td><td>0340</td><td></td><td>POP HL</td><td>; AND TO BUFFER</td></tr>
+<tr><td>301B</td><td>D1</td><td>0350</td><td></td><td>POP DE</td><td></td></tr>
+<tr><td>301C</td><td>19</td><td>0360</td><td></td><td>ADD HL, DE</td><td>; CALC. NEXT NO.</td></tr>
+<tr><td>301D</td><td>222C30</td><td>0370</td><td></td><td>LD (LAST), HL</td><td>; ANDSTOREITVN</td></tr>
+<tr><td>3020</td><td>210030</td><td>0380</td><td></td><td>LD HL, AOUT</td><td>; RESET VECTOR</td></tr>
+<tr><td>3023</td><td>22F52B</td><td>0390</td><td></td><td>LD (OVEC), HL</td><td></td></tr>
+<tr><td>3026</td><td>2A2E30</td><td>0400</td><td></td><td>LD HL (BUFF)</td><td>; RESTORE POINTER</td></tr>
+<tr><td>3029</td><td>C9</td><td>0410</td><td></td><td>RET</td><td>; RETURN</td></tr>
+<tr><td></td><td></td><td>0415</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0420</td><td colspan=3>; VARIABLE STORAGE</td></tr>
+<tr><td></td><td></td><td>0425</td><td colspan=3>;</td></tr>
+<tr><td>302A</td><td>0002</td><td>0430</td><td></td><td>INC DEFS 2</td><td>; INCREMENT</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

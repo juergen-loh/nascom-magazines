@@ -1,63 +1,63 @@
 <?php columnStart(1); ?>
-<pre id="article1">
-10 R I N G S   O F   H A N O I
-20 B Y   S&nbsp;. H E A D&nbsp;,   J U N E   1 9 8 1
-30 REM
-40 CLEAR 500: DIM A(12,2), TR(2,1)
-50 REM
-60 REM **. . . . . . . Print out rules&nbsp;. . . . . . .
-70 CLS: GOSUB 800: PRINT
-80 PRINT &ldquo;The object of the game is to move&rdquo;
-90 PRINT &ldquo;the rings from pile A to pile B or C
-100 PRINT: PRINT &ldquo;Only the top ring &rdquo;;
-110 PRINT &ldquo;can be moved.&rdquo;
-120 PRINT:PRINT &ldquo;Larger rings cannot be &rdquo;;
-130 PRINT &ldquo;put over smaller rings.
-140 PRINT:PRINT:PRINT &ldquo;PRESS ENTERWHEN READY.&rdquo;;
-150 INPUT IN$
-180 REM
-190 REM**. . . . . . . . . Initialise&nbsp;. . . . . . . . .
-200 CLS
-210 FOR I = 0 TO 10
-220 A(I,0) = 1:A(I,1) = 0:A(I,2) = 0
-230 NEXT I
-240 TR(0,0) = 1:TR(0,1) = 1
-250 TR(1,0) = 11:TR(1,1) = 10
-260 TR(2,0) = 11:TR(2,1) = 10:MC = 0
-270 GOSUB 600
-280 GOSUB 800
-290 SCREEN 6,15
-300 PRINT &ldquo;PILE A&rdquo;, &ldquo;PILE B&rdquo;, &ldquo;PILE C&rdquo;;
-310 REM
-320 REM ** . . . . . . . . . Input move&nbsp;. . . . . . . . . .
-400 GOSUB 920: SCREEN 2,2: PRINT &ldquo;MOVE FROM &rdquo;;
-410 INPUT N$ 420 GOSUB 1300:TF = IN:IF TF &lt; 0 THEN 400
-430 IF A(10,TF) &lt;&gt; 0 THEN 470
-440 SCREEN 1,1
-450 PRINT &ldquo;NO RINGS ON THAT STICK CHUM&rdquo;
-460 GOTO 400
-470 GOSUB 920:SCREEN 2,2:PRINT &ldquo;TO PILE&rdquo;;
-480 INPUT IN$
-490 GOSUB 1300:TT = IN:IF TT &lt; 0 THEN GOTO 470
-500 GOSUB 1000
-510 GOTO 400
-580 REM
-590 REM ** . . . . . . . Initialise graphics&nbsp;. . . . . . .
-600 CLS: IT = 0: IP = 14:GOSUB 630
-610 IT = 1:IP = 42: GOSUB 630
-620 IT = 2:IP = 70: GOSUB 630: GOSUB 800
-630 FOR I = 0 TO 32
-640 FOR J = 0 TO A(I/3,IT)
-650 SET (J + IP, I+9)
-660 SET (IP &ndash;J, I+9)
-670 NEXT J
-680 NEXT I:RETURN
-780 REM
-790 REM ** . . . . . . . Print title&nbsp;. . . . . . .
-800 TL$ = &ldquo;TOWERS OF HANOI MOVE &rdquo;+STR$(MC)
-810 FOR I = 1 TO LEN(TL$)
-820 POKE 3029+I,ASC(MID$(TL$,I,1))
-830 NEXT I
+<p id="article1" class="noindent">
+10 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b class="gesperrt">RINGS OF HANOI</b><br>
+20 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b class="gesperrt">BY S.HEAD, JUNE 1981</b><br>
+30 REM<br>
+40 CLEAR 500: DIM A(12,2), TR(2,1)<br>
+50 REM<br>
+60 REM **. . . . . . . Print out rules&nbsp;. . . . . . .<br>
+70 CLS: GOSUB 800: PRINT<br>
+80 PRINT "The object of the game is to move"<br>
+90 PRINT "the rings from pile A to pile B or C<br>
+100 PRINT: PRINT "Only the top ring ";<br>
+110 PRINT "can be moved."<br>
+120 PRINT:PRINT "Larger rings cannot be ";<br>
+130 PRINT "put over smaller rings.<br>
+140 PRINT:PRINT:PRINT "PRESS ENTERWHEN READY.";<br>
+150 INPUT IN$<br>
+180 REM<br>
+190 REM**. . . . . . . . . Initialise&nbsp;. . . . . . . . .<br>
+200 CLS<br>
+210 FOR I = 0 TO 10<br>
+220 A(I,0) = 1:A(I,1) = 0:A(I,2) = 0<br>
+230 NEXT I<br>
+240 TR(0,0) = 1:TR(0,1) = 1<br>
+250 TR(1,0) = 11:TR(1,1) = 10<br>
+260 TR(2,0) = 11:TR(2,1) = 10:MC = 0<br>
+270 GOSUB 600<br>
+280 GOSUB 800<br>
+290 SCREEN 6,15<br>
+300 PRINT "PILE A", "PILE B", "PILE C";<br>
+310 REM<br>
+320 REM ** . . . . . . . . . Input move&nbsp;. . . . . . . . . .<br>
+400 GOSUB 920: SCREEN 2,2: PRINT "MOVE FROM ";<br>
+410 INPUT N$ 420 GOSUB 1300:TF = IN:IF TF &lt; 0 THEN 400<br>
+430 IF A(10,TF) &lt;&gt; 0 THEN 470<br>
+440 SCREEN 1,1<br>
+450 PRINT "NO RINGS ON THAT STICK CHUM"<br>
+460 GOTO 400<br>
+470 GOSUB 920:SCREEN 2,2:PRINT "TO PILE";<br>
+480 INPUT IN$<br>
+490 GOSUB 1300:TT = IN:IF TT &lt; 0 THEN GOTO 470<br>
+500 GOSUB 1000<br>
+510 GOTO 400<br>
+580 REM<br>
+590 REM ** . . . . . . . Initialise graphics&nbsp;. . . . . . .<br>
+600 CLS: IT = 0: IP = 14:GOSUB 630<br>
+610 IT = 1:IP = 42: GOSUB 630<br>
+620 IT = 2:IP = 70: GOSUB 630: GOSUB 800<br>
+630 FOR I = 0 TO 32<br>
+640 FOR J = 0 TO A(I/3,IT)<br>
+650 SET (J + IP, I+9)<br>
+660 SET (IP &ndash;J, I+9)<br>
+670 NEXT J<br>
+680 NEXT I:RETURN<br>
+780 REM<br>
+790 REM ** . . . . . . . Print title&nbsp;. . . . . . .<br>
+800 TL$ = "TOWERS OF HANOI MOVE "+STR$(MC)<br>
+810 FOR I = 1 TO LEN(TL$)<br>
+820 POKE 3029+I,ASC(MID$(TL$,I,1))<br>
+830 NEXT I<br>
 840 RETURN
-</pre>
+</p>
 <?php columnEnd(1); ?>

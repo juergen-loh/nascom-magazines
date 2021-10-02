@@ -6,223 +6,56 @@ continues, adding the next command immediately after the last. Otherwise it chan
 the Basic Text Pointer (at 1283H) to the start of the next 256-byte page. In Xtal Basic
 the text must start on a page boundary.
 </p>
-<p>
-0090
-0100
-0110
-0120
-0130
-;;
-</p>
-<p>
-***********************************************
-; ** COMMAND LOADER BY D. ELLIOT **
-; ***********************************************
-;
-</p>
-<p>
-4E00
-4E00
-4E01
-EF
-0C
-0140
-0150
-0160
-LOADR
-ORG &pound;4E00
-RST 40
-DEFB 12
-; EXECUTION ADDRESS
-; PRINT STRING
-; CLEAR STRING
-4E02 456E7465 0170 DEFM&ldquo;ENTER COMMAND/<?php spChar("zwsp"); ?>FUNCTION NAME&rdquo;
-4E1E
-4E20
-4E22
-4E23
-4E25
-4E27
-4E2A
-4E2C
-4E2D
-4E2F
-4E31
-4E32
-4E34
-4E36
-4E37
-4E39
-4E3A
-4E3C
-4E3D
-4E3E
-4E3F
-4E40
-4E42
-4E44
-4E45
-4E47
-4E49
-4E4A
-4E4C
-4E4D
-4E4E
-4E51
-4E52
-4E56
-4E57
-4E58
-4E59
-0D00
-DF63
-1A
-FE20
-2832
-21800E
-0EFF
-7E
-CB7F
-2805
-0C
-FE80
-2803
-23
-18F3
-1A
-CBFF
-77
-23
-13
-1A
-FE20
-2803
-77
-18F6
-3680
-59
-1600
-EB
-29
-11800F
-19
-ED5B8312
-73
-23
-72
-EF
-0180
-0190
-0200
-0210
-0220
-0230
-0240
-0250
-0260
-0270
-0280
-0290
-0300
-0310
-0320
-0330
-0340
-0350
-0360
-0370
-0380
-0390
-0400
-0410
-0420
-0430
-0440
-0450
-0460
-0470
-0480
-0490
-0500
-0510
-0520
-0530
-0540
-LOOP
-NEXT
-ADDNAM
-ADD1
-ADD80
-NCOM
-DEFB 13,0
-SCAL INLIN
-LD A, (DE)
-CP &ldquo;
-JR Z,NOTCOM
-LD HL, NAMES
-LD C,-1
-LD A (HL)
-BIT 7,A
-JR Z,NEXT
-INC C
-CP &pound;80
-JR Z,ADDNAM
-INC HL
-JR LOOP
-LD A (DE)
-SET 7,A
-LD (HL),A
-INC HL
-INC DE
-LD A,(DE)
-CP &ldquo;
-JR Z,ADD80
-LD (HL),A
-JR ADD1
-LD (HL), &pound;80
-LD E,C
-LD D,0
-EX DE,HL
-ADD HL,HL
-LD DE,VECT
-ADD HL,DE
-LD DE,(TEXT)
-LD (HL),E
-INC HL
-LD (HL),D
-RST 40
-CRLF, END OF STRING
-; INPUT LINE
-; GET 1ST CHARACTER
-; NAME ENTERED?
-; JUMP IF NOT
-; SET POINTER
-; RESET COUNTER
-; GET NEXT BYTE
-; STARTOFWORD?
-; IF NOT, TRY NEXT
-; INCREMENT COUNTER
-; END OF TABLE?
-; ADD TO TABLE
-; INCREMENT POINTER
-; NEXT CHARACTER
-; GET NEXT BYTE
-; SET BIT 7
-; SAVE 1ST CHAR.
-; INCR. POINTERS
-; GET CHARACTER
-; END OF NAME?
-; IF SO, INSERT &pound;80
-; SAVE CHARACTER
-; CONTINUE
-; ADD DELIMITER
-; CALCULATE ADDRESS
-; OF VECTOR
-; START OF TABLE
-; SET VECTOR
-; AT END OF BASIC
-; PRINT STRING
-4E5A 456E7465 0550 DEFM /ENTER MACHINE CODE./
-4E6D 0D00 0560 DEFB 13,0 ; CRLF, STRING END
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td></td><td></td><td>0090</td><td colspan=3>;'
+<tr><td></td><td></td><td>0100</td><td colspan=3>; <b>***********************************************</b></td></tr>
+<tr><td></td><td></td><td>0110</td><td colspan=3>; <b>** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; COMMAND LOADER BY D. ELLIOT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; **</b></td></tr>
+<tr><td></td><td></td><td>0120</td><td colspan=3>; <b>***********************************************</b></td></tr>
+<tr><td></td><td></td><td>0130</td><td colspan=3>;</td></tr>
+<tr><td>4E00</td><td></td><td>0140</td><td></td><td>ORG &pound;4E00</td><td>; EXECUTION ADDRESS</td></tr>
+<tr><td>4E00</td><td>EF</td><td>0150</td><td>LOADR</td><td>RST 40</td><td>; PRINT STRING</td></tr>
+<tr><td>4E01</td><td>0C</td><td>0160</td><td></td><td>DEFB 12</td><td>; CLEAR STRING</td></tr>
+<tr><td>4E02</td><td>456E7465</td><td>0170</td><td></td><td colspan=2>DEFM "ENTER COMMAND/<?php spChar("zwsp"); ?>FUNCTION NAME"</td></tr>
+<tr><td>4E1E</td><td>0D00</td><td>0180</td><td></td><td>DEFB 13,0</td><td>; CRLF, END OF STRING</td></tr>
+<tr><td>4E20</td><td>DF63</td><td>0190</td><td></td><td>SCAL INLIN</td><td>; INPUT LINE</td></tr>
+<tr><td>4E22</td><td>1A</td><td>0200</td><td></td><td>LD A, (DE)</td><td>; GET 1ST CHARACTER</td></tr>
+<tr><td>4E23</td><td>FE20</td><td>0210</td><td></td><td>CP ' '</td><td>; NAME ENTERED?</td></tr>
+<tr><td>4E25</td><td>2832</td><td>0220</td><td></td><td>JR Z,NOTCOM</td><td>; JUMP IF NOT</td></tr>
+<tr><td>4E27</td><td>21800E</td><td>0230</td><td></td><td>LD HL, NAMES</td><td>; SET POINTER</td></tr>
+<tr><td>4E2A</td><td>0EFF</td><td>0240</td><td></td><td>LD C,-1</td><td>; RESET COUNTER</td></tr>
+<tr><td>4E2C</td><td>7E</td><td>0250</td><td>LOOP</td><td>LD A (HL)</td><td>; GET NEXT BYTE</td></tr>
+<tr><td>4E2D</td><td>CB7F</td><td>0260</td><td></td><td>BIT 7,A</td><td>; STARTOFWORD?</td></tr>
+<tr><td>4E2F</td><td>2805</td><td>0270</td><td></td><td>JR Z,NEXT</td><td>; IF NOT, TRY NEXT</td></tr>
+<tr><td>4E31</td><td>0C</td><td>0280</td><td></td><td>INC C</td><td>; INCREMENT COUNTER</td></tr>
+<tr><td>4E32</td><td>FE80</td><td>0290</td><td></td><td>CP &pound;80</td><td>; END OF TABLE?</td></tr>
+<tr><td>4E34</td><td>2803</td><td>0300</td><td></td><td>JR Z,ADDNAM</td><td>; ADD TO TABLE</td></tr>
+<tr><td>4E36</td><td>23</td><td>0310</td><td>NEXT</td><td>INC HL</td><td>; INCREMENT POINTER</td></tr>
+<tr><td>4E37</td><td>18F3</td><td>0320</td><td></td><td>JR LOOP</td><td>; NEXT CHARACTER</td></tr>
+<tr><td>4E39</td><td>1A</td><td>0330</td><td>ADDNAM</td><td>LD A (DE)</td><td>; GET NEXT BYTE</td></tr>
+<tr><td>4E3A</td><td>CBFF</td><td>0340</td><td></td><td>SET 7,A</td><td>; SET BIT 7</td></tr>
+<tr><td>4E3C</td><td>77</td><td>0350</td><td></td><td>LD (HL),A</td><td>; SAVE 1ST CHAR.</td></tr>
+<tr><td>4E3D</td><td>23</td><td>0360</td><td>ADD1</td><td>INC HL</td><td>; INCR. POINTERS</td></tr>
+<tr><td>4E3E</td><td>13</td><td>0370</td><td></td><td>INC DE</td><td></td></tr>
+<tr><td>4E3F</td><td>1A</td><td>0380</td><td></td><td>LD A,(DE)</td><td>; GET CHARACTER</td></tr>
+<tr><td>4E40</td><td>FE20</td><td>0390</td><td></td><td>CP ' '</td><td>; END OF NAME?</td></tr>
+<tr><td>4E42</td><td>2803</td><td>0400</td><td></td><td>JR Z,ADD80</td><td>; IF SO, INSERT &pound;80</td></tr>
+<tr><td>4E44</td><td>77</td><td>0410</td><td></td><td>LD (HL),A</td><td>; SAVE CHARACTER</td></tr>
+<tr><td>4E45</td><td>18F6</td><td>0420</td><td></td><td>JR ADD1</td><td>; CONTINUE</td></tr>
+<tr><td>4E47</td><td>3680</td><td>0430</td><td>ADD80</td><td>LD (HL), &pound;80</td><td>; ADD DELIMITER</td></tr>
+<tr><td>4E49</td><td>59</td><td>0440</td><td></td><td>LD E,C</td><td>; CALCULATE ADDRESS</td></tr>
+<tr><td>4E4A</td><td>1600</td><td>0450</td><td></td><td>LD D,0</td><td>; OF VECTOR</td></tr>
+<tr><td>4E4C</td><td>EB</td><td>0460</td><td></td><td>EX DE,HL</td><td></td></tr>
+<tr><td>4E4D</td><td>29</td><td>0470</td><td></td><td>ADD HL,HL</td><td></td></tr>
+<tr><td>4E4E</td><td>11800F</td><td>0480</td><td></td><td>LD DE,VECT</td><td>; START OF TABLE</td></tr>
+<tr><td>4E51</td><td>19</td><td>0490</td><td></td><td>ADD HL,DE</td><td></td></tr>
+<tr><td>4E52</td><td>ED5B8312</td><td>0500</td><td></td><td>LD DE,(TEXT)</td><td>; SET VECTOR</td></tr>
+<tr><td>4E56</td><td>73</td><td>0510</td><td></td><td>LD (HL),E</td><td>; AT END OF BASIC</td></tr>
+<tr><td>4E57</td><td>23</td><td>0520</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>4E58</td><td>72</td><td>0530</td><td></td><td>LD (HL),D</td><td></td></tr>
+<tr><td>4E59</td><td>EF</td><td>0540</td><td>NCOM</td><td>RST 40</td><td>; PRINT STRING</td></tr>
+<tr><td>4E5A</td><td>456E7465</td><td>0550</td><td></td><td colspan=2>DEFM /ENTER MACHINE CODE./</td></tr>
+<tr><td>4E6D</td><td>0D00</td><td>0560</td><td></td><td>DEFB 13,0</td><td>; CRLF, STRING END</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

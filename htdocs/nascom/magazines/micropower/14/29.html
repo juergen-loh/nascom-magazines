@@ -1,10 +1,12 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 per line can be controlled by a fourth argument; if this argument is nn, there will be
 8+nn bytes per line. In addition to the hexadecimal data, Nas-Sys&nbsp;3 outputs the
 ASCII or Graphics codes of the data (codes in the ranges &pound;00 &ndash; &pound;1F, &pound;7F &ndash; &pound;9F, and
 &pound;FF are output as &ldquo;.&rdquo;). A fifth argument, hhll, may be entered to suppress either the
 hexadecimal (if hh is not zero) or ASCII (if ll is not zero) part of the listing.
+</p>
+<p>
 If you wish to edit a tabulated listing you must quit the Tabulate command by
 typing &lsquo;Escape&rsquo;, and then enter M to get into the Modify routine. You will now be able
 to move the cursor with the control keys and edit the tabulation. If you are using Nas-Sys&nbsp;3
@@ -12,9 +14,9 @@ it is best to suppress ASCII part of the listing. As this will interfere with th
 modify command, either by producing error messages or, if the ASCII section
 contains a full stop, by terminating the modify routine.
 </p>
-<p>
+<h3>
 USER INPUT/<?php spChar("zwsp"); ?>OUTPUT U
-</p>
+</h3>
 <p>
 Input and output is accessed via pointers to tables which list the routines to be
 called. With the pointers, which are stored in the workspace at &pound;0C73 (output) and
@@ -35,9 +37,9 @@ the remaining routines will then be skipped. This can have unfortunate consequen
 &ndash; if a printer routine carries out tests which leave the carry flag set for certain
 characters, these characters will not appear on the screen.
 </p>
-<p>
+<h3>
 VERIFY V
-</p>
+</h3>
 <p>
 The address stored in the command table for the VERIFY command is the same
 as that for the READ command. The two commands use the same code, except that
