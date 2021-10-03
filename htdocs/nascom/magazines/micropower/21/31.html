@@ -4,6 +4,8 @@ For the same reason, a line feed (code &pound;0A) is output after a carriage ret
 (&pound;0D), as most systems need both signals; however, the line feed can be
 suppressed by setting bit 4 of the option byte. The Nas-Sys&nbsp;1 external output routine
 ignores nulls, but Nas-Sys&nbsp;3 has been modified so that nulls are output correctly.
+</p>
+<p>
 The many options available make this a very powerful command. Because
 the user output routine is automatically brought into operation when the X command
 is invoked, you can have a parallel printer on line in addition to the Nascom
@@ -11,23 +13,23 @@ keyboard and an ASCII terminal (for example, a teletype keyboard and printer). O
 course, you must set up the user output routine by storing the address at &pound;0C78 in
 the usual way.
 </p>
-<p>
+<h3>
 YJUMP Y
-</p>
+</h3>
 <p>
 In Nas-Sys&nbsp;1, Y produces an error message &ndash; the address in the subroutine
 table is &pound;030A. Nas-Sys&nbsp;3 uses Y to jump to &pound;B000; this will normally be used to
 access software in an EPROM at this address, such as the Basic &lsquo;Programmer&rsquo; s
-Aid&rsquo; or an entension to the monitor. I have the initialisation routine for my printer
+Aid&rsquo; or an extension to the monitor. I have the initialisation routine for my printer
 here, so that Y configures the PIO ports, clears the print buffer and resets the
 printer options.
 </p>
-<p>
+<h3>
 ZJUMP Z
-</p>
+</h3>
 <p>
 This command is normally used to &lsquo; warm star&rsquo;t the Microsoft Basic at &pound;FFFD.
-0f course, if you haven&rsquo; t got the Basic in ROM you can use the command to
+0f course, if you haven&rsquo;t got the Basic in ROM you can use the command to
 access other software by changing the address stored for the Z command. I use it
 to access Zeap, using Z for a warm start and ZC for a cold start. Because C is a valid
 hexadecimal number, you can use it as an argument to a command. The software
@@ -40,7 +42,7 @@ still happens, but not as often. There always seems to be room in the software y
 are accessing for the extra code needed to test the value of ARG1.
 </p>
 <p>
-However, there is a snag. I tried the same ystem for Basic, using J for a warm
+However, there is a snag. I tried the same system for Basic, using J for a warm
 and JC for a cold start. I then found that I couldn&rsquo;t RUN programs that appeared to
 CLOAD correctly. On LISTing garbage was displayed. The reason was that the
 argument C was used as an offset in the Nas-Sys&nbsp;3. READ routine used by CLOAD

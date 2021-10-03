@@ -1,221 +1,63 @@
 <?php columnStart(1); ?>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td></td><td></td><td>1670</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>1680</td><td colspan=3>; @@ EVALUATE A STRING @@</td></tr>
+<tr><td></td><td></td><td>1690</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>1700</td><td colspan=3>;</td></tr>
+<tr><td>2DCF</td><td>E1</td><td>1710</td><td>EVAL</td><td>POP HL</td><td></td></tr>
+<tr><td>2DD0</td><td>23</td><td>1720</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>2DD1</td><td>CD8B1B</td><td>1730</td><td></td><td>CALL EXPR</td><td>; GET STRING</td></tr>
+<tr><td>2DD4</td><td>E5</td><td>1740</td><td></td><td>PUSH HL</td><td></td></tr>
+<tr><td>2DD5</td><td>CD6A21</td><td>1750</td><td></td><td>CALL ASCO</td><td>; GET ADDRESS IN DE</td></tr>
+<tr><td>2DD8</td><td>2B</td><td>1760</td><td></td><td>DEC HL</td><td>; FIND LENGTH</td></tr>
+<tr><td>2DD9</td><td>2B</td><td>1770</td><td></td><td>DEC HL</td><td></td></tr>
+<tr><td>2DDA</td><td>2B</td><td>1780</td><td></td><td>DEC HL</td><td></td></tr>
+<tr><td>2DDB</td><td>7E</td><td>1790</td><td></td><td>LD A, (HL)</td><td>; GET LENGTH IN A</td></tr>
+<tr><td>2DDC</td><td>FE5A</td><td>1800</td><td></td><td>CP 90</td><td>; IS IT TOO LONG?</td></tr>
+<tr><td>2DDE</td><td>3805</td><td>1810</td><td></td><td>JR C, EVAL2</td><td>; IF NO, JUMP</td></tr>
+<tr><td>2DE0</td><td>1E0F</td><td>1820</td><td></td><td>LD E, 15</td><td>; IF YES, WRITE</td></tr>
+<tr><td>2DE2</td><td>C31913</td><td>1830</td><td></td><td>JP ERROR</td><td>; ERROR MESSAGE</td></tr>
+<tr><td>2DE5</td><td>4F</td><td>1840</td><td>EVAL2</td><td>LD C, A</td><td></td></tr>
+<tr><td>2DE6</td><td>0600</td><td>1850</td><td></td><td>LD B, 0</td><td></td></tr>
+<tr><td>2DE8</td><td>EB</td><td>1860</td><td></td><td>EX DE, HL</td><td></td></tr>
+<tr><td>2DE9</td><td>11D50C</td><td>1870</td><td></td><td>LD DE, BUFFER</td><td>; COMPRESS OVER</td></tr>
+<tr><td>2DEC</td><td>EDB0</td><td>1880</td><td></td><td>LDIR</td><td>; ITSELF</td></tr>
+<tr><td>2DEE</td><td>23</td><td>1890</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>2DEF</td><td>3600</td><td>1900</td><td></td><td>LD (HL), 0</td><td></td></tr>
+<tr><td>2DF1</td><td>21D50C</td><td>1910</td><td></td><td>LD HL, BUFFER</td><td></td></tr>
+<tr><td>2DF4</td><td>CD4914</td><td>1920</td><td></td><td>CALL CMPRSS</td><td></td></tr>
+<tr><td>2DF7</td><td>23</td><td>1930</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>2DF8</td><td>CD771B</td><td>1940</td><td></td><td>CALL EXNMCK</td><td>; EVALUATE EXPR.</td></tr>
+<tr><td>2DFB</td><td>C3AA2B</td><td>1950</td><td></td><td>JP FNEND</td><td>; BACK TO BASIC</td></tr>
+<tr><td>2DFE</td><td>00</td><td>1960</td><td>CONV</td><td>DEFS 1</td><td>; CONVERSION FLAG</td></tr>
+<tr><td></td><td></td><td>1965</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>1970</td><td colspan=3>; ROUTINES IN CRYSTAL BASIC</td></tr>
+<tr><td></td><td></td><td>1980</td><td colspan=3>;</td></tr>
+<tr><td>2DFE</td><td>154C</td><td>1990</td><td>TSTCOM</td><td>EQU 154CH</td><td>; TEST FOR COMMA</td></tr>
+<tr><td>2DFE</td><td>2250</td><td>2000</td><td>IN255</td><td>EQU 2250H</td><td>; GET NUMBER 0 &ndash; 255</td></tr>
+<tr><td>2DFE</td><td>1FAB</td><td>2010</td><td>ASNSTR</td><td>EQU 1FABH</td><td>; CREATE NEW STRING</td></tr>
+<tr><td>2DFE</td><td>1FD9</td><td>2020</td><td>STREND</td><td>EQU 1FD9H</td><td>; RETURN WITH RESULT</td></tr>
+<tr><td>2DFE</td><td>1551</td><td>2030</td><td>TSTCHR</td><td>EQU 1551H</td><td>; TEST FOR NEXT BYTE</td></tr>
+<tr><td>2DFE</td><td>215B</td><td>2040</td><td>LEN1</td><td>EQU 215BH</td><td>; GET STRING LENGTH</td></tr>
+<tr><td>2DFE</td><td>1B8B</td><td>2050</td><td>EXPR</td><td>EQU 1B8BH</td><td>; EVALUATE EXPRESSION</td></tr>
+<tr><td>2DFE</td><td>216A</td><td>2060</td><td>ASCO</td><td>EQU 216AH</td><td>; GET ADDRESS &amp; LENGTH</td></tr>
+<tr><td>2DFE</td><td>1449</td><td>2070</td><td>CMPRSS</td><td>EQU 1449H</td><td>; COMPRESS TO BUFFER</td></tr>
+<tr><td>2DFE</td><td>2BAA</td><td>2080</td><td>FNEND</td><td>EQU 2BAAH</td><td>; RETURN FROM FUNCTION</td></tr>
+<tr><td>2DFE</td><td>1B77</td><td>2090</td><td>EXNMCK</td><td>EQU 1B77H</td><td>; EVALUATE NUMERIC EXP.</td></tr>
+<tr><td>2DFE</td><td>0CD5</td><td>2100</td><td>BUFFER</td><td>EQU 0CD5H</td><td>; BASIC INPUT BUFFER</td></tr>
+<tr><td>2DFE</td><td>1319</td><td>2110</td><td>ERROR</td><td>EQU 1319H</td><td>; PRINT ERROR MESSAGE</td></tr>
+</table>
+</div>
 <p>
-1670
-1680
-1690
-1700
-; @@@@@@@@@@@@@@@@@@@@@@@
-; @@ EVALUATE A STRING @@
-; @@@@@@@@@@@@@@@@@@@@@@@
-;
-2DCF
-2DD0
-2DD1
-2DD4
-2DD5
-2DD8
-2DD9
-2DDA
-2DDB
-2DDC
-2DDE
-2DE0
-2DE2
-2DE5
-2DE6
-2DE8
-2DE9
-2DEC
-2DEE
-2DEF
-2DF1
-2DF4
-2DF7
-2DF8
-2DFB
-2DFE
-E1
-23
-CD8B1B
-E5
-CD6A21
-2B
-2B
-2B
-7E
-FE5A
-3805
-1E0F
-C31913
-4F
-0600
-EB
-11D50C
-EDB0
-23
-3600
-21D50C
-CD4914
-23
-CD771B
-C3AA2B
-00
-1710
-1720
-1730
-1740
-1750
-1760
-1770
-1780
-1790
-1800
-1810
-1820
-1830
-1840
-1850
-1860
-1870
-1880
-1890
-1900
-1910
-1920
-1930
-1940
-1950
-1960
-EVAL
-EVAL2
-CONV
-POP HL
-INC HL
-CALL EXPR
-PUSH HL
-CALL ASCO
-DEC HL
-DEC HL
-DEC HL
-LD A, (HL)
-CP 90
-JR C, EVAL2
-LD E, 15
-JP ERROR
-LD C, A
-LD B, 0
-EX DE, HL
-LD DE, BUFFER
-LDIR
-INC HL
-LD (HL), 0
-LD HL, BUFFER
-CALL CMPRSS
-INC HL
-CALL EXNMCK
-JP FNEND
-DEFS 1
-; GET STRING
-; GET ADDRESS IN DE
-; FIND LENGTH
-; GET LENGTH IN A
-; IS IT TOO LONG?
-; IF NO, JUMP
-; IF YES, WRITE
-; ERROR MESSAGE
-; COMPRESS OVER
-; ITSELF
-; EVALUATE EXPR.
-; BACK TO BASIC
-; CONVERSION FLAG
-1965
-1970
-1980
-;
-; ROUTINES IN CRYSTAL BASIC
-;
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-2DFE
-154C
-2250
-1FAB
-1FD9
-1551
-215B
-1B8B
-216A
-1449
-2BAA
-1B77
-0CD5
-1319
-1990
-2000
-2010
-2020
-2030
-2040
-2050
-2060
-2070
-2080
-2090
-2100
-2110
-TSTCOM
-IN255
-ASNSTR
-STREND
-TSTCHR
-LEN1
-EXPR
-ASCO
-CMPRSS
-FNEND
-EXNMCK
-BUFFER
-ERROR
-EQU 154CH
-EQU 2250H
-EQU 1FABH
-EQU 1FD9H
-EQU 1551H
-EQU 215BH
-EQU 1B8BH
-EQU 216AH
-EQU 1449H
-EQU 2BAAH
-EQU 1B77H
-EQU 0CD5H
-EQU 1319H
-; TEST FOR COMMA
-; GET NUMBER 0 &ndash; 255
-; CREATE NEW STRING
-; RETURN WITH RESULT
-; TEST FOR NEXT BYTE
-; GET STRING LENGTH
-; EVALUATE EXPRESSION
-; GET ADDRESS &amp; LENGTH
-; COMPRESS TO BUFFER
-; RETURN FROM FUNCTION
-; EVALUATE NUMERIC EXP.
-; BASIC INPUT BUFFER
-; PRINT ERROR MESSAGE
 These routines should can be entered into the crystal basic interpreter in the
 normal way, or they can be added by means of the loader program given in the last
 issue. The code to be entered when using this program is given below.
+</p>
+<p class="noindent">
 NAME:OLD
-0000 FD 2A 83 12 FD E5 DD E1 AF 06 00 11 04 00
+</p>
+<p class="indent">
+0000 &nbsp; &nbsp; FD &nbsp; &nbsp; 2A &nbsp; &nbsp; 83 &nbsp; &nbsp; 12 &nbsp; &nbsp; FD &nbsp; &nbsp; E5 &nbsp; &nbsp; DD &nbsp; &nbsp; E1 &nbsp; &nbsp; AF &nbsp; &nbsp; 06 &nbsp; &nbsp; 00 &nbsp; &nbsp; 11 &nbsp; &nbsp; 04 &nbsp; &nbsp; 00
 </p>
 <?php columnEnd(1); ?>

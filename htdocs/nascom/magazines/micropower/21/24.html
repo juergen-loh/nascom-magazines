@@ -1,169 +1,63 @@
 <?php columnStart(1); ?>
-<p>
-195:
-196:
-197:
-198:
-199:
-200:
-201:
-202:
-203:
-204:
-205:
-206:
-207:
-208:
-209:
-210:
-211:
-212:
-WH2:
-CP &ldquo;Y&rdquo;
-JR Z,WH2
-CP &ldquo;N&rdquo;
-JR NZ,WH1
-JR PROMPT
-CALL CLRCRT
-EX AF, AF&rsquo;
-CP &ldquo;P&rdquo;
-JR Z, PROGRM
-CP &ldquo;C&rdquo;
-JR Z, CMPARE
-CP &ldquo;T&rdquo;
-JR Z, TRNFER
-CP &ldquo;E&rdquo;
-JR Z, ERASED
-CP &ldquo;D&rdquo;
-JR Z, OUTPUT
-JR OPTION
-; TRTY AGAIN IF NOT Y OR
-; REPROMPT IF &ldquo;N&rdquo;
-; CLEAR SCREEN
-; WAS IT A &ldquo;P&rdquo;?
-; IF SO, GO TO PROGRAM
-; WAS IT A &ldquo;C&rdquo;?
-; IF SO, GO TO COMPARE
-; WAS IT A &ldquo;T&rdquo;?
-; IF SO, GO TO TRANSFER
-; WAS IT AN &ldquo;E&rdquo;?
-; IF SO, TEST FOR ERASURE
-; WAS IT A &ldquo;D&rdquo;?
-; IF SO, GO TO DUMP ROUTINE
-; INVALID ENTRY, TRY AGAIN
-213:
-214:
-215:
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; * ROUTINE TO PROGRAM EPROM *
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-216:
-217:
-218:
-219:
-220:
-221:
-222:
-223:
-224:
-225:
-226:
-227:
-228:
-229:
-230:
-231:
-232:
-233:
-234:
-235:
-236:
-237:
-238:
-239:
-240:
-241:
-242:
-243:
-244:
-245:
-246:
-247
-248:
-249:
-250:
-251:
-PROGRM:
-SETPIO:
-PROGR1:
-PROGR2:
-HOLD:
-DELAY1:
-HOLD1:
-:
-HOLD2:
-LD HL, TEXT17
-LD DE, 0A4BH
-LD BC, 11H
-LDIR
-CALL RAMADR
-CALL STPIO3
-LD A, (ROMFLG)
-CP 8
-JR Z, PR2716
-LD B, 68H
-PUSH BC
-CALL RESET
-LD DE, 0
-LD HL, (STOR1)
-LD A, (ROMFLG)
-CP D
-JR Z, PROGR3
-LD A, (HL)
-OUT (ADATA), A
-LD B, 10H
-DJNZ HOLD
-LD A, 23H
-OUT (BDATA), A
-LD B, OEH
-NOP
-DJNZ DELAY1
-LD A, 22H
-OUT (BDATA), A
-LD B, 10H
-DJNZ HOLD1
-LD A, 26H
-OUT (BDATA), A
-LD B, 10H
-DJNZ HOLD2
-LD A, 22H
-OUT (BDATA), A
-; &ldquo;COPIED INTO EPROM&rdquo;
-; GET START ADDRESS
-; PORT A LINES TO O/P
-; 1K OR 2K EPROM?
-; JUMP IF 2716
-; NUMBER OF CYCLES TO COUNT
-; SAVE CYCLES COUNT
-; RESET COUNTER, SET 12V ANDWE
-; CLEAR COUNTER
-; GET START ADDRESS
-; FLAG EQUALS 4 FOR 2708
-; IS D 4?
-; IF SO, JUMP TO PROGR3
-; ELSE GET BYTE AND
-; SEND IT TO THE EPROM
-; SHORT DELAY TO ALLOW
-; DATA TO STABILISE
-; OUTPUT CONTROLS TO PUT
-; 12V AND 26V ON EPROM
-; KEEP 26V ON FOR 1 mS
-; NOWSWITCH 26v OFF
-; BUT KEEP 12V ON
-; SHORT DELAY
-; HOLD 12V AND INCREMENT
-; ADDRESS COUNTER
-; SHORT DELAY
-; 12V ONLY
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>195:</td><td></td><td>CP "Y"</td><td></td></tr>
+<tr><td>196:</td><td></td><td>JR Z,WH2</td><td></td></tr>
+<tr><td>197:</td><td></td><td>CP "N"</td><td></td></tr>
+<tr><td>198:</td><td></td><td>JR NZ,WH1</td><td>; TRTY AGAIN IF NOT Y OR</td></tr>
+<tr><td>199:</td><td></td><td>JR PROMPT</td><td>; REPROMPT IF "N"</td></tr>
+<tr><td>200:</td><td>WH2:</td><td>CALL CLRCRT</td><td>; CLEAR SCREEN</td></tr>
+<tr><td>201:</td><td></td><td>EX AF, AF'</td><td></td></tr>
+<tr><td>202:</td><td></td><td>CP "P"</td><td>; WAS IT A "P"?</td></tr>
+<tr><td>203:</td><td></td><td>JR Z, PROGRM</td><td>; IF SO, GO TO PROGRAM</td></tr>
+<tr><td>204:</td><td></td><td>CP "C"</td><td>; WAS IT A "C"?</td></tr>
+<tr><td>205:</td><td></td><td>JR Z, CMPARE</td><td>; IF SO, GO TO COMPARE</td></tr>
+<tr><td>206:</td><td></td><td>CP "T"</td><td>; WAS IT A "T"?</td></tr>
+<tr><td>207:</td><td></td><td>JR Z, TRNFER</td><td>; IF SO, GO TO TRANSFER</td></tr>
+<tr><td>208:</td><td></td><td>CP "E"</td><td>; WAS IT AN "E"?</td></tr>
+<tr><td>209:</td><td></td><td>JR Z, ERASED</td><td>; IF SO, TEST FOR ERASURE</td></tr>
+<tr><td>210:</td><td></td><td>CP "D"</td><td>; WAS IT A "D"?</td></tr>
+<tr><td>211:</td><td></td><td>JR Z, OUTPUT</td><td>; IF SO, GO TO DUMP ROUTINE</td></tr>
+<tr><td>212:</td><td></td><td>JR OPTION</td><td>; INVALID ENTRY, TRY AGAIN</td></tr>
+<tr><td>213:</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>214:</td><td colspan=3>; * ROUTINE TO PROGRAM EPROM *</td></tr>
+<tr><td>215:</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>216:</td><td>PROGRM:</td><td>LD HL, TEXT17</td><td>; "COPIED INTO EPROM"</td></tr>
+<tr><td>217:</td><td></td><td>LD DE, 0A4BH</td><td></td></tr>
+<tr><td>218:</td><td></td><td>LD BC, 11H</td><td></td></tr>
+<tr><td>219:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>220:</td><td></td><td>CALL RAMADR</td><td>; GET START ADDRESS</td></tr>
+<tr><td>221:</td><td>SETPIO:</td><td>CALL STPIO3</td><td>; PORT A LINES TO O/P</td></tr>
+<tr><td>222:</td><td></td><td>LD A, (ROMFLG)</td><td>; 1K OR 2K EPROM?</td></tr>
+<tr><td>223:</td><td></td><td>CP 8</td><td></td></tr>
+<tr><td>224:</td><td></td><td>JR Z, PR2716</td><td>; JUMP IF 2716</td></tr>
+<tr><td>225:</td><td></td><td>LD B, 68H</td><td>; NUMBER OF CYCLES TO COUNT</td></tr>
+<tr><td>226:</td><td>PROGR1:</td><td>PUSH BC</td><td>; SAVE CYCLES COUNT</td></tr>
+<tr><td>227:</td><td></td><td>CALL RESET</td><td>; RESET COUNTER, SET 12V AND <?php invertedSignal("WE"); ?></td></tr>
+<tr><td>228:</td><td></td><td>LD DE, 0</td><td>; CLEAR COUNTER</td></tr>
+<tr><td>229:</td><td></td><td>LD HL, (STOR1)</td><td>; GET START ADDRESS</td></tr>
+<tr><td>230:</td><td>PROGR2:</td><td>LD A, (ROMFLG)</td><td>; FLAG EQUALS 4 FOR 2708</td></tr>
+<tr><td>231:</td><td></td><td>CP D</td><td>; IS D 4?</td></tr>
+<tr><td>232:</td><td></td><td>JR Z, PROGR3</td><td>; IF SO, JUMP TO PROGR3</td></tr>
+<tr><td>233:</td><td></td><td>LD A, (HL)</td><td>; ELSE GET BYTE AND</td></tr>
+<tr><td>234:</td><td></td><td>OUT (ADATA), A</td><td>; SEND IT TO THE EPROM</td></tr>
+<tr><td>235:</td><td></td><td>LD B, 10H</td><td>; SHORT DELAY TO ALLOW</td></tr>
+<tr><td>236:</td><td>HOLD:</td><td>DJNZ HOLD</td><td>; DATA TO STABILISE</td></tr>
+<tr><td>237:</td><td></td><td>LD A, 23H</td><td>; OUTPUT CONTROLS TO PUT</td></tr>
+<tr><td>238:</td><td></td><td>OUT (BDATA), A</td><td>; 12V AND 26V ON EPROM</td></tr>
+<tr><td>239:</td><td></td><td>LD B, 0EH</td><td></td></tr>
+<tr><td>240:</td><td>DELAY1:</td><td>NOP</td><td>; KEEP 26V ON FOR 1 mS</td></tr>
+<tr><td>241:</td><td></td><td>DJNZ DELAY1</td><td></td></tr>
+<tr><td>242:</td><td></td><td>LD A, 22H</td><td>; NOWSWITCH 26v OFF</td></tr>
+<tr><td>243:</td><td></td><td>OUT (BDATA), A</td><td>; BUT KEEP 12V ON</td></tr>
+<tr><td>244:</td><td></td><td>LD B, 10H</td><td>; SHORT DELAY</td></tr>
+<tr><td>245:</td><td>HOLD1:</td><td>DJNZ HOLD1</td><td></td></tr>
+<tr><td>246:</td><td></td><td>LD A, 26H</td><td>; HOLD 12V AND INCREMENT</td></tr>
+<tr><td>247:</td><td></td><td>OUT (BDATA), A</td><td>; ADDRESS COUNTER</td></tr>
+<tr><td>248:</td><td></td><td>LD B, 10H</td><td>; SHORT DELAY</td></tr>
+<tr><td>249:</td><td>HOLD2:</td><td>DJNZ HOLD2</td><td></td></tr>
+<tr><td>250:</td><td></td><td>LD A, 22H</td><td>; 12V ONLY</td></tr>
+<tr><td>251:</td><td></td><td>OUT (BDATA), A</td><td></td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

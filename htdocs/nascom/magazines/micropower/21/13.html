@@ -1,210 +1,63 @@
 <?php columnStart(1); ?>
-<p>
-2D3A
-2D3E
-2D44
-FD22B70C
-FD22BB0C
-C9
-0500
-0510
-0520
-LD (&pound;0CB7), IY
-LD (&pound;0CBB), IY
-RET
-; END OF TEXT
-; END OF ARRAYS
-0530
-0540
-0550
-0560
-0570
-0580
-0590
-0600
-;
-; @@@@@@@@@@@@@@@@@@@@
-; @@ STRING$(NN,CC) @@
-; @@@@@@@@@@@@@@@@@@@@
-;
-; CREATES A STRING OF NN CHARACTERS
-; WITH AN ASCII CODE CC
-;
-2D43
-2D44
-2D45
-2D48
-2D49
-2D4C
-2D4F
-2D50
-2D53
-2D54
-2D55
-2D56
-2D57
-2D58
-2D59
-2D5A
-2D5B
-2D5E
-2D5F
-2D60
-2D61
-2D62
-2D63
-2D65
-E1
-23
-CD5022
-F5
-CD4C15
-CD5022
-F5
-CD5115
-29
-F1
-47
-F1
-E5
-4F
-79
-C5
-CDAB1F
-C1
-EB
-70
-23
-0D
-20FB
-C3D91F
-0610
-0620
-0630
-0640
-0650
-0660
-0670
-0680
-0690
-0700
-0710
-0720
-0730
-0740
-0750
-0760
-0770
-0780
-0790
-0800
-0810
-0820
-0830
-0840
-STRING
-ST1
-POP HL
-INC HL
-CALL IN255
-PUSH AF
-CALL TSTCOM
-CALL IN255
-PUSH AF
-CALL TSTCHR
-DEFB &ldquo;)
-POP AF
-LD B,A
-POP AF
-PUSH HL
-LD C, A
-LD A, C
-PUSH BC
-CALL ASNSTR
-POP BC
-EX DE, HL
-LD (HL), B
-INC HL
-DEC C
-JR NZ, ST1
-JP STREND
-; GET NUMBER 0-255
-; GET COMMA
-; GET CHAR. CODE
-; SASVE CHARACTER
-; TEST FOR
-; CLOSING BRACKET
-; RECOVER CHAR.
-; PUT IN B
-; RECOVER NUMBER
-; SAVE TEXT POINTER
-; PUT NUMBER IN C
-; SAVE BC
-; CREATE NEW STRING
-; RECOVER BC
-; SET HL TO START
-; COPY CHARACTER
-; INCREMENT POINTER
-; LOOP
-; RETURN TO BASIC
-0850
-0860
-0870
-0880
-0890
-;
-; @@@@@@@@@@@@@@@@@@@@@@@@@@@
-; @@ CONVERT TO LOWER CASE @@
-; @@@@@@@@@@@@@@@@@@@@@@@@@@@
-;
-2D68
-2D6A
-2D6D
-3E4C
-32FE2D
-180C
-0900
-0910
-0920
-LOWER LD A, &ldquo;L
-LD (CONV), A
-JR CONVRT
-; SET FLAG TO
-; LOWER CASE
-0930
-0940
-0950
-0960
-0970
-;;
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
-; @@ CONVERT TO UPPER CASE @@
-; @@@@@@@@@@@@@@@@@@@@@@@@@@@
-;
-2D6F
-2D71
-2D74
-3E55
-32FE2D
-1805
-0980
-0990
-1000
-UPPER LD A, &ldquo;U
-LD (CONV), A
-JR CONVRT
-; SET FLAG TO
-; UPPER CASE
-1010
-1020
-1030
-1040
-1050
-;;
-@@@@@@@@@@@@@@@@@@@@
-; @@ REVERSE STRING @@
-; @@@@@@@@@@@@@@@@@@@@
-;
-2D76 3E52 1060 REVRSE LD A, &ldquo;R ; SET FLAG TO
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>2D3A</td><td>FD22B70C</td><td>0500</td><td></td><td>LD (&pound;0CB7), IY</td><td>; END OF TEXT</td></tr>
+<tr><td>2D3E</td><td>FD22BB0C</td><td>0510</td><td></td><td>LD (&pound;0CBB), IY</td><td>; END OF ARRAYS</td></tr>
+<tr><td>2D44</td><td>C9</td><td>0520</td><td></td><td>RET</td><td></td></tr>
+<tr><td></td><td></td><td>0530</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0540</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0550</td><td colspan=3>; @@ STRING$(NN,CC) @@</td></tr>
+<tr><td></td><td></td><td>0560</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0570</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0580</td><td colspan=3>; CREATES A STRING OF NN CHARACTERS</td></tr>
+<tr><td></td><td></td><td>0590</td><td colspan=3>; WITH AN ASCII CODE CC</td></tr>
+<tr><td></td><td></td><td>0600</td><td colspan=3>;</td></tr>
+<tr><td>2D43</td><td>E1</td><td>0610</td><td>STRING</td><td>POP HL</td><td></td></tr>
+<tr><td>2D44</td><td>23</td><td>0620</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>2D45</td><td>CD5022</td><td>0630</td><td></td><td>CALL IN255</td><td>; GET NUMBER 0-255</td></tr>
+<tr><td>2D48</td><td>F5</td><td>0640</td><td></td><td>PUSH AF</td><td></td></tr>
+<tr><td>2D49</td><td>CD4C15</td><td>0650</td><td></td><td>CALL TSTCOM</td><td>; GET COMMA</td></tr>
+<tr><td>2D4C</td><td>CD5022</td><td>0660</td><td></td><td>CALL IN255</td><td>; GET CHAR. CODE</td></tr>
+<tr><td>2D4F</td><td>F5</td><td>0670</td><td></td><td>PUSH AF</td><td>; SASVE CHARACTER</td></tr>
+<tr><td>2D50</td><td>CD5115</td><td>0680</td><td></td><td>CALL TSTCHR</td><td>; TEST FOR</td></tr>
+<tr><td>2D53</td><td>29</td><td>0690</td><td></td><td>DEFB ")</td><td>; CLOSING BRACKET</td></tr>
+<tr><td>2D54</td><td>F1</td><td>0700</td><td></td><td>POP AF</td><td>; RECOVER CHAR.</td></tr>
+<tr><td>2D55</td><td>47</td><td>0710</td><td></td><td>LD B,A</td><td>; PUT IN B</td></tr>
+<tr><td>2D56</td><td>F1</td><td>0720</td><td></td><td>POP AF</td><td>; RECOVER NUMBER</td></tr>
+<tr><td>2D57</td><td>E5</td><td>0730</td><td></td><td>PUSH HL</td><td>; SAVE TEXT POINTER</td></tr>
+<tr><td>2D58</td><td>4F</td><td>0740</td><td></td><td>LD C, A</td><td>; PUT NUMBER IN C</td></tr>
+<tr><td>2D59</td><td>79</td><td>0750</td><td></td><td>LD A, C</td><td></td></tr>
+<tr><td>2D5A</td><td>C5</td><td>0760</td><td></td><td>PUSH BC</td><td>; SAVE BC</td></tr>
+<tr><td>2D5B</td><td>CDAB1F</td><td>0770</td><td></td><td>CALL ASNSTR</td><td>; CREATE NEW STRING</td></tr>
+<tr><td>2D5E</td><td>C1</td><td>0780</td><td></td><td>POP BC</td><td>; RECOVER BC</td></tr>
+<tr><td>2D5F</td><td>EB</td><td>0790</td><td></td><td>EX DE, HL</td><td>; SET HL TO START</td></tr>
+<tr><td>2D60</td><td>70</td><td>0800</td><td>ST1</td><td>LD (HL), B</td><td>; COPY CHARACTER</td></tr>
+<tr><td>2D61</td><td>23</td><td>0810</td><td></td><td>INC HL</td><td>; INCREMENT POINTER</td></tr>
+<tr><td>2D62</td><td>0D</td><td>0820</td><td></td><td>DEC C</td><td></td></tr>
+<tr><td>2D63</td><td>20FB</td><td>0830</td><td></td><td>JR NZ, ST1</td><td>; LOOP</td></tr>
+<tr><td>2D65</td><td>C3D91F</td><td>0840</td><td></td><td>JP STREND</td><td>; RETURN TO BASIC</td></tr>
+<tr><td></td><td></td><td>0850</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0860</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0870</td><td colspan=3>; @@ CONVERT TO LOWER CASE @@</td></tr>
+<tr><td></td><td></td><td>0880</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0890</td><td colspan=3>;</td></tr>
+<tr><td>2D68</td><td>3E4C</td><td>0900</td><td>LOWER</td><td>LD A, "L</td><td>; SET FLAG TO</td></tr>
+<tr><td>2D6A</td><td>32FE2D</td><td>0910</td><td></td><td>LD (CONV), A</td><td>; LOWER CASE</td></tr>
+<tr><td>2D6D</td><td>180C</td><td>0920</td><td></td><td>JR CONVRT</td><td></td></tr>
+<tr><td></td><td></td><td>0930</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>0940</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0950</td><td colspan=3>; @@ CONVERT TO UPPER CASE @@</td></tr>
+<tr><td></td><td></td><td>0960</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>0970</td><td colspan=3>;</td></tr>
+<tr><td>2D6F</td><td>3E55</td><td>0980</td><td>UPPER</td><td>LD A, "U</td><td>; SET FLAG TO</td></tr>
+<tr><td>2D71</td><td>32FE2D</td><td>0990</td><td></td><td>LD (CONV), A</td><td>; UPPER CASE</td></tr>
+<tr><td>2D74</td><td>1805</td><td>1000</td><td></td><td>JR CONVRT</td><td></td></tr>
+<tr><td></td><td></td><td>1010</td><td colspan=3>;</td></tr>
+<tr><td></td><td></td><td>1020</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>1030</td><td colspan=3>; @@ REVERSE STRING @@</td></tr>
+<tr><td></td><td></td><td>1040</td><td colspan=3>; @@@@@@@@@@@@@@@@@@@@</td></tr>
+<tr><td></td><td></td><td>1050</td><td colspan=3>;</td></tr>
+<tr><td>2D76</td><td>3E52</td><td>1060</td><td>REVRSE</td><td>LD A, "R</td><td>; SET FLAG TO</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

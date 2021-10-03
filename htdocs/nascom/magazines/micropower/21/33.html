@@ -1,7 +1,7 @@
 <?php columnStart(1); ?>
-<p>
-JCAL FFLP DF 5E
-</p>
+<h3>
+SCAL FFLP DF 5E
+</h3>
 <p>
 This routine sets and then resets output lines in port 0. On entering the
 routine the accumulator must have the bits corresponding to the lines to be
@@ -10,15 +10,15 @@ maps the current state of port 0, so that only the selected bits are changed, an
 output to port 0. The original state of port 0 is then recovered from &pound;0C00 and
 output to port 0.
 </p>
-<p>
+<h3>
 SCAL MFLP DF 5F
-</p>
+</h3>
 <p>
 This routine changes the state of the tape LED, which is controlled by bit 4 of
 port 0. The LED gives an indication that loading or saving of tape data is proceeding,
 but if a small relay is connected to the output which drives the LED the signal can
 be more usefully employed to switch the cassette motor on and off through the
-&lsquo; remote&rsquo; socket. If you don&rsquo; t use the signal tocontrol a tape motor, and alternative
+&lsquo; remote&rsquo; socket. If you don&rsquo; t use the signal to control a tape motor, and alternative
 use is to produce &lsquo;music&rsquo; by connecting the LED output to a small 80 Ohm speaker.
 Notes can be produced by flipping bit 4 at different rates. However, there are two
 spare output lines on port 0, bits 2 and 5, and you can use these to produce sounds
@@ -32,16 +32,18 @@ doing, there is no reason why you shouldn&rsquo; t use a direct call this once. 
 alternative is to write a short piece of machine code to change the necessary bits of
 port 0.
 </p>
-<p>
+<h3>
 SCAL ARGS DF 60
-</p>
+</h3>
 <p>
 This routine loads the contents of the ARG!, ARG2 and ARG3 (&pound;0C0C,
 &pound;0C0E, &pound;0C10) into HL, DE and BC. As noted previously, when a program is
 entered by the Execute command, the contents of HL, DE and BC are picked up
 from the Register save area in the monitor workspace, and so you cannot pass
-arguments entered under E directly to a program, you must recover the values atored
+arguments entered under E directly to a program, you must recover the values stored
 at ARG1 &ndash; ARG3, and this can most easily be done by means of SCAL ARGS,
+</p>
+<p>
 In the next article, I shall continue with the subroutine calls, starting with
 keyboard calls, DF 61 and DF 62
 </p>

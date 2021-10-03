@@ -1,150 +1,63 @@
 <?php columnStart(1); ?>
-<p>
-79:
-80:
-81:
-82:
-83:
-84:
-85:
-86:
-87:
-88:
-89:
-90:
-91:
-92:
-93:
-94:
-95:
-96:
-97:
-98:
-99:
-100:
-101:
-102:
-103:
-104:
-105:
-106:
-107:
-108:
-109:
-110:
-111:
-112:
-113:
-114:
-115:
-116:
-117:
-118:
-119
-120:
-121:
-122:
-123:
-124:
-125:
-126:
-127:
-128:
-129:
-130:
-131:
-132:
-133:
-134:
-135:
-;
-RESTR2:
-CLRTYP:
-CLRT1:
-KEYC:
-SCAN:
-SCAN1:
-ALLOK:
-KEY:
-KEY1:
-KEY2:
-;
-TYPE:
-CALL CLRCRT
-LD B, 16
-LD HL, 0BE8H
-LD A, " &ldquo;
-LD (HL), A
-INC HL
-DJNZ CLRT1
-LD HL, TEXT3
-LD DE, 0A0BH
-LD BC, 41
-LDIR
-LD HL, TEXT4
-LD DE, 0B0BH
-LD BC, 19
-LDIR
-DEFB SCAL, KBD
-JR C, SCAN1
-JR SCAN
-CP &ldquo;C&rdquo;
-JR NZ, SCAN
-CALL CLRCRT
-LD HL, TEXT1A
-LD DE, 090BH
-LD BC, 33
-LDIR
-LD HL, TEXT1B
-LD DE, 0991H
-LD BC, 27
-LDIR
-DEFB SCAL, KBD
-JR C, KEY1
-JR KEY
-PUSH AF
-CALL CLRCRT
-LD HL, TEXT11
-LD DE, 090BH
-LD BC, 27
-LDIR
-POP AF
-LD HL, 090FH
-LD (HL),A
-EX AF, AF&rsquo;
-DEFB SCAL, KBD
-JR NC, KEY2
-CP &ldquo;Y&rdquo;
-JR Z, TYPE
-CP &ldquo;N&rdquo;
-JR Z, ALLOK
-JR KEY2
-EX AF, AF&rsquo;
-CP &ldquo;A&rdquo;
-JRZ, TYP1K
-CP &ldquo;B&rdquo;
-JR Z, TYP2K
-CALL CLRCRT
-; CLEAR TYPE NUMBER
-; TYPE ADDRESS ON SCREEN
-; SPACE CHARACTER
-; EPROM HANDLING MESSAGE
-; PROMPT FOR KEY &ldquo;C&rdquo;
-; GET INPUT
-; LOOP UNTIL &ldquo;C&rdquo; IS PRESSED
-; &ldquo;KEY A---FOR 2708&rdquo;
-; &ldquo;KEY B--------&ldquo;
-; GET INPUT
-; SAVE KEY
-; CLEAR SCREEN
-; &ldquo;KEY&nbsp;?-----Y/N&rdquo;
-; SCREEN ADDRESS FOR KEY
-; PRINT IT
-; SAVE IT AGAIN
-; GET KEY AGAIN
-; TRY AGAIN IF NOT YOR N
-; GET ORIGINAL ENTRY BACK
-; 1K EPROM
-; 2K EPROM
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>79:</td><td>;</td><td></td><td></td></tr>
+<tr><td>80:</td><td>RESTR2:</td><td>CALL CLRCRT</td><td>; CLEAR TYPE NUMBER</td></tr>
+<tr><td>81:</td><td>CLRTYP:</td><td>LD B, 16</td><td>; TYPE ADDRESS ON SCREEN</td></tr>
+<tr><td>82:</td><td></td><td>LD HL, 0BE8H</td><td>; SPACE CHARACTER</td></tr>
+<tr><td>83:</td><td></td><td>LD A, " "</td><td></td></tr>
+<tr><td>84:</td><td>CLRT1:</td><td>LD (HL), A</td><td></td></tr>
+<tr><td>85:</td><td></td><td>INC HL</td><td></td></tr>
+<tr><td>86:</td><td></td><td>DJNZ CLRT1</td><td></td></tr>
+<tr><td>87:</td><td>KEYC:</td><td>LD HL, TEXT3</td><td>; EPROM HANDLING MESSAGE</td></tr>
+<tr><td>88:</td><td></td><td>LD DE, 0A0BH</td><td></td></tr>
+<tr><td>89:</td><td></td><td>LD BC, 41</td><td></td></tr>
+<tr><td>90:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>91:</td><td></td><td>LD HL, TEXT4</td><td>; PROMPT FOR KEY "C"</td></tr>
+<tr><td>92:</td><td></td><td>LD DE, 0B0BH</td><td></td></tr>
+<tr><td>93:</td><td></td><td>LD BC, 19</td><td></td></tr>
+<tr><td>94:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>95:</td><td>SCAN:</td><td>DEFB SCAL, KBD</td><td>; GET INPUT</td></tr>
+<tr><td>96:</td><td></td><td>JR C, SCAN1</td><td></td></tr>
+<tr><td>97:</td><td></td><td>JR SCAN</td><td></td></tr>
+<tr><td>98:</td><td>SCAN1:</td><td>CP "C"</td><td></td></tr>
+<tr><td>99:</td><td></td><td>JR NZ, SCAN</td><td>; LOOP UNTIL "C" IS PRESSED</td></tr>
+<tr><td>100:</td><td>ALLOK:</td><td>CALL CLRCRT</td><td></td></tr>
+<tr><td>101:</td><td></td><td>LD HL, TEXT1A</td><td>; "KEY A---FOR 2708"</td></tr>
+<tr><td>102:</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>103:</td><td></td><td>LD BC, 33</td><td></td></tr>
+<tr><td>104:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>105:</td><td></td><td>LD HL, TEXT1B</td><td>; "KEY B--------"</td></tr>
+<tr><td>106:</td><td></td><td>LD DE, 0991H</td><td></td></tr>
+<tr><td>107:</td><td></td><td>LD BC, 27</td><td></td></tr>
+<tr><td>108:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>109:</td><td>KEY:</td><td>DEFB SCAL, KBD</td><td>; GET INPUT</td></tr>
+<tr><td>110:</td><td></td><td>JR C, KEY1</td><td></td></tr>
+<tr><td>111:</td><td></td><td>JR KEY</td><td></td></tr>
+<tr><td>112:</td><td>KEY1:</td><td>PUSH AF</td><td>; SAVE KEY</td></tr>
+<tr><td>113:</td><td></td><td>CALL CLRCRT</td><td>; CLEAR SCREEN</td></tr>
+<tr><td>114:</td><td></td><td>LD HL, TEXT11</td><td>; "KEY&nbsp;?-----Y/N"</td></tr>
+<tr><td>115:</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>116:</td><td></td><td>LD BC, 27</td><td></td></tr>
+<tr><td>117:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>118:</td><td></td><td>POP AF</td><td></td></tr>
+<tr><td>119</td><td></td><td>LD HL, 090FH</td><td>; SCREEN ADDRESS FOR KEY</td></tr>
+<tr><td>120:</td><td></td><td>LD (HL),A</td><td>; PRINT IT</td></tr>
+<tr><td>121:</td><td></td><td>EX AF, AF&rsquo;</td><td>; SAVE IT AGAIN</td></tr>
+<tr><td>122:</td><td>KEY2:</td><td>DEFB SCAL, KBD</td><td>; GET KEY AGAIN</td></tr>
+<tr><td>123:</td><td></td><td>JR NC, KEY2</td><td></td></tr>
+<tr><td>124:</td><td></td><td>CP "Y"</td><td></td></tr>
+<tr><td>125:</td><td></td><td>JR Z, TYPE</td><td></td></tr>
+<tr><td>126:</td><td></td><td>CP "N"</td><td></td></tr>
+<tr><td>127:</td><td></td><td>JR Z, ALLOK</td><td></td></tr>
+<tr><td>128:</td><td></td><td>JR KEY2</td><td>; TRY AGAIN IF NOT YOR N</td></tr>
+<tr><td>129:</td><td>;</td><td></td><td></td></tr>
+<tr><td>130:</td><td>TYPE:</td><td>EX AF, AF&rsquo;</td><td>; GET ORIGINAL ENTRY BACK</td></tr>
+<tr><td>131:</td><td></td><td>CP "A"</td><td></td></tr>
+<tr><td>132:</td><td></td><td>JRZ, TYP1K</td><td>; 1K EPROM</td></tr>
+<tr><td>133:</td><td></td><td>CP "B"</td><td></td></tr>
+<tr><td>134:</td><td></td><td>JR Z, TYP2K</td><td>; 2K EPROM</td></tr>
+<tr><td>135:</td><td></td><td>CALL CLRCRT</td><td></td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

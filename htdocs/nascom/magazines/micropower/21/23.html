@@ -1,147 +1,65 @@
 <?php columnStart(1); ?>
-<p>
-136:
-137:
-138:
-139:
-140:
-141:
-142:
-143:
-144:
-145:
-146:
-147:
-148:
-149:
-151:
-152:
-153:
-154:
-155:
-156:
-157:
-158:
-159:
-160:
-161:
-162:
-163:
-164:
-165:
-166:
-167:
-168:
-169:
-170:
-171:
-172:
-173:
-174:
-175:
-176:
-177:
-178:
-179:
-180:
-181:
-182:
-183:
-184:
-185:
-186:
-187:
-188:
-189:
-190:
-191:
-192:
-193:
-194:
-TYPERR:
-TYP1K:
-;
-PROMPT:
-;
-OPTION:
-WHICH:
-WH1:
-LD HL, TEXT12
-LD DE, 090BH
-LD BC, 29
-LDIR
-DEFB SCAL, TDEL
-DEFB SCAL, TDEL
-JP ALLOK
-LD A, 4
-LD (ROMFLG), A)
-LD HL, TXT13A
-LD DE, 0BE8H
-LD BC, 16
-LDIR
-JR PROMPT 150:
-LD (ROMFLG), A
-LD HL, TXT13B
-LD DE, 0BE8H
-LD BC, 16
-LDIR
-CALL CLRCRT
-LD HL, TEXT2
-LD DE, 094BH
-LD BC, 25
-LDIR
-LD HL, TEXT2A
-LD DE, 09D2H
-LD BC, 1EH
-LDIR
-LD HL, TEXT2B
-LD DE, 0AD2H
-LD BC, 1FH
-LDIR
-LD HL, TEXT2C
-LD DE, 0AD2H
-LD BC, 20H
-LDIR
-LD HL, TEXT2D
-LD DE, 0B52H
-LD BC, 1AH
-LDIR
-XOR A
-DEFB SCAL, KBD
-JR C, WHICH
-JR OPTION
-EX AF, AF&rsquo;
-CALL CLRCRT
-LD HL, TEXT11
-LD DE, 090BH
-LD BC, 27
-LDIR
-LD HL, 090FH
-EX AF, AF&rsquo;
-LD (HL), A
-EX AF, AF&rsquo;
-DEFB SCAL, KBD
-JR NC, WH1
-; TYPE ---- A OR B&rdquo;
-; WAIT APPROXIMATELY 2 SECONDS
-; FLAG FOR 2708
-; TYPE TO TOPLINE
-; FLAG FOR 2K EPROM
-; TYPE TO TOPLINE
-; PROMPT FOR KEY P----.
-; KEY C----
-; KEY T----
-; KEY E----
-; KEY D----
-; WHICH ROUTINE
-; SEE IF KEY PRESSED
-; IF SO, JUMP TO WHICH
-; ELSE KEEP LOOKING FOR KEY
-; SAVE KEY
-; KEY&nbsp;? ---Y/N?
-; SCREEN ADDRESS
-; RECOVER A
-; PRINT IT
-; RESAVE IT
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>136:</td><td>TYPERR:</td><td>LD HL, TEXT12</td><td>; TYPE ---- A OR B"</td></tr>
+<tr><td>137:</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>138:</td><td></td><td>LD BC, 29</td><td></td></tr>
+<tr><td>139:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>140:</td><td></td><td>DEFB SCAL, TDEL</td><td>; WAIT APPROXIMATELY 2 SECONDS</td></tr>
+<tr><td>141:</td><td></td><td>DEFB SCAL, TDEL</td><td></td></tr>
+<tr><td>142:</td><td></td><td>JP ALLOK</td><td></td></tr>
+<tr><td>143:</td><td>TYP1K:</td><td>LD A, 4</td><td>; FLAG FOR 2708</td></tr>
+<tr><td>144:</td><td></td><td>LD (ROMFLG), A</td><td></td></tr>
+<tr><td>145:</td><td></td><td>LD HL, TXT13A</td><td>; TYPE TO TOPLINE</td></tr>
+<tr><td>146:</td><td></td><td>LD DE, 0BE8H</td><td></td></tr>
+<tr><td>147:</td><td></td><td>LD BC, 16</td><td></td></tr>
+<tr><td>148:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>149:</td><td></td><td>JR PROMPT</td><td>; FLAG FOR 2K EPROM</td></tr>
+<tr><td>150:</td><td>;</td><td></td><td></td></tr>
+<tr><td>151:</td><td></td><td>LD (ROMFLG), A</td><td></td></tr>
+<tr><td>152:</td><td></td><td>LD HL, TXT13B</td><td>; TYPE TO TOPLINE</td></tr>
+<tr><td>153:</td><td></td><td>LD DE, 0BE8H</td><td></td></tr>
+<tr><td>154:</td><td></td><td>LD BC, 16</td><td></td></tr>
+<tr><td>155:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>156:</td><td>;</td><td></td><td></td></tr>
+<tr><td>157:</td><td>PROMPT:</td><td>CALL CLRCRT</td><td></td></tr>
+<tr><td>158:</td><td></td><td>LD HL, TEXT2</td><td>; PROMPT FOR KEY P----.</td></tr>
+<tr><td>159:</td><td></td><td>LD DE, 094BH</td><td></td></tr>
+<tr><td>160:</td><td></td><td>LD BC, 25</td><td></td></tr>
+<tr><td>161:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>162:</td><td></td><td>LD HL, TEXT2A</td><td>; KEY C----</td></tr>
+<tr><td>163:</td><td></td><td>LD DE, 09D2H</td><td></td></tr>
+<tr><td>164:</td><td></td><td>LD BC, 1EH</td><td></td></tr>
+<tr><td>165:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>166:</td><td></td><td>LD HL, TEXT2B</td><td>; KEY T----</td></tr>
+<tr><td>167:</td><td></td><td>LD DE, 0AD2H</td><td></td></tr>
+<tr><td>168:</td><td></td><td>LD BC, 1FH</td><td></td></tr>
+<tr><td>169:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>170:</td><td></td><td>LD HL, TEXT2C</td><td>; KEY E----</td></tr>
+<tr><td>171:</td><td></td><td>LD DE, 0AD2H</td><td></td></tr>
+<tr><td>172:</td><td></td><td>LD BC, 20H</td><td></td></tr>
+<tr><td>173:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>174:</td><td></td><td>LD HL, TEXT2D</td><td>; KEY D----</td></tr>
+<tr><td>175:</td><td></td><td>LD DE, 0B52H</td><td></td></tr>
+<tr><td>176:</td><td></td><td>LD BC, 1AH</td><td></td></tr>
+<tr><td>177:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>178:</td><td>;</td><td></td><td></td></tr>
+<tr><td>179:</td><td>OPTION:</td><td>XOR A</td><td>; WHICH ROUTINE</td></tr>
+<tr><td>180:</td><td></td><td>DEFB SCAL, KBD</td><td>; SEE IF KEY PRESSED</td></tr>
+<tr><td>181:</td><td></td><td>JR C, WHICH</td><td>; IF SO, JUMP TO WHICH</td></tr>
+<tr><td>182:</td><td></td><td>JR OPTION</td><td>; ELSE KEEP LOOKING FOR KEY</td></tr>
+<tr><td>183:</td><td>WHICH:</td><td>EX AF, AF'</td><td>; SAVE KEY</td></tr>
+<tr><td>184:</td><td></td><td>CALL CLRCRT</td><td></td></tr>
+<tr><td>185:</td><td></td><td>LD HL, TEXT11</td><td>; KEY ? ---Y/N?</td></tr>
+<tr><td>186:</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>187:</td><td></td><td>LD BC, 27</td><td></td></tr>
+<tr><td>188:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>189:</td><td></td><td>LD HL, 090FH</td><td>; SCREEN ADDRESS</td></tr>
+<tr><td>190:</td><td></td><td>EX AF, AF'</td><td>; RECOVER A</td></tr>
+<tr><td>191:</td><td></td><td>LD (HL), A</td><td>; PRINT IT</td></tr>
+<tr><td>192:</td><td></td><td>EX AF, AF'</td><td>; RESAVE IT</td></tr>
+<tr><td>193:</td><td>WH1:</td><td>DEFB SCAL, KBD</td><td></td></tr>
+<tr><td>194:</td><td></td><td>JR NC, WH1</td><td></td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

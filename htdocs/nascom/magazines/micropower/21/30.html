@@ -2,11 +2,13 @@
 <h1 id="article1">
 THE NAS-SYS MONITORS
 </h1>
-<p>
+<h2 class="author">
 By J. Haigh
-</p>
-<p>
+</h2>
+<h3>
 THE EXTERNAL COMMAND X xx
+</h3>
+<p>
 When this command is executed, the low byte of the argument after the X is
 stored at &pound;0C28, and the pointers to the input and output command tables at &pound;0C75
 and &pound;0C73 are reset. Input now scans a routine called XKBD (SCAL &pound;74) and then
@@ -20,6 +22,8 @@ The external keyboard routine scans the serial input port. If no input is
 received it returns from this routine and scans the Nascom keyboard in the normal
 way &ndash; any options set under the X command have no effect on the Nascom
 keyboard, so to the user the operation of the system is unchanged.
+</p>
+<p>
 If an input is received from the serial input port, bit 7 of the input byte is
 first set to zero. This is done because many systems use the most significant bit
 for parity checking to eliminate errors; the number of ones in the lower seven bits is
@@ -38,6 +42,8 @@ tests bit 1 of the option byte; if this bit is zero, any echo of an input byte b
 user program is suppressed. This is done by using bit 7 of the option byte as a
 &ldquo;suppression flag&rdquo;. The flag is tested on output to determine whether to transmit
 a byte or not, and is then reset. Nas-Sys&nbsp;1 does not use bit 1 of the option byte
+</p>
+<p>
 The external output routine tests the parity of the byte to be transmitted; if it
 is odd it inverts bit 7. Bit 0 of the option byte is now tested; if bit 0 is set, this tells
 the Nascom to transmit in &lsquo; odd parity&rsquo; formast,o it re-inverts bit 7. The byte is now

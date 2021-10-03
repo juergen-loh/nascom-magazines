@@ -1,149 +1,64 @@
 <?php columnStart(1); ?>
-<p>
-21:
-22:
-23:
-24:
-25:
-26:
-27:
-28:
-29:
-30:
-31:
-32:
-33:
-34:
-35:
-36:
-37:
-38:
-39:
-40:
-41:
-;
-LF
-CR
-KBD
-B2HEX
-CRLF
-TDEL
-SRLX
-SCAL
-ADATA
-ACTRL
-BDATA
-BCTRL
-HSHAKE
-;
-;
-;
-EQU 0AH
-EQU 0DH
-EQU 62H
-EQU 68H
-EQU 6AH
-EQU 5DH
-EQU 6FH
-EQU 0DFH
-EQU 14H
-EQU 16H
-EQU 15H
-EQU 17H
-EQU 00H
-ASEG
-.Z80
-ORG 100H
-.PHASE 0A000H
-; ONE SECOND DELAY
-42: ; --------------------------------------------------------------
-43:
-44:
-45:
-46:
-47:
-48:
-49:
-50:
-51:
-52:
-53:
-54:
-55:
-56:
-57:
-58:
-59:
-60:
-61:
-62:
-63:
-64:
-65:
-66:
-67:
-68:
-69:
-70:
-71:
-72:
-73:
-74:
-75:
-76:
-77:
-78:
-START:
-;
-RESTRT:
-REMOVE
-ANSWER:
-ANS1:
-;
-RESTR1:
-LD HL, TEXT1
-LD DE, 0BCBH
-LD BC, 10H
-LDIR
-CALL STPIO1
-CALL RESET1
-JR RESTR1
-CALL CLRCRT
-LD HL, TEXT3
-LD HL, 0A0BH
-LD BC, 41H
-LDIR
-LD HL, TXT17A
-LD DE, 0B0BH
-LD BC, 17
-LDIR
-DEFB SCAL, KBD
-JR NC, ANSWER
-CP &ldquo;Y&rdquo;
-JR Z, PROMPT
-CP &ldquo;N&rdquo;
-JR NZ, ANSWER
-JP RESTR2
-CALL CLRCRT
-LD HL, TEXT20
-LD DE, 090BH
-LD BC, 34
-LDIR
-LD HL, TEXT21
-LD HL, 098BH
-LD BC, 38
-LDIR
-DEFB SCAL, TDEL
-DEFB SCAL, TDEL
-; TITLE TO TOP LINE
-; PORT A TO I/P, B TO O/P
-; RESET COUNTER, CHIP OFF
-; RETURN HERE AFTER A ROUTINE
-; MESSAGE ON EPROM REMOVAL
-; &ldquo;SAME EPROM &ndash; ?&rdquo;
-; SCAL KEYBOARD FOR REPLY
-; TRY AGAIN IF NOT YOR N
-; CAUTION MESSAGES FOR 1ST RUN
-; WAIT APPROXIMATELY 2 SECONDS
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>21:</td><td>;</td><td></td><td></td></tr>
+<tr><td>22:</td><td>LF</td><td>EQU 0AH</td><td></td></tr>
+<tr><td>23:</td><td>CR</td><td>EQU 0DH</td><td></td></tr>
+<tr><td>24:</td><td>KBD</td><td>EQU 62H</td><td></td></tr>
+<tr><td>25:</td><td>B2HEX</td><td>EQU 68H</td><td></td></tr>
+<tr><td>26:</td><td>CRLF</td><td>EQU 6AH</td><td></td></tr>
+<tr><td>27:</td><td>TDEL</td><td>EQU 5DH</td><td>; ONE SECOND DELAY</td></tr>
+<tr><td>28:</td><td>SRLX</td><td>EQU 6FH</td><td></td></tr>
+<tr><td>29:</td><td>SCAL</td><td>EQU 0DFH</td><td></td></tr>
+<tr><td>30:</td><td>ADATA</td><td>EQU 14H</td><td></td></tr>
+<tr><td>31:</td><td>ACTRL</td><td>EQU 16H</td><td></td></tr>
+<tr><td>32:</td><td>BDATA</td><td>EQU 15H</td><td></td></tr>
+<tr><td>33:</td><td>BCTRL</td><td>EQU 17H</td><td></td></tr>
+<tr><td>34:</td><td>HSHAKE</td><td>EQU 00H</td><td></td></tr>
+<tr><td>35:</td><td>;</td><td></td><td></td></tr>
+<tr><td>36:</td><td></td><td>ASEG</td><td></td></tr>
+<tr><td>37:</td><td></td><td>.Z80</td><td></td></tr>
+<tr><td>38:</td><td>;</td><td></td><td></td></tr>
+<tr><td>39:</td><td></td><td>ORG 100H</td><td></td></tr>
+<tr><td>40:</td><td></td><td>.PHASE 0A000H</td><td></td></tr>
+<tr><td>41:</td><td>;</td><td></td><td></td></tr>
+<tr><td>42:</td><td colspan=3>; --------------------------------------------------------------</td></tr>
+<tr><td>43:</td><td>START:</td><td>LD HL, TEXT1</td><td>; TITLE TO TOP LINE</td></tr>
+<tr><td>44:</td><td></td><td>LD DE, 0BCBH</td><td></td></tr>
+<tr><td>45:</td><td></td><td>LD BC, 10H</td><td></td></tr>
+<tr><td>46:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>47:</td><td></td><td>CALL STPIO1</td><td>; PORT A TO I/P, B TO O/P</td></tr>
+<tr><td>48:</td><td></td><td>CALL RESET1</td><td>; RESET COUNTER, CHIP OFF</td></tr>
+<tr><td>49:</td><td></td><td>JR RESTR1</td><td></td></tr>
+<tr><td>50:</td><td>;</td><td></td><td></td></tr>
+<tr><td>51:</td><td>RESTRT:</td><td>CALL CLRCRT</td><td>; RETURN HERE AFTER A ROUTINE</td></tr>
+<tr><td>52:</td><td>REMOVE:</td><td>LD HL, TEXT3</td><td>; MESSAGE ON EPROM REMOVAL</td></tr>
+<tr><td>53:</td><td></td><td>LD HL, 0A0BH</td><td></td></tr>
+<tr><td>54:</td><td></td><td>LD BC, 41H</td><td></td></tr>
+<tr><td>55:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>56:</td><td></td><td>LD HL, TXT17A</td><td>; "SAME EPROM &ndash; ?"</td></tr>
+<tr><td>57:</td><td></td><td>LD DE, 0B0BH</td><td></td></tr>
+<tr><td>58:</td><td></td><td>LD BC, 17</td><td></td></tr>
+<tr><td>59:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>60:</td><td>ANSWER:</td><td>DEFB SCAL, KBD</td><td>; SCAL KEYBOARD FOR REPLY</td></tr>
+<tr><td>61:</td><td>ANS1:</td><td>JR NC, ANSWER</td><td></td></tr>
+<tr><td>62:</td><td></td><td>CP "Y"</td><td></td></tr>
+<tr><td>63:</td><td></td><td>JR Z, PROMPT</td><td></td></tr>
+<tr><td>64:</td><td></td><td>CP "N"</td><td></td></tr>
+<tr><td>65:</td><td></td><td>JR NZ, ANSWER</td><td>; TRY AGAIN IF NOT YOR N</td></tr>
+<tr><td>66:</td><td></td><td>JP RESTR2</td><td></td></tr>
+<tr><td>67:</td><td>;</td><td></td><td></td></tr>
+<tr><td>68:</td><td>RESTR1:</td><td>CALL CLRCRT</td><td>; CAUTION MESSAGES FOR 1ST RUN</td></tr>
+<tr><td>69:</td><td></td><td>LD HL, TEXT20</td><td></td></tr>
+<tr><td>70:</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>71:</td><td></td><td>LD BC, 34</td><td></td></tr>
+<tr><td>72:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>73:</td><td></td><td>LD HL, TEXT21</td><td></td></tr>
+<tr><td>74:</td><td></td><td>LD HL, 098BH</td><td></td></tr>
+<tr><td>75:</td><td></td><td>LD BC, 38</td><td></td></tr>
+<tr><td>76:</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>77:</td><td></td><td>DEFB SCAL, TDEL</td><td>; WAIT APPROXIMATELY 2 SECONDS</td></tr>
+<tr><td>78:</td><td></td><td>DEFB SCAL, TDEL</td><td></td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

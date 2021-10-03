@@ -1,114 +1,49 @@
 <?php columnStart(1); ?>
-<p>
-309:
-310:
-311:
-312:
-313:
-314:
-PRINTD:
-JR Z, PRINTD
-JP PR27A
-LD A, D
-DEFB SCAL, B2HEX
-DEFB SCAL, CRLF
-JP PR27A
-; O/P COUNT TO SCREEN
-315:
-316:
-317:
-318:
-;
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; * ROUTINE TO COMPARE EPROM/1K BLOCK *
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-319:
-320:
-321:
-322:
-323:
-324:
-325:
-326:
-327:
-328:
-329:
-330:
-331:
-332:
-333:
-334:
-335:
-336:
-337:
-338:
-339:
-340:
-341:
-342:
-343:
-344:
-345:
-346:
-CMPARE:
-VERFY2:
-VERFY3:
-ERROR:
-;
-LD HL, TEXT8
-LD DE, 0A4BH
-LD BC, 11H
-LDIR
-LD A, 0
-LD (ERRFLG), A
-CALL RAMADR
-LD DE, 0
-LD A, (ROMFLG)
-CP D
-JR Z, VERFY4
-CALL ENABLE
-IN A, (ADATA)
-PUSH AF
-CALL COUNT
-POP AF;
-CP (HL)
-JR NZ, ERROR
-INC HL
-INC DE
-JR VERFY2
-LD A, 0FFH
-LD (ERRFLG), A
-LD A, H
-DEFB SCAL, B2HEX
-LD A, L
-DEFB SCAL, B2HEX
-DEFB SCAL. TDEL
-; &ldquo;COMPARED TO EPROM
-; SET ERROR FLAG
-; GET START ADDRESS
-; CLEAR BYTE COUNTER
-; ALL DONE?
-; IF SO, JUMP TO VERFY4
-; TRUN ON CHIP
-; GET BYTE FROM EPROM
-; SAVE IT
-; INCREMENT ADDRESS, CHIP OFF
-; GET BYTE BACK
-; ARE THEY THE SAME?
-; IF ERROR, PRINT IT
-; NEXT BYTE TO COMPARE
-; INCREMENT BYTE COUNTER
-; ERROR FLAG
-; PRINT ERROR ADDRESS
-; OPTIONAL DELAY
-347: ; IF DELAY REQUIRED, REMOVE FIRST COLON ON ABOVE LINE
-348:
-349:
-DEFB SCAL, CRLF
-JR VERFY3
-; SCROLL DISPLAY
-; NEXT BYTE
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>309:</td><td>          </td><td>JR Z, PRINTD        </td><td>                              </td></tr>
+<tr><td>310:</td><td>          </td><td>JP PR27A            </td><td>                              </td></tr>
+<tr><td>311:</td><td> PRINTD:  </td><td>LD A, D             </td><td>                              </td></tr>
+<tr><td>312:</td><td>          </td><td>DEFB SCAL, B2HEX    </td><td>; O/P COUNT TO SCREEN         </td></tr>
+<tr><td>313:</td><td>          </td><td>DEFB SCAL, CRLF     </td><td>                              </td></tr>
+<tr><td>314:</td><td>          </td><td>JP PR27A            </td><td>                              </td></tr>
+<tr><td>315:</td><td> ;        </td><td>                    </td><td>                              </td></tr>
+<tr><td>316:</td><td colspan=3> ; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  </td></tr>
+<tr><td>317:</td><td colspan=3> ; * ROUTINE TO COMPARE EPROM/1K BLOCK *                                      </td></tr>
+<tr><td>318:</td><td colspan=3> ; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  </td></tr>
+<tr><td>319:</td><td> CMPARE:  </td><td>LD HL, TEXT8        </td><td>; "COMPARED TO EPROM          </td></tr>
+<tr><td>320:</td><td>          </td><td>LD DE, 0A4BH        </td><td>                              </td></tr>
+<tr><td>321:</td><td>          </td><td>LD BC, 11H          </td><td>                              </td></tr>
+<tr><td>322:</td><td>          </td><td>LDIR                </td><td>                              </td></tr>
+<tr><td>323:</td><td>          </td><td>LD A, 0             </td><td>                              </td></tr>
+<tr><td>324:</td><td>          </td><td>LD (ERRFLG), A      </td><td>; SET ERROR FLAG              </td></tr>
+<tr><td>325:</td><td>          </td><td>CALL RAMADR         </td><td>; GET START ADDRESS           </td></tr>
+<tr><td>326:</td><td>          </td><td>LD DE, 0            </td><td>; CLEAR BYTE COUNTER          </td></tr>
+<tr><td>327:</td><td> VERFY2:  </td><td>LD A, (ROMFLG)      </td><td>                              </td></tr>
+<tr><td>328:</td><td>          </td><td>CP D                </td><td>; ALL DONE?                   </td></tr>
+<tr><td>329:</td><td>          </td><td>JR Z, VERFY4        </td><td>; IF SO, JUMP TO VERFY4       </td></tr>
+<tr><td>330:</td><td>          </td><td>CALL ENABLE         </td><td>; TRUN ON CHIP                </td></tr>
+<tr><td>331:</td><td>          </td><td>IN A, (ADATA)       </td><td>; GET BYTE FROM EPROM         </td></tr>
+<tr><td>332:</td><td>          </td><td>PUSH AF             </td><td>; SAVE IT                     </td></tr>
+<tr><td>333:</td><td>          </td><td>CALL COUNT          </td><td>; INCREMENT ADDRESS, CHIP OFF </td></tr>
+<tr><td>334:</td><td>          </td><td>POP AF;             </td><td>; GET BYTE BACK               </td></tr>
+<tr><td>335:</td><td>          </td><td>CP (HL)             </td><td>; ARE THEY THE SAME?          </td></tr>
+<tr><td>336:</td><td>          </td><td>JR NZ, ERROR        </td><td>; IF ERROR, PRINT IT          </td></tr>
+<tr><td>337:</td><td> VERFY3:  </td><td>INC HL              </td><td>; NEXT BYTE TO COMPARE        </td></tr>
+<tr><td>338:</td><td>          </td><td>INC DE              </td><td>; INCREMENT BYTE COUNTER      </td></tr>
+<tr><td>339:</td><td>          </td><td>JR VERFY2           </td><td>                              </td></tr>
+<tr><td>340:</td><td> ERROR:   </td><td>LD A, 0FFH          </td><td>; ERROR FLAG                  </td></tr>
+<tr><td>341:</td><td>          </td><td>LD (ERRFLG), A      </td><td>                              </td></tr>
+<tr><td>342:</td><td>          </td><td>LD A, H             </td><td>; PRINT ERROR ADDRESS         </td></tr>
+<tr><td>343:</td><td>          </td><td>DEFB SCAL, B2HEX    </td><td>                              </td></tr>
+<tr><td>344:</td><td>          </td><td>LD A, L             </td><td>                              </td></tr>
+<tr><td>345:</td><td>          </td><td>DEFB SCAL, B2HEX    </td><td>                              </td></tr>
+<tr><td>346:</td><td> ;        </td><td>DEFB SCAL, TDEL     </td><td>; OPTIONAL DELAY              </td></tr>
+<tr><td>347:</td><td colspan=3> ; IF DELAY REQUIRED, REMOVE FIRST COLON ON ABOVE LINE                        </td></tr>
+<tr><td>348:</td><td>          </td><td>DEFB SCAL, CRLF     </td><td>; SCROLL DISPLAY              </td></tr>
+<tr><td>349:</td><td>          </td><td>JR VERFY3           </td><td>; NEXT BYTE                   </td></tr>
+</table>
+</div>
 <p>
 The remainder of the listing will be published in the next issue. If you don&rsquo;t wish
 to wait that long, or you can&rsquo;t be bothered to type it all in &ndash; after all the source code is
@@ -119,7 +54,7 @@ state which you require. Also please state the disc format required; I can suppl
 single or double density to suit either CP/M or Polydos, for Nascom/<?php spChar("zwsp"); ?>Gemini
 G805/G809
 </p>
-<p>
-C. Bowden, &lsquo;Tregwyn&rsquo;, Stithians, Truro, Cornwall
+<p class="other-address">
+C. Bowden, &nbsp; &nbsp; &nbsp; &lsquo;_______&rsquo;, Stithians, Truro, Cornwall
 </p>
 <?php columnEnd(1); ?>
