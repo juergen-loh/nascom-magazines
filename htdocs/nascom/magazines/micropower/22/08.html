@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 byte, so that the accumulator now contains a 1 at each position corresponding to a
 changed bit. The accumulator is now rotated right so that successive bits pass into
 the carry flag while a single bit is rotated left in the D register and the rotations are
@@ -28,6 +28,8 @@ The table is arranged in such a way that when the byte is found the C register
 contains tha ASCII code of the corresponding key. If the byte is not found in the
 table, the search is repeated for the unshifted byte (i.e., with bit 7 reset). If this
 second search also fails, the carry flag is reset and the subroutine aborted.
+</p>
+<p>
 When an ASCII code has been obtained from the table the subroutine proceeds
 to test the shift, graphics and control keys, and the Keyboard Option byte (&pound;0C27),
 modifying the ASCII code in the appropriate manner. Finally, the carry flag is set, to

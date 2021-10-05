@@ -1,170 +1,62 @@
 <?php columnStart(1); ?>
-<p>
-402
-403
-404
-405
-406
-407
-408
-409
-410
-411
-412
-413
-414
-415
-416
-417
-418
-NOTERA
-ERA3
-ERA4
-JR NZ NOTERA
-CALL COUNT
-INC DE
-JR ERA1
-LD HL, TEXT14
-LD DE, 090BH
-LD BC, 1AH
-LDIR
-JR ERA4
-LD HL, TEXT15
-LD DE, 090BH
-LD BC, 15H
-LDIR
-CALL RESET1
-DEFB SCAL,TDEL
-DEFB SCAL TDEL
-JP RESTRT
-;
-;;
-;;
-;
-IF NOT, JUMP
-KEPP GOING
-EPROM NOT ERASED
-JUMP TO END OF ROUTINE
-EPROM ERASED
-2 SECS DELAY
-419
-420
-421
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE TO OUTPUT EPROM TO PRINTER
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-422
-423
-424
-425
-426
-427
-428
-429
-430
-431
-432
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444
-445
-446
-447
-448
-449
-OUTPUT
-BUFF
-OUT1
-OUT2
-OUT3
-OUT4
-OUT5
-OUT6
-CALL ROMADR
-LD DE, 0000H
-LD IY, LINBUF
-LD A, (ROMFLG)
-CP D
-JR Z, OUT6
-LD HL, (STOR1)
-ADD HL, DE
-LD A, H
-CALL PRTHEX
-LD A, L
-CALL PRTHEX
-CALL GAP
-LD B, 16
-CALL ENABLE
-IN A, (ADATA)
-LD (iY), A
-PUSH BC
-CALL COUNT
-POP BC
-INC IY
-INC DE
-DJNZ OUT4
-CALL PRTLIN
-JR BUFF
-CALL RESET1
-CALL MESS19
-JP RESTRT
-;;;
-;
-;;;
-;;
-;;
-;
-;;;
-;;
-GET NORMAL ADD. OF ROM
-BYTE COUNT
-POINT TO 16 CHAR. STORE
-SEE IF ALL DONE
-GET OFFSET
-FORM ROM ADDRESS
-AND PRINT IT
-4 SPACES
-16 BYTES PER LINE
-GET BYTE
-SAVE CHARACTER
-INC. ADD., TURN CHIP OFF
-LOOP FOR 16 BYTES
-NOW PRINT LINE
-LOOP TILL ALL DONE
-COMPLETED MESSAGE
-BACK TO START
-450
-455
-456
-;
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE TO PRINT ALL 16 CHARS. IN LINE BUFFER
-; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-457
-458
-459
-460
-PRTLIN
-PRLIN1
-LD B, 16
-LD IY, LINBUF
-LD A, (IY)
-CALL PRTHEX
-;;;;
-NO. OF CHARS IN BUFFER
-IY POINTS TO BUFFER START
-GET CHARACTER
-PRINT HEX AS 2 ASCII CHARS.
-461 LD A, 20H ; SPACE BETWEEN BYTES
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>402</td><td></td><td>JR NZ NOTERA</td><td>; IF NOT, JUMP</td></tr>
+<tr><td>403</td><td></td><td>CALL COUNT</td><td></td></tr>
+<tr><td>404</td><td></td><td>INC DE</td><td></td></tr>
+<tr><td>405</td><td></td><td>JR ERA1</td><td>; KEPP GOING</td></tr>
+<tr><td>406</td><td>NOTERA</td><td>LD HL, TEXT14</td><td>; EPROM NOT ERASED</td></tr>
+<tr><td>407</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>408</td><td></td><td>LD BC, 1AH</td><td></td></tr>
+<tr><td>409</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>410</td><td></td><td>JR ERA4</td><td>; JUMP TO END OF ROUTINE</td></tr>
+<tr><td>411</td><td>ERA3</td><td>LD HL, TEXT15</td><td>; EPROM ERASED</td></tr>
+<tr><td>412</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>413</td><td></td><td>LD BC, 15H</td><td></td></tr>
+<tr><td>414</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>415</td><td>ERA4</td><td>CALL RESET1</td><td></td></tr>
+<tr><td>416</td><td></td><td>DEFB SCAL,TDEL</td><td>; 2 SECS DELAY</td></tr>
+<tr><td>417</td><td></td><td>DEFB SCAL TDEL</td><td></td></tr>
+<tr><td>418</td><td></td><td>JP RESTRT</td><td></td></tr>
+<tr><td>419</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>420</td><td colspan=3>; ROUTINE TO OUTPUT EPROM TO PRINTER</td></tr>
+<tr><td>421</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>422</td><td>OUTPUT</td><td>CALL ROMADR</td><td>; GET NORMAL ADD. OF ROM</td></tr>
+<tr><td>423</td><td></td><td>LD DE, 0000H</td><td>; BYTE COUNT</td></tr>
+<tr><td>424</td><td>BUFF</td><td>LD IY, LINBUF</td><td>; POINT TO 16 CHAR. STORE</td></tr>
+<tr><td>425</td><td>OUT1</td><td>LD A, (ROMFLG)</td><td></td></tr>
+<tr><td>426</td><td></td><td>CP D</td><td>; SEE IF ALL DONE</td></tr>
+<tr><td>427</td><td></td><td>JR Z, OUT6</td><td></td></tr>
+<tr><td>428</td><td>OUT2</td><td>LD HL, (STOR1)</td><td>; GET OFFSET</td></tr>
+<tr><td>429</td><td></td><td>ADD HL, DE</td><td>; FORM ROM ADDRESS</td></tr>
+<tr><td>430</td><td></td><td>LD A, H</td><td>; AND PRINT IT</td></tr>
+<tr><td>431</td><td></td><td>CALL PRTHEX</td><td></td></tr>
+<tr><td>432</td><td></td><td>LD A, L</td><td></td></tr>
+<tr><td>433</td><td></td><td>CALL PRTHEX</td><td></td></tr>
+<tr><td>434</td><td></td><td>CALL GAP</td><td>; 4 SPACES</td></tr>
+<tr><td>435</td><td>OUT3</td><td>LD B, 16</td><td>; 16 BYTES PER LINE</td></tr>
+<tr><td>436</td><td>OUT4</td><td>CALL ENABLE</td><td></td></tr>
+<tr><td>437</td><td></td><td>IN A, (ADATA)</td><td>; GET BYTE</td></tr>
+<tr><td>438</td><td></td><td>LD (iY), A</td><td>; SAVE CHARACTER</td></tr>
+<tr><td>439</td><td></td><td>PUSH BC</td><td></td></tr>
+<tr><td>440</td><td></td><td>CALL COUNT</td><td>; INC. ADD., TURN CHIP OFF</td></tr>
+<tr><td>441</td><td></td><td>POP BC</td><td></td></tr>
+<tr><td>442</td><td></td><td>INC IY</td><td></td></tr>
+<tr><td>443</td><td></td><td>INC DE</td><td></td></tr>
+<tr><td>444</td><td></td><td>DJNZ OUT4</td><td>; LOOP FOR 16 BYTES</td></tr>
+<tr><td>445</td><td></td><td>CALL PRTLIN</td><td>; NOW PRINT LINE</td></tr>
+<tr><td>446</td><td>OUT5</td><td>JR BUFF</td><td>; LOOP TILL ALL DONE</td></tr>
+<tr><td>447</td><td>OUT6</td><td>CALL RESET1</td><td></td></tr>
+<tr><td>448</td><td></td><td>CALL MESS19</td><td>; COMPLETED MESSAGE</td></tr>
+<tr><td>449</td><td></td><td>JP RESTRT</td><td>; BACK TO START</td></tr>
+<tr><td>450</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>455</td><td colspan=3>; ROUTINE TO PRINT ALL 16 CHARS. IN LINE BUFFER</td></tr>
+<tr><td>456</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>457</td><td>PRTLIN</td><td>LD B, 16</td><td>; NO. OF CHARS IN BUFFER</td></tr>
+<tr><td>458</td><td></td><td>LD IY, LINBUF</td><td>; IY POINTS TO BUFFER START</td></tr>
+<tr><td>459</td><td>PRLIN1</td><td>LD A, (IY)</td><td>; GET CHARACTER</td></tr>
+<tr><td>460</td><td></td><td>CALL PRTHEX</td><td>; PRINT HEX AS 2 ASCII CHARS.</td></tr>
+<tr><td>461</td><td></td><td>LD A, 20H</td><td>; SPACE BETWEEN BYTES</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

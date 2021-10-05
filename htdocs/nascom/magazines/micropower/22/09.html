@@ -1,10 +1,10 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 the keys in row 0 are read in the standard way.
 </p>
-<p>
+<h3>
 SCAL IN, DF 62
-</p>
+</h3>
 <p>
 This input routine picks up the address of the input table from the workspace at
 &pound;0C75; this table contains a series of numbers representing Nas-Sys
@@ -15,9 +15,9 @@ be changed by the user to point to a table of his own. In Nas-Sys&nbsp;1 the key
 routine in the input table is DF 61, but in Nas-Sys&nbsp;3 it is the repeat keyboard routine,
 DF 7D, which itself calls DF 61 as a subroutine.
 </p>
-<p>
+<h3>
 SCAL INLIN, DF 63
-</p>
+</h3>
 <p>
 This routine calls SCAL 7B, which blinks the cursor while waiting for a key
 to be pressed. When a key is pressed the character is printed and if it was not a
@@ -28,15 +28,15 @@ and DE are added together and interchanged, and the subroutine is terminated.
 The result is that on return DE contains the address of the start of the line which
 the cursor was on when carriage return was pressed.
 </p>
-<p>
+<h3>
 SCAL NUM, DF 64
-</p>
+</h3>
 <p>
 This routine converts a single string of hex characters into a sixteen bit
 number. On entry the DE register pair should point to the start of the string,
 although leading blanks are ignored. As each character is obtained from the string
 it is tested for validity (i.e., is it ASCII 0 &ndash; 9 or ASCII A &ndash; F). If an invalid character is
-detectd the carry flag is set and the routine ends. Each valid character is converted
+detected the carry flag is set and the routine ends. Each valid character is converted
 to a binary number in the range 0 &ndash; 15, counted in location &pound;0C20, and the four bit
 value is rotated left into &pound;0C21, using the instruction RLD (Rotate Left Decimal).
 This instruction transfers the bottom four bits in the accumulator into the bottom

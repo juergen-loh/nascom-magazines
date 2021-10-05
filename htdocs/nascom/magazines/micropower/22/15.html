@@ -1,166 +1,64 @@
 <?php columnStart(1); ?>
-<p>
-522
-523
-524
-525
-526
-ADD37A
-ADD37B
-RET
-ADD A, 37H
-JP PRTH1
-ADD A, 37H
-JP PRTH2
-; CONVERT TO ASCII A &ndash; F
-527
-528
-532
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-GENERAL SUBROUTINES
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-533
-534
-535
-536
-537
-538
-ENABLE
-STABLE
-LD A, 00
-OUT (BDATA), A
-LD A, 20H
-DEC A
-JR NZ STABLE
-RET
-;;
-;
-ENABLE CHIP
-CONTROL PORT B
-WAIT FOR CHIP
-539
-542
-543
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-SCROLL TO CLEAR CRT, CURSOR TO BOTTOM
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-;
-CLRCRT
-CLR1
-RESET
-RESET1
-RESET2
-WAIT6
-LD B, 0FH
-DEFB SCAL, CRLF
-DJNZ CLR1
-RET
-LD A, 2AH
-JR RESET2
-LD A, 0AH
-OUT (BDATA), A
-LD B, 10H
-DJNZ WAIT6
-RES 3, A
-OUT (BDATA), A
-RET
-;;;
-;
-;
-;
-SCROLL 15 TIMES
-TO CLEAR SCREEN AND
-LEAVE TOP LINE INTACT
-12V, RESET, WE, OE BITS SET
-RESET, WE, OE BITS SET
-END OF RESET
-558
-559
-560
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-O/P SHORT PULSE TO INC. ADDR. COUNTER
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-561
-562
-563
-564
-565
-566
-567
-COUNT
-WASIT7
-LD A, 6
-OUT (BDATA), A
-LD B, 10H
-DJNZ WAIT7
-LD A, 2
-OUT (BDATA), A
-RET
-;
-;
-COUNT PULSE ON
-TURN COUNT PULSE OFF
-568
-569
-570
-571
-;;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-SET PIO PORT A &ndash; INPUT, B &ndash; OUTPUT
-BOTH PORTS TO MODE 3
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-572
-573
-574
-575
-576
-577
-578
-579
-STPIO1
-STPIO2
-LD A, 0FFH
-OUT (BCTRL), A
-LD A, 00
-OUT (BCTRL), A
-LD A, 0FFH
-OUT (ACTRL), A
-OUT (ACTRL), A
-RET
-;
-;
-;;
-MODE 3
-OUTPUT
-MODE 3
-INPUT
-580
-582
-583
-;;;
-* * * * * * * * * * * ** * * * * * * ** * * * * * * ** * * * * * * *
-SET PIO PORT A TO MODE 3, OUTPUT
-* * * * * * * * * * * ** * * * * * * ** * * * * * * ** * * * * * * *
-584
-585
-STPIO3 LD A, 0FFH
-OUT (ACTRL), A ; MODE 3
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>522</td><td></td><td>RET</td><td></td></tr>
+<tr><td>523</td><td>ADD37A</td><td>ADD A, 37H</td><td>; CONVERT TO ASCII A &ndash; F</td></tr>
+<tr><td>524</td><td></td><td>JP PRTH1</td><td></td></tr>
+<tr><td>525</td><td>ADD37B</td><td>ADD A, 37H</td><td></td></tr>
+<tr><td>526</td><td></td><td>JP PRTH2</td><td></td></tr>
+<tr><td>527</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>528</td><td colspan=3>; GENERAL SUBROUTINES</td></tr>
+<tr><td>532</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>533</td><td>ENABLE</td><td>LD A, 00</td><td>; ENABLE CHIP</td></tr>
+<tr><td>534</td><td></td><td>OUT (BDATA), A</td><td>; CONTROL PORT B</td></tr>
+<tr><td>535</td><td></td><td>LD A, 20H</td><td></td></tr>
+<tr><td>536</td><td>STABLE</td><td>DEC A</td><td>; WAIT FOR CHIP</td></tr>
+<tr><td>537</td><td></td><td>JR NZ STABLE</td><td></td></tr>
+<tr><td>538</td><td></td><td>RET</td><td></td></tr>
+<tr><td>539</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>542</td><td colspan=3>; SCROLL TO CLEAR CRT, CURSOR TO BOTTOM</td></tr>
+<tr><td>543</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>544</td><td>CLRCRT</td><td>LD B, 0FH</td><td>; SCROLL 15 TIMES</td></tr>
+<tr><td>545</td><td>CLR1</td><td>DEFB SCAL, CRLF</td><td>; TO CLEAR SCREEN AND</td></tr>
+<tr><td>546</td><td></td><td>DJNZ CLR1</td><td>; LEAVE TOP LINE INTACT</td></tr>
+<tr><td>547</td><td></td><td>RET</td><td></td></tr>
+<tr><td>548</td><td>;</td><td></td><td></td></tr>
+<tr><td>549</td><td>RESET</td><td>LD A, 2AH</td><td>; 12V, RESET, WE, OE BITS SET</td></tr>
+<tr><td>550</td><td></td><td>JR RESET2</td><td></td></tr>
+<tr><td>551</td><td>RESET1</td><td>LD A, 0AH</td><td>; RESET, WE, OE BITS SET</td></tr>
+<tr><td>552</td><td>RESET2</td><td>OUT (BDATA), A</td><td></td></tr>
+<tr><td>553</td><td></td><td>LD B, 10H</td><td></td></tr>
+<tr><td>554</td><td>WAIT6</td><td>DJNZ WAIT6</td><td></td></tr>
+<tr><td>555</td><td></td><td>RES 3, A</td><td>; END OF RESET</td></tr>
+<tr><td>556</td><td></td><td>OUT (BDATA), A</td><td></td></tr>
+<tr><td>557</td><td></td><td>RET</td><td></td></tr>
+<tr><td>558</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>559</td><td colspan=3>; O/P SHORT PULSE TO INC. ADDR. COUNTER</td></tr>
+<tr><td>560</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>561</td><td>COUNT</td><td>LD A, 6</td><td>; COUNT PULSE ON</td></tr>
+<tr><td>562</td><td></td><td>OUT (BDATA), A</td><td></td></tr>
+<tr><td>563</td><td></td><td>LD B, 10H</td><td></td></tr>
+<tr><td>564</td><td>WASIT7</td><td>DJNZ WAIT7</td><td></td></tr>
+<tr><td>565</td><td></td><td>LD A, 2</td><td></td></tr>
+<tr><td>566</td><td></td><td>OUT (BDATA), A</td><td>; TURN COUNT PULSE OFF</td></tr>
+<tr><td>567</td><td></td><td>RET</td><td></td></tr>
+<tr><td>568</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>569</td><td colspan=3>; SET PIO PORT A &ndash; INPUT, B &ndash; OUTPUT</td></tr>
+<tr><td>570</td><td colspan=3>; BOTH PORTS TO MODE 3</td></tr>
+<tr><td>571</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>572</td><td>STPIO1</td><td>LD A, 0FFH</td><td></td></tr>
+<tr><td>573</td><td></td><td>OUT (BCTRL), A</td><td>; MODE 3</td></tr>
+<tr><td>574</td><td></td><td>LD A, 00</td><td></td></tr>
+<tr><td>575</td><td></td><td>OUT (BCTRL), A</td><td>; OUTPUT</td></tr>
+<tr><td>576</td><td>STPIO2</td><td>LD A, 0FFH</td><td></td></tr>
+<tr><td>577</td><td></td><td>OUT (ACTRL), A</td><td>; MODE 3</td></tr>
+<tr><td>578</td><td></td><td>OUT (ACTRL), A</td><td>; INPUT</td></tr>
+<tr><td>579</td><td></td><td>RET</td><td></td></tr>
+<tr><td>580</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>582</td><td colspan=3>; SET PIO PORT A TO MODE 3, OUTPUT</td></tr>
+<tr><td>583</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>584</td><td>STPIO3</td><td>LD A, 0FFH</td><td></td></tr>
+<tr><td>585</td><td></td><td>OUT (ACTRL), A</td><td>; MODE 3</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

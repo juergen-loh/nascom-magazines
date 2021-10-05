@@ -1,178 +1,64 @@
 <?php columnStart(1); ?>
-<p>
-462
-463
-464
-465
-466
-467
-468
-469
-470
-471
-472
-473
-474
-475
-476
-477
-478
-479
-480
-481
-482
-PRLIN2
-DOT
-DOT1
-CALL PRINT
-INC IY
-DJNZ PRLIN1
-CALL GAP
-LD B, 16
-LD IY, LINBUF
-LD A, (IY)
-CP 20H
-JP M, DOT
-CP 7BH
-JP P, DOT
-JR DOT1
-LD A, &ldquo;.&rdquo;
-CALL PRINT
-INC IY
-DJNZ PRLIN2
-LD A, CR
-CALL PRINT
-LD A, LF
-CALL PRINT
-RET
-;;;;;;;;;;;
-;;;;
-;
-PRINT IT
-NEXT CHARACTER
-LOOP FOR 16 CHARACTERS
-PRINT 4 SPACES
-NOW DO 16 ASCII CHARACTERS
-START OF BUFFER
-GET CHARACTER
-IS IT A CONTROL CHAR.?
-IF SO, PRINT A DOT
-IS IT GREATER THAN z?
-IF SO, PRINT A DOT
-PRINT IT
-NEXT CHARACTER
-LOOP UNTIL 16 DONE
-PRINT CARRIAGE RETURN
-AND LINE FEED
-483
-486
-487
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE TO O/P CHARACTER TO PRINTER
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-488
-489
-490
-491
-491
-492
-493
-PRINT
-PR1
-PUSH AF
-IN A, (HSHAKE)
-AND 80H
-JR Z, PR1
-POP AF
-DEFB SCAL, SRLX
-RET
-;;
-;;
-SAVE CHARACTER
-HANDSHAKE, BIT 7 PORT 0
-RECOVER CHARACTER
-NAS-SYS SERIAL O/P
-494
-496
-497
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-SUBROUTINE FOR 4 SPACE GAP
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-498
-499
-500
-501
-502
-GAP
-GAP1
-LD B, 4
-LD A, 20H
-CALL PRINT
-DJNZ GAP1
-RET
-;;;;
-NUMBER OF SPACES
-SPACE CHARACTER
-PRINT
-LOOP UNTIL DONE
-503
-504
-505
-;;;
-******* **** ***** ***** ***** **** ***** ****
-PRINT HEX CDE AS TWO ASCII CHARS.
-******* **** ***** ***** ***** **** ***** ****
-506
-507
-508
-509
-510
-511
-512
-513
-514
-515
-516
-517
-518
-519
-520
-521
-PRTHEX
-PRTH1
-PRTH2
-PUSH AF
-AND 0F0H
-RRCA
-RRCA
-RRCA
-RRCA
-CP 0AH
-JP P, ADD37A
-ADD A, 30H
-CALL PRINT
-POP AF
-AND 0FH
-CP 0AH
-JP P, ADD37B
-ADD A, 30H
-CALL PRINT
-;;;
-;;;;;;;;;;
-SAVE CHARACTER
-GET TOP 4 BITS
-SHIFT TO BOTTOM 4 BITS
-IS IT MORE THAN 10
-IF SO, JUMP
-CONVERT TO ASCII 0 &ndash; 9
-PRINT IT
-RECOVER CHARACTER
-GET BOTTOM 4 BITS
-MORE THAN 10?
-IF SO, JUMP
-CONVERT TO ASCII 0 &ndash; 9
-PRINT IT
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>462</td><td></td><td>CALL PRINT</td><td>; PRINT IT</td></tr>
+<tr><td>463</td><td></td><td>INC IY</td><td>; NEXT CHARACTER</td></tr>
+<tr><td>464</td><td></td><td>DJNZ PRLIN1</td><td>; LOOP FOR 16 CHARACTERS</td></tr>
+<tr><td>465</td><td></td><td>CALL GAP</td><td>; PRINT 4 SPACES</td></tr>
+<tr><td>466</td><td></td><td>LD B, 16</td><td>; NOW DO 16 ASCII CHARACTERS</td></tr>
+<tr><td>467</td><td></td><td>LD IY, LINBUF</td><td>; START OF BUFFER</td></tr>
+<tr><td>468</td><td>PRLIN2</td><td>LD A, (IY)</td><td>; GET CHARACTER</td></tr>
+<tr><td>469</td><td></td><td>CP 20H</td><td>; IS IT A CONTROL CHAR.?</td></tr>
+<tr><td>470</td><td></td><td>JP M, DOT</td><td>; IF SO, PRINT A DOT</td></tr>
+<tr><td>471</td><td></td><td>CP 7BH</td><td>; IS IT GREATER THAN z?</td></tr>
+<tr><td>472</td><td></td><td>JP P, DOT</td><td>; IF SO, PRINT A DOT</td></tr>
+<tr><td>473</td><td></td><td>JR DOT1</td><td></td></tr>
+<tr><td>474</td><td>DOT</td><td>LD A, "."</td><td></td></tr>
+<tr><td>475</td><td>DOT1</td><td>CALL PRINT</td><td>; PRINT IT</td></tr>
+<tr><td>476</td><td></td><td>INC IY</td><td>; NEXT CHARACTER</td></tr>
+<tr><td>477</td><td></td><td>DJNZ PRLIN2</td><td>; LOOP UNTIL 16 DONE</td></tr>
+<tr><td>478</td><td></td><td>LD A, CR</td><td>; PRINT CARRIAGE RETURN</td></tr>
+<tr><td>479</td><td></td><td>CALL PRINT</td><td></td></tr>
+<tr><td>480</td><td></td><td>LD A, LF</td><td>; AND LINE FEED</td></tr>
+<tr><td>481</td><td></td><td>CALL PRINT</td><td></td></tr>
+<tr><td>482</td><td></td><td>RET</td><td></td></tr>
+<tr><td>483</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>486</td><td colspan=3>; ROUTINE TO O/P CHARACTER TO PRINTER</td></tr>
+<tr><td>487</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>488</td><td>PRINT</td><td>PUSH AF</td><td>; SAVE CHARACTER</td></tr>
+<tr><td>489</td><td>PR1</td><td>IN A, (HSHAKE)</td><td>; HANDSHAKE, BIT 7 PORT 0</td></tr>
+<tr><td>490</td><td></td><td>AND 80H</td><td></td></tr>
+<tr><td>491</td><td></td><td>JR Z, PR1</td><td></td></tr>
+<tr><td>491</td><td></td><td>POP AF</td><td>; RECOVER CHARACTER</td></tr>
+<tr><td>492</td><td></td><td>DEFB SCAL, SRLX</td><td>; NAS-SYS SERIAL O/P</td></tr>
+<tr><td>493</td><td></td><td>RET</td><td></td></tr>
+<tr><td>494</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>496</td><td colspan=3>; SUBROUTINE FOR 4 SPACE GAP</td></tr>
+<tr><td>497</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>498</td><td>GAP</td><td>LD B, 4</td><td>; NUMBER OF SPACES</td></tr>
+<tr><td>499</td><td></td><td>LD A, 20H</td><td>; SPACE CHARACTER</td></tr>
+<tr><td>500</td><td>GAP1</td><td>CALL PRINT</td><td>; PRINT</td></tr>
+<tr><td>501</td><td></td><td>DJNZ GAP1</td><td>; LOOP UNTIL DONE</td></tr>
+<tr><td>502</td><td></td><td>RET</td><td></td></tr>
+<tr><td>503</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>504</td><td colspan=3>; PRINT HEX CDE AS TWO ASCII CHARS.</td></tr>
+<tr><td>505</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>506</td><td>PRTHEX</td><td>PUSH AF</td><td>; SAVE CHARACTER</td></tr>
+<tr><td>507</td><td></td><td>AND 0F0H</td><td>; GET TOP 4 BITS</td></tr>
+<tr><td>508</td><td></td><td>RRCA</td><td>; SHIFT TO BOTTOM 4 BITS</td></tr>
+<tr><td>509</td><td></td><td>RRCA</td><td></td></tr>
+<tr><td>510</td><td></td><td>RRCA</td><td></td></tr>
+<tr><td>511</td><td></td><td>RRCA</td><td></td></tr>
+<tr><td>512</td><td></td><td>CP 0AH</td><td>; IS IT MORE THAN 10</td></tr>
+<tr><td>513</td><td></td><td>JP P, ADD37A</td><td>; IF SO, JUMP</td></tr>
+<tr><td>514</td><td></td><td>ADD A, 30H</td><td>; CONVERT TO ASCII 0 &ndash; 9</td></tr>
+<tr><td>515</td><td>PRTH1</td><td>CALL PRINT</td><td>; PRINT IT</td></tr>
+<tr><td>516</td><td></td><td>POP AF</td><td>; RECOVER CHARACTER</td></tr>
+<tr><td>517</td><td></td><td>AND 0FH</td><td>; GET BOTTOM 4 BITS</td></tr>
+<tr><td>518</td><td></td><td>CP 0AH</td><td>; MORE THAN 10?</td></tr>
+<tr><td>519</td><td></td><td>JP P, ADD37B</td><td>; IF SO, JUMP</td></tr>
+<tr><td>520</td><td></td><td>ADD A, 30H</td><td>; CONVERT TO ASCII 0 &ndash; 9</td></tr>
+<tr><td>521</td><td>PRTH2</td><td>CALL PRINT</td><td>; PRINT IT</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

@@ -29,7 +29,7 @@ SCAL SCALJ DF 5C
 </h3>
 <p>
 This enables you to access any Nas-Sys subroutine by storing the
-subroutine &lsquo; number &lsquo; at ARGC (&pound;0C0A). The routine saves the HL, AF and DE
+subroutine &lsquo;number&rsquo; at ARGC (&pound;0C0A). The routine saves the HL, AF and DE
 registers, picks up the routine number from ARGC, and then jumps to section of
 code in the subroutine call restart where the call address is calculated from the
 subroutine number. Of course, any requirements of the normal call must be met if a
@@ -41,7 +41,7 @@ also have to place &pound;52 at &pound;0C2B, or the routine would only &lsquo; v
 SCAL TDEL DF 5D
 </h3>
 <p>
-This routine calls the &lsquo;delay&rsquo; &pound;FFrestart, RDEL (RST &pound;38, &pound;FF) 512 times. As
+This routine calls the &lsquo;delay&rsquo; &pound;FF restart, RDEL (RST &pound;38, &pound;FF) 512 times. As
 each RDEL takes rate 2.7 msec. with a clock rate of 4&nbsp;Mhz, the total delay in TDEL
 is 1.38 seconds. Obviously, at 2&nbsp;Mhz the above times are doubled. Registers A and
 B are both set to zero on return from this routine.

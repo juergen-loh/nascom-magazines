@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 must be bent sideways so that they miss the socket, and can be wired to the Bank
 Select board. Data bit BS2 and its complement are gated with E000-FFFF from
 the MD PROM in a quad OR gate, 74LS32. A logic 0 on BS2 will select XROM
@@ -13,36 +13,20 @@ and A11 are wired from the workspace RAM linkblock, LKB9. Link switches
 LSW1/7 and LSW1/8 should be up. Note that the wiring scheme shown is only
 suitable for 2732s; Texas 2532s do not have the same pinout.
 </p>
-<p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-03-1.png"); ?>
+<h4 class="center">
 Fig. 2 LINK BLOCK WIRING FOR 2732 EPROMS
-</p>
+</h4>
 <p>
 One further complication of this method of bank selection is that the
 addresses E000-EFFFH are confined to EPROM block A, and addresses F000-
 FFFFH are in block B. This is best explained by the table bellow:
-E000-EFFF
-F000-FFFF
-Bank 0
-A1
-(IC35)
-B5
-(IC39)
-Bank 1
-A2
-(IC36)
-B6
-(IC40)
-Bank 2
-A3
-(IC37)
-B7
-(IC41)
-Bank 3
-A4
-(IC38)
-B8
-(IC42)
 </p>
+<table class="bank-link">
+<tr><td></td><td>Bank 0</td><td>Bank 1</td><td>Bank 2</td><td>Bank 3</td></tr>
+<tr><td>E000-EFFF</td><td>A1<br>(IC35)</td><td>A2<br>(IC36)</td><td>A3<br>(IC37)</td><td>A4<br>(IC38)</td></tr>
+<tr><td>F000-FFFF</td><td>B5<br>(IC39)</td><td>B6<br>(IC40)</td><td>B7<br>(IC41)</td><td>B8<br>(IC42)</td></tr>
+</table>
 <p>
 My own system Jumps to D000H on reset, where a menu display and control
 program select the required bank and execute at the appropriate address.

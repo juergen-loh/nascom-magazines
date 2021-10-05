@@ -18,7 +18,7 @@ This routine changes the state of the tape LED, which is controlled by bit 4 of
 port 0. The LED gives an indication that loading or saving of tape data is proceeding,
 but if a small relay is connected to the output which drives the LED the signal can
 be more usefully employed to switch the cassette motor on and off through the
-&lsquo; remote&rsquo; socket. If you don&rsquo; t use the signal to control a tape motor, and alternative
+&lsquo; remote&rsquo; socket. If you don&rsquo;t use the signal to control a tape motor, and alternative
 use is to produce &lsquo;music&rsquo; by connecting the LED output to a small 80 Ohm speaker.
 Notes can be produced by flipping bit 4 at different rates. However, there are two
 spare output lines on port 0, bits 2 and 5, and you can use these to produce sounds
@@ -28,7 +28,7 @@ setting the required bit in the accumulator and doing a direct call to &pound;00
 the subroutine call system is that if changes are made to the monitor software
 using the monitor does not need to be changed because it does not use absolute
 addresses. However, providing you realise the full implications of what you are
-doing, there is no reason why you shouldn&rsquo; t use a direct call this once. The
+doing, there is no reason why you shouldn&rsquo;t use a direct call this once. The
 alternative is to write a short piece of machine code to change the necessary bits of
 port 0.
 </p>
@@ -36,12 +36,12 @@ port 0.
 SCAL ARGS DF 60
 </h3>
 <p>
-This routine loads the contents of the ARG!, ARG2 and ARG3 (&pound;0C0C,
+This routine loads the contents of the ARG1, ARG2 and ARG3 (&pound;0C0C,
 &pound;0C0E, &pound;0C10) into HL, DE and BC. As noted previously, when a program is
 entered by the Execute command, the contents of HL, DE and BC are picked up
 from the Register save area in the monitor workspace, and so you cannot pass
 arguments entered under E directly to a program, you must recover the values stored
-at ARG1 &ndash; ARG3, and this can most easily be done by means of SCAL ARGS,
+at ARG1 &ndash; ARG3, and this can most easily be done by means of SCAL ARGS.
 </p>
 <p>
 In the next article, I shall continue with the subroutine calls, starting with

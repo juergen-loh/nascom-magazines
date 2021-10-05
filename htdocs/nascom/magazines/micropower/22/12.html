@@ -9,149 +9,60 @@ by C. Bowden
 This article continues the listing of the controlling software for the Eprom
 programmer.
 </p>
-<p>
-350
-351
-352
-353
-354
-355
-356
-357
-358
-359
-360
-361
-362
-364
-365
-366
-367
-368
-369
-VERFY4
-VERFY5
-VERFY6
-CALL RESET1
-LD A, (ERRFLG)
-CP 0FFH
-JR Z, VERFY5
-CALL CLRCRT
-LD HL, TEXT16
-LD DE, 090BH
-LD BC, 1BH
-LDIR
-JR VERFY6
-DEFB SCAL, TDEL
-DEFB SCAL, TDEL
-LD HL, TEXT5
-LD DE, 090BH
-LD BC, 24
-LDIR
-DEFB SCAL. TDEL
-DEFB SCAL, TDEL
-JP RESTRT
-;;
-;
-;
-;
-;
-;
-IF 0FFH, THERE WERE ERRORS
-SO SKIP O.K. MESSAGE
-ELSE SAY COMPARISON O.K.
-HOLD DISPLAY 2 SECS
-ERROR MESSAGEREEN 363
-2 SECS PAUSE
-EXIT ROUTINE
-370
-371
-372
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE TO COPY EPROM INTO RAM
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-373
-374
-375
-376
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389
-390
-391
-TRNFER
-TRNFR1
-TRNFR2
-LD HL, TEXT9
-LD DE, 0A4BH
-LD BC, 11H
-LDIR
-CALL RAMADR
-LD DE, 0000H
-LD A, (ROMFLG)
-CP D
-JR Z, TRNFR2
-CALL ENABLE
-IN A, (ADATA)
-LD (HL), A
-CALL COUNT
-INC HL
-INC DE
-JR TRNFR1
-CALL RESET1
-CALL MESS19
-JP RESTRT
-;
-;
-;;;;;;
-;
-&lsquo;FILLED FROM EPROM&rsquo;
-JUMP IF ALL DONE
-GET BYTE FROM EPROM
-STORE IT IN MEMORY
-INCR. ADD., DISABLE CHIP
-NEXT MEMORY LOCATION
-INCREMENT BYTE COUNTER
-CONTINUE TILL FINISHED
-ALL DONE MESSAGE
-392
-393
-394
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE TO CHECK IF FULLY ERASED
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-395
-396
-397
-398
-399
-400
-401
-ERASED
-ERA1
-LD DE, 0000
-LD A, (ROMFLG)
-CP D
-JR Z, ERA3
-CALL ENABLE
-IN A, (ADATA)
-CP 0FFH
-;
-;;
-JUMP IF FINISHED
-GET BYTE FROM EPROM
-IS IT &lsquo;FF&rsquo;
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>350</td><td>VERFY4</td><td>CALL RESET1</td><td></td></tr>
+<tr><td>351</td><td></td><td>LD A, (ERRFLG)</td><td></td></tr>
+<tr><td>352</td><td></td><td>CP 0FFH</td><td>; IF 0FFH, THERE WERE ERRORS</td></tr>
+<tr><td>353</td><td></td><td>JR Z, VERFY5</td><td>; SO SKIP O.K. MESSAGE</td></tr>
+<tr><td>354</td><td></td><td>CALL CLRCRT</td><td></td></tr>
+<tr><td>355</td><td></td><td>LD HL, TEXT16</td><td>; ELSE SAY COMPARISON O.K.</td></tr>
+<tr><td>356</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>357</td><td></td><td>LD BC, 1BH</td><td></td></tr>
+<tr><td>358</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>359</td><td></td><td>JR VERFY6</td><td></td></tr>
+<tr><td>360</td><td>VERFY5</td><td>DEFB SCAL, TDEL</td><td>; HOLD DISPLAY 2 SECS</td></tr>
+<tr><td>361</td><td></td><td>DEFB SCAL, TDEL</td><td></td></tr>
+<tr><td>362</td><td></td><td>LD HL, TEXT5</td><td>; ERROR MESSAGEREEN</td></tr>
+<tr><td>363</td><td></td><td></td><td></td></tr>
+<tr><td>364</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>365</td><td></td><td>LD BC, 24</td><td></td></tr>
+<tr><td>366</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>367</td><td>VERFY6</td><td>DEFB SCAL. TDEL</td><td>; 2 SECS PAUSE</td></tr>
+<tr><td>368</td><td></td><td>DEFB SCAL, TDEL</td><td></td></tr>
+<tr><td>369</td><td></td><td>JP RESTRT</td><td>; EXIT ROUTINE</td></tr>
+<tr><td>370</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>371</td><td colspan=3>; ROUTINE TO COPY EPROM INTO RAM</td></tr>
+<tr><td>372</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>373</td><td>TRNFER</td><td>LD HL, TEXT9</td><td>; 'FILLED FROM EPROM'</td></tr>
+<tr><td>374</td><td></td><td>LD DE, 0A4BH</td><td></td></tr>
+<tr><td>375</td><td></td><td>LD BC, 11H</td><td></td></tr>
+<tr><td>376</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>377</td><td></td><td>CALL RAMADR</td><td></td></tr>
+<tr><td>378</td><td></td><td>LD DE, 0000H</td><td></td></tr>
+<tr><td>379</td><td>TRNFR1</td><td>LD A, (ROMFLG)</td><td></td></tr>
+<tr><td>380</td><td></td><td>CP D</td><td></td></tr>
+<tr><td>381</td><td></td><td>JR Z, TRNFR2</td><td>; JUMP IF ALL DONE</td></tr>
+<tr><td>382</td><td></td><td>CALL ENABLE</td><td></td></tr>
+<tr><td>383</td><td></td><td>IN A, (ADATA)</td><td>; GET BYTE FROM EPROM</td></tr>
+<tr><td>384</td><td></td><td>LD (HL), A</td><td>; STORE IT IN MEMORY</td></tr>
+<tr><td>385</td><td></td><td>CALL COUNT</td><td>; INCR. ADD., DISABLE CHIP</td></tr>
+<tr><td>386</td><td></td><td>INC HL</td><td>; NEXT MEMORY LOCATION</td></tr>
+<tr><td>387</td><td></td><td>INC DE</td><td>; INCREMENT BYTE COUNTER</td></tr>
+<tr><td>388</td><td></td><td>JR TRNFR1</td><td>; CONTINUE TILL FINISHED</td></tr>
+<tr><td>389</td><td>TRNFR2</td><td>CALL RESET1</td><td></td></tr>
+<tr><td>390</td><td></td><td>CALL MESS19</td><td>; ALL DONE MESSAGE</td></tr>
+<tr><td>391</td><td></td><td>JP RESTRT</td><td></td></tr>
+<tr><td>392</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>393</td><td colspan=3>; ROUTINE TO CHECK IF FULLY ERASED</td></tr>
+<tr><td>394</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>395</td><td>ERASED</td><td>LD DE, 0000</td><td></td></tr>
+<tr><td>396</td><td>ERA1</td><td>LD A, (ROMFLG)</td><td></td></tr>
+<tr><td>397</td><td></td><td>CP D</td><td></td></tr>
+<tr><td>398</td><td></td><td>JR Z, ERA3</td><td>; JUMP IF FINISHED</td></tr>
+<tr><td>399</td><td></td><td>CALL ENABLE</td><td></td></tr>
+<tr><td>400</td><td></td><td>IN A, (ADATA)</td><td>; GET BYTE FROM EPROM</td></tr>
+<tr><td>401</td><td></td><td>CP 0FFH</td><td>; IS IT 'FF'</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

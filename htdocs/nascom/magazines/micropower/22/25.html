@@ -1,62 +1,62 @@
 <?php columnStart(1); ?>
-<p>
-742 IFP$(I,J)=&ldquo;&rdquo;THENPRINT&ldquo;Old data only!&rdquo;:GOTO735
-745 PRINTP$(I,J)
-750 INPUT&ldquo;Enter new data&rdquo;;P$(I,J)
-752 IFP$(I,J)&lt;&gt;&ldquo;&rdquo;THEN756
-753 INPUT&ldquo;Delete Program&rdquo;;L$
-754 IFL$=&ldquo;Y&rdquo;THEN775
-755 GOTO750
-756 INPUT&ldquo;Correct&rdquo;;L$:IFL$&lt;&gt;&ldquo;Y&rdquo;THEN750
-760 INPUT&ldquo;More changes this author&rdquo;;L$
-765 IFL$=&ldquo;Y&rdquo;THEN700
-770 GOTO50
-775 J=J+1:IFP$(I,J)=&ldquo;&rdquo;THEN700
-780 P$(I,J-1)=P$(I,J):P$(I,J)=&ldquo;&rdquo;:GOTO775
-800 CLS:PRINTN$(I):PRINT
-805 PRINTA$(I):PRINTB$(I):PRINTC$(I):PRINT:PRINTD$(I):PRINT
-810 INPUT&ldquo;Amend/Delete Y/N&rdquo;;L$
-815 IFL$=&ldquo;N&rdquo;THEN50
-820 PRINT&ldquo;Name &ldquo;;N$(I)&rdquo; &ldquo;;:INPUT&rdquo;New Data Y/N&rdquo;;L$
-825 IFL$=&ldquo;Y&rdquo;THENINPUTN$(I)
-826 IFN$(I)&lt;&gt;&ldquo;&rdquo;THEN830
-827 INPUT&ldquo;Delete Author&rdquo;;L$
-828 IFL$=&ldquo;Y&rdquo;THENGOTO900
-829 GOTO820
-830 PRINT&ldquo;ADDR1 &rdquo;;A$(I)&ldquo; &rdquo;;:INPUT&ldquo;New Data Y/N&rdquo;;L$
-835 IFL$=&ldquo;Y&rdquo;THENINPUTA$(I)
-840 PRINT&ldquo;ADDR2 &rdquo;;B$(I);&ldquo; &rdquo;:INPUT&ldquo;New Data Y/N&rdquo;;L$
-845 IFL$=&ldquo;Y&rdquo;THENINPUTB$(I)
-850 PRINT&ldquo;ADDR3 &rdquo;;C$(I);&ldquo; &rdquo;;:INPUT&ldquo;New Data Y/N&rdquo;;L$
-855 IFL$=&ldquo;Y&rdquo;THENINPUTC$(I)
-860 PRINT&ldquo;Tel. No. &rdquo;;D$(I); " &rdquo;;:INPUT&ldquo;New Data Y/N&rdquo;;L$
-865 IFL$=&ldquo;Y&rdquo;THENINPUTD$(I)
-875 GOTO50
-900 I=I+1
-905 IFN$(I)=&ldquo;&rdquo;THEN600
-910 N$(I-1)=N$(I):N$(I)=&ldquo;&rdquo;
-915 A$(I-1)=A$(I):A$(I)=&ldquo;&rdquo;
-920 B$(I-1)=B$(I):B$(I)=&ldquo;&rdquo;
-925 C$(I-1)=C$(I):C$(I)=&ldquo;&rdquo;
-930 D$(I-1)=D$(I):D$(I)=&ldquo;&rdquo;
-935 GOTO900
-1000 CLS:X=0:FORI=1TO30:PRINTB$(I);
-1002 IFN$(I)=&ldquo;&rdquo;THENI=30:GOTO1060
-1005 FORJ=1TO20:PRINTTAB(20);P$(I,J)
-1007 IFP$(I,J)=&ldquo;&rdquo;THENJ=20:GOTO1055
-1010 INPUT&ldquo;Enter Price&rdquo;;K(X)
-1015 INPUT&ldquo;Correct&rdquo;;L$
-1020 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN1010
-1025 INPUT&ldquo;No. Sold&rdquo;;L(X)
-1030 INPUT&ldquo;Correct&rdquo;;L$
-1035 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN1025
-1040 X=X+1:INPUT&ldquo;More Prices this Program&rdquo;;L$
-1045 IFL$=&ldquo;Y&rdquo;THEN1010
-1050 K(X)=0:L(X)=0:X=X+1:NEXTJ
-1055 NEXTI
-1060 GOTO50
-1200 DOKE3187,1918:IFPEEK(1910)=0THENDOKE3187,1912
-1205 CLS:WIDTH80:INPUT&ldquo;Enter Date&rdquo;;M$
-1210 PRINT:INPUT&ldquo;Correct&rdquo;;L$:IFL$&lt;&gt;&rdquo;Y&rdquo;THEN1205
+<p class="noindent">
+742 IFP$(I,J)=""THENPRINT"Old data only!":GOTO735<br>
+745 PRINTP$(I,J)<br>
+750 INPUT"Enter new data";P$(I,J)<br>
+752 IFP$(I,J)&lt;&gt;""THEN756<br>
+753 INPUT"Delete Program";L$<br>
+754 IFL$="Y"THEN775<br>
+755 GOTO750<br>
+756 INPUT"Correct";L$:IFL$&lt;&gt;"Y"THEN750<br>
+760 INPUT"More changes this author";L$<br>
+765 IFL$="Y"THEN700<br>
+770 GOTO50<br>
+775 J=J+1:IFP$(I,J)=""THEN700<br>
+780 P$(I,J-1)=P$(I,J):P$(I,J)="":GOTO775<br>
+800 CLS:PRINTN$(I):PRINT<br>
+805 PRINTA$(I):PRINTB$(I):PRINTC$(I):PRINT:PRINTD$(I):PRINT<br>
+810 INPUT"Amend/Delete Y/N";L$<br>
+815 IFL$="N"THEN50<br>
+820 PRINT"Name ";N$(I)" ";:INPUT"New Data Y/N";L$<br>
+825 IFL$="Y"THENINPUTN$(I)<br>
+826 IFN$(I)&lt;&gt;""THEN830<br>
+827 INPUT"Delete Author";L$<br>
+828 IFL$="Y"THENGOTO900<br>
+829 GOTO820<br>
+830 PRINT"ADDR1 ";A$(I)" ";:INPUT"New Data Y/N";L$<br>
+835 IFL$="Y"THENINPUTA$(I)<br>
+840 PRINT"ADDR2 ";B$(I);" ":INPUT"New Data Y/N";L$<br>
+845 IFL$="Y"THENINPUTB$(I)<br>
+850 PRINT"ADDR3 ";C$(I);" ";:INPUT"New Data Y/N";L$<br>
+855 IFL$="Y"THENINPUTC$(I)<br>
+860 PRINT"Tel. No. ";D$(I); " ";:INPUT"New Data Y/N";L$<br>
+865 IFL$="Y"THENINPUTD$(I)<br>
+875 GOTO50<br>
+900 I=I+1<br>
+905 IFN$(I)=""THEN600<br>
+910 N$(I-1)=N$(I):N$(I)=""<br>
+915 A$(I-1)=A$(I):A$(I)=""<br>
+920 B$(I-1)=B$(I):B$(I)=""<br>
+925 C$(I-1)=C$(I):C$(I)=""<br>
+930 D$(I-1)=D$(I):D$(I)=""<br>
+935 GOTO900<br>
+1000 CLS:X=0:FORI=1TO30:PRINTB$(I);<br>
+1002 IFN$(I)=""THENI=30:GOTO1060<br>
+1005 FORJ=1TO20:PRINTTAB(20);P$(I,J)<br>
+1007 IFP$(I,J)=""THENJ=20:GOTO1055<br>
+1010 INPUT"Enter Price";K(X)<br>
+1015 INPUT"Correct";L$<br>
+1020 IFL$&lt;&gt;"Y"THEN1010<br>
+1025 INPUT"No. Sold";L(X)<br>
+1030 INPUT"Correct";L$<br>
+1035 IFL$&lt;&gt;"Y"THEN1025<br>
+1040 X=X+1:INPUT"More Prices this Program";L$<br>
+1045 IFL$="Y"THEN1010<br>
+1050 K(X)=0:L(X)=0:X=X+1:NEXTJ<br>
+1055 NEXTI<br>
+1060 GOTO50<br>
+1200 DOKE3187,1918:IFPEEK(1910)=0THENDOKE3187,1912<br>
+1205 CLS:WIDTH80:INPUT"Enter Date";M$<br>
+1210 PRINT:INPUT"Correct";L$:IFL$&lt;&gt;"Y"THEN1205
 </p>
 <?php columnEnd(1); ?>

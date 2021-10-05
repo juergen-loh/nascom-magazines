@@ -1,10 +1,10 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 and the number of characters in the string in NUMN.
 </p>
-<p>
+<h3>
 SCAL CRT, DF 65
-</p>
+</h3>
 <p>
 This outputs the contents of the accumulator to the screen. The routine
 first tests for a null (00) or a line feed (0AH); these are ignored. The next control
@@ -21,29 +21,27 @@ skipped. When the cursor moves beyond the limits of the screen RAM, the screen i
 scrolled by copying the bottom 14 screen lines (&pound;084A &ndash; &pound;0BB9) up one line,
 clearing the bottom line, and repositioning the cursor to the bottom left.
 </p>
-<p>
+<h3>
 SCAL TBCD3, DF 66
-</p>
+</h3>
 <p>
 The contents of the HL register pair are printed as a four-character
 hexadecimal number followed by a space by this routine. The H register is first
 transferred to the accumulator and printed out using SCAL TBCD2, DF 67; the L
 register is then treated similarly, and a space character is then output.
 </p>
-<p>
+<h3>
 SCAL TBCD2, DF 67
-</p>
+</h3>
 <p>
 This routine prints out the contents of the accumulator as two hexadecimal
 digits; it differs from SCAL B2HEX, DF 68, which forms the last part of the
 subroutine, only in that it adds the byte being printed to the checksum in register
-</p>
-<p>
 C.
 </p>
-<p>
+<h3>
 SCAL B2HEX, DF 68
-</p>
+</h3>
 <p>
 The contents of the accumulator are rotated right four times so that the most
 significant nibble becomes the least significant nibble. SCAL B1HEX, DF 7A, is

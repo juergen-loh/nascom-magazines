@@ -1,163 +1,63 @@
 <?php columnStart(1); ?>
-<p>
-704
-705
-706
-707
-ADD A, (IY+3)
-LD L, A
-LD (STOR1), HL
-RET
-;;;;
-ADD 4TH ENTRY
-PUT IN L REGISTER
-SAVE THE ADDRESS
-BACK TO ROUTINE
-708
-709
-710
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-MESSAGES USED BY THE ROUTINES
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-711 TEXT1 DEFM /EPROM PROGRAMMER/
-712 TEXT1A DEFM /PRESS KEY &lsquo;A&rsquo; FOR TYPE 2708 EPROM/
-713
-714
-715
-716
-717
-718
-719
-TEXT1B
-TEXT2
-TEXT2A
-TEXT2B
-TEXT2C
-TEXT2D
-TEXT3
-DEFM &ldquo;KEY &lsquo;B&rsquo; FOR TYPES 2516/2716&rdquo;
-DEFM /PRESS P FOR ROUTINE TO PROGRAM EPROM/
-DEFM /C TO COMPARE EPROM WITH MEMORY/
-DEFM /T TO TRANSFER EPROM INTO MEMORY/
-DEFM /E TO CHECK EPROM IS FULLY ERASED
-DEFM /D TO DUMP EPROM TO PRINTER
-DEFM /TURN OFF PROGRAMMERWHILE CHANGEING
-EPROM/
-721
-722
-723
-724
-725
-726
-727
-728
-729
-730
-731
-732
-733
-734
-735
-736
-737
-738
-739
-740
-TEXT4
-TEXT5
-TEXT6
-TEXT7
-TEXT8
-TEXT9
-TEXT10
-TEXT11
-TXT11A
-TEXT12
-TXT13A
-TXT13B
-TEXT14
-TEXT15
-TEXT16
-TXT17A
-TEXT18
-TEXT19
-TEXT20
-DEFM /PRESS C TO CONTINUE/
-DEFM /ROM AND RAM DO NOT MATCH/
-DEFM /ENTER START ADDR(HEX) OF/
-DEFM / 1K OR2K BLOCK TO BE /
-DEFM /COPIED INTO EPROM/
-DEFM /COMPARED TO EPROM/
-DEFM /FILLED FROM EPROM/
-DEFM /START ADDRESS&nbsp;????/
-DEFM /KEY -/
-DEFM &ldquo;IS THIS CORRECT?-Y/N&rdquo;
-DEFM /YOU MUST TYPE AN &lsquo;A&rsquo; OR A &lsquo;B&rsquo;/
-DEFM /TYPE &ndash; 2708 /
-DEFM &ldquo;TYPE &ndash; 2516/2716&rdquo;
-DEFM /EPROM NOT FULLY ERASED/
-DEFM /EPROM IS FULLY ERASED/
-DEFM /COMPARISON OK. &ndash; NO ERRORS. /
-DEFM &ldquo;SAME EPROM &ndash; Y/N?&rdquo;
-DEFM /NORMAL R.O.M. START ADDR.(HEX) &ndash; ?/
-DEFM /ROUTINE COMPLETED/
-DEFM /CAUTION :ONLY ONE EPROM AT A TIME./
-741 TEXT21 DEFM /OBSERVER THE EPROM HANDLING PRECAUTIONS/
-742
-743
-744
-745
-746
-747
-748
-749
-750
-751
-;
-;;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-.DEPHASE
-THIS DENOTES THE END OF A PROGRAM BLOCK IN
-THE MACRO&nbsp;80 ASSEMBLER
-IT HAS NO EQUIVALENT IN ZEAP
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-.PHASE 0D00H
-THIS DENOTES THE START OF A NEW BLOCK
-IT IS EQUIVALENT TO THE ORG PSEUDO-OP IN ZEAP
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-752 ; PROGRAM WORKSPACE AREA
-753
-754
-755
-756
-757
-758
-759
-760
-SCNFLG
-ERFLG
-ROMFLG
-STORE
-STOR1
-STORLN
-LINBUF
-DEFS 1
-DEFS 1
-DEFS 1
-DEFS 4
-DEFS 2
-DEFS 20H
-DEFS 10H
-.DEPHASE
-;;;;;;;;
-JUMP BACK FLAG
-ERROR FOUND FLAG
-1K OR 2K ROM FLAG
-STORE FOR KEY ENTRIES
-MEMORY START ADDRESS
-TEMPORARY MESSAGE STORE
-BUFFER FOR PRINTER O/P
-761 ; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>704</td><td></td><td>ADD A, (IY+3)</td><td>; ADD 4TH ENTRY</td></tr>
+<tr><td>705</td><td></td><td>LD L, A</td><td>; PUT IN L REGISTER</td></tr>
+<tr><td>706</td><td></td><td>LD (STOR1), HL</td><td>; SAVE THE ADDRESS</td></tr>
+<tr><td>707</td><td></td><td>RET</td><td>; BACK TO ROUTINE</td></tr>
+<tr><td>708</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>709</td><td colspan=3>; MESSAGES USED BY THE ROUTINES</td></tr>
+<tr><td>710</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>711</td><td>TEXT1</td><td colspan=2>DEFM /EPROM PROGRAMMER/</td></tr>
+<tr><td>712</td><td>TEXT1A</td><td colspan=2>DEFM /PRESS KEY 'A' FOR TYPE 2708 EPROM/</td></tr>
+<tr><td>713</td><td>TEXT1B</td><td colspan=2>DEFM "KEY 'B' FOR TYPES 2516/2716"</td></tr>
+<tr><td>714</td><td>TEXT2</td><td colspan=2>DEFM /PRESS P FOR ROUTINE TO PROGRAM EPROM/</td></tr>
+<tr><td>715</td><td>TEXT2A</td><td colspan=2>DEFM /C TO COMPARE EPROM WITH MEMORY/</td></tr>
+<tr><td>716</td><td>TEXT2B</td><td colspan=2>DEFM /T TO TRANSFER EPROM INTO MEMORY/</td></tr>
+<tr><td>717</td><td>TEXT2C</td><td colspan=2>DEFM /E TO CHECK EPROM IS FULLY ERASED</td></tr>
+<tr><td>718</td><td>TEXT2D</td><td colspan=2>DEFM /D TO DUMP EPROM TO PRINTER</td></tr>
+<tr><td>719</td><td>TEXT3</td><td colspan=2>DEFM /TURN OFF PROGRAMMERWHILE CHANGEING EPROM/</td></tr>
+<tr><td>721</td><td>TEXT4</td><td colspan=2>DEFM /PRESS C TO CONTINUE/</td></tr>
+<tr><td>722</td><td>TEXT5</td><td colspan=2>DEFM /ROM AND RAM DO NOT MATCH/</td></tr>
+<tr><td>723</td><td>TEXT6</td><td colspan=2>DEFM /ENTER START ADDR(HEX) OF/</td></tr>
+<tr><td>724</td><td></td><td colspan=2>DEFM / 1K OR2K BLOCK TO BE /</td></tr>
+<tr><td>725</td><td>TEXT7</td><td colspan=2>DEFM /COPIED INTO EPROM/</td></tr>
+<tr><td>726</td><td>TEXT8</td><td colspan=2>DEFM /COMPARED TO EPROM/</td></tr>
+<tr><td>727</td><td>TEXT9</td><td colspan=2>DEFM /FILLED FROM EPROM/</td></tr>
+<tr><td>728</td><td>TEXT10</td><td colspan=2>DEFM /START ADDRESS&nbsp;????/</td></tr>
+<tr><td>729</td><td>TEXT11</td><td colspan=2>DEFM /KEY -/</td></tr>
+<tr><td>730</td><td>TXT11A</td><td colspan=2>DEFM "IS THIS CORRECT?-Y/N"</td></tr>
+<tr><td>731</td><td>TEXT12</td><td colspan=2>DEFM /YOU MUST TYPE AN 'A' OR A 'B'/</td></tr>
+<tr><td>732</td><td>TXT13A</td><td colspan=2>DEFM /TYPE &ndash; 2708 /</td></tr>
+<tr><td>733</td><td>TXT13B</td><td colspan=2>DEFM "TYPE &ndash; 2516/2716"</td></tr>
+<tr><td>734</td><td>TEXT14</td><td colspan=2>DEFM /EPROM NOT FULLY ERASED/</td></tr>
+<tr><td>735</td><td>TEXT15</td><td colspan=2>DEFM /EPROM IS FULLY ERASED/</td></tr>
+<tr><td>736</td><td>TEXT16</td><td colspan=2>DEFM /COMPARISON OK. &ndash; NO ERRORS. /</td></tr>
+<tr><td>737</td><td>TXT17A</td><td colspan=2>DEFM "SAME EPROM &ndash; Y/N?"</td></tr>
+<tr><td>738</td><td>TEXT18</td><td colspan=2>DEFM /NORMAL R.O.M. START ADDR.(HEX) &ndash; ?/</td></tr>
+<tr><td>739</td><td>TEXT19</td><td colspan=2>DEFM /ROUTINE COMPLETED/</td></tr>
+<tr><td>740</td><td>TEXT20</td><td colspan=2>DEFM /CAUTION :ONLY ONE EPROM AT A TIME./</td></tr>
+<tr><td>741</td><td>TEXT21</td><td colspan=2>DEFM /OBSERVER THE EPROM HANDLING PRECAUTIONS/</td></tr>
+<tr><td>742</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>743</td><td></td><td>.DEPHASE</td><td></td></tr>
+<tr><td>744</td><td colspan=3>; THIS DENOTES THE END OF A PROGRAM BLOCK IN</td></tr>
+<tr><td>745</td><td colspan=3>; THE MACRO&nbsp;80 ASSEMBLER</td></tr>
+<tr><td>746</td><td colspan=3>; IT HAS NO EQUIVALENT IN ZEAP</td></tr>
+<tr><td>747</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>748</td><td></td><td>.PHASE 0D00H</td><td></td></tr>
+<tr><td>749</td><td colspan=3>; THIS DENOTES THE START OF A NEW BLOCK</td></tr>
+<tr><td>750</td><td colspan=3>; IT IS EQUIVALENT TO THE ORG PSEUDO-OP IN ZEAP</td></tr>
+<tr><td>751</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>752</td><td colspan=3>; PROGRAM WORKSPACE AREA</td></tr>
+<tr><td>753</td><td>SCNFLG</td><td>DEFS 1</td><td>; JUMP BACK FLAG</td></tr>
+<tr><td>754</td><td>ERFLG</td><td>DEFS 1</td><td>; ERROR FOUND FLAG</td></tr>
+<tr><td>755</td><td>ROMFLG</td><td>DEFS 1</td><td>; 1K OR 2K ROM FLAG</td></tr>
+<tr><td>756</td><td>STORE</td><td>DEFS 4</td><td>; STORE FOR KEY ENTRIES</td></tr>
+<tr><td>757</td><td>STOR1</td><td>DEFS 2</td><td>; MEMORY START ADDRESS</td></tr>
+<tr><td>758</td><td>STORLN</td><td>DEFS 20H</td><td>; TEMPORARY MESSAGE STORE</td></tr>
+<tr><td>759</td><td>LINBUF</td><td>DEFS 10H</td><td>; BUFFER FOR PRINTER O/P</td></tr>
+<tr><td>760</td><td></td><td>.DEPHASE</td><td>;</td></tr>
+<tr><td>761</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

@@ -1,164 +1,64 @@
 <?php columnStart(1); ?>
-<p>
-586
-587
-588
-LD A, 00
-OUT (ACTRL), A
-RET
-; OUTPUT
-589
-590
-591
-;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * *
-ROUTINE COMPLETED MESSAGE
-* * * * * * * * * * * * * * * * * * * * * * * * * * *
-593
-594
-595
-596
-597
-598
-599
-600
-MESS19 CALL CLRCRT
-LD HL, TEXT19
-LD DE, 090BH
-LD BC, 16
-LDIR
-DEFB SCAL, TDEL
-DEFB SCAL, TDEL
-RET
-;;
-;
-CLEAR SCREEN
-ROUTINE COMPLETE
-WAIT 2 SECONDS
-601
-602
-605
-606
-607
-;;;;;
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-GET START ADDRESS OF 1K OR 2K BLOCK
-OR 4 DIGIT TYPE NUMBER OF EPROM
-OR MEMORY START ADDRES OF EPROM
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-609
-610
-611
-612
-613
-614
-615
-616
-617
-618
-619
-620
-621
-622
-623
-624
-625
-626
-627
-628
-629
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640
-641
-642
-643
-644
-645
-646
-647
-ROMADR
-RAMADR
-SCANT1
-SCAN1A
-CLRLIN
-SCAN2
-SCAN3
-SCAN4
-LD HL, TEXT18
-LD DE, 09CBH
-LD BC, 22H
-LDIR
-LD A, 00
-LD (SCNFLG), A
-JR SCANT1
-LD HL, TEXT6
-LD DE, 09CBH
-LD BC, 2EH
-LDIR
-LD A, 0FFH
-LD (SCNFLG), A
-LD HL, TEXT10
-LD DE, 0B0BH
-LD BC, 12H
-LDIR
-LD HL, 0B19H
-LD B, 20H
-LD DE, STORLN
-LD A, 20H
-LD (DE), A
-INC DE
-DJNZ CLRLIN
-LD IY, STORE
-LD D, 4
-XOR A
-DEFB SCAL, KBD
-JR C, SCAN4
-JR SCAN3
-CP &ldquo;O&rdquo;
-JP M, SCAN2
-CP &ldquo;:&rdquo;
-JP P, SCAN5
-LD (HL), A
-SUB 30H
-LD (IY), A
-INC HL
-INC IY
-;
-;
-;;
-;;
-;
-;
-;;
-;
-;;
-;;;;;
-&ldquo;NORMAL ROM START ADDR?&rdquo;
-SET JUMP BACK FLAG
-MESSAGE TO CRT
-FOR ADDRESS
-SET FOR JUMP BACK TO HERE
-PROMPT &ldquo;ADDRESS&nbsp;??&rdquo;
-SCREEN ADD. FOR ENTRY
-CLEAR LINE STORE
-STORE FOR ENTRIES
-FOUR KEY ENTRIES
-GET ENTRIES FROM KEYBOARD
-ONLY ACCEPT ENTRIES
-IN THE RANGE 30H &ndash; 39H
-PRINT IF O.K.
-CONVERT TO 0 &ndash; 9
-STORE IT
-NEXT SCREEN ADDRESS
-NEXT STORE
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>586</td><td></td><td>LD A, 00</td><td></td></tr>
+<tr><td>587</td><td></td><td>OUT (ACTRL), A</td><td>; OUTPUT</td></tr>
+<tr><td>588</td><td></td><td>RET</td><td></td></tr>
+<tr><td>589</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>590</td><td colspan=3>; ROUTINE COMPLETED MESSAGE</td></tr>
+<tr><td>591</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>593</td><td>MESS19</td><td>CALL CLRCRT</td><td>; CLEAR SCREEN</td></tr>
+<tr><td>594</td><td></td><td>LD HL, TEXT19</td><td>; ROUTINE COMPLETE</td></tr>
+<tr><td>595</td><td></td><td>LD DE, 090BH</td><td></td></tr>
+<tr><td>596</td><td></td><td>LD BC, 16</td><td></td></tr>
+<tr><td>597</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>598</td><td></td><td>DEFB SCAL, TDEL</td><td>; WAIT 2 SECONDS</td></tr>
+<tr><td>599</td><td></td><td>DEFB SCAL, TDEL</td><td></td></tr>
+<tr><td>600</td><td></td><td>RET</td><td></td></tr>
+<tr><td>601</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>602</td><td colspan=3>; GET START ADDRESS OF 1K OR 2K BLOCK</td></tr>
+<tr><td>605</td><td colspan=3>; OR 4 DIGIT TYPE NUMBER OF EPROM</td></tr>
+<tr><td>606</td><td colspan=3>; OR MEMORY START ADDRES OF EPROM</td></tr>
+<tr><td>607</td><td colspan=3>; * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *</td></tr>
+<tr><td>609</td><td>ROMADR</td><td>LD HL, TEXT18</td><td>; "NORMAL ROM START ADDR?"</td></tr>
+<tr><td>610</td><td></td><td>LD DE, 09CBH</td><td></td></tr>
+<tr><td>611</td><td></td><td>LD BC, 22H</td><td></td></tr>
+<tr><td>612</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>613</td><td></td><td>LD A, 00</td><td></td></tr>
+<tr><td>614</td><td></td><td>LD (SCNFLG), A</td><td>; SET JUMP BACK FLAG</td></tr>
+<tr><td>615</td><td></td><td>JR SCANT1</td><td></td></tr>
+<tr><td>616</td><td>RAMADR</td><td>LD HL, TEXT6</td><td>; MESSAGE TO CRT</td></tr>
+<tr><td>617</td><td></td><td>LD DE, 09CBH</td><td>; FOR ADDRESS</td></tr>
+<tr><td>618</td><td></td><td>LD BC, 2EH</td><td></td></tr>
+<tr><td>619</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>620</td><td></td><td>LD A, 0FFH</td><td></td></tr>
+<tr><td>621</td><td></td><td>LD (SCNFLG), A</td><td>; SET FOR JUMP BACK TO HERE</td></tr>
+<tr><td>622</td><td>SCANT1</td><td>LD HL, TEXT10</td><td>; PROMPT "ADDRESS&nbsp;??"</td></tr>
+<tr><td>623</td><td></td><td>LD DE, 0B0BH</td><td></td></tr>
+<tr><td>624</td><td></td><td>LD BC, 12H</td><td></td></tr>
+<tr><td>625</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>626</td><td></td><td>LD HL, 0B19H</td><td>; SCREEN ADD. FOR ENTRY</td></tr>
+<tr><td>627</td><td>SCAN1A</td><td>LD B, 20H</td><td></td></tr>
+<tr><td>628</td><td></td><td>LD DE, STORLN</td><td></td></tr>
+<tr><td>629</td><td></td><td>LD A, 20H</td><td></td></tr>
+<tr><td>630</td><td>CLRLIN</td><td>LD (DE), A</td><td>; CLEAR LINE STORE</td></tr>
+<tr><td>631</td><td></td><td>INC DE</td><td></td></tr>
+<tr><td>632</td><td></td><td>DJNZ CLRLIN</td><td></td></tr>
+<tr><td>633</td><td></td><td>LD IY, STORE</td><td>; STORE FOR ENTRIES</td></tr>
+<tr><td>634</td><td></td><td>LD D, 4</td><td>; FOUR KEY ENTRIES</td></tr>
+<tr><td>635</td><td>SCAN2</td><td>XOR A</td><td></td></tr>
+<tr><td>636</td><td>SCAN3</td><td>DEFB SCAL, KBD</td><td>; GET ENTRIES FROM KEYBOARD</td></tr>
+<tr><td>637</td><td></td><td>JR C, SCAN4</td><td></td></tr>
+<tr><td>638</td><td></td><td>JR SCAN3</td><td></td></tr>
+<tr><td>639</td><td>SCAN4</td><td>CP "O"</td><td>; ONLY ACCEPT ENTRIES</td></tr>
+<tr><td>640</td><td></td><td>JP M, SCAN2</td><td>; IN THE RANGE 30H &ndash; 39H</td></tr>
+<tr><td>641</td><td></td><td>CP ":"</td><td></td></tr>
+<tr><td>642</td><td></td><td>JP P, SCAN5</td><td></td></tr>
+<tr><td>643</td><td></td><td>LD (HL), A</td><td>; PRINT IF O.K.</td></tr>
+<tr><td>644</td><td></td><td>SUB 30H</td><td>; CONVERT TO 0 &ndash; 9</td></tr>
+<tr><td>645</td><td></td><td>LD (IY), A</td><td>; STORE IT</td></tr>
+<tr><td>646</td><td></td><td>INC HL</td><td>; NEXT SCREEN ADDRESS</td></tr>
+<tr><td>647</td><td></td><td>INC IY</td><td>; NEXT STORE</td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

@@ -1,61 +1,61 @@
 <?php columnStart(1); ?>
-<p>
-265 IFLEN(A$(I))&gt;20THENPRINT&ldquo;Max. 20 chrs.&rdquo;:GOTO260
-267 INPUT&ldquo;Correct&rdquo;;L$
-270 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN260
-275 INPUT&ldquo;ADDR 2&rdquo;;B$(I)
-277 IFLEN(B$(I))&gt;20THENPRINT&ldquo;Max. 20 chrs.&rdquo;:GOTO275
-280 INPUT&ldquo;Correct&rdquo;;L$
-285 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN275
-290 INPUT&ldquo;ADDR 3&rdquo;;C$(I)
-292 IFLEN(C$(I))&gt;20THENPRINT&ldquo;Max. 20 chrs.&rdquo;:GOTO290
-295 INPUT&ldquo;Correct&rdquo;;L$
-300 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN290
-320 INPUT&ldquo;Tel. No.&rdquo;;D$(I)
-322 IFLEN(D$(I))&gt;20THENPRINT&ldquo;Max. 20 chrs.&rdquo;:GOTO320
-325 INPUT&ldquo;Correct&rdquo;;L$
-330 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN320
-335 GOTO50
-400 CLS:INPUT&ldquo;Enter Author&rsquo;s Name&rdquo;;Y$
-402 IFY$=&ldquo;&rdquo;THEN400
-405 FORI=1TO30
-410 IFN$(I)=Y$THENZ=I:I=30:GOTO440
-415 NEXT
-420 PRINT:INPUT&ldquo;Name not Found &ndash; another try&rdquo;:L$
-430 IFL$=&ldquo;Y&rdquo;THEN400
-435 GOTO50
-440 I=Z
-450 FORJ=1TO20
-455 IFP$(I,J)=&ldquo;&rdquo;THENZ=J:J=20:GOTO470
-460 NEXT
-465 PRINT&ldquo;No Space for New Program!&rdquo;
-467 FORA=1TO3000:NEXT:GOTO50
-470 CLS:J=Z:INPUT&ldquo;PROG. NAME&rdquo;;P$(I,J)
-472 IFP$(I,J)=&ldquo;&rdquo;THEN470
-475 PRINT:INPUT&ldquo;Correct&rdquo;;L$
-480 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN470
-485 PRINT:INPUT&ldquo;Any More Progs&rdquo;;L$
-490 IFL$=&ldquo;Y&rdquo;THENZ=Z+1:GOTO470
-495 GOTO 50
-600 CLS:FORI=1TO30
-605 PRINTI;&ldquo; &rdquo;;N$(I);:I=I+1
-610 PRINTTAB(16);I&ldquo; &rdquo;;N$(I);:I=I+1
-615 PRINTTAB(32);I&ldquo; &rdquo;;N$(I):NEXT
-620 PRINT:INPUT&ldquo;Which Author&rdquo;;I:IFI&lt;1ORI&gt;30THEN600
-622 IFN$(I)=&ldquo;&rdquo;THEN600
-625 CLS:PRINTN$(I):PRINT:INPUT&ldquo;Correct Author&rdquo;;L$
-630 IFL$&lt;&gt;&ldquo;Y&rdquo;THEN600
-635 PRINT:PRINT:PRINT&ldquo;Options&rdquo;;TAB(20)&ldquo;1) Programs&rdquo;
-640 PRINTTAB(20)&ldquo;2) Names &amp; addresses&rdquo;
-645 PRINT:PRINTTAB(20):INPUTC:IFC&lt;1ORC&gt;2THEN645
-650 ONCGOTO700,800
-700 CLS:PRINTN$(I)&ldquo;:&rdquo;:FORJ=1TO20
-710 PRINTJ&ldquo; &rdquo;P$(I,J);:J=J+1
-720 PRINTTAB(24);J;P$(I,J):NEXT
-725 INPUT&ldquo;Amend/Delete Y/N&rdquo;;L$
-730 IFL$=&ldquo;N&rdquo;THEN50
-735 INPUT&ldquo;Enter Program No.&rdquo;;J
-737 IFJ=999THEN50
+<p class="noindent">
+265 IFLEN(A$(I))&gt;20THENPRINT"Max. 20 chrs.":GOTO260<br>
+267 INPUT"Correct";L$<br>
+270 IFL$&lt;&gt;"Y"THEN260<br>
+275 INPUT"ADDR 2";B$(I)<br>
+277 IFLEN(B$(I))&gt;20THENPRINT"Max. 20 chrs.":GOTO275<br>
+280 INPUT"Correct";L$<br>
+285 IFL$&lt;&gt;"Y"THEN275<br>
+290 INPUT"ADDR 3";C$(I)<br>
+292 IFLEN(C$(I))&gt;20THENPRINT"Max. 20 chrs.":GOTO290<br>
+295 INPUT"Correct";L$<br>
+300 IFL$&lt;&gt;"Y"THEN290<br>
+320 INPUT"Tel. No.";D$(I)<br>
+322 IFLEN(D$(I))&gt;20THENPRINT"Max. 20 chrs.":GOTO320<br>
+325 INPUT"Correct";L$<br>
+330 IFL$&lt;&gt;"Y"THEN320<br>
+335 GOTO50<br>
+400 CLS:INPUT"Enter Author's Name";Y$<br>
+402 IFY$=""THEN400<br>
+405 FORI=1TO30<br>
+410 IFN$(I)=Y$THENZ=I:I=30:GOTO440<br>
+415 NEXT<br>
+420 PRINT:INPUT"Name not Found &ndash; another try":L$<br>
+430 IFL$="Y"THEN400<br>
+435 GOTO50<br>
+440 I=Z<br>
+450 FORJ=1TO20<br>
+455 IFP$(I,J)=""THENZ=J:J=20:GOTO470<br>
+460 NEXT<br>
+465 PRINT"No Space for New Program!"<br>
+467 FORA=1TO3000:NEXT:GOTO50<br>
+470 CLS:J=Z:INPUT"PROG. NAME";P$(I,J)<br>
+472 IFP$(I,J)=""THEN470<br>
+475 PRINT:INPUT"Correct";L$<br>
+480 IFL$&lt;&gt;"Y"THEN470<br>
+485 PRINT:INPUT"Any More Progs";L$<br>
+490 IFL$="Y"THENZ=Z+1:GOTO470<br>
+495 GOTO 50<br>
+600 CLS:FORI=1TO30<br>
+605 PRINTI;" ";N$(I);:I=I+1<br>
+610 PRINTTAB(16);I" ";N$(I);:I=I+1<br>
+615 PRINTTAB(32);I" ";N$(I):NEXT<br>
+620 PRINT:INPUT"Which Author";I:IFI&lt;1ORI&gt;30THEN600<br>
+622 IFN$(I)=""THEN600<br>
+625 CLS:PRINTN$(I):PRINT:INPUT"Correct Author";L$<br>
+630 IFL$&lt;&gt;"Y"THEN600<br>
+635 PRINT:PRINT:PRINT"Options";TAB(20)"1) Programs"<br>
+640 PRINTTAB(20)"2) Names &amp; addresses"<br>
+645 PRINT:PRINTTAB(20):INPUTC:IFC&lt;1ORC&gt;2THEN645<br>
+650 ONCGOTO700,800<br>
+700 CLS:PRINTN$(I)":":FORJ=1TO20<br>
+710 PRINTJ" "P$(I,J);:J=J+1<br>
+720 PRINTTAB(24);J;P$(I,J):NEXT<br>
+725 INPUT"Amend/Delete Y/N";L$<br>
+730 IFL$="N"THEN50<br>
+735 INPUT"Enter Program No.";J<br>
+737 IFJ=999THEN50<br>
 740 IFJ&lt;1ORJ&gt;20THEN735
 </p>
 <?php columnEnd(1); ?>

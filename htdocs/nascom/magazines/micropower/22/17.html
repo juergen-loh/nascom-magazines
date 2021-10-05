@@ -1,169 +1,62 @@
 <?php columnStart(1); ?>
-<p>
-648
-649
-650
-651
-652
-653
-654
-655
-656
-657
-658
-659
-660
-661
-662
-663
-664
-665
-666
-SCAN5
-SCAN7
-DEC D
-JR NZ, SCAN2
-JR SCAN7
-CP &ldquo;A&rdquo;
-JP M, SCAN2
-CP &ldquo;G&rdquo;
-JP P, SCAN2
-LD (HL), A
-SUB 37H
-LD (IY), A
-INC HL
-INC IY
-DEC D
-JR NZ SCAN2
-LD HL, 0A4BH
-LD DE, STORLN
-LD BC, 20H
-LDIR
-DEFB SCAL, CRLF
-;;;;;
-;;;;;;;;;
-;
-REDUCE ENTRY COUNTER
-JUMP IF NOT FINISHED
-JUMP TO SCAN7WHEN DONE
-IS IT ASCII A &ndash; F?
-IF NOT, REJECT IT
-PRINT IT IF O.K.
-CONVERT TO 10 &ndash; 15
-STORE IT
-NEXT SCREEN LOCATION
-NEXT STORE
-REDUCE ENTRY COUNTER
-JUMP IF NOT DONE
-SAVE THIS MESSAGE IN CASE
-ENTRY IS TO BE CHANGED
-SCROLL CRT
-667 DEFB SCAL, CRLF ; TWICE
-668
-669
-670
-671
-672
-673
-674
-675
-676
-677
-678
-679
-680
-681
-682
-683
-684
-685
-686
-687
-688
-689
-690
-691
-692
-693
-694
-695
-SCAN8
-SCAN9
-SCAN10
-SCAN6
-LD HL, TXT11A
-LD DE, 0B0BH
-LD BC, 14H
-LDIR
-XOR A
-DEFB SCAL, KBD
-JR C, SCAN9
-JR SCAN8
-CP &ldquo;Y&rdquo;
-JR Z SCAN6
-CP &ldquo;N&rdquo;
-JR Z SCAN10
-JR SCAN8
-CALL CLRCRT
-LD HL, STORLN
-LD DE, 0A4BH
-LD BC, 20H
-LDIR
-LD A, (SCNFLG)
-CP 00
-JP Z, ROMADR
-JP RAMADR
-JP SCANT1
-LD IY, STORE
-LD A, (IY)
-RLCA
-RLCA
-RLCA
-;
-;
-;;;;;;;
-;
-;;;;;;;;
-CORRECT &ndash;Y/N?
-GET ANSWER
-ANSWER &ldquo;YES&rdquo;?
-IF SO, JUMP TO SCAN6
-ANSWER &ldquo;NO&rdquo;?
-IF SO, JUMP TO SCAN10
-REJECT OTHER REPLIES
-CLEAR SCREEN
-RESTORE SAVED MESSAGE
-FIND OUT WHERE TO JUMP
-IF ZERO, JUMP TO ROMADR
-ELSE WAS FROM RAMADR
-BACK TO GET ADDRESS AGAIN
-POINT TO FIRST ENTRY
-GET FIRST
-ROTATE BITS 4 TIMES
-TO PUT VALUE INTO
-INTO MOST SIGNIFICANT
-NIBBLE
-696
-697
-698
-699
-700
-RLCA
-ADD A, (IY+1)
-LD H, A
-LD A, (IY+2)
-RLCA
-;;;;
-ADD SECOND VALUE
-SAVE IN H REGISTER
-GET 3RD ENTRY
-PUT INMOST SIGNIFICANT
-NIBBLE
-701
-702
-703
-RLCA
-RLCA
-RLCA
-</p>
+<div class="table-responsive">
+<table style="width: 100%">
+<tr><td>648</td><td></td><td>DEC D</td><td>; REDUCE ENTRY COUNTER</td></tr>
+<tr><td>649</td><td></td><td>JR NZ, SCAN2</td><td>; JUMP IF NOT FINISHED</td></tr>
+<tr><td>650</td><td></td><td>JR SCAN7</td><td>; JUMP TO SCAN7WHEN DONE</td></tr>
+<tr><td>651</td><td>SCAN5</td><td>CP "A"</td><td>; IS IT ASCII A &ndash; F?</td></tr>
+<tr><td>652</td><td></td><td>JP M, SCAN2</td><td>; IF NOT, REJECT IT</td></tr>
+<tr><td>653</td><td></td><td>CP "G"</td><td></td></tr>
+<tr><td>654</td><td></td><td>JP P, SCAN2</td><td></td></tr>
+<tr><td>655</td><td></td><td>LD (HL), A</td><td>; PRINT IT IF O.K.</td></tr>
+<tr><td>656</td><td></td><td>SUB 37H</td><td>; CONVERT TO 10 &ndash; 15</td></tr>
+<tr><td>657</td><td></td><td>LD (IY), A</td><td>; STORE IT</td></tr>
+<tr><td>658</td><td></td><td>INC HL</td><td>; NEXT SCREEN LOCATION</td></tr>
+<tr><td>659</td><td></td><td>INC IY</td><td>; NEXT STORE</td></tr>
+<tr><td>660</td><td></td><td>DEC D</td><td>; REDUCE ENTRY COUNTER</td></tr>
+<tr><td>661</td><td></td><td>JR NZ SCAN2</td><td>; JUMP IF NOT DONE</td></tr>
+<tr><td>662</td><td>SCAN7</td><td>LD HL, 0A4BH</td><td>; SAVE THIS MESSAGE IN CASE</td></tr>
+<tr><td>663</td><td></td><td>LD DE, STORLN</td><td>; ENTRY IS TO BE CHANGED</td></tr>
+<tr><td>664</td><td></td><td>LD BC, 20H</td><td></td></tr>
+<tr><td>665</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>666</td><td></td><td>DEFB SCAL, CRLF</td><td>; SCROLL CRT</td></tr>
+<tr><td>667</td><td></td><td>DEFB SCAL, CRLF</td><td>; TWICE</td></tr>
+<tr><td>668</td><td></td><td>LD HL, TXT11A</td><td>; CORRECT &ndash;Y/N?</td></tr>
+<tr><td>669</td><td></td><td>LD DE, 0B0BH</td><td></td></tr>
+<tr><td>670</td><td></td><td>LD BC, 14H</td><td></td></tr>
+<tr><td>671</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>672</td><td></td><td>XOR A</td><td></td></tr>
+<tr><td>673</td><td>SCAN8</td><td>DEFB SCAL, KBD</td><td>; GET ANSWER</td></tr>
+<tr><td>674</td><td></td><td>JR C, SCAN9</td><td></td></tr>
+<tr><td>675</td><td></td><td>JR SCAN8</td><td></td></tr>
+<tr><td>676</td><td>SCAN9</td><td>CP "Y"</td><td>; ANSWER "YES"?</td></tr>
+<tr><td>677</td><td></td><td>JR Z SCAN6</td><td>; IF SO, JUMP TO SCAN6</td></tr>
+<tr><td>678</td><td></td><td>CP "N"</td><td>; ANSWER "NO"?</td></tr>
+<tr><td>679</td><td></td><td>JR Z SCAN10</td><td>; IF SO, JUMP TO SCAN10</td></tr>
+<tr><td>680</td><td></td><td>JR SCAN8</td><td>; REJECT OTHER REPLIES</td></tr>
+<tr><td>681</td><td>SCAN10</td><td>CALL CLRCRT</td><td>; CLEAR SCREEN</td></tr>
+<tr><td>682</td><td></td><td>LD HL, STORLN</td><td>; RESTORE SAVED MESSAGE</td></tr>
+<tr><td>683</td><td></td><td>LD DE, 0A4BH</td><td></td></tr>
+<tr><td>684</td><td></td><td>LD BC, 20H</td><td></td></tr>
+<tr><td>685</td><td></td><td>LDIR</td><td></td></tr>
+<tr><td>686</td><td></td><td>LD A, (SCNFLG)</td><td>; FIND OUT WHERE TO JUMP</td></tr>
+<tr><td>687</td><td></td><td>CP 00</td><td></td></tr>
+<tr><td>688</td><td></td><td>JP Z, ROMADR</td><td>; IF ZERO, JUMP TO ROMADR</td></tr>
+<tr><td>689</td><td></td><td>JP RAMADR</td><td>; ELSE WAS FROM RAMADR</td></tr>
+<tr><td>690</td><td></td><td>JP SCANT1</td><td>; BACK TO GET ADDRESS AGAIN</td></tr>
+<tr><td>691</td><td>SCAN6</td><td>LD IY, STORE</td><td>; POINT TO FIRST ENTRY</td></tr>
+<tr><td>692</td><td></td><td>LD A, (IY)</td><td>; GET FIRST</td></tr>
+<tr><td>693</td><td></td><td>RLCA</td><td>; ROTATE BITS 4 TIMES</td></tr>
+<tr><td>694</td><td></td><td>RLCA</td><td>; TO PUT VALUE INTO</td></tr>
+<tr><td>695</td><td></td><td>RLCA</td><td>; INTO MOST SIGNIFICANT NIBBLE</td></tr>
+<tr><td>696</td><td></td><td>RLCA</td><td></td></tr>
+<tr><td>697</td><td></td><td>ADD A, (IY+1)</td><td>; ADD SECOND VALUE</td></tr>
+<tr><td>698</td><td></td><td>LD H, A</td><td>; SAVE IN H REGISTER</td></tr>
+<tr><td>699</td><td></td><td>LD A, (IY+2)</td><td>; GET 3RD ENTRY</td></tr>
+<tr><td>700</td><td></td><td>RLCA</td><td>; PUT INMOST SIGNIFICANT NIBBLE</td></tr>
+<tr><td>701</td><td></td><td>RLCA</td><td></td></tr>
+<tr><td>702</td><td></td><td>RLCA</td><td></td></tr>
+<tr><td>703</td><td></td><td>RLCA</td><td></td></tr>
+</table>
+</div>
 <?php columnEnd(1); ?>

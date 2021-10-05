@@ -19,7 +19,7 @@ YJUMP Y
 <p>
 In Nas-Sys&nbsp;1, Y produces an error message &ndash; the address in the subroutine
 table is &pound;030A. Nas-Sys&nbsp;3 uses Y to jump to &pound;B000; this will normally be used to
-access software in an EPROM at this address, such as the Basic &lsquo;Programmer&rsquo; s
+access software in an EPROM at this address, such as the Basic &lsquo;Programmer&rsquo;s
 Aid&rsquo; or an extension to the monitor. I have the initialisation routine for my printer
 here, so that Y configures the PIO ports, clears the print buffer and resets the
 printer options.
@@ -28,8 +28,8 @@ printer options.
 ZJUMP Z
 </h3>
 <p>
-This command is normally used to &lsquo; warm star&rsquo;t the Microsoft Basic at &pound;FFFD.
-0f course, if you haven&rsquo;t got the Basic in ROM you can use the command to
+This command is normally used to &lsquo;warm start&rsquo; the Microsoft Basic at &pound;FFFD.
+Of course, if you haven&rsquo;t got the Basic in ROM you can use the command to
 access other software by changing the address stored for the Z command. I use it
 to access Zeap, using Z for a warm start and ZC for a cold start. Because C is a valid
 hexadecimal number, you can use it as an argument to a command. The software
@@ -45,7 +45,7 @@ are accessing for the extra code needed to test the value of ARG1.
 However, there is a snag. I tried the same system for Basic, using J for a warm
 and JC for a cold start. I then found that I couldn&rsquo;t RUN programs that appeared to
 CLOAD correctly. On LISTing garbage was displayed. The reason was that the
-argument C was used as an offset in the Nas-Sys&nbsp;3. READ routine used by CLOAD
+argument C was used as an offset in the Nas-Sys&nbsp;3 READ routine used by CLOAD
 &ndash; the program was being read in to an address twelve bytes higher than the correct
 address.
 </p>
