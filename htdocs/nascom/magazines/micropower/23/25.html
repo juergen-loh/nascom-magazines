@@ -1,18 +1,18 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 Register Disable line low, which allow the data in the
 Receive Buffer to pass on to the data bus and thus to the
-accumul ator.
+accumulator.
 </p>
-<p>
+<h3>
 SCAL NOM, DF 71
-</p>
+</h3>
 <p>
 All input/<?php spChar("zwsp"); ?>output in Nas-Sys is controlled by tables of
 routines. If you want to change the sequence of operations
 carried out on output you merely have to set up a new table,
 which must consist of a list of the numbers of the
-subroutine calls to be carried aut terminated by a null, and
+subroutine calls to be carried out terminated by a null, and
 then tell Nas-Sys where this table starts by loading the
 address into the HL register pair and calling NOM.
 </p>
@@ -22,27 +22,27 @@ stack and the address of the current output table is loaded
 into HL from the output table pointer at &pound;0C73. The
 contents of HL are now exchanged with the top two bytes of
 the stack; thus HL now contains the new output table
-address, and the stack holds the current address. Finally.
+address, and the stack holds the current address. Finally,
 the new address is stored at &pound;0C73, becoming the address for
 all subsequent output operations, the old address is POPped
 of the stack into HL, and the subroutine ends.
 </p>
-<p>
+<h3>
 SCAL NIM, DF 72
-</p>
+</h3>
 <p>
 This subroutine operates in the same manner as DF 71 to
 change the address of the input table, which is stored at
-&pound;0075.
+&pound;0C75.
 </p>
-<p>
+<h3>
 SCAL ATE, DF 73
-</p>
+</h3>
 <p>
 This subroutine call is used by input and output
 procedures to get the routine numbers from the appropriate
 tables and call them in turn. On entry to ATE the address
-of the appropriate table pointer, &pound;0C73 for output and &pound;0075
+of the appropriate table pointer, &pound;0C73 for output and &pound;0C75
 for input, should be in HL. However, before ATE is used
 within Nas-Sys, the original contents of HL are saved on the
 stack; consequently, if you try to use ATE from a machine
@@ -55,11 +55,11 @@ after saving HL.
 </p>
 <p>
 The address stored at the table pointer is loaded into
-DE, and the routine aumbers are then picked up successively
+DE, and the routine numbers are then picked up successively
 from the table until the null that marks the end is
 detected. The routines in the table are called differently
 by the two versions of Nas-Sys. In Nas-Sys&nbsp;1 the routine
-qumber is stared at ARGC (&pound;0COA) and the routine executed by
+number is stored at ARGC (&pound;0C0A) and the routine executed by
 calling SCALJ (DF 5C). In Nas-Sys&nbsp;3 the number is
 transferred to the E register and the routine is called via
 SCALI.

@@ -5,65 +5,65 @@ THE NAS-SYS MONITORS
 <h2 class="author">
 by J. Hargh
 </h2>
-<p>
+<h3>
 SCAL SPACE. DF 69
-</p>
+</h3>
 <p>
 This subroutine call outputs a single space by loading
 the accumulator with &pound;20 and calling the ROUT restart, &pound;F7.
-The section of code which does this 15 the end of routine
-TBCD3S (DF 66), which outputs a space after the contents of
+The section of code which does this is the end of routine
+TBCD3 (DF 66), which outputs a space after the contents of
 HL have been printed in hexadecimal.
 </p>
-<p>
+<h3>
 SCAL CRLF, DF 6A
+</h3>
+<p>
 A carriage return/<?php spChar("zwsp"); ?>line feed is output by loading the
+accumulator with &pound;0D and calling restart ROUT. The code
+used is the end of the next, &lsquo;Error message&rsquo;. subroutine.
 </p>
-<p>
-accumulator with 80D and calling restart ROUT. The code
-used is the end of the next. &lsquo;Error message&rsquo;. subroutine
-</p>
-<p>
+<h3>
 SCAL ERRM, DF 6B
-</p>
+</h3>
 <p>
 This subroutine prints the word &lsquo;Error&rsquo;. followed by a
-Carriage return to position the cursor at the start af the
+Carriage return to position the cursor at the start of the
 next line. This call is very useful for reporting input
 errors in machine code programs. Just print the type of
-error and call DF 6By; this saves six bytes (&lsquo;Error&rsquo; + CR/LF
+error and call DF 6B; this saves six bytes (&lsquo;Error&rsquo; + CR/LF)
 by the use of two.
 </p>
-<p>
+<h3>
 SCAL TX1, DF 6C
-</p>
+</h3>
 <p>
 The main use of this subroutine call is to print out
-the header on each block of data for tape input/<?php spChar("zwsp"); ?>output. fhe
+the header on each block of data for tape input/<?php spChar("zwsp"); ?>output. The
 start address of the block is in the HL register pair, the
 length of the block in E, and the block number in D. After
-the header data has been received from or sent to tape it 15
-Printed out using DF &amp;C; the routine sums H, L. D and &amp; inta
-the C register. and the value obtained is used as a checksum
+the header data has been received from or sent to tape it is
+printed out using DF 6C; the routine sums H, L, D and E into
+the C register, and the value obtained is used as a checksum
 by the Read and Write routines. SCAL TX1 really consists of
-@ single routine which prints out the contents of HL by a4
+a single routine which prints out the contents of HL by a
 call to TBCD3 (DF 66) and then exchanges the HL and DE
 registers. Because this section of code is preceded by a
-relative call to itself (D7 00), 1t 15 carried out twice
+relative call to itself (D7 00), it is carried out twice
 The result is that first HL is printed. HL and DE are
-transposed, then DE is printed and Hi and DE are restored ta
+transposed, then DE is printed and HL and DE are restored to
 their original positions. If you use this subroutine and
-need the checksum, you must first set register { to zero.
+need the checksum, you must first set register C to zero.
 </p>
-<p>
+<h3>
 SCAL SOUT, DF 6D
-</p>
+</h3>
 <p>
 This routine sends up to 256 bytes of data to the
 serial output. On entry HL must contain the address of the
 start of the data to be sent, and the number of bytes must
-be in B. The C register is first set to zero. then each
-successive byte 15 added into C and sent to the serial port.
-using SCAL SRLX, DF 6F. On exit from the routine Bis zero
+be in B. The C register is first set to zero, then each
+successive byte is added into C and sent to the serial port.
+using SCAL SRLX, DF 6F. On exit from the routine B is zero,
 </p>
 <?php columnEnd(1); ?>

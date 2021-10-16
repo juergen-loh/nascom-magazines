@@ -1,53 +1,47 @@
 <?php columnStart(1); ?>
 <p>
-AS=1, A5=0, A4=0 and A7=0, giving access to the 16 registers
+A6=1, A5=0, A4=0 and A7=0, giving access to the 16 registers
 from address 40H to 4FH (hex). The data-out, in BCD form, is
-present on the data lines DO-DS. R/W signals are directly
+present on the data lines D0-D5. R/W signals are directly
 connected to the control BUS of your Nascom.
 </p>
 <p>
-IC 3 is only required by the &ldquo;sporty&rdquo; Nascoms running at 4
-Mhz. (You mean all Nascoms don&rsquo;t run at 4&nbsp;Mhz??-Ed). It provides
+IC&nbsp;3 is only required by the &ldquo;sporty&rdquo; Nascoms running at 4&nbsp;Mhz.
+(You mean all Nascoms don&rsquo;t run at 4&nbsp;Mhz??-Ed). It provides
 a Wait signal of approxiamately 1uS to allow the MM 58174 time
 to output data to the Data Bus. The DBDR signal is not needed by
 the Nascom&nbsp;2&rsquo;s and I am not too sure if it is in fact needed by
-all versions of Nascom 17s. (see Nascom Doc
+all versions of Nascom 1&rsquo;s. (see Nascom Doc)
 </p>
 <p>
 AS previously mentioned, 2 Ni-Cad batteries are used to keep
 power on during computer &ldquo;days off&rdquo;. These are kept charged via
-Ti and Ri when SV is applied to the circuit. In &ldquo;stand-by&rdquo; made,
-the diode Di ensures that the 2.2V powers the MM 58174. It is
-necessary, when SV operations cease, that the /WR, pin 3, is
+T1 and R1 when 5V is applied to the circuit. In &ldquo;stand-by&rdquo; made,
+the diode D1 ensures that the 2.2V powers the MM&nbsp;58174. It is
+necessary, when 5V operations cease, that the /WR, pin 3, is
 kept at a sufficiently high potential to stop any random writing
-to the MM 58174 registers. R4 provides this potential and the 2
+to the MM&nbsp;58174 registers. R4 provides this potential and the 2
 NOR gates, connected in series, provide the necessary isolation
 from the computers Control Bus. Finally, the variable capacitor
 VC1 allows accurate callibration.
 </p>
-<p>
+<h3>
 List of Components
-</p>
-<p>
-R115 Kohm R21 Kohm RS 4.7 Kohm
-R41 Koha RS 240 ohm R&amp; 500 ohm
-R71 Kohm RB 1 Koh
-</p>
-<p>
-Ci 68 pF C2 100uF vC1 SO pF
-</p>
-<p>
-T1 2N2222 12 2N2369 D1 1N4148
-X1 Quartz 32,768&nbsp;Khz
-</p>
-<p>
-IC 1 MM 98174 IC 2 74LS138 IC 3 74121
-1G 4 7433
-</p>
-<p>
-Batt. 2 rechargeable Ni-Cad batteries
+</h3>
+<table class="indent2" style="width: 80%">
+<tr><td>R1</td><td>15 Kohm</td><td>R2</td><td>1 Kohm</td><td>R3</td><td>4.7 Kohm</td></tr>
+<tr><td>R4</td><td>1 Kohm</td><td>R5</td><td>240 ohm</td><td>R6</td><td>500 ohm</td></tr>
+<tr><td>R7</td><td>1 Kohm</td><td>R8</td><td>1 Kohm</td><td></td><td></td></tr>
+<tr><td>C1</td><td>68 pF</td><td>C2</td><td>100uF</td><td>VC1</td><td>50 pF</td></tr>
+<tr><td>T1</td><td>2N2222</td><td>T2</td><td>2N2369</td><td>D1</td><td>1N4148</td></tr>
+<tr><td>X1</td><td colspan=5>Quartz 32,768&nbsp;Khz</td></tr>
+<tr><td>IC&nbsp;1</td><td>MM 58174</td><td>IC&nbsp;2</td><td>74LS138</td><td>IC&nbsp;3</td><td>74121</td></tr>
+<tr><td>IC&nbsp;4</td><td>7433</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Batt.</td><td colspan=5>2 rechargeable Ni-Cad batteries</td></tr>
+</table>
+<h3>
 Construction
-</p>
+</h3>
 <p>
 I think anyone attempting to build the clock will already
 have sufficient skill to work out a simple Vero board layout. In
@@ -57,19 +51,20 @@ was enough space for all the components and the Ni-Cad batteries
 housed in a plastic container (transistor radio type). As I have
 a &ldquo;home built&rdquo; case for my Nascom, I found no difficulty
 installing the board, wiring it directly into the Nascom Bus.
+</p>
+<h3>
 NasBus Connections
-</p>
-<p>
-NAS-BUS SIGNAL NaS-BUS SIGNAL
-PIN PIN
-1 Ground 13 /DBDR(Nis only)
-23 Wart (4Mhz only) 26 7TORQ
-29 /Read 30 Ao
-St al 32 a2
-33 as 34 Aa
-35 aS 38 a6
-37 a7 50 Do
-st Di 52 p2
-Ss ps 7a +5V
-</p>
+</h3>
+<table class="nasbus-connections">
+<tr><td>NAS-BUS<br>PIN</td><td>SIGNAL</td><td>NAS-BUS<br>PIN</td><td>SIGNAL</td></tr>
+<tr><td>1</td><td>Ground</td><td>13</td><td>/DBDR(N1s only)</td></tr>
+<tr><td>23</td><td>Wait (4Mhz only)</td><td>26</td><td>IORQ</td></tr>
+<tr><td>29</td><td>/Read</td><td>30</td><td>A0</td></tr>
+<tr><td>31</td><td>A1</td><td>32</td><td>A2</td></tr>
+<tr><td>33</td><td>A3</td><td>34</td><td>A4</td></tr>
+<tr><td>35</td><td>A5</td><td>38</td><td>A6</td></tr>
+<tr><td>37</td><td>A7</td><td>50</td><td>D0</td></tr>
+<tr><td>51</td><td>D1</td><td>52</td><td>D2</td></tr>
+<tr><td>53</td><td>D3</td><td>78</td><td>+5V</td></tr>
+</table>
 <?php columnEnd(1); ?>

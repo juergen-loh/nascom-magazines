@@ -13,45 +13,38 @@ it, and how to use it.
 </p>
 <p>
 Life, the computer version that is, has been around for
-several years now. It plots the evalution of a colony of
+several years now. It plots the evolution of a colony of
 cells which obey a set of simple rules. By changing the
-rules you can produce wide variations in the behaviour af
+rules you can produce wide variations in the behaviour of
 the colony, but the rules first published by J. H. Conway
 seem to produce the most interesting patterns. Conways
 rules are:&ndash;
 </p>
-<p>
-1 The cells occupy a rectangular array (like the
-</p>
-<p>
-squares of graph paper), and each cell has E&para;
-</p>
-<p>
+<ol class="indent">
+<li>
+The cells occupy a rectangular array (like the
+squares of graph paper), and each cell has 8
 neighbours
-</p>
-<p>
-Each cell 15 in one of two possible states, alive
-</p>
-<p>
+</li>
+<li>
+Each cell is in one of two possible states, alive
 or dead!
-</p>
-<p>
-3 If a living cell has no live neighbours, or only
+</li>
+<li>
+If a living cell has no live neighbours, or only
 one, it will die in the next generation
-</p>
-<p>
-4 @ living cell with four or more live neighbours
+</li>
+<li>
+A living cell with four or more live neighbours
 will die in the next generation through
 overcrowding
-</p>
-<p>
-5 an new cell will be formed in the next generation
+</li>
+<li>
+An new cell will be formed in the next generation
 on any empty cell with exactly three live
 neighbours.
-</p>
-<p>
-n
-</p>
+</li>
+</ol>
 <p>
 Although you can follow the evolution of simple
 patterns with pencil and paper, it is much easier, and more
@@ -60,21 +53,17 @@ behaviour that can be produced by these simple rules.
 However, whatever the size of the display selected, the most
 fascinating patterns always seem to become too big for the
 screen. For example, using Pixel graphics the Nascom screen
-can only display a 9% x 48 cell array, and many patterns
-soon expand beyond these limts.
+can only display a 96 x 48 cell array, and many patterns
+soon expand beyond these limits.
 </p>
 <p>
 You can overcome the problem of a small display size by
-</p>
-<p>
 letting the screen act as a window into a larger array. by
 using the cursor keys to move the window asound you can
 inspect any part of the array at will. You then run into
-</p>
-<p>
 another problem &ndash; the memory capacity needed by a large
 array. If each cell is represented by one byte, a 100 x 100
-array would need nearly 10K of memory. Even 1f each cell
+array would need nearly 10K of memory. Even if each cell
 was represented by the state of a single bit, an array 1000
 x 1000 would need more memory than the Z80 is capable of
 addressing.
@@ -83,7 +72,7 @@ addressing.
 This program overcomes the capacity problem by only
 storing the coordinates of the living cells. Because in any
 colony the proportion of active cells is small, and tends to
-decrease as the total population grows (i-e., the area
+decrease as the total population grows (i.e., the area
 covered by the colony increases faster than the population),
 you can store the coordinates of the active cells in quite a
 </p>

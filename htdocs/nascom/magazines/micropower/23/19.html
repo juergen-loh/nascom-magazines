@@ -1,63 +1,63 @@
 <?php columnStart(1); ?>
 <p>
 So, after this extended introduction, I will proceed to
-enlighten those interested parties on how it is done. It 15
+enlighten those interested parties on how it is done. It is
 based on using up the 8 EPROM/RAM sockets on the Nascom&nbsp;2 main
 board. The 8 sockets will accomodate most byte wide, 24 pin
-devices and the HMefies fall into this category, For straight
+devices and the HM6116s fall into this category. For straight
 forward RAM expansion without battery back-up and Write Disable,
-fitting is very simlar to fitting 41185 in these positions
+fitting is very similar to fitting 4118s in these positions
 except that a higher order addressing is required to access all
-the available memory. The only additional circuitry 15 to
+the available memory. The only additional circuitry is to
 provide RAM-Dis onto the Nascom&nbsp;2 to disable this new RAM if you
 are using external RAM or ROM at the address chosen to locate
-your new RAM. [t is suggested that this stage be done first
-anyway. to check that the RAM 15 operating correctly, before
+your new RAM. It is suggested that this stage be done first
+anyway. to check that the RAM is operating correctly, before
 introducing the complexities of the power down and Write
 Disables. Refer to the link block diagram in your manual (you
-have got a manual, haven&rsquo;t you&rsquo;&rsquo;) and connect pin 8 to pin 4
-(chip select), pin &amp; to pin 2 (output enable to read enable),
+have got a manual, haven&rsquo;t you!!) and connect pin 8 to pin 4
+(chip select), pin 6 to pin 2 (output enable to read enable),
 pin 5 to pin 1 (write enable) and finally, loop pin 7 (address
 line A10) along each pin 7 and pick up address line A13 off the
-data bus (best done from pin 12 of IC 47 (N2MD)), This has the
-effect of addressing through all the lower IKs of each chip and
-then through the upper iKs of each chip (the upper and lower
+data bus (best done from pin 12 of IC&nbsp;47 (N2MD)). This has the
+effect of addressing through all the lower 1Ks of each chip and
+then through the upper 1Ks of each chip (the upper and lower
 halves of each chip are seperated by 8K) and is the simplest way
 to do it. Finally, to make the whole thing go, connect the
-RAM-gates to the blocks of addresses required eg. DOGD to F000
+RAM-gates to the blocks of addresses required eg. D000 to F000
 would give you 16K of RAM starting at D000 and finishing at FFFF
-so, 1f you are using a CP/M type system, then set your 48K card
+so, if you are using a CP/M type system, then set your 48K card
 to go from 0000 ta CFFF and you will have 64K on-line by
-connecting either RAM-G1 or RAM-G2 to block address CooO + DOOD
-+ E/F000 strapped together (the last 8K block 15 normally used
+connecting either RAM-G1 or RAM-G2 to block address C000 + D000
++ E/F000 strapped together (the last 8K block is normally used
 to enable the BASIC ROM). To provide RAM-Dis onto the p.c.b.
 requires two ICs, one type 74LS32 (quad OR) and one type 74LS04
 (hex inverter) and these devices will be used to provide the
-Write Disable control as well (you mght as well go the whole
-hog&rsquo;). In my system, these are mounted piggy back, on top of two
+Write Disable control as well (you might as well go the whole
+hog!). In my system, these are mounted piggy back, on top of two
 other conveniently situated 14 pin ICs close to the link block
-LKS1, to which most of the connections will be made. Remove IC
-18 (74LS06), bend up pin 13 and then replace the IC. For the
-remainder of the connections 1t is best to refer to circuit
+LKS1, to which most of the connections will be made. Remove IC&nbsp;18
+(74LS06), bend up pin 13 and then replace the IC. For the
+remainder of the connections it is best to refer to circuit
 diagram 1 alongside the Nascom&nbsp;2 Memory circuit diagram, top
-left corner, where all the origina) circuitry will be found. I
+left corner, where all the original circuitry will be found. I
 would suggest that you now test, very carefully, the operation
-of your new RAM, both with EPROM cards and other periphera:
+of your new RAM, both with EPROM cards and other peripheral
 cards occupying the same address space in both enable and
-disable in Case there is any interaction. My own system has been
+disable in case there is any interaction. My own system has been
 operating for many months and I have had no problems. NOTE that
 the linking is altered so that the Write Enable is linked to the
 Write Disable switch.
 </p>
 <p>
-Now for the tricky bit, battery back up covection. It 15 not
+Now for the tricky bit, battery back up cooection. It is not
 difficult, just time consuming and some care is necessary to
 ensure that the correct connections have been made. The idea is
 to isolate all of the +5V connections to pin 24 of each chip and
 also, to pin 3 of the associated link blocks. This can be done
 by cutting about five tracks and adding a few wire links. I
-would have included details but 1t now very difficult to gain
-access te the underside of my N2 card and I have no record of
+would have included details but it now very difficult to gain
+access to the underside of my N2 card and I have no record of
 what I did &ndash; however, I would be pleased to reinvent the wheel
 if anyone wishes to take the plunge. Otherwise, lifting IC legs
 </p>

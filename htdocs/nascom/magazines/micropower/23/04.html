@@ -1,7 +1,7 @@
 <?php columnStart(1); ?>
-<p>
+<h3>
 Software
-</p>
+</h3>
 <p>
 If the unit has been built according to the circuit diagram
 you will find that it is addressable at ports 64 to 79 (don&rsquo;t
@@ -13,17 +13,14 @@ register 14 to 0 thus stopping the clock. Lines 220-380 set up
 the date and time in registers R4-R13. Note, I don&rsquo;t use
 register 10, day of the week. Lines 330-370 set up the correct
 value for the Leap year. Note, the astuce for detecting the year
-on a 0 to S basis in line 330.
+on a 0 to 3 basis in line 330.
 </p>
-<p>
-O=Leap year therefore set register 13 to
-</p>
-<p>
-a
-1 &ldquo;4d &rdquo; * . 13 to 4
-2&rdquo; &ldquo;42 " &rdquo; 13 to 2
-=&rdquo; was " &ldquo; 13 tot
-</p>
+<table class="leap-year">
+<tr><td>0 =</td><td>Leap</td><td>year</td><td></td><td>therefore</td><td>set</td><td>register</td><td>13 to 8</td></tr>
+<tr><td>1 =</td><td>"</td><td>"</td><td>+1</td><td>"</td><td>"</td><td>"</td><td>13 to 4</td></tr>
+<tr><td>2 =</td><td>"</td><td>"</td><td>+2</td><td>"</td><td>"</td><td>"</td><td>13 to 2</td></tr>
+<tr><td>3 =</td><td>"</td><td>"</td><td>+3</td><td>"</td><td>"</td><td>"</td><td>13 to 1</td></tr>
+</table>
 <p>
 Finally, when all registers have been initialised, it
 remains to start the clock by sending a 1 to register 14.
@@ -37,31 +34,15 @@ Data Bus during the address period. Line 550 leaves the BCD
 value. Lines 580-440 are just one example of displaying the date
 and time.
 </p>
-<p>
+<h3>
 Conclusion
-</p>
+</h3>
 <p>
 As you will no doubt appreciate, there are many possible
 uses for this clock, from simple time telling, although it does
 make rather an expensive clock, to sophisticated timing
 requirements in the case of automatic control functions. What
-ever your choice, you will always have the time
+ever your choice, you will always have the time!
 </p>
-<p>
-BD fo aa
-</p>
-<p>
-1
-1
-|
-|
-|
-</p>
-<p>
-1 1
-[aM Only
-</p>
-<p>
-pe pl 32 p3
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-04-1.png"); ?>
 <?php columnEnd(1); ?>

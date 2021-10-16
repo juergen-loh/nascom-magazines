@@ -1,35 +1,31 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 small table &ndash; it rarely exceeds 4K. Of course, you never get
 anything for nothing. The software to follow the evolution
-of the colony 15 much more complicated ; you have to search
+of the colony is much more complicated&nbsp;; you have to search
 the table for adjacent cells, count them, and them apply the
 rules to build up a coordinate table for the next
 generation. In addition, you have to write a routine to map
 the coordinate table to the screen. However, you only have
-to stan the cells in the table; in the more usual life
+to scan the cells in the table; in the more usual life
 program all cells, alive and dead, are scanned. The result
-is that this version of life is much faster for smal
-</p>
-<p>
+is that this version of life is much faster for small
 colonies &ndash; in fact you have to slow it down if there are
 less than 20 cells, or you can&rsquo;t follow the changes. The
 break even point seems to be a population of 100, when the
-program runs at 6 generations a second with a 4Mhz 7280.
-</p>
-<p>
+program runs at 6 generations a second with a 4Mhz Z80,
 which is about typical for the normal version.
 </p>
 <p>
-Now to the program. [It is started by E1000, and
+Now to the program. It is started by E1000, and
 immediately jumps to &pound;1503; the region between contains
-tables and subroutines. At &pound;1503 the screen is cleared
+tables and subroutines. At &pound;1503 the screen is cleared,
 various workspace parameters are initialised, and the screen
 header is written to the top line. One of the subroutines
 called in the initialisation procedure is SETPIX, &pound;12F3.
 This writes the Nascom&nbsp;2 pixel set to a programmable
 character generator. My PCG sits from &pound;0000 &ndash; &pound;07FF, so the
-address where the pixels are situated is &pound;0400 &ndash; f&pound;07FF; 1f
+address where the pixels are situated is &pound;0400 &ndash; &pound;07FF; if
 you have a PCG at a different address, just change &pound;12F4 to
 the necessary value. If you still use characters in ROM,
 SETPIX should not affect your system, unless you have RAM
@@ -39,19 +35,19 @@ with ROM graphics.
 <p>
 When you run the program you will be presented with a
 blank screen, except for the header on the top line and a
-flashing cursor in the mddle. To enter a pattern, use keys
+flashing cursor in the middle. To enter a pattern, use keys
 Q, W, A, S, Z and X. Each time you press one of these keys
-the state of the corresponding pixel at the cursor wil
+the state of the corresponding pixel at the cursor will
 change. Each time you turn a cell &lsquo;on&rsquo; its coordinates are
 entered in the table (the coordinates of the bottom left
 pixel are displayed on the top line), and when you turn it
-&lsquo;off* at is deleted from the table.
+&lsquo;off&rsquo; at is deleted from the table.
 </p>
 <p>
 With the cursor keys you can move the whole screen
 left, right up, and down. Note that the screen image moves
-but the cursor remains stationary in the mddle.) In effect,
-you are moving a window around, looking inte an array. If
+but the cursor remains stationary in the middle. In effect,
+you are moving a window around, looking into an array. If
 you move the pattern off the screen its coordinates are
 still in the table, so when you move the window back the
 pattern will reappear. You can thus build up very large and
@@ -61,7 +57,7 @@ small patterns initially.
 <p>
 To help you there are several patterns stored in the
 program &ndash; you can make these appear at the cursor by
-entering SHIFT/A &ndash; Z. You can enter these standard patterns
+entering SHIFT/A&nbsp;&ndash;&nbsp;Z. You can enter these standard patterns
 at several different positions. You can also rotate and
 reflect the whole screen by pressing R and F. By combining
 direct entry and the standard patterns you can quickly build

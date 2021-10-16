@@ -1,57 +1,47 @@
 <?php columnStart(1); ?>
 <p>
 Facilities 0, 2 and 3 are self-evident but the Reverse
-Alphanumerics requires some explanation. The graphics bit, Bit
-7, is re-routed to provide the reverse signal, so that Graphics
+Alphanumerics requires some explanation. The graphics bit, Bit&nbsp;7,
+is re-routed to provide the reverse signal, so that Graphics
 and Reverse Alphanumerics cannot be on the screen at the same
 time. The difference between ASCII &ldquo;A&rdquo; (41) and ASCII reverse
-&ldquo;a&rdquo; is 80 so that with Bit 1 of the Port low, Ci will give
-reverse &ldquo;A".
+&ldquo;A&rdquo; is 80 so that with Bit 1 of the Port low, C1 will give
+reverse &ldquo;A&rdquo;.
 </p>
 <p>
 Programming in machine code is simple, as all that is
-required is the addrtian of 80 ta the ASCII cade for a letter or
+required is the addition of 80 to the ASCII code for a letter or
 number. This can be done using the comma before a letter in the
 Modify mode and then pressing the Graphics key with the letter
-if you have the modified keyboard described in Micropower:
-Volume 1, Number 2. (A superb modification. The mast difficult
-part being the cutting aut of the keyboard case for the extra
-keys. Alsa, if you, like me, do things and then think about
+if you have the modified keyboard described in Micropower,
+Volume 1, Number 2. (A superb modification. The most difficult
+part being the cutting out of the keyboard case for the extra
+keys. Also, if you, like me, do things and then think about
 them, please note that it is the zero key and not the O key that
 is modified.)
 </p>
 <p>
-Programming the Reverse Alphanumerics 1 BASIC is simple if
+Programming the Reverse Alphanumerics in BASIC is simple if
 you have the Graphics key but some string manipulation is
-required 1f you haven&rsquo;t, 1m order to set Bit 7. The following is
-@ suggestion but could, I am sure, be improved.
+required if you haven&rsquo;t, in order to set Bit 7. The following is
+a suggestion but could, I am sure, be improved.
 </p>
 <p>
-SS REM SET UP ORIGIN AND DESTINATION STRINGS
-&ldquo;Hel Lo&rdquo;: B!
-20 FOR I=1 10 5
-25 REM SET BIT 7 OF EACH CHAR. IN ORIGIN STRING
-30 BS=E$+STRE (ASC (MIDS (AS, I, 1) +128) )
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-29-1.png"); ?>
 </p>
 <p>
-40 NEXT I
-</p>
-<p>
-The Reverse Alphanumerics work regardless af the screen
+The Reverse Alphanumerics work regardless of the screen
 background, so that black letter on a white background are
-produced 1f the screen background is black and vice versa. One
+produced if the screen background is black and vice versa. One
 thing that I should mention about RA is that the top of each
-</p>
-<p>
 character is on the top row of the line so that if, for
-instance, &ldquo;E&rdquo; 15 in RA below a normal line, then the top bar
+instance, &ldquo;E&rdquo; is in RA below a normal line, then the top bar
 will tend to merge with the line above. However, this a very
 cheap modification and some snags can be expected. For
-</p>
-<p>
 perfectionists, a similar commercial product is available
 costing, I believe, about &pound;40.
 </p>
+<?php hLine("30%"); ?>
 <h1 id="article1">
 Othello
 </h1>
@@ -60,9 +50,9 @@ by A. Brown
 </h2>
 <p>
 &ldquo;Not another Othello&rdquo;, I hear you say. Yes, it is, but this
-15 a very nice version, written 1n machine code for Nas-sys, 1t
+is a very nice version, written in machine code for Nas-sys, it
 executes at 1000H and has a nice feature called &ldquo;Hint&rdquo; which you
-get by pressing the Space Rar on your move. Beware though, it
+get by pressing the Space Bar on your move. Beware though, it
 plays a mean game.
 </p>
 <?php columnEnd(1); ?>

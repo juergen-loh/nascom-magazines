@@ -1,74 +1,66 @@
 <?php columnStart(1); ?>
-<p>
+<h3>
 SCAL SRLX, DF 4F
-</p>
+</h3>
 <p>
-This routine, whith handles all the serial output, is
+This routine, which handles all the serial output, is
 extremely simple, because all the data serialisation
 routines, including the addition of start and stop bits, and
 the data transmission, is performed by the UART chip. The
-contents of the accumilator are first saved on the stack
-the accumulator 15 then output to port 1. An input/<?php spChar("zwsp"); ?>output
+contents of the accumulator are first saved on the stack;
+the accumulator is then output to port 1. An input/<?php spChar("zwsp"); ?>output
 operation is decoded on the Nascom&nbsp;2 by a I/O PROM, IC26,
-which uses address lines @0, Al and 42. and buffered Read
+which uses address lines A0, Al and A2, and buffered Read
 and Write lines RDB and WRB to select bytes of data stored
 in the PROM. This data then controls the keyboard and UART.
 When data is output to port 1 the &lsquo;address&rsquo; used by the PROM
 is 00001001 (binary), selecting the 10th byte in the PROM,
 which has the value &pound;EF. When this is placed on the PROM
 outputs, all the lines remain &lsquo;high&rsquo; except D4, which is
-connected to the Transmtter Buffer Register Load line on
+connected to the Transmitter Buffer Register Load line on
 the UART. Thus the data in the accumulator, which has been
-placed on the data bus by the Fort Qutput instruction, is
+placed on the data bus by the Port Output instruction, is
 transferred to the UART transmitter. The UART then procedes
 to send out this data in serial form, adding the necessary
 start and stop bits.
 </p>
 <p>
-Meanwhile, the Z80 processor has nothing much to da.
+Meanwhile, the Z80 processor has nothing much to do.
 It sits in a loop, reading data out from port 2 and testing
 bit 6. Decoded by the I/O PROM, the Port 2 read enables the
 UART status flags. Bit 6 of the data bus is connected to the
-dine which signals that the transmitter buffer is empty.
-Thus bit 6 going low informs the pracessor that the data
+line which signals that the transmitter buffer is empty.
+Thus bit 6 going low informs the processor that the data
 (including the stop bits) has been transmitted. The value
-initially im the accumulator is then recovered from the
-stack. and the routine terminated.
+initially in the accumulator is then recovered from the
+stack, and the routine terminated.
 </p>
 <p>
 You will note that the data bus is connected to the
 UART input, output and status registers; which particular
 registers are used by any one operation is determined by the
-control bytes output by the I/O PROM
+control bytes output by the I/O PROM.
 </p>
-<p>
+<h3>
 SCAL SRLIN, DF 70
-This subroutine checks the serial input port to see 1c
-</p>
+</h3>
 <p>
-a character has been received. If no character 15 avarlable
-it returns with the carry #lag clears othermse. the carry
-</p>
-<p>
-flag is set and the character is laaded into the
-accumulator. Once again, the routine is very simple.
+This subroutine checks the serial input port to see if
+a character has been received. If no character is available
+it returns with the carry flag clear; otherwise, the carry
+flag is set and the character is loaded into the
+accumulator. Once again, the routine is very simple,
 because the processor merely gets the data from the UART,
-which has to do al) the deserialisation. Ihe first
-</p>
-<p>
+which has to do all the deserialisation. The first
 operation is to read port 2. As in the case of SRLX, this
-enables the UART status flags. Bit&nbsp;? of the data bus 15
-conected to the Data Received line, which goes high when the
+enables the UART status flags. Bit&nbsp;7 of the data bus is
+connected to the Data Received line, which goes high when the
 UART has obtained a data byte. The byte read in from port 2
-is rotated from the accumulator inta the processor carry
-</p>
-<p>
-flag. Thus 1f no data has been received the carry flag is
-reset, and the routine ends. If the Data Received line 15
+is rotated from the accumulator into the processor carry
+flag. Thus if no data has been received the carry flag is
+reset, and the routine ends. If the Data Received line is
 high, the carry flag will be set by the rotate, and the
 processor then reads port 1 into the accumulator. This read
-</p>
-<p>
 operation, decoded by the I/O PROM, pulls the UART Rece1ver
 </p>
 <?php columnEnd(1); ?>

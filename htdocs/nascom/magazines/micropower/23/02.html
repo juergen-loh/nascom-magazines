@@ -9,62 +9,70 @@ by G.R.Kirby
 Quelle heure est il? Ever wanted to ask your friendly Nascom
 that question? Well with 4 integrated circuits and a few
 components it is possible to build a &ldquo;real-time&rdquo; clock for your
-Nascom using the National Semiconductor chip MM 58174
+Nascom using the National Semiconductor chip MM&nbsp;58174
 </p>
+<h3>
+The MM&nbsp;58174.
+</h3>
 <p>
-The MM 58174.
-</p>
-<p>
-The MM 58174 is a 16 pin device containing 16 internal
+The MM&nbsp;58174 is a 16 pin device containing 16 internal
 registers programmed to give the time in tenths of a second, day
 of the week, day of the month and the month of the year. It does
 not however give the year, although, by telling it during
 initialization the year with respect to the last leap year, it
 will automatically keep the month of Febuary up to date (ie. 28
-or 29 days). The circuit is controlled by its own interna
+or 29 days). The circuit is controlled by its own internal
 oscillator, driven by an external quartz of 32768&nbsp;KHz which I
 believe is a standard frequency for electronic time pieces
 (therefore, easy to obtain). The registers are addressed by a 4
 bit bus (BCD). The following table gives the purpose and address
 of each register and also the pin connections
 </p>
+<?php columnEnd(1); ?>
+<p></p>
+<?php columnStart(23); ?>
+<table class="mm58174-registers">
+<tr><td></td><td colspan=2>REGISTER</td><td>AD3</td><td>AD2</td><td>AD1</td><td>AD0</td><td>MODE</td></tr>
+<tr><td>R0</td><td colspan=2>Mode Test</td><td>0</td><td>0</td><td>0</td><td>0</td><td>(W)rite</td></tr>
+<tr><td>R1</td><td colspan=2>Tenths of seconds</td><td>0</td><td>0</td><td>0</td><td>1</td><td>(R)ead</td></tr>
+<tr><td>R2</td><td>Seconds</td><td>(units)</td><td>0</td><td>0</td><td>1</td><td>0</td><td>R</td></tr>
+<tr><td>R3</td><td>Seconds</td><td>(tens)</td><td>0</td><td>0</td><td>1</td><td>1</td><td>R</td></tr>
+<tr><td>R4</td><td>Minutes</td><td>(units)</td><td>0</td><td>1</td><td>0</td><td>0</td><td>R/W</td></tr>
+<tr><td>RS</td><td>Minutes</td><td>(tens)</td><td>0</td><td>1</td><td>0</td><td>1</td><td>R/W</td></tr>
+<tr><td>R6</td><td>Hours</td><td>(units)</td><td>0</td><td>1</td><td>1</td><td>0</td><td>R/W</td></tr>
+<tr><td>R7</td><td>Hours</td><td>(tens)</td><td>0</td><td>1</td><td>1</td><td>1</td><td>R/W</td></tr>
+<tr><td>R8</td><td>Days</td><td>(units)</td><td>1</td><td>0</td><td>0</td><td>0</td><td>R/W</td></tr>
+<tr><td>R9</td><td>Days</td><td>(tens)</td><td>1</td><td>0</td><td>0</td><td>1</td><td>R/W</td></tr>
+<tr><td>R10</td><td colspan=2>Day of the week</td><td>1</td><td>0</td><td>1</td><td>0</td><td>R/W</td></tr>
+<tr><td>R11</td><td>Month</td><td>(units)</td><td>1</td><td>0</td><td>1</td><td>1</td><td>R/W</td></tr>
+<tr><td>R12</td><td>Month</td><td>(tens)</td><td>1</td><td>1</td><td>0</td><td>0</td><td>R/W</td></tr>
+<tr><td>R13</td><td colspan=2>Year 0-3 basis</td><td>1</td><td>1</td><td>0</td><td>1</td><td>W</td></tr>
+<tr><td>R14</td><td colspan=2>Stop/Go</td><td>1</td><td>1</td><td>1</td><td>0</td><td>W</td></tr>
+<tr><td>R15</td><td colspan=2>Interrupt</td><td>1</td><td>1</td><td>1</td><td>1</td><td>R/W</td></tr>
+</table>
+<?php columnChange(3); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-02-1.png"); ?>
+<?php columnEnd(3); ?>
+<p></p>
+<?php columnStart(1); ?>
 <p>
-REGISTER ADS AD2 ADI ADO MODE
-RO Mode Test oO Oo Oo Oo (Write
-Ri Tenths of seconds oO oO oO 1 (Roead
-R2 Seconds (units) oO oO 1 oO R MM 58174
-R3 Seconds (tens) &lsquo; oO 1 1 R
-R4 Minutes (units) &lsquo;o 1 oO oO R/W csy1 1&amp;+-Vdd
-RS Minutes (tens) &copy; 1 &copy; 1 R/WNRDS}2 = 15}xt.in
-R6 Hours (units) oO 1 1 oO R/W NWDS+3 14+Xt.out
-R7 Hours (tens) oO 1 2 &ndash; RAW DBST4 = 13tInt
-RB Days = (units) 1 0 0 &copy; R/W DB2Z15 &ndash; 12+ADO
-R? Days (tens) 1 o oO 1 R/W DBI+6 1LTADL
-R10 Day of the week 1 oO 1 Oo R/W DBO+7 19+AD2
-R11 Month (units) 1 0 1 1 RW Vss{8 etaps
-R12 Month (tens) 1 1 0 0 RW
-R13 Year 0-3 basis 1 1 oO 1 w
-R14 Stop/Go 1 1 1 oO w
-RIS Interrupt a 2 1 2) RW
-</p>
-<p>
-The power requirement of the MM 58174 is a single SV supply.
-there is however a standby made where voltage as low as 2.2V 15
+The power requirement of the MM&nbsp;58174 is a single 5V supply,
+there is however a standby mode where voltage as low as 2.2V is
 sufficient to keep the clack running and the time up to date. In
 this mode it is not possible to read or write to the internal
 registers. Power consumption in &ldquo;stand-by&rdquo; mode is less than
-10UA. There are, as you will realise, many possible uses for
+10uA. There are, as you will realise, many possible uses for
 this powerful circuit. The following is a &ldquo;real-time&rdquo; clock
 using 2 Ni-Cad batteries to keep the clock running during
 periods when your Nascom is switched off.
 </p>
-<p>
+<h3>
 The Circuit Diagram
+</h3>
+<p>
 As you can see, relatively few components are needed to
 build this &ldquo;real-time&rdquo; clock, the principal of course being the
-</p>
-<p>
-tM 58174 from National Semiconductor which is selected by the
-address decoder IC 2. IC 2 is a i-1n-8 decoder being low when
+MM&nbsp;58174 from National Semiconductor which is selected by the
+address decoder IC&nbsp;2. IC&nbsp;2 is a 1-in-8 decoder being low when
 </p>
 <?php columnEnd(1); ?>
