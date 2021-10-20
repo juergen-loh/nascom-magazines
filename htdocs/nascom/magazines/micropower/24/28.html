@@ -1,82 +1,68 @@
 <?php columnStart(1); ?>
-<p>
-2) Short out the pulse capacitor, C10, from the old 2708 25
-volt pulse circuit showy on sheet 3 of the circuit
-Giagrams. Take a lead from &lsquo;A&rdquo; of that diagram (I used the
-end of RS furthest from TR2) to pio Sof switch 2. This
-Will provide 25 volts on pin 20 of the recipient EPROM.
-</p>
-<p>
-BS Lift IC&nbsp;2. Bend out pins 7 and 14. Use one of your two 1
-Meg resistors to pull pin 7 down to 0 volts by connecting
-it between pin 7 and the mide track close to pin 7. Pin 7
-must also be connected to Bit 6 of port S. This is easiest
+<ol>
+<li>
+Short out the pulse capacitor, C10, from the old 2708 25&nbsp;volt
+pulse circuit showy on sheet 3 of the circuit
+diagrams. Take a lead from &lsquo;A&rdquo; of that diagram (I used the
+end of R5 furthest from TR2) to pin 3 of switch 2. This
+will provide 25 volts on pin 20 of the recipient EPROM.
+</li>
+<li>
+Lift IC&nbsp;2. Bend out pins 7 and 14. Use one of your two 1&nbsp;Meg
+resistors to pull pin 7 down to 0 volts by connecting
+it between pin 7 and the wide track close to pin 7. Pin 7
+must also be connected to Bit 6 of port 5. This is easiest
 done by using the through-plated hole next to the C7
-legend. Pin 14 im left unconnected. Bit &amp; of port 5 now
-controls a 25 volt/O volt output to pin 20 of the
+legend. Pin 14 is left unconnected. Bit 6 of port 5 now
+controls a 25&nbsp;volt/<?php spChar("zwsp"); ?>0&nbsp;volt output to pin 20 of the
 recipient EPROM.
-</p>
-<p>
-9) Connect together pins @ and 9 ef swotch 2 to put ALO on
+</li>
+<li>
+Connect together pins 8 and 9 of switch 2 to put A10 on
 pin 19 of both EPROM.
-</p>
-<p>
-5) Fortunately, IC % produces an All signal on pin 1. I bent
-pin 1 of IC&rsquo;S out and connected it ta pin I! of the same
-Sitch to provide All on pin 21 of bath the doner and
+</li>
+<li>
+Fortunately, IC&nbsp;3 produces an All signal on pin 1. I bent
+pin 1 of IC&rsquo;3 out and connected it to pin 11 of the same
+switch to provide All on pin 21 of both the donor and
 recipient EPROMs.
-</p>
+</li>
+<li>
+Join Bit 2 of port 5 to pin 6 of switch 2. This is best
+achieved by using the plated hole just by the TR6 legend
+and close to the switch. I also pulled pin 6 of the switch
+to 5 volts with the second 1 Meg resistor. I used the
+legend end of R20 for my 5 volts.
+</li>
+</ol>
 <p>
-4) Join Bit 2 of port 5 to pin &amp; of switch 2. This 1m beat
-achieved by using the plated hole just by the TR6 Legend
-and close to the switch. I also pulled pin &amp; of the switch
-toS volts with the second 1 Meg resistor. I used&rdquo; the
-Legend end of R20 for ay 5 volts,
-</p>
-<p>
-Your board is now a 2752 programmer when switch 2 12 pushed
-in and a 2716 programmer when switch 2 is out, but on?y shen the
+Your board is now a 2752 programmer when switch 2 is pushed
+in and a 2716 programmer when switch 2 is out, but only when the
 software is correct.
 </p>
+<h3>
+Software Modifications.
+</h3>
 <p>
-Software Modi fications.
-Thank you Bite and PCs for your fully documented listing. 1
-</p>
-<p>
+Thank you Bits and PCs for your fully documented listing. I
 am most grateful. First, the functions of the bits 0 to 6 of the
 control word that is used to control the EPROM blower.
 </p>
-<p>
-pit Function Name
-&lsquo; O volts Increments address counter cleck ACLOCK
-&lsquo; 5 volts No increment
-</p>
-<p>
-1 &copy; Volts Enables address counter clock RESET
-3 5 volte Resets address counter clock
-</p>
-<p>
-2 &copy; Volts 2782 programming pulse of Ov R272
-2 S volts 2752 standby, Sv on/Ce
-</p>
-<p>
-5 &copy; Volts Enables donor ROM /0E ROM
-</p>
-<p>
-5 5 volts Disables donor ROM
-</p>
-<p>
-a &copy; Volts Disables 2718 Sv programming pulse TRIG
-</p>
-<p>
-4 S volts Triggers 7716 Sv programming pulse
-</p>
-<p>
-s &copy; Volts Enables 2716 receptor ROM /0E RW2716
-5 5 volts Disables 2718 output from /OE
-</p>
-<p>
-6 8 Volts Read enable 2732, Ov to JOE Vp V2STRG
-4 S volts 25 volts to 2732, 25v to /0E Yep
-</p>
+<table style="width: 100%">
+<tr><td>Bit</td><td colspan=2>Function</td><td>Name</td></tr>
+<tr><td>0</td><td>0 volts</td><td>Increments address counter clock</td><td>ACLOCK</td></tr>
+<tr><td>0</td><td>5 volts</td><td>No increment</td><td></td></tr>
+<tr><td>1</td><td>0 Volts</td><td>Enables address counter clock</td><td>RESET</td></tr>
+<tr><td>1</td><td>5 Volts</td><td>Resets address counter clock</td><td></td></tr>
+<tr><td>2</td><td>0 Volts</td><td>2782 programming pulse of 0v</td><td>RP2732</td></tr>
+<tr><td>2</td><td>5 volts</td><td>2752 standby, 5v on<?php spChar("zwsp"); ?>/CE</td><td></td></tr>
+<tr><td>3</td><td>0 Volts</td><td>Enables donor ROM /OE</td><td>MROM</td></tr>
+<tr><td>3</td><td>5 volts</td><td>Disables donor ROM</td><td></td></tr>
+<tr><td>4</td><td>0 Volts</td><td>Disables 2716 5v programming pulse</td><td>TRIG</td></tr>
+<tr><td>4</td><td>5 volts</td><td>Triggers 2716 5v programming pulse</td><td></td></tr>
+<tr><td>5</td><td>0 Volts</td><td>Enables 2716 receptor ROM /OE</td><td>RW2716</td></tr>
+<tr><td>5</td><td>5 volts</td><td>Disables 2716 output from /OE</td><td></td></tr>
+<tr><td>6</td><td>0 Volts</td><td>Read enable 2732, 0v to /OE Vpp</td><td>V2STRG</td></tr>
+<tr><td>6</td><td>5 volts</td><td>25 volts to 2732, 25v to /0E Vpp</td><td></td></tr>
+</table>
 <?php columnEnd(1); ?>

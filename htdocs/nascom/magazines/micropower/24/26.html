@@ -1,82 +1,62 @@
 <?php columnStart(1); ?>
+<table class="indent">
+<tr><td>bit 0</td><td>SET &ndash; selects upper 32k block<br>
+		RESET &ndash; selects lower 32K block<br>
+		(not operative if bit 7 is RESET)</td></tr>
+<tr><td>bit 1 )</td><td></td></tr>
+<tr><td>bit 2 )</td><td></td></tr>
+<tr><td>bit 3 )</td><td>selects 64k page</td></tr>
+<tr><td>bit 4 )</td><td>(bit 5 not used in 32k mode)</td></tr>
+<tr><td>bit 5 )</td><td></td></tr>
+<tr><td>bit 6</td><td>SET &ndash; select upper 32k of page 0 as permanent<br>
+		RESET &ndash; select lower 32k of page 0 as permanent<br>
+		(not operative if bit 7 is RESET)</td></tr>
+<tr><td>bit 7</td><td>SET &ndash; select 32k mode<br>
+		RESET &ndash; select 64K mode</td></tr>
+</table>
 <p>
-bit 0 SET &ndash; selects upper 32k block
-RESET &ndash; selects lower 32K block
-(not operative :f bit 7 is RESET)
-</p>
-<p>
-mit a
-bit 2)
-</p>
-<p>
-bit 3) selects a4k page
-</p>
-<p>
-brt 4) (bit 5 not used in 32k mode?
-</p>
-<p>
-bits)
-</p>
-<p>
-Dit &amp; SET &ndash; select upper 32k of page 0 as permanent
-</p>
-<p>
-RESET &ndash; select lower 32k of page 0 as permanent
-(rot operative 2f bit 7 18 RESET)
-bit 7 SET &ndash; select 32k mode
-RESET &ndash; nelect 64% mode
-</p>
-<p>
-There are 3 modes of operation:
-1) ak paging &ndash; the memory is set up in 44k blocks which means
-that to change pages, a program aust ensure that the Program
-Counter holds the value of the next snstruction on the incoming
-page after the U FE xX 12 executed. Not the easiest of things.
+There are 3 modes of operation:<br>
+1) 6K paging &ndash; the memory is set up in 64k blocks which means
+that to change pages, a program must ensure that the Program
+Counter holds the value of the next instruction on the incoming
+page after the O FE XX is executed. Not the easiest of things.<br>
 2) 32K paging &ndash; in this mode each page is divided into two 32k
 pages and the user can then assign either the upper or lower 32k
-&copy; page 0 as permanent and then page in any other 32k half page.
-This makes the controlling prageam much simpler and would be
-very &ldquo;us ful&rdquo; for applications where large data files are
-manipulated by small programs.
-</p>
-<p>
-5) memory-mapping &ndash; thie is the mast powerful mode af ald and it
-allows any 4k black from the total RAM to be &lsquo;mapped&rsquo; into any
-ak slot 1m the 200 menory map. Ihe &lsquo;source&rsquo; block can be&rdquo; mapped
+of page 0 as permanent and then page in any other 32k half page.
+This makes the controlling program much simpler and would be
+very useful for applications where large data files are
+manipulated by small programs.<br>
+3) Memory-mapping &ndash; this is the most powerful mode of all and it
+allows any 4k block from the total RAM to be &lsquo;mapped&rsquo; into any
+4K slot in the Z80 memory map. The &lsquo;source&rsquo; block can be mapped
 into more than one &ldquo;target&rdquo; block.
 </p>
 <p>
-The switching from page to page on the RAM cara can become:
+The switching from page to page on the RAM card can become
 very confusing and a memory management program would be very
-Useful. This 1% exactly what M.A P.-80 have done. If you buy a
-</p>
-<p>
+useful. This is exactly what M.A.P.-80 have done. If you buy a
 RAM board and send them your CP/M, they will modify the CP/M so
-that 16 treats any RAM over Sak as a virtual disk.&rdquo; This allows
-CP/M to support its normal disks plus an additional disk&rsquo;, Py
-which is accessed in eiactly the same way as the real disks,
-only much faster. &lsquo;Disk&rsquo; P has al? the normal features af a CP/#
-Gist, including a directory, but doesn&rsquo;t cutter au much from
-distette wear and tear or head alignment. It makes making
-</p>
-<p>
-back-up copive of real disks easy when you can only afford ane
-disk drive. Additional 32K blocks of RAM car be reserved from
-the CP/M ta mnable the user to have more than Sak oF RAM.
+that it treats any RAM over 64K as a virtual disk. This allows
+CP/M to support its normal disks plus an additional &lsquo;disk&rsquo;, P,
+which is accessed in exactly the same way as the real disks,
+only much faster. &lsquo;Disk&rsquo; P has all the normal features of a CP/M
+disk, including a directory, but doesn&rsquo;t suffer as much from
+diskette wear and tear or head alignment. It makes making
+back-up copies of real disks easy when you can only afford one
+disk drive. Additional 32K blocks of RAM can be reserved from
+the CP/M to enable the user to have more than 6K of RAM.
 </p>
 <p>
 Unfortunately, the board is incompatible with Nascom is but
-I think this is its only negetive point on an athermiae well
-designed and supported product. At &pound;150 for the basic 4K board,
-At must be well within the reach of most users. It is purely a
-matter of plugging in the additional mesory chips to eave up to
+I think this is its only negative point on an otherwise well
+designed and supported product. At &pound;150 for the basic 64K board,
+it must be well within the reach of most users. It is purely a
+matter of plugging in the additional memory chips to move up to
 the 256K and beyond barrier.
 </p>
 <p>
-Many thanks to Me. M. Rothery for delivering the review
-</p>
-<p>
-system and showing me how it worked and also to. Mr. P. Chance
-and Mr. Ts Watkin far their technical help.
+Many thanks to Mr. M. Rothery for delivering the review
+system and showing me how it worked and also to Mr. P. Chance
+and Mr. T. Watkins for their technical help.
 </p>
 <?php columnEnd(1); ?>

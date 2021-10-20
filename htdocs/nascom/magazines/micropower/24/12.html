@@ -1,69 +1,68 @@
 <?php columnStart(1); ?>
-<p>
-2) /XROME When address E000-FFFF is active low and BS? (Bank
+<table>
+<tr><td>
+2)</td><td>/XROME&nbsp;&nbsp;</td><td>When address E000-FFFF is active low and BS2 (Bank
 Select) is low (indicating any bank except 4 is
-selected? then gate 2 ensures that /KROME goes active
-Tow. It is looped along the /0E pin 20s of the @ extra
+selected) then gate 2 ensures that /XROME goes active
+low. It is looped along the /OE pin 20s of the 8 extra
 EPROMS. Whether one of these is actually enabled
 depends on the output of IC&nbsp;46.
-</p>
-<p>
-3) /XRONC When address C000-E000 is active low and B52 12 low
+</td></tr>
+<tr><td>
+3)</td><td>/XROMC&nbsp;&nbsp;</td><td>When address C000-E000 is active low and BS2 is low
 (any bank selected except 4) then gate 4 ensures that
-/RROMC goos active low and is Looped along Link blocks
-1 to 8 (NOT 9 pins 10, to connect to the /0E pin 20s
-of the original EPROMS in the erght Nascom sockets.
+/XROMC goes active low and is looped along link blocks
+1 to 8 (NOT 9) pins 10, to connect to the /OE pin 20s
+of the original EPROMS in the eight Nascom sockets.
 Again, which one is actually selected depends on the
-putpue of IC&nbsp;48.
-</p>
-<p>
-4) /BROM When Port 3, Bank 4 is selected, BS2 goes high and
-gate 2 being an &ldquo;OR&rdquo; gate /XROME must be deselected.
-Meanwhile, /BS2 is low and gate tis an OR&rdquo; so, as
-Jong as address is E000, /EROM is active and BASIC
+output of IC&nbsp;46.
+</td></tr>
+<tr><td>
+4)</td><td>/BROM&nbsp;&nbsp;</td><td>When Port 3, Bank 4 is selected, BS2 goes high and
+gate 2 being an &lsquo;OR&rsquo; gate /XROME must be deselected.
+Meanwhile, /BS2 is low and gate 1 is an &lsquo;OR&rsquo; so, as
+long as address is E000+, /BROM is active and BASIC
 occupies bank 4 E000-FFFF.
-</p>
-<p>
-5) BSI % These send binary signals 0, 1, 2 ar $ to IC&nbsp;46 to
-</p>
-<p>
-BSO cantral the bank gelect. The autput as steady
-</p>
-<p>
-Gependang on the last inputs to DO, Di and D2 of the 3.
+</td></tr>
+<tr><td>
+5)</td><td>BS1&nbsp;&amp;&nbsp;&nbsp;<br>
+BS0</td><td>These send binary signals 0, 1, 2 or 3 to IC&nbsp;46 to
+control the bank select. The output is steady
+depending on the last inputs to D0, D1 and D2 of the 3
 flip-flops contained an the 74LS175.
-</p>
+</td></tr>
+</table>
 <p>
 The reset line connected to pin 1 of the 74LS175 ensures
 that bank 0 is always selected on power-up or reset. Pin 9 may
-be regarded as a chip telect pin, enabled by pin 9 of the IN/OUT
+be regarded as a chip select pin, enabled by pin 9 of the IN/OUT
 PROM IC&nbsp;26.
 </p>
 <p>
-Construction takes one evening and is easy but painstaring.
-Wire wrap sockets are soldered carefully to the @ EPROM that
+Construction takes one evening and is easy but painstaking.
+Wire wrap sockets are soldered carefully to the 8 EPROMs that
 are to be selected at C000-DFFF. These go into the eight Nascom
-Fockets. The G EPROMS to be selerted at E000-FFFF have pin 20
+sockets. The 8 EPROMS to be selected at E000-FFFF have pin 20
 carefully bent out to take a seperate /OE signal. They then
-Piggyback into the Bnew sockets. Wire wrap sockets are not
+piggy-back into the 8 new sockets. Wire wrap sockets are not
 essential but give some cooling space between the mated EPROMS.
-T Tost na EPROMs doing this.
+I lost no EPROMs doing this.
 </p>
 <p>
-The control board uses a wire wrap socket to plug into LKSL
-an place of the header plug. It therefore holds 4 sockets. 2
-fourteen in and 2 sixteen pin sockets. It han 10 leads to the
-board. Pins 2 and 1S of IC&nbsp;44 have to be bent. out af their
-socket before connection. De not forget the 5 volt and Ground.
+The control board uses a wire wrap socket to plug into LKS1
+in place of the header plug. It therefore holds 4 sockets, 2
+fourteen pin and 2 sixteen pin sockets. It has 10 leads to the
+board. Pins 2 and 13 of IC&nbsp;46 have to be bent out of their
+socket before connection. Do not forget the 5&nbsp;volt and Ground.
 </p>
 <p>
-I cannot claim to have tested the board fully. 1 cannot
-afford enough EPROMS. T have pigay-backed six 27325. and moved
-them around and can find no faults, Indeed, the board appears to
-work with no wait states at 4 Meg. I drew a wiring. diagran but
-Tt waz such a mess I thought you would da better without it. 1
-have checked the circuit diagram very. carefully to ensure it
-contains all necessary information, I can only marvel at the
-flexibility of there fantastic Littie computers.
+I cannot claim to have tested the board fully. I cannot
+afford enough EPROMS. I have piggy-backed six 2732s and moved
+them around and can find no faults. Indeed, the board appears to
+work with no wait states at 4&nbsp;Meg. I drew a wiring diagram but
+it was such a mess I thought you would da better without it. I
+have checked the circuit diagram very carefully to ensure it
+contains all necessary information. I can only marvel at the
+flexibility of there fantastic littie computers.
 </p>
 <?php columnEnd(1); ?>

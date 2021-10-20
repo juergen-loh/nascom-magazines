@@ -1064,8 +1064,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "&micro;PD7220":			$url = "https://www.datasheetarchive.com/upd7220-datasheet.html";				break;
 	case "&micro;PD765":			$url = "http://dunfield.classiccmp.org/r/765.pdf";								break;
 	case "2114":					$url = "https://de.wikipedia.org/wiki/2114";									break;
-	case "2708":					$url = "http://www.jrok.com/datasheet/TMS2708.pdf";								break;
-	case "2716":					$url = "http://ee-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
+	case "2708":					$url = "https://www.jrok.com/datasheet/TMS2708.pdf";							break;
+	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
 	case "2732A":					$url = "https://www.retro-kit.co.uk/user/custom/Acorn/3rdParty/VELA/datasheets/2732A-datasheet.pdf";	break;
 	case "2764":					$url = "http://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";					break;
@@ -1124,7 +1124,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Epson MX-80F/T":			$url = "https://de.wikipedia.org/wiki/Datei:EpsonMX80FT_02_mod02_res.jpg";		break;
 	case "Fädeltechnik":			$url = "https://de.wikipedia.org/wiki/F%C3%A4deltechnik";						break;
 	case "Fachhochschule Köln":		$url = "https://www.th-koeln.de/";												break;
-	case "FDC9229":					$url = "http://www.cpcwiki.eu/imgs/9/97/FDC9229BT_Datasheet.pdf";				break;
+	case "FDC9229":					$url = "https://www.cpcwiki.eu/imgs/9/97/FDC9229BT_Datasheet.pdf";				break;
 	case "Fernmeldeamt":			$url = "https://de.wikipedia.org/wiki/Fernmeldeamt_(Deutsche_Bundespost)";		break;
 	case "Fernmeldehandwerker":		$url = "https://de.wikipedia.org/wiki/Fernmeldehandwerker";						break;
 	case "Fernsehtechnik ohne Ballast":	$url = "https://www.amazon.de/Fernsehtechnik-ohne-Ballast-Otto-Limann/dp/3772357245";	break;
@@ -1167,7 +1167,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Kilobaud Microcomputing Magazine (February 1981)":	$url =  "https://archive.org/details/kilobaudmagazine-1981-02";	break;
 	case "Kilobaud Microcomputing Magazine (March 1981)":		$url =  "https://archive.org/details/kilobaudmagazine-1981-03";	break;
 	case "Kommentar von Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
-	case "Kontron":					$url = "https://www.kontron.de/";												break;
+	case "Kontron":					$url = "https://www.kontron.com/de";											break;
 	case "Kornkraft Genossenschaft":$url = "http://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://de.wikipedia.org/wiki/Lichtgriffel";							break;

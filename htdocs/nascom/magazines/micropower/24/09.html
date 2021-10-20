@@ -1,69 +1,64 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 similar to that used on the RAM&nbsp;A board and is very straight
-formard.
+forward.
 </p>
-<p>
-LINK BLOCK B (KSB) Page configuration &ndash; page number
-jelection.
-</p>
+<h3>
+LINK BLOCK B (LKSB) &nbsp; &nbsp; Page configuration &ndash; page number
+selection.
+</h3>
 <p>
 Once you have decided where you want your RAM (there&rsquo;s no
-anawer to that) the next thing is to decide whether you want the
-RAM as one 32K page or tno 16K pages and then which pages to use
-(0 to 3). This t= the decoding carried out at LKSB. If you
-choose to have tua 16K pages these are ausigned as page A and
+answer to that) the next thing is to decide whether you want the
+RAM as one 32K page or two 16K pages and then which pages to use
+(0 to 3). This is the decoding carried out at LKSB. If you
+choose to have two 16K pages these are assigned as page A and
 page B and may be placed into the memory map on pages 0 to 3.
-The explanation provided in the manual for this, decoding is.
+The explanation provided in the manual for this, decoding is
 probably the hardest part to follow. It is easy to configure
-your board from the examples provided but the explanation i&reg; not
-Very clear and it took a phone call to Microcode and a long hard
+your board from the examples provided but the explanation is not
+very clear and it took a phone call to Microcode and a long hard
 look at the circuit diagram before the theory emerged. The page
 selection uses Port FFhex to feed a latch which is linked to the
 buffered data bus. The low nibble of the byte provides the page
-J enables and the high nibble, the page write enables.
+read enables and the high nibble, the page write enables.
 </p>
+<table class="w-r-wenable">
+<tr><td></td><td colspan=4>W Enable</td><td colspan=4>R Enable</td></tr>
+<tr><td>Data<br>Bus</td><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><td>Page</td><td>3</td><td>2</td><td>1</td><td>0</td><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+</table>
 <p>
-W Enable R Enable
-Data
-</p>
-<p>
-Bus 1716&rsquo;S) S2ITIOF
-</p>
-<p>
-Page 321035210
-</p>
-<p>
-Therefore, to put your RAM as Read/<?php spChar("zwsp"); ?>lrite on pages 0 and 2,
-connect 1D to bit 0, 2D te bit 4, 3D to bit 2 and 4D to bit 4:
+Therefore, to put your RAM as Read/<?php spChar("zwsp"); ?>Write on pages 0 and 2,
+connect 1D to bit 0, 2D to bit 4, 3D to bit 2 and 4D to bit 6.
 This leaves the pages free for other page compatible RAN or
 EPROM boards.
 </p>
+<h3>
+LINK BLOCK C (LKSC) &nbsp; &nbsp; Page configuration &ndash; page reset option
+</h3>
 <p>
-LINK BLOCK &copy; (LKSC) Page configuration &ndash; page reset option
-</p>
-<p>
-This lank block is used to select which, if any, pages will
-be paged in on reset (including power up). if page B ts required
-on reset then link WEB and REB to any of the @ dash pads. Tt is
+This link block is used to select which, if any, pages will
+be paged in on reset (including power up). If page B is required
+on reset then link WEB and REB to any of the Q dash pads. It is
 possible to have the selected page as Read only on reset in
-Mhich case only the REB is connected to a @ dash pad. Hardwired
-Write protect&rsquo; (and Read protect if necessary) can be
-scromplished by wiring the appropriate WE and/or RE pads to the
-Provided &copy; volt pads.
+which case only the REB is connected to a Q dash pad. Hardwired
+Write protect (and Read protect if necessary) can be
+accomplished by wiring the appropriate WE and/or RE pads to the
+provided 0&nbsp;volt pads.
 </p>
+<h3>
+LINK BLOCK D (LKSD) &nbsp; &nbsp; Power option.
+</h3>
 <p>
-LINK BLOCK D (LKSD) Power option.
-</p>
-<p>
-This is the beauty of the board. Up untsi now st can have
-been regarded purely as 32K of paged RAM. The poner option
-provides the battery-backed links required ta turn the RAN into
-Something close to easily &ndash; programmable/<?php spChar("zwsp"); ?>eraseable/<?php spChar("zwsp"); ?>changeable
-EPROM. Each chip in provided with a link option allowing it- te
-be either connected ta the backup supply (provided by an
-on-board VARTEC MEMPAK S.4v PCB Ni-cad. Battery) or connected
+This is the beauty of the board. Up until now it can have
+been regarded purely as 32K of paged RAM. The power option
+provides the battery-backed links required to turn the RAM into
+something close to easily programmable/<?php spChar("zwsp"); ?>eraseable/<?php spChar("zwsp"); ?>changeable
+EPROM. Each chip in provided with a link option allowing it to
+be either connected to the backup supply (provided by an
+on-board VARTEC MEMPAK 3.6v PCB Ni-cad. Battery) or connected
 just to the normal +5v line of the micro. The battery can
-Bupport the fully populated board for over 40 days and recharge
+support the fully populated board for over 40 days and recharge
 </p>
 <?php columnEnd(1); ?>

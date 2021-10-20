@@ -1,71 +1,65 @@
 <?php columnStart(1); ?>
 <p>
-Latter day ROMs work off 5 valts and take relatively little
-jurce from bus lines, particularly ae they have standby modes
-then not enabled. So, out mth the hacksaw ang dawn to work.
+Latter day ROMs work off 5 volts and take relatively little
+juice from bus lines, particularly as they have standby modes
+when not enabled. So, out with the hacksaw and dawn to work.
 </p>
 <p>
 The first job is to remove the switches from the Monitor
 board and you will also need to remake the links to pin 20
-(Output Enable) on the tue sockets that are plugged through into
+(Output Enable) on the two sockets that are plugged through into
 the Nascom&nbsp;1.
 </p>
 <p>
 Next you need to cut the tracks to pin 19 and 21 of the
-other pair of sockets. These tarry the *17 ang &ndash;5 volts needed
-by 27085 but nat by 2716s nor bigger ROMS.
+other pair of sockets. These carry the *12 and -5 volts needed
+by 2708s but not by 2716s nor bigger ROMs.
 </p>
 <p>
 The 2708 sockets provide all the data bus lines and address
-lines AG ta AD. To aceonadate a 2/16, you need ta find AU and
-connect 1 to pin 1% 8/2732 needs All and that has to go to pin.
-18, and the BoSIC ROM need= AL! on pin Zt. Check with) a data
+lines A0 ta A9. To accomodate a 2716, you need ta find A10 and
+connect it to pin 19. A 2732 needs A11 and that has to go to pin
+18, and the BASIC ROM needs A12 on pin 21. Check with a data
 sheet, or any of the many articles on the subject more competent
+than this one, as to what to do with the pins that are now
+floating, but you can in practice pick up A10, A11 and A12 from
+anywhere on the Nascom&nbsp;1. Suggested places in increasing order
+of &lsquo;safety&rsquo; are the Z80 CPU Socket (pins 40, 1 and 2), the
+Nascom&nbsp;1 bus/<?php spChar("zwsp"); ?>43-way connector (pins 14, 13 and 9) and lastly the
+Nas/<?php spChar("zwsp"); ?>Gemini/<?php spChar("zwsp"); ?>80-bus connectors on the buffered. motherboard (pins
+40,41 and 42). These are also in increasing order of length, so
+a final decision must be made as a compromise between physical
+and electrical properties.
 </p>
 <p>
-than ihis one, ae ta what toda with the pins that are now
-floating, but you can is prartice pack up Alb, A11 and A12 from
-anyuhere on the Nascom I- Suggested plares in increasing Order
-Gf castety are the Z80 CPU Socket (pins 40, f and 2), the
-Nascom&nbsp;1 00x 42 way connector (pins 1, 1% and 9) and lastly the
-Nas/Gemini /d0-hus connectors on the bulfered. matherhoard (pins
-3u,41 aod 42), These are also in increasing order of length, 20
-</p>
-<p>
-2 final decision must be made ss 2 compromise between physical
-god electrical properties
-</p>
-<p>
-The last part of the modification depends on the KAM board
+The last part of the modification depends on the RAM board
 that is fitted to the system and produces the correct enable
-Lines for Ene ROMS, I une the Nascom RAM&nbsp;B Card which has the
-Nascom&nbsp;1 connection on the bant-select. sochet. Sixteen
-dpen-collector outputs are used ta choose which part of each
-bank of KAM is mapped to which 4k memory area. The simplest,
-solution. and the one that I tried first, was ta connect pin 20
-fof the BASIC ROM to the E and F qutputs of the bant-select. No
-Swgery $s required since there is a convenient hole where the
-Siiteh was talen out of the based.
+lines for the ROMs. I use the Nascom RAM&nbsp;B card which has the
+Nascom&nbsp;1 connection on the bank-select socket. Sixteen
+open-collector outputs are used to choose which part of each
+bank of RAM is mapped to which 4K memory area. The simplest
+solution and the one that I tried first, was to connect pin 20
+of the BASIC ROM to the E and F outputs of the bank-select. No
+surgery is required since there is a convenient hole where the
+switch was taken out of the board.
 </p>
 <p>
-5p. the Ni select goes to ploch 0. the Joh of RAM goes from
-1oowH to AFFLH and the BASIC ROM resides from EOOUH fo FFFFH.
-Nas-sve in the 2708 sockets and smitch on.
+So, the N1 select goes to block 0, the 16K of RAM goes from
+1000H to 4FFFH and the BASIC ROM resides from E000H to FFFFH.
+Nas-sys in the 2708 sockets and switch on.
 </p>
 <p>
-The firat tank was to test the RAM and that preduced no
-problems at all. Nas-sys appeared to wark through all. tts many
+The first task was to test the RAM and that produced no
+problems at all. Nas-sys appeared to work through all its many
 features and, very happily, when the area of memory from E000H
-Upwards 16 tabulated, me can sew that BASIC ys there. Give its
-Doand st crashes.
+upwards is tabulated, we can sew that BASIC is there. Give it a
+&lsquo;J&rsquo; and it crashes.
 </p>
 <p>
-Wart states... 0 Yes, I have heard of them, but this 18 not
-meant to be a technical article. Is the ROM fact enough to work?
-Can the Z80 yead it at JAM?&rdquo; If obviously is because it can be
-tabulated and you can even do a fast copy af its contents into 3
-</p>
-<p>
-Ram area with the command but the d sty11 does nat works
+Wart states...?? Yes, I have heard of them, but this is not
+meant to be a technical article. Is the ROM fast enough to work?
+Can the Z80 read it at 2MHz? It obviously is because it can be
+tabulated and you can even do a fast copy of its contents into a
+Ram area with the &lsquo;C&rsquo; command but the &lsquo;J&rsquo; still does not work.
 </p>
 <?php columnEnd(1); ?>
