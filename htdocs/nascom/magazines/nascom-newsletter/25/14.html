@@ -1,64 +1,64 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 be quite as expected &ndash; each EPROM location within a block will
 remain at an address relative to a 16k block address, ie. a
-typical 16k block would be C000 D000 E000 and F000 tor posiians:
-12 5-4 respectively +f however the block address started at
-B000 then they would run aa follows for 12 3 4 &ndash; Dood &pound;000 F000
-&lsquo;and then B000 respectively &ndash; does that make senst
+typical 16k block would be C000 D000 E000 and F000 for positions
+1 2 3 4 respectively if however the block address started at
+B000 then they would run as follows for 1 2 3 4 &ndash; D000 E000 F000
+and then B000 respectively &ndash; does that make sense.
 </p>
 <p>
-L think that is all you need to know with regard to
-addressing &ndash; except that it&rdquo; is quite O.K. ta only access part
-Of a page without any side effects.
+I think that is all you need to know with regard to
+addressing &ndash; except that it is quite O.K. to only access part
+of a page without any side effects.
 </p>
-<p>
+<h3>
 MODIFICATIONS TO PROVIDE SOFTWARE PAGING
-</p>
+</h3>
 <p>
 First the bad news &ndash; you will need to buy a CMOS IC type
-HCaOSS or CDAOSS ar similar (about Sop) and, if you haven&rsquo;t got
-one fitted, a 24-way dil plug to save B...-.---9 OOPS, messing
-Up the address selection dil socket.
+MC4053 or CD4053 or similar (about 50p) and, if you haven&rsquo;t got
+one fitted, a 24-way dil plug to save B........g OOPS, messing
+up the address selection dil socket.
 </p>
 <p>
 With reference to Fig 2 &ndash; STICK the IC with its legs
-SKYWARD So that pin 1 of the IC&nbsp;1@ next to pin 24 of the dil
-plug. Pins 1, 4, 6 7, &amp; @ can the be (bent) straight and
-soldered directly &lsquo;to&rsquo; the dil plug as shown. The ramainder of
-the connections can then be made &ndash; 1 mould suggest using THIN
+SKYWARD so that pin 1 of the IC is next to pin 24 of the dil
+plug. Pins 1, 4, 6, 7, &amp; 8 can the be (bent) straight and
+soldered directly to the dil plug as shown. The ramainder of
+the connections can then be made &ndash; I mould suggest using THIN
 single stranded wire for this job au there is NOT a LOT ROOM
 and solder bridges can occur all too easily. Then wire ping 9 &amp;
-10 to ICS2 pins 15 &amp; 7 respectively thece wires pick up the
+10 to IC32 pins 15 &amp; 7 respectively these wires pick up the
 latched addresses from the FF port bits 2 &amp; 3 (bit 1 turns ON or
 OFF the card &ndash; hence the odd page address). Finally connect pin
-16 of your I.c. to. *Sv which is conveniently available on the
-Link blocks and is shown in fig 1 When using 2752 4t as
-essential to use WAIT SIATES an very few if any are fast
-enough to go at 4 NH without, I have therefore shown the link
-Fitted.
+16 of your I.C. to. +5v which is conveniently available on the
+link blocks and is shown in fig 1. When using 2732 it as
+essential to use WAIT STATES as very few if any are fast
+enough to go at 4 MHz without, I have therefore shown the link
+fitted.
 </p>
 <p>
-That&rsquo;s it folks it should all happen by typing 0 FF 03 to
+That&rsquo;s it folks it should all happen by typing O FF 03 to
 select page (2) 03 etc. and remember pressing reset will
-select page (1) Ol. Selecting new pages will CRASH the
-computer if any SUIN or SUOUT jumps &ldquo;are operating so type N
-FIRST to disable them otherwise you wll have to do a RESET
+select page (1) 0l. Selecting new pages will CRASH the
+computer if any $UIN or $UOUT jumps are operating so type N
+FIRST to disable them otherwise you will have to do a RESET
 anyway and you also risk SCRIBBLING UPON YOUR PROGRAMS, if in
-doubt press RESET and reselect your page-
+doubt press RESET and reselect your page.
 </p>
-<p>
+<h3>
 FINAL NOTES
-</p>
+</h3>
 <p>
-In my onn system and that shown Gk of EPROM on page (4) 07
-has been replaced by the BASIC ROM (link to Ron the dil plug)
-this can be altered simply by moving that wire link to&rdquo; the
-apropriate bank select- With a little ingenuity or another
+In my own system and that shown 8k of EPROM on page (4) 07
+has been replaced by the BASIC ROM (link to R on the dil plug)
+this can be altered simply by moving that wire link to the
+apropriate bank select. With a little ingenuity or another
 BIT A LOGIC the additional EPROM locations could be paged in or
-put at another address. If all this paging ts getting
-Complicated &ldquo;hhy not wite a MENU program to select the pages
-and start the proge for you and load them into RAM when and if
-Fequired&rdquo; &ndash; I did and it took tk todo at alliiiiierer,
+put at another address. If all this paging is getting
+complicated &ldquo;Why not write a MENU program to select the pages
+and start the progs for you and load them into RAM when and if
+required&rdquo; &ndash; I did and it took 1k to do it all!!!!!!!!.
 </p>
 <?php columnEnd(1); ?>

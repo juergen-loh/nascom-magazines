@@ -1,80 +1,67 @@
 <?php columnStart(1); ?>
-<p>
-The &ldquo;How to fit 64K of EPROM to your Nascom Hods
-ao"How to Page Tt&rdquo;
-</p>
-<p>
+<h1 id="article1">
+The &ldquo;How to fit 64K of EPROM to your Nascom Hods<br>
+&amp; &ldquo;How to Page It&rdquo;
+</h1>
+<h2 class="author">
 by Paul Anderson
-</p>
+</h2>
 <p>
-By special request (and much pestering after seeing ay
-system &ndash; sorry chaps) I will proceed te enlighten those of you
-that auked for details of how it&rsquo;s done itis in fact quite
-eany to do and foras the basis of a very flexible system
-especially when using 64 of RAM&nbsp;, however I modified my system
+By special request (and much pestering after seeing my
+system &ndash; sorry chaps) I will proceed to enlighten those of you
+that asked for details of how it&rsquo;s done &ndash; it is in fact quite
+easy to do and forms the basis of a very flexible system
+especially when using 64k of RAM&nbsp;, however I modified my system
+so that I always had a full 48k of RAM available &ndash; this of
+course meant that all firmware must reside between D000 and
+FFFF which by the by means that all software needs to be
+relocated ...... After many hours I have produced source
+listing for most of the software and ended up as follows....
 </p>
-<p>
-se that I always had a full 4Gk of RAM available this of
-Course meant that all firmware must reside between D000 and
-FRE which by the by means that all software feeds to be
-</p>
-<p>
-relocated .. .:.. After many hours I have produced source
-</p>
-<p>
-Listing for mast of the software and ended up as follow
-</p>
-<p>
-Page 1 contains ZEAP&nbsp;, NAS DIS&nbsp;, DEBUG&nbsp;, NAS PEN and optionally
-DCS Das 7 NAS DOS 7 nothing.
-</p>
-<p>
-Page 2 contains general utilities and other debugging aids,
-</p>
-<p>
-(not yet full)
-</p>
-<p>
-Page 3 contains BLS PASCAL and NAS DOS at the wrong address
-which T load to the correct addrese hen
-needed.
-</p>
-<p>
-Page 4 contains BASIC (8k ROM) and a miscellanious mass of
-TOOLKITS and BASIC EXTENSIONS.
-</p>
+<table>
+<tr><td>Page 1 contains</td><td>ZEAP&nbsp;, NAS DIS&nbsp;, DEBUG&nbsp;, NAS PEN and optionally
+DCS DOS&nbsp;/ NAS DOS&nbsp;/ nothing.</td></tr>
+<tr><td>Page 2 contains</td><td>general utilities and other debugging aids.<br>
+(not yet full)</td></tr>
+<tr><td>Page 3 contains</td><td>BLS PASCAL and NAS DOS at the wrong address
+which I load to the correct address when
+needed.</td></tr>
+<tr><td>Page&nbsp;4&nbsp;contains</td><td>BASIC (8k ROM) and a miscellanious mass of
+TOOLKITS and BASIC EXTENSIONS.</td></tr>
+</table>
 <p>
 Page switching is very easy and consists of outputting to
-Port FF the page number which incidently are NOT ty 2, 3, 4 &mdash;
-but &copy; to disable the card and 1, 3,3, 7 for &lsquo;each of the
-pages. This provides the simplest &lsquo;modifications with maximum
-Flewibility.
+Port FF the page number which incidently are NOT 1, 2, 3, 4 &ndash;
+but 0 to disable the card and 1, 3, 5, 7 for each of the
+pages. This provides the simplest modifications with maximum
+flexibility.
 </p>
 <p>
 Now to the &ldquo;Nitty Gritty&rdquo; &ndash; the mods are in two parts,
 firstly to allow the fitting of 4k EPROMs, and. secondly to
-provide the switching under software control:
+provide the switching under software control.
 </p>
-<p>
+<h3>
 MODIFICATION TO FIT 2732 EPROMS
-</p>
+</h3>
 <p>
-Ready &ndash; REMOVE a11 capacitors which are situated along
-side the EPROM sockets and with the following numbers 28,&rdquo; 50,
-32, 34, 36, 3B, 40, 42, 44, 46, 48, 50, 52, 54, 56 and SB.&rdquo; This
+Ready &ndash; REMOVE all capacitors which are situated along
+side the EPROM sockets and with the following numbers 28, 30,
+32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56 and 58. This
 frees the highest address line (which normally goes to the +5v
+supply).
 </p>
 <p>
-With reference to fig 1 wire each of the link blocks a
+With reference to fig 1 wire each of the link blocks as
 shown, each one being wired the same way. Identify the track
-Plate through hole near ICH and link it to the right-hand centre
+plate through hole near IC8 and link it to the right-hand centre
 pin of all the link blocks. This provides the new highest order
-Address line.
+address line.
 </p>
 <p>
-Selection of address blocks is just au before except that
-each block is now 16k tong inot 4/8). Tf for any reason you
-Secide to start a block on an odd numbered address (ie B000)
-then the address Locations of each EPROM in the block will not
+Selection of address blocks is just as before except that
+each block is now 16k long (not 4/8k). If for any reason you
+decide to start a block on an odd numbered address (ie B000)
+then the address locations of each EPROM in the block will not
 </p>
 <?php columnEnd(1); ?>

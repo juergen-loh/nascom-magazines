@@ -7,57 +7,57 @@ by M. Reed
 </h2>
 <p>
 This series of articles sets out to show you how to write a
-200 disassembler for your Nascom. I wrote mine using a NI] with
+Z80 disassembler for your Nascom. I wrote mine using a NII with
 Nas-Sys&nbsp;1 but I do not see different monitors will make any
-difference, so lang as you know your machine. These articles
+difference, so long as you know your machine. These articles
 make extensive use of the algorithm in Tony Baker&rsquo;s excellent
 book &ldquo;Mastering Machine Code On Your ZX81&rdquo;. Indeed, it was from
-this book that I wrote my disassenbler. The final program, which
-also includes the option of &lsquo;Single Stepping&rsquo; thraugh a
-Sisassebled program, should occupy Tess than 1800 (decimal)
+this book that I wrote my disassembler. The final program, which
+also includes the option of &lsquo;Single Stepping&rsquo; through a
+disassembled program, should occupy less than 1800 (decimal)
 bytes.
 </p>
 <p>
-It is essential to fully understand the moniter of the
-Nascom before launching yourself into a task of such mamaoth
-dimensions. Hy disassembler, named &lsquo;The Beast&rdquo; land. also. many
-unrepeatable words), took &amp; weeks to write and involved mast&rdquo; of
-fay time during that period. T was at home all day&rsquo;&rsquo; 1 tad just
-finished ay A&rsquo;Levels and was looking for some light relief.&rdquo; Do
-not despair if you have ta scrap your disassembler and. start
--gain. Mine is version 3, and each version is always a great
+It is essential to fully understand the monitor of the
+Nascom before launching yourself into a task of such mammoth
+dimensions. My disassembler, named &lsquo;The Beast&rsquo; (and also many
+unrepeatable words), took 6 weeks to write and involved most of
+my time during that period. I was at home all day!! I had just
+finished my A&rsquo;Levels and was looking for some light relief. Do
+not despair if you have to scrap your disassembler and start
+again. Mine is version 3, and each version is always a great
 improvement on its predecessor!
 </p>
 <p>
-This first article wil set up the program and start the
+This first article will set up the program and start the
 very beginnings of your disassembler.
 </p>
 <p>
-The pragram uses certain variables which must be stored
-somewhere, Some can be saved in the 200s very useful alternate
+The program uses certain variables which must be stored
+somewhere. Some can be saved in the Z80s very useful alternate
 set of registers (ie BC&rsquo;, HL&rsquo; etc). The rest will have to be
-Stored in RAM. One important point to note is the corruption of
-Variables by subroutines, especially those in the alternate
+stored in RAM. One important point to note is the corruption of
+variables by subroutines, especially those in the alternate
 registers. So take suitable precautions with your subroutines.
-None of the Nas-Sye 1 routines I used interfered with the
-alternate et. But do be careful-
+None of the Nas-Sys&nbsp;1 routines I used interfered with the
+alternate set. But do be careful.
 </p>
 <p>
 One particular variable that requires some fore thought is
 that of STRDIS. That is the variable that holds the string of
 characters that make up the disassembled instruction. This will
-be printed using Naw-Sys, and so must be stored as a string of
+be printed using Nas-Sys, and so must be stored as a string of
 ASCII codes.
 </p>
 <p>
-A method of marking the end of STRDIS must be uned or some
-pointer system. The marker or pointer will&rdquo; have to be eastly
-Changed by any part of the cisasseebler needing ta change
-STRDIS. I used CFF (&pound; will always represent base 16 or hex) as a
+A method of marking the end of STRDIS must be used or some
+pointer system. The marker or pointer will have to be easily
+changed by any part of the disassembler needing to change
+STRDIS. I used &pound;FF (&pound; will always represent base 16 or hex) as a
 marker. The reason for the marker is that the length of STRDIS
 is unknown. It can vary from, for example, CP B to LD
-HL, (&pound;1000). So be aware of STRDIS&rsquo;&laquo; needs, and make it the Last
-variable ina table, so that it can grab all. the RAM at
-qeeds
+HL, (&pound;1000). So be aware of STRDIS&rsquo;s needs, and make it the last
+variable in a table, so that it can grab all the RAM at
+needs!!!
 </p>
 <?php columnEnd(1); ?>

@@ -1,63 +1,63 @@
 <?php columnStart(1); ?>
 <p>
 Looking at the bit patterns for the Z80 instruction set
-(they are nicely tabulated in your Nascom manual -.. towards the
-back}, you will notice that many groups of instructions use the
-middie three bite to represent 2 register, condition, arithmetic
-Gperation, or a number from oO to 7 (for the bitwise
-operations)(r, cy a &amp; n respectivelyl.
+(they are nicely tabulated in your Nascom manual ... towards the
+back), you will notice that many groups of instructions use the
+middle three bite to represent a register, condition, arithmetic
+operation, or a number from 0 to 7 (for the bitwise
+operations)[r, c, a &amp; n respectively].
 </p>
-<p>
-Bits or&nbsp;. a a
-000 8 Nz o abo a
-001 c z 1 Ape
-10 D Ne 2 sup
-on E c 3 sec A
-100 4 Fo a ND
-101 L PE 5 xOR,
-110 INDIsP e oR
-au a " 7 ce
-</p>
+<table class="indent" style="width: 60%">
+<tr><td>Bits</td><td>r</td><td>c</td><td>n</td><td>a</td></tr>
+<tr><td>000</td><td>B</td><td>NZ</td><td>0</td><td>ADD A</td></tr>
+<tr><td>001</td><td>C</td><td>Z</td><td>1</td><td>ADC</td></tr>
+<tr><td>010</td><td>D</td><td>NC</td><td>2</td><td>SUB</td></tr>
+<tr><td>011</td><td>E</td><td>C</td><td>3</td><td>SBC A</td></tr>
+<tr><td>100</td><td>H</td><td>PO</td><td>4</td><td>AND</td></tr>
+<tr><td>101</td><td>L</td><td>PE</td><td>5</td><td>XOR</td></tr>
+<tr><td>110</td><td>INDIS</td><td>P</td><td>6</td><td>OR</td></tr>
+<tr><td>111</td><td>A</td><td>M</td><td>7</td><td>CP</td></tr>
+</table>
 <p>
 INDIS represents an index register HL, IX or IY (and the
-displacenent if necessary). A Similar &lsquo;system operates with
+displacement if necessary). A similar system operates with
 register pairs.
 </p>
+<table class="indent" style="width: 40%">
+<tr><td>Bits</td><td>ss</td><td>ad</td></tr>
+<tr><td>00</td><td>BC</td><td>BC</td></tr>
+<tr><td>01</td><td>DE</td><td>DE</td></tr>
+<tr><td>10</td><td>IND</td><td>IND</td></tr>
+<tr><td>11</td><td>SP</td><td>AF</td></tr>
+</table>
 <p>
-Bits ss ad
-00 BE BC
-oO De De
-10 IND IND
-a SP oF
-</p>
-<p>
-Where IND represents one of the index registers (HL, IX, 1Y)
+Where IND represents one of the index registers (HL, IX, IY)
 but with no displacements. Make sure that you understand this,
-because basically disassembley is analysis of bit patterns. i
-did not, and wrote a disasseabler so complex even I could not
-make head nor tail of it&rsquo;! These tables will have to go inte
+because basically disassembley is analysis of bit patterns. I
+did not, and wrote a disassembler so complex even I could not
+make head nor tail of it!! These tables will have to go into
 tables in the computer as they are crucial. You will have to
 define a character to represent INDIS and IND as we don&rsquo;t yet
-know which of the index registers to output&rsquo;&rsquo; Remember these as
-Hf they were arrays, eg. r(0) &ndash; r(7) etc.
+know which of the index registers to output!! Remember these as
+if they were arrays, eg. r(0) &ndash; r(7) etc.
 </p>
 <p>
-The disasseabler is going to need one vital piece of
-information before it starts. Elementary &ndash; where to start froa.
+The disassembler is going to need one vital piece of
+information before it starts. Elementary &ndash; where to start from.
 This can easily be done using the Nas-Sys routine ARGS. Load
 this disassembly address into BC&rsquo; (the alternate registers are
-identified by&ldquo;). This piece of your program is the first
-encountered on a run and is not used&rdquo; again. From now on the
-disascembley address is always in BC&rsquo;. It must be the first byte
-of an instruction or else there will be havec!&rsquo; Next thing to
-da 14 to set STRDIS to an empty string.
+identified by &rsquo;). This piece of your program is the first
+encountered on a run and is not used again. From now on the
+disassembley address is always in BC&rsquo;. It must be the first byte
+of an instruction or else there will be havoc!! Next thing to
+do is to set STRDIS to an empty string.
 </p>
 <p>
 Now there are two more variables &ndash; held also in the
-alternate registers (use D&rsquo; and E&rsquo;) &ndash; te be initialised.&rdquo; Call
+alternate registers (use D&rsquo; and E&rsquo;) &ndash; to be initialised. Call
 one INDEX, the print routine will require this. The other call
 TYPE and this holds information as to whether the instruction
-began with &pound;8, LED or neither. Set both these to zero. Take #
+began with &pound;CB, &pound;ED or neither. Set both these to zero. Take a
 deep breath and begin!!!
 </p>
 <?php columnEnd(1); ?>

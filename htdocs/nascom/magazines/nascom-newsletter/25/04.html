@@ -1,77 +1,73 @@
 <?php columnStart(1); ?>
 <p>
-BC? must be saved somewhere in RAM, I leave its actual
-positron up to you, call 18 BCSAVE. Do not get this variable
+BC&rsquo; must be saved somewhere in RAM, I leave its actual
+position up to you, call it BCSAVE. Do not get this variable
 corrupted!
 </p>
 <p>
 If you remember, when an IX of IY are used with a
-displacement, the displacement is always the third byte oF an
-insteuction. BC&rdquo; weil get altered but the print routine will
-Still need to know thos third byte, Get a copy of the first byte
-Of the ap-code into the A register, Do not alter BC&rsquo; &ndash; ite
-Useful life is nat over yee.
+displacement, the displacement is always the third byte of an
+instruction. BC&rsquo; will get altered but the print routine will
+still need to know this third byte. Get a copy of the first byte
+of the op-code into the A register. Do not alter BC&rsquo; &ndash; its
+useful life is not over yet.
 </p>
 <p>
-This part will test your knowledge of 760 shifts and other
-bit-wise Operations. Split A into 5 parts F, Gand H (nat to be
-Confused with the actual register H). These variables must be
-stored in memory
+This part will test your knowledge of Z80 shifts and other
+bit-wise operations. Split A into 3 parts F, G and H (not to be
+confused with the actual register H). These variables must be
+stored in memory.
 </p>
+<table class="indent">
+<tr><td>F</td><td>holds</td><td>bits</td><td>7 (MSB) and 6</td></tr>
+<tr><td>G</td><td>"</td><td>"</td><td>5, 4 and 3) [Remember r(0) etc]</td></tr>
+<tr><td>H</td><td>"</td><td>"</td><td>1, 2 and 0 (LSB)</td></tr>
+</table>
 <p>
-Fholds bite 7 (NSB) and 6
-</p>
-<p>
-so &ldquo;5, 4 and 3) (Remember (0) eted
-we * 4) 2 ana 0 ager
-</p>
-<p>
-Te the byte was E4F &mdash;&gt; OF 001 111 then F would be 1 (Not
-</p>
-<p>
-64), G would be 1 (Not 4) and H would be 7. Got tt? Easy wasn&rsquo;t
-</p>
-<p>
-402&rdquo; Now to do something similar to G. G goes inta tha parts
-called J and k (held in RAM). J consists of bite 2 and | af Gy
-while Kis just Bit 0. For the example above --- and) K=1)
-All these variables must be put somewhere safe. 1 keer
-emphasising this because T kept &lsquo;corrupting my variables and
-caused all sorts of things to happen!*
+If the byte was &pound;4F &rarr; 01&nbsp;001&nbsp;111 then F would be 1 (Not
+64), G would be 1 (Not 4) and H would be 7. Got it? Easy wasn&rsquo;t
+it? Now to do something similar to G. G goes into two parts
+called J and k (held in RAM). J consists of bite 2 and 1 of G,
+while K is just Bit 0. For the example above ... J=0 and K=1.
+All these variables must be put somewhere safe. I keep
+emphasising this because I kept corrupting my variables and
+caused all sorts of things to happen!!
 </p>
 <p>
 The next part is fundamental to the program. The print-out
-routine. Call it PRDIS, print the disassembled string. I. will
+routine. Call it PRDIS, print the disassembled string. I will
 define it, but you can write it.
 </p>
-<p>
-GD No registers or variables may be altered (corrupted). You
+<dl>
+<dt>
+(1)</dt><dd>No registers or variables may be altered (corrupted). You
 must save them first (stack?) and restore them later
-</p>
-<p>
-(2) The routine is a subroutine, and as such must end with a
+</dd>
+<dt>
+(2)</dt><dd>The routine is a subroutine, and as such must end with a
 &pound;09 RET instruction.
-</p>
-<p>
-(3) Every INDIS in STRDIS is to be output as ML, [x4d or Ived.
-Where dis the displacement (BCSAVE is used&rsquo; here). INDEX
+</dd>
+<dt>
+(3)</dt><dd>Every INDIS in STRDIS is to be output as HL, IX+d or IY+d.
+Where dis the displacement (BCSAVE is used here). INDEX
 will hold 0, 1 or 2 respectively.
+</dd>
+<dt>
+(4)</dt><dd>For every IND, print HL, IX or IY, depending on the
+contents of INDEX, as in (3)
+</dd>
+<dt>
+(5)</dt><dd>If you wish you can print the contents of BCSAVE, this
+will tell you which location in memory the instruction
+came from. Nas-Sys is helpful here.
+</dd>
+</dl>
+<p>
+Check your subroutine with dummy data to test it.
 </p>
 <p>
-(A) For every IND, print HL, IX oF IY, depending on the
-contents af INDEX, as in&rsquo; (3)
-</p>
-<p>
-(3) Tf you wish you can print the contents of BCSAVE, this
-will tell you mhich location in memory the instruction
-Came from. Nas-Sys is helpful here,
-</p>
-<p>
-Check your subroutine with dumey data to test it.
-</p>
-<p>
-Well, ali 1 can say now is best of luck and be careful with
-those variables. The second part of this series will&rdquo; follow aa
+Well, all I can say now is best of luck and be careful with
+those variables. The second part of this series will follow in
 the next issue.
 </p>
 <?php columnEnd(1); ?>

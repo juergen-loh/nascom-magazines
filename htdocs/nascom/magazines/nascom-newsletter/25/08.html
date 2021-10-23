@@ -8,46 +8,39 @@ by B. Johannessen
 <p>
 After reading an article in Computing Today written by Don
 Thomasson, I got an idea to write a program which can copy the
-contents of the Nascom screen directly to an Epson MXG0 F/T type
-2printer by means of &ldquo;Bit Image Mode&rdquo;.
+contents of the Nascom screen directly to an Epson MX80 F/T type
+2 printer by means of &lsquo;Bit Image Mode&rsquo;.
 </p>
 <p>
 Graphics and alphanumerics are directly transferred and you
-can choose between black on white or white on black,
+can choose between black on white or white on black.
 </p>
 <p>
-The usual MXBO F/T type 1 may only be used if it is equipped
+The usual MX8O F/T type 1 may only be used if it is equipped
 with GRAFTAX. The GRAFTAX may need some other initialisation.
 </p>
 <p>
-The first thing to be done is to place 2 copy of the Nascom
-CHORACTER and NAS-GRA EPROHs inta the Nascoms memory space. In
+The first thing to be done is to place a copy of the Nascom
+CHARACTER and NAS-GRA EPROMs into the Nascoms memory space. In
 my case it resides from 9000H to 9FFFH.
 </p>
 <p>
 The main program resides in ROM from A000H&nbsp;. To start the
-copy T have used the 1 command in and) altered it to
-paint to A000H and if I add an &ldquo;Fr the copy will be
-Inverted. The program can also be called from BASIC with 2 USR
-routine call to AOOSH.
+copy I have used the L command in Nas-sys and altered it to
+point to A000H and if I add an &lsquo;F&rsquo; as ARG1, the copy will be
+inverted. The program can also be called from BASIC with a USR
+routine call to A003H.
 </p>
 <p>
-The problem I had in witing the progran was that the Nascom
+The problem I had in writing the program was that the Nascom
 characters have 16 lines and the printer only has 8 needles in
 &lsquo;bit image made&rsquo;. The printer has to go 2 lines for each Nascom
-line sal had to use a buffer to store the &lsquo;bit image&rsquo; of one
-Naucom ling before it is Sent to the printer.
+line so I had to use a buffer to store the &lsquo;bit image&rsquo; of one
+Nascom line before it is sent to the printer.
 </p>
 <p>
-The program contains its ow printer routine since ay usual
-routine rejects Linefeed code 0AH.
+The program contains its own printer routine since my usual
+routine rejects linefeed code 0AH.
 </p>
-<p>
-2EAP ZBU Assembler &ndash; Source Listing:
-ido GEREENCOPY FOR NASCUN
-S070 5 for the Epson HXEK F/I type Lt
-9000 OCoC FRGY EDU bot
-gone vos SL kuU Ee
-bone Oou cr UU bob
-</p>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-08-1.png"); ?>
 <?php columnEnd(1); ?>
