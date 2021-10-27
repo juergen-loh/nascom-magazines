@@ -1,77 +1,87 @@
 <?php columnStart(1); ?>
 <h1 id="article1">
-A Neat Hardware Salutron te fitting CP/M
+A Neat Hardware Solution to fitting CP/M
 </h1>
 <h2 class="author">
-Yet another article by F. Anderson (by request!!)
+Yet another article by P. Anderson (by request!!)
 </h2>
 <p>
-This article covers hardware modifications to a standard(7?)
+This article covers hardware modifications to a standard(??)
+Nascom&nbsp;2 to provide the fallowing functions. They don&rsquo;t sound
+much but it does provide single bit logical control either by
+switch or port control (and enables compatibility with EPROM/<?php spChar("zwsp"); ?>RAM&nbsp;A
+card where fitted).
 </p>
-<p>
-Nasco 2 to pravide the fellawing cunctions. They don&rsquo;t sound
-mich but it Hoes provide single wit logical&rdquo; control exther by
-Seat! or port control (and enables compatibility with EPROM?
-</p>
-<p>
-FAM A card where feted).
+<h3>
 Features.
+</h3>
+<ol class="indent">
+<li>
+Switch in CP/M Boot ROM.
+</li>
+<li>
+Switch out Monitor ROM.
+</li>
+<li>
+Move Video/<?php spChar("zwsp"); ?>Work RAM.
+</li>
+<li>
+Automatic Reset on &ldquo;switchover&rsquo;<br>
+This avoids over-writing due to a &lsquo;wandering&rsquo; CPU and
+avoids the necessity on doing a Reset on each
+change-over.
+</li>
+<li>
+Automatic switching of restart address.<br>
+This allows restarts at F000H plus any other Dil switch
+selected address of your choice.
+</li>
+</ol>
+<p>
+These modifications have been found useful in fast changing
+from one system to another without the risk of corrupting the
+contents of memory so enabling the Nascom to get at CP/M!!
 </p>
 <p>
-Lo Switon in FE/H Beat ROM.
-2. Smiten out fons tor ROM.
-Sl move Yideo/<?php spChar("zwsp"); ?>Wort RAM.
-Rutomatir Keset an &ldquo;aw tchever&rdquo;
-Nas avoids dver-meiting due ta&rsquo; a wandering&rsquo; CPU and
-esaids the necessity on doing a Rewet&rdquo; on each
-Nange-over &laquo;
-5S. Automatic. switching of restart address.
-This allows restarts at FOuoH plus any other Dil switch
-selected adiress of your choice.
+The modifications outlined (which are open to variation)
+also cover re-arrangement of the use of the workspace RAM and
+the HASIC ROM positions for these using EPROM cards. These
+enable a complete CP/M system on N2 &amp; RAM cards whilst still
+retaining the use of the normal RAM&nbsp;/ EPROM sockets for more
+useful applications than JUST CP/M.
 </p>
+<h3>
+CP/M&nbsp;/ Nascom Switching.
+</h3>
 <p>
-These modi (ications have heen found useful in fast changing
-mone system to another without the risk of corrupting the
-ents of etory so enabling the Aascom to get at CP/M&rdquo;
+Fig. 1 shows the physical wiring arrangements. The 74LS157
+is a Quad 2-line-to-1-line data selector and provides 4
+&lsquo;change-over&rsquo; switch functions (operating active High). These
+are:
 </p>
+<ol class="indent">
+<li>
+Disable Monitor ROM.
+</li>
+<li>
+Enable CP/M ROM.
+</li>
+<li>
+Move Video &amp; Work space.
+</li>
+<li>
+Change Reset address.
+</li>
+</ol>
 <p>
-Tne modifications outirnes (which are open to variation)
-</p>
-<p>
-alse cover re-arrangement of the use of the worlspace RAR and
-She HASIC ROM positrons for these using EPROM cards. These
-vnabie 2 complete CF/M system on NZ &amp; RAM cards whilst still
-Tetaining the use of the normal RAM / EPROM sockets for ore
-useful oppltcations than JUST CPs.
-CP MH Nascam Switching.
-</p>
-<p>
-Fig 1 shows the physical wiring arrangements. The 74LS157
-ts 6 Quad 2 line tel-line data&rsquo; selector and provides 4
-</p>
-<p>
-&ldquo;changecover switch functions (operating active High). These
-</p>
-<p>
-Le Disable font tar kom.
-p. Enable CP/M ROM.
-</p>
-<p>
-I neve Video % wort space.
-a. Change Reset aderess.
-</p>
-<p>
-In 1 2 the Chip Enables are magh when not selected, 4 15
+In 1 &amp; 2 the Chip Enables are high when not selected, 4 is
 optional.
 </p>
 <p>
-Fig. 2 shows the very Simple track modifications to enable
-Reset address changing. It involves cutting twa tracks (the one
-on the upper FCE side is superfluous anyway &ndash; being a ground
-tracl which is bypassed several times on other parts. of the
-PCR). The other cut isolates the ground connection to the 4
-</p>
-<p>
-Fage 16
+Fig. 2 shows the very simple track modifications to enable
+Reset address changing. It involves cutting two tracks (the one
+on the upper PCB side is superfluous anyway &ndash; being a ground
+track which is bypassed several times on other parts of the
+PCB). The other cut isolates the ground connection to the 4
 </p>
 <?php columnEnd(1); ?>

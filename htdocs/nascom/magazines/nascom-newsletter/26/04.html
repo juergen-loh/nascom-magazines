@@ -1,73 +1,78 @@
 <?php columnStart(1); ?>
 <p>
-ZEAF. If in doubt use Y in ZEAP but it should not be necessary.
-zzz is 2000H for tape or disc ZEAP and 100M for my EPROM
-version. xxyy is the length of the buffer found at 3800 (yy) and
-BOI Gon and is always found in the first two bytes of ZEAP
+ZEAP. If in doubt use Y in ZEAP but it should not be necessary.
+zzzz is 2000H for tape or disc ZEAP and 1000H for my EPROM
+version. xxyy is the length of the buffer found at 3B00 (yy) and
+3B01 (xx) and is always found in the first two bytes of ZEAP
 buffers. Adding the length to the start of the buffer produces a
 location after an FF (stop byte). Of course the pseudo ops do
-not all&rdquo; translate and in both types of file 1 keep. hex
-references mith leading O&rsquo;s and trailing H&rsquo;s. Dont drop &ldquo;en &mdash;
-your Hs that is.
+not all translate and in both types of file I keep hex
+references with leading 0&rsquo;s and trailing H&rsquo;s. Don&rsquo;t drop &rsquo;en &ndash;
+your H&rsquo;s that is.
 </p>
 <p>
-Meannhile, back in NAS-ASS &ndash; one bother 18 remaving line
-with shift and cursor because wapty lines are not entered with
+Meanwhile, back in NAS-ASS &ndash; one bother is removing lines
+with shift and cursor because empty lines are not entered with
 the enter key. This may not be obvious till assembly or re-entry
-to tert edit mode. Use CTRL K to be sure. I usually spray edit
-commands all over the text and then struggle to recall. why 1
-Used the LDIR mnemonic. &ldquo;What cruel set of circumstances
-conspired to create this at an editor directive?
+to text edit mode. Use CTRL&nbsp;K to be sure. I usually spray edit
+commands all over the text and then struggle to recall why I
+used the LDIR mnemonic. What cruel set of circumstances
+conspired to create this as an editor directive?
 </p>
 <p>
 The put instruction does not cope if the last line of the
 inserting code is consequitive with the insertion line.
 </p>
 <p>
-In the manual LSB and NSE pseudo ops are the LSB (Least
+In the manual LSB and MSB pseudo ops are the LSB (Least
 Significant Boob). The op itself actually inserts one code byte
 into the program, what a strange device!
 </p>
 <p>
-1e, Like me, you wish to assign any variable with one byte
-for INT vectors then the LET will let. (ha) you- eventually.
-LET LOBYTE=INTLAB &amp; OFFH seasy
+If, like me, you wish to assign any variable with one byte
+for INT vectors then the LET will let (ha) you &ndash; eventually.
+</p>
+<p class="indent2">
+LET &nbsp; &nbsp; &nbsp; &nbsp; LOBYTE=INTLAB &amp; 0FFH &nbsp; &nbsp; &nbsp; ;easy<br>
+LET &nbsp; &nbsp; &nbsp; &nbsp; HIBYTE=((INTLAB &amp; 0FF00H)/256) &amp; 0FFH &nbsp; ;phew
 </p>
 <p>
-LET &mdash;-HIBYTE=(CINTLAB &amp; 0FF00H) /254) %&amp; OFFH sphew
-Points to remember are that division rounds aff after and
-puts F&rsquo;s in the high byte hence the &amp; OFFH
+Points to remember are that division rounds off after and
+puts F&rsquo;s in the high byte hence the &amp; 0FFH
 </p>
 <p>
-Now, let me fill you in the rest of the Editer (not you
-ea.
+Now, let me fill you in the rest of the Editor (not you
+ed).
 </p>
-<p>
+<p class="indent">
 ASCII &amp; MAP &ndash; remind you of codes for keys and display &ndash; nice
 touch that.
 </p>
-<p>
+<p class="indent">
 CONSTRUCT &ndash; pulls raw data from memory and enters it as DEFB
 or DEFW &ndash; very useful.
 </p>
-<p>
-Da .H- allows decimal to hex and back to be worked out before
+<p class="indent">
+D &amp; H &ndash; allows decimal to hex and back to be worked out before
 committing to text. Both these are useful and better than one
 alone.
 </p>
-<p>
-TTC/CTZ &ndash; converts to and from ZEAP format (with caution).
+<p class="indent">
+ZTC/CTZ &ndash; converts to and from ZEAP format (with caution).<br>
 EDIT &ndash; text edit mode is screen based, mostly cursor
-controlled. Lines are nat numbered on screen like ZEAP but one
+controlled. Lines are not numbered on screen like ZEAP but one
 line number is displayed for the cursor position. Mixed views
+here.
+</p>
+<p class="indent">
 Find instructions do work well and can be repeated.
 </p>
-<p>
-Block move commands do well (with one reservation) &ndash;
+<p class="indent">
+Block move commands do well (with one reservation).
 </p>
-<p>
-7 loads and executes any file in editor. Some commands (but
-not all those you would expect) are repeated in the aseeabler
-which Is an overlay from disc.
+<p class="indent">
+/ &ndash; loads and executes any file in editor. Some commands (but
+not all those you would expect) are repeated in the assembler
+which is an overlay from disc.
 </p>
 <?php columnEnd(1); ?>
