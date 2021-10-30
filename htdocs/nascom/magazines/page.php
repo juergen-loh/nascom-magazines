@@ -67,7 +67,7 @@ function predsucc($p,$magazine,$issue)
 		}
 		break;
 
-	// INMC News
+	// INMC-80 News
 
 	case "inmc-80-news":
 		switch ($issue) {
@@ -159,7 +159,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 	echo "<table class=\"robots-nocontent style-table-zeropadding\" style=\"width: 100%\">\n";
 	echo "\t<tr>\n";
 
-	// seite zurück
+	// page back
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 
@@ -182,7 +182,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</td>\n";
 
-	// erste seite
+	// first page
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 
@@ -205,7 +205,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</td>\n";
 
-	// heft zurück
+	// next page
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 
@@ -243,7 +243,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</td>\n";
 
-	// seite _ von _
+	// page _ of _
 
 	echo "\t\t<th style=\"text-align:center; width: 40%; vertical-align: middle\">\n";
 
@@ -265,7 +265,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</th>\n";
 
-	// heft vor
+	// next issue
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 
@@ -303,7 +303,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</td>\n";
 
-	// letzte seite
+	// last page
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 
@@ -326,7 +326,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	echo "\t\t</td>\n";
 
-	// seite vor
+	// next page
 
 	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
 

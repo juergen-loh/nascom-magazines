@@ -1,44 +1,46 @@
 <?php columnStart(1); ?>
-<p>
-81 41 42 45 C4 nn
+<p class="indent2">
+81 41 42 43 C4 nn
 </p>
-<p>
+<p class="indent">
 do? Well it will add ABCD to STRDIS, but will also let CONTROL
 know that this is the last routine to be called and so CONTROL
 will be exited leaving PRDIS to be called &ndash; and then the next
-Instruction.
+instruction.
 </p>
 <p>
-Routine 2 &ndash; This adds the Gth item, in the following List, to
-STROIS leaving HL&rdquo; pointing to one after the last. character in
+Routine 2 &ndash; This adds the Gth item, in the following list, to
+STRDIS leaving HL&rdquo; pointing to one after the last character in
 the list. You can see that this breaks down into 3 parts,
 </p>
-<p>
-1) Move HL&rdquo; to the beginning of the required element of the
-lise.
-</p>
-<p>
-42) Add the element to STRDIS. It may be more than one
+<dl>
+<dt>
+i)</dt><dd>Move HL&rdquo; to the beginning of the required element of the
+list.
+</dd>
+<dt>
+ii)</dt><dd>Add the element to STRDIS. It may be more than one
 character.
-</p>
+</dd>
+<dt>
+iii)</dt><dd>Move HL&rdquo; to one after the end of the list.
+</dd>
+</dl>
 <p>
-112) Move HL&rdquo; to one after the end of the list.
-</p>
-<p>
-If you use, as I did, the &ldquo;Bit 7&rdquo; technique for your list, then
-part Gi) may just be a call to Routine 1- See how much work you
+If you use, as I did, the &lsquo;Bit 7&rsquo; technique for your list, then
+part (ii) may just be a call to Routine 1. See how much work you
 can save by spending a little time on these routines.
 </p>
 <p>
 Routine 3 &ndash; This is exactly the same as Routine 2, only not for
-G, but for H- not the ia HL. In fact I will nearly do this one
-for you&rsquo;&rsquo;, Store G somewhere. Put Hin Gs place, call Routine
-2, replace G. Easy isn&rsquo;t 1t?
+G, but for H &ndash; not the in HL. In fact I will nearly do this one
+for you!!. Store G somewhere. Put H in G&rsquo;s place, call Routine
+2, replace G. Easy isn&rsquo;t it?
 </p>
 <p>
-When all these routines are done, you will find that sost of
+When all these routines are done, you will find that most of
 the higher ones will call one lower, and so nested subroutines
-build up. In fact to single step through the disassembleris
+build up. In fact to single step through the disassembler<?php spChar("zwsp"); ?>is
 fascinating as you can watch the stack pointer (SP) drop like a
 stone as all the return addresses get pushed on. Then, as it
 finishes with each routine the stack pointer slowly grovels it&rsquo;s
@@ -50,22 +52,20 @@ still fascinates me.
 <p>
 Routine 4 &ndash; This routine is really like accessing a two
 dimensional string array, and adding the string to STRDIS. There
-are six lists of eight elements. Don&rsquo;t worry!! Not sore data,
+are six lists of eight elements. Don&rsquo;t worry!! Not more data,
 no, these lists were discussed last time. The actual list will
-be&rsquo; speci#ied in CONTROL"S command, ie as the data bits (3, 4&amp;5
-="go back if you have forgotten&rsquo;). The string to be added to
-STRDIS is, in&rsquo; fact the Gth item in the specified list. Easy!!
-Now the Iists each have a code (for the data bits for CONTROL)
+be specified in CONTROL&rsquo;S command, ie as the data bits (3, 4 &amp; 5
+&ndash; go back if you have forgotten!). The string to be added to
+STRDIS is, in fact the Gth item in the specified list. Easy!!
+Now the lists each have a code (for the data bits for CONTROL)
 </p>
-<p>
-Bits Name
-345,
-</p>
-<p>
-000 etsy
-001 asi)
-010 ad(G&gt;
-O11 n&gt;
-100 et@)
-</p>
+<table class="indent2" style="width: 20%">
+<tr><td>Bits<br>345</td><td>Name</td></tr>
+<tr><td colspan=2><br></td></tr>
+<tr><td>000</td><td>r(G)</td></tr>
+<tr><td>001</td><td>ss(G)</td></tr>
+<tr><td>010</td><td>dd(G)</td></tr>
+<tr><td>011</td><td>n(G)</td></tr>
+<tr><td>100</td><td>c(G)</td></tr>
+</table>
 <?php columnEnd(1); ?>

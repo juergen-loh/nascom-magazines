@@ -1,34 +1,34 @@
 <?php columnStart(1); ?>
-<p>
-characters which are often received from a cassette recorder (
-and which make a mess of the screen ) after a program has been
+<p class="continued">
+characters which are often received from a cassette recorder
+(&nbsp;and which make a mess of the screen&nbsp;) after a program has been
 read from tape.
 </p>
 <p>
 Many of the features within SYS-EX will be of interest to
 the assembler programmer. All of the SYS-EX commands may be
-called by an asseabler program. The available commands include
+called by an assembler program. The available commands include
 all of the SYS-EX keyboard commands plus several additional
-Useful routines. All calls are made to the same entry point
-within SYS-Ex. This entry point is three bytes on from the
+useful routines. All calls are made to the same entry point
+within SYS-EX. This entry point is three bytes on from the
 beginning of SYS-EX. The required routine number is specified
-by the value in the byte which immediately follons the call
+by the value in the byte which immediately follows the call
 instruction. Those of you who are familiar with using the
 NAS-SYS routines from within an assembler program, will notice
-the simlarity in the use of SYS-EX routines. By way of an
-example, 18 SYS-EX 18 installed between B000H and&rdquo; BSFFH, a
-Straightforward call to a SYS-EX routine is coded as follows!
+the similarity in the use of SYS-EX routines. By way of an
+example, if SYS-EX is installed between B000H and B3FFH, a
+straightforward call to a SYS-EX routine is coded as follows:
 </p>
 <p>
-cD 0S RO nn
+CD 03 BO nn
 </p>
-<p>
+<p class="continued">
 where nn is the required routine number. The routine
 number for a keyboard command is the ASCII code of the command
-letter. (e.g. &lsquo;a&rdquo; and &ldquo;2&rdquo; are fepresented by 61 and 7A
+letter. (e.g. &lsquo;a&rsquo; and &lsquo;z&rsquo; are represented by 61 and 7A
 respectively.) In addition to the keyboard commands, a further
-fine routines are provided in routine numbers 7B to O3. Complete
-details on these routines Will be printed in a future issue.
+nine routines are provided in routine numbers 7B to 83. Complete
+details on these routines will be printed in a future issue.
 </p>
 <p>
 Having described some of the features of SYS-EX, it might
@@ -36,38 +36,31 @@ now be of interest to explain something of the structure of this
 monitor extension. SYS-EX begins with a control section which
 takes over from NAS-SYS in recognising and routing both upper
 and lower case keyboard commands. The mechanism for calling
-SYS5-EX commands from an assembler program is embedded within
+SYS-EX commands from an assembler program is embedded within
 this control section. Part of the control section processing
-worfs out the absolute address at which SYS-EX is actually
-Installed This absolute address is Used in conjunction with an
-interna! table of relative addresses, to calculate the absolute
-address of each required routine, The internal. table of
-Felative addresses i= located between offset O19H and 017EH
+works out the absolute address at which SYS-EX is actually
+installed. This absolute address is used in conjunction with an
+internal table of relative addresses, to calculate the absolute
+address of each required routine. The internal table of
+relative addresses is located between offset 0139H and 017EH
 inclusive. Each table entry is two bytes long with the first
 table entry representing the &lsquo;a&rsquo; command, the second table entry
 representing the &lsquo;b&rsquo; command and soon. Entries in this table
-</p>
-<p>
 represent the start of the routine relative to the beginning of
-syS-Ex
+SYSS-EX.
 </p>
 <p>
-Im common with NAS-SYS, SYS-EX does not use the alternate
-set of registers nor does it use the inde registers. SYS-EX
-does not require any Of rts on stach or work space, although 3t
-does male ace of the NAS&nbsp;SYS stack. Certain felds&rdquo; within. the
-</p>
-<p>
-HAS SYS Workspace are used by SYS-EX, although the places where
+In common with NAS-SYS, SYS-EX does not use the alternate
+set of registers nor does it use the index registers. SYS-EX
+does not require any of its own stack or work space, although it
+does make use of the NAS-SYS stack. Certain fields within the
+NAS-SYS workspace are used by SYS-EX, although the places where
 such fields are used will always be explicitly mentioned within
-the tebe
+the text.
 </p>
 <p>
-now for a bit of history. SYS-EX began it&rsquo;s 1ife about a
-peor and a half age when the author decided) that it would. be
-iseful to have the facility te name machine code files written
-</p>
-<p>
-Fage 19)
+And now for a bit of history. SYS-EX began it&rsquo;s life about a
+year and a half ago when the author decided that it would be
+useful to have the facility to name machine code files written
 </p>
 <?php columnEnd(1); ?>

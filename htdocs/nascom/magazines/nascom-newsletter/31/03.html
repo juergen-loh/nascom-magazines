@@ -1,67 +1,67 @@
 <?php columnStart(1); ?>
+<h3>
+A bit of a Clock-up
+</h3>
 <p>
-A brit of a Clock-up
-</p>
-<p>
-&lsquo;There sens to be a surplus of real-tine Nas-clocks based on
-the MHSBI74. The one I used was designed-in on a GMBI6 but this
-one dropped bit 4 at random. Having tried. the obvious bus
-pull-ups and finger Capacitance I still failed to modify its
-erractic behaviour. So, I wate a fault. tolerant algorith
+There seems to be a surplus of real-tine Nas-clocks based on
+the MM58174. The one I used was designed-in on a GM816 but this
+one dropped bit 4 at random. Having tried the obvious bus
+pull-ups and finger capacitance I still failed to modify its
+erractic behaviour. So, I wrote a fault tolerant algorithm.
 Basically, instead of reading and checking for an F nibble which
-signifies a &lsquo;change since last read&rdquo; situation, I tried reading
+signifies a &lsquo;change since last read&rsquo; situation, I tried reading
 twice and comparing. Thus, intended F&rsquo;s and erratic bits both
-caused @ re-read of all pertinent data.
+caused a re-read of all pertinent data.
 </p>
-<p>
+<h3>
 Broken but not interrupted
-</p>
+</h3>
 <p>
 With Gemini, the sign of twins, there was no suprise in a
-second problem &ndash; a broken IEI track. The syapton to that was @
+second problem &ndash; a broken IEI track. The symptom to that was a
 totally upredictable interrupt vector, not easily distinguished.
 By filling an INT RAM block with 10, 10, 11, 11, 12, 12, 13, 13,
-etc, then filling all lower RAM with E7 (Break &lsquo;point &ndash; BRKPT)
+etc, then filling all lower RAM with E7 (Break point &ndash; BRKPT)
 and the I register with the INT block address, it soon became
-Sbvious that the INT vector was coming from anywhere in the
-black including odd addresses. With pull-ups on the data&rdquo; bus,
-the vector at (1 reg) + FFH and (I reg) + 10H was repeatable and
-cleariy illegal. A voltaeter along the IEI line confiraed
+obvious that the INT vector was coming from anywhere in the
+black including odd addresses. With pull-ups on the data bus,
+the vector at (I reg) + FFH and (I reg) + 10H was repeatable and
+clearly illegal. A voltmeter along the IEI line confirmed
 whether the interrupt was being serviced because it does not
-Feset until a RET! is executed and because of the breakpoint
-this awaited re-executson under Nas-sys. Of course there are
+reset until a RETI is executed and because of the breakpoint
+this awaited re-execution under Nas-sys. Of course there are
 many software hurdles to confuse INT inaction but if you suspect
 hardware, the above tricks do not need a scope.
 </p>
 <p>
 The problem also showed how to break a program without
-*Resetting&rdquo; and re-entering any start up data Tike registers. In
+&lsquo;Resetting&rsquo; and re-entering any start up data like registers. In
 Basic you can escape but in assembler what can you do? Add fancy
-routines which take as long to debug as the program itemlf. Ory
-you could hit the NMI. The result is the same as a Breakpoint &mdash;
-the registers are displayed but to continue, only &ldquo;E? need to be
-typed. To invoke NMI there is @ debounced input an pin 6 of the
+routines which take as long to debug as the program itself. Or,
+you could hit the NMI. The result is the same as a Breakpoint &ndash;
+the registers are displayed but to continue, only &lsquo;E&rsquo; need to be
+typed. To invoke NMI there is a debounced input an pin 6 of the
 Nasbus or pin 4 of the ribbon connector to the keyboard. A
-&lsquo;push-te-make&rsquo; switch has to earth one of these pins. My Break
+&lsquo;push-to-make&rsquo; switch has to earth one of these pins. My Break
 switch is physically on the keyboard. Don&rsquo;t hit it twice because
-on resuming evecution it will lock out. There are cards which
-jake use of the NMI but if you have got that far you will have
-Biready have figured out this trick. Happy breaking,
+on resuming execution it will lock out. There are cards which
+make use of the NMI but if you have got that far you will have
+already have figured out this trick. Happy breaking.
 </p>
-<p>
+<h3>
 Nas-Ass you like it
-</p>
+</h3>
 <p>
-In the Aas-sembler the PHASE pseudo-op appears to be
-two-phased&rsquo; or am I anti-phase? Guess who read DEPH as depth?
+In the Nas-sembler the PHASE pseudo-op appears to be
+two-phased! or am I anti-phase? Guess who read DEPH as depth?
 (revealing the depth of my mis-understanding). Even after using
-DEPH (dephase) properly, it still produced a correct listing But
+DEPH (dephase) properly, it still produced a correct listing but
 an object file displaced by the length of the code. The solution
-ts logicali using PHASE is like using several ORG&rsquo;s which
+is logical: using PHASE is like using several ORG&rsquo;s which
 requires MODE 0, MODE 1 is default and the manual omits
-explanation se pencil this one in the margin &lsquo;under phase
-saving). This phase-ability study cannot ome reminging the
-reader that MODE 0 object code loads from the asseebler only.
-using the &lsquo;/ * command. (Don&rsquo;t forget the space).
+explanation so pencil this one in the margin (under phase
+saving). This phase-ability study cannot omit reminding the
+reader that MODE 0 object code loads from the assembler only,
+using the &lsquo;/&nbsp;&rsquo; command. (Don&rsquo;t forget the space).
 </p>
 <?php columnEnd(1); ?>

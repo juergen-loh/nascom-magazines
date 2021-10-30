@@ -6,65 +6,66 @@ Disassembler Part II
 by M. Reed
 </h2>
 <p>
-Welcome to Part 11 &ndash; I hope that you managed to struggle
-through Part T alright, but don&rsquo;t worry, it can only get worse.
-By now you shoud have your print routine working to your
+Welcome to Part II &ndash; I hope that you managed to struggle
+through Part I alright, but don&rsquo;t worry, it can only get worse.
+By now you should have your print routine working to your
 satisfaction &ndash; called PROIS.
 </p>
 <p>
-Now there are 9 subroutines to wite, yes 9! and also a lot
-af data. One of these, is a sort of controller, and calls one of
+Now there are 9 subroutines to write, yes 9! and also a lot
+of data. One of these, is a sort of controller, and calls one of
 the remainder depending upon the data it is fed. A great deal of
-the disassembler is a Qreat deal. of data, organised into
+the disassembler is a great deal of data, organised into
 tables.
 </p>
 <p>
-I will define the control routines
+I will define the control routines;
 </p>
-<p>
-1) On entry HL&rsquo; contains a pointer to some data, This holds
-the routine number to. which control will&rdquo; pass. This
+<dl class="indent">
+<dt>
+i)</dt><dd>On entry HL&rsquo; contains a pointer to some data. This holds
+the routine number to which control will pass. This
 routine number is held in the least 3 significant bits
-(0, 1, 2) so ANDing the contents of HL&rdquo; Cie (HU) with 7
+(0, 1, 2) so ANDing the contents of HL&rsquo; [ie (HL&rsquo)] with 7
 will give this number. Don&rsquo;t forget to increment HL&rsquo; to
 point to the next piece of valuable data.
-</p>
-<p>
-14) Bits 3, 4 and 5S may contain data that the called
-subroutine will need, though not the only data it aay
-heed. Consequently the data byte Cie (HL&rsquo;) before
-incrementing&rsquo;&rsquo;] must be put somenhere &ndash; just in case.
-</p>
-<p>
-111) BLt 7 of this data byte fs used as a sort of &lsquo;atop&rsquo; flag.
-Tf it is not set the CONTROL will loop back on itself in
+</dd>
+<dt>
+ii)</dt><dd>Bits 3, 4 and 5 may contain data that the called
+subroutine will need, though not the only data it may
+need. Consequently the data byte [ie (HL&rsquo;) before
+incrementing!!] must be put somewhere &ndash; just in case.
+</dd>
+<dt>
+iii)</dt><dd>Bit 7 of this data byte is used as a sort of &lsquo;stop&rsquo; flag.
+If it is not set the CONTROL will loop back on itself in
 order to call the next routine. If it is set then CONTROL
-Will break out of the loop, call PRDIS and then move onto
-the next op-code ta be disassembled.
-</p>
+will break out of the loop, call PRDIS and then move onto
+the next op-code to be disassembled.
+</dd>
+</dl>
 <p>
-Obviously HL&rdquo; mist contain the correct address. This is
+Obviously HL&rdquo; must contain the correct address. This is
 achieved by creating a table of twelve addresses, corresponding
-to the 12 Combinations of TYPE and F.. Let me&rsquo; explain, TYPE
+to the 12 combinations of TYPE and F. Let me explain, TYPE
 represents whether the instruction to be disassembled began with
-&pound;ED, ECB or neither. It can only have 3 possible values &ndash; use 0,
-I and 2 because life is so much easier. F will hold bits &amp; and 7
-of the instruction being. disassembled. Therefore, it has 4
+&pound;ED, &pound;CB or neither. It can only have 3 possible values &ndash; use 0,
+1 and 2 because life is so much easier. F will hold bits 6 and 7
+of the instruction being disassembled. Therefore, it has 4
 possible values. Hence 12 combinations. There should be an
-address in your table for each possible case. Get it into HL".
+address in your table for each possible case. Get it into HL&rsquo;.
 </p>
 <p>
-This should cause na problems if you order your table
-correctly. For examplet (and may I recommend this method)
+This should cause no problems if you order your table
+correctly. For example: (and may I recommend this method)
 </p>
-<p>
-TAPSt TYRE = 0) = 0
-Tee = 0 f=
-Wee SF =?
-</p>
-<p>
-Wee = 2 F=3
-</p>
+<table class="indent2" style="width: 30%">
+<tr><td>TAPST</td><td>TYPE = 0</td><td>F = 0</td></tr>
+<tr><td></td><td>TYPE = 0</td><td>F = 1</td></tr>
+<tr><td></td><td>TYPE = 0</td><td>F = 2</td></tr>
+<tr><td></td><td colspan=2 style="text-align: center">-----"-----</td></tr>
+<tr><td></td><td>TYPE = 2</td><td>F = 3</td></tr>
+</table>
 <p>
 Now the first byte of each address is given by TABST + (2 x
 </p>

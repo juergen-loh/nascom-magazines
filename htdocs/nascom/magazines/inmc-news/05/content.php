@@ -117,7 +117,7 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Here beginneth free progs:"
+	,	"Free progs"
 	,	""
 	,	""
 	,	25

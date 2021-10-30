@@ -5,7 +5,7 @@
 	$issue		= "12";
 	$year		= "81";
 	$first		= 1;
-	$last		= 56;
+	$last		= 55;
 	$graphic	= true;
 	$text		= true;
 	$pdf		= true;

@@ -1,64 +1,65 @@
 <?php columnStart(1); ?>
-<p>
+<h4>
 NAS-SEMBLER NEWS
-</p>
+</h4>
 <p>
 1. A fault occurred in the automatic serialisation of some
 copies of NAS-SEMBLER which can result in errors when using the
-7280 command in edit and the EDIT command in Z80. Fortunately
+/Z80 command in edit and the EDIT command in Z80. Fortunately
 this can be corrected quite easily. Simply execute EDIT in the
 normal way and then use the COPY command to re-save the program.
+Do the same for Z80. This ensures that the programs are saved
+with the correct length, so as not to conflict with the data
+area.
 </p>
 <p>
-efor Z80. This ensures that the programs are saved
-with the correct length, so as not to conflict mith the data
-</p>
-<p>
-2. The manual (ey 1.2) refers to the DELETE command on page 10
+2. The manual (Rev 1.2) refers to the DELETE command on page 10
 and in the summary on page 14 an being used to delete lines.
 The DELETE command in fact is used to delete files (as described
-on page @ of the manual). the command used for deleteing line
-io ERASE Sy wheres rs the line number of the first line and y
-is the line number of the last line to be deleted, This, error
-crept in when the meaning of the two commands was reversed ata
+on page 8 of the manual). the command used for deleteing line
+in ERASE x y where x is the line number of the first line and y
+is the line number of the last line to be deleted. This error
+crept in when the meaning of the two commands was reversed at a
 late stage of development.
 </p>
+<h4>
+NAS-DOS NEWS
+</h4>
 <p>
-NAS-Dos NEWS
+Very surprisingly a fault has come to light within the last
+3 months. This can occur when there is an error on the disc and
+the head is not returned to the initial point. Unfortunately
+the error procedure does not issue a command to return the head
+to the first track, but rather to step back and out again. In
+an extremely small number of cases (about 6 to date) this can
+result in a situation where the drive apparently becomes
+inoperative. A few drives have been returned as faulty for this
+reason, when in fact no fault existed. There is just one
+command which does initialise the heads on the disc and this is
+the ]F /ndash; format &ndash; command. In the very unlikely event that you
+should get an apparent failure of one of your drives, witch will
+not read a disc, it is worth trying issuing a ]F command to
+reset the heads. Don&rsquo;t do this with a good disc in place though
+&ndash either put a blank disc in or issue the command with no disc
+in place
 </p>
 <p>
-Very surprisingly @ fault has come to light within the last
-S months. This can occur when there 19 an error on the disc and
+This problem is being corrected in Rev 1.4 of NAS-DOS. If
+you wonder what Rev 1.3 was, this was used in the Networking
+systems and offered, in that application, a slight speed
+advantage over Rev 1.2. This change is also incorporated in Rev
+1.4
 </p>
+<h4>
+MANOR NEWS
+</h4>
 <p>
-the head is not returned ta the imitial point. Unfortunately
-the &ldquo;error procedure does not 1sste a command to return the head
-tothe first track, but rather to step back and out again. In
-an estremely small number af cages (about 6 to date) this can
-Fesuult in 4 situation here the drive apparently becomes
-Thoper ative. A few drives have been returned as faulty for this
-reasons hun in tact. no fault gsisted, There is just one
-Command &ldquo;which dows snstialice the heads on the disc and this is
-the If Tarmat. command, In the very unlikely event that you
-should get an apparent tarture of one ot witch welt
-not read a discs it ts worth trying taswing. a command to
-reset the heads, Don&rsquo;t da this with a qood die in place though
-&ldquo;Terther put a Blank dinc nor tasue the command with no dise
-an place
-hie problem 8 berag corrected in Rev 1.4 of NAS-DOS. IF
-you wonder what&rsquo; Rev I.S was, thie was used in the Networking
-Zystems and &ldquo;ottered, im that application, oa slight&rdquo; speed
-Suvantage aver Rev 1/2 [hia change ts alea incorporated in Rev
-na
-Ano NHS:
-linen {he last newsletter was written the release of Rev 4 of
-MaNOK war predicted Since then a number af additional
-Improvements have been implemented, and the next release atter
-</p>
-<p>
-Kev i will therefore be Rev a. In addition to the speed
+When the last newsletter was written the release of Rev 4 of
+MANOR war predicted. Since then a number of additional
+improvements have been implemented, and the next release after
+Rev 4 will therefore be Rev 6. In addition to the speed
 increases this offers records of up to 510 bytes, 42 fields,
-Upper or lower case Commands, access tu two disc drives doubling
-the masimun number of records ta 4000 and a CHange command
+upper or lower case commands, access to two disc drives doubling
+the maximun number of records to 4000 and a CHange command
 </p>
 <?php columnEnd(1); ?>
