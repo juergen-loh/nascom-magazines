@@ -6,63 +6,61 @@ Another Clock
 By Rory O&rsquo;Farrell
 </h2>
 <p>
-The article by Hr. &amp;. Kirby in Micropowar Vol 2No 3 on a
-Real Time Clock &lsquo;was most interesting, As readers buves are
+The article by Mr. G. Kirby in Micropower Vol 2 No 3 on a
+Real Time Clock was most interesting. As readers buses are
 getting more and more populated, it might be advisable to
-Consider adding an output buffer to his circuit, as the 50174
-chip does not have the high output of &laquo; bus driver chip. Those
-tho are daunted by the prospect of wiring up a board to plug
-{nto the bus might like to try another approach.
+consider adding an output buffer to his circuit, as the 58174
+chip does not have the high output of a bus driver chip. Those
+who are daunted by the prospect of wiring up a board to plug
+into the bus might like to try another approach.
 </p>
 <p>
 This approach is to hang the 58174 on the PIO, in a very
-siailar circuit. Due to the slow speed of the RTC chip, it is
-possible to drive it from the port lines, at the exper
-</p>
-<p>
-Father complicated software, although it is now po
-</p>
-<p>
-tha clock on an Unexpanded &lsquo;Nascom. I have been using thi
+similar circuit. Due to the slow speed of the RTC chip, it is
+possible to drive it from the port lines, at the expense of
+rather complicated software, although it is now possible to use
+the clock on an unexpanded Nascom. I have been using this
 circuit for nearly a year and have modified much of my software
 to read the clock.
 </p>
 <p>
-The circuit diagram is simple enough, tut a few points
-might bear comment. The CS (Chip Select) line 1 inverted using
-2 CMOS inverter, which is also driven from the standby battery
-in power down&rsquo; made. The effect of power down on the chip
-(eithout the inverter) seems to be to place a low level on CS,
-NRDS and NWDS. For sone reason, this results frequently in los
+The circuit diagram is simple enough, but a few points
+might bear comment. The CS (Chip Select) line is inverted using
+a CMOS inverter, which is also driven from the standby battery
+in power down mode. The effect of power down on the chip
+(without the inverter) seems to be to place a low level on CS,
+NRDS and NWDS. For some reason, this results frequently in loss
 of time. Adding the CHOS inverter means that the external low
-Level of the PIO on power down is transmitted to the 58174 chip
-az a high level, not enabling the chip, thereby preventing tine
-logs. In addition to the three control lines I have detailed,
-there are four address lines and five data lines. These art
-connected up to the two ports of the PID.
+level of the PIO on power down is transmitted to the 58174 chip
+as a high level, not enabling the chip, thereby preventing time
+loss. In addition to the three control lines I have detailed,
+there are four address lines and five data lines. These are
+connected up to the two ports of the PIO.
+</p>
+<p class="exdent">
+To Port A are connected lines as follows:<br>
+Bit A0 &ndash; DB0 pin 7<br>
+Bit A1 &ndash; DB1 pin 6<br>
+Bit A2 &ndash; DB2 pin 5<br>
+Bit A3 &ndash; DB3 pin 4<br>
+Bit A4 &ndash; pin 13 (interrupt line)
+</p>
+<p class="exdent">
+To Port B are connected<br>
+Bit B0 &ndash; AD0 pin 12<br>
+Bit B1 &ndash; AD1 pin 11<br>
+Bit B2 &ndash; AD2 pin 10<br>
+Bit B3 &ndash; AD3 pin 9<br>
+Bit B4 &ndash; NWDS pin 3 (Write Strobe)<br>
+Bit B5 &ndash; NRDS pin 2 (Read Strobe)<br>
+Bit B6 &ndash; CS pin 1 (inverted Chip Select)
 </p>
 <p>
-To Port A are connected lines as follows!
-Bit A0 &ndash; DBO pin 7
-Bit A1 &ndash; DBI pin &amp;
-Bit A2 &ndash; DB2 pin 5
-Bit A5 &ndash; DBS pin 4
-Bit Ad &ndash; pin 13 interrupt line)
-To Port B are connected
-BEE B0 &ndash; ADO pin 12
-Bit B1 &ndash; ADL pin it
-Bit B2 &ndash; AD2 pin 10
-Bit B3 &ndash; ADS pin 9
-Bit B4 &ndash; NWDS pin 3 (Write Strobe)
-Bit B5 &ndash; NRDS pin 2 (Read Strobe)
-Bit BS &ndash; CS pin 1 (inverted Chip Select)
+I do not give the connections for the Nascom, as they
+differ between N1 and N2s. They can easily be read off the
+circuit diagrams.
 </p>
 <p>
-1 do not give the connections for as they
-differ between Ni and N2s. They can easily be read off the
-circuit diagrams
-</p>
-<p>
-CMOS is sensitive to certain pawerdown conditions, which
+CMOS is sensitive to certain powerdown conditions, which
 </p>
 <?php columnEnd(1); ?>

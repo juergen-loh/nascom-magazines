@@ -1,77 +1,80 @@
 <?php columnStart(1); ?>
-<p>
+<dl>
+<dt></dt><dd>
+<p class="continued">
 straightforward.
 </p>
 <p>
-&lsquo;Should the two specified portions of menory overlap, the
+Should the two specified portions of memory overlap, the
 effect of the command is to &lsquo;rotate&rsquo; the contents of a section
-Of memory. The memory section which is rotated is determined
-by: (i) the lower of the two start addresses, (11) the higher
-of the twa start addresses, plus the specified length, minus
+of memory. The memory section which is rotated is determined
+by: (i) the lower of the two start addresses, (ii) the higher
+of the two start addresses, plus the specified length, minus
+one.
 </p>
 <p>
-&lsquo;The memory addresses at the two limits are included in
+The memory addresses at the two limits are included in
 the rotation. Rotation occurs in a downwards direction with
-the overflow from the lowest address being wrapped around. to
-the highest addres
+the overflow from the lowest address being wrapped around to
+the highest address.
 </p>
-<p>
-anaa &ndash; start address of the first portion of memory.
-BBBE &ndash; start addregs of the second portion of menory.
-ccc &ndash; length of memory (bytes) to be exchanged.
+<p class="noindent">
+AAAA &ndash; start address of the first portion of memory.<br>
+BBBB &ndash; start address of the second portion of memory.<br>
+CCCC &ndash; length of memory (bytes) to be exchanged.
 </p>
-<p>
--AAAAA
+</dd>
+<dt>d</dt><dd>-AAAAA<br>
 Decimal to hexadecimal conversion
-</p>
 <p>
 Converts a decimal integer in the range minus 32768 to
-plus 65535 to hexadect
+plus 65535 to hexadecimal.
 </p>
 <p>
 If the number to be converted is negative, a minus sign
-should be typed inmediately before the first &lsquo;digit of the
-deciaal nusber. The nunber itaelf may only contain the digits
-&copy; through 9.
+should be typed immediately before the first digit of the
+decimal number. The number itself may only contain the digits
+0 through 9.
 </p>
 <p>
 The result of the conversion to hexadecimal is displayed
 on the first screen line following the command letter. The
 result is always displayed as a four digit hexadecimal number.
 In addition, if the value can be represented by a single byte,
-a two digit hexadecimal number is also displayed on the sam
+a two digit hexadecimal number is also displayed on the same
 line. Note: If a positive value is entered, it should be
-remenbered that hexadecimal equivalents which start with &laquo;
+remembered that hexadecimal equivalents which start with a
+digit greater than 7, may also be interpreted as negative
+values.
 </p>
 <p>
-&lsquo;than 7, may also be interpreted as negative
+The decimal number to be converted is supplied on the
+same line as the &lsquo;d&rdquo; command. The value may be preceded by
+spaces and is terminated either by the first following space
+or by the end of the line, whichever occurs first.
 </p>
 <p>
-he decimal number to be converted is supplied on the
-Sane line as the &lsquo;d&rdquo; command. The value may be preceded by
-Spaces and is terminated either by the first following space
-or by the end of the line, whichever occurs firat.
-</p>
-<p>
-Values from the NAB-SYS arguments are not used by this
+Values from the NAS-SYS arguments are not used by this
 command. Also, values which are entered on the command line
-are not placed inta the NAS-SYS arguments (ARS! through
+are not placed into the NAS-SYS arguments (ARG1 through
 ARG10). However, NUMV is set to the hexadecimal value and
-NUMN is set to the number of decimaligits entered
+NUMN is set to the number of decimaligits entered.
 </p>
-<p>
--Anaaa &ndash; decimal number for conversion in the range &ndash;32768
-to 65535,
+<p class="noindent">
+-AAAAA &ndash; decimal number for conversion in the range &ndash;32768
+to 65535
 </p>
 <p>
 The actual conversion is quite straightforward. The
-routine examines the decimal digits fron left to right. The
+routine examines the decimal digits from left to right. The
 result register is initially set to zero. The next digit is
 then added to the &lsquo;result&rsquo; and, unless it is the rightmost
-digit, a copy of the &lsquo;result&rsquo; &lsquo;is added to the &ldquo;result&rdquo;
-further nine tines (i.e. multiplication by ten). This process,
-ie repeated until all of the input digits have been processed.
+digit, a copy of the &lsquo;result&rsquo; is added to the &lsquo;result&rsquo;
+further nine times (i.e. multiplication by ten). This process
+is repeated until all of the input digits have been processed.
 As the arithmetic is all done in hexadecimal, the result is in
 hexadecimal.
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

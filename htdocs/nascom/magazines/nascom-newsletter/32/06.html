@@ -1,70 +1,49 @@
 <?php columnStart(1); ?>
+<dl>
+<dt></dt><dd>
 <p>
-LD HL, (NUMV) value to be converted
-LD A,20H space character in A
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-06-1.png"); ?>
 </p>
-<p>
-oR A carry flag off
-PUSH AF space character on stack
-LD DE,000AH ten in DE (and E)
-Lt LD BC,FFFFH minus one in BC
-2 Inc BC ) keap subtracting ten from
-SBC HL,DE =) -HL until value becones
-OR NCLE ) eam than 0. BCsHL/ten
-LD AE &gt; remainder of HL/ten in A
-app ) &ldquo;ADD 30H turn inte ASEIT code
-PUSH AF character (A) on stack
-LD HB ) divide by ten figure
-wp Lic &gt; tn HL
-LD AH ) Loop round again until
-oR ) HL is 0000H, (OR sete
-OR NZLI ) the carry flag off)
-LS Pop AF character ta print in A
--ROUT print character from A CP 20H Z flag ic
-final space
-OR NZ,LS loop until all printed
-</p>
-<p>
-4 AAA BBBB cc
+</dd>
+<dt>i</dt><dd>AAAA BBBB CC<br>
 Insert a byte
-</p>
 <p>
 Insert a single specified byte at a specified memory
 location and move the original contents of that address and
 above, upwards in memory to make space for the insertion.
 </p>
 <p>
-&lsquo;The section of memory delimited by: (i) address for
-insertion Gi) top limit for move minus two, is moved to the
-memory locations delimited by (1) address for insertion plus
-one, (44) top limit for mave minus one. The specified byte for
-inaertion is then moved to the insertion address. The &lsquo;top
-Limit for eove&rsquo; parameter ia the sane an defined for the &lsquo;e&rsquo;
+The section of memory delimited by: (i) address for
+insertion (ii) top limit for move minus two, is moved to the
+memory locations delimited by (i) address for insertion plus
+one, (ii) top limit for move minus one. The specified byte for
+insertion is then moved to the insertion address. The &lsquo;top
+Limit for move&rsquo; parameter is the same an defined for the &lsquo;e&rsquo;
 command.
 </p>
-<p>
-AAA &ndash; memory address at which the byte is to be
+<p class="noindent">
+AAAA &ndash; memory address at which the byte is to be
 inserted.
-</p>
-<p>
-&lsquo;BBBB &ndash; top limit for move. Memory addresses from this
+<br>
+BBBB &ndash; top limit for move. Memory addresses from this
 address upwards are not accessed.
-</p>
-<p>
+<br>
 CC &ndash; hexadecimal representation of the byte to be
 inserted.
 </p>
 <p>
-&lsquo;The command uses the Z80 block transfer instruction LODR
-to shift the contents of menory upmards.
+The command uses the Z80 block transfer instruction LDDR
+to shift the contents of memory upwards.
 </p>
-<p>
+</dd>
+<dt>k</dt><dd><br>
 Accept input from keyboard only
-</p>
 <p>
 Alter the address of the NAS-SYS input table such that
 only keyboard input is permitted. That is, input from the
-serial &lsquo;input port is not accepted after entry of this
-cammand.
+serial input port is not accepted after entry of this
+command.
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

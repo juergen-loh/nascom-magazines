@@ -1,44 +1,44 @@
 <?php columnStart(1); ?>
-<p>
-of the asseabler so that setting the address of your copy of
-COMPASS in ling 1 will ensure that all subsequent addresses are
+<p class="continued">
+of the assembler so that setting the address of your copy of
+COMPASS in line 1 will ensure that all subsequent addresses are
 correct. The additions are &pound;05 bytes long so you will probably
 have to move your copy to fit the extra code at the and of it.
-This is advisable as the last tho lines of the listing alter the
-length of code checked after a wera start, so that the new code
+This is advisable as the last two lines of the listing alter the
+length of code checked after a warm start, so that the new code
 is protected by a checksum, as well as the original.
 </p>
 <p>
 The two new psuedo-ops use the CODE and BADOPC jumps to
 break into the program and use similar legal coves for the
-assenbler to proc
+assembler to process.
 </p>
 <p>
-When the assembler cones acrass a bad opcode, it jumps to
-&pound;0FOS where it is redirected to NEWOPS. Here a check is made of
-the opcede and, if neither RCAL nor SCAL, jumps back to the
-BADOPC address&rsquo;in the assembler. If either is found then the
+When the assembler cones across a bad opcode, it jumps to
+&pound;0F06 where it is redirected to NEWOPS. Here a check is made of
+the opcode and, if neither RCAL nor SCAL, jumps back to the
+BADOPC address in the assembler. If either is found then the
 first character is stored and the compressed code for either JR
-or SUB are substituted for proc
-being chosen are that they are
+or SUB are substituted for processing. The reasons for these two
+being chosen are that they are single codes which are followed
 by appropriate operands. RCAL is similar to JR in operation and
 SCAL, like SUB, is followed by a single operand which must be
-fFF or less. Note that mo check is made for illegal SCAL
+&pound;FF or less. Note that no check is made for illegal SCAL
 values.
 </p>
 <p>
-Thie is all that is dane on the first pa
-second &lsquo;a check has to be made of the &lsquo;N&rsquo; option
-{s only checked if the code is to be stored. If the option has
+This is all that is done on the first pass, but on the
+second a check has to be made of the &lsquo;N&rsquo; option
+is only checked if the code is to be stored. If the option has
 been taken then it is reset and a flag set so that the break can
 be made at the CODE jump.
 </p>
 <p>
-The CODE jump at &pound;OFOS is diverted to SUBSTITUTE and the
+The CODE jump at &pound;0F03 is diverted to SUBSTITUTE and the
 first check is whether it is one of the new codes that is being
-loaded. If not, then the program returns to the asseabler. At
-this paint registers @ and B contain the opcode to be loaded and
-this is changed to either &pound;07 or &pound;0F as appropriate before
+loaded. If not, then the program returns to the assembler. At
+this point registers A and B contain the opcode to be loaded and
+this is changed to either &pound;D7 or &pound;DF as appropriate before
 allowing the program to continue. If the &lsquo;N&rsquo; option was taken
 then this is reset and the return to the assembler avoids that
 part where the opcode is loaded.
@@ -46,22 +46,17 @@ part where the opcode is loaded.
 <p>
 That completes the alterations to the program operation and
 if the program is loaded as in the listing then only one thing
-remains to be done, This is the alteration of the checksum. The
-length of the program to be checked has already
-</p>
-<p>
-but, of course, the checksum, which {a stored after the
-byte of the program, will be incorrect. The may to find out
-naw checkyum is to set a breakpoint at COMPASS+&pound;0c09 and then
-warm start the assenbler. When the breakpoint is reached HL will
-point to the checksum store (#f1A19 in the listings and the
-accumulator will contain the checksum. As COMPASS+&pound;0407
-contained &pound;&pound;7 instead of &pound;BE nhen it was checked, the checksum
-in the accumutator will be &pound;29 greater than it &lsquo;should be, so
-enter the accumulator value minus &pound;29 in the checksum store&rsquo; and
-save the program, not forgetting to include the checksum,
-</p>
-<p>
-Fase 16
+remains to be done. This is the alteration of the checksum. The
+length of the program to be checked has already been altered
+but, of course, the checksum, which is stored after the last
+byte of the program, will be incorrect. The way to find out the
+new checksum is to set a breakpoint at COMPASS+&pound;0409 and then
+warm start the assembler. When the breakpoint is reached HL will
+point to the checksum store (+&pound;1A19 in the listing) and the
+accumulator will contain the checksum. As COMPASS+&pound;0409
+contained &pound;E7 instead of &pound;BE when it was checked, the checksum
+in the accumulator will be &pound;29 greater than it should be, so
+enter the accumulator value minus &pound;29 in the checksum store and
+save the program, not forgetting to include the checksum.
 </p>
 <?php columnEnd(1); ?>

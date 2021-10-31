@@ -1,28 +1,28 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
-conflict with the normal program mesory of the Nascom computer.
-Thay are only paged into the computer&rsquo;s memory map when it is.
+conflict with the normal program memory of the Nascom computer.
+They are only paged into the computer&rsquo;s memory map when it is
 necessary to read or write data to the display.
 </p>
 <p>
-To determine which bits of which memory location of which mesory
+To determine which bits of which memory location of which memory
 plane to turn on and off in order to produce the required visual
 effect is quite complicated. Fortunately extensive software
 support is provided with the AVC which does the hard work for
 you. This software is accessible using ROM BASIC and Extended
 BASIC (XBASIC), and provides simple commands to control the
-Graphics operations. The support software occupies around &amp;k of
-fain. menory. In CP/M machines it also provides an @0 column by
+graphics operations. The support software occupies around 6K of
+main memory. In CP/M machines it also provides an 80 column by
 25 line character display as standard.
 </p>
 <p>
 Suppose, for example, we want to plot a red circle near the top
-Fight hand corner of the display. We need only issue commands
-to. select the colour, shape and size of the object to be dram.
+right hand corner of the display. We need only issue commands
+to select the colour, shape and size of the object to be drawn.
 In this case the command/<?php spChar("zwsp"); ?>program statements would be a follows:
 </p>
-<p>
-coLouR 1
+<p class="indent">
+COLOUR 1<br>
 APOLY 250,150,100
 </p>
 <p>
@@ -30,40 +30,40 @@ The instruction COLOUR indicates the colour to be used, and the
 subsequent number indicates which of the available colours are
 to be used. The colours available are as follows:
 </p>
-<p>
-BLACK 1.4.0 BLUE 4
-Rept 1 MAGENTA 1LITL 5
-GREEN 11122 CYAN. ile
-VELtoW LDS wate | II0027
-</p>
+<table class="indent">
+<tr><td>BLACK</td><td>.....</td><td>0</td><td style="padding-right: 2em"></td><td>BLUE</td><td>.....</td><td>4</td></tr>
+<tr><td>RED</td><td>.....</td><td>1</td><td></td><td>MAGENTA</td><td>.....</td><td>5</td></tr>
+<tr><td>GREEN</td><td>.....</td><td>2</td><td></td><td>CYAN</td><td>.....</td><td>6</td></tr>
+<tr><td>YELLOW</td><td>.....</td><td>3</td><td></td><td>WHITE</td><td>.....</td><td>7</td></tr>
+</table>
 <p>
 The command APOLY specifies that we wish to draw a polygon (a
-circle is a polygon with an infinite number of sides&rsquo;). Th
+circle is a polygon with an infinite number of sides!). The
 position to draw the circle is given by the X, Y co-ordintates
 (250, 150 in this case) and the size of the circle is specified
-by its radius, 100 in this c The POLY command was chosen
+by its radius, 100 in this case. The POLY command was chosen
 since it gives much more generality in the shapes that can be
-drawn than would a more spacific command such as &lsquo;circle&rsquo;.
+drawn than would a more specific command such as &lsquo;circle&rsquo;.
 </p>
 <p>
-the commands available from XBASIC and ROM BASIC are
-ised below. In ROM BASIC each command is prefixed by the
-</p>
-<p>
-fallowed by one or more numeric
-Parameters (they can be variables in BASIC). In many cases
-there are default values for these parameters, Yo that not all
+Some of the commands available from XBASIC and ROM BASIC are
+summarised below. In ROM BASIC each command is prefixed by the
+word SET. Most commands are followed by one or more numeric
+parameters (they can be variables in BASIC). In many cases
+there are default values for these parameters, so that not all
 of them need to be specified.
 </p>
+<h4>
+MODE&lt;a,b&gt;
+</h4>
 <p>
-mODE&lt;a,b&gt;
 This command specifies the type of display required and which
 combinations of primary colours which are to be displayed.
 </p>
 <p>
-There are five types of display available &mdash;
+There are five types of display available&nbsp;&ndash;
 </p>
-<p>
-Text display (Nascom&nbsp;2 video RAM output?
+<p class="indent">
+Text display (Nascom&nbsp;2 video RAM output)
 </p>
 <?php columnEnd(1); ?>

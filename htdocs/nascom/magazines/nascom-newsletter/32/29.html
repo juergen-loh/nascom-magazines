@@ -1,70 +1,68 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
+<h4>
+1. How it works
+</h4>
 <p>
-How it wor!
-</p>
-<p>
-A SOHe clock signal derived from Tpz2 on the Nascom&nbsp;2 board is
+A 50Hz clock signal derived from TP22 on the Nascom&nbsp;2 board is
 connected to port A bit 7 of the PIO. The PIO is configured by the
 software to generate an interrupt when the edge of this clock pulse
-ia received. The 260 {s set to use interrupt mode 2, in which mode
+is received. The Z80 is set to use interrupt mode 2, in which mode
 an interrupt results in transfer of control to a location the
-address of which is located in menory at an address given by the
+address of which is located in memory at an address given by the
 contents of the interrupt register and data placed on the bus by the
-interrupting devics
+interrupting device.
 </p>
 <p>
-At initialisation the PIG 2s configured for output on port B and
-bits 1 to 4 of port Ay and input on port @ bits O and 7. This
-allows a clock input to be used on port A bit 7, and algo prepares
+At initialisation the PIO is configured for output on port B and
+bits 1 to 4 of port A, and input on port A bits 0 and 7. This
+allows a clock input to be used on port A bit 7, and also prepares
 the ports for parallel printer use, thus eliminating any need to
-configure ports in parallel printer drivers, which might othernise
-Upset the clock input during their configuration process. Control
-Signals are also sent to the PIO so that it will generate an
+configure ports in parallel printer drivers, which might otherwise
+upset the clock input during their configuration process. Control
+signals are also sent to the PIO so that it will generate an
 appropriate address and an interrupt when an edge occurs on the
 clock input of port A bit 7.
 </p>
 <p>
-The interrupt routine and ite workspace and buffer ares are located
-at the top of mesory &ndash; C800 in this case. When an interrupt occurs
+The interrupt routine and its workspace and buffer area are located
+at the top of memory &ndash; C800 in this case. When an interrupt occurs
 the interrupt routine scans the keyboard via the normal NAS-SYS
 routines, and places any data found in the buffer.
 </p>
 <p>
-To insert the new keyboard input routing inte NAS-BYS the entire
-SCAL table is copied into RAM, and the vector at OC71 which points
+To insert the new keyboard input routing into NAS-BYS the entire
+SCAL table is copied into RAM, and the vector at 0C71 which points
 to the table is modified accordingly. The keyboard input entry in
 the table is then changed to point to the new input routine, which
 inspects the keyboard buffer to see if there has been any input.
 </p>
 <p>
-Some aystens programs use a similar method of moving the GCAl table
-te RAN and then perform their onn changes to it. Such programs (eg
+Some systems programs use a similar method of moving the SCAL table
+to RAM and then perform their own changes to it. Such programs (eg
 NAS-SEMBLER) should therefore not be run with the keyboard buffering
-</p>
-<p>
 in operation.
 </p>
 <p>
-any program which disables interrupt will inhibit use of the
+Any program which disables interrupt will inhibit use of the
 keyboard, so be very careful! In particular you need to avoid cold
-starting&rsquo; BASIC, which for some incomprehensible reason disables
-interrupt. You&rsquo;can conveniently circumvent this by loading an empty
-BASIC program from tape or disc and then using the normal Z to ware
-start. &ldquo;This method has the added advantage that you can reserve the
-hecessary space at the top of memory when you save this empty file,
-and you will then not need to remenber the memory size when starting
-BASIG in the future. You should first J BASIC in the waual way
-(ui thout loading these routines, of course), and specify 51200
-memory available. then use the CSAVE"B&rdquo; command to save tl
-workapace, which can then be Joaded via an R command in future.
-BASIC can&rsquo;the be &lsquo;cold&rsquo; started by the Z command. As only one block
+starting BASIC, which for some incomprehensible reason disables
+interrupt. You can conveniently circumvent this by loading an empty
+BASIC program from tape or disc and then using the normal Z to warm
+start. This method has the added advantage that you can reserve the
+necessary space at the top of memory when you save this empty file,
+and you will then not need to remember the memory size when starting
+BASIC in the future. You should first J BASIC in the usual way
+(without loading these routines, of course), and specify 51200
+memory available. Then use the CSAVE"B" command to save the
+workspace, which can then be loaded via an R command in future.
+BASIC can the be &lsquo;cold&rsquo; started by the Z command. As only one block
 needs to be stored on tape this is still a quick operation. Next
 month we will mention an even faster solution! NAS-DOS users can of
-course save this enpty file with a command JB:BASIC, and then simply
-type JE:BASIC to &lsquo;cold&rsquo; start BASIC.
+course save this empty file with a command ]B:BASIC, and then simply
+type ]E:BASIC to &lsquo;cold&rsquo; start BASIC.
 </p>
 <p>
 To avoid the danger of accidentally cold starting BASIC we have
-eliminated the J command in the SCAL table in RAM. NAG-DOS users
+eliminated the J command in the SCAL table in RAM. NAS-DOS users
 </p>
 <?php columnEnd(1); ?>

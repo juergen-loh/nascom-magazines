@@ -1,76 +1,82 @@
 <?php columnStart(1); ?>
-<p>
-= AAAA BBB
+<dl>
+<dt>e</dt><dd>AAAA BBBB<br>
 Erase a byte
-</p>
 <p>
-Delete a single byte at 4 specified memory location and
-mave the contents of higher mesary focations dow to fill the
+Delete a single byte at a specified memory location and
+move the contents of higher memory locations down to fill the
 gap.
 </p>
 <p>
-The section of memory delinited by: (4) address for
-jetion plus one, (1) top limit for move minus one, is moved
-to the menory locations delimited by (1) address for deletion,
-Gi) top Limit for move minus two. The &lsquo;top limit for nove!
-parameter is the cirst menory address from and above which
-fenory is neither read from nor written to by this command.
+The section of memory delimited by: (i) address for
+deletion plus one, (ii) top limit for move minus one, is moved
+to the memory locations delimited by (i) address for deletion,
+(ii) top Limit for move minus two. The &lsquo;top limit for move&rsquo;
+parameter is the first memory address from and above which
+memory is neither read from nor written to by this command.
 The top limit for move must by greater than the address for
-deletion by at least two bytes,
+deletion by at least two bytes.
 </p>
 <p>
 After deletion of the specified byte, the command
 responds by displaying on the following screen line the
-hexadecimal value of the deleted byte,
+hexadecimal value of the deleted byte.
 </p>
-<p>
-AAAA &ndash; memory address at mhich the byte is to be deleted
-B= top limit for move. Memory addresses from this
+<p class="noindent">
+AAAA &ndash; memory address at which the byte is to be deleted<br>
+BBBB &ndash; top limit for move. Memory addresses from this
 address upwards are not accessed.
 </p>
 <p>
-The conaand uses the 260 block transfer instruction LDIR
-to shift the contents of senory downwards.
+The command uses the Z80 block transfer instruction LDIR
+to shift the contents of memory downwards.
 </p>
+</dd>
+<dt>f</dt><dd>AAAA<br>
+---- find mask ----<br>
+Find
 <p>
-Find a specified character string, or a
-specified by hexadecimal values, and display
+Find a specified character string, or a sequence of
+bytes specified by hexadecimal values, and display the memory
 address(es) at which it occurs.
 </p>
 <p>
-The memory address at which the
-taken from the first argunent (ARGL).
+The memory address at which the search is to start is
+taken from the first argument (ARG1).
 </p>
 <p>
-After entry of the &ldquo;f* comaand, the cursor is positioned
-at the etart of the next line and the find mask may then be
-entered in one of the following two format:
+After entry of the &ldquo;f&rsquo; command, the cursor is positioned
+at the start of the next line and the find mask may then be
+entered in one of the following two formats.
+</p>
+<p class="noindent">
 1. Character string
 </p>
 <p>
-&lsquo;Theirst position in the mask line @ust contain the
-double-quote character ("), The required character string must
+Theirst position in the mask line must contain the
+double-quote character ("). The required character string must
 start in the second position in the line and may contain any
 characters (including spaces) except the double-quote
 character. The string is terminated by a further double-quote
 character or, if this is not present, the end of the line.
-2. Sequence of bytes pacified by hexadecimal valu
+</p>
+<p class="noindent">
+2. Sequence of bytes pacified by hexadecimal values.
 </p>
 <p>
-The mask is entered al sequence of simple byte
-hexadecimal numbers (G to FF), each one separated from the
-next by at Jeast one apace. The first value may start in the
-firat position on the line or may De preceded by as many
-spaces as are required, The entire find mask must be contained
-within a single Line.
-</p>
-<p>
-rch is to start is
+The mask is entered as a sequence of single byte
+hexadecimal numbers (0 to FF), each one separated from the
+next by at least one apace. The first value may start in the
+first position on the line or may be preceded by as many
+spaces as are required. The entire find mask must be contained
+within a single line.
 </p>
 <p>
 After entry of the mask, memory is searched from the
 specified start address up to the top end of memory (FFFFH).
 The response is always displayed on the screen line following
-the entered mask. If no match is found, the response {5 XXxxX.
+the entered mask. If no match is found, the response is XXXX.
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

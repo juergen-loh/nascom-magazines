@@ -1,4 +1,6 @@
 <?php columnStart(1); ?>
+<dl>
+<dt></dt><dd>
 <p>
 The command eliminates the spurious input of random
 characters which is often associated with the switch on and
@@ -9,64 +11,66 @@ the &lsquo;k&rsquo; command. If required, the normal NAS-SYS tables may
 be restored by using the NAS-SYS &lsquo;N&rsquo; command.
 </p>
 <p>
-&lsquo;The command adds 4 to the &lsquo;normal&rsquo; input table value and
+The command adds 4 to the &lsquo;normal&rsquo; input table value and
 then stores this value using the NAS-SYS NIM function. This
 has the desired effect both in NAS-SYS&nbsp;1 and NAS-SYS&nbsp;3.
 </p>
-<p>
-&ndash; label nane to be written &mdash;&mdash;-
+</dd>
+<dt>l</dt><dd><br>
+--- label name to be written ---<br>
 Label a cassette tape
+<p>
+Writes a tape label with a specified name. Once written
+a tape label will be recognised and displayed by the SYS-EX
+commands &lsquo;q&rsquo;, &lsquo;r&rsquo;, &lsquo;s&rsquo; and &lsquo;v&rsquo;.
 </p>
 <p>
-Weites a tape label with a specified name. Once written
-a tape Label will be recognised and displayed by the SYS-EX
-commands &lsquo;q&rsquo;y &lsquo;n&rsquo;y &ldquo;8&rsquo; and &lsquo;v".
-After entry of the &lsquo;1&rsquo; &ldquo;command, the prompt &lsquo;INaser
-appears on the next screen line and the required label nane is
+After entry of the &lsquo;l&rsquo; command, the prompt &lsquo;lName:&rsquo;
+appears on the next screen line and the required label name is
 entered on that line. The tape drive LED is switched on and
-after about two seconds (4"Hz), the tape label is sent to the
-</p>
-<p>
-rial output port for writing&rsquo; to tape. Finally, the tape
+after about two seconds (4MHz), the tape label is sent to the
+serial output port for writing to tape. Finally, the tape
 drive LED is switched off.
 </p>
 <p>
-The format of the tape label is as follows)
+The format of the tape label is as follows;
+</p>
+<p class="indent">
+4 x D3H<br>
+0 to 42 characters of label name<br>
+1 space (00H if name length is 42)<br>
+00H.
 </p>
 <p>
-4 x DSH
-0 to 42 characters of label nane
-1 space (OOH if name length is 42)
-oH.
-</p>
-<p>
-File and label names are normally entered on the sane
-line as the prompt *.Na which immediately follows the
+File and label names are normally entered on the same
+line as the prompt &lsquo;.Name:&rsquo; which immediately follows the
 entered command line. However, it is quite possible to enter a
-fame from a different line after first moving the cursor to
+name from a different line after first moving the cursor to
 the line required. The name must begin in column 7 and must
-be immediately preceded by the + character (7CH =
-CONTROL/<?php spChar("zwsp"); ?>SHIFT/<?php spChar("zwsp"); ?>,).. Any characters (including spaces? may be
+be immediately preceded by the : character (7CH =
+CONTROL/<?php spChar("zwsp"); ?>SHIFT/<?php spChar("zwsp"); ?>/,). Any characters (including spaces) may be
 included in file and label names. All space characters which
 appear to the right of the final non-space character are
-{gnored.
+ignored.
 </p>
 <p>
-1Y the CLOAD command in the OK Basic causes a tape label
+If the CLOAD command in the 8K Basic causes a tape label
 to be read, Basic will interpret the label as a program file
-with the name DSH (a block graphice character). This is
-Unlikely to cause any problems.
+with the name D3H (a block graphics character). This is
+unlikely to cause any problems.
 </p>
-<p>
+</dd>
+<dt>n</dt><dd><br>
 Return to NAS-SYS
-</p>
 <p>
 Returns exclusively to NAS-SYS using a NAS-SYS MRET
 instruction.
 </p>
 <p>
-&lsquo;This command will seldom be required all of the
+This command will seldom be required as all of the
 NAS-SYS keyboard commands are available in the normal way from
 within SYS-EX.
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

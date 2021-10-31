@@ -1,75 +1,75 @@
 <?php columnStart(1); ?>
-<p>
-if between cne and sight matches are found, the menory address
-of the start of each match is displayed in&rsquo;the response lin
+<dl>
+<dt></dt><dd>
+<p class="continued">
+if between one and sight matches are found, the memory address
+of the start of each match is displayed in the response line.
 After the final match, XXXX is displayed to signify that the
+search continued to the top end of memory. If nine matches are
+found, all nine memory addresses are displayed in the response
+line. After nine matches the command terminates without
+searching any further.
 </p>
-<p>
-search continued to the top end of manory. If nine matches are
-found, all nine menory addresses are displayed in the response
-lin
-</p>
-<p>
-After nine matches the command terminates without
-rehing any further.
-&lsquo;AAAA &ndash; memory address at which the search is to start.
+<p class="noindent">
+AAAA &ndash; memory address at which the search is to start.
 </p>
 <p>
 The logic of this command is really quite involved. A
-full description would require an article on its om.
-Basically, the command obtains the firet byte in the required
-mask and searches through memory until it finds &laquo; match. The
+full description would require an article on its own.
+Basically, the command obtains the first byte in the required
+mask and searches through memory until it finds a match. The
 second byte of the mask is then compared with the next
-location&rsquo;in memory) if that the third byte of the
-ask i&raquo; compared and #0 on. n&rsquo;th byte fails to match,
+location in memory; if that matches, the third byte of the
+mask is compared and so on. If the &lsquo;n&rsquo;th byte fails to match,
 the command continues with searching for the first byte at the
-menory location one beyond the previous first byte match.
+memory location one beyond the previous first byte match.
 Clearly, the command will for most of it&rsquo;s time be searching
-for and&rsquo; failing to find a match on the first byte in the mask
+for and failing to find a match on the first byte in the mask.
 This matching exercise on the first byte in the mask was
-therefore made as quick as possible, in order to miniaiae the
-execution tine of the comand, However, this approach does
+therefore made as quick as possible, in order to minimise the
+execution tine of the command. However, this approach does
 mean that if the first byte of the mask occurs frequently in
-fenory, the command will take a littl longer. On average, the
-Command will search 44K in a couple of seconds. However, if
-the first two bytes of the mask are &mdash;say- 00 00 (00 usually
-Agena to occur frequently) it may take up to ten seconds to
-wearch 64K. Times are for @ processor running at 4MHz with
-wait atater
+memory, the command will take a little longer. On average, the
+command will search 64K in a couple of seconds. However, if
+the first two bytes of the mask are &ndash;say&ndash; 00 00 (00 usually
+seems to occur frequently) it may take up to ten seconds to
+search 64K. Times are for a processor running at 4MHz with
+wait states.
 </p>
-<p>
-anna
+</dd>
+<dt>h</dt><dd>AAAA<br>
 Hexadecimal to decimal conversion
-</p>
 <p>
 Converts a hexadecimal integer value in the range 0 to
-FFF, to decimal.
+FFFF, to decimal.
 </p>
 <p>
 The result of the conversion to decimal is displayed on
 the first screen line following the command letter. The
-hexadecimal number is first displayed az it&rsquo;s signed decimal
+hexadecimal number is first displayed as it&rsquo;s signed decimal
 equivalent with a preceding minus sign if the value is
 negative. If the number is negative, a further value is
 displayed to show the positive decimal equivalent of the
-unsigned format hexadecimal nunber.
+unsigned format hexadecimal number.
 </p>
 <p>
-In order to determine the sign of the input arguaent
-the command uses the nunber of {nput digits typed to determine
-whether the argument represents a single ora double byte
-Value. If the number of digits typed ts greater than two,
-Gouble byte value is asauned, otherwise a single byte value is
-assumed.&rdquo; If requires ding zeroes may be typed in order to
-</p>
-<p>
+In order to determine the sign of the input argument
+the command uses the number of input digits typed to determine
+whether the argument represents a single or a double byte
+value. If the number of digits typed is greater than two, a
+double byte value is assumed, otherwise a single byte value is
+assumed. If requires, leading zeroes may be typed in order to
 force a double byte conversion.
+</p>
+<p class="noindent">
 AAAA &ndash; hexadecimal value for conversion
-Rather than just describe the operation, a commented
-asseatler listing of the conversion follows, The actual
-BYE-EX code is slightly modified to cater for negative
 </p>
 <p>
-punber:
+Rather than just describe the operation, a commented
+assembler listing of the conversion follows. The actual
+SYS-EX code is slightly modified to cater for negative
+numbers
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

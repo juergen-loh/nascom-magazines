@@ -208,7 +208,7 @@
 	,	35
 	,	2
 	);
-	trJournal($path, $tail, $magazine
+/*	trJournal($path, $tail, $magazine
 	,	"Service Seite für individuelle Notizen"
 	,	""
 	,	""
@@ -216,5 +216,6 @@
 	,	1
 	,	36
 	);
+*/
 ?>
 <!-- /82/01/content.php -->

@@ -1,76 +1,70 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
-could instead replace the existing procedure with one te chain to
-the program BABIC on disc,
+could instead replace the existing procedure with one to chain to
+the program BABIC on disc.
 </p>
 <p>
 Interrupts have to be disabled by NAS-DOS (and CP/M) during the disc
-read and write operations, so the buffering function will aleo be
-nosentarily disabled at these times.
+read and write operations, so the buffering function will also be
+momentarily disabled at these times.
 </p>
 <p>
-The use of the interrupt routine causes a lows of around 5% in
-processing speed &ndash; not noticeable in sost applications.
+The use of the interrupt routine causes a loss of around 5% in
+processing speed &ndash; not noticeable in most applications.
 </p>
+<h4>
+2. Modifying the hardware
+</h4>
 <p>
-Modifying the hard
-</p>
-<p>
-This is a very simple job. Just solder a wire from Test Point P22
+This is a very simple job. Just solder a wire from Test Point TP22
 on the Nascom&nbsp;2 computer board to pin 24 on PL4, the PIO cable. The
 most tidy way of doing this would be to solder a wire on the
-Underside of the board, and if you do not use the PIO for any other
-purpose, or only for a parallel printer, this is quite satisfactory,
+underside of the board, and if you do not use the PIO for any other
+purpose, or only for a parallel printer, this is quite satisfactory.
 However, to allow the entire PIO to be freed for other applications
-T prefer to take the wire from 1P22 out of the case and connect it
+I prefer to take the wire from TP22 out of the case and connect it
 to pin 25 of a D-type plug. This can then be plugged into the
 parallel interface port via the standard D-type socket (as described
-in Application Nate AN-0005, which wee reproduced in an earlier
-issue of Nascom News). If you&rsquo;are using a parallel printer thi
+in Application Note AN-0005, which was reproduced in an earlier
+issue of Nascom News). If you are using a parallel printer this
 stops you using both, so hard wiring via an on/off switch may be
-preferable. Incidentally this pin of the PIO ia not used in the
-Standard parallel printer interfacing system, ao there is no clash
+preferable. Incidentally this pin of the PIO is not used in the
+standard parallel printer interfacing system, so there is no clash
 in hardware in this respect.
 </p>
 <p>
-This connection provides the SOHz clock input (from TP22) to the
-PIO. This seme connection ia made in a number of special systems &mdash;
-NAB-NET and DCS-HOS &ndash; and we would suggest you consider reserving
-this PIO line as a clock Lint
+This connection provides the 50Hz clock input (from TP22) to the
+PIO. This same connection is made in a number of special systems &ndash;
+NAS-NET and DCS-MOS &ndash; and we would suggest you consider reserving
+this PIO line as a clock line.
 </p>
-<p>
-3._The softwar
-</p>
+<h4>
+3.The software
+</h4>
 <p>
 The software is all in assembly laguage, and is probably best loaded
-The listing which follows te
-</p>
-<p>
+at the top of memory, as shown here. The listing which follows is
 fully commented, so we suggest you read through it to see how it
 works.
 </p>
 <p>
-To mnter the software you can just copy the machine code into
-menory, or better still create a source file using ZEAP or NAS-SEMBLER.
+To enter the software you can just copy the machine code into
+memory, or better still create a source file using ZEAP or NAS-SEMBLER.
 This will make future additions to the keyboard routines,
 and other extensions which we will discuss in future issue of Nascom
 News, easier. Although the listing given here is for NAS-SEMBLER,
-wa have not used any features which are not available in ZEAP.
+we have not used any features which are not available in ZEAP.
 </p>
 <p>
 NAS-DOS users may like to arrange the routine to be automatically
-loaded and enabled by the user boot (1U) command, and to change the
-SCAL J location to automatically execute 2 dummy program BASIC from
-diac, This will eliminate the need for any non-standard ateps in
-</p>
-<p>
+loaded and enabled by the user boot (]U) command, and to change the
+SCAL J location to automatically execute a dummy program BASIC from
+disc, This will eliminate the need for any non-standard steps in
 using the system.
 </p>
 <p>
-Note that we have placed certain key information in RAM at CCAO.
+Note that we have placed certain key information in RAM at CCA0.
 The first three locations contain a clock, in hours, minutes and
-seconds, followed by @ 1/50 second tick count. These are set to
-</p>
-<p>
+seconds, followed by a 1/50 second tick count. These are set to
 </p>
 <?php columnEnd(1); ?>
