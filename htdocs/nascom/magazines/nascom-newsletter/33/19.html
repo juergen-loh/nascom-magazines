@@ -1,64 +1,62 @@
 <?php columnStart(1); ?>
 <p>
-esting is quite simple, I found. It&rsquo;s a matter of Fitting
-the WAIT GATE with all the MATTs (Mi and R/W) in operation,
+Testing is quite simple, I found. It&rsquo;s a matter of fitting
+the WAIT &ndash; GATE with all the WAITs (M1 and R/W) in operation,
 giving a normal and average cursor flash rate. This is followed
 by setting to no WAITs, which gives a noticeable change of
-cursor rate. A further test of MI WalTs only, gives an increase
+cursor rate. A further test of M1 WAITs only, gives an increase
 in cursor rate, but lees noticeable. (In almost all systems the
-NAS-SYS ROM and workspace RAM will work without WAITS). Any
+NAS-SYS ROM and workspace RAM will work without WAITs). Any
 poor connections of the wire wrap sockets will show up as faults
-In other sections of the Nascom circuit. These include the RESET
-smitth, single sten logic. P10, and serial interface. The manual
-eiplains this, and these functions should. be watched during
-First operations:
+in other sections of the Nascom circuit. These include the RESET
+switch, single step logic, PIO, and serial interface. The manual
+explains this, and these functions should be watched during
+first operations:
 </p>
-<p>
+<h4>
 TABLE 1. SWITCH DATA
-</p>
-<p>
-SWITCH No. BLOCK CYCLE TYPE
-1 a &laquo;ROM mt
-2 &amp; (ROM) Rw
-3 B CRAM) mt
-4 B (RAM) Rw
-</p>
-<p>
+</h4>
+<table class="center" style="width: 50%">
+<tr><td>SWITCH No.</td><td>BLOCK</td><td>CYCLE TYPE</td></tr>
+<tr><td>1</td><td>A (ROM)</td><td>M 1</td></tr>
+<tr><td>2</td><td>A (ROM)</td><td>R/W</td></tr>
+<tr><td>3</td><td>B (RAM)</td><td>M 1</td></tr>
+<tr><td>4</td><td>B (RAM)</td><td>R/W</td></tr>
+</table>
+<h4>
 TABLE 2. MEMORY DEVICE TIMING
-</p>
+</h4>
+<table class="center" style="width: 50%">
+<tr><td>WAIT STATE TYPE</td><td>MEMORY ACCESS TIME</td></tr>
+<tr><td>NONE</td><td>&lt;275ns</td></tr>
+<tr><td>M1 ONLY</td><td>&lt;400ns</td></tr>
+<tr><td>FULL (M1 &amp; R/W)</td><td>&lt;525ns</td></tr>
+</table>
 <p>
-Watt STATE TYPE MEMORY ACCESS TIME
-None 2750s
-M1 ONLY &ldquo;400n5
-</p>
-<p>
-Fut ME RMD &ldquo;ne
-</p>
-<p>
-Using the ahove tables, the Latter section of the manual
+Using the above tables, the latter section of the manual
 explains how the switches in Table 1 are used to provide each
-ROM and RAM speed sn Table 2. Switches 1 and 2 are set for ROM:
-Sand 4 for RAM. Tf an access tine af &lt; 4007s ands 278s. is
-required for ROM and&rdquo; 27Sns for RAM, the switches sould be set:
+ROM and RAM speed in Table 2. Switches 1 and 2 are set for ROM;
+3 and 4 for RAM. If an access tine of &lt;&nbsp;400ns and &gt;&nbsp;275ns is
+required for ROM and &lt;&nbsp;275ns for RAM, the switches should be set:
 </p>
-<p>
-Fon Ran
-&lsquo;up 2 pour &lt; DOWN 4 DOWN
-Mt OND Ry ONT MNO RW
-</p>
+<table class="center" style="width: 50%">
+<tr><td colspan=2>ROM</td><td colspan=2>RAM</td></tr>
+<tr><td>1 UP</td><td>2 DOWN</td><td>3 DOWN</td><td>4 DOWN</td></tr>
+<tr><td>M1</td><td>NO R/W</td><td>NO M1</td><td>NO R/W</td></tr>
+</table>
 <p>
 The main idea behind the WAIT &ndash; GATE, says the manual, is:
 </p>
 <p>
-&ldquo;In most svstems only snme memory access cycles actually
-bent UAIT states. The WATT &ndash; GATE circuit orovides a flexible
-moans uf controlling WAIT states so. that&rsquo; the number of
-Wnnereesary WAIT &ldquo;states is minimised This can result ina
-voter ahle increase in GePalle speed. e+.
+&ldquo;In most systems only some memory access cycles actually
+need WAIT states. The WATT &ndash; GATE circuit provides a flexible
+means of controlling WAIT states so that the number of
+unnecessary WAIT states is minimised. This can result in a
+considerable increase in C.P.U. speed.....&rdquo;
 </p>
 <p>
-This 1 must aurew mith, when va consider that by far the most
-frequently uae! oner ations, are the reading and writing of the
-memeces berth ROM and FAM,
+This I must agree with, when you consider that by far the most
+frequently used operations are the reading and writing of the
+memory, both ROM and RAM.
 </p>
 <?php columnEnd(1); ?>

@@ -1,67 +1,72 @@
 <?php columnStart(1); ?>
+<dl>
+<dt></dt><dd>
 <p>
 Upon entry to the user routine, various Z80 registers have
-preset values. These values are: HL = value from ARGI, DE =
-</p>
-<p>
-Value from @RG2, BC = value from ARGS, &ndash; SP = OCSFH &ldquo;within
-the NAS-SYS stack. Forty tno bytes are available on the
-stack for use by the user routine. Calls to | NAS-SYS
+preset values. These values are: HL = value from ARG1, DE =
+value from ARG2, BC = value from ARG3, SP = 0C5FH within
+the NAS-SYS stack. Forty two bytes are available on the
+stack for use by the user routine. Calls to NAS-SYS
 routines or to SYS-EX routines, from within a user routine,
-Mill require a number of stack levels to be available.
-y
-</p>
-<p>
-Call user routine eumber 2
-</p>
-<p>
-Calls a user routine whose execution address has been
-stored in the NAS-SYS argument ARG?
-</p>
-<p>
-The command is identical to the &ldquo;x"command except that
-the argument ARG? is used in place of ARGS.
-</p>
-<p>
-Call user routine number 5
+will require a number of stack levels to be available.
+</dd>
+<dt>
+y</dt><br>
+<p class="noindent">
+Call user routine number 2
 </p>
 <p>
 Calls a user routine whose execution address has been
-stored in the NAS-SYS argument ARGIO.
+stored in the NAS-SYS argument ARG9.
 </p>
 <p>
-The command is identical to the &ldquo;x"command except that
-the argument ARGIO is used in place of ARGS.
+The command is identical to the &lsquo;x&rsquo;<?php spChar("zwsp"); ?>command except that
+the argument ARG9 is used in place of ARG8.
+</p>
+</dd>
+<dt>z</dt><dd><br>
+<p class="noindent">
+Call user routine number 3
 </p>
 <p>
-The three user routine calls, &lsquo;x&rdquo;, &lsquo;y&rsquo; and &lsquo;2&rsquo;, provide an
-easy method of attatching individually tailored Commands ta
-the monitor. Uniike the NAS-SYS Execute command, these
-commands allow a return ta the monitor (SYS-EX) with a single
-RET instruction. Also, the &ldquo;Error? message can be output
+Calls a user routine whose execution address has been
+stored in the NAS-SYS argument ARG10.
+</p>
+<p>
+The command is identical to the &lsquo;x&rsquo;<?php spChar("zwsp"); ?>command except that
+the argument ARG10 is used in place of ARG8.
+</p>
+<p>
+The three user routine calls, &lsquo;x&rdquo;, &lsquo;y&rsquo; and &lsquo;z&rsquo;, provide an
+easy method of attatching individually tailored commands to
+the monitor. Unlike the NAS-SYS Execute command, these
+commands allow a return to the monitor (SYS-EX) with a single
+RET instruction. Also, the &lsquo;Error&rsquo; message can be output
 under user control by manipulating the carry flag prior to the
-RET. The commands are ideally suited. to. calling individual
+RET. The commands are ideally suited to calling individual
 monitor type functions. e.g. &ndash; Display the character
-represented by the ASCII code entered as ARGI -, or &ndash; Print
-screen contents of attatched printer Tt might even be
+represented by the ASCII code entered as ARG1 &ndash;, or &ndash; Print
+screen contents of attatched printer &ndash;. It might even be
 possible to directly call some of the functions within Basic.
 </p>
 <p>
-In addition to &ldquo;x&rdquo;, &ldquo;y&rdquo; and &ldquo;2&rdquo;, there is another method
-of calling user routines.&rdquo; The commands &ldquo;9&rdquo;, &ldquo;37s &ldquo;my &ldquo;oO&rdquo; and
-&ldquo;pr, which are not used directly by SYS-EX, all Call a meaory
-address 0400H (1K) beyond the start &ldquo;of SYS-EX &ldquo;U-e-immediately
-after SYS-EX). If you put your owr code here,
-these commands can be used in a simlar way to &ldquo;x&rdquo;, &ldquo;y&rdquo; and
-2&rsquo;. The register values on entry are the same as&rsquo; for &ldquo;x",
-ty&rsquo; &ldquo;and &ldquo;2&rdquo;. A word of warning here &ndash; if you haven&rsquo;t put any
-cade beyond SYS-EX, don&rsquo;t use &ldquo;9&rdquo;, &ldquo;3&rdquo;, &ldquo;m&rdquo;, &ldquo;a&rdquo; or &ldquo;p&rsquo; as the
+In addition to &lsquo;x&rsquo;, &lsquo;y&rsquo; and &lsquo;z&rsquo;, there is another method
+of calling user routines. The commands &lsquo;g&rsquo;, &lsquo;j&rsquo;, &lsquo;m&rsquo;, &lsquo;o&rsquo; and
+&lsquo;p&rsquo;, which are not used directly by SYS-EX, all call a memory
+address 0400H (1K) beyond the start of SYS-EX (i.i. immediately
+after SYS-EX). If you put your own code here,
+these commands can be used in a similar way to &lsquo;x&rsquo;, &lsquo;y&rsquo; and
+&lsquo;z&rsquo;. The register values on entry are the same as for &lsquo;x&rsquo;,
+&lsquo;y&rsquo; and &lsquo;z&rsquo;. A word of warning here &ndash; if you haven&rsquo;t put any
+code beyond SYS-EX, don&rsquo;t use &lsquo;g&rsquo;, &lsquo;j&rsquo;, &lsquo;m&rsquo;, &lsquo;o&rsquo; or &lsquo;p&rsquo; as the
 results will be unpredictable.
 </p>
 <p>
 That completes the description of the keyboard commands. In
 the next issue of the magazine we will look at, amongst other
-things, how the GK Basic can make use of forty two character
+things, how the 8K Basic can make use of forty two character
 program names.
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

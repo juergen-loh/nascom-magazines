@@ -6,60 +6,65 @@ Modifications to Wordease 2
 by T. Balls
 </h2>
 <p>
-T have been using Mordease 2 for about two years. As a
-teacher I find 1t invaluable for the preparation of workshests,
+I have been using Wordease 2 for about two years. As a
+teacher I find it invaluable for the preparation of worksheets,
 exam papers and the like. When I bought this program it was a
-Simple choice between it and Naspen and although both had their
+simple choice between it and Naspen and although both had their
 advantages and disadvantages I settled for the RAM based system
 so that it could be sore easily updated. Nothing is perfect
 however and there were several deficiencies that I have tried to
-fake good over the tise I&rsquo;ve been using it. this article,
+make good over the time I&rsquo;ve been using it. This article,
 together with the assembler listing, describe these changes.
-The main changes are as fol low:
+The main changes are as follows:
 </p>
-<p>
+<h3>
 &ldquo;Current position&rdquo; when processing.
-</p>
+</h3>
 <p>
-The &ldquo;conditional eject&rdquo; facility is useful but T found that
-1 very often needed to know how many lines there were remzining
-ona particular page so that I could decide whether to include
-an extra paragraph or not. Lines 6&amp;0 &ndash; 1210 encode a routine
+The &ldquo;conditional eject&rdquo; facility is useful but I found that
+I very often needed to know how many lines there were remaining
+on a particular page so that I could decide whether to include
+an extra paragraph or not. Lines 660 &ndash; 1210 encode a routine
 which outputs the current page being processed and how many
 lines remain on that page. The right hand side of the top screen
 line is used during the process phase. Simply put a &ldquo;halt&rdquo; at
-the end of the text to find out how mich space is left.
+the end of the text to find out how much space is left.
 </p>
-<p>
-Support for Epson MX 90 printer.
-</p>
+<h3>
+Support for Epson MX&nbsp;80 printer.
+</h3>
 <p>
 For quite some time I used an ancient Olivetti terminal
-printer that did not respond ta &ldquo;escape&rdquo; sequences in the way
-that more aodern printers do. When I started to use an Epson T
+printer that did not respond to &ldquo;escape&rdquo; sequences in the way
+that more modern printers do. When I started to use an Epson I
 found several problems &ndash; I could switch underline on, but not
-off again? The justification option in the processor was taking
-note of the printer contral codes so that a line sith an
-Underlined word would be justified to a right margin 6 coluans
+off again! The justification option in the processor was taking
+note of the printer control codes so that a line with an
+underlined word would be justified to a right margin 6 columns
+in.
+</p>
+<p>
 The other problem arose when processing printer control codes on
-the screen via Porti &ndash; the escape sequences tended to mess up
+the screen via Port1 &ndash; the escape sequences tended to mess up
 the screen display. Lines 1700 &ndash; 1930 trap all control-U codes
 and increment a second line-length counter which is subsequently
-Used for the justification process. There are several patches
+used for the justification process. There are several patches
 which are needed to reinstate the correct value at the start of
-each new line. Lines 5250-3420 and 1270 &ndash; 1370 trap the
-output via Porti and Port? and modify being output. Output to
-Portt (screen) has a table of control codes (&lt;20H) and any of
+each new line. Lines 3250 &ndash;3420 and 1270 &ndash; 1370 trap the
+output via Port1 and Port2 and modify being output. Output to
+Port1 (screen) has a table of control codes (&lt;20H) and any of
 these have Bit 7 set so they are output as graphics characters.
-In order to send Null codes (OOH) to the printer to turn off
+In order to send Null codes (00H) to the printer to turn off
 certain features it is necessary to send 255 instead. The Port2
-patch detects these codes and sends 00. The robles is the
-Wordease uses 00h as the end of line marker in tts text buffer.
+patch detects these codes and sends 00. The problem is the
+Wordease uses 00h as the end of line marker in its text buffer.
 Both these Port patches also detect the &ldquo;pad&rdquo; character (see
 below.
 </p>
+<h3>
+Pad characters.
+</h3>
 <p>
-Pad characters,
-Tt is sometimes necessary to be able to put in &lsquo;hard spaces&rsquo;
+It is sometimes necessary to be able to put in &ldquo;hard spaces&rsquo;
 </p>
 <?php columnEnd(1); ?>

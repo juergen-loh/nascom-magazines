@@ -1,8 +1,8 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
-including the fle opening commands described above, require
+including the file opening commands described above, require
 additional variable names to specify the data (or filename) to
-be saved &ldquo;or loaded. There are a number of significant
+be saved or loaded. There are a number of significant
 restrictions associated with these names in ROM BASIC. Again
 you should realise that these are associated with the simple
 BASIC Routine Handler incorporated within NAS-DOS for use with
@@ -14,16 +14,16 @@ main restrictions are as follows:
 </p>
 <p>
 1. Only simple character strings may be loaded or saved.
-Numbers! mist be converted using the STRS and VAL functions
-before/<?php spChar("zwsp"); ?>after disc access. The variable cannot be an. array
-element. Thus if you have a 20 element numeric array AC) which
+Numbers must be converted using the STR$ and VAL functions
+before/<?php spChar("zwsp"); ?>after disc access. The variable cannot be an array
+element. Thus if you have a 20 element numeric array A&&nbsp;) which
 you wish to store on disc you would need to use lines of the
-fora
+form
 </p>
 <p>
-100 FOR I=1 10 20
-110 AS= STRSCACI))
-120 ASUSR(32) , As
+100 FOR I=1 10 20<br>
+110 A$= STR$(A(I))<br>
+120 A=USR(32),A$<br>
 130 NEXT
 </p>
 <p>
@@ -31,39 +31,39 @@ to save the elements in character string form.
 </p>
 <p>
 2. While more than one string can be loaded/<?php spChar("zwsp"); ?>saved in a single
-USR( ) statement the strings are stored directly on disc with no
+USR(&nbsp;) statement the strings are stored directly on disc with no
 separator between them, although after each disc write statement
-an&rsquo; end-of-record character (OD hex) is output to disc
+an end-of-record character (0D hex) is output to disc.
 Therefore in order to read back the data where more than one
-item has been stored ina record the strings must be of known
+item has been stored in a record the strings must be of known
 fixed length otherwise the disc read statement will not be able
 to determine where one string ends and the next begins. Where
-the length of the string 18 variable you will need to fix the
+the length of the string is variable you will need to fix the
 length by padding it out to the requied length with additional
-spaces. Note that this applies where more than one variable 18
-read/<?php spChar("zwsp"); ?>weitten in a single USK call &ndash; if only one variable is
+spaces. Note that this applies where more than one variable is
+read/<?php spChar("zwsp"); ?>written in a single USR call &ndash; if only one variable is
 referenced each time NAS-DOS will use the end-of-record
 separator which is put in the file after each disc write
-Statement to determine where data which ix being read
+statement to determine where data which is being read
 terminates.
 </p>
 <p>
 These limitations do not affect XBASIC, which allows almost any
-type of variable to be read or written see the XBASIC. manual
-for more detasis on this.
+type of variable to be read or written &ndash; see the XBASIC manual
+for more details on this.
 </p>
 <p>
-There are essentially tho different types of data file which can
+There are essentially two different types of data file which can
 be saved on disc &ndash; at least using NAS-DOS. These are knows as
-Sequential files and randoa files. We will describe sequential
-files here and introduce random files. next moath we will
+sequential files and random files. We will describe sequential
+files here and introduce random files. next month we will
 describe random files in more detail.
 </p>
 <p>
-Sequential files are very comparable with gata written onto
-magnetic tape. Generally to get any item on the file. you. must
-Start. from the beginning and read (or write) each item in turn
+Sequential files are very comparable with data written onto
+magnetic tape. Generally to get any item on the file you must
+start from the beginning and read (or write) each item in turn
 until you get to the required point. If you are writing the
-file you &ldquo;must then wite any remaining data. Because the end=
+file you must then write any remaining data. Because the
 </p>
 <?php columnEnd(1); ?>

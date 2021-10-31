@@ -1,45 +1,43 @@
-<?php columnStart(1); ?>
-<p>
-IF 30 aS
-</p>
-<p>
-1E 20 mS
-1D iz as
-1c 6 aS
-</p>
+<?php columnStart(1, "noindent"); ?>
+<table class="indent" style="width: 30%">
+<tr><td>1F</td><td>30&nbsp;mS</td></tr>
+<tr><td>1E</td><td>20&nbsp;mS</td></tr>
+<tr><td>1D</td><td>12&nbsp;ms</td></tr>
+<tr><td>1C</td><td>6&nbsp;mS</td></tr>
+</table>
 <p>
 The relevant location will depend on the version of NAS-DOS
 which you are using:
 </p>
-<p>
-1a psap
-12 p3ae
-114 sae
-</p>
+<table class="indent" style="width: 30%">
+<tr><td>1.1</td><td>D34D</td></tr>
+<tr><td>1.2</td><td>D346</td></tr>
+<tr><td>1.4</td><td>D34E</td></tr>
+</table>
 <p>
 Those of you with EPROM blowers can change the relevant location
-to suit your drives if necessary. Do remember&rdquo; the usual
+to suit your drives if necessary. Do remember the usual
 precautions and keep the original chip in case of accidents
-During the modification process.
+during the modification process.
 </p>
-<p>
+<h3>
 6. DISC FILES
-</p>
+</h3>
 <p>
 As well as allowing programs to be stored on disc NAS-DOS allows
-data to be staredand loaded. Routines are provided within NAS-DOS
-itself to aueist in data storage and retrieval, and these
-can be accensed directly from assembly language and Nascom ROM
-BASIC. &ldquo;ROM BASIC was developed long before discs were available
-fon the Nascom system, and therefore the language 1tsel does not
-provide any disc Commands. Access to the disc is therefore
-achieved by patching rn the various NAS-DOS routines. This is,
-Gone by means of the USR) function in BASIC, the argument
-being the number of the NAS-DOS routine to be called. It is. of
-course necessary to DOKE 4100,-10234 ta point the USR routine to
-an appropriate translator in&rsquo; NAS-DOS itself. This slightly
-auknard technique is necessary to allow the commands to be added
-toa ROM BASIC itis nat. &lsquo;a limitation of NAS-DUS. More
+data to be stared<?php spChar("zwsp"); ?>and loaded. Routines are provided within NAS-DOS
+itself to assist in data storage and retrieval, and these
+can be accessed directly from assembly language and Nascom ROM
+BASIC. ROM BASIC was developed long before discs were available
+on the Nascom system, and therefore the language itself does not
+provide any disc commands. Access to the disc is therefore
+achieved by patching in the various NAS-DOS routines. This is
+done by means of the USR(&nbsp;) function in BASIC, the argument
+being the number of the NAS-DOS routine to be called. It is of
+course necessary to DOKE 4100,-10234 to point the USR routine to
+an appropriate translator in NAS-DOS itself. This slightly
+awkward technique is necessary to allow the commands to be added
+to a ROM BASIC &ndash; it is not a limitation of NAS-DOS. More
 recently implemented languages (eg Extended BASIC) and
 applications programs (eg NAS-CALC) include within them
 meaningful commands for direct access to the discs via NAS-DOS.
@@ -50,22 +48,19 @@ Before any disc commands are used in a BASIC program under NAS-DOS
 the command
 </p>
 <p>
-DoKE:
+DOKE<?php spChar("zwsp"); ?>4100,-10234
 </p>
 <p>
-100, &ndash;10234
-</p>
-<p>
-must be executed by the program to set up a link to the NAS-bOS
+must be executed by the program to set up a link to the NAS-DOS
 Commands. You must then initialise the NAS-DOS commands and
 data area with an instruction of the form
 </p>
 <p>
-AausR CL)
-When Using subsequent disc commands remember that the nuaber of
+A=USR(1)
 </p>
 <p>
-the disc drive is stored in location %560 (decimal). wo if you
-want to change the dist drive accessed you aust include in the
+When using subsequent disc commands remember that the number of
+the disc drive is stored in location 3360 (decimal), so if you
+want to change the disc drive accessed you must include in the
 </p>
 <?php columnEnd(1); ?>

@@ -3,82 +3,76 @@
 Discs and Ports on a Nascom&nbsp;1
 </h1>
 <h2 class="author">
-by C. Godtrey
+by C. Godfrey
 </h2>
 <p>
-When installing the Nascoa F.0.C. card or any asseably using
-an off-board P.1.0. on a Nascom i, you will find that the
-on-board P.1.0. will no longer function. This is because the
+When installing the Nascom F.D.C. card or any assembly using
+an off-board P.I.O. on a Nascom&nbsp;1, you will find that the
+on-board P.I.O. will no longer function. This is because the
 decoding for selecting ports 0 to 3 (keyboard and UART) from
-ports 4 to 7 (P.1,0.) relied on the I/O select link being wired
-to TINT? which is actually a2.
+ports 4 to 7 (P.I.O.) relied on the I/O select link being wired
+to &lsquo;INT&rsquo; which is actually a2.
 </p>
 <p>
-Once the I/O select is moved to &ldquo;EXT&rdquo;, which is actually
-NasI0, the address line a2 is disconnected and the port decoding
-As incomplete, causing any reference to ports 4 to 7 to be
+Once the I/O select is moved to &lsquo;EXT&rsquo;, which is actually
+NasIO, the address line a2 is disconnected and the port decoding
+is incomplete, causing any reference to ports 4 to 7 to be
 directed to ports 0 to 3 respectively.
 </p>
 <p>
-If the P.1.0. was in use prior to the addition of discs then
-the only advice that Nascom can offer is that you buy a P.T.0.
+If the P.I.O. was in use prior to the addition of discs then
+the only advice that Nascom can offer is that you buy a P.I.O.
 board, not a very economic method of sorting out this simple
 problem. There follows a method that will solve the port
 decoding problem for approx. 20p plus labour.
 </p>
-<p>
+<h3>
 Parts Required.
-1x 74LS02 Quad NOR Gate
-3% lengths of wire 30cm Long
+</h3>
+<p class="indent2">
+1 x 74LS02 Quad NOR Gate<br>
+3 x lengths of wire 30cm long
 </p>
-<p>
+<h3>
 Documentation.
+</h3>
+<p class="indent2">
 Nascom&nbsp;1 circuit sheet 1
 </p>
-<p>
+<h3>
 Method.
-1. Locate IC&nbsp;48 (74LS00)
-2. Remove, bend out pin 2, replace.
-3. Take 74LS02, bend sideways all pins except pins 1,741)
-41 Solder 74/502 on top of 74L500 using pins 7 and 14.
-5. Bend pin 1 of 74L502 to join pin 2 of 74LSO0.
-6. Solder these two pins.
-7. Remove link on I/O select completely.
-@. Connections to 741502 are as follows:
+</h3>
+<ol>
+<li>Locate IC&nbsp;46 (74LS00)</li>
+<li>Remove, bend out pin 2, replace.</li>
+<li>Take 74LS02, bend sideways all pins except pins 1,7,14.</li>
+<li>Solder 74LS02 on top of 74LS00 using pins 7 and 14.</li>
+<li>Bend pin 1 of 74LS02 to join pin 2 of 74LS00.</li>
+<li>Solder these two pins.</li>
+<li>Remove link on I/O select completely.</li>
+<li>Connections to 74LS02 are as follows:<br>
+pin 10 to pin 11<br>
+pin 3 to pin 4<br>
+pin 2 to pin 8 to I/O select &lsquo;EXT&rsquo;<br>
+pin 5 to pin 9 to I/O select &lsquo;INT&rsquo;<br>
+pin 13 to I/O select &lsquo;COM&rsquo;<br>
+Ground from pin 7 to pin 6 and pin 12
 </p>
-<p>
-pin 10 to pin 11
-</p>
-<p>
-pin Ztopin 4
-</p>
-<p>
-pin 2 to pin 8 to I/O select &lsquo;ExT&rsquo;
-</p>
-<p>
-pin Stopin 9 to I/O select &ldquo;INT?
-</p>
-<p>
-pin 13 to I/O select &lsquo;COM&rsquo;
-</p>
-<p>
-Ground from pin 7 to pin &amp; and pin 12
-</p>
-<p>
+</li>
+</ol>
+<p class="noindent">
 Once the wiring changes have been made, all that needs to be
-</p>
-<p>
 done is to reassemble and test.
 </p>
-<p>
+<h3>
 Testing.
-Using the NAS-SYS commands &lsquo;O&rsquo; and &lsquo;O&rdquo;, type the following:
-1.06 OF Initialise port A as an output.
-</p>
+</h3>
 <p>
-2:0 7 OF Initialise port B as an output.
+Using the NAS-SYS commands &lsquo;O&rsquo; and &lsquo;Q&rdquo;, type the following:
 </p>
-<p>
-5.04.55 Send SSH to port A.
-</p>
+<ol>
+<li>O 6 0F &nbsp; Initialise port A as an output.</li>
+<li>O 7 0F &nbsp; Initialise port B as an output.</li>
+<li>O 4 55 &nbsp; Send 55H to port A.</li>
+</ol>
 <?php columnEnd(1); ?>

@@ -9,44 +9,42 @@ by David G. Johnson
 This article describes the second half of the commands
 available under SYS-EX, following on from the previous article.
 </p>
-<p>
-a
+<dl>
+<dt>
+q</dt><dd><br>
+<p class="noindent">
 Query tape contents
 </p>
 <p>
-Read 2 cassette tape and display on the screen any tape
-labels as written by the &ldquo;1&rdquo; command, and any file names as
+Read a cassette tape and display on the screen any tape
+labels as written by the &ldquo;l&rdquo; command, and any file names as
 written by the &lsquo;w&rsquo; command or by the 8K Basic.
 </p>
 <p>
 Each file name read is displayed on the next available
 screen line and, if necessary, the screen lines are scrolled
-</p>
-<p>
 in the normal way. The command is terminated by first
 stopping the cassette tape recorder and then typing four
 ESC (SHIFT:ENTER) characters. Four consecutive ESC
 characters read from the cassette tape input will have the
-</p>
-<p>
 same effect.
 </p>
 <p>
-This command is one of the four SYS-EX comands that
-display tape labels (the others are &ldquo;re&rdquo;, "s&rdquo; and &lsquo;v"). Tape
-labels are always displayed within the first. 42 character
+This command is one of the four SYS-EX commands that
+display tape labels (the others are &lsquo;r&rsquo;, &rsquo;s&rsquo; and &lsquo;v&rsquo;). Tape
+labels are always displayed within the first 42 character
 positions of the top line (line 16). Labels that are shorter
 than the 42 character maximum length are space filled up to
-the aaximum length. Therefore, displayed tape labels
+the maximum length. Therefore, displayed tape labels
 overwrite the whole of the top line with the exception of the
-final six character positions, which are almays left
+final six character positions, which are always left
 unaltered.
 </p>
-<p>
-r pAAA
-required file name &mdash;-
-</p>
-<p>
+</dd>
+<dt>
+r</dt><dd>AAAA<br>
+--- required file name ---
+<p class="noindent">
 Read named file
 </p>
 <p>
@@ -55,13 +53,13 @@ matches with the required file name. When a match is found,
 read the file into memory using the NAS-SYS Read command.
 </p>
 <p>
-After entry of the &lsquo;r&rdquo; command, the prompt &lsquo;rName:&rsquo;
+After entry of the &lsquo;r&rsquo; command, the prompt &lsquo;rName:&rsquo;
 appears on the next screen line and the required file name is
-entered on that line. Optionally, &ldquo;transparent&rdquo; characters
+entered on that line. Optionally, &lsquo;transparent&rsquo; characters
 may be entered as part of the required file name. A
-transparent character will match mith any character read into
-that position. The transparent character i= ASCII 7FH
-(CONTROL: SHIFT: /).
+transparent character will match with any character read into
+that position. The transparent character is ASCII 7FH
+(CONTROL:SHIFT:/).
 </p>
 <p>
 The tape drive LED is switched on and the cassette tape
@@ -69,7 +67,9 @@ is searched for tape and file labels. Any tape labels
 detected are displayed on the top screen line without
 interruption of the command. As each file label is
 detected, the file name is displayed on the screen line
-immediately below the required file mame. Any file name or
+immediately below the required file name. Any file name or
 text which was previously displayed on that line is blanked
 </p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>
