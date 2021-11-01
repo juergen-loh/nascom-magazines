@@ -1,86 +1,31 @@
 <?php columnStart(1); ?>
-<p>
-called. In this way you can have more than 69K of RAM space for
-User programs (in fact the monitor occupies less than 308 bytes
-regardless of how many new routings you have added
+<p class="continued">
+called. In this way you can have more than 60K of RAM space for
+user programs (in fact the monitor occupies less than 300 bytes
+of RAM space) regardless of how many new routings you have added
+to Nas-Sys.
 </p>
-<p>
-5.D. Pedersen,
-Copenhagen
+<p class="indent2">
+S.D. Pedersen,<br>
+Copenhagen,<br>
 Denmark
 </p>
-<p>
-The
-On many Nascoma, the PIOs are not used. If you have one of thowe
-Unumed PIOs, here is a description of how to make @ timer out of
+<h3>
+The simplest clock of all&nbsp;????
+</h3>
+<p class="noindent">
+On many Nascoms, the PIOs are not used. If you have one of those
+unused PIOs, here is a description of how to make a timer out of
+it.
 </p>
-<p>
-pleat clock of all 2777
+<p class="noindent">
+You only have to do the following:
 </p>
-<p>
-ite
-You onty have to do the following:
-&lsquo;= connect the ASTROBE of the PIO (PL4 pin 11) to ground
-= connect 7P1 te PIO A7 (PL4 pin 24)
-= type in the following program and execute it at @D1eH
-</p>
-<p>
-roa QU 4
-Proac EU &amp;
-RET EQU SBH
-INTVEC EOU @CBQH y interrupt vector
-TIME EQU @CB2H
-&lsquo;ORG @DaaH
-Jinterrupt routine &ndash; increment tine
-INTROU PUSH HL
-LD ML, (TIMED
-ING A
-LD&rdquo; cTTMED&nbsp;,HL
-POP HL
-EI
-Rett
-ORG @D10H
-simi tialising routine
-INIT DI
-IM 2 paet mode 2
-LD A, INTVEC/256 ymost significant byte
-</p>
-<p>
-Lb 1a fof INTVEC to I-reg
-Lo cyProac 1P108 @ control port
-</p>
-<p>
-CAL &ldquo;PUT HFill it with control bytes
-DB pe snunber of bytes to PIOAC
-DB 4FH fi it $s waiting on a byte
-DB 11a9111 fmode &ndash; control
-</p>
-<p>
-DB 1e@9@@088 &copy; jbit 7 in, others out
-</p>
-<p>
-DB fB11@111B enable PIO interrupt
-or interrupt bits (doesn&rsquo;t matt
-</p>
-<p>
-.
-n&rsquo;t matter
-</p>
-<p>
-interrupt when nigh (do
-</p>
-<p>
-2
-&lsquo; ask follows
-</p>
-<p>
-DB Q1111111B only interrupt on bit 7
-</p>
-<p>
-DB INTVECKOOFFH ignificant byte of INTVEC
-LD HL, INTROU Of interrupt routine
-</p>
-<p>
-LD CINTVEC) HL jinto CINTVEC?
-</p>
+<ul>
+<li>connect the ASTROBE of the PIO (PL4 pin 11) to ground</li>
+<li>connect TP1 to PIO A7 (PL4 pin 24)</li>
+<li>type in the following program and execute it at 0D10H</li>
+</ul>
+<br>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-25-1.png"); ?>
 <?php columnEnd(1); ?>

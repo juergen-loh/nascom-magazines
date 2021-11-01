@@ -1,83 +1,65 @@
 <?php columnStart(1); ?>
 <p>
-write-enable when memory locations E890H to 0BFFH are addressed. Thus
-there is an offset of 0800H to consider when evaluating the per
-location fram the YIDEO RAM hardware address lines Ad to Ag,
+write-enable when memory locations 0800H to 0BFFH are addressed. Thus
+there is an offset of 0800H to consider when evaluating the pen
+location from the VIDEO RAM hardware address lines A0 to A9.
 </p>
-<p>
+<h3>
 VIDEO ADDRESS LINES
-</p>
+</h3>
 <p>
-To obtain the address lines, 2 swall amount of soldering 3
-required. Tt is possible to tap off the address lines directly fran the
-</p>
-<p>
-board, though I prefer ts keep all soldering and additions te. th=
+To obtain the address lines, a small amount of soldering is
+required. It is possible to tap off the address lines directly from the
+board, though I prefer to keep all soldering and additions to the
 component side of the board, and it was for this reason that I decided
-to adopt a &ldquo;piggy-bact&rdquo; approach to the address Tine Tacation
+to adopt a &ldquo;piggy-back&rdquo; approach to the address line location.
 </p>
 <p>
-There are a number of ways to find the pen Iocatian by using the:
-address Iines. the approach that I took was to identify 1 sub pial in
+There are a number of ways to find the pen location by using the
+address lines, the approach that I took was to identify 1 sub pixel in
+a column of 48 sub-pixels. As long as I knew which column I was
+addressing I could find the pen location on that column. It would be
+possible to find the pen position on the left right axis as well as the
+up-down axis, as long as I looked at all the address lines, but this
+would mean looking at more than 1 input port, and I was already using
+that for something else.
 </p>
 <p>
-BS colum of 48 sub-pivels. As long as T bnew which colin? was
-addressing 1 could find the pen location on that coluan. Tt would &ldquo;be
-possible to find the pen position on the left right aria aa well as tha &mdash;
-Up-down avis, as long as T fooled st all the address. lines, but&rsquo; this
-hould mean looling at more than 1 input port, and Twas already using
+Address lines A6 to A9 can be used to identify which of the 16
+character lines is being addressed. This brings the pen location
+resolution to 1 in 16. To increase the resolution we can look at either
+all 14 raster lines, or, as the minimum sub-pixel is only 4 raster
+lines, we can look at the address lines that relate to the selection of
+each group of 4 raster lines. The RS lines, RS0 ta RS3, are used to
+select the appropriate raster lines for each pixel, and so by looking
+at RS2 and RS3 it becomes possible to identify on which of the
+sub-pixels the pen is resting.
 </p>
 <p>
-that for something ele.
+A6 to A9 can, therefore, be treated as the Most Significant Bits,
+and RS2 and RS3 as the Least Significant Bits, of a six-bit address
+that can identify a location in a column of 48 locations.
 </p>
 <p>
-Address lines Ae to AP can be used to identify ahich of the ts.
-character lines 12 Being addressed. This brings the pen locstion
-Fesolution tot in 16. To increase the resclution we can look at e1ther
-Bil 14 raster lines, or. as the minimum sub-pi al is cniy @ er
-lines, we can loch at the address ione= thet relate to the selection 34
-each group of 4 raster lines. The 8S ines, PSO ta RST, are used te
-Select the appropriste rasver lines for exch pivel, are se by lacling
+To tap off these address lines, I soldered 16-pin header plugs
+directly on to IC68 and IC53. This method allowed me to solder wires to
+the plug with ease, and gave test-points to see if I had blown the chip
+by soldering too close to it! The six address lines were taken along
+the board and put on to the bus at pins 59 to 64. On the Gemini 80-BUS
+these pins are now allocated as interrupt request lines, powerfail
+warning, and backup power, so it might be advisable not to put the
+video address lines on to the bus if you can help it. The Video
+Blanking signal, VBLANK, was also taken to the bus so that the screen
+data would be updated only in the screen blanking period. This prevents
+screen flicker when drawing images on to the screen.
 </p>
-<p>
-st RS2 and FS it be-emes oss Ble to ident fy on which oF the
-Sub-pivels the pen is restinc.
-</p>
-<p>
-Ab to AP can, therefure, be treated a2 the Mast Sistsficest Fits.
-and RSZ and RST as the Least Significant Mite, cf a &ldquo;1 bit address
-that car identify a location &ldquo;a colunn cf 48 locations
-</p>
-<p>
-To tap off these address lines, 1 scldered is-pin
-</p>
-<p>
-Uirectly cn to IC4B and [257, This nethod allowed meu
-</p>
-<p>
-the plug with ease, and gave tect paints te sea f&rsquo; tad blown the chp.
-</p>
-<p>
-by soldering too close to it! The si addres= luncs wpe tafen slong
-the beard and put on to the bis at pins 59 te &pound;3. Cn the Geuirs EO FUS,
-these pins are nom allocated as interiupt request Ines ponerta |
-harping, and bachup power, so vt might! be ad saote not ty pub the
-Video address lines on te the bur f you can help it The Vitec
-Blanking signal, VELAN, was also tales (othe bus co that tue screan
-data would be updated oniy in the screen blaniing period. ? &copy; prevent
-</p>
-<p>
-Sereen flicter when drewing rmages on to the sceen.
-</p>
-<p>
+<h3>
 OTHER HARDWARE
-</p>
+</h3>
 <p>
-For certain routines, T wanted tu fnow if the paws ir tee
-place, or whether it had moved from an area of emits ts 3&rsquo; oF
-black. Unfortunately, you can not merely test che pen status, To = a=
-</p>
-<p>
-because the sub-pivel Consists cf 4 raste- lines, each Sein,
+For certain routines, I wanted tu know if the pen was in the same
+place, or whether it had moved from an area of white to an area of
+black. Unfortunately, you can not merely test the pen status. This is
+because the sub-pixel consists of 4 raster lines, each being 64us in
 </p>
 <?php columnEnd(1); ?>

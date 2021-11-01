@@ -1,71 +1,68 @@
 <?php columnStart(1); ?>
 <h1 id="article1">
-SYS-EX &nbsp; A 1K extension program for NAS-5YS monitors &ndash; Part 4.
+SYS-EX &nbsp; A 1K extension program for NAS-SYS monitors &ndash; Part 4.
 </h1>
 <h2 class="author">
 by David G. Johnson
 </h2>
-<p>
+<h3>
 Errata to Part 2, (Vol.3, No.2)
-1) Page &amp;
+</h3>
+<p class="noindent">
+1) Page 6<br>
+<span style="padding-left: 3em">ADD L ) ADD 30H turn into Ascii code</span><br>
+should read<br>
+<span style="padding-left: 3em">ADD L</span><br>
+<span style="padding-left: 3em">ADD 30H ) turn into Ascii code</span>
+</p>
+<p class="noindent">
+2) Page 6<br>
+<span style="padding-left: 3em">.ROUT print character from A CP 28H Z flag if final space</span><br>
+should read<br>
+<span style="padding-left: 3em">.ROUT ) print character from A</span><br>
+<span style="padding-left: 3em">CP 20H ) Z Flag if final space</span>
 </p>
 <p>
-ADD L_) ADD 30H turn into Ascii code
-should read
-</p>
-<p>
-&lsquo;ADDL.
-ADD 38H ) turn into Ascii code
-2) Page &amp;
-ROUT print character from A CP 28H z flag if final
-space
-should read
-ROUT) print character from A
-</p>
-<p>
-GP 20H 0) 7 Flag 1# final space
-</p>
-<p>
-In the last {asue we completed the detailed description of
+In the last issue we completed the detailed description of
 the SYS-EX keyboard commands and promised that a description of
 the SYS-EX BASIC routines would follow in the next issue. Well,
 here is the next issue and we begin with the SYS-EX BASIC
-routin
+routines.
 </p>
 <p>
 To recap briefly, SYS-EX provides an alternate set of
-commands to. the GK&rsquo; &ldquo;BASICS CSAVE, CLOAD and CLOAD?. These
-comm Tow program names to be up to 42 characters long. The
-commands allow access to tape labele written using the SVS-EX
-&ldquo;1&rdquo; command. The commands are fully compatible with CSAVE, CLOAD
+commands to the 8K BASICs CSAVE, CLOAD and CLOAD?. These
+commands allow program names to be up to 42 characters long. The
+commands allow access to tape labels written using the SVS-EX
+&ldquo;l&rdquo; command. The commands are fully compatible with CSAVE, CLOAD
 and CLOAD? and programs saved with one set of commands can be
-Fecognised and read using the other set of command:
+recognised and read using the other set of commands.
 </p>
 <p>
 The SYS-EX BASIC named file and label commands are called by
 using the USR function. Prior to using USR, the start of the
-SYS-EX BASIC routines should be DOKE d into memory. The BASIC
-entry point in SYS-EX is located @1EQH beyond the start of
+SYS-EX BASIC routines should be DOKE&rsquo;d into memory. The BASIC
+entry point in SYS-EX is located 01E0H beyond the start of
 SYS-EX. When the monitor extension is installed at the
 recommended memory address (B000H to BFFFH) the required BASIC
-statement is)
+statement is:
 </p>
 <p>
-DOKE 4108,-20000 (ie. BIEQH = -20000 decimal)
+DOKE 4100,-20000 <span style="padding-left: 2em">(ie. B1E0H = -20000 decimal)</span>
 </p>
 <p>
 As SYS-EX is fully relocatable, you may have decided to put
-it at a different menory address. If so, just add @1EQH to the
+it at a different memory address. If so, just add 01E0H to the
 hex start of SYS-EX then convert this to decimal using the &ldquo;h&rdquo;
-command. You wont get the nice easy to remenber number
-(=20000), but it will work just the sam
+command. You won&rsquo;t get the nice easy to remember number
+(-20000), but it will work just the same.
 </p>
 <p>
-The routines may be called by # statement such as PRINT
-USRin) Or 7USRin) or T=USRin). Even though a PRINT statement
-or an assignnent statement is used, nothing will be printed&rdquo; or
-assigned to a variable on completion of the SYS-EX. commands.
+The routines may be called by a statement such as PRINT
+USR(n) or ?USR(n) or I=USR(n). Even though a PRINT statement
+or an assignment statement is used, nothing will be printed or
+assigned to a variable on completion of the SYS-EX commands.
 This is because SYS-EX warm starts BASIC when it finishes
-command. (ie. it does not just return to BASIC)
+command.<?php spChar("zwsp"); ?>(ie. it does not just return to BASIC)
 </p>
 <?php columnEnd(1); ?>

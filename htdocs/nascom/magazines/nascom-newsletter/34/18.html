@@ -3,76 +3,68 @@
 BruteSort
 </h1>
 <h2 class="author">
-by J. Mcafee
+by J. McAfee
 </h2>
 <p>
 There are probably better sorts around for the Nascom, but
 either they are being kept a dark secret, or I have missed their
-Publication (not a difficult trick in&rsquo; Saudi Arabia), so I
-Secided to write my own. Being an ardent exponent of the art of
+publication (not a difficult trick in Saudi Arabia), so I
+decided to write my own. Being an ardent exponent of the art of
 coarse programming, my code owes nothing to elegance and even
-does @ couple of neughties, hence the name, BruteSort.
+does a couple of naughties, hence the name, BruteSort.
 </p>
 <p>
-I am not sure of the sorting jargon but I think it = a
-modified Shell-Shuffle-Shuttle sort (or have I just invented 2
+I am not sure of the sorting jargon but I think it&rsquo;s a
+modified Shell-Shuffle-Shuttle sort (or have I just invented a
 test of soberiety? Try saying that when you have had a few). The
-logic ef the thing was taken from a BASIC listing in a magazine
-and there are probably more efficient algorithms around but I ve
+logic of the thing was taken from a BASIC listing in a magazine
+and there are probably more efficient algorithms around but I&rsquo;ve
 found it adequate for my needs. No! Lets be honest, it impresses
 the hell out of me.
 </p>
 <p>
-111 leave it to others to obtain accurate timings, but
+I&rsquo;ll leave it to others to obtain accurate timings, but
 going by the kitchen clock, BruteSort takes about 3 seconds to
-fort a 1002 element array of random strings. This sorted. array
-Ean then be sorted into descending order in| about 1.6 seconds
-while 1t takes 2 dazzling&nbsp;.9 seconds to resort the array with
-one element out of sequence. All these timings were ons machine
-running at ane.
+sort a 1000 element array of random strings. This sorted array
+can then be sorted into descending order in about 1.6 seconds
+while it takes a dazzling 0.9 seconds to resort the array with
+one element out of sequence. All these timings were on a machine
+running at 4MHz.
 </p>
 <p>
-The code sits at AQ@OH and is 126H bytes 1ong, so remember
-when initialising BASIC that Memory Size &gt; must not exceed
-foseo.
+The code sits at A000H and is 12BH bytes long, so remember
+when initialising BASIC that &lsquo;Memory Size&nbsp;?&rsquo; must not exceed
+40960.
 </p>
 <p>
 There are several ways in which BruteSort can be used. Lets
-take the following string as @ typical example in the array
-dimensioned DAS (582).
+take the following string as a typical example in the array
+dimensioned DA$(500).
 </p>
 <p>
-&ldquo;25a02@08L06S J LONDON SORTER &ldquo;
+&ldquo;25402088LOGS J         LONDON         SORTER         &rdquo;
 </p>
 <p>
-This string 18 @ concatenation of four fields:
+This string is a concatenation of four fields:
 </p>
-<p>
-1. 1D No. 8 characters
-2. Name 15 characters.
-3. Home 15 characters
-</p>
-<p>
-4. Occupation 15 characters
-</p>
+<table class="indent">
+<tr><td>1.</td><td>ID No.</td><td>8 characters</td></tr>
+<tr><td>2.</td><td>Name</td><td>15 characters</td></tr>
+<tr><td>3.</td><td>Home</td><td>15 characters</td></tr>
+<tr><td>4.</td><td>Occupation</td><td>15 characters</td></tr>
+</table>
 <p>
 To sort the entire array by name (omitting the zeroeth element,
 but BruteSort can handle it a you wish)...
 </p>
-<p>
-ARUBR(@)DAS(1) ,528,9,25,0
+<p class="indent">
+A=USR(0)DA$(1),500,9,23,A
+</p>
+<p class="continued">
+...will do the trick provided that A does not evaluate to -1. If
+it does then a descending sort will be returned.
 </p>
 <p>
-&ldquo;
-</p>
-<p>
-ceewill do the trick provided that A does not evaluate to &ndash;
-it does then s descending sort will be returned.
-</p>
-<p>
-Let&rsquo;s say, for some unfathomable reason, we ian to sort
-</p>
-<p>
-Fage 18
+Let&rsquo;s say, for some unfathomable reason, we wish to sort
 </p>
 <?php columnEnd(1); ?>

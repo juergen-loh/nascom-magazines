@@ -1,68 +1,49 @@
 <?php columnStart(1); ?>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-26-1.png"); ?>
 <p>
-SCAL_MRET
-PUT EX (SP) ,HL
-LD By HL?
-INC FL,
-oir
-Ex (SP) HL
-RET
-END
-</p>
-<p>
-Now you can read the time in the addres ecezH-acesH and
-time differences can be measured by subtracting tho time values.
-fs TP1 gives S@eHz, you can measure time differences of up to
-3.5 minutes with an accuracy of 1/300 of a wecond. You can reset
-the timer at any time, either from Nas-Sys (using the M cammand)
+Now you can read the time in the addresses 0C82H-0C83H and
+time differences can be measured by subtracting two time values.
+As TP1 gives 300Hz, you can measure time differences of up to
+3.5 minutes with an accuracy of 1/300 of a second. You can reset
+the timer at any time, either from Nas-Sys (using the M command)
 or from BASIC (using DOKE). The timer cannot be used under
-Nas-Sys&nbsp;1 as this is not interruptable,
+Nas-Sys&nbsp;1 as this is not interruptable.
 </p>
-<p>
-5.D.Pedersen,
-Copenhagen,
+<p class="indent2">
+S.D.Pedersen,<br>
+Copenhagen,<br>
 Denmark
 </p>
-<p>
-xBASIC tip
+<h3>
+XBASIC tip
+</h3>
+<p class="noindent">
 A tip to all bone idle users of XBASIC who, having written their
-</p>
-<p>
 ultimate, high-speed data-handling routine which has lots of
-internal GOTO/<?php spChar("zwsp"); ?>GOSUBS, find that when they install it in. their
+internal GOTO/<?php spChar("zwsp"); ?>GOSUBS, find that when they install it in their
 main program it runs very slowly because it is located way down
 the program, miles from the start, here is an easy solution:
 </p>
 <p>
-10 program
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-26-2.png"); ?>
 </p>
-<p>
-3@ GOSUB routine
+<p class="noindent">
+You may say &lsquo;why not use MGE before the RETURN, well, it
+doesn&rsquo;t work, it terminates the program end returns to command
+level which is understandable.
 </p>
-<p>
-9999 REN routine
-10000 TEXTPTReDEEK (81004) 1HOLD 10000
-19829 REM routine proper
-</p>
-<p>
-10999 REM REM end of routine
-11@@0 DOKE 41086, TEXTPTR: RETURN
-</p>
-<p>
-You may say &ldquo;why not use MGE before the RETURN, well, it
-doesn t work, it terminates the program end returns &lsquo;to command
-level which is understandabl
-</p>
-<p>
-T have used this method in a program which has a &ldquo;SORT routine
-and two SEARCH&rsquo; routines and all three run mich faster. 1 timed
+<p class="noindent">
+I have used this method in a program which has a &lsquo;SORT&rsquo; routine
+and two &lsquo;SEARCH&rsquo; routines and all three run much faster. I timed
 the sort routine and it runs 28% faster using the above method.
+</p>
+<p class="noindent">
 Now, can anyone tell me how to set up a type-ahead buffer for
-XBASIC as the authors seem to have used their. Onn heyboard
+XBASIC as the authors seem to have used their own keyboard
 routine and I haven&rsquo;t, as yet, managed to find it?
 </p>
-<p>
-1.P. Coole,
-Londen 547
+<p class="indent2">
+I.P. Coole,<br>
+London ___
 </p>
 <?php columnEnd(1); ?>

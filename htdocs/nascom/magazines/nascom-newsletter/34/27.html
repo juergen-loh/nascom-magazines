@@ -6,62 +6,60 @@ Review of the Belectra Arithmetic Processor Board.
 by IJC
 </h2>
 <p>
-4 common problem with micros is their lack of speed and
+A common problem with micros is their lack of speed and
 accuracy when it comes to calculations. For the average user,
-the fact that @ figure is only accurate to the 6th decimal place
-may be rather trivial but mhen it comes to complex graphics
-Calculations or financial formulae the effects can be compounded
+the fact that a figure is only accurate to the 6th decimal place
+may be rather trivial but when it comes to complex graphics
+calculations or financial formulae the effects can be compounded
 to make the figures unacceptable. Also, when calculating
 trigonometric functions in a program, (commonly used in graphics
 plots again) speed is very important. The time taken to
-Calculate the LOG of @ nunber is horrendous when compared to the
-rest of the program. One way round this is to use Took up tabli
-but this uses up a lot of memory and isn&rsquo;t very accural
+calculate the LOG of a number is horrendous when compared to the
+rest of the program. One way round this is to use look up tables
+but this uses up a lot of memory and isn&rsquo;t very accurate.
 </p>
 <p>
 The answer, as far as the Nascom is concerned, has come in
-the fora of the Belectra HGA-G8B Arithmetic Processor board.
+the form of the Belectra HSA-88B Arithmetic Processor board.
 </p>
 <p>
-The board (or at least the one 1 loaned for review
-arrived well packaged and in silver paper. I alec
-received a rather thin manual and a data booklet on the ANISI10
-procwasor (the heart of the board), The board isn t a full size
+The board (or at least the one I loaned for review
+arrived well packaged and in silver paper. I also
+received a rather thin manual and a data booklet on the AM9511A
+processor (the heart of the board). The board isn&rsquo;t a full size
 8x8 board but it is blue. (This seems to be coming the Nascom
-industry standard colour.) The board doesn&rsquo;t look
-</p>
-<p>
-some of the other Nascom boards available but it wat
+industry standard colour.) The board doesn&rsquo;t look as polished as
+some of the other Nascom boards available but it was adequate
 and who cares if it doesn&rsquo;t look pretty anyway.
 </p>
 <p>
-Even for {ts small size, the board is only sparsely
-populated and at &pound;199 you may wonder what you are paying for
-The answer is, the AN9511 processor. It does account&rsquo; for a
+Even for its small size, the board is only sparsely
+populated and at &pound;199 you may wonder what you are paying for.
+The answer is, the AM9511 processor. It does account for a
 rather large chunk of the total cost.
 </p>
 <p>
 The board is supplied ready wired to a default port and with
-a default clock speed hich most users should not need&rdquo; to
-Change. However, by means of wire links, you Can select which
-tno ports you want to address&rdquo; the board on (e@/@iH, 98/91H,
-AD/AiH, BB/BIH, CQ/CIH, D@/DIH, EQ/EIH or FO/FIH) and&rsquo; you may
-have tO change the link on the clock speed ic you are running @
-2H: Nascom. Clean, simple and straight-forward. The board doe
+a default clock speed which most users should not need to
+change. However, by means of wire links, you can select which
+two ports you want to address the board on (80/81H, 90/91H,
+A0/A1H, B0/B1H, C0/C1H, D0/D1H, E0/E1H or F0/F1H) and you may
+have to change the link on the clock speed if you are running a
+2MHz Nascom. Clean, simple and straight-forward. The board does
 not support DBDR so it is incompatible with the Nascom&nbsp;1 which
-seems @ shane with so many still being in use.
+seems a shame with so many still being in use.
 </p>
 <p>
 The arithmetic processor works totally independently of the
-Nascom 789 and is acc via 21/0 porte. To use the processor
-couldn t be simpler. The 9511 contains a stack, @ command
+Nascom Z80 and is accessed via 2 I/O ports. To use the processor
+couldn&rsquo;t be simpler. The 9511 contains a stack, a command
 register and a status register. The data to be operated on is
 firstly pushed onto the stack (always least significant byte
-first); @ command byte i@ sent to the command register (eg.
-le-bit multiply &ndash; 6EH), the Nascom then waits for the arithneic
+first), a command byte is sent to the command register (eg.
+16-bit multiply &ndash; 6EH), the Nascom then waits for the arithmeic
 to finish (by testing the status port) and then it reads the
 result from the stack port again (most significant byte first
-this time). One ewemple that they give in the manual f= a
-follows!
+this time). One example that they give in the manual is a
+follows:&ndash;
 </p>
 <?php columnEnd(1); ?>

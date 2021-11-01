@@ -1,89 +1,69 @@
 <?php columnStart(1); ?>
-<p>
-shall bloc. of white at the top left-hang corner of the pisel, then at
-the aicaie left-hand side, and then at the bottom left-hand corner of
-the pi el. The last three bytes of data put the small block at the top
-right, cid right, and botton left-hand corners of the pixel. Therefore,
-Ey successively leading each contiguous pisel with the six bytes of
-sits, it becenes possible to identity the pen location on a screen with
-= resolution of
+<p class="continued">
+small block of white at the top left-hand corner of the pixel, then at
+the middle left-hand side, and then at the bottom left-hand corner of
+the pixel. The last three bytes of data put the small block at the top
+right, mid right, and bottom left-hand corners of the pixel. Therefore,
+by successively leading each contiguous pixel with the six bytes of
+data, it becomes possible to identity the pen location on a screen with
+a resolution of
+</p>
+<p class="center">
+(48 x 2) x (16 x 3) = 4608 locations
 </p>
 <p>
-(48s 2) (46 x 3) = 4608 Locations:
+If the output from the pen were connected to bit 7 of port 4, a
+program for identifying the pen position might look something like
+figure 3.
 </p>
 <p>
-If the output froa the pen were connected to bit 7 of port 4, a
-p-ogram for identifying the pen pesition might Tosh something like
-&lsquo;igure 3.
+This method, crude though it may be, does also need synchronising
+with the BLANKING signal so that the &ldquo;pen search&rdquo; can commence as the
+screen scan starts. Otherwise, pixels may be tested after the raster
+scan has passed, and prevent the pixel under the pen from being tested
+at the same time as the raster is being displayed under the pen. This
+method or scanning without waiting for the blanking signal, gives rise
+to a screen full of random dots which, interesting though it may be for
+the first 10 secs., does not really solve the problem in hand. Also, if
+the scan program has to wait for the beginning of a new picture scan
+before it can load the screen with one of the six sub-pixels, it can be
+seen that each pixel will take at least 6 x 20ms to scan. So to scan
+all of the 768 locations will take
+</p>
+<p class="center">
+6 x 768 x 20ms = 92.16 seconds
 </p>
 <p>
-This aethed, 5 ude though it may be, does alas need synchrori sing
-wath the ELANFING Signal so that the &ldquo;pen search&rdquo; can commence 3s the
-Zensen evan starts, Stheraise, pireta may be tested after the raster
+With no stretch of the imagination can I say that this is
+satisfactory. A faster method would be to fill the screen with white
+and to scan the input ports for a HIGH from the pen. When the raster
+strikes the light-activated switch the other port could latch in the
+memory address of the VIDEO RAM that was being accessed at the time of
+the raster strike. Aa there are 1024 VIDEO RAM locations, it mould be
+necessary to load in 8 bits to one port, and another 2 bits into the
+other port. This method would give the pen location on any of the 768
+screen pixels. If the screen were successively filled with the six
+sub-pixel bytes, the resolution could be increased to the full 4608
+locations.
 </p>
 <p>
-fan has pa and prevent the piiel under the pen fram being tested
-atte the raster is Being displayed under the pen. This.
+As the VIDEO RAM is scanned under hardware control it is possible
+to tap off the required address lines and to feed them directly to the
+????? ????. The program that I was using at the time of the pen&rsquo;s
+design, required the identification of the pen location as it traversed
+??? ???? in a left-right direction. This would enable me to draw a
+???? ???? ?????? on the screen and then store it for later use.
+???? ?????? had to be identified from a selection of menus, and so
+the pen location was required for selection identification.
 </p>
 <p>
-fethod or scanning titho.= wasting for the blanling signal, gies rise
-</p>
-<p>
-Guscrsen full of random dots whicty interesting though it May be for
-the first 10 Sece., daes not really solve the problem in hand. Aisa, 1
-tee o 3) progran saz te weit for the Beginning of a new picture scan
-helory it can doad the screen with ene of the siv sub-pivels, .t can be
-seen (ha! each pisel will tale at least 6% 20es to scan. So Eo scan
-Per the &ldquo;63 locations will take
-65 768 x BOme = 92.16 seconds
-with ne stretch of the imsgination can 1 say that this is.
-stistectory, A faster methed would be to fill the screen with white
-Jto&rsquo;tcan Ue input perts for a HIGH from tre pen. when the raster
-Ue.tee the Tight-wetiwated swith the other pert could latch in. the
-</p>
-<p>
-ory address Of tue VIDEO RAM that was being accessed at the time of
-raster gtrike, Az there ae 1924 VIDEO RAM locations, it mould be
-</p>
-<p>
-fevese; ta foal @ bits te one port, ang another = bits ato. the
-treo fet Til sethad woatd gi e the pes locaticn on any of the 78.
-sr Lots co ser awee soce sels filled wath the sts
-</p>
-<p>
-ALES &ldquo;Gala be whe easec to the full) 4808
-</p>
-<p>
-nro nar
-</p>
-<p>
-sceried under hardware control st is possible
-</p>
-<p>
-Sot an ew tod address toes and to feed them directly to the
-The prcyram thet &ldquo;naz ging at the tine of thw pea&rsquo;s
-</p>
-<p>
-fig cog der Poe aeenti&rsquo;. ation af the pen Tocation as it traversed
-HfL Tyunt@) Setion Thue wauid enable me to. draw a
-</p>
-<p>
-resn ard then store at for later user
-veld ce dectifies fear a se&rsquo;ection of menus, and so
-eo) for selectior idertifiest.on
-</p>
-<p>
-gen that the CIDEO RAM a
-tally eddre:
-</p>
-<p>
-So lestoracnt,
-5 sp2-bettan
-aa Fact the
-though the
-&lsquo; wat &copy; ring un N89EH co OSFFH on the
-lects the VIDED RAM
-</p>
-<p>
+Refering to figure 4 it can be seen that the VIDEO RAM is
+addressed ????? A0 to A9, the address lines A0 to A5 sequentially address
+64 screen ????? locations, 48 of which are displayed, in a left-right
+????? A6 to A9 select the 16 rows of 64 locations in a top-bottom
+????? though it must be noted that the screen top row is in fact the
+????? ???? row to be addressed, ie. 0BCAH to 0BF9H. Even though the
+?????? ????? ???? hardware scanning from 0000H to 03FFh on the
+????? ????, IC47, which is the ???? ?PROM, selects the VIDEO RAM
 </p>
 <?php columnEnd(1); ?>

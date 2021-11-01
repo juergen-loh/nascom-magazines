@@ -1,69 +1,71 @@
 <?php columnStart(1); ?>
-<p>
-appears on the next screen line and the required program nane is
-entered. The action of the comand im identical to the READ
+<p class="continued">
+appears on the next screen line and the required program name is
+entered. The action of the command is identical to the READ
 NAMED PROGRAM FILE command, with the exception that the required
-program is NOT loaded into mesory. The comand is used to check
+program is NOT loaded into memory. The command is used to check
 that a program file may be successfully read from cassette tape.
 </p>
-<p>
+<h3>
 SEARCH FOR TAPE LABEL &ndash; USR(2)
+</h3>
+<p>
+Read a cassette tape and search for a tape label as written
+by the SYS-EX &ldquo;l&rdquo; command. Display the first label found on the
+top line of the screen then terminate the commend.
 </p>
 <p>
-Read a cassette tape and search for # tape label as written
-by the SYS-EX &ldquo;I&rdquo; command. Display the first label found on the
-top line ef the screen then terminate the commend.
-</p>
-<p>
-The command may be used for positioning &laquo; tepe
+The command may be used for positioning a tape
 prior to using the WRITE NAMED PROGRAM FILE command. The tape
 drive LED is switched on between entry of the command and
 command termination. If a tape label is not found, the command
-nay be terminated by first stopping the cassette
-and then typing four ESC) (GHIFTIENTER) ch
+may be terminated by first stopping the cassette tape recorder
+and then typing four ESC (SHIFT:ENTER) characters. Four
 consecutive ESC characters read from the cassette tape recorder
 will have the sane effect.
 </p>
+<h3>
+WRITE NAMED PROGRAM FILE &ndash; USR(3) (CSAVE equivalent)
+</h3>
 <p>
-WRITE NAMED PROGRAM FILE &ndash; USR(S) (CSAVE equivalent?
-</p>
-<p>
-Weite the BASIC program currently in memory to cassette
+Write the BASIC program currently in memory to cassette
 tape. The program is preceded bye file label containing the
-Specified progras name, The file label will be recagnised and
-Gisplayed in full by the SYS-EX commands &ldquo;a&rdquo;, "r"_ and &ldquo;v&rdquo; in
+specified program name, The file label will be recognised and
+displayed in full by the SYS-EX commands &ldquo;q&rdquo;, &ldquo;r&rdquo; and &ldquo;v&rdquo; in
 addition to the WRITE and VERIFY NAMED PROGRAM FILE commands.
-The BAGICs CLOAD and CLOAD? commands ill also recognise the
+The BASICs CLOAD and CLOAD? commands will also recognise the
 file label, but will use and display only the first character of
 the program name.
 </p>
-<p>
-After entry of the UGR(S) statement, the prompt
-wNamer
+<p class="noindent">
+After entry of the USR(3) statement, the prompt
 </p>
 <p>
+wName:
+</p>
+<p class="continued">
 appears on the next screen line and the name of the program to
 be written is entered on that line. The tape drive LED is then
-auitched on and, after # short delay, the file label followed by
-the file iteelf&rsquo;is sent to the serial output port for mriting to
-tape. Finally, the tape drive LED i awitched off.
+switched on and, after a short delay, the file label followed by
+the file itself is sent to the serial output port for writing to
+tape. Finally, the tape drive LED is switched off.
 </p>
-<p>
+<p class="noindent">
 NB.
 </p>
 <p>
 It is possible to escape from the above commands while the
-file name prompt is displayed on the scr#en. (ie, rNamer&nbsp;, vNaner
-+ Waser) To do this, backspace over the promt or move the
-Cursor to another line before pressing ENTER, An error message
-wil] be produced, but no harm will be done.
+file name prompt is displayed on the screen. (ie. rNamer:, vName:
++ wName:) To do this, backspace over the prompt or move the
+cursor to another line before pressing ENTER. An error message
+will be produced, but no harm will be done.
 </p>
+<h3>
+RETURNING TO SYS-EX FROM BASIC
+</h3>
 <p>
-RETURNING TO SYB-EX FROM BASIC
-</p>
-<p>
-Tt 4s useful to have an equivalent of the HONITOR command
-which, instead of returning solely to NAS-GYS, returns to SYS-EX
-so that the full range of NAS-SYS and SYS-EX &lsquo;keyboard commands
+It is useful to have an equivalent of the MONITOR command
+which, instead of returning solely to NAS-SYS, returns to SYS-EX
+so that the full range of NAS-SYS and SYS-EX keyboard commands
 </p>
 <?php columnEnd(1); ?>
