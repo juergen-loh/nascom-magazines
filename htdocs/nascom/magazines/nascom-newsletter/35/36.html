@@ -1,63 +1,26 @@
 <?php columnStart(1); ?>
 <p>
 The last change is the major change and comes about because
-of the different ways that the asseablers keep track of things.
-This short piece of code is put at C65 to suit the simpler Vi
+of the different ways that the assemblers keep track of things.
+This short piece of code is put at CC65 to suit the simpler V&nbsp;&amp;&nbsp;T
+requirements:&ndash;
 </p>
 <p>
-CCe5 2A 4E OE LD HL, (@E4E? saddress of source code
-ces 2B DEC HL
-ce9 22 56 0 LD (OES6) HL
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-1.png"); ?>
 </p>
 <p>
-Ccec ED 5B 52 C8 LD DE, (orS2?
-C70 ED 53 4E CE LD (OESE),DE
+The Nas-Dis routine ALLINO is next copied from CCBC to CC74
+and the following code entered. This writes the end of source
+code address to the screen and puts the cursor up two lines so
+that when NEWLINE is pressed after initiating V&nbsp;&amp;&nbsp;T, the
+assembler is ready to go.
 </p>
 <p>
-&lsquo;The Nas-Dis routine ALLINO is next copied from CCBC to cc74
-land the following code entered. This writes the end of source
-code address to the screen and puts the cursor up tno lines so
-that when NEWLINE is pressed after initiating Vu T, the
-assenbler is ready to 90.
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-36-2.png"); ?>
 </p>
 <p>
-ccas 20 1a JR NZ CCAS i not Finished
-ccea EF RST PRS + print to screen
-</p>
-<p>
-CCEB 20 40 30 20 DEFM * @0 *
-</p>
-<p>
-cceF oe NOP 3 end print
-</p>
-<p>
-cc9e 1B DEC DE + source pointer
-</p>
-<p>
-cool EB Ex DE,HL
-</p>
-<p>
-cc92 OF 66 SCAL TBCDS i print address on screen
-cova EF RST PRS
-</p>
-<p>
-cc9s 15 1B DEFW 1613
-</p>
-<p>
-cc97 13 1B DEFW 1B15
-</p>
-<p>
-cc99 15 1B DEFW 1B13
-</p>
-<p>
-ccaB 00 NOP
-</p>
-<p>
-cove DF SB SCAL MRET 5 return to monitor
-</p>
-<p>
-The version of V &amp; 7 that I have was produced before Nas-Sys
-3 was introduced. Because of this, it suffers from not being
+The version of V&nbsp;&amp;&nbsp;T that I have was produced before Nas-Sys&nbsp;3
+was introduced. Because of this, it suffers from not being
 able to print the work areas on the top line while running under
 Nas-Sys. If you would like to display these work areas on the
 top line then the following small modifications should be made.
@@ -65,14 +28,12 @@ top line then the following small modifications should be made.
 <p>
 When V&nbsp;&amp;&nbsp;T is initially loaded, the 2DH bytes of the Nas-Sys
 table at 20AE need to be copied to 207E. Copy only 27H bytes to
-2@7E and, as this leaves the Nasbug calls in the sane place, the
+207E and, as this leaves the Nasbug calls in the same place, the
 work areas can be printed on the top line.
 </p>
 <p>
 Because V&nbsp;&amp;&nbsp;T jumps directly to the &lsquo;WRITE&rsquo; subroutine in
-</p>
-<p>
 Nas-Sys instead of through the SCAL routine, the jump address at
-209C needs to be changed to OsFB.
+209C needs to be changed to 04FB.
 </p>
 <?php columnEnd(1); ?>

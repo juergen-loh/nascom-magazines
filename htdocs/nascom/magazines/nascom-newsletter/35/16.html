@@ -1,94 +1,45 @@
 <?php columnStart(1); ?>
-<p>
-&lsquo; Terminator. The data list will be read by the MOKE
-</p>
-<p>
+<dl class="wide">
+<dt>
+!</dt><dd>Terminator. The data list will be read by the MOKE
 until it either finds a terminator or the end of the
-Sic program text. An OD, Out of Data, error is
-</p>
-<p>
+Basic program text. An OD, Out of Data, error is
 reported if no terminator or data is found before it
 gets to the end of the program.
-</p>
-<p>
-. Repeat. Must be followed by a decimal number in the
-range Gf 1 to 255 (@ gives 256 repeats).
-</p>
-<p>
-/ Offset. Must be followed by a decimal number in the
+</dd>
+<dt>
+"</dt><dd>Repeat. Must be followed by a decimal number in the
+range of 1 to 255 (0 gives 256 repeats).
+</dd>
+<dt>
+/</dt><dd>Offset. Must be followed by a decimal number in the
 range of 1 to 65529 (1 to 32767 and -32768 to -7).
-</p>
+</dd>
+</dl>
 <p>
-fn SN, Syntax, error will be reported if a decimal value
-greater than 65529 is used as an argument to&ldquo; or /. No error
+An SN, Syntax, error will be reported if a decimal value
+greater than 65529 is used as an argument to " or /. No error
 will be reported for the following:
 </p>
-<p>
-No comma after any number following &ldquo;or /.
-minus sign or any other character between &ldquo;/ and argument.
-No&rdquo; argument
+<p class="indent">
+No comma after any number following " or /.<br>
+A minus sign or any other character between "/ and argument.<br>
+No argument!
 </p>
 <p>
 The effect of these errors will be seen, but they will not
-he catastrophic as the memory above @CeeH&rsquo; is protected from
-&ldquo;poking&rdquo; by the MOKE.
+be catastrophic as the memory above 0C00H is protected from
+&lsquo;poking&rsquo; by the MOKE.
 </p>
 <p>
-A CRT pointer set to the First point on the screen to be
-tpoked&rdquo; should be passed to the MOKE through the USR function.
+A CRT pointer set to the first point on the screen to be
+&lsquo;poked&rsquo; should be passed to the MOKE through the USR function.
 After each &lsquo;poke&rsquo; the CRT pointer is incremented, bear this in
-mind when Calculating offsets. When the MOKE finds the
+mind when calculating offsets. When the MOKE finds the
 terminator, control is passed back to Basic. The CRT pointer
-Will be passed back set to the address of the last character
-&ldquo;poked&rdquo; plus one. If the last item in the MOKE list is an
+will be passed back set to the address of the last character
+&lsquo;poked&rsquo; plus one. If the last item in the MOKE list is an
 offset, the result of the calculation will be returned.
 </p>
-<p>
-100 REM... HOKE USR DATA with simple demo
-110 REM 11. load MOKE machine code
-120 FOR A=3200 To S310 STEP 2
-</p>
-<p>
-13@ READ D:DOKE A, D:NEXT
-148 DOKE 4100, 5200
-</p>
-<p>
-150 REM ... demonstration
-160 CLS:A=2265
-</p>
-<p>
-170 RESTORE 2010: D=USR (A)
-19@ D=INT(RND (1) #4)
-</p>
-<p>
-190 IF D AND 1 THEN O=66
-200 IF D AND 2 THEN O=-0
-</p>
-<p>
-210 A=A+0: IFAC2O5E OR A&gt;2570 THEN A=A-O#2
-220 FOR D=1 to INT(RND(1)#28) +4
-</p>
-<p>
-230 IF CINP(O) AND 127)&lt;2127 THEN 250
-240 NEXT:GOTO 170
-</p>
-<p>
-250 D=USK (2050)
-</p>
-<p>
-26@ FOR D=0 TO 5000:NEXT
-</p>
-<p>
-276 CLS:END
-</p>
-<p>
-1000 REM MOKE USRO code
-</p>
-<p>
-1@01 DATA -29747, 17129, 10827, 4316, 9086
-1002 DATA 11518, -1496, 15162, 14376, 10425,
-1005 DATA -474, 10287, 845, 10275, 459, 8226
-1004 DATA -15051,-5725, 1304, 15542, 7692
-1005 DATA 30721, 3324, 1072, 13370,524
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-16-1.png"); ?>
 <?php columnEnd(1); ?>

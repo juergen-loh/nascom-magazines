@@ -1,71 +1,59 @@
 <?php columnStart(1); ?>
 <h1 id="article1">
-Incorporating ZEAP source Files into WordEase III
+Incorporating ZEAP source files into WordEase III
 </h1>
 <h2 class="author">
 by A. Doroszenko
 </h2>
 <p>
-&lsquo;The following program converts ZEAP source files into files
-compatible with MordEase IIT, making it staple to fully document
-TEAP files with all the extra facilities offered by MordEase, A
-comparison of 2EAP and Wordease file structure shows that
-conversion fran one to the other is fairly easy.
+The following program converts ZEAP source files into files
+compatible with WordEase III, making it simple to fully document
+ZEAP files with all the extra facilities offered by WordEase. A
+comparison of ZEAP and WordEase file structure shows that
+conversion from one to the other is fairly easy.
 </p>
 <p>
-&lsquo;The first two bytes of the ZEAP edit buffer is an offset sich
-when added to the start address of the edit buffer (at &pound;0FOO in
-ZEAP werkspace) points to one more than the end of the file, &pound;00 is
-Used as the end of Tine marker, and ZEAP line nuabers are stored as
-two bytes which follow imediately after the previous line marker,
-e.g. 92 01 = Line ounber 0192,
+The first two bytes of the ZEAP edit buffer is an offset which
+when added to the start address of the edit buffer (at &pound;0F00 in
+ZEAP workspace) points to one more than the end of the file. &pound;00 is
+used as the end of line marker, and ZEAP line numbers are stored as
+two bytes which follow immediately after the previous line marker,
+e.g. 92 01 = Line nunber 0192.
 </p>
 <p>
-In WordEase the first two bytes of the file (at &pound;1000) ts the
-actual address of the end of file marker (EFF, and the ends of
-Tines are marked by &pound;A0. The ZEAP Jine nuabers have to be converted
-into 4 byte ASCIT strings, so that 92 01 converts to 30 &pound;31. &pound;39
-&pound;32 = 0192&rdquo;,
+In WordEase the first two bytes of the file (at &pound;1000) is the
+actual address of the end of file marker (&pound;FF, and the ends of
+lines are marked by &pound;A0. The ZEAP line numbers have to be converted
+into 4 byte ASCII strings, so that 92 01 converts to &pound;30 &pound;31 &pound;39
+&pound;32 = &lsquo;0192&rdquo;,
 </p>
 <p>
-The copious program nates should be sufficient ta show how the
-program works. However, a fem further notes are required regarding
-ny aystes. I have two Gar RAR boards (paged as 0 and 1) and an
-EPROM toard (in page 0}. ZEAP runs on page 0, but WordEase is
-teanstered into FA on page 1 by eans of a control program. This
-explains the OUT commands in the TRANS routine. If your systes just
-has one page reaove lines 190-220 and 240-250, and modify GUFP
-(8or00) toa hagher address after cold starting ZEAP, so. that the
-Wordease file has roa below the ZEAF file. Resesber though that
-the WordEase file requires more seaory than the ZEA file, te, 4
-bytes extra far each format code, and twa more bytes per line
-umber.
+The copious program notes should be sufficient to show how the
+program works. However, a few further notes are required regarding
+my system. I have two 64K RAM boards (paged as 0 and 1) and an
+EPROM board (in page 0). ZEAP runs on page 0, but WordEase is
+transfered into RAM on page 1 by means of a control program. This
+explains the OUT commands in the TRANS routine. If your system just
+has one page remove lines 190-220 and 240-250, and modify BUFP
+(&pound;0F00) to a higher address after cold starting ZEAP, so that the
+WordEase file has room below the ZEAF file. Remember though that
+the WordEase file requires more memory than the ZEAP file, i.e. 4
+bytes extra far each format code, and two more bytes per line
+number.
 </p>
 <p>
-If you have just one RAM page put the pragran an any convenient
-location. If your system is similar to mine then run the progran at
-0C80, flip to page t with the command OFF 22, ang then COLD START
-Wordfase, @ cold start is necessary because the program as it
-Stands overlaps ordEase&rsquo;s workspace. The Wordease file is
-Unaffected by s cold start Once in Wordease &ldquo;Adjust&rdquo; the text
-before doing anything else. To simplify the progran a little, every
-tise a &ldquo;Comment&rdquo; is encountered in the ZEAP file a&rdquo; &pound;A0 marier is
-placed before it when transfered to the HordEase file, This mas to
-prevent line overflow, [f there are more than 47 characters between
-ERO markers Wordase will tock up Note that full Tine &ldquo;Comments&rdquo;
-&lsquo;should aot exceed 42 characters in length.
+If you have just one RAM page put the program an any convenient
+location. If your system is similar to mine then run the program at
+0C80, flip to page 1 with the command O FF 22, and then COLD START
+WordEase. A cold start is necessary because the program as it
+stands overlaps WordEase&rsquo;s workspace. The WordEase file is
+unaffected by a cold start. Once in WordEase &ldquo;Adjust&rdquo; the text
+before doing anything else. To simplify the program a little, every
+time a &ldquo;Comment&rdquo; is encountered in the ZEAP file a &pound;A0 marker is
+placed before it when transfered to the WordEase file. This was to
+prevent line overflow. If there are more than 47 characters between
+&pound;A0 markers WordEase will lock up. Note that full line &ldquo;Comments&rdquo;
+should not exceed 42 characters in length.
 </p>
-<p>
-e010 ons f0r80
-9020 LD SP, &pound;1000 STACK 7N COMMON MEMORY
-0030 LD HL; (GOFOO) $BUFP IN ZEAP WORKSPACE
-&lsquo;00 mc Ht $STEP OVER OFFSET
-ooo INC HE
-LD BC,e1002 BOTTOM OF WORDEASE EDI7 BUFFER
-&gt; a EFF SPUT EFF AT &pound;1002
-CALL TRANS:
-</p>
-<p>
-Lo A, &pound;A0 SPUT &pound;AO AT &pound;1003
-</p>
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-07-1.png"); ?>
 <?php columnEnd(1); ?>

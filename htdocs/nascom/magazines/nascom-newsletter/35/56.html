@@ -7,19 +7,19 @@ by Mark Horsman
 </h2>
 <p>
 Having the usual need for cheap hardcopy, I thought myself a
-Creed 75R for about &pound;10.
+Creed 75R for about &pound;20.
 </p>
-<p>
+<p class="noindent">
 &ldquo;Great.&rdquo;, I thought, &ldquo;Now how do I drive the thing?&rdquo;
 </p>
 <p>
-Personal Computer World, May 80 and Pratical Computing,
+Personal Computer World, May 80 and Practical Computing,
 July 80 both had articles using one bit of a parallel port to
 output the 5 bit Baudot code, shifting one bit out at a time and
 generating the start and stop bits. This meant various timing
 loops that needed trimming, seemingly depending on the weather,
 not the most elegant solution, so I looked at the UART. In the
-Nasom 2 this is configured for 8 bit use only but is capable of
+Nascom&nbsp;2 this is configured for 8 bit use only but is capable of
 5, 6, 7 and 8 bit use depending on the voltages on pins 37 and
 38. Surgery is called for. Cut he track between pins 39 and
 38, cut the track between pins 37 and 35, join pins 39 and 35
@@ -32,13 +32,28 @@ with a 7555 (CMOS 555 timer) using a multiturn pot to trim the
 frequency. This is wired to PL2 pin 4 or TP4. The output is
 taken from PL2 pin 12 (20mA Loop Out).
 </p>
-<p>
+<p class="noindent">
 Finally, the software. This uses a lookup table, a flag to
-determne wheather letters or figures last sent and a routine to
+determine whether letters or figures last sent and a routine to
 convert such as &gt; to .GT., etc.
 </p>
-<p>
+<p class="noindent">
 P.S. If you live in a terraced house, move &ndash; the noise is
 horrendous.
 </p>
 <?php columnEnd(1); ?>
+<br>
+<?php columnStart(2); ?>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-56-1.png"); ?>
+<p class="center">
+// = cut track
+</p>
+<?php columnChange(2); ?>
+<h4 class="center">
+TTY BAUD GENERATOR
+</h4>
+<?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-56-2.png"); ?>
+<p class="center">
+IC = 7555
+</p>
+<?php columnEnd(2); ?>

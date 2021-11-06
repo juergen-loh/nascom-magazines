@@ -1,15 +1,15 @@
 <?php columnStart(1); ?>
 <p>
 The RESET and CLOCK inputs of IC&nbsp;1 are brought out to the
-host computer via SKT 1. The WRITE ENABLE (WE, active LOW)
-inputs of the @esory chips are connected together&rdquo; and also go
-but to the Nascom via SKT 1 as do the &amp; data lines and the
-Ground connection. (Power may be obtained from the host if its
-Supply is adequate, although the prototype had an independent
-Supply. About 20eaA at 5 volt is required.)
+host computer via SKT&nbsp;1. The WRITE ENABLE (WE, active LOW)
+inputs of the memory chips are connected together and also go
+out to the Nascom via SKT&nbsp;1 as do the 8 data lines and the
+ground connection. (Power may be obtained from the host if its
+supply is adequate, although the prototype had an independent
+supply. About 200mA at 5 volt is required.)
 </p>
 <p>
-&lsquo;The eight data lines are connected directly to a PIG port on
+The eight data lines are connected directly to a PIO port on
 the Nascom without an intermediate buffer. Thsi simplifies the
 design but care must be taken when writing driver software: see
 later.
@@ -17,40 +17,40 @@ later.
 <p>
 A buffer is definitely needed between the data lines and the
 target system. This function is performed by IC&nbsp;5, a further
-74L8244. The data flow is of course in one direction only, out
-Of the cmulator and into the target system. When SWITCH is&rdquo; HIGH
+74LS244. The data flow is of course in one direction only, out
+of the emulator and into the target system. When SWITCH is HIGH
 and the computer is in charge, part of IC&nbsp;3 gates off the Enable
 to IC&nbsp;5 completely.
 </p>
 <p>
 Since the standard 2716 EPROM hat two select pins (chip
 Select and Power Down) which both must be low to access the
-EPROM, the remaining two NOR gates of IC &amp; are included to
+EPROM, the remaining two NOR gates of IC&nbsp;6 are included to
 simulate this function. Finally, capacitors Cl, C2 and C3 are
 included for supply rail decoupling. One buffer in IC&nbsp;3 and two
-NAND gates in IC&nbsp;7 remain Spare. I thought of using one of the
+NAND gates in IC&nbsp;7 remain spare. I thought of using one of the
 gates to drive an LED to show the state of the SWITCH control
-Tine.
+line.
 </p>
-<p>
+<h3>
 Constructing.
-</p>
+</h3>
 <p>
 Virtually any of the usual means of building circuits may be
-used, the original was built ona piece of plain matrix board
+used, the original was built on a piece of plain matrix board
 about 5 inches square using hand wire-wrapping. It does not take
-too long this way but care is obviously needed to avaaid. wiring
+too long this way but care is obviously needed to avaoid wiring
 errors as they are difficult to find later on. Before commencing
-Wiring, the two disc ceramic decoupling capacitors C2 and C3
+wiring, the two disc ceramic decoupling capacitors C2 and C3
 should be fitted and connected directly to the supply pins of
-ICs 19 and 11. The supply and ground connections are then dealt
+ICs&nbsp;10 and 11. The supply and ground connections are then dealt
 with followed by the address, data and control connections.
 </p>
 <p>
 Connection from the Nascom to the emulator is via a 16 pin
-DIL socket, SKT 1 (shown by triangular connections on the
+DIL socket, SKT&nbsp;1 (shown by triangular connections on the
 diagram). Connections to the target hardware are via a 24 pin
-DIL socket, SKT 2, which is wired to correspond to the pinouts
+DIL socket, SKT&nbsp;2, which is wired to correspond to the pinouts
 of a standard 2716 EPROM. The prototype uses a link between the
 5 volt supply and pin 24 of SKT 2. This allows the target
 hardware to draw power from the emulator. Clearly, it has to be
@@ -58,7 +58,7 @@ disconnected if the target system and the emulator have their
 own supplies!
 </p>
 <p>
-&lsquo;The emulator is connected to the target systes using 2 12
+The emulator is connected to the target system using a 12
 inch length of ribbon cable fitted with a 24 way pin header at
 each end, wired pin to pin.
 </p>

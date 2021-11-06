@@ -1,73 +1,73 @@
 <?php columnStart(1); ?>
 <p>
-SYS-EX {s warm started by executing the program efeven
-(0008H) bytes on from the start. e.g. If it is installed
-between 1000H and ISFFH, SYS-Ex is warm started with the NAS-SYS
-command? :
+SYS-EX is warm started by executing the program eleven
+(000BH) bytes on from the start. e.g. If it is installed
+between 1000H and 13FFH, SYS-EX is warm started with the NAS-SYS
+command:
+</p>
+<p class="indent2">
+E 100B
 </p>
 <p>
-E 1008
+A warm start is a useful alternative to the NAS-SYS MRET
+instruction when ending an assembler program. e.g.
 </p>
-<p>
-A warm start is 9 useful alternative to the NAS-SYS MRET
-instruction when ending an assembler program. 8.9.
+<p class="indent2">
+0000 &nbsp; C3 0B B0 &nbsp; JP SYSX
 </p>
-<p>
-eee cS OB Be JP sySK
-</p>
-<p>
+<h3>
 Adding further monitor extensions
-</p>
+</h3>
 <p>
-There are five unused keyboard commands (gj m op) all of
-which cause a routine at @400H beyond the start of SYS-EX to be
-Called. Also, the two called routines USCRI and USCR2 call a
-routine at 0400H beyond the start of SYS-EX. &ldquo;If suitable code
-is located at this address, the commands &ldquo;a&rdquo;, &ldquo;i&rdquo;, &ldquo;m&rdquo;, &ldquo;0&rdquo;,
-&ldquo;p, USCRI and USCR2 may be used to call&rsquo; a further&rsquo; seven
+There are five unused keyboard commands (g j m o p) all of
+which cause a routine at 0400H beyond the start of SYS-EX to be
+called. Also, the two called routines USCR1 and USCR2 call a
+routine at 0400H beyond the start of SYS-EX. If suitable code
+is located at this address, the commands &ldquo;g&rdquo;, &ldquo;j&rdquo;, &ldquo;m&rdquo;, &ldquo;o&rdquo;,
+&ldquo;p&rdquo;, USCR1 and USCR2 may be used to call a further seven
 commands, five of which are accessible directly from the
 keyboard.
 </p>
 <p>
 As SYS-EX is written in relocatable code, it is possible to
-copy SYS-Ex itself into any suitable location in RAM and then to
-Provide the extension commands in following RAM Locations.
+copy SYS-EX itself into any suitable location in RAM and then to
+provide the extension commands in following RAM Locations.
 </p>
 <p>
-Gn entry to the extension code located beyond SYS-EX, the
-NAS-SYS stack is in use, Care should therefore be taken to
+On entry to the extension code located beyond SYS-EX, the
+NAS-SYS stack is in use. Care should therefore be taken to
 ensure that:
 </p>
-<p>
+<ol>
+<li>
 higher addresses on the stack are not corrupted
-</p>
+</li>
+<li>
+the maximum depth of the stack is not exceeded
+</li>
+<li>
+the user code pops the same number of bytes off the stack
+as it pushes on to it.
+</li>
+</ol>
 <p>
-2. the maximum depth of the stack is not exceeded
-</p>
-<p>
-3. the user code pops the same number af bytes off the stack
-a5 it pushes on to it.
-</p>
-<p>
-A return to SYS-Ek may be made by executing a Z80 RET
+A return to SYS-EX may be made by executing a Z80 RET
 instruction. If the Carry flag is set upon return to SYS-EX,
 the message &ldquo;Error&rdquo; is displayed on the screen prior to the
-acteptance of further input.
+acceptance of further input.
 </p>
 <p>
-Upon entry to the extension code, various 760 registers have
+Upon entry to the extension code, various Z80 registers have
 preset values. These values are as follows.
 </p>
-<p>
-REGISTER(S) CONTENTS:
-a routine number or ASCII code
-HL Value from ARGL
-ve value from ARG?
-</p>
-<p>
-Bc Value from ARGS
-SP OCSFH within the NAS-SYS stack
-</p>
+<table class="indent2" style="width: 70%">
+<tr><td>REGISTER(S)</td><td>CONTENTS</td></tr>
+<tr><td>A</td><td>routine number or ASCII code</td></tr>
+<tr><td>HL</td><td>value from ARG1</td></tr>
+<tr><td>DE</td><td>value from ARG2</td></tr>
+<tr><td>BC</td><td>Value from ARG3</td></tr>
+<tr><td>SP</td><td>0C5FH within the NAS-SYS stack</td></tr>
+</table>
 <p>
 Fortytwo bytes are available on the stack for use by the
 </p>

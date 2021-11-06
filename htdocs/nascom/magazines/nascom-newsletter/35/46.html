@@ -1,16 +1,16 @@
 <?php columnStart(1); ?>
-<p>
+<h3>
 Principle.
-</p>
+</h3>
 <p>
-&lsquo;The EPROM is emulated by a 2K by 8 bit block of RAN. The
+The EPROM is emulated by a 2K by 8 bit block of RAM. The
 data and address lines of the RAM are accessible both by the
 target hardware and by the host computer, in our case a Nascom.
 The host can read or write to the memory but the target system
 can only read.
 </p>
 <p>
-linen the target system is accessing the RAM, the host is
+When the target system is accessing the RAM, the host is
 switched off and is unable to affect the emulator. When the host
 is in control, the target system cannot access the RAM.
 </p>
@@ -22,44 +22,44 @@ this is not a problem as the entire emulator is loaded quickly
 from an image in the Nascom memory.
 </p>
 <p>
-The resulting hardwareis, therefore, simple and cheap, yet
+The resulting hardware<?php spChar("zwsp"); ?>is, therefore, simple and cheap, yet
 able to perform a function normally requiring expensive and
 specialized equipment. (Commercial emulators usually have their
 own CPU and I/O devices. In the unit described here, the monitor
 functions already present in the Nascom are used instead.)
 </p>
-<p>
+<h3>
 Circuit Description.
-</p>
+</h3>
 <p>
-Referring to the schematic diagram, ICs 8 to 11 form the 2k
-emulator menory. Since each chip isa iK by 4 bit memory, they
-are arranged as two pairs, ICs 8 and 10 form the firet IK&rdquo; block
-and 9 and 11 the second. Address lines A@ through AY are common
-to all 4 chips whilst Alo selects the block to be accessed, by
-driving the Chip Select lines via an inverter. (Part of IC&rsquo; 6)-
-Two NAND gates (half of, IC&nbsp;7) are also included in the Select
-Lines to allow the host&rsquo; computer te contra) them.
+Referring to the schematic diagram, ICs 8 to 11 form the 2K
+emulator memory. Since each chip is a 1K by 4 bit memory, they
+are arranged as two pairs, ICs 8 and 10 form the first 1K block
+and 9 and 11 the second. Address lines A0 through A9 are common
+to all 4 chips whilst A10 selects the block to be accessed, by
+driving the Chip Select lines via an inverter. (Part of IC&nbsp;6).
+Two NAND gates (half of IC&nbsp;7) are also included in the Select
+lines to allow the host computer to control them.
 </p>
 <p>
 The 11 address lines are then multiplexed between the
-computer and the target system by ICs 2, 3, and 4. (745244
-trivstate, non-inverting buffers.) Each package contains &amp;
-buffers grouped in sets of 4, hence IC Sis split &lsquo;in half&rsquo; to
+computer and the target system by ICs 2, 3, and 4. (74LS244
+tri-state, non-inverting buffers.) Each package contains 8
+buffers grouped in sets of 4, hence IC&nbsp;3 is split &lsquo;in half&rsquo; to
 provide the necessary configuration. One buffer is spare from
-@ach half of IC&nbsp;3. Note &ndash; one of these is used up later on to
+each half of IC&nbsp;3. Note &ndash; one of these is used up later on to
 control the output buffer, IC&nbsp;5.
 </p>
 <p>
-&lsquo;The Gutput Enable lines (pins 1 and 19) of the sets of
+The Output Enable lines (pins 1 and 19) of the sets of
 buffers are connected by an inverter (again part of IC&nbsp;6) so
 that only one set may be enabled at one time. The line called
 SWITCH performs this function and is under control of the Nascom
-along with the other contro! lines.
+along with the other control lines.
 </p>
 <p>
 When SWITCH is LOW, the address lines from the target system
-(via SKT 2) are able to address the RAH. when SWITCH is HIGH,
+(via SKT&nbsp;2) are able to address the RAM. when SWITCH is HIGH,
 these inputs are turned off and the outputs of IC&nbsp;1 drive the
 address lines instead.
 </p>

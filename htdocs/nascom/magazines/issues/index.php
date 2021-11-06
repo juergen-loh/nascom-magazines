@@ -146,14 +146,14 @@
 	Another magazine appeared in parallel, Micropower.
 </p>
 <p class="image-issue-thumb">
-	<a href="../micropower/11/-1/"><img src="../micropower/11/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 1"></a>
-	<a href="../micropower/12/-1/"><img src="../micropower/12/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 2"></a>
-	<a href="../micropower/13/-1/"><img src="../micropower/13/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 3"></a>
-	<a href="../micropower/14/-1/"><img src="../micropower/14/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 4"></a>
-	<a href="../micropower/21/-1/"><img src="../micropower/21/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 1"></a>
-	<a href="../micropower/22/-1/"><img src="../micropower/22/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 2"></a>
-	<a href="../micropower/23/-1/"><img src="../micropower/23/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 3"></a>
-	<a href="../micropower/24/-1/"><img src="../micropower/24/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 4"></a>
+	<a href="../micropower/11/-1/text/"><img src="../micropower/11/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 1"></a>
+	<a href="../micropower/12/-1/text/"><img src="../micropower/12/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 2"></a>
+	<a href="../micropower/13/-1/text/"><img src="../micropower/13/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 3"></a>
+	<a href="../micropower/14/-1/text/"><img src="../micropower/14/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 4"></a>
+	<a href="../micropower/21/-1/text/"><img src="../micropower/21/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 1"></a>
+	<a href="../micropower/22/-1/text/"><img src="../micropower/22/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 2"></a>
+	<a href="../micropower/23/-1/text/"><img src="../micropower/23/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 3"></a>
+	<a href="../micropower/24/-1/text/"><img src="../micropower/24/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 4"></a>
 </p>
 
 <h2>
@@ -167,13 +167,13 @@
 </p>
 <p class="image-issue-thumb">
 <p>
-	<a href="../nascom-newsletter/25/-1/"><img src="../nascom-newsletter/25/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 2, Issue 5"></a>
-	<a href="../nascom-newsletter/26/-1/"><img src="../nascom-newsletter/26/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 2, Issue 6"></a>
-	<a href="../nascom-newsletter/31/-1/"><img src="../nascom-newsletter/31/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 1"></a>
-	<a href="../nascom-newsletter/32/00/"><img src="../nascom-newsletter/32/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 2"></a>
-	<a href="../nascom-newsletter/33/-1/"><img src="../nascom-newsletter/33/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 3"></a>
-	<a href="../nascom-newsletter/34/-1/"><img src="../nascom-newsletter/34/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 4"></a>
-	<a href="../nascom-newsletter/35/-1/"><img src="../nascom-newsletter/35/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 5"></a>
+	<a href="../nascom-newsletter/25/-1/text/"><img src="../nascom-newsletter/25/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 2, Issue 5"></a>
+	<a href="../nascom-newsletter/26/-1/text/"><img src="../nascom-newsletter/26/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 2, Issue 6"></a>
+	<a href="../nascom-newsletter/31/-1/text/"><img src="../nascom-newsletter/31/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 1"></a>
+	<a href="../nascom-newsletter/32/00/text/"><img src="../nascom-newsletter/32/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 2"></a>
+	<a href="../nascom-newsletter/33/-1/text/"><img src="../nascom-newsletter/33/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 3"></a>
+	<a href="../nascom-newsletter/34/-1/text/"><img src="../nascom-newsletter/34/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 4"></a>
+	<a href="../nascom-newsletter/35/-1/text/"><img src="../nascom-newsletter/35/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 5"></a>
 </p>
 
 <h1>
@@ -283,10 +283,10 @@
  	by Viktor
 </h3>
 <p>
-	<a href="../micropower/11/16/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../micropower/12/20/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../micropower/13/03/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../micropower/14/18/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../micropower/11/16/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/12/20/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/13/03/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../micropower/14/18/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
 <h2>
 	NAS-SYS monitors dissected
@@ -295,13 +295,13 @@
  	by J.​ Haigh
 </h3>
 <p>
-	<a href="../micropower/11/28/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../micropower/12/26/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../micropower/13/26/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../micropower/14/27/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
-	<a href="../micropower/21/30/"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
-	<a href="../micropower/22/07/"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
-	<a href="../micropower/23/22/"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../micropower/11/28/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/12/26/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/13/26/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../micropower/14/27/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../micropower/21/30/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../micropower/22/07/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../micropower/23/22/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
 <h2>
 	EPROM Programmer
@@ -310,9 +310,9 @@
  	by C.​ Bowden
 </h3>
 <p>
-	<a href="../micropower/14/02/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../micropower/21/18/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../micropower/22/12/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../micropower/14/02/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/21/18/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/22/12/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
 <!--h2>
 	XTAL BASIC XTRA 2.2 updates
@@ -321,8 +321,8 @@
  	by David Elliot
 </h3>
 <p>
-	<a href="../micropower/14/11/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../micropower/21/12/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/14/11/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/21/12/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 </p-->
 <!--h2>
 	Co-ordinate Life
@@ -331,9 +331,23 @@
  	by P.​ Whittaker
 </h3>
 <p>
-	<a href="../micropower/22/34/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../micropower/23/32/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../micropower/22/34/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../micropower/23/32/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 </p-->
+<h2>
+	News from Nascom
+</h2>
+<h3>
+	by Mike Hessey
+</h3>
+<p>
+	<a href="../nascom-newsletter/25/30/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/26/30/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/31/26/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/32/22/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/33/24/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/34/30/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+</p>
 <h2>
 	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
 </h2>
@@ -341,11 +355,11 @@
 	by David G.​ Johnson
 </h3>
 <p>
-	<a href="../nascom-newsletter/31/16/">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../nascom-newsletter/32/02/"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../nascom-newsletter/33/02/"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../nascom-newsletter/34/02/"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
-	<a href="../nascom-newsletter/35/03/"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/31/16/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/32/02/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/33/02/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/34/02/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/35/03/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Disk Formats and CP/M Disk Routines

@@ -1,44 +1,50 @@
 <?php columnStart(1); ?>
-<p>
-5. Port B is then configured to output and the first byte
-Placed onte the emulator data bus.
-</p>
-<p>
-6. The WE signal is taken LOW and the CS signal HIGH to
+<ol start=5 class="indent">
+<li>
+Port B is then configured to output and the first byte
+placed onto the emulator data bus.
+</li>
+<li>
+The WE signal is taken LOW and the CS signal HIGH to
 load the first byte.
-7. The counter reset is removed and the ADCLK line is
+</li>
+<li>
+The counter reset is removed and the ADCLK line is
 taken HIGH and then returned LOW to advance the address
 count.
-8. The next byte is fetched and loaded and so on until the
+</li>
+<li>
+The next byte is fetched and loaded and so on until the
 full 2k bytes are transferred.
-</p>
-<p>
+</li>
+</ol>
+<p class="continued">
 A similar sequence may be employed to read back the contents of
 the emulator RAM into the host Nascom.
 </p>
 <p>
 To use the emulator to develope hardware, short test
 routines may be written using ZEAP, tested by single-stepping if
-necessary and then re-assembled with origin @ but located in the
+necessary and then re-assembled with origin 0 but located in the
 Nascom RAM at 4000H by means of ZEAP&rsquo;s P option. Executing the
-Loader routine will then transfer the program into the emulator.
+loader routine will then transfer the program into the emulator.
 The target hardware may then be powered up and its own processor
 reset. The target hardware will then be able to access the
 program as if it were in EPROM. The program may readily be
-Changed until the hardware has been thoroughly tested. The final
+changed until the hardware has been thoroughly tested. The final
 program can then be written and debugged using the same
-Procedure and then eventually blown into an EPROM.
+procedure and then eventually blown into an EPROM.
 </p>
-<p>
+<h3>
 General Points.
-</p>
+</h3>
 <p>
-The emulator as described has been in use now for sone
-months and hag helped to develope several small Z80 based
+The emulator as described has been in use now for some
+months and has helped to develope several small Z80 based
 projects. Although its minimal nature does not offer the
-Sophisticated facilities of more expensive devices, I have found
+sophisticated facilities of more expensive devices, I have found
 it to be a great time saver and now regard it as invaluable for
 home projects. Better software is definitely required. This will
-bea future aim.
+be a future aim.
 </p>
 <?php columnEnd(1); ?>

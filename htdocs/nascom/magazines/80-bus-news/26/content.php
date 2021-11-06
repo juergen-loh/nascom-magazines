@@ -42,6 +42,18 @@
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Belectra HSA-88B arithmetic processor board"
+	,	"Chris Blackmore"
+	,	"Review"
+	,	15
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Pascal benchmarks"
+	,	"Chris Blackmore"
+	,	"Pascal"
+	,	17
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Accessing Prestel with a Nascom&nbsp;2 with software"
 	,	"Robert Luxford"
 	,	"Assembler"

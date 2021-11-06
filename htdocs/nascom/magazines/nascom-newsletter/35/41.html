@@ -1,9 +1,9 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 arguments has been entered to save crashing the program. After
 that, the characters are copied from source code to Naspen file
-with&rsquo; checks for the end of each line, where the IFH marker is
-Changed to @DH for Naspen. TBCDS is then used to put the line
+with checks for the end of each line, where the 1FH marker is
+changed to 0DH for Naspen. TBCD3 is then used to put the line
 number on the screen in ASCII which is then copied into the
 Naspen file, together with its space to give a correct
 presentation.
@@ -11,65 +11,46 @@ presentation.
 <p>
 At the end of the source code the Naspen 20H and FFH markers
 are added, the address of the end of text put in the Naspen
-Store at 101A and then Naspen ware started. You can then use the
-editing facilities of Naspen either to add coments or to move
+store at 101A and then Naspen ware started. You can then use the
+editing facilities of Naspen either to add comments or to move
 large blocks around.
 </p>
 <p>
 When you have finished, leave Naspen and use the second
-program to copy the text back ta the source area for the
-asseabler.
+program to copy the text back to the source area for the
+assembler.
 </p>
 <p>
-Type E 050 XXxX to start. XXXX is the address of the source
-area Start address and after another check of the number of
-arguaents, the program starts by @issing out the first three
-bytes of the Naspen file. The reason for this is that the ASCIT
+Type E D50 XXXX to start. XXXX is the address of the source
+area start address and after another check of the number of
+arguments, the program starts by missing out the first three
+bytes of the Naspen file. The reason for this is that the ASCII
 representation of the line number takes four bytes, while the
-fusber itself is stored as two bytes. The third byte to be
+number itself is stored as two bytes. The third byte to be
 omitted is the extra space inserted for presentation in the
 previous program. Each character is then copied across in
-Sequence until a CR is found. This is changed to FH for the
-asseabler and again the first three bytes of the next line are
+sequence until a CR is found. This is changed to 1FH for the
+assembler and again the first three bytes of the next line are
 omitted. When the end of text marker, FFH, is found, the screen
-is cleared and the end of source code address and renuaber
-command put on the screen so that, as scon as the asseabler is
+is cleared and the end of source code address and renumber
+command put on the screen so that, as soon as the assembler is
 entered, pressing NEWLINE twice will set all the parameters of
 the assembler.
 </p>
 <p>
 Should you wish to edit a listing, replace the print
-reflection with this short progras so that it prints its output
+reflection with this short program so that it prints its output
 into your Naspen file. One word of warning, it romps through
-menory at a very high rate of knots so make sure that&rsquo; you have
-Tots available. you may also need to reset the limit address at
+memory at a very high rate of knots so make sure that you have
+lots available, you may also need to reset the limit address at
 1012.
 </p>
 <p>
-PUSH HL i save painter
-LD HL, (STORE) ; Naspen pointer
-</p>
-<p>
-Lp Hl),a i print character
-</p>
-<p>
-INC HL
-</p>
-<p>
-LD (STORE), HL $ save pointer
-</p>
-<p>
-POP HL
-</p>
-<p>
-RET
-</p>
-<p>
-STORE DEFW 1020 ; start of Naspen file
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-41-1.png"); ?>
 </p>
 <p>
 There are only eleven bytes to that routine but very useful
 ones. Don&rsquo;t forget to set 1020 in the store or your listing
-could be anywher
+could be anywhere.
 </p>
 <?php columnEnd(1); ?>

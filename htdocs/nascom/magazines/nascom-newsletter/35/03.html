@@ -6,59 +6,61 @@ SYS-EX &nbsp; A 1K extension program for NAS-SYS monitors. Part 5
 by David G. Johnson
 </h2>
 <p>
-This is the final part of the series of articles on the 1k
+This is the final part of the series of articles on the 1K
 monitor extension to NAS-SYS. All of the major facilities of
-SYS-EX Mave been described in the earlier magazine issues. All
-that now remains is to tidy Up a faw remaining details and to
-print the promised hex dump of the monitor extension itsel#.
+SYS-EX have been described in the earlier magazine issues. All
+that now remains is to tidy up a few remaining details and to
+print the promised hex dump of the monitor extension itself.
 </p>
 <p>
 SYS-EX is written in relocatable code and will operate
-correctly at any memory location above 10@eH. However, the
-Nasco memory map allocates locations B0eH to B7FFH as the
-recommended &lsquo;memory locations for extensions to monitor
-facilities. SYS-EX may Conveniently occupy the first half
-(B000H to BFFFH) of this available space and at the same tine
+correctly at any memory location above 1000H. However, the
+Nascom memory map allocates locations B000H to B7FFH as the
+recommended memory locations for extensions to monitor
+facilities. SYS-EX may conveniently occupy the first half
+(B000H to B3FFH) of this available space and at the same time
 provide facilities for the easy use of further extensions from
 B400H onwards.
 </p>
 <p>
-Should SYS-EX be located at B00CH, two useful and important
+Should SYS-EX be located at B000H, two useful and important
 facilities are available.
 </p>
-<p>
-1. The hardware reset jump may be set to cold start SYS-Ex
+<ol>
+<li>
+The hardware reset jump may be set to cold start SYS-EX
 automatically at switch on and on pressing the RESET
 button.
-</p>
-<p>
-2. NAS-SYS&nbsp;3 provides the &ldquo;Y&rdquo; command which jumps to address
-BOGOH. The &ldquo;Y&rdquo; command can be used directly to cold start
-SYS-Ex.
-</p>
-<p>
-Cold starting SYS-Ex
-</p>
+</li>
+<li>
+NAS-SYS&nbsp;3 provides the &ldquo;Y&rdquo; command which jumps to address
+B000H. The &ldquo;Y&rdquo; command can be used directly to cold start
+SYS-EX.
+</li>
+</ol>
+<h3>
+Cold starting SYS-EX
+</h3>
 <p>
 A cold start is required if the monitor has not already been
-initialieed. e.g. at switch on or after a program has made non
+initialised. e.g. at switch on or after a program has made non
 standard use of the memory reserved for NAS-SYS workspace.
 </p>
 <p>
 The execution address for cold starting SYS-EX is 5 bytes on
-from the start of SYS-EX. e.g. [f SYS-EX resides between 1000H
-and I2FFH, it may be cold startey by the NAS-SYS command?
+from the start of SYS-EX. e.g. If SYS-EX resides between 1000H
+and 13FFH, it may be cold started by the NAS-SYS command:
 </p>
-<p>
+<p class="indent2">
 E 1005
 </p>
-<p>
-If, and only if, SYS-EX resides between 000H and BSFFH, it can
-allo be cord started at BE00H.
+<p class="continued">
+If, and only if, SYS-EX resides between 8000H and B3FFH, it can
+also be cord started at B000H.
 </p>
-<p>
+<h3>
 Warm starting SYS-EX
-</p>
+</h3>
 <p>
 A warm start is used when the initialisation of the NAS-SYS
 workspace and the clearing of the screen memory are not

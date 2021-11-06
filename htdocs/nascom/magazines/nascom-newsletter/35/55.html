@@ -1,85 +1,46 @@
 <?php columnStart(1); ?>
 <p>
-1040 KEYS (4) =&rdquo; (SHIFT) *
-1050 KEYS(5)="(@)&rdquo;
-</p>
-<p>
-1060 KEYS(6)=&rdquo; (HOMED &rdquo;
-</p>
-<p>
-1070 KEVROW=Z55-INP(O):REM invert bits read from port &copy;
-1000 IF KEYROW=0 THEN 1070
-</p>
-<p>
-1090 FOR BIT=@ TO &amp;
-</p>
-<p>
-1100 IF 2 BIT AND KEYROW THEN PRINT KEV&reg;(BIT)}
-</p>
-<p>
-1110 NEXT BIT
-</p>
-<p>
-1120 PRINT:60TO 1076
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-55-1.png"); ?>
 </p>
 <p>
 When all that is required is for the program to wait until
+Enter or Newline is pressed, you only need the following line&nsbp:
 </p>
-<p>
-Enter or Newline {= pressed, you only need the following line +
-10 IF INP(O) AND 2 THEN 10
+<p class="center">
+10 IF INP(0) AND 2 THEN 10
 </p>
-<p>
-&lsquo;This will loop until Enter is pressed.
+<p class="continued">
+This will loop until Enter is pressed.
 </p>
+<h4>
+... and a naughty way.
+</h4>
 <p>
-++ and a naughty way.
-</p>
-<p>
-&lsquo;The Basic interpreter must be modified if = genuine INKEY
+The Basic interpreter must be modified if a genuine INKEY
 function is required. The Microsoft Basic that the Nascom uses
-was adapted from a program written in 6080 mathine code. The
-BeGe doesn&rsquo;t have an &ldquo;IN r,(C)* instruction, so a small skeleton
-Subroutine is used instead: The subroutine looks like thist
+was adapted from a program written in 8080 machine code. The
+8080 doesn&rsquo;t have an &lsquo;IN r,(C)&rsquo; instruction, so a small skeleton
+subroutine is used instead. The subroutine looks like this:
 </p>
 <p>
-193E DB GIN in)
-103F .. port number inserted here by INPC) function
-teae 69 return
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-55-2.png"); ?>
 </p>
 <p>
-&lsquo;This resides in RAM, as can be seen from the addresses. If
+This resides in RAM, as can be seen from the addresses. If
 DBH is changed to DFH, a Nas-Sys RST SCAL will be executed. The
-monitor subroutine called being dependent on the nunber passed
-by the INPQ function. Any subroutine that doesn&rsquo;t require an
-arguaent can be used. The useful routines and. their nusbers
+monitor subroutine called being dependent on the number passed
+by the INP() function. Any subroutine that doesn&rsquo;t require an
+argument can be used. The useful routines and their numbers
+are:
 </p>
 <p>
-9@_ SCAL IN
-123 SCAL BLINK
-93 SCAL TDEL
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-55-3.png"); ?>
 </p>
-<p>
+<h4>
 Example
-</p>
+</h4>
 <p>
-10 POKE 4158, 225
-28 KEYS=CHRSCINP (98)): REM or INP(123)
-</p>
-<p>
-30 IF KEYS&gt;"2&rdquo; THEN 20
-</p>
-<p>
-40 PRINT KEYS
-</p>
-<p>
-50 IF KEYSCCHRS (15) THEN 20
-</p>
-<p>
-6 DELAY=INP(93)
-</p>
-<p>
-7@ POKE 4159,219: REM restore normal use of INPO fuction
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-55-4.png"); ?>
 </p>
 <p>
 Line 30 is required when using SCAL IN as this routine returns
@@ -88,7 +49,7 @@ values greater than 128 when no key is pressed.
 <p>
 Well, you now have no excuse for ever being a USR again! The
 two ways of detecting a key press from Basic are so incredibly
-obvious, T cant imagine why no one else has ever thought of
+obvious, I can&rsquo;t imagine why no one else has ever thought of
 then before!
 </p>
 <?php columnEnd(1); ?>

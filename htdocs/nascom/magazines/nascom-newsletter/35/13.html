@@ -7,55 +7,55 @@ by Alan Marshall
 </h2>
 <p>
 In volume 3, number 2 of the Nascom Newsletter, I described
-the addition of two more commands and two more pseudo ops te the
+the addition of two more commands and two more pseudo ops to the
 COMPASS assembler (version 1.3). This article describes the
-addition of a further command,
+addition of a further command.
 </p>
 <p>
-As there were only two &lsquo;spare&rsquo; command letters, the BADCHD
-facility of COMPASS iS used. This was thoughtfully&rdquo; provided by
-Level 9 as a jump at &pound;0F0O for the addition of extra commands,
+As there were only two &lsquo;spare&rsquo; command letters, the BADCMD
+facility of COMPASS is used. This was thoughtfully provided by
+Level 9 as a jump at &pound;0F00 for the addition of extra commands,
 and the address of this sump is changed to the address of the
 new routine.
 </p>
 <p>
-The new routine, the &lsquo;&rsquo;Z&rsquo; command, provides a means of
+The new routine, the &lsquo;Z&rsquo; command, provides a means of
 listing label addresses without having to reassemble the
-program. Once a program has been assembled, pressing &lsquo;2&rsquo;
-folloned by a Newline will list the labels and their addresses
-immediately, the number being displayed at a tine being
+program. Once a program has been assembled, pressing &lsquo;Z&rsquo;
+followed by a Newline will list the labels and their addresses
+immediately, the number being displayed at a time being
 controlled by the &lsquo;H&rsquo; command. The command will work before
 assembly but rubbish will be displayed.
 </p>
 <p>
-The program as shown below has its origin at COMPASS+&pound;1AS3,
+The program as shown below has its origin at COMPASS+&pound;1A53,
 as it is assumed that the previous additions have been
-incorporated. If they have not, then the origin ts at
-COMPASS+&pound;297E and line 10 will have to be altered accordingly.
+incorporated. If they have not, then the origin is at
+COMPASS+&pound;197E and line 10 will have to be altered accordingly.
 </p>
 <p>
-The COMPASS Assembler iz unusual in that the labels are not
+The COMPASS Assembler is unusual in that the labels are not
 restricted in length, and so the storage of their addresses is
-&lsquo;also unusual. The ustal way is to split the symbol area into &amp;
-byte blecks, six bytes being for the label and two for its
-address. In&rsquo; this instance, the symbol area is split up into four
-byte blocks, mith two bytes far the address and the other two
+also unusual. The usual way is to split the symbol area into 8
+byte blocks, six bytes being for the label and two for its
+address. In this instance, the symbol area is split up into four
+byte blocks, with two bytes for the address and the other two
 bytes as the address of the label in the source area. As an
 example, the label &lsquo;RIN&rsquo; of this program appeared in the symbol
 table as:
 </p>
-<p>
-er 40 08 00
+<p class="indent2">
+01 60 08 00
 </p>
-<p>
-the first two bytes being the Late) address and the second, the
+<p class="continued">
+the first two bytes being the label address and the second, the
 abject address. A label address of 00 00 indicates the end of
-the list and, ac the program outputs the object address first,
-itis erased in lines 3&amp; and 37.
+the list and, as the program outputs the object address first,
+it is erased in lines 36 and 37.
 </p>
 <p>
-The following 1isting shows how simple it is to display the
-labels once the storage is understood. Lines 5e and 57 put the
+The following listing shows how simple it is to display the
+labels once the storage is understood. Lines 56 and 57 put the
 command address in the jump table, so a cold start is necessary
 for the program to work.
 </p>
