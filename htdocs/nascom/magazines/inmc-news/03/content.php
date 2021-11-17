@@ -42,19 +42,20 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Moon Lander game (object code listing N1)"
+	,	"Moon Lander game<br>"
+	.	"(object code listing N1)"
 	,	"Nick Ray"
 	,	"Software"
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"ZEAP"
+	,	"ZEAP &ndash; Have you got it; if so, does it hurt"
 	,	""
 	,	"Assembler"
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Memory Plague (N1)"
+	,	"Memory Plague &ndash; Definitely hurts (N1)"
 	,	""
 	,	"Hardware"
 	,	12
@@ -66,7 +67,8 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Software hints and tips"
+	,	"Super software section &ndash; Food for your soul<br>"
+	.	"(Software hints and tips)"
 	,	""
 	,	"Assembler"
 	,	15
@@ -78,10 +80,17 @@
 	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Software Library"
+	,	"Library catalogue &ndash; Nice fresh programs<br>"
+	.	"(Software Library)"
 	,	""
 	,	""
 	,	19
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Four free programs &ndash; Refuse we can’t offer!"
+	,	"Richard Beal"
+	,	""
+	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"React game (object code listing N1)"

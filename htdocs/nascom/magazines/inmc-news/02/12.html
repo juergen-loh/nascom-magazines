@@ -2,11 +2,12 @@
 <p>
 <u>NASBUG T4</u> (Continued)
 </p>
-<p>
-W Write as in B-BUG. Four times faster than &lsquo;D&rsquo;.
-</p>
-<p>
-X Multiple option external mode, which converts Nascom to a
+<dl>
+<dt>
+W</dt><dd>Write as in B-BUG. Four times faster than &lsquo;D&rsquo;.
+</dd>
+<dt>
+X</dt><dd>Multiple option external mode, which converts Nascom to a
 full ASCII intelligent terminal. Capable of supporting
 paper tape with odd or even parity, with or without automatic
 CR/LF, Teletype as above in half or full duplex, external
@@ -14,53 +15,58 @@ mainframe timesharing systems through a telephone modem
 in full or half duplex, odd or even parity, with or without
 automatic CR/LF, and of course multiple Nascom configurations.
 This command is possibly the most powerful of all.
-</p>
-<p>
-Z Directs the Nascom to accept a new command table at the
+</dd>
+<dt>
+Z</dt><dd>Directs the Nascom to accept a new command table at the
 argument supplied by &lsquo;Z&rsquo;.
+</dd>
+<dt>
+?</dt><dd>Prints out the current command table in the following format:
+<p class="center">
+A B C D E G I K L M N O Q R S T W X Z ?
 </p>
-<p>
-? Prints out the current command table in the following format:<br>
-A B C D E G I K L M N O Q R S T W X Z&nbsp;?
-</p>
+</dd>
+</dl>
 <h4>
 Restart vectors (Z80 page 0)
 </h4>
-<p>
-RST 0 (C7) Restart NASBUG T4
-</p>
-<p>
-RST 8 (CF) &lsquo;Soft restart&rsquo; NASBUG T4. As RST 0 but does not
+<dl class="wide">
+<dt>
+RST 0 (C7)</dt><dd>Restart NASBUG T4
+</dd>
+<dt>
+RST 8 (CF)</dt><dd>&lsquo;Soft restart&rsquo; NASBUG T4. As RST 0 but does not
 clear screen.
-</p>
-<p>
-RST 16 (D7 xx) Allows relative subroutine calls to be made using
+</dd>
+<dt>
+RST 16 (D7 xx)</dt><dd>Allows relative subroutine calls to be made using
 displacement (xx). Note that this feature is supported
 by NASBUG T4 and not by the Z80, and therefore cannot be
 used in Z80 based systems not using NASBUG T4.
-</p>
-<p>
-RST 24 (DF xx) Allows a direct call to location 0E00 plus a
+</dd>
+<dt>
+RST 24 (DF xx)</dt><dd>Allows a direct call to location 0E00 plus a
 displacement (xx), the displacements are in 3&rsquo;s,
 allowing the user to locate tables, reflective jumps etc.
 in this area. Note; not supported by Z80 as RST 16.
-</p>
-<p>
-RST 32 (E7) Breakpoint as in NASBUG T2.
-</p>
-<p>
-RST 40 (EF) String print as in NASBUG T2.
-</p>
-<p>
-RST 48 (F7) Direct call to $-CRT
-</p>
-<p>
-RST 56 (FF) Calls part of KDEL as in NASBUG T2, allowing KDEL to be
+</dd>
+<dt>
+RST 32 (E7)</dt><dd>Breakpoint as in NASBUG T2.
+</dd>
+<dt>
+RST 40 (EF)</dt><dd>String print as in NASBUG T2.
+</dd>
+<dt>
+RST 48 (F7)</dt><dd>Direct call to $-CRT
+</dd>
+<dt>
+RST 56 (FF)</dt><dd>Calls part of KDEL as in NASBUG T2, allowing KDEL to be
 shortened proportional to the value in A, allows for
 accurate timing in increments of approx. 50 uS.
-</p>
+</dd>
+</dl>
 <h1 id="article1">
-SOFTWARE LIBRARY
+<u>SOFTWARE LIBRARY</u>
 </h1>
 <p>
 The original intention of the INMC software library was to

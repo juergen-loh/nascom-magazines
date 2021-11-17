@@ -536,10 +536,10 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 		$imagepath = "../../";
 		include "$html";
 		echo "\n<br></div></div>\n";
-		echo "<p>\n\tThis is an ";
+/*		echo "<p>\n\tThis is an ";
 		externalLink("Optical character recognition", "OCR", "");
 		echo "&rsquo;d\n\tversion of the <a href=\"../\">scanned page</a> and likely contains recognition errors.\n</p>\n";
-		$naviBottom .= "\t\t<a class=\"sm-fill nav-link\" href=\"../\">Graphic</a>\n";
+*/		$naviBottom .= "\t\t<a class=\"sm-fill nav-link\" href=\"../\">Graphic</a>\n";
 		break;
 	case "graphic":
 		$img = "$magpath/$issuepath/$pagepath.png";
@@ -607,7 +607,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 				break;
 			}
 			echo "<p>\n\tNASCOM ROM BASIC source code is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
-			echo "\t and <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
+			echo "\tand <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
 		}
 	}
 	$naviBottom

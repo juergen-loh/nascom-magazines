@@ -1108,8 +1108,10 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "CP/M Plus":				$url = "https://de.wikipedia.org/wiki/CP/M#CP/M-Plus";							break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
 //	case "Crystal BASIC":			$url = "http://homepage.ntlworld.com/rob.xanth/nascom/documents/m50.pdf";		break;
+	case "Data General Nova":		$url = "https://en.wikipedia.org/wiki/Data_General_Nova";						break;
 	case "David L. Heiserman":		$url = "https://openlibrary.org/authors/OL766144A/Heiserman_David_L.";			break;
 	case "dBASE II":				$url = "https://de.wikipedia.org/wiki/DBASE#dBASE_II";							break;
+	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://de.wikipedia.org/wiki/VT180";									break;
 	case "ECB 85":					$url = "http://www.hknebel.org/Museum/Tragbare_PCs/Vorlaufer/ECB_85/ecb_85.htm";	break;
 	case "ECB":						$url = "https://de.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
@@ -1220,6 +1222,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Pascal MicroEngine":		$url = "https://en.wikipedia.org/wiki/Pascal_MicroEngine";						break;
 	case "Pascal/MT+":				$url = "https://en.wikipedia.org/wiki/Pascal/MT%2B";							break;
 	case "PICO Computer":			$url = "https://tupel.jloh.de/pico/";											break;
+	case "PDP-11":					$url = "https://en.wikipedia.org/wiki/PDP-11";									break;
+	case "PDP-7":					$url = "https://en.wikipedia.org/wiki/PDP-7";									break;
 	case "Pilot":					$url = "https://de.wikipedia.org/wiki/PILOT";									break;
 	case "Piranha.nas":				$url = "http://www.nascomhomepage.com/games/Piranha.nas";						break;
 	case "Programmierung des Z80":	$url = "http://www.z80.info/zaks.html";											break;

@@ -1,9 +1,9 @@
-<?php columnStart(1); ?>
-<h1 id="article1">
-The End of &lsquo;PLAGUE&rsquo; <u>&amp;</u> a NEW Board.
+<?php columnStart(1, "justify"); ?>
+<h1 id="article1" style="font-size: 150%">
+The End of &lsquo;PLAGUE&rsquo; &nbsp; <u>&amp;</u> &nbsp; a NEW Board.
 </h1>
 <h2>
-THE FINAL DEFINITIVE MEMORY PLAGUE NOTE
+<u>THE FINAL DEFINITIVE MEMORY PLAGUE NOTE</u>
 </h2>
 <p>
 In the last issue we promised that we would collect together
@@ -25,17 +25,19 @@ Nascom&nbsp;1 busses, although this has never been conclusively proved. A
 number of &lsquo;cures&rsquo; were published, which consisted of basically three
 things:
 </p>
-<p>
-1) Gridding the back of the memory card to reduce power supply noise.
-</p>
-<p>
-2) Pulling up the outputs of the RAMs to increase operational speed.
-</p>
-<p>
-3) Adding a time constant in the form of a capacitor to the RAM pullups
+<ol class="paranthese">
+<li>
+Gridding the back of the memory card to reduce power supply noise.
+</li>
+<li>
+Pulling up the outputs of the RAMs to increase operational speed.
+</li>
+<li>
+Adding a time constant in the form of a capacitor to the RAM pullups
 to damp any noise on the output buffer.
-</p>
-<p>
+</li>
+</ol>
+<p class="noindent">
 On a Nascom&nbsp;1 these work. On a Nascom&nbsp;2, step 3 represents overkill,
 and can cause poor operation at 4MHz, the time constant being
 calculated for 2MHz.
@@ -60,21 +62,23 @@ We therefore now recommend the following:
 <h4>
 Nascom&nbsp;1
 </h4>
-<p>
-1) For each row of logic chips, grid the back of the pcb, connecting
+<ol class="paranthese">
+<li>
+For each row of logic chips, grid the back of the pcb, connecting
 the +5 volt rail from the termination on the logic half of the pcb
 to the +5 volt termination of the 100n decoupiIng capacitor
 immediately opposite. For each row of logic chips connect the 0
 volt rail likewise; where a row is adjacent to pin 12 of each of
 the EPROM sockets, incorporate this into the 0 volt grid.
-</p>
-<p>
-2) Change R7 &ndash; 14 and R17 to 68R, and RAS links LK1 and LK2 should also
+</li>
+<li>
+Change R7 &ndash; 14 and R17 to 68R, and RAS links LK1 and LK2 should also
 be 68R resistors.
-</p>
-<p>
-3) Where the Basic ROM is fitted, add a 150pF capacitor from pin 1 to
+</li>
+<li>
+Where the Basic ROM is fitted, add a 150pF capacitor from pin 1 to
 0 volts of IC9 on the buffer board, this will slightly increase
 MREQ, and thereby increase DBDR.
-</p>
+</li>
+</ol>
 <?php columnEnd(1); ?>

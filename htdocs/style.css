@@ -3,6 +3,7 @@ address,
 body,
 */
 html,
+body,
 li,
 tr,
 p,
@@ -471,6 +472,160 @@ dd.wide
 }
 
 /*----------------------------*/
+
+ul.dash
+{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+ul.dash li:before
+{
+	content: "- ";
+}
+
+/*----------------------------*/
+
+ol.lower-alpha-parentheses
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.lower-alpha-parentheses li:before
+{
+	content: "(" counter(section, lower-alpha) ") ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.lower-alpha-parentheses li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.paranthese
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.paranthese li:before
+{
+	content: counter(section, decimal) ") ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.paranthese li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.sub-lower-alpha-parenthese
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.sub-lower-alpha-parenthese li:before
+{
+	content: counter(sub-section, lower-alpha) ") ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.sub-lower-alpha-parenthese li
+{
+	counter-increment: sub-section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.paranthese-dot
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.paranthese-dot li.hide:before
+{
+	content: "";
+}
+
+ol.paranthese-dot li:before
+{
+	content: counter(section, decimal) "). ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.paranthese-dot li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*---------------------------------------------------------------------------*/
+
+ol.number-dot
+{
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+ol.number-dot li
+{
+	padding-left: 2.1em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
 ul.dashed-left {
 	list-style-type: none;
 	padding-left: 0;
@@ -493,7 +648,7 @@ ul.dashed-indent > li {
 /*	padding-left: 0em;*/
 }
 ul.dashed-indent > li:before {
-	content: "-";
+	content: "- ";
 /*	text-indent: -1.3em;*/
 }
 /*----------------------------*/

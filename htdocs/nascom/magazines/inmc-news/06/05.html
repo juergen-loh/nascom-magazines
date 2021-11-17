@@ -1,4 +1,4 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "justify"); ?>
 <p>
 Connect the 8 data lines of port B on the Nascom&nbsp;2 to. the
 coresponding 8 data lines of port B on the Nascom&nbsp;1. Connect the ground
@@ -33,7 +33,7 @@ put into each computer. (The listings will be put in the library in due
 course.)
 </p>
 <h2>
-Cassete input transfer program for Nascom&nbsp;1
+<u>Cassete input transfer program for Nascom&nbsp;1</u>
 </h2>
 <p>
 This program initializes the PIO and then goes into a loop
@@ -42,7 +42,7 @@ interrupt routine waits until there is a character from the cassette
 input, and then outputs it to the PIO and returns. The full list of
 actions is:
 </p>
-<p>
+<p class="indent">
 Disable the CPU interrupts with a DI instruction.<br>
 Disable PIO (03H to control port).<br>
 Ensure PIO is happy by pushing address of next instruction on to the stack, and then using a RETI.<br>
@@ -54,7 +54,7 @@ Set the interrupt control word by outputting 87H to the PIO.<br>
 Enable the CPU Interrupts with an EI instruction.<br>
 Go into a tight loop (actual code 18 FEH).
 </p>
-<p>
+<p class="noindent">
 That is the end of the initialization program, which is executed.
 </p>
 <p>

@@ -1,5 +1,5 @@
-<?php columnStart(1); ?>
-<p>
+<?php columnStart(1, "justify"); ?>
+<p class="continued">
 interrupt routine itself. This address is placed at the start of the
 table, low order byte first, as usual.
 </p>
@@ -15,7 +15,7 @@ immediately returns. This last bit of code reads:
       RETI
 </pre>
 <h2>
-Cassette input program for Nascom&nbsp;2
+<u>Cassette input program for Nascom&nbsp;2</u>
 </h2>
 <p>
 The other half of the software lives in the Nascom&nbsp;2. The
@@ -28,23 +28,23 @@ returns to NAS-SYS. Instead of the need for changing tables and RST RIN
 to get an input, normal calls are made to a new routine called CIN.
 This routine reads as follows:
 </p>
-<pre>
+<pre class="indent">
 CIN  OR A
      EI
 SLP  JR NC SLP
      RET
 </pre>
-<p>
+<p class="noindent">
 This loops until an interrupt occurs, and the interrupt routine sets
 the Carry flag, and puts the input character into A. The interrupt
 routine reads simply:
 </p>
-<pre>
+<pre class="indent">
 PROC IN A, (5)
      SCF
      RETI
 </pre>
-<p>
+<p class="noindent">
 Note that it does not re-enable CPU interrupts.
 </p>
 <p>
@@ -63,18 +63,16 @@ performs the subordinate tasks. This would be one way to tackle a
 multi-user operating system with resources such as printer or disc
 attached to only some machines.
 </p>
-<p>
+<p class="noindent">
 Richard Beal
 </p>
-<p>
+<p class="noindent">
 PS You could use two Nascom&nbsp;2 computers, if you don&rsquo;t already have a
 Nascom&nbsp;1.
 </p>
-<p>
+<p class="noindent">
 PPS Don&rsquo;t blame me if you get your wires mixed up and blow up both
 computers.
 </p>
-<p>
-</p>
-<?php hLine("30%"); ?>
+<?php hLine("20%"); ?>
 <?php columnEnd(1); ?>

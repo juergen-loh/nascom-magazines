@@ -1,6 +1,6 @@
-<?php columnStart(1); ?>
-<h1 id="article1">
-SOFTWARE TIPS &ndash; SHUFFLING
+<?php columnStart(1, "noindent"); ?>
+<h1 id="article1" class="center">
+<u>SOFTWARE TIPS &ndash; SHUFFLING</u>
 </h1>
 <p>
 Suppose you have a list of values which you want to arrange in
@@ -9,9 +9,9 @@ many possible ways to go about it, and some ways don&rsquo;t perform
 a truly random shuffle and others take a lot of programming or
 a long time to execute. Here are some examples:&ndash;
 </p>
-<p>
-1. <u>SORT METHOD</u>
-</p>
+<ol class="number-dot">
+<li>
+<u>SORT METHOD</u>
 <p>
 Attach a random number to each of the items to be shuffled.
 Then sort the random numbers into sequence with a sort program.
@@ -21,9 +21,10 @@ generator, a sort program, and lots of memory to run it all
 in and store the random numbers. It is impractical for our
 purposes.
 </p>
+</li>
+<li>
 <p>
-2. <u>OBVIOUS REPLACEMENT SHUFFLE</u>
-</p>
+<u>OBVIOUS REPLACEMENT SHUFFLE</u>
 <p>
 For each item in the list, i, where there are n items
 (FOR I=1 to N) generate a random integer j in the range 1
@@ -31,15 +32,15 @@ to N and swop item i with item j. This method may seem to
 work but it is incorrect. Some orders are more likely than
 others. Never use this method.
 </p>
-<p>
-3. <u>CORRECT REPLACEMENT SHUFFLE</u>
-</p>
+</li>
+<li>
+<u>CORRECT REPLACEMENT SHUFFLE</u>
 <p>
 Here is a correct method!<br>
 For each item i in the list of a items, but only up to n-1
 (FOR I=1 to N-1), to as follows&nbsp;:&ndash;
 </p>
-<p>
+<p class="exdent">
 a) Generate a random integer j in the range i to n.<br>
 J = I + INT (RND (1) * (N-I+1})
 </p>
@@ -51,6 +52,8 @@ This method is very fast, is easy to program, works correctly,
 and runs quickly. It can be easily programmed in BASIC or
 in machine code.
 </p>
+</li>
+</ol>
 <?php columnEnd(1); ?>
 <br>
 <?php columnStart(2); ?>

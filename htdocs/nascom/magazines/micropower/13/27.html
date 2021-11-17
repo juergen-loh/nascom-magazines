@@ -2,19 +2,19 @@
 <p>
 If a valid address is obtained subsequent hexadecimal numbers on the line are
 entered into memory until the end of the line is reached (detected by means of the
-nulls with which the screen margins are filled) or until a non-valid entry is found. lf
+nulls with which the screen margins are filled) or until a non-valid entry is found. If
 all the numbers are valid the modify routine continues on the next line, displaying
 the updated address and the byte at that address, when further data can be entered.
 Although the data to be entered is in bytes, the routine which evaluates the
 successive groups of characters is designed to handle sixteen-bit values, but only
 the least significant eight bits are put into memory, thus FA, 1FA and 37FA will all
-go into memory as FA. lf the number exceeds FFFF an error message will be
+go into memory as FA. if the number exceeds FFFF an error message will be
 generated and the routine will reset to the address at the start of the line, but
 data will have been entered into memory up to and including the first invalid
 entry.
 </p>
 <p>
-lf a character is encountered which does not lie in the ranges 0 &ndash; 9 or A &ndash; F
+If a character is encountered which does not lie in the ranges 0 &ndash; 9 or A &ndash; F
 the above error process will normally occur, but here are four exceptions to this.
 A full stop terminates the Modify command and returns control to the monitor.
 An oblique stroke changes the address to be modified to the hexadecimal number

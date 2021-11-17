@@ -1,18 +1,19 @@
 <?php columnStart(1); ?>
-<p>
+<ol class="number-dot" style="margin-top: 0">
+<li style="list-style-type: none; margin-top: 0">
 address in the monitor to end a program. This will cause
 problems. It is always safe to jump to address 0, which
 restarts the monitor program correctly.
-</p>
 <p>
 If you don&rsquo;t want to clear the screen
 </p>
 <p>
 Reset the stack to 0C33H<br>
 then jump to PARSE
-</p>
+</li>
+</ol>
 <h1 id="article1">
-Notes on PIO Operation.
+<u>Notes on PIO Operation.</u>
 </h1>
 <p>
 The Nascom I has on board two totally uncommitted 8 bit
@@ -39,8 +40,8 @@ the CPU only, <u>NOT</u> the PIO. It may be reset in two ways.
 The simplest is to switch the power off and on again; a
 bit drastic but the PIO does have automatic power on reset.
 The second method (shown in fig.3&nbsp;) is to apply an M1
-without either <?php invertedSignal("RD"); ?>
-or <?php invertedSignal("IORQ"); ?>. It should, however, be pointed
+without either <?php invertedSignal("RD"); ?> or
+<?php invertedSignal("IORQ"); ?>. It should, however, be pointed
 out that, since the CPU can be reset, it is always possible
 to regain control of the PIO in software, by simply
 reprogramming it.
@@ -48,7 +49,7 @@ reprogramming it.
 <p>
 Now to &lsquo;interrupts&rsquo;. Don&rsquo;t forget that the PIO is designed
 to operate in the Z-80 Interrupt Mode 2, so before doing
-anything put the CPU into this mode by executing &lsquo;IM 2&rsquo;
+anything put the CPU into this mode by executing &lsquo;IM&nbsp;2&rsquo;
 (HEX code ED 5E). Remember that a CPU reset puts the Z-80
 back to Interrupt Mode 0 clears the I register, and dissables
 CPU interrupts (having no effect on the PIO).

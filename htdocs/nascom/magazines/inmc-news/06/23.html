@@ -1,11 +1,15 @@
-<?php columnStart(1); ?>
+<?php columnStart(34); ?>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-23-1.png"); ?>
-<h3 class="author">
+<?php columnChange(4); ?>
+<h3 class="author" style="text-align: right">
 By N.Ray
 </h3>
-<h4>
-ONE OR TWO NOTES ABOUT Z80 MACHINE-CODE PROGRAMMING
-</h4>
+<?php columnEnd(4); ?>
+<br>
+<?php columnStart(1, "noindent"); ?>
+<h2>
+<u>ONE OR TWO NOTES ABOUT Z80 MACHINE-CODE PROGRAMMING</u>
+</h2>
 <p>
 Reading other people&rsquo;s Z80 code programs convinces me that many
 people are unaware of some very useful tricks,
@@ -37,13 +41,13 @@ in the way it affects the carry flag (and certain other flags).
 While on the subject of programming dodges, here is an interesting
 example:
 </p>
-<pre>
-    E60F   HEXASC:    AND 0FH
-    C690              ADD A,90H
-    27                DAA
-    CE40              ADC A,40H
-    27                DAA
-    C9                RET
+<pre class="indent">
+E60F   HEXASC:    AND 0FH
+C690              ADD A,90H
+27                DAA
+CE40              ADC A,40H
+27                DAA
+C9                RET
 </pre>
 <p>
 The lower 4 bits in register A are interpreted as a hex digit and
@@ -53,9 +57,9 @@ the corresponding hex character in ASCII is found in A on exit.
 You should try to convince yourself that it works correctly (HINT&nbsp;:
 watch the half-carry flag).
 </p>
-<h4>
-RECURSION
-</h4>
+<h2>
+<u>RECURSION</u>
+</h2>
 <p>
 Recursion can often be used to good advantage in machine-code programming,
 provided there is ample stack space. A recursive routine

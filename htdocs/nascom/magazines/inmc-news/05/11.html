@@ -1,4 +1,4 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 This is also the case if you don&rsquo;t want the results where I have
 put them.
@@ -10,10 +10,10 @@ Calling 0400 reads both joysticks, to read only one, call either
 0407 or 0415, depending on which socket the joystick is plugged
 into. The format of the results is;
 </p>
-<table>
+<table class="indent">
 <tr><td>0C50</td><td>Trigger A</td><td>00 normal, FF if trigger pressed.</td></tr>
 <tr><td>0C51/2</td><td>Pot A/1, A/2</td><td>One byte for each pot in the joystick.</td></tr>
-<tr><td>0053</td><td>Trigger B</td><td>00 normal, FF if trigger pressed,</td></tr>
+<tr><td>0C53</td><td>Trigger B</td><td>00 normal, FF if trigger pressed,</td></tr>
 <tr><td>0C54/5</td><td>Pot B/1, B/2</td><td>One for each pot of other joystick.</td></tr>
 <tr><td>0C56</td><td>RANGE SETTING</td><td>The value set in this byte controls the</td></tr>
 <tr><td colspan=3>range of the results. For example, if 10 is used, each pot returns
@@ -21,7 +21,7 @@ a number between 01 and 48, approximately. The smaller the number
 0C56 is, the larger the range of the results becomes.</td></tr>
 </table>
 <h2>
-&ldquo;What else is there in this Darkbug&rdquo;
+&ldquo;<u>What else is there in this Darkbug</u>&rdquo;
 </h2>
 <p>
 Quite a lot, is the answer to that question, but a lot of it relates
@@ -34,7 +34,9 @@ effect of replacing all of a given character on the screen with
 another. Just put the character you wish to remove in B and its
 replacement in C, the call this subroutine:
 </p>
+<p class="indent">
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-11-2.png"); ?>
+</p>
 <p>
 Those of you with sharp eyes will have spotted that I have used
 something from INMC News No 2, without which the routine would

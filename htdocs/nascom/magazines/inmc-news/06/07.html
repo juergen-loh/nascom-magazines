@@ -1,10 +1,13 @@
-<?php columnStart(1); ?>
+<?php columnStart(3); ?>
 <h1 id="article1">
-SOFT SPOTS
+<u>SOFT SPOTS</u>
 </h1>
-<h3 class="author">
+<?php columnChange(23); ?>
+<h3 class="author" style="text-align: right">
 By Richard Beal (and others)
 </h3>
+<?php columnEnd(3); ?>
+<?php columnStart(1, "justify"); ?>
 <p>
 This tip presupposes that you are a person who assembles
 machine code in HEX, in memory, and then wants to convert it to DATA
@@ -17,10 +20,10 @@ location in memory (and perhaps try them if possible). Go into BASIC
 (making sure that the free memory space does not overwrite the machine
 code routines). Then use the following command:
 </p>
-<pre>
+<pre class="indent">
 WIDTH 40:FOR A = B TO C STEP 2:PRINT DEEK(A);:NEXT
 </pre>
-<p>
+<p class="noindent">
 Where B is the start address in decimal, and C is the end address. The
 BASIC will print a series of numbers, stopping well short of the right
 hand edge of the screen. Using the Nas-sys edit commands, edit in line
@@ -36,33 +39,33 @@ HL, DE or BC is zero. For example, this could be at the end of a loop
 that was counting down. A version of this in a magazine had the
 following:
 </p>
-<pre>
-    DEC DE
-    LD A, D
-    OR A
-    JR NZ LOOP
-    LD A, E
-    OR A
-    JR NZ LOOP
+<pre class="indent">
+DEC DE
+LD A, D
+OR A
+JR NZ LOOP
+LD A, E
+OR A
+JR NZ LOOP
 </pre>
-<p>
+<p class="noindent">
 It would be a lot easier to put:
 </p>
-<pre>
-    DEC DE
-    LD A, D
-    OR E
-    JR NZ LOOP
+<pre class="indent">
+DEC DE
+LD A, D
+OR E
+JR NZ LOOP
 </pre>
 <p>
 Suppose you want to jump to a certain address in your program,
 and that this address is currently stored in the HL register. You can
-just code;
+just code:
 </p>
-<pre>
-    JP (HL)
+<pre class="indent">
+JP (HL)
 </pre>
-<p>
+<p class="noindent">
 This works very well.
 </p>
 <p>
@@ -70,14 +73,14 @@ Now suppose that you need to have set HL to a certain value
 when the jump is made. The method above is useless because HL can&rsquo;t be
 at two different values at once. So code:
 </p>
-<pre>
-    LD HL, value of HL
-    PUSH HL
-    LD HL, address to jump to
-    EX (SP), HL
-    RET
+<pre class="indent">
+LD HL, value of HL
+PUSH HL
+LD HL, address to jump to
+EX (SP), HL
+RET
 </pre>
-<p>
+<p class="noindent">
 or:
 </p>
 <?php columnEnd(1); ?>

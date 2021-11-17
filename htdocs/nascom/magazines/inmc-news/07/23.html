@@ -1,32 +1,36 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "justify"); ?>
 <h4>
 Nascom&nbsp;2
 </h4>
-<p>
-1) Try the board and see if it runs Basic reliably. If so go to step
+<ol class="paranthese">
+<li>
+Try the board and see if it runs Basic reliably. If so go to step
 3. Don&rsquo;t bother to investigate further unless the board reliabilty
 is suspect.
-</p>
-<p>
-2) Grid the back of the pcb and change the resistors as for Nascom&nbsp;1.
-</p>
-<p>
-3) 1f you want the board to run at 4MHz without &lsquo;WAIT states&rsquo;:
-</p>
-<p>
-a) Cut the clock line from the bus connector, 5, to pin 3
+</li>
+<li>
+Grid the back of the pcb and change the resistors as for Nascom&nbsp;1.
+</li>
+<li>
+If you want the board to run at 4MHz without &lsquo;WAIT states&rsquo;:
+<ol class="sub-lower-alpha-parenthese">
+<li>
+Cut the clock line from the bus connector, 5, to pin 3
 of IC31.
-</p>
-<p>
-b) Connect a wire link from the clock side of the cut
+</li>
+<li>
+Connect a wire link from the clock side of the cut
 track to pin 9 of IC35. Connect a 1K pullup between
 pins 8 and 14 of IC35.
-</p>
-<p>
-c) Connect a wire link from pin 8 of IC35 to pin 9 of
+</li>
+<li>
+Connect a wire link from pin 8 of IC35 to pin 9 of
 IC34. Connect a wire link from pin 8 of IC34 to pin 3
 of IC31.
-</p>
+</li>
+</ol>
+</li>
+</ol>
 <p>
 A number of boards have been fitted with the above, and all
 have behaved perfectly. If you have a board which has been fitted with
@@ -35,7 +39,7 @@ alone. If for some reason you wish to incorporate the above, then
 remove any earlier mods first. All this brings us to another review.
 </p>
 <h2>
-NASCOM RAM&nbsp;B
+<u>NASCOM RAM&nbsp;B</u>
 </h2>
 <p>
 Nascom RAM&nbsp;B is part of the new System 80 and is a RAM card
@@ -55,12 +59,13 @@ of 48K (you can always buy the 16K version and fill the rest up later).
 However, an option pack will be available which when added to the RAM
 gives two important features:
 </p>
-<p>
-1) Selectable &lsquo;WRITE protect&rsquo; on each of the 16K blocks, controlled by
+<ol class="paranthese">
+<li>
+Selectable &lsquo;WRITE protect&rsquo; on each of the 16K blocks, controlled by
 miniature switches mounted on the front of the pcb.
-</p>
-<p>
-2) The ability to turn the RAM on and off under software control in one
+</li>
+<li>
+The ability to turn the RAM on and off under software control in one
 of four &lsquo;fields&rsquo; (or blocks, or whatever) by the use of a port. This
 means that up to four cards could be co-resident at the same
 address, and controlling software could select each as required.
@@ -69,7 +74,8 @@ This gives the Nascom system a total of 208K of addressable memory
 it certainly seems a very clever idea, although we wonder what you
 could do with all that RAM if taken to extremes. Certainly faster
 than disc, but what do you put in it&nbsp;?
-</p>
+</li>
+</ol>
 <p>
 We haven&rsquo;t played with a production version yet, but the
 production prototype worked faultlessly (4MHz and no &lsquo;WAITs&rsquo;). We

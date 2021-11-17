@@ -1,11 +1,11 @@
-<?php columnStart(1); ?>
-<pre>
-    LD HL, address to jump to
-    PUSH HL
-    LD HL, value of HL
-    RET
+<?php columnStart(1, "justify"); ?>
+<pre class="indent">
+LD HL, address to jump to
+PUSH HL
+LD HL, value of HL
+RET
 </pre>
-<p>
+<p class="noindent">
 The second method is the simplest, but often the value of HL is already
 on the stack, making the first method the most commonly used.
 </p>
@@ -13,17 +13,17 @@ on the stack, making the first method the most commonly used.
 Now suppose that you in fact wanted to call the routine, not to
 jump to it as above. In this case the return address can be pushed onto
 the stack in advance. For example:
-<pre>
-    LD HL, value of HL
-    PUSH HL
-    LD HL, return address
-    EX (SP), HL
-    PUSH HL
-    LD HL, address of routine
-    EX (SP), HL
-    RET
+<pre class="indent">
+LD HL, value of HL
+PUSH HL
+LD HL, return address
+EX (SP), HL
+PUSH HL
+LD HL, address of routine
+EX (SP), HL
+RET
 </pre>
-<p>
+<p class="noindent">
 This will call the routine and then return to the specified address.
 The original value of HL has been preserved and passed to the routine.
 </p>
@@ -31,14 +31,14 @@ The original value of HL has been preserved and passed to the routine.
 If the subroutine decides to, it can change its own return
 address, again using:
 </p>
-<pre>
-    EX (SP), HL
+<pre class="indent">
+EX (SP), HL
 </pre>
-<p>
+<p class="noindent">
 However, this is bad programming practice because it destroys the
 structure of CALLs.
 </p>
-<?php hLine("30%"); ?>
+<?php hLine("20%"); ?>
 <p>
 It is bad practice to set the stack pointer except at the start
 of the program where it can be useful for re-initialisation. It is very
@@ -53,7 +53,7 @@ shows that the storing and restoration of registers is noninterruptable
 so they are no better. Will something be done to correct this small
 defect? Maybe!!
 </p>
-<?php hLine("30%"); ?>
+<?php hLine("20%"); ?>
 <p>
 Do you know the correct name for a &lsquo;crash&rsquo;, meaning the loss of
 control by a program resulting in unpredictable changes to memory
@@ -62,7 +62,7 @@ correct name for a &lsquo;crash&rsquo; caused by bad code is a &lsquo;program fa
 sounds more impressive but it its just as annoying!
 </p>
 <h1 id="article1">
-ZEAP in EPROM
+<u>ZEAP in EPROM</u>
 </h1>
 <p>
 A number of people have sent in details of how to put ZEAP into

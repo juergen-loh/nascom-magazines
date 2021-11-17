@@ -1,19 +1,19 @@
 <?php columnStart(1); ?>
-<p>
-If HL = DE, the 2 flag is set, otherwise it is reset.<br>
+<ol class="number-dot" style="margin-top: 0">
+<li style="list-style-type: none; margin-top: 0">
+If HL = DE, the Z flag is set, otherwise it is reset.<br>
 If HL is greater than or equal to DE, the carry flag is
 reset.<br>
 If HL is less than DE, the carry flag is set.
-</p>
 <p>
 And it only takes four bytes!
 </p>
-<p>
-2. Not everyone has realised that the Nascom monitor program
+</li>
+<li>
+Not everyone has realised that the Nascom monitor program
 uses the Z80 restart instructions to provide some useful
 features. Print String is an easy way of putting out
-messages.
-</p>
+messages.<br>
 <pre>
 EF                   RST 28H
 48 45 4C 4C 4F       DEFM /HELLO/
@@ -25,28 +25,28 @@ displayed. Don&rsquo;t forget to put the value 00 at the end
 of the message, or the screen will fill up with the contents
 of the rest of your program!
 </p>
-<p>
-3. Have you wondered about the meaning of the characters
+</li>
+<li>
+Have you wondered about the meaning of the characters
 which hex values 00 to 1F give you on the screen? Each
 one is, in fact, a picture which represents the equivalent
 ASCII code. For example,
 <?php // &#128276; ?>
 <?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-02-1.png"); ?>
 is a bell!
-</p>
-<p>
-4. The breakpoint command uses a restart to stop the program
+</li>
+<li>
+The breakpoint command uses a restart to stop the program
 and display the registers. If you want, you can put the
 same code, E7 in hex, in several places in your program.
 You may find it a good idea to fill any empty space with
 this code, because if you jump to it by mistake, the
 program will stop, and the register display may give you
 some clues.
-</p>
-<p>
-5. In case all this has been too easy, here is a puzzle for
+</li>
+<li>
+In case all this has been too easy, here is a puzzle for
 you.
-</p>
 <pre>
 AF             XOR A           Set A to 0
 06 00          LD B,0          Set B to 0
@@ -62,9 +62,11 @@ makes this work in decimal, so A should be 56 at the end.
 Why isn&rsquo;t it, and how would you correct the program? (No,
 the Z80 doesn&rsquo;t have a fault in it!)
 </p>
-<p>
-6. The original Nascom Software notes suggested jumping to an
-</p>
+</li>
+<li>
+The original Nascom Software notes suggested jumping to an
+</li>
+</ol>
 <p style="text-align: right">
 / .. ..
 </p>
