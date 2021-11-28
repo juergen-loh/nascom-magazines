@@ -1,4 +1,4 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 I have been using Zen for over a year (as well as Zeap), and have
 patched Zen to run on Nas-Sys. It is a very fast assembler with one
@@ -14,7 +14,6 @@ pseudo ops to Zilog/<?php spChar("zwsp"); ?>Mostek standards (DEFB etc). My next
 be to tidy up the error handling, so that it will do the first pass,
 and point all first pass errors. Then (perhaps) a macro facility&nbsp;?
 </p>
-<br>
 <?php hline("20%"); ?>
 <h1 id="article1">
 STOP&nbsp;!... (please?)
@@ -22,14 +21,14 @@ STOP&nbsp;!... (please?)
 <?php columnEnd(1); ?>
 <?php columnStart(3); ?>
 <h2>
-HALT&nbsp;!
+<u class="double">HALT&nbsp;!</u>
 </h2>
 <?php columnChange(23); ?>
 <h3 class="author">
 By Richard Beal
 </h3>
 <?php columnEnd(3); ?>
-<?php columnStart(1); ?>
+<?php columnStart(1, "noindent"); ?>
 <p>
 If you want to halt a program this can be done by including the code 76
 in your program. When this HALT instruction is executed, the program
@@ -65,15 +64,14 @@ first byte, you will find that it will not HALT. The reason is that the
 Execute command in fact Single-steps the first instruction and then
 executes normally. So if the program was:
 </p>
-<p>
+<p class="indent">
 76 .. .. .. it would not HALT
 </p>
 <p>
 But if it was:
 </p>
-<p>
+<p class="indent">
 00 76 .. .. it would HALT.
 </p>
-<br>
 <?php hline("20%"); ?>
 <?php columnEnd(1); ?>

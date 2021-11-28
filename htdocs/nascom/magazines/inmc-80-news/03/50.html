@@ -1,6 +1,8 @@
 <?php columnStart(1); ?>
-<p>
+<p class="noindent">
 A) Drive level interface with routines for&nbsp;&ndash;<br>
+</p>
+<p class="indent">
 Rewinding a cartridge<br>
 Erasing a cartridge<br>
 Pre-marking a cartridge<br>
@@ -8,9 +10,11 @@ Finding a sector<br>
 Reading a sector<br>
 Writing a sector
 </p>
-<p>
+<p class="noindent">
 B) File level interface which sits on top of the drive level interface and offers
 routines for&nbsp;&ndash;<br>
+</p>
+<p class="indent">
 Creating a file<br>
 Erasing a file<br>
 Opening a file<br>
@@ -18,38 +22,53 @@ Writing a sector of a file<br>
 Reading a sector of a file<br>
 Returning the status of a file
 </p>
-<p>
+<p class="noindent">
 C) Operator level interface which sits on top of both the other levels and which
 offers the following commands, augmenting those of Nasbug&nbsp;&ndash;
 </p>
-<p>
-1) Drive level commands
-</p>
-<p>
+<ol class="paranthese indent">
+<li>
+Drive level commands
+<div class="indent">
+<p class="exdent">
 W3 to rewind the cartridge in drive 3
 and initialise the PIO<br>
+</p>
+<p class="exdent">
 V5 to display the catalogue of files
 on the cartridge in drive 5<br>
+</p>
+<p class="exdent">
 P6 1234 to initialise a new cartridge
 in drive 6 as number 1234
 </p>
-<p>
-2) File level commands
-</p>
-<p>
+</div>
+</li>
+<li>
+File level commands
+<div class="indent">
+<p class="exdent">
 R5:PRINTFILE to remove the file PRINTFILE
 from the cartridge in drive 5<br>
+</p>
+<p class="exdent">
 A3:PRINTFILE 12 to add file PRINTFILE,
 12 sectors long, to the cartridge
 in drive 3<br>
+</p>
+<p class="exdent">
 L3: PROGFILE to load the object code
 in file PROGFILE on the cartridge
 in drive 3<br>
+</p>
+<p class="exdent">
 D1:PROGFILE 400 800 to dump the contents
 of memory between 400H and 800H
 to the file PROGFILE on the
 cartridge in drive 1
-</p>
+</div>
+</li>
+</ol>
 <p>
 So what does the tape actually look like when viewed under a magnetic
 microscope, how are the sectors formatted, what does the directory look like, how do I
@@ -57,19 +76,19 @@ fit it all into 1K bytes? Indeed do I? I will refuse to answer here but will try
 draw some morals. (Cor, what a cop-out. Come on lets have a listing of it for the
 library. Ed.)
 </p>
-<p>
-* Make the hardware as simple as possible at first. Software is more flexible and
+<p class="noindent">
+<span style="padding-right: 1em">*</span> Make the hardware as simple as possible at first. Software is more flexible and
 once you know the interface really well it is easy to increase the load on the
 hardware and decrease the software.
 </p>
-<p>
-* Separate the software functions into clearly defined layers, decide whether
+<p class="noindent">
+<span style="padding-right: 1em">*</span> Separate the software functions into clearly defined layers, decide whether
 subroutines will save registers or not (of course they will! Ed.) and start the design
 at the top (what do I want it to do?) and the coding at the bottom (how will I do
 it?).
 </p>
-<p>
-* When you have only 1K bytes of memory do not stick too rigidly to the strict
+<p class="noindent">
+<span style="padding-right: 1em">*</span> When you have only 1K bytes of memory do not stick too rigidly to the strict
 Layering of the design.
 </p>
 <?php columnEnd(1); ?>

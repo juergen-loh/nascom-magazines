@@ -1,36 +1,38 @@
 <?php columnStart(1); ?>
-<p class="noindent">
-&ndash; P99 38 6 ( )<br>
-38 4 39 2 ()<br>
-&ndash; P99 38 8 ( )<br>
-3 13 MREQ 38 9 ( )<br>
-38 10 38 11 ( )<br>
-32 13 MREQ. RFSH 38 12 ( )<br>
-38 13 39 9 ( )<br>
-38 13 39 10 ( )<br>
-39 8 RAS3 ( )
-</p>
-<p>
-4) Connect the new address select pad P99 to the appropriate
-decode pin(s). ( )
-</p>
-<p>
-5) Perform the clock modification as described in INMC newsletter
+<table class="cut-connect">
+<tr><td>&ndash;</td><td>P99</td><td></td><td>38</td><td>6</td><td>( &nbsp; )</td></tr>
+<tr><td>38</td><td>4</td><td></td><td>39</td><td>2</td><td>( &nbsp; )</td></tr>
+<tr><td>&ndash;</td><td>P99</td><td></td><td>38</td><td>8</td><td>( &nbsp; )</td></tr>
+<tr><td>3</td><td>13</td><td>MREQ</td><td>38</td><td>9</td><td>( &nbsp; )</td></tr>
+<tr><td>38</td><td>10</td><td></td><td>38</td><td>11</td><td>( &nbsp; )</td></tr>
+<tr><td>32</td><td>13</td><td>MREQ. RFSH</td><td>38</td><td>12</td><td>( &nbsp; )</td></tr>
+<tr><td>38</td><td>13</td><td></td><td>39</td><td>9</td><td>( &nbsp; )</td></tr>
+<tr><td>38</td><td>13</td><td></td><td>39</td><td>10</td><td>( &nbsp; )</td></tr>
+<tr><td>39</td><td>8</td><td></td><td colspan=2 style="text-align: center">RAS3</td><td>( &nbsp; )</td></tr>
+</table>
+<ol style="counter-reset: section 3" class="paranthese noindent">
+<li>
+Connect the new address select pad P99 to the appropriate
+decode pin(s). <span style="float: right">( &nbsp; )</span>
+</li>
+<li>
+Perform the clock modification as described in INMC newsletter
 No 7. (This delays the column address strobe to the 4116s by
 delaying the clock waveform from NASBUS Pin 5 to IC&nbsp;31 Pin 3
 through 2 inverters).
-</p>
-<p>
-6) Perform the &lsquo;gridding&rsquo; operation described in the NASCOM
+</li>
+<li>
+Perform the &lsquo;gridding&rsquo; operation described in the NASCOM
 construction article.
-</p>
-<p>
-7) These may be necessary but I have managed to do without them:<br>
+</li>
+<li>
+These may be necessary but I have managed to do without them:<br>
 Increase the power supply decoupling in the areas of ICs 40-47
 and at the address multiplexers ICs 20 &amp; 21.<br>
 Increase the values of the series resistors R7-14 to allow for
 the extra capacitance of the added RAM chips.
-</p>
+</li>
+</ol>
 <p>
 The resulting memory should be fast enough to run with the
 processor at 4MHz without a &lsquo;WAIT&rsquo; state. It was in my case.

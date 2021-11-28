@@ -365,7 +365,7 @@ function RemoveEntities($s)
 
 //---------------------------------------------------------------------------
 
-function columnStart($column, $multi/*$class*/ = "", $class = "")
+function columnStart($column, $multi/*$class*/ = "", $class = "", $style = "")
 {
 	if ($class == "") {
 		$class = $multi;
@@ -375,7 +375,7 @@ function columnStart($column, $multi/*$class*/ = "", $class = "")
 				if ($class != "") {
 					echo " class=\"$class\"";
 				}
-				echo ">\n";
+//				echo ">\n";
 				break;
 	case 2:		echo "<!-- 2($multi) columns: start -->";
 				switch ($multi) {
@@ -384,42 +384,50 @@ function columnStart($column, $multi/*$class*/ = "", $class = "")
 					if ($class != "") {
 						echo " $class";
 					}
-					echo "\">\n";
+					echo "\"";
+//					echo ">\n";
 					break;
 				case 22:
 					echo "<div><div"
 					.	" class=\"style-multi-column-2\""
 					.	" style=\"-webkit-column-rule: 2px solid; column-rule: 2px solid\""
-					.	">\n";
+//					.	">\n"
+					;
 					break;
 				case "":
-					echo "<div class=\"row\"><div class=\"col-".BootstrapTier()."-6\">\n";
+					echo "<div class=\"row\"><div class=\"col-".BootstrapTier()."-6\"";
+//					echo ">\n";
 					break;
 				default:
-					echo "<columnStart($column, $multi)>\n";
+					echo "<columnStart($column, $multi)";
+//					echo ">\n";
 					break;
 				}
 				break;
-	case 3:		echo "<!-- 3 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\">\n";			break;
-	case 23:	echo "<!-- 3 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 2/3
-	case 4:		echo "<!-- 4 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3\">\n";			break;
-	case 24:	echo "<!-- 4 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 2/4
-	case 34:	echo "<!-- 4 columns: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 3/4
-	case 6:		echo "<!-- 6 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\">\n";			break;
-	case 46:	echo "<!-- 6 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 4/6
-	case 56:	echo "<!-- 6 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";		break;	// 5/6
-	case 12:	echo "<!-- 12 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-1\">\n";		break;
-	case 212:	echo "<!-- 12 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\">\n";		break;	// 2/12
-	case 412:	echo "<!-- 12 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 5/12
-	case 512:	echo "<!-- 12 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12
-	case 612:	echo "<!-- 12 columns: start 6 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 6/12
-	case 712:	echo "<!-- 12 columns: start 7 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-7\">\n";		break;	// 7/12
-	case 812:	echo "<!-- 12 columns: start 8 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 8/12
-	case 912:	echo "<!-- 12 columns: start 9 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 9/12
-	case 1012:	echo "<!-- 12 columns: start 10 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\">\n";	break;	// 10/12
-	case 1112:	echo "<!-- 12 columns: start 11 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-11\">\n";	break;	// 11/12
+	case 3:		echo "<!-- 3 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;			break;
+	case 23:	echo "<!-- 3 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 2/3
+	case 4:		echo "<!-- 4 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3\""/*"!>\n"*/;			break;
+	case 24:	echo "<!-- 4 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 2/4
+	case 34:	echo "<!-- 4 columns: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\""/*"!>\n"*/;		break;	// 3/4
+	case 6:		echo "<!-- 6 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\""/*"!>\n"*/;			break;
+	case 46:	echo "<!-- 6 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 4/6
+	case 56:	echo "<!-- 6 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;		break;	// 5/6
+	case 12:	echo "<!-- 12 columns: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-1\""/*"!>\n"*/;		break;
+	case 212:	echo "<!-- 12 columns: start 2 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-2\""/*"!>\n"*/;		break;	// 2/12
+	case 412:	echo "<!-- 12 columns: start 4 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;		break;	// 5/12
+	case 512:	echo "<!-- 12 columns: start 5 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-5\""/*"!>\n"*/;		break;	// 5/12
+	case 612:	echo "<!-- 12 columns: start 6 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 6/12
+	case 712:	echo "<!-- 12 columns: start 7 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-7\""/*"!>\n"*/;		break;	// 7/12
+	case 812:	echo "<!-- 12 columns: start 8 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 8/12
+	case 912:	echo "<!-- 12 columns: start 9 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9\""/*"!>\n"*/;		break;	// 9/12
+	case 1012:	echo "<!-- 12 columns: start 10 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;	break;	// 10/12
+	case 1112:	echo "<!-- 12 columns: start 11 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-11\""/*"!>\n"*/;	break;	// 11/12
 	default:	echo "<columnStart($column)>\n";																		break;
 	}
+	if ($style != "") {
+		echo " style=\"$style\"";
+	}
+	echo ">\n";
 }
 
 function columnStartReverse($column)
@@ -441,34 +449,38 @@ function columnChangeReverse($column)
 	}
 }
 
-function columnChange($column)
+function columnChange($column, $class = "", $style = "")
 {
 	switch ($column) {
-	case 2:		echo "<!-- 2 columns: change --></div><div class=\"col-".BootstrapTier()."-6\">\n";			break;
+	case 2:		echo "<!-- 2 columns: change --></div><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;			break;
 	case 22:	echo "<!-- 2(2) columns: change -->\n";														break;	// multi
-	case 3:		echo "<!-- 3 columns: change --></div><div class=\"col-".BootstrapTier()."-4\">\n";			break;
-	case 23:	echo "<!-- 3 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 2/3
-	case 4:		echo "<!-- 4 columns: change --></div><div class=\"col-".BootstrapTier()."-3\">\n";			break;
-	case 24:	echo "<!-- 4 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 2/4
-	case 34:	echo "<!-- 4 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 3/4
-	case 6:		echo "<!-- 6 columns: change --></div><div class=\"col-".BootstrapTier()."-2\">\n";			break;
-	case 26:	echo "<!-- 6 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 2/6
-	case 36:	echo "<!-- 6 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 3/6
-	case 46:	echo "<!-- 6 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 4/6
-	case 56:	echo "<!-- 6 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-10\">\n";		break;
-	case 12:	echo "<!-- 12 columns: change --></div><div class=\"col-".BootstrapTier()."-1\">\n";		break;
-	case 212:	echo "<!-- 12 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-2\">\n";		break;	// 3/12
-	case 312:	echo "<!-- 12 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-3\">\n";		break;	// 3/12
-	case 412:	echo "<!-- 12 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-4\">\n";		break;	// 4/12
-	case 512:	echo "<!-- 12 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-5\">\n";		break;	// 5/12
-	case 612:	echo "<!-- 12 columns: change 6 --></div><div class=\"col-".BootstrapTier()."-6\">\n";		break;	// 6/12
-	case 712:	echo "<!-- 12 columns: change 7 --></div><div class=\"col-".BootstrapTier()."-7\">\n";		break;	// 7/12
-	case 812:	echo "<!-- 12 columns: change 8 --></div><div class=\"col-".BootstrapTier()."-8\">\n";		break;	// 8/12
-	case 912:	echo "<!-- 12 columns: change 9 --></div><div class=\"col-".BootstrapTier()."-9\">\n";		break;	// 7/12
-	case 1012:	echo "<!-- 12 columns: change 10 --></div><div class=\"col-".BootstrapTier()."-10\">\n";	break;	// 10/12
-	case 1112:	echo "<!-- 12 columns: change 11 --></div><div class=\"col-".BootstrapTier()."-11\">\n";	break;	// 11/12
+	case 3:		echo "<!-- 3 columns: change --></div><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;			break;
+	case 23:	echo "<!-- 3 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 2/3
+	case 4:		echo "<!-- 4 columns: change --></div><div class=\"col-".BootstrapTier()."-3\""/*"!>\n"*/;			break;
+	case 24:	echo "<!-- 4 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 2/4
+	case 34:	echo "<!-- 4 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-9\""/*"!>\n"*/;		break;	// 3/4
+	case 6:		echo "<!-- 6 columns: change --></div><div class=\"col-".BootstrapTier()."-2\""/*"!>\n"*/;			break;
+	case 26:	echo "<!-- 6 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;		break;	// 2/6
+	case 36:	echo "<!-- 6 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 3/6
+	case 46:	echo "<!-- 6 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 4/6
+	case 56:	echo "<!-- 6 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;		break;
+	case 12:	echo "<!-- 12 columns: change --></div><div class=\"col-".BootstrapTier()."-1\""/*"!>\n"*/;		break;
+	case 212:	echo "<!-- 12 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-2\""/*"!>\n"*/;		break;	// 3/12
+	case 312:	echo "<!-- 12 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-3\""/*"!>\n"*/;		break;	// 3/12
+	case 412:	echo "<!-- 12 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;		break;	// 4/12
+	case 512:	echo "<!-- 12 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-5\""/*"!>\n"*/;		break;	// 5/12
+	case 612:	echo "<!-- 12 columns: change 6 --></div><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 6/12
+	case 712:	echo "<!-- 12 columns: change 7 --></div><div class=\"col-".BootstrapTier()."-7\""/*"!>\n"*/;		break;	// 7/12
+	case 812:	echo "<!-- 12 columns: change 8 --></div><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 8/12
+	case 912:	echo "<!-- 12 columns: change 9 --></div><div class=\"col-".BootstrapTier()."-9\""/*"!>\n"*/;		break;	// 7/12
+	case 1012:	echo "<!-- 12 columns: change 10 --></div><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;	break;	// 10/12
+	case 1112:	echo "<!-- 12 columns: change 11 --></div><div class=\"col-".BootstrapTier()."-11\""/*"!>\n"*/;	break;	// 11/12
 	default:	echo "<columnChange($column)>\n";																		break;
 	}
+	if ($style != "") {
+		echo " style=\"$style\"";
+	}
+	echo ">\n";
 }
 
 function columnEnd($column)
