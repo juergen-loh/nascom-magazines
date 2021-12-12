@@ -27,7 +27,7 @@
 	,	"Corn Corner (a cereal)"
 	,	"Cresby"
 	,	""
-	,	2
+	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"ScreenCopy<br>"

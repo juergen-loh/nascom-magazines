@@ -31,13 +31,15 @@
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
 <p>
-	Timeline of magazines, taken from Richard Espley&rsquo;s site <a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:<br>
+	Timeline of magazines, taken from Richard Espley&rsquo;s site
+	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:<br>
 	<a href="https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm" target="_blank">
-		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif" width="558" height="132" title="Timeline">
+		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif"
+			width="558" height="132" title="Timeline">
 	</a>
 </p>
 <p>
-	There is also an <a href="../">overall table of contents</a> of Nascom magazines
+	There is an <a href="../">overall table of contents</a> of English Nascom magazines
 	and another <a href="../../journal/text/">overall table of contents</a> of
 	<a href="../../">German Nascom publications</a>.
 </p>

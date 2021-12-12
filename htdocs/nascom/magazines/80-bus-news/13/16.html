@@ -1,6 +1,6 @@
 <?php columnStart(1, "noindent"); ?>
 <h2>
-The Arfon light pen (If you can still get it)
+<u class="double">The Arfon light pen (If you can still get it)</u>
 </h2>
 <p>
 The Arfon light pen is housed in a black anodised aluminium cylinder about 18cm
@@ -17,7 +17,7 @@ The output of the photo-diode is amplified and limited to produce a TTL compatib
 STROBE signal. The switch is debounced and produces a TTL compatible ENABLE signal.
 </p>
 <h2>
-Using the light pen
+<u class="double">Using the light pen</u>
 </h2>
 <p>
 I have used the light pen in conjunction with the Gemini IVC and shall thus
@@ -37,23 +37,23 @@ strobe width of 6us is 12 characters in the 80-wide mode, and nearly half that i
 the 48-wide mode).
 </p>
 <h2>
-The IVC software &ndash; ESC P
+<u class="double">The IVC software &ndash; ESC P</u>
 </h2>
 <p>
 The video card supports the ESC P command for returning the coordinates of the
 light pen. At the time the IVC software was written no light pen was available to
 try with it, and so the function only performs the simple operations as follows:&ndash;
 </p>
-<p>
-i) Wait until the light pen switch is found to be operated.<br>
-ii) Wait one TV frame.<br>
-iii) Read the light pen register in the CRT controller.<br>
-iv) Adjust the address to account for IVC hardware delays.<br>
-v) Test for a valid screen address.<br>
-vi) If the address is not valid then go to i).<br>
-vii) Convert the address to equivalent Row/Column coordinates.<br>
-viii) Return the coordinates to the host system.
-</p>
+<table class="lightpen-ivc">
+<tr><td>i)</td><td>Wait until the light pen switch is found to be operated.</td></tr>
+<tr><td>ii)</td><td>Wait one TV frame.</td></tr>
+<tr><td>iii)</td><td>Read the light pen register in the CRT controller.</td></tr>
+<tr><td>iv)</td><td>Adjust the address to account for IVC hardware delays.</td></tr>
+<tr><td>v)</td><td>Test for a valid screen address.</td></tr>
+<tr><td>vi)</td><td>If the address is not valid then go to i).</td></tr>
+<tr><td>vii)</td><td>Convert the address to equivalent Row/Column coordinates.</td></tr>
+<tr><td>viii)</td><td>Return the coordinates to the host system.</td></tr>
+</table>
 <p>
 This performs the basic function required by a controlling program, but to get the
 best out of it a little more support is required. This is illustrated in the

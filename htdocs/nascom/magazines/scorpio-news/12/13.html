@@ -21,7 +21,7 @@ can receive and transmit at different baud rates (1200/75). Under the set up
 above, we have the receive and transmit clocks for SIO channel A tied to the
 same channel of the CTC (LB1/17 - LB1/5+6), so we can&rsquo;t manage just as we are
 presently linked. We have spare CTC channel 2, and we could use channels 1 and
-2 to provide 1200 baud and 75 baud clocks, and channel 2 to feed the second SIO
+2 to provide 1200&nbsp;baud and 75&nbsp;baud clocks, and channel 2 to feed the second SIO
 channel. First of all, we must remake the links a follows:
 </p>
 <table style="width: 100%">
@@ -33,7 +33,7 @@ channel. First of all, we must remake the links a follows:
 (These are as taken from my system Work. them out carefully &ndash; you may not need
 them all!). If we feed CTC channels 0 and 1 from the same clock (2MHz external)
 can we get the baud rates required? We have already done the calculation for
-the 1200 baud and know that 104 is the divisor. How about 75 baud?
+the 1200&nbsp;baud and know that 104 is the divisor. How about 75&nbsp;baud?
 </p>
 <table class="center" style="width: 60%">
 <tr><td></td><td>2000000</td><td></td></tr>
@@ -44,13 +44,13 @@ the 1200 baud and know that 104 is the divisor. How about 75 baud?
 We can&rsquo;t fit that into one byte. Even using 64* mode on our SIO, we can&rsquo;t do
 it. If we went to a 1&nbsp;MHz clock, we can just manage. Unfortunately, I like to
 drive printers very fast, and for computer/<?php spChar("zwsp"); ?>computer links, with no modems, I
-like 9600 baud. If we use 1&nbsp;MHz clock, I can&rsquo;t get 9600 baud. Is there another
+like 9600&nbsp;baud. If we use 1&nbsp;MHz clock, I can&rsquo;t get 9600&nbsp;baud. Is there another
 way?
 </p>
 <p>
-Suppose we consider using the timer mode and consider first the 1200/75 baud
+Suppose we consider using the timer mode and consider first the 1200/75&nbsp;baud
 problem. If we divide the system clock (4Mhz) by 256 in the prescaler, could we
-get the 75 baud we need? Let&rsquo;s try:
+get the 75&nbsp;baud we need? Let&rsquo;s try:
 </p>
 <table class="center" style="width: 60%">
 <tr><td></td><td>4000000</td><td></td></tr>
@@ -58,7 +58,7 @@ get the 75 baud we need? Let&rsquo;s try:
 <tr><td></td><td>75*16*256</td><td></td></tr>
 </table>
 <p>
-Lovely! Now we try for the 1200 baud. Immediately we realise that we&rsquo;ll have
+Lovely! Now we try for the 1200&nbsp;baud. Immediately we realise that we&rsquo;ll have
 to use the /16 prescaler rather than the [/256
 </p>
 <table class="center" style="width: 60%">
@@ -67,7 +67,7 @@ to use the /16 prescaler rather than the [/256
 <tr><td></td><td>1200*16*16</td><td></td></tr>
 </table>
 <p>
-No problems here! How about 9600 baud?
+No problems here! How about 9600&nbsp;baud?
 </p>
 <table class="center" style="width: 60%">
 <tr><td></td><td>4000000</td><td></td></tr>
@@ -75,10 +75,10 @@ No problems here! How about 9600 baud?
 <tr><td></td><td>9600*16*16</td><td></td></tr>
 </table>
 <p>
-So that won&rsquo;t work for 9600 baud. We are in the position that we can get
-1200/75 baud clocks by using the divider mode of the CTC, but can&rsquo;t get 9600
-baud. If we apply a 2&nbsp;MHz external clock, we can get 9600 baud clock, and
-slower, but not 75 baud. What do we do? We set up the links as above,
+So that won&rsquo;t work for 9600&nbsp;baud. We are in the position that we can get
+1200/75&nbsp;baud clocks by using the divider mode of the CTC, but can&rsquo;t get 9600
+baud. If we apply a 2&nbsp;MHz external clock, we can get 9600&nbsp;baud clock, and
+slower, but not 75&nbsp;baud. What do we do? We set up the links as above,
 supplying a 2&nbsp;MHz clock to the CLK/TRG pins of the appropriate channels, and
 </p>
 <?php columnEnd(1); ?>

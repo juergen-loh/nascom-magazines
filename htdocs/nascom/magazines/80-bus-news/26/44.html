@@ -1,6 +1,6 @@
 <?php columnStart(1); ?>
 <p class="noindent">
-1) A few words telling me what to expect (e.g. Naspen file &permil; 1200 baud, or
+1) A few words telling me what to expect (e.g. Naspen file &permil; 1200&nbsp;baud, or
 48tpi Poly-Dos disk). and
 </p>
 <p class="noindent">
@@ -22,13 +22,18 @@ interference patterns that are noticeable when using large areas of inverse
 video).
 </p>
 <p>
-The IVC output stage is shown in Fig 1. It consists of an emitter
+The IVC output stage is shown in Fig&nbsp;1. It consists of an emitter
 follower driven by the video signal from IC3a (via R5), and the mixed syncs
-from IC5f (via R1). The ideal output waveform is shown in Fig 2. This consists
+from IC5f (via R1). The ideal output waveform is shown in Fig&nbsp;2. This consists
 of a three level signal whose peak-to-peak amplitude is 1V (when driving into
 a 75 ohm load). The three levels of the signal are white, black, and sync, and
+<span style="float: left; margin: 1em; margin-left: 0">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-1.png"); ?>
+<br>
+<b>Fig&nbsp;1</b>
+</span>
 their relative amplitudes are also given
-in Fig 2. Assuming a perfect emitter
+in Fig&nbsp;2. Assuming a perfect emitter
 follower with an output impedance of 75
 ohms, we want to aim for a 2v p-p signal
 at the base of the transistor. I started
@@ -43,6 +48,11 @@ of IC5f is high (no sync signal). Finally for the &lsquo;Sync&rsquo; level the o
 both IC3a and IC5f are low. Armed with this information it is only a case of
 applying Ohm&rsquo;s Law and Kirchoff&rsquo;s Law to the circuit...or is it? One problem
 is that the high level output voltage from a TTL gate is not very well
+<span style="float: left; margin: 1em; margin-left: 0">
+<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-2.png"); ?>
+<br>
+<b>Fig&nbsp;2</b>
+</span>
 defined, and it also has an appreciable
 output impedance. With the ICs fitted to
 my card the high level seemed to be
@@ -54,21 +64,9 @@ then left me with two unknowns, and two
 equations (for the Black level and the
 Sync level). The result of the
 calculations (followed by a small adjustment after an actual trial) is shown
-in Fig 2. (Compare the values against those of the IVC circuit diagram). These
+in Fig&nbsp;2. (Compare the values against those of the IVC circuit diagram). These
 values resulted in a reasonable video signal driving out from the card.
 </p>
-<table><tr><td class="center">
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-1.png"); ?>
-<h4>
-Fig 1
-</h4>
-</td></tr></table>
-<table><tr><td class="center">
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-44-2.png"); ?>
-<h4>
-Fig 2
-</h4>
-</td></tr></table>
 <p>
 One other small change I would recommend, especially if you use inverse
 video or occasionally have large white areas on your screen, is to short out

@@ -18,7 +18,7 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Corn Corners"
+	,	"Corn Corner"
 	,	"Cresby"
 	,	""
 	,	3

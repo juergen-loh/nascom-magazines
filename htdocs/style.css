@@ -64,7 +64,9 @@ u.double
 h1 u,
 h2 u,
 h3 u,
-h4 u
+h4 u,
+th u,
+.graphpack h3 span
 {
 	text-decoration: unset;
 	border-bottom: solid thin;
@@ -444,7 +446,8 @@ ul
 	margin-bottom: 12px;
 }
 
-ul.style-ul-nowrap > li
+ul.style-ul-nowrap > li,
+div.style-div-nowrap
 {
 	page-break-inside: avoid;                 /* Firefox */
 	column-break-inside: avoid;               /* Chrome, Opera, Safari */
@@ -527,6 +530,66 @@ ol.lower-alpha-parentheses li:before
 }
 
 ol.lower-alpha-parentheses li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.lower-alpha-parenthese
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.lower-alpha-parenthese li:before
+{
+	content: counter(section, lower-alpha) ") ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.lower-alpha-parenthese li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.lower-alpha-dot
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.lower-alpha-dot li:before
+{
+	content: counter(section, lower-alpha) ". ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.lower-alpha-dot li
 {
 	counter-increment: section;
 	margin-left: 3em;

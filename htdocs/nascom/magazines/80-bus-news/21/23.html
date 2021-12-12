@@ -12,15 +12,15 @@ address of the CBIOS. (0EE00H in this case).
 will vary with system size.)
 </p>
 <p class="center">
--------------*****-------------
+&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;*****&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;
 </p>
-<h3>
-The System Track on the Disk.
-</h3>
+<h2>
+<u>The System Track on the Disk.</u>
+</h2>
 <?php imageCenter($imagepath, $magpath, $issuepath, $pagepath, "Image-23-1.png"); ?>
-<h4>
+<h3>
 <u>Figure 2. System Track Layout</u>
-</h4>
+</h3>
 <p>
 Fig.2 shows diagramatically how CP/M relates to the Disk. The GEMINI DS/DD system
 uses Tracks of 10 sectors on each side of the disk. The tracks of side 0 and side
@@ -28,12 +28,12 @@ uses Tracks of 10 sectors on each side of the disk. The tracks of side 0 and sid
 data so the total capacity of one track is 10K bytes. There are 35 tracks,
 numbered from 0 to 34, so disk capacity is 350K. Track 0 is reserved for the CP/M
 system, and eight sectors (4K) of track 1 are reserved for the Directory. This
-leaves 336K for user programs. Fig. 2 shows that sector 0 of the system track
+leaves 336K for user programs. Fig.&nbsp;2 shows that sector 0 of the system track
 holds the COLD BOOT LOADER. The CCP is in sectors 1-4, and the BDOS in sectors
 5-11. This leaves a maximum of 8 sectors for the CBIOS. (4K)
 </p>
 <p>
-A look at the RAM MAP in Fig. 3 shows that CBIOS space is available from 0EE00H
+A look at the RAM MAP in Fig.&nbsp;3 shows that CBIOS space is available from 0EE00H
 to 0FFFFH, equal to 4.5K. When I assemble SYS the final size is around 4.5K
 including workspaces and buffers (and also includes nearly 400 bytes for code
 expansion). There is enough of room in RAM for SYS CBIOS but there is a shortfall

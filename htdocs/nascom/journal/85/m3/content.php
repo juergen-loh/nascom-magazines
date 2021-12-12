@@ -156,7 +156,7 @@
 	,	9
 	);
 	trJournal($path, $tail, $magazine
-	,	"Betrifft 256 K RAM"
+	,	"Betrifft 256&nbsp;K RAM"
 	,	"Dieter Hornburger"
 	,	"Hardware"
 	,	1985

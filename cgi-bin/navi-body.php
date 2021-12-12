@@ -1113,6 +1113,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "dBASE II":				$url = "https://de.wikipedia.org/wiki/DBASE#dBASE_II";							break;
 	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://de.wikipedia.org/wiki/VT180";									break;
+	case "Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
 	case "ECB 85":					$url = "http://www.hknebel.org/Museum/Tragbare_PCs/Vorlaufer/ECB_85/ecb_85.htm";	break;
 	case "ECB":						$url = "https://de.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
 	case "SANYO DM8112CX":			$url = "https://www.flickr.com/photos/23826245@N00/2259904187";					break;
@@ -1168,8 +1169,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Karlheinz":				$url = "https://www.o49-werl.de/component/contact/contact/12-kontakte/12?Itemid=301";	break;
 	case "Kilobaud Microcomputing Magazine (February 1981)":	$url =  "https://archive.org/details/kilobaudmagazine-1981-02";	break;
 	case "Kilobaud Microcomputing Magazine (March 1981)":		$url =  "https://archive.org/details/kilobaudmagazine-1981-03";	break;
-	case "Kommentar von Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
 	case "Kontron":					$url = "https://www.kontron.com/de";											break;
+	case "Kontron Z80-KIT":			$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Kornkraft Genossenschaft":$url = "http://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://de.wikipedia.org/wiki/Lichtgriffel";							break;
