@@ -28,14 +28,14 @@ then write at the same rate as the read.
 If I understand the drive manual correctly, it appears that the sequence the drive
 goes through is:&ndash;
 </p>
-<p>
-(a) motor starts<br>
-(b) head load<br>
-(c) 2 index pulses sensed and READY (pin 34) enabled, (But drive may still not
-	be up to speed.)<br>
-(d) fine stepper centres head on track and READY/<?php spChar("zwsp"); ?>SEEK COMPLETE (pin 4)
-	is enabled
-</p>
+<ol class="lower-alpha-parentheses">
+<li>motor starts</li>
+<li>head load</li>
+<li>2 index pulses sensed and READY (pin 34) enabled, (But drive may still not
+	be up to speed.)</li>
+<li>fine stepper centres head on track and READY/<?php spChar("zwsp"); ?>SEEK COMPLETE (pin 4)
+	is enabled</li>
+</ol>
 <p>
 I suspect that Michael Hendry&rsquo;s Bios is writing to a disk-as soon as READY is
 active. This means that he may be attempting to write to disk while the heads are
