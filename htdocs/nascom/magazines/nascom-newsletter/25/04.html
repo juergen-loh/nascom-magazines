@@ -38,30 +38,30 @@ The next part is fundamental to the program. The print-out
 routine. Call it PRDIS, print the disassembled string. I will
 define it, but you can write it.
 </p>
-<dl>
-<dt>
-(1)</dt><dd>No registers or variables may be altered (corrupted). You
+<ol class="paranthese indent">
+<li>
+No registers or variables may be altered (corrupted). You
 must save them first (stack?) and restore them later
-</dd>
-<dt>
-(2)</dt><dd>The routine is a subroutine, and as such must end with a
+</li>
+<li>
+The routine is a subroutine, and as such must end with a
 &pound;09 RET instruction.
-</dd>
-<dt>
-(3)</dt><dd>Every INDIS in STRDIS is to be output as HL, IX+d or IY+d.
+</li>
+<li>
+Every INDIS in STRDIS is to be output as HL, IX+d or IY+d.
 Where dis the displacement (BCSAVE is used here). INDEX
 will hold 0, 1 or 2 respectively.
-</dd>
-<dt>
-(4)</dt><dd>For every IND, print HL, IX or IY, depending on the
+</li>
+<li>
+For every IND, print HL, IX or IY, depending on the
 contents of INDEX, as in (3)
-</dd>
-<dt>
-(5)</dt><dd>If you wish you can print the contents of BCSAVE, this
+</li>
+<li>
+If you wish you can print the contents of BCSAVE, this
 will tell you which location in memory the instruction
 came from. Nas-Sys is helpful here.
-</dd>
-</dl>
+</li>
+</ol>
 <p>
 Check your subroutine with dummy data to test it.
 </p>
