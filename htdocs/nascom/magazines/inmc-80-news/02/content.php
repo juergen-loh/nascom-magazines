@@ -28,12 +28,14 @@
 	,	"David Lorde"
 	,	"Assembler"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Vector Graphics in BASIC modifications"
 	,	"K. Kishimoto"
 	,	"Basic"
 	,	6
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Reserved Word print"
@@ -112,6 +114,7 @@
 	,	"M.D. Hendry"
 	,	"Basic"
 	,	37
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Integer Pascal review"
@@ -148,12 +151,14 @@
 	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	46
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Z80 and 8080 Assemble Language Programming &ndash; Review"
-	,	""
+	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	47
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"BASIC &ndash; A comparative review of two toolkits for Nascom"
@@ -172,6 +177,7 @@
 	,	"A.D. Mathison"
 	,	"Review"
 	,	52
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Simplified Modular Prose machine code listing"
@@ -179,13 +185,13 @@
 	,	""
 	,	56
 	);
-	trMagazine($magazine, $issue, $number, $name, $offset, $path
+/*	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Simplified Modular Prose"
 	,	""
 	,	"Assembler"
 	,	56
 	);
-	trMagazine($magazine, $issue, $number, $name, $offset, $path
+*/	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Space Invaders machine code listing (designed to run at 2MHz)"
 	,	""
 	,	"Assembler"

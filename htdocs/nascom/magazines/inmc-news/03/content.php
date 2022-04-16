@@ -18,15 +18,16 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"System compatibilities"
-	,	"J. Griffiths"
+	,	"Letters to the editor"
+	,	""
 	,	""
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Letters to the editor"
+	,	"System compatibilities"
+	,	"J. Griffiths"
 	,	""
-	,	""
+	,	2
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
@@ -78,6 +79,7 @@
 	,	"Richard Beal"
 	,	"Software"
 	,	16
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Library catalogue &ndash; Nice fresh programs<br>"
@@ -122,6 +124,7 @@
 	,	""
 	,	"Lawrence"
 	,	26
+	,	2
 	);
 ?>
 <!-- /inmc-news/03/content.php -->

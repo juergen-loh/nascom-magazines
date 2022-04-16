@@ -27,7 +27,7 @@ cycle only, and this forced condition must be released before the next instructi
 cycle. What happens is that on &lsquo;reset&rsquo;, the top four address lines go to 0H (as
 usual), but because of the action of the &lsquo;reset multiplexer&rsquo;, the top four address
 lines are modified to the required address. This condition remains true, commencing at
-the first Ml cycle following the &lsquo;reset&rsquo;, and termiantes on the next following Ml
+the first M1 cycle following the &lsquo;reset&rsquo;, and termiantes on the next following M1
 cycle.
 </p>
 <p>
@@ -36,7 +36,7 @@ encountered at the multiplexed address must be an absolute unconditional jump (C
 to the next instruction. This will force the next instruction address into the program
 counter, and from then on operation will continue normally, and the effect of the
 &lsquo;reset multiplexer&rsquo; can be removed. For example, we wish to &ldquo;reset jump&rdquo; to F000H, and
-then continue the program from that address. On &lsquo;reset&rsquo;, an Ml cycle is put out by the
+then continue the program from that address. On &lsquo;reset&rsquo;, an M1 cycle is put out by the
 Z80, and an op-code fetch occurs. The Z80 address bus is set to 0000H, but due to the
 action of the multiplexer, the op-code is fetched from address F000H. This op-code
 must be an immediate jump instruction, and for sake of argument, we will make this an
@@ -50,8 +50,8 @@ F003  XX          Next instruction
 as the op-code will be translated by the Z80 as an absolute jump, the next two bytes
 will be fetched, advancing the program counter to 0003H, and the multiplexed address
 to F003H. Having fetched the byte at F002H, the address F003H will be placed in the
-program counter. The Z80 will then put out another Ml cycle to fetch the next op-code,
-this time from F003H. The falling edge of the Ml cycle will cancel the &lsquo;reset
+program counter. The Z80 will then put out another M1 cycle to fetch the next op-code,
+this time from F003H. The falling edge of the M1 cycle will cancel the &lsquo;reset
 multiplexer&rsquo; and the address bus will carry the next address put out by the Z80, which
 will be F003H as required.
 </p>
@@ -65,7 +65,7 @@ space on the buffer board, and this is ideal area for building a small &lsquo;pi
 reset multiplexer&rsquo;.
 </p>
 <p>
-The four top address lines, Ml and RFSH all pass through IC3 on the buffer
+The four top address lines, M1 and RFSH all pass through IC3 on the buffer
 board on their way to NASBUS, so by removing this IC and moving it to the &lsquo;reset
 multiplexer&rsquo; board, we have an ideal connector point for the &lsquo;reset multiplexer&rsquo; board
 via a 16 way cable and header plug. Only one minor modification is required to the

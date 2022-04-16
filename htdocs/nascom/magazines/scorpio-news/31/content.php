@@ -16,6 +16,7 @@
 	,	"P.A. Greenhalgh"
 	,	""
 	,	2
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Letters to the Editor"

@@ -24,15 +24,24 @@
 	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"HiSoft Pascal"
+	,	"P.Holy"
+	,	"Software"
+	,	4
+	,	2
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Bits and P.C.s Toolkit keyboard speed change"
 	,	"A. Sircombe"
 	,	""
 	,	4
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Conversion of Life from Nasbug to NAS-SYS error"
 	,	"W.H.T."
 	,	"Assembler"
+	,	4
 	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
@@ -82,12 +91,14 @@
 	,	""
 	,	"Assembler"
 	,	13
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"A byte change to get Bits and Pieces Toolkit to work with NAS-SYS&nbsp;3"
 	,	""
 	,	"Assembler"
 	,	13
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Converting EPROM Naspen to work with altered screen addressing"
@@ -100,12 +111,14 @@
 	,	""
 	,	"Assembler"
 	,	15
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Liverpool Software Gazette closes"
 	,	""
 	,	""
 	,	15
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Pilot &ndash; update on progress"
@@ -118,6 +131,7 @@
 	,	""
 	,	"Review"
 	,	16
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Realtime Clock &amp; Calendar using MM58174 on Nasbus with ZEAP source"

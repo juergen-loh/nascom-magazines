@@ -88,6 +88,7 @@
 	,	"J. Hunt"
 	,	"Pascal"
 	,	43
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom BASIC cross-reference listing to check variables in a program"

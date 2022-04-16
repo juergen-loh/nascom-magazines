@@ -77,6 +77,7 @@
 	,	""
 	,	""
 	,	14
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"William Stuart Colour Graphics review"
@@ -102,6 +103,7 @@
 	,	""
 	,	""
 	,	17
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"BASIC Extra and Memory Mapping update"
@@ -114,12 +116,14 @@
 	,	""
 	,	""
 	,	18
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Memory Mapping"
 	,	""
 	,	""
 	,	18
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"ZEAP 2&#x2e;0 bug cures and modifications"
@@ -144,6 +148,7 @@
 	,	""
 	,	"Review"
 	,	23
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Using 4118 RAM in 2708 EPROM sockets"
@@ -156,6 +161,7 @@
 	,	"F. Whitby"
 	,	""
 	,	24
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Moonlanding"

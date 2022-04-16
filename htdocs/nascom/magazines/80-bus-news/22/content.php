@@ -28,6 +28,7 @@
 	,	"R. Dowling"
 	,	"Hardware"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"CP&#x2f;M correction to item in 80-Bus News 1&#x2f;2 about PEN"
@@ -130,6 +131,7 @@
 	,	""
 	,	"Assembler"
 	,	48
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Super Diskpen &ndash; new feature"

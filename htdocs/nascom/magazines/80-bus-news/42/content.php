@@ -22,6 +22,7 @@
 	,	"P.D. Coker"
 	,	"Basic"
 	,	11
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"A brief guide to MailMerge"
@@ -40,12 +41,14 @@
 	,	"David Hunt"
 	,	"Review"
 	,	21
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini BIOS 3&#x2e;2 review"
 	,	"David Hunt"
 	,	"Review"
 	,	25
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Random Rumours (&amp; Truths?)"

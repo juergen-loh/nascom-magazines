@@ -10,7 +10,7 @@
 ?>
 
 <p>
-	The table of contents is based on a work of
+	This table of contents is based on a work of
 	<?php externalLink("Mike Strange"); ?>
 	who collected an overall
 	<?php echo "\t<a href=\"$gHtmlRoot/nascom/magazines/Nascom%20Magazine%20Index.xls\">table of contents</a>\n"; ?>

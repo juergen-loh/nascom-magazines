@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"The French Connection<br>"
@@ -88,12 +89,14 @@
 	,	"Carl Whalley"
 	,	"Basic"
 	,	36
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nasprint modification for ZEAP"
 	,	"Steve Stubbs"
 	,	"Assembler"
 	,	36
+	,	4
 	);
 ?>
 <!-- /micropower/23/content.php -->

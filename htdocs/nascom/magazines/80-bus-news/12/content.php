@@ -30,6 +30,7 @@
 	.	"Rory O&rsquo;Farrell"
 	,	"Pascal"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Case lock with Naspen 1 under CP&#x2f;M 2&#x2e;2"
@@ -48,6 +49,7 @@
 	,	"Michael D&rsquo;Arcy"
 	,	"Basic"
 	,	7
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"EPROM eraser idea"
@@ -66,6 +68,7 @@
 	,	"D.G. Richards"
 	,	""
 	,	8
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"INPUTting and READing Double Precision Constants"
@@ -103,6 +106,7 @@
 	.	"D.R. Hunt"
 	,	""
 	,	15
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"More about Amateur Radio and Non-disks"
@@ -153,10 +157,10 @@
 	.	"with new reserved word list"
 	,	"David J. Plews"
 	,	"Review"
-	,	46
+	,	45
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Radom Rumour (&amp; Truths)"
+	,	"Random Rumour (&amp; Truths)"
 	,	"S. Monger"
 	,	""
 	,	48

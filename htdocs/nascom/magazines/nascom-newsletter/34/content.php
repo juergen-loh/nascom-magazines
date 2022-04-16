@@ -47,6 +47,7 @@
 	,	"Cresby"
 	,	"Review"
 	,	22
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Letters"
@@ -76,7 +77,7 @@
 	,	"News From Lucas Nascom"
 	,	"Mike Hessey"
 	,	""
-	,	31
+	,	30
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Introducing the Winchester Disc"
@@ -89,6 +90,7 @@
 	,	"Mike Hessey"
 	,	""
 	,	31
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-NET news"
@@ -107,6 +109,7 @@
 	,	"Mike Hessey"
 	,	""
 	,	34
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"MANOR matters"

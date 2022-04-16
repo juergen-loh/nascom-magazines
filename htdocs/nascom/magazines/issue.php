@@ -1,9 +1,9 @@
 <?php
-	$tail = "";
 	$title = "$magazine";
 	$issue = "Issue $issue";
 	$tppath = "../..";
 	$path = "./";
+	$post = "";
 	include "$tppath/top.php";
 
 	$path = ".";

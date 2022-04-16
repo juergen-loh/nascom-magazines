@@ -34,6 +34,7 @@
 	,	"Martin Taylor"
 	,	"Basic"
 	,	5
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Hints and tips"
@@ -58,6 +59,7 @@
 	,	"J. Addey<br>Richard Beal"
 	,	"Assembler"
 	,	11
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Checksum Routines"
@@ -70,12 +72,14 @@
 	,	"Richard Beal"
 	,	"Assembler"
 	,	14
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Conversion of T4 to NAS-SYS"
 	,	"Richard Beal"
 	,	"Assembler"
 	,	15
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Dots &ndash; Make your own characters"
@@ -160,18 +164,21 @@
 	,	""
 	,	"Basic"
 	,	35
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Useful POKEs in Nascom BASIC"
 	,	""
 	,	"Basic"
 	,	36
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Graphics subroutine"
 	,	""
 	,	"Basic"
 	,	36
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Index to INMC Newsletters 1 &ndash; 7"
@@ -220,6 +227,7 @@
 	,	""
 	,	"Hardware"
 	,	46
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS&nbsp;3 &ndash; Improved version of NAS-SYS&nbsp;1"

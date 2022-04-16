@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Using 2732s on Nascom&nbsp;2 (see 2&#x2f;4 for correction)"

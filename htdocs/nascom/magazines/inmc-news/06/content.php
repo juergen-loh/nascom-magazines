@@ -51,9 +51,9 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"S-100 bus expansion for Nascom&nbsp;1"
-	,	""
+	,	"K. P. Curtis"
 	,	"Hardware"
-	,	10
+	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Doctor Dark&rsquo;s Diary &ndash;4<br>"
@@ -79,6 +79,7 @@
 	,	""
 	,	""
 	,	19
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Repeat Keyboard Routine"

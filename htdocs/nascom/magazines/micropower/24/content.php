@@ -18,12 +18,6 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Letters"
-	,	""
-	,	""
-	,	2
-	);
-	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Labels for Xtal BASIC<br>"
 	.	"instead of line numbers"
 	,	"Stephen Hope"
@@ -67,6 +61,7 @@
 	,	"D.P. Jackson"
 	,	"Basic"
 	,	24
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"2 Megabyte Nascom&nbsp;2<br>"
@@ -93,6 +88,7 @@
 	,	"Mr. Williams"
 	,	"Hardware"
 	,	31
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Printing multiple copies from Nasprint"
@@ -105,6 +101,7 @@
 	,	"A. Want"
 	,	"Hardware"
 	,	32
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Hole in the Wall<br>"

@@ -38,19 +38,19 @@
 <div lang="en">
 
 <?php
-	$t0s = "<a href=\"$gHtmlRoot/nascom/magazines$tail/\" style=\"display:block\">";
+	$t0s = "<a href=\"$gHtmlRoot/nascom/magazines/$post\" style=\"display:block\">";
 	$t0e = "</a>";
-	$t1s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-news$tail/\" style=\"display:block\">";
+	$t1s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-news/$post\" style=\"display:block\">";
 	$t1e = "</a>";
-	$t2s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-80-news$tail/\" style=\"display:block\">";
+	$t2s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-80-news/$post\" style=\"display:block\">";
 	$t2e = "</a>";
-	$t3s = "<a href=\"$gHtmlRoot/nascom/magazines/80-bus-news$tail/\" style=\"display:block\">";
+	$t3s = "<a href=\"$gHtmlRoot/nascom/magazines/80-bus-news/$post\" style=\"display:block\">";
 	$t3e = "</a>";
-	$t4s = "<a href=\"$gHtmlRoot/nascom/magazines/micropower$tail/\" style=\"display:block\">";
+	$t4s = "<a href=\"$gHtmlRoot/nascom/magazines/micropower/$post\" style=\"display:block\">";
 	$t4e = "</a>";
-	$t5s = "<a href=\"$gHtmlRoot/nascom/magazines/nascom-newsletter$tail/\" style=\"display:block\">";
+	$t5s = "<a href=\"$gHtmlRoot/nascom/magazines/nascom-newsletter/$post\" style=\"display:block\">";
 	$t5e = "</a>";
-	$t6s = "<a href=\"$gHtmlRoot/nascom/magazines/scorpio-news$tail/\" style=\"display:block\">";
+	$t6s = "<a href=\"$gHtmlRoot/nascom/magazines/scorpio-news/$post\" style=\"display:block\">";
 	$t6e = "</a>";
 
 	if (!isset($path)
@@ -135,6 +135,7 @@
 	}
 
 	if (isset($pict)) {
+//		echo "<!-- title:$title page:$page path:$path pict:$pict -->\n";
 		echo "\t<h1 id=\"head\">\n\t\t";
 		imageinsert(
 			""
@@ -464,16 +465,25 @@ function echoShy($str)
 
 //---------------------------------------------------------------------------
 
-function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $author, $category, $page)
+function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $author, $category, $page, $article = 1)
 {
+	global $trLink;
 //	$server = 'https://80bus.co.uk.mirror.jloh.de';
 //	$pdfPage = $page + $offset;
 	$pathPage = sprintf("%02d", $page);
 
 	echo "\t<tr>\n";
 	echo "\t\t".'<td class="clTitle">';
+
 	echo "<a href=\"";
-	echo "$path/$pathPage/\">";	echoShy($topic); echo "</a></td>\n";
+	echo "$path/$pathPage/";
+	if ($trLink == "text") {
+		echo "text/#article$article";
+	}
+	echo "\">";
+	echoShy($topic);
+	echo "</a></td>\n";
+
 	echo "\t\t<td class=\"clAuthor\">"; echoShy($author); echo "</td>\n";
 	echo "\t\t<td class=\"clCategory\">"; echoShy($category); echo "</td>\n";
 	echo "\t\t<td class=\"clMagazine\">$magazine</td>\n";

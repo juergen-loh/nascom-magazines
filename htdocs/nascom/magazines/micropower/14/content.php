@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"EPROM Programmer / Checker / Reader<br>"
@@ -49,12 +50,14 @@
 	,	"J.T. Nestor"
 	,	"Assembler"
 	,	17
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Reading TRS-80 Program Tapes with easier method"
 	,	"R.M. Dowling"
 	,	""
 	,	17
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Hands On &ndash; Pt4<br>"

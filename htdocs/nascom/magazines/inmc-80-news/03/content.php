@@ -34,6 +34,7 @@
 	,	"Ray Ridgwell"
 	,	"Basic"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Load Nasbug tapes into NAS-SYS"
@@ -52,6 +53,7 @@
 	,	"Doug Taylor"
 	,	"Hardware"
 	,	6
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Graphics &ndash; N1 displays 16 lines per character but N2 only 14 "
@@ -70,6 +72,7 @@
 	,	"G.M. Clarke"
 	,	"Assembler"
 	,	8
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Check sums with NAS-SYS"
@@ -85,7 +88,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Mastermind mods again"
-	,	""
+	,	"D. Ritchie"
 	,	"Assembler"
 	,	11
 	);
@@ -94,6 +97,7 @@
 	,	""
 	,	""
 	,	11
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Keyboard KMAP display"
@@ -106,6 +110,7 @@
 	,	"D. Ritchie"
 	,	"Assembler"
 	,	13
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom&nbsp;1 I&#x2f;O port decoding"
@@ -160,6 +165,7 @@
 	,	"C. Bowden"
 	,	"Hardware"
 	,	27
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Impersonal &ndash; Scurrilous Musings"
@@ -172,6 +178,7 @@
 	,	"Richard Bateman"
 	,	"Review"
 	,	31
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Z80 Assembler made simple &ndash; Pt 3"
@@ -214,6 +221,7 @@
 	,	"Dave Hunt"
 	,	""
 	,	43
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Video load glitch on IC65"
@@ -226,29 +234,40 @@
 	,	""
 	,	"Hardware"
 	,	44
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Serial and parallel pin connections differences on N1 and N2"
 	,	""
 	,	"Hardware"
 	,	44
+	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Interrupt daisy chain"
 	,	""
 	,	"Hardware"
 	,	45
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"A$ problem in BASIC at 4MHz on an N2"
 	,	""
 	,	"Basic"
 	,	45
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Blocks A and B workings with IC46"
 	,	""
 	,	"Hardware"
+	,	45
+	,	4
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Gemini G805 / &lsquo;Henelec&rsquo; Disk System Rules"
+	,	""
+	,	""
 	,	45
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
@@ -276,10 +295,11 @@
 	,	49
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"How to savestrings or string arrays on tape in BASIC"
+	,	"How to save strings or string arrays on tape in BASIC"
 	,	"David Reddington"
 	,	"Basic"
 	,	51
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Jumper. &ndash; Restart Jump multiplexer for Nascom&nbsp;1"

@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Letters"

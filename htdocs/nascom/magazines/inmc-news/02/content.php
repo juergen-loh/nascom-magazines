@@ -22,12 +22,14 @@
 	,	""
 	,	"Hardware"
 	,	2
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"UART clocks"
 	,	""
 	,	"Hardware"
 	,	2
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Snow Plough (Nascom&nbsp;1)"
@@ -40,6 +42,7 @@
 	,	""
 	,	"Hardware"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Software hints and tips"

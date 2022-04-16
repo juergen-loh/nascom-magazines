@@ -86,12 +86,14 @@
 	,	""
 	,	""
 	,	29
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom&nbsp;1 and 2 ports compared"
 	,	"Mr. Marshall"
 	,	""
 	,	29
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"News From Nascom"
@@ -104,6 +106,7 @@
 	,	"Mike Hessey"
 	,	""
 	,	30
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-DOS software compatibility for applications from Nascom"
@@ -116,6 +119,7 @@
 	,	"Mike Hessey"
 	,	""
 	,	31
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"MANOR matters"

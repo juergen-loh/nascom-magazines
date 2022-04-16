@@ -28,6 +28,7 @@
 	,	"P.R. Verity"
 	,	"Hardware"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Reading ZEAP files to disk"
@@ -40,6 +41,7 @@
 	,	"Mike Trim"
 	,	""
 	,	6
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"MONITOR.COM again"
@@ -64,6 +66,7 @@
 	,	"Mike York"
 	,	"Basic"
 	,	9
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 12"

@@ -40,6 +40,7 @@
 	,	"Mick Waters"
 	,	""
 	,	7
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"CPM &ndash; CCPZ, BDOSZ and MDIS"
@@ -58,6 +59,7 @@
 	,	""
 	,	""
 	,	13
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"CP&#x2f;M File Transfer Program Via The IEEE488 Bus"
@@ -76,6 +78,7 @@
 	,	"Dave Hunt"
 	,	""
 	,	17
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini GM832 Super Video Controller (SVC) Board review"
@@ -106,12 +109,14 @@
 	,	"David Parkinson"
 	,	""
 	,	35
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"BASIC mathematics"
 	,	"David Parkinson"
 	,	""
 	,	35
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Use a Nascom as a Counter-Timer"

@@ -44,8 +44,8 @@ Nach dem Ende des Nascom&nbsp;Journals
 gründete die damalige Redaktion 
 <a href="journal/83/01/02/text/#article1">Anfang 1983</a>
 das 80-Bus&nbsp;Journal.  Die Zielgruppe wurde
-erweitert auf "NASCOM, GEMINI und andere
-Z80-Anwender".  Die letzte Ausgabe erschien im
+erweitert auf &bdquo;NASCOM, GEMINI und andere
+Z80-Anwender&ldquo;.  Die letzte Ausgabe erschien im
 <a href="journal/85/m3/02/text/#article1">Juni 1985</a>.
 </p>
 

@@ -16,6 +16,7 @@
 	,	"Paul Greenhalgh"
 	,	""
 	,	2
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Letters"
@@ -29,6 +30,7 @@
 	.	"R T Lea"
 	,	"Pascal"
 	,	3
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"IVC issue with Wordstar"
@@ -49,10 +51,17 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"dBASE topics (including a file loader on page 15)"
+	,	"dBASE topics"
 	,	"Dave Hunt"
 	,	"Assembler"
 	,	7
+	,	2
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Index file loader for dBASE"
+	,	"Dave Hunt"
+	,	"Assembler"
+	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"CP&#x2f;M Conditioal Submit Files"

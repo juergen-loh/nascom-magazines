@@ -34,6 +34,7 @@
 	,	""
 	,	"Pascal"
 	,	11
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"BLS Pascal Print Routine"
@@ -76,6 +77,7 @@
 	,	"D.W. Parkinson"
 	,	""
 	,	29
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"PolyDos 2&#x2e;0 file update program"

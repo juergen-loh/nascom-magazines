@@ -915,55 +915,40 @@ function imageDesc80BusNews($issue, $page, $file)
 	case "11 48 Image-48-1.png":	return "Really ??";
 	case "11 49 Image-49-1.png":	return "N2 program";
 
-	case "12 01 Image-01-1.png":	return "80-Bus News";
-	case "12 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "13 01 Image-01-1.png":	return "80-Bus News";
-	case "13 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "14 01 Image-01-1.png":	return "80-Bus News";
-	case "14 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "21 01 Image-01-1.png":	return "80-Bus News";
-	case "21 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "22 01 Image-01-1.png":	return "80-Bus News";
-	case "22 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "23 01 Image-01-1.png":	return "80-Bus News";
-	case "23 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "24 01 Image-01-1.png":	return "80-Bus News";
-	case "24 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "25 01 Image-01-1.png":	return "80-Bus News";
-	case "25 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "26 01 Image-01-1.png":	return "80-Bus News";
-	case "26 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "31 01 Image-01-1.png":	return "80-Bus News";
-	case "31 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "32 01 Image-01-1.png":	return "80-Bus News";
-	case "32 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "33 01 Image-01-1.png":	return "80-Bus News";
-	case "33 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "34 01 Image-01-1.png":	return "80-Bus News";
-	case "34 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "35 01 Image-01-1.png":	return "80-Bus News";
-	case "35 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "36 01 Image-01-1.png":	return "80-Bus News";
-	case "36 02 Image-02-1.png":	return "80-BUS NEWS";
-
-	case "41 01 Image-01-1.png":	return "80-Bus News";
-	case "41 02 Image-02-1.png":	return "80-BUS NEWS";
-
+	case "12 01 Image-01-1.png":
+	case "13 01 Image-01-1.png":
+	case "14 01 Image-01-1.png":
+	case "21 01 Image-01-1.png":
+	case "22 01 Image-01-1.png":
+	case "23 01 Image-01-1.png":
+	case "24 01 Image-01-1.png":
+	case "25 01 Image-01-1.png":
+	case "26 01 Image-01-1.png":
+	case "31 01 Image-01-1.png":
+	case "32 01 Image-01-1.png":
+	case "33 01 Image-01-1.png":
+	case "34 01 Image-01-1.png":
+	case "35 01 Image-01-1.png":
+	case "36 01 Image-01-1.png":
+	case "41 01 Image-01-1.png":
 	case "42 01 Image-01-1.png":	return "80-Bus News";
+
+	case "12 02 Image-02-1.png":
+	case "13 02 Image-02-1.png":
+	case "14 02 Image-02-1.png":
+	case "21 02 Image-02-1.png":
+	case "22 02 Image-02-1.png":
+	case "23 02 Image-02-1.png":
+	case "24 02 Image-02-1.png":
+	case "25 02 Image-02-1.png":
+	case "26 02 Image-02-1.png":
+	case "31 02 Image-02-1.png":
+	case "32 02 Image-02-1.png":
+	case "33 02 Image-02-1.png":
+	case "34 02 Image-02-1.png":
+	case "35 02 Image-02-1.png":
+	case "36 02 Image-02-1.png":
+	case "41 02 Image-02-1.png":
 	case "42 02 Image-02-1.png":	return "80-BUS NEWS";
 	}
 	return "";
@@ -1045,13 +1030,22 @@ function imageDesc($year, $issue, $page, $file)
 
 	switch ("$year $issue $page $file") {
 	case "INMC News  1 ./logo.jpeg":
+	case "INMC News  1 ../logo.jpeg":
 	case "INMC 80 News  1 ./logo.jpeg":
+	case "INMC 80 News  1 ../logo.jpeg":
 	case "Nascom Newsletter  1 ./logo.jpeg":
+	case "Nascom Newsletter  1 ../logo.jpeg":
 	case "80-Bus News  1 ./logo.jpeg":
-	case "Scorpio News  1 ./logo.jpeg":			return($year);
-	case "Micropower  1 ./logo.jpeg":			return("&micro;P $year");
+	case "80-Bus News  1 ../logo.jpeg":
+	case "Scorpio News  1 ./logo.jpeg":
+	case "Scorpio News  1 ../logo.jpeg":
+		return($year);
+	case "Micropower  1 ./logo.jpeg":
+	case "Micropower  1 ../logo.jpeg":
+		return("&micro;P $year");
 	}
 
+//	echo "<-- switch($year $issue $page $file) -->\n";
 //	return("$year $issue $page $file");
 	return("");
 }
@@ -1084,8 +1078,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Apple II":				$url = "https://de.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.old-computers.com/museum/computer.asp?c=1305&st=1";			break;
 	case "AY-3-8910":				$url = "https://de.wikipedia.org/wiki/AY-3-8910";								break;
-	case "BASF 6106":				$url = "https://www.flickr.com/photos/68824983@N00/3983868076/";				break;
-	case "BASF 6138":				$url = "http://textfiles.com/bitsavers/pdf/basf/80307-058_BASF_6138_Mini_Disk_Apr83.pdf";	break;
+	case "BASF 6106":				$url = "https://www.abc80.net/archive/luxor/diskdrives/drives/BASF-6106-Mini-Disk-Drive.pdf";	break;
+	case "BASF 6138":				$url = "http://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "BASIC COMPUTER GAMES":	$url = "https://www.atariarchives.org/basicgames/showpage.php?page=107";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
 	case "Blue Label Software Pascal":	$url = "https://community.embarcadero.com/blogs/entry/blue-label-software-pascal-andgt-compas-pascal-andgt-poly-pascal-andgt-turbo-pascal-v10-38933";				break;
@@ -1256,7 +1250,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Tforth.nas":				$url = "http://www.nascomhomepage.com/lang/Tforth.nas";							break;
 	case "The complete FORTH":		$url = "https://openlibrary.org/works/OL5598529W/The_complete_FORTH";			break;
 	case "THREADED INTERPRETIVE LANGUAGES":	$url = "https://openlibrary.org/works/OL6331362W/Threaded_interpretive_languages";	break;
-	case "Tietokonemuseo":			$url = "http://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
+	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
 	case "TL497":					$url = "http://pdf.datasheetcatalog.com/datasheets/150/316215_DS.pdf";			break;
 	case "TMS 5100":				$url = "https://www.datasheetarchive.com/tms5100-datasheet.html";				break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/TMS9929-datasheet.html";				break;

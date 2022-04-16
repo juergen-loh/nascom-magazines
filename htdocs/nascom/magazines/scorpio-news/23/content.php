@@ -16,6 +16,7 @@
 	,	"P.A. Greenhalgh"
 	,	""
 	,	2
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Letters to the Editor"
@@ -28,6 +29,7 @@
 	,	"V.A.R. Ious"
 	,	""
 	,	3
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Adding a Winchester to your System"

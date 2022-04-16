@@ -28,12 +28,14 @@
 	,	"B.M. Farelly"
 	,	"Basic"
 	,	7
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Space Invaders key and speed routines"
 	,	"Mark Taylor"
 	,	"Assembler"
 	,	7
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Video &ndash; more on flashing"
@@ -46,6 +48,7 @@
 	,	"Rory O&rsquo;Farrell"
 	,	"Pascal"
 	,	9
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"ZEAP and printers"
@@ -75,7 +78,7 @@
 	,	"Extra Econo-Graphics for Nascom&nbsp;1"
 	,	"S.J. Oakes"
 	,	"Hardware"
-	,	19
+	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Programmable Sound Generator by PHG Electronics review"
@@ -154,6 +157,7 @@
 	,	""
 	,	""
 	,	54
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Print routine for Naspen and ZEAP"

@@ -27,13 +27,14 @@
 	,	"String Handling in Pascal comment"
 	,	"Mike York"
 	,	"Pascal"
-	,	5
+	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"The Interrupt System of the Z80"
 	,	"Rory O&rsquo;Farrell"
 	,	"Assembler"
-	,	7
+	,	6
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"The Dave Hunt Page(s)"
@@ -42,22 +43,22 @@
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Nascom Advertising Display"
+	,	"Robert Wood"
+	,	"Basic"
+	,	14
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Databases Pt 1"
 	,	"D.R. Hunt"
 	,	""
-	,	17
+	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Database Handler in BASIC"
 	,	"M.L. Trim"
 	,	"Basic"
 	,	18
-	);
-	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom Advertising Display"
-	,	"Robert Wood"
-	,	"Basic"
-	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Understanding CP&#x2f;M &ndash; Customising the BIOS"

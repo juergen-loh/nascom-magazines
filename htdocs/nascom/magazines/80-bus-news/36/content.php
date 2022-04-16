@@ -28,6 +28,7 @@
 	,	"C J Cave"
 	,	""
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 23"

@@ -52,6 +52,7 @@
 	,	"David Parkinson"
 	,	"Hardware"
 	,	25
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"12K BASIC review"

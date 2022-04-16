@@ -40,6 +40,7 @@
 	,	""
 	,	"Pascal"
 	,	6
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"String Handling in Pascal"

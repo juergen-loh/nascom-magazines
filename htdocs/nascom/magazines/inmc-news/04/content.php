@@ -46,24 +46,27 @@
 	,	""
 	,	"Software"
 	,	9
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Little Known Facts (2)"
 	,	""
 	,	"Basic"
 	,	9
-	);
-	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Little Known Facts (3)"
-	,	""
-	,	"Basic"
-	,	10
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Special offers"
 	,	""
 	,	"Advertising"
 	,	10
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Little Known Facts (3)"
+	,	""
+	,	"Basic"
+	,	10
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"&pi; page &ndash; Speed testing"
@@ -88,6 +91,7 @@
 	,	""
 	,	"Hardware"
 	,	14
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Doctor Dark&rsquo;s Diary<br>"
@@ -107,6 +111,7 @@
 	,	""
 	,	"Basic"
 	,	16
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Software Tips &ndash; Shuffling"
@@ -125,6 +130,7 @@
 	,	""
 	,	"Basic"
 	,	18
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Cometition-swaet early for Xmas"
@@ -143,6 +149,7 @@
 	,	""
 	,	"Hardware"
 	,	20
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS&nbsp;1"

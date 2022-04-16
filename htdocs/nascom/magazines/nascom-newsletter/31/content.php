@@ -16,12 +16,13 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Corn Corner"
 	,	"Cresby"
 	,	""
-	,	3
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-ASS Phase notes"
@@ -52,6 +53,7 @@
 	,	"Mr. Kemplen"
 	,	"Hardware"
 	,	12
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Software Standards<br>"
@@ -91,6 +93,7 @@
 	,	""
 	,	""
 	,	28
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-DOS fault failing to return head to start position &ndash; corrected in Rev 1&#x2e;4"
@@ -103,6 +106,7 @@
 	,	""
 	,	"Basic"
 	,	29
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Use of Printers with Nascom&nbsp;2 and 3"

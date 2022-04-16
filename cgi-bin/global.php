@@ -1,4 +1,13 @@
 <?php
+	ini_set('html_errors', true);
+	ini_set('docref_root', '/error/');
+	error_reporting(E_ALL);
+
+	function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+		throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+	}
+	set_error_handler("exception_error_handler");
+
 	$redirect_php = "$include_path/redirect.php";
 	if (file_exists($redirect_php)) {
 		include "$redirect_php";

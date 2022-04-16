@@ -76,6 +76,7 @@
 	,	"D. Parkinson"
 	,	""
 	,	50
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Lawrence (a really HOOPY FROOD) meets dangers of VIDEO"

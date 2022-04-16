@@ -31,15 +31,7 @@
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
 <p>
-	Timeline of magazines, taken from Richard Espley&rsquo;s site
-	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:<br>
-	<a href="https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm" target="_blank">
-		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif"
-			width="558" height="132" title="Timeline">
-	</a>
-</p>
-<p>
-	There is an <a href="../">overall table of contents</a> of English Nascom magazines
+	There is an <a href="../text/">overall table of contents</a> of English Nascom magazines
 	and another <a href="../../journal/text/">overall table of contents</a> of
 	<a href="../../">German Nascom publications</a>.
 </p>
@@ -49,7 +41,7 @@
 <div class="row hyphenate" lang="en"><div class="col-sm-6">
 
 <h2>
-	<a href="../inmc-news/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
+	<a href="../inmc-news/text/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
 </h2>
 <h3>
 	1978 &ndash; 1980
@@ -68,7 +60,7 @@
 </p>
 
 <h2>
-	<a href="../inmc-80-news/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
+	<a href="../inmc-80-news/text/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
 </h2>
 <h3>
 	1980 &ndash; 1981
@@ -85,7 +77,7 @@
 </p>
 
 <h2>
-	<a href="../80-bus-news/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
+	<a href="../80-bus-news/text/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
 </h2>
 <h3>
 	1982 &ndash; 1985
@@ -115,7 +107,7 @@
 </p>
 
 <h2>
-	<a href="../scorpio-news/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
+	<a href="../scorpio-news/text/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
 </h2>
 <h3>
 	1987 &ndash; 1989
@@ -139,7 +131,7 @@
 </div><div class="col-sm-6">
 
 <h2>
-	<a href="../micropower/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
+	<a href="../micropower/text/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
 </h2>
 <h3>
 	1981 &ndash; 1982
@@ -159,7 +151,7 @@
 </p>
 
 <h2>
-	<a href="../nascom-newsletter/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
+	<a href="../nascom-newsletter/text/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
 </h2>
 <h3>
 	1982 &ndash; 1984
@@ -425,7 +417,15 @@
 <br>
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
 <p>
-	80-BUS publications spanned nearly 12 years from simple Z80 computers to the
+	Timeline of magazines, taken from Richard Espley&rsquo;s site
+	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:<br>
+	<a href="https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm" target="_blank">
+		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif"
+			width="558" height="132" title="Timeline">
+	</a>
+</p>
+<p>
+	Nascom and 80-BUS publications spanned nearly 12 years from simple Z80 computers to the
 	rise of IBM PC compatibles. Here ends the 8 bit era.
 </p>
 </div></div>

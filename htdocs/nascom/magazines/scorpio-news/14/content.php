@@ -10,11 +10,13 @@
 	,	""
 	,	""
 	,	3
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Editorial"
 	,	"P.A. Greenhalgh"
 	,	""
+	,	3
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
@@ -143,6 +145,7 @@
 	,	""
 	,	""
 	,	53
+	,	2
 	);
 ?>
 <!-- /scorpio-news/14/content.php -->

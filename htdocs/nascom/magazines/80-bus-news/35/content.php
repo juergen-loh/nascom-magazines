@@ -28,12 +28,14 @@
 	,	"Godfrey Nix"
 	,	"Pascal"
 	,	4
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"CP&#x2f;M BIOS in EPROM"
 	,	"P. Holy"
 	,	""
 	,	6
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Determining the Nascom Keyboard Status"
@@ -76,12 +78,14 @@
 	,	"David Hunt"
 	,	"Basic"
 	,	31
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Cursor Control under CP&#x2f;M"
 	,	"David Hunt"
 	,	""
 	,	31
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Clocks and dBASE"

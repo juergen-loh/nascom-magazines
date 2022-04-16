@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom Controls Washing Machine"
@@ -56,6 +57,7 @@
 	,	"F. Johnson"
 	,	"Basic"
 	,	28
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS monitors dissected &ndash; Pt 5"

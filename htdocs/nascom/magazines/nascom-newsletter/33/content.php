@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 3"
@@ -45,7 +46,7 @@
 	,	"News From Nascom"
 	,	"Mike Hessey"
 	,	""
-	,	25
+	,	24
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Epson LX80 printer overview"
@@ -57,7 +58,8 @@
 	,	"NAS-CAD overview"
 	,	"Mike Hessey"
 	,	""
-	,	26
+	,	25
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Parallel print driver in BASIC Section 3&#x2e;2 correction "

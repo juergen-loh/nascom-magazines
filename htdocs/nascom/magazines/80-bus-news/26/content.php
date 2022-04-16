@@ -28,6 +28,7 @@
 	,	"D.R. Hunt"
 	,	""
 	,	5
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Disk Drive compatibility"
@@ -46,6 +47,7 @@
 	,	"Chris Blackmore"
 	,	"Review"
 	,	15
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Pascal benchmarks"
@@ -94,6 +96,7 @@
 	,	"David Parkinson"
 	,	"Hardware"
 	,	43
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini IVC Video Output Stage"
@@ -154,18 +157,21 @@
 	,	"K. Hamlyn"
 	,	"Hardware"
 	,	64
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom&nbsp;2 Power Supply Voltage Droop"
 	,	"K. Hamlyn"
 	,	"Hardware"
 	,	64
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom&nbsp;2 Backplane power tracks"
 	,	"K. Hamlyn"
 	,	"Hardware"
 	,	64
+	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Random Rumours (&amp; Truths?)"

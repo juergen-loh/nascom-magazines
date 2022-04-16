@@ -16,12 +16,14 @@
 	,	""
 	,	"Hardware"
 	,	2-1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Power supplies correction and stability"
 	,	""
 	,	"Hardware"
 	,	2-1
+	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"UHF Modulator (early version on Nascom&nbsp;1)"
@@ -34,6 +36,7 @@
 	,	""
 	,	"Hardware"
 	,	3-1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Cassette loading (hardware issues)"
@@ -46,18 +49,21 @@
 	,	""
 	,	"Hardware"
 	,	4-1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Teletype Interfacing"
 	,	""
 	,	"Hardware"
 	,	4-1
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Cassette loading (software issues &ndash; Nasbug)"
 	,	""
 	,	"Software"
 	,	5-1
+	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"ZEAP (introduction)"
@@ -70,12 +76,14 @@
 	,	""
 	,	"Basic"
 	,	7-1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Driving Printers (Centronics interface)"
 	,	""
 	,	""
 	,	7-1
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Kit repairs"
@@ -88,6 +96,7 @@
 	,	""
 	,	""
 	,	9-1
+	,	2
 	);
 ?>
 <!-- /inmc-news/01/content.php -->

@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"A Nascom Disassembler &ndash; Pt 1"
@@ -90,12 +91,14 @@
 	,	"Mike Hessey"
 	,	""
 	,	32
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SEMBLER assembler to use with NAS-DOS overview"
 	,	"Mike Hessey"
 	,	""
 	,	32
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-CALC 1 spread-sheet overview"

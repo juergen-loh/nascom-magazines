@@ -10,6 +10,7 @@
 	,	""
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"The &lsquo;Boss&rsquo; &ndash; Chairman&rsquo;s Bit"
@@ -52,12 +53,14 @@
 	,	"P. Copping"
 	,	"Assembler"
 	,	12
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Printers and Naspen"
 	,	"C.R. Bruce"
 	,	""
 	,	12
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Space Invader sounds"
@@ -82,12 +85,14 @@
 	,	"Richard Bateman"
 	,	"Basic"
 	,	16
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"RAM and Page Mode"
 	,	"Richard Bateman"
 	,	"Hardware"
 	,	16
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"HiSoft NASPAS Pascal for Nascom review"
@@ -167,12 +172,14 @@
 	,	"Ian Henderson"
 	,	"Review"
 	,	54
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini Products in 1981"
 	,	""
 	,	"Hardware"
 	,	55
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Imprint driver for the IMP printer"

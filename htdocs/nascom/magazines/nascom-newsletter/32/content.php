@@ -16,6 +16,7 @@
 	,	"Ian J Clemmett"
 	,	""
 	,	1
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 2"
@@ -48,12 +49,14 @@
 	,	"Mike Hessey"
 	,	""
 	,	22
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nascom AVC overview"
 	,	"Mike Hessey"
 	,	"Hardware"
 	,	22
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS modification to give a buffered keyboard"
@@ -65,7 +68,7 @@
 	,	"Clock read/set from BASIC"
 	,	"Mike Hessey"
 	,	"Basic"
-	,	28
+	,	31
 	);
 ?>
 <!-- /nascom-newsletter/32/content.php -->
