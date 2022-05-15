@@ -1,6 +1,8 @@
 <?php columnStart(1); ?>
 <p class="continued">
-is the only authorised method of implementing GM862/802 RAM on this system.
+is the only authorised method of implementing
+<?php externalLink("GM862","",""); ?>/<?php externalLink("GM802","802"); ?>
+RAM on this system.
 Explicit examples are shown in the GM862 Manual of how to select each 64K page
 via switch ICl, disable Extended addressing and enable Page mode via poles 4 &amp;
 5 of switch IC2, and disable the 4K/8K &lsquo;Common Area&rsquo; via poles 2 &amp; 3 so that
@@ -17,7 +19,8 @@ A HARDWARE FIX
 <p>
 When the GM862&rsquo;s DIL switches were carefully set up as per the manual to
 provide 4 pages of 64K, the Nascom refused to work under CP/M and other DOSs,
-or even good old Nas-Sys. It would run all systems as usual with the old 802
+or even good old Nas-Sys. It would run all systems as usual with the old
+<?php externalLink("GM802","802"); ?>
 board without page mode selected, but would not boot CP/M when this board was
 set to read and write as page zero. Under Nas-Sys it seemed that none of the
 new board&rsquo;s RAM was being addressed, while the old 64K board could be
@@ -48,7 +51,11 @@ solution of that problem is to be found in the manual under Note 1 of Section
 4 &ndash; SOFTWARE IMPLICATIONS. This states that the GM862 Page-Mode latch is
 cleared on RESET, disabling its memory until any given page is selected by
 writing to Port 0FFh. The standard Gemini CP/M auto-boot EPROMS and versions
-2.0 or later of RP/M for the GM811 and GM813 CPU boards, include
+2.0 or later of RP/M for the
+<?php externalLink("GM811"); ?>
+and
+<?php externalLink("GM813"); ?>
+CPU boards, include
 initialisation code to select Page&nbsp;0 on start-up or RESET. Earlier software
 and firmware for the Nascom has no such code and so it must be modified. The
 routine is simple and fortunately there is ample space within SIMON to

@@ -19,7 +19,9 @@ included them to show how they inter-relate with the direct keyboard commands,
 or how extra space can be saved.
 </p>
 <p>
-The routine SIVCMD is used to send command strings to the IVC/SVC. It saves a
+The routine SIVCMD is used to send command strings to the
+<?php externalLink("IVC","",""); ?>/<?php externalLink("SVC","",""); ?>.
+It saves a
 considerable amount of code overall compared multiple blocks of code like&nbsp;&ndash;
 </p>
 <table class="indent">
@@ -46,8 +48,11 @@ shares the Printer Centronics port. I use several of these cards, at home and at
 and they are very successful, keeping good time, and not interacting with printer
 operation or being corrupted by it in any way. The main benefit of this card is that
 it does not require an extra port. I have also successfully used the RTC on the
-GM816 I/O card for this purpose. I was not able to overcome the clock corruption
-problems when I tried the GM822 RTC card, some years ago. I have added an extra
+<?php externalLink("GM816"); ?>
+I/O card for this purpose. I was not able to overcome the clock corruption
+problems when I tried the
+<?php externalLink("GM822"); ?>
+RTC card, some years ago. I have added an extra
 &lsquo;JUMP&rsquo; to the jump table at the start of the BIOS, so that the clock routine can
 always be found by external programs, by calling this address at BIOS + 33H. On
 EXIT from the clock routines, HL contains the address of the Date and Time string

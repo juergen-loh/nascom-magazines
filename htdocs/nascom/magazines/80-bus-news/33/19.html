@@ -27,7 +27,9 @@ With the display contention problem solved by hardware, various other
 changes could be made. One was the use of the interrupt system. Previously,
 with the transparent screen access being determined by software loops,
 interrupts could not be used as they could interfere with critical parts of
-the loop. With the SVC, keyboard input is now done under interrupt. Also,
+the loop. With the
+<?php externalLink("SVC","",""); ?>,
+keyboard input is now done under interrupt. Also,
 while the SVC-MON is scrolling the screen (with an LDIR instruction), it
 enables an interrupt routine to collect and buffer incoming characters from
 the Host. Normally the SVC-MON polls for input characters.
@@ -51,7 +53,9 @@ generate the appropriate ASCII codes.)
 NMI
 </h3>
 <p>
-As with the IVC, on the SVC the vertical sync output of the display
+As with the
+<?php externalLink("IVC","",""); ?>,
+on the SVC the vertical sync output of the display
 controller is connected to the NMI input of the on-board Z80. However the SVC
 NMI service routine performs different functions. It no longer scans the
 keyboard as that has been transfered to a conventional interrupt routine (see

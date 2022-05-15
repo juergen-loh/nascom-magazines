@@ -37,15 +37,24 @@ This card, consists of a 25x80 video display, a parallel keyboard port, a floppy
 and the controlling software (VSOFT) EPROM. The card is available either ready built, or in kit
 form. The advantage of the kit approach is that you only need to pay for the options you require.
 (VSOFT is part of the base card &ndash; you can choose any or all of the Video, Video Switch, Floppy or
-Keyboard options.) It will work with the Nascom-2, GM811, GM813, and Map-CPU cards.
+Keyboard options.) It will work with the Nascom-2,
+<?php externalLink("GM811","",""); ?>,
+<?php externalLink("GM813","",""); ?>,
+and Map-CPU cards.
 </p>
 <p>
 How does it compare&nbsp;? The standard card uses 16 ports addressed ED &ndash; EF but alternate ports
-C0 &ndash; CF are available on request. (This is necessary if using the GM809 FDC or Map-80 MPI.)
+C0 &ndash; CF are available on request. (This is necessary if using the
+<?php externalLink("GM809"); ?>
+FDC or Map-80 MPI.)
 </p>
 <p>
 The video section is controlled by a 6845, and all character handling is done by the main
-system CPU running routines in VSOFT, unlike the Gemini IVC and SVC. It should therefor be
+system CPU running routines in VSOFT, unlike the Gemini
+<?php externalLink("IVC"); ?>
+and
+<?php externalLink("SVC","",""); ?>.
+It should therefor be
 slightly slower, as the IVC and SVC contain their owe Z80s. Because the system CPU runs VSOFT, both
 VSOFT and the video RAM can be individually paged into the memory map under port control when
 required. (The overlaid system RAM is available at all other times.) The address at which VSOFT
@@ -68,10 +77,15 @@ The parallel Keyboard input consists of a strobed latch which is read via VSOFT.
 polarity is link selectable.
 </p>
 <p>
-The final section is the Floppy Disk Controller. This uses the WD2797, and is GM809
-compatible. As with the GM809, however, the clock frequency of the FDC is link selectable, meaning
+The final section is the Floppy Disk Controller. This uses the WD2797, and is
+<?php externalLink("GM809"); ?>
+compatible. As with the
+<?php externalLink("GM809","",""); ?>,
+however, the clock frequency of the FDC is link selectable, meaning
 that selection between 5.25&Prime; and 8&Prime; drives can only be done by link changing. If you want software
-selection, go for the Map-MPI card or Gemini GM829 or GM849 instead.
+selection, go for the Map-MPI card or Gemini
+<?php externalLink("GM829"); ?> or
+<?php externalLink("GM849"); ?> instead.
 </p>
 <p>
 Control codes for the Map VFC are similar to the Gemini IVC, but since there is no onboard CPU,

@@ -12,7 +12,9 @@ y, etc. So I like to see a flashing cursor on the 9th line when using dBASE.
 How can this be achieved?
 </p>
 <p>
-Well the obvious is to send a command string to the SVC/IVC to turn the
+Well the obvious is to send a command string to the
+<?php externalLink("SVC","",""); ?>/<?php externalLink("IVC"); ?>
+to turn the
 cursor on, blinking, and move it down one line. It appears nice and easy, just
 work out the control words and then print them:
 </p>
@@ -31,7 +33,9 @@ again. (This problem is not uncommon, several control codes are converted
 either by the BDOS or the application program, so dBASE is not an isolated
 instance. The characters usually affected would be 08h, backspace, 09h, tab,
 0ah, line feed and 0dh carriage return.) The answer is to use the PUTVID
-program in the SVC/IVC manual, but this means making a machine code patch for
+program in the
+SVC/<?php externalLink("IVC"); ?>
+manual, but this means making a machine code patch for
 dBASE (or whatever).
 </p>
 <p>

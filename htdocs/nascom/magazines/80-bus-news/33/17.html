@@ -24,8 +24,9 @@ little selfish!
 It required a very small change to the existing software to support it.
 </li>
 <li>
-This feature had zero impact on the current performance of the SVC. (The
-alternative approach would have meant scrolling 4k of data, and also added
+This feature had zero impact on the current performance of the
+<?php externalLink("SVC","",""); ?>.
+(The alternative approach would have meant scrolling 4k of data, and also added
 the problem of handling any &lsquo;locked&rsquo; screen lines.)
 </li>
 <li>
@@ -35,7 +36,9 @@ instantly.
 <li>
 It simplifies (possibly) the implementation of concurrent tasks. (If you
 want to have two tasks running concurrently with independent screens on a
-system with an IVC there is the problem of how the undisplayed screen is
+system with an
+<?php externalLink("IVC"); ?>
+there is the problem of how the undisplayed screen is
 handled. There are two options open: a) Queue all console output for the
 non-displayed task, wait until its screen image is swapped into the IVC,
 and then send it. Or b) Duplicate all the necessary parts of the IVC

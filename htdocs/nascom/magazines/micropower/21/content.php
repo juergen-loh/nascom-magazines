@@ -13,7 +13,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Editorial"
-	,	"Ian J Clemmett"
+	,	"John Haigh"
 	,	""
 	,	1
 	,	2
@@ -61,7 +61,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS monitors dissected &ndash; Pt 5"
-	,	"J. Haigh"
+	,	"John Haigh"
 	,	"Assembler"
 	,	30
 	);

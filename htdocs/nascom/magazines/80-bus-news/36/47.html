@@ -51,8 +51,9 @@ to save whatever was in this store before I used it, in case it was holding
 data relevant to some other program that might be running when the clock is
 updated. The data in &lsquo;CURSOR&rsquo; is copied to HL and then &lsquo;PUSH&rsquo;ed on to the
 stack. The current cursor location is then saved, using the &lsquo;SAVCUR&rsquo; routine,
-The cursor is then temporarily turned off, using an IVC command, to stop it
-flashing as the clock display is updated.
+The cursor is then temporarily turned off, using an
+<?php externalLink("IVC"); ?>
+command, to stop it flashing as the clock display is updated.
 </p>
 <p>
 The &lsquo;SETCUR&rsquo; routine is then used to place the cursor at the clock
@@ -60,7 +61,9 @@ display position in the top line of the screen. Thes position depends on
 whether the Day name is to be displayed. The &lsquo;H&rsquo; register holds the row data,
 and &lsquo;L&rsquo; the column. The data is then printed on the screen, using &lsquo;HL&rsquo; to
 point to the source of the data to be printed from STRING/<?php spChar("zwsp"); ?>STRNG1, and the SYS
-&lsquo;CRTX&rsquo; routine is used to send each byte to the IVC. The routine stops when it
+&lsquo;CRTX&rsquo; routine is used to send each byte to the
+<?php externalLink("IVC","",""); ?>.
+The routine stops when it
 finds the &lsquo;0&rsquo; character that is used to mark the end of the output string.
 </p>
 <?php columnEnd(1); ?>

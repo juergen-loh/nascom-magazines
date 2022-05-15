@@ -79,7 +79,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Errata"
-	,	""
+	,	"Ian J Clemmett"
 	,	""
 	,	31
 	);

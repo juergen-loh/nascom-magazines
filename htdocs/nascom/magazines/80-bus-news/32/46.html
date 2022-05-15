@@ -1,20 +1,27 @@
 <?php columnStart(1, "noindent"); ?>
 <p>
-Odd features of the IVC stem from the Nascom background. e.g. the alternative
+Odd features of the
+<?php externalLink("IVC"); ?>
+stem from the Nascom background. e.g. the alternative
 screen format being 48 characters per line. The block graphics are those of
 the Nascom&nbsp;2, rather than the teletext standard. (Same symbols, just
 controlled by different bits within the byte.)
 </p>
 <p>
-The IVC accepts 8-bit characters from the host system. All the standard
+The
+<?php externalLink("IVC"); ?>
+accepts 8-bit characters from the host system. All the standard
 printable ASCII characters (whose codes are in the range 20-7F), and all
 characters for the alternate character generator (whose codes are in the range
 80H-FFH), are placed directly into the display at the current cursor position.
 Characters in the range 00-1FH are interpreted as control characters, and are
-used to control the extensive features of the IVC.
+used to control the extensive features of the
+<?php externalLink("IVC","",""); ?>.
 </p>
 <p>
-One reason why I have been looking for a review of the IVC is to see if anbody
+One reason why I have been looking for a review of the
+<?php externalLink("IVC"); ?>
+is to see if anbody
 feels that important features are lacking from the escape sequences. (Do you
 all want protected fields? Do you want a &ldquo;page&rdquo; mode as well as a &ldquo;Scroll&rdquo;
 mode?) My feeling, echoed recently in these pages by David Hunt, is that 97%
@@ -25,20 +32,29 @@ addressing&rsquo; that are used by programs such as Wordstar and dBase II.
 Attributes
 </h3>
 <p>
-The IVC supports a single flexible attribute. This is the programmable
-character generator (pcg), sometimes refered to in the IVC documentation as
+The
+<?php externalLink("IVC"); ?>
+supports a single flexible attribute. This is the programmable
+character generator (pcg), sometimes refered to in the
+<?php externalLink("IVC"); ?>
+documentation as
 the alternate or upper character generator. On power-up the contents of the
 standard character generator (an EPROM) are copied to the alternate character
 generator and are inverted on the way. This means that by using the alternate
 character generator, (either by setting the msb of a character before it is
-sent to the IVC, or using the sequence &lt;ESC&gt;&nbsp;A to make the IVC do it for you),
+sent to the
+<?php externalLink("IVC","",""); ?>,
+or using the sequence &lt;ESC&gt;&nbsp;A to make the
+<?php externalLink("IVC"); ?>
+do it for you),
 video-inverse characters can be displayed. (e.g. to highlight headings and
 menus within Wordstar and other such programs.) Note that inverse video is the
 default setting, there is nothing to stop you programming other bit
 combinations into the character boxes. For example you could set up a Greek
 alphabet or a series of specialist mathematical symbols for use by a custom
 wordprocessing package. The Henry&lsquo;s package HI-RES uses the pcg to offer a
-pseudo high resolution graphics mode on the IVC.
+pseudo high resolution graphics mode on the
+<?php externalLink("IVC","",""); ?>.
 </p>
 <h3>
 Transparent access
@@ -48,13 +64,17 @@ As I mentioned earlier, the absence of visual interference on the screen when
 the on-board processor accesses the screen memory is essential. There are
 various ways that this can be achieved, but this to some extent depends upon
 the choice of controlling microprocessor. If a Motorola 6800 had been used for
-the IVC processor, then a very neat arrangement could have been implemented
+the
+<?php externalLink("IVC"); ?>
+processor, then a very neat arrangement could have been implemented
 where the processor and display accesses could have been interleaved, leaving
 each controller in total ignorance of the other. However history dictated that
 a Z80 was used. The Z80 has asynchronous memory cycles, (asynchronous to the
 extent that its memory cycles are not all the same length), and so it can not
 easily be arranged to access the display memory between each displayed
-character. With the IVC design the easy way out was taken, and the Z80 was
+character. With the
+<?php externalLink("IVC"); ?>
+design the easy way out was taken, and the Z80 was
 given priority access to the display memory. (i.e. it can barge in when ever
 it likes.) However the horizontal and vertical sync pulses and the display
 blanking signal from the display controller are routed to a port so that the

@@ -13,7 +13,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Editorial"
-	,	"Ian J Clemmett"
+	,	"John Haigh"
 	,	""
 	,	1
 	,	2
@@ -32,7 +32,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Software for Programmable Character Generators"
-	,	"J. Haigh"
+	,	"John Haigh"
 	,	"Assembler<br>"
 	.	"Basic"
 	,	6
@@ -64,7 +64,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"NAS-SYS monitors dissected &ndash; Pt1"
-	,	"J. Haigh"
+	,	"John Haigh"
 	,	""
 	,	28
 	);

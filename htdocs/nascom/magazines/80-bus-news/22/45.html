@@ -42,16 +42,26 @@ link does not provide the correct function.
 <p>
 One can get away with some non critical applications combinations, for
 instance always writing to the conflicting ports, but one particular combination
-which can&rsquo;t be mixed is the Henelec/<?php spChar("zwsp"); ?>Gemini G805 disk controller and the Gemini
-GM812 intelligent video card. The IVC uses ports B1H, B2H and B3H, and
+which can&rsquo;t be mixed is the
+<?php externalLink("Henelec","",""); ?>/<?php spChar("zwsp"); ?>Gemini
+<?php externalLink("GM805","G805"); ?>
+disk controller and the Gemini
+<?php externalLink("GM812"); ?>
+intelligent video card. The
+<?php externalLink("IVC"); ?>
+uses ports B1H, B2H and B3H, and
 consequently does fascinating and unpredictable things to the UART. What it
 doesn&rsquo;t do is put pictures on the screen.
 </p>
 <p>
 There are several solutions; the easiest is to use the Nascom I/O board
-to feed the G805, but it is expensive. Further, a method was published which
+to feed the
+<?php externalLink("GM805","G805",""); ?>,
+but it is expensive. Further, a method was published which
 requires a bit of board surgery and allows a signal put on IOEXT to take
-control. (See D. Ritchies letter in <a href="../text/"></a>INMC4). However, as any board running off
+control. (See
+<a href="../../../../inmc-80-news/03/14/text/#article1">D. Ritchies letter</a>
+in INMC4). However, as any board running off
 the NASBUS will provide its own decode all that is necessary is to make the
 onboard decodes unambiguous. In other words to lock out the ports on the Nascom&nbsp;1
 when any higher address line is active. This can be done with one extra chip

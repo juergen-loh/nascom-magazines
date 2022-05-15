@@ -160,7 +160,7 @@
 	,	45
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Random Rumour (&amp; Truths)"
+	,	"Random Rumours (&amp; Truths)"
 	,	"S. Monger"
 	,	""
 	,	48
