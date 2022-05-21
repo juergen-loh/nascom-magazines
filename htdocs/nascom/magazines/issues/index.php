@@ -170,9 +170,39 @@
 	<a href="../nascom-newsletter/35/-1/text/"><img src="../nascom-newsletter/35/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 5"></a>
 </p>
 
+</div></div>
+<div class="row hyphenate" lang="en"><div class="col-sm-12">
+
 <h1>
 	Series
 </h1>
+
+</div></div>
+<div class="row hyphenate" lang="en"><div class="col-sm-6">
+
+<h2>
+	Lawrence
+</h2>
+<p>
+	<a href="../inmc-news/03/26/text/#article1">Saga One: C.E.G.B. brutality</a><br>
+	<a href="../inmc-news/04/30/text/#article1">Saga Two: Hubris</a><br>
+	<a href="../inmc-news/05/38/text/#article1">Saga Three: Hell hath no fury</a><br>
+	<a href="../inmc-news/06/38/text/#article1">Saga Four: Noblesse oblig&eacute;</a><br>
+	<a href="../inmc-news/07/39/text/#article1">Lawrence the long haired weirdo</a><br>
+	<a href="../inmc-80-news/01/48/text/#article1">Very Official – To whom it may concern</a><br>
+	<a href="../inmc-80-news/03/48/text/#article1">Very Official</a><br>
+	<a href="../inmc-80-news/05/71/text/#article1">Lawrence and the &ldquo;new&rdquo; printer?</a><br>
+	<a href="../80-bus-news/13/45/text/#article1">Lawrence is back (despite popular demand)</a><br>
+	<a href="../80-bus-news/14/48/text/#article1">Lawrence meets the commercial software syndrome</a><br>
+	<a href="../80-bus-news/22/52/text/#article1">Lawrence has bought PolyDos...</a><br>
+	<a href="../80-bus-news/24/53/text/#article1">Lawrence meets dangers of VIDEO.</a><br>
+	<a href="../80-bus-news/31/52/text/#article1">Lawrence lands a helping hand.</a><br>
+	<a href="../80-bus-news/33/49/text/#article1">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>
+	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
+	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
+	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
+	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wieredo....</a><br>
+</p>
 <h2>
 	Dr. Dark&rsquo;s Diary
 </h2>
@@ -250,6 +280,40 @@
 	<a href="../80-bus-news/12/22/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/13/30/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
+<h2>
+	Random Rumours (& Truths)
+</h2>
+<h3>
+	By S. Monger 
+</h3>
+<p>
+	<a href="../80-bus-news/11/48/text/#article1">    Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/12/48/text/#article1">  &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/13/44/text/#article1">  &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/14/47/text/#article1">  &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/21/54/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/22/51/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/23/57/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/65/text/#article1">  &nbsp;&nbsp;8&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/51/text/#article1">  &nbsp;&nbsp;9&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/48/text/#article1">  &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/42/29/text/#article1">  &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+</p>
+<h2>
+	Aunt Agatha’s Agony Column
+</h2>
+<h3>
+	by D.​ Parkinson
+</h3>
+<p>
+	<a href="../80-bus-news/23/51/text/#article1">    Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/24/49/text/#article1">  &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/25/text/#article1">  &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/43/text/#article1">  &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/35/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/34/29/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+</p>
+</div><div class="col-sm-6">
 <h2>
 	NASCOM ROM BASIC disassembled
 </h2>
@@ -388,29 +452,6 @@
 	<a href="../scorpio-news/22/27/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/23/33/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/24/25/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-</p>
-<h2>
-	Lawrence
-</h2>
-<p>
-	<a href="../inmc-news/03/26/text/#article1">Saga One: C.E.G.B. brutality</a><br>
-	<a href="../inmc-news/04/30/text/#article1">Saga Two: Hubris</a><br>
-	<a href="../inmc-news/05/38/text/#article1">Saga Three: Hell hath no fury</a><br>
-	<a href="../inmc-news/06/38/text/#article1">Saga Four: Noblesse oblig&eacute;</a><br>
-	<a href="../inmc-news/07/39/text/#article1">Lawrence the long haired weirdo</a><br>
-	<a href="../inmc-80-news/01/48/text/#article1">Very Official – To whom it may concern</a><br>
-	<a href="../inmc-80-news/03/48/text/#article1">Very Official</a><br>
-	<a href="../inmc-80-news/05/71/text/#article1">Lawrence and the &ldquo;new&rdquo; printer?</a><br>
-	<a href="../80-bus-news/13/45/text/#article1">Lawrence is back (despite popular demand)</a><br>
-	<a href="../80-bus-news/14/48/text/#article1">Lawrence meets the commercial software syndrome</a><br>
-	<a href="../80-bus-news/22/52/text/#article1">Lawrence has bought PolyDos...</a><br>
-	<a href="../80-bus-news/24/53/text/#article1">Lawrence meets dangers of VIDEO.</a><br>
-	<a href="../80-bus-news/31/52/text/#article1">Lawrence lands a helping hand.</a><br>
-	<a href="../80-bus-news/33/49/text/#article1">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>
-	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
-	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
-	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
-	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wieredo....</a><br>
 </p>
 
 </div></div>
