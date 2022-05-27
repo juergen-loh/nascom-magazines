@@ -169,7 +169,7 @@
 	<a href="../nascom-newsletter/34/-1/text/"><img src="../nascom-newsletter/34/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 4"></a>
 	<a href="../nascom-newsletter/35/-1/text/"><img src="../nascom-newsletter/35/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 5"></a>
 </p>
-
+<p></p>
 </div></div>
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
 
@@ -180,7 +180,7 @@
 </div></div>
 <div class="row hyphenate" lang="en"><div class="col-sm-6">
 
-<h2>
+<h2 id="lawrence">
 	Lawrence
 </h2>
 <p>
@@ -300,7 +300,7 @@
 	<a href="../80-bus-news/42/29/text/#article1">  &nbsp;&nbsp;11&nbsp;&nbsp;</a>
 </p>
 <h2>
-	Aunt Agatha’s Agony Column
+	Aunt Agatha&rsquo;s Agony Column
 </h2>
 <h3>
 	by D.​ Parkinson
@@ -313,6 +313,7 @@
 	<a href="../80-bus-news/31/35/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/34/29/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 </p>
+<br>
 </div><div class="col-sm-6">
 <h2>
 	NASCOM ROM BASIC disassembled

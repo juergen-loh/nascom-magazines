@@ -89,7 +89,7 @@
 	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Four free programs &ndash; Refuse we can’t offer!"
+	,	"Four free programs &ndash; Refuse we can&rsquo;t offer!"
 	,	"Richard Beal"
 	,	""
 	,	22
