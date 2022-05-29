@@ -21,7 +21,7 @@ is finished. Fair enough &ndash; a read is so quick that it won&rsquo;t matter i
 on the screen is not updated for a few 1/10s of secs. There is another way to
 deal with the problem &ndash; interrupt priority. This assigns to each device a certain
 priority, and only devices of higher priority than the device under service can
-interrupt. We&rsquo;ll come to this in a moment or two. The 8080 interrupt response (IM
+interrupt. We&rsquo;ll come to this in a moment or two. The <?php externalLink("8080"); ?> interrupt response (IM
 0) is automatically invoked after a reset, with interrupts disabled. This mode
 allows (using the restarts) eight different interrupt handling routines. It is
 possible to make a number of devices share common handing routines, or for the
@@ -32,7 +32,7 @@ was often obtained by using unintelligent devices. When the peripheral response
 was required, they did nothing. Using open collector bus drivers, the effect of
 the pull up resistors was to make the bus read as high, so the CPU thought that
 there was a byte 0FFH on the bus. This meant that RST 38H was most frequently
-used. This provoked Zilog into providing Interrupt Mode 1.
+used. This provoked <?php externalLink("Zilog"); ?> into providing Interrupt Mode 1.
 </p>
 <p>
 IM&nbsp;1 is similar to the NMI response. On interrupt, the CPU executes a

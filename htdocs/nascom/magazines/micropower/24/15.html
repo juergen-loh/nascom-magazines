@@ -1,5 +1,5 @@
 <?php columnStart(1); ?>
-<p>
+<p class="continued">
 Latter day ROMs work off 5 volts and take relatively little
 juice from bus lines, particularly as they have standby modes
 when not enabled. So, out with the hacksaw and dawn to work.
@@ -12,13 +12,13 @@ the Nascom&nbsp;1.
 </p>
 <p>
 Next you need to cut the tracks to pin 19 and 21 of the
-other pair of sockets. These carry the *12 and -5 volts needed
-by 2708s but not by 2716s nor bigger ROMs.
+other pair of sockets. These carry the +12 and -5 volts needed
+by <?php externalLink("2708","",""); ?>s but not by <?php externalLink("2716","",""); ?>s nor bigger ROMs.
 </p>
 <p>
 The 2708 sockets provide all the data bus lines and address
 lines A0 ta A9. To accomodate a 2716, you need ta find A10 and
-connect it to pin 19. A 2732 needs A11 and that has to go to pin
+connect it to pin 19. A <?php externalLink("2732"); ?> needs A11 and that has to go to pin
 18, and the BASIC ROM needs A12 on pin 21. Check with a data
 sheet, or any of the many articles on the subject more competent
 than this one, as to what to do with the pins that are now
@@ -27,7 +27,7 @@ anywhere on the Nascom&nbsp;1. Suggested places in increasing order
 of &lsquo;safety&rsquo; are the Z80 CPU Socket (pins 40, 1 and 2), the
 Nascom&nbsp;1 bus/<?php spChar("zwsp"); ?>43-way connector (pins 14, 13 and 9) and lastly the
 Nas/<?php spChar("zwsp"); ?>Gemini/<?php spChar("zwsp"); ?>80-bus connectors on the buffered. motherboard (pins
-40,41 and 42). These are also in increasing order of length, so
+40,<?php spChar("zwsp"); ?>41 and 42). These are also in increasing order of length, so
 a final decision must be made as a compromise between physical
 and electrical properties.
 </p>
@@ -35,7 +35,7 @@ and electrical properties.
 The last part of the modification depends on the RAM board
 that is fitted to the system and produces the correct enable
 lines for the ROMs. I use the Nascom
-<?php externalLink("RAM B","RAM&nbsp;B"); ?>
+<?php externalLink("RAM&nbsp;B"); ?>
 card which has the
 Nascom&nbsp;1 connection on the bank-select socket. Sixteen
 open-collector outputs are used to choose which part of each
@@ -54,11 +54,11 @@ Nas-sys in the 2708 sockets and switch on.
 The first task was to test the RAM and that produced no
 problems at all. Nas-sys appeared to work through all its many
 features and, very happily, when the area of memory from E000H
-upwards is tabulated, we can sew that BASIC is there. Give it a
+upwards is tabulated, we can see that BASIC is there. Give it a
 &lsquo;J&rsquo; and it crashes.
 </p>
 <p>
-Wart states...?? Yes, I have heard of them, but this is not
+Wait states...?? Yes, I have heard of them, but this is not
 meant to be a technical article. Is the ROM fast enough to work?
 Can the Z80 read it at 2MHz? It obviously is because it can be
 tabulated and you can even do a fast copy of its contents into a

@@ -187,7 +187,7 @@
 	,	32
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Relocatable code return instruction"
+	,	"Where &ndash; Relocatable code return instruction"
 	,	""
 	,	"Assembler"
 	,	38
