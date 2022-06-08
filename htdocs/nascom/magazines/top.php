@@ -6,6 +6,7 @@
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
 	include "$navi_head_php";
+	$lang = "en";
 //	$width = 720;
 /*
 	echo "<!--\n";
