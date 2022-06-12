@@ -1,6 +1,14 @@
 <?php
+	if (!isset($toctext)) {
+		$toctext = false;
+	}
+
 	$include_path = "$tppath/../../../cgi-bin";
-	$gHtmlRoot = "$tppath/../..";
+	if ($toctext) {
+		$gHtmlRoot = "$tppath/../../../../../..";
+	} else {
+		$gHtmlRoot = "$tppath/../..";
+	}
 	include "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
@@ -8,13 +16,6 @@
 	include "$navi_head_php";
 	$lang = "en";
 //	$width = 720;
-/*
-	echo "<!--\n";
-	echo "table=$table\n";
-	echo "file=" . __FILE__ . "\n";
-	echo "dirname=" . dirname(__FILE__) . "\n";
-	echo "-->\n";
-*/
 ?>
 
 <!-- top.php -->
@@ -57,7 +58,6 @@
 	if (!isset($path)
 	||	isset($pict)
 	) {
-//		echo "\n$title\n";
 		switch ($title) {
 		case "Nascom Magazines":	$t0s = "<b>";	$t0e = "</b>";	break;
 		case "INMC News":			$t1s = "<b>";	$t1e = "</b>";	break;
@@ -114,18 +114,10 @@
 	</tr>
 </table>
 
-<!--
-<hr noshade size=1>
--->
 <?php
 	echo "<!-- Linie &uuml;ber ganze Spalte --><table style=\"width: 100%\"><tr><td style=\"border-top:1px solid #000\"><p style=\"font-size:1px\">&nbsp;</p></td></tr><tr><td style=\"height: 2px\"></td></tr></table>\n";
 
-/*	if ($title == "Nascom Journal" && $issue == "4/81 5") {
-		$page = 0;
-	} else {
-*/		$page = 1;
-/*	}
-*/
+	$page = 1;
 	echo "<div class=\"row\">\n";
 	if (isset($pict)) {
 		echo "<div class=\"col-12\">\n";
@@ -136,7 +128,6 @@
 	}
 
 	if (isset($pict)) {
-//		echo "<!-- title:$title page:$page path:$path pict:$pict -->\n";
 		echo "\t<h1 id=\"head\">\n\t\t";
 		imageinsert(
 			""
@@ -177,38 +168,23 @@
 			if (isset($pict)) {
 			} else {
 				imageRight(
-					""
-				,	"", "", $page
-				,	sprintf("%scover.jpeg", $path/*, $page*/)
-				,	"", "", ""
-				,	sprintf("%02d/", $first)
+					$toctext ? "../../../" : ""	// $imagepath
+				,	""	// $year
+				,	""	// $issue
+				,	$page	// $page
+				,	sprintf("%scover.jpeg", $path)	// $imagename
+				,	""	// $style
+				,	""	// $class
+				,	""	// $append
+				,	($toctext ? "../" : "") . sprintf("%02d/", $first) . ($toctext ? "text/" : "")	// $link
 				);
 			}
 		}
-/*		if (isset($name)
-		&&	isset($number)
-		) {
-			echo "\t\t</a>\n";
-		}
-*/
-/*		imagelink(
-			$path,
-			sprintf($path . "%02d$tail/", $page),
-			sprintf("%02d.jpeg", $page),
-//			"$title, Seite $page"
-			"$title - $issue"
-		);
-*/
-//		echo "\t</td></tr></table>";
 		echo "<br>\n";
-//		echo "\t\t\t<font size=1pt>&nbsp;</font>\n";
-//		echo "\n-->\n";
 	}
 
 	echo "</div>\n";
-/*	echo "<div class=\"col-".BootstrapTier()."-12\">\n";
-	echo "</div>";
-*/	echo "</div>\n\n";
+	echo "</div>\n\n";
 	if (!isset($path)) {
 		echo "<div style=\"height: 10px\">&nbsp;</div>\n\n";
 	}
@@ -469,15 +445,20 @@ function echoShy($str)
 function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $author, $category, $page, $article = 1)
 {
 	global $trLink;
-//	$server = 'https://80bus.co.uk.mirror.jloh.de';
-//	$pdfPage = $page + $offset;
+	global $toctext;
 	$pathPage = sprintf("%02d", $page);
 
 	echo "\t<tr>\n";
 	echo "\t\t".'<td class="clTitle">';
 
 	echo "<a href=\"";
-	echo "$path/$pathPage/";
+	if ($toctext) {
+		echo "..";
+		$trLink = "text";
+	} else {
+		echo "$path";
+	}
+	echo "/$pathPage/";
 	if ($trLink == "text") {
 		echo "text/#article$article";
 	}

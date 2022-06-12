@@ -253,7 +253,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 			if ($link == "graphic") {
 				echo "../";
 			} else if ($link == "text") {
-				echo "../../";//text/";
+				echo "../../text/";
 			}
 
 		echo "\" title=\"Table of Contents\"><br>";
@@ -539,6 +539,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 		echo "</tr>\n";
 	echo "</table>\n";
 
+	echo "<!-- Navigation top -->\n";
 	navi($pagepath, $link, $first, $last, $magpath, $issuepath, $thumb);
 	echo "<!-- The page -->\n";
 
@@ -628,6 +629,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	.	navBottom("impressum", "Imprint");
 
 	echo "<!-- /The page -->\n";
+	echo "<!-- Navigation bottom -->\n";
 	navi($pagepath, $link, $first, $last, $magpath, $issuepath, $thumb);
 
 	include "$navi_footer_php";
