@@ -12,7 +12,7 @@ von Josef Zeller
 <p>
 Die Tastaturabfrage und die Ermittlung des Zeichens ist beim Nascom
 System der CPU uebertragen. Damit wird die CPU mit
-&quot;Verwaltungsaufgaben belastet, die viel Zeit benoetigen. Diese
+&bdquo;Verwaltungsaufgaben belastet, die viel Zeit benoetigen. Diese
 Zeitbelastung fuer die CPU faellt natuerlich nicht weiter auf, wenn der
 Rechner darauf wartet, bis der Benutzer eine Taste drueckt. Bei
 Programmen, die waehrend der Laufzeit die Tastatur abfragen, um z.B.
@@ -28,14 +28,14 @@ verkuerzt werden kann.
 <p>
 Die Tasten beim
 Nascom&nbsp;1 sind in einer 8mal6 Matrix (8 Spalten und 6 Zeilen)
-angeordnet. Am Anfang der Tastaturroutine setzt die CPU ueber &quot;KBD
-Counter Reset&quot; die Zaehler auf der Tastaturplatine zurueck. Danach
-werden ueber &quot;KBD Counter Clock&quot; die 8 Spalten der Matrix
+angeordnet. Am Anfang der Tastaturroutine setzt die CPU ueber &bdquo;KBD
+Counter Reset&ldquo; die Zaehler auf der Tastaturplatine zurueck. Danach
+werden ueber &bdquo;KBD Counter Clock&ldquo; die 8 Spalten der Matrix
 jeweils einmal durch die CPU gepulst, d.h. die Leitungen (D0-D7 siehe
 Originalschaltbild) werden jeweils einmal auf low gesetzt. Nachdem eine
 Spalte getaktet wurde, fragt die CPU den Port 00 ab. In diesem
 Port ist der Zustand der 6 Spalten angegeben. Wird z.B. die Taste
-&quot;B&quot; gedrueckt, so wird beim Takten von Spalte D1 die Zeile S3
+&bdquo;B&ldquo; gedrueckt, so wird beim Takten von Spalte D1 die Zeile S3
 auf low gesetzt. Ist eines der Bits 0-5 auf low, erkennt die CPU, dass
 eine Taste gedrueckt wurde, und ermittelt daraus das ASCII-Zeichen.
 Nur um zu ermitteln, ob ueberhaupt eine Taste gedrueckt wurde,
@@ -61,7 +61,7 @@ ein OR-Gatter,
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
-damit entweder der CTC oder die CPU den &quot;KBD Counter Clock&quot;
+damit entweder der CTC oder die CPU den &bdquo;KBD Counter Clock&ldquo;
 takten kann.
 </p>
 <?php nowrapEnd(); ?>

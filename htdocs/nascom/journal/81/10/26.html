@@ -97,7 +97,7 @@ Nach 18&deg;&deg; Uhr &nbsp; Tel. _____/_____
 <?php boxStartNowrap(); ?>
 <p>
 Verkaufe NASCOM&nbsp;1 mit NASSYS&nbsp;1, 3 Amp, Netzteil, Buffer-Board,
-Cass.recorder, Schreibm.-Interface (&quot;Hofer-Drucker&quot;) und div.
+Cass.recorder, Schreibm.-Interface (&bdquo;Hofer-Drucker&ldquo;) und div.
 Ass.-Programmen: &nbsp; DM&nbsp;1000.&ndash;<br>
 Martin Riedel,_______ ___/______
 </p>
@@ -126,27 +126,27 @@ Unterprogramme sollten die Register, die sie benutzen und die nicht zur
 Anfang der meisten Unterprogramme aus etlichen PUSHs und das Ende aus
 POPs. Um in größeren Programmen Platz zu sparen &ndash; und zwar sowohl im
 Objektkode als auch im Quellkode, wobei letzteres die
-&quot;Schallgrenze&quot; für Programme über ca. 4KB darstellt &ndash; habe
-ich die folgenden beiden Programme benutzt. Das erste &quot;PUA&quot;
+&bdquo;Schallgrenze&ldquo; für Programme über ca. 4KB darstellt &ndash; habe
+ich die folgenden beiden Programme benutzt. Das erste &bdquo;PUA&ldquo;
 rettet alle Register (IX &amp; IY können leicht noch dazu) auf den
 Stack. Dies ist nicht so trivial, wie man zunächst denkt, denn auf dem
-Stack steht ja zunächst die Rückkehradresse von &quot;PUA&quot;. Die
+Stack steht ja zunächst die Rückkehradresse von &bdquo;PUA&ldquo;. Die
 vorgestelle Version speichert den Inhalt von HL in einem Speicherplatz
-&quot;HLS&quot; ab, der natürlich nicht im Eprom sein darf. Durch
+&bdquo;HLS&ldquo; ab, der natürlich nicht im Eprom sein darf. Durch
 schauderhafte Stackmanipulationen könnte man das zwar auch umgehen,
 aber es wäre deutlich länger &amp; langsamer.
 </p>
 <p>
-Am Anfang eines Unterprogrammes steht dann &quot;CALL PUA&quot;, Das
-Unterprogramm wird nicht mit RET abgeschlossen, sondern mit &quot;JP
-POARET&quot;. In dem simplen &quot;POARET&quot; werden die Register
-zurückgeladen und der &quot;RET&quot;-Befehl ausgeführt, im
-Unterprogramm braucht man also kein &quot;RET&quot;,
+Am Anfang eines Unterprogrammes steht dann &bdquo;CALL PUA&ldquo;, Das
+Unterprogramm wird nicht mit RET abgeschlossen, sondern mit &bdquo;JP
+POARET&ldquo;. In dem simplen &bdquo;POARET&ldquo; werden die Register
+zurückgeladen und der &bdquo;RET&ldquo;-Befehl ausgeführt, im
+Unterprogramm braucht man also kein &bdquo;RET&ldquo;,
 </p>
 <p>
 Überhaupt möchte ich in diesem Zusammenhang darauf hinweisen, daß man
 beim Aufruf eines zweiten Unterprogrammes am Ende des ersten
-Unterprogrammes mit &quot;JP UP2&quot; statt &quot;CALL UP2, RET&quot;
+Unterprogrammes mit &bdquo;JP UP2&ldquo; statt &bdquo;CALL UP2, RET&ldquo;
 den gleichen Effekt erzielt.
 </p>
 <br>

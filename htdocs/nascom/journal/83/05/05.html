@@ -11,7 +11,7 @@ Die Idee der frei definierbaren Drucker-Schnittstelle beim
 <?php externalLink("Blue Label Software Pascal","BLS-PASCAL"); ?>
 hat sicherlich ihre Vorteile, wenn man bedenkt, wie viele verschiedene
 Drucker und somit auch verschiedene Schnittstellen es zur Zeit auf dem
-Markt gibt; ja es ist sicherlich ein &quot;Muß&quot; für den 
+Markt gibt; ja es ist sicherlich ein &bdquo;Muß&ldquo; für den 
 Software-Anbieter, dem Anwender so viel Freiraun zu lassen. Doch hat
 diese Idee auch einen kleinen Nachteil, den ich mit diesem Artikel zu
 beheben versuche. Anwender dieser Pascal-Version werden es sicherlich
@@ -78,7 +78,7 @@ Hier noch etwas, was man auf jeden Fall wissen muß, was aber nicht im
 Manual erwähnt wird: sollte man aus Gründen der Anpassung an die eigene
 Drucker-Routine das Line-Feed-Problem softwaremäßig lösen wollen, so
 ist der Befehl in Zeile 280 unbedingt notwendig, da sonst der
-Print-Befehl mit 'Control &quot;P,&quot;L' die erwünschte
+Print-Befehl mit 'Control &bdquo;P,&bdquo;L' die erwünschte
 Zeilennummerierung nur in der ersten Zeile zustande bringt. Als mir
 dies widerfuhr, dachte ich zuerst, eines der anderen Register, welches
 vielleicht als Zähler benutzt wird, würde von meiner Routine verändert.
@@ -101,7 +101,7 @@ diesem Fall wäre es der Pascal-Compiler) ändert mit dem Befehl NOM (&nbsp;DF
 die Ausgabe-Routine UOUT (75H) eingetragen. Wird nun im Laufe des
 Programms ein Zeichen mit dem Befehl ROUT (RST 30H) ausgegeben, so
 springt das Programm bei Erreichen dieses Befehls zu
-&quot;NAS-SYS&quot; mit dem Zeichen im A-Register. Von dort geht es
+&bdquo;NAS-SYS&ldquo; mit dem Zeichen im A-Register. Von dort geht es
 dann zur Adresse 0C77H, wo ein Sprung zur Benutzer-Routine steht. Und
 nun die Frage: Warum ist es nicht möglich, in der Benutzer-Routine
 einen Befehl wie z.B. BRKPT (RST 20H) oder MRET (DF 5B) zur Ausführung
@@ -118,7 +118,7 @@ untersucht werden soll, um eben die Register anzuzeigen. Dann läuft das
 Programm immer wieder auf den Breakpoint auf; es kommt also gar nicht
 zur Anzeige der Register. Bei NAS-SYS-3 wurde auch das verbessert,
 jedenfalls kann ich damit durch meine Druckerroutine
-&quot;Singlesteppen&quot;. Vermutlich wird der RST-Befehl E7 erst nach
+&bdquo;Singlesteppen&ldquo;. Vermutlich wird der RST-Befehl E7 erst nach
 der Registeranzeige wieder zurückgeschrieben. GK)
 </p>
 <p>

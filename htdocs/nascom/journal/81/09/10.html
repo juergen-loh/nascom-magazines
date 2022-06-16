@@ -11,17 +11,17 @@ Im <a href="../../../08/03/text/#article1">letzten Heft</a>
 wurde der prinzipielle Aufbau einer
 Threaded-Code-Sprache beschrieben. In diesem Heft folgt nun das
 Assembler-Listing einer 1. Version, die nach der Anleitung von Richard
-Fritzson (&quot;Write Your Own FORTH Interpreter&quot;,
+Fritzson (&bdquo;Write Your Own FORTH Interpreter&ldquo;,
 <?php externalLink("Kilobaud Microcomputing Magazine (February 1981)", "Microcomputing, Februar 81", ""); ?>;
-&quot;Write Your Own Pseudo-FORTH Compiler&quot;,
+&bdquo;Write Your Own Pseudo-FORTH Compiler&ldquo;,
 <?php externalLink("Kilobaud Microcomputing Magazine (March 1981)", "ebenda, März 81", ""); ?>)
 geschrieben wurde. Wie der Titel des zweiten Aufsatzes schon
-sagt, hat sich &quot;der Sohn vom Fritz&quot; nicht streng an die
+sagt, hat sich &bdquo;der Sohn vom Fritz&ldquo; nicht streng an die
 Terminologie des Standard-FORTH gehalten, falls es so etwas im strengen
 Sinne überhaupt gibt. Erst nach der Fertigstellung dieser Version kam
 mir ein Verzeichnis des Standard-FORTH der FORTH Interest Group in die
 Hände &ndash; zu spät, um noch Anpassungen vorzunehmen. Programmaufbau,
-Threaded-Code-Routinen und Konstruktion des &quot;Dictionary&quot;
+Threaded-Code-Routinen und Konstruktion des &bdquo;Dictionary&ldquo;
 habe ich von Fritzson übernommen. Die Maschinencode-Routinen wurden
 vom
 <?php externalLink("8080","",""); ?>-Assembler-Code
@@ -43,14 +43,14 @@ austauscht. Geändert habe ich auch die Speicheraufteilung. Stacks und
 Puffer wurden aus dem Programmbereich entfernt. Sie belegen den Bereich
 von E00 bis 1000 Hex. Das Programm belegt beim erstmaligen Start den
 Speicher von 1000 bis 1871 Hex. Beim Aufruf des Interpreters wird dann
-das &quot;Dictionary&quot; an die Obergrenze des Speichers (im Listing
-2000 Hex) verschoben. Das ursprüngliche &quot;Dictionary&quot; und die
+das &bdquo;Dictionary&ldquo; an die Obergrenze des Speichers (im Listing
+2000 Hex) verschoben. Das ursprüngliche &bdquo;Dictionary&ldquo; und die
 Verschiebungsroutine werden dann von dem neu compilierten Code
 überschrieben, so daß also der Code von unten
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
-nach oben und das &quot;Dictionary&quot; von oben nach unten
+nach oben und das &bdquo;Dictionary&ldquo; von oben nach unten
 aufeinander zuwachsen. Ein gegenseitiges Überschreiben wird dabei
 verhindert (DICTIONARY FULL). Die Initialisierungsroutine wurde ganz
 neu geschrieben, da die alte keinen Warmstart ermöglichte. Beim ersten
@@ -80,11 +80,11 @@ Länge der vorangehenden Routine. Aus dem gleichen Grund habe ich auf
 alle Kommentare verzichtet, nur der Name der Routine wird jeweils als
 Kommentar angehängt. Es folgt darum unten eine Kurzbeschreibung aller
 Routinen, die von FORTH aus aufgerufen werden können. Die nicht im
-&quot;Dictionary&quot; enthaltenen Unterprogramme werden im
+&bdquo;Dictionary&ldquo; enthaltenen Unterprogramme werden im
 <a href="../../../10/02/text/#article3">nächsten Heft</a>
-erläutert. In der Beschreibung bedeutet &quot;T&quot; den obersten
-Wert auf dem Stack, &quot;T-1&quot; den zweitobersten etc.
-&quot;X&quot; steht für das brit. Pfundzeichen, &sect; für das
+erläutert. In der Beschreibung bedeutet &bdquo;T&ldquo; den obersten
+Wert auf dem Stack, &bdquo;T-1&ldquo; den zweitobersten etc.
+&bdquo;X&ldquo; steht für das brit. Pfundzeichen, &sect; für das
 Dollarzeichen.
 </p>
 <p>

@@ -6,7 +6,7 @@ wurde, ein Interrupt erzeugt wird. Es besteht noch die Möglichkeit,
 einen Interrupt auszulösen, wenn beim DMA der RDY-Eingang aktiv wird.
 Eine Busanforderung wird dann noch nicht ausgegeben. Zum Schluß dieser
 Programmsequenz folgt die Ausgabe des Low Byte des Interruptvektors.
-Durch das &quot;Status Affect Vector&quot; Bit wird, je nach
+Durch das &bdquo;Status Affect Vector&ldquo; Bit wird, je nach
 Interruptursache die entsprechende Routine angesprungen.
 </p>
 <p>
@@ -17,7 +17,7 @@ Programmierung folgen nun einige Steuerbefehle aus der WR6-Gruppe.
 Durch C7H wird Port A an das Standard-CPU-Timing angeglichen (ist aber
 hier nicht unbedingt nötig). Die folgenden Befehle bewirken, daß die
 Startadressen intern geladen und die Statusbits gelöscht werden. Nach
-&quot;Interrupt Enable&quot; und &quot;Enable DMA&quot; kann der DMA
+&bdquo;Interrupt Enable&ldquo; und &bdquo;Enable DMA&ldquo; kann der DMA
 aktiv werden. Es sei angenommen, daß ein Block eingelesen wird. Dann
 löst der DMA einen Interrupt aus und die CPU springt die
 Interruptroutine IENDBL an. Es wird nun die Meldung ausgegeben, daß
@@ -28,7 +28,7 @@ geladen, während die Adreßzähler aber unverändert bleiben. Die
 Übertragung wird also beim momemtanen Adreßstand fortgesetzt. Zum
 Schluß dieser Kommandosequenz muß dem DMA mitgeteilt werden, daß er
 erst nach dem RETI (Return from Interrupt) wieder aktiv werden darf,
-gefolgt vom &quot;Enable DMA&quot; Kommando. Diese letzten beiden
+gefolgt vom &bdquo;Enable DMA&ldquo; Kommando. Diese letzten beiden
 Steuerworte müssen immer am Ende einer Interruptroutine ausgegeben
 werden, um eine ordnungsgemäße Funktion des DMA zu gewährleisten.
 </p>
@@ -53,8 +53,8 @@ SEARCH sucht ab D000H nach einem bestimmten Byte (D8H) und übergibt die
 Adresse, an der das Match Byte gefunden wurde, im Register HL dem
 aufrufenden Programm. Bei Suchoperationen wird nur ein Port benötigt.
 Beide Programme initialisieren den DMA im Continuous Mode und setzen
-das RDY-Signal intern aktiv. Der DMA beginnt nach dem &quot;Enable
-DMA&quot; Kommando sofort mit der Übertragung bzw. Suche. Lädt das
+das RDY-Signal intern aktiv. Der DMA beginnt nach dem &bdquo;Enable
+DMA&ldquo; Kommando sofort mit der Übertragung bzw. Suche. Lädt das
 aufrufende Programm die Speicherzellen, in denen die Portadressen und
 Blockcounter stehen, mit den aktuellen Parametern, so können diese
 beiden Programme die CPU-Befehle LDIR und CPIR ersetzen.

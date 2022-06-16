@@ -5,24 +5,24 @@ verbannen!) RELOCATOR-Programme haben wir schon im
 <a href="../../../../81/06/12/text/#article1">NASCOM-Journal</a>
 <a href="../../../../81/06/17/text/#article1">6/81</a>
 veröffentlicht. Beide Programme hatten den Nachteil, daß der
-verschiebliche Code &quot;von Hand&quot; erzeugt werden mußte. Das von
+verschiebliche Code &bdquo;von Hand&ldquo; erzeugt werden mußte. Das von
 <?php externalLink("Gary A. Kildall","Gary Kildall"); ?>
 verwendete Verfahren hat den großen Vorteil, daß dieser
 Code von einem Programm erzeugt wird. Voraussetzung ist, daß ein
 Programm in zwei Versionen vorliegt, die sich nur im Speicherbereich
 unterscheiden, in dem sie lauffähig sind. Dieser Unterschied darf
-keinen &quot;krummen Wert&quot; annehmen, sondern muß stets das
-Vielfache einer &quot;ganzen PAGE&quot; (=100H) betragen. Immer dann,
+keinen &bdquo;krummen Wert&ldquo; annehmen, sondern muß stets das
+Vielfache einer &bdquo;ganzen PAGE&ldquo; (=100H) betragen. Immer dann,
 wann ein Programm im Assembler-Quellcode vorliegt, kann man auf
 einfache Weise zwei solche Programmversionen erzeugen (durch
-entsprechende &quot;ORG&quot;-Vorgaben). NASDIS habe ich hingegen erst
+entsprechende &bdquo;ORG&ldquo;-Vorgaben). NASDIS habe ich hingegen erst
 in ein ZEAP-Format disassemblieren und editieren müssen, bevor diese
 Bedingung erfüllt war. Das Verfahren ist im Grunde sehr einfach. Die
 Routine RELVEC vergleicht die beiden Programmversionen Byte für Byte
-und erzeugt einen &quot;Verschiebungsvektor&quot;, in dem für jedes
+und erzeugt einen &bdquo;Verschiebungsvektor&ldquo;, in dem für jedes
 Byte des Programms ein Bit vorgesehen ist. Wird ein Unterschied
 festgestellt, wird das entsprechende Bit gesetzt, sonst nicht. Der
-Unterschied muß immer gleich dem &quot;Page-Unterschied&quot; sein,
+Unterschied muß immer gleich dem &bdquo;Page-Unterschied&ldquo; sein,
 sonst erfolgt eine Fehlermeldung. Der Verschiebungsvektor zu einem
 Programm kann dann separat gespeichert und bei Bedarf geladen werden.
 Die Routine RELOC verrechnet dann diesen Verschiebungsvektor mit einer
@@ -31,7 +31,7 @@ einer vorgewählten Adresse lauf fähig wird. (Die Verschiebung muß man
 dann mit dem Copy-Befehl vornehmeen!) Das Programm muß nicht an einer
 Stelle stehen, wo es auch lauffähig ist. Es muß nur eine Bedingung
 erfüllt sein: Der Abstand der zwei Programmversionen muß gleich dem
-Unterschied in &quot;Pages&quot; sein. Alles weitere kann man wohl dem
+Unterschied in &bdquo;Pages&ldquo; sein. Alles weitere kann man wohl dem
 Assemblerlisting entnehmen.
 </p>
 <p>
@@ -55,7 +55,7 @@ Assemblerlisting entnehmen.
 <table>
 <tr><td>7</td><td>IOBYTE holen</td></tr>
 <tr><td>8</td><td>IOBYTE setzen</td></tr>
-<tr><td>9</td><td>Buffer drucken bis &quot;$&quot;</td></tr>
+<tr><td>9</td><td>Buffer drucken bis &bdquo;$&ldquo;</td></tr>
 <tr><td>10</td><td>Buffer von Konsole füllen</td></tr>
 <tr><td>11</td><td>A=FFH falls Konsoleingabe, sonst=0</td></tr>
 </table>

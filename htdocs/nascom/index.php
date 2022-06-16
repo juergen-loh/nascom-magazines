@@ -8,7 +8,7 @@
 ?>
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
-	<title>Nascom Journal - 80-Bus Journal</title>
+	<title>Nascom Journal &ndash; 80-Bus Journal</title>
 
 <?php include "$navi_body_php";	?>
 

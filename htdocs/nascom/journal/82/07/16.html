@@ -10,7 +10,7 @@ von Tom D. Rüdebusch
 Mit diesem recht einfachen Programm ist es moeglich, einem Nascom
 deutlich verstaendliche Worte zu entlocken. Auf meinem Rechner laeuft
 eine Version, die Pruefsummen oder ganze Speicherbereiche
-&quot;vorliest&quot;. Wer schon einmal laengere Maschinenprogramme nach
+&bdquo;vorliest&ldquo;. Wer schon einmal laengere Maschinenprogramme nach
 dem Eintippen auf Fehler ueberprueft hat, wird einschaetzen koennen,
 welche Erleichterung es bedeutet, nicht mit einem Finger auf dem
 Listing und dem anderen auf dem Bildschirm Hex-Werte vergleichen zu
@@ -23,7 +23,7 @@ Wer also seinem Nascom das Sprechen beibringen will, geht wie folgt vor:
 </p>
 <p>
 Jedes Wort, das der Rechner
-&quot;koennen&quot; soll, muss ihm zuerst &quot;vorgesagt&quot; werden.
+&bdquo;koennen&ldquo; soll, muss ihm zuerst &bdquo;vorgesagt&ldquo; werden.
 Dabei muss die digitalisierte Sprache an Bit 0/Port B anliegen. Dazu
 wird der Ausgang des Recorders, der die gewuenschten Laute von Cassette
 abspielt, oder des Verstaerkers, an den ein Mikrofon angeschlossen ist,
@@ -34,31 +34,31 @@ Eingabe nicht. Schliesslich muss noch ein Verstaerker an Bit 5/Port 0
 angeschlossen werden. Das war dann schon der ganze Hardware-Aufwand.
 </p>
 <p>
-Das Synthese-Programm wird gestartet durch &quot;E 1000 BegAdr
-EndAdr&quot;. Dabei ist BegAdr die erste Speicherstelle, die als
+Das Synthese-Programm wird gestartet durch &bdquo;E 1000 BegAdr
+EndAdr&ldquo;. Dabei ist BegAdr die erste Speicherstelle, die als
 Wortspeicher verwendet werden darf und EndAdr die erste, die nicht mehr
-zu benutzen ist. Nun kann &quot;M&quot; fuer Ruecksprung zum Monitor,
-&quot;A&quot; fuer Aufnahme und &quot;W&quot; fuer Wiedergabe gedrueckt
+zu benutzen ist. Nun kann &bdquo;M&ldquo; fuer Ruecksprung zum Monitor,
+&bdquo;A&ldquo; fuer Aufnahme und &bdquo;W&ldquo; fuer Wiedergabe gedrueckt
 werden. Solange der Computer digitalisierte Laute abspeichert, leuchtet
 die Cassrec.-LED auf; ist der gesamte vorgegebene Speicherbereich
 belegt, erlischt sie, und bevor wieder eine Eingabe moeglich ist, gibt
 eine Warteschleife 2 sec. Zeit, Cassettenrecorder oder Mikrofon
-abzuschalten, um den &quot;Schmutzeffekt&quot; zu vermeiden. Wird dann
-&quot;W&quot; getippt, kann man sich das Ergebnis sofort anhoeren.
+abzuschalten, um den &bdquo;Schmutzeffekt&ldquo; zu vermeiden. Wird dann
+&bdquo;W&ldquo; getippt, kann man sich das Ergebnis sofort anhoeren.
 </p>
 
 <?php columnChangeJustify(2); ?>
 
 <p>
-Die beiden Unterprogramme &quot;record&quot; und &quot;talk&quot;, der
-&quot;Kern&quot; des Synthese-Programms, kann natuerlich auch in
+Die beiden Unterprogramme &bdquo;record&ldquo; und &bdquo;talk&ldquo;, der
+&bdquo;Kern&ldquo; des Synthese-Programms, kann natuerlich auch in
 anderen Anwendungen benutzt werden.Das Register HL muss dann BegAdr,
 und DE EndAdr enthalten, BC und AF werden veraendert. Man sollte
 uebrigens nicht versuchen, Bit 7/Port 0 fuer die Eingabe zu verwenden;
 das klingt nicht besonders. Die beiden scheinbar ueberfluessigen
-Befehle &quot;neg&quot; und &quot;or a&quot; passen die
+Befehle &bdquo;neg&ldquo; und &bdquo;or a&ldquo; passen die
 Aufnahmegeschwindigkeit der der Wiedergabe an. Die Verzoegerung
-&quot;WAIT&quot; stellt einen Kompromiss zwischen Sprachqualitaet und
+&bdquo;WAIT&ldquo; stellt einen Kompromiss zwischen Sprachqualitaet und
 -Speicherbedarf dar. Sie ist fuer 4&nbsp;MHz ausgelegt und kann
 versuchsweise veraendert werden.
 </p>

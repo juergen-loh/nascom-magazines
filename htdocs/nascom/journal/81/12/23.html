@@ -19,7 +19,7 @@ Datenbus ist es nun notwendig, daß die Daten in 2 Richtungen gesendet
 werden können. Die Treiberbausteine müssen also einmal Daten senden
 oder Daten empfangen können. Dieses Umschalten, in welche Richtung die
 Treiberbausteine die Daten puffern sollen, wird nun durch das Signal
-&quot;<?php invertedSignal("DBDR"); ?>&quot;(Data Bus Drive)
+&bdquo;<?php invertedSignal("DBDR"); ?>&ldquo;(Data Bus Drive)
 gesteuert. Während
 <?php invertedSignal("WR"); ?>-Zyklen ist
 <?php invertedSignal("DBDR"); ?> auf high.
@@ -33,11 +33,11 @@ lesen will
 und während des
 <?php invertedSignal("INTACK"); ?> Zyklus wird die
 <?php invertedSignal("DBDR"); ?>-Leitung
-auf &quot;low&quot; gesetzt. Dann sperren IC1 und 8. Der
+auf &bdquo;low&ldquo; gesetzt. Dann sperren IC1 und 8. Der
 Treiber IC2 gibt die Daten vom Nasbus zum Nascom weiter. Normalerweise
 liegt
-&quot;<?php invertedSignal("DBDR"); ?>&quot;
-auf logisch high. Das &quot;low&quot; Signal
+&bdquo;<?php invertedSignal("DBDR"); ?>&ldquo;
+auf logisch high. Das &bdquo;low&ldquo; Signal
 wird auf der Karte generiert, von der die CPU lesen will. Dazu gibt es
 auf jeder Karte eine Decodierlogik, die erkennt, ob die CPU von dieser
 Karte liest. Sie erzeugt, wenn
@@ -45,7 +45,7 @@ Karte liest. Sie erzeugt, wenn
 <?php invertedSignal("IORQ"); ?> und
 <?php invertedSignal("RD"); ?> aktiv sind,
 durch ein IC mit Open-Collector Ausgang auf
-<?php invertedSignal("DBDR"); ?> &quot;low&quot;. (Beim
+<?php invertedSignal("DBDR"); ?> &bdquo;low&ldquo;. (Beim
 <?php invertedSignal("IORQ"); ?> wird
 getestet, ob ein Pheripheriebaustein auf der Karte
 den Interrupt ausgelöst hat und ob

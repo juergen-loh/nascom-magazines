@@ -1,7 +1,7 @@
 <?php columnStartJustify(2, 2); ?>
 
 <p>
-Ein weiterer Fehler betrifft die Funktion: &quot;&gt;&quot;. Sie
+Ein weiterer Fehler betrifft die Funktion: &bdquo;&gt;&ldquo;. Sie
 erwartet die Argumente genau in der umgekehrten Reihenfolge auf dem
 Stack als es in FORTH üblich ist, und schließt außerdem den Fall A = B
 nicht aus.
@@ -13,11 +13,11 @@ Hier ist die Korrektur einfach Zeile 6038 wird geändert in:
 JR NC,TESTE
 </pre>
 <p>
-Die Funktion gibt nun &quot;Wahr&quot; (&nbsp;=&nbsp;FFFFH&nbsp;) auf den Stack, wenn
+Die Funktion gibt nun &bdquo;Wahr&ldquo; (&nbsp;=&nbsp;FFFFH&nbsp;) auf den Stack, wenn
 T-1 größer als T ist, sonst 0.
 </p>
 <p>
-Die Funktion &quot;ROT&quot; ist zwar richtig beschrieben und
+Die Funktion &bdquo;ROT&ldquo; ist zwar richtig beschrieben und
 programmiert, aber leider genau umgekehrt definiert (&nbsp;Abwärtsrotation
 statt Aufwärtsrotation&nbsp;) als es sonst in FORTH üblich ist. Um eine
 Sprachverwirrung auszuschalten, werden wir auch hier eine Änderung
@@ -34,13 +34,13 @@ werden uns später beim Programmieren in FORTH sehr nützlich sein. Sie
 verbessern die Zusammenarbeit mit dem Betriebssystem und gestalten sie
 zugleich variabler. Wir nehmen diese Änderungen direkt in
 Maschinensprache vor. Zunächst verwandeln wir die Constante
-&quot;MEMORY&quot; in eine Variable. Wir tragen ab 1171H statt 5C 11
+&bdquo;MEMORY&ldquo; in eine Variable. Wir tragen ab 1171H statt 5C 11
 ein: 75 11.
 </p>
 <p>
 Bevor wir die nächste Veränderung vornehmen führen wir zunächst einen
 Kaltstart des FORTH-Systems aus und kehren dann sofort mit RESET oder
-dem Befehl &quot;91 NAS-SYS&quot; ins Betriebssystem zurück. Nun fügen
+dem Befehl &bdquo;91 NAS-SYS&ldquo; ins Betriebssystem zurück. Nun fügen
 wir eine zusätzliche Routine und ihren Namen direkt in
 Maschinensprache ein mit Hilfe des MODIFY-Kommandos:
 </p>
@@ -51,13 +51,13 @@ Maschinensprache ein mit Hilfe des MODIFY-Kommandos:
 1E52 16.
 </pre>
 <p>
-Mit &quot;MODIFY&quot; kann das M-Kommando des Betriebssystems
+Mit &bdquo;MODIFY&ldquo; kann das M-Kommando des Betriebssystems
 aufgerufen werden. Der Startwert wird auf dem Stack übergeben, bei der
 Rückkehr wird die nächste freie Speicheradresse ebenfalls auf dem Stack
 übergeben. (In genau dieser Weise funktioniert das natürlich nur unter
 NAS-SYS. T2/T4-Anwender müssen sich das etwas umschreiben.) Bevor wir
 nun das System wieder starten können, müssen wir noch die Werte der
-beiden Variablen &quot;CODE&quot; und &quot;NAMES&quot; verändern,
+beiden Variablen &bdquo;CODE&ldquo; und &bdquo;NAMES&ldquo; verändern,
 damit die
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>

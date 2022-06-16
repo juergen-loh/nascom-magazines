@@ -26,8 +26,8 @@
 <?php
 	$title = str_replace("&shy;", "", $title);
 	echo "\t<title>$title";
-	if (isset($issue)) echo " - $issue";
-	echo " - Table of Contents";
+	if (isset($issue)) echo " &ndash; $issue";
+	echo " &ndash; Table of Contents";
 	echo "</title>\n";
 
 	include "$navi_body_php";

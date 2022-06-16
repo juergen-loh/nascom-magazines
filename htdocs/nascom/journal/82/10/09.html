@@ -9,22 +9,22 @@ natürlich auch noch etwas neues einfallen.
 <p>
 Das Ergebnis sind drei verschiedene Interrupt-Modes, mit denen der
 <?php externalLink("Z80"); ?>
-laufen kann und die vorher entsprechend mit dem Befehl &quot;IM
-mode&quot; (mode = 0, 1&nbsp;, 2&nbsp;) eingestellt werden müssen. Zuvor aber
+laufen kann und die vorher entsprechend mit dem Befehl &bdquo;IM
+mode&ldquo; (mode = 0, 1&nbsp;, 2&nbsp;) eingestellt werden müssen. Zuvor aber
 noch einen Blick auf die Hardware. Nachdem an jedem zusätzlichen Pin
 gespart werden muß, kann also nicht für jeden Interrupt ein eigener
 Anschluß an der CPU vorgesehen werden. Beim Z80 wurden für diesen Zweck
-lediglich zwei Pins spendiert. 1.) Der Eingang &quot;NMI&quot; = nicht
+lediglich zwei Pins spendiert. 1.) Der Eingang &bdquo;NMI&ldquo; = nicht
 maskierbarer Interrupt. Eine Unterbrechung an diesem Pin kann nicht
 maskiert, d.h. softwaremäßig nicht unterdrückt werden und besitzt somit
 die höchste Dringlichkeitsstufe. Die Interrupt-Bedienroutine muß bei
 Adresse 66H liegen, d.h. die Verzweigung dorthin ist hardwaremäßig
 vorgegeben und deshalb auch besonders schnell. Die
 Interrupt-Bedienroutine muß beendet werden mit dem Befehl
-&quot;RETN&quot;.
+&bdquo;RETN&ldquo;.
 </p>
 <p>
-2.) Der Eingang &quot;INT&quot; dient als
+2.) Der Eingang &bdquo;INT&ldquo; dient als
 Sammelleitung sämtlicher anderer Interruptanforderungen. Dieser
 Eingang kann softwaremäßig durch die Befehle Interrupt-Enable und
 Interrupt-Disable gesperrt oder freigegeben werden. Als weitere
@@ -50,18 +50,18 @@ Programm-Zähler automatisch auf den Stack gerettet. Im Unterschied
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
 zum Unterprogramm muß beim Interrupt die entsprechende Routine mit dem
-Befehl &quot;RETI&quot; (return from Interrupt) abgeschlossen werden.
+Befehl &bdquo;RETI&ldquo; (return from Interrupt) abgeschlossen werden.
 </p>
 <p>
 Aber jetzt zurück zu den drei verschiedenen Interrupt-Modes, die den
-Eingang &quot;INT&quot; betreffen. Mode 0: Dieser Mode entspricht genau
+Eingang &bdquo;INT&ldquo; betreffen. Mode 0: Dieser Mode entspricht genau
 der Interruptbehandlungsweise des
 <?php externalLink("8080","",""); ?>. Dabei muß neben dem
 Interruptsignal das unterbrechende Gerät auch den Datenbus bedienen. In
 der Regel wird dieses Gerät die Bitfolge eines Restart-Befehls auf den
 Datenbus legen. Der Prozessor holt also den nächsten Befehl nicht vom
 Speicher, sondern der nächste Befehl wird vom peripheren Gerät
-bestimmt. Speziell dafür gibt es die Ein-Byte-Befehle &quot;RST&quot;,
+bestimmt. Speziell dafür gibt es die Ein-Byte-Befehle &bdquo;RST&ldquo;,
 die gleichzeitig die Startadressen der Bedienroutinen enthalten. Da
 dieser Befehl nur ein Byte lang ist, sind damit nur 8
 Interrupt-Bedienroutinen auswählbar, deren Startadressen im Bereich 0 &ndash;

@@ -517,7 +517,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	echo "<!-- page.php -->";
 	echo "\n\n";
 	echo "\t<title>";
-	echo RemoveEntities("$magazine - $desc");
+	echo RemoveEntities("$magazine &ndash; $desc");
 	echo "</title>\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 	switch ($link) {

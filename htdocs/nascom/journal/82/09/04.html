@@ -27,7 +27,7 @@ Z80A-Version erreichen.
 </p>
 <p>
 Eine weitere Eigenschaft ist die Option
-&quot;Auto Restart&quot;. Der DMA wird nach der Übertragung eines
+&bdquo;Auto Restart&ldquo;. Der DMA wird nach der Übertragung eines
 Blocks veranlaßt, die Port-Startadressen und den Blockcounter
 zurückzusetzen. Der DMA kann ohne Belastung der CPU seine Arbeit erneut
 aufnehmen. Dies ist für Operationen notwendig, die zyklisch wiederholt
@@ -52,7 +52,7 @@ einem Byte und
 diesem Programm fast alle Optionen, die der DMA anbietet, realisiert
 sind. Es sei folgende Problemstellung gegeben: Der DMA soll von einem
 Peripherie-Baustein (Input) Daten blockweise (256 Bytes) in den
-Hauptspeicher laden, bis die &quot;End of Transmission&quot; Marke
+Hauptspeicher laden, bis die &bdquo;End of Transmission&ldquo; Marke
 erreicht wird. Der CPU
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
@@ -71,8 +71,8 @@ geladen und über den OTIR-Befehl die Steuerworte in der Kommandotabelle
 3 zum DMA ausgegeben. Die CPU kehrt dann ins aufrufende Programm
 zurück, währen der DMA simultan dazu seine Arbeit aufnimmt. In der
 Kommandotabelle sind nun sämtliche Steuerworte abgelegt, mit denen der
-DMA programmiert wird. Sie beginnt immer mit einem &quot;RESET
-DMA&quot;&nbsp;, um den DMA in einen definierten Ausgangszustand zu setzen.
+DMA programmiert wird. Sie beginnt immer mit einem &bdquo;RESET
+DMA&ldquo;&nbsp;, um den DMA in einen definierten Ausgangszustand zu setzen.
 In WR0 wird die Funktionsart festgelegt, hier: Übertragung/Suche von
 Port A nach Port B. Als nächstes folgen die Startadresse von Port A und
 der Blocklängenzähler. Im Beispiel steht für Port A die Input-Adresse
@@ -88,7 +88,7 @@ Port B wird in WR2 definiert als Memory, der Port-Counter wird
 incrementiert, und durch Bit 6 auf 1 weiß der DMA, daß durch das
 folgende Byte das Timing von Port B programmiert wird. In diesem Byte
 wird festgelegt, daß Port B immer mit 2 Taktzyklen auf den Speicher
-zugreift. In WR3 folgt das &quot;Match-Byte&quot;&nbsp;, nach dem gesucht
+zugreift. In WR3 folgt das &bdquo;Match-Byte&ldquo;&nbsp;, nach dem gesucht
 werden soll. WR4 legt die Betriebsart fest (hier Byte Mode) und gibt
 an, ob die Startadresse von Port B, der Interruptvektor und die
 Interrupt-Kontrollregister folgen. Nach WR4 wird nun die Port-B-Adresse
