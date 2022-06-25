@@ -11,17 +11,17 @@ accessed, and as in the case of a relative jump instruction the distance is meas
 from the code following the second byte. If the offset lies in the range &pound;80 &ndash; &pound;FF the
 subroutine will precede the instruction calling it.
 </p>
-<table style="width: 100%">
-<tr><td>.</td><td></td></tr>
-<tr><td>FB</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &uarr;</td></tr>
-<tr><td>FC</td><td></td></tr>
-<tr><td>FD</td><td>Negative offsets</td></tr>
-<tr><td>D7 XX</td><td>&lt; Position of relative call</td></tr>
-<tr><td>00</td><td>&lt; Distances measured from here</td></tr>
-<tr><td>01</td><td>Positive offsets</td></tr>
-<tr><td>02</td><td></td></tr>
-<tr><td>03</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &darr;</td></tr>
-<tr><td>.</td><td></td></tr>
+<table>
+<tr><td style="padding-right: 3em">.</td><td></td><td></td></tr>
+<tr><td>FB</td><td></td><td style="text-align: center; padding-right: 33%">&uarr;</td></tr>
+<tr><td>FC</td><td></td><td style="text-align: center; padding-right: 33%">|</td></tr>
+<tr><td>FD</td><td></td><td>Negative offsets</td></tr>
+<tr><td>D7 XX</td><td>&lt;</td><td>Position of relative call</td></tr>
+<tr><td>00</td><td>&lt;</td><td>Distances measured from here</td></tr>
+<tr><td>01</td><td></td><td>Positive offsets</td></tr>
+<tr><td>02</td><td></td><td style="text-align: center; padding-right: 33%">|</td></tr>
+<tr><td>03</td><td></td><td style="text-align: center; padding-right: 33%">&darr;</td></tr>
+<tr><td>.</td><td></td><td></td></tr>
 </table>
 <p>
 By using the relative call routine you can write programs that are completely
@@ -50,7 +50,7 @@ of each block whenever it finds a difference.
 <tr><td>23</td><td></td><td>INC HL</td><td></td></tr>
 <tr><td>1A</td><td></td><td>LD A (DE)</td><td>; Get byte from block 1 in</td></tr>
 <tr><td>BE</td><td></td><td>CP (HL)</td><td>; Is it the same as block 2?</td></tr>
-<tr><td>28 FA</td><td></td><td>JR Z CPLOOP</td><td>; If so, keep going</td></tr>
+<tr><td>28 FA</td><td></td><td style="white-space: nowrap">JR Z CPLOOP</td><td>; If so, keep going</td></tr>
 <tr><td>D7 0C</td><td></td><td>RCAL TAB</td><td>; Tabulate first block</td></tr>
 <tr><td>EB</td><td></td><td>EX DE HL</td><td>; Swap the pointers to the blocks</td></tr>
 <tr><td>D7 09</td><td></td><td>RCAL TAB</td><td>; Tabulate the second block</td></tr>

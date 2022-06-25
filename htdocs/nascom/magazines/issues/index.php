@@ -23,18 +23,27 @@
 ?>
 
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
-
 <h1 id="head" class="FirstHeading">Nascom Magazines</h1>
+</div></div>
+
+<div class="row hyphenate" lang="en"><div class="col-sm-6">
 
 <p>
 	Between 1978 and 1989, a number of English publications were produced.
 	These were centred on the Nascom range at first, then expanded to include
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
+<p></p>
+
+</div><div class="col-sm-6">
+
 <p>
-	There is an <a href="../text/">overall table of contents</a> of English Nascom magazines
-	and another <a href="../../journal/text/">overall table of contents</a> of
-	<a href="../../">German Nascom publications</a>.
+	There is an <a href="../text/">overall table of contents</a> of
+	the English Nascom magazines.
+</p>
+<p>
+	<a href="../../">Nascom journals</a> were also published in Germany.
+	There is also another <a href="../../journal/text/">overall table of contents</a> of it.
 </p>
 
 </div></div>
@@ -202,7 +211,7 @@
 	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
 	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
 	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
-	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wieredo....</a><br>
+	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wierdo....</a><br>
 </p>
 <h2>
 	Dr. Dark&rsquo;s Diary
@@ -211,29 +220,29 @@
 	by Chris Blackmore
 </h3>
 <p>
-	<a href="../inmc-news/04/15/text/#article1">   Episode&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../inmc-news/05/10/text/#article1">    &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../inmc-news/05/23/text/#article1">    &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../inmc-news/06/13/text/#article1">    &nbsp;&nbsp;4&nbsp;&nbsp;</a>
-	<a href="../inmc-news/07/08/text/#article1">    &nbsp;&nbsp;5&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/01/34/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/02/17/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/03/20/text/#article1"> &nbsp;&nbsp;8&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/04/33/text/#article1"> &nbsp;&nbsp;9&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/11/13/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/12/11/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/13/10/text/#article1"> &nbsp;&nbsp;12&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/14/06/text/#article1"> &nbsp;&nbsp;13&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/21/29/text/#article1"> &nbsp;&nbsp;14&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/22/35/text/#article1"> &nbsp;&nbsp;15&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/23/54/text/#article1"> &nbsp;&nbsp;16&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/24/17/text/#article1"> &nbsp;&nbsp;17&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/25/47/text/#article1"> &nbsp;&nbsp;18&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/26/15/text/#article1"> &nbsp;&nbsp;19&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/31/13/text/#article1"> &nbsp;&nbsp;20&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/32/17/text/#article1"> &nbsp;&nbsp;21&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/34/11/text/#article1"> &nbsp;&nbsp;22&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/36/07/text/#article1"> &nbsp;&nbsp;23&nbsp;&nbsp;</a>
+	<a href="../inmc-news/04/15/text/#article1">    Episode&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../inmc-news/05/10/text/#article1">     &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../inmc-news/05/23/text/#article1">     &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../inmc-news/06/13/text/#article1">     &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../inmc-news/07/08/text/#article1">     &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/01/34/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/02/17/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/03/20/text/#article1">  &nbsp;&nbsp;8&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/04/33/text/#article1">  &nbsp;&nbsp;9&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/11/13/text/#article1">  &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/12/11/text/#article1">  &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/13/10/text/#article1">  &nbsp;&nbsp;12&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/14/06/text/#article1">  &nbsp;&nbsp;13&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/21/29/text/#article1">  &nbsp;&nbsp;14&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/22/35/text/#article1">  &nbsp;&nbsp;15&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/23/54/text/#article1">  &nbsp;&nbsp;16&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/24/17/text/#article1">  &nbsp;&nbsp;17&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/47/text/#article1">  &nbsp;&nbsp;18&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/15/text/#article1">  &nbsp;&nbsp;19&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/13/text/#article1">  &nbsp;&nbsp;20&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/32/17/text/#article1">  &nbsp;&nbsp;21&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/34/11/text/#article1">  &nbsp;&nbsp;22&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/36/07/text/#article1">  &nbsp;&nbsp;23&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/11/38/text/#article1"> &nbsp;&nbsp;24&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/12/16/text/#article1"> &nbsp;&nbsp;25&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/13/05/text/#article1"> &nbsp;&nbsp;26&nbsp;&nbsp;</a>
@@ -249,22 +258,22 @@
 	by David Hunt
 </h3>
 <p>
-	<a href="../inmc-news/02/01/text/#article1">       Bit&nbsp;0&nbsp;&nbsp; </a>
-	<a href="../inmc-news/05/02/text/#article1">    &nbsp;&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../inmc-news/07/01/text/#article1">    &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/01/02/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/02/02/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/03/02/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/04/02/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
-	<a href="../inmc-80-news/05/02/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/25/54/text/#article1">  &nbsp;&nbsp;8&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/31/17/text/#article1">  &nbsp;&nbsp;9&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/33/31/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/35/31/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/36/23/text/#article1"> &nbsp;&nbsp;12&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/41/07/text/#article1"> &nbsp;&nbsp;13&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/21/33/text/#article1"> &nbsp; 14 &nbsp; </a>
-	<a href="../scorpio-news/22/23/text/#article1"> &nbsp; 15 &nbsp; </a>
+	<a href="../inmc-news/02/01/text/#article1">        Bit&nbsp;0&nbsp;&nbsp;</a>
+	<a href="../inmc-news/05/02/text/#article1">     &nbsp;&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../inmc-news/07/01/text/#article1">     &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/01/02/text/#article1">  &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/02/02/text/#article1">  &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/03/02/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/04/02/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../inmc-80-news/05/02/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/54/text/#article1">   &nbsp;&nbsp;8&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/17/text/#article1">   &nbsp;&nbsp;9&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/31/text/#article1">  &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/35/31/text/#article1">  &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/36/23/text/#article1">  &nbsp;&nbsp;12&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/41/07/text/#article1">  &nbsp;&nbsp;13&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/21/33/text/#article1"> &nbsp;&nbsp;14&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/22/23/text/#article1"> &nbsp;&nbsp;15&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Z80 made simple
@@ -297,8 +306,8 @@
 	<a href="../80-bus-news/23/57/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/26/65/text/#article1">  &nbsp;&nbsp;8&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/31/51/text/#article1">  &nbsp;&nbsp;9&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/33/48/text/#article1">  &nbsp;&nbsp;10&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/42/29/text/#article1">  &nbsp;&nbsp;11&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/48/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/42/29/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
 </p>
 <h2>
 	Aunt Agatha&rsquo;s Agony Column
@@ -442,7 +451,7 @@
 <p>
 	<a href="../scorpio-news/12/20/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/13/25/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<!--a href="../scorpio-news/21/22/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
+<!-- a href="../scorpio-news/21/22/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
 </p>
 <h2>
 	Digital Imaging Systems

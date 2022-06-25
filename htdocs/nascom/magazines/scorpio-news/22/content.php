@@ -61,7 +61,7 @@
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Lawrence the long-haired wieredo"
+	,	"Lawrence the long-haired wierdo"
 	,	""
 	,	"Lawrence"
 	,	18

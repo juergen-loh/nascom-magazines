@@ -443,7 +443,8 @@ ul
 }
 
 ul.style-ul-nowrap > li,
-div.style-div-nowrap
+div.style-div-nowrap,
+p.style-nowrap
 {
 	page-break-inside: avoid;                 /* Firefox */
 	column-break-inside: avoid;               /* Chrome, Opera, Safari */
@@ -628,6 +629,36 @@ ol.paranthesis li:before
 }
 
 ol.paranthesis li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.paranthesis-colon
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.paranthesis-colon li:before
+{
+	content: counter(section, decimal) "): ";
+	width: 3em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.paranthesis-colon li
 {
 	counter-increment: section;
 	margin-left: 3em;
