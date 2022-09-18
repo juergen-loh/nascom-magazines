@@ -590,9 +590,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "\">";
 			if (!isset($imagepath)) $imagepath = "";
 			if ($link == "graphic") {
-				imagelink($imagepath, $imagepath . sprintf("../%02d/", $page), sprintf("%02d.gif", $page), "Seite $page von $last");
+				imagelink($imagepath, $imagepath . sprintf("../%02d/", $page), sprintf("%02d.gif", $page), "Seite $page"/*" von $last"*/);
 			} else {
-				imagelink($imagepath, $imagepath . sprintf("../../%02d/text/", $page), sprintf("../../thumb/%02d.gif", $page), "Seite $page von $last");
+				imagelink($imagepath, $imagepath . sprintf("../../%02d/text/", $page), sprintf("../../thumb/%02d.gif", $page), "Seite $page"/*" von $last"*/);
 			}
 			echo "</td>\n";
 

@@ -7,7 +7,7 @@ Einsprungadresse: 0E00
 <p>
 Laufende Zeit:
 </p>
-<p>
+<p class="indent">
 0E6E: sek<br>
 0E6F: min<br>
 0E70: std
@@ -23,7 +23,7 @@ Ist diese Speicherstelle
 verschieden von 20H, wird die aktuelle Zeit nicht eingeschrieben.
 Sinn: Flag für andere Tasks, um die zu lesende Uhrzeit nicht
 verfälschen. Wird wieder 20H eingetragen, läuft Uhr normal weiter (ohne
-Zeitverlust&nbsp;!&nbsp;).
+Zeitverlust&nbsp;!).
 </td>
 </tr></table>
 <p>
@@ -92,7 +92,10 @@ kann sehr schlimme Folgen haben.
 <p>
 Der Bildschirm kann nun direkt mit
 </p>
-<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+<pre>
+<u>MC00 nl</u>
+0C00 00  <u>04 . nl </u>
+</pre>
 <p>
 oder im Programm mit dem Unterprogramm
 </p>

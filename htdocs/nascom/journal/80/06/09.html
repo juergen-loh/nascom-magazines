@@ -27,8 +27,8 @@ von der CPU ignoriert. Ansonsten wird
 Die Adresse der nächsten Instruktion (des unterbrochenen Programms)
 wird als spätere RETurnadresse auf den Stack geladen. Dann führt die
 CPU Ober 0066H einen Sprung auf<br>
-$NMI = 0C47H (&nbsp;Nasbug&nbsp;T2, T4&nbsp;) bzw<br>
-$NMI = 0C7DH (&nbsp;NAS-SYS&nbsp;1&nbsp;) aus.
+<span style="padding-left: 6em">$NMI = 0C47H (&nbsp;Nasbug&nbsp;T2, T4&nbsp;) bzw</span><br>
+<span style="padding-left: 6em">$NMI = 0C7DH (&nbsp;NAS-SYS&nbsp;1&nbsp;) aus.</span>
 </p>
 <p>
 Dort steht der Sprungcode C3H mit der nachfolgenden Adresse, die der
@@ -40,15 +40,17 @@ Monitor entsprechend modifiziert
 auch unterbrochene Anwenderprogramme nach der Interruptroutine
 fehlerfrei weiterlaufen.
 </p>
-<p>
-PS. Aufmerksame Betrachter werden feststellen, daß die Schaltung den
-Ausgang /Q von IC&nbsp;42 b nach Masse kurzschließt. TI gibt jedoch im TTL
+<dl>
+<dt><u>PS.</u></dt>
+<dd>Aufmerksame Betrachter werden feststellen, daß die Schaltung den
+Ausgang <?php invertedSignal("Q"); ?> von IC&nbsp;42 b nach Masse kurzschließt. TI gibt jedoch im TTL
 DATA BOOK (76, S.6-56) für den 74LS74A einen für die Dauer von 1 sec
 max. zul. Kurzschlußstrom von &ndash;100 mA an, der jedoch durch den internen
 Collectorwiderstand (120 Ohm), der begrenzten
 &bdquo;Sinkcapability&ldquo; des 7400 und der Schwellenspannung an D1 bei
 weitem nicht erreicht wird&nbsp;!
-</p>
+</dd>
+</dl>
 <p style="text-align:center">
 Ulrich Krüger
 </p>

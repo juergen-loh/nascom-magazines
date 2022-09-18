@@ -8,7 +8,7 @@
 	.	"\n\t\t</p>"
 	.	"\n\t\t<p class=\"hyphenate\">"
 	.	"\n\t\t\tEs gibt auch ein "
-	.	'<a href="../../magazines/">Gesamt-Inhaltsverzeichnis</a> der '
+	.	'<a href="../../magazines/text/">Gesamt-Inhaltsverzeichnis</a> der '
 	.	'<a href="../../magazines/issues/">englischsprachigen Nascom-Magazine</a>.';
 	$tppath="..";
 	include "$tppath/top.php";

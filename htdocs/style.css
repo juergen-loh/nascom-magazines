@@ -74,7 +74,9 @@ th u,
 .noHover
 a:hover			{ background: #fff; color: #000; }
 
-.justify		{ text-align: justify; }
+.justify,
+table.justify tr td
+				{ text-align: justify; }
 .nojustify		{ text-align: left; }
 
 /* bootstrap 5 */
@@ -383,6 +385,11 @@ ul
 	color: black;
 }
 
+span.strike
+{
+	text-decoration: line-through;
+}
+
 .figure-img
 {
 	margin-bottom: 0.1rem;
@@ -609,7 +616,7 @@ ol.lower-alpha-dot li
 
 /*----------------------------*/
 
-ol.paranthesis
+ol.parenthesis
 {
 	list-style-type: none;
 	padding-left: 0;
@@ -620,7 +627,7 @@ ol.paranthesis
 	margin-bottom: 1em;
 }
 
-ol.paranthesis li:before
+ol.parenthesis li:before
 {
 	content: counter(section, decimal) ") ";
 	width: 2.8em;
@@ -628,7 +635,7 @@ ol.paranthesis li:before
 	margin-left: -3em;
 }
 
-ol.paranthesis li
+ol.parenthesis li
 {
 	counter-increment: section;
 	margin-left: 3em;
@@ -639,7 +646,7 @@ ol.paranthesis li
 
 /*----------------------------*/
 
-ol.paranthesis-colon
+ol.parenthesis-colon
 {
 	list-style-type: none;
 	padding-left: 0;
@@ -650,7 +657,7 @@ ol.paranthesis-colon
 	margin-bottom: 1em;
 }
 
-ol.paranthesis-colon li:before
+ol.parenthesis-colon li:before
 {
 	content: counter(section, decimal) "): ";
 	width: 3em;
@@ -658,7 +665,7 @@ ol.paranthesis-colon li:before
 	margin-left: -3em;
 }
 
-ol.paranthesis-colon li
+ol.parenthesis-colon li
 {
 	counter-increment: section;
 	margin-left: 3em;
@@ -669,7 +676,7 @@ ol.paranthesis-colon li
 
 /*----------------------------*/
 
-ol.paranthese
+ol.parenthese
 {
 	list-style-type: none;
 	padding-left: 0;
@@ -680,7 +687,7 @@ ol.paranthese
 	margin-bottom: 1em;
 }
 
-ol.paranthese li:before
+ol.parenthese li:before
 {
 	content: "(" counter(section, decimal) ") ";
 	width: 2.8em;
@@ -688,7 +695,7 @@ ol.paranthese li:before
 	margin-left: -3em;
 }
 
-ol.paranthese li
+ol.parenthese li
 {
 	counter-increment: section;
 	margin-left: 3em;
@@ -729,7 +736,7 @@ ol.sub-lower-alpha-parenthese li
 
 /*----------------------------*/
 
-ol.paranthesis-dot
+ol.parenthesis-dot
 {
 	list-style-type: none;
 	padding-left: 0;
@@ -740,12 +747,12 @@ ol.paranthesis-dot
 	margin-bottom: 1em;
 }
 
-ol.paranthesis-dot li.hide:before
+ol.parenthesis-dot li.hide:before
 {
 	content: "";
 }
 
-ol.paranthesis-dot li:before
+ol.parenthesis-dot li:before
 {
 	content: counter(section, decimal) "). ";
 	width: 2.8em;
@@ -753,7 +760,42 @@ ol.paranthesis-dot li:before
 	margin-left: -3em;
 }
 
-ol.paranthesis-dot li
+ol.parenthesis-dot li
+{
+	counter-increment: section;
+	margin-left: 3em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+/*----------------------------*/
+
+ol.dot-parenthesis
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.dot-parenthesis li.hide:before
+{
+	content: "";
+}
+
+ol.dot-parenthesis li:before
+{
+	content: counter(section, decimal) ".) ";
+	width: 2.8em;
+	display: inline-block;
+	margin-left: -3em;
+}
+
+ol.dot-parenthesis li
 {
 	counter-increment: section;
 	margin-left: 3em;
@@ -816,28 +858,26 @@ ol.number li
 /*----------------------------*/
 ul.dashed-left {
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 0.7em;
 }
 ul.dashed-left > li {
-/*	text-indent: -1.4em;*/
-	padding-left: -1.4em;
+	text-indent: -0.7em;
+/*	padding-left: -1.4em;*/
 }
 ul.dashed-left > li:before {
-	content: "-";
+	content: "– ";
 /*	text-indent: -1.4em;*/
 }
 /*----------------------------*/
 ul.dashed-indent {
 	list-style-type: none;
-	padding-left: 0.75em;
 }
 ul.dashed-indent > li {
-	text-indent: -0.75em;
-/*	padding-left: 0em;*/
+	text-indent: -0.7em;
+	padding-left: 3em;
 }
 ul.dashed-indent > li:before {
-	content: "- ";
-/*	text-indent: -1.3em;*/
+	content: "– ";
 }
 /*----------------------------*/
 ul.asterisk-left {
@@ -867,9 +907,18 @@ ul.asterisk-indent > li:before {
 }
 /*---------------------------------------------------------------------------*/
 
+h1.indent,
+h4.indent,
+div.indent,
 p.indent
 {
 	margin-left: 3em;
+	text-indent: 0;
+}
+
+p.indent2
+{
+	margin-left: 6em;
 	text-indent: 0;
 }
 

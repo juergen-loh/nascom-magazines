@@ -26,16 +26,16 @@ Position befindet.
 <u>A 1400 600</u> oder <u>R 600 0</u> Der Stift zeichnet eine Linie zu Punkt 2
 </li>
 <li>
-<u>A 1100 1200</u> oder <u>R &ndash;300 600</u> Linie zu Punkt 3
+<u>A 1100 1200</u> oder <u>R -300 600</u> Linie zu Punkt 3
 </li>
 <li>
-<u>A 800 600</u> oder <u>R &ndash;300 &ndash;600</u> Linie zu Punkt 1
+<u>A 800 600</u> oder <u>R -300 -600</u> Linie zu Punkt 1
 </li>
 <li>
 <u>H</u> Heben des Stiftes
 </li>
 <li>
-<u>A 0 0</u> oder <u>R &ndash;800 &ndash;600</u> Rückkehr zum Ursprung
+<u>A 0 0</u> oder <u>R -800 -600</u> Rückkehr zum Ursprung
 </li>
 <li>
 <u>S</u> Absenken des Stiftes
@@ -52,18 +52,18 @@ Beginn des Plottens muß jedoch durch &bdquo;ECC00&ldquo; das Programm
 einmal initiiert werden.
 </p>
 <p>
-<u>CF5Bh (ABPLOT)</u>
+<u>CF5B</u><sub>h</sub><u> &nbsp; (ABPLOT)</u>
 </p>
 <p>
 Dieses Unterprogramm wirkt wie das Kommando A,mit dem Unterschied,daß
 die Argumente nicht als Dezimal-,sondern als Binärzahlen übergeben
 werden. Dazu muß vor dem Programmaufruf das X-Argument als 16bit-Zahl
-(MSB ist Vorzeichenbit) in die Speicherplätze 0C54h und 0C55h gebracht
-werden. Entsprechend muß das Y-Argument in 0C56h und 0C57h geladen
+(MSB ist Vorzeichenbit) in die Speicherplätze 0C54<sub>h</sub> und 0C55<sub>h</sub> gebracht
+werden. Entsprechend muß das Y-Argument in 0C56<sub>h</sub> und 0C57<sub>h</sub> geladen
 werden.
 </p>
 <p>
-<u>CF75h (RBPLOT)</u>
+<u>CF75</u><sub>h</sub><u> &nbsp; (RBPLOT)</u>
 </p>
 <p>
 Dieses Unterprogramm wirkt wie das Kommando R. Die Datenübergabe
@@ -74,10 +74,9 @@ Zusätzlich existieren hier noch weitere Unterprogramme,um den
 Zeichenstift in einer der Hauptrichtungen zu bewegen.
 </p>
 <p>
-<u>CEE5h (LINKS)</u>; <u>CEE8h (RECHTS)</u>
-</p>
-<p>
-<u>CEF3h (UNTEN)</u>; <u>CEF6h (OBEN)</u>
+<u>CEE5</u><sub>h</sub><u> &nbsp; (LINKS)</u>; &nbsp; <u>CEE8</u><sub>h</sub><u> &nbsp; (RECHTS)</u>
+<br>
+<u>CEF3</u><sub>h</sub><u> &nbsp; (UNTEN)</u>; &nbsp; <u>CEF6</u><sub>h</sub><u> &nbsp; (OBEN)</u>
 </p>
 <p>
 Beim Aufruf eines dieser Unterprogramme genügt ein Argument, das im

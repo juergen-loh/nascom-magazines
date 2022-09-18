@@ -33,12 +33,14 @@ arguments &ndash; just enter W and the previous arguments, which are still at 0C
 the WRITE routine will make it unnecessary. Instead of jumping to the end of READ,
 first execute the following code:&ndash;
 </p>
+<div class="table-responsive">
 <table class="indent2" style="width: 80%">
-<tr><td>21 10 0C  </td><td>  LD HL, &pound;0C10</td><td>    ; Point HL to ARG3     </td></tr>
-<tr><td>35        </td><td>  DEC (HL)          </td><td>    ; Decrement ARG3       </td></tr>
-<tr><td>C2 XX XX  </td><td>  JP NZ, REWRT      </td><td>    ; Continue if non-zero </td></tr>
-<tr><td>C3 YY YY  </td><td>  JP RDEND          </td><td>    ; Jump to end of READ  </td></tr>
+<tr><td>21 10 0C</td><td>LD HL, &pound;0C10</td><td>; Point HL to ARG3     </td></tr>
+<tr><td>35      </td><td>DEC (HL)          </td><td>; Decrement ARG3       </td></tr>
+<tr><td>C2 XX XX</td><td>JP NZ, REWRT      </td><td>; Continue if non-zero </td></tr>
+<tr><td>C3 YY YY</td><td>JP RDEND          </td><td>; Jump to end of READ  </td></tr>
 </table>
+</div>
 <p>
 For Nas-Sys&nbsp;1 the address XXXX is &pound;04EF; for Nas-Sys&nbsp;3 it is &pound;502. Address
 YYYY is the end of the READ routine, where the table pointer is reset. If you use the
@@ -51,12 +53,26 @@ there is a misprint in the
 from line 32 it should
 read:&ndash;
 </p>
+<div class="table-responsive">
 <table class="indent2" style="width: 80%">
-<tr><td>CF R2  </td><td>   RST RIN   </td><td>    ; GET CHARACTER         </td></tr>
-<tr><td>3C     </td><td>   INC A     </td><td>    ; IS IT FF?             </td></tr>
-<tr><td>20FA   </td><td>   JR NZ, R1 </td><td>    ; IF NOT, KEEP LOOKING  </td></tr>
+<tr><td>CF  </td><td>R2</td><td>RST RIN  </td><td>; GET CHARACTER         </td></tr>
+<tr><td>3C  </td><td>  </td><td>INC A    </td><td>; IS IT FF?             </td></tr>
+<tr><td>20FA</td><td>  </td><td>JR NZ, R1</td><td>; IF NOT, KEEP LOOKING  </td></tr>
 </table>
+</div>
 <h4 class="article-stopper">
-&ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash; &nbsp; &nbsp; &nbsp; &ndash;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash; &nbsp; &nbsp; &nbsp;
+&ndash;
 </h4>
 <?php columnEnd(1); ?>

@@ -9,7 +9,7 @@
 	.	"published between 1978 and 1989."
 	.	"</p>\n\t<p>"
 	.	"There is also an "
-	.	"<a href=\"$pre../journal/text/\">overall table of contents</a> of "
+	.	"<a href=\"$pre../journal/$post\">overall table of contents</a> of "
 	.	"<a href=\"$pre../\">German Nascom publications</a>.";
 	$bottom =
 		"80-BUS publications spanned nearly 12 years from simple Z80 computers "

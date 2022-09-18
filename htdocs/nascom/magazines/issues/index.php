@@ -470,7 +470,9 @@
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
 <p>
 	Timeline of magazines, taken from Richard Espley&rsquo;s site
-	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:<br>
+	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:
+</p>
+<p>
 	<a href="https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm" target="_blank">
 		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif"
 			width="558" height="132" title="Timeline">

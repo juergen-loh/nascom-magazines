@@ -24,7 +24,7 @@ output to port 5, and control words to port 7. A suitable PIO initialisation rou
 is thus:&ndash;
 </p>
 <table class="indent2">
-<tr><td style="white-space: nowrap; padding-right: 4em">LD A, &pound;CF</td><td>Control word to specify mode 3</td></tr>
+<tr><td class="nowrap" style="padding-right: 4em">LD A, &pound;CF</td><td>Control word to specify mode 3</td></tr>
 <tr><td>OUT (6) , A</td><td>Send this to port 6</td></tr>
 <tr><td>XOR A</td><td>Next byte sent to port 6 specifies which</td></tr>
 <tr><td>OUT (6), A</td><td>lines are outputs (0), which inputs (1)</td></tr>
@@ -52,7 +52,7 @@ strobe line is pulled to zero volts.
 <tr><td></td><td>PUSH AF</td><td>Save the character to be printed</td></tr>
 <tr><td style="padding-right: 4em">TSTO</td><td>IN A, (5)</td><td>Read port B</td></tr>
 <tr><td></td><td>RRC A</td><td>Rotate bit 0 to carry flag</td></tr>
-<tr><td></td><td style="white-space: nowrap; padding-right: 4em">JR C, TSTO</td><td>Loop while bit 0 is high</td></tr>
+<tr><td></td><td class="nowrap" style="padding-right: 4em">JR C, TSTO</td><td>Loop while bit 0 is high</td></tr>
 <tr><td></td><td>POP AF</td><td>Recover character</td></tr>
 <tr><td></td><td>PUSH AF</td><td>Resave</td></tr>
 <tr><td></td><td>OUT (4), A</td><td>Output to printer</td></tr>
