@@ -6,7 +6,7 @@ by various parameters is to be read or written, the associated format statement
 could look like this:
 </p>
 <p class="center">
-FORMAT(A4,2X,I3,2X,3F6.3)
+FORMAT(A4,2X,I3,<?php spChar("zwsp"); ?>2X,3F6.3)
 </p>
 <p>
 This looks complicated but means that a letter batch identifier and 3 digit
@@ -22,13 +22,13 @@ This looks a bit messy and the parameters should be spaced out; this can be done
 simply by amending part of the format description to include spaces:
 </p>
 <p>
-either &ndash; (A4,2X,I3,2X,F6.3,2X,F6.3,2X,F6.3)
+either &ndash; (A4,2X,I3,<?php spChar("zwsp"); ?>2X,F6.3,<?php spChar("zwsp"); ?>2X,F6.3,<?php spChar("zwsp"); ?>2X,F6.3)
 </p>
 <p class="indent">
 which works but is untidy
 </p>
 <p>
-or &ndash; (A4,2X,I3,3(2X,F6.3))
+or &ndash; (A4,2X,I3,<?php spChar("zwsp"); ?>3(2X,F6.3))
 </p>
 <p class="indent">
 which also works but is better programming practice!

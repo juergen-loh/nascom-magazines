@@ -1059,7 +1059,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	switch ($link) {
 	case "&micro;PD7220":			$url = "https://www.datasheetarchive.com/upd7220-datasheet.html";				break;
 	case "&micro;PD765":			$url = "http://dunfield.classiccmp.org/r/765.pdf";								break;
-	case "2114":					$url = "https://$lang.wikipedia.org/wiki/2114";									break;
+	case "2114":if ($lang == "en")	$url = "https://en.wikipedia.org/wiki/Random-access_memory#SRAM";
+				else				$url = "https://$lang.wikipedia.org/wiki/2114_(SRAM)";							break;
 	case "2708":					$url = "https://www.jrok.com/datasheet/TMS2708.pdf";							break;
 	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
@@ -1459,7 +1460,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 <?php
 //		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
 		if (is_file("$document_root/favicon.ico")) {
-			echo "\t<a class=\"navbar-brand\" href=\"$gHtmlRoot/\">\n";
+			echo "\t<a class=\"navbar-brand\" href=\"https://jloh.de/\">\n";
 			echo "\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"\">\n";
 			echo <<<HEREDOC
 		</a>
@@ -1507,7 +1508,11 @@ HEREDOC;
 							echo " active";
 						}
 						echo "\">\n";
-						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"$gHtmlRoot/$dir/\">$text</a>\n";
+						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"$gHtmlRoot/$dir";
+						if ($dir != "") {
+							echo "/";
+						}
+						echo "\">$text</a>\n";
 						echo "\t\t\t\t</li>\n";
 					}
 				}
@@ -1518,6 +1523,7 @@ HEREDOC;
 				addNav("nascom/magazines/issues", "Nascom Magazines", "nascom/magazines");
 				addNav("pico", "PICO");
 				addNav("cpm-plus", "CP/M");
+				addNav("", "Fido");
 
 				function navBottom($dir, $desc)
 				{

@@ -23,9 +23,9 @@ If it is necessary to read in .HEX files, then DDT or ZSID are needed as they
 can handle .HEX format files. The read OFFSET, once calculated, will be the
 same for ALL .HEX overlays in a given system, since the address in the memory
 image is offset from the running address by the same amount. The offset can be
-calculated by using the H command, (H low,high) where low and high are the image
+calculated by using the H command, (H low,<?php spChar("zwsp"); ?>high) where low and high are the image
 and RAM address of any one segment or buffer. The image address of the RCP is
-03500H, and the RAM address is 0F200H. The command H,3500,F200 gives the answer
+03500H, and the RAM address is 0F200H. The command H,3500,<?php spChar("zwsp"); ?>F200 gives the answer
 2700,4300. Now 4300H added to 0F200H gives 013500H. The leading &lsquo;1&rsquo; is lost
 since it cannot be contained in a 16 bit value, leaving 03500H, which is the
 target address. Thus 04300H is the answer needed. (Since the OFFSET value is

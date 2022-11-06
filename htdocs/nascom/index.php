@@ -370,7 +370,7 @@ gesammelt.
 <a href="journal/81/09/13/text/#article1">Platzmangel</a><br>
 <a href="journal/81/10/27/text/#article1">Computermisshandlung</a><br>
 <a href="journal/81/12/54/text/#article1">Weihnachtliches</a><br>
-<a href="journal/82/01/35/text/#article1">Das Heft mit den zwei Mitten</a><br>
+<a href="journal/82/01/35/text/#article1">Ein Heft mit zwei Mitten</a><br>
 <a href="journal/82/02/30/text/#article1">Ostereiersuchprogramm</a><br>
 <a href="journal/82/03/51/text/#article1">Programmiersprache BIRNE</a><br>
 <a href="journal/82/05/31/text/#article1">Sex und Computer</a><br>

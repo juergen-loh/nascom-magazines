@@ -14,29 +14,29 @@ erzeugt, der in einem 2k-Eprom gespeichert ist. Umgeschaltet zwischen
 erstem und zweitem Zeichensatz wird ueber Bit 7 des Video-RAM.
 </p>
 
-<?php box0Start(); ?>
-<?php imageCenter($imagepath, $year, $issue, $page, "Image-20-2.jpeg"); ?>
-<?php box0End(); ?>
+<?php imageinsert/*Center*/($imagepath, $year, $issue, $page, "Image-20-2.png"); ?>
 
 <p>
 So weit, so gut; bald wird man sich jedoch wünschen, man
 haette mehr Zeichen zur Verfuegung als die 128 zusaetzlichen. Die
-BASIC -Blockgraphik beansprucht 64 Zeichen, die Schach Graphik 64
-weitere,Indizes und mathematische Sonderzeichen nochmal 64, und ein
+BASIC&nbsp;- Blockgraphik beansprucht 64 Zeichen, die Schach Graphik 64
+weitere,<?php spChar("zwsp"); ?>Indizes und mathematische Sonderzeichen nochmal 64, und ein
 griechisches Alphabet waere auch nicht schlecht. Die beste Loesung ist
 ein Zeichensatz, der sich beliebig softwaremaessig definieren laesst.
 </p>
 <p>
 <span title="Fehler: Wortwiederholung">laesst.</span>
-Der Zeichengenerator muss also ein RAM sein,auf das von der CPU
+Der Zeichengenerator muss also ein RAM sein,<?php spChar("zwsp"); ?>auf das von der CPU
 zugegriffen werden kann. Es erweist sich als sinnvoll, auch ein Lesen
 aus dem Grafik-RAM zuzulassen.
 </p>
 <p>
-Die hier vorgestellte Schaltung erweitert den NASCOM-Zeichengenerator
+Die hier vorgestellte
+<a href="../../23/text/#article1">Schaltung</a>
+erweitert den NASCOM-Zeichengenerator
 von 2k auf 4k. Der erste Teil ist der originale NASCOM&nbsp;1
 Zeichengenerator&nbsp;, der zweite Teil ein 2k RAM. Als ich die Schaltung
-vor 2 Jahren aufbaute,nahm ich vier <?php externalLink("2114","",""); ?>&rsquo;er;
+vor 2 Jahren aufbaute,<?php spChar("zwsp"); ?>nahm ich vier <?php externalLink("2114","",""); ?>&rsquo;er;
 heute waere vermutlich ein
 <?php externalLink("6116","",""); ?>&rsquo;er
 guenstiger. Der Zeichengenerator mit nachgeschaltetem Buffer
@@ -47,7 +47,7 @@ Lochrasterplatte auf der RAM-Karte aufgebaut. Dort
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
 ist genuegend Platz direkt am Busstecker, wo auch die Adressen- und
-Datenleitungen sehr schoen zugaenglich sind. Die Verbindung zur
+Datenleitungen sehr schoen zu<?php spChar("shy"); ?>gaeng<?php spChar("shy"); ?>lich sind. Die Verbindung zur
 NASCOM-Grundplatine erfolgt ueber ein Kabel mit 24-poligem Stecker, der
 in die Fassung des Zeichengenerators eingesteckt wird. Zusaetzlich muss
 noch eine Verbindung zwischen folgenden IC&rsquo;s hergestellt werden:

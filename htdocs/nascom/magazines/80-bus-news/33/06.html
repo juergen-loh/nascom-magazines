@@ -31,14 +31,14 @@ The text will &lsquo;wrap around&rsquo; onto the next line of the screen, etc., 
 some words may appear broken when the end of screen line is reached. In memory
 though, the text will be continuous. Thus a paragraph of say 200 words may be
 entered, and the cursor may be half way down the screen but the line counter
-will still say line 1, because the logical end of line is marked by a CR,LF
+will still say line 1, because the logical end of line is marked by a CR,<?php spChar("zwsp"); ?>LF
 sequence, which results from pressing ENTER, or from formatting. Half a dozen
 such paragraphs may occupy several K. of memory and take two or three screens
 to display fully, but may only register six lines on the status display.
 </p>
 <p>
 When the text is formatted to the desired length however, the program
-will place a CR,LF at the end of every line of 76 (or whatever length set &ndash;
+will place a CR,<?php spChar("zwsp"); ?>LF at the end of every line of 76 (or whatever length set &ndash;
 N.B. These are .1&Prime; steps, NOT characters), and the line counter will display
 the correct count. Since the screen can only display 48 or 80 chars. on a
 line, any lines formatted longer than this will &lsquo;wrap around&rsquo;, and this will
@@ -46,7 +46,7 @@ result in the line count indicator not agreeing with lines as counted on the
 screen.
 </p>
 <p>
-Another consequence of the lack of CR,LF before formatting is that the
+Another consequence of the lack of CR,<?php spChar("zwsp"); ?>LF before formatting is that the
 UP/DOWN arrow keys will cause the cursor to jump the whole length of the
 logical line. This makes reaching the middle of a paragraph by cursor
 character or word commands tedious. The answer is to format frequently, or to

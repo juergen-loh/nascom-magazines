@@ -4,20 +4,20 @@ Die MDCR-Signale haben folgende Bedeutung:
 </p>
 
 <table>
-<tr><td>/WDA</td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibdateneingang</td></tr>
-<tr><td>/BET</td><td>&nbsp; &ndash; &nbsp;</td><td>Bandendeanzeige</td></tr>
-<tr><td>/WCD</td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibbefehleingang</td></tr>
-<tr><td>/REV</td><td>&nbsp; &ndash; &nbsp;</td><td>Eingang für Rückspulbefehl</td></tr>
-<tr><td>/FWD</td><td>&nbsp; &ndash; &nbsp;</td><td>Eingang für Vorspulbefehl</td></tr>
+<tr><td><?php invertedSignal("WDA"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibdateneingang</td></tr>
+<tr><td><?php invertedSignal("BET"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Bandendeanzeige</td></tr>
+<tr><td><?php invertedSignal("WCD"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibbefehleingang</td></tr>
+<tr><td><?php invertedSignal("REV"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Eingang für Rückspulbefehl</td></tr>
+<tr><td><?php invertedSignal("FWD"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Eingang für Vorspulbefehl</td></tr>
 <tr><td>RDC</td><td>&nbsp; &ndash; &nbsp;</td><td>Lesetaktausgang</td></tr>
-<tr><td>/RDA</td><td>&nbsp; &ndash; &nbsp;</td><td>Lesedatenausgang</td></tr>
-<tr><td>/CIP</td><td>&nbsp; &ndash; &nbsp;</td><td>Anzeige für eingelegte Kassette</td></tr>
-<tr><td>/WEN</td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibschutzanzeige</td></tr>
+<tr><td><?php invertedSignal("RDA"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Lesedatenausgang</td></tr>
+<tr><td><?php invertedSignal("CIP"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Anzeige für eingelegte Kassette</td></tr>
+<tr><td><?php invertedSignal("WEN"); ?></td><td>&nbsp; &ndash; &nbsp;</td><td>Schreibschutzanzeige</td></tr>
 </table>
 
 <p>
-Die Daten müssen flußwechselkodiert aufs Band geschrieben werden, d.h.
-eine 1 wird als 1-0-Folge, eine 0 als 0-1-Folge am /WDA-Eingang
+Die Daten müssen flußwechselkodiert auf's Band geschrieben werden, d.h.
+eine 1 wird als 1-0-Folge, eine 0 als 0-1-Folge am <?php invertedSignal("WDA"); ?>-Eingang
 geschrieben. Die Schreibfrequenz liegt somit bei 12000 Halbbit/sec.;
 jedes Halbbit muß 83 usec. lang sein. Bei meinem Interface erfolgt das
 Timing per Hardware; alle 83 usec gibt die steigende Flanke eines
@@ -32,8 +32,12 @@ Wem dies zu aufwendig ist, der kann das 12kHz-Signal und FF1 ganz
 weglassen, Bit 5 direkt (gestrichelte Linie) mit der. Datenleitung
 verbinden und ein Software-Timing über Zeitschleifen vorsehen. Die
 Zeiten brauchen nicht genau eingehalten zu werden, der MDCR verträgt
-auch kleinere Abweichungen ohne Lesefehler. FF2 schaltet die
-Bandbewegungsbefehle /FWD und /REV ab, wenn /BET auf 0 geht. Es läßt
+auch kleinere Abweichungen ohne Lesefehler.
+</p>
+<p>
+FF2 schaltet die
+Bandbewegungsbefehle <?php invertedSignal("FWD"); ?> und <?php invertedSignal("REV"); ?> ab,
+wenn <?php invertedSignal("BET"); ?> auf 0 geht. Es läßt
 sich durch softwaremäßigen Bandstop (Bit 6 und 7 auf 1) wieder
 rücksetzen. Die restlichen Gatter dienen der Pegelumsetzung, da der
 MDCR mit 12-V-CMOS-Logik arbeitet. Es mag etwas suspekt erscheinen,
