@@ -1,9 +1,9 @@
 <?php columnStart(1); ?>
 <p>
 The C I/O system starts with a set of character level functions: getc(chan),
-putc(chan,char), getchar() and putchar(char). The last two use the default streams.
+putc(chan,<?php spChar("zwsp"); ?>char), getchar() and putchar(char). The last two use the default streams.
 Unlike CP/M, UNIX uses NEWLINE (ASCII 10) to separate lines rather than
-CR,LF (13,10). Also unlike CP/M, UNIX knows the exact length of all files, so end
+CR,<?php spChar("zwsp"); ?>LF (13,<?php spChar("zwsp"); ?>10). Also unlike CP/M, UNIX knows the exact length of all files, so end
 of file is reported by a value of &ndash;1 (which is why getc() and getchar() return an
 integer rather than a character). Because of these differences, files must be declared
 as either text or binary type. This is not a problem since UNIX versions of C must
@@ -11,8 +11,8 @@ be able to cope with standard terminal devices so the facility is available.
 </p>
 <p>
 Built on the basic I/O above are string I/O functions: puts(str), gets(str),
-fputs(str,chan) and fgets(str,len,chan), and also word I/O getw(chan) and
-putw(word,chan) and block I/O which accounts for a number of similar functions
+fputs(str,<?php spChar("zwsp"); ?>chan) and fgets(str,<?php spChar("zwsp"); ?>len,<?php spChar("zwsp"); ?>chan), and also word I/O getw(chan) and
+putw(word,<?php spChar("zwsp"); ?>chan) and block I/O which accounts for a number of similar functions
 which I don&rsquo;t have room to go into here. The behaviour of the string I/O is slightly
 different with the file functions. Specifically, puts() adds a newline, fputs() does
 not. Also fgets() has a length limit and leaves the newline in, whereas gets()
