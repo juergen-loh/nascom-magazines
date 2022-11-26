@@ -1064,7 +1064,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "2708":					$url = "https://www.jrok.com/datasheet/TMS2708.pdf";							break;
 	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
-	case "2732A":					$url = "https://www.retro-kit.co.uk/user/custom/Acorn/3rdParty/VELA/datasheets/2732A-datasheet.pdf";	break;
+	case "2732A":					$url = "https://www.futurlec.com/Memory/2732_Datasheet.shtml";					break;
 	case "2764":					$url = "http://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";					break;
 	case "2N3819":					$url = "https://www.onsemi.com/pub/Collateral/2N3819-D.PDF";					break;
 	case "4116":					$url = "https://console5.com/techwiki/images/8/85/MK4116.pdf";					break;
@@ -1248,7 +1248,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "mc 9/1983, Seite 70":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-09.pdf#page=68";		break;
 	case "mc 9/1984, Seite 86":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-09.pdf#page=86";		break;
 	case "mc";						$url = "https://$lang.wikipedia.org/wiki/Mc_%28Zeitschrift%29";					break;
-	case "mc-CP/M":					$url = "http://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
+	case "mc-CP/M":					$url = "https://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
 	case "MC6845":					$url = "http://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";			break;
 	case "MDCR-Manual":				$url = "http://www.nascomhomepage.com/pdf/mdcr.pdf";							break;
 	case "Merseyside Nascom Users Group":	$url = "http://www.nascomhomepage.com/pdf/nasproginfo.pdf";				break;
@@ -1460,8 +1460,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 <?php
 //		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
 		if (is_file("$document_root/favicon.ico")) {
-			echo "\t<a class=\"navbar-brand\" href=\"https://jloh.de/\">\n";
-			echo "\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"\">\n";
+			echo "\t\t<a class=\"navbar-brand\" href=\"https://jloh.de/\">\n";
+			echo "\t\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"\" title=\"Homepage von Jürgen Loh\">\n";
 			echo <<<HEREDOC
 		</a>
 		<button

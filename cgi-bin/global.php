@@ -20,13 +20,18 @@
 	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);
 	if ($document_root == "..") {
 		$document_root = ".";	// only valid in rootdir
-	} else {//if (substr($document_root, 0, 3) == "../") {
+	} else if (substr($document_root, 1, 2) == ":/") {	// Absoluter Pfad mit Laufwerk ("C:/")
+		$document_root = $document_root . "/htdocs";
+	} else {// if (substr($document_root, 0, 3) == "../") {
 		$document_root = substr($document_root, 3);	// remove ../
 //	} else {
 //		echo "document_root = $document_root";	// fehler
 	}
-//	echo "<!-- include_path = $include_path document_root = $document_root -->";
-
+/*	echo "<!--\n"
+	.	"include_path = $include_path\n"
+	.	"document_root = $document_root\n"
+	.	"-->\n";
+*/
 	function httpLastModified($files, &$lastModified)
 	{
 		$lasttime = 0;

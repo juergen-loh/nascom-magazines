@@ -2,11 +2,13 @@
 	header('Content-Type: text/html; charset=utf-8');
 ?><!doctype html><?php /* DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" */ ?>
 
-<?php $lang = "de"; ?>
-<html lang="de">
+<?php $lang = "de";
+	echo "<html lang=\"$lang\">\n";
+?>
 
 <!-- navi-head.php -->
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 
 <?php	if ($nascom) {	?>
@@ -20,7 +22,6 @@
 	<?php echo "<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/apple-touch-icon.png\" sizes=\"96x96\">\n"; ?>
 	<?php echo "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"$gHtmlRoot/apple-touch-icon.png\">\n"; ?>
 <?php	} // nascom	?>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--bootstrap-->
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n"; ?>
