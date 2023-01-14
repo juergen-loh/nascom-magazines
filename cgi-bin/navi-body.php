@@ -187,16 +187,23 @@ function InsertArrow($s)
 	echo "\" aria-hidden=true></span>";
 */
 // font awesome 5
-	echo "<span class=\"fas fa-";
+	$class = $arrow = "";
+
 	switch ($s) {
-	case "previous-page":	echo "arrow-left";		break;
-	case "first-page":		echo "fast-backward";	break;
-	case "previous-issue":	echo "backward";		break;
-	case "next-issue":		echo "forward";			break;
-	case "last-page":		echo "fast-forward";	break;
-	case "next-page":		echo "arrow-right";		break;
+	case "previous-page":	$arrow = "play";			$class = "mirror-horizontal";	break;
+	case "first-page":		$arrow = "fast-backward";									break;
+	case "previous-issue":	$arrow = "backward";										break;
+	case "next-issue":		$arrow = "forward";											break;
+	case "last-page":		$arrow = "fast-forward";									break;
+	case "next-page":		$arrow = "play";											break;
 	}
-	echo "\" aria-hidden=true></span>";
+
+//	echo "<!-- InsertArrow($s) -->";
+	echo "<span class=\"";
+	if ($class != "") {
+		echo "$class ";
+	}
+	echo "fas fa-$arrow\" aria-hidden=true></span>";
 /*
 // bootstrap icons
 	echo "<img src=\"/cdn/icons/icons/";
@@ -353,15 +360,24 @@ function spChar($spChar)
 		break;
 	case "lowast":
 		echo "*";
-//				echo "&$spChar;";
-//				echo "&lowast;";
-//				echo "&#9788;";
+//		echo "&$spChar;";
+//		echo "&lowast;";
+//		echo "&#9788;";
 		break;
 	case "circle1":
-		echo "&#x2780;";	// 	dingbat circled sans-serif digit one
+		echo "&#x2780;";	// dingbat circled sans-serif digit one
 		break;
 	case "circle2":
-		echo "&#x2781;";	// 	dingbat circled sans-serif digit two
+		echo "&#x2781;";	// dingbat circled sans-serif digit two
+		break;
+	case "rarr":
+		echo "&rarr;";		// right arrow
+		break;
+	case "tlarr":
+		echo "&lsh;";		// top left arrow
+		break;
+	case "bell":
+		echo "&#x237e;";	// bell symbol / klingelsymbol
 		break;
 	case "lowast_zwsp":
 		spChar("zwsp");
@@ -1372,9 +1388,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Xyl":						$url = "https://www.urbandictionary.com/define.php?term=xyl";					break;
 	case "Z-80-Applikationsbuch":	$url = "https://d-nb.info/831222980";											break;
 	case "Z80 CPU":					$url = "https://www.zilog.com/docs/z80/um0080.pdf";								break;
-	case "Z80 CTC":					$url = "https://www.zilog.com/docs/z80/dc2845.pdf";								break;
+	case "Z80 CTC":					$url = "https://www.zilog.com/docs/z80/ps0181.pdf";								break;
+	case "Z80 DART":				$url = "https://datasheet.datasheetarchive.com/originals/scans/Scans-97/DSAIHSC00072076.pdf";	break;
 	case "Z80 DMA":					$url = "https://www.zilog.com/docs/z80/ps0179.pdf";								break;
 	case "Z80 PIO":					$url = "https://www.zilog.com/docs/z80/ps0180.pdf";								break;
+	case "Z80 SIO":					$url = "https://www.zilog.com/docs/z80/ps0183.pdf";								break;
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
 	case "Z80-KIT Anwenderhandbuch":$url = "http://2jo.de/robotron/Kontron/KONz80.pdf";								break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;

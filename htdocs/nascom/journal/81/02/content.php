@@ -100,7 +100,7 @@
 	,	15
 	);
 	trJournal($path, $tail, $magazine
-	,	"NASBUG &ndash; NAS-SYS &ndash; Umsetzung"
+	,	"NASBUG&nbsp;&ndash; NAS-SYS&nbsp;&ndash; Umsetzung"
 	,	""
 	,	"Assembler"
 	,	1981

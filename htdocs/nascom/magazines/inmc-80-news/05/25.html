@@ -20,16 +20,16 @@ In my innocence, I bought one of these devices and, although it&rsquo;s not
 too difficult, I found that interfacing is not as straight-forward as
 it first appears. I thought that my experiences and subsequent design
 of a working NAS-BUS compatible board (that&rsquo;s the correct terminology
-isn&rsquo;t it?) may be of interest to other NASCOM&nbsp;2 users.
+isn&rsquo;t it?) may be of interest to other NAS&shy;COM&nbsp;2 users.
 </p>
 <p>
 In the first place any would-be user intending to interface and use the
-PSG chip with a NASCOM&nbsp;2 would be well advised to study the NASCOM
+PSG chip with a NAS&shy;COM&nbsp;2 would be well advised to study the NAS&shy;COM
 documentation (again) and to refer to several publications on using
 the PSG (see list of references at end of this article). In this
 respect I will not give detailed descriptions of the programming
 techniques involved, but rather concentrate on the hardware considerations
-specific to interfacing to the NASCOM&nbsp;,
+specific to interfacing to the NAS&shy;COM&nbsp;,
 </p>
 <h4>
 What does the AY-3-8919 PSG chip do?
@@ -52,13 +52,13 @@ device is that it will operate independently of the host CPU. This is
 certainly true for continuous sounds (boring) or sounds controlled by
 the envelope generator, but almost any &ldquo;interesting&rdquo; sound will require
 a lot of attention by the CPU. One way of improving this situation
-might be to use the Z80 CTC chip to interrupt drive the PSG at
+might be to use the <?php externalLink("Z80 CTC"); ?> chip to interrupt drive the PSG at
 predefined time intervals leaving the CPU to get on with its business
 most of the time. However despite this, the AY-3-8910 does produce some
 amazing sounds and is very easy to operate.
 </p>
 <h4>
-Options available for interfacing the PSG to a NASCOM&nbsp;2:
+Options available for interfacing the PSG to a NAS&shy;COM&nbsp;2:
 </h4>
 <p>
 a) Configure it as part of the memory. The articles in
@@ -67,11 +67,11 @@ and PE use
 this approach to link the PSG to a rival (?) computer kit, using PEEK
 and POKE to address it. While this is fine if you have odd memory
 locations scattered around your memory map, it does no justice to a
-system such as the NASCOM&nbsp;2 where every bit of memory may be put to
+system such as the NAS&shy;COM&nbsp;2 where every bit of memory may be put to
 more efficient use.
 </p>
 <p>
-b) Attach it to the PIO port. This is very easy to do, however if you
+b) Attach it to the <?php externalLink("Z80 PIO", "PIO"); ?> port. This is very easy to do, however if you
 adopt this approach you will soon find that it does give a large
 software penalty over alternative methods: the PSG is controlled by
 pulses, the timings of which may be critical, so the PIO (which gives a

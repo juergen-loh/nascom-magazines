@@ -8,18 +8,18 @@ a completely different circuit to that suggested!! The DBDR circuitry (for
 Nascom-1 owners) also lives on the prototyping area.
 </p>
 <p>
-The circuit itself uses the Z80-SIO to provide the necessary parallel to
+The circuit itself uses the <?php externalLink("Z80 SIO", "Z80-SIO"); ?> to provide the necessary parallel to
 serial conversion. TTL and CMOS logic provide the phase-encoding and the
 interface to the drives. The system uses phase-encoding to store bits of
 information on the tape. Briefly, this entails a change of flux on the tape
 representing a 1 or a 0, depending on whether this happens on a positive or
 negative-going clock edge. This ensures that the tape magnetisation changes at
 least once every clock cycle. Having seen the source listing of the CFS system
-(which uses the PIO) I must say I think that using the SIO was the best approach,
+(which uses the <?php externalLink("Z80 PIO", "PIO", ""); ?>) I must say I think that using the SIO was the best approach,
 since it avoids the machinations required to generate the serial data stream,
 generate checksums, sync. characters, etc., and this is reflected in the command
 set available, which is certainly much more extensive than that on CFS (more
-about the software later). It also allows an easy upgrade to DMA.
+about the software later). It also allows an easy upgrade to <?php externalLink("Z80 DMA","DMA",""); ?>.
 </p>
 <p>
 The data rate used is 6000 bits per second, which, because no start/<?php spChar("zwsp"); ?>stop
@@ -54,7 +54,7 @@ DEBUG, NASPEN, etc., or has been reconfigured for <?php externalLink("2716","","
 </p>
 <p>
 The drives themselves (of which no information is supplied) are very
-compact, being about 4&Prime; cubed in size. They require a 12 volt power supply, which
+compact, being about 4&Prime; cubed in size. They require a 12&nbsp;volt power supply, which
 in this case is drawn from the NASBUS. The manual says that if more than 800mA is
 already being drawn from the 12V line, then an extra power supply may be needed.
 The cassettes are very small, being the same type as those used in &lsquo;Dictaphone&rsquo;
@@ -64,7 +64,7 @@ that Read/<?php spChar("zwsp"); ?>Write errors are definitely a thing of the pas
 may also be used, but on your own head be it!
 </p>
 <h3>
-<u>SOFTWARE</u>
+<u>SOFT&shy;WARE</u>
 </h3>
 <p>
 The operating software (called &lsquo;TOS&rsquo; &ndash; Tape Operating System) occupies 2K

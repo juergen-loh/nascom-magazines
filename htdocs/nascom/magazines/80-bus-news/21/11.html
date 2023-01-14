@@ -3,7 +3,7 @@
 In this, the LSB 4 bits of 0111 indicate Interrupt Control Word. Bits 4 to 6 are
 only used in Mode 3, and Bit 7 enables or disables the Port to interrupt. If Bit
 7 = 1, then Interrupts are enabled. If 0, then disabled. If an interrupt
-condition occurs while disabled, the PIO latches it, and interrupts as soon as
+condition occurs while disabled, the <?php externalLink("Z80 PIO", "PIO"); ?> latches it, and interrupts as soon as
 Port interrupts are re-enabled. If we don&rsquo;t want this to happen, then we can set
 Bit 4 in the Interrupt Control Word to reset the pending interrupt condition.
 Bits 4 &ndash; 6 are used in Mode 3. If Bit 6 = 1, then selected lines are monitored
@@ -56,7 +56,7 @@ printer is connected up to a port, and interrupts for more data. Usually a
 printer has a buffer within it, and a print rate of 60 &ndash; 120 chars per sec. So
 long as the printer has about 100 chars in its buffer, it won&rsquo;t need any further
 attention for about a second. This means that we could, for example, allow our
-CTC to interrupt the printer routine every half second or so with the time. We
+<?php externalLink("Z80 CTC", "CTC", ""); ?> to interrupt the printer routine every half second or so with the time. We
 can only interrupt a routine when it is in a safe state, so we need to have saved
 any data resulting from the interrupt before permitting another. Reenabling
 interrupts is done by executing the EI instruction within the interrupt service

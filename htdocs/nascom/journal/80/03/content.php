@@ -90,7 +90,7 @@
 	,	15
 	);
 	trJournal($path, $tail, $magazine
-	,	"NASCOM &ndash; Computergraphik"
+	,	"NASCOM&nbsp;&ndash; Computergraphik"
 	,	"Peter Bentz"
 	,	""
 	,	1980

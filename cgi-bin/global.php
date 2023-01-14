@@ -38,12 +38,13 @@
 		foreach ($files as $i => $file) {
 			$filemtime = filemtime($file);
 			if ($lasttime < $filemtime) $lasttime = $filemtime;
-//			echo "$file $filemtime $lasttime<br>\n";
+//			echo "<!-- $file $filemtime $lasttime -->\n";
 		}
 
-		setlocale(LC_TIME, 'en_US');
-		$gmstrftime = gmstrftime("%a, %d %b %Y %H:%M:%S GMT", $lasttime);
-		setlocale(LC_TIME, '');
+//		setlocale(LC_TIME, 'en_US');
+		$gmstrftime = gmdate('D, d M Y H:i:s T', $lasttime);
+//		echo "<!-- gmstrftime = '$gmstrftime' -->\n";
+//		setlocale(LC_TIME, '');
 
 //		$headers = http_get_request_headers();
 //		$ifModifiedSince = addslashes($headers['If-Modified-Since']);

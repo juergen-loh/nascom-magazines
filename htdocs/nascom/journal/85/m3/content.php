@@ -96,7 +96,7 @@
 	,	3
 	);
 	trJournal($path, $tail, $magazine
-	,	"80-BUS / ECB &ndash; Adapterkarte"
+	,	"80-BUS / ECB&nbsp;&ndash; Adapterkarte"
 	,	"Hans-Heinrich Gnirck"
 	,	"Hardware"
 	,	1985

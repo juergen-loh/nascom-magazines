@@ -5,7 +5,7 @@ event that it is possible for it to do so, the Interrupt service routine must
 clear the interrupt condition before it executes the RETI. Otherwise, a further
 interrupt will not show up. Say we interrupt on A0 or Al high. If A0 goes high
 and causes an interrupt, we go to the interrupt service routine. While there, Al
-goes high, but the PIO does not signal for a further interrupt. Why? Its
+goes high, but the <?php externalLink("Z80 PIO", "PIO"); ?> does not signal for a further interrupt. Why? Its
 instructions are to signal for interrupt if A0 is high OR Al is high (or both).
 This means that the internal flag for an interrupt is set and remains set until
 the RETI. The service routine should clear A0 (if it doesn&rsquo;t clear itself
@@ -19,7 +19,7 @@ that causes a valid interrupt within the PIO is equal to any other valid
 interrupt cause.
 </p>
 <p>
-The CTC is another interesting chip. It contains four channels, which can
+The <?php externalLink("Z80 CTC", "CTC"); ?> is another interesting chip. It contains four channels, which can
 be configured as counters or timers. Each channel can be programmed to count down
 the system clock, divided by specified scaling factors, or to sample transitions
 of an external line, and interrupt on a specified count. This chip could, for

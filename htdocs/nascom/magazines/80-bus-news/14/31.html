@@ -4,14 +4,14 @@ board chip select, CS, did not float high as expected but remained resolutely at
 about the two volt level. This, despite the inclusion of a 100K pullup resistor
 on the clock board to ensure the CS line remained high. Taking in to account the
 loading effect of the high impedance meter used to measure this voltage, the
-approximate voltage on this line was guessed as being about the 2.5 volt level.
-Changing the PIO or the buffer made no difference, it remains a mystery where the
+approximate voltage on this line was guessed as being about the 2.5&nbsp;volt level.
+Changing the <?php externalLink("Z80 PIO", "PIO"); ?> or the buffer made no difference, it remains a mystery where the
 leakage causing the line to be lower than expected is occurring.
 </p>
 <p>
 However, accepting that this leakage does occur, and as this voltage is
 about the threshold of the board chip select buffer, which is a CMOS device with
-a threshold of about 2.5 volts, we thought that any spurious noise on this line,
+a threshold of about 2.5&nbsp;volts, we thought that any spurious noise on this line,
 and there has to be some, was causing the CMOS buffer on the clock board to
 select the clock chip. This was confirmed with a &rsquo;scope looking at the select pin
 of the clock chip, after the input and power down buffers. A definite short

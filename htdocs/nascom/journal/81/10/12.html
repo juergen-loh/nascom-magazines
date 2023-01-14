@@ -1,7 +1,7 @@
 <?php columnStartJustify(2, 2); ?>
 
-<p>
-WRFILE &nbsp; MEMORY:2280 &nbsp; LAENGE:01A0 &nbsp; START:2280
+<p style="text-align-last: justify">
+WRFILE&nbsp; MEMORY:2280&nbsp; LAENGE:01A0&nbsp; START:2280
 </p>
 <p>
 <?php imageinsert($imagepath, $year, $issue, $page, "Image-12-1.jpeg"); ?>
@@ -23,10 +23,10 @@ festlegen, die durch das Druckerprogramm entsprechend interpretiert
 werden. Deshalb formatiere ich auch nicht mehr direkt über den UART
 sondern über eine Druckerroutine, die an
 <a href="../../08/text/#article1">anderer Stelle</a>
-beschrieben ist. (Olympia ESW 100 KSR an NASCOM)
+beschrieben ist. (Olympia ESW 100 KSR an NAS&shy;COM)
 </p>
 <p>
-Der von mir benutzte Drucker benutzt das Zeichen &ndash;&gt; (09hex) um eine
+Der von mir benutzte Drucker benutzt das Zeichen <?php spChar("rarr"); ?> (09hex) um eine
 vorher eingestellte Anzahl von Schritten nach rechts zu rücken. Wenn
 Sie also Texte auf Cassette einsenden und dieses Zeichen zum Tabulieren
 verwenden wollen, müßten Sie angeben, wie viele Zeichen der Tabulator
@@ -35,13 +35,13 @@ verwenden wollen, müßten Sie angeben, wie viele Zeichen der Tabulator
 <p>
 Eine andere Möglichkeit des Tabulierens bildet das Festlegen eines
 Zeichens für einen Zwischenraum, der nicht unterdrückt werden darf. Mit
-T&nbsp;4 oder NASSYS ist es kein Problem, das Zeichen &lt;&ndash; für BS zu
+T&nbsp;4 oder NAS&shy;SYS ist es kein Problem, das Zeichen <?php spChar("tlarr"); ?> für BS zu
 erzeugen, das ich als Space z.B. am Zeilenanfang abdrucke. Folgendes
 Programm zum Umwandeln von 08hex in einen Zwischenraum ist durch
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
-das Einfügen von &lt;&ndash; eingerückt:
+das Einfügen von <?php spChar("tlarr"); ?> eingerückt:
 </p>
 <pre class="donthyphenate">
      CP,#08

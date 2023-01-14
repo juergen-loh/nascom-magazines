@@ -7,25 +7,25 @@ Nascom&nbsp;2 or a Nascom&nbsp;1). By long standing convention with Nascoms, bit
 keyboard port is used for this purpose. On a Nascom&nbsp;2 this is conveniently returned to
 test point 3 whilst on a Nascom&nbsp;1 this is available on the keyboard plug. Note that
 this input is at TTL levels, that is the signal applied to this pin must be between +5
-and 0 volts. Also note that this input is not &lsquo;pulled up&rsquo; to +5 volts on the Nascom&nbsp;1,
+and 0&nbsp;volts. Also note that this input is not &lsquo;pulled up&rsquo; to +5&nbsp;volts on the Nascom&nbsp;1,
 and only &lsquo;pulled up&lsquo; on the Nascom&nbsp;2 by a 10K resistor which is located for some
 improbable reason on the keyboard. This lack of &lsquo;pull up&rsquo; on the keyboard input tends
 towards atrocious noise immunity and in either case the inclusion of a 470R resistor
-mounted on the back of the pcb, connected between the input pin and some nearby +5
-volt point is a good idea.
+mounted on the back of the pcb, connected between the input pin and some nearby
++5&nbsp;volt point is a good idea.
 </p>
 <p>
 Now with some printers the DTR signal is provided at TTL levels and this may
 be connected directly to bit 7 of the Nascom keyboard port. More typically the DTR
-signal swings between +12 and &ndash;12 volts, this being the standard voltages employed by
+signal swings between +12 and &ndash;12&nbsp;volts, this being the standard voltages employed by
 the RS232 protocol. Direct connection of this signal to a TTL input will lead to the
 instant death of the input latch and possibly other damage. Some method of limiting or
-converting the +12/-12 volt signal to an acceptable +5/0 volt swing must be used. The
-ideal answer is a 4.7 volt zener diode with the cathode (the end with the coloured
-band) connected to the input pin, and the anode connected to the 0 volt rail. As the
-zener is reverse biased when the +12 volt signal is applied, it will conduct and limit
-the incoming voltage to +4.7 volts. When a &ndash;12 volt signal is applied the diode it is
-forward biased and the voltage will be limited to about &ndash;0.6 volts. Entirely suitable
+converting the +12/&ndash;12&nbsp;volt signal to an acceptable +5/0&nbsp;volt swing must be used. The
+ideal answer is a 4.7&nbsp;volt zener diode with the cathode (the end with the coloured
+band) connected to the input pin, and the anode connected to the 0&nbsp;volt rail. As the
+zener is reverse biased when the +12&nbsp;volt signal is applied, it will conduct and limit
+the incoming voltage to +4.7&nbsp;volts. When a &ndash;12&nbsp;volt signal is applied the diode it is
+forward biased and the voltage will be limited to about &ndash;0.6&nbsp;volts. Entirely suitable
 for the TTL input. Unfortunately, the zener diode can not be connected directly across
 the incoming DTR line, as, if the sending device, the printer, is capable of supplying
 any amount of current the conduction of the diode would allow a considerable current

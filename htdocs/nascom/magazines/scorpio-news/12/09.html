@@ -9,9 +9,9 @@ by Rory O&rsquo;Farrell
 <?php columnEnd(2); ?>
 <?php columnStart(1); ?>
 <p>
-Some time ago [1] I wrote on aspects of the
+Some time ago <a href="../../14/text/#ref1">[1]</a> I wrote on aspects of the
 <a href="../../../../80-bus-news/21/06/text/#article1">Z80 microcomputer&rsquo;s interrupt structure</a>.
-In the article, I dealt mainly with the Z80 PIO. Since then there
+In the article, I dealt mainly with the Z80 <?php externalLink("Z80 PIO", "PIO", ""); ?>. Since then there
 have been many requests for another article to deal with the other Z80 family
 chips. In this and a subsequent article it is my intention to cover the
 intricacies of programming the following chips:
@@ -21,9 +21,9 @@ intricacies of programming the following chips:
 <?php columnStart(4); ?>
 <?php columnChange(34); ?>
 <table>
-<tr><td>The CTC</td><td>(Counter Timer Circuit)</td></tr>
-<tr><td>The SIO</td><td>(Serial Input/<?php spChar("zwsp"); ?>Output Controller)</td></tr>
-<tr><td>The DART</td><td>(Dual Asynchronous Receiver/<?php spChar("zwsp"); ?>Transmitter)</td></tr>
+<tr><td>The <?php externalLink("Z80 CTC", "CTC"); ?></td><td>(Counter Timer Circuit)</td></tr>
+<tr><td>The <?php externalLink("Z80 SIO", "SIO", ""); ?></td><td>(Serial Input/<?php spChar("zwsp"); ?>Output Controller)</td></tr>
+<tr><td>The <?php externalLink("Z80 DART", "DART"); ?></td><td>(Dual Asynchronous Receiver/<?php spChar("zwsp"); ?>Transmitter)</td></tr>
 </table>
 <?php columnEnd(4); ?>
 <p></p>
@@ -43,7 +43,9 @@ possible use for these chips, but it will serve well as an introduction, besides
 being the most common configuration for them.
 </p>
 <p>
-Serial I/O interconnections have been very adequately dealt with in [2] and [3],
+Serial I/O interconnections have been very adequately dealt with in
+<a href="../../14/text/#ref2">[2]</a> and
+<a href="../../14/text/#ref3">[3]</a>,
 and interested readers are referred to those articles for detail coverage of the
 subject. For the newcomer, it is appropriate to give a minimum explanation to
 set the scene. A Serial I/O chip is one which is given a byte of data and
@@ -53,8 +55,8 @@ maker which makes only one strand at a time! That is the act of transmission.
 Such a chip is also capable of receiving the individual bite of data and
 reassembling them into a byte &ndash; scrunching up all the fresh spaghetti to end up
 with a lump of dough again. There are other concerns, which need not affect us
-here, such as level shifting from TTL levele (0-5 volt) to RS232 levels (+/&ndash;
-12 volt), as these problems are dealt with in the articles cited.
+here, such as level shifting from TTL levels (0-5&nbsp;volt) to RS232 levels
+(+/&ndash;&nbsp;12&nbsp;volt), as these problems are dealt with in the articles cited.
 </p>
 <p>
 If we imagine that we have a spaghetti maker at one end of a table manufacturing
@@ -84,10 +86,11 @@ from the other channels in that it (due to limitations of pin numbers) cannot
 output pulses, it can only count them.
 </p>
 <p>
-The manual for the CTC [4] says that the CTC can be configured as a counter or
+The manual for the CTC
+<a href="../../14/text/#ref4">[4]</a> says that the CTC can be configured as a counter or
 as a timer. This is true, but confusing. I find the following picture easier
 to grasp: each channel of the CTC is a counter. The channel can be set up to
 count pulses arriving on the input pin for that channel (CLocK/<?php spChar("zwsp"); ?>TRiGger input,
-GLK/TRGn, where n refers to the channel number), or to count pulses arriving
+CLK/TRGn, where n refers to the channel number), or to count pulses arriving
 </p>
 <?php columnEnd(1); ?>

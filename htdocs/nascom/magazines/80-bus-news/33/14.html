@@ -9,7 +9,7 @@ this type). The new sockets have those pins which require modifications bent
 out so that they are accessible for soldering; they are then inserted into the
 original sockets and the rerouting of the wiring made to the bent-out pins.
 This technique can be used for a permanent modification and leads to quite a
-neat job but do not forget that the 5 volt line should be decoupled at each
+neat job but do not forget that the 5&nbsp;volt line should be decoupled at each
 memory chip.
 </p>
 <p>
@@ -38,8 +38,8 @@ SWMx and /CAS, but I was unable to find a reference to this.
 We now have to select which block, or part of a block (which we will call
 a page, following the usual custom) is coupled into the memory map. If you are
 content to couple in either one block or the other, you only have to toggle
-one bit derived from the PIO, so that when P6 is up P7 is down and vice versa.
-Provided you have NasSys overlaying the RAM you can keep control by using the
+one bit derived from the <?php externalLink("Z80 PIO", "PIO", ""); ?>, so that when P6 is up P7 is down and vice versa.
+Provided you have NAS&shy;SYS overlaying the RAM you can keep control by using the
 O command. However, greater flexibility is achieved if you are able to couple
 in any 16k page from either block. One way of doing this is shown in Fig.&nbsp;4;
 the 74LS75 4-bit latch is partly decoded as port 3 &ndash; this fits in with the
@@ -53,7 +53,7 @@ there can be no contention between the two RAM blocks. Since /CS acts as the
 output buffer control line, it must only activate one block at a time; this is
 ensured using the 74LS32 to create logic-low AND gates with the inputs P6 and
 P7 to give two /CS lines, one for each block. Control of the paging can then
-be done by writing to Port 3, either statically by using the NasSys O command
+be done by writing to Port 3, either statically by using the NAS&shy;SYS O command
 or as part of a program by using the out instruction. O 3 0 selects the whole
 of block 1, and similarly O 3 F selects block 2, while O 3 3, for example,
 maps pages&nbsp;1 and 2 of block 2 and pages&nbsp;3 and 4 of block 1 into the memory

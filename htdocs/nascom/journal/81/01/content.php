@@ -10,7 +10,7 @@
 	,	1
 	);
 	trJournal($path, $tail, $magazine
-	,	"2. Jahrgang des NASCOM &ndash; Journal"
+	,	"2. Jahrgang des NASCOM&nbsp;&ndash; Journal"
 	,	"Michael Klein"
 	,	"Editorial"
 	,	1981

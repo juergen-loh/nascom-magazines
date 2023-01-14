@@ -1,10 +1,10 @@
 <?php columnStart(1); ?>
 <h4 id="article1" style="text-align:center">
-<u>ERWEITERUNG DES NASCOM AUF KONTRON BUS</u>
+<u>ERWEITERUNG DES NAS&shy;COM AUF KONTRON BUS</u>
 </h4>
 <p>
-Gerade jetzt, wo sich die Firma NASCOM im Umbruch befindet und niemand
-weiss, wie die zukünftige Liefersituation von NASCOM Ersatzteilen und
+Gerade jetzt, wo sich die Firma NAS&shy;COM im Umbruch befindet und niemand
+weiss, wie die zukünftige Liefersituation von NAS&shy;COM Ersatzteilen und
 Erweiterungen aussieht, empfiehlt es sich, die Möglichkeit eines
 Anschlusses des Nascom an ein anderes Bussystem zu überdenken.
 </p>
@@ -17,22 +17,22 @@ angeboten, seien es RAM, EPROM oder I/O Platinen, so
 dass eine Erweiterung durch dieses System günstig erscheint.
 </p>
 <p>
-Seit einiger Zeit arbeitet mein NASCOM&nbsp;1 nun erfolgreich mit einer
+Seit einiger Zeit arbeitet mein NAS&shy;COM&nbsp;1 nun erfolgreich mit einer
 <?php externalLink("ECB", "KONTRON"); ?>
 16k Eprom-Karte und einer RAM Erweiterung von 4k, die ich
 demnächst noch zu vergrössern gedenke. In die Epromkarte habe ich die
-8k Basic des NASCOM eingesteckt, die bis jetzt auch einwandfrei
+8k Basic des NAS&shy;COM eingesteckt, die bis jetzt auch einwandfrei
 arbeiten.
 </p>
 <p>
 Die Erweiterung war nicht weiters schwierig: Eine Busplatine für ca. 10
 Platinensteckplätze ist ohne weiteres zu haben, ein Netzgerät für die
 erforderlichen Spannungen ist auch schnell selbst gestrickt, bleibt
-nur noch ein Adapter, der den NASCOM Bus auf ein anderes Steckersystem
+nur noch ein Adapter, der den NAS&shy;COM Bus auf ein anderes Steckersystem
 umlegt. Diesen Adapter möchte ich natürlich vorstellen.
 </p>
 <p>
-Bild 1 zeigt die Platinenanschlüsse des NASCOM, an die ich einfach ein
+Bild 1 zeigt die Platinenanschlüsse des NAS&shy;COM, an die ich einfach ein
 mehrfarbiges 43poliges Flachbandkabel angelötet habe, und die
 Anschlüsse des 64poligen
 <?php externalLink("ECB", "KONTRON"); ?>
@@ -55,7 +55,7 @@ angelötet.
 </p>
 <p>
 Die Adressen 12-15 werden invertiert und über ein Nor-Gatter an den
-Memory Select Eingang zurückgeleitet.(Die Brücke auf der NASCOM
+Memory Select Eingang zurückgeleitet.(Die Brücke auf der NAS&shy;COM
 Platine muss natürlich auf Mem.Ext. umgelötet werden). So werden
 die RAMs auf der Platine nur angesprochen, wenn die oberen 4 Adressen
 0 sind. (0&nbsp;0&nbsp;0&nbsp;0 bis C&nbsp;F&nbsp;F&nbsp;)
@@ -81,11 +81,14 @@ nachdem ich tagelang mit Verzögerungen der verschiedenen Steuersignale
 experimentiert hatte. Warum einfach, wenn, es auch kompliziert geht?
 (Oder umgekehrt?)
 </p>
-<p>
-PS Die Bahnen der gepufferten
+<dl>
+<dt>PS</dt>
+<dd>
+Die Bahnen der gepufferten
 <?php invertedSignal("RD"); ?>,
 <?php invertedSignal("MRQ"); ?> Signale sind auf der Platine
 vergessen worden. Von den Ausgängen 11 und 13 des ICs 74367 3 sind also
 Leitungen zu den Steckeranschlüssen 24c und 30c zu führen.
-</p>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

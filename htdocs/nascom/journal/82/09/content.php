@@ -52,7 +52,7 @@
 	,	6
 	);
 	trJournal($path, $tail, $magazine
-	,	"MDCR-Controller &ndash; Schaltung"
+	,	"MDCR-Controller&nbsp;&ndash; Schaltung"
 	,	"U. Forke<br>"
 	.	"H. G. Ingelaat"
 	,	""

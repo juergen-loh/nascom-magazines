@@ -4,11 +4,11 @@
 Noch eine kleine Anmerkung zur CPU-Karte:
 </p>
 <p>
-Ich habe mein NASSYS3 auf den
+Ich habe mein NAS&shy;SYS3 auf den
 deutschen Zeichensatz lt.
 <a href="../../../../81/12/10/text/#article3">Journal 11/12-81</a>
 umgestellt, wobei ich alles
-vorher im RAM austesten konnte. Es war nur notwendig, NASSYS3 vorher in
+vorher im RAM austesten konnte. Es war nur notwendig, NAS&shy;SYS3 vorher in
 den Bereich von z.B. 1000 hex zu kopieren, dort zu ändern und dann
 wieder auf den Bereich 000-7FF zurückzukopieren. Anschließend wurden
 über Bit1 des Port3 die unteren 4K der CPU-Karte ausgeblendet + DF5B&nbsp;;
@@ -22,7 +22,7 @@ CPU-Karte erhalten (Pin25a), sondern muß sich selbst dekodieren.
 Vielleicht wäre dies eine Möglichkeit, die
 <a href="../../../03/05/text/#article1">80X24 Karte</a>
 ohne USER-Befehl
-anzusteuern, indem man einfach die CRT-Routinen von NASSYS abändert und
+anzusteuern, indem man einfach die CRT-Routinen von NAS&shy;SYS abändert und
 im RAM ab 000 laufen läßt.
 </p>
 
@@ -34,7 +34,7 @@ von GÜNTER BÖHM
 </h3>
 
 <p>
-Das große Format der NASCOM/80-Bus-Karten hat mich schon immer gestört,
+Das große Format der NAS&shy;COM/80-Bus-Karten hat mich schon immer gestört,
 und so habe ich schon vor langer Zeit eine Buserweiterung für den
 <?php externalLink("ECB","",""); ?>/Kontron-Bus
 gebaut, die seither mit 36K RAM und einer Menge anderer
@@ -48,11 +48,11 @@ dazwischen: Warum eine Speichererweiterung, wenn ich zum
 gleichen Preis eine CPU-Karte + Speicher erhalten kann? Damit war klar:
 ich würde ein reines Europakarten-System aufbauen. Die Aussichten auf
 CP/M waren ebenfalls sehr reizvoll, aber damit würde ich die Verwendung
-meiner mühsam erstellten Software, die nun einmal mit NASSYS läuft,
+meiner mühsam erstellten Software, die nun einmal mit NAS&shy;SYS läuft,
 ausschließen. Was nützt aber die komfortabelste CP/M-Software, wenn ich
 die Programme, die speziell auf meine Bedürfnisse in Beruf und Hobby
 zugeschnitten sind, alle neu schreiben müßte. Somit blieb für mich nur
-folgende Konzeption offen: ein Eurokarten System, das mit NASSYS läuft,
+folgende Konzeption offen: ein Eurokarten System, das mit NAS&shy;SYS läuft,
 aber auch die Möglichkeit bietet CP/M zu verwenden. An dieser
 Konzeption habe ich nun seither herumgebastelt, wobei mir die Firma
 List und Niemann zuhilfe kam; denn bei denen laufen solche Systeme
@@ -81,14 +81,14 @@ Die Platinen waren schnell aufgebaut (Die Kansas-City-Karte ist dabei
 sehr schön dokumentiert und liefert auch Datenblätter der wichtigen
 ICs) und funktionierten auf Anhieb. Eine nachträgliche Änderung des
 Layouts der Video-Platine war sogar schon eingelötet. Die KC-Karte habe
-ich inzwischen meinem alten NASCOM1 einverleibt und betreibe damit zwei
+ich inzwischen meinem alten NAS&shy;COM1 einverleibt und betreibe damit zwei
 Drucker und den
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
 Cassettenrecorder, wobei ich per Software (es existiert da ein
 Menü-Programm für Interessierte) zwischen den Druckern und Kansas-City
-bzw. NASCOM1- Cassettenformat umschalte. Meine Frau freut sich, daß Sie
+bzw. NAS&shy;COM1- Cassettenformat umschalte. Meine Frau freut sich, daß Sie
 beim Benutzen nicht viele Schalter umlegen muß, sondern einfach das
 Ausgabemedium per Tastendruck anwählen kann.
 </p>
@@ -126,27 +126,27 @@ Der
 Computer schaltet um zwischen 4K ROM und den 64K RAM. Aus
 diesem Grund kann ich ohne Hardwareänderungen (die ich aus
 verschiedenen Gründen nicht durchführen wollte), nicht das Prinzip von
-Günter Kreidl nachvollziehen, der NASSYS im EPROM hat, und dieses nach
-Bedarf ein- und ausblendet. Bei mir muß NASSYS im RAM laufen (denn ich
+Günter Kreidl nachvollziehen, der NAS&shy;SYS im EPROM hat, und dieses nach
+Bedarf ein- und ausblendet. Bei mir muß NAS&shy;SYS im RAM laufen (denn ich
 benötige den Platz von 800 bis FFF als Bildschirm- bzw. Arbeitsspeicher
 und kann ihn nicht durch das EPROM belegen). Wenn das B-DOS von Helmut
 Emmelmann soweit ist, wird man wohl dieses Programm nach dem
-Einschalten des Rechners ins RAM booten und dann per Diskette NASSYS
+Einschalten des Rechners ins RAM booten und dann per Diskette NAS&shy;SYS
 (oder jedes beliebige Betriebssystem) laden. Im Augenblick soll aber
-NASSYS nach dem Einschalten sofort verfügbar sein. Dies erreiche ich
+NAS&shy;SYS nach dem Einschalten sofort verfügbar sein. Dies erreiche ich
 durch nachfolgend abgedrucktes Boot-Programm, das in einem
 <?php externalLink("2732"); ?>
 abgelegt ist.
 </p>
 <p>
-Nach dem Einschalten wird NASSYS zusammen mit einer
+Nach dem Einschalten wird NAS&shy;SYS zusammen mit einer
 kleinen &bdquo;Rückkopier-Routine&ldquo; in den oberen Bereich des RAM
 kopiert, und das Programm springt &bdquo;hinterher&ldquo;. Dort wird
 durch Zugriff auf den Bereich #7000 (hardwaremäßig auf der
 <?php externalLink("mc-CP/M","MC"); ?>
-Platine festgelegt) das EPROM abgeschaltet und NASSYS wieder zurück auf den
+Platine festgelegt) das EPROM abgeschaltet und NAS&shy;SYS wieder zurück auf den
 Bereich 0000 bis 7FF kopiert. Dann erfolgt ein Sprung nach 0000, der
-NASSYS initialisiert und damit auf eine Eingabe wartet.
+NAS&shy;SYS initialisiert und damit auf eine Eingabe wartet.
 </p>
 <p>
 Damit es keine Kollisionen zwischen RAM und der Video-Karte gibt, habe

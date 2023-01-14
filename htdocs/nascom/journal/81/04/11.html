@@ -1,10 +1,10 @@
 <?php columnStart(1); ?>
 <h4 id="article1">
-Nützliche Unterprogramme für NASCOM&nbsp;1
+Nützliche Unterprogramme für NAS&shy;COM&nbsp;1
 </h4>
 <p>
 In vielen Programmen ergibt sich die Notwendigkeit, Werte zu berechnen.
-Hierbei fällt auf, dass der Monitor des NASCOM als Rechner eine
+Hierbei fällt auf, dass der Monitor des NAS&shy;COM als Rechner eine
 absolute Niete ist; ausser Addition und Subtraktion geht nichts mehr.
 So habe ich einmal eine Reihe von Unterprogrammen erstellt, die frei
 verschiebbar sind und in Maschinenprogrammen als einfache Rechenhilfe
@@ -19,28 +19,28 @@ so dass Push und Pop Befehle vor und nach Aufruf der Unterprogramme
 entfallen.
 </p>
 
-<table>
-<tr><td>
+<dl class="wide">
+<dt>
 0C80
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Eine Zahl in HL wird mit einer Zahl in B multipliziert. (die
 Möglichkeit der Multiplikation mit einer mehr als zweistelligen Zahl
 ist ist durch die beschränkte Kapazität des 8 Bit Systems nicht gegeben)<br>
 Bei Überschreiten der Rechenkapazität erfolgt ein relativer Sprung zur
 Fehleranzeige, der im Fall einer Verschiebung des Programms in der
 Adresse 0C8E geändert werden müsste.
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0C95
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Eine Zahl in HL wird durch eine Zahl in BC dividiert.
 Enthält BC 00 so rechnet das Programm bis in alle Ewigkeit.
 Man müsste hier eine Erkennung auf BC=0 einbauen (&nbsp;z.B.
 LD A,B OR C JRZ ENDE) oder einfach Divisionen durch 0 vermeiden,
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0CA5
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Es wird die Quadratwurzel einer Zahl in HL errechnet.Diese
 Zahl darf nicht grösser als 1812dez sein, da sonst der Bereich der
 positiven Zahlen überschritten wäre. (32676 ist max.Radikant) Da
@@ -59,33 +59,33 @@ einprogrammiert. Allerdings wird dann der Zahlenbereich nach oben auf
 99,99 beschränkt. Das Wurzelprogramm enthält einen Aufruf des
 Divisionsprogramms bei 0CB6. Dieser muss bei Verschiebung im Speicher
 geändert werden.
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0CC1
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Fehlermeldung bei Bereichsüberschreitung und Sprung zu Monitor
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0CD5
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Eine Dezimalzahl in HL wird in Hex umgewandelt. Das Ergebnis
 steht in HL. Register DE und B werden verändert und müssen vor Aufruf
 gerettet werden. Bei Verschieben beachten: Aufruf des Unterprogramms
 Multiplizieren bei 0CE2, 0CEF, 0D02&nbsp;.
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0D10
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Hilfsprogramm zu 0D25
-<br><br></td></tr>
-<tr><td>
+</dd>
+<dt>
 0D25
-</td><td>&nbsp;&nbsp;</td><td>
+</dt><dd>
 Eine Hexzahl in HL wird fünfstellig dezimal auf Bildschirm
 ausgegeben. AF, BC und DE müssen vorher gerettet werden. Das Programm
 enthält Aufrufe von Multiplizieren und Dividieren 0D11, 0D1D, und
 Aufrufe des Hilfsprogramms in 0D28,0D2E, 0D34 und 0D3A; bei Verschieben
 beachten.
-</td></tr>
-</table>
+</dd>
+</dl>
 <?php columnEnd(1); ?>

@@ -12,7 +12,7 @@ Das Herz dieser Schaltung ist der IC
 von Mostek (Preis&nbsp;: ca. 30&nbsp;DM), der einen 8-Bit Ana&shy;log/Digital-Wandler und einen
 16-Kanal-Ana&shy;log&shy;mul&shy;ti&shy;ple&shy;xer enthält. Die Analogeingänge sind mit je
 einem Operationsverstärker gepuffert, die Digitalausgänge und die
-Steuereingänge sind direkt mit dem NASCOM über 2 PIO-Ports verbunden.
+Steuereingänge sind direkt mit dem NAS&shy;COM über 2 <?php externalLink("Z80 PIO", "PIO", ""); ?>-Ports verbunden.
 </p>
 <p>
 Der Umwandlungsvorgang läuft nun so ab, daß zuerst über Bit 0 bis 3 des
@@ -32,11 +32,11 @@ abgeschlossen ist. In einer Abfrageschleife wird abgewartet, bis der
 EOC-Ausgang wieder auf High geht. Wenn nun der TRS-Eingang
 (Three-State) auf High gesetzt wird, werden die Datenausgänge vom
 hochohmigen in den aktiven Zustand gebracht, und die Daten können über
-den Port B der PIO in den NASCOM übernommen werden.
+den Port B der PIO in den NAS&shy;COM übernommen werden.
 </p>
 <p>
 Man kann noch zwei Ausgänge des Ports A einsparen, wenn man TRS fest an
-+5 Volt legt, d.h. die Datenausgänge des A/D-Wandlers sind immer aktiv,
++5&nbsp;Volt legt, d.h. die Datenausgänge des A/D-Wandlers sind immer aktiv,
 und wenn man ALE und START miteinander verbindet und mit nur einem
 Ausgang von Port A gleichzeitig ansteuert.
 </p>
@@ -60,13 +60,13 @@ Kurzschluß zu verhindern.
 <p>
 An die Referenzspannungseingänge REF+ und REF- wird die höchste und die
 niederste zu messende Spannung angelegt, es sind jedoch nur Spannungen
-zwischen 0 und +5 Volt zulässig. Will man z.B. ohne die
+zwischen 0 und +5&nbsp;Volt zulässig. Will man z.B. ohne die
 Eingangsverstärker messen, können die Referenzspannungseingänge direkt
 an Gnd und Vcc gelegt werden und dann kann man den gesamten Messbereich
-von 0 bis +5 Volt erfassen. Die vorgeschalteten Operationsverstärker
+von 0 bis +5&nbsp;Volt erfassen. Die vorgeschalteten Operationsverstärker
 können zwar noch sehr hochohmige Spannungsquellen erfassen, sind aber
 nicht über den gesamten Spannungsbereich linear. Deshalb kann man nur
-den linearen Übrtragungsbereich von ca. 1 bis 4 Volt benützen und dazu
+den linearen Übrtragungsbereich von ca. 1 bis 4&nbsp;Volt benützen und dazu
 kann man mit den beiden Potentiometern die Referenzspannungen
 einstellen.
 </p>

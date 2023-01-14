@@ -26,7 +26,7 @@
 	,	6
 	);
 	trJournal($path, $tail, $magazine
-	,	"Umlaute im NASCOM &ndash; System"
+	,	"Umlaute im NASCOM&nbsp;&ndash; System"
 	,	"Michael Bach"
 	,	"Hardware"
 	,	1980

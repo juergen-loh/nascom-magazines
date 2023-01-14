@@ -35,7 +35,7 @@
 	,	3
 	);
 	trJournal($path, $tail, $magazine
-	,	"NIMM &ndash; Spiel"
+	,	"NIMM&nbsp;&ndash; Spiel"
 	,	"Gerald Möse"
 	,	"Assembler"
 	,	1980

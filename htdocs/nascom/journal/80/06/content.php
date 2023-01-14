@@ -214,7 +214,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Graphik &ndash; Erweiterungskarte für NASCOM&nbsp;1"
+	,	"Graphik&nbsp;&ndash; Erweiterungskarte für NASCOM&nbsp;1"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
 	,	1980

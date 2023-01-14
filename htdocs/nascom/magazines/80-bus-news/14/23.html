@@ -5,18 +5,18 @@ the addresses have been copied to RAM, then modify these addresses to suit, then
 proceed.
 </p>
 <p>
-TOS cannot be used with NASSYS running in RAM. This is because the
+TOS cannot be used with NAS&shy;SYS running in RAM. This is because the
 catalogue load address depends on the drive in use (i.e. Drive A catalogue must
 be loaded into the Drive A calalogue space in RAM) and not on the drive used to
 create the catalogue. TOS gets round this by &lsquo;throwing away&rsquo; the header bytes
 into &lsquo;ROM&rsquo; at location 0. It should be a simple matter (I haven&rsquo;t tried it) to
 change the address to, say, &pound;800 which is in the video RAM margin. TOS also uses
-absolute addresses to copy over the NASSYS subroutine table. Again, this is
-avoidable. TOS calls STMON, which initialises NASSYS, so just a simple look into
+absolute addresses to copy over the NAS&shy;SYS subroutine table. Again, this is
+avoidable. TOS calls STMON, which initialises NAS&shy;SYS, so just a simple look into
 $STAB should suffice (unless I&rsquo;ve missed something). In fact (I know &rsquo;cos I&rsquo;ve
 done it) rewriting TOS to have its own PARSE routine and to look in $STAB as
 above releases a bit more space, enough for FOUR whole new commands! It also
-allows it to run on any version of NASSYS. The bit that initialises the SIO can
+allows it to run on any version of NAS&shy;SYS. The bit that initialises the <?php externalLink("Z80 SIO", "SIO"); ?> can
 also be rewritten to take up a fraction of its original length. The lack of a
 Save ZEAP command in the original version of TOS is to be deplored, especially,
 as I&rsquo;ve said, there is enough room to slot one in.
@@ -56,7 +56,7 @@ would also be useful.
 <u>COMPATABILITY WITH OTHER SYSTEMS</u>
 </h3>
 <p>
-I know very little about the &lsquo;Hobbit&rsquo; system except that it uses the PIO,
+I know very little about the &lsquo;Hobbit&rsquo; system except that it uses the <?php externalLink("Z80 PIO", "PIO", ""); ?>,
 so all comments here relate to comparisons with the &lsquo;CFS&rsquo; system. CFS also writes
 in blocks of 2K, also at 6000&nbsp;bps. CFS commands are &lsquo;menu-driven&rsquo; but are less
 extensive than those of TOS (they do include a &lsquo;save ZEAP&rsquo; command, though). CFS
