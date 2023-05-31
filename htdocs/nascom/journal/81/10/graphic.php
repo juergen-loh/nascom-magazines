@@ -1,5 +1,4 @@
 <?php
-
 	$magazine	= "Nascom Journal";
 	$title		= "Oktober 1981 &middot; Ausgabe 10";
 	$issue		= "10";

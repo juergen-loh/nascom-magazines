@@ -84,7 +84,7 @@
 	,	18
 	);
 	trJournal($path, $tail, $magazine
-	,	"Umbau eines TRS 80 Disassembler für NASCOM 1"
+	,	"Umbau eines TRS&nbsp;80 Disassembler für NASCOM 1"
 	,	"Peter Deege"
 	,	"Assembler"
 	,	1981

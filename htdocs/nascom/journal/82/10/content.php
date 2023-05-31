@@ -93,7 +93,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"2732/64-EPROM Programmer &ndash; Teil 1"
+	,	"2732/64-EPROM Programmer &ndash; Teil&nbsp;1"
 	,	"Bernd Schuhmacher"
 	,	"Hardware"
 	,	1982

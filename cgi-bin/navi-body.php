@@ -510,6 +510,7 @@ function imageDesc81($issue, $page, $file)
 	case "04 00 Image-00-2.jpeg": return("Journal 4/81$nl"."&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5");
 
 	case "06 07 Image-07-2.jpeg": return("NASCOMPL:$nl"."&gt; HALLO!$nl"."&gt; LIEBE$nl"."&gt; LESER!$nl"."&gt;");
+	case "06 07 Image-07-4.png":  return("bonbon");
 	case "06 08 Image-08-2.jpeg": return("BUGS BUGS BUGS");
 	case "06 08 Image-08-3.jpeg": return("BASIC");
 	case "06 11 Image-11-1.jpeg": return("NASCOMPL:$nl"."Lieber Herr Lotter!$nl"."Wir warten alle$nl"."sehnlichst auf die$nl"."MDCR-Software!!");
@@ -1077,12 +1078,12 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "&micro;PD765":			$url = "http://dunfield.classiccmp.org/r/765.pdf";								break;
 	case "2114":if ($lang == "en")	$url = "https://en.wikipedia.org/wiki/Random-access_memory#SRAM";
 				else				$url = "https://$lang.wikipedia.org/wiki/2114_(SRAM)";							break;
-	case "2708":					$url = "https://www.jrok.com/datasheet/TMS2708.pdf";							break;
+	case "2708":					$url = "https://amigan.yatho.com/2708EPROM.pdf";								break;
 	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
 	case "2732A":					$url = "https://www.futurlec.com/Memory/2732_Datasheet.shtml";					break;
 	case "2764":					$url = "http://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";					break;
-	case "2N3819":					$url = "https://www.onsemi.com/pub/Collateral/2N3819-D.PDF";					break;
+	case "2N3819":					$url = "https://www.farnell.com/datasheets/39764.pdf";							break;
 	case "4116":					$url = "https://console5.com/techwiki/images/8/85/MK4116.pdf";					break;
 	case "4164":					$url = "https://www.mikrocontroller.net/attachment/4092/HYB4164.pdf";			break;
 	case "6116":					$url = "https://sites.ecse.rpi.edu/courses/CStudio/data%20sheets/hm6116.pdf";	break;
@@ -1098,7 +1099,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
 	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
-	case "Apple&nbsp;II":			$url = "https://en.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.old-computers.com/museum/computer.asp?c=1305&st=1";			break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
 	case "AY-3-8910":				$url = "https://$lang.wikipedia.org/wiki/AY-3-8910";							break;
@@ -1115,9 +1115,9 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "c&rsquo;t":				$url = "https://ct.de/";														break;
 	case "Car_race.nas":			$url = "http://www.nascomhomepage.com/games/Car_race.nas";						break;
 	case "Chip":					$url = "https://www.chip.de/";													break;
-	case "Circle Generators for Display Devices":	$url = "http://people.csail.mit.edu/bkph/papers/Circle_Generators_OPT.pdf";	break;
+	case "Circle Generators for Display Devices":	$url = "https://people.csail.mit.edu/bkph/papers/Circle_Generators_OPT.pdf";	break;
 	case "Climax":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm837.htm";				break;
-	case "CNY17-2":					$url = "http://skory.z-net.hu/alkatresz/CNY17%20-1-4.pdf";						break;
+	case "CNY17-2":					$url = "https://www.vishay.com/docs/83606/cny17.pdf";							break;
 	case "Compression ASM":			$url = "http://www.nascomhomepage.com/pdf/compass.pdf";							break;
 	case "Computer Gesellschaft Konstanz":	$url = "https://$lang.wikipedia.org/wiki/Computer_Gesellschaft_Konstanz";	break;
 	case "Computermonitor":			$url = "https://$lang.wikipedia.org/wiki/Computermonitor";						break;
@@ -1125,34 +1125,47 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
 	case "CP/M":					$url = "https://$lang.wikipedia.org/wiki/CP/M";									break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
+	case "DAI":						$url = "https://$lang.wikipedia.org/wiki/DAI_(Computer)";						break;
 	case "Data General Nova":		$url = "https://en.wikipedia.org/wiki/Data_General_Nova";						break;
 	case "David L. Heiserman":		$url = "https://openlibrary.org/authors/OL766144A/Heiserman_David_L.";			break;
 	case "dBASE II":				$url = "https://$lang.wikipedia.org/wiki/DBASE#dBASE_II";						break;
 	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://$lang.wikipedia.org/wiki/VT180";								break;
 	case "Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
-	case "ECB 85":					$url = "http://www.hknebel.org/Museum/Tragbare_PCs/Vorlaufer/ECB_85/ecb_85.htm";	break;
+	case "ECB 85":					$url = "https://www.hknebel.org/Museum/Tragbare_PCs/Vorlaufer/ECB_85/ecb_85.htm";	break;
 	case "ECB":						$url = "https://$lang.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
 	case "EF9366":					$url = "https://www.datasheetarchive.com/ef9366-datasheet.html";				break;
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
-	case "Elektor":					$url = "https://www.elektor.de/";												break;
+	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
+	case "Elektor, April 1977, Seite 36":		$url = "https://archive.org/details/elektor-1977-04-v-076/page/n35/mode/2up";	break;
+	case "Elektor, November 1977, Seite 41":	$url = "https://archive.org/details/elektor-1977-11-v-083/page/n39/mode/2up";	break;
+	case "Elektor, Feb.1978":					$url = "https://archive.org/details/elektor-1978-02-v-086";						break;
+	case "Elektor, Februar 1978, Seite 20":		$url = "https://archive.org/details/elektor-1978-02-v-086/page/n19/mode/2up";	break;
+	case "Elektor, Januar 1979, Seite 48":		$url = "https://archive.org/details/elektor-1979-01-v-097/page/n45/mode/2up";	break;
+	case "Elektor, September 1980, Seite 26":	$url = "https://archive.org/details/elektor-1980-09-v-117/page/n23/mode/2up";	break;
+	case "Elektor, Dezember 1981, Seite 61":	$url = "https://archive.org/details/elektor-1981-12-v-132/page/n57/mode/2up";	break;
+	case "Elektor, April 1982, Seite 30":		$url = "https://archive.org/details/elektor-1982-04-v-136/page/n27/mode/2up";	break;
+	case "Elektor, Mai 1982, Seite 45":			$url = "https://archive.org/details/elektor-1982-05-v-137/page/n41/mode/2up";	break;
+	case "Elektor, Oktober 1982, Seite 66":		$url = "https://archive.org/details/elektor-1982-10-v-142/page/n63/mode/2up";	break;
+	case "Elektor, Mai 1983, Seite 34":			$url = "https://archive.org/details/elektor-1983-05-v-149/page/n33/mode/2up";	break;
 	case "Elektronik":				$url = "https://www.weka-fachmedien.de/de/medien/elektronik/elektronik/";		break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
 	case "EMUF":					$url = "https://$lang.wikipedia.org/wiki/EMUF";									break;
 	case "Epson MX-80F/T":			$url = "https://$lang.wikipedia.org/wiki/Datei:EpsonMX80FT_02_mod02_res.jpg";	break;
 	case "EV814":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm814.htm";				break;
+	case "Exidy Sorcerer":			$url = "https://en.wikipedia.org/wiki/Exidy_Sorcerer";							break;
 	case "Fachhochschule Köln":		$url = "https://www.th-koeln.de/";												break;
 	case "FDC9229":					$url = "https://www.cpcwiki.eu/imgs/9/97/FDC9229BT_Datasheet.pdf";				break;
 	case "Fernmeldeamt":			$url = "https://$lang.wikipedia.org/wiki/Fernmeldeamt_(Deutsche_Bundespost)";	break;
 	case "Fernmeldehandwerker":		$url = "https://$lang.wikipedia.org/wiki/Fernmeldehandwerker";					break;
-	case "Fernsehtechnik ohne Ballast":	$url = "https://www.amazon.de/Fernsehtechnik-ohne-Ballast-Otto-Limann/dp/3772357245";	break;
+	case "Fernsehtechnik ohne Ballast":	$url = "http://www.ukwfm.de/antiquariat/feb.html";							break;
 	case "FidoNet":					$url = "https://fido.de/";														break;
 	case "Filter.cas":				$url = "http://www.nascomhomepage.com/mbasic/Filter.cas";						break;
 	case "FORTH for Microcomputers":$url = "https://dl.acm.org/citation.cfm?id=987508.987510";						break;
 	case "Funkschau":				$url = "https://www.funkschau.de/";												break;
 	case "Fädeltechnik":			$url = "https://$lang.wikipedia.org/wiki/F%C3%A4deltechnik";					break;
-	case "Gary A. Kildall":			$url = "http://www.digitalresearch.biz/Gary.Kildall.htm";						break;
+	case "Gary A. Kildall":			$url = "https://www.digitalresearch.biz/Gary.Kildall.htm";						break;
 	case "General Instrument AY-3-8910":	$url = "https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910";	break;
 	case "GM801":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm801.htm";				break;
 	case "GM802":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm802.htm";				break;
@@ -1193,12 +1206,12 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "GM880":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm880.htm";				break;
 	case "GM886":					$url = "https://nascom.wordpress.com/gemini/hardware/gm886-high-performance-cpu/";	break;
 	case "Google über Nascom":		$url = "https://www.google.de/search?q=nascom+computer";						break;
-	case "Greg":					$url = "http://www.lemis.com/grog/Albums/Computers/Kontron-kit.php";			break;
+//	case "Greg":					$url = "https://www.lemis.com/grog/Albums/Computers/Kontron-kit.php";			break;
 	case "Gummersbach":				$url = "https://www.f10.th-koeln.de/";											break;
-	case "Harzretro":				$url = "http://www.computersammler.de/sammlung/einplatinen-und-lerncomputer/kontron-z80-kit/";	break;
+	case "Harzretro":				$url = "https://www.computersammler.de/sammlung/einplatinen-und-lerncomputer/kontron-z80-kit/";	break;
 	case "Henelec":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm805.htm";				break;
 	case "HiSOFT":					$url = "https://hisoft.co.uk/gp/about-hisoft/1/pgid/4/";						break;
-	case "HM7611":					$url = "http://www.retrotechnology.com/restore/hm7602.pdf";						break;
+	case "HM7611":					$url = "https://www.retrotechnology.com/restore/hm7602.pdf";						break;
 	case "HOCO Floppy Controller":	$url = "https://forum.classic-computing.de/forum/index.php?thread/11561-hoco-floppy-controller/";	break;
 	case "HSA-88B":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm847.htm";				break;
 	case "HTML":					$url = "https://$lang.selfhtml.org/";											break;
@@ -1214,8 +1227,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
-	case "Janich &amp; Klass":		$url = "http://www.janichklass.com/";											break;
-	case "Jonny":					$url = "http://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
+	case "Janich &amp; Klass":		$url = "https://www.janichklass.com/";											break;
+	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
 	case "Jürgen Loh":				$url = "https://www.jloh.de/";													break;
 	case "Karlheinz":				$url = "https://www.o49-werl.de/component/contact/contact/12-kontakte/12?Itemid=301";	break;
@@ -1231,7 +1244,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;
 	case "LM324":					$url = "https://www.ti.com/lit/ds/symlink/lm124-n.pdf";							break;
 	case "LM741":					$url = "https://www.ti.com/lit/ds/symlink/lm741.pdf";							break;
-	case "LO 15":					$url = "http://www.fernmeldemuseum-bremen.de/erklaerungen_fernschreiber.htm";	break;
+	case "LO 15":					$url = "https://archiv.widerstandsraeume.de/radikal-persoenlich/objekte/blattschreiber-lo-15/";	break;
 	case "Lolly.nas":				$url = "http://www.nascomhomepage.com/games/Lolly.nas";							break;
 	case "Mailbox":					$url = "https://$lang.wikipedia.org/wiki/Mailbox_%28Computer%29";				break;
 	case "maloche.cas":				$url = "http://www.nascomhomepage.com/mbasic/maloche.cas";						break;
@@ -1244,11 +1257,14 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "MB8877A":					$url = "https://archive.org/details/MB8866Datasheet";							break;
 	case "mc 1/1983, Seite 38":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=36";		break;
 	case "mc 1/1983, Seite 44":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=40";		break;
-	case "mc 1/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=9523";	break;
+	case "mc 1/1987, Seite 59":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-01.pdf#page=57";	break;
+	case "mc 2/1987, Seite 64":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-02.pdf#page=42";	break;
+	case "mc 3/1987, Seite 92":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-03.pdf#page=90";	break;
 	case "mc 10/1982, Seite 74":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1982/mc-1982-10.pdf#page=74";		break;
 	case "mc 10/1984, Seite 61":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-10.pdf#page=61";		break;
 	case "mc 11/1984, Seite 84":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-11.pdf#page=84";		break;
 	case "mc 12/1984, Seite 81":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-12.pdf#page=81";		break;
+	case "mc 2/1981":				$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf";		break;
 	case "mc 2/1981, Seite 26":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf#page=26";		break;
 	case "mc 2/1981, Seite 28":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf#page=28";		break;
 	case "mc 2/1985, Seite 102":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1985/mc-1985-02.pdf#page=102";	break;
@@ -1265,11 +1281,14 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "mc 9/1984, Seite 86":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-09.pdf#page=86";		break;
 	case "mc";						$url = "https://$lang.wikipedia.org/wiki/Mc_%28Zeitschrift%29";					break;
 	case "mc-CP/M":					$url = "https://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
-	case "MC6845":					$url = "http://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";			break;
+	case "MC6845":					$url = "https://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";			break;
 	case "MDCR-Manual":				$url = "http://www.nascomhomepage.com/pdf/mdcr.pdf";							break;
 	case "Merseyside Nascom Users Group":	$url = "http://www.nascomhomepage.com/pdf/nasproginfo.pdf";				break;
-	case "Michael Klein":			$url = "https://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
+	case "Michael Klein":			$url = "http://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
 	case "Microshell":				$url = "https://www.autometer.de/unix4fun/z80pack/ftp/manuals/Software/microshell.pdf";	break;
+	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
+	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
+	case "Dr. Dobb’s Journal, Volume 3, ​Issue 5, ​Page 21":		$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";	break;
 	case "Mike Strange":			$url = "https://www.yourtotalevent.com/";										break;
 	case "Mikrocomputer Hard- und Softwarepraxis":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981";	break;
 	case "Mikrocomputer Hard- und Softwarepraxis, Seite 102":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981/page/102/mode/2up";	break;
@@ -1278,7 +1297,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Mikrocomputer Hard- und Softwarepraxis, Seite 89":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981/page/89/mode/2up";	break;
 	case "Mimi":					$url = "https://nascom.wordpress.com/gemini/hardware/g801-mimi/";				break;
 	case "Mini Palette":			$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
-	case "MK Systemtechnik":		$url = "https://web.archive.org/web/20131024180436/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=13&amp;Itemid=60";	break;
+	case "MK Systemtechnik":		$url = "http://web.archive.org/web/20131024180436/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=13&amp;Itemid=60";	break;
 	case "MK50816":					$url = "https://www.datasheetarchive.com/MK50816-datasheet.html";				break;
 	case "Modern Microprocessor System Design":	$url = "https://archive.org/details/modern-microprocessor-system-design";	break;
 	case "Modern Microprocessor System Design, page 225":	$url = "https://archive.org/details/modern-microprocessor-system-design/page/225/mode/2up";	break;
@@ -1293,7 +1312,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "ntz":						$url = "https://www.fachzeitungen.de/zeitschrift-magazin-ntz-informations-und-kommunikationstechnik";	break;
 	case "OASIS":					$url = "https://en.wikipedia.org/wiki/OASIS_operating_system";					break;
 	case "OCR":						$url = "https://$lang.wikipedia.org/wiki/Texterkennung";						break;
-	case "OMTI 5510":				$url = "https://www.equipmatching.com/used_equipment/4/64/336229.php";			break;
+	case "OMTI 5510":				$url = "https://forum.classic-computing.de/forum/index.php?thread/17936-omti-5510-bios-gesucht/&postID=201722#post201722";	break;
 	case "Optical character recognition":	$url = "https://en.wikipedia.org/wiki/Optical_character_recognition";	break;
 	case "Osborne 1":				$url = "https://$lang.wikipedia.org/wiki/Osborne_1";							break;
 	case "OTHELLO.NAS":				$url = "http://www.nascomhomepage.com/games/OTHELLO.NAS";						break;
@@ -1338,9 +1357,9 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "RAM&nbsp;A":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/rama.htm";				break;
 	case "RAM&nbsp;B":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/ramb.htm";				break;
 	case "ROBOT INTELLIGENCE with experiments":	$url = "https://openlibrary.org/works/OL4090255W/Robot_intelligence_..._with_experiments";	break;
-	case "Rolf":					$url = "http://rolf-becker.de/Lehrcomputer.html";								break;
+	case "Rolf":					$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Rolf-Dieter Klein":		$url = "https://openlibrary.org/authors/OL1221691A/Rolf-Dieter_Klein";			break;
-	case "RPB Taschenbuch 154":		$url = "http://sites.prenninger.com/elektronik/home/buecher";					break;
+	case "RPB Taschenbuch 154":		$url = "https://www.radiomuseum.org/lf/b/kw-amateurbildfunk-sstv-und-fax-radio-praktiker-buecherei-rpb-nr-154_edition1/";	break;
 	case "Sahara-Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1973t/index.htm";					break;
 	case "SANYO DM8112CX":			$url = "https://www.flickr.com/photos/23826245@N00/2259904187";					break;
 	case "Scientific American, Issue 223":	$url = "http://ddi.cs.uni-potsdam.de/HyFISCH/Produzieren/lis_projekt/proj_gamelife/ConwayScientificAmerican.htm";	break;
@@ -1349,38 +1368,40 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Spaceii.nas":				$url = "http://www.nascomhomepage.com/games/Spaceii.nas";						break;
 	case "Startrek.cas":			$url = "http://www.nascomhomepage.com/mbasic/Startrek.cas";						break;
 	case "Sternwarte Wien":			$url = "https://www.vhs.at/de/e/planetarium";									break;
-	case "Suberbrain":				$url = "https://$lang.wikipedia.org/wiki/Intertec_Superbrain";					break;
+	case "Superbrain":				$url = "https://$lang.wikipedia.org/wiki/Intertec_Superbrain";					break;
 	case "SVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm832.htm";				break;
 	case "Swinghs.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swinghs.cas";						break;
 	case "Swords.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swords.cas";						break;
 	case "TANDY Lineprinter VI":	$url = "https://colorcomputerarchive.com/repo/Documents/Manuals/Hardware/Line%20Printer%20IV%20(Tandy).pdf";	break;
 	case "TANDY Lineprinter VIII":	$url = "http://dunfield.classiccmp.org/printer/h/lpviii.jpg";					break;
+	case "TEAC FD-55F":				$url = "https://classic.technology/teac-fd-55-series/";							break;
 	case "Technics RS-M250":		$url = "https://www.radiomuseum.org/r/technics_stereo_cassette_deck_rs_m_25.html";	break;
 	case "Technics":				$url = "https://$lang.wikipedia.org/wiki/Technics";								break;
 	case "Technische Informatik":	$url = "https://www.th-koeln.de/studium/technische-informatik-bachelor-campus-gummersbach_3502.php";	break;
 	case "TECO":					$url = "https://$lang.wikipedia.org/wiki/TECO_%28Texteditor%29";				break;
 	case "Tektronix 4051":			$url = "https://en.wikipedia.org/wiki/Tektronix_405x";							break;
-	case "Telekom":					$url = "https://www.telekom.de/start";											break;
-	case "TeleVideo 950":			$url = "http://terminals-wiki.org/wiki/index.php/TeleVideo_950";				break;
+	case "Telekom":					$url = "https://www.telekom.de/";												break;
+	case "TeleVideo 950":			$url = "https://terminals-wiki.org/wiki/index.php/TeleVideo_950";				break;
 	case "Terminal":				$url = "https://$lang.wikipedia.org/wiki/Terminal_(Computer)";					break;
 	case "Texas Instruments":		$url = "https://www.ti.com";													break;
 	case "Tforth.nas":				$url = "http://www.nascomhomepage.com/lang/Tforth.nas";							break;
 	case "The complete FORTH":		$url = "https://openlibrary.org/works/OL5598529W/The_complete_FORTH";			break;
 	case "Threaded Interpretive Languages":	$url = "https://openlibrary.org/works/OL6331362W/Threaded_interpretive_languages";	break;
 	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
-	case "TL497":					$url = "http://pdf.datasheetcatalog.com/datasheets/150/316215_DS.pdf";			break;
+	case "TL497":					$url = "https://pdf.datasheetcatalog.com/datasheets/150/316215_DS.pdf";			break;
 	case "TMS 5100":				$url = "https://www.datasheetarchive.com/tms5100-datasheet.html";				break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/TMS9929-datasheet.html";				break;
 	case "Triumph-Adler P4":		$url = "https://www.old-computers.com/museum/computer.asp?c=485&st=1";			break;
-	case "TRS80 Model III":			$url = "https://en.wikipedia.org/wiki/TRS-80#Model_III";						break;
+	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
+	case "TRS80 Model III":			$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case "UCSD Pascal":				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
 	case "Video Genie":				$url = "https://en.wikipedia.org/wiki/Video_Genie";								break;
 	case "Vobis":					$url = "https://$lang.wikipedia.org/wiki/Vobis#Geschichte";						break;
 	case "Volkshochschule":			$url = "https://www.volkshochschule.de/";										break;
 	case "Vom Umgang mit CP/M":		$url = "http://myoldmac.net/Sellpicts/books/APPLE-CPM-umgang--B-Pol.jpg";		break;
 	case "Vorschaubild":			$url = "https://$lang.wikipedia.org/wiki/Vorschaubild";							break;
-	case "WD1793":					$url = "http://www.retrotechnology.com/herbs_stuff/WD179X.PDF";					break;
-	case "WD2793":					$url = "http://pdf.datasheetcatalog.com/datasheets/400/315772_DS.pdf";			break;
+	case "WD1793":					$url = "https://www.retrotechnology.com/herbs_stuff/WD179X.PDF";				break;
+	case "WD2793":					$url = "https://pdf.datasheetcatalog.com/datasheets/400/315772_DS.pdf";			break;
 	case "Weinheimer UKW-Tagung":	$url = "https://ukw-tagung.org/";												break;
 	case "Wikipedia über Nascom":	$url = "https://$lang.wikipedia.org/wiki/Nascom";								break;
 	case "Wikipedia":				$url = "https://$lang.wikipedia.org/";											break;
@@ -1394,9 +1415,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Z80 PIO":					$url = "https://www.zilog.com/docs/z80/ps0180.pdf";								break;
 	case "Z80 SIO":					$url = "https://www.zilog.com/docs/z80/ps0183.pdf";								break;
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
-	case "Z80-KIT Anwenderhandbuch":$url = "http://2jo.de/robotron/Kontron/KONz80.pdf";								break;
+	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";								break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;
-//	case "Crystal BASIC":			$url = "http://homepage.ntlworld.com/rob.xanth/nascom/documents/m50.pdf";		break;
+//	case "Crystal BASIC":			$url = "https://homepage.ntlworld.com/rob.xanth/nascom/documents/m50.pdf";		break;
+//	case "LO 15":					$url = "https://www.fernmeldemuseum-bremen.de/erklaerungen_fernschreiber.htm";	break;
+//	case "OMTI 5510":				$url = "https://www.equipmatching.com/used_equipment/4/64/336229.php";			break;
 	default:						$url = "externalLink($link, $text)";											break;
 	}
 	if ($url != "") {
@@ -1519,14 +1542,15 @@ HEREDOC;
 					echo "-->\n";
 */
 					if (is_dir($item_dir)) {
-						echo "\t\t\t\t<li class=\"nav-item";
-						if ("$request" == "/$dir/"
+						echo "\t\t\t\t<li class=\"nav-item\">\n";
+						echo "\t\t\t\t\t<a class=\"nav-link";
+						if ($request == "/$dir/"
 						||	strpos($request, "/$str/") === 0
+						||	$request == "/" && $dir == ""
 						) {
 							echo " active";
 						}
-						echo "\">\n";
-						echo "\t\t\t\t\t<a class=\"nav-link\" href=\"$gHtmlRoot/$dir";
+						echo "\" href=\"$gHtmlRoot/$dir";
 						if ($dir != "") {
 							echo "/";
 						}
@@ -1541,7 +1565,7 @@ HEREDOC;
 				addNav("nascom/magazines/issues", "Nascom Magazines", "nascom/magazines");
 				addNav("pico", "PICO");
 				addNav("cpm-plus", "CP/M");
-				addNav("", "Fido");
+				addNav("", "Tupel BBS");
 
 				function navBottom($dir, $desc)
 				{
@@ -1578,4 +1602,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php -->
+<!-- /navi-body.php / $Date: 2023-04-04 19:05:46 +0200 (Di, 04. Apr 2023) $ -->

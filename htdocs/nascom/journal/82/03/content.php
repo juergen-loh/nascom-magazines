@@ -35,7 +35,7 @@
 	,	3
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM Teil 6"
+	,	"Forth für den NASCOM Teil&nbsp;6"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	1982

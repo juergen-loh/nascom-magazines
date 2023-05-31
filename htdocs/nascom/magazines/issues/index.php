@@ -10,6 +10,8 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
+	<!-- $Date: 2023-05-13 13:47:01 +0200 (Sa, 13. Mai 2023) $ / <?php echo "$lastModified"; ?> -->
+
 	<style>
 		h2 { margin-top: 2em; }
 	</style>
@@ -42,8 +44,8 @@
 	the English Nascom magazines.
 </p>
 <p>
-	<a href="../../">Nascom journals</a> were also published in Germany.
-	There is also another <a href="../../journal/text/">overall table of contents</a> of it.
+	Nascom und 80-BUS publications were also <a href="../../">produced in Germany</a>.
+	There is another <a href="../../journal/text/">overall table of contents</a> of it.
 </p>
 
 </div></div>
@@ -57,7 +59,7 @@
 	1978 &ndash; 1980
 </h3>
 <p>
-	INMC News was the original magazine to support the Nascom pro&shy;duct range.
+	<a href="../inmc-news/text/">INMC News</a> was the original magazine to support the Nascom pro&shy;duct range.
 </p>
 <p class="image-issue-thumb">
 	<a href="../inmc-news/01/00/text/"><img src="../inmc-news/01/cover.jpeg" width="100" height="142" title="INMC News, Issue 1"></a>
@@ -76,7 +78,7 @@
 	1980 &ndash; 1981
 </h3>
 <p>
-	After Nascom&rsquo;s financial difficulties, INMC News was re-born as a magazine called INMC 80 News.
+	After Nascom&rsquo;s financial difficulties, INMC News was re-born as a magazine called <a href="../inmc-80-news/text/">INMC 80 News</a>.
 </p>
 <p class="image-issue-thumb">
 	<a href="../inmc-80-news/01/01/text/"><img src="../inmc-80-news/01/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 1"></a>
@@ -93,7 +95,7 @@
 	1982 &ndash; 1985
 </h3>
 <p>
-	INMC 80 News mutated once more and became 80-Bus News.
+	INMC 80 News mutated once more and became <a href="../80-bus-news/text/">80-Bus News</a>.
 </p>
 <p class="image-issue-thumb">
 	<a href="../80-bus-news/11/01/text/"><img src="../80-bus-news/11/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 1, Issue 1"></a>
@@ -123,7 +125,7 @@
 	1987 &ndash; 1989
 </h3>
 <p>
-	80-Bus News changed once again and became Scorpio News.
+	80-Bus News changed once again and became <a href="../scorpio-news/text/">Scorpio News</a>.
 </p>
 <p class="image-issue-thumb">
 	<a href="../scorpio-news/11/01/text/"><img src="../scorpio-news/11/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 1, Issue 1"></a>
@@ -147,7 +149,7 @@
 	1981 &ndash; 1982
 </h3>
 <p>
-	Another magazine appeared in parallel, Micropower.
+	Another magazine appeared in parallel, <a href="../micropower/text/">Micropower</a>.
 </p>
 <p class="image-issue-thumb">
 	<a href="../micropower/11/-1/text/"><img src="../micropower/11/cover.jpeg" width="100" height="142" title="Micropower, Volume 1, Issue 1"></a>
@@ -167,7 +169,7 @@
 	1982 &ndash; 1984
 </h3>
 <p>
-	Micropower became the Nascom Newsletter with the original issue numbers.
+	Micropower became the <a href="../nascom-newsletter/text/">Nascom Newsletter</a> with the original issue numbers.
 </p>
 <p class="image-issue-thumb">
 <p>

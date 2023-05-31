@@ -2,7 +2,7 @@
 
 <?php imageinsert($imagepath, $year, $issue, $page, "Image-05-1.jpeg"); ?>
 <p>
-Die gebräuchlichsten Töne werden wohl c bis h&rsquo;&rsquo; sein, deshalb drucke
+Die gebräuchlichsten Töne werden wohl c bis h&rdquo; sein, deshalb drucke
 ich hier gleich eine Tabelle für die entsprechenden Töne ab.
 </p>
 <?php imageinsert($imagepath, $year, $issue, $page, "Image-05-2.jpeg"); ?>
@@ -13,19 +13,19 @@ Wie bekommt man aber nun die Information in die entsprechenden Register?
 Dazu sind die Steuerleitungen BC1 und BDIR des AY.... erforderlich. Sie
 haben folgende Funktion:
 </p>
-<table>
-<tr><td>BDIR&nbsp;&nbsp;</td><td>BC1&nbsp;&nbsp;</td><td></td></tr>
+<table class="bdir-bc1">
+<tr><td>BDIR</td><td>&nbsp;&nbsp;BC1&nbsp;&nbsp;</td><td></td></tr>
 <tr><td>0</td><td>0</td><td>Chip nicht angesprochen</td></tr>
 <tr><td>1</td><td>1</td><td>Adresse einlesen</td></tr>
 <tr><td>1</td><td>0</td><td>Daten einlesen</td></tr>
-<tr><td>(0</td><td>1)</td><td>(Lesen von Chip, für unsere Zwecke nicht nötig)</td></tr>
+<tr><td>(0&nbsp;&nbsp;</td><td>&nbsp;&nbsp;1)</td><td>(Lesen von Chip, für unsere Zwecke nicht nötig)</td></tr>
 </table>
 
 <?php columnChange(2); ?>
 
 <p>
 Wichtig für die Funktion ist, daß beide Signale wechseln müssen, um die
-entsprechende Aufgabe zu erfüllen. Eine Änderung von 1 1 auf 1 0 geht
+entsprechende Aufgabe zu erfüllen. Eine Änderung von 1&nbsp;1 auf 1&nbsp;0 geht
 nicht, zunächst müssen beide Leitungen auf 0 gehen. Weiterhin darf der
 Latchimpuls nicht länger als 50 ns dauern, deshalb sind
 Basic-outputbefehle zu langsam, und man muß hier

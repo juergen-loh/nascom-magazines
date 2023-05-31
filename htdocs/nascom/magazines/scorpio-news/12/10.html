@@ -14,7 +14,7 @@ The <?php externalLink("Z80 CTC", "CTC", ""); ?>, being capable of vectored inte
 typical example ia the
 <?php externalLink("MAP80 CPU","MAP CPU"); ?> board, where channel 3 of the on-board CTC is
 configured to interrupt when the keyboard has a character ready. This is done
-by telling the CTC channel 4 that it is to count 1 transition on the CLK/TRG3
+by telling the CTC channel 4 that it is to count 1 transition on the CLK/<?php spChar("zwsp"); ?>TRG3
 pin (the keyboard strobe), cause an interrupt, and automatically reload the
 count ready to go again.
 </p>
@@ -49,7 +49,7 @@ These bits have the following meaning
 		this, an interrupt vector must have been written to the CTC.</td></tr>
 <tr><td>D7 = 0 &nbsp; &ndash;</td><td>No interrupt from this channel.<br><br></td></tr>
 <tr><td>D6 = 1 &nbsp; &ndash;</td><td>Select counter mode. Down counter is decremented by each triggering
-		edge of the external clock from CLK/TRG pin. No prescaler used.</td></tr>
+		edge of the external clock from CLK/<?php spChar("zwsp"); ?>TRG pin. No prescaler used.</td></tr>
 <tr><td>D6 = 0 &nbsp; &ndash;</td><td>Select timer mode. System clock feeds through the Prescaler, thence
 		to the Down Counter. The ZC/TOn pin is pulsed at a frequency of
 		tc*P*TC, where tc is system clock period, P is prescaler factor of 16

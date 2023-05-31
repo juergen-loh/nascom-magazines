@@ -1,5 +1,4 @@
 <?php
-
 	$magazine	= "80-Bus Journal";
 	$title		= "Juli/Aug. 1983 &middot; Ausgabe 7/8";
 	$issue		= "07";

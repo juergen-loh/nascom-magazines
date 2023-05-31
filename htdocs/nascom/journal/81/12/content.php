@@ -18,7 +18,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM &ndash; Teil 4"
+	,	"Forth für den NASCOM &ndash; Teil&nbsp;4"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	1981
@@ -156,7 +156,7 @@
 	,	25
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic &ndash; Teil 5"
+	,	"Sortieren in Basic &ndash; Teil&nbsp;5"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
 	,	1981
@@ -196,7 +196,7 @@
 	,	34
 	);
 	trJournal($path, $tail, $magazine
-	,	"MDCR-Monitor Teil 2"
+	,	"MDCR-Monitor Teil&nbsp;2"
 	,	"Johannes Christian Lotter"
 	,	"Assembler"
 	,	1981
@@ -270,7 +270,7 @@
 	,	46
 	);
 	trJournal($path, $tail, $magazine
-	,	"Hochauflösende Graphic Teil 2"
+	,	"Hochauflösende Graphic Teil&nbsp;2"
 	,	"Hans Martin Pohl"
 	,	"Hardware"
 	,	1981

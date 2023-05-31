@@ -17,9 +17,9 @@ zusätzlichen Schalter versieht.
 Man legt nun einfach beim Arbeiten im Assembler den Schalter um, da
 hier die Reversdarstellung nicht benötigt wird.
 </p>
-<p>
-<?php imageinsert($imagepath, $year, $issue, $page, "Image-08-1.jpeg"); ?>
-</p>
+<?php boxStart(); ?>
+<?php imageCenter($imagepath, $year, $issue, $page, "Image-08-1.png"); ?>
+<?php boxEnd(); ?>
 
 <table style="margin-left: auto; margin-right: 0"><tr><td>
 <p>
@@ -31,7 +31,11 @@ Tel. ___ __/__ __<br><br>
 </td></tr></table>
 
 <?php nowrapStart(); ?>
+<?php box0Start("B"); ?>
+<h1 style="margin: 0">
 <?php imageinsert($imagepath, $year, $issue, $page, "Image-08-2.jpeg"); ?>
+</h1>
+<?php box0End(); ?>
 <p>
 Und wieder haben wir einige dieser unangenehmen Wanzen erwischt.
 </p>
@@ -51,14 +55,15 @@ Im &bdquo;Sortierprogramm&ldquo; aus
 <a href="../../../../80/05/12/text/#article2">Heft 5/80</a> sind folgende Befehle zu
 ändern:
 </p>
-<p>
-0D28 &nbsp; &nbsp; falsch D0 &nbsp; richtig &nbsp; DD<br>
-0D2E &nbsp; &nbsp; falsch 30 &nbsp; richtig &nbsp; 3D<br>
-0D5A &nbsp; &nbsp; falsch 30 &nbsp; richtig &nbsp; 3D
-</p>
+<table class="bugs-bugs">
+<tr><td>0D28</td><td>falsch</td><td>D0</td><td>richtig</td><td>DD</td>
+<tr><td>0D2E</td><td>falsch</td><td>30</td><td>richtig</td><td>3D</td>
+<tr><td>0D5A</td><td>falsch</td><td>30</td><td>richtig</td><td>3D</td>
+</table>
 <p>
 Wird hoffentlich nicht wieder vorkommen!
 </p>
+<br>
 <?php nowrapEnd(); ?>
 
 <?php columnChange(2); ?>
@@ -119,6 +124,6 @@ Auch hier muß natürlich USRLOC entsprechend der Startadresse geändert
 werden!
 </p>
 <p style="text-align:right">
-U. Wurditsch
+<i>U. Wurditsch</i>
 </p>
 <?php columnEnd(2); ?>

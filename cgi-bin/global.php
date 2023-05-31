@@ -55,7 +55,7 @@
 
 			// Checking if the client is validating his cache and if it is current.
 			if (isset($ifModifiedSince) && ($ifModifiedSince == $gmstrftime)) {
-				// Client's cache IS current, so we just respond '304 Not Modified'.
+//				echo "<!-- Client's cache IS current, so we just respond '304 Not Modified'.-->\n";
 				header('Last-Modified: ' . $gmstrftime, true, 304);
 				exit;
 			} else {

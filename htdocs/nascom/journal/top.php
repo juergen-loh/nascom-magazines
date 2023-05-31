@@ -27,7 +27,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-<!-- top.php -->
+	<!-- top.php / $Date: 2023-05-03 18:42:29 +0200 (Mi, 03. Mai 2023) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
@@ -36,7 +36,7 @@
 	echo "\t<title>$title";
 	if (isset($issue)) echo " &ndash; $issue";
 	echo " &ndash; Inhaltsverzeichnis</title>\n";
-
+	echo "\t<!-- $lastModified -->\n";
 	include "$navi_body_php";
 
 	$t00s = "<a href=\"$gHtmlRoot/nascom/journal$tail\" style=\"display:block\">";

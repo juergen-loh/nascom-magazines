@@ -26,7 +26,7 @@
 	,	3
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic Teil 6"
+	,	"Sortieren in Basic Teil&nbsp;6"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
 	,	1982
@@ -85,7 +85,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"MDCR Interface Teil 3"
+	,	"MDCR Interface Teil&nbsp;3"
 	,	"Johannes Christian Lotter"
 	,	""
 	,	1982
@@ -160,7 +160,7 @@
 	,	23
 	);
 	trJournal($path, $tail, $magazine
-	,	"Seite(n) für Einsteiger Teil 2"
+	,	"Seite(n) für Einsteiger Teil&nbsp;2"
 	,	"Günter Kreidl"
 	,	"Assembler"
 	,	1982

@@ -41,12 +41,15 @@
 	include "$navi_head_php";
 
 	echo "\n";
-	echo "<!-- page.php -->";
-	echo "\n\n";
+?>
+	<!-- page.php / $Date: 2023-05-03 18:42:29 +0200 (Mi, 03. Mai 2023) $ -->
+<?php
+	echo "\n";
 
 //	echo "\t<title> $magazine $title &middot; Seite ", (int) $page, "</title>\n";
 	echo "\t<title> $magazine &ndash; $title </title>\n";
 //	echo "\t<title> $magazine ", (int) $year + 1900, " </title>\n";
+	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
 	include "$navi_body_php";

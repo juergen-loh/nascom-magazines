@@ -43,7 +43,7 @@
 	,	5
 	);
 	trJournal($path, $tail, $magazine
-	,	"Soundgenerator Teil 2"
+	,	"Soundgenerator Teil&nbsp;2"
 	,	"Günter Böhm"
 	,	"Assembler"
 	,	1981
@@ -75,7 +75,7 @@
 	,	13
 	);
 	trJournal($path, $tail, $magazine
-	,	"MDCR-Monitor Teil 1"
+	,	"MDCR-Monitor Teil&nbsp;1"
 	,	"Johannes Christian Lotter"
 	,	"Assembler"
 	,	1981

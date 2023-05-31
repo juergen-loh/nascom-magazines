@@ -9,6 +9,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
+	<!-- $Date: 2023-05-30 21:15:00 +0200 (Di, 30. Mai 2023) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -228,7 +229,7 @@ Die Hefte liegen im Grafik-, Text- und PDF-Format vor.
 Die <a href="journal/80/00/01/">Grafik-Version</a>
 entstand direkt aus den
 eingescannten Heften.  Um die Dateien klein zu halten,
-wurde die Farbtiefe auf 1 Bit (schwarz/weiß) reduziert,
+wurde die Farbtiefe auf 1 Bit (schwarz/<?php spChar("zwsp"); ?>weiß) reduziert,
 nur die wenigen
 <a href="journal/82/05/15/">Fotos</a>
 wurden auf 8 Bit (Graustufen) belassen.

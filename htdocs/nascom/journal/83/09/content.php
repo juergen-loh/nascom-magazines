@@ -118,7 +118,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"NASCOM Praxis Teil 5"
+	,	"NASCOM Praxis Teil&nbsp;5"
 	,	"Molfgang Mayer-Gürr"
 	,	"Assembler"
 	,	1983

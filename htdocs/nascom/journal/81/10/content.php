@@ -27,7 +27,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM &ndash; Teil 3"
+	,	"Forth für den NASCOM &ndash; Teil&nbsp;3"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	1981
@@ -68,7 +68,7 @@
 	,	9
 	);
 	trJournal($path, $tail, $magazine
-	,	"CLDDOS &ndash; Teil 4"
+	,	"CLDDOS &ndash; Teil&nbsp;4"
 	,	"Gerhard Baier"
 	,	"Assembler"
 	,	1981
@@ -162,7 +162,7 @@
 	,	22
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic &ndash; Teil 4"
+	,	"Sortieren in Basic &ndash; Teil&nbsp;4"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
 	,	1981

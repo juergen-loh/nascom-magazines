@@ -58,7 +58,7 @@
 	,	7
 	);
 	trJournal($path, $tail, $magazine
-	,	"BLS-Pascal Teil 2"
+	,	"BLS-Pascal Teil&nbsp;2"
 	,	"Michael Bach"
 	,	"Pascal"
 	,	1982

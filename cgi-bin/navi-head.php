@@ -6,7 +6,7 @@
 	echo "<html lang=\"$lang\">\n";
 ?>
 
-<!-- navi-head.php -->
+<!-- navi-head.php / $Date: 2023-03-11 15:22:20 +0100 (Sa, 11. Mrz 2023) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">

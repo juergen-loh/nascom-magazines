@@ -32,6 +32,7 @@
 	,	1980
 	,	0
 	,	4
+	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom-Neuheiten"

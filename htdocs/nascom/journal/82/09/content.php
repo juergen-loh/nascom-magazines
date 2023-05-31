@@ -27,7 +27,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"DMA &ndash; Teil 2"
+	,	"DMA &ndash; Teil&nbsp;2"
 	,	"Josef Zeller"
 	,	"Assembler"
 	,	1982
@@ -44,7 +44,7 @@
 	,	5
 	);
 	trJournal($path, $tail, $magazine
-	,	"Typenrad-Terminal &ndash; Teil 3"
+	,	"Typenrad-Terminal &ndash; Teil&nbsp;3"
 	,	"Günter Kreidl"
 	,	"Hardware"
 	,	1982

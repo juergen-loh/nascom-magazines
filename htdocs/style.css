@@ -118,7 +118,13 @@ table tr th:last-child
 	hyphens:			auto;
 }
 
-.donthyphenate
+.donthyphenate,
+.donthyphenate p,
+.donthyphenate td,
+.donthyphenate li,
+p.donthyphenate,
+td.donthyphenate,
+li.donthyphenate
 {
 	-moz-hyphens:		manual;
 	-webkit-hyphens:	manual;
@@ -146,7 +152,11 @@ table tr th:last-child
 }
 
 /* aus navi-body.php ***********************************/
-
+/*
+.nav-item > .nav-link.active  {
+	font-weight: bold;
+}
+*/
 pre {
 	background-color: transparent;
 	border: none;
@@ -805,6 +815,41 @@ ol.dot-parenthesis li
 	margin-bottom: 0.5em;
 }
 
+/*----------------------------*/
+
+ol.dot-dash
+{
+	list-style-type: none;
+	padding-left: 0;
+
+	padding-top: 0em;
+	padding-bottom: 0em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+ol.dot-dash li.hide:before
+{
+	content: "";
+}
+
+ol.dot-dash li:before
+{
+	content: counter(section, decimal) ". – ";
+	width: 1.8em;
+	display: inline-block;
+	margin-left: -2em;
+}
+
+ol.dot-dash li
+{
+	counter-increment: section;
+	margin-left: 2em;
+
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 /*---------------------------------------------------------------------------*/
 
 ol.number-dot
@@ -1041,6 +1086,39 @@ table.port-adressen tr td
 table.port-adressen tr td.center
 {
 	text-align: center;
+}
+
+/*----------------------------*/
+
+table.bdir-bc1 tr td:nth-child(1),
+table.bdir-bc1 tr td:nth-child(2)
+{
+	text-align: center;
+}
+
+/*----------------------------*/
+
+table.bugs-bugs tr td
+{
+	padding-right: 0.5em;
+}
+
+table.bugs-bugs tr td:first-child,
+table.bugs-bugs tr td:nth-child(3)
+{
+	padding-right: 2em;
+}
+
+/*----------------------------*/
+
+table.cld-service
+{
+	margin-left: 2em;
+}
+
+table.cld-service  tr td:first-child
+{
+	text-align: right;
 }
 
 /*----------------------------*/

@@ -6,10 +6,12 @@
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
 	include "$navi_head_php";
+?>
+	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
+	<title>NASCOMPL</title>
+	<!-- $Date: 2023-03-11 15:22:20 +0100 (Sa, 11. Mrz 2023) $ / <?php echo "$lastModified"; ?> -->
 
-	echo "\t", '<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">', "\n";
-	echo "\t", '<title>NASCOMPL</title>', "\n";
-
+<?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
 	include "$navi_body_php";

@@ -18,7 +18,7 @@
 //	$width = 720;
 ?>
 
-<!-- top.php -->
+	<!-- top.php / $Date: 2023-05-03 18:42:29 +0200 (Mi, 03. Mai 2023) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
@@ -29,6 +29,7 @@
 	if (isset($issue)) echo " &ndash; $issue";
 	echo " &ndash; Table of Contents";
 	echo "</title>\n";
+	echo "\t<!-- $lastModified -->\n";
 
 	include "$navi_body_php";
 

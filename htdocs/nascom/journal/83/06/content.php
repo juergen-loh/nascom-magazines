@@ -205,7 +205,7 @@
 	);
 	trJournal($path, $tail, $magazine
 	,	"Gemischte Bestückung<br>"
-	.	"EPROM Port, Teil 1"
+	.	"EPROM Port, Teil&nbsp;1"
 	,	"Horst Dieckhoff"
 	,	"Hardware"
 	,	1983

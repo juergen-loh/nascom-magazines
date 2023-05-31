@@ -26,7 +26,7 @@
 	,	3
 	);
 	trJournal($path, $tail, $magazine
-	,	"Typenrad-Terminal Teil 1"
+	,	"Typenrad-Terminal Teil&nbsp;1"
 	,	"Günter Kreidl"
 	,	"Hardware"
 	,	1982

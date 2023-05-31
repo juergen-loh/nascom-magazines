@@ -67,7 +67,7 @@
 	,	16
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic Teil 7"
+	,	"Sortieren in Basic Teil&nbsp;7"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic<br>"
 	.	"Pascal"
@@ -85,7 +85,7 @@
 	,	17
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM Teil 5"
+	,	"Forth für den NASCOM Teil&nbsp;5"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	1982

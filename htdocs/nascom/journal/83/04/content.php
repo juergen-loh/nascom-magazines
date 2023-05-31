@@ -86,7 +86,7 @@
 	,	13
 	);
 	trJournal($path, $tail, $magazine
-	,	"Der neue Monitor Teil 2"
+	,	"Der neue Monitor Teil&nbsp;2"
 	,	"Günter Kreidl"
 	,	""
 	,	1983
@@ -118,7 +118,7 @@
 	,	19
 	);
 	trJournal($path, $tail, $magazine
-	,	"NASCOM Praxis Teil 1"
+	,	"NASCOM Praxis Teil&nbsp;1"
 	,	"Günter Kreidel"
 	,	""
 	,	1983
@@ -126,7 +126,7 @@
 	,	20
 	);
 	trJournal($path, $tail, $magazine
-	,	"80x24 Zeichen Karte Teil 2"
+	,	"80x24 Zeichen Karte Teil&nbsp;2"
 	,	"Karl Schulmeister"
 	,	""
 	,	1983
