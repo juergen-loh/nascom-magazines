@@ -12,7 +12,7 @@ EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "POINT" token?
 EE3E CA79FF             JP      Z,POINTB        ; Yes - Do "POINT" (not POINTB)
 EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' LEFT$,RIGHT$ or MID$ ?
 EE43 DA5FEE             JP      C,FNVAL         ; No - Do function
-EE46 CD56ED             CALL    OPNPAR          ; Evaluate expression  (X,...
+EE46 CD56ED             CALL    OPNPAR          ; Evaluate expression  (X,&hellip;
 EE49 CD90E6             CALL    CHKSYN          ; Make sure "," follows
 EE4C 2C                 DEFB    ","
 EE4D CD45ED             CALL    TSTSTR          ; Make sure it's a string

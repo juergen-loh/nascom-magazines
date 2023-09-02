@@ -384,6 +384,9 @@ function spChar($spChar)
 		spChar("lowast");
 		spChar("zwsp");
 		break;
+	case "sup0":				// hochgestellte Null (für Uhrzeit)
+		echo "&#x2070;";
+		break;
 	default:
 		echo "&$spChar;";
 		break;
@@ -1108,7 +1111,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
 	case "Blue Label Software Pascal":	$url = "https://community.embarcadero.com/blogs/entry/blue-label-software-pascal-andgt-compas-pascal-andgt-poly-pascal-andgt-turbo-pascal-v10-38933";				break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
-	case "c&rsquo;t 3/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13277";	break;
+	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
 	case "c&rsquo;t 4/1987":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12410";	break;
 	case "c&rsquo;t 9/1986":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12403";	break;
 	case "c&rsquo;t Text-Terminal":	$url = "https://www.hanshehl.de/test-ndr/mc1.htm#b3";							break;
@@ -1227,7 +1230,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
-	case "Janich &amp; Klass":		$url = "https://www.janichklass.com/";											break;
+	case "Janich &amp; Klass":		$url = "https://janichklass.de/";												break;
 	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
 	case "Jürgen Loh":				$url = "https://www.jloh.de/";													break;
@@ -1281,10 +1284,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "mc 9/1984, Seite 86":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-09.pdf#page=86";		break;
 	case "mc";						$url = "https://$lang.wikipedia.org/wiki/Mc_%28Zeitschrift%29";					break;
 	case "mc-CP/M":					$url = "https://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
-	case "MC6845":					$url = "https://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";			break;
+	case "MC6845":					$url = "https://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";		break;
 	case "MDCR-Manual":				$url = "http://www.nascomhomepage.com/pdf/mdcr.pdf";							break;
 	case "Merseyside Nascom Users Group":	$url = "http://www.nascomhomepage.com/pdf/nasproginfo.pdf";				break;
-	case "Michael Klein":			$url = "http://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
+	case "Michael Bach":			$url = "https://michaelbach.de/";												break;
+	case "Michael Klein":			$url = "https://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
 	case "Microshell":				$url = "https://www.autometer.de/unix4fun/z80pack/ftp/manuals/Software/microshell.pdf";	break;
 	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
 	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
@@ -1502,7 +1506,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 //		echo "\t<img src=\"$gHtmlRoot/nascom/journal/pixel.gif\" alt=\"\">\n";
 		if (is_file("$document_root/favicon.ico")) {
 			echo "\t\t<a class=\"navbar-brand\" href=\"https://jloh.de/\">\n";
-			echo "\t\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"\" title=\"Homepage von Jürgen Loh\">\n";
+			echo "\t\t\t<img src=\"$gHtmlRoot/favicon.ico\" width=\"32\" height=\"32\" alt=\"JL\" title=\"Homepage von Jürgen Loh\">\n";
 			echo <<<HEREDOC
 		</a>
 		<button
@@ -1602,4 +1606,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-04-04 19:05:46 +0200 (Di, 04. Apr 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ -->

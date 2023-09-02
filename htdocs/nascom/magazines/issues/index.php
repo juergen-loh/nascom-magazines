@@ -10,7 +10,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2023-05-13 13:47:01 +0200 (Sa, 13. Mai 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -206,14 +206,14 @@
 	<a href="../inmc-80-news/05/71/text/#article1">Lawrence and the &ldquo;new&rdquo; printer?</a><br>
 	<a href="../80-bus-news/13/45/text/#article1">Lawrence is back (despite popular demand)</a><br>
 	<a href="../80-bus-news/14/48/text/#article1">Lawrence meets the commercial software syndrome</a><br>
-	<a href="../80-bus-news/22/52/text/#article1">Lawrence has bought PolyDos...</a><br>
-	<a href="../80-bus-news/24/53/text/#article1">Lawrence meets dangers of VIDEO.</a><br>
-	<a href="../80-bus-news/31/52/text/#article1">Lawrence lands a helping hand.</a><br>
-	<a href="../80-bus-news/33/49/text/#article1">Lawrence and his &lsquo;surprise&rsquo; birthday present.</a><br>
-	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer...).</a><br>
-	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group.</a><br>
-	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason.</a><br>
-	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wierdo....</a><br>
+	<a href="../80-bus-news/22/52/text/#article1">Lawrence has bought PolyDos&hellip;</a><br>
+	<a href="../80-bus-news/24/53/text/#article1">Lawrence meets dangers of VIDEO</a><br>
+	<a href="../80-bus-news/31/52/text/#article1">Lawrence lands a helping hand</a><br>
+	<a href="../80-bus-news/33/49/text/#article1">Lawrence and his &lsquo;surprise&rsquo; birthday present</a><br>
+	<a href="../80-bus-news/34/42/text/#article1">Lawrence (super-programmer&hellip;)</a><br>
+	<a href="../80-bus-news/36/53/text/#article1">Lawrence and the PolyDos Users Group</a><br>
+	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason</a><br>
+	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wierdo&hellip;</a><br>
 </p>
 <h2>
 	Dr. Dark&rsquo;s Diary

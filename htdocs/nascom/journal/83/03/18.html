@@ -4,7 +4,7 @@
 VECTORGRAFIK
 </h1>
 <h3>
-von MICHAEL BACH
+von <?php externalLink("Michael Bach"); ?>
 </h3>
 <p>
 Also: Beiliegendes Programm enthält nach einem kurzen (aber
@@ -16,16 +16,16 @@ und KREIS (R). Bei PLOT werden also 3 Parameter
 Punkt löschen, setzen und invertieren aus. Die Koordinaten brauchten
 eigentlich nicht in 16-Bit-Registem übergeben zu werden, aber so wird
 das Programm unniverseller und Plotten außerhalb des
-Bildschirmbereiches kann in. einfacher Weise unterdrückt werden.
-Zunächst weiden alle Register mit PUSH auf dem Stack aufgehoben. AF
+Bildschirmbereiches kann in einfacher Weise unterdrückt werden.
+Zunächst werden alle Register mit PUSH auf dem Stack aufgehoben. AF
 noch einmal mehr, da A noch gebraucht und in DISCOR verändert wird.
 DISCOR überprüft die Koordinaten und kehrt bei Bereichsüberschreitung
-mit gelöschtem setzten Carry sofort zurück, andernfalls errechnetes aus
+mit gelöschtem setzten Carry sofort zurück, andernfalls errechnet es aus
 den Koordinaten die Bildschirmadresse (in HL) und das innerhalb einer
 Zeichenposition zu setzende Klötzchen als Bitmuster in B, in A wird C0H
 geladen well von C0H-FFH der Zeichengenerator auf Grafik steht. In PLOT
 wird dann das alte AF in DE &bdquo;gepoppt&ldquo; (in AF ginge nicht da
-dann das Carry verlorenginge), Bei gelöschtem Carry wird PLOT sofort
+dann das Carry verlorenginge). Bei gelöschtem Carry wird PLOT sofort
 verlassen (JR PLTRET). CP (HL) guckt nach, ob an dieser Adresse schon
 Grafik ist. Wenn nicht, wird auf Grafik umgeschaltet und vorhandenes
 Zeichen gelöscht. Dann gibt es 3 Möglichkeiten: Punkt löschen (dann

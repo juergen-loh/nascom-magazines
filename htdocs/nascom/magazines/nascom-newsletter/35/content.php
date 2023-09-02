@@ -43,7 +43,7 @@
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"POKE, DOKE ... MOKE?<br>"
+	,	"POKE, DOKE &hellip; MOKE?<br>"
 	.	"A relocatable USR routine for Nascom ROM Basic"
 	,	"Garry Rowland"
 	,	"Basic"

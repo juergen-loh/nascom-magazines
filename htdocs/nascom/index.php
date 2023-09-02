@@ -9,7 +9,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2023-05-30 21:15:00 +0200 (Di, 30. Mai 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -336,7 +336,7 @@ gesammelt.
 <a href="journal/82/02/16/text/#article2">Quick-Sort</a><br>
 </p>
 
-<h2>Dateiverwaltung</h2>
+<h2>Datenverwaltung</h2>
 <p>
 <a href="journal/82/03/09/text/#article1">Datenverwaltung Teil 1</a><br>
 <a href="journal/82/05/24/text/#article1">Datenverwaltung Teil 2</a><br>
@@ -354,6 +354,14 @@ gesammelt.
 <a href="journal/80/06/11/text/#article1">Kompensation des mechanischen Spieles</a><br>
 <a href="journal/80/06/36/text/#article1">Listing des Plotterprogramms</a><br>
 <a href="journal/81/12/25/text/#article1">Selbstbau-Plotter</a><br>
+</p>
+
+<h2>CLD-DOS Unterprogramme</h2>
+<p>
+<a href="journal/81/07/05/text/#article1">Teil 1</a><br>
+<a href="journal/81/08/18/text/#article1">Teil 2</a><br>
+<a href="journal/81/09/04/text/#article1">Teil 3</a><br>
+<a href="journal/81/10/09/text/#article2">Teil 4</a><br>
 <br>
 </p>
 
@@ -400,12 +408,27 @@ gesammelt.
 <a href="journal/85/m3/11/text/#article1">1984</a><br>
 </p>
 
-<h2>CLDDOS Unterprogramme</h2>
+<h2>Grafik</h2>
 <p>
-<a href="journal/81/07/05/text/#article1">Teil 1</a><br>
-<a href="journal/81/08/18/text/#article1">Teil 2</a><br>
-<a href="journal/81/09/04/text/#article1">Teil 3</a><br>
-<a href="journal/81/10/09/text/#article2">Teil 4</a><br>
+<a href="journal/82/02/27/text/#article1">Grafikroutinen</a><br>
+<a href="journal/83/02/11/text/#article2">Klötzchengrafik</a><br>
+<a href="journal/83/03/18/text/#article1">Vektorgrafik</a><br>
+<a href="journal/83/05/06/text/#article1">3D-Grafik</a><br>
+<a href="journal/83/05/18/text/#article1">Point</a><br>
+<a href="journal/83/07/27/text/#article1">Projektion</a><br>
+<a href="journal/83/07/49/text/#article2">Stereogramm</a><br>
+<a href="journal/84/02/39/text/#article1">Sterne</a><br>
+</p>
+
+<h2>MDCR</h2>
+<p>
+<a href="journal/81/03/02/text/#article1">Schneller Kassettenspeicher für den Nascom</a><br>
+<a href="journal/81/06/11/text/#article1">In Darmstadt nichts Neues&hellip;</a><br>
+<a href="journal/81/07/14/text/#article1">MDCR-Monitor Teil 1</a><br>
+<a href="journal/81/12/35/text/#article1">MDCR-Monitor Teil 2</a><br>
+<a href="journal/82/01/09/text/#article1">MDCR Interface Teil 3</a><br>
+<a href="journal/82/09/05/text/#article1">MDCR-Controller Karte</a><br>
+<a href="journal/83/05/24/text/#article1">MDCR-Controller</a><br>
 </p>
 
 <h2>NASCOM Praxis</h2>
@@ -415,17 +438,6 @@ gesammelt.
 <a href="journal/83/06/13/text/#article1">Teil 3</a><br>
 <a href="journal/83/07/09/text/#article2">Teil 4</a><br>
 <a href="journal/83/09/23/text/#article1">Teil 5</a><br>
-</p>
-
-<h2>MDCR</h2>
-<p>
-<a href="journal/81/03/02/text/#article1">Schneller Kassettenspeicher für den Nascom</a><br>
-<a href="journal/81/06/11/text/#article1">In Darmstadt nichts Neues...</a><br>
-<a href="journal/81/07/14/text/#article1">MDCR-Monitor Teil 1</a><br>
-<a href="journal/81/12/35/text/#article1">MDCR-Monitor Teil 2</a><br>
-<a href="journal/82/01/09/text/#article1">MDCR Interface Teil 3</a><br>
-<a href="journal/82/09/05/text/#article1">MDCR-Controller Karte</a><br>
-<a href="journal/83/05/24/text/#article1">MDCR-Controller</a><br>
 </p>
 
 <h2>Typenrad-Terminal</h2>

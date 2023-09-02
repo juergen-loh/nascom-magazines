@@ -277,7 +277,7 @@
 	,	46
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"If Music Be.... &ndash; Musical Nascoms"
+	,	"If Music Be&hellip; &ndash; Musical Nascoms"
 	,	"M.L. Trim"
 	,	""
 	,	47

@@ -10,10 +10,10 @@ written for the general case and have approximate results. (They may be
 accurate, but not necessarily exact.) They do not recognise specific cases
 (such as the exponent in a &ldquo;^&rdquo; expression being a small integer) and do not
 adjust their algorithms accordingly. This means that the instruction in line
-60 (IF A=B THEN...) is almost certainly going to be false. If A=2 and
+60 (IF A=B THEN&hellip;) is almost certainly going to be false. If A=2 and
 B=1.999999999..... then they are not equal in the eyes of the computer
 although an engineer would happily accept them as such. (Mind you a Scientist
-may not, but that leads on to the old joke...) Therefore line 60 has to be
+may not, but that leads on to the old joke&hellip;) Therefore line 60 has to be
 rephrased as &ndash; IF A EQUALS B FOR ALL PRACTICAL PURPOSES THEN .... This can
 best be done by coding it as IF ABS(A-B)&lt;1E-4 THEN.... Here we have said if
 the two values are within 1/10,000 of each other then take them as equal.
@@ -21,14 +21,14 @@ After making this change the program above will run successfully.
 </p>
 <p>
 Alternatively the program can be recoded to make the calculation more
-accurate. By recoding line 40 as ... N1*N1*N1 + N2*N2.... we replace the
+accurate. By recoding line 40 as &hellip; N1*N1*N1 + N2*N2.... we replace the
 approximation by an accurate calculation. (Accurate in this case as we are
 dealing with reasonably sized INTEGERS. In other circumstances &ndash; e.g. N1 etc
 being REAL numbers like 2.345 and 7.916 &ndash; there would be rounding errors and
 possible dynamic range problems affecting the accuracy of the result.) This
 change also has the side effect of speeding up the program as the two
 multiplications are faster than the ^ function. In making this change to line
-40, line 60 can be left as IF A=B... (but remember the caveat above).
+40, line 60 can be left as IF A=B&hellip; (but remember the caveat above).
 </p>
 <h4>
 Point 2: Binary Arithmetic
