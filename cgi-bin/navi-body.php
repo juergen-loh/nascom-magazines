@@ -1114,7 +1114,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
 	case "c&rsquo;t 4/1987":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12410";	break;
 	case "c&rsquo;t 9/1986":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12403";	break;
-	case "c&rsquo;t Text-Terminal":	$url = "https://www.hanshehl.de/test-ndr/mc1.htm#b3";							break;
+	case "c&rsquo;t Text-Terminal":	$url = "https://julianehehl.de/test-ndr/mc1.htm#b3";							break;
 	case "c&rsquo;t":				$url = "https://ct.de/";														break;
 	case "Car_race.nas":			$url = "http://www.nascomhomepage.com/games/Car_race.nas";						break;
 	case "Chip":					$url = "https://www.chip.de/";													break;
@@ -1606,4 +1606,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-09-10 20:13:41 +0200 (So, 10. Sep 2023) $ -->

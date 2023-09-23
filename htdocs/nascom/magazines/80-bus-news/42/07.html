@@ -5,7 +5,7 @@ demo. If you assemble progs 2,3,4 &amp;5. and then
 enter.
 </p>
 <pre>
-LINK ROOT,OVLAY (OV1) (OV2)&lt;RET&gt;
+    LINK ROOT,OVLAY (OV1) (OV2)&lt;RET&gt;
 </pre>
 <p>
 The demo will create itself. It only outputs
@@ -56,10 +56,10 @@ the programs using L80.
 <li>Enter the following:</li>
 </ol>
 <pre>
-L80 &lt;RET&gt;         Run L80
+    L80 &lt;RET&gt;         Run L80
 
-ROOT,OVLAY&lt;RET&gt;   Load root module
-                  and overlay loader
+    ROOT,OVLAY&lt;RET&gt;   Load root module
+                      and overlay loader
 </pre>
 <p>
 At this point you will see where the top of the root
@@ -69,11 +69,11 @@ the overlay base is to be. Lets put it at 200H and
 keep things nice and simple. To do this enter:
 </p>
 <pre>
-/P:200&lt;RET&gt;       Meaning load next bit at 200H.
+    /P:200&lt;RET&gt;       Meaning load next bit at 200H.
 
-OV1&lt;RET&gt;          and load in the 1st overlay.
+    OV1&lt;RET&gt;          and load in the 1st overlay.
 
-ROOT/N/E          Save ROOT.COM and exit.
+    ROOT/N/E          Save ROOT.COM and exit.
 </pre>
 <p>
 Now we have to create the overlay from the COM
@@ -82,9 +82,9 @@ create LINK lookalike overlay files. This is how it is
 done:
 </p>
 <pre>
-BUG ROOT.COM&lt;RET&gt;
+    BUG ROOT.COM&lt;RET&gt;
 
-F100,1FF,0   Fill 256 byte header with 0's
+    F100,1FF,0   Fill 256 byte header with 0's
 </pre>
 <p>
 Now move the overlay section down to 200H using
@@ -94,7 +94,7 @@ started at 0760H for example we would have to
 enter:
 </p>
 <pre>
-M760,800,200&lt;RET&gt;
+    M760,800,200&lt;RET&gt;
 </pre>
 <p>
 assuming that the overlay code finished at 800.
@@ -112,7 +112,7 @@ We now have a .OVL file in memory and we are
 ready to save it, enter:
 </p>
 <pre>
-SAVE 2 OV1.OVL
+    SAVE 2 OV1.OVL
 </pre>
 <p>
 and the process is complete.
@@ -125,7 +125,7 @@ Now create the economy version of the COM file by
 entering:
 </p>
 <pre>
-L80 ROOT,OVLAY,ROOT/N/E
+    L80 ROOT,OVLAY,ROOT/N/E
 </pre>
 <p>
 and its all ready to go.
