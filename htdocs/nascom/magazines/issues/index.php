@@ -10,7 +10,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2023-10-14 18:05:27 +0200 (Sa, 14. Okt 2023) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -44,7 +44,7 @@
 	the English Nascom magazines.
 </p>
 <p>
-	Nascom und 80-BUS publications were also <a href="../../">produced in Germany</a>.
+	Nascom and 80-BUS publications were also <a href="../../">produced in Germany</a>.
 	There is another <a href="../../journal/text/">overall table of contents</a> of it.
 </p>
 
