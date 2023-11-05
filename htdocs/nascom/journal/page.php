@@ -345,7 +345,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// seite zurück
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";
 		if (!$thumb && ($page > $first)) {
@@ -357,9 +357,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Seite zurück\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("previous-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -368,7 +368,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// erste seite
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";
 		if (!$thumb && ($page != $first)) {
@@ -380,9 +380,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Erste Seite\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("first-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -391,7 +391,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// heft zurück
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		$pred = predsucc(TRUE, $year,$issue);
 
@@ -423,9 +423,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 //				echo "#head";
 			}
 			echo "\" title=\"Heft zurück\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("previous-issue");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -434,7 +434,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// seite _ von _
 
-	echo "\t\t<th style=\"text-align:center; width: 40%; vertical-align: middle\">\n";
+	echo "\t\t<th class=\"navi-button\">\n";
 
 		echo "\t\t\t<a style=\"display: block\" href=\"";
 
@@ -444,19 +444,21 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 				echo "../../text/";
 			}
 
-		echo "\" title=\"Inhaltsverzeichnis\"><br>";
+		echo "\" title=\"Inhaltsverzeichnis\">";
+//		echo "<br>";
 		if ($thumb) {
 			echo "Seiten " . (int) $first . " bis " . (int) $last;
 		} else {
 			echo "Seite " . (int) $page . " von " . (int) $last;
 		}
-		echo "<br><br></a>\n";
+//		echo "<br><br>";
+		echo "</a>\n";
 
 	echo "\t\t</th>\n";
 
 	// heft vor
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 	$succ = predsucc(FALSE, $year,$issue);
 
@@ -493,9 +495,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 //				echo "#head";
 			}
 			echo "\" title=\"Heft vor\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("next-issue");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";
@@ -504,7 +506,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// letzte seite
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";//"&nbsp; ";
 		if (!$thumb && ($page != $last)) {
@@ -516,9 +518,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Letzte Seite\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("last-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";
@@ -527,7 +529,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 	// seite vor
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";//"&nbsp; ";
 
@@ -540,9 +542,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Seite vor\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("next-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";

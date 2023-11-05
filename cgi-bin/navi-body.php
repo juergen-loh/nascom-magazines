@@ -1128,6 +1128,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
 	case "CP/M":					$url = "https://$lang.wikipedia.org/wiki/CP/M";									break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
+//	case "Crystal BASIC":			$url = "https://homepage.ntlworld.com/rob.xanth/nascom/documents/m50.pdf";		break;
 	case "DAI":						$url = "https://$lang.wikipedia.org/wiki/DAI_(Computer)";						break;
 	case "Data General Nova":		$url = "https://en.wikipedia.org/wiki/Data_General_Nova";						break;
 	case "David L. Heiserman":		$url = "https://openlibrary.org/authors/OL766144A/Heiserman_David_L.";			break;
@@ -1140,17 +1141,32 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "EF9366":					$url = "https://www.datasheetarchive.com/ef9366-datasheet.html";				break;
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
 	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
-	case "Elektor, April 1977, Seite 36":		$url = "https://archive.org/details/elektor-1977-04-v-076/page/n35/mode/2up";	break;
-	case "Elektor, November 1977, Seite 41":	$url = "https://archive.org/details/elektor-1977-11-v-083/page/n39/mode/2up";	break;
-	case "Elektor, Feb.1978":					$url = "https://archive.org/details/elektor-1978-02-v-086";						break;
-	case "Elektor, Februar 1978, Seite 20":		$url = "https://archive.org/details/elektor-1978-02-v-086/page/n19/mode/2up";	break;
-	case "Elektor, Januar 1979, Seite 48":		$url = "https://archive.org/details/elektor-1979-01-v-097/page/n45/mode/2up";	break;
-	case "Elektor, September 1980, Seite 26":	$url = "https://archive.org/details/elektor-1980-09-v-117/page/n23/mode/2up";	break;
-	case "Elektor, Dezember 1981, Seite 61":	$url = "https://archive.org/details/elektor-1981-12-v-132/page/n57/mode/2up";	break;
-	case "Elektor, April 1982, Seite 30":		$url = "https://archive.org/details/elektor-1982-04-v-136/page/n27/mode/2up";	break;
-	case "Elektor, Mai 1982, Seite 45":			$url = "https://archive.org/details/elektor-1982-05-v-137/page/n41/mode/2up";	break;
-	case "Elektor, Oktober 1982, Seite 66":		$url = "https://archive.org/details/elektor-1982-10-v-142/page/n63/mode/2up";	break;
-	case "Elektor, Mai 1983, Seite 34":			$url = "https://archive.org/details/elektor-1983-05-v-149/page/n33/mode/2up";	break;
+
+//	case "Elektor, April 1977, Seite 36":		$url = "https://archive.org/details/elektor-1977-04-v-076/page/n35/mode/2up";	break;
+//	case "Elektor, November 1977, Seite 41":	$url = "https://archive.org/details/elektor-1977-11-v-083/page/n39/mode/2up";	break;
+//	case "Elektor, Feb.1978":					$url = "https://archive.org/details/elektor-1978-02-v-086";						break;
+//	case "Elektor, Februar 1978, Seite 20":		$url = "https://archive.org/details/elektor-1978-02-v-086/page/n19/mode/2up";	break;
+//	case "Elektor, Januar 1979, Seite 48":		$url = "https://archive.org/details/elektor-1979-01-v-097/page/n45/mode/2up";	break;
+//	case "Elektor, September 1980, Seite 26":	$url = "https://archive.org/details/elektor-1980-09-v-117/page/n23/mode/2up";	break;
+//	case "Elektor, Dezember 1981, Seite 61":	$url = "https://archive.org/details/elektor-1981-12-v-132/page/n57/mode/2up";	break;
+//	case "Elektor, April 1982, Seite 30":		$url = "https://archive.org/details/elektor-1982-04-v-136/page/n27/mode/2up";	break;
+//	case "Elektor, Mai 1982, Seite 45":			$url = "https://archive.org/details/elektor-1982-05-v-137/page/n41/mode/2up";	break;
+//	case "Elektor, Oktober 1982, Seite 66":		$url = "https://archive.org/details/elektor-1982-10-v-142/page/n63/mode/2up";	break;
+//	case "Elektor, Mai 1983, Seite 34":			$url = "https://archive.org/details/elektor-1983-05-v-149/page/n33/mode/2up";	break;
+
+	case "Elektor, April 1977, Seite 36":		
+	case "Elektor, November 1977, Seite 41":	
+	case "Elektor, Feb.1978":					
+	case "Elektor, Februar 1978, Seite 20":		
+	case "Elektor, Januar 1979, Seite 48":		
+	case "Elektor, September 1980, Seite 26":	
+	case "Elektor, Dezember 1981, Seite 61":	
+	case "Elektor, April 1982, Seite 30":		
+	case "Elektor, Mai 1982, Seite 45":			
+	case "Elektor, Oktober 1982, Seite 66":		
+	case "Elektor, Mai 1983, Seite 34":		
+									$url = "https://www.elektormagazine.de/";										break;
+
 	case "Elektronik":				$url = "https://www.weka-fachmedien.de/de/medien/elektronik/elektronik/";		break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
@@ -1247,6 +1263,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;
 	case "LM324":					$url = "https://www.ti.com/lit/ds/symlink/lm124-n.pdf";							break;
 	case "LM741":					$url = "https://www.ti.com/lit/ds/symlink/lm741.pdf";							break;
+//	case "LO 15":					$url = "https://www.fernmeldemuseum-bremen.de/erklaerungen_fernschreiber.htm";	break;
 	case "LO 15":					$url = "https://archiv.widerstandsraeume.de/radikal-persoenlich/objekte/blattschreiber-lo-15/";	break;
 	case "Lolly.nas":				$url = "http://www.nascomhomepage.com/games/Lolly.nas";							break;
 	case "Mailbox":					$url = "https://$lang.wikipedia.org/wiki/Mailbox_%28Computer%29";				break;
@@ -1316,6 +1333,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "ntz":						$url = "https://www.fachzeitungen.de/zeitschrift-magazin-ntz-informations-und-kommunikationstechnik";	break;
 	case "OASIS":					$url = "https://en.wikipedia.org/wiki/OASIS_operating_system";					break;
 	case "OCR":						$url = "https://$lang.wikipedia.org/wiki/Texterkennung";						break;
+//	case "OMTI 5510":				$url = "https://www.equipmatching.com/used_equipment/4/64/336229.php";			break;
 	case "OMTI 5510":				$url = "https://forum.classic-computing.de/forum/index.php?thread/17936-omti-5510-bios-gesucht/&postID=201722#post201722";	break;
 	case "Optical character recognition":	$url = "https://en.wikipedia.org/wiki/Optical_character_recognition";	break;
 	case "Osborne 1":				$url = "https://$lang.wikipedia.org/wiki/Osborne_1";							break;
@@ -1421,9 +1439,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
 	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";								break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;
-//	case "Crystal BASIC":			$url = "https://homepage.ntlworld.com/rob.xanth/nascom/documents/m50.pdf";		break;
-//	case "LO 15":					$url = "https://www.fernmeldemuseum-bremen.de/erklaerungen_fernschreiber.htm";	break;
-//	case "OMTI 5510":				$url = "https://www.equipmatching.com/used_equipment/4/64/336229.php";			break;
 	default:						$url = "externalLink($link, $text)";											break;
 	}
 	if ($url != "") {

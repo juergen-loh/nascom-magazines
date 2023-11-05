@@ -162,7 +162,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// page back
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";
 		if (!$thumb && ($page > $first)) {
@@ -174,9 +174,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Previous page\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("previous-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -185,7 +185,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// first page
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";
 		if (!$thumb && ($page != $first)) {
@@ -197,9 +197,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"First page\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("first-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -208,7 +208,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// next page
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		$pred = predsucc(TRUE, $magazine,$issue);
 
@@ -235,9 +235,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 //				echo "#head";
 			}
 			echo "\" title=\"Previous issue\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("previous-issue");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo /*" &nbsp;"*/"\n";
@@ -246,7 +246,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// page _ of _
 
-	echo "\t\t<th style=\"text-align:center; width: 40%; vertical-align: middle\">\n";
+	echo "\t\t<th class=\"navi-button\">\n";
 
 		echo "\t\t\t<a style=\"display: block\" href=\"";
 
@@ -256,19 +256,21 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 				echo "../../text/";
 			}
 
-		echo "\" title=\"Table of Contents\"><br>";
+		echo "\" title=\"Table of Contents\">";
+//		echo "<br>";
 		if ($thumb) {
 			echo "Pages " . (int) $first . " to " . (int) $last;
 		} else {
 			echo "Page " . (int) $page . " of " . (int) $last;
 		}
-		echo "<br><br></a>\n";
+//		echo "<br><br>";
+		echo "</a>\n";
 
 	echo "\t\t</th>\n";
 
 	// next issue
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 	$succ = predsucc(FALSE, $magazine,$issue);
 
@@ -295,9 +297,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 //				echo "#head";
 			}
 			echo "\" title=\"Next issue\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("next-issue");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";
@@ -306,7 +308,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// last page
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";//"&nbsp; ";
 		if (!$thumb && ($page != $last)) {
@@ -318,9 +320,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Last page\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("last-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";
@@ -329,7 +331,7 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 	// next page
 
-	echo "\t\t<td style=\"text-align:center; width: 10%\">\n";
+	echo "\t\t<td class=\"navi-button\">\n";
 
 		echo "\t\t\t";//"&nbsp; ";
 
@@ -342,9 +344,9 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 			echo "/";
 //			echo "#head";
 			echo "\" title=\"Next page\">";
-			echo "<br>";
+//			echo "<br>";
 			InsertArrow("next-page");
-			echo "<br><br>";
+//			echo "<br><br>";
 			echo "</a>";
 		}
 		echo "\n";
