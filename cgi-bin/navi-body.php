@@ -423,6 +423,7 @@ function imageDesc80($issue, $page, $file)
 	case "01 02 Image-02-1.gif": return("Nascom IMP");
 
 	case "02 01 Image-01-2.gif": return("Journal 2/80");
+	case "02 02 Image-02-1.gif": return("NASPEN");
 
 	case "03 01 Image-01-2.gif": return("Journal 3/80");
 
@@ -577,6 +578,8 @@ function imageDesc82($issue, $page, $file)
 	case "12 01 Image-01-1.jpeg": return("Nascom$nl"."Journal");
 
 	case "01 02 Image-02-2.jpeg": return("Günter Böhm");
+
+	case "07 13 Image-13-1.jpeg": return("Made by DL6UP 1981");
 
 	case "01 35 Image-35-1.jpeg":
 	case "02 17 Image-17-4.jpeg":
@@ -1621,4 +1624,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-09-10 20:13:41 +0200 (So, 10. Sep 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-11-11 21:01:02 +0100 (Sa, 11. Nov 2023) $ -->
