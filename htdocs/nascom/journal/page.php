@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2023-11-05 22:14:38 +0100 (So, 05. Nov 2023) $ -->
+	<!-- page.php / $Date: 2023-11-19 14:50:12 +0100 (So, 19. Nov 2023) $ -->
 <?php
 	echo "\n";
 
@@ -741,7 +741,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			global $MultiColumn;
 			setMultiColumn($multi);
 			if ($cols == $MultiColumn) {
-				startMultiColumn($cols);
+				startMultiColumn($cols, $class);
 			} else {
 				echo '<div class="row';
 				if ($class != "") echo " $class";
@@ -759,7 +759,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			global $MultiColumn;
 			setMultiColumn($multi);
 			if ($cols == $MultiColumn) {
-				startMultiColumn($cols, "justify");
+				$c = "justify";
+				if ($class != "") $c .= " $class";
+				startMultiColumn($cols, $c);
 			} else {
 				echo '<div class="row';
 				if ($class != "") echo " $class";
@@ -818,9 +820,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 function columnStart($column, $multi = "", $context = "", $class="")
 {
 	switch ($column) {
-	case 1:		columnsStart(1);								break;
-	case 2:		columnsStart(2, $multi, $context);				break;
-	case 3:		columnsStart(3, $multi);						break;
+	case 1:		columnsStart(1, $multi, $context, $class);		break;
+	case 2:		columnsStart(2, $multi, $context, $class);		break;
+	case 3:		columnsStart(3, $multi, $context, $class);		break;
 	case 23:	columnsStart(3/2, $multi, $context, $class);	break;	//	 2/3
 	case 4:		columnsStart(4);								break;
 	case 34:	columnsStart(4/3);								break;	//	 3/4
@@ -838,9 +840,9 @@ function columnStart($column, $multi = "", $context = "", $class="")
 function columnStartJustify($column, $multi = "", $context = "", $class="")
 {
 	switch ($column) {
-	case 1:		columnsStartJustify(1);						break;
-	case 2:		columnsStartJustify(2, $multi);				break;
-	case 3:		columnsStartJustify(3, $multi);				break;
+	case 1:		columnsStartJustify(1, $multi, $class);		break;
+	case 2:		columnsStartJustify(2, $multi, $class);		break;
+	case 3:		columnsStartJustify(3, $multi, $class);		break;
 	case 23:	columnsStartJustify(3/2);					break;	//	 2/3
 	case 4:		columnsStartJustify(4);						break;
 	case 34:	columnsStartJustify(4/3);					break;	//	 3/4

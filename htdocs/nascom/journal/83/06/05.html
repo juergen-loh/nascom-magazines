@@ -59,15 +59,15 @@ der unteren 4K als auch eine Erweiterung
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
 des Adreßbereichs auf 128K RAM. Voraussetzung ist nur, daß sich im
-System eine RAM-Karte mit einem DESELECT-Eingang befindet, bei der auch
+System eine RAM-Karte mit einem DE&shy;SE&shy;LECT-Eingang befindet, bei der auch
 die unteren 4K bestückt bzw. adressierbar sind. Das ist bei jeder dyn.
 64K-Karte der Fall, weil ja immer ein Monitor- oder Boot-Eprom
-einblendbar sein muß. Auf dem 80-BUS heißt das Signal /RAM DISABLE
+einblendbar sein muß. Auf dem 80-BUS heißt das Signal /RAM DIS&shy;ABLE
 (Busleitung 9); auf dem
 <?php externalLink("ECB","",""); ?>-Bus
 ist es nicht als Standard definiert,
-wird aber in der Regel als /DESELECT auf Bahn 26a gelegt. Es bietet
-sich nun an, das /MEMEXT-Signal auf die /DESELECT-Leitung zu legen;
+wird aber in der Regel als /DE&shy;SE&shy;LECT auf Bahn 26a gelegt. Es bietet
+sich nun an, das /MEM&shy;EXT-Signal auf die /DE&shy;SE&shy;LECT-Leitung zu legen;
 damit wird der interne Speicher des Grundsystems ein- und der externe
 Speicher ausgeblendet. Schaltet man noch ein Gatter dazwischen, dann
 kann man mit einem Bit eines Output-Ports im Bereich 0-4K zwischen dem
@@ -75,7 +75,7 @@ Speicher auf der Grundkarte und externem RAM umschalten. Man muß nur
 dafür sorgen, daß sich bei einem RESET definierte Verhältnisse
 einstellen, also entweder NAS-SYS oder das BOOT-Eprom eingeschaltet
 werden. Ich benütze Bit 5 von Port 0, das über ein ODER-Gatter mit
-/MEMEXT verknüpft wird. Falls noch keine /MEMEXT-Erzeugung vorhanden
+/MEM&shy;EXT verknüpft wird. Falls noch keine /MEM&shy;EXT-Erzeugung vorhanden
 ist, kann man die restlichen 3 ODER-Gatter eines LS32 dafür benutzen
 (<a href="../../06/text/#article1">Bild 2</a>).
 Um bei RESET die gewünschten Verhältnisse herzustellen, muß

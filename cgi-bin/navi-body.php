@@ -376,6 +376,9 @@ function spChar($spChar)
 	case "tlarr":
 		echo "&lsh;";		// top left arrow
 		break;
+	case "vrect":
+		echo "&#9647;";		// vertical rectangle
+		break;
 	case "bell":
 		echo "&#x237e;";	// bell symbol / klingelsymbol
 		break;
@@ -384,7 +387,7 @@ function spChar($spChar)
 		spChar("lowast");
 		spChar("zwsp");
 		break;
-	case "sup0":				// hochgestellte Null (für Uhrzeit)
+	case "sup0":			// hochgestellte Null (für Uhrzeit)
 		echo "&#x2070;";
 		break;
 	default:
@@ -429,6 +432,7 @@ function imageDesc80($issue, $page, $file)
 
 	case "04 01 Image-01-2.jpeg": return("Journal 4/80");
 	case "04 04 Image-04-2.jpeg": return("Messegelände Killesberg");
+	case "04 11 Image-11-2.jpeg": return("BASIC");
 	case "04 19 Image-19-1.jpeg": return("BOOK SHOP");
 
 	case "05 01 Image-01-2.jpeg": return("Journal 5/80");
@@ -1112,6 +1116,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "BASF 6138":				$url = "https://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "BASIC COMPUTER GAMES":	$url = "https://www.atariarchives.org/basicgames/showpage.php?page=107";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
+	case "Bernd Ploss":				$url = "https://www.eah-jena.de/scitec/personen/bernd-ploss";					break;
 	case "Blue Label Software Pascal":	$url = "https://community.embarcadero.com/blogs/entry/blue-label-software-pascal-andgt-compas-pascal-andgt-poly-pascal-andgt-turbo-pascal-v10-38933";				break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
@@ -1345,7 +1350,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Pascal/MT+":				$url = "https://en.wikipedia.org/wiki/Pascal/MT%2B";							break;
 	case "PDP-11":					$url = "https://en.wikipedia.org/wiki/PDP-11";									break;
 	case "PDP-7":					$url = "https://en.wikipedia.org/wiki/PDP-7";									break;
-	case "Personal Computer World":								$url = "https://worldradiohistory.com/Personal_Computer_World.htm";															break;
+	case "Personal Computer World":								$url = "https://www.worldradiohistory.com/Personal_Computer_World.htm";														break;
 	case "Personal Computer World, April 1979, page 76":		$url = "https://worldradiohistory.com/UK/Personal-Computer-World/70s/PCW-1979-04-S-OCR.pdf#page=76";						break;
 	case "Personal Computer World, April 1980, page 93":		$url = "https://worldradiohistory.com/UK/Personal-Computer-World/80s/PCW-1980-04-S-OCR.pdf#page=95";						break;
 	case "Personal Computer World, August 1982, page 134":		$url = "https://worldradiohistory.com/UK/Personal-Computer-World/80s/PCW-1982-08-S-OCR.pdf#page=136";						break;
@@ -1624,4 +1629,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-11-11 21:01:02 +0100 (Sa, 11. Nov 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-11-26 15:58:34 +0100 (So, 26. Nov 2023) $ -->

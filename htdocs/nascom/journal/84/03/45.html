@@ -13,55 +13,58 @@ FDC Erfahrung
 <h3>
 von RUDOLF NENSEL
 </h3>
-<p>
-NACH ANFAENGLICHEN SCHWIERIGKEITEN LAUFEN NUN 2
+<p class="uppercase">
+Nach anfaenglichen Schwierigkeiten laufen nun 2
 <?php externalLink("BASF 6106"); ?>
-LAUFWERKE AN
-MEINEM NAS&shy;COM&nbsp;2 ZUR VOLLSTEN ZUFRIEDENHEIT. ZUNAECHST HATTE ICH AERGER
-MIT MEINEM SPEICHER (64KB STATISCH) DER SICH DANN ABER RECHT EINFACH
-LOESEN LIES.DANN KAM DAS PROBLEM MIT DER MONITORUMSCHALTUNG. DAS
-BETRIEBSSYSTEM STEHT BEI MIR IN EINEM EPROM VOM TYP
+Laufwerke an
+meinem NAS&shy;COM&nbsp;2 zur vollsten Zufriedenheit. Zunaechst hatte ich Aerger
+mit meinem Speicher (64kb statisch) der sich dann aber recht einfach
+loesen lies.<?php spChar("zwsp"); ?>Dann kam das Problem mit der Monitorumschaltung. Das
+Betriebssystem steht bei mir in einem EPROM vom Typ
 <?php externalLink("2716"); ?>
-UND WIRD JETZT
-IN EINEM EBENFALLS STATISCHEN SPEICHER VOM TYP
+und wird jetzt
+in einem ebenfalls statischen Speicher vom Typ
 <?php externalLink("6116"); ?>
-COPIERT. DER 6116
-STECKT IN EINEM FREIEN ROM/<?php spChar("zwsp"); ?>EPROM-SOCKEL DES NAS&shy;COM&nbsp;2,<?php spChar("zwsp"); ?>DIE EIGENTLICH NUR
-FUER 1KB SPEICHERTYPEN VORGESEHEN SIND. DURCH DAS DAZULEGEN VON ADRESSE
-10 LASSEN SICH ABER AUCH 2KB TYPEN VERWENDEN. DIE UMSCHALTUNG VON EPROM
-AUF RAM ERFOLGT DURCH EINEN 74LS74 DER VON PORT 0 ANGESPROCHEN WIRD.
-DAS SIGNAL VON PIN 6 DES 74LS74 WIRD MIT DEM &bdquo;MROM&ldquo;-SIGNAL
-VERKNOTET UND ERGIBT SO &bdquo;CS&ldquo; FUER DEN 6116. PIN 5 DES 74LS74
-WIRD MIT DEM HERAUSGEBOGENEM PIN 18 (CS) DES 2716 VERBUNDEN.
-NACHFOLGEND DIE KURZE COPIER-ROUTINE, DIE BEI MIR AUF ADRESSE 7000H
-STEHT.
+copiert. Der 6116
+steckt in einem freien ROM/<?php spChar("zwsp"); ?>EPROM-Sockel des NAS&shy;COM&nbsp;2,<?php spchar("zwsp"); ?>die eigentlich nur
+fuer 1kb Speichertypen vorgesehen sind. Durch das dazulegen von Adresse
+10 lassen sich aber auch 2kb Typen verwenden. Die Umschaltung von EPROM
+auf RAM erfolgt durch einen 74LS74 der von Port 0 angesprochen wird.
+Das Signal von Pin 6 des 74LS74 wird mit dem &bdquo;MROM&ldquo;-Signal
+verknotet und ergibt so &bdquo;CS&ldquo; fuer den 6116. Pin 5 des 74LS74
+wird mit dem herausgebogenem Pin 18 (CS) des 2716 verbunden.
+Nachfolgend die kurze copier-routine, die bei mir auf Adresse 7000h
+steht.
 </p>
 
 <?php columnChangeJustify(2); ?>
 
 <?php imageinsert($imagepath, $year, $issue, $page, "Image-45-3.jpeg"); ?>
-<p>
-ES IST UNBEDINGT ERFORDERLICH IC&nbsp;45 DES NAS&shy;COM&nbsp;2 ZU ENTFERNEN UND DURCH
-DRAHTBRUECKEN ZU ERSETZEN,<?php spChar("zwsp"); ?>DA DIESER BUFFER BEI ZUGRIFF AUF ADRESSE
-0000H BIS 0800H VON DEM PROM N2MD (IC&nbsp;47) NUR IN LESERICHTUNG
-GESCHALTET WIRD. SELBSTVERSTAENDLICH KANN MAN AUCH DAS
-&bdquo;DIR&ldquo;SINGNAL AN PIN 11 DES IC&nbsp;45 ABNEHMEN, EINMAL INVERTIEREN
-UND MIT BEIDEN SIGNALEN AUF EIN &bdquo;ODER&ldquo;-GATTER LEGEN, SODAS
-DANN DER BUFFER IN JEDEM FALLE DURCHSCHALTET
-NUN BLIEB NUR NOCH DIE
-ERZEUGUNG DES IOEXT-SIGNALS UEBRIG WAS SICH DURCH DIE VORSCHLAEGE AUS
-<a href="../../../01/32/text/#article1">HEFT 1/84</a>
-DES 80-BUS JORNALS ALS RECHT EINFACH ERGAB.BEI MEINEM RECHNER
-KAM DER
-<a href="../../../01/33/text/#article1">VORSCHLAG</a>
-VON KLAUS FLOCKAU ZUR ANWENDUNG, BEI DEM DIE
-DECODIERUNG MIT EINEM 74LS32 GESCHIEHT. BLEIBT NOCH ZU BEMERKEN DAS ICH
-OEFTERS SCHWIERIGKEITEN MIT DER <?php externalLink("Z80 PIO", "PIO"); ?> HATTE, DIE SICH NICHT IMMER
-RUECKSETZEN LIES.RESET UND M1 MIT EINEM UND-GATTER VERKNOTET UND DANN
-AUF M1 (PIN 37)DER PIO LEGEN, BESEITIGEN DIESES UEBEL. SEITHER LAEUFT
-ALLES ZUR ZUFRIEDENHEIT BEI 2&nbsp;MHZ, WIE AUCH BEI 4&nbsp;MHZ. EIN DANKESCHOEN
-MOECHTE ICH NOCH AN ALLE AUTOREN RICHTEN&nbsp;, DIE MIT IHREN TEXTBEITRAEGEN
-UND INFORMATIONEN ZUM GELINGEN DIESER KARTE BEIGETRAGEN HABEN.
+<p class="uppercase">
+Es ist unbedingt erforderlich IC&nbsp;45 des NAS&shy;COM&nbsp;2 zu entfernen und durch
+Drahtbruecken zu ersetzen,<?php spChar("zwsp"); ?>da dieser Buffer bei Zugriff auf Adresse
+0000h bis 0800h von dem PROM N2MD (IC&nbsp;47) nur in Leserichtung
+geschaltet wird. Selbstverstaendlich kann man auch das
+&bdquo;DIR&ldquo;Singnal an Pin 11 des IC&nbsp;45 abnehmen, einmal invertieren
+und mit beiden Signalen auf ein &bdquo;Oder&ldquo;-Gatter legen, sodas
+dann der Buffer in jedem Falle durchschaltet
+</p>
+<p class="uppercase">
+Nun blieb nur noch die
+Erzeugung des IOEXT-Signals uebrig was sich durch die Vorschlaege aus
+<a href="../../../01/32/text/#article1">Heft 1/84</a>
+des 80-Bus Jornals als recht einfach ergab.<?php spChar("zwsp"); ?>Bei meinem Rechner
+kam der
+<a href="../../../01/33/text/#article1">Vorschlag</a>
+von Klaus Flockau zur Anwendung, bei dem die
+Decodierung mit einem 74LS32 geschieht. Bleibt noch zu bemerken das ich
+oefters Schwierigkeiten mit der
+<?php externallink("Z80 PIO", "PIO"); ?> hatte, die sich nicht immer
+ruecksetzen lies.<?php spChar("zwsp"); ?>RESET und M1 mit einem Und-Gatter verknotet und dann
+auf M1 (Pin 37)der PIO legen, beseitigen dieses Uebel. Seither laeuft
+alles zur Zufriedenheit bei 2&nbsp;MHz, wie auch bei 4&nbsp;MHz. Ein Dankeschoen
+moechte ich noch an alle Autoren richten&nbsp;, die mit ihren Textbeitraegen
+und Informationen zum gelingen dieser Karte beigetragen haben.
 </p>
 
 <?php boxStart(); ?>

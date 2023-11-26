@@ -4,95 +4,95 @@
 </h1>
 <?php columnEnd(1); ?>
 
-<?php columnStartJustify(2, 2); ?>
+<?php columnStartJustify(2, 2, "", "lowercase"); ?>
 
 <p>
-wer schon einmal auf einem nascom-1 mit nas-sys&nbsp;1 oder auf einem
-nascom-2 mit interrupts arbeiten wollte, hat bestimmt bemerkt, dass
-unvorhergesehene dinge passleren: der cursor verschwindet vom
-bildschirm, register inhalte werden veraendert oder das programm, das
-von den interrupts unterbrochen werden soll, steigt total aus. woran
+Wer schon einmal auf einem NAS&shy;COM-1 mit NAS-SYS&nbsp;1 oder auf einem
+NAS&shy;COM-2 mit Interrupts arbeiten wollte, hat bestimmt bemerkt, dass
+unvorhergesehene Dinge passleren: der Cursor verschwindet vom
+Bildschirm, Register Inhalte werden veraendert oder das Programm, das
+von den Interrupts unterbrochen werden soll, steigt total aus. Woran
 liegt das?
 </p>
 <p>
-betrachten wir den beginn der routinen rcal und scal:
+Betrachten wir den Beginn der Routinen RCAL und SCAL:
 </p>
 <pre class="donthyphenate">
-       rcal:   push       hl
-               pop        hl
-               pop        hl
-               inc        hl
-               push       hl
-               &hellip;
+       RCAL:   PUSH       HL
+               POP        HL
+               POP        HL
+               INC        HL
+               PUSH       HL
+               ...
 </pre>
 <p>
-das erste push hl rettet das hl-register auf den Stack, mit den
-beiden folgenden pop hl wird die ruecksprungadresse nach hl geladen.
-die ruecksprungadresse wird aus zwei gruenden benoetigt. zum einen muss
-sie inkrementiert werden, damit hinter das byte, das distanz bzw.
-unterprogramm charakterisiert, zurueckgesprungen wird, zum anderen
-braucht man sie, um dieses byte zu finden.
+Das erste PUSH HL rettet das HL-Register auf den Stack, mit den
+beiden folgenden POP HL wird die Ruecksprungadresse nach HL geladen.
+Die Ruecksprungadresse wird aus zwei Gruenden benoetigt. Zum einen muss
+sie inkrementiert werden, damit hinter das Byte, das Distanz bzw.
+Unterprogramm charakterisiert, zurueckgesprungen wird, zum Anderen
+braucht man sie, um dieses Byte zu finden.
 </p>
 <p>
-betrachten wir aber den stackpointer. nach dem zweiten pop hl zeigt
-er auf die ruecksprungadresse, d.h. er steht ueber dem abgelegten hl.
-kommt jetzt ein interrupt, wird dort die ruecksprungadresse der
-interruptserviceroutine eingetragen und der alte inhalt von hl ist
+Betrachten wir aber den Stackpointer. Nach dem zweiten POP HL zeigt
+er auf die Ruecksprungadresse, d.h. er steht ueber dem abgelegten HL.
+Kommt jetzt ein Interrupt, wird dort die Ruecksprungadresse der
+Interruptserviceroutine eingetragen und der alte Inhalt von HL ist
 zerstoert.
 </p>
 <p>
-scal ist aber die entscheidende routine in nas-sys, ueber sie laufen
-die meisten zugriffe auf des betriebssystem, auch intern wird sie
-staendig referiert. unter nas-sys&nbsp;1 sind also keine interrupts
+SCAL ist aber die entscheidende Routine in NAS-SYS, ueber sie laufen
+die meisten Zugriffe auf des Betriebssystem, auch intern wird sie
+staendig referiert. unter NAS-SYS&nbsp;1 sind also keine Interrupts
 moeglich, ein doch wohl vernichtendes urteil fuer dieses ansonsten so
-elegante betriebssystem.
+elegante Betriebssystem.
 </p>
 <p>
-aber auch ein betriebssystem ist keine heilige kuh, d.h. man kann es
-aendern. herr kurt moraw aus muenchen, dem ich an dieser
-stelle fuer seine anregungen danken moechte, hat mir dieses problem
-geschildert und er hat nas-sys&nbsp;1 so geaendert, dass es interruptfaehig
-wurde. ich habe seine aenderungen getestet und sie funktionierten
-einwandfrei. leider hatte das ganze aber noch einen schoenheitsfehler:
-nas-sys war 28 byte laenger geworden und es passte nicht mehr in zwei
-eproms.
+Aber auch ein Betriebssystem ist keine heilige Kuh, d.h. man kann es
+aendern. Herr Kurt Moraw aus Muenchen, dem ich an dieser
+Stelle fuer seine Anregungen danken moechte, hat mir dieses Problem
+geschildert und er hat NAS-SYS&nbsp;1 so geaendert, dass es interruptfaehig
+wurde. ich habe seine Aenderungen getestet und sie funktionierten
+einwandfrei. Leider hatte das Ganze aber noch einen Schoenheitsfehler:
+NAS-SYS war 28 Byte laenger geworden und es passte nicht mehr in zwei
+EPROMs.
 </p>
 <p>
-jetzt liess mir die sache keine ruhe und nach mehreren abenden
-knobelei hat es dann geklappt. rcal und scal wurden interruptfaehig und
-passten trotzdem auf die alten plaetze. (wer sich das programm genau
-anschaut, glaubt bestimmt, dass man nicht auf anhieb auf so etwas
+Jetzt liess mir die Sache keine Ruhe und nach mehreren Abenden
+Knobelei hat es dann geklappt. RCAL und SCAL wurden Interruptfaehig und
+passten trotzdem auf die alten Plaetze. (Wer sich das Programm genau
+anschaut, glaubt bestimmt, dass man nicht auf Anhieb auf so etwas
 kommt).
 
 <?php columnChangeJustify(2, "<br><br></p>", "<p>"); ?>
 
-damit war &sbquo;nas-sys&nbsp;i&lsquo; entstanden. nas-sys&nbsp;i ist voll interruptfaehig
-und es ist natuerlich auch voll kompatibel zu nas-sys&nbsp;1, d.h. alle
-Programme, die mit nas-sys&nbsp;1 laufen, laufen auch mit nas-sys&nbsp;i.
+Damit war &sbquo;NAS-SYS&nbsp;i&lsquo; entstanden. NAS-SYS&nbsp;i ist voll interruptfaehig
+und es ist natuerlich auch voll kompatibel zu NAS-SYS&nbsp;1, d.h. alle
+Programme, die mit nas-sys&nbsp;1 laufen, laufen auch mit NAS-SYS&nbsp;i.
 </p>
 <p>
-fuer interessenten ist nas-sys&nbsp;i ab sofort bei mir (meine adresse
-steht im assemblerlisting auf der naechsten seite) und bei
-mk-systemtechnik erhaeltlich. es ist 10.&ndash;&nbsp;dm teurer als nas-sys&nbsp;1. fuer
-aenderungskosten von 20.&ndash;&nbsp;dm tauschen wir ihr nas-sys&nbsp;1 gegen nas-sys&nbsp;i
+Fuer Interessenten ist NAS-SYS&nbsp;i ab sofort bei mir (meine Adresse
+steht im Assemblerlisting auf der naechsten Seite) und bei
+MK-Systemtechnik erhaeltlich. Es ist 10.&ndash;&nbsp;DM teurer als NAS-SYS&nbsp;1. Fuer
+aenderungskosten von 20.&ndash;&nbsp;DM tauschen wir Ihr NAS-SYS&nbsp;1 gegen NAS-SYS&nbsp;i
 um (die eingeschickten eproms muessen natuerlich o.k. sein und sie
-muessen nas-sys&nbsp;1 enthalten). nas-sys&nbsp;i kann nur in eproms geliefert
-werden, nicht in einem rom. wie man es trotzdem auf dem nascom-2
-verwenden kann, steht in meinem artikel im
-<a href="../../10/text/#article1">letzten nascom-journal</a>.
+muessen NAS-SYS&nbsp;1 enthalten). NAS-SYS&nbsp;i kann nur in EPROMs geliefert
+werden, nicht in einem ROM. Wie man es trotzdem auf dem NAS&shy;COM-2
+verwenden kann, steht in meinem Artikel im
+<a href="../../10/text/#article1">letzten NAS&shy;COM-JOUR&shy;NAL</a>.
 </p>
 <p style="text-align:right">
-bernd ploss &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<?php externalLink("Bernd Ploss"); ?> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 <br>
-<p>
-P.S.: mit diesem artikel will ich nicht die radikale kleinschreibung
-in der deutschen sprache propagieren. die kleinschreibung hat
-technische gruende. der artikel wurde mit naspen editiert und mit
-tty-sys (naeheres im
-<a href="../../../../81/04/22/text/#article1">naechsten heft</a>)
-auf einem fernschreiber gedruckt &ndash;
-und der hat eben nur kleinbuchstaben.
+<p id="article2">
+P.S.: Mit diesem Artikel will ich nicht die radikale Kleinschreibung
+in der Deutschen Sprache propagieren. Die Kleinschreibung hat
+technische Gruende. Der Artikel wurde mit NAS&shy;PEN editiert und mit
+TTY-SYS (naeheres im
+<a href="../../../../81/04/22/text/#article1">naechsten Heft</a>)
+auf einem Fernschreiber gedruckt &ndash;
+und der hat eben nur Kleinbuchstaben.
 </p>
 
 <?php columnEnd(2); ?>

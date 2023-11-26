@@ -1,163 +1,162 @@
-<?php columnStart(1); ?>
+<?php columnStart(1, "", "", "lowercase"); ?>
 <h4 id="article1">
-<u>das programm tty-sys</u>
+<u>Das Programm TTY-SYS</u>
 </h4>
 <?php columnEnd(1); ?>
 
-<?php columnStartJustify(2, 2); ?>
+<?php columnStartJustify(2, 2, "", "lowercase"); ?>
 
 <p>
-eine beschreibung dieses programms hatte ich ja schon lange
-angekuendigt &ndash; im <a href="../../../../80/04/16/text/#article1">heft 4/80</a>.
+Eine Beschreibung dieses Programms hatte ich ja schon lange
+angekuendigt &ndash; im <a href="../../../../80/04/16/text/#article2">heft 4/80</a>.
 aber dann kam immer etwas dazwischen und
-die ver&shy;oeffent&shy;lichung hat sich bis jetzt verzoegert. jetzt soll das
-programm, das schon einige zeit lieferbar ist (fuer 98.&ndash;&nbsp;dm + mwst),
-aber auch im nascom-journal vorgestellt werden.
+die Veroeffentlichung hat sich bis jetzt verzoegert. Jetzt soll das
+Programm, das schon einige Zeit lieferbar ist (fuer 98.&ndash;&nbsp;DM + MwSt),
+aber auch im Nascom-Journal vorgestellt werden.
 </p>
 <p>
-das programmsystem tty-sys ist die softwareschnittstelle zum anschluss
-eines 5-kanal-fernschrelbers an einen nascom mit dem betriebssystem
-nas-sys, es enthaelt die routinen zur zeichenausgabe an den
-fernschreiber, zur zeicheneingabe vom fernschreiber, zum stanzen und
-lesen von lochstreifen, zum drucken von hex-listings und zum ausdrucken
-des bidschirminhalts. die baudrate des fernschreibers kann
+Das Programmsystem TTY-SYS ist die Softwareschnittstelle zum Anschluss
+eines 5-Kanal-Fernschrelbers an einen Nascom mit dem Betriebssystem
+NAS-SYS, es enthaelt die Routinen zur Zeichenausgabe an den
+Fernschreiber, zur Zeicheneingabe vom Fernschreiber, zum Stanzen und
+Lesen von Lochstreifen, zum Drucken von HEX-Listings und zum Ausdrucken
+des Bidschirminhalts. Die Baudrate des Fernschreibers kann
 softwaremaessig zwischen 45, 50, 75 und 100 umgeschaltet werden, die
-druckausgabe kann beliebig formatiert werden (zahl der zeichen pro
-zeile und zahl der zeilen pro seite). die ascii-zeichen, die im
-baudot-code nicht enthalten sind, werden als doppelzeichen ausgegeben,
-beim einlesen werden die doppelzeichen wieder erkannt, so koennen alle
-ascii-zeichen (von 20h bis 5fh) eindeutig ausgegeben und eingelesen
+Druckausgabe kann beliebig formatiert werden (Zahl der Zeichen pro
+Zeile und Zahl der Zeilen pro Seite). Die ASCII-Zeichen, die im
+Baudot-Code nicht enthalten sind, werden als Doppelzeichen ausgegeben,
+beim Einlesen werden die Doppelzeichen wieder erkannt, so koennen alle
+ASCII-Zeichen (von 20h bis 5Fh) eindeutig ausgegeben und eingelesen
 werden.
 </p>
 <p>
-tty-sys wird in einem eprom
-<?php externalLink("2708"); ?>
-mit der anfangsadresse b000 geliefert
-(andere anfangsadressen auf Anfrage). es ist zusammen mit dem
-unveraenderten nas-sys verwendbar, die bedienung wird jedoch
-komfortabler, wenn in der befehlstabelle von nas-sys bei dem befehl &sbquo;p&lsquo;
-die adresse der interpretierroutine von tty-sys (b027) eingetragen
-wird, durch diese modifikation im zweiten eprom bleibt nas-sys auch
-ohne tty-sys weiter verwendbar.
+TTY-SYS wird in einem EPROM
+<?php externalLink("2708"); ?> mit der Anfangsadresse B000 geliefert
+(andere Anfangsadressen auf Anfrage). Es ist zusammen mit dem
+unveraenderten NAS-SYS verwendbar, die Bedienung wird jedoch
+komfortabler, wenn in der befehlstabelle von NAS-SYS bei dem Befehl &sbquo;P&lsquo;
+die Adresse der Interpretierroutine von TTY-SYS (B027) eingetragen
+wird, durch diese Modifikation im zweiten EPROM bleibt NAS-SYS auch
+ohne TTY-SYS weiter verwendbar.
 </p>
 <p>
-tty-sys verwendet die speicherzellen 0bfb-0bff (im unsichtbaren
-bildschirmbereich) als variablenspeicher. weiterer arbeitsspeicher wird
+TTY-SYS verwendet die Speicherzellen 0BFB-0BFF (im unsichtbaren
+Bildschirmbereich) als Variablenspeicher. Weiterer Arbeitsspeicher wird
 nicht benoetigt.
 </p>
 <p>
-tty-sys ist standardmsessig fuer eine taktfrequenz des rechners von
-2&nbsp;mhz ausgelegt. soll es mit 4&nbsp;mhz laufen, muss dies bei der bestellung
+TTY-SYS ist standardmsessig fuer eine Taktfrequenz des Rechners von
+2&nbsp;MHz ausgelegt. Soll es mit 4&nbsp;MHz laufen, muss dies bei der Bestellung
 angegeben werden.
 </p>
 <p>
-tty-sys erweitert nas-sys um folgende befehle:
+TTY-SYS erweitert NAS-SYS um folgende Befehle:
 </p>
+<h4>
+<u>P0 a b c &nbsp; (E B000 a b c)</u>
+</h4>
 <p>
-<u>p0 a b c &nbsp; (e b000 a b c)</u>
-</p>
-<p>
-dieser befehl initialisiert ein- und ausgabe ueber den fernschreiber. a
-ist die zahl der zeilen pro seite (a=0: standardwert 66, a=ff: keine
-seiteneinteilung). b ist die
-zahl der zeichen pro zeile (b=0: standardwert 69) und c gibt die
-baudrate an (c=0: 45 baud, c=1: standardwert 50 baud, c=2: 75 baud und
-c=3: 100 baud). fuer fehlende argumente werden die standardwerte
+Dieser Befehl initialisiert Ein- und Ausgabe ueber den Fernschreiber. a
+ist die Zahl der Zeilen pro Seite (a=0: Standardwert 66, a=FF: keine
+Seiteneinteilung). b ist die
+Zahl der Zeichen pro Zeile (b=0: Standardwert 69) und c gibt die
+Baudrate an (c=0: 45 Baud, c=1: Standardwert 50 Baud, c=2: 75 Baud und
+c=3: 100 Baud). Fuer fehlende Argumente werden die Standardwerte
 eingesetzt.
 </p>
 <p>
-zeilen- und zeichenzahl sowie baudrate, die mit diesem befehl gesetzt
-wurden, gelten dann auch fuer die befehle p1 bis p5 (bis zum druecken
-von reset oder dem ausfuehren von rst 0). wurde p0 nicht ausgefuehrt,
-verwenden diese befehle die standardwerte.
+Zeilen- und Zeichenzahl sowie Baudrate, die mit diesem Befehl gesetzt
+wurden, gelten dann auch fuer die Befehle P1 bis P5 (bis zum Druecken
+von Reset oder dem Ausfuehren von RST 0). Wurde P0 nicht ausgefuehrt,
+verwenden diese Befehle die Standardwerte.
 </p>
 <p>
-nach der initialisierung kann die ein- und ausgabe durch die ausgabe
-der folgenden steuerzeichen gesteuert werden:
+Nach der Initialisierung kann die Ein- und Ausgabe durch die Ausgabe
+der folgenden Steuerzeichen gesteuert werden:
 </p>
 <p class="first-indent">
-ctrl a (ascii 01): die druckausgabe wird initialisiert, d.h. zeichen,
-die ab jetzt ausgegeben werden, werden auch auf dem fernschreiber
-gedruckt, der fernschreibermotor wird eingeschaltet, falls er noch
+CTRL A (ASCII 01): Die Druckausgabe wird initialisiert, d.h. zeichen,
+die ab jetzt ausgegeben werden, werden auch auf dem Fernschreiber
+gedruckt, der Fernschreibermotor wird eingeschaltet, falls er noch
 nicht laeuft.
 </p>
 
 <?php columnChangeJustify(2); ?>
 
 <p class="first-indent">
-ctrl b (ascii 02): die eingabe vom fernschreiber wird initialisiert,
-der fernschreibermotor wird eingeschaltet, falls er noch nicht laeuft.
-die nascom-tastatur ist jetzt abgeschaltet. wird am fernschreiber
-&sbquo;&sect;&lsquo; eingegeben oder an der nascom-tastatur die shift-taste
-gedrueckt, wird die eingabe vom fernschreiber wieder abgeschaltet.
+CTRL B (ASCII 02): Die Eingabe vom Fernschreiber wird initialisiert,
+der Fernschreibermotor wird eingeschaltet, falls er noch nicht laeuft.
+die Nascom-Tastatur ist jetzt abgeschaltet. Wird am Fernschreiber
+&sbquo;&sect;&lsquo; eingegeben oder an der Nascom-Tastatur die Shift-Taste
+gedrueckt, wird die Eingabe vom Fernschreiber wieder abgeschaltet.
 </p>
 <p class="first-indent">
-ctrl c (ascii 03): ab jetzt keine weitere druckausgabe, der motor
+CTRL C (ASCII 03): Ab jetzt keine weitere Druckausgabe, der Motor
 bleibt an.
 </p>
 <p class="first-indent">
-ctrl d (ascii 04): schaltet motor aus, macht blattvorschub, falls
-druckausgabe initialisiert.
+CTRL D (ASCII 04): Schaltet Motor aus, macht Blattvorschub, falls
+Druckausgabe initialisiert.
 </p>
 <p class="first-indent">
-ctrl e (ascii 05): an den fernschreiber werden 50 nullzeichen
-ausgegeben, z.b. fuer anfang und ende eines Lochstreifens.
+CTRL E (ASCII 05): An den Fernschreiber werden 50 Nullzeichen
+ausgegeben, z.B. fuer Anfang und Ende eines Lochstreifens.
 </p>
 <p>
-die steuerzeichen kann man an der nascom-tastatur eingeben, indem man
-die taste &sbquo;@&lsquo; und dann gleichzeitig z.b. die taste &sbquo;a&lsquo; (ctrl a)
-drueckt. gibt man nacheinander ctrl a und ctrl b ein werden aus- und
-eingabe auf den fernschreiber umgeschaltet, jetzt kann der nascom
+Die Steuerzeichen kann man an der Nascom-Tastatur eingeben, indem man
+die Taste &sbquo;@&lsquo; und dann gleichzeitig z.B. die Taste &sbquo;A&lsquo; (CTRL A)
+drueckt. Gibt man nacheinander CTRL A und CTRL B ein werden Aus- und
+Eingabe auf den Fernschreiber umgeschaltet, jetzt kann der Nascom
 zusammen mit allen Programmen, die sich dafuer eignen, vom
-fernschreiber aus gefahren werden (z.b. auch ueber funk).
+Fernschreiber aus gefahren werden (z.b. auch ueber Funk).
 </p>
 <p>
-die adressen der eingaberoutine ttyin (b20f) wird bei &amp;suin
-(0c7b), die der ausgaberoutine ttyout (b07d) bei &amp;suout (0c78)
-eingetragen und die ein- und ausgabetabellen auf intu bzw. outtu
-umgesetzt, von maschinenprogrammen aus spricht man ttyin und ttyout
-ueber die normalen ein- und ausgaberoutinen an oder ueber uin und
-uout. die auszugebenden zeichen werden an ttyout im a-register
-uebergeben. nach einem aufruf
-von ttyin erfolgt ein ruecksprung, sobald ein zeichen vom fernschreiber
-vorliegt, beim ruecksprung ist dann das carry-flag gesetzt, das zeichen
-steht im a-register.
+Die Adressen der Eingaberoutine TTYIN (B20F) wird bei &amp;SUIN
+(0C7B), die der Ausgaberoutine TTYOUT (B07D) bei &amp;SUOUT (0C78)
+eingetragen und die Ein- und Ausgabetabellen auf INTU bzw. OUTTU
+umgesetzt, Von Maschinenprogrammen aus spricht man TTYIN und TTYOUT
+ueber die normalen Ein- und Ausgaberoutinen an oder ueber UIN und
+UOUT. Die auszugebenden Zeichen werden an TTYOUT im A-Register
+uebergeben. Nach einem Aufruf
+von TTYIN erfolgt ein Ruecksprung, sobald ein Zeichen vom Fernschreiber
+vorliegt. Beim Ruecksprung ist dann das Carry-Flag gesetzt, das Zeichen
+steht im A-Register.
 </p>
 <p>
-der nas-sys befehl &sbquo;n&lsquo; setzt die ein- und ausgabetabellen wieder auf
+Der NAS-SYS Befehl &sbquo;N&lsquo; setzt die Ein- und Ausgabetabellen wieder auf
 die Standardwerte.
 </p>
+<h4>
+<u>P1 a b &nbsp; (E B001 a b)</u>
+</h4>
 <p>
-<u>p1 a b &nbsp; (e b001 a b)</u>
+Auf dem Fernschreiber werden die Speicherinhalte ab der Adresse a bis
+zur Adresse b (ausschliesslich) als HEX-Listing gedruckt.
 </p>
+<h4>
+<u>P2 a b &nbsp; (E B002 a b)</u>
+</h4>
 <p>
-auf dem fernschreiber werden die speicherinhalte ab der adresse a bis
-zur adresse b (ausschliesslich) als hex-listing gedruckt.
+Der Bildschirminhalt wird auf dem Fernschreiber gedruckt. a
+ist die Nummer der ersten Zeile (a=1: ab 080A) und b die Anzahl der
+Zeilen.
 </p>
+<h4>
+<u>P3 a b &nbsp; (E B003 a b)</u>
+</h4>
 <p>
-<u>p2 a b &nbsp; (e b002 a b)</u>
-</p>
-<p>
-der bildschirminhalt wird auf dem fernschreiber gedruckt, a
-ist die nummer der ersten zeile (a=1: ab 080a) und b die anzahl der
-zeilen.
-</p>
-<p>
-<u>p3 a b &nbsp; (e b003 a b)</u>
-</p>
-<p>
-dient zum ausstanzen eines speicherbereichs auf lochstreifen, verwendet
-wird das gleiche format wie bei tabulate (mit pruefbytes). nach der
-eingäbe des befehls fragt der rechner: &sbquo;titel&nbsp;?&lsquo;. danach kann man den
-namen des programms eingeben, der beim wiedereinlesen des lochstreifens
+Dient zum Ausstanzen eines Speicherbereichs auf Lochstreifen. Verwendet
+wird das gleiche Format wie bei Tabulate (mit Pruefbytes). Nach der
+Eingabe des Befehls fragt der Rechner: &sbquo;Titel&nbsp;?&lsquo;. Danach kann man den
+Namen des Programms eingeben, der beim Wiedereinlesen des Lochstreifens
 angezeigt wird.
 </p>
+<h4>
+<u>P4 &nbsp; (E B004)</u>
+</h4>
 <p>
-<u>p4 &nbsp; (e b004)</u>
-</p>
-<p>
-einlesen eines lochstreifens, der mit p3 gestanzt wurde. fehlerhafte
-zeilen werden angezeigt (wie bei &sbquo;load&lsquo;).
+Einlesen eines Lochstreifens, der mit P3 gestanzt wurde. Fehlerhafte
+Zeilen werden angezeigt (wie bei &sbquo;Load&lsquo;).
 </p>
 
 <?php columnEnd(2); ?>

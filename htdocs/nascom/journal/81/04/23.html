@@ -1,98 +1,92 @@
+<?php columnStart(1, "", "", "lowercase"); ?>
+<h4>
+<u>P5 &nbsp; (E B005)</u>
+</h4>
+<?php columnEnd(1); ?>
+
 <?php columnStartJustify(2, 2); ?>
 
+<div class="lowercase">
 <p>
-<u>p5 &nbsp; (e b005)</u>
+Druckausgabe von NASPEN aus wird vorbereitet (bei 101E wird die
+Druckroutine eingetragen). Will man mit NASPEN arbeiten, macht man
+zunaechst einen Kaltstart von NASPEN, kehrt zu NAS-SYS zurueck und gibt
+dort den befehl P5 (evtl. vorher P0) ein. Dann kehrt man mit einem
+Warmstart zu NASPEN zurueck. In NASPEN laeuft dann die Druckausgabe mit
+dem NASPEN-Befehl P ueber den Fernschreiber. Diese Beschreibung wurde
+uebrigens mit NASPEN editiert und mit TTY-SYS gedruckt&nbsp;.
+</p>
+<h4>
+Betrieb mit anderen systemprogrammen:
+</h4>
+<p>
+TTY-SYS kann zusammen mit dem 8K-BASIC, mit
+ASM/<?php spChar("zwsp"); ?>EPROM V2.0, mit NASPEN, mit DIS-SYS und
+mit ZEAP verwendet werden. Dabei gibt es folgende Besonderheiten:
 </p>
 <p>
-druckausgabe von naspen aus wird vorbereitet (bei 101e wird die
-druckroutine eingetragen). will man mit naspen arbeiten, macht man
-zunaechst einen kaltstart von naspen, kehrt zu nas-sys zurueck und gibt
-dort den befehl p5 (evtl. vorher p0) ein. dann kehrt man mit einem
-warmstart zu naspen zurueck. in naspen laeuft dann die druckausgabe mit
-dem naspen-befehl p ueber den fernschreiber. diese beschreibung wurde
-uebrigens mit naspen editiert und mit tty-sys gedruckt&nbsp;.
+8K-BASIC:<br>
+Vor dem Starten des BASIC wird P0 ausgefuehrt, Steuerzeichen werden
+mit CHR$ direkt oder vom Programm aus abgeschickt. PRINT CHR$(1)
+bewirkt z.b. die Ausgabe von CTRL A.
 </p>
 <p>
-betrieb mit anderen systemprogrammen:
+ASM/<?php spChar("zwsp"); ?>EPROM:<br>
+Vor den Start von ASM/<?php spChar("zwsp"); ?>EPROM wird P0 ausgefuehrt. In
+ASM/<?php spChar("zwsp"); ?>EPROM werden dann mit dem Befehl L User
+I/O-Routinen aktiviert. Steuerzeichen kann man dann
+direkt an der Tastatur eingeben.
 </p>
 <p>
-tty-sys kann zusammen mit dem 8k-basic, mit
-asm/<?php spChar("zwsp"); ?>eprom v2.0, mit naspen, mit dis-sys und
-mit zeap verwendet werden. dabei gibt es folgende besonderheiten:
+NASPEN:<br>
+Die arbeit mit NASPEN ist bei dem befehl P5 beschrieben.
 </p>
 <p>
-8k-basic:
+DIS-SYS:<br>
+Vor dem Aufruf von DIS-SYS wird P0 ausgefuehrt und
+die Druckausgabe durch Eingabe von CTRL A aktiviert.
 </p>
 <p>
-vor dem starten des basic wird p0 ausgefuehrt, steuerzeichen werden
-mit chr$ direkt oder vom programm aus abgeschickt. print chr$(1)
-bewirkt z.b. die ausgabe von ctrl a.
+ZEAP:<br>
+Nach einem Kaltstart von ZEAP kehrt man zu NAS-SYS zurueck. dann traegt
+man bei 0F05 die Adresse von TTYOUT (B02E) ein, fuehrt P0 aus und gibt
+CTRL A ein (von ZEAP aus kann man keine Steuerzeichen abschicken). Mit
+einem Warmstart kehrt man zu ZEAP zurueck und kann dort mit dem Befehl
+U Source-Listings und mit der Option 4 beim Assemblieren
+Assembler-Listings drucken.
 </p>
+<h4>
+Doppelzeichen:
+</h4>
 <p>
-asm/<?php spChar("zwsp"); ?>eprom:
-</p>
-<p>
-vor den start von asm/<?php spChar("zwsp"); ?>eprom wird p0 ausgefuehrt. in
-asm/<?php spChar("zwsp"); ?>eprom werden dann mit dem befehl l user
-i/o-routinen aktiviert. steuerzeichen kann man dann
-direkt an der tastatur eingeben.
-</p>
-<p>
-naspen:
-</p>
-<p>
-die arbeit mit naspen ist bei dem befehl p5
-beschrieben.
-</p>
-<p>
-dis-sys:
-</p>
-<p>
-vor dem aufruf von dls-sys wird p0 ausgefuehrt und
-die druckausgabe durch eingabe von ctrl a aktiviert.
-</p>
-<p>
-zeap:
-</p>
-<p>
-nach einem kaltstart von zeap kehrt man zu nas-sys zurueck. dann traegt
-man bei 0f05 die adresse von ttyout (b02e) ein, fuehrt p0 aus und gibt
-ctrl a ein (von zeap aus kann man keine Steuerzeichen abschicken). mit
-einem warmstart kehrt man zu zeap zurueck und kann dort mit dem befehl
-u source-listings und mit der Option 4 beim assemblieren
-assembler-listings drucken.
-</p>
-<p>
-doppelzeichen:
-</p>
-<p>
-die folgende tabelle zeigt, fuer welche ascii-zeichen doppelzeichen
+Die folgende Tabelle zeigt, fuer welche ASCII-Zeichen Doppelzeichen
 verwendet werden
 </p>
 <?php imageCenter($imagepath, $year, $issue, $page, "Image-23-1.jpeg"); ?>
+<h4>
+Hardware:
+</h4>
 <p>
-hardware:
-</p>
-<p>
-die steuersignale fuer den fernschreiber stehen an der <?php externalLink("Z80 PIO", "pio"); ?> port b zur
-verfuegung. bit 0 dient zum schalten des linienstroms, bit 0=0
-bedeutet: linienstrom unterbrochen. bit 1 ist der eingang von den
-sendekontakten und bit 6 steuert den motor. bit 6=0 bedeutet: motor
-ein. nach dem abschalten des motors werden alle ausgaenge hochohmig.
-zum anschluss des fernschreibers muss man ein geeignetes interface
-benuetzen, das galvanisch trennen sollte (optokoppler).
+Die Steuersignale fuer den Fernschreiber stehen an der <?php externalLink("Z80 PIO", "PIO"); ?> PORT B zur
+Verfuegung. Bit 0 dient zum Schalten des Linienstroms, Bit 0=0
+bedeutet: Linienstrom unterbrochen. Bit 1 ist der Eingang von den
+Sendekontakten und Bit 6 steuert den Motor. Bit 6=0 bedeutet: Motor
+ein. Nach dem Abschalten des Motors werden alle ausgaenge hochohmig.
+Zum Anschluss des Fernschreibers muss man ein geeignetes Interface
+benuetzen, das galvanisch trennen sollte (Optokoppler).
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
-empfohlen wird das Interface &sbquo;fernschreib-interface v 1.1.&lsquo;.
+Empfohlen wird das Interface &sbquo;Fernschreib-Interface V 1.1.&lsquo;.
 </p>
 <p>
-bernd ploss<br>
-datenelektronik &ndash; systementwicklung<br>
+<?php externalLink("Bernd Ploss"); ?><br>
+Datenelektronik &ndash; Systementwicklung<br>
 ____________ _<br>
-d-____ _______<br>
-tel. _____/_____
+D-____ _______<br>
+Tel. _____/_____
 </p>
+</div>
 <p>
 Falls Sie gerne ein TTY-SYS haben möchten, senden Sie bitte Ihre
 Bestellung an MK-Systemtechnik. Wir liefern Ihnen das TTY-SYS z.Zt. ab

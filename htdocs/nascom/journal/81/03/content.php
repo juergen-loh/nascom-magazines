@@ -19,7 +19,7 @@
 	);
 	trJournal($path, $tail, $magazine
 	,	"Festungs- und Belagerungsspiel"
-	,	"Jüren Bezold"
+	,	"Jürgen Bezold"
 	,	"Basic"
 	,	1981
 	,	3
