@@ -116,7 +116,7 @@
 </table>
 
 <?php
-	echo "<!-- Linie &uuml;ber ganze Spalte --><table style=\"width: 100%\"><tr><td style=\"border-top:1px solid #000\"><p style=\"font-size:1px\">&nbsp;</p></td></tr><tr><td style=\"height: 2px\"></td></tr></table>\n";
+	echo "<!-- Linie über ganze Spalte --><table style=\"width: 100%\"><tr><td style=\"border-top:1px solid #000\"><p style=\"font-size:1px\">&nbsp;</p></td></tr><tr><td style=\"height: 2px\"></td></tr></table>\n";
 
 	$page = 1;
 	echo "<div class=\"row\">\n";

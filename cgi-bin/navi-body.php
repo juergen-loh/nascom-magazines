@@ -1088,7 +1088,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "&micro;PD765":			$url = "http://dunfield.classiccmp.org/r/765.pdf";								break;
 	case "2114":if ($lang == "en")	$url = "https://en.wikipedia.org/wiki/Random-access_memory#SRAM";
 				else				$url = "https://$lang.wikipedia.org/wiki/2114_(SRAM)";							break;
-	case "2708":					$url = "https://amigan.yatho.com/2708EPROM.pdf";								break;
+	case "2708":					$url = "https://deramp.com/downloads/eprom_programmers/TMS2708.pdf";			break;
 	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
 	case "2732A":					$url = "https://www.futurlec.com/Memory/2732_Datasheet.shtml";					break;
@@ -1144,7 +1144,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://$lang.wikipedia.org/wiki/VT180";								break;
 	case "Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
-	case "ECB 85":					$url = "https://www.hknebel.org/Museum/Tragbare_PCs/Vorlaufer/ECB_85/ecb_85.htm";	break;
+	case "ECB 85":					$url = "https://$lang.wikipedia.org/wiki/ECB85";								break;
 	case "ECB":						$url = "https://$lang.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
 	case "EF9366":					$url = "https://www.datasheetarchive.com/ef9366-datasheet.html";				break;
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
@@ -1254,7 +1254,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
-	case "Janich &amp; Klass":		$url = "https://janichklass.de/";												break;
+	case "Janich &amp; Klass":		$url = "https://janichklass.de/die-firma/firmengeschichte/";					break;
 	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
 	case "Jürgen Loh":				$url = "https://www.jloh.de/";													break;
@@ -1418,8 +1418,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "The complete FORTH":		$url = "https://openlibrary.org/works/OL5598529W/The_complete_FORTH";			break;
 	case "Threaded Interpretive Languages":	$url = "https://openlibrary.org/works/OL6331362W/Threaded_interpretive_languages";	break;
 	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
-	case "TL497":					$url = "https://pdf.datasheetcatalog.com/datasheets/150/316215_DS.pdf";			break;
-	case "TMS 5100":				$url = "https://www.datasheetarchive.com/tms5100-datasheet.html";				break;
+	case "TL497":					$url = "https://www.ti.com/lit/ds/symlink/tl494.pdf";							break;
+	case "TMS5100":					$url = "https://www.datasheetarchive.com/tms5100-datasheet.html";				break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/TMS9929-datasheet.html";				break;
 	case "Triumph-Adler P4":		$url = "https://www.old-computers.com/museum/computer.asp?c=485&st=1";			break;
 	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
