@@ -1238,14 +1238,14 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Harzretro":				$url = "https://www.computersammler.de/sammlung/einplatinen-und-lerncomputer/kontron-z80-kit/";	break;
 	case "Henelec":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm805.htm";				break;
 	case "HiSOFT":					$url = "https://hisoft.co.uk/gp/about-hisoft/1/pgid/4/";						break;
-	case "HM7611":					$url = "https://www.retrotechnology.com/restore/hm7602.pdf";						break;
+	case "HM7611":					$url = "https://www.retrotechnology.com/restore/hm7602.pdf";					break;
 	case "HOCO Floppy Controller":	$url = "https://forum.classic-computing.de/forum/index.php?thread/11561-hoco-floppy-controller/";	break;
 	case "HSA-88B":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm847.htm";				break;
 	case "HTML":					$url = "https://$lang.selfhtml.org/";											break;
 	case "i8255":					$url = "https://$lang.wikipedia.org/wiki/Intel_8255";							break;
 	case "IBM 3270":				$url = "https://$lang.wikipedia.org/wiki/IBM_3270";								break;
-	case "IBM 3740":				$url = "https://www.ibm.com/ibm/history/exhibits/rochester/rochester_4016.html";	break;
-	case "IBM System/34":			$url = "https://www.ibm.com/ibm/history/exhibits/vintage/vintage_4506VV2236.html";	break;
+	case "IBM 3740":				$url = "https://en.wikipedia.org/wiki/IBM_3740";								break;
+	case "IBM System/34":			$url = "https://en.wikipedia.org/wiki/IBM_System/34";							break;
 	case "ICL7106":					$url = "https://www.renesas.com/eu/en/document/dst/icl7106-icl7107-icl7107s-datasheet";	break;
 	case "IMP":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/imp.htm";				break;
 	case "Indische Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1980t/index.htm";					break;
