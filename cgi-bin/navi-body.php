@@ -1112,7 +1112,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AUDIT 5":					$url = "https://www.old-computers.com/museum/computer.asp?c=1305&st=1";			break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
 	case "AY-3-8910":				$url = "https://$lang.wikipedia.org/wiki/AY-3-8910";							break;
-	case "BASF 6106":				$url = "https://www.abc80.net/archive/luxor/diskdrives/drives/BASF-6106-Mini-Disk-Drive.pdf";	break;
+	case "BASF 6106":				$url = "https://retrocmp.de/fdd/basf/6106/b6106_b.htm";							break;
 	case "BASF 6138":				$url = "https://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "BASIC COMPUTER GAMES":	$url = "https://www.atariarchives.org/basicgames/showpage.php?page=107";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
@@ -1629,4 +1629,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-12-23 22:12:22 +0100 (Sa, 23. Dez 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-12-27 17:16:05 +0100 (Mi, 27. Dez 2023) $ -->
