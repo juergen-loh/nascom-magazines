@@ -2703,7 +2703,7 @@ F149 66                 LD      H,(HL)          ; Get MSB of argument address
 F14A 6F                 LD      L,A             ; HL = Arg variable address
 F14B E5                 PUSH    HL              ; Save it
 F14C 2ADE10             LD      HL,(FNRGNM)     ; Get old argument name
-F14F E3                 EX      (SP),HL ;       ; Save old , Get new
+F14F E3                 EX      (SP),HL         ; Save old , Get new
 F150 22DE10             LD      (FNRGNM),HL     ; Set new argument name
 F153 2AE210             LD      HL,(FNARG+2)    ; Get LSB,NLSB of old arg value
 F156 E5                 PUSH    HL              ; Save it
@@ -4399,7 +4399,7 @@ FBA6 87                 ADD     A,A             ; per entry
 FBA7 4F                 LD      C,A             ; BC = Offset into table
 FBA8 09                 ADD     HL,BC           ; Point to coefficient
 FBA9 CD62F8             CALL    LOADFP          ; Coefficient to BCDE
-FBAC CD08F7             CALL    FPMULT  ;       ; Multiply FPREG by coefficient
+FBAC CD08F7             CALL    FPMULT          ; Multiply FPREG by coefficient
 FBAF 3A1810             LD      A,(SEED+1)      ; Get (SEED+1)
 FBB2 3C                 INC     A               ; Add 1
 FBB3 E603               AND     00000011B       ; 0 to 3

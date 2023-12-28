@@ -2584,7 +2584,7 @@ DOFN:	CALL	CHEKFN		; Make sure FN follows
 	LD	L,A		; HL = Arg variable address
 	PUSH	HL		; Save it
 	LD	HL,(FNRGNM)	; Get old argument name
-	EX	(SP),HL ;	; Save old , Get new
+	EX	(SP),HL		; Save old , Get new
 	LD	(FNRGNM),HL	; Set new argument name
 	LD	HL,(FNARG+2)	; Get LSB,NLSB of old arg value
 	PUSH	HL		; Save it
@@ -4214,7 +4214,7 @@ RND:	CALL	TSTSGN		; Test sign of FPREG
 	LD	C,A		; BC = Offset into table
 	ADD	HL,BC		; Point to coefficient
 	CALL	LOADFP		; Coefficient to BCDE
-	CALL	FPMULT	;	; Multiply FPREG by coefficient
+	CALL	FPMULT		; Multiply FPREG by coefficient
 	LD	A,(SEED+1)	; Get (SEED+1)
 	INC	A		; Add 1
 	AND	00000011B	; 0 to 3
