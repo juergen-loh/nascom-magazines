@@ -1109,7 +1109,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
 	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
-	case "AUDIT 5":					$url = "https://www.old-computers.com/museum/computer.asp?c=1305&st=1";			break;
+	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
 	case "AY-3-8910":				$url = "https://$lang.wikipedia.org/wiki/AY-3-8910";							break;
 	case "BASF 6106":				$url = "https://retrocmp.de/fdd/basf/6106/b6106_b.htm";							break;
@@ -1421,7 +1421,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "TL497":					$url = "https://www.ti.com/lit/ds/symlink/tl494.pdf";							break;
 	case "TMS5100":					$url = "https://www.datasheetarchive.com/tms5100-datasheet.html";				break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/TMS9929-datasheet.html";				break;
-	case "Triumph-Adler P4":		$url = "https://www.old-computers.com/museum/computer.asp?c=485&st=1";			break;
+	case "Triumph-Adler P4":		$url = "https://forum.classic-computing.de/forum/index.php?thread/16182-alphatronic-p4/";	break;
 	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
 	case "TRS80 Model III":			$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case "UCSD Pascal":				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
@@ -1629,4 +1629,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-12-27 17:16:05 +0100 (Mi, 27. Dez 2023) $ -->
+<!-- /navi-body.php / $Date: 2023-12-28 22:11:09 +0100 (Do, 28. Dez 2023) $ -->
