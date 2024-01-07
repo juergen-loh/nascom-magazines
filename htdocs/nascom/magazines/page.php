@@ -597,33 +597,172 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	}
 	{
 		$basic8k = null;
+		$basic8kPrev = null;
+		$basic8kNext = null;
 //		echo "<!-- $magpath - $issuepath - $pagepath -->\n";
 		if ($magpath == "80-bus-news") {
 			switch ($issuepath) {
-			case 23: switch ($pagepath) { case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35:
-				$basic8k = $link; break; } break;
-			case 24: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34:
-				$basic8k = $link; break; } break;
-			case 25: switch ($pagepath) { case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38:
-				$basic8k = $link; break; } break;
-			case 26: switch ($pagepath) { case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38:
-				$basic8k = $link; break; } break;
-			case 31: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34:
-				$basic8k = $link; break; } break;
-			case 32: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30:
-				$basic8k = $link; break; } break;
-			case 33: switch ($pagepath) { case 23: case 24: case 25: case 26: case 27: case 28: case 29: case 30:
-				$basic8k = $link; break; } break;
+			case 23:
+				switch ($pagepath) {
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 31:
+				case 32:
+				case 33:
+				case 34:
+					$basic8k = $link;
+					break;
+				case 35:
+					$basic8k = $link;
+					$basic8kNext = "24/23";
+					break;
+				}
+				break;
+			case 24:
+				switch ($pagepath) {
+				case 23:
+					$basic8k = $link;
+					$basic8kPrev = "23/35";
+					break;
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 31:
+				case 32:
+				case 33:
+					$basic8k = $link;
+					break;
+				case 34:
+					$basic8k = $link;
+					$basic8kNext = "25/31";
+					break;
+				}
+				break;
+			case 25:
+				switch ($pagepath) {
+				case 31:
+					$basic8k = $link;
+					$basic8kPrev = "24/34";
+					break;
+				case 32:
+				case 33:
+				case 34:
+				case 35:
+				case 36:
+				case 37:
+					$basic8k = $link;
+					break;
+				case 38:
+					$basic8k = $link;
+					$basic8kNext = "26/31";
+					break;
+				}
+				break;
+			case 26:
+				switch ($pagepath) {
+				case 31:
+					$basic8k = $link;
+					$basic8kPrev = "25/38";
+					break;
+				case 32:
+				case 33:
+				case 34:
+				case 35:
+				case 36:
+				case 37:
+					$basic8k = $link;
+					break;
+				case 38:
+					$basic8k = $link;
+					$basic8kNext = "31/23";
+					break;
+					}
+				break;
+			case 31:
+				switch ($pagepath) {
+				case 23:
+					$basic8k = $link;
+					$basic8kPrev = "26/38";
+					break;
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 31:
+				case 32:
+				case 33:
+					$basic8k = $link;
+					break;
+				case 34:
+					$basic8k = $link;
+					$basic8kNext = "32/23";
+					break;
+				}
+				break;
+			case 32:
+				switch ($pagepath) {
+				case 23:
+					$basic8k = $link;
+					$basic8kPrev = "31/34";
+					break;
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+					$basic8k = $link;
+					break;
+				case 30:
+					$basic8k = $link;
+					$basic8kNext = "33/23";
+					break;
+				}
+				break;
+			case 33:
+				switch ($pagepath) {
+				case 23:
+					$basic8k = $link;
+					$basic8kPrev = "32/30";
+					break;
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+					$basic8k = $link;
+					break;
+				}
+				break;
 			}
 		}
 		if ($basic8k != null) {
 			switch ($basic8k) {
 			case "text":
 				$basic8kPath = "../../..";
+				$basic8kText = "/text";
 				break;
 			case "graphic":
 				$basic8kPath = "../..";
+				$basic8kText = "";
 				break;
+			}
+			if ($basic8kPrev != null) {
+				echo "<p>\n\tGo to <a href=\"$basic8kPath/$basic8kPrev$basic8kText/#page\">previous page</a> of NASCOM ROM BASIC.\n</p>\n";
+			}
+			if ($basic8kNext != null) {
+				echo "<p>\n\tGo to <a href=\"$basic8kPath/$basic8kNext$basic8kText/#page\">next page</a> of NASCOM ROM BASIC.\n</p>\n";
 			}
 			echo "<p>\n\tNASCOM ROM BASIC source code is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
 			echo "\tand <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
