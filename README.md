@@ -11,7 +11,7 @@ and [tupel.jloh.de/nascom/magazines/issues](https://tupel.jloh.de/nascom/magazin
 
 ## English Nascom Magazines
 
-* INMC News, 1987 - 1980
+* INMC News, 1978 - 1980
 * INMC 80 News, 1980 - 1981
 * 80-Bus News, 1982 - 1985
 * Scorpio News 1987 - 1989
