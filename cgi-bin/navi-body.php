@@ -1108,6 +1108,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AM819":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am819.htm";				break;
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
 	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
+	case "Anders Hejlsberg":		$url = "https://$lang.wikipedia.org/wiki/Anders_Hejlsberg";						break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
@@ -1117,7 +1118,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "BASIC COMPUTER GAMES":	$url = "https://www.atariarchives.org/basicgames/showpage.php?page=107";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
 	case "Bernd Ploss":				$url = "https://www.eah-jena.de/scitec/personen/bernd-ploss";					break;
-	case "Blue Label Software Pascal":	$url = "https://community.embarcadero.com/blogs/entry/blue-label-software-pascal-andgt-compas-pascal-andgt-poly-pascal-andgt-turbo-pascal-v10-38933";				break;
+	case "Blue Label Software Pascal":	$url = "https://de.wikipedia.org/wiki/Turbo_Pascal#Geschichte";				break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
 	case "c&rsquo;t 4/1987":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12410";	break;
@@ -1629,4 +1630,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2023-12-28 22:11:09 +0100 (Do, 28. Dez 2023) $ -->
+<!-- /navi-body.php / $Date: 2024-01-21 15:39:29 +0100 (So, 21. Jan 2024) $ -->

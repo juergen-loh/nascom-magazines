@@ -517,7 +517,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2023-11-05 22:14:38 +0100 (So, 05. Nov 2023) $ -->
+	<!-- page.php / $Date: 2024-01-07 14:09:09 +0100 (So, 07. Jan 2024) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";
@@ -751,7 +751,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 			switch ($basic8k) {
 			case "text":
 				$basic8kPath = "../../..";
-				$basic8kText = "/text";
+				$basic8kText = "text/";
 				break;
 			case "graphic":
 				$basic8kPath = "../..";
@@ -759,10 +759,10 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 				break;
 			}
 			if ($basic8kPrev != null) {
-				echo "<p>\n\tGo to <a href=\"$basic8kPath/$basic8kPrev$basic8kText/#page\">previous page</a> of NASCOM ROM BASIC.\n</p>\n";
+				echo "<p>\n\t<a href=\"$basic8kPath/$basic8kPrev/$basic8kText#page\">Previous part</a> of NASCOM ROM BASIC.\n</p>\n";
 			}
 			if ($basic8kNext != null) {
-				echo "<p>\n\tGo to <a href=\"$basic8kPath/$basic8kNext$basic8kText/#page\">next page</a> of NASCOM ROM BASIC.\n</p>\n";
+				echo "<p>\n\t<a href=\"$basic8kPath/$basic8kNext/$basic8kText#page\">Next part</a> of NASCOM ROM BASIC.\n</p>\n";
 			}
 			echo "<p>\n\tNASCOM ROM BASIC source code is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
 			echo "\tand <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
