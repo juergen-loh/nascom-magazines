@@ -10,7 +10,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2023-10-14 18:05:27 +0200 (Sa, 14. Okt 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-01-21 18:43:44 +0100 (So, 21. Jan 2024) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -325,7 +325,18 @@
 	<a href="../80-bus-news/31/35/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/34/29/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 </p>
-<br>
+<h2>
+	Disk Formats and CP/M Disk Routines
+</h2>
+<h3>
+	by M.W.T. Waters 
+</h3>
+<p>
+	<a href="../scorpio-news/11/25/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/12/40/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/13/11/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../scorpio-news/14/15/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+</p>
 </div><div class="col-sm-6">
 <h2>
 	NASCOM ROM BASIC disassembled
@@ -385,7 +396,7 @@
 	<a href="../micropower/21/18/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 	<a href="../micropower/22/12/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
-<!--h2>
+<h2>
 	XTAL BASIC XTRA 2.2 updates
 </h2>
 <h3>
@@ -394,7 +405,7 @@
 <p>
 	<a href="../micropower/14/11/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
 	<a href="../micropower/21/12/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-</p-->
+</p>
 <!--h2>
 	Co-ordinate Life
 </h2>
@@ -420,6 +431,16 @@
 	<a href="../nascom-newsletter/34/30/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 </p>
 <h2>
+	A Nascom Disassembler
+</h2>
+<h3>
+	by M. Reed
+</h3>
+<p>
+	<a href="../nascom-newsletter/25/02/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
+	<a href="../nascom-newsletter/31/09/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+</p>
+<h2>
 	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
 </h2>
 <h3>
@@ -431,18 +452,6 @@
 	<a href="../nascom-newsletter/33/02/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 	<a href="../nascom-newsletter/34/02/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 	<a href="../nascom-newsletter/35/03/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
-</p>
-<h2>
-	Disk Formats and CP/M Disk Routines
-</h2>
-<h3>
-	by M.W.T. Waters 
-</h3>
-<p>
-	<a href="../scorpio-news/11/25/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/12/40/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/13/11/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../scorpio-news/14/15/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
 <h2>
 	The ZCPR3 System

@@ -1272,7 +1272,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;
 	case "LM324":					$url = "https://www.ti.com/lit/ds/symlink/lm124-n.pdf";							break;
 	case "LM741":					$url = "https://www.ti.com/lit/ds/symlink/lm741.pdf";							break;
-//	case "LO 15":					$url = "https://www.fernmeldemuseum-bremen.de/erklaerungen_fernschreiber.htm";	break;
 	case "LO 15":					$url = "https://archiv.widerstandsraeume.de/radikal-persoenlich/objekte/blattschreiber-lo-15/";	break;
 	case "Lolly.nas":				$url = "http://www.nascomhomepage.com/games/Lolly.nas";							break;
 	case "Mailbox":					$url = "https://$lang.wikipedia.org/wiki/Mailbox_%28Computer%29";				break;
@@ -1282,6 +1281,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "MAP80 CPU":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/map80/MAP80_CPU.htm";			break;
 	case "MAP80 MPI":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/map80/MAP80_MPI.htm";			break;
 	case "MAP80 VFC":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/map80/MAP80_VFC.htm";			break;
+	case "Mastering Machine Code On Your ZX81":	$url = "https://archive.org/details/masteringmachinecodeonyourzx81";	break;
 	case "Maxell MD2-HD":			$url = "https://www.flickr.com/photos/celesteh/19477993894";					break;
 	case "MB8877A":					$url = "https://archive.org/details/MB8866Datasheet";							break;
 	case "mc 1/1983, Seite 38":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=36";		break;
@@ -1630,4 +1630,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-01-21 15:39:29 +0100 (So, 21. Jan 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-01-21 18:43:44 +0100 (So, 21. Jan 2024) $ -->
