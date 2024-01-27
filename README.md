@@ -8,11 +8,11 @@ Collection of [German](https://tupel.jloh.de/nascom) and
 * Nascom Journal
   * Published 1980 to 1982
   * 26 issues
-  * The Nascom Journal was a publication for die Z80 single board computers Nascom 1 and Nascom 2
+  * Magazine for users of Nascom 1 or Nascom 2
 * 80-Bus Journal
   * Published 1983 to 1985
-  * 14 issues and 3 minis
-  * The 80-Bus Journal expanded die audience to „NASCOM, GEMINI and other Z80 users“
+  * 14 issues and 3 newsletters
+  * Magazine for NASCOM, GEMINI and other Z80 – users
 
 ## English Nascom Magazines
 
