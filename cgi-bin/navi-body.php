@@ -1109,6 +1109,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
 	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
 	case "Anders Hejlsberg":		$url = "https://$lang.wikipedia.org/wiki/Anders_Hejlsberg";						break;
+	case "COMPUTER, Vol 13-1, January 1980, pp68-79":	$url = "https://pub.sergev.org/pub/doc/An-Implementation-Guide-to-a-Proposed-Standard-for-Floating-Point-Arithmetic.pdf";	break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
@@ -1634,4 +1635,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-01-21 18:43:44 +0100 (So, 21. Jan 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-01-28 16:14:32 +0100 (So, 28. Jan 2024) $ -->
