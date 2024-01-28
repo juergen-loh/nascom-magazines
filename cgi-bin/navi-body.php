@@ -1145,6 +1145,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://$lang.wikipedia.org/wiki/VT180";								break;
 	case "Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
+	case "Dr. Dobb's Journal":								$url = "https://archive.org/details/dr_dobbs_journal";									break;
+	case "Dr. Dobb's Journal, Volume 3, ​Issue 2, ​Page 10":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n67/mode/2up";			break;
+	case "Dr. Dobb's Journal, Volume 3, ​Issue 5, ​Page 21":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";		break;
+	case "Dr. Dobb's Journal, Volume 4, Issue 10, Page 33":	$url = "https://archive.org/details/dr_dobbs_journal_vol_04_201803/page/n447/mode/2up";	break;
+	case "Dr. Dobb's Journal, Volume 8, Issue 9, Page 120":	$url = "https://archive.org/details/dr_dobbs_journal_vol_08/page/550/mode/2up";			break;
 	case "ECB 85":					$url = "https://$lang.wikipedia.org/wiki/ECB85";								break;
 	case "ECB":						$url = "https://$lang.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
 	case "EF9366":					$url = "https://www.datasheetarchive.com/ef9366-datasheet.html";				break;
@@ -1318,7 +1323,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Microshell":				$url = "https://www.autometer.de/unix4fun/z80pack/ftp/manuals/Software/microshell.pdf";	break;
 	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
 	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
-	case "Dr. Dobb’s Journal, Volume 3, ​Issue 5, ​Page 21":		$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";	break;
 	case "Mike Strange":			$url = "https://www.yourtotalevent.com/";										break;
 	case "Mikrocomputer Hard- und Softwarepraxis":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981";	break;
 	case "Mikrocomputer Hard- und Softwarepraxis, Seite 102":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981/page/102/mode/2up";	break;
