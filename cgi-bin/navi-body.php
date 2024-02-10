@@ -1182,7 +1182,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Elektor, Mai 1983, Seite 34":		
 									$url = "https://www.elektormagazine.de/";										break;
 
-	case "Elektronik":				$url = "https://www.weka-fachmedien.de/de/medien/elektronik/elektronik/";		break;
+	case "Elektronik":				$url = "https://www.weka-fachmedien.de/medien/elektronik/";						break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
 	case "EMUF":					$url = "https://$lang.wikipedia.org/wiki/EMUF";									break;
@@ -1635,4 +1635,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-01-28 16:14:32 +0100 (So, 28. Jan 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-02-10 20:14:48 +0100 (Sa, 10. Feb 2024) $ -->
