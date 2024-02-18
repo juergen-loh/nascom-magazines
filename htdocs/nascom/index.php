@@ -9,7 +9,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2023-07-26 18:31:42 +0200 (Mi, 26. Jul 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-02-16 18:24:28 +0100 (Fr, 16. Feb 2024) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -261,7 +261,8 @@ und ein
 <p>
 In England, dem Mutterland des Nascom Computers, sind ebenfalls
 <a href="magazines/issues/">Nascom-Magazine</a>
-erschienen.
+erschienen. Auch dazu gibt es ein
+<a href="magazines/text/">Ge&shy;samt-In&shy;halts&shy;ver&shy;zeich&shy;nis</a>.
 <!--
 Für sie hat
 < ?php externalLink("Mike Strange"); ?> die

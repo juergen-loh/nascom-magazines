@@ -1433,7 +1433,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Z80 PIO":					$url = "https://www.zilog.com/docs/z80/ps0180.pdf";								break;
 	case "Z80 SIO":					$url = "https://www.zilog.com/docs/z80/ps0183.pdf";								break;
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
-	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";								break;
+	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";							break;
+	case "Zaphod Beeblebrox":		$url = "https://$lang.wikipedia.org/wiki/Zaphod_Beeblebrox";					break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;
 	default:						$url = "externalLink($link, $text)";											break;
 	}
@@ -1617,4 +1618,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-02-10 22:54:59 +0100 (Sa, 10. Feb 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-02-18 14:15:55 +0100 (So, 18. Feb 2024) $ -->
