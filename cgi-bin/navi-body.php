@@ -624,7 +624,6 @@ function imageDesc82($issue, $page, $file)
 
 	case "09 11 Image-11-5.jpeg": return("NASCOMPL:$nl"."Früh-Herbst");
 	case "09 13 Image-13-3.jpeg": return("NASCOMPL:$nl"."Kein Grund zur$nl"."Freude! Ich$nl"."bleibe Ihnen$nl"."noch erhalten!");
-
 	
 	case "10 07 Image-07-3.jpeg": return("NASCOMPL:$nl"."80-BUS$nl"."JOURNAL");
 	case "10 07 Image-07-4.jpeg": return("Hallo liebe Leser!");
@@ -1618,4 +1617,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-02-18 14:15:55 +0100 (So, 18. Feb 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-02-19 18:22:48 +0100 (Mo, 19. Feb 2024) $ -->
