@@ -1321,6 +1321,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Monitor":					$url = "https://$lang.wikipedia.org/wiki/Maschinencode-Monitor";				break;
 	case "MP826":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/mp826.htm";				break;
 	case "MS-DOS":					$url = "https://$lang.wikipedia.org/wiki/MS-DOS";								break;
+	case "Nanocomputer":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/nanocomputer-training-system-nbz80-s/";	break;
 	case "Nascom / Gemini / 80 Bus (Mirror)":	$url = "https://80bus.co.uk.mirror.jloh.de/";						break;
 	case "Nascom Basic Book 1":		$url = "http://www.nascomhomepage.com/pdf/Nascom%20Basic%20Book%201.PDF";		break;
 	case "Nascom Computers User Group":	$url = "https://groups.io/g/Nascom-Computers";								break;
@@ -1366,6 +1367,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Personal Computer World, September 1982, page 115":	$url = "https://worldradiohistory.com/UK/Personal-Computer-World/80s/PCW-1982-09-S-OCR.pdf#page=117";						break;
 	case "Personal Computer World, September 1982, page 163":	$url = "https://worldradiohistory.com/UK/Personal-Computer-World/80s/PCW-1982-09-S-OCR.pdf#page=165";						break;
 	case "Personal Computer World, September 1982, page 274":	$url = "https://worldradiohistory.com/UK/Personal-Computer-World/80s/PCW-1982-09-S-OCR.pdf#page=276";						break;
+	case "PET 2001":				$url = "https://$lang.wikipedia.org/wiki/PET_2001";								break;
 	case "Pilot":					$url = "https://$lang.wikipedia.org/wiki/PILOT";								break;
 	case "Piranha.nas":				$url = "http://www.nascomhomepage.com/games/Piranha.nas";						break;
 	case "Pluto":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io828.htm";				break;
@@ -1382,6 +1384,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Scientific American, Issue 223":	$url = "http://ddi.cs.uni-potsdam.de/HyFISCH/Produzieren/lis_projekt/proj_gamelife/ConwayScientificAmerican.htm";	break;
 	case "Seagate ST-251":			$url = "http://www.computerasylum.co.uk/storages/st251/index.html";				break;
 	case "SENSO":					$url = "https://$lang.wikipedia.org/wiki/Senso_%28Spiel%29";					break;
+	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/mz-80k/";	break;
+	case "Sharp MZ80":				$url = "https://en.wikipedia.org/wiki/Sharp_MZ";								break;
 	case "Spaceii.nas":				$url = "http://www.nascomhomepage.com/games/Spaceii.nas";						break;
 	case "Startrek.cas":			$url = "http://www.nascomhomepage.com/mbasic/Startrek.cas";						break;
 	case "Sternwarte Wien":			$url = "https://www.vhs.at/de/e/planetarium";									break;
@@ -1617,4 +1621,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-02-19 18:22:48 +0100 (Mo, 19. Feb 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-02-27 19:26:54 +0100 (Di, 27. Feb 2024) $ -->
