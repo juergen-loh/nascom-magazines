@@ -1,36 +1,34 @@
 <!-- 83/12/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "12";
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserservice"
 	,	""
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	3
 	,	2
 	);
@@ -38,16 +36,14 @@
 	,	"Basic-Step"
 	,	"Klaus Mombaur"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mini-Calc"
 	,	"Istvan Gilvazi"
 	,	"Basic"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	4
 	,	2
 	);
@@ -56,56 +52,49 @@
 	,	"David Kastrup<br>"
 	.	"Wolfgang Sauerbrey"
 	,	"Basic"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"BLS-Syntax"
 	,	"Gerhard Klement"
 	,	"Basic"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"6502 Assembler"
 	,	"Rüdiger Maurer"
 	,	"Basic"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Folienausverkauf"
 	,	""
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Floppy-Einsteiger"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"Double Density"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	13
 	,	2
 	);
@@ -113,40 +102,35 @@
 	,	"Formatierprogramm"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Cold-Booter"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Warm-Booter"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASGEN"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
 	,	"PHEAS Modifikation"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	20
 	,	2
 	);
@@ -154,24 +138,21 @@
 	,	"Skew-Faktor"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tips"
 	,	"Rolf Kottke"
 	,	""
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"IO-Karte (ECB)"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	23
 	,	2
 	);
@@ -179,24 +160,21 @@
 	,	"Grauwerte"
 	,	"Jörg Wittich"
 	,	"Hardware"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Lampson Digitaltechnik"
 	,	"Anzeige"
-	,	1983
-	,	12
+	,	$volume, $issue
 	,	28
 	);
 ?>

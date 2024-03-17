@@ -1,36 +1,34 @@
 <!-- 80/00/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1980";
+	$issue = "0";
 	trJournal($path, $tail, $magazine
 	,	"Editorial"
 	,	"Michael Klein"
 	,	"Editorial"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mondlandespiel"
 	,	"Michael Klein"
 	,	"Applikation"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tongenerator"
 	,	"Ulrich Krüger"
 	,	"Applikation"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sprachsynthesizer"
 	,	"Ulrich Krüger"
 	,	"Applikation"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	4
 	,	2
 	);
@@ -38,40 +36,35 @@
 	,	"Nascom-Neuheiten"
 	,	"MK Systemtechnik"
 	,	""
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Schreibmaschinen-Ansteuerung"
 	,	"Ulrich Krüger"
 	,	"Applikation"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sporadische Speicherfehler"
 	,	""
 	,	"Hardware"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Streifenkiller"
 	,	"Michael Klein"
 	,	"Hardware"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	9
 	,	2
 	);
@@ -79,16 +72,14 @@
 	,	"8-Damen-Problem"
 	,	"Michael Klein"
 	,	"Basic"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"Towers of Hanoi"
 	,	"Michael Klein"
 	,	"&nbsp;"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	10
 	,	2
 	);
@@ -96,16 +87,14 @@
 	,	"Schachprogramm"//für den NASCOM&nbsp;1 / NASCOM&nbsp;2
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom 2, IMP"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1980
-	,	0
+	,	$volume, $issue
 	,	12
 	);
 ?>

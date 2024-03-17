@@ -1,28 +1,27 @@
 <!-- 83/04/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "4";
 	trJournal($path, $tail, $magazine
 	,	"Basic Varianten"
 	,	""
 	,	"Titel"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,8 +29,7 @@
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	2
 	,	3
 	);
@@ -40,32 +38,28 @@
 	,	"Eric v.d.Vaart"
 	,	"Basic<br>"
 	.	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"X-tal Basic Modifikation"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"X-tal Adapt"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Toolkit Eprom-Basic"
 	,	"David Kastrup"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
@@ -73,72 +67,63 @@
 	,	"Gerhard Klement"
 	,	"Assembler<br>"
 	.	"Basic"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Copyright Falle"
 	,	"David Kastrup"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"Der neue Monitor Teil&nbsp;2"
 	,	"Günter Kreidl"
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Einsteiger"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"3-D Labyrinth"
 	,	"Peter Brendel"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM Praxis Teil&nbsp;1"
 	,	"Günter Kreidel"
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
 	,	"80x24 Zeichen Karte Teil&nbsp;2"
 	,	"Karl Schulmeister"
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"a) Videoprogramm"
 	,	""
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	21
 	,	2
 	);
@@ -146,8 +131,7 @@
 	,	"b) Zeichengenerator"
 	,	""
 	,	"Hardware"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
@@ -155,16 +139,14 @@
 	,	"Andreas Zippel<br>"
 	.	"Dieter Oberle"
 	,	"Hardware"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"d) Layout Fehler"
 	,	"Dieter Oberle"
 	,	"Hardware"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	23
 	,	2
 	);
@@ -172,32 +154,28 @@
 	,	"Data Conversion"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tips, Tricks und Käfer"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	26
 	,	2
 	);
@@ -205,16 +183,14 @@
 	,	"Inhaltsverzeichnis 1982"
 	,	"Erhard Thumm"
 	,	""
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	4
+	,	$volume, $issue
 	,	28
 	);
 ?>

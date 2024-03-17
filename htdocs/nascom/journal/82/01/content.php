@@ -1,52 +1,48 @@
 <!-- 82/01/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1982";
+	$issue = "1";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sortieren in Basic Teil&nbsp;6"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASPEN Zusatz"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hochauflösende Grafik"
 	,	"Hans Martin Pohl"
 	,	"Hardware"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	6
 	,	2
 	);
@@ -54,16 +50,14 @@
 	,	"Lottoprogramm"
 	,	"Eberhard Horch"
 	,	"Basic"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Prüfsumme für NAS-SYS 3"
 	,	"Christian Peter"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -71,16 +65,14 @@
 	,	"NAS-SYS 3"
 	,	"Günter Kreidl"
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Zufallszahlen"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	8
 	,	2
 	);
@@ -88,16 +80,14 @@
 	,	"MDCR Interface Teil&nbsp;3"
 	,	"Johannes Christian Lotter"
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Lottozahlen-Generator"
 	,	"Bernd im Brahm"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	9
 	,	2
 	);
@@ -105,40 +95,35 @@
 	,	"Irrgarten"
 	,	"Clemens Ballarin"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"ROM Basic V4&#x2e;7"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seeschlacht"
 	,	"Klaus Mombaur"
 	,	"Basic"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"MKS Angebote"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	17
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis 1981"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
@@ -147,64 +132,56 @@
 	.	"H. J. Winter"
 	,	"Hardware<br>"
 	.	"Basic"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"&quot;FORMAT&quot; für NAS-SYS"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Einsteiger Teil&nbsp;2"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"Erweiterter Texteditor"
 	,	"Peter Urban"
 	,	"Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	30
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sprachsynthese"
 	,	"Günter Böhm"
 	,	"Hardware<br>Assembler"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	31
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	34
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	35
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	35
 	,	2
 	);
@@ -212,8 +189,7 @@
 	,	"Service Seite für individuelle Notizen"
 	,	""
 	,	""
-	,	1982
-	,	1
+	,	$volume, $issue
 	,	36
 	);
 */

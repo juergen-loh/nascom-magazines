@@ -1,36 +1,34 @@
 <!-- 83/11/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "10/11";
 	trJournal($path, $tail, $magazine
 	,	"NASCOM C"
 	,	""
 	,	"Titel"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	3
 	,	2
 	);
@@ -38,48 +36,42 @@
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tips, Tricks und Käfer"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Spooler"
 	,	"Manfed Stoll"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Floppy-Einsteiger"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Pheas-Anpassung"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"EMDOS Floppyverwaltung"
 	,	"Helmut Emmelmann"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
@@ -87,40 +79,35 @@
 	,	"Günter Böhm<br>"
 	.	"Helmut Emmelmann"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"EMDOS Anpassung"
 	,	"Helmut Emmelmann"
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Video-Verbesserung"
 	,	"Tom D. Rüdebusch"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hochauflösende Grafik"
 	,	"Jörg Wittich"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hetzjagd"
 	,	"Peter Brendel"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
@@ -128,8 +115,7 @@
 	,	"Horst Dieckhoff"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	24
 	,	2
 	);
@@ -137,8 +123,7 @@
 	,	"Kalender"
 	,	"Henrik Maier"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
@@ -146,48 +131,42 @@
 	,	"H. Schulte<br>"
 	.	"R. Schulte"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	"Pascal-Drucker"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	29
 	);
 	trJournal($path, $tail, $magazine
 	,	"Pascal-Spiel"
 	,	"Michael Bach"
 	,	"Pascal"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	30
 	);
 	trJournal($path, $tail, $magazine
 	,	"CLD-DOS Programmliste"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	31
 	);
 	trJournal($path, $tail, $magazine
 	,	"Pascal-Funktionen"
 	,	"Jürgen Weiermann"
 	,	"Pascal"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	34
 	);
 	trJournal($path, $tail, $magazine
 	,	"Overlay"
 	,	"Gerhard Klement"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	35
 	);
 	trJournal($path, $tail, $magazine
@@ -195,8 +174,7 @@
 	,	"Karl Trust<br>"
 	.	"Georg Assmann"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	35
 	,	2
 	);
@@ -204,32 +182,28 @@
 	,	"Clock"
 	,	"Gerhard Klement"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	38
 	);
 	trJournal($path, $tail, $magazine
 	,	"CONMOD II"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	39
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	40
 	);
 	trJournal($path, $tail, $magazine
 	,	"Zwei Basic-Spiele"
 	,	"Eberhard Horch"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	40
 	,	2
 	);
@@ -237,56 +211,49 @@
 	,	"Roulette"
 	,	"Klaus Mombaur"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	42
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	43
 	);
 	trJournal($path, $tail, $magazine
 	,	"Review&nbsp;: Hull-Forth und NAS-FORTH V&nbsp;1&#x2e;1"
 	,	"Constantin Olbrich"
 	,	"Forth"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	44
 	);
 	trJournal($path, $tail, $magazine
 	,	"Buchführung"
 	,	"Klaus Mombaur"
 	,	"Basic"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	45
 	);
 	trJournal($path, $tail, $magazine
 	,	"RAM/EPROM Karte"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	48
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	51
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sonderangebote"
 	,	"Lampson Digitaltechnik"
 	,	"Anzeige"
-	,	1983
-	,	"10/11"
+	,	$volume, $issue
 	,	52
 	);
 ?>

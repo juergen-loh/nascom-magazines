@@ -1,28 +1,27 @@
 <!-- 83/05/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "5";
 	trJournal($path, $tail, $magazine
 	,	"Hardware"
 	,	""
 	,	"Titel"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,8 +29,7 @@
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	2
 	,	3
 	);
@@ -39,24 +37,21 @@
 	,	"NASCOM Praxis"
 	,	"Günter Kreidl"
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Perspektive"
 	,	"Gerhard Klement"
 	,	"Basic"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	4
 	,	2
 	);
@@ -65,24 +60,21 @@
 	,	"Jürgen Weiermann"
 	,	"Pascal<br>"
 	.	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Dreidimensionale Grafik"
 	,	"Michael Bach"
 	,	"Pascal"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Greyplot"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
@@ -91,8 +83,7 @@
 	.	"Dieter Oberle"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -101,16 +92,14 @@
 	,	"Joachim List<br>"
 	.	"Klaus Niemann"
 	,	"Hardware"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Senso"
 	,	"Jürgen Loh"
 	,	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	12
 	,	2
 	);
@@ -119,24 +108,21 @@
 	,	"David Kastrup<br>
 		Michael Prümm"
 	,	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Vermischtes"
 	,	""
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Fragebogen-Aktion"
 	,	"Karl Mark"
 	,	""
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
@@ -144,32 +130,28 @@
 	,	"Klaus Flockau"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	17
 	);
 	trJournal($path, $tail, $magazine
 	,	"Point"
 	,	"Michael Bach"
 	,	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Conmod"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Fourier Regression"
 	,	"Gerhard Klement"
 	,	"Basic"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
@@ -177,16 +159,14 @@
 	,	"Gerhard Klement<br>"
 	.	"Günter Böhm"
 	,	"Basic"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"Blackjack"
 	,	"Wolfgang Schröder"
 	,	"Basic"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
@@ -194,24 +174,21 @@
 	,	"Tom D. Rüdebusch"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Würfel"
 	,	"Gerhard Klement"
 	,	"Basic"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	5
+	,	$volume, $issue
 	,	28
 	);
 ?>

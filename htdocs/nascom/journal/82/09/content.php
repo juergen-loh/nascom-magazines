@@ -1,28 +1,27 @@
 <!-- 82/09/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1982";
+	$issue = "9";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal intern"
 	,	"Günter Kreidl"
 	,	"Editorial"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,8 +29,7 @@
 	,	"DMA &ndash; Teil&nbsp;2"
 	,	"Josef Zeller"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
@@ -39,16 +37,14 @@
 	,	"U. Forke<br>"
 	.	"H. G. Ingelaat"
 	,	"Hardware"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Typenrad-Terminal &ndash; Teil&nbsp;3"
 	,	"Günter Kreidl"
 	,	"Hardware"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
@@ -56,72 +52,63 @@
 	,	"U. Forke<br>"
 	.	"H. G. Ingelaat"
 	,	""
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tips, Tricks und Käfer"
 	,	""
 	,	""
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"8-Kanal-Logiktester"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Video-Kamera-Interface"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite für Einsteiger"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Funktionstaste &ndash; Software-Repeat"
 	,	"Gustav W. Delius"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Change"
 	,	"Constantin Olbrich"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"ROM-Basic 4&#x2e;7 &ndash; 2 Versionen"
 	,	"Gerhard Wilharm"
 	,	"Basic"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	16
 	,	2
 	);
@@ -129,64 +116,56 @@
 	,	"ROM-Basic-Autostart"
 	,	"Peter Urban"
 	,	"Basic"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	17
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seriellport-Erweiterung"
 	,	"Peter Urban"
 	,	"Hardware"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Halbschritt-Formatierung"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing ROM-Basic-Autostart"
 	,	"Peter Urban"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Change"
 	,	"Constantin Olbrich"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Funktionstaste/Repeat"
 	,	"Gustav Delius"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Program HELP for generating a character generator"
 	,	"Gregor Birnfeld"
 	,	"Assembler"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"MKS"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1982
-	,	9
+	,	$volume, $issue
 	,	28
 	);
 ?>

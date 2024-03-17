@@ -1,52 +1,48 @@
 <!-- 81/02/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1981";
+	$issue = "2";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Die Gerüchteküche brodelt &#x2e;&#x2e;&#x2e;&#x2e;"
 	,	"Michael Klein"
 	,	"Editorial"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"RAM-Testprogramm"
 	,	"Dieter Toss"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM-Orgel"
 	,	"Harald Kögler"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"16 nutzbare Zeilen&#x2e;&#x2e;&#x2e;"
 	,	"Peter Szymanski"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Vergleichsprogramm"
 	,	"Werner Öhring"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	5
 	,	2
 	);
@@ -54,16 +50,14 @@
 	,	"Software für Minigrafik"
 	,	""
 	,	"Basic"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Komfortabler Reaktionszeitmesser"
 	,	"Harald Kögler"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	6
 	,	2
 	);
@@ -71,64 +65,56 @@
 	,	"Morsetrainer"
 	,	"Dieter Thoss"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Regierungsspiel"
 	,	"Holger Pfeil"
 	,	"Basic"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mastermind für NASCOM 2"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Graphikkarte für NASCOM 1"
 	,	"MK Systemtechnik"
 	,	""
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASBUG&nbsp;&ndash; NAS-SYS&nbsp;&ndash; Umsetzung"
 	,	""
 	,	"Assembler"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"Neue Preisliste"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	17
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1981
-	,	2
+	,	$volume, $issue
 	,	19
 	,	2
 	);

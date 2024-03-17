@@ -1,28 +1,27 @@
 <!-- 83/06/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "6";
 	trJournal($path, $tail, $magazine
 	,	"Preiswertes ECB-Bus-System"
 	,	""
 	,	"Titel"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Kreidl"
 	,	"Editorial"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"In eigener Sache"
 	,	"Günter Kreidl"
 	,	""
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,16 +29,14 @@
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	3
 	,	2
 	);
@@ -47,16 +44,14 @@
 	,	"Schwerpunkt-Thema: Euro-NASCOM"
 	,	""
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Der Huckepack-Bus"
 	,	"Günter Kreidl"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	4
 	,	2
 	);
@@ -64,32 +59,28 @@
 	,	"ECB-System"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"MC-CP&#x2f;M-NAS"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"Lichtorgel"
 	,	"David Kastrup"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	10
 	,	2
 	);
@@ -98,32 +89,28 @@
 	,	"Gerhard Klement"
 	,	"Assembler<br>"
 	.	"Basic"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM Praxis"
 	,	"Gerhard Klement"
 	,	""
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"BLS+"
 	,	"Günter Kreidl"
 	,	"Pascal"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"ZEAP Utilities"
 	,	"David Kastrup"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	14
 	,	2
 	);
@@ -131,8 +118,7 @@
 	,	"ZEAP Handler"
 	,	"Gerhard Klement"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
@@ -140,24 +126,21 @@
 	,	"Hans Jürgen Plath"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"Schwerpunkt-Thema: Speichererweiterungen"
 	,	""
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Timing-Probleme"
 	,	"Günter Kreidl"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	18
 	,	2
 	);
@@ -165,16 +148,14 @@
 	,	"Elektor 16K-RAM"
 	,	"Christoph Rau"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"64K-RAM"
 	,	"Christian Peter"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	19
 	,	2
 	);
@@ -182,16 +163,14 @@
 	,	"2732-EPROM-Karte"
 	,	"Jochen Heyduck"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM 2 mit 2732"
 	,	"Gerhard Klement"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	21
 	,	2
 	);
@@ -199,8 +178,7 @@
 	,	"NASCOM 2 mit 16K RAM"
 	,	"Gerd Reinehr"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
@@ -208,32 +186,28 @@
 	.	"EPROM Port, Teil&nbsp;1"
 	,	"Horst Dieckhoff"
 	,	"Hardware"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Autorennen"
 	,	"David Kastrup"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"MX80-Grafik"
 	,	"Jürgen Weiermann"
 	,	"Assembler"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	6
+	,	$volume, $issue
 	,	28
 	);
 ?>

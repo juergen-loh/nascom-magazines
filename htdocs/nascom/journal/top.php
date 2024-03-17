@@ -50,15 +50,20 @@
 
 	if (isset($issue)) {
 		switch ($issue) {
-		case "Jahrgang 1980":	$t80s = $tnjs = "<b>";	$tnje = $t80e = "</b>";	break;
-		case "Jahrgang 1981":	$t81s = $tnjs = "<b>";	$tnje = $t81e = "</b>";	break;
-		case "Jahrgang 1982":	$t82s = $tnjs = "<b>";	$tnje = $t82e = "</b>";	break;
-		case "Jahrgang 1983":	$t83s = $tb8s = "<b>";	$tb8e = $t83e = "</b>";	break;
-		case "Jahrgang 1984":	$t84s = $tb8s = "<b>";	$tb8e = $t84e = "</b>";	break;
-		case "Jahrgang 1985":	$t85s = $tb8s = "<b>";	$tb8e = $t85e = "</b>";	break;
+		case "Jahrgang 1980":	$t80s = $tnjs = "<b>";	$t80e = $tnje = "</b>";	break;
+		case "Jahrgang 1981":	$t81s = $tnjs = "<b>";	$t81e = $tnje = "</b>";	break;
+		case "Jahrgang 1982":	$t82s = $tnjs = "<b>";	$t82e = $tnje = "</b>";	break;
+		case "Jahrgang 1983":	$t83s = $tb8s = "<b>";	$t83e = $tb8e = "</b>";	break;
+		case "Jahrgang 1984":	$t84s = $tb8s = "<b>";	$t84e = $tb8e = "</b>";	break;
+		case "Jahrgang 1985":	$t85s = $tb8s = "<b>";	$t85e = $tb8e = "</b>";	break;
+		default:
+			switch ($title) {
+			case "Nascom Journal":      $tnjs = "<b>";	        $tnje = "</b>";	break;
+			case "80-Bus Journal":      $tb8s = "<b>";	        $tb8e = "</b>";	break;
+			}
 		}
 	} else {
-								$t00s = "<b>";	$t00e = "</b>";
+								$t00s = "<b>";			$t00e = "</b>";
 	}
 ?>
 

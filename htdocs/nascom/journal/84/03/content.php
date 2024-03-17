@@ -1,36 +1,34 @@
 <!-- 84/03/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1984";
+	$issue = "3";
 	trJournal($path, $tail, $magazine
 	,	"CP&#x2f;M läuft!"
 	,	""
 	,	"Titel"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	3
 	,	2
 	);
@@ -38,48 +36,42 @@
 	,	"Welkom"
 	,	"Hans Rietveld"
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"NAS Gebruikers"
 	,	"Günter Böhm"
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Platinen und Disketten"
 	,	""
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB Erweiterungskarte"
 	,	"Georg Assmann"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB-Bus Verlängerung"
 	,	"Georg Assmann"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	9
 	,	2
 	);
@@ -87,80 +79,70 @@
 	,	"256K RAM Karte"
 	,	"Dieter Hornburger"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"Adapterkarte 80Bus/ECB"
 	,	"Georg Aßmann"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB Netzteil"
 	,	"Dieter Metzler"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"EPROM-Port ECB"
 	,	"Hans Führmann"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tastatur"
 	,	"Peter Brendel"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hardwaretips"
 	,	"Michael Grimme"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB Karten"
 	,	"Bernd Schuhmacher"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"Digitaler Taster"
 	,	"Georg Assmann"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Games Review"
 	,	"Constantin Olbrich"
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
@@ -169,56 +151,49 @@
 	.	"Helmut Emmelmann<br>"
 	.	"Karl Schulmeister"
 	,	"Assembler"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	"PTYPE"
 	,	"Ulrich Gödan"
 	,	"Assembler"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	42
 	);
 	trJournal($path, $tail, $magazine
 	,	"SAVE*ARRAY"
 	,	"Georg Böhm"
 	,	"Assembler"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	44
 	);
 	trJournal($path, $tail, $magazine
 	,	"FDC Erfahrung"
 	,	"Rudolf Nensel"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	45
 	);
 	trJournal($path, $tail, $magazine
 	,	"New BACKUP"
 	,	"Uwe Brockmöller"
 	,	"Assembler"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	46
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hilbert"
 	,	"Constantin Olbrich"
 	,	"Pascal"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	48
 	);
 	trJournal($path, $tail, $magazine
 	,	"Grafik Routinen"
 	,	"Clemens Ballarin"
 	,	"Pascal"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	49
 	);
 	trJournal($path, $tail, $magazine
@@ -226,8 +201,7 @@
 	,	"Günter Böhm"
 	,	"Basic<br>"
 	.	"Assembler"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	50
 	);
 	trJournal($path, $tail, $magazine
@@ -235,16 +209,14 @@
 	,	"Christian Lampson<br>"
 	.	"Klaus Zerbe"
 	,	"Hardware"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	51
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Lampson Digitaltechnik"
 	,	"Anzeige"
-	,	1984
-	,	3
+	,	$volume, $issue
 	,	52
 	);
 ?>

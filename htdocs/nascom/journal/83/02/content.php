@@ -1,12 +1,13 @@
 <!-- 83/02/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "2";
 	trJournal($path, $tail, $magazine
 	,	"Spracherkennung"
 	,	""
 	,	"Titel"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
@@ -21,8 +22,7 @@
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -31,24 +31,21 @@
 	,	"Bernd Schuhmacher"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Aktive Filter"
 	,	"Rüdiger Maurer"
 	,	"Basic"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -56,24 +53,21 @@
 	,	"EPROM-Bank"
 	,	"Markus Caesar"
 	,	"Hardware"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"Screen to Tape"
 	,	"Gerhard Clement"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Klötzchengrafik"
 	,	"Michael Bach"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	11
 	,	2
 	);
@@ -81,32 +75,28 @@
 	,	"Seite(n) für Einsteiger"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"DEBUG-Verschiebungsvektor"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"ZEAP-Verschiebungsvektor"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Fourier-Analyse"
 	,	"Michael Bach"
 	,	"Pascal"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	14
 	,	2
 	);
@@ -114,16 +104,14 @@
 	,	"Space Invaders"
 	,	"Helmut Emmelmann"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
 	,	"Katz und Maus"
 	,	"Peter Brendel"
 	,	"Basic"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	19
 	,	2
 	);
@@ -131,8 +119,7 @@
 	,	"Maloche"
 	,	"Peter Brendel"
 	,	"Basic"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	19
 	,	3
 	);
@@ -140,16 +127,14 @@
 	,	"IVC-Demo"
 	,	"Peter Szymanski"
 	,	"Pascal"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
 	,	"Life mit Klötzchengrafik"
 	,	"Günter Kreidl"
 	,	"Pascal"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
@@ -157,24 +142,21 @@
 	,	"Bernd Schuhmacher"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Firmware disassembliert"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	27
 	,	2
 	);
@@ -182,8 +164,7 @@
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	2
+	,	$volume, $issue
 	,	28
 	);
 ?>

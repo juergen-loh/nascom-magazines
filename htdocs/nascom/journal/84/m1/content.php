@@ -1,60 +1,55 @@
 <!-- 84/m1/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1984";
+	$issue = "M1";
 /*	trJournal($path, $tail, $magazine
 	,	"Mini-Ausgabe"
 	,	""
 	,	"Titel"
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	1
 	);
 */	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Floppy/Programmierbeistand"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis 80-Bus Journal 1983"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Bugs"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -62,8 +57,7 @@
 	,	"Bezugsquelle für WD1793"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	7
 	,	3
 	);
@@ -71,24 +65,21 @@
 	,	"Floppy-Karte"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Platinenherstellung"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Lampsons Geheimtip"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	9
 	,	2
 	);
@@ -96,16 +87,14 @@
 	,	"Preisausschreiben"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"CP&#x2f;M &ndash; Eine Preisfrage"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	10
 	,	2
 	);
@@ -113,8 +102,7 @@
 	,	"Folienausverkauf"
 	,	""
 	,	""
-	,	1984
-	,	"M1"
+	,	$volume, $issue
 	,	11
 	);
 ?>

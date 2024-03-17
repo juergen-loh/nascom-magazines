@@ -1,28 +1,27 @@
 <!-- 84/01/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1984";
+	$issue = "1";
 	trJournal($path, $tail, $magazine
 	,	"Grafik-Karte"
 	,	""
 	,	"Titel"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,8 +29,7 @@
 	,	"Impressum"
 	,	""
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	2
 	,	3
 	);
@@ -40,56 +38,49 @@
 	,	"B. H. Klaassen<br>"
 	.	"Karl Schulmeister"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"- Platinenservice"
 	,	""
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"- Bestückungsplan"
 	,	""
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"- Schaltpläne"
 	,	""
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Software zur Grafik"
 	,	"B. H. Klaassen"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"- Rollendes Viereck"
 	,	"B. H. Klaassen"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"- 2D-Figuren"
 	,	"B. H. Klaassen"
 	,	"Basic"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	12
 	,	2
 	);
@@ -97,16 +88,14 @@
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Textrepeat"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	14
 	,	2
 	);
@@ -115,176 +104,154 @@
 	,	"Schröder<br>"
 	.	"B. H. Klaassen"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"MONITOM Monitorerweiterung"
 	,	"Tom D. Rüdebusch"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Breakout"
 	,	"Tom D. Rüdebusch"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"TOOL-MOM Basic Toolkit"
 	,	"Klaus Mombaur"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
 	,	"Softcontroller"
 	,	"Klaus Zerbe"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	"RTTY"
 	,	"Karl Mark"
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	29
 	);
 	trJournal($path, $tail, $magazine
 	,	"Von NAS-SYS zu CP&#x2f;M"
 	,	"Michael Bach"
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	30
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB-Karten"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	31
 	);
 	trJournal($path, $tail, $magazine
 	,	"ECB-Bus-Interface"
 	,	"Horst Dieckhoff"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	32
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	33
 	);
 	trJournal($path, $tail, $magazine
 	,	"Tips"
 	,	"Jörg Wittich"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	34
 	);
 	trJournal($path, $tail, $magazine
 	,	"Grafikausdruck"
 	,	"Wolfgang Klemm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	35
 	);
 	trJournal($path, $tail, $magazine
 	,	"TEXTCASS"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	36
 	);
 	trJournal($path, $tail, $magazine
 	,	"2764 EPROMmer"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	37
 	);
 	trJournal($path, $tail, $magazine
 	,	"EPROMmer Software"
 	,	"Karl Schulmeister Jun."
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	40
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Floppy-Einsteiger"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	45
 	);
 	trJournal($path, $tail, $magazine
 	,	"- READIN, BACKUP"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	47
 	);
 	trJournal($path, $tail, $magazine
 	,	"- READTRK"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	49
 	);
 	trJournal($path, $tail, $magazine
 	,	"- CBOOT-Verschiebung"
 	,	"Karl Schulmeister"
 	,	""
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	50
 	);
 	trJournal($path, $tail, $magazine
 	,	"- Shugart 8&Prime; Anschluß"
 	,	"Uwe Brockmöller"
 	,	"Hardware"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	51
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Lampson &amp; Zerbe GmbH"
 	,	"Anzeige"
-	,	1984
-	,	1
+	,	$volume, $issue
 	,	52
 	);
 ?>

@@ -1,76 +1,69 @@
 <!-- 82/06/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1982";
+	$issue = "6";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Snake"
 	,	"Tom D. Rüdebusch"
 	,	"Basic"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"Postscheck"
 	,	"Klaus Mombaur"
 	,	"Basic"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Schreibmaschinentreiber"
 	,	"Wolfgang von Jan"
 	,	"Assembler"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite für Kinder"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"BLS-Pascal Teil&nbsp;2"
 	,	"Michael Bach"
 	,	"Pascal"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Robot Intelligence"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
@@ -78,40 +71,35 @@
 	,	"Andreas Zippel<br>"
 	.	"Dieter Oberle"
 	,	"Assembler"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Einsteiger"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
 	,	"Spielautomat"
 	,	"Erich Mehnert"
 	,	"Assembler"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM 2 Hardware-Tip"
 	,	"Peter Brendel"
 	,	"Hardware"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"ZEAP-ASM"
 	,	""
 	,	"Assembler"
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	22
 	,	2
 	);
@@ -119,16 +107,14 @@
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	23
 	,	2
 	);
@@ -136,8 +122,7 @@
 	,	"MKS-Angebote"
 	,	""
 	,	""
-	,	1982
-	,	6
+	,	$volume, $issue
 	,	24
 	);
 ?>

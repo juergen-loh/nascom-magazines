@@ -1,28 +1,27 @@
 <!-- 83/03/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1983";
+	$issue = "3";
 	trJournal($path, $tail, $magazine
 	,	"Päck-Männ"
 	,	""
 	,	"Titel"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Inhalt"
 	,	""
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,64 +29,56 @@
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Zeichen-Video Ergänzungen"
 	,	"Christoph Rau"
 	,	"Hardware"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"80-Zeichen-Video ECB-Bus-Karte"
 	,	"Karl Schulmeister"
 	,	"Hardware"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Großschrift"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascompl"
 	,	""
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"4&#x2f;8K-Eprommer: Listing"
 	,	"Bernd Schuhmacher"
 	,	"Assembler"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"4&#x2f;8K-Eprommer: 8K-Eproms"
 	,	"Bernd Schuhmacher"
 	,	"Hardware"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Basic Offset"
 	,	"Gerhard Klement"
 	,	"Assembler"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	16
 	);
 	trJournal($path, $tail, $magazine
@@ -95,40 +86,35 @@
 	,	"Michael Bach"
 	,	"Pascal<br>"
 	.	"Assembler"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Funktionsdarstellung"
 	,	"Ingo Jakisch"
 	,	"Basic"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"Päck Männ: Listing"
 	,	"Wolfgang Schröder"
 	,	"Assembler"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Päck Männ: Beschreibung"
 	,	"Wolfgang Schröder"
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	30
 	);
 	trJournal($path, $tail, $magazine
 	,	"Lollypop Lady Trainer"
 	,	"Michael Bach"
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	30
 	,	2
 	);
@@ -136,8 +122,7 @@
 	,	"Impressum"
 	,	""
 	,	""
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	31
 	,	2
 	);
@@ -145,16 +130,14 @@
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	31
 	);
 	trJournal($path, $tail, $magazine
 	,	""
 	,	"Gemini Microcomputer"
 	,	"Anzeige"
-	,	1983
-	,	3
+	,	$volume, $issue
 	,	32
 	);
 ?>

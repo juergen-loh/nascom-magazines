@@ -1,52 +1,48 @@
 <!-- 81/06/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1981";
+	$issue = "6";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Soundgenerator"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"bonbon"
 	,	""
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -54,16 +50,14 @@
 	,	"Inversionsprobleme"
 	,	"Harald Molle"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Dez/Hex in BASIC"
 	,	"Uwe Wurditsch"
 	,	"Basic"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	8
 	,	2
 	);
@@ -71,16 +65,14 @@
 	,	"Verb. Melodien"
 	,	""
 	,	"Assembler"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Streifenkiller"
 	,	"Uwe Wurditsch"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	9
 	,	2
 	);
@@ -88,8 +80,7 @@
 	,	"Thema: Erweiterung"
 	,	"Michael Bach"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	9
 	,	3
 	);
@@ -97,16 +88,14 @@
 	,	"Druckerinterface"
 	,	"Johannes Christian Lotter"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"2716 auf RAM Karte"
 	,	"Johannes Christian Lotter"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	10
 	,	2
 	);
@@ -114,40 +103,35 @@
 	,	"Dig. Cassettenrecorder"
 	,	"Johannes Christian Lotter"
 	,	"Hardware"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Relocator"
 	,	"Günter Kreidl"
 	,	"Assembler"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Jahresinhaltsverzeichnis 80"
 	,	""
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Relocator"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	17
 	);
 	trJournal($path, $tail, $magazine
 	,	"Preisausschreiben"
 	,	"MK Systemtechnik"
 	,	""
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	19
 	,	2
 	);
@@ -155,16 +139,14 @@
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"othello"
 	,	"Richard Beal"
 	,	"Assembler"
-	,	1981
-	,	6
+	,	$volume, $issue
 	,	20
 	);
 ?>

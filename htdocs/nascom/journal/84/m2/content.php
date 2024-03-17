@@ -1,36 +1,34 @@
 <!-- 84/m2/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
+	$volume = "1984";
+	$issue = "M2";
 /*	trJournal($path, $tail, $magazine
 	,	"Mini-Ausgabe"
 	,	""
 	,	"Titel"
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	1
 	);
 */	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	3
 	,	2
 	);
@@ -38,16 +36,14 @@
 	,	"Platinenservice"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	4
 	);
 	trJournal($path, $tail, $magazine
 	,	"CP&#x2f;M 2&#x2e;2 &ndash; Aktion"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	4
 	,	2
 	);
@@ -55,32 +51,28 @@
 	,	"Neue Platinen-Serien"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	5
 	);
 	trJournal($path, $tail, $magazine
 	,	"Disketten-Service"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Hinweis zur hochauflösenden Grafik"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Sonderangebot"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	7
 	,	2
 	);
@@ -88,8 +80,7 @@
 	,	"Vorschau"
 	,	""
 	,	""
-	,	1984
-	,	"M2"
+	,	$volume, $issue
 	,	8
 	);
 ?>

@@ -1,28 +1,27 @@
 <!-- 82/10/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1982";
+	$issue = "10";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal intern"
 	,	""
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	2
 	,	2
 	);
@@ -30,8 +29,7 @@
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	2
 	,	3
 	);
@@ -39,56 +37,49 @@
 	,	"TV-Kamera Interface"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Einsteiger"
 	,	"Otto Fößel"
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Datenausgabe im E- und F-Format"
 	,	"J. Kwasnitza"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"Folienservice"
 	,	"Günter Böhm"
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	11
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbrief"
 	,	"Gerhard T. Klement"
 	,	""
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Zu Dataline und Scroll"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	12
 	,	2
 	);
@@ -96,32 +87,28 @@
 	,	"2732/64-EPROM Programmer &ndash; Teil&nbsp;1"
 	,	"Bernd Schuhmacher"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Lost Dutchman&rsquo;s Gold"
 	,	"Michael Bach"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing E- und F-Format"
 	,	"J. Kwasnitza"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing TV-Kamera"
 	,	"Günter Böhm"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	19
 	,	2
 	);
@@ -129,16 +116,14 @@
 	,	"Listing Dataline Demo"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	20
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Entfernungs- und Winkelprogramm (Nachtrag)"
 	,	"Wolfgang von Jan"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	20
 	,	2
 	);
@@ -146,16 +131,14 @@
 	,	"Listing Stringsave"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"Listing Swinghouse"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	21
 	,	2
 	);
@@ -163,24 +146,21 @@
 	,	"Listing Varprotect"
 	,	"Gerhard T. Klement"
 	,	"Assembler"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	22
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM-1 mit 4&nbsp;MHz"
 	,	"Michael Bach"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Abenteuerspiel &quot;Lost Dutchman&rsquo;s Gold&quot;"
 	,	"Michael Bach"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	23
 	,	2
 	);
@@ -188,8 +168,7 @@
 	,	"NASCOM-Teufelchen"
 	,	"Michael Bach"
 	,	"Assembler"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	23
 	,	3
 	);
@@ -197,16 +176,14 @@
 	,	"Stringsave"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Varprotect"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	24
 	,	2
 	);
@@ -214,8 +191,7 @@
 	,	"Swinghouse"
 	,	"Gerhard T. Klement"
 	,	"Basic"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	24
 	,	3
 	);
@@ -224,24 +200,21 @@
 	,	"H. G. Ingelaat<br>"
 	.	"U. Forke"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	25
 	);
 	trJournal($path, $tail, $magazine
 	,	"Zwei Monitorprogramme auf EPROM Board"
 	,	"Clemens Ballarin"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	26
 	);
 	trJournal($path, $tail, $magazine
 	,	"Clock-Umschaltung 2&#x2f;4&nbsp;MHz"
 	,	"Clemens Ballarin"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	26
 	,	2
 	);
@@ -249,16 +222,14 @@
 	,	"Drehzahlmessung für Cassettenrekorder"
 	,	"Hans Gnirck"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	27
 	);
 	trJournal($path, $tail, $magazine
 	,	"Handshake für UART"
 	,	"Peter Urban"
 	,	"Hardware"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	27
 	,	2
 	);
@@ -266,8 +237,7 @@
 	,	"NASCOM-Sonderangebote"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1982
-	,	"10/11"
+	,	$volume, $issue
 	,	28
 	);
 ?>

@@ -1,52 +1,48 @@
 <!-- 80/05/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1980";
+	$issue = "5";
 	trJournal($path, $tail, $magazine
 	,	"Editorial"
 	,	"Michael Klein"
 	,	"Editorial"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Software für den NASCOM-Plotter"
 	,	"Peter Bentz"
 	,	"Software"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Umbau von Fernsehgeräten zu Videomonitoren"
 	,	"Udo v. Mulert"
 	,	"Hardware"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
 	,	"Umlaute im NASCOM&nbsp;&ndash; System"
 	,	"Michael Bach"
 	,	"Hardware"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
 	,	"&quot;Wir haben nichts besseres&quot;"
 	,	"Eric v.d.Vaart"
 	,	"Assembler"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Reaktionstest 2"
 	,	"Eric v.d.Vaart"
 	,	"Assembler"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	8
 	,	2
 	);
@@ -54,32 +50,28 @@
 	,	"Hochauflösende Graphik für den NASCOM&nbsp;1"
 	,	"Albert Schunck"
 	,	"Hardware"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	9
 	);
 	trJournal($path, $tail, $magazine
 	,	"Programm zum Auszählen und Darstellen mit dem NASCOM&nbsp;1"
 	,	"Th. E. Schreiner"
 	,	"Assembler"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Fehler Fehler Fehler Fehler Fehler"
 	,	"Peter Deege"
 	,	""
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Autoreset mit Synchronisierung"
 	,	""
 	,	"Hardware"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	14
 	,	2
 	);
@@ -87,8 +79,7 @@
 	,	"Simpel Graphik"
 	,	"Christian Lotter"
 	,	"Hardware"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	14
 	,	3
 	);
@@ -96,8 +87,7 @@
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1980
-	,	5
+	,	$volume, $issue
 	,	15
 	);
 ?>

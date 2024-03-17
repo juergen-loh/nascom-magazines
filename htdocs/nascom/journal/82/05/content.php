@@ -1,36 +1,34 @@
 <!-- 82/05/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1982";
+	$issue = "5";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"Nascom Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"Leserbriefe"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Typenrad-Terminal Teil&nbsp;1"
 	,	"Günter Kreidl"
 	,	"Hardware"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	6
 	);
 	trJournal($path, $tail, $magazine
@@ -38,8 +36,7 @@
 	,	"Günter Kreidl"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	7
 	);
 	trJournal($path, $tail, $magazine
@@ -47,8 +44,7 @@
 	,	"Dieter Oberle<br>"
 	.	"Andreas Zippel"
 	,	"Hardware"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
@@ -56,72 +52,63 @@
 	,	"Günter Böhm"
 	,	"Hardware<br>"
 	.	"Assembler"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Seite(n) für Einsteiger"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Assembler"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	18
 	);
 	trJournal($path, $tail, $magazine
 	,	"Höhere Programmiersprachen und das 8-Damen-Problem"
 	,	"Wolfgang Mayer-Gürr"
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	19
 	);
 	trJournal($path, $tail, $magazine
 	,	"Preiswertes Pascal"
 	,	"Michael Bach"
 	,	"Pascal"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	21
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	23
 	);
 	trJournal($path, $tail, $magazine
 	,	"Datenverwaltung 2"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	24
 	);
 	trJournal($path, $tail, $magazine
 	,	"Mitarbeiter 3&#x2f;4-82"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	30
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOMPL"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	31
 	);
 	trJournal($path, $tail, $magazine
 	,	"Impressum"
 	,	""
 	,	""
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	31
 	,	2
 	);
@@ -129,8 +116,7 @@
 	,	"MKS-Angebote"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1982
-	,	5
+	,	$volume, $issue
 	,	32
 	);
 ?>

@@ -1,84 +1,76 @@
 <!-- 81/01/content.php -->
 <?php
 	$magazine = "Nascom Journal";
+	$volume = "1981";
+	$issue = "1";
 	trJournal($path, $tail, $magazine
 	,	"Inhaltsverzeichnis"
 	,	""
 	,	""
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	1
 	);
 	trJournal($path, $tail, $magazine
 	,	"2. Jahrgang des NASCOM&nbsp;&ndash; Journal"
 	,	"Michael Klein"
 	,	"Editorial"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	2
 	);
 	trJournal($path, $tail, $magazine
 	,	"&quot;Grafik Brutal&quot; in der Anwendung"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	3
 	);
 	trJournal($path, $tail, $magazine
 	,	"Telespiel mit Joystick"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	8
 	);
 	trJournal($path, $tail, $magazine
 	,	"Superhirn"
 	,	"Dieter Thoss"
 	,	"Assembler"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	10
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM läßt Buchstaben raten"
 	,	"Günter Böhm"
 	,	"Assembler"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	12
 	);
 	trJournal($path, $tail, $magazine
 	,	"Einfacher A&#x2f;D-D&#x2f;A-Wandler"
 	,	"Günter Böhm"
 	,	"Hardware"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	13
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kurzinformationen"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	14
 	);
 	trJournal($path, $tail, $magazine
 	,	"Vertriebsstelle in Karlsruhe eröffnet"
 	,	"MK Systemtechnik"
 	,	"Anzeige"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	15
 	);
 	trJournal($path, $tail, $magazine
 	,	"Kleinanzeigen"
 	,	""
 	,	"Anzeige"
-	,	1981
-	,	1
+	,	$volume, $issue
 	,	16
 	);
 ?>
