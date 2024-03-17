@@ -1,7 +1,7 @@
 <!-- 85/m3/content.php -->
 <?php
 	$magazine = "80-Bus Journal";
-	trJournal($path, $tail, $magazine
+/*	trJournal($path, $tail, $magazine
 	,	"Mini-Ausgabe"
 	,	""
 	,	"Titel"
@@ -9,7 +9,7 @@
 	,	"M3"
 	,	1
 	);
-	trJournal($path, $tail, $magazine
+*/	trJournal($path, $tail, $magazine
 	,	"Liebe Leser"
 	,	"Günter Böhm"
 	,	"Editorial"

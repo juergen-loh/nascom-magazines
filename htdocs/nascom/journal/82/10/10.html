@@ -38,13 +38,12 @@ beim Betrieb im Interruptmode 2 notwendig sind:
 Die Beschreibung sollte einen Einblick in die Interruptbehandlung von
 Mikroprozessoren geben. Wenngleich auch im zweiten Abschnitt sehr
 speziell auf die Struktur des
-<?php externalLink("Z80"); ?>
-eingegangen wurde, so kann doch mit
+<?php externalLink("Z80"); ?> eingegangen wurde, so kann doch mit
 dem Verständnis dieses Typs relativ leicht die Interruptbehandlung
 anderer Typen verstanden werden. Die Feinheiten liegen, wie auch hier
 schon deutlich wurde, nicht mehr in der CPU selbst, sondern werden in
 zunehmendem Maße in andere Bausteine verlagert. Ob dies, wie beim Z80,
-die E/ABausteine oder spezielle Interrupt-Controler sind, eines haben
+die E/A-Bausteine oder spezielle Interrupt-Controler sind, eines haben
 sie gemeinsam: Die Komplexität ihrer Struktur kann es fast mit der der
 CPU
 
@@ -77,38 +76,39 @@ beschrieben.
 <p>
 Im E-Format wird eine Variable in folgender Form dargestestellt:
 </p>
-<p>
-nBlanks, Signum Mantisse, ., Mantisse, E, Signum&nbsp;Exponent,
-2-<?php spchar("zwsp"); ?>stelliger Exponent
+<p class="left">
+nBlanks,<?php spchar("zwsp"); ?>Signum Mantisse,<?php spchar("zwsp"); ?>.,<?php spchar("zwsp"); ?>Mantisse,<?php spchar("zwsp"); ?>E,<?php spchar("zwsp"); ?>Signum Exponent,<?php spchar("zwsp"); ?>2-stelliger Exponent
 </p>
-<p>
+
+<p class="left exdent">
 Beispiel:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-.123456E+21"
 </p>
 <p>
 Durch Befehle kann die Stellenzahl der Mantisse DE und die gesamte
-Feldbreite WE einschliesslich der Blanks festgelegt werden&nbsp;.
-Beispiel: DE=5, WE=12 gibt die Zahl
+Feldbreite WE einschliesslich der Blanks festgelegt werden.
 </p>
-<p>
+<p class="left exdent">
+Beispiel: DE=5, WE=12 gibt die Zahl<br>
 X =-1.23456 als XE$ = "&nbsp;-.12346E+01" aus.
 </p>
 <p>
 Im F-Format wird eine Zahl wie folgt dargestellt:
 </p>
-<p>
-nBlanks, Signum&nbsp;Zahl, Dezimalzahl
+<p class="left">
+nBlanks,<?php spchar("zwsp"); ?>Signum Zahl,<?php spchar("zwsp"); ?>Dezimalzahl
 </p>
 <p>
 Mit dem Befehl DF kann die Anzahl der Dezimalstellen einer Zahl
 bestimmt werden, waehrend die gesamte Feldbreite der Zahl
 (einschliesslich der Blanks) ueber WF festgelegt wird.
 </p>
-<table>
-<tr><td>Beispiel:</td><td>DF=2, WF=7 gibt die Zahl<br>
-X=-1.23456 als XF$="&nbsp;-1.23" aus.</td></tr>
-</table>
+<p class="left exdent">
+Beispiel: DF=2, WF=7 gibt die Zahl<br>
+X=-1.23456 als XF$=" &nbsp; -1.23" aus.
+</p>
 <p>
-Mit den Basic- Unterprogrammen E-Format (GOSUB1000)
+Mit den <a href="../../19/text/#article1">Basic- Unterprogrammen</a>
+E-Format (GOSUB<?php spchar("zwsp"); ?>1000)
 </p>
 
 <?php columnEnd(2); ?>
