@@ -27,7 +27,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-03-16 15:57:54 +0100 (Sa, 16. Mrz 2024) $ -->
+	<!-- top.php / $Date: 2024-03-17 10:48:38 +0100 (So, 17. Mrz 2024) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
