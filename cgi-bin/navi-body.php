@@ -1303,7 +1303,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Merseyside Nascom Users Group":	$url = "http://www.nascomhomepage.com/pdf/nasproginfo.pdf";				break;
 	case "Michael Bach":			$url = "https://michaelbach.de/";												break;
 	case "Michael Klein":			$url = "https://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
-	case "Microshell":				$url = "https://www.autometer.de/unix4fun/z80pack/ftp/manuals/Software/microshell.pdf";	break;
+	case "Microshell":				$url = "http://www.z80.eu/microshell.html";										break;
 	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
 	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
 	case "Mike Strange":			$url = "https://www.yourtotalevent.com/";										break;
