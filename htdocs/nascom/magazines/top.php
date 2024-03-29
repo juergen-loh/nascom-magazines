@@ -18,7 +18,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-03-29 15:17:27 +0100 (Fr, 29. Mrz 2024) $ -->
+	<!-- top.php / $Date: 2024-03-29 19:48:37 +0100 (Fr, 29. Mrz 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,

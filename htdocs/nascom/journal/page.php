@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2023-11-19 14:50:12 +0100 (So, 19. Nov 2023) $ -->
+	<!-- page.php / $Date: 2024-03-29 21:39:37 +0100 (Fr, 29. Mrz 2024) $ -->
 <?php
 	echo "\n";
 
@@ -640,6 +640,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 	} else if ($link == "text") {
 		echo "<div class=\"row\" id=\"page\">";
 		echo "<div class=\"col-".BootstrapTier()."-12 hyphenate\" style=\"border: 1px solid #000;";
+		echo " padding-top: 1em; padding-bottom: 1em;";
 		switch ("$year-$issue-$page") {
 		case "81-06-01":	case "81-06-02":	case "81-06-19":	case "81-06-20":
 		case "81-07-01":	case "81-07-02":	case "81-07-19":	case "81-07-20":
@@ -660,6 +661,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo " background-color:#F10A0A;";
 			break;
 		}
+		echo "\">\n\n";
 
 		//-------------------------------------------------------------------
 
@@ -700,7 +702,6 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 
 		//-------------------------------------------------------------------
 
-		echo "\"><br>\n\n";
 		$MultiColumn = "";
 		$MultiColumnRule = "";
 
@@ -917,9 +918,6 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 		include "$page.html";
 
 		echo "\n";
-		if ($MultiColumn == "") {
-			echo "<br>\n";
-		}
 		echo "</div></div>";
 	}
 	echo "\n<!-- /Die Seite -->\n";

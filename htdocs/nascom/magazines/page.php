@@ -517,7 +517,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-01-07 14:09:09 +0100 (So, 07. Jan 2024) $ -->
+	<!-- page.php / $Date: 2024-03-29 21:39:37 +0100 (Fr, 29. Mrz 2024) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";
@@ -551,10 +551,18 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	$naviBottom = "";
 	switch ($link) {
 	case "text":
-		echo "<div class=\"row\" lang=\"en\"><div class=\"col-".BootstrapTier()."-12 "./*"hyphenate ".*/"mag-$magpath issue-$issuepath page-$pagepath\" style=\"border: 1px solid #000;\" lang=\"en\" id=\"page\"><br>\n";
+		echo "<div class=\"row\" lang=\"en\">\n";
+		echo "<div class=\"col-".BootstrapTier()."-12 "./*"hyphenate ".*/"mag-$magpath issue-$issuepath page-$pagepath\" style=\"border: 1px solid #000;";
+		echo " padding-top: 1em; padding-bottom: 1em;";
+		echo "\" lang=\"en\" id=\"page\">";
+//		echo "<br>";
+		echo "\n";
 		$imagepath = "../../";
 		include "$html";
-		echo "\n<br></div></div>\n";
+		echo "\n";
+//		echo "<br>";
+		echo "</div>\n";
+		echo "</div>\n";
 /*		echo "<p>\n\tThis is an ";
 		externalLink("Optical character recognition", "OCR", "");
 		echo "&rsquo;d\n\tversion of the <a href=\"../\">scanned page</a> and likely contains recognition errors.\n</p>\n";
