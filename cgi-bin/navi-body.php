@@ -1108,7 +1108,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
 	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
 	case "Anders Hejlsberg":		$url = "https://$lang.wikipedia.org/wiki/Anders_Hejlsberg";						break;
-	case "COMPUTER, Vol 13-1, January 1980, pp68-79":	$url = "https://pub.sergev.org/pub/doc/An-Implementation-Guide-to-a-Proposed-Standard-for-Floating-Point-Arithmetic.pdf";	break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
@@ -1132,6 +1131,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "CNY17-2":					$url = "https://www.vishay.com/docs/83606/cny17.pdf";							break;
 	case "Compression ASM":			$url = "http://www.nascomhomepage.com/pdf/compass.pdf";							break;
 	case "Computer Gesellschaft Konstanz":	$url = "https://$lang.wikipedia.org/wiki/Computer_Gesellschaft_Konstanz";	break;
+	case "COMPUTER, Vol 13-1, January 1980, pp68-79":	$url = "https://pub.sergev.org/pub/doc/An-Implementation-Guide-to-a-Proposed-Standard-for-Floating-Point-Arithmetic.pdf";	break;
 	case "Computermonitor":			$url = "https://$lang.wikipedia.org/wiki/Computermonitor";						break;
 	case "Computermuseum Burgrieden":	$url = "http://kath-rottal.homeunix.org/Computermuseum/Lehrsysteme/Kontron%20Z%2080%20Kit/index.html";	break;
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
@@ -1141,9 +1141,20 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Data General Nova":		$url = "https://en.wikipedia.org/wiki/Data_General_Nova";						break;
 	case "David L. Heiserman":		$url = "https://openlibrary.org/authors/OL766144A/Heiserman_David_L.";			break;
 	case "dBASE II":				$url = "https://$lang.wikipedia.org/wiki/DBASE#dBASE_II";						break;
+	case "DC2SU":					$url = "https://hamcall.net/call/DC2SU";										break;
+	case "DD6ES":					$url = "https://hamcall.net/call/DD6ES";										break;
 	case "DEC GT40":				$url = "https://en.wikipedia.org/wiki/DEC_GT40";								break;
 	case "DEC VT180":				$url = "https://$lang.wikipedia.org/wiki/VT180";								break;
+	case "DF3DT":					$url = "https://hamcall.net/call/DF3DT";										break;
+	case "DF4BS":					$url = "https://hamcall.net/call/DF4BS";										break;
+	case "DF4BT":					$url = "https://hamcall.net/call/DF4BT";										break;
+	case "DF4GI":					$url = "https://hamcall.net/call/DF4GI";										break;
+	case "DF7SQ":					$url = "https://hamcall.net/call/DF7SQ";										break;
+	case "DG1BF":					$url = "? https://hamcall.net/call/DG1BF";										break;
 	case "Dieter Werner auf mikrocontroller.net":	$url = "https://www.mikrocontroller.net/topic/55718#433032";	break;
+	case "DK7UF":					$url = "? https://hamcall.net/call/DK7UF";										break;
+	case "DL5EBP":					$url = "https://hamcall.net/call/DL5EBP";										break;
+	case "DL6UP":					$url = "? https://www.qrzcq.com/call/DL6UP";									break;
 	case "Dr. Dobb's Journal":								$url = "https://archive.org/details/dr_dobbs_journal";									break;
 	case "Dr. Dobb's Journal, Volume 3, ​Issue 2, ​Page 10":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n67/mode/2up";			break;
 	case "Dr. Dobb's Journal, Volume 3, ​Issue 5, ​Page 21":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";		break;
@@ -1155,15 +1166,15 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
 	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
 	case "Elektor, April 1977, Seite 36":		$url = "https://www.elektormagazine.de/magazine/elektor-197704";	break;
-	case "Elektor, November 1977, Seite 41":	$url = "https://www.elektormagazine.de/magazine/elektor-197711";	break;
+	case "Elektor, April 1982, Seite 30":		$url = "https://www.elektormagazine.de/magazine/elektor-198204";	break;
+	case "Elektor, Dezember 1981, Seite 61":	$url = "https://www.elektormagazine.de/magazine/elektor-198112";	break;
 	case "Elektor, Februar 1978, Seite 20":		$url = "https://www.elektormagazine.de/magazine/elektor-197802";	break;
 	case "Elektor, Januar 1979, Seite 48":		$url = "https://www.elektormagazine.de/magazine/elektor-197901";	break;
-	case "Elektor, September 1980, Seite 26":	$url = "https://www.elektormagazine.de/magazine/elektor-198009";	break;
-	case "Elektor, Dezember 1981, Seite 61":	$url = "https://www.elektormagazine.de/magazine/elektor-198112";	break;
-	case "Elektor, April 1982, Seite 30":		$url = "https://www.elektormagazine.de/magazine/elektor-198204";	break;
 	case "Elektor, Mai 1982, Seite 45":			$url = "https://www.elektormagazine.de/magazine/elektor-198205";	break;
-	case "Elektor, Oktober 1982, Seite 66":		$url = "https://www.elektormagazine.de/magazine/elektor-198210";	break;
 	case "Elektor, Mai 1983, Seite 34":			$url = "https://www.elektormagazine.de/magazine/elektor-198305";	break;
+	case "Elektor, November 1977, Seite 41":	$url = "https://www.elektormagazine.de/magazine/elektor-197711";	break;
+	case "Elektor, Oktober 1982, Seite 66":		$url = "https://www.elektormagazine.de/magazine/elektor-198210";	break;
+	case "Elektor, September 1980, Seite 26":	$url = "https://www.elektormagazine.de/magazine/elektor-198009";	break;
 	case "Elektronik":				$url = "https://www.weka-fachmedien.de/medien/elektronik/";						break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
@@ -1181,6 +1192,9 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "FORTH for Microcomputers":$url = "https://dl.acm.org/citation.cfm?id=987508.987510";						break;
 	case "Funkschau":				$url = "https://www.funkschau.de/";												break;
 	case "Fädeltechnik":			$url = "https://$lang.wikipedia.org/wiki/F%C3%A4deltechnik";					break;
+	case "G3FHL":					$url = "https://www.qrzcq.com/call/G3FHL";										break;
+	case "G3XIG":					$url = "https://hamcall.net/call/G3XIG";										break;
+	case "G6ADF":					$url = "https://hamcall.net/call/G6ADF";										break;
 	case "Gary A. Kildall":			$url = "https://www.digitalresearch.biz/Gary.Kildall.htm";						break;
 	case "General Instrument AY-3-8910":	$url = "https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910";	break;
 	case "GM801":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm801.htm";				break;
@@ -1222,7 +1236,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "GM880":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm880.htm";				break;
 	case "GM886":					$url = "https://nascom.wordpress.com/gemini/hardware/gm886-high-performance-cpu/";	break;
 	case "Google über Nascom":		$url = "https://www.google.de/search?q=nascom+computer";						break;
-//	case "Greg":					$url = "https://www.lemis.com/grog/Albums/Computers/Kontron-kit.php";			break;
+	case "Greg":					$url = "? https://www.lemis.com/grog/Albums/Computers/Kontron-kit.php";			break;
 	case "Gummersbach":				$url = "https://www.f10.th-koeln.de/";											break;
 	case "Harzretro":				$url = "https://www.computersammler.de/sammlung/einplatinen-und-lerncomputer/kontron-z80-kit/";	break;
 	case "Henelec":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm805.htm";				break;
@@ -1252,6 +1266,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Kilobaud Microcomputing Magazine (February 1981), page 76":	$url =  "https://archive.org/details/kilobaudmagazine-1981-02/page/n76/mode/2up";	break;
 	case "Kilobaud Microcomputing Magazine (March 1981)":				$url =  "https://archive.org/details/kilobaudmagazine-1981-03";	break;
 	case "Kilobaud Microcomputing Magazine (March 1981), page 44":		$url =  "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
+	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
+	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
 	case "Kontron Z80-KIT":			$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Kontron":					$url = "https://www.kontron.com/de";											break;
 	case "Kornkraft Genossenschaft":$url = "https://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
@@ -1275,8 +1291,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "mc 1/1983, Seite 38":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=36";		break;
 	case "mc 1/1983, Seite 44":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=40";		break;
 	case "mc 1/1987, Seite 59":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-01.pdf#page=57";	break;
-	case "mc 2/1987, Seite 64":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-02.pdf#page=42";	break;
-	case "mc 3/1987, Seite 92":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-03.pdf#page=90";	break;
 	case "mc 10/1982, Seite 74":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1982/mc-1982-10.pdf#page=74";		break;
 	case "mc 10/1984, Seite 61":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-10.pdf#page=61";		break;
 	case "mc 11/1984, Seite 84":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-11.pdf#page=84";		break;
@@ -1286,9 +1300,11 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "mc 2/1981, Seite 28":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf#page=28";		break;
 	case "mc 2/1985, Seite 102":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1985/mc-1985-02.pdf#page=102";	break;
 	case "mc 2/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12541";	break;
+	case "mc 2/1987, Seite 64":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-02.pdf#page=42";	break;
 	case "mc 3/1982":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=14080";	break;
 	case "mc 3/1983, Seite 31":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-03.pdf#page=29";		break;
 	case "mc 3/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12542";	break;
+	case "mc 3/1987, Seite 92":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-03.pdf#page=90";	break;
 	case "mc 4/1981, Seite 26":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-04.pdf#page=26";		break;
 	case "mc 4/1981, Seite 75":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-04.pdf#page=71";		break;
 	case "mc 4/1982":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=14081";	break;
@@ -1304,8 +1320,6 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Michael Bach":			$url = "https://michaelbach.de/";												break;
 	case "Michael Klein":			$url = "https://web.archive.org/web/20131024195335/http://networks.de/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=62";	break;
 	case "Microshell":				$url = "http://www.z80.eu/microshell.html";										break;
-	case "Kilobaud Microcomputing Magazine, February 1981, Page 76":	$url = "https://archive.org/details/kilobaudmagazine-1981-02/page/n75/mode/2up";	break;
-	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
 	case "Mike Strange":			$url = "https://www.yourtotalevent.com/";										break;
 	case "Mikrocomputer Hard- und Softwarepraxis":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981";	break;
 	case "Mikrocomputer Hard- und Softwarepraxis, Seite 102":	$url = "https://archive.org/details/mikrocomputer-hard-und-softwarepraxis-rolf-dieter-klein-1981/page/102/mode/2up";	break;
@@ -1386,6 +1400,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "SENSO":					$url = "https://$lang.wikipedia.org/wiki/Senso_%28Spiel%29";					break;
 	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/mz-80k/";	break;
 	case "Sharp MZ80":				$url = "https://en.wikipedia.org/wiki/Sharp_MZ";								break;
+	case "Siemens T&nbsp;37":		$url = "https://en.wikipedia.org/wiki/Teleprinter#/media/File:Siemens_t37h_without_cover.jpg";	break;
+	case "Siemens T&nbsp;68":		$url = "https://stb-betzwieser.de/aktuelles/ausstellung/kategorien-1/siemenst68.php";	break;
 	case "Spaceii.nas":				$url = "http://www.nascomhomepage.com/games/Spaceii.nas";						break;
 	case "Startrek.cas":			$url = "http://www.nascomhomepage.com/mbasic/Startrek.cas";						break;
 	case "Sternwarte Wien":			$url = "https://www.vhs.at/de/e/planetarium";									break;
@@ -1442,42 +1458,47 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	default:						$url = "externalLink($link, $text)";											break;
 	}
 	if ($url != "") {
-		echo "<!-- External Link -->";
-		echo "<a href=\"$url\"";
-
-		echo ' title="';
-		if ($lang == "en") {
-			echo 'External Link';
-		} else {
-			echo 'Externer Link';
-		}
-		if ($text != "" || $newText != "" || $title != "") {
-//			echo ' title="';
-			echo ': ';
-			if ($title != "") {
-				echo $title;
-			} else if ($newText != "") {
-				echo $newText;
-			} else {
-				echo $link;
-			}
-//			echo '"';
-		}
-		echo '"';
-
-//		echo ' title="Externer Link"';
-		echo ' target="_blank"';
-//		https://mathiasbynens.github.io/rel-noopener/
-//		echo ' rel="noopener"';
-		echo ' rel="noreferrer"';
-		echo '>';
-		if ($text == "") {
+		if ($url[0] == '?') {
+			// url ungültig / veraltet
 			echo $link;
 		} else {
-			echo $text;
+			echo "<!-- External Link -->";
+			echo "<a href=\"$url\"";
+
+			echo ' title="';
+			if ($lang == "en") {
+				echo 'External Link';
+			} else {
+				echo 'Externer Link';
+			}
+			if ($text != "" || $newText != "" || $title != "") {
+//				echo ' title="';
+				echo ': ';
+				if ($title != "") {
+					echo $title;
+				} else if ($newText != "") {
+					echo $newText;
+				} else {
+					echo $link;
+				}
+//				echo '"';
+			}
+			echo '"';
+
+//			echo ' title="Externer Link"';
+			echo ' target="_blank"';
+//			https://mathiasbynens.github.io/rel-noopener/
+//			echo ' rel="noopener"';
+			echo ' rel="noreferrer"';
+			echo '>';
+			if ($text == "") {
+				echo $link;
+			} else {
+				echo $text;
+			}
+			echo '</a>';
+			echo '<!-- /External Link -->',$delimiter;
 		}
-		echo '</a>';
-		echo '<!-- /External Link -->',$delimiter;
 	} else {
 		if ($text != "") {
 			echo "<a href=\"$text\"></a>";
@@ -1621,4 +1642,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-03-29 15:17:27 +0100 (Fr, 29. Mrz 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-03-29 19:48:37 +0100 (Fr, 29. Mrz 2024) $ -->
