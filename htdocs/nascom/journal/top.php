@@ -27,7 +27,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-03-17 10:48:38 +0100 (So, 17. Mrz 2024) $ -->
+	<!-- top.php / $Date: 2024-03-29 15:17:27 +0100 (Fr, 29. Mrz 2024) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
@@ -39,13 +39,13 @@
 	echo "\t<!-- $lastModified -->\n";
 	include "$navi_body_php";
 
-	$t00s = "<a href=\"$gHtmlRoot/nascom/journal$tail\" style=\"display:block\">";		$t00e = "</a>";
-	$t80s = "<a href=\"$gHtmlRoot/nascom/journal/80$tail\" style=\"display:block\">";	$t80e = "</a>";
-	$t81s = "<a href=\"$gHtmlRoot/nascom/journal/81$tail\" style=\"display:block\">";	$t81e = "</a>";
-	$t82s = "<a href=\"$gHtmlRoot/nascom/journal/82$tail\" style=\"display:block\">";	$t82e = "</a>";
-	$t83s = "<a href=\"$gHtmlRoot/nascom/journal/83$tail\" style=\"display:block\">";	$t83e = "</a>";
-	$t84s = "<a href=\"$gHtmlRoot/nascom/journal/84$tail\" style=\"display:block\">";	$t84e = "</a>";
-	$t85s = "<a href=\"$gHtmlRoot/nascom/journal/85$tail\" style=\"display:block\">";	$t85e = "</a>";
+	$t00s = "<a href=\"$gHtmlRoot/nascom/journal$tail\">";		$t00e = "</a>";
+	$t80s = "<a href=\"$gHtmlRoot/nascom/journal/80$tail\">";	$t80e = "</a>";
+	$t81s = "<a href=\"$gHtmlRoot/nascom/journal/81$tail\">";	$t81e = "</a>";
+	$t82s = "<a href=\"$gHtmlRoot/nascom/journal/82$tail\">";	$t82e = "</a>";
+	$t83s = "<a href=\"$gHtmlRoot/nascom/journal/83$tail\">";	$t83e = "</a>";
+	$t84s = "<a href=\"$gHtmlRoot/nascom/journal/84$tail\">";	$t84e = "</a>";
+	$t85s = "<a href=\"$gHtmlRoot/nascom/journal/85$tail\">";	$t85e = "</a>";
 	$tnjs = $tnje = $tb8s = $tb8e = "";
 
 	if (isset($issue)) {
@@ -67,55 +67,25 @@
 	}
 ?>
 
-<table class="style-table-zeropadding" style="width:100%">
+<table class="style-table-zeropadding content-navi" style="width:100%">
 	<tr>
-		<td style="text-align:center" colspan=5>
-			<?php echo $tnjs."Nascom Journal$tnje\n"; ?>
-		</td>
-		<td style="text-align:center" rowspan=2>
-			&nbsp;
-		</td>
-		<td style="text-align:center" colspan=5>
-			<?php echo $tb8s."80-Bus Journal$tb8e\n"; ?>
-		</td>
-		<td style="text-align:center" rowspan=2>
-			&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom" rowspan=2>
-			<?php echo $t00s."Gesamt-Inhalts&shy;verzeichnis$t00e\n"; ?>
-		</td>
+		<td colspan=5><?php echo $tnjs."Nascom Journal$tnje"; ?></td>
+		<td rowspan=2>&nbsp;</td>
+		<td colspan=5><?php echo $tb8s."80-Bus Journal$tb8e"; ?></td>
+		<td rowspan=2>&nbsp;</td>
+		<td rowspan=2><?php echo $t00s."Gesamt-Inhalts&shy;verzeichnis$t00e"; ?></td>
 	</tr>
 	<tr>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t80s."1980$t80e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t81s."1981$t81e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t82s."1982$t82e\n"; ?>
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t83s."1983$t83e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t84s."1984$t84e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t85s."1985$t85e\n"; ?>
-		</td>
+		<td><?php echo $t80s."1980$t80e"; ?></td>
+		<td>&nbsp;</td>
+		<td><?php echo $t81s."1981$t81e"; ?></td>
+		<td>&nbsp;</td>
+		<td><?php echo $t82s."1982$t82e"; ?></td>
+		<td><?php echo $t83s."1983$t83e"; ?></td>
+		<td>&nbsp;</td>
+		<td><?php echo $t84s."1984$t84e"; ?></td>
+		<td>&nbsp;</td>
+		<td><?php echo $t85s."1985$t85e"; ?></td>
 	</tr>
 </table>
 

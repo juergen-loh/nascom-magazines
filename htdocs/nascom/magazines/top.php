@@ -18,7 +18,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2023-12-10 18:50:07 +0100 (So, 10. Dez 2023) $ -->
+	<!-- top.php / $Date: 2024-03-29 15:17:27 +0100 (Fr, 29. Mrz 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
@@ -41,20 +41,13 @@
 <div lang="en">
 
 <?php
-	$t0s = "<a href=\"$gHtmlRoot/nascom/magazines/$post\" style=\"display:block\">";
-	$t0e = "</a>";
-	$t1s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-news/$post\" style=\"display:block\">";
-	$t1e = "</a>";
-	$t2s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-80-news/$post\" style=\"display:block\">";
-	$t2e = "</a>";
-	$t3s = "<a href=\"$gHtmlRoot/nascom/magazines/80-bus-news/$post\" style=\"display:block\">";
-	$t3e = "</a>";
-	$t4s = "<a href=\"$gHtmlRoot/nascom/magazines/micropower/$post\" style=\"display:block\">";
-	$t4e = "</a>";
-	$t5s = "<a href=\"$gHtmlRoot/nascom/magazines/nascom-newsletter/$post\" style=\"display:block\">";
-	$t5e = "</a>";
-	$t6s = "<a href=\"$gHtmlRoot/nascom/magazines/scorpio-news/$post\" style=\"display:block\">";
-	$t6e = "</a>";
+	$t0s = "<a href=\"$gHtmlRoot/nascom/magazines/$post\">";					$t0e = "</a>";
+	$t1s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-news/$post\">";			$t1e = "</a>";
+	$t2s = "<a href=\"$gHtmlRoot/nascom/magazines/inmc-80-news/$post\">";		$t2e = "</a>";
+	$t3s = "<a href=\"$gHtmlRoot/nascom/magazines/80-bus-news/$post\">";		$t3e = "</a>";
+	$t4s = "<a href=\"$gHtmlRoot/nascom/magazines/micropower/$post\">";			$t4e = "</a>";
+	$t5s = "<a href=\"$gHtmlRoot/nascom/magazines/nascom-newsletter/$post\">";	$t5e = "</a>";
+	$t6s = "<a href=\"$gHtmlRoot/nascom/magazines/scorpio-news/$post\">";		$t6e = "</a>";
 
 	if (!isset($path)
 	||	isset($pict)
@@ -71,47 +64,21 @@
 	}
 ?>
 
-<table class="style-table-zeropadding" style="width:100%">
+<table class="style-table-zeropadding content-navi" style="width:100%">
 	<tr>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t1s."INMC<br>News$t1e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t2s."INMC 80<br>News$t2e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t3s."80-Bus<br>News$t3e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t6s."Scor&shy;pio<br>News$t6e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t4s."<br>Micro&shy;power$t4e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t5s."Nas&shy;com<br>News&shy;letter$t5e\n"; ?>
-		</td>
-		<td style="text-align:center">
-			<br>&nbsp;
-		</td>
-		<td style="text-align:center; vertical-align:bottom">
-			<?php echo $t0s."Nas&shy;com<br>Maga&shy;zines$t0e\n"; ?>
-		</td>
+		<td><?php echo $t1s."INMC<br>News$t1e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t2s."INMC 80<br>News$t2e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t3s."80-Bus<br>News$t3e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t6s."Scor&shy;pio<br>News$t6e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t4s."<br>Micro&shy;power$t4e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t5s."Nas&shy;com<br>News&shy;letter$t5e"; ?></td>
+		<td style="text-align:center"><br>&nbsp;</td>
+		<td><?php echo $t0s."Nas&shy;com<br>Maga&shy;zines$t0e"; ?></td>
 	</tr>
 </table>
 
@@ -210,7 +177,7 @@
 function echoShy($str)
 {
 	$arr = explode(" ", $str);
-	$count = count($arr);
+//	$count = count($arr);
 	$eco = "";
 	foreach ($arr as $value) {
 		switch($value) {
@@ -223,8 +190,8 @@ function echoShy($str)
 		case "Assembler/Editor":			$erg = "As&shy;sem&shy;bler/Edi&shy;tor";					break;
 		case "Assemblers":					$erg = "As&shy;sem&shy;blers";								break;
 		case "Benchmarks":					$erg = "Bench&shy;marks";									break;
-		case "Blocking/&#x200b;Deblocking":	$erg = "Blo&shy;cking/&#x200b;De&shy;blo&shy;cking";		break;
-		case "Blocking/Deblocking":			$erg = "Blocking/Deblocking";								break;
+		case "Blocking/&#x200b;Deblocking":	$erg = "Blo&shy;cking/De&shy;blo&shy;cking";				break;
+		case "Blocking/Deblocking":			$erg = "Blo&shy;cking/De&shy;blo&shy;cking";				break;
 		case "Centronics":					$erg = "Cen&shy;tro&shy;nics";								break;
 		case "Characters":					$erg = "Cha&shy;rac&shy;ters";								break;
 		case "Cigarettes":					$erg = "Ci&shy;ga&shy;rettes";								break;
@@ -391,7 +358,7 @@ function echoShy($str)
 		case "understanding":				$erg = "under&shy;standing";								break;
 		case "wordprocessor":				$erg = "word&shy;pro&shy;cessor";							break;
 		// Author
-		case "B.W.Kernighan":				$erg = "B.&#x200b;W.&#x200b;Ker&shy;nig&shy;han";			break;
+		case "B.W.Kernighan":				$erg = "B.W.Ker&shy;nig&shy;han";							break;
 		case "Blackmore":					$erg = "Black&shy;more";									break;
 		case "Clemmett":					$erg = "Clem&shy;mett";										break;
 		case "Cockshott":					$erg = "Cock&shy;shott";									break;
