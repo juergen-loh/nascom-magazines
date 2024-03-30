@@ -12,7 +12,7 @@ Collection of [German](https://tupel.jloh.de/nascom) and
 * **80-Bus Journal**
   * Published 1983 to 1985
   * 14 issues and 3 newsletters
-  * Magazine for NASCOM, GEMINI and other Z80 – users
+  * Magazine for NASCOM, GEMINI and other Z80 users
 
 ## English Nascom Magazines
 
