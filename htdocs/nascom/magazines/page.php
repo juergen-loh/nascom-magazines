@@ -517,7 +517,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-03-29 21:39:37 +0100 (Fr, 29. Mrz 2024) $ -->
+	<!-- page.php / $Date: 2024-03-31 16:45:28 +0200 (So, 31. Mrz 2024) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";
