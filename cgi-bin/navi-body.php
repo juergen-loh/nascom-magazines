@@ -1190,7 +1190,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "FidoNet":					$url = "https://fido.de/";														break;
 	case "Filter.cas":				$url = "http://www.nascomhomepage.com/mbasic/Filter.cas";						break;
 	case "FORTH for Microcomputers":$url = "https://dl.acm.org/citation.cfm?id=987508.987510";						break;
-	case "Funkschau":				$url = "https://www.funkschau.de/";												break;
+	case "Funkschau":				$url = "https://www.radiomuseum.org/lf/b/funkschau/";							break;
 	case "Fädeltechnik":			$url = "https://$lang.wikipedia.org/wiki/F%C3%A4deltechnik";					break;
 	case "G3FHL":					$url = "https://www.qrzcq.com/call/G3FHL";										break;
 	case "G3XIG":					$url = "https://hamcall.net/call/G3XIG";										break;
@@ -1642,4 +1642,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-03-29 19:48:37 +0100 (Fr, 29. Mrz 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-04-06 18:06:37 +0200 (Sa, 06. Apr 2024) $ -->
