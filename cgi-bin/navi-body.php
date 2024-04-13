@@ -1255,6 +1255,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "INVASION.NAS":			$url = "http://www.nascomhomepage.com/games/INVASION.NAS";						break;
 	case "IO828":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io828.htm";				break;
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
+	case "Gilvázi István":			$url = "https://innova.rs/hu/gilvazi-istvan/";									break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
 	case "Janich &amp; Klass":		$url = "https://janichklass.de/die-firma/firmengeschichte/";					break;

@@ -23,7 +23,7 @@ Eprom hat, kann man NASPEN ja mittels Floppy auf seine angestammte
 Adresse ins Ram laden.
 </p>
 <p>
-EMDOS+NAS&shy;SYS müßte nach dem Laden von der Floppy ins Ram durch WARM&shy;BOOT
+EMDOS+<span class="uppercase">Nassys</span> müßte nach dem Laden von der Floppy ins Ram durch WARM&shy;BOOT
 ohne weitere Änderungen laufen, für die CP/M-Anpassung stelle ich mir
 vor:
 </p>
@@ -39,7 +39,7 @@ Rambereich 0800-0FFF in obere Page retten z.B. auf E800-F7FF
 Page 0 einblenden (LDA,01; OUT 03 (Port 3: Bit 0=1; Bit 1=0; Bit 7=0))
 </li>
 <li>
-Zugriff auf NAS&shy;SYS + VideoRam + Workspace
+Zugriff auf <span class="uppercase">Nassys</span> + VideoRam + Workspace
 </li>
 <li>
 Page 0 ausblenden (LDA,83; OUT 03 (Bit 0, 1 und 7=1&nbsp;))
@@ -82,19 +82,19 @@ Bus-Interface
 von <span class="uppercase">Horst Dieckhoff</span>
 </h3>
 <h4>
-Bus- Interface NAS&shy;COM- ECB
+Bus- Interface <span class="uppercase">Nascom</span>- ECB
 </h4>
 <p>
 Da bekanntlich einige Modifikationen des
 <?php externalLink("ECB","",""); ?>-Bus
 bestehen, hier im
-folgenden ein Vergleich des KON&shy;TRON- Bus mit dem
+folgenden ein Vergleich des <span class="uppercase"><?php externalLink("Kontron"); ?></span>- Bus mit dem
 <?php externalLink("Janich &amp; Klass", "Janich+Klass", ""); ?>-
 Bus. Im wesentlichen sind sie mit der
 <?php externalLink("mc-CP/M","mc"); ?>
 Belegung kompatibel. Zusätzlich haben
 wir noch zwei Leitungen vorgesehen, durch die ein vereinfachtes
-Umschalten zwischen NAS&shy;SYS und CP/M erreicht werden soll:
+Umschalten zwischen <span class="uppercase">Nassys</span> und CP/M erreicht werden soll:
 </p>
 <p>
 19c <?php invertedSignal("NAS"); ?>/CPM z.B. Monitor-Eprom on/off<br>
@@ -110,12 +110,12 @@ Zur Decodierung des
 <?php invertedSignal("IOEXT"); ?>- Signals:
 </h4>
 <p>
-Für den NAS&shy;COM muß nur das
-<?php invertedSignal("NAS&shy;COM IO"); ?>- Signal
+Für den <span class="uppercase">Nascom</span> muß nur das
+<?php invertedSignal("NASCOM IO"); ?>- Signal
 erzeugt werden. Um auch die neue Floppy-Controllerkarte
 mit Adressen zwischen 08H
 und 10H nutzen zu können, muß das
-<?php invertedSignal("NAS&shy;COM IO"); ?> nur bei den Adressen 00H bis 07H aktiv (low)
+<?php invertedSignal("NASCOM IO"); ?> nur bei den Adressen 00H bis 07H aktiv (low)
 sein.
 </p>
 <h4>
