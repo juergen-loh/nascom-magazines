@@ -6,5 +6,5 @@
 	$last = 51;
 	$splitPage = 27;
 	$splitOffset = 4;
-	$desc = "November&ndash;December 1982, Volume 1, Issue 4";
+	$desc = 'November&ndash;December 1982, <span class="nowrap">Volume 1</span>, <span class="nowrap">Issue 4</span>';
 ?>

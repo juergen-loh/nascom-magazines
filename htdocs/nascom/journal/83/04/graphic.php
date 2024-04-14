@@ -1,6 +1,6 @@
 <?php
 	$magazine	= "80-Bus Journal";
-	$title		= "April 1983 &middot; Ausgabe 4";
+	$title		= '<span class="nowrap">April 1983 &middot;</span> <span class="nowrap">Ausgabe 4</span>';
 	$issue		= "04";
 	$year		= "83";
 	$first		= 1;
