@@ -6,5 +6,5 @@
 	$last = 36;
 	$splitPage = 1;
 	$splitOffset = 1;
-	$desc = '<span class="nowrap">Volume 3,</span> <span class="nowrap">Number 2 &ndash;</span> <span class="nowrap">May 1983</span>';
+	$desc = '<span class="nowrap">Volume 3 &middot;</span> <span class="nowrap">Number 2 &middot;</span> <span class="nowrap">May 1983</span>';
 ?>

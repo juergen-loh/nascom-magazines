@@ -1180,6 +1180,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
 	case "EMUF":					$url = "https://$lang.wikipedia.org/wiki/EMUF";									break;
 	case "Epson MX-80F/T":			$url = "https://$lang.wikipedia.org/wiki/Datei:EpsonMX80FT_02_mod02_res.jpg";	break;
+	case "Euler.cas":				$url = "http://www.nascomhomepage.com/zeap/Euler.cas";							break;
 	case "EV814":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm814.htm";				break;
 	case "Exidy Sorcerer":			$url = "https://en.wikipedia.org/wiki/Exidy_Sorcerer";							break;
 	case "Fachhochschule Köln":		$url = "https://www.th-koeln.de/";												break;
@@ -1433,6 +1434,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
 	case "TRS80 Model III":			$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case "UCSD Pascal":				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
+	case "UFOJAGD.CAS":				$url = "http://www.nascomhomepage.com/zeap/UFOJAGD.CAS";						break;
 	case "Video Genie":				$url = "https://en.wikipedia.org/wiki/Video_Genie";								break;
 	case "Vobis":					$url = "https://$lang.wikipedia.org/wiki/Vobis#Geschichte";						break;
 	case "Volkshochschule":			$url = "https://www.volkshochschule.de/";										break;
@@ -1643,4 +1645,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-04-13 16:23:44 +0200 (Sa, 13. Apr 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->

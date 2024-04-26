@@ -27,15 +27,20 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-03-29 15:17:27 +0100 (Fr, 29. Mrz 2024) $ -->
+	<!-- top.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
 		Nascom Computer, Nascom 1, Nascom 2">
 <?php
 	echo "\t<title>$title";
-	if (isset($issue)) echo " &ndash; $issue";
-	echo " &ndash; Inhaltsverzeichnis</title>\n";
+	if (isset($issue)) {
+		$issueClean = $issue;
+		$issueClean = str_replace('&middot;', '-', $issueClean);
+
+		echo " - $issueClean";
+	}
+	echo " - Inhaltsverzeichnis</title>\n";
 	echo "\t<!-- $lastModified -->\n";
 	include "$navi_body_php";
 
@@ -198,7 +203,7 @@ function echoShy($str)
 		case "Betriebssysteme":					$erg = "Betriebs&shy;systeme";								break;
 		case "Bezugsbedingungen":				$erg = "Bezugs&shy;bedingungen";							break;
 		case "Bildschirmverwaltung":			$erg = "Bildschirm&shy;verwaltung";							break;
-		case "Billigst-Speichererweiterung":	$erg = "Bil&ligst-Speicher&shy;erweiterung";				break;
+		case "Billigst-Speichererweiterung":	$erg = "Bil&shy;ligst-Spei&shy;cher&shy;er&shy;wei&shy;te&shy;rung";	break;
 		case "Busterminierung":					$erg = "Bus&shy;termi&shy;nierung";							break;
 		case "Cassetteninterface":				$erg = "Cassetten&shy;interface";							break;
 		case "Cassettenmonitor":				$erg = "Cassetten&shy;monitor";								break;
@@ -214,8 +219,8 @@ function echoShy($str)
 		case "Dreidimensionale":				$erg = "Drei&shy;dimen&shy;sionale";						break;
 		case "Druckeranschluß":					$erg = "Drucker&shy;anschluß";								break;
 		case "Druckerinterface":				$erg = "Drucker&shy;interface";								break;
-		case "EMDOS-Floppyverwaltung":			$erg = "EMDOS-Floppy&shy;verwaltung";						break;
-		case "Entfernungsberechnung":			$erg = "Entfernungs&shy;berechnung";						break;
+		case "EMDOS-Floppyverwaltung":			$erg = "EMDOS-Floppy&shy;ver&shy;wal&shy;tung";						break;
+		case "Entfernungsberechnung":			$erg = "Ent&shy;fer&shy;nungs&shy;be&shy;rech&shy;nung";						break;
 		case "Erweiterungen":					$erg = "Er&shy;we&shy;ite&shy;run&shy;gen";					break;
 		case "Erweiterungskarte":				$erg = "Erweiterungs&shy;karte";							break;
 		case "Fernschreibers":					$erg = "Fern&shy;schrei&shy;bers";							break;

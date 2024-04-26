@@ -42,13 +42,20 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-03-29 21:39:37 +0100 (Fr, 29. Mrz 2024) $ -->
+	<!-- page.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
 <?php
 	echo "\n";
 
-//	echo "\t<title> $magazine $title &middot; Seite ", (int) $page, "</title>\n";
-	echo "\t<title> $magazine &ndash; $title </title>\n";
-//	echo "\t<title> $magazine ", (int) $year + 1900, " </title>\n";
+	$titleClean = $title;
+	$titleClean = str_replace('<span class="nowrap">', '', $titleClean);
+	$titleClean = str_replace('</span>', '', $titleClean);
+	$titleClean = str_replace('&shy;', '', $titleClean);
+	$titleClean = str_replace('&ndash;', '-', $titleClean);
+	$titleClean = str_replace('&middot;', '-', $titleClean);
+
+//	echo "\t<title>$magazine $titleClean &middot; Seite ", (int) $page, "</title>\n";
+	echo "\t<title>$magazine - $titleClean</title>\n";
+//	echo "\t<title>$magazine ", (int) $year + 1900, "</title>\n";
 	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
@@ -937,6 +944,12 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "80-02-06":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("INVASION.NAS","Download");	echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
 		break;
+	case "81-04-25":
+	case "81-04-26":
+	case "81-04-27":
+	case "81-04-28":
+		echo "\n\t<p class=\"nas-link\">";	externalLink("UFOJAGD.CAS","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		break;
 	case "81-06-20":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("OTHELLO.NAS","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
 		break;
@@ -997,6 +1010,10 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "84-04-34":
 	case "84-04-35":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("Swords.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		break;
+	case "84-04-40":
+		echo "\n\t<p class=\"nas-link\">";	externalLink("Euler.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		break;
 	}
 
 	include "$navi_footer_php";

@@ -361,8 +361,12 @@ function navi($page, $link, $first, $last, $magazine, $issue, $thumb)
 
 function RemoveEntities($s)
 {
-	$s = str_replace("&shy;", "", $s);
-	$s = str_replace("&nbsp;", "", $s);
+	$s = str_replace('&shy;', '', $s);
+	$s = str_replace('&nbsp;', '', $s);
+	$s = str_replace('<span class="nowrap">', '', $s);
+	$s = str_replace('</span>', '', $s);
+	$s = str_replace('&middot;', '-', $s);
+
 	return $s;
 }
 
@@ -517,11 +521,11 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-03-31 16:45:28 +0200 (So, 31. Mrz 2024) $ -->
+	<!-- page.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";
-	echo RemoveEntities("$magazine &ndash; $desc");
+	echo RemoveEntities("$magazine - $desc");
 	echo "</title>\n";
 	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";

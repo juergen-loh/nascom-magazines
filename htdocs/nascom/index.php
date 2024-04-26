@@ -9,7 +9,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2024-02-16 18:24:28 +0100 (Fr, 16. Feb 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -45,7 +45,7 @@ Nach dem Ende des Nascom&nbsp;Journals
 gründete die damalige Redaktion 
 <a href="journal/83/01/02/text/#article1">Anfang 1983</a>
 das 80-Bus&nbsp;Journal.  Die Zielgruppe wurde
-erweitert auf &bdquo;NASCOM, GEMINI und andere
+erweitert auf &bdquo;<span class="uppercase">Nascom, Gemini</span> und andere
 Z80-Anwender&ldquo;.  Die letzte Ausgabe erschien im
 <a href="journal/85/m3/02/text/#article1">Juni 1985</a>.
 </p>
@@ -288,7 +288,7 @@ gesammelt.
 <a href="journal/83/05/06/text/#article1">Teil 4</a><br>
 </p>
 
-<h2>Forth für den NASCOM</h2>
+<h2>Forth für den <span class="uppercase">Nascom</span></h2>
 <p>
 <a href="journal/81/08/03/text/#article1">Teil 1</a><br>
 <a href="journal/81/09/10/text/#article1">Teil 2</a> &nbsp;
@@ -349,9 +349,9 @@ gesammelt.
 <h2>Selbstbau-Plotter</h2>
 <p>
 <a href="journal/80/01/16/text/#article1">Beispiel-Computergraphik</a><br>
-<a href="journal/80/03/03/text/#article1">Ein Plotter für den NASCOM</a><br>
+<a href="journal/80/03/03/text/#article1">Ein Plotter für den <span class="uppercase">Nascom</span></a><br>
 <a href="journal/80/03/16/text/#article1">Beispiel-Computergraphik</a><br>
-<a href="journal/80/05/02/text/#article1">Software für den NASCOM-Plotter</a><br>
+<a href="journal/80/05/02/text/#article1">Software für den <span class="uppercase">Nascom</span>-Plotter</a><br>
 <a href="journal/80/06/11/text/#article1">Kompensation des mechanischen Spieles</a><br>
 <a href="journal/80/06/36/text/#article1">Listing des Plotterprogramms</a><br>
 <a href="journal/81/12/25/text/#article1">Selbstbau-Plotter</a><br>
@@ -369,9 +369,9 @@ gesammelt.
 </div>
 <div class="col-<?php echo BootstrapTier(); ?>-6">
 
-<h2>NASCOMPL</h2>
+<h2><span class="uppercase">Nascompl</span></h2>
 <p>
-<a href="journal/nascompl/"><!--#head"-->Alle NASCOMPL auf einen Blick</a><br>
+<a href="journal/nascompl/"><!--#head"-->Alle <span class="uppercase">Nascompl</span> auf einen Blick</a><br>
 </p>
 <p>
 <a href="journal/81/06/07/text/#article1">Hallo, liebe Leser</a><br>
@@ -432,7 +432,7 @@ gesammelt.
 <a href="journal/83/05/24/text/#article1">MDCR-Controller</a><br>
 </p>
 
-<h2>NASCOM Praxis</h2>
+<h2><span class="uppercase">Nascom</span> Praxis</h2>
 <p>
 <a href="journal/83/04/20/text/#article1">Teil 1</a><br>
 <a href="journal/83/05/03/text/#article1">Teil 2</a><br>

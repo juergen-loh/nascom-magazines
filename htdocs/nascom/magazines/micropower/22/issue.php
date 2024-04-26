@@ -4,5 +4,5 @@
 	$offset = 2;
 	$first = -1;
 	$last = 37;
-	$desc = '<span class="nowrap">Volume 2,</span> <span class="nowrap">Number 2 &ndash;</span> <span class="nowrap">April 1982</span>';
+	$desc = '<span class="nowrap">Volume 2 &middot;</span> <span class="nowrap">Number 2 &middot;</span> <span class="nowrap">April 1982</span>';
 ?>

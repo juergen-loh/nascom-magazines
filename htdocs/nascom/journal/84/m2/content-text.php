@@ -1,6 +1,6 @@
 <?php
 	$title="80-Bus Journal";
-	$issue="Mitteilungsblatt Nr. 2 &ndash; August 1984";
+	$issue="Mitteilungsblatt Nr. 2 &middot; August 1984";
 	$tail="/text/";
 	$path="../";
 	$tppath="../..";
