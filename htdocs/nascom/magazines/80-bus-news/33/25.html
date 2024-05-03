@@ -25,10 +25,10 @@ FCE5 FE0A               CP      LF              ; ASCII Line feed?
 FCE7 CA00FD             JP      Z,IGCHR         ; Yes - Ignore it
 FCEA FE08               CP      BKSP            ; ASCII back space?
 FCEC C2F1FC             JP      NZ,CONOT1       ; No - Test for CR
-FCEF 3E1D               LD      A,TBS           ; NASBUG back space
+FCEF 3E1D               LD      A,TBS           ; <span class="uppercase">Nasbug</span> back space
 FCF1 FE0D       CONOT1: CP      CR              ; ASCII CR?
 FCF3 C2FDFC             JP      NZ,OUTCHR       ; No - Output character
-FCF6 3E1F               LD      A,TCR           ; NASBUG CR
+FCF6 3E1F               LD      A,TCR           ; <span class="uppercase">Nasbug</span> CR
 FCF8 C3FDFC             JP      OUTCHR          ; Output it
 
 FCFB F1         NASOUT: POP     AF              ; Get character
@@ -50,10 +50,10 @@ FD10 C319FD             JP      CONVIN          ; Convert to ASCII
 
 FD13 CD4D0C     GETTIN: CALL    TIN             ; "T" input a character
 FD16 D213FD             JP      NC,GETTIN       ; No input - wait
-FD19 FE1D       CONVIN: CP      TBS             ; NASBUG back space?
+FD19 FE1D       CONVIN: CP      TBS             ; <span class="uppercase">Nasbug</span> back space?
 FD1B C220FD             JP      NZ,CNVIN1       ; No - Test for break
 FD1E 3E08               LD      A,BKSP          ; ASCII back space
-FD20 FE1C       CNVIN1: CP      TBRK            ; NASBUG break?
+FD20 FE1C       CNVIN1: CP      TBRK            ; <span class="uppercase">Nasbug</span> break?
 FD22 C227FD             JP      NZ,CNVIN2       ; No - Test for control Z
 FD25 3E03               LD      A,CTRLC         ; Control C
 FD27 FE1A       CNVIN2: CP      CTRLZ           ; ^Z?
@@ -62,7 +62,7 @@ FD2C 3E7F               LD      A,DEL           ; Delete
 FD2E FE1B       CNVIN3: CP      ESC             ; "ESC" ?
 FD30 C235FD             JP      NZ,CNVIN4       ; No - Test for CR
 FD33 3E03               LD      A,CTRLC         ; Control C
-FD35 FE1F       CNVIN4: CP      TCR             ; NASBUG CR?
+FD35 FE1F       CNVIN4: CP      TCR             ; <span class="uppercase">Nasbug</span> CR?
 FD37 C23CFD             JP      NZ,CNVIN5       ; No - Return character
 FD3A 3E0D               LD      A,CR            ; ASCII CR
 FD3C D1         CNVIN5: POP     DE
@@ -129,7 +129,7 @@ FD8E CA96FD             JP      Z,TCLS          ; "T" CLS
 FD91 3E0C               LD      A,CS            ; ASCII Clear screen
 FD93 C3D9FC             JP      CONMON          ; Output character
 
-FD96 3E1E       TCLS:   LD      A,TCS           ; NASBUG Clear screen
+FD96 3E1E       TCLS:   LD      A,TCS           ; <span class="uppercase">Nasbug</span> Clear screen
 FD98 C3D9FC             JP      CONMON          ; Output character
 </pre>
 <?php DoublePageEnd(); ?>
