@@ -87,19 +87,21 @@ durch eine Leitung mit A10 der CPU verbunden werden. (rechts neben IC
 36 bei Pin 16 ist eine Durchkontaktierung leicht zugänglich).
 </p>
 <p>
-Nun muß noch der /CS-Eingang Pin 20 über ein Gatter angeschlossen
+Nun muß noch der <?php invertedSignal("CS"); ?>-Eingang Pin 20 über ein Gatter angeschlossen
 werden, so daß er über den Bereich von 2K aktiv ist, Dazu kann man ein
 74LS00 direkt auf IC&nbsp;44 setzen. Die Versorgungsspannung und Masse (Pin
 14 und 7) werden direkt mit IC&nbsp;44 verlötet. Pin 8, 12 und 13 des 74LS00
 werden miteinander verbunden (hochbiegen und mit Draht verlöten) Pin 9
 und 10 jeweils mit Pin 8 und 11 von IC&nbsp;44 verlöten. Alle übrigen
-Beinchen kann man abzwicken. Pin 11 des Gatters wird nun mit /CS durch
+Beinchen kann man abzwicken. Pin 11 des Gatters wird nun mit
+<?php invertedSignal("CS"); ?> durch
 ein Stück Litze verbunden.
 </p>
 <p>
 Wenn man sich den T4 Monitor in ein 2716
 brennt, kann man ihn in den freien Sockel setzen. Durch einen
-Umschalter, der die Leitung von IC 7400 Pin 11 an an den /CS Eingängen
+Umschalter, der die Leitung von IC 7400 Pin 11 an an den
+<?php invertedSignal("CS"); ?> Eingängen
 der Monitoren umschaltet, kann man ohne Umschaltkarte zwischen zwei
 Betriebssystemen wählen. Ich werde es jedenfalls so machen.
 </p>

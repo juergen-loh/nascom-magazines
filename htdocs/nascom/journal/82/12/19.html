@@ -28,19 +28,20 @@ urteilen den Entwicklern der ansonsten gelungenen Karte ein kleiner
 Fehler unterlaufen zu sein. Die Leitung, die von dem 15&nbsp;k-Ohm und dem
 4,7&nbsp;k-Ohm Widerstand an Pin 25 der CPU und des CPU-Sockels auf dem
 <span class="uppercase">Nascom</span> geht, sollte besser an Pin 23 der CPU, bzw. des Sockels gehen.
-Das heißt, das zum Abschalten der Buffer-ICs das Signal /BUSACK statt
-/BUSRQ verwendet werden sollte. Begründung:
+Das heißt, das zum Abschalten der Buffer-ICs das Signal
+<?php invertedSignal("BUSACK"); ?> statt
+<?php invertedSignal("BUSRQ"); ?> verwendet werden sollte. Begründung:
 </p>
 <p>
 Wenn bei der CPU, von einem Peripheriebaustein, z.B.
 <?php externalLink("Z80 DMA","Z80-DMA",""); ?>, oder von
-einer zweiten CPU ausgelöst, das Signal /BUSRQ Low-Pegel hat, gehen
+einer zweiten CPU ausgelöst, das Signal <?php invertedSignal("BUSRQ"); ?> Low-Pegel hat, gehen
 ihre Ausgänge, bis auf wenige Ausnahmen in Tri-State Zustand über, und
 der verursachende IC hat die volle Kontrolle über den Bus. Vorher führt
 sie aber noch den gerade angefangenen Befehl zuende und gibt dann durch
-Low-Pegel auf Signal /BUSACK dem den Bus anfordernden Baustein zu
+Low-Pegel auf Signal <?php invertedSignal("BUSACK"); ?>dem den Bus anfordernden Baustein zu
 verstehen, daß er den Bus jetzt haben kann. Gerade weil das
-Anforderungssignal /BUSRQ mitten in einen Maschinenbefehl hineinplatzen
+Anforderungssignal <?php invertedSignal("BUSRQ"); ?> mitten in einen Maschinenbefehl hineinplatzen
 kann, wird es bei der Abschaltung der Buffer-ICs
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
@@ -48,7 +49,7 @@ kann, wird es bei der Abschaltung der Buffer-ICs
 wahrscheinlich Ärger geben. Wenn die CPU, um den angefangenen Befehl zu
 Ende zu führen, noch Schreib- oder Lesezyklen ausführen muß, geht die
 Sache mit bereits abgeschalteten Puffern &bdquo;voll in die Hose&ldquo;.
-Bei Abschaltung auf /BUSACK kann sowas nicht passieren, weil da die CPU
+Bei Abschaltung auf <?php invertedSignal("BUSACK"); ?>kann sowas nicht passieren, weil da die CPU
 bereits fertig ist.
 </p>
 <p>
