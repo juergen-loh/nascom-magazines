@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
+	<!-- page.php / $Date: 2024-05-05 14:37:25 +0200 (So, 05. Mai 2024) $ -->
 <?php
 	echo "\n";
 
@@ -717,6 +717,7 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			global $MultiColumn, $MultiColumnRule;
 			switch ($multi) {
 //			case 2:		$MultiColumn = 2;		$MultiColumnRule = "";			break;	// multi-column
+			case 1:		$MultiColumn = 1;		$MultiColumnRule = "";			break;	// multi-column vertical
 			case 21:	$MultiColumn = 2;		$MultiColumnRule = "1px solid";	break;	// multi-column mit 1px mittellinie
 			case 22:	$MultiColumn = 2;		$MultiColumnRule = "2px solid";	break;	// multi-column mit 2px mittellinie
 			case 32:	$MultiColumn = 3;		$MultiColumnRule = "2px solid";	break;	// multi-column mit 2px mittellinie
@@ -748,7 +749,11 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo " Spalten: Start -->";
 			global $MultiColumn;
 			setMultiColumn($multi);
-			if ($cols == $MultiColumn) {
+			if ($MultiColumn == 1) {
+				echo '<div><div';
+				if ($class != "") echo "class=\"$class\"";
+				echo '>';
+			} else if ($cols == $MultiColumn) {
 				startMultiColumn($cols, $class);
 			} else {
 				echo '<div class="row';
@@ -766,7 +771,11 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo " Spalten im Blocksatz: Start -->";
 			global $MultiColumn;
 			setMultiColumn($multi);
-			if ($cols == $MultiColumn) {
+			if ($MultiColumn == 1) {
+				echo '<div><div class="justify';
+				if ($class != "") echo " $class";
+				echo '">';
+			} else if ($cols == $MultiColumn) {
 				$c = "justify";
 				if ($class != "") $c .= " $class";
 				startMultiColumn($cols, $c);
@@ -783,7 +792,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 		{
 			echo "<!-- $cols Spalten: Spaltenwechsel -->";
 			global $MultiColumn;
-			if ($cols == $MultiColumn) {
+			if ($MultiColumn == 1) {
+				echo "<br>\n";
+			} else if ($cols == $MultiColumn) {
 				// nix
 			} else {
 				echo "$p1";
@@ -798,7 +809,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 		{
 			echo "<!-- $cols Spalten im Blocksatz: Spaltenwechsel -->";
 			global $MultiColumn;
-			if ($cols == $MultiColumn) {
+			if ($MultiColumn == 1) {
+				echo "<br>\n";
+			} else if ($cols == $MultiColumn) {
 				// nix
 			} else {
 				echo "$p1";
@@ -834,8 +847,8 @@ function columnStart($column, $multi = "", $context = "", $class="")
 	case 23:	columnsStart(3/2, $multi, $context, $class);	break;	//	 2/3
 	case 4:		columnsStart(4);								break;
 	case 34:	columnsStart(4/3);								break;	//	 3/4
-	case 5:		columnsStart(6);								break;
-	case 6:		columnsStart(6);								break;
+	case 5:		columnsStart(6, $multi);						break;
+	case 6:		columnsStart(6, $multi);						break;
 	case 26:	columnsStart(6/2);								break;	//	 2/6
 	case 56:	columnsStart(6/5);								break;	//	 5/6
 	case 12:	columnsStart(12);								break;
