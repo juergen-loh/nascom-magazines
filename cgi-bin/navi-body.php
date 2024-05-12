@@ -1165,6 +1165,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "EF9366":					$url = "https://www.datasheetarchive.com/?q=ef9366";							break;
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
 	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
+	case "ELCOMP":					$url = "https://www.kultboy.com/ELCOMP-Zeitschrift/347/";						break;
+	case "ELCOMP 2/81":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=7137";	break;
 	case "Elektor, April 1977, Seite 36":		$url = "https://www.elektormagazine.de/magazine/elektor-197704";	break;
 	case "Elektor, April 1982, Seite 30":		$url = "https://www.elektormagazine.de/magazine/elektor-198204";	break;
 	case "Elektor, Dezember 1981, Seite 61":	$url = "https://www.elektormagazine.de/magazine/elektor-198112";	break;
@@ -1645,4 +1647,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-05-12 21:36:53 +0200 (So, 12. Mai 2024) $ -->
