@@ -1164,23 +1164,23 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "ECB":						$url = "https://$lang.wikipedia.org/wiki/Europe_Card_Bus";	$newText = "Einfach-Europaformat-Computer-Baugruppe";	break;
 	case "EF9366":					$url = "https://www.datasheetarchive.com/?q=ef9366";							break;
 	case "Einplatinencomputer":		$url = "https://$lang.wikipedia.org/wiki/Einplatinencomputer";					break;
-	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
 	case "ELCOMP":					$url = "https://www.kultboy.com/ELCOMP-Zeitschrift/347/";						break;
 	case "ELCOMP 6/79":				$url = "https://www.kultboy.com/magazin/7123/";									break;
 	case "ELCOMP 2/81":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=7137";	break;
 	case "ELCOMP 2/81, Seite 20":	$url = "https://archive.org/details/elcomp_1981_02/page/20/mode/2up";			break;
 	case "ELCOMP 4/81":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=7139";	break;
 	case "ELCOMP 4/81, Seite 8":	$url = "https://archive.org/details/elcomp_1981_04/page/8/mode/2up";			break;
-	case "Elektor, April 1977, Seite 36":		$url = "https://www.elektormagazine.de/magazine/elektor-197704";	break;
-	case "Elektor, April 1982, Seite 30":		$url = "https://www.elektormagazine.de/magazine/elektor-198204";	break;
-	case "Elektor, Dezember 1981, Seite 61":	$url = "https://www.elektormagazine.de/magazine/elektor-198112";	break;
-	case "Elektor, Februar 1978, Seite 20":		$url = "https://www.elektormagazine.de/magazine/elektor-197802";	break;
-	case "Elektor, Januar 1979, Seite 48":		$url = "https://www.elektormagazine.de/magazine/elektor-197901";	break;
-	case "Elektor, Mai 1982, Seite 45":			$url = "https://www.elektormagazine.de/magazine/elektor-198205";	break;
-	case "Elektor, Mai 1983, Seite 34":			$url = "https://www.elektormagazine.de/magazine/elektor-198305";	break;
-	case "Elektor, November 1977, Seite 41":	$url = "https://www.elektormagazine.de/magazine/elektor-197711";	break;
-	case "Elektor, Oktober 1982, Seite 66":		$url = "https://www.elektormagazine.de/magazine/elektor-198210";	break;
-	case "Elektor, September 1980, Seite 26":	$url = "https://www.elektormagazine.de/magazine/elektor-198009";	break;
+	case "Elektor":					$url = "https://www.elektormagazine.de/";										break;
+	case "Elektor, April 1977, Seite 36":		$url = "https://www.elektormagazine.de/magazine/elektor-197704/56183";	break;
+	case "Elektor, April 1982, Seite 30":		$url = "https://www.elektormagazine.de/magazine/elektor-198204/46459";	break;
+	case "Elektor, Dezember 1981, Seite 61":	$url = "https://www.elektormagazine.de/magazine/elektor-198112/46415";	break;
+	case "Elektor, Februar 1978, Seite 20":		$url = "https://www.elektormagazine.de/magazine/elektor-197802/56371";	break;
+	case "Elektor, Januar 1979, Seite 48":		$url = "https://www.elektormagazine.de/magazine/elektor-197901/56575";	break;
+	case "Elektor, Mai 1982, Seite 45":			$url = "https://www.elektormagazine.de/magazine/elektor-198205/46477";	break;
+	case "Elektor, Mai 1983, Seite 34":			$url = "https://www.elektormagazine.de/magazine/elektor-198305/46682";	break;
+	case "Elektor, November 1977, Seite 41":	$url = "https://www.elektormagazine.de/magazine/elektor-197711/56337";	break;
+	case "Elektor, Oktober 1982, Seite 66":		$url = "https://www.elektormagazine.de/magazine/elektor-198210/46621";	break;
+	case "Elektor, September 1980, Seite 26":	$url = "https://www.elektormagazine.de/magazine/elektor-198009/46145";	break;
 	case "Elektronik":				$url = "https://www.weka-fachmedien.de/medien/elektronik/";						break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
@@ -1651,4 +1651,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-05-14 19:57:01 +0200 (Di, 14. Mai 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-05-19 12:22:48 +0200 (So, 19. Mai 2024) $ -->
