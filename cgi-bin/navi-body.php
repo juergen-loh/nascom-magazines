@@ -1156,8 +1156,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "DL5EBP":					$url = "https://hamcall.net/call/DL5EBP";										break;
 	case "DL6UP":					$url = "? https://www.qrzcq.com/call/DL6UP";									break;
 	case "Dr. Dobb's Journal":								$url = "https://archive.org/details/dr_dobbs_journal";									break;
-	case "Dr. Dobb's Journal, Volume 3, ​Issue 2, ​Page 10":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n67/mode/2up";			break;
-	case "Dr. Dobb's Journal, Volume 3, ​Issue 5, ​Page 21":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";		break;
+	case "Dr. Dobb's Journal, Volume 3, Issue 2, Page 10":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n67/mode/2up";			break;
+	case "Dr. Dobb's Journal, Volume 3, Issue 5, Page 21":	$url = "https://archive.org/details/dr_dobbs_journal_vol_03/page/n215/mode/2up";		break;
 	case "Dr. Dobb's Journal, Volume 4, Issue 10, Page 33":	$url = "https://archive.org/details/dr_dobbs_journal_vol_04_201803/page/n447/mode/2up";	break;
 	case "Dr. Dobb's Journal, Volume 8, Issue 9, Page 120":	$url = "https://archive.org/details/dr_dobbs_journal_vol_08/page/550/mode/2up";			break;
 	case "ECB 85":					$url = "https://$lang.wikipedia.org/wiki/ECB85";								break;
@@ -1651,4 +1651,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-05-19 12:22:48 +0200 (So, 19. Mai 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-05-25 19:39:06 +0200 (Sa, 25. Mai 2024) $ -->
