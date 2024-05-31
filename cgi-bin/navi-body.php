@@ -1249,6 +1249,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Henelec":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm805.htm";				break;
 	case "HiSOFT":					$url = "https://hisoft.co.uk/gp/about-hisoft/1/pgid/4/";						break;
 	case "HM7611":					$url = "https://www.retrotechnology.com/restore/hm7602.pdf";					break;
+	case "Hobbytronic":				$url = "https://$lang.wikipedia.org/wiki/Hobbytronic";							break;
 	case "HOCO Floppy Controller":	$url = "https://forum.classic-computing.de/forum/index.php?thread/11561-hoco-floppy-controller/";	break;
 	case "HSA-88B":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm847.htm";				break;
 	case "HTML":					$url = "https://$lang.selfhtml.org/";											break;
@@ -1651,4 +1652,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-05-25 19:39:06 +0200 (Sa, 25. Mai 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-05-31 17:27:27 +0200 (Fr, 31. Mai 2024) $ -->
