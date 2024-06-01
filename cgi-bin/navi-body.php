@@ -1091,7 +1091,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "2716":					$url = "https://ece-classes.usc.edu/ee459/library/datasheets/2716.pdf";			break;
 	case "2732":					$url = "https://www.ndr-nkc.de/download/datenbl/2732.pdf";						break;
 	case "2732A":					$url = "https://www.futurlec.com/Memory/2732_Datasheet.shtml";					break;
-	case "2764":					$url = "http://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";					break;
+	case "2764":					$url = "https://dfs.uib.es/GTE/staff/jfont/InstrETT/M2764a.pdf";				break;
 	case "2N3819":					$url = "https://www.farnell.com/datasheets/39764.pdf";							break;
 	case "4116":					$url = "https://console5.com/techwiki/images/8/85/MK4116.pdf";					break;
 	case "4164":					$url = "https://www.mikrocontroller.net/attachment/4092/HYB4164.pdf";			break;
@@ -1438,8 +1438,8 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "TMS5100":					$url = "https://www.datasheetarchive.com/?q=tms5100";							break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/?q=tms9929";							break;
 	case "Triumph-Adler P4":		$url = "https://forum.classic-computing.de/forum/index.php?thread/16182-alphatronic-p4/";	break;
-	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
-	case "TRS80 Model III":			$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
+	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/Tandy_TRS-80_Model_1";					break;
+	case "TRS-80 Model III":		$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case "UCSD Pascal":				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
 	case "UFOJAGD.CAS":				$url = "http://www.nascomhomepage.com/zeap/UFOJAGD.CAS";						break;
 	case "Video Genie":				$url = "https://en.wikipedia.org/wiki/Video_Genie";								break;
@@ -1652,4 +1652,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-05-31 17:27:27 +0200 (Fr, 31. Mai 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-06-01 19:31:38 +0200 (Sa, 01. Jun 2024) $ -->
