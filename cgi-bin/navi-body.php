@@ -1438,7 +1438,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "TMS5100":					$url = "https://www.datasheetarchive.com/?q=tms5100";							break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/?q=tms9929";							break;
 	case "Triumph-Adler P4":		$url = "https://forum.classic-computing.de/forum/index.php?thread/16182-alphatronic-p4/";	break;
-	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/Tandy_TRS-80_Model_1";					break;
+	case "TRS-80":					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
 	case "TRS-80 Model III":		$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case "UCSD Pascal":				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
 	case "UFOJAGD.CAS":				$url = "http://www.nascomhomepage.com/zeap/UFOJAGD.CAS";						break;
@@ -1652,4 +1652,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-06-01 19:31:38 +0200 (Sa, 01. Jun 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-06-09 14:52:53 +0200 (So, 09. Jun 2024) $ -->
