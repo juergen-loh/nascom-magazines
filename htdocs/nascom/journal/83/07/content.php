@@ -158,7 +158,7 @@
 	trJournal($path, $tail, $magazine
 	,	"EMDOS-Floppyverwaltung"
 	,	"Helmut Emmelmann"
-	,	""
+	,	"Assembler"
 	,	$volume, $issue
 	,	41
 	);

@@ -85,7 +85,7 @@
 	trJournal($path, $tail, $magazine
 	,	"EMDOS Anpassung"
 	,	"Helmut Emmelmann"
-	,	""
+	,	"Assembler"
 	,	$volume, $issue
 	,	19
 	);
