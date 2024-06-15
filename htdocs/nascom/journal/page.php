@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-05-05 14:37:25 +0200 (So, 05. Mai 2024) $ -->
+	<!-- page.php / $Date: 2024-06-15 15:13:59 +0200 (Sa, 15. Jun 2024) $ -->
 <?php
 	echo "\n";
 
@@ -1017,6 +1017,18 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "83-07-21":
 	case "83-07-22":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("Tforth.nas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		break;
+	case "83-07-41":
+	case "83-07-42":
+	case "83-11-14":
+	case "83-11-15":
+		echo "\n\t<p class=\"nas-link\">";
+		externalLink("Emdos.cas","Download");
+		echo "\tdes Programms von der ";
+		externalLink("Nascom Home Page");
+		echo "\tund als <a href=\"";
+		if ($link == "text") echo "../";
+		echo "../../../files/Emdos.asm\">Quelltext</a>.</p>\n";
 		break;
 	case "84-04-32":
 	case "84-04-33":

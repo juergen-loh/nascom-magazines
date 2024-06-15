@@ -1184,6 +1184,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Elektronik":				$url = "https://www.weka-fachmedien.de/medien/elektronik/";						break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
+	case "Emdos.cas":				$url = "http://www.nascomhomepage.com/cpm/Emdos.cas";							break;
 	case "EMUF":					$url = "https://$lang.wikipedia.org/wiki/EMUF";									break;
 	case "Epson MX-80F/T":			$url = "https://$lang.wikipedia.org/wiki/Datei:EpsonMX80FT_02_mod02_res.jpg";	break;
 	case "Euler.cas":				$url = "http://www.nascomhomepage.com/zeap/Euler.cas";							break;
