@@ -1,19 +1,64 @@
 <?php columnStart(1); ?>
-<h4>
-UFO-JAGD
-</h4>
-<p>
-3
-</p>
-<?php imageCenter($imagepath, $year, $issue, $page, "Image-27-1.jpeg"); ?>
-
 <pre>
-    00147 Statements Assembled
-    38161 Bytes frei
-    Keine Fehler erkannt
+ UFO-JAGD
+ 3
+
+   0D58     E6 0A                       AND     0AH
+   0D5A     F6 04                       OR      04H
+   0D5C     32 C0 0C                    LD      (GESCHA+1),A
+   0D5F     11 39 30                    LD      DE,3039H
+   0D62     7E                          LD      A,(HL)
+   0D63     34                          INC     (HL)
+   0D64     BB                          CMP     E
+   0D65     C0                          RET     NZ
+   0D66     72                          LD      (HL),D
+   0D67     2B                          DEC     HL
+   0D68     34                          INC     (HL)
+   0D69     C9                          RET
+                                *
+   0D6A     06 03               BLITZ   LD      B,03H
+   0D6C     16 2A               BLITZ1  LD      D,2AH
+   0D6E     CD 46 0D                    CALL    CLSCR0
+   0D71     CD 7D 0D                    CALL    WAIT
+   0D74     CD 44 0D                    CALL    CLSCR
+   0D77     CD 7D 0D                    CALL    WAIT
+   0D7A     10 F0                       DJNZ    BLITZ1
+   0D7C     C9                          RET
+                                *
+   0D7D     C5                  WAIT    PUSH    BC
+   0D7E     06 06                       LD      B,06H
+   0D80     FF FF               WAIT1   DW      DELAY
+   0D82     10 FC                       DJNZ    WAIT1
+   0D84     C1                          POP     BC
+   0D85     C9                          RET
+                                *
+   0D86     55 46 4F 2D 4A 41 47UFOTXT  DB      'UFO-JAGD     '
+            44 20 20 20 20 20   
+   0D93     30 31 2E 20 55 46 4F        DB      '01. UFO    '
+            20 20 20 20        
+   0D9E     41 62 73 63 68 75 65        DB      'Abschuesse: 00 '
+            73 73 65 3A 20 30 30   
+            20              
+   0DAD     00                          END     UFOJGD
+
+
+00147 Statements Assembled
+38161 Bytes frei
+Keine Fehler erkannt
 </pre>
 
 <br>
 
-<?php imageCenter($imagepath, $year, $issue, $page, "Image-27-2.jpeg"); ?>
+<pre>
+      BLITZ     0D6A       BLITZ1    0D6C     CLSCR     0D44
+      CLSCR0    0D46       CLSCR1    0D49     CLSCR2    0D52
+      CS        000C       DELAY     FFFF     GESCHA    0CBF
+      GESCHW    000F       IN        62DF     PRS       00EF
+      RIN       00CF       ROUT      00F7     UFOJGD    0C80
+      UFOJGD1   0C8D       UFOJGD2   0CA0     UFOJGD3   0CAB
+      UFOJGD4   0CBB       UFOJGD5   0CF4     UFOJGD6   0D00
+      UFOJGD7   0D12       UFOJGD8   0D17     UFOJGD9   0D27
+      UFOTXT    0D86       WAIT      0D7D     WAIT1     0D80
+      ZAEHL     0D56
+</pre>
 <?php columnEnd(1); ?>

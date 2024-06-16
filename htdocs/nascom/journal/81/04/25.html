@@ -20,21 +20,61 @@ Taste &bdquo;G&ldquo; begonnen werden.<br><br>
 <?php columnChange(2); ?>
 <?php columnEnd(2); ?>
 
-<?php columnStart(2); ?>
-<?php columnChange(2); ?>
-
-<pre class="donthyphenate">
-* <span class="uppercase">Gerhard Baier</span>
-* ___ Erlangen
-* ______-_______-___.__
-*
-* ------------------------------------
-</pre>
-
-<?php columnEnd(2); ?>
 <?php columnStart(1); ?>
-
-<p>
-<?php imageinsert($imagepath, $year, $issue, $page, "Image-25-1.jpeg"); ?>
-</p>
+<pre class="donthyphenate">
+                            * GERHARD BAIER
+                            * ___ ERLANGEN
+                            * ______-_______-___.__
+                            *
+                            * ------------------------------------
+   FFFF                         DELAY   EQU     0FFFFH
+   00EF                         PRS     EQU     0EFH
+   000F                         GESCHW  EQU     0FH
+   62DF                         IN      EQU     62DFH
+   00CF                         RIN     EQU     0CFH
+   00F7                         ROUT    EQU     0F7H
+   000C                         CS      EQU     0CH
+   0C80                         UFOJGD  ORG     0C80H
+   0C80     EF 0C                       DB      PRS,CS
+   0C82     53 54 41 52 54 20 28        DB      'START (G):'
+            47 29 3A           
+   0C8C     00                          DB      00H
+   0C8D     CF                  UFOJGD1 DB      RIN
+   0C8E     FE 47                       CMP     47H
+   0C90     20 FB                       JR      NZ,UFOJGD1
+   0C92     EF 0C 00                    DB      PRS,CS,00H
+   0C95     21 86 0D                    LD      HL,UFOTXT
+   0C98     11 CA 0B                    LD      DE,0BCAH
+   0C9B     01 27 00                    LD      BC,0027H
+   0C9E     ED B0                       LDIR
+   0CA0     01 00 01            UFOJGD2 LD      BC,0100H
+   0CA3     D9                          EXX
+   0CA4     01 3D 01                    LD      BC,013DH
+   0CA7     DD 21 8A 08                 LD      IX,088AH
+   0CAB     FD 21 AA 0B         UFOJGD3 LD      IY,0BAAH
+   0CAF     FD 36 FF 03                 LD      (IY-01H),03H
+   0CB3     FD 36 00 5E                 LD      (IY+00H),5EH
+   0CB7     FD 36 01 4C                 LD      (IY+01H),4CH
+   0CBB     FF FF               UFOJGD4 DW      DELAY
+   0CBD     10 35                       DJNZ    UFOJGD5
+   0CBF     06 0F               GESCHA  LD      B,GESCHW
+   0CC1     DD 36 FB 20                 LD      (IX-05H),20H
+   0CC5     DD 36 FC 17                 LD      (IX-04H),17H
+   0CC9     DD 36 FD 05                 LD      (IX-03H),05H
+   0CCD     DD 36 FE 05                 LD      (IX-02H),05H
+   0CD1     DD 36 FF 05                 LD      (IX-01H),05H
+   0CD5     DD 36 00 3E                 LD      (IX+00H),3EH
+   0CD9     DD 23                       INC     IX
+   0CDB     0D                          DEC     C
+   0CDC     3E 00                       LD      A,00H
+   0CDE     B9                          CMP     C
+   0CDF     20 13                       JR      NZ,UFOJGD5
+   0CE1     0E 3D                       LD      C,3DH
+   0CE3     3E 32                       LD      A,32H
+   0CE5     21 D7 0B                    LD      HL,0BD7H
+   0CE8     BE                          CMP     (HL)
+   0CE9     CA 8D 0C                    JMP     Z,UFOJGD1
+   0CEC     23                          INC     HL
+   0CED     CD 56 0D                    CALL    ZAEHL
+</pre>
 <?php columnEnd(1); ?>

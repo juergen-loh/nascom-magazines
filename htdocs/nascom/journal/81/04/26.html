@@ -1,11 +1,64 @@
 <?php columnStart(1); ?>
-<h4>
-UFO-JAGD
-</h4>
-<p>
-2
-</p>
-<p>
-<?php imageinsert($imagepath, $year, $issue, $page, "Image-26-1.jpeg"); ?>
-</p>
+<pre>
+ UFO-JAGD
+ 2
+
+   0CF0     DD 21 8A 08                 LD      IX,088AH
+   0CF4     D9                  UFOJGD5 EXX
+   0CF5     3E 00                       LD      A,00H
+   0CF7     B9                          CMP     C
+   0CF8     20 06                       JR      NZ,UFOJGD6
+   0CFA     DF 62                       DW      IN
+   0CFC     30 29                       JR      NC,UFOJGD9
+   0CFE     0E 0F                       LD      C,0FH
+   0D00     10 25               UFOJGD6 DJNZ    UFOJGD9
+   0D02     FD 36 00 20                 LD      (IY+00H),20H
+   0D06     0D                          DEC     C
+   0D07     3E 00                       LD      A,00H
+   0D09     B9                          CMP     C
+   0D0A     20 06                       JR      NZ,UFOJGD7
+   0D0C     04                          INC     B
+   0D0D     0E 00                       LD      C,00H
+   0D0F     D9                          EXX
+   0D10     18 99                       JR      UFOJGD3
+   0D12     06 06               UFOJGD7 LD      B,06H
+   0D14     C5                          PUSH    BC
+   0D15     06 40                       LD      B,40H
+   0D17     FD 2B               UFOJGD8 DEC     IY
+   0D19     10 FC                       DJNZ    UFOJGD8
+   0D1B     C1                          POP     BC
+   0D1C     FD 7E 00                    LD      A,(IY+00H)
+   0D1F     FE 20                       CMP     20H
+   0D21     20 08                       JR      NZ,$+0AH
+   0D23     FD 36 00 5E                 LD      (IY+00H),5EH
+   0D27     D9                  UFOJGD9 EXX
+   0D28     C3 BB 0C                    JMP     UFOJGD4
+   0D2B     21 EF 0B                    LD      HL,0BEF
+   0D2E     CD 56 0D                    CALL    ZAEHL
+   0D31     CD 6A 0D                    CALL    BLITZ
+   0D34     3E 32                       LD      A,32H
+   0D36     21 D7 0B                    LD      HL,0BD7H
+   0D39     BE                          CMP     (HL)
+   0D3A     CA 8D 0C                    JMP     Z,UFOJGD1
+   0D3D     23                          INC     HL
+   0D3E     CD 56 0D                    CALL    ZAEHL
+   0D41     C3 A0 0C                    JMP     UFOJGD2
+                                *
+                                *
+                                * UNTERPROGRAMME
+                                *
+   0D44     16 20               CLSCR   LD      D,20H
+   0D46     21 BA 0B            CLSCR0  LD      HL,0BBAH
+   0D49     7D                  CLSCR1  LD      A,L
+   0D4A     FE 0A                       CMP     0AH
+   0D4C     20 04                       JR      NZ,CLSCR2
+   0D4E     7C                          LD      A,H
+   0D4F     FE 08                       CMP     08H
+   0D51     C8                          RET     Z
+   0D52     2B                  CLSCR2  DEC     HL
+   0D53     72                          LD      (HL),D
+   0D54     18 F3                       JR      CLSCR1
+                                *
+   0D56     ED 5F               ZAEHL   LD      A,R
+</pre>
 <?php columnEnd(1); ?>

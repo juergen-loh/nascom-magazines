@@ -1,141 +1,143 @@
-0005 ; *** U F O - J A G D ***
-0010 GESCHW EQU  #0F
-0020 RDEL   EQU  #38
-0030 IN     EQU  #62
-0040 PRS    EQU  #28
-0050 RIN    EQU  #08
-0060 ROUT   EQU  #F7
-0070 CS     EQU  #0C
-0080              SKIP
-0090 UFOJGD ORG  #0C80
-0095        ENT
-0100        RST  PRS
-0105        DEFB CS
-0110        DEFM /START (G):/
-0120        DEFB 0
-0130 UFOJ1  RST  RIN
-0140        CP   #47
-0150        JR   NZ,UFOJ1
-0160        RST  PRS
-0170        DEFB CS,#00
-0180        LD   HL,UFOTXT
-0190        LD   DE,#0BCA
-0200        LD   BC,#0027
-0210        LDIR
-0220 UFOJ2  LD   BC,#0100
-0230        EXX
-0240        LD   BC,#013D
-0250        LD   IX,#088A
-0260 UFOJ3  LD   IY,#0BAA
-0270        LD   (IY-1),#03
-0280        LD   (IY+0),#5E
-0290        LD   (IY+1),#4C
-0300 UFOJ4  RST  RDEL
-0305        RST  RDEL
-0310        DJNZ UFOJ5
-0320 GESCHA LD   B,GESCHW
-0330        LD   (IX-5),#20
-0340        LD   (IX-4),#17
-0350        LD   (IX-3),#05
-0360        LD   (IX-2),#05
-0370        LD   (IX-1),#05
-0380        LD   (IX+0),#3E
-0390        INC  IX
-0400        DEC  C
-0410        XOR  A
-0420        CP   C
-0430        JR   NZ,UFOJ5
-0440        LD   C,#3D
-0450        LD   A,#32
-0460        LD   HL,#0BD7
-0470        CP   (HL)
-0480        JR   Z,UFOJ1
-0490        INC  HL
-0500        CALL ZAEHL
-0510        LD   IX,#088A
-0520 UFOJ5  EXX
-0530        XOR  A
-0540        CP   C
-0550        JR   NZ,UFOJ6
-0560        SCAL IN
-0570        JR   NC,UFOJ9
-0580        LD   C,#0F
-0590 UFOJ6  DJNZ UFOJ9
-0600        LD   (IY+0),#20
-0610        DEC  C
-0620        XOR  A
-0630        CP   C
-0640        JR   NZ,UFOJ7
-0650        INC  B
-0660        LD   C,0
-0670        EXX
-0675        JR   UFOJ3
-0680 UFOJ7  LD   B,#06
-0690        PUSH BC
-0700        LD   B,#40
-0710 UFOJ8  DEC  IY
-0720        DJNZ UFOJ8
-0730        POP  BC
-0740        LD   A,(IY+0)
-0750        CP   #20
-0760        JR   NZ,$+#0A
-0770        LD   (IY+0),#5E
-0780 UFOJ9  EXX
-0790        JP   UFOJ4
-0800        LD   HL,#0BEF
-0810        CALL ZAEHL
-0820        CALL BLITZ
-0830        LD   A,#32
-0840        LD   HL,#0BD7
-0850        CP   (HL)
-0860        JP   Z,UFOJ1
-0870        INC  HL
-0880        CALL ZAEHL
-0890        JP   UFOJ2
-0900        SKIP
-0910 CLSCR  LD   D,#20
-0920 CLSCR0 LD   HL,#0BBA
-0930 CLSCR1 LD   A,L
-0940        CP   #0A
-0950        JR   NZ,CLSCR2
-0960        LD   A,H
-0970        CP   #08
-0980        RET  Z
-0990 CLSCR2 DEC  HL
-1000        LD   (HL),D
-1010        JR   CLSCR1
-1020        SKIP
-1030 ZAEHL  LD   A,R
-1040        AND  #0A
-1050        OR   #04
-1060        LD   (GESCHA+1),A
-1070        LD   DE,#3039
-1080        LD   A,(HL)
-1090        INC  (HL)
-1100        CP   E
-1110        RET  NZ
-1120        LD   (HL),D
-1130        DEC  HL
-1140        INC  (HL)
-1150        RET
-1160        SKIP
-1170 BLITZ  LD   B,#03
-1180 BLITZ1 LD   D,#2A
-1190        CALL CLSCR0
-1200        CALL WAIT
-1210        CALL CLSCR
-1220        CALL WAIT
-1230        DJNZ BLITZ1
-1240        RET
-1250        SKIP
-1260 WAIT   PUSH BC
-1270        LD   B,#06
-1280 WAIT1  RST  RDEL
-1285        RST  RDEL
-1290        DJNZ WAIT1
-1300        POP  BC
-1310        RET
-1320 UFOTXT DEFM /UFO-JAGD     /
-1330        DEFM /01. UFO    /
-1340        DEFM /Abschuesse: 00 /
-1350        DEFB 0
+* GERHARD BAIER
+* ___ ERLANGEN
+* ______-_______-___.__
+*
+* ------------------------------------
+DELAY   EQU     0FFFFH
+PRS     EQU     0EFH
+GESCHW  EQU     0FH
+IN      EQU     62DFH
+RIN     EQU     0CFH
+ROUT    EQU     0F7H
+CS      EQU     0CH
+UFOJGD  ORG     0C80H
+        DB      PRS,CS
+        DB      'START (G):'
+        DB      00H
+UFOJGD1 DB      RIN
+        CMP     47H
+        JR      NZ,UFOJGD1
+        DB      PRS,CS,00H
+        LD      HL,UFOTXT
+        LD      DE,0BCAH
+        LD      BC,0027H
+        LDIR
+UFOJGD2 LD      BC,0100H
+        EXX
+        LD      BC,013DH
+        LD      IX,088AH
+UFOJGD3 LD      IY,0BAAH
+        LD      (IY-01H),03H
+        LD      (IY+00H),5EH
+        LD      (IY+01H),4CH
+UFOJGD4 DW      DELAY
+        DJNZ    UFOJGD5
+GESCHA  LD      B,GESCHW
+        LD      (IX-05H),20H
+        LD      (IX-04H),17H
+        LD      (IX-03H),05H
+        LD      (IX-02H),05H
+        LD      (IX-01H),05H
+        LD      (IX+00H),3EH
+        INC     IX
+        DEC     C
+        LD      A,00H
+        CMP     C
+        JR      NZ,UFOJGD5
+        LD      C,3DH
+        LD      A,32H
+        LD      HL,0BD7H
+        CMP     (HL)
+        JMP     Z,UFOJGD1
+        INC     HL
+        CALL    ZAEHL
+        LD      IX,088AH
+UFOJGD5 EXX
+        LD      A,00H
+        CMP     C
+        JR      NZ,UFOJGD6
+        DW      IN
+        JR      NC,UFOJGD9
+        LD      C,0FH
+UFOJGD6 DJNZ    UFOJGD9
+        LD      (IY+00H),20H
+        DEC     C
+        LD      A,00H
+        CMP     C
+        JR      NZ,UFOJGD7
+        INC     B
+        LD      C,00H
+        EXX
+        JR      UFOJGD3
+UFOJGD7 LD      B,06H
+        PUSH    BC
+        LD      B,40H
+UFOJGD8 DEC     IY
+        DJNZ    UFOJGD8
+        POP     BC
+        LD      A,(IY+00H)
+        CMP     20H
+        JR      NZ,$+0AH
+        LD      (IY+00H),5EH
+UFOJGD9 EXX
+        JMP     UFOJGD4
+        LD      HL,0BEF
+        CALL    ZAEHL
+        CALL    BLITZ
+        LD      A,32H
+        LD      HL,0BD7H
+        CMP     (HL)
+        JMP     Z,UFOJGD1
+        INC     HL
+        CALL    ZAEHL
+        JMP     UFOJGD2
+*
+*
+* UNTERPROGRAMME
+*
+CLSCR   LD      D,20H
+CLSCR0  LD      HL,0BBAH
+CLSCR1  LD      A,L
+        CMP     0AH
+        JR      NZ,CLSCR2
+        LD      A,H
+        CMP     08H
+        RET     Z
+CLSCR2  DEC     HL
+        LD      (HL),D
+        JR      CLSCR1
+*
+ZAEHL   LD      A,R
+        AND     0AH
+        OR      04H
+        LD      (GESCHA+1),A
+        LD      DE,3039H
+        LD      A,(HL)
+        INC     (HL)
+        CMP     E
+        RET     NZ
+        LD      (HL),D
+        DEC     HL
+        INC     (HL)
+        RET
+*
+BLITZ   LD      B,03H
+BLITZ1  LD      D,2AH
+        CALL    CLSCR0
+        CALL    WAIT
+        CALL    CLSCR
+        CALL    WAIT
+        DJNZ    BLITZ1
+        RET
+*
+WAIT    PUSH    BC
+        LD      B,06H
+WAIT1   DW      DELAY
+        DJNZ    WAIT1
+        POP     BC
+        RET
+*
+UFOTXT  DB      'UFO-JAGD     '
+        DB      '01. UFO    '
+        DB      'Abschuesse: 00 '
+        END     UFOJGD

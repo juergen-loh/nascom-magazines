@@ -4,9 +4,9 @@
 0020 ;bis zu 501 Stellen Genauigkeit
 0030 ;(c) by Joerg Wittich, Donaueschingen
 0040 ;
-0050 ANZ    EQU 240     ;Anzahl der Glieder (max. 256)
-0060 STELLE EQU 155     ;Nachkommastellen/3
-0070 LNG    EQU 200     ;Laenge der Var.(>1.25*STELLE)
+0050 ANZ    EQU 240 ;Anzahl der Glieder (max. 256)
+0060 STELLE EQU 155 ;Nachkommastellen/3
+0070 LNG    EQU 200 ;Laenge der Var.(>1.25*STELLE)
 0080 ;
 0090        ORG 1000H
 0100        CALL CLEAR
@@ -14,23 +14,23 @@
 0120        DEFM "Calculating..."
 0130        DEFB 0
 0140        LD A,1
-0150        LD (FAK),A  ;FAK:=1
-0160        LD (SUM),A  ;SUM:=1
-0170        LD B,ANZ    ;FOR I:=1 TO ANZ DO
+0150        LD (FAK),A ;FAK:=1
+0160        LD (SUM),A ;SUM:=1
+0170        LD B,ANZ ;FOR I:=1 TO ANZ DO
 0180 LOOP   LD A,ANZ+1
 0190        SUB B
-0200        CALL DIV    ;FAK:=FAK/I
-0210        CALL ADD    ;SUM:=SUM+FAK
+0200        CALL DIV ;FAK:=FAK/I
+0210        CALL ADD ;SUM:=SUM+FAK
 0220        DJNZ LOOP
-0230        CALL PRINT  ;WRITE(SUM)
+0230        CALL PRINT ;WRITE(SUM)
 0240        SCAL 5BH
 0250 ;
-0260 CLEAR  LD HL,FAK   ;Variablen loeschen
+0260 CLEAR  LD HL,FAK ;Variablen loeschen
 0270        LD DE,FAK+1
 0280        LD BC,LNG+LNG-1
 0290        LD (HL),0
 0300        LDIR
-0310        LD A,0CH    ;Schirm loeschen
+0310        LD A,0CH ;Schirm loeschen
 0320        RST 30H
 0330        RET
 0340 ;
@@ -47,7 +47,7 @@
 0450        POP BC
 0460        RET
 0470 ;
-0480 MUL10  PUSH BC     ;Multiplikation mit 10
+0480 MUL10  PUSH BC ;Multiplikation mit 10
 0490        LD HL,PPUF+LNG
 0500        LD BC,LNG
 0510 M1     DEC HL
@@ -56,12 +56,12 @@
 0540        LD H,0
 0550        LD D,H
 0560        LD L,E
-0570        ADD HL,HL   ;*2
-0580        ADD HL,HL   ;*4
-0590        ADD HL,DE   ;*5
-0600        ADD HL,HL   ;*10
+0570        ADD HL,HL ;*2
+0580        ADD HL,HL ;*4
+0590        ADD HL,DE ;*5
+0600        ADD HL,HL ;*10
 0610        LD E,B
-0620        ADD HL,DE   ;+Uebertrag
+0620        ADD HL,DE ;+Uebertrag
 0630        LD B,H
 0640        LD E,L
 0650        POP HL
@@ -74,7 +74,7 @@
 0720 PRINT  PUSH BC
 0730        LD HL,080AH ;Printposition
 0740        LD (0C29H),HL
-0750        LD HL,SUM   ;Kopie in Printpuffer
+0750        LD HL,SUM ;Kopie in Printpuffer
 0760        LD DE,PPUF
 0770        LD BC,LNG
 0780        LDIR
