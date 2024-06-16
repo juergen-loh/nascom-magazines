@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-06-15 15:13:59 +0200 (Sa, 15. Jun 2024) $ -->
+	<!-- page.php / $Date: 2024-06-16 13:44:51 +0200 (So, 16. Jun 2024) $ -->
 <?php
 	echo "\n";
 
@@ -961,7 +961,8 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "81-04-26":
 	case "81-04-27":
 	case "81-04-28":
-		echo "\n\t<p class=\"nas-link\">";	externalLink("UFOJAGD.CAS","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		echo "\n\t<p class=\"nas-link\">";	externalLink("UFOJAGD.CAS","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page");
+		echo "\tund als <a href=\"";		if ($link == "text") echo "../";			echo "../../../files/UFOJAGD.ASM\">Quelltext</a>.</p>\n";
 		break;
 	case "81-06-20":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("OTHELLO.NAS","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
@@ -1022,13 +1023,8 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "83-07-42":
 	case "83-11-14":
 	case "83-11-15":
-		echo "\n\t<p class=\"nas-link\">";
-		externalLink("Emdos.cas","Download");
-		echo "\tdes Programms von der ";
-		externalLink("Nascom Home Page");
-		echo "\tund als <a href=\"";
-		if ($link == "text") echo "../";
-		echo "../../../files/Emdos.asm\">Quelltext</a>.</p>\n";
+		echo "\n\t<p class=\"nas-link\">";	externalLink("Emdos.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page");
+		echo "\tund als <a href=\"";		if ($link == "text") echo "../";			echo "../../../files/Emdos.asm\">Quelltext</a>.</p>\n";
 		break;
 	case "84-04-32":
 	case "84-04-33":
@@ -1037,7 +1033,8 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 		echo "\n\t<p class=\"nas-link\">";	externalLink("Swords.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
 		break;
 	case "84-04-40":
-		echo "\n\t<p class=\"nas-link\">";	externalLink("Euler.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		echo "\n\t<p class=\"nas-link\">";	externalLink("Euler.cas","Download");		echo "\tdes Programms von der "; externalLink("Nascom Home Page");
+		echo "\tund als <a href=\"";		if ($link == "text") echo "../";			echo "../../../files/euler.asm\">Quelltext</a>.</p>\n";
 		break;
 	}
 
