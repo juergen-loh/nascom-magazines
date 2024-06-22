@@ -1405,7 +1405,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "RPB Taschenbuch 154":		$url = "https://www.radiomuseum.org/lf/b/kw-amateurbildfunk-sstv-und-fax-radio-praktiker-buecherei-rpb-nr-154_edition1/";	break;
 	case "Sahara-Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1973t/index.htm";					break;
 	case "SANYO DM8112CX":			$url = "https://www.flickr.com/photos/23826245@N00/2259904187";					break;
-	case "Scientific American, Issue 223":	$url = "https://maa.org/sites/default/files/pdf/pubs/focus/Gardner_GameofLife10-1970.pdf";	break;
+	case "Scientific American, Issue 223":	$url = "https://web.stanford.edu/class/sts145/Library/life.pdf";		break;
 	case "Seagate ST-251":			$url = "http://www.computerasylum.co.uk/storages/st251/index.html";				break;
 	case "SENSO":					$url = "https://$lang.wikipedia.org/wiki/Senso_%28Spiel%29";					break;
 	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/mz-80k/";	break;
@@ -1653,4 +1653,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-06-15 15:18:47 +0200 (Sa, 15. Jun 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-06-22 11:54:22 +0200 (Sa, 22. Jun 2024) $ -->
