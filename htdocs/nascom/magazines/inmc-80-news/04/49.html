@@ -6,12 +6,12 @@ fetched (the op-code), note that the PC is already pointing at l001H. Having dec
 that the instruction is a two byte instruction, it would fetch the second byte (the
 operand), and increment the PC to 1002 by so doing. At this stage the Z80 has all the
 information it requires, and procedes to add the second byte (the operand of the jump
-relative instruction) to the low byte of the CURRENT contents of the PC. Now the PC
+relative instruction) to the low byte of the <span class="uppercase">Current</span> contents of the PC. Now the PC
 had already been incremented by the action of fetching the op-code and the operand,
 and is now pointing to 1002H, so 1002H + 05H makes the address in the PC 1007H, ie: +5
-relative to the CURRENT PC position, and not +5 relative to the start of the
+relative to the <span class="uppercase">Current</span> PC position, and not +5 relative to the start of the
 instruction as is commonly assumed. It works exactly the same backwards, except that
-the operand supplied is a negative number. The Z80 still adds this to the CURRENT
+the operand supplied is a negative number. The Z80 still adds this to the <span class="uppercase">Current</span>
 contents of the PC, and so the PC ends up pointing back, but two bytes short of where
 you might expect.
 </p>

@@ -6,7 +6,7 @@ Seite(n) für Einsteiger
 <h4 style="text-align:center">
 Sprünge
 </h4>
-<p>
+<p class="first-indent">
 Heute darf gesprungen werden, von einem Byte zum nächsten oder wohin
 auch immer. Bewegung soll anregen, also lassen wir die Speicherzellen
 rauchen. Die &bdquo;Intelligenz&ldquo; eines Rechners wird bekanntlich
@@ -14,14 +14,14 @@ durch zwei Dinge ermöglicht: 1. Er kann sehr schnell fehlerfrei etwas
 immer wieder tun und 2. kann er einfache Entscheidungen treffen.
 Allerdings muß er dabei immer wissen, wo&rsquo;s lang geht.
 </p>
-<p>
+<p class="first-indent">
 Die Sprünge, die der
 <?php externalLink("Z80"); ?>
 Prozessor kennt, lassen sich nach mehreren
 Gesichtspunkten einteilen, nämlich nach der Art der Bedingung und der
 Form, wie die Bedingung beschrieben wird.
 </p>
-<p>
+<p class="first-indent">
 Der einfachste Sprung ist derjenige ohne Bedingung. Wenn z.B. der
 Zielort die Hausnummer 4C3F hat, sieht bei einer direkten Adressierung
 der entsprechende Befehlscode so aus: C3 3F 4C&nbsp;. C3 kennzeichnet die
@@ -31,23 +31,23 @@ errechnet werden, legt man das Ergebnis im HL- oder eines der
 Indexregisterpaare ab. Geben Sie hier unter NAS-SYS einmal folgendes
 komplexe Programm ein:
 </p>
-<pre class="donthyphenate">
-0D00  DF 63    lese eine Zeile ein
-0D02  DF 64    wandle sie in einen
-               Binaerwert um, speichere Er-
-               gebnis ab 0C21
-0D04  2A 21 0C Lade diese Adresse in das
-               HL Register
-0D07  E9       arbeite ab der Stelle weiter,
-               auf die der Inhalt von  0C21
-               und 0C22 zeigt.
-</pre>
-<p>
+<table class="asmlist">
+<tr><td>0D00</td><td>DF 63   </td><td>lese eine Zeile ein</td></tr>
+<tr><td>0D02</td><td>DF 64   </td><td>wandle sie in einen
+                                      Binaerwert um, speichere
+									  Ergebnis ab 0C21</td></tr>
+<tr><td>0D04</td><td>2A 21 0C</td><td>Lade diese Adresse in das
+                                      HL Register</td></tr>
+<tr><td>0D07</td><td>E9      </td><td>arbeite ab der Stelle weiter,
+                                      auf die der Inhalt von  0C21
+                                      und 0C22 zeigt.</td></tr>
+</table>
+<p class="first-indent">
 Nach dem Start ED00 wird jetzt eine Adresseingabe erwartet. Das
 Programm springt dann dorthin und arbeitet dann von dieser Stelle
 weiter. Probieren Sie folgende Werte: 0051, 02EB, 0450.
 </p>
-<p>
+<p class="first-indent">
 Die relative Adressierung hat zwei Vorteile: 1. Programme lassen sich
 ohne Probleme im Arbeitsspeicher verschieben und 2. besteht der OP-Code
 nur noch aus 2 Bytes. Leider aber muß man, wenn keinen Assembler zur
@@ -57,15 +57,15 @@ Programmzählers (PC) an. Soll der Sprung rückwärts erfolgen, wird das
 8. Bit gesetzt und die restlichen sieben werden in ihrem Wert rückwärts
 gesetzt (2-Komplement).
 </p>
-<p>
+<h4>
 Beispiele:
-</p>
-<pre class="donthyphenate">
-0D00  18 04          JR LABEL
-0D02  26 02          LD H,2
-0D06  00    LABEL    NOP
-</pre>
-<p>
+</h4>
+<table class="asmlist">
+<tr><td>0D00</td><td>18 04</td><td>     </td><td>JR LABEL</td></tr>
+<tr><td>0D02</td><td>26 02</td><td>     </td><td>LD H,2</td></tr>
+<tr><td>0D06</td><td>00   </td><td>LABEL</td><td>NOP</td></tr>
+</table>
+<p class="first-indent">
 Die erste Programmzeile wird in den Prozessor eingelesen und der PC um
 die entsprechende Zahl an Bytes erhöht. Um jetzt zum Label zu gelangen,
 müssen 4 Bytes übersprungen werden. Deshalb muß das 2. Byte in der 1.
@@ -74,12 +74,12 @@ Zeile 04 sein. Das 1. Byte steht für einen relativen Sprung.
 
 <?php columnChangeJustify(2); ?>
 
-<pre class="donthyphenate">
-0D00  06 04 LABEL    LD B,4
-0D02  0E 07          LD C,7
-0D06  18 FA          JR LABEL
-</pre>
-<p>
+<table class="asmlist">
+<tr><td>0D00</td><td>06 04</td><td>LABEL</td><td>LD B,4</td></tr>
+<tr><td>0D02</td><td>0E 07</td><td>     </td><td>LD C,7</td></tr>
+<tr><td>0D06</td><td>18 FA</td><td>     </td><td>JR LABEL</td></tr>
+</table>
+<p class="first-indent">
 Um zum LABEL zu gelangen, müssen ab der 3. Zeile insgesamt 6 Bytes
 üebersprungen werden. Will man bei einem Programm mit relativen
 Sprüngen später noch etwas einfügen, müssen die Sprungweiten natürlich
@@ -109,7 +109,7 @@ der Redaktion ist das Programm so einfacher anzupassen:
 Durch DOKE 4175,-6670 wird der Zeilenvorschub unterdrückt und die
 Eingabe an der erwarteten Stelle gemacht (&nbsp;Manual Seite 25). Durch DOKE
 4175,-25 kann wieder auf die normale Betriebsart umgeschaltet werden
-(im Spiel nicht nötig).
+(im Spiel nicht nötig).<br><br>
 </p>
 <p>
 Mehrere Leser hatten Schwierigkeiten mit der Grafikerweiterung aus

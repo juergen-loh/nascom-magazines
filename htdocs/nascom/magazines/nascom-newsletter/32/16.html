@@ -1,7 +1,7 @@
 <?php columnStart(1); ?>
 <p class="continued">
 of the assembler so that setting the address of your copy of
-COMPASS in line 1 will ensure that all subsequent addresses are
+<span class="uppercase">Compass</span> in line 1 will ensure that all subsequent addresses are
 correct. The additions are &pound;05 bytes long so you will probably
 have to move your copy to fit the extra code at the and of it.
 This is advisable as the last two lines of the listing alter the
@@ -34,7 +34,7 @@ been taken then it is reset and a flag set so that the break can
 be made at the CODE jump.
 </p>
 <p>
-The CODE jump at &pound;0F03 is diverted to SUBSTITUTE and the
+The CODE jump at &pound;0F03 is diverted to <span class="uppercase">Substitute</span> and the
 first check is whether it is one of the new codes that is being
 loaded. If not, then the program returns to the assembler. At
 this point registers A and B contain the opcode to be loaded and
@@ -50,10 +50,10 @@ remains to be done. This is the alteration of the checksum. The
 length of the program to be checked has already been altered
 but, of course, the checksum, which is stored after the last
 byte of the program, will be incorrect. The way to find out the
-new checksum is to set a breakpoint at COMPASS+&pound;0409 and then
+new checksum is to set a breakpoint at <span class="uppercase">Compass</span>+&pound;0409 and then
 warm start the assembler. When the breakpoint is reached HL will
 point to the checksum store (+&pound;1A19 in the listing) and the
-accumulator will contain the checksum. As COMPASS+&pound;0409
+accumulator will contain the checksum. As <span class="uppercase">Compass</span>+&pound;0409
 contained &pound;E7 instead of &pound;BE when it was checked, the checksum
 in the accumulator will be &pound;29 greater than it should be, so
 enter the accumulator value minus &pound;29 in the checksum store and

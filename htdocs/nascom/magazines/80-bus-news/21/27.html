@@ -4,34 +4,34 @@ The manuals and guides to CP/M should be consulted for more details.
 </p>
 <p>
 CP/M uses RAM below 100H as a Workspace and Buffer area. Above the workspace,
-starting at 100H is the TRANSIENT PROGRAM AREA (TPA). This is where all programs
+starting at 100H is the <span class="uppercase">Transient Program Area</span> (TPA). This is where all programs
 other than CP/M reside and operate. The TPA extends up through memory, including
 the CCP area of CP/M. In the systems drawn, the TPA will run from 100H to
 E000H/<?php spChar("zwsp"); ?>E400H, which is around 56K or 57K bytes.
 </p>
 <p>
-The CONSOL COMMAND PROCESSOR (CCP) is the area of CP/M that interacts with the
+The <span class="uppercase">Consol Command Processor</span> (CCP) is the area of CP/M that interacts with the
 user. It supports commands like DIR, REN, TYPE, ERA, etc. and allows selection of
 other drives, loading of files etc; When programs are loaded and run, the CCP is
 not needed, so the 2K of space that it occupies can be used by programs.
 </p>
 <p>
-Above the CCP is the BASIC DISK OPERATING SYSTEM (BDOS). The user accesses the
+Above the CCP is the <span class="uppercase">Basic Disk Operating System</span> (BDOS). The user accesses the
 BDOS through the jump at 0005H, to use the 36 or so Functions that are available
 such as Keyboard input, Screen output. Disk read, and so on. The BDOS is 3.5K
 long and cannot be overwritten.
 </p>
 <p>
-The final unit, at the very top of memory is the BASIC INPUT OUTPUT SYSTEM
-(BIOS). Often called CBIOS, the C standing for CUSTOMIZED. i.e. altered to
-suit.). This part of CP/M is not supplied by DIGITAL RESEARCH, but by the
+The final unit, at the very top of memory is the <span class="uppercase">Basic Input Output System</span>
+(BIOS). Often called CBIOS, the C standing for <span class="uppercase">Customized</span>. i.e. altered to
+suit.). This part of CP/M is not supplied by <span class="uppercase">Digital Research</span>, but by the
 suppliers of the Computer. The job of the BIOS is to marry together the standard
 CCP/<?php spChar("zwsp"); ?>BDOS to the thousand and one different Hardwares that have to run CP/M. The
 BIOS will therefore vary from computer to computer. The quality of the BIOS
 varies tremendously from system to system, and CP/M can get a bad name because
 the BIOS is poor. The various BIOS&rsquo;s available to run on the <span class="uppercase">Nascom</span>/<?php spChar("zwsp"); ?>GEMINT
 implementation contain features that are not always common. In some cases they
-are almost unique. RICHARD BEAL, the author of NAS&shy;SYS seems to have made a
+are almost unique. <span class="uppercase">Richard Beal</span>, the author of NAS&shy;SYS seems to have made a
 speciality of writing a very powerful CBIOS for <span class="uppercase">Nascom/<?php spChar("zwsp"); ?>Gemini</span> systems that he
 calls &lsquo;SYS&rsquo;, and this article describes how to replace the origional CBIOS with
 &lsquo;SYS&rsquo; CBIOS.

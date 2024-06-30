@@ -11,16 +11,16 @@ Command Input
 <p>
 While waiting for you to enter a command the Nascom is in a routine called
 INLIN, sitting in a loop in which it scans the keyboard and the serial input, prints any
-character received, and continues until it a NEWLINE (&pound;0D) is obtained. It then sets
+character received, and continues until it a <span class="uppercase">Newline</span> (&pound;0D) is obtained. It then sets
 the DE register pair to the address of the start of the line that the cursor was on when
-the NEWLINE was received, and returns from INLIN to the main monitor routine,
+the <span class="uppercase">Newline</span> was received, and returns from INLIN to the main monitor routine,
 which is called PARSE. Here it tests the character at the start of the line entered; if
 this character is a space it looks in the workspace at address &pound;0C2B, which is a
 location called ARGX, to discover what the previous command entered was.
 Normally a line with a space at the start is ignored, that is, the monitor recalls the
 INLIN routine and waits for further input; however, if the previous command was S
 (single step), the monitor behaves as if this command had been re-entered, so that
-you can continue to single step through a program merely by pressing NEWLINE.
+you can continue to single step through a program merely by pressing <span class="uppercase">Newline</span>.
 </p>
 <p>
 If the line does not start with a space the first character is tested to find if it is

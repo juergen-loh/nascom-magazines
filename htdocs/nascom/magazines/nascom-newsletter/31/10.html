@@ -2,13 +2,13 @@
 <p class="continued">
 ((TYPE x 4) + F)). Store the most significant byte first. Use a
 couple of shift lefts to multiply by 2 and 4, and don&rsquo;t corrupt
-anything!!. You may now send your Nascom off to CONTROL. But
+anything!!. You may now send your Nascom off to <span class="uppercase">Control</span>. But
 wait!! The table of routine addresses is, as yet,
 unconstructed.
 </p>
 <p>
 This table will start with the address of routine 0 then 1,
-2 etc, finishing with that of routine 7. CONTROL will work along
+2 etc, finishing with that of routine 7. <span class="uppercase">Control</span> will work along
 similar lines to the last routine described. You now want, OK
 need, to know about the other routines. They are subroutines,
 and as such MUST end with a RET (&pound;C9) instruction. This applies
@@ -20,10 +20,10 @@ value held in H (not of HL fame). H can be 0 through 7. So a
 table will need to be built directly after the &pound;00 byte calling
 this routine. This table will be 16 bytes long and contain 8
 addresses, corresponding to H=0, H=1 etc. Work out which address
-is needed and then put it into HL&rsquo;. This will trick CONTROL into
+is needed and then put it into HL&rsquo;. This will trick <span class="uppercase">Control</span> into
 effecting a very complex 8 way jump. Note that bit 7 of the
 calling code for this routine must NEVER be set else when
-CONTROL is returned to, it will think that has just finished the
+<span class="uppercase">Control</span> is returned to, it will think that has just finished the
 last routine and not loop back to do our carefully prepared
 jump. For some unknown reason this routine played havoc with my
 disassembler. That is, until I remembered that Routine 0 is the
@@ -31,7 +31,7 @@ first routine &ndash; Not Routine 1.
 </p>
 <p>
 If I might digress for a while to give a short analogy as to
-what I see CONTROL as. CONTROL seems to be a microprocessor
+what I see <span class="uppercase">Control</span> as. <span class="uppercase">Control</span> seems to be a microprocessor
 itself. It has HL&rsquo; as its program counter. Bits 0, 1 and 2
 represent the opcode, bits 3, 4 and 5 the data (if required).
 Routines 0 to 7 are just units, black boxes if you like (you
