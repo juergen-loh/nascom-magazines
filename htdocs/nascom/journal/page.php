@@ -42,7 +42,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-06-16 13:44:51 +0200 (So, 16. Jun 2024) $ -->
+	<!-- page.php / $Date: 2024-06-30 12:05:40 +0200 (So, 30. Jun 2024) $ -->
 <?php
 	echo "\n";
 
@@ -972,6 +972,10 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 	case "81-12-21":
 	case "81-12-22":
 		echo "\n\t<p class=\"nas-link\">";	externalLink("Startrek.cas","Download");	echo "\tdes Programms von der "; externalLink("Nascom Home Page","",""); echo ".</p>\n";
+		break;
+	case "82-03-37":
+	case "82-03-38":
+		echo "\n\t<p class=\"nas-link\">";	externalLink("Space Potatoes","Vorlage");	echo "\tdes Programms im "; 	externalLink("80 Microcomputing"); echo "Magazine, August 1981.</p>\n";
 		break;
 	case "82-10-14":
 	case "82-10-15":

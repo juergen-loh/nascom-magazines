@@ -1097,6 +1097,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "4164":					$url = "https://www.mikrocontroller.net/attachment/4092/HYB4164.pdf";			break;
 	case "6116":					$url = "https://sites.ecse.rpi.edu/courses/CStudio/data%20sheets/hm6116.pdf";	break;
 	case "6502":					$url = "https://$lang.wikipedia.org/wiki/MOS_Technology_6502";					break;
+	case "80 Microcomputing":		$url = "https://archive.org/details/80-microcomputing-magazine";				break;
 	case "8080":					$url = "https://$lang.wikipedia.org/wiki/Intel_8080";							break;
 	case "8085":					$url = "https://$lang.wikipedia.org/wiki/Intel_8085";							break;
 	case "A simple technique for static relocation of absolute machine code":	$url = "https://groups.google.com/forum/?hl=de&amp;fromgroups=#!topic/comp.os.cpm/TLHgIi16yTo";	break;
@@ -1413,6 +1414,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Siemens T&nbsp;37":		$url = "https://en.wikipedia.org/wiki/Teleprinter#/media/File:Siemens_t37h_without_cover.jpg";	break;
 	case "Siemens T&nbsp;68":		$url = "https://stb-betzwieser.de/aktuelles/ausstellung/kategorien-1/siemenst68.php";	break;
 	case "Spaceii.nas":				$url = "http://www.nascomhomepage.com/games/Spaceii.nas";						break;
+	case "Space Potatoes":			$url = "https://archive.org/details/80-microcomputing-magazine-1981-08/page/n101/mode/2up";	break;
 	case "Startrek.cas":			$url = "http://www.nascomhomepage.com/mbasic/Startrek.cas";						break;
 	case "Sternwarte Wien":			$url = "https://www.vhs.at/de/e/planetarium";									break;
 	case "Superbrain":				$url = "https://$lang.wikipedia.org/wiki/Intertec_Superbrain";					break;
@@ -1653,4 +1655,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-06-22 11:54:22 +0200 (Sa, 22. Jun 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-06-30 12:05:40 +0200 (So, 30. Jun 2024) $ -->
