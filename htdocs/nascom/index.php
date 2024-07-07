@@ -9,7 +9,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-07-07 20:08:28 +0200 (So, 07. Jul 2024) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -369,7 +369,7 @@ gesammelt.
 </div>
 <div class="col-<?php echo BootstrapTier(); ?>-6">
 
-<h2><span class="uppercase">Nascompl</span></h2>
+<h2 class="uppercase">Nascompl</h2>
 <p>
 <a href="journal/nascompl/"><!--#head"-->Alle <span class="uppercase">Nascompl</span> auf einen Blick</a><br>
 </p>
