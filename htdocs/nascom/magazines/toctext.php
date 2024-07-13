@@ -7,8 +7,10 @@
 	||	!file_exists("$parMagazine/$parIssue/issue.php")
 	||	!file_exists("issue.php")
 	) {
-		$include_path = "../../../cgi-bin";
-		include "$include_path/404.php";
+		require			( "../../SetIncludePath.php");
+		SetIncludePath	( "../..");
+//		$include_path	= "../../../cgi-bin";
+		require "$include_path/404.php";
 		exit;
 	}
 

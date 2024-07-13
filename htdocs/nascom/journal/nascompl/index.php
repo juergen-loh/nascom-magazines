@@ -1,7 +1,9 @@
 <?php
-	$include_path = "../../../../cgi-bin";
-	$gHtmlRoot = "../../..";
-	include "$include_path/global.php";
+	require			( "../../../SetIncludePath.php");
+	SetIncludePath	( "../../..");
+//	$include_path	= "../../../../cgi-bin";
+	$gHtmlRoot		= "../../..";
+	require "$include_path/global.php";
 //	$width = 700;
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
@@ -9,7 +11,7 @@
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2023-03-11 15:22:20 +0100 (Sa, 11. Mrz 2023) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ / <?php echo "$lastModified"; ?> -->
 
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";

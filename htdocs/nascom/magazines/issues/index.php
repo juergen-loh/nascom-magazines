@@ -1,7 +1,9 @@
 <?php
-	$include_path = "../../../../cgi-bin";
-	$gHtmlRoot = "../../..";
-	include "$include_path/global.php";
+	require			( "../../../SetIncludePath.php");
+	SetIncludePath	( "../../..");
+//	$include_path	= "../../../../cgi-bin";
+	$gHtmlRoot		= "../../..";
+	require "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
 	include "$navi_head_php";
@@ -10,7 +12,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2024-06-30 16:39:19 +0200 (So, 30. Jun 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }

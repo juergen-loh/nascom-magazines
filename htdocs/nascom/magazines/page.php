@@ -5,26 +5,28 @@
 	$link      =                       quotemeta(addslashes($_GET['link']));
 	$thumb     = false;
 
-	$include_path = "../../../cgi-bin";
+	require			( "../../SetIncludePath.php");
+	SetIncludePath	( "../..");
+//	$include_path	= "../../../cgi-bin";
 	if ($link == "text") {
-		$gHtmlRoot = "../../../../../..";
+		$gHtmlRoot	= "../../../../../..";
 	} else {
-		$gHtmlRoot = "../../../../..";
+		$gHtmlRoot	= "../../../../..";
 	}
 
-	include "$include_path/global.php";
+	require "$include_path/global.php";
 //	$width = 720;
 
 	$html = "$magpath/$issuepath/$pagepath.html";
 	if (!file_exists($html)) {
-		include "$include_path/404.php";
+		require "$include_path/404.php";
 		exit;
 	}
 	switch ($link) {
 	case "text":	break;
 	case "graphic":	break;
 	default:
-		include "$include_path/404.php";
+		require "$include_path/404.php";
 		exit;
 	}
 
@@ -521,7 +523,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-06-16 15:50:29 +0200 (So, 16. Jun 2024) $ -->
+	<!-- page.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";

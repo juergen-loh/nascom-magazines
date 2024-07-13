@@ -3,13 +3,15 @@
 		$toctext = false;
 	}
 
-	$include_path = "$tppath/../../../cgi-bin";
+	require			( "$tppath/../../SetIncludePath.php");
+	SetIncludePath	( "$tppath/../..");
+//	$include_path	= "$tppath/../../../cgi-bin";
 	if ($toctext) {
-		$gHtmlRoot = "$tppath/../../../../../..";
+		$gHtmlRoot	= "$tppath/../../../../../..";
 	} else {
-		$gHtmlRoot = "$tppath/../..";
+		$gHtmlRoot	= "$tppath/../..";
 	}
-	include "$include_path/global.php";
+	require "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
@@ -18,7 +20,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
+	<!-- top.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,

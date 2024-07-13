@@ -16,7 +16,7 @@
 	$navi_body_php		= "$include_path/navi-body.php";
 	$navi_head_php		= "$include_path/navi-head.php";
 	$navi_footer_php	= "$include_path/navi-footer.php";
-
+/*
 	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);
 	if ($document_root == "..") {
 		$document_root = ".";	// only valid in rootdir
@@ -27,7 +27,7 @@
 //	} else {
 //		echo "document_root = $document_root";	// fehler
 	}
-/*	echo "<!--\n"
+	echo "<!--\n"
 	.	"include_path = $include_path\n"
 	.	"document_root = $document_root\n"
 	.	"-->\n";

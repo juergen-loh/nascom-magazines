@@ -1,21 +1,27 @@
 <?php
 	if ($thumb) {
 		if ($link == "graphic") {
-			$include_path = "../../../../../../cgi-bin";
-			$gHtmlRoot = "../../../../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/03/thumb/
+			require			( "../../../../../SetIncludePath.php");
+			SetIncludePath	( "../../../../..");
+//			$include_path	= "../../../../../../cgi-bin";
+			$gHtmlRoot		= "../../../../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/03/thumb/
 		} else if ($link == "text") {
-			$include_path = "../../../../../../../cgi-bin";
-			$gHtmlRoot = "../../../../../..";
+			require			( "../../../../../../SetIncludePath.php");
+			SetIncludePath	( "../../../../../..");
+//			$include_path	= "../../../../../../../cgi-bin";
+			$gHtmlRoot		= "../../../../../..";
 		}
 	} else {
-		$include_path = "../../../../../cgi-bin";
+		require			( "../../../../SetIncludePath.php");
+		SetIncludePath	( "../../../..");
+//		$include_path	= "../../../../../cgi-bin";
 		if ($link == "graphic") {
-			$gHtmlRoot = "../../../../..";
+			$gHtmlRoot	= "../../../../..";
 		} else if ($link == "text") {
-			$gHtmlRoot = "../../../../../..";
+			$gHtmlRoot	= "../../../../../..";
 		}
 	}
-	include "$include_path/global.php";
+	require "$include_path/global.php";
 //	$width = 720;
 
 	if (!$thumb) {
@@ -24,7 +30,7 @@
 	}
 
 	if (!$thumb && ($page < $first || $page > $last)) {
-		include "$include_path/404.php";
+		require "$include_path/404.php";
 		exit;
 	}
 
@@ -42,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-06-30 12:05:40 +0200 (So, 30. Jun 2024) $ -->
+	<!-- page.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
 <?php
 	echo "\n";
 

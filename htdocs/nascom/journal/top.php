@@ -1,17 +1,19 @@
 <?php
-	$include_path = "$tppath/../../../cgi-bin";
+	require			( "$tppath/../../SetIncludePath.php");
+	SetIncludePath	( "$tppath/../..");
+//	$include_path	= "$tppath/../../../cgi-bin";
 	if ($tail == "/") {
-		$gHtmlRoot = "$tppath/../..";
+		$gHtmlRoot	= "$tppath/../..";
 	} else if ($tail == "/text/") {
 		if (isset($path)) {
-			$gHtmlRoot = "$tppath/$path../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/00/text/
+			$gHtmlRoot	= "$tppath/$path../..";	// http://nascom-magazines.jloh.de/new/nascom/journal/80/00/text/
 		} else {
-			$gHtmlRoot = "$tppath/../..";		// http://nascom-magazines.jloh.de/new/nascom/journal/80/text/
+			$gHtmlRoot	= "$tppath/../..";		// http://nascom-magazines.jloh.de/new/nascom/journal/80/text/
 		}
 	} else {
 		$gHtmlRoot = "$tppath/../../..";
 	}
-	include "$include_path/global.php";
+	require "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
@@ -27,7 +29,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-04-26 20:30:54 +0200 (Fr, 26. Apr 2024) $ -->
+	<!-- top.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,

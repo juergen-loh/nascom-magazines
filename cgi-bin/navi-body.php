@@ -1581,8 +1581,8 @@ HEREDOC;
 					global $document_root;
 					global $gHtmlRoot;
 					$request = addslashes(getenv('REQUEST_URI'));
-
 					$item_dir = "$document_root/$dir";
+
 /*
 					echo "<!--\n";
 					echo "document_root	$document_root\n";
@@ -1655,4 +1655,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-06-30 12:05:40 +0200 (So, 30. Jun 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
