@@ -7,7 +7,7 @@
 	SetIncludePath	( "$tppath/../..");
 //	$include_path	= "$tppath/../../../cgi-bin";
 	if ($toctext) {
-		$gHtmlRoot	= "$tppath/../../../../../..";
+		$gHtmlRoot	= "$tppath/../../../../..";
 	} else {
 		$gHtmlRoot	= "$tppath/../..";
 	}
@@ -20,7 +20,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
+	<!-- top.php / $Date: 2024-07-14 15:20:51 +0200 (So, 14. Jul 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
