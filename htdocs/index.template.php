@@ -16,14 +16,39 @@
 
 <div class="row hyphenate">
 <div class="col-<?php echo BootstrapTier(); ?>-12">
-
+<!--
 <h1 class="FirstHeading">
 TODO
 </h1>
 <p>
 Place content here.
 </p>
-
+-->
+<p>
+<br>
+<a href="nascom/#nascomjournal">Nascom Journal</a>
+</p>
+<p>
+<a href="nascom/#80busjournal">80-Bus Journal</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#inmc-news">INMC News</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#inmc-80-news">INMC 80 News</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#80-bus-news">80-Bus News</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#scorpio-news">Scorpio News</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#micropower">Micropower</a>
+</p>
+<p>
+<a href="nascom/magazines/issues/#nascom-newsletter">Nascom Newsletter</a>
+</p>
 </div>
 </div>
 

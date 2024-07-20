@@ -54,7 +54,7 @@
 <br>
 <div class="row hyphenate" lang="en"><div class="col-sm-6">
 
-<h2>
+<h2 id="inmc-news">
 	<a href="../inmc-news/text/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
 </h2>
 <h3>
@@ -73,7 +73,7 @@
 	<a href="../inmc-news/07/00/text/"><img src="../inmc-news/07/cover.jpeg" width="100" height="142" title="INMC News, Issue 7"></a>
 </p>
 
-<h2>
+<h2 id="inmc-80-news">
 	<a href="../inmc-80-news/text/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
 </h2>
 <h3>
@@ -90,7 +90,7 @@
 	<a href="../inmc-80-news/05/01/text/"><img src="../inmc-80-news/05/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 5"></a>
 </p>
 
-<h2>
+<h2 id="80-bus-news">
 	<a href="../80-bus-news/text/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
 </h2>
 <h3>
@@ -120,7 +120,7 @@
 	<a href="../80-bus-news/42/01/text/"><img src="../80-bus-news/42/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 2"></a>
 </p>
 
-<h2>
+<h2 id="scorpio-news">
 	<a href="../scorpio-news/text/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
 </h2>
 <h3>
@@ -144,7 +144,7 @@
 
 </div><div class="col-sm-6">
 
-<h2>
+<h2 id="micropower">
 	<a href="../micropower/text/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
 </h2>
 <h3>
@@ -164,7 +164,7 @@
 	<a href="../micropower/24/-1/text/"><img src="../micropower/24/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 4"></a>
 </p>
 
-<h2>
+<h2 id="nascom-newsletter">
 	<a href="../nascom-newsletter/text/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
 </h2>
 <h3>
