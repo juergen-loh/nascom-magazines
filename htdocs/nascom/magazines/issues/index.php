@@ -12,7 +12,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-07-23 20:40:44 +0200 (Di, 23. Jul 2024) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
