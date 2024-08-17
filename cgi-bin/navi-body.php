@@ -1435,7 +1435,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Texas Instruments":		$url = "https://www.ti.com";													break;
 	case "Tforth.nas":				$url = "http://www.nascomhomepage.com/lang/Tforth.nas";							break;
 	case "The complete FORTH":		$url = "https://openlibrary.org/works/OL5598529W/The_complete_FORTH";			break;
-	case "Threaded Interpretive Languages":	$url = "https://openlibrary.org/works/OL6331362W/Threaded_interpretive_languages";	break;
+	case "Threaded Interpretive Languages":	$url = "https://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981/mode/2up";	break;
 	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
 	case "TL497":					$url = "https://www.ti.com/lit/ds/symlink/tl494.pdf";							break;
 	case "TMS5100":					$url = "https://www.datasheetarchive.com/?q=tms5100";							break;
