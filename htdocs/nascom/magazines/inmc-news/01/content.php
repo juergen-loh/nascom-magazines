@@ -12,6 +12,12 @@
 	,	1-1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Bristol Seminar"
+	,	""
+	,	""
+	,	2-1
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Nasbus introduction"
 	,	""
 	,	"Hardware"
@@ -88,13 +94,13 @@
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Kit repairs"
 	,	""
-	,	""
+	,	"Advertisement"
 	,	9-1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Situations vacant"
 	,	""
-	,	""
+	,	"Advertisement"
 	,	9-1
 	,	2
 	);

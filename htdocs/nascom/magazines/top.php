@@ -20,7 +20,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-07-14 15:20:51 +0200 (So, 14. Jul 2024) $ -->
+	<!-- top.php / $Date: 2024-10-09 18:59:25 +0200 (Mi, 09. Okt 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
@@ -401,6 +401,7 @@ function echoShy($str)
 		case "Hardware<br>Basic":			$erg = "Hard&shy;ware<br>Basic";							break;
 		case "Review":						$erg = "Re&shy;view";										break;
 		case "Software":					$erg = "Soft&shy;ware";										break;
+		case "Advertisement":				$erg = "Ad&shy;ver&shy;tise&shy;ment";						break;
 		// Default
 		default:							$erg = $value;												break;
 		}

@@ -69,6 +69,18 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Software Library"
+	,	""
+	,	"Software"
+	,	12
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
+	,	"Competition"
+	,	""
+	,	"Software"
+	,	13
+	);
+	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Double Mastermind (object code listing &ndash; N1)"
 	,	"D. Ritchie"
 	,	"Software"
@@ -83,7 +95,7 @@
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Situations vacant"
 	,	""
-	,	""
+	,	"Advertisement"
 	,	18
 	);
 ?>
