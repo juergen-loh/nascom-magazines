@@ -191,17 +191,17 @@ function InsertArrow($s)
 
 	switch ($s) {
 	case "previous-page":	$arrow = "play";			$class = "mirror-horizontal";	break;
-	case "first-page":		$arrow = "fast-backward";									break;
-	case "previous-issue":	$arrow = "backward";										break;
+	case "first-page":		$arrow = "fast-forward";	$class = "mirror-horizontal";	break;
+	case "previous-issue":	$arrow = "forward";			$class = "mirror-horizontal";	break;
 	case "next-issue":		$arrow = "forward";											break;
 	case "last-page":		$arrow = "fast-forward";									break;
 	case "next-page":		$arrow = "play";											break;
 	}
 
 //	echo "<!-- InsertArrow($s) -->";
-	echo "<span class=\"";
+	echo "<span class=\"$class";
 	if ($class != "") {
-		echo "$class ";
+		echo " ";
 	}
 	echo "fas fa-$arrow\" aria-hidden=true></span>";
 /*
@@ -216,6 +216,17 @@ function InsertArrow($s)
 	case "next-page":		echo "chevron-right";			break;
 	}
 	echo ".svg\" alt=\"\">";
+*/
+/*
+// Unicode
+	switch ($s) {
+	case "previous-page":	echo "&#x23f4";			break;
+	case "first-page":		echo "&#x23ee";		break;
+	case "previous-issue":	echo "&#x23ea";		break;
+	case "next-issue":		echo "&#x23e9";	break;
+	case "last-page":		echo "&#x23ed";		break;
+	case "next-page":		echo "&#x23f5";			break;
+	}
 */
 }
 
@@ -1654,4 +1665,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-08-17 20:22:45 +0200 (Sa, 17. Aug 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-11-02 21:03:11 +0100 (Sa, 02. Nov 2024) $ -->
