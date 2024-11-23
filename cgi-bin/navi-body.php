@@ -1418,7 +1418,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Sahara-Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1973t/index.htm";					break;
 	case "SANYO DM8112CX":			$url = "https://www.flickr.com/photos/23826245@N00/2259904187";					break;
 	case "Scientific American, Issue 223":	$url = "https://web.stanford.edu/class/sts145/Library/life.pdf";		break;
-	case "Seagate ST-251":			$url = "http://www.computerasylum.co.uk/storages/st251/index.html";				break;
+	case "Seagate ST-251":			$url = "https://theretroweb.com/harddrives/202";								break;
 	case "SENSO":					$url = "https://$lang.wikipedia.org/wiki/Senso_%28Spiel%29";					break;
 	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/mz-80k/";	break;
 	case "Sharp MZ80":				$url = "https://en.wikipedia.org/wiki/Sharp_MZ";								break;
@@ -1665,4 +1665,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-11-02 21:03:11 +0100 (Sa, 02. Nov 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-11-23 19:01:41 +0100 (Sa, 23. Nov 2024) $ -->
