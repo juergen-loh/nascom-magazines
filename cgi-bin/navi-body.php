@@ -1270,7 +1270,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "IBM 3270":				$url = "https://$lang.wikipedia.org/wiki/IBM_3270";								break;
 	case "IBM 3740":				$url = "https://en.wikipedia.org/wiki/IBM_3740";								break;
 	case "IBM System/34":			$url = "https://en.wikipedia.org/wiki/IBM_System/34";							break;
-	case "ICL7106":					$url = "https://www.renesas.com/eu/en/document/dst/icl7106-icl7107-icl7107s-datasheet";	break;
+	case "ICL7106":					$url = "https://www.renesas.com/en/document/dst/icl7106-icl7107-icl7107s-datasheet";	break;
 	case "IMP":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/imp.htm";				break;
 	case "Indische Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1980t/index.htm";					break;
 	case "INVASION.NAS":			$url = "http://www.nascomhomepage.com/games/INVASION.NAS";						break;
@@ -1357,7 +1357,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Monitor":					$url = "https://$lang.wikipedia.org/wiki/Maschinencode-Monitor";				break;
 	case "MP826":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/mp826.htm";				break;
 	case "MS-DOS":					$url = "https://$lang.wikipedia.org/wiki/MS-DOS";								break;
-	case "Nanocomputer":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/nanocomputer-training-system-nbz80-s/";	break;
+	case "Nanocomputer":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht?tx_compges_computer%5Baction%5D=show&tx_compges_computer%5Bcomputer%5D=333&tx_compges_computer%5Bcontroller%5D=Computer&cHash=779929b2ceff1387291136baf72ef620";	break;
 	case "Nascom / Gemini / 80 Bus (Mirror)":	$url = "https://80bus.co.uk.mirror.jloh.de/";						break;
 	case "Nascom Basic Book 1":		$url = "http://www.nascomhomepage.com/pdf/Nascom%20Basic%20Book%201.PDF";		break;
 	case "Nascom Computers User Group":	$url = "https://groups.io/g/Nascom-Computers";								break;
@@ -1420,7 +1420,7 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "Scientific American, Issue 223":	$url = "https://web.stanford.edu/class/sts145/Library/life.pdf";		break;
 	case "Seagate ST-251":			$url = "https://theretroweb.com/harddrives/202";								break;
 	case "SENSO":					$url = "https://$lang.wikipedia.org/wiki/Senso_%28Spiel%29";					break;
-	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.de/sammlung/detailansicht/comp/Computer/show/mz-80k/";	break;
+	case "Sharp MZ-80K":			$url = "https://www.homecomputermuseum.nl/en/collectie/sharp/sharp-mz-80k/";	break;
 	case "Sharp MZ80":				$url = "https://en.wikipedia.org/wiki/Sharp_MZ";								break;
 	case "Siemens T&nbsp;37":		$url = "https://en.wikipedia.org/wiki/Teleprinter#/media/File:Siemens_t37h_without_cover.jpg";	break;
 	case "Siemens T&nbsp;68":		$url = "https://stb-betzwieser.de/aktuelles/ausstellung/kategorien-1/siemenst68.php";	break;
@@ -1665,4 +1665,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-11-23 19:01:41 +0100 (Sa, 23. Nov 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-15 14:31:39 +0100 (So, 15. Dez 2024) $ -->
