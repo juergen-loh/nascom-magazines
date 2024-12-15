@@ -20,7 +20,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Dealer Profile &ndash; Kenilworth Computers"
+	,	"Dealer Profile&nbsp;&ndash; Kenilworth Computers"
 	,	""
 	,	""
 	,	4
@@ -44,7 +44,7 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Disk Formats and CP&#x2f;M Disk Routines &ndash; Part 4"
+	,	"Disk Formats and CP&#x2f;M Disk Routines&nbsp;&ndash; Part 4"
 	,	"M.W.T. Waters"
 	,	"Software"
 	,	15
@@ -62,7 +62,7 @@
 	,	24
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 27"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 27"
 	,	"Chris Blackmore"
 	,	""
 	,	25
@@ -80,7 +80,7 @@
 	,	33
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Software Review &ndash; Scorpio Systems Disk + PCB package"
+	,	"Software Review&nbsp;&ndash; Scorpio Systems Disk + PCB package"
 	,	"Robert Pearce"
 	,	"Review"
 	,	34
@@ -98,7 +98,7 @@
 	,	37
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Dave Hunt Pages &ndash; PCs and MS-DOS"
+	,	"The Dave Hunt Pages&nbsp;&ndash; PCs and MS-DOS"
 	,	"Dave Hunt"
 	,	""
 	,	38

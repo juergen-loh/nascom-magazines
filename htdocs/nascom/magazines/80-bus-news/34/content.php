@@ -24,7 +24,7 @@
 	,	8
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 22"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 22"
 	,	"Chris Blackmore"
 	,	""
 	,	11
@@ -43,7 +43,7 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Gemini GM862 256K RAM Board &ndash; getting it working in a Nascom"
+	,	"Gemini GM862 256K RAM Board&nbsp;&ndash; getting it working in a Nascom"
 	,	"Warren Williams"
 	,	""
 	,	16

@@ -18,6 +18,14 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
+	,	"M&nbsp;K&nbsp;&ndash; Systemtechnik auf der HAM-RADIO Ausstellung der Funkamateure 1980"
+	,	"Hans-Jörg Dietmann"
+	,	"Anzeige"
+	,	$volume, $issue
+	,	3
+	,	2
+	);
+	trJournal($path, $tail, $magazine
 	,	"Software-Uhr für Z80"
 	,	"Günter Brust"
 	,	"Assembler"
@@ -25,7 +33,7 @@
 	,	4
 	);
 	trJournal($path, $tail, $magazine
-	,	"Verbesserung für NASCOM&nbsp;1 &ndash; Cassetteninterface"
+	,	"Verbesserung für NASCOM&nbsp;1&nbsp;&ndash; Cassetteninterface"
 	,	"H. Gundermann"
 	,	"Hardware"
 	,	$volume, $issue
@@ -70,7 +78,7 @@
 	,	12
 	);
 	trJournal($path, $tail, $magazine
-	,	"Lader &ndash; Ladeprogramm für NASCOM&nbsp;1 mit NASBUG T2"
+	,	"Lader&nbsp;&ndash; Ladeprogramm für NASCOM&nbsp;1 mit NASBUG T2"
 	,	"Jürgen Bezold"
 	,	"Assembler"
 	,	$volume, $issue

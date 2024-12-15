@@ -1,32 +1,32 @@
 <?php columnStart(1); ?>
 <table class="indent">
-<tr><td>bit 0</td><td>SET &ndash; selects upper 32k block<br>
-		RESET &ndash; selects lower 32K block<br>
+<tr><td>bit 0</td><td>SET&nbsp;&ndash; selects upper 32k block<br>
+		RESET&nbsp;&ndash; selects lower 32K block<br>
 		<span style="padding-left: 2em">(not operative if bit 7 is RESET)</span></td></tr>
 <tr><td>bit 1 )</td><td></td></tr>
 <tr><td>bit 2 )</td><td></td></tr>
 <tr><td>bit 3 )</td><td>selects 64k page</td></tr>
 <tr><td>bit 4 )</td><td style="padding-left: 2em">(bit 5 not used in 32k mode)</td></tr>
 <tr><td class="nowrap">bit 5 )</td><td></td></tr>
-<tr><td>bit 6</td><td>SET &ndash; select upper 32k of page&nbsp;0 as permanent<br>
-		RESET &ndash; select lower 32k of page&nbsp;0 as permanent<br>
+<tr><td>bit 6</td><td>SET&nbsp;&ndash; select upper 32k of page&nbsp;0 as permanent<br>
+		RESET&nbsp;&ndash; select lower 32k of page&nbsp;0 as permanent<br>
 		<span style="padding-left: 2em">(not operative if bit 7 is RESET)</span></td></tr>
-<tr><td>bit 7</td><td>SET &ndash; select 32k mode<br>
-		RESET &ndash; select 64K mode</td></tr>
+<tr><td>bit 7</td><td>SET&nbsp;&ndash; select 32k mode<br>
+		RESET&nbsp;&ndash; select 64K mode</td></tr>
 </table>
 <p>
 There are 3 modes of operation:<br>
-1) 6K paging &ndash; the memory is set up in 64k blocks which means
+1) 6K paging&nbsp;&ndash; the memory is set up in 64k blocks which means
 that to change pages, a program must ensure that the Program
 Counter holds the value of the next instruction on the incoming
 page after the O FE XX is executed. Not the easiest of things.<br>
-2) 32K paging &ndash; in this mode each page is divided into two 32k
+2) 32K paging&nbsp;&ndash; in this mode each page is divided into two 32k
 pages and the user can then assign either the upper or lower 32k
 of page&nbsp;0 as permanent and then page in any other 32k half page.
 This makes the controlling program much simpler and would be
 very useful for applications where large data files are
 manipulated by small programs.<br>
-3) Memory-mapping &ndash; this is the most powerful mode of all and it
+3) Memory-mapping&nbsp;&ndash; this is the most powerful mode of all and it
 allows any 4k block from the total RAM to be &lsquo;mapped&rsquo; into any
 4K slot in the Z80 memory map. The &lsquo;source&rsquo; block can be mapped
 into more than one &ldquo;target&rdquo; block.

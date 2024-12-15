@@ -25,7 +25,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Printer Busy &ndash; hardware and software modification"
+	,	"Printer Busy&nbsp;&ndash; hardware and software modification"
 	,	"Cresby"
 	,	""
 	,	6
@@ -38,7 +38,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Animation Graphics Board for under &pound;100<br>"
-	.	"overview &ndash; port addressed"
+	.	"overview&nbsp;&ndash; port addressed"
 	,	""
 	,	"Hardware"
 	,	9
@@ -102,7 +102,7 @@
 	,	30
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom documentation &ndash; volume breakdown description"
+	,	"Nascom documentation&nbsp;&ndash; volume breakdown description"
 	,	"Mike Hessey"
 	,	""
 	,	30

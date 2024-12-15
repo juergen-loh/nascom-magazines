@@ -36,26 +36,26 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"RAMDIS and Page Mode &ndash; a solution"
+	,	"RAMDIS and Page Mode&nbsp;&ndash; a solution"
 	,	"Mick Waters"
 	,	""
 	,	7
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"CPM &ndash; CCPZ, BDOSZ and MDIS"
+	,	"CPM&nbsp;&ndash; CCPZ, BDOSZ and MDIS"
 	,	"Mick Waters"
 	,	""
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 20"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 20"
 	,	"Chris Blackmore"
 	,	""
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Pluto Graphics Board &ndash; software driver"
+	,	"Pluto Graphics Board&nbsp;&ndash; software driver"
 	,	""
 	,	""
 	,	13

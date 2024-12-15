@@ -19,7 +19,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"A Nascom Disassembler &ndash; Pt 1"
+	,	"A Nascom Disassembler&nbsp;&ndash; Pt 1"
 	,	"M. Reed"
 	,	"Assembler"
 	,	2
@@ -44,7 +44,7 @@
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Poor Man&rsquo;s Disc part 2 &ndash; Review of IKON&rsquo;s Hobbit mini digital cassette system"
+	,	"Poor Man&rsquo;s Disc part 2&nbsp;&ndash; Review of IKON&rsquo;s Hobbit mini digital cassette system"
 	,	"Les Pickstock"
 	,	"Review"
 	,	18

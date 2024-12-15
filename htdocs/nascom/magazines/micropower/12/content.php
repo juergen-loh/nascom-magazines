@@ -31,19 +31,19 @@
 	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"New EPROMs for old &ndash; upgrading from 2708s"
+	,	"New EPROMs for old&nbsp;&ndash; upgrading from 2708s"
 	,	"R.A. Gibson"
 	,	"Hardware"
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"MONITOR.COM &ndash; CP&#x2f;M on Nascom&nbsp;2"
+	,	"MONITOR.COM&nbsp;&ndash; CP&#x2f;M on Nascom&nbsp;2"
 	,	"Chris Blackmore"
 	,	"Assembler"
 	,	12
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Tiny BASIC for NAS-SYS &ndash; modifications"
+	,	"Tiny BASIC for NAS-SYS&nbsp;&ndash; modifications"
 	,	"Buxton"
 	,	"Basic"
 	,	15
@@ -55,13 +55,13 @@
 	,	17
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Hands (Further) On &ndash; Pt2"
+	,	"Hands (Further) On&nbsp;&ndash; Pt2"
 	,	"Viktor"
 	,	""
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 2"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 2"
 	,	"John Haigh"
 	,	""
 	,	26

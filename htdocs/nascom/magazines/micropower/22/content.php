@@ -32,7 +32,7 @@
 	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 6"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 6"
 	,	"John Haigh"
 	,	"Assembler"
 	,	7
@@ -63,7 +63,7 @@
 	,	30
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Co-ordinate Life novelty program &ndash; Pt1"
+	,	"Co-ordinate Life novelty program&nbsp;&ndash; Pt1"
 	,	"P. Whittaker"
 	,	"Assembler"
 	,	34

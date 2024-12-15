@@ -24,7 +24,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Letters &ndash; Everybody talks"
+	,	"Letters&nbsp;&ndash; Everybody talks"
 	,	""
 	,	""
 	,	3
@@ -69,7 +69,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"&pi; page &ndash; Speed testing"
+	,	"&pi; page&nbsp;&ndash; Speed testing"
 	,	"J. Haigh"
 	,	""
 	,	11
@@ -114,7 +114,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Software Tips &ndash; Shuffling"
+	,	"Software Tips&nbsp;&ndash; Shuffling"
 	,	""
 	,	""
 	,	17

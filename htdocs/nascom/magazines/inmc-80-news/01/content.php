@@ -12,13 +12,13 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"&lsquo;HE&rsquo; speaks &ndash; Chairman&rsquo;s Bit"
+	,	"&lsquo;HE&rsquo; speaks&nbsp;&ndash; Chairman&rsquo;s Bit"
 	,	"Dave Hunt"
 	,	""
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom is dead &ndash; long live Nascom"
+	,	"Nascom is dead&nbsp;&ndash; long live Nascom"
 	,	""
 	,	""
 	,	3
@@ -82,31 +82,31 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Dots &ndash; Make your own characters"
+	,	"Dots&nbsp;&ndash; Make your own characters"
 	,	""
 	,	""
 	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Hex -> ? &ndash; Reserved Words, and Graphics"
+	,	"Hex -> ?&nbsp;&ndash; Reserved Words, and Graphics"
 	,	""
 	,	""
 	,	18
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 made simple &ndash; The kiddie&rsquo;s guide to Z80 assembler programming &ndash; Part 1"
+	,	"Z80 made simple&nbsp;&ndash; The kiddie&rsquo;s guide to Z80 assembler programming&nbsp;&ndash; Part 1"
 	,	"D.R. Hunt"
 	,	"Assembler"
 	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"S100 &ndash; Readers&rsquo; Replies"
+	,	"S100&nbsp;&ndash; Readers&rsquo; Replies"
 	,	""
 	,	"Hardware"
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"PIO pages &ndash; Usng the PIO or &lsquo;Space invaders meet the Nascom PIO&rsquo;"
+	,	"PIO pages&nbsp;&ndash; Usng the PIO or &lsquo;Space invaders meet the Nascom PIO&rsquo;"
 	,	"Martin Dyer"
 	,	"Hardware"
 	,	24
@@ -142,19 +142,19 @@
 	,	30
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"PASCAL Notes &ndash; Tiny Pascal"
+	,	"PASCAL Notes&nbsp;&ndash; Tiny Pascal"
 	,	"Rory O&rsquo;Farrell"
 	,	"Pascal"
 	,	31
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 Books &ndash; Books and the Z80"
+	,	"Z80 Books&nbsp;&ndash; Books and the Z80"
 	,	"Rory O&rsquo;Farrell"
 	,	""
 	,	32
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 6"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 6"
 	,	"Chris Blackmore"
 	,	""
 	,	34
@@ -181,7 +181,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Index to INMC Newsletters 1 &ndash; 7"
+	,	"Index to INMC Newsletters 1&nbsp;&ndash; 7"
 	,	""
 	,	""
 	,	37
@@ -230,13 +230,13 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS&nbsp;3 &ndash; Improved version of NAS-SYS&nbsp;1"
+	,	"NAS-SYS&nbsp;3&nbsp;&ndash; Improved version of NAS-SYS&nbsp;1"
 	,	""
 	,	""
 	,	47
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Very Official &ndash; To whom it may concern"
+	,	"Very Official&nbsp;&ndash; To whom it may concern"
 	,	""
 	,	"Lawrence"
 	,	48

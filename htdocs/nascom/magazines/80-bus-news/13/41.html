@@ -7,8 +7,8 @@ of the AND.
 </p>
 <p>
 Turning now to the execution timing of the code: It can be seen that even the
-fastest loop is outside the time limit that has to met, so the code &ndash; simple as it
-is &ndash; needs revising to make the loop tighter. Setting the mask byte of 81H in a
+fastest loop is outside the time limit that has to met, so the code&nbsp;&ndash; simple as it
+is&nbsp;&ndash; needs revising to make the loop tighter. Setting the mask byte of 81H in a
 register and performing the AND with that register will save 3 T states, and making
 the last JR a JP will save a further 2, but that only reduces the loop to 68 T
 states, still 4 over the target. The &ldquo;Exit on IRQ&rdquo; JP in the middle of the code is
@@ -31,7 +31,7 @@ Assume that a DRQ has appeared towards the end of the execution of the IN
 instruction that is checking the status port, and has just been missed. Now the
 number of T states that occur until the data byte is actually read is:
 4+<?php spChar("zwsp"); ?>12+<?php spChar("zwsp"); ?>11+<?php spChar("zwsp"); ?>4+<?php spChar("zwsp"); ?>7+<?php spChar("zwsp"); ?>10+<?php spChar("zwsp"); ?>11
-= 59 &ndash; so that byte will be read before the controller assembles
+= 59&nbsp;&ndash; so that byte will be read before the controller assembles
 the next byte (which comes after 64 T states). When the label LOOP is next reached
 the DRQ bit will be set (because it has taken &gt;64 T-sates to get back there) so the
 next data transfer loop will be a short one (56 T states) and some time will be

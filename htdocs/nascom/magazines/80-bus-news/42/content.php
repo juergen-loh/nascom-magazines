@@ -12,7 +12,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Big programs &ndash; chaining and overlays"
+	,	"Big programs&nbsp;&ndash; chaining and overlays"
 	,	"Dave Russ"
 	,	""
 	,	3
@@ -37,7 +37,7 @@
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Gemini GM870 MODEM &ndash; review"
+	,	"Gemini GM870 MODEM&nbsp;&ndash; review"
 	,	"David Hunt"
 	,	"Review"
 	,	21

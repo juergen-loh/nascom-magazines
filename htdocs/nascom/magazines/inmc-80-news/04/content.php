@@ -13,7 +13,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The &lsquo;Boss&rsquo; &ndash; Chairman&rsquo;s Bit"
+	,	"The &lsquo;Boss&rsquo;&nbsp;&ndash; Chairman&rsquo;s Bit"
 	,	"D.R. Hunt"
 	,	""
 	,	2
@@ -49,7 +49,7 @@
 	,	12
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Naspen &ndash; unkilling your text"
+	,	"Naspen&nbsp;&ndash; unkilling your text"
 	,	"P. Copping"
 	,	"Assembler"
 	,	12
@@ -101,13 +101,13 @@
 	,	18
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Pascal &ndash; 4 compilers"
+	,	"Pascal&nbsp;&ndash; 4 compilers"
 	,	"Rory O&rsquo;Farrell"
 	,	"Pascal"
 	,	21
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NEWBUS &ndash; NASBUS and 80-BUS &ndash; Full Specification"
+	,	"NEWBUS&nbsp;&ndash; NASBUS and 80-BUS&nbsp;&ndash; Full Specification"
 	,	"D.R. Hunt"
 	,	"Hardware"
 	,	24
@@ -144,13 +144,13 @@
 	,	35
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"1&#x2e;5 Mbaud &ndash; Gemini EPROM board and Paging"
+	,	"1&#x2e;5 Mbaud&nbsp;&ndash; Gemini EPROM board and Paging"
 	,	"David Parkinson"
 	,	"Hardware"
 	,	41
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 Guide &ndash; The kiddies guide to Z80 assembler programming &ndash; Part 4"
+	,	"Z80 Guide&nbsp;&ndash; The kiddies guide to Z80 assembler programming&nbsp;&ndash; Part 4"
 	,	"D.R. Hunt"
 	,	"Assembler"
 	,	45
@@ -188,7 +188,7 @@
 	,	58
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Game Idea &ndash; Piranah Fish"
+	,	"Game Idea&nbsp;&ndash; Piranah Fish"
 	,	""
 	,	""
 	,	60
@@ -206,7 +206,7 @@
 	,	64
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Impersonal &ndash; Scurrilous Musings"
+	,	"Impersonal&nbsp;&ndash; Scurrilous Musings"
 	,	"Guy Klueless"
 	,	""
 	,	68

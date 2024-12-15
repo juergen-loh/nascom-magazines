@@ -12,7 +12,7 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"HIM &ndash; Chairman&rsquo;s bit"
+	,	"HIM&nbsp;&ndash; Chairman&rsquo;s bit"
 	,	"D.R. Hunt"
 	,	""
 	,	2
@@ -56,7 +56,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Graphics &ndash; N1 displays 16 lines per character but N2 only 14 "
+	,	"Graphics&nbsp;&ndash; N1 displays 16 lines per character but N2 only 14 "
 	,	"D. Smith"
 	,	"Hardware"
 	,	7
@@ -125,7 +125,7 @@
 	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Opinion &ndash; Who&rsquo;s afraid of the micro chip? It&rsquo;s only a paper wolf, after all"
+	,	"Opinion&nbsp;&ndash; Who&rsquo;s afraid of the micro chip? It&rsquo;s only a paper wolf, after all"
 	,	"Rory Johnston"
 	,	""
 	,	18
@@ -137,13 +137,13 @@
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Clubs &ndash; Local Clubs and Groups"
+	,	"Clubs&nbsp;&ndash; Local Clubs and Groups"
 	,	""
 	,	""
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Disks again &ndash; Gemini Disk System"
+	,	"Disks again&nbsp;&ndash; Gemini Disk System"
 	,	"Dave Hunt"
 	,	"Hardware"
 	,	23
@@ -168,7 +168,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Impersonal &ndash; Scurrilous Musings"
+	,	"Impersonal&nbsp;&ndash; Scurrilous Musings"
 	,	"Guy Klueless"
 	,	""
 	,	30
@@ -181,13 +181,13 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 Assembler made simple &ndash; Pt 3"
+	,	"Z80 Assembler made simple&nbsp;&ndash; Pt 3"
 	,	"D.R. Hunt"
 	,	"Assembler"
 	,	32
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Where &ndash; Relocatable code return instruction"
+	,	"Where&nbsp;&ndash; Relocatable code return instruction"
 	,	""
 	,	"Assembler"
 	,	38
@@ -277,7 +277,7 @@
 	,	46
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"If Music Be&hellip; &ndash; Musical Nascoms"
+	,	"If Music Be&hellip;&nbsp;&ndash; Musical Nascoms"
 	,	"M.L. Trim"
 	,	""
 	,	47
@@ -289,7 +289,7 @@
 	,	48
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"ERWSMTFTH &ndash; Cartridge Drive or Stringy Floppy?"
+	,	"ERWSMTFTH&nbsp;&ndash; Cartridge Drive or Stringy Floppy?"
 	,	"C.W. Hobbs"
 	,	"Hardware"
 	,	49
@@ -302,7 +302,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Jumper. &ndash; Restart Jump multiplexer for Nascom&nbsp;1"
+	,	"Jumper.&nbsp;&ndash; Restart Jump multiplexer for Nascom&nbsp;1"
 	,	"M.V.A. Slberry"
 	,	"Hardware"
 	,	52

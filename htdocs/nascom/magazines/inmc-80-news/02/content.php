@@ -12,7 +12,7 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"HIM again &ndash; Chairman&rsquo;s bit"
+	,	"HIM again&nbsp;&ndash; Chairman&rsquo;s bit"
 	,	"D.R. Hunt"
 	,	""
 	,	2
@@ -62,7 +62,7 @@
 	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 7"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 7"
 	,	"Chris Blackmore"
 	,	""
 	,	17
@@ -80,19 +80,19 @@
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Back to Basics &ndash; In Holiday in Basic"
+	,	"Back to Basics&nbsp;&ndash; In Holiday in Basic"
 	,	"R. White"
 	,	"Basic"
 	,	24
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 made simple &ndash; Part 2"
+	,	"Z80 made simple&nbsp;&ndash; Part 2"
 	,	"D.R. Hunt"
 	,	"Assembler"
 	,	26
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Load and Tab &ndash; with checksums"
+	,	"Load and Tab&nbsp;&ndash; with checksums"
 	,	""
 	,	"Assembler"
 	,	31
@@ -110,7 +110,7 @@
 	,	36
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Strings &ndash; The Variable Protector"
+	,	"Strings&nbsp;&ndash; The Variable Protector"
 	,	"M.D. Hendry"
 	,	"Basic"
 	,	37
@@ -123,7 +123,7 @@
 	,	40
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Datron Integer Pascal &ndash; Review"
+	,	"Datron Integer Pascal&nbsp;&ndash; Review"
 	,	"Richard Beal"
 	,	"Review"
 	,	42
@@ -141,27 +141,27 @@
 	,	44
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Impersonal &ndash; Scurrilous Musings"
+	,	"Impersonal&nbsp;&ndash; Scurrilous Musings"
 	,	"Guy Klueless"
 	,	""
 	,	45
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 Books &ndash; Book Review &ndash; Practical Microcomputer Programming &ndash; The Z80"
+	,	"Z80 Books&nbsp;&ndash; Book Review&nbsp;&ndash; Practical Microcomputer Programming&nbsp;&ndash; The Z80"
 	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	46
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 and 8080 Assemble Language Programming &ndash; Review"
+	,	"Z80 and 8080 Assemble Language Programming&nbsp;&ndash; Review"
 	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	47
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"BASIC &ndash; A comparative review of two toolkits for Nascom"
+	,	"BASIC&nbsp;&ndash; A comparative review of two toolkits for Nascom"
 	,	"James Weatherson-Roberts"
 	,	"Review"
 	,	48

@@ -19,7 +19,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 3"
+	,	"SYS-EX&nbsp;&ndash; A 1K Extension Program for NAS-SYS Monitors&nbsp;&ndash; Part 3"
 	,	"David G. Johnson"
 	,	"Assembler"
 	,	2
@@ -31,7 +31,7 @@
 	,	8
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"A Review of Wait &ndash; Gate"
+	,	"A Review of Wait&nbsp;&ndash; Gate"
 	,	"M.S. Smith"
 	,	"Review"
 	,	18

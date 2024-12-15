@@ -25,7 +25,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Hands-On &ndash; Pt3"
+	,	"Hands-On&nbsp;&ndash; Pt3"
 	,	"Viktor"
 	,	""
 	,	3
@@ -50,7 +50,7 @@
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 3"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 3"
 	,	"John Haigh"
 	,	"Assembler"
 	,	26

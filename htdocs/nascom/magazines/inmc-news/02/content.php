@@ -81,7 +81,7 @@
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Double Mastermind (object code listing &ndash; N1)"
+	,	"Double Mastermind (object code listing&nbsp;&ndash; N1)"
 	,	"D. Ritchie"
 	,	"Software"
 	,	16

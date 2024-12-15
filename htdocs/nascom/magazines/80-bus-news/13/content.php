@@ -62,20 +62,20 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"INPUTting and READing Double Precision Constants &ndash; correction"
+	,	"INPUTting and READing Double Precision Constants&nbsp;&ndash; correction"
 	,	"Mike York"
 	,	"Basic"
 	,	9
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 12"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 12"
 	,	"Chris Blackmore"
 	,	""
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"HiSoft Pascal 4 &ndash; short review and Justify procedure"
+	,	"HiSoft Pascal 4&nbsp;&ndash; short review and Justify procedure"
 	,	""
 	,	"Review"
 	,	11
@@ -87,7 +87,7 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Light Pens &ndash; what is it and how to use one"
+	,	"Light Pens&nbsp;&ndash; what is it and how to use one"
 	,	"D. Parkinson"
 	,	""
 	,	15
@@ -117,7 +117,7 @@
 	,	29
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The kiddies guide to Z80 assembler programming &ndash; Part 7<br>"
+	,	"The kiddies guide to Z80 assembler programming&nbsp;&ndash; Part 7<br>"
 	.	"With a lot of detail about the RS232 port"
 	,	"D.R. Hunt"
 	,	"Assembler"

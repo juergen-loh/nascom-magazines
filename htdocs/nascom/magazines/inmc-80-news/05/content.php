@@ -12,7 +12,7 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The &lsquo;DH&rsquo; Show &ndash; The Chairman&rsquo;s Bit"
+	,	"The &lsquo;DH&rsquo; Show&nbsp;&ndash; The Chairman&rsquo;s Bit"
 	,	"D.R. Hunt"
 	,	""
 	,	2
@@ -38,7 +38,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Video &ndash; more on flashing"
+	,	"Video&nbsp;&ndash; more on flashing"
 	,	"Stephen Prince"
 	,	"Hardware"
 	,	9
@@ -63,13 +63,13 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"CAT &ndash; Enhanced directory listing for CP&#x2f;M systems"
+	,	"CAT&nbsp;&ndash; Enhanced directory listing for CP&#x2f;M systems"
 	,	"Steve Hanselman"
 	,	"Assembler"
 	,	18
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"ROM Graphics unit for Nascom&nbsp;1 &ndash; Econographics and DIY"
+	,	"ROM Graphics unit for Nascom&nbsp;1&nbsp;&ndash; Econographics and DIY"
 	,	"Rory O&rsquo;Farrell"
 	,	"Hardware"
 	,	19
@@ -93,7 +93,7 @@
 	,	25
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Nascom&nbsp;2 keyboard &ndash; how it works"
+	,	"The Nascom&nbsp;2 keyboard&nbsp;&ndash; how it works"
 	,	"David Pears"
 	,	"Hardware"
 	,	30
@@ -105,7 +105,7 @@
 	,	31
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"2K&rsquo;s on an N2 &ndash; Using 2716 EPROMS on the Nascom&nbsp;2 main board"
+	,	"2K&rsquo;s on an N2&nbsp;&ndash; Using 2716 EPROMS on the Nascom&nbsp;2 main board"
 	,	"E.P.T. Anderson"
 	,	"Hardware"
 	,	32
@@ -135,7 +135,7 @@
 	,	41
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Z80 Guide &ndash; The kiddies guide to Z80 assembler programming &ndash; Part 5"
+	,	"Z80 Guide&nbsp;&ndash; The kiddies guide to Z80 assembler programming&nbsp;&ndash; Part 5"
 	,	"D.R. Hunt"
 	,	"Assembler"
 	,	42
@@ -147,7 +147,7 @@
 	,	50
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS &ndash; Disk Systems &ndash; What is this thing in CP&#x2f;M called SYS?"
+	,	"SYS&nbsp;&ndash; Disk Systems&nbsp;&ndash; What is this thing in CP&#x2f;M called SYS?"
 	,	"Richard Beal"
 	,	""
 	,	53
@@ -166,7 +166,7 @@
 	,	55
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Book Review &ndash; SOFTWARE TOOLS by B.W.Kernighan and P.J.Plauger"
+	,	"Book Review&nbsp;&ndash; SOFTWARE TOOLS by B.W.Kernighan and P.J.Plauger"
 	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	58

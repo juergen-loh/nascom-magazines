@@ -53,7 +53,7 @@
 	,	17
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 7"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 7"
 	,	"John Haigh"
 	,	"Assembler"
 	,	22

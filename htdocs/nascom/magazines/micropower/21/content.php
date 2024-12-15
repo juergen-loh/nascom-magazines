@@ -32,7 +32,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"XTAL BASIC Extra<br>"
-	.	"2&#x2e;2 updates &ndash; Pt 2"
+	.	"2&#x2e;2 updates&nbsp;&ndash; Pt 2"
 	,	"David Elliot"
 	,	"Basic<br>"
 	.	"Assembler"
@@ -40,7 +40,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"EPROM Programmer / Checker / Reader<br>"
-	.	"for 2708, 2516 &amp; 2716 Source in Macro&nbsp;80 &ndash; Pt2"
+	.	"for 2708, 2516 &amp; 2716 Source in Macro&nbsp;80&nbsp;&ndash; Pt2"
 	,	"C. Bowden"
 	,	"Hardware<br>"
 	.	"Assembler"
@@ -60,14 +60,14 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 5"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 5"
 	,	"John Haigh"
 	,	"Assembler"
 	,	30
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Fruit Machine<br>"
-	.	"game object code listing &ndash; another one"
+	.	"game object code listing&nbsp;&ndash; another one"
 	,	"S.C. Allen"
 	,	"Assembler"
 	,	34

@@ -6,14 +6,14 @@ Auto Graphics Selection On A <span class="uppercase">Nascom</span>
 Most Nascom-2s are equipped with the graphics ROM, and many Nascom-1s
 have some form of graphics capability, either by means of the sadly-departed
 Econographics kit or a locally-produced or commercial system. Often there is need
-to switch between two sets of graphics if you use special characters &ndash; for
+to switch between two sets of graphics if you use special characters&nbsp;&ndash; for
 example, to display the pieces for a chess program such as Sargon.
 This can be done by switching the <?php invertedSignal("CE"); ?> lines of the chips on and off with
 mechanical keys, or, even worse, by using one line from the <?php externalLink("Z80 PIO", "PIO"); ?>
 as a latch to enable the required ROM; this ties up the PIO needlessly.
 </p>
 <p>
-The simple circuit described here uses one of the two spare output lines &ndash;
+The simple circuit described here uses one of the two spare output lines&nbsp;&ndash;
 from port 0, the keyboard port. The spare lines are bits 2 and 5 of this port. The
 status of the port is reflected at &pound;0C00. By modifying &pound;0C00 to set the selected bit to
 1 the corresponding line is set high without affecting the other lines, and it stays that
@@ -22,7 +22,7 @@ pressed. if a program uses the special graphics ROM, you merely have to include
 the following machine code routine at the start of the programs&nbsp;:
 </p>
 <table class="indent" style="width: 80%">
-<tr><td>3E 04</td><td>LD A, 4</td><td>; BIT 2 &ndash; USE LD A, 32 FOR BIT 5</td></tr>
+<tr><td>3E 04</td><td>LD A, 4</td><td>; BIT 2&nbsp;&ndash; USE LD A, 32 FOR BIT 5</td></tr>
 <tr><td>32 00 0C</td><td>LD (&pound;0C00), A</td><td>; CHANGE TO 2ND GRAPHICS ROM</td></tr>
 </table>
 <p class="continued">
@@ -39,7 +39,7 @@ Construction
 Make up a &ldquo;piggy-back&rdquo; board, using a small piece of Veroboard or a
 small PCB, with one 24-pin wirewrap socket, one normal 24-pin socket, and one 14-
 pin socket. Cut pin 18 off the wirewrap socket, leaving about 1/4 inch for
-wiring. Connect pins 1 &ndash; 17 and 19 &ndash; 24 -from the wirewrap to the normal 24-pin
+wiring. Connect pins 1&nbsp;&ndash; 17 and 19&nbsp;&ndash; 24 -from the wirewrap to the normal 24-pin
 socket. The 14 pin socket is wired as shown in figure 1, and the 74LS00 is plugged
 in. The standard graphics chip is placed in the normal socket, and the alternative
 ROM in the wirewrap socket. The board is then inserted into the socket vacated
@@ -49,7 +49,7 @@ Nascom&nbsp;1, pin 8 on a Nascom&nbsp;2) to the input of the 7400 flip-flop as s
 </p>
 <p>
 The circuit is shown for <?php externalLink("2716","",""); ?>-compatible chips, but the principle applies
-to almost any ROMs or EPROMs &ndash; just be sure that you wire the outputs from the
+to almost any ROMs or EPROMs&nbsp;&ndash; just be sure that you wire the outputs from the
 flip-flops to the correct pin on the I.C.s you use. The 2716 chip can be &lsquo;selected&rsquo;
 by voltages applied to pins 18 and 20. Pin 20 is the chip select line (CS), while pin
 18 is Power down/<?php spChar("zwsp"); ?>Program line. If EITHER line is taken to +5&nbsp;volts the data lines of

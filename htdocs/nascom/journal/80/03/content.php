@@ -39,7 +39,7 @@
 	,	8
 	);
 	trJournal($path, $tail, $magazine
-	,	"Hell-Dunkel-Umschaltung für NASCOM&nbsp;1"
+	,	"Hell-Dunkel-Umschaltung für NASCOM&nbsp;1&nbsp;&ndash; Anzeige"
 	,	""
 	,	"Hardware"
 	,	$volume, $issue

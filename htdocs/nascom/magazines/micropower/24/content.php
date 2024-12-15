@@ -39,7 +39,7 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Making a Nascom&nbsp;1 into a Nascom&nbsp;2 &ndash; so to speak"
+	,	"Making a Nascom&nbsp;1 into a Nascom&nbsp;2&nbsp;&ndash; so to speak"
 	,	"P. Crabb"
 	,	"Hardware"
 	,	14

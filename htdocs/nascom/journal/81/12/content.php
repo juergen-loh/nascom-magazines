@@ -18,7 +18,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM &ndash; Teil&nbsp;4"
+	,	"Forth für den NASCOM&nbsp;&ndash; Teil&nbsp;4"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	$volume, $issue
@@ -46,7 +46,7 @@
 	,	10
 	);
 	trJournal($path, $tail, $magazine
-	,	"NAS-SYS 3 &ndash; Kompatibel&nbsp;???"
+	,	"NAS-SYS 3&nbsp;&ndash; Kompatibel&nbsp;???"
 	,	"Michael Bach"
 	,	""
 	,	$volume, $issue
@@ -139,7 +139,7 @@
 	,	25
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic &ndash; Teil&nbsp;5"
+	,	"Sortieren in Basic&nbsp;&ndash; Teil&nbsp;5"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
 	,	$volume, $issue

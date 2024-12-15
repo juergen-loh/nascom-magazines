@@ -77,7 +77,7 @@
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 11"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 11"
 	,	"Chris Blackmore"
 	,	""
 	,	11
@@ -122,13 +122,13 @@
 	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"MONITOR.COM &ndash; CP&#x2f;M on Nascom&nbsp;2 from NAS-SYS&nbsp;1"
+	,	"MONITOR.COM&nbsp;&ndash; CP&#x2f;M on Nascom&nbsp;2 from NAS-SYS&nbsp;1"
 	,	"Jeremy Gugenheim"
 	,	""
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The kiddies guide to Z80 assembler programming &ndash; Part 6<br>"
+	,	"The kiddies guide to Z80 assembler programming&nbsp;&ndash; Part 6<br>"
 	.	"includes a Hangman program"
 	,	"D.R. Hunt"
 	,	"Assembler"

@@ -18,7 +18,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Forth für den NASCOM &ndash; Teil&nbsp;1"
+	,	"Forth für den NASCOM&nbsp;&ndash; Teil&nbsp;1"
 	,	"Günter Kreidl"
 	,	"Forth"
 	,	$volume, $issue
@@ -32,7 +32,7 @@
 	,	5
 	);
 	trJournal($path, $tail, $magazine
-	,	"Sortieren in Basic &ndash; Teil&nbsp;2"
+	,	"Sortieren in Basic&nbsp;&ndash; Teil&nbsp;2"
 	,	"Wolfgang Mayer-Gürr"
 	,	"Basic"
 	,	$volume, $issue
@@ -68,7 +68,7 @@
 	,	17
 	);
 	trJournal($path, $tail, $magazine
-	,	"Unterprogramme für CLDDOS &ndash; Teil&nbsp;2"
+	,	"Unterprogramme für CLDDOS&nbsp;&ndash; Teil&nbsp;2"
 	,	"Gerhard Baier"
 	,	"Assembler"
 	,	$volume, $issue

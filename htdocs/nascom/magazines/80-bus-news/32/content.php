@@ -42,7 +42,7 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 21"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 21"
 	,	"Chris Blackmore"
 	,	""
 	,	17
@@ -60,19 +60,19 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Gemini GM860 EPROM Programmer review &ndash; describes their programming algorithm"
+	,	"Gemini GM860 EPROM Programmer review&nbsp;&ndash; describes their programming algorithm"
 	,	"D.W. Parkinson"
 	,	"Review"
 	,	31
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom Enhanced BASIC (Crystal BASIC 3) &ndash; review"
+	,	"Nascom Enhanced BASIC (Crystal BASIC 3)&nbsp;&ndash; review"
 	,	"Roger Dowling"
 	,	"Review"
 	,	35
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Gemini IVC and SVC &ndash; insight Pt 1"
+	,	"Gemini IVC and SVC&nbsp;&ndash; insight Pt 1"
 	,	"D.W. Parkinson"
 	,	""
 	,	43

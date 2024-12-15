@@ -57,13 +57,13 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"N2 Video &ndash; Review of screen &amp; and screen flash eliminators for Nascom&nbsp;2"
+	,	"N2 Video&nbsp;&ndash; Review of screen &amp; and screen flash eliminators for Nascom&nbsp;2"
 	,	"R. Dowling"
 	,	"Review"
 	,	8
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"PolyDos &ndash; review"
+	,	"PolyDos&nbsp;&ndash; review"
 	,	"Stuard Wood"
 	,	"Review"
 	,	9
@@ -81,7 +81,7 @@
 	,	12
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Dr. &ndash; Doctor Dark&rsquo;s Diary &ndash; Episode the Tenth!"
+	,	"The Dr.&nbsp;&ndash; Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode the Tenth!"
 	,	"Chris Blackmore"
 	,	""
 	,	13
@@ -121,13 +121,13 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Pilot &ndash; update on progress"
+	,	"Pilot&nbsp;&ndash; update on progress"
 	,	""
 	,	""
 	,	16
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"HiSoft Z80 Development Package &ndash; review"
+	,	"HiSoft Z80 Development Package&nbsp;&ndash; review"
 	,	""
 	,	"Review"
 	,	16
@@ -152,25 +152,25 @@
 	,	33
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Disks on a Nascom &ndash; all the choices"
+	,	"Disks on a Nascom&nbsp;&ndash; all the choices"
 	,	"Bob Gilchrist"
 	,	""
 	,	35
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"CB &ndash; Breaking Computers"
+	,	"CB&nbsp;&ndash; Breaking Computers"
 	,	"D.R. Hunt"
 	,	""
 	,	39
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Multi-mapping a Nascom&nbsp;2 revisited &ndash; big changes"
+	,	"Multi-mapping a Nascom&nbsp;2 revisited&nbsp;&ndash; big changes"
 	,	"C. Bowden"
 	,	""
 	,	42
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom&nbsp;1 graphics &ndash; still cheaper"
+	,	"Nascom&nbsp;1 graphics&nbsp;&ndash; still cheaper"
 	,	"Theo Zelders"
 	,	"Hardware"
 	,	47
@@ -182,7 +182,7 @@
 	,	48
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Towers of Hanoi &ndash; BASIC for Nascom&nbsp;2"
+	,	"The Towers of Hanoi&nbsp;&ndash; BASIC for Nascom&nbsp;2"
 	,	"John Waddell"
 	,	"Basic"
 	,	49

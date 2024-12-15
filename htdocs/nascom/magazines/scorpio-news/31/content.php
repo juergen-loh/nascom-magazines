@@ -25,7 +25,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 30"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 30"
 	,	"Chris Blackmore"
 	,	""
 	,	9
@@ -93,7 +93,7 @@
 	,	29
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Lucas Hardware/Software &ndash; Points Arising"
+	,	"Lucas Hardware/Software&nbsp;&ndash; Points Arising"
 	,	"Dennis McLaren"
 	,	""
 	,	30

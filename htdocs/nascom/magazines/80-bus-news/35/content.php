@@ -62,7 +62,7 @@
 	,	27
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Lost characters in CP&#x2f;M &ndash; a solution"
+	,	"Lost characters in CP&#x2f;M&nbsp;&ndash; a solution"
 	,	"Richard Beal"
 	,	""
 	,	28

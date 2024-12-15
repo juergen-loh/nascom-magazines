@@ -12,7 +12,7 @@
 	,	1
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 4"
+	,	"SYS-EX&nbsp;&ndash; A 1K Extension Program for NAS-SYS Monitors&nbsp;&ndash; Part 4"
 	,	"David G. Johnson"
 	,	"Assembler"
 	,	2

@@ -20,7 +20,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"EPROM Programmer / Checker / Reader<br>"
-	.	"for 2708, 2516 &amp; 2716 Source in Macro&nbsp;80 &ndash; Pt1 "
+	.	"for 2708, 2516 &amp; 2716 Source in Macro&nbsp;80&nbsp;&ndash; Pt1 "
 	,	"C. Bowden"
 	,	"Hardware"
 	,	2
@@ -33,7 +33,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"XTAL BASIC XTRA<br>"
-	.	"2&#x2e;2 updates &ndash; Pt1"
+	.	"2&#x2e;2 updates&nbsp;&ndash; Pt1"
 	,	"David Elliot"
 	,	"Basic<br>"
 	.	"Assembler"
@@ -60,7 +60,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Hands On &ndash; Pt4<br>"
+	,	"Hands On&nbsp;&ndash; Pt4<br>"
 	.	"The End of the Beginnig (or vice versa?)"
 	,	"Viktor"
 	,	""
@@ -74,7 +74,7 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected &ndash; Pt 4"
+	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt 4"
 	,	"John Haigh"
 	,	"Assembler"
 	,	27

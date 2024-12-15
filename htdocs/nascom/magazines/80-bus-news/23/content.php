@@ -18,19 +18,19 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"A Light Pen for the Nascom&nbsp;2 &ndash; DIY hardware and software"
+	,	"A Light Pen for the Nascom&nbsp;2&nbsp;&ndash; DIY hardware and software"
 	,	"J. Auckland"
 	,	""
 	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Wordstar for the Gemini IVC &ndash; review"
+	,	"Wordstar for the Gemini IVC&nbsp;&ndash; review"
 	,	"Richard Beal"
 	,	"Review"
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"BASIC on Disk &ndash; Introduction to disk-based MBASIC Interpreter"
+	,	"BASIC on Disk&nbsp;&ndash; Introduction to disk-based MBASIC Interpreter"
 	,	"P.D. Coker"
 	,	"Basic"
 	,	13
@@ -42,7 +42,7 @@
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Epson FX80 printer &ndash; review"
+	,	"The Epson FX80 printer&nbsp;&ndash; review"
 	,	"Rory O&rsquo;Farrell"
 	,	"Review"
 	,	23
@@ -104,13 +104,13 @@
 	,	51
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 16"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 16"
 	,	"Chris Blackmore"
 	,	""
 	,	54
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Pascal compiler comparison &ndash; HiSoft Pascal 4 and Poly-Data Compas"
+	,	"Pascal compiler comparison&nbsp;&ndash; HiSoft Pascal 4 and Poly-Data Compas"
 	,	""
 	,	"Pascal"
 	,	54

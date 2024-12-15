@@ -91,7 +91,7 @@
 	,	10
 	);
 	trJournal($path, $tail, $magazine
-	,	"CP&#x2f;M &ndash; Eine Preisfrage"
+	,	"CP&#x2f;M&nbsp;&ndash; Eine Preisfrage"
 	,	""
 	,	""
 	,	$volume, $issue

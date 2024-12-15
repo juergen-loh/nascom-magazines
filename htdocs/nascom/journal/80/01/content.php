@@ -47,7 +47,7 @@
 	,	11
 	);
 	trJournal($path, $tail, $magazine
-	,	"Arbeiten in Assembler"
+	,	"Arbeiten mit Assembler"
 	,	"Bernd Ploss"
 	,	"Assembler"
 	,	$volume, $issue

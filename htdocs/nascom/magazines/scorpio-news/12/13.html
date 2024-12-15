@@ -5,9 +5,9 @@ appropriate channel of the <?php externalLink("Z80 SIO", "SIO", ""); ?>. This si
 <?php externalLink("MAP80 CPU","MAP CPU"); ?> with the default links as provided:
 </p>
 <table style="width: 100%">
-<tr><td>LB2/2 &nbsp; &ndash; LB2/10</td><td>LB2/3 &nbsp; &ndash; LB2/9</td><td>LB2/13 &ndash; LB2/12</td><td>LB2/1 &nbsp; &ndash; LB2/14</td></tr>
-<tr><td>LB1/18 &ndash; LB1/4</td><td>LB1/19 &ndash; LB1/3</td><td>LB1/17 &ndash; LB1/5+6</td><td>LB1/16 &ndash; LB1/7</td></tr>
-<tr><td>LB1/20 &ndash; LB1/1</td><td></td><td></td><td></td></tr>
+<tr><td>LB2/2 &nbsp;&nbsp;&ndash; LB2/10</td><td>LB2/3 &nbsp;&nbsp;&ndash; LB2/9</td><td>LB2/13&nbsp;&ndash; LB2/12</td><td>LB2/1 &nbsp;&nbsp;&ndash; LB2/14</td></tr>
+<tr><td>LB1/18&nbsp;&ndash; LB1/4</td><td>LB1/19&nbsp;&ndash; LB1/3</td><td>LB1/17&nbsp;&ndash; LB1/5+6</td><td>LB1/16&nbsp;&ndash; LB1/7</td></tr>
+<tr><td>LB1/20&nbsp;&ndash; LB1/1</td><td></td><td></td><td></td></tr>
 </table>
 <p>
 One other point which should be mentioned. Always use the assembler to
@@ -19,18 +19,18 @@ certainly can and should use it to work out the byte count.
 Suppose we require to use a modem? The CCITT V23 standard will require that we
 can receive and transmit at different baud rates (1200/75). Under the set up
 above, we have the receive and transmit clocks for SIO channel A tied to the
-same channel of the <?php externalLink("Z80 CTC", "CTC"); ?> (LB1/17 &ndash; LB1/5+6), so we can&rsquo;t manage just as we are
+same channel of the <?php externalLink("Z80 CTC", "CTC"); ?> (LB1/17&nbsp;&ndash; LB1/5+6), so we can&rsquo;t manage just as we are
 presently linked. We have spare CTC channel 2, and we could use channels 1 and
 2 to provide 1200&nbsp;baud and 75&nbsp;baud clocks, and channel 2 to feed the second SIO
 channel. First of all, we must remake the links a follows:
 </p>
 <table style="width: 100%">
-<tr><td>LB2/1 &nbsp; &ndash; LB2/14</td><td>LB2/12 &ndash; LB2/13</td><td>LB2/1 &nbsp; &nbsp;&nbsp; &ndash; LB2/11</td><td>LB2/2 &nbsp; &ndash; LB2/9+10</td></tr>
-<tr><td>LB1/1 &ndash; LB1/20</td><td>LB1/2 &nbsp; &ndash; LB1/19</td><td>LB1/3+4 &ndash; LB1/18</td><td>LB1/5 &nbsp; &ndash; LB1/17</td></tr>
-<tr><td>LB1/6 &nbsp; &ndash; LB1/16</td><td>LB1/7 &nbsp; &ndash; LB1/15</td><td></td><td></td></tr>
+<tr><td>LB2/1 &nbsp;&nbsp;&ndash; LB2/14</td><td>LB2/12&nbsp;&ndash; LB2/13</td><td>LB2/1 &nbsp; &nbsp;&nbsp;&nbsp;&ndash; LB2/11</td><td>LB2/2 &nbsp;&nbsp;&ndash; LB2/9+10</td></tr>
+<tr><td>LB1/1&nbsp;&ndash; LB1/20</td><td>LB1/2 &nbsp;&nbsp;&ndash; LB1/19</td><td>LB1/3+4&nbsp;&ndash; LB1/18</td><td>LB1/5 &nbsp;&nbsp;&ndash; LB1/17</td></tr>
+<tr><td>LB1/6 &nbsp;&nbsp;&ndash; LB1/16</td><td>LB1/7 &nbsp;&nbsp;&ndash; LB1/15</td><td></td><td></td></tr>
 </table>
 <p>
-(These are as taken from my system Work. them out carefully &ndash; you may not need
+(These are as taken from my system Work. them out carefully&nbsp;&ndash; you may not need
 them all!). If we feed CTC channels 0 and 1 from the same clock (2MHz external)
 can we get the baud rates required? We have already done the calculation for
 the 1200&nbsp;baud and know that 104 is the divisor. How about 75&nbsp;baud?

@@ -31,13 +31,13 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 23"
+	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 23"
 	,	"Chris Blackmore"
 	,	""
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"RP&#x2f;M Version 2&#x2e;3 with Gemini GM811 and GM813 CPU Cards &ndash; patches"
+	,	"RP&#x2f;M Version 2&#x2e;3 with Gemini GM811 and GM813 CPU Cards&nbsp;&ndash; patches"
 	,	"Richard Beal"
 	,	"Assembler"
 	,	9
@@ -85,7 +85,7 @@
 	,	42
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"CP&#x2f;M &ndash; Put an Real Time Clock Into Your CBIOS"
+	,	"CP&#x2f;M&nbsp;&ndash; Put an Real Time Clock Into Your CBIOS"
 	,	"C. Bowden"
 	,	"Assembler"
 	,	43
