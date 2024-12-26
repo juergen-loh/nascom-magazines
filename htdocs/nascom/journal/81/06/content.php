@@ -63,7 +63,8 @@
 	);
 	trJournal($path, $tail, $magazine
 	,	"NASCOM &raquo;barock&laquo;"
-	,	"Peter Block"
+	,	"Peter Block<br>"
+	.	"Günter Böhm"
 	,	"Assembler"
 	,	$volume, $issue
 	,	9
