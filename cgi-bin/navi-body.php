@@ -1146,6 +1146,10 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	case "COMPUTER, Vol 13-1, January 1980, pp68-79":	$url = "https://pub.sergev.org/pub/doc/An-Implementation-Guide-to-a-Proposed-Standard-for-Floating-Point-Arithmetic.pdf";	break;
 	case "Computermonitor":			$url = "https://$lang.wikipedia.org/wiki/Computermonitor";						break;
 	case "Computermuseum Burgrieden":	$url = "http://kath-rottal.homeunix.org/Computermuseum/Lehrsysteme/Kontron%20Z%2080%20Kit/index.html";	break;
+	case "Computing Today, October 1979, Page 64":	$url = "https://archive.org/details/computing-today-1979/ComputingToday197910/page/64/mode/2up";	break;
+	case "Computing Today, October 1979, Page 66":	$url = "https://archive.org/details/computing-today-1979/ComputingToday197910/page/66/mode/2up";	break;
+	case "Computing Today, February 1980, Page 24":	$url = "https://archive.org/details/computing-today-1980/ComputingToday198002/page/24/mode/2up";	break;
+	case "Computing Today, October 1982, Page 46":	$url = "https://archive.org/details/computing-today-1982/ComputingToday198210/page/46/mode/2up";	break;
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
 	case "CP/M":					$url = "https://$lang.wikipedia.org/wiki/CP/M";									break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
@@ -1665,4 +1669,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-15 14:31:39 +0100 (So, 15. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-26 18:09:16 +0100 (Do, 26. Dez 2024) $ -->
