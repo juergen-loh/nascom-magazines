@@ -1524,16 +1524,13 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 			} else {
 				echo $text;
 			}
-			echo '</a>';
-			echo '<!-- /External Link -->',$delimiter;
+			echo "</a><!-- /External Link -->$delimiter";
 		}
 	} else {
 		if ($text != "") {
-			echo "<a href=\"$text\"></a>";
-			echo $text,$delimiter;
+			echo "<a href=\"$text\"></a>$text$delimiter";
 		} else {
-			echo "<a href=\"$link\"></a>";
-			echo $link,$delimiter;
+			echo "<a href=\"$link\"></a>$link$delimiter";
 		}
 	}
 }
@@ -1669,4 +1666,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-26 18:09:16 +0100 (Do, 26. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-26 21:20:09 +0100 (Do, 26. Dez 2024) $ -->
