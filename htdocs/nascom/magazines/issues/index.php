@@ -12,7 +12,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2024-12-15 14:45:48 +0100 (So, 15. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-12-24 16:51:41 +0100 (Di, 24. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -339,6 +339,7 @@
 	<a href="../scorpio-news/13/11/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/14/15/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
+<br>
 </div><div class="col-sm-6">
 <h2>
 	NASCOM ROM BASIC disassembled

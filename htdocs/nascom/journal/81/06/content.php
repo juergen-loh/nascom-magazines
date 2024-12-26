@@ -62,8 +62,8 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"Verb. Melodien"
-	,	""
+	,	"NASCOM &raquo;barock&laquo;"
+	,	"Peter Block"
 	,	"Assembler"
 	,	$volume, $issue
 	,	9
