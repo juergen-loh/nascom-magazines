@@ -1087,7 +1087,7 @@ function imageDesc($year, $issue, $page, $file)
 */	return("");
 }
 
-function externalLink($link, $text="", $delimiter="\n", $title="")
+function externalLink($link, $text="", $delimiter="\n")
 {
 	global $lang;
 
@@ -1499,21 +1499,16 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 			} else {
 				echo 'Externer Link';
 			}
-			if ($text != "" || $newText != "" || $title != "") {
-//				echo ' title="';
+			if ($text != "" || $newText != "") {
 				echo ': ';
-				if ($title != "") {
-					echo $title;
-				} else if ($newText != "") {
+				if ($newText != "") {
 					echo $newText;
 				} else {
 					echo $link;
 				}
-//				echo '"';
 			}
 			echo '"';
 
-//			echo ' title="Externer Link"';
 			echo ' target="_blank"';
 //			https://mathiasbynens.github.io/rel-noopener/
 //			echo ' rel="noopener"';
@@ -1535,30 +1530,31 @@ function externalLink($link, $text="", $delimiter="\n", $title="")
 	}
 }
 
-	function hline($width, $border="")
-	{
-		echo "<!-- Linie"/* &uuml;ber ganze Spalte*/." -->";
-		echo "<div class=\"hline\" style=\"width: $width; margin:auto; ";
-		if (strpos($border, "2") !== FALSE) {	// 2px
-			echo	" border-top:2px";
-		} else {
-			echo	" border-top:1px";
-		}
-		if (strpos($border, "o") !== FALSE) {	// dotted
-			echo	" dotted";
-		} else if (strpos($border, "d") !== FALSE) {	// dashed
-			echo	" dashed";
-		} else {
-			echo	" solid";
-		}
-		echo		" #000; padding: 0; margin-top: 3px; margin-bottom: 3px\">";
-		echo "</div>\n";
+function hline($width, $border="")
+{
+	echo "<!-- Linie"/* &uuml;ber ganze Spalte*/." -->";
+	echo "<div class=\"hline\" style=\"width: $width; margin:auto; ";
+	if (strpos($border, "2") !== FALSE) {	// 2px
+		echo	" border-top:2px";
+	} else {
+		echo	" border-top:1px";
 	}
+	if (strpos($border, "o") !== FALSE) {	// dotted
+		echo	" dotted";
+	} else if (strpos($border, "d") !== FALSE) {	// dashed
+		echo	" dashed";
+	} else {
+		echo	" solid";
+	}
+	echo		" #000; padding: 0; margin-top: 3px; margin-bottom: 3px\">";
+	echo "</div>\n";
+}
 
-	function bottomGap()
-	{
-		echo "<br>";
-	}
+function bottomGap()
+{
+	echo "<br>";
+}
+
 ?>
 <body>
 	<nav class="navbar navbar-expand-<?php echo BootstrapTier("NavTop"); ?> navbar-light bg-light style-navbar-top" id="top">
@@ -1666,4 +1662,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-26 21:20:09 +0100 (Do, 26. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-28 15:53:00 +0100 (Sa, 28. Dez 2024) $ -->
