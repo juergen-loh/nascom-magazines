@@ -4,6 +4,7 @@
 <?php
 
 $nl = "&#32;&#10;";
+$asTitle = "~";		// ALT-Text von Bildern als TITLE sichtbar machen
 $gWidth = 750;
 
 // Globale Funktionen
@@ -28,7 +29,7 @@ function BootstrapTier($context = "")
 
 function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1, $noscale=false)
 {
-	global $magpath, $issuepath, $gWidth;
+	global $magpath, $issuepath, $gWidth, $asTitle;
 	$alt = imageDesc($year, $issue, $page, $imagename);
 	if (isset($magpath)) {
 		list($width, $height, $type, $attr) = getimagesize("$magpath/$issuepath/$imagename");
@@ -78,7 +79,14 @@ function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $c
 	if ($class != "") {
 		echo " $class";
 	}
-	echo "\" src=\"$imagepath$imagename\" alt=\"$alt\" width=\"$width\" height=\"$height\">";
+	echo "\" src=\"$imagepath$imagename\" ";
+	if ($alt != "" && $alt[0] == $asTitle) {
+		$alt = substr($alt, 1);
+		echo "title=\"$alt\"";
+	} else {
+		echo "alt=\"$alt\"";
+	}
+	echo " width=\"$width\" height=\"$height\">";
 	if ($link != "") {
 		echo "</a>";
 	}
@@ -457,7 +465,7 @@ function imageDesc80($issue, $page, $file)
 
 function imageDesc81($issue, $page, $file)
 {
-	global $nl;
+	global $nl, $asTitle;
 
 	switch ("$issue $page $file") {
 	case "01 01 Image-01-1.jpeg":
@@ -529,6 +537,12 @@ function imageDesc81($issue, $page, $file)
 	case "04 00 Image-00-2.jpeg": return("Journal 4/81$nl"."&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5");
 
 	case "06 07 Image-07-2.jpeg": return("NASCOMPL:$nl"."&gt; HALLO!$nl"."&gt; LIEBE$nl"."&gt; LESER!$nl"."&gt;");
+	case "06 07 Image-07-3.jpeg": return(
+			"$asTitle"
+		.	"Nur so konnten die beiden Religionen Sonne und Mond in Antike und Neuzeit vereint werden."."$nl"
+		.	"Die alte Basis ist beeindruckend und weiß nicht, dass wir den Regen$nl"
+		.	"loslassen. Sie kämpft ungehindert darum, den Wagen wie ein Drache$nl"
+		.	"zu halten. Ein Ausflug zum Quellteich ist wie ein Perlennest und Tinte im Regen.");
 	case "06 07 Image-07-4.png":  return("bonbon");
 	case "06 08 Image-08-2.jpeg": return("BUGS BUGS BUGS");
 	case "06 08 Image-08-3.jpeg": return("BASIC");
@@ -1662,4 +1676,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-28 15:53:00 +0100 (Sa, 28. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-28 16:54:47 +0100 (Sa, 28. Dez 2024) $ -->
