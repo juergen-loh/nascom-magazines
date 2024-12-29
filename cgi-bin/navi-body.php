@@ -30,6 +30,7 @@ function BootstrapTier($context = "")
 function imageInsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1, $noscale=false)
 {
 	global $magpath, $issuepath, $gWidth, $asTitle;
+
 	$alt = imageDesc($year, $issue, $page, $imagename);
 	if (isset($magpath)) {
 		list($width, $height, $type, $attr) = getimagesize("$magpath/$issuepath/$imagename");
@@ -43,7 +44,7 @@ function imageInsert($imagepath, $year, $issue, $page, $imagename, $style="", $c
 		}
 		echo ">";
 	}
-	// nascom journal oder magazines?
+	// nascom journal oder nascom magazines?
 	if (isset($magpath)) {
 		// nascom magazines
 		// ----------------
@@ -96,6 +97,7 @@ function imageInsert($imagepath, $year, $issue, $page, $imagename, $style="", $c
 function imagePlain($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
 {
 	global $magpath, $issuepath;
+
 	$alt = imageDesc($year, $issue, $page, $imagename);
 	if (isset($magpath)) {
 		list($width, $height, $type, $attr) = getimagesize("$magpath/$issuepath/$imagename");
@@ -114,14 +116,11 @@ function imagePlain($imagepath, $year, $issue, $page, $imagename, $style="", $cl
 
 function imageCenter($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="")
 {
-//	echo "<div style=\"margin: 0 auto\">";
 	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, "mx-auto d-block $class", $append);
-//	echo "</div>";
 }
 
 function imageRight($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1)
 {
-//	echo "<div style=\"margin-left:auto; margin-right:0\">";
 	echo "<div class=\"text-end\">";
 	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "</div>$append", $link, $target, $scale);
 }
@@ -149,7 +148,7 @@ function figurelink($imagepath, $imagelink, $imagename, $alt, $caption = "&nbsp;
 	echo "</figure>\n";
 }
 
-function imageinsertGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
+function imageInsertGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
 {
 	// mit einer Zeile Abstand nach dem Bild
 	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>");
@@ -178,6 +177,108 @@ function imageNoscaleGap($imagepath, $year, $issue, $page, $imagename, $style=""
 	// unskaliert (magazines), mit einer Zeile Abstand nach dem Bild
 	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>", "", "", 1, true);
 }
+
+// Journal ------------------------------------------------------------------
+
+function imageInsertJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imageInsertGapJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageInsertGap($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imageCenterJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageCenter($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imageCenterGapJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageCenterGap($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imageRightJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageRight($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imageRightGapJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imageRightGap($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+function imagePlainJrn($imagename, $style="", $class="")
+{
+	global $imagepath, $year, $issue, $page;
+	imagePlain($imagepath, $year, $issue, $page, $imagename, $style, $class);
+}
+
+// Magazines ----------------------------------------------------------------
+
+function imageInsertMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageInsert($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageInsertGapMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageInsertGap($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageCenterMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageCenter($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageRightMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageRight($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageRightGapMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageRightGap($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageCenterGapMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageCenterGap($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imagePlainMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imagePlain($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageNoscaleGapMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageNoscaleGap($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+function imageNoscaleMgz($imagename, $style="", $class="")
+{
+	global $imagepath, $magpath, $issuepath, $pagepath;
+	imageNoscale($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+}
+
+// --------------------------------------------------------------------------
 
 function InsertArrow($s)
 {
@@ -1602,6 +1703,7 @@ HEREDOC;
 				{
 					global $document_root;
 					global $gHtmlRoot;
+
 					$request = addslashes(getenv('REQUEST_URI'));
 					$item_dir = "$document_root/$dir";
 /*
@@ -1645,6 +1747,7 @@ HEREDOC;
 				{
 					global $gHtmlRoot;
 					global $document_root;
+
 					$result = "";
 					$item_dir = "$document_root/$dir";
 //					$result .= "<!--item_dir $item_dir-->";
@@ -1676,4 +1779,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-29 18:42:06 +0100 (So, 29. Dez 2024) $ -->
