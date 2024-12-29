@@ -22,7 +22,7 @@ was providing the correct IOEXT signal, and here I discovered the cause
 of the problem, below is a simplified version of the <span class="uppercase">Nascom&nbsp;1</span> IO
 decoding:
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-1.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-1.png"); ?>
 <p class="noindent">
 As can be seen on internal port decoding, if A2 is lo then the keyboard
 and UART ports are selected while A2 hi selects the PIO. Unfortunatly
@@ -30,5 +30,5 @@ on external IO decoding IOEXT has the same effect as A2 had, so that
 there is no way of turning off the <span class="uppercase">Nascom&nbsp;1</span> ports. Fortunatly the
 circuit can be corrected with the existing gates, to the following:
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-2.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-14-2.png"); ?>
 <?php columnEnd(1); ?>

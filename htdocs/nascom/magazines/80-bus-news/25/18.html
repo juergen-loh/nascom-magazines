@@ -2,7 +2,7 @@
 <p class="noindent">
 In the example above, we could have written:
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-1.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-1.png"); ?>
 <p>
 The problem of the blanks would still remain though. One way of dealing
 with the blanks is simply to read the Field from left to right and discard
@@ -10,14 +10,14 @@ blanks. This is O.K. until we realize that some Fields contain needed blanks
 (e.g. SOUTH ROAD). A better way to deal with the problem is to deliberately
 mark the end of the required data with a special Character:
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-2.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-2.png"); ?>
 <p>
 Assuming use of a 20 byte field, and that the word &lsquo;LONDON&rsquo; is INPUT,
 this would store the Field TOWN$ as &lsquo;LONDON* &nbsp; &lsquo;. To extract the
 Town from the Disk Record, less blanks and Field terminator, the following
 type of routine can be used&nbsp;:
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-3.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-3.png"); ?>
 <p>
 The reason for using the &ldquo;dummy&rdquo; variables TEMP$ and OP$ is that all
 Fields that need processing in this way can then use the same Subroutine.
@@ -46,5 +46,5 @@ the Record Date Field.
 When Data is stored in a Field, it is padded out with Blanks. The command
 that achieves this is LSET or RSET.
 </p>
-<?php imageinsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-4.png"); ?>
+<?php imageInsert($imagepath, $magpath, $issuepath, $pagepath, "Image-18-4.png"); ?>
 <?php columnEnd(1); ?>

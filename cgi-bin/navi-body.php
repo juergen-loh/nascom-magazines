@@ -27,7 +27,7 @@ function BootstrapTier($context = "")
 	}
 }
 
-function imageinsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1, $noscale=false)
+function imageInsert($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="", $link="", $target="", $scale=1, $noscale=false)
 {
 	global $magpath, $issuepath, $gWidth, $asTitle;
 	$alt = imageDesc($year, $issue, $page, $imagename);
@@ -115,7 +115,7 @@ function imagePlain($imagepath, $year, $issue, $page, $imagename, $style="", $cl
 function imageCenter($imagepath, $year, $issue, $page, $imagename, $style="", $class="", $append="")
 {
 //	echo "<div style=\"margin: 0 auto\">";
-	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, "mx-auto d-block $class", $append);
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, "mx-auto d-block $class", $append);
 //	echo "</div>";
 }
 
@@ -123,7 +123,7 @@ function imageRight($imagepath, $year, $issue, $page, $imagename, $style="", $cl
 {
 //	echo "<div style=\"margin-left:auto; margin-right:0\">";
 	echo "<div class=\"text-end\">";
-	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "</div>$append", $link, $target, $scale);
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "</div>$append", $link, $target, $scale);
 }
 
 function imagelink($imagepath, $imagelink, $imagename, $alt, $class="")
@@ -152,7 +152,7 @@ function figurelink($imagepath, $imagelink, $imagename, $alt, $caption = "&nbsp;
 function imageinsertGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
 {
 	// mit einer Zeile Abstand nach dem Bild
-	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>");
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>");
 }
 
 function imageCenterGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
@@ -170,13 +170,13 @@ function imageRightGap($imagepath, $year, $issue, $page, $imagename, $style="", 
 function imageNoscale($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
 {
 	// unskaliert (magazines)
-	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "", "", "", 1, true);
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "", "", "", 1, true);
 }
 
 function imageNoscaleGap($imagepath, $year, $issue, $page, $imagename, $style="", $class="")
 {
 	// unskaliert (magazines), mit einer Zeile Abstand nach dem Bild
-	imageinsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>", "", "", 1, true);
+	imageInsert($imagepath, $year, $issue, $page, $imagename, $style, $class, "<br><br>", "", "", 1, true);
 }
 
 function InsertArrow($s)
@@ -1676,4 +1676,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-28 16:54:47 +0100 (Sa, 28. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->

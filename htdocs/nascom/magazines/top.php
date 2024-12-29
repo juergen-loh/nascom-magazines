@@ -20,7 +20,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-12-15 14:45:48 +0100 (So, 15. Dez 2024) $ -->
+	<!-- top.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
@@ -101,7 +101,7 @@
 
 	if (isset($pict)) {
 		echo "\t<h1 id=\"head\">\n\t\t";
-		imageinsert(
+		imageInsert(
 			""
 		,	$title, "", $page
 		,	sprintf("%s/%s", $path, $pict)

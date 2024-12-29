@@ -29,7 +29,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
+	<!-- top.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
@@ -120,7 +120,7 @@
 		echo "\t\t<h1 id=\"head\">\n\t\t\t";
 		sscanf($imgName, "/%2s/%2s/Image-%2s-%d.jpeg", $year, $issuex, $page, $idx);
 //		echo "<!-- $year, $issuex, $page -->\n";
-		imageinsert(
+		imageInsert(
 			""
 		,	$year, $issuex, $page
 		,	$tppath.$imgName
