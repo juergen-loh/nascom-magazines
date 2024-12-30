@@ -1414,7 +1414,9 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Kornkraft Genossenschaft":$url = "https://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://$lang.wikipedia.org/wiki/Lichtgriffel";							break;
-	case "Conway's Game of Life":	$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";				break;
+	case "Conway's Game of Life":
+			if ($lang == "en")		$url = "https://$lang.wikipedia.org/wiki/Conway's_Game_of_Life";
+			else					$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";				break;
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;
 	case "LM324":					$url = "https://www.ti.com/lit/ds/symlink/lm124-n.pdf";							break;
 	case "LM741":					$url = "https://www.ti.com/lit/ds/symlink/lm741.pdf";							break;
