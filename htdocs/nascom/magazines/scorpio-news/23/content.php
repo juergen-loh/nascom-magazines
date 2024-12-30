@@ -44,7 +44,7 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Public Domain Software&nbsp;&ndash; a note of caution"
+	,	"Public Domain Software &ndash; a note of caution"
 	,	"P.D. Coker"
 	,	""
 	,	19
@@ -68,7 +68,7 @@
 	,	26
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Digital Imaging Systems&nbsp;&ndash; Part 2"
+	,	"Digital Imaging Systems &ndash; Part 2"
 	,	"D.R. Hunt"
 	,	""
 	,	33

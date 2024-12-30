@@ -25,7 +25,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Turbo Pascal on Gemini&nbsp;&ndash; two letters"
+	,	"Turbo Pascal on Gemini &ndash; two letters"
 	,	"Tom Gibson<br>"
 	.	"R T Lea"
 	,	"Pascal"
@@ -89,7 +89,7 @@
 	,	29
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Lawrence Lipshitz&nbsp;&ndash; the voice of reason"
+	,	"Lawrence Lipshitz &ndash; the voice of reason"
 	,	"D.G. Richards"
 	,	"Lawrence"
 	,	31

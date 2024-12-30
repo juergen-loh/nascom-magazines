@@ -43,13 +43,13 @@
 	,	17
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Direct Keyboard Commands&nbsp;&ndash; Update &amp; More GEMPEN Mods."
+	,	"Direct Keyboard Commands &ndash; Update &amp; More GEMPEN Mods."
 	,	"C. Bowden"
 	,	""
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Digital Imaging Systems&nbsp;&ndash; Part 3"
+	,	"Digital Imaging Systems &ndash; Part 3"
 	,	"D.R. Hunt"
 	,	""
 	,	25

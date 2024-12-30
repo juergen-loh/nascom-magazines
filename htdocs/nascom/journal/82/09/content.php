@@ -26,7 +26,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"DMA&nbsp;&ndash; Teil&nbsp;2"
+	,	"DMA &ndash; Teil&nbsp;2"
 	,	"Josef Zeller"
 	,	"Assembler"
 	,	$volume, $issue
@@ -41,7 +41,7 @@
 	,	5
 	);
 	trJournal($path, $tail, $magazine
-	,	"Typenrad-Terminal&nbsp;&ndash; Teil&nbsp;3"
+	,	"Typenrad-Terminal &ndash; Teil&nbsp;3"
 	,	"Günter Kreidl"
 	,	"Hardware"
 	,	$volume, $issue
@@ -91,7 +91,7 @@
 	,	14
 	);
 	trJournal($path, $tail, $magazine
-	,	"Funktionstaste&nbsp;&ndash; Software-Repeat"
+	,	"Funktionstaste &ndash; Software-Repeat"
 	,	"Gustav W. Delius"
 	,	"Assembler"
 	,	$volume, $issue
@@ -105,7 +105,7 @@
 	,	16
 	);
 	trJournal($path, $tail, $magazine
-	,	"ROM-Basic 4&#x2e;7&nbsp;&ndash; 2 Versionen"
+	,	"ROM-Basic 4&#x2e;7 &ndash; 2 Versionen"
 	,	"Gerhard Wilharm"
 	,	"Basic"
 	,	$volume, $issue

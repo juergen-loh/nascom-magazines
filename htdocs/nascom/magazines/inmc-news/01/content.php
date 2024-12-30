@@ -65,7 +65,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Cassette loading (software issues&nbsp;&ndash; Nasbug)"
+	,	"Cassette loading (software issues &ndash; Nasbug)"
 	,	""
 	,	"Software"
 	,	5-1

@@ -18,13 +18,13 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The Colour Cards Compared&nbsp;&ndash; 7 of them (note mod to get Nascom IVC and RAM card to work together)"
+	,	"The Colour Cards Compared &ndash; 7 of them (note mod to get Nascom IVC and RAM card to work together)"
 	,	"D.R. Hunt"
 	,	"Hardware"
 	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 17"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 17"
 	,	"Chris Blackmore"
 	,	""
 	,	17
@@ -48,7 +48,7 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"RAM-DISKS&nbsp;&ndash; theory and Gemini GM833 reviewed (dynamic RAM)"
+	,	"RAM-DISKS &ndash; theory and Gemini GM833 reviewed (dynamic RAM)"
 	,	"D. Parkinson"
 	,	"Review"
 	,	35

@@ -41,7 +41,7 @@
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash;5<br>"
+	,	"Doctor Dark&rsquo;s Diary &ndash;5<br>"
 	.	"Bits and P.C.s dual Monitor board and control keypad"
 	,	"Chris Blackmore"
 	,	""
@@ -138,13 +138,13 @@
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Memory Plague&nbsp;&ndash; the final definitive note for Series 1 memory cards"
+	,	"Memory Plague &ndash; the final definitive note for Series 1 memory cards"
 	,	""
 	,	"Hardware"
 	,	22
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"RAM B&nbsp;&ndash; welcome&nbsp;!"
+	,	"RAM B &ndash; welcome&nbsp;!"
 	,	""
 	,	"Review"
 	,	23
@@ -196,7 +196,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Book Review<br>"
-	.	"Z80 Instant Programs&nbsp;&ndash; J. Hopt, Sigma Technical Presson"
+	.	"Z80 Instant Programs &ndash; J. Hopt, Sigma Technical Presson"
 	,	"David Hunt"
 	,	"Review"
 	,	33

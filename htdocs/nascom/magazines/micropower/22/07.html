@@ -13,7 +13,7 @@ The keys of the keyboard are connected in an array of eight rows by seven
 columns (six columns in the case of the Nascom&nbsp;1 keyboard). Each row of keys is
 connected to one output line of a chip known as a &lsquo;BCD to Decimal Decoder/<?php spChar("zwsp"); ?>Driver&rsquo;.
 This chip accepts a four-bit binary pattern and if it represents a valid decimal digit
-(i.e., if it is in the range 0&nbsp;&ndash; 9) it drives the corresponding output line to zero volts.
+(i.e., if it is in the range 0 &ndash; 9) it drives the corresponding output line to zero volts.
 Three of the input lines are taken from a binary counter, which merely counts a series
 of clocking pulses and outputs a corresponding binary number; the fourth bit is
 derived from the clocking pulse, in such a way that one of the eight lines used by
@@ -33,7 +33,7 @@ zero, that is, taking this bit to 1 for a short period, and then returning it to
 sends a pulse along the &lsquo;Keyboard Reset&rsquo; line, which resets the binary counter to
 zero. The status of row 0 is then read, complemented so that keys pressed are
 represented by 1&rsquo;s, and saved in the bottom byte of the KEYMAP region of the
-workspace (&pound;0C01&nbsp;&ndash; &pound;0C09).
+workspace (&pound;0C01 &ndash; &pound;0C09).
 </p>
 <p>
 The routine now scans each row of the keyboard by flipping bit 0 of port 0

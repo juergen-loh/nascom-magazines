@@ -60,7 +60,7 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s diary&nbsp;&ndash;2<br>"
+	,	"Doctor Dark&rsquo;s diary &ndash;2<br>"
 	.	"Z80 Opcodes"
 	,	"Chris Blackmore"
 	,	"Assembler"
@@ -85,7 +85,7 @@
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"XTAL BASIC 1&#x2e;3&nbsp;&ndash; bug list"
+	,	"XTAL BASIC 1&#x2e;3 &ndash; bug list"
 	,	""
 	,	"Basic"
 	,	16
@@ -160,7 +160,7 @@
 	,	33
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Eliza game (object code listing&nbsp;&ndash; continued on page 22)"
+	,	"Eliza game (object code listing &ndash; continued on page 22)"
 	,	"J. Shrager<br>"
 	.	"David Hunt"
 	,	"Basic"

@@ -20,7 +20,7 @@
 	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 26"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 26"
 	,	"Chris Blackmore"
 	,	""
 	,	5
@@ -32,13 +32,13 @@
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Disk Formats and CP&#x2f;M Disk Routines&nbsp;&ndash; Part 3"
+	,	"Disk Formats and CP&#x2f;M Disk Routines &ndash; Part 3"
 	,	"M.W.T. Waters"
 	,	"Software"
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Dealer Profile&nbsp;&ndash; Off Records"
+	,	"Dealer Profile &ndash; Off Records"
 	,	""
 	,	""
 	,	17
@@ -50,7 +50,7 @@
 	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"The ZCPR3 System&nbsp;&ndash; Part 2&nbsp;&ndash; Installation"
+	,	"The ZCPR3 System &ndash; Part 2 &ndash; Installation"
 	,	"C. Bowden"
 	,	"Software"
 	,	25

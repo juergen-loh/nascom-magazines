@@ -20,7 +20,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->
+	<!-- top.php / $Date: 2024-12-29 21:00:32 +0100 (So, 29. Dez 2024) $ -->
 
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
@@ -30,8 +30,8 @@
 	$titleClean = str_replace("&shy;", "", $titleClean);
 //	$titleClean = str_replace("&middot;", "", $titleClean);
 	echo "\t<title>$titleClean";
-	if (isset($issue)) echo "&nbsp;&ndash; $issue";
-	echo "&nbsp;&ndash; Table of Contents";
+	if (isset($issue)) echo " &ndash; $issue";
+	echo " &ndash; Table of Contents";
 	echo "</title>\n";
 	echo "\t<!-- $lastModified -->\n";
 

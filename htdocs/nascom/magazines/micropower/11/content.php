@@ -38,13 +38,13 @@
 	,	6
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Printerface&nbsp;&ndash; the Epsom MX80 F&#x2f;T"
+	,	"Printerface &ndash; the Epsom MX80 F&#x2f;T"
 	,	"P. Whittaker"
 	,	""
 	,	12
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Hands-On!&nbsp;&ndash; Pt1"
+	,	"Hands-On! &ndash; Pt1"
 	,	"Viktor"
 	,	""
 	,	16
@@ -63,7 +63,7 @@
 	,	27
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-SYS monitors dissected&nbsp;&ndash; Pt1"
+	,	"NAS-SYS monitors dissected &ndash; Pt1"
 	,	"John Haigh"
 	,	""
 	,	28

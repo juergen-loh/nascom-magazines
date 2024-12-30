@@ -19,7 +19,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS-EX&nbsp;&ndash; A 1K Extension Program for NAS-SYS Monitors&nbsp;&ndash; Part 2"
+	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 2"
 	,	"David G. Johnson"
 	,	"Assembler"
 	,	2
@@ -33,7 +33,7 @@
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Compass Additions<br>"
-	.	"Level 9 Compression Assembler from Compass&nbsp;&ndash; extra commands with source listing"
+	.	"Level 9 Compression Assembler from Compass &ndash; extra commands with source listing"
 	,	"Alan Marshall"
 	,	"Assembler"
 	,	15

@@ -84,7 +84,7 @@
 	,	2
 	);
 	trJournal($path, $tail, $magazine
-	,	"2732/64-EPROM Programmer&nbsp;&ndash; Teil&nbsp;1"
+	,	"2732/64-EPROM Programmer &ndash; Teil&nbsp;1"
 	,	"Bernd Schuhmacher"
 	,	"Hardware"
 	,	$volume, $issue

@@ -37,7 +37,7 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 19"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 19"
 	,	"Chris Blackmore"
 	,	""
 	,	15

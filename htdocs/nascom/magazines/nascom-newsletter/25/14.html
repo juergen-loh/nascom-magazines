@@ -1,37 +1,37 @@
 <?php columnStart(1); ?>
 <p class="continued">
-be quite as expected&nbsp;&ndash; each EPROM location within a block will
+be quite as expected &ndash; each EPROM location within a block will
 remain at an address relative to a 16k block address, ie. a
 typical 16k block would be C000 D000 E000 and F000 for positions
 1 2 3 4 respectively if however the block address started at
-B000 then they would run as follows for 1 2 3 4&nbsp;&ndash; D000 E000 F000
-and then B000 respectively&nbsp;&ndash; does that make sense.
+B000 then they would run as follows for 1 2 3 4 &ndash; D000 E000 F000
+and then B000 respectively &ndash; does that make sense.
 </p>
 <p>
 I think that is all you need to know with regard to
-addressing&nbsp;&ndash; except that it is quite O.K. to only access part
+addressing &ndash; except that it is quite O.K. to only access part
 of a page without any side effects.
 </p>
 <h3 class="uppercase">
 Modifications To Provide Soft&shy;ware Paging
 </h3>
 <p>
-First the bad news&nbsp;&ndash; you will need to buy a CMOS IC type
+First the bad news &ndash; you will need to buy a CMOS IC type
 MC4053 or CD4053 or similar (about 50p) and, if you haven&rsquo;t got
 one fitted, a 24-way dil plug to save B........g OOPS, messing
 up the address selection dil socket.
 </p>
 <p>
-With reference to Fig&nbsp;2&nbsp;&ndash; STICK the IC with its legs
+With reference to Fig&nbsp;2 &ndash; STICK the IC with its legs
 <span class="uppercase">Skyward</span> so that pin 1 of the IC is next to pin 24 of the dil
 plug. Pins 1, 4, 6, 7, &amp; 8 can the be (bent) straight and
 soldered directly to the dil plug as shown. The ramainder of
-the connections can then be made&nbsp;&ndash; I mould suggest using THIN
+the connections can then be made &ndash; I mould suggest using THIN
 single stranded wire for this job au there is NOT a LOT ROOM
 and solder bridges can occur all too easily. Then wire ping 9 &amp;
 10 to IC32 pins 15 &amp; 7 respectively these wires pick up the
 latched addresses from the FF port bits 2 &amp; 3 (bit 1 turns ON or
-OFF the card&nbsp;&ndash; hence the odd page address). Finally connect pin
+OFF the card &ndash; hence the odd page address). Finally connect pin
 16 of your I.C. to. +5v which is conveniently available on the
 link blocks and is shown in fig&nbsp;1. When using <?php externalLink("2732"); ?> it as
 essential to use WAIT STATES as very few if any are fast
@@ -59,6 +59,6 @@ BIT A LOGIC the additional EPROM locations could be paged in or
 put at another address. If all this paging is getting
 complicated &ldquo;Why not write a MENU program to select the pages
 and start the progs for you and load them into RAM when and if
-required&rdquo;&nbsp;&ndash; I did and it took 1k to do it all!!!!!!!!.
+required&rdquo; &ndash; I did and it took 1k to do it all!!!!!!!!.
 </p>
 <?php columnEnd(1); ?>

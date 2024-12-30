@@ -30,7 +30,7 @@
 	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 13. Pascal Episode"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 13. Pascal Episode"
 	,	"Chris Blackmore"
 	,	"Pascal"
 	,	6
@@ -55,7 +55,7 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"What is CP&#x2f;M?&nbsp;&ndash; An independent look"
+	,	"What is CP&#x2f;M? &ndash; An independent look"
 	,	"D.R. Hunt"
 	,	""
 	,	17

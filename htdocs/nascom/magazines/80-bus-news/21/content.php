@@ -61,13 +61,13 @@
 	,	18
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Understanding CP&#x2f;M&nbsp;&ndash; Customising the BIOS"
+	,	"Understanding CP&#x2f;M &ndash; Customising the BIOS"
 	,	"C. Bowden"
 	,	"Assembler"
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Colour Supplement Edition"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Colour Supplement Edition"
 	,	"Chris Blackmore"
 	,	""
 	,	29
@@ -103,13 +103,13 @@
 	,	40
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS for CP&#x2f;M&nbsp;&ndash; Latest developments"
+	,	"SYS for CP&#x2f;M &ndash; Latest developments"
 	,	"Richard Beal"
 	,	""
 	,	44
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Virtual Disks&nbsp;&ndash; are they useless"
+	,	"Virtual Disks &ndash; are they useless"
 	,	"Richard Beal"
 	,	""
 	,	47

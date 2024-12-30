@@ -25,13 +25,13 @@
 	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Private Advertisements&nbsp;&ndash; 1"
+	,	"Private Advertisements &ndash; 1"
 	,	""
 	,	""
 	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 28"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 28"
 	,	"Chris Blackmore"
 	,	""
 	,	8
@@ -49,7 +49,7 @@
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Private Advertisements&nbsp;&ndash; 2"
+	,	"Private Advertisements &ndash; 2"
 	,	""
 	,	""
 	,	21

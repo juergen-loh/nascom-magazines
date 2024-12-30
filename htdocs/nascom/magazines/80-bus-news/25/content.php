@@ -48,7 +48,7 @@
 	,	25
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"2716 and 2732 EPROMS on Nascom&nbsp;2&nbsp;&ndash; detailed instructions"
+	,	"2716 and 2732 EPROMS on Nascom&nbsp;2 &ndash; detailed instructions"
 	,	"David Parkinson"
 	,	"Hardware"
 	,	25
@@ -73,7 +73,7 @@
 	,	39
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 18"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 18"
 	,	"Chris Blackmore"
 	,	""
 	,	47

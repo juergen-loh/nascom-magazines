@@ -50,13 +50,13 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"ZEAP&nbsp;&ndash; Have you got it; if so, does it hurt"
+	,	"ZEAP &ndash; Have you got it; if so, does it hurt"
 	,	""
 	,	"Assembler"
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Memory Plague&nbsp;&ndash; Definitely hurts (N1)"
+	,	"Memory Plague &ndash; Definitely hurts (N1)"
 	,	""
 	,	"Hardware"
 	,	12
@@ -68,7 +68,7 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Super software section&nbsp;&ndash; Food for your soul<br>"
+	,	"Super software section &ndash; Food for your soul<br>"
 	.	"(Software hints and tips)"
 	,	""
 	,	"Assembler"
@@ -82,14 +82,14 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Library catalogue&nbsp;&ndash; Nice fresh programs<br>"
+	,	"Library catalogue &ndash; Nice fresh programs<br>"
 	.	"(Software Library)"
 	,	""
 	,	""
 	,	19
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Four free programs&nbsp;&ndash; Refuse we can&rsquo;t offer!"
+	,	"Four free programs &ndash; Refuse we can&rsquo;t offer!"
 	,	"Richard Beal"
 	,	""
 	,	22

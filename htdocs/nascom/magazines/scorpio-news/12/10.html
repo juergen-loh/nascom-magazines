@@ -22,7 +22,7 @@ count ready to go again.
 In programming the CTC for a system using vectored interrupts, we must therefore
 supply a valid interrupt vector. This is the lowest of four consecutive slots
 in the interrupt service table, and is passed to channel 0. Channel 0
-reorganises it as an interrupt vector because the lease three bits are 0&nbsp;&ndash;
+reorganises it as an interrupt vector because the lease three bits are 0 &ndash;
 typically the form of this vector is:
 </p>
 <?php imageCenterMgz("Image-10-1.png"); ?>
@@ -47,14 +47,14 @@ These bits have the following meaning
 <table>
 <tr><td>D7&nbsp;=&nbsp;1&nbsp;&nbsp;&nbsp;&ndash;</td><td>Generate interrupt every time downcounter becomes zero. Before doing
 		this, an interrupt vector must have been written to the CTC.</td></tr>
-<tr><td>D7 = 0 &nbsp;&nbsp;&ndash;</td><td>No interrupt from this channel.<br><br></td></tr>
-<tr><td>D6 = 1 &nbsp;&nbsp;&ndash;</td><td>Select counter mode. Down counter is decremented by each triggering
+<tr><td>D7 = 0 &nbsp; &ndash;</td><td>No interrupt from this channel.<br><br></td></tr>
+<tr><td>D6 = 1 &nbsp; &ndash;</td><td>Select counter mode. Down counter is decremented by each triggering
 		edge of the external clock from CLK/<?php spChar("zwsp"); ?>TRG pin. No prescaler used.</td></tr>
-<tr><td>D6 = 0 &nbsp;&nbsp;&ndash;</td><td>Select timer mode. System clock feeds through the Prescaler, thence
+<tr><td>D6 = 0 &nbsp; &ndash;</td><td>Select timer mode. System clock feeds through the Prescaler, thence
 		to the Down Counter. The ZC/TOn pin is pulsed at a frequency of
 		tc*P*TC, where tc is system clock period, P is prescaler factor of 16
 		or 256, as set by bit 5, and TC is the time constant data word.<br><br></td></tr>
-<tr><td>D5 = 1 &nbsp;&nbsp;&ndash;</td><td>is defined only in timer mode. &nbsp; Prescaler = 256</td></tr>
-<tr><td>D5 = 0 &nbsp;&nbsp;&ndash;</td><td>is defined only in timer mode. &nbsp; Prescaler = 16</td></tr>
+<tr><td>D5 = 1 &nbsp; &ndash;</td><td>is defined only in timer mode. &nbsp; Prescaler = 256</td></tr>
+<tr><td>D5 = 0 &nbsp; &ndash;</td><td>is defined only in timer mode. &nbsp; Prescaler = 16</td></tr>
 </table>
 <?php columnEnd(1); ?>

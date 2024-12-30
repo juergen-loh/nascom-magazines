@@ -6,7 +6,7 @@ only used in Mode 3, and Bit 7 enables or disables the Port to interrupt. If Bit
 condition occurs while disabled, the <?php externalLink("Z80 PIO", "PIO"); ?> latches it, and interrupts as soon as
 Port interrupts are re-enabled. If we don&rsquo;t want this to happen, then we can set
 Bit 4 in the Interrupt Control Word to reset the pending interrupt condition.
-Bits 4&nbsp;&ndash; 6 are used in Mode 3. If Bit 6 = 1, then selected lines are monitored
+Bits 4 &ndash; 6 are used in Mode 3. If Bit 6 = 1, then selected lines are monitored
 for AND condition, i.e. they must all be active for interrupts. If bit 7 = 0,
 then any one of them can be active and cause an interrupt. Bit 5 =1 indicates
 that they should be monitored for High level, = 0 for low level. Bit 4 = 1
@@ -47,13 +47,13 @@ PIO. Now we have to consider what the Interrupt handling routine is to do.
 Obviously, without knowing the precise form of your peripheral, this is something
 I can&rsquo;t deal with in particular, but there are a few points to draw to your
 attention. First of all, an interrupt automatically disables any further
-interrupts&nbsp;&ndash; not just from the same device, but over the whole Machine, except
+interrupts &ndash; not just from the same device, but over the whole Machine, except
 for the NMI. It is at your discretion when to reenable them. This action will
 allow higher priority devices to interrupt the service routine currently running.
 As a rough rule of thumb, timer and floppy disk interrupts are usually accorded
 higher priority than simple input/<?php spChar("zwsp"); ?>output devices. So, suppose your parallel
 printer is connected up to a port, and interrupts for more data. Usually a
-printer has a buffer within it, and a print rate of 60&nbsp;&ndash; 120 chars per sec. So
+printer has a buffer within it, and a print rate of 60 &ndash; 120 chars per sec. So
 long as the printer has about 100 chars in its buffer, it won&rsquo;t need any further
 attention for about a second. This means that we could, for example, allow our
 <?php externalLink("Z80 CTC", "CTC", ""); ?> to interrupt the printer routine every half second or so with the time. We

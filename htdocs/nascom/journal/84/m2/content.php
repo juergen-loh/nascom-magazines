@@ -40,7 +40,7 @@
 	,	4
 	);
 	trJournal($path, $tail, $magazine
-	,	"CP&#x2f;M 2&#x2e;2&nbsp;&ndash; Aktion"
+	,	"CP&#x2f;M 2&#x2e;2 &ndash; Aktion"
 	,	""
 	,	""
 	,	$volume, $issue

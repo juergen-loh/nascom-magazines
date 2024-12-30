@@ -26,7 +26,7 @@
 	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Dealer Profile&nbsp;&ndash; Arctic Computers"
+	,	"Dealer Profile &ndash; Arctic Computers"
 	,	""
 	,	""
 	,	7
@@ -44,13 +44,13 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NasTug&nbsp;&ndash; Computer User Group"
+	,	"NasTug &ndash; Computer User Group"
 	,	"P.A. Greenhalgh"
 	,	""
 	,	15
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 25"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 25"
 	,	"Chris Blackmore"
 	,	""
 	,	16
@@ -80,7 +80,7 @@
 	,	37
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Disk Formats and CP&#x2f;M Disk Routines&nbsp;&ndash; Part 2"
+	,	"Disk Formats and CP&#x2f;M Disk Routines &ndash; Part 2"
 	,	"M.W.T. Waters"
 	,	"Software"
 	,	40

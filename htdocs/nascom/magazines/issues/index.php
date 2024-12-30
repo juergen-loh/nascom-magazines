@@ -12,7 +12,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2024-12-24 16:51:41 +0100 (Di, 24. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-12-29 21:00:32 +0100 (So, 29. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -58,7 +58,7 @@
 	<a href="../inmc-news/text/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
 </h2>
 <h3>
-	1978&nbsp;&ndash; 1980
+	1978 &ndash; 1980
 </h3>
 <p>
 	<a href="../inmc-news/text/">INMC News</a> was the original magazine to support the Nascom pro&shy;duct range.
@@ -77,7 +77,7 @@
 	<a href="../inmc-80-news/text/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
 </h2>
 <h3>
-	1980&nbsp;&ndash; 1981
+	1980 &ndash; 1981
 </h3>
 <p>
 	After Nascom&rsquo;s financial difficulties, INMC News was re-born as a magazine called <a href="../inmc-80-news/text/">INMC 80 News</a>.
@@ -94,7 +94,7 @@
 	<a href="../80-bus-news/text/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
 </h2>
 <h3>
-	1982&nbsp;&ndash; 1985
+	1982 &ndash; 1985
 </h3>
 <p>
 	INMC 80 News mutated once more and became <a href="../80-bus-news/text/">80-Bus News</a>.
@@ -124,7 +124,7 @@
 	<a href="../scorpio-news/text/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
 </h2>
 <h3>
-	1987&nbsp;&ndash; 1989
+	1987 &ndash; 1989
 </h3>
 <p>
 	80-Bus News changed once again and became <a href="../scorpio-news/text/">Scorpio News</a>.
@@ -148,7 +148,7 @@
 	<a href="../micropower/text/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
 </h2>
 <h3>
-	1981&nbsp;&ndash; 1982
+	1981 &ndash; 1982
 </h3>
 <p>
 	Another magazine appeared in parallel, <a href="../micropower/text/">Micropower</a>.
@@ -168,7 +168,7 @@
 	<a href="../nascom-newsletter/text/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
 </h2>
 <h3>
-	1982&nbsp;&ndash; 1984
+	1982 &ndash; 1984
 </h3>
 <p>
 	Micropower became the <a href="../nascom-newsletter/text/">Nascom Newsletter</a> with the original issue numbers.
@@ -444,7 +444,7 @@
 	<a href="../nascom-newsletter/31/09/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 </p>
 <h2>
-	SYS-EX&nbsp;&ndash; A 1K Extension Program for NAS-SYS Monitors
+	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
 </h2>
 <h3>
 	by David G.​ Johnson

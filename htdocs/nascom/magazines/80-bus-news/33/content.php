@@ -30,7 +30,7 @@
 	,	10
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Gemini IVC and SVC&nbsp;&ndash; insight Pt 2"
+	,	"Gemini IVC and SVC &ndash; insight Pt 2"
 	,	"D.W. Parkinson"
 	,	"Hardware"
 	,	16
@@ -48,7 +48,7 @@
 	,	31
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SCRAMBLE&nbsp;&ndash; CP&#x2f;M file encryption program"
+	,	"SCRAMBLE &ndash; CP&#x2f;M file encryption program"
 	,	"Dave Hunt"
 	,	"Assembler"
 	,	32

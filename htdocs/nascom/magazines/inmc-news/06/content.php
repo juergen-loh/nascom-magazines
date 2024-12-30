@@ -56,8 +56,8 @@
 	,	11
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash;4<br>"
-	.	"Using M5&nbsp;&ndash; Microdigital&rsquo;s Interpreter"
+	,	"Doctor Dark&rsquo;s Diary &ndash;4<br>"
+	.	"Using M5 &ndash; Microdigital&rsquo;s Interpreter"
 	,	"Chris Blackmore"
 	,	""
 	,	13
@@ -75,7 +75,7 @@
 	,	17
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"PIO&nbsp;&ndash; further understanding"
+	,	"PIO &ndash; further understanding"
 	,	""
 	,	""
 	,	19
@@ -94,7 +94,7 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"INMC&nbsp;&ndash; About the team"
+	,	"INMC &ndash; About the team"
 	,	""
 	,	""
 	,	25
@@ -113,7 +113,7 @@
 	,	28
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Nascom&nbsp;1&nbsp;&ndash; novel expansion"
+	,	"Nascom&nbsp;1 &ndash; novel expansion"
 	,	"L.E. Gilham"
 	,	"Hardware"
 	,	31

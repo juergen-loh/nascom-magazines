@@ -78,7 +78,7 @@
 	,	12
 	);
 	trJournal($path, $tail, $magazine
-	,	"Lader&nbsp;&ndash; Ladeprogramm für NASCOM&nbsp;1 mit NASBUG T2"
+	,	"Lader &ndash; Ladeprogramm für NASCOM&nbsp;1 mit NASBUG T2"
 	,	"Jürgen Bezold"
 	,	"Assembler"
 	,	$volume, $issue

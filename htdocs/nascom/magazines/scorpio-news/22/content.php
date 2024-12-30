@@ -37,7 +37,7 @@
 	,	9
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Private Adverts&nbsp;&ndash; 1"
+	,	"Private Adverts &ndash; 1"
 	,	""
 	,	""
 	,	12
@@ -55,7 +55,7 @@
 	,	14
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 29"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 29"
 	,	"Chris Blackmore"
 	,	""
 	,	15
@@ -67,13 +67,13 @@
 	,	18
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Private Adverts&nbsp;&ndash; 2"
+	,	"Private Adverts &ndash; 2"
 	,	""
 	,	""
 	,	20
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"IBM-COPY&nbsp;&ndash; A Review"
+	,	"IBM-COPY &ndash; A Review"
 	,	"Kevin R. Smith"
 	,	"Review"
 	,	21
@@ -91,7 +91,7 @@
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Digital Imaging Systems&nbsp;&ndash; Part 1"
+	,	"Digital Imaging Systems &ndash; Part 1"
 	,	"D.R. Hunt"
 	,	""
 	,	27

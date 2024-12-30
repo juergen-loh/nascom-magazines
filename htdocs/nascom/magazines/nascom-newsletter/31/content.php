@@ -63,7 +63,7 @@
 	,	13
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"SYS-EX&nbsp;&ndash; A 1K Extension Program for NAS-SYS Monitors&nbsp;&ndash; Part 1"
+	,	"SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors &ndash; Part 1"
 	,	"David G. Johnson"
 	,	"Assembler"
 	,	16
@@ -96,7 +96,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-DOS fault failing to return head to start position&nbsp;&ndash; corrected in Rev 1&#x2e;4"
+	,	"NAS-DOS fault failing to return head to start position &ndash; corrected in Rev 1&#x2e;4"
 	,	""
 	,	""
 	,	29

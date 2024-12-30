@@ -73,13 +73,13 @@
 	,	21
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"NAS-GRAPHPAC Pt 1&nbsp;&ndash; The manual and object code"
+	,	"NAS-GRAPHPAC Pt 1 &ndash; The manual and object code"
 	,	"CCsoft"
 	,	""
 	,	23
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 15"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 15"
 	,	"Chris Blackmore"
 	,	""
 	,	35
@@ -91,13 +91,13 @@
 	,	38
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"UNERA&nbsp;&ndash; a CP&#x2f;M program to unerase a CP&#x2f;M file (source code)"
+	,	"UNERA &ndash; a CP&#x2f;M program to unerase a CP&#x2f;M file (source code)"
 	,	"Anders Hejlsberg"
 	,	"Assembler"
 	,	40
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Four in a Line&nbsp;&ndash; game converted for Nascom&nbsp;2 under NAS-SYS&nbsp;1"
+	,	"Four in a Line &ndash; game converted for Nascom&nbsp;2 under NAS-SYS&nbsp;1"
 	,	"Rodger Dowling"
 	,	"Basic"
 	,	41
@@ -134,7 +134,7 @@
 	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Super Diskpen&nbsp;&ndash; new feature"
+	,	"Super Diskpen &ndash; new feature"
 	,	""
 	,	""
 	,	49

@@ -26,7 +26,7 @@
 	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Dealer Profile&nbsp;&ndash; Marston Spurrier"
+	,	"Dealer Profile &ndash; Marston Spurrier"
 	,	""
 	,	""
 	,	7
@@ -74,7 +74,7 @@
 	,	37
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
-	,	"Doctor Dark&rsquo;s Diary&nbsp;&ndash; Episode 24"
+	,	"Doctor Dark&rsquo;s Diary &ndash; Episode 24"
 	,	"Chris Blackmore"
 	,	""
 	,	38
