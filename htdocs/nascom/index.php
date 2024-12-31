@@ -11,7 +11,7 @@
 
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2024-12-31 14:24:33 +0100 (Di, 31. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
 
 <?php include "$navi_body_php";	?>
 
@@ -312,7 +312,7 @@ gesammelt.
 <a href="journal/82/02/23/text/#article1">Ladebefehle</a><br>
 <a href="journal/82/05/18/text/#article1">Sprünge</a><br>
 <a href="journal/82/06/20/text/#article1">BASIC</a><br>
-<a href="journal/82/07/37/text/#article1">Grafik</a><br>
+<a href="journal/82/07/37/text/#article1">Stack</a><br>
 <a href="journal/82/09/14/text/#article1">NASBUG/NASSYS</a><br>
 <a href="journal/82/10/08/text/#article1">Interrupts</a><br>
 <a href="journal/83/02/12/text/#article1">NASBUG/NASSYS</a><br>
