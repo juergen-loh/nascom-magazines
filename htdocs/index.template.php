@@ -8,7 +8,6 @@
 	$nascom = true;
 	require "$include_path/navi-head.php";
 ?>
-
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Magazines">
 	<title>Nascom Journal &ndash; 80-Bus Journal &ndash; Nascom Magazines</title>
 

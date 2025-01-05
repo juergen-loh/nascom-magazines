@@ -4,15 +4,13 @@
 //	$include_path	= "../../../../cgi-bin";
 	$gHtmlRoot		= "../../..";
 	require "$include_path/global.php";
-//	$width = 700;
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
 	include "$navi_head_php";
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
-
+	<!-- $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ / <?php echo "$lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 

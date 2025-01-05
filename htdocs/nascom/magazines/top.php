@@ -19,9 +19,7 @@
 	$lang = "en";
 //	$width = 720;
 ?>
-
-	<!-- top.php / $Date: 2024-12-29 21:00:32 +0100 (So, 29. Dez 2024) $ -->
-
+	<!-- top.php / $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">

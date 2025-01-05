@@ -8,11 +8,9 @@
 	$nascom = true;
 	include "$navi_head_php";
 ?>
-
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2024-12-31 14:24:33 +0100 (Di, 31. Dez 2024) $ / <?php echo "$lastModified"; ?> -->
-
+	<!-- $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ / <?php echo "$lastModified"; ?> -->
 <?php include "$navi_body_php";	?>
 
 <div class="row hyphenate">

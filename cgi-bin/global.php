@@ -13,6 +13,7 @@
 		include "$redirect_php";
 	}
 
+	$gCanonicalRoot		= "https://tupel.jloh.de";
 	$navi_body_php		= "$include_path/navi-body.php";
 	$navi_head_php		= "$include_path/navi-head.php";
 	$navi_footer_php	= "$include_path/navi-footer.php";
