@@ -30,17 +30,17 @@ Beispiel:
 Stackpointer zeigt auf 1000 (Top of Stack= Obergrenze oder Spitze des
 Stapels)
 </p>
-<pre class="donthyphenate">
-Programm: LD HL,1122
-          PUSH HL
-</pre>
+<table>
+<tr><td>Programm:</td><td>LD HL,1122</td></tr>
+<tr><td>         </td><td>PUSH HL</td></tr>
+</table>
 <p>
 Nach Ausführung mit Single-Step enthalten
 </p>
-<pre class="donthyphenate">
-0FFF  &ndash; 22 und
-0FFE  &ndash; 11
-</pre>
+<table>
+<tr><td>0FFF</td><td>&nbsp; &ndash;</td><td>22</td><td>und</td></tr>
+<tr><td>0FFE</td><td>&nbsp; &ndash;</td><td>11</td><td></td></tr>
+</table>
 <p>
 Wird nun ein anderes Register &bdquo;gepusht&ldquo;, dann wächst der
 Stapel in die Tiefe (&nbsp;erniedrigt den Stackpointer weiter),<?php spChar("zwsp"); ?>und das
@@ -52,7 +52,7 @@ hinein, als erstes heraus).
 <p>
 Wenn man diese Reihenfolge umgeht, kann man
 auch leicht Register austauschen, die normalerweise nicht getauscht
-werden könnten. Z.&nbsp;B. kann HL mit DE durch den Code EB (EX HL, DE)
+werden könnten. Z.B. kann HL mit DE durch den Code EB (EX HL, DE)
 getauscht werden. Für einen Austausch von DE und BC existiert kein
 solcher Befehl, (es sei denn, man tauscht alle Register gleichzeitig,
 was ja wohl nicht immer wünschenswert ist). Um auch hier austauschen zu
@@ -66,7 +66,10 @@ POP  DE<?php columnChangeJustify(2, "</pre>", "<pre>"); ?>
 POP  BC  last out
 </pre>
 <p>
-Die Register sind nun vertauscht. Die häufigste
+Die Register sind nun vertauscht.
+</p>
+<p>
+Die häufigste
 Anwendung dürfte es allerdings sein, bestimmte Register, deren Inhalt
 später nochmals gebraucht wird, in &bdquo;Sicherheit&ldquo; zu bringen,
 wenn sie für andere Zwecke kurzzeitig benötigt werden (z.B. in
