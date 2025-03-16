@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal &ndash; 80-Bus Journal</title>
-	<!-- $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2025-03-16 14:41:01 +0100 (So, 16. Mrz 2025) $ / <?php echo "$lastModified"; ?> -->
 <?php include "$navi_body_php";	?>
 
 <div class="row hyphenate">

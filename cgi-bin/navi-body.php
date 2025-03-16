@@ -1432,30 +1432,30 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Mastering Machine Code On Your ZX81":	$url = "https://archive.org/details/masteringmachinecodeonyourzx81";	break;
 	case "Maxell MD2-HD":			$url = "https://www.flickr.com/photos/celesteh/19477993894";					break;
 	case "MB8877A":					$url = "https://archive.org/details/MB8866Datasheet";							break;
-	case "mc 1/1983, Seite 38":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=36";		break;
-	case "mc 1/1983, Seite 44":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=40";		break;
-	case "mc 1/1987, Seite 59":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-01.pdf#page=57";	break;
-	case "mc 10/1982, Seite 74":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1982/mc-1982-10.pdf#page=74";		break;
-	case "mc 10/1984, Seite 61":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-10.pdf#page=61";		break;
-	case "mc 11/1984, Seite 84":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-11.pdf#page=84";		break;
-	case "mc 12/1984, Seite 81":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-12.pdf#page=81";		break;
-	case "mc 2/1981":				$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf";		break;
-	case "mc 2/1981, Seite 26":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf#page=26";		break;
-	case "mc 2/1981, Seite 28":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-02.pdf#page=28";		break;
-	case "mc 2/1985, Seite 102":	$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1985/mc-1985-02.pdf#page=102";	break;
-	case "mc 2/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12541";	break;
-	case "mc 2/1987, Seite 64":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-02.pdf#page=42";	break;
+	case "mc 2/1981":				$url = "https://archive.org/details/mc-1981-02/mode/2up";						break;
+	case "mc 2/1981, Seite 26":		$url = "https://archive.org/details/mc-1981-02/page/n25/mode/2up";				break;
+	case "mc 2/1981, Seite 28":		$url = "https://archive.org/details/mc-1981-02/page/n27/mode/2up";				break;
+	case "mc 4/1981, Seite 26":		$url = "https://archive.org/details/mc-1981-04/page/n25/mode/2up";				break;
+	case "mc 4/1981, Seite 75":		$url = "https://archive.org/details/mc-1981-04/page/n69/mode/2up";				break;
 	case "mc 3/1982":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=14080";	break;
-	case "mc 3/1983, Seite 31":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-03.pdf#page=29";		break;
-	case "mc 3/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12542";	break;
-	case "mc 3/1987, Seite 92":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-03.pdf#page=90";	break;
-	case "mc 4/1981, Seite 26":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-04.pdf#page=26";		break;
-	case "mc 4/1981, Seite 75":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1981/mc-1981-04.pdf#page=71";		break;
 	case "mc 4/1982":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=14081";	break;
-	case "mc 5/1984, Seite 74":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-05.pdf#page=74";		break;
-	case "mc 8/1983, Seite 68":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-08.pdf#page=66";		break;
-	case "mc 9/1983, Seite 70":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-09.pdf#page=68";		break;
-	case "mc 9/1984, Seite 86":		$url = "https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-09.pdf#page=86";		break;
+	case "mc 10/1982, Seite 74":	$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1982/mc-1982-10.pdf#page=74";		break;
+	case "mc 1/1983, Seite 38":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=36";		break;
+	case "mc 1/1983, Seite 42":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-01.pdf#page=40";		break;
+	case "mc 3/1983, Seite 31":		$url = "https://web.archive.org/web/2020/https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-03.pdf#page=29";		break;
+	case "mc 8/1983, Seite 68":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-08.pdf#page=66";		break;
+	case "mc 9/1983, Seite 70":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1983/mc-1983-09.pdf#page=68";		break;
+	case "mc 5/1984, Seite 74":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-05.pdf#page=74";		break;
+	case "mc 9/1984, Seite 86":		$url = "https://web.archive.org/web/2022/https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-09.pdf#page=86";		break;
+	case "mc 10/1984, Seite 61":	$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-10.pdf#page=61";		break;
+	case "mc 11/1984, Seite 84":	$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-11.pdf#page=84";		break;
+	case "mc 12/1984, Seite 81":	$url = "https://web.archive.org/web/2022/https://hschuetz.selfhost.eu/mc-zeitschriften/1984/mc-1984-12.pdf#page=81";		break;
+	case "mc 2/1985, Seite 102":	$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1985/mc-1985-02.pdf#page=102";	break;
+	case "mc 1/1987, Seite 59":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-01.pdf#page=57";	break;
+	case "mc 2/1987":				$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12541";	break;
+	case "mc 2/1987, Seite 64":		$url = "https://web.archive.org/web/2/https://hschuetz.selfhost.eu/mc-zeitschriften/1987/mc-1987-02.pdf#page=42";	break;
+	case "mc 3/1987":				$url = "https://archive.org/details/mc-1987-03-kwr/mode/2up";					break;
+	case "mc 3/1987, Seite 92":		$url = "https://archive.org/details/mc-1987-03-kwr/page/n57/mode/2up";			break;
 	case "mc";						$url = "https://$lang.wikipedia.org/wiki/Mc_%28Zeitschrift%29";					break;
 	case "mc-CP/M":					$url = "https://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
 	case "MC6845":					$url = "https://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";		break;
@@ -1782,4 +1782,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2024-12-30 14:10:13 +0100 (Mo, 30. Dez 2024) $ -->
+<!-- /navi-body.php / $Date: 2025-03-16 15:14:42 +0100 (So, 16. Mrz 2025) $ -->
