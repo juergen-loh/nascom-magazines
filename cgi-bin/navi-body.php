@@ -1401,7 +1401,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Janich &amp; Klass":		$url = "https://janichklass.de/die-firma/firmengeschichte/";					break;
 	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
-	case "Jürgen Loh":				$url = "https://www.jloh.de/";													break;
+	case "Jürgen Loh":				$url = "https://jloh.de/";														break;
 	case "Karlheinz":				$url = "https://www.o49-werl.de/component/contact/contact/12-kontakte/12?Itemid=301";	break;
 	case "Kilobaud Microcomputing Magazine (February 1981)":			$url =  "https://archive.org/details/kilobaudmagazine-1981-02";	break;
 	case "Kilobaud Microcomputing Magazine (February 1981), page 76":	$url =  "https://archive.org/details/kilobaudmagazine-1981-02/page/n76/mode/2up";	break;
@@ -1533,6 +1533,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "R. Loeliger":				$url = "https://openlibrary.org/authors/OL1655329A/R._G._Loeliger";				break;
 	case "RAM&nbsp;A":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/rama.htm";				break;
 	case "RAM&nbsp;B":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/ramb.htm";				break;
+	case "PICO Computer":			$url = "https://tupel.jloh.de/pico/";												break;
 	case "ROBOT INTELLIGENCE with experiments":	$url = "https://openlibrary.org/works/OL4090255W/Robot_intelligence_..._with_experiments";	break;
 	case "Rolf":					$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Rolf-Dieter Klein":		$url = "https://openlibrary.org/authors/OL1221691A/Rolf-Dieter_Klein";			break;
@@ -1598,6 +1599,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Z80 PIO":					$url = "https://www.zilog.com/docs/z80/ps0180.pdf";								break;
 	case "Z80 SIO":					$url = "https://www.zilog.com/docs/z80/ps0183.pdf";								break;
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
+	case "Z80-KIT":					$url = "https://tupel.jloh.de/z80-kit";											break;
 	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";							break;
 	case "Zaphod Beeblebrox":		$url = "https://$lang.wikipedia.org/wiki/Zaphod_Beeblebrox";					break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;
