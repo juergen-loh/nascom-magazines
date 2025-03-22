@@ -1533,7 +1533,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "R. Loeliger":				$url = "https://openlibrary.org/authors/OL1655329A/R._G._Loeliger";				break;
 	case "RAM&nbsp;A":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/rama.htm";				break;
 	case "RAM&nbsp;B":				$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/ramb.htm";				break;
-	case "PICO Computer":			$url = "https://tupel.jloh.de/pico/";												break;
+	case "PICO Computer":			$url = "https://tupel.jloh.de/pico/";											break;
 	case "ROBOT INTELLIGENCE with experiments":	$url = "https://openlibrary.org/works/OL4090255W/Robot_intelligence_..._with_experiments";	break;
 	case "Rolf":					$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Rolf-Dieter Klein":		$url = "https://openlibrary.org/authors/OL1221691A/Rolf-Dieter_Klein";			break;
@@ -1599,7 +1599,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Z80 PIO":					$url = "https://www.zilog.com/docs/z80/ps0180.pdf";								break;
 	case "Z80 SIO":					$url = "https://www.zilog.com/docs/z80/ps0183.pdf";								break;
 	case "Z80":						$url = "https://$lang.wikipedia.org/wiki/Zilog_Z80";							break;
-	case "Z80-KIT":					$url = "https://tupel.jloh.de/z80-kit";											break;
+	case "Z80-KIT":					$url = "https://tupel.jloh.de/z80-kit/";										break;
 	case "Z80-KIT Anwenderhandbuch":$url = "https://2jo.de/robotron/Kontron/KONz80.pdf";							break;
 	case "Zaphod Beeblebrox":		$url = "https://$lang.wikipedia.org/wiki/Zaphod_Beeblebrox";					break;
 	case "Zilog":					$url = "https://www.zilog.com/";												break;
@@ -1784,4 +1784,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-03-16 15:14:42 +0100 (So, 16. Mrz 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-03-22 17:02:11 +0100 (Sa, 22. Mrz 2025) $ -->
