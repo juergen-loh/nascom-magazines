@@ -1312,7 +1312,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Elektor, November 1977, Seite 41":	$url = "https://www.elektormagazine.de/magazine/elektor-197711/56337";	break;
 	case "Elektor, Oktober 1982, Seite 66":		$url = "https://www.elektormagazine.de/magazine/elektor-198210/46621";	break;
 	case "Elektor, September 1980, Seite 26":	$url = "https://www.elektormagazine.de/magazine/elektor-198009/46145";	break;
-	case "Elektronik":				$url = "https://www.weka-fachmedien.de/medien/elektronik/";						break;
+	case "Elektronik":				$url = "https://www.componeers.net/medien/elektronik/";							break;
 	case "Elektronikladen":			$url = "https://elmicro.com/info/";												break;
 	case "ELZET80":					$url = "https://www.elzet80.de/";												break;
 	case "Emdos.cas":				$url = "http://www.nascomhomepage.com/cpm/Emdos.cas";							break;
@@ -1398,7 +1398,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Gilvázi István":			$url = "https://innova.rs/hu/gilvazi-istvan/";									break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
-	case "Janich &amp; Klass":		$url = "https://janichklass.de/die-firma/firmengeschichte/";					break;
+	case "Janich &amp; Klass":		$url = "https://www.janichklass.com/die-firma/firmengeschichte/";				break;
 	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
 	case "Jürgen Loh":				$url = "https://jloh.de/";														break;
@@ -1784,4 +1784,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-03-22 17:02:11 +0100 (Sa, 22. Mrz 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-05-10 15:29:21 +0200 (Sa, 10. Mai 2025) $ -->
