@@ -1393,6 +1393,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "IMP":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/imp.htm";				break;
 	case "Indische Finsternis":		$url = "http://www.sonnenfinsternis.org/sofi1980t/index.htm";					break;
 	case "INVASION.NAS":			$url = "http://www.nascomhomepage.com/games/INVASION.NAS";						break;
+	case "Ing. Büro W. Kanis GmbH":	$url = "https://kanis.de/ueber-das-unternehmen/";								break;
 	case "IO828":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io828.htm";				break;
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
 	case "Gilvázi István":			$url = "https://innova.rs/hu/gilvazi-istvan/";									break;
