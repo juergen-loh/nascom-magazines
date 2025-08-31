@@ -1,12 +1,14 @@
 <?php
-	$magpath   =                       quotemeta(addslashes($_GET['magazine']));
-	$issuepath = sprintf("%02d", (int) quotemeta(addslashes($_GET['issue'])));
-	$pagepath  = sprintf("%02d", (int) quotemeta(addslashes($_GET['page'])));
-	$link      =                       quotemeta(addslashes($_GET['link']));
-	$thumb     = false;
-
 	require			( "../../SetIncludePath.php");
 	SetIncludePath	( "../..");
+	require "$include_path/global.php";
+
+	$magpath   =                       preg_replace($stripChars, '', $_GET['magazine']);
+	$issuepath = sprintf("%02d", (int) preg_replace($stripChars, '', $_GET['issue']));
+	$pagepath  = sprintf("%02d", (int) preg_replace($stripChars, '', $_GET['page']));
+	$link      =                       preg_replace($stripChars, '', $_GET['link']);
+	$thumb     = false;
+
 //	$include_path	= "../../../cgi-bin";
 	if ($link == "text") {
 		$gHtmlRoot	= "../../../../../..";
@@ -14,7 +16,6 @@
 		$gHtmlRoot	= "../../../../..";
 	}
 
-	require "$include_path/global.php";
 //	$width = 720;
 
 	$html = "$magpath/$issuepath/$pagepath.html";
@@ -523,7 +524,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
+	<!-- page.php / $Date: 2025-08-20 21:30:39 +0200 (Mi, 20. Aug 2025) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";

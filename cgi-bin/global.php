@@ -1,4 +1,6 @@
 <?php
+	$stripChars = '/[^a-zA-Z0-9().+\- ]+/';
+
 	ini_set('html_errors', true);
 	ini_set('docref_root', '/error/');
 	error_reporting(E_ALL);

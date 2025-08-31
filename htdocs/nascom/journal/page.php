@@ -26,7 +26,7 @@
 
 	if (!$thumb) {
 //		$thumb = false;
-		$page = sprintf("%02d", (int) quotemeta(addslashes($_GET['page'])));
+		$page = sprintf("%02d", (int) preg_replace($stripChars, '', $_GET['page']));
 	}
 
 	if (!$thumb && ($page < $first || $page > $last)) {
@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2024-07-13 18:55:41 +0200 (Sa, 13. Jul 2024) $ -->
+	<!-- page.php / $Date: 2025-08-20 21:30:39 +0200 (Mi, 20. Aug 2025) $ -->
 <?php
 	echo "\n";
 

@@ -1,6 +1,6 @@
 <?php
-	$issue = quotemeta(addslashes($_GET['issue']));
-	$query = quotemeta(addslashes(getenv("QUERY_STRING")));
+	$issue = preg_replace($stripChars, '', $_GET['issue']));
+	$query = preg_replace($stripChars, '', getenv("QUERY_STRING"));
 
 	$quest = substr($query, -3, 1);
 	if ($quest == "&") {

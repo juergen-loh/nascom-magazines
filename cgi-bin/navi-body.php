@@ -1233,7 +1233,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Alphatronic PC":			$url = "https://$lang.wikipedia.org/wiki/Triumph_Adler_Alphatronic_PC";			break;
 	case "AM819":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am819.htm";				break;
 	case "AM820":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/am820.htm";				break;
-	case "AM9511":					$url = "https://www.cpu-world.com/CPUs/9511/";									break;
+	case "AM9511":					$url = "https://ia902902.us.archive.org/24/items/theam9511arithmeticprocessingunit/The%20Am9511%20Arithmetic%20Processing%20Unit_text.pdf";	break;
 	case "Anders Hejlsberg":		$url = "https://$lang.wikipedia.org/wiki/Anders_Hejlsberg";						break;
 	case "Apple II":				$url = "https://$lang.wikipedia.org/wiki/Apple_II";								break;
 	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
@@ -1396,14 +1396,14 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Ing. Büro W. Kanis GmbH":	$url = "https://kanis.de/ueber-das-unternehmen/";								break;
 	case "IO828":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io828.htm";				break;
 	case "IO830":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/io830.htm";				break;
-	case "Gilvázi István":			$url = "https://innova.rs/hu/gilvazi-istvan/";									break;
+	case "Gilvázi István":			$url = "https://web.archive.org/web/2/https://innova.rs/hu/gilvazi-istvan/";	break;
 	case "ITOH 8510":				$url = "https://www.atarimagazines.com/v4n10/citoh8510sep+.jpg";				break;
 	case "IVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm812.htm";				break;
 	case "Janich &amp; Klass":		$url = "https://www.janichklass.com/die-firma/firmengeschichte/";				break;
 	case "Jonny":					$url = "https://www.robotrontechnik.de/html/forum/thwb/showtopic.php?threadid=13028";	break;
 	case "JRT-Pascal":				$url = "https://en.wikipedia.org/wiki/JRT_Pascal_(programming_language)";		break;
 	case "Jürgen Loh":				$url = "https://jloh.de/";														break;
-	case "Karlheinz":				$url = "https://www.o49-werl.de/component/contact/contact/12-kontakte/12?Itemid=301";	break;
+	case "Karlheinz":				$url = "https://web.archive.org/web/2/https://www.o49-werl.de/component/contact/contact/12-kontakte/12?Itemid=301";	break;
 	case "Kilobaud Microcomputing Magazine (February 1981)":			$url =  "https://archive.org/details/kilobaudmagazine-1981-02";	break;
 	case "Kilobaud Microcomputing Magazine (February 1981), page 76":	$url =  "https://archive.org/details/kilobaudmagazine-1981-02/page/n76/mode/2up";	break;
 	case "Kilobaud Microcomputing Magazine (March 1981)":				$url =  "https://archive.org/details/kilobaudmagazine-1981-03";	break;
@@ -1459,7 +1459,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "mc 3/1987, Seite 92":		$url = "https://archive.org/details/mc-1987-03-kwr/page/n57/mode/2up";			break;
 	case "mc";						$url = "https://$lang.wikipedia.org/wiki/Mc_%28Zeitschrift%29";					break;
 	case "mc-CP/M":					$url = "https://www.auram.de/cms3/pages/computer/mc-cpm.php";					break;
-	case "MC6845":					$url = "https://pdf.datasheetcatalog.com/datasheet/motorola/MC6845.pdf";		break;
+	case "MC6845":					$url = "https://en.wikipedia.org/wiki/Motorola_6845";							break;
 	case "MDCR-Manual":				$url = "http://www.nascomhomepage.com/pdf/mdcr.pdf";							break;
 	case "Merseyside Nascom Users Group":	$url = "http://www.nascomhomepage.com/pdf/nasproginfo.pdf";				break;
 	case "Michael Bach":			$url = "https://michaelbach.de/";												break;
@@ -1586,7 +1586,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Vom Umgang mit CP/M":		$url = "http://myoldmac.net/Sellpicts/books/APPLE-CPM-umgang--B-Pol.jpg";		break;
 	case "Vorschaubild":			$url = "https://$lang.wikipedia.org/wiki/Vorschaubild";							break;
 	case "WD1793":					$url = "https://www.retrotechnology.com/herbs_stuff/WD179X.PDF";				break;
-	case "WD2793":					$url = "https://pdf.datasheetcatalog.com/datasheets/400/315772_DS.pdf";			break;
+	case "WD2793":					$url = "http://bitsavers.informatik.uni-stuttgart.de/components/ti/_dataBooks/TMS279X_Floppy_Disk_Formatter_Jun84.pdf";	break;
 	case "Weinheimer UKW-Tagung":	$url = "https://ukw-tagung.org/";												break;
 	case "Wikipedia über Nascom":	$url = "https://$lang.wikipedia.org/wiki/Nascom";								break;
 	case "Wikipedia":				$url = "https://$lang.wikipedia.org/";											break;
@@ -1785,4 +1785,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-08-02 19:31:13 +0200 (Sa, 02. Aug 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-08-31 18:49:46 +0200 (So, 31. Aug 2025) $ -->
