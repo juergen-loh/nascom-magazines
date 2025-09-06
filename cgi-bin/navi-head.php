@@ -6,7 +6,7 @@
 	echo "<html lang=\"$lang\">\n";
 ?>
 
-<!-- navi-head.php / $Date: 2025-08-31 18:49:46 +0200 (So, 31. Aug 2025) $ -->
+<!-- navi-head.php / $Date: 2025-09-06 13:53:28 +0200 (Sa, 06. Sep 2025) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -28,18 +28,18 @@
 	$server = preg_replace($stripChars, '', getenv('SERVER_NAME'));
 
 	if ($server == "t480") {
-//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.css\">\n";
-		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n";
+		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.css\">\n";
+//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n";
 	} else {
 		// https://www.toptal.com/developers/cssminifier
 //		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css\">\n";
 		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css\">\n";
 	}
 ?>
-	<!--font awesome-->
+	<!--font awesome- ->
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/fontawesome.min.css\">\n"; ?>
 	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/solid.min.css\">\n"; ?>
-
+	-->
 	<?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$gHtmlRoot/style.css\">\n"; ?>
 <?php
 //	echo "<!--\n";

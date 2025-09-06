@@ -295,6 +295,7 @@ function InsertArrow($s)
 	}
 	echo "\" aria-hidden=true></span>";
 */
+/*
 // font awesome 5
 	$class = $arrow = "";
 
@@ -313,6 +314,7 @@ function InsertArrow($s)
 		echo " ";
 	}
 	echo "fas fa-$arrow\" aria-hidden=true></span>";
+*/
 /*
 // bootstrap icons
 	echo "<img src=\"/cdn/icons/icons/";
@@ -326,6 +328,45 @@ function InsertArrow($s)
 	}
 	echo ".svg\" alt=\"\">";
 */
+// bootstrap icons svg
+	// https://icons.getbootstrap.com/
+	$arrow = "";
+
+	switch ($s) {
+	case "previous-page":	$arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill mirror-horizontal" viewBox="0 0 16 16">
+				<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+			</svg>';
+			break;
+	case "first-page":		$arrow =
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill " viewBox="0 0 16 16">
+				<path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5"/>
+			</svg>';
+			break;
+	case "previous-issue":	$arrow =
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward-fill mirror-horizontal" viewBox="0 0 16 16">
+				<path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+				<path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+			</svg>';
+			break;
+	case "next-issue":		$arrow =
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
+				<path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+				<path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+			</svg>';
+			break;
+	case "last-page":		$arrow =
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+				<path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5"/>
+			</svg>';
+			break;
+	case "next-page":		$arrow =
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+				<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+			</svg>';
+			break;
+	}
+
+	echo "$arrow";
 /*
 // Unicode
 	switch ($s) {
@@ -1785,4 +1826,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-08-31 18:49:46 +0200 (So, 31. Aug 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-09-06 13:53:28 +0200 (Sa, 06. Sep 2025) $ -->
