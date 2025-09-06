@@ -1,5 +1,5 @@
 
-<!-- navi-footer.php / $Date: 2025-09-06 13:53:28 +0200 (Sa, 06. Sep 2025) $ -->
+<!-- navi-footer.php / $Date: 2025-09-06 18:29:07 +0200 (Sa, 06. Sep 2025) $ -->
 
 <!--********************************************************************************-->
 
@@ -30,7 +30,17 @@
 	</nav>
 
 	<!--bootstrap-->
-	<?php echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.bundle.min.js\"></script>\n"; ?>
+<?php
+	if ($server == "t480") {
+		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.js\"></script>\n";
+//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js\"></script>\n";
+//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js\"></script>\n";
+	} else {
+//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.js\"></script>\n";
+//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js\"></script>\n";
+		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js\"></script>\n";
+	}
+?>
 </body>
 
 <!-- /navi-footer.php -->

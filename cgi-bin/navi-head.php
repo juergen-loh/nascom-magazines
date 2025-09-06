@@ -6,7 +6,7 @@
 	echo "<html lang=\"$lang\">\n";
 ?>
 
-<!-- navi-head.php / $Date: 2025-09-06 13:53:28 +0200 (Sa, 06. Sep 2025) $ -->
+<!-- navi-head.php / $Date: 2025-09-06 18:29:07 +0200 (Sa, 06. Sep 2025) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -30,6 +30,7 @@
 	if ($server == "t480") {
 		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.css\">\n";
 //		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n";
+//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css\">\n";
 	} else {
 		// https://www.toptal.com/developers/cssminifier
 //		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css\">\n";
