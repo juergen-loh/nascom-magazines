@@ -11,7 +11,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2025-03-16 14:41:01 +0100 (So, 16. Mrz 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2025-09-09 21:09:12 +0200 (Di, 09. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -197,7 +197,7 @@
 	Lawrence
 </h2>
 <p>
-	<a href="../inmc-news/03/26/text/#article1">Saga One: C.E.G.B. brutality</a><br>
+	<a href="../inmc-news/03/26/text/#article2">Saga One: C.E.G.B. brutality</a><br>
 	<a href="../inmc-news/04/30/text/#article1">Saga Two: Hubris</a><br>
 	<a href="../inmc-news/05/38/text/#article1">Saga Three: Hell hath no fury</a><br>
 	<a href="../inmc-news/06/38/text/#article1">Saga Four: Noblesse oblig&eacute;</a><br>
