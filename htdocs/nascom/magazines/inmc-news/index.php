@@ -4,7 +4,7 @@
 	if (!isset($pre)) $pre = "";
 	if (!isset($post)) $post = "";
 	$desc = "INMC News was an "
-	.	"<a href=\"$pre../issues/\">English Nascom magazine</a>, "
+	.	"<a href=\"$pre../issues/#inmc-news\">English Nascom magazine</a>, "
 	.	"published between 1978 and 1980. "
 	.	"It was the original magazine to support the Nascom product range."
 	.	"</p>\n<p>"
