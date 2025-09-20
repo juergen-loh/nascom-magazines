@@ -11,7 +11,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2025-09-20 12:55:31 +0200 (Sa, 20. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2025-09-20 14:53:29 +0200 (Sa, 20. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -29,17 +29,17 @@
 <h1 id="head" class="FirstHeading">Nascom Magazines</h1>
 </div></div>
 
-<!-- 2(2) Spalten: Start --><div class="style-multi-column-2">
+<div class="row hyphenate" lang="en"><div class="col-sm-6">
 
-<div class="style-nowrap">
 <p>
 	Between 1978 and 1989, a number of English publications were produced.
 	These were centred on the Nascom range at first, then expanded to include
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
-</div>
+<p></p>
 
-<div class="style-nowrap">
+</div><div class="col-sm-6">
+
 <p>
 	There is an <a href="../text/">overall table of contents</a> of
 	the English Nascom magazines.
@@ -48,9 +48,8 @@
 	Nascom and 80-BUS publications were also <a href="../../">produced in Germany</a>.
 	There is another <a href="../../journal/text/">overall table of contents</a> of it.
 </p>
-</div>
 
-<!-- 2 Spalten: Ende --></div>
+</div></div>
 <br>
 <!-- 2(2) Spalten: Start --><div class="style-multi-column-2">
 
