@@ -11,7 +11,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2025-09-09 21:09:12 +0200 (Di, 09. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2025-09-20 12:55:31 +0200 (Sa, 20. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -29,17 +29,17 @@
 <h1 id="head" class="FirstHeading">Nascom Magazines</h1>
 </div></div>
 
-<div class="row hyphenate" lang="en"><div class="col-sm-6">
+<!-- 2(2) Spalten: Start --><div class="style-multi-column-2">
 
+<div class="style-nowrap">
 <p>
 	Between 1978 and 1989, a number of English publications were produced.
 	These were centred on the Nascom range at first, then expanded to include
 	all 80-BUS products, especially the Gemini range of boards and systems.
 </p>
-<p></p>
+</div>
 
-</div><div class="col-sm-6">
-
+<div class="style-nowrap">
 <p>
 	There is an <a href="../text/">overall table of contents</a> of
 	the English Nascom magazines.
@@ -48,11 +48,13 @@
 	Nascom and 80-BUS publications were also <a href="../../">produced in Germany</a>.
 	There is another <a href="../../journal/text/">overall table of contents</a> of it.
 </p>
+</div>
 
-</div></div>
+<!-- 2 Spalten: Ende --></div>
 <br>
-<div class="row hyphenate" lang="en"><div class="col-sm-6">
+<!-- 2(2) Spalten: Start --><div class="style-multi-column-2">
 
+<div class="style-nowrap">
 <h2 id="inmc-news">
 	<a href="../inmc-news/text/"><img class="img-fluid" src="../inmc-news/logo.jpeg" width="400" height="75" alt="INMC News"></a>
 </h2>
@@ -71,7 +73,10 @@
 	<a href="../inmc-news/06/00/text/"><img src="../inmc-news/06/cover.jpeg" width="100" height="142" title="INMC News, Issue 6" alt="INMC News, Issue 6"></a>
 	<a href="../inmc-news/07/00/text/"><img src="../inmc-news/07/cover.jpeg" width="100" height="142" title="INMC News, Issue 7" alt="INMC News, Issue 7"></a>
 </p>
+<p></p>
+</div>
 
+<div class="style-nowrap">
 <h2 id="inmc-80-news">
 	<a href="../inmc-80-news/text/"><img class="img-fluid" src="../inmc-80-news/logo.jpeg" width="237" height="112" alt="INMC 80 News"></a>
 </h2>
@@ -88,7 +93,10 @@
 	<a href="../inmc-80-news/04/01/text/"><img src="../inmc-80-news/04/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 4" alt="INMC 80 News, Issue 4"></a>
 	<a href="../inmc-80-news/05/01/text/"><img src="../inmc-80-news/05/cover.jpeg" width="100" height="142" title="INMC 80 News, Issue 5" alt="INMC 80 News, Issue 5"></a>
 </p>
+<p></p>
+</div>
 
+<div class="style-nowrap">
 <h2 id="80-bus-news">
 	<a href="../80-bus-news/text/"><img class="img-fluid" src="../80-bus-news/logo.jpeg" width="400" height="70" alt="80-Bus News"></a>
 </h2>
@@ -118,7 +126,10 @@
 	<a href="../80-bus-news/41/01/text/"><img src="../80-bus-news/41/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 1" alt="80-Bus News, Volume 4, Issue 1"></a>
 	<a href="../80-bus-news/42/01/text/"><img src="../80-bus-news/42/cover.jpeg" width="100" height="142" title="80-Bus News, Volume 4, Issue 2" alt="80-Bus News, Volume 4, Issue 2"></a>
 </p>
+<p></p>
+</div>
 
+<div class="style-nowrap">
 <h2 id="scorpio-news">
 	<a href="../scorpio-news/text/"><img class="img-fluid" src="../scorpio-news/logo.jpeg" width="400" height="105" alt="Scorpio News"></a>
 </h2>
@@ -140,9 +151,9 @@
 	<a href="../scorpio-news/31/01/text/"><img src="../scorpio-news/31/cover.jpeg" width="100" height="142" title="Scorpio News, Volume 3, Issue 1" alt="Scorpio News, Volume 3, Issue 1"></a>
 </p>
 <p></p>
+</div>
 
-</div><div class="col-sm-6">
-
+<div class="style-nowrap">
 <h2 id="micropower">
 	<a href="../micropower/text/"><img class="img-fluid" src="../micropower/logo.jpeg" width="243" height="117" alt="Micropower"></a>
 </h2>
@@ -162,7 +173,10 @@
 	<a href="../micropower/23/-1/text/"><img src="../micropower/23/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 3" alt="Micropower, Volume 2, Issue 3"></a>
 	<a href="../micropower/24/-1/text/"><img src="../micropower/24/cover.jpeg" width="100" height="142" title="Micropower, Volume 2, Issue 4" alt="Micropower, Volume 2, Issue 4"></a>
 </p>
+<p></p>
+</div>
 
+<div class="style-nowrap">
 <h2 id="nascom-newsletter">
 	<a href="../nascom-newsletter/text/"><img class="img-fluid" src="../nascom-newsletter/logo.jpeg" width="400" height="108" alt="Nascom Newsletter"></a>
 </h2>
@@ -182,17 +196,13 @@
 	<a href="../nascom-newsletter/34/-1/text/"><img src="../nascom-newsletter/34/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 4" alt="Nascom Newsletter, Volume 3, Issue 4"></a>
 	<a href="../nascom-newsletter/35/-1/text/"><img src="../nascom-newsletter/35/cover.jpeg" width="100" height="142" title="Nascom Newsletter, Volume 3, Issue 5" alt="Nascom Newsletter, Volume 3, Issue 5"></a>
 </p>
-<p></p>
-</div></div>
-<div class="row hyphenate" lang="en"><div class="col-sm-12">
+<br>
+</div>
 
 <h1>
 	Series
 </h1>
-
-</div></div>
-<div class="row hyphenate" lang="en"><div class="col-sm-6">
-
+<div class="style-nowrap">
 <h2 id="lawrence">
 	Lawrence
 </h2>
@@ -216,6 +226,9 @@
 	<a href="../80-bus-news/41/31/text/#article1">Lawrence Lipshitz – the voice of reason</a><br>
 	<a href="../scorpio-news/22/18/text/#article1">Lawrence the long-haired wierdo&hellip;</a><br>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Dr. Dark&rsquo;s Diary
 </h2>
@@ -254,6 +267,9 @@
 	<a href="../scorpio-news/22/15/text/#article1"> &nbsp;&nbsp;29&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/31/09/text/#article1"> &nbsp;&nbsp;30&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	The DH Bits
 </h2>
@@ -278,6 +294,9 @@
 	<a href="../scorpio-news/21/33/text/#article1"> &nbsp;&nbsp;14&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/22/23/text/#article1"> &nbsp;&nbsp;15&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Z80 made simple
 </h2>
@@ -293,6 +312,9 @@
 	<a href="../80-bus-news/12/22/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/13/30/text/#article1">  &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Random Rumours (& Truths)
 </h2>
@@ -312,6 +334,9 @@
 	<a href="../80-bus-news/33/48/text/#article1"> &nbsp;&nbsp;10&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/42/29/text/#article1"> &nbsp;&nbsp;11&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Aunt Agatha&rsquo;s Agony Column
 </h2>
@@ -326,6 +351,9 @@
 	<a href="../80-bus-news/31/35/text/#article1">  &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/34/29/text/#article1">  &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Disk Formats and CP/M Disk Routines
 </h2>
@@ -338,8 +366,9 @@
 	<a href="../scorpio-news/13/11/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/14/15/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
-<br>
-</div><div class="col-sm-6">
+</div>
+
+<div class="style-nowrap">
 <h2>
 	NASCOM ROM BASIC disassembled
 </h2>
@@ -355,11 +384,17 @@
 	<a href="../80-bus-news/32/23/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 	<a href="../80-bus-news/33/23/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <p>
 	NASCOM ROM BASIC source code is available in
 	<a href="../80-bus-news/files/8kbasic.asm">ASM</a> and
 	<a href="../80-bus-news/files/8kbasic.lst">LST</a> file format. 
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Hands-On!
 </h2>
@@ -372,6 +407,9 @@
 	<a href="../micropower/13/03/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 	<a href="../micropower/14/18/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	NAS-SYS monitors dissected
 </h2>
@@ -387,6 +425,9 @@
 	<a href="../micropower/22/07/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 	<a href="../micropower/23/22/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	EPROM Programmer
 </h2>
@@ -398,6 +439,9 @@
 	<a href="../micropower/21/18/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 	<a href="../micropower/22/12/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	XTAL BASIC XTRA 2.2 updates
 </h2>
@@ -418,6 +462,9 @@
 	<a href="../micropower/22/34/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
 	<a href="../micropower/23/32/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 </p-->
+</div>
+
+<div class="style-nowrap">
 <h2>
 	News from Nascom
 </h2>
@@ -432,6 +479,9 @@
 	<a href="../nascom-newsletter/33/24/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 	<a href="../nascom-newsletter/34/30/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	A Nascom Disassembler
 </h2>
@@ -442,6 +492,9 @@
 	<a href="../nascom-newsletter/25/02/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
 	<a href="../nascom-newsletter/31/09/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	SYS-EX &ndash; A 1K Extension Program for NAS-SYS Monitors
 </h2>
@@ -455,6 +508,9 @@
 	<a href="../nascom-newsletter/34/02/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
 	<a href="../nascom-newsletter/35/03/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	The ZCPR3 System
 </h2>
@@ -466,6 +522,9 @@
 	<a href="../scorpio-news/13/25/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 <!-- a href="../scorpio-news/21/22/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a-->
 </p>
+</div>
+
+<div class="style-nowrap">
 <h2>
 	Digital Imaging Systems
 </h2>
@@ -477,10 +536,14 @@
 	<a href="../scorpio-news/23/33/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
 	<a href="../scorpio-news/24/25/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
 </p>
+</div>
 
-</div></div>
+<!-- 2 Spalten: Ende --></div>
 <br>
 <div class="row hyphenate" lang="en"><div class="col-sm-12">
+<h1>
+	Timeline
+</h1>
 <p>
 	Timeline of magazines, taken from Richard Espley&rsquo;s site
 	<a href="https://80bus.co.uk.mirror.jloh.de/" target="_blank">www.80bus.co.uk</a>:
@@ -488,7 +551,7 @@
 <p>
 	<a href="https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm" target="_blank">
 		<img class="img-fluid" src="https://80bus.co.uk.mirror.jloh.de/images/general/mags.gif"
-			width="558" height="132" title="Timeline">
+			width="558" height="132" alt="Timeline">
 	</a>
 </p>
 <p>
