@@ -48,20 +48,19 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2025-08-20 21:30:39 +0200 (Mi, 20. Aug 2025) $ -->
+	<!-- page.php / $Date: 2025-09-21 20:25:59 +0200 (So, 21. Sep 2025) $ -->
 <?php
 	echo "\n";
-
-	$titleClean = $title;
-	$titleClean = str_replace('<span class="nowrap">', '', $titleClean);
-	$titleClean = str_replace('</span>', '', $titleClean);
-	$titleClean = str_replace('&shy;', '', $titleClean);
-	$titleClean = str_replace('&ndash;', '-', $titleClean);
-	$titleClean = str_replace('&middot;', '-', $titleClean);
-
-//	echo "\t<title>$magazine $titleClean &middot; Seite ", (int) $page, "</title>\n";
-	echo "\t<title>$magazine - $titleClean</title>\n";
-//	echo "\t<title>$magazine ", (int) $year + 1900, "</title>\n";
+	{
+		$titleClean = $title;
+		$titleClean = str_replace('<span class="nowrap">',	'',		$titleClean);
+		$titleClean = str_replace('</span>',				'',		$titleClean);
+		$titleClean = str_replace('&shy;',					'',		$titleClean);
+		$titleClean = str_replace('&ndash;',				'-',	$titleClean);
+		$titleClean = str_replace('&middot;',				'-',	$titleClean);
+		$titleClean = str_replace('<br>',					' - ',	$titleClean);
+		echo "\t<title>$magazine - $titleClean</title>\n";
+	}
 	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
