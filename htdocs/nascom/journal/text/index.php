@@ -1,6 +1,6 @@
 <?php
 	$tail="/text/";
-	$title="Nascom Journal &ndash; 80-Bus Journal";
+	$title="Nascom Journal<br>80-Bus Journal";
 	$desc='Dies ist das Gesamt-Inhaltsverzeichnis der '
 	.	'<a href="../../">deutschsprachigen Nascom-Zeitschriften</a>,'
 	.	"\n\t\t\t"

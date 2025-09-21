@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
@@ -55,10 +55,8 @@ function nascomplInsert($year, $issue, $page, $file)
 ?>
 <p>
 	NASCOMPL hieß das Maskottchen des
-	<a href="#nascomp-im-nascom-journal">Nascom Journals</a>
-	und des
-	<a href="#nascomp-im-80-bus-journal">80-Bus Journals</a>.
-	Mit seinen
+	<a href="#nascomp-im-nascom-journal">Nascom Journals</a> und des
+	<a href="#nascomp-im-80-bus-journal">80-Bus Journals</a>. Mit seinen
 	Kommentaren lockerte es die manchmal doch allzu trockene Materie etwas auf.
 	Hier sind alle veröffentlichten NASCOMPL versammelt.
 </p>

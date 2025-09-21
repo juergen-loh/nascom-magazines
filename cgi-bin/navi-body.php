@@ -1460,7 +1460,7 @@ function imageDescNascomNewsletter($issue, $page, $file)
 function imageDescAny($year, $issue, $page, $file)
 {
 	global $nl;
-//	echo    "$year $issue $page $file";
+//	echo "$year $issue $page $file";
 
 	switch ($year) {
 	case "80":					return imageDesc80($issue, $page, $file);
@@ -1475,6 +1475,70 @@ function imageDescAny($year, $issue, $page, $file)
 	case "scorpio-news":		return imageDescScorpioNews($issue, $page, $file);
 	case "micropower":			return imageDescMicropower($issue, $page, $file);
 	case "nascom-newsletter":	return imageDescNascomNewsletter($issue, $page, $file);
+	}
+
+	// Inhaltsverzeichnis Nascom Magazines
+	if ($year == "" && $issue == "") {
+		switch ("$page $file") {
+		// INMC News
+		case "1 inmc-news/01/cover.jpeg":			return "INMC News, Issue 1";
+		case "1 inmc-news/02/cover.jpeg":			return "INMC News, Issue 2";
+		case "1 inmc-news/03/cover.jpeg":			return "INMC News, Issue 3";
+		case "1 inmc-news/04/cover.jpeg":			return "INMC News, Issue 4";
+		case "1 inmc-news/05/cover.jpeg":			return "INMC News, Issue 5";
+		case "1 inmc-news/06/cover.jpeg":			return "INMC News, Issue 6";
+		case "1 inmc-news/07/cover.jpeg":			return "INMC News, Issue 7";
+		// INMC 80 News
+		case "1 inmc-80-news/01/cover.jpeg":		return "INMC 80 News, Issue 1";
+		case "1 inmc-80-news/02/cover.jpeg":		return "INMC 80 News, Issue 2";
+		case "1 inmc-80-news/03/cover.jpeg":		return "INMC 80 News, Issue 3";
+		case "1 inmc-80-news/04/cover.jpeg":		return "INMC 80 News, Issue 4";
+		case "1 inmc-80-news/05/cover.jpeg":		return "INMC 80 News, Issue 5";
+		// 80-Bus News
+		case "1 80-bus-news/11/cover.jpeg":			return "80-Bus News, Volume 1, Issue 1";
+		case "1 80-bus-news/12/cover.jpeg":			return "80-Bus News, Volume 1, Issue 2";
+		case "1 80-bus-news/13/cover.jpeg":			return "80-Bus News, Volume 1, Issue 3";
+		case "1 80-bus-news/14/cover.jpeg":			return "80-Bus News, Volume 1, Issue 4";
+		case "1 80-bus-news/21/cover.jpeg":			return "80-Bus News, Volume 2, Issue 1";
+		case "1 80-bus-news/22/cover.jpeg":			return "80-Bus News, Volume 2, Issue 2";
+		case "1 80-bus-news/23/cover.jpeg":			return "80-Bus News, Volume 2, Issue 3";
+		case "1 80-bus-news/24/cover.jpeg":			return "80-Bus News, Volume 2, Issue 4";
+		case "1 80-bus-news/31/cover.jpeg":			return "80-Bus News, Volume 3, Issue 1";
+		case "1 80-bus-news/32/cover.jpeg":			return "80-Bus News, Volume 3, Issue 2";
+		case "1 80-bus-news/33/cover.jpeg":			return "80-Bus News, Volume 3, Issue 3";
+		case "1 80-bus-news/34/cover.jpeg":			return "80-Bus News, Volume 3, Issue 4";
+		case "1 80-bus-news/35/cover.jpeg":			return "80-Bus News, Volume 3, Issue 5";
+		case "1 80-bus-news/41/cover.jpeg":			return "80-Bus News, Volume 4, Issue 1";
+		case "1 80-bus-news/42/cover.jpeg":			return "80-Bus News, Volume 4, Issue 2";
+		// Scorpio News
+		case "1 scorpio-news/11/cover.jpeg":		return "Scorpio News, Volume 1, Issue 1";
+		case "1 scorpio-news/12/cover.jpeg":		return "Scorpio News, Volume 1, Issue 2";
+		case "1 scorpio-news/13/cover.jpeg":		return "Scorpio News, Volume 1, Issue 3";
+		case "1 scorpio-news/14/cover.jpeg":		return "Scorpio News, Volume 1, Issue 4";
+		case "1 scorpio-news/21/cover.jpeg":		return "Scorpio News, Volume 2, Issue 1";
+		case "1 scorpio-news/22/cover.jpeg":		return "Scorpio News, Volume 2, Issue 2";
+		case "1 scorpio-news/23/cover.jpeg":		return "Scorpio News, Volume 2, Issue 3";
+		case "1 scorpio-news/24/cover.jpeg":		return "Scorpio News, Volume 2, Issue 4";
+		case "1 scorpio-news/31/cover.jpeg":		return "Scorpio News, Volume 3, Issue 1";
+		// Micropower
+		case "1 micropower/11/cover.jpeg":			return "Micropower, Volume 1, Number 1";
+		case "1 micropower/12/cover.jpeg":			return "Micropower, Volume 1, Number 2";
+		case "1 micropower/13/cover.jpeg":			return "Micropower, Volume 1, Number 3";
+		case "1 micropower/14/cover.jpeg":			return "Micropower, Volume 1, Number 4";
+		case "1 micropower/21/cover.jpeg":			return "Micropower, Volume 2, Number 1";
+		case "1 micropower/22/cover.jpeg":			return "Micropower, Volume 2, Number 2";
+		case "1 micropower/23/cover.jpeg":			return "Micropower, Volume 2, Number 3";
+		case "1 micropower/24/cover.jpeg":			return "Micropower, Volume 2, Number 4";
+		// Nascom Newsletter
+		case "1 nascom-newsletter/25/cover.jpeg":	return "Nascom Newsletter, Volume 2, Number 5";
+		case "1 nascom-newsletter/26/cover.jpeg":	return "Nascom Newsletter, Volume 2, Number 6";
+		case "1 nascom-newsletter/31/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 1";
+		case "1 nascom-newsletter/31/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 1";
+		case "1 nascom-newsletter/32/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 2";
+		case "1 nascom-newsletter/33/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 3";
+		case "1 nascom-newsletter/34/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 4";
+		case "1 nascom-newsletter/35/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 5";
+		}
 	}
 
 	// Inhaltsverzeichnis Nascom Magazines
@@ -1551,69 +1615,6 @@ function imageDescAny($year, $issue, $page, $file)
 		}
 	}
 
-	// Inhaltsverzeichnis Nascom Magazines
-	if ($year == "" && $issue == "") {
-		switch ("$page $file") {
-		// INMC News
-		case "1 inmc-news/01/cover.jpeg":			return "INMC News, Issue 1";
-		case "1 inmc-news/02/cover.jpeg":			return "INMC News, Issue 2";
-		case "1 inmc-news/03/cover.jpeg":			return "INMC News, Issue 3";
-		case "1 inmc-news/04/cover.jpeg":			return "INMC News, Issue 4";
-		case "1 inmc-news/05/cover.jpeg":			return "INMC News, Issue 5";
-		case "1 inmc-news/06/cover.jpeg":			return "INMC News, Issue 6";
-		case "1 inmc-news/07/cover.jpeg":			return "INMC News, Issue 7";
-		// INMC 80 News
-		case "1 inmc-80-news/01/cover.jpeg":		return "INMC 80 News, Issue 1";
-		case "1 inmc-80-news/02/cover.jpeg":		return "INMC 80 News, Issue 2";
-		case "1 inmc-80-news/03/cover.jpeg":		return "INMC 80 News, Issue 3";
-		case "1 inmc-80-news/04/cover.jpeg":		return "INMC 80 News, Issue 4";
-		case "1 inmc-80-news/05/cover.jpeg":		return "INMC 80 News, Issue 5";
-		// 80-Bus News
-		case "1 80-bus-news/11/cover.jpeg":			return "80-Bus News, Volume 1, Issue 1";
-		case "1 80-bus-news/12/cover.jpeg":			return "80-Bus News, Volume 1, Issue 2";
-		case "1 80-bus-news/13/cover.jpeg":			return "80-Bus News, Volume 1, Issue 3";
-		case "1 80-bus-news/14/cover.jpeg":			return "80-Bus News, Volume 1, Issue 4";
-		case "1 80-bus-news/21/cover.jpeg":			return "80-Bus News, Volume 2, Issue 1";
-		case "1 80-bus-news/22/cover.jpeg":			return "80-Bus News, Volume 2, Issue 2";
-		case "1 80-bus-news/23/cover.jpeg":			return "80-Bus News, Volume 2, Issue 3";
-		case "1 80-bus-news/24/cover.jpeg":			return "80-Bus News, Volume 2, Issue 4";
-		case "1 80-bus-news/31/cover.jpeg":			return "80-Bus News, Volume 3, Issue 1";
-		case "1 80-bus-news/32/cover.jpeg":			return "80-Bus News, Volume 3, Issue 2";
-		case "1 80-bus-news/33/cover.jpeg":			return "80-Bus News, Volume 3, Issue 3";
-		case "1 80-bus-news/34/cover.jpeg":			return "80-Bus News, Volume 3, Issue 4";
-		case "1 80-bus-news/35/cover.jpeg":			return "80-Bus News, Volume 3, Issue 5";
-		case "1 80-bus-news/41/cover.jpeg":			return "80-Bus News, Volume 4, Issue 1";
-		case "1 80-bus-news/42/cover.jpeg":			return "80-Bus News, Volume 4, Issue 2";
-		// Scorpio News
-		case "1 scorpio-news/11/cover.jpeg":		return "Scorpio News, Volume 1, Issue 1";
-		case "1 scorpio-news/12/cover.jpeg":		return "Scorpio News, Volume 1, Issue 2";
-		case "1 scorpio-news/13/cover.jpeg":		return "Scorpio News, Volume 1, Issue 3";
-		case "1 scorpio-news/14/cover.jpeg":		return "Scorpio News, Volume 1, Issue 4";
-		case "1 scorpio-news/21/cover.jpeg":		return "Scorpio News, Volume 2, Issue 1";
-		case "1 scorpio-news/22/cover.jpeg":		return "Scorpio News, Volume 2, Issue 2";
-		case "1 scorpio-news/23/cover.jpeg":		return "Scorpio News, Volume 2, Issue 3";
-		case "1 scorpio-news/24/cover.jpeg":		return "Scorpio News, Volume 2, Issue 4";
-		case "1 scorpio-news/31/cover.jpeg":		return "Scorpio News, Volume 3, Issue 1";
-		// Micropower
-		case "1 micropower/11/cover.jpeg":			return "Micropower, Volume 1, Number 1";
-		case "1 micropower/12/cover.jpeg":			return "Micropower, Volume 1, Number 2";
-		case "1 micropower/13/cover.jpeg":			return "Micropower, Volume 1, Number 3";
-		case "1 micropower/14/cover.jpeg":			return "Micropower, Volume 1, Number 4";
-		case "1 micropower/21/cover.jpeg":			return "Micropower, Volume 2, Number 1";
-		case "1 micropower/22/cover.jpeg":			return "Micropower, Volume 2, Number 2";
-		case "1 micropower/23/cover.jpeg":			return "Micropower, Volume 2, Number 3";
-		case "1 micropower/24/cover.jpeg":			return "Micropower, Volume 2, Number 4";
-		// Nascom Newsletter
-		case "1 nascom-newsletter/25/cover.jpeg":	return "Nascom Newsletter, Volume 2, Number 5";
-		case "1 nascom-newsletter/26/cover.jpeg":	return "Nascom Newsletter, Volume 2, Number 6";
-		case "1 nascom-newsletter/31/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 1";
-		case "1 nascom-newsletter/31/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 1";
-		case "1 nascom-newsletter/32/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 2";
-		case "1 nascom-newsletter/33/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 3";
-		case "1 nascom-newsletter/34/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 4";
-		case "1 nascom-newsletter/35/cover.jpeg":	return "Nascom Newsletter, Volume 3, Number 5";
-		}
-	}
 	return("");
 }
 
@@ -2214,4 +2215,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-09-21 19:33:39 +0200 (So, 21. Sep 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ -->

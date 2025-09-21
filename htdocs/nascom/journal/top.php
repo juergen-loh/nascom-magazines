@@ -29,16 +29,26 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2024-12-29 12:50:24 +0100 (So, 29. Dez 2024) $ -->
+	<!-- top.php / $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
 		Nascom Computer, Nascom 1, Nascom 2">
 <?php
-	echo "\t<title>$title";
+	{
+		$titleClean = $title;
+		$titleClean = str_replace('&middot;', '-',	$titleClean);
+		$titleClean = str_replace('&ndash;', '-',	$titleClean);
+		$titleClean = str_replace('&mdash;', '-',	$titleClean);
+		$titleClean = str_replace('<br>', ' - ',	$titleClean);
+		echo "\t<title>$titleClean";
+	}
 	if (isset($issue)) {
 		$issueClean = $issue;
-		$issueClean = str_replace('&middot;', '-', $issueClean);
+		$issueClean = str_replace('&middot;', '-',	$issueClean);
+		$issueClean = str_replace('&ndash;', '-',	$issueClean);
+		$issueClean = str_replace('&mdash;', '-',	$issueClean);
+		$issueClean = str_replace('<br>', ' - ',	$issueClean);
 
 		echo " - $issueClean";
 	}
