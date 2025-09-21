@@ -568,9 +568,7 @@ function imageDesc80($issue, $page, $file)
 	case "03 01 Image-01-1.gif":
 	case "04 01 Image-01-1.jpeg":
 	case "05 01 Image-01-1.jpeg":
-	case "06 01 Image-01-1.jpeg": return("Nascom");
-
-	case "06 49 Image-49-1.jpeg": return("MKS &nbsp; Michael Klein - Systemtechnik$nl"."- Vertrieb");
+	case "06 01 Image-01-1.jpeg":	return("Nascom");
 
 	case "00 01 Image-01-3.gif":
 	case "01 01 Image-01-3.gif":
@@ -579,28 +577,224 @@ function imageDesc80($issue, $page, $file)
 	case "04 01 Image-01-3.jpeg":
 	case "04 03 Image-03-1.jpeg":
 	case "05 01 Image-01-3.jpeg":
-	case "06 02 Image-02-1.jpeg": return("Michael Klein");
+	case "06 02 Image-02-1.jpeg":	return("Michael Klein");
 
-	case "00 01 Image-01-2.gif": return("Journal 0/80");
+	case "00 02 Image-02-7.gif":
+	case "01 11 Image-11-1.gif":
+	case "02 16 Image-16-2.gif":
+	case "03 16 Image-16-2.gif":
+	case "04 11 Image-11-4.jpeg":
+	case "05 07 Image-07-2.jpeg":
+	case "06 05 Image-05-2.jpeg":	return("Kassette");
 
-	case "01 01 Image-01-2.gif": return("Journal 1/80");
-	case "01 02 Image-02-1.gif": return("Nascom IMP");
+	case "00 03 Image-03-1.gif":
+	case "00 03 Image-03-2.gif":
+	case "00 04 Image-04-2.gif":
+	case "00 05 Image-05-1.gif":
+	case "00 05 Image-05-4.gif":
+	case "00 06 Image-06-1.gif":
+	case "01 06 Image-06-2.gif":
+	case "01 12 Image-12-2.gif":
+	case "02 04 Image-04-1.gif":
+	case "02 15 Image-15-1.gif":
+	case "02 16 Image-16-1.gif":
+	case "03 14 Image-14-1.gif":
+	case "03 14 Image-14-2.gif":
+	case "04 05 Image-05-1.jpeg":
+	case "04 05 Image-05-2.jpeg":
+	case "04 06 Image-06-1.jpeg":
+	case "04 07 Image-07-1.jpeg":
+	case "04 07 Image-07-2.jpeg":
+	case "04 07 Image-07-3.jpeg":
+	case "04 07 Image-07-4.jpeg":
+	case "04 07 Image-07-5.jpeg":
+	case "04 07 Image-07-6.jpeg":
+	case "04 08 Image-08-1.jpeg":
+	case "04 08 Image-08-3.jpeg":
+	case "04 08 Image-08-4.jpeg":
+	case "05 08 Image-08-1.jpeg":
+	case "05 08 Image-08-2.jpeg":
+	case "06 04 Image-04-1.jpeg":
+	case "06 04 Image-04-2.jpeg":
+	case "06 04 Image-04-3.jpeg":
+	case "06 08 Image-08-1.jpeg":
+	case "06 24 Image-24-1.jpeg":
+	case "06 27 Image-27-1.jpeg":
+	case "06 27 Image-27-2.jpeg":
+	case "06 32 Image-32-1.jpeg":
+	case "06 48 Image-48-1.jpeg":	return("HEX-Listing");
 
-	case "02 01 Image-01-2.gif": return("Journal 2/80");
-	case "02 02 Image-02-1.gif": return("NASPEN");
+	case "00 04 Image-04-1.gif":
+	case "00 07 Image-07-1.gif":
+	case "01 05 Image-05-1.gif":
+	case "01 06 Image-06-1.gif":
+	case "01 12 Image-12-1.gif":
+	case "01 12 Image-12-2.gif":
+	case "01 12 Image-12-3.gif":
+	case "01 12 Image-12-4.gif":
+	case "01 12 Image-12-5.gif":
+	case "01 13 Image-13-1.gif":
+	case "02 08 Image-08-1.gif":
+	case "02 09 Image-09-1.gif":
+	case "02 10 Image-10-1.gif":
+	case "04 17 Image-17-1.jpeg":
+	case "04 18 Image-18-1.jpeg":
+	case "04 18 Image-18-2.jpeg":
+	case "05 05 Image-05-2.jpeg":
+	case "05 12 Image-12-1.jpeg":
+	case "05 13 Image-13-1.jpeg":
+	case "05 13 Image-13-3.jpeg":
+	case "05 13 Image-13-4.jpeg":
+	case "05 14 Image-14-1.jpeg":
+	case "06 06 Image-06-4.jpeg":
+	case "06 07 Image-07-1.jpeg":
+	case "06 07 Image-07-2.jpeg":
+	case "06 07 Image-07-3.jpeg":
+	case "06 10 Image-10-1.jpeg":
+	case "06 11 Image-11-1.jpeg":
+	case "06 13 Image-13-1.jpeg":
+	case "06 15 Image-15-1.jpeg":
+	case "06 16 Image-16-2.jpeg":
+	case "06 20 Image-20-2.jpeg":
+	case "06 28 Image-28-1.jpeg":
+	case "06 28 Image-28-2.jpeg":
+	case "06 36 Image-36-1.jpeg":
+	case "06 37 Image-37-1.jpeg":
+	case "06 38 Image-38-1.jpeg":
+	case "06 39 Image-39-1.jpeg":
+	case "06 40 Image-40-1.jpeg":
+	case "06 41 Image-41-1.jpeg":
+	case "06 42 Image-42-1.jpeg":
+	case "06 43 Image-43-1.jpeg":
+	case "06 44 Image-44-1.jpeg":
+	case "06 45 Image-45-1.jpeg":
+	case "06 46 Image-46-1.jpeg":
+	case "06 47 Image-47-1.jpeg":	return("Assembler-Listing");
 
-	case "03 01 Image-01-2.gif": return("Journal 3/80");
+	case "00 10 Image-10-1.gif":
+	case "01 07 Image-07-1.gif":
+	case "01 07 Image-07-2.gif":
+	case "02 16 Image-16-3.gif":
+	case "03 08 Image-08-1.gif":
+	case "03 09 Image-09-1.gif":
+	case "03 13 Image-13-1.gif":
+	case "03 13 Image-13-2.gif":
+	case "04 11 Image-11-3.jpeg":
+	case "05 10 Image-10-1.jpeg":
+	case "06 21 Image-21-1.jpeg":
+	case "06 22 Image-22-1.jpeg":
+	case "06 23 Image-23-1.jpeg":
+	case "06 33 Image-33-1.jpeg":
+	case "06 34 Image-34-1.jpeg":
+	case "06 35 Image-35-1.jpeg":	return("BASIC-Listing");
 
-	case "04 01 Image-01-2.jpeg": return("Journal 4/80");
-	case "04 04 Image-04-2.jpeg": return("Messegelände Killesberg");
-	case "04 11 Image-11-2.jpeg": return("BASIC");
-	case "04 19 Image-19-1.jpeg": return("BOOK SHOP");
+	case "00 04 Image-04-3.gif":
+	case "00 06 Image-06-3.gif":
+	case "00 09 Image-09-1.gif":
+	case "02 04 Image-04-2.gif":
+	case "02 04 Image-04-3.gif":
+	case "02 04 Image-04-4.gif":
+	case "02 04 Image-04-5.gif":
+	case "02 04 Image-04-6.gif":
+	case "03 06 Image-06-1.gif":
+	case "03 11 Image-11-1.gif":
+	case "04 09 Image-09-1.jpeg":
+	case "04 09 Image-09-2.jpeg":
+	case "04 10 Image-10-1.png":
+	case "04 10 Image-10-2.png":
+	case "04 10 Image-10-3.jpeg":
+	case "04 10 Image-10-4.jpeg":
+	case "04 11 Image-11-1.jpeg":
+	case "04 13 Image-13-1.jpeg":
+	case "05 06 Image-06-1.jpeg":
+	case "05 06 Image-06-2.jpeg":
+	case "05 06 Image-06-3.jpeg":
+	case "05 07 Image-07-1.jpeg":
+	case "05 09 Image-09-1.jpeg":
+	case "05 09 Image-09-2.jpeg":
+	case "05 11 Image-11-2.jpeg":
+	case "05 14 Image-14-2.jpeg":
+	case "05 15 Image-15-1.jpeg":
+	case "06 04 Image-04-4.jpeg":
+	case "06 05 Image-05-1.jpeg":
+	case "06 06 Image-06-1.jpeg":
+	case "06 06 Image-06-3.jpeg":
+	case "06 09 Image-09-1.jpeg":
+	case "06 17 Image-17-1.jpeg":
+	case "06 18 Image-18-1.jpeg":
+	case "06 19 Image-19-1.jpeg":
+	case "06 19 Image-19-2.jpeg":
+	case "06 20 Image-20-1.jpeg":
+	case "06 26 Image-26-1.jpeg":
+	case "06 30 Image-30-1.jpeg":
+	case "06 30 Image-30-2.jpeg":	return("Schaltbild");
 
-	case "05 01 Image-01-2.jpeg": return("Journal 5/80");
-	case "05 05 Image-05-1.jpeg": return("Fortsetzung folgt...");
+	case "01 16 Image-16-1.gif":
+	case "03 16 Image-16-1.gif":
+	case "06 52 Image-52-1.jpeg":	return("Computergrafik");
 
-	case "06 01 Image-01-2.jpeg": return("Journal 6/80$nl"."7/80");
-	case "06 49 Image-49-2.jpeg": return("Sonderpreis bis$nl"."15. Januar: 128,-");
+	case "02 11 Image-11-1.gif":
+	case "05 13 Image-13-2.jpeg":
+	case "05 13 Image-13-5.jpeg":
+	case "06 15 Image-15-2.jpeg":	return("Flussdiagramm");
+
+	case "04 14 Image-14-1.jpeg":
+	case "04 15 Image-15-1.jpeg":
+	case "04 15 Image-15-2.jpeg":
+	case "04 15 Image-15-3.jpeg":
+	case "04 15 Image-15-4.jpeg":
+	case "06 31 Image-31-1.jpeg":	return("Bildschirmfoto");
+
+	// 00
+	case "00 01 Image-01-2.gif":	return("Journal 0/80");
+	case "00 05 Image-05-3.gif":	return("Sprachtabelle");
+	case "00 06 Image-06-2.gif":	return("Tabelle");
+	case "00 10 Image-10-2.gif":	return("Türme von Hanoi");
+	case "00 12 Image-12-1.gif":	return("Anzeige:$nl"."Nascom-2");
+	case "00 12 Image-12-2.gif":	return("Anzeige:$nl"."IMP Normal Papier Drucker");
+
+	// 01
+	case "01 01 Image-01-2.gif":	return("Journal 1/80");
+	case "01 02 Image-02-1.gif":	return("Nascom IMP");
+	case "01 02 Image-02-2.gif":	return("Nascom Micro IMP");
+	case "01 04 Image-04-1.gif":	return("Zustandsfolgediagramm");
+
+	// 02
+	case "02 01 Image-01-2.gif":	return("Journal 2/80");
+	case "02 02 Image-02-1.gif":	return("NASPEN");
+	case "02 14 Image-14-1.gif":
+	case "02 14 Image-14-2.gif":	return("Datenformatierung");
+
+	// 03
+	case "03 01 Image-01-2.gif":	return("Journal 3/80");
+	case "03 05 Image-05-1.gif":	return("Schrittmotor");
+	case "03 07 Image-07-1.gif":	return("Zeitdiagramm");
+	case "03 14 Image-14-3.gif":
+	case "03 14 Image-14-4.gif":	return("Lösungen");
+
+	// 04
+	case "04 01 Image-01-2.jpeg":	return("Journal 4/80");
+	case "04 04 Image-04-1.jpeg":
+	case "04 04 Image-04-2.jpeg":	return("Messegelände Killesberg");
+	case "04 11 Image-11-2.jpeg":	return("BASIC");
+	case "04 19 Image-19-1.jpeg":	return("BOOK SHOP");
+
+	// 05
+	case "05 01 Image-01-2.jpeg":	return("Journal 5/80");
+	case "05 03 Image-03-1.jpeg":	return("Diagramm");
+	case "05 05 Image-05-1.jpeg":	return("Fortsetzung folgt...");
+	case "05 11 Image-11-1.jpeg":	return("Liste der Cursor- und Helligkeitsbefehle");
+
+	// 06
+	case "06 01 Image-01-2.jpeg":	return("Journal 6/80$nl"."7/80");
+	case "06 06 Image-06-2.jpeg":	return("Dimensionierung");
+	case "06 06 Image-06-5.jpeg":	return("Joystick");
+	case "06 12 Image-12-1.jpeg":	return("Schrittfolge");
+	case "06 18 Image-18-2.jpeg":	return("Tonhöhentabelle");
+	case "06 23 Image-23-2.jpeg":	return("Fernschreibzeichen");
+	case "06 49 Image-49-1.jpeg":	return("MKS &nbsp; Michael Klein - Systemtechnik$nl"."- Vertrieb");
+	case "06 49 Image-49-2.jpeg":	return("Sonderpreis bis$nl"."15. Januar: 128,-");
+	case "06 49 Image-49-3.jpeg":	return("Grafikzeichen");
 	}
 	return "";
 }
@@ -1201,7 +1395,7 @@ function imageDescNascomNewsletter($issue, $page, $file)
 	return "";
 }
 
-function imageDesc($year, $issue, $page, $file)
+function imageDescAny($year, $issue, $page, $file)
 {
 	global $nl;
 //	echo    "$year $issue $page $file";
@@ -1238,9 +1432,32 @@ function imageDesc($year, $issue, $page, $file)
 		return("&micro;P $year");
 	}
 
-/*	echo "<-- switch($year $issue $page $file) -->\n";
-	return("$year $issue $page $file");
-*/	return("");
+	// Inhaltsverzeichnis Nascom Journal
+	if ($year == "") {
+		switch ("$issue $page $file") {
+		case "0/80 1 thumb/01.gif":	return "Nascom Journal 0/80";
+		case "1/80 1 thumb/01.gif":	return "Nascom Journal 1/80";
+		case "2/80 1 thumb/01.gif":	return "Nascom Journal 2/80";
+		case "3/80 1 thumb/01.gif":	return "Nascom Journal 3/80";
+		case "4/80 1 thumb/01.gif":	return "Nascom Journal 4/80";
+		case "5/80 1 thumb/01.gif":	return "Nascom Journal 5/80";
+		case "6/80 7/80 1 thumb/01.gif":	return "Nascom Journal 6/80 7/80";
+		}
+	}
+
+	return("");
+}
+
+function imageDesc($year, $issue, $page, $file)
+{
+	global $server;
+	$desc = imageDescAny($year, $issue, $page, $file);
+	if ($desc == ""
+//	&&	$server == "t480"
+	) {
+//		return("$year $issue $page $file\"");	// HTML-Fehler, wenn kein alt-Text vergeben wurde
+	}
+	return $desc;
 }
 
 function externalLink($link, $text="", $delimiter="\n")
@@ -1826,4 +2043,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-09-06 19:02:16 +0200 (Sa, 06. Sep 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-09-21 16:43:57 +0200 (So, 21. Sep 2025) $ -->
