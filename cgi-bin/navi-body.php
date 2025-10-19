@@ -863,9 +863,45 @@ function imageDesc81($issue, $page, $file)
 	case "12 28 Image-28-2.jpeg":
 	case "12 54 Image-54-1.jpeg":	return("NASCOMPL");
 
+	case "01 03 Image-03-2.jpeg":
+	case "01 04 Image-04-2.jpeg":
+	case "01 05 Image-05-1.jpeg":
+	case "01 08 Image-08-1.jpeg":
+	case "01 09 Image-09-1.jpeg":
+	case "01 10 Image-10-1.jpeg":
+	case "01 11 Image-11-1.jpeg":
+	case "01 11 Image-11-2.jpeg":
+	case "01 12 Image-12-1.jpeg":
+	case "01 13 Image-13-2.jpeg":
+	case "01 13 Image-13-3.jpeg":	return("HEX-Listing");
+
+	case "01 13 Image-13-1.jpeg":
+	case "01 13 Image-13-4.jpeg":	return("Schaltbild");
+
+	case "01 07 Image-07-1.jpeg":
+	case "01 08 Image-08-3.jpeg":
+	case "01 12 Image-12-2.jpeg":
+	case "01 12 Image-12-3.jpeg":
+	case "01 12 Image-12-4.jpeg":	return("Assembler-Listing");
+
+	case "01 04 Image-04-1.jpeg":
+	case "01 06 Image-06-1.jpeg":
+	case "01 06 Image-06-2.jpeg":
+	case "01 06 Image-06-3.jpeg":
+	case "01 06 Image-06-4.jpeg":
+	case "01 14 Image-14-1.jpeg":	return("Bildschirmfoto");
+
+	case "01 14 Image-14-2.jpeg":	return("Kassette");
+
 	// 01
 	case "01 01 Image-01-2.jpeg":	return("Journal 1/81");
 	case "01 02 Image-02-1.jpeg":	return("Ihr Michael Klein");
+	case "01 03 Image-03-1.jpeg":	return("Bildschirmauszug");
+	case "01 04 Image-04-3.jpeg":	return("Punktematrix");
+	case "01 04 Image-04-4.jpeg":
+	case "01 04 Image-04-5.jpeg":	return("Zeichentabelle");
+	case "01 08 Image-08-2.jpeg":	return("Speichertabelle");
+	case "01 13 Image-13-5.jpeg":	return("Layout");
 
 	// 02
 	case "02 01 Image-01-2.jpeg":	return("Journal 2/81");
@@ -2215,4 +2251,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-10-19 19:34:06 +0200 (So, 19. Okt 2025) $ -->
