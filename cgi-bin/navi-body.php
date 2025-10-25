@@ -873,16 +873,29 @@ function imageDesc81($issue, $page, $file)
 	case "01 11 Image-11-2.jpeg":
 	case "01 12 Image-12-1.jpeg":
 	case "01 13 Image-13-2.jpeg":
-	case "01 13 Image-13-3.jpeg":	return("HEX-Listing");
+	case "01 13 Image-13-3.jpeg":
+	case "02 04 Image-04-1.jpeg":
+	case "02 04 Image-04-2.jpeg":
+	case "02 05 Image-05-4.jpeg":
+	case "02 06 Image-06-1.jpeg":
+	case "02 06 Image-06-3.jpeg":
+	case "02 07 Image-07-1.jpeg":
+	case "02 08 Image-08-2.jpeg":
+	case "02 09 Image-09-1.jpeg":
+	case "02 14 Image-14-1.jpeg":	return("HEX-Listing");
 
 	case "01 13 Image-13-1.jpeg":
-	case "01 13 Image-13-4.jpeg":	return("Schaltbild");
+	case "01 13 Image-13-4.jpeg":
+	case "02 08 Image-08-1.jpeg":	return("Schaltbild");
 
 	case "01 07 Image-07-1.jpeg":
 	case "01 08 Image-08-3.jpeg":
 	case "01 12 Image-12-2.jpeg":
 	case "01 12 Image-12-3.jpeg":
-	case "01 12 Image-12-4.jpeg":	return("Assembler-Listing");
+	case "01 12 Image-12-4.jpeg":
+	case "02 05 Image-05-1.jpeg":
+	case "02 05 Image-05-2.jpeg":
+	case "02 05 Image-05-3.jpeg":	return("Assembler-Listing");
 
 	case "01 04 Image-04-1.jpeg":
 	case "01 06 Image-06-1.jpeg":
@@ -891,7 +904,15 @@ function imageDesc81($issue, $page, $file)
 	case "01 06 Image-06-4.jpeg":
 	case "01 14 Image-14-1.jpeg":	return("Bildschirmfoto");
 
-	case "01 14 Image-14-2.jpeg":	return("Kassette");
+	case "01 14 Image-14-2.jpeg":
+	case "02 09 Image-09-2.jpeg":
+	case "02 13 Image-13-2.jpeg":	return("Kassette");
+
+	case "02 06 Image-06-2.jpeg":
+	case "02 10 Image-10-1.jpeg":
+	case "02 11 Image-11-1.jpeg":
+	case "02 12 Image-12-1.jpeg":
+	case "02 13 Image-13-1.jpeg":	return("Basic-Listing");
 
 	// 01
 	case "01 01 Image-01-2.jpeg":	return("Journal 1/81");
@@ -904,7 +925,16 @@ function imageDesc81($issue, $page, $file)
 	case "01 13 Image-13-5.jpeg":	return("Layout");
 
 	// 02
+	case "02 15 Image-15-1.jpeg":
+	case "02 15 Image-15-2.jpeg":	return("Zeichenvorrat");
+
+	case "02 17 Image-17-2.jpeg":
+	case "02 18 Image-18-1.jpeg":
+	case "02 18 Image-18-2.jpeg":	return("Nascom Preisliste");
+
 	case "02 01 Image-01-2.jpeg":	return("Journal 2/81");
+	case "02 04 Image-04-3.jpeg":	return("Tastatur");
+	case "02 15 Image-15-3.jpeg":	return("Bildschirmfoto");
 
 	// 03
 	case "03 01 Image-01-2.jpeg":	return("Journal 3/81");
@@ -2251,4 +2281,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-10-19 19:34:06 +0200 (So, 19. Okt 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-10-25 21:51:38 +0200 (Sa, 25. Okt 2025) $ -->
