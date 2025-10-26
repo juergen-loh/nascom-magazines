@@ -818,7 +818,8 @@ function imageDesc81($issue, $page, $file)
 	case "02 17 Image-17-1.jpeg":
 	case "04 01 Image-01-1.jpeg":
 	case "07 02 Image-02-1.jpeg":
-	case "07 02 Image-02-1.png": 	return("Michael Klein");
+	case "07 02 Image-02-1.png":
+	case "09 14 Image-14-1.jpeg":	return("Michael Klein");
 
 	case "02 19 Image-19-1.jpeg":
 	case "03 24 Image-24-1.jpeg":
@@ -902,7 +903,17 @@ function imageDesc81($issue, $page, $file)
 	case "07 10 Image-10-1.jpeg":
 	case "07 10 Image-10-2.jpeg":
 	case "07 16 Image-16-2.jpeg":
-	case "07 18 Image-18-1.jpeg":	return("HEX-Listing");
+	case "07 18 Image-18-1.jpeg":
+	case "08 13 Image-13-2.jpeg":
+	case "08 13 Image-13-3.jpeg":
+	case "08 21 Image-21-1.jpeg":
+	case "08 21 Image-21-2.jpeg":
+	case "08 21 Image-21-3.jpeg":
+	case "08 22 Image-22-1.jpeg":
+	case "09 07 Image-07-1.jpeg":
+	case "09 22 Image-22-1.jpeg":
+	case "09 22 Image-22-2.jpeg":
+	case "09 22 Image-22-3.jpeg":	return("HEX-Listing");
 
 	case "01 13 Image-13-1.jpeg":
 	case "01 13 Image-13-4.jpeg":
@@ -919,7 +930,9 @@ function imageDesc81($issue, $page, $file)
 	case "06 09 Image-09-3.jpeg":
 	case "06 09 Image-09-4.jpeg":
 	case "06 10 Image-10-1.jpeg":
-	case "07 12 Image-12-1.jpeg":	return("Schaltbild");
+	case "07 12 Image-12-1.jpeg":
+	case "09 06 Image-06-1.jpeg":
+	case "09 06 Image-06-2.jpeg":	return("Schaltbild");
 
 	case "01 07 Image-07-1.jpeg":
 	case "01 08 Image-08-3.jpeg":
@@ -954,7 +967,52 @@ function imageDesc81($issue, $page, $file)
 	case "07 14 Image-14-1.jpeg":
 	case "07 15 Image-15-1.jpeg":
 	case "07 15 Image-15-2.jpeg":
-	case "07 16 Image-16-1.jpeg":	return("Assembler-Listing");
+	case "07 16 Image-16-1.jpeg":
+	case "08 04 Image-04-1.jpeg":
+	case "08 07 Image-07-1.jpeg":
+	case "08 07 Image-07-2.jpeg":
+	case "08 08 Image-08-1.jpeg":
+	case "08 09 Image-09-1.jpeg":
+	case "08 10 Image-10-1.jpeg":
+	case "08 10 Image-10-2.jpeg":
+	case "08 11 Image-11-1.jpeg":
+	case "08 12 Image-12-1.jpeg":
+	case "08 12 Image-12-2.jpeg":
+	case "08 12 Image-12-3.jpeg":
+	case "08 13 Image-13-1.jpeg":
+	case "08 15 Image-15-3.jpeg":
+	case "08 16 Image-16-1.jpeg":
+	case "08 17 Image-17-2.jpeg":
+	case "08 18 Image-18-1.jpeg":
+	case "08 18 Image-18-2.jpeg":
+	case "08 18 Image-18-3.jpeg":
+	case "08 18 Image-18-4.jpeg":
+	case "09 04 Image-04-1.jpeg":
+	case "09 08 Image-08-1.jpeg":
+	case "09 08 Image-08-2.jpeg":
+	case "09 09 Image-09-1.jpeg":
+	case "09 16 Image-16-1.jpeg":
+	case "09 16 Image-16-2.jpeg":
+	case "09 16 Image-16-3.jpeg":
+	case "09 17 Image-17-1.jpeg":
+	case "09 17 Image-17-2.jpeg":
+	case "09 17 Image-17-3.jpeg":
+	case "09 18 Image-18-1.jpeg":
+	case "09 18 Image-18-2.jpeg":
+	case "09 18 Image-18-3.jpeg":
+	case "09 19 Image-19-1.jpeg":
+	case "09 19 Image-19-2.jpeg":
+	case "09 19 Image-19-3.jpeg":
+	case "09 20 Image-20-1.jpeg":
+	case "09 20 Image-20-2.jpeg":
+	case "09 20 Image-20-3.jpeg":
+	case "09 21 Image-21-1.jpeg":
+	case "09 21 Image-21-2.jpeg":
+	case "09 21 Image-21-3.jpeg":
+	case "09 24 Image-24-1.jpeg":
+	case "09 24 Image-24-2.jpeg":
+	case "09 24 Image-24-3.jpeg":
+	case "09 25 Image-25-1.jpeg":	return("Assembler-Listing");
 
 	case "01 04 Image-04-1.jpeg":
 	case "01 06 Image-06-1.jpeg":
@@ -969,7 +1027,9 @@ function imageDesc81($issue, $page, $file)
 	case "02 13 Image-13-2.jpeg":
 	case "03 12 Image-12-4.jpeg":
 	case "06 19 Image-19-2.png":
-	case "07 04 Image-04-2.jpeg":	return("Kassette");
+	case "07 04 Image-04-2.jpeg":
+	case "08 23 Image-23-1.png":
+	case "09 03 Image-03-1.jpeg":	return("Kassette");
 
 	case "02 06 Image-06-2.jpeg":
 	case "02 10 Image-10-1.jpeg":
@@ -994,7 +1054,15 @@ function imageDesc81($issue, $page, $file)
 	case "07 09 Image-09-1.jpeg":
 	case "07 11 Image-11-1.jpeg":
 	case "07 11 Image-11-2.jpeg":
-	case "07 13 Image-13-4.jpeg":	return("Basic-Listing");
+	case "07 13 Image-13-4.jpeg":
+	case "08 14 Image-14-1.jpeg":
+	case "08 14 Image-14-2.jpeg":
+	case "08 16 Image-16-2.jpeg":
+	case "09 25 Image-25-1.png":
+	case "09 25 Image-25-2.jpeg":	return("Basic-Listing");
+
+//	case "08 04 Image-04-2.jpeg":
+	case "08 04 Image-04-2.jpeg":	return("Forth-Listing");
 
 	case "01 13 Image-13-5.jpeg":
 	case "04 08 Image-08-1.jpeg":	return("Layout");
@@ -1002,8 +1070,11 @@ function imageDesc81($issue, $page, $file)
 	case "04 08 Image-08-2.jpeg":
 	case "06 06 Image-06-2.jpeg":	return("Bestückungsplan");
 
-//	case "04 24 Image-24-1.jpeg":
-	case "04 24 Image-24-1.jpeg":	return("Strichcode");
+	case "04 24 Image-24-1.jpeg":
+	case "08 17 Image-17-1.jpeg":	return("Strichcode");
+
+	case "08 24 Image-24-1.png":
+	case "09 28 Image-28-1.png":	return("Anzeige MK Systemtechnik");
 	
 	// 01
 	case "01 01 Image-01-2.jpeg":	return("Journal 1/81");
@@ -1097,7 +1168,9 @@ function imageDesc81($issue, $page, $file)
 	case "07 20 Image-20-1.png":	return("Anzeige MIVOC HiFi-Systeme, Solingen");
 
 	// 08
+	case "08 02 Image-02-2.png":	return("Böhmscher Rundlauf");
 	case "08 13 Image-13-4.jpeg":	return("NASCOMPL:$nl"."Formatiert sehe ich$nl"."sehr seltsam aus!!");
+	case "08 15 Image-15-1.jpeg":	return("Sortiervorgang");
 	case "08 19 Image-19-2.jpeg":	return("NASCOMPL:$nl"."Platinismus");
 	case "08 20 Image-20-1.jpeg":	return("Spielecke");
 
@@ -1105,6 +1178,12 @@ function imageDesc81($issue, $page, $file)
 	case "09 04 Image-04-2.jpeg":	return("NASCOMPL:$nl"."Hier haben$nl"."wir Platz$nl"."für$nl"."Randnotizen$nl"."gelassen!");
 	case "09 07 Image-07-2.jpeg":	return("NASCOMPL:$nl"."Kann ja &rsquo;mal$nl"."passieren");
 	case "09 13 Image-13-7.jpeg":	return("NASCOMPL:$nl"."Mein Beitrag muß diesmal$nl"."wegen Platmangels ausfallen.$nl"."Das ist nicht so schlimm.$nl"."Aber daß mich$nl"."ein Leser ''albern''$nl"." findet, bricht$nl"."mir fast die CPU!");
+	case "09 15 Image-15-1.jpeg":	return("Lageplan Stuttgart Killesberg");
+	case "09 15 Image-15-2.jpeg":	return("Logo Stuttgart Messe");
+	case "09 15 Image-15-3.jpeg":
+	case "09 15 Image-15-4.jpeg":	return("Messehalle");
+	case "09 23 Image-23-1.jpeg":	return("Pinbelegung");
+	case "09 26 Image-26-1.jpeg":	return("Pinbelegung AY-3-8910");
 
 	// 10
 	case "10 06 Image-06-2.jpeg":	return("NASCOMPL:$nl"."ICH GLAUBE,$nl"."DAS INTERESSE$nl"."FÜR WEITERE$nl"."ARTIKEL VON$nl"."HERRN FÖßEL$nl"."KANN MAN$nl"."VORAUSSETZEN!");
@@ -2412,4 +2491,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-10-26 15:52:49 +0100 (So, 26. Okt 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-10-26 19:59:48 +0100 (So, 26. Okt 2025) $ -->
