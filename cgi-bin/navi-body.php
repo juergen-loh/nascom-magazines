@@ -1211,8 +1211,6 @@ function imageDesc81($issue, $page, $file)
 
 	// 10
 	case "10 06 Image-06-2.jpeg":	return("NASCOMPL:$nl"."ICH GLAUBE,$nl"."DAS INTERESSE$nl"."FÜR WEITERE$nl"."ARTIKEL VON$nl"."HERRN FÖßEL$nl"."KANN MAN$nl"."VORAUSSETZEN!");
-	case "10 27 Image-27-2.jpeg":
-	case "10 27 Image-27-2.png":	return("NASCOMPL:$nl"."Computermisshandlung");
 	case "10 07 Image-07-2.jpeg":
 	case "10 07 Image-07-3.jpeg":	return("Pixelmatrix");
 	case "10 08 Image-08-1.jpeg":	return("Zeichentabelle");
@@ -1221,6 +1219,8 @@ function imageDesc81($issue, $page, $file)
 	case "10 20 Image-20-1.png":	return("Verdrahtungsplan");
 	case "10 21 Image-21-1.jpeg":	return("Tabelle der Buchsen- und Steckerbelegungen");
 	case "10 22 Image-22-1.jpeg":	return("Zeitablauf vereinfacht");
+	case "10 27 Image-27-2.jpeg":
+	case "10 27 Image-27-2.png":	return("NASCOMPL:$nl"."Computermisshandlung");
 
 	// 12
 	case "12 40 Image-40-3.jpeg":	return("NASCOMPL:$nl"."KEIN$nl"."STRESS$nl"."MEHR BEIM$nl"."TIPPEN!");
@@ -2523,4 +2523,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-11-02 17:59:50 +0100 (So, 02. Nov 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-11-21 18:30:11 +0100 (Fr, 21. Nov 2025) $ -->
