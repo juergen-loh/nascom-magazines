@@ -1342,9 +1342,9 @@ function imageDesc82($issue, $page, $file)
 	case "10 01 Image-01-1.png":
 	case "12 01 Image-01-1.jpeg":	return("Nascom$nl"."Journal");
 
-	case "01 02 Image-02-2.jpeg":	return("Günter Böhm");
+	case "01 17 Image-17-1.jpeg":	return("Anzeige MK Systemtechnik");
 
-	case "07 13 Image-13-1.jpeg":	return("Made by DL6UP 1981");
+	case "01 02 Image-02-2.jpeg":	return("Günter Böhm");
 
 	case "01 35 Image-35-1.jpeg":
 	case "02 17 Image-17-4.jpeg":
@@ -1358,7 +1358,66 @@ function imageDesc82($issue, $page, $file)
 	case "10 07 ../82/10/Image-07-2.jpeg":
 	case "10 07 Image-07-2.jpeg":	return("NASCOMPL");
 
+	case "01 04 Image-04-1.jpeg":
+	case "01 05 Image-05-4.jpeg":
+	case "01 06 Image-06-1.jpeg":
+	case "01 07 Image-07-1.jpeg":
+	case "01 12 Image-12-1.jpeg":
+	case "01 12 Image-12-2.jpeg":
+	case "01 13 Image-13-1.jpeg":
+	case "01 13 Image-13-2.jpeg":
+	case "01 14 Image-14-1.jpeg":
+	case "01 14 Image-14-2.jpeg":
+	case "01 15 Image-15-1.jpeg":
+	case "01 15 Image-15-2.jpeg":
+	case "01 16 Image-16-1.jpeg":
+	case "01 16 Image-16-2.jpeg":
+	case "01 16 Image-16-3.jpeg":
+	case "01 20 Image-20-1.jpeg":
+	case "01 20 Image-20-2.jpeg":
+	case "01 20 Image-20-3.jpeg":
+	case "01 21 Image-21-1.jpeg":	return("Basic-Listing");
+
+	case "01 06 Image-06-2.jpeg":
+	case "01 07 Image-07-2.jpeg":
+	case "01 08 Image-08-1.jpeg":
+	case "01 26 Image-26-1.jpeg":
+	case "01 26 Image-26-2.jpeg":
+	case "01 27 Image-27-1.jpeg":
+	case "01 27 Image-27-2.jpeg":
+	case "01 28 Image-28-1.jpeg":
+	case "01 28 Image-28-2.jpeg":
+	case "01 29 Image-29-1.jpeg":
+	case "01 29 Image-29-2.jpeg":
+	case "01 30 Image-30-2.jpeg":
+	case "01 31 Image-31-2.jpeg":
+	case "01 32 Image-32-1.jpeg":
+	case "01 32 Image-32-2.jpeg":
+	case "01 33 Image-33-1.jpeg":
+	case "01 33 Image-33-2.jpeg":
+	case "01 33 Image-33-3.jpeg":	return("Assembler-Listing");
+
+	case "01 08 Image-08-2.jpeg":
+	case "01 10 Image-10-1.jpeg":
+	case "01 10 Image-10-2.jpeg":
+	case "01 11 Image-11-1.jpeg":
+	case "01 11 Image-11-3.jpeg":
+	case "01 11 Image-11-4.jpeg":
+	case "01 24 Image-24-1.jpeg":
+	case "01 24 Image-24-2.jpeg":
+	case "01 30 Image-30-1.jpeg":	return("HEX-Listing");
+
+	case "01 06 Image-06-3.jpeg":
+	case "01 22 Image-22-2.jpeg":	return("Schaltbild");
+
 	// 01
+	case "01 05 Image-05-1.jpeg":
+	case "01 05 Image-05-2.jpeg":
+	case "01 05 Image-05-3.jpeg":	return("Heap-Diagramm");
+
+	case "01 22 Image-22-1.jpeg":	return("Character-Generator");
+	case "01 34 Image-34-1.jpeg":	return("Trauerflor");
+
 	case "01 07 Image-07-3.jpeg":	return("NASCOMPL:$nl"."Dieser Platz$nl"."könnte durch$nl"."einen NASCOMPL$nl"."ausgefüllt werden,$nl"."bleibt aber mit$nl"."Rücksicht auf$nl"."manche Leser$nl"."frei.");
 	case "01 11 Image-11-2.jpeg":	return("NASCOMPL:$nl"."Mensch Clemens!$nl"."Das hast Du gut gemacht.$nl"."Wenn ich in deinem$nl"."Alter schon$nl"."programmiert hätte,$nl"."wäre ich sicher$nl"."berühmt!");
 	case "01 18 Image-18-1.jpeg":	return("Nascom Journal");
@@ -1383,6 +1442,8 @@ function imageDesc82($issue, $page, $file)
 	case "06 23 Image-23-2.jpeg":	return("NASCOMPL:$nl"."Reisezeit");
 
 	// 07
+	case "07 13 Image-13-1.jpeg":	return("Made by DL6UP 1981");
+
 	case "07 02 Image-02-2.jpeg":	return("Weiterhin viel Spaß mit dem$nl"."Journal$nl"."Ihr Günter Böhm");
 	case "07 05 Image-05-2.jpeg":	return("NASCOMPL:$nl"."Wir kaufen nichts!");
 	case "07 08 Image-08-1.jpeg":	return("NASCOMPL:$nl"."KNOBELECKE$nl"."$nl"."auch in dieser$nl"."Ausgabe sind$nl"."wieder eine$nl"."Menge$nl"."Kleinanzeigen$nl"."versteckt.$nl"."Schreiben Sie$nl"."die Anzahl auf$nl"."einen Zettel$nl"."und zeigen Sie$nl"."ihn niemanden!$nl"."$nl"."Kleinanzeigen bis 40 Wörter sind für Abonnenten$nl"."kostenlos!$nl"."");
@@ -2605,4 +2666,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-12-22 13:27:48 +0100 (Mo, 22. Dez 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-12-22 18:49:09 +0100 (Mo, 22. Dez 2025) $ -->
