@@ -855,6 +855,8 @@ function imageDesc81($issue, $page, $file)
 	case "12 02 Image-02-2.jpeg":
 	case "12 02 Image-02-2.png":	return("Günter Böhm");
 
+	case "12 53 Image-53-1.jpeg":	return("Peter Bentz");
+
 	case "06 07 Image-07-1.jpeg":
 	case "07 17 Image-17-1.jpeg":
 	case "08 19 Image-19-1.jpeg":
@@ -918,7 +920,27 @@ function imageDesc81($issue, $page, $file)
 	case "10 09 Image-09-2.jpeg":
 	case "10 10 Image-10-3.jpeg":
 	case "10 12 Image-12-1.jpeg":
-	case "10 24 Image-24-2.jpeg":	return("HEX-Listing");
+	case "10 24 Image-24-2.jpeg":
+	case "12 08 Image-08-2.jpeg":
+	case "12 08 Image-08-3.jpeg":
+	case "12 10 Image-10-1.jpeg":
+	case "12 11 Image-11-1.jpeg":
+	case "12 12 Image-12-2.jpeg":
+	case "12 12 Image-12-4.jpeg":
+	case "12 13 Image-13-1.jpeg":
+	case "12 13 Image-13-2.jpeg":
+	case "12 24 Image-24-1.jpeg":
+	case "12 25 Image-25-1.jpeg":
+	case "12 38 Image-38-1.jpeg":
+	case "12 38 Image-38-2.jpeg":
+	case "12 38 Image-38-3.jpeg":
+	case "12 38 Image-38-4.jpeg":
+	case "12 38 Image-38-5.jpeg":
+	case "12 40 Image-40-1.jpeg":
+	case "12 40 Image-40-2.jpeg":
+	case "12 41 Image-41-1.jpeg":
+	case "12 41 Image-41-2.jpeg":
+	case "12 41 Image-41-3.jpeg":	return("HEX-Listing");
 
 	case "01 13 Image-13-1.jpeg":
 	case "01 13 Image-13-4.jpeg":
@@ -941,7 +963,17 @@ function imageDesc81($issue, $page, $file)
 	case "10 06 Image-06-1.jpeg":
 	case "10 08 Image-08-2.jpeg":
 	case "10 19 Image-19-1.jpeg":
-	case "10 23 Image-23-1.jpeg":	return("Schaltbild");
+	case "10 23 Image-23-1.jpeg":
+	case "12 08 Image-08-1.jpeg":
+	case "12 09 Image-09-2.jpeg":
+	case "12 12 Image-12-3.jpeg":
+	case "12 18 Image-18-1.jpeg":
+	case "12 28 Image-28-3.jpeg":
+	case "12 30 Image-30-4.jpeg":
+	case "12 33 Image-33-1.jpeg":
+	case "12 37 Image-37-1.jpeg":
+	case "12 43 Image-43-1.png":
+	case "12 44 Image-44-1.png":	return("Schaltbild");
 
 	case "01 07 Image-07-1.jpeg":
 	case "01 08 Image-08-3.jpeg":
@@ -1029,7 +1061,13 @@ function imageDesc81($issue, $page, $file)
 	case "10 11 Image-11-1.png":
 	case "10 11 Image-11-2.jpeg":
 	case "10 12 Image-12-2.jpeg":
-	case "10 26 Image-26-1.png":	return("Assembler-Listing");
+	case "10 26 Image-26-1.png":
+	case "12 11 Image-11-2.jpeg":
+	case "12 12 Image-12-1.jpeg":
+	case "12 30 Image-30-1.jpeg":
+	case "12 30 Image-30-2.jpeg":
+	case "12 34 Image-34-1.jpeg":
+	case "12 49 Image-49-4.jpeg":	return("Assembler-Listing");
 
 	case "01 04 Image-04-1.jpeg":
 	case "01 06 Image-06-1.jpeg":
@@ -1046,7 +1084,8 @@ function imageDesc81($issue, $page, $file)
 	case "06 19 Image-19-2.png":
 	case "07 04 Image-04-2.jpeg":
 	case "08 23 Image-23-1.png":
-	case "09 03 Image-03-1.jpeg":	return("Kassette");
+	case "09 03 Image-03-1.jpeg":
+	case "12 43 Image-43-2.jpeg":	return("Kassette");
 
 	case "02 06 Image-06-2.jpeg":
 	case "02 10 Image-10-1.jpeg":
@@ -1080,16 +1119,36 @@ function imageDesc81($issue, $page, $file)
 	case "10 09 Image-09-3.jpeg":
 	case "10 09 Image-09-4.jpeg":
 	case "10 24 Image-24-1.jpeg":
-	case "10 24 Image-24-3.jpeg":	return("Basic-Listing");
+	case "10 24 Image-24-3.jpeg":
+	case "12 28 Image-28-1.jpeg":
+	case "12 46 Image-46-2.jpeg":
+	case "12 47 Image-47-1.jpeg":
+	case "12 50 Image-50-1.jpeg":
+	case "12 50 Image-50-2.jpeg":
+	case "12 51 Image-51-1.jpeg":
+	case "12 51 Image-51-2.jpeg":
+	case "12 52 Image-52-1.jpeg":
+	case "12 52 Image-52-2.jpeg":	return("Basic-Listing");
 
-//	case "08 04 Image-04-2.jpeg":
-	case "08 04 Image-04-2.jpeg":	return("Forth-Listing");
+	case "08 04 Image-04-2.jpeg":
+	case "12 06 Image-06-1.jpeg":
+	case "12 06 Image-06-2.jpeg":	return("Forth-Listing");
 
 	case "01 13 Image-13-5.jpeg":
-	case "04 08 Image-08-1.jpeg":	return("Layout");
+	case "04 08 Image-08-1.jpeg":
+	case "12 14 Image-14-1.jpeg":
+	case "12 31 Image-31-2.jpeg":
+	case "12 36 Image-36-2.jpeg":
+	case "12 45 Image-45-1.jpeg":	return("Layout");
 
 	case "04 08 Image-08-2.jpeg":
-	case "06 06 Image-06-2.jpeg":	return("Bestückungsplan");
+	case "06 06 Image-06-2.jpeg":
+	case "12 09 Image-09-1.jpeg":
+	case "12 13 Image-13-3.jpeg":
+	case "12 31 Image-31-1.jpeg":
+	case "12 33 Image-33-2.jpeg":
+	case "12 36 Image-36-1.jpeg":
+	case "12 45 Image-45-2.jpeg":	return("Bestückungsplan");
 
 	case "04 24 Image-24-1.jpeg":
 	case "08 17 Image-17-1.jpeg":
@@ -1098,8 +1157,12 @@ function imageDesc81($issue, $page, $file)
 
 	case "08 24 Image-24-1.png":
 	case "09 28 Image-28-1.png":
-	case "10 28 Image-28-1.png":	return("Anzeige MK Systemtechnik");
-	
+	case "10 28 Image-28-1.png":
+	case "12 55 Image-55-1.png":	return("Anzeige MK Systemtechnik");
+
+	case "03 04 Image-04-1.jpeg":
+	case "12 23 Image-23-1.jpeg":	return("Zeitdiagramm");
+
 	// 01
 	case "01 01 Image-01-2.jpeg":	return("Journal 1/81");
 	case "01 02 Image-02-1.jpeg":	return("Ihr Michael Klein");
@@ -1120,7 +1183,6 @@ function imageDesc81($issue, $page, $file)
 
 	// 03
 	case "03 01 Image-01-2.jpeg":	return("Journal 3/81");
-	case "03 04 Image-04-1.jpeg":	return("Zeitdiagramm");
 	case "03 09 Image-09-2.jpeg":
 	case "03 09 Image-09-3.jpeg":
 	case "03 10 Image-10-1.jpeg":
@@ -1223,6 +1285,26 @@ function imageDesc81($issue, $page, $file)
 	case "10 27 Image-27-2.png":	return("NASCOMPL:$nl"."Computermisshandlung");
 
 	// 12
+	case "12 10 Image-10-1.jpeg":	return("Tastatur");
+
+	case "12 25 Image-25-1.jpeg":
+	case "12 25 Image-25-2.jpeg":
+	case "12 25 Image-25-3.jpeg":
+	case "12 25 Image-25-4.jpeg":
+	case "12 25 Image-25-5.jpeg":
+	case "12 26 Image-26-1.jpeg":
+	case "12 26 Image-26-2.jpeg":
+	case "12 26 Image-26-3.jpeg":
+	case "12 27 Image-27-1.jpeg":	return("Foto Plotter");
+
+	case "12 49 Image-49-1.jpeg":
+	case "12 49 Image-49-2.jpeg":
+	case "12 49 Image-49-3.jpeg":	return("Foto PIO-Bus");
+
+	case "12 27 Image-27-2.jpeg":	return("Flussdiagramm");
+	case "12 29 Image-29-1.jpeg":	return("Anschlussbild");
+	case "12 35 Image-35-1.jpeg":	return("Blockdiagramm");
+
 	case "12 40 Image-40-3.jpeg":	return("NASCOMPL:$nl"."KEIN$nl"."STRESS$nl"."MEHR BEIM$nl"."TIPPEN!");
 	case "12 52 Image-52-3.jpeg":	return("NASCOMPL:$nl"."Wer hat sich bloß$nl"."dieses blöde$nl"."ASHRAM ausgedacht?");
 	case "12 54 Image-54-2.jpeg":	return("NASCOMPL:$nl"."Weihnachtliches");
@@ -2523,4 +2605,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-11-21 18:30:11 +0100 (Fr, 21. Nov 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-12-22 13:27:48 +0100 (Mo, 22. Dez 2025) $ -->
