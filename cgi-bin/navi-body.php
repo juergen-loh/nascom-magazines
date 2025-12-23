@@ -1856,6 +1856,7 @@ function imageDesc80BusNews($issue, $page, $name)
 	global $nl;
 
 	switch ("$issue $page $name") {
+	case "11 01 Image-01-1":
 	case "12 01 Image-01-1":
 	case "13 01 Image-01-1":
 	case "14 01 Image-01-1":
@@ -1872,8 +1873,9 @@ function imageDesc80BusNews($issue, $page, $name)
 	case "35 01 Image-01-1":
 	case "36 01 Image-01-1":
 	case "41 01 Image-01-1":
-	case "42 01 Image-01-1":	return "80-Bus News";
+	case "42 01 Image-01-1":
 
+	case "11 02 Image-02-1":
 	case "12 02 Image-02-1":
 	case "13 02 Image-02-1":
 	case "14 02 Image-02-1":
@@ -1892,9 +1894,26 @@ function imageDesc80BusNews($issue, $page, $name)
 	case "41 02 Image-02-1":
 	case "42 02 Image-02-1":	return "80-BUS NEWS";
 
+	case "11 01 Image-01-2":
+	case "12 01 Image-01-2":
+	case "13 01 Image-01-2":
+	case "14 01 Image-01-2":
+	case "21 01 Image-01-2":
+	case "22 01 Image-01-2":
+	case "23 01 Image-01-2":
+	case "24 01 Image-01-2":
+	case "25 01 Image-01-2":
+	case "26 01 Image-01-2":
+	case "31 01 Image-01-2":
+	case "32 01 Image-01-2":
+	case "33 01 Image-01-2":
+	case "34 01 Image-01-2":
+	case "35 01 Image-01-2":
+	case "36 01 Image-01-2":
+	case "41 01 Image-01-2":
+	case "42 01 Image-01-2":	return " ";
+
 	// 11
-	case "11 01 Image-01-1":	return "80-Bus News";
-	case "11 02 Image-02-1":	return "80-BUS NEWS";
 	case "11 04 Image-04-1":	return "Dear Ed.";
 	case "11 08 Image-08-1":	return "N2 VIDEO";
 	case "11 09 Image-09-1":	return "DOS";
@@ -1987,7 +2006,11 @@ function imageDescNascomNewsletter($issue, $page, $name)
 function imageDescAny($year, $issue, $page, $name)
 {
 	global $nl;
-	echo "<!-- imageDescAny($year, $issue, $page, $name) -->";
+	global $server;
+
+	if ($server == "t480") {
+		echo "<!-- imageDescAny($year, $issue, $page, $name) -->";
+	}
 
 	switch ($year) {
 	case "80":					return imageDesc80($issue, $page, $name);
@@ -2016,11 +2039,11 @@ function imageDescAny($year, $issue, $page, $name)
 		case "1 inmc-news/06/cover":			return "INMC News, Issue 6";
 		case "1 inmc-news/07/cover":			return "INMC News, Issue 7";
 		// INMC 80 News
-		case "1 inmc-80-news/01/cover":		return "INMC 80 News, Issue 1";
-		case "1 inmc-80-news/02/cover":		return "INMC 80 News, Issue 2";
-		case "1 inmc-80-news/03/cover":		return "INMC 80 News, Issue 3";
-		case "1 inmc-80-news/04/cover":		return "INMC 80 News, Issue 4";
-		case "1 inmc-80-news/05/cover":		return "INMC 80 News, Issue 5";
+		case "1 inmc-80-news/01/cover":			return "INMC 80 News, Issue 1";
+		case "1 inmc-80-news/02/cover":			return "INMC 80 News, Issue 2";
+		case "1 inmc-80-news/03/cover":			return "INMC 80 News, Issue 3";
+		case "1 inmc-80-news/04/cover":			return "INMC 80 News, Issue 4";
+		case "1 inmc-80-news/05/cover":			return "INMC 80 News, Issue 5";
 		// 80-Bus News
 		case "1 80-bus-news/11/cover":			return "80-Bus News, Volume 1, Issue 1";
 		case "1 80-bus-news/12/cover":			return "80-Bus News, Volume 1, Issue 2";
@@ -2038,15 +2061,15 @@ function imageDescAny($year, $issue, $page, $name)
 		case "1 80-bus-news/41/cover":			return "80-Bus News, Volume 4, Issue 1";
 		case "1 80-bus-news/42/cover":			return "80-Bus News, Volume 4, Issue 2";
 		// Scorpio News
-		case "1 scorpio-news/11/cover":		return "Scorpio News, Volume 1, Issue 1";
-		case "1 scorpio-news/12/cover":		return "Scorpio News, Volume 1, Issue 2";
-		case "1 scorpio-news/13/cover":		return "Scorpio News, Volume 1, Issue 3";
-		case "1 scorpio-news/14/cover":		return "Scorpio News, Volume 1, Issue 4";
-		case "1 scorpio-news/21/cover":		return "Scorpio News, Volume 2, Issue 1";
-		case "1 scorpio-news/22/cover":		return "Scorpio News, Volume 2, Issue 2";
-		case "1 scorpio-news/23/cover":		return "Scorpio News, Volume 2, Issue 3";
-		case "1 scorpio-news/24/cover":		return "Scorpio News, Volume 2, Issue 4";
-		case "1 scorpio-news/31/cover":		return "Scorpio News, Volume 3, Issue 1";
+		case "1 scorpio-news/11/cover":			return "Scorpio News, Volume 1, Issue 1";
+		case "1 scorpio-news/12/cover":			return "Scorpio News, Volume 1, Issue 2";
+		case "1 scorpio-news/13/cover":			return "Scorpio News, Volume 1, Issue 3";
+		case "1 scorpio-news/14/cover":			return "Scorpio News, Volume 1, Issue 4";
+		case "1 scorpio-news/21/cover":			return "Scorpio News, Volume 2, Issue 1";
+		case "1 scorpio-news/22/cover":			return "Scorpio News, Volume 2, Issue 2";
+		case "1 scorpio-news/23/cover":			return "Scorpio News, Volume 2, Issue 3";
+		case "1 scorpio-news/24/cover":			return "Scorpio News, Volume 2, Issue 4";
+		case "1 scorpio-news/31/cover":			return "Scorpio News, Volume 3, Issue 1";
 		// Micropower
 		case "1 micropower/11/cover":			return "Micropower, Volume 1, Number 1";
 		case "1 micropower/12/cover":			return "Micropower, Volume 1, Number 2";
@@ -2071,17 +2094,17 @@ function imageDescAny($year, $issue, $page, $name)
 	// Inhaltsverzeichnis Nascom Magazines
 	if ($issue == "") {
 		switch ("$year $page $name") {
-		case "INMC News 1 ./logo":
+		case "INMC News 1 logo":
 		case "INMC News 1 ../logo":
-		case "INMC 80 News 1 ./logo":
+		case "INMC 80 News 1 logo":
 		case "INMC 80 News 1 ../logo":
-		case "Nascom Newsletter 1 ./logo":
+		case "Nascom Newsletter 1 logo":
 		case "Nascom Newsletter 1 ../logo":
-		case "80-Bus News 1 ./logo":
+		case "80-Bus News 1 logo":
 		case "80-Bus News 1 ../logo":
-		case "Scorpio News 1 ./logo":
+		case "Scorpio News 1 logo":
 		case "Scorpio News 1 ../logo":		return($year);
-		case "Micropower 1 ./logo":
+		case "Micropower 1 logo":
 		case "Micropower 1 ../logo":		return("&micro;P $year");
 		}
 	}
@@ -2155,14 +2178,12 @@ function imageDesc($year, $issue, $page, $file)
 	if ($dir != ".") {
 		$name = "$dir/$name";
 	}
-
-	echo "<!-- imageDesc($year, $issue, $page, $file) $name $dir -->";
+//	echo "<!-- imageDesc($year, $issue, $page, $file) $name $dir -->";
 
 	$desc = imageDescAny($year, $issue, $page, $name);
 	if ($desc == "") {
-		if ($server == "t480")
-		{
-			return("$year $issue $page $file\"");	// HTML-Fehler, wenn kein alt-Text vergeben wurde
+		if ($server == "t480") {
+			return("$year $issue $page $name ($file)\"");	// HTML-Fehler, wenn kein alt-Text vergeben wurde
 		}
 	}
 	return $desc;
@@ -2751,4 +2772,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-12-23 12:20:10 +0100 (Di, 23. Dez 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-12-23 13:45:30 +0100 (Di, 23. Dez 2025) $ -->
