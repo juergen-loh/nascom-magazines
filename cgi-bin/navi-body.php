@@ -594,13 +594,17 @@ function imageDesc80($issue, $page, $name)
 	case "00 05 Image-05-1":
 	case "00 05 Image-05-4":
 	case "00 06 Image-06-1":
+
 	case "01 06 Image-06-2":
 	case "01 12 Image-12-2":
+
 	case "02 04 Image-04-1":
 	case "02 15 Image-15-1":
 	case "02 16 Image-16-1":
+
 	case "03 14 Image-14-1":
 	case "03 14 Image-14-2":
+
 	case "04 05 Image-05-1":
 	case "04 05 Image-05-2":
 	case "04 06 Image-06-1":
@@ -613,8 +617,10 @@ function imageDesc80($issue, $page, $name)
 	case "04 08 Image-08-1":
 	case "04 08 Image-08-3":
 	case "04 08 Image-08-4":
+
 	case "05 08 Image-08-1":
 	case "05 08 Image-08-2":
+
 	case "06 04 Image-04-1":
 	case "06 04 Image-04-2":
 	case "06 04 Image-04-3":
@@ -627,6 +633,7 @@ function imageDesc80($issue, $page, $name)
 
 	case "00 04 Image-04-1":
 	case "00 07 Image-07-1":
+
 	case "01 05 Image-05-1":
 	case "01 06 Image-06-1":
 	case "01 12 Image-12-1":
@@ -635,18 +642,22 @@ function imageDesc80($issue, $page, $name)
 	case "01 12 Image-12-4":
 	case "01 12 Image-12-5":
 	case "01 13 Image-13-1":
+
 	case "02 08 Image-08-1":
 	case "02 09 Image-09-1":
 	case "02 10 Image-10-1":
+
 	case "04 17 Image-17-1":
 	case "04 18 Image-18-1":
 	case "04 18 Image-18-2":
+
 	case "05 05 Image-05-2":
 	case "05 12 Image-12-1":
 	case "05 13 Image-13-1":
 	case "05 13 Image-13-3":
 	case "05 13 Image-13-4":
 	case "05 14 Image-14-1":
+
 	case "06 06 Image-06-4":
 	case "06 07 Image-07-1":
 	case "06 07 Image-07-2":
@@ -673,15 +684,21 @@ function imageDesc80($issue, $page, $name)
 	case "06 47 Image-47-1":	return("Assembler-Listing");
 
 	case "00 10 Image-10-1":
+
 	case "01 07 Image-07-1":
 	case "01 07 Image-07-2":
+
 	case "02 16 Image-16-3":
 	case "03 08 Image-08-1":
 	case "03 09 Image-09-1":
+
 	case "03 13 Image-13-1":
 	case "03 13 Image-13-2":
+
 	case "04 11 Image-11-3":
+
 	case "05 10 Image-10-1":
+
 	case "06 21 Image-21-1":
 	case "06 22 Image-22-1":
 	case "06 23 Image-23-1":
@@ -692,13 +709,16 @@ function imageDesc80($issue, $page, $name)
 	case "00 04 Image-04-3":
 	case "00 06 Image-06-3":
 	case "00 09 Image-09-1":
+
 	case "02 04 Image-04-2":
 	case "02 04 Image-04-3":
 	case "02 04 Image-04-4":
 	case "02 04 Image-04-5":
 	case "02 04 Image-04-6":
+
 	case "03 06 Image-06-1":
 	case "03 11 Image-11-1":
+
 	case "04 09 Image-09-1":
 	case "04 09 Image-09-2":
 	case "04 10 Image-10-1":
@@ -707,6 +727,7 @@ function imageDesc80($issue, $page, $name)
 	case "04 10 Image-10-4":
 	case "04 11 Image-11-1":
 	case "04 13 Image-13-1":
+
 	case "05 06 Image-06-1":
 	case "05 06 Image-06-2":
 	case "05 06 Image-06-3":
@@ -716,6 +737,7 @@ function imageDesc80($issue, $page, $name)
 	case "05 11 Image-11-2":
 	case "05 14 Image-14-2":
 	case "05 15 Image-15-1":
+
 	case "06 04 Image-04-4":
 	case "06 05 Image-05-1":
 	case "06 06 Image-06-1":
@@ -822,29 +844,36 @@ function imageDesc81($issue, $page, $name)
 	case "09 14 Image-14-1":	return("Michael Klein");
 
 	case "02 19 Image-19-1":
+
 	case "03 24 Image-24-1":
+
 	case "06 01 Image-01-1":
 	case "06 01 Image-01-1":
 	case "06 02 Image-02-1":
 	case "06 02 Image-02-1":
+
 	case "07 01 Image-01-1":
 	case "07 01 Image-01-1":
 	case "07 03 journal/81/07/Image-03-1":
 	case "07 03 ../../81/07/Image-03-1":
 	case "07 03 ../81/07/Image-03-1":
 	case "07 03 Image-03-1":
+
 	case "08 01 Image-01-1":
 	case "08 01 Image-01-1":
 	case "08 02 Image-02-1":
 	case "08 02 Image-02-1":
+
 	case "09 01 Image-01-1":
 	case "09 01 Image-01-1":
 	case "09 02 Image-02-1":
 	case "09 02 Image-02-1":
+
 	case "10 01 Image-01-1":
 	case "10 01 Image-01-1":
 	case "10 02 Image-02-1":
 	case "10 02 Image-02-1":
+
 	case "12 01 Image-01-1":
 	case "12 01 Image-01-1":
 	case "12 02 Image-02-1":
@@ -879,6 +908,7 @@ function imageDesc81($issue, $page, $name)
 	case "01 12 Image-12-1":
 	case "01 13 Image-13-2":
 	case "01 13 Image-13-3":
+
 	case "02 04 Image-04-1":
 	case "02 04 Image-04-2":
 	case "02 05 Image-05-4":
@@ -888,6 +918,7 @@ function imageDesc81($issue, $page, $name)
 	case "02 08 Image-08-2":
 	case "02 09 Image-09-1":
 	case "02 14 Image-14-1":
+
 	case "03 12 Image-12-1":
 	case "03 12 Image-12-2":
 	case "03 12 Image-12-5":
@@ -895,32 +926,39 @@ function imageDesc81($issue, $page, $name)
 	case "03 16 Image-16-1":
 	case "03 18 Image-18-2":
 	case "03 23 Image-23-1":
+
 	case "04 12 Image-12-1":
 	case "04 28 Image-28-1":
 	case "04 28 Image-28-2":
+
 	case "06 14 Image-14-1":
 	case "06 14 Image-14-2":
 	case "06 19 Image-19-1":
+
 	case "07 03 Image-03-2":
 	case "07 10 Image-10-1":
 	case "07 10 Image-10-2":
 	case "07 16 Image-16-2":
 	case "07 18 Image-18-1":
+
 	case "08 13 Image-13-2":
 	case "08 13 Image-13-3":
 	case "08 21 Image-21-1":
 	case "08 21 Image-21-2":
 	case "08 21 Image-21-3":
 	case "08 22 Image-22-1":
+
 	case "09 07 Image-07-1":
 	case "09 22 Image-22-1":
 	case "09 22 Image-22-2":
 	case "09 22 Image-22-3":
+
 	case "10 07 Image-07-1":
 	case "10 09 Image-09-2":
 	case "10 10 Image-10-3":
 	case "10 12 Image-12-1":
 	case "10 24 Image-24-2":
+
 	case "12 08 Image-08-2":
 	case "12 08 Image-08-3":
 	case "12 10 Image-10-1":
@@ -944,26 +982,34 @@ function imageDesc81($issue, $page, $name)
 
 	case "01 13 Image-13-1":
 	case "01 13 Image-13-4":
+
 	case "02 08 Image-08-1":
+
 	case "03 02 Image-02-1":
 	case "03 03 Image-03-1":
+
 	case "04 03 Image-03-1":
 	case "04 05 Image-05-1":
 	case "04 07 Image-07-1":
 	case "04 10 Image-10-1":
+
 	case "06 06 Image-06-3":
 	case "06 08 Image-08-1":
 	case "06 09 Image-09-2":
 	case "06 09 Image-09-3":
 	case "06 09 Image-09-4":
 	case "06 10 Image-10-1":
+
 	case "07 12 Image-12-1":
+
 	case "09 06 Image-06-1":
 	case "09 06 Image-06-2":
+
 	case "10 06 Image-06-1":
 	case "10 08 Image-08-2":
 	case "10 19 Image-19-1":
 	case "10 23 Image-23-1":
+
 	case "12 08 Image-08-1":
 	case "12 09 Image-09-2":
 	case "12 12 Image-12-3":
@@ -980,11 +1026,14 @@ function imageDesc81($issue, $page, $name)
 	case "01 12 Image-12-2":
 	case "01 12 Image-12-3":
 	case "01 12 Image-12-4":
+
 	case "02 05 Image-05-1":
 	case "02 05 Image-05-2":
 	case "02 05 Image-05-3":
+
 	case "03 17 Image-17-1":
 	case "03 18 Image-18-1":
+
 	case "04 13 Image-13-1":
 	case "04 13 Image-13-2":
 	case "04 13 Image-13-3":
@@ -994,6 +1043,7 @@ function imageDesc81($issue, $page, $name)
 	case "04 15 Image-15-1":
 	case "04 15 Image-15-2":
 	case "04 16 Image-16-1":
+
 	case "06 06 Image-06-1":
 	case "06 08 Image-08-5":
 	case "06 08 Image-08-7":
@@ -1001,6 +1051,7 @@ function imageDesc81($issue, $page, $name)
 	case "06 17 Image-17-2":
 	case "06 18 Image-18-1":
 	case "06 18 Image-18-2":
+
 	case "07 05 Image-05-2":
 	case "07 06 Image-06-1":
 	case "07 07 Image-07-1":
@@ -1009,6 +1060,7 @@ function imageDesc81($issue, $page, $name)
 	case "07 15 Image-15-1":
 	case "07 15 Image-15-2":
 	case "07 16 Image-16-1":
+
 	case "08 04 Image-04-1":
 	case "08 07 Image-07-1":
 	case "08 07 Image-07-2":
@@ -1028,6 +1080,7 @@ function imageDesc81($issue, $page, $name)
 	case "08 18 Image-18-2":
 	case "08 18 Image-18-3":
 	case "08 18 Image-18-4":
+
 	case "09 04 Image-04-1":
 	case "09 08 Image-08-1":
 	case "09 08 Image-08-2":
@@ -1054,6 +1107,7 @@ function imageDesc81($issue, $page, $name)
 	case "09 24 Image-24-2":
 	case "09 24 Image-24-3":
 	case "09 25 Image-25-1":
+
 	case "10 08 Image-08-3":
 	case "10 09 Image-09-1":
 	case "10 10 Image-10-1":
@@ -1062,6 +1116,7 @@ function imageDesc81($issue, $page, $name)
 	case "10 11 Image-11-2":
 	case "10 12 Image-12-2":
 	case "10 26 Image-26-1":
+
 	case "12 11 Image-11-2":
 	case "12 12 Image-12-1":
 	case "12 30 Image-30-1":
@@ -1092,6 +1147,7 @@ function imageDesc81($issue, $page, $name)
 	case "02 11 Image-11-1":
 	case "02 12 Image-12-1":
 	case "02 13 Image-13-1":
+
 	case "03 06 Image-06-1":
 	case "03 07 Image-07-1":
 	case "03 08 Image-08-1":
@@ -1099,28 +1155,35 @@ function imageDesc81($issue, $page, $name)
 	case "03 20 Image-20-1":
 	case "03 21 Image-21-1":
 	case "03 22 Image-22-1":
+
 	case "04 28 Image-28-3":
 	case "04 29 Image-29-1":
+
 	case "06 04 Image-04-2":
 	case "06 05 Image-05-1":
 	case "06 05 Image-05-3":
 	case "06 08 Image-08-4":
+
 	case "07 08 Image-08-1":
 	case "07 08 Image-08-3":
 	case "07 09 Image-09-1":
 	case "07 11 Image-11-1":
 	case "07 11 Image-11-2":
 	case "07 13 Image-13-4":
+
 	case "08 14 Image-14-1":
 	case "08 14 Image-14-2":
 	case "08 16 Image-16-2":
 	case "08 16 Image-16-3":
+
 	case "09 25 Image-25-1":
 	case "09 25 Image-25-2":
+
 	case "10 09 Image-09-3":
 	case "10 09 Image-09-4":
 	case "10 24 Image-24-1":
 	case "10 24 Image-24-3":
+
 	case "12 28 Image-28-1":
 	case "12 46 Image-46-2":
 	case "12 47 Image-47-1":
@@ -1345,7 +1408,8 @@ function imageDesc82($issue, $page, $name)
 
 	case "01 17 Image-17-1":
 	case "02 32 Image-32-1":
-	case "02 32 Image-32-2":	return("Anzeige MK Systemtechnik");
+	case "02 32 Image-32-2":
+	case "03 52 Image-52-1":	return("Anzeige MK Systemtechnik");
 
 	case "01 02 Image-02-2":	return("Günter Böhm");
 
@@ -1380,6 +1444,7 @@ function imageDesc82($issue, $page, $name)
 	case "01 20 Image-20-2":
 	case "01 20 Image-20-3":
 	case "01 21 Image-21-1":
+
 	case "02 04 Image-04-1":
 	case "02 04 Image-04-2":
 	case "02 05 Image-05-1":
@@ -1395,7 +1460,32 @@ function imageDesc82($issue, $page, $name)
 	case "02 25 Image-25-2":
 	case "02 26 Image-26-1":
 	case "02 26 Image-26-2":
-	case "02 26 Image-26-3":	return("Basic-Listing");
+	case "02 26 Image-26-3":
+
+	case "03 03 Image-03-2":
+	case "03 22 Image-22-1":
+	case "03 36 Image-36-1":
+	case "03 36 Image-36-2":
+	case "03 37 Image-37-1":
+	case "03 37 Image-37-2":
+	case "03 37 Image-37-3":
+	case "03 38 Image-38-1":
+	case "03 38 Image-38-2":
+	case "03 41 Image-41-3":
+	case "03 41 Image-41-4":
+	case "03 42 Image-42-1":
+	case "03 42 Image-42-2":
+	case "03 43 Image-43-1":
+	case "03 43 Image-43-2":
+	case "03 46 Image-46-1":
+	case "03 46 Image-46-2":
+	case "03 47 Image-47-1":
+	case "03 47 Image-47-2":
+	case "03 49 Image-49-1":
+	case "03 49 Image-49-2":
+	case "03 50 Image-50-1":
+	case "03 50 Image-50-2":
+	case "03 50 Image-50-3":	return("Basic-Listing");
 
 	case "02 17 Image-17-2":	return("Pascal-Listing");
 
@@ -1417,6 +1507,7 @@ function imageDesc82($issue, $page, $name)
 	case "01 33 Image-33-1":
 	case "01 33 Image-33-2":
 	case "01 33 Image-33-3":
+
 	case "02 09 Image-09-1":
 	case "02 09 Image-09-2":
 	case "02 10 Image-10-1":
@@ -1447,7 +1538,41 @@ function imageDesc82($issue, $page, $name)
 	case "02 28 Image-28-1":
 	case "02 28 Image-28-2":
 	case "02 29 Image-29-1":
-	case "02 29 Image-29-2":	return("Assembler-Listing");
+	case "02 29 Image-29-2":
+
+	case "03 02 Image-02-1":
+	case "03 03 Image-03-1":
+	case "03 12 Image-12-1":
+	case "03 12 Image-12-2":
+	case "03 13 Image-13-1":
+	case "03 13 Image-13-2":
+	case "03 14 Image-14-1":
+	case "03 14 Image-14-2":
+	case "03 15 Image-15-1":
+	case "03 15 Image-15-2":
+	case "03 16 Image-16-1":
+	case "03 16 Image-16-2":
+	case "03 17 Image-17-1":
+	case "03 17 Image-17-2":
+	case "03 18 Image-18-1":
+	case "03 18 Image-18-2":
+	case "03 19 Image-19-1":
+	case "03 19 Image-19-2":
+	case "03 21 Image-21-4":
+	case "03 24 Image-24-3":
+	case "03 25 Image-25-1":
+	case "03 25 Image-25-2":
+	case "03 26 Image-26-1":
+	case "03 26 Image-26-2":
+	case "03 27 Image-27-1":
+	case "03 27 Image-27-2":
+	case "03 28 Image-28-1":
+	case "03 28 Image-28-2":
+	case "03 29 Image-29-1":
+	case "03 29 Image-29-2":
+	case "03 30 Image-30-1":
+	case "03 30 Image-30-2":
+	case "03 45 Image-45-2":	return("Assembler-Listing");
 
 	case "01 08 Image-08-2":
 	case "01 10 Image-10-1":
@@ -1458,8 +1583,34 @@ function imageDesc82($issue, $page, $name)
 	case "01 24 Image-24-1":
 	case "01 24 Image-24-2":
 	case "01 30 Image-30-1":
+
 	case "02 29 Image-29-3":
-	case "02 29 Image-29-4":	return("HEX-Listing");
+	case "02 29 Image-29-4":
+	case "03 20 Image-20-1":
+	case "03 21 Image-21-1":
+	case "03 21 Image-21-2":
+	case "03 24 Image-24-2":
+	case "03 31 Image-31-2":
+	case "03 31 Image-31-3":
+	case "03 31 Image-31-4":
+	case "03 32 Image-32-1":
+	case "03 32 Image-32-2":
+	case "03 32 Image-32-3":
+	case "03 32 Image-32-4":
+	case "03 33 Image-33-1":
+	case "03 34 Image-34-1":
+	case "03 34 Image-34-2":
+	case "03 34 Image-34-3":
+	case "03 35 Image-35-1":
+	case "03 35 Image-35-2":
+	case "03 35 Image-35-3":
+	case "03 39 Image-39-1":
+	case "03 40 Image-40-1":
+	case "03 40 Image-40-2":
+	case "03 41 Image-41-1":
+	case "03 41 Image-41-2":
+	case "03 43 Image-43-3":
+	case "03 45 Image-45-3":	return("HEX-Listing");
 
 	case "02 20 Image-20-1":
 	case "02 20 Image-20-2":
@@ -1475,13 +1626,23 @@ function imageDesc82($issue, $page, $name)
 
 	case "01 06 Image-06-3":
 	case "01 22 Image-22-2":
+
 	case "02 08 Image-08-2":
 	case "02 22 Image-22-1":
 	case "02 22 Image-22-2":
 	case "02 22 Image-22-4":
-	case "02 22 Image-22-5":	return("Schaltbild");
+	case "02 22 Image-22-5":
+
+	case "03 23 Image-23-1":
+	case "03 24 Image-24-1":	return("Schaltbild");
 
 	case "02 08 Image-08-3":	return("Layout");
+
+	case "03 20 Image-20-2":
+	case "03 21 Image-21-3":
+	case "03 22 Image-22-2":
+	case "03 22 Image-22-3":
+	case "03 22 Image-22-4":	return("Bildschirmfoto");
 
 	// 01
 	case "01 05 Image-05-1":
@@ -1506,6 +1667,9 @@ function imageDesc82($issue, $page, $name)
 	case "02 30 Image-30-2":	return("NASCOMPL:$nl"."Ostereiersuchprogramm");
 
 	// 03
+	case "03 31 Image-31-1":	return("Speciherbereich");
+	case "03 45 Image-45-1":	return("Flussdiagramm");
+
 	case "03 22 Image-22-5":	return("NASCOMPL:$nl"."Jeder$nl"."Abonnent$nl"."kann$nl"."Kleinanzeigen$nl"."bis 40 Wörter$nl"."aufgeben!$nl"."$nl"."(Das ist diesmal$nl"."kein Witz!)");
 	case "03 35 Image-35-4":	return("NASCOMPL:$nl"."Mir$nl"."dreht$nl"."sich$nl"."alles!");
 	case "03 51 Image-51-2":	return("NASCOMPL:$nl"."Programmiersprache BIRNE");
@@ -2772,4 +2936,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-12-23 13:45:30 +0100 (Di, 23. Dez 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-12-23 18:53:35 +0100 (Di, 23. Dez 2025) $ -->
