@@ -1409,7 +1409,8 @@ function imageDesc82($issue, $page, $name)
 	case "01 17 Image-17-1":
 	case "02 32 Image-32-1":
 	case "02 32 Image-32-2":
-	case "03 52 Image-52-1":	return("Anzeige MK Systemtechnik");
+	case "03 52 Image-52-1":
+	case "05 32 Image-32-1":	return("Anzeige MK Systemtechnik");
 
 	case "01 02 Image-02-2":	return("Günter Böhm");
 
@@ -1485,9 +1486,14 @@ function imageDesc82($issue, $page, $name)
 	case "03 49 Image-49-2":
 	case "03 50 Image-50-1":
 	case "03 50 Image-50-2":
-	case "03 50 Image-50-3":	return("Basic-Listing");
+	case "03 50 Image-50-3":
+	case "05 19 Image-19-1":	return("Basic-Listing");
 
-	case "02 17 Image-17-2":	return("Pascal-Listing");
+	case "02 17 Image-17-2":
+	case "05 20 Image-20-3":
+	case "05 22 Image-22-1":
+	case "05 22 Image-22-2":
+	case "05 23 Image-23-1":	return("Pascal-Listing");
 
 	case "01 06 Image-06-2":
 	case "01 07 Image-07-2":
@@ -1572,7 +1578,28 @@ function imageDesc82($issue, $page, $name)
 	case "03 29 Image-29-2":
 	case "03 30 Image-30-1":
 	case "03 30 Image-30-2":
-	case "03 45 Image-45-2":	return("Assembler-Listing");
+	case "03 45 Image-45-2":
+	case "05 09 Image-09-1":
+	case "05 09 Image-09-2":
+	case "05 10 Image-10-1":
+	case "05 10 Image-10-2":
+	case "05 11 Image-11-1":
+	case "05 11 Image-11-2":
+	case "05 16 Image-16-1":
+	case "05 16 Image-16-2":
+	case "05 16 Image-16-3":
+	case "05 17 Image-17-1":
+	case "05 17 Image-17-3":
+	case "05 17 Image-17-4":
+	case "05 24 Image-24-1":
+	case "05 25 Image-25-3":
+	case "05 26 Image-26-1":
+	case "05 26 Image-26-2":
+	case "05 27 Image-27-1":
+	case "05 27 Image-27-2":
+	case "05 28 Image-28-1":
+	case "05 28 Image-28-2":
+	case "05 29 Image-29-1":	return("Assembler-Listing");
 
 	case "01 08 Image-08-2":
 	case "01 10 Image-10-1":
@@ -1610,7 +1637,18 @@ function imageDesc82($issue, $page, $name)
 	case "03 41 Image-41-1":
 	case "03 41 Image-41-2":
 	case "03 43 Image-43-3":
-	case "03 45 Image-45-3":	return("HEX-Listing");
+	case "03 45 Image-45-3":
+	case "05 17 Image-17-2":
+	case "05 17 Image-17-5":
+	case "05 18 Image-18-2":
+	case "05 29 Image-29-2":
+	case "05 29 Image-29-3":
+	case "05 29 Image-29-4":
+	case "05 29 Image-29-5":
+	case "05 29 Image-29-6":
+	case "05 30 Image-30-1":
+	case "05 30 Image-30-2":
+	case "05 30 Image-30-3":	return("HEX-Listing");
 
 	case "02 20 Image-20-1":
 	case "02 20 Image-20-2":
@@ -1634,7 +1672,11 @@ function imageDesc82($issue, $page, $name)
 	case "02 22 Image-22-5":
 
 	case "03 23 Image-23-1":
-	case "03 24 Image-24-1":	return("Schaltbild");
+	case "03 24 Image-24-1":
+	case "05 08 Image-08-1":
+	case "05 08 Image-08-3":
+	case "05 14 Image-14-1":
+	case "05 15 Image-15-1":	return("Schaltbild");
 
 	case "02 08 Image-08-3":	return("Layout");
 
@@ -1675,6 +1717,16 @@ function imageDesc82($issue, $page, $name)
 	case "03 51 Image-51-2":	return("NASCOMPL:$nl"."Programmiersprache BIRNE");
 
 	// 05
+	case "05 02 Image-02-2":	return("Pinbelegung 2114");
+	case "05 08 Image-08-2":	return("Flachkabel-Anschluss");
+	case "05 15 Image-15-2":
+	case "05 15 Image-15-3":	return("Foto Lichtgriffel");
+	case "05 20 Image-20-1":
+	case "05 20 Image-20-2":	return("Fortran-Listing");
+	case "05 24 Image-24-2":
+	case "05 25 Image-25-1":
+	case "05 25 Image-25-2":	return("Dateimaske");
+
 	case "05 31 Image-31-2":	return("NASCOMPL:$nl"."Sex und Computer");
 
 	// 06
@@ -2379,6 +2431,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "8085":					$url = "https://$lang.wikipedia.org/wiki/Intel_8085";							break;
 	case "A simple technique for static relocation of absolute machine code":	$url = "https://groups.google.com/forum/?hl=de&amp;fromgroups=#!topic/comp.os.cpm/TLHgIi16yTo";	break;
 	case "A.F.T. Winfield":			$url = "https://openlibrary.org/authors/OL1347836A/A._F._T._Winfield";			break;
+	case "ABC 80":					$url = "https://$lang.wikipedia.org/wiki/ABC_80";								break;
 	case "AD7581":					$url = "https://www.analog.com/media/en/technical-documentation/data-sheets/AD7581.pdf";	break;
 	case "Algorithmen und Datenstrukturen":	$url = "https://link.springer.com/book/10.1007/978-3-322-80154-8";		break;
 	case "Alphatronic PC":			$url = "https://$lang.wikipedia.org/wiki/Triumph_Adler_Alphatronic_PC";			break;
@@ -2936,4 +2989,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-12-23 18:53:35 +0100 (Di, 23. Dez 2025) $ -->
+<!-- /navi-body.php / $Date: 2025-12-24 19:44:25 +0100 (Mi, 24. Dez 2025) $ -->
