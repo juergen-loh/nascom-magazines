@@ -1994,6 +1994,13 @@ function imageDesc82($issue, $name)
 	case "10 Image-07-4":	return("Hallo liebe Leser!");
 	case "10 Image-23-2":	return("NASCOMPL:$nl"."Hi Hi Hi Hi Hi$nl"."Hi Hi Hi Hi$nl"."Hi Hi Hi$nl"."Hi Hi Hi!");
 	case "10 Image-24-1":	return("NASCOMPL:$nl"."80 Busserl");
+	
+	// 12
+	case "12 Image-07-1":
+	case "12 Image-07-2":	return("Computergrafik");
+	case "12 Image-18-1":	return("R.I.P.");
+	case "12 Image-23-1":
+	case "12 Image-23-2":	return("Foto CLD Minifloppy");
 	}
 	return "";
 }
@@ -3234,4 +3241,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-02 16:13:38 +0100 (Fr, 02. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-01-02 16:21:51 +0100 (Fr, 02. Jan 2026) $ -->
