@@ -1411,7 +1411,8 @@ function imageDesc82($issue, $name)
 	case "02 Image-32-2":
 	case "03 Image-52-1":
 	case "05 Image-32-1":
-	case "06 Image-24-1":	return("Anzeige MK Systemtechnik");
+	case "06 Image-24-1":
+	case "07 Image-60-1":	return("Anzeige MK Systemtechnik");
 
 	case "01 Image-02-2":	return("Günter Böhm");
 
@@ -1504,7 +1505,45 @@ function imageDesc82($issue, $name)
 	case "06 Image-11-3":
 	case "06 Image-11-4":
 	case "06 Image-11-5":
-	case "06 Image-21-1":	return("Basic-Listing");
+	case "06 Image-21-1":
+
+	case "07 Image-05-1":
+	case "07 Image-09-1":
+	case "07 Image-17-2":
+	case "07 Image-17-3":
+	case "07 Image-18-1":
+	case "07 Image-19-3":
+	case "07 Image-20-1":
+	case "07 Image-23-2":
+	case "07 Image-23-3":
+	case "07 Image-23-4":
+	case "07 Image-24-1":
+	case "07 Image-24-2":
+	case "07 Image-24-3":
+	case "07 Image-25-1":
+	case "07 Image-25-2":
+	case "07 Image-26-1":
+	case "07 Image-26-2":
+	case "07 Image-26-3":
+	case "07 Image-27-1":
+	case "07 Image-28-1":
+	case "07 Image-28-2":
+	case "07 Image-28-3":
+	case "07 Image-29-1":
+	case "07 Image-29-2":
+	case "07 Image-30-1":
+	case "07 Image-36-3":
+	case "07 Image-37-1":
+	case "07 Image-37-2":
+	case "07 Image-40-1":
+	case "07 Image-40-2":
+	case "07 Image-41-1":
+	case "07 Image-54-2":
+	case "07 Image-54-3":
+	case "07 Image-55-1":
+	case "07 Image-55-2":
+	case "07 Image-56-1":
+	case "07 Image-56-2":	return("Basic-Listing");
 
 	case "02 Image-17-2":
 	case "05 Image-20-3":
@@ -1512,7 +1551,20 @@ function imageDesc82($issue, $name)
 	case "05 Image-22-2":
 	case "05 Image-23-1":
 	case "06 Image-08-1":
-	case "06 Image-08-2":	return("Pascal-Listing");
+	case "06 Image-08-2":
+	case "07 Image-18-2":
+	case "07 Image-19-1":
+	case "07 Image-45-1":
+	case "07 Image-46-1":	return("Pascal-Listing");
+
+	case "07 Image-47-2":
+	case "07 Image-47-3":
+	case "07 Image-47-4":
+	case "07 Image-48-1":
+	case "07 Image-48-2":
+	case "07 Image-48-3":
+	case "07 Image-48-4":
+	case "07 Image-48-5":	return("Forth-Listing");
 
 	case "01 Image-06-2":
 	case "01 Image-07-2":
@@ -1628,7 +1680,45 @@ function imageDesc82($issue, $name)
 	case "06 Image-17-1":
 	case "06 Image-18-1":
 	case "06 Image-19-1":
-	case "06 Image-19-2":	return("Assembler-Listing");
+	case "06 Image-19-2":
+
+	case "07 Image-11-2":
+	case "07 Image-12-1":
+	case "07 Image-12-2":
+	case "07 Image-16-1":
+	case "07 Image-17-1":
+	case "07 Image-21-1":
+	case "07 Image-21-2":
+	case "07 Image-22-1":
+	case "07 Image-22-2":
+	case "07 Image-23-1":
+	case "07 Image-31-1":
+	case "07 Image-31-2":
+	case "07 Image-32-1":
+	case "07 Image-32-2":
+	case "07 Image-33-1":
+	case "07 Image-33-2":
+	case "07 Image-34-1":
+	case "07 Image-34-2":
+	case "07 Image-35-1":
+	case "07 Image-35-2":
+	case "07 Image-36-1":
+	case "07 Image-41-2":
+	case "07 Image-42-1":
+	case "07 Image-42-2":
+	case "07 Image-42-3":
+	case "07 Image-43-1":
+	case "07 Image-44-2":
+	case "07 Image-46-2":
+	case "07 Image-47-1":
+	case "07 Image-49-1":
+	case "07 Image-50-1":
+	case "07 Image-51-1":
+	case "07 Image-52-1":
+	case "07 Image-53-1":
+	case "07 Image-54-1":
+	case "07 Image-57-1":
+	case "07 Image-57-2":	return("Assembler-Listing");
 
 	case "01 Image-08-2":
 	case "01 Image-10-1":
@@ -1686,7 +1776,9 @@ function imageDesc82($issue, $name)
 	case "06 Image-07-1":
 	case "06 Image-21-2":
 	case "06 Image-21-3":
-	case "06 Image-22-1":	return("HEX-Listing");
+	case "06 Image-22-1":
+
+	case "07 Image-13-4":	return("HEX-Listing");
 
 	case "02 Image-20-1":
 	case "02 Image-20-2":
@@ -1717,9 +1809,24 @@ function imageDesc82($issue, $name)
 	case "05 Image-14-1":
 	case "05 Image-15-1":
 	case "06 Image-22-2":
-	case "06 Image-22-3":	return("Schaltbild");
+	case "06 Image-22-3":
+	case "07 Image-09-2":
+	case "07 Image-11-1":
+	case "07 Image-13-3":
+	case "07 Image-14-1":	return("Schaltbild");
 
 	case "02 Image-08-3":	return("Layout");
+
+	case "07 Image-14-2":
+	case "07 Image-14-3":
+	case "07 Image-14-4":
+	case "07 Image-15-1":
+	case "07 Image-15-2":	return("Flussdiagramm");
+
+	case "07 Image-06-1":
+	case "07 Image-07-1":
+	case "07 Image-07-2":
+	case "07 Image-07-3":	return("Bestückungsplan");
 
 	case "03 Image-20-2":
 	case "03 Image-21-3":
@@ -1783,6 +1890,14 @@ function imageDesc82($issue, $name)
 
 	// 07
 	case "07 Image-13-1":	return("Made by DL6UP 1981");
+	case "07 Image-13-2":	return("Platine");
+	case "07 Image-19-2":	return("Mini-Pilot-Listing");
+	case "07 Image-30-2":	return("Busbelegung");
+	case "07 Image-36-2":	return("&gt;&lt;");
+	case "07 Image-38-1":	return("Bildschirm-Atlas");
+	case "07 Image-44-1":	return("Relozier-Adressen");
+	case "07 Image-58-1":
+	case "07 Image-58-2":	return("Zeichengenerator");
 
 	case "07 Image-02-2":	return("Weiterhin viel Spaß mit dem$nl"."Journal$nl"."Ihr Günter Böhm");
 	case "07 Image-05-2":	return("NASCOMPL:$nl"."Wir kaufen nichts!");
@@ -2352,6 +2467,8 @@ function imageDescAny($year, $issue, $name)
 		case "nascom-newsletter/33/cover":	return "Nascom Newsletter, Volume 3, Number 3";
 		case "nascom-newsletter/34/cover":	return "Nascom Newsletter, Volume 3, Number 4";
 		case "nascom-newsletter/35/cover":	return "Nascom Newsletter, Volume 3, Number 5";
+
+		case "cover":						return "Cover";
 		}
 	}
 
@@ -3037,4 +3154,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2025-12-31 16:16:53 +0100 (Mi, 31. Dez 2025) $ -->
+<!-- /navi-body.php / $Date: 2026-01-02 12:41:39 +0100 (Fr, 02. Jan 2026) $ -->
