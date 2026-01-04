@@ -2045,16 +2045,37 @@ function imageDesc83($issue, $name)
 	case "12 Image-01-1":
 	case "12 Image-02-1":	return("80-Bus$nl"."Journal");
 
-	case "01 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
+	case "01 Image-28-1":
+	case "02 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
 
 	case "01 Image-04-1":
-	case "01 Image-05-1":	return("HEX-Listing");
+	case "01 Image-05-1":
+	case "01 Image-11-1":
+	case "01 Image-11-2":
+	case "01 Image-11-3":
+	case "01 Image-11-4":
+	case "01 Image-27-3":
+	case "02 Image-04-1":
+	case "02 Image-04-2":
+	case "02 Image-11-1":
+	case "02 Image-11-2":
+	case "02 Image-12-1":
+	case "02 Image-12-2":
+	case "02 Image-13-2":
+	case "02 Image-14-1":
+	case "02 Image-25-1":
+	case "02 Image-25-2":
+	case "02 Image-25-3":
+	case "02 Image-25-4":	return("HEX-Listing");
 
 	case "01 Image-05-2":
 	case "01 Image-05-3":
 	case "01 Image-12-1":
 	case "01 Image-13-2":
-	case "01 Image-13-3":	return("Bildschirmfoto");
+	case "01 Image-13-3":
+	case "02 Image-03-1":
+	case "02 Image-26-2":
+	case "02 Image-26-3":	return("Bildschirmfoto");
 
 	case "01 Image-06-1":
 	case "01 Image-06-2":
@@ -2083,19 +2104,35 @@ function imageDesc83($issue, $name)
 	case "01 Image-27-1":
 	case "01 Image-27-2":	return("Assembler-Listing");
 
-	case "01 Image-11-1":
-	case "01 Image-11-2":
-	case "01 Image-11-3":
-	case "01 Image-11-4":
-	case "01 Image-27-3":	return("HEX-Listing");
-
 	case "01 Image-13-1":
-	case "01 Image-14-1":	return("Pascal-Listing");
+	case "01 Image-14-1":
+	case "02 Image-14-2":
+	case "02 Image-15-1":
+	case "02 Image-15-2":
+	case "02 Image-15-3":
+	case "02 Image-20-1":
+	case "02 Image-20-2":
+	case "02 Image-21-1":
+	case "02 Image-21-2":
+	case "02 Image-22-1":
+	case "02 Image-22-2":
+	case "02 Image-23-2":	return("Pascal-Listing");
 
 	case "01 Image-15-1":
-	case "01 Image-15-2":	return("BASIC-Listing");
+	case "01 Image-15-2":
+	case "02 Image-09-2":
+	case "02 Image-10-1":
+	case "02 Image-19-1":	return("BASIC-Listing");
 
-	case "01 Image-15-3":	return("Schaltbild");
+	case "01 Image-15-3":
+	case "02 Image-04-3":
+	case "02 Image-06-1":
+	case "02 Image-10-2":
+	case "02 Image-26-1":	return("Schaltbild");
+
+	case "02 Image-06-2":	return("Layout");
+
+	case "02 Image-05-1":	return("Bestückungsplan");
 
 	// 01
 	case "01 Image-01-2":	return("Druckausgabe von TV-Bildern");
@@ -3296,4 +3333,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-04 17:57:20 +0100 (So, 04. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-01-04 18:09:21 +0100 (So, 04. Jan 2026) $ -->
