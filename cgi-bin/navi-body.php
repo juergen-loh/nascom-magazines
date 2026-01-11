@@ -408,7 +408,7 @@ function invertedSignal($signal)
 	echo "<!-- inverted signal --><span class=\"style-inverted-signal\">$signal</span>";
 }
 
-function DivWithStyle($border, $style = "", $class = "")
+function DivWithStyle($border, $style = "", $class = "", $id = "")
 {
 	if ($border == "") {
 		$border = "TBLR";	// Top Bottom Left Right
@@ -417,6 +417,9 @@ function DivWithStyle($border, $style = "", $class = "")
 	echo "<div";
 	if ($class != "") {
 		echo " class=\"$class\"";
+	}
+	if ($id != "") {
+		echo " id=\"$id\"";
 	}
 	echo " style=\"";
 	if ($border == "TBLR") {
@@ -455,20 +458,20 @@ function DivWithStyle($border, $style = "", $class = "")
 	echo "\">\n";
 }
 
-function boxStart($border = "", $style = "", $class = "")
+function boxStart($border = "", $style = "", $class = "", $id = "")
 {
 	echo "<!-- Kasten über ganze Spalte: Start -->";
-	DivWithStyle($border, "width: 100%; $style", $class);
+	DivWithStyle($border, "width: 100%; $style", $class, $id);
 }
-function boxStartNowrap($border = "", $style = "", $class = "")
+function boxStartNowrap($border = "", $style = "", $class = "", $id = "")
 {
-	echo "<!-- Kasten &uuml;ber ganze Spalte: Start -->";
-	DivWithStyle($border, "width: 100%; $style", "style-nowrap $class");
+	echo "<!-- Kasten über ganze Spalte: Start -->";
+	DivWithStyle($border, "width: 100%; $style", "style-nowrap $class", $id);
 }
-function boxStartJustify($border = "", $style = "", $class = "")
+function boxStartJustify($border = "", $style = "", $class = "", $id = "")
 {
-	echo "<!-- Kasten &uuml;ber ganze Spalte im Blocksatz: Start -->";
-	DivWithStyle($border, "width: 100%; $style", "justify $class");
+	echo "<!-- Kasten über ganze Spalte im Blocksatz: Start -->";
+	DivWithStyle($border, "width: 100%; $style", "justify $class", $id);
 }
 function boxEnd()
 {
@@ -2787,7 +2790,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "AUDIT 5":					$url = "https://www.pinterest.de/pin/479633429036464222/";						break;
 	case "AVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/nascom/avc_model_b_issue_a.htm";	break;
 	case "AY-3-8910":				$url = "https://$lang.wikipedia.org/wiki/AY-3-8910";							break;
-	case "BAS":						$url = "https://$lang.wikipedia.org/wiki/Fernsehsignal#BAS-Signal";					break;
+	case "BAS":						$url = "https://$lang.wikipedia.org/wiki/Fernsehsignal#BAS-Signal";				break;
 	case "BASF 6106":				$url = "https://retrocmp.de/fdd/basf/6106/b6106_b.htm";							break;
 	case "BASF 6138":				$url = "https://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "Lunar LEM Rocket":		$url = "https://www.atariarchives.org/basicgames/showpage.php?page=106";		break;
@@ -3202,7 +3205,7 @@ function externalLink($link, $text="", $delimiter="\n")
 
 function hline($width, $border="")
 {
-	echo "<!-- Linie"/* &uuml;ber ganze Spalte*/." -->";
+	echo "<!-- Linie"/* über ganze Spalte*/." -->";
 	echo "<div class=\"hline\" style=\"width: $width; margin:auto; ";
 	if (strpos($border, "2") !== FALSE) {	// 2px
 		echo	" border-top:2px";
@@ -3334,4 +3337,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-04 18:09:21 +0100 (So, 04. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-01-11 14:57:27 +0100 (So, 11. Jan 2026) $ -->
