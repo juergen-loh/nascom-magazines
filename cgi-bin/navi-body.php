@@ -2050,7 +2050,8 @@ function imageDesc83($issue, $name)
 
 	case "01 Image-28-1":
 	case "02 Image-28-1":
-	case "03 Image-32-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
+	case "03 Image-32-1":
+	case "04 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
 
 	case "01 Image-04-1":
 	case "01 Image-05-1":
@@ -2080,7 +2081,36 @@ function imageDesc83($issue, $name)
 	case "03 Image-28-4":
 	case "03 Image-29-1":
 	case "03 Image-29-2":
-	case "03 Image-29-3":	return("HEX-Listing");
+	case "03 Image-29-3":
+	case "04 Image-03-1":
+	case "04 Image-03-3":
+	case "04 Image-05-1":
+	case "04 Image-05-2":
+	case "04 Image-05-3":
+	case "04 Image-05-4":
+	case "04 Image-06-1":
+	case "04 Image-06-2":
+	case "04 Image-06-3":
+	case "04 Image-07-1":
+	case "04 Image-15-1":
+	case "04 Image-15-2":
+	case "04 Image-15-3":
+	case "04 Image-18-3":
+	case "04 Image-18-4":
+	case "04 Image-18-5":
+	case "04 Image-18-6":
+	case "04 Image-19-1":
+	case "04 Image-19-2":
+	case "04 Image-19-3":
+	case "04 Image-21-1":
+	case "04 Image-21-2":
+	case "04 Image-22-1":
+	case "04 Image-22-2":
+	case "04 Image-22-3":
+	case "04 Image-22-4":
+	case "04 Image-22-5":
+	case "04 Image-22-6":
+	case "04 Image-23-1":	return("HEX-Listing");
 
 	case "01 Image-05-2":
 	case "01 Image-05-3":
@@ -2095,7 +2125,9 @@ function imageDesc83($issue, $name)
 	case "03 Image-06-3":
 	case "03 Image-06-4":
 	case "03 Image-06-5":
-	case "03 Image-06-6":	return("Bildschirmfoto");
+	case "03 Image-06-6":
+	case "04 Image-16-1":
+	case "04 Image-19-4":	return("Bildschirmfoto");
 
 	case "01 Image-06-1":
 	case "01 Image-06-2":
@@ -2142,7 +2174,33 @@ function imageDesc83($issue, $name)
 	case "03 Image-26-2":
 	case "03 Image-27-1":
 	case "03 Image-27-2":
-	case "03 Image-28-1":	return("ZEAP Z80 Assembler – Source Listing");
+	case "03 Image-28-1":
+	case "04 Image-03-4":
+	case "04 Image-04-1":
+	case "04 Image-04-2":
+	case "04 Image-04-3":
+	case "04 Image-06-4":
+	case "04 Image-06-5":
+	case "04 Image-07-3":
+	case "04 Image-08-1":
+	case "04 Image-08-2":
+	case "04 Image-09-1":
+	case "04 Image-09-2":
+	case "04 Image-10-1":
+	case "04 Image-10-2":
+	case "04 Image-10-3":
+	case "04 Image-11-1":
+	case "04 Image-11-2":
+	case "04 Image-11-3":
+	case "04 Image-17-1":
+	case "04 Image-17-2":
+	case "04 Image-17-3":
+	case "04 Image-18-1":
+	case "04 Image-18-2":
+	case "04 Image-24-1":
+	case "04 Image-25-1":
+	case "04 Image-25-2":
+	case "04 Image-25-3":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "03 Image-28-2":
 	case "03 Image-28-3":	return("ZEAP Z80 Assembler – Symbol Table");
@@ -2159,7 +2217,9 @@ function imageDesc83($issue, $name)
 	case "03 Image-08-2":
 	case "03 Image-09-1":
 	case "03 Image-09-2":
-	case "03 Image-10-1":	return("Assembler-Listing");
+	case "03 Image-10-1":
+	case "04 Image-12-1":
+	case "04 Image-13-2":	return("Assembler-Listing");
 
 	case "01 Image-13-1":
 	case "01 Image-14-1":
@@ -2174,7 +2234,8 @@ function imageDesc83($issue, $name)
 	case "02 Image-22-1":
 	case "02 Image-22-2":
 	case "02 Image-23-2":
-	case "03 Image-18-1":	return("Pascal-Listing");
+	case "03 Image-18-1":
+	case "04 Image-26-1":	return("Pascal-Listing");
 
 	case "01 Image-15-1":
 	case "01 Image-15-2":
@@ -2183,13 +2244,20 @@ function imageDesc83($issue, $name)
 	case "02 Image-19-1":
 	case "03 Image-17-3":
 	case "03 Image-22-1":
-	case "03 Image-22-2":	return("BASIC-Listing");
+	case "03 Image-22-2":
+	case "04 Image-07-2":
+	case "04 Image-12-2":
+	case "04 Image-12-3":
+	case "04 Image-12-4":
+	case "04 Image-13-1":
+	case "04 Image-26-3":	return("BASIC-Listing");
 
 	case "01 Image-15-3":
 	case "02 Image-04-3":
 	case "02 Image-06-1":
 	case "02 Image-10-2":
-	case "02 Image-26-1":	return("Schaltbild");
+	case "02 Image-26-1":
+	case "04 Image-23-2":	return("Schaltbild");
 
 	case "02 Image-06-2":	return("Layout");
 
@@ -2219,6 +2287,15 @@ function imageDesc83($issue, $name)
 	case "03 Image-11-3":	return("NASCOMPL:$nl"."Druckfehler");
 
 	// 04
+	case "04 Image-16-2":
+	case "04 Image-16-3":
+	case "04 Image-16-3":
+	case "04 Image-16-4":
+	case "04 Image-16-5":
+	case "04 Image-16-6":
+	case "04 Image-16-7":
+	case "04 Image-16-8":	return("Labyrinth");
+
 	case "04 Image-01-2":	return("BASIC VARIANTEN");
 	case "04 Image-03-2":	return("* zumindest kamen$nl"."auf unser Angebot$nl"."zur Mitgestaltung$nl"."bisher nur 2$nl"."Zuschriften!");
 	case "04 Image-03-5":	return("NASCOMPL:$nl"."Diese Schmalschrift$nl"."spart Zeit und macht$nl"."Platz für viele$nl"."NASCOMPLs. Zudem$nl"."scheint sie die$nl"."Leser nicht zu$nl"."stören!");
@@ -3404,4 +3481,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-11 15:17:57 +0100 (So, 11. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-01-17 18:59:39 +0100 (Sa, 17. Jan 2026) $ -->
