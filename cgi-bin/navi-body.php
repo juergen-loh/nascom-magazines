@@ -2051,7 +2051,8 @@ function imageDesc83($issue, $name)
 	case "01 Image-28-1":
 	case "02 Image-28-1":
 	case "03 Image-32-1":
-	case "04 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
+	case "04 Image-28-1":
+	case "05 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
 
 	case "01 Image-04-1":
 	case "01 Image-05-1":
@@ -2110,7 +2111,17 @@ function imageDesc83($issue, $name)
 	case "04 Image-22-4":
 	case "04 Image-22-5":
 	case "04 Image-22-6":
-	case "04 Image-23-1":	return("HEX-Listing");
+	case "04 Image-23-1":
+	case "05 Image-12-1":
+	case "05 Image-14-3":
+	case "05 Image-14-4":
+	case "05 Image-14-5":
+	case "05 Image-14-6":
+	case "05 Image-26-1":
+	case "05 Image-26-2":
+	case "05 Image-26-3":
+	case "05 Image-26-4":
+	case "05 Image-26-5":	return("HEX-Listing");
 
 	case "01 Image-05-2":
 	case "01 Image-05-3":
@@ -2127,7 +2138,10 @@ function imageDesc83($issue, $name)
 	case "03 Image-06-5":
 	case "03 Image-06-6":
 	case "04 Image-16-1":
-	case "04 Image-19-4":	return("Bildschirmfoto");
+	case "04 Image-19-4":
+	case "05 Image-14-1":
+	case "05 Image-14-2":
+	case "05 Image-14-7":	return("Bildschirmfoto");
 
 	case "01 Image-06-1":
 	case "01 Image-06-2":
@@ -2200,7 +2214,10 @@ function imageDesc83($issue, $name)
 	case "04 Image-24-1":
 	case "04 Image-25-1":
 	case "04 Image-25-2":
-	case "04 Image-25-3":	return("ZEAP Z80 Assembler – Source Listing");
+	case "04 Image-25-3":
+	case "05 Image-07-2":
+	case "05 Image-19-1":
+	case "05 Image-19-2":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "03 Image-28-2":
 	case "03 Image-28-3":	return("ZEAP Z80 Assembler – Symbol Table");
@@ -2219,7 +2236,17 @@ function imageDesc83($issue, $name)
 	case "03 Image-09-2":
 	case "03 Image-10-1":
 	case "04 Image-12-1":
-	case "04 Image-13-2":	return("Assembler-Listing");
+	case "04 Image-13-2":
+	case "05 Image-05-1":
+	case "05 Image-10-1":
+	case "05 Image-10-2":
+	case "05 Image-11-1":
+	case "05 Image-11-2":
+	case "05 Image-17-1":
+	case "05 Image-17-2":
+	case "05 Image-18-1":
+	case "05 Image-18-2":
+	case "05 Image-21-3":	return("Assembler-Listing");
 
 	case "01 Image-13-1":
 	case "01 Image-14-1":
@@ -2235,7 +2262,10 @@ function imageDesc83($issue, $name)
 	case "02 Image-22-2":
 	case "02 Image-23-2":
 	case "03 Image-18-1":
-	case "04 Image-26-1":	return("Pascal-Listing");
+	case "04 Image-26-1":
+	case "05 Image-06-1":
+	case "05 Image-06-2":
+	case "05 Image-07-1":	return("Pascal-Listing");
 
 	case "01 Image-15-1":
 	case "01 Image-15-2":
@@ -2250,19 +2280,35 @@ function imageDesc83($issue, $name)
 	case "04 Image-12-3":
 	case "04 Image-12-4":
 	case "04 Image-13-1":
-	case "04 Image-26-3":	return("BASIC-Listing");
+	case "04 Image-26-3":
+	case "05 Image-04-3":
+	case "05 Image-20-1":
+	case "05 Image-20-2":
+	case "05 Image-21-1":
+	case "05 Image-22-1":
+	case "05 Image-22-2":
+	case "05 Image-23-1":
+	case "05 Image-23-2":
+	case "05 Image-27-1":
+	case "05 Image-27-2":	return("BASIC-Listing");
 
 	case "01 Image-15-3":
 	case "02 Image-04-3":
 	case "02 Image-06-1":
 	case "02 Image-10-2":
 	case "02 Image-26-1":
-	case "04 Image-23-2":	return("Schaltbild");
+	case "04 Image-23-2":
+	case "05 Image-09-1":
+	case "05 Image-13-1":
+	case "05 Image-17-3":
+	case "05 Image-24-1":
+	case "05 Image-24-2":	return("Schaltbild");
 
 	case "02 Image-06-2":	return("Layout");
 
 	case "02 Image-05-1":
-	case "03 Image-05-1":	return("Bestückungsplan");
+	case "03 Image-05-1":
+	case "05 Image-13-2":	return("Bestückungsplan");
 
 	// 01
 	case "01 Image-01-2":	return("Druckausgabe von TV-Bildern");
@@ -2305,6 +2351,9 @@ function imageDesc83($issue, $name)
 	case "04 Image-26-2":	return("NASCOMPL:$nl"."Wettervorhersage");
 
 	// 05
+	case "05 Image-08-1":	return("Stückliste");
+	case "05 Image-15-1":	return("Flussdiagramm");
+
 	case "05 Image-01-2":	return("Hardware:$nl"."Floppy-Controller$nl"."RAM/EPROM-Karte$nl"."MDCR-Verbesserung$nl"."Brother Elektronik 8300");
 	case "05 Image-04-1":	return("NASCOMPL:$nl"."Computer-Treff");
 	case "05 Image-16-1":	return("NASCOMPL:$nl"."Mißtrauische$nl"."Leser sollten$nl"."hier den$nl"."Namen und$nl"."die Adress$nl"."weglassen!!");
@@ -3267,7 +3316,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Tforth.nas":				$url = "http://www.nascomhomepage.com/lang/Tforth.nas";							break;
 	case "The complete FORTH":		$url = "https://openlibrary.org/works/OL5598529W/The_complete_FORTH";			break;
 	case "Threaded Interpretive Languages":	$url = "https://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981/mode/2up";	break;
-	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/muuta-mielenkiintoista-2/kontron-zilog-z80-kit-antti-isannainen/";	break;
+	case "Tietokonemuseo":			$url = "https://www.tietokonemuseo.net/other-interesting-stuff/kontron-zilog-z80-kit-antti-isannainen/";	break;
 	case "TL497":					$url = "https://www.ti.com/lit/ds/symlink/tl494.pdf";							break;
 	case "TMS5100":					$url = "https://www.datasheetarchive.com/?q=tms5100";							break;
 	case "TMS9929":					$url = "https://www.datasheetarchive.com/?q=tms9929";							break;
@@ -3417,8 +3466,15 @@ HEREDOC;
 					echo "dir      $dir\n";
 					echo "str      $str\n";
 					echo "gHtmlRoot	$gHtmlRoot\n";
+					echo "getcwd   ".getcwd()."\n";
 					echo "-->\n";
 */
+					// Für https://tupel.jloh.de/pvt/ahnen/
+					if (!is_dir($item_dir)) {
+						$item_dir = "../htdocs/".$item_dir;
+//						echo "<!-- item_dir $item_dir -->\n";
+					}
+
 					if (is_dir($item_dir)) {
 						echo "\t\t\t\t<li class=\"nav-item\">\n";
 						echo "\t\t\t\t\t<a class=\"nav-link";
@@ -3481,4 +3537,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-17 18:59:39 +0100 (Sa, 17. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-01-25 14:44:55 +0100 (So, 25. Jan 2026) $ -->
