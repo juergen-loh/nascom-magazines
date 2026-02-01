@@ -2052,7 +2052,9 @@ function imageDesc83($issue, $name)
 	case "02 Image-28-1":
 	case "03 Image-32-1":
 	case "04 Image-28-1":
-	case "05 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
+	case "05 Image-28-1":
+	case "06 Image-28-1":
+	case "07 Image-28-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
 
 	case "01 Image-04-1":
 	case "01 Image-05-1":
@@ -2121,7 +2123,9 @@ function imageDesc83($issue, $name)
 	case "05 Image-26-2":
 	case "05 Image-26-3":
 	case "05 Image-26-4":
-	case "05 Image-26-5":	return("HEX-Listing");
+	case "05 Image-26-5":
+	case "06 Image-15-1":
+	case "06 Image-17-1":	return("HEX-Listing");
 
 	case "01 Image-05-2":
 	case "01 Image-05-3":
@@ -2141,7 +2145,8 @@ function imageDesc83($issue, $name)
 	case "04 Image-19-4":
 	case "05 Image-14-1":
 	case "05 Image-14-2":
-	case "05 Image-14-7":	return("Bildschirmfoto");
+	case "05 Image-14-7":
+	case "06 Image-12-6":	return("Bildschirmfoto");
 
 	case "01 Image-06-1":
 	case "01 Image-06-2":
@@ -2217,7 +2222,22 @@ function imageDesc83($issue, $name)
 	case "04 Image-25-3":
 	case "05 Image-07-2":
 	case "05 Image-19-1":
-	case "05 Image-19-2":	return("ZEAP Z80 Assembler – Source Listing");
+	case "05 Image-19-2":
+	case "06 Image-06-1":
+	case "06 Image-06-2":
+	case "06 Image-09-1":
+	case "06 Image-10-1":
+	case "06 Image-10-3":
+	case "06 Image-11-1":
+	case "06 Image-11-2":
+	case "06 Image-12-1":
+	case "06 Image-12-3":
+	case "06 Image-12-4":
+	case "06 Image-15-2":
+	case "06 Image-15-3":
+	case "06 Image-26-4":
+	case "06 Image-27-1":
+	case "06 Image-27-2":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "03 Image-28-2":
 	case "03 Image-28-3":	return("ZEAP Z80 Assembler – Symbol Table");
@@ -2290,7 +2310,9 @@ function imageDesc83($issue, $name)
 	case "05 Image-23-1":
 	case "05 Image-23-2":
 	case "05 Image-27-1":
-	case "05 Image-27-2":	return("BASIC-Listing");
+	case "05 Image-27-2":
+	case "06 Image-12-2":
+	case "06 Image-12-5":	return("BASIC-Listing");
 
 	case "01 Image-15-3":
 	case "02 Image-04-3":
@@ -2302,13 +2324,35 @@ function imageDesc83($issue, $name)
 	case "05 Image-13-1":
 	case "05 Image-17-3":
 	case "05 Image-24-1":
-	case "05 Image-24-2":	return("Schaltbild");
+	case "05 Image-24-2":
+	case "06 Image-05-1":
+	case "06 Image-06-3":
+	case "06 Image-08-1":
+	case "06 Image-16-2":
+	case "06 Image-17-2":
+	case "06 Image-17-3":
+	case "06 Image-20-1":
+	case "06 Image-21-1":
+	case "06 Image-22-1":
+	case "06 Image-22-2":
+	case "06 Image-22-3":
+	case "06 Image-23-2":
+	case "06 Image-23-3":
+	case "06 Image-23-4":
+	case "06 Image-23-5":	return("Schaltbild");
 
 	case "02 Image-06-2":	return("Layout");
 
 	case "02 Image-05-1":
 	case "03 Image-05-1":
-	case "05 Image-13-2":	return("Bestückungsplan");
+	case "05 Image-13-2":
+	case "06 Image-07-1":	return("Bestückungsplan");
+
+	case "03 Image-16-1":
+	case "03 Image-16-2":
+	case "03 Image-16-3":
+	case "03 Image-16-4":
+	case "06 Image-16-1":	return("Zeitdiagramm");
 
 	// 01
 	case "01 Image-01-2":	return("Druckausgabe von TV-Bildern");
@@ -2324,10 +2368,6 @@ function imageDesc83($issue, $name)
 	case "03 Image-15-2":	return("Pinbelegung");
 	case "03 Image-15-3":
 	case "03 Image-15-4":	return("Tabelle");
-	case "03 Image-16-1":
-	case "03 Image-16-2":
-	case "03 Image-16-3":
-	case "03 Image-16-4":	return("Zeitdiagramm");
 
 	case "03 Image-01-2":	return("&quot;PÄCK-MÄNN&quot;$nl"."(klingt wie Pac Man und läuft auch so)");
 	case "03 Image-11-3":	return("NASCOMPL:$nl"."Druckfehler");
@@ -2360,6 +2400,12 @@ function imageDesc83($issue, $name)
 	case "05 Image-21-2":	return("NASCOMPL:$nl"."me not good$nl"."speek$nl"."XTAL BAZIK$nl"."Interbretter");
 
 	// 06
+	case "06 Image-16-3":
+	case "06 Image-16-4":	return("Foto Multimeter");
+	case "06 Image-22-4":	return("Inputs");
+	case "06 Image-22-5":	return("Outputs");
+	case "06 Image-23-1":	return("Verdrahtungsplan");
+
 	case "06 Image-01-2":	return("NASCOMPL:$nl"."Preiswertes$nl"."ECB-BUS-$nl"."SYSTEM$nl"."$nl"."CP/M-kompatibel$nl"."mit NASCOM-Software");
 	case "06 Image-10-2":	return("NASCOMPL:$nl"."Cassetten-Legasthenie");
 	case "06 Image-17-2":	return("Fehlerbeseitigung bei der 80x24$nl"."Videokarte &ndash; ECB$nl"."$nl"."Die beiden Abschirmleitungen für$nl"."den Videotakt wurden durch die$nl"."Platinenherstellerfirma irrtümlich mit$nl"."den Durchkontaktierungen verbunden!$nl"."$nl"."Sorry, KS");
@@ -3537,4 +3583,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-01-25 14:44:55 +0100 (So, 25. Jan 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-02-01 17:16:56 +0100 (So, 01. Feb 2026) $ -->
