@@ -2056,11 +2056,13 @@ function imageDesc83($issue, $name)
 	case "06 Image-28-1":
 	case "07 Image-51-1":
 	case "09 Image-27-1":
-	case "11 Image-51-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
+	case "11 Image-51-1":
+	case "12 Image-27-1":	return("Anzeige Gemini Microcomputer Vertriebs-GmbH");
 
 	case "07 Image-52-1":
 	case "09 Image-28-1":
-	case "11 Image-52-1":	return("Anzeige LAMPSON Digitaltechnik");
+	case "11 Image-52-1":
+	case "12 Image-28-1":	return("Anzeige LAMPSON Digitaltechnik");
 
 	case "01 Image-04-1":
 	case "01 Image-05-1":
@@ -2352,11 +2354,27 @@ function imageDesc83($issue, $name)
 	case "11 Image-38-1":
 	case "11 Image-38-2":
 	case "11 Image-39-1":
-	case "11 Image-39-2":	return("ZEAP Z80 Assembler – Source Listing");
+	case "11 Image-39-2":
+	case "12 Image-16-3":
+	case "12 Image-16-4":
+	case "12 Image-17-1":
+	case "12 Image-17-2":
+	case "12 Image-18-1":
+	case "12 Image-18-2":
+	case "12 Image-19-1":
+	case "12 Image-19-2":
+	case "12 Image-20-1":
+	case "12 Image-20-2":
+	case "12 Image-21-1":
+	case "12 Image-21-2":
+	case "12 Image-22-1":
+	case "12 Image-22-2":
+	case "12 Image-22-3":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "03 Image-28-2":
 	case "03 Image-28-3":
-	case "11 Image-14-2":	return("ZEAP Z80 Assembler – Symbol Table");
+	case "11 Image-14-2":
+	case "12 Image-22-4":	return("ZEAP Z80 Assembler – Symbol Table");
 
 	case "01 Image-09-3":
 	case "01 Image-12-2":
@@ -2398,7 +2416,15 @@ function imageDesc83($issue, $name)
 	case "11 Image-20-1":
 	case "11 Image-21-1":
 	case "11 Image-35-1":
-	case "11 Image-35-2":	return("Assembler-Listing");
+	case "11 Image-35-2":
+	case "12 Image-04-1":
+	case "12 Image-04-2":
+	case "12 Image-14-3":
+	case "12 Image-15-1":
+	case "12 Image-15-2":
+	case "12 Image-16-1":
+	case "12 Image-16-2":
+	case "12 Image-19-3":	return("Assembler-Listing");
 
 	case "01 Image-13-1":
 	case "01 Image-14-1":
@@ -2493,7 +2519,26 @@ function imageDesc83($issue, $name)
 	case "11 Image-47-3":
 	case "11 Image-48-1":
 	case "11 Image-48-2":
-	case "11 Image-48-3":	return("BASIC-Listing");
+	case "11 Image-48-3":
+	case "12 Image-04-3":
+	case "12 Image-04-4":
+	case "12 Image-05-1":
+	case "12 Image-05-2":
+	case "12 Image-05-4":
+	case "12 Image-06-1":
+	case "12 Image-06-2":
+	case "12 Image-07-1":
+	case "12 Image-07-2":
+	case "12 Image-08-1":
+	case "12 Image-08-2":
+	case "12 Image-09-1":
+	case "12 Image-09-2":
+	case "12 Image-10-1":
+	case "12 Image-10-2":
+	case "12 Image-11-1":
+	case "12 Image-11-2":
+	case "12 Image-12-1":
+	case "12 Image-12-2":	return("BASIC-Listing");
 
 	case "11 Image-31-1":
 	case "11 Image-32-1":
@@ -2546,7 +2591,9 @@ function imageDesc83($issue, $name)
 	case "11 Image-25-1":
 	case "11 Image-36-2":
 	case "11 Image-37-1":
-	case "11 Image-49-1":	return("Schaltbild");
+	case "11 Image-49-1":
+	case "12 Image-24-1":
+	case "12 Image-26-1":	return("Schaltbild");
 
 	case "02 Image-06-2":
 	case "09 Image-13-2":
@@ -2554,7 +2601,9 @@ function imageDesc83($issue, $name)
 	case "09 Image-20-1":
 	case "09 Image-20-2":
 	case "11 Image-50-1":
-	case "11 Image-50-2":	return("Layout");
+	case "11 Image-50-2":
+	case "12 Image-25-1":
+	case "12 Image-25-2":	return("Layout");
 
 	case "02 Image-05-1":
 	case "03 Image-05-1":
@@ -2564,7 +2613,8 @@ function imageDesc83($issue, $name)
 	case "09 Image-14-1":
 	case "09 Image-18-4":
 	case "11 Image-36-3":
-	case "11 Image-48-4":	return("Bestückungsplan");
+	case "11 Image-48-4":
+	case "12 Image-23-1":	return("Bestückungsplan");
 
 	case "03 Image-16-1":
 	case "03 Image-16-2":
@@ -2573,6 +2623,10 @@ function imageDesc83($issue, $name)
 	case "06 Image-16-1":
 	case "09 Image-09-2":
 	case "11 Image-36-1":	return("Zeitdiagramm");
+
+	case "09 Image-10-1":
+	case "12 Image-14-1":
+	case "12 Image-14-2":	return("Floppy-Spur");
 
 	// 01
 	case "01 Image-01-2":	return("Druckausgabe von TV-Bildern");
@@ -2649,7 +2703,6 @@ function imageDesc83($issue, $name)
 	case "09 Image-08-1":	return("Steuerwort-Tabelle");
 	case "09 Image-08-2":
 	case "09 Image-09-1":	return("Kommando-Tabelle");
-	case "09 Image-10-1":	return("Floppy-Spur");
 	case "09 Image-18-1":	return("Pinbelegung PIO Port A");
 
 	case "09 Image-01-2":	return("FLOPPY-$nl"."Höhenflug");
@@ -2673,6 +2726,8 @@ function imageDesc83($issue, $name)
 	case "11 Image-43-3":	return("NASCOMPL:$nl"."Keine Sorge!$nl"."Das Listing da unten$nl"."ist wirklich nur für$nl"."mich zum Sitzen$nl"."da!");
 
 	// 12
+	case "12 Image-05-3":	return("Zeichentabelle");
+
 	case "12 Image-08-3":	return("NASCOMPL:$nl"."Phönix aus der Asche");
 	case "12 Image-26-2":	return("NASCOMPL:$nl"."Bitte tragen Sie sich hier ein,$nl"."falls Sie irgendwelche$nl"."Programme oder Artikel in$nl"."der Schublade haben! Wir$nl"."brauchen dringend$nl"."noch neue Mitarbeiter!");
 	}
@@ -3820,4 +3875,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-02-08 16:16:02 +0100 (So, 08. Feb 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-02-14 16:38:42 +0100 (Sa, 14. Feb 2026) $ -->
