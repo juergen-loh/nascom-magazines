@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2026-03-05 15:29:12 +0100 (Do, 05. Mrz 2026) $ / <?php echo "$lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
@@ -41,7 +41,7 @@ function nascomplInsert($year, $issue, $page, $file)
 	}
 
 	echo "<a href=\"../$year/$issue/$page/text/#nascompl\" ";
-	echo "title=\"NASCOMPL im $magazine ", $issue == "m1" ? "M1" : (int) $issue, "/$year auf Seite ", (int) $page;
+	echo "title=\"NASCOMPL im $magazine ", $issue == "m1" ? ", Mitteilungsblatt Nr. 1" : (int) $issue, "/$year auf Seite ", (int) $page;
 	echo "\">";
 	echo "<img src=\"$imagename\" alt=\"$alt\" $limit style=\"margin-top:$space","px; margin-right:$space","px; vertical-align: middle;\">";
 	echo "</a>";
@@ -85,6 +85,7 @@ function nascomplInsert($year, $issue, $page, $file)
 	nascomplInsert("81", "12", "40", "Image-40-3.jpeg");
 	nascomplInsert("81", "12", "52", "Image-52-3.jpeg");
 	nascomplInsert("81", "12", "54", "Image-54-2.jpeg");
+
 	nascomplInsert("82", "01", "07", "Image-07-3.jpeg");
 	nascomplInsert("82", "01", "11", "Image-11-2.jpeg");
 	nascomplInsert("82", "01", "25", "Image-25-1.jpeg");
@@ -133,7 +134,7 @@ function nascomplInsert($year, $issue, $page, $file)
 	nascomplInsert("83", "05", "21", "Image-21-2.jpeg");
 //	nascomplInsert("83", "06", "01", "Image-01-2.jpeg");
 	nascomplInsert("83", "06", "10", "Image-10-2.jpeg");
-	nascomplInsert("83", "06", "26", "Image-26-2.jpeg");
+//	nascomplInsert("83", "06", "26", "Image-26-2.jpeg");
 	nascomplInsert("83", "07", "07", "Image-07-2.jpeg");
 	nascomplInsert("83", "07", "07", "Image-07-3.jpeg");
 	nascomplInsert("83", "07", "07", "Image-07-4.jpeg");
@@ -149,6 +150,7 @@ function nascomplInsert($year, $issue, $page, $file)
 	nascomplInsert("83", "11", "43", "Image-43-3.jpeg");
 	nascomplInsert("83", "12", "08", "Image-08-3.jpeg");
 	nascomplInsert("83", "12", "26", "Image-26-2.jpeg");
+
 //	nascomplInsert("84", "m1", "01", "Image-01-2.jpeg");
 	nascomplInsert("84", "m1", "03", "Image-05-2.jpeg");
 //	nascomplInsert("84", "m1", "12", "Image-12-1.jpeg");
@@ -168,6 +170,7 @@ function nascomplInsert($year, $issue, $page, $file)
 	nascomplInsert("84", "04", "28", "Image-28-1.jpeg");
 	nascomplInsert("84", "04", "36", "Image-36-1.png");
 //	nascomplInsert("84", "04", "46", "Image-46-3.jpeg");
+
 //	nascomplInsert("85", "m3", "01", "Image-01-2.jpeg");
 
 //	echo "\n</p></td></tr></table>\n";

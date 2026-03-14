@@ -3495,7 +3495,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Kilobaud Microcomputing Magazine, March 1981, Page 44":		$url = "https://archive.org/details/kilobaudmagazine-1981-03/page/n41/mode/2up";	break;
 	case "Kontron Z80-KIT":			$url = "https://rolf-becker.de/Lehrcomputer.html";								break;
 	case "Kontron":					$url = "https://www.kontron.com/de";											break;
-	case "Kornkraft Genossenschaft":$url = "https://www.bio-region-niederrhein.com/bioregion-ueberuns.php";			break;
+	case "Kornkraft Genossenschaft":$url = "https://bio-region-niederrhein.com/ueber-uns-2/karte/";					break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://$lang.wikipedia.org/wiki/Lichtgriffel";							break;
 	case "Conway's Game of Life":
@@ -3875,4 +3875,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-02-14 16:38:42 +0100 (Sa, 14. Feb 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-14 12:51:34 +0100 (Sa, 14. Mrz 2026) $ -->
