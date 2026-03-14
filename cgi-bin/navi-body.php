@@ -2753,6 +2753,99 @@ function imageDesc84($issue, $name)
 	case "04 Image-01-1":
 	case "04 Image-02-1":	return("80-Bus$nl"."Journal");
 
+	case "01 Image-52-1":	return("Anzeige LAMPSON Digitaltechnik");
+
+	case "01 Image-12-2":
+	case "01 Image-15-1":
+	case "01 Image-15-2":
+	case "01 Image-15-3":
+	case "01 Image-16-1":
+	case "01 Image-16-2":
+	case "01 Image-16-3":
+	case "01 Image-17-1":
+	case "01 Image-17-2":
+	case "01 Image-17-3":
+	case "01 Image-18-1":
+	case "01 Image-18-2":
+	case "01 Image-18-3":
+	case "01 Image-24-3":
+	case "01 Image-25-1":
+	case "01 Image-25-2":
+	case "01 Image-26-1":
+	case "01 Image-26-2":
+	case "01 Image-26-3":
+	case "01 Image-26-4":
+	case "01 Image-26-5":	return("HEX-Listing");
+
+	case "01 Image-35-4":
+	case "01 Image-36-1":
+	case "01 Image-46-1":
+	case "01 Image-47-2":
+	case "01 Image-48-1":
+	case "01 Image-48-2":	return("Assembler-Listing");
+
+	case "01 Image-11-1":
+	case "01 Image-11-2":
+	case "01 Image-12-1":
+	case "01 Image-14-2":
+	case "01 Image-20-1":
+	case "01 Image-20-2":
+	case "01 Image-21-1":
+	case "01 Image-21-2":
+	case "01 Image-21-3":
+	case "01 Image-22-1":
+	case "01 Image-22-2":
+	case "01 Image-22-3":
+	case "01 Image-23-1":
+	case "01 Image-23-2":
+	case "01 Image-24-1":
+	case "01 Image-24-2":
+	case "01 Image-36-2":
+	case "01 Image-40-2":
+	case "01 Image-41-1":
+	case "01 Image-41-2":
+	case "01 Image-42-1":
+	case "01 Image-42-2":
+	case "01 Image-43-1":
+	case "01 Image-43-2":
+	case "01 Image-44-1":
+	case "01 Image-44-2":
+	case "01 Image-47-1":
+	case "01 Image-49-1":
+	case "01 Image-49-2":
+	case "01 Image-50-1":
+	case "01 Image-50-2":
+	case "01 Image-50-3":	return("ZEAP Z80 Assembler – Source Listing");
+
+	case "01 Image-12-3":
+	case "01 Image-13-1":
+	case "01 Image-13-2":
+	case "01 Image-14-1":
+	case "01 Image-34-1":	return("BASIC-Listing");
+
+	case "01 Image-14-3":
+	case "01 Image-35-3":	return("Bildschirmfoto");
+
+	case "01 Image-08-1":
+	case "01 Image-09-1":
+	case "01 Image-32-1":
+	case "01 Image-33-1":
+	case "01 Image-33-2":
+	case "01 Image-34-2":
+	case "01 Image-35-1":
+	case "01 Image-38-1":	return("Schaltbild");
+
+	case "01 Image-06-2":
+	case "01 Image-06-3":	return("Layout");
+
+	case "01 Image-07-1":
+	case "01 Image-39-1":	return("Bestückungsplan");
+
+	case "01 Image-05-1":
+	case "01 Image-06-1":	return("Stückliste");
+
+	case "01 Image-10-1":	return("Zeitdiagramm");
+
 	// m1
 	case "m1 Image-01-2":	return("NASCOMPL:$nl"."MINI-$nl"."AUSGABE");
 	case "m1 Image-05-1":	return("Noch ein Ausschnitt:");
@@ -2760,6 +2853,11 @@ function imageDesc84($issue, $name)
 	case "m1 Image-12-1":	return("NASCOMPL:$nl"."HABEN SIE$nl"."EIGENTLICH$nl"."IHR ABO 84$nl"."SCHON$nl"."BEZAHLT??");
 
 	// 01
+	case "01 Image-33-3":	return("Belegung der VG-64 Leiste");
+	case "01 Image-40-1":	return("Porttabelle");
+	case "01 Image-51-1":	return("Brücken-Tabelle");
+	case "01 Image-51-2":	return("Pin-Tabelle");
+
 	case "01 Image-01-2":	return("Grafik-Karte");
 	case "01 Image-18-4":	return("NASCOMPL:$nl"."Hab&rsquo; heute gar keine$nl"."rechte Lust, mich zu$nl"."zeigen!");
 	case "01 Image-26-6":	return("NASCOMPL:$nl"."Viel Tool,$nl"."viel Mom!");
@@ -3875,4 +3973,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-14 12:51:34 +0100 (Sa, 14. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-14 13:35:10 +0100 (Sa, 14. Mrz 2026) $ -->
