@@ -828,7 +828,12 @@ function imageDesc80($issue, $name)
 function imageDesc81($issue, $name)
 {
 	global $nl, $asTitle;
-
+/*
+	global $server;
+	if ($server == "t480") {
+		echo "<!-- imageDesc81($issue, $name) -->";
+	}
+*/
 	switch ("$issue $name") {
 	case "01 Image-01-1":
 	case "02 Image-01-1":
@@ -893,11 +898,11 @@ function imageDesc81($issue, $name)
 	case "07 Image-17-1":
 	case "08 Image-19-1":
 	case "09 Image-13-6":
-	case "10 Image-24-4":
+	case "10 Image-24-4":	case "10 24":
 	case "10 Image-27-1":
 	case "10 Image-27-1":
-	case "12 Image-23-2":
-	case "12 Image-28-2":
+	case "12 Image-23-2":	case "12 23":
+	case "12 Image-28-2":	case "12 28":
 	case "12 Image-54-1":	return("NASCOMPL");
 
 	case "01 Image-03-2":
@@ -1286,7 +1291,7 @@ function imageDesc81($issue, $name)
 	// 06
 	case "06 Image-04-1":	return("Diagramm");
 	case "06 Image-05-2":	return("Frequenztabelle");
-	case "06 Image-07-2":	return("NASCOMPL:$nl"."&gt; HALLO!$nl"."&gt; LIEBE$nl"."&gt; LESER!$nl"."&gt;");
+
 	case "06 Image-07-3":	return(
 			"nesische Schriftzeichen"
 		.	"Title"
@@ -1297,14 +1302,15 @@ function imageDesc81($issue, $name)
 	case "06 Image-07-4":	return("bonbon");
 	case "06 Image-08-2":	return("BUGS BUGS BUGS");
 	case "06 Image-08-3":	return("BASIC");
-	case "06 Image-11-1":	return("NASCOMPL:$nl"."Lieber Herr Lotter!$nl"."Wir warten alle$nl"."sehnlichst auf die$nl"."MDCR-Software!!");
-	case "06 Image-14-3":	return("NASCOMPL:$nl"."Wie heißt das eigentlich$nl"."richtig?$nl"."relocierbar, relocating,$nl"."relocatierbar, relokalisierbar$nl"."Bierbar, relocable,$nl"."relokabel, relokatibel,$nl"."verschiebbar, verschieblich$nl"."verschiebel, verschiebsam,$nl"."verschiebing,$nl"."verschiekabel,$nl"."ortsungebunden,$nl"."ortlos oder$nl"."vielortig&nbsp;???$nl"."Am besten einigen$nl"."wir uns auf$nl"."''verschortolatibel''!");
 	case "06 Image-16-1":	return("Nascom 80$nl"."Journal");
 	case "06 Image-17-1":	return("Formatbeschreibung");
 	case "06 Image-20-1":
 	case "06 Image-20-1":	return("othello");
-	case "06 Image-20-3":
-	case "06 Image-20-3":	return("NASCOMPL:$nl"."Wenn Sie die$nl"."Spielregel$nl"."herausgefunden$nl"."haben, schreiben$nl"."Sie uns bitte!");
+
+	case "06 Image-07-2":	case "06 07":	return("NASCOMPL:$nl"."&gt; HALLO!$nl"."&gt; LIEBE$nl"."&gt; LESER!$nl"."&gt;");
+	case "06 Image-11-1":	case "06 11":	return("NASCOMPL:$nl"."Lieber Herr Lotter!$nl"."Wir warten alle$nl"."sehnlichst auf die$nl"."MDCR-Software!!");
+	case "06 Image-14-3":	case "06 14":	return("NASCOMPL:$nl"."Wie heißt das eigentlich$nl"."richtig?$nl"."relocierbar, relocating,$nl"."relocatierbar, relokalisierbar$nl"."Bierbar, relocable,$nl"."relokabel, relokatibel,$nl"."verschiebbar, verschieblich$nl"."verschiebel, verschiebsam,$nl"."verschiebing,$nl"."verschiekabel,$nl"."ortsungebunden,$nl"."ortlos oder$nl"."vielortig&nbsp;???$nl"."Am besten einigen$nl"."wir uns auf$nl"."''verschortolatibel''!");
+	case "06 Image-20-3":	case "06 20":	return("NASCOMPL:$nl"."Wenn Sie die$nl"."Spielregel$nl"."herausgefunden$nl"."haben, schreiben$nl"."Sie uns bitte!");
 
 	// 07
 	case "07 Image-04-1":	return("Befehlssatz");
@@ -1315,22 +1321,21 @@ function imageDesc81($issue, $name)
 	case "07 Image-13-1":	return("F B H A E");
 	case "07 Image-13-2":	return("F B H A E &rarr; A F B H E");
 	case "07 Image-13-3":	return("A F B H E &rarr; A B F H E");
-	case "07 Image-11-3":	return("NASCOMPL:$nl"."Hoffentlich wird$nl"."der Druck diesmal$nl"."besser!!");
-	case "07 Image-13-5":	return("NASCOMPL:$nl"."IM NÄCHSTEN HEFT:$nl"."SORTIEREN DURCH$nl"."EINFÜGEN");
-	case "07 Image-17-2":	return("NASCOMPL:$nl"."Geschlechtstypen bei Computern");
 	case "07 Image-20-1":	return("Anzeige MIVOC HiFi-Systeme, Solingen");
+
+	case "07 Image-11-3":	case "07 11":	return("NASCOMPL:$nl"."Hoffentlich wird$nl"."der Druck diesmal$nl"."besser!!");
+	case "07 Image-13-5":	case "07 13":	return("NASCOMPL:$nl"."IM NÄCHSTEN HEFT:$nl"."SORTIEREN DURCH$nl"."EINFÜGEN");
+	case "07 Image-17-2":	case "07 17":	return("NASCOMPL:$nl"."Geschlechtstypen bei Computern");
 
 	// 08
 	case "08 Image-02-2":	return("Böhmscher Rundlauf");
-	case "08 Image-13-4":	return("NASCOMPL:$nl"."Formatiert sehe ich$nl"."sehr seltsam aus!!");
 	case "08 Image-15-1":	return("Sortiervorgang");
-	case "08 Image-19-2":	return("NASCOMPL:$nl"."Platinismus");
 	case "08 Image-20-1":	return("Spielecke");
 
+	case "08 Image-13-4":	case "08 13":	return("NASCOMPL:$nl"."Formatiert sehe ich$nl"."sehr seltsam aus!!");
+	case "08 Image-19-2":	case "08 19":	return("NASCOMPL:$nl"."Platinismus");
+
 	// 09
-	case "09 Image-04-2":	return("NASCOMPL:$nl"."Hier haben$nl"."wir Platz$nl"."für$nl"."Randnotizen$nl"."gelassen!");
-	case "09 Image-07-2":	return("NASCOMPL:$nl"."Kann ja &rsquo;mal$nl"."passieren");
-	case "09 Image-13-7":	return("NASCOMPL:$nl"."Mein Beitrag muß diesmal$nl"."wegen Platmangels ausfallen.$nl"."Das ist nicht so schlimm.$nl"."Aber daß mich$nl"."ein Leser ''albern''$nl"." findet, bricht$nl"."mir fast die CPU!");
 	case "09 Image-15-1":	return("Lageplan Stuttgart Killesberg");
 	case "09 Image-15-2":	return("Logo Stuttgart Messe");
 	case "09 Image-15-3":
@@ -1338,8 +1343,11 @@ function imageDesc81($issue, $name)
 	case "09 Image-23-1":	return("Pinbelegung");
 	case "09 Image-26-1":	return("Pinbelegung AY-3-8910");
 
+	case "09 Image-04-2":	case "09 04":	return("NASCOMPL:$nl"."Hier haben$nl"."wir Platz$nl"."für$nl"."Randnotizen$nl"."gelassen!");
+	case "09 Image-07-2":	case "09 07":	return("NASCOMPL:$nl"."Kann ja &rsquo;mal$nl"."passieren");
+	case "09 Image-13-7":	case "09 13":	return("NASCOMPL:$nl"."Mein Beitrag muß diesmal$nl"."wegen Platmangels ausfallen.$nl"."Das ist nicht so schlimm.$nl"."Aber daß mich$nl"."ein Leser ''albern''$nl"." findet, bricht$nl"."mir fast die CPU!");
+
 	// 10
-	case "10 Image-06-2":	return("NASCOMPL:$nl"."ICH GLAUBE,$nl"."DAS INTERESSE$nl"."FÜR WEITERE$nl"."ARTIKEL VON$nl"."HERRN FÖßEL$nl"."KANN MAN$nl"."VORAUSSETZEN!");
 	case "10 Image-07-2":
 	case "10 Image-07-3":	return("Pixelmatrix");
 	case "10 Image-08-1":	return("Zeichentabelle");
@@ -1348,8 +1356,9 @@ function imageDesc81($issue, $name)
 	case "10 Image-20-1":	return("Verdrahtungsplan");
 	case "10 Image-21-1":	return("Tabelle der Buchsen- und Steckerbelegungen");
 	case "10 Image-22-1":	return("Zeitablauf vereinfacht");
-	case "10 Image-27-2":
-	case "10 Image-27-2":	return("NASCOMPL:$nl"."Computermisshandlung");
+
+	case "10 Image-06-2":	case "10 06":	return("NASCOMPL:$nl"."ICH GLAUBE,$nl"."DAS INTERESSE$nl"."FÜR WEITERE$nl"."ARTIKEL VON$nl"."HERRN FÖßEL$nl"."KANN MAN$nl"."VORAUSSETZEN!");
+	case "10 Image-27-2":	case "10 27":	return("NASCOMPL:$nl"."Computermisshandlung");
 
 	// 12
 	case "12 Image-10-1":	return("Tastatur");
@@ -1372,9 +1381,9 @@ function imageDesc81($issue, $name)
 	case "12 Image-29-1":	return("Anschlussbild");
 	case "12 Image-35-1":	return("Blockdiagramm");
 
-	case "12 Image-40-3":	return("NASCOMPL:$nl"."KEIN$nl"."STRESS$nl"."MEHR BEIM$nl"."TIPPEN!");
-	case "12 Image-52-3":	return("NASCOMPL:$nl"."Wer hat sich bloß$nl"."dieses blöde$nl"."ASHRAM ausgedacht?");
-	case "12 Image-54-2":	return("NASCOMPL:$nl"."Weihnachtliches");
+	case "12 Image-40-3":	case "12 40":	return("NASCOMPL:$nl"."KEIN$nl"."STRESS$nl"."MEHR BEIM$nl"."TIPPEN!");
+	case "12 Image-52-3":	case "12 52":	return("NASCOMPL:$nl"."Wer hat sich bloß$nl"."dieses blöde$nl"."ASHRAM ausgedacht?");
+	case "12 Image-54-2":	case "12 54":	return("NASCOMPL:$nl"."Weihnachtliches");
 	}
 	return "";
 }
@@ -1422,10 +1431,10 @@ function imageDesc82($issue, $name)
 	case "01 Image-02-2":	return("Günter Böhm");
 
 	case "01 Image-35-1":
-	case "02 Image-17-4":
+	case "02 Image-17-4":	case "02 17":
 	case "02 Image-30-1":
 	case "03 Image-51-1":
-	case "05 Image-23-2":
+	case "05 Image-23-2":	case "05 23":
 	case "05 Image-31-1":
 	case "06 Image-23-1":
 	case "07 Image-59-1":
@@ -1921,26 +1930,26 @@ function imageDesc82($issue, $name)
 	case "01 Image-22-1":	return("Character-Generator");
 	case "01 Image-34-1":	return("Trauerflor");
 
-	case "01 Image-07-3":	return("NASCOMPL:$nl"."Dieser Platz$nl"."könnte durch$nl"."einen NASCOMPL$nl"."ausgefüllt werden,$nl"."bleibt aber mit$nl"."Rücksicht auf$nl"."manche Leser$nl"."frei.");
-	case "01 Image-11-2":	return("NASCOMPL:$nl"."Mensch Clemens!$nl"."Das hast Du gut gemacht.$nl"."Wenn ich in deinem$nl"."Alter schon$nl"."programmiert hätte,$nl"."wäre ich sicher$nl"."berühmt!");
-	case "01 Image-25-1":	return("NASCOMPL:$nl"."LISTING AUF DER$nl"."NÄCHSTEN SEITE!");
-	case "01 Image-35-2":	return("NASCOMPL:$nl"."MOTZ1$nl"."MOTZ2$nl"."MOTZ3$nl"."MOTZ4$nl"."MOTZ5$nl"."");
+	case "01 Image-07-3":	case "01 07":	return("NASCOMPL:$nl"."Dieser Platz$nl"."könnte durch$nl"."einen NASCOMPL$nl"."ausgefüllt werden,$nl"."bleibt aber mit$nl"."Rücksicht auf$nl"."manche Leser$nl"."frei.");
+	case "01 Image-11-2":	case "01 11":	return("NASCOMPL:$nl"."Mensch Clemens!$nl"."Das hast Du gut gemacht.$nl"."Wenn ich in deinem$nl"."Alter schon$nl"."programmiert hätte,$nl"."wäre ich sicher$nl"."berühmt!");
+	case "01 Image-25-1":	case "01 25":	return("NASCOMPL:$nl"."LISTING AUF DER$nl"."NÄCHSTEN SEITE!");
+	case "01 Image-35-2":	case "01 35":	return("NASCOMPL:$nl"."MOTZ1$nl"."MOTZ2$nl"."MOTZ3$nl"."MOTZ4$nl"."MOTZ5$nl"."");
 
 	// 02
 	case "02 Image-22-3":	return("PIO-Steuerworte");
 	case "02 Image-23-1":	return("Registeranzeige bei NAS-SYS 3");
 
-	case "02 Image-21-2":	return("NASCOMPL:$nl"."Wußten Sie$nl"."eigentlich schon,$nl"."daß man unter$nl"."gewissen Um-$nl"."ständen für$nl"."eine Speicher-$nl"."erweiterung eine$nl"."Baugenehmigung$nl"."benötigt??");
-	case "02 Image-26-4":	return("NASCOMPL:$nl"."Jetzt$nl"."müßte man$nl"."nur noch$nl"."wissen, welches$nl"."der große$nl"."Zeiger ist!!");
-	case "02 Image-30-2":	return("NASCOMPL:$nl"."Ostereiersuchprogramm");
+	case "02 Image-21-2":	case "02 21":	return("NASCOMPL:$nl"."Wußten Sie$nl"."eigentlich schon,$nl"."daß man unter$nl"."gewissen Um-$nl"."ständen für$nl"."eine Speicher-$nl"."erweiterung eine$nl"."Baugenehmigung$nl"."benötigt??");
+	case "02 Image-26-4":	case "02 26":	return("NASCOMPL:$nl"."Jetzt$nl"."müßte man$nl"."nur noch$nl"."wissen, welches$nl"."der große$nl"."Zeiger ist!!");
+	case "02 Image-30-2":	case "02 30":	return("NASCOMPL:$nl"."Ostereiersuchprogramm");
 
 	// 03
 	case "03 Image-31-1":	return("Speicherbereich");
 	case "03 Image-45-1":	return("Flussdiagramm");
 
-	case "03 Image-22-5":	return("NASCOMPL:$nl"."Jeder$nl"."Abonnent$nl"."kann$nl"."Kleinanzeigen$nl"."bis 40 Wörter$nl"."aufgeben!$nl"."$nl"."(Das ist diesmal$nl"."kein Witz!)");
-	case "03 Image-35-4":	return("NASCOMPL:$nl"."Mir$nl"."dreht$nl"."sich$nl"."alles!");
-	case "03 Image-51-2":	return("NASCOMPL:$nl"."Programmiersprache BIRNE");
+	case "03 Image-22-5":	case "03 22":	return("NASCOMPL:$nl"."Jeder$nl"."Abonnent$nl"."kann$nl"."Kleinanzeigen$nl"."bis 40 Wörter$nl"."aufgeben!$nl"."$nl"."(Das ist diesmal$nl"."kein Witz!)");
+	case "03 Image-35-4":	case "03 35":	return("NASCOMPL:$nl"."Mir$nl"."dreht$nl"."sich$nl"."alles!");
+	case "03 Image-51-2":	case "03 51":	return("NASCOMPL:$nl"."Programmiersprache BIRNE");
 
 	// 05
 	case "05 Image-02-2":	return("Pinbelegung 2114");
@@ -1953,7 +1962,7 @@ function imageDesc82($issue, $name)
 	case "05 Image-25-1":
 	case "05 Image-25-2":	return("Dateimaske");
 
-	case "05 Image-31-2":	return("NASCOMPL:$nl"."Sex und Computer");
+	case "05 Image-31-2":	case "05 31":	return("NASCOMPL:$nl"."Sex und Computer");
 
 	// 06
 	case "06 Image-05-1":	return("Beispiel eines ausgefüllten Postschecks");
@@ -1963,8 +1972,8 @@ function imageDesc82($issue, $name)
 	case "06 Image-12-3":	return("Typical 80 x 24 Screen Format Initialization of CRTC");
 	case "06 Image-13-1":	return("crtc iNTERNAL rEGISTER aSSIGNMENT");
 
-	case "06 Image-19-3":	return("NASCOMPL:$nl"."Bei achtzig Zeichen pro Zeile bekommt man in so$nl"."eine Sprechblase doch gewaltig mehr unter als mit$nl"."unserem alten Format!");
-	case "06 Image-23-2":	return("NASCOMPL:$nl"."Reisezeit");
+	case "06 Image-19-3":	case "06 19":	return("NASCOMPL:$nl"."Bei achtzig Zeichen pro Zeile bekommt man in so$nl"."eine Sprechblase doch gewaltig mehr unter als mit$nl"."unserem alten Format!");
+	case "06 Image-23-2":	case "06 23":	return("NASCOMPL:$nl"."Reisezeit");
 
 	// 07
 	case "07 Image-02-2":	return("Weiterhin viel Spaß mit dem$nl"."Journal$nl"."Ihr Günter Böhm");
@@ -1978,28 +1987,28 @@ function imageDesc82($issue, $name)
 	case "07 Image-58-1":
 	case "07 Image-58-2":	return("Zeichengenerator");
 
-	case "07 Image-05-2":	return("NASCOMPL:$nl"."Wir kaufen nichts!");
-	case "07 Image-08-1":	return("NASCOMPL:$nl"."KNOBELECKE$nl"."$nl"."auch in dieser$nl"."Ausgabe sind$nl"."wieder eine$nl"."Menge$nl"."Kleinanzeigen$nl"."versteckt.$nl"."Schreiben Sie$nl"."die Anzahl auf$nl"."einen Zettel$nl"."und zeigen Sie$nl"."ihn niemanden!$nl"."$nl"."Kleinanzeigen bis 40 Wörter sind für Abonnenten$nl"."kostenlos!$nl"."");
-	case "07 Image-43-2":	return("NASCOMPL:$nl"."Software-Tip:$nl"."$nl"."Nehmen Sie sich einen$nl"."Tag Urlaub, wenn Sie$nl"."den Zauberwürfel$nl"."eintippen wollen!");
-	case "07 Image-59-2":	return("NASCOMPL:$nl"."Greeting Messages");
+	case "07 Image-05-2":	case "07 05":	return("NASCOMPL:$nl"."Wir kaufen nichts!");
+	case "07 Image-08-1":	case "07 08":	return("NASCOMPL:$nl"."KNOBELECKE$nl"."$nl"."auch in dieser$nl"."Ausgabe sind$nl"."wieder eine$nl"."Menge$nl"."Kleinanzeigen$nl"."versteckt.$nl"."Schreiben Sie$nl"."die Anzahl auf$nl"."einen Zettel$nl"."und zeigen Sie$nl"."ihn niemanden!$nl"."$nl"."Kleinanzeigen bis 40 Wörter sind für Abonnenten$nl"."kostenlos!$nl"."");
+	case "07 Image-43-2":	case "07 43":	return("NASCOMPL:$nl"."Software-Tip:$nl"."$nl"."Nehmen Sie sich einen$nl"."Tag Urlaub, wenn Sie$nl"."den Zauberwürfel$nl"."eintippen wollen!");
+	case "07 Image-59-2":	case "07 59":	return("NASCOMPL:$nl"."Greeting Messages");
 
 	// 09
 	case "09 Image-13-2":	return("Blockdiagramm");
 
-	case "09 Image-11-5":	return("NASCOMPL:$nl"."Früh-Herbst");
-	case "09 Image-13-3":	return("NASCOMPL:$nl"."Kein Grund zur$nl"."Freude! Ich$nl"."bleibe Ihnen$nl"."noch erhalten!");
+	case "09 Image-11-5":	case "09 11":	return("NASCOMPL:$nl"."Früh-Herbst");
+	case "09 Image-13-3":	case "09 13":	return("NASCOMPL:$nl"."Kein Grund zur$nl"."Freude! Ich$nl"."bleibe Ihnen$nl"."noch erhalten!");
 	
 	// 10
 	case "10 Image-06-3":	return("Tabelle Steuerworte");
+	case "10 Image-07-4":	return("Hallo liebe Leser!");
 	case "10 Image-11-1":
 	case "10 Image-11-2":	return("Programm-Ausgabe");
 	case "10 Image-13-1":	return("SAB 2732");
 	case "10 Image-13-2":	return("Anschlüsse 2732");
 
-	case "10 Image-07-3":	return("NASCOMPL:$nl"."80-BUS$nl"."JOURNAL");
-	case "10 Image-07-4":	return("Hallo liebe Leser!");
-	case "10 Image-23-2":	return("NASCOMPL:$nl"."Hi Hi Hi Hi Hi$nl"."Hi Hi Hi Hi$nl"."Hi Hi Hi$nl"."Hi Hi Hi!");
-	case "10 Image-24-1":	return("NASCOMPL:$nl"."80 Busserl");
+	case "10 Image-07-3":	case "10 07":	return("NASCOMPL:$nl"."80-BUS$nl"."JOURNAL");
+	case "10 Image-23-2":	case "10 23":	return("NASCOMPL:$nl"."Hi Hi Hi Hi Hi$nl"."Hi Hi Hi Hi$nl"."Hi Hi Hi$nl"."Hi Hi Hi!");
+	case "10 Image-24-1":	case "10 24":	return("NASCOMPL:$nl"."80 Busserl");
 	
 	// 12
 	case "12 Image-07-1":
@@ -2016,13 +2025,13 @@ function imageDesc83($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
-	case "01 Image-11-1":
-	case "01 Image-14-2":
-	case "02 Image-16-2":
-	case "02 Image-23-1":
-	case "02 Image-27-1":
-	case "03 Image-02-2":
-	case "03 Image-04-1":	return("NASCOMPL");
+	case "01 Image-11-1":	case "01 11":
+	case "01 Image-14-2":	case "01 14":
+	case "02 Image-16-2":	case "02 16":
+	case "02 Image-23-1":	case "02 23":
+	case "02 Image-27-1":	case "02 27":
+	case "03 Image-02-2":	case "03 02":
+	case "03 Image-04-1":	case "03 04":	return("NASCOMPL");
 
 	case "01 Image-01-1":
 	case "01 Image-02-1":
@@ -2630,13 +2639,15 @@ function imageDesc83($issue, $name)
 
 	// 01
 	case "01 Image-01-2":	return("Druckausgabe von TV-Bildern");
-	case "01 Image-16-1":	return("NASCOMPL:$nl"."mh$nl"."mh$nl"."mh$nl"."$nl"."(Red.:In der nächsten$nl"."Ausgabe darf er wieder$nl"."mehr sagen!)");
+
+	case "01 Image-16-1":	case "01 16":	return("NASCOMPL:$nl"."mh$nl"."mh$nl"."mh$nl"."$nl"."(Red.:In der nächsten$nl"."Ausgabe darf er wieder$nl"."mehr sagen!)");
 
 	// 02
 	case "02 Image-01-2":	return("platinen-layout:$nl"."SPRACH-$nl"."ERKENNUNG");
 	case "02 Image-06-2":	return("SPRACHERKENNUNG &nbsp; Lötseite");
-	case "02 Image-07-1":	return("NASCOMPL:$nl"."Die linke Hand der Redaktion");
 	case "02 Image-16-1":	return("Spielecke");
+
+	case "02 Image-07-1":	case "02 07":	return("NASCOMPL:$nl"."Die linke Hand der Redaktion");
 
 	// 03
 	case "03 Image-15-2":	return("Pinbelegung");
@@ -2644,7 +2655,8 @@ function imageDesc83($issue, $name)
 	case "03 Image-15-4":	return("Tabelle");
 
 	case "03 Image-01-2":	return("&quot;PÄCK-MÄNN&quot;$nl"."(klingt wie Pac Man und läuft auch so)");
-	case "03 Image-11-3":	return("NASCOMPL:$nl"."Druckfehler");
+
+	case "03 Image-11-3":	case "03 11":	return("NASCOMPL:$nl"."Druckfehler");
 
 	// 04
 	case "04 Image-16-2":
@@ -2658,20 +2670,22 @@ function imageDesc83($issue, $name)
 
 	case "04 Image-01-2":	return("BASIC VARIANTEN");
 	case "04 Image-03-2":	return("* zumindest kamen$nl"."auf unser Angebot$nl"."zur Mitgestaltung$nl"."bisher nur 2$nl"."Zuschriften!");
-	case "04 Image-03-5":	return("NASCOMPL:$nl"."Diese Schmalschrift$nl"."spart Zeit und macht$nl"."Platz für viele$nl"."NASCOMPLs. Zudem$nl"."scheint sie die$nl"."Leser nicht zu$nl"."stören!");
-	case "04 Image-11-4":	return("NASCOMPL:$nl"."Ein selbstgezimmertes TOOL-KIT:$nl"."wirksam und$nl"."vor allem$nl"."preiswert!");
-	case "04 Image-19-5":	return("NASCOMPL:$nl"."Ohne die Änderung$nl"."in Zeile 2680$nl"."finde ich hier$nl"."nie wieder$nl"."heraus!!!");
-	case "04 Image-20-1":	return("NASCOMPL:$nl"."Denken Sie rechtzeitig$nl"."an ein Sommergehäuse$nl"."für Ihren$nl"."Rechner!");
-	case "04 Image-26-2":	return("NASCOMPL:$nl"."Wettervorhersage");
+
+	case "04 Image-03-5":	case "04 03":	return("NASCOMPL:$nl"."Diese Schmalschrift$nl"."spart Zeit und macht$nl"."Platz für viele$nl"."NASCOMPLs. Zudem$nl"."scheint sie die$nl"."Leser nicht zu$nl"."stören!");
+	case "04 Image-11-4":	case "04 11":	return("NASCOMPL:$nl"."Ein selbstgezimmertes TOOL-KIT:$nl"."wirksam und$nl"."vor allem$nl"."preiswert!");
+	case "04 Image-19-5":	case "04 19":	return("NASCOMPL:$nl"."Ohne die Änderung$nl"."in Zeile 2680$nl"."finde ich hier$nl"."nie wieder$nl"."heraus!!!");
+	case "04 Image-20-1":	case "04 20":	return("NASCOMPL:$nl"."Denken Sie rechtzeitig$nl"."an ein Sommergehäuse$nl"."für Ihren$nl"."Rechner!");
+	case "04 Image-26-2":	case "04 26":	return("NASCOMPL:$nl"."Wettervorhersage");
 
 	// 05
 	case "05 Image-08-1":	return("Stückliste");
 	case "05 Image-15-1":	return("Flussdiagramm");
 
 	case "05 Image-01-2":	return("Hardware:$nl"."Floppy-Controller$nl"."RAM/EPROM-Karte$nl"."MDCR-Verbesserung$nl"."Brother Elektronik 8300");
-	case "05 Image-04-1":	return("NASCOMPL:$nl"."Computer-Treff");
-	case "05 Image-16-1":	return("NASCOMPL:$nl"."Mißtrauische$nl"."Leser sollten$nl"."hier den$nl"."Namen und$nl"."die Adress$nl"."weglassen!!");
-	case "05 Image-21-2":	return("NASCOMPL:$nl"."me not good$nl"."speek$nl"."XTAL BAZIK$nl"."Interbretter");
+
+	case "05 Image-04-1":	case "05 04":	return("NASCOMPL:$nl"."Computer-Treff");
+	case "05 Image-16-1":	case "05 16":	return("NASCOMPL:$nl"."Mißtrauische$nl"."Leser sollten$nl"."hier den$nl"."Namen und$nl"."die Adress$nl"."weglassen!!");
+	case "05 Image-21-2":	case "05 21":	return("NASCOMPL:$nl"."me not good$nl"."speek$nl"."XTAL BAZIK$nl"."Interbretter");
 
 	// 06
 	case "06 Image-16-3":
@@ -2679,23 +2693,23 @@ function imageDesc83($issue, $name)
 	case "06 Image-22-4":	return("Inputs");
 	case "06 Image-22-5":	return("Outputs");
 	case "06 Image-23-1":	return("Verdrahtungsplan");
-
-	case "06 Image-01-2":	return("NASCOMPL:$nl"."Preiswertes$nl"."ECB-BUS-$nl"."SYSTEM$nl"."$nl"."CP/M-kompatibel$nl"."mit NASCOM-Software");
-	case "06 Image-10-2":	return("NASCOMPL:$nl"."Cassetten-Legasthenie");
 	case "06 Image-17-2":	return("Fehlerbeseitigung bei der 80x24$nl"."Videokarte &ndash; ECB$nl"."$nl"."Die beiden Abschirmleitungen für$nl"."den Videotakt wurden durch die$nl"."Platinenherstellerfirma irrtümlich mit$nl"."den Durchkontaktierungen verbunden!$nl"."$nl"."Sorry, KS");
-	case "06 Image-26-2":	return("NASCOMPL:$nl"."PARDON");
+
+	case "06 Image-01-2":	case "06 01":	return("NASCOMPL:$nl"."Preiswertes$nl"."ECB-BUS-$nl"."SYSTEM$nl"."$nl"."CP/M-kompatibel$nl"."mit NASCOM-Software");
+	case "06 Image-10-2":	case "06 10":	return("NASCOMPL:$nl"."Cassetten-Legasthenie");
+	case "06 Image-26-2":	case "06 26":	return("NASCOMPL:$nl"."PARDON");
 
 	// 07
 	case "07 Image-32-1":	return("PROM-Listing");
 	case "07 Image-38-4":	return("Speicherauszug");
-
 	case "07 Image-01-2":	return("jede Menge Software$nl"."neue ECB-Karten$nl"."$nl"."ALLES DREHT SICH UM DEN ECB-BUS$nl"."NEUE AUSSICHTEN FÜR DEN 80-BUS$nl"."$nl"."DOPPELHEFT DM 10,-");
-	case "07 Image-07-2":	return("NASCOMPL:$nl"."Übrigens: 'gefinkelt'$nl"."ist ein schönerer$nl"."Ausdruck für$nl"."'ausgetüftelt'!");
-	case "07 Image-07-3":	return("NASCOMPL:$nl"."Hier ''Graph+J''");
-	case "07 Image-07-4":	return("NASCOMPL:$nl"."Leider ist es mir$nl"."nicht gelungen, in$nl"."diesen NASCOMIC$nl"."eine fortlaufende$nl"."Handlung zu bringen!");
-	case "07 Image-12-3":	return("NASCOMPL:$nl"."ICH SOLL DIESEN$nl"."PLATZ FREIHALTEN!");
-	case "07 Image-38-2":	return("NASCOMPL:$nl"."LIEBER ZWEISPALTIG$nl"."ALS ZWIESPÄTLIG!$nl"."(alte Programmierer-$nl"."Regel)");
-	case "07 Image-48-3":	return("NASCOMPL:$nl"."TSCHULDIGUNG!      PARDON$nl"."Original                  Fälschung");
+
+	case "07 Image-07-2":	case "07 07":	return("NASCOMPL:$nl"."Übrigens: 'gefinkelt'$nl"."ist ein schönerer$nl"."Ausdruck für$nl"."'ausgetüftelt'!");
+	case "07 Image-07-3":	case "07 07":	return("NASCOMPL:$nl"."Hier ''Graph+J''");
+	case "07 Image-07-4":	case "07 07":	return("NASCOMPL:$nl"."Leider ist es mir$nl"."nicht gelungen, in$nl"."diesen NASCOMIC$nl"."eine fortlaufende$nl"."Handlung zu bringen!");
+	case "07 Image-12-3":	case "07 12":	return("NASCOMPL:$nl"."ICH SOLL DIESEN$nl"."PLATZ FREIHALTEN!");
+	case "07 Image-38-2":	case "07 38":	return("NASCOMPL:$nl"."LIEBER ZWEISPALTIG$nl"."ALS ZWIESPÄTLIG!$nl"."(alte Programmierer-$nl"."Regel)");
+	case "07 Image-48-3":	case "07 48":	return("NASCOMPL:$nl"."TSCHULDIGUNG!      PARDON$nl"."Original                  Fälschung");
 
 	// 09
 	case "09 Image-06-2":
@@ -2704,32 +2718,32 @@ function imageDesc83($issue, $name)
 	case "09 Image-08-2":
 	case "09 Image-09-1":	return("Kommando-Tabelle");
 	case "09 Image-18-1":	return("Pinbelegung PIO Port A");
-
 	case "09 Image-01-2":	return("FLOPPY-$nl"."Höhenflug");
-	case "09 Image-05-1":	return("NASCOMPL:$nl"."In diesem Heft bin ich$nl"."dünn gesät. Aber es$nl"."kommen auch wieder$nl"."bessere Zeiten!");
-	case "09 Image-19-1":	return("NASCOMPL:$nl"."Layout und$nl"."Bestückungsplan$nl"."folgen weiter$nl"."hinten!");
-	case "09 Image-26-2":	return("NASCOMPL:$nl"."Traurige Zeiten");
+
+	case "09 Image-05-1":	case "09 05":	return("NASCOMPL:$nl"."In diesem Heft bin ich$nl"."dünn gesät. Aber es$nl"."kommen auch wieder$nl"."bessere Zeiten!");
+	case "09 Image-19-1":	case "09 19":	return("NASCOMPL:$nl"."Layout und$nl"."Bestückungsplan$nl"."folgen weiter$nl"."hinten!");
+	case "09 Image-26-2":	case "09 26":	return("NASCOMPL:$nl"."Traurige Zeiten");
 
 	// 11
+	case "11 Image-01-2":	return("NASCOM C");
 	case "11 Image-08-1":
 	case "11 Image-08-2":
 	case "11 Image-08-3":	return("Blockdiagramm");
 	case "11 Image-22-2":	return("Bildschirm");
 	case "11 Image-45-1":	return("Kassenbeleg");
-
-	case "11 Image-01-2":	return("NASCOM C");
-	case "11 Image-11-1":	return("NASCOMPL:$nl"."So ein Laufwerk$nl"."erspart viel$nl"."Beinarbeit!");
-	case "11 Image-15-4":	return("NASCOMPL:$nl"."War wohl ein schönes$nl"."Stück Arbeit, Helmut?");
 	case "11 Image-28-3":	return("Spruch auf einer Cassettenverpackung$nl"."an die Redaktion:$nl"."&quot;Keine Sorge!!!$nl"."Ist kein Klopapier sondern$nl"."Handtuch.&quot; &nbsp; Sehr beruhigend!");
 	case "11 Image-34-2":	return("Zur Erklärung, warum eine$nl"."beschädigte Kassettentasche$nl"."von mir verklebt wurde, stand$nl"."darauf &quot;Hat der Hund$nl"."reingebissen.&quot; Einige Zeit$nl"."später bekam ich die gleiche$nl"."Tasche wieder zurückgeschickt$nl"."mit der Bemerkung: &quot;Hab&rsquo;$nl"."es auch versucht. Was$nl"."schmeckt ihm daran?&quot;");
-	case "11 Image-40-1":	return("NASCOMPL:$nl"."Geschenke-Tips");
-	case "11 Image-43-3":	return("NASCOMPL:$nl"."Keine Sorge!$nl"."Das Listing da unten$nl"."ist wirklich nur für$nl"."mich zum Sitzen$nl"."da!");
+
+	case "11 Image-11-1":	case "11 11":	return("NASCOMPL:$nl"."So ein Laufwerk$nl"."erspart viel$nl"."Beinarbeit!");
+	case "11 Image-15-4":	case "11 15":	return("NASCOMPL:$nl"."War wohl ein schönes$nl"."Stück Arbeit, Helmut?");
+	case "11 Image-40-1":	case "11 40":	return("NASCOMPL:$nl"."Geschenke-Tips");
+	case "11 Image-43-3":	case "11 43":	return("NASCOMPL:$nl"."Keine Sorge!$nl"."Das Listing da unten$nl"."ist wirklich nur für$nl"."mich zum Sitzen$nl"."da!");
 
 	// 12
 	case "12 Image-05-3":	return("Zeichentabelle");
 
-	case "12 Image-08-3":	return("NASCOMPL:$nl"."Phönix aus der Asche");
-	case "12 Image-26-2":	return("NASCOMPL:$nl"."Bitte tragen Sie sich hier ein,$nl"."falls Sie irgendwelche$nl"."Programme oder Artikel in$nl"."der Schublade haben! Wir$nl"."brauchen dringend$nl"."noch neue Mitarbeiter!");
+	case "12 Image-08-3":	case "12 08":	return("NASCOMPL:$nl"."Phönix aus der Asche");
+	case "12 Image-26-2":	case "12 26":	return("NASCOMPL:$nl"."Bitte tragen Sie sich hier ein,$nl"."falls Sie irgendwelche$nl"."Programme oder Artikel in$nl"."der Schublade haben! Wir$nl"."brauchen dringend$nl"."noch neue Mitarbeiter!");
 	}
 	return "";
 }
@@ -3106,24 +3120,26 @@ function imageDesc84($issue, $name)
 	case "04 Image-16-2":	return("Zeitdiagramm");
 
 	// m1
-	case "m1 Image-01-2":	return("NASCOMPL:$nl"."MINI-$nl"."AUSGABE");
 	case "m1 Image-05-1":	return("Noch ein Ausschnitt:");
-	case "m1 Image-05-2":	return("NASCOMPL:$nl"."* wurde leider auf der Cassette gelöscht.$nl"."Wird im Doppelheft nachgeliefert!");
-	case "m1 Image-12-1":	return("NASCOMPL:$nl"."HABEN SIE$nl"."EIGENTLICH$nl"."IHR ABO 84$nl"."SCHON$nl"."BEZAHLT??");
+
+	case "m1 Image-01-2":	case "m1 01":	return("NASCOMPL:$nl"."MINI-$nl"."AUSGABE");
+	case "m1 Image-05-2":	case "m1 03":	return("NASCOMPL:$nl"."* wurde leider auf der Cassette gelöscht.$nl"."Wird im Doppelheft nachgeliefert!");
+	case "m1 Image-12-1":	case "m1 12":	return("NASCOMPL:$nl"."HABEN SIE$nl"."EIGENTLICH$nl"."IHR ABO 84$nl"."SCHON$nl"."BEZAHLT??");
 
 	// 01
+	case "01 Image-01-2":	return("Grafik-Karte");
 	case "01 Image-33-3":	return("Belegung der VG-64 Leiste");
 	case "01 Image-40-1":	return("Porttabelle");
 	case "01 Image-51-1":	return("Brücken-Tabelle");
 	case "01 Image-51-2":	return("Pin-Tabelle");
 
-	case "01 Image-01-2":	return("Grafik-Karte");
-	case "01 Image-18-4":	return("NASCOMPL:$nl"."Hab&rsquo; heute gar keine$nl"."rechte Lust, mich zu$nl"."zeigen!");
-	case "01 Image-26-6":	return("NASCOMPL:$nl"."Viel Tool,$nl"."viel Mom!");
-	case "01 Image-26-7":	return("NASCOMPL:$nl"."Mitarbeiter$nl"."dieser$nl"."Ausgabe");
-	case "01 Image-35-2":	return("NASCOMPL:$nl"."Die Kleine kommt mir$nl"."so bekannt vor!");
+	case "01 Image-18-4":	case "01 18":	return("NASCOMPL:$nl"."Hab&rsquo; heute gar keine$nl"."rechte Lust, mich zu$nl"."zeigen!");
+	case "01 Image-26-6":	case "01 26":	return("NASCOMPL:$nl"."Viel Tool,$nl"."viel Mom!");
+	case "01 Image-26-7":	case "01 26":	return("NASCOMPL:$nl"."Mitarbeiter$nl"."dieser$nl"."Ausgabe");
+	case "01 Image-35-2":	case "01 35":	return("NASCOMPL:$nl"."Die Kleine kommt mir$nl"."so bekannt vor!");
 
 	// 02
+	case "02 Image-01-2":	return("PROGRAMMIERUNG DES GDP$nl"."HARDCOPY DER GRAFIKKARTE$nl"."NEUE CPU-KARTE$nl"."NEUE ECB-KARTEN");
 	case "02 Image-11-3":	return("Anschlussbild");
 	case "02 Image-12-1":	return("Register Address");
 	case "02 Image-12-2":	return("Control Register 1 (Read/Write)");
@@ -3137,11 +3153,10 @@ function imageDesc84($issue, $name)
 	case "02 Image-37-2":	return("Anweisung");
 	case "02 Image-46-1":	return("Frequenztabelle");
 
-	case "02 Image-01-2":	return("PROGRAMMIERUNG DES GDP$nl"."HARDCOPY DER GRAFIKKARTE$nl"."NEUE CPU-KARTE$nl"."NEUE ECB-KARTEN");
-	case "02 Image-06-1":	return("NASCOMPL:$nl"."+ Sammel-BAS=$nl"."Menu für$nl"."Bandpaß, Rechner$nl"."u. Schwingkreis");
-	case "02 Image-26-2":	return("NASCOMPL:$nl"."Ein Cola-Editor$nl"."wäre mir jetzt$nl"."auch sehr$nl"."angenehm!");
-	case "02 Image-38-4":	return("NASCOMPL:$nl"."Von der Wiege bis$nl"."zur Bahre schreibt$nl"."der NASCOM Formulare!");
-	case "02 Image-45-3":	return("NASCOMPL:$nl"."Der Generator$nl"."sollte$nl"."direkt$nl"."am Bus$nl"."betrieben$nl"."werden");
+	case "02 Image-06-1":	case "02 06":	return("NASCOMPL:$nl"."+ Sammel-BAS=$nl"."Menu für$nl"."Bandpaß, Rechner$nl"."u. Schwingkreis");
+	case "02 Image-26-2":	case "02 26":	return("NASCOMPL:$nl"."Ein Cola-Editor$nl"."wäre mir jetzt$nl"."auch sehr$nl"."angenehm!");
+	case "02 Image-38-4":	case "02 38":	return("NASCOMPL:$nl"."Von der Wiege bis$nl"."zur Bahre schreibt$nl"."der NASCOM Formulare!");
+	case "02 Image-45-3":	case "02 45":	return("NASCOMPL:$nl"."Der Generator$nl"."sollte$nl"."direkt$nl"."am Bus$nl"."betrieben$nl"."werden");
 
 	// m2
 	case "m2 Image-05-1":	return("Datenblatt Federleisten");
@@ -3154,7 +3169,7 @@ function imageDesc84($issue, $name)
 
 	case "03 Image-01-2":	return("NASCOMPL:$nl"."CP/M läuft!");
 	case "03 Image-04-1":	return("Hans Rietveld.");
-	case "03 Image-15-1":	return("NASCOMPL:$nl"."Computer-Treff$nl"."$nl"."Diesmal kein Witz!!");
+	case "03 Image-15-1":	case "03 15":	return("NASCOMPL:$nl"."Computer-Treff$nl"."$nl"."Diesmal kein Witz!!");
 
 	// 04
 	case "04 Image-04-2":	return("!");
@@ -3163,10 +3178,10 @@ function imageDesc84($issue, $name)
 	case "04 Image-16-3":	return("Legende");
 
 	case "04 Image-01-2":	return("AUSGABE 4/84");
-	case "04 Image-15-1":	return("NASCOMPL:$nl"."Unser Format$nl"."ist nach wie$nl"."vor ca. 11cm$nl"."pro Spalte$nl"."(vor der Verklei-$nl"."nerung)$nl"."Bitte beachten!");
-	case "04 Image-28-1":	return("NASCOMPL:$nl"."Keine Angst$nl"."vor$nl"."Druckerpuffern!");
-	case "04 Image-36-1":	return("NASCOMPL:$nl"."LAMPSON hat$nl"."nichts dagegen");
-	case "04 Image-46-3":	return("NASCOMPL:$nl"."Nachträglich:$nl"."EIN GESUNDES$nl"."NEUES JAHR!!$nl"."Auf gute$nl"."Zusammenarbeit 1985&nbsp;!");
+	case "04 Image-15-1":	case "04 15":	return("NASCOMPL:$nl"."Unser Format$nl"."ist nach wie$nl"."vor ca. 11cm$nl"."pro Spalte$nl"."(vor der Verklei-$nl"."nerung)$nl"."Bitte beachten!");
+	case "04 Image-28-1":	case "04 28":	return("NASCOMPL:$nl"."Keine Angst$nl"."vor$nl"."Druckerpuffern!");
+	case "04 Image-36-1":	case "04 36":	return("NASCOMPL:$nl"."LAMPSON hat$nl"."nichts dagegen");
+	case "04 Image-46-3":	case "04 46":	return("NASCOMPL:$nl"."Nachträglich:$nl"."EIN GESUNDES$nl"."NEUES JAHR!!$nl"."Auf gute$nl"."Zusammenarbeit 1985&nbsp;!");
 	}
 	return "";
 }
@@ -3503,8 +3518,8 @@ function imageDescNascomNewsletter($issue, $name)
 function imageDescAny($year, $issue, $name)
 {
 	global $nl;
-	global $server;
 
+	global $server;
 	if ($server == "t480") {
 		echo "<!-- imageDescAny($year, $issue, $name) -->";
 	}
@@ -3522,6 +3537,10 @@ function imageDescAny($year, $issue, $name)
 	case "scorpio-news":		return imageDescScorpioNews($issue, $name);
 	case "micropower":			return imageDescMicropower($issue, $name);
 	case "nascom-newsletter":	return imageDescNascomNewsletter($issue, $name);
+	}
+
+	// Nascompl
+	if (0) {
 	}
 
 	// Inhaltsverzeichnis Nascom Magazines
@@ -4280,4 +4299,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-15 19:32:19 +0100 (So, 15. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-15 20:39:52 +0100 (So, 15. Mrz 2026) $ -->
