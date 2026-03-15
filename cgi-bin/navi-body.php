@@ -2758,6 +2758,8 @@ function imageDesc84($issue, $name)
 	case "03 Image-52-1":
 	case "04 Image-52-1":	return("Anzeige LAMPSON Digitaltechnik");
 
+	case "04 Image-51-2":	return("Anzeige GRAF-TECH");
+
 	case "01 Image-12-2":
 	case "01 Image-15-1":
 	case "01 Image-15-2":
@@ -2789,7 +2791,8 @@ function imageDesc84($issue, $name)
 	case "02 Image-28-4":
 	case "02 Image-29-1":
 	case "02 Image-29-2":
-	case "02 Image-33-3":	return("HEX-Listing");
+	case "02 Image-33-3":
+	case "04 Image-16-5":	return("HEX-Listing");
 
 	case "01 Image-35-4":
 	case "01 Image-36-1":
@@ -2811,7 +2814,24 @@ function imageDesc84($issue, $name)
 	case "03 Image-42-2":
 	case "03 Image-43-1":
 	case "03 Image-43-2":
-	case "03 Image-45-3":	return("Assembler-Listing");
+	case "03 Image-45-3":
+	case "04 Image-22-2":
+	case "04 Image-22-3":
+	case "04 Image-23-1":
+	case "04 Image-23-2":
+	case "04 Image-24-1":
+	case "04 Image-25-1":
+	case "04 Image-25-2":
+	case "04 Image-29-1":
+	case "04 Image-29-2":
+	case "04 Image-30-1":
+	case "04 Image-30-2":
+	case "04 Image-44-2":
+	case "04 Image-45-1":
+	case "04 Image-45-2":
+	case "04 Image-46-1":
+	case "04 Image-46-2":
+	case "04 Image-48-1":	return("Assembler-Listing");
 
 	case "01 Image-11-1":
 	case "01 Image-11-2":
@@ -2889,7 +2909,44 @@ function imageDesc84($issue, $name)
 	case "03 Image-47-1":
 	case "03 Image-47-2":
 	case "03 Image-50-3":
-	case "03 Image-51-1":	return("ZEAP Z80 Assembler – Source Listing");
+	case "03 Image-51-1":
+	case "04 Image-06-1":
+	case "04 Image-06-2":
+	case "04 Image-07-1":
+	case "04 Image-07-2":
+	case "04 Image-07-3":
+	case "04 Image-08-1":
+	case "04 Image-08-2":
+	case "04 Image-09-1":
+	case "04 Image-10-1":
+	case "04 Image-10-2":
+	case "04 Image-11-1":
+	case "04 Image-11-2":
+	case "04 Image-17-1":
+	case "04 Image-18-1":
+	case "04 Image-18-2":
+	case "04 Image-19-1":
+	case "04 Image-19-2":
+	case "04 Image-20-1":
+	case "04 Image-20-2":
+	case "04 Image-21-1":
+	case "04 Image-21-2":
+	case "04 Image-22-1":
+	case "04 Image-26-1":
+	case "04 Image-27-1":
+	case "04 Image-27-2":
+	case "04 Image-31-1":
+	case "04 Image-37-1":
+	case "04 Image-37-2":
+	case "04 Image-38-1":
+	case "04 Image-38-2":
+	case "04 Image-39-1":
+	case "04 Image-40-1":
+	case "04 Image-40-2":
+	case "04 Image-41-1":
+	case "04 Image-41-2":
+	case "04 Image-42-1":
+	case "04 Image-42-2":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "03 Image-36-1":
 	case "03 Image-41-4":	return("ZEAP Z80 Assembler – Symbol Table");
@@ -2940,7 +2997,9 @@ function imageDesc84($issue, $name)
 	case "02 Image-39-2":
 	case "02 Image-40-1":
 	case "03 Image-48-1":
-	case "03 Image-48-2":	return("Pascal-Listing");
+	case "03 Image-48-2":
+	case "04 Image-39-2":
+	case "04 Image-42-3":	return("Pascal-Listing");
 
 	case "m2 Image-06-1":
 	case "m2 Image-06-2":
@@ -2952,7 +3011,15 @@ function imageDesc84($issue, $name)
 	case "03 Image-08-1":
 	case "03 Image-08-2":
 	case "03 Image-08-3":
-	case "04 Image-04-1":	return("Disketten-Listing");
+	case "04 Image-04-1":
+	case "04 Image-05-1":
+	case "04 Image-05-2":
+	case "04 Image-05-3":
+	case "04 Image-05-4":
+	case "04 Image-05-5":
+	case "04 Image-05-6":
+	case "04 Image-05-7":
+	case "04 Image-05-8":	return("Disketten-Listing");
 
 	case "01 Image-14-3":
 	case "01 Image-35-3":
@@ -2989,7 +3056,15 @@ function imageDesc84($issue, $name)
 	case "03 Image-24-1":
 	case "03 Image-28-1":
 	case "03 Image-28-2":
-	case "03 Image-45-4":	return("Schaltbild");
+	case "03 Image-45-4":
+	case "04 Image-12-1":
+	case "04 Image-13-1":
+	case "04 Image-16-4":
+	case "04 Image-44-1":
+	case "04 Image-47-1":
+	case "04 Image-49-1":
+	case "04 Image-50-2":
+	case "04 Image-51-1":	return("Schaltbild");
 
 	case "01 Image-06-2":
 	case "01 Image-06-3":
@@ -3012,7 +3087,10 @@ function imageDesc84($issue, $name)
 	case "03 Image-15-2":
 	case "03 Image-17-1":
 	case "03 Image-25-1":
-	case "03 Image-26-1":	return("Bestückungsplan");
+	case "03 Image-26-1":
+	case "04 Image-47-2":
+	case "04 Image-49-2":
+	case "04 Image-50-1":	return("Bestückungsplan");
 
 	case "01 Image-05-1":
 	case "01 Image-06-1":
@@ -3023,7 +3101,9 @@ function imageDesc84($issue, $name)
 	case "03 Image-23-1":	return("Stückliste");
 
 	case "01 Image-10-1":
-	case "02 Image-46-2":	return("Zeitdiagramm");
+	case "02 Image-46-2":
+	case "04 Image-14-1":
+	case "04 Image-16-2":	return("Zeitdiagramm");
 
 	// m1
 	case "m1 Image-01-2":	return("NASCOMPL:$nl"."MINI-$nl"."AUSGABE");
@@ -3078,6 +3158,9 @@ function imageDesc84($issue, $name)
 
 	// 04
 	case "04 Image-04-2":	return("!");
+	case "04 Image-14-2":	return("Diskette");
+	case "04 Image-16-1":	return("A.C. Characteristics");
+	case "04 Image-16-3":	return("Legende");
 
 	case "04 Image-01-2":	return("AUSGABE 4/84");
 	case "04 Image-15-1":	return("NASCOMPL:$nl"."Unser Format$nl"."ist nach wie$nl"."vor ca. 11cm$nl"."pro Spalte$nl"."(vor der Verklei-$nl"."nerung)$nl"."Bitte beachten!");
@@ -3093,6 +3176,32 @@ function imageDesc85($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
+	case "m3 Image-12-2":	return("Anzeige SYSTEC");
+
+	case "m3 Image-09-1":
+	case "m3 Image-09-2":
+	case "m3 Image-09-3":
+	case "m3 Image-09-4":
+	case "m3 Image-09-5":
+	case "m3 Image-09-6":
+	case "m3 Image-09-7":
+	case "m3 Image-09-8":
+	case "m3 Image-09-9":	return("BASIC-Listing");
+
+	case "m3 Image-04-1":
+	case "m3 Image-04-2":
+	case "m3 Image-04-3":
+	case "m3 Image-04-4":
+	case "m3 Image-04-5":
+	case "m3 Image-04-6":
+	case "m3 Image-04-7":
+	case "m3 Image-04-8":	return("Disketten-Listing");
+
+	// m3
+	case "m3 Image-03-1":	return("neu!");
+	case "m3 Image-07-1":	return("Anordnung Adapterkarte");
+	case "m3 Image-12-1":	return("Briefumschlag");
+
 	case "m3 Image-01-1":	return("80-Bus$nl"."Journal");
 	case "m3 Image-01-2":	return("NASCOMPL:$nl"."MINI-$nl"."AUSGABE");
 	}
@@ -4171,4 +4280,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-15 18:38:05 +0100 (So, 15. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-15 19:32:19 +0100 (So, 15. Mrz 2026) $ -->
