@@ -3423,7 +3423,9 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-01-2":
 	case "36 Image-01-2":
 	case "41 Image-01-2":
-	case "42 Image-01-2":	return " ";
+	case "42 Image-01-2":	return "Title Graphic";
+
+	case "11 Image-12-2":	return("Circuit Diagram");
 
 	// 11
 	case "11 Image-04-1":	return "Dear Ed.";
@@ -4299,4 +4301,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-15 20:39:52 +0100 (So, 15. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-21 14:36:40 +0100 (Sa, 21. Mrz 2026) $ -->
