@@ -3425,7 +3425,35 @@ function imageDesc80BusNews($issue, $name)
 	case "41 Image-01-2":
 	case "42 Image-01-2":	return "Title Graphic";
 
-	case "11 Image-12-2":	return("Circuit Diagram");
+	case "11 Image-51-1":
+	case "11 Image-52-1":
+	case "11 Image-53-1":
+	case "11 Image-53-2":
+	case "11 Image-53-3":
+	case "11 Image-54-1":
+	case "11 Image-54-2":
+	case "11 Image-54-3":
+	case "11 Image-55-1":
+	case "11 Image-55-2":	return("Advertising");
+
+	case "11 Image-13-2":	return("Hex Dump");
+
+	case "11 Image-46-1":	return("Assembler Listing");
+
+	case "11 Image-21-1":
+	case "11 Image-22-1":
+	case "11 Image-23-1":
+	case "11 Image-24-1":	return("ZEAP Z80 Assembler – Source Listing");
+
+	case "11 Image-24-2":	return("ZEAP Z80 Assembler – Symbol Table");
+
+	case "11 Image-49-2":
+	case "11 Image-50-1":	return("BASIC Listing");
+
+	case "11 Image-12-2":
+	case "11 Image-20-1":
+	case "11 Image-30-1":
+	case "11 Image-30-2":	return("Circuit Diagram");
 
 	// 11
 	case "11 Image-04-1":	return "Dear Ed.";
@@ -3752,7 +3780,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "BASF 6138":				$url = "https://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "Lunar LEM Rocket":		$url = "https://www.atariarchives.org/basicgames/showpage.php?page=106";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
-	case "Bernd Ploss":				$url = "https://www.eah-jena.de/scitec/personen/bernd-ploss";					break;
+	case "Bernd Ploss":				$url = "?"/*"https://www.eah-jena.de/scitec/personen/bernd-ploss"*/;			break;
 	case "Blue Label Software Pascal":	$url = "https://de.wikipedia.org/wiki/Turbo_Pascal#Geschichte";				break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
@@ -4301,4 +4329,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-21 14:36:40 +0100 (Sa, 21. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-21 19:05:52 +0100 (Sa, 21. Mrz 2026) $ -->
