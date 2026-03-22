@@ -3434,11 +3434,54 @@ function imageDesc80BusNews($issue, $name)
 	case "11 Image-54-2":
 	case "11 Image-54-3":
 	case "11 Image-55-1":
-	case "11 Image-55-2":	return("Advertising");
+	case "11 Image-55-2":
+	case "12 Image-49-1":
+	case "12 Image-49-2":
+	case "12 Image-49-3":
+	case "12 Image-49-4":
+	case "12 Image-50-1":
+	case "12 Image-50-2":
+	case "12 Image-50-3":
+	case "12 Image-50-4":
+	case "12 Image-51-1":
+	case "12 Image-52-1":
+	case "12 Image-53-1":
+	case "12 Image-54-1":
+	case "12 Image-54-2":
+	case "12 Image-54-3":
+	case "12 Image-55-1":
+	case "12 Image-55-2":
+	case "12 Image-55-3":	return("Advertising");
 
-	case "11 Image-13-2":	return("Hex Dump");
+	case "11 Image-13-2":
+	case "12 Image-09-1":
+	case "12 Image-09-2":
+	case "12 Image-09-3":
+	case "12 Image-09-4":
+	case "12 Image-09-5":
+	case "12 Image-09-6":
+	case "12 Image-20-1":
+	case "12 Image-41-2":	return("Hex Dump");
 
-	case "11 Image-46-1":	return("Assembler Listing");
+	case "11 Image-46-1":
+	case "12 Image-06-2":
+	case "12 Image-07-1":
+	case "12 Image-13-1":
+	case "12 Image-14-1":
+	case "12 Image-25-1":
+	case "12 Image-31-1":
+	case "12 Image-31-2":
+	case "12 Image-32-1":
+	case "12 Image-32-2":
+	case "12 Image-33-1":
+	case "12 Image-33-2":
+	case "12 Image-34-1":
+	case "12 Image-34-2":
+	case "12 Image-35-1":
+	case "12 Image-35-2":
+	case "12 Image-39-1":
+	case "12 Image-40-1":
+	case "12 Image-41-1":	return("Assembler Listing");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
@@ -3448,7 +3491,11 @@ function imageDesc80BusNews($issue, $name)
 	case "11 Image-24-2":	return("ZEAP Z80 Assembler – Symbol Table");
 
 	case "11 Image-49-2":
-	case "11 Image-50-1":	return("BASIC Listing");
+	case "11 Image-50-1":
+	case "12 Image-07-2":
+	case "12 Image-10-1":
+	case "12 Image-14-2":
+	case "12 Image-21-1":	return("BASIC Listing");
 
 	case "11 Image-12-2":
 	case "11 Image-20-1":
@@ -3471,6 +3518,9 @@ function imageDesc80BusNews($issue, $name)
 	case "11 Image-47-1":	return "N1 Graphics";
 	case "11 Image-48-1":	return "Really ??";
 	case "11 Image-49-1":	return "N2 program";
+
+	// 12
+	case "12 Image-06-1":	return("DDT Listing");
 	}
 	return "";
 }
@@ -4329,4 +4379,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-21 19:05:52 +0100 (Sa, 21. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-22 16:06:41 +0100 (So, 22. Mrz 2026) $ -->
