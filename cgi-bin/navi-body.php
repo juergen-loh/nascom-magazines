@@ -3471,7 +3471,11 @@ function imageDesc80BusNews($issue, $name)
 	case "14 Image-50-1":
 	case "14 Image-50-2":
 	case "14 Image-50-3":
-	case "14 Image-51-1":	return("Advertising");
+	case "14 Image-51-1":
+	case "21 Image-55-1":
+	case "21 Image-55-2":
+	case "21 Image-55-3":
+	case "21 Image-56-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3534,7 +3538,9 @@ function imageDesc80BusNews($issue, $name)
 	case "14 Image-41-1":
 	case "14 Image-41-2":
 	case "14 Image-46-1":
-	case "14 Image-46-2":	return("Assembler Listing");
+	case "14 Image-46-2":
+	case "21 Image-19-3":
+	case "21 Image-28-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3567,7 +3573,11 @@ function imageDesc80BusNews($issue, $name)
 	case "14 Image-33-1":
 	case "14 Image-34-1":
 	case "14 Image-35-1":
-	case "14 Image-35-2":	return("BASIC Listing");
+	case "14 Image-35-2":
+	case "21 Image-18-1":
+	case "21 Image-18-2":
+	case "21 Image-19-1":
+	case "21 Image-19-2":	return("BASIC Listing");
 
 	case "13 Image-12-1":	return("Pascal Listing");
 
@@ -3617,6 +3627,11 @@ function imageDesc80BusNews($issue, $name)
 	// 14
 	case "14 Image-13-1":	return("Diagram I : Schematic Summary Of Connections.");
 	case "14 Image-14-1":	return("Table 1: Nascom 2 PIO / Epson MX80 connections..");
+
+	// 21
+	case "21 Image-21-1":
+	case "21 Image-26-1":	return("Memory Mapping");
+	case "21 Image-23-1":	return("Disk Mapping");
 	}
 	return "";
 }
@@ -4475,4 +4490,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-28 16:00:07 +0100 (Sa, 28. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-28 16:05:56 +0100 (Sa, 28. Mrz 2026) $ -->
