@@ -3425,7 +3425,8 @@ function imageDesc80BusNews($issue, $name)
 	case "41 Image-01-2":
 	case "42 Image-01-2":	return "Title Graphic";
 
-	case "13 Image-45-1":	return "Laurence";
+	case "13 Image-45-1":
+	case "14 Image-48-1":	return "Laurence";
 
 	case "11 Image-51-1":
 	case "11 Image-52-1":
@@ -3463,7 +3464,14 @@ function imageDesc80BusNews($issue, $name)
 	case "13 Image-50-1":
 	case "13 Image-50-2":
 	case "13 Image-50-3":
-	case "13 Image-51-1":	return("Advertising");
+	case "13 Image-51-1":
+	case "14 Image-49-1":
+	case "14 Image-49-2":
+	case "14 Image-49-3":
+	case "14 Image-50-1":
+	case "14 Image-50-2":
+	case "14 Image-50-3":
+	case "14 Image-51-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3473,7 +3481,8 @@ function imageDesc80BusNews($issue, $name)
 	case "12 Image-09-5":
 	case "12 Image-09-6":
 	case "12 Image-20-1":
-	case "12 Image-41-2":	return("Hex Dump");
+	case "12 Image-41-2":
+	case "14 Image-28-3":	return("Hex Dump");
 
 	case "11 Image-46-1":
 	case "12 Image-06-2":
@@ -3503,12 +3512,43 @@ function imageDesc80BusNews($issue, $name)
 	case "13 Image-39-2":
 	case "13 Image-40-1":
 	case "13 Image-41-1":
-	case "13 Image-42-1":	return("Assembler Listing");
+	case "13 Image-42-1":
+	case "14 Image-22-1":
+	case "14 Image-25-1":
+	case "14 Image-25-2":
+	case "14 Image-26-1":
+	case "14 Image-26-2":
+	case "14 Image-27-1":
+	case "14 Image-27-2":
+	case "14 Image-28-1":
+	case "14 Image-36-1":
+	case "14 Image-36-2":
+	case "14 Image-37-1":
+	case "14 Image-37-2":
+	case "14 Image-38-1":
+	case "14 Image-38-2":
+	case "14 Image-39-1":
+	case "14 Image-39-2":
+	case "14 Image-40-1":
+	case "14 Image-40-3":
+	case "14 Image-41-1":
+	case "14 Image-41-2":
+	case "14 Image-46-1":
+	case "14 Image-46-2":	return("Assembler Listing");
+
+	case "14 Image-28-2":
+	case "14 Image-40-2":
+	case "14 Image-41-3":	return("Symbol Table");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
 	case "11 Image-23-1":
-	case "11 Image-24-1":	return("ZEAP Z80 Assembler – Source Listing");
+	case "11 Image-24-1":
+	case "14 Image-14-2":
+	case "14 Image-15-1":
+	case "14 Image-15-2":
+	case "14 Image-16-1":
+	case "14 Image-16-2":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "11 Image-24-2":	return("ZEAP Z80 Assembler – Symbol Table");
 
@@ -3523,7 +3563,11 @@ function imageDesc80BusNews($issue, $name)
 	case "13 Image-17-2":
 	case "13 Image-19-1":
 	case "13 Image-19-2":
-	case "13 Image-20-2":	return("BASIC Listing");
+	case "13 Image-20-2":
+	case "14 Image-33-1":
+	case "14 Image-34-1":
+	case "14 Image-35-1":
+	case "14 Image-35-2":	return("BASIC Listing");
 
 	case "13 Image-12-1":	return("Pascal Listing");
 
@@ -3543,7 +3587,9 @@ function imageDesc80BusNews($issue, $name)
 	case "13 Image-28-3":
 	case "13 Image-28-4":
 	case "13 Image-28-5":
-	case "13 Image-34-1":	return("Circuit Diagram");
+	case "13 Image-34-1":
+	case "14 Image-44-1":
+	case "14 Image-44-2":	return("Circuit Diagram");
 
 	case "13 Image-36-2":
 	case "13 Image-37-1":	return("Timing Diagram");
@@ -3567,6 +3613,10 @@ function imageDesc80BusNews($issue, $name)
 
 	// 12
 	case "12 Image-06-1":	return("DDT Listing");
+
+	// 14
+	case "14 Image-13-1":	return("Diagram I : Schematic Summary Of Connections.");
+	case "14 Image-14-1":	return("Table 1: Nascom 2 PIO / Epson MX80 connections..");
 	}
 	return "";
 }
@@ -4425,4 +4475,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-22 19:40:22 +0100 (So, 22. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-03-28 16:00:07 +0100 (Sa, 28. Mrz 2026) $ -->
