@@ -3524,7 +3524,8 @@ function imageDesc80BusNews($issue, $name)
 	case "33 Image-51-1":
 	case "34 Image-43-1":
 	case "34 Image-43-2":
-	case "34 Image-43-3":	return("Advertising");
+	case "34 Image-43-3":
+	case "35 Image-47-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3547,7 +3548,19 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-45-3":
 	case "33 Image-33-1":
 	case "33 Image-33-2":
-	case "34 Image-35-3":	return("Hex Dump");
+	case "34 Image-35-3":
+	case "35 Image-11-1":
+	case "35 Image-12-1":
+	case "35 Image-12-2":
+	case "35 Image-13-1":
+	case "35 Image-13-2":
+	case "35 Image-14-1":
+	case "35 Image-29-1":
+	case "35 Image-29-2":
+	case "35 Image-30-1":
+	case "35 Image-30-2":
+	case "35 Image-40-2":
+	case "35 Image-45-3":	return("Hex Dump");
 
 	case "11 Image-46-1":
 	case "12 Image-06-2":
@@ -3696,7 +3709,33 @@ function imageDesc80BusNews($issue, $name)
 	case "34 Image-33-2":
 	case "34 Image-34-1":
 	case "34 Image-34-2":
-	case "34 Image-35-1":	return("Assembler Listing");
+	case "34 Image-35-1":
+	case "35 Image-07-1":
+	case "35 Image-14-2":
+	case "35 Image-15-1":
+	case "35 Image-15-2":
+	case "35 Image-16-1":
+	case "35 Image-16-2":
+	case "35 Image-17-1":
+	case "35 Image-17-2":
+	case "35 Image-18-1":
+	case "35 Image-18-2":
+	case "35 Image-18-3":
+	case "35 Image-34-3":
+	case "35 Image-34-4":
+	case "35 Image-35-1":
+	case "35 Image-39-1":
+	case "35 Image-40-1":
+	case "35 Image-40-4":
+	case "35 Image-41-1":
+	case "35 Image-41-2":
+	case "35 Image-42-1":
+	case "35 Image-42-2":
+	case "35 Image-43-1":
+	case "35 Image-43-2":
+	case "35 Image-44-1":
+	case "35 Image-44-2":
+	case "35 Image-45-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3706,7 +3745,8 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-50-3":
 	case "31 Image-45-2":
 	case "33 Image-37-2":
-	case "34 Image-35-2":	return("Symbol Table");
+	case "34 Image-35-2":
+	case "35 Image-45-2":	return("Symbol Table");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
@@ -3781,7 +3821,17 @@ function imageDesc80BusNews($issue, $name)
 	case "26 Image-19-1":
 	case "31 Image-16-1":
 	case "31 Image-16-2":
-	case "31 Image-35-1":	return("BASIC Listing");
+	case "31 Image-35-1":
+	case "35 Image-07-2":
+	case "35 Image-32-2":
+	case "35 Image-34-1":
+	case "35 Image-34-2":
+	case "35 Image-34-4":
+	case "35 Image-40-3":
+	case "35 Image-40-4":
+	case "35 Image-46-1":
+	case "35 Image-46-2":
+	case "35 Image-46-3":	return("BASIC Listing");
 
 	case "13 Image-12-1":
 	case "23 Image-43-2":
@@ -3805,7 +3855,10 @@ function imageDesc80BusNews($issue, $name)
 	case "34 Image-13-2":
 	case "34 Image-13-3":
 	case "34 Image-15-1":
-	case "34 Image-15-2":	return("Pascal Listing");
+	case "34 Image-15-2":
+	case "35 Image-04-1":
+	case "35 Image-05-1":
+	case "35 Image-05-2":	return("Pascal Listing");
 
 	case "33 Image-21-1":	return("C Listing");
 
@@ -3871,9 +3924,11 @@ function imageDesc80BusNews($issue, $name)
 	case "26 Image-44-2":
 	case "33 Image-13-1":	return("Timing Diagram");
 
-
 	case "25 Image-16-1":
 	case "26 Image-54-1":	return("Field Table");
+
+	case "33 Image-16-1":
+	case "35 Image-24-1":	return("Memory Map");
 
 	// 11
 	case "11 Image-04-1":	return "Dear Ed.";
@@ -3917,11 +3972,28 @@ function imageDesc80BusNews($issue, $name)
 	// 33
 	case "33 Image-10-1":
 	case "33 Image-10-2":	return("Chip Pinout");
-	case "33 Image-16-1":	return("Memory Image");
 
 	// 34
 	case "34 Image-24-1":	return("Key Pinout");
 	case "34 Image-27-1":	return("Keyboard Layout");
+
+	// 35
+	case "35 Image-08-1":
+	case "35 Image-08-2":
+	case "35 Image-08-3":
+	case "35 Image-08-4":
+	case "35 Image-08-5":
+	case "35 Image-08-6":	return("Keyboard Map");
+	case "35 Image-22-1":	return("Parameter Block");
+	case "35 Image-32-1":
+	case "35 Image-35-2":
+	case "35 Image-35-3":
+	case "35 Image-36-1":	return("dBASE Listing");
+	case "35 Image-37-1":
+	case "35 Image-37-2":	return("POLYDOS Memory Layout");
+	case "35 Image-38-1":
+	case "35 Image-38-2":	return("Disk Listing");
+	case "35 Image-38-3":	return("Disk Index");
 	}
 	return "";
 }
@@ -4782,4 +4854,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 18:03:43 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 18:24:04 +0200 (Sa, 04. Apr 2026) $ -->
