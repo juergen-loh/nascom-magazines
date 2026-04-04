@@ -3484,7 +3484,12 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-54-2":
 	case "22 Image-54-3":
 	case "22 Image-54-4":
-	case "22 Image-55-1":	return("Advertising");
+	case "22 Image-55-1":
+	case "23 Image-58-1":
+	case "23 Image-58-2":
+	case "23 Image-58-3":
+	case "23 Image-59-1":
+	case "23 Image-59-2":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3560,12 +3565,26 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-40-2":
 	case "22 Image-41-1":
 	case "22 Image-48-1":
-	case "22 Image-48-2":	return("Assembler Listing");
+	case "22 Image-48-2":
+	case "23 Image-41-1":
+	case "23 Image-41-2":
+	case "23 Image-42-1":
+	case "23 Image-42-2":
+	case "23 Image-43-1":
+	case "23 Image-47-1":
+	case "23 Image-47-2":
+	case "23 Image-48-1":
+	case "23 Image-48-2":
+	case "23 Image-49-1":
+	case "23 Image-49-2":
+	case "23 Image-50-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
 	case "14 Image-41-3":
-	case "22 Image-41-2":	return("Symbol Table");
+	case "22 Image-41-2":
+	case "23 Image-50-2":
+	case "23 Image-50-3":	return("Symbol Table");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
@@ -3579,7 +3598,9 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-09-1":
 	case "22 Image-09-2":
 	case "22 Image-10-1":
-	case "22 Image-10-2":	return("ZEAP Z80 Assembler – Source Listing");
+	case "22 Image-10-2":
+	case "23 Image-07-1":
+	case "23 Image-07-2":	return("ZEAP Z80 Assembler – Source Listing");
 
 	case "11 Image-24-2":	return("ZEAP Z80 Assembler – Symbol Table");
 
@@ -3607,9 +3628,20 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-42-1":
 	case "22 Image-42-2":
 	case "22 Image-47-1":
-	case "22 Image-47-2":	return("BASIC Listing");
+	case "22 Image-47-2":
+	case "23 Image-14-1":
+	case "23 Image-17-1":
+	case "23 Image-18-1":
+	case "23 Image-46-1":	return("BASIC Listing");
 
-	case "13 Image-12-1":	return("Pascal Listing");
+	case "13 Image-12-1":
+	case "23 Image-43-2":
+	case "23 Image-44-1":
+	case "23 Image-44-2":
+	case "23 Image-45-1":
+	case "23 Image-45-2":	return("Pascal Listing");
+
+	case "23 Image-05-4":	return("Screenshot");
 
 	case "11 Image-12-2":
 	case "11 Image-20-1":
@@ -3634,7 +3666,13 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-08-2":
 	case "22 Image-21-1":
 	case "22 Image-21-2":
-	case "22 Image-45-1":	return("Circuit Diagram");
+	case "22 Image-45-1":
+	case "23 Image-05-1":
+	case "23 Image-05-2":
+	case "23 Image-05-3":
+	case "23 Image-09-1":
+	case "23 Image-09-2":
+	case "23 Image-22-1":	return("Circuit Diagram");
 
 	case "13 Image-36-2":
 	case "13 Image-37-1":
@@ -4529,4 +4567,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-03-28 16:17:14 +0100 (Sa, 28. Mrz 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 12:52:47 +0200 (Sa, 04. Apr 2026) $ -->
