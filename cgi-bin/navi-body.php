@@ -3494,7 +3494,11 @@ function imageDesc80BusNews($issue, $name)
 	case "24 Image-54-1":
 	case "24 Image-55-1":
 	case "24 Image-55-2":
-	case "24 Image-55-3":	return("Advertising");
+	case "24 Image-55-3":
+	case "25 Image-58-1":
+	case "25 Image-65-2":
+	case "25 Image-66-1":
+	case "25 Image-67-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3590,7 +3594,12 @@ function imageDesc80BusNews($issue, $name)
 	case "24 Image-15-2":
 	case "24 Image-16-1":
 	case "24 Image-16-2":
-	case "24 Image-37-1":	return("Assembler Listing");
+	case "24 Image-37-1":
+	case "25 Image-10-2":
+	case "25 Image-11-1":
+	case "25 Image-11-2":
+	case "25 Image-53-1":
+	case "25 Image-53-2":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3645,16 +3654,42 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-14-1":
 	case "23 Image-17-1":
 	case "23 Image-18-1":
-	case "23 Image-46-1":	return("BASIC Listing");
+	case "23 Image-46-1":
+	case "25 Image-17-1":
+	case "25 Image-18-1":
+	case "25 Image-18-2":
+	case "25 Image-18-3":
+	case "25 Image-18-4":
+	case "25 Image-19-1":
+	case "25 Image-19-2":
+	case "25 Image-19-3":
+	case "25 Image-20-1":
+	case "25 Image-20-2":
+	case "25 Image-21-1":
+	case "25 Image-21-2":
+	case "25 Image-22-1":
+	case "25 Image-23-1":
+	case "25 Image-52-1":
+	case "25 Image-52-2":
+	case "25 Image-52-3":
+	case "25 Image-53-3":
+	case "25 Image-62-1":
+	case "25 Image-63-1":
+	case "25 Image-64-1":
+	case "25 Image-64-2":
+	case "25 Image-65-1":	return("BASIC Listing");
 
 	case "13 Image-12-1":
 	case "23 Image-43-2":
 	case "23 Image-44-1":
 	case "23 Image-44-2":
 	case "23 Image-45-1":
-	case "23 Image-45-2":	return("Pascal Listing");
+	case "23 Image-45-2":
+	case "25 Image-49-1":
+	case "25 Image-49-2":	return("Pascal Listing");
 
-	case "23 Image-05-4":	return("Screenshot");
+	case "23 Image-05-4":
+	case "25 Image-50-1":	return("Screenshot");
 
 	case "11 Image-12-2":
 	case "11 Image-20-1":
@@ -3686,7 +3721,14 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-09-1":
 	case "23 Image-09-2":
 	case "23 Image-22-1":
-	case "24 Image-36-1":	return("Circuit Diagram");
+	case "24 Image-36-1":
+	case "25 Image-25-1":
+	case "25 Image-25-2":
+	case "25 Image-57-1":	return("Circuit Diagram");
+
+	case "25 Image-26-1":	return("Component Placement");
+
+	case "25 Image-27-1":	return("PCB Layout");
 
 	case "13 Image-36-2":
 	case "13 Image-37-1":
@@ -3723,6 +3765,14 @@ function imageDesc80BusNews($issue, $name)
 
 	// 22
 	case "22 Image-25-1":	return("Screen Mapping");
+
+	// 25
+	case "25 Image-10-1":	return("Command Table");
+	case "25 Image-16-1":	return("Field Table");
+	case "25 Image-48-1":
+	case "25 Image-48-2":
+	case "25 Image-48-3":	return("Chess Moves");
+	case "25 Image-60-1":	return("ZSID Commands");
 	}
 	return "";
 }
@@ -3851,6 +3901,8 @@ function imageDescAny($year, $issue, $name)
 		case "80-bus-news/22/cover":		return "80-Bus News, Volume 2, Issue 2";
 		case "80-bus-news/23/cover":		return "80-Bus News, Volume 2, Issue 3";
 		case "80-bus-news/24/cover":		return "80-Bus News, Volume 2, Issue 4";
+		case "80-bus-news/25/cover":		return "80-Bus News, Volume 2, Issue 5";
+		case "80-bus-news/26/cover":		return "80-Bus News, Volume 2, Issue 6";
 		case "80-bus-news/31/cover":		return "80-Bus News, Volume 3, Issue 1";
 		case "80-bus-news/32/cover":		return "80-Bus News, Volume 3, Issue 2";
 		case "80-bus-news/33/cover":		return "80-Bus News, Volume 3, Issue 3";
@@ -4581,4 +4633,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 13:02:13 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 17:09:58 +0200 (Sa, 04. Apr 2026) $ -->
