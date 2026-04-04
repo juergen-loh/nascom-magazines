@@ -3423,11 +3423,12 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-01-2":
 	case "36 Image-01-2":
 	case "41 Image-01-2":
-	case "42 Image-01-2":	return "Title Graphic";
+	case "42 Image-01-2":	return " ";
 
 	case "13 Image-45-1":
 	case "14 Image-48-1":
-	case "22 Image-52-1":	return "Lawrence";
+	case "22 Image-52-1":
+	case "24 Image-53-1":	return "Lawrence";
 
 	case "11 Image-51-1":
 	case "11 Image-52-1":
@@ -3489,7 +3490,11 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-58-2":
 	case "23 Image-58-3":
 	case "23 Image-59-1":
-	case "23 Image-59-2":	return("Advertising");
+	case "23 Image-59-2":
+	case "24 Image-54-1":
+	case "24 Image-55-1":
+	case "24 Image-55-2":
+	case "24 Image-55-3":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3577,7 +3582,15 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-48-2":
 	case "23 Image-49-1":
 	case "23 Image-49-2":
-	case "23 Image-50-1":	return("Assembler Listing");
+	case "23 Image-50-1":
+	case "24 Image-13-1":
+	case "24 Image-14-1":
+	case "24 Image-14-2":
+	case "24 Image-15-1":
+	case "24 Image-15-2":
+	case "24 Image-16-1":
+	case "24 Image-16-2":
+	case "24 Image-37-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3672,7 +3685,8 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-05-3":
 	case "23 Image-09-1":
 	case "23 Image-09-2":
-	case "23 Image-22-1":	return("Circuit Diagram");
+	case "23 Image-22-1":
+	case "24 Image-36-1":	return("Circuit Diagram");
 
 	case "13 Image-36-2":
 	case "13 Image-37-1":
@@ -4567,4 +4581,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 12:52:47 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 13:02:13 +0200 (Sa, 04. Apr 2026) $ -->
