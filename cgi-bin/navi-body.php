@@ -3513,7 +3513,10 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-53-2":
 	case "31 Image-54-1":
 	case "31 Image-54-2":
-	case "31 Image-55-1":	return("Advertising");
+	case "31 Image-55-1":
+	case "32 Image-50-1":
+	case "32 Image-50-2":
+	case "32 Image-51-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3650,7 +3653,16 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-44-2":
 	case "31 Image-45-1":
 	case "31 Image-49-1":
-	case "31 Image-50-1":	return("Assembler Listing");
+	case "31 Image-50-1":
+	case "32 Image-12-1":
+	case "32 Image-12-2":
+	case "32 Image-13-1":
+	case "32 Image-14-1":
+	case "32 Image-14-2":
+	case "32 Image-20-1":
+	case "32 Image-20-2":
+	case "32 Image-21-1":
+	case "32 Image-21-2":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3792,7 +3804,9 @@ function imageDesc80BusNews($issue, $name)
 	case "26 Image-44-1":
 	case "26 Image-45-1":
 	case "26 Image-63-3":
-	case "26 Image-63-4":	return("Circuit Diagram");
+	case "26 Image-63-4":
+	case "32 Image-10-1":
+	case "32 Image-11-1":	return("Circuit Diagram");
 
 	case "25 Image-26-1":	return("Component Placement");
 
@@ -4704,4 +4718,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 17:36:14 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 17:39:42 +0200 (Sa, 04. Apr 2026) $ -->
