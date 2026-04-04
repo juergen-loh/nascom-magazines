@@ -3430,7 +3430,9 @@ function imageDesc80BusNews($issue, $name)
 	case "22 Image-52-1":
 	case "24 Image-53-1":
 	case "31 Image-52-1":
-	case "33 Image-49-1":	return "Lawrence";
+	case "33 Image-49-1":
+	case "34 Image-05-1":
+	case "34 Image-42-1":	return "Lawrence";
 
 	case "11 Image-51-1":
 	case "11 Image-52-1":
@@ -3519,7 +3521,10 @@ function imageDesc80BusNews($issue, $name)
 	case "32 Image-50-2":
 	case "32 Image-51-1":
 	case "33 Image-50-1":
-	case "33 Image-51-1":	return("Advertising");
+	case "33 Image-51-1":
+	case "34 Image-43-1":
+	case "34 Image-43-2":
+	case "34 Image-43-3":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3541,7 +3546,8 @@ function imageDesc80BusNews($issue, $name)
 	case "26 Image-63-2":
 	case "31 Image-45-3":
 	case "33 Image-33-1":
-	case "33 Image-33-2":	return("Hex Dump");
+	case "33 Image-33-2":
+	case "34 Image-35-3":	return("Hex Dump");
 
 	case "11 Image-46-1":
 	case "12 Image-06-2":
@@ -3678,7 +3684,19 @@ function imageDesc80BusNews($issue, $name)
 	case "33 Image-37-1":
 	case "33 Image-37-3":
 	case "33 Image-46-1":
-	case "33 Image-46-2":	return("Assembler Listing");
+	case "33 Image-46-2":
+	case "34 Image-12-1":
+	case "34 Image-14-1":
+	case "34 Image-14-2":
+	case "34 Image-18-1":
+	case "34 Image-18-2":
+	case "34 Image-32-1":
+	case "34 Image-32-2":
+	case "34 Image-33-1":
+	case "34 Image-33-2":
+	case "34 Image-34-1":
+	case "34 Image-34-2":
+	case "34 Image-35-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3687,7 +3705,8 @@ function imageDesc80BusNews($issue, $name)
 	case "23 Image-50-2":
 	case "23 Image-50-3":
 	case "31 Image-45-2":
-	case "33 Image-37-2":	return("Symbol Table");
+	case "33 Image-37-2":
+	case "34 Image-35-2":	return("Symbol Table");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
@@ -3779,7 +3798,14 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-14-1":
 	case "31 Image-14-2":
 	case "31 Image-15-1":
-	case "31 Image-15-2":	return("Pascal Listing");
+	case "31 Image-15-2":
+	case "34 Image-11-1":
+	case "34 Image-11-2":
+	case "34 Image-13-1":
+	case "34 Image-13-2":
+	case "34 Image-13-3":
+	case "34 Image-15-1":
+	case "34 Image-15-2":	return("Pascal Listing");
 
 	case "33 Image-21-1":	return("C Listing");
 
@@ -3828,9 +3854,14 @@ function imageDesc80BusNews($issue, $name)
 	case "32 Image-11-1":
 	case "33 Image-12-1":
 	case "33 Image-12-2":
-	case "33 Image-15-1":	return("Circuit Diagram");
+	case "33 Image-15-1":
+	case "34 Image-09-1":
+	case "34 Image-10-1":
+	case "34 Image-10-2":	return("Circuit Diagram");
 
-	case "25 Image-26-1":	return("Component Placement");
+	case "25 Image-26-1":
+	case "34 Image-26-1":
+	case "34 Image-26-2":	return("Component Placement");
 
 	case "25 Image-27-1":	return("PCB Layout");
 
@@ -3887,6 +3918,10 @@ function imageDesc80BusNews($issue, $name)
 	case "33 Image-10-1":
 	case "33 Image-10-2":	return("Chip Pinout");
 	case "33 Image-16-1":	return("Memory Image");
+
+	// 34
+	case "34 Image-24-1":	return("Key Pinout");
+	case "34 Image-27-1":	return("Keyboard Layout");
 	}
 	return "";
 }
@@ -4747,4 +4782,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 17:55:59 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-04 18:03:43 +0200 (Sa, 04. Apr 2026) $ -->
