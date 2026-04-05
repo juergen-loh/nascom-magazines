@@ -3431,6 +3431,49 @@ function imageDescInmc80News($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
+	case "01 Image-39-1":
+	case "01 Image-44-1":	return " ";
+
+	case "01 Image-01-2":	return "90p";
+
+	case "01 Image-03-1":	return "D. R. Hunt";
+
+	case "01 Image-48-1":	return "Lawrence";
+
+	case "01 Image-13-2":
+	case "01 Image-13-3":
+	case "01 Image-16-1":
+	case "01 Image-16-2":
+	case "01 Image-17-1":
+	case "01 Image-17-2":
+	case "01 Image-25-2":
+	case "01 Image-34-1":	return "Hex Dump";
+
+	case "01 Image-08-1":	return "Assembler Listing";
+
+	case "01 Image-11-1":
+	case "01 Image-12-1":
+	case "01 Image-13-1":	return "ZEAP Z80 Assembler – Source Listing";
+
+	case "01 Image-06-1":
+	case "01 Image-06-2":
+	case "01 Image-07-1":
+	case "01 Image-35-1":
+	case "01 Image-36-1":
+	case "01 Image-42-1":
+	case "01 Image-43-1":	return "BASIC Listing";
+
+	case "01 Image-05-1":
+	case "01 Image-17-3":
+	case "01 Image-17-4":
+	case "01 Image-17-5":
+	case "01 Image-17-6":
+	case "01 Image-17-7":	return "Screenshot";
+
+	case "01 Image-24-1":
+	case "01 Image-25-1":
+	case "01 Image-45-1":	return "Circuit Diagram";
+
 	// 01
 	case "01 Image-01-1":	return "INMC 80 NEWS Issue: 1";
 	case "01 Image-03-1":	return "Dave Hunt";
@@ -5226,4 +5269,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 18:21:41 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 18:36:32 +0200 (So, 05. Apr 2026) $ -->
