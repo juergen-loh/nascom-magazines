@@ -3534,7 +3534,11 @@ function imageDesc80BusNews($issue, $name)
 	case "41 Image-06-1":
 	case "41 Image-19-1":
 	case "41 Image-25-1":
-	case "41 Image-30-2":	return("Advertising");
+	case "41 Image-30-2":
+	case "42 Image-17-1":
+	case "42 Image-28-1":
+	case "42 Image-30-1":
+	case "42 Image-31-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3786,7 +3790,16 @@ function imageDesc80BusNews($issue, $name)
 	case "41 Image-24-1":
 	case "41 Image-24-2":
 	case "41 Image-24-3":
-	case "41 Image-30-1":	return("Assembler Listing");
+	case "41 Image-30-1":
+	case "42 Image-08-1":
+	case "42 Image-08-2":
+	case "42 Image-08-3":
+	case "42 Image-08-4":
+	case "42 Image-09-1":
+	case "42 Image-09-2":
+	case "42 Image-09-3":
+	case "42 Image-09-4":
+	case "42 Image-27-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3883,7 +3896,8 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-40-4":
 	case "35 Image-46-1":
 	case "35 Image-46-2":
-	case "35 Image-46-3":	return("BASIC Listing");
+	case "35 Image-46-3":
+	case "42 Image-14-1":	return("BASIC Listing");
 
 	case "13 Image-12-1":
 	case "23 Image-43-2":
@@ -3914,7 +3928,9 @@ function imageDesc80BusNews($issue, $name)
 
 	case "33 Image-21-1":
 	case "36 Image-28-1":
-	case "36 Image-30-1":	return("C Listing");
+	case "36 Image-30-1":
+	case "42 Image-09-5":
+	case "42 Image-11-1":	return("C Listing");
 
 	case "23 Image-05-4":
 	case "25 Image-50-1":	return("Screenshot");
@@ -4061,6 +4077,9 @@ function imageDesc80BusNews($issue, $name)
 	// 41
 	case "41 Image-13-1":	return("PRETZEL 2 Script");
 	case "41 Image-29-1":	return("Sherlock Holmes");
+
+	// 42
+	case "42 Image-19-1":	return("WordStar Script");
 	}
 	return "";
 }
@@ -4922,4 +4941,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:17:00 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:22:05 +0200 (So, 05. Apr 2026) $ -->
