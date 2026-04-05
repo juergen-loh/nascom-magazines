@@ -3433,7 +3433,8 @@ function imageDesc80BusNews($issue, $name)
 	case "33 Image-49-1":
 	case "34 Image-05-1":
 	case "34 Image-42-1":
-	case "36 Image-53-1":	return "Lawrence";
+	case "36 Image-53-1":
+	case "41 Image-31-1":	return "Lawrence";
 
 	case "11 Image-51-1":
 	case "11 Image-52-1":
@@ -3529,7 +3530,11 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-47-1":
 	case "36 Image-52-2":
 	case "36 Image-54-1":
-	case "36 Image-55-1":	return("Advertising");
+	case "36 Image-55-1":
+	case "41 Image-06-1":
+	case "41 Image-19-1":
+	case "41 Image-25-1":
+	case "41 Image-30-2":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3769,7 +3774,19 @@ function imageDesc80BusNews($issue, $name)
 	case "36 Image-50-6":
 	case "36 Image-51-1":
 	case "36 Image-51-2":
-	case "36 Image-52-1":	return("Assembler Listing");
+	case "36 Image-52-1":
+	case "41 Image-15-1":
+	case "41 Image-16-1":
+	case "41 Image-17-1":
+	case "41 Image-21-1":
+	case "41 Image-22-1":
+	case "41 Image-22-2":
+	case "41 Image-23-1":
+	case "41 Image-23-2":
+	case "41 Image-24-1":
+	case "41 Image-24-2":
+	case "41 Image-24-3":
+	case "41 Image-30-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3780,7 +3797,8 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-45-2":
 	case "33 Image-37-2":
 	case "34 Image-35-2":
-	case "35 Image-45-2":	return("Symbol Table");
+	case "35 Image-45-2":
+	case "41 Image-17-2":	return("Symbol Table");
 
 	case "11 Image-21-1":
 	case "11 Image-22-1":
@@ -4039,6 +4057,10 @@ function imageDesc80BusNews($issue, $name)
 	case "36 Image-12-2":
 	case "36 Image-12-3":	return("Socket Pinout");
 	case "36 Image-52-3":	return("ASCII Character Codes");
+
+	// 41
+	case "41 Image-13-1":	return("PRETZEL 2 Script");
+	case "41 Image-29-1":	return("Sherlock Holmes");
 	}
 	return "";
 }
@@ -4900,4 +4922,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:06:40 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:17:00 +0200 (So, 05. Apr 2026) $ -->
