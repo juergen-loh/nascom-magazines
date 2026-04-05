@@ -4130,7 +4130,11 @@ function imageDescScorpioNews($issue, $name)
 	case "14 Image-54-6":
 	case "14 Image-54-7":
 	case "14 Image-55-1":
-	case "14 Image-55-2":	return("Advertising");
+	case "14 Image-55-2":
+	case "21 Image-38-1":
+	case "21 Image-39-1":
+	case "21 Image-39-3":
+	case "21 Image-39-2":	return("Advertising");
 
 	case "12 Image-40-1":
 	case "12 Image-43-1":
@@ -4155,7 +4159,9 @@ function imageDescScorpioNews($issue, $name)
 	case "13 Image-46-2":
 	case "13 Image-47-1":
 	case "13 Image-47-2":
-	case "14 Image-14-1":	return("Assembler Listing");
+	case "14 Image-14-1":
+	case "21 Image-31-1":
+	case "21 Image-32-1":	return("Assembler Listing");
 
 	case "11 Image-57-1":
 	case "14 Image-18-1":
@@ -4175,9 +4181,16 @@ function imageDescScorpioNews($issue, $name)
 
 	case "14 Image-45-1":	return("dBASE Listing");
 
+	case "21 Image-35-1":
+	case "21 Image-35-2":
+	case "21 Image-35-3":
+	case "21 Image-36-1":	return("Screenshot");
+
 	case "12 Image-38-1":
 	case "12 Image-46-1":
 	case "12 Image-48-1":	return("Circuit Diagram");
+
+	case "21 Image-12-1":	return("PCB Layout");
 
 	case "12 Image-39-1":
 	case "12 Image-39-2":
@@ -5036,4 +5049,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:50:40 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:53:54 +0200 (So, 05. Apr 2026) $ -->
