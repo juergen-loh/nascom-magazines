@@ -3228,11 +3228,22 @@ function imageDescInmcNews($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
-	case "02 Image-00-2":	return("K Borland");
+	case "02 Image-00-2":
+	case "03 Image-00-2":	return("K Borland");
+
+	case "03 Image-26-2":
+	case "04 Image-30-1":	return "Lawrence";
 
 	case "02 Image-10-1":
 	case "02 Image-10-2":
-	case "02 Image-16-1":	return("Hex Dump");
+	case "02 Image-16-1":
+	case "03 Image-09-1":
+	case "03 Image-09-2":
+	case "03 Image-23-1":
+	case "03 Image-23-2":
+	case "03 Image-25-1":
+	case "03 Image-25-2":
+	case "03 Image-26-1":	return("Hex Dump");
 
 	case "01 Image-05-1":
 	case "01 Image-07-1":
@@ -3249,6 +3260,8 @@ function imageDescInmcNews($issue, $name)
 	case "02 Image-04-2":
 	case "02 Image-08-1":	return("Circuit Diagram");
 
+	case "03 Image-22-1":	return("Component Placement");
+
 	// 01
 	case "01 Image-01-1":	return("Chip Pinout");
 
@@ -3258,6 +3271,8 @@ function imageDescInmcNews($issue, $name)
 	case "02 Image-00-1":	return "INMC NEWS issue 2";
 
 	// 03
+	case "03 Image-26-3":	return "Signature";
+
 	case "03 Image-00-1":	return "INMC NEWS issue 3";
 	case "03 Image-01-1":	return "UNFORTUNATELY";
 	case "03 Image-01-2":	return "THIS COULD CONCERN YOU";
@@ -3268,7 +3283,6 @@ function imageDescInmcNews($issue, $name)
 	case "04 Image-10-1":	return "SPECIAL OFFERS";
 	case "04 Image-18-1":	return "ADD-ON GRAPHICS REVIEW";
 	case "04 Image-21-1":	return "NAS-SYS ONE: a brief Glimpse";
-	case "04 Image-30-1":	return "Lawrence";
 
 	// 05
 	case "05 Image-00-1":	return "INMC NEWS issue 5";
@@ -5100,4 +5114,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 17:16:26 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 17:23:01 +0200 (So, 05. Apr 2026) $ -->
