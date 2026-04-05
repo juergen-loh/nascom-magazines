@@ -3228,7 +3228,30 @@ function imageDescInmcNews($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
+	case "02 Image-00-2":	return("K Borland");
+
+	case "02 Image-10-1":
+	case "02 Image-10-2":
+	case "02 Image-16-1":	return("Hex Dump");
+
+	case "01 Image-05-1":
+	case "01 Image-07-1":
+	case "01 Image-08-1":	return("Assembler Listing");
+
+	case "02 Image-17-1":
+	case "02 Image-17-2":
+	case "02 Image-17-3":
+	case "02 Image-18-1":	return("BASIC Listing");
+
+	case "01 Image-02-1":
+	case "01 Image-02-2":
+	case "02 Image-04-1":
+	case "02 Image-04-2":
+	case "02 Image-08-1":	return("Circuit Diagram");
+
 	// 01
+	case "01 Image-01-1":	return("Chip Pinout");
+
 	case "01 Image-00-1":	return "INMC NEWS issue 1";
 
 	// 02
@@ -3716,6 +3739,7 @@ function imageDesc80BusNews($issue, $name)
 	case "34 Image-14-2":
 	case "34 Image-18-1":
 	case "34 Image-18-2":
+	case "34 Image-30-1":
 	case "34 Image-32-1":
 	case "34 Image-32-2":
 	case "34 Image-33-1":
@@ -5076,4 +5100,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 17:05:18 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 17:16:26 +0200 (So, 05. Apr 2026) $ -->
