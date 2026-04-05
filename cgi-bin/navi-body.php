@@ -4112,6 +4112,15 @@ function imageDescScorpioNews($issue, $name)
 	case "12 Image-50-5":
 	case "12 Image-51-1":
 	case "13 Image-02-1":
+	case "13 Image-64-1":
+	case "13 Image-65-1":
+	case "13 Image-66-1":
+	case "13 Image-66-2":
+	case "13 Image-66-3":
+	case "13 Image-66-4":
+	case "13 Image-66-5":
+	case "13 Image-66-6":
+	case "13 Image-67-1":
 	case "14 Image-02-1":	return("Advertising");
 
 	case "12 Image-40-1":
@@ -4124,12 +4133,25 @@ function imageDescScorpioNews($issue, $name)
 	case "12 Image-14-1":
 	case "12 Image-19-1":
 	case "12 Image-49-1":
-	case "12 Image-49-2":	return("Assembler Listing");
+	case "12 Image-49-2":
+	case "13 Image-33-1":
+	case "13 Image-34-1":
+	case "13 Image-35-1":
+	case "13 Image-36-1":
+	case "13 Image-36-2":
+	case "13 Image-41-1":
+	case "13 Image-45-1":
+	case "13 Image-46-1":
+	case "13 Image-46-2":
+	case "13 Image-47-1":
+	case "13 Image-47-2":	return("Assembler Listing");
 
 	case "11 Image-57-1":	return("BASIC Listing");
 
 	case "12 Image-16-1":
-	case "12 Image-17-1":	return("Pascal Listing");
+	case "12 Image-17-1":
+	case "13 Image-21-1":
+	case "13 Image-22-1":	return("Pascal Listing");
 
 	case "11 Image-13-1":
 	case "11 Image-14-1":	return("Fortran Listing");
@@ -4140,7 +4162,8 @@ function imageDescScorpioNews($issue, $name)
 
 	case "12 Image-39-1":
 	case "12 Image-39-2":
-	case "12 Image-47-1":	return("Component Placement");
+	case "12 Image-47-1":
+	case "13 Image-44-1":	return("Component Placement");
 
 	// 12
 	case "12 Image-10-1":	return("CTC Interrupt Vector");
@@ -4990,4 +5013,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:38:00 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:43:10 +0200 (So, 05. Apr 2026) $ -->
