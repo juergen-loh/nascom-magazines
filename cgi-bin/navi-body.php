@@ -3432,7 +3432,8 @@ function imageDesc80BusNews($issue, $name)
 	case "31 Image-52-1":
 	case "33 Image-49-1":
 	case "34 Image-05-1":
-	case "34 Image-42-1":	return "Lawrence";
+	case "34 Image-42-1":
+	case "36 Image-53-1":	return "Lawrence";
 
 	case "11 Image-51-1":
 	case "11 Image-52-1":
@@ -3525,7 +3526,10 @@ function imageDesc80BusNews($issue, $name)
 	case "34 Image-43-1":
 	case "34 Image-43-2":
 	case "34 Image-43-3":
-	case "35 Image-47-1":	return("Advertising");
+	case "35 Image-47-1":
+	case "36 Image-52-2":
+	case "36 Image-54-1":
+	case "36 Image-55-1":	return("Advertising");
 
 	case "11 Image-13-2":
 	case "12 Image-09-1":
@@ -3735,7 +3739,37 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-43-2":
 	case "35 Image-44-1":
 	case "35 Image-44-2":
-	case "35 Image-45-1":	return("Assembler Listing");
+	case "35 Image-45-1":
+	case "36 Image-16-1":
+	case "36 Image-16-2":
+	case "36 Image-17-1":
+	case "36 Image-17-2":
+	case "36 Image-18-1":
+	case "36 Image-18-2":
+	case "36 Image-19-1":
+	case "36 Image-19-2":
+	case "36 Image-20-1":
+	case "36 Image-20-2":
+	case "36 Image-21-1":
+	case "36 Image-21-2":
+	case "36 Image-22-1":
+	case "36 Image-22-2":
+	case "36 Image-36-1":
+	case "36 Image-36-2":
+	case "36 Image-37-1":
+	case "36 Image-39-1":
+	case "36 Image-40-1":
+	case "36 Image-40-2":
+	case "36 Image-48-1":
+	case "36 Image-50-1":
+	case "36 Image-50-2":
+	case "36 Image-50-3":
+	case "36 Image-50-4":
+	case "36 Image-50-5":
+	case "36 Image-50-6":
+	case "36 Image-51-1":
+	case "36 Image-51-2":
+	case "36 Image-52-1":	return("Assembler Listing");
 
 	case "14 Image-28-2":
 	case "14 Image-40-2":
@@ -3860,7 +3894,9 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-05-1":
 	case "35 Image-05-2":	return("Pascal Listing");
 
-	case "33 Image-21-1":	return("C Listing");
+	case "33 Image-21-1":
+	case "36 Image-28-1":
+	case "36 Image-30-1":	return("C Listing");
 
 	case "23 Image-05-4":
 	case "25 Image-50-1":	return("Screenshot");
@@ -3910,7 +3946,11 @@ function imageDesc80BusNews($issue, $name)
 	case "33 Image-15-1":
 	case "34 Image-09-1":
 	case "34 Image-10-1":
-	case "34 Image-10-2":	return("Circuit Diagram");
+	case "34 Image-10-2":
+	case "36 Image-12-1":
+	case "36 Image-13-1":
+	case "36 Image-41-1":
+	case "36 Image-42-1":	return("Circuit Diagram");
 
 	case "25 Image-26-1":
 	case "34 Image-26-1":
@@ -3994,6 +4034,11 @@ function imageDesc80BusNews($issue, $name)
 	case "35 Image-38-1":
 	case "35 Image-38-2":	return("Disk Listing");
 	case "35 Image-38-3":	return("Disk Index");
+
+	// 36
+	case "36 Image-12-2":
+	case "36 Image-12-3":	return("Socket Pinout");
+	case "36 Image-52-3":	return("ASCII Character Codes");
 	}
 	return "";
 }
@@ -4129,6 +4174,7 @@ function imageDescAny($year, $issue, $name)
 		case "80-bus-news/33/cover":		return "80-Bus News, Volume 3, Issue 3";
 		case "80-bus-news/34/cover":		return "80-Bus News, Volume 3, Issue 4";
 		case "80-bus-news/35/cover":		return "80-Bus News, Volume 3, Issue 5";
+		case "80-bus-news/36/cover":		return "80-Bus News, Volume 3, Issue 6";
 		case "80-bus-news/41/cover":		return "80-Bus News, Volume 4, Issue 1";
 		case "80-bus-news/42/cover":		return "80-Bus News, Volume 4, Issue 2";
 		// Scorpio News
@@ -4854,4 +4900,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-04 18:24:04 +0200 (Sa, 04. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:06:40 +0200 (So, 05. Apr 2026) $ -->
