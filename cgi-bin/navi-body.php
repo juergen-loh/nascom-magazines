@@ -4121,10 +4121,20 @@ function imageDescScorpioNews($issue, $name)
 	case "13 Image-66-5":
 	case "13 Image-66-6":
 	case "13 Image-67-1":
-	case "14 Image-02-1":	return("Advertising");
+	case "14 Image-02-1":
+	case "14 Image-54-1":
+	case "14 Image-54-2":
+	case "14 Image-54-3":
+	case "14 Image-54-4":
+	case "14 Image-54-5":
+	case "14 Image-54-6":
+	case "14 Image-54-7":
+	case "14 Image-55-1":
+	case "14 Image-55-2":	return("Advertising");
 
 	case "12 Image-40-1":
-	case "12 Image-43-1":	return("Hex Dump");
+	case "12 Image-43-1":
+	case "14 Image-18-2":	return("Hex Dump");
 
 	case "11 Image-49-1":
 	case "11 Image-50-1":
@@ -4144,17 +4154,26 @@ function imageDescScorpioNews($issue, $name)
 	case "13 Image-46-1":
 	case "13 Image-46-2":
 	case "13 Image-47-1":
-	case "13 Image-47-2":	return("Assembler Listing");
+	case "13 Image-47-2":
+	case "14 Image-14-1":	return("Assembler Listing");
 
-	case "11 Image-57-1":	return("BASIC Listing");
+	case "11 Image-57-1":
+	case "14 Image-18-1":
+	case "14 Image-25-1":	return("BASIC Listing");
 
 	case "12 Image-16-1":
 	case "12 Image-17-1":
 	case "13 Image-21-1":
-	case "13 Image-22-1":	return("Pascal Listing");
+	case "13 Image-22-1":
+	case "14 Image-26-1":
+	case "14 Image-27-1":
+	case "14 Image-28-1":
+	case "14 Image-29-1":	return("Pascal Listing");
 
 	case "11 Image-13-1":
 	case "11 Image-14-1":	return("Fortran Listing");
+
+	case "14 Image-45-1":	return("dBASE Listing");
 
 	case "12 Image-38-1":
 	case "12 Image-46-1":
@@ -4170,6 +4189,10 @@ function imageDescScorpioNews($issue, $name)
 	case "12 Image-10-2":	return("CTC Channel Control Register");
 	case "12 Image-21-1":	return("Memory Map");
 	case "12 Image-25-1":	return("ZCPR Script");
+
+	// 14
+	case "14 Image-49-1":
+	case "14 Image-51-1":	return("CONFIG.SYS");
 	}
 	return "";
 }
@@ -5013,4 +5036,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:43:10 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:50:40 +0200 (So, 05. Apr 2026) $ -->
