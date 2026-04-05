@@ -4103,16 +4103,50 @@ function imageDescScorpioNews($issue, $name)
 	case "11 Image-61-1":
 	case "11 Image-62-1":
 	case "11 Image-63-1":
-	case "11 Image-63-2":	return("Advertising");
+	case "11 Image-63-2":
+	case "12 Image-02-1":
+	case "12 Image-50-1":
+	case "12 Image-50-2":
+	case "12 Image-50-3":
+	case "12 Image-50-4":
+	case "12 Image-50-5":
+	case "12 Image-51-1":
+	case "13 Image-02-1":
+	case "14 Image-02-1":	return("Advertising");
+
+	case "12 Image-40-1":
+	case "12 Image-43-1":	return("Hex Dump");
 
 	case "11 Image-49-1":
 	case "11 Image-50-1":
-	case "11 Image-50-2":	return("Assembler Listing");
+	case "11 Image-50-2":
+	case "12 Image-12-1":
+	case "12 Image-14-1":
+	case "12 Image-19-1":
+	case "12 Image-49-1":
+	case "12 Image-49-2":	return("Assembler Listing");
 
 	case "11 Image-57-1":	return("BASIC Listing");
 
+	case "12 Image-16-1":
+	case "12 Image-17-1":	return("Pascal Listing");
+
 	case "11 Image-13-1":
 	case "11 Image-14-1":	return("Fortran Listing");
+
+	case "12 Image-38-1":
+	case "12 Image-46-1":
+	case "12 Image-48-1":	return("Circuit Diagram");
+
+	case "12 Image-39-1":
+	case "12 Image-39-2":
+	case "12 Image-47-1":	return("Component Placement");
+
+	// 12
+	case "12 Image-10-1":	return("CTC Interrupt Vector");
+	case "12 Image-10-2":	return("CTC Channel Control Register");
+	case "12 Image-21-1":	return("Memory Map");
+	case "12 Image-25-1":	return("ZCPR Script");
 	}
 	return "";
 }
@@ -4956,4 +4990,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:27:34 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:38:00 +0200 (So, 05. Apr 2026) $ -->
