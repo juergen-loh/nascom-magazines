@@ -4098,6 +4098,21 @@ function imageDescScorpioNews($issue, $name)
 	case "23 Image-01-1":
 	case "24 Image-01-1":
 	case "31 Image-01-1":	return "Scorpio News";
+
+	case "11 Image-02-1":
+	case "11 Image-61-1":
+	case "11 Image-62-1":
+	case "11 Image-63-1":
+	case "11 Image-63-2":	return("Advertising");
+
+	case "11 Image-49-1":
+	case "11 Image-50-1":
+	case "11 Image-50-2":	return("Assembler Listing");
+
+	case "11 Image-57-1":	return("BASIC Listing");
+
+	case "11 Image-13-1":
+	case "11 Image-14-1":	return("Fortran Listing");
 	}
 	return "";
 }
@@ -4941,4 +4956,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:22:05 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:27:34 +0200 (So, 05. Apr 2026) $ -->
