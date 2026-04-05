@@ -3239,15 +3239,21 @@ function imageDescInmcNews($issue, $name)
 	case "04 Image-00-2":
 	case "05 Image-01-1":	return "K Borland";
 
-	case "05 Image-03-1":	return "D. R. Hunt";
+	case "05 Image-03-1":
+	case "06 Image-01-1":	return "D. R. Hunt";
 
 	case "04 Image-04-1":
-	case "05 Image-06-1":	return "Pen";
+	case "05 Image-06-1":
+	case "07 Image-02-1":	return "Pen";
 
 	case "03 Image-26-2":
 	case "04 Image-30-1":
 	case "05 Image-38-1":
-	case "06 Image-38-1":	return "Lawrence";
+	case "06 Image-38-1":
+	case "07 Image-39-1":	return "Lawrence";
+
+	case "07 Image-37-1":
+	case "07 Image-38-1":	return "Advertising";
 
 	case "02 Image-10-1":
 	case "02 Image-10-2":
@@ -3289,14 +3295,26 @@ function imageDescInmcNews($issue, $name)
 	case "06 Image-34-1":
 	case "06 Image-34-2":
 	case "06 Image-35-1":
-	case "06 Image-35-2":	return "Hex Dump";
+	case "06 Image-35-2":
+	case "07 Image-09-4":
+	case "07 Image-17-1":
+	case "07 Image-17-2":
+	case "07 Image-19-1":
+	case "07 Image-19-2":
+	case "07 Image-19-3":
+	case "07 Image-19-4":
+	case "07 Image-29-1":
+	case "07 Image-31-1":	return "Hex Dump";
 
 	case "01 Image-05-1":
 	case "01 Image-07-1":
 	case "01 Image-08-1":
 	case "05 Image-08-1":
 	case "05 Image-21-1":
-	case "05 Image-22-1":	return "Assembler Listing";
+	case "05 Image-22-1":
+	case "07 Image-09-1":
+	case "07 Image-09-2":
+	case "07 Image-09-3":	return "Assembler Listing";
 
 	case "06 Image-22-1":
 	case "06 Image-22-2":	return "ZEAP Z80 Assembler – Source Listing";
@@ -3329,7 +3347,13 @@ function imageDescInmcNews($issue, $name)
 	case "05 Image-37-1":
 	case "06 Image-22-5":
 	case "06 Image-36-1":
-	case "06 Image-37-1":	return "BASIC Listing";
+	case "06 Image-37-1":
+	case "07 Image-07-1":
+	case "07 Image-07-2":
+	case "07 Image-18-1":	return "BASIC Listing";
+
+	case "07 Image-10-1":
+	case "07 Image-16-1":	return "Screenshot";
 
 	case "01 Image-02-1":
 	case "01 Image-02-2":
@@ -3360,8 +3384,6 @@ function imageDescInmcNews($issue, $name)
 	case "03 Image-01-2":	return "THIS COULD CONCERN YOU";
 
 	// 04
-	case "04 Image-17-2":	return "Screenshot";
-
 	case "04 Image-00-1":	return "INMC NEWS issue 4";
 	case "04 Image-07-1":	return "NASCOM";
 	case "04 Image-10-1":	return "SPECIAL OFFERS";
@@ -3384,6 +3406,9 @@ function imageDescInmcNews($issue, $name)
 	case "06 Image-23-1":	return "Program hints";
 
 	// 07
+	case "07 Image-00-2":	return "90p";
+	case "07 Image-27-1":	return "VDU Memory Map";
+
 	case "07 Image-00-1":	return "INMC NEWS issue 7";
 	case "07 Image-01-1":	return "D. R. Hunt";
 	case "07 Image-11-1":	return "Impact Matrix Printer";
@@ -5201,4 +5226,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 18:13:53 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 18:21:41 +0200 (So, 05. Apr 2026) $ -->
