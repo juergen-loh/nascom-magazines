@@ -4099,6 +4099,9 @@ function imageDescScorpioNews($issue, $name)
 	case "24 Image-01-1":
 	case "31 Image-01-1":	return "Scorpio News";
 
+	case "22 Image-18-1":
+	case "22 Image-19-1":	return "Lawrence";
+
 	case "11 Image-02-1":
 	case "11 Image-61-1":
 	case "11 Image-62-1":
@@ -4133,12 +4136,19 @@ function imageDescScorpioNews($issue, $name)
 	case "14 Image-55-2":
 	case "21 Image-38-1":
 	case "21 Image-39-1":
+	case "21 Image-39-2":
 	case "21 Image-39-3":
-	case "21 Image-39-2":	return("Advertising");
+	case "22 Image-35-1":
+	case "22 Image-35-2":
+	case "22 Image-35-3":	return("Advertising");
 
 	case "12 Image-40-1":
 	case "12 Image-43-1":
-	case "14 Image-18-2":	return("Hex Dump");
+	case "14 Image-18-2":
+	case "22 Image-09-1":
+	case "22 Image-10-2":
+	case "22 Image-11-1":
+	case "22 Image-12-1":	return("Hex Dump");
 
 	case "11 Image-49-1":
 	case "11 Image-50-1":
@@ -4206,6 +4216,9 @@ function imageDescScorpioNews($issue, $name)
 	// 14
 	case "14 Image-49-1":
 	case "14 Image-51-1":	return("CONFIG.SYS");
+
+	// 22
+	case "22 Image-10-1":	return("XFCB");
 	}
 	return "";
 }
@@ -5049,4 +5062,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:53:54 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 16:58:32 +0200 (So, 05. Apr 2026) $ -->
