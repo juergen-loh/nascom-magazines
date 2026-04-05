@@ -4140,7 +4140,10 @@ function imageDescScorpioNews($issue, $name)
 	case "21 Image-39-3":
 	case "22 Image-35-1":
 	case "22 Image-35-2":
-	case "22 Image-35-3":	return("Advertising");
+	case "22 Image-35-3":
+	case "23 Image-39-1":
+	case "23 Image-39-2":
+	case "23 Image-39-3":	return("Advertising");
 
 	case "12 Image-40-1":
 	case "12 Image-43-1":
@@ -4171,7 +4174,9 @@ function imageDescScorpioNews($issue, $name)
 	case "13 Image-47-2":
 	case "14 Image-14-1":
 	case "21 Image-31-1":
-	case "21 Image-32-1":	return("Assembler Listing");
+	case "21 Image-32-1":
+	case "23 Image-16-1":
+	case "23 Image-17-1":	return("Assembler Listing");
 
 	case "11 Image-57-1":
 	case "14 Image-18-1":
@@ -4184,7 +4189,8 @@ function imageDescScorpioNews($issue, $name)
 	case "14 Image-26-1":
 	case "14 Image-27-1":
 	case "14 Image-28-1":
-	case "14 Image-29-1":	return("Pascal Listing");
+	case "14 Image-29-1":
+	case "23 Image-15-1":	return("Pascal Listing");
 
 	case "11 Image-13-1":
 	case "11 Image-14-1":	return("Fortran Listing");
@@ -5062,4 +5068,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 16:58:32 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-05 17:00:50 +0200 (So, 05. Apr 2026) $ -->
