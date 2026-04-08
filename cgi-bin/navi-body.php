@@ -3440,6 +3440,9 @@ function imageDescInmc80News($issue, $name)
 
 	case "01 Image-48-1":	return "Lawrence";
 
+	case "02 Image-54-1":
+	case "02 Image-55-1":	return "Advertising";
+
 	case "01 Image-13-2":
 	case "01 Image-13-3":
 	case "01 Image-16-1":
@@ -3447,9 +3450,44 @@ function imageDescInmc80News($issue, $name)
 	case "01 Image-17-1":
 	case "01 Image-17-2":
 	case "01 Image-25-2":
-	case "01 Image-34-1":	return "Hex Dump";
+	case "01 Image-34-1":
+	case "02 Image-26-1":
+	case "02 Image-26-2":
+	case "02 Image-28-1":
+	case "02 Image-39-3":
+	case "02 Image-47-1":
+	case "02 Image-47-2":
+	case "02 Image-47-3":
+	case "02 Image-56-1":
+	case "02 Image-56-2":
+	case "02 Image-56-3":
+	case "02 Image-57-1":
+	case "02 Image-57-2":
+	case "02 Image-57-3":
+	case "02 Image-57-4":
+	case "02 Image-57-5":
+	case "02 Image-57-6":
+	case "02 Image-58-1":
+	case "02 Image-58-2":
+	case "02 Image-58-3":
+	case "02 Image-59-1":
+	case "02 Image-59-2":
+	case "02 Image-59-3":	return "Hex Dump";
 
-	case "01 Image-08-1":	return "Assembler Listing";
+	case "01 Image-08-1":
+	case "02 Image-14-1":
+	case "02 Image-15-1":
+	case "02 Image-15-2":
+	case "02 Image-16-1":
+	case "02 Image-28-2":
+	case "02 Image-31-1":
+	case "02 Image-32-1":
+	case "02 Image-33-1":
+	case "02 Image-34-1":
+	case "02 Image-38-1":
+	case "02 Image-39-1":	return "Assembler Listing";
+
+	case "02 Image-39-2":	return "Symbol Table";
 
 	case "01 Image-11-1":
 	case "01 Image-12-1":
@@ -3461,7 +3499,21 @@ function imageDescInmc80News($issue, $name)
 	case "01 Image-35-1":
 	case "01 Image-36-1":
 	case "01 Image-42-1":
-	case "01 Image-43-1":	return "BASIC Listing";
+	case "01 Image-43-1":
+	case "02 Image-05-1":
+	case "02 Image-05-2":
+	case "02 Image-05-3":
+	case "02 Image-06-1":
+	case "02 Image-07-1":
+	case "02 Image-07-2":
+	case "02 Image-07-3":
+	case "02 Image-29-1":
+	case "02 Image-34-3":
+	case "02 Image-35-1":
+	case "02 Image-35-2":
+	case "02 Image-50-1":
+	case "02 Image-50-2":
+	case "02 Image-51-1":	return "BASIC Listing";
 
 	case "01 Image-05-1":
 	case "01 Image-17-3":
@@ -3472,7 +3524,13 @@ function imageDescInmc80News($issue, $name)
 
 	case "01 Image-24-1":
 	case "01 Image-25-1":
-	case "01 Image-45-1":	return "Circuit Diagram";
+	case "01 Image-45-1":
+	case "02 Image-23-1":
+	case "02 Image-23-3":	return "Circuit Diagram";
+
+	case "02 Image-36-1":	return "Component Placement";
+
+	case "02 Image-23-2":	return "Mechanical Drawing";
 
 	// 01
 	case "01 Image-01-1":	return "INMC 80 NEWS Issue: 1";
@@ -3493,6 +3551,16 @@ function imageDescInmc80News($issue, $name)
 	case "01 Image-46-1":	return "WARNING~8A";
 
 	// 02
+	case "02 Image-20-1":	return "Winter is just around the ".
+									"corner-once again-are you ".
+									"fully prepaired for it?$nl".
+									"AD/PDO/CLA$nl".
+									"DEAR MR -------,$nl".
+									"REMEMBER LAST WINTER? HOW THE SNOW LAY FOUR DAYS IN ".
+									"THE ILMINSTER AREA AND HOW THANKFUL YOU ".
+									"WERE FOR YOUR FANCY-KNIT LADIES VESTS, WELL - WINTER ".
+									"IS ONLY JUST AROUND THE CORNER AND IT WON'T BE LONG ".
+									"BEFORE YOU ARE WONDERING IF SNOW WILL BE FALLING";
 	case "02 Image-01-1":	return "INMC 80 NEWS Issue: 2";
 	case "02 Image-17-1":	return "Doctor Dark&rsquo;s Diary";
 	case "02 Image-34-2":	return "BASIC";
@@ -5269,4 +5337,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-05 18:36:32 +0200 (So, 05. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-08 19:20:53 +0200 (Mi, 08. Apr 2026) $ -->
