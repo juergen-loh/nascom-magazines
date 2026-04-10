@@ -3438,10 +3438,15 @@ function imageDescInmc80News($issue, $name)
 
 	case "01 Image-03-1":	return "D. R. Hunt";
 
-	case "01 Image-48-1":	return "Lawrence";
+	case "01 Image-48-1":
+	case "03 Image-48-5":	return "Lawrence";
 
 	case "02 Image-54-1":
-	case "02 Image-55-1":	return "Advertising";
+	case "02 Image-55-1":
+	case "03 Image-54-1":
+	case "03 Image-55-1":
+	case "03 Image-55-2":
+	case "03 Image-55-3":	return "Advertising";
 
 	case "01 Image-13-2":
 	case "01 Image-13-3":
@@ -3472,7 +3477,10 @@ function imageDescInmc80News($issue, $name)
 	case "02 Image-58-3":
 	case "02 Image-59-1":
 	case "02 Image-59-2":
-	case "02 Image-59-3":	return "Hex Dump";
+	case "02 Image-59-3":
+	case "03 Image-05-1":
+	case "03 Image-09-1":
+	case "03 Image-13-1":	return "Hex Dump";
 
 	case "01 Image-08-1":
 	case "02 Image-14-1":
@@ -3485,7 +3493,20 @@ function imageDescInmc80News($issue, $name)
 	case "02 Image-33-1":
 	case "02 Image-34-1":
 	case "02 Image-38-1":
-	case "02 Image-39-1":	return "Assembler Listing";
+	case "02 Image-39-1":
+	case "03 Image-09-2":
+	case "03 Image-11-1":
+	case "03 Image-12-1":
+	case "03 Image-13-2":
+	case "03 Image-36-1":
+	case "03 Image-34-1":
+	case "03 Image-37-1":
+	case "03 Image-38-1":
+	case "03 Image-38-2":
+	case "03 Image-41-1":
+	case "03 Image-42-1":
+	case "03 Image-47-1":
+	case "03 Image-48-1":	return "Assembler Listing";
 
 	case "02 Image-39-2":	return "Symbol Table";
 
@@ -3513,7 +3534,14 @@ function imageDescInmc80News($issue, $name)
 	case "02 Image-35-2":
 	case "02 Image-50-1":
 	case "02 Image-50-2":
-	case "02 Image-51-1":	return "BASIC Listing";
+	case "02 Image-51-1":
+	case "03 Image-04-1":
+	case "03 Image-43-1":
+	case "03 Image-45-1":
+	case "03 Image-48-2":
+	case "03 Image-48-3":
+	case "03 Image-51-2":
+	case "03 Image-51-3":	return "BASIC Listing";
 
 	case "01 Image-05-1":
 	case "01 Image-17-3":
@@ -3526,7 +3554,19 @@ function imageDescInmc80News($issue, $name)
 	case "01 Image-25-1":
 	case "01 Image-45-1":
 	case "02 Image-23-1":
-	case "02 Image-23-3":	return "Circuit Diagram";
+	case "02 Image-23-3":
+	case "03 Image-06-1":
+	case "03 Image-11-2":
+	case "03 Image-14-1":
+	case "03 Image-14-2":
+	case "03 Image-15-1":
+	case "03 Image-15-2":
+	case "03 Image-30-1":
+	case "03 Image-42-2":
+	case "03 Image-46-1":
+	case "03 Image-48-1":
+	case "03 Image-51-1":
+	case "03 Image-53-1":	return "Circuit Diagram";
 
 	case "02 Image-36-1":	return "Component Placement";
 
@@ -3570,6 +3610,8 @@ function imageDescInmc80News($issue, $name)
 	case "02 Image-54-2":	return "JOIN US HERE";
 
 	// 03
+	case "03 Image-48-4":	return "Aaaagghhhh";
+
 	case "03 Image-01-1":	return "INMC 80 NEWS Issue: 3";
 	case "03 Image-16-1":	return "32K&rarr;48K Expansion";
 	case "03 Image-20-1":	return "Doctor Dark&rsquo;s Diary";
@@ -4867,6 +4909,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "EV814":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm814.htm";				break;
 	case "Exidy Sorcerer":			$url = "https://en.wikipedia.org/wiki/Exidy_Sorcerer";							break;
 	case "Fachhochschule Köln":		$url = "https://www.th-koeln.de/";												break;
+	case "FD1771":					$url = "https://en.wikipedia.org/wiki/Western_Digital_FD1771";					break;
 	case "FDC9229":					$url = "https://www.cpcwiki.eu/imgs/9/97/FDC9229BT_Datasheet.pdf";				break;
 	case "Fernmeldeamt":			$url = "https://$lang.wikipedia.org/wiki/Fernmeldeamt_(Deutsche_Bundespost)";	break;
 	case "Fernmeldehandwerker":		$url = "https://$lang.wikipedia.org/wiki/Fernmeldehandwerker";					break;
@@ -5337,4 +5380,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-08 19:20:53 +0200 (Mi, 08. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-10 17:34:51 +0200 (Fr, 10. Apr 2026) $ -->
