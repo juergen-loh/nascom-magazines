@@ -3439,7 +3439,8 @@ function imageDescInmc80News($issue, $name)
 	case "01 Image-03-1":	return "D. R. Hunt";
 
 	case "01 Image-48-1":
-	case "03 Image-48-5":	return "Lawrence";
+	case "03 Image-48-5":
+	case "05 Image-71-1":	return "Lawrence";
 
 	case "02 Image-54-1":
 	case "02 Image-55-1":
@@ -3451,7 +3452,16 @@ function imageDescInmc80News($issue, $name)
 	case "04 Image-70-1":
 	case "04 Image-70-2":
 	case "04 Image-70-3":
-	case "04 Image-71-1":	return "Advertising";
+	case "04 Image-71-1":
+	case "05 Image-68-1":
+	case "05 Image-68-2":
+	case "05 Image-68-3":
+	case "05 Image-69-1":
+	case "05 Image-69-2":
+	case "05 Image-69-3":
+	case "05 Image-70-1":
+	case "05 Image-70-2":
+	case "05 Image-70-3":	return "Advertising";
 
 	case "01 Image-13-2":
 	case "01 Image-13-3":
@@ -3486,7 +3496,14 @@ function imageDescInmc80News($issue, $name)
 	case "03 Image-05-1":
 	case "03 Image-09-1":
 	case "03 Image-13-1":
-	case "04 Image-04-1":	return "Hex Dump";
+	case "04 Image-04-1":
+	case "05 Image-11-2":
+	case "05 Image-11-3":
+	case "05 Image-11-4":
+	case "05 Image-11-5":
+	case "05 Image-18-2":
+	case "05 Image-55-2":
+	case "05 Image-55-4":	return "Hex Dump";
 
 	case "01 Image-08-1":
 	case "02 Image-14-1":
@@ -3528,7 +3545,17 @@ function imageDescInmc80News($issue, $name)
 	case "04 Image-48-1":
 	case "04 Image-48-2":
 	case "04 Image-50-1":
-	case "04 Image-51-1":	return "Assembler Listing";
+	case "04 Image-51-1":
+	case "05 Image-10-1":
+	case "05 Image-11-1":
+	case "05 Image-24-1":
+	case "05 Image-45-1":
+	case "05 Image-45-2":
+	case "05 Image-56-1":
+	case "05 Image-57-1":
+	case "05 Image-60-1":
+	case "05 Image-61-1":
+	case "05 Image-62-1":	return "Assembler Listing";
 
 	case "02 Image-39-2":	return "Symbol Table";
 
@@ -3539,7 +3566,8 @@ function imageDescInmc80News($issue, $name)
 	case "04 Image-65-1":
 	case "04 Image-65-2":
 	case "04 Image-66-1":
-	case "04 Image-66-2":	return "ZEAP Z80 Assembler – Source Listing";
+	case "04 Image-66-2":
+	case "05 Image-55-3":	return "ZEAP Z80 Assembler – Source Listing";
 
 	case "04 Image-65-3":	return "ZEAP Z80 Assembler – Symbol Table";
 
@@ -3572,7 +3600,8 @@ function imageDescInmc80News($issue, $name)
 	case "03 Image-51-2":
 	case "03 Image-51-3":
 	case "04 Image-67-1":
-	case "04 Image-68-1":	return "BASIC Listing";
+	case "04 Image-68-1":
+	case "05 Image-65-1":	return "BASIC Listing";
 
 	case "04 Image-40-1":	return "Flowchart";
 
@@ -3599,9 +3628,18 @@ function imageDescInmc80News($issue, $name)
 	case "03 Image-46-1":
 	case "03 Image-48-1":
 	case "03 Image-51-1":
-	case "03 Image-53-1":	return "Circuit Diagram";
+	case "03 Image-53-1":
+	case "05 Image-21-1":
+	case "05 Image-27-1":
+	case "05 Image-29-1":	return "Circuit Diagram";
 
-	case "02 Image-36-1":	return "Component Placement";
+	case "05 Image-31-1":	return "PCB Layout";
+
+	case "02 Image-36-1":
+	case "05 Image-33-1":
+	case "05 Image-33-2":
+	case "05 Image-33-3":
+	case "05 Image-33-4":	return "Component Placement";
 
 	case "02 Image-23-2":	return "Mechanical Drawing";
 
@@ -3696,6 +3734,9 @@ function imageDescInmc80News($issue, $name)
 	case "04 Image-68-2":	return "IMPERSONAL";
 
 	// 05
+	case "05 Image-08-1":	return "Mike Hessey";
+	case "05 Image-65-2":	return "*-------*";
+
 	case "05 Image-01-1":	return "INMC 80 NEWS Issue: 5";
 	case "05 Image-02-1":	return "The&lsquo;DH&rsquo;Show";
 	case "05 Image-07-1":	return "LETTERS";
@@ -5438,4 +5479,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-11 18:20:11 +0200 (Sa, 11. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-11 21:02:10 +0200 (Sa, 11. Apr 2026) $ -->
