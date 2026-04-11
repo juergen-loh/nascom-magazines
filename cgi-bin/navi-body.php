@@ -4653,7 +4653,30 @@ function imageDescMicropower($issue, $name)
 	case "23 Image--1-1":
 	case "24 Image--1-1":	return "&micro;P";
 
+	case "11 Image-19-3":	return " ";
+
+	case "11 Image-15-1":
+	case "11 Image-33-1":	return "Advertising";
+
+	case "11 Image-19-1":
+	case "11 Image-19-2":	return "IO systems ltd.";
+
+	case "11 Image-04-1":
+	case "11 Image-25-1":
+	case "11 Image-25-2":
+	case "11 Image-26-1":	return "Circuit Diagram";
+
+	case "11 Image-26-2":	return "Layout";
+
+	case "11 Image-24-1":
+	case "11 Image-24-2":
+	case "11 Image-24-3":	return "Timing Diagram";
+
+	case "11 Image-04-2":	return "Device Pin-Out";
+
 	// 11
+	case "11 Image-24-4":	return "-o-";
+
 	case "11 Image--1-2":	return "NASA";
 
 	// 21
@@ -5479,4 +5502,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-11 21:02:10 +0200 (Sa, 11. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-11 21:19:59 +0200 (Sa, 11. Apr 2026) $ -->
