@@ -4655,7 +4655,9 @@ function imageDescMicropower($issue, $name)
 
 	case "11 Image-19-3":
 	case "12 Image--1-1":
-	case "12 Image-19-3":	return " ";
+	case "12 Image-19-3":
+	case "13 Image--1-2":
+	case "14 Image--1-2":	return " ";
 
 	case "11 Image-15-1":
 	case "11 Image-33-1":
@@ -4663,20 +4665,35 @@ function imageDescMicropower($issue, $name)
 	case "12 Image-11-1":
 	case "12 Image-33-1":
 	case "12 Image-33-2":
-	case "12 Image-33-3":	return "Advertising";
+	case "12 Image-33-3":
+	case "13 Image-00-1":
+	case "13 Image-19-1":
+	case "13 Image-19-2":
+	case "13 Image-25-1":
+	case "13 Image-33-1":
+	case "14 Image-00-1":
+	case "14 Image-09-1":
+	case "14 Image-10-1":
+	case "14 Image-22-1":
+	case "14 Image-33-1":	return "Advertising";
 
 	case "11 Image-19-1":
 	case "11 Image-19-2":
 	case "12 Image-19-1":
 	case "12 Image-19-2":	return "IO systems ltd.";
 
+	case "13 Image-17-1":	return "Hex Dump";
+
 	case "11 Image-04-1":
 	case "11 Image-25-1":
 	case "11 Image-25-2":
 	case "11 Image-26-1":
-	case "12 Image-07-1":	return "Circuit Diagram";
+	case "12 Image-07-1":
+	case "13 Image-09-1":
+	case "13 Image-21-1":	return "Circuit Diagram";
 
-	case "11 Image-26-2":	return "Layout";
+	case "11 Image-26-2":
+	case "13 Image-09-2":	return "Layout";
 
 	case "11 Image-24-1":
 	case "11 Image-24-2":
@@ -5515,4 +5532,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-11 21:24:18 +0200 (Sa, 11. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-11 23:55:23 +0200 (Sa, 11. Apr 2026) $ -->
