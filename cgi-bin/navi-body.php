@@ -4675,14 +4675,27 @@ function imageDescMicropower($issue, $name)
 	case "14 Image-09-1":
 	case "14 Image-10-1":
 	case "14 Image-22-1":
-	case "14 Image-33-1":	return "Advertising";
+	case "14 Image-33-1":
+	case "21 Image-00-1":
+	case "21 Image-07-1":
+	case "21 Image-11-1":
+	case "21 Image-17-1":
+	case "21 Image-27-1":
+	case "21 Image-27-2":
+	case "21 Image-37-1":	return "Advertising";
 
 	case "11 Image-19-1":
 	case "11 Image-19-2":
 	case "12 Image-19-1":
 	case "12 Image-19-2":	return "IO systems ltd.";
 
-	case "13 Image-17-1":	return "Hex Dump";
+	case "13 Image-17-1":
+	case "21 Image-34-1":
+	case "21 Image-35-1":
+	case "21 Image-36-1":	return "Hex Dump";
+
+	case "21 Image-06-1":
+	case "21 Image-06-2":	return "Flowchart";
 
 	case "11 Image-04-1":
 	case "11 Image-25-1":
@@ -4690,14 +4703,25 @@ function imageDescMicropower($issue, $name)
 	case "11 Image-26-1":
 	case "12 Image-07-1":
 	case "13 Image-09-1":
-	case "13 Image-21-1":	return "Circuit Diagram";
+	case "13 Image-21-1":
+	case "21 Image-02-1":
+	case "21 Image-03-1":
+	case "21 Image-03-2":
+	case "21 Image-05-1":
+	case "21 Image-09-1":
+	case "21 Image-18-1":
+	case "21 Image-19-1":	return "Circuit Diagram";
 
 	case "11 Image-26-2":
-	case "13 Image-09-2":	return "Layout";
+	case "13 Image-09-2":
+	case "21 Image-10-1":
+	case "21 Image-20-1":	return "Layout";
 
 	case "11 Image-24-1":
 	case "11 Image-24-2":
-	case "11 Image-24-3":	return "Timing Diagram";
+	case "11 Image-24-3":
+	case "21 Image-04-1":
+	case "21 Image-04-2":	return "Timing Diagram";
 
 	case "11 Image-04-2":	return "Device Pin-Out";
 
@@ -5532,4 +5556,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-11 23:55:23 +0200 (Sa, 11. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 00:01:36 +0200 (So, 12. Apr 2026) $ -->
