@@ -2,8 +2,8 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    37</span>
 
-EA70 013A       DATA:   DEFB    (LD BC,":")     ; ":" End of statement
-EA72 0E00       REM:    LD      C,0             ; 00  End of statement
+<span id="EA70">EA70 013A       DATA:   DEFB    (LD BC,":")     ; ":" End of statement</span>
+<span id="EA72">EA72 0E00       REM:    LD      C,0             ; 00  End of statement</span>
 EA74 0600               LD      B,0
 EA76 79         NXTSTL: LD      A,C             ; Statement and byte
 EA77 48                 LD      C,B
@@ -18,7 +18,7 @@ EA7F FE22               CP      '"'             ; Literal string?
 EA81 CA76EA             JP      Z,NXTSTL        ; Yes - Look for another '"'
 EA84 C379EA             JP      NXTSTT          ; Keep looking
 
-EA87 CD2DEF     LET:    CALL    GETVAR          ; Get variable name
+<span id="EA87">EA87 CD2DEF     LET:    CALL    GETVAR          ; Get variable name</span>
 EA8A CD90E6             CALL    CHKSYN          ; Make sure "=" follows
 EA8D B4                 DEFB    ZEQUAL          ; "=" token
 EA8E D5                 PUSH    DE              ; Save address of variable
@@ -70,7 +70,7 @@ EADE D1                 POP     DE              ; Restore address of variable
 EADF E1                 POP     HL              ; Restore code string address
 EAE0 C9                 RET
 
-EAE1 CD84F4     ON:     CALL    GETINT          ; Get integer 0-255
+<span id="EAE1">EAE1 CD84F4     ON:     CALL    GETINT          ; Get integer 0-255</span>
 EAE4 7E                 LD      A,(HL)          ; Get "GOTO" or "GOSUB" token
 EAE5 47                 LD      B,A             ; Save in B
 EAE6 FE8C               CP      ZGOSUB          ; "GOSUB" token?
@@ -87,7 +87,7 @@ EAF9 FE2C               CP      ","             ; Another line number?
 EAFB C0                 RET     NZ              ; No - Drop through
 EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
 
-EAFF CD5AED     IF:     CALL    EVAL            ; Evaluate expression
+<span id="EAFF">EAFF CD5AED     IF:     CALL    EVAL            ; Evaluate expression</span>
 EB02 7E                 LD      A,(HL)          ; Get token
 EB03 FE88               CP      ZGOTO           ; "GOTO" token?
 EB05 CA0DEB             JP      Z,IFGO          ; Yes - Get line

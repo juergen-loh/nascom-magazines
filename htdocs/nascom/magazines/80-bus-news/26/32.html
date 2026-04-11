@@ -65,7 +65,7 @@ EBF4 21D9EB             LD      HL,REDO         ; "Redo from start" message
 EBF7 CD10F2             CALL    PRS             ; Output string
 EBFA C3F8E4             JP      DOAGN           ; Do last INPUT again
 
-EBFD CD7BF1     INPUT:  CALL    IDTEST          ; Test for illegal direct
+<span id="EBFD">EBFD CD7BF1     INPUT:  CALL    IDTEST          ; Test for illegal direct</span>
 EC00 7E                 LD      A,(HL)          ; Get character after "INPUT"
 EC01 FE22               CP      '"'             ; Is there a prompt string?
 EC03 3E00               LD      A,0             ; Clear A and leave flags
@@ -90,7 +90,7 @@ EC24 CA6FEA             JP      Z,NXTDTA        ; Yes - Find next DATA stmt
 EC27 362C               LD      (HL),","        ; Store comma as separator
 EC29 C331EC             JP      NXTITM          ; Get next item
 
-EC2C E5         READ:   PUSH    HL              ; Save code string address
+<span id="EC2C">EC2C E5         READ:   PUSH    HL              ; Save code string address</span>
 EC2D 2ADC10             LD      HL,(NXTDAT)     ; Next DATA statement
 EC30 F6                 DEFB    (OR n)          ; Flag "READ"
 EC31 AF         NXTITM: XOR     A               ; Flag "INPUT"

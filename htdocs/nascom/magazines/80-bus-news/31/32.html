@@ -27,11 +27,11 @@ F58E 46696C65   FILE:   DEFB    "File ",0
 F594 20466F75   FOUND:  DEFB    " Found",CR,LF,0
 F59D 42616400   BAD:    DEFB    "Bad",0,0,0
 
-F5A3 CD8BE9     PEEK:   CALL    DEINT           ; Get memory address
+<span id="F5A3">F5A3 CD8BE9     PEEK:   CALL    DEINT           ; Get memory address</span>
 F5A6 1A                 LD      A,(DE)          ; Get byte in memory
 F5A7 C301F1             JP      PASSA           ; Return integer A
 
-F5AA CD41ED     POKE:   CALL    GETNUM          ; Get memory address
+<span id="F5AA">F5AA CD41ED     POKE:   CALL    GETNUM          ; Get memory address</span>
 F5AD CD8BE9             CALL    DEINT           ; Get integer -32768 to 3276
 F5B0 D5                 PUSH    DE              ; Save memory address
 F5B1 CD90E6             CALL    CHKSYN          ; Make sure "," follows

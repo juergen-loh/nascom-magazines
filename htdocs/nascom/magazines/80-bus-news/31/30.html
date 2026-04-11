@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    67</span>
 
-F3EC EB         MID:    EX      DE,HL           ; Get code string address
+<span id="F3EC">F3EC EB         MID:    EX      DE,HL           ; Get code string address</span>
 F3ED 7E                 LD      A,(HL)          ; Get next byte "," or ")"
 F3EE CD3CF4             CALL    MIDNUM          ; Get number supplied
 F3F1 04                 INC     B               ; Is it character zero?
@@ -34,7 +34,7 @@ F419 D8                 RET     C               ; Truncate string if needed
 F41A 43                 LD      B,E             ; Set specified length
 F41B C9                 RET                     ; Go and create string
 
-F41C CD86F3     VAL:    CALL    GETLEN          ; Get length of string
+<span id="F41C">F41C CD86F3     VAL:    CALL    GETLEN          ; Get length of string</span>
 F41F CA33F6             JP      Z,RESZER        ; Result zero
 F422 5F                 LD      E,A             ; Save length
 F423 23                 INC     HL
@@ -69,15 +69,15 @@ F43E C5                 PUSH    BC              ; Re-save return address
 F43F 43                 LD      B,E             ; Number to B
 F440 C9                 RET
 
-F441 CD87F4     INP:    CALL    MAKINT          ; Make it integer A
+<span id="F441">F441 CD87F4     INP:    CALL    MAKINT          ; Make it integer A</span>
 F444 323F10             LD      (INPORT),A      ; Set input port
 F447 CD3E10             CALL    INPSUB          ; Get input from port
 F44A C301F1             JP      PASSA           ; Return integer A
 
 F44D CD71F4     POUT:   CALL    SETIO           ; Set up port number
-F450 C30610             JP      OUTSUB          ; Output data and return
+<span id="F450">F450 C30610             JP      OUTSUB          ; Output data and return</span>
 
-F453 CD71F4     WAIT:   CALL    SETIO           ; Set up port number
+<span id="F453">F453 CD71F4     WAIT:   CALL    SETIO           ; Set up port number</span>
 F456 F5                 PUSH    AF              ; Save AND mask
 F457 1E00               LD      E,0             ; Assume zero if none given
 F459 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
