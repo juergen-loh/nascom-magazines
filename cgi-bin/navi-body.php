@@ -4704,7 +4704,14 @@ function imageDescMicropower($issue, $name)
 	case "23 Image-35-1":
 	case "23 Image-35-2":
 	case "23 Image-35-3":
-	case "23 Image-37-1":	return "Advertising";
+	case "23 Image-37-1":
+	case "24 Image-00-1":
+	case "24 Image-07-2":
+	case "24 Image-23-1":
+	case "24 Image-23-2":
+	case "24 Image-23-3":
+	case "24 Image-33-1":
+	case "24 Image-36-1":	return "Advertising";
 
 	case "11 Image-19-1":
 	case "11 Image-19-2":
@@ -4719,11 +4726,22 @@ function imageDescMicropower($issue, $name)
 	case "22 Image-35-1":
 	case "22 Image-36-1":
 	case "23 Image-30-1":
-	case "23 Image-31-1":	return "Hex Dump";
+	case "23 Image-31-1":
+	case "24 Image-34-1":
+	case "24 Image-35-1":	return "Hex Dump";
+
+	case "24 Image-05-1":
+	case "24 Image-06-1":
+	case "24 Image-07-1":
+	case "24 Image-18-1":
+	case "24 Image-29-1":
+	case "24 Image-32-1":	return "Assembler Listing";
 
 	case "23 Image-05-1":
 	case "23 Image-29-1":
-	case "23 Image-36-1":	return "BASIC-Listing";
+	case "23 Image-36-1":
+	case "24 Image-24-1":
+	case "24 Image-24-2":	return "BASIC Listing";
 
 	case "21 Image-06-1":
 	case "21 Image-06-2":	return "Flowchart";
@@ -4752,13 +4770,20 @@ function imageDescMicropower($issue, $name)
 	case "23 Image-18-1":
 	case "23 Image-20-1":
 	case "23 Image-28-2":
-	case "23 Image-28-3":	return "Circuit Diagram";
+	case "23 Image-28-3":
+	case "24 Image-13-1":
+	case "24 Image-22-1":
+	case "24 Image-30-1":
+	case "24 Image-32-2":	return "Circuit Diagram";
 
 	case "11 Image-26-2":
 	case "13 Image-09-2":
 	case "21 Image-10-1":
 	case "21 Image-20-1":
-	case "23 Image-20-2":	return "Layout";
+	case "23 Image-20-2":
+	case "24 Image-11-1":
+	case "24 Image-19-1":
+	case "24 Image-19-2":	return "Layout";
 
 	case "11 Image-24-1":
 	case "11 Image-24-2":
@@ -4769,7 +4794,8 @@ function imageDescMicropower($issue, $name)
 	case "23 Image-12-1":	return "Timing Diagram";
 
 	case "11 Image-04-2":
-	case "23 Image-02-1":	return "Device Pin-Out";
+	case "23 Image-02-1":
+	case "24 Image-30-2":	return "Device Pin-Out";
 
 	// 11
 	case "11 Image-24-4":	return "-o-";
@@ -4783,6 +4809,9 @@ function imageDescMicropower($issue, $name)
 
 	// 23
 	case "23 Image-28-1":	return "Truth Table";
+
+	// 24
+	case "24 Image--1-2":	return "NASCOM approved product Lucas Logic";
 	}
 	return "";
 }
@@ -5604,4 +5633,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 07:59:40 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 08:07:04 +0200 (So, 12. Apr 2026) $ -->
