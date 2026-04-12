@@ -4863,7 +4863,14 @@ function imageDescNascomNewsletter($issue, $name)
 	case "31 Image-23-1":
 	case "31 Image-24-1":
 	case "31 Image-25-1":
-	case "31 Image-37-1":	return "Advertising";
+	case "31 Image-37-1":
+	case "32 Image-14-1":
+	case "32 Image-14-2":
+	case "32 Image-14-3":
+	case "32 Image-20-1":
+	case "32 Image-21-1":
+	case "32 Image-36-2":
+	case "32 Image-36-3":	return "Advertising";
 
 	case "26 Image-13-2":
 	case "31 Image-07-1":
@@ -4882,17 +4889,32 @@ function imageDescNascomNewsletter($issue, $name)
 	case "26 Image-12-1":
 	case "26 Image-37-1":
 	case "31 Image-35-2":
-	case "31 Image-36-1":	return "Assembler Listing";
+	case "31 Image-36-1":
+	case "32 Image-06-1":
+	case "32 Image-10-1":
+	case "32 Image-11-1":
+	case "32 Image-12-1":
+	case "32 Image-13-1":
+	case "32 Image-17-1":
+	case "32 Image-18-1":
+	case "32 Image-19-1":
+	case "32 Image-32-1":
+	case "32 Image-33-1":
+	case "32 Image-34-1":
+	case "32 Image-35-1":
+	case "32 Image-36-1":	return "Assembler Listing";
 
 	case "31 Image-34-1":
 	case "31 Image-34-2":
-	case "31 Image-35-1":	return "BASIC Listing";
+	case "31 Image-35-1":
+	case "32 Image-31-1":	return "BASIC Listing";
 
 	case "31 Image-00-1":	return "Screenshot";
 
 	case "26 Image-06-1":
 	case "26 Image-14-1":
-	case "26 Image-18-1":	return "Circuit Diagram";
+	case "26 Image-18-1":
+	case "32 Image-13-2":	return "Circuit Diagram";
 
 	case "25 Image-15-1":
 	case "25 Image-15-2":
@@ -5717,4 +5739,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 08:46:02 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 08:50:13 +0200 (So, 12. Apr 2026) $ -->
