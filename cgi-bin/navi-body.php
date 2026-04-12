@@ -4851,9 +4851,23 @@ function imageDescNascomNewsletter($issue, $name)
 	case "26 Image-28-1":
 	case "26 Image-34-1":
 	case "26 Image-35-1":
-	case "26 Image-41-1":	return "Advertising";
+	case "26 Image-41-1":
+	case "31 Image-04-1":
+	case "31 Image-06-1":
+	case "31 Image-15-1":
+	case "31 Image-15-2":
+	case "31 Image-15-3":
+	case "31 Image-21-1":
+	case "31 Image-21-2":
+	case "31 Image-21-3":
+	case "31 Image-23-1":
+	case "31 Image-24-1":
+	case "31 Image-25-1":
+	case "31 Image-37-1":	return "Advertising";
 
-	case "26 Image-13-2":	return "Hex Dump";
+	case "26 Image-13-2":
+	case "31 Image-07-1":
+	case "31 Image-08-1":	return "Hex Dump";
 
 	case "25 Image-08-1":
 	case "25 Image-09-1":
@@ -4866,7 +4880,15 @@ function imageDescNascomNewsletter($issue, $name)
 	case "26 Image-07-1":
 	case "26 Image-08-1":
 	case "26 Image-12-1":
-	case "26 Image-37-1":	return "Assembler Listing";
+	case "26 Image-37-1":
+	case "31 Image-35-2":
+	case "31 Image-36-1":	return "Assembler Listing";
+
+	case "31 Image-34-1":
+	case "31 Image-34-2":
+	case "31 Image-35-1":	return "BASIC Listing";
+
+	case "31 Image-00-1":	return "Screenshot";
 
 	case "26 Image-06-1":
 	case "26 Image-14-1":
@@ -4889,6 +4911,7 @@ function imageDescNascomNewsletter($issue, $name)
 	case "26 Image--1-1":	return "Nascom Newsletter$nl"."Volume 2 Number 6";
 
 	// 31
+	case "31 Image-02-1":	return "Floppy Disk";
 	case "31 Image--1-1":	return "Nascom Newsletter$nl"."Volume 3 Number 1$nl"."April 1983$nl$nl"."The Nascom Network has been up and running since last summer";
 
 	// 32
@@ -5694,4 +5717,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 08:39:28 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 08:46:02 +0200 (So, 12. Apr 2026) $ -->
