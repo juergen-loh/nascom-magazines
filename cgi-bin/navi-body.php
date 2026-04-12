@@ -4884,11 +4884,22 @@ function imageDescNascomNewsletter($issue, $name)
 	case "34 Image-21-2":
 	case "34 Image-21-3":
 	case "34 Image-29-1":
-	case "34 Image-37-1":	return "Advertising";
+	case "34 Image-37-1":
+	case "35 Image-17-2":
+	case "35 Image-17-3":
+	case "35 Image-44-1":
+	case "35 Image-67-1":
+	case "35 Image-67-2":
+	case "35 Image-67-3":
+	case "35 Image-68-1":
+	case "35 Image-68-2":
+	case "35 Image-69-1":	return "Advertising";
 
 	case "26 Image-13-2":
 	case "31 Image-07-1":
-	case "31 Image-08-1":	return "Hex Dump";
+	case "31 Image-08-1":
+	case "35 Image-06-1":
+	case "35 Image-34-1":	return "Hex Dump";
 
 	case "25 Image-08-1":
 	case "25 Image-09-1":
@@ -4931,7 +4942,54 @@ function imageDescNascomNewsletter($issue, $name)
 	case "33 Image-36-1":
 	case "34 Image-25-1":
 	case "34 Image-26-1":
-	case "34 Image-28-1":	return "Assembler Listing";
+	case "34 Image-28-1":
+	case "35 Image-05-1":
+	case "35 Image-07-1":
+	case "35 Image-05-1":
+	case "35 Image-08-1":
+	case "35 Image-08-2":
+	case "35 Image-08-3":
+	case "35 Image-08-4":
+	case "35 Image-08-5":
+	case "35 Image-08-6":
+	case "35 Image-08-7":
+	case "35 Image-09-1":
+	case "35 Image-09-2":
+	case "35 Image-09-3":
+	case "35 Image-09-4":
+	case "35 Image-09-5":
+	case "35 Image-09-6":
+	case "35 Image-10-1":
+	case "35 Image-10-2":
+	case "35 Image-10-3":
+	case "35 Image-14-1":
+	case "35 Image-21-1":
+	case "35 Image-22-1":
+	case "35 Image-23-1":
+	case "35 Image-24-1":
+	case "35 Image-25-1":
+	case "35 Image-26-1":
+	case "35 Image-27-1":
+	case "35 Image-28-1":
+	case "35 Image-31-1":
+	case "35 Image-32-1":
+	case "35 Image-33-1":
+	case "35 Image-36-1":
+	case "35 Image-36-2":
+	case "35 Image-38-1":
+	case "35 Image-39-1":
+	case "35 Image-40-1":
+	case "35 Image-41-1":
+	case "35 Image-42-1":
+	case "35 Image-43-1":
+	case "35 Image-53-1":
+	case "35 Image-57-1":
+	case "35 Image-58-1":
+	case "35 Image-60-1":
+	case "35 Image-61-1":
+	case "35 Image-62-1":
+	case "35 Image-63-1":
+	case "35 Image-66-1":	return "Assembler Listing";
 
 	case "34 Image-14-1":
 	case "34 Image-15-1":	return "ZEAP Z80 Assembler – Source Listing";
@@ -4943,7 +5001,15 @@ function imageDescNascomNewsletter($issue, $name)
 	case "34 Image-19-1":
 	case "34 Image-20-1":
 	case "34 Image-21-1":
-	case "34 Image-26-2":	return "BASIC Listing";
+	case "34 Image-26-2":
+	case "35 Image-16-1":
+	case "35 Image-17-1":
+	case "35 Image-54-1":
+	case "35 Image-54-2":
+	case "35 Image-55-1":
+	case "35 Image-55-2":
+	case "35 Image-55-3":
+	case "35 Image-55-4":	return "BASIC Listing";
 
 	case "31 Image-00-1":
 	case "33 Image-00-1":
@@ -4958,7 +5024,19 @@ function imageDescNascomNewsletter($issue, $name)
 	case "33 Image-22-1":
 	case "34 Image-12-1":
 	case "34 Image-13-1":
-	case "34 Image-13-3":	return "Circuit Diagram";
+	case "34 Image-13-3":
+	case "35 Image-19-1":
+	case "35 Image-20-1":
+	case "35 Image-30-1":
+	case "35 Image-50-1":
+	case "35 Image-51-2":
+	case "35 Image-52-1":
+	case "35 Image-56-1":
+	case "35 Image-56-2":
+	case "35 Image-59-1":
+	case "35 Image-59-2":	return "Circuit Diagram";
+
+	case "35 Image-51-1":	return "Component Placement";
 
 	case "25 Image-15-1":
 	case "25 Image-15-2":
@@ -5785,4 +5863,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 09:01:00 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 09:17:33 +0200 (So, 12. Apr 2026) $ -->
