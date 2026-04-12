@@ -4821,7 +4821,35 @@ function imageDescNascomNewsletter($issue, $name)
 	global $nl;
 
 	switch ("$issue $name") {
+	case "25 Image-17-1":	return "&micro;P";
+
+	case "25 Image-00-1":
+	case "25 Image-06-1":
+	case "25 Image-07-1":
+	case "25 Image-16-1":
+	case "25 Image-16-2":
+	case "25 Image-22-1":
+	case "25 Image-22-2":
+	case "25 Image-23-1":
+	case "25 Image-23-2":
+	case "25 Image-23-3":
+	case "25 Image-23-4":
+	case "25 Image-28-1":
+	case "25 Image-37-1":	return "Advertising";
+
+	case "25 Image-08-1":
+	case "25 Image-09-1":
+	case "25 Image-10-1":
+	case "25 Image-11-1":
+	case "25 Image-12-1":
+	case "25 Image-24-1":
+	case "25 Image-25-1":	return "Assembler Listing";
+
+	case "25 Image-15-1":
+	case "25 Image-15-2":	return "Layout";
+
 	// 25
+	case "25 Image-17-2":	return "M";
 	case "25 Image--1-1":	return "Nascom means performance$nl"."Nascom means solutions";
 
 	// 26
@@ -5633,4 +5661,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 08:07:04 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 08:12:58 +0200 (So, 12. Apr 2026) $ -->
