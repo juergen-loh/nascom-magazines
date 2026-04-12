@@ -3353,7 +3353,8 @@ function imageDescInmcNews($issue, $name)
 	case "07 Image-18-1":	return "BASIC Listing";
 
 	case "07 Image-10-1":
-	case "07 Image-16-1":	return "Screenshot";
+	case "07 Image-16-1":
+	case "04 Image-17-2":	return "Screenshot";
 
 	case "01 Image-02-1":
 	case "01 Image-02-2":
@@ -4654,7 +4655,7 @@ function imageDescMicropower($issue, $name)
 	case "24 Image--1-1":	return "&micro;P";
 
 	case "11 Image-19-3":
-	case "12 Image--1-1":
+	case "12 Image--1-2":
 	case "12 Image-19-3":
 	case "13 Image--1-2":
 	case "14 Image--1-2":
@@ -5863,4 +5864,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 09:17:33 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 09:34:56 +0200 (So, 12. Apr 2026) $ -->
