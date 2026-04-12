@@ -4657,7 +4657,9 @@ function imageDescMicropower($issue, $name)
 	case "12 Image--1-1":
 	case "12 Image-19-3":
 	case "13 Image--1-2":
-	case "14 Image--1-2":	return " ";
+	case "14 Image--1-2":
+	case "22 Image--1-2":
+	case "23 Image--1-2":	return " ";
 
 	case "11 Image-15-1":
 	case "11 Image-33-1":
@@ -4682,7 +4684,27 @@ function imageDescMicropower($issue, $name)
 	case "21 Image-17-1":
 	case "21 Image-27-1":
 	case "21 Image-27-2":
-	case "21 Image-37-1":	return "Advertising";
+	case "21 Image-37-1":
+	case "22 Image-00-1":
+	case "22 Image-04-2":
+	case "22 Image-11-1":
+	case "22 Image-21-1":
+	case "22 Image-29-1":
+	case "22 Image-29-2":
+	case "22 Image-29-3":
+	case "22 Image-37-1":
+	case "22 Image-37-2":
+	case "22 Image-37-3":
+	case "23 Image-00-1":
+	case "23 Image-21-1":
+	case "23 Image-26-1":
+	case "23 Image-26-2":
+	case "23 Image-26-3":
+	case "23 Image-26-4":
+	case "23 Image-35-1":
+	case "23 Image-35-2":
+	case "23 Image-35-3":
+	case "23 Image-37-1":	return "Advertising";
 
 	case "11 Image-19-1":
 	case "11 Image-19-2":
@@ -4692,7 +4714,16 @@ function imageDescMicropower($issue, $name)
 	case "13 Image-17-1":
 	case "21 Image-34-1":
 	case "21 Image-35-1":
-	case "21 Image-36-1":	return "Hex Dump";
+	case "21 Image-36-1":
+	case "22 Image-34-1":
+	case "22 Image-35-1":
+	case "22 Image-36-1":
+	case "23 Image-30-1":
+	case "23 Image-31-1":	return "Hex Dump";
+
+	case "23 Image-05-1":
+	case "23 Image-29-1":
+	case "23 Image-36-1":	return "BASIC-Listing";
 
 	case "21 Image-06-1":
 	case "21 Image-06-2":	return "Flowchart";
@@ -4710,24 +4741,38 @@ function imageDescMicropower($issue, $name)
 	case "21 Image-05-1":
 	case "21 Image-09-1":
 	case "21 Image-18-1":
-	case "21 Image-19-1":	return "Circuit Diagram";
+	case "21 Image-19-1":
+	case "22 Image-02-1":
+	case "22 Image-03-1":
+	case "22 Image-04-1":
+	case "22 Image-19-1":
+	case "22 Image-28-1":
+	case "23 Image-04-1":
+	case "23 Image-11-2":
+	case "23 Image-18-1":
+	case "23 Image-20-1":
+	case "23 Image-28-2":
+	case "23 Image-28-3":	return "Circuit Diagram";
 
 	case "11 Image-26-2":
 	case "13 Image-09-2":
 	case "21 Image-10-1":
-	case "21 Image-20-1":	return "Layout";
+	case "21 Image-20-1":
+	case "23 Image-20-2":	return "Layout";
 
 	case "11 Image-24-1":
 	case "11 Image-24-2":
 	case "11 Image-24-3":
 	case "21 Image-04-1":
-	case "21 Image-04-2":	return "Timing Diagram";
+	case "21 Image-04-2":
+	case "23 Image-11-1":
+	case "23 Image-12-1":	return "Timing Diagram";
 
-	case "11 Image-04-2":	return "Device Pin-Out";
+	case "11 Image-04-2":
+	case "23 Image-02-1":	return "Device Pin-Out";
 
 	// 11
 	case "11 Image-24-4":	return "-o-";
-
 	case "11 Image--1-2":	return "NASA";
 
 	// 12
@@ -4735,6 +4780,9 @@ function imageDescMicropower($issue, $name)
 
 	// 21
 	case "21 Image--1-2":	return "Moon Raider";
+
+	// 23
+	case "23 Image-28-1":	return "Truth Table";
 	}
 	return "";
 }
@@ -5556,4 +5604,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 00:01:36 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 07:59:40 +0200 (So, 12. Apr 2026) $ -->
