@@ -4876,7 +4876,15 @@ function imageDescNascomNewsletter($issue, $name)
 	case "33 Image-07-3":
 	case "33 Image-17-2":
 	case "33 Image-23-1":
-	case "33 Image-37-1":	return "Advertising";
+	case "33 Image-37-1":
+	case "34 Image-07-1":
+	case "34 Image-16-1":
+	case "34 Image-16-2":
+	case "34 Image-16-3":
+	case "34 Image-21-2":
+	case "34 Image-21-3":
+	case "34 Image-29-1":
+	case "34 Image-37-1":	return "Advertising";
 
 	case "26 Image-13-2":
 	case "31 Image-07-1":
@@ -4920,23 +4928,37 @@ function imageDescNascomNewsletter($issue, $name)
 	case "33 Image-16-1":
 	case "33 Image-17-1":
 	case "33 Image-35-1":
-	case "33 Image-36-1":	return "Assembler Listing";
+	case "33 Image-36-1":
+	case "34 Image-25-1":
+	case "34 Image-26-1":
+	case "34 Image-28-1":	return "Assembler Listing";
+
+	case "34 Image-14-1":
+	case "34 Image-15-1":	return "ZEAP Z80 Assembler – Source Listing";
 
 	case "31 Image-34-1":
 	case "31 Image-34-2":
 	case "31 Image-35-1":
-	case "32 Image-31-1":	return "BASIC Listing";
+	case "32 Image-31-1":
+	case "34 Image-19-1":
+	case "34 Image-20-1":
+	case "34 Image-21-1":
+	case "34 Image-26-2":	return "BASIC Listing";
 
 	case "31 Image-00-1":
 	case "33 Image-00-1":
 	case "33 Image-27-1":
-	case "33 Image-28-1":	return "Screenshot";
+	case "33 Image-28-1":
+	case "34 Image-13-2":	return "Screenshot";
 
 	case "26 Image-06-1":
 	case "26 Image-14-1":
 	case "26 Image-18-1":
 	case "32 Image-13-2":
-	case "33 Image-22-1":	return "Circuit Diagram";
+	case "33 Image-22-1":
+	case "34 Image-12-1":
+	case "34 Image-13-1":
+	case "34 Image-13-3":	return "Circuit Diagram";
 
 	case "25 Image-15-1":
 	case "25 Image-15-2":
@@ -4965,6 +4987,8 @@ function imageDescNascomNewsletter($issue, $name)
 	case "33 Image--1-1":	return "Nascom Newsletter$nl"."Volume 3 Number 3$nl"."May 1983";
 
 	// 34
+	case "34 Image-12-2":	return "HEADER PLUG - D.I.L. SOCKET - I.C.";
+	case "34 Image-12-3":	return "PHOTO-DIODE - SW. 1 - 5-PIN DIN";
 	case "34 Image--1-1":	return "Nascom Newsletter$nl"."Volume 3 Number 4$nl"."December 1983";
 
 	// 35
@@ -5761,4 +5785,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 08:54:48 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-12 09:01:00 +0200 (So, 12. Apr 2026) $ -->
