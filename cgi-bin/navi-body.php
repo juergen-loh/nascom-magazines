@@ -5314,7 +5314,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "BASF 6138":				$url = "https://oldcomputers-ddns.org/public/pub/manuals/basf6138_bw.pdf";		break;
 	case "Lunar LEM Rocket":		$url = "https://www.atariarchives.org/basicgames/showpage.php?page=106";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
-	case "Bernd Ploss":				$url = "?"/*"https://www.eah-jena.de/scitec/personen/bernd-ploss"*/;			break;
+	case "Bernd Ploss":				$url = "? https://www.eah-jena.de/scitec/personen/bernd-ploss";					break;
 	case "Blue Label Software Pascal":	$url = "https://de.wikipedia.org/wiki/Turbo_Pascal#Geschichte";				break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
@@ -5681,7 +5681,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	if ($url != "") {
 		if ($url[0] == '?') {
 			// url ungültig / veraltet
-			echo $link;
+			echo "$link$delimiter";
 		} else {
 			echo "<!-- External Link -->";
 			echo "<a href=\"$url\"";
@@ -5864,4 +5864,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-12 09:34:56 +0200 (So, 12. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-18 20:51:28 +0200 (Sa, 18. Apr 2026) $ -->
