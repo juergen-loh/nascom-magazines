@@ -3,13 +3,13 @@
 <span class="uppercase">Nascom</span><br>
 ROM<br>
 BASIC<br>
-Dis&ndash;Assembled
+Dis&mdash;Assembled
 </h1>
 <h2>
 PART 6
 </h2>
 <h3 class="author uppercase">
-By Carl Lloyd&ndash;Parker
+By Carl Lloyd&mdash;Parker
 </h3>
 <?php DoublePageChange(); ?>
 <pre>
@@ -20,9 +20,9 @@ F75E 012084             LD      BC,8420H        ; BCDE = 10.
 F761 110000             LD      DE,0000H
 F764 CD54F8             CALL    FPBCDE          ; Move 10 to FPREG
 
-F767 C1         DIV:    POP     BC              ; Get number from stack
+<span id="F767">F767 C1         DIV:    POP     BC              ; Get number from stack</span>
 F768 D1                 POP     DE
-F769 CD13F8     DVBCDE: CALL    TSTSGN          ; Test sign of FPREG
+<span id="F769">F769 CD13F8     DVBCDE: CALL    TSTSGN          ; Test sign of FPREG</span>
 F76C CAB0E3             JP      Z,DZERR         ; Error if division by zero
 F76F 2EFF               LD      L,-1            ; Flag subtract exponents
 F771 CDD1F7             CALL    ADDEXP          ; Subtract exponents

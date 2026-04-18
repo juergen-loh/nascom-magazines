@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    48</span>
 
-EE33 0600       FNOFST: LD      B,0             ; Get address of function
+<span id="EE33">EE33 0600       FNOFST: LD      B,0             ; Get address of function</span>
 EE35 07                 RLCA                    ; Double function offset
 EE36 4F                 LD      C,A             ; BC = Offset in function table
 EE37 C5                 PUSH    BC              ; Save adjusted token value
@@ -38,7 +38,7 @@ EE6D 66                 LD      H,(HL)          ; Get MSB of address
 EE6E 69                 LD      L,C             ; Address to HL
 EE6F E9                 JP      (HL)            ; Jump to function
 
-EE70 15         SGNEXP: DEC     D               ; Dee to flag negative exponent
+<span id="EE70">EE70 15         SGNEXP: DEC     D               ; Dee to flag negative exponent</span>
 EE71 FEAD               CP      ZMINUS          ; "-" token&nbsp;?
 EE73 C8                 RET     Z               ; Yes - Return
 EE74 FE2D               CP      "-"             ; "-" ASCII&nbsp;?
