@@ -48,7 +48,7 @@ E7F1 33                 INC     SP              ; Don't save C
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    30</span>
 
-E7F2 CD40FD     RUNCNT: CALL    CHKBRK          ; Execution driver - Test break
+<span id="E7F2">E7F2 CD40FD     RUNCNT: CALL    CHKBRK          ; Execution driver - Test break</span>
 E7F5 B7                 OR      A               ; Break key hit?
 E7F6 C466E8             CALL    NZ,STALL        ; Yes - Pause for a key
 E7F9 22CE10             LD      (BRKLIN),HL     ; Save code address for break
@@ -69,7 +69,7 @@ E810 56                 LD      D,(HL)          ; Get MSB of line number
 E811 EB                 EX      DE,HL           ; Line number to HL
 E812 225C10             LD      (LINEAT),HL     ; Save as current line number
 E815 EB                 EX      DE,HL           ; Line number back to DE
-E816 CD36E8     EXCUTE: CALL    GETCHR          ; Get key word
+<span id="E816">E816 CD36E8     EXCUTE: CALL    GETCHR          ; Get key word</span>
 E819 11F2E7             LD      DE,RUNCNT       ; Where to RETurn to
 E81C D5                 PUSH    DE              ; Save for RETurn
 E81D C8         IFJMP:  RET     Z               ; Go to RUNCNT if end of STMT
