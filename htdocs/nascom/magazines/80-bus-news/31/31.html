@@ -32,7 +32,7 @@ F4C0 C1                 POP     BC              ; Restore BC
 F4C1 F1                 POP     AF              ; Restore byte
 F4C2 C9                 RET
 
-<span id="F4C3">F4C3 0601       CSAVE:  LD      B,1             ; Flag "CSAVE"</span>
+<span id="F4C3">F4C3</span> 0601       <span id="CSAVE">CSAVE</span>:  LD      B,1             ; Flag "CSAVE"
 F4C5 FEAE               CP      ZTIMES          ; "*" token? ("CSAVE*")
 F4C7 CABBE8             JP      Z,ARRSV1        ; Yes - Array save
 F4CA CD5AED             CALL    EVAL            ; Evaluate expression
@@ -62,7 +62,7 @@ F4F8 C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    70</span>
 
-<span id="F4F9">F4F9 7E         CLOAD:  LD      A,(HL)          ; Get byte after "CLOAD"</span>
+<span id="F4F9">F4F9</span> 7E         <span id="CLOAD">CLOAD</span>:  LD      A,(HL)          ; Get byte after "CLOAD"
 F4FA FEAE               CP      ZTIMES          ; "*" token? ("CLOAD*")
 F4FC CAB9E8             JP      Z,ARRLD1        ; Yes - Array load
 F4FF CDD1FF             CALL    SMOTOR          ; Start motor and get "?"

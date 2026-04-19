@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    82</span>
 
-<span id="F8BB">F8BB 47         FPINT:  LD      B,A             ; &lt;- Move</span>
+<span id="F8BB">F8BB</span> 47         <span id="FPINT">FPINT</span>:  LD      B,A             ; &lt;- Move
 F8BC 4F                 LD      C,A             ; &lt;- exponent
 F8BD 57                 LD      D,A             ; &lt;- to all
 F8BE 5F                 LD      E,A             ; &lt;- bits
@@ -33,7 +33,7 @@ F8E3 C0                 RET     NZ              ; Exit if LSBs not FFFF
 F8E4 0B                 DEC     BC              ; Decrement MSBs
 F8E5 C9                 RET
 
-<span id="F8E6">F8E6 21E710     INT:    LD      HL,FPEXP        ; Point to exponent</span>
+<span id="F8E6">F8E6</span> 21E710     <span id="INT">INT</span>:    LD      HL,FPEXP        ; Point to exponent
 F8E9 7E                 LD      A,(HL)          ; Get exponent
 F8EA FE98               CP      80H+24          ; Integer accuracy only?
 F8EC 3AE410             LD      A,(FPREG)       ; Get LSB
@@ -70,7 +70,7 @@ F915 3D         NOMLAD: DEC     A               ; Count bits
 F916 C207F9             JP      NZ,MLDBLP       ; More
 F919 C9                 RET
 
-<span id="F91A">F91A FE2D       ASCTFP: CP      "-"             ; Negative?</span>
+<span id="F91A">F91A</span> FE2D       <span id="ASCTFP">ASCTFP</span>: CP      "-"             ; Negative?
 F91C F5                 PUSH    AF              ; Save it and flags
 F91D CA26F9             JP      Z,CNVNUM        ; Yes - Convert number
 F920 FE2B               CP      "+"             ; Positive?

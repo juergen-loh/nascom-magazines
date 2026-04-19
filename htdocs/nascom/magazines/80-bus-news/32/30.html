@@ -2,14 +2,14 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    90</span>
 
-<span id="FB5B">FB5B CD44F8     SUMSER: CALL    STAKFP          ; Put FPREG on stack</span>
+<span id="FB5B">FB5B</span> CD44F8     <span id="SUMSER">SUMSER</span>: CALL    STAKFP          ; Put FPREG on stack
 FB5E 1106F7             LD      DE,MULT         ; Multiply by "X"
 FB61 D5                 PUSH    DE              ; To be done after
 FB62 E5                 PUSH    HL              ; Save address of table
 FB63 CD5FF8             CALL    BCDEFP          ; Move FPREG to BCDE
 FB66 CD08F7             CALL    FPMULT          ; Square the value
 FB69 E1                 POP     HL              ; Restore address of table
-<span id="FB6A">FB6A CD44F8     SMSER1: CALL    STAKFP          ; Put value on stack</span>
+<span id="FB6A">FB6A</span> CD44F8     <span id="SMSER1">SMSER1</span>: CALL    STAKFP          ; Put value on stack
 FB6D 7E                 LD      A,(HL)          ; Get number of coefficients
 FB6E 23                 INC     HL              ; Point to start of table
 FB6F CD51F8             CALL    PHLTFP          ; Move coefficient to FPREG

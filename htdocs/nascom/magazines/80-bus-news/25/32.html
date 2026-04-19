@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    25</span>
 
-<span id="E69B">E69B F5         OUTC:   PUSH    AF              ; Save character</span>
+<span id="E69B">E69B</span> F5         <span id="OUTC">OUTC</span>:   PUSH    AF              ; Save character
 E69C 3A4510             LD      A,(CTLOFG)      ; Get control "O" flag
 E69F B7                 OR      A               ; Is it set?
 E6A0 C245F2             JP      NZ,POPAF        ; Yes - don't output
@@ -33,7 +33,7 @@ E6C9 C1                 POP     BC              ; Restore buffer length
 E6CA F1                 POP     AF              ; Restore character
 E6CB C9                 RET
 
-<span id="E6CC">E6CC CD05FD     CLOTST: CALL    GETINP          ; Get input character</span>
+<span id="E6CC">E6CC</span> CD05FD     <span id="CLOTST">CLOTST</span>: CALL    GETINP          ; Get input character
 E6CF E67F               AND     01111111B       ; Strip bit 7
 E6D1 FE0F               CP      CTRLO           ; Is it control "O"?
 E6D3 C0                 RET     NZ              ; No don't flip flag
@@ -47,7 +47,7 @@ E6DC C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    26</span>
 
-<span id="E6DD">E6DD CDA5E9     LIST:   CALL    ATOH            ; ASCII number to DE</span>
+<span id="E6DD">E6DD</span> CDA5E9     <span id="LIST">LIST</span>:   CALL    ATOH            ; ASCII number to DE
 E6E0 C0                 RET     NZ              ; Return if anything extra
 E6E1 C1                 POP     BC              ; Rubbish - Not needed
 E6E2 CD99E4             CALL    SRCHLN          ; Search for line number in DE

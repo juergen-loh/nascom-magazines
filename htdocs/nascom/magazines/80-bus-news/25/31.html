@@ -33,14 +33,14 @@ E682 CD9BE6     OUTNBS: CALL    OUTC            ; Output bell and back over it
 E685 3E08               LD      A,BKSP          ; Set back space
 E687 C37CE6             JP      OUTIT           ; Output it and get more
 
-<span id="E68A">E68A 7C         CPDEHL: LD      A,H             ; Get H</span>
+<span id="E68A">E68A</span> 7C         <span id="CPDEHL">CPDEHL</span>: LD      A,H             ; Get H
 E68B 92                 SUB     D               ; Compare with D
 E68C C0                 RET     NZ              ; Different - Exit
 E68D 7D                 LD      A,L             ; Get L
 E68E 93                 SUB     E               ; Compare with E
 E68F C9                 RET                     ; Return status
 
-<span id="E690">E690 7E         CHKSYN: LD      A,(HL)          ; Check syntax of character</span>
+<span id="E690">E690</span> 7E         <span id="CHKSYN">CHKSYN</span>: LD      A,(HL)          ; Check syntax of character
 E691 E3                 EX      (SP),HL         ; Address of test byte
 E692 BE                 CP      (HL)            ; Same as in code string?
 E693 23                 INC     HL              ; Return address

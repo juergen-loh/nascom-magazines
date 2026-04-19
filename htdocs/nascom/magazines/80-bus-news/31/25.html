@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    57</span>
 
-<span id="F0D0">F0D0 2ADA10     FRE:    LD      HL,(ARREND)     ; Start of free memory</span>
+<span id="F0D0">F0D0</span> 2ADA10     <span id="FRE">FRE</span>:    LD      HL,(ARREND)     ; Start of free memory
 F0D3 EB                 EX      DE,HL           ; To DE
 F0D4 210000             LD      HL,0            ; End of free memory
 F0D7 39                 ADD     HL,SP           ; Current stack value
@@ -27,12 +27,12 @@ F0F8 73                 LD      (HL),E          ; Set type to numeric
 F0F9 0690               LD      B,80H+16        ; 16 bit integer
 F0FB C32AF8             JP      RETINT          ; Return the integr
 
-<span id="F0FE">F0FE 3AAB10     POS:    LD      A,(CURPOS)      ; Get cursor position</span>
+<span id="F0FE">F0FE</span> 3AAB10     <span id="POS">POS</span>:    LD      A,(CURPOS)      ; Get cursor position
 F101 47         PASSA:  LD      B,A             ; Put A into AB
 F102 AF                 XOR     A               ; Zero A
 F103 C3F2F0             JP      ABPASS          ; Return integer AB
 
-<span id="F106">F106 CD89F1     DEF:    CALL    CHEKFN          ; Get "FN" and name</span>
+<span id="F106">F106</span> CD89F1     <span id="DEF">DEF</span>:    CALL    CHEKFN          ; Get "FN" and name
 F109 CD7BF1             CALL    IDTEST          ; Test for illegal direct
 F10C 0170EA             LD      BC,DATA         ; To get next statement
 F10F C5                 PUSH    BC              ; Save address for RETurn
@@ -64,7 +64,7 @@ F130 C3C8F1             JP      SVSTAD          ; Save address and do function
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    58</span>
 
-<span id="F133">F133 CD89F1     DOFN:   CALL    CHEKFN          ; Make sure FN follows</span>
+<span id="F133">F133</span> CD89F1     <span id="DOFN">DOFN</span>:   CALL    CHEKFN          ; Make sure FN follows
 F136 D5                 PUSH    DE              ; Save function pointer address
 F137 CD09EE             CALL    EVLPAR          ; Evaluate expression in "()"
 F13A CD44ED             CALL    TSTNUM          ; Make sure numeric result
@@ -105,7 +105,7 @@ F176 22DE10             LD      (FNRGNM),HL     ; Restore it
 F179 E1                 POP     HL              ; Restore code string address
 F17A C9                 RET
 
-<span id="F17B">F17B E5         IDTEST: PUSH    HL              ; Save code string address</span>
+<span id="F17B">F17B</span> E5         <span id="IDTEST">IDTEST</span>: PUSH    HL              ; Save code string address
 F17C 2A5C10             LD      HL,(LINEAT)     ; Get current line number
 F17F 23                 INC     HL              ; -1 means direct statement
 F180 7C                 LD      A,H

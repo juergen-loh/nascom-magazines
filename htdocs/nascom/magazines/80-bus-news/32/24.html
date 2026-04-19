@@ -82,7 +82,7 @@ F80E 34                 INC     (HL)            ; Double number (Times 10)
 F80F C0                 RET     NZ              ; Ok - Return
 F810 C3BCE3             JP      OVERR           ; Overflow error
 
-<span id="F813">F813 3AE710     TSTSGN: LD      A,(FPEXP)       ; Get sign of FPREG</span>
+<span id="F813">F813</span> 3AE710     <span id="TSTSGN">TSTSGN</span>: LD      A,(FPEXP)       ; Get sign of FPREG
 F816 B7                 OR      A
 F817 C8                 RET     Z               ; RETurn if number is zero
 F818 3AE610             LD      A,(FPREG+2)     ; Get MSB of FPREG
@@ -94,7 +94,7 @@ F81F C0                 RET     NZ              ; Return -1 if negative
 F820 3C                 INC     A               ; Bump to +1
 F821 C9                 RET                     ; Positive - Return +1
 
-<span id="F822">F822 CD13F8     SGN:    CALL    TSTSGN          ; Test sign of FPREG</span>
+<span id="F822">F822</span> CD13F8     <span id="SGN">SGN</span>:    CALL    TSTSGN          ; Test sign of FPREG
 F825 0688       FLGREL: LD      B,80H+8         ; 8 bit integer in exponent
 F827 110000             LD      DE,0            ; Zero NMSB and LSB
 F82A 21E710     RETINT: LD      HL,FPEXP        ; Point to exponent

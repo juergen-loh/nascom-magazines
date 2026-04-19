@@ -57,13 +57,13 @@ F9A5 E5         LINEIN: PUSH    HL              ; Save code string address
 F9A6 2146E3             LD      HL,INMSG        ; Output " in "
 F9A9 CD10F2             CALL    PRS             ; Output string at HL
 F9AC E1                 POP     HL              ; Restore code string address
-<span id="F9AD">F9AD EB         PRNTHL: EX      DE,HL           ; Code string address to DE</span>
+<span id="F9AD">F9AD</span> EB         <span id="PRNTHL">PRNTHL</span>: EX      DE,HL           ; Code string address to DE
 F9AE AF                 XOR     A
 F9AF 0698               LD      B,80H+24        ; 24 bits
 F9B1 CD2AF8             CALL    RETINT          ; Return the integer
 F9B4 210FF2             LD      HL,PRNUMS       ; Print number string
 F9B7 E5                 PUSH    HL              ; Save for return
-<span id="F9B8">F9B8 21E910     NUMASC: LD      HL,PBUFF        ; Convert number to ASCII</span>
+<span id="F9B8">F9B8</span> 21E910     <span id="NUMASC">NUMASC</span>: LD      HL,PBUFF        ; Convert number to ASCII
 F9BB E5                 PUSH    HL              ; Save for return
 F9BC CD13F8             CALL    TSTSGN          ; Test sign of FPREG
 F9BF 3620               LD      (HL)," "        ; Space at start

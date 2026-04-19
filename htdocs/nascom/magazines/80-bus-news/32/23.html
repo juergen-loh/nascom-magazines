@@ -20,9 +20,9 @@ F75E 012084             LD      BC,8420H        ; BCDE = 10.
 F761 110000             LD      DE,0000H
 F764 CD54F8             CALL    FPBCDE          ; Move 10 to FPREG
 
-<span id="F767">F767 C1         DIV:    POP     BC              ; Get number from stack</span>
+<span id="F767">F767</span> C1         <span id="DIV">DIV</span>:    POP     BC              ; Get number from stack
 F768 D1                 POP     DE
-<span id="F769">F769 CD13F8     DVBCDE: CALL    TSTSGN          ; Test sign of FPREG</span>
+<span id="F769">F769</span> CD13F8     <span id="DVBCDE">DVBCDE</span>: CALL    TSTSGN          ; Test sign of FPREG
 F76C CAB0E3             JP      Z,DZERR         ; Error if division by zero
 F76F 2EFF               LD      L,-1            ; Flag subtract exponents
 F771 CDD1F7             CALL    ADDEXP          ; Subtract exponents

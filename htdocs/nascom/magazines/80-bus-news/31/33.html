@@ -21,7 +21,7 @@ F633 AF         RESZER: XOR     A               ; Result is zero
 F634 32E710     SAVEXP: LD      (FPEXP),A       ; Save result as zero
 F637 C9                 RET
 
-<span id="F638">F638 05         NORMAL: DEC     B               ; Count bits</span>
+<span id="F638">F638</span> 05         <span id="NORMAL">NORMAL</span>: DEC     B               ; Count bits
 F639 29                 ADD     HL,HL           ; Shift HL left
 F63A 7A                 LD      A,D             ; Get NMSB
 F63B 17                 RLA                     ; Shift left with last bit
@@ -67,7 +67,7 @@ F66D 34                 INC     (HL)            ; Increment exponent
 F66E C0                 RET     NZ              ; Return if ok
 F66F C3BCE3             JP      OVERR           ; Overflow error
 
-<span id="F672">F672 7E         PLUCDE: LD      A,(HL)          ; Get LSB of FPREG</span>
+<span id="F672">F672</span> 7E         <span id="PLUCDE">PLUCDE</span>: LD      A,(HL)          ; Get LSB of FPREG
 F673 83                 ADD     A,E             ; Add LSB of BCDE
 F674 5F                 LD      E,A             ; Save LSB of BCDE
 F675 23                 INC     HL
@@ -80,7 +80,7 @@ F67B 89                 ADC     A,C             ; Add MSB of BCDE
 F67C 4F                 LD      C,A             ; Save MSB of BCDE
 F67D C9                 RET
 
-<span id="F67E">F67E 21E810     COMPL:  LD      HL,SGNRES       ; Sign of result</span>
+<span id="F67E">F67E</span> 21E810     <span id="COMPL">COMPL</span>:  LD      HL,SGNRES       ; Sign of result
 F681 7E                 LD      A,(HL)          ; Get sign of result
 F682 2F                 CPL                     ; Negate it
 F683 77                 LD      (HL),A          ; Put it back

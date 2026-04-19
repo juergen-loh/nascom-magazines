@@ -33,7 +33,7 @@ F301 60                 LD      H,B
 F302 2B                 DEC     HL              ; Next string area address
 F303 C356F2             JP      GARBLP          ; Look for more strings
 
-<span id="F306">F306 C5         CONCAT: PUSH    BC              ; Save prec' opr & code string</span>
+<span id="F306">F306</span> C5         <span id="CONCAT">CONCAT</span>: PUSH    BC              ; Save prec' opr & code string
 F307 E5                 PUSH    HL              ;
 F308 2AE410             LD      HL,(FPREG)      ; Get first string
 F30B E3                 EX      (SP),HL         ; Save first string
@@ -84,7 +84,7 @@ F34B 03                 INC     BC              ; Next source
 F34C 13                 INC     DE              ; Next destination
 F34D C347F3             JP      TSALP           ; Loop until string moved
 
-<span id="F350">F350 CD45ED     GETSTR: CALL    TSTSTR          ; Make sure it's a string</span>
+<span id="F350">F350</span> CD45ED     <span id="GETSTR">GETSTR</span>: CALL    TSTSTR          ; Make sure it's a string
 F353 2AE410     GSTRCU: LD      HL,(FPREG)      ; Get current string
 F356 EB         GSTRHL: EX      DE,HL           ; Save DE
 F357 CD71F3     GSTRDE: CALL    BAKTMP          ; Was it last tmp-str?

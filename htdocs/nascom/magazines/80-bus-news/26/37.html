@@ -81,10 +81,10 @@ EF20 CD36E8             CALL    GETCHR          ; Get next character
 EF23 C8                 RET     Z               ; End of DIM statement
 EF24 CD90E6             CALL    CHKSYN          ; Make sure "," follows
 EF27 2C                 DEFB    ","
-<span id="EF28">EF28 011FEF     DIM:    LD      BC,DIMRET       ; Return to "DIMRET"</span>
+<span id="EF28">EF28</span> 011FEF     <span id="DIM">DIM</span>:    LD      BC,DIMRET       ; Return to "DIMRET"
 EF2B C5                 PUSH    BC              ; Save on stack
 EF2C F6                 DEFB    (OR n)          ; Flag "Create" variable
-<span id="EF2D">EF2D AF         GETVAR: XOR     A               ; Find variable address,to DE</span>
+<span id="EF2D">EF2D</span> AF         <span id="GETVAR">GETVAR</span>: XOR     A               ; Find variable address,to DE
 EF2E 32AC10             LD      (LCRFLG),A      ; Set locate / create flag
 EF31 46                 LD      B,(HL)          ; Get First byte of name
 EF32 CD77E9     GTFNAM: CALL    CHKLTR          ; See if a letter

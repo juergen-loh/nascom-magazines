@@ -2,12 +2,12 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    16</span>
 
-<span id="E3F8">E3F8 AF         PRNTOK: XOR     A               ; Output "Ok" and get command</span>
+<span id="E3F8">E3F8</span> AF         <span id="PRNTOK">PRNTOK</span>: XOR     A               ; Output "Ok" and get command
 E3F9 324510             LD      (CTLOFG),A      ; Enable output
 E3FC CD74EB             CALL    STTLIN          ; Start new line
 E3FF 214BE3             LD      HL,OKMSG        ; "Ok" message
 E402 CD10F2             CALL    PRS             ; Output "Ok"
-<span id="E405">E405 21FFFF     GETCMD: LD      HL,-1           ; Flag direct mode</span>
+<span id="E405">E405</span> 21FFFF     <span id="GETCMD">GETCMD</span>: LD      HL,-1           ; Flag direct mode
 E408 225C10             LD      (LINEAT),HL     ; Save as current line
 E40B CDF2E5             CALL    GETLIN          ; Get an input line
 E40E DA05E4             JP      C,GETCMD        ; Get line again if break

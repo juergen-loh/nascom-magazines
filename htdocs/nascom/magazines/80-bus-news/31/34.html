@@ -28,7 +28,7 @@ F6BB AA561980           DEFB    0AAH,056H,019H,080H     ; 0.59898
 F6BF F1227680           DEFB    0F1H,022H,076H,080H     ; 0.96147
 F6C3 45AA3882           DEFB    045H,0AAH,038H,082H     ; 2.88539
 
-<span id="F6C7">F6C7 CD13F8     LOG:    CALL    TSTSGN          ; Test sign of value</span>
+<span id="F6C7">F6C7</span> CD13F8     <span id="LOG">LOG</span>:    CALL    TSTSGN          ; Test sign of value
 F6CA B7                 OR      A
 F6CB EAA0E9             JP      PE,FCERR        ; ?FC Error if &lt;= zero
 F6CE 21E710             LD      HL,FPEXP        ; Point to exponent
@@ -62,9 +62,9 @@ F705 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    76</span>
 
-<span id="F706">F706 C1         MULT:   POP     BC              ; Get number from stack</span>
+<span id="F706">F706</span> C1         <span id="MULT">MULT</span>:   POP     BC              ; Get number from stack
 F707 D1                 POP     DE
-<span id="F708">F708 CD13F8     FPMULT: CALL    TSTSGN          ; Test sign of FPREG</span>
+<span id="F708">F708</span> CD13F8     <span id="FPMULT">FPMULT</span>: CALL    TSTSGN          ; Test sign of FPREG
 F70B C8                 RET     Z               ; Return zero if zero
 F70C 2E00               LD      L,0             ; Flag add exponents
 F70E CDD1F7             CALL    ADDEXP          ; Add exponents
