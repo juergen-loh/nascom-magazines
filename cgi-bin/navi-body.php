@@ -5723,6 +5723,119 @@ function externalLink($link, $text="", $delimiter="\n")
 	}
 }
 
+function bas8K($label, $target = "", $path = "../../..", $post = "")
+{
+	$p = "23/27";
+	switch ($label) {
+	// 24
+	case "0008":	case "BKSP":
+	case "0C0C":	case "ARG1":
+	case "0C0E":	case "ARG2":
+	case "0C2B":	case "ARGN":
+									$p = "24/23";	break;
+	case "0010":	case "BS":
+	case "104A":	case "CHKSUM":
+	case "104D":	case "BRKFLG":
+	case "105E":	case "BASTXT":
+	case "1061":	case "BUFFER":
+	case "10CE":	case "BRKLIN":
+	case "10DA":	case "ARREND":
+									$p = "24/24";	break;
+	case "E0B1":	case "BRKRET":
+									$p = "24/25";	break;
+	case "E0B7":	case "BFREE":
+									$p = "24/26";	break;
+	case "E356":	case "BAKSTK":
+	case "E350":	case "BRKMSG":
+									$p = "24/29";	break;
+	case "E38A":	case "CHKSTK":
+									$p = "24/30";	break;
+
+	// 25
+	case "E690":	case "CHKSYN":
+									$p = "25/31";	break;
+	case "E8B9":	case "ARRLD1":
+	case "E8BB":	case "ARRSV1":
+									$p = "25/35";	break;
+	case "E920":	case "ARYLP":
+	case "E940":	case "ACCSUM":
+	case "E977":	case "CHKLTR":
+	case "E9A5":	case "ATOH":
+									$p = "25/36";	break;
+
+	// 26
+	case "EBC7":	case "ASPCS":
+	case "EBEC":	case "BADINP":
+									$p = "26/32";	break;
+	case "EC65":	case "ANTVLU":
+	case "EFA8":	case "CFEVAL":
+									$p = "26/33";	break;
+	case "EF56":	case "CHARTY":
+									$p = "26/37";	break;
+
+	// 31
+	case "F012":	case "ARLDSV":
+	case "F045":	case "BSERR":
+									$p = "31/23";	break;
+	case "F0F1":	case "ACPASS":
+	case "F0F2":	case "ABPASS":
+									$p = "31/25";	break;
+	case "F189":	case "CHEKFN":
+									$p = "31/26";	break;
+	case "F28B":	case "ARRLP":
+									$p = "31/27";	break;
+	case "F371":	case "BAKTMP":
+									$p = "31/28";	break;
+	case "F391":	case "ASC":
+	case "F3C0":	case "ALLFOL":
+									$p = "31/29";	break;
+	case "F51C":	case "ANYNAM":
+									$p = "31/31";	break;
+	case "F59D":	case "BAD":
+	case "F5BE":	case "ADDPHL":
+									$p = "31/32";	break;
+	case "F61E":	case "BNORM":
+	case "F621":	case "BNRMLP":
+									$p = "31/33";	break;
+	case "F756":	case "BYTSFT":
+									$p = "31/34";	break;
+
+	// 32
+	case "F7D1":	case "ADDEXP":
+									$p = "32/24";	break;
+	case "F838":	case "ABS":
+	case "F85F":	case "BCDEFP":
+									$p = "32/25";	break;
+	case "F91A":	case "ASCTFP":
+									$p = "32/26";	break;
+	case "F977":	case "ADDIG":
+									$p = "32/27";	break;
+
+	// 33
+	case "FC7C":	case "ATN":
+	case "FC99":	case "ATN1":
+	case "FCA3":	case "ATNTAB":
+									$p = "33/24";	break;
+	case "FCC8":	case "CASFFW":
+	case "FCD5":	case "CASFF":
+	case "FCD8":	case "ARET":
+	case "FD40":	case "CHKBRK":
+									$p = "33/25";	break;
+	case "FE35":	case "ADD64X":
+									$p = "33/26";	break;
+	case "FE53":	case "BREAK2":
+	case "FEDE":	case "BREAK":
+	case "FEE5":	case "ARETN":
+									$p = "33/27";	break;
+	case "FFC2":	case "ADJCOL":
+									$p = "33/29";	break;
+	}
+	if ($target == "") {
+		$target = $label;
+	}
+	echo "<a href=\"$path/$p/text/#$target\">$label</a>$post";
+}
+
 function hline($width, $border="")
 {
 	echo "<!-- Linie"/* über ganze Spalte*/." -->";
@@ -5864,4 +5977,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-18 20:51:28 +0200 (Sa, 18. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-21 21:54:25 +0200 (Di, 21. Apr 2026) $ -->

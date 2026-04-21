@@ -13,7 +13,7 @@ EE3E CA79FF             JP      Z,POINTB        ; Yes - Do "POINT" (not POINTB)
 EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' LEFT$,RIGHT$ or MID$ ?
 EE43 DA5FEE             JP      C,FNVAL         ; No - Do function
 EE46 CD56ED             CALL    OPNPAR          ; Evaluate expression  (X,...
-EE49 CD90E6             CALL    CHKSYN          ; Make sure "," follows
+EE49 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 EE4C 2C                 DEFB    ","
 EE4D CD45ED             CALL    TSTSTR          ; Make sure it's a string
 EE50 EB                 EX      DE,HL           ; Save code string address
@@ -26,11 +26,11 @@ EE5A EB                 EX      DE,HL           ; Save code string address
 EE5B E3                 EX      (SP),HL         ; Save integer,HL = adj' token
 EE5C C367EE             JP      GOFUNC          ; Jump to string function
 
-EE5F CD09EE     FNVAL:  CALL    EVLPAR          ; Evaluate expression
+<span id="EE5F">EE5F</span> CD09EE     <span id="FNVAL">FNVAL</span>:  CALL    EVLPAR          ; Evaluate expression
 EE62 E3                 EX      (SP),HL         ; HL = Adjusted token value
 EE63 111DEE             LD      DE,RETNUM       ; Return number from function
 EE66 D5                 PUSH    DE              ; Save on stack
-EE67 010FE1     GOFUNC: LD      BC,FNCTAB       ; Function routine addresses
+<span id="EE67">EE67</span> 010FE1     <span id="GOFUNC">GOFUNC</span>: LD      BC,FNCTAB       ; Function routine addresses
 EE6A 09                 ADD     HL,BC           ; Point to right address
 EE6B 4E                 LD      C,(HL)          ; Get LSB of address
 EE6C 23                 INC     HL              ;
@@ -55,8 +55,8 @@ EE7F C9                 RET                     ; Return "NZ"
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    49</span>
 
-EE80 F6         POR:    DEFB    (OR n)          ; Flag "OR"
-EE81 AF         PAND:   XOR     A               ; Flag "AND"
+<span id="EE80">EE80</span> F6         <span id="POR">POR</span>:    DEFB    (OR n)          ; Flag "OR"
+<span id="EE81">EE81</span> AF         <span id="PAND">PAND</span>:   XOR     A               ; Flag "AND"
 EE82 F5                 PUSH    AF              ; Save "AND" / "OR" flag
 EE83 CD44ED             CALL    TSTNUM          ; Make sure it's a number
 EE86 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
@@ -71,21 +71,21 @@ EE92 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
 EE95 F1                 POP     AF              ; Restore "AND" / "OR" flag
 EE96 C1                 POP     BC              ; Get value
 EE97 79                 LD      A,C             ; Get LSB
-EE98 21F1F0             LD      HL,ACPASS       ; Address of save AC as current
+EE98 21F1F0             LD      HL,<?php bas8K("ACPASS"); ?>       ; Address of save AC as current
 EE9B C2A3EE             JP      NZ,POR1         ; Jump if OR
 EE9E A3                 AND     E               ; "AND" LSBs
 EE9F 4F                 LD      C,A             ; Save LSB
 EEA0 78                 LD      A,B             ; Get MBS
 EEA1 A2                 AND     D               ; "AND" MSBs
-EEA2 E9                 JP      (HL)            ; Save AC as current (ACPASS)
+EEA2 E9                 JP      (HL)            ; Save AC as current (<?php bas8K("ACPASS"); ?>)
 
-EEA3 B3         POR1:   OR      E               ; "OR" LSBs
+<span id="EEA3">EEA3</span> B3         <span id="POR1">POR1</span>:   OR      E               ; "OR" LSBs
 EEA4 4F                 LD      C,A             ; Save LSB
 EEA5 78                 LD      A,B             ; Get MSB
 EEA6 B2                 OR      D               ; "OR" MSBs
-EEA7 E9                 JP      (HL)            ; Save AC as current (ACPASS)
+EEA7 E9                 JP      (HL)            ; Save AC as current (<?php bas8K("ACPASS"); ?>)
 
-EEA8 21BAEE     TSTRED: LD      HL,CMPLOG       ; Logical compare routine
+<span id="EEA8">EEA8</span> 21BAEE     <span id="TSTRED">TSTRED</span>: LD      HL,CMPLOG       ; Logical compare routine
 EEAB 3AAD10             LD      A,(TYPE)        ; Get data type
 EEAE 1F                 RRA                     ; Carry set = string
 EEAF 7A                 LD      A,D             ; Get last precedence value

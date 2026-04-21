@@ -7,16 +7,16 @@
 <span id="1000">1000</span>            <span id="WRKSPC">WRKSPC</span>  EQU     1000H           ; BASIC Work space
 <span id="1003">1003</span>            <span id="USR">USR</span>     EQU     1003H           ; "USR (x)" jump
 <span id="1006">1006</span>            <span id="OUTSUB">OUTSUB</span>  EQU     1006H           ; "OUT p,n"
-1007            OTPORT  EQU     1007H           ; Port (p)
+<span id="1007">1007</span>            <span id="OTPORT">OTPORT</span>  EQU     1007H           ; Port (p)
 <span id="1009">1009</span>            <span id="DIVSUP">DIVSUP</span>  EQU     1009H           ; Division support routine
-100A            DIV1    EQU     100AH           ; &lt;- Values
-100E            DIV2    EQU     100EH           ; &lt;-   to
-1012            DIV3    EQU     1012H           ; &lt;-   be
-1015            DIV4    EQU     1015H           ; &lt;-inserted
+<span id="100A">100A</span>            <span id="DIV1">DIV1</span>    EQU     100AH           ; &lt;- Values
+<span id="100E">100E</span>            <span id="DIV2">DIV2</span>    EQU     100EH           ; &lt;-   to
+<span id="1012">1012</span>            <span id="DIV3">DIV3</span>    EQU     1012H           ; &lt;-   be
+<span id="1015">1015</span>            <span id="DIV4">DIV4</span>    EQU     1015H           ; &lt;-inserted
 <span id="1017">1017</span>            <span id="SEED">SEED</span>    EQU     1017H           ; Random number seed
 <span id="103A">103A</span>            <span id="LSTRND">LSTRND</span>  EQU     103AH           ; Last random number
 <span id="103E">103E</span>            <span id="INPSUB">INPSUB</span>  EQU     103EH           ; #INP (x)" Routine
-103F            INPORT  EQU     103FH           ; PORT (x)
+<span id="103F">103F</span>            <span id="INPORT">INPORT</span>  EQU     103FH           ; PORT (x)
 <span id="1041">1041</span>            <span id="NULLS">NULLS</span>   EQU     1041H           ; Number of nulls
 <span id="1042">1042</span>            <span id="LWIDTH">LWIDTH</span>  EQU     1042H           ; Terminal width
 <span id="1043">1043</span>            <span id="COMMAN">COMMAN</span>  EQU     1043H           ; Width for commas
@@ -35,7 +35,7 @@
 <span id="105C">105C</span>            <span id="LINEAT">LINEAT</span>  EQU     105CH           ; Current line number
 <span id="105E">105E</span>            <span id="BASTXT">BASTXT</span>  EQU     105EH           ; Pointer to start of program
 <span id="1061">1061</span>            <span id="BUFFER">BUFFER</span>  EQU     1061H           ; Input buffer
-1066            STACK   EQU     1066H           ; Initial stack
+<span id="1066">1066</span>            <span id="STACK">STACK</span>   EQU     1066H           ; Initial stack
 <span id="10AB">10AB</span>            <span id="CURPOS">CURPOS</span>  EQU     10ABH           ; Character position on line
 <span id="10AC">10AC</span>            <span id="LCRFLG">LCRFLG</span>  EQU     10ACH           ; Locate/Create flag
 <span id="10AD">10AD</span>            <span id="TYPE">TYPE</span>    EQU     10ADH           ; Data type flag
@@ -67,33 +67,33 @@
 <span id="10DE">10DE</span>            <span id="FNRGNM">FNRGNM</span>  EQU     10DEH           ; Name of FN argument
 <span id="10E0">10E0</span>            <span id="FNARG">FNARG</span>   EQU     10E0H           ; FN argument value
 <span id="10E4">10E4</span>            <span id="FPREG">FPREG</span>   EQU     10E4H           ; Floating point register
-10E7            FPEXP   EQU     FPREG+3         ; Floating point exponent
+<span id="10E7">10E7</span>            <span id="FPEXP">FPEXP</span>   EQU     FPREG+3         ; Floating point exponent
 <span id="10E8">10E8</span>            <span id="SGNRES">SGNRES</span>  EQU     10E8H           ; Sign of result
 <span id="10E9">10E9</span>            <span id="PBUFF">PBUFF</span>   EQU     10E9H           ; Number print buffer
 <span id="10F6">10F6</span>            <span id="MULVAL">MULVAL</span>  EQU     10F6H           ; Multiplier
 <span id="10F9">10F9</span>            <span id="PROGST">PROGST</span>  EQU     10F9H           ; Start of program text area
-115D            STLOOK  EQU     115DH           ; Start of memory test
+<span id="115D">115D</span>            <span id="STLOOK">STLOOK</span>  EQU     115DH           ; Start of memory test
 
                 ; BASIC ERROR CODE VALUES
 
-0000            NF      EQU     00H             ; NEXT without FOR
-0002            SN      EQU     02H             ; Syntax error
-0004            RG      EQU     04H             ; RETURN without GOSUB
-0006            OD      EQU     06H             ; Out of DATA
-0008            FC      EQU     08H             ; Function call error
-000A            OV      EQU     0AH             ; Overflow
-000C            OM      EQU     0CH             ; Out of memory
-000E            UL      EQU     0EH             ; Undefined line number
-0010            BS      EQU     10H             ; Bad subscript
-0012            DD      EQU     12H             ; Re-DIMensioned array
-0014            DZ      EQU     14H             ; Division by zero (/0)
-0016            ID      EQU     16H             ; Illegal direct
-0018            TM      EQU     18H             ; Type miss-match
-001A            OS      EQU     1AH             ; Out of string space
-001C            LS      EQU     1CH             ; String too long
-001E            ST      EQU     1EH             ; String formula too complex
-0020            CN      EQU     20H             ; Can't CONTinue
-0022            UF      EQU     22H             ; UnDEFined FN function
-0024            MO      EQU     24H             ; Missing operand
+<span id="0000">0000</span>            <span id="NF">NF</span>      EQU     00H             ; NEXT without FOR
+<span id="0002">0002</span>            <span id="SN">SN</span>      EQU     02H             ; Syntax error
+<span id="0004">0004</span>            <span id="RG">RG</span>      EQU     04H             ; RETURN without GOSUB
+<span id="0006">0006</span>            <span id="OD">OD</span>      EQU     06H             ; Out of DATA
+<span id="0008">0008</span>            <span id="FC">FC</span>      EQU     08H             ; Function call error
+<span id="000A">000A</span>            <span id="OV">OV</span>      EQU     0AH             ; Overflow
+<span id="000C">000C</span>            <span id="OM">OM</span>      EQU     0CH             ; Out of memory
+<span id="000E">000E</span>            <span id="UL">UL</span>      EQU     0EH             ; Undefined line number
+<span id="0010">0010</span>            <span id="BS">BS</span>      EQU     10H             ; Bad subscript
+<span id="0012">0012</span>            <span id="DD">DD</span>      EQU     12H             ; Re-DIMensioned array
+<span id="0014">0014</span>            <span id="DZ">DZ</span>      EQU     14H             ; Division by zero (/0)
+<span id="0016">0016</span>            <span id="ID">ID</span>      EQU     16H             ; Illegal direct
+<span id="0018">0018</span>            <span id="TM">TM</span>      EQU     18H             ; Type miss-match
+<span id="001A">001A</span>            <span id="OS">OS</span>      EQU     1AH             ; Out of string space
+<span id="001C">001C</span>            <span id="LS">LS</span>      EQU     1CH             ; String too long
+<span id="001E">001E</span>            <span id="ST">ST</span>      EQU     1EH             ; String formula too complex
+<span id="0020">0020</span>            <span id="CN">CN</span>      EQU     20H             ; Can't CONTinue
+<span id="0022">0022</span>            <span id="UF">UF</span>      EQU     22H             ; UnDEFined FN function
+<span id="0024">0024</span>            <span id="MO">MO</span>      EQU     24H             ; Missing operand
 </pre>
 <?php DoublePageEnd(); ?>

@@ -4,7 +4,7 @@
 
                 ; INITIALISATION TABLE
 
-E2DF C3AEE0     INITAB: JP      WARMST          ; Warm start jump
+<span id="E2DF">E2DF</span> C3AEE0     <span id="INITAB">INITAB</span>: JP      WARMST          ; Warm start jump
 E2E2 C3A0E9             JP      FCERR           ; "USR (X)" jump (Set to Error)
 
 E2E5 D300               OUT     (0),A           ; "OUT p,n" skeleton
@@ -57,22 +57,22 @@ E336 C355FF             JP      RESETB          ; RESET reflection
 E339 5D11               DEFW    STLOOK          ; Temp string space
 E33B FEFF               DEFW    -2              ; Current line number (cold)
 E33D FA10               DEFW    PROGST+1        ; Start of program text
-E33F            INITBE:                         ; END OF INITIALISATION TABLE
+<span id="E33F">E33F</span>            <span id="INITBE">INITBE</span>:                         ; END OF INITIALISATION TABLE
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    13</span>
 
-E33F 20457272   ERRMSG: DEFB    " Error",0
+E33F 20457272   <span id="ERRMSG">ERRMSG</span>: DEFB    " Error",0
 E345 00
-E346 20696E20   INMSG:  DEFB    " in ",0
-E34A            ZERBYT  EQU     $-1             ; A zero byte
-E34B 4F6B0D00   OKMSG:  DEFB    "Ok",CR,0,0
-E350 42726561   BRKMSG: DEFB    "Break",0
+<span id="E346">E346</span> 20696E20   <span id="INMSG">INMSG</span>:  DEFB    " in ",0
+<span id="E34A">E34A</span>            <span id="ZERBYT">ZERBYT</span>  EQU     $-1             ; A zero byte
+<span id="E34B">E34B</span> 4F6B0D00   <span id="OKMSG">OKMSG</span>:  DEFB    "Ok",CR,0,0
+<span id="E350">E350</span> 42726561   <span id="BRKMSG">BRKMSG</span>: DEFB    "Break",0
 
 <span id="E356">E356</span> 210400     <span id="BAKSTK">BAKSTK</span>: LD      HL,4            ; Look for "FOR" block with
 E359 39                 ADD     HL,SP           ; same index as specified
-E35A 7E         LOKFOR: LD      A,(HL)          ; Get block ID
+<span id="E35A">E35A</span> 7E         <span id="LOKFOR">LOKFOR</span>: LD      A,(HL)          ; Get block ID
 E35B 23                 INC     HL              ; Point to index address
 E35C FE81               CP      ZFOR            ; Is it a "FOR" token
 E35E C0                 RET     NZ              ; No - exit
@@ -89,17 +89,17 @@ E368 EB                 EX      DE,HL           ; Specified index into HL
 E369 CA70E3             JP      Z,INDFND        ; Skip if no index given
 E36C EB                 EX      DE,HL           ; Index back into DE
 E36D CD8AE6             CALL    CPDEHL          ; Compare index with one given
-E370 010D00     INDFND: LD      BC,16-3         ; Offset to next block
+<span id="E370">E370</span> 010D00     <span id="INDFND">INDFND</span>: LD      BC,16-3         ; Offset to next block
 E373 E1                 POP     HL              ; Restore pointer to sign
 E374 C8                 RET     Z               ; Return if block found
 E375 09                 ADD     HL,BC           ; Point to next block
 E376 C35AE3             JP      LOKFOR          ; Keep on looking
 
-E379 CD93E3     MOVUP:  CALL    ENFMEM          ; See if enough memory
-E37C C5         MOVSTR: PUSH    BC              ; Save end of source
+<span id="E379">E379</span> CD93E3     <span id="MOVUP">MOVUP</span>:  CALL    ENFMEM          ; See if enough memory
+<span id="E37C">E37C</span> C5         <span id="MOVSTR">MOVSTR</span>: PUSH    BC              ; Save end of source
 E37D E3                 EX      (SP),HL         ; Swap source and dest" end
 E37E C1                 POP     BC              ; Get end of destination
-E37F CD8AE6     MOVLP:  CALL    CPDEHL          ; See if list moved
+<span id="E37F">E37F</span> CD8AE6     <span id="MOVLP">MOVLP</span>:  CALL    CPDEHL          ; See if list moved
 E382 7E                 LD      A,(HL)          ; Get byte
 E383 02                 LD      (BC),A          ; Move it
 E384 C8                 RET     Z               ; Exit if all done

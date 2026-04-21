@@ -2,14 +2,14 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    42</span>
 
-EC39 CD90E6     NEDMOR: CALL    CHKSYN          ; Check for comma between items
+<span id="EC39">EC39</span> CD90E6     <span id="NEDMOR">NEDMOR</span>: CALL    <?php bas8K("CHKSYN"); ?>          ; Check for comma between items
 EC3C 2C                 DEFB    ","
-EC3D CD2DEF     GTVLUS: CALL    GETVAR          ; Get variable name
+<span id="EC3D">EC3D</span> CD2DEF     <span id="GTVLUS">GTVLUS</span>: CALL    GETVAR          ; Get variable name
 EC40 E3                 EX      (SP),HL         ; Save code str" , Get pointer
 EC41 D5                 PUSH    DE              ; Save variable address
 EC42 7E                 LD      A,(HL)          ; Get next "INPUT"/"DATA" byte
 EC43 FE2C               CP      ","             ; Comma?
-EC45 CA65EC             JP      Z,ANTVLU        ; Yes - Get another value
+EC45 CA65EC             JP      Z,<a href="../../../26/33/text/#ANTVLU">ANTVLU</a>        ; Yes - Get another value
 EC48 3ACD10             LD      A,(READFG)      ; Is it READ?
 EC4B B7                 OR      A
 EC4C C2D2EC             JP      NZ,FDTLP        ; Yes - Find next DATA stmt
@@ -26,7 +26,7 @@ EC5F 2B                 DEC     HL              ; Back space INPUT pointer
 EC60 C5                 PUSH    BC              ; Save code string address
 EC61 CA6FEA             JP      Z,NXTDTA        ; Find end of buffer
 EC64 D5                 PUSH    DE              ; Save variable address
-EC65 3AAD10     ANTVLU: LD      A,(TYPE)        ; Check data type
+<span id="EC65">EC65</span> 3AAD10     <span id="ANTVLU">ANTVLU</span>: LD      A,(TYPE)        ; Check data type
 EC68 B7                 OR      A               ; Is it numeric?
 EC69 CA8FEC             JP      Z,INPBIN        ; Yes - Convert to binary
 EC6C CD36E8             CALL    GETCHR          ; Get next character
@@ -39,9 +39,9 @@ EC79 B7                 OR      A
 EC7A 57                 LD      D,A             ; Save 00 if "INPUT"
 EC7B CA80EC             JP      Z,ITMSEP        ; "INPUT" - End with 00
 EC7E 163A               LD      D,":"           ; "DATA" - End with 00 or ":"
-EC80 062C       ITMSEP: LD      B,","           ; Item separator
+<span id="EC80">EC80</span> 062C       <span id="ITMSEP">ITMSEP</span>: LD      B,","           ; Item separator
 EC82 2B                 DEC     HL              ; Back space for DTSTR
-EC83 CDD2F1     STRENT: CALL    DTSTR           ; Get string terminated by D
+<span id="EC83">EC83</span> CDD2F1     <span id="STRENT">STRENT</span>: CALL    DTSTR           ; Get string terminated by D
 EC86 EB                 EX      DE,HL           ; String address to DE
 EC87 219AEC             LD      HL,LTSTND       ; Where to go after LETSTR
 EC8A E3                 EX      (SP),HL         ; Save HL&nbsp;, get input pointer
@@ -52,17 +52,17 @@ EC8C C3A2EA             JP      LETSTR          ; Assign string to variable
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    43</span>
 
-EC8F CD36E8     INPBIN: CALL    GETCHR          ; Get next character
-EC92 CD1AF9             CALL    ASCTFP          ; Convert ASCII to FP number
+<span id="EC8F">EC8F</span> CD36E8     <span id="INPBIN">INPBIN</span>: CALL    GETCHR          ; Get next character
+EC92 CD1AF9             CALL    <?php bas8K("ASCTFP"); ?>          ; Convert ASCII to FP number
 EC95 E3                 EX      (SP),HL         ; Save input ptr, Get var addr
 EC96 CD6BF8             CALL    FPTHL           ; Move FPREG to variable
 EC99 E1                 POP     HL              ; Restore input pointer
-EC9A 2B         LTSTND: DEC     HL              ; DEC 'cos GETCHR INCs
+<span id="EC9A">EC9A</span> 2B         <span id="LTSTND">LTSTND</span>: DEC     HL              ; DEC 'cos GETCHR INCs
 EC9B CD36E8             CALL    GETCHR          ; Get next character
 EC9E CAA6EC             JP      Z,MORDT         ; End of line - More needed?
 ECA1 FE2C               CP      ","             ; Another value?
-ECA3 C2ECEB             JP      NZ,BADINP       ; No - Bad input
-ECA6 E3         MORDT:  EX      (SP),HL         ; Get code string address
+ECA3 C2ECEB             JP      NZ,<?php bas8K("BADINP"); ?>       ; No - Bad input
+<span id="ECA6">ECA6</span> E3         <span id="MORDT">MORDT</span>:  EX      (SP),HL         ; Get code string address
 ECA7 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
 ECA8 CD36E8             CALL    GETCHR          ; Get next character
 ECAB C239EC             JP      NZ,NEDMOR       ; More needed - Get it
@@ -78,7 +78,7 @@ ECBC C410F2             CALL    NZ,PRS          ; Output string if extra given
 ECBF E1                 POP     HL              ; Restore code string address
 ECC0 C9                 RET
 
-ECC1 3F457874   EXTIG:  DEFB    "?Extra ignored",CR,LF,0
+<span id="ECC1">ECC1</span> 3F457874   <span id="EXTIG">EXTIG</span>:  DEFB    "?Extra ignored",CR,LF,0
 
 <span id="ECD2">ECD2</span> CD70EA     <span id="FDTLP">FDTLP</span>:  CALL    DATA            ; Get next statement
 ECD5 B7                 OR      A               ; End of line?
@@ -96,9 +96,9 @@ ECE5 56                 LD      D,(HL)          ; MSB of line number
 ECE6 EB                 EX      DE,HL
 ECE7 22C910             LD      (DATLIN),HL     ; Set line of current DATA item
 ECEA EB                 EX      DE,HL
-ECEB CD36E8     FANDT:  CALL    GETCHR          ; Get next character
+<span id="ECEB">ECEB</span> CD36E8     <span id="FANDT">FANDT</span>:  CALL    GETCHR          ; Get next character
 ECEE FE83               CP      ZDATA           ; "DATA" token
 ECF0 C2D2EC             JP      NZ,FDTLP        ; No "DATA" - Keep looking
-ECF3 C365EC             JP      ANTVLU          ; Found - Convert input
+ECF3 C365EC             JP      <?php bas8K("ANTVLU"); ?>          ; Found - Convert input
 </pre>
 <?php DoublePageEnd(); ?>

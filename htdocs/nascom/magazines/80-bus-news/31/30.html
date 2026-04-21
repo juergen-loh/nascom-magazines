@@ -12,10 +12,10 @@ F3F6 C5                 PUSH    BC              ; Save starting position
 F3F7 1EFF               LD      E,255           ; All of string
 F3F9 FE29               CP      ")"             ; Any length given?
 F3FB CA05F4             JP      Z,RSTSTR        ; No - Rest of string
-F3FE CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F3FE CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F401 2C                 DEFB    ","
 F402 CD84F4             CALL    GETINT          ; Get integer 0-255
-F405 CD90E6     RSTSTR: CALL    CHKSYN          ; Make sure ")" follows
+<span id="F405">F405</span> CD90E6     <span id="RSTSTR">RSTSTR</span>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F408 29                 DEFB    ")"
 F409 F1                 POP     AF              ; Restore starting position
 F40A E3                 EX      (SP),HL         ; Get string,8ave code string
@@ -50,7 +50,7 @@ F42C 72                 LD      (HL),D          ; Zero it to terminate
 F42D E3                 EX      (SP),HL         ; Save string end,get start
 F42E C5                 PUSH    BC              ; Save end+1 byte
 F42F 7E                 LD      A,(HL)          ; Get starting byte
-F430 CD1AF9             CALL    ASCTFP          ; Convert ASCII string to FP
+F430 CD1AF9             CALL    <?php bas8K("ASCTFP"); ?>          ; Convert ASCII string to FP
 F433 C1                 POP     BC              ; Restore end+1 byte
 F434 E1                 POP     HL              ; Restore end+1 address
 F435 70                 LD      (HL),B          ; Put back original byte
@@ -60,10 +60,10 @@ F436 C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    68</span>
 
-F437 EB         LFRGNM: EX      DE,HL           ; Code string address to HL
-F438 CD90E6             CALL    CHKSYN          ; Make sure ")" follows
+<span id="F437">F437</span> EB         <span id="LFRGNM">LFRGNM</span>: EX      DE,HL           ; Code string address to HL
+F438 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F43B 29                 DEFB    ")"
-F43C C1         MIDNUM: POP     BC              ; Get return address
+<span id="F43C">F43C</span> C1         <span id="MIDNUM">MIDNUM</span>: POP     BC              ; Get return address
 F43D D1                 POP     DE              ; Get number supplied
 F43E C5                 PUSH    BC              ; Re-save return address
 F43F 43                 LD      B,E             ; Number to B
@@ -83,26 +83,26 @@ F457 1E00               LD      E,0             ; Assume zero if none given
 F459 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
 F45A CD36E8             CALL    GETCHR          ; Get next character
 F45D CA67F4             JP      Z,NOXOR         ; No XOR byte given
-F460 CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F460 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F463 2C                 DEFB    ","
 F464 CD84F4             CALL    GETINT          ; Get integer 0-255 to XOR with
-F467 C1         NOXOR:  POP     BC              ; Restore AND mask
-F468 CD3E10     WAITLP: CALL    INPSUB          ; Get input
+<span id="F467">F467</span> C1         <span id="NOXOR">NOXOR</span>:  POP     BC              ; Restore AND mask
+<span id="F468">F468</span> CD3E10     <span id="WAITLP">WAITLP</span>: CALL    INPSUB          ; Get input
 F46B AB                 XOR     E               ; Flip selected bits
 F46C A0                 AND     B               ; Result non-zero?
 F46D CA68F4             JP      Z,WAITLP        ; No = keep waiting
 F470 C9                 RET
 
-F471 CD84F4     SETIO:  CALL    GETINT          ; Get integer 0-255
+<span id="F471">F471</span> CD84F4     <span id="SETIO">SETIO</span>:  CALL    GETINT          ; Get integer 0-255
 F474 323F10             LD      (INPORT),A      ; Set input port
 F477 320710             LD      (OTPORT),A      ; Set output port
-F47A CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F47A CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F47D 2C                 DEFB    ","
 F47E C384F4             JP      GETINT          ; Get integer 0-255 and return
 
 <span id="F481">F481</span> CD36E8     <span id="FNDNUM">FNDNUM</span>: CALL    GETCHR          ; Get next character
-F484 CD41ED     GETINT: CALL    GETNUM          ; Get a number from 0 to 255
-F487 CD85E9     MAKINT: CALL    DEPINT          ; Make sure value 0 - 255
+<span id="F484">F484</span> CD41ED     <span id="GETINT">GETINT</span>: CALL    GETNUM          ; Get a number from 0 to 255
+<span id="F487">F487</span> CD85E9     <span id="MAKINT">MAKINT</span>: CALL    DEPINT          ; Make sure value 0 - 255
 F48A 7A                 LD      A,D             ; Get MSB of number
 F48B B7                 OR      A               ; Zero?
 F48C C2A0E9             JP      NZ,FCERR        ; No - Error

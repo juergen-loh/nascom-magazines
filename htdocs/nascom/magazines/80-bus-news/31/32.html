@@ -2,11 +2,11 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    71</span>
 
-F56B 219DF5     OUTBAD: LD      HL,BAD          ; "Bad" message
+<span id="F56B">F56B</span> 219DF5     <span id="OUTBAD">OUTBAD</span>: LD      HL,<a href="../../../31/32/text/#BAD">BAD</a>          ; "Bad" message
 F56E CD10F2             CALL    PRS             ; Output string
 F571 C3E1E3             JP      ERRIN           ; In line message
 
-F574 C5         FILFND: PUSH    BC              ; &lt;- Save
+<span id="F574">F574</span> C5         <span id="FILFND">FILFND</span>: PUSH    BC              ; &lt;- Save
 F575 E5                 PUSH    HL              ; &lt;- all
 F576 D5                 PUSH    DE              ; &lt;- the
 F577 F5                 PUSH    AF              ; &lt;- registers
@@ -23,9 +23,9 @@ F58B E1                 POP     HL              ; &lt;- the
 F58C C1                 POP     BC              ; &lt;- registers
 F58D C9                 RET
 
-F58E 46696C65   FILE:   DEFB    "File ",0
-F594 20466F75   FOUND:  DEFB    " Found",CR,LF,0
-F59D 42616400   BAD:    DEFB    "Bad",0,0,0
+<span id="F58E">F58E</span> 46696C65   <span id="FILE">FILE</span>:   DEFB    "File ",0
+<span id="F594">F594</span> 20466F75   <span id="FOUND">FOUND</span>:  DEFB    " Found",CR,LF,0
+<span id="F59D">F59D</span> 42616400   <span id="BAD">BAD</span>:    DEFB    "Bad",0,0,0
 
 <span id="F5A3">F5A3</span> CD8BE9     <span id="PEEK">PEEK</span>:   CALL    DEINT           ; Get memory address
 F5A6 1A                 LD      A,(DE)          ; Get byte in memory
@@ -34,7 +34,7 @@ F5A7 C301F1             JP      PASSA           ; Return integer A
 <span id="F5AA">F5AA</span> CD41ED     <span id="POKE">POKE</span>:   CALL    GETNUM          ; Get memory address
 F5AD CD8BE9             CALL    DEINT           ; Get integer -32768 to 3276
 F5B0 D5                 PUSH    DE              ; Save memory address
-F5B1 CD90E6             CALL    CHKSYN          ; Make sure "," follows
+F5B1 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F5B4 2C                 DEFB    ","
 F5B5 CD84F4             CALL    GETINT          ; Get integer 0-255
 F5B8 D1                 POP     DE              ; Restore memory address
@@ -70,7 +70,7 @@ F5E1 EB                 EX      DE,HL
 F5E2 CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG
 F5E5 C1                 POP     BC              ; Restore number from stack
 F5E6 D1                 POP     DE
-F5E7 FE19       NOSWAP: CP      24+1            ; Second number insignificant?
+<span id="F5E7">F5E7</span> FE19       <span id="NOSWAP">NOSWAP</span>: CP      24+1            ; Second number insignificant?
 F5E9 D0                 RET     NC              ; Yes - First number is result
 F5EA F5                 PUSH    AF              ; Save number of bits to scale
 F5EB CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
@@ -103,6 +103,6 @@ F617 23                 INC     HL
 F618 7E                 LD      A,(HL)          ; Get MSB of FPREG
 F619 99                 SBC     A,C             ; Subtract MSB of BCDE
 F61A 4F                 LD      C,A             ; Save MSB of BCDE
-F61B DC7EF6     CONPOS: CALL    C,COMPL         ; Overflow - Make it positive
+<span id="F61B">F61B</span> DC7EF6     <span id="CONPOS">CONPOS</span>: CALL    C,COMPL         ; Overflow - Make it positive
 </pre>
 <?php DoublePageEnd(); ?>

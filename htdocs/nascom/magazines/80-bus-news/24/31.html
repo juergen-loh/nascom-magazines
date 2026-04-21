@@ -16,7 +16,7 @@ E414 3C                 INC     A               ; Test if end of line
 E415 3D                 DEC     A               ; Without affecting Carry
 E416 CA05E4             JP      Z,GETCMD        ; Nothing entered - Get another
 E419 F5                 PUSH    AF              ; Save Carry status
-E41A CDA5E9             CALL    ATOH            ; Get line number into DE
+E41A CDA5E9             CALL    <?php bas8K("ATOH"); ?>            ; Get line number into DE
 E41D D5                 PUSH    DE              ; Save line number
 E41E CD09E5             CALL    CRUNCH          ; Tokenise rest of line
 E421 47                 LD      B,A             ; Length of tokenised line
@@ -36,11 +36,11 @@ E438 F1                 POP     AF              ; Get status
 E439 F5                 PUSH    AF              ; And re-save
 E43A CA46EA             JP      Z,ULERR         ; Nothing after number - Error
 E43D B7                 OR      A               ; Clear Carry
-E43E C5         LINFND: PUSH    BC              ; Save address of line in prog
+<span id="E43E">E43E</span> C5         <span id="LINFND">LINFND</span>: PUSH    BC              ; Save address of line in prog
 E43F D255E4             JP      NC,INEWLN       ; Line not found - Insert new
 E442 EB                 EX      DE,HL           ; Next line address in DE
 E443 2AD610             LD      HL,(PROGND)     ; End of program
-E446 1A         SFTPRG: LD      A,(DE)          ; Shift rest of program down
+<span id="E446">E446</span> 1A         <span id="SFTPRG">SFTPRG</span>: LD      A,(DE)          ; Shift rest of program down
 E447 02                 LD      (BC),A
 E448 03                 INC     BC              ; Next destination
 E449 13                 INC     DE              ; Next source
@@ -54,7 +54,7 @@ E452 22D610             LD      (PROGND),HL     ; Update end of program
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    17</span>
 
-E455 D1         INEWLN: POP     DE              ; Get address of line,
+<span id="E455">E455</span> D1         <span id="INEWLN">INEWLN</span>: POP     DE              ; Get address of line,
 E456 F1                 POP     AF              ; Get status
 E457 CA7CE4             JP      Z,SETPTR        ; No text - Set up pointers
 E45A 2AD610             LD      HL,(PROGND)     ; Get end of program
@@ -74,17 +74,17 @@ E46D 73                 LD      (HL),E          ; Save LSB of line number
 E46E 23                 INC     HL
 E46F 72                 LD      (HL),D          ; Save MSB of line number
 E470 23                 INC     HL              ; To first byte in line
-E471 116110             LD      DE,BUFFER       ; Copy buffer to program
-E474 1A         MOVBUF: LD      A,(DE)          ; Get source
+E471 116110             LD      DE,<?php bas8K("BUFFER"); ?>       ; Copy buffer to program
+<span id="E474">E474</span> 1A         <span id="MOVBUF">MOVBUF</span>: LD      A,(DE)          ; Get source
 E475 77                 LD      (HL),A          ; Save destinations
 E476 23                 INC     HL              ; Next source
 E477 13                 INC     DE              ; Next destination
 E478 B7                 OR      A               ; Done?
 E479 C274E4             JP      NZ,MOVBUF       ; No - Repeat
-E47C CDC5E4     SETPTR: CALL    RUNFST          ; Set line pointers
+<span id="E47C">E47C</span> CDC5E4     <span id="SETPTR">SETPTR</span>: CALL    RUNFST          ; Set line pointers
 E47F 23                 INC     HL              ; To LSB of pointer
 E480 EB                 EX      DE,HL           ; Address to DE
-E481 62         PTRLP:  LD      H,D             ; Address to HL
+<span id="E481">E481</span> 62         <span id="PTRLP">PTRLP</span>:  LD      H,D             ; Address to HL
 E482 6B                 LD      L,E
 E483 7E                 LD      A,(HL)          ; Get LSB of pointer
 E484 23                 INC     HL              ; To MSB of pointer
@@ -94,7 +94,7 @@ E489 23                 INC     HL              ; To LSB of line number
 E48A 23                 INC     HL              ; Skip line number
 E48B 23                 INC     HL              ; Point to first byte in line
 E48C AF                 XOR     A               ; Looking for 00 byte
-E48D BE         FNDEND: CP      (HL)            ; Found end of line?
+<span id="E48D">E48D</span> BE         <span id="FNDEND">FNDEND</span>: CP      (HL)            ; Found end of line?
 E48E 23                 INC     HL              ; Move to next byte
 E48F C28DE4             JP      NZ,FNDEND       ; No - Keep looking
 E492 EB                 EX      DE,HL           ; Next line address to HL

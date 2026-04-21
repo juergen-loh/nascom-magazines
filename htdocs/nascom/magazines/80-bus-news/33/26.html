@@ -2,8 +2,8 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    96</span>
 
-FD9B AF         DELAY:  XOR     A               ; Delay routine
-FD9C F5         DELAY1: PUSH    AF              ; PUSHes and POPs delay
+<span id="FD9B">FD9B</span> AF         <span id="DELAY">DELAY</span>:  XOR     A               ; Delay routine
+<span id="FD9C">FD9C</span> F5         <span id="DELAY1">DELAY1</span>: PUSH    AF              ; PUSHes and POPs delay
 FD9D F1                 POP     AF
 FD9E F5                 PUSH    AF
 FD9F F1                 POP     AF
@@ -28,12 +28,12 @@ FDC0 E1                 POP     HL              ; Number to HL
 FDC1 46                 LD      B,(HL)          ; Get LSB of contents
 FDC2 23                 INC     HL
 FDC3 7E                 LD      A,(HL)          ; Get MSB of contents
-FDC4 C3F2F0             JP      ABPASS          ; Return integer AB
+FDC4 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
 <span id="FDC7">FDC7</span> CD41ED     <span id="DOKE">DOKE</span>:   CALL    GETNUM          ; Get a number
 FDCA CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
 FDCD D5                 PUSH    DE              ; Save address
-FDCE CD90E6             CALL    CHKSYN          ; Make sure "," follows
+FDCE CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FDD1 2C                 DEFB    ","
 FDD2 CD41ED             CALL    GETNUM          ; Get a number
 FDD5 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
@@ -44,7 +44,7 @@ FDDB 72                 LD      (HL),D          ; Save MSB of value
 FDDC E1                 POP     HL              ; Restore code string address
 FDDD C9                 RET
 
-FDDE F3         JJUMP1: DI                      ; Disable interrupts
+<span id="FDDE">FDDE</span> F3         <span id="JJUMP1">JJUMP1</span>: DI                      ; Disable interrupts
 FDDF DD21FFFF           LD      IX,-1           ; Flag cold start
 FDE3 C312E0             JP      CSTART          ; Go and initialise
 </pre>
@@ -54,7 +54,7 @@ FDE3 C312E0             JP      CSTART          ; Go and initialise
 
 <span id="FDE6">FDE6</span> CD84F4     <span id="SCREEN">SCREEN</span>: CALL    GETINT          ; Get integer 0 to 255
 FDE9 F5                 PUSH    AF              ; Save column
-FDEA CD90E6             CALL    CHKSYN          ; Make sure "," follows
+FDEA CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FDED 2C                 DEFB    ","
 FDEE CD84F4             CALL    GETINT          ; Get integer 0 to 255
 FDF1 C1                 POP     BC              ; Column to B
@@ -69,7 +69,7 @@ FDFF 22290C             LD      (CURSOR),HL     ; Set new cursor position
 FE02 E1                 POP     HL              ; Rstore code string address
 FE03 C9                 RET
 
-FE04 2A180C     TMNCUR: LD      HL,(TCUR)       ; Get address or cursor
+<span id="FE04">FE04</span> 2A180C     <span id="TMNCUR">TMNCUR</span>: LD      HL,(TCUR)       ; Get address or cursor
 FE07 3620               LD      (HL)," "        ; Remove cursor
 FE09 E1                 POP     HL              ; Get new cursor address
 FE0A 22180C             LD      (TCUR),HL       ; Set new cursor
@@ -97,15 +97,15 @@ FE2F 19                 ADD     HL,DE           ; Add column to address
 FE30 1600               LD      D,0
 FE32 59                 LD      E,C             ; Line to DE
 FE33 0640               LD      B,64            ; 64 Bytes per line
-FE35 19         ADD64X: ADD     HL,DE           ; Add line
-FE36 10FD               DJNZ    ADD64X          ; SIXTY FOUR TIMES!!!
+<span id="FE35">FE35</span> 19         <span id="ADD64X">ADD64X</span>: ADD     HL,DE           ; Add line
+FE36 10FD               DJNZ    <?php bas8K("ADD64X"); ?>          ; SIXTY FOUR TIMES!!!
 FE38 C9                 RET
 
-FE39 CD6DFE     FLPLED: CALL    MONTST          ; See if NAS-SYS
+<span id="FE39">FE39</span> CD6DFE     <span id="FLPLED">FLPLED</span>: CALL    MONTST          ; See if NAS-SYS
 FE3C CA42FE             JP      Z,TMFLP         ; "T" MFLP
 FE3F DF5F               SCAL    MFLP
 FE41 C9                 RET
 
-FE42 C35100     TMFLP:  JP      MFLP            ; Flip drive LED
+<span id="FE42">FE42</span> C35100     <span id="TMFLP">TMFLP</span>:  JP      MFLP            ; Flip drive LED
 </pre>
 <?php DoublePageEnd(); ?>

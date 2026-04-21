@@ -3,9 +3,9 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    44</span>
 
 <span id="ECF6">ECF6</span> 110000     <span id="NEXT">NEXT</span>:   LD      DE,0            ; In case no index given
-ECF9 C42DEF     NEXT1:  CALL    NZ,GETVAR       ; Get index address
-ECFC 22CE10             LD      (BRKLIN),HL     ; Save code string address
-ECFF CD56E3             CALL    BAKSTK          ; Look for "FOR" block
+<span id="ECF9">ECF9</span> C42DEF     <span id="NEXT1">NEXT1</span>:  CALL    NZ,GETVAR       ; Get index address
+ECFC 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save code string address
+ECFF CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look for "FOR" block
 ED02 C2B3E3             JP      NZ,NFERR        ; No "FOR" - ?NF Error
 ED05 F9                 LD      SP,HL           ; Clear nested loops
 ED06 D5                 PUSH    DE              ; Save index address
@@ -16,7 +16,7 @@ ED0A D5                 PUSH    DE              ; Save index address
 ED0B CD51F8             CALL    PHLTFP          ; Move index value to FPREG
 ED0E E3                 EX      (SP),HL         ; Save address of TO value
 ED0F E5                 PUSH    HL              ; Save address of index
-ED10 CDBEF5             CALL    ADDPHL          ; Add STEP to index value
+ED10 CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add STEP to index value
 ED13 E1                 POP     HL              ; Restore address of index
 ED14 CD6BF8             CALL    FPTHL           ; Move value to index variable
 ED17 E1                 POP     HL              ; Restore address of TO value
@@ -34,8 +34,8 @@ ED2C 69                 LD      L,C             ; Set code string to loop
 ED2D 60                 LD      H,B
 ED2E C3EEE7             JP      PUTFID          ; Put back "FOR" and continue
 
-ED31 F9         KILFOR: LD      SP,HL           ; Remove "FOR" block
-ED32 2ACE10             LD      HL,(BRKLIN)     ; Code string after "NEXT"
+<span id="ED31">ED31</span> F9         <span id="KILFOR">KILFOR</span>: LD      SP,HL           ; Remove "FOR" block
+ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "NEXT"
 ED35 7E                 LD      A,(HL)          ; Get next byte in code string
 ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
 ED38 C2F2E7             JP      NZ,RUNCNT       ; No - Do next statement
@@ -58,27 +58,27 @@ ED4C C3BFE3             JP      TMERR           ; Different types - Error
 
                 ; &lt;&lt;&lt; NO REFERENCE TO HERE &gt;&gt;&gt;
 
-ED4F CD90E6             CALL    CHKSYN          ; Make sure "=" follows
+ED4F CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
 ED52 B4                 DEFB    ZEQUAL          ; "="
 ED53 C35AED             JP      EVAL            ; Evaluate expression
 
-ED56 CD90E6     OPNPAR: CALL    CHKSYN          ; Make sure "(" follows
+<span id="ED56">ED56</span> CD90E6     <span id="OPNPAR">OPNPAR</span>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 ED59 28                 DEFB    "("
 <span id="ED5A">ED5A</span> 2B         <span id="EVAL">EVAL</span>:   DEC     HL              ; Evaluate expression & save
 ED5B 1600               LD      D,0             ; Precedence value
-ED5D D5         EVAL1:  PUSH    DE              ; Save precedence
+<span id="ED5D">ED5D</span> D5         <span id="EVAL1">EVAL1</span>:  PUSH    DE              ; Save precedence
 ED5E 0E01               LD      C,1
-ED60 CD8AE3             CALL    CHKSTK          ; Check for 1 level of stack
+ED60 CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 1 level of stack
 ED63 CDD1ED             CALL    OPRND           ; Get next expression value
-ED66 22D010     EVAL2:  LD      (NXTOPR),HL     ; Save address of next operator
-ED69 2AD010     EVAL3:  LD      HL,(NXTOPR)     ; Restore address of next opr
+<span id="ED66">ED66</span> 22D010     <span id="EVAL2">EVAL2</span>:  LD      (NXTOPR),HL     ; Save address of next operator
+<span id="ED69">ED69</span> 2AD010     <span id="EVAL3">EVAL3</span>:  LD      HL,(NXTOPR)     ; Restore address of next opr
 ED6C C1                 POP     BC              ; Precedence value and operator
 ED6D 78                 LD      A,B             ; Get precedence value
 ED6E FE78               CP      78H             ; "AND" or "OR" ?
 ED70 D444ED             CALL    NC,TSTNUM       ; No - Make sure it's a number
 ED73 7E                 LD      A,(HL)          ; Get next operator / function
 ED74 1600               LD      D,0             ; Clear Last relation
-ED76 D6B3       RLTLP:  SUB     ZGTR            ; ">" Token
+<span id="ED76">ED76</span> D6B3       <span id="RLTLP">RLTLP</span>:  SUB     ZGTR            ; ">" Token
 ED78 DA92ED             JP      C,FOPRND        ; + - * / ^ AND OR - Test it
 ED7B FE03               CP      ZLTH+1-ZGTR     ; &lt; = &gt;
 ED7D D292ED             JP      NC,FOPRND       ; Function - Call it

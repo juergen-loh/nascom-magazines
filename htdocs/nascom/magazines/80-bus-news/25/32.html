@@ -19,9 +19,9 @@ E6B3 CABBE6             JP      Z,INCLEN        ; Yes - No width limit
 E6B6 05                 DEC     B               ; Restore width
 E6B7 B8                 CP      B               ; At end of line?
 E6B8 CC81EB             CALL    Z,PRNTCR        ; Yes - output CRLF
-E6BB 3C         INCLEN: INC     A               ; Move on one character
+<span id="E6BB">E6BB</span> 3C         <span id="INCLEN">INCLEN</span>: INC     A               ; Move on one character
 E6BC 32AB10             LD      (CURPOS),A      ; Save new position
-E6BF F1         DINPOS: POP     AF              ; Restore character
+<span id="E6BF">E6BF</span> F1         <span id="DINPOS">DINPOS</span>: POP     AF              ; Restore character
 E6C0 C1                 POP     BC              ; Restore buffer length
 E6C1 F5                 PUSH    AF              ; &lt;&lt; This sequence &gt;&gt;
 E6C2 F1                 POP     AF              ; &lt;&lt; is not needed &gt;&gt;
@@ -47,13 +47,13 @@ E6DC C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    26</span>
 
-<span id="E6DD">E6DD</span> CDA5E9     <span id="LIST">LIST</span>:   CALL    ATOH            ; ASCII number to DE
+<span id="E6DD">E6DD</span> CDA5E9     <span id="LIST">LIST</span>:   CALL    <?php bas8K("ATOH"); ?>            ; ASCII number to DE
 E6E0 C0                 RET     NZ              ; Return if anything extra
 E6E1 C1                 POP     BC              ; Rubbish - Not needed
 E6E2 CD99E4             CALL    SRCHLN          ; Search for line number in DE
 E6E5 C5                 PUSH    BC              ; Save address of line
 E6E6 CD33E7             CALL    SETLIN          ; Set up lines counter
-E6E9 E1         LISTLP: POP     HL              ; Restore address of line
+<span id="E6E9">E6E9</span> E1         <span id="LISTLP">LISTLP</span>: POP     HL              ; Restore address of line
 E6EA 4E                 LD      C,(HL)          ; Get LSB of next line
 E6EB 23                 INC     HL
 E6EC 46                 LD      B,(HL)          ; Get MSB of next line
@@ -74,8 +74,8 @@ E702 EB                 EX      DE,HL           ; Line number to HL
 E703 CDADF9             CALL    PRNTHL          ; Output line number in decimal
 E706 3E20               LD      A," "           ; Space after line number
 E708 E1                 POP     HL              ; Restore start of line address
-E709 CD9BE6     LSTLP2: CALL    OUTC            ; Output character in A
-E70C 7E         LSTLP3: LD      A,(HL)          ; Get next byte in line
+<span id="E709">E709</span> CD9BE6     <span id="LSTLP2">LSTLP2</span>: CALL    OUTC            ; Output character in A
+<span id="E70C">E70C</span> 7E         <span id="LSTLP3">LSTLP3</span>: LD      A,(HL)          ; Get next byte in line
 E70D B7                 OR      A               ; End of line?
 E70E 23                 INC     HL              ; To next byte in line
 E70F CAE9E6             JP      Z,LISTLP        ; Yes - get next line
@@ -83,13 +83,13 @@ E712 F209E7             JP      P,LSTLP2        ; No token - output it
 E715 D67F               SUB     ZEND-1          ; Find and output word
 E717 4F                 LD      C,A             ; Token offset+1 to C
 E718 1143E1             LD      DE,WORDS        ; Reserved word list
-E71B 1A         FNDTOK: LD      A,(DE)          ; Get character in list
+<span id="E71B">E71B</span> 1A         <span id="FNDTOK">FNDTOK</span>: LD      A,(DE)          ; Get character in list
 E71C 13                 INC     DE              ; Move on to next
 E71D B7                 OR      A               ; Is it start of word?
 E71E F21BE7             JP      P,FNDTOK        ; No - Keep looking for word
 E721 0D                 DEC     C               ; Count words
 E722 C21BE7             JP      NZ,FNDTOK       ; Not there - keep looking
-E725 E67F       OUTWRD: AND     01111111B       ; Strip bit 7
+<span id="E725">E725</span> E67F       <span id="OUTWRD">OUTWRD</span>: AND     01111111B       ; Strip bit 7
 E727 CD9BE6             CALL    OUTC            ; Output first character
 E72A 1A                 LD      A,(DE)          ; Get next character
 E72B 13                 INC     DE              ; Move on to next

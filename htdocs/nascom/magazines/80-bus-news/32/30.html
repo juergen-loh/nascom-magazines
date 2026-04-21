@@ -6,7 +6,7 @@
 FB5E 1106F7             LD      DE,MULT         ; Multiply by "X"
 FB61 D5                 PUSH    DE              ; To be done after
 FB62 E5                 PUSH    HL              ; Save address of table
-FB63 CD5FF8             CALL    BCDEFP          ; Move FPREG to BCDE
+FB63 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move FPREG to BCDE
 FB66 CD08F7             CALL    FPMULT          ; Square the value
 FB69 E1                 POP     HL              ; Restore address of table
 <span id="FB6A">FB6A</span> CD44F8     <span id="SMSER1">SMSER1</span>: CALL    STAKFP          ; Put value on stack
@@ -14,7 +14,7 @@ FB6D 7E                 LD      A,(HL)          ; Get number of coefficients
 FB6E 23                 INC     HL              ; Point to start of table
 FB6F CD51F8             CALL    PHLTFP          ; Move coefficient to FPREG
 FB72 06                 DEFB    (LD B,n)        ; Skip "POP AF"
-FB73 F1         SUMLP:  POP     AF              ; Restore count
+<span id="FB73">FB73</span> F1         <span id="SUMLP">SUMLP</span>:  POP     AF              ; Restore count
 FB74 C1                 POP     BC              ; Restore number
 FB75 D1                 POP     DE
 FB76 3D                 DEC     A               ; Cont coefficients

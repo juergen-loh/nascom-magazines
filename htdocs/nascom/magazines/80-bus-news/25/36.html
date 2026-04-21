@@ -2,14 +2,14 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    33</span>
 
-E910 0E04       GETHDR: LD      C,4             ; 4 Bytes to check
-E912 CDB4F4     HDRLP:  CALL    RUART           ; Read byte from UART
+<span id="E910">E910</span> 0E04       <span id="GETHDR">GETHDR</span>: LD      C,4             ; 4 Bytes to check
+<span id="E912">E912</span> CDB4F4     <span id="HDRLP">HDRLP</span>:  CALL    RUART           ; Read byte from UART
 E915 B8                 CP      B               ; Same as header?
 E916 C210E9             JP      NZ,GETHDR       ; No - Wait for another
 E919 0D                 DEC     C               ; Count bytes
 E91A C212E9             JP      NZ,HDRLP        ; More needed
-E91D CD44ED     SNDARY: CALL    TSTNUM          ; Check it's a numerical array
-E920 CD8AE6     ARYLP:  CALL    CPDEHL          ; All array data done
+<span id="E91D">E91D</span> CD44ED     <span id="SNDARY">SNDARY</span>: CALL    TSTNUM          ; Check it's a numerical array
+<span id="E920">E920</span> CD8AE6     <span id="ARYLP">ARYLP</span>:  CALL    CPDEHL          ; All array data done
 E923 CA37E9             JP      Z,SUMOFF        ; Yes - Do check sum
 E926 F1                 POP     AF              ; CLOAD* or CSAVE* ?
 E927 F5                 PUSH    AF              ; Re-save flags
@@ -17,43 +17,43 @@ E928 7E                 LD      A,(HL)          ; Get byte
 E929 F4BAF4             CALL    P,WUART         ; CSAVE* - Write byte
 E92C FCB4F4             CALL    M,RUART         ; CLOAD* - Read byte
 E92F 77                 LD      (HL),A          ; Save byte in case of CLOAD*
-E930 CD40E9             CALL    ACCSUM          ; Accumulate check sum
+E930 CD40E9             CALL    <?php bas8K("ACCSUM"); ?>          ; Accumulate check sum
 E933 23                 INC     HL              ; Next byte
-E934 C320E9             JP      ARYLP           ; Repeat
+E934 C320E9             JP      <?php bas8K("ARYLP"); ?>           ; Repeat
 
-E937 CD4DE9     SUMOFF: CALL    DOSUM           ; Do check sum
-E93A CDD5FC             CALL    CASFF           ; Cassette off
+<span id="E937">E937</span> CD4DE9     <span id="SUMOFF">SUMOFF</span>: CALL    DOSUM           ; Do check sum
+E93A CDD5FC             CALL    <?php bas8K("CASFF"); ?>           ; Cassette off
 E93D F1                 POP     AF              ; Not needed any more
 E93E E1                 POP     HL              ; Restore code string address
 E93F C9                 RET
 
-E940 E5         ACCSUM: PUSH    HL              ; Save address in array
-E941 2A4A10             LD      HL,(CHKSUM)     ; Get check sum
+<span id="E940">E940</span> E5         <span id="ACCSUM">ACCSUM</span>: PUSH    HL              ; Save address in array
+E941 2A4A10             LD      HL,(<?php bas8K("CHKSUM"); ?>)     ; Get check sum
 E944 0600               LD      B,0             ; BC - Value of byte
 E946 4F                 LD      C,A
 E947 09                 ADD     HL,BC           ; Add byte to check sum
-E948 224A10             LD      (CHKSUM),HL     ; Re-save check sum
+E948 224A10             LD      (<?php bas8K("CHKSUM"); ?>),HL     ; Re-save check sum
 E94B E1                 POP     HL              ; Restore address in array
 E94C C9                 RET
 
-E94D 3ACE10     DOSUM:  LD      A,(BRKLIN)      ; CLOAD* or CSAVE* ?
+<span id="E94D">E94D</span> 3ACE10     <span id="DOSUM">DOSUM</span>:  LD      A,(<?php bas8K("BRKLIN"); ?>)      ; CLOAD* or CSAVE* ?
 E950 B7                 OR      A
 E951 FA60E9             JP      M,CHSUMS        ; CLOAD* - Check if sums match
-E954 3A4A10             LD      A,(CHKSUM)      ; Get LSB of check sum
+E954 3A4A10             LD      A,(<?php bas8K("CHKSUM"); ?>)      ; Get LSB of check sum
 E957 CDBAF4             CALL    WUART           ; Write to UART
-E95A 3A4B10             LD      A,(CHKSUM+1)    ; Get MSB of check sum
+E95A 3A4B10             LD      A,(<?php bas8K("CHKSUM"); ?>+1)    ; Get MSB of check sum
 E95D C3BAF4             JP      WUART           ; Write to UART and return
 
-E960 CDB4F4     CHSUMS: CALL    RUART           ; Read LSB of check sum
+<span id="E960">E960</span> CDB4F4     <span id="CHSUMS">CHSUMS</span>: CALL    RUART           ; Read LSB of check sum
 E963 F5                 PUSH    AF              ; Save it
 E964 CDB4F4             CALL    RUART           ; Read MSB of check sum
 E967 C1                 POP     BC              ; LSB to B
 E968 58                 LD      E,B             ; LSB to E
 E969 57                 LD      D,A             ; MSB to D
-E96A 2A4A10             LD      HL,(CHKSUM)     ; Get accumulated check sum
+E96A 2A4A10             LD      HL,(<?php bas8K("CHKSUM"); ?>)     ; Get accumulated check sum
 E96D CD8AE6             CALL    CPDEHL          ; Are they the same?
 E970 C8                 RET     Z               ; Yes - End CLOAD*
-E971 CDD5FC             CALL    CASFF           ; Cassette off
+E971 CDD5FC             CALL    <?php bas8K("CASFF"); ?>           ; Cassette off
 E974 C36BF5             JP      OUTBAD          ; Different - Output "Bad"
 </pre>
 <?php DoublePageChange(); ?>
@@ -81,12 +81,12 @@ E99A CD8EF8             CALL    CMPNUM          ; Compare FPREG with BCDE
 E99D E1                 POP     HL              ; Restore code string address
 E99E 51                 LD      D,C             ; MSB to D
 E99F C8                 RET     Z               ; Return if in range
-E9A0 1E08       FCERR:  LD      E,FC            ; ?FC Error
+<span id="E9A0">E9A0</span> 1E08       <span id="FCERR">FCERR</span>:  LD      E,FC            ; ?FC Error
 E9A2 C3C1E3             JP      ERROR           ; Output error-
 
 <span id="E9A5">E9A5</span> 2B         <span id="ATOH">ATOH</span>:   DEC     HL              ; ASCII number to DE binary
-E9A6 110000     GETLN:  LD      DE,0            ; Get number to DE
-E9A9 CD36E8     GTLNLP: CALL    GETCHR          ; Get next character
+<span id="E9A6">E9A6</span> 110000     <span id="GETLN">GETLN</span>:  LD      DE,0            ; Get number to DE
+<span id="E9A9">E9A9</span> CD36E8     <span id="GTLNLP">GTLNLP</span>: CALL    GETCHR          ; Get next character
 E9AC D0                 RET     NC              ; Exit if not a digit
 E9AD E5                 PUSH    HL              ; Save code string address
 E9AE F5                 PUSH    AF              ; Save digit

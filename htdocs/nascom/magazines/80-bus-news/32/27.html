@@ -2,21 +2,21 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    84</span>
 
-F965 C259F9     ENDCON: JP      NZ,SCALMI       ; More to do
+<span id="F965">F965</span> C259F9     <span id="ENDCON">ENDCON</span>: JP      NZ,SCALMI       ; More to do
 F968 D1                 POP     DE              ; Restore code string address
 F969 F1                 POP     AF              ; Restore sign of number
 F96A CC3CF8             CALL    Z,INVSGN        ; Negative - Negate number
 F96D EB                 EX      DE,HL           ; Code string address to HL
 F96E C9                 RET
 
-F96F C8         SCALPL: RET     Z               ; Exit if no scaling needed
-F970 F5         MULTEN: PUSH    AF              ; Save count
+<span id="F96F">F96F</span> C8         <span id="SCALPL">SCALPL</span>: RET     Z               ; Exit if no scaling needed
+<span id="F970">F970</span> F5         <span id="MULTEN">MULTEN</span>: PUSH    AF              ; Save count
 F971 CDFCF7             CALL    MLSP10          ; Multiply number by 10
 F974 F1                 POP     AF              ; Restore count
 F975 3D                 DEC     A               ; Count multiplies
 F976 C9                 RET
 
-F977 D5         ADDIG:  PUSH    DE              ; Save sign of exponent
+<span id="F977">F977</span> D5         <span id="ADDIG">ADDIG</span>:  PUSH    DE              ; Save sign of exponent
 F978 57                 LD      D,A             ; Save digit
 F979 78                 LD      A,B             ; Get digits after point
 F97A 89                 ADC     A,C             ; Add one if after point
@@ -33,13 +33,13 @@ F989 C1                 POP     BC              ; Restore point flags
 F98A D1                 POP     DE              ; Restore sign of exponent
 F98B C32EF9             JP      MANLP           ; Get another digit
 
-F98E CD44F8     RSCALE: CALL    STAKFP          ; Put number on stack
+<span id="F98E">F98E</span> CD44F8     <span id="RSCALE">RSCALE</span>: CALL    STAKFP          ; Put number on stack
 F991 CD25F8             CALL    FLGREL          ; Digit to add to FPREG
-F994 C1         PADD:   POP     BC              ; Restore number
+<span id="F994">F994</span> C1         <span id="PADD">PADD</span>:   POP     BC              ; Restore number
 F995 D1                 POP     DE
 F996 C3CDF5             JP      FPADD           ; Add BCDE to FPREG and return
 
-F999 7B         EDIGIT: LD      A,E             ; Get digit
+<span id="F999">F999</span> 7B         <span id="EDIGIT">EDIGIT</span>: LD      A,E             ; Get digit
 F99A 07                 RLCA                    ; Times 2
 F99B 07                 RLCA                    ; Times 4
 F99C 83                 ADD     A,E             ; Times 5
@@ -53,7 +53,7 @@ F9A2 C344F9             JP      EXPLP           ; Look for another digit
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    85</span>
 
-F9A5 E5         LINEIN: PUSH    HL              ; Save code string address
+<span id="F9A5">F9A5</span> E5         <span id="LINEIN">LINEIN</span>: PUSH    HL              ; Save code string address
 F9A6 2146E3             LD      HL,INMSG        ; Output " in "
 F9A9 CD10F2             CALL    PRS             ; Output string at HL
 F9AC E1                 POP     HL              ; Restore code string address
@@ -69,7 +69,7 @@ F9BC CD13F8             CALL    TSTSGN          ; Test sign of FPREG
 F9BF 3620               LD      (HL)," "        ; Space at start
 F9C1 F2C6F9             JP      P,SPCFST        ; Positive - Space to start
 F9C4 362D               LD      (HL),"-"        ; "-" sign at start
-F9C6 23         SPCFST: INC     HL              ; First byte of number
+<span id="F9C6">F9C6</span> 23         <span id="SPCFST">SPCFST</span>: INC     HL              ; First byte of number
 F9C7 3630               LD      (HL),"0"        ; "0" if zero
 F9C9 CA7CFA             JP      Z,JSTZER        ; Return "0" if zero
 F9CC E5                 PUSH    HL              ; Save buffer address
@@ -77,7 +77,7 @@ F9CD FC3CF8             CALL    M,INVSGN        ; Negate FPREG if negative
 F9D0 AF                 XOR     A               ; Zero A
 F9D1 F5                 PUSH    AF              ; Save it
 F9D2 CD82FA             CALL    RNGTST          ; Test number is in range
-F9D5 014391     SIXDIG: LD      BC,9143H        ; BCDE - 99999.9
+<span id="F9D5">F9D5</span> 014391     <span id="SIXDIG">SIXDIG</span>: LD      BC,9143H        ; BCDE - 99999.9
 F9D8 11F84F             LD      DE,4FF8H
 F9DB CD8EF8             CALL    CMPNUM          ; Compare numbers
 F9DE B7                 OR      A
@@ -87,12 +87,12 @@ F9E3 CD70F9             CALL    MULTEN          ; Multiply by ten
 F9E6 F5                 PUSH    AF              ; Re-save count
 F9E7 C3D5F9             JP      SIXDIG          ; Test it again
 
-F9EA CD5BF7     GTSIXD: CALL    DIV10           ; Divide by 10
+<span id="F9EA">F9EA</span> CD5BF7     <span id="GTSIXD">GTSIXD</span>: CALL    DIV10           ; Divide by 10
 F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
 F9F0 CD82FA             CALL    RNGTST          ; Test number is in range
-F9F3 CDBBF5     INRNG:  CALL    ROUND           ; Add 0.5 to FPREG
+<span id="F9F3">F9F3</span> CDBBF5     <span id="INRNG">INRNG</span>:  CALL    ROUND           ; Add 0.5 to FPREG
 F9F6 3C                 INC     A
 F9F7 CDBBF8             CALL    FPINT           ; F.P to integer
 F9FA CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG

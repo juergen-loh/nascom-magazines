@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    59</span>
 
-<span id="F189">F189</span> CD90E6     <span id="CHEKFN">CHEKFN</span>: CALL    CHKSYN          ; Make sure FN follows
+<span id="F189">F189</span> CD90E6     <span id="CHEKFN">CHEKFN</span>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure FN follows
 F18C A7                 DEFB    ZFN             ; "FN" token
 F18D 3E80               LD      A,80H
 F18F 32CB10             LD      (FORFLG),A      ; Flag FN name to find
@@ -35,11 +35,11 @@ F1BD D1                 POP     DE              ; Restore pointer to MSB
 F1BE C9                 RET
 
 <span id="F1BF">F1BF</span> CD29F2     <span id="MKTMST">MKTMST</span>: CALL    TESTR           ; See if enough string space
-F1C2 21BF10     CRTMST: LD      HL,TMPSTR       ; Temporary string
+<span id="F1C2">F1C2</span> 21BF10     <span id="CRTMST">CRTMST</span>: LD      HL,TMPSTR       ; Temporary string
 F1C5 E5                 PUSH    HL              ; Save it
 F1C6 77                 LD      (HL),A          ; Save length of string
 F1C7 23                 INC     HL
-F1C8 23         SVSTAD: INC     HL
+<span id="F1C8">F1C8</span> 23         <span id="SVSTAD">SVSTAD</span>: INC     HL
 F1C9 73                 LD      (HL),E          ; Save LSB of address
 F1CA 23                 INC     HL
 F1CB 72                 LD      (HL),D          ; Save MSB of address
@@ -50,12 +50,12 @@ F1CD C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    60</span>
 
-F1CE 2B         CRTST:  DEC     HL              ; DEC - INCed after
-F1CF 0622       QTSTR:  LD      B,'"'           ; Terminating quote
+<span id="F1CE">F1CE</span> 2B         <span id="CRTST">CRTST</span>:  DEC     HL              ; DEC - INCed after
+<span id="F1CF">F1CF</span> 0622       <span id="QTSTR">QTSTR</span>:  LD      B,'"'           ; Terminating quote
 F1D1 50                 LD      D,B             ; Quote to D
-F1D2 E5         DTSTR:  PUSH    HL              ; Save start
+<span id="F1D2">F1D2</span> E5         <span id="DTSTR">DTSTR</span>:  PUSH    HL              ; Save start
 F1D3 0EFF               LD      C,-1            ; Set counter to -1
-F1D5 23         QTSTLP: INC     HL              ; Move on
+<span id="F1D5">F1D5</span> 23         <span id="QTSTLP">QTSTLP</span>: INC     HL              ; Move on
 F1D6 7E                 LD      A,(HL)          ; Get byte
 F1D7 0C                 INC     C               ; Count bytes
 F1D8 B7                 OR      A               ; End of line?
@@ -64,14 +64,14 @@ F1DC BA                 CP      D               ; Terminator D found?
 F1DD CAE4F1             JP      Z,CRTSTE        ; Yes - Create string entry
 F1E0 B8                 CP      B               ; Terminator B found?
 F1E1 C2D5F1             JP      NZ,QTSTLP       ; No - Keep looking
-F1E4 FE22       CRTSTE: CP      '"'             ; End with '"'?
+<span id="F1E4">F1E4</span> FE22       <span id="CRTSTE">CRTSTE</span>: CP      '"'             ; End with '"'?
 F1E6 CC36E8             CALL    Z,GETCHR        ; Yes - Get next character
 F1E9 E3                 EX      (SP),HL         ; Starting quote
 F1EA 23                 INC     HL              ; First byte of string
 F1EB EB                 EX      DE,HL           ; To DE
 F1EC 79                 LD      A,C             ; Get length
 F1ED CDC2F1             CALL    CRTMST          ; Create string entry
-F1F0 11BF10     TSTOPL: LD      DE,TMPSTR       ; Temporary string
+<span id="F1F0">F1F0</span> 11BF10     <span id="TSTOPL">TSTOPL</span>: LD      DE,TMPSTR       ; Temporary string
 F1F3 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
 F1F6 22E410             LD      (FPREG),HL      ; Save address of string ptr
 F1F9 3E01               LD      A,1
@@ -87,10 +87,10 @@ F20C C3C1E3             JP      ERROR           ; String pool overflow
 
 <span id="F20F">F20F</span> 23         <span id="PRNUMS">PRNUMS</span>: INC     HL              ; Skip leading space
 <span id="F210">F210</span> CDCEF1     <span id="PRS">PRS</span>:    CALL    CRTST           ; Create string entry for it
-F213 CD53F3     PRS1:   CALL    GSTRCU          ; Current string to pool
+<span id="F213">F213</span> CD53F3     <span id="PRS1">PRS1</span>:   CALL    GSTRCU          ; Current string to pool
 F216 CD62F8             CALL    LOADFP          ; Move string block to BCDE
 F219 1C                 INC     E               ; Length + 1
-F21A 1D         PRSLP:  DEC     E               ; Count characters
+<span id="F21A">F21A</span> 1D         <span id="PRSLP">PRSLP</span>:  DEC     E               ; Count characters
 F21B C8                 RET     Z               ; End of string
 F21C 0A                 LD      A,(BC)          ; Get byte to output
 F21D CD9BE6             CALL    OUTC            ; Output character in A
