@@ -6141,35 +6141,162 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "EFEA":	case "SBSCPT":
 	case "EFF0":	case "SCPTLP":
 									$p = "26/38";	break;
-									$p = "26/3";	break;
-									$p = "26/3";	break;
 
 	// ---------------------------------- 31
 	case "F012":	case "ARLDSV":
+	case "F018":	case "FNDARY":
+	case "F02C":	case "NXTARY":
 	case "F045":	case "BSERR":
 									$p = "31/23";	break;
+	case "F04A":	case "CREARY":
+	case "F065":	case "CRARLP":
+	case "F06D":	case "DEFSIZ":
+	case "F08B":	case "ZERARY":
+	case "F0A8":	case "FINDEL":
+	case "F0AD":	case "FNDELP":
+	case "F0CC":	case "ENDDIM":
+									$p = "31/24";	break;
+	case "F0D0":	case "FRE":
+	case "F0EC":	case "FRENUM":
 	case "F0F1":	case "ACPASS":
 	case "F0F2":	case "ABPASS":
+	case "F0FE":	case "POS":
+	case "F101":	case "PASSA":
+	case "F106":	case "DEF":
+	case "F133":	case "DOFN":
+	case "F17B":	case "IDTEST":
 									$p = "31/25";	break;
 	case "F189":	case "CHEKFN":
+	case "F19A":	case "STR":
+	case "F1AA":	case "SAVSTR":
+	case "F1BF":	case "MKTMST":
+	case "F1C2":	case "CRTMST":
+	case "F1C8":	case "SVSTAD":
+	case "F1CE":	case "CRTST":
+	case "F1CF":	case "QTSTR":
+	case "F1D2":	case "DTSTR":
+	case "F1D5":	case "QTSTLP":
+	case "F1E4":	case "CRTSTE":
+	case "F1F0":	case "TSTOPL":
+	case "F20F":	case "PRNUMS":
+	case "F210":	case "PRS":
+	case "F213":	case "PRS1":
+	case "F21A":	case "PRSLP":
 									$p = "31/26";	break;
+	case "F229":	case "TESTR":
+	case "F22B":	case "GRBDON":
+	case "F245":	case "POPAF":
+	case "F247":	case "TESTOS":
+	case "F253":	case "GARBGE":
+	case "F256":	case "GARBLP":
+	case "F264":	case "GRBLP":
+	case "F275":	case "SMPVAR":
+	case "F28A":	case "GNXARY":
 	case "F28B":	case "ARRLP":
+	case "F2AA":	case "GRBARY":
+	case "F2B8":	case "STPOOL":
+	case "F2BB":	case "STRADD":
 									$p = "31/27";	break;
+	case "F2E1":	case "SCNEND":
+	case "F306":	case "CONCAT":
+	case "F33D":	case "SSTSA":
+	case "F346":	case "TOSTRA":
+	case "F347":	case "TSALP":
+	case "F350":	case "GETSTR":
+	case "F353":	case "GSTRCU":
+	case "F356":	case "GSTRHL":
+	case "F357":	case "GSTRDE":
+	case "F36F":	case "POPHL":
 	case "F371":	case "BAKTMP":
 									$p = "31/28";	break;
+	case "F382":	case "LEN":
+	case "F386":	case "GETLEN":
 	case "F391":	case "ASC":
+	case "F395":	case "GTFLNM":
+	case "F3A2":	case "CHR":
+	case "F3AE":	case "TOPOOL":
+	case "F3B2":	case "LEFT":
+	case "F3B6":	case "RIGHT1":
+	case "F3B8":	case "MID1":
 	case "F3C0":	case "ALLFOL":
+	case "F3E2":	case "RIGHT":
 									$p = "31/29";	break;
+	case "F3EC":	case "MID":
+	case "F405":	case "RSTSTR":
+	case "F41C":	case "VAL":
+	case "F437":	case "LFRGNM":
+	case "F43C":	case "MIDNUM":
+	case "F441":	case "INP":
+	case "F44D":	case "POUT":
+	case "F450":	case "OUT":
+	case "F453":	case "WAIT":
+	case "F467":	case "NOXOR":
+	case "F468":	case "WAITLP":
+	case "F471":	case "SETIO":
+	case "F481":	case "FNDNUM":
+	case "F484":	case "GETINT":
+	case "F487":	case "MAKINT":
+									$p = "31/30";	break;
+	case "F4B4":	case "RUART":
+	case "F4B7":	case "WUART2":
+	case "F4BA":	case "WUART":
+	case "F4C3":	case "CSAVE":
+	case "F4F9":	case "CLOAD":
+	case "F509":	case "FLGVER":
 	case "F51C":	case "ANYNAM":
+	case "F52B":	case "CLOAD1":
+	case "F52D":	case "CLOAD2":
+	case "F548":	case "THSFIL":
+	case "F55C":	case "CLOADV":
+	case "F55F":	case "CLOADE":
 									$p = "31/31";	break;
+	case "F56B":	case "OUTBAD":
+	case "F574":	case "FILFND":
+	case "F58E":	case "FILE":
+	case "F594":	case "FOUND":
 	case "F59D":	case "BAD":
+	case "F5A3":	case "PEEK":
+	case "F5AA":	case "POKE":
+	case "F5BB":	case "ROUND":
 	case "F5BE":	case "ADDPHL":
+	case "F5C4":	case "SUBPHL":
+	case "F5C8":	case "PSUB":
+	case "F5CA":	case "SUBCDE":
+	case "F5CD":	case "FPADD":
+	case "F5E7":	case "NOSWAP":
+	case "F60D":	case "MINCDE":
+	case "F61B":	case "CONPOS":
 									$p = "31/32";	break;
 	case "F61E":	case "BNORM":
 	case "F621":	case "BNRMLP":
+	case "F633":	case "RESZER":
+	case "F634":	case "SAVEXP":
+	case "F638":	case "NORMAL":
+	case "F640":	case "PNORM":
+	case "F653":	case "RONDUP":
+	case "F654":	case "RONDB":
+	case "F665":	case "FPROND":
+	case "F672":	case "PLUCDE":
+	case "F67E":	case "COMPL":
+	case "F692":	case "SCALE":
+	case "F694":	case "SCALLP":
 									$p = "31/33";	break;
+	case "F6A1":	case "SHRITE":
+	case "F6A4":	case "SHRLP":
+	case "F6A8":	case "SHRT1":
+	case "F6B6":	case "UNITY":
+	case "F6BA":	case "LOGTAB":
+	case "F6C7":	case "LOG":
+	case "F6FF":	case "MULLN2":
+	case "F706":	case "MULT":
+	case "F708":	case "FPMULT":
+	case "F72A":	case "MULT8":
+	case "F733":	case "MUL8LP":
+	case "F744":	case "NOMADD":
+	case "F754":	case "POPHRT":
 	case "F756":	case "BYTSFT":
 									$p = "31/34";	break;
+									$p = "31/2";	break;
 
 	// ---------------------------------- 32
 	case "F7D1":	case "ADDEXP":
@@ -6349,4 +6476,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 19:26:24 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 19:58:34 +0200 (Mi, 22. Apr 2026) $ -->
