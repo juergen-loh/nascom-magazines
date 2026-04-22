@@ -5723,35 +5723,236 @@ function externalLink($link, $text="", $delimiter="\n")
 	}
 }
 
-function bas8K($label, $target = "", $path = "../../..", $post = "")
+function bas8K($label, $target = "", $path = "", $post = "")
 {
-	$p = "23/27";
-	switch ($label) {
-	// 24
-	case "0008":	case "BKSP":
+	if ($target == "")	$target = $label;
+	if ($path == "")	$path = "../../..";
+
+	$p = "";
+	switch ($target) {
+	// ---------------------------------- 24
+
+	case "0001":	case "UARTD":
+	case "0002":	case "UARTS":
+	case "0003":	case "CTRLC":
+	case "0007":	case "CTRLG":
+	case "0008-BKSP":	case "BKSP":
+	case "000A":	case "LF":
+	case "000C":	case "CS":
+	case "000D":	case "CR":
+	case "000F":	case "CTRLO":
+	case "0012":	case "CTRLR":
+	case "0013":	case "CTRLS":
+	case "0015":	case "CTRLU":
+	case "001A":	case "CTRLZ":
+	case "001B":	case "ESC":
+	case "001C":	case "TBRK":
+	case "001D":	case "TBS":
+	case "001E":	case "TCS":
+	case "001F":	case "TCR":
+	case "007F":	case "DEL":
+	case "0000":	case "MONSTT":
+	case "000D":	case "STMON":
+	case "0051":	case "MFLP":
+	case "008D":	case "MONTYP":
+	case "03D1":	case "T2DUMP":
+	case "0400":	case "T4WR":
+	case "070C":	case "T4READ":
+	case "0800":	case "VDU":
+	case "0C00":	case "PORT0":
 	case "0C0C":	case "ARG1":
 	case "0C0E":	case "ARG2":
+	case "0C18":	case "TCUR":
+	case "0C29":	case "CURSOR":
 	case "0C2B":	case "ARGN":
+	case "0C4A":	case "TOUT":
+	case "0C4D":	case "TIN":
+	case "0C75":	case "CIN":
+	case "0C7E":	case "NMI":
 									$p = "24/23";	break;
-	case "0010":	case "BS":
+	case "1000":	case "WRKSPC":
+	case "1003":	case "USR":
+	case "1006":	case "OUTSUB":
+	case "1007":	case "OTPORT":
+	case "1009":	case "DIVSUP":
+	case "100A":	case "DIV1":
+	case "100E":	case "DIV2":
+	case "1012":	case "DIV3":
+	case "1015":	case "DIV4":
+	case "1017":	case "SEED":
+	case "103A":	case "LSTRND":
+	case "103E":	case "INPSUB":
+	case "103F":	case "INPORT":
+	case "1041":	case "NULLS":
+	case "1042":	case "LWIDTH":
+	case "1043":	case "COMMAN":
+	case "1044":	case "NULFLG":
+	case "1045":	case "CTLOFG":
+	case "1046":	case "LINESC":
+	case "1048":	case "LINESN":
 	case "104A":	case "CHKSUM":
+	case "104C":	case "NMIFLG":
 	case "104D":	case "BRKFLG":
+	case "104E":	case "RINPUT":
+	case "1051":	case "POINT":
+	case "1054":	case "PSET":
+	case "1057":	case "RESET":
+	case "105A":	case "STRSPC":
+	case "105C":	case "LINEAT":
 	case "105E":	case "BASTXT":
 	case "1061":	case "BUFFER":
+	case "1066":	case "STACK":
+	case "10AB":	case "CURPOS":
+	case "10AC":	case "LCRFLG":
+	case "10AD":	case "TYPE":
+	case "10AE":	case "DATFLG":
+	case "10AF":	case "LSTRAM":
+	case "10B1":	case "TMSTPT":
+	case "10B3":	case "TMSTPL":
+	case "10BF":	case "TMPSTR":
+	case "10C3":	case "STRBOT":
+	case "10C5":	case "CUROPR":
+	case "10C7":	case "LOOPST":
+	case "10C9":	case "DATLIN":
+	case "10CB":	case "FORFLG":
+	case "10CC":	case "LSTBIN":
+	case "10CD":	case "READFG":
 	case "10CE":	case "BRKLIN":
+	case "10D0":	case "NXTOPR":
+	case "10D2":	case "ERRLIN":
+	case "10D4":	case "CONTAD":
+	case "10D6":	case "PROGND":
+	case "10D8":	case "VAREND":
 	case "10DA":	case "ARREND":
+	case "10DC":	case "NXTDAT":
+	case "10DE":	case "FNRGNM":
+	case "10E0":	case "FNARG":
+	case "10E4":	case "FPREG":
+	case "10E7":	case "FPEXP":
+	case "10E8":	case "SGNRES":
+	case "10E9":	case "PBUFF":
+	case "10F6":	case "MULVAL":
+	case "10F9":	case "PROGST":
+	case "115D":	case "STLOOK":
+	case "0000":	case "NF":
+	case "0002":	case "SN":
+	case "0004":	case "RG":
+	case "0006":	case "OD":
+	case "0008-FC":	case "FC":
+	case "000A":	case "OV":
+	case "000C":	case "OM":
+	case "000E":	case "UL":
+	case "0010":	case "BS":
+	case "0012":	case "DD":
+	case "0014":	case "DZ":
+	case "0016":	case "ID":
+	case "0018":	case "TM":
+	case "001A":	case "OS":
+	case "001C":	case "LS":
+	case "001E":	case "ST":
+	case "0020":	case "CN":
+	case "0022":	case "UF":
+	case "0024":	case "MO":
 									$p = "24/24";	break;
+	case "E000":	case "START":
+	case "E003":	case "STARTB":
+	case "E012":	case "CSTART":
+	case "E019":	case "INIT":
+	case "E021":	case "COPY":
+	case "E036":	case "MSIZE":
+	case "E049":	case "MLOOP":
+	case "E05B":	case "TSTMEM":
+	case "E06D":	case "SETTOP":
+	case "E0AE":	case "WARMST":
 	case "E0B1":	case "BRKRET":
 									$p = "24/25";	break;
 	case "E0B7":	case "BFREE":
+	case "E0C5":	case "SIGNON":
+	case "E10F":	case "FNCTAB":
+	case "E143":	case "WORDS":
 									$p = "24/26";	break;
-	case "E356":	case "BAKSTK":
+	case "E25A":	case "WORDTB":
+									$p = "24/27";	break;
+	case "E2A4":	case "PRITAB":
+	case "E2B9":	case "ERRORS":
+									$p = "24/28";	break;
+	case "E2DF":	case "INITAB":
+	case "E33F":	case "INITBE":
+	case "E346":	case "INMSG":
+	case "E34A":	case "ZERBYT":
+	case "E34B":	case "OKMSG":
 	case "E350":	case "BRKMSG":
+	case "E356":	case "BAKSTK":
+	case "E35A":	case "LOKFOR":
+	case "E370":	case "INDFND":
+	case "E379":	case "MOVUP":
+	case "E37C":	case "MOVSTR":
+	case "E37F":	case "MOVLP":
 									$p = "24/29";	break;
 	case "E38A":	case "CHKSTK":
+	case "E393":	case "ENFMEM":
+	case "E3A2":	case "OMERR":
+	case "E3A7":	case "DATSNR":
+	case "E3AD":	case "SNERR":
+	case "E3B0":	case "DZERR":
+	case "E3B3":	case "NFERR":
+	case "E3B6":	case "DDERR":
+	case "E3B9":	case "UFERR":
+	case "E3BC":	case "OVERR":
+	case "E3BF":	case "TMERR":
+	case "E3C1":	case "ERROR":
+	case "E3E1":	case "ERRIN":
+	case "E3F7":	case "POPNOK":
 									$p = "24/30";	break;
+	case "E3F8":	case "PRNTOK":
+	case "E405":	case "GETCMD":
+	case "E43E":	case "LINFND":
+	case "E446":	case "SFTPRG":
+	case "E455":	case "INEWLN":
+	case "E474":	case "MOVBUF":
+	case "E47C":	case "SETPTR":
+	case "E481":	case "PTRLP":
+	case "E48D":	case "FNDEND":
+									$p = "24/31";	break;
+	case "E499":	case "SRCHLN":
+	case "E49C":	case "SRCHLP":
+	case "E4B9":	case "NEW":
+	case "E4BA":	case "CLRPTR":
+	case "E4C5":	case "RUNFST":
+	case "E4C9":	case "INTVAR":
+	case "E4DF":	case "CLREG":
+	case "E4F8":	case "DOAGN":
+	case "E4FC":	case "PROMPT":
+									$p = "24/32";	break;
+	case "E509":	case "CRUNCH":
+	case "E512":	case "CRNCLP":
+	case "E53C":	case "FNDWRD":
+	case "E555":	case "SEARCH":
+	case "E557":	case "GETNXT":
+	case "E567":	case "NXTBYT":
+	case "E578":	case "NOSPC":
+	case "E581":	case "NOCHNG":
+	case "E589":	case "MATCH":
+	case "E58D":	case "RETNAD":
+	case "E591":	case "MOVDIR":
+	case "E59F":	case "SETLIT":
+	case "E5A2":	case "TSTREM":
+	case "E5A8":	case "NXTCHR":
+	case "E5B1":	case "CPYLIT":
+									$p = "24/33";	break;
+	case "E5B8":	case "ENDBUF":
+	case "E5C1":	case "DODEL":
+	case "E5D5":	case "ECHDEL":
+	case "E5E1":	case "DELCHR":
+	case "E5E9":	case "OTKLN":
+	case "E5EC":	case "KILIN":
+	case "E5F2":	case "GETLIN":
+	case "E607":	case "TTYLIN":
+	case "E610":	case "MORINP":
+	case "E629":	case "PROCES":
+									$p = "24/34";	break;
 
-	// 25
+	// ---------------------------------- 25
 	case "E690":	case "CHKSYN":
 									$p = "25/31";	break;
 	case "E8B9":	case "ARRLD1":
@@ -5763,7 +5964,7 @@ function bas8K($label, $target = "", $path = "../../..", $post = "")
 	case "E9A5":	case "ATOH":
 									$p = "25/36";	break;
 
-	// 26
+	// ---------------------------------- 26
 	case "EBC7":	case "ASPCS":
 	case "EBEC":	case "BADINP":
 									$p = "26/32";	break;
@@ -5773,7 +5974,7 @@ function bas8K($label, $target = "", $path = "../../..", $post = "")
 	case "EF56":	case "CHARTY":
 									$p = "26/37";	break;
 
-	// 31
+	// ---------------------------------- 31
 	case "F012":	case "ARLDSV":
 	case "F045":	case "BSERR":
 									$p = "31/23";	break;
@@ -5800,7 +6001,7 @@ function bas8K($label, $target = "", $path = "../../..", $post = "")
 	case "F756":	case "BYTSFT":
 									$p = "31/34";	break;
 
-	// 32
+	// ---------------------------------- 32
 	case "F7D1":	case "ADDEXP":
 									$p = "32/24";	break;
 	case "F838":	case "ABS":
@@ -5811,7 +6012,7 @@ function bas8K($label, $target = "", $path = "../../..", $post = "")
 	case "F977":	case "ADDIG":
 									$p = "32/27";	break;
 
-	// 33
+	// ---------------------------------- 33
 	case "FC7C":	case "ATN":
 	case "FC99":	case "ATN1":
 	case "FCA3":	case "ATNTAB":
@@ -5830,10 +6031,11 @@ function bas8K($label, $target = "", $path = "../../..", $post = "")
 	case "FFC2":	case "ADJCOL":
 									$p = "33/29";	break;
 	}
-	if ($target == "") {
-		$target = $label;
+	if ($p == "") {
+		echo "$label$post";
+	} else {
+		echo "<a href=\"$path/$p/text/#$target\">$label</a>$post";
 	}
-	echo "<a href=\"$path/$p/text/#$target\">$label</a>$post";
 }
 
 function hline($width, $border="")
@@ -5977,4 +6179,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-21 21:54:25 +0200 (Di, 21. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 19:10:56 +0200 (Mi, 22. Apr 2026) $ -->
