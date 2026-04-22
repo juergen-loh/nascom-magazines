@@ -6296,18 +6296,97 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "F754":	case "POPHRT":
 	case "F756":	case "BYTSFT":
 									$p = "31/34";	break;
-									$p = "31/2";	break;
 
 	// ---------------------------------- 32
+	case "F75B":	case "DIV10":
+	case "F767":	case "DIV":
+	case "F769":	case "DVBCDE":
+	case "F78E":	case "DIVLP":
+									$p = "32/23";	break;
+	case "head":	case 4.7:
+	case "F7A1":	case "RESDIV":
 	case "F7D1":	case "ADDEXP":
+	case "head":	case 4.7:
+	case "F7EF":	case "OVTST1":
+	case "F7F4":	case "OVTST2":
+	case "F7F5":	case "OVTST3":
+	case "F7FC":	case "MLSP10":
+	case "F813":	case "TSTSGN":
+	case "F81C":	case "RETREL":
+	case "F81E":	case "FLGDIF":
+	case "F822":	case "SGN":
+	case "F825":	case "FLGREL":
+	case "F82A":	case "RETINT":
 									$p = "32/24";	break;
 	case "F838":	case "ABS":
+	case "F83C":	case "INVSGN":
+	case "F844":	case "STAKFP":
+	case "F851":	case "PHLTFP":
+	case "F854":	case "FPBCDE":
 	case "F85F":	case "BCDEFP":
+	case "F862":	case "LOADFP":
+	case "F869":	case "INCHL":
+	case "F86B":	case "FPTHL":
+	case "F86E":	case "DETHL4":
+	case "F870":	case "DETHLB":
+	case "F879":	case "SIGNS":
+	case "F88E":	case "CMPNUM":
+	case "F8A8":	case "CMPFP":
 									$p = "32/25";	break;
+	case "F8BB":	case "FPINT":
+	case "F8DF":	case "DCBCDE":
+	case "F8E6":	case "INT":
+	case "F8FF":	case "MLDEBC":
+	case "F907":	case "MLDBLP":
+	case "F915":	case "NOMLAD":
 	case "F91A":	case "ASCTFP":
+	case "F926":	case "CNVNUM":
+	case "F92E":	case "MANLP":
+	case "F944":	case "EXPLP":
+	case "F952":	case "DPOINT":
+	case "F956":	case "CONEXP":
+	case "F959":	case "SCALMI":
 									$p = "32/26";	break;
+	case "F965":	case "ENDCON":
+	case "F96F":	case "SCALPL":
+	case "F970":	case "MULTEN":
 	case "F977":	case "ADDIG":
+	case "F98E":	case "RSCALE":
+	case "F994":	case "PADD":
+	case "F999":	case "EDIGIT":
+	case "F9A5":	case "LINEIN":
+	case "F9AD":	case "PRNTHL":
+	case "F9B8":	case "NUMASC":
+	case "F9C6":	case "SPCFST":
+	case "F9D5":	case "SIXDIG":
+	case "F9EA":	case "GTSIXD":
+	case "F9F3":	case "INRNG":
 									$p = "32/27";	break;
+	case "FA0F":	case "MAKNUM":
+	case "FA20":	case "DIGTXT":
+	case "FA2F":	case "TRYAGN":
+	case "FA54":	case "SUPTLZ":
+	case "FA60":	case "DOEBIT":
+	case "FA70":	case "OUTEXP":
+	case "FA72":	case "EXPTEN":
+	case "FA7C":	case "JSTZER":
+	case "FA7F":	case "NOENED":
+	case "FA82":	case "RNGTST":
+	case "FA91":	case "HALF":
+	case "FA95":	case "POWERS":
+	case "FAA7":	case "NEGAFT":
+	case "FAAC":	case "SQR":
+									$p = "32/28";	break;
+	case "FAB5":	case "POWER":
+	case "FAC5":	case "POWER1":
+	case "FAE2":	case "POWER2":
+	case "FAFA":	case "EXP":
+	case "FB3A":	case "EXPTAB":
+									$p = "32/29";	break;
+	case "FB5B":	case "SUMSER":
+	case "FB6A":	case "SMSER1":
+	case "FB73":	case "SUMLP":
+									$p = "32/30";	break;
 
 	// ---------------------------------- 33
 	case "FC7C":	case "ATN":
@@ -6476,4 +6555,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 19:58:34 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 22:19:24 +0200 (Mi, 22. Apr 2026) $ -->
