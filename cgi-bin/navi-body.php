@@ -5953,26 +5953,196 @@ function bas8K($label, $target = "", $path = "", $post = "")
 									$p = "24/34";	break;
 
 	// ---------------------------------- 25
+	case "E668":	case "PUTBUF":
+	case "E66D":	case "PUTCTL":
+	case "E67C":	case "OUTIT":
+	case "E682":	case "OUTNBS":
+	case "E68A":	case "CPDEHL":
 	case "E690":	case "CHKSYN":
 									$p = "25/31";	break;
+	case "E69B":	case "OUTC":
+	case "E6BB":	case "INCLEN":
+	case "E6BF":	case "DINPOS":
+	case "E6CC":	case "CLOTST":
+	case "E6DD":	case "LIST":
+	case "E6E9":	case "LISTLP":
+	case "E709":	case "LSTLP2":
+	case "E70C":	case "LSTLP3":
+	case "E71B":	case "FNDTOK":
+	case "E725":	case "OUTWRD":
+									$p = "25/32";	break;
+	case "E733":	case "SETLIN":
+	case "E73C":	case "LDNMI1":
+	case "E746":	case "COUNT":
+	case "E770":	case "RSLNBK":
+	case "E779":	case "FOR":
+	case "E78D":	case "FORSLP":
+									$p = "25/33";	break;
+	case "E7A9":	case "FORFND":
+	case "E7E5":	case "SAVSTP":
+	case "E7EE":	case "PUTFID":
+	case "E7F2":	case "RUNCNT":
+	case "E816":	case "EXCUTE":
+	case "E81D":	case "IFJMP":
+	case "E81E":	case "ONJMP":
+	case "E836":	case "GETCHR":
+									$p = "25/34";	break;
+	case "E846":	case "RESTOR":
+	case "E85B":	case "RESTNL":
+	case "E85C":	case "UPDATA":
+	case "E861":	case "TSTBRK":
+	case "E866":	case "STALL":
+	case "E870":	case "STOP":
+	case "E872":	case "PEND":
+	case "E877":	case "INPBRK":
+	case "E87A":	case "ENDPRG":
+	case "E88D":	case "NOLIN":
+	case "E89E":	case "CONT":
+	case "E8B1":	case "NULL":
 	case "E8B9":	case "ARRLD1":
 	case "E8BB":	case "ARRSV1":
+	case "E906":	case "SNDHDR":
 									$p = "25/35";	break;
+	case "E910":	case "GETHDR":
+	case "E912":	case "HDRLP":
+	case "E91D":	case "SNDARY":
 	case "E920":	case "ARYLP":
+	case "E937":	case "SUMOFF":
 	case "E940":	case "ACCSUM":
+	case "E94D":	case "DOSUM":
+	case "E960":	case "CHSUMS":
 	case "E977":	case "CHKLTR":
+	case "E97F":	case "FPSINT":
+	case "E982":	case "POSINT":
+	case "E985":	case "DEPINT":
+	case "E98B":	case "DEINT":
+	case "E9A0":	case "FCERR":
 	case "E9A5":	case "ATOH":
+	case "E9A6":	case "GETLN":
+	case "E9A9":	case "GTLNLP":
 									$p = "25/36";	break;
+	case "E9CA":	case "CLEAR":
+	case "E9ED":	case "STORED":
+	case "EA10":	case "RUN":
+	case "EA1C":	case "GOSUB":
+	case "EA2C":	case "RUNLIN":
+	case "EA2D":	case "GOTO":
+	case "EA46":	case "ULERR":
+	case "EA4B":	case "RETURN":
+	case "EA6A":	case "RETLIN":
+	case "EA6F":	case "NXTDTA":
+									$p = "25/37";	break;
+	case "EA70":	case "DATA":
+	case "EA72":	case "REM":
+	case "EA76":	case "NXTSTL":
+	case "EA79":	case "NXTSTT":
+	case "EA87":	case "LET":
+	case "EAA2":	case "LETSTR":
+	case "EAC9":	case "CRESTR":
+	case "EAD1":	case "MVSTPT":
+	case "EADA":	case "LETNUM":
+	case "EAE1":	case "ON":
+	case "EAF0":	case "ONGO":
+	case "EAF1":	case "ONGOLP":
+	case "EAFF":	case "IF":
+	case "EB0D":	case "IFGO":
+									$p = "25/38";	break;
 
 	// ---------------------------------- 26
+	case "EB1F":	case "MRPRNT":
+	case "EB23":	case "PRINT":
+	case "EB26":	case "PRNTLP":
+	case "EB69":	case "PRNTNB":
+	case "EB6D":	case "PRNTST":
+	case "EB74":	case "STTLIN":
+									$p = "26/31";	break;
+	case "EB7C":	case "ENDINP":
+	case "EB81":	case "PRNTCR":
+	case "EB86":	case "DONULL":
+	case "EB8D":	case "NULLP":
+	case "EB98":	case "DOCOM":
+	case "EBA6":	case "ZONELP":
+	case "EBAF":	case "DOTAB":
+	case "EBC2":	case "DOSPC":
 	case "EBC7":	case "ASPCS":
+	case "EBCB":	case "SPCLP":
+	case "EBD2":	case "NEXITM":
 	case "EBEC":	case "BADINP":
+	case "EBFD":	case "INPUT":
+	case "EC17":	case "NOPMPT":
+	case "EC2C":	case "READ":
+	case "EC31":	case "NXTITM":
 									$p = "26/32";	break;
+	case "EC39":	case "NEDMOR":
+	case "EC3D":	case "GTVLUS":
 	case "EC65":	case "ANTVLU":
-	case "EFA8":	case "CFEVAL":
+	case "EC80":	case "ITMSEP":
+	case "EC83":	case "STRENT":
+	case "EC8F":	case "INPBIN":
+	case "EC9A":	case "LTSTND":
+	case "ECA6":	case "MORDT":
+	case "ECC1":	case "EXTIG":
+	case "ECD2":	case "FDTLP":
+	case "ECEB":	case "FANDT":
 									$p = "26/33";	break;
+	case "ECF6":	case "NEXT":
+	case "ECF9":	case "NEXT1":
+	case "ED31":	case "KILFOR":
+	case "ED41":	case "GETNUM":
+	case "ED44":	case "TSTNUM":
+	case "ED45":	case "TSTSTR":
+	case "ED46":	case "CHKTYP":
+	case "ED56":	case "OPNPAR":
+	case "ED5A":	case "EVAL":
+	case "ED5D":	case "EVAL1":
+	case "ED66":	case "EVAL2":
+	case "ED69":	case "EVAL3":
+	case "ED76":	case "RLTLP":
+									$p = "26/34";	break;
+	case "EDD1":	case "OPRND":
+	case "EE09":	case "EVLPAR":
+	case "EE11":	case "MINUS":
+	case "EE1D":	case "RETNUM":
+	case "EE22":	case "CONVAR":
+	case "EE25":	case "FRMEVL":
+	case "ED92":	case "FOPRND":
+	case "EDBA":	case "STKTHS":
+									$p = "26/35";	break;
+	case "EE33":	case "FNOFST":
+	case "EE5F":	case "FNVAL":
+	case "EE67":	case "GOFUNC":
+	case "EE70":	case "SGNEXP":
+	case "EE80":	case "POR":
+	case "EE81":	case "PAND":
+	case "EEA3":	case "POR1":
+	case "EEA8":	case "TSTRED":
+									$p = "26/36";	break;
+	case "EEBA":	case "CMPLOG":
+	case "EEBC":	case "CMPLG1":
+	case "EEE6":	case "CMPSTR":
+	case "EEFE":	case "CMPRES":
+	case "EF08":	case "EVNOT":
+	case "EF1F":	case "DIMRET":
+	case "EF28":	case "DIM":
+	case "EF2D":	case "GETVAR":
+	case "EF32":	case "GTFNAM":
+	case "EF49":	case "SVNAM2":
+	case "EF4A":	case "ENDNAM":
 	case "EF56":	case "CHARTY":
+	case "EF65":	case "NOTSTR":
 									$p = "26/37";	break;
+	case "EF75":	case "NSCFOR":
+	case "EF8F":	case "FNDVAR":
+	case "EF9D":	case "FNTHR":
+	case "EFA8":	case "CFEVAL":
+	case "EFCE":	case "ZEROLP":
+	case "EFDC":	case "RETADR":
+	case "EFDF":	case "RETNUL":
+	case "EFEA":	case "SBSCPT":
+	case "EFF0":	case "SCPTLP":
+									$p = "26/38";	break;
+									$p = "26/3";	break;
+									$p = "26/3";	break;
 
 	// ---------------------------------- 31
 	case "F012":	case "ARLDSV":
@@ -6179,4 +6349,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 19:10:56 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 19:26:24 +0200 (Mi, 22. Apr 2026) $ -->
