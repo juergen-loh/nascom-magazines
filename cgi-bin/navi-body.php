@@ -6389,22 +6389,94 @@ function bas8K($label, $target = "", $path = "", $post = "")
 									$p = "32/30";	break;
 
 	// ---------------------------------- 33
+	case "FB8B":	case "RND":
+	case "FBC7":	case "RND1":
+	case "FBE3":	case "RND2":
+									$p = "33/23";	break;
+	case "FBEC":	case "RESEED":
+	case "FBF4":	case "RNDTAB":
+	case "FC00":	case "COS":
+	case "FC06":	case "SIN":
+	case "FC36":	case "SIN1":
+	case "FC4A":	case "HALFPI":
+	case "FC4E":	case "QUARTR":
+	case "FC52":	case "SINTAB":
+	case "FC67":	case "TAN":
 	case "FC7C":	case "ATN":
 	case "FC99":	case "ATN1":
 	case "FCA3":	case "ATNTAB":
 									$p = "33/24";	break;
 	case "FCC8":	case "CASFFW":
+	case "FCCD":	case "DELAYB":
 	case "FCD5":	case "CASFF":
 	case "FCD8":	case "ARET":
+	case "FCD9":	case "CONMON":
+	case "FCF1":	case "CONOT1":
+	case "FCFB":	case "NASOUT":
+	case "FCFD":	case "OUTCHR":
+	case "FD00":	case "IGCHR":
+	case "FD05":	case "GETINP":
+	case "FD13":	case "GETTIN":
+	case "FD19":	case "CONVIN":
+	case "FD20":	case "CNVIN1":
+	case "FD27":	case "CNVIN2":
+	case "FD2E":	case "CNVIN3":
+	case "FD35":	case "CNVIN4":
+	case "FD3C":	case "CNVIN5":
 	case "FD40":	case "CHKBRK":
+	case "FD50":	case "TBRK2":
+	case "FD56":	case "GUART":
+	case "FD5F":	case "UARTOT":
+	case "FD61":	case "URTOLP":
+	case "FD68":	case "SUART":
+	case "FD70":	case "SFTENT":
+	case "FD8B":	case "CLS":
+	case "FD96":	case "TCLS":
 									$p = "33/25";	break;
+	case "FD9B":	case "DELAY":
+	case "FD9C":	case "DELAY1":
+	case "FDA5":	case "WIDTH":
+	case "FDAD":	case "LINES":
+	case "FDBC":	case "DEEK":
+	case "FDC7":	case "DOKE":
+	case "FDDE":	case "JJUMP1":
+	case "FDE6":	case "SCREEN":
+	case "FE04":	case "TMNCUR":
+	case "FE11":	case "SCRADR":
 	case "FE35":	case "ADD64X":
+	case "FE39":	case "FLPLED":
+	case "FE42":	case "TMFLP":
 									$p = "33/26";	break;
+	case "FE45":	case "MONOUT":
+	case "FE4F":	case "TMNOUT":
 	case "FE53":	case "BREAK2":
+	case "FE62":	case "TCHINP":
+	case "FE65":	case "RETCTC":
+	case "FE6D":	case "MONTST":
+	case "FE73":	case "SAVE":
+	case "FE7F":	case "TSAVE":
+	case "FE88":	case "MONLD":
+	case "FE99":	case "TLOAD":
+	case "FEA2":	case "MONITR":
+	case "FEAA":	case "MONVE":
+	case "FEBB":	case "INITST":
 	case "FEDE":	case "BREAK":
 	case "FEE5":	case "ARETN":
+	case "FEE8":	case "INLINE":
+	case "FEF1":	case "ENDLIN":
 									$p = "33/27";	break;
+	case "FFB1":	case "DIV3EX":
+	case "FFBA":	case "NOREMD":
+	case "FFBD":	case "SHFTBT":
 	case "FFC2":	case "ADJCOL":
+	case "FFD1":	case "SMOTOR":
+	case "FFD6":	case "JPLDSV":
+	case "FFE1":	case "CRLIN1":
+	case "FFE7":	case "CRLIN":
+	case "FFED":	case "TSTBIT":
+	case "FFF4":	case "OUTNCR":
+	case "FFFA":	case "JJUMP":
+	case "FFFD":	case "ZJUMP":
 									$p = "33/29";	break;
 	}
 	if ($p == "") {
@@ -6555,4 +6627,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 22:19:24 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 22:26:17 +0200 (Mi, 22. Apr 2026) $ -->
