@@ -5868,16 +5868,44 @@ function bas8K($label, $target = "", $path = "", $post = "")
 									$p = "24/25";	break;
 	case "E0B7":	case "BFREE":
 	case "E0C5":	case "SIGNON":
+	case "E103":	case "MEMMSG":
 	case "E10F":	case "FNCTAB":
 	case "E143":	case "WORDS":
 									$p = "24/26";	break;
 	case "E25A":	case "WORDTB":
 									$p = "24/27";	break;
+	case "0080":	case "ZEND":
+	case "0081":	case "ZFOR":
+	case "0083":	case "ZDATA":
+	case "0088":	case "ZGOTO":
+	case "008C":	case "ZGOSUB":
+	case "008E":	case "ZREM":
+	case "009E":	case "ZPRINT":
+	case "00A4":	case "ZNEW":
+	case "00A5":	case "ZTAB":
+	case "00A6":	case "ZTO":
+	case "00A7":	case "ZFN":
+	case "00A8":	case "ZSPC":
+	case "00A9":	case "ZTHEN":
+	case "00AA":	case "ZNOT":
+	case "00AB":	case "ZSTEP":
+	case "00AC":	case "ZPLUS":
+	case "00AD":	case "ZMINUS":
+	case "00AE":	case "ZTIMES":
+	case "00AF":	case "ZDIV":
+	case "00B2":	case "ZOR":
+	case "00B3":	case "ZGTR":
+	case "00B4":	case "ZEQUAL":
+	case "00B5":	case "ZLTH":
+	case "00B6":	case "ZSGN":
+	case "00C7":	case "ZPOINT":
+	case "00CD":	case "ZLEFT":
 	case "E2A4":	case "PRITAB":
 	case "E2B9":	case "ERRORS":
 									$p = "24/28";	break;
 	case "E2DF":	case "INITAB":
-	case "E33F":	case "INITBE":
+	case "E33F-ERRMSG":	case "INITBE":
+	case "E33F-INITBE":	case "ERRMSG":
 	case "E346":	case "INMSG":
 	case "E34A":	case "ZERBYT":
 	case "E34B":	case "OKMSG":
@@ -6067,6 +6095,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "EBC7":	case "ASPCS":
 	case "EBCB":	case "SPCLP":
 	case "EBD2":	case "NEXITM":
+	case "EBD9":	case "REDO":
 	case "EBEC":	case "BADINP":
 	case "EBFD":	case "INPUT":
 	case "EC17":	case "NOPMPT":
@@ -6465,6 +6494,20 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "FEE8":	case "INLINE":
 	case "FEF1":	case "ENDLIN":
 									$p = "33/27";	break;
+	case "FF02":	case "LINTBF":
+	case "FF15":	case "GETXYA":
+	case "FF40":	case "SETB":
+	case "FF4B":	case "PUTBIT":
+	case "FF4C":	case "RESCSA":
+	case "FF50":	case "SETOR":
+	case "FF55":	case "RESETB":
+	case "FF75":	case "NORES":
+	case "FF79":	case "POINTB":
+	case "FF87":	case "POINTX":
+	case "FF91":	case "POINT0":
+	case "FF96":	case "XYPOS":
+	case "FFA8":	case "DIV3LP":
+									$p = "33/28";	break;
 	case "FFB1":	case "DIV3EX":
 	case "FFBA":	case "NOREMD":
 	case "FFBD":	case "SHFTBT":
@@ -6627,4 +6670,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 22:26:17 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 22:39:58 +0200 (Mi, 22. Apr 2026) $ -->
