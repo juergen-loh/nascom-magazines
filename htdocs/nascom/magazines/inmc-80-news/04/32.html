@@ -23,14 +23,17 @@ control of the input buffer. This occurs when the input is in the NAS-SYS or <sp
 mode, or during an INPUT statement.
 </p>
 <p>
-Ever noticed how slow BASIC is on starting up? Take a look at locations FCCDH
-through to FCD4H these locations form a routine which is simply a delay. At this point
+Ever noticed how slow BASIC is on starting up? Take a look at locations
+<a href="../../../../80-bus-news/33/25/text/#FCCD">FCCDH</a>
+through to <a href="../../../../80-bus-news/33/25/text/#FCD4">FCD4H</a>
+these locations form a routine which is simply a delay. At this point
 I will grit my teeth and hope that I&rsquo;m right and that it is all it does.
 </p>
 <p>
 Ever wondered why you can&rsquo;t single step BASIC? It&rsquo;s because it changes the NMI
 jump vector in the workspace. If you want to single step BASIC ignore any calls to
-FEBBH because that&rsquo;s where it changes. Ok so it changes the NMI jump so what does it
+<a href="../../../../80-bus-news/33/27/text/#FEBB">FEBBH</a>
+because that&rsquo;s where it changes. Ok so it changes the NMI jump so what does it
 change it to? It changes it to the break function, so if you can generate an NMI you
 can use it as a break key. How do I generate an NMI&nbsp;? Simple connect a push to make
 switch between pin 4 of the keyboard and ground. (Nascom&nbsp;2 only. Ed.)

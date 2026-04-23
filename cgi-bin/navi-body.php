@@ -5739,7 +5739,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "0008-BKSP":	case "BKSP":
 	case "000A":	case "LF":
 	case "000C":	case "CS":
-	case "000D":	case "CR":
+	case "000D-CR":	case "CR":
 	case "000F":	case "CTRLO":
 	case "0012":	case "CTRLR":
 	case "0013":	case "CTRLS":
@@ -5752,7 +5752,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "001F":	case "TCR":
 	case "007F":	case "DEL":
 	case "0000":	case "MONSTT":
-	case "000D":	case "STMON":
+	case "000D-STMON":	case "STMON":
 	case "0051":	case "MFLP":
 	case "008D":	case "MONTYP":
 	case "03D1":	case "T2DUMP":
@@ -6670,4 +6670,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 22:39:58 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-22 22:53:03 +0200 (Mi, 22. Apr 2026) $ -->
