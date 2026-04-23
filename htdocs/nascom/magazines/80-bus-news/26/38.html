@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    52</span>
 
-<span id="EF75">EF75</span> AF         <span id="NSCFOR">NSCFOR</span>: XOR     A               ; Simple variable
+<span id="EF75">EF75</span> AF         <?php lbl8K("NSCFOR"); ?>: XOR     A               ; Simple variable
 EF76 32CB10             LD      (FORFLG),A      ; Clear "FOR" flag
 EF79 E5                 PUSH    HL              ; Save code string address
 EF7A 50                 LD      D,B             ; DE = Variable name to find
@@ -14,7 +14,7 @@ EF85 CA54F7             JP      Z,POPHRT        ; Yes - Return FN argument value
 EF88 2AD810             LD      HL,(VAREND)     ; End of variables
 EF8B EB                 EX      DE,HL           ; Address of end of search
 EF8C 2AD610             LD      HL,(PROGND)     ; Start of variables address
-<span id="EF8F">EF8F</span> CD8AE6     <span id="FNDVAR">FNDVAR</span>: CALL    CPDEHL          ; End of variable list table?
+<span id="EF8F">EF8F</span> CD8AE6     <?php lbl8K("FNDVAR"); ?>: CALL    CPDEHL          ; End of variable list table?
 EF92 CAA8EF             JP      Z,<?php bas8K("CFEVAL"); ?>        ; Yes - Called from EVAL?
 EF95 79                 LD      A,C             ; Get second byte of name
 EF96 96                 SUB     (HL)            ; Compare with name in list
@@ -22,7 +22,7 @@ EF97 23                 INC     HL              ; Move on to first byte
 EF98 C29DEF             JP      NZ,FNTHR        ; Different - Find another
 EF9B 78                 LD      A,B             ; Get first byte of name
 EF9C 96                 SUB     (HL)            ; Compare with name in list
-<span id="EF9D">EF9D</span> 23         <span id="FNTHR">FNTHR</span>:  INC     HL              ; Move on to LSB of value
+<span id="EF9D">EF9D</span> 23         <?php lbl8K("FNTHR"); ?>:  INC     HL              ; Move on to LSB of value
 EF9E CADCEF             JP      Z,RETADR        ; Found - Return address
 EFA1 23                 INC     HL              ; &lt;- Skip
 EFA2 23                 INC     HL              ; &lt;- over
@@ -30,7 +30,7 @@ EFA3 23                 INC     HL              ; &lt;- F.P.
 EFA4 23                 INC     HL              ; &lt;- value
 EFA5 C38FEF             JP      FNDVAR          ; Keep looking
 
-<span id="EFA8">EFA8</span> E1         <span id="CFEVAL">CFEVAL</span>: POP     HL              ; Restore code string address
+<span id="EFA8">EFA8</span> E1         <?php lbl8K("CFEVAL"); ?>: POP     HL              ; Restore code string address
 EFA9 E3                 EX      (SP),HL         ; Get return address
 EFAA D5                 PUSH    DE              ; Save address of variable
 EFAB 1125EE             LD      DE,FRMEVL       ; Return address in EVAL
@@ -57,7 +57,7 @@ EFCB 22D810             LD      (VAREND),HL     ; Set new end address
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    53</span>
 
-<span id="EFCE">EFCE</span> 2B         <span id="ZEROLP">ZEROLP</span>: DEC     HL              ; Back through to zero variable
+<span id="EFCE">EFCE</span> 2B         <?php lbl8K("ZEROLP"); ?>: DEC     HL              ; Back through to zero variable
 EFCF 3600               LD      (HL),0          ; Zero byte in variable
 EFD1 CD8AE6             CALL    CPDEHL          ; Done them all?
 EFD4 C2CEEF             JP      NZ,ZEROLP       ; No - Keep on going
@@ -66,21 +66,21 @@ EFD8 73                 LD      (HL),E          ; Store second character
 EFD9 23                 INC     HL
 EFDA 72                 LD      (HL),D          ; Store first character
 EFDB 23                 INC     HL
-<span id="EFDC">EFDC</span> EB         <span id="RETADR">RETADR</span>: EX      DE,HL           ; Address of variable in DE
+<span id="EFDC">EFDC</span> EB         <?php lbl8K("RETADR"); ?>: EX      DE,HL           ; Address of variable in DE
 EFDD E1                 POP     HL              ; Restore code string address
 EFDE C9                 RET
 
-<span id="EFDF">EFDF</span> 32E710     <span id="RETNUL">RETNUL</span>: LD      (FPEXP),A       ; Set result to zero
+<span id="EFDF">EFDF</span> 32E710     <?php lbl8K("RETNUL"); ?>: LD      (FPEXP),A       ; Set result to zero
 EFE2 214AE3             LD      HL,ZERBYT       ; Also set a null string
 EFE5 22E410             LD      (FPREG),HL      ; Save for EVAL
 EFE8 E1                 POP     HL              ; Restore code string address
 EFE9 C9                 RET
 
-<span id="EFEA">EFEA</span> E5         <span id="SBSCPT">SBSCPT</span>: PUSH    HL              ; Save code string address
+<span id="EFEA">EFEA</span> E5         <?php lbl8K("SBSCPT"); ?>: PUSH    HL              ; Save code string address
 EFEB 2AAC10             LD      HL,(LCRFLG)     ; Locate/Create and Type
 EFEE E3                 EX      (SP),HL         ; Save and get code string
 EFEF 57                 LD      D,A             ; Zero number of dimensions
-<span id="EFF0">EFF0</span> D5         <span id="SCPTLP">SCPTLP</span>: PUSH    DE              ; Save number of dimensions
+<span id="EFF0">EFF0</span> D5         <?php lbl8K("SCPTLP"); ?>: PUSH    DE              ; Save number of dimensions
 EFF1 C5                 PUSH    BC              ; Save array name
 EFF2 CD7FE9             CALL    FPSINT          ; Get subscript (0-32767)
 EFF5 C1                 POP     BC              ; Restore array name

@@ -2,11 +2,11 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    71</span>
 
-<span id="F56B">F56B</span> 219DF5     <span id="OUTBAD">OUTBAD</span>: LD      HL,<a href="../../../31/32/text/#BAD">BAD</a>          ; "Bad" message
+<span id="F56B">F56B</span> 219DF5     <?php lbl8K("OUTBAD"); ?>: LD      HL,<a href="../../../31/32/text/#BAD">BAD</a>          ; "Bad" message
 F56E CD10F2             CALL    PRS             ; Output string
 F571 C3E1E3             JP      ERRIN           ; In line message
 
-<span id="F574">F574</span> C5         <span id="FILFND">FILFND</span>: PUSH    BC              ; &lt;- Save
+<span id="F574">F574</span> C5         <?php lbl8K("FILFND"); ?>: PUSH    BC              ; &lt;- Save
 F575 E5                 PUSH    HL              ; &lt;- all
 F576 D5                 PUSH    DE              ; &lt;- the
 F577 F5                 PUSH    AF              ; &lt;- registers
@@ -23,15 +23,15 @@ F58B E1                 POP     HL              ; &lt;- the
 F58C C1                 POP     BC              ; &lt;- registers
 F58D C9                 RET
 
-<span id="F58E">F58E</span> 46696C65   <span id="FILE">FILE</span>:   DEFB    "File ",0
-<span id="F594">F594</span> 20466F75   <span id="FOUND">FOUND</span>:  DEFB    " Found",CR,LF,0
-<span id="F59D">F59D</span> 42616400   <span id="BAD">BAD</span>:    DEFB    "Bad",0,0,0
+<span id="F58E">F58E</span> 46696C65   <?php lbl8K("FILE"); ?>:   DEFB    "File ",0
+<span id="F594">F594</span> 20466F75   <?php lbl8K("FOUND"); ?>:  DEFB    " Found",CR,LF,0
+<span id="F59D">F59D</span> 42616400   <?php lbl8K("BAD"); ?>:    DEFB    "Bad",0,0,0
 
-<span id="F5A3">F5A3</span> CD8BE9     <span id="PEEK">PEEK</span>:   CALL    DEINT           ; Get memory address
+<span id="F5A3">F5A3</span> CD8BE9     <?php lbl8K("PEEK"); ?>:   CALL    DEINT           ; Get memory address
 F5A6 1A                 LD      A,(DE)          ; Get byte in memory
 F5A7 C301F1             JP      PASSA           ; Return integer A
 
-<span id="F5AA">F5AA</span> CD41ED     <span id="POKE">POKE</span>:   CALL    GETNUM          ; Get memory address
+<span id="F5AA">F5AA</span> CD41ED     <?php lbl8K("POKE"); ?>:   CALL    GETNUM          ; Get memory address
 F5AD CD8BE9             CALL    DEINT           ; Get integer -32768 to 3276
 F5B0 D5                 PUSH    DE              ; Save memory address
 F5B1 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
@@ -41,20 +41,20 @@ F5B8 D1                 POP     DE              ; Restore memory address
 F5B9 12                 LD      (DE),A          ; Load it into memory
 F5BA C9                 RET
 
-<span id="F5BB">F5BB</span> 2191FA     <span id="ROUND">ROUND</span>:  LD      HL,HALF         ; Add 0.5 to FPREG
-<span id="F5BE">F5BE</span> CD62F8     <span id="ADDPHL">ADDPHL</span>: CALL    LOADFP          ; Load FP at (HL) to BCDE
+<span id="F5BB">F5BB</span> 2191FA     <?php lbl8K("ROUND"); ?>:  LD      HL,HALF         ; Add 0.5 to FPREG
+<span id="F5BE">F5BE</span> CD62F8     <?php lbl8K("ADDPHL"); ?>: CALL    LOADFP          ; Load FP at (HL) to BCDE
 F5C1 C3CDF5             JP      FPADD           ; Add BCDE to FPREG
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    72</span>
 
-<span id="F5C4">F5C4</span> CD62F8     <span id="SUBPHL">SUBPHL</span>: CALL    LOADFP          ; FPREG = -FPREG + number at HL
+<span id="F5C4">F5C4</span> CD62F8     <?php lbl8K("SUBPHL"); ?>: CALL    LOADFP          ; FPREG = -FPREG + number at HL
 F5C7 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
-<span id="F5C8">F5C8</span> C1         <span id="PSUB">PSUB</span>:   POP     BC              ; Get FP number from stack
+<span id="F5C8">F5C8</span> C1         <?php lbl8K("PSUB"); ?>:   POP     BC              ; Get FP number from stack
 F5C9 D1                 POP     DE
-<span id="F5CA">F5CA</span> CD3CF8     <span id="SUBCDE">SUBCDE</span>: CALL    INVSGN          ; Negate FPREG
-<span id="F5CD">F5CD</span> 78         <span id="FPADD">FPADD</span>:  LD      A,B             ; Get FP exponent
+<span id="F5CA">F5CA</span> CD3CF8     <?php lbl8K("SUBCDE"); ?>: CALL    INVSGN          ; Negate FPREG
+<span id="F5CD">F5CD</span> 78         <?php lbl8K("FPADD"); ?>:  LD      A,B             ; Get FP exponent
 F5CE B7                 OR      A               ; Is number zero?
 F5CF C8                 RET     Z               ; Yes - Nothing to add
 F5D0 3AE710             LD      A,(FPEXP)       ; Get FPREG exponent
@@ -70,7 +70,7 @@ F5E1 EB                 EX      DE,HL
 F5E2 CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG
 F5E5 C1                 POP     BC              ; Restore number from stack
 F5E6 D1                 POP     DE
-<span id="F5E7">F5E7</span> FE19       <span id="NOSWAP">NOSWAP</span>: CP      24+1            ; Second number insignificant?
+<span id="F5E7">F5E7</span> FE19       <?php lbl8K("NOSWAP"); ?>: CP      24+1            ; Second number insignificant?
 F5E9 D0                 RET     NC              ; Yes - First number is result
 F5EA F5                 PUSH    AF              ; Save number of bits to scale
 F5EB CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
@@ -89,7 +89,7 @@ F605 2E01               LD      L,1             ; 1 bit to shift right
 F607 CDA8F6             CALL    SHRT1           ; Shift result right
 F60A C353F6             JP      RONDUP          ; Round it up
 
-<span id="F60D">F60D</span> AF         <span id="MINCDE">MINCDE</span>: XOR     A               ; Clear A and carry
+<span id="F60D">F60D</span> AF         <?php lbl8K("MINCDE"); ?>: XOR     A               ; Clear A and carry
 F60E 90                 SUB     B               ; Negate exponent
 F60F 47                 LD      B,A             ; Re-save exponent
 F610 7E                 LD      A,(HL)          ; Get LSB of FPREG
@@ -103,6 +103,6 @@ F617 23                 INC     HL
 F618 7E                 LD      A,(HL)          ; Get MSB of FPREG
 F619 99                 SBC     A,C             ; Subtract MSB of BCDE
 F61A 4F                 LD      C,A             ; Save MSB of BCDE
-<span id="F61B">F61B</span> DC7EF6     <span id="CONPOS">CONPOS</span>: CALL    C,COMPL         ; Overflow - Make it positive
+<span id="F61B">F61B</span> DC7EF6     <?php lbl8K("CONPOS"); ?>: CALL    C,COMPL         ; Overflow - Make it positive
 </pre>
 <?php DoublePageEnd(); ?>

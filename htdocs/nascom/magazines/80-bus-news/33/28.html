@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    100</span>
 
-<span id="FF02">FF02</span> D5         <span id="LINTBF">LINTBF</span>: PUSH    DE              ; Line length to BC
+<span id="FF02">FF02</span> D5         <?php lbl8K("LINTBF"); ?>: PUSH    DE              ; Line length to BC
 FF03 C1                 POP     BC
 FF04 03                 INC     BC              ; Length +1
 FF05 116110             LD      DE,<?php bas8K("BUFFER"); ?>       ; Input buffer
@@ -16,7 +16,7 @@ FF10 41                 LD      B,C             ; Length returned in B
 FF11 216010             LD      HL,<?php bas8K("BUFFER"); ?>-1     ; Point to start of buffer-1
 FF14 C9                 RET
 
-<span id="FF15">FF15</span> CD90E6     <span id="GETXYA">GETXYA</span>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
+<span id="FF15">FF15</span> CD90E6     <?php lbl8K("GETXYA"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 FF18 28                 DEFB    "("
 FF19 CD41ED             CALL    GETNUM          ; Get a number
 FF1C CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
@@ -38,18 +38,18 @@ FF3C 06C0               LD      B,11000000B     ; Block graphics base
 FF3E B0                 OR      B               ; Set bits 7 & 6
 FF3F C9                 RET
 
-<span id="FF40">FF40</span> CD15FF     <span id="SETB">SETB</span>:   CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF40">FF40</span> CD15FF     <?php lbl8K("SETB"); ?>:   CALL    GETXYA          ; Get co-ords and VDU address
 FF43 F5                 PUSH    AF              ; Save bit mask
 FF44 7E                 LD      A,(HL)          ; Get character from screen
 FF45 FEC0               CP      11000000B       ; Is it a block graphic?
 FF47 D250FF             JP      NC,SETOR        ; Yes - OR new bit
 FF4A F1                 POP     AF              ; Restore bit mask
-<span id="FF4B">FF4B</span> 77         <span id="PUTBIT">PUTBIT</span>: LD      (HL),A          ; Put character on screen
-<span id="FF4C">FF4C</span> FDE5       <span id="RESCSA">RESCSA</span>: PUSH    IY              ; Restore code string address
+<span id="FF4B">FF4B</span> 77         <?php lbl8K("PUTBIT"); ?>: LD      (HL),A          ; Put character on screen
+<span id="FF4C">FF4C</span> FDE5       <?php lbl8K("RESCSA"); ?>: PUSH    IY              ; Restore code string address
 FF4E E1                 POP     HL              ; From IY
 FF4F C9                 RET
 
-<span id="FF50">FF50</span> C1         <span id="SETOR">SETOR</span>:  POP     BC              ; Restore bit mask
+<span id="FF50">FF50</span> C1         <?php lbl8K("SETOR"); ?>:  POP     BC              ; Restore bit mask
 FF51 B0                 OR      B               ; Merge the bits
 FF52 C34BFF             JP      PUTBIT          ; Save on screen
 </pre>
@@ -57,7 +57,7 @@ FF52 C34BFF             JP      PUTBIT          ; Save on screen
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    101</span>
 
-<span id="FF55">FF55</span> CD15FF     <span id="RESETB">RESETB</span>: CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF55">FF55</span> CD15FF     <?php lbl8K("RESETB"); ?>: CALL    GETXYA          ; Get co-ords and VDU address
 FF58 F5                 PUSH    AF              ; Save bit mask
 FF59 7E                 LD      A,(HL)          ; Get byte from screen
 FF5A FEC0               CP      11000000B       ; Is it a block graphic?
@@ -75,25 +75,25 @@ FF6D C24BFF             JP      NZ,PUTBIT       ; No - Save character
 FF70 3E20               LD      A," "           ; Put a space there
 FF72 C34BFF             JP      PUTBIT          ; Save the space
 
-<span id="FF75">FF75</span> C1         <span id="NORES">NORES</span>:  POP     BC              ; Drop bit mask
+<span id="FF75">FF75</span> C1         <?php lbl8K("NORES"); ?>:  POP     BC              ; Drop bit mask
 FF76 C34CFF             JP      RESCSA          ; Restore code string address
 
-<span id="FF79">FF79</span> CD15FF     <span id="POINTB">POINTB</span>: CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF79">FF79</span> CD15FF     <?php lbl8K("POINTB"); ?>: CALL    GETXYA          ; Get co-ords and VDU address
 FF7C 46                 LD      B,(HL)          ; Get character from screen
 FF7D CDEDFF             CALL    TSTBIT          ; Test if bit is set
 FF80 C291FF             JP      NZ,POINT0       ; Different - Return zero
 FF83 3E00               LD      A,0
 FF85 0601               LD      B,1             ; Integer AB = 1
-<span id="FF87">FF87</span> E1         <span id="POINTX">POINTX</span>: POP     HL              ; Drop return
+<span id="FF87">FF87</span> E1         <?php lbl8K("POINTX"); ?>: POP     HL              ; Drop return
 FF88 FDE5               PUSH    IY              ; PUSH code string address
 FF8A 111DEE             LD      DE,RETNUM       ; To return a number
 FF8D D5                 PUSH    DE              ; Save for return
 FF8E C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
-<span id="FF91">FF91</span> 0600       <span id="POINT0">POINT0</span>: LD      B,0             ; Set zero
+<span id="FF91">FF91</span> 0600       <?php lbl8K("POINT0"); ?>: LD      B,0             ; Set zero
 FF93 C387FF             JP      POINTX          ; Return value
 
-<span id="FF96">FF96</span> C1         <span id="XYPOS">XYPOS</span>:  POP     BC              ; Get return address
+<span id="FF96">FF96</span> C1         <?php lbl8K("XYPOS"); ?>:  POP     BC              ; Get return address
 FF97 E1                 POP     HL              ; Get column
 FF98 E5                 PUSH    HL              ; And re-save
 FF99 C5                 PUSH    BC              ; Put back return address
@@ -106,7 +106,7 @@ FFA0 E1                 POP     HL              ; to HL
 FFA1 110000             LD      DE,0            ; Zero line count
 FFA4 010300             LD      BC,3            ; 3 blocks per line
 FFA7 23                 INC     HL
-<span id="FFA8">FFA8</span> ED42       <span id="DIV3LP">DIV3LP</span>: SBC     HL,BC           ; Subtract 3
+<span id="FFA8">FFA8</span> ED42       <?php lbl8K("DIV3LP"); ?>: SBC     HL,BC           ; Subtract 3
 FFAA 13                 INC     DE              ; Count the subtractions
 FFAB CAB1FF             JP      Z,DIV3EX        ; Exactly - Exit
 FFAE F2A8FF             JP      P,DIV3LP        ; More to do

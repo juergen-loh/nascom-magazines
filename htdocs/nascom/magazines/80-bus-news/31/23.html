@@ -15,11 +15,11 @@ By Carl Lloyd&mdash;Parker
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    54</span>
 
-<span id="F012">F012</span> E5         <span id="ARLDSV">ARLDSV</span>: PUSH    HL              ; Save code string address
+<span id="F012">F012</span> E5         <?php lbl8K("ARLDSV"); ?>: PUSH    HL              ; Save code string address
 F013 F5                 PUSH    AF              ; A = 00 , Flags set = Z,N
 F014 2AD810             LD      HL,(VAREND)     ; Start of arrays
 F017 3E                 DEFB    (LD A,n)        ; Skip "ADD HL,DE"
-<span id="F018">F018</span> 19         <span id="FNDARY">FNDARY</span>: ADD     HL,DE           ; Move to next array start
+<span id="F018">F018</span> 19         <?php lbl8K("FNDARY"); ?>: ADD     HL,DE           ; Move to next array start
 F019 EB                 EX      DE,HL
 F01A 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of arrays
 F01D EB                 EX      DE,HL           ; Current array pointer
@@ -31,7 +31,7 @@ F026 23                 INC     HL              ; Move on
 F027 C22CF0             JP      NZ,NXTARY       ; Different - Find next array
 F02A 7E                 LD      A,(HL)          ; Get first byte of name
 F02B B8                 CP      B               ; Compare with name given
-<span id="F02C">F02C</span> 23         <span id="NXTARY">NXTARY</span>: INC     HL              ; Move on
+<span id="F02C">F02C</span> 23         <?php lbl8K("NXTARY"); ?>: INC     HL              ; Move on
 F02D 5E                 LD      E,(HL)          ; Get LSB of next array address
 F02E 23                 INC     HL
 F02F 56                 LD      D,(HL)          ; Get MSB of next array address
@@ -46,7 +46,7 @@ F03D 4D                 LD      C,L
 F03E CA54F7             JP      Z,POPHRT        ; Jump if array load/save
 F041 96                 SUB     (HL)            ; Same number of dimensions?
 F042 CAA8F0             JP      Z,FINDEL        ; Yes - Find element
-<span id="F045">F045</span> 1E10       <span id="BSERR">BSERR</span>:  LD      E,<?php bas8K("BS"); ?>            ; ?BS Error
+<span id="F045">F045</span> 1E10       <?php lbl8K("BSERR"); ?>:  LD      E,<?php bas8K("BS"); ?>            ; ?BS Error
 F047 C3C1E3             JP      ERROR           ; Output error
 </pre>
 <?php DoublePageEnd(); ?>

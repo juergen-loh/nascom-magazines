@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    57</span>
 
-<span id="F0D0">F0D0</span> 2ADA10     <span id="FRE">FRE</span>:    LD      HL,(<?php bas8K("ARREND"); ?>)     ; Start of free memory
+<span id="F0D0">F0D0</span> 2ADA10     <?php lbl8K("FRE"); ?>:    LD      HL,(<?php bas8K("ARREND"); ?>)     ; Start of free memory
 F0D3 EB                 EX      DE,HL           ; To DE
 F0D4 210000             LD      HL,0            ; End of free memory
 F0D7 39                 ADD     HL,SP           ; Current stack value
@@ -14,25 +14,25 @@ F0E2 CD53F2             CALL    GARBGE          ; Garbage collection
 F0E5 2A5A10             LD      HL,(STRSPC)     ; Bottom of string space in use
 F0E8 EB                 EX      DE,HL           ; To DE
 F0E9 2AC310             LD      HL,(STRBOT)     ; Bottom of string space
-<span id="F0EC">F0EC</span> 7D         <span id="FRENUM">FRENUM</span>: LD      A,L             ; Get LSB of end
+<span id="F0EC">F0EC</span> 7D         <?php lbl8K("FRENUM"); ?>: LD      A,L             ; Get LSB of end
 F0ED 93                 SUB     E               ; Subtract LSB of beginning
 F0EE 4F                 LD      C,A             ; Save difference if C
 F0EF 7C                 LD      A,H             ; Get MSB of end
 F0F0 9A                 SBC     A,D             ; Subtract MSB of beginning
-<span id="F0F1">F0F1</span> 41         <span id="ACPASS">ACPASS</span>: LD      B,C             ; Return integer AC
-<span id="F0F2">F0F2</span> 50         <span id="ABPASS">ABPASS</span>: LD      D,B             ; Return integer AB
+<span id="F0F1">F0F1</span> 41         <?php lbl8K("ACPASS"); ?>: LD      B,C             ; Return integer AC
+<span id="F0F2">F0F2</span> 50         <?php lbl8K("ABPASS"); ?>: LD      D,B             ; Return integer AB
 F0F3 1E00               LD      E,0
 F0F5 21AD10             LD      HL,TYPE         ; Point to type
 F0F8 73                 LD      (HL),E          ; Set type to numeric
 F0F9 0690               LD      B,80H+16        ; 16 bit integer
 F0FB C32AF8             JP      RETINT          ; Return the integr
 
-<span id="F0FE">F0FE</span> 3AAB10     <span id="POS">POS</span>:    LD      A,(CURPOS)      ; Get cursor position
-<span id="F101">F101</span> 47         <span id="PASSA">PASSA</span>:  LD      B,A             ; Put A into AB
+<span id="F0FE">F0FE</span> 3AAB10     <?php lbl8K("POS"); ?>:    LD      A,(CURPOS)      ; Get cursor position
+<span id="F101">F101</span> 47         <?php lbl8K("PASSA"); ?>:  LD      B,A             ; Put A into AB
 F102 AF                 XOR     A               ; Zero A
 F103 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
-<span id="F106">F106</span> CD89F1     <span id="DEF">DEF</span>:    CALL    <?php bas8K("CHEKFN"); ?>          ; Get "FN" and name
+<span id="F106">F106</span> CD89F1     <?php lbl8K("DEF"); ?>:    CALL    <?php bas8K("CHEKFN"); ?>          ; Get "FN" and name
 F109 CD7BF1             CALL    IDTEST          ; Test for illegal direct
 F10C 0170EA             LD      BC,DATA         ; To get next statement
 F10F C5                 PUSH    BC              ; Save address for RETurn
@@ -64,7 +64,7 @@ F130 C3C8F1             JP      SVSTAD          ; Save address and do function
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    58</span>
 
-<span id="F133">F133</span> CD89F1     <span id="DOFN">DOFN</span>:   CALL    <?php bas8K("CHEKFN"); ?>          ; Make sure FN follows
+<span id="F133">F133</span> CD89F1     <?php lbl8K("DOFN"); ?>:   CALL    <?php bas8K("CHEKFN"); ?>          ; Make sure FN follows
 F136 D5                 PUSH    DE              ; Save function pointer address
 F137 CD09EE             CALL    EVLPAR          ; Evaluate expression in "()"
 F13A CD44ED             CALL    TSTNUM          ; Make sure numeric result
@@ -105,7 +105,7 @@ F176 22DE10             LD      (FNRGNM),HL     ; Restore it
 F179 E1                 POP     HL              ; Restore code string address
 F17A C9                 RET
 
-<span id="F17B">F17B</span> E5         <span id="IDTEST">IDTEST</span>: PUSH    HL              ; Save code string address
+<span id="F17B">F17B</span> E5         <?php lbl8K("IDTEST"); ?>: PUSH    HL              ; Save code string address
 F17C 2A5C10             LD      HL,(LINEAT)     ; Get current line number
 F17F 23                 INC     HL              ; -1 means direct statement
 F180 7C                 LD      A,H

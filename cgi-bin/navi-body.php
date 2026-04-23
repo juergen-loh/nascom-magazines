@@ -5723,6 +5723,14 @@ function externalLink($link, $text="", $delimiter="\n")
 	}
 }
 
+function lbl8K($label, $link = "")
+{
+	if ($link == "") {
+		$link = $label;
+	}
+	echo "<span id=\"$link\"><a href=\"#$link\">$label</a></span>";
+}
+
 function bas8K($label, $target = "", $path = "", $post = "")
 {
 	if ($target == "")	$target = $label;
@@ -6670,4 +6678,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-22 22:53:03 +0200 (Mi, 22. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-23 21:20:00 +0200 (Do, 23. Apr 2026) $ -->

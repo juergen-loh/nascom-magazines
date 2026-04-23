@@ -2,13 +2,13 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    37</span>
 
-<span id="EA70">EA70</span> 013A       <span id="DATA">DATA</span>:   DEFB    (LD BC,":")     ; ":" End of statement
-<span id="EA72">EA72</span> 0E00       <span id="REM">REM</span>:    LD      C,0             ; 00  End of statement
+<span id="EA70">EA70</span> 013A       <?php lbl8K("DATA"); ?>:   DEFB    (LD BC,":")     ; ":" End of statement
+<span id="EA72">EA72</span> 0E00       <?php lbl8K("REM"); ?>:    LD      C,0             ; 00  End of statement
 EA74 0600               LD      B,0
-<span id="EA76">EA76</span> 79         <span id="NXTSTL">NXTSTL</span>: LD      A,C             ; Statement and byte
+<span id="EA76">EA76</span> 79         <?php lbl8K("NXTSTL"); ?>: LD      A,C             ; Statement and byte
 EA77 48                 LD      C,B
 EA78 47                 LD      B,A             ; Statement end byte
-<span id="EA79">EA79</span> 7E         <span id="NXTSTT">NXTSTT</span>: LD      A,(HL)          ; Get byte
+<span id="EA79">EA79</span> 7E         <?php lbl8K("NXTSTT"); ?>: LD      A,(HL)          ; Get byte
 EA7A B7                 OR      A               ; End of line?
 EA7B C8                 RET     Z               ; Yes - Exit
 EA7C B8                 CP      B               ; End of statement?
@@ -18,7 +18,7 @@ EA7F FE22               CP      '"'             ; Literal string?
 EA81 CA76EA             JP      Z,NXTSTL        ; Yes - Look for another '"'
 EA84 C379EA             JP      NXTSTT          ; Keep looking
 
-<span id="EA87">EA87</span> CD2DEF     <span id="LET">LET</span>:    CALL    GETVAR          ; Get variable name
+<span id="EA87">EA87</span> CD2DEF     <?php lbl8K("LET"); ?>:    CALL    GETVAR          ; Get variable name
 EA8A CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
 EA8D B4                 DEFB    ZEQUAL          ; "=" token
 EA8E D5                 PUSH    DE              ; Save address of variable
@@ -31,7 +31,7 @@ EA98 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save addres
 EA9B 1F                 RRA                     ; Adjust type
 EA9C CD46ED             CALL    CHKTYP          ; Check types are the same
 EA9F CADAEA             JP      Z,LETNUM        ; Numeric - Move value
-<span id="EAA2">EAA2</span> E5         <span id="LETSTR">LETSTR</span>: PUSH    HL              ; Save address of string var
+<span id="EAA2">EAA2</span> E5         <?php lbl8K("LETSTR"); ?>: PUSH    HL              ; Save address of string var
 EAA3 2AE410             LD      HL,(FPREG)      ; Pointer to string entry
 EAA6 E5                 PUSH    HL              ; Save it on stack
 EAA7 23                 INC     HL              ; Skip over length
@@ -50,11 +50,11 @@ EABF 21BF10             LD      HL,TMPSTR       ; Temporary string pool
 EAC2 CD8AE6             CALL    CPDEHL          ; Is string in temporary pool?
 EAC5 D2D1EA             JP      NC,MVSTPT       ; No - Set up pointer
 EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"
-<span id="EAC9">EAC9</span> D1         <span id="CRESTR">CRESTR</span>: POP     DE              ; Restore address of string
+<span id="EAC9">EAC9</span> D1         <?php lbl8K("CRESTR"); ?>: POP     DE              ; Restore address of string
 EACA CD71F3             CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
 EACD EB                 EX      DE,HL           ; Address of string entry
 EACE CDAAF1             CALL    SAVSTR          ; Save string in string area
-<span id="EAD1">EAD1</span> CD71F3     <span id="MVSTPT">MVSTPT</span>: CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
+<span id="EAD1">EAD1</span> CD71F3     <?php lbl8K("MVSTPT"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
 EAD4 E1                 POP     HL              ; Get string pointer
 EAD5 CD6EF8             CALL    DETHL4          ; Move string pointer to var
 EAD8 E1                 POP     HL              ; Restore code string address
@@ -64,13 +64,13 @@ EAD9 C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    38</span>
 
-<span id="EADA">EADA</span> E5         <span id="LETNUM">LETNUM</span>: PUSH    HL              ; Save address of variable
+<span id="EADA">EADA</span> E5         <?php lbl8K("LETNUM"); ?>: PUSH    HL              ; Save address of variable
 EADB CD6BF8             CALL    FPTHL           ; Move value to variable
 EADE D1                 POP     DE              ; Restore address of variable
 EADF E1                 POP     HL              ; Restore code string address
 EAE0 C9                 RET
 
-<span id="EAE1">EAE1</span> CD84F4     <span id="ON">ON</span>:     CALL    GETINT          ; Get integer 0-255
+<span id="EAE1">EAE1</span> CD84F4     <?php lbl8K("ON"); ?>:     CALL    GETINT          ; Get integer 0-255
 EAE4 7E                 LD      A,(HL)          ; Get "GOTO" or "GOSUB" token
 EAE5 47                 LD      B,A             ; Save in B
 EAE6 FE8C               CP      ZGOSUB          ; "GOSUB" token?
@@ -78,8 +78,8 @@ EAE8 CAF0EA             JP      Z,ONGO          ; Yes - Find line number
 EAEB CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "GOTO"
 EAEE 88                 DEFB    ZGOTO           ; "GOTO" token
 EAEF 2B                 DEC     HL              ; Cancel increment
-<span id="EAF0">EAF0</span> 4B         <span id="ONGO">ONGO</span>:   LD      C,E             ; Integer of branch value
-<span id="EAF1">EAF1</span> 0D         <span id="ONGOLP">ONGOLP</span>: DEC     C               ; Count branches
+<span id="EAF0">EAF0</span> 4B         <?php lbl8K("ONGO"); ?>:   LD      C,E             ; Integer of branch value
+<span id="EAF1">EAF1</span> 0D         <?php lbl8K("ONGOLP"); ?>: DEC     C               ; Count branches
 EAF2 78                 LD      A,B             ; Get "GOTO" or "GOSUB" token
 EAF3 CA1EE8             JP      Z,ONJMP         ; Go to that line if right one
 EAF6 CDA6E9             CALL    GETLN           ; Get line number to DE
@@ -87,14 +87,14 @@ EAF9 FE2C               CP      ","             ; Another line number?
 EAFB C0                 RET     NZ              ; No - Drop through
 EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
 
-<span id="EAFF">EAFF</span> CD5AED     <span id="IF">IF</span>:     CALL    EVAL            ; Evaluate expression
+<span id="EAFF">EAFF</span> CD5AED     <?php lbl8K("IF"); ?>:     CALL    EVAL            ; Evaluate expression
 EB02 7E                 LD      A,(HL)          ; Get token
 EB03 FE88               CP      ZGOTO           ; "GOTO" token?
 EB05 CA0DEB             JP      Z,IFGO          ; Yes - Get line
 EB08 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "THEN"
 EB0B A9                 DEFB    ZTHEN           ; "THEN" token
 EB0C 2B                 DEC     HL              ; Cancel increment
-<span id="EB0D">EB0D</span> CD44ED     <span id="IFGO">IFGO</span>:   CALL    TSTNUM          ; Make sure it's numeric
+<span id="EB0D">EB0D</span> CD44ED     <?php lbl8K("IFGO"); ?>:   CALL    TSTNUM          ; Make sure it's numeric
 EB10 CD13F8             CALL    TSTSGN          ; Test state of expression
 EB13 CA72EA             JP      Z,REM           ; False - Drop through
 EB16 CD36E8             CALL    GETCHR          ; Get next character

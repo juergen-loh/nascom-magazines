@@ -2,14 +2,14 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    40</span>
 
-<span id="EB7C">EB7C</span> 3600       <span id="ENDINP">ENDINP</span>: LD      (HL),0          ; Mark end of buffer
+<span id="EB7C">EB7C</span> 3600       <?php lbl8K("ENDINP"); ?>: LD      (HL),0          ; Mark end of buffer
 EB7E 216010             LD      HL,<?php bas8K("BUFFER"); ?>-1     ; Point to buffer
-<span id="EB81">EB81</span> 3E0D       <span id="PRNTCR">PRNTCR</span>: LD      A,CR            ; Load a CR
+<span id="EB81">EB81</span> 3E0D       <?php lbl8K("PRNTCR"); ?>: LD      A,CR            ; Load a CR
 EB83 CD9BE6             CALL    OUTC            ; Output character
-<span id="EB86">EB86</span> AF         <span id="DONULL">DONULL</span>: XOR     A               ; Set to position 0
+<span id="EB86">EB86</span> AF         <?php lbl8K("DONULL"); ?>: XOR     A               ; Set to position 0
 EB87 32AB10             LD      (CURPOS),A      ; Store it
 EB8A 3A4110             LD      A,(NULLS)       ; Get number of nulls
-<span id="EB8D">EB8D</span> 3D         <span id="NULLP">NULLP</span>:  DEC     A               ; Count them
+<span id="EB8D">EB8D</span> 3D         <?php lbl8K("NULLP"); ?>:  DEC     A               ; Count them
 EB8E C8                 RET     Z               ; Return if done
 EB8F F5                 PUSH    AF              ; Save count
 EB90 AF                 XOR     A               ; Load a null
@@ -17,18 +17,18 @@ EB91 CD9BE6             CALL    OUTC            ; Output it
 EB94 F1                 POP     AF              ; Restore count
 EB95 C38DEB             JP      NULLP           ; Keep counting
 
-<span id="EB98">EB98</span> 3A4310     <span id="DOCOM">DOCOM</span>:  LD      A,(COMMAN)      ; Get comma width
+<span id="EB98">EB98</span> 3A4310     <?php lbl8K("DOCOM"); ?>:  LD      A,(COMMAN)      ; Get comma width
 EB9B 47                 LD      B,A             ; Save in B
 EB9C 3AAB10             LD      A,(CURPOS)      ; Get current position
 EB9F B8                 CP      B               ; Within the limit?
 EBA0 D481EB             CALL    NC,PRNTCR       ; No - output CRLF
 EBA3 D2D2EB             JP      NC,NEXITM       ; Get next item
-<span id="EBA6">EBA6</span> D60E       <span id="ZONELP">ZONELP</span>: SUB     14              ; Next zone of 14 characters
+<span id="EBA6">EBA6</span> D60E       <?php lbl8K("ZONELP"); ?>: SUB     14              ; Next zone of 14 characters
 EBA8 D2A6EB             JP      NC,ZONELP       ; Repeat if more zones
 EBAB 2F                 CPL                     ; Number of spaces to output
 EBAC C3C7EB             JP      <?php bas8K("ASPCS"); ?>           ; Output them
 
-<span id="EBAF">EBAF</span> F5         <span id="DOTAB">DOTAB</span>:  PUSH    AF              ; Save token
+<span id="EBAF">EBAF</span> F5         <?php lbl8K("DOTAB"); ?>:  PUSH    AF              ; Save token
 EBB0 CD81F4             CALL    FNDNUM          ; Evaluate expression
 EBB3 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 EBB6 29                 DEFB    ")"
@@ -38,16 +38,16 @@ EBB9 D6A8               SUB     ZSPC            ; Was it "SPC(" ?
 EBBB E5                 PUSH    HL              ; Save code string address
 EBBC CAC2EB             JP      Z,DOSPC         ; Yes - Do "E" spaces
 EBBF 3AAB10             LD      A,(CURPOS)      ; Get current position
-<span id="EBC2">EBC2</span> 2F         <span id="DOSPC">DOSPC</span>:  CPL                     ; Number of spaces to print to
+<span id="EBC2">EBC2</span> 2F         <?php lbl8K("DOSPC"); ?>:  CPL                     ; Number of spaces to print to
 EBC3 83                 ADD     A,E             ; Total number to print
 EBC4 D2D2EB             JP      NC,NEXITM       ; TAB &lt; Current POS(X)
-<span id="EBC7">EBC7</span> 3C         <span id="ASPCS">ASPCS</span>:  INC     A               ; Output A spaces
+<span id="EBC7">EBC7</span> 3C         <?php lbl8K("ASPCS"); ?>:  INC     A               ; Output A spaces
 EBC8 47                 LD      B,A             ; Save number to print
 EBC9 3E20               LD      A," "           ; Space
-<span id="EBCB">EBCB</span> CD9BE6     <span id="SPCLP">SPCLP</span>:  CALL    OUTC            ; Output character in A
+<span id="EBCB">EBCB</span> CD9BE6     <?php lbl8K("SPCLP"); ?>:  CALL    OUTC            ; Output character in A
 EBCE 05                 DEC     B               ; Count them
 EBCF C2CBEB             JP      NZ,SPCLP        ; Repeat if more
-<span id="EBD2">EBD2</span> E1         <span id="NEXITM">NEXITM</span>: POP     HL              ; Restore code string address
+<span id="EBD2">EBD2</span> E1         <?php lbl8K("NEXITM"); ?>: POP     HL              ; Restore code string address
 EBD3 CD36E8             CALL    GETCHR          ; Get next character
 EBD6 C326EB             JP      PRNTLP          ; More to print
 </pre>
@@ -55,9 +55,9 @@ EBD6 C326EB             JP      PRNTLP          ; More to print
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    41</span>
 
-<span id="EBD9">EBD9</span> 3F526564   <span id="REDO">REDO</span>:   DEFB    "?Redo from start",CR,LF,0
+<span id="EBD9">EBD9</span> 3F526564   <?php lbl8K("REDO"); ?>:   DEFB    "?Redo from start",CR,LF,0
 
-<span id="EBEC">EBEC</span> 3ACD10     <span id="BADINP">BADINP</span>: LD      A,(READFG)      ; READ or INPUT?
+<span id="EBEC">EBEC</span> 3ACD10     <?php lbl8K("BADINP"); ?>: LD      A,(READFG)      ; READ or INPUT?
 EBEF B7                 OR      A
 EBF0 C2A7E3             JP      NZ,DATSNR       ; READ - ?SN Error
 EBF3 C1                 POP     BC              ; Throw away code string addr
@@ -65,7 +65,7 @@ EBF4 21D9EB             LD      HL,REDO         ; "Redo from start" message
 EBF7 CD10F2             CALL    PRS             ; Output string
 EBFA C3F8E4             JP      DOAGN           ; Do last INPUT again
 
-<span id="EBFD">EBFD</span> CD7BF1     <span id="INPUT">INPUT</span>:  CALL    IDTEST          ; Test for illegal direct
+<span id="EBFD">EBFD</span> CD7BF1     <?php lbl8K("INPUT"); ?>:  CALL    IDTEST          ; Test for illegal direct
 EC00 7E                 LD      A,(HL)          ; Get character after "INPUT"
 EC01 FE22               CP      '"'             ; Is there a prompt string?
 EC03 3E00               LD      A,0             ; Clear A and leave flags
@@ -77,7 +77,7 @@ EC11 3B                 DEFB    ";"
 EC12 E5                 PUSH    HL              ; Save code string address
 EC13 CD13F2             CALL    PRS1            ; Output prompt string
 EC16 3E                 DEFB    (LD A,n)        ; Skip "PUSH HL"
-<span id="EC17">EC17</span> E5         <span id="NOPMPT">NOPMPT</span>: PUSH    HL              ; Save code string address
+<span id="EC17">EC17</span> E5         <?php lbl8K("NOPMPT"); ?>: PUSH    HL              ; Save code string address
 EC18 CDFCE4             CALL    PROMPT          ; Get input with "? " prompt
 EC1B C1                 POP     BC              ; Restore code string address
 EC1C DA77E8             JP      C,INPBRK        ; Break pressed - Exit
@@ -90,10 +90,10 @@ EC24 CA6FEA             JP      Z,NXTDTA        ; Yes - Find next DATA stmt
 EC27 362C               LD      (HL),","        ; Store comma as separator
 EC29 C331EC             JP      NXTITM          ; Get next item
 
-<span id="EC2C">EC2C</span> E5         <span id="READ">READ</span>:   PUSH    HL              ; Save code string address
+<span id="EC2C">EC2C</span> E5         <?php lbl8K("READ"); ?>:   PUSH    HL              ; Save code string address
 EC2D 2ADC10             LD      HL,(NXTDAT)     ; Next DATA statement
 EC30 F6                 DEFB    (OR n)          ; Flag "READ"
-<span id="EC31">EC31</span> AF         <span id="NXTITM">NXTITM</span>: XOR     A               ; Flag "INPUT"
+<span id="EC31">EC31</span> AF         <?php lbl8K("NXTITM"); ?>: XOR     A               ; Flag "INPUT"
 EC32 32CD10             LD      (READFG),A      ; Save "READ"/"INPUT" flag
 EC35 E3                 EX      (SP),HL         ; Get code str' , Save pointer
 EC36 C33DEC             JP      GTVLUS          ; Get values

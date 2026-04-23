@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    31</span>
 
-<span id="E846">E846</span> EB         <span id="RESTOR">RESTOR</span>: EX      DE,HL           ; Save code string address
+<span id="E846">E846</span> EB         <?php lbl8K("RESTOR"); ?>: EX      DE,HL           ; Save code string address
 E847 2A5E10             LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
 E84A CA5BE8             JP      Z,RESTNL        ; Just RESTORE - reset pointer
 E84D EB                 EX      DE,HL           ; Restore code string address
@@ -13,26 +13,26 @@ E855 60                 LD      H,B             ; HL = Address of line
 E856 69                 LD      L,C
 E857 D1                 POP     DE              ; Restore code string address
 E858 D246EA             JP      NC,ULERR        ; ?UL Error if not found
-<span id="E85B">E85B</span> 2B         <span id="RESTNL">RESTNL</span>: DEC     HL              ; Byte before DATA statement
-<span id="E85C">E85C</span> 22DC10     <span id="UPDATA">UPDATA</span>: LD      (NXTDAT),HL     ; Update DATA pointer
+<span id="E85B">E85B</span> 2B         <?php lbl8K("RESTNL"); ?>: DEC     HL              ; Byte before DATA statement
+<span id="E85C">E85C</span> 22DC10     <?php lbl8K("UPDATA"); ?>: LD      (NXTDAT),HL     ; Update DATA pointer
 E85F EB                 EX      DE,HL           ; Restore code string address
 E860 C9                 RET
 
-<span id="E861">E861</span> CD40FD     <span id="TSTBRK">TSTBRK</span>: CALL    <?php bas8K("CHKBRK"); ?>          ; Test for interrupts
+<span id="E861">E861</span> CD40FD     <?php lbl8K("TSTBRK"); ?>: CALL    <?php bas8K("CHKBRK"); ?>          ; Test for interrupts
 E864 B7                 OR      A
 E865 C8                 RET     Z               ; Return if no key pressed
-<span id="E866">E866</span> CDCCE6     <span id="STALL">STALL</span>:  CALL    CLOTST          ; Get input and test for ^O
+<span id="E866">E866</span> CDCCE6     <?php lbl8K("STALL"); ?>:  CALL    CLOTST          ; Get input and test for ^O
 E869 FE13               CP      CTRLS           ; Is it control "S"
 E86B CCCCE6             CALL    Z,CLOTST        ; Yes - Get another character
 E86E FE03               CP      CTRLC           ; Return if not control "C"
-<span id="E870">E870</span> C0         <span id="STOP">STOP</span>:   RET     NZ              ; Exit if anything else
+<span id="E870">E870</span> C0         <?php lbl8K("STOP"); ?>:   RET     NZ              ; Exit if anything else
 E871 F6                 DEFB    (OR n)          ; Flag "STOP"
-<span id="E872">E872</span> C0         <span id="PEND">PEND</span>:   RET     NZ              ; Exit if anything else
+<span id="E872">E872</span> C0         <?php lbl8K("PEND"); ?>:   RET     NZ              ; Exit if anything else
 E873 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save point of break
 E876 21                 DEFB    (LD HL,nn)      ; Skip "OR 11111111B"
-<span id="E877">E877</span> F6FF       <span id="INPBRK">INPBRK</span>: OR      11111111B       ; Flag "Break" wanted
+<span id="E877">E877</span> F6FF       <?php lbl8K("INPBRK"); ?>: OR      11111111B       ; Flag "Break" wanted
 E879 C1                 POP     BC              ; Return not needed and more
-<span id="E87A">E87A</span> 2A5C10     <span id="ENDPRG">ENDPRG</span>: LD      HL,(LINEAT)     ; Get current line number
+<span id="E87A">E87A</span> 2A5C10     <?php lbl8K("ENDPRG"); ?>: LD      HL,(LINEAT)     ; Get current line number
 E87D F5                 PUSH    AF              ; Save STOP / END status
 E87E 7D                 LD      A,L             ; Is it direct break?
 E87F A4                 AND     H
@@ -41,7 +41,7 @@ E881 CA8DE8             JP      Z,NOLIN         ; Yes - No line number
 E884 22D210             LD      (ERRLIN),HL     ; Save line of break
 E887 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get point of break
 E88A 22D410             LD      (CONTAD),HL     ; Save point to CONTinue
-<span id="E88D">E88D</span> AF         <span id="NOLIN">NOLIN</span>:  XOR     A
+<span id="E88D">E88D</span> AF         <?php lbl8K("NOLIN"); ?>:  XOR     A
 E88E 324510             LD      (CTLOFG),A      ; Enable output
 E891 CD74EB             CALL    STTLIN          ; Start a new line
 E894 F1                 POP     AF              ; Restore STOP / END status
@@ -49,7 +49,7 @@ E895 2150E3             LD      HL,<?php bas8K("BRKMSG"); ?>       ; "Break" mes
 E898 C2E1E3             JP      NZ,ERRIN        ; "in line" wanted?
 E89B C3F8E3             JP      PRNTOK          ; Go to command mode
 
-<span id="E89E">E89E</span> 2AD410     <span id="CONT">CONT</span>:   LD      HL,(CONTAD)     ; Get CONTinue address
+<span id="E89E">E89E</span> 2AD410     <?php lbl8K("CONT"); ?>:   LD      HL,(CONTAD)     ; Get CONTinue address
 E8A1 7C                 LD      A,H             ; Is it zero?
 E8A2 B5                 OR      L
 E8A3 1E20               LD      E,CN            ; ?CN Error
@@ -64,13 +64,13 @@ E8B0 C9                 RET                     ; CONTinue where left off
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    32</span>
 
-<span id="E8B1">E8B1</span> CD84F4     <span id="NULL">NULL</span>:   CALL    GETINT          ; Get integer 0-255
+<span id="E8B1">E8B1</span> CD84F4     <?php lbl8K("NULL"); ?>:   CALL    GETINT          ; Get integer 0-255
 E8B4 C0                 RET     NZ              ; Return if bad value
 E8B5 324110             LD      (NULLS),A       ; Set nulls number
 E8B8 C9                 RET
 
-<span id="E8B9">E8B9</span> 06FF       <span id="ARRLD1">ARRLD1</span>: LD      B,-1            ; Flag array load
-<span id="E8BB">E8BB</span> CD36E8     <span id="ARRSV1">ARRSV1</span>: CALL    GETCHR          ; Skip "*"
+<span id="E8B9">E8B9</span> 06FF       <?php lbl8K("ARRLD1"); ?>: LD      B,-1            ; Flag array load
+<span id="E8BB">E8BB</span> CD36E8     <?php lbl8K("ARRSV1"); ?>: CALL    GETCHR          ; Skip "*"
 E8BE 78                 LD      A,B             ; CLOAD* or CSAVE*
 E8BF 32CE10             LD      (<?php bas8K("BRKLIN"); ?>),A      ; Save it
 E8C2 3E01               LD      A,1             ; It's an array
@@ -115,7 +115,7 @@ E900 E1                 POP     HL              ; Address of array data
 E901 06D2               LD      B,11010010B     ; Header byte
 E903 C3D6FF             JP      JPLDSV          ; CSAVE-SNDHDR&nbsp;, CLOAD-GETHDR
 
-<span id="E906">E906</span> 78         <span id="SNDHDR">SNDHDR</span>: LD      A,B             ; Get header byte
+<span id="E906">E906</span> 78         <?php lbl8K("SNDHDR"); ?>: LD      A,B             ; Get header byte
 E907 CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
 E90A CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
 E90D C31DE9             JP      SNDARY          ; Send array data

@@ -2,13 +2,13 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    14</span>
 
-<span id="E38A">E38A</span> E5         <span id="CHKSTK">CHKSTK</span>: PUSH    HL              ; Save code string address
+<span id="E38A">E38A</span> E5         <?php lbl8K("CHKSTK"); ?>: PUSH    HL              ; Save code string address
 E38B 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; Lowest free memory
 E38E 0600               LD      B,0             ; BC = Number of levels to test
 E390 09                 ADD     HL,BC           ; 2 Bytes for each level
 E391 09                 ADD     HL,BC
 E392 3E                 DEFB    (LD A,n)        ; Skip "PUSH HL"
-<span id="E393">E393</span> E5         <span id="ENFMEM">ENFMEM</span>: PUSH    HL              ; Save code string address
+<span id="E393">E393</span> E5         <?php lbl8K("ENFMEM"); ?>: PUSH    HL              ; Save code string address
 E394 3ED0               LD      A,LOW -48       ; 48 Bytes minimum RAM
 E396 95                 SUB     L
 E397 6F                 LD      L,A
@@ -19,30 +19,30 @@ E39E 67                 LD      H,A
 E39F 39                 ADD     HL,SP           ; Test if stack is overflowed
 E3A0 E1                 POP     HL              ; Restore code string address
 E3A1 D8                 RET     C               ; Return if enough mmory
-<span id="E3A2">E3A2</span> 1E0C       <span id="OMERR">OMERR</span>:  LD      E,OM            ; ?OM Error
+<span id="E3A2">E3A2</span> 1E0C       <?php lbl8K("OMERR"); ?>:  LD      E,OM            ; ?OM Error
 E3A4 C3C1E3             JP      ERROR
 
-<span id="E3A7">E3A7</span> 2AC910     <span id="DATSNR">DATSNR</span>: LD      HL,(DATLIN)     ; Get line of current DATA item
+<span id="E3A7">E3A7</span> 2AC910     <?php lbl8K("DATSNR"); ?>: LD      HL,(DATLIN)     ; Get line of current DATA item
 E3AA 225C10             LD      (LINEAT),HL     ; Save as current line
-<span id="E3AD">E3AD</span> 1E02       <span id="SNERR">SNERR</span>:  LD      E,SN            ; ?SN Error
+<span id="E3AD">E3AD</span> 1E02       <?php lbl8K("SNERR"); ?>:  LD      E,SN            ; ?SN Error
 E3AF 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,DZ"
-<span id="E3B0">E3B0</span> 1E14       <span id="DZERR">DZERR</span>:  LD      E,DZ            ; ?/0 Error
+<span id="E3B0">E3B0</span> 1E14       <?php lbl8K("DZERR"); ?>:  LD      E,DZ            ; ?/0 Error
 E3B2 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,NF"
-<span id="E3B3">E3B3</span> 1E00       <span id="NFERR">NFERR</span>:  LD      E,NF            ; ?NF Error
+<span id="E3B3">E3B3</span> 1E00       <?php lbl8K("NFERR"); ?>:  LD      E,NF            ; ?NF Error
 E3B5 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,DD"
-<span id="E3B6">E3B6</span> 1E12       <span id="DDERR">DDERR</span>:  LD      E,DD            ; ?DD Error
+<span id="E3B6">E3B6</span> 1E12       <?php lbl8K("DDERR"); ?>:  LD      E,DD            ; ?DD Error
 E3B8 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,UF"
-<span id="E3B9">E3B9</span> 1E22       <span id="UFERR">UFERR</span>:  LD      E,UF            ; ?UF Error
+<span id="E3B9">E3B9</span> 1E22       <?php lbl8K("UFERR"); ?>:  LD      E,UF            ; ?UF Error
 E3BB 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,OV
-<span id="E3BC">E3BC</span> 1E0A       <span id="OVERR">OVERR</span>:  LD      E,OV            ; ?OV Error
+<span id="E3BC">E3BC</span> 1E0A       <?php lbl8K("OVERR"); ?>:  LD      E,OV            ; ?OV Error
 E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,TM"
-<span id="E3BF">E3BF</span> 1E18       <span id="TMERR">TMERR</span>:  LD      E,TM            ; ?TM Error
+<span id="E3BF">E3BF</span> 1E18       <?php lbl8K("TMERR"); ?>:  LD      E,TM            ; ?TM Error
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    15</span>
 
-<span id="E3C1">E3C1</span> CDDFE4     <span id="ERROR">ERROR</span>:  CALL    CLREG           ; Clear registers and stack
+<span id="E3C1">E3C1</span> CDDFE4     <?php lbl8K("ERROR"); ?>:  CALL    CLREG           ; Clear registers and stack
 E3C4 324510             LD      (CTLOFG),A      ; Enable output (A is 0)
 E3C7 CD74EB             CALL    STTLIN          ; Start new line
 E3CA 21B9E2             LD      HL,ERRORS       ; Point to error codes
@@ -55,7 +55,7 @@ E3D5 CD9BE6             CALL    OUTC            ; Output it
 E3D8 CD36E8             CALL    GETCHR          ; Get next character
 E3DB CD9BE6             CALL    OUTC            ; Output it
 E3DE 213FE3             LD      HL,ERRMSG       ; "Error" message
-<span id="E3E1">E3E1</span> CD10F2     <span id="ERRIN">ERRIN</span>:  CALL    PRS             ; Output message
+<span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    PRS             ; Output message
 E3E4 2A5C10             LD      HL,(LINEAT)     ; Get line of error
 E3E7 11FEFF             LD      DE,-2           ; Cold start error if -2
 E3EA CD8AE6             CALL    CPDEHL          ; See if cold start error
@@ -65,6 +65,6 @@ E3F1 A5                 AND     L               ; Line = -1 if direct error
 E3F2 3C                 INC     A
 E3F3 C4A5F9             CALL    NZ,LINEIN       ; No - output line of error
 E3F6 3E                 DEFB    (LD A,n)        ; Skip "POP BC"
-<span id="E3F7">E3F7</span> C1         <span id="POPNOK">POPNOK</span>: POP     BC              ; Drop address in input buffer
+<span id="E3F7">E3F7</span> C1         <?php lbl8K("POPNOK"); ?>: POP     BC              ; Drop address in input buffer
 </pre>
 <?php DoublePageEnd(); ?>

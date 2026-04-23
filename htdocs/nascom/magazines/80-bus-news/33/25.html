@@ -2,18 +2,18 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    94</span>
 
-<span id="FCC8">FCC8</span> CD39FE     <span id="CASFFW">CASFFW</span>: CALL    FLPLED          ; Turn on cassette
+<span id="FCC8">FCC8</span> CD39FE     <?php lbl8K("CASFFW"); ?>: CALL    FLPLED          ; Turn on cassette
 FCCB 0600               LD      B,0             ; Set 1 second delay
-<span id="FCCD">FCCD</span> CD9BFD     <span id="DELAYB">DELAYB</span>: CALL    DELAY           ; Wait a bit
+<span id="FCCD">FCCD</span> CD9BFD     <?php lbl8K("DELAYB"); ?>: CALL    DELAY           ; Wait a bit
 FCD0 05                 DEC     B               ; Count
 FCD1 C2CDFC             JP      NZ,DELAYB       ; More delay needed
 <span id="FCD4">FCD4</span> C9                 RET
 
-<span id="FCD5">FCD5</span> C339FE     <span id="CASFF">CASFF</span>:  JP      FLPLED          ; Flip tape LED
+<span id="FCD5">FCD5</span> C339FE     <?php lbl8K("CASFF"); ?>:  JP      FLPLED          ; Flip tape LED
 
-<span id="FCD8">FCD8</span> C9         <span id="ARET">ARET</span>:   RET                     ; A RETurn instruction
+<span id="FCD8">FCD8</span> C9         <?php lbl8K("ARET"); ?>:   RET                     ; A RETurn instruction
 
-<span id="FCD9">FCD9</span> E5         <span id="CONMON">CONMON</span>: PUSH    HL              ; Output character to screen
+<span id="FCD9">FCD9</span> E5         <?php lbl8K("CONMON"); ?>: PUSH    HL              ; Output character to screen
 FCDA C5                 PUSH    BC              ;
 FCDB D5                 PUSH    DE              ;
 FCDC F5                 PUSH    AF              ;
@@ -26,21 +26,21 @@ FCE7 CA00FD             JP      Z,IGCHR         ; Yes - Ignore it
 FCEA FE08               CP      <?php bas8K("BKSP"); ?>            ; ASCII back space?
 FCEC C2F1FC             JP      NZ,CONOT1       ; No - Test for CR
 FCEF 3E1D               LD      A,TBS           ; <span class="uppercase">Nasbug</span> back space
-<span id="FCF1">FCF1</span> FE0D       <span id="CONOT1">CONOT1</span>: CP      CR              ; ASCII CR?
+<span id="FCF1">FCF1</span> FE0D       <?php lbl8K("CONOT1"); ?>: CP      CR              ; ASCII CR?
 FCF3 C2FDFC             JP      NZ,OUTCHR       ; No - Output character
 FCF6 3E1F               LD      A,TCR           ; <span class="uppercase">Nasbug</span> CR
 FCF8 C3FDFC             JP      OUTCHR          ; Output it
 
-<span id="FCFB">FCFB</span> F1         <span id="NASOUT">NASOUT</span>: POP     AF              ; Get character
+<span id="FCFB">FCFB</span> F1         <?php lbl8K("NASOUT"); ?>: POP     AF              ; Get character
 FCFC F5                 PUSH    AF              ; And re-save
-<span id="FCFD">FCFD</span> CD45FE     <span id="OUTCHR">OUTCHR</span>: CALL    MONOUT          ; Output it
-<span id="FD00">FD00</span> F1         <span id="IGCHR">IGCHR</span>:  POP     AF              ; Restore character
+<span id="FCFD">FCFD</span> CD45FE     <?php lbl8K("OUTCHR"); ?>: CALL    MONOUT          ; Output it
+<span id="FD00">FD00</span> F1         <?php lbl8K("IGCHR"); ?>:  POP     AF              ; Restore character
 FD01 D1                 POP     DE              ;
 FD02 C1                 POP     BC              ;
 FD03 E1                 POP     HL              ;
 FD04 C9                 RET
 
-<span id="FD05">FD05</span> E5         <span id="GETINP">GETINP</span>: PUSH    HL              ; Get an input character
+<span id="FD05">FD05</span> E5         <?php lbl8K("GETINP"); ?>: PUSH    HL              ; Get an input character
 FD06 C5                 PUSH    BC              ;
 FD07 D5                 PUSH    DE              ;
 FD08 CD6DFE             CALL    MONTST          ; See if NAS-SYS
@@ -48,24 +48,24 @@ FD0B CA13FD             JP      Z,GETTIN        ; "T" monitor - Get input
 FD0E DF0B               SCAL    BLINK
 FD10 C319FD             JP      CONVIN          ; Convert to ASCII
 
-<span id="FD13">FD13</span> CD4D0C     <span id="GETTIN">GETTIN</span>: CALL    TIN             ; "T" input a character
+<span id="FD13">FD13</span> CD4D0C     <?php lbl8K("GETTIN"); ?>: CALL    TIN             ; "T" input a character
 FD16 D213FD             JP      NC,GETTIN       ; No input - wait
-<span id="FD19">FD19</span> FE1D       <span id="CONVIN">CONVIN</span>: CP      TBS             ; <span class="uppercase">Nasbug</span> back space?
+<span id="FD19">FD19</span> FE1D       <?php lbl8K("CONVIN"); ?>: CP      TBS             ; <span class="uppercase">Nasbug</span> back space?
 FD1B C220FD             JP      NZ,CNVIN1       ; No - Test for break
 FD1E 3E08               LD      A,<?php bas8K("BKSP"); ?>          ; ASCII back space
-<span id="FD20">FD20</span> FE1C       <span id="CNVIN1">CNVIN1</span>: CP      TBRK            ; <span class="uppercase">Nasbug</span> break?
+<span id="FD20">FD20</span> FE1C       <?php lbl8K("CNVIN1"); ?>: CP      TBRK            ; <span class="uppercase">Nasbug</span> break?
 FD22 C227FD             JP      NZ,CNVIN2       ; No - Test for control Z
 FD25 3E03               LD      A,CTRLC         ; Control C
-<span id="FD27">FD27</span> FE1A       <span id="CNVIN2">CNVIN2</span>: CP      CTRLZ           ; ^Z?
+<span id="FD27">FD27</span> FE1A       <?php lbl8K("CNVIN2"); ?>: CP      CTRLZ           ; ^Z?
 FD29 C22EFD             JP      NZ,CNVIN3       ; No - Test for escape
 FD2C 3E7F               LD      A,DEL           ; Delete
-<span id="FD2E">FD2E</span> FE1B       <span id="CNVIN3">CNVIN3</span>: CP      ESC             ; "ESC" ?
+<span id="FD2E">FD2E</span> FE1B       <?php lbl8K("CNVIN3"); ?>: CP      ESC             ; "ESC" ?
 FD30 C235FD             JP      NZ,CNVIN4       ; No - Test for CR
 FD33 3E03               LD      A,CTRLC         ; Control C
-<span id="FD35">FD35</span> FE1F       <span id="CNVIN4">CNVIN4</span>: CP      TCR             ; <span class="uppercase">Nasbug</span> CR?
+<span id="FD35">FD35</span> FE1F       <?php lbl8K("CNVIN4"); ?>: CP      TCR             ; <span class="uppercase">Nasbug</span> CR?
 FD37 C23CFD             JP      NZ,CNVIN5       ; No - Return character
 FD3A 3E0D               LD      A,CR            ; ASCII CR
-<span id="FD3C">FD3C</span> D1         <span id="CNVIN5">CNVIN5</span>: POP     DE
+<span id="FD3C">FD3C</span> D1         <?php lbl8K("CNVIN5"); ?>: POP     DE
 FD3D C1                 POP     BC
 FD3E E1                 POP     HL
 FD3F C9                 RET
@@ -74,7 +74,7 @@ FD3F C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    95</span>
 
-<span id="FD40">FD40</span> AF         <span id="CHKBRK">CHKBRK</span>: XOR     A               ; Check for break
+<span id="FD40">FD40</span> AF         <?php lbl8K("CHKBRK"); ?>: XOR     A               ; Check for break
 FD41 CD70FD             CALL    SFTENT          ; Test for shift/enter
 FD44 CA50FD             JP      Z,TBRK2         ; Yes - Test for second break
 FD47 3A4D10             LD      A,(<?php bas8K("BRKFLG"); ?>)      ; Get break flag
@@ -83,23 +83,23 @@ FD4B C250FD             JP      NZ,TBRK2        ; Yes - Test for second break
 FD4E AF                 XOR     A               ; Flag no break
 FD4F C9                 RET
 
-<span id="FD50">FD50</span> CD53FE     <span id="TBRK2">TBRK2</span>:  CALL    <?php bas8K("BREAK2"); ?>          ; Second break?
+<span id="FD50">FD50</span> CD53FE     <?php lbl8K("TBRK2"); ?>:  CALL    <?php bas8K("BREAK2"); ?>          ; Second break?
 FD53 3EFF               LD      A,-1            ; Flag break
 FD55 C9                 RET
 
-<span id="FD56">FD56</span> DB02       <span id="GUART">GUART</span>:  IN      A,(UARTS)       ; Get UART status
+<span id="FD56">FD56</span> DB02       <?php lbl8K("GUART"); ?>:  IN      A,(UARTS)       ; Get UART status
 FD58 17                 RLA                     ; Any data ready?
 FD59 D256FD             JP      NC,GUART        ; No - wait until there is
 FD5C DB01               IN      A,(UARTD)       ; Get data from UART
 FD5E C9                 RET
 
-<span id="FD5F">FD5F</span> D301       <span id="UARTOT">UARTOT</span>: OUT     (UARTD),A       ; Send data to UART
-<span id="FD61">FD61</span> DB02       <span id="URTOLP">URTOLP</span>: IN      A,(UARTS)       ; Get status
+<span id="FD5F">FD5F</span> D301       <?php lbl8K("UARTOT"); ?>: OUT     (UARTD),A       ; Send data to UART
+<span id="FD61">FD61</span> DB02       <?php lbl8K("URTOLP"); ?>: IN      A,(UARTS)       ; Get status
 FD63 87                 ADD     A,A             ; Byte sent?
 FD64 F8                 RET     M               ; Yes - Return
 FD65 C361FD             JP      URTOLP          ; Keep waiting
 
-<span id="FD68">FD68</span> F5         <span id="SUART">SUART</span>:  PUSH    AF              ; Save A
+<span id="FD68">FD68</span> F5         <?php lbl8K("SUART"); ?>:  PUSH    AF              ; Save A
 FD69 CD5FFD             CALL    UARTOT          ; Send it to UART
 FD6C F1                 POP     AF              ; Restore A
 FD6D C9                 RET
@@ -107,7 +107,7 @@ FD6D C9                 RET
 FD6E 00                 NOP
 FD6F 00                 NOP
 
-<span id="FD70">FD70</span> E5         <span id="SFTENT">SFTENT</span>: PUSH    HL              ; Test for Shift Enter from KBD
+<span id="FD70">FD70</span> E5         <?php lbl8K("SFTENT"); ?>: PUSH    HL              ; Test for Shift Enter from KBD
 FD71 3E02               LD      A,00000010B     ; Reset KBD counter mask
 FD73 21000C             LD      HL,PORT0        ; Get old contents
 FD76 AE                 XOR     (HL)            ; Toggle bit
@@ -129,7 +129,7 @@ FD8E CA96FD             JP      Z,TCLS          ; "T" CLS
 FD91 3E0C               LD      A,CS            ; ASCII Clear screen
 FD93 C3D9FC             JP      CONMON          ; Output character
 
-<span id="FD96">FD96</span> 3E1E       <span id="TCLS">TCLS</span>:   LD      A,TCS           ; <span class="uppercase">Nasbug</span> Clear screen
+<span id="FD96">FD96</span> 3E1E       <?php lbl8K("TCLS"); ?>:   LD      A,TCS           ; <span class="uppercase">Nasbug</span> Clear screen
 FD98 C3D9FC             JP      CONMON          ; Output character
 </pre>
 <?php DoublePageEnd(); ?>

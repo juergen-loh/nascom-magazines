@@ -2,8 +2,8 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    18</span>
 
-<span id="E499">E499</span> 2A5E10     <span id="SRCHLN">SRCHLN</span>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Start of program text
-<span id="E49C">E49C</span> 44         <span id="SRCHLP">SRCHLP</span>: LD      B,H             ; BC = Address to look at
+<span id="E499">E499</span> 2A5E10     <?php lbl8K("SRCHLN"); ?>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Start of program text
+<span id="E49C">E49C</span> 44         <?php lbl8K("SRCHLP"); ?>: LD      B,H             ; BC = Address to look at
 E49D 4D                 LD      C,L
 E49E 7E                 LD      A,(HL)          ; Get address of next line
 E49F 23                 INC     HL
@@ -33,8 +33,8 @@ E4B6 C39CE4             JP      SRCHLP          ; Keep looking
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    19</span>
 
-<span id="E4B9">E4B9</span> C0         <span id="NEW">NEW</span>:    RET     NZ              ; Return if any more on line
-<span id="E4BA">E4BA</span> 2A5E10     <span id="CLRPTR">CLRPTR</span>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
+<span id="E4B9">E4B9</span> C0         <?php lbl8K("NEW"); ?>:    RET     NZ              ; Return if any more on line
+<span id="E4BA">E4BA</span> 2A5E10     <?php lbl8K("CLRPTR"); ?>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
 E4BD AF                 XOR     A               ; Set program area to empty
 E4BE 77                 LD      (HL),A          ; Save LSB = 00
 E4BF 23                 INC     HL
@@ -42,10 +42,10 @@ E4C0 77                 LD      (HL),A          ; Save MSB = 00
 E4C1 23                 INC     HL
 E4C2 22D610             LD      (PROGND),HL     ; Set program end
 
-<span id="E4C5">E4C5</span> 2A5E10     <span id="RUNFST">RUNFST</span>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Clear all variables
+<span id="E4C5">E4C5</span> 2A5E10     <?php lbl8K("RUNFST"); ?>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Clear all variables
 E4C8 2B                 DEC     HL
 
-<span id="E4C9">E4C9</span> 22CE10     <span id="INTVAR">INTVAR</span>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise RUN variables
+<span id="E4C9">E4C9</span> 22CE10     <?php lbl8K("INTVAR"); ?>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise RUN variables
 E4CC 2AAF10             LD      HL,(LSTRAM)     ; Get end of RAM
 E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
 E4D2 AF                 XOR     A
@@ -54,7 +54,7 @@ E4D6 2AD610             LD      HL,(PROGND)     ; Get end of program
 E4D9 22D810             LD      (VAREND),HL     ; Clear variables
 E4DC 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Clear arrays
 
-<span id="E4DF">E4DF</span> C1         <span id="CLREG">CLREG</span>:  POP     BC              ; Save return address
+<span id="E4DF">E4DF</span> C1         <?php lbl8K("CLREG"); ?>:  POP     BC              ; Save return address
 E4E0 2A5A10             LD      HL,(STRSPC)     ; Get end of working RAN
 E4E3 F9                 LD      SP,HL           ; Set stack
 E4E4 21B310             LD      HL,TMSTPL       ; Temporary string pool
@@ -67,10 +67,10 @@ E4F0 32CB10             LD      (FORFLG),A      ; Clear FOR flag
 E4F3 22DE10             LD      (FNRGNM),HL     ; Clear FN argument
 E4F6 E5                 PUSH    HL              ; HL = 0000
 E4F7 C5                 PUSH    BC              ; Put back return
-<span id="E4F8">E4F8</span> 2ACE10     <span id="DOAGN">DOAGN</span>:  LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of code to RUN
+<span id="E4F8">E4F8</span> 2ACE10     <?php lbl8K("DOAGN"); ?>:  LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of code to RUN
 E4FB C9                 RET                     ; Return to execution driver
 
-<span id="E4FC">E4FC</span> 3E3F       <span id="PROMPT">PROMPT</span>: LD      A,"?"           ; "?"
+<span id="E4FC">E4FC</span> 3E3F       <?php lbl8K("PROMPT"); ?>: LD      A,"?"           ; "?"
 E4FE CD9BE6             CALL    OUTC            ; Output character
 E501 3E20               LD      A," "           ; Space
 E503 CD9BE6             CALL    OUTC            ; Output character

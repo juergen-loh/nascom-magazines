@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    82</span>
 
-<span id="F8BB">F8BB</span> 47         <span id="FPINT">FPINT</span>:  LD      B,A             ; &lt;- Move
+<span id="F8BB">F8BB</span> 47         <?php lbl8K("FPINT"); ?>:  LD      B,A             ; &lt;- Move
 F8BC 4F                 LD      C,A             ; &lt;- exponent
 F8BD 57                 LD      D,A             ; &lt;- to all
 F8BE 5F                 LD      E,A             ; &lt;- bits
@@ -25,7 +25,7 @@ F8DA DC7EF6             CALL    C,COMPL         ; If negative make positive
 F8DD E1                 POP     HL              ; Restore pointer to number
 F8DE C9                 RET
 
-<span id="F8DF">F8DF</span> 1B         <span id="DCBCDE">DCBCDE</span>: DEC     DE              ; Decrement BCDE
+<span id="F8DF">F8DF</span> 1B         <?php lbl8K("DCBCDE"); ?>: DEC     DE              ; Decrement BCDE
 F8E0 7A                 LD      A,D             ; Test LSBs
 F8E1 A3                 AND     E
 F8E2 3C                 INC     A
@@ -33,7 +33,7 @@ F8E3 C0                 RET     NZ              ; Exit if LSBs not FFFF
 F8E4 0B                 DEC     BC              ; Decrement MSBs
 F8E5 C9                 RET
 
-<span id="F8E6">F8E6</span> 21E710     <span id="INT">INT</span>:    LD      HL,FPEXP        ; Point to exponent
+<span id="F8E6">F8E6</span> 21E710     <?php lbl8K("INT"); ?>:    LD      HL,FPEXP        ; Point to exponent
 F8E9 7E                 LD      A,(HL)          ; Get exponent
 F8EA FE98               CP      80H+24          ; Integer accuracy only?
 F8EC 3AE410             LD      A,(FPREG)       ; Get LSB
@@ -53,12 +53,12 @@ F8FE C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    83</span>
 
-<span id="F8FF">F8FF</span> 210000     <span id="MLDEBC">MLDEBC</span>: LD      HL,0            ; Clear partial product
+<span id="F8FF">F8FF</span> 210000     <?php lbl8K("MLDEBC"); ?>: LD      HL,0            ; Clear partial product
 F902 78                 LD      A,B             ; Test multiplier
 F903 B1                 OR      C
 F904 C8                 RET     Z               ; Return zero if zero
 F905 3E10               LD      A,16            ; 16 bits
-<span id="F907">F907</span> 29         <span id="MLDBLP">MLDBLP</span>: ADD     HL,HL           ; Shift P.P left
+<span id="F907">F907</span> 29         <?php lbl8K("MLDBLP"); ?>: ADD     HL,HL           ; Shift P.P left
 F908 DA45F0             JP      C,<?php bas8K("BSERR"); ?>         ; ?BS Error if overflow
 F90B EB                 EX      DE,HL
 F90C 29                 ADD     HL,HL           ; Shift multiplier left
@@ -66,23 +66,23 @@ F90D EB                 EX      DE,HL
 F90E D215F9             JP      NC,NOMLAD       ; Bit was zero - No add
 F911 09                 ADD     HL,BC           ; Add multiplicand
 F912 DA45F0             JP      C,<?php bas8K("BSERR"); ?>         ; ?BS Error if overflow
-<span id="F915">F915</span> 3D         <span id="NOMLAD">NOMLAD</span>: DEC     A               ; Count bits
+<span id="F915">F915</span> 3D         <?php lbl8K("NOMLAD"); ?>: DEC     A               ; Count bits
 F916 C207F9             JP      NZ,MLDBLP       ; More
 F919 C9                 RET
 
-<span id="F91A">F91A</span> FE2D       <span id="ASCTFP">ASCTFP</span>: CP      "-"             ; Negative?
+<span id="F91A">F91A</span> FE2D       <?php lbl8K("ASCTFP"); ?>: CP      "-"             ; Negative?
 F91C F5                 PUSH    AF              ; Save it and flags
 F91D CA26F9             JP      Z,CNVNUM        ; Yes - Convert number
 F920 FE2B               CP      "+"             ; Positive?
 F922 CA26F9             JP      Z,CNVNUM        ; Yes - Convert number
 F925 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
-<span id="F926">F926</span> CD33F6     <span id="CNVNUM">CNVNUM</span>: CALL    RESZER          ; Set result to zero
+<span id="F926">F926</span> CD33F6     <?php lbl8K("CNVNUM"); ?>: CALL    RESZER          ; Set result to zero
 F929 47                 LD      B,A             ; Digits after point counter
 F92A 57                 LD      D,A             ; Sign of exponent
 F92B 5F                 LD      E,A             ; Exponent of ten
 F92C 2F                 CPL
 F92D 4F                 LD      C,A             ; Before or after point flag
-<span id="F92E">F92E</span> CD36E8     <span id="MANLP">MANLP</span>:  CALL    GETCHR          ; Get next character
+<span id="F92E">F92E</span> CD36E8     <?php lbl8K("MANLP"); ?>:  CALL    GETCHR          ; Get next character
 F931 DA77F9             JP      C,<a href="../../../32/27/text/#ADDIG">ADDIG</a>         ; Digit - Add to number
 F934 FE2E               CP      "."
 F936 CA52F9             JP      Z,DPOINT        ; "." - Flag point
@@ -90,7 +90,7 @@ F939 FE45               CP      "E"
 F93B C256F9             JP      NZ,CONEXP       ; Not "E" - Scale number
 F93E CD36E8             CALL    GETCHR          ; Get next character
 F941 CD70EE             CALL    SGNEXP          ; Get sign of exponent
-<span id="F944">F944</span> CD36E8     <span id="EXPLP">EXPLP</span>:  CALL    GETCHR          ; Get next character
+<span id="F944">F944</span> CD36E8     <?php lbl8K("EXPLP"); ?>:  CALL    GETCHR          ; Get next character
 F947 DA99F9             JP      C,EDIGIT        ; Digit - Add to exponent
 F94A 14                 INC     D               ; Is sign negative?
 F94B C256F9             JP      NZ,CONEXP       ; No - Scale number
@@ -98,12 +98,12 @@ F94E AF                 XOR     A
 F94F 93                 SUB     E               ; Negate exponent
 F950 5F                 LD      E,A             ; And re-save it
 F951 0C                 INC     C               ; Flag end of number
-<span id="F952">F952</span> 0C         <span id="DPOINT">DPOINT</span>: INC     C               ; Flag point passed
+<span id="F952">F952</span> 0C         <?php lbl8K("DPOINT"); ?>: INC     C               ; Flag point passed
 F953 CA2EF9             JP      Z,MANLP         ; Zero - Get another digit
-<span id="F956">F956</span> E5         <span id="CONEXP">CONEXP</span>: PUSH    HL              ; Save code string address
+<span id="F956">F956</span> E5         <?php lbl8K("CONEXP"); ?>: PUSH    HL              ; Save code string address
 F957 7B                 LD      A,E             ; Get exponent
 F958 90                 SUB     B               ; Subtract digits after point
-<span id="F959">F959</span> F46FF9     <span id="SCALMI">SCALMI</span>: CALL    P,SCALPL        ; Positive - Multiply number
+<span id="F959">F959</span> F46FF9     <?php lbl8K("SCALMI"); ?>: CALL    P,SCALPL        ; Positive - Multiply number
 F95C F265F9             JP      P,ENDCON        ; Positive - All done
 F95F F5                 PUSH    AF              ; Save number of times to /10
 F960 CD5BF7             CALL    DIV10           ; Divide by 10

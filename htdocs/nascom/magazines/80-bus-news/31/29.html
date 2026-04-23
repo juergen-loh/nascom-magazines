@@ -2,9 +2,9 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    65</span>
 
-<span id="F382">F382</span> 0101F1     <span id="LEN">LEN</span>:    LD      BC,PASSA        ; To return integer A
+<span id="F382">F382</span> 0101F1     <?php lbl8K("LEN"); ?>:    LD      BC,PASSA        ; To return integer A
 F385 C5                 PUSH    BC              ; Save address
-<span id="F386">F386</span> CD50F3     <span id="GETLEN">GETLEN</span>: CALL    GETSTR          ; Get string and its length
+<span id="F386">F386</span> CD50F3     <?php lbl8K("GETLEN"); ?>: CALL    GETSTR          ; Get string and its length
 F389 AF                 XOR     A
 F38A 57                 LD      D,A             ; Clear D
 F38B 32AD10             LD      (TYPE),A        ; Set type to numeric
@@ -12,9 +12,9 @@ F38E 7E                 LD      A,(HL)          ; Get length of string
 F38F B7                 OR      A               ; Set status flags
 F390 C9                 RET
 
-<span id="F391">F391</span> 0101F1     <span id="ASC">ASC</span>:    LD      BC,PASSA        ; To return integer A
+<span id="F391">F391</span> 0101F1     <?php lbl8K("ASC"); ?>:    LD      BC,PASSA        ; To return integer A
 F394 C5                 PUSH    BC              ; Save address
-<span id="F395">F395</span> CD86F3     <span id="GTFLNM">GTFLNM</span>: CALL    GETLEN          ; Get length of string
+<span id="F395">F395</span> CD86F3     <?php lbl8K("GTFLNM"); ?>: CALL    GETLEN          ; Get length of string
 F398 CAA0E9             JP      Z,FCERR         ; Null string - Error
 F39B 23                 INC     HL
 F39C 23                 INC     HL
@@ -24,29 +24,29 @@ F39F 56                 LD      D,(HL)          ; Get MSB of address
 F3A0 1A                 LD      A,(DE)          ; Get first byte of string
 F3A1 C9                 RET
 
-<span id="F3A2">F3A2</span> 3E01       <span id="CHR">CHR</span>:    LD      A,1             ; One character string
+<span id="F3A2">F3A2</span> 3E01       <?php lbl8K("CHR"); ?>:    LD      A,1             ; One character string
 F3A4 CDBFF1             CALL    MKTMST          ; Make a temporary string
 F3A7 CD87F4             CALL    MAKINT          ; Make it integer A
 F3AA 2AC110             LD      HL,(TMPSTR+2)   ; Get address of string
 F3AD 73                 LD      (HL),E          ; Save character
-<span id="F3AE">F3AE</span> C1         <span id="TOPOOL">TOPOOL</span>: POP     BC              ; Clean up stack
+<span id="F3AE">F3AE</span> C1         <?php lbl8K("TOPOOL"); ?>: POP     BC              ; Clean up stack
 F3AF C3F0F1             JP      TSTOPL          ; Temporary string to pool
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    66</span>
 
-<span id="F3B2">F3B2</span> CD37F4     <span id="LEFT">LEFT</span>:   CALL    LFRGNM          ; Get number and ending ")"
+<span id="F3B2">F3B2</span> CD37F4     <?php lbl8K("LEFT"); ?>:   CALL    LFRGNM          ; Get number and ending ")"
 F3B5 AF                 XOR     A               ; Start at first byte in string
-<span id="F3B6">F3B6</span> E3         <span id="RIGHT1">RIGHT1</span>: EX      (SP),HL         ; Save code string,Get string
+<span id="F3B6">F3B6</span> E3         <?php lbl8K("RIGHT1"); ?>: EX      (SP),HL         ; Save code string,Get string
 F3B7 4F                 LD      C,A             ; Starting position in string
-<span id="F3B8">F3B8</span> E5         <span id="MID1">MID1</span>:   PUSH    HL              ; Save string block address
+<span id="F3B8">F3B8</span> E5         <?php lbl8K("MID1"); ?>:   PUSH    HL              ; Save string block address
 F3B9 7E                 LD      A,(HL)          ; Get length of string
 F3BA B8                 CP      B               ; Compare with number given
 F3BB DAC0F3             JP      C,<?php bas8K("ALLFOL"); ?>        ; All following bytes required
 F3BE 78                 LD      A,B             ; Get new length
 F3BF 11                 DEFB    (LD DE,nn)      ; Skip "LD C,0"
-<span id="F3C0">F3C0</span> 0E00       <span id="ALLFOL">ALLFOL</span>: LD      C,0             ; First byte of string
+<span id="F3C0">F3C0</span> 0E00       <?php lbl8K("ALLFOL"); ?>: LD      C,0             ; First byte of string
 F3C2 C5                 PUSH    BC              ; Save position in string
 F3C3 CD29F2             CALL    TESTR           ; See if enough string space
 F3C6 C1                 POP     BC              ; Get position in string
@@ -69,7 +69,7 @@ F3DB D1                 POP     DE              ; Clear stack
 F3DC CD57F3             CALL    GSTRDE          ; Move to string pool if needed
 F3DF C3F0F1             JP      TSTOPL          ; Temporary string to pool
 
-<span id="F3E2">F3E2</span> CD37F4     <span id="RIGHT">RIGHT</span>:  CALL    LFRGNM          ; Get number and ending ")"
+<span id="F3E2">F3E2</span> CD37F4     <?php lbl8K("RIGHT"); ?>:  CALL    LFRGNM          ; Get number and ending ")"
 F3E5 D1                 POP     DE              ; Get string length
 F3E6 D5                 PUSH    DE              ; And re-save
 F3E7 1A                 LD      A,(DE)          ; Get length

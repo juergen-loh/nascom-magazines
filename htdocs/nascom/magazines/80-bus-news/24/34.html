@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    22</span>
 
-<span id="E5B8">E5B8</span> 216010     <span id="ENDBUF">ENDBUF</span>: LD      HL,<?php bas8K("BUFFER"); ?>-1     ; Point to start of buffer
+<span id="E5B8">E5B8</span> 216010     <?php lbl8K("ENDBUF"); ?>: LD      HL,<?php bas8K("BUFFER"); ?>-1     ; Point to start of buffer
 E5BB 12                 LD      (DE),A          ; Mark end of buffer (A = 00)
 E5BC 13                 INC     DE
 E5BD 12                 LD      (DE),A          ; A = 00
@@ -10,7 +10,7 @@ E5BE 13                 INC     DE
 E5BF 12                 LD      (DE),A          ; A = 00
 E5C0 C9                 RET
 
-<span id="E5C1">E5C1</span> 3A4410     <span id="DODEL">DODEL</span>:  LD      A,(NULFLG)      ; Get null flag status
+<span id="E5C1">E5C1</span> 3A4410     <?php lbl8K("DODEL"); ?>:  LD      A,(NULFLG)      ; Get null flag status
 E5C4 B7                 OR      A               ; Is it zero?
 E5C5 3E00               LD      A,0             ; Zero A - Leave flags
 E5C7 324410             LD      (NULFLG),A      ; Zero null flag
@@ -19,22 +19,22 @@ E5CD 05                 DEC     B               ; Decrement length
 E5CE CAF2E5             JP      Z,GETLIN        ; Get line again if empty
 E5D1 CD9BE6             CALL    OUTC            ; Output null character
 E5D4 3E                 DEFB    (LD A,n)        ; Skip "DEC B"
-<span id="E5D5">E5D5</span> 05         <span id="ECHDEL">ECHDEL</span>: DEC     B               ; Count bytes in buffer
+<span id="E5D5">E5D5</span> 05         <?php lbl8K("ECHDEL"); ?>: DEC     B               ; Count bytes in buffer
 E5D6 2B                 DEC     HL              ; Back space buffer
 E5D7 CAE9E5             JP      Z,OTKLN         ; No buffer - Try again
 E5DA 7E                 LD      A,(HL)          ; Get deleted byte
 E5DB CD9BE6             CALL    OUTC            ; Echo it
 E5DE C310E6             JP      MORINP          ; Get more input
 
-<span id="E5E1">E5E1</span> 05         <span id="DELCHR">DELCHR</span>: DEC     B               ; Count bytes in buffer
+<span id="E5E1">E5E1</span> 05         <?php lbl8K("DELCHR"); ?>: DEC     B               ; Count bytes in buffer
 E5E2 2B                 DEC     HL              ; Back space buffer
 E5E3 CD9BE6             CALL    OUTC            ; Output character in A
 E5E6 C210E6             JP      NZ,MORINP       ; Not end - Get more
-<span id="E5E9">E5E9</span> CD9BE6     <span id="OTKLN">OTKLN</span>:  CALL    OUTC            ; Output character in A
-<span id="E5EC">E5EC</span> CD81EB     <span id="KILIN">KILIN</span>:  CALL    PRNTCR          ; Output CRLF
+<span id="E5E9">E5E9</span> CD9BE6     <?php lbl8K("OTKLN"); ?>:  CALL    OUTC            ; Output character in A
+<span id="E5EC">E5EC</span> CD81EB     <?php lbl8K("KILIN"); ?>:  CALL    PRNTCR          ; Output CRLF
 E5EF C307E6             JP      TTYLIN          ; Get line again
 
-<span id="E5F2">E5F2</span> CD6DFE     <span id="GETLIN">GETLIN</span>: CALL    MONTST          ; Is it NAS-SYS?
+<span id="E5F2">E5F2</span> CD6DFE     <?php lbl8K("GETLIN"); ?>: CALL    MONTST          ; Is it NAS-SYS?
 E5F5 CA07E6             JP      Z,TTYLIN        ; No - Character input
 E5F8 2A750C             LD      HL,(CIN)        ; Point to NAS-SYS input table
 E5FB 7E                 LD      A,(HL)          ; Get input mode
@@ -47,11 +47,11 @@ E604 C386EB             JP      DONULL          ; POS(X)=0 and do nulls
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    23</span>
 
-<span id="E607">E607</span> 216110     <span id="TTYLIN">TTYLIN</span>: LD      HL,<?php bas8K("BUFFER"); ?>       ; Get a line by character
+<span id="E607">E607</span> 216110     <?php lbl8K("TTYLIN"); ?>: LD      HL,<?php bas8K("BUFFER"); ?>       ; Get a line by character
 E60A 0601               LD      B,1             ; Set buffer as empty
 E60C AF                 XOR     A
 E60D 324410             LD      (NULFLG),A      ; Clear null flag
-<span id="E610">E610</span> CDCCE6     <span id="MORINP">MORINP</span>: CALL    CLOTST          ; Get character and test ^O
+<span id="E610">E610</span> CDCCE6     <?php lbl8K("MORINP"); ?>: CALL    CLOTST          ; Get character and test ^O
 E613 4F                 LD      C,A             ; Save character in C
 E614 FE7F               CP      DEL             ; Delete character?
 E616 CAC1E5             JP      Z,DODEL         ; Yes - Process it
@@ -62,7 +62,7 @@ E620 3E00               LD      A,0             ; Set a null
 E622 CD9BE6             CALL    OUTC            ; Output null
 E625 AF                 XOR     A               ; Clear A
 E626 324410             LD      (NULFLG),A      ; Reset null flag
-<span id="E629">E629</span> 79         <span id="PROCES">PROCES</span>: LD      A,C             ; Get character
+<span id="E629">E629</span> 79         <?php lbl8K("PROCES"); ?>: LD      A,C             ; Get character
 E62A FE07               CP      CTRLG           ; Bell?
 E62C CA6DE6             JP      Z,PUTCTL        ; Yes - Save it
 E62F FE03               CP      CTRLC           ; Is it control "C"?

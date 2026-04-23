@@ -15,14 +15,14 @@ By Carl Lloyd&mdash;Parker
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    77</span>
 
-<span id="F75B">F75B</span> CD44F8     <span id="DIV10">DIV10</span>:  CALL    STAKFP          ; Save FPREG on stack
+<span id="F75B">F75B</span> CD44F8     <?php lbl8K("DIV10"); ?>:  CALL    STAKFP          ; Save FPREG on stack
 F75E 012084             LD      BC,8420H        ; BCDE = 10.
 F761 110000             LD      DE,0000H
 F764 CD54F8             CALL    FPBCDE          ; Move 10 to FPREG
 
-<span id="F767">F767</span> C1         <span id="DIV">DIV</span>:    POP     BC              ; Get number from stack
+<span id="F767">F767</span> C1         <?php lbl8K("DIV"); ?>:    POP     BC              ; Get number from stack
 F768 D1                 POP     DE
-<span id="F769">F769</span> CD13F8     <span id="DVBCDE">DVBCDE</span>: CALL    TSTSGN          ; Test sign of FPREG
+<span id="F769">F769</span> CD13F8     <?php lbl8K("DVBCDE"); ?>: CALL    TSTSGN          ; Test sign of FPREG
 F76C CAB0E3             JP      Z,DZERR         ; Error if division by zero
 F76F 2EFF               LD      L,-1            ; Flag subtract exponents
 F771 CDD1F7             CALL    <?php bas8K("ADDEXP"); ?>          ; Subtract exponents
@@ -44,7 +44,7 @@ F788 4F                 LD      C,A             ; Clear MSB of quotient
 F789 57                 LD      D,A             ; Clear NMSB of quotient
 F78A 5F                 LD      E,A             ; Clear LSB of quotient
 F78B 321510             LD      (DIV4),A        ; Clear overflow count
-<span id="F78E">F78E</span> E5         <span id="DIVLP">DIVLP</span>:  PUSH    HL              ; Save divisor
+<span id="F78E">F78E</span> E5         <?php lbl8K("DIVLP"); ?>:  PUSH    HL              ; Save divisor
 F78F C5                 PUSH    BC
 F790 7D                 LD      A,L             ; Get LSB of number
 F791 CD0910             CALL    DIVSUP          ; Subt' divisor from dividend

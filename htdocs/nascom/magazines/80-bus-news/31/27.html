@@ -2,9 +2,9 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    61</span>
 
-<span id="F229">F229</span> B7         <span id="TESTR">TESTR</span>:  OR      A               ; Test if enough room
+<span id="F229">F229</span> B7         <?php lbl8K("TESTR"); ?>:  OR      A               ; Test if enough room
 F22A 0E                 DEFB    (LD C,n)        ; No garbage collection done
-<span id="F22B">F22B</span> F1         <span id="GRBDON">GRBDON</span>: POP     AF              ; Garbage collection done
+<span id="F22B">F22B</span> F1         <?php lbl8K("GRBDON"); ?>: POP     AF              ; Garbage collection done
 F22C F5                 PUSH    AF              ; Save status
 F22D 2A5A10             LD      HL,(STRSPC)     ; Bottom of string space in use
 F230 EB                 EX      DE,HL           ; To DE
@@ -19,31 +19,31 @@ F23D DA47F2             JP      C,TESTOS        ; Tidy up if not done else err
 F240 22C310             LD      (STRBOT),HL     ; Save new bottom of area
 F243 23                 INC     HL              ; Point to first byte of string
 F244 EB                 EX      DE,HL           ; Address to DE
-<span id="F245">F245</span> F1         <span id="POPAF">POPAF</span>:  POP     AF              ; Throw away status push
+<span id="F245">F245</span> F1         <?php lbl8K("POPAF"); ?>:  POP     AF              ; Throw away status push
 F246 C9                 RET
 
-<span id="F247">F247</span> F1         <span id="TESTOS">TESTOS</span>: POP     AF              ; Garbage collect been done?
+<span id="F247">F247</span> F1         <?php lbl8K("TESTOS"); ?>: POP     AF              ; Garbage collect been done?
 F248 1E1A               LD      E,OS            ; ?OS Error
 F24A CAC1E3             JP      Z,ERROR         ; Yes - Not enough string apace
 F24D BF                 CP      A               ; Flag garbage collect done
 F24E F5                 PUSH    AF              ; Save status
 F24F 012BF2             LD      BC,GRBDON       ; Garbage collection done
 F252 C5                 PUSH    BC              ; Save for RETurn
-<span id="F253">F253</span> 2AAF10     <span id="GARBGE">GARBGE</span>: LD      HL,(LSTRAM)     ; Get end of RAM pointer
-<span id="F256">F256</span> 22C310     <span id="GARBLP">GARBLP</span>: LD      (STRBOT),HL     ; Reset string pointer
+<span id="F253">F253</span> 2AAF10     <?php lbl8K("GARBGE"); ?>: LD      HL,(LSTRAM)     ; Get end of RAM pointer
+<span id="F256">F256</span> 22C310     <?php lbl8K("GARBLP"); ?>: LD      (STRBOT),HL     ; Reset string pointer
 F259 210000             LD      HL,0
 F25C E5                 PUSH    HL              ; Flag no string found
 F25D 2A5A10             LD      HL,(STRSPC)     ; Get bottom of string space
 F260 E5                 PUSH    HL              ; Save bottom of string space
 F261 21B310             LD      HL,TMSTPL       ; Temporary string pool
-<span id="F264">F264</span> EB         <span id="GRBLP">GRBLP</span>:  EX      DE,HL
+<span id="F264">F264</span> EB         <?php lbl8K("GRBLP"); ?>:  EX      DE,HL
 F265 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
 F268 EB                 EX      DE,HL
 F269 CD8AE6             CALL    CPDEHL          ; Temporary string pool done?
 F26C 0164F2             LD      BC,GRBLP        ; Loop until string pool done
 F26F C2B8F2             JP      NZ,STPOOL       ; No - See if in string area
 F272 2AD610             LD      HL,(PROGND)     ; Start of simple variables
-<span id="F275">F275</span> EB         <span id="SMPVAR">SMPVAR</span>: EX      DE,HL
+<span id="F275">F275</span> EB         <?php lbl8K("SMPVAR"); ?>: EX      DE,HL
 F276 2AD810             LD      HL,(VAREND)     ; End of simple variables
 F279 EB                 EX      DE,HL
 F27A CD8AE6             CALL    CPDEHL          ; All simple strings done?
@@ -59,8 +59,8 @@ F287 C375F2             JP      SMPVAR          ; Loop until simple ones done
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    62</span>
 
-<span id="F28A">F28A</span> C1         <span id="GNXARY">GNXARY</span>: POP     BC              ; Scrap address of this array
-<span id="F28B">F28B</span> EB         <span id="ARRLP">ARRLP</span>:  EX      DE,HL
+<span id="F28A">F28A</span> C1         <?php lbl8K("GNXARY"); ?>: POP     BC              ; Scrap address of this array
+<span id="F28B">F28B</span> EB         <?php lbl8K("ARRLP"); ?>:  EX      DE,HL
 F28C 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of string arrays
 F28F EB                 EX      DE,HL
 F290 CD8AE6             CALL    CPDEHL          ; All string arrays done?
@@ -78,15 +78,15 @@ F2A5 0600               LD      B,0
 F2A7 09                 ADD     HL,BC           ; Two bytes per dimension size
 F2A8 09                 ADD     HL,BC
 F2A9 23                 INC     HL              ; Plus one for number of dim'ns
-<span id="F2AA">F2AA</span> EB         <span id="GRBARY">GRBARY</span>: EX      DE,HL
+<span id="F2AA">F2AA</span> EB         <?php lbl8K("GRBARY"); ?>: EX      DE,HL
 F2AB 2AC510             LD      HL,(CUROPR)     ; Get address of next array
 F2AE EB                 EX      DE,HL
 F2AF CD8AE6             CALL    CPDEHL          ; Is this array finished?
 F2B2 CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Get next one
 F2B5 01AAF2             LD      BC,GRBARY       ; Loop until array all done
-<span id="F2B8">F2B8</span> C5         <span id="STPOOL">STPOOL</span>: PUSH    BC              ; Save return address
+<span id="F2B8">F2B8</span> C5         <?php lbl8K("STPOOL"); ?>: PUSH    BC              ; Save return address
 F2B9 F680               OR      80H             ; Flag string type
-<span id="F2BB">F2BB</span> 7E         <span id="STRADD">STRADD</span>: LD      A,(HL)          ; Get string length
+<span id="F2BB">F2BB</span> 7E         <?php lbl8K("STRADD"); ?>: LD      A,(HL)          ; Get string length
 F2BC 23                 INC     HL
 F2BD 23                 INC     HL
 F2BE 5E                 LD      E,(HL)          ; Get LSB of string address

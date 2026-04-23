@@ -2,16 +2,16 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    6</span>
 
-<span id="E0B7">E0B7</span> 20427974   <span id="BFREE">BFREE</span>:  DEFB    " Bytes free",CR,0,0
+<span id="E0B7">E0B7</span> 20427974   <?php lbl8K("BFREE"); ?>:  DEFB    " Bytes free",CR,0,0
 
-<span id="E0C5">E0C5</span> 4E415343   <span id="SIGNON">SIGNON</span>: DEFB    "<span class="uppercase">Nascom</span> ROM BASIC Ver 4.7   ",CR
+<span id="E0C5">E0C5</span> 4E415343   <?php lbl8K("SIGNON"); ?>: DEFB    "<span class="uppercase">Nascom</span> ROM BASIC Ver 4.7   ",CR
 E0E1 436F7079           DEFB    "Copyright (C) 1978 by Microsoft",CR,0,0
 
-<span id="E103">E103</span> 4D656D6F   <span id="MEMMSG">MEMMSG</span>: DEFB    "Memory size",0
+<span id="E103">E103</span> 4D656D6F   <?php lbl8K("MEMMSG"); ?>: DEFB    "Memory size",0
 
                 ; FUNCTION ADDRESS TABLE
 
-<span id="E10F">E10F</span> 22F8       <span id="FNCTAB">FNCTAB</span>: DEFW    SGN
+<span id="E10F">E10F</span> 22F8       <?php lbl8K("FNCTAB"); ?>: DEFW    SGN
 E111 E6F8               DEFW    INT
 E113 38F8               DEFW    <?php bas8K("ABS","","","\n"); ?>
 E115 0310               DEFW    USR
@@ -44,7 +44,7 @@ E141 ECF3               DEFW    MID
 
                 ; RESERVED WORD LIST
 
-<span id="E143">E143</span> C54E44     <span id="WORDS">WORDS</span>:  DEFB    80H+"END"
+<span id="E143">E143</span> C54E44     <?php lbl8K("WORDS"); ?>:  DEFB    80H+"END"
 E146 C64F52             DEFB    80H+"FOR"
 E149 CE455854           DEFB    80H+"NEXT"
 E14D C4415441           DEFB    80H+"DATA"
