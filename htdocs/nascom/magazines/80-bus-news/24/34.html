@@ -14,9 +14,9 @@ E5C0 C9                 RET
 E5C4 B7                 OR      A               ; Is it zero?
 E5C5 3E00               LD      A,0             ; Zero A - Leave flags
 E5C7 324410             LD      (NULFLG),A      ; Zero null flag
-E5CA C2D5E5             JP      NZ,ECHDEL       ; Set - Echo it
+E5CA C2D5E5             JP      NZ,<?php bas8K("ECHDEL"); ?>       ; Set - Echo it
 E5CD 05                 DEC     B               ; Decrement length
-E5CE CAF2E5             JP      Z,GETLIN        ; Get line again if empty
+E5CE CAF2E5             JP      Z,<?php bas8K("GETLIN"); ?>        ; Get line again if empty
 E5D1 CD9BE6             CALL    OUTC            ; Output null character
 E5D4 3E                 DEFB    (LD A,n)        ; Skip "DEC B"
 <span id="E5D5">E5D5</span> 05         <?php lbl8K("ECHDEL"); ?>: DEC     B               ; Count bytes in buffer
@@ -32,16 +32,16 @@ E5E3 CD9BE6             CALL    OUTC            ; Output character in A
 E5E6 C210E6             JP      NZ,MORINP       ; Not end - Get more
 <span id="E5E9">E5E9</span> CD9BE6     <?php lbl8K("OTKLN"); ?>:  CALL    OUTC            ; Output character in A
 <span id="E5EC">E5EC</span> CD81EB     <?php lbl8K("KILIN"); ?>:  CALL    PRNTCR          ; Output CRLF
-E5EF C307E6             JP      TTYLIN          ; Get line again
+E5EF C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Get line again
 
 <span id="E5F2">E5F2</span> CD6DFE     <?php lbl8K("GETLIN"); ?>: CALL    MONTST          ; Is it NAS-SYS?
-E5F5 CA07E6             JP      Z,TTYLIN        ; No - Character input
-E5F8 2A750C             LD      HL,(CIN)        ; Point to NAS-SYS input table
+E5F5 CA07E6             JP      Z,<?php bas8K("TTYLIN"); ?>        ; No - Character input
+E5F8 2A750C             LD      HL,(<?php bas8K("CIN"); ?>)        ; Point to NAS-SYS input table
 E5FB 7E                 LD      A,(HL)          ; Get input mode
 E5FC FE74               CP      74H             ; Is it "X" mode?
-E5FE CA07E6             JP      Z,TTYLIN        ; Yes - Teletype line input
+E5FE CA07E6             JP      Z,<?php bas8K("TTYLIN"); ?>        ; Yes - Teletype line input
 E601 CDE8FE             CALL    INLINE          ; Get a line from NAS-SYS
-E604 C386EB             JP      DONULL          ; POS(X)=0 and do nulls
+E604 C386EB             JP      <?php bas8K("DONULL"); ?>          ; POS(X)=0 and do nulls
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -51,10 +51,10 @@ E604 C386EB             JP      DONULL          ; POS(X)=0 and do nulls
 E60A 0601               LD      B,1             ; Set buffer as empty
 E60C AF                 XOR     A
 E60D 324410             LD      (NULFLG),A      ; Clear null flag
-<span id="E610">E610</span> CDCCE6     <?php lbl8K("MORINP"); ?>: CALL    CLOTST          ; Get character and test ^O
+<span id="E610">E610</span> CDCCE6     <?php lbl8K("MORINP"); ?>: CALL    <?php bas8K("CLOTST"); ?>          ; Get character and test ^O
 E613 4F                 LD      C,A             ; Save character in C
-E614 FE7F               CP      DEL             ; Delete character?
-E616 CAC1E5             JP      Z,DODEL         ; Yes - Process it
+E614 FE7F               CP      <?php bas8K("DEL"); ?>             ; Delete character?
+E616 CAC1E5             JP      Z,<?php bas8K("DODEL"); ?>         ; Yes - Process it
 E619 3A4410             LD      A,(NULFLG)      ; Get null flag
 E61C B7                 OR      A               ; Test null flag status
 E61D CA29E6             JP      Z,PROCES        ; Reset - Process character
@@ -63,23 +63,23 @@ E622 CD9BE6             CALL    OUTC            ; Output null
 E625 AF                 XOR     A               ; Clear A
 E626 324410             LD      (NULFLG),A      ; Reset null flag
 <span id="E629">E629</span> 79         <?php lbl8K("PROCES"); ?>: LD      A,C             ; Get character
-E62A FE07               CP      CTRLG           ; Bell?
+E62A FE07               CP      <?php bas8K("CTRLG"); ?>           ; Bell?
 E62C CA6DE6             JP      Z,PUTCTL        ; Yes - Save it
-E62F FE03               CP      CTRLC           ; Is it control "C"?
+E62F FE03               CP      <?php bas8K("CTRLC"); ?>           ; Is it control "C"?
 E631 CC81EB             CALL    Z,PRNTCR        ; Yes - Output CRLF
 E634 37                 SCF                     ; Flag break
 E635 C8                 RET     Z               ; Return if control "C"
-E636 FE0D               CP      CR              ; Is it enter?
-E638 CA7CEB             JP      Z,ENDINP        ; Yes - Terminate input
-E63B FE15               CP      CTRLU           ; Is it control "U"?
+E636 FE0D               CP      <?php bas8K("CR"); ?>              ; Is it enter?
+E638 CA7CEB             JP      Z,<?php bas8K("ENDINP"); ?>        ; Yes - Terminate input
+E63B FE15               CP      <?php bas8K("CTRLU"); ?>           ; Is it control "U"?
 E63D CAECE5             JP      Z,KILIN         ; Yes - Get another line
 E640 FE40               CP      "@"             ; Is it "kill line"?
 E642 CAE9E5             JP      Z,OTKLN         ; Yes - Kill line
 E645 FE5F               CP      "_"             ; Is it delete?
-E647 CAE1E5             JP      Z,DELCHR        ; Yes - Delete character
+E647 CAE1E5             JP      Z,<?php bas8K("DELCHR"); ?>        ; Yes - Delete character
 E64A FE08               CP      <?php bas8K("BKSP"); ?>            ; Is it backspace?
-E64C CAE1E5             JP      Z,DELCHR        ; Yes - Delete character
-E64F FE12               CP      CTRLR           ; Is it control "R"?
+E64C CAE1E5             JP      Z,<?php bas8K("DELCHR"); ?>        ; Yes - Delete character
+E64F FE12               CP      <?php bas8K("CTRLR"); ?>           ; Is it control "R"?
 E651 C268E6             JP      NZ,PUTBUF       ; No - Put in buffer
 E654 C5                 PUSH    BC              ; Save buffer length
 E655 D5                 PUSH    DE              ; Save DE

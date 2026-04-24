@@ -19,14 +19,14 @@ FF14 C9                 RET
 <span id="FF15">FF15</span> CD90E6     <?php lbl8K("GETXYA"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 FF18 28                 DEFB    "("
 FF19 CD41ED             CALL    GETNUM          ; Get a number
-FF1C CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+FF1C CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FF1F D5                 PUSH    DE              ; Save "X"
 FF20 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FF23 2C                 DEFB    ","
 FF24 CD41ED             CALL    GETNUM          ; Get a number
 FF27 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 FF2A 29                 DEFB    ")"
-FF2B CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+FF2B CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FF2E E5                 PUSH    HL              ; Save code string address
 FF2F FDE1               POP     IY              ; In IY
 FF31 CD96FF             CALL    XYPOS           ; Address and bit mask
@@ -108,7 +108,7 @@ FFA4 010300             LD      BC,3            ; 3 blocks per line
 FFA7 23                 INC     HL
 <span id="FFA8">FFA8</span> ED42       <?php lbl8K("DIV3LP"); ?>: SBC     HL,BC           ; Subtract 3
 FFAA 13                 INC     DE              ; Count the subtractions
-FFAB CAB1FF             JP      Z,DIV3EX        ; Exactly - Exit
-FFAE F2A8FF             JP      P,DIV3LP        ; More to do
+FFAB CAB1FF             JP      Z,<?php bas8K("DIV3EX"); ?>        ; Exactly - Exit
+FFAE F2A8FF             JP      P,<?php bas8K("DIV3LP"); ?>        ; More to do
 </pre>
 <?php DoublePageEnd(); ?>

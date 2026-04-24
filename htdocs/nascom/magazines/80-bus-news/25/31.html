@@ -19,7 +19,7 @@ By Carl Lloyd&mdash;Parker
 E66A DA10E6             JP      C,MORINP        ; Yes - Ignore
 <span id="E66D">E66D</span> 78         <?php lbl8K("PUTCTL"); ?>: LD      A,B             ; Get number of bytes in buffer
 E66E FE49               CP      72+1            ; Test for line overflow
-E670 3E07               LD      A,CTRLG         ; Set a bell
+E670 3E07               LD      A,<?php bas8K("CTRLG"); ?>         ; Set a bell
 E672 D282E6             JP      NC,OUTNBS       ; Ring bell if buffer full
 E675 79                 LD      A,C             ; Get character
 E676 71                 LD      (HL),C          ; Save in buffer

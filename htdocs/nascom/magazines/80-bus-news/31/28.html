@@ -46,7 +46,7 @@ F315 2AE410             LD      HL,(FPREG)      ; Get second string
 F318 E5                 PUSH    HL              ; Save second string
 F319 86                 ADD     A,(HL)          ; Add length of second string
 F31A 1E1C               LD      E,LS            ; ?LS Error
-F31C DAC1E3             JP      C,ERROR         ; String too long - Error
+F31C DAC1E3             JP      C,<?php bas8K("ERROR"); ?>         ; String too long - Error
 F31F CDBFF1             CALL    MKTMST          ; Make temporary string
 F322 D1                 POP     DE              ; Get second string to DE
 F323 CD57F3             CALL    GSTRDE          ; Move to string pool if needed
@@ -57,7 +57,7 @@ F32B 2AC110             LD      HL,(TMPSTR+2)   ; Temporary string address
 F32E EB                 EX      DE,HL           ; To DE
 F32F CD3DF3             CALL    SSTSA           ; First string to string area
 F332 CD3DF3             CALL    SSTSA           ; Second string to string area
-F335 2166ED             LD      HL,EVAL2        ; Return to evaluation loop
+F335 2166ED             LD      HL,<?php bas8K("EVAL2"); ?>        ; Return to evaluation loop
 F338 E3                 EX      (SP),HL         ; Save return,get code string
 F339 E5                 PUSH    HL              ; Save code string address
 F33A C3F0F1             JP      TSTOPL          ; To temporary string to pool
@@ -96,7 +96,7 @@ F35E 59                 LD      E,C
 F35F 1B                 DEC     DE              ; Point to length
 F360 4E                 LD      C,(HL)          ; Get string length
 F361 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
-F364 CD8AE6             CALL    CPDEHL          ; Last one in string area?
+F364 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Last one in string area?
 F367 C26FF3             JP      NZ,POPHL        ; No - Return
 F36A 47                 LD      B,A             ; Clear B (A=0)
 F36B 09                 ADD     HL,BC           ; Remove string from str' area
@@ -111,7 +111,7 @@ F376 2B                 DEC     HL              ; Back
 F377 4E                 LD      C,(HL)          ; Get LSB of address
 F378 2B                 DEC     HL              ; Back
 F379 2B                 DEC     HL              ; Back
-F37A CD8AE6             CALL    CPDEHL          ; String last in string pool?
+F37A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; String last in string pool?
 F37D C0                 RET     NZ              ; Yes - Leave it
 F37E 22B110             LD      (TMSTPT),HL     ; Save new string pool top
 F381 C9                 RET

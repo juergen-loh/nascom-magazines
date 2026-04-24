@@ -26,7 +26,7 @@ EE5A EB                 EX      DE,HL           ; Save code string address
 EE5B E3                 EX      (SP),HL         ; Save integer,HL = adj' token
 EE5C C367EE             JP      GOFUNC          ; Jump to string function
 
-<span id="EE5F">EE5F</span> CD09EE     <?php lbl8K("FNVAL"); ?>:  CALL    EVLPAR          ; Evaluate expression
+<span id="EE5F">EE5F</span> CD09EE     <?php lbl8K("FNVAL"); ?>:  CALL    <?php bas8K("EVLPAR"); ?>          ; Evaluate expression
 EE62 E3                 EX      (SP),HL         ; HL = Adjusted token value
 EE63 111DEE             LD      DE,RETNUM       ; Return number from function
 EE66 D5                 PUSH    DE              ; Save on stack
@@ -59,7 +59,7 @@ EE7F C9                 RET                     ; Return "NZ"
 <span id="EE81">EE81</span> AF         <?php lbl8K("PAND"); ?>:   XOR     A               ; Flag "AND"
 EE82 F5                 PUSH    AF              ; Save "AND" / "OR" flag
 EE83 CD44ED             CALL    TSTNUM          ; Make sure it's a number
-EE86 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+EE86 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 EE89 F1                 POP     AF              ; Restore "AND" / "OR" flag
 EE8A EB                 EX      DE,HL           ; &lt;- Get last
 EE8B C1                 POP     BC              ; &lt;-  value
@@ -67,7 +67,7 @@ EE8C E3                 EX      (SP),HL         ; &lt;-  from
 EE8D EB                 EX      DE,HL           ; &lt;-  stack
 EE8E CD54F8             CALL    FPBCDE          ; Move last value to FPREG
 EE91 F5                 PUSH    AF              ; Save "AND" / "OR" flag
-EE92 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+EE92 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 EE95 F1                 POP     AF              ; Restore "AND" / "OR" flag
 EE96 C1                 POP     BC              ; Get value
 EE97 79                 LD      A,C             ; Get LSB
@@ -85,7 +85,7 @@ EEA5 78                 LD      A,B             ; Get MSB
 EEA6 B2                 OR      D               ; "OR" MSBs
 EEA7 E9                 JP      (HL)            ; Save AC as current (<?php bas8K("ACPASS"); ?>)
 
-<span id="EEA8">EEA8</span> 21BAEE     <?php lbl8K("TSTRED"); ?>: LD      HL,CMPLOG       ; Logical compare routine
+<span id="EEA8">EEA8</span> 21BAEE     <?php lbl8K("TSTRED"); ?>: LD      HL,<?php bas8K("CMPLOG"); ?>       ; Logical compare routine
 EEAB 3AAD10             LD      A,(TYPE)        ; Get data type
 EEAE 1F                 RRA                     ; Carry set = string
 EEAF 7A                 LD      A,D             ; Get last precedence value

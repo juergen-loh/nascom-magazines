@@ -4,10 +4,10 @@
 
 <span id="EB7C">EB7C</span> 3600       <?php lbl8K("ENDINP"); ?>: LD      (HL),0          ; Mark end of buffer
 EB7E 216010             LD      HL,<?php bas8K("BUFFER"); ?>-1     ; Point to buffer
-<span id="EB81">EB81</span> 3E0D       <?php lbl8K("PRNTCR"); ?>: LD      A,CR            ; Load a CR
+<span id="EB81">EB81</span> 3E0D       <?php lbl8K("PRNTCR"); ?>: LD      A,<?php bas8K("CR"); ?>            ; Load a CR
 EB83 CD9BE6             CALL    OUTC            ; Output character
 <span id="EB86">EB86</span> AF         <?php lbl8K("DONULL"); ?>: XOR     A               ; Set to position 0
-EB87 32AB10             LD      (CURPOS),A      ; Store it
+EB87 32AB10             LD      (<?php bas8K("CURPOS"); ?>),A      ; Store it
 EB8A 3A4110             LD      A,(NULLS)       ; Get number of nulls
 <span id="EB8D">EB8D</span> 3D         <?php lbl8K("NULLP"); ?>:  DEC     A               ; Count them
 EB8E C8                 RET     Z               ; Return if done
@@ -17,9 +17,9 @@ EB91 CD9BE6             CALL    OUTC            ; Output it
 EB94 F1                 POP     AF              ; Restore count
 EB95 C38DEB             JP      NULLP           ; Keep counting
 
-<span id="EB98">EB98</span> 3A4310     <?php lbl8K("DOCOM"); ?>:  LD      A,(COMMAN)      ; Get comma width
+<span id="EB98">EB98</span> 3A4310     <?php lbl8K("DOCOM"); ?>:  LD      A,(<?php bas8K("COMMAN"); ?>)      ; Get comma width
 EB9B 47                 LD      B,A             ; Save in B
-EB9C 3AAB10             LD      A,(CURPOS)      ; Get current position
+EB9C 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get current position
 EB9F B8                 CP      B               ; Within the limit?
 EBA0 D481EB             CALL    NC,PRNTCR       ; No - output CRLF
 EBA3 D2D2EB             JP      NC,NEXITM       ; Get next item
@@ -36,8 +36,8 @@ EBB7 2B                 DEC     HL              ; Back space on to ")"
 EBB8 F1                 POP     AF              ; Restore token
 EBB9 D6A8               SUB     ZSPC            ; Was it "SPC(" ?
 EBBB E5                 PUSH    HL              ; Save code string address
-EBBC CAC2EB             JP      Z,DOSPC         ; Yes - Do "E" spaces
-EBBF 3AAB10             LD      A,(CURPOS)      ; Get current position
+EBBC CAC2EB             JP      Z,<?php bas8K("DOSPC"); ?>         ; Yes - Do "E" spaces
+EBBF 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get current position
 <span id="EBC2">EBC2</span> 2F         <?php lbl8K("DOSPC"); ?>:  CPL                     ; Number of spaces to print to
 EBC3 83                 ADD     A,E             ; Total number to print
 EBC4 D2D2EB             JP      NC,NEXITM       ; TAB &lt; Current POS(X)
@@ -55,21 +55,21 @@ EBD6 C326EB             JP      PRNTLP          ; More to print
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    41</span>
 
-<span id="EBD9">EBD9</span> 3F526564   <?php lbl8K("REDO"); ?>:   DEFB    "?Redo from start",CR,LF,0
+<span id="EBD9">EBD9</span> 3F526564   <?php lbl8K("REDO"); ?>:   DEFB    "?Redo from start",<?php bas8K("CR"); ?>,LF,0
 
 <span id="EBEC">EBEC</span> 3ACD10     <?php lbl8K("BADINP"); ?>: LD      A,(READFG)      ; READ or INPUT?
 EBEF B7                 OR      A
-EBF0 C2A7E3             JP      NZ,DATSNR       ; READ - ?SN Error
+EBF0 C2A7E3             JP      NZ,<?php bas8K("DATSNR"); ?>       ; READ - ?SN Error
 EBF3 C1                 POP     BC              ; Throw away code string addr
 EBF4 21D9EB             LD      HL,REDO         ; "Redo from start" message
 EBF7 CD10F2             CALL    PRS             ; Output string
-EBFA C3F8E4             JP      DOAGN           ; Do last INPUT again
+EBFA C3F8E4             JP      <?php bas8K("DOAGN"); ?>           ; Do last INPUT again
 
 <span id="EBFD">EBFD</span> CD7BF1     <?php lbl8K("INPUT"); ?>:  CALL    IDTEST          ; Test for illegal direct
 EC00 7E                 LD      A,(HL)          ; Get character after "INPUT"
 EC01 FE22               CP      '"'             ; Is there a prompt string?
 EC03 3E00               LD      A,0             ; Clear A and leave flags
-EC05 324510             LD      (CTLOFG),A      ; Enable output
+EC05 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
 EC08 C217EC             JP      NZ,NOPMPT       ; No prompt - get input
 EC0B CDCFF1             CALL    QTSTR           ; Get string terminated by '"'
 EC0E CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Check for ";" after prompt
@@ -86,12 +86,12 @@ EC20 7E                 LD      A,(HL)          ; Get it
 EC21 B7                 OR      A               ; End of line?
 EC22 2B                 DEC     HL              ; Back again
 EC23 C5                 PUSH    BC              ; Re-save code string address
-EC24 CA6FEA             JP      Z,NXTDTA        ; Yes - Find next DATA stmt
+EC24 CA6FEA             JP      Z,NXTDTA        ; Yes - Find next <?php bas8K("DATA"); ?> stmt
 EC27 362C               LD      (HL),","        ; Store comma as separator
 EC29 C331EC             JP      NXTITM          ; Get next item
 
 <span id="EC2C">EC2C</span> E5         <?php lbl8K("READ"); ?>:   PUSH    HL              ; Save code string address
-EC2D 2ADC10             LD      HL,(NXTDAT)     ; Next DATA statement
+EC2D 2ADC10             LD      HL,(NXTDAT)     ; Next <?php bas8K("DATA"); ?> statement
 EC30 F6                 DEFB    (OR n)          ; Flag "READ"
 <span id="EC31">EC31</span> AF         <?php lbl8K("NXTITM"); ?>: XOR     A               ; Flag "INPUT"
 EC32 32CD10             LD      (READFG),A      ; Save "READ"/"INPUT" flag

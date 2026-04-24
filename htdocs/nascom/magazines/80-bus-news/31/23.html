@@ -23,8 +23,8 @@ F017 3E                 DEFB    (LD A,n)        ; Skip "ADD HL,DE"
 F019 EB                 EX      DE,HL
 F01A 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of arrays
 F01D EB                 EX      DE,HL           ; Current array pointer
-F01E CD8AE6             CALL    CPDEHL          ; End of arrays found?
-F021 CA4AF0             JP      Z,CREARY        ; Yes - Create array
+F01E CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; End of arrays found?
+F021 CA4AF0             JP      Z,<?php bas8K("CREARY"); ?>        ; Yes - Create array
 F024 7E                 LD      A,(HL)          ; Get second byte of name
 F025 B9                 CP      C               ; Compare with name given
 F026 23                 INC     HL              ; Move on
@@ -39,7 +39,7 @@ F030 23                 INC     HL
 F031 C218F0             JP      NZ,FNDARY       ; Not found - Keep looking
 F034 3AAC10             LD      A,(LCRFLG)      ; Found Locate or Create it?
 F037 B7                 OR      A
-F038 C2B6E3             JP      NZ,DDERR        ; Create - ?DD Error
+F038 C2B6E3             JP      NZ,<?php bas8K("DDERR"); ?>        ; Create - ?<?php bas8K("DD"); ?> Error
 F03B F1                 POP     AF              ; Locate - Get number of dim'ns
 F03C 44                 LD      B,H             ; BC Points to array dim'ns
 F03D 4D                 LD      C,L
@@ -47,6 +47,6 @@ F03E CA54F7             JP      Z,POPHRT        ; Jump if array load/save
 F041 96                 SUB     (HL)            ; Same number of dimensions?
 F042 CAA8F0             JP      Z,FINDEL        ; Yes - Find element
 <span id="F045">F045</span> 1E10       <?php lbl8K("BSERR"); ?>:  LD      E,<?php bas8K("BS"); ?>            ; ?BS Error
-F047 C3C1E3             JP      ERROR           ; Output error
+F047 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error
 </pre>
 <?php DoublePageEnd(); ?>

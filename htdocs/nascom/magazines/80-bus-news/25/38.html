@@ -24,12 +24,12 @@ EA8D B4                 DEFB    ZEQUAL          ; "=" token
 EA8E D5                 PUSH    DE              ; Save address of variable
 EA8F 3AAD10             LD      A,(TYPE)        ; Get data type
 EA92 F5                 PUSH    AF              ; Save type
-EA93 CD5AED             CALL    EVAL            ; Evaluate expression
+EA93 CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EA96 F1                 POP     AF              ; Restore type
 EA97 E3                 EX      (SP),HL         ; Save code - Get var addr
 EA98 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save address of variable
 EA9B 1F                 RRA                     ; Adjust type
-EA9C CD46ED             CALL    CHKTYP          ; Check types are the same
+EA9C CD46ED             CALL    <?php bas8K("CHKTYP"); ?>          ; Check types are the same
 EA9F CADAEA             JP      Z,LETNUM        ; Numeric - Move value
 <span id="EAA2">EAA2</span> E5         <?php lbl8K("LETSTR"); ?>: PUSH    HL              ; Save address of string var
 EAA3 2AE410             LD      HL,(FPREG)      ; Pointer to string entry
@@ -40,14 +40,14 @@ EAA9 5E                 LD      E,(HL)          ; LSB of string address
 EAAA 23                 INC     HL
 EAAB 56                 LD      D,(HL)          ; MSB of string address
 EAAC 2A5E10             LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
-EAAF CD8AE6             CALL    CPDEHL          ; Is string before program?
-EAB2 D2C9EA             JP      NC,CRESTR       ; Yes - Create string entry
+EAAF CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string before program?
+EAB2 D2C9EA             JP      NC,<?php bas8K("CRESTR"); ?>       ; Yes - Create string entry
 EAB5 2A5A10             LD      HL,(STRSPC)     ; Point to string space
-EAB8 CD8AE6             CALL    CPDEHL          ; Is string literal in program?
+EAB8 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string literal in program?
 EABB D1                 POP     DE              ; Restore address of string
 EABC D2D1EA             JP      NC,MVSTPT       ; Yes - Set up pointer
 EABF 21BF10             LD      HL,TMPSTR       ; Temporary string pool
-EAC2 CD8AE6             CALL    CPDEHL          ; Is string in temporary pool?
+EAC2 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string in temporary pool?
 EAC5 D2D1EA             JP      NC,MVSTPT       ; No - Set up pointer
 EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"
 <span id="EAC9">EAC9</span> D1         <?php lbl8K("CRESTR"); ?>: POP     DE              ; Restore address of string
@@ -56,7 +56,7 @@ EACD EB                 EX      DE,HL           ; Address of string entry
 EACE CDAAF1             CALL    SAVSTR          ; Save string in string area
 <span id="EAD1">EAD1</span> CD71F3     <?php lbl8K("MVSTPT"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
 EAD4 E1                 POP     HL              ; Get string pointer
-EAD5 CD6EF8             CALL    DETHL4          ; Move string pointer to var
+EAD5 CD6EF8             CALL    <?php bas8K("DETHL4"); ?>          ; Move string pointer to var
 EAD8 E1                 POP     HL              ; Restore code string address
 EAD9 C9                 RET
 </pre>
@@ -87,7 +87,7 @@ EAF9 FE2C               CP      ","             ; Another line number?
 EAFB C0                 RET     NZ              ; No - Drop through
 EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
 
-<span id="EAFF">EAFF</span> CD5AED     <?php lbl8K("IF"); ?>:     CALL    EVAL            ; Evaluate expression
+<span id="EAFF">EAFF</span> CD5AED     <?php lbl8K("IF"); ?>:     CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EB02 7E                 LD      A,(HL)          ; Get token
 EB03 FE88               CP      ZGOTO           ; "GOTO" token?
 EB05 CA0DEB             JP      Z,IFGO          ; Yes - Get line

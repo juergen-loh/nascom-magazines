@@ -16,7 +16,7 @@ E4A5 7E                 LD      A,(HL)          ; Get LSB of line number
 E4A6 23                 INC     HL
 E4A7 66                 LD      H,(HL)          ; Get MSB of line number
 E4A8 6F                 LD      L,A
-E4A9 CD8AE6             CALL    CPDEHL          ; Compare with line in DE
+E4A9 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare with line in DE
 E4AC 60                 LD      H,B             ; HL = Start of this line
 E4AD 69                 LD      L,C
 E4AE 7E                 LD      A,(HL)          ; Get LSB of next line address
@@ -62,7 +62,7 @@ E4E7 22B110             LD      (TMSTPT),HL     ; Reset temporary string ptr
 E4EA AF                 XOR     A               ; A = 00
 E4EB 6F                 LD      L,A             ; HL = 0000
 E4EC 67                 LD      H,A
-E4ED 22D410             LD      (CONTAD),HL     ; No CONTinue
+E4ED 22D410             LD      (<?php bas8K("CONTAD"); ?>),HL     ; No CONTinue
 E4F0 32CB10             LD      (FORFLG),A      ; Clear FOR flag
 E4F3 22DE10             LD      (FNRGNM),HL     ; Clear FN argument
 E4F6 E5                 PUSH    HL              ; HL = 0000

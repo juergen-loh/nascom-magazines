@@ -23,7 +23,7 @@ FE61 C9                 RET
 
 <span id="FE65">FE65</span> 3E00       <?php lbl8K("RETCTC"); ?>: LD      A,0             ; Clear Break flag
 FE67 324D10             LD      (<?php bas8K("BRKFLG"); ?>),A
-FE6A 3E03               LD      A,CTRLC         ; Return ^C
+FE6A 3E03               LD      A,<?php bas8K("CTRLC"); ?>         ; Return ^C
 FE6C C9                 RET
 
 <span id="FE6D">FE6D</span> 3A0100     <?php lbl8K("MONTST"); ?>: LD      A,(MONSTT+1)    ; "T" monitor or NAS-SYS?
@@ -79,7 +79,7 @@ FECE F1                 POP     AF              ; "Z" set if cold&nbsp;, Else cl
 FECF B7                 OR      A               ; "Cold" or "Cool" start?
 FED0 C219E0             JP      NZ,INIT         ; "Cool" don't init NAS-SYS
 FED3 060F               LD      B,15            ; Delay for keyboard clear
-FED5 CDCDFC             CALL    DELAYB          ; Allow time for key release
+FED5 CDCDFC             CALL    <?php bas8K("DELAYB"); ?>          ; Allow time for key release
 FED8 CD0D00             CALL    STMON           ; Initialise NAS-SYS
 FEDB C319E0             JP      INIT            ; Initialise BASIC
 
@@ -105,6 +105,6 @@ FEF8 3E00               LD      A,0             ; Wasteful test on E
 FEFA B3                 OR      E
 FEFB CA02FF             JP      Z,LINTBF        ; Start of line - Copy it
 FEFE 2B                 DEC     HL              ; Back 1 character
-FEFF C3F1FE             JP      ENDLIN          ; Keep looking for end
+FEFF C3F1FE             JP      <?php bas8K("ENDLIN"); ?>          ; Keep looking for end
 </pre>
 <?php DoublePageEnd(); ?>

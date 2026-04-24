@@ -7,7 +7,7 @@ EC3C 2C                 DEFB    ","
 <span id="EC3D">EC3D</span> CD2DEF     <?php lbl8K("GTVLUS"); ?>: CALL    GETVAR          ; Get variable name
 EC40 E3                 EX      (SP),HL         ; Save code str" , Get pointer
 EC41 D5                 PUSH    DE              ; Save variable address
-EC42 7E                 LD      A,(HL)          ; Get next "INPUT"/"DATA" byte
+EC42 7E                 LD      A,(HL)          ; Get next "INPUT"/"<?php bas8K("DATA"); ?>" byte
 EC43 FE2C               CP      ","             ; Comma?
 EC45 CA65EC             JP      Z,<a href="../../../26/33/text/#ANTVLU">ANTVLU</a>        ; Yes - Get another value
 EC48 3ACD10             LD      A,(READFG)      ; Is it READ?
@@ -38,10 +38,10 @@ EC76 3ACD10             LD      A,(READFG)      ; "READ" or "INPUT" ?
 EC79 B7                 OR      A
 EC7A 57                 LD      D,A             ; Save 00 if "INPUT"
 EC7B CA80EC             JP      Z,ITMSEP        ; "INPUT" - End with 00
-EC7E 163A               LD      D,":"           ; "DATA" - End with 00 or ":"
+EC7E 163A               LD      D,":"           ; "<?php bas8K("DATA"); ?>" - End with 00 or ":"
 <span id="EC80">EC80</span> 062C       <?php lbl8K("ITMSEP"); ?>: LD      B,","           ; Item separator
-EC82 2B                 DEC     HL              ; Back space for DTSTR
-<span id="EC83">EC83</span> CDD2F1     <?php lbl8K("STRENT"); ?>: CALL    DTSTR           ; Get string terminated by D
+EC82 2B                 DEC     HL              ; Back space for <?php bas8K("DTSTR","","","\n"); ?>
+<span id="EC83">EC83</span> CDD2F1     <?php lbl8K("STRENT"); ?>: CALL    <?php bas8K("DTSTR"); ?>           ; Get string terminated by D
 EC86 EB                 EX      DE,HL           ; String address to DE
 EC87 219AEC             LD      HL,LTSTND       ; Where to go after LETSTR
 EC8A E3                 EX      (SP),HL         ; Save HL&nbsp;, get input pointer
@@ -78,26 +78,26 @@ ECBC C410F2             CALL    NZ,PRS          ; Output string if extra given
 ECBF E1                 POP     HL              ; Restore code string address
 ECC0 C9                 RET
 
-<span id="ECC1">ECC1</span> 3F457874   <?php lbl8K("EXTIG"); ?>:  DEFB    "?Extra ignored",CR,LF,0
+<span id="ECC1">ECC1</span> 3F457874   <?php lbl8K("EXTIG"); ?>:  DEFB    "?Extra ignored",<?php bas8K("CR"); ?>,LF,0
 
-<span id="ECD2">ECD2</span> CD70EA     <?php lbl8K("FDTLP"); ?>:  CALL    DATA            ; Get next statement
+<span id="ECD2">ECD2</span> CD70EA     <?php lbl8K("FDTLP"); ?>:  CALL    <?php bas8K("DATA"); ?>            ; Get next statement
 ECD5 B7                 OR      A               ; End of line?
-ECD6 C2EBEC             JP      NZ,FANDT        ; No - See if DATA statement
+ECD6 C2EBEC             JP      NZ,FANDT        ; No - See if <?php bas8K("DATA"); ?> statement
 ECD9 23                 INC     HL
 ECDA 7E                 LD      A,(HL)          ; End of program?
 ECDB 23                 INC     HL
 ECDC B6                 OR      (HL)            ; 00 00 Ends program
 ECDD 1E06               LD      E,OD            ; ?OD Error
-ECDF CAC1E3             JP      Z,ERROR         ; Yes - Out of DATA
+ECDF CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - Out of DATA
 ECE2 23                 INC     HL
 ECE3 5E                 LD      E,(HL)          ; LSB of line number
 ECE4 23                 INC     HL
 ECE5 56                 LD      D,(HL)          ; MSB of line number
 ECE6 EB                 EX      DE,HL
-ECE7 22C910             LD      (DATLIN),HL     ; Set line of current DATA item
+ECE7 22C910             LD      (<?php bas8K("DATLIN"); ?>),HL     ; Set line of current DATA item
 ECEA EB                 EX      DE,HL
 <span id="ECEB">ECEB</span> CD36E8     <?php lbl8K("FANDT"); ?>:  CALL    GETCHR          ; Get next character
-ECEE FE83               CP      ZDATA           ; "DATA" token
+ECEE FE83               CP      ZDATA           ; "<?php bas8K("DATA"); ?>" token
 ECF0 C2D2EC             JP      NZ,FDTLP        ; No "DATA" - Keep looking
 ECF3 C365EC             JP      <?php bas8K("ANTVLU"); ?>          ; Found - Convert input
 </pre>

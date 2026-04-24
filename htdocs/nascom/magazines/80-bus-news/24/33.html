@@ -3,7 +3,7 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    20</span>
 
 <span id="E509">E509</span> AF         <?php lbl8K("CRUNCH"); ?>: XOR     A               ; Tokenise line @ HL to <?php bas8K("BUFFER","","","\n"); ?>
-E50A 32AE10             LD      (DATFLG),A      ; Reset literal flag
+E50A 32AE10             LD      (<?php bas8K("DATFLG"); ?>),A      ; Reset literal flag
 E50D 0E05               LD      C,2+3           ; 2 byte number and 3 nulls
 E50F 116110             LD      DE,<?php bas8K("BUFFER"); ?>       ; Start of input buffer
 <span id="E512">E512</span> 7E         <?php lbl8K("CRNCLP"); ?>: LD      A,(HL)          ; Get byte
@@ -11,10 +11,10 @@ E513 FE20               CP      " "             ; Is it a space?
 E515 CA91E5             JP      Z,MOVDIR        ; Yes - Copy direct
 E518 47                 LD      B,A             ; Save character
 E519 FE22               CP      '"'             ; Is it a quote?
-E51B CAB1E5             JP      Z,CPYLIT        ; Yes - Copy literal string
+E51B CAB1E5             JP      Z,<?php bas8K("CPYLIT"); ?>        ; Yes - Copy literal string
 E51E B7                 OR      A               ; Is it end of buffer?
-E51F CAB8E5             JP      Z,ENDBUF        ; Yes - End buffer
-E522 3AAE10             LD      A,(DATFLG)      ; Get data type
+E51F CAB8E5             JP      Z,<?php bas8K("ENDBUF"); ?>        ; Yes - End buffer
+E522 3AAE10             LD      A,(<?php bas8K("DATFLG"); ?>)      ; Get data type
 E525 B7                 OR      A               ; Literal?
 E526 7E                 LD      A,(HL)          ; Get byte to copy
 E527 C291E5             JP      NZ,MOVDIR       ; Literal - Copy direct
@@ -91,15 +91,15 @@ E593 13                 INC     DE              ; Move up buffer
 E594 0C                 INC     C               ; Increment length of buffer
 E595 D63A               SUB     ":"             ; End of statement?
 E597 CA9FE5             JP      Z,SETLIT        ; Jump if multi-statement line
-E59A FE49               CP      ZDATA-3AH       ; Is it DATA statement&nbsp;?
+E59A FE49               CP      ZDATA-3AH       ; Is it <?php bas8K("DATA"); ?> statement&nbsp;?
 E59C C2A2E5             JP      NZ,TSTREM       ; No - see if REM
-<span id="E59F">E59F</span> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (DATFLG),A      ; Set literal flag
+<span id="E59F">E59F</span> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (<?php bas8K("DATFLG"); ?>),A      ; Set literal flag
 <span id="E5A2">E5A2</span> D654       <?php lbl8K("TSTREM"); ?>: SUB     ZREM-3AH        ; Is it REM?
-E5A4 C212E5             JP      NZ,CRNCLP       ; No - Leave flag
+E5A4 C212E5             JP      NZ,<?php bas8K("CRNCLP"); ?>       ; No - Leave flag
 E5A7 47                 LD      B,A             ; Copy rest of buffer
 <span id="E5A8">E5A8</span> 7E         <?php lbl8K("NXTCHR"); ?>: LD      A,(HL)          ; Get byte
 E5A9 B7                 OR      A               ; End of line&nbsp;?
-E5AA CAB8E5             JP      Z,ENDBUF        ; Yes - Terminate buffer
+E5AA CAB8E5             JP      Z,<?php bas8K("ENDBUF"); ?>        ; Yes - Terminate buffer
 E5AD B8                 CP      B               ; End of statement&nbsp;?
 E5AE CA91E5             JP      Z,MOVDIR        ; Yes - Get next one
 <span id="E5B1">E5B1</span> 23         <?php lbl8K("CPYLIT"); ?>: INC     HL              ; Move up source string

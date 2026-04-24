@@ -8,7 +8,7 @@ FD9D F1                 POP     AF
 FD9E F5                 PUSH    AF
 FD9F F1                 POP     AF
 FDA0 3D                 DEC     A               ; Count delays
-FDA1 C29CFD             JP      NZ,DELAY1       ; More delay
+FDA1 C29CFD             JP      NZ,<?php bas8K("DELAY1"); ?>       ; More delay
 FDA4 C9                 RET
 
 <span id="FDA5">FDA5</span> CD84F4     <?php lbl8K("WIDTH"); ?>:  CALL    GETINT          ; Get integer 0-255
@@ -17,12 +17,12 @@ FDA9 324210             LD      (LWIDTH),A      ; Set width
 FDAC C9                 RET
 
 <span id="FDAD">FDAD</span> CD41ED     <?php lbl8K("LINES"); ?>:  CALL    GETNUM          ; Get a number
-FDB0 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+FDB0 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDB3 ED534610           LD      (LINESC),DE     ; Set lines counter
 FDB7 ED534810           LD      (LINESN),DE     ; Set lines number
 FDBB C9                 RET
 
-<span id="FDBC">FDBC</span> CD8BE9     <?php lbl8K("DEEK"); ?>:   CALL    DEINT           ; Get integer -32768 to 32767
+<span id="FDBC">FDBC</span> CD8BE9     <?php lbl8K("DEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDBF D5                 PUSH    DE              ; Save number
 FDC0 E1                 POP     HL              ; Number to HL
 FDC1 46                 LD      B,(HL)          ; Get LSB of contents
@@ -31,12 +31,12 @@ FDC3 7E                 LD      A,(HL)          ; Get MSB of contents
 FDC4 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
 <span id="FDC7">FDC7</span> CD41ED     <?php lbl8K("DOKE"); ?>:   CALL    GETNUM          ; Get a number
-FDCA CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+FDCA CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDCD D5                 PUSH    DE              ; Save address
 FDCE CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FDD1 2C                 DEFB    ","
 FDD2 CD41ED             CALL    GETNUM          ; Get a number
-FDD5 CD8BE9             CALL    DEINT           ; Get integer -32768 to 32767
+FDD5 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDD8 E3                 EX      (SP),HL         ; Save value,get address
 FDD9 73                 LD      (HL),E          ; Save LSB of value
 FDDA 23                 INC     HL
@@ -46,7 +46,7 @@ FDDD C9                 RET
 
 <span id="FDDE">FDDE</span> F3         <?php lbl8K("JJUMP1"); ?>: DI                      ; Disable interrupts
 FDDF DD21FFFF           LD      IX,-1           ; Flag cold start
-FDE3 C312E0             JP      CSTART          ; Go and initialise
+FDE3 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Go and initialise
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -65,7 +65,7 @@ FDF7 E5                 PUSH    HL              ; Save screen address
 FDF8 CD6DFE             CALL    MONTST          ; See if NAS-SYS
 FDFB CA04FE             JP      Z,TMNCUR        ; "T" monitor - "T" cursor
 FDFE E1                 POP     HL              ; Restore screen address
-FDFF 22290C             LD      (CURSOR),HL     ; Set new cursor position
+FDFF 22290C             LD      (<?php bas8K("CURSOR"); ?>),HL     ; Set new cursor position
 FE02 E1                 POP     HL              ; Rstore code string address
 FE03 C9                 RET
 

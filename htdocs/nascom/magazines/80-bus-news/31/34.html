@@ -44,7 +44,7 @@ F6DD CDCDF5             CALL    FPADD           ; Add SQR(1/2) to value
 F6E0 C1                 POP     BC              ; Restore SQR(1/2)
 F6E1 D1                 POP     DE
 F6E2 04                 INC     B               ; Make it SQR(2)
-F6E3 CD69F7             CALL    DVBCDE          ; Divide by SQR(2)
+F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by SQR(2)
 F6E6 21B6F6             LD      HL,UNITY        ; Point to 1.
 F6E9 CDC4F5             CALL    SUBPHL          ; Subtract FPREG from 1
 F6EC 21BAF6             LD      HL,LOGTAB       ; Coefficient table

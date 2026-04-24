@@ -3,24 +3,24 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    25</span>
 
 <span id="E69B">E69B</span> F5         <?php lbl8K("OUTC"); ?>:   PUSH    AF              ; Save character
-E69C 3A4510             LD      A,(CTLOFG)      ; Get control "O" flag
+E69C 3A4510             LD      A,(<?php bas8K("CTLOFG"); ?>)      ; Get control "O" flag
 E69F B7                 OR      A               ; Is it set?
 E6A0 C245F2             JP      NZ,POPAF        ; Yes - don't output
 E6A3 F1                 POP     AF              ; Restore character
 E6A4 C5                 PUSH    BC              ; Save buffer length
 E6A5 F5                 PUSH    AF              ; Save character
 E6A6 FE20               CP      " "             ; Is it a control code?
-E6A8 DABFE6             JP      C,DINPOS        ; Yes - Don't INC POS(X)
+E6A8 DABFE6             JP      C,<?php bas8K("DINPOS"); ?>        ; Yes - Don't INC POS(X)
 E6AB 3A4210             LD      A,(LWIDTH)      ; Get line width
 E6AE 47                 LD      B,A             ; To B
-E6AF 3AAB10             LD      A,(CURPOS)      ; Get cursor position
+E6AF 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
 E6B2 04                 INC     B               ; Width 255?
 E6B3 CABBE6             JP      Z,INCLEN        ; Yes - No width limit
 E6B6 05                 DEC     B               ; Restore width
 E6B7 B8                 CP      B               ; At end of line?
 E6B8 CC81EB             CALL    Z,PRNTCR        ; Yes - output CRLF
 <span id="E6BB">E6BB</span> 3C         <?php lbl8K("INCLEN"); ?>: INC     A               ; Move on one character
-E6BC 32AB10             LD      (CURPOS),A      ; Save new position
+E6BC 32AB10             LD      (<?php bas8K("CURPOS"); ?>),A      ; Save new position
 <span id="E6BF">E6BF</span> F1         <?php lbl8K("DINPOS"); ?>: POP     AF              ; Restore character
 E6C0 C1                 POP     BC              ; Restore buffer length
 E6C1 F5                 PUSH    AF              ; &lt;&lt; This sequence &gt;&gt;
@@ -28,18 +28,18 @@ E6C2 F1                 POP     AF              ; &lt;&lt; is not needed &gt;&gt
 E6C3 F5                 PUSH    AF              ; Save character
 E6C4 C5                 PUSH    BC              ; Save buffer length
 E6C5 4F                 LD      C,A             ; Character to C
-E6C6 CDD9FC             CALL    CONMON          ; Send it
+E6C6 CDD9FC             CALL    <?php bas8K("CONMON"); ?>          ; Send it
 E6C9 C1                 POP     BC              ; Restore buffer length
 E6CA F1                 POP     AF              ; Restore character
 E6CB C9                 RET
 
 <span id="E6CC">E6CC</span> CD05FD     <?php lbl8K("CLOTST"); ?>: CALL    GETINP          ; Get input character
 E6CF E67F               AND     01111111B       ; Strip bit 7
-E6D1 FE0F               CP      CTRLO           ; Is it control "O"?
+E6D1 FE0F               CP      <?php bas8K("CTRLO"); ?>           ; Is it control "O"?
 E6D3 C0                 RET     NZ              ; No don't flip flag
-E6D4 3A4510             LD      A,(CTLOFG)      ; Get flag
+E6D4 3A4510             LD      A,(<?php bas8K("CTLOFG"); ?>)      ; Get flag
 E6D7 2F                 CPL                     ; Flip it
-E6D8 324510             LD      (CTLOFG),A      ; Put it back
+E6D8 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Put it back
 E6DB AF                 XOR     A               ; Null character
 E6DC C9                 RET
 </pre>
@@ -61,7 +61,7 @@ E6ED 23                 INC     HL
 E6EE 78                 LD      A,B             ; BC = 0 (End of program)?
 E6EF B1                 OR      C
 E6F0 CAF8E3             JP      Z,PRNTOK        ; Yes - Go to command mode
-E6F3 CD46E7             CALL    COUNT           ; Count lines
+E6F3 CD46E7             CALL    <?php bas8K("COUNT"); ?>           ; Count lines
 E6F6 CD61E8             CALL    TSTBRK          ; Test for break key
 E6F9 C5                 PUSH    BC              ; Save address of next line
 E6FA CD81EB             CALL    PRNTCR          ; Output CRLF

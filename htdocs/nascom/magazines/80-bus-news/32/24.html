@@ -23,18 +23,18 @@ F7B4 29                 ADD     HL,HL           ; Double NMSB,LSB of divisor
 F7B5 78                 LD      A,B             ; Get MSB of divisor
 F7B6 17                 RLA                     ; Double it
 F7B7 47                 LD      B,A             ; Put it back
-F7B8 3A1510             LD      A,(DIV4)        ; Get VLSB of quotient
+F7B8 3A1510             LD      A,(<?php bas8K("DIV4"); ?>)        ; Get VLSB of quotient
 F7BB 17                 RLA                     ; Double it
-F7BC 321510             LD      (DIV4),A        ; Put it back
+F7BC 321510             LD      (<?php bas8K("DIV4"); ?>),A        ; Put it back
 F7BF 79                 LD      A,C             ; Get MSB of quotient
 F7C0 B2                 OR      D               ; Merge NMSB
 F7C1 B3                 OR      E               ; Merge LSB
-F7C2 C28EF7             JP      NZ,DIVLP        ; Not done - Keep dividing
+F7C2 C28EF7             JP      NZ,<?php bas8K("DIVLP"); ?>        ; Not done - Keep dividing
 F7C5 E5                 PUSH    HL              ; Save divisor
 F7C6 21E710             LD      HL,FPEXP        ; Point to exponent
 F7C9 35                 DEC     (HL)            ; Divide by 2
 F7CA E1                 POP     HL              ; Restore divisor
-F7CB C28EF7             JP      NZ,DIVLP        ; Ok - Keep going
+F7CB C28EF7             JP      NZ,<?php bas8K("DIVLP"); ?>        ; Ok - Keep going
 F7CE C3BCE3             JP      OVERR           ; Overflow error
 
 <span id="F7D1">F7D1</span> 78         <?php lbl8K("ADDEXP"); ?>: LD      A,B             ; Get exponent of dividend
@@ -104,6 +104,6 @@ F82F 0600               LD      B,0             ; CDE = integer to normalise
 F831 23                 INC     HL              ; Point to sign of result
 F832 3680               LD      (HL),80H        ; Set sign of result
 F834 17                 RLA                     ; Carry = sign of integer
-F835 C31BF6             JP      CONPOS          ; Set sign of result
+F835 C31BF6             JP      <?php bas8K("CONPOS"); ?>          ; Set sign of result
 </pre>
 <?php DoublePageEnd(); ?>

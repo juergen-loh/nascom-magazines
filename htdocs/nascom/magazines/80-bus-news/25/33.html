@@ -30,10 +30,10 @@ E75D 3A4C10             LD      A,(NMIFLG)      ; Break by NMI?
 E760 B7                 OR      A
 E761 C2E5FE             JP      NZ,<?php bas8K("ARETN"); ?>        ; Yes - "RETN"
 E764 CD05FD             CALL    GETINP          ; Get input character
-E767 FE03               CP      CTRLC           ; Is it control "C"?
+E767 FE03               CP      <?php bas8K("CTRLC"); ?>           ; Is it control "C"?
 E769 CA70E7             JP      Z,RSLNBK        ; Yes - Reset LINES an break
 E76C E1                 POP     HL              ; Restore code string address
-E76D C346E7             JP      COUNT           ; Keep on counting
+E76D C346E7             JP      <?php bas8K("COUNT"); ?>           ; Keep on counting
 
 <span id="E770">E770</span> 2A4810     <?php lbl8K("RSLNBK"); ?>: LD      HL,(LINESN)     ; Get LINES number
 E773 224610             LD      (LINESC),HL     ; Reset LINES counter
@@ -48,7 +48,7 @@ E77B 32CB10             LD      (FORFLG),A      ; Save "FOR" flag
 E77E CD87EA             CALL    LET             ; Set up initial index
 E781 C1                 POP     BC              ; Drop RETurn address
 E782 E5                 PUSH    HL              ; Save code string address
-E783 CD70EA             CALL    DATA            ; Get next statement address
+E783 CD70EA             CALL    <?php bas8K("DATA"); ?>            ; Get next statement address
 E786 22C710             LD      (LOOPST),HL     ; Save it for start of lo6p
 E789 210200             LD      HL,2            ; Offset for "FOR" block
 E78C 39                 ADD     HL,SP           ; Point to it
@@ -65,7 +65,7 @@ E79A 23                 INC     HL
 E79B 23                 INC     HL
 E79C E5                 PUSH    HL              ; Save block address
 E79D 2AC710             LD      HL,(LOOPST)     ; Get address of loop statement
-E7A0 CD8AE6             CALL    CPDEHL          ; Compare the FOR loops
+E7A0 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare the FOR loops
 E7A3 E1                 POP     HL              ; Restore block address
 E7A4 C28DE7             JP      NZ,FORSLP       ; Different FORs - Find another
 E7A7 D1                 POP     DE              ; Restore code string address

@@ -47,7 +47,7 @@ F871 77                 LD      (HL),A          ; Save destination
 F872 13                 INC     DE              ; Next source
 F873 23                 INC     HL              ; Next destination
 F874 05                 DEC     B               ; Count bytes
-F875 C270F8             JP      NZ,DETHLB       ; Loop if more
+F875 C270F8             JP      NZ,<?php bas8K("DETHLB"); ?>       ; Loop if more
 F878 C9                 RET
 </pre>
 <?php DoublePageChange(); ?>
@@ -86,7 +86,7 @@ F89C 21E610             LD      HL,FPREG+2      ; MSB of FPREG
 F89F AE                 XOR     (HL)            ; Combine signs
 F8A0 79                 LD      A,C             ; Get MSB of number
 F8A1 F8                 RET     M               ; Exit if signs different
-F8A2 CDA8F8             CALL    CMPFP           ; Compare FP numbers
+F8A2 CDA8F8             CALL    <?php bas8K("CMPFP"); ?>           ; Compare FP numbers
 F8A5 1F                 RRA                     ; Get carry to sign
 F8A6 A9                 XOR     C               ; Combine with MSB of number
 F8A7 C9                 RET

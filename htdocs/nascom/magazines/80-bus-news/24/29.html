@@ -49,7 +49,7 @@ E329 0000               DEFW    0               ; Array load/save check sum
 E32B 00                 DEFB    0               ; Break not by NMI
 E32C 00                 DEFB    0               ; Break flag
 
-E32D C307E6             JP      TTYLIN          ; Input reflection (set to TTY)
+E32D C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Input reflection (set to TTY)
 E330 C379FF             JP      POINTB          ; POINT reflection unused
 E333 C340FF             JP      SETB            ; SET reflection
 E336 C355FF             JP      RESETB          ; RESET reflection
@@ -67,7 +67,7 @@ E33D FA10               DEFW    PROGST+1        ; Start of program text
 E345 00
 <span id="E346">E346</span> 20696E20   <?php lbl8K("INMSG"); ?>:  DEFB    " in ",0
 <span id="E34A">E34A</span>            <?php lbl8K("ZERBYT"); ?>  EQU     $-1             ; A zero byte
-<span id="E34B">E34B</span> 4F6B0D00   <?php lbl8K("OKMSG"); ?>:  DEFB    "Ok",CR,0,0
+<span id="E34B">E34B</span> 4F6B0D00   <?php lbl8K("OKMSG"); ?>:  DEFB    "Ok",<?php bas8K("CR"); ?>,0,0
 <span id="E350">E350</span> 42726561   <?php lbl8K("BRKMSG"); ?>: DEFB    "Break",0
 
 <span id="E356">E356</span> 210400     <?php lbl8K("BAKSTK"); ?>: LD      HL,4            ; Look for "FOR" block with
@@ -88,18 +88,18 @@ E367 B3                 OR      E               ; DE = 0 if no index specified
 E368 EB                 EX      DE,HL           ; Specified index into HL
 E369 CA70E3             JP      Z,INDFND        ; Skip if no index given
 E36C EB                 EX      DE,HL           ; Index back into DE
-E36D CD8AE6             CALL    CPDEHL          ; Compare index with one given
+E36D CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare index with one given
 <span id="E370">E370</span> 010D00     <?php lbl8K("INDFND"); ?>: LD      BC,16-3         ; Offset to next block
 E373 E1                 POP     HL              ; Restore pointer to sign
 E374 C8                 RET     Z               ; Return if block found
 E375 09                 ADD     HL,BC           ; Point to next block
 E376 C35AE3             JP      LOKFOR          ; Keep on looking
 
-<span id="E379">E379</span> CD93E3     <?php lbl8K("MOVUP"); ?>:  CALL    ENFMEM          ; See if enough memory
+<span id="E379">E379</span> CD93E3     <?php lbl8K("MOVUP"); ?>:  CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 <span id="E37C">E37C</span> C5         <?php lbl8K("MOVSTR"); ?>: PUSH    BC              ; Save end of source
 E37D E3                 EX      (SP),HL         ; Swap source and dest" end
 E37E C1                 POP     BC              ; Get end of destination
-<span id="E37F">E37F</span> CD8AE6     <?php lbl8K("MOVLP"); ?>:  CALL    CPDEHL          ; See if list moved
+<span id="E37F">E37F</span> CD8AE6     <?php lbl8K("MOVLP"); ?>:  CALL    <?php bas8K("CPDEHL"); ?>          ; See if list moved
 E382 7E                 LD      A,(HL)          ; Get byte
 E383 02                 LD      (BC),A          ; Move it
 E384 C8                 RET     Z               ; Exit if all done

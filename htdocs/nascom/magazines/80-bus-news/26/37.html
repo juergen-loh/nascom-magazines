@@ -9,10 +9,10 @@ EEBE 1F                 RRA
 EEBF C1                 POP     BC              ; Get last expression to BCDE
 EEC0 D1                 POP     DE
 EEC1 F5                 PUSH    AF              ; Save status
-EEC2 CD46ED             CALL    CHKTYP          ; Check that types match
-EEC5 21FEEE             LD      HL,CMPRES       ; Result to comparison
+EEC2 CD46ED             CALL    <?php bas8K("CHKTYP"); ?>          ; Check that types match
+EEC5 21FEEE             LD      HL,<?php bas8K("CMPRES"); ?>       ; Result to comparison
 EEC8 E5                 PUSH    HL              ; Save for RETurn
-EEC9 CA8EF8             JP      Z,CMPNUM        ; Compare values if numeric
+EEC9 CA8EF8             JP      Z,<?php bas8K("CMPNUM"); ?>        ; Compare values if numeric
 EECC AF                 XOR     A               ; Compare two strings
 EECD 32AD10             LD      (TYPE),A        ; Set type to numeric
 EED0 D5                 PUSH    DE              ; Save string name
@@ -47,7 +47,7 @@ EEF3 0A                 LD      A,(BC)          ; Byte in string 2
 EEF4 BE                 CP      (HL)            ; Compare to byte in string 1
 EEF5 23                 INC     HL              ; Move up string 1
 EEF6 03                 INC     BC              ; Move up string 2
-EEF7 CAE6EE             JP      Z,CMPSTR        ; Same - Try next bytes
+EEF7 CAE6EE             JP      Z,<?php bas8K("CMPSTR"); ?>        ; Same - Try next bytes
 EEFA 3F                 CCF                     ; Flag difference ("&gt;" or "&lt;")
 EEFB C31EF8             JP      FLGDIF          ; "&lt;" gives -1 , "&gt;" gives +1
 
@@ -64,9 +64,9 @@ EF05 C325F8             JP      FLGREL          ; Set current value & continue
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    51</span>
 
 <span id="EF08">EF08</span> 165A       <?php lbl8K("EVNOT"); ?>:  LD      D,5AH           ; Precedence value for "NOT"
-EF0A CD5DED             CALL    EVAL1           ; Eval until precedence break
+EF0A CD5DED             CALL    <?php bas8K("EVAL1"); ?>           ; Eval until precedence break
 EF0D CD44ED             CALL    TSTNUM          ; Make sure it's a number
-EF10 CD8BE9             CALL    DEINT           ; Get integer -32768 - 32767
+EF10 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 - 32767
 EF13 7B                 LD      A,E             ; Get LSB
 EF14 2F                 CPL                     ; Invert LSB
 EF15 4F                 LD      C,A             ; Save "NOT" of LSB
@@ -74,14 +74,14 @@ EF16 7A                 LD      A,D             ; Get MSB
 EF17 2F                 CPL                     ; Invert MSB
 EF18 CDF1F0             CALL    <?php bas8K("ACPASS"); ?>          ; Save AC as current
 EF1B C1                 POP     BC              ; Clean up stack
-EF1C C369ED             JP      EVAL3           ; Continue evaluation
+EF1C C369ED             JP      <?php bas8K("EVAL3"); ?>           ; Continue evaluation
 
 <span id="EF1F">EF1F</span> 2B         <?php lbl8K("DIMRET"); ?>: DEC     HL              ; DEC 'cos GETCHR INCs
 EF20 CD36E8             CALL    GETCHR          ; Get next character
-EF23 C8                 RET     Z               ; End of DIM statement
+EF23 C8                 RET     Z               ; End of <?php bas8K("DIM"); ?> statement
 EF24 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 EF27 2C                 DEFB    ","
-<span id="EF28">EF28</span> 011FEF     <?php lbl8K("DIM"); ?>:    LD      BC,DIMRET       ; Return to "DIMRET"
+<span id="EF28">EF28</span> 011FEF     <?php lbl8K("DIM"); ?>:    LD      BC,<?php bas8K("DIMRET"); ?>       ; Return to "DIMRET"
 EF2B C5                 PUSH    BC              ; Save on stack
 EF2C F6                 DEFB    (OR n)          ; Flag "Create" variable
 <span id="EF2D">EF2D</span> AF         <?php lbl8K("GETVAR"); ?>: XOR     A               ; Find variable address,to DE
@@ -98,9 +98,9 @@ EF43 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a le
 EF46 DA56EF             JP      C,<?php bas8K("CHARTY"); ?>        ; Not a letter - Check type
 <span id="EF49">EF49</span> 4F         <?php lbl8K("SVNAM2"); ?>: LD      C,A             ; Save second byte of name
 <span id="EF4A">EF4A</span> CD36E8     <?php lbl8K("ENDNAM"); ?>: CALL    GETCHR          ; Get next character
-EF4D DA4AEF             JP      C,ENDNAM        ; Numeric - Get another
+EF4D DA4AEF             JP      C,<?php bas8K("ENDNAM"); ?>        ; Numeric - Get another
 EF50 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
-EF53 D24AEF             JP      NC,ENDNAM       ; Letter - Get another
+EF53 D24AEF             JP      NC,<?php bas8K("ENDNAM"); ?>       ; Letter - Get another
 <span id="EF56">EF56</span> D624       <?php lbl8K("CHARTY"); ?>: SUB     "$"             ; String variable?
 EF58 C265EF             JP      NZ,NOTSTR       ; No - Numeric variable
 EF5B 3C                 INC     A               ; A = 1 (string type)

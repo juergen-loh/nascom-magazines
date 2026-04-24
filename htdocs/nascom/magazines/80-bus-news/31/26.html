@@ -13,7 +13,7 @@ F197 C344ED             JP      TSTNUM          ; Make sure numeric function
 
 <span id="F19A">F19A</span> CD44ED     <?php lbl8K("STR"); ?>:    CALL    TSTNUM          ; Make sure it's a number
 F19D CDB8F9             CALL    NUMASC          ; Turn number into text
-F1A0 CDCEF1             CALL    CRTST           ; Create string entry for it
+F1A0 CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create string entry for it
 F1A3 CD53F3             CALL    GSTRCU          ; Current string to pool
 F1A6 01AEF3             LD      BC,TOPOOL       ; Save in string pool
 F1A9 C5                 PUSH    BC              ; Save address on stack
@@ -27,7 +27,7 @@ F1B1 E1                 POP     HL              ; Restore pointer to string
 F1B2 4E                 LD      C,(HL)          ; Get LSB of address
 F1B3 23                 INC     HL
 F1B4 46                 LD      B,(HL)          ; Get MSB of address
-F1B5 CDC2F1             CALL    CRTMST          ; Create string entry
+F1B5 CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create string entry
 F1B8 E5                 PUSH    HL              ; Save pointer to MSB of addr
 F1B9 6F                 LD      L,A             ; Length of string
 F1BA CD46F3             CALL    TOSTRA          ; Move to string area
@@ -59,9 +59,9 @@ F1D3 0EFF               LD      C,-1            ; Set counter to -1
 F1D6 7E                 LD      A,(HL)          ; Get byte
 F1D7 0C                 INC     C               ; Count bytes
 F1D8 B7                 OR      A               ; End of line?
-F1D9 CAE4F1             JP      Z,CRTSTE        ; Yes - Create string entry
+F1D9 CAE4F1             JP      Z,<?php bas8K("CRTSTE"); ?>        ; Yes - Create string entry
 F1DC BA                 CP      D               ; Terminator D found?
-F1DD CAE4F1             JP      Z,CRTSTE        ; Yes - Create string entry
+F1DD CAE4F1             JP      Z,<?php bas8K("CRTSTE"); ?>        ; Yes - Create string entry
 F1E0 B8                 CP      B               ; Terminator B found?
 F1E1 C2D5F1             JP      NZ,QTSTLP       ; No - Keep looking
 <span id="F1E4">F1E4</span> FE22       <?php lbl8K("CRTSTE"); ?>: CP      '"'             ; End with '"'?
@@ -70,23 +70,23 @@ F1E9 E3                 EX      (SP),HL         ; Starting quote
 F1EA 23                 INC     HL              ; First byte of string
 F1EB EB                 EX      DE,HL           ; To DE
 F1EC 79                 LD      A,C             ; Get length
-F1ED CDC2F1             CALL    CRTMST          ; Create string entry
+F1ED CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create string entry
 <span id="F1F0">F1F0</span> 11BF10     <?php lbl8K("TSTOPL"); ?>: LD      DE,TMPSTR       ; Temporary string
 F1F3 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
 F1F6 22E410             LD      (FPREG),HL      ; Save address of string ptr
 F1F9 3E01               LD      A,1
 F1FB 32AD10             LD      (TYPE),A        ; Set type to string
-F1FE CD6EF8             CALL    DETHL4          ; Move string to pool
-F201 CD8AE6             CALL    CPDEHL          ; Out of string pool?
+F1FE CD6EF8             CALL    <?php bas8K("DETHL4"); ?>          ; Move string to pool
+F201 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Out of string pool?
 F204 22B110             LD      (TMSTPT),HL     ; Save new pointer
 F207 E1                 POP     HL              ; Restore code string address
 F208 7E                 LD      A,(HL)          ; Get next code byte
 F209 C0                 RET     NZ              ; Return if pool OK
 F20A 1E1E               LD      E,ST            ; ?ST Error
-F20C C3C1E3             JP      ERROR           ; String pool overflow
+F20C C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; String pool overflow
 
 <span id="F20F">F20F</span> 23         <?php lbl8K("PRNUMS"); ?>: INC     HL              ; Skip leading space
-<span id="F210">F210</span> CDCEF1     <?php lbl8K("PRS"); ?>:    CALL    CRTST           ; Create string entry for it
+<span id="F210">F210</span> CDCEF1     <?php lbl8K("PRS"); ?>:    CALL    <?php bas8K("CRTST"); ?>           ; Create string entry for it
 <span id="F213">F213</span> CD53F3     <?php lbl8K("PRS1"); ?>:   CALL    GSTRCU          ; Current string to pool
 F216 CD62F8             CALL    LOADFP          ; Move string block to BCDE
 F219 1C                 INC     E               ; Length + 1
@@ -94,8 +94,8 @@ F219 1C                 INC     E               ; Length + 1
 F21B C8                 RET     Z               ; End of string
 F21C 0A                 LD      A,(BC)          ; Get byte to output
 F21D CD9BE6             CALL    OUTC            ; Output character in A
-F220 FE0D               CP      CR              ; Return?
-F222 CC86EB             CALL    Z,DONULL        ; Yes - Do nulls
+F220 FE0D               CP      <?php bas8K("CR"); ?>              ; Return?
+F222 CC86EB             CALL    Z,<?php bas8K("DONULL"); ?>        ; Yes - Do nulls
 F225 03                 INC     BC              ; Next byte in string
 F226 C31AF2             JP      PRSLP           ; More characters to output
 </pre>

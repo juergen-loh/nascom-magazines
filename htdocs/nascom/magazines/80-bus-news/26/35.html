@@ -6,10 +6,10 @@
 EDD2 32AD10             LD      (TYPE),A        ; Set numeric expected
 EDD5 CD36E8             CALL    GETCHR          ; Get next character
 EDD8 1E24               LD      E,MO            ; ?MO Error
-EDDA CAC1E3             JP      Z,ERROR         ; No operand - Error
+EDDA CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; No operand - Error
 EDDD DA1AF9             JP      C,<?php bas8K("ASCTFP"); ?>        ; Number - Get value
 EDE0 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
-EDE3 D222EE             JP      NC,CONVAR       ; Letter - Find variable
+EDE3 D222EE             JP      NC,<?php bas8K("CONVAR"); ?>       ; Letter - Find variable
 EDE6 FEAC               CP      ZPLUS           ; "+" Token&nbsp;?
 EDE8 CAD1ED             JP      Z,OPRND         ; Yes - Look for operand
 EDEB FE2E               CP      "."             ; "." ?
@@ -19,9 +19,9 @@ EDF2 CA11EE             JP      Z,MINUS         ; Yes - Do minus
 EDF5 FE22               CP      '"'             ; Literal string&nbsp;?
 EDF7 CACFF1             JP      Z,QTSTR         ; Get string terminated by '"'
 EDFA FEAA               CP      ZNOT            ; "NOT" Token&nbsp;?
-EDFC CA08EF             JP      Z,EVNOT         ; Yes - Eval NOT expression
+EDFC CA08EF             JP      Z,<?php bas8K("EVNOT"); ?>         ; Yes - Eval NOT expression
 EDFF FEA7               CP      ZFN             ; "FN" Token&nbsp;?
-EE01 CA33F1             JP      Z,DOFN          ; Yes - Do FN routine
+EE01 CA33F1             JP      Z,<?php bas8K("DOFN"); ?>          ; Yes - Do FN routine
 EE04 D6B6               SUB     ZSGN            ; Is it a function?
 EE06 D233EE             JP      NC,FNOFST       ; Yes - Evaluate function
 <span id="EE09">EE09</span> CD56ED     <?php lbl8K("EVLPAR"); ?>: CALL    OPNPAR          ; Evaluate expression in "()"
@@ -30,7 +30,7 @@ EE0F 29                 DEFB    ")"
 EE10 C9                 RET
 
 <span id="EE11">EE11</span> 167D       <?php lbl8K("MINUS"); ?>:  LD      D,7DH           ; "-" precedence
-EE13 CD5DED             CALL    EVAL1           ; Evaluate until prec' break
+EE13 CD5DED             CALL    <?php bas8K("EVAL1"); ?>           ; Evaluate until prec' break
 EE16 2AD010             LD      HL,(NXTOPR)     ; Get next operator address
 EE19 E5                 PUSH    HL              ; Save next operator address
 EE1A CD3CF8             CALL    INVSGN          ; Negate value
@@ -56,7 +56,7 @@ EE32 C9                 RET
 ED93 B7                 OR      A
 ED94 C2A8EE             JP      NZ,TSTRED       ; Yes - Test for reduction
 ED97 7E                 LD      A,(HL)          ; Get operator token
-ED98 22C510             LD      (CUROPR),HL     ; Save operator address
+ED98 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save operator address
 ED9B D6AC               SUB     ZPLUS           ; Operator or function?
 ED9D D8                 RET     C               ; Neither - Exit
 ED9E FE07               CP      ZOR+1-ZPLUS     ; Is it + - * / ^ AND OR&nbsp;?
@@ -66,7 +66,7 @@ EDA2 3AAD10             LD      A,(TYPE)        ; Get data type
 EDA5 3D                 DEC     A               ; FF = numeric&nbsp;, 00 = string
 EDA6 B3                 OR      E               ; Combine with coded operator
 EDA7 7B                 LD      A,E             ; Get coded operator
-EDA8 CA06F3             JP      Z,CONCAT        ; String concatenation
+EDA8 CA06F3             JP      Z,<?php bas8K("CONCAT"); ?>        ; String concatenation
 EDAB 07                 RLCA                    ; Times 2
 EDAC 83                 ADD     A,E             ; Times 3
 EDAD 5F                 LD      E,A             ; To DE (D is 0)
@@ -80,7 +80,7 @@ EDB6 23                 INC     HL              ; Point to routine address
 EDB7 CD44ED             CALL    TSTNUM          ; Make sure it's a number
 
 <span id="EDBA">EDBA</span> C5         <?php lbl8K("STKTHS"); ?>: PUSH    BC              ; Save last precedence & token
-EDBB 0169ED             LD      BC,EVAL3        ; Where to go on prec' break
+EDBB 0169ED             LD      BC,<?php bas8K("EVAL3"); ?>        ; Where to go on prec' break
 EDBE C5                 PUSH    BC              ; Save on stack for return
 EDBF 43                 LD      B,E             ; Save operator
 EDC0 4A                 LD      C,D             ; Save precedence
@@ -92,7 +92,7 @@ EDC7 23                 INC     HL
 EDC8 46                 LD      B,(HL)          ; Get MSB of routine address
 EDC9 23                 INC     HL
 EDCA C5                 PUSH    BC              ; Save routine address
-EDCB 2AC510             LD      HL,(CUROPR)     ; Address of current operator
-EDCE C35DED             JP      EVAL1           ; Loop until prec' break
+EDCB 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Address of current operator
+EDCE C35DED             JP      <?php bas8K("EVAL1"); ?>           ; Loop until prec' break
 </pre>
 <?php DoublePageEnd(); ?>

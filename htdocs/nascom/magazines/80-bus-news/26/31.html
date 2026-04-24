@@ -20,22 +20,22 @@ EB20 CD36E8             CALL    GETCHR          ; Get next character
 <span id="EB23">EB23</span> CA81EB     <?php lbl8K("PRINT"); ?>:  JP      Z,PRNTCR        ; CRLF if just PRINT
 <span id="EB26">EB26</span> C8         <?php lbl8K("PRNTLP"); ?>: RET     Z               ; End of list - Exit
 EB27 FEA5               CP      ZTAB            ; "TAB(" token?
-EB29 CAAFEB             JP      Z,DOTAB         ; Yes - Do TAB routine
+EB29 CAAFEB             JP      Z,<?php bas8K("DOTAB"); ?>         ; Yes - Do TAB routine
 EB2C FEA8               CP      ZSPC            ; "SPC(" token?
-EB2E CAAFEB             JP      Z,DOTAB         ; Yes - Do SPC routine
+EB2E CAAFEB             JP      Z,<?php bas8K("DOTAB"); ?>         ; Yes - Do SPC routine
 EB31 E5                 PUSH    HL              ; Save code string address
 EB32 FE2C               CP      ","             ; Comma?
-EB34 CA98EB             JP      Z,DOCOM         ; Yes - Move to next zone
+EB34 CA98EB             JP      Z,<?php bas8K("DOCOM"); ?>         ; Yes - Move to next zone
 EB37 FE3B               CP      ";"             ; Semi-colon?
 EB39 CAD2EB             JP      Z,NEXITM        ; Do semi-colon routine
 EB3C C1                 POP     BC              ; Code string address to BC
-EB3D CD5AED             CALL    EVAL            ; Evaluate expression
+EB3D CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EB40 E5                 PUSH    HL              ; Save code string address
 EB41 3AAD10             LD      A,(TYPE)        ; Get variable type
 EB44 B7                 OR      A               ; Is it a string variable?
 EB45 C26DEB             JP      NZ,PRNTST       ; Yes - Output string contents
 EB48 CDB8F9             CALL    NUMASC          ; Convert number to text
-EB4B CDCEF1             CALL    CRTST           ; Create temporary string
+EB4B CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create temporary string
 EB4E 3620               LD      (HL)," "        ; Followed by a space
 EB50 2AE410             LD      HL,(FPREG)      ; Get length of output
 EB53 34                 INC     (HL)            ; Plus 1 for the space
@@ -45,7 +45,7 @@ EB5A 47                 LD      B,A             ; To B
 EB5B 04                 INC     B               ; Width 255 (No limit)?
 EB5C CA69EB             JP      Z,PRNTNB        ; Yes - Output number string
 EB5F 04                 INC     B               ; Adjust it
-EB60 3AAB10             LD      A,(CURPOS)      ; Get cursor position
+EB60 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
 EB63 86                 ADD     A,(HL)          ; Add length of string
 EB64 3D                 DEC     A               ; Adjust it
 EB65 B8                 CP      B               ; Will output fit on this line?
@@ -56,7 +56,7 @@ EB6C AF                 XOR     A               ; Skip CALL by setting "Z" flag
 EB70 E1                 POP     HL              ; Restore code string address
 EB71 C31FEB             JP      MRPRNT          ; See if more to PRINT
 
-<span id="EB74">EB74</span> 3AAB10     <?php lbl8K("STTLIN"); ?>: LD      A,(CURPOS)      ; Make sure on new line
+<span id="EB74">EB74</span> 3AAB10     <?php lbl8K("STTLIN"); ?>: LD      A,(<?php bas8K("CURPOS"); ?>)      ; Make sure on new line
 EB77 B7                 OR      A               ; Already at start?
 EB78 C8                 RET     Z               ; Yes - Do nothing
 EB79 C381EB             JP      PRNTCR          ; Start a new line

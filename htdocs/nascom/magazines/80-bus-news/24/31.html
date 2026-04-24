@@ -3,13 +3,13 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    16</span>
 
 <span id="E3F8">E3F8</span> AF         <?php lbl8K("PRNTOK"); ?>: XOR     A               ; Output "Ok" and get command
-E3F9 324510             LD      (CTLOFG),A      ; Enable output
+E3F9 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
 E3FC CD74EB             CALL    STTLIN          ; Start new line
 E3FF 214BE3             LD      HL,OKMSG        ; "Ok" message
 E402 CD10F2             CALL    PRS             ; Output "Ok"
 <span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
 E408 225C10             LD      (LINEAT),HL     ; Save as current line
-E40B CDF2E5             CALL    GETLIN          ; Get an input line
+E40B CDF2E5             CALL    <?php bas8K("GETLIN"); ?>          ; Get an input line
 E40E DA05E4             JP      C,GETCMD        ; Get line again if break
 E411 CD36E8             CALL    GETCHR          ; Get first character
 E414 3C                 INC     A               ; Test if end of line
@@ -18,11 +18,11 @@ E416 CA05E4             JP      Z,GETCMD        ; Nothing entered - Get another
 E419 F5                 PUSH    AF              ; Save Carry status
 E41A CDA5E9             CALL    <?php bas8K("ATOH"); ?>            ; Get line number into DE
 E41D D5                 PUSH    DE              ; Save line number
-E41E CD09E5             CALL    CRUNCH          ; Tokenise rest of line
+E41E CD09E5             CALL    <?php bas8K("CRUNCH"); ?>          ; Tokenise rest of line
 E421 47                 LD      B,A             ; Length of tokenised line
 E422 D1                 POP     DE              ; Restore line number
 E423 F1                 POP     AF              ; Restore Carry
-E424 D216E8             JP      NC,EXCUTE       ; No line number - Direct mode
+E424 D216E8             JP      NC,<?php bas8K("EXCUTE"); ?>       ; No line number - Direct mode
 E427 D5                 PUSH    DE              ; Save line number
 E428 C5                 PUSH    BC              ; Save length of tokenised line
 E429 AF                 XOR     A
@@ -44,7 +44,7 @@ E443 2AD610             LD      HL,(PROGND)     ; End of program
 E447 02                 LD      (BC),A
 E448 03                 INC     BC              ; Next destination
 E449 13                 INC     DE              ; Next source
-E44A CD8AE6             CALL    CPDEHL          ; All done?
+E44A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All done?
 E44D C246E4             JP      NZ,SFTPRG       ; More to do
 E450 60                 LD      H,B             ; HL - New end of program
 E451 69                 LD      L,C

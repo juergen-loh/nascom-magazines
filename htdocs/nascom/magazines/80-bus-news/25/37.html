@@ -30,7 +30,7 @@ E9F6 E5                 PUSH    HL              ; Save RAM top
 E9F7 2AD610             LD      HL,(PROGND)     ; Get program end
 E9FA 012800             LD      BC,40           ; 40 Bytes minimum working RAM
 E9FD 09                 ADD     HL,BC           ; Get lowest address
-E9FE CD8AE6             CALL    CPDEHL          ; Enough memory?
+E9FE CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Enough memory?
 EA01 D2A2E3             JP      NC,OMERR        ; No - ?OM Error
 EA04 EB                 EX      DE,HL           ; RAM top to HL
 EA05 225A10             LD      (STRSPC),HL     ; Set new string space
@@ -64,7 +64,7 @@ EA2B 33                 INC     SP              ; Don't save flags
 EA30 CD72EA             CALL    REM             ; Get end of line
 EA33 E5                 PUSH    HL              ; Save end of line
 EA34 2A5C10             LD      HL,(LINEAT)     ; Get current line
-EA37 CD8AE6             CALL    CPDEHL          ; Line after current?
+EA37 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Line after current?
 EA3A E1                 POP     HL              ; Restore end of line
 EA3B 23                 INC     HL              ; Start of next line
 EA3C DC9CE4             CALL    C,SRCHLP        ; Line is after current line
@@ -74,7 +74,7 @@ EA43 69                 LD      L,C
 EA44 2B                 DEC     HL              ; Incremented after
 EA45 D8                 RET     C               ; Line found
 <span id="EA46">EA46</span> 1E0E       <?php lbl8K("ULERR"); ?>:  LD      E,UL            ; ?UL Error
-EA48 C3C1E3             JP      ERROR           ; Output error message
+EA48 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error message
 
 <span id="EA4B">EA4B</span> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just RETURN
 EA4C 16FF               LD      D,-1            ; Flag "GOSUB" search
@@ -82,7 +82,7 @@ EA4E CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look "GOSUB
 EA51 F9                 LD      SP,HL           ; Kill all FORs in subroutine
 EA52 FE8C               CP      ZGOSUB          ; Test for "GOSUB" token
 EA54 1E04               LD      E,RG            ; ?RG Error
-EA56 C2C1E3             JP      NZ,ERROR        ; Error if no "GOSUB" found
+EA56 C2C1E3             JP      NZ,<?php bas8K("ERROR"); ?>        ; Error if no "GOSUB" found
 EA59 E1                 POP     HL              ; Get RETURN line number
 EA5A 225C10             LD      (LINEAT),HL     ; Save as current
 EA5D 23                 INC     HL              ; Was it from direct statement?

@@ -8,7 +8,7 @@ FA11 E1                 POP     HL              ; Restore buffer address
 FA12 F5                 PUSH    AF              ; Save count
 FA13 1195FA             LD      DE,POWERS       ; Powers of ten
 FA16 05                 DEC     B               ; Count digits before point
-FA17 C220FA             JP      NZ,DIGTXT       ; Not zero - Do number
+FA17 C220FA             JP      NZ,<?php bas8K("DIGTXT"); ?>       ; Not zero - Do number
 FA1A 362E               LD      (HL),"."        ; Save point
 FA1C 23                 INC     HL              ; Move on
 FA1D 3630               LD      (HL),"0"        ; Save zero
@@ -46,9 +46,9 @@ FA49 70                 LD      (HL),B          ; Save digit in buffer
 FA4A 23                 INC     HL              ; And move on
 FA4B C1                 POP     BC              ; Restore digit count
 FA4C 0D                 DEC     C               ; Count digits
-FA4D C220FA             JP      NZ,DIGTXT       ; More - Do them
+FA4D C220FA             JP      NZ,<?php bas8K("DIGTXT"); ?>       ; More - Do them
 FA50 05                 DEC     B               ; Any decimal part?
-FA51 CA60FA             JP      Z,DOEBIT        ; No - Do "E" bit
+FA51 CA60FA             JP      Z,<?php bas8K("DOEBIT"); ?>        ; No - Do "E" bit
 <span id="FA54">FA54</span> 2B         <?php lbl8K("SUPTLZ"); ?>: DEC     HL              ; Move back through buffer
 FA55 7E                 LD      A,(HL)          ; Get character
 FA56 FE30               CP      "0"             ; "0" character?
@@ -85,7 +85,7 @@ FA81 C9                 RET
 
 <span id="FA82">FA82</span> 017494     <?php lbl8K("RNGTST"); ?>: LD      BC,9474H        ; BCDE = 999999.
 FA85 11F723             LD      DE,23F7H
-FA88 CD8EF8             CALL    CMPNUM          ; Compare numbers
+FA88 CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare numbers
 FA8B B7                 OR      A
 FA8C E1                 POP     HL              ; Return address to HL
 FA8D E2EAF9             JP      PO,GTSIXD       ; Too big - Divide by ten

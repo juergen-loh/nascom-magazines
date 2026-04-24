@@ -13,7 +13,7 @@ F8C2 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move FPREG 
 F8C5 CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
 F8C8 AE                 XOR     (HL)            ; Combine with sign of FPREG
 F8C9 67                 LD      H,A             ; Save combined signs
-F8CA FCDFF8             CALL    M,DCBCDE        ; Negative - Decrement BCDE
+F8CA FCDFF8             CALL    M,<?php bas8K("DCBCDE"); ?>        ; Negative - Decrement BCDE
 F8CD 3E98               LD      A,80H+24        ; 24 bits
 F8CF 90                 SUB     B               ; Bits to shift
 F8D0 CD92F6             CALL    SCALE           ; Shift BCDE
@@ -21,7 +21,7 @@ F8D3 7C                 LD      A,H             ; Get combined sign
 F8D4 17                 RLA                     ; Sign to carry
 F8D5 DC65F6             CALL    C,FPROND        ; Negative - Round number up
 F8D8 0600               LD      B,0             ; Zero exponent
-F8DA DC7EF6             CALL    C,COMPL         ; If negative make positive
+F8DA DC7EF6             CALL    C,<?php bas8K("COMPL"); ?>         ; If negative make positive
 F8DD E1                 POP     HL              ; Restore pointer to number
 F8DE C9                 RET
 
@@ -45,7 +45,7 @@ F8F6 7B                 LD      A,E             ; Get LSB of number
 F8F7 F5                 PUSH    AF              ; Save LSB
 F8F8 79                 LD      A,C             ; Get MSB of number
 F8F9 17                 RLA                     ; Sign to carry
-F8FA CD1BF6             CALL    CONPOS          ; Set sign of result
+F8FA CD1BF6             CALL    <?php bas8K("CONPOS"); ?>          ; Set sign of result
 F8FD F1                 POP     AF              ; Restore LSB of number
 F8FE C9                 RET
 </pre>
@@ -72,9 +72,9 @@ F919 C9                 RET
 
 <span id="F91A">F91A</span> FE2D       <?php lbl8K("ASCTFP"); ?>: CP      "-"             ; Negative?
 F91C F5                 PUSH    AF              ; Save it and flags
-F91D CA26F9             JP      Z,CNVNUM        ; Yes - Convert number
+F91D CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Convert number
 F920 FE2B               CP      "+"             ; Positive?
-F922 CA26F9             JP      Z,CNVNUM        ; Yes - Convert number
+F922 CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Convert number
 F925 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
 <span id="F926">F926</span> CD33F6     <?php lbl8K("CNVNUM"); ?>: CALL    RESZER          ; Set result to zero
 F929 47                 LD      B,A             ; Digits after point counter
@@ -85,15 +85,15 @@ F92D 4F                 LD      C,A             ; Before or after point flag
 <span id="F92E">F92E</span> CD36E8     <?php lbl8K("MANLP"); ?>:  CALL    GETCHR          ; Get next character
 F931 DA77F9             JP      C,<a href="../../../32/27/text/#ADDIG">ADDIG</a>         ; Digit - Add to number
 F934 FE2E               CP      "."
-F936 CA52F9             JP      Z,DPOINT        ; "." - Flag point
+F936 CA52F9             JP      Z,<?php bas8K("DPOINT"); ?>        ; "." - Flag point
 F939 FE45               CP      "E"
-F93B C256F9             JP      NZ,CONEXP       ; Not "E" - Scale number
+F93B C256F9             JP      NZ,<?php bas8K("CONEXP"); ?>       ; Not "E" - Scale number
 F93E CD36E8             CALL    GETCHR          ; Get next character
 F941 CD70EE             CALL    SGNEXP          ; Get sign of exponent
 <span id="F944">F944</span> CD36E8     <?php lbl8K("EXPLP"); ?>:  CALL    GETCHR          ; Get next character
-F947 DA99F9             JP      C,EDIGIT        ; Digit - Add to exponent
+F947 DA99F9             JP      C,<?php bas8K("EDIGIT"); ?>        ; Digit - Add to exponent
 F94A 14                 INC     D               ; Is sign negative?
-F94B C256F9             JP      NZ,CONEXP       ; No - Scale number
+F94B C256F9             JP      NZ,<?php bas8K("CONEXP"); ?>       ; No - Scale number
 F94E AF                 XOR     A
 F94F 93                 SUB     E               ; Negate exponent
 F950 5F                 LD      E,A             ; And re-save it
@@ -104,9 +104,9 @@ F953 CA2EF9             JP      Z,MANLP         ; Zero - Get another digit
 F957 7B                 LD      A,E             ; Get exponent
 F958 90                 SUB     B               ; Subtract digits after point
 <span id="F959">F959</span> F46FF9     <?php lbl8K("SCALMI"); ?>: CALL    P,SCALPL        ; Positive - Multiply number
-F95C F265F9             JP      P,ENDCON        ; Positive - All done
+F95C F265F9             JP      P,<?php bas8K("ENDCON"); ?>        ; Positive - All done
 F95F F5                 PUSH    AF              ; Save number of times to /10
-F960 CD5BF7             CALL    DIV10           ; Divide by 10
+F960 CD5BF7             CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10
 F963 F1                 POP     AF              ; Restore count
 F964 3C                 INC     A               ; Count divides
 </pre>

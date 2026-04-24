@@ -14,7 +14,7 @@ F235 4F                 LD      C,A             ; -Length to BC
 F236 06FF               LD      B,-1            ; BC = -ve length of string
 F238 09                 ADD     HL,BC           ; Add to bottom of space in use
 F239 23                 INC     HL              ; Plus one for 2's complement
-F23A CD8AE6             CALL    CPDEHL          ; Below string RAM area?
+F23A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Below string RAM area?
 F23D DA47F2             JP      C,TESTOS        ; Tidy up if not done else err
 F240 22C310             LD      (STRBOT),HL     ; Save new bottom of area
 F243 23                 INC     HL              ; Point to first byte of string
@@ -24,7 +24,7 @@ F246 C9                 RET
 
 <span id="F247">F247</span> F1         <?php lbl8K("TESTOS"); ?>: POP     AF              ; Garbage collect been done?
 F248 1E1A               LD      E,OS            ; ?OS Error
-F24A CAC1E3             JP      Z,ERROR         ; Yes - Not enough string apace
+F24A CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - Not enough string apace
 F24D BF                 CP      A               ; Flag garbage collect done
 F24E F5                 PUSH    AF              ; Save status
 F24F 012BF2             LD      BC,GRBDON       ; Garbage collection done
@@ -39,14 +39,14 @@ F261 21B310             LD      HL,TMSTPL       ; Temporary string pool
 <span id="F264">F264</span> EB         <?php lbl8K("GRBLP"); ?>:  EX      DE,HL
 F265 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
 F268 EB                 EX      DE,HL
-F269 CD8AE6             CALL    CPDEHL          ; Temporary string pool done?
+F269 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Temporary string pool done?
 F26C 0164F2             LD      BC,GRBLP        ; Loop until string pool done
 F26F C2B8F2             JP      NZ,STPOOL       ; No - See if in string area
 F272 2AD610             LD      HL,(PROGND)     ; Start of simple variables
 <span id="F275">F275</span> EB         <?php lbl8K("SMPVAR"); ?>: EX      DE,HL
 F276 2AD810             LD      HL,(VAREND)     ; End of simple variables
 F279 EB                 EX      DE,HL
-F27A CD8AE6             CALL    CPDEHL          ; All simple strings done?
+F27A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All simple strings done?
 F27D CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Do string arrays
 F280 7E                 LD      A,(HL)          ; Get type of variable
 F281 23                 INC     HL
@@ -63,7 +63,7 @@ F287 C375F2             JP      SMPVAR          ; Loop until simple ones done
 <span id="F28B">F28B</span> EB         <?php lbl8K("ARRLP"); ?>:  EX      DE,HL
 F28C 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of string arrays
 F28F EB                 EX      DE,HL
-F290 CD8AE6             CALL    CPDEHL          ; All string arrays done?
+F290 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All string arrays done?
 F293 CAE1F2             JP      Z,SCNEND        ; Yes - Move string if found
 F296 CD62F8             CALL    LOADFP          ; Get array name to BCDE
 F299 7B                 LD      A,E             ; Get type of array
@@ -71,7 +71,7 @@ F29A E5                 PUSH    HL              ; Save address of num of dim'ns
 F29B 09                 ADD     HL,BC           ; Start of next array
 F29C B7                 OR      A               ; Test type of array
 F29D F28AF2             JP      P,GNXARY        ; Numeric array - Ignore it
-F2A0 22C510             LD      (CUROPR),HL     ; Save address of next array
+F2A0 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of next array
 F2A3 E1                 POP     HL              ; Get address of num of dim'ns
 F2A4 4E                 LD      C,(HL)          ; BC = Number of dimensions
 F2A5 0600               LD      B,0
@@ -79,9 +79,9 @@ F2A7 09                 ADD     HL,BC           ; Two bytes per dimension size
 F2A8 09                 ADD     HL,BC
 F2A9 23                 INC     HL              ; Plus one for number of dim'ns
 <span id="F2AA">F2AA</span> EB         <?php lbl8K("GRBARY"); ?>: EX      DE,HL
-F2AB 2AC510             LD      HL,(CUROPR)     ; Get address of next array
+F2AB 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Get address of next array
 F2AE EB                 EX      DE,HL
-F2AF CD8AE6             CALL    CPDEHL          ; Is this array finished?
+F2AF CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is this array finished?
 F2B2 CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Get next one
 F2B5 01AAF2             LD      BC,GRBARY       ; Loop until array all done
 <span id="F2B8">F2B8</span> C5         <?php lbl8K("STPOOL"); ?>: PUSH    BC              ; Save return address
@@ -99,13 +99,13 @@ F2C4 C8                 RET     Z               ; Null string - Return
 F2C5 44                 LD      B,H             ; Save variable pointer
 F2C6 4D                 LD      C,L
 F2C7 2AC310             LD      HL,(STRBOT)     ; Bottom of new area
-F2CA CD8AE6             CALL    CPDEHL          ; String been done?
+F2CA CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; String been done?
 F2CD 60                 LD      H,B             ; Restore variable pointer
 F2CE 69                 LD      L,C
 F2CF D8                 RET     C               ; String done - Ignore
 F2D0 E1                 POP     HL              ; Return address
 F2D1 E3                 EX      (SP),HL         ; Lowest available string area
-F2D2 CD8AE6             CALL    CPDEHL          ; String within string area?
+F2D2 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; String within string area?
 F2D5 E3                 EX      (SP),HL         ; Lowest available string area
 F2D6 E5                 PUSH    HL              ; Re-save return address
 F2D7 60                 LD      H,B             ; Restore variable pointer

@@ -62,7 +62,7 @@ F3CF 0600               LD      B,0             ; BC = starting address
 F3D1 09                 ADD     HL,BC           ; Point to that byte
 F3D2 44                 LD      B,H             ; BC = source string
 F3D3 4D                 LD      C,L
-F3D4 CDC2F1             CALL    CRTMST          ; Create a string entry
+F3D4 CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create a string entry
 F3D7 6F                 LD      L,A             ; Length of new string
 F3D8 CD46F3             CALL    TOSTRA          ; Move string to string area
 F3DB D1                 POP     DE              ; Clear stack

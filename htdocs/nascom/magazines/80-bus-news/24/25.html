@@ -5,9 +5,9 @@
 <span id="E000">E000</span> C303E0     <?php lbl8K("START"); ?>:  JP      STARTB          ; Jump for restart jump
 <span id="E003">E003</span> F3         <?php lbl8K("STARTB"); ?>: DI                      ; No interrupts
 E004 DD210000           LD      IX,0            ; Flag cold start
-E008 C312E0             JP      CSTART          ; Jump to initialise
+E008 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Jump to initialise
 
-E00B 8BE9               DEFW    DEINT           ; Get integer -32768 to 32767
+E00B 8BE9               DEFW    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 E00D F2F0               DEFW    <?php bas8K("ABPASS"); ?>          ; Return integer in AB
 
 E00F C33CE7             JP      LDNMI1          ; &lt;&lt; NO REFERENCE TO HERE &gt;&gt;
@@ -24,9 +24,9 @@ E022 77                 LD      (HL),A          ; To destination
 E023 23                 INC     HL              ; Next destination
 E024 13                 INC     DE              ; Next source
 E025 05                 DEC     B               ; Count bytes
-E026 C221E0             JP      NZ,COPY         ; More to move
+E026 C221E0             JP      NZ,<?php bas8K("COPY"); ?>         ; More to move
 E029 F9                 LD      SP,HL           ; Temporary stack
-E02A CDDFE4             CALL    CLREG           ; Clear registers and stack
+E02A CDDFE4             CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E02D CD81EB             CALL    PRNTCR          ; Output CRLF
 E030 32AA10             LD      (<?php bas8K("BUFFER"); ?>+72+1),A ; Mark end of buffer
 E033 32F910             LD      (PROGST),A      ; Initialise program area
@@ -68,7 +68,7 @@ E06A C236E0             JP      NZ,MSIZE        ; Ask again if no RAM
 
 <span id="E06D">E06D</span> 2B         <?php lbl8K("SETTOP"); ?>: DEC     HL              ; Back one byte
 E06E 115C11             LD      DE,STLOOK-1     ; See if enough RAM
-E071 CD8AE6             CALL    CPDEHL          ; Compare DE with HL
+E071 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare DE with HL
 E074 DA36E0             JP      C,MSIZE         ; Ask again if not enough RAM
 E077 00                 NOP
 E078 00                 NOP
@@ -83,7 +83,7 @@ E080 11CEFF             LD      DE,0-50         ; 50 Bytes string space
 E083 22AF10             LD      (LSTRAM),HL     ; Save last available RAM
 E086 19                 ADD     HL,DE           ; Allocate string space
 E087 225A10             LD      (STRSPC),HL     ; Save string space
-E08A CDBAE4             CALL    CLRPTR          ; Clear program area
+E08A CDBAE4             CALL    <?php bas8K("CLRPTR"); ?>          ; Clear program area
 E08D 2A5A10             LD      HL,(STRSPC)     ; Get end of memory
 E090 11EFFF             LD      DE,0-17         ; Offset for free bytes
 E093 19                 ADD     HL,DE           ; Adjust HL
@@ -103,7 +103,7 @@ E0A8 21B7E0             LD      HL,<?php bas8K("BFREE"); ?>        ; " Bytes fre
 E0AB CD10F2             CALL    PRS             ; Output string
 
 <span id="E0AE">E0AE</span> 316610     <?php lbl8K("WARMST"); ?>: LD      SP,STACK        ; Temporary stack
-<span id="E0B1">E0B1</span> CDDFE4     <?php lbl8K("BRKRET"); ?>: CALL    CLREG           ; Clear registers and stack
+<span id="E0B1">E0B1</span> CDDFE4     <?php lbl8K("BRKRET"); ?>: CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E0B4 C3F8E3             JP      PRNTOK          ; Go to get command line
 </pre>
 <?php DoublePageEnd(); ?>

@@ -54,14 +54,14 @@ E7F6 C466E8             CALL    NZ,STALL        ; Yes - Pause for a key
 E7F9 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save code address for break
 E7FC 7E                 LD      A,(HL)          ; Get next byte in code string
 E7FD FE3A               CP      ":"             ; Multi statement line?
-E7FF CA16E8             JP      Z,EXCUTE        ; Yes - Execute it
+E7FF CA16E8             JP      Z,<?php bas8K("EXCUTE"); ?>        ; Yes - Execute it
 E802 B7                 OR      A               ; End of line?
 E803 C2ADE3             JP      NZ,SNERR        ; No - Syntax error
 E806 23                 INC     HL              ; Point to address of next line
 E807 7E                 LD      A,(HL)          ; Get LSB of line pointer
 E808 23                 INC     HL
 E809 B6                 OR      (HL)            ; Is it zero (End of prog)?
-E80A CA7AE8             JP      Z,ENDPRG        ; Yes - Terminate execution
+E80A CA7AE8             JP      Z,<?php bas8K("ENDPRG"); ?>        ; Yes - Terminate execution
 E80D 23                 INC     HL              ; Point to line number
 E80E 5E                 LD      E,(HL)          ; Get LSB of line number
 E80F 23                 INC     HL

@@ -13,14 +13,14 @@ F055 4F                 LD      C,A             ; Number of dimensions to C
 F056 CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check if enough memory
 F059 23                 INC     HL              ; Point to number of dimensions
 F05A 23                 INC     HL
-F05B 22C510             LD      (CUROPR),HL     ; Save address of pointer
+F05B 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of pointer
 F05E 71                 LD      (HL),C          ; Set number of dimensions
 F05F 23                 INC     HL
 F060 3AAC10             LD      A,(LCRFLG)      ; Locate of Create?
 F063 17                 RLA                     ; Carry set = Create
 F064 79                 LD      A,C             ; Get number of dimensions
 <span id="F065">F065</span> 010B00     <?php lbl8K("CRARLP"); ?>: LD      BC,10+1         ; Default dimension size 10
-F068 D26DF0             JP      NC,DEFSIZ       ; Locate - Set default size
+F068 D26DF0             JP      NC,<?php bas8K("DEFSIZ"); ?>       ; Locate - Set default size
 F06B C1                 POP     BC              ; Get specified dimension size
 F06C 03                 INC     BC              ; Include zero element
 <span id="F06D">F06D</span> 71         <?php lbl8K("DEFSIZ"); ?>: LD      (HL),C          ; Save LSB of dimension size
@@ -34,14 +34,14 @@ F076 EB                 EX      DE,HL           ; amount of mem needed (to DE)
 F077 E1                 POP     HL              ; Restore address of dimension
 F078 F1                 POP     AF              ; Restore number of dimensions
 F079 3D                 DEC     A               ; Count them
-F07A C265F0             JP      NZ,CRARLP       ; Do next dimension if more
+F07A C265F0             JP      NZ,<?php bas8K("CRARLP"); ?>       ; Do next dimension if more
 F07D F5                 PUSH    AF              ; Save locate/create flag
 F07E 42                 LD      B,D             ; MSB of memory needed
 F07F 4B                 LD      C,E             ; LSB of memory needed
 F080 EB                 EX      DE,HL
 F081 19                 ADD     HL,DE           ; Add bytes to array start
 F082 DAA2E3             JP      C,OMERR         ; Too big - Error
-F085 CD93E3             CALL    ENFMEM          ; See if enough memory
+F085 CD93E3             CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 F088 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Save new end of array
 </pre>
 <?php DoublePageChange(); ?>
@@ -50,11 +50,11 @@ F088 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Save new en
 
 <span id="F08B">F08B</span> 2B         <?php lbl8K("ZERARY"); ?>: DEC     HL              ; Back through array data
 F08C 3600               LD      (HL),0          ; Set array element to zero
-F08E CD8AE6             CALL    CPDEHL          ; All elements zeroed?
+F08E CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All elements zeroed?
 F091 C28BF0             JP      NZ,ZERARY       ; No - Keep on going
 F094 03                 INC     BC              ; Number of bytes + 1
 F095 57                 LD      D,A             ; A=0
-F096 2AC510             LD      HL,(CUROPR)     ; Get address of array
+F096 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Get address of array
 F099 5E                 LD      E,(HL)          ; Number of dimensions
 F09A EB                 EX      DE,HL           ; To HL
 F09B 29                 ADD     HL,HL           ; Two bytes per dimension size
@@ -67,7 +67,7 @@ F0A1 23                 INC     HL
 F0A2 72                 LD      (HL),D          ; Save MSB of bytes needed
 F0A3 23                 INC     HL
 F0A4 F1                 POP     AF              ; Locate / Create?
-F0A5 DACCF0             JP      C,ENDDIM        ; A is 0 , End if create
+F0A5 DACCF0             JP      C,<?php bas8K("ENDDIM"); ?>        ; A is 0 , End if create
 <span id="F0A8">F0A8</span> 47         <?php lbl8K("FINDEL"); ?>: LD      B,A             ; Find array element
 F0A9 4F                 LD      C,A
 F0AA 7E                 LD      A,(HL)          ; Number of dimensions
@@ -80,7 +80,7 @@ F0B0 56                 LD      D,(HL)          ; Get MSB of dim'n size
 F0B1 23                 INC     HL
 F0B2 E3                 EX      (SP),HL         ; Save address - Get index
 F0B3 F5                 PUSH    AF              ; Save number of dim'ns
-F0B4 CD8AE6             CALL    CPDEHL          ; Dimension too large?
+F0B4 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Dimension too large?
 F0B7 D245F0             JP      NC,<?php bas8K("BSERR"); ?>        ; Yes - ?BS Error
 F0BA E5                 PUSH    HL              ; Save index
 F0BB CDFFF8             CALL    MLDEBC          ; Multiply previous by size

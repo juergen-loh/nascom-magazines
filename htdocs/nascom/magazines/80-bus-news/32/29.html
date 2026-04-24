@@ -6,10 +6,10 @@
 FAB6 D1                 POP     DE
 FAB7 CD13F8             CALL    TSTSGN          ; Test sign of power
 FABA 78                 LD      A,B             ; Get exponent of base
-FABB CAFAFA             JP      Z,EXP           ; Make result 1 if zero
+FABB CAFAFA             JP      Z,<?php bas8K("EXP"); ?>           ; Make result 1 if zero
 FABE F2C5FA             JP      P,POWER1        ; Positive base - Ok
 FAC1 B7                 OR      A               ; Zero to negative power?
-FAC2 CAB0E3             JP      Z,DZERR         ; Yes - ?/0 Error
+FAC2 CAB0E3             JP      Z,<?php bas8K("DZERR"); ?>         ; Yes - ?/0 Error
 <span id="FAC5">FAC5</span> B7         <?php lbl8K("POWER1"); ?>: OR      A               ; Base zero?
 FAC6 CA34F6             JP      Z,SAVEXP        ; Yes - Return zero
 FAC9 D5                 PUSH    DE              ; Save base
@@ -24,7 +24,7 @@ FAD6 CDE6F8             CALL    INT             ; Get integer of power
 FAD9 C1                 POP     BC              ; Restore power
 FADA D1                 POP     DE
 FADB F5                 PUSH    AF              ; MSB of base
-FADC CD8EF8             CALL    CMPNUM          ; Power an integer?
+FADC CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Power an integer?
 FADF E1                 POP     HL              ; Restore MSB of base
 FAE0 7C                 LD      A,H             ; but don't affect flags
 FAE1 1F                 RRA                     ; Exponent odd or even?
@@ -73,7 +73,7 @@ FB35 C1                 POP     BC              ; Scaling factor
 FB36 4A                 LD      C,D             ; Zero MSB
 FB37 C308F7             JP      FPMULT          ; Scale result to correct value
 
-<span id="FB3A">FB3A</span> 08         <?php lbl8K("EXPTAB"); ?>: DEFB    8                       ; Table used by EXP
+<span id="FB3A">FB3A</span> 08         <?php lbl8K("EXPTAB"); ?>: DEFB    8                       ; Table used by <?php bas8K("EXP","","","\n"); ?>
 FB3B 402E9474           DEFB    040H,02EH,094H,074H     ; -1/7! (-1/5040)
 FB3F 704F2E77           DEFB    070H,04FH,02EH,077H     ;  1/6! ( 1/720)
 FB43 6E02887A           DEFB    06EH,002H,088H,07AH     ; -1/5! (-1/120)

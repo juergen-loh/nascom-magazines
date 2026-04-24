@@ -27,14 +27,14 @@ F0F8 73                 LD      (HL),E          ; Set type to numeric
 F0F9 0690               LD      B,80H+16        ; 16 bit integer
 F0FB C32AF8             JP      RETINT          ; Return the integr
 
-<span id="F0FE">F0FE</span> 3AAB10     <?php lbl8K("POS"); ?>:    LD      A,(CURPOS)      ; Get cursor position
+<span id="F0FE">F0FE</span> 3AAB10     <?php lbl8K("POS"); ?>:    LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
 <span id="F101">F101</span> 47         <?php lbl8K("PASSA"); ?>:  LD      B,A             ; Put A into AB
 F102 AF                 XOR     A               ; Zero A
 F103 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
 <span id="F106">F106</span> CD89F1     <?php lbl8K("DEF"); ?>:    CALL    <?php bas8K("CHEKFN"); ?>          ; Get "FN" and name
 F109 CD7BF1             CALL    IDTEST          ; Test for illegal direct
-F10C 0170EA             LD      BC,DATA         ; To get next statement
+F10C 0170EA             LD      BC,<?php bas8K("DATA"); ?>         ; To get next statement
 F10F C5                 PUSH    BC              ; Save address for RETurn
 F110 D5                 PUSH    DE              ; Save address of function ptr
 F111 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
@@ -66,7 +66,7 @@ F130 C3C8F1             JP      SVSTAD          ; Save address and do function
 
 <span id="F133">F133</span> CD89F1     <?php lbl8K("DOFN"); ?>:   CALL    <?php bas8K("CHEKFN"); ?>          ; Make sure FN follows
 F136 D5                 PUSH    DE              ; Save function pointer address
-F137 CD09EE             CALL    EVLPAR          ; Evaluate expression in "()"
+F137 CD09EE             CALL    <?php bas8K("EVLPAR"); ?>          ; Evaluate expression in "()"
 F13A CD44ED             CALL    TSTNUM          ; Make sure numeric result
 F13D E3                 EX      (SP),HL         ; Save code str&nbsp;, Get FN ptr
 F13E 5E                 LD      E,(HL)          ; Get LSB of FN code string
@@ -113,6 +113,6 @@ F181 B5                 OR      L
 F182 E1                 POP     HL              ; Restore code string address
 F183 C0                 RET     NZ              ; Return if in program
 F184 1E16               LD      E,ID            ; ?ID Error
-F186 C3C1E3             JP      ERROR
+F186 C3C1E3             JP      <?php bas8K("ERROR","","","\n"); ?>
 </pre>
 <?php DoublePageEnd(); ?>

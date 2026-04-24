@@ -102,7 +102,7 @@ F47E C384F4             JP      GETINT          ; Get integer 0-255 and return
 
 <span id="F481">F481</span> CD36E8     <?php lbl8K("FNDNUM"); ?>: CALL    GETCHR          ; Get next character
 <span id="F484">F484</span> CD41ED     <?php lbl8K("GETINT"); ?>: CALL    GETNUM          ; Get a number from 0 to 255
-<span id="F487">F487</span> CD85E9     <?php lbl8K("MAKINT"); ?>: CALL    DEPINT          ; Make sure value 0 - 255
+<span id="F487">F487</span> CD85E9     <?php lbl8K("MAKINT"); ?>: CALL    <?php bas8K("DEPINT"); ?>          ; Make sure value 0 - 255
 F48A 7A                 LD      A,D             ; Get MSB of number
 F48B B7                 OR      A               ; Zero?
 F48C C2A0E9             JP      NZ,FCERR        ; No - Error

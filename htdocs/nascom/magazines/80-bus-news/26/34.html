@@ -22,7 +22,7 @@ ED14 CD6BF8             CALL    FPTHL           ; Move value to index variable
 ED17 E1                 POP     HL              ; Restore address of TO value
 ED18 CD62F8             CALL    LOADFP          ; Move TO value to BCDE
 ED1B E5                 PUSH    HL              ; Save address of line of FOR
-ED1C CD8EF8             CALL    CMPNUM          ; Compare index with TO value
+ED1C CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare index with TO value
 ED1F E1                 POP     HL              ; Restore address of line num
 ED20 C1                 POP     BC              ; Address of sign of STEP
 ED21 90                 SUB     B               ; Compare with expected sign
@@ -47,7 +47,7 @@ ED3E CDF9EC             CALL    NEXT1           ; Re-enter NEXT routine
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    45</span>
 
-<span id="ED41">ED41</span> CD5AED     <?php lbl8K("GETNUM"); ?>: CALL    EVAL            ; Get a numeric expression
+<span id="ED41">ED41</span> CD5AED     <?php lbl8K("GETNUM"); ?>: CALL    <?php bas8K("EVAL"); ?>            ; Get a numeric expression
 <span id="ED44">ED44</span> F6         <?php lbl8K("TSTNUM"); ?>: DEFB    (OR n)          ; Clear carry (numeric)
 <span id="ED45">ED45</span> 37         <?php lbl8K("TSTSTR"); ?>: SCF                     ; Set carry (string)
 <span id="ED46">ED46</span> 3AAD10     <?php lbl8K("CHKTYP"); ?>: LD      A,(TYPE)        ; Check types match
@@ -60,7 +60,7 @@ ED4C C3BFE3             JP      TMERR           ; Different types - Error
 
 ED4F CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
 ED52 B4                 DEFB    ZEQUAL          ; "="
-ED53 C35AED             JP      EVAL            ; Evaluate expression
+ED53 C35AED             JP      <?php bas8K("EVAL"); ?>            ; Evaluate expression
 
 <span id="ED56">ED56</span> CD90E6     <?php lbl8K("OPNPAR"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 ED59 28                 DEFB    "("
@@ -88,7 +88,7 @@ ED83 AA                 XOR     D               ; &lt;- combinations of &lt; = &
 ED84 BA                 CP      D               ; &lt;- by combining last token
 ED85 57                 LD      D,A             ; &lt;- with current one
 ED86 DAADE3             JP      C,SNERR         ; Error if "&lt;&lt;" "==" or "&gt;&gt;"
-ED89 22C510             LD      (CUROPR),HL     ; Save address of current token
+ED89 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of current token
 ED8C CD36E8             CALL    GETCHR          ; Get next character
 ED8F C376ED             JP      RLTLP           ; Treat the two as one
 </pre>

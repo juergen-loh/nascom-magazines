@@ -4,7 +4,7 @@
 
 <span id="F56B">F56B</span> 219DF5     <?php lbl8K("OUTBAD"); ?>: LD      HL,<a href="../../../31/32/text/#BAD">BAD</a>          ; "Bad" message
 F56E CD10F2             CALL    PRS             ; Output string
-F571 C3E1E3             JP      ERRIN           ; In line message
+F571 C3E1E3             JP      <?php bas8K("ERRIN"); ?>           ; In line message
 
 <span id="F574">F574</span> C5         <?php lbl8K("FILFND"); ?>: PUSH    BC              ; &lt;- Save
 F575 E5                 PUSH    HL              ; &lt;- all
@@ -14,7 +14,7 @@ F578 218EF5             LD      HL,FILE         ; "File" message
 F57B CD10F2             CALL    PRS             ; Output string
 F57E F1                 POP     AF              ; Get file name
 F57F F5                 PUSH    AF              ; And re-save
-F580 CDD9FC             CALL    CONMON          ; Output file name to screen
+F580 CDD9FC             CALL    <?php bas8K("CONMON"); ?>          ; Output file name to screen
 F583 2194F5             LD      HL,FOUND        ; "Found" message
 F586 CD10F2             CALL    PRS             ; Output string
 F589 F1                 POP     AF              ; &lt;- Restore
@@ -24,15 +24,15 @@ F58C C1                 POP     BC              ; &lt;- registers
 F58D C9                 RET
 
 <span id="F58E">F58E</span> 46696C65   <?php lbl8K("FILE"); ?>:   DEFB    "File ",0
-<span id="F594">F594</span> 20466F75   <?php lbl8K("FOUND"); ?>:  DEFB    " Found",CR,LF,0
+<span id="F594">F594</span> 20466F75   <?php lbl8K("FOUND"); ?>:  DEFB    " Found",<?php bas8K("CR"); ?>,LF,0
 <span id="F59D">F59D</span> 42616400   <?php lbl8K("BAD"); ?>:    DEFB    "Bad",0,0,0
 
-<span id="F5A3">F5A3</span> CD8BE9     <?php lbl8K("PEEK"); ?>:   CALL    DEINT           ; Get memory address
+<span id="F5A3">F5A3</span> CD8BE9     <?php lbl8K("PEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get memory address
 F5A6 1A                 LD      A,(DE)          ; Get byte in memory
 F5A7 C301F1             JP      PASSA           ; Return integer A
 
 <span id="F5AA">F5AA</span> CD41ED     <?php lbl8K("POKE"); ?>:   CALL    GETNUM          ; Get memory address
-F5AD CD8BE9             CALL    DEINT           ; Get integer -32768 to 3276
+F5AD CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 3276
 F5B0 D5                 PUSH    DE              ; Save memory address
 F5B1 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F5B4 2C                 DEFB    ","
@@ -103,6 +103,6 @@ F617 23                 INC     HL
 F618 7E                 LD      A,(HL)          ; Get MSB of FPREG
 F619 99                 SBC     A,C             ; Subtract MSB of BCDE
 F61A 4F                 LD      C,A             ; Save MSB of BCDE
-<span id="F61B">F61B</span> DC7EF6     <?php lbl8K("CONPOS"); ?>: CALL    C,COMPL         ; Overflow - Make it positive
+<span id="F61B">F61B</span> DC7EF6     <?php lbl8K("CONPOS"); ?>: CALL    C,<?php bas8K("COMPL"); ?>         ; Overflow - Make it positive
 </pre>
 <?php DoublePageEnd(); ?>

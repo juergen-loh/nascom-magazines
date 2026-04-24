@@ -47,7 +47,7 @@ F99D 07                 RLCA                    ; Times 10
 F99E 86                 ADD     A,(HL)          ; Add next digit
 F99F D630               SUB     "0"             ; Make it absolute
 F9A1 5F                 LD      E,A             ; Save new digit
-F9A2 C344F9             JP      EXPLP           ; Look for another digit
+F9A2 C344F9             JP      <?php bas8K("EXPLP"); ?>           ; Look for another digit
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -79,7 +79,7 @@ F9D1 F5                 PUSH    AF              ; Save it
 F9D2 CD82FA             CALL    RNGTST          ; Test number is in range
 <span id="F9D5">F9D5</span> 014391     <?php lbl8K("SIXDIG"); ?>: LD      BC,9143H        ; BCDE - 99999.9
 F9D8 11F84F             LD      DE,4FF8H
-F9DB CD8EF8             CALL    CMPNUM          ; Compare numbers
+F9DB CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare numbers
 F9DE B7                 OR      A
 F9DF E2F3F9             JP      PO,INRNG        ; &gt; 99999.9 - Sort it out
 F9E2 F1                 POP     AF              ; Restore count
@@ -87,7 +87,7 @@ F9E3 CD70F9             CALL    MULTEN          ; Multiply by ten
 F9E6 F5                 PUSH    AF              ; Re-save count
 F9E7 C3D5F9             JP      SIXDIG          ; Test it again
 
-<span id="F9EA">F9EA</span> CD5BF7     <?php lbl8K("GTSIXD"); ?>: CALL    DIV10           ; Divide by 10
+<span id="F9EA">F9EA</span> CD5BF7     <?php lbl8K("GTSIXD"); ?>: CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10
 F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
