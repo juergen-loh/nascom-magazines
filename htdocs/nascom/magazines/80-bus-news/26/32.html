@@ -29,7 +29,7 @@ EBAB 2F                 CPL                     ; Number of spaces to output
 EBAC C3C7EB             JP      <?php bas8K("ASPCS"); ?>           ; Output them
 
 <span id="EBAF">EBAF</span> F5         <?php lbl8K("DOTAB"); ?>:  PUSH    AF              ; Save token
-EBB0 CD81F4             CALL    FNDNUM          ; Evaluate expression
+EBB0 CD81F4             CALL    <?php bas8K("FNDNUM"); ?>          ; Evaluate expression
 EBB3 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 EBB6 29                 DEFB    ")"
 EBB7 2B                 DEC     HL              ; Back space on to ")"
@@ -48,7 +48,7 @@ EBC9 3E20               LD      A," "           ; Space
 EBCE 05                 DEC     B               ; Count them
 EBCF C2CBEB             JP      NZ,SPCLP        ; Repeat if more
 <span id="EBD2">EBD2</span> E1         <?php lbl8K("NEXITM"); ?>: POP     HL              ; Restore code string address
-EBD3 CD36E8             CALL    GETCHR          ; Get next character
+EBD3 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EBD6 C326EB             JP      PRNTLP          ; More to print
 </pre>
 <?php DoublePageChange(); ?>
@@ -65,7 +65,7 @@ EBF4 21D9EB             LD      HL,REDO         ; "Redo from start" message
 EBF7 CD10F2             CALL    PRS             ; Output string
 EBFA C3F8E4             JP      <?php bas8K("DOAGN"); ?>           ; Do last INPUT again
 
-<span id="EBFD">EBFD</span> CD7BF1     <?php lbl8K("INPUT"); ?>:  CALL    IDTEST          ; Test for illegal direct
+<span id="EBFD">EBFD</span> CD7BF1     <?php lbl8K("INPUT"); ?>:  CALL    <?php bas8K("IDTEST"); ?>          ; Test for illegal direct
 EC00 7E                 LD      A,(HL)          ; Get character after "INPUT"
 EC01 FE22               CP      '"'             ; Is there a prompt string?
 EC03 3E00               LD      A,0             ; Clear A and leave flags
@@ -80,7 +80,7 @@ EC16 3E                 DEFB    (LD A,n)        ; Skip "PUSH HL"
 <span id="EC17">EC17</span> E5         <?php lbl8K("NOPMPT"); ?>: PUSH    HL              ; Save code string address
 EC18 CDFCE4             CALL    PROMPT          ; Get input with "? " prompt
 EC1B C1                 POP     BC              ; Restore code string address
-EC1C DA77E8             JP      C,INPBRK        ; Break pressed - Exit
+EC1C DA77E8             JP      C,<?php bas8K("INPBRK"); ?>        ; Break pressed - Exit
 EC1F 23                 INC     HL              ; Next byte
 EC20 7E                 LD      A,(HL)          ; Get it
 EC21 B7                 OR      A               ; End of line?
@@ -96,6 +96,6 @@ EC30 F6                 DEFB    (OR n)          ; Flag "READ"
 <span id="EC31">EC31</span> AF         <?php lbl8K("NXTITM"); ?>: XOR     A               ; Flag "INPUT"
 EC32 32CD10             LD      (READFG),A      ; Save "READ"/"INPUT" flag
 EC35 E3                 EX      (SP),HL         ; Get code str' , Save pointer
-EC36 C33DEC             JP      GTVLUS          ; Get values
+EC36 C33DEC             JP      <?php bas8K("GTVLUS"); ?>          ; Get values
 </pre>
 <?php DoublePageEnd(); ?>

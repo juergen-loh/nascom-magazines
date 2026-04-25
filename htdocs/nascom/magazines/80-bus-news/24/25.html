@@ -14,10 +14,10 @@ E00F C33CE7             JP      LDNMI1          ; &lt;&lt; NO REFERENCE TO HERE 
 
 <span id="E012">E012</span> 210010     <?php lbl8K("CSTART"); ?>: LD      HL,WRKSPC       ; Start of workspace RAM
 E015 F9                 LD      SP,HL           ; Set up a temporary stack
-E016 C3BBFE             JP      INITST          ; Go to initialise
+E016 C3BBFE             JP      <?php bas8K("INITST"); ?>          ; Go to initialise
 
-<span id="E019">E019</span> 11DFE2     <?php lbl8K("INIT"); ?>:   LD      DE,INITAB       ; Initialise workspace
-E01C 0663               LD      B,INITBE-INITAB+3; Bytes to copy
+<span id="E019">E019</span> 11DFE2     <?php lbl8K("INIT"); ?>:   LD      DE,<?php bas8K("INITAB"); ?>       ; Initialise workspace
+E01C 0663               LD      B,<?php bas8K("INITBE"); ?>-<?php bas8K("INITAB"); ?>+3; Bytes to copy
 E01E 210010             LD      HL,WRKSPC       ; Into workspace RAM
 <span id="E021">E021</span> 1A         <?php lbl8K("COPY"); ?>:   LD      A,(DE)          ; Get source
 E022 77                 LD      (HL),A          ; To destination
@@ -33,7 +33,7 @@ E033 32F910             LD      (PROGST),A      ; Initialise program area
 <span id="E036">E036</span> 2103E1     <?php lbl8K("MSIZE"); ?>:  LD      HL,MEMMSG       ; Point to message
 E039 CD10F2             CALL    PRS             ; Output "Memory size"
 E03C CDFCE4             CALL    PROMPT          ; Get input with "?"
-E03F CD36E8             CALL    GETCHR          ; Get next character
+E03F CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E042 B7                 OR      A               ; Set flags
 E043 C25BE0             JP      NZ,TSTMEM       ; If number - Test if RAM there
 E046 215D11             LD      HL,STLOOK       ; Point to start of RAM

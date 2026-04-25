@@ -29,7 +29,7 @@ E75A 224610             LD      (LINESC),HL     ; Reset LINES counter
 E75D 3A4C10             LD      A,(NMIFLG)      ; Break by NMI?
 E760 B7                 OR      A
 E761 C2E5FE             JP      NZ,<?php bas8K("ARETN"); ?>        ; Yes - "RETN"
-E764 CD05FD             CALL    GETINP          ; Get input character
+E764 CD05FD             CALL    <?php bas8K("GETINP"); ?>          ; Get input character
 E767 FE03               CP      <?php bas8K("CTRLC"); ?>           ; Is it control "C"?
 E769 CA70E7             JP      Z,RSLNBK        ; Yes - Reset LINES an break
 E76C E1                 POP     HL              ; Restore code string address
@@ -43,19 +43,19 @@ E776 C3B1E0             JP      <?php bas8K("BRKRET"); ?>          ; Go and outp
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    28</span>
 
-<span id="E779">E779</span> 3E64       <?php lbl8K("FOR"); ?>:    LD      A,64H           ; Flag "FOR" assignment
-E77B 32CB10             LD      (FORFLG),A      ; Save "FOR" flag
+<span id="E779">E779</span> 3E64       <?php lbl8K("FOR"); ?>:    LD      A,64H           ; Flag "<?php bas8K("FOR"); ?>" assignment
+E77B 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Save "<?php bas8K("FOR"); ?>" flag
 E77E CD87EA             CALL    LET             ; Set up initial index
 E781 C1                 POP     BC              ; Drop RETurn address
 E782 E5                 PUSH    HL              ; Save code string address
 E783 CD70EA             CALL    <?php bas8K("DATA"); ?>            ; Get next statement address
 E786 22C710             LD      (LOOPST),HL     ; Save it for start of lo6p
-E789 210200             LD      HL,2            ; Offset for "FOR" block
+E789 210200             LD      HL,2            ; Offset for "<?php bas8K("FOR"); ?>" block
 E78C 39                 ADD     HL,SP           ; Point to it
-<span id="E78D">E78D</span> CD5AE3     <?php lbl8K("FORSLP"); ?>: CALL    LOKFOR          ; Look for existing "FOR" block
+<span id="E78D">E78D</span> CD5AE3     <?php lbl8K("FORSLP"); ?>: CALL    LOKFOR          ; Look for existing "<?php bas8K("FOR"); ?>" block
 E790 D1                 POP     DE              ; Get code string address
-E791 C2A9E7             JP      NZ,FORFND       ; No nesting found
-E794 09                 ADD     HL,BC           ; Move into "FOR" block
+E791 C2A9E7             JP      NZ,<?php bas8K("FORFND"); ?>       ; No nesting found
+E794 09                 ADD     HL,BC           ; Move into "<?php bas8K("FOR"); ?>" block
 E795 D5                 PUSH    DE              ; Save code string address
 E796 2B                 DEC     HL
 E797 56                 LD      D,(HL)          ; Get MSB of loop statement
@@ -65,9 +65,9 @@ E79A 23                 INC     HL
 E79B 23                 INC     HL
 E79C E5                 PUSH    HL              ; Save block address
 E79D 2AC710             LD      HL,(LOOPST)     ; Get address of loop statement
-E7A0 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare the FOR loops
+E7A0 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare the <?php bas8K("FOR"); ?> loops
 E7A3 E1                 POP     HL              ; Restore block address
-E7A4 C28DE7             JP      NZ,FORSLP       ; Different FORs - Find another
+E7A4 C28DE7             JP      NZ,<?php bas8K("FORSLP"); ?>       ; Different FORs - Find another
 E7A7 D1                 POP     DE              ; Restore code string address
 E7A8 F9                 LD      SP,HL           ; Remove all nested loops
 </pre>

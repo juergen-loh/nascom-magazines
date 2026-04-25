@@ -4,7 +4,7 @@
 
 <span id="F04A">F04A</span> 110400     <?php lbl8K("CREARY"); ?>: LD      DE,4            ; 4 Bytes per entry
 F04D F1                 POP     AF              ; Array to save or 0 dim'ns?
-F04E CAA0E9             JP      Z,FCERR         ; Yes - ?FC Error
+F04E CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Yes - ?<?php bas8K("FC"); ?> Error
 F051 71                 LD      (HL),C          ; Save second byte of name
 F052 23                 INC     HL
 F053 70                 LD      (HL),B          ; Save first byte of name
@@ -90,7 +90,7 @@ F0C0 F1                 POP     AF              ; Number of dimensions
 F0C1 3D                 DEC     A               ; Count them
 F0C2 44                 LD      B,H             ; MSB of pointer
 F0C3 4D                 LD      C,L             ; LSB of pointer
-F0C4 C2ADF0             JP      NZ,FNDELP       ; More - Keep going
+F0C4 C2ADF0             JP      NZ,<?php bas8K("FNDELP"); ?>       ; More - Keep going
 F0C7 29                 ADD     HL,HL           ; 4 Bytes per element
 F0C8 29                 ADD     HL,HL
 F0C9 C1                 POP     BC              ; Start of array

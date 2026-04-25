@@ -31,27 +31,27 @@ F2FF 70                 LD      (HL),B          ; Save new MSB of address
 F300 69                 LD      L,C             ; Next string area+1 to HL
 F301 60                 LD      H,B
 F302 2B                 DEC     HL              ; Next string area address
-F303 C356F2             JP      GARBLP          ; Look for more strings
+F303 C356F2             JP      <?php bas8K("GARBLP"); ?>          ; Look for more strings
 
 <span id="F306">F306</span> C5         <?php lbl8K("CONCAT"); ?>: PUSH    BC              ; Save prec' opr & code string
 F307 E5                 PUSH    HL              ;
-F308 2AE410             LD      HL,(FPREG)      ; Get first string
+F308 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get first string
 F30B E3                 EX      (SP),HL         ; Save first string
 F30C CDD1ED             CALL    OPRND           ; Get second string
 F30F E3                 EX      (SP),HL         ; Restore first string
 F310 CD45ED             CALL    TSTSTR          ; Make sure it's a string
 F313 7E                 LD      A,(HL)          ; Get length of second string
 F314 E5                 PUSH    HL              ; Save first string
-F315 2AE410             LD      HL,(FPREG)      ; Get second string
+F315 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get second string
 F318 E5                 PUSH    HL              ; Save second string
 F319 86                 ADD     A,(HL)          ; Add length of second string
 F31A 1E1C               LD      E,LS            ; ?LS Error
 F31C DAC1E3             JP      C,<?php bas8K("ERROR"); ?>         ; String too long - Error
 F31F CDBFF1             CALL    MKTMST          ; Make temporary string
 F322 D1                 POP     DE              ; Get second string to DE
-F323 CD57F3             CALL    GSTRDE          ; Move to string pool if needed
+F323 CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to string pool if needed
 F326 E3                 EX      (SP),HL         ; Get first string
-F327 CD56F3             CALL    GSTRHL          ; Move to string pool if needed
+F327 CD56F3             CALL    <?php bas8K("GSTRHL"); ?>          ; Move to string pool if needed
 F32A E5                 PUSH    HL              ; Save first string
 F32B 2AC110             LD      HL,(TMPSTR+2)   ; Temporary string address
 F32E EB                 EX      DE,HL           ; To DE
@@ -85,7 +85,7 @@ F34C 13                 INC     DE              ; Next destination
 F34D C347F3             JP      TSALP           ; Loop until string moved
 
 <span id="F350">F350</span> CD45ED     <?php lbl8K("GETSTR"); ?>: CALL    TSTSTR          ; Make sure it's a string
-<span id="F353">F353</span> 2AE410     <?php lbl8K("GSTRCU"); ?>: LD      HL,(FPREG)      ; Get current string
+<span id="F353">F353</span> 2AE410     <?php lbl8K("GSTRCU"); ?>: LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get current string
 <span id="F356">F356</span> EB         <?php lbl8K("GSTRHL"); ?>: EX      DE,HL           ; Save DE
 <span id="F357">F357</span> CD71F3     <?php lbl8K("GSTRDE"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Was it last tmp-str?
 F35A EB                 EX      DE,HL           ; Restore DE

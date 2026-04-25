@@ -15,7 +15,7 @@
 <span id="1015">1015</span>            <?php lbl8K("DIV4"); ?>    EQU     1015H           ; &lt;-inserted
 <span id="1017">1017</span>            <?php lbl8K("SEED"); ?>    EQU     1017H           ; Random number seed
 <span id="103A">103A</span>            <?php lbl8K("LSTRND"); ?>  EQU     103AH           ; Last random number
-<span id="103E">103E</span>            <?php lbl8K("INPSUB"); ?>  EQU     103EH           ; #INP (x)" Routine
+<span id="103E">103E</span>            <?php lbl8K("INPSUB"); ?>  EQU     103EH           ; #<?php bas8K("INP"); ?> (x)" Routine
 <span id="103F">103F</span>            <?php lbl8K("INPORT"); ?>  EQU     103FH           ; PORT (x)
 <span id="1041">1041</span>            <?php lbl8K("NULLS"); ?>   EQU     1041H           ; Number of nulls
 <span id="1042">1042</span>            <?php lbl8K("LWIDTH"); ?>  EQU     1042H           ; Terminal width
@@ -53,7 +53,7 @@
 
 <span id="10C7">10C7</span>            <?php lbl8K("LOOPST"); ?>  EQU     10C7H           ; First statement of loop
 <span id="10C9">10C9</span>            <?php lbl8K("DATLIN"); ?>  EQU     10C9H           ; Line of current <?php bas8K("DATA"); ?> item
-<span id="10CB">10CB</span>            <?php lbl8K("FORFLG"); ?>  EQU     10CBH           ; "FOR" loop flag
+<span id="10CB">10CB</span>            <?php lbl8K("FORFLG"); ?>  EQU     10CBH           ; "<?php bas8K("FOR"); ?>" loop flag
 <span id="10CC">10CC</span>            <?php lbl8K("LSTBIN"); ?>  EQU     10CCH           ; Last byte entered
 <span id="10CD">10CD</span>            <?php lbl8K("READFG"); ?>  EQU     10CDH           ; Read/Input flag
 <span id="10CE">10CE</span>            <?php lbl8K("BRKLIN"); ?>  EQU     10CEH           ; Line of break
@@ -67,7 +67,7 @@
 <span id="10DE">10DE</span>            <?php lbl8K("FNRGNM"); ?>  EQU     10DEH           ; Name of FN argument
 <span id="10E0">10E0</span>            <?php lbl8K("FNARG"); ?>   EQU     10E0H           ; FN argument value
 <span id="10E4">10E4</span>            <?php lbl8K("FPREG"); ?>   EQU     10E4H           ; Floating point register
-<span id="10E7">10E7</span>            <?php lbl8K("FPEXP"); ?>   EQU     FPREG+3         ; Floating point exponent
+<span id="10E7">10E7</span>            <?php lbl8K("FPEXP"); ?>   EQU     <?php bas8K("FPREG"); ?>+3         ; Floating point exponent
 <span id="10E8">10E8</span>            <?php lbl8K("SGNRES"); ?>  EQU     10E8H           ; Sign of result
 <span id="10E9">10E9</span>            <?php lbl8K("PBUFF"); ?>   EQU     10E9H           ; Number print buffer
 <span id="10F6">10F6</span>            <?php lbl8K("MULVAL"); ?>  EQU     10F6H           ; Multiplier
@@ -76,9 +76,9 @@
 
                 ; BASIC ERROR CODE VALUES
 
-<span id="0000-NF">0000</span>            <?php lbl8K("NF"); ?>      EQU     00H             ; NEXT without FOR
+<span id="0000-NF">0000</span>            <?php lbl8K("NF"); ?>      EQU     00H             ; NEXT without <?php bas8K("FOR","","","\n"); ?>
 <span id="0002-SN">0002</span>            <?php lbl8K("SN"); ?>      EQU     02H             ; Syntax error
-<span id="0004">0004</span>            <?php lbl8K("RG"); ?>      EQU     04H             ; RETURN without GOSUB
+<span id="0004">0004</span>            <?php lbl8K("RG"); ?>      EQU     04H             ; RETURN without <?php bas8K("GOSUB","","","\n"); ?>
 <span id="0006">0006</span>            <?php lbl8K("OD"); ?>      EQU     06H             ; Out of <?php bas8K("DATA","","","\n"); ?>
 <span id="0008-FC">0008</span>            <?php lbl8K("FC"); ?>      EQU     08H             ; Function call error
 <span id="000A-OV">000A</span>            <?php lbl8K("OV"); ?>      EQU     0AH             ; Overflow

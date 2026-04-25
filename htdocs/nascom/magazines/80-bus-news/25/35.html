@@ -64,20 +64,20 @@ E8B0 C9                 RET                     ; CONTinue where left off
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    32</span>
 
-<span id="E8B1">E8B1</span> CD84F4     <?php lbl8K("NULL"); ?>:   CALL    GETINT          ; Get integer 0-255
+<span id="E8B1">E8B1</span> CD84F4     <?php lbl8K("NULL"); ?>:   CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
 E8B4 C0                 RET     NZ              ; Return if bad value
 E8B5 324110             LD      (NULLS),A       ; Set nulls number
 E8B8 C9                 RET
 
 <span id="E8B9">E8B9</span> 06FF       <?php lbl8K("ARRLD1"); ?>: LD      B,-1            ; Flag array load
-<span id="E8BB">E8BB</span> CD36E8     <?php lbl8K("ARRSV1"); ?>: CALL    GETCHR          ; Skip "*"
+<span id="E8BB">E8BB</span> CD36E8     <?php lbl8K("ARRSV1"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Skip "*"
 E8BE 78                 LD      A,B             ; <?php bas8K("CLOAD"); ?>* or <?php bas8K("CSAVE"); ?>*
 E8BF 32CE10             LD      (<?php bas8K("BRKLIN"); ?>),A      ; Save it
 E8C2 3E01               LD      A,1             ; It's an array
-E8C4 32CB10             LD      (FORFLG),A      ; Flag array name
-E8C7 CD2DEF             CALL    GETVAR          ; Get address of array name
+E8C4 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Flag array name
+E8C7 CD2DEF             CALL    <?php bas8K("GETVAR"); ?>          ; Get address of array name
 E8CA E5                 PUSH    HL              ; Save code string address
-E8CB 32CB10             LD      (FORFLG),A      ; Clear flag
+E8CB 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Clear flag
 E8CE 60                 LD      H,B             ; Address of array to HL
 E8CF 69                 LD      L,C
 E8D0 0B                 DEC     BC              ; Back space
@@ -113,7 +113,7 @@ E8FE C1                 POP     BC              ; Number of dimensions
 E8FF D1                 POP     DE              ; End of array data
 E900 E1                 POP     HL              ; Address of array data
 E901 06D2               LD      B,11010010B     ; Header byte
-E903 C3D6FF             JP      JPLDSV          ; <?php bas8K("CSAVE"); ?>-SNDHDR&nbsp;, <?php bas8K("CLOAD"); ?>-GETHDR
+E903 C3D6FF             JP      JPLDSV          ; <?php bas8K("CSAVE"); ?>-SNDHDR&nbsp;, <?php bas8K("CLOAD"); ?>-<?php bas8K("GETHDR","","","\n"); ?>
 
 <span id="E906">E906</span> 78         <?php lbl8K("SNDHDR"); ?>: LD      A,B             ; Get header byte
 E907 CDB7F4             CALL    WUART2          ; Send 2 bytes to UART

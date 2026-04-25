@@ -29,9 +29,9 @@ FADF E1                 POP     HL              ; Restore MSB of base
 FAE0 7C                 LD      A,H             ; but don't affect flags
 FAE1 1F                 RRA                     ; Exponent odd or even?
 <span id="FAE2">FAE2</span> E1         <?php lbl8K("POWER2"); ?>: POP     HL              ; Restore MSB and exponent
-FAE3 22E610             LD      (FPREG+2),HL    ; Save base in FPREG
+FAE3 22E610             LD      (<?php bas8K("FPREG"); ?>+2),HL    ; Save base in <?php bas8K("FPREG","","","\n"); ?>
 FAE6 E1                 POP     HL              ; LSBs of base
-FAE7 22E410             LD      (FPREG),HL      ; Save in FPREG
+FAE7 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save in <?php bas8K("FPREG","","","\n"); ?>
 FAEA DCA7FA             CALL    C,NEGAFT        ; Odd power - Negate result
 FAED CC3CF8             CALL    Z,INVSGN        ; Negative base - Negate it
 FAF0 D5                 PUSH    DE              ; Save power
@@ -39,7 +39,7 @@ FAF1 C5                 PUSH    BC
 FAF2 CDC7F6             CALL    LOG             ; Get LOG of base
 FAF5 C1                 POP     BC              ; Restore power
 FAF6 D1                 POP     DE
-FAF7 CD08F7             CALL    FPMULT          ; Multiply LOG by power
+FAF7 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply LOG by power
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -48,30 +48,30 @@ FAF7 CD08F7             CALL    FPMULT          ; Multiply LOG by power
 <span id="FAFA">FAFA</span> CD44F8     <?php lbl8K("EXP"); ?>:    CALL    STAKFP          ; Put value on stack
 FAFD 013881             LD      BC,08138H       ; BCDE = 1/Ln(2)
 FB00 113BAA             LD      DE,0AA3BH
-FB03 CD08F7             CALL    FPMULT          ; Multiply value by 1/LN(2)
-FB06 3AE710             LD      A,(FPEXP)       ; Get exponent
+FB03 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply value by 1/LN(2)
+FB06 3AE710             LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get exponent
 FB09 FE88               CP      80H+8           ; Is it in range?
 FB0B D2EFF7             JP      NC,OVTST1       ; No - Test for overflow
-FB0E CDE6F8             CALL    INT             ; Get INT of FPREG
+FB0E CDE6F8             CALL    INT             ; Get INT of <?php bas8K("FPREG","","","\n"); ?>
 FB11 C680               ADD     A,80H           ; For excess 128
 FB13 C602               ADD     A,2             ; Exponent > 126?
 FB15 DAEFF7             JP      C,OVTST1        ; Yes - Test for overflow
 FB18 F5                 PUSH    AF              ; Save scaling factor
 FB19 21B6F6             LD      HL,UNITY        ; Point to 1.
-FB1C CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add 1 to FPREG
+FB1C CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add 1 to <?php bas8K("FPREG","","","\n"); ?>
 FB1F CDFFF6             CALL    MULLN2          ; Multiply by LN(2)
 FB22 F1                 POP     AF              ; Restore scaling factor
 FB23 C1                 POP     BC              ; Restore exponent
 FB24 D1                 POP     DE
 FB25 F5                 PUSH    AF              ; Save scaling factor
-FB26 CDCAF5             CALL    SUBCDE          ; Subtract exponent from FPREG
+FB26 CDCAF5             CALL    SUBCDE          ; Subtract exponent from <?php bas8K("FPREG","","","\n"); ?>
 FB29 CD3CF8             CALL    INVSGN          ; Negate result
-FB2C 213AFB             LD      HL,EXPTAB       ; Coefficient table
+FB2C 213AFB             LD      HL,<?php bas8K("EXPTAB"); ?>       ; Coefficient table
 FB2F CD6AFB             CALL    SMSER1          ; Sum the series
 FB32 110000             LD      DE,0            ; Zero LSBs
 FB35 C1                 POP     BC              ; Scaling factor
 FB36 4A                 LD      C,D             ; Zero MSB
-FB37 C308F7             JP      FPMULT          ; Scale result to correct value
+FB37 C308F7             JP      <?php bas8K("FPMULT"); ?>          ; Scale result to correct value
 
 <span id="FB3A">FB3A</span> 08         <?php lbl8K("EXPTAB"); ?>: DEFB    8                       ; Table used by <?php bas8K("EXP","","","\n"); ?>
 FB3B 402E9474           DEFB    040H,02EH,094H,074H     ; -1/7! (-1/5040)

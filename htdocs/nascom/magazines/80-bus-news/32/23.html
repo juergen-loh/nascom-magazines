@@ -15,14 +15,14 @@ By Carl Lloyd&mdash;Parker
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    77</span>
 
-<span id="F75B">F75B</span> CD44F8     <?php lbl8K("DIV10"); ?>:  CALL    STAKFP          ; Save FPREG on stack
+<span id="F75B">F75B</span> CD44F8     <?php lbl8K("DIV10"); ?>:  CALL    STAKFP          ; Save <?php bas8K("FPREG"); ?> on stack
 F75E 012084             LD      BC,8420H        ; BCDE = 10.
 F761 110000             LD      DE,0000H
-F764 CD54F8             CALL    FPBCDE          ; Move 10 to FPREG
+F764 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move 10 to <?php bas8K("FPREG","","","\n"); ?>
 
 <span id="F767">F767</span> C1         <?php lbl8K("DIV"); ?>:    POP     BC              ; Get number from stack
 F768 D1                 POP     DE
-<span id="F769">F769</span> CD13F8     <?php lbl8K("DVBCDE"); ?>: CALL    TSTSGN          ; Test sign of FPREG
+<span id="F769">F769</span> CD13F8     <?php lbl8K("DVBCDE"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F76C CAB0E3             JP      Z,<?php bas8K("DZERR"); ?>         ; Error if division by zero
 F76F 2EFF               LD      L,-1            ; Flag subtract exponents
 F771 CDD1F7             CALL    <?php bas8K("ADDEXP"); ?>          ; Subtract exponents

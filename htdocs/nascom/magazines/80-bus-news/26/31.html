@@ -15,8 +15,8 @@ By Carl Lloyd&mdash;Parker
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    39</span>
 
-<span id="EB1F">EB1F</span> 2B         <?php lbl8K("MRPRNT"); ?>: DEC     HL              ; DEC 'cos GETCHR INCs
-EB20 CD36E8             CALL    GETCHR          ; Get next character
+<span id="EB1F">EB1F</span> 2B         <?php lbl8K("MRPRNT"); ?>: DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
+EB20 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 <span id="EB23">EB23</span> CA81EB     <?php lbl8K("PRINT"); ?>:  JP      Z,PRNTCR        ; CRLF if just PRINT
 <span id="EB26">EB26</span> C8         <?php lbl8K("PRNTLP"); ?>: RET     Z               ; End of list - Exit
 EB27 FEA5               CP      ZTAB            ; "TAB(" token?
@@ -37,9 +37,9 @@ EB45 C26DEB             JP      NZ,PRNTST       ; Yes - Output string contents
 EB48 CDB8F9             CALL    NUMASC          ; Convert number to text
 EB4B CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create temporary string
 EB4E 3620               LD      (HL)," "        ; Followed by a space
-EB50 2AE410             LD      HL,(FPREG)      ; Get length of output
+EB50 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get length of output
 EB53 34                 INC     (HL)            ; Plus 1 for the space
-EB54 2AE410             LD      HL,(FPREG)      ; &lt; Not needed &gt;
+EB54 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; &lt; Not needed &gt;
 EB57 3A4210             LD      A,(LWIDTH)      ; Get width of line
 EB5A 47                 LD      B,A             ; To B
 EB5B 04                 INC     B               ; Width 255 (No limit)?

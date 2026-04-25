@@ -30,8 +30,8 @@ F6C3 45AA3882           DEFB    045H,0AAH,038H,082H     ; 2.88539
 
 <span id="F6C7">F6C7</span> CD13F8     <?php lbl8K("LOG"); ?>:    CALL    TSTSGN          ; Test sign of value
 F6CA B7                 OR      A
-F6CB EAA0E9             JP      PE,FCERR        ; ?FC Error if &lt;= zero
-F6CE 21E710             LD      HL,FPEXP        ; Point to exponent
+F6CB EAA0E9             JP      PE,<?php bas8K("FCERR"); ?>        ; ?<?php bas8K("FC"); ?> Error if &lt;= zero
+F6CE 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F6D1 7E                 LD      A,(HL)          ; Get exponent
 F6D2 013580             LD      BC,8035H        ; BCDE = SQR(1/2)
 F6D5 11F304             LD      DE,04F3H
@@ -40,18 +40,18 @@ F6D9 F5                 PUSH    AF              ; Save scale factor
 F6DA 70                 LD      (HL),B          ; Save new exponent
 F6DB D5                 PUSH    DE              ; Save SQR(1/2)
 F6DC C5                 PUSH    BC
-F6DD CDCDF5             CALL    FPADD           ; Add SQR(1/2) to value
+F6DD CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Add SQR(1/2) to value
 F6E0 C1                 POP     BC              ; Restore SQR(1/2)
 F6E1 D1                 POP     DE
 F6E2 04                 INC     B               ; Make it SQR(2)
 F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by SQR(2)
 F6E6 21B6F6             LD      HL,UNITY        ; Point to 1.
-F6E9 CDC4F5             CALL    SUBPHL          ; Subtract FPREG from 1
+F6E9 CDC4F5             CALL    SUBPHL          ; Subtract <?php bas8K("FPREG"); ?> from 1
 F6EC 21BAF6             LD      HL,LOGTAB       ; Coefficient table
 F6EF CD5BFB             CALL    SUMSER          ; Evaluate sum of series
 F6F2 018080             LD      BC,8080H        ; BCDE = -0.5
 F6F5 110000             LD      DE,0000H
-F6F8 CDCDF5             CALL    FPADD           ; Subtract 0.5 from FPREG
+F6F8 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Subtract 0.5 from <?php bas8K("FPREG","","","\n"); ?>
 F6FB F1                 POP     AF              ; Restore scale factor
 F6FC CD8EF9             CALL    RSCALE          ; Re-scale number
 <span id="F6FF">F6FF</span> 013180     <?php lbl8K("MULLN2"); ?>: LD      BC,8031H        ; BCDE = Ln(2)
@@ -64,7 +64,7 @@ F705 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
 
 <span id="F706">F706</span> C1         <?php lbl8K("MULT"); ?>:   POP     BC              ; Get number from stack
 F707 D1                 POP     DE
-<span id="F708">F708</span> CD13F8     <?php lbl8K("FPMULT"); ?>: CALL    TSTSGN          ; Test sign of FPREG
+<span id="F708">F708</span> CD13F8     <?php lbl8K("FPMULT"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F70B C8                 RET     Z               ; Return zero if zero
 F70C 2E00               LD      L,0             ; Flag add exponents
 F70E CDD1F7             CALL    <?php bas8K("ADDEXP"); ?>          ; Add exponents
@@ -80,7 +80,7 @@ F721 E5                 PUSH    HL              ; Save for return
 F722 212AF7             LD      HL,MULT8        ; Address of 8 bit multiply
 F725 E5                 PUSH    HL              ; Save for NMSB,MSB
 F726 E5                 PUSH    HL              ;
-F727 21E410             LD      HL,FPREG        ; Point to number
+F727 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to number
 <span id="F72A">F72A</span> 7E         <?php lbl8K("MULT8"); ?>:  LD      A,(HL)          ; Get LSB of number
 F72B 23                 INC     HL              ; Point to NMSB
 F72C B7                 OR      A               ; Test LSB

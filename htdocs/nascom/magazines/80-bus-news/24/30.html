@@ -52,7 +52,7 @@ E3D0 CD9BE6             CALL    OUTC            ; Output "?"
 E3D3 19                 ADD     HL,DE           ; Offset to correct error code
 E3D4 7E                 LD      A,(HL)          ; First character
 E3D5 CD9BE6             CALL    OUTC            ; Output it
-E3D8 CD36E8             CALL    GETCHR          ; Get next character
+E3D8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E3DB CD9BE6             CALL    OUTC            ; Output it
 E3DE 213FE3             LD      HL,<?php bas8K("ERRMSG"); ?>       ; "Error" message
 <span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    PRS             ; Output message

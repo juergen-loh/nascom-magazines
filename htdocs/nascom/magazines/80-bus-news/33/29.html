@@ -36,7 +36,7 @@ FFD5 C9                 RET
 <span id="FFD6">FFD6</span> 3ACE10     <?php lbl8K("JPLDSV"); ?>: LD      A,(<?php bas8K("BRKLIN"); ?>)      ; <?php bas8K("CLOAD"); ?> or <?php bas8K("CSAVE"); ?>?
 FFD9 FEFF               CP      -1
 FFDB C206E9             JP      NZ,SNDHDR       ; <?php bas8K("CSAVE"); ?> - Send header
-FFDE C310E9             JP      GETHDR          ; <?php bas8K("CLOAD"); ?> - Get header
+FFDE C310E9             JP      <?php bas8K("GETHDR"); ?>          ; <?php bas8K("CLOAD"); ?> - Get header
 
 <span id="FFE1">FFE1</span> CD81EB     <?php lbl8K("CRLIN1"); ?>: CALL    PRNTCR          ; Output CRLF
 FFE4 C3F2E5             JP      <?php bas8K("GETLIN"); ?>          ; Get an input line
@@ -122,4 +122,3 @@ FFF7 C381EB             JP      PRNTCR          ; Output CRLF
 <?php bas8K("IGCHR"); ?>   <?php bas8K("FD00"); ?>    <?php bas8K("INCHL"); ?>   <?php bas8K("F869"); ?>    <?php bas8K("INCLEN"); ?>  <?php bas8K("E6BB"); ?>    <?php bas8K("INDFND"); ?>  <?php bas8K("E370"); ?>    <?php bas8K("INEWLN"); ?>  <?php bas8K("E455","","","\n"); ?>
 </pre>
 <?php DoublePageEnd(); ?>
-<!-- EXPTAB bas8K.*[A-Z0-9]"\); \?>$ -->

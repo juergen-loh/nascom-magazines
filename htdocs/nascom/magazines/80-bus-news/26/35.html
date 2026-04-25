@@ -4,7 +4,7 @@
 
 <span id="EDD1">EDD1</span> AF         <?php lbl8K("OPRND"); ?>:  XOR     A               ; Get operand routine
 EDD2 32AD10             LD      (TYPE),A        ; Set numeric expected
-EDD5 CD36E8             CALL    GETCHR          ; Get next character
+EDD5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EDD8 1E24               LD      E,MO            ; ?MO Error
 EDDA CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; No operand - Error
 EDDD DA1AF9             JP      C,<?php bas8K("ASCTFP"); ?>        ; Number - Get value
@@ -23,7 +23,7 @@ EDFC CA08EF             JP      Z,<?php bas8K("EVNOT"); ?>         ; Yes - Eval 
 EDFF FEA7               CP      ZFN             ; "FN" Token&nbsp;?
 EE01 CA33F1             JP      Z,<?php bas8K("DOFN"); ?>          ; Yes - Do FN routine
 EE04 D6B6               SUB     ZSGN            ; Is it a function?
-EE06 D233EE             JP      NC,FNOFST       ; Yes - Evaluate function
+EE06 D233EE             JP      NC,<?php bas8K("FNOFST"); ?>       ; Yes - Evaluate function
 <span id="EE09">EE09</span> CD56ED     <?php lbl8K("EVLPAR"); ?>: CALL    OPNPAR          ; Evaluate expression in "()"
 EE0C CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 EE0F 29                 DEFB    ")"
@@ -38,13 +38,13 @@ EE1A CD3CF8             CALL    INVSGN          ; Negate value
 EE20 E1                 POP     HL              ; Restore next operator address
 EE21 C9                 RET
 
-<span id="EE22">EE22</span> CD2DEF     <?php lbl8K("CONVAR"); ?>: CALL    GETVAR          ; Get variable address to DE
+<span id="EE22">EE22</span> CD2DEF     <?php lbl8K("CONVAR"); ?>: CALL    <?php bas8K("GETVAR"); ?>          ; Get variable address to DE
 <span id="EE25">EE25</span> E5         <?php lbl8K("FRMEVL"); ?>: PUSH    HL              ; Save code string address
 EE26 EB                 EX      DE,HL           ; Variable address to HL
-EE27 22E410             LD      (FPREG),HL      ; Save address of variable
+EE27 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save address of variable
 EE2A 3AAD10             LD      A,(TYPE)        ; Get type
 EE2D B7                 OR      A               ; Numeric?
-EE2E CC51F8             CALL    Z,PHLTFP        ; Yes - Move contents to FPREG
+EE2E CC51F8             CALL    Z,PHLTFP        ; Yes - Move contents to <?php bas8K("FPREG","","","\n"); ?>
 EE31 E1                 POP     HL              ; Restore code string address
 EE32 C9                 RET
 </pre>

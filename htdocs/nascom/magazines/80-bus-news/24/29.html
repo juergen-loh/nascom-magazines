@@ -5,7 +5,7 @@
                 ; INITIALISATION TABLE
 
 <span id="E2DF">E2DF</span> C3AEE0     <?php lbl8K("INITAB"); ?>: JP      WARMST          ; Warm start jump
-E2E2 C3A0E9             JP      FCERR           ; "USR (X)" jump (Set to Error)
+E2E2 C3A0E9             JP      <?php bas8K("FCERR"); ?>           ; "USR (X)" jump (Set to Error)
 
 E2E5 D300               OUT     (0),A           ; "OUT p,n" skeleton
 E2E7 C9                 RET
@@ -33,7 +33,7 @@ E311 65BCCD98           DEFB    065H,0BCH,0CDH,098H     ;-1.34831E+07
 E315 D6773E98           DEFB    0D6H,077H,03EH,098H     ; 1.24825E+07
 E319 52C74F80           DEFB    052H,0C7H,04FH,080H     ; Last random number
 
-E31D DB00               IN      A,(0)           ; INP (x) skeleton
+E31D DB00               IN      A,(0)           ; <?php bas8K("INP"); ?> (x) skeleton
 E31F C9                 RET
 
 E320 01                 DEFB    1               ; POS (x) number (1)
@@ -70,23 +70,23 @@ E345 00
 <span id="E34B">E34B</span> 4F6B0D00   <?php lbl8K("OKMSG"); ?>:  DEFB    "Ok",<?php bas8K("CR"); ?>,0,0
 <span id="E350">E350</span> 42726561   <?php lbl8K("BRKMSG"); ?>: DEFB    "Break",0
 
-<span id="E356">E356</span> 210400     <?php lbl8K("BAKSTK"); ?>: LD      HL,4            ; Look for "FOR" block with
+<span id="E356">E356</span> 210400     <?php lbl8K("BAKSTK"); ?>: LD      HL,4            ; Look for "<?php bas8K("FOR"); ?>" block with
 E359 39                 ADD     HL,SP           ; same index as specified
 <span id="E35A">E35A</span> 7E         <?php lbl8K("LOKFOR"); ?>: LD      A,(HL)          ; Get block ID
 E35B 23                 INC     HL              ; Point to index address
-E35C FE81               CP      ZFOR            ; Is it a "FOR" token
+E35C FE81               CP      ZFOR            ; Is it a "<?php bas8K("FOR"); ?>" token
 E35E C0                 RET     NZ              ; No - exit
-E35F 4E                 LD      C,(HL)          ; BC = Address of "FOR" index
+E35F 4E                 LD      C,(HL)          ; BC = Address of "<?php bas8K("FOR"); ?>" index
 E360 23                 INC     HL
 E361 46                 LD      B,(HL)
 E362 23                 INC     HL              ; Point to sign of STEP
 E363 E5                 PUSH    HL              ; Save pointer to sign
-E364 69                 LD      L,C             ; HL = address of "FOR" index
+E364 69                 LD      L,C             ; HL = address of "<?php bas8K("FOR"); ?>" index
 E365 60                 LD      H,B
 E366 7A                 LD      A,D             ; See if an index was specified
 E367 B3                 OR      E               ; DE = 0 if no index specified
 E368 EB                 EX      DE,HL           ; Specified index into HL
-E369 CA70E3             JP      Z,INDFND        ; Skip if no index given
+E369 CA70E3             JP      Z,<?php bas8K("INDFND"); ?>        ; Skip if no index given
 E36C EB                 EX      DE,HL           ; Index back into DE
 E36D CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare index with one given
 <span id="E370">E370</span> 010D00     <?php lbl8K("INDFND"); ?>: LD      BC,16-3         ; Offset to next block

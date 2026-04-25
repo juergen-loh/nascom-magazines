@@ -40,7 +40,7 @@ E5F8 2A750C             LD      HL,(<?php bas8K("CIN"); ?>)        ; Point to NA
 E5FB 7E                 LD      A,(HL)          ; Get input mode
 E5FC FE74               CP      74H             ; Is it "X" mode?
 E5FE CA07E6             JP      Z,<?php bas8K("TTYLIN"); ?>        ; Yes - Teletype line input
-E601 CDE8FE             CALL    INLINE          ; Get a line from NAS-SYS
+E601 CDE8FE             CALL    <?php bas8K("INLINE"); ?>          ; Get a line from NAS-SYS
 E604 C386EB             JP      <?php bas8K("DONULL"); ?>          ; POS(X)=0 and do nulls
 </pre>
 <?php DoublePageChange(); ?>

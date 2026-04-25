@@ -63,8 +63,8 @@ E4EA AF                 XOR     A               ; A = 00
 E4EB 6F                 LD      L,A             ; HL = 0000
 E4EC 67                 LD      H,A
 E4ED 22D410             LD      (<?php bas8K("CONTAD"); ?>),HL     ; No CONTinue
-E4F0 32CB10             LD      (FORFLG),A      ; Clear FOR flag
-E4F3 22DE10             LD      (FNRGNM),HL     ; Clear FN argument
+E4F0 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Clear <?php bas8K("FOR"); ?> flag
+E4F3 22DE10             LD      (<?php bas8K("FNRGNM"); ?>),HL     ; Clear FN argument
 E4F6 E5                 PUSH    HL              ; HL = 0000
 E4F7 C5                 PUSH    BC              ; Put back return
 <span id="E4F8">E4F8</span> 2ACE10     <?php lbl8K("DOAGN"); ?>:  LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of code to RUN

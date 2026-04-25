@@ -31,7 +31,7 @@ F7C0 B2                 OR      D               ; Merge NMSB
 F7C1 B3                 OR      E               ; Merge LSB
 F7C2 C28EF7             JP      NZ,<?php bas8K("DIVLP"); ?>        ; Not done - Keep dividing
 F7C5 E5                 PUSH    HL              ; Save divisor
-F7C6 21E710             LD      HL,FPEXP        ; Point to exponent
+F7C6 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F7C9 35                 DEC     (HL)            ; Divide by 2
 F7CA E1                 POP     HL              ; Restore divisor
 F7CB C28EF7             JP      NZ,<?php bas8K("DIVLP"); ?>        ; Ok - Keep going
@@ -41,7 +41,7 @@ F7CE C3BCE3             JP      OVERR           ; Overflow error
 F7D2 B7                 OR      A               ; Test it
 F7D3 CAF5F7             JP      Z,OVTST3        ; Zero - Result zero
 F7D6 7D                 LD      A,L             ; Get add/subtract flag
-F7D7 21E710             LD      HL,FPEXP        ; Point to exponent
+F7D7 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F7DA AE                 XOR     (HL)            ; Add or subtract it
 F7DB 80                 ADD     A,B             ; Add the other exponent
 F7DC 47                 LD      B,A             ; Save new exponent
@@ -61,7 +61,7 @@ F7EE C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    79</span>
 
-<span id="F7EF">F7EF</span> CD13F8     <?php lbl8K("OVTST1"); ?>: CALL    TSTSGN          ; Test sign of FPREG
+<span id="F7EF">F7EF</span> CD13F8     <?php lbl8K("OVTST1"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F7F2 2F                 CPL                     ; Invert sign
 F7F3 E1                 POP     HL              ; Clean up stack
 <span id="F7F4">F7F4</span> B7         <?php lbl8K("OVTST2"); ?>: OR      A               ; Test if new exponent zero
@@ -69,23 +69,23 @@ F7F3 E1                 POP     HL              ; Clean up stack
 F7F6 F233F6             JP      P,RESZER        ; Result zero
 F7F9 C3BCE3             JP      OVERR           ; Overflow error
 
-<span id="F7FC">F7FC</span> CD5FF8     <?php lbl8K("MLSP10"); ?>: CALL    <?php bas8K("BCDEFP"); ?>          ; Move FPREG to BCDE
+<span id="F7FC">F7FC</span> CD5FF8     <?php lbl8K("MLSP10"); ?>: CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
 F7FF 78                 LD      A,B             ; Get exponent
 F800 B7                 OR      A               ; Is it zero?
 F801 C8                 RET     Z               ; Yes - Result is zero
 F802 C602               ADD     A,2             ; Multiply by 4
 F804 DABCE3             JP      C,OVERR         ; Overflow - ?OV Error
 F807 47                 LD      B,A             ; Re-save exponent
-F808 CDCDF5             CALL    FPADD           ; Add BCDE to FPREG (Times 5)
-F80B 21E710             LD      HL,FPEXP        ; Point to exponent
+F808 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Add BCDE to <?php bas8K("FPREG"); ?> (Times 5)
+F80B 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F80E 34                 INC     (HL)            ; Double number (Times 10)
 F80F C0                 RET     NZ              ; Ok - Return
 F810 C3BCE3             JP      OVERR           ; Overflow error
 
-<span id="F813">F813</span> 3AE710     <?php lbl8K("TSTSGN"); ?>: LD      A,(FPEXP)       ; Get sign of FPREG
+<span id="F813">F813</span> 3AE710     <?php lbl8K("TSTSGN"); ?>: LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get sign of <?php bas8K("FPREG","","","\n"); ?>
 F816 B7                 OR      A
 F817 C8                 RET     Z               ; RETurn if number is zero
-F818 3AE610             LD      A,(FPREG+2)     ; Get MSB of FPREG
+F818 3AE610             LD      A,(<?php bas8K("FPREG"); ?>+2)     ; Get MSB of <?php bas8K("FPREG","","","\n"); ?>
 F81B FE                 DEFB    (CP 2FH         ; Test sign
 <span id="F81C">F81C</span> 2F         <?php lbl8K("RETREL"); ?>: CPL                     ; Invert sign
 F81D 17                 RLA                     ; Sign bit to carry
@@ -94,10 +94,10 @@ F81F C0                 RET     NZ              ; Return -1 if negative
 F820 3C                 INC     A               ; Bump to +1
 F821 C9                 RET                     ; Positive - Return +1
 
-<span id="F822">F822</span> CD13F8     <?php lbl8K("SGN"); ?>:    CALL    TSTSGN          ; Test sign of FPREG
+<span id="F822">F822</span> CD13F8     <?php lbl8K("SGN"); ?>:    CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 <span id="F825">F825</span> 0688       <?php lbl8K("FLGREL"); ?>: LD      B,80H+8         ; 8 bit integer in exponent
 F827 110000             LD      DE,0            ; Zero NMSB and LSB
-<span id="F82A">F82A</span> 21E710     <?php lbl8K("RETINT"); ?>: LD      HL,FPEXP        ; Point to exponent
+<span id="F82A">F82A</span> 21E710     <?php lbl8K("RETINT"); ?>: LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F82D 4F                 LD      C,A             ; CDE = MSB,NMSB and LSB
 F82E 70                 LD      (HL),B          ; Save exponent
 F82F 0600               LD      B,0             ; CDE = integer to normalise

@@ -18,7 +18,7 @@ F62C D608               SUB     8               ; Count 8 bits
 F62E FEE0               CP      -24-8           ; Was number zero?
 F630 C221F6             JP      NZ,<?php bas8K("BNRMLP"); ?>       ; No - Keep normalising
 <span id="F633">F633</span> AF         <?php lbl8K("RESZER"); ?>: XOR     A               ; Result is zero
-<span id="F634">F634</span> 32E710     <?php lbl8K("SAVEXP"); ?>: LD      (FPEXP),A       ; Save result as zero
+<span id="F634">F634</span> 32E710     <?php lbl8K("SAVEXP"); ?>: LD      (<?php bas8K("FPEXP"); ?>),A       ; Save result as zero
 F637 C9                 RET
 
 <span id="F638">F638</span> 05         <?php lbl8K("NORMAL"); ?>: DEC     B               ; Count bits
@@ -35,22 +35,22 @@ F644 5C                 LD      E,H             ; Save HL in EB
 F645 45                 LD      B,L
 F646 B7                 OR      A               ; Any shifting done?
 F647 CA53F6             JP      Z,RONDUP        ; No - Round it up
-F64A 21E710             LD      HL,FPEXP        ; Point to exponent
+F64A 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F64D 86                 ADD     A,(HL)          ; Add shifted bits
 F64E 77                 LD      (HL),A          ; Re-save exponent
 F64F D233F6             JP      NC,RESZER       ; Underflow - Result is zero
 F652 C8                 RET     Z               ; Result is zero
 <span id="F653">F653</span> 78         <?php lbl8K("RONDUP"); ?>: LD      A,B             ; Get VLSB of number
-<span id="F654">F654</span> 21E710     <?php lbl8K("RONDB"); ?>:  LD      HL,FPEXP        ; Point to exponent
+<span id="F654">F654</span> 21E710     <?php lbl8K("RONDB"); ?>:  LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F657 B7                 OR      A               ; Any rounding?
-F658 FC65F6             CALL    M,FPROND        ; Yes - Round number up
+F658 FC65F6             CALL    M,<?php bas8K("FPROND"); ?>        ; Yes - Round number up
 F65B 46                 LD      B,(HL)          ; B = Exponent
 F65C 23                 INC     HL
 F65D 7E                 LD      A,(HL)          ; Get sign of result
 F65E E680               AND     10000000B       ; Only bit 7 needed
 F660 A9                 XOR     C               ; Set correct sign
 F661 4F                 LD      C,A             ; Save correct sign in number
-F662 C354F8             JP      FPBCDE          ; Move BCDE to FPREG
+F662 C354F8             JP      <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -67,15 +67,15 @@ F66D 34                 INC     (HL)            ; Increment exponent
 F66E C0                 RET     NZ              ; Return if ok
 F66F C3BCE3             JP      OVERR           ; Overflow error
 
-<span id="F672">F672</span> 7E         <?php lbl8K("PLUCDE"); ?>: LD      A,(HL)          ; Get LSB of FPREG
+<span id="F672">F672</span> 7E         <?php lbl8K("PLUCDE"); ?>: LD      A,(HL)          ; Get LSB of <?php bas8K("FPREG","","","\n"); ?>
 F673 83                 ADD     A,E             ; Add LSB of BCDE
 F674 5F                 LD      E,A             ; Save LSB of BCDE
 F675 23                 INC     HL
-F676 7E                 LD      A,(HL)          ; Get NMSB of FPREG
+F676 7E                 LD      A,(HL)          ; Get NMSB of <?php bas8K("FPREG","","","\n"); ?>
 F677 8A                 ADC     A,D             ; Add NMSB of BCDE
 F678 57                 LD      D,A             ; Save NMSB of BCDE
 F679 23                 INC     HL
-F67A 7E                 LD      A,(HL)          ; Get MSB of FPREG
+F67A 7E                 LD      A,(HL)          ; Get MSB of <?php bas8K("FPREG","","","\n"); ?>
 F67B 89                 ADC     A,C             ; Add MSB of BCDE
 F67C 4F                 LD      C,A             ; Save MSB of BCDE
 F67D C9                 RET

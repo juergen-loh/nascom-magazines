@@ -6,31 +6,31 @@
 EE35 07                 RLCA                    ; Double function offset
 EE36 4F                 LD      C,A             ; BC = Offset in function table
 EE37 C5                 PUSH    BC              ; Save adjusted token value
-EE38 CD36E8             CALL    GETCHR          ; Get next character
+EE38 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EE3B 79                 LD      A,C             ; Get adjusted token value
 EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "POINT" token?
 EE3E CA79FF             JP      Z,POINTB        ; Yes - Do "POINT" (not POINTB)
 EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' LEFT$,RIGHT$ or MID$ ?
-EE43 DA5FEE             JP      C,FNVAL         ; No - Do function
+EE43 DA5FEE             JP      C,<?php bas8K("FNVAL"); ?>         ; No - Do function
 EE46 CD56ED             CALL    OPNPAR          ; Evaluate expression  (X,...
 EE49 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 EE4C 2C                 DEFB    ","
 EE4D CD45ED             CALL    TSTSTR          ; Make sure it's a string
 EE50 EB                 EX      DE,HL           ; Save code string address
-EE51 2AE410             LD      HL,(FPREG)      ; Get address of string
+EE51 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get address of string
 EE54 E3                 EX      (SP),HL         ; Save address of string
 EE55 E5                 PUSH    HL              ; Save adjusted token value
 EE56 EB                 EX      DE,HL           ; Restore code string address
-EE57 CD84F4             CALL    GETINT          ; Get integer 0-255
+EE57 CD84F4             CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
 EE5A EB                 EX      DE,HL           ; Save code string address
 EE5B E3                 EX      (SP),HL         ; Save integer,HL = adj' token
-EE5C C367EE             JP      GOFUNC          ; Jump to string function
+EE5C C367EE             JP      <?php bas8K("GOFUNC"); ?>          ; Jump to string function
 
 <span id="EE5F">EE5F</span> CD09EE     <?php lbl8K("FNVAL"); ?>:  CALL    <?php bas8K("EVLPAR"); ?>          ; Evaluate expression
 EE62 E3                 EX      (SP),HL         ; HL = Adjusted token value
 EE63 111DEE             LD      DE,RETNUM       ; Return number from function
 EE66 D5                 PUSH    DE              ; Save on stack
-<span id="EE67">EE67</span> 010FE1     <?php lbl8K("GOFUNC"); ?>: LD      BC,FNCTAB       ; Function routine addresses
+<span id="EE67">EE67</span> 010FE1     <?php lbl8K("GOFUNC"); ?>: LD      BC,<?php bas8K("FNCTAB"); ?>       ; Function routine addresses
 EE6A 09                 ADD     HL,BC           ; Point to right address
 EE6B 4E                 LD      C,(HL)          ; Get LSB of address
 EE6C 23                 INC     HL              ;
@@ -48,7 +48,7 @@ EE78 FE2B               CP      "+"             ; "+" ASCII&nbsp;?
 EE7A C8                 RET     Z               ; Yes - Return
 EE7B FEAC               CP      ZPLUS           ; "+" token&nbsp;?
 EE7D C8                 RET     Z               ; Yes - Return
-EE7E 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
+EE7E 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 EE7F C9                 RET                     ; Return "NZ"
 </pre>
 <?php DoublePageChange(); ?>
@@ -65,7 +65,7 @@ EE8A EB                 EX      DE,HL           ; &lt;- Get last
 EE8B C1                 POP     BC              ; &lt;-  value
 EE8C E3                 EX      (SP),HL         ; &lt;-  from
 EE8D EB                 EX      DE,HL           ; &lt;-  stack
-EE8E CD54F8             CALL    FPBCDE          ; Move last value to FPREG
+EE8E CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move last value to <?php bas8K("FPREG","","","\n"); ?>
 EE91 F5                 PUSH    AF              ; Save "AND" / "OR" flag
 EE92 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 EE95 F1                 POP     AF              ; Restore "AND" / "OR" flag

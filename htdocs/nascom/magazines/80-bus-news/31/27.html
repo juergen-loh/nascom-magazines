@@ -27,7 +27,7 @@ F248 1E1A               LD      E,OS            ; ?OS Error
 F24A CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - Not enough string apace
 F24D BF                 CP      A               ; Flag garbage collect done
 F24E F5                 PUSH    AF              ; Save status
-F24F 012BF2             LD      BC,GRBDON       ; Garbage collection done
+F24F 012BF2             LD      BC,<?php bas8K("GRBDON"); ?>       ; Garbage collection done
 F252 C5                 PUSH    BC              ; Save for RETurn
 <span id="F253">F253</span> 2AAF10     <?php lbl8K("GARBGE"); ?>: LD      HL,(LSTRAM)     ; Get end of RAM pointer
 <span id="F256">F256</span> 22C310     <?php lbl8K("GARBLP"); ?>: LD      (STRBOT),HL     ; Reset string pointer
@@ -40,7 +40,7 @@ F261 21B310             LD      HL,TMSTPL       ; Temporary string pool
 F265 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
 F268 EB                 EX      DE,HL
 F269 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Temporary string pool done?
-F26C 0164F2             LD      BC,GRBLP        ; Loop until string pool done
+F26C 0164F2             LD      BC,<?php bas8K("GRBLP"); ?>        ; Loop until string pool done
 F26F C2B8F2             JP      NZ,STPOOL       ; No - See if in string area
 F272 2AD610             LD      HL,(PROGND)     ; Start of simple variables
 <span id="F275">F275</span> EB         <?php lbl8K("SMPVAR"); ?>: EX      DE,HL
@@ -70,7 +70,7 @@ F299 7B                 LD      A,E             ; Get type of array
 F29A E5                 PUSH    HL              ; Save address of num of dim'ns
 F29B 09                 ADD     HL,BC           ; Start of next array
 F29C B7                 OR      A               ; Test type of array
-F29D F28AF2             JP      P,GNXARY        ; Numeric array - Ignore it
+F29D F28AF2             JP      P,<?php bas8K("GNXARY"); ?>        ; Numeric array - Ignore it
 F2A0 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of next array
 F2A3 E1                 POP     HL              ; Get address of num of dim'ns
 F2A4 4E                 LD      C,(HL)          ; BC = Number of dimensions
@@ -83,7 +83,7 @@ F2AB 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Get address
 F2AE EB                 EX      DE,HL
 F2AF CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is this array finished?
 F2B2 CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Get next one
-F2B5 01AAF2             LD      BC,GRBARY       ; Loop until array all done
+F2B5 01AAF2             LD      BC,<?php bas8K("GRBARY"); ?>       ; Loop until array all done
 <span id="F2B8">F2B8</span> C5         <?php lbl8K("STPOOL"); ?>: PUSH    BC              ; Save return address
 F2B9 F680               OR      80H             ; Flag string type
 <span id="F2BB">F2BB</span> 7E         <?php lbl8K("STRADD"); ?>: LD      A,(HL)          ; Get string length

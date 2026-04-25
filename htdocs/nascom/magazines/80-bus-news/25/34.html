@@ -14,7 +14,7 @@ E7B8 E3                 EX      (SP),HL         ; Save and restore code string
 E7B9 CD44ED             CALL    TSTNUM          ; Make sure it's a number
 E7BC CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "TO" is next
 E7BF A6                 DEFB    ZTO             ; "TO" token
-E7C0 CD41ED             CALL    GETNUM          ; Get "TO" expression value
+E7C0 CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get "TO" expression value
 E7C3 E5                 PUSH    HL              ; Save code string address
 E7C4 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move "TO" value to BCDE
 E7C7 E1                 POP     HL              ; Restore code string address
@@ -27,11 +27,11 @@ E7CF 7E                 LD      A,(HL)          ; Get next byte in code string
 E7D0 FEAB               CP      ZSTEP           ; See if "STEP" is stated
 E7D2 3E01               LD      A,1             ; Sign of step = 1
 E7D4 C2E5E7             JP      NZ,SAVSTP       ; No STEP given - Default to 1
-E7D7 CD36E8             CALL    GETCHR          ; Jump over "STEP" token
-E7DA CD41ED             CALL    GETNUM          ; Get step value
+E7D7 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Jump over "STEP" token
+E7DA CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get step value
 E7DD E5                 PUSH    HL              ; Save code string address
 E7DE CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move STEP to BCDE
-E7E1 CD13F8             CALL    TSTSGN          ; Test sign of FPREG
+E7E1 CD13F8             CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 E7E4 E1                 POP     HL              ; Restore code string address
 <span id="E7E5">E7E5</span> C5         <?php lbl8K("SAVSTP"); ?>: PUSH    BC              ; Save the STEP value in block
 E7E6 D5                 PUSH    DE
@@ -40,7 +40,7 @@ E7E8 33                 INC     SP              ; Don't save flags
 E7E9 E5                 PUSH    HL              ; Save code string address
 E7EA 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of index variable
 E7ED E3                 EX      (SP),HL         ; Save and restore code string
-<span id="E7EE">E7EE</span> 0681       <?php lbl8K("PUTFID"); ?>: LD      B,ZFOR          ; "FOR" block marker
+<span id="E7EE">E7EE</span> 0681       <?php lbl8K("PUTFID"); ?>: LD      B,ZFOR          ; "<?php bas8K("FOR"); ?>" block marker
 E7F0 C5                 PUSH    BC              ; Save it
 E7F1 33                 INC     SP              ; Don't save C
 </pre>
@@ -69,7 +69,7 @@ E810 56                 LD      D,(HL)          ; Get MSB of line number
 E811 EB                 EX      DE,HL           ; Line number to HL
 E812 225C10             LD      (LINEAT),HL     ; Save as current line number
 E815 EB                 EX      DE,HL           ; Line number back to DE
-<span id="E816">E816</span> CD36E8     <?php lbl8K("EXCUTE"); ?>: CALL    GETCHR          ; Get key word
+<span id="E816">E816</span> CD36E8     <?php lbl8K("EXCUTE"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Get key word
 E819 11F2E7             LD      DE,RUNCNT       ; Where to RETurn to
 E81C D5                 PUSH    DE              ; Save for RETurn
 <span id="E81D">E81D</span> C8         <?php lbl8K("IFJMP"); ?>:  RET     Z               ; Go to RUNCNT if end of STMT
@@ -94,7 +94,7 @@ E837 7E                 LD      A,(HL)          ; Get next code string byte
 E838 FE3A               CP      ":"             ; Z if ":"
 E83A D0                 RET     NC              ; NC if &gt; "9"
 E83B FE20               CP      " "
-E83D CA36E8             JP      Z,GETCHR        ; Skip over spaces
+E83D CA36E8             JP      Z,<?php bas8K("GETCHR"); ?>        ; Skip over spaces
 E840 FE30               CP      "0"
 E842 3F                 CCF                     ; NC if &lt; "0"
 E843 3C                 INC     A               ; Test for zero - Leave carry

@@ -23,7 +23,7 @@ E52C 3E9E               LD      A,ZPRINT        ; "PRINT" token
 E52E CA91E5             JP      Z,MOVDIR        ; Yes - replace it
 E531 7E                 LD      A,(HL)          ; Get byte again
 E532 FE30               CP      "0"             ; Is it less than "0"
-E534 DA3CE5             JP      C,FNDWRD        ; Yes - Look for reserved words
+E534 DA3CE5             JP      C,<?php bas8K("FNDWRD"); ?>        ; Yes - Look for reserved words
 E537 FE3C               CP      ";"+1           ; Is it "0123456789:;" ?
 E539 DA91E5             JP      C,MOVDIR        ; Yes - copy it direct
 <span id="E53C">E53C</span> D5         <?php lbl8K("FNDWRD"); ?>: PUSH    DE              ; Look for reserved words
@@ -43,13 +43,13 @@ E554 77                 LD      (HL),A          ; Replace byte
 E556 EB                 EX      DE,HL
 <span id="E557">E557</span> 23         <?php lbl8K("GETNXT"); ?>: INC     HL              ; Get next reserved word
 E558 B6                 OR      (HL)            ; Start of word?
-E559 F257E5             JP      P,GETNXT        ; No - move on
+E559 F257E5             JP      P,<?php bas8K("GETNXT"); ?>        ; No - move on
 E55C 04                 INC     B               ; Increment token value
 E55D 7E                 LD      A, (HL)         ; Get byte from table
 E55E E67F               AND     01111111B       ; Strip bit 7
 E560 C8                 RET     Z               ; Return if end of list
 E561 B9                 CP      C               ; Same character as in buffer?
-E562 C257E5             JP      NZ,GETNXT       ; No - get next word
+E562 C257E5             JP      NZ,<?php bas8K("GETNXT"); ?>       ; No - get next word
 E565 EB                 EX      DE,HL
 E566 E5                 PUSH    HL              ; Save start of word
 </pre>
@@ -63,10 +63,10 @@ E569 B7                 OR      A               ; End of word&nbsp;?
 E56A FA89E5             JP      M,MATCH         ; Yes - Match found
 E56D 4F                 LD      C,A             ; Save it
 E56E 78                 LD      A,B             ; Get token value
-E56F FE88               CP      ZGOTO           ; Is it "GOTO" token&nbsp;?
+E56F FE88               CP      ZGOTO           ; Is it "<?php bas8K("GOTO"); ?>" token&nbsp;?
 E571 C278E5             JP      NZ,NOSPC        ; No - Don't allow spaces
-E574 CD36E8             CALL    GETCHR          ; Get next character
-E577 2B                 DEC     HL              ; Cancel increment from GETCHR
+E574 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
+E577 2B                 DEC     HL              ; Cancel increment from <?php bas8K("GETCHR","","","\n"); ?>
 <span id="E578">E578</span> 23         <?php lbl8K("NOSPC"); ?>:  INC     HL              ; Next byte
 E579 7E                 LD      A,(HL)          ; Get byte
 E57A FE61               CP      "a"             ; Less than "a" ?

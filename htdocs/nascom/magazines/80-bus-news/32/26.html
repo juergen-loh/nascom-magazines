@@ -9,9 +9,9 @@ F8BE 5F                 LD      E,A             ; &lt;- bits
 F8BF B7                 OR      A               ; Test exponent
 F8C0 C8                 RET     Z               ; Zero - Return zero
 F8C1 E5                 PUSH    HL              ; Save pointer to number
-F8C2 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move FPREG to BCDE
+F8C2 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
 F8C5 CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
-F8C8 AE                 XOR     (HL)            ; Combine with sign of FPREG
+F8C8 AE                 XOR     (HL)            ; Combine with sign of <?php bas8K("FPREG","","","\n"); ?>
 F8C9 67                 LD      H,A             ; Save combined signs
 F8CA FCDFF8             CALL    M,<?php bas8K("DCBCDE"); ?>        ; Negative - Decrement BCDE
 F8CD 3E98               LD      A,80H+24        ; 24 bits
@@ -19,7 +19,7 @@ F8CF 90                 SUB     B               ; Bits to shift
 F8D0 CD92F6             CALL    SCALE           ; Shift BCDE
 F8D3 7C                 LD      A,H             ; Get combined sign
 F8D4 17                 RLA                     ; Sign to carry
-F8D5 DC65F6             CALL    C,FPROND        ; Negative - Round number up
+F8D5 DC65F6             CALL    C,<?php bas8K("FPROND"); ?>        ; Negative - Round number up
 F8D8 0600               LD      B,0             ; Zero exponent
 F8DA DC7EF6             CALL    C,<?php bas8K("COMPL"); ?>         ; If negative make positive
 F8DD E1                 POP     HL              ; Restore pointer to number
@@ -33,13 +33,13 @@ F8E3 C0                 RET     NZ              ; Exit if LSBs not FFFF
 F8E4 0B                 DEC     BC              ; Decrement MSBs
 F8E5 C9                 RET
 
-<span id="F8E6">F8E6</span> 21E710     <?php lbl8K("INT"); ?>:    LD      HL,FPEXP        ; Point to exponent
+<span id="F8E6">F8E6</span> 21E710     <?php lbl8K("INT"); ?>:    LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F8E9 7E                 LD      A,(HL)          ; Get exponent
 F8EA FE98               CP      80H+24          ; Integer accuracy only?
-F8EC 3AE410             LD      A,(FPREG)       ; Get LSB
+F8EC 3AE410             LD      A,(<?php bas8K("FPREG"); ?>)       ; Get LSB
 F8EF D0                 RET     NC              ; Yes - Already integer
 F8F0 7E                 LD      A,(HL)          ; Get exponent
-F8F1 CDBBF8             CALL    FPINT           ; F.P to integer
+F8F1 CDBBF8             CALL    <?php bas8K("FPINT"); ?>           ; F.P to integer
 F8F4 3698               LD      (HL),80H+24     ; Save 24 bit integer
 F8F6 7B                 LD      A,E             ; Get LSB of number
 F8F7 F5                 PUSH    AF              ; Save LSB
@@ -75,22 +75,22 @@ F91C F5                 PUSH    AF              ; Save it and flags
 F91D CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Convert number
 F920 FE2B               CP      "+"             ; Positive?
 F922 CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Convert number
-F925 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
+F925 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 <span id="F926">F926</span> CD33F6     <?php lbl8K("CNVNUM"); ?>: CALL    RESZER          ; Set result to zero
 F929 47                 LD      B,A             ; Digits after point counter
 F92A 57                 LD      D,A             ; Sign of exponent
 F92B 5F                 LD      E,A             ; Exponent of ten
 F92C 2F                 CPL
 F92D 4F                 LD      C,A             ; Before or after point flag
-<span id="F92E">F92E</span> CD36E8     <?php lbl8K("MANLP"); ?>:  CALL    GETCHR          ; Get next character
+<span id="F92E">F92E</span> CD36E8     <?php lbl8K("MANLP"); ?>:  CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F931 DA77F9             JP      C,<a href="../../../32/27/text/#ADDIG">ADDIG</a>         ; Digit - Add to number
 F934 FE2E               CP      "."
 F936 CA52F9             JP      Z,<?php bas8K("DPOINT"); ?>        ; "." - Flag point
 F939 FE45               CP      "E"
 F93B C256F9             JP      NZ,<?php bas8K("CONEXP"); ?>       ; Not "E" - Scale number
-F93E CD36E8             CALL    GETCHR          ; Get next character
+F93E CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F941 CD70EE             CALL    SGNEXP          ; Get sign of exponent
-<span id="F944">F944</span> CD36E8     <?php lbl8K("EXPLP"); ?>:  CALL    GETCHR          ; Get next character
+<span id="F944">F944</span> CD36E8     <?php lbl8K("EXPLP"); ?>:  CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F947 DA99F9             JP      C,<?php bas8K("EDIGIT"); ?>        ; Digit - Add to exponent
 F94A 14                 INC     D               ; Is sign negative?
 F94B C256F9             JP      NZ,<?php bas8K("CONEXP"); ?>       ; No - Scale number

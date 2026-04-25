@@ -5,7 +5,7 @@
 <span id="E9CA">E9CA</span> CAC9E4     <?php lbl8K("CLEAR"); ?>:  JP      Z,INTVAR        ; Just "CLEAR" Keep parameters
 E9CD CD82E9             CALL    POSINT          ; Get integer 0 to 32767 to DE
 E9D0 2B                 DEC     HL              ; Cancel increment
-E9D1 CD36E8             CALL    GETCHR          ; Get next character
+E9D1 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9D4 E5                 PUSH    HL              ; Save code string address
 E9D5 2AAF10             LD      HL,(LSTRAM)     ; Get end of RAM
 E9D8 CAEDE9             JP      Z,STORED        ; No value given - Use stored
@@ -15,7 +15,7 @@ E9DF 2C                 DEFB    ","
 E9E0 D5                 PUSH    DE              ; Save number
 E9E1 CD82E9             CALL    POSINT          ; Get integer 0 to 32767
 E9E4 2B                 DEC     HL              ; Cancel increment
-E9E5 CD36E8             CALL    GETCHR          ; Get next character
+E9E5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9E8 C2ADE3             JP      NZ,SNERR        ; ?SN Error if more on line
 E9EB E3                 EX      (SP),HL         ; Save code string address
 E9EC EB                 EX      DE,HL           ; Number to DE
@@ -52,10 +52,10 @@ EA19 C32CEA             JP      RUNLIN          ; RUN from line number
 EA1E CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 3 levels of stack
 EA21 C1                 POP     BC              ; Get return address
 EA22 E5                 PUSH    HL              ; Save code string for RETURN
-EA23 E5                 PUSH    HL              ; And for GOSUB routine
+EA23 E5                 PUSH    HL              ; And for <?php bas8K("GOSUB"); ?> routine
 EA24 2A5C10             LD      HL,(LINEAT)     ; Get current line
 EA27 E3                 EX      (SP),HL         ; Into stack - Code string out
-EA28 3E8C               LD      A,ZGOSUB        ; "GOSUB" token
+EA28 3E8C               LD      A,ZGOSUB        ; "<?php bas8K("GOSUB"); ?>" token
 EA2A F5                 PUSH    AF              ; Save token
 EA2B 33                 INC     SP              ; Don't save flags
 
@@ -77,12 +77,12 @@ EA45 D8                 RET     C               ; Line found
 EA48 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error message
 
 <span id="EA4B">EA4B</span> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just RETURN
-EA4C 16FF               LD      D,-1            ; Flag "GOSUB" search
-EA4E CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look "GOSUB" block
+EA4C 16FF               LD      D,-1            ; Flag "<?php bas8K("GOSUB"); ?>" search
+EA4E CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look "<?php bas8K("GOSUB"); ?>" block
 EA51 F9                 LD      SP,HL           ; Kill all FORs in subroutine
-EA52 FE8C               CP      ZGOSUB          ; Test for "GOSUB" token
+EA52 FE8C               CP      ZGOSUB          ; Test for "<?php bas8K("GOSUB"); ?>" token
 EA54 1E04               LD      E,RG            ; ?RG Error
-EA56 C2C1E3             JP      NZ,<?php bas8K("ERROR"); ?>        ; Error if no "GOSUB" found
+EA56 C2C1E3             JP      NZ,<?php bas8K("ERROR"); ?>        ; Error if no "<?php bas8K("GOSUB"); ?>" found
 EA59 E1                 POP     HL              ; Get RETURN line number
 EA5A 225C10             LD      (LINEAT),HL     ; Save as current
 EA5D 23                 INC     HL              ; Was it from direct statement?

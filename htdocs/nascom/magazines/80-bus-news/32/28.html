@@ -15,11 +15,11 @@ FA1D 3630               LD      (HL),"0"        ; Save zero
 FA1F 23                 INC     HL              ; Move on
 <span id="FA20">FA20</span> 05         <?php lbl8K("DIGTXT"); ?>: DEC     B               ; Count digits before point
 FA21 362E               LD      (HL),"."        ; Save point in case
-FA23 CC69F8             CALL    Z,INCHL         ; Last digit - move on
+FA23 CC69F8             CALL    Z,<?php bas8K("INCHL"); ?>         ; Last digit - move on
 FA26 C5                 PUSH    BC              ; Save digits before point
 FA27 E5                 PUSH    HL              ; Save buffer address
 FA28 D5                 PUSH    DE              ; Save powers of ten
-FA29 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move FPREG to BCDE
+FA29 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
 FA2C E1                 POP     HL              ; Powers of ten table
 FA2D 062F               LD      B, "0"-1        ; ASCII "0" - 1
 <span id="FA2F">FA2F</span> 04         <?php lbl8K("TRYAGN"); ?>: INC     B               ; Count subtractions
@@ -39,7 +39,7 @@ FA3C 2B                 DEC     HL
 FA3D D22FFA             JP      NC,TRYAGN       ; No overflow - Try again
 FA40 CD72F6             CALL    PLUCDE          ; Restore number
 FA43 23                 INC     HL              ; Start of next number
-FA44 CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG
+FA44 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 FA47 EB                 EX      DE,HL           ; Save point in table
 FA48 E1                 POP     HL              ; Restore buffer address
 FA49 70                 LD      (HL),B          ; Save digit in buffer
@@ -54,7 +54,7 @@ FA55 7E                 LD      A,(HL)          ; Get character
 FA56 FE30               CP      "0"             ; "0" character?
 FA58 CA54FA             JP      Z,SUPTLZ        ; Yes - Look back for more
 FA5B FE2E               CP      "."             ; A decimal point?
-FA5D C469F8             CALL    NZ,INCHL        ; Move back over digit
+FA5D C469F8             CALL    NZ,<?php bas8K("INCHL"); ?>        ; Move back over digit
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -72,7 +72,7 @@ FA6F 3C                 INC     A
 <span id="FA70">FA70</span> 062F       <?php lbl8K("OUTEXP"); ?>: LD      B,"0"-1         ; ASCII "0" - 1
 <span id="FA72">FA72</span> 04         <?php lbl8K("EXPTEN"); ?>: INC     B               ; Count subtractions
 FA73 D60A               SUB     10              ; Tens digit
-FA75 D272FA             JP      NC,EXPTEN       ; More to do
+FA75 D272FA             JP      NC,<?php bas8K("EXPTEN"); ?>       ; More to do
 FA78 C63A               ADD     A,"0"+10        ; Restore and make ASCII
 FA7A 23                 INC     HL              ; Move on
 FA7B 70                 LD      (HL),B          ; Save MSB of exponent
@@ -88,7 +88,7 @@ FA85 11F723             LD      DE,23F7H
 FA88 CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare numbers
 FA8B B7                 OR      A
 FA8C E1                 POP     HL              ; Return address to HL
-FA8D E2EAF9             JP      PO,GTSIXD       ; Too big - Divide by ten
+FA8D E2EAF9             JP      PO,<?php bas8K("GTSIXD"); ?>       ; Too big - Divide by ten
 FA90 E9                 JP      (HL)            ; Otherwise return to caller
 
 <span id="FA91">FA91</span> 00000080   <?php lbl8K("HALF"); ?>:   DEFB    00H,00H,00H,80H ; 0.5
@@ -105,7 +105,7 @@ FAAA E3                 EX      (SP),HL         ; To be done after caller
 FAAB E9                 JP      (HL)            ; Return to caller
 
 <span id="FAAC">FAAC</span> CD44F8     <?php lbl8K("SQR"); ?>:    CALL    STAKFP          ; Put value on stack
-FAAF 2191FA             LD      HL,HALF         ; Set power to 1/2
-FAB2 CD51F8             CALL    PHLTFP          ; Move 1/2 to FPREG
+FAAF 2191FA             LD      HL,<?php bas8K("HALF"); ?>         ; Set power to 1/2
+FAB2 CD51F8             CALL    PHLTFP          ; Move 1/2 to <?php bas8K("FPREG","","","\n"); ?>
 </pre>
 <?php DoublePageEnd(); ?>

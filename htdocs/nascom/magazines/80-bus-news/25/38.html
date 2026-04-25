@@ -18,7 +18,7 @@ EA7F FE22               CP      '"'             ; Literal string?
 EA81 CA76EA             JP      Z,NXTSTL        ; Yes - Look for another '"'
 EA84 C379EA             JP      NXTSTT          ; Keep looking
 
-<span id="EA87">EA87</span> CD2DEF     <?php lbl8K("LET"); ?>:    CALL    GETVAR          ; Get variable name
+<span id="EA87">EA87</span> CD2DEF     <?php lbl8K("LET"); ?>:    CALL    <?php bas8K("GETVAR"); ?>          ; Get variable name
 EA8A CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
 EA8D B4                 DEFB    ZEQUAL          ; "=" token
 EA8E D5                 PUSH    DE              ; Save address of variable
@@ -32,7 +32,7 @@ EA9B 1F                 RRA                     ; Adjust type
 EA9C CD46ED             CALL    <?php bas8K("CHKTYP"); ?>          ; Check types are the same
 EA9F CADAEA             JP      Z,LETNUM        ; Numeric - Move value
 <span id="EAA2">EAA2</span> E5         <?php lbl8K("LETSTR"); ?>: PUSH    HL              ; Save address of string var
-EAA3 2AE410             LD      HL,(FPREG)      ; Pointer to string entry
+EAA3 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Pointer to string entry
 EAA6 E5                 PUSH    HL              ; Save it on stack
 EAA7 23                 INC     HL              ; Skip over length
 EAA8 23                 INC     HL
@@ -65,40 +65,40 @@ EAD9 C9                 RET
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    38</span>
 
 <span id="EADA">EADA</span> E5         <?php lbl8K("LETNUM"); ?>: PUSH    HL              ; Save address of variable
-EADB CD6BF8             CALL    FPTHL           ; Move value to variable
+EADB CD6BF8             CALL    <?php bas8K("FPTHL"); ?>           ; Move value to variable
 EADE D1                 POP     DE              ; Restore address of variable
 EADF E1                 POP     HL              ; Restore code string address
 EAE0 C9                 RET
 
-<span id="EAE1">EAE1</span> CD84F4     <?php lbl8K("ON"); ?>:     CALL    GETINT          ; Get integer 0-255
-EAE4 7E                 LD      A,(HL)          ; Get "GOTO" or "GOSUB" token
+<span id="EAE1">EAE1</span> CD84F4     <?php lbl8K("ON"); ?>:     CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
+EAE4 7E                 LD      A,(HL)          ; Get "<?php bas8K("GOTO"); ?>" or "<?php bas8K("GOSUB"); ?>" token
 EAE5 47                 LD      B,A             ; Save in B
-EAE6 FE8C               CP      ZGOSUB          ; "GOSUB" token?
+EAE6 FE8C               CP      ZGOSUB          ; "<?php bas8K("GOSUB"); ?>" token?
 EAE8 CAF0EA             JP      Z,ONGO          ; Yes - Find line number
-EAEB CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "GOTO"
-EAEE 88                 DEFB    ZGOTO           ; "GOTO" token
+EAEB CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "<?php bas8K("GOTO"); ?>"
+EAEE 88                 DEFB    ZGOTO           ; "<?php bas8K("GOTO"); ?>" token
 EAEF 2B                 DEC     HL              ; Cancel increment
 <span id="EAF0">EAF0</span> 4B         <?php lbl8K("ONGO"); ?>:   LD      C,E             ; Integer of branch value
 <span id="EAF1">EAF1</span> 0D         <?php lbl8K("ONGOLP"); ?>: DEC     C               ; Count branches
-EAF2 78                 LD      A,B             ; Get "GOTO" or "GOSUB" token
+EAF2 78                 LD      A,B             ; Get "<?php bas8K("GOTO"); ?>" or "<?php bas8K("GOSUB"); ?>" token
 EAF3 CA1EE8             JP      Z,ONJMP         ; Go to that line if right one
-EAF6 CDA6E9             CALL    GETLN           ; Get line number to DE
+EAF6 CDA6E9             CALL    <?php bas8K("GETLN"); ?>           ; Get line number to DE
 EAF9 FE2C               CP      ","             ; Another line number?
 EAFB C0                 RET     NZ              ; No - Drop through
 EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
 
 <span id="EAFF">EAFF</span> CD5AED     <?php lbl8K("IF"); ?>:     CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EB02 7E                 LD      A,(HL)          ; Get token
-EB03 FE88               CP      ZGOTO           ; "GOTO" token?
-EB05 CA0DEB             JP      Z,IFGO          ; Yes - Get line
+EB03 FE88               CP      ZGOTO           ; "<?php bas8K("GOTO"); ?>" token?
+EB05 CA0DEB             JP      Z,<?php bas8K("IFGO"); ?>          ; Yes - Get line
 EB08 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "THEN"
 EB0B A9                 DEFB    ZTHEN           ; "THEN" token
 EB0C 2B                 DEC     HL              ; Cancel increment
 <span id="EB0D">EB0D</span> CD44ED     <?php lbl8K("IFGO"); ?>:   CALL    TSTNUM          ; Make sure it's numeric
 EB10 CD13F8             CALL    TSTSGN          ; Test state of expression
 EB13 CA72EA             JP      Z,REM           ; False - Drop through
-EB16 CD36E8             CALL    GETCHR          ; Get next character
-EB19 DA2DEA             JP      C,GOTO          ; Number - GOTO that line
-EB1C C31DE8             JP      IFJMP           ; Otherwise do statement
+EB16 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
+EB19 DA2DEA             JP      C,<?php bas8K("GOTO"); ?>          ; Number - <?php bas8K("GOTO"); ?> that line
+EB1C C31DE8             JP      <?php bas8K("IFJMP"); ?>           ; Otherwise do statement
 </pre>
 <?php DoublePageEnd(); ?>

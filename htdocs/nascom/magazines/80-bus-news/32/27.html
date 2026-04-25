@@ -34,10 +34,10 @@ F98A D1                 POP     DE              ; Restore sign of exponent
 F98B C32EF9             JP      MANLP           ; Get another digit
 
 <span id="F98E">F98E</span> CD44F8     <?php lbl8K("RSCALE"); ?>: CALL    STAKFP          ; Put number on stack
-F991 CD25F8             CALL    FLGREL          ; Digit to add to FPREG
+F991 CD25F8             CALL    <?php bas8K("FLGREL"); ?>          ; Digit to add to <?php bas8K("FPREG","","","\n"); ?>
 <span id="F994">F994</span> C1         <?php lbl8K("PADD"); ?>:   POP     BC              ; Restore number
 F995 D1                 POP     DE
-F996 C3CDF5             JP      FPADD           ; Add BCDE to FPREG and return
+F996 C3CDF5             JP      <?php bas8K("FPADD"); ?>           ; Add BCDE to <?php bas8K("FPREG"); ?> and return
 
 <span id="F999">F999</span> 7B         <?php lbl8K("EDIGIT"); ?>: LD      A,E             ; Get digit
 F99A 07                 RLCA                    ; Times 2
@@ -54,7 +54,7 @@ F9A2 C344F9             JP      <?php bas8K("EXPLP"); ?>           ; Look for an
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    85</span>
 
 <span id="F9A5">F9A5</span> E5         <?php lbl8K("LINEIN"); ?>: PUSH    HL              ; Save code string address
-F9A6 2146E3             LD      HL,INMSG        ; Output " in "
+F9A6 2146E3             LD      HL,<?php bas8K("INMSG"); ?>        ; Output " in "
 F9A9 CD10F2             CALL    PRS             ; Output string at HL
 F9AC E1                 POP     HL              ; Restore code string address
 <span id="F9AD">F9AD</span> EB         <?php lbl8K("PRNTHL"); ?>: EX      DE,HL           ; Code string address to DE
@@ -65,7 +65,7 @@ F9B4 210FF2             LD      HL,PRNUMS       ; Print number string
 F9B7 E5                 PUSH    HL              ; Save for return
 <span id="F9B8">F9B8</span> 21E910     <?php lbl8K("NUMASC"); ?>: LD      HL,PBUFF        ; Convert number to ASCII
 F9BB E5                 PUSH    HL              ; Save for return
-F9BC CD13F8             CALL    TSTSGN          ; Test sign of FPREG
+F9BC CD13F8             CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F9BF 3620               LD      (HL)," "        ; Space at start
 F9C1 F2C6F9             JP      P,SPCFST        ; Positive - Space to start
 F9C4 362D               LD      (HL),"-"        ; "-" sign at start
@@ -73,7 +73,7 @@ F9C4 362D               LD      (HL),"-"        ; "-" sign at start
 F9C7 3630               LD      (HL),"0"        ; "0" if zero
 F9C9 CA7CFA             JP      Z,JSTZER        ; Return "0" if zero
 F9CC E5                 PUSH    HL              ; Save buffer address
-F9CD FC3CF8             CALL    M,INVSGN        ; Negate FPREG if negative
+F9CD FC3CF8             CALL    M,INVSGN        ; Negate <?php bas8K("FPREG"); ?> if negative
 F9D0 AF                 XOR     A               ; Zero A
 F9D1 F5                 PUSH    AF              ; Save it
 F9D2 CD82FA             CALL    RNGTST          ; Test number is in range
@@ -92,10 +92,10 @@ F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
 F9F0 CD82FA             CALL    RNGTST          ; Test number is in range
-<span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    ROUND           ; Add 0.5 to FPREG
+<span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    ROUND           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
 F9F6 3C                 INC     A
-F9F7 CDBBF8             CALL    FPINT           ; F.P to integer
-F9FA CD54F8             CALL    FPBCDE          ; Move BCDE to FPREG
+F9F7 CDBBF8             CALL    <?php bas8K("FPINT"); ?>           ; F.P to integer
+F9FA CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 F9FD 010603             LD      BC,0306H        ; 1E+06 to 1E-03 range
 FA00 F1                 POP     AF              ; Restore count
 FA01 81                 ADD     A,C             ; 6 digits before point

@@ -4,7 +4,7 @@
 
 <span id="F382">F382</span> 0101F1     <?php lbl8K("LEN"); ?>:    LD      BC,PASSA        ; To return integer A
 F385 C5                 PUSH    BC              ; Save address
-<span id="F386">F386</span> CD50F3     <?php lbl8K("GETLEN"); ?>: CALL    GETSTR          ; Get string and its length
+<span id="F386">F386</span> CD50F3     <?php lbl8K("GETLEN"); ?>: CALL    <?php bas8K("GETSTR"); ?>          ; Get string and its length
 F389 AF                 XOR     A
 F38A 57                 LD      D,A             ; Clear D
 F38B 32AD10             LD      (TYPE),A        ; Set type to numeric
@@ -14,8 +14,8 @@ F390 C9                 RET
 
 <span id="F391">F391</span> 0101F1     <?php lbl8K("ASC"); ?>:    LD      BC,PASSA        ; To return integer A
 F394 C5                 PUSH    BC              ; Save address
-<span id="F395">F395</span> CD86F3     <?php lbl8K("GTFLNM"); ?>: CALL    GETLEN          ; Get length of string
-F398 CAA0E9             JP      Z,FCERR         ; Null string - Error
+<span id="F395">F395</span> CD86F3     <?php lbl8K("GTFLNM"); ?>: CALL    <?php bas8K("GETLEN"); ?>          ; Get length of string
+F398 CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Null string - Error
 F39B 23                 INC     HL
 F39C 23                 INC     HL
 F39D 5E                 LD      E,(HL)          ; Get LSB of address
@@ -66,7 +66,7 @@ F3D4 CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create a st
 F3D7 6F                 LD      L,A             ; Length of new string
 F3D8 CD46F3             CALL    TOSTRA          ; Move string to string area
 F3DB D1                 POP     DE              ; Clear stack
-F3DC CD57F3             CALL    GSTRDE          ; Move to string pool if needed
+F3DC CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to string pool if needed
 F3DF C3F0F1             JP      TSTOPL          ; Temporary string to pool
 
 <span id="F3E2">F3E2</span> CD37F4     <?php lbl8K("RIGHT"); ?>:  CALL    LFRGNM          ; Get number and ending ")"

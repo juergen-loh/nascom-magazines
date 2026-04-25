@@ -18,12 +18,12 @@ FF14 C9                 RET
 
 <span id="FF15">FF15</span> CD90E6     <?php lbl8K("GETXYA"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 FF18 28                 DEFB    "("
-FF19 CD41ED             CALL    GETNUM          ; Get a number
+FF19 CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
 FF1C CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FF1F D5                 PUSH    DE              ; Save "X"
 FF20 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FF23 2C                 DEFB    ","
-FF24 CD41ED             CALL    GETNUM          ; Get a number
+FF24 CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
 FF27 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 FF2A 29                 DEFB    ")"
 FF2B CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
@@ -38,7 +38,7 @@ FF3C 06C0               LD      B,11000000B     ; Block graphics base
 FF3E B0                 OR      B               ; Set bits 7 & 6
 FF3F C9                 RET
 
-<span id="FF40">FF40</span> CD15FF     <?php lbl8K("SETB"); ?>:   CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF40">FF40</span> CD15FF     <?php lbl8K("SETB"); ?>:   CALL    <?php bas8K("GETXYA"); ?>          ; Get co-ords and VDU address
 FF43 F5                 PUSH    AF              ; Save bit mask
 FF44 7E                 LD      A,(HL)          ; Get character from screen
 FF45 FEC0               CP      11000000B       ; Is it a block graphic?
@@ -57,7 +57,7 @@ FF52 C34BFF             JP      PUTBIT          ; Save on screen
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    101</span>
 
-<span id="FF55">FF55</span> CD15FF     <?php lbl8K("RESETB"); ?>: CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF55">FF55</span> CD15FF     <?php lbl8K("RESETB"); ?>: CALL    <?php bas8K("GETXYA"); ?>          ; Get co-ords and VDU address
 FF58 F5                 PUSH    AF              ; Save bit mask
 FF59 7E                 LD      A,(HL)          ; Get byte from screen
 FF5A FEC0               CP      11000000B       ; Is it a block graphic?
@@ -78,7 +78,7 @@ FF72 C34BFF             JP      PUTBIT          ; Save the space
 <span id="FF75">FF75</span> C1         <?php lbl8K("NORES"); ?>:  POP     BC              ; Drop bit mask
 FF76 C34CFF             JP      RESCSA          ; Restore code string address
 
-<span id="FF79">FF79</span> CD15FF     <?php lbl8K("POINTB"); ?>: CALL    GETXYA          ; Get co-ords and VDU address
+<span id="FF79">FF79</span> CD15FF     <?php lbl8K("POINTB"); ?>: CALL    <?php bas8K("GETXYA"); ?>          ; Get co-ords and VDU address
 FF7C 46                 LD      B,(HL)          ; Get character from screen
 FF7D CDEDFF             CALL    TSTBIT          ; Test if bit is set
 FF80 C291FF             JP      NZ,POINT0       ; Different - Return zero

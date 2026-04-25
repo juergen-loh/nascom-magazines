@@ -8,9 +8,9 @@ F0D4 210000             LD      HL,0            ; End of free memory
 F0D7 39                 ADD     HL,SP           ; Current stack value
 F0D8 3AAD10             LD      A,(TYPE)        ; Dummy argument type
 F0DB B7                 OR      A
-F0DC CAECF0             JP      Z,FRENUM        ; Numeric - Free variable space
-F0DF CD53F3             CALL    GSTRCU          ; Current string to pool
-F0E2 CD53F2             CALL    GARBGE          ; Garbage collection
+F0DC CAECF0             JP      Z,<?php bas8K("FRENUM"); ?>        ; Numeric - Free variable space
+F0DF CD53F3             CALL    <?php bas8K("GSTRCU"); ?>          ; Current string to pool
+F0E2 CD53F2             CALL    <?php bas8K("GARBGE"); ?>          ; Garbage collection
 F0E5 2A5A10             LD      HL,(STRSPC)     ; Bottom of string space in use
 F0E8 EB                 EX      DE,HL           ; To DE
 F0E9 2AC310             LD      HL,(STRBOT)     ; Bottom of string space
@@ -33,13 +33,13 @@ F102 AF                 XOR     A               ; Zero A
 F103 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
 <span id="F106">F106</span> CD89F1     <?php lbl8K("DEF"); ?>:    CALL    <?php bas8K("CHEKFN"); ?>          ; Get "FN" and name
-F109 CD7BF1             CALL    IDTEST          ; Test for illegal direct
+F109 CD7BF1             CALL    <?php bas8K("IDTEST"); ?>          ; Test for illegal direct
 F10C 0170EA             LD      BC,<?php bas8K("DATA"); ?>         ; To get next statement
 F10F C5                 PUSH    BC              ; Save address for RETurn
 F110 D5                 PUSH    DE              ; Save address of function ptr
 F111 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 F114 28                 DEFB    "("
-F115 CD2DEF             CALL    GETVAR          ; Get argument variable name
+F115 CD2DEF             CALL    <?php bas8K("GETVAR"); ?>          ; Get argument variable name
 F118 E5                 PUSH    HL              ; Save code string address
 F119 EB                 EX      DE,HL           ; Argument address to HL
 F11A 2B                 DEC     HL
@@ -81,27 +81,27 @@ F148 23                 INC     HL
 F149 66                 LD      H,(HL)          ; Get MSB of argument address
 F14A 6F                 LD      L,A             ; HL = Arg variable address
 F14B E5                 PUSH    HL              ; Save it
-F14C 2ADE10             LD      HL,(FNRGNM)     ; Get old argument name
+F14C 2ADE10             LD      HL,(<?php bas8K("FNRGNM"); ?>)     ; Get old argument name
 F14F E3                 EX      (SP),HL         ; Save old&nbsp;, Get new
-F150 22DE10             LD      (FNRGNM),HL     ; Set new argument name
-F153 2AE210             LD      HL,(FNARG+2)    ; Get LSB,NLSB of old arg value
+F150 22DE10             LD      (<?php bas8K("FNRGNM"); ?>),HL     ; Set new argument name
+F153 2AE210             LD      HL,(<?php bas8K("FNARG"); ?>+2)    ; Get LSB,NLSB of old arg value
 F156 E5                 PUSH    HL              ; Save it
-F157 2AE010             LD      HL,(FNARG)      ; Get MSB,EXP of old arg value
+F157 2AE010             LD      HL,(<?php bas8K("FNARG"); ?>)      ; Get MSB,EXP of old arg value
 F15A E5                 PUSH    HL              ; Save it
-F15B 21E010             LD      HL,FNARG        ; HL = Value of argument
+F15B 21E010             LD      HL,<?php bas8K("FNARG"); ?>        ; HL = Value of argument
 F15E D5                 PUSH    DE              ; Save FN code string address
-F15F CD6BF8             CALL    FPTHL           ; Move FPREG to argument
+F15F CD6BF8             CALL    <?php bas8K("FPTHL"); ?>           ; Move <?php bas8K("FPREG"); ?> to argument
 F162 E1                 POP     HL              ; Get FN code string address
-F163 CD41ED             CALL    GETNUM          ; Get value from function
-F166 2B                 DEC     HL              ; DEC 'cos GETCHR INCs
-F167 CD36E8             CALL    GETCHR          ; Get next character
+F163 CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get value from function
+F166 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
+F167 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F16A C2ADE3             JP      NZ,SNERR        ; Bad character in FN - Error
 F16D E1                 POP     HL              ; Get MSB,EXP of old arg
-F16E 22E010             LD      (FNARG),HL      ; Restore it
+F16E 22E010             LD      (<?php bas8K("FNARG"); ?>),HL      ; Restore it
 F171 E1                 POP     HL              ; Get LSB,NLSB of old arg
-F172 22E210             LD      (FNARG+2),HL    ; Restore it
+F172 22E210             LD      (<?php bas8K("FNARG"); ?>+2),HL    ; Restore it
 F175 E1                 POP     HL              ; Get name of old arg
-F176 22DE10             LD      (FNRGNM),HL     ; Restore it
+F176 22DE10             LD      (<?php bas8K("FNRGNM"); ?>),HL     ; Restore it
 F179 E1                 POP     HL              ; Restore code string address
 F17A C9                 RET
 
@@ -112,7 +112,7 @@ F180 7C                 LD      A,H
 F181 B5                 OR      L
 F182 E1                 POP     HL              ; Restore code string address
 F183 C0                 RET     NZ              ; Return if in program
-F184 1E16               LD      E,ID            ; ?ID Error
+F184 1E16               LD      E,<?php bas8K("ID"); ?>            ; ?<?php bas8K("ID"); ?> Error
 F186 C3C1E3             JP      <?php bas8K("ERROR","","","\n"); ?>
 </pre>
 <?php DoublePageEnd(); ?>
