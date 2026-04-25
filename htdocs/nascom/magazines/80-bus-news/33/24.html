@@ -23,7 +23,7 @@ FC12 C1                 POP     BC              ; Restore angle
 FC13 D1                 POP     DE
 FC14 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide angle by 2 PI
 FC17 CD44F8             CALL    STAKFP          ; Put it on stack
-FC1A CDE6F8             CALL    INT             ; Get INT of result
+FC1A CDE6F8             CALL    <?php bas8K("INT"); ?>             ; Get <?php bas8K("INT"); ?> of result
 FC1D C1                 POP     BC              ; Restore number
 FC1E D1                 POP     DE
 FC1F CDCAF5             CALL    SUBCDE          ; Make it 0 &lt;= value &lt; 1
@@ -36,11 +36,11 @@ FC2F CDBBF5             CALL    ROUND           ; Add 0.5 to value
 FC32 CD13F8             CALL    TSTSGN          ; Test sign of value
 FC35 B7                 OR      A               ; Flag negative
 <span id="FC36">FC36</span> F5         <?php lbl8K("SIN1"); ?>:   PUSH    AF              ; Save sign
-FC37 F43CF8             CALL    P,INVSGN        ; Negate value if positive
+FC37 F43CF8             CALL    P,<?php bas8K("INVSGN"); ?>        ; Negate value if positive
 FC3A 214EFC             LD      HL,QUARTR       ; Point to 0.25
 FC3D CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add 0.25 to value
 FC40 F1                 POP     AF              ; Restore sign
-FC41 D43CF8             CALL    NC,INVSGN       ; Negative - Make positive
+FC41 D43CF8             CALL    NC,<?php bas8K("INVSGN"); ?>       ; Negative - Make positive
 FC44 2152FC             LD      HL,SINTAB       ; Coefficient table
 FC47 C35BFB             JP      SUMSER          ; Evaluate sum of series
 
@@ -71,7 +71,7 @@ FC79 C367F7             JP      <?php bas8K("DIV"); ?>             ; TAN = SIN /
 
 <span id="FC7C">FC7C</span> CD13F8     <?php lbl8K("ATN"); ?>:    CALL    TSTSGN          ; Test sign of value
 FC7F FCA7FA             CALL    M,NEGAFT        ; Negate result after if -ve
-FC82 FC3CF8             CALL    M,INVSGN        ; Negate value if -ve
+FC82 FC3CF8             CALL    M,<?php bas8K("INVSGN"); ?>        ; Negate value if -ve
 FC85 3AE710             LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get exponent
 FC88 FE81               CP      81H             ; Number less than 1?
 FC8A DA99FC             JP      C,<?php bas8K("ATN1"); ?>          ; Yes - Get arc tangnt

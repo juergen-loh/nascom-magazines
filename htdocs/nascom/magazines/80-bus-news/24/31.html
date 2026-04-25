@@ -8,7 +8,7 @@ E3FC CD74EB             CALL    STTLIN          ; Start new line
 E3FF 214BE3             LD      HL,OKMSG        ; "Ok" message
 E402 CD10F2             CALL    PRS             ; Output "Ok"
 <span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
-E408 225C10             LD      (LINEAT),HL     ; Save as current line
+E408 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
 E40B CDF2E5             CALL    <?php bas8K("GETLIN"); ?>          ; Get an input line
 E40E DA05E4             JP      C,<?php bas8K("GETCMD"); ?>        ; Get line again if break
 E411 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get first character
@@ -26,12 +26,12 @@ E424 D216E8             JP      NC,<?php bas8K("EXCUTE"); ?>       ; No line num
 E427 D5                 PUSH    DE              ; Save line number
 E428 C5                 PUSH    BC              ; Save length of tokenised line
 E429 AF                 XOR     A
-E42A 32CC10             LD      (LSTBIN),A      ; Clear last byte input
+E42A 32CC10             LD      (<?php bas8K("LSTBIN"); ?>),A      ; Clear last byte input
 E42D CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E430 B7                 OR      A               ; Set flags
 E431 F5                 PUSH    AF              ; And save them
 E432 CD99E4             CALL    SRCHLN          ; Search for line number in DE
-E435 DA3EE4             JP      C,LINFND        ; Jump if line found
+E435 DA3EE4             JP      C,<?php bas8K("LINFND"); ?>        ; Jump if line found
 E438 F1                 POP     AF              ; Get status
 E439 F5                 PUSH    AF              ; And re-save
 E43A CA46EA             JP      Z,ULERR         ; Nothing after number - Error

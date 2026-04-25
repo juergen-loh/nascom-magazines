@@ -99,11 +99,11 @@ FEED 112F00             LD      DE,48-1         ; Length of line-1
 FEF0 19                 ADD     HL,DE           ; Point to end of line
 <span id="FEF1">FEF1</span> 7E         <?php lbl8K("ENDLIN"); ?>: LD      A,(HL)          ; Get end of line
 FEF2 FE20               CP      " "             ; Space?
-FEF4 C202FF             JP      NZ,LINTBF       ; No - Copy to buffer
+FEF4 C202FF             JP      NZ,<?php bas8K("LINTBF"); ?>       ; No - Copy to buffer
 FEF7 1D                 DEC     E               ; Back 1 character
 FEF8 3E00               LD      A,0             ; Wasteful test on E
 FEFA B3                 OR      E
-FEFB CA02FF             JP      Z,LINTBF        ; Start of line - Copy it
+FEFB CA02FF             JP      Z,<?php bas8K("LINTBF"); ?>        ; Start of line - Copy it
 FEFE 2B                 DEC     HL              ; Back 1 character
 FEFF C3F1FE             JP      <?php bas8K("ENDLIN"); ?>          ; Keep looking for end
 </pre>

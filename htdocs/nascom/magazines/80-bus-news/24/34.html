@@ -72,7 +72,7 @@ E635 C8                 RET     Z               ; Return if control "C"
 E636 FE0D               CP      <?php bas8K("CR"); ?>              ; Is it enter?
 E638 CA7CEB             JP      Z,<?php bas8K("ENDINP"); ?>        ; Yes - Terminate input
 E63B FE15               CP      <?php bas8K("CTRLU"); ?>           ; Is it control "U"?
-E63D CAECE5             JP      Z,KILIN         ; Yes - Get another line
+E63D CAECE5             JP      Z,<?php bas8K("KILIN"); ?>         ; Yes - Get another line
 E640 FE40               CP      "@"             ; Is it "kill line"?
 E642 CAE9E5             JP      Z,OTKLN         ; Yes - Kill line
 E645 FE5F               CP      "_"             ; Is it delete?

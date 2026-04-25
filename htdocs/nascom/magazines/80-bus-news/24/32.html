@@ -46,7 +46,7 @@ E4C2 22D610             LD      (PROGND),HL     ; Set program end
 E4C8 2B                 DEC     HL
 
 <span id="E4C9">E4C9</span> 22CE10     <?php lbl8K("INTVAR"); ?>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise RUN variables
-E4CC 2AAF10             LD      HL,(LSTRAM)     ; Get end of RAM
+E4CC 2AAF10             LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM
 E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
 E4D2 AF                 XOR     A
 E4D3 CD46E8             CALL    RESTOR          ; Reset DATA pointers

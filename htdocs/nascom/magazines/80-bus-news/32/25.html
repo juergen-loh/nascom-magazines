@@ -20,7 +20,7 @@ F84E E5                 PUSH    HL              ; Re-save return
 F84F EB                 EX      DE,HL           ; Restore code string address
 F850 C9                 RET
 
-<span id="F851">F851</span> CD62F8     <?php lbl8K("PHLTFP"); ?>: CALL    LOADFP          ; Number at HL to BCDE
+<span id="F851">F851</span> CD62F8     <?php lbl8K("PHLTFP"); ?>: CALL    <?php bas8K("LOADFP"); ?>          ; Number at HL to BCDE
 <span id="F854">F854</span> EB         <?php lbl8K("FPBCDE"); ?>: EX      DE,HL           ; Save code string address
 F855 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save LSB,NLSB of number
 F858 60                 LD      H,B             ; Exponent of number

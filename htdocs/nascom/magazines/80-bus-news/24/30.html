@@ -23,7 +23,7 @@ E3A1 D8                 RET     C               ; Return if enough mmory
 E3A4 C3C1E3             JP      <?php bas8K("ERROR","","","\n"); ?>
 
 <span id="E3A7">E3A7</span> 2AC910     <?php lbl8K("DATSNR"); ?>: LD      HL,(<?php bas8K("DATLIN"); ?>)     ; Get line of current <?php bas8K("DATA"); ?> item
-E3AA 225C10             LD      (LINEAT),HL     ; Save as current line
+E3AA 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
 <span id="E3AD">E3AD</span> 1E02       <?php lbl8K("SNERR"); ?>:  LD      E,SN            ; ?SN Error
 E3AF 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("DZ"); ?>"
 <span id="E3B0">E3B0</span> 1E14       <?php lbl8K("DZERR"); ?>:  LD      E,<?php bas8K("DZ"); ?>            ; ?/0 Error
@@ -56,14 +56,14 @@ E3D8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 E3DB CD9BE6             CALL    OUTC            ; Output it
 E3DE 213FE3             LD      HL,<?php bas8K("ERRMSG"); ?>       ; "Error" message
 <span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    PRS             ; Output message
-E3E4 2A5C10             LD      HL,(LINEAT)     ; Get line of error
+E3E4 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get line of error
 E3E7 11FEFF             LD      DE,-2           ; Cold start error if -2
 E3EA CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; See if cold start error
 E3ED CA12E0             JP      Z,<?php bas8K("CSTART"); ?>        ; Cold start error - Restart
 E3F0 7C                 LD      A,H             ; Was it a direct error?
 E3F1 A5                 AND     L               ; Line = -1 if direct error
 E3F2 3C                 INC     A
-E3F3 C4A5F9             CALL    NZ,LINEIN       ; No - output line of error
+E3F3 C4A5F9             CALL    NZ,<?php bas8K("LINEIN"); ?>       ; No - output line of error
 E3F6 3E                 DEFB    (LD A,n)        ; Skip "POP BC"
 <span id="E3F7">E3F7</span> C1         <?php lbl8K("POPNOK"); ?>: POP     BC              ; Drop address in input buffer
 </pre>

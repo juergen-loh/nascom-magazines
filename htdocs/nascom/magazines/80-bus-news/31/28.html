@@ -45,9 +45,9 @@ F314 E5                 PUSH    HL              ; Save first string
 F315 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get second string
 F318 E5                 PUSH    HL              ; Save second string
 F319 86                 ADD     A,(HL)          ; Add length of second string
-F31A 1E1C               LD      E,LS            ; ?LS Error
+F31A 1E1C               LD      E,<?php bas8K("LS"); ?>            ; ?<?php bas8K("LS"); ?> Error
 F31C DAC1E3             JP      C,<?php bas8K("ERROR"); ?>         ; String too long - Error
-F31F CDBFF1             CALL    MKTMST          ; Make temporary string
+F31F CDBFF1             CALL    <?php bas8K("MKTMST"); ?>          ; Make temporary string
 F322 D1                 POP     DE              ; Get second string to DE
 F323 CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to string pool if needed
 F326 E3                 EX      (SP),HL         ; Get first string

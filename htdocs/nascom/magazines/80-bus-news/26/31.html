@@ -40,7 +40,7 @@ EB4E 3620               LD      (HL)," "        ; Followed by a space
 EB50 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get length of output
 EB53 34                 INC     (HL)            ; Plus 1 for the space
 EB54 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; &lt; Not needed &gt;
-EB57 3A4210             LD      A,(LWIDTH)      ; Get width of line
+EB57 3A4210             LD      A,(<?php bas8K("LWIDTH"); ?>)      ; Get width of line
 EB5A 47                 LD      B,A             ; To B
 EB5B 04                 INC     B               ; Width 255 (No limit)?
 EB5C CA69EB             JP      Z,PRNTNB        ; Yes - Output number string

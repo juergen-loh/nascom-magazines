@@ -23,7 +23,7 @@ F6B3 C3A4F6             JP      SHRLP           ; More bits to do
 
 <span id="F6B6">F6B6</span> 00000081   <?php lbl8K("UNITY"); ?>:  DEFB    000H,000H,000H,081H     ; 1.00000
 
-<span id="F6BA">F6BA</span> 03         <?php lbl8K("LOGTAB"); ?>: DEFB    3                       ; Table used by LOG
+<span id="F6BA">F6BA</span> 03         <?php lbl8K("LOGTAB"); ?>: DEFB    3                       ; Table used by <?php bas8K("LOG","","","\n"); ?>
 F6BB AA561980           DEFB    0AAH,056H,019H,080H     ; 0.59898
 F6BF F1227680           DEFB    0F1H,022H,076H,080H     ; 0.96147
 F6C3 45AA3882           DEFB    045H,0AAH,038H,082H     ; 2.88539
@@ -47,7 +47,7 @@ F6E2 04                 INC     B               ; Make it SQR(2)
 F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by SQR(2)
 F6E6 21B6F6             LD      HL,UNITY        ; Point to 1.
 F6E9 CDC4F5             CALL    SUBPHL          ; Subtract <?php bas8K("FPREG"); ?> from 1
-F6EC 21BAF6             LD      HL,LOGTAB       ; Coefficient table
+F6EC 21BAF6             LD      HL,<?php bas8K("LOGTAB"); ?>       ; Coefficient table
 F6EF CD5BFB             CALL    SUMSER          ; Evaluate sum of series
 F6F2 018080             LD      BC,8080H        ; BCDE = -0.5
 F6F5 110000             LD      DE,0000H

@@ -29,7 +29,7 @@ F24D BF                 CP      A               ; Flag garbage collect done
 F24E F5                 PUSH    AF              ; Save status
 F24F 012BF2             LD      BC,<?php bas8K("GRBDON"); ?>       ; Garbage collection done
 F252 C5                 PUSH    BC              ; Save for RETurn
-<span id="F253">F253</span> 2AAF10     <?php lbl8K("GARBGE"); ?>: LD      HL,(LSTRAM)     ; Get end of RAM pointer
+<span id="F253">F253</span> 2AAF10     <?php lbl8K("GARBGE"); ?>: LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM pointer
 <span id="F256">F256</span> 22C310     <?php lbl8K("GARBLP"); ?>: LD      (STRBOT),HL     ; Reset string pointer
 F259 210000             LD      HL,0
 F25C E5                 PUSH    HL              ; Flag no string found
@@ -65,7 +65,7 @@ F28C 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of stri
 F28F EB                 EX      DE,HL
 F290 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All string arrays done?
 F293 CAE1F2             JP      Z,SCNEND        ; Yes - Move string if found
-F296 CD62F8             CALL    LOADFP          ; Get array name to BCDE
+F296 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Get array name to BCDE
 F299 7B                 LD      A,E             ; Get type of array
 F29A E5                 PUSH    HL              ; Save address of num of dim'ns
 F29B 09                 ADD     HL,BC           ; Start of next array

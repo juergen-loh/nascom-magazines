@@ -55,18 +55,18 @@ EBD6 C326EB             JP      PRNTLP          ; More to print
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    41</span>
 
-<span id="EBD9">EBD9</span> 3F526564   <?php lbl8K("REDO"); ?>:   DEFB    "?Redo from start",<?php bas8K("CR"); ?>,LF,0
+<span id="EBD9">EBD9</span> 3F526564   <?php lbl8K("REDO"); ?>:   DEFB    "?Redo from start",<?php bas8K("CR"); ?>,<?php bas8K("LF"); ?>,0
 
-<span id="EBEC">EBEC</span> 3ACD10     <?php lbl8K("BADINP"); ?>: LD      A,(READFG)      ; READ or INPUT?
+<span id="EBEC">EBEC</span> 3ACD10     <?php lbl8K("BADINP"); ?>: LD      A,(READFG)      ; READ or <?php bas8K("INPUT"); ?>?
 EBEF B7                 OR      A
 EBF0 C2A7E3             JP      NZ,<?php bas8K("DATSNR"); ?>       ; READ - ?SN Error
 EBF3 C1                 POP     BC              ; Throw away code string addr
 EBF4 21D9EB             LD      HL,REDO         ; "Redo from start" message
 EBF7 CD10F2             CALL    PRS             ; Output string
-EBFA C3F8E4             JP      <?php bas8K("DOAGN"); ?>           ; Do last INPUT again
+EBFA C3F8E4             JP      <?php bas8K("DOAGN"); ?>           ; Do last <?php bas8K("INPUT"); ?> again
 
 <span id="EBFD">EBFD</span> CD7BF1     <?php lbl8K("INPUT"); ?>:  CALL    <?php bas8K("IDTEST"); ?>          ; Test for illegal direct
-EC00 7E                 LD      A,(HL)          ; Get character after "INPUT"
+EC00 7E                 LD      A,(HL)          ; Get character after "<?php bas8K("INPUT"); ?>"
 EC01 FE22               CP      '"'             ; Is there a prompt string?
 EC03 3E00               LD      A,0             ; Clear A and leave flags
 EC05 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
@@ -93,8 +93,8 @@ EC29 C331EC             JP      NXTITM          ; Get next item
 <span id="EC2C">EC2C</span> E5         <?php lbl8K("READ"); ?>:   PUSH    HL              ; Save code string address
 EC2D 2ADC10             LD      HL,(NXTDAT)     ; Next <?php bas8K("DATA"); ?> statement
 EC30 F6                 DEFB    (OR n)          ; Flag "READ"
-<span id="EC31">EC31</span> AF         <?php lbl8K("NXTITM"); ?>: XOR     A               ; Flag "INPUT"
-EC32 32CD10             LD      (READFG),A      ; Save "READ"/"INPUT" flag
+<span id="EC31">EC31</span> AF         <?php lbl8K("NXTITM"); ?>: XOR     A               ; Flag "<?php bas8K("INPUT"); ?>"
+EC32 32CD10             LD      (READFG),A      ; Save "READ"/"<?php bas8K("INPUT"); ?>" flag
 EC35 E3                 EX      (SP),HL         ; Get code str' , Save pointer
 EC36 C33DEC             JP      <?php bas8K("GTVLUS"); ?>          ; Get values
 </pre>

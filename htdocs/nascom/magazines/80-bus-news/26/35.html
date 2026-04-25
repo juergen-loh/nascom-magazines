@@ -5,7 +5,7 @@
 <span id="EDD1">EDD1</span> AF         <?php lbl8K("OPRND"); ?>:  XOR     A               ; Get operand routine
 EDD2 32AD10             LD      (TYPE),A        ; Set numeric expected
 EDD5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-EDD8 1E24               LD      E,MO            ; ?MO Error
+EDD8 1E24               LD      E,<?php bas8K("MO"); ?>            ; ?<?php bas8K("MO"); ?> Error
 EDDA CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; No operand - Error
 EDDD DA1AF9             JP      C,<?php bas8K("ASCTFP"); ?>        ; Number - Get value
 EDE0 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
@@ -15,7 +15,7 @@ EDE8 CAD1ED             JP      Z,OPRND         ; Yes - Look for operand
 EDEB FE2E               CP      "."             ; "." ?
 EDED CA1AF9             JP      Z,<?php bas8K("ASCTFP"); ?>        ; Yes - Create FP number
 EDF0 FEAD               CP      ZMINUS          ; "-" Token&nbsp;?
-EDF2 CA11EE             JP      Z,MINUS         ; Yes - Do minus
+EDF2 CA11EE             JP      Z,<?php bas8K("MINUS"); ?>         ; Yes - Do minus
 EDF5 FE22               CP      '"'             ; Literal string&nbsp;?
 EDF7 CACFF1             JP      Z,QTSTR         ; Get string terminated by '"'
 EDFA FEAA               CP      ZNOT            ; "NOT" Token&nbsp;?
@@ -33,7 +33,7 @@ EE10 C9                 RET
 EE13 CD5DED             CALL    <?php bas8K("EVAL1"); ?>           ; Evaluate until prec' break
 EE16 2AD010             LD      HL,(NXTOPR)     ; Get next operator address
 EE19 E5                 PUSH    HL              ; Save next operator address
-EE1A CD3CF8             CALL    INVSGN          ; Negate value
+EE1A CD3CF8             CALL    <?php bas8K("INVSGN"); ?>          ; Negate value
 <span id="EE1D">EE1D</span> CD44ED     <?php lbl8K("RETNUM"); ?>: CALL    TSTNUM          ; Make sure it's a number
 EE20 E1                 POP     HL              ; Restore next operator address
 EE21 C9                 RET

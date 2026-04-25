@@ -20,16 +20,16 @@ ED10 CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add STEP to
 ED13 E1                 POP     HL              ; Restore address of index
 ED14 CD6BF8             CALL    <?php bas8K("FPTHL"); ?>           ; Move value to index variable
 ED17 E1                 POP     HL              ; Restore address of TO value
-ED18 CD62F8             CALL    LOADFP          ; Move TO value to BCDE
+ED18 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Move TO value to BCDE
 ED1B E5                 PUSH    HL              ; Save address of line of <?php bas8K("FOR","","","\n"); ?>
 ED1C CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare index with TO value
 ED1F E1                 POP     HL              ; Restore address of line num
 ED20 C1                 POP     BC              ; Address of sign of STEP
 ED21 90                 SUB     B               ; Compare with expected sign
-ED22 CD62F8             CALL    LOADFP          ; BC = Loop stmt,DE = Line num
-ED25 CA31ED             JP      Z,KILFOR        ; Loop finished - Terminate it
+ED22 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; BC = Loop stmt,DE = Line num
+ED25 CA31ED             JP      Z,<?php bas8K("KILFOR"); ?>        ; Loop finished - Terminate it
 ED28 EB                 EX      DE,HL           ; Loop statement line number
-ED29 225C10             LD      (LINEAT),HL     ; Set loop line number
+ED29 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Set loop line number
 ED2C 69                 LD      L,C             ; Set code string to loop
 ED2D 60                 LD      H,B
 ED2E C3EEE7             JP      PUTFID          ; Put back "<?php bas8K("FOR"); ?>" and continue

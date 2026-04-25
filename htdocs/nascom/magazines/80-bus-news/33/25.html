@@ -21,7 +21,7 @@ FCDD CD6DFE             CALL    MONTST          ; See if NAS-SYS
 FCE0 C2FBFC             JP      NZ,NASOUT       ; NAS-SYS - Output ASCII
 FCE3 F1                 POP     AF              ; Get character
 FCE4 F5                 PUSH    AF              ; And re-save
-FCE5 FE0A               CP      LF              ; ASCII Line feed?
+FCE5 FE0A               CP      <?php bas8K("LF"); ?>              ; ASCII Line feed?
 FCE7 CA00FD             JP      Z,<?php bas8K("IGCHR"); ?>         ; Yes - Ignore it
 FCEA FE08               CP      <?php bas8K("BKSP"); ?>            ; ASCII back space?
 FCEC C2F1FC             JP      NZ,<?php bas8K("CONOT1"); ?>       ; No - Test for CR

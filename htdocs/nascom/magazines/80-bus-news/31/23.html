@@ -37,7 +37,7 @@ F02E 23                 INC     HL
 F02F 56                 LD      D,(HL)          ; Get MSB of next array address
 F030 23                 INC     HL
 F031 C218F0             JP      NZ,<?php bas8K("FNDARY"); ?>       ; Not found - Keep looking
-F034 3AAC10             LD      A,(LCRFLG)      ; Found Locate or Create it?
+F034 3AAC10             LD      A,(<?php bas8K("LCRFLG"); ?>)      ; Found Locate or Create it?
 F037 B7                 OR      A
 F038 C2B6E3             JP      NZ,<?php bas8K("DDERR"); ?>        ; Create - ?<?php bas8K("DD"); ?> Error
 F03B F1                 POP     AF              ; Locate - Get number of dim'ns

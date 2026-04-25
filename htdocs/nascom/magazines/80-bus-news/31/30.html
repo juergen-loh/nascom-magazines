@@ -4,7 +4,7 @@
 
 <span id="F3EC">F3EC</span> EB         <?php lbl8K("MID"); ?>:    EX      DE,HL           ; Get code string address
 F3ED 7E                 LD      A,(HL)          ; Get next byte "," or ")"
-F3EE CD3CF4             CALL    MIDNUM          ; Get number supplied
+F3EE CD3CF4             CALL    <?php bas8K("MIDNUM"); ?>          ; Get number supplied
 F3F1 04                 INC     B               ; Is it character zero?
 F3F2 05                 DEC     B
 F3F3 CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Yes - Error
@@ -19,7 +19,7 @@ F402 CD84F4             CALL    <?php bas8K("GETINT"); ?>          ; Get integer
 F408 29                 DEFB    ")"
 F409 F1                 POP     AF              ; Restore starting position
 F40A E3                 EX      (SP),HL         ; Get string,8ave code string
-F40B 01B8F3             LD      BC,MID1         ; Continuation of MID$ routine
+F40B 01B8F3             LD      BC,<?php bas8K("MID1"); ?>         ; Continuation of <?php bas8K("MID"); ?>$ routine
 F40E C5                 PUSH    BC              ; Save for return
 F40F 3D                 DEC     A               ; Starting position-1
 F410 BE                 CP      (HL)            ; Compare with length
@@ -69,9 +69,9 @@ F43E C5                 PUSH    BC              ; Re-save return address
 F43F 43                 LD      B,E             ; Number to B
 F440 C9                 RET
 
-<span id="F441">F441</span> CD87F4     <?php lbl8K("INP"); ?>:    CALL    MAKINT          ; Make it integer A
+<span id="F441">F441</span> CD87F4     <?php lbl8K("INP"); ?>:    CALL    <?php bas8K("MAKINT"); ?>          ; Make it integer A
 F444 323F10             LD      (<?php bas8K("INPORT"); ?>),A      ; Set input port
-F447 CD3E10             CALL    INPSUB          ; Get input from port
+F447 CD3E10             CALL    <?php bas8K("INPSUB"); ?>          ; Get input from port
 F44A C301F1             JP      PASSA           ; Return integer A
 
 <span id="F44D">F44D</span> CD71F4     <?php lbl8K("POUT"); ?>:   CALL    SETIO           ; Set up port number
@@ -87,7 +87,7 @@ F460 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "
 F463 2C                 DEFB    ","
 F464 CD84F4             CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255 to XOR with
 <span id="F467">F467</span> C1         <?php lbl8K("NOXOR"); ?>:  POP     BC              ; Restore AND mask
-<span id="F468">F468</span> CD3E10     <?php lbl8K("WAITLP"); ?>: CALL    INPSUB          ; Get input
+<span id="F468">F468</span> CD3E10     <?php lbl8K("WAITLP"); ?>: CALL    <?php bas8K("INPSUB"); ?>          ; Get input
 F46B AB                 XOR     E               ; Flip selected bits
 F46C A0                 AND     B               ; Result non-zero?
 F46D CA68F4             JP      Z,WAITLP        ; No = keep waiting

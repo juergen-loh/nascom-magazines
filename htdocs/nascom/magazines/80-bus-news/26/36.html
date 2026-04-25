@@ -10,7 +10,7 @@ EE38 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 EE3B 79                 LD      A,C             ; Get adjusted token value
 EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "POINT" token?
 EE3E CA79FF             JP      Z,POINTB        ; Yes - Do "POINT" (not POINTB)
-EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' LEFT$,RIGHT$ or MID$ ?
+EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' <?php bas8K("LEFT"); ?>$,RIGHT$ or <?php bas8K("MID"); ?>$ ?
 EE43 DA5FEE             JP      C,<?php bas8K("FNVAL"); ?>         ; No - Do function
 EE46 CD56ED             CALL    OPNPAR          ; Evaluate expression  (X,...
 EE49 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows

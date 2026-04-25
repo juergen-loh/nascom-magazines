@@ -15,7 +15,7 @@ F4A1 23                 INC     HL
 F4A2 23                 INC     HL              ; Null at start of program
 F4A3 225E10             LD      (<?php bas8K("BASTXT"); ?>),HL     ; New program text area 8003H
 F4A6 EB                 EX      DE,HL           ; New RAM end to HL
-F4A7 22AF10             LD      (LSTRAM),HL     ; Set new RAM end
+F4A7 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Set new RAM end
 F4AA 225A10             LD      (STRSPC),HL     ; Clear string space
 F4AD 01F2E7             LD      BC,RUNCNT       ; Execution driver loop
 F4B0 C5                 PUSH    BC              ; Save for return

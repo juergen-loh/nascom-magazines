@@ -20,7 +20,7 @@ FACE CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move power 
 FAD1 F2E2FA             JP      P,POWER2        ; Positive base - Ok
 FAD4 D5                 PUSH    DE              ; Save power
 FAD5 C5                 PUSH    BC
-FAD6 CDE6F8             CALL    INT             ; Get integer of power
+FAD6 CDE6F8             CALL    <?php bas8K("INT"); ?>             ; Get integer of power
 FAD9 C1                 POP     BC              ; Restore power
 FADA D1                 POP     DE
 FADB F5                 PUSH    AF              ; MSB of base
@@ -33,13 +33,13 @@ FAE3 22E610             LD      (<?php bas8K("FPREG"); ?>+2),HL    ; Save base i
 FAE6 E1                 POP     HL              ; LSBs of base
 FAE7 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save in <?php bas8K("FPREG","","","\n"); ?>
 FAEA DCA7FA             CALL    C,NEGAFT        ; Odd power - Negate result
-FAED CC3CF8             CALL    Z,INVSGN        ; Negative base - Negate it
+FAED CC3CF8             CALL    Z,<?php bas8K("INVSGN"); ?>        ; Negative base - Negate it
 FAF0 D5                 PUSH    DE              ; Save power
 FAF1 C5                 PUSH    BC
-FAF2 CDC7F6             CALL    LOG             ; Get LOG of base
+FAF2 CDC7F6             CALL    <?php bas8K("LOG"); ?>             ; Get <?php bas8K("LOG"); ?> of base
 FAF5 C1                 POP     BC              ; Restore power
 FAF6 D1                 POP     DE
-FAF7 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply LOG by power
+FAF7 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply <?php bas8K("LOG"); ?> by power
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -52,7 +52,7 @@ FB03 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply va
 FB06 3AE710             LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get exponent
 FB09 FE88               CP      80H+8           ; Is it in range?
 FB0B D2EFF7             JP      NC,OVTST1       ; No - Test for overflow
-FB0E CDE6F8             CALL    INT             ; Get INT of <?php bas8K("FPREG","","","\n"); ?>
+FB0E CDE6F8             CALL    <?php bas8K("INT"); ?>             ; Get <?php bas8K("INT"); ?> of <?php bas8K("FPREG","","","\n"); ?>
 FB11 C680               ADD     A,80H           ; For excess 128
 FB13 C602               ADD     A,2             ; Exponent > 126?
 FB15 DAEFF7             JP      C,OVTST1        ; Yes - Test for overflow
@@ -65,7 +65,7 @@ FB23 C1                 POP     BC              ; Restore exponent
 FB24 D1                 POP     DE
 FB25 F5                 PUSH    AF              ; Save scaling factor
 FB26 CDCAF5             CALL    SUBCDE          ; Subtract exponent from <?php bas8K("FPREG","","","\n"); ?>
-FB29 CD3CF8             CALL    INVSGN          ; Negate result
+FB29 CD3CF8             CALL    <?php bas8K("INVSGN"); ?>          ; Negate result
 FB2C 213AFB             LD      HL,<?php bas8K("EXPTAB"); ?>       ; Coefficient table
 FB2F CD6AFB             CALL    SMSER1          ; Sum the series
 FB32 110000             LD      DE,0            ; Zero LSBs

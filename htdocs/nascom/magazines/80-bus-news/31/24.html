@@ -16,7 +16,7 @@ F05A 23                 INC     HL
 F05B 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of pointer
 F05E 71                 LD      (HL),C          ; Set number of dimensions
 F05F 23                 INC     HL
-F060 3AAC10             LD      A,(LCRFLG)      ; Locate of Create?
+F060 3AAC10             LD      A,(<?php bas8K("LCRFLG"); ?>)      ; Locate of Create?
 F063 17                 RLA                     ; Carry set = Create
 F064 79                 LD      A,C             ; Get number of dimensions
 <span id="F065">F065</span> 010B00     <?php lbl8K("CRARLP"); ?>: LD      BC,10+1         ; Default dimension size 10
@@ -29,7 +29,7 @@ F06F 70                 LD      (HL),B          ; Save MSB of dimension size
 F070 23                 INC     HL
 F071 F5                 PUSH    AF              ; Save num' of dim'ns an status
 F072 E5                 PUSH    HL              ; Save address of dim'n size
-F073 CDFFF8             CALL    MLDEBC          ; Multiply DE by BC to find
+F073 CDFFF8             CALL    <?php bas8K("MLDEBC"); ?>          ; Multiply DE by BC to find
 F076 EB                 EX      DE,HL           ; amount of mem needed (to DE)
 F077 E1                 POP     HL              ; Restore address of dimension
 F078 F1                 POP     AF              ; Restore number of dimensions
@@ -83,7 +83,7 @@ F0B3 F5                 PUSH    AF              ; Save number of dim'ns
 F0B4 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Dimension too large?
 F0B7 D245F0             JP      NC,<?php bas8K("BSERR"); ?>        ; Yes - ?BS Error
 F0BA E5                 PUSH    HL              ; Save index
-F0BB CDFFF8             CALL    MLDEBC          ; Multiply previous by size
+F0BB CDFFF8             CALL    <?php bas8K("MLDEBC"); ?>          ; Multiply previous by size
 F0BE D1                 POP     DE              ; Index supplied to DE
 F0BF 19                 ADD     HL,DE           ; Add index to pointer
 F0C0 F1                 POP     AF              ; Number of dimensions

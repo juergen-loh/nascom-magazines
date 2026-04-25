@@ -88,7 +88,7 @@ F20C C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; String pool
 <span id="F20F">F20F</span> 23         <?php lbl8K("PRNUMS"); ?>: INC     HL              ; Skip leading space
 <span id="F210">F210</span> CDCEF1     <?php lbl8K("PRS"); ?>:    CALL    <?php bas8K("CRTST"); ?>           ; Create string entry for it
 <span id="F213">F213</span> CD53F3     <?php lbl8K("PRS1"); ?>:   CALL    <?php bas8K("GSTRCU"); ?>          ; Current string to pool
-F216 CD62F8             CALL    LOADFP          ; Move string block to BCDE
+F216 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Move string block to BCDE
 F219 1C                 INC     E               ; Length + 1
 <span id="F21A">F21A</span> 1D         <?php lbl8K("PRSLP"); ?>:  DEC     E               ; Count characters
 F21B C8                 RET     Z               ; End of string

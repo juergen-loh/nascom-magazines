@@ -77,7 +77,7 @@ EFE8 E1                 POP     HL              ; Restore code string address
 EFE9 C9                 RET
 
 <span id="EFEA">EFEA</span> E5         <?php lbl8K("SBSCPT"); ?>: PUSH    HL              ; Save code string address
-EFEB 2AAC10             LD      HL,(LCRFLG)     ; Locate/Create and Type
+EFEB 2AAC10             LD      HL,(<?php bas8K("LCRFLG"); ?>)     ; Locate/Create and Type
 EFEE E3                 EX      (SP),HL         ; Save and get code string
 EFEF 57                 LD      D,A             ; Zero number of dimensions
 <span id="EFF0">EFF0</span> D5         <?php lbl8K("SCPTLP"); ?>: PUSH    DE              ; Save number of dimensions
@@ -87,7 +87,7 @@ EFF5 C1                 POP     BC              ; Restore array name
 EFF6 F1                 POP     AF              ; Get number of dimensions
 EFF7 EB                 EX      DE,HL
 EFF8 E3                 EX      (SP),HL         ; Save subscript value
-EFF9 E5                 PUSH    HL              ; Save LCRFLG and TYPE
+EFF9 E5                 PUSH    HL              ; Save <?php bas8K("LCRFLG"); ?> and TYPE
 EFFA EB                 EX      DE,HL
 EFFB 3C                 INC     A               ; Count dimensions
 EFFC 57                 LD      D,A             ; Save in D
@@ -97,8 +97,8 @@ F000 CAF0EF             JP      Z,SCPTLP        ; Yes - More subscripts
 F003 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F006 29                 DEFB    ")"
 F007 22D010             LD      (NXTOPR),HL     ; Save code string address
-F00A E1                 POP     HL              ; Get LCRFLG and TYPE
-F00B 22AC10             LD      (LCRFLG),HL     ; Restore Locate/create & type
+F00A E1                 POP     HL              ; Get <?php bas8K("LCRFLG"); ?> and TYPE
+F00B 22AC10             LD      (<?php bas8K("LCRFLG"); ?>),HL     ; Restore Locate/create & type
 F00E 1E00               LD      E,0             ; Flag not <?php bas8K("CSAVE"); ?>* or <?php bas8K("CLOAD"); ?>*
 F010 D5                 PUSH    DE              ; Save number of dimensions (D)
 F011 11                 DEFB    (LD DE,nn)      ; Skip "PUSH HL" and "PUSH AF'

@@ -23,7 +23,7 @@ E670 3E07               LD      A,<?php bas8K("CTRLG"); ?>         ; Set a bell
 E672 D282E6             JP      NC,OUTNBS       ; Ring bell if buffer full
 E675 79                 LD      A,C             ; Get character
 E676 71                 LD      (HL),C          ; Save in buffer
-E677 32CC10             LD      (LSTBIN),A      ; Save last input byte
+E677 32CC10             LD      (<?php bas8K("LSTBIN"); ?>),A      ; Save last input byte
 E67A 23                 INC     HL              ; Move up buffer
 E67B 04                 INC     B               ; Increment length
 <span id="E67C">E67C</span> CD9BE6     <?php lbl8K("OUTIT"); ?>:  CALL    OUTC            ; Output the character entered

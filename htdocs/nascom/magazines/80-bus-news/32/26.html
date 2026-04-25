@@ -67,7 +67,7 @@ F90E D215F9             JP      NC,NOMLAD       ; Bit was zero - No add
 F911 09                 ADD     HL,BC           ; Add multiplicand
 F912 DA45F0             JP      C,<?php bas8K("BSERR"); ?>         ; ?BS Error if overflow
 <span id="F915">F915</span> 3D         <?php lbl8K("NOMLAD"); ?>: DEC     A               ; Count bits
-F916 C207F9             JP      NZ,MLDBLP       ; More
+F916 C207F9             JP      NZ,<?php bas8K("MLDBLP"); ?>       ; More
 F919 C9                 RET
 
 <span id="F91A">F91A</span> FE2D       <?php lbl8K("ASCTFP"); ?>: CP      "-"             ; Negative?
@@ -99,7 +99,7 @@ F94F 93                 SUB     E               ; Negate exponent
 F950 5F                 LD      E,A             ; And re-save it
 F951 0C                 INC     C               ; Flag end of number
 <span id="F952">F952</span> 0C         <?php lbl8K("DPOINT"); ?>: INC     C               ; Flag point passed
-F953 CA2EF9             JP      Z,MANLP         ; Zero - Get another digit
+F953 CA2EF9             JP      Z,<?php bas8K("MANLP"); ?>         ; Zero - Get another digit
 <span id="F956">F956</span> E5         <?php lbl8K("CONEXP"); ?>: PUSH    HL              ; Save code string address
 F957 7B                 LD      A,E             ; Get exponent
 F958 90                 SUB     B               ; Subtract digits after point

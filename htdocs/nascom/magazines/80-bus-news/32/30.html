@@ -25,7 +25,7 @@ FB7A F5                 PUSH    AF              ; Save count
 FB7B E5                 PUSH    HL              ; Save address in table
 FB7C CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply <?php bas8K("FPREG"); ?> by BCDE
 FB7F E1                 POP     HL              ; Restore address in table
-FB80 CD62F8             CALL    LOADFP          ; Number at HL to BCDE
+FB80 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Number at HL to BCDE
 FB83 E5                 PUSH    HL              ; Save address in table
 FB84 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Add coefficient to <?php bas8K("FPREG","","","\n"); ?>
 FB87 E1                 POP     HL              ; Restore address in table

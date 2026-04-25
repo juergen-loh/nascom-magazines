@@ -27,7 +27,7 @@ EEDA D1                 POP     DE              ; Restore string name
 EEDB C5                 PUSH    BC              ; Save address of string
 EEDC F5                 PUSH    AF              ; Save length of string
 EEDD CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Get second string
-EEE0 CD62F8             CALL    LOADFP          ; Get address of second string
+EEE0 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Get address of second string
 EEE3 F1                 POP     AF              ; Restore length of string 1
 EEE4 57                 LD      D,A             ; Length to D
 EEE5 E1                 POP     HL              ; Restore address of string 1
@@ -85,7 +85,7 @@ EF27 2C                 DEFB    ","
 EF2B C5                 PUSH    BC              ; Save on stack
 EF2C F6                 DEFB    (OR n)          ; Flag "Create" variable
 <span id="EF2D">EF2D</span> AF         <?php lbl8K("GETVAR"); ?>: XOR     A               ; Find variable address,to DE
-EF2E 32AC10             LD      (LCRFLG),A      ; Set locate / create flag
+EF2E 32AC10             LD      (<?php bas8K("LCRFLG"); ?>),A      ; Set locate / create flag
 EF31 46                 LD      B,(HL)          ; Get First byte of name
 <span id="EF32">EF32</span> CD77E9     <?php lbl8K("GTFNAM"); ?>: CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
 EF35 DAADE3             JP      C,SNERR         ; ?SN Error if not a letter

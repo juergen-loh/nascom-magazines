@@ -24,7 +24,7 @@ F58C C1                 POP     BC              ; &lt;- registers
 F58D C9                 RET
 
 <span id="F58E">F58E</span> 46696C65   <?php lbl8K("FILE"); ?>:   DEFB    "File ",0
-<span id="F594">F594</span> 20466F75   <?php lbl8K("FOUND"); ?>:  DEFB    " Found",<?php bas8K("CR"); ?>,LF,0
+<span id="F594">F594</span> 20466F75   <?php lbl8K("FOUND"); ?>:  DEFB    " Found",<?php bas8K("CR"); ?>,<?php bas8K("LF"); ?>,0
 <span id="F59D">F59D</span> 42616400   <?php lbl8K("BAD"); ?>:    DEFB    "Bad",0,0,0
 
 <span id="F5A3">F5A3</span> CD8BE9     <?php lbl8K("PEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get memory address
@@ -42,18 +42,18 @@ F5B9 12                 LD      (DE),A          ; Load it into memory
 F5BA C9                 RET
 
 <span id="F5BB">F5BB</span> 2191FA     <?php lbl8K("ROUND"); ?>:  LD      HL,<?php bas8K("HALF"); ?>         ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
-<span id="F5BE">F5BE</span> CD62F8     <?php lbl8K("ADDPHL"); ?>: CALL    LOADFP          ; Load FP at (HL) to BCDE
+<span id="F5BE">F5BE</span> CD62F8     <?php lbl8K("ADDPHL"); ?>: CALL    <?php bas8K("LOADFP"); ?>          ; Load FP at (HL) to BCDE
 F5C1 C3CDF5             JP      <?php bas8K("FPADD"); ?>           ; Add BCDE to <?php bas8K("FPREG","","","\n"); ?>
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    72</span>
 
-<span id="F5C4">F5C4</span> CD62F8     <?php lbl8K("SUBPHL"); ?>: CALL    LOADFP          ; <?php bas8K("FPREG"); ?> = -<?php bas8K("FPREG"); ?> + number at HL
+<span id="F5C4">F5C4</span> CD62F8     <?php lbl8K("SUBPHL"); ?>: CALL    <?php bas8K("LOADFP"); ?>          ; <?php bas8K("FPREG"); ?> = -<?php bas8K("FPREG"); ?> + number at HL
 F5C7 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
 <span id="F5C8">F5C8</span> C1         <?php lbl8K("PSUB"); ?>:   POP     BC              ; Get FP number from stack
 F5C9 D1                 POP     DE
-<span id="F5CA">F5CA</span> CD3CF8     <?php lbl8K("SUBCDE"); ?>: CALL    INVSGN          ; Negate <?php bas8K("FPREG","","","\n"); ?>
+<span id="F5CA">F5CA</span> CD3CF8     <?php lbl8K("SUBCDE"); ?>: CALL    <?php bas8K("INVSGN"); ?>          ; Negate <?php bas8K("FPREG","","","\n"); ?>
 <span id="F5CD">F5CD</span> 78         <?php lbl8K("FPADD"); ?>:  LD      A,B             ; Get FP exponent
 F5CE B7                 OR      A               ; Is number zero?
 F5CF C8                 RET     Z               ; Yes - Nothing to add
@@ -79,7 +79,7 @@ F5EF F1                 POP     AF              ; Restore scaling factor
 F5F0 CD92F6             CALL    SCALE           ; Scale BCDE to same exponent
 F5F3 B4                 OR      H               ; Result to be positive?
 F5F4 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to <?php bas8K("FPREG","","","\n"); ?>
-F5F7 F20DF6             JP      P,MINCDE        ; No - Subtract <?php bas8K("FPREG"); ?> from CDE
+F5F7 F20DF6             JP      P,<?php bas8K("MINCDE"); ?>        ; No - Subtract <?php bas8K("FPREG"); ?> from CDE
 F5FA CD72F6             CALL    PLUCDE          ; Add <?php bas8K("FPREG"); ?> to CDE
 F5FD D253F6             JP      NC,RONDUP       ; No overflow - Round it up
 F600 23                 INC     HL              ; Point to exponent

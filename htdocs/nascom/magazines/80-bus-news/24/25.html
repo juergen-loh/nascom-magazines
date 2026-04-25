@@ -10,7 +10,7 @@ E008 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Jump to ini
 E00B 8BE9               DEFW    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 E00D F2F0               DEFW    <?php bas8K("ABPASS"); ?>          ; Return integer in AB
 
-E00F C33CE7             JP      LDNMI1          ; &lt;&lt; NO REFERENCE TO HERE &gt;&gt;
+E00F C33CE7             JP      <?php bas8K("LDNMI1"); ?>          ; &lt;&lt; NO REFERENCE TO HERE &gt;&gt;
 
 <span id="E012">E012</span> 210010     <?php lbl8K("CSTART"); ?>: LD      HL,WRKSPC       ; Start of workspace RAM
 E015 F9                 LD      SP,HL           ; Set up a temporary stack
@@ -30,7 +30,7 @@ E02A CDDFE4             CALL    <?php bas8K("CLREG"); ?>           ; Clear regis
 E02D CD81EB             CALL    PRNTCR          ; Output CRLF
 E030 32AA10             LD      (<?php bas8K("BUFFER"); ?>+72+1),A ; Mark end of buffer
 E033 32F910             LD      (PROGST),A      ; Initialise program area
-<span id="E036">E036</span> 2103E1     <?php lbl8K("MSIZE"); ?>:  LD      HL,MEMMSG       ; Point to message
+<span id="E036">E036</span> 2103E1     <?php lbl8K("MSIZE"); ?>:  LD      HL,<?php bas8K("MEMMSG"); ?>       ; Point to message
 E039 CD10F2             CALL    PRS             ; Output "Memory size"
 E03C CDFCE4             CALL    PROMPT          ; Get input with "?"
 E03F CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
@@ -47,7 +47,7 @@ E051 2F                 CPL                     ; Flip all bits
 E052 77                 LD      (HL),A          ; Put it back
 E053 BE                 CP      (HL)            ; RAM there if same
 E054 70                 LD      (HL),B          ; Restore old contents
-E055 CA49E0             JP      Z,MLOOP         ; If RAM - test next byte
+E055 CA49E0             JP      Z,<?php bas8K("MLOOP"); ?>         ; If RAM - test next byte
 E058 C36DE0             JP      SETTOP          ; Top of RAM found
 </pre>
 <?php DoublePageChange(); ?>
@@ -80,7 +80,7 @@ E07D 00                 NOP
 E07E 00                 NOP
 E07F 00                 NOP
 E080 11CEFF             LD      DE,0-50         ; 50 Bytes string space
-E083 22AF10             LD      (LSTRAM),HL     ; Save last available RAM
+E083 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Save last available RAM
 E086 19                 ADD     HL,DE           ; Allocate string space
 E087 225A10             LD      (STRSPC),HL     ; Save string space
 E08A CDBAE4             CALL    <?php bas8K("CLRPTR"); ?>          ; Clear program area

@@ -57,7 +57,7 @@ E336 C355FF             JP      RESETB          ; RESET reflection
 E339 5D11               DEFW    STLOOK          ; Temp string space
 E33B FEFF               DEFW    -2              ; Current line number (cold)
 E33D FA10               DEFW    PROGST+1        ; Start of program text
-<span id="E33F-INITBE">E33F</span>            <?php lbl8K("INITBE"); ?>:                         ; END OF INITIALISATION TABLE
+<span id="E33F">E33F</span>            <?php lbl8K("INITBE"); ?>:                         ; END OF INITIALISATION TABLE
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -93,7 +93,7 @@ E36D CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare ind
 E373 E1                 POP     HL              ; Restore pointer to sign
 E374 C8                 RET     Z               ; Return if block found
 E375 09                 ADD     HL,BC           ; Point to next block
-E376 C35AE3             JP      LOKFOR          ; Keep on looking
+E376 C35AE3             JP      <?php bas8K("LOKFOR"); ?>          ; Keep on looking
 
 <span id="E379">E379</span> CD93E3     <?php lbl8K("MOVUP"); ?>:  CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 <span id="E37C">E37C</span> C5         <?php lbl8K("MOVSTR"); ?>: PUSH    BC              ; Save end of source

@@ -7,22 +7,22 @@ EC3C 2C                 DEFB    ","
 <span id="EC3D">EC3D</span> CD2DEF     <?php lbl8K("GTVLUS"); ?>: CALL    <?php bas8K("GETVAR"); ?>          ; Get variable name
 EC40 E3                 EX      (SP),HL         ; Save code str" , Get pointer
 EC41 D5                 PUSH    DE              ; Save variable address
-EC42 7E                 LD      A,(HL)          ; Get next "INPUT"/"<?php bas8K("DATA"); ?>" byte
+EC42 7E                 LD      A,(HL)          ; Get next "<?php bas8K("INPUT"); ?>"/"<?php bas8K("DATA"); ?>" byte
 EC43 FE2C               CP      ","             ; Comma?
 EC45 CA65EC             JP      Z,<a href="../../../26/33/text/#ANTVLU">ANTVLU</a>        ; Yes - Get another value
 EC48 3ACD10             LD      A,(READFG)      ; Is it READ?
 EC4B B7                 OR      A
 EC4C C2D2EC             JP      NZ,<?php bas8K("FDTLP"); ?>        ; Yes - Find next DATA stmt
-EC4F 3E3F               LD      A,"?"           ; More INPUT needed
+EC4F 3E3F               LD      A,"?"           ; More <?php bas8K("INPUT"); ?> needed
 EC51 CD9BE6             CALL    OUTC            ; Output character
-EC54 CDFCE4             CALL    PROMPT          ; Get INPUT with prompt
+EC54 CDFCE4             CALL    PROMPT          ; Get <?php bas8K("INPUT"); ?> with prompt
 EC57 D1                 POP     DE              ; Variable address
 EC58 C1                 POP     BC              ; Code string address
 EC59 DA77E8             JP      C,<?php bas8K("INPBRK"); ?>        ; Break pressed
 EC5C 23                 INC     HL              ; Point to next DATA byte
 EC5D 7E                 LD      A,(HL)          ; Get byte
 EC5E B7                 OR      A               ; Is it zero (No input) ?
-EC5F 2B                 DEC     HL              ; Back space INPUT pointer
+EC5F 2B                 DEC     HL              ; Back space <?php bas8K("INPUT"); ?> pointer
 EC60 C5                 PUSH    BC              ; Save code string address
 EC61 CA6FEA             JP      Z,NXTDTA        ; Find end of buffer
 EC64 D5                 PUSH    DE              ; Save variable address
@@ -34,19 +34,19 @@ EC6F 57                 LD      D,A             ; Save input character
 EC70 47                 LD      B,A             ; Again
 EC71 FE22               CP      '"'             ; Start of literal sting?
 EC73 CA83EC             JP      Z,STRENT        ; Yes - Create string entry
-EC76 3ACD10             LD      A,(READFG)      ; "READ" or "INPUT" ?
+EC76 3ACD10             LD      A,(READFG)      ; "READ" or "<?php bas8K("INPUT"); ?>" ?
 EC79 B7                 OR      A
-EC7A 57                 LD      D,A             ; Save 00 if "INPUT"
-EC7B CA80EC             JP      Z,ITMSEP        ; "INPUT" - End with 00
+EC7A 57                 LD      D,A             ; Save 00 if "<?php bas8K("INPUT"); ?>"
+EC7B CA80EC             JP      Z,<?php bas8K("ITMSEP"); ?>        ; "<?php bas8K("INPUT"); ?>" - End with 00
 EC7E 163A               LD      D,":"           ; "<?php bas8K("DATA"); ?>" - End with 00 or ":"
 <span id="EC80">EC80</span> 062C       <?php lbl8K("ITMSEP"); ?>: LD      B,","           ; Item separator
 EC82 2B                 DEC     HL              ; Back space for <?php bas8K("DTSTR","","","\n"); ?>
 <span id="EC83">EC83</span> CDD2F1     <?php lbl8K("STRENT"); ?>: CALL    <?php bas8K("DTSTR"); ?>           ; Get string terminated by D
 EC86 EB                 EX      DE,HL           ; String address to DE
-EC87 219AEC             LD      HL,LTSTND       ; Where to go after LETSTR
+EC87 219AEC             LD      HL,<?php bas8K("LTSTND"); ?>       ; Where to go after <?php bas8K("LETSTR","","","\n"); ?>
 EC8A E3                 EX      (SP),HL         ; Save HL&nbsp;, get input pointer
 EC8B D5                 PUSH    DE              ; Save address of string
-EC8C C3A2EA             JP      LETSTR          ; Assign string to variable
+EC8C C3A2EA             JP      <?php bas8K("LETSTR"); ?>          ; Assign string to variable
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -67,7 +67,7 @@ ECA7 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR")
 ECA8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 ECAB C239EC             JP      NZ,NEDMOR       ; More needed - Get it
 ECAE D1                 POP     DE              ; Restore DATA pointer
-ECAF 3ACD10             LD      A,(READFG)      ; "READ" or "INPUT" ?
+ECAF 3ACD10             LD      A,(READFG)      ; "READ" or "<?php bas8K("INPUT"); ?>" ?
 ECB2 B7                 OR      A
 ECB3 EB                 EX      DE,HL           ; DATA pointer to HL
 ECB4 C25CE8             JP      NZ,UPDATA       ; Update DATA pointer if "READ"
@@ -78,7 +78,7 @@ ECBC C410F2             CALL    NZ,PRS          ; Output string if extra given
 ECBF E1                 POP     HL              ; Restore code string address
 ECC0 C9                 RET
 
-<span id="ECC1">ECC1</span> 3F457874   <?php lbl8K("EXTIG"); ?>:  DEFB    "?Extra ignored",<?php bas8K("CR"); ?>,LF,0
+<span id="ECC1">ECC1</span> 3F457874   <?php lbl8K("EXTIG"); ?>:  DEFB    "?Extra ignored",<?php bas8K("CR"); ?>,<?php bas8K("LF"); ?>,0
 
 <span id="ECD2">ECD2</span> CD70EA     <?php lbl8K("FDTLP"); ?>:  CALL    <?php bas8K("DATA"); ?>            ; Get next statement
 ECD5 B7                 OR      A               ; End of line?

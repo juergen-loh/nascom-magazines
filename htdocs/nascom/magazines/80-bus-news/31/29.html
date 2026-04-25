@@ -25,8 +25,8 @@ F3A0 1A                 LD      A,(DE)          ; Get first byte of string
 F3A1 C9                 RET
 
 <span id="F3A2">F3A2</span> 3E01       <?php lbl8K("CHR"); ?>:    LD      A,1             ; One character string
-F3A4 CDBFF1             CALL    MKTMST          ; Make a temporary string
-F3A7 CD87F4             CALL    MAKINT          ; Make it integer A
+F3A4 CDBFF1             CALL    <?php bas8K("MKTMST"); ?>          ; Make a temporary string
+F3A7 CD87F4             CALL    <?php bas8K("MAKINT"); ?>          ; Make it integer A
 F3AA 2AC110             LD      HL,(TMPSTR+2)   ; Get address of string
 F3AD 73                 LD      (HL),E          ; Save character
 <span id="F3AE">F3AE</span> C1         <?php lbl8K("TOPOOL"); ?>: POP     BC              ; Clean up stack
@@ -36,7 +36,7 @@ F3AF C3F0F1             JP      TSTOPL          ; Temporary string to pool
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    66</span>
 
-<span id="F3B2">F3B2</span> CD37F4     <?php lbl8K("LEFT"); ?>:   CALL    LFRGNM          ; Get number and ending ")"
+<span id="F3B2">F3B2</span> CD37F4     <?php lbl8K("LEFT"); ?>:   CALL    <?php bas8K("LFRGNM"); ?>          ; Get number and ending ")"
 F3B5 AF                 XOR     A               ; Start at first byte in string
 <span id="F3B6">F3B6</span> E3         <?php lbl8K("RIGHT1"); ?>: EX      (SP),HL         ; Save code string,Get string
 F3B7 4F                 LD      C,A             ; Starting position in string
@@ -69,7 +69,7 @@ F3DB D1                 POP     DE              ; Clear stack
 F3DC CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to string pool if needed
 F3DF C3F0F1             JP      TSTOPL          ; Temporary string to pool
 
-<span id="F3E2">F3E2</span> CD37F4     <?php lbl8K("RIGHT"); ?>:  CALL    LFRGNM          ; Get number and ending ")"
+<span id="F3E2">F3E2</span> CD37F4     <?php lbl8K("RIGHT"); ?>:  CALL    <?php bas8K("LFRGNM"); ?>          ; Get number and ending ")"
 F3E5 D1                 POP     DE              ; Get string length
 F3E6 D5                 PUSH    DE              ; And re-save
 F3E7 1A                 LD      A,(DE)          ; Get length

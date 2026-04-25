@@ -32,7 +32,7 @@ E873 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save point 
 E876 21                 DEFB    (LD HL,nn)      ; Skip "OR 11111111B"
 <span id="E877">E877</span> F6FF       <?php lbl8K("INPBRK"); ?>: OR      11111111B       ; Flag "Break" wanted
 E879 C1                 POP     BC              ; Return not needed and more
-<span id="E87A">E87A</span> 2A5C10     <?php lbl8K("ENDPRG"); ?>: LD      HL,(LINEAT)     ; Get current line number
+<span id="E87A">E87A</span> 2A5C10     <?php lbl8K("ENDPRG"); ?>: LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line number
 E87D F5                 PUSH    AF              ; Save STOP / END status
 E87E 7D                 LD      A,L             ; Is it direct break?
 E87F A4                 AND     H
@@ -56,7 +56,7 @@ E8A3 1E20               LD      E,<?php bas8K("CN"); ?>            ; ?CN Error
 E8A5 CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - output "?CN Error"
 E8A8 EB                 EX      DE,HL           ; Save code string address
 E8A9 2AD210             LD      HL,(<?php bas8K("ERRLIN"); ?>)     ; Get line of last break
-E8AC 225C10             LD      (LINEAT),HL     ; Set up current line number
+E8AC 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Set up current line number
 E8AF EB                 EX      DE,HL           ; Restore code string address
 E8B0 C9                 RET                     ; CONTinue where left off
 </pre>
@@ -113,7 +113,7 @@ E8FE C1                 POP     BC              ; Number of dimensions
 E8FF D1                 POP     DE              ; End of array data
 E900 E1                 POP     HL              ; Address of array data
 E901 06D2               LD      B,11010010B     ; Header byte
-E903 C3D6FF             JP      JPLDSV          ; <?php bas8K("CSAVE"); ?>-SNDHDR&nbsp;, <?php bas8K("CLOAD"); ?>-<?php bas8K("GETHDR","","","\n"); ?>
+E903 C3D6FF             JP      <?php bas8K("JPLDSV"); ?>          ; <?php bas8K("CSAVE"); ?>-SNDHDR&nbsp;, <?php bas8K("CLOAD"); ?>-<?php bas8K("GETHDR","","","\n"); ?>
 
 <span id="E906">E906</span> 78         <?php lbl8K("SNDHDR"); ?>: LD      A,B             ; Get header byte
 E907 CDB7F4             CALL    WUART2          ; Send 2 bytes to UART

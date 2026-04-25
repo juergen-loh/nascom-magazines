@@ -30,7 +30,7 @@ EA97 E3                 EX      (SP),HL         ; Save code - Get var addr
 EA98 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save address of variable
 EA9B 1F                 RRA                     ; Adjust type
 EA9C CD46ED             CALL    <?php bas8K("CHKTYP"); ?>          ; Check types are the same
-EA9F CADAEA             JP      Z,LETNUM        ; Numeric - Move value
+EA9F CADAEA             JP      Z,<?php bas8K("LETNUM"); ?>        ; Numeric - Move value
 <span id="EAA2">EAA2</span> E5         <?php lbl8K("LETSTR"); ?>: PUSH    HL              ; Save address of string var
 EAA3 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Pointer to string entry
 EAA6 E5                 PUSH    HL              ; Save it on stack

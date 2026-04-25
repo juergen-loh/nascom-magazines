@@ -18,7 +18,7 @@ By Carl Lloyd&mdash;Parker
 <span id="FB8B">FB8B</span> CD13F8     <?php lbl8K("RND"); ?>:    CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 FB8E 211910             LD      HL,SEED+2       ; Random number seed
 FB91 FAECFB             JP      M,RESEED        ; Negative - Re-seed
-FB94 213A10             LD      HL,LSTRND       ; Last random number
+FB94 213A10             LD      HL,<?php bas8K("LSTRND"); ?>       ; Last random number
 FB97 CD51F8             CALL    PHLTFP          ; Move last RND to <?php bas8K("FPREG","","","\n"); ?>
 FB9A 211910             LD      HL,SEED+2       ; Random number seed
 FB9D C8                 RET     Z               ; Return if RND(0)
@@ -31,7 +31,7 @@ FBA5 87                 ADD     A,A             ; 4 bytes
 FBA6 87                 ADD     A,A             ; per entry
 FBA7 4F                 LD      C,A             ; BC = Offset into table
 FBA8 09                 ADD     HL,BC           ; Point to coefficient
-FBA9 CD62F8             CALL    LOADFP          ; Coefficient to BCDE
+FBA9 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Coefficient to BCDE
 FBAC CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply <?php bas8K("FPREG"); ?> by coefficient
 FBAF 3A1810             LD      A,(SEED+1)      ; Get (SEED+1)
 FBB2 3C                 INC     A               ; Add 1
@@ -65,7 +65,7 @@ FBE0 0C                 INC     C               ; Fillde about
 FBE1 15                 DEC     D               ; with the
 FBE2 1C                 INC     E               ; number
 <span id="FBE3">FBE3</span> CD1EF6     <?php lbl8K("RND2"); ?>:   CALL    <?php bas8K("BNORM"); ?>           ; Normalise number
-FBE6 213A10             LD      HL,LSTRND       ; Save random number
+FBE6 213A10             LD      HL,<?php bas8K("LSTRND"); ?>       ; Save random number
 FBE9 C36BF8             JP      <?php bas8K("FPTHL"); ?>           ; Move <?php bas8K("FPREG"); ?> to last and return
 </pre>
 <?php DoublePageEnd(); ?>

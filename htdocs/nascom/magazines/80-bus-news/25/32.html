@@ -11,7 +11,7 @@ E6A4 C5                 PUSH    BC              ; Save buffer length
 E6A5 F5                 PUSH    AF              ; Save character
 E6A6 FE20               CP      " "             ; Is it a control code?
 E6A8 DABFE6             JP      C,<?php bas8K("DINPOS"); ?>        ; Yes - Don't INC POS(X)
-E6AB 3A4210             LD      A,(LWIDTH)      ; Get line width
+E6AB 3A4210             LD      A,(<?php bas8K("LWIDTH"); ?>)      ; Get line width
 E6AE 47                 LD      B,A             ; To B
 E6AF 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
 E6B2 04                 INC     B               ; Width 255?
@@ -78,8 +78,8 @@ E708 E1                 POP     HL              ; Restore start of line address
 <span id="E70C">E70C</span> 7E         <?php lbl8K("LSTLP3"); ?>: LD      A,(HL)          ; Get next byte in line
 E70D B7                 OR      A               ; End of line?
 E70E 23                 INC     HL              ; To next byte in line
-E70F CAE9E6             JP      Z,LISTLP        ; Yes - get next line
-E712 F209E7             JP      P,LSTLP2        ; No token - output it
+E70F CAE9E6             JP      Z,<?php bas8K("LISTLP"); ?>        ; Yes - get next line
+E712 F209E7             JP      P,<?php bas8K("LSTLP2"); ?>        ; No token - output it
 E715 D67F               SUB     ZEND-1          ; Find and output word
 E717 4F                 LD      C,A             ; Token offset+1 to C
 E718 1143E1             LD      DE,WORDS        ; Reserved word list
@@ -95,6 +95,6 @@ E72A 1A                 LD      A,(DE)          ; Get next character
 E72B 13                 INC     DE              ; Move on to next
 E72C B7                 OR      A               ; Is it end of word?
 E72D F225E7             JP      P,OUTWRD        ; No - output the rest
-E730 C30CE7             JP      LSTLP3          ; Next byte in line
+E730 C30CE7             JP      <?php bas8K("LSTLP3"); ?>          ; Next byte in line
 </pre>
 <?php DoublePageEnd(); ?>
