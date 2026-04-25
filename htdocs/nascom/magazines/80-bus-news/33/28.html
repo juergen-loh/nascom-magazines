@@ -51,7 +51,7 @@ FF4F C9                 RET
 
 <span id="FF50">FF50</span> C1         <?php lbl8K("SETOR"); ?>:  POP     BC              ; Restore bit mask
 FF51 B0                 OR      B               ; Merge the bits
-FF52 C34BFF             JP      PUTBIT          ; Save on screen
+FF52 C34BFF             JP      <?php bas8K("PUTBIT"); ?>          ; Save on screen
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -66,17 +66,17 @@ FF5F 063F               LD      B,00111111B     ; Six bits per block
 FF61 A0                 AND     B               ; Clear bits 7 & 6
 FF62 C1                 POP     BC              ; Get bit mask
 FF63 A0                 AND     B               ; Test for common bit
-FF64 CA4CFF             JP      Z,RESCSA        ; None - Leave it
+FF64 CA4CFF             JP      Z,<?php bas8K("RESCSA"); ?>        ; None - Leave it
 FF67 7E                 LD      A,(HL)          ; Get byte from screen
 FF68 E63F               AND     00111111B       ; Isolate bit
 FF6A A8                 XOR     B               ; Clear that bit
 FF6B FEC0               CP      11000000B       ; Is it a graphic blank?
-FF6D C24BFF             JP      NZ,PUTBIT       ; No - Save character
+FF6D C24BFF             JP      NZ,<?php bas8K("PUTBIT"); ?>       ; No - Save character
 FF70 3E20               LD      A," "           ; Put a space there
-FF72 C34BFF             JP      PUTBIT          ; Save the space
+FF72 C34BFF             JP      <?php bas8K("PUTBIT"); ?>          ; Save the space
 
 <span id="FF75">FF75</span> C1         <?php lbl8K("NORES"); ?>:  POP     BC              ; Drop bit mask
-FF76 C34CFF             JP      RESCSA          ; Restore code string address
+FF76 C34CFF             JP      <?php bas8K("RESCSA"); ?>          ; Restore code string address
 
 <span id="FF79">FF79</span> CD15FF     <?php lbl8K("POINTB"); ?>: CALL    <?php bas8K("GETXYA"); ?>          ; Get co-ords and VDU address
 FF7C 46                 LD      B,(HL)          ; Get character from screen
@@ -86,7 +86,7 @@ FF83 3E00               LD      A,0
 FF85 0601               LD      B,1             ; Integer AB = 1
 <span id="FF87">FF87</span> E1         <?php lbl8K("POINTX"); ?>: POP     HL              ; Drop return
 FF88 FDE5               PUSH    IY              ; PUSH code string address
-FF8A 111DEE             LD      DE,RETNUM       ; To return a number
+FF8A 111DEE             LD      DE,<?php bas8K("RETNUM"); ?>       ; To return a number
 FF8D D5                 PUSH    DE              ; Save for return
 FF8E C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 

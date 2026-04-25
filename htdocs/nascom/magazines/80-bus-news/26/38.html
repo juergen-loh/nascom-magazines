@@ -13,7 +13,7 @@ EF82 11E010             LD      DE,<?php bas8K("FNARG"); ?>        ; Point to ar
 EF85 CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Yes - Return FN argument value
 EF88 2AD810             LD      HL,(VAREND)     ; End of variables
 EF8B EB                 EX      DE,HL           ; Address of end of search
-EF8C 2AD610             LD      HL,(PROGND)     ; Start of variables address
+EF8C 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Start of variables address
 <span id="EF8F">EF8F</span> CD8AE6     <?php lbl8K("FNDVAR"); ?>: CALL    <?php bas8K("CPDEHL"); ?>          ; End of variable list table?
 EF92 CAA8EF             JP      Z,<?php bas8K("CFEVAL"); ?>        ; Yes - Called from <?php bas8K("EVAL"); ?>?
 EF95 79                 LD      A,C             ; Get second byte of name
@@ -23,7 +23,7 @@ EF98 C29DEF             JP      NZ,<?php bas8K("FNTHR"); ?>        ; Different -
 EF9B 78                 LD      A,B             ; Get first byte of name
 EF9C 96                 SUB     (HL)            ; Compare with name in list
 <span id="EF9D">EF9D</span> 23         <?php lbl8K("FNTHR"); ?>:  INC     HL              ; Move on to LSB of value
-EF9E CADCEF             JP      Z,RETADR        ; Found - Return address
+EF9E CADCEF             JP      Z,<?php bas8K("RETADR"); ?>        ; Found - Return address
 EFA1 23                 INC     HL              ; &lt;- Skip
 EFA2 23                 INC     HL              ; &lt;- over
 EFA3 23                 INC     HL              ; &lt;- F.P.
@@ -36,7 +36,7 @@ EFAA D5                 PUSH    DE              ; Save address of variable
 EFAB 1125EE             LD      DE,<?php bas8K("FRMEVL"); ?>       ; Return address in <?php bas8K("EVAL","","","\n"); ?>
 EFAE CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Called from <?php bas8K("EVAL"); ?>&nbsp;?
 EFB1 D1                 POP     DE              ; Restore address of variable
-EFB2 CADFEF             JP      Z,RETNUL        ; Yes - Return null variable
+EFB2 CADFEF             JP      Z,<?php bas8K("RETNUL"); ?>        ; Yes - Return null variable
 EFB5 E3                 EX      (SP),HL         ; Put back return
 EFB6 E5                 PUSH    HL              ; Save code string address
 EFB7 C5                 PUSH    BC              ; Save variable name

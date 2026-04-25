@@ -4,7 +4,7 @@
 
 <span id="E846">E846</span> EB         <?php lbl8K("RESTOR"); ?>: EX      DE,HL           ; Save code string address
 E847 2A5E10             LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
-E84A CA5BE8             JP      Z,RESTNL        ; Just RESTORE - reset pointer
+E84A CA5BE8             JP      Z,<?php bas8K("RESTNL"); ?>        ; Just RESTORE - reset pointer
 E84D EB                 EX      DE,HL           ; Restore code string address
 E84E CDA5E9             CALL    <?php bas8K("ATOH"); ?>            ; Get line number to DE
 E851 E5                 PUSH    HL              ; Save code string address

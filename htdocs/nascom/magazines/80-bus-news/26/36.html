@@ -10,7 +10,7 @@ EE38 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 EE3B 79                 LD      A,C             ; Get adjusted token value
 EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "<?php bas8K("POINT"); ?>" token?
 EE3E CA79FF             JP      Z,<?php bas8K("POINTB"); ?>        ; Yes - Do "<?php bas8K("POINT"); ?>" (not <?php bas8K("POINTB"); ?>)
-EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' <?php bas8K("LEFT"); ?>$,RIGHT$ or <?php bas8K("MID"); ?>$ ?
+EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' <?php bas8K("LEFT"); ?>$,<?php bas8K("RIGHT"); ?>$ or <?php bas8K("MID"); ?>$ ?
 EE43 DA5FEE             JP      C,<?php bas8K("FNVAL"); ?>         ; No - Do function
 EE46 CD56ED             CALL    <?php bas8K("OPNPAR"); ?>          ; Evaluate expression  (X,...
 EE49 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
@@ -28,7 +28,7 @@ EE5C C367EE             JP      <?php bas8K("GOFUNC"); ?>          ; Jump to str
 
 <span id="EE5F">EE5F</span> CD09EE     <?php lbl8K("FNVAL"); ?>:  CALL    <?php bas8K("EVLPAR"); ?>          ; Evaluate expression
 EE62 E3                 EX      (SP),HL         ; HL = Adjusted token value
-EE63 111DEE             LD      DE,RETNUM       ; Return number from function
+EE63 111DEE             LD      DE,<?php bas8K("RETNUM"); ?>       ; Return number from function
 EE66 D5                 PUSH    DE              ; Save on stack
 <span id="EE67">EE67</span> 010FE1     <?php lbl8K("GOFUNC"); ?>: LD      BC,<?php bas8K("FNCTAB"); ?>       ; Function routine addresses
 EE6A 09                 ADD     HL,BC           ; Point to right address

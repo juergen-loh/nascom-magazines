@@ -77,7 +77,7 @@ F88D C9                 RET
 <span id="F88E">F88E</span> 78         <?php lbl8K("CMPNUM"); ?>: LD      A,B             ; Get exponent of number
 F88F B7                 OR      A
 F890 CA13F8             JP      Z,TSTSGN        ; Zero - Test sign of <?php bas8K("FPREG","","","\n"); ?>
-F893 211CF8             LD      HL,RETREL       ; Return relation routine
+F893 211CF8             LD      HL,<?php bas8K("RETREL"); ?>       ; Return relation routine
 F896 E5                 PUSH    HL              ; Save for return
 F897 CD13F8             CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F89A 79                 LD      A,C             ; Get MSB of number

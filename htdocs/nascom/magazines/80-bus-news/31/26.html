@@ -63,7 +63,7 @@ F1D9 CAE4F1             JP      Z,<?php bas8K("CRTSTE"); ?>        ; Yes - Creat
 F1DC BA                 CP      D               ; Terminator D found?
 F1DD CAE4F1             JP      Z,<?php bas8K("CRTSTE"); ?>        ; Yes - Create string entry
 F1E0 B8                 CP      B               ; Terminator B found?
-F1E1 C2D5F1             JP      NZ,QTSTLP       ; No - Keep looking
+F1E1 C2D5F1             JP      NZ,<?php bas8K("QTSTLP"); ?>       ; No - Keep looking
 <span id="F1E4">F1E4</span> FE22       <?php lbl8K("CRTSTE"); ?>: CP      '"'             ; End with '"'?
 F1E6 CC36E8             CALL    Z,<?php bas8K("GETCHR"); ?>        ; Yes - Get next character
 F1E9 E3                 EX      (SP),HL         ; Starting quote
@@ -97,6 +97,6 @@ F21D CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output char
 F220 FE0D               CP      <?php bas8K("CR"); ?>              ; Return?
 F222 CC86EB             CALL    Z,<?php bas8K("DONULL"); ?>        ; Yes - Do nulls
 F225 03                 INC     BC              ; Next byte in string
-F226 C31AF2             JP      PRSLP           ; More characters to output
+F226 C31AF2             JP      <?php bas8K("PRSLP"); ?>           ; More characters to output
 </pre>
 <?php DoublePageEnd(); ?>

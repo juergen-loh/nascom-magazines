@@ -50,7 +50,7 @@ F790 7D                 LD      A,L             ; Get LSB of number
 F791 CD0910             CALL    <?php bas8K("DIVSUP"); ?>          ; Subt' divisor from dividend
 F794 DE00               SBC     A,0             ; Count for overflows
 F796 3F                 CCF
-F797 D2A1F7             JP      NC,RESDIV       ; Restore divisor if borrow
+F797 D2A1F7             JP      NC,<?php bas8K("RESDIV"); ?>       ; Restore divisor if borrow
 F79A 321510             LD      (<?php bas8K("DIV4"); ?>),A        ; Re-save overflow count
 F79D F1                 POP     AF              ; Scrap divisor
 F79E F1                 POP     AF

@@ -3,7 +3,7 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    71</span>
 
 <span id="F56B">F56B</span> 219DF5     <?php lbl8K("OUTBAD"); ?>: LD      HL,<a href="../../../31/32/text/#BAD">BAD</a>          ; "Bad" message
-F56E CD10F2             CALL    PRS             ; Output string
+F56E CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F571 C3E1E3             JP      <?php bas8K("ERRIN"); ?>           ; In line message
 
 <span id="F574">F574</span> C5         <?php lbl8K("FILFND"); ?>: PUSH    BC              ; &lt;- Save
@@ -11,12 +11,12 @@ F575 E5                 PUSH    HL              ; &lt;- all
 F576 D5                 PUSH    DE              ; &lt;- the
 F577 F5                 PUSH    AF              ; &lt;- registers
 F578 218EF5             LD      HL,<?php bas8K("FILE"); ?>         ; "File" message
-F57B CD10F2             CALL    PRS             ; Output string
+F57B CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F57E F1                 POP     AF              ; Get file name
 F57F F5                 PUSH    AF              ; And re-save
 F580 CDD9FC             CALL    <?php bas8K("CONMON"); ?>          ; Output file name to screen
 F583 2194F5             LD      HL,<?php bas8K("FOUND"); ?>        ; "Found" message
-F586 CD10F2             CALL    PRS             ; Output string
+F586 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F589 F1                 POP     AF              ; &lt;- Restore
 F58A D1                 POP     DE              ; &lt;- all
 F58B E1                 POP     HL              ; &lt;- the

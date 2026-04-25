@@ -57,14 +57,14 @@ E614 FE7F               CP      <?php bas8K("DEL"); ?>             ; Delete char
 E616 CAC1E5             JP      Z,<?php bas8K("DODEL"); ?>         ; Yes - Process it
 E619 3A4410             LD      A,(<?php bas8K("NULFLG"); ?>)      ; Get null flag
 E61C B7                 OR      A               ; Test null flag status
-E61D CA29E6             JP      Z,PROCES        ; Reset - Process character
+E61D CA29E6             JP      Z,<?php bas8K("PROCES"); ?>        ; Reset - Process character
 E620 3E00               LD      A,0             ; Set a null
 E622 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output null
 E625 AF                 XOR     A               ; Clear A
 E626 324410             LD      (<?php bas8K("NULFLG"); ?>),A      ; Reset null flag
 <span id="E629">E629</span> 79         <?php lbl8K("PROCES"); ?>: LD      A,C             ; Get character
 E62A FE07               CP      <?php bas8K("CTRLG"); ?>           ; Bell?
-E62C CA6DE6             JP      Z,PUTCTL        ; Yes - Save it
+E62C CA6DE6             JP      Z,<?php bas8K("PUTCTL"); ?>        ; Yes - Save it
 E62F FE03               CP      <?php bas8K("CTRLC"); ?>           ; Is it control "C"?
 E631 CC81EB             CALL    Z,<?php bas8K("PRNTCR"); ?>        ; Yes - Output CRLF
 E634 37                 SCF                     ; Flag break
@@ -80,14 +80,14 @@ E647 CAE1E5             JP      Z,<?php bas8K("DELCHR"); ?>        ; Yes - Delet
 E64A FE08               CP      <?php bas8K("BKSP"); ?>            ; Is it backspace?
 E64C CAE1E5             JP      Z,<?php bas8K("DELCHR"); ?>        ; Yes - Delete character
 E64F FE12               CP      <?php bas8K("CTRLR"); ?>           ; Is it control "R"?
-E651 C268E6             JP      NZ,PUTBUF       ; No - Put in buffer
+E651 C268E6             JP      NZ,<?php bas8K("PUTBUF"); ?>       ; No - Put in buffer
 E654 C5                 PUSH    BC              ; Save buffer length
 E655 D5                 PUSH    DE              ; Save DE
 E656 E5                 PUSH    HL              ; Save buffer address
 E657 3600               LD      (HL),0          ; Mark end of buffer
 E659 CDF4FF             CALL    <?php bas8K("OUTNCR"); ?>          ; Output and do CRLF
 E65C 216110             LD      HL,<?php bas8K("BUFFER"); ?>       ; Point to buffer start
-E65F CD10F2             CALL    PRS             ; Output buffer
+E65F CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output buffer
 E662 E1                 POP     HL              ; Restore buffer address
 E663 D1                 POP     DE              ; Restore DE
 E664 C1                 POP     BC              ; Restore buffer length

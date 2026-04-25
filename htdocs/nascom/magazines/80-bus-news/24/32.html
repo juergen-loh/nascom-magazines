@@ -40,7 +40,7 @@ E4BE 77                 LD      (HL),A          ; Save LSB = 00
 E4BF 23                 INC     HL
 E4C0 77                 LD      (HL),A          ; Save MSB = 00
 E4C1 23                 INC     HL
-E4C2 22D610             LD      (PROGND),HL     ; Set program end
+E4C2 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Set program end
 
 <span id="E4C5">E4C5</span> 2A5E10     <?php lbl8K("RUNFST"); ?>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Clear all variables
 E4C8 2B                 DEC     HL
@@ -49,8 +49,8 @@ E4C8 2B                 DEC     HL
 E4CC 2AAF10             LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM
 E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
 E4D2 AF                 XOR     A
-E4D3 CD46E8             CALL    RESTOR          ; Reset DATA pointers
-E4D6 2AD610             LD      HL,(PROGND)     ; Get end of program
+E4D3 CD46E8             CALL    <?php bas8K("RESTOR"); ?>          ; Reset DATA pointers
+E4D6 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
 E4D9 22D810             LD      (VAREND),HL     ; Clear variables
 E4DC 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Clear arrays
 
@@ -74,6 +74,6 @@ E4FB C9                 RET                     ; Return to execution driver
 E4FE CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character
 E501 3E20               LD      A," "           ; Space
 E503 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character
-E506 C34E10             JP      RINPUT          ; Get input line
+E506 C34E10             JP      <?php bas8K("RINPUT"); ?>          ; Get input line
 </pre>
 <?php DoublePageEnd(); ?>

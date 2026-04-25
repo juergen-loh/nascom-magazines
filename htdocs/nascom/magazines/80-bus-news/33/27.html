@@ -13,7 +13,7 @@ FE4E C9                 RET
 FE50 C34A0C             JP      TOUT            ; "T" output
 
 <span id="FE53">FE53</span> 3A4D10     <?php lbl8K("BREAK2"); ?>: LD      A,(<?php bas8K("BRKFLG"); ?>)      ; Break flag set?
-FE56 C265FE             JP      NZ,RETCTC       ; Yes - Return ^C
+FE56 C265FE             JP      NZ,<?php bas8K("RETCTC"); ?>       ; Yes - Return ^C
 FE59 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE5C CA62FE             JP      Z,TCHINP        ; Get "T" character input
 FE5F DF62               SCAL    RIN             ; Scan for a character
@@ -43,9 +43,9 @@ FE85 C3D103             JP      T2DUMP          ; T2 Dump
 <span id="FE88">FE88</span> CD39FE     <?php lbl8K("MONLD"); ?>:  CALL    <?php bas8K("FLPLED"); ?>          ; Flip tape LED
 FE8B CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE8E CA99FE             JP      Z,TLOAD         ; "T" load
-FE91 3E52               LD      A,"R"           ; Set READ
+FE91 3E52               LD      A,"R"           ; Set <?php bas8K("READ","","","\n"); ?>
 FE93 322B0C             LD      (<?php bas8K("ARGN"); ?>),A
-FE96 DF52               SCAL    READ            ; Load program
+FE96 DF52               SCAL    <?php bas8K("READ"); ?>            ; Load program
 FE98 C9                 RET
 
 <span id="FE99">FE99</span> 3A8D00     <?php lbl8K("TLOAD"); ?>:  LD      A,(<?php bas8K("MONTYP"); ?>)      ; "T2" or "T4" (FLAGS!!!)

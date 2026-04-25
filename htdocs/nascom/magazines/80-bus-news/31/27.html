@@ -42,7 +42,7 @@ F268 EB                 EX      DE,HL
 F269 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Temporary string pool done?
 F26C 0164F2             LD      BC,<?php bas8K("GRBLP"); ?>        ; Loop until string pool done
 F26F C2B8F2             JP      NZ,STPOOL       ; No - See if in string area
-F272 2AD610             LD      HL,(PROGND)     ; Start of simple variables
+F272 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Start of simple variables
 <span id="F275">F275</span> EB         <?php lbl8K("SMPVAR"); ?>: EX      DE,HL
 F276 2AD810             LD      HL,(VAREND)     ; End of simple variables
 F279 EB                 EX      DE,HL

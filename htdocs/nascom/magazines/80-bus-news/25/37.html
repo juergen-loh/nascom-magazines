@@ -27,7 +27,7 @@ E9F1 9A                 SBC     A,D             ; Subtract MSB of string space
 E9F2 57                 LD      D,A             ; Save MSB
 E9F3 DAA2E3             JP      C,<?php bas8K("OMERR"); ?>         ; ?<?php bas8K("OM"); ?> Error if not enough mem
 E9F6 E5                 PUSH    HL              ; Save RAM top
-E9F7 2AD610             LD      HL,(PROGND)     ; Get program end
+E9F7 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get program end
 E9FA 012800             LD      BC,40           ; 40 Bytes minimum working RAM
 E9FD 09                 ADD     HL,BC           ; Get lowest address
 E9FE CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Enough memory?
@@ -51,7 +51,7 @@ EA19 C32CEA             JP      RUNLIN          ; RUN from line number
 <span id="EA1C">EA1C</span> 0E03       <?php lbl8K("GOSUB"); ?>:  LD      C,3             ; 3 Levels of stack needed
 EA1E CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 3 levels of stack
 EA21 C1                 POP     BC              ; Get return address
-EA22 E5                 PUSH    HL              ; Save code string for RETURN
+EA22 E5                 PUSH    HL              ; Save code string for <?php bas8K("RETURN","","","\n"); ?>
 EA23 E5                 PUSH    HL              ; And for <?php bas8K("GOSUB"); ?> routine
 EA24 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line
 EA27 E3                 EX      (SP),HL         ; Into stack - Code string out
@@ -61,7 +61,7 @@ EA2B 33                 INC     SP              ; Don't save flags
 
 <span id="EA2C">EA2C</span> C5         <?php lbl8K("RUNLIN"); ?>: PUSH    BC              ; Save return address
 <span id="EA2D">EA2D</span> CDA5E9     <?php lbl8K("GOTO"); ?>:   CALL    <?php bas8K("ATOH"); ?>            ; ASCII number to DE binary
-EA30 CD72EA             CALL    REM             ; Get end of line
+EA30 CD72EA             CALL    <?php bas8K("REM"); ?>             ; Get end of line
 EA33 E5                 PUSH    HL              ; Save end of line
 EA34 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line
 EA37 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Line after current?
@@ -76,19 +76,19 @@ EA45 D8                 RET     C               ; Line found
 <span id="EA46">EA46</span> 1E0E       <?php lbl8K("ULERR"); ?>:  LD      E,UL            ; ?UL Error
 EA48 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error message
 
-<span id="EA4B">EA4B</span> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just RETURN
+<span id="EA4B">EA4B</span> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just <?php bas8K("RETURN","","","\n"); ?>
 EA4C 16FF               LD      D,-1            ; Flag "<?php bas8K("GOSUB"); ?>" search
 EA4E CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look "<?php bas8K("GOSUB"); ?>" block
 EA51 F9                 LD      SP,HL           ; Kill all FORs in subroutine
 EA52 FE8C               CP      ZGOSUB          ; Test for "<?php bas8K("GOSUB"); ?>" token
-EA54 1E04               LD      E,RG            ; ?RG Error
+EA54 1E04               LD      E,<?php bas8K("RG"); ?>            ; ?<?php bas8K("RG"); ?> Error
 EA56 C2C1E3             JP      NZ,<?php bas8K("ERROR"); ?>        ; Error if no "<?php bas8K("GOSUB"); ?>" found
-EA59 E1                 POP     HL              ; Get RETURN line number
+EA59 E1                 POP     HL              ; Get <?php bas8K("RETURN"); ?> line number
 EA5A 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current
 EA5D 23                 INC     HL              ; Was it from direct statement?
 EA5E 7C                 LD      A,H
 EA5F B5                 OR      L               ; Return to line
-EA60 C26AEA             JP      NZ,RETLIN       ; No - Return to line
+EA60 C26AEA             JP      NZ,<?php bas8K("RETLIN"); ?>       ; No - Return to line
 EA63 3ACC10             LD      A,(<?php bas8K("LSTBIN"); ?>)      ; Any <?php bas8K("INPUT"); ?> in subroutine?
 EA66 B7                 OR      A               ; If so buffer is corrupted
 EA67 C2F7E3             JP      NZ,<?php bas8K("POPNOK"); ?>       ; Yes - Go to command mode

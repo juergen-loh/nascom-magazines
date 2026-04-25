@@ -29,10 +29,10 @@ E029 F9                 LD      SP,HL           ; Temporary stack
 E02A CDDFE4             CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E02D CD81EB             CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 E030 32AA10             LD      (<?php bas8K("BUFFER"); ?>+72+1),A ; Mark end of buffer
-E033 32F910             LD      (PROGST),A      ; Initialise program area
+E033 32F910             LD      (<?php bas8K("PROGST"); ?>),A      ; Initialise program area
 <span id="E036">E036</span> 2103E1     <?php lbl8K("MSIZE"); ?>:  LD      HL,<?php bas8K("MEMMSG"); ?>       ; Point to message
-E039 CD10F2             CALL    PRS             ; Output "Memory size"
-E03C CDFCE4             CALL    PROMPT          ; Get input with "?"
+E039 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output "Memory size"
+E03C CDFCE4             CALL    <?php bas8K("PROMPT"); ?>          ; Get input with "?"
 E03F CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E042 B7                 OR      A               ; Set flags
 E043 C25BE0             JP      NZ,TSTMEM       ; If number - Test if RAM there
@@ -87,7 +87,7 @@ E08A CDBAE4             CALL    <?php bas8K("CLRPTR"); ?>          ; Clear progr
 E08D 2A5A10             LD      HL,(STRSPC)     ; Get end of memory
 E090 11EFFF             LD      DE,0-17         ; Offset for free bytes
 E093 19                 ADD     HL,DE           ; Adjust HL
-E094 11F910             LD      DE,PROGST       ; Start of program text
+E094 11F910             LD      DE,<?php bas8K("PROGST"); ?>       ; Start of program text
 E097 7D                 LD      A,L             ; Get LSB
 E098 93                 SUB     E               ; Adjust it
 E099 6F                 LD      L,A             ; Re-save
@@ -96,11 +96,11 @@ E09B 9A                 SBC     A,D             ; Adjust it
 E09C 67                 LD      H,A             ; Re-save
 E09D E5                 PUSH    HL              ; Save bytes free
 E09E 21C5E0             LD      HL,SIGNON       ; Sign-on message
-E0A1 CD10F2             CALL    PRS             ; Output string
+E0A1 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 E0A4 E1                 POP     HL              ; Get bytes free back
 E0A5 CDADF9             CALL    <?php bas8K("PRNTHL"); ?>          ; Output amount of free memory
 E0A8 21B7E0             LD      HL,<?php bas8K("BFREE"); ?>        ; " Bytes free" message
-E0AB CD10F2             CALL    PRS             ; Output string
+E0AB CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 
 <span id="E0AE">E0AE</span> 316610     <?php lbl8K("WARMST"); ?>: LD      SP,STACK        ; Temporary stack
 <span id="E0B1">E0B1</span> CDDFE4     <?php lbl8K("BRKRET"); ?>: CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack

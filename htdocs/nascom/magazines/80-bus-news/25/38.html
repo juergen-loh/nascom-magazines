@@ -96,7 +96,7 @@ EB0B A9                 DEFB    ZTHEN           ; "THEN" token
 EB0C 2B                 DEC     HL              ; Cancel increment
 <span id="EB0D">EB0D</span> CD44ED     <?php lbl8K("IFGO"); ?>:   CALL    TSTNUM          ; Make sure it's numeric
 EB10 CD13F8             CALL    TSTSGN          ; Test state of expression
-EB13 CA72EA             JP      Z,REM           ; False - Drop through
+EB13 CA72EA             JP      Z,<?php bas8K("REM"); ?>           ; False - Drop through
 EB16 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EB19 DA2DEA             JP      C,<?php bas8K("GOTO"); ?>          ; Number - <?php bas8K("GOTO"); ?> that line
 EB1C C31DE8             JP      <?php bas8K("IFJMP"); ?>           ; Otherwise do statement

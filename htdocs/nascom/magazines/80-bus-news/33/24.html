@@ -7,9 +7,9 @@ FBED 2B                 DEC     HL
 FBEE 77                 LD      (HL),A
 FBEF 2B                 DEC     HL
 FBF0 77                 LD      (HL),A
-FBF1 C3C7FB             JP      RND1            ; Return RND seed
+FBF1 C3C7FB             JP      <?php bas8K("RND1"); ?>            ; Return <?php bas8K("RND"); ?> seed
 
-<span id="FBF4">FBF4</span> 68B14668   <?php lbl8K("RNDTAB"); ?>: DEFB    068H,0B1H,046H,068H     ; Table used by RND
+<span id="FBF4">FBF4</span> 68B14668   <?php lbl8K("RNDTAB"); ?>: DEFB    068H,0B1H,046H,068H     ; Table used by <?php bas8K("RND","","","\n"); ?>
 FBF8 99E99269           DEFB    099H,0E9H,092H,069H
 FBFC 10D17568           DEFB    010H,0D1H,075H,068H
 
@@ -27,7 +27,7 @@ FC1A CDE6F8             CALL    <?php bas8K("INT"); ?>             ; Get <?php b
 FC1D C1                 POP     BC              ; Restore number
 FC1E D1                 POP     DE
 FC1F CDCAF5             CALL    SUBCDE          ; Make it 0 &lt;= value &lt; 1
-FC22 214EFC             LD      HL,QUARTR       ; Point to 0.25
+FC22 214EFC             LD      HL,<?php bas8K("QUARTR"); ?>       ; Point to 0.25
 FC25 CDC4F5             CALL    SUBPHL          ; Subtract value from 0.25
 FC28 CD13F8             CALL    TSTSGN          ; Test sign of value
 FC2B 37                 SCF                     ; Flag positive
@@ -37,7 +37,7 @@ FC32 CD13F8             CALL    TSTSGN          ; Test sign of value
 FC35 B7                 OR      A               ; Flag negative
 <span id="FC36">FC36</span> F5         <?php lbl8K("SIN1"); ?>:   PUSH    AF              ; Save sign
 FC37 F43CF8             CALL    P,<?php bas8K("INVSGN"); ?>        ; Negate value if positive
-FC3A 214EFC             LD      HL,QUARTR       ; Point to 0.25
+FC3A 214EFC             LD      HL,<?php bas8K("QUARTR"); ?>       ; Point to 0.25
 FC3D CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add 0.25 to value
 FC40 F1                 POP     AF              ; Restore sign
 FC41 D43CF8             CALL    NC,<?php bas8K("INVSGN"); ?>       ; Negative - Make positive

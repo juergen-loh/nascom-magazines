@@ -66,7 +66,7 @@ F7F2 2F                 CPL                     ; Invert sign
 F7F3 E1                 POP     HL              ; Clean up stack
 <span id="F7F4">F7F4</span> B7         <?php lbl8K("OVTST2"); ?>: OR      A               ; Test if new exponent zero
 <span id="F7F5">F7F5</span> E1         <?php lbl8K("OVTST3"); ?>: POP     HL              ; Clear off return address
-F7F6 F233F6             JP      P,RESZER        ; Result zero
+F7F6 F233F6             JP      P,<?php bas8K("RESZER"); ?>        ; Result zero
 F7F9 C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
 <span id="F7FC">F7FC</span> CD5FF8     <?php lbl8K("MLSP10"); ?>: CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE

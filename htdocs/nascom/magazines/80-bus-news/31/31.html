@@ -6,7 +6,7 @@
                 ; &lt;&lt; Set up another program area (can be in ROM) &gt;&gt;
 
 F495 2A5E10             LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Get start of program text
-F498 22D610             LD      (PROGND),HL     ; Set more variable space
+F498 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Set more variable space
 F49B 210080             LD      HL,8000H        ; Address of new program
 F49E 5E                 LD      E,(HL)          ; Get LSB of new RAM end
 F49F 23                 INC     HL
@@ -49,9 +49,9 @@ F4DF CDBAF4             CALL    WUART           ; Send it to UART
 F4E2 00                 NOP
 F4E3 00                 NOP
 F4E4 00                 NOP
-F4E5 21D610             LD      HL,PROGND       ; Start of program information
+F4E5 21D610             LD      HL,<?php bas8K("PROGND"); ?>       ; Start of program information
 F4E8 220C0C             LD      (<?php bas8K("ARG1"); ?>),HL       ; Save for monitor save routine
-F4EB 2AD610             LD      HL,(PROGND)     ; End of program information
+F4EB 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; End of program information
 F4EE 220E0C             LD      (<a href="../../../24/23/text/#ARG2">ARG2</a>),HL       ; Save for monitor save routine
 F4F1 CD73FE             CALL    SAVE            ; Save program to tape
 F4F4 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not much there!
@@ -109,13 +109,13 @@ F54B F1                 POP     AF              ; Get verify flag
 F54C B7                 OR      A               ; Load or verify?
 F54D C25CF5             JP      NZ,<?php bas8K("CLOADV"); ?>       ; Verify program
 F550 CD88FE             CALL    <?php bas8K("MONLD"); ?>           ; Use monitor to load program
-F553 2AD610             LD      HL,(PROGND)     ; Get end of program
+F553 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
 F556 CD93E3             CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 F559 C35FF5             JP      <?php bas8K("CLOADE"); ?>          ; "Ok" and set up pointers
 
 <span id="F55C">F55C</span> CDAAFE     <?php lbl8K("CLOADV"); ?>: CALL    <?php bas8K("MONVE"); ?>           ; Use monitor to verify program
 <span id="F55F">F55F</span> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
-F562 CD10F2             CALL    PRS             ; Output string
+F562 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F565 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not a lot there!
 F568 C37CE4             JP      SETPTR          ; Set up line pointers
 </pre>

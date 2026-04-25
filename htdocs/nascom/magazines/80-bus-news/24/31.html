@@ -6,7 +6,7 @@
 E3F9 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
 E3FC CD74EB             CALL    STTLIN          ; Start new line
 E3FF 214BE3             LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
-E402 CD10F2             CALL    PRS             ; Output "Ok"
+E402 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output "Ok"
 <span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
 E408 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
 E40B CDF2E5             CALL    <?php bas8K("GETLIN"); ?>          ; Get an input line
@@ -39,7 +39,7 @@ E43D B7                 OR      A               ; Clear Carry
 <span id="E43E">E43E</span> C5         <?php lbl8K("LINFND"); ?>: PUSH    BC              ; Save address of line in prog
 E43F D255E4             JP      NC,<?php bas8K("INEWLN"); ?>       ; Line not found - Insert new
 E442 EB                 EX      DE,HL           ; Next line address in DE
-E443 2AD610             LD      HL,(PROGND)     ; End of program
+E443 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; End of program
 <span id="E446">E446</span> 1A         <?php lbl8K("SFTPRG"); ?>: LD      A,(DE)          ; Shift rest of program down
 E447 02                 LD      (BC),A
 E448 03                 INC     BC              ; Next destination
@@ -48,7 +48,7 @@ E44A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All done?
 E44D C246E4             JP      NZ,SFTPRG       ; More to do
 E450 60                 LD      H,B             ; HL - New end of program
 E451 69                 LD      L,C
-E452 22D610             LD      (PROGND),HL     ; Update end of program
+E452 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Update end of program
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -57,14 +57,14 @@ E452 22D610             LD      (PROGND),HL     ; Update end of program
 <span id="E455">E455</span> D1         <?php lbl8K("INEWLN"); ?>: POP     DE              ; Get address of line,
 E456 F1                 POP     AF              ; Get status
 E457 CA7CE4             JP      Z,SETPTR        ; No text - Set up pointers
-E45A 2AD610             LD      HL,(PROGND)     ; Get end of program
+E45A 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
 E45D E3                 EX      (SP),HL         ; Get length of input line
 E45E C1                 POP     BC              ; End of program to BC
 E45F 09                 ADD     HL,BC           ; Find new end
 E460 E5                 PUSH    HL              ; Save new end
 E461 CD79E3             CALL    <?php bas8K("MOVUP"); ?>           ; Make space for line
 E464 E1                 POP     HL              ; Restore new end
-E465 22D610             LD      (PROGND),HL     ; Update end of program pointer
+E465 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Update end of program pointer
 E468 EB                 EX      DE,HL           ; Get line to move up in HL
 E469 74                 LD      (HL),H          ; Save MSB
 E46A D1                 POP     DE              ; Get new line number
@@ -101,6 +101,6 @@ E492 EB                 EX      DE,HL           ; Next line address to HL
 E493 73                 LD      (HL),E          ; Save LSB of pointer
 E494 23                 INC     HL
 E495 72                 LD      (HL),D          ; Save MSB of pointer
-E496 C381E4             JP      PTRLP           ; Do next line
+E496 C381E4             JP      <?php bas8K("PTRLP"); ?>           ; Do next line
 </pre>
 <?php DoublePageEnd(); ?>

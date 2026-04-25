@@ -55,7 +55,7 @@ E3D5 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output it
 E3D8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E3DB CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output it
 E3DE 213FE3             LD      HL,<?php bas8K("ERRMSG"); ?>       ; "Error" message
-<span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    PRS             ; Output message
+<span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    <?php bas8K("PRS"); ?>             ; Output message
 E3E4 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get line of error
 E3E7 11FEFF             LD      DE,-2           ; Cold start error if -2
 E3EA CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; See if cold start error

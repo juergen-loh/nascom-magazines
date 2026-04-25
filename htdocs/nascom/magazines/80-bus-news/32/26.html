@@ -76,7 +76,7 @@ F91D CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Conve
 F920 FE2B               CP      "+"             ; Positive?
 F922 CA26F9             JP      Z,<?php bas8K("CNVNUM"); ?>        ; Yes - Convert number
 F925 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
-<span id="F926">F926</span> CD33F6     <?php lbl8K("CNVNUM"); ?>: CALL    RESZER          ; Set result to zero
+<span id="F926">F926</span> CD33F6     <?php lbl8K("CNVNUM"); ?>: CALL    <?php bas8K("RESZER"); ?>          ; Set result to zero
 F929 47                 LD      B,A             ; Digits after point counter
 F92A 57                 LD      D,A             ; Sign of exponent
 F92B 5F                 LD      E,A             ; Exponent of ten

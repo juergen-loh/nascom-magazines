@@ -32,7 +32,7 @@ ED28 EB                 EX      DE,HL           ; Loop statement line number
 ED29 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Set loop line number
 ED2C 69                 LD      L,C             ; Set code string to loop
 ED2D 60                 LD      H,B
-ED2E C3EEE7             JP      PUTFID          ; Put back "<?php bas8K("FOR"); ?>" and continue
+ED2E C3EEE7             JP      <?php bas8K("PUTFID"); ?>          ; Put back "<?php bas8K("FOR"); ?>" and continue
 
 <span id="ED31">ED31</span> F9         <?php lbl8K("KILFOR"); ?>: LD      SP,HL           ; Remove "<?php bas8K("FOR"); ?>" block
 ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "<?php bas8K("NEXT"); ?>"
@@ -90,6 +90,6 @@ ED85 57                 LD      D,A             ; &lt;- with current one
 ED86 DAADE3             JP      C,SNERR         ; Error if "&lt;&lt;" "==" or "&gt;&gt;"
 ED89 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of current token
 ED8C CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-ED8F C376ED             JP      RLTLP           ; Treat the two as one
+ED8F C376ED             JP      <?php bas8K("RLTLP"); ?>           ; Treat the two as one
 </pre>
 <?php DoublePageEnd(); ?>

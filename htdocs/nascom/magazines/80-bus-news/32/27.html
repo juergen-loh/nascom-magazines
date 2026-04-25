@@ -55,13 +55,13 @@ F9A2 C344F9             JP      <?php bas8K("EXPLP"); ?>           ; Look for an
 
 <span id="F9A5">F9A5</span> E5         <?php lbl8K("LINEIN"); ?>: PUSH    HL              ; Save code string address
 F9A6 2146E3             LD      HL,<?php bas8K("INMSG"); ?>        ; Output " in "
-F9A9 CD10F2             CALL    PRS             ; Output string at HL
+F9A9 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string at HL
 F9AC E1                 POP     HL              ; Restore code string address
 <span id="F9AD">F9AD</span> EB         <?php lbl8K("PRNTHL"); ?>: EX      DE,HL           ; Code string address to DE
 F9AE AF                 XOR     A
 F9AF 0698               LD      B,80H+24        ; 24 bits
-F9B1 CD2AF8             CALL    RETINT          ; Return the integer
-F9B4 210FF2             LD      HL,PRNUMS       ; Print number string
+F9B1 CD2AF8             CALL    <?php bas8K("RETINT"); ?>          ; Return the integer
+F9B4 210FF2             LD      HL,<?php bas8K("PRNUMS"); ?>       ; Print number string
 F9B7 E5                 PUSH    HL              ; Save for return
 <span id="F9B8">F9B8</span> 21E910     <?php lbl8K("NUMASC"); ?>: LD      HL,<?php bas8K("PBUFF"); ?>        ; Convert number to ASCII
 F9BB E5                 PUSH    HL              ; Save for return
@@ -76,7 +76,7 @@ F9CC E5                 PUSH    HL              ; Save buffer address
 F9CD FC3CF8             CALL    M,<?php bas8K("INVSGN"); ?>        ; Negate <?php bas8K("FPREG"); ?> if negative
 F9D0 AF                 XOR     A               ; Zero A
 F9D1 F5                 PUSH    AF              ; Save it
-F9D2 CD82FA             CALL    RNGTST          ; Test number is in range
+F9D2 CD82FA             CALL    <?php bas8K("RNGTST"); ?>          ; Test number is in range
 <span id="F9D5">F9D5</span> 014391     <?php lbl8K("SIXDIG"); ?>: LD      BC,9143H        ; BCDE - 99999.9
 F9D8 11F84F             LD      DE,4FF8H
 F9DB CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare numbers
@@ -91,7 +91,7 @@ F9E7 C3D5F9             JP      SIXDIG          ; Test it again
 F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
-F9F0 CD82FA             CALL    RNGTST          ; Test number is in range
+F9F0 CD82FA             CALL    <?php bas8K("RNGTST"); ?>          ; Test number is in range
 <span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    ROUND           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
 F9F6 3C                 INC     A
 F9F7 CDBBF8             CALL    <?php bas8K("FPINT"); ?>           ; F.P to integer

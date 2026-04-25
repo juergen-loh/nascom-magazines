@@ -22,7 +22,7 @@ E2F3 3E00               LD      A,0
 E2F5 C9                 RET
 
 E2F6 000000             DEFB    0,0,0                   ; Random number seed
-                                                        ; Table used by RND
+                                                        ; Table used by <?php bas8K("RND","","","\n"); ?>
 E2F9 354ACA99           DEFB    035H,04AH,0CAH,099H     ;-2.65145E+07
 E2FD 391C7698           DEFB    039H,01CH,076H,098H     ; 1.61291E+07
 E301 2295B398           DEFB    022H,095H,0B3H,098H     ;-1.17691E+07
@@ -52,11 +52,11 @@ E32C 00                 DEFB    0               ; Break flag
 E32D C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Input reflection (set to TTY)
 E330 C379FF             JP      <?php bas8K("POINTB"); ?>          ; <?php bas8K("POINT"); ?> reflection unused
 E333 C340FF             JP      SETB            ; SET reflection
-E336 C355FF             JP      RESETB          ; RESET reflection
+E336 C355FF             JP      <?php bas8K("RESETB"); ?>          ; <?php bas8K("RESET"); ?> reflection
 
 E339 5D11               DEFW    STLOOK          ; Temp string space
 E33B FEFF               DEFW    -2              ; Current line number (cold)
-E33D FA10               DEFW    PROGST+1        ; Start of program text
+E33D FA10               DEFW    <?php bas8K("PROGST"); ?>+1        ; Start of program text
 <span id="E33F">E33F</span>            <?php lbl8K("INITBE"); ?>:                         ; END OF INITIALISATION TABLE
 </pre>
 <?php DoublePageChange(); ?>

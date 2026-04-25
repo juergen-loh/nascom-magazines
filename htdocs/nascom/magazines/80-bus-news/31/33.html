@@ -38,7 +38,7 @@ F647 CA53F6             JP      Z,RONDUP        ; No - Round it up
 F64A 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F64D 86                 ADD     A,(HL)          ; Add shifted bits
 F64E 77                 LD      (HL),A          ; Re-save exponent
-F64F D233F6             JP      NC,RESZER       ; Underflow - Result is zero
+F64F D233F6             JP      NC,<?php bas8K("RESZER"); ?>       ; Underflow - Result is zero
 F652 C8                 RET     Z               ; Result is zero
 <span id="F653">F653</span> 78         <?php lbl8K("RONDUP"); ?>: LD      A,B             ; Get VLSB of number
 <span id="F654">F654</span> 21E710     <?php lbl8K("RONDB"); ?>:  LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent

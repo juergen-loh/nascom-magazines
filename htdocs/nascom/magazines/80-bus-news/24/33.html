@@ -29,7 +29,7 @@ E539 DA91E5             JP      C,<?php bas8K("MOVDIR"); ?>        ; Yes - copy 
 <span id="E53C">E53C</span> D5         <?php lbl8K("FNDWRD"); ?>: PUSH    DE              ; Look for reserved words
 E53D 1142E1             LD      DE,WORDS-1      ; Point to table
 E540 C5                 PUSH    BC              ; Save count
-E541 018DE5             LD      BC,RETNAD       ; Where to return to
+E541 018DE5             LD      BC,<?php bas8K("RETNAD"); ?>       ; Where to return to
 E544 C5                 PUSH    BC              ; Save return address
 E545 067F               LD      B,ZEND-1        ; First token value -1
 E547 7E                 LD      A,(HL)          ; Get byte
@@ -80,7 +80,7 @@ E586 C355E5             JP      SEARCH          ; Look at next word
 <span id="E589">E589</span> 48         <?php lbl8K("MATCH"); ?>:  LD      C,B             ; Word found - Save token value
 E58A F1                 POP     AF              ; Throw away return
 E58B EB                 EX      DE,HL
-E58C C9                 RET                     ; Return to "RETNAD"
+E58C C9                 RET                     ; Return to "<?php bas8K("RETNAD"); ?>"
 <span id="E58D">E58D</span> EB         <?php lbl8K("RETNAD"); ?>: EX      DE,HL           ; Get address in string
 E58E 79                 LD      A,C             ; Get token value
 E58F C1                 POP     BC              ; Restore buffer length
@@ -92,9 +92,9 @@ E594 0C                 INC     C               ; Increment length of buffer
 E595 D63A               SUB     ":"             ; End of statement?
 E597 CA9FE5             JP      Z,SETLIT        ; Jump if multi-statement line
 E59A FE49               CP      ZDATA-3AH       ; Is it <?php bas8K("DATA"); ?> statement&nbsp;?
-E59C C2A2E5             JP      NZ,TSTREM       ; No - see if REM
+E59C C2A2E5             JP      NZ,TSTREM       ; No - see if <?php bas8K("REM","","","\n"); ?>
 <span id="E59F">E59F</span> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (<?php bas8K("DATFLG"); ?>),A      ; Set literal flag
-<span id="E5A2">E5A2</span> D654       <?php lbl8K("TSTREM"); ?>: SUB     ZREM-3AH        ; Is it REM?
+<span id="E5A2">E5A2</span> D654       <?php lbl8K("TSTREM"); ?>: SUB     ZREM-3AH        ; Is it <?php bas8K("REM"); ?>?
 E5A4 C212E5             JP      NZ,<?php bas8K("CRNCLP"); ?>       ; No - Leave flag
 E5A7 47                 LD      B,A             ; Copy rest of buffer
 <span id="E5A8">E5A8</span> 7E         <?php lbl8K("NXTCHR"); ?>: LD      A,(HL)          ; Get byte
