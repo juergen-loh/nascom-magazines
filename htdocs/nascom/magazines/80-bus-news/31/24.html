@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    55</span>
 
-<span id="F04A">F04A</span> 110400     <?php lbl8K("CREARY"); ?>: LD      DE,4            ; 4 Bytes per entry
+<?php adr8K("F04A"); ?> 110400     <?php lbl8K("CREARY"); ?>: LD      DE,4            ; 4 Bytes per entry
 F04D F1                 POP     AF              ; Array to save or 0 dim'ns?
 F04E CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Yes - ?<?php bas8K("FC"); ?> Error
 F051 71                 LD      (HL),C          ; Save second byte of name
@@ -19,11 +19,11 @@ F05F 23                 INC     HL
 F060 3AAC10             LD      A,(<?php bas8K("LCRFLG"); ?>)      ; Locate of Create?
 F063 17                 RLA                     ; Carry set = Create
 F064 79                 LD      A,C             ; Get number of dimensions
-<span id="F065">F065</span> 010B00     <?php lbl8K("CRARLP"); ?>: LD      BC,10+1         ; Default dimension size 10
+<?php adr8K("F065"); ?> 010B00     <?php lbl8K("CRARLP"); ?>: LD      BC,10+1         ; Default dimension size 10
 F068 D26DF0             JP      NC,<?php bas8K("DEFSIZ"); ?>       ; Locate - Set default size
 F06B C1                 POP     BC              ; Get specified dimension size
 F06C 03                 INC     BC              ; Include zero element
-<span id="F06D">F06D</span> 71         <?php lbl8K("DEFSIZ"); ?>: LD      (HL),C          ; Save LSB of dimension size
+<?php adr8K("F06D"); ?> 71         <?php lbl8K("DEFSIZ"); ?>: LD      (HL),C          ; Save LSB of dimension size
 F06E 23                 INC     HL
 F06F 70                 LD      (HL),B          ; Save MSB of dimension size
 F070 23                 INC     HL
@@ -48,10 +48,10 @@ F088 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Save new en
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    56</span>
 
-<span id="F08B">F08B</span> 2B         <?php lbl8K("ZERARY"); ?>: DEC     HL              ; Back through array data
+<?php adr8K("F08B"); ?> 2B         <?php lbl8K("ZERARY"); ?>: DEC     HL              ; Back through array data
 F08C 3600               LD      (HL),0          ; Set array element to zero
 F08E CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All elements zeroed?
-F091 C28BF0             JP      NZ,ZERARY       ; No - Keep on going
+F091 C28BF0             JP      NZ,<?php bas8K("ZERARY"); ?>       ; No - Keep on going
 F094 03                 INC     BC              ; Number of bytes + 1
 F095 57                 LD      D,A             ; A=0
 F096 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Get address of array
@@ -68,12 +68,12 @@ F0A2 72                 LD      (HL),D          ; Save MSB of bytes needed
 F0A3 23                 INC     HL
 F0A4 F1                 POP     AF              ; Locate / Create?
 F0A5 DACCF0             JP      C,<?php bas8K("ENDDIM"); ?>        ; A is 0 , End if create
-<span id="F0A8">F0A8</span> 47         <?php lbl8K("FINDEL"); ?>: LD      B,A             ; Find array element
+<?php adr8K("F0A8"); ?> 47         <?php lbl8K("FINDEL"); ?>: LD      B,A             ; Find array element
 F0A9 4F                 LD      C,A
 F0AA 7E                 LD      A,(HL)          ; Number of dimensions
 F0AB 23                 INC     HL
 F0AC 16                 DEFB    (LD D,n)        ; Skip "POP HL"
-<span id="F0AD">F0AD</span> E1         <?php lbl8K("FNDELP"); ?>: POP     HL              ; Address of next dim' size
+<?php adr8K("F0AD"); ?> E1         <?php lbl8K("FNDELP"); ?>: POP     HL              ; Address of next dim' size
 F0AE 5E                 LD      E,(HL)          ; Get LSB of dim'n size
 F0AF 23                 INC     HL
 F0B0 56                 LD      D,(HL)          ; Get MSB of dim'n size
@@ -96,7 +96,7 @@ F0C8 29                 ADD     HL,HL
 F0C9 C1                 POP     BC              ; Start of array
 F0CA 09                 ADD     HL,BC           ; Point to element
 F0CB EB                 EX      DE,HL           ; Address of element to DE
-<span id="F0CC">F0CC</span> 2AD010     <?php lbl8K("ENDDIM"); ?>: LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Got code string address
+<?php adr8K("F0CC"); ?> 2AD010     <?php lbl8K("ENDDIM"); ?>: LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Got code string address
 F0CF C9                 RET
 </pre>
 <?php DoublePageEnd(); ?>

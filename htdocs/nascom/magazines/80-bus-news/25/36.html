@@ -2,32 +2,32 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    33</span>
 
-<span id="E910">E910</span> 0E04       <?php lbl8K("GETHDR"); ?>: LD      C,4             ; 4 Bytes to check
-<span id="E912">E912</span> CDB4F4     <?php lbl8K("HDRLP"); ?>:  CALL    <?php bas8K("RUART"); ?>           ; Read byte from UART
+<?php adr8K("E910"); ?> 0E04       <?php lbl8K("GETHDR"); ?>: LD      C,4             ; 4 Bytes to check
+<?php adr8K("E912"); ?> CDB4F4     <?php lbl8K("HDRLP"); ?>:  CALL    <?php bas8K("RUART"); ?>           ; Read byte from UART
 E915 B8                 CP      B               ; Same as header?
 E916 C210E9             JP      NZ,<?php bas8K("GETHDR"); ?>       ; No - Wait for another
 E919 0D                 DEC     C               ; Count bytes
 E91A C212E9             JP      NZ,<?php bas8K("HDRLP"); ?>        ; More needed
-<span id="E91D">E91D</span> CD44ED     <?php lbl8K("SNDARY"); ?>: CALL    TSTNUM          ; Check it's a numerical array
-<span id="E920">E920</span> CD8AE6     <?php lbl8K("ARYLP"); ?>:  CALL    <?php bas8K("CPDEHL"); ?>          ; All array data done
+<?php adr8K("E91D"); ?> CD44ED     <?php lbl8K("SNDARY"); ?>: CALL    <?php bas8K("TSTNUM"); ?>          ; Check it's a numerical array
+<?php adr8K("E920"); ?> CD8AE6     <?php lbl8K("ARYLP"); ?>:  CALL    <?php bas8K("CPDEHL"); ?>          ; All array data done
 E923 CA37E9             JP      Z,<?php bas8K("SUMOFF"); ?>        ; Yes - Do check sum
 E926 F1                 POP     AF              ; <?php bas8K("CLOAD"); ?>* or <?php bas8K("CSAVE"); ?>* ?
 E927 F5                 PUSH    AF              ; Re-save flags
 E928 7E                 LD      A,(HL)          ; Get byte
-E929 F4BAF4             CALL    P,WUART         ; <?php bas8K("CSAVE"); ?>* - Write byte
+E929 F4BAF4             CALL    P,<?php bas8K("WUART"); ?>         ; <?php bas8K("CSAVE"); ?>* - Write byte
 E92C FCB4F4             CALL    M,<?php bas8K("RUART"); ?>         ; <?php bas8K("CLOAD"); ?>* - Read byte
 E92F 77                 LD      (HL),A          ; Save byte in case of <?php bas8K("CLOAD"); ?>*
 E930 CD40E9             CALL    <?php bas8K("ACCSUM"); ?>          ; Accumulate check sum
 E933 23                 INC     HL              ; Next byte
 E934 C320E9             JP      <?php bas8K("ARYLP"); ?>           ; Repeat
 
-<span id="E937">E937</span> CD4DE9     <?php lbl8K("SUMOFF"); ?>: CALL    <?php bas8K("DOSUM"); ?>           ; Do check sum
+<?php adr8K("E937"); ?> CD4DE9     <?php lbl8K("SUMOFF"); ?>: CALL    <?php bas8K("DOSUM"); ?>           ; Do check sum
 E93A CDD5FC             CALL    <?php bas8K("CASFF"); ?>           ; Cassette off
 E93D F1                 POP     AF              ; Not needed any more
 E93E E1                 POP     HL              ; Restore code string address
 E93F C9                 RET
 
-<span id="E940">E940</span> E5         <?php lbl8K("ACCSUM"); ?>: PUSH    HL              ; Save address in array
+<?php adr8K("E940"); ?> E5         <?php lbl8K("ACCSUM"); ?>: PUSH    HL              ; Save address in array
 E941 2A4A10             LD      HL,(<?php bas8K("CHKSUM"); ?>)     ; Get check sum
 E944 0600               LD      B,0             ; BC - Value of byte
 E946 4F                 LD      C,A
@@ -36,15 +36,15 @@ E948 224A10             LD      (<?php bas8K("CHKSUM"); ?>),HL     ; Re-save che
 E94B E1                 POP     HL              ; Restore address in array
 E94C C9                 RET
 
-<span id="E94D">E94D</span> 3ACE10     <?php lbl8K("DOSUM"); ?>:  LD      A,(<?php bas8K("BRKLIN"); ?>)      ; <?php bas8K("CLOAD"); ?>* or <?php bas8K("CSAVE"); ?>* ?
+<?php adr8K("E94D"); ?> 3ACE10     <?php lbl8K("DOSUM"); ?>:  LD      A,(<?php bas8K("BRKLIN"); ?>)      ; <?php bas8K("CLOAD"); ?>* or <?php bas8K("CSAVE"); ?>* ?
 E950 B7                 OR      A
 E951 FA60E9             JP      M,<?php bas8K("CHSUMS"); ?>        ; <?php bas8K("CLOAD"); ?>* - Check if sums match
 E954 3A4A10             LD      A,(<?php bas8K("CHKSUM"); ?>)      ; Get LSB of check sum
-E957 CDBAF4             CALL    WUART           ; Write to UART
+E957 CDBAF4             CALL    <?php bas8K("WUART"); ?>           ; Write to UART
 E95A 3A4B10             LD      A,(<?php bas8K("CHKSUM"); ?>+1)    ; Get MSB of check sum
-E95D C3BAF4             JP      WUART           ; Write to UART and return
+E95D C3BAF4             JP      <?php bas8K("WUART"); ?>           ; Write to UART and return
 
-<span id="E960">E960</span> CDB4F4     <?php lbl8K("CHSUMS"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Read LSB of check sum
+<?php adr8K("E960"); ?> CDB4F4     <?php lbl8K("CHSUMS"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Read LSB of check sum
 E963 F5                 PUSH    AF              ; Save it
 E964 CDB4F4             CALL    <?php bas8K("RUART"); ?>           ; Read MSB of check sum
 E967 C1                 POP     BC              ; LSB to B
@@ -60,18 +60,18 @@ E974 C36BF5             JP      <?php bas8K("OUTBAD"); ?>          ; Different -
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    34</span>
 
-<span id="E977">E977</span> 7E         <?php lbl8K("CHKLTR"); ?>: LD      A,(HL)          ; Get byte
+<?php adr8K("E977"); ?> 7E         <?php lbl8K("CHKLTR"); ?>: LD      A,(HL)          ; Get byte
 E978 FE41               CP      "A"             ; &lt; "A" ?
 E97A D8                 RET     C               ; Carry set if not letter
 E97B FE5B               CP      "Z"+1           ; &gt; "Z" ?
 E97D 3F                 CCF
 E97E C9                 RET                     ; Carry set if not letter
 
-<span id="E97F">E97F</span> CD36E8     <?php lbl8K("FPSINT"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-<span id="E982">E982</span> CD41ED     <?php lbl8K("POSINT"); ?>: CALL    <?php bas8K("GETNUM"); ?>          ; Get integer 0 to 32767
-<span id="E985">E985</span> CD13F8     <?php lbl8K("DEPINT"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("E97F"); ?> CD36E8     <?php lbl8K("FPSINT"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
+<?php adr8K("E982"); ?> CD41ED     <?php lbl8K("POSINT"); ?>: CALL    <?php bas8K("GETNUM"); ?>          ; Get integer 0 to 32767
+<?php adr8K("E985"); ?> CD13F8     <?php lbl8K("DEPINT"); ?>: CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 E988 FAA0E9             JP      M,<?php bas8K("FCERR"); ?>         ; Negative - ?<?php bas8K("FC"); ?> Error
-<span id="E98B">E98B</span> 3AE710     <?php lbl8K("DEINT"); ?>:  LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get integer value to DE
+<?php adr8K("E98B"); ?> 3AE710     <?php lbl8K("DEINT"); ?>:  LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get integer value to DE
 E98E FE90               CP      80H+16          ; Exponent in range (16 bits)?
 E990 DABBF8             JP      C,<?php bas8K("FPINT"); ?>         ; Yes - convert it
 E993 018090             LD      BC,9080H        ; BCDE = -32768
@@ -81,12 +81,12 @@ E99A CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare <?p
 E99D E1                 POP     HL              ; Restore code string address
 E99E 51                 LD      D,C             ; MSB to D
 E99F C8                 RET     Z               ; Return if in range
-<span id="E9A0">E9A0</span> 1E08       <?php lbl8K("FCERR"); ?>:  LD      E,<?php bas8K("FC"); ?>            ; ?<?php bas8K("FC"); ?> Error
+<?php adr8K("E9A0"); ?> 1E08       <?php lbl8K("FCERR"); ?>:  LD      E,<?php bas8K("FC"); ?>            ; ?<?php bas8K("FC"); ?> Error
 E9A2 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error-
 
-<span id="E9A5">E9A5</span> 2B         <?php lbl8K("ATOH"); ?>:   DEC     HL              ; ASCII number to DE binary
-<span id="E9A6">E9A6</span> 110000     <?php lbl8K("GETLN"); ?>:  LD      DE,0            ; Get number to DE
-<span id="E9A9">E9A9</span> CD36E8     <?php lbl8K("GTLNLP"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
+<?php adr8K("E9A5"); ?> 2B         <?php lbl8K("ATOH"); ?>:   DEC     HL              ; ASCII number to DE binary
+<?php adr8K("E9A6"); ?> 110000     <?php lbl8K("GETLN"); ?>:  LD      DE,0            ; Get number to DE
+<?php adr8K("E9A9"); ?> CD36E8     <?php lbl8K("GTLNLP"); ?>: CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9AC D0                 RET     NC              ; Exit if not a digit
 E9AD E5                 PUSH    HL              ; Save code string address
 E9AE F5                 PUSH    AF              ; Save digit

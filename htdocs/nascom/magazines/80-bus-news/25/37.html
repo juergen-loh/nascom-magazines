@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    35</span>
 
-<span id="E9CA">E9CA</span> CAC9E4     <?php lbl8K("CLEAR"); ?>:  JP      Z,<?php bas8K("INTVAR"); ?>        ; Just "CLEAR" Keep parameters
+<?php adr8K("E9CA"); ?> CAC9E4     <?php lbl8K("CLEAR"); ?>:  JP      Z,<?php bas8K("INTVAR"); ?>        ; Just "CLEAR" Keep parameters
 E9CD CD82E9             CALL    <?php bas8K("POSINT"); ?>          ; Get integer 0 to 32767 to DE
 E9D0 2B                 DEC     HL              ; Cancel increment
 E9D1 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
@@ -19,7 +19,7 @@ E9E5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 E9E8 C2ADE3             JP      NZ,<?php bas8K("SNERR"); ?>        ; ?<?php bas8K("SN"); ?> Error if more on line
 E9EB E3                 EX      (SP),HL         ; Save code string address
 E9EC EB                 EX      DE,HL           ; Number to DE
-<span id="E9ED">E9ED</span> 7D         <?php lbl8K("STORED"); ?>: LD      A,L             ; Get LSB of new RAM top
+<?php adr8K("E9ED"); ?> 7D         <?php lbl8K("STORED"); ?>: LD      A,L             ; Get LSB of new RAM top
 E9EE 93                 SUB     E               ; Subtract LSB of string space
 E9EF 5F                 LD      E,A             ; Save LSB
 E9F0 7C                 LD      A,H             ; Get MSB of new RAM top
@@ -43,24 +43,24 @@ EA0D C3C9E4             JP      <?php bas8K("INTVAR"); ?>          ; Initialise 
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    36</span>
 
-<span id="EA10">EA10</span> CAC5E4     <?php lbl8K("RUN"); ?>:    JP      Z,<?php bas8K("RUNFST"); ?>        ; <?php bas8K("RUN"); ?> from start if just <?php bas8K("RUN","","","\n"); ?>
+<?php adr8K("EA10"); ?> CAC5E4     <?php lbl8K("RUN"); ?>:    JP      Z,<?php bas8K("RUNFST"); ?>        ; <?php bas8K("RUN"); ?> from start if just <?php bas8K("RUN","","","\n"); ?>
 EA13 CDC9E4             CALL    <?php bas8K("INTVAR"); ?>          ; Initialise variables
 EA16 01F2E7             LD      BC,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
 EA19 C32CEA             JP      <?php bas8K("RUNLIN"); ?>          ; <?php bas8K("RUN"); ?> from line number
 
-<span id="EA1C">EA1C</span> 0E03       <?php lbl8K("GOSUB"); ?>:  LD      C,3             ; 3 Levels of stack needed
+<?php adr8K("EA1C"); ?> 0E03       <?php lbl8K("GOSUB"); ?>:  LD      C,3             ; 3 Levels of stack needed
 EA1E CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 3 levels of stack
 EA21 C1                 POP     BC              ; Get return address
 EA22 E5                 PUSH    HL              ; Save code string for <?php bas8K("RETURN","","","\n"); ?>
 EA23 E5                 PUSH    HL              ; And for <?php bas8K("GOSUB"); ?> routine
 EA24 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line
 EA27 E3                 EX      (SP),HL         ; Into stack - Code string out
-EA28 3E8C               LD      A,ZGOSUB        ; "<?php bas8K("GOSUB"); ?>" token
+EA28 3E8C               LD      A,<?php bas8K("ZGOSUB"); ?>        ; "<?php bas8K("GOSUB"); ?>" token
 EA2A F5                 PUSH    AF              ; Save token
 EA2B 33                 INC     SP              ; Don't save flags
 
-<span id="EA2C">EA2C</span> C5         <?php lbl8K("RUNLIN"); ?>: PUSH    BC              ; Save return address
-<span id="EA2D">EA2D</span> CDA5E9     <?php lbl8K("GOTO"); ?>:   CALL    <?php bas8K("ATOH"); ?>            ; ASCII number to DE binary
+<?php adr8K("EA2C"); ?> C5         <?php lbl8K("RUNLIN"); ?>: PUSH    BC              ; Save return address
+<?php adr8K("EA2D"); ?> CDA5E9     <?php lbl8K("GOTO"); ?>:   CALL    <?php bas8K("ATOH"); ?>            ; ASCII number to DE binary
 EA30 CD72EA             CALL    <?php bas8K("REM"); ?>             ; Get end of line
 EA33 E5                 PUSH    HL              ; Save end of line
 EA34 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line
@@ -73,14 +73,14 @@ EA42 60                 LD      H,B             ; Set up code string address
 EA43 69                 LD      L,C
 EA44 2B                 DEC     HL              ; Incremented after
 EA45 D8                 RET     C               ; Line found
-<span id="EA46">EA46</span> 1E0E       <?php lbl8K("ULERR"); ?>:  LD      E,UL            ; ?UL Error
+<?php adr8K("EA46"); ?> 1E0E       <?php lbl8K("ULERR"); ?>:  LD      E,<?php bas8K("UL"); ?>            ; ?<?php bas8K("UL"); ?> Error
 EA48 C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; Output error message
 
-<span id="EA4B">EA4B</span> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just <?php bas8K("RETURN","","","\n"); ?>
+<?php adr8K("EA4B"); ?> C0         <?php lbl8K("RETURN"); ?>: RET     NZ              ; Return if not just <?php bas8K("RETURN","","","\n"); ?>
 EA4C 16FF               LD      D,-1            ; Flag "<?php bas8K("GOSUB"); ?>" search
 EA4E CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look "<?php bas8K("GOSUB"); ?>" block
 EA51 F9                 LD      SP,HL           ; Kill all FORs in subroutine
-EA52 FE8C               CP      ZGOSUB          ; Test for "<?php bas8K("GOSUB"); ?>" token
+EA52 FE8C               CP      <?php bas8K("ZGOSUB"); ?>          ; Test for "<?php bas8K("GOSUB"); ?>" token
 EA54 1E04               LD      E,<?php bas8K("RG"); ?>            ; ?<?php bas8K("RG"); ?> Error
 EA56 C2C1E3             JP      NZ,<?php bas8K("ERROR"); ?>        ; Error if no "<?php bas8K("GOSUB"); ?>" found
 EA59 E1                 POP     HL              ; Get <?php bas8K("RETURN"); ?> line number
@@ -92,9 +92,9 @@ EA60 C26AEA             JP      NZ,<?php bas8K("RETLIN"); ?>       ; No - Return
 EA63 3ACC10             LD      A,(<?php bas8K("LSTBIN"); ?>)      ; Any <?php bas8K("INPUT"); ?> in subroutine?
 EA66 B7                 OR      A               ; If so buffer is corrupted
 EA67 C2F7E3             JP      NZ,<?php bas8K("POPNOK"); ?>       ; Yes - Go to command mode
-<span id="EA6A">EA6A</span> 21F2E7     <?php lbl8K("RETLIN"); ?>: LD      HL,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
+<?php adr8K("EA6A"); ?> 21F2E7     <?php lbl8K("RETLIN"); ?>: LD      HL,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
 EA6D E3                 EX      (SP),HL         ; Into stack - Code string out
 EA6E 3E                 DEFB    (LD A,n)        ; Skip "POP HL"
-<span id="EA6F">EA6F</span> E1         <?php lbl8K("NXTDTA"); ?>: POP     HL              ; Restore code string address
+<?php adr8K("EA6F"); ?> E1         <?php lbl8K("NXTDTA"); ?>: POP     HL              ; Restore code string address
 </pre>
 <?php DoublePageEnd(); ?>

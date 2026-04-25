@@ -5723,6 +5723,11 @@ function externalLink($link, $text="", $delimiter="\n")
 	}
 }
 
+function adr8K($adr)
+{
+	echo "<span id=\"$adr\">$adr</span>";
+}
+
 function lbl8K($label, $link = "")
 {
 	if ($link == "") {
@@ -5736,31 +5741,32 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	if ($target == "")	$target = $label;
 	if ($path == "")	$path = "../../..";
 
-	$p = "-";
+	$p = "";
+	$p = "-";	// Link-Fehler provozieren
 	switch ($target) {
 	// ---------------------------------- 24
 
 	case "0001":	case "UARTD":
-	case "0002-UARTS":	case "UARTS":
+	case "0002":	case "UARTS":
 	case "0003":	case "CTRLC":
 	case "0007":	case "CTRLG":
-	case "0008-BKSP":	case "BKSP":
-	case "000A-LF":	case "LF":
-	case "000C-CS":	case "CS":
-	case "000D-CR":	case "CR":
+	case "0008":	case "BKSP":
+	case "000A":	case "LF":
+	case "000C":	case "CS":
+	case "000D":	case "CR":
 	case "000F":	case "CTRLO":
-	case "0012-CTRLR":	case "CTRLR":
+	case "0012":	case "CTRLR":
 	case "0013":	case "CTRLS":
 	case "0015":	case "CTRLU":
-	case "001A-CTRLZ":	case "CTRLZ":
+	case "001A":	case "CTRLZ":
 	case "001B":	case "ESC":
-	case "001C-TBRK":	case "TBRK":
+	case "001C":	case "TBRK":
 	case "001D":	case "TBS":
-	case "001E-TCS":	case "TCS":
+	case "001E":	case "TCS":
 	case "001F":	case "TCR":
 	case "007F":	case "DEL":
-	case "0000-MONSTT":	case "MONSTT":
-	case "000D-STMON":	case "STMON":
+	case "0000":	case "MONSTT":
+	case "000D":	case "STMON":
 	case "0051":	case "MFLP":
 	case "008D":	case "MONTYP":
 	case "03D1":	case "T2DUMP":
@@ -5842,22 +5848,22 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "10F6":	case "MULVAL":
 	case "10F9":	case "PROGST":
 	case "115D":	case "STLOOK":
-	case "0000-NF":	case "NF":
-	case "0002-SN":	case "SN":
+	case "0000":	case "NF":
+	case "0002":	case "SN":
 	case "0004":	case "RG":
 	case "0006":	case "OD":
-	case "0008-FC":	case "FC":
-	case "000A-OV":	case "OV":
-	case "000C-OM":	case "OM":
+	case "0008":	case "FC":
+	case "000A":	case "OV":
+	case "000C":	case "OM":
 	case "000E":	case "UL":
 	case "0010":	case "BS":
-	case "0012-DD":	case "DD":
+	case "0012":	case "DD":
 	case "0014":	case "DZ":
 	case "0016":	case "ID":
 	case "0018":	case "TM":
-	case "001A-OS":	case "OS":
-	case "001C-LS":	case "LS":
-	case "001E-ST":	case "ST":
+	case "001A":	case "OS":
+	case "001C":	case "LS":
+	case "001E":	case "ST":
 	case "0020":	case "CN":
 	case "0022":	case "UF":
 	case "0024":	case "MO":
@@ -5878,6 +5884,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "E0C5":	case "SIGNON":
 	case "E103":	case "MEMMSG":
 	case "E10F":	case "FNCTAB":
+	case "E11D":	// SQR
 	case "E143":	case "WORDS":
 									$p = "24/26";	break;
 	case "E25A":	case "WORDTB":
@@ -6015,6 +6022,8 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "E78D":	case "FORSLP":
 									$p = "25/33";	break;
 	case "E7A9":	case "FORFND":
+	case "E7BC":	// TO
+	case "E7D0":	// STEP
 	case "E7E5":	case "SAVSTP":
 	case "E7EE":	case "PUTFID":
 	case "E7F2":	case "RUNCNT":
@@ -6081,6 +6090,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "EAF0":	case "ONGO":
 	case "EAF1":	case "ONGOLP":
 	case "EAFF":	case "IF":
+	case "EB08":	// THEN
 	case "EB0D":	case "IFGO":
 									$p = "25/38";	break;
 
@@ -6135,6 +6145,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "ED66":	case "EVAL2":
 	case "ED69":	case "EVAL3":
 	case "ED76":	case "RLTLP":
+	case "ED7B":	// <
 									$p = "26/34";	break;
 	case "EDD1":	case "OPRND":
 	case "EE09":	case "EVLPAR":
@@ -6143,7 +6154,10 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	case "EE22":	case "CONVAR":
 	case "EE25":	case "FRMEVL":
 	case "ED92":	case "FOPRND":
+	case "ED9E":	// DIV
 	case "EDBA":	case "STKTHS":
+	case "EDE6":	// PLUS
+	case "EDF0":	// MINUS
 									$p = "26/35";	break;
 	case "EE33":	case "FNOFST":
 	case "EE5F":	case "FNVAL":
@@ -6678,4 +6692,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-25 15:05:18 +0200 (Sa, 25. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-25 19:24:14 +0200 (Sa, 25. Apr 2026) $ -->

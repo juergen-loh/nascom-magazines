@@ -2,13 +2,13 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    75</span>
 
-<span id="F6A1">F6A1</span> C609       <?php lbl8K("SHRITE"); ?>: ADD     A,8+1           ; Adjust count
+<?php adr8K("F6A1"); ?> C609       <?php lbl8K("SHRITE"); ?>: ADD     A,8+1           ; Adjust count
 F6A3 6F                 LD      L,A             ; Save bits to shift
-<span id="F6A4">F6A4</span> AF         <?php lbl8K("SHRLP"); ?>:  XOR     A               ; Flag for all done
+<?php adr8K("F6A4"); ?> AF         <?php lbl8K("SHRLP"); ?>:  XOR     A               ; Flag for all done
 F6A5 2D                 DEC     L               ; All shifting done?
 F6A6 C8                 RET     Z               ; Yes - Return
 F6A7 79                 LD      A,C             ; Get MSB
-<span id="F6A8">F6A8</span> 1F         <?php lbl8K("SHRT1"); ?>:  RRA                     ; Shift it right
+<?php adr8K("F6A8"); ?> 1F         <?php lbl8K("SHRT1"); ?>:  RRA                     ; Shift it right
 F6A9 4F                 LD      C,A             ; Re-save
 F6AA 7A                 LD      A,D             ; Get NMSB
 F6AB 1F                 RRA                     ; Shift right with last bit
@@ -21,14 +21,14 @@ F6B1 1F                 RRA                     ; Shift right with last bit
 F6B2 47                 LD      B,A             ; Re-save underflow
 F6B3 C3A4F6             JP      <?php bas8K("SHRLP"); ?>           ; More bits to do
 
-<span id="F6B6">F6B6</span> 00000081   <?php lbl8K("UNITY"); ?>:  DEFB    000H,000H,000H,081H     ; 1.00000
+<?php adr8K("F6B6"); ?> 00000081   <?php lbl8K("UNITY"); ?>:  DEFB    000H,000H,000H,081H     ; 1.00000
 
-<span id="F6BA">F6BA</span> 03         <?php lbl8K("LOGTAB"); ?>: DEFB    3                       ; Table used by <?php bas8K("LOG","","","\n"); ?>
+<?php adr8K("F6BA"); ?> 03         <?php lbl8K("LOGTAB"); ?>: DEFB    3                       ; Table used by <?php bas8K("LOG","","","\n"); ?>
 F6BB AA561980           DEFB    0AAH,056H,019H,080H     ; 0.59898
 F6BF F1227680           DEFB    0F1H,022H,076H,080H     ; 0.96147
 F6C3 45AA3882           DEFB    045H,0AAH,038H,082H     ; 2.88539
 
-<span id="F6C7">F6C7</span> CD13F8     <?php lbl8K("LOG"); ?>:    CALL    TSTSGN          ; Test sign of value
+<?php adr8K("F6C7"); ?> CD13F8     <?php lbl8K("LOG"); ?>:    CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of value
 F6CA B7                 OR      A
 F6CB EAA0E9             JP      PE,<?php bas8K("FCERR"); ?>        ; ?<?php bas8K("FC"); ?> Error if &lt;= zero
 F6CE 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
@@ -45,7 +45,7 @@ F6E0 C1                 POP     BC              ; Restore <?php bas8K("SQR"); ?>
 F6E1 D1                 POP     DE
 F6E2 04                 INC     B               ; Make it <?php bas8K("SQR"); ?>(2)
 F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by <?php bas8K("SQR"); ?>(2)
-F6E6 21B6F6             LD      HL,UNITY        ; Point to 1.
+F6E6 21B6F6             LD      HL,<?php bas8K("UNITY"); ?>        ; Point to 1.
 F6E9 CDC4F5             CALL    <?php bas8K("SUBPHL"); ?>          ; Subtract <?php bas8K("FPREG"); ?> from 1
 F6EC 21BAF6             LD      HL,<?php bas8K("LOGTAB"); ?>       ; Coefficient table
 F6EF CD5BFB             CALL    <?php bas8K("SUMSER"); ?>          ; Evaluate sum of series
@@ -54,7 +54,7 @@ F6F5 110000             LD      DE,0000H
 F6F8 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Subtract 0.5 from <?php bas8K("FPREG","","","\n"); ?>
 F6FB F1                 POP     AF              ; Restore scale factor
 F6FC CD8EF9             CALL    <?php bas8K("RSCALE"); ?>          ; Re-scale number
-<span id="F6FF">F6FF</span> 013180     <?php lbl8K("MULLN2"); ?>: LD      BC,8031H        ; BCDE = Ln(2)
+<?php adr8K("F6FF"); ?> 013180     <?php lbl8K("MULLN2"); ?>: LD      BC,8031H        ; BCDE = Ln(2)
 F702 111872             LD      DE,7218H
 F705 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
 </pre>
@@ -62,9 +62,9 @@ F705 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    76</span>
 
-<span id="F706">F706</span> C1         <?php lbl8K("MULT"); ?>:   POP     BC              ; Get number from stack
+<?php adr8K("F706"); ?> C1         <?php lbl8K("MULT"); ?>:   POP     BC              ; Get number from stack
 F707 D1                 POP     DE
-<span id="F708">F708</span> CD13F8     <?php lbl8K("FPMULT"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F708"); ?> CD13F8     <?php lbl8K("FPMULT"); ?>: CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F70B C8                 RET     Z               ; Return zero if zero
 F70C 2E00               LD      L,0             ; Flag add exponents
 F70E CDD1F7             CALL    <?php bas8K("ADDEXP"); ?>          ; Add exponents
@@ -81,13 +81,13 @@ F722 212AF7             LD      HL,<?php bas8K("MULT8"); ?>        ; Address of 
 F725 E5                 PUSH    HL              ; Save for NMSB,MSB
 F726 E5                 PUSH    HL              ;
 F727 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to number
-<span id="F72A">F72A</span> 7E         <?php lbl8K("MULT8"); ?>:  LD      A,(HL)          ; Get LSB of number
+<?php adr8K("F72A"); ?> 7E         <?php lbl8K("MULT8"); ?>:  LD      A,(HL)          ; Get LSB of number
 F72B 23                 INC     HL              ; Point to NMSB
 F72C B7                 OR      A               ; Test LSB
 F72D CA56F7             JP      Z,<?php bas8K("BYTSFT"); ?>        ; Zero - shift to next byte
 F730 E5                 PUSH    HL              ; Save address of number
 F731 2E08               LD      L,8             ; 8 bits to multiply by
-<span id="F733">F733</span> 1F         <?php lbl8K("MUL8LP"); ?>: RRA                     ; Shift LSB right
+<?php adr8K("F733"); ?> 1F         <?php lbl8K("MUL8LP"); ?>: RRA                     ; Shift LSB right
 F734 67                 LD      H,A             ; Save LSB
 F735 79                 LD      A,C             ; Get MSB
 F736 D244F7             JP      NC,<?php bas8K("NOMADD"); ?>       ; Bit was zero - Don't add
@@ -98,7 +98,7 @@ F73E EB                 EX      DE,HL           ; Leave sum in DE
 F73F E1                 POP     HL              ; Restore MSB and count
 F740 3AF610             LD      A,(<?php bas8K("MULVAL"); ?>)      ; Get MSB of multiplier
 F743 89                 ADC     A,C             ; Add MSB
-<span id="F744">F744</span> 1F         <?php lbl8K("NOMADD"); ?>: RRA                     ; Shift MSB right
+<?php adr8K("F744"); ?> 1F         <?php lbl8K("NOMADD"); ?>: RRA                     ; Shift MSB right
 F745 4F                 LD      C,A             ; Re-save MSB
 F746 7A                 LD      A,D             ; Get NMSB
 F747 1F                 RRA                     ; Shift NMSB right
@@ -112,10 +112,10 @@ F74E 47                 LD      B,A             ; Re-save VLSB
 F74F 2D                 DEC     L               ; Count bits multiplied
 F750 7C                 LD      A,H             ; Get LSB of multiplier
 F751 C233F7             JP      NZ,<?php bas8K("MUL8LP"); ?>       ; More - Do it
-<span id="F754">F754</span> E1         <?php lbl8K("POPHRT"); ?>: POP     HL              ; Restore address of number
+<?php adr8K("F754"); ?> E1         <?php lbl8K("POPHRT"); ?>: POP     HL              ; Restore address of number
 F755 C9                 RET
 
-<span id="F756">F756</span> 43         <?php lbl8K("BYTSFT"); ?>: LD      B,E             ; Shift partial product left
+<?php adr8K("F756"); ?> 43         <?php lbl8K("BYTSFT"); ?>: LD      B,E             ; Shift partial product left
 F757 5A                 LD      E,D
 F758 51                 LD      D,C
 F759 4F                 LD      C,A

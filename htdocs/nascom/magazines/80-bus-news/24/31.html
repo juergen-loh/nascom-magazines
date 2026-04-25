@@ -2,12 +2,12 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    16</span>
 
-<span id="E3F8">E3F8</span> AF         <?php lbl8K("PRNTOK"); ?>: XOR     A               ; Output "Ok" and get command
+<?php adr8K("E3F8"); ?> AF         <?php lbl8K("PRNTOK"); ?>: XOR     A               ; Output "Ok" and get command
 E3F9 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
 E3FC CD74EB             CALL    <?php bas8K("STTLIN"); ?>          ; Start new line
 E3FF 214BE3             LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 E402 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output "Ok"
-<span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
+<?php adr8K("E405"); ?> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
 E408 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
 E40B CDF2E5             CALL    <?php bas8K("GETLIN"); ?>          ; Get an input line
 E40E DA05E4             JP      C,<?php bas8K("GETCMD"); ?>        ; Get line again if break
@@ -34,13 +34,13 @@ E432 CD99E4             CALL    <?php bas8K("SRCHLN"); ?>          ; Search for 
 E435 DA3EE4             JP      C,<?php bas8K("LINFND"); ?>        ; Jump if line found
 E438 F1                 POP     AF              ; Get status
 E439 F5                 PUSH    AF              ; And re-save
-E43A CA46EA             JP      Z,ULERR         ; Nothing after number - Error
+E43A CA46EA             JP      Z,<?php bas8K("ULERR"); ?>         ; Nothing after number - Error
 E43D B7                 OR      A               ; Clear Carry
-<span id="E43E">E43E</span> C5         <?php lbl8K("LINFND"); ?>: PUSH    BC              ; Save address of line in prog
+<?php adr8K("E43E"); ?> C5         <?php lbl8K("LINFND"); ?>: PUSH    BC              ; Save address of line in prog
 E43F D255E4             JP      NC,<?php bas8K("INEWLN"); ?>       ; Line not found - Insert new
 E442 EB                 EX      DE,HL           ; Next line address in DE
 E443 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; End of program
-<span id="E446">E446</span> 1A         <?php lbl8K("SFTPRG"); ?>: LD      A,(DE)          ; Shift rest of program down
+<?php adr8K("E446"); ?> 1A         <?php lbl8K("SFTPRG"); ?>: LD      A,(DE)          ; Shift rest of program down
 E447 02                 LD      (BC),A
 E448 03                 INC     BC              ; Next destination
 E449 13                 INC     DE              ; Next source
@@ -54,7 +54,7 @@ E452 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Update end 
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    17</span>
 
-<span id="E455">E455</span> D1         <?php lbl8K("INEWLN"); ?>: POP     DE              ; Get address of line,
+<?php adr8K("E455"); ?> D1         <?php lbl8K("INEWLN"); ?>: POP     DE              ; Get address of line,
 E456 F1                 POP     AF              ; Get status
 E457 CA7CE4             JP      Z,<?php bas8K("SETPTR"); ?>        ; No text - Set up pointers
 E45A 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
@@ -75,16 +75,16 @@ E46E 23                 INC     HL
 E46F 72                 LD      (HL),D          ; Save MSB of line number
 E470 23                 INC     HL              ; To first byte in line
 E471 116110             LD      DE,<?php bas8K("BUFFER"); ?>       ; Copy buffer to program
-<span id="E474">E474</span> 1A         <?php lbl8K("MOVBUF"); ?>: LD      A,(DE)          ; Get source
+<?php adr8K("E474"); ?> 1A         <?php lbl8K("MOVBUF"); ?>: LD      A,(DE)          ; Get source
 E475 77                 LD      (HL),A          ; Save destinations
 E476 23                 INC     HL              ; Next source
 E477 13                 INC     DE              ; Next destination
 E478 B7                 OR      A               ; Done?
 E479 C274E4             JP      NZ,<?php bas8K("MOVBUF"); ?>       ; No - Repeat
-<span id="E47C">E47C</span> CDC5E4     <?php lbl8K("SETPTR"); ?>: CALL    <?php bas8K("RUNFST"); ?>          ; Set line pointers
+<?php adr8K("E47C"); ?> CDC5E4     <?php lbl8K("SETPTR"); ?>: CALL    <?php bas8K("RUNFST"); ?>          ; Set line pointers
 E47F 23                 INC     HL              ; To LSB of pointer
 E480 EB                 EX      DE,HL           ; Address to DE
-<span id="E481">E481</span> 62         <?php lbl8K("PTRLP"); ?>:  LD      H,D             ; Address to HL
+<?php adr8K("E481"); ?> 62         <?php lbl8K("PTRLP"); ?>:  LD      H,D             ; Address to HL
 E482 6B                 LD      L,E
 E483 7E                 LD      A,(HL)          ; Get LSB of pointer
 E484 23                 INC     HL              ; To MSB of pointer
@@ -94,7 +94,7 @@ E489 23                 INC     HL              ; To LSB of line number
 E48A 23                 INC     HL              ; Skip line number
 E48B 23                 INC     HL              ; Point to first byte in line
 E48C AF                 XOR     A               ; Looking for 00 byte
-<span id="E48D">E48D</span> BE         <?php lbl8K("FNDEND"); ?>: CP      (HL)            ; Found end of line?
+<?php adr8K("E48D"); ?> BE         <?php lbl8K("FNDEND"); ?>: CP      (HL)            ; Found end of line?
 E48E 23                 INC     HL              ; Move to next byte
 E48F C28DE4             JP      NZ,<?php bas8K("FNDEND"); ?>       ; No - Keep looking
 E492 EB                 EX      DE,HL           ; Next line address to HL

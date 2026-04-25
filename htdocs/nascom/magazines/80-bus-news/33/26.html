@@ -2,8 +2,8 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    96</span>
 
-<span id="FD9B">FD9B</span> AF         <?php lbl8K("DELAY"); ?>:  XOR     A               ; Delay routine
-<span id="FD9C">FD9C</span> F5         <?php lbl8K("DELAY1"); ?>: PUSH    AF              ; PUSHes and POPs delay
+<?php adr8K("FD9B"); ?> AF         <?php lbl8K("DELAY"); ?>:  XOR     A               ; Delay routine
+<?php adr8K("FD9C"); ?> F5         <?php lbl8K("DELAY1"); ?>: PUSH    AF              ; PUSHes and POPs delay
 FD9D F1                 POP     AF
 FD9E F5                 PUSH    AF
 FD9F F1                 POP     AF
@@ -11,18 +11,18 @@ FDA0 3D                 DEC     A               ; Count delays
 FDA1 C29CFD             JP      NZ,<?php bas8K("DELAY1"); ?>       ; More delay
 FDA4 C9                 RET
 
-<span id="FDA5">FDA5</span> CD84F4     <?php lbl8K("WIDTH"); ?>:  CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
+<?php adr8K("FDA5"); ?> CD84F4     <?php lbl8K("WIDTH"); ?>:  CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
 FDA8 7B                 LD      A,E             ; Width to A
 FDA9 324210             LD      (<?php bas8K("LWIDTH"); ?>),A      ; Set width
 FDAC C9                 RET
 
-<span id="FDAD">FDAD</span> CD41ED     <?php lbl8K("LINES"); ?>:  CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
+<?php adr8K("FDAD"); ?> CD41ED     <?php lbl8K("LINES"); ?>:  CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
 FDB0 CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDB3 ED534610           LD      (<?php bas8K("LINESC"); ?>),DE     ; Set lines counter
 FDB7 ED534810           LD      (<?php bas8K("LINESN"); ?>),DE     ; Set lines number
 FDBB C9                 RET
 
-<span id="FDBC">FDBC</span> CD8BE9     <?php lbl8K("DEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
+<?php adr8K("FDBC"); ?> CD8BE9     <?php lbl8K("DEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDBF D5                 PUSH    DE              ; Save number
 FDC0 E1                 POP     HL              ; Number to HL
 FDC1 46                 LD      B,(HL)          ; Get LSB of contents
@@ -30,7 +30,7 @@ FDC2 23                 INC     HL
 FDC3 7E                 LD      A,(HL)          ; Get MSB of contents
 FDC4 C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
-<span id="FDC7">FDC7</span> CD41ED     <?php lbl8K("DOKE"); ?>:   CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
+<?php adr8K("FDC7"); ?> CD41ED     <?php lbl8K("DOKE"); ?>:   CALL    <?php bas8K("GETNUM"); ?>          ; Get a number
 FDCA CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 32767
 FDCD D5                 PUSH    DE              ; Save address
 FDCE CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
@@ -44,7 +44,7 @@ FDDB 72                 LD      (HL),D          ; Save MSB of value
 FDDC E1                 POP     HL              ; Restore code string address
 FDDD C9                 RET
 
-<span id="FDDE">FDDE</span> F3         <?php lbl8K("JJUMP1"); ?>: DI                      ; Disable interrupts
+<?php adr8K("FDDE"); ?> F3         <?php lbl8K("JJUMP1"); ?>: DI                      ; Disable interrupts
 FDDF DD21FFFF           LD      IX,-1           ; Flag cold start
 FDE3 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Go and initialise
 </pre>
@@ -52,7 +52,7 @@ FDE3 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Go and init
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    97</span>
 
-<span id="FDE6">FDE6</span> CD84F4     <?php lbl8K("SCREEN"); ?>: CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0 to 255
+<?php adr8K("FDE6"); ?> CD84F4     <?php lbl8K("SCREEN"); ?>: CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0 to 255
 FDE9 F5                 PUSH    AF              ; Save column
 FDEA CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 FDED 2C                 DEFB    ","
@@ -69,7 +69,7 @@ FDFF 22290C             LD      (<?php bas8K("CURSOR"); ?>),HL     ; Set new cur
 FE02 E1                 POP     HL              ; Rstore code string address
 FE03 C9                 RET
 
-<span id="FE04">FE04</span> 2A180C     <?php lbl8K("TMNCUR"); ?>: LD      HL,(<?php bas8K("TCUR"); ?>)       ; Get address or cursor
+<?php adr8K("FE04"); ?> 2A180C     <?php lbl8K("TMNCUR"); ?>: LD      HL,(<?php bas8K("TCUR"); ?>)       ; Get address or cursor
 FE07 3620               LD      (HL)," "        ; Remove cursor
 FE09 E1                 POP     HL              ; Get new cursor address
 FE0A 22180C             LD      (<?php bas8K("TCUR"); ?>),HL       ; Set new cursor
@@ -77,7 +77,7 @@ FE0D 365F               LD      (HL),"_"        ; Put it on screen
 FE0F E1                 POP     HL              ; Restore code string address
 FE10 C9                 RET
 
-<span id="FE11">FE11</span> 21C907     <?php lbl8K("SCRADR"); ?>: LD      HL,VDU+10-65    ; <?php bas8K("SCREEN"); ?> VDU address (0,0)
+<?php adr8K("FE11"); ?> 21C907     <?php lbl8K("SCRADR"); ?>: LD      HL,<?php bas8K("VDU"); ?>+10-65    ; <?php bas8K("SCREEN"); ?> <?php bas8K("VDU"); ?> address (0,0)
 FE14 0600               LD      B,0
 FE16 4F                 LD      C,A             ; Line to BC
 FE17 B7                 OR      A               ; Test it
@@ -97,15 +97,15 @@ FE2F 19                 ADD     HL,DE           ; Add column to address
 FE30 1600               LD      D,0
 FE32 59                 LD      E,C             ; Line to DE
 FE33 0640               LD      B,64            ; 64 Bytes per line
-<span id="FE35">FE35</span> 19         <?php lbl8K("ADD64X"); ?>: ADD     HL,DE           ; Add line
+<?php adr8K("FE35"); ?> 19         <?php lbl8K("ADD64X"); ?>: ADD     HL,DE           ; Add line
 FE36 10FD               DJNZ    <?php bas8K("ADD64X"); ?>          ; SIXTY FOUR TIMES!!!
 FE38 C9                 RET
 
-<span id="FE39">FE39</span> CD6DFE     <?php lbl8K("FLPLED"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
+<?php adr8K("FE39"); ?> CD6DFE     <?php lbl8K("FLPLED"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE3C CA42FE             JP      Z,<?php bas8K("TMFLP"); ?>         ; "T" <?php bas8K("MFLP","","","\n"); ?>
 FE3F DF5F               SCAL    <?php bas8K("MFLP","","","\n"); ?>
 FE41 C9                 RET
 
-<span id="FE42">FE42</span> C35100     <?php lbl8K("TMFLP"); ?>:  JP      <?php bas8K("MFLP"); ?>            ; Flip drive LED
+<?php adr8K("FE42"); ?> C35100     <?php lbl8K("TMFLP"); ?>:  JP      <?php bas8K("MFLP"); ?>            ; Flip drive LED
 </pre>
 <?php DoublePageEnd(); ?>

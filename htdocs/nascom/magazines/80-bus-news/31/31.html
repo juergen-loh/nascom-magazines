@@ -21,10 +21,10 @@ F4AD 01F2E7             LD      BC,<?php bas8K("RUNCNT"); ?>       ; Execution d
 F4B0 C5                 PUSH    BC              ; Save for return
 F4B1 C3C5E4             JP      <?php bas8K("RUNFST"); ?>          ; Clear variables and continue
 
-<span id="F4B4">F4B4</span> C356FD     <?php lbl8K("RUART"); ?>:  JP      <?php bas8K("GUART"); ?>           ; Get a byte from UART
+<?php adr8K("F4B4"); ?> C356FD     <?php lbl8K("RUART"); ?>:  JP      <?php bas8K("GUART"); ?>           ; Get a byte from UART
 
-<span id="F4B7">F4B7</span> CDBAF4     <?php lbl8K("WUART2"); ?>: CALL    WUART           ; Send 2 Bytes to UART
-<span id="F4BA">F4BA</span> F5         <?php lbl8K("WUART"); ?>:  PUSH    AF              ; Save byte
+<?php adr8K("F4B7"); ?> CDBAF4     <?php lbl8K("WUART2"); ?>: CALL    <?php bas8K("WUART"); ?>           ; Send 2 Bytes to UART
+<?php adr8K("F4BA"); ?> F5         <?php lbl8K("WUART"); ?>:  PUSH    AF              ; Save byte
 F4BB C5                 PUSH    BC              ; Save BC
 F4BC 4F                 LD      C,A             ; Byte to C
 F4BD CD68FD             CALL    <?php bas8K("SUART"); ?>           ; Send byte to UART
@@ -32,8 +32,8 @@ F4C0 C1                 POP     BC              ; Restore BC
 F4C1 F1                 POP     AF              ; Restore byte
 F4C2 C9                 RET
 
-<span id="F4C3">F4C3</span> 0601       <?php lbl8K("CSAVE"); ?>:  LD      B,1             ; Flag "<?php bas8K("CSAVE"); ?>"
-F4C5 FEAE               CP      ZTIMES          ; "*" token? ("<?php bas8K("CSAVE"); ?>*")
+<?php adr8K("F4C3"); ?> 0601       <?php lbl8K("CSAVE"); ?>:  LD      B,1             ; Flag "<?php bas8K("CSAVE"); ?>"
+F4C5 FEAE               CP      <?php bas8K("ZTIMES"); ?>          ; "*" token? ("<?php bas8K("CSAVE"); ?>*")
 F4C7 CABBE8             JP      Z,<?php bas8K("ARRSV1"); ?>        ; Yes - Array save
 F4CA CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 F4CD E5                 PUSH    HL              ; Save code string address
@@ -42,10 +42,10 @@ F4D1 D5                 PUSH    DE              ; Save file name
 F4D2 CDC8FC             CALL    <?php bas8K("CASFFW"); ?>          ; Turn on motor and wait
 F4D5 D1                 POP     DE              ; Restore file name
 F4D6 3ED3               LD      A,11010011B     ; Header byte
-F4D8 CDBAF4             CALL    WUART           ; Send byte to UART
-F4DB CDB7F4             CALL    WUART2          ; Send byte twice more
+F4D8 CDBAF4             CALL    <?php bas8K("WUART"); ?>           ; Send byte to UART
+F4DB CDB7F4             CALL    <?php bas8K("WUART2"); ?>          ; Send byte twice more
 F4DE 1A                 LD      A,(DE)          ; Get file name
-F4DF CDBAF4             CALL    WUART           ; Send it to UART
+F4DF CDBAF4             CALL    <?php bas8K("WUART"); ?>           ; Send it to UART
 F4E2 00                 NOP
 F4E3 00                 NOP
 F4E4 00                 NOP
@@ -62,15 +62,15 @@ F4F8 C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    70</span>
 
-<span id="F4F9">F4F9</span> 7E         <?php lbl8K("CLOAD"); ?>:  LD      A,(HL)          ; Get byte after "CLOAD"
-F4FA FEAE               CP      ZTIMES          ; "*" token? ("<?php bas8K("CLOAD"); ?>*")
+<?php adr8K("F4F9"); ?> 7E         <?php lbl8K("CLOAD"); ?>:  LD      A,(HL)          ; Get byte after "CLOAD"
+F4FA FEAE               CP      <?php bas8K("ZTIMES"); ?>          ; "*" token? ("<?php bas8K("CLOAD"); ?>*")
 F4FC CAB9E8             JP      Z,<?php bas8K("ARRLD1"); ?>        ; Yes - Array load
 F4FF CDD1FF             CALL    <?php bas8K("SMOTOR"); ?>          ; Start motor and get "?"
-F502 D69E               SUB     ZPRINT          ; "?" ("<?php bas8K("PRINT"); ?>" token) Verify?
+F502 D69E               SUB     <?php bas8K("ZPRINT"); ?>          ; "?" ("<?php bas8K("PRINT"); ?>" token) Verify?
 F504 CA09F5             JP      Z,<?php bas8K("FLGVER"); ?>        ; Yes - Flag "verify"
 F507 AF                 XOR     A               ; Flag "load"
 F508 01                 DEFB    (LD BC,nn)      ; Skip "CPL" and "INC HL"
-<span id="F509">F509</span> 2F         <?php lbl8K("FLGVER"); ?>: CPL                     ; Flag "verify"
+<?php adr8K("F509"); ?> 2F         <?php lbl8K("FLGVER"); ?>: CPL                     ; Flag "verify"
 F50A 23                 INC     HL              ; Skip over "?"
 F50B F5                 PUSH    AF              ; Save verify flag
 F50C 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
@@ -80,7 +80,7 @@ F512 CA1CF5             JP      Z,<a href="../../../31/31/text/#ANYNAM">ANYNAM</
 F515 CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 F518 CD95F3             CALL    <?php bas8K("GTFLNM"); ?>          ; Get file name
 F51B 1A                 LD      A,(DE)          ; Get first byte of name
-<span id="F51C">F51C</span> 6F         <?php lbl8K("ANYNAM"); ?>: LD      L,A             ; Save name to find
+<?php adr8K("F51C"); ?> 6F         <?php lbl8K("ANYNAM"); ?>: LD      L,A             ; Save name to find
 F51D F1                 POP     AF              ; Get verify flag
 F51E F5                 PUSH    AF              ; And re-save
 F51F B7                 OR      A               ; Verify of load?
@@ -89,8 +89,8 @@ F521 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save nam of
 F524 CCBAE4             CALL    Z,<?php bas8K("CLRPTR"); ?>        ; Load - Clear pointers
 F527 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get name of program to find
 F52A EB                 EX      DE,HL           ; Name to DE
-<span id="F52B">F52B</span> 0603       <?php lbl8K("CLOAD1"); ?>: LD      B,3             ; 3 Header bytes
-<span id="F52D">F52D</span> CDB4F4     <?php lbl8K("CLOAD2"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Get a byte from UART
+<?php adr8K("F52B"); ?> 0603       <?php lbl8K("CLOAD1"); ?>: LD      B,3             ; 3 Header bytes
+<?php adr8K("F52D"); ?> CDB4F4     <?php lbl8K("CLOAD2"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Get a byte from UART
 F530 D6D3               SUB     11010011B       ; Header byte?
 F532 C22BF5             JP      NZ,<?php bas8K("CLOAD1"); ?>       ; Look for header
 F535 05                 DEC     B               ; Count header bytes
@@ -102,7 +102,7 @@ F540 1D                 DEC     E
 F541 CA48F5             JP      Z,<?php bas8K("THSFIL"); ?>        ; No - This file will do
 F544 BB                 CP      E               ; Has file been found?
 F545 C22BF5             JP      NZ,<?php bas8K("CLOAD1"); ?>       ; No - Look for another
-<span id="F548">F548</span> 00         <?php lbl8K("THSFIL"); ?>: NOP
+<?php adr8K("F548"); ?> 00         <?php lbl8K("THSFIL"); ?>: NOP
 F549 00                 NOP
 F54A 00                 NOP
 F54B F1                 POP     AF              ; Get verify flag
@@ -113,8 +113,8 @@ F553 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of 
 F556 CD93E3             CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 F559 C35FF5             JP      <?php bas8K("CLOADE"); ?>          ; "Ok" and set up pointers
 
-<span id="F55C">F55C</span> CDAAFE     <?php lbl8K("CLOADV"); ?>: CALL    <?php bas8K("MONVE"); ?>           ; Use monitor to verify program
-<span id="F55F">F55F</span> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
+<?php adr8K("F55C"); ?> CDAAFE     <?php lbl8K("CLOADV"); ?>: CALL    <?php bas8K("MONVE"); ?>           ; Use monitor to verify program
+<?php adr8K("F55F"); ?> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 F562 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F565 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not a lot there!
 F568 C37CE4             JP      <?php bas8K("SETPTR"); ?>          ; Set up line pointers

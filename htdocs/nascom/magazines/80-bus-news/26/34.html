@@ -2,8 +2,8 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    44</span>
 
-<span id="ECF6">ECF6</span> 110000     <?php lbl8K("NEXT"); ?>:   LD      DE,0            ; In case no index given
-<span id="ECF9">ECF9</span> C42DEF     <?php lbl8K("NEXT1"); ?>:  CALL    NZ,<?php bas8K("GETVAR"); ?>       ; Get index address
+<?php adr8K("ECF6"); ?> 110000     <?php lbl8K("NEXT"); ?>:   LD      DE,0            ; In case no index given
+<?php adr8K("ECF9"); ?> C42DEF     <?php lbl8K("NEXT1"); ?>:  CALL    NZ,<?php bas8K("GETVAR"); ?>       ; Get index address
 ECFC 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save code string address
 ECFF CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look for "<?php bas8K("FOR"); ?>" block
 ED02 C2B3E3             JP      NZ,<?php bas8K("NFERR"); ?>        ; No "<?php bas8K("FOR"); ?>" - ?<?php bas8K("NF"); ?> Error
@@ -34,7 +34,7 @@ ED2C 69                 LD      L,C             ; Set code string to loop
 ED2D 60                 LD      H,B
 ED2E C3EEE7             JP      <?php bas8K("PUTFID"); ?>          ; Put back "<?php bas8K("FOR"); ?>" and continue
 
-<span id="ED31">ED31</span> F9         <?php lbl8K("KILFOR"); ?>: LD      SP,HL           ; Remove "<?php bas8K("FOR"); ?>" block
+<?php adr8K("ED31"); ?> F9         <?php lbl8K("KILFOR"); ?>: LD      SP,HL           ; Remove "<?php bas8K("FOR"); ?>" block
 ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "<?php bas8K("NEXT"); ?>"
 ED35 7E                 LD      A,(HL)          ; Get next byte in code string
 ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
@@ -47,10 +47,10 @@ ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    45</span>
 
-<span id="ED41">ED41</span> CD5AED     <?php lbl8K("GETNUM"); ?>: CALL    <?php bas8K("EVAL"); ?>            ; Get a numeric expression
-<span id="ED44">ED44</span> F6         <?php lbl8K("TSTNUM"); ?>: DEFB    (OR n)          ; Clear carry (numeric)
-<span id="ED45">ED45</span> 37         <?php lbl8K("TSTSTR"); ?>: SCF                     ; Set carry (string)
-<span id="ED46">ED46</span> 3AAD10     <?php lbl8K("CHKTYP"); ?>: LD      A,(TYPE)        ; Check types match
+<?php adr8K("ED41"); ?> CD5AED     <?php lbl8K("GETNUM"); ?>: CALL    <?php bas8K("EVAL"); ?>            ; Get a numeric expression
+<?php adr8K("ED44"); ?> F6         <?php lbl8K("TSTNUM"); ?>: DEFB    (OR n)          ; Clear carry (numeric)
+<?php adr8K("ED45"); ?> 37         <?php lbl8K("TSTSTR"); ?>: SCF                     ; Set carry (string)
+<?php adr8K("ED46"); ?> 3AAD10     <?php lbl8K("CHKTYP"); ?>: LD      A,(<?php bas8K("TYPE"); ?>)        ; Check types match
 ED49 8F                 ADC     A,A             ; Expected + actual
 ED4A B7                 OR      A               ; Clear carry&nbsp;, set parity
 ED4B E8                 RET     PE              ; Even parity - Types match
@@ -59,30 +59,30 @@ ED4C C3BFE3             JP      <?php bas8K("TMERR"); ?>           ; Different t
                 ; &lt;&lt;&lt; NO REFERENCE TO HERE &gt;&gt;&gt;
 
 ED4F CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
-ED52 B4                 DEFB    ZEQUAL          ; "="
+ED52 B4                 DEFB    <?php bas8K("ZEQUAL"); ?>          ; "="
 ED53 C35AED             JP      <?php bas8K("EVAL"); ?>            ; Evaluate expression
 
-<span id="ED56">ED56</span> CD90E6     <?php lbl8K("OPNPAR"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
+<?php adr8K("ED56"); ?> CD90E6     <?php lbl8K("OPNPAR"); ?>: CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "(" follows
 ED59 28                 DEFB    "("
-<span id="ED5A">ED5A</span> 2B         <?php lbl8K("EVAL"); ?>:   DEC     HL              ; Evaluate expression & save
+<?php adr8K("ED5A"); ?> 2B         <?php lbl8K("EVAL"); ?>:   DEC     HL              ; Evaluate expression & save
 ED5B 1600               LD      D,0             ; Precedence value
-<span id="ED5D">ED5D</span> D5         <?php lbl8K("EVAL1"); ?>:  PUSH    DE              ; Save precedence
+<?php adr8K("ED5D"); ?> D5         <?php lbl8K("EVAL1"); ?>:  PUSH    DE              ; Save precedence
 ED5E 0E01               LD      C,1
 ED60 CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 1 level of stack
 ED63 CDD1ED             CALL    <?php bas8K("OPRND"); ?>           ; Get next expression value
-<span id="ED66">ED66</span> 22D010     <?php lbl8K("EVAL2"); ?>:  LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save address of next operator
-<span id="ED69">ED69</span> 2AD010     <?php lbl8K("EVAL3"); ?>:  LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Restore address of next opr
+<?php adr8K("ED66"); ?> 22D010     <?php lbl8K("EVAL2"); ?>:  LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save address of next operator
+<?php adr8K("ED69"); ?> 2AD010     <?php lbl8K("EVAL3"); ?>:  LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Restore address of next opr
 ED6C C1                 POP     BC              ; Precedence value and operator
 ED6D 78                 LD      A,B             ; Get precedence value
 ED6E FE78               CP      78H             ; "AND" or "OR" ?
-ED70 D444ED             CALL    NC,TSTNUM       ; No - Make sure it's a number
+ED70 D444ED             CALL    NC,<?php bas8K("TSTNUM"); ?>       ; No - Make sure it's a number
 ED73 7E                 LD      A,(HL)          ; Get next operator / function
 ED74 1600               LD      D,0             ; Clear Last relation
-<span id="ED76">ED76</span> D6B3       <?php lbl8K("RLTLP"); ?>:  SUB     ZGTR            ; ">" Token
+<?php adr8K("ED76"); ?> D6B3       <?php lbl8K("RLTLP"); ?>:  SUB     <?php bas8K("ZGTR"); ?>            ; ">" Token
 ED78 DA92ED             JP      C,<?php bas8K("FOPRND"); ?>        ; + - * / ^ AND OR - Test it
-ED7B FE03               CP      ZLTH+1-ZGTR     ; &lt; = &gt;
+<?php adr8K("ED7B"); ?> FE03               CP      <?php bas8K("ZLTH"); ?>+1-<?php bas8K("ZGTR"); ?>     ; &lt; = &gt;
 ED7D D292ED             JP      NC,<?php bas8K("FOPRND"); ?>       ; Function - Call it
-ED80 FE01               CP      ZEQUAL-ZGTR     ; "="
+ED80 FE01               CP      <?php bas8K("ZEQUAL"); ?>-<?php bas8K("ZGTR"); ?>     ; "="
 ED82 17                 RLA                     ; &lt;- Test for legal
 ED83 AA                 XOR     D               ; &lt;- combinations of &lt; = &gt;
 ED84 BA                 CP      D               ; &lt;- by combining last token

@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    52</span>
 
-<span id="EF75">EF75</span> AF         <?php lbl8K("NSCFOR"); ?>: XOR     A               ; Simple variable
+<?php adr8K("EF75"); ?> AF         <?php lbl8K("NSCFOR"); ?>: XOR     A               ; Simple variable
 EF76 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Clear "<?php bas8K("FOR"); ?>" flag
 EF79 E5                 PUSH    HL              ; Save code string address
 EF7A 50                 LD      D,B             ; DE = Variable name to find
@@ -11,10 +11,10 @@ EF7C 2ADE10             LD      HL,(<?php bas8K("FNRGNM"); ?>)     ; FN argument
 EF7F CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is it the FN argument?
 EF82 11E010             LD      DE,<?php bas8K("FNARG"); ?>        ; Point to argument value
 EF85 CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Yes - Return FN argument value
-EF88 2AD810             LD      HL,(VAREND)     ; End of variables
+EF88 2AD810             LD      HL,(<?php bas8K("VAREND"); ?>)     ; End of variables
 EF8B EB                 EX      DE,HL           ; Address of end of search
 EF8C 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Start of variables address
-<span id="EF8F">EF8F</span> CD8AE6     <?php lbl8K("FNDVAR"); ?>: CALL    <?php bas8K("CPDEHL"); ?>          ; End of variable list table?
+<?php adr8K("EF8F"); ?> CD8AE6     <?php lbl8K("FNDVAR"); ?>: CALL    <?php bas8K("CPDEHL"); ?>          ; End of variable list table?
 EF92 CAA8EF             JP      Z,<?php bas8K("CFEVAL"); ?>        ; Yes - Called from <?php bas8K("EVAL"); ?>?
 EF95 79                 LD      A,C             ; Get second byte of name
 EF96 96                 SUB     (HL)            ; Compare with name in list
@@ -22,7 +22,7 @@ EF97 23                 INC     HL              ; Move on to first byte
 EF98 C29DEF             JP      NZ,<?php bas8K("FNTHR"); ?>        ; Different - Find another
 EF9B 78                 LD      A,B             ; Get first byte of name
 EF9C 96                 SUB     (HL)            ; Compare with name in list
-<span id="EF9D">EF9D</span> 23         <?php lbl8K("FNTHR"); ?>:  INC     HL              ; Move on to LSB of value
+<?php adr8K("EF9D"); ?> 23         <?php lbl8K("FNTHR"); ?>:  INC     HL              ; Move on to LSB of value
 EF9E CADCEF             JP      Z,<?php bas8K("RETADR"); ?>        ; Found - Return address
 EFA1 23                 INC     HL              ; &lt;- Skip
 EFA2 23                 INC     HL              ; &lt;- over
@@ -30,7 +30,7 @@ EFA3 23                 INC     HL              ; &lt;- F.P.
 EFA4 23                 INC     HL              ; &lt;- value
 EFA5 C38FEF             JP      <?php bas8K("FNDVAR"); ?>          ; Keep looking
 
-<span id="EFA8">EFA8</span> E1         <?php lbl8K("CFEVAL"); ?>: POP     HL              ; Restore code string address
+<?php adr8K("EFA8"); ?> E1         <?php lbl8K("CFEVAL"); ?>: POP     HL              ; Restore code string address
 EFA9 E3                 EX      (SP),HL         ; Get return address
 EFAA D5                 PUSH    DE              ; Save address of variable
 EFAB 1125EE             LD      DE,<?php bas8K("FRMEVL"); ?>       ; Return address in <?php bas8K("EVAL","","","\n"); ?>
@@ -51,43 +51,43 @@ EFC5 E1                 POP     HL              ; Restore new end address
 EFC6 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Set new end address
 EFC9 60                 LD      H,B             ; End of variables to HL
 EFCA 69                 LD      L,C
-EFCB 22D810             LD      (VAREND),HL     ; Set new end address
+EFCB 22D810             LD      (<?php bas8K("VAREND"); ?>),HL     ; Set new end address
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    53</span>
 
-<span id="EFCE">EFCE</span> 2B         <?php lbl8K("ZEROLP"); ?>: DEC     HL              ; Back through to zero variable
+<?php adr8K("EFCE"); ?> 2B         <?php lbl8K("ZEROLP"); ?>: DEC     HL              ; Back through to zero variable
 EFCF 3600               LD      (HL),0          ; Zero byte in variable
 EFD1 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Done them all?
-EFD4 C2CEEF             JP      NZ,ZEROLP       ; No - Keep on going
+EFD4 C2CEEF             JP      NZ,<?php bas8K("ZEROLP"); ?>       ; No - Keep on going
 EFD7 D1                 POP     DE              ; Get variable name
 EFD8 73                 LD      (HL),E          ; Store second character
 EFD9 23                 INC     HL
 EFDA 72                 LD      (HL),D          ; Store first character
 EFDB 23                 INC     HL
-<span id="EFDC">EFDC</span> EB         <?php lbl8K("RETADR"); ?>: EX      DE,HL           ; Address of variable in DE
+<?php adr8K("EFDC"); ?> EB         <?php lbl8K("RETADR"); ?>: EX      DE,HL           ; Address of variable in DE
 EFDD E1                 POP     HL              ; Restore code string address
 EFDE C9                 RET
 
-<span id="EFDF">EFDF</span> 32E710     <?php lbl8K("RETNUL"); ?>: LD      (<?php bas8K("FPEXP"); ?>),A       ; Set result to zero
-EFE2 214AE3             LD      HL,ZERBYT       ; Also set a null string
+<?php adr8K("EFDF"); ?> 32E710     <?php lbl8K("RETNUL"); ?>: LD      (<?php bas8K("FPEXP"); ?>),A       ; Set result to zero
+EFE2 214AE3             LD      HL,<?php bas8K("ZERBYT"); ?>       ; Also set a null string
 EFE5 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save for <?php bas8K("EVAL","","","\n"); ?>
 EFE8 E1                 POP     HL              ; Restore code string address
 EFE9 C9                 RET
 
-<span id="EFEA">EFEA</span> E5         <?php lbl8K("SBSCPT"); ?>: PUSH    HL              ; Save code string address
+<?php adr8K("EFEA"); ?> E5         <?php lbl8K("SBSCPT"); ?>: PUSH    HL              ; Save code string address
 EFEB 2AAC10             LD      HL,(<?php bas8K("LCRFLG"); ?>)     ; Locate/Create and Type
 EFEE E3                 EX      (SP),HL         ; Save and get code string
 EFEF 57                 LD      D,A             ; Zero number of dimensions
-<span id="EFF0">EFF0</span> D5         <?php lbl8K("SCPTLP"); ?>: PUSH    DE              ; Save number of dimensions
+<?php adr8K("EFF0"); ?> D5         <?php lbl8K("SCPTLP"); ?>: PUSH    DE              ; Save number of dimensions
 EFF1 C5                 PUSH    BC              ; Save array name
 EFF2 CD7FE9             CALL    <?php bas8K("FPSINT"); ?>          ; Get subscript (0-32767)
 EFF5 C1                 POP     BC              ; Restore array name
 EFF6 F1                 POP     AF              ; Get number of dimensions
 EFF7 EB                 EX      DE,HL
 EFF8 E3                 EX      (SP),HL         ; Save subscript value
-EFF9 E5                 PUSH    HL              ; Save <?php bas8K("LCRFLG"); ?> and TYPE
+EFF9 E5                 PUSH    HL              ; Save <?php bas8K("LCRFLG"); ?> and <?php bas8K("TYPE","","","\n"); ?>
 EFFA EB                 EX      DE,HL
 EFFB 3C                 INC     A               ; Count dimensions
 EFFC 57                 LD      D,A             ; Save in D
@@ -97,7 +97,7 @@ F000 CAF0EF             JP      Z,<?php bas8K("SCPTLP"); ?>        ; Yes - More 
 F003 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F006 29                 DEFB    ")"
 F007 22D010             LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save code string address
-F00A E1                 POP     HL              ; Get <?php bas8K("LCRFLG"); ?> and TYPE
+F00A E1                 POP     HL              ; Get <?php bas8K("LCRFLG"); ?> and <?php bas8K("TYPE","","","\n"); ?>
 F00B 22AC10             LD      (<?php bas8K("LCRFLG"); ?>),HL     ; Restore Locate/create & type
 F00E 1E00               LD      E,0             ; Flag not <?php bas8K("CSAVE"); ?>* or <?php bas8K("CLOAD"); ?>*
 F010 D5                 PUSH    DE              ; Save number of dimensions (D)

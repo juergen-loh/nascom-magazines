@@ -2,10 +2,10 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    73</span>
 
-<span id="F61E">F61E</span> 68         <?php lbl8K("BNORM"); ?>:  LD      L,B             ; L = Exponent
+<?php adr8K("F61E"); ?> 68         <?php lbl8K("BNORM"); ?>:  LD      L,B             ; L = Exponent
 F61F 63                 LD      H,E             ; H = LSB
 F620 AF                 XOR     A
-<span id="F621">F621</span> 47         <?php lbl8K("BNRMLP"); ?>: LD      B,A             ; Save bit count
+<?php adr8K("F621"); ?> 47         <?php lbl8K("BNRMLP"); ?>: LD      B,A             ; Save bit count
 F622 79                 LD      A,C             ; Get MSB
 F623 B7                 OR      A               ; Is it zero?
 F624 C240F6             JP      NZ,<?php bas8K("PNORM"); ?>        ; No - Do it bit at a time
@@ -17,11 +17,11 @@ F62B 78                 LD      A,B             ; Get exponent
 F62C D608               SUB     8               ; Count 8 bits
 F62E FEE0               CP      -24-8           ; Was number zero?
 F630 C221F6             JP      NZ,<?php bas8K("BNRMLP"); ?>       ; No - Keep normalising
-<span id="F633">F633</span> AF         <?php lbl8K("RESZER"); ?>: XOR     A               ; Result is zero
-<span id="F634">F634</span> 32E710     <?php lbl8K("SAVEXP"); ?>: LD      (<?php bas8K("FPEXP"); ?>),A       ; Save result as zero
+<?php adr8K("F633"); ?> AF         <?php lbl8K("RESZER"); ?>: XOR     A               ; Result is zero
+<?php adr8K("F634"); ?> 32E710     <?php lbl8K("SAVEXP"); ?>: LD      (<?php bas8K("FPEXP"); ?>),A       ; Save result as zero
 F637 C9                 RET
 
-<span id="F638">F638</span> 05         <?php lbl8K("NORMAL"); ?>: DEC     B               ; Count bits
+<?php adr8K("F638"); ?> 05         <?php lbl8K("NORMAL"); ?>: DEC     B               ; Count bits
 F639 29                 ADD     HL,HL           ; Shift HL left
 F63A 7A                 LD      A,D             ; Get NMSB
 F63B 17                 RLA                     ; Shift left with last bit
@@ -29,7 +29,7 @@ F63C 57                 LD      D,A             ; Save NMSB
 F63D 79                 LD      A,C             ; Get MSB
 F63E 8F                 ADC     A,A             ; Shift left with last bit
 F63F 4F                 LD      C,A             ; Save MSB
-<span id="F640">F640</span> F238F6     <?php lbl8K("PNORM"); ?>:  JP      P,<?php bas8K("NORMAL"); ?>        ; Not done - Keep going
+<?php adr8K("F640"); ?> F238F6     <?php lbl8K("PNORM"); ?>:  JP      P,<?php bas8K("NORMAL"); ?>        ; Not done - Keep going
 F643 78                 LD      A,B             ; Number of bits shifted
 F644 5C                 LD      E,H             ; Save HL in EB
 F645 45                 LD      B,L
@@ -40,8 +40,8 @@ F64D 86                 ADD     A,(HL)          ; Add shifted bits
 F64E 77                 LD      (HL),A          ; Re-save exponent
 F64F D233F6             JP      NC,<?php bas8K("RESZER"); ?>       ; Underflow - Result is zero
 F652 C8                 RET     Z               ; Result is zero
-<span id="F653">F653</span> 78         <?php lbl8K("RONDUP"); ?>: LD      A,B             ; Get VLSB of number
-<span id="F654">F654</span> 21E710     <?php lbl8K("RONDB"); ?>:  LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
+<?php adr8K("F653"); ?> 78         <?php lbl8K("RONDUP"); ?>: LD      A,B             ; Get VLSB of number
+<?php adr8K("F654"); ?> 21E710     <?php lbl8K("RONDB"); ?>:  LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F657 B7                 OR      A               ; Any rounding?
 F658 FC65F6             CALL    M,<?php bas8K("FPROND"); ?>        ; Yes - Round number up
 F65B 46                 LD      B,(HL)          ; B = Exponent
@@ -56,7 +56,7 @@ F662 C354F8             JP      <?php bas8K("FPBCDE"); ?>          ; Move BCDE t
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    74</span>
 
-<span id="F665">F665</span> 1C         <?php lbl8K("FPROND"); ?>: INC     E               ; Round LSB
+<?php adr8K("F665"); ?> 1C         <?php lbl8K("FPROND"); ?>: INC     E               ; Round LSB
 F666 C0                 RET     NZ              ; Return if ok
 F667 14                 INC     D               ; Round NMSB
 F668 C0                 RET     NZ              ; Return if ok
@@ -67,7 +67,7 @@ F66D 34                 INC     (HL)            ; Increment exponent
 F66E C0                 RET     NZ              ; Return if ok
 F66F C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
-<span id="F672">F672</span> 7E         <?php lbl8K("PLUCDE"); ?>: LD      A,(HL)          ; Get LSB of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F672"); ?> 7E         <?php lbl8K("PLUCDE"); ?>: LD      A,(HL)          ; Get LSB of <?php bas8K("FPREG","","","\n"); ?>
 F673 83                 ADD     A,E             ; Add LSB of BCDE
 F674 5F                 LD      E,A             ; Save LSB of BCDE
 F675 23                 INC     HL
@@ -80,7 +80,7 @@ F67B 89                 ADC     A,C             ; Add MSB of BCDE
 F67C 4F                 LD      C,A             ; Save MSB of BCDE
 F67D C9                 RET
 
-<span id="F67E">F67E</span> 21E810     <?php lbl8K("COMPL"); ?>:  LD      HL,<?php bas8K("SGNRES"); ?>       ; Sign of result
+<?php adr8K("F67E"); ?> 21E810     <?php lbl8K("COMPL"); ?>:  LD      HL,<?php bas8K("SGNRES"); ?>       ; Sign of result
 F681 7E                 LD      A,(HL)          ; Get sign of result
 F682 2F                 CPL                     ; Negate it
 F683 77                 LD      (HL),A          ; Put it back
@@ -99,8 +99,8 @@ F68F 99                 SBC     A,C             ; Negate MSB
 F690 4F                 LD      C,A             ; Re-save MSB
 F691 C9                 RET
 
-<span id="F692">F692</span> 0600       <?php lbl8K("SCALE"); ?>:  LD      B,0             ; Clear underflow
-<span id="F694">F694</span> D608       <?php lbl8K("SCALLP"); ?>: SUB     8               ; 8 bits (a whole byte)?
+<?php adr8K("F692"); ?> 0600       <?php lbl8K("SCALE"); ?>:  LD      B,0             ; Clear underflow
+<?php adr8K("F694"); ?> D608       <?php lbl8K("SCALLP"); ?>: SUB     8               ; 8 bits (a whole byte)?
 F696 DAA1F6             JP      C,<?php bas8K("SHRITE"); ?>        ; No - Shift right A bits
 F699 43                 LD      B,E             ; &lt;- Shift
 F69A 5A                 LD      E,D             ; &lt;- right

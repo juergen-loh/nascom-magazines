@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    78</span>
 
-<span id="F7A1">F7A1</span> C1         <?php lbl8K("RESDIV"); ?>: POP     BC              ; Restore divisor
+<?php adr8K("F7A1"); ?> C1         <?php lbl8K("RESDIV"); ?>: POP     BC              ; Restore divisor
 F7A2 E1                 POP     HL
 F7A3 79                 LD      A,C             ; Get MSB of quotient
 F7A4 3C                 INC     A
@@ -37,7 +37,7 @@ F7CA E1                 POP     HL              ; Restore divisor
 F7CB C28EF7             JP      NZ,<?php bas8K("DIVLP"); ?>        ; Ok - Keep going
 F7CE C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
-<span id="F7D1">F7D1</span> 78         <?php lbl8K("ADDEXP"); ?>: LD      A,B             ; Get exponent of dividend
+<?php adr8K("F7D1"); ?> 78         <?php lbl8K("ADDEXP"); ?>: LD      A,B             ; Get exponent of dividend
 F7D2 B7                 OR      A               ; Test it
 F7D3 CAF5F7             JP      Z,<?php bas8K("OVTST3"); ?>        ; Zero - Result zero
 F7D6 7D                 LD      A,L             ; Get add/subtract flag
@@ -61,15 +61,15 @@ F7EE C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    79</span>
 
-<span id="F7EF">F7EF</span> CD13F8     <?php lbl8K("OVTST1"); ?>: CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F7EF"); ?> CD13F8     <?php lbl8K("OVTST1"); ?>: CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F7F2 2F                 CPL                     ; Invert sign
 F7F3 E1                 POP     HL              ; Clean up stack
-<span id="F7F4">F7F4</span> B7         <?php lbl8K("OVTST2"); ?>: OR      A               ; Test if new exponent zero
-<span id="F7F5">F7F5</span> E1         <?php lbl8K("OVTST3"); ?>: POP     HL              ; Clear off return address
+<?php adr8K("F7F4"); ?> B7         <?php lbl8K("OVTST2"); ?>: OR      A               ; Test if new exponent zero
+<?php adr8K("F7F5"); ?> E1         <?php lbl8K("OVTST3"); ?>: POP     HL              ; Clear off return address
 F7F6 F233F6             JP      P,<?php bas8K("RESZER"); ?>        ; Result zero
 F7F9 C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
-<span id="F7FC">F7FC</span> CD5FF8     <?php lbl8K("MLSP10"); ?>: CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
+<?php adr8K("F7FC"); ?> CD5FF8     <?php lbl8K("MLSP10"); ?>: CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
 F7FF 78                 LD      A,B             ; Get exponent
 F800 B7                 OR      A               ; Is it zero?
 F801 C8                 RET     Z               ; Yes - Result is zero
@@ -82,22 +82,22 @@ F80E 34                 INC     (HL)            ; Double number (Times 10)
 F80F C0                 RET     NZ              ; Ok - Return
 F810 C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
-<span id="F813">F813</span> 3AE710     <?php lbl8K("TSTSGN"); ?>: LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get sign of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F813"); ?> 3AE710     <?php lbl8K("TSTSGN"); ?>: LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get sign of <?php bas8K("FPREG","","","\n"); ?>
 F816 B7                 OR      A
 F817 C8                 RET     Z               ; RETurn if number is zero
 F818 3AE610             LD      A,(<?php bas8K("FPREG"); ?>+2)     ; Get MSB of <?php bas8K("FPREG","","","\n"); ?>
 F81B FE                 DEFB    (CP 2FH         ; Test sign
-<span id="F81C">F81C</span> 2F         <?php lbl8K("RETREL"); ?>: CPL                     ; Invert sign
+<?php adr8K("F81C"); ?> 2F         <?php lbl8K("RETREL"); ?>: CPL                     ; Invert sign
 F81D 17                 RLA                     ; Sign bit to carry
-<span id="F81E">F81E</span> 9F         <?php lbl8K("FLGDIF"); ?>: SBC     A,A             ; Carry to all bits of A
+<?php adr8K("F81E"); ?> 9F         <?php lbl8K("FLGDIF"); ?>: SBC     A,A             ; Carry to all bits of A
 F81F C0                 RET     NZ              ; Return -1 if negative
 F820 3C                 INC     A               ; Bump to +1
 F821 C9                 RET                     ; Positive - Return +1
 
-<span id="F822">F822</span> CD13F8     <?php lbl8K("SGN"); ?>:    CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
-<span id="F825">F825</span> 0688       <?php lbl8K("FLGREL"); ?>: LD      B,80H+8         ; 8 bit integer in exponent
+<?php adr8K("F822"); ?> CD13F8     <?php lbl8K("SGN"); ?>:    CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F825"); ?> 0688       <?php lbl8K("FLGREL"); ?>: LD      B,80H+8         ; 8 bit integer in exponent
 F827 110000             LD      DE,0            ; Zero NMSB and LSB
-<span id="F82A">F82A</span> 21E710     <?php lbl8K("RETINT"); ?>: LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
+<?php adr8K("F82A"); ?> 21E710     <?php lbl8K("RETINT"); ?>: LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F82D 4F                 LD      C,A             ; CDE = MSB,NMSB and LSB
 F82E 70                 LD      (HL),B          ; Save exponent
 F82F 0600               LD      B,0             ; CDE = integer to normalise

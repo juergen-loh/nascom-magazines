@@ -2,29 +2,29 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    8</span>
 
-E1DB D4414228           DEFB    80H+"TAB("
-E1DF D44F               DEFB    80H+"TO"
-E1E1 C64E               DEFB    80H+"FN"
-E1E3 D3504328           DEFB    80H+"SPC("
-E1E7 D448454E           DEFB    80H+"THEN"
-E1EB CE4F54             DEFB    80H+"NOT"
-E1EE D3544550           DEFB    80H+"STEP"
+E1DB D4414228           DEFB    80H+"<?php bas8K("TAB","DOTAB"); ?>("
+E1DF D44F               DEFB    80H+"<?php bas8K("TO","E7BC"); ?>"
+E1E1 C64E               DEFB    80H+"<?php bas8K("FN","DOFN"); ?>"
+E1E3 D3504328           DEFB    80H+"<?php bas8K("SPC","DOTAB"); ?>("
+E1E7 D448454E           DEFB    80H+"<?php bas8K("THEN","EB08"); ?>"
+E1EB CE4F54             DEFB    80H+"<?php bas8K("NOT","EVNOT"); ?>"
+E1EE D3544550           DEFB    80H+"<?php bas8K("STEP","E7D0"); ?>"
 
-E1F2 AB                 DEFB    80H+"+"
-E1F3 AD                 DEFB    80H+"-"
+E1F2 AB                 DEFB    80H+"<?php bas8K("+","EDE6"); ?>"
+E1F3 AD                 DEFB    80H+"<?php bas8K("-","EDF0"); ?>"
 E1F4 AA                 DEFB    80H+"*"
-E1F5 AF                 DEFB    80H+"/"
-E1F6 DE                 DEFB    80H+"^"
-E1F7 C14E44             DEFB    80H+"AND"
-E1FA CF52               DEFB    80H+"OR"
-E1FC BE                 DEFB    80H+"&gt;"
-E1FD BD                 DEFB    80H+"="
-E1FE BC                 DEFB    80H+"&lt;"
+E1F5 AF                 DEFB    80H+"<?php bas8K("/","DIV"); ?>"
+E1F6 DE                 DEFB    80H+"^
+E1F7 C14E44             DEFB    80H+"<?php bas8K("AND","PAND"); ?>"
+E1FA CF52               DEFB    80H+"<?php bas8K("OR","POR"); ?>"
+E1FC BE                 DEFB    80H+"<?php bas8K("&gt;","RLTLP"); ?>"
+E1FD BD                 DEFB    80H+"<?php bas8K("=","LET"); ?>"
+E1FE BC                 DEFB    80H+"<?php bas8K("&lt;","ED7B"); ?>"
 
 E1FF D3474E             DEFB    80H+"<?php bas8K("SGN"); ?>"
 E202 C94E54             DEFB    80H+"<?php bas8K("INT"); ?>"
-E205 C14253             DEFB    80H+"<a href="../../../32/25/text/#ABS">ABS</a>"
-E208 D55352             DEFB    80H+"USR"
+E205 C14253             DEFB    80H+"<?php bas8K("ABS"); ?>"
+E208 D55352             DEFB    80H+"<?php bas8K("USR"); ?>"
 E20B C65245             DEFB    80H+"<?php bas8K("FRE"); ?>"
 E20E C94E50             DEFB    80H+"<?php bas8K("INP"); ?>"
 E211 D04F53             DEFB    80H+"<?php bas8K("POS"); ?>"
@@ -41,7 +41,7 @@ E230 C445454B           DEFB    80H+"<?php bas8K("DEEK"); ?>"
 E234 D04F494E           DEFB    80H+"<?php bas8K("POINT"); ?>"
 E239 CC454E             DEFB    80H+"<?php bas8K("LEN"); ?>"
 E23C D3545224           DEFB    80H+"<?php bas8K("STR"); ?>$"
-E240 D6414C             DEFB    80H+"VAL"
+E240 D6414C             DEFB    80H+"<?php bas8K("VAL"); ?>"
 E243 C15343             DEFB    80H+"<?php bas8K("ASC"); ?>"
 E246 C3485224           DEFB    80H+"<?php bas8K("CHR"); ?>$"
 E24A CC454654           DEFB    80H+"<?php bas8K("LEFT"); ?>$"
@@ -55,7 +55,7 @@ E259 80                 DEFB    80H             ; End of list marker
 
                 ; KEYWORD ADDRESS TABLE
 
-<span id="E25A">E25A</span> 72E8       <?php lbl8K("WORDTB"); ?>: DEFW    <?php bas8K("PEND","","","\n"); ?>
+<?php adr8K("E25A"); ?> 72E8       <?php lbl8K("WORDTB"); ?>: DEFW    <?php bas8K("PEND","","","\n"); ?>
 E25C 79E7               DEFW    <?php bas8K("FOR","","","\n"); ?>
 E25E F6EC               DEFW    <?php bas8K("NEXT","","","\n"); ?>
 E260 70EA               DEFW    <?php bas8K("DATA","","","\n"); ?>
@@ -74,14 +74,14 @@ E278 70E8               DEFW    <?php bas8K("STOP","","","\n"); ?>
 E27A 4DF4               DEFW    <?php bas8K("POUT","","","\n"); ?>
 E27C E1EA               DEFW    <?php bas8K("ON","","","\n"); ?>
 E27E B1E8               DEFW    <?php bas8K("NULL","","","\n"); ?>
-E280 53F4               DEFW    WAIT
+E280 53F4               DEFW    <?php bas8K("WAIT","","","\n"); ?>
 E282 06F1               DEFW    <?php bas8K("DEF","","","\n"); ?>
 E284 AAF5               DEFW    <?php bas8K("POKE","","","\n"); ?>
 E286 C7FD               DEFW    <?php bas8K("DOKE","","","\n"); ?>
 E288 E6FD               DEFW    <?php bas8K("SCREEN","","","\n"); ?>
 E28A ADFD               DEFW    <?php bas8K("LINES","","","\n"); ?>
 E28C 8BFD               DEFW    <?php bas8K("CLS","","","\n"); ?>
-E28E A5FD               DEFW    WIDTH
+E28E A5FD               DEFW    <?php bas8K("WIDTH","","","\n"); ?>
 E290 A2FE               DEFW    <?php bas8K("MONITR","","","\n"); ?>
 E292 5410               DEFW    <?php bas8K("PSET","","","\n"); ?>
 E294 5710               DEFW    <?php bas8K("RESET","","","\n"); ?>

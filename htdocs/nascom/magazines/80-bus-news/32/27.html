@@ -2,21 +2,21 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    84</span>
 
-<span id="F965">F965</span> C259F9     <?php lbl8K("ENDCON"); ?>: JP      NZ,<?php bas8K("SCALMI"); ?>       ; More to do
+<?php adr8K("F965"); ?> C259F9     <?php lbl8K("ENDCON"); ?>: JP      NZ,<?php bas8K("SCALMI"); ?>       ; More to do
 F968 D1                 POP     DE              ; Restore code string address
 F969 F1                 POP     AF              ; Restore sign of number
 F96A CC3CF8             CALL    Z,<?php bas8K("INVSGN"); ?>        ; Negative - Negate number
 F96D EB                 EX      DE,HL           ; Code string address to HL
 F96E C9                 RET
 
-<span id="F96F">F96F</span> C8         <?php lbl8K("SCALPL"); ?>: RET     Z               ; Exit if no scaling needed
-<span id="F970">F970</span> F5         <?php lbl8K("MULTEN"); ?>: PUSH    AF              ; Save count
+<?php adr8K("F96F"); ?> C8         <?php lbl8K("SCALPL"); ?>: RET     Z               ; Exit if no scaling needed
+<?php adr8K("F970"); ?> F5         <?php lbl8K("MULTEN"); ?>: PUSH    AF              ; Save count
 F971 CDFCF7             CALL    <?php bas8K("MLSP10"); ?>          ; Multiply number by 10
 F974 F1                 POP     AF              ; Restore count
 F975 3D                 DEC     A               ; Count multiplies
 F976 C9                 RET
 
-<span id="F977">F977</span> D5         <?php lbl8K("ADDIG"); ?>:  PUSH    DE              ; Save sign of exponent
+<?php adr8K("F977"); ?> D5         <?php lbl8K("ADDIG"); ?>:  PUSH    DE              ; Save sign of exponent
 F978 57                 LD      D,A             ; Save digit
 F979 78                 LD      A,B             ; Get digits after point
 F97A 89                 ADC     A,C             ; Add one if after point
@@ -33,13 +33,13 @@ F989 C1                 POP     BC              ; Restore point flags
 F98A D1                 POP     DE              ; Restore sign of exponent
 F98B C32EF9             JP      <?php bas8K("MANLP"); ?>           ; Get another digit
 
-<span id="F98E">F98E</span> CD44F8     <?php lbl8K("RSCALE"); ?>: CALL    <?php bas8K("STAKFP"); ?>          ; Put number on stack
+<?php adr8K("F98E"); ?> CD44F8     <?php lbl8K("RSCALE"); ?>: CALL    <?php bas8K("STAKFP"); ?>          ; Put number on stack
 F991 CD25F8             CALL    <?php bas8K("FLGREL"); ?>          ; Digit to add to <?php bas8K("FPREG","","","\n"); ?>
-<span id="F994">F994</span> C1         <?php lbl8K("PADD"); ?>:   POP     BC              ; Restore number
+<?php adr8K("F994"); ?> C1         <?php lbl8K("PADD"); ?>:   POP     BC              ; Restore number
 F995 D1                 POP     DE
 F996 C3CDF5             JP      <?php bas8K("FPADD"); ?>           ; Add BCDE to <?php bas8K("FPREG"); ?> and return
 
-<span id="F999">F999</span> 7B         <?php lbl8K("EDIGIT"); ?>: LD      A,E             ; Get digit
+<?php adr8K("F999"); ?> 7B         <?php lbl8K("EDIGIT"); ?>: LD      A,E             ; Get digit
 F99A 07                 RLCA                    ; Times 2
 F99B 07                 RLCA                    ; Times 4
 F99C 83                 ADD     A,E             ; Times 5
@@ -53,23 +53,23 @@ F9A2 C344F9             JP      <?php bas8K("EXPLP"); ?>           ; Look for an
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    85</span>
 
-<span id="F9A5">F9A5</span> E5         <?php lbl8K("LINEIN"); ?>: PUSH    HL              ; Save code string address
+<?php adr8K("F9A5"); ?> E5         <?php lbl8K("LINEIN"); ?>: PUSH    HL              ; Save code string address
 F9A6 2146E3             LD      HL,<?php bas8K("INMSG"); ?>        ; Output " in "
 F9A9 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string at HL
 F9AC E1                 POP     HL              ; Restore code string address
-<span id="F9AD">F9AD</span> EB         <?php lbl8K("PRNTHL"); ?>: EX      DE,HL           ; Code string address to DE
+<?php adr8K("F9AD"); ?> EB         <?php lbl8K("PRNTHL"); ?>: EX      DE,HL           ; Code string address to DE
 F9AE AF                 XOR     A
 F9AF 0698               LD      B,80H+24        ; 24 bits
 F9B1 CD2AF8             CALL    <?php bas8K("RETINT"); ?>          ; Return the integer
 F9B4 210FF2             LD      HL,<?php bas8K("PRNUMS"); ?>       ; Print number string
 F9B7 E5                 PUSH    HL              ; Save for return
-<span id="F9B8">F9B8</span> 21E910     <?php lbl8K("NUMASC"); ?>: LD      HL,<?php bas8K("PBUFF"); ?>        ; Convert number to ASCII
+<?php adr8K("F9B8"); ?> 21E910     <?php lbl8K("NUMASC"); ?>: LD      HL,<?php bas8K("PBUFF"); ?>        ; Convert number to ASCII
 F9BB E5                 PUSH    HL              ; Save for return
-F9BC CD13F8             CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
+F9BC CD13F8             CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F9BF 3620               LD      (HL)," "        ; Space at start
 F9C1 F2C6F9             JP      P,<?php bas8K("SPCFST"); ?>        ; Positive - Space to start
 F9C4 362D               LD      (HL),"-"        ; "-" sign at start
-<span id="F9C6">F9C6</span> 23         <?php lbl8K("SPCFST"); ?>: INC     HL              ; First byte of number
+<?php adr8K("F9C6"); ?> 23         <?php lbl8K("SPCFST"); ?>: INC     HL              ; First byte of number
 F9C7 3630               LD      (HL),"0"        ; "0" if zero
 F9C9 CA7CFA             JP      Z,<?php bas8K("JSTZER"); ?>        ; Return "0" if zero
 F9CC E5                 PUSH    HL              ; Save buffer address
@@ -77,7 +77,7 @@ F9CD FC3CF8             CALL    M,<?php bas8K("INVSGN"); ?>        ; Negate <?ph
 F9D0 AF                 XOR     A               ; Zero A
 F9D1 F5                 PUSH    AF              ; Save it
 F9D2 CD82FA             CALL    <?php bas8K("RNGTST"); ?>          ; Test number is in range
-<span id="F9D5">F9D5</span> 014391     <?php lbl8K("SIXDIG"); ?>: LD      BC,9143H        ; BCDE - 99999.9
+<?php adr8K("F9D5"); ?> 014391     <?php lbl8K("SIXDIG"); ?>: LD      BC,9143H        ; BCDE - 99999.9
 F9D8 11F84F             LD      DE,4FF8H
 F9DB CD8EF8             CALL    <?php bas8K("CMPNUM"); ?>          ; Compare numbers
 F9DE B7                 OR      A
@@ -87,12 +87,12 @@ F9E3 CD70F9             CALL    <?php bas8K("MULTEN"); ?>          ; Multiply by
 F9E6 F5                 PUSH    AF              ; Re-save count
 F9E7 C3D5F9             JP      <?php bas8K("SIXDIG"); ?>          ; Test it again
 
-<span id="F9EA">F9EA</span> CD5BF7     <?php lbl8K("GTSIXD"); ?>: CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10
+<?php adr8K("F9EA"); ?> CD5BF7     <?php lbl8K("GTSIXD"); ?>: CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10
 F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
 F9F0 CD82FA             CALL    <?php bas8K("RNGTST"); ?>          ; Test number is in range
-<span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    <?php bas8K("ROUND"); ?>           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("F9F3"); ?> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    <?php bas8K("ROUND"); ?>           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
 F9F6 3C                 INC     A
 F9F7 CDBBF8             CALL    <?php bas8K("FPINT"); ?>           ; F.P to integer
 F9FA CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>

@@ -2,20 +2,20 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    102</span>
 
-<span id="FFB1">FFB1</span> 09         <?php lbl8K("DIV3EX"); ?>: ADD     HL,BC           ; Restore number
+<?php adr8K("FFB1"); ?> 09         <?php lbl8K("DIV3EX"); ?>: ADD     HL,BC           ; Restore number
 FFB2 F1                 POP     AF              ; Restore column and odd/even
 FFB3 B7                 OR      A               ; Set flags (NZ or Z)
 FFB4 7D                 LD      A,L             ; Get remainder from /3
 FFB5 CABAFF             JP      Z,<?php bas8K("NOREMD"); ?>        ; No remainder
 FFB8 C603               ADD     A,3             ; Adjust remainder
-<span id="FFBA">FFBA</span> 47         <?php lbl8K("NOREMD"); ?>: LD      B,A             ; Bit number+1 to B
+<?php adr8K("FFBA"); ?> 47         <?php lbl8K("NOREMD"); ?>: LD      B,A             ; Bit number+1 to B
 FFBB 3E01               LD      A,00000001B     ; Bit to rotate
-<span id="FFBD">FFBD</span> 07         <?php lbl8K("SHFTBT"); ?>: RLCA                    ; Shift bit left
+<?php adr8K("FFBD"); ?> 07         <?php lbl8K("SHFTBT"); ?>: RLCA                    ; Shift bit left
 FFBE 10FD               DJNZ    <?php bas8K("SHFTBT"); ?>          ; Count shifts
 FFC0 1F                 RRA                     ; Restore correct place
 FFC1 C9                 RET
 
-<span id="FFC2">FFC2</span> C1         <?php lbl8K("ADJCOL"); ?>: POP     BC              ; Restore return address
+<?php adr8K("FFC2"); ?> C1         <?php lbl8K("ADJCOL"); ?>: POP     BC              ; Restore return address
 FFC3 F1                 POP     AF              ; Get bit mask
 FFC4 E1                 POP     HL              ; Get column
 FFC5 F5                 PUSH    AF              ; Re-save but mask
@@ -29,34 +29,34 @@ FFCE C5                 PUSH    BC              ; Put back return
 FFCF 7B                 LD      A,E             ; Get row
 FFD0 C9                 RET
 
-<span id="FFD1">FFD1</span> CDD5FC     <?php lbl8K("SMOTOR"); ?>: CALL    <?php bas8K("CASFF"); ?>           ; Flip tape drive
+<?php adr8K("FFD1"); ?> CDD5FC     <?php lbl8K("SMOTOR"); ?>: CALL    <?php bas8K("CASFF"); ?>           ; Flip tape drive
 FFD4 7E                 LD      A,(HL)          ; Get byte
 FFD5 C9                 RET
 
-<span id="FFD6">FFD6</span> 3ACE10     <?php lbl8K("JPLDSV"); ?>: LD      A,(<?php bas8K("BRKLIN"); ?>)      ; <?php bas8K("CLOAD"); ?> or <?php bas8K("CSAVE"); ?>?
+<?php adr8K("FFD6"); ?> 3ACE10     <?php lbl8K("JPLDSV"); ?>: LD      A,(<?php bas8K("BRKLIN"); ?>)      ; <?php bas8K("CLOAD"); ?> or <?php bas8K("CSAVE"); ?>?
 FFD9 FEFF               CP      -1
 FFDB C206E9             JP      NZ,<?php bas8K("SNDHDR"); ?>       ; <?php bas8K("CSAVE"); ?> - Send header
 FFDE C310E9             JP      <?php bas8K("GETHDR"); ?>          ; <?php bas8K("CLOAD"); ?> - Get header
 
-<span id="FFE1">FFE1</span> CD81EB     <?php lbl8K("CRLIN1"); ?>: CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
+<?php adr8K("FFE1"); ?> CD81EB     <?php lbl8K("CRLIN1"); ?>: CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 FFE4 C3F2E5             JP      <?php bas8K("GETLIN"); ?>          ; Get an input line
 
-<span id="FFE7">FFE7</span> CD81EB     <?php lbl8K("CRLIN"); ?>:  CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
+<?php adr8K("FFE7"); ?> CD81EB     <?php lbl8K("CRLIN"); ?>:  CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 FFEA C3F2E5             JP      <?php bas8K("GETLIN"); ?>          ; Get an input line
 
-<span id="FFED">FFED</span> F5         <?php lbl8K("TSTBIT"); ?>: PUSH    AF              ; Save bit mask
+<?php adr8K("FFED"); ?> F5         <?php lbl8K("TSTBIT"); ?>: PUSH    AF              ; Save bit mask
 FFEE A0                 AND     B               ; Get common bits
 FFEF C1                 POP     BC              ; Restore bit mask
 FFF0 B8                 CP      B               ; Same bit set?
 FFF1 3E00               LD      A,0             ; Return 0 in A
 FFF3 C9                 RET
 
-<span id="FFF4">FFF4</span> CD9BE6     <?php lbl8K("OUTNCR"); ?>: CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
+<?php adr8K("FFF4"); ?> CD9BE6     <?php lbl8K("OUTNCR"); ?>: CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 FFF7 C381EB             JP      <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 
-<span id="FFFA">FFFA</span> C3DEFD     <?php lbl8K("JJUMP"); ?>:  JP      <?php bas8K("JJUMP1"); ?>          ; "Cool" start
+<?php adr8K("FFFA"); ?> C3DEFD     <?php lbl8K("JJUMP"); ?>:  JP      <?php bas8K("JJUMP1"); ?>          ; "Cool" start
 
-<span id="FFFD">FFFD</span> C3B1E0     <?php lbl8K("ZJUMP"); ?>:  JP      <?php bas8K("BRKRET"); ?>          ; Warm start
+<?php adr8K("FFFD"); ?> C3B1E0     <?php lbl8K("ZJUMP"); ?>:  JP      <?php bas8K("BRKRET"); ?>          ; Warm start
 </pre>
 <?php DoublePageChange(); ?>
 <pre>

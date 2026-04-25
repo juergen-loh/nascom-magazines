@@ -2,23 +2,23 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    6</span>
 
-<span id="E0B7">E0B7</span> 20427974   <?php lbl8K("BFREE"); ?>:  DEFB    " Bytes free",<?php bas8K("CR"); ?>,0,0
+<?php adr8K("E0B7"); ?> 20427974   <?php lbl8K("BFREE"); ?>:  DEFB    " Bytes free",<?php bas8K("CR"); ?>,0,0
 
-<span id="E0C5">E0C5</span> 4E415343   <?php lbl8K("SIGNON"); ?>: DEFB    "<span class="uppercase">Nascom</span> ROM BASIC Ver 4.7   ",<?php bas8K("CR","","","\n"); ?>
+<?php adr8K("E0C5"); ?> 4E415343   <?php lbl8K("SIGNON"); ?>: DEFB    "<span class="uppercase">Nascom</span> ROM BASIC Ver 4.7   ",<?php bas8K("CR","","","\n"); ?>
 E0E1 436F7079           DEFB    "Copyright (C) 1978 by Microsoft",<?php bas8K("CR"); ?>,0,0
 
-<span id="E103">E103</span> 4D656D6F   <?php lbl8K("MEMMSG"); ?>: DEFB    "Memory size",0
+<?php adr8K("E103"); ?> 4D656D6F   <?php lbl8K("MEMMSG"); ?>: DEFB    "Memory size",0
 
                 ; FUNCTION ADDRESS TABLE
 
-<span id="E10F">E10F</span> 22F8       <?php lbl8K("FNCTAB"); ?>: DEFW    <?php bas8K("SGN","","","\n"); ?>
+<?php adr8K("E10F"); ?> 22F8       <?php lbl8K("FNCTAB"); ?>: DEFW    <?php bas8K("SGN","","","\n"); ?>
 E111 E6F8               DEFW    <?php bas8K("INT","","","\n"); ?>
 E113 38F8               DEFW    <?php bas8K("ABS","","","\n"); ?>
-E115 0310               DEFW    USR
+E115 0310               DEFW    <?php bas8K("USR","","","\n"); ?>
 E117 D0F0               DEFW    <?php bas8K("FRE","","","\n"); ?>
 E119 41F4               DEFW    <?php bas8K("INP","","","\n"); ?>
 E11B FEF0               DEFW    <?php bas8K("POS","","","\n"); ?>
-E11D ACFA               DEFW    <?php bas8K("SQR","","","\n"); ?>
+<?php adr8K("E11D"); ?> ACFA               DEFW    <?php bas8K("SQR","","","\n"); ?>
 E11F 8BFB               DEFW    <?php bas8K("RND","","","\n"); ?>
 E121 C7F6               DEFW    <?php bas8K("LOG","","","\n"); ?>
 E123 FAFA               DEFW    <?php bas8K("EXP","","","\n"); ?>
@@ -31,7 +31,7 @@ E12F BCFD               DEFW    <?php bas8K("DEEK","","","\n"); ?>
 E131 5110               DEFW    <?php bas8K("POINT","","","\n"); ?>
 E133 82F3               DEFW    <?php bas8K("LEN","","","\n"); ?>
 E135 9AF1               DEFW    <?php bas8K("STR","","","\n"); ?>
-E137 1CF4               DEFW    VAL
+E137 1CF4               DEFW    <?php bas8K("VAL","","","\n"); ?>
 E139 91F3               DEFW    <?php bas8K("ASC","","","\n"); ?>
 E13B A2F3               DEFW    <?php bas8K("CHR","","","\n"); ?>
 E13D B2F3               DEFW    <?php bas8K("LEFT","","","\n"); ?>
@@ -44,7 +44,7 @@ E141 ECF3               DEFW    <?php bas8K("MID","","","\n"); ?>
 
                 ; RESERVED WORD LIST
 
-<span id="E143">E143</span> C54E44     <?php lbl8K("WORDS"); ?>:  DEFB    80H+"END"
+<?php adr8K("E143"); ?> C54E44     <?php lbl8K("WORDS"); ?>:  DEFB    80H+"<?php bas8K("END","PEND"); ?>"
 E146 C64F52             DEFB    80H+"<?php bas8K("FOR"); ?>"
 E149 CE455854           DEFB    80H+"<?php bas8K("NEXT"); ?>"
 E14D C4415441           DEFB    80H+"<?php bas8K("DATA"); ?>"
@@ -55,24 +55,24 @@ E15D CC4554             DEFB    80H+"<?php bas8K("LET"); ?>"
 E160 C74F544F           DEFB    80H+"<?php bas8K("GOTO"); ?>"
 E164 D2554E             DEFB    80H+"<?php bas8K("RUN"); ?>"
 E167 C946               DEFB    80H+"<?php bas8K("IF"); ?>"
-E169 D2455354           DEFB    80H+"RESTORE"
+E169 D2455354           DEFB    80H+"<?php bas8K("RESTORE","RESTOR"); ?>"
 E170 C74F5355           DEFB    80H+"<?php bas8K("GOSUB"); ?>"
 E175 D2455455           DEFB    80H+"<?php bas8K("RETURN"); ?>"
 E17B D2454D             DEFB    80H+"<?php bas8K("REM"); ?>"
 E17E D3544F50           DEFB    80H+"<?php bas8K("STOP"); ?>"
-E182 CF5554             DEFB    80H+"OUT"
+E182 CF5554             DEFB    80H+"<?php bas8K("OUT"); ?>"
 E185 CF4E               DEFB    80H+"<?php bas8K("ON"); ?>"
 E187 CE554C4C           DEFB    80H+"<?php bas8K("NULL"); ?>"
-E18B D7414954           DEFB    80H+"WAIT"
+E18B D7414954           DEFB    80H+"<?php bas8K("WAIT"); ?>"
 E18F C44546             DEFB    80H+"<?php bas8K("DEF"); ?>"
 E192 D04F4B45           DEFB    80H+"<?php bas8K("POKE"); ?>"
 E196 C44F4B45           DEFB    80H+"<?php bas8K("DOKE"); ?>"
 E19A D3435245           DEFB    80H+"<?php bas8K("SCREEN"); ?>"
 E1A0 CC494E45           DEFB    80H+"<?php bas8K("LINES"); ?>"
 E1A5 C34C53             DEFB    80H+"<?php bas8K("CLS"); ?>"
-E1A8 D7494454           DEFB    80H+"WIDTH"
-E1AD CD4F4E49           DEFB    80H+"MONITOR"
-E1B4 D34554             DEFB    80H+"SET"
+E1A8 D7494454           DEFB    80H+"<?php bas8K("WIDTH"); ?>"
+E1AD CD4F4E49           DEFB    80H+"<?php bas8K("MONITOR","MONITR"); ?>"
+E1B4 D34554             DEFB    80H+"<?php bas8K("SET","PSET"); ?>"
 E1B7 D2455345           DEFB    80H+"<?php bas8K("RESET"); ?>"
 E1BC D052494E           DEFB    80H+"<?php bas8K("PRINT"); ?>"
 E1C1 C34F4E54           DEFB    80H+"<?php bas8K("CONT"); ?>"

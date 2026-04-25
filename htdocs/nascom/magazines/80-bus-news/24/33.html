@@ -2,11 +2,11 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    20</span>
 
-<span id="E509">E509</span> AF         <?php lbl8K("CRUNCH"); ?>: XOR     A               ; Tokenise line @ HL to <?php bas8K("BUFFER","","","\n"); ?>
+<?php adr8K("E509"); ?> AF         <?php lbl8K("CRUNCH"); ?>: XOR     A               ; Tokenise line @ HL to <?php bas8K("BUFFER","","","\n"); ?>
 E50A 32AE10             LD      (<?php bas8K("DATFLG"); ?>),A      ; Reset literal flag
 E50D 0E05               LD      C,2+3           ; 2 byte number and 3 nulls
 E50F 116110             LD      DE,<?php bas8K("BUFFER"); ?>       ; Start of input buffer
-<span id="E512">E512</span> 7E         <?php lbl8K("CRNCLP"); ?>: LD      A,(HL)          ; Get byte
+<?php adr8K("E512"); ?> 7E         <?php lbl8K("CRNCLP"); ?>: LD      A,(HL)          ; Get byte
 E513 FE20               CP      " "             ; Is it a space?
 E515 CA91E5             JP      Z,<?php bas8K("MOVDIR"); ?>        ; Yes - Copy direct
 E518 47                 LD      B,A             ; Save character
@@ -19,19 +19,19 @@ E525 B7                 OR      A               ; Literal?
 E526 7E                 LD      A,(HL)          ; Get byte to copy
 E527 C291E5             JP      NZ,<?php bas8K("MOVDIR"); ?>       ; Literal - Copy direct
 E52A FE3F               CP      "?"             ; Is it "?" short for <?php bas8K("PRINT","","","\n"); ?>
-E52C 3E9E               LD      A,ZPRINT        ; "<?php bas8K("PRINT"); ?>" token
+E52C 3E9E               LD      A,<?php bas8K("ZPRINT"); ?>        ; "<?php bas8K("PRINT"); ?>" token
 E52E CA91E5             JP      Z,<?php bas8K("MOVDIR"); ?>        ; Yes - replace it
 E531 7E                 LD      A,(HL)          ; Get byte again
 E532 FE30               CP      "0"             ; Is it less than "0"
 E534 DA3CE5             JP      C,<?php bas8K("FNDWRD"); ?>        ; Yes - Look for reserved words
 E537 FE3C               CP      ";"+1           ; Is it "0123456789:;" ?
 E539 DA91E5             JP      C,<?php bas8K("MOVDIR"); ?>        ; Yes - copy it direct
-<span id="E53C">E53C</span> D5         <?php lbl8K("FNDWRD"); ?>: PUSH    DE              ; Look for reserved words
-E53D 1142E1             LD      DE,WORDS-1      ; Point to table
+<?php adr8K("E53C"); ?> D5         <?php lbl8K("FNDWRD"); ?>: PUSH    DE              ; Look for reserved words
+E53D 1142E1             LD      DE,<?php bas8K("WORDS"); ?>-1      ; Point to table
 E540 C5                 PUSH    BC              ; Save count
 E541 018DE5             LD      BC,<?php bas8K("RETNAD"); ?>       ; Where to return to
 E544 C5                 PUSH    BC              ; Save return address
-E545 067F               LD      B,ZEND-1        ; First token value -1
+E545 067F               LD      B,<?php bas8K("ZEND"); ?>-1        ; First token value -1
 E547 7E                 LD      A,(HL)          ; Get byte
 E548 FE61               CP      "a"             ; Less than "a" ?
 E54A DA55E5             JP      C,<?php bas8K("SEARCH"); ?>        ; Yes - search for words
@@ -39,9 +39,9 @@ E54D FE7B               CP      "z"+1           ; Greater than "z" ?
 E54F D255E5             JP      NC,<?php bas8K("SEARCH"); ?>       ; Yes - search for words
 E552 E65F               AND     01011111B       ; Force upper case
 E554 77                 LD      (HL),A          ; Replace byte
-<span id="E555">E555</span> 4E         <?php lbl8K("SEARCH"); ?>: LD      C,(HL)          ; Search for a word
+<?php adr8K("E555"); ?> 4E         <?php lbl8K("SEARCH"); ?>: LD      C,(HL)          ; Search for a word
 E556 EB                 EX      DE,HL
-<span id="E557">E557</span> 23         <?php lbl8K("GETNXT"); ?>: INC     HL              ; Get next reserved word
+<?php adr8K("E557"); ?> 23         <?php lbl8K("GETNXT"); ?>: INC     HL              ; Get next reserved word
 E558 B6                 OR      (HL)            ; Start of word?
 E559 F257E5             JP      P,<?php bas8K("GETNXT"); ?>        ; No - move on
 E55C 04                 INC     B               ; Increment token value
@@ -57,52 +57,52 @@ E566 E5                 PUSH    HL              ; Save start of word
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    21</span>
 
-<span id="E567">E567</span> 13         <?php lbl8K("NXTBYT"); ?>: INC     DE              ; Look through rest of word
+<?php adr8K("E567"); ?> 13         <?php lbl8K("NXTBYT"); ?>: INC     DE              ; Look through rest of word
 E568 1A                 LD      A,(DE)          ; Get byte from table
 E569 B7                 OR      A               ; End of word&nbsp;?
 E56A FA89E5             JP      M,<?php bas8K("MATCH"); ?>         ; Yes - Match found
 E56D 4F                 LD      C,A             ; Save it
 E56E 78                 LD      A,B             ; Get token value
-E56F FE88               CP      ZGOTO           ; Is it "<?php bas8K("GOTO"); ?>" token&nbsp;?
+E56F FE88               CP      <?php bas8K("ZGOTO"); ?>           ; Is it "<?php bas8K("GOTO"); ?>" token&nbsp;?
 E571 C278E5             JP      NZ,<?php bas8K("NOSPC"); ?>        ; No - Don't allow spaces
 E574 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E577 2B                 DEC     HL              ; Cancel increment from <?php bas8K("GETCHR","","","\n"); ?>
-<span id="E578">E578</span> 23         <?php lbl8K("NOSPC"); ?>:  INC     HL              ; Next byte
+<?php adr8K("E578"); ?> 23         <?php lbl8K("NOSPC"); ?>:  INC     HL              ; Next byte
 E579 7E                 LD      A,(HL)          ; Get byte
 E57A FE61               CP      "a"             ; Less than "a" ?
 E57C DA81E5             JP      C,<?php bas8K("NOCHNG"); ?>        ; Yes - don't change
 E57F E65F               AND     01011111B       ; Make upper case
-<span id="E581">E581</span> B9         <?php lbl8K("NOCHNG"); ?>: CP      C               ; Same as in buffer&nbsp;?
+<?php adr8K("E581"); ?> B9         <?php lbl8K("NOCHNG"); ?>: CP      C               ; Same as in buffer&nbsp;?
 E582 CA67E5             JP      Z,<?php bas8K("NXTBYT"); ?>        ; Yes - keep testing
 E585 E1                 POP     HL              ; Get back start of word
 E586 C355E5             JP      <?php bas8K("SEARCH"); ?>          ; Look at next word
 
-<span id="E589">E589</span> 48         <?php lbl8K("MATCH"); ?>:  LD      C,B             ; Word found - Save token value
+<?php adr8K("E589"); ?> 48         <?php lbl8K("MATCH"); ?>:  LD      C,B             ; Word found - Save token value
 E58A F1                 POP     AF              ; Throw away return
 E58B EB                 EX      DE,HL
 E58C C9                 RET                     ; Return to "<?php bas8K("RETNAD"); ?>"
-<span id="E58D">E58D</span> EB         <?php lbl8K("RETNAD"); ?>: EX      DE,HL           ; Get address in string
+<?php adr8K("E58D"); ?> EB         <?php lbl8K("RETNAD"); ?>: EX      DE,HL           ; Get address in string
 E58E 79                 LD      A,C             ; Get token value
 E58F C1                 POP     BC              ; Restore buffer length
 E590 D1                 POP     DE              ; Get destination address
-<span id="E591">E591</span> 23         <?php lbl8K("MOVDIR"); ?>: INC     HL              ; Next source in buffer
+<?php adr8K("E591"); ?> 23         <?php lbl8K("MOVDIR"); ?>: INC     HL              ; Next source in buffer
 E592 12                 LD      (DE),A          ; Put byte in buffer
 E593 13                 INC     DE              ; Move up buffer
 E594 0C                 INC     C               ; Increment length of buffer
 E595 D63A               SUB     ":"             ; End of statement?
 E597 CA9FE5             JP      Z,<?php bas8K("SETLIT"); ?>        ; Jump if multi-statement line
-E59A FE49               CP      ZDATA-3AH       ; Is it <?php bas8K("DATA"); ?> statement&nbsp;?
-E59C C2A2E5             JP      NZ,TSTREM       ; No - see if <?php bas8K("REM","","","\n"); ?>
-<span id="E59F">E59F</span> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (<?php bas8K("DATFLG"); ?>),A      ; Set literal flag
-<span id="E5A2">E5A2</span> D654       <?php lbl8K("TSTREM"); ?>: SUB     ZREM-3AH        ; Is it <?php bas8K("REM"); ?>?
+E59A FE49               CP      <?php bas8K("ZDATA"); ?>-3AH       ; Is it <?php bas8K("DATA"); ?> statement&nbsp;?
+E59C C2A2E5             JP      NZ,<?php bas8K("TSTREM"); ?>       ; No - see if <?php bas8K("REM","","","\n"); ?>
+<?php adr8K("E59F"); ?> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (<?php bas8K("DATFLG"); ?>),A      ; Set literal flag
+<?php adr8K("E5A2"); ?> D654       <?php lbl8K("TSTREM"); ?>: SUB     <?php bas8K("ZREM"); ?>-3AH        ; Is it <?php bas8K("REM"); ?>?
 E5A4 C212E5             JP      NZ,<?php bas8K("CRNCLP"); ?>       ; No - Leave flag
 E5A7 47                 LD      B,A             ; Copy rest of buffer
-<span id="E5A8">E5A8</span> 7E         <?php lbl8K("NXTCHR"); ?>: LD      A,(HL)          ; Get byte
+<?php adr8K("E5A8"); ?> 7E         <?php lbl8K("NXTCHR"); ?>: LD      A,(HL)          ; Get byte
 E5A9 B7                 OR      A               ; End of line&nbsp;?
 E5AA CAB8E5             JP      Z,<?php bas8K("ENDBUF"); ?>        ; Yes - Terminate buffer
 E5AD B8                 CP      B               ; End of statement&nbsp;?
 E5AE CA91E5             JP      Z,<?php bas8K("MOVDIR"); ?>        ; Yes - Get next one
-<span id="E5B1">E5B1</span> 23         <?php lbl8K("CPYLIT"); ?>: INC     HL              ; Move up source string
+<?php adr8K("E5B1"); ?> 23         <?php lbl8K("CPYLIT"); ?>: INC     HL              ; Move up source string
 E5B2 12                 LD      (DE),A          ; Save in destination
 E5B3 0C                 INC     C               ; Increment length
 E5B4 13                 INC     DE              ; Move up destination

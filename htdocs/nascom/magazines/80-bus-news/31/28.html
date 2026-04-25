@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    63</span>
 
-<span id="F2E1">F2E1</span> D1         <?php lbl8K("SCNEND"); ?>: POP     DE              ; Addresses of strings
+<?php adr8K("F2E1"); ?> D1         <?php lbl8K("SCNEND"); ?>: POP     DE              ; Addresses of strings
 F2E2 E1                 POP     HL              ;
 F2E3 7D                 LD      A,L             ; HL = 0 if no more to do
 F2E4 B4                 OR      H
@@ -33,13 +33,13 @@ F301 60                 LD      H,B
 F302 2B                 DEC     HL              ; Next string area address
 F303 C356F2             JP      <?php bas8K("GARBLP"); ?>          ; Look for more strings
 
-<span id="F306">F306</span> C5         <?php lbl8K("CONCAT"); ?>: PUSH    BC              ; Save prec' opr & code string
+<?php adr8K("F306"); ?> C5         <?php lbl8K("CONCAT"); ?>: PUSH    BC              ; Save prec' opr & code string
 F307 E5                 PUSH    HL              ;
 F308 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get first string
 F30B E3                 EX      (SP),HL         ; Save first string
 F30C CDD1ED             CALL    <?php bas8K("OPRND"); ?>           ; Get second string
 F30F E3                 EX      (SP),HL         ; Restore first string
-F310 CD45ED             CALL    TSTSTR          ; Make sure it's a string
+F310 CD45ED             CALL    <?php bas8K("TSTSTR"); ?>          ; Make sure it's a string
 F313 7E                 LD      A,(HL)          ; Get length of second string
 F314 E5                 PUSH    HL              ; Save first string
 F315 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get second string
@@ -60,13 +60,13 @@ F332 CD3DF3             CALL    <?php bas8K("SSTSA"); ?>           ; Second stri
 F335 2166ED             LD      HL,<?php bas8K("EVAL2"); ?>        ; Return to evaluation loop
 F338 E3                 EX      (SP),HL         ; Save return,get code string
 F339 E5                 PUSH    HL              ; Save code string address
-F33A C3F0F1             JP      TSTOPL          ; To temporary string to pool
+F33A C3F0F1             JP      <?php bas8K("TSTOPL"); ?>          ; To temporary string to pool
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    64</span>
 
-<span id="F33D">F33D</span> E1         <?php lbl8K("SSTSA"); ?>:  POP     HL              ; Return address
+<?php adr8K("F33D"); ?> E1         <?php lbl8K("SSTSA"); ?>:  POP     HL              ; Return address
 F33E E3                 EX      (SP),HL         ; Get string block,save return
 F33F 7E                 LD      A,(HL)          ; Get length of string
 F340 23                 INC     HL
@@ -75,19 +75,19 @@ F342 4E                 LD      C,(HL)          ; Get LSB of string address
 F343 23                 INC     HL
 F344 46                 LD      B,(HL)          ; Get MSB of string address
 F345 6F                 LD      L,A             ; Length to L
-<span id="F346">F346</span> 2C         <?php lbl8K("TOSTRA"); ?>: INC     L               ; INC - DECed after
-<span id="F347">F347</span> 2D         <?php lbl8K("TSALP"); ?>:  DEC     L               ; Count bytes moved
+<?php adr8K("F346"); ?> 2C         <?php lbl8K("TOSTRA"); ?>: INC     L               ; INC - DECed after
+<?php adr8K("F347"); ?> 2D         <?php lbl8K("TSALP"); ?>:  DEC     L               ; Count bytes moved
 F348 C8                 RET     Z               ; End of string - Return
 F349 0A                 LD      A,(BC)          ; Get source
 F34A 12                 LD      (DE),A          ; Save destination
 F34B 03                 INC     BC              ; Next source
 F34C 13                 INC     DE              ; Next destination
-F34D C347F3             JP      TSALP           ; Loop until string moved
+F34D C347F3             JP      <?php bas8K("TSALP"); ?>           ; Loop until string moved
 
-<span id="F350">F350</span> CD45ED     <?php lbl8K("GETSTR"); ?>: CALL    TSTSTR          ; Make sure it's a string
-<span id="F353">F353</span> 2AE410     <?php lbl8K("GSTRCU"); ?>: LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get current string
-<span id="F356">F356</span> EB         <?php lbl8K("GSTRHL"); ?>: EX      DE,HL           ; Save DE
-<span id="F357">F357</span> CD71F3     <?php lbl8K("GSTRDE"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Was it last tmp-str?
+<?php adr8K("F350"); ?> CD45ED     <?php lbl8K("GETSTR"); ?>: CALL    <?php bas8K("TSTSTR"); ?>          ; Make sure it's a string
+<?php adr8K("F353"); ?> 2AE410     <?php lbl8K("GSTRCU"); ?>: LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get current string
+<?php adr8K("F356"); ?> EB         <?php lbl8K("GSTRHL"); ?>: EX      DE,HL           ; Save DE
+<?php adr8K("F357"); ?> CD71F3     <?php lbl8K("GSTRDE"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Was it last tmp-str?
 F35A EB                 EX      DE,HL           ; Restore DE
 F35B C0                 RET     NZ              ; No - Return
 F35C D5                 PUSH    DE              ; Save string
@@ -101,10 +101,10 @@ F367 C26FF3             JP      NZ,<?php bas8K("POPHL"); ?>        ; No - Return
 F36A 47                 LD      B,A             ; Clear B (A=0)
 F36B 09                 ADD     HL,BC           ; Remove string from str' area
 F36C 22C310             LD      (<?php bas8K("STRBOT"); ?>),HL     ; Save new bottom of str' area
-<span id="F36F">F36F</span> E1         <?php lbl8K("POPHL"); ?>:  POP     HL              ; Restore string
+<?php adr8K("F36F"); ?> E1         <?php lbl8K("POPHL"); ?>:  POP     HL              ; Restore string
 F370 C9                 RET
 
-<span id="F371">F371</span> 2AB110     <?php lbl8K("BAKTMP"); ?>: LD      HL,(<?php bas8K("TMSTPT"); ?>)     ; Get temporary string pool top
+<?php adr8K("F371"); ?> 2AB110     <?php lbl8K("BAKTMP"); ?>: LD      HL,(<?php bas8K("TMSTPT"); ?>)     ; Get temporary string pool top
 F374 2B                 DEC     HL              ; Back
 F375 46                 LD      B,(HL)          ; Get MSB of address
 F376 2B                 DEC     HL              ; Back
