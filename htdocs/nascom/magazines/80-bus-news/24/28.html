@@ -10,7 +10,7 @@
 <span id="0088">0088</span>            <?php lbl8K("ZGOTO"); ?>   EQU     088H            ; <?php bas8K("GOTO","","","\n"); ?>
 <span id="008C">008C</span>            <?php lbl8K("ZGOSUB"); ?>  EQU     08CH            ; <?php bas8K("GOSUB","","","\n"); ?>
 <span id="008E">008E</span>            <?php lbl8K("ZREM"); ?>    EQU     08EH            ; REM
-<span id="009E">009E</span>            <?php lbl8K("ZPRINT"); ?>  EQU     09EH            ; PRINT
+<span id="009E">009E</span>            <?php lbl8K("ZPRINT"); ?>  EQU     09EH            ; <?php bas8K("PRINT","","","\n"); ?>
 <span id="00A4">00A4</span>            <?php lbl8K("ZNEW"); ?>    EQU     0A4H            ; <?php bas8K("NEW","","","\n"); ?>
 
 <span id="00A5">00A5</span>            <?php lbl8K("ZTAB"); ?>    EQU     0A5H            ; TAB
@@ -30,8 +30,8 @@
 <span id="00B4">00B4</span>            <?php lbl8K("ZEQUAL"); ?>  EQU     0B4H            ; =
 <span id="00B5">00B5</span>            <?php lbl8K("ZLTH"); ?>    EQU     0B5H            ; &lt;
 <span id="00B6">00B6</span>            <?php lbl8K("ZSGN"); ?>    EQU     0B6H            ; SGN
-<span id="00C7">00C7</span>            <?php lbl8K("ZPOINT"); ?>  EQU     0C7H            ; POINT
-<span id="00CD">00CD</span>            <?php lbl8K("ZLEFT"); ?>   EQU     0CDH            ; <?php bas8K("LEFT"); ?>$
+<span id="00C7">00C7</span>            <?php lbl8K("ZPOINT"); ?>  EQU     0C7H            ; <?php bas8K("POINT","","","\n"); ?>
+<span id="00CD">00CD</span>            <?php lbl8K("ZLEFT"); ?>   EQU     0CDH            ; <?php bas8K("LEFT","","","\n"); ?>$
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -40,7 +40,7 @@
                 ; ARITHMETIC PRECEDENCE TABLE
 
 <span id="E2A4">E2A4</span> 79         <?php lbl8K("PRITAB"); ?>: DEFB    79H             ; Precedence value
-E2A5 94F9               DEFW    PADD            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; + <?php bas8K("FPREG","","","\n"); ?>
+E2A5 94F9               DEFW    <?php bas8K("PADD"); ?>            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; + <?php bas8K("FPREG","","","\n"); ?>
 
 E2A7 79                 DEFB    79H             ; Precedence value
 E2A8 C8F5               DEFW    PSUB            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; - <?php bas8K("FPREG","","","\n"); ?>
@@ -52,13 +52,13 @@ E2AD 7C                 DEFB    7CH             ; Precedence value
 E2AE 67F7               DEFW    <?php bas8K("DIV"); ?>             ; <?php bas8K("FPREG"); ?> = &lt;last&gt; / <?php bas8K("FPREG","","","\n"); ?>
 
 E2B0 7F                 DEFB    7FH             ; Precedence value
-E2B1 B5FA               DEFW    POWER           ; <?php bas8K("FPREG"); ?> = &lt;last&gt; ^ <?php bas8K("FPREG","","","\n"); ?>
+E2B1 B5FA               DEFW    <?php bas8K("POWER"); ?>           ; <?php bas8K("FPREG"); ?> = &lt;last&gt; ^ <?php bas8K("FPREG","","","\n"); ?>
 
 E2B3 50                 DEFB    50H             ; Precedence value
-E2B4 81EE               DEFW    PAND            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; AND <?php bas8K("FPREG","","","\n"); ?>
+E2B4 81EE               DEFW    <?php bas8K("PAND"); ?>            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; AND <?php bas8K("FPREG","","","\n"); ?>
 
 E2B6 46                 DEFB    46H             ; Precedence value
-E2B7 80EE               DEFW    POR             ; <?php bas8K("FPREG"); ?> = &lt;last&gt; OR <?php bas8K("FPREG","","","\n"); ?>
+E2B7 80EE               DEFW    <?php bas8K("POR"); ?>             ; <?php bas8K("FPREG"); ?> = &lt;last&gt; OR <?php bas8K("FPREG","","","\n"); ?>
 
                 ; BASIC ERROR CODE LIST
 

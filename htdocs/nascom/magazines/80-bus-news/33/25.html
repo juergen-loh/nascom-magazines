@@ -109,7 +109,7 @@ FD6F 00                 NOP
 
 <span id="FD70">FD70</span> E5         <?php lbl8K("SFTENT"); ?>: PUSH    HL              ; Test for Shift Enter from KBD
 FD71 3E02               LD      A,00000010B     ; Reset KBD counter mask
-FD73 21000C             LD      HL,PORT0        ; Get old contents
+FD73 21000C             LD      HL,<?php bas8K("PORT0"); ?>        ; Get old contents
 FD76 AE                 XOR     (HL)            ; Toggle bit
 FD77 D300               OUT     (0),A           ; Reset KBD counter
 FD79 EE01               XOR     00000001B       ; Toggle bit

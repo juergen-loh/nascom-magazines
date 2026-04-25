@@ -6,7 +6,7 @@
 FA10 3D                 DEC     A
 FA11 E1                 POP     HL              ; Restore buffer address
 FA12 F5                 PUSH    AF              ; Save count
-FA13 1195FA             LD      DE,POWERS       ; Powers of ten
+FA13 1195FA             LD      DE,<?php bas8K("POWERS"); ?>       ; Powers of ten
 FA16 05                 DEC     B               ; Count digits before point
 FA17 C220FA             JP      NZ,<?php bas8K("DIGTXT"); ?>       ; Not zero - Do number
 FA1A 362E               LD      (HL),"."        ; Save point
@@ -37,7 +37,7 @@ FA3A 4F                 LD      C,A             ; Save MSB
 FA3B 2B                 DEC     HL              ; Point back to start
 FA3C 2B                 DEC     HL
 FA3D D22FFA             JP      NC,TRYAGN       ; No overflow - Try again
-FA40 CD72F6             CALL    PLUCDE          ; Restore number
+FA40 CD72F6             CALL    <?php bas8K("PLUCDE"); ?>          ; Restore number
 FA43 23                 INC     HL              ; Start of next number
 FA44 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 FA47 EB                 EX      DE,HL           ; Save point in table
@@ -106,6 +106,6 @@ FAAB E9                 JP      (HL)            ; Return to caller
 
 <span id="FAAC">FAAC</span> CD44F8     <?php lbl8K("SQR"); ?>:    CALL    STAKFP          ; Put value on stack
 FAAF 2191FA             LD      HL,<?php bas8K("HALF"); ?>         ; Set power to 1/2
-FAB2 CD51F8             CALL    PHLTFP          ; Move 1/2 to <?php bas8K("FPREG","","","\n"); ?>
+FAB2 CD51F8             CALL    <?php bas8K("PHLTFP"); ?>          ; Move 1/2 to <?php bas8K("FPREG","","","\n"); ?>
 </pre>
 <?php DoublePageEnd(); ?>

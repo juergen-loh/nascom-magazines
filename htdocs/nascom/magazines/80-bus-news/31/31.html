@@ -66,7 +66,7 @@ F4F8 C9                 RET
 F4FA FEAE               CP      ZTIMES          ; "*" token? ("<?php bas8K("CLOAD"); ?>*")
 F4FC CAB9E8             JP      Z,<?php bas8K("ARRLD1"); ?>        ; Yes - Array load
 F4FF CDD1FF             CALL    SMOTOR          ; Start motor and get "?"
-F502 D69E               SUB     ZPRINT          ; "?" ("PRINT" token) Verify?
+F502 D69E               SUB     ZPRINT          ; "?" ("<?php bas8K("PRINT"); ?>" token) Verify?
 F504 CA09F5             JP      Z,<?php bas8K("FLGVER"); ?>        ; Yes - Flag "verify"
 F507 AF                 XOR     A               ; Flag "load"
 F508 01                 DEFB    (LD BC,nn)      ; Skip "CPL" and "INC HL"

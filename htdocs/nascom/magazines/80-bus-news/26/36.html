@@ -8,8 +8,8 @@ EE36 4F                 LD      C,A             ; BC = Offset in function table
 EE37 C5                 PUSH    BC              ; Save adjusted token value
 EE38 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EE3B 79                 LD      A,C             ; Get adjusted token value
-EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "POINT" token?
-EE3E CA79FF             JP      Z,POINTB        ; Yes - Do "POINT" (not POINTB)
+EE3C FE22               CP      2*(ZPOINT-ZSGN) ; Adjusted "<?php bas8K("POINT"); ?>" token?
+EE3E CA79FF             JP      Z,<?php bas8K("POINTB"); ?>        ; Yes - Do "<?php bas8K("POINT"); ?>" (not <?php bas8K("POINTB"); ?>)
 EE41 FE2D               CP      2*(ZLEFT-ZSGN)-1; Adj' <?php bas8K("LEFT"); ?>$,RIGHT$ or <?php bas8K("MID"); ?>$ ?
 EE43 DA5FEE             JP      C,<?php bas8K("FNVAL"); ?>         ; No - Do function
 EE46 CD56ED             CALL    <?php bas8K("OPNPAR"); ?>          ; Evaluate expression  (X,...
@@ -72,7 +72,7 @@ EE95 F1                 POP     AF              ; Restore "AND" / "OR" flag
 EE96 C1                 POP     BC              ; Get value
 EE97 79                 LD      A,C             ; Get LSB
 EE98 21F1F0             LD      HL,<?php bas8K("ACPASS"); ?>       ; Address of save AC as current
-EE9B C2A3EE             JP      NZ,POR1         ; Jump if OR
+EE9B C2A3EE             JP      NZ,<?php bas8K("POR1"); ?>         ; Jump if OR
 EE9E A3                 AND     E               ; "AND" LSBs
 EE9F 4F                 LD      C,A             ; Save LSB
 EEA0 78                 LD      A,B             ; Get MBS

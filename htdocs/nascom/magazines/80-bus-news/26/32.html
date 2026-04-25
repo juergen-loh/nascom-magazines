@@ -21,7 +21,7 @@ EB95 C38DEB             JP      <?php bas8K("NULLP"); ?>           ; Keep counti
 EB9B 47                 LD      B,A             ; Save in B
 EB9C 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get current position
 EB9F B8                 CP      B               ; Within the limit?
-EBA0 D481EB             CALL    NC,PRNTCR       ; No - output CRLF
+EBA0 D481EB             CALL    NC,<?php bas8K("PRNTCR"); ?>       ; No - output CRLF
 EBA3 D2D2EB             JP      NC,<?php bas8K("NEXITM"); ?>       ; Get next item
 <span id="EBA6">EBA6</span> D60E       <?php lbl8K("ZONELP"); ?>: SUB     14              ; Next zone of 14 characters
 EBA8 D2A6EB             JP      NC,ZONELP       ; Repeat if more zones
@@ -40,7 +40,7 @@ EBBC CAC2EB             JP      Z,<?php bas8K("DOSPC"); ?>         ; Yes - Do "E
 EBBF 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get current position
 <span id="EBC2">EBC2</span> 2F         <?php lbl8K("DOSPC"); ?>:  CPL                     ; Number of spaces to print to
 EBC3 83                 ADD     A,E             ; Total number to print
-EBC4 D2D2EB             JP      NC,<?php bas8K("NEXITM"); ?>       ; TAB &lt; Current POS(X)
+EBC4 D2D2EB             JP      NC,<?php bas8K("NEXITM"); ?>       ; TAB &lt; Current <?php bas8K("POS"); ?>(X)
 <span id="EBC7">EBC7</span> 3C         <?php lbl8K("ASPCS"); ?>:  INC     A               ; Output A spaces
 EBC8 47                 LD      B,A             ; Save number to print
 EBC9 3E20               LD      A," "           ; Space
@@ -49,7 +49,7 @@ EBCE 05                 DEC     B               ; Count them
 EBCF C2CBEB             JP      NZ,SPCLP        ; Repeat if more
 <span id="EBD2">EBD2</span> E1         <?php lbl8K("NEXITM"); ?>: POP     HL              ; Restore code string address
 EBD3 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-EBD6 C326EB             JP      PRNTLP          ; More to print
+EBD6 C326EB             JP      <?php bas8K("PRNTLP"); ?>          ; More to print
 </pre>
 <?php DoublePageChange(); ?>
 <pre>

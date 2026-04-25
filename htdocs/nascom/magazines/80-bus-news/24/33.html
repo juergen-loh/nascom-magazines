@@ -18,8 +18,8 @@ E522 3AAE10             LD      A,(<?php bas8K("DATFLG"); ?>)      ; Get data ty
 E525 B7                 OR      A               ; Literal?
 E526 7E                 LD      A,(HL)          ; Get byte to copy
 E527 C291E5             JP      NZ,<?php bas8K("MOVDIR"); ?>       ; Literal - Copy direct
-E52A FE3F               CP      "?"             ; Is it "?" short for PRINT
-E52C 3E9E               LD      A,ZPRINT        ; "PRINT" token
+E52A FE3F               CP      "?"             ; Is it "?" short for <?php bas8K("PRINT","","","\n"); ?>
+E52C 3E9E               LD      A,ZPRINT        ; "<?php bas8K("PRINT"); ?>" token
 E52E CA91E5             JP      Z,<?php bas8K("MOVDIR"); ?>        ; Yes - replace it
 E531 7E                 LD      A,(HL)          ; Get byte again
 E532 FE30               CP      "0"             ; Is it less than "0"

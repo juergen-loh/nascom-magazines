@@ -5,12 +5,12 @@
 <span id="E69B">E69B</span> F5         <?php lbl8K("OUTC"); ?>:   PUSH    AF              ; Save character
 E69C 3A4510             LD      A,(<?php bas8K("CTLOFG"); ?>)      ; Get control "O" flag
 E69F B7                 OR      A               ; Is it set?
-E6A0 C245F2             JP      NZ,POPAF        ; Yes - don't output
+E6A0 C245F2             JP      NZ,<?php bas8K("POPAF"); ?>        ; Yes - don't output
 E6A3 F1                 POP     AF              ; Restore character
 E6A4 C5                 PUSH    BC              ; Save buffer length
 E6A5 F5                 PUSH    AF              ; Save character
 E6A6 FE20               CP      " "             ; Is it a control code?
-E6A8 DABFE6             JP      C,<?php bas8K("DINPOS"); ?>        ; Yes - Don't INC POS(X)
+E6A8 DABFE6             JP      C,<?php bas8K("DINPOS"); ?>        ; Yes - Don't INC <?php bas8K("POS"); ?>(X)
 E6AB 3A4210             LD      A,(<?php bas8K("LWIDTH"); ?>)      ; Get line width
 E6AE 47                 LD      B,A             ; To B
 E6AF 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
@@ -18,7 +18,7 @@ E6B2 04                 INC     B               ; Width 255?
 E6B3 CABBE6             JP      Z,<?php bas8K("INCLEN"); ?>        ; Yes - No width limit
 E6B6 05                 DEC     B               ; Restore width
 E6B7 B8                 CP      B               ; At end of line?
-E6B8 CC81EB             CALL    Z,PRNTCR        ; Yes - output CRLF
+E6B8 CC81EB             CALL    Z,<?php bas8K("PRNTCR"); ?>        ; Yes - output CRLF
 <span id="E6BB">E6BB</span> 3C         <?php lbl8K("INCLEN"); ?>: INC     A               ; Move on one character
 E6BC 32AB10             LD      (<?php bas8K("CURPOS"); ?>),A      ; Save new position
 <span id="E6BF">E6BF</span> F1         <?php lbl8K("DINPOS"); ?>: POP     AF              ; Restore character
@@ -60,18 +60,18 @@ E6EC 46                 LD      B,(HL)          ; Get MSB of next line
 E6ED 23                 INC     HL
 E6EE 78                 LD      A,B             ; BC = 0 (End of program)?
 E6EF B1                 OR      C
-E6F0 CAF8E3             JP      Z,PRNTOK        ; Yes - Go to command mode
+E6F0 CAF8E3             JP      Z,<?php bas8K("PRNTOK"); ?>        ; Yes - Go to command mode
 E6F3 CD46E7             CALL    <?php bas8K("COUNT"); ?>           ; Count lines
 E6F6 CD61E8             CALL    TSTBRK          ; Test for break key
 E6F9 C5                 PUSH    BC              ; Save address of next line
-E6FA CD81EB             CALL    PRNTCR          ; Output CRLF
+E6FA CD81EB             CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 E6FD 5E                 LD      E,(HL)          ; Get LSB of line number
 E6FE 23                 INC     HL
 E6FF 56                 LD      D,(HL)          ; Get MSB of line number
 E700 23                 INC     HL
 E701 E5                 PUSH    HL              ; Save address of line start
 E702 EB                 EX      DE,HL           ; Line number to HL
-E703 CDADF9             CALL    PRNTHL          ; Output line number in decimal
+E703 CDADF9             CALL    <?php bas8K("PRNTHL"); ?>          ; Output line number in decimal
 E706 3E20               LD      A," "           ; Space after line number
 E708 E1                 POP     HL              ; Restore start of line address
 <span id="E709">E709</span> CD9BE6     <?php lbl8K("LSTLP2"); ?>: CALL    <?php bas8K("OUTC"); ?>            ; Output character in A

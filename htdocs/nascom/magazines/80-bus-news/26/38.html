@@ -10,7 +10,7 @@ EF7B 59                 LD      E,C
 EF7C 2ADE10             LD      HL,(<?php bas8K("FNRGNM"); ?>)     ; FN argument name
 EF7F CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is it the FN argument?
 EF82 11E010             LD      DE,<?php bas8K("FNARG"); ?>        ; Point to argument value
-EF85 CA54F7             JP      Z,POPHRT        ; Yes - Return FN argument value
+EF85 CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Yes - Return FN argument value
 EF88 2AD810             LD      HL,(VAREND)     ; End of variables
 EF8B EB                 EX      DE,HL           ; Address of end of search
 EF8C 2AD610             LD      HL,(PROGND)     ; Start of variables address

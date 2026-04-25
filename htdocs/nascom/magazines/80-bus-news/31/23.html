@@ -43,7 +43,7 @@ F038 C2B6E3             JP      NZ,<?php bas8K("DDERR"); ?>        ; Create - ?<
 F03B F1                 POP     AF              ; Locate - Get number of dim'ns
 F03C 44                 LD      B,H             ; BC Points to array dim'ns
 F03D 4D                 LD      C,L
-F03E CA54F7             JP      Z,POPHRT        ; Jump if array load/save
+F03E CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Jump if array load/save
 F041 96                 SUB     (HL)            ; Same number of dimensions?
 F042 CAA8F0             JP      Z,<?php bas8K("FINDEL"); ?>        ; Yes - Find element
 <span id="F045">F045</span> 1E10       <?php lbl8K("BSERR"); ?>:  LD      E,<?php bas8K("BS"); ?>            ; ?BS Error

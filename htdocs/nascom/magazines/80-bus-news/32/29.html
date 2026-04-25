@@ -7,7 +7,7 @@ FAB6 D1                 POP     DE
 FAB7 CD13F8             CALL    TSTSGN          ; Test sign of power
 FABA 78                 LD      A,B             ; Get exponent of base
 FABB CAFAFA             JP      Z,<?php bas8K("EXP"); ?>           ; Make result 1 if zero
-FABE F2C5FA             JP      P,POWER1        ; Positive base - Ok
+FABE F2C5FA             JP      P,<?php bas8K("POWER1"); ?>        ; Positive base - Ok
 FAC1 B7                 OR      A               ; Zero to negative power?
 FAC2 CAB0E3             JP      Z,<?php bas8K("DZERR"); ?>         ; Yes - ?/0 Error
 <span id="FAC5">FAC5</span> B7         <?php lbl8K("POWER1"); ?>: OR      A               ; Base zero?
@@ -17,7 +17,7 @@ FACA C5                 PUSH    BC
 FACB 79                 LD      A,C             ; Get MSB of base
 FACC F67F               OR      01111111B       ; Get sign status
 FACE CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move power to BCDE
-FAD1 F2E2FA             JP      P,POWER2        ; Positive base - Ok
+FAD1 F2E2FA             JP      P,<?php bas8K("POWER2"); ?>        ; Positive base - Ok
 FAD4 D5                 PUSH    DE              ; Save power
 FAD5 C5                 PUSH    BC
 FAD6 CDE6F8             CALL    <?php bas8K("INT"); ?>             ; Get integer of power

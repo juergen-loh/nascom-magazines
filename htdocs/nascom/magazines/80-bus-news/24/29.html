@@ -36,7 +36,7 @@ E319 52C74F80           DEFB    052H,0C7H,04FH,080H     ; Last random number
 E31D DB00               IN      A,(0)           ; <?php bas8K("INP"); ?> (x) skeleton
 E31F C9                 RET
 
-E320 01                 DEFB    1               ; POS (x) number (1)
+E320 01                 DEFB    1               ; <?php bas8K("POS"); ?> (x) number (1)
 E321 2F                 DEFB    47              ; Terminal width (47)
 E322 1C                 DEFB    28              ; Width for commas (3 columns)
 E323 00                 DEFB    0               ; No nulls after input bytes
@@ -50,7 +50,7 @@ E32B 00                 DEFB    0               ; Break not by <?php bas8K("NMI"
 E32C 00                 DEFB    0               ; Break flag
 
 E32D C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Input reflection (set to TTY)
-E330 C379FF             JP      POINTB          ; POINT reflection unused
+E330 C379FF             JP      <?php bas8K("POINTB"); ?>          ; <?php bas8K("POINT"); ?> reflection unused
 E333 C340FF             JP      SETB            ; SET reflection
 E336 C355FF             JP      RESETB          ; RESET reflection
 

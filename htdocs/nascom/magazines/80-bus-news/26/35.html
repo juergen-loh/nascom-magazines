@@ -44,7 +44,7 @@ EE26 EB                 EX      DE,HL           ; Variable address to HL
 EE27 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save address of variable
 EE2A 3AAD10             LD      A,(TYPE)        ; Get type
 EE2D B7                 OR      A               ; Numeric?
-EE2E CC51F8             CALL    Z,PHLTFP        ; Yes - Move contents to <?php bas8K("FPREG","","","\n"); ?>
+EE2E CC51F8             CALL    Z,<?php bas8K("PHLTFP"); ?>        ; Yes - Move contents to <?php bas8K("FPREG","","","\n"); ?>
 EE31 E1                 POP     HL              ; Restore code string address
 EE32 C9                 RET
 </pre>
@@ -70,7 +70,7 @@ EDA8 CA06F3             JP      Z,<?php bas8K("CONCAT"); ?>        ; String conc
 EDAB 07                 RLCA                    ; Times 2
 EDAC 83                 ADD     A,E             ; Times 3
 EDAD 5F                 LD      E,A             ; To DE (D is 0)
-EDAE 21A4E2             LD      HL,PRITAB       ; Precedence table
+EDAE 21A4E2             LD      HL,<?php bas8K("PRITAB"); ?>       ; Precedence table
 EDB1 19                 ADD     HL,DE           ; To the operator concerned
 EDB2 78                 LD      A,B             ; Last operator precedence
 EDB3 56                 LD      D,(HL)          ; Get evaluation precedence

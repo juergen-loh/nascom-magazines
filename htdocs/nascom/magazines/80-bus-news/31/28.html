@@ -97,7 +97,7 @@ F35F 1B                 DEC     DE              ; Point to length
 F360 4E                 LD      C,(HL)          ; Get string length
 F361 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
 F364 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Last one in string area?
-F367 C26FF3             JP      NZ,POPHL        ; No - Return
+F367 C26FF3             JP      NZ,<?php bas8K("POPHL"); ?>        ; No - Return
 F36A 47                 LD      B,A             ; Clear B (A=0)
 F36B 09                 ADD     HL,BC           ; Remove string from str' area
 F36C 22C310             LD      (STRBOT),HL     ; Save new bottom of str' area

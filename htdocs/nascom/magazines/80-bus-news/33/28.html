@@ -81,7 +81,7 @@ FF76 C34CFF             JP      RESCSA          ; Restore code string address
 <span id="FF79">FF79</span> CD15FF     <?php lbl8K("POINTB"); ?>: CALL    <?php bas8K("GETXYA"); ?>          ; Get co-ords and VDU address
 FF7C 46                 LD      B,(HL)          ; Get character from screen
 FF7D CDEDFF             CALL    TSTBIT          ; Test if bit is set
-FF80 C291FF             JP      NZ,POINT0       ; Different - Return zero
+FF80 C291FF             JP      NZ,<?php bas8K("POINT0"); ?>       ; Different - Return zero
 FF83 3E00               LD      A,0
 FF85 0601               LD      B,1             ; Integer AB = 1
 <span id="FF87">FF87</span> E1         <?php lbl8K("POINTX"); ?>: POP     HL              ; Drop return
@@ -91,7 +91,7 @@ FF8D D5                 PUSH    DE              ; Save for return
 FF8E C3F2F0             JP      <?php bas8K("ABPASS"); ?>          ; Return integer AB
 
 <span id="FF91">FF91</span> 0600       <?php lbl8K("POINT0"); ?>: LD      B,0             ; Set zero
-FF93 C387FF             JP      POINTX          ; Return value
+FF93 C387FF             JP      <?php bas8K("POINTX"); ?>          ; Return value
 
 <span id="FF96">FF96</span> C1         <?php lbl8K("XYPOS"); ?>:  POP     BC              ; Get return address
 FF97 E1                 POP     HL              ; Get column

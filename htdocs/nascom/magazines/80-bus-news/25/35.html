@@ -47,7 +47,7 @@ E891 CD74EB             CALL    STTLIN          ; Start a new line
 E894 F1                 POP     AF              ; Restore STOP / END status
 E895 2150E3             LD      HL,<?php bas8K("BRKMSG"); ?>       ; "Break" message
 E898 C2E1E3             JP      NZ,<?php bas8K("ERRIN"); ?>        ; "in line" wanted?
-E89B C3F8E3             JP      PRNTOK          ; Go to command mode
+E89B C3F8E3             JP      <?php bas8K("PRNTOK"); ?>          ; Go to command mode
 
 <span id="E89E">E89E</span> 2AD410     <?php lbl8K("CONT"); ?>:   LD      HL,(<?php bas8K("CONTAD"); ?>)     ; Get CONTinue address
 E8A1 7C                 LD      A,H             ; Is it zero?

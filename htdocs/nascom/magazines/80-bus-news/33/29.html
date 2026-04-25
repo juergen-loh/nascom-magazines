@@ -38,10 +38,10 @@ FFD9 FEFF               CP      -1
 FFDB C206E9             JP      NZ,SNDHDR       ; <?php bas8K("CSAVE"); ?> - Send header
 FFDE C310E9             JP      <?php bas8K("GETHDR"); ?>          ; <?php bas8K("CLOAD"); ?> - Get header
 
-<span id="FFE1">FFE1</span> CD81EB     <?php lbl8K("CRLIN1"); ?>: CALL    PRNTCR          ; Output CRLF
+<span id="FFE1">FFE1</span> CD81EB     <?php lbl8K("CRLIN1"); ?>: CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 FFE4 C3F2E5             JP      <?php bas8K("GETLIN"); ?>          ; Get an input line
 
-<span id="FFE7">FFE7</span> CD81EB     <?php lbl8K("CRLIN"); ?>:  CALL    PRNTCR          ; Output CRLF
+<span id="FFE7">FFE7</span> CD81EB     <?php lbl8K("CRLIN"); ?>:  CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 FFEA C3F2E5             JP      <?php bas8K("GETLIN"); ?>          ; Get an input line
 
 <span id="FFED">FFED</span> F5         <?php lbl8K("TSTBIT"); ?>: PUSH    AF              ; Save bit mask
@@ -52,7 +52,7 @@ FFF1 3E00               LD      A,0             ; Return 0 in A
 FFF3 C9                 RET
 
 <span id="FFF4">FFF4</span> CD9BE6     <?php lbl8K("OUTNCR"); ?>: CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
-FFF7 C381EB             JP      PRNTCR          ; Output CRLF
+FFF7 C381EB             JP      <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 
 <span id="FFFA">FFFA</span> C3DEFD     <?php lbl8K("JJUMP"); ?>:  JP      <?php bas8K("JJUMP1"); ?>          ; "Cool" start
 

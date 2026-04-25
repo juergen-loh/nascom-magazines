@@ -51,7 +51,7 @@ F7DF 78                 LD      A,B             ; Get exponent
 F7E0 F2F4F7             JP      P,<?php bas8K("OVTST2"); ?>        ; Positive - Test for overflow
 F7E3 C680               ADD     A,80H           ; Add excess 128
 F7E5 77                 LD      (HL),A          ; Save new exponent
-F7E6 CA54F7             JP      Z,POPHRT        ; Zero - Result zero
+F7E6 CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Zero - Result zero
 F7E9 CD79F8             CALL    SIGNS           ; Set MSBs and sign of result
 F7EC 77                 LD      (HL),A          ; Save new exponent
 F7ED 2B                 DEC     HL              ; Point to MSB

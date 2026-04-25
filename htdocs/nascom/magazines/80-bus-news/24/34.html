@@ -31,7 +31,7 @@ E5E2 2B                 DEC     HL              ; Back space buffer
 E5E3 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 E5E6 C210E6             JP      NZ,<?php bas8K("MORINP"); ?>       ; Not end - Get more
 <span id="E5E9">E5E9</span> CD9BE6     <?php lbl8K("OTKLN"); ?>:  CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
-<span id="E5EC">E5EC</span> CD81EB     <?php lbl8K("KILIN"); ?>:  CALL    PRNTCR          ; Output CRLF
+<span id="E5EC">E5EC</span> CD81EB     <?php lbl8K("KILIN"); ?>:  CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 E5EF C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Get line again
 
 <span id="E5F2">E5F2</span> CD6DFE     <?php lbl8K("GETLIN"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; Is it NAS-SYS?
@@ -41,7 +41,7 @@ E5FB 7E                 LD      A,(HL)          ; Get input mode
 E5FC FE74               CP      74H             ; Is it "X" mode?
 E5FE CA07E6             JP      Z,<?php bas8K("TTYLIN"); ?>        ; Yes - Teletype line input
 E601 CDE8FE             CALL    <?php bas8K("INLINE"); ?>          ; Get a line from NAS-SYS
-E604 C386EB             JP      <?php bas8K("DONULL"); ?>          ; POS(X)=0 and do nulls
+E604 C386EB             JP      <?php bas8K("DONULL"); ?>          ; <?php bas8K("POS"); ?>(X)=0 and do nulls
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -66,7 +66,7 @@ E626 324410             LD      (<?php bas8K("NULFLG"); ?>),A      ; Reset null 
 E62A FE07               CP      <?php bas8K("CTRLG"); ?>           ; Bell?
 E62C CA6DE6             JP      Z,PUTCTL        ; Yes - Save it
 E62F FE03               CP      <?php bas8K("CTRLC"); ?>           ; Is it control "C"?
-E631 CC81EB             CALL    Z,PRNTCR        ; Yes - Output CRLF
+E631 CC81EB             CALL    Z,<?php bas8K("PRNTCR"); ?>        ; Yes - Output CRLF
 E634 37                 SCF                     ; Flag break
 E635 C8                 RET     Z               ; Return if control "C"
 E636 FE0D               CP      <?php bas8K("CR"); ?>              ; Is it enter?

@@ -29,7 +29,7 @@ F58D C9                 RET
 
 <span id="F5A3">F5A3</span> CD8BE9     <?php lbl8K("PEEK"); ?>:   CALL    <?php bas8K("DEINT"); ?>           ; Get memory address
 F5A6 1A                 LD      A,(DE)          ; Get byte in memory
-F5A7 C301F1             JP      PASSA           ; Return integer A
+F5A7 C301F1             JP      <?php bas8K("PASSA"); ?>           ; Return integer A
 
 <span id="F5AA">F5AA</span> CD41ED     <?php lbl8K("POKE"); ?>:   CALL    <?php bas8K("GETNUM"); ?>          ; Get memory address
 F5AD CD8BE9             CALL    <?php bas8K("DEINT"); ?>           ; Get integer -32768 to 3276
@@ -80,7 +80,7 @@ F5F0 CD92F6             CALL    SCALE           ; Scale BCDE to same exponent
 F5F3 B4                 OR      H               ; Result to be positive?
 F5F4 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to <?php bas8K("FPREG","","","\n"); ?>
 F5F7 F20DF6             JP      P,<?php bas8K("MINCDE"); ?>        ; No - Subtract <?php bas8K("FPREG"); ?> from CDE
-F5FA CD72F6             CALL    PLUCDE          ; Add <?php bas8K("FPREG"); ?> to CDE
+F5FA CD72F6             CALL    <?php bas8K("PLUCDE"); ?>          ; Add <?php bas8K("FPREG"); ?> to CDE
 F5FD D253F6             JP      NC,RONDUP       ; No overflow - Round it up
 F600 23                 INC     HL              ; Point to exponent
 F601 34                 INC     (HL)            ; Increment it

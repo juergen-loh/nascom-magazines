@@ -3,7 +3,7 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    35</span>
 
 <span id="E9CA">E9CA</span> CAC9E4     <?php lbl8K("CLEAR"); ?>:  JP      Z,<?php bas8K("INTVAR"); ?>        ; Just "CLEAR" Keep parameters
-E9CD CD82E9             CALL    POSINT          ; Get integer 0 to 32767 to DE
+E9CD CD82E9             CALL    <?php bas8K("POSINT"); ?>          ; Get integer 0 to 32767 to DE
 E9D0 2B                 DEC     HL              ; Cancel increment
 E9D1 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9D4 E5                 PUSH    HL              ; Save code string address
@@ -13,7 +13,7 @@ E9DB E1                 POP     HL              ; Restore code string address
 E9DC CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Check for comma
 E9DF 2C                 DEFB    ","
 E9E0 D5                 PUSH    DE              ; Save number
-E9E1 CD82E9             CALL    POSINT          ; Get integer 0 to 32767
+E9E1 CD82E9             CALL    <?php bas8K("POSINT"); ?>          ; Get integer 0 to 32767
 E9E4 2B                 DEC     HL              ; Cancel increment
 E9E5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9E8 C2ADE3             JP      NZ,SNERR        ; ?SN Error if more on line
@@ -91,7 +91,7 @@ EA5F B5                 OR      L               ; Return to line
 EA60 C26AEA             JP      NZ,RETLIN       ; No - Return to line
 EA63 3ACC10             LD      A,(<?php bas8K("LSTBIN"); ?>)      ; Any <?php bas8K("INPUT"); ?> in subroutine?
 EA66 B7                 OR      A               ; If so buffer is corrupted
-EA67 C2F7E3             JP      NZ,POPNOK       ; Yes - Go to command mode
+EA67 C2F7E3             JP      NZ,<?php bas8K("POPNOK"); ?>       ; Yes - Go to command mode
 <span id="EA6A">EA6A</span> 21F2E7     <?php lbl8K("RETLIN"); ?>: LD      HL,RUNCNT       ; Execution driver loop
 EA6D E3                 EX      (SP),HL         ; Into stack - Code string out
 EA6E 3E                 DEFB    (LD A,n)        ; Skip "POP HL"

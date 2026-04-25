@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    65</span>
 
-<span id="F382">F382</span> 0101F1     <?php lbl8K("LEN"); ?>:    LD      BC,PASSA        ; To return integer A
+<span id="F382">F382</span> 0101F1     <?php lbl8K("LEN"); ?>:    LD      BC,<?php bas8K("PASSA"); ?>        ; To return integer A
 F385 C5                 PUSH    BC              ; Save address
 <span id="F386">F386</span> CD50F3     <?php lbl8K("GETLEN"); ?>: CALL    <?php bas8K("GETSTR"); ?>          ; Get string and its length
 F389 AF                 XOR     A
@@ -12,7 +12,7 @@ F38E 7E                 LD      A,(HL)          ; Get length of string
 F38F B7                 OR      A               ; Set status flags
 F390 C9                 RET
 
-<span id="F391">F391</span> 0101F1     <?php lbl8K("ASC"); ?>:    LD      BC,PASSA        ; To return integer A
+<span id="F391">F391</span> 0101F1     <?php lbl8K("ASC"); ?>:    LD      BC,<?php bas8K("PASSA"); ?>        ; To return integer A
 F394 C5                 PUSH    BC              ; Save address
 <span id="F395">F395</span> CD86F3     <?php lbl8K("GTFLNM"); ?>: CALL    <?php bas8K("GETLEN"); ?>          ; Get length of string
 F398 CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Null string - Error

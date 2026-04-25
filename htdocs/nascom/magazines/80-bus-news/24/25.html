@@ -27,7 +27,7 @@ E025 05                 DEC     B               ; Count bytes
 E026 C221E0             JP      NZ,<?php bas8K("COPY"); ?>         ; More to move
 E029 F9                 LD      SP,HL           ; Temporary stack
 E02A CDDFE4             CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
-E02D CD81EB             CALL    PRNTCR          ; Output CRLF
+E02D CD81EB             CALL    <?php bas8K("PRNTCR"); ?>          ; Output CRLF
 E030 32AA10             LD      (<?php bas8K("BUFFER"); ?>+72+1),A ; Mark end of buffer
 E033 32F910             LD      (PROGST),A      ; Initialise program area
 <span id="E036">E036</span> 2103E1     <?php lbl8K("MSIZE"); ?>:  LD      HL,<?php bas8K("MEMMSG"); ?>       ; Point to message
@@ -98,12 +98,12 @@ E09D E5                 PUSH    HL              ; Save bytes free
 E09E 21C5E0             LD      HL,SIGNON       ; Sign-on message
 E0A1 CD10F2             CALL    PRS             ; Output string
 E0A4 E1                 POP     HL              ; Get bytes free back
-E0A5 CDADF9             CALL    PRNTHL          ; Output amount of free memory
+E0A5 CDADF9             CALL    <?php bas8K("PRNTHL"); ?>          ; Output amount of free memory
 E0A8 21B7E0             LD      HL,<?php bas8K("BFREE"); ?>        ; " Bytes free" message
 E0AB CD10F2             CALL    PRS             ; Output string
 
 <span id="E0AE">E0AE</span> 316610     <?php lbl8K("WARMST"); ?>: LD      SP,STACK        ; Temporary stack
 <span id="E0B1">E0B1</span> CDDFE4     <?php lbl8K("BRKRET"); ?>: CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
-E0B4 C3F8E3             JP      PRNTOK          ; Go to get command line
+E0B4 C3F8E3             JP      <?php bas8K("PRNTOK"); ?>          ; Go to get command line
 </pre>
 <?php DoublePageEnd(); ?>

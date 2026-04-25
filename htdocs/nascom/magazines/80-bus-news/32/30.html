@@ -12,7 +12,7 @@ FB69 E1                 POP     HL              ; Restore address of table
 <span id="FB6A">FB6A</span> CD44F8     <?php lbl8K("SMSER1"); ?>: CALL    STAKFP          ; Put value on stack
 FB6D 7E                 LD      A,(HL)          ; Get number of coefficients
 FB6E 23                 INC     HL              ; Point to start of table
-FB6F CD51F8             CALL    PHLTFP          ; Move coefficient to <?php bas8K("FPREG","","","\n"); ?>
+FB6F CD51F8             CALL    <?php bas8K("PHLTFP"); ?>          ; Move coefficient to <?php bas8K("FPREG","","","\n"); ?>
 FB72 06                 DEFB    (LD B,n)        ; Skip "POP AF"
 <span id="FB73">FB73</span> F1         <?php lbl8K("SUMLP"); ?>:  POP     AF              ; Restore count
 FB74 C1                 POP     BC              ; Restore number

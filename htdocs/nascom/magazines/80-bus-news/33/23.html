@@ -19,7 +19,7 @@ By Carl Lloyd&mdash;Parker
 FB8E 211910             LD      HL,SEED+2       ; Random number seed
 FB91 FAECFB             JP      M,RESEED        ; Negative - Re-seed
 FB94 213A10             LD      HL,<?php bas8K("LSTRND"); ?>       ; Last random number
-FB97 CD51F8             CALL    PHLTFP          ; Move last RND to <?php bas8K("FPREG","","","\n"); ?>
+FB97 CD51F8             CALL    <?php bas8K("PHLTFP"); ?>          ; Move last RND to <?php bas8K("FPREG","","","\n"); ?>
 FB9A 211910             LD      HL,SEED+2       ; Random number seed
 FB9D C8                 RET     Z               ; Return if RND(0)
 FB9E 86                 ADD     A,(HL)          ; Add (SEED)+2)

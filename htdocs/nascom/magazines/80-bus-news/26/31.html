@@ -17,7 +17,7 @@ By Carl Lloyd&mdash;Parker
 
 <span id="EB1F">EB1F</span> 2B         <?php lbl8K("MRPRNT"); ?>: DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 EB20 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-<span id="EB23">EB23</span> CA81EB     <?php lbl8K("PRINT"); ?>:  JP      Z,PRNTCR        ; CRLF if just PRINT
+<span id="EB23">EB23</span> CA81EB     <?php lbl8K("PRINT"); ?>:  JP      Z,<?php bas8K("PRNTCR"); ?>        ; CRLF if just PRINT
 <span id="EB26">EB26</span> C8         <?php lbl8K("PRNTLP"); ?>: RET     Z               ; End of list - Exit
 EB27 FEA5               CP      ZTAB            ; "TAB(" token?
 EB29 CAAFEB             JP      Z,<?php bas8K("DOTAB"); ?>         ; Yes - Do TAB routine
@@ -43,22 +43,22 @@ EB54 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; &lt; Not ne
 EB57 3A4210             LD      A,(<?php bas8K("LWIDTH"); ?>)      ; Get width of line
 EB5A 47                 LD      B,A             ; To B
 EB5B 04                 INC     B               ; Width 255 (No limit)?
-EB5C CA69EB             JP      Z,PRNTNB        ; Yes - Output number string
+EB5C CA69EB             JP      Z,<?php bas8K("PRNTNB"); ?>        ; Yes - Output number string
 EB5F 04                 INC     B               ; Adjust it
 EB60 3AAB10             LD      A,(<?php bas8K("CURPOS"); ?>)      ; Get cursor position
 EB63 86                 ADD     A,(HL)          ; Add length of string
 EB64 3D                 DEC     A               ; Adjust it
 EB65 B8                 CP      B               ; Will output fit on this line?
-EB66 D481EB             CALL    NC,PRNTCR       ; No - CRLF first
+EB66 D481EB             CALL    NC,<?php bas8K("PRNTCR"); ?>       ; No - CRLF first
 <span id="EB69">EB69</span> CD13F2     <?php lbl8K("PRNTNB"); ?>: CALL    PRS1            ; Output string at (HL)
 EB6C AF                 XOR     A               ; Skip CALL by setting "Z" flag
 <span id="EB6D">EB6D</span> C413F2     <?php lbl8K("PRNTST"); ?>: CALL    NZ,PRS1         ; Output string at (HL)
 EB70 E1                 POP     HL              ; Restore code string address
-EB71 C31FEB             JP      <?php bas8K("MRPRNT"); ?>          ; See if more to PRINT
+EB71 C31FEB             JP      <?php bas8K("MRPRNT"); ?>          ; See if more to <?php bas8K("PRINT","","","\n"); ?>
 
 <span id="EB74">EB74</span> 3AAB10     <?php lbl8K("STTLIN"); ?>: LD      A,(<?php bas8K("CURPOS"); ?>)      ; Make sure on new line
 EB77 B7                 OR      A               ; Already at start?
 EB78 C8                 RET     Z               ; Yes - Do nothing
-EB79 C381EB             JP      PRNTCR          ; Start a new line
+EB79 C381EB             JP      <?php bas8K("PRNTCR"); ?>          ; Start a new line
 </pre>
 <?php DoublePageEnd(); ?>
