@@ -93,7 +93,7 @@ EFFB 3C                 INC     A               ; Count dimensions
 EFFC 57                 LD      D,A             ; Save in D
 EFFD 7E                 LD      A,(HL)          ; Get next byte in code string
 EFFE FE2C               CP      ","             ; Comma (more to come)?
-F000 CAF0EF             JP      Z,SCPTLP        ; Yes - More subscripts
+F000 CAF0EF             JP      Z,<?php bas8K("SCPTLP"); ?>        ; Yes - More subscripts
 F003 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F006 29                 DEFB    ")"
 F007 22D010             LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save code string address

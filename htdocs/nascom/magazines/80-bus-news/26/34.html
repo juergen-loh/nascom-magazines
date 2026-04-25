@@ -38,10 +38,10 @@ ED2E C3EEE7             JP      <?php bas8K("PUTFID"); ?>          ; Put back "<
 ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "<?php bas8K("NEXT"); ?>"
 ED35 7E                 LD      A,(HL)          ; Get next byte in code string
 ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
-ED38 C2F2E7             JP      NZ,RUNCNT       ; No - Do next statement
+ED38 C2F2E7             JP      NZ,<?php bas8K("RUNCNT"); ?>       ; No - Do next statement
 ED3B CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Position to index name
 ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?php bas8K("NEXT"); ?> routine
-                ; &lt; will not RETurn to here&nbsp;, Exit to RUNCNT or Loop &gt;
+                ; &lt; will not RETurn to here&nbsp;, Exit to <?php bas8K("RUNCNT"); ?> or Loop &gt;
 </pre>
 <?php DoublePageChange(); ?>
 <pre>

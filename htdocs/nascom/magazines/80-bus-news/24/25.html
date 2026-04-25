@@ -40,7 +40,7 @@ E046 215D11             LD      HL,STLOOK       ; Point to start of RAM
 <span id="E049">E049</span> 23         <?php lbl8K("MLOOP"); ?>:  INC     HL              ; Next byte
 E04A 7C                 LD      A,H             ; Above address FFFF&nbsp;?
 E04B B5                 OR      L
-E04C CA6DE0             JP      Z,SETTOP        ; Yes - 64K RAM
+E04C CA6DE0             JP      Z,<?php bas8K("SETTOP"); ?>        ; Yes - 64K RAM
 E04F 7E                 LD      A,(HL)          ; Get contents
 E050 47                 LD      B,A             ; Save it
 E051 2F                 CPL                     ; Flip all bits
@@ -48,7 +48,7 @@ E052 77                 LD      (HL),A          ; Put it back
 E053 BE                 CP      (HL)            ; RAM there if same
 E054 70                 LD      (HL),B          ; Restore old contents
 E055 CA49E0             JP      Z,<?php bas8K("MLOOP"); ?>         ; If RAM - test next byte
-E058 C36DE0             JP      SETTOP          ; Top of RAM found
+E058 C36DE0             JP      <?php bas8K("SETTOP"); ?>          ; Top of RAM found
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -95,7 +95,7 @@ E09A 7C                 LD      A,H             ; Get MSB
 E09B 9A                 SBC     A,D             ; Adjust it
 E09C 67                 LD      H,A             ; Re-save
 E09D E5                 PUSH    HL              ; Save bytes free
-E09E 21C5E0             LD      HL,SIGNON       ; Sign-on message
+E09E 21C5E0             LD      HL,<?php bas8K("SIGNON"); ?>       ; Sign-on message
 E0A1 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 E0A4 E1                 POP     HL              ; Get bytes free back
 E0A5 CDADF9             CALL    <?php bas8K("PRNTHL"); ?>          ; Output amount of free memory

@@ -11,7 +11,7 @@ FFB8 C603               ADD     A,3             ; Adjust remainder
 <span id="FFBA">FFBA</span> 47         <?php lbl8K("NOREMD"); ?>: LD      B,A             ; Bit number+1 to B
 FFBB 3E01               LD      A,00000001B     ; Bit to rotate
 <span id="FFBD">FFBD</span> 07         <?php lbl8K("SHFTBT"); ?>: RLCA                    ; Shift bit left
-FFBE 10FD               DJNZ    SHFTBT          ; Count shifts
+FFBE 10FD               DJNZ    <?php bas8K("SHFTBT"); ?>          ; Count shifts
 FFC0 1F                 RRA                     ; Restore correct place
 FFC1 C9                 RET
 

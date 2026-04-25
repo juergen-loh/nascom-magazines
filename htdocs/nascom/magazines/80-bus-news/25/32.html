@@ -52,7 +52,7 @@ E6E0 C0                 RET     NZ              ; Return if anything extra
 E6E1 C1                 POP     BC              ; Rubbish - Not needed
 E6E2 CD99E4             CALL    SRCHLN          ; Search for line number in DE
 E6E5 C5                 PUSH    BC              ; Save address of line
-E6E6 CD33E7             CALL    SETLIN          ; Set up lines counter
+E6E6 CD33E7             CALL    <?php bas8K("SETLIN"); ?>          ; Set up lines counter
 <span id="E6E9">E6E9</span> E1         <?php lbl8K("LISTLP"); ?>: POP     HL              ; Restore address of line
 E6EA 4E                 LD      C,(HL)          ; Get LSB of next line
 E6EB 23                 INC     HL

@@ -11,7 +11,7 @@ F3F3 CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Yes - Error
 F3F6 C5                 PUSH    BC              ; Save starting position
 F3F7 1EFF               LD      E,255           ; All of string
 F3F9 FE29               CP      ")"             ; Any length given?
-F3FB CA05F4             JP      Z,RSTSTR        ; No - Rest of string
+F3FB CA05F4             JP      Z,<?php bas8K("RSTSTR"); ?>        ; No - Rest of string
 F3FE CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "," follows
 F401 2C                 DEFB    ","
 F402 CD84F4             CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
@@ -74,10 +74,10 @@ F444 323F10             LD      (<?php bas8K("INPORT"); ?>),A      ; Set input p
 F447 CD3E10             CALL    <?php bas8K("INPSUB"); ?>          ; Get input from port
 F44A C301F1             JP      <?php bas8K("PASSA"); ?>           ; Return integer A
 
-<span id="F44D">F44D</span> CD71F4     <?php lbl8K("POUT"); ?>:   CALL    SETIO           ; Set up port number
+<span id="F44D">F44D</span> CD71F4     <?php lbl8K("POUT"); ?>:   CALL    <?php bas8K("SETIO"); ?>           ; Set up port number
 <span id="F450">F450</span> C30610     <span id="OUT">      </span>  JP      <?php bas8K("OUTSUB"); ?>          ; Output data and return
 
-<span id="F453">F453</span> CD71F4     <?php lbl8K("WAIT"); ?>:   CALL    SETIO           ; Set up port number
+<span id="F453">F453</span> CD71F4     <?php lbl8K("WAIT"); ?>:   CALL    <?php bas8K("SETIO"); ?>           ; Set up port number
 F456 F5                 PUSH    AF              ; Save AND mask
 F457 1E00               LD      E,0             ; Assume zero if none given
 F459 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs

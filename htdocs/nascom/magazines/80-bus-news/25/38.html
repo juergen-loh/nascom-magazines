@@ -53,7 +53,7 @@ EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"
 <span id="EAC9">EAC9</span> D1         <?php lbl8K("CRESTR"); ?>: POP     DE              ; Restore address of string
 EACA CD71F3             CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
 EACD EB                 EX      DE,HL           ; Address of string entry
-EACE CDAAF1             CALL    SAVSTR          ; Save string in string area
+EACE CDAAF1             CALL    <?php bas8K("SAVSTR"); ?>          ; Save string in string area
 <span id="EAD1">EAD1</span> CD71F3     <?php lbl8K("MVSTPT"); ?>: CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
 EAD4 E1                 POP     HL              ; Get string pointer
 EAD5 CD6EF8             CALL    <?php bas8K("DETHL4"); ?>          ; Move string pointer to var

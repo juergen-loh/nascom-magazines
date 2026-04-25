@@ -64,7 +64,7 @@ F287 C375F2             JP      SMPVAR          ; Loop until simple ones done
 F28C 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; End of string arrays
 F28F EB                 EX      DE,HL
 F290 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All string arrays done?
-F293 CAE1F2             JP      Z,SCNEND        ; Yes - Move string if found
+F293 CAE1F2             JP      Z,<?php bas8K("SCNEND"); ?>        ; Yes - Move string if found
 F296 CD62F8             CALL    <?php bas8K("LOADFP"); ?>          ; Get array name to BCDE
 F299 7B                 LD      A,E             ; Get type of array
 F29A E5                 PUSH    HL              ; Save address of num of dim'ns

@@ -17,9 +17,9 @@ F4A3 225E10             LD      (<?php bas8K("BASTXT"); ?>),HL     ; New program
 F4A6 EB                 EX      DE,HL           ; New RAM end to HL
 F4A7 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Set new RAM end
 F4AA 225A10             LD      (STRSPC),HL     ; Clear string space
-F4AD 01F2E7             LD      BC,RUNCNT       ; Execution driver loop
+F4AD 01F2E7             LD      BC,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
 F4B0 C5                 PUSH    BC              ; Save for return
-F4B1 C3C5E4             JP      RUNFST          ; Clear variables and continue
+F4B1 C3C5E4             JP      <?php bas8K("RUNFST"); ?>          ; Clear variables and continue
 
 <span id="F4B4">F4B4</span> C356FD     <?php lbl8K("RUART"); ?>:  JP      <?php bas8K("GUART"); ?>           ; Get a byte from UART
 
@@ -53,7 +53,7 @@ F4E5 21D610             LD      HL,<?php bas8K("PROGND"); ?>       ; Start of pr
 F4E8 220C0C             LD      (<?php bas8K("ARG1"); ?>),HL       ; Save for monitor save routine
 F4EB 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; End of program information
 F4EE 220E0C             LD      (<a href="../../../24/23/text/#ARG2">ARG2</a>),HL       ; Save for monitor save routine
-F4F1 CD73FE             CALL    SAVE            ; Save program to tape
+F4F1 CD73FE             CALL    <?php bas8K("SAVE"); ?>            ; Save program to tape
 F4F4 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not much there!
 F4F7 E1                 POP     HL              ; Restore code string address
 F4F8 C9                 RET
@@ -90,12 +90,12 @@ F524 CCBAE4             CALL    Z,<?php bas8K("CLRPTR"); ?>        ; Load - Clea
 F527 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get name of program to find
 F52A EB                 EX      DE,HL           ; Name to DE
 <span id="F52B">F52B</span> 0603       <?php lbl8K("CLOAD1"); ?>: LD      B,3             ; 3 Header bytes
-<span id="F52D">F52D</span> CDB4F4     <?php lbl8K("CLOAD2"); ?>: CALL    RUART           ; Get a byte from UART
+<span id="F52D">F52D</span> CDB4F4     <?php lbl8K("CLOAD2"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Get a byte from UART
 F530 D6D3               SUB     11010011B       ; Header byte?
 F532 C22BF5             JP      NZ,<?php bas8K("CLOAD1"); ?>       ; Look for header
 F535 05                 DEC     B               ; Count header bytes
 F536 C22DF5             JP      NZ,<?php bas8K("CLOAD2"); ?>       ; More to find?
-F539 CDB4F4             CALL    RUART           ; Get name of file
+F539 CDB4F4             CALL    <?php bas8K("RUART"); ?>           ; Get name of file
 F53C CD74F5             CALL    <?php bas8K("FILFND"); ?>          ; Display "file X found"
 F53F 1C                 INC     E               ; Any file name given?
 F540 1D                 DEC     E
@@ -117,6 +117,6 @@ F559 C35FF5             JP      <?php bas8K("CLOADE"); ?>          ; "Ok" and se
 <span id="F55F">F55F</span> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 F562 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 F565 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not a lot there!
-F568 C37CE4             JP      SETPTR          ; Set up line pointers
+F568 C37CE4             JP      <?php bas8K("SETPTR"); ?>          ; Set up line pointers
 </pre>
 <?php DoublePageEnd(); ?>

@@ -10,13 +10,13 @@ F8BF B7                 OR      A               ; Test exponent
 F8C0 C8                 RET     Z               ; Zero - Return zero
 F8C1 E5                 PUSH    HL              ; Save pointer to number
 F8C2 CD5FF8             CALL    <?php bas8K("BCDEFP"); ?>          ; Move <?php bas8K("FPREG"); ?> to BCDE
-F8C5 CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
+F8C5 CD79F8             CALL    <?php bas8K("SIGNS"); ?>           ; Set MSBs & sign of result
 F8C8 AE                 XOR     (HL)            ; Combine with sign of <?php bas8K("FPREG","","","\n"); ?>
 F8C9 67                 LD      H,A             ; Save combined signs
 F8CA FCDFF8             CALL    M,<?php bas8K("DCBCDE"); ?>        ; Negative - Decrement BCDE
 F8CD 3E98               LD      A,80H+24        ; 24 bits
 F8CF 90                 SUB     B               ; Bits to shift
-F8D0 CD92F6             CALL    SCALE           ; Shift BCDE
+F8D0 CD92F6             CALL    <?php bas8K("SCALE"); ?>           ; Shift BCDE
 F8D3 7C                 LD      A,H             ; Get combined sign
 F8D4 17                 RLA                     ; Sign to carry
 F8D5 DC65F6             CALL    C,<?php bas8K("FPROND"); ?>        ; Negative - Round number up
@@ -89,7 +89,7 @@ F936 CA52F9             JP      Z,<?php bas8K("DPOINT"); ?>        ; "." - Flag 
 F939 FE45               CP      "E"
 F93B C256F9             JP      NZ,<?php bas8K("CONEXP"); ?>       ; Not "E" - Scale number
 F93E CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-F941 CD70EE             CALL    SGNEXP          ; Get sign of exponent
+F941 CD70EE             CALL    <?php bas8K("SGNEXP"); ?>          ; Get sign of exponent
 <span id="F944">F944</span> CD36E8     <?php lbl8K("EXPLP"); ?>:  CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F947 DA99F9             JP      C,<?php bas8K("EDIGIT"); ?>        ; Digit - Add to exponent
 F94A 14                 INC     D               ; Is sign negative?
@@ -103,7 +103,7 @@ F953 CA2EF9             JP      Z,<?php bas8K("MANLP"); ?>         ; Zero - Get 
 <span id="F956">F956</span> E5         <?php lbl8K("CONEXP"); ?>: PUSH    HL              ; Save code string address
 F957 7B                 LD      A,E             ; Get exponent
 F958 90                 SUB     B               ; Subtract digits after point
-<span id="F959">F959</span> F46FF9     <?php lbl8K("SCALMI"); ?>: CALL    P,SCALPL        ; Positive - Multiply number
+<span id="F959">F959</span> F46FF9     <?php lbl8K("SCALMI"); ?>: CALL    P,<?php bas8K("SCALPL"); ?>        ; Positive - Multiply number
 F95C F265F9             JP      P,<?php bas8K("ENDCON"); ?>        ; Positive - All done
 F95F F5                 PUSH    AF              ; Save number of times to /10
 F960 CD5BF7             CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10

@@ -3,7 +3,7 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    33</span>
 
 <span id="E910">E910</span> 0E04       <?php lbl8K("GETHDR"); ?>: LD      C,4             ; 4 Bytes to check
-<span id="E912">E912</span> CDB4F4     <?php lbl8K("HDRLP"); ?>:  CALL    RUART           ; Read byte from UART
+<span id="E912">E912</span> CDB4F4     <?php lbl8K("HDRLP"); ?>:  CALL    <?php bas8K("RUART"); ?>           ; Read byte from UART
 E915 B8                 CP      B               ; Same as header?
 E916 C210E9             JP      NZ,<?php bas8K("GETHDR"); ?>       ; No - Wait for another
 E919 0D                 DEC     C               ; Count bytes
@@ -15,7 +15,7 @@ E926 F1                 POP     AF              ; <?php bas8K("CLOAD"); ?>* or <
 E927 F5                 PUSH    AF              ; Re-save flags
 E928 7E                 LD      A,(HL)          ; Get byte
 E929 F4BAF4             CALL    P,WUART         ; <?php bas8K("CSAVE"); ?>* - Write byte
-E92C FCB4F4             CALL    M,RUART         ; <?php bas8K("CLOAD"); ?>* - Read byte
+E92C FCB4F4             CALL    M,<?php bas8K("RUART"); ?>         ; <?php bas8K("CLOAD"); ?>* - Read byte
 E92F 77                 LD      (HL),A          ; Save byte in case of <?php bas8K("CLOAD"); ?>*
 E930 CD40E9             CALL    <?php bas8K("ACCSUM"); ?>          ; Accumulate check sum
 E933 23                 INC     HL              ; Next byte
@@ -44,9 +44,9 @@ E957 CDBAF4             CALL    WUART           ; Write to UART
 E95A 3A4B10             LD      A,(<?php bas8K("CHKSUM"); ?>+1)    ; Get MSB of check sum
 E95D C3BAF4             JP      WUART           ; Write to UART and return
 
-<span id="E960">E960</span> CDB4F4     <?php lbl8K("CHSUMS"); ?>: CALL    RUART           ; Read LSB of check sum
+<span id="E960">E960</span> CDB4F4     <?php lbl8K("CHSUMS"); ?>: CALL    <?php bas8K("RUART"); ?>           ; Read LSB of check sum
 E963 F5                 PUSH    AF              ; Save it
-E964 CDB4F4             CALL    RUART           ; Read MSB of check sum
+E964 CDB4F4             CALL    <?php bas8K("RUART"); ?>           ; Read MSB of check sum
 E967 C1                 POP     BC              ; LSB to B
 E968 58                 LD      E,B             ; LSB to E
 E969 57                 LD      D,A             ; MSB to D

@@ -34,7 +34,7 @@ F643 78                 LD      A,B             ; Number of bits shifted
 F644 5C                 LD      E,H             ; Save HL in EB
 F645 45                 LD      B,L
 F646 B7                 OR      A               ; Any shifting done?
-F647 CA53F6             JP      Z,RONDUP        ; No - Round it up
+F647 CA53F6             JP      Z,<?php bas8K("RONDUP"); ?>        ; No - Round it up
 F64A 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F64D 86                 ADD     A,(HL)          ; Add shifted bits
 F64E 77                 LD      (HL),A          ; Re-save exponent
@@ -80,7 +80,7 @@ F67B 89                 ADC     A,C             ; Add MSB of BCDE
 F67C 4F                 LD      C,A             ; Save MSB of BCDE
 F67D C9                 RET
 
-<span id="F67E">F67E</span> 21E810     <?php lbl8K("COMPL"); ?>:  LD      HL,SGNRES       ; Sign of result
+<span id="F67E">F67E</span> 21E810     <?php lbl8K("COMPL"); ?>:  LD      HL,<?php bas8K("SGNRES"); ?>       ; Sign of result
 F681 7E                 LD      A,(HL)          ; Get sign of result
 F682 2F                 CPL                     ; Negate it
 F683 77                 LD      (HL),A          ; Put it back
@@ -101,11 +101,11 @@ F691 C9                 RET
 
 <span id="F692">F692</span> 0600       <?php lbl8K("SCALE"); ?>:  LD      B,0             ; Clear underflow
 <span id="F694">F694</span> D608       <?php lbl8K("SCALLP"); ?>: SUB     8               ; 8 bits (a whole byte)?
-F696 DAA1F6             JP      C,SHRITE        ; No - Shift right A bits
+F696 DAA1F6             JP      C,<?php bas8K("SHRITE"); ?>        ; No - Shift right A bits
 F699 43                 LD      B,E             ; &lt;- Shift
 F69A 5A                 LD      E,D             ; &lt;- right
 F69B 51                 LD      D,C             ; &lt;- eight
 F69C 0E00               LD      C,0             ; &lt;- bits
-F69E C394F6             JP      SCALLP          ; More bits to shift
+F69E C394F6             JP      <?php bas8K("SCALLP"); ?>          ; More bits to shift
 </pre>
 <?php DoublePageEnd(); ?>

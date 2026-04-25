@@ -19,7 +19,7 @@ F6AF 5F                 LD      E,A             ; Re-save it
 F6B0 78                 LD      A,B             ; Get underflow
 F6B1 1F                 RRA                     ; Shift right with last bit
 F6B2 47                 LD      B,A             ; Re-save underflow
-F6B3 C3A4F6             JP      SHRLP           ; More bits to do
+F6B3 C3A4F6             JP      <?php bas8K("SHRLP"); ?>           ; More bits to do
 
 <span id="F6B6">F6B6</span> 00000081   <?php lbl8K("UNITY"); ?>:  DEFB    000H,000H,000H,081H     ; 1.00000
 
@@ -53,7 +53,7 @@ F6F2 018080             LD      BC,8080H        ; BCDE = -0.5
 F6F5 110000             LD      DE,0000H
 F6F8 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Subtract 0.5 from <?php bas8K("FPREG","","","\n"); ?>
 F6FB F1                 POP     AF              ; Restore scale factor
-F6FC CD8EF9             CALL    RSCALE          ; Re-scale number
+F6FC CD8EF9             CALL    <?php bas8K("RSCALE"); ?>          ; Re-scale number
 <span id="F6FF">F6FF</span> 013180     <?php lbl8K("MULLN2"); ?>: LD      BC,8031H        ; BCDE = Ln(2)
 F702 111872             LD      DE,7218H
 F705 21                 DEFB    (LD HL,nn)      ; Skip "POP BC" and "POP DE"

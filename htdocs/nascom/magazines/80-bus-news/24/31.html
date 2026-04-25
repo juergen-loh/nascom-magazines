@@ -45,7 +45,7 @@ E447 02                 LD      (BC),A
 E448 03                 INC     BC              ; Next destination
 E449 13                 INC     DE              ; Next source
 E44A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All done?
-E44D C246E4             JP      NZ,SFTPRG       ; More to do
+E44D C246E4             JP      NZ,<?php bas8K("SFTPRG"); ?>       ; More to do
 E450 60                 LD      H,B             ; HL - New end of program
 E451 69                 LD      L,C
 E452 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Update end of program
@@ -56,7 +56,7 @@ E452 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Update end 
 
 <span id="E455">E455</span> D1         <?php lbl8K("INEWLN"); ?>: POP     DE              ; Get address of line,
 E456 F1                 POP     AF              ; Get status
-E457 CA7CE4             JP      Z,SETPTR        ; No text - Set up pointers
+E457 CA7CE4             JP      Z,<?php bas8K("SETPTR"); ?>        ; No text - Set up pointers
 E45A 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
 E45D E3                 EX      (SP),HL         ; Get length of input line
 E45E C1                 POP     BC              ; End of program to BC
@@ -81,7 +81,7 @@ E476 23                 INC     HL              ; Next source
 E477 13                 INC     DE              ; Next destination
 E478 B7                 OR      A               ; Done?
 E479 C274E4             JP      NZ,<?php bas8K("MOVBUF"); ?>       ; No - Repeat
-<span id="E47C">E47C</span> CDC5E4     <?php lbl8K("SETPTR"); ?>: CALL    RUNFST          ; Set line pointers
+<span id="E47C">E47C</span> CDC5E4     <?php lbl8K("SETPTR"); ?>: CALL    <?php bas8K("RUNFST"); ?>          ; Set line pointers
 E47F 23                 INC     HL              ; To LSB of pointer
 E480 EB                 EX      DE,HL           ; Address to DE
 <span id="E481">E481</span> 62         <?php lbl8K("PTRLP"); ?>:  LD      H,D             ; Address to HL

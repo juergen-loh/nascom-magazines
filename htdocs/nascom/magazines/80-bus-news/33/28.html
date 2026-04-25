@@ -32,7 +32,7 @@ FF2F FDE1               POP     IY              ; In IY
 FF31 CD96FF             CALL    XYPOS           ; Address and bit mask
 FF34 F5                 PUSH    AF              ; Save mask
 FF35 CDC2FF             CALL    <?php bas8K("ADJCOL"); ?>          ; Adjust column
-FF38 CD11FE             CALL    SCRADR          ; Get VDU address
+FF38 CD11FE             CALL    <?php bas8K("SCRADR"); ?>          ; Get VDU address
 FF3B F1                 POP     AF              ; Restore bit mask
 FF3C 06C0               LD      B,11000000B     ; Block graphics base
 FF3E B0                 OR      B               ; Set bits 7 & 6
@@ -42,7 +42,7 @@ FF3F C9                 RET
 FF43 F5                 PUSH    AF              ; Save bit mask
 FF44 7E                 LD      A,(HL)          ; Get character from screen
 FF45 FEC0               CP      11000000B       ; Is it a block graphic?
-FF47 D250FF             JP      NC,SETOR        ; Yes - OR new bit
+FF47 D250FF             JP      NC,<?php bas8K("SETOR"); ?>        ; Yes - OR new bit
 FF4A F1                 POP     AF              ; Restore bit mask
 <span id="FF4B">FF4B</span> 77         <?php lbl8K("PUTBIT"); ?>: LD      (HL),A          ; Put character on screen
 <span id="FF4C">FF4C</span> FDE5       <?php lbl8K("RESCSA"); ?>: PUSH    IY              ; Restore code string address

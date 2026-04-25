@@ -8,7 +8,7 @@ F7A3 79                 LD      A,C             ; Get MSB of quotient
 F7A4 3C                 INC     A
 F7A5 3D                 DEC     A
 F7A6 1F                 RRA                     ; Bit 0 to bit 7
-F7A7 FA54F6             JP      M,RONDB         ; Done - Normalise result
+F7A7 FA54F6             JP      M,<?php bas8K("RONDB"); ?>         ; Done - Normalise result
 F7AA 17                 RLA                     ; Restore carry
 F7AB 7B                 LD      A,E             ; Get LSB of quotient
 F7AC 17                 RLA                     ; Double it
@@ -52,7 +52,7 @@ F7E0 F2F4F7             JP      P,<?php bas8K("OVTST2"); ?>        ; Positive - 
 F7E3 C680               ADD     A,80H           ; Add excess 128
 F7E5 77                 LD      (HL),A          ; Save new exponent
 F7E6 CA54F7             JP      Z,<?php bas8K("POPHRT"); ?>        ; Zero - Result zero
-F7E9 CD79F8             CALL    SIGNS           ; Set MSBs and sign of result
+F7E9 CD79F8             CALL    <?php bas8K("SIGNS"); ?>           ; Set MSBs and sign of result
 F7EC 77                 LD      (HL),A          ; Save new exponent
 F7ED 2B                 DEC     HL              ; Point to MSB
 F7EE C9                 RET

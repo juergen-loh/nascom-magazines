@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    84</span>
 
-<span id="F965">F965</span> C259F9     <?php lbl8K("ENDCON"); ?>: JP      NZ,SCALMI       ; More to do
+<span id="F965">F965</span> C259F9     <?php lbl8K("ENDCON"); ?>: JP      NZ,<?php bas8K("SCALMI"); ?>       ; More to do
 F968 D1                 POP     DE              ; Restore code string address
 F969 F1                 POP     AF              ; Restore sign of number
 F96A CC3CF8             CALL    Z,<?php bas8K("INVSGN"); ?>        ; Negative - Negate number
@@ -27,7 +27,7 @@ F97E D5                 PUSH    DE              ; Save digit
 F97F CDFCF7             CALL    <?php bas8K("MLSP10"); ?>          ; Multiply number by 10
 F982 F1                 POP     AF              ; Restore digit
 F983 D630               SUB     "0"             ; Make it absolute
-F985 CD8EF9             CALL    RSCALE          ; Re-scale number
+F985 CD8EF9             CALL    <?php bas8K("RSCALE"); ?>          ; Re-scale number
 F988 E1                 POP     HL              ; Restore code string address
 F989 C1                 POP     BC              ; Restore point flags
 F98A D1                 POP     DE              ; Restore sign of exponent
@@ -92,7 +92,7 @@ F9ED F1                 POP     AF              ; Get count
 F9EE 3C                 INC     A               ; Count divides
 F9EF F5                 PUSH    AF              ; Re-save count
 F9F0 CD82FA             CALL    <?php bas8K("RNGTST"); ?>          ; Test number is in range
-<span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    ROUND           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
+<span id="F9F3">F9F3</span> CDBBF5     <?php lbl8K("INRNG"); ?>:  CALL    <?php bas8K("ROUND"); ?>           ; Add 0.5 to <?php bas8K("FPREG","","","\n"); ?>
 F9F6 3C                 INC     A
 F9F7 CDBBF8             CALL    <?php bas8K("FPINT"); ?>           ; F.P to integer
 F9FA CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>

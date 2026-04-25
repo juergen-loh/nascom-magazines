@@ -34,9 +34,9 @@ E544 C5                 PUSH    BC              ; Save return address
 E545 067F               LD      B,ZEND-1        ; First token value -1
 E547 7E                 LD      A,(HL)          ; Get byte
 E548 FE61               CP      "a"             ; Less than "a" ?
-E54A DA55E5             JP      C,SEARCH        ; Yes - search for words
+E54A DA55E5             JP      C,<?php bas8K("SEARCH"); ?>        ; Yes - search for words
 E54D FE7B               CP      "z"+1           ; Greater than "z" ?
-E54F D255E5             JP      NC,SEARCH       ; Yes - search for words
+E54F D255E5             JP      NC,<?php bas8K("SEARCH"); ?>       ; Yes - search for words
 E552 E65F               AND     01011111B       ; Force upper case
 E554 77                 LD      (HL),A          ; Replace byte
 <span id="E555">E555</span> 4E         <?php lbl8K("SEARCH"); ?>: LD      C,(HL)          ; Search for a word
@@ -75,7 +75,7 @@ E57F E65F               AND     01011111B       ; Make upper case
 <span id="E581">E581</span> B9         <?php lbl8K("NOCHNG"); ?>: CP      C               ; Same as in buffer&nbsp;?
 E582 CA67E5             JP      Z,<?php bas8K("NXTBYT"); ?>        ; Yes - keep testing
 E585 E1                 POP     HL              ; Get back start of word
-E586 C355E5             JP      SEARCH          ; Look at next word
+E586 C355E5             JP      <?php bas8K("SEARCH"); ?>          ; Look at next word
 
 <span id="E589">E589</span> 48         <?php lbl8K("MATCH"); ?>:  LD      C,B             ; Word found - Save token value
 E58A F1                 POP     AF              ; Throw away return
@@ -90,7 +90,7 @@ E592 12                 LD      (DE),A          ; Put byte in buffer
 E593 13                 INC     DE              ; Move up buffer
 E594 0C                 INC     C               ; Increment length of buffer
 E595 D63A               SUB     ":"             ; End of statement?
-E597 CA9FE5             JP      Z,SETLIT        ; Jump if multi-statement line
+E597 CA9FE5             JP      Z,<?php bas8K("SETLIT"); ?>        ; Jump if multi-statement line
 E59A FE49               CP      ZDATA-3AH       ; Is it <?php bas8K("DATA"); ?> statement&nbsp;?
 E59C C2A2E5             JP      NZ,TSTREM       ; No - see if <?php bas8K("REM","","","\n"); ?>
 <span id="E59F">E59F</span> 32AE10     <?php lbl8K("SETLIT"); ?>: LD      (<?php bas8K("DATFLG"); ?>),A      ; Set literal flag

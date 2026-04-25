@@ -45,7 +45,7 @@ E4C2 22D610             LD      (<?php bas8K("PROGND"); ?>),HL     ; Set program
 <span id="E4C5">E4C5</span> 2A5E10     <?php lbl8K("RUNFST"); ?>: LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Clear all variables
 E4C8 2B                 DEC     HL
 
-<span id="E4C9">E4C9</span> 22CE10     <?php lbl8K("INTVAR"); ?>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise RUN variables
+<span id="E4C9">E4C9</span> 22CE10     <?php lbl8K("INTVAR"); ?>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise <?php bas8K("RUN"); ?> variables
 E4CC 2AAF10             LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM
 E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
 E4D2 AF                 XOR     A
@@ -67,7 +67,7 @@ E4F0 32CB10             LD      (<?php bas8K("FORFLG"); ?>),A      ; Clear <?php
 E4F3 22DE10             LD      (<?php bas8K("FNRGNM"); ?>),HL     ; Clear FN argument
 E4F6 E5                 PUSH    HL              ; HL = 0000
 E4F7 C5                 PUSH    BC              ; Put back return
-<span id="E4F8">E4F8</span> 2ACE10     <?php lbl8K("DOAGN"); ?>:  LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of code to RUN
+<span id="E4F8">E4F8</span> 2ACE10     <?php lbl8K("DOAGN"); ?>:  LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get address of code to <?php bas8K("RUN","","","\n"); ?>
 E4FB C9                 RET                     ; Return to execution driver
 
 <span id="E4FC">E4FC</span> 3E3F       <?php lbl8K("PROMPT"); ?>: LD      A,"?"           ; "?"

@@ -43,10 +43,10 @@ EA0D C3C9E4             JP      <?php bas8K("INTVAR"); ?>          ; Initialise 
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    36</span>
 
-<span id="EA10">EA10</span> CAC5E4     <?php lbl8K("RUN"); ?>:    JP      Z,RUNFST        ; RUN from start if just RUN
+<span id="EA10">EA10</span> CAC5E4     <?php lbl8K("RUN"); ?>:    JP      Z,<?php bas8K("RUNFST"); ?>        ; <?php bas8K("RUN"); ?> from start if just <?php bas8K("RUN","","","\n"); ?>
 EA13 CDC9E4             CALL    <?php bas8K("INTVAR"); ?>          ; Initialise variables
-EA16 01F2E7             LD      BC,RUNCNT       ; Execution driver loop
-EA19 C32CEA             JP      RUNLIN          ; RUN from line number
+EA16 01F2E7             LD      BC,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
+EA19 C32CEA             JP      <?php bas8K("RUNLIN"); ?>          ; <?php bas8K("RUN"); ?> from line number
 
 <span id="EA1C">EA1C</span> 0E03       <?php lbl8K("GOSUB"); ?>:  LD      C,3             ; 3 Levels of stack needed
 EA1E CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 3 levels of stack
@@ -92,7 +92,7 @@ EA60 C26AEA             JP      NZ,<?php bas8K("RETLIN"); ?>       ; No - Return
 EA63 3ACC10             LD      A,(<?php bas8K("LSTBIN"); ?>)      ; Any <?php bas8K("INPUT"); ?> in subroutine?
 EA66 B7                 OR      A               ; If so buffer is corrupted
 EA67 C2F7E3             JP      NZ,<?php bas8K("POPNOK"); ?>       ; Yes - Go to command mode
-<span id="EA6A">EA6A</span> 21F2E7     <?php lbl8K("RETLIN"); ?>: LD      HL,RUNCNT       ; Execution driver loop
+<span id="EA6A">EA6A</span> 21F2E7     <?php lbl8K("RETLIN"); ?>: LD      HL,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
 EA6D E3                 EX      (SP),HL         ; Into stack - Code string out
 EA6E 3E                 DEFB    (LD A,n)        ; Skip "POP HL"
 <span id="EA6F">EA6F</span> E1         <?php lbl8K("NXTDTA"); ?>: POP     HL              ; Restore code string address

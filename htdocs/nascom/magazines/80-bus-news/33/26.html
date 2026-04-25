@@ -60,7 +60,7 @@ FDEE CD84F4             CALL    <?php bas8K("GETINT"); ?>          ; Get integer
 FDF1 C1                 POP     BC              ; Column to B
 FDF2 E5                 PUSH    HL              ; Save code string address
 FDF3 C5                 PUSH    BC              ; Save column
-FDF4 CD11FE             CALL    SCRADR          ; Calculate screen address
+FDF4 CD11FE             CALL    <?php bas8K("SCRADR"); ?>          ; Calculate screen address
 FDF7 E5                 PUSH    HL              ; Save screen address
 FDF8 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FDFB CA04FE             JP      Z,TMNCUR        ; "T" monitor - "T" cursor
@@ -77,7 +77,7 @@ FE0D 365F               LD      (HL),"_"        ; Put it on screen
 FE0F E1                 POP     HL              ; Restore code string address
 FE10 C9                 RET
 
-<span id="FE11">FE11</span> 21C907     <?php lbl8K("SCRADR"); ?>: LD      HL,VDU+10-65    ; SCREEN VDU address (0,0)
+<span id="FE11">FE11</span> 21C907     <?php lbl8K("SCRADR"); ?>: LD      HL,VDU+10-65    ; <?php bas8K("SCREEN"); ?> VDU address (0,0)
 FE14 0600               LD      B,0
 FE16 4F                 LD      C,A             ; Line to BC
 FE17 B7                 OR      A               ; Test it

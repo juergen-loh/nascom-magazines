@@ -73,21 +73,21 @@ F5E6 D1                 POP     DE
 <span id="F5E7">F5E7</span> FE19       <?php lbl8K("NOSWAP"); ?>: CP      24+1            ; Second number insignificant?
 F5E9 D0                 RET     NC              ; Yes - First number is result
 F5EA F5                 PUSH    AF              ; Save number of bits to scale
-F5EB CD79F8             CALL    SIGNS           ; Set MSBs & sign of result
+F5EB CD79F8             CALL    <?php bas8K("SIGNS"); ?>           ; Set MSBs & sign of result
 F5EE 67                 LD      H,A             ; Save sign of result
 F5EF F1                 POP     AF              ; Restore scaling factor
-F5F0 CD92F6             CALL    SCALE           ; Scale BCDE to same exponent
+F5F0 CD92F6             CALL    <?php bas8K("SCALE"); ?>           ; Scale BCDE to same exponent
 F5F3 B4                 OR      H               ; Result to be positive?
 F5F4 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to <?php bas8K("FPREG","","","\n"); ?>
 F5F7 F20DF6             JP      P,<?php bas8K("MINCDE"); ?>        ; No - Subtract <?php bas8K("FPREG"); ?> from CDE
 F5FA CD72F6             CALL    <?php bas8K("PLUCDE"); ?>          ; Add <?php bas8K("FPREG"); ?> to CDE
-F5FD D253F6             JP      NC,RONDUP       ; No overflow - Round it up
+F5FD D253F6             JP      NC,<?php bas8K("RONDUP"); ?>       ; No overflow - Round it up
 F600 23                 INC     HL              ; Point to exponent
 F601 34                 INC     (HL)            ; Increment it
 F602 CABCE3             JP      Z,<?php bas8K("OVERR"); ?>         ; Number overflowed - Error
 F605 2E01               LD      L,1             ; 1 bit to shift right
-F607 CDA8F6             CALL    SHRT1           ; Shift result right
-F60A C353F6             JP      RONDUP          ; Round it up
+F607 CDA8F6             CALL    <?php bas8K("SHRT1"); ?>           ; Shift result right
+F60A C353F6             JP      <?php bas8K("RONDUP"); ?>          ; Round it up
 
 <span id="F60D">F60D</span> AF         <?php lbl8K("MINCDE"); ?>: XOR     A               ; Clear A and carry
 F60E 90                 SUB     B               ; Negate exponent

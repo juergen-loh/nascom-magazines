@@ -32,7 +32,7 @@ FC25 CDC4F5             CALL    SUBPHL          ; Subtract value from 0.25
 FC28 CD13F8             CALL    TSTSGN          ; Test sign of value
 FC2B 37                 SCF                     ; Flag positive
 FC2C F236FC             JP      P,SIN1          ; Positive - Ok
-FC2F CDBBF5             CALL    ROUND           ; Add 0.5 to value
+FC2F CDBBF5             CALL    <?php bas8K("ROUND"); ?>           ; Add 0.5 to value
 FC32 CD13F8             CALL    TSTSGN          ; Test sign of value
 FC35 B7                 OR      A               ; Flag negative
 <span id="FC36">FC36</span> F5         <?php lbl8K("SIN1"); ?>:   PUSH    AF              ; Save sign
@@ -48,7 +48,7 @@ FC47 C35BFB             JP      SUMSER          ; Evaluate sum of series
 
 <span id="FC4E">FC4E</span> 0000007F   <?php lbl8K("QUARTR"); ?>: DEFB    000H,000H,000H,07FH     ; 0.25
 
-<span id="FC52">FC52</span> 05         <?php lbl8K("SINTAB"); ?>: DEFB    5                       ; Table used by SIN
+<span id="FC52">FC52</span> 05         <?php lbl8K("SINTAB"); ?>: DEFB    5                       ; Table used by <?php bas8K("SIN","","","\n"); ?>
 FC53 BAD71E86           DEFB    0BAH,0D7H,01EH,086H     ; 39.711
 FC57 64269987           DEFB    064H,026H,099H,087H     ;-76.575
 FC5B 58342387           DEFB    058H,034H,023H,087H     ; 81.602
@@ -60,14 +60,14 @@ FC63 DA0F4983           DEFB    0DAH,00FH,049H,083H     ;  6.2832
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    93</span>
 
 <span id="FC67">FC67</span> CD44F8     <?php lbl8K("TAN"); ?>:    CALL    STAKFP          ; Put angle on stack
-FC6A CD06FC             CALL    SIN             ; Get SIN of angle
+FC6A CD06FC             CALL    <?php bas8K("SIN"); ?>             ; Get <?php bas8K("SIN"); ?> of angle
 FC6D C1                 POP     BC              ; Restore angle
 FC6E E1                 POP     HL
-FC6F CD44F8             CALL    STAKFP          ; Save SIN of angle
+FC6F CD44F8             CALL    STAKFP          ; Save <?php bas8K("SIN"); ?> of angle
 FC72 EB                 EX      DE,HL           ; BCDE = Angle
 FC73 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Angle to <?php bas8K("FPREG","","","\n"); ?>
 FC76 CD00FC             CALL    <?php bas8K("COS"); ?>             ; Get COS of angle
-FC79 C367F7             JP      <?php bas8K("DIV"); ?>             ; TAN = SIN / <?php bas8K("COS","","","\n"); ?>
+FC79 C367F7             JP      <?php bas8K("DIV"); ?>             ; TAN = <?php bas8K("SIN"); ?> / <?php bas8K("COS","","","\n"); ?>
 
 <span id="FC7C">FC7C</span> CD13F8     <?php lbl8K("ATN"); ?>:    CALL    TSTSGN          ; Test sign of value
 FC7F FCA7FA             CALL    M,<?php bas8K("NEGAFT"); ?>        ; Negate result after if -ve

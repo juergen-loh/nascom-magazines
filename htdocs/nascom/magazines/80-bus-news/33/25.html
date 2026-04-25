@@ -75,7 +75,7 @@ FD3F C9                 RET
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    95</span>
 
 <span id="FD40">FD40</span> AF         <?php lbl8K("CHKBRK"); ?>: XOR     A               ; Check for break
-FD41 CD70FD             CALL    SFTENT          ; Test for shift/enter
+FD41 CD70FD             CALL    <?php bas8K("SFTENT"); ?>          ; Test for shift/enter
 FD44 CA50FD             JP      Z,TBRK2         ; Yes - Test for second break
 FD47 3A4D10             LD      A,(<?php bas8K("BRKFLG"); ?>)      ; Get break flag
 FD4A B7                 OR      A               ; Break flag set?
