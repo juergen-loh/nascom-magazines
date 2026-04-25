@@ -33,7 +33,7 @@ EC6C CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 EC6F 57                 LD      D,A             ; Save input character
 EC70 47                 LD      B,A             ; Again
 EC71 FE22               CP      '"'             ; Start of literal sting?
-EC73 CA83EC             JP      Z,STRENT        ; Yes - Create string entry
+EC73 CA83EC             JP      Z,<?php bas8K("STRENT"); ?>        ; Yes - Create string entry
 EC76 3ACD10             LD      A,(<?php bas8K("READFG"); ?>)      ; "<?php bas8K("READ"); ?>" or "<?php bas8K("INPUT"); ?>" ?
 EC79 B7                 OR      A
 EC7A 57                 LD      D,A             ; Save 00 if "<?php bas8K("INPUT"); ?>"

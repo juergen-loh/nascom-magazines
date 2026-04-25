@@ -45,7 +45,7 @@ FAF7 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply <?
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    89</span>
 
-<span id="FAFA">FAFA</span> CD44F8     <?php lbl8K("EXP"); ?>:    CALL    STAKFP          ; Put value on stack
+<span id="FAFA">FAFA</span> CD44F8     <?php lbl8K("EXP"); ?>:    CALL    <?php bas8K("STAKFP"); ?>          ; Put value on stack
 FAFD 013881             LD      BC,08138H       ; BCDE = 1/Ln(2)
 FB00 113BAA             LD      DE,0AA3BH
 FB03 CD08F7             CALL    <?php bas8K("FPMULT"); ?>          ; Multiply value by 1/LN(2)
@@ -64,10 +64,10 @@ FB22 F1                 POP     AF              ; Restore scaling factor
 FB23 C1                 POP     BC              ; Restore exponent
 FB24 D1                 POP     DE
 FB25 F5                 PUSH    AF              ; Save scaling factor
-FB26 CDCAF5             CALL    SUBCDE          ; Subtract exponent from <?php bas8K("FPREG","","","\n"); ?>
+FB26 CDCAF5             CALL    <?php bas8K("SUBCDE"); ?>          ; Subtract exponent from <?php bas8K("FPREG","","","\n"); ?>
 FB29 CD3CF8             CALL    <?php bas8K("INVSGN"); ?>          ; Negate result
 FB2C 213AFB             LD      HL,<?php bas8K("EXPTAB"); ?>       ; Coefficient table
-FB2F CD6AFB             CALL    SMSER1          ; Sum the series
+FB2F CD6AFB             CALL    <?php bas8K("SMSER1"); ?>          ; Sum the series
 FB32 110000             LD      DE,0            ; Zero LSBs
 FB35 C1                 POP     BC              ; Scaling factor
 FB36 4A                 LD      C,D             ; Zero MSB

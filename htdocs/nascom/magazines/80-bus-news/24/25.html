@@ -2,7 +2,7 @@
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    4</span>
 
-<span id="E000">E000</span> C303E0     <?php lbl8K("START"); ?>:  JP      STARTB          ; Jump for restart jump
+<span id="E000">E000</span> C303E0     <?php lbl8K("START"); ?>:  JP      <?php bas8K("STARTB"); ?>          ; Jump for restart jump
 <span id="E003">E003</span> F3         <?php lbl8K("STARTB"); ?>: DI                      ; No interrupts
 E004 DD210000           LD      IX,0            ; Flag cold start
 E008 C312E0             JP      <?php bas8K("CSTART"); ?>          ; Jump to initialise
@@ -36,7 +36,7 @@ E03C CDFCE4             CALL    <?php bas8K("PROMPT"); ?>          ; Get input w
 E03F CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E042 B7                 OR      A               ; Set flags
 E043 C25BE0             JP      NZ,TSTMEM       ; If number - Test if RAM there
-E046 215D11             LD      HL,STLOOK       ; Point to start of RAM
+E046 215D11             LD      HL,<?php bas8K("STLOOK"); ?>       ; Point to start of RAM
 <span id="E049">E049</span> 23         <?php lbl8K("MLOOP"); ?>:  INC     HL              ; Next byte
 E04A 7C                 LD      A,H             ; Above address FFFF&nbsp;?
 E04B B5                 OR      L
@@ -56,7 +56,7 @@ E058 C36DE0             JP      <?php bas8K("SETTOP"); ?>          ; Top of RAM 
 
 <span id="E05B">E05B</span> CDA5E9     <?php lbl8K("TSTMEM"); ?>: CALL    <?php bas8K("ATOH"); ?>            ; Get high memory into DE
 E05E B7                 OR      A               ; Set flags on last byte
-E05F C2ADE3             JP      NZ,SNERR        ; ?SN Error if bad character
+E05F C2ADE3             JP      NZ,<?php bas8K("SNERR"); ?>        ; ?<?php bas8K("SN"); ?> Error if bad character
 E062 EB                 EX      DE,HL           ; Address into HL
 E063 2B                 DEC     HL              ; Back one byte
 E064 3ED9               LD      A,11011001B     ; Test byte
@@ -67,7 +67,7 @@ E069 70                 LD      (HL),B          ; Restore old contents
 E06A C236E0             JP      NZ,<?php bas8K("MSIZE"); ?>        ; Ask again if no RAM
 
 <span id="E06D">E06D</span> 2B         <?php lbl8K("SETTOP"); ?>: DEC     HL              ; Back one byte
-E06E 115C11             LD      DE,STLOOK-1     ; See if enough RAM
+E06E 115C11             LD      DE,<?php bas8K("STLOOK"); ?>-1     ; See if enough RAM
 E071 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare DE with HL
 E074 DA36E0             JP      C,<?php bas8K("MSIZE"); ?>         ; Ask again if not enough RAM
 E077 00                 NOP
@@ -82,9 +82,9 @@ E07F 00                 NOP
 E080 11CEFF             LD      DE,0-50         ; 50 Bytes string space
 E083 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Save last available RAM
 E086 19                 ADD     HL,DE           ; Allocate string space
-E087 225A10             LD      (STRSPC),HL     ; Save string space
+E087 225A10             LD      (<?php bas8K("STRSPC"); ?>),HL     ; Save string space
 E08A CDBAE4             CALL    <?php bas8K("CLRPTR"); ?>          ; Clear program area
-E08D 2A5A10             LD      HL,(STRSPC)     ; Get end of memory
+E08D 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Get end of memory
 E090 11EFFF             LD      DE,0-17         ; Offset for free bytes
 E093 19                 ADD     HL,DE           ; Adjust HL
 E094 11F910             LD      DE,<?php bas8K("PROGST"); ?>       ; Start of program text
@@ -102,7 +102,7 @@ E0A5 CDADF9             CALL    <?php bas8K("PRNTHL"); ?>          ; Output amou
 E0A8 21B7E0             LD      HL,<?php bas8K("BFREE"); ?>        ; " Bytes free" message
 E0AB CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string
 
-<span id="E0AE">E0AE</span> 316610     <?php lbl8K("WARMST"); ?>: LD      SP,STACK        ; Temporary stack
+<span id="E0AE">E0AE</span> 316610     <?php lbl8K("WARMST"); ?>: LD      SP,<?php bas8K("STACK"); ?>        ; Temporary stack
 <span id="E0B1">E0B1</span> CDDFE4     <?php lbl8K("BRKRET"); ?>: CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E0B4 C3F8E3             JP      <?php bas8K("PRNTOK"); ?>          ; Go to get command line
 </pre>

@@ -22,7 +22,7 @@ F2F2 59                 LD      E,C
 F2F3 2B                 DEC     HL              ; Last byte in string
 F2F4 44                 LD      B,H             ; Address to BC
 F2F5 4D                 LD      C,L
-F2F6 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
+F2F6 2AC310             LD      HL,(<?php bas8K("STRBOT"); ?>)     ; Current bottom of string area
 F2F9 CD7CE3             CALL    <?php bas8K("MOVSTR"); ?>          ; Move string to new address
 F2FC E1                 POP     HL              ; Restore variable address
 F2FD 71                 LD      (HL),C          ; Save new LSB of address
@@ -53,10 +53,10 @@ F323 CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to str
 F326 E3                 EX      (SP),HL         ; Get first string
 F327 CD56F3             CALL    <?php bas8K("GSTRHL"); ?>          ; Move to string pool if needed
 F32A E5                 PUSH    HL              ; Save first string
-F32B 2AC110             LD      HL,(TMPSTR+2)   ; Temporary string address
+F32B 2AC110             LD      HL,(<?php bas8K("TMPSTR"); ?>+2)   ; Temporary string address
 F32E EB                 EX      DE,HL           ; To DE
-F32F CD3DF3             CALL    SSTSA           ; First string to string area
-F332 CD3DF3             CALL    SSTSA           ; Second string to string area
+F32F CD3DF3             CALL    <?php bas8K("SSTSA"); ?>           ; First string to string area
+F332 CD3DF3             CALL    <?php bas8K("SSTSA"); ?>           ; Second string to string area
 F335 2166ED             LD      HL,<?php bas8K("EVAL2"); ?>        ; Return to evaluation loop
 F338 E3                 EX      (SP),HL         ; Save return,get code string
 F339 E5                 PUSH    HL              ; Save code string address
@@ -95,16 +95,16 @@ F35D 50                 LD      D,B             ; String block address to DE
 F35E 59                 LD      E,C
 F35F 1B                 DEC     DE              ; Point to length
 F360 4E                 LD      C,(HL)          ; Get string length
-F361 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
+F361 2AC310             LD      HL,(<?php bas8K("STRBOT"); ?>)     ; Current bottom of string area
 F364 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Last one in string area?
 F367 C26FF3             JP      NZ,<?php bas8K("POPHL"); ?>        ; No - Return
 F36A 47                 LD      B,A             ; Clear B (A=0)
 F36B 09                 ADD     HL,BC           ; Remove string from str' area
-F36C 22C310             LD      (STRBOT),HL     ; Save new bottom of str' area
+F36C 22C310             LD      (<?php bas8K("STRBOT"); ?>),HL     ; Save new bottom of str' area
 <span id="F36F">F36F</span> E1         <?php lbl8K("POPHL"); ?>:  POP     HL              ; Restore string
 F370 C9                 RET
 
-<span id="F371">F371</span> 2AB110     <?php lbl8K("BAKTMP"); ?>: LD      HL,(TMSTPT)     ; Get temporary string pool top
+<span id="F371">F371</span> 2AB110     <?php lbl8K("BAKTMP"); ?>: LD      HL,(<?php bas8K("TMSTPT"); ?>)     ; Get temporary string pool top
 F374 2B                 DEC     HL              ; Back
 F375 46                 LD      B,(HL)          ; Get MSB of address
 F376 2B                 DEC     HL              ; Back
@@ -113,7 +113,7 @@ F378 2B                 DEC     HL              ; Back
 F379 2B                 DEC     HL              ; Back
 F37A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; String last in string pool?
 F37D C0                 RET     NZ              ; Yes - Leave it
-F37E 22B110             LD      (TMSTPT),HL     ; Save new string pool top
+F37E 22B110             LD      (<?php bas8K("TMSTPT"); ?>),HL     ; Save new string pool top
 F381 C9                 RET
 </pre>
 <?php DoublePageEnd(); ?>

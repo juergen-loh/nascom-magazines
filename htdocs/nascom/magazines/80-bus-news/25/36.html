@@ -10,7 +10,7 @@ E919 0D                 DEC     C               ; Count bytes
 E91A C212E9             JP      NZ,<?php bas8K("HDRLP"); ?>        ; More needed
 <span id="E91D">E91D</span> CD44ED     <?php lbl8K("SNDARY"); ?>: CALL    TSTNUM          ; Check it's a numerical array
 <span id="E920">E920</span> CD8AE6     <?php lbl8K("ARYLP"); ?>:  CALL    <?php bas8K("CPDEHL"); ?>          ; All array data done
-E923 CA37E9             JP      Z,SUMOFF        ; Yes - Do check sum
+E923 CA37E9             JP      Z,<?php bas8K("SUMOFF"); ?>        ; Yes - Do check sum
 E926 F1                 POP     AF              ; <?php bas8K("CLOAD"); ?>* or <?php bas8K("CSAVE"); ?>* ?
 E927 F5                 PUSH    AF              ; Re-save flags
 E928 7E                 LD      A,(HL)          ; Get byte
@@ -92,7 +92,7 @@ E9AD E5                 PUSH    HL              ; Save code string address
 E9AE F5                 PUSH    AF              ; Save digit
 E9AF 219819             LD      HL,65529/10     ; Largest number 65529
 E9B2 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Number in range?
-E9B5 DAADE3             JP      C,SNERR         ; No - ?SN Error
+E9B5 DAADE3             JP      C,<?php bas8K("SNERR"); ?>         ; No - ?<?php bas8K("SN"); ?> Error
 E9B8 62                 LD      H,D             ; HL = Number
 E9B9 6B                 LD      L,E
 E9BA 19                 ADD     HL,DE           ; Times 2

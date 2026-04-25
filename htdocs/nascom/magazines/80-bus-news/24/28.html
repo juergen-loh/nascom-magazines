@@ -4,7 +4,7 @@
 
                 ; RESERVED WORD TOKEN VALUES
 
-<span id="0080">0080</span>            <?php lbl8K("ZEND"); ?>    EQU     080H            ; END
+<span id="0080">0080</span>            <?php lbl8K("ZEND"); ?>    EQU     080H            ; <?php bas8K("END","PEND","","\n"); ?>
 <span id="0081">0081</span>            <?php lbl8K("ZFOR"); ?>    EQU     081H            ; <?php bas8K("FOR","","","\n"); ?>
 <span id="0083">0083</span>            <?php lbl8K("ZDATA"); ?>   EQU     083H            ; <?php bas8K("DATA","","","\n"); ?>
 <span id="0088">0088</span>            <?php lbl8K("ZGOTO"); ?>   EQU     088H            ; <?php bas8K("GOTO","","","\n"); ?>
@@ -25,7 +25,7 @@
 <span id="00AD">00AD</span>            <?php lbl8K("ZMINUS"); ?>  EQU     0ADH            ; -
 <span id="00AE">00AE</span>            <?php lbl8K("ZTIMES"); ?>  EQU     0AEH            ; *
 <span id="00AF">00AF</span>            <?php lbl8K("ZDIV"); ?>    EQU     0AFH            ; /
-<span id="00B2">00B2</span>            <?php lbl8K("ZOR"); ?>     EQU     0B2H            ; OR
+<span id="00B2">00B2</span>            <?php lbl8K("ZOR"); ?>     EQU     0B2H            ; <?php bas8K("OR","POR","","\n"); ?>
 <span id="00B3">00B3</span>            <?php lbl8K("ZGTR"); ?>    EQU     0B3H            ; &gt;
 <span id="00B4">00B4</span>            <?php lbl8K("ZEQUAL"); ?>  EQU     0B4H            ; =
 <span id="00B5">00B5</span>            <?php lbl8K("ZLTH"); ?>    EQU     0B5H            ; &lt;
@@ -63,7 +63,7 @@ E2B7 80EE               DEFW    <?php bas8K("POR"); ?>             ; <?php bas8K
                 ; BASIC ERROR CODE LIST
 
 <span id="E2B9">E2B9</span> 4E46       <?php lbl8K("ERRORS"); ?>: DEFB    "<?php bas8K("NF"); ?>"            ; <?php bas8K("NEXT"); ?> without <?php bas8K("FOR","","","\n"); ?>
-E2BB 534E               DEFB    "SN"            ; Syntax error
+E2BB 534E               DEFB    "<?php bas8K("SN"); ?>"            ; Syntax error
 E2BD 5247               DEFB    "<?php bas8K("RG"); ?>"            ; <?php bas8K("RETURN"); ?> without <?php bas8K("GOSUB","","","\n"); ?>
 E2BF 4F44               DEFB    "<?php bas8K("OD"); ?>"            ; Out of <?php bas8K("DATA","","","\n"); ?>
 E2C1 4643               DEFB    "<?php bas8K("FC"); ?>"            ; Illegal function call
@@ -74,10 +74,10 @@ E2C9 4253               DEFB    "<?php bas8K("BS"); ?>"            ; Bad subscri
 E2CB 4444               DEFB    "<?php bas8K("DD"); ?>"            ; Re-DIMensioned array
 E2CD 2F30               DEFB    "/0"            ; Division by zero
 E2CF 4944               DEFB    "<?php bas8K("ID"); ?>"            ; Illegal direct
-E2D1 544D               DEFB    "TM"            ; Type mis-match
+E2D1 544D               DEFB    "<?php bas8K("TM"); ?>"            ; Type mis-match
 E2D3 4F53               DEFB    "<?php bas8K("OS"); ?>"            ; Out of string space
 E2D5 4C53               DEFB    "<?php bas8K("LS"); ?>"            ; String too long
-E2D7 5354               DEFB    "ST"            ; String formula too complex
+E2D7 5354               DEFB    "<?php bas8K("ST"); ?>"            ; String formula too complex
 E2D9 434E               DEFB    "<?php bas8K("CN"); ?>"            ; Can't CONTinue
 E2DB 5546               DEFB    "UF"            ; Undefined FN function
 E2DD 4D4F               DEFB    "<?php bas8K("MO"); ?>"            ; Missing operand

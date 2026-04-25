@@ -11,9 +11,9 @@ F0DB B7                 OR      A
 F0DC CAECF0             JP      Z,<?php bas8K("FRENUM"); ?>        ; Numeric - Free variable space
 F0DF CD53F3             CALL    <?php bas8K("GSTRCU"); ?>          ; Current string to pool
 F0E2 CD53F2             CALL    <?php bas8K("GARBGE"); ?>          ; Garbage collection
-F0E5 2A5A10             LD      HL,(STRSPC)     ; Bottom of string space in use
+F0E5 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Bottom of string space in use
 F0E8 EB                 EX      DE,HL           ; To DE
-F0E9 2AC310             LD      HL,(STRBOT)     ; Bottom of string space
+F0E9 2AC310             LD      HL,(<?php bas8K("STRBOT"); ?>)     ; Bottom of string space
 <span id="F0EC">F0EC</span> 7D         <?php lbl8K("FRENUM"); ?>: LD      A,L             ; Get LSB of end
 F0ED 93                 SUB     E               ; Subtract LSB of beginning
 F0EE 4F                 LD      C,A             ; Save difference if C
@@ -58,7 +58,7 @@ F12C E3                 EX      (SP),HL         ; Save code str&nbsp;, Get FN pt
 F12D 71                 LD      (HL),C          ; Save LSB of FN code string
 F12E 23                 INC     HL
 F12F 70                 LD      (HL),B          ; Save MSB of FN code string
-F130 C3C8F1             JP      SVSTAD          ; Save address and do function
+F130 C3C8F1             JP      <?php bas8K("SVSTAD"); ?>          ; Save address and do function
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -95,7 +95,7 @@ F162 E1                 POP     HL              ; Get FN code string address
 F163 CD41ED             CALL    <?php bas8K("GETNUM"); ?>          ; Get value from function
 F166 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 F167 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-F16A C2ADE3             JP      NZ,SNERR        ; Bad character in FN - Error
+F16A C2ADE3             JP      NZ,<?php bas8K("SNERR"); ?>        ; Bad character in FN - Error
 F16D E1                 POP     HL              ; Get MSB,EXP of old arg
 F16E 22E010             LD      (<?php bas8K("FNARG"); ?>),HL      ; Restore it
 F171 E1                 POP     HL              ; Get LSB,NLSB of old arg

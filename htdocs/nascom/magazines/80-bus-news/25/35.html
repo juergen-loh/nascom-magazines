@@ -8,7 +8,7 @@ E84A CA5BE8             JP      Z,<?php bas8K("RESTNL"); ?>        ; Just RESTOR
 E84D EB                 EX      DE,HL           ; Restore code string address
 E84E CDA5E9             CALL    <?php bas8K("ATOH"); ?>            ; Get line number to DE
 E851 E5                 PUSH    HL              ; Save code string address
-E852 CD99E4             CALL    SRCHLN          ; Search for line number in DE
+E852 CD99E4             CALL    <?php bas8K("SRCHLN"); ?>          ; Search for line number in DE
 E855 60                 LD      H,B             ; HL = Address of line
 E856 69                 LD      L,C
 E857 D1                 POP     DE              ; Restore code string address
@@ -26,14 +26,14 @@ E869 FE13               CP      <?php bas8K("CTRLS"); ?>           ; Is it contr
 E86B CCCCE6             CALL    Z,<?php bas8K("CLOTST"); ?>        ; Yes - Get another character
 E86E FE03               CP      <?php bas8K("CTRLC"); ?>           ; Return if not control "C"
 <span id="E870">E870</span> C0         <?php lbl8K("STOP"); ?>:   RET     NZ              ; Exit if anything else
-E871 F6                 DEFB    (OR n)          ; Flag "STOP"
+E871 F6                 DEFB    (OR n)          ; Flag "<?php bas8K("STOP"); ?>"
 <span id="E872">E872</span> C0         <?php lbl8K("PEND"); ?>:   RET     NZ              ; Exit if anything else
 E873 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save point of break
 E876 21                 DEFB    (LD HL,nn)      ; Skip "OR 11111111B"
 <span id="E877">E877</span> F6FF       <?php lbl8K("INPBRK"); ?>: OR      11111111B       ; Flag "Break" wanted
 E879 C1                 POP     BC              ; Return not needed and more
 <span id="E87A">E87A</span> 2A5C10     <?php lbl8K("ENDPRG"); ?>: LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current line number
-E87D F5                 PUSH    AF              ; Save STOP / END status
+E87D F5                 PUSH    AF              ; Save <?php bas8K("STOP"); ?> / END status
 E87E 7D                 LD      A,L             ; Is it direct break?
 E87F A4                 AND     H
 E880 3C                 INC     A               ; Line is -1 if direct break
@@ -43,8 +43,8 @@ E887 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get point o
 E88A 22D410             LD      (<?php bas8K("CONTAD"); ?>),HL     ; Save point to CONTinue
 <span id="E88D">E88D</span> AF         <?php lbl8K("NOLIN"); ?>:  XOR     A
 E88E 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
-E891 CD74EB             CALL    STTLIN          ; Start a new line
-E894 F1                 POP     AF              ; Restore STOP / END status
+E891 CD74EB             CALL    <?php bas8K("STTLIN"); ?>          ; Start a new line
+E894 F1                 POP     AF              ; Restore <?php bas8K("STOP"); ?> / END status
 E895 2150E3             LD      HL,<?php bas8K("BRKMSG"); ?>       ; "Break" message
 E898 C2E1E3             JP      NZ,<?php bas8K("ERRIN"); ?>        ; "in line" wanted?
 E89B C3F8E3             JP      <?php bas8K("PRNTOK"); ?>          ; Go to command mode
@@ -113,11 +113,11 @@ E8FE C1                 POP     BC              ; Number of dimensions
 E8FF D1                 POP     DE              ; End of array data
 E900 E1                 POP     HL              ; Address of array data
 E901 06D2               LD      B,11010010B     ; Header byte
-E903 C3D6FF             JP      <?php bas8K("JPLDSV"); ?>          ; <?php bas8K("CSAVE"); ?>-SNDHDR&nbsp;, <?php bas8K("CLOAD"); ?>-<?php bas8K("GETHDR","","","\n"); ?>
+E903 C3D6FF             JP      <?php bas8K("JPLDSV"); ?>          ; <?php bas8K("CSAVE"); ?>-<?php bas8K("SNDHDR"); ?>&nbsp;, <?php bas8K("CLOAD"); ?>-<?php bas8K("GETHDR","","","\n"); ?>
 
 <span id="E906">E906</span> 78         <?php lbl8K("SNDHDR"); ?>: LD      A,B             ; Get header byte
 E907 CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
 E90A CDB7F4             CALL    WUART2          ; Send 2 bytes to UART
-E90D C31DE9             JP      SNDARY          ; Send array data
+E90D C31DE9             JP      <?php bas8K("SNDARY"); ?>          ; Send array data
 </pre>
 <?php DoublePageEnd(); ?>

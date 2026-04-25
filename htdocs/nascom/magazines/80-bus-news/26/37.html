@@ -88,12 +88,12 @@ EF2C F6                 DEFB    (OR n)          ; Flag "Create" variable
 EF2E 32AC10             LD      (<?php bas8K("LCRFLG"); ?>),A      ; Set locate / create flag
 EF31 46                 LD      B,(HL)          ; Get First byte of name
 <span id="EF32">EF32</span> CD77E9     <?php lbl8K("GTFNAM"); ?>: CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
-EF35 DAADE3             JP      C,SNERR         ; ?SN Error if not a letter
+EF35 DAADE3             JP      C,<?php bas8K("SNERR"); ?>         ; ?<?php bas8K("SN"); ?> Error if not a letter
 EF38 AF                 XOR     A
 EF39 4F                 LD      C,A             ; Clear second byte of name
 EF3A 32AD10             LD      (TYPE),A        ; Set type to numeric
 EF3D CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-EF40 DA49EF             JP      C,SVNAM2        ; Numeric - Save in name
+EF40 DA49EF             JP      C,<?php bas8K("SVNAM2"); ?>        ; Numeric - Save in name
 EF43 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
 EF46 DA56EF             JP      C,<?php bas8K("CHARTY"); ?>        ; Not a letter - Check type
 <span id="EF49">EF49</span> 4F         <?php lbl8K("SVNAM2"); ?>: LD      C,A             ; Save second byte of name

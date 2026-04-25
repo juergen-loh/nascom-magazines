@@ -84,7 +84,7 @@ EDBB 0169ED             LD      BC,<?php bas8K("EVAL3"); ?>        ; Where to go
 EDBE C5                 PUSH    BC              ; Save on stack for return
 EDBF 43                 LD      B,E             ; Save operator
 EDC0 4A                 LD      C,D             ; Save precedence
-EDC1 CD44F8             CALL    STAKFP          ; Move value to stack
+EDC1 CD44F8             CALL    <?php bas8K("STAKFP"); ?>          ; Move value to stack
 EDC4 58                 LD      E,B             ; Restore operator
 EDC5 51                 LD      D,C             ; Restore precedence
 EDC6 4E                 LD      C,(HL)          ; Get LSB of routine address

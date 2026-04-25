@@ -4,22 +4,22 @@
 
 <span id="FE45">FE45</span> F5         <?php lbl8K("MONOUT"); ?>: PUSH    AF              ; Save character
 FE46 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
-FE49 CA4FFE             JP      Z,TMNOUT        ; "T" output
+FE49 CA4FFE             JP      Z,<?php bas8K("TMNOUT"); ?>        ; "T" output
 FE4C F1                 POP     AF              ; Restore character
 FE4D F7                 ROUT                    ; Output it
 FE4E C9                 RET
 
 <span id="FE4F">FE4F</span> F1         <?php lbl8K("TMNOUT"); ?>: POP     AF              ; Restore character
-FE50 C34A0C             JP      TOUT            ; "T" output
+FE50 C34A0C             JP      <?php bas8K("TOUT"); ?>            ; "T" output
 
 <span id="FE53">FE53</span> 3A4D10     <?php lbl8K("BREAK2"); ?>: LD      A,(<?php bas8K("BRKFLG"); ?>)      ; Break flag set?
 FE56 C265FE             JP      NZ,<?php bas8K("RETCTC"); ?>       ; Yes - Return ^C
 FE59 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
-FE5C CA62FE             JP      Z,TCHINP        ; Get "T" character input
+FE5C CA62FE             JP      Z,<?php bas8K("TCHINP"); ?>        ; Get "T" character input
 FE5F DF62               SCAL    RIN             ; Scan for a character
 FE61 C9                 RET
 
-<span id="FE62">FE62</span> C34D0C     <?php lbl8K("TCHINP"); ?>: JP      TIN             ; "T" input a character
+<span id="FE62">FE62</span> C34D0C     <?php lbl8K("TCHINP"); ?>: JP      <?php bas8K("TIN"); ?>             ; "T" input a character
 
 <span id="FE65">FE65</span> 3E00       <?php lbl8K("RETCTC"); ?>: LD      A,0             ; Clear Break flag
 FE67 324D10             LD      (<?php bas8K("BRKFLG"); ?>),A
@@ -37,20 +37,20 @@ FE7C DF57               SCAL    WRITE           ; Save program
 FE7E C9                 RET
 
 <span id="FE7F">FE7F</span> 3A8D00     <?php lbl8K("TSAVE"); ?>:  LD      A,(<?php bas8K("MONTYP"); ?>)      ; "T2" or "T4" (FLAGS!!!)
-FE82 CA0004             JP      Z,T4WR          ; T4 Write
-FE85 C3D103             JP      T2DUMP          ; T2 Dump
+FE82 CA0004             JP      Z,<?php bas8K("T4WR"); ?>          ; T4 Write
+FE85 C3D103             JP      <?php bas8K("T2DUMP"); ?>          ; T2 Dump
 
 <span id="FE88">FE88</span> CD39FE     <?php lbl8K("MONLD"); ?>:  CALL    <?php bas8K("FLPLED"); ?>          ; Flip tape LED
 FE8B CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
-FE8E CA99FE             JP      Z,TLOAD         ; "T" load
+FE8E CA99FE             JP      Z,<?php bas8K("TLOAD"); ?>         ; "T" load
 FE91 3E52               LD      A,"R"           ; Set <?php bas8K("READ","","","\n"); ?>
 FE93 322B0C             LD      (<?php bas8K("ARGN"); ?>),A
 FE96 DF52               SCAL    <?php bas8K("READ"); ?>            ; Load program
 FE98 C9                 RET
 
 <span id="FE99">FE99</span> 3A8D00     <?php lbl8K("TLOAD"); ?>:  LD      A,(<?php bas8K("MONTYP"); ?>)      ; "T2" or "T4" (FLAGS!!!)
-FE9C CA0C07             JP      Z,T4READ        ; T4 Read
-FE9F C3D103             JP      T2DUMP          ; T2 Dump&nbsp;??????????
+FE9C CA0C07             JP      Z,<?php bas8K("T4READ"); ?>        ; T4 Read
+FE9F C3D103             JP      <?php bas8K("T2DUMP"); ?>          ; T2 Dump&nbsp;??????????
 
 <span id="FEA2">FEA2</span> CD6DFE     <?php lbl8K("MONITR"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FEA5 CA0000             JP      Z,<?php bas8K("MONSTT"); ?>        ; Jump to zero if "T"
@@ -80,7 +80,7 @@ FECF B7                 OR      A               ; "Cold" or "Cool" start?
 FED0 C219E0             JP      NZ,<?php bas8K("INIT"); ?>         ; "Cool" don't init NAS-SYS
 FED3 060F               LD      B,15            ; Delay for keyboard clear
 FED5 CDCDFC             CALL    <?php bas8K("DELAYB"); ?>          ; Allow time for key release
-FED8 CD0D00             CALL    STMON           ; Initialise NAS-SYS
+FED8 CD0D00             CALL    <?php bas8K("STMON"); ?>           ; Initialise NAS-SYS
 FEDB C319E0             JP      <?php bas8K("INIT"); ?>            ; Initialise BASIC
 
 <span id="FEDE">FEDE</span> F5         <?php lbl8K("BREAK"); ?>:  PUSH    AF              ; Save character

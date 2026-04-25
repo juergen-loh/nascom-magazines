@@ -46,7 +46,7 @@ EBC8 47                 LD      B,A             ; Save number to print
 EBC9 3E20               LD      A," "           ; Space
 <span id="EBCB">EBCB</span> CD9BE6     <?php lbl8K("SPCLP"); ?>:  CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 EBCE 05                 DEC     B               ; Count them
-EBCF C2CBEB             JP      NZ,SPCLP        ; Repeat if more
+EBCF C2CBEB             JP      NZ,<?php bas8K("SPCLP"); ?>        ; Repeat if more
 <span id="EBD2">EBD2</span> E1         <?php lbl8K("NEXITM"); ?>: POP     HL              ; Restore code string address
 EBD3 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 EBD6 C326EB             JP      <?php bas8K("PRNTLP"); ?>          ; More to print
@@ -59,7 +59,7 @@ EBD6 C326EB             JP      <?php bas8K("PRNTLP"); ?>          ; More to pri
 
 <span id="EBEC">EBEC</span> 3ACD10     <?php lbl8K("BADINP"); ?>: LD      A,(<?php bas8K("READFG"); ?>)      ; <?php bas8K("READ"); ?> or <?php bas8K("INPUT"); ?>?
 EBEF B7                 OR      A
-EBF0 C2A7E3             JP      NZ,<?php bas8K("DATSNR"); ?>       ; <?php bas8K("READ"); ?> - ?SN Error
+EBF0 C2A7E3             JP      NZ,<?php bas8K("DATSNR"); ?>       ; <?php bas8K("READ"); ?> - ?<?php bas8K("SN"); ?> Error
 EBF3 C1                 POP     BC              ; Throw away code string addr
 EBF4 21D9EB             LD      HL,<?php bas8K("REDO"); ?>         ; "Redo from start" message
 EBF7 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output string

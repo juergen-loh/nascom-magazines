@@ -27,7 +27,7 @@ F3A1 C9                 RET
 <span id="F3A2">F3A2</span> 3E01       <?php lbl8K("CHR"); ?>:    LD      A,1             ; One character string
 F3A4 CDBFF1             CALL    <?php bas8K("MKTMST"); ?>          ; Make a temporary string
 F3A7 CD87F4             CALL    <?php bas8K("MAKINT"); ?>          ; Make it integer A
-F3AA 2AC110             LD      HL,(TMPSTR+2)   ; Get address of string
+F3AA 2AC110             LD      HL,(<?php bas8K("TMPSTR"); ?>+2)   ; Get address of string
 F3AD 73                 LD      (HL),E          ; Save character
 <span id="F3AE">F3AE</span> C1         <?php lbl8K("TOPOOL"); ?>: POP     BC              ; Clean up stack
 F3AF C3F0F1             JP      TSTOPL          ; Temporary string to pool
@@ -48,7 +48,7 @@ F3BE 78                 LD      A,B             ; Get new length
 F3BF 11                 DEFB    (LD DE,nn)      ; Skip "LD C,0"
 <span id="F3C0">F3C0</span> 0E00       <?php lbl8K("ALLFOL"); ?>: LD      C,0             ; First byte of string
 F3C2 C5                 PUSH    BC              ; Save position in string
-F3C3 CD29F2             CALL    TESTR           ; See if enough string space
+F3C3 CD29F2             CALL    <?php bas8K("TESTR"); ?>           ; See if enough string space
 F3C6 C1                 POP     BC              ; Get position in string
 F3C7 E1                 POP     HL              ; Restore string block address
 F3C8 E5                 PUSH    HL              ; And re-save it
@@ -64,7 +64,7 @@ F3D2 44                 LD      B,H             ; BC = source string
 F3D3 4D                 LD      C,L
 F3D4 CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create a string entry
 F3D7 6F                 LD      L,A             ; Length of new string
-F3D8 CD46F3             CALL    TOSTRA          ; Move string to string area
+F3D8 CD46F3             CALL    <?php bas8K("TOSTRA"); ?>          ; Move string to string area
 F3DB D1                 POP     DE              ; Clear stack
 F3DC CD57F3             CALL    <?php bas8K("GSTRDE"); ?>          ; Move to string pool if needed
 F3DF C3F0F1             JP      TSTOPL          ; Temporary string to pool

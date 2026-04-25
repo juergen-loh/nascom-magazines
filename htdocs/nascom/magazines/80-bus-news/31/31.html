@@ -16,7 +16,7 @@ F4A2 23                 INC     HL              ; Null at start of program
 F4A3 225E10             LD      (<?php bas8K("BASTXT"); ?>),HL     ; New program text area 8003H
 F4A6 EB                 EX      DE,HL           ; New RAM end to HL
 F4A7 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Set new RAM end
-F4AA 225A10             LD      (STRSPC),HL     ; Clear string space
+F4AA 225A10             LD      (<?php bas8K("STRSPC"); ?>),HL     ; Clear string space
 F4AD 01F2E7             LD      BC,<?php bas8K("RUNCNT"); ?>       ; Execution driver loop
 F4B0 C5                 PUSH    BC              ; Save for return
 F4B1 C3C5E4             JP      <?php bas8K("RUNFST"); ?>          ; Clear variables and continue
@@ -27,7 +27,7 @@ F4B1 C3C5E4             JP      <?php bas8K("RUNFST"); ?>          ; Clear varia
 <span id="F4BA">F4BA</span> F5         <?php lbl8K("WUART"); ?>:  PUSH    AF              ; Save byte
 F4BB C5                 PUSH    BC              ; Save BC
 F4BC 4F                 LD      C,A             ; Byte to C
-F4BD CD68FD             CALL    SUART           ; Send byte to UART
+F4BD CD68FD             CALL    <?php bas8K("SUART"); ?>           ; Send byte to UART
 F4C0 C1                 POP     BC              ; Restore BC
 F4C1 F1                 POP     AF              ; Restore byte
 F4C2 C9                 RET
@@ -65,7 +65,7 @@ F4F8 C9                 RET
 <span id="F4F9">F4F9</span> 7E         <?php lbl8K("CLOAD"); ?>:  LD      A,(HL)          ; Get byte after "CLOAD"
 F4FA FEAE               CP      ZTIMES          ; "*" token? ("<?php bas8K("CLOAD"); ?>*")
 F4FC CAB9E8             JP      Z,<?php bas8K("ARRLD1"); ?>        ; Yes - Array load
-F4FF CDD1FF             CALL    SMOTOR          ; Start motor and get "?"
+F4FF CDD1FF             CALL    <?php bas8K("SMOTOR"); ?>          ; Start motor and get "?"
 F502 D69E               SUB     ZPRINT          ; "?" ("<?php bas8K("PRINT"); ?>" token) Verify?
 F504 CA09F5             JP      Z,<?php bas8K("FLGVER"); ?>        ; Yes - Flag "verify"
 F507 AF                 XOR     A               ; Flag "load"
@@ -99,7 +99,7 @@ F539 CDB4F4             CALL    <?php bas8K("RUART"); ?>           ; Get name of
 F53C CD74F5             CALL    <?php bas8K("FILFND"); ?>          ; Display "file X found"
 F53F 1C                 INC     E               ; Any file name given?
 F540 1D                 DEC     E
-F541 CA48F5             JP      Z,THSFIL        ; No - This file will do
+F541 CA48F5             JP      Z,<?php bas8K("THSFIL"); ?>        ; No - This file will do
 F544 BB                 CP      E               ; Has file been found?
 F545 C22BF5             JP      NZ,<?php bas8K("CLOAD1"); ?>       ; No - Look for another
 <span id="F548">F548</span> 00         <?php lbl8K("THSFIL"); ?>: NOP

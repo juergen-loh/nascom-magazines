@@ -33,7 +33,7 @@ F989 C1                 POP     BC              ; Restore point flags
 F98A D1                 POP     DE              ; Restore sign of exponent
 F98B C32EF9             JP      <?php bas8K("MANLP"); ?>           ; Get another digit
 
-<span id="F98E">F98E</span> CD44F8     <?php lbl8K("RSCALE"); ?>: CALL    STAKFP          ; Put number on stack
+<span id="F98E">F98E</span> CD44F8     <?php lbl8K("RSCALE"); ?>: CALL    <?php bas8K("STAKFP"); ?>          ; Put number on stack
 F991 CD25F8             CALL    <?php bas8K("FLGREL"); ?>          ; Digit to add to <?php bas8K("FPREG","","","\n"); ?>
 <span id="F994">F994</span> C1         <?php lbl8K("PADD"); ?>:   POP     BC              ; Restore number
 F995 D1                 POP     DE
@@ -67,7 +67,7 @@ F9B7 E5                 PUSH    HL              ; Save for return
 F9BB E5                 PUSH    HL              ; Save for return
 F9BC CD13F8             CALL    TSTSGN          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F9BF 3620               LD      (HL)," "        ; Space at start
-F9C1 F2C6F9             JP      P,SPCFST        ; Positive - Space to start
+F9C1 F2C6F9             JP      P,<?php bas8K("SPCFST"); ?>        ; Positive - Space to start
 F9C4 362D               LD      (HL),"-"        ; "-" sign at start
 <span id="F9C6">F9C6</span> 23         <?php lbl8K("SPCFST"); ?>: INC     HL              ; First byte of number
 F9C7 3630               LD      (HL),"0"        ; "0" if zero
@@ -85,7 +85,7 @@ F9DF E2F3F9             JP      PO,<?php bas8K("INRNG"); ?>        ; &gt; 99999.
 F9E2 F1                 POP     AF              ; Restore count
 F9E3 CD70F9             CALL    <?php bas8K("MULTEN"); ?>          ; Multiply by ten
 F9E6 F5                 PUSH    AF              ; Re-save count
-F9E7 C3D5F9             JP      SIXDIG          ; Test it again
+F9E7 C3D5F9             JP      <?php bas8K("SIXDIG"); ?>          ; Test it again
 
 <span id="F9EA">F9EA</span> CD5BF7     <?php lbl8K("GTSIXD"); ?>: CALL    <?php bas8K("DIV10"); ?>           ; Divide by 10
 F9ED F1                 POP     AF              ; Get count

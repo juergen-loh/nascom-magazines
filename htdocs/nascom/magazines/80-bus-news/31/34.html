@@ -33,22 +33,22 @@ F6CA B7                 OR      A
 F6CB EAA0E9             JP      PE,<?php bas8K("FCERR"); ?>        ; ?<?php bas8K("FC"); ?> Error if &lt;= zero
 F6CE 21E710             LD      HL,<?php bas8K("FPEXP"); ?>        ; Point to exponent
 F6D1 7E                 LD      A,(HL)          ; Get exponent
-F6D2 013580             LD      BC,8035H        ; BCDE = SQR(1/2)
+F6D2 013580             LD      BC,8035H        ; BCDE = <?php bas8K("SQR"); ?>(1/2)
 F6D5 11F304             LD      DE,04F3H
 F6D8 90                 SUB     B               ; Scale value to be &lt; 1
 F6D9 F5                 PUSH    AF              ; Save scale factor
 F6DA 70                 LD      (HL),B          ; Save new exponent
-F6DB D5                 PUSH    DE              ; Save SQR(1/2)
+F6DB D5                 PUSH    DE              ; Save <?php bas8K("SQR"); ?>(1/2)
 F6DC C5                 PUSH    BC
-F6DD CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Add SQR(1/2) to value
-F6E0 C1                 POP     BC              ; Restore SQR(1/2)
+F6DD CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Add <?php bas8K("SQR"); ?>(1/2) to value
+F6E0 C1                 POP     BC              ; Restore <?php bas8K("SQR"); ?>(1/2)
 F6E1 D1                 POP     DE
-F6E2 04                 INC     B               ; Make it SQR(2)
-F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by SQR(2)
+F6E2 04                 INC     B               ; Make it <?php bas8K("SQR"); ?>(2)
+F6E3 CD69F7             CALL    <?php bas8K("DVBCDE"); ?>          ; Divide by <?php bas8K("SQR"); ?>(2)
 F6E6 21B6F6             LD      HL,UNITY        ; Point to 1.
-F6E9 CDC4F5             CALL    SUBPHL          ; Subtract <?php bas8K("FPREG"); ?> from 1
+F6E9 CDC4F5             CALL    <?php bas8K("SUBPHL"); ?>          ; Subtract <?php bas8K("FPREG"); ?> from 1
 F6EC 21BAF6             LD      HL,<?php bas8K("LOGTAB"); ?>       ; Coefficient table
-F6EF CD5BFB             CALL    SUMSER          ; Evaluate sum of series
+F6EF CD5BFB             CALL    <?php bas8K("SUMSER"); ?>          ; Evaluate sum of series
 F6F2 018080             LD      BC,8080H        ; BCDE = -0.5
 F6F5 110000             LD      DE,0000H
 F6F8 CDCDF5             CALL    <?php bas8K("FPADD"); ?>           ; Subtract 0.5 from <?php bas8K("FPREG","","","\n"); ?>

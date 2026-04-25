@@ -24,7 +24,7 @@ E3A4 C3C1E3             JP      <?php bas8K("ERROR","","","\n"); ?>
 
 <span id="E3A7">E3A7</span> 2AC910     <?php lbl8K("DATSNR"); ?>: LD      HL,(<?php bas8K("DATLIN"); ?>)     ; Get line of current <?php bas8K("DATA"); ?> item
 E3AA 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
-<span id="E3AD">E3AD</span> 1E02       <?php lbl8K("SNERR"); ?>:  LD      E,SN            ; ?SN Error
+<span id="E3AD">E3AD</span> 1E02       <?php lbl8K("SNERR"); ?>:  LD      E,<?php bas8K("SN"); ?>            ; ?<?php bas8K("SN"); ?> Error
 E3AF 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("DZ"); ?>"
 <span id="E3B0">E3B0</span> 1E14       <?php lbl8K("DZERR"); ?>:  LD      E,<?php bas8K("DZ"); ?>            ; ?/0 Error
 E3B2 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("NF"); ?>"
@@ -35,8 +35,8 @@ E3B8 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,UF"
 <span id="E3B9">E3B9</span> 1E22       <?php lbl8K("UFERR"); ?>:  LD      E,UF            ; ?UF Error
 E3BB 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("OV","","","\n"); ?>
 <span id="E3BC">E3BC</span> 1E0A       <?php lbl8K("OVERR"); ?>:  LD      E,<?php bas8K("OV"); ?>            ; ?<?php bas8K("OV"); ?> Error
-E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,TM"
-<span id="E3BF">E3BF</span> 1E18       <?php lbl8K("TMERR"); ?>:  LD      E,TM            ; ?TM Error
+E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("TM"); ?>"
+<span id="E3BF">E3BF</span> 1E18       <?php lbl8K("TMERR"); ?>:  LD      E,<?php bas8K("TM"); ?>            ; ?<?php bas8K("TM"); ?> Error
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -44,7 +44,7 @@ E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,TM"
 
 <span id="E3C1">E3C1</span> CDDFE4     <?php lbl8K("ERROR"); ?>:  CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E3C4 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output (A is 0)
-E3C7 CD74EB             CALL    STTLIN          ; Start new line
+E3C7 CD74EB             CALL    <?php bas8K("STTLIN"); ?>          ; Start new line
 E3CA 21B9E2             LD      HL,<?php bas8K("ERRORS"); ?>       ; Point to error codes
 E3CD 57                 LD      D,A             ; D = 0 (A is 0)
 E3CE 3E3F               LD      A,"?"

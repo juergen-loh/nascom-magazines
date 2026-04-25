@@ -54,7 +54,7 @@ ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?
 ED49 8F                 ADC     A,A             ; Expected + actual
 ED4A B7                 OR      A               ; Clear carry&nbsp;, set parity
 ED4B E8                 RET     PE              ; Even parity - Types match
-ED4C C3BFE3             JP      TMERR           ; Different types - Error
+ED4C C3BFE3             JP      <?php bas8K("TMERR"); ?>           ; Different types - Error
 
                 ; &lt;&lt;&lt; NO REFERENCE TO HERE &gt;&gt;&gt;
 
@@ -87,7 +87,7 @@ ED82 17                 RLA                     ; &lt;- Test for legal
 ED83 AA                 XOR     D               ; &lt;- combinations of &lt; = &gt;
 ED84 BA                 CP      D               ; &lt;- by combining last token
 ED85 57                 LD      D,A             ; &lt;- with current one
-ED86 DAADE3             JP      C,SNERR         ; Error if "&lt;&lt;" "==" or "&gt;&gt;"
+ED86 DAADE3             JP      C,<?php bas8K("SNERR"); ?>         ; Error if "&lt;&lt;" "==" or "&gt;&gt;"
 ED89 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save address of current token
 ED8C CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 ED8F C376ED             JP      <?php bas8K("RLTLP"); ?>           ; Treat the two as one

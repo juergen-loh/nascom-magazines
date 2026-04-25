@@ -63,16 +63,16 @@ FDF3 C5                 PUSH    BC              ; Save column
 FDF4 CD11FE             CALL    <?php bas8K("SCRADR"); ?>          ; Calculate screen address
 FDF7 E5                 PUSH    HL              ; Save screen address
 FDF8 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
-FDFB CA04FE             JP      Z,TMNCUR        ; "T" monitor - "T" cursor
+FDFB CA04FE             JP      Z,<?php bas8K("TMNCUR"); ?>        ; "T" monitor - "T" cursor
 FDFE E1                 POP     HL              ; Restore screen address
 FDFF 22290C             LD      (<?php bas8K("CURSOR"); ?>),HL     ; Set new cursor position
 FE02 E1                 POP     HL              ; Rstore code string address
 FE03 C9                 RET
 
-<span id="FE04">FE04</span> 2A180C     <?php lbl8K("TMNCUR"); ?>: LD      HL,(TCUR)       ; Get address or cursor
+<span id="FE04">FE04</span> 2A180C     <?php lbl8K("TMNCUR"); ?>: LD      HL,(<?php bas8K("TCUR"); ?>)       ; Get address or cursor
 FE07 3620               LD      (HL)," "        ; Remove cursor
 FE09 E1                 POP     HL              ; Get new cursor address
-FE0A 22180C             LD      (TCUR),HL       ; Set new cursor
+FE0A 22180C             LD      (<?php bas8K("TCUR"); ?>),HL       ; Set new cursor
 FE0D 365F               LD      (HL),"_"        ; Put it on screen
 FE0F E1                 POP     HL              ; Restore code string address
 FE10 C9                 RET
@@ -102,7 +102,7 @@ FE36 10FD               DJNZ    <?php bas8K("ADD64X"); ?>          ; SIXTY FOUR 
 FE38 C9                 RET
 
 <span id="FE39">FE39</span> CD6DFE     <?php lbl8K("FLPLED"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
-FE3C CA42FE             JP      Z,TMFLP         ; "T" <?php bas8K("MFLP","","","\n"); ?>
+FE3C CA42FE             JP      Z,<?php bas8K("TMFLP"); ?>         ; "T" <?php bas8K("MFLP","","","\n"); ?>
 FE3F DF5F               SCAL    <?php bas8K("MFLP","","","\n"); ?>
 FE41 C9                 RET
 

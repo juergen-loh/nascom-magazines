@@ -27,7 +27,7 @@ E4B2 3F                 CCF
 E4B3 C8                 RET     Z               ; Lines found - Exit
 E4B4 3F                 CCF
 E4B5 D0                 RET     NC              ; Line not found,at line after
-E4B6 C39CE4             JP      SRCHLP          ; Keep looking
+E4B6 C39CE4             JP      <?php bas8K("SRCHLP"); ?>          ; Keep looking
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -47,7 +47,7 @@ E4C8 2B                 DEC     HL
 
 <span id="E4C9">E4C9</span> 22CE10     <?php lbl8K("INTVAR"); ?>: LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Initialise <?php bas8K("RUN"); ?> variables
 E4CC 2AAF10             LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM
-E4CF 22C310             LD      (STRBOT),HL     ; Clear string space
+E4CF 22C310             LD      (<?php bas8K("STRBOT"); ?>),HL     ; Clear string space
 E4D2 AF                 XOR     A
 E4D3 CD46E8             CALL    <?php bas8K("RESTOR"); ?>          ; Reset DATA pointers
 E4D6 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Get end of program
@@ -55,10 +55,10 @@ E4D9 22D810             LD      (VAREND),HL     ; Clear variables
 E4DC 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Clear arrays
 
 <span id="E4DF">E4DF</span> C1         <?php lbl8K("CLREG"); ?>:  POP     BC              ; Save return address
-E4E0 2A5A10             LD      HL,(STRSPC)     ; Get end of working RAN
+E4E0 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Get end of working RAN
 E4E3 F9                 LD      SP,HL           ; Set stack
-E4E4 21B310             LD      HL,TMSTPL       ; Temporary string pool
-E4E7 22B110             LD      (TMSTPT),HL     ; Reset temporary string ptr
+E4E4 21B310             LD      HL,<?php bas8K("TMSTPL"); ?>       ; Temporary string pool
+E4E7 22B110             LD      (<?php bas8K("TMSTPT"); ?>),HL     ; Reset temporary string ptr
 E4EA AF                 XOR     A               ; A = 00
 E4EB 6F                 LD      L,A             ; HL = 0000
 E4EC 67                 LD      H,A

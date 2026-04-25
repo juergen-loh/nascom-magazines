@@ -100,8 +100,8 @@ the first) line is to be executed.
 <tr><td><p></p></td><td><p></p></td><td colspan=2><p>
 Example:&ndash; The program:&ndash;</p>
 <pre>
-  10 FOR A=1 TO 5:PRINT A,SQR(1):NEXT A
-  20 END
+  10 <?php bas8K("FOR"); ?> A=1 <?php bas8K("TO"); ?> 5:<?php bas8K("PRINT"); ?> A,<?php bas8K("SQR"); ?>(1):<?php bas8K("NEXT"); ?> A
+  20 <?php bas8K("END","","","\n"); ?>
 </pre>
 <p>is in memory, it would look like this:&ndash;
 </p></td></tr>
@@ -111,32 +111,32 @@ Example:&ndash; The program:&ndash;</p>
 <tr><td><?php bas8K("PROGND"); ?></td><td>111C	</td><td>Pointer to byte after program<br><br></td></tr>
 <tr><td>10FA</td><td>15 11	</td><td>Pointer to next line (1115)</td></tr>
 <tr><td>10FC</td><td>0A 00	</td><td>Line number (10)</td></tr>
-<tr><td>10FE</td><td>81		</td><td>FOR token</td></tr>
+<tr><td>10FE</td><td>81		</td><td><?php bas8K("FOR"); ?> token</td></tr>
 <tr><td>10FF</td><td>20		</td><td>Space</td></tr>
 <tr><td>1100</td><td>41		</td><td>A</td></tr>
 <tr><td>1101</td><td>B4		</td><td>= token</td></tr>
 <tr><td>1102</td><td>31		</td><td>1</td></tr>
 <tr><td>1103</td><td>20		</td><td>Space</td></tr>
-<tr><td>1104</td><td>A6		</td><td>TO token</td></tr>
+<tr><td>1104</td><td>A6		</td><td><?php bas8K("TO"); ?> token</td></tr>
 <tr><td>1105</td><td>20		</td><td>Space</td></tr>
 <tr><td>1106</td><td>35		</td><td>5</td></tr>
 <tr><td>1107</td><td>3A		</td><td>:</td></tr>
-<tr><td>1108</td><td>9E		</td><td>PRINT token</td></tr>
+<tr><td>1108</td><td>9E		</td><td><?php bas8K("PRINT"); ?> token</td></tr>
 <tr><td>1109</td><td>20		</td><td>Space</td></tr>
 <tr><td>110A</td><td>41		</td><td>A</td></tr>
 <tr><td>110B</td><td>2C		</td><td>,</td></tr>
-<tr><td>110C</td><td>BA		</td><td>SQR token</td></tr>
+<tr><td>110C</td><td>BA		</td><td><?php bas8K("SQR"); ?> token</td></tr>
 <tr><td>110D</td><td>28		</td><td>(</td></tr>
 <tr><td>110E</td><td>41		</td><td>A</td></tr>
 <tr><td>110F</td><td>29		</td><td>)</td></tr>
 <tr><td>1110</td><td>3A		</td><td>:</td></tr>
-<tr><td>1111</td><td>82		</td><td>NEXT token</td></tr>
+<tr><td>1111</td><td>82		</td><td><?php bas8K("NEXT"); ?> token</td></tr>
 <tr><td>1112</td><td>20		</td><td>Space</td></tr>
 <tr><td>1113</td><td>41		</td><td>A</td></tr>
 <tr><td>1114</td><td>00		</td><td>End of line</td></tr>
 <tr><td>1115</td><td>1A 11	</td><td>Pointer to next line (111A)</td></tr>
 <tr><td>1117</td><td>14 00	</td><td>Line number (20)</td></tr>
-<tr><td>1118</td><td>80		</td><td>END token</td></tr>
+<tr><td>1118</td><td>80		</td><td><?php bas8K("END"); ?> token</td></tr>
 <tr><td>1119</td><td>00		</td><td>End of line</td></tr>
 <tr><td>111A</td><td>00 00	</td><td>Pointer to next line (0000 = End of program)</td></tr>
 <tr><td>111C</td><td colspan=2></td></tr>

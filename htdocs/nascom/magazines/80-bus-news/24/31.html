@@ -4,7 +4,7 @@
 
 <span id="E3F8">E3F8</span> AF         <?php lbl8K("PRNTOK"); ?>: XOR     A               ; Output "Ok" and get command
 E3F9 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
-E3FC CD74EB             CALL    STTLIN          ; Start new line
+E3FC CD74EB             CALL    <?php bas8K("STTLIN"); ?>          ; Start new line
 E3FF 214BE3             LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 E402 CD10F2             CALL    <?php bas8K("PRS"); ?>             ; Output "Ok"
 <span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
@@ -30,7 +30,7 @@ E42A 32CC10             LD      (<?php bas8K("LSTBIN"); ?>),A      ; Clear last 
 E42D CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E430 B7                 OR      A               ; Set flags
 E431 F5                 PUSH    AF              ; And save them
-E432 CD99E4             CALL    SRCHLN          ; Search for line number in DE
+E432 CD99E4             CALL    <?php bas8K("SRCHLN"); ?>          ; Search for line number in DE
 E435 DA3EE4             JP      C,<?php bas8K("LINFND"); ?>        ; Jump if line found
 E438 F1                 POP     AF              ; Get status
 E439 F5                 PUSH    AF              ; And re-save

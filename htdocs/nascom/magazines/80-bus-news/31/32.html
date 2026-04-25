@@ -65,7 +65,7 @@ F5D8 D2E7F5             JP      NC,<?php bas8K("NOSWAP"); ?>       ; No - Don't 
 F5DB 2F                 CPL                     ; Two's complement
 F5DC 3C                 INC     A               ;  FP exponent
 F5DD EB                 EX      DE,HL
-F5DE CD44F8             CALL    STAKFP          ; Put <?php bas8K("FPREG"); ?> on stack
+F5DE CD44F8             CALL    <?php bas8K("STAKFP"); ?>          ; Put <?php bas8K("FPREG"); ?> on stack
 F5E1 EB                 EX      DE,HL
 F5E2 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 F5E5 C1                 POP     BC              ; Restore number from stack

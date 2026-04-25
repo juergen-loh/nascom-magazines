@@ -8,7 +8,7 @@ E9D0 2B                 DEC     HL              ; Cancel increment
 E9D1 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 E9D4 E5                 PUSH    HL              ; Save code string address
 E9D5 2AAF10             LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM
-E9D8 CAEDE9             JP      Z,STORED        ; No value given - Use stored
+E9D8 CAEDE9             JP      Z,<?php bas8K("STORED"); ?>        ; No value given - Use stored
 E9DB E1                 POP     HL              ; Restore code string address
 E9DC CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Check for comma
 E9DF 2C                 DEFB    ","
@@ -16,7 +16,7 @@ E9E0 D5                 PUSH    DE              ; Save number
 E9E1 CD82E9             CALL    <?php bas8K("POSINT"); ?>          ; Get integer 0 to 32767
 E9E4 2B                 DEC     HL              ; Cancel increment
 E9E5 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-E9E8 C2ADE3             JP      NZ,SNERR        ; ?SN Error if more on line
+E9E8 C2ADE3             JP      NZ,<?php bas8K("SNERR"); ?>        ; ?<?php bas8K("SN"); ?> Error if more on line
 E9EB E3                 EX      (SP),HL         ; Save code string address
 E9EC EB                 EX      DE,HL           ; Number to DE
 <span id="E9ED">E9ED</span> 7D         <?php lbl8K("STORED"); ?>: LD      A,L             ; Get LSB of new RAM top
@@ -33,7 +33,7 @@ E9FD 09                 ADD     HL,BC           ; Get lowest address
 E9FE CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Enough memory?
 EA01 D2A2E3             JP      NC,<?php bas8K("OMERR"); ?>        ; No - ?<?php bas8K("OM"); ?> Error
 EA04 EB                 EX      DE,HL           ; RAM top to HL
-EA05 225A10             LD      (STRSPC),HL     ; Set new string space
+EA05 225A10             LD      (<?php bas8K("STRSPC"); ?>),HL     ; Set new string space
 EA08 E1                 POP     HL              ; End of memory to use
 EA09 22AF10             LD      (<?php bas8K("LSTRAM"); ?>),HL     ; Set new top of RAM
 EA0C E1                 POP     HL              ; Restore code string address
@@ -67,8 +67,8 @@ EA34 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get current
 EA37 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Line after current?
 EA3A E1                 POP     HL              ; Restore end of line
 EA3B 23                 INC     HL              ; Start of next line
-EA3C DC9CE4             CALL    C,SRCHLP        ; Line is after current line
-EA3F D499E4             CALL    NC,SRCHLN       ; Line is before current line
+EA3C DC9CE4             CALL    C,<?php bas8K("SRCHLP"); ?>        ; Line is after current line
+EA3F D499E4             CALL    NC,<?php bas8K("SRCHLN"); ?>       ; Line is before current line
 EA42 60                 LD      H,B             ; Set up code string address
 EA43 69                 LD      L,C
 EA44 2B                 DEC     HL              ; Incremented after

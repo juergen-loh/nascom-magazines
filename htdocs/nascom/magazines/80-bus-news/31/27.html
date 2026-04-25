@@ -6,17 +6,17 @@
 F22A 0E                 DEFB    (LD C,n)        ; No garbage collection done
 <span id="F22B">F22B</span> F1         <?php lbl8K("GRBDON"); ?>: POP     AF              ; Garbage collection done
 F22C F5                 PUSH    AF              ; Save status
-F22D 2A5A10             LD      HL,(STRSPC)     ; Bottom of string space in use
+F22D 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Bottom of string space in use
 F230 EB                 EX      DE,HL           ; To DE
-F231 2AC310             LD      HL,(STRBOT)     ; Bottom of string area
+F231 2AC310             LD      HL,(<?php bas8K("STRBOT"); ?>)     ; Bottom of string area
 F234 2F                 CPL                     ; Negate length (Top down)
 F235 4F                 LD      C,A             ; -Length to BC
 F236 06FF               LD      B,-1            ; BC = -ve length of string
 F238 09                 ADD     HL,BC           ; Add to bottom of space in use
 F239 23                 INC     HL              ; Plus one for 2's complement
 F23A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Below string RAM area?
-F23D DA47F2             JP      C,TESTOS        ; Tidy up if not done else err
-F240 22C310             LD      (STRBOT),HL     ; Save new bottom of area
+F23D DA47F2             JP      C,<?php bas8K("TESTOS"); ?>        ; Tidy up if not done else err
+F240 22C310             LD      (<?php bas8K("STRBOT"); ?>),HL     ; Save new bottom of area
 F243 23                 INC     HL              ; Point to first byte of string
 F244 EB                 EX      DE,HL           ; Address to DE
 <span id="F245">F245</span> F1         <?php lbl8K("POPAF"); ?>:  POP     AF              ; Throw away status push
@@ -30,18 +30,18 @@ F24E F5                 PUSH    AF              ; Save status
 F24F 012BF2             LD      BC,<?php bas8K("GRBDON"); ?>       ; Garbage collection done
 F252 C5                 PUSH    BC              ; Save for RETurn
 <span id="F253">F253</span> 2AAF10     <?php lbl8K("GARBGE"); ?>: LD      HL,(<?php bas8K("LSTRAM"); ?>)     ; Get end of RAM pointer
-<span id="F256">F256</span> 22C310     <?php lbl8K("GARBLP"); ?>: LD      (STRBOT),HL     ; Reset string pointer
+<span id="F256">F256</span> 22C310     <?php lbl8K("GARBLP"); ?>: LD      (<?php bas8K("STRBOT"); ?>),HL     ; Reset string pointer
 F259 210000             LD      HL,0
 F25C E5                 PUSH    HL              ; Flag no string found
-F25D 2A5A10             LD      HL,(STRSPC)     ; Get bottom of string space
+F25D 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Get bottom of string space
 F260 E5                 PUSH    HL              ; Save bottom of string space
-F261 21B310             LD      HL,TMSTPL       ; Temporary string pool
+F261 21B310             LD      HL,<?php bas8K("TMSTPL"); ?>       ; Temporary string pool
 <span id="F264">F264</span> EB         <?php lbl8K("GRBLP"); ?>:  EX      DE,HL
-F265 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
+F265 2AB110             LD      HL,(<?php bas8K("TMSTPT"); ?>)     ; Temporary string pool pointer
 F268 EB                 EX      DE,HL
 F269 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Temporary string pool done?
 F26C 0164F2             LD      BC,<?php bas8K("GRBLP"); ?>        ; Loop until string pool done
-F26F C2B8F2             JP      NZ,STPOOL       ; No - See if in string area
+F26F C2B8F2             JP      NZ,<?php bas8K("STPOOL"); ?>       ; No - See if in string area
 F272 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Start of simple variables
 <span id="F275">F275</span> EB         <?php lbl8K("SMPVAR"); ?>: EX      DE,HL
 F276 2AD810             LD      HL,(VAREND)     ; End of simple variables
@@ -52,8 +52,8 @@ F280 7E                 LD      A,(HL)          ; Get type of variable
 F281 23                 INC     HL
 F282 23                 INC     HL
 F283 B7                 OR      A               ; "S" flag set if string
-F284 CDBBF2             CALL    STRADD          ; See if string in string area
-F287 C375F2             JP      SMPVAR          ; Loop until simple ones done
+F284 CDBBF2             CALL    <?php bas8K("STRADD"); ?>          ; See if string in string area
+F287 C375F2             JP      <?php bas8K("SMPVAR"); ?>          ; Loop until simple ones done
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -98,7 +98,7 @@ F2C3 B7                 OR      A               ; Set flags on string length
 F2C4 C8                 RET     Z               ; Null string - Return
 F2C5 44                 LD      B,H             ; Save variable pointer
 F2C6 4D                 LD      C,L
-F2C7 2AC310             LD      HL,(STRBOT)     ; Bottom of new area
+F2C7 2AC310             LD      HL,(<?php bas8K("STRBOT"); ?>)     ; Bottom of new area
 F2CA CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; String been done?
 F2CD 60                 LD      H,B             ; Restore variable pointer
 F2CE 69                 LD      L,C

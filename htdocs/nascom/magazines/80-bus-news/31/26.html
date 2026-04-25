@@ -15,14 +15,14 @@ F197 C344ED             JP      TSTNUM          ; Make sure numeric function
 F19D CDB8F9             CALL    <?php bas8K("NUMASC"); ?>          ; Turn number into text
 F1A0 CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create string entry for it
 F1A3 CD53F3             CALL    <?php bas8K("GSTRCU"); ?>          ; Current string to pool
-F1A6 01AEF3             LD      BC,TOPOOL       ; Save in string pool
+F1A6 01AEF3             LD      BC,<?php bas8K("TOPOOL"); ?>       ; Save in string pool
 F1A9 C5                 PUSH    BC              ; Save address on stack
 
 <span id="F1AA">F1AA</span> 7E         <?php lbl8K("SAVSTR"); ?>: LD      A,(HL)          ; Get string length
 F1AB 23                 INC     HL
 F1AC 23                 INC     HL
 F1AD E5                 PUSH    HL              ; Save pointer to string
-F1AE CD29F2             CALL    TESTR           ; See if enough string space
+F1AE CD29F2             CALL    <?php bas8K("TESTR"); ?>           ; See if enough string space
 F1B1 E1                 POP     HL              ; Restore pointer to string
 F1B2 4E                 LD      C,(HL)          ; Get LSB of address
 F1B3 23                 INC     HL
@@ -30,12 +30,12 @@ F1B4 46                 LD      B,(HL)          ; Get MSB of address
 F1B5 CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create string entry
 F1B8 E5                 PUSH    HL              ; Save pointer to MSB of addr
 F1B9 6F                 LD      L,A             ; Length of string
-F1BA CD46F3             CALL    TOSTRA          ; Move to string area
+F1BA CD46F3             CALL    <?php bas8K("TOSTRA"); ?>          ; Move to string area
 F1BD D1                 POP     DE              ; Restore pointer to MSB
 F1BE C9                 RET
 
-<span id="F1BF">F1BF</span> CD29F2     <?php lbl8K("MKTMST"); ?>: CALL    TESTR           ; See if enough string space
-<span id="F1C2">F1C2</span> 21BF10     <?php lbl8K("CRTMST"); ?>: LD      HL,TMPSTR       ; Temporary string
+<span id="F1BF">F1BF</span> CD29F2     <?php lbl8K("MKTMST"); ?>: CALL    <?php bas8K("TESTR"); ?>           ; See if enough string space
+<span id="F1C2">F1C2</span> 21BF10     <?php lbl8K("CRTMST"); ?>: LD      HL,<?php bas8K("TMPSTR"); ?>       ; Temporary string
 F1C5 E5                 PUSH    HL              ; Save it
 F1C6 77                 LD      (HL),A          ; Save length of string
 F1C7 23                 INC     HL
@@ -71,18 +71,18 @@ F1EA 23                 INC     HL              ; First byte of string
 F1EB EB                 EX      DE,HL           ; To DE
 F1EC 79                 LD      A,C             ; Get length
 F1ED CDC2F1             CALL    <?php bas8K("CRTMST"); ?>          ; Create string entry
-<span id="F1F0">F1F0</span> 11BF10     <?php lbl8K("TSTOPL"); ?>: LD      DE,TMPSTR       ; Temporary string
-F1F3 2AB110             LD      HL,(TMSTPT)     ; Temporary string pool pointer
+<span id="F1F0">F1F0</span> 11BF10     <?php lbl8K("TSTOPL"); ?>: LD      DE,<?php bas8K("TMPSTR"); ?>       ; Temporary string
+F1F3 2AB110             LD      HL,(<?php bas8K("TMSTPT"); ?>)     ; Temporary string pool pointer
 F1F6 22E410             LD      (<?php bas8K("FPREG"); ?>),HL      ; Save address of string ptr
 F1F9 3E01               LD      A,1
 F1FB 32AD10             LD      (TYPE),A        ; Set type to string
 F1FE CD6EF8             CALL    <?php bas8K("DETHL4"); ?>          ; Move string to pool
 F201 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Out of string pool?
-F204 22B110             LD      (TMSTPT),HL     ; Save new pointer
+F204 22B110             LD      (<?php bas8K("TMSTPT"); ?>),HL     ; Save new pointer
 F207 E1                 POP     HL              ; Restore code string address
 F208 7E                 LD      A,(HL)          ; Get next code byte
 F209 C0                 RET     NZ              ; Return if pool OK
-F20A 1E1E               LD      E,ST            ; ?ST Error
+F20A 1E1E               LD      E,<?php bas8K("ST"); ?>            ; ?<?php bas8K("ST"); ?> Error
 F20C C3C1E3             JP      <?php bas8K("ERROR"); ?>           ; String pool overflow
 
 <span id="F20F">F20F</span> 23         <?php lbl8K("PRNUMS"); ?>: INC     HL              ; Skip leading space

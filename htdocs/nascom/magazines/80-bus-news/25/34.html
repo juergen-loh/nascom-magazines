@@ -50,13 +50,13 @@ E7F1 33                 INC     SP              ; Don't save C
 
 <span id="E7F2">E7F2</span> CD40FD     <?php lbl8K("RUNCNT"); ?>: CALL    <?php bas8K("CHKBRK"); ?>          ; Execution driver - Test break
 E7F5 B7                 OR      A               ; Break key hit?
-E7F6 C466E8             CALL    NZ,STALL        ; Yes - Pause for a key
+E7F6 C466E8             CALL    NZ,<?php bas8K("STALL"); ?>        ; Yes - Pause for a key
 E7F9 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save code address for break
 E7FC 7E                 LD      A,(HL)          ; Get next byte in code string
 E7FD FE3A               CP      ":"             ; Multi statement line?
 E7FF CA16E8             JP      Z,<?php bas8K("EXCUTE"); ?>        ; Yes - Execute it
 E802 B7                 OR      A               ; End of line?
-E803 C2ADE3             JP      NZ,SNERR        ; No - Syntax error
+E803 C2ADE3             JP      NZ,<?php bas8K("SNERR"); ?>        ; No - Syntax error
 E806 23                 INC     HL              ; Point to address of next line
 E807 7E                 LD      A,(HL)          ; Get LSB of line pointer
 E808 23                 INC     HL
@@ -76,7 +76,7 @@ E81C D5                 PUSH    DE              ; Save for RETurn
 <span id="E81E">E81E</span> D680       <?php lbl8K("ONJMP"); ?>:  SUB     ZEND            ; Is it a token?
 E820 DA87EA             JP      C,<?php bas8K("LET"); ?>           ; No - try to assign it
 E823 FE25               CP      ZNEW+1-ZEND     ; END to <?php bas8K("NEW"); ?>&nbsp;?
-E825 D2ADE3             JP      NC,SNERR        ; Not a key word - ?SN Error
+E825 D2ADE3             JP      NC,<?php bas8K("SNERR"); ?>        ; Not a key word - ?<?php bas8K("SN"); ?> Error
 E828 07                 RLCA                    ; Double it
 E829 4F                 LD      C,A             ; BC = Offset into table
 E82A 0600               LD      B,0

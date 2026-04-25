@@ -42,11 +42,11 @@ EAAB 56                 LD      D,(HL)          ; MSB of string address
 EAAC 2A5E10             LD      HL,(<?php bas8K("BASTXT"); ?>)     ; Point to start of program
 EAAF CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string before program?
 EAB2 D2C9EA             JP      NC,<?php bas8K("CRESTR"); ?>       ; Yes - Create string entry
-EAB5 2A5A10             LD      HL,(STRSPC)     ; Point to string space
+EAB5 2A5A10             LD      HL,(<?php bas8K("STRSPC"); ?>)     ; Point to string space
 EAB8 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string literal in program?
 EABB D1                 POP     DE              ; Restore address of string
 EABC D2D1EA             JP      NC,<?php bas8K("MVSTPT"); ?>       ; Yes - Set up pointer
-EABF 21BF10             LD      HL,TMPSTR       ; Temporary string pool
+EABF 21BF10             LD      HL,<?php bas8K("TMPSTR"); ?>       ; Temporary string pool
 EAC2 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string in temporary pool?
 EAC5 D2D1EA             JP      NC,<?php bas8K("MVSTPT"); ?>       ; No - Set up pointer
 EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"

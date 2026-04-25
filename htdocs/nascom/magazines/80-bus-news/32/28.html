@@ -36,7 +36,7 @@ FA39 9E                 SBC     A,(HL)          ; Subtract MSB
 FA3A 4F                 LD      C,A             ; Save MSB
 FA3B 2B                 DEC     HL              ; Point back to start
 FA3C 2B                 DEC     HL
-FA3D D22FFA             JP      NC,TRYAGN       ; No overflow - Try again
+FA3D D22FFA             JP      NC,<?php bas8K("TRYAGN"); ?>       ; No overflow - Try again
 FA40 CD72F6             CALL    <?php bas8K("PLUCDE"); ?>          ; Restore number
 FA43 23                 INC     HL              ; Start of next number
 FA44 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
@@ -52,7 +52,7 @@ FA51 CA60FA             JP      Z,<?php bas8K("DOEBIT"); ?>        ; No - Do "E"
 <span id="FA54">FA54</span> 2B         <?php lbl8K("SUPTLZ"); ?>: DEC     HL              ; Move back through buffer
 FA55 7E                 LD      A,(HL)          ; Get character
 FA56 FE30               CP      "0"             ; "0" character?
-FA58 CA54FA             JP      Z,SUPTLZ        ; Yes - Look back for more
+FA58 CA54FA             JP      Z,<?php bas8K("SUPTLZ"); ?>        ; Yes - Look back for more
 FA5B FE2E               CP      "."             ; A decimal point?
 FA5D C469F8             CALL    NZ,<?php bas8K("INCHL"); ?>        ; Move back over digit
 </pre>
@@ -104,7 +104,7 @@ FAA4 010000             DEFB    001H,000H,000H  ;      1
 FAAA E3                 EX      (SP),HL         ; To be done after caller
 FAAB E9                 JP      (HL)            ; Return to caller
 
-<span id="FAAC">FAAC</span> CD44F8     <?php lbl8K("SQR"); ?>:    CALL    STAKFP          ; Put value on stack
+<span id="FAAC">FAAC</span> CD44F8     <?php lbl8K("SQR"); ?>:    CALL    <?php bas8K("STAKFP"); ?>          ; Put value on stack
 FAAF 2191FA             LD      HL,<?php bas8K("HALF"); ?>         ; Set power to 1/2
 FAB2 CD51F8             CALL    <?php bas8K("PHLTFP"); ?>          ; Move 1/2 to <?php bas8K("FPREG","","","\n"); ?>
 </pre>
