@@ -11,7 +11,7 @@ EDDD DA1AF9             JP      C,<?php bas8K("ASCTFP"); ?>        ; Number - Ge
 EDE0 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
 EDE3 D222EE             JP      NC,<?php bas8K("CONVAR"); ?>       ; Letter - Find variable
 EDE6 FEAC               CP      ZPLUS           ; "+" Token&nbsp;?
-EDE8 CAD1ED             JP      Z,OPRND         ; Yes - Look for operand
+EDE8 CAD1ED             JP      Z,<?php bas8K("OPRND"); ?>         ; Yes - Look for operand
 EDEB FE2E               CP      "."             ; "." ?
 EDED CA1AF9             JP      Z,<?php bas8K("ASCTFP"); ?>        ; Yes - Create FP number
 EDF0 FEAD               CP      ZMINUS          ; "-" Token&nbsp;?
@@ -24,14 +24,14 @@ EDFF FEA7               CP      ZFN             ; "FN" Token&nbsp;?
 EE01 CA33F1             JP      Z,<?php bas8K("DOFN"); ?>          ; Yes - Do FN routine
 EE04 D6B6               SUB     ZSGN            ; Is it a function?
 EE06 D233EE             JP      NC,<?php bas8K("FNOFST"); ?>       ; Yes - Evaluate function
-<span id="EE09">EE09</span> CD56ED     <?php lbl8K("EVLPAR"); ?>: CALL    OPNPAR          ; Evaluate expression in "()"
+<span id="EE09">EE09</span> CD56ED     <?php lbl8K("EVLPAR"); ?>: CALL    <?php bas8K("OPNPAR"); ?>          ; Evaluate expression in "()"
 EE0C CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 EE0F 29                 DEFB    ")"
 EE10 C9                 RET
 
 <span id="EE11">EE11</span> 167D       <?php lbl8K("MINUS"); ?>:  LD      D,7DH           ; "-" precedence
 EE13 CD5DED             CALL    <?php bas8K("EVAL1"); ?>           ; Evaluate until prec' break
-EE16 2AD010             LD      HL,(NXTOPR)     ; Get next operator address
+EE16 2AD010             LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Get next operator address
 EE19 E5                 PUSH    HL              ; Save next operator address
 EE1A CD3CF8             CALL    <?php bas8K("INVSGN"); ?>          ; Negate value
 <span id="EE1D">EE1D</span> CD44ED     <?php lbl8K("RETNUM"); ?>: CALL    TSTNUM          ; Make sure it's a number

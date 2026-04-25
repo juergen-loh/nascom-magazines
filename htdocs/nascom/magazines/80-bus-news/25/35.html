@@ -14,7 +14,7 @@ E856 69                 LD      L,C
 E857 D1                 POP     DE              ; Restore code string address
 E858 D246EA             JP      NC,ULERR        ; ?UL Error if not found
 <span id="E85B">E85B</span> 2B         <?php lbl8K("RESTNL"); ?>: DEC     HL              ; Byte before <?php bas8K("DATA"); ?> statement
-<span id="E85C">E85C</span> 22DC10     <?php lbl8K("UPDATA"); ?>: LD      (NXTDAT),HL     ; Update DATA pointer
+<span id="E85C">E85C</span> 22DC10     <?php lbl8K("UPDATA"); ?>: LD      (<?php bas8K("NXTDAT"); ?>),HL     ; Update DATA pointer
 E85F EB                 EX      DE,HL           ; Restore code string address
 E860 C9                 RET
 
@@ -37,7 +37,7 @@ E87D F5                 PUSH    AF              ; Save STOP / END status
 E87E 7D                 LD      A,L             ; Is it direct break?
 E87F A4                 AND     H
 E880 3C                 INC     A               ; Line is -1 if direct break
-E881 CA8DE8             JP      Z,NOLIN         ; Yes - No line number
+E881 CA8DE8             JP      Z,<?php bas8K("NOLIN"); ?>         ; Yes - No line number
 E884 22D210             LD      (<?php bas8K("ERRLIN"); ?>),HL     ; Save line of break
 E887 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Get point of break
 E88A 22D410             LD      (<?php bas8K("CONTAD"); ?>),HL     ; Save point to CONTinue
@@ -66,7 +66,7 @@ E8B0 C9                 RET                     ; CONTinue where left off
 
 <span id="E8B1">E8B1</span> CD84F4     <?php lbl8K("NULL"); ?>:   CALL    <?php bas8K("GETINT"); ?>          ; Get integer 0-255
 E8B4 C0                 RET     NZ              ; Return if bad value
-E8B5 324110             LD      (NULLS),A       ; Set nulls number
+E8B5 324110             LD      (<?php bas8K("NULLS"); ?>),A       ; Set nulls number
 E8B8 C9                 RET
 
 <span id="E8B9">E8B9</span> 06FF       <?php lbl8K("ARRLD1"); ?>: LD      B,-1            ; Flag array load

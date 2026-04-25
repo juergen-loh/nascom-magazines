@@ -46,7 +46,7 @@ E325 0500               DEFW    5               ; Initial lines counter
 E327 0500               DEFW    5               ; Initial lines number
 E329 0000               DEFW    0               ; Array load/save check sum
 
-E32B 00                 DEFB    0               ; Break not by NMI
+E32B 00                 DEFB    0               ; Break not by <?php bas8K("NMI","","","\n"); ?>
 E32C 00                 DEFB    0               ; Break flag
 
 E32D C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Input reflection (set to TTY)
@@ -105,6 +105,6 @@ E383 02                 LD      (BC),A          ; Move it
 E384 C8                 RET     Z               ; Exit if all done
 E385 0B                 DEC     BC              ; Next byte to move to
 E386 2B                 DEC     HL              ; Next byte to move
-E387 C37FE3             JP      MOVLP           ; Loop until all bytes moved
+E387 C37FE3             JP      <?php bas8K("MOVLP"); ?>           ; Loop until all bytes moved
 </pre>
 <?php DoublePageEnd(); ?>

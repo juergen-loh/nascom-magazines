@@ -17,8 +17,8 @@ FCD1 C2CDFC             JP      NZ,<?php bas8K("DELAYB"); ?>       ; More delay 
 FCDA C5                 PUSH    BC              ;
 FCDB D5                 PUSH    DE              ;
 FCDC F5                 PUSH    AF              ;
-FCDD CD6DFE             CALL    MONTST          ; See if NAS-SYS
-FCE0 C2FBFC             JP      NZ,NASOUT       ; NAS-SYS - Output ASCII
+FCDD CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
+FCE0 C2FBFC             JP      NZ,<?php bas8K("NASOUT"); ?>       ; NAS-SYS - Output ASCII
 FCE3 F1                 POP     AF              ; Get character
 FCE4 F5                 PUSH    AF              ; And re-save
 FCE5 FE0A               CP      <?php bas8K("LF"); ?>              ; ASCII Line feed?
@@ -27,13 +27,13 @@ FCEA FE08               CP      <?php bas8K("BKSP"); ?>            ; ASCII back 
 FCEC C2F1FC             JP      NZ,<?php bas8K("CONOT1"); ?>       ; No - Test for CR
 FCEF 3E1D               LD      A,TBS           ; <span class="uppercase">Nasbug</span> back space
 <span id="FCF1">FCF1</span> FE0D       <?php lbl8K("CONOT1"); ?>: CP      <?php bas8K("CR"); ?>              ; ASCII CR?
-FCF3 C2FDFC             JP      NZ,OUTCHR       ; No - Output character
+FCF3 C2FDFC             JP      NZ,<?php bas8K("OUTCHR"); ?>       ; No - Output character
 FCF6 3E1F               LD      A,TCR           ; <span class="uppercase">Nasbug</span> CR
-FCF8 C3FDFC             JP      OUTCHR          ; Output it
+FCF8 C3FDFC             JP      <?php bas8K("OUTCHR"); ?>          ; Output it
 
 <span id="FCFB">FCFB</span> F1         <?php lbl8K("NASOUT"); ?>: POP     AF              ; Get character
 FCFC F5                 PUSH    AF              ; And re-save
-<span id="FCFD">FCFD</span> CD45FE     <?php lbl8K("OUTCHR"); ?>: CALL    MONOUT          ; Output it
+<span id="FCFD">FCFD</span> CD45FE     <?php lbl8K("OUTCHR"); ?>: CALL    <?php bas8K("MONOUT"); ?>          ; Output it
 <span id="FD00">FD00</span> F1         <?php lbl8K("IGCHR"); ?>:  POP     AF              ; Restore character
 FD01 D1                 POP     DE              ;
 FD02 C1                 POP     BC              ;
@@ -43,7 +43,7 @@ FD04 C9                 RET
 <span id="FD05">FD05</span> E5         <?php lbl8K("GETINP"); ?>: PUSH    HL              ; Get an input character
 FD06 C5                 PUSH    BC              ;
 FD07 D5                 PUSH    DE              ;
-FD08 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FD08 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FD0B CA13FD             JP      Z,<?php bas8K("GETTIN"); ?>        ; "T" monitor - Get input
 FD0E DF0B               SCAL    BLINK
 FD10 C319FD             JP      <?php bas8K("CONVIN"); ?>          ; Convert to ASCII
@@ -124,7 +124,7 @@ FD86 DB00               IN      A,(0)           ; Read in row
 FD88 E612               AND     00010010B       ; Mask SHIFT and ENTER
 FD8A C9                 RET
 
-<span id="FD8B">FD8B</span> CD6DFE     <?php lbl8K("CLS"); ?>:    CALL    MONTST          ; See if NAS-SYS
+<span id="FD8B">FD8B</span> CD6DFE     <?php lbl8K("CLS"); ?>:    CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FD8E CA96FD             JP      Z,TCLS          ; "T" <?php bas8K("CLS","","","\n"); ?>
 FD91 3E0C               LD      A,<?php bas8K("CS"); ?>            ; ASCII Clear screen
 FD93 C3D9FC             JP      <?php bas8K("CONMON"); ?>          ; Output character

@@ -64,12 +64,12 @@ E066 46                 LD      B,(HL)          ; Get old contents
 E067 77                 LD      (HL),A          ; Load test byte
 E068 BE                 CP      (HL)            ; RAM there if same
 E069 70                 LD      (HL),B          ; Restore old contents
-E06A C236E0             JP      NZ,MSIZE        ; Ask again if no RAM
+E06A C236E0             JP      NZ,<?php bas8K("MSIZE"); ?>        ; Ask again if no RAM
 
 <span id="E06D">E06D</span> 2B         <?php lbl8K("SETTOP"); ?>: DEC     HL              ; Back one byte
 E06E 115C11             LD      DE,STLOOK-1     ; See if enough RAM
 E071 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Compare DE with HL
-E074 DA36E0             JP      C,MSIZE         ; Ask again if not enough RAM
+E074 DA36E0             JP      C,<?php bas8K("MSIZE"); ?>         ; Ask again if not enough RAM
 E077 00                 NOP
 E078 00                 NOP
 E079 00                 NOP

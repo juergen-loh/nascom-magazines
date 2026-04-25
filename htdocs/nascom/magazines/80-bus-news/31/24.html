@@ -40,7 +40,7 @@ F07E 42                 LD      B,D             ; MSB of memory needed
 F07F 4B                 LD      C,E             ; LSB of memory needed
 F080 EB                 EX      DE,HL
 F081 19                 ADD     HL,DE           ; Add bytes to array start
-F082 DAA2E3             JP      C,OMERR         ; Too big - Error
+F082 DAA2E3             JP      C,<?php bas8K("OMERR"); ?>         ; Too big - Error
 F085 CD93E3             CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 F088 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Save new end of array
 </pre>
@@ -96,7 +96,7 @@ F0C8 29                 ADD     HL,HL
 F0C9 C1                 POP     BC              ; Start of array
 F0CA 09                 ADD     HL,BC           ; Point to element
 F0CB EB                 EX      DE,HL           ; Address of element to DE
-<span id="F0CC">F0CC</span> 2AD010     <?php lbl8K("ENDDIM"); ?>: LD      HL,(NXTOPR)     ; Got code string address
+<span id="F0CC">F0CC</span> 2AD010     <?php lbl8K("ENDDIM"); ?>: LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Got code string address
 F0CF C9                 RET
 </pre>
 <?php DoublePageEnd(); ?>

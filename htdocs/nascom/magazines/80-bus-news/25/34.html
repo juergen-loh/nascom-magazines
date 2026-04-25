@@ -75,7 +75,7 @@ E81C D5                 PUSH    DE              ; Save for RETurn
 <span id="E81D">E81D</span> C8         <?php lbl8K("IFJMP"); ?>:  RET     Z               ; Go to RUNCNT if end of STMT
 <span id="E81E">E81E</span> D680       <?php lbl8K("ONJMP"); ?>:  SUB     ZEND            ; Is it a token?
 E820 DA87EA             JP      C,<?php bas8K("LET"); ?>           ; No - try to assign it
-E823 FE25               CP      ZNEW+1-ZEND     ; END to NEW&nbsp;?
+E823 FE25               CP      ZNEW+1-ZEND     ; END to <?php bas8K("NEW"); ?>&nbsp;?
 E825 D2ADE3             JP      NC,SNERR        ; Not a key word - ?SN Error
 E828 07                 RLCA                    ; Double it
 E829 4F                 LD      C,A             ; BC = Offset into table

@@ -61,7 +61,7 @@ F5D0 3AE710             LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get <?php b
 F5D3 B7                 OR      A               ; Is this number zero?
 F5D4 CA54F8             JP      Z,<?php bas8K("FPBCDE"); ?>        ; Yes - Move BCDE to <?php bas8K("FPREG","","","\n"); ?>
 F5D7 90                 SUB     B               ; BCDE number larger?
-F5D8 D2E7F5             JP      NC,NOSWAP       ; No - Don't swap them
+F5D8 D2E7F5             JP      NC,<?php bas8K("NOSWAP"); ?>       ; No - Don't swap them
 F5DB 2F                 CPL                     ; Two's complement
 F5DC 3C                 INC     A               ;  FP exponent
 F5DD EB                 EX      DE,HL
@@ -84,7 +84,7 @@ F5FA CD72F6             CALL    PLUCDE          ; Add <?php bas8K("FPREG"); ?> t
 F5FD D253F6             JP      NC,RONDUP       ; No overflow - Round it up
 F600 23                 INC     HL              ; Point to exponent
 F601 34                 INC     (HL)            ; Increment it
-F602 CABCE3             JP      Z,OVERR         ; Number overflowed - Error
+F602 CABCE3             JP      Z,<?php bas8K("OVERR"); ?>         ; Number overflowed - Error
 F605 2E01               LD      L,1             ; 1 bit to shift right
 F607 CDA8F6             CALL    SHRT1           ; Shift result right
 F60A C353F6             JP      RONDUP          ; Round it up

@@ -27,14 +27,14 @@ EB31 E5                 PUSH    HL              ; Save code string address
 EB32 FE2C               CP      ","             ; Comma?
 EB34 CA98EB             JP      Z,<?php bas8K("DOCOM"); ?>         ; Yes - Move to next zone
 EB37 FE3B               CP      ";"             ; Semi-colon?
-EB39 CAD2EB             JP      Z,NEXITM        ; Do semi-colon routine
+EB39 CAD2EB             JP      Z,<?php bas8K("NEXITM"); ?>        ; Do semi-colon routine
 EB3C C1                 POP     BC              ; Code string address to BC
 EB3D CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EB40 E5                 PUSH    HL              ; Save code string address
 EB41 3AAD10             LD      A,(TYPE)        ; Get variable type
 EB44 B7                 OR      A               ; Is it a string variable?
 EB45 C26DEB             JP      NZ,PRNTST       ; Yes - Output string contents
-EB48 CDB8F9             CALL    NUMASC          ; Convert number to text
+EB48 CDB8F9             CALL    <?php bas8K("NUMASC"); ?>          ; Convert number to text
 EB4B CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create temporary string
 EB4E 3620               LD      (HL)," "        ; Followed by a space
 EB50 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get length of output
@@ -54,7 +54,7 @@ EB66 D481EB             CALL    NC,PRNTCR       ; No - CRLF first
 EB6C AF                 XOR     A               ; Skip CALL by setting "Z" flag
 <span id="EB6D">EB6D</span> C413F2     <?php lbl8K("PRNTST"); ?>: CALL    NZ,PRS1         ; Output string at (HL)
 EB70 E1                 POP     HL              ; Restore code string address
-EB71 C31FEB             JP      MRPRNT          ; See if more to PRINT
+EB71 C31FEB             JP      <?php bas8K("MRPRNT"); ?>          ; See if more to PRINT
 
 <span id="EB74">EB74</span> 3AAB10     <?php lbl8K("STTLIN"); ?>: LD      A,(<?php bas8K("CURPOS"); ?>)      ; Make sure on new line
 EB77 B7                 OR      A               ; Already at start?

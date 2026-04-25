@@ -74,7 +74,7 @@ E702 EB                 EX      DE,HL           ; Line number to HL
 E703 CDADF9             CALL    PRNTHL          ; Output line number in decimal
 E706 3E20               LD      A," "           ; Space after line number
 E708 E1                 POP     HL              ; Restore start of line address
-<span id="E709">E709</span> CD9BE6     <?php lbl8K("LSTLP2"); ?>: CALL    OUTC            ; Output character in A
+<span id="E709">E709</span> CD9BE6     <?php lbl8K("LSTLP2"); ?>: CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 <span id="E70C">E70C</span> 7E         <?php lbl8K("LSTLP3"); ?>: LD      A,(HL)          ; Get next byte in line
 E70D B7                 OR      A               ; End of line?
 E70E 23                 INC     HL              ; To next byte in line
@@ -90,11 +90,11 @@ E71E F21BE7             JP      P,<?php bas8K("FNDTOK"); ?>        ; No - Keep l
 E721 0D                 DEC     C               ; Count words
 E722 C21BE7             JP      NZ,<?php bas8K("FNDTOK"); ?>       ; Not there - keep looking
 <span id="E725">E725</span> E67F       <?php lbl8K("OUTWRD"); ?>: AND     01111111B       ; Strip bit 7
-E727 CD9BE6             CALL    OUTC            ; Output first character
+E727 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output first character
 E72A 1A                 LD      A,(DE)          ; Get next character
 E72B 13                 INC     DE              ; Move on to next
 E72C B7                 OR      A               ; Is it end of word?
-E72D F225E7             JP      P,OUTWRD        ; No - output the rest
+E72D F225E7             JP      P,<?php bas8K("OUTWRD"); ?>        ; No - output the rest
 E730 C30CE7             JP      <?php bas8K("LSTLP3"); ?>          ; Next byte in line
 </pre>
 <?php DoublePageEnd(); ?>

@@ -61,7 +61,7 @@ FF52 C34BFF             JP      PUTBIT          ; Save on screen
 FF58 F5                 PUSH    AF              ; Save bit mask
 FF59 7E                 LD      A,(HL)          ; Get byte from screen
 FF5A FEC0               CP      11000000B       ; Is it a block graphic?
-FF5C DA75FF             JP      C,NORES         ; No - Leave it
+FF5C DA75FF             JP      C,<?php bas8K("NORES"); ?>         ; No - Leave it
 FF5F 063F               LD      B,00111111B     ; Six bits per block
 FF61 A0                 AND     B               ; Clear bits 7 & 6
 FF62 C1                 POP     BC              ; Get bit mask

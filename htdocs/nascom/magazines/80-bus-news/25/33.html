@@ -9,7 +9,7 @@ E73A E1                 POP     HL
 E73B C9                 RET
 
 <span id="E73C">E73C</span> 21DEFE     <?php lbl8K("LDNMI1"); ?>: LD      HL,<a href="../../../33/27/text/#BREAK">BREAK</a>        ; Break routine
-E73F 227E0C             LD      (NMI),HL        ; NMI forces break
+E73F 227E0C             LD      (<?php bas8K("NMI"); ?>),HL        ; <?php bas8K("NMI"); ?> forces break
 E742 C3F8E3             JP      PRNTOK          ; Go to command mode
 
 E745 FE                 DEFB    (CP n)          ; &lt;&lt;&lt; NO REFERENCE TO HERE &gt;&gt;&gt;
@@ -26,7 +26,7 @@ E755 F0                 RET     P               ; Return if more lines to go
 E756 E5                 PUSH    HL              ; Save code string address
 E757 2A4810             LD      HL,(<?php bas8K("LINESN"); ?>)     ; Get <?php bas8K("LINES"); ?> number
 E75A 224610             LD      (<?php bas8K("LINESC"); ?>),HL     ; Reset <?php bas8K("LINES"); ?> counter
-E75D 3A4C10             LD      A,(NMIFLG)      ; Break by NMI?
+E75D 3A4C10             LD      A,(<?php bas8K("NMIFLG"); ?>)      ; Break by <?php bas8K("NMI"); ?>?
 E760 B7                 OR      A
 E761 C2E5FE             JP      NZ,<?php bas8K("ARETN"); ?>        ; Yes - "RETN"
 E764 CD05FD             CALL    <?php bas8K("GETINP"); ?>          ; Get input character

@@ -12,7 +12,7 @@ F194 CD32EF             CALL    <?php bas8K("GTFNAM"); ?>          ; Get FN name
 F197 C344ED             JP      TSTNUM          ; Make sure numeric function
 
 <span id="F19A">F19A</span> CD44ED     <?php lbl8K("STR"); ?>:    CALL    TSTNUM          ; Make sure it's a number
-F19D CDB8F9             CALL    NUMASC          ; Turn number into text
+F19D CDB8F9             CALL    <?php bas8K("NUMASC"); ?>          ; Turn number into text
 F1A0 CDCEF1             CALL    <?php bas8K("CRTST"); ?>           ; Create string entry for it
 F1A3 CD53F3             CALL    <?php bas8K("GSTRCU"); ?>          ; Current string to pool
 F1A6 01AEF3             LD      BC,TOPOOL       ; Save in string pool
@@ -93,7 +93,7 @@ F219 1C                 INC     E               ; Length + 1
 <span id="F21A">F21A</span> 1D         <?php lbl8K("PRSLP"); ?>:  DEC     E               ; Count characters
 F21B C8                 RET     Z               ; End of string
 F21C 0A                 LD      A,(BC)          ; Get byte to output
-F21D CD9BE6             CALL    OUTC            ; Output character in A
+F21D CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 F220 FE0D               CP      <?php bas8K("CR"); ?>              ; Return?
 F222 CC86EB             CALL    Z,<?php bas8K("DONULL"); ?>        ; Yes - Do nulls
 F225 03                 INC     BC              ; Next byte in string

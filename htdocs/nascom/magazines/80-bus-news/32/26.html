@@ -63,7 +63,7 @@ F908 DA45F0             JP      C,<?php bas8K("BSERR"); ?>         ; ?BS Error i
 F90B EB                 EX      DE,HL
 F90C 29                 ADD     HL,HL           ; Shift multiplier left
 F90D EB                 EX      DE,HL
-F90E D215F9             JP      NC,NOMLAD       ; Bit was zero - No add
+F90E D215F9             JP      NC,<?php bas8K("NOMLAD"); ?>       ; Bit was zero - No add
 F911 09                 ADD     HL,BC           ; Add multiplicand
 F912 DA45F0             JP      C,<?php bas8K("BSERR"); ?>         ; ?BS Error if overflow
 <span id="F915">F915</span> 3D         <?php lbl8K("NOMLAD"); ?>: DEC     A               ; Count bits

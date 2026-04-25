@@ -23,7 +23,7 @@ F244 EB                 EX      DE,HL           ; Address to DE
 F246 C9                 RET
 
 <span id="F247">F247</span> F1         <?php lbl8K("TESTOS"); ?>: POP     AF              ; Garbage collect been done?
-F248 1E1A               LD      E,OS            ; ?OS Error
+F248 1E1A               LD      E,<?php bas8K("OS"); ?>            ; ?<?php bas8K("OS"); ?> Error
 F24A CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - Not enough string apace
 F24D BF                 CP      A               ; Flag garbage collect done
 F24E F5                 PUSH    AF              ; Save status

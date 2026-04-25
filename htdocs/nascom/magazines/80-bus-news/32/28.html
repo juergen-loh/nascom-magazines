@@ -61,11 +61,11 @@ FA5D C469F8             CALL    NZ,<?php bas8K("INCHL"); ?>        ; Move back o
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    87</span>
 
 <span id="FA60">FA60</span> F1         <?php lbl8K("DOEBIT"); ?>: POP     AF              ; Get "E" flag
-FA61 CA7FFA             JP      Z,NOENED        ; No "E" needed - End buffer
+FA61 CA7FFA             JP      Z,<?php bas8K("NOENED"); ?>        ; No "E" needed - End buffer
 FA64 3645               LD      (HL),"E"        ; Put "E" in buffer
 FA66 23                 INC     HL              ; And move on
 FA67 362B               LD      (HL),"+"        ; Put '+' in buffer
-FA69 F270FA             JP      P,OUTEXP        ; Positive - Output exponent
+FA69 F270FA             JP      P,<?php bas8K("OUTEXP"); ?>        ; Positive - Output exponent
 FA6C 362D               LD      (HL),"-"        ; Put "-" in buffer
 FA6E 2F                 CPL                     ; Negate exponent
 FA6F 3C                 INC     A

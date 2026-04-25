@@ -108,13 +108,13 @@ F54A 00                 NOP
 F54B F1                 POP     AF              ; Get verify flag
 F54C B7                 OR      A               ; Load or verify?
 F54D C25CF5             JP      NZ,<?php bas8K("CLOADV"); ?>       ; Verify program
-F550 CD88FE             CALL    MONLD           ; Use monitor to load program
+F550 CD88FE             CALL    <?php bas8K("MONLD"); ?>           ; Use monitor to load program
 F553 2AD610             LD      HL,(PROGND)     ; Get end of program
 F556 CD93E3             CALL    <?php bas8K("ENFMEM"); ?>          ; See if enough memory
 F559 C35FF5             JP      <?php bas8K("CLOADE"); ?>          ; "Ok" and set up pointers
 
-<span id="F55C">F55C</span> CDAAFE     <?php lbl8K("CLOADV"); ?>: CALL    MONVE           ; Use monitor to verify program
-<span id="F55F">F55F</span> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,OKMSG        ; "Ok" message
+<span id="F55C">F55C</span> CDAAFE     <?php lbl8K("CLOADV"); ?>: CALL    <?php bas8K("MONVE"); ?>           ; Use monitor to verify program
+<span id="F55F">F55F</span> 214BE3     <?php lbl8K("CLOADE"); ?>: LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 F562 CD10F2             CALL    PRS             ; Output string
 F565 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not a lot there!
 F568 C37CE4             JP      SETPTR          ; Set up line pointers

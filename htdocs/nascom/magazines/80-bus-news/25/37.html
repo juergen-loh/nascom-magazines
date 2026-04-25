@@ -25,13 +25,13 @@ E9EF 5F                 LD      E,A             ; Save LSB
 E9F0 7C                 LD      A,H             ; Get MSB of new RAM top
 E9F1 9A                 SBC     A,D             ; Subtract MSB of string space
 E9F2 57                 LD      D,A             ; Save MSB
-E9F3 DAA2E3             JP      C,OMERR         ; ?OM Error if not enough mem
+E9F3 DAA2E3             JP      C,<?php bas8K("OMERR"); ?>         ; ?<?php bas8K("OM"); ?> Error if not enough mem
 E9F6 E5                 PUSH    HL              ; Save RAM top
 E9F7 2AD610             LD      HL,(PROGND)     ; Get program end
 E9FA 012800             LD      BC,40           ; 40 Bytes minimum working RAM
 E9FD 09                 ADD     HL,BC           ; Get lowest address
 E9FE CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Enough memory?
-EA01 D2A2E3             JP      NC,OMERR        ; No - ?OM Error
+EA01 D2A2E3             JP      NC,<?php bas8K("OMERR"); ?>        ; No - ?<?php bas8K("OM"); ?> Error
 EA04 EB                 EX      DE,HL           ; RAM top to HL
 EA05 225A10             LD      (STRSPC),HL     ; Set new string space
 EA08 E1                 POP     HL              ; End of memory to use

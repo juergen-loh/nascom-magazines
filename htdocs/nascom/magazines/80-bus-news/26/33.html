@@ -14,7 +14,7 @@ EC48 3ACD10             LD      A,(READFG)      ; Is it READ?
 EC4B B7                 OR      A
 EC4C C2D2EC             JP      NZ,<?php bas8K("FDTLP"); ?>        ; Yes - Find next DATA stmt
 EC4F 3E3F               LD      A,"?"           ; More <?php bas8K("INPUT"); ?> needed
-EC51 CD9BE6             CALL    OUTC            ; Output character
+EC51 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character
 EC54 CDFCE4             CALL    PROMPT          ; Get <?php bas8K("INPUT"); ?> with prompt
 EC57 D1                 POP     DE              ; Variable address
 EC58 C1                 POP     BC              ; Code string address
@@ -24,7 +24,7 @@ EC5D 7E                 LD      A,(HL)          ; Get byte
 EC5E B7                 OR      A               ; Is it zero (No input) ?
 EC5F 2B                 DEC     HL              ; Back space <?php bas8K("INPUT"); ?> pointer
 EC60 C5                 PUSH    BC              ; Save code string address
-EC61 CA6FEA             JP      Z,NXTDTA        ; Find end of buffer
+EC61 CA6FEA             JP      Z,<?php bas8K("NXTDTA"); ?>        ; Find end of buffer
 EC64 D5                 PUSH    DE              ; Save variable address
 <span id="EC65">EC65</span> 3AAD10     <?php lbl8K("ANTVLU"); ?>: LD      A,(TYPE)        ; Check data type
 EC68 B7                 OR      A               ; Is it numeric?
@@ -59,13 +59,13 @@ EC96 CD6BF8             CALL    <?php bas8K("FPTHL"); ?>           ; Move <?php 
 EC99 E1                 POP     HL              ; Restore input pointer
 <span id="EC9A">EC9A</span> 2B         <?php lbl8K("LTSTND"); ?>: DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 EC9B CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-EC9E CAA6EC             JP      Z,MORDT         ; End of line - More needed?
+EC9E CAA6EC             JP      Z,<?php bas8K("MORDT"); ?>         ; End of line - More needed?
 ECA1 FE2C               CP      ","             ; Another value?
 ECA3 C2ECEB             JP      NZ,<?php bas8K("BADINP"); ?>       ; No - Bad input
 <span id="ECA6">ECA6</span> E3         <?php lbl8K("MORDT"); ?>:  EX      (SP),HL         ; Get code string address
 ECA7 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 ECA8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-ECAB C239EC             JP      NZ,NEDMOR       ; More needed - Get it
+ECAB C239EC             JP      NZ,<?php bas8K("NEDMOR"); ?>       ; More needed - Get it
 ECAE D1                 POP     DE              ; Restore DATA pointer
 ECAF 3ACD10             LD      A,(READFG)      ; "READ" or "<?php bas8K("INPUT"); ?>" ?
 ECB2 B7                 OR      A
@@ -87,7 +87,7 @@ ECD9 23                 INC     HL
 ECDA 7E                 LD      A,(HL)          ; End of program?
 ECDB 23                 INC     HL
 ECDC B6                 OR      (HL)            ; 00 00 Ends program
-ECDD 1E06               LD      E,OD            ; ?OD Error
+ECDD 1E06               LD      E,<?php bas8K("OD"); ?>            ; ?<?php bas8K("OD"); ?> Error
 ECDF CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; Yes - Out of DATA
 ECE2 23                 INC     HL
 ECE3 5E                 LD      E,(HL)          ; LSB of line number

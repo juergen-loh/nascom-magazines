@@ -14,12 +14,12 @@ E396 95                 SUB     L
 E397 6F                 LD      L,A
 E398 3EFF               LD      A,HIGH -48      ; 48 Bytes minimum RAM
 E39A 9C                 SBC     A,H
-E39B DAA2E3             JP      C,OMERR         ; Not enough - ?OM Error
+E39B DAA2E3             JP      C,<?php bas8K("OMERR"); ?>         ; Not enough - ?<?php bas8K("OM"); ?> Error
 E39E 67                 LD      H,A
 E39F 39                 ADD     HL,SP           ; Test if stack is overflowed
 E3A0 E1                 POP     HL              ; Restore code string address
 E3A1 D8                 RET     C               ; Return if enough mmory
-<span id="E3A2">E3A2</span> 1E0C       <?php lbl8K("OMERR"); ?>:  LD      E,OM            ; ?OM Error
+<span id="E3A2">E3A2</span> 1E0C       <?php lbl8K("OMERR"); ?>:  LD      E,<?php bas8K("OM"); ?>            ; ?<?php bas8K("OM"); ?> Error
 E3A4 C3C1E3             JP      <?php bas8K("ERROR","","","\n"); ?>
 
 <span id="E3A7">E3A7</span> 2AC910     <?php lbl8K("DATSNR"); ?>: LD      HL,(<?php bas8K("DATLIN"); ?>)     ; Get line of current <?php bas8K("DATA"); ?> item
@@ -27,14 +27,14 @@ E3AA 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as cur
 <span id="E3AD">E3AD</span> 1E02       <?php lbl8K("SNERR"); ?>:  LD      E,SN            ; ?SN Error
 E3AF 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("DZ"); ?>"
 <span id="E3B0">E3B0</span> 1E14       <?php lbl8K("DZERR"); ?>:  LD      E,<?php bas8K("DZ"); ?>            ; ?/0 Error
-E3B2 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,NF"
-<span id="E3B3">E3B3</span> 1E00       <?php lbl8K("NFERR"); ?>:  LD      E,NF            ; ?NF Error
+E3B2 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("NF"); ?>"
+<span id="E3B3">E3B3</span> 1E00       <?php lbl8K("NFERR"); ?>:  LD      E,<?php bas8K("NF"); ?>            ; ?<?php bas8K("NF"); ?> Error
 E3B5 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("DD"); ?>"
 <span id="E3B6">E3B6</span> 1E12       <?php lbl8K("DDERR"); ?>:  LD      E,<?php bas8K("DD"); ?>            ; ?<?php bas8K("DD"); ?> Error
 E3B8 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,UF"
 <span id="E3B9">E3B9</span> 1E22       <?php lbl8K("UFERR"); ?>:  LD      E,UF            ; ?UF Error
-E3BB 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,OV
-<span id="E3BC">E3BC</span> 1E0A       <?php lbl8K("OVERR"); ?>:  LD      E,OV            ; ?OV Error
+E3BB 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("OV","","","\n"); ?>
+<span id="E3BC">E3BC</span> 1E0A       <?php lbl8K("OVERR"); ?>:  LD      E,<?php bas8K("OV"); ?>            ; ?<?php bas8K("OV"); ?> Error
 E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,TM"
 <span id="E3BF">E3BF</span> 1E18       <?php lbl8K("TMERR"); ?>:  LD      E,TM            ; ?TM Error
 </pre>
@@ -48,12 +48,12 @@ E3C7 CD74EB             CALL    STTLIN          ; Start new line
 E3CA 21B9E2             LD      HL,<?php bas8K("ERRORS"); ?>       ; Point to error codes
 E3CD 57                 LD      D,A             ; D = 0 (A is 0)
 E3CE 3E3F               LD      A,"?"
-E3D0 CD9BE6             CALL    OUTC            ; Output "?"
+E3D0 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output "?"
 E3D3 19                 ADD     HL,DE           ; Offset to correct error code
 E3D4 7E                 LD      A,(HL)          ; First character
-E3D5 CD9BE6             CALL    OUTC            ; Output it
+E3D5 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output it
 E3D8 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-E3DB CD9BE6             CALL    OUTC            ; Output it
+E3DB CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output it
 E3DE 213FE3             LD      HL,<?php bas8K("ERRMSG"); ?>       ; "Error" message
 <span id="E3E1">E3E1</span> CD10F2     <?php lbl8K("ERRIN"); ?>:  CALL    PRS             ; Output message
 E3E4 2A5C10             LD      HL,(<?php bas8K("LINEAT"); ?>)     ; Get line of error

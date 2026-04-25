@@ -69,15 +69,15 @@ F70B C8                 RET     Z               ; Return zero if zero
 F70C 2E00               LD      L,0             ; Flag add exponents
 F70E CDD1F7             CALL    <?php bas8K("ADDEXP"); ?>          ; Add exponents
 F711 79                 LD      A,C             ; Get MSB of multiplier
-F712 32F610             LD      (MULVAL),A      ; Save MSB of multiplier
+F712 32F610             LD      (<?php bas8K("MULVAL"); ?>),A      ; Save MSB of multiplier
 F715 EB                 EX      DE,HL
-F716 22F710             LD      (MULVAL+1),HL   ; Save rest of multiplier
+F716 22F710             LD      (<?php bas8K("MULVAL"); ?>+1),HL   ; Save rest of multiplier
 F719 010000             LD      BC,0            ; Partial product (BCDE) = zero
 F71C 50                 LD      D,B
 F71D 58                 LD      E,B
 F71E 211EF6             LD      HL,<?php bas8K("BNORM"); ?>        ; Address of normalise
 F721 E5                 PUSH    HL              ; Save for return
-F722 212AF7             LD      HL,MULT8        ; Address of 8 bit multiply
+F722 212AF7             LD      HL,<?php bas8K("MULT8"); ?>        ; Address of 8 bit multiply
 F725 E5                 PUSH    HL              ; Save for NMSB,MSB
 F726 E5                 PUSH    HL              ;
 F727 21E410             LD      HL,<?php bas8K("FPREG"); ?>        ; Point to number
@@ -90,13 +90,13 @@ F731 2E08               LD      L,8             ; 8 bits to multiply by
 <span id="F733">F733</span> 1F         <?php lbl8K("MUL8LP"); ?>: RRA                     ; Shift LSB right
 F734 67                 LD      H,A             ; Save LSB
 F735 79                 LD      A,C             ; Get MSB
-F736 D244F7             JP      NC,NOMADD       ; Bit was zero - Don't add
+F736 D244F7             JP      NC,<?php bas8K("NOMADD"); ?>       ; Bit was zero - Don't add
 F739 E5                 PUSH    HL              ; Save LSB and count
-F73A 2AF710             LD      HL,(MULVAL+1)   ; Get LSB and NMSB
+F73A 2AF710             LD      HL,(<?php bas8K("MULVAL"); ?>+1)   ; Get LSB and NMSB
 F73D 19                 ADD     HL,DE           ; Add NMSB and LSB
 F73E EB                 EX      DE,HL           ; Leave sum in DE
 F73F E1                 POP     HL              ; Restore MSB and count
-F740 3AF610             LD      A,(MULVAL)      ; Get MSB of multiplier
+F740 3AF610             LD      A,(<?php bas8K("MULVAL"); ?>)      ; Get MSB of multiplier
 F743 89                 ADC     A,C             ; Add MSB
 <span id="F744">F744</span> 1F         <?php lbl8K("NOMADD"); ?>: RRA                     ; Shift MSB right
 F745 4F                 LD      C,A             ; Re-save MSB
@@ -111,7 +111,7 @@ F74D 1F                 RRA                     ; Shift VLSB right
 F74E 47                 LD      B,A             ; Re-save VLSB
 F74F 2D                 DEC     L               ; Count bits multiplied
 F750 7C                 LD      A,H             ; Get LSB of multiplier
-F751 C233F7             JP      NZ,MUL8LP       ; More - Do it
+F751 C233F7             JP      NZ,<?php bas8K("MUL8LP"); ?>       ; More - Do it
 <span id="F754">F754</span> E1         <?php lbl8K("POPHRT"); ?>: POP     HL              ; Restore address of number
 F755 C9                 RET
 

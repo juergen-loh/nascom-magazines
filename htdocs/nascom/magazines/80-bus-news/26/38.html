@@ -46,7 +46,7 @@ EFBE E5                 PUSH    HL              ; Save end of arrays
 EFBF 09                 ADD     HL,BC           ; Move up 6 bytes
 EFC0 C1                 POP     BC              ; Source address in BC
 EFC1 E5                 PUSH    HL              ; Save new end address
-EFC2 CD79E3             CALL    MOVUP           ; Move arrays up
+EFC2 CD79E3             CALL    <?php bas8K("MOVUP"); ?>           ; Move arrays up
 EFC5 E1                 POP     HL              ; Restore new end address
 EFC6 22DA10             LD      (<?php bas8K("ARREND"); ?>),HL     ; Set new end address
 EFC9 60                 LD      H,B             ; End of variables to HL
@@ -96,7 +96,7 @@ EFFE FE2C               CP      ","             ; Comma (more to come)?
 F000 CAF0EF             JP      Z,SCPTLP        ; Yes - More subscripts
 F003 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure ")" follows
 F006 29                 DEFB    ")"
-F007 22D010             LD      (NXTOPR),HL     ; Save code string address
+F007 22D010             LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save code string address
 F00A E1                 POP     HL              ; Get <?php bas8K("LCRFLG"); ?> and TYPE
 F00B 22AC10             LD      (<?php bas8K("LCRFLG"); ?>),HL     ; Restore Locate/create & type
 F00E 1E00               LD      E,0             ; Flag not <?php bas8K("CSAVE"); ?>* or <?php bas8K("CLOAD"); ?>*

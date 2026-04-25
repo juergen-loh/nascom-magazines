@@ -11,7 +11,7 @@
 <span id="008C">008C</span>            <?php lbl8K("ZGOSUB"); ?>  EQU     08CH            ; <?php bas8K("GOSUB","","","\n"); ?>
 <span id="008E">008E</span>            <?php lbl8K("ZREM"); ?>    EQU     08EH            ; REM
 <span id="009E">009E</span>            <?php lbl8K("ZPRINT"); ?>  EQU     09EH            ; PRINT
-<span id="00A4">00A4</span>            <?php lbl8K("ZNEW"); ?>    EQU     0A4H            ; NEW
+<span id="00A4">00A4</span>            <?php lbl8K("ZNEW"); ?>    EQU     0A4H            ; <?php bas8K("NEW","","","\n"); ?>
 
 <span id="00A5">00A5</span>            <?php lbl8K("ZTAB"); ?>    EQU     0A5H            ; TAB
 <span id="00A6">00A6</span>            <?php lbl8K("ZTO"); ?>     EQU     0A6H            ; TO
@@ -46,7 +46,7 @@ E2A7 79                 DEFB    79H             ; Precedence value
 E2A8 C8F5               DEFW    PSUB            ; <?php bas8K("FPREG"); ?> = &lt;last&gt; - <?php bas8K("FPREG","","","\n"); ?>
 
 E2AA 7C                 DEFB    7CH             ; Precedence value
-E2AB 06F7               DEFW    MULT            ; PPREG = &lt;last&gt; * <?php bas8K("FPREG","","","\n"); ?>
+E2AB 06F7               DEFW    <?php bas8K("MULT"); ?>            ; PPREG = &lt;last&gt; * <?php bas8K("FPREG","","","\n"); ?>
 
 E2AD 7C                 DEFB    7CH             ; Precedence value
 E2AE 67F7               DEFW    <?php bas8K("DIV"); ?>             ; <?php bas8K("FPREG"); ?> = &lt;last&gt; / <?php bas8K("FPREG","","","\n"); ?>
@@ -62,20 +62,20 @@ E2B7 80EE               DEFW    POR             ; <?php bas8K("FPREG"); ?> = &lt
 
                 ; BASIC ERROR CODE LIST
 
-<span id="E2B9">E2B9</span> 4E46       <?php lbl8K("ERRORS"); ?>: DEFB    "NF"            ; NEXT without <?php bas8K("FOR","","","\n"); ?>
+<span id="E2B9">E2B9</span> 4E46       <?php lbl8K("ERRORS"); ?>: DEFB    "<?php bas8K("NF"); ?>"            ; <?php bas8K("NEXT"); ?> without <?php bas8K("FOR","","","\n"); ?>
 E2BB 534E               DEFB    "SN"            ; Syntax error
 E2BD 5247               DEFB    "RG"            ; RETURN without <?php bas8K("GOSUB","","","\n"); ?>
-E2BF 4F44               DEFB    "OD"            ; Out of <?php bas8K("DATA","","","\n"); ?>
+E2BF 4F44               DEFB    "<?php bas8K("OD"); ?>"            ; Out of <?php bas8K("DATA","","","\n"); ?>
 E2C1 4643               DEFB    "<?php bas8K("FC"); ?>"            ; Illegal function call
-E2C3 4F56               DEFB    "OV"            ; Overflow error
-E2C5 4F4D               DEFB    "OM"            ; Out of memory
+E2C3 4F56               DEFB    "<?php bas8K("OV"); ?>"            ; Overflow error
+E2C5 4F4D               DEFB    "<?php bas8K("OM"); ?>"            ; Out of memory
 E2C7 554C               DEFB    "UL"            ; Undefined line
 E2C9 4253               DEFB    "<?php bas8K("BS"); ?>"            ; Bad subscript
 E2CB 4444               DEFB    "<?php bas8K("DD"); ?>"            ; Re-DIMensioned array
 E2CD 2F30               DEFB    "/0"            ; Division by zero
 E2CF 4944               DEFB    "<?php bas8K("ID"); ?>"            ; Illegal direct
 E2D1 544D               DEFB    "TM"            ; Type mis-match
-E2D3 4F53               DEFB    "OS"            ; Out of string space
+E2D3 4F53               DEFB    "<?php bas8K("OS"); ?>"            ; Out of string space
 E2D5 4C53               DEFB    "<?php bas8K("LS"); ?>"            ; String too long
 E2D7 5354               DEFB    "ST"            ; String formula too complex
 E2D9 434E               DEFB    "<?php bas8K("CN"); ?>"            ; Can't CONTinue

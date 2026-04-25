@@ -6,7 +6,7 @@
 <span id="ECF9">ECF9</span> C42DEF     <?php lbl8K("NEXT1"); ?>:  CALL    NZ,<?php bas8K("GETVAR"); ?>       ; Get index address
 ECFC 22CE10             LD      (<?php bas8K("BRKLIN"); ?>),HL     ; Save code string address
 ECFF CD56E3             CALL    <?php bas8K("BAKSTK"); ?>          ; Look for "<?php bas8K("FOR"); ?>" block
-ED02 C2B3E3             JP      NZ,NFERR        ; No "<?php bas8K("FOR"); ?>" - ?NF Error
+ED02 C2B3E3             JP      NZ,<?php bas8K("NFERR"); ?>        ; No "<?php bas8K("FOR"); ?>" - ?<?php bas8K("NF"); ?> Error
 ED05 F9                 LD      SP,HL           ; Clear nested loops
 ED06 D5                 PUSH    DE              ; Save index address
 ED07 7E                 LD      A,(HL)          ; Get sign of STEP
@@ -35,12 +35,12 @@ ED2D 60                 LD      H,B
 ED2E C3EEE7             JP      PUTFID          ; Put back "<?php bas8K("FOR"); ?>" and continue
 
 <span id="ED31">ED31</span> F9         <?php lbl8K("KILFOR"); ?>: LD      SP,HL           ; Remove "<?php bas8K("FOR"); ?>" block
-ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "NEXT"
+ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "<?php bas8K("NEXT"); ?>"
 ED35 7E                 LD      A,(HL)          ; Get next byte in code string
 ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
 ED38 C2F2E7             JP      NZ,RUNCNT       ; No - Do next statement
 ED3B CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Position to index name
-ED3E CDF9EC             CALL    NEXT1           ; Re-enter NEXT routine
+ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?php bas8K("NEXT"); ?> routine
                 ; &lt; will not RETurn to here&nbsp;, Exit to RUNCNT or Loop &gt;
 </pre>
 <?php DoublePageChange(); ?>
@@ -69,9 +69,9 @@ ED5B 1600               LD      D,0             ; Precedence value
 <span id="ED5D">ED5D</span> D5         <?php lbl8K("EVAL1"); ?>:  PUSH    DE              ; Save precedence
 ED5E 0E01               LD      C,1
 ED60 CD8AE3             CALL    <?php bas8K("CHKSTK"); ?>          ; Check for 1 level of stack
-ED63 CDD1ED             CALL    OPRND           ; Get next expression value
-<span id="ED66">ED66</span> 22D010     <?php lbl8K("EVAL2"); ?>:  LD      (NXTOPR),HL     ; Save address of next operator
-<span id="ED69">ED69</span> 2AD010     <?php lbl8K("EVAL3"); ?>:  LD      HL,(NXTOPR)     ; Restore address of next opr
+ED63 CDD1ED             CALL    <?php bas8K("OPRND"); ?>           ; Get next expression value
+<span id="ED66">ED66</span> 22D010     <?php lbl8K("EVAL2"); ?>:  LD      (<?php bas8K("NXTOPR"); ?>),HL     ; Save address of next operator
+<span id="ED69">ED69</span> 2AD010     <?php lbl8K("EVAL3"); ?>:  LD      HL,(<?php bas8K("NXTOPR"); ?>)     ; Restore address of next opr
 ED6C C1                 POP     BC              ; Precedence value and operator
 ED6D 78                 LD      A,B             ; Get precedence value
 ED6E FE78               CP      78H             ; "AND" or "OR" ?

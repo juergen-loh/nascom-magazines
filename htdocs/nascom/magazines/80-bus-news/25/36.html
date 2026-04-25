@@ -54,7 +54,7 @@ E96A 2A4A10             LD      HL,(<?php bas8K("CHKSUM"); ?>)     ; Get accumul
 E96D CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Are they the same?
 E970 C8                 RET     Z               ; Yes - End <?php bas8K("CLOAD"); ?>*
 E971 CDD5FC             CALL    <?php bas8K("CASFF"); ?>           ; Cassette off
-E974 C36BF5             JP      OUTBAD          ; Different - Output "Bad"
+E974 C36BF5             JP      <?php bas8K("OUTBAD"); ?>          ; Different - Output "Bad"
 </pre>
 <?php DoublePageChange(); ?>
 <pre>

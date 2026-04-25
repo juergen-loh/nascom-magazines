@@ -10,31 +10,31 @@ E5BE 13                 INC     DE
 E5BF 12                 LD      (DE),A          ; A = 00
 E5C0 C9                 RET
 
-<span id="E5C1">E5C1</span> 3A4410     <?php lbl8K("DODEL"); ?>:  LD      A,(NULFLG)      ; Get null flag status
+<span id="E5C1">E5C1</span> 3A4410     <?php lbl8K("DODEL"); ?>:  LD      A,(<?php bas8K("NULFLG"); ?>)      ; Get null flag status
 E5C4 B7                 OR      A               ; Is it zero?
 E5C5 3E00               LD      A,0             ; Zero A - Leave flags
-E5C7 324410             LD      (NULFLG),A      ; Zero null flag
+E5C7 324410             LD      (<?php bas8K("NULFLG"); ?>),A      ; Zero null flag
 E5CA C2D5E5             JP      NZ,<?php bas8K("ECHDEL"); ?>       ; Set - Echo it
 E5CD 05                 DEC     B               ; Decrement length
 E5CE CAF2E5             JP      Z,<?php bas8K("GETLIN"); ?>        ; Get line again if empty
-E5D1 CD9BE6             CALL    OUTC            ; Output null character
+E5D1 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output null character
 E5D4 3E                 DEFB    (LD A,n)        ; Skip "DEC B"
 <span id="E5D5">E5D5</span> 05         <?php lbl8K("ECHDEL"); ?>: DEC     B               ; Count bytes in buffer
 E5D6 2B                 DEC     HL              ; Back space buffer
-E5D7 CAE9E5             JP      Z,OTKLN         ; No buffer - Try again
+E5D7 CAE9E5             JP      Z,<?php bas8K("OTKLN"); ?>         ; No buffer - Try again
 E5DA 7E                 LD      A,(HL)          ; Get deleted byte
-E5DB CD9BE6             CALL    OUTC            ; Echo it
-E5DE C310E6             JP      MORINP          ; Get more input
+E5DB CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Echo it
+E5DE C310E6             JP      <?php bas8K("MORINP"); ?>          ; Get more input
 
 <span id="E5E1">E5E1</span> 05         <?php lbl8K("DELCHR"); ?>: DEC     B               ; Count bytes in buffer
 E5E2 2B                 DEC     HL              ; Back space buffer
-E5E3 CD9BE6             CALL    OUTC            ; Output character in A
-E5E6 C210E6             JP      NZ,MORINP       ; Not end - Get more
-<span id="E5E9">E5E9</span> CD9BE6     <?php lbl8K("OTKLN"); ?>:  CALL    OUTC            ; Output character in A
+E5E3 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
+E5E6 C210E6             JP      NZ,<?php bas8K("MORINP"); ?>       ; Not end - Get more
+<span id="E5E9">E5E9</span> CD9BE6     <?php lbl8K("OTKLN"); ?>:  CALL    <?php bas8K("OUTC"); ?>            ; Output character in A
 <span id="E5EC">E5EC</span> CD81EB     <?php lbl8K("KILIN"); ?>:  CALL    PRNTCR          ; Output CRLF
 E5EF C307E6             JP      <?php bas8K("TTYLIN"); ?>          ; Get line again
 
-<span id="E5F2">E5F2</span> CD6DFE     <?php lbl8K("GETLIN"); ?>: CALL    MONTST          ; Is it NAS-SYS?
+<span id="E5F2">E5F2</span> CD6DFE     <?php lbl8K("GETLIN"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; Is it NAS-SYS?
 E5F5 CA07E6             JP      Z,<?php bas8K("TTYLIN"); ?>        ; No - Character input
 E5F8 2A750C             LD      HL,(<?php bas8K("CIN"); ?>)        ; Point to NAS-SYS input table
 E5FB 7E                 LD      A,(HL)          ; Get input mode
@@ -50,18 +50,18 @@ E604 C386EB             JP      <?php bas8K("DONULL"); ?>          ; POS(X)=0 an
 <span id="E607">E607</span> 216110     <?php lbl8K("TTYLIN"); ?>: LD      HL,<?php bas8K("BUFFER"); ?>       ; Get a line by character
 E60A 0601               LD      B,1             ; Set buffer as empty
 E60C AF                 XOR     A
-E60D 324410             LD      (NULFLG),A      ; Clear null flag
+E60D 324410             LD      (<?php bas8K("NULFLG"); ?>),A      ; Clear null flag
 <span id="E610">E610</span> CDCCE6     <?php lbl8K("MORINP"); ?>: CALL    <?php bas8K("CLOTST"); ?>          ; Get character and test ^O
 E613 4F                 LD      C,A             ; Save character in C
 E614 FE7F               CP      <?php bas8K("DEL"); ?>             ; Delete character?
 E616 CAC1E5             JP      Z,<?php bas8K("DODEL"); ?>         ; Yes - Process it
-E619 3A4410             LD      A,(NULFLG)      ; Get null flag
+E619 3A4410             LD      A,(<?php bas8K("NULFLG"); ?>)      ; Get null flag
 E61C B7                 OR      A               ; Test null flag status
 E61D CA29E6             JP      Z,PROCES        ; Reset - Process character
 E620 3E00               LD      A,0             ; Set a null
-E622 CD9BE6             CALL    OUTC            ; Output null
+E622 CD9BE6             CALL    <?php bas8K("OUTC"); ?>            ; Output null
 E625 AF                 XOR     A               ; Clear A
-E626 324410             LD      (NULFLG),A      ; Reset null flag
+E626 324410             LD      (<?php bas8K("NULFLG"); ?>),A      ; Reset null flag
 <span id="E629">E629</span> 79         <?php lbl8K("PROCES"); ?>: LD      A,C             ; Get character
 E62A FE07               CP      <?php bas8K("CTRLG"); ?>           ; Bell?
 E62C CA6DE6             JP      Z,PUTCTL        ; Yes - Save it
@@ -74,7 +74,7 @@ E638 CA7CEB             JP      Z,<?php bas8K("ENDINP"); ?>        ; Yes - Termi
 E63B FE15               CP      <?php bas8K("CTRLU"); ?>           ; Is it control "U"?
 E63D CAECE5             JP      Z,<?php bas8K("KILIN"); ?>         ; Yes - Get another line
 E640 FE40               CP      "@"             ; Is it "kill line"?
-E642 CAE9E5             JP      Z,OTKLN         ; Yes - Kill line
+E642 CAE9E5             JP      Z,<?php bas8K("OTKLN"); ?>         ; Yes - Kill line
 E645 FE5F               CP      "_"             ; Is it delete?
 E647 CAE1E5             JP      Z,<?php bas8K("DELCHR"); ?>        ; Yes - Delete character
 E64A FE08               CP      <?php bas8K("BKSP"); ?>            ; Is it backspace?
@@ -85,12 +85,12 @@ E654 C5                 PUSH    BC              ; Save buffer length
 E655 D5                 PUSH    DE              ; Save DE
 E656 E5                 PUSH    HL              ; Save buffer address
 E657 3600               LD      (HL),0          ; Mark end of buffer
-E659 CDF4FF             CALL    OUTNCR          ; Output and do CRLF
+E659 CDF4FF             CALL    <?php bas8K("OUTNCR"); ?>          ; Output and do CRLF
 E65C 216110             LD      HL,<?php bas8K("BUFFER"); ?>       ; Point to buffer start
 E65F CD10F2             CALL    PRS             ; Output buffer
 E662 E1                 POP     HL              ; Restore buffer address
 E663 D1                 POP     DE              ; Restore DE
 E664 C1                 POP     BC              ; Restore buffer length
-E665 C310E6             JP      MORINP          ; Get another character
+E665 C310E6             JP      <?php bas8K("MORINP"); ?>          ; Get another character
 </pre>
 <?php DoublePageEnd(); ?>

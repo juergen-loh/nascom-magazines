@@ -5,7 +5,7 @@
 <span id="E3F8">E3F8</span> AF         <?php lbl8K("PRNTOK"); ?>: XOR     A               ; Output "Ok" and get command
 E3F9 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output
 E3FC CD74EB             CALL    STTLIN          ; Start new line
-E3FF 214BE3             LD      HL,OKMSG        ; "Ok" message
+E3FF 214BE3             LD      HL,<?php bas8K("OKMSG"); ?>        ; "Ok" message
 E402 CD10F2             CALL    PRS             ; Output "Ok"
 <span id="E405">E405</span> 21FFFF     <?php lbl8K("GETCMD"); ?>: LD      HL,-1           ; Flag direct mode
 E408 225C10             LD      (<?php bas8K("LINEAT"); ?>),HL     ; Save as current line
@@ -62,7 +62,7 @@ E45D E3                 EX      (SP),HL         ; Get length of input line
 E45E C1                 POP     BC              ; End of program to BC
 E45F 09                 ADD     HL,BC           ; Find new end
 E460 E5                 PUSH    HL              ; Save new end
-E461 CD79E3             CALL    MOVUP           ; Make space for line
+E461 CD79E3             CALL    <?php bas8K("MOVUP"); ?>           ; Make space for line
 E464 E1                 POP     HL              ; Restore new end
 E465 22D610             LD      (PROGND),HL     ; Update end of program pointer
 E468 EB                 EX      DE,HL           ; Get line to move up in HL
@@ -80,7 +80,7 @@ E475 77                 LD      (HL),A          ; Save destinations
 E476 23                 INC     HL              ; Next source
 E477 13                 INC     DE              ; Next destination
 E478 B7                 OR      A               ; Done?
-E479 C274E4             JP      NZ,MOVBUF       ; No - Repeat
+E479 C274E4             JP      NZ,<?php bas8K("MOVBUF"); ?>       ; No - Repeat
 <span id="E47C">E47C</span> CDC5E4     <?php lbl8K("SETPTR"); ?>: CALL    RUNFST          ; Set line pointers
 E47F 23                 INC     HL              ; To LSB of pointer
 E480 EB                 EX      DE,HL           ; Address to DE

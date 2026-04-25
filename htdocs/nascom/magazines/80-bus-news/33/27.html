@@ -3,7 +3,7 @@
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    98</span>
 
 <span id="FE45">FE45</span> F5         <?php lbl8K("MONOUT"); ?>: PUSH    AF              ; Save character
-FE46 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE46 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE49 CA4FFE             JP      Z,TMNOUT        ; "T" output
 FE4C F1                 POP     AF              ; Restore character
 FE4D F7                 ROUT                    ; Output it
@@ -14,7 +14,7 @@ FE50 C34A0C             JP      TOUT            ; "T" output
 
 <span id="FE53">FE53</span> 3A4D10     <?php lbl8K("BREAK2"); ?>: LD      A,(<?php bas8K("BRKFLG"); ?>)      ; Break flag set?
 FE56 C265FE             JP      NZ,RETCTC       ; Yes - Return ^C
-FE59 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE59 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE5C CA62FE             JP      Z,TCHINP        ; Get "T" character input
 FE5F DF62               SCAL    RIN             ; Scan for a character
 FE61 C9                 RET
@@ -26,34 +26,34 @@ FE67 324D10             LD      (<?php bas8K("BRKFLG"); ?>),A
 FE6A 3E03               LD      A,<?php bas8K("CTRLC"); ?>         ; Return ^C
 FE6C C9                 RET
 
-<span id="FE6D">FE6D</span> 3A0100     <?php lbl8K("MONTST"); ?>: LD      A,(MONSTT+1)    ; "T" monitor or NAS-SYS?
+<span id="FE6D">FE6D</span> 3A0100     <?php lbl8K("MONTST"); ?>: LD      A,(<?php bas8K("MONSTT"); ?>+1)    ; "T" monitor or NAS-SYS?
 FE70 FE33               CP      33H             ; 31 00 10 / 31 33 0C
 FE72 C9                 RET
 
 <span id="FE73">FE73</span> CD39FE     <?php lbl8K("SAVE"); ?>:   CALL    <?php bas8K("FLPLED"); ?>          ; Flip tape LED
-FE76 CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE76 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE79 CA7FFE             JP      Z,TSAVE         ; "T" save
 FE7C DF57               SCAL    WRITE           ; Save program
 FE7E C9                 RET
 
-<span id="FE7F">FE7F</span> 3A8D00     <?php lbl8K("TSAVE"); ?>:  LD      A,(MONTYP)      ; "T2" or "T4" (FLAGS!!!)
+<span id="FE7F">FE7F</span> 3A8D00     <?php lbl8K("TSAVE"); ?>:  LD      A,(<?php bas8K("MONTYP"); ?>)      ; "T2" or "T4" (FLAGS!!!)
 FE82 CA0004             JP      Z,T4WR          ; T4 Write
 FE85 C3D103             JP      T2DUMP          ; T2 Dump
 
 <span id="FE88">FE88</span> CD39FE     <?php lbl8K("MONLD"); ?>:  CALL    <?php bas8K("FLPLED"); ?>          ; Flip tape LED
-FE8B CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FE8B CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FE8E CA99FE             JP      Z,TLOAD         ; "T" load
 FE91 3E52               LD      A,"R"           ; Set READ
 FE93 322B0C             LD      (<?php bas8K("ARGN"); ?>),A
 FE96 DF52               SCAL    READ            ; Load program
 FE98 C9                 RET
 
-<span id="FE99">FE99</span> 3A8D00     <?php lbl8K("TLOAD"); ?>:  LD      A,(MONTYP)      ; "T2" or "T4" (FLAGS!!!)
+<span id="FE99">FE99</span> 3A8D00     <?php lbl8K("TLOAD"); ?>:  LD      A,(<?php bas8K("MONTYP"); ?>)      ; "T2" or "T4" (FLAGS!!!)
 FE9C CA0C07             JP      Z,T4READ        ; T4 Read
 FE9F C3D103             JP      T2DUMP          ; T2 Dump&nbsp;??????????
 
-<span id="FEA2">FEA2</span> CD6DFE     <?php lbl8K("MONITR"); ?>: CALL    MONTST          ; See if NAS-SYS
-FEA5 CA0000             JP      Z,MONSTT        ; Jump to zero if "T"
+<span id="FEA2">FEA2</span> CD6DFE     <?php lbl8K("MONITR"); ?>: CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
+FEA5 CA0000             JP      Z,<?php bas8K("MONSTT"); ?>        ; Jump to zero if "T"
 FEA8 DF5B               SCAL    MRET            ; Return to NAS-SYS
 </pre>
 <?php DoublePageChange(); ?>
@@ -61,7 +61,7 @@ FEA8 DF5B               SCAL    MRET            ; Return to NAS-SYS
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    99</span>
 
 <span id="FEAA">FEAA</span> CD39FE     <?php lbl8K("MONVE"); ?>:  CALL    <?php bas8K("FLPLED"); ?>          ; Flip tape LED
-FEAD CD6DFE             CALL    MONTST          ; See if NAS-SYS
+FEAD CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
 FEB0 CAA0E9             JP      Z,<?php bas8K("FCERR"); ?>         ; Verify not available on "T"
 FEB3 3E56               LD      A,"V"           ; Set VERIFY
 FEB5 322B0C             LD      (<?php bas8K("ARGN"); ?>),A
@@ -70,10 +70,10 @@ FEBA C9                 RET
 
 <span id="FEBB">FEBB</span> 3E00       <?php lbl8K("INITST"); ?>: LD      A,0             ; Clear break flag
 FEBD 324D10             LD      (<?php bas8K("BRKFLG"); ?>),A
-FEC0 CD6DFE             CALL    MONTST          ; See if NAS-SYS
-FEC3 CA19E0             JP      Z,<?php bas8K("INIT"); ?>          ; "T" - No NMI vector
-FEC6 21DEFE             LD      HL,<a href="../../../33/27/text/#BREAK">BREAK</a>        ; Set NMI gives break
-FEC9 227E0C             LD      (NMI),HL
+FEC0 CD6DFE             CALL    <?php bas8K("MONTST"); ?>          ; See if NAS-SYS
+FEC3 CA19E0             JP      Z,<?php bas8K("INIT"); ?>          ; "T" - No <?php bas8K("NMI"); ?> vector
+FEC6 21DEFE             LD      HL,<a href="../../../33/27/text/#BREAK">BREAK</a>        ; Set <?php bas8K("NMI"); ?> gives break
+FEC9 227E0C             LD      (<?php bas8K("NMI"); ?>),HL
 FECC DDE5               PUSH    IX              ; Get start up condition
 FECE F1                 POP     AF              ; "Z" set if cold&nbsp;, Else clear
 FECF B7                 OR      A               ; "Cold" or "Cool" start?
@@ -87,7 +87,7 @@ FEDB C319E0             JP      <?php bas8K("INIT"); ?>            ; Initialise 
 FEDF 3EFF               LD      A,-1
 FEE1 324D10             LD      (<?php bas8K("BRKFLG"); ?>),A      ; Flag break
 FEE4 F1                 POP     AF              ; Restore character
-<span id="FEE5">FEE5</span> ED45       <?php lbl8K("ARETN"); ?>:  RETN                    ; Return from NMI
+<span id="FEE5">FEE5</span> ED45       <?php lbl8K("ARETN"); ?>:  RETN                    ; Return from <?php bas8K("NMI","","","\n"); ?>
 
 FEE7 00                 NOP
 

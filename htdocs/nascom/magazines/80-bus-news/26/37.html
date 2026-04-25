@@ -102,7 +102,7 @@ EF4D DA4AEF             JP      C,<?php bas8K("ENDNAM"); ?>        ; Numeric - G
 EF50 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
 EF53 D24AEF             JP      NC,<?php bas8K("ENDNAM"); ?>       ; Letter - Get another
 <span id="EF56">EF56</span> D624       <?php lbl8K("CHARTY"); ?>: SUB     "$"             ; String variable?
-EF58 C265EF             JP      NZ,NOTSTR       ; No - Numeric variable
+EF58 C265EF             JP      NZ,<?php bas8K("NOTSTR"); ?>       ; No - Numeric variable
 EF5B 3C                 INC     A               ; A = 1 (string type)
 EF5C 32AD10             LD      (TYPE),A        ; Set type to string
 EF5F 0F                 RRCA                    ; A = 80H&nbsp;, Flag for string
@@ -112,7 +112,7 @@ EF62 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next ch
 <span id="EF65">EF65</span> 3ACB10     <?php lbl8K("NOTSTR"); ?>: LD      A,(<?php bas8K("FORFLG"); ?>)      ; Array name needed&nbsp;?
 EF68 3D                 DEC     A
 EF69 CA12F0             JP      Z,<?php bas8K("ARLDSV"); ?>        ; Yes - Get array name
-EF6C F275EF             JP      P,NSCFOR        ; No array with "<?php bas8K("FOR"); ?>" or "FN"
+EF6C F275EF             JP      P,<?php bas8K("NSCFOR"); ?>        ; No array with "<?php bas8K("FOR"); ?>" or "FN"
 EF6F 7E                 LD      A,(HL)          ; Get byte again
 EF70 D628               SUB     "("             ; Subscripted variable?
 EF72 CAEAEF             JP      Z,SBSCPT        ; Yes - Sort out subscript

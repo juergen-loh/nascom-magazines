@@ -29,7 +29,7 @@ F63C 57                 LD      D,A             ; Save NMSB
 F63D 79                 LD      A,C             ; Get MSB
 F63E 8F                 ADC     A,A             ; Shift left with last bit
 F63F 4F                 LD      C,A             ; Save MSB
-<span id="F640">F640</span> F238F6     <?php lbl8K("PNORM"); ?>:  JP      P,NORMAL        ; Not done - Keep going
+<span id="F640">F640</span> F238F6     <?php lbl8K("PNORM"); ?>:  JP      P,<?php bas8K("NORMAL"); ?>        ; Not done - Keep going
 F643 78                 LD      A,B             ; Number of bits shifted
 F644 5C                 LD      E,H             ; Save HL in EB
 F645 45                 LD      B,L
@@ -65,7 +65,7 @@ F66A C0                 RET     NZ              ; Return if ok
 F66B 0E80               LD      C,80H           ; Set normal value
 F66D 34                 INC     (HL)            ; Increment exponent
 F66E C0                 RET     NZ              ; Return if ok
-F66F C3BCE3             JP      OVERR           ; Overflow error
+F66F C3BCE3             JP      <?php bas8K("OVERR"); ?>           ; Overflow error
 
 <span id="F672">F672</span> 7E         <?php lbl8K("PLUCDE"); ?>: LD      A,(HL)          ; Get LSB of <?php bas8K("FPREG","","","\n"); ?>
 F673 83                 ADD     A,E             ; Add LSB of BCDE

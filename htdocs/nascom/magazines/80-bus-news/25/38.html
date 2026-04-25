@@ -15,8 +15,8 @@ EA7C B8                 CP      B               ; End of statement?
 EA7D C8                 RET     Z               ; Yes - Exit
 EA7E 23                 INC     HL              ; Next byte
 EA7F FE22               CP      '"'             ; Literal string?
-EA81 CA76EA             JP      Z,NXTSTL        ; Yes - Look for another '"'
-EA84 C379EA             JP      NXTSTT          ; Keep looking
+EA81 CA76EA             JP      Z,<?php bas8K("NXTSTL"); ?>        ; Yes - Look for another '"'
+EA84 C379EA             JP      <?php bas8K("NXTSTT"); ?>          ; Keep looking
 
 <span id="EA87">EA87</span> CD2DEF     <?php lbl8K("LET"); ?>:    CALL    <?php bas8K("GETVAR"); ?>          ; Get variable name
 EA8A CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "=" follows
@@ -45,10 +45,10 @@ EAB2 D2C9EA             JP      NC,<?php bas8K("CRESTR"); ?>       ; Yes - Creat
 EAB5 2A5A10             LD      HL,(STRSPC)     ; Point to string space
 EAB8 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string literal in program?
 EABB D1                 POP     DE              ; Restore address of string
-EABC D2D1EA             JP      NC,MVSTPT       ; Yes - Set up pointer
+EABC D2D1EA             JP      NC,<?php bas8K("MVSTPT"); ?>       ; Yes - Set up pointer
 EABF 21BF10             LD      HL,TMPSTR       ; Temporary string pool
 EAC2 CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is string in temporary pool?
-EAC5 D2D1EA             JP      NC,MVSTPT       ; No - Set up pointer
+EAC5 D2D1EA             JP      NC,<?php bas8K("MVSTPT"); ?>       ; No - Set up pointer
 EAC8 3E                 DEFB    (LD A,n)        ; Skip "POP DE"
 <span id="EAC9">EAC9</span> D1         <?php lbl8K("CRESTR"); ?>: POP     DE              ; Restore address of string
 EACA CD71F3             CALL    <?php bas8K("BAKTMP"); ?>          ; Back to last tmp-str entry
@@ -74,18 +74,18 @@ EAE0 C9                 RET
 EAE4 7E                 LD      A,(HL)          ; Get "<?php bas8K("GOTO"); ?>" or "<?php bas8K("GOSUB"); ?>" token
 EAE5 47                 LD      B,A             ; Save in B
 EAE6 FE8C               CP      ZGOSUB          ; "<?php bas8K("GOSUB"); ?>" token?
-EAE8 CAF0EA             JP      Z,ONGO          ; Yes - Find line number
+EAE8 CAF0EA             JP      Z,<?php bas8K("ONGO"); ?>          ; Yes - Find line number
 EAEB CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure it's "<?php bas8K("GOTO"); ?>"
 EAEE 88                 DEFB    ZGOTO           ; "<?php bas8K("GOTO"); ?>" token
 EAEF 2B                 DEC     HL              ; Cancel increment
 <span id="EAF0">EAF0</span> 4B         <?php lbl8K("ONGO"); ?>:   LD      C,E             ; Integer of branch value
 <span id="EAF1">EAF1</span> 0D         <?php lbl8K("ONGOLP"); ?>: DEC     C               ; Count branches
 EAF2 78                 LD      A,B             ; Get "<?php bas8K("GOTO"); ?>" or "<?php bas8K("GOSUB"); ?>" token
-EAF3 CA1EE8             JP      Z,ONJMP         ; Go to that line if right one
+EAF3 CA1EE8             JP      Z,<?php bas8K("ONJMP"); ?>         ; Go to that line if right one
 EAF6 CDA6E9             CALL    <?php bas8K("GETLN"); ?>           ; Get line number to DE
 EAF9 FE2C               CP      ","             ; Another line number?
 EAFB C0                 RET     NZ              ; No - Drop through
-EAFC C3F1EA             JP      ONGOLP          ; Yes - loop
+EAFC C3F1EA             JP      <?php bas8K("ONGOLP"); ?>          ; Yes - loop
 
 <span id="EAFF">EAFF</span> CD5AED     <?php lbl8K("IF"); ?>:     CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 EB02 7E                 LD      A,(HL)          ; Get token

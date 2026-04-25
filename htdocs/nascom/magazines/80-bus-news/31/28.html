@@ -23,7 +23,7 @@ F2F3 2B                 DEC     HL              ; Last byte in string
 F2F4 44                 LD      B,H             ; Address to BC
 F2F5 4D                 LD      C,L
 F2F6 2AC310             LD      HL,(STRBOT)     ; Current bottom of string area
-F2F9 CD7CE3             CALL    MOVSTR          ; Move string to new address
+F2F9 CD7CE3             CALL    <?php bas8K("MOVSTR"); ?>          ; Move string to new address
 F2FC E1                 POP     HL              ; Restore variable address
 F2FD 71                 LD      (HL),C          ; Save new LSB of address
 F2FE 23                 INC     HL
@@ -37,7 +37,7 @@ F303 C356F2             JP      <?php bas8K("GARBLP"); ?>          ; Look for mo
 F307 E5                 PUSH    HL              ;
 F308 2AE410             LD      HL,(<?php bas8K("FPREG"); ?>)      ; Get first string
 F30B E3                 EX      (SP),HL         ; Save first string
-F30C CDD1ED             CALL    OPRND           ; Get second string
+F30C CDD1ED             CALL    <?php bas8K("OPRND"); ?>           ; Get second string
 F30F E3                 EX      (SP),HL         ; Restore first string
 F310 CD45ED             CALL    TSTSTR          ; Make sure it's a string
 F313 7E                 LD      A,(HL)          ; Get length of second string

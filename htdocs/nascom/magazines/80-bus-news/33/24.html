@@ -70,7 +70,7 @@ FC76 CD00FC             CALL    <?php bas8K("COS"); ?>             ; Get COS of 
 FC79 C367F7             JP      <?php bas8K("DIV"); ?>             ; TAN = SIN / <?php bas8K("COS","","","\n"); ?>
 
 <span id="FC7C">FC7C</span> CD13F8     <?php lbl8K("ATN"); ?>:    CALL    TSTSGN          ; Test sign of value
-FC7F FCA7FA             CALL    M,NEGAFT        ; Negate result after if -ve
+FC7F FCA7FA             CALL    M,<?php bas8K("NEGAFT"); ?>        ; Negate result after if -ve
 FC82 FC3CF8             CALL    M,<?php bas8K("INVSGN"); ?>        ; Negate value if -ve
 FC85 3AE710             LD      A,(<?php bas8K("FPEXP"); ?>)       ; Get exponent
 FC88 FE81               CP      81H             ; Number less than 1?
