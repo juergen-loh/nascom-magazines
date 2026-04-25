@@ -44,7 +44,7 @@ EC82 2B                 DEC     HL              ; Back space for <?php bas8K("DT
 <?php adr8K("EC83"); ?> CDD2F1     <?php lbl8K("STRENT"); ?>: CALL    <?php bas8K("DTSTR"); ?>           ; Get string terminated by D
 EC86 EB                 EX      DE,HL           ; String address to DE
 EC87 219AEC             LD      HL,<?php bas8K("LTSTND"); ?>       ; Where to go after <?php bas8K("LETSTR","","","\n"); ?>
-EC8A E3                 EX      (SP),HL         ; Save HL&nbsp;, get input pointer
+EC8A E3                 EX      (SP),HL         ; Save HL , get input pointer
 EC8B D5                 PUSH    DE              ; Save address of string
 EC8C C3A2EA             JP      <?php bas8K("LETSTR"); ?>          ; Assign string to variable
 </pre>

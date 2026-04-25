@@ -5739,7 +5739,7 @@ function lbl8K($label, $link = "")
 function bas8K($label, $target = "", $path = "", $post = "")
 {
 	if ($target == "")	$target = $label;
-	if ($path == "")	$path = "../../..";
+	$path = "../../..$path";
 
 	$p = "";
 	$p = "-";	// Link-Fehler provozieren
@@ -6459,6 +6459,7 @@ function bas8K($label, $target = "", $path = "", $post = "")
 									$p = "33/24";	break;
 	case "FCC8":	case "CASFFW":
 	case "FCCD":	case "DELAYB":
+	case "FCD4":
 	case "FCD5":	case "CASFF":
 	case "FCD8":	case "ARET":
 	case "FCD9":	case "CONMON":
@@ -6692,4 +6693,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-25 19:24:14 +0200 (Sa, 25. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-25 21:20:34 +0200 (Sa, 25. Apr 2026) $ -->

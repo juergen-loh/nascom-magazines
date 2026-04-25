@@ -54,7 +54,7 @@ F126 CD90E6             CALL    <?php bas8K("CHKSYN"); ?>          ; Make sure "
 F129 B4                 DEFB    <?php bas8K("ZEQUAL"); ?>          ; "=" token
 F12A 44                 LD      B,H             ; Code string address to BC
 F12B 4D                 LD      C,L
-F12C E3                 EX      (SP),HL         ; Save code str&nbsp;, Get FN ptr
+F12C E3                 EX      (SP),HL         ; Save code str , Get FN ptr
 F12D 71                 LD      (HL),C          ; Save LSB of FN code string
 F12E 23                 INC     HL
 F12F 70                 LD      (HL),B          ; Save MSB of FN code string
@@ -68,7 +68,7 @@ F130 C3C8F1             JP      <?php bas8K("SVSTAD"); ?>          ; Save addres
 F136 D5                 PUSH    DE              ; Save function pointer address
 F137 CD09EE             CALL    <?php bas8K("EVLPAR"); ?>          ; Evaluate expression in "()"
 F13A CD44ED             CALL    <?php bas8K("TSTNUM"); ?>          ; Make sure numeric result
-F13D E3                 EX      (SP),HL         ; Save code str&nbsp;, Get FN ptr
+F13D E3                 EX      (SP),HL         ; Save code str , Get FN ptr
 F13E 5E                 LD      E,(HL)          ; Get LSB of FN code string
 F13F 23                 INC     HL
 F140 56                 LD      D,(HL)          ; Get MSB of FN code string
@@ -82,7 +82,7 @@ F149 66                 LD      H,(HL)          ; Get MSB of argument address
 F14A 6F                 LD      L,A             ; HL = Arg variable address
 F14B E5                 PUSH    HL              ; Save it
 F14C 2ADE10             LD      HL,(<?php bas8K("FNRGNM"); ?>)     ; Get old argument name
-F14F E3                 EX      (SP),HL         ; Save old&nbsp;, Get new
+F14F E3                 EX      (SP),HL         ; Save old , Get new
 F150 22DE10             LD      (<?php bas8K("FNRGNM"); ?>),HL     ; Set new argument name
 F153 2AE210             LD      HL,(<?php bas8K("FNARG"); ?>+2)    ; Get LSB,NLSB of old arg value
 F156 E5                 PUSH    HL              ; Save it

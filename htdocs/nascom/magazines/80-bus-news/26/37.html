@@ -56,7 +56,7 @@ EEFF 8F                 ADC     A,A             ; Double plus carry
 EF00 C1                 POP     BC              ; Get other value
 EF01 A0                 AND     B               ; Combine them
 EF02 C6FF               ADD     A,-1            ; Carry set if different
-EF04 9F                 SBC     A,A             ; 00 - Equal&nbsp;, FF - Different
+EF04 9F                 SBC     A,A             ; 00 - Equal , FF - Different
 EF05 C325F8             JP      <?php bas8K("FLGREL"); ?>          ; Set current value & continue
 </pre>
 <?php DoublePageChange(); ?>
@@ -105,11 +105,11 @@ EF53 D24AEF             JP      NC,<?php bas8K("ENDNAM"); ?>       ; Letter - Ge
 EF58 C265EF             JP      NZ,<?php bas8K("NOTSTR"); ?>       ; No - Numeric variable
 EF5B 3C                 INC     A               ; A = 1 (string type)
 EF5C 32AD10             LD      (<?php bas8K("TYPE"); ?>),A        ; Set type to string
-EF5F 0F                 RRCA                    ; A = 80H&nbsp;, Flag for string
+EF5F 0F                 RRCA                    ; A = 80H , Flag for string
 EF60 81                 ADD     A,C             ; 2nd byte of name has bit 7 on
 EF61 4F                 LD      C,A             ; Resave second byte on name
 EF62 CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-<?php adr8K("EF65"); ?> 3ACB10     <?php lbl8K("NOTSTR"); ?>: LD      A,(<?php bas8K("FORFLG"); ?>)      ; Array name needed&nbsp;?
+<?php adr8K("EF65"); ?> 3ACB10     <?php lbl8K("NOTSTR"); ?>: LD      A,(<?php bas8K("FORFLG"); ?>)      ; Array name needed ?
 EF68 3D                 DEC     A
 EF69 CA12F0             JP      Z,<?php bas8K("ARLDSV"); ?>        ; Yes - Get array name
 EF6C F275EF             JP      P,<?php bas8K("NSCFOR"); ?>        ; No array with "<?php bas8K("FOR"); ?>" or "FN"

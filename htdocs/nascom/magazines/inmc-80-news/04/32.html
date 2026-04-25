@@ -2,16 +2,16 @@
 <table class="useful-routines">
 <tr><td colspan=4>Routine to get next non space<br>
                   character.C flag set if valid</td></tr>
-<tr><td></td><td>ASCII digit				</td><td>&ndash;&ndash;	</td><td><a href="../../../../80-bus-news/25/34/text/#E836">E836</a></td></tr>
-<tr><td></td><td>Print HL in decimal		</td><td>&ndash;&ndash;	</td><td><a href="../../../../80-bus-news/32/27/text/#F9AD">F9AD</a></td></tr>
-<tr><td></td><td>Amount of memory			</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#10DA">10DA</a></td></tr>
-<tr><td></td><td>Ctrl &lsquo;O&rsquo; flag	</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#1045">1045</a></td></tr>
-<tr><td></td><td>End of program				</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#10D6">10D6</a></td></tr>
-<tr><td></td><td>Start of text				</td><td>starts @		</td><td><a href="../../../../80-bus-news/24/24/text/#10F9">10F9</a></td></tr>
-<tr><td></td><td>Nulls						</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#1041">1041</a></td></tr>
-<tr><td></td><td>Line length				</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#1042">1042</a></td></tr>
-<tr><td></td><td>Location of text			</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#1048">1049</a></td></tr>
-<tr><td></td><td>Line buffer				</td><td>stored @		</td><td><a href="../../../../80-bus-news/24/24/text/#104A">104B</a></td></tr>
+<tr><td></td><td>ASCII digit				</td><td>&ndash;&ndash;	</td><td><?php bas8K("E836","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Print HL in decimal		</td><td>&ndash;&ndash;	</td><td><?php bas8K("F9AD","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Amount of memory			</td><td>stored @		</td><td><?php bas8K("10DA","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Ctrl &lsquo;O&rsquo; flag	</td><td>stored @		</td><td><?php bas8K("1045","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>End of program				</td><td>stored @		</td><td><?php bas8K("10D6","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Start of text				</td><td>starts @		</td><td><?php bas8K("10F9","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Nulls						</td><td>stored @		</td><td><?php bas8K("1041","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Line length				</td><td>stored @		</td><td><?php bas8K("1042","","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Location of text			</td><td>stored @		</td><td><?php bas8K("1049","1048","/../80-bus-news"); ?></td></tr>
+<tr><td></td><td>Line buffer				</td><td>stored @		</td><td><?php bas8K("104B","104A","/../80-bus-news"); ?></td></tr>
 </table>
 <p>
 While I was disassembling the BASIC I found a number of things that aren&rsquo;t
@@ -24,15 +24,15 @@ mode, or during an INPUT statement.
 </p>
 <p>
 Ever noticed how slow BASIC is on starting up? Take a look at locations
-<a href="../../../../80-bus-news/33/25/text/#FCCD">FCCDH</a>
-through to <a href="../../../../80-bus-news/33/25/text/#FCD4">FCD4H</a>
+<?php bas8K("FCCDH","FCCD","/../80-bus-news","\n"); ?>
+through to <?php bas8K("FCD4H","FCD4","/../80-bus-news","\n"); ?>
 these locations form a routine which is simply a delay. At this point
 I will grit my teeth and hope that I&rsquo;m right and that it is all it does.
 </p>
 <p>
 Ever wondered why you can&rsquo;t single step BASIC? It&rsquo;s because it changes the NMI
 jump vector in the workspace. If you want to single step BASIC ignore any calls to
-<a href="../../../../80-bus-news/33/27/text/#FEBB">FEBBH</a>
+<?php bas8K("FEBBH","FEBB","/../80-bus-news","\n"); ?>
 because that&rsquo;s where it changes. Ok so it changes the NMI jump so what does it
 change it to? It changes it to the break function, so if you can generate an NMI you
 can use it as a break key. How do I generate an NMI&nbsp;? Simple connect a push to make

@@ -37,11 +37,11 @@ ED2E C3EEE7             JP      <?php bas8K("PUTFID"); ?>          ; Put back "<
 <?php adr8K("ED31"); ?> F9         <?php lbl8K("KILFOR"); ?>: LD      SP,HL           ; Remove "<?php bas8K("FOR"); ?>" block
 ED32 2ACE10             LD      HL,(<?php bas8K("BRKLIN"); ?>)     ; Code string after "<?php bas8K("NEXT"); ?>"
 ED35 7E                 LD      A,(HL)          ; Get next byte in code string
-ED36 FE2C               CP      ","             ; More NEXTs&nbsp;?
+ED36 FE2C               CP      ","             ; More NEXTs ?
 ED38 C2F2E7             JP      NZ,<?php bas8K("RUNCNT"); ?>       ; No - Do next statement
 ED3B CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Position to index name
 ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?php bas8K("NEXT"); ?> routine
-                ; &lt; will not RETurn to here&nbsp;, Exit to <?php bas8K("RUNCNT"); ?> or Loop &gt;
+                ; &lt; will not RETurn to here , Exit to <?php bas8K("RUNCNT"); ?> or Loop &gt;
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
@@ -52,7 +52,7 @@ ED3E CDF9EC             CALL    <?php bas8K("NEXT1"); ?>           ; Re-enter <?
 <?php adr8K("ED45"); ?> 37         <?php lbl8K("TSTSTR"); ?>: SCF                     ; Set carry (string)
 <?php adr8K("ED46"); ?> 3AAD10     <?php lbl8K("CHKTYP"); ?>: LD      A,(<?php bas8K("TYPE"); ?>)        ; Check types match
 ED49 8F                 ADC     A,A             ; Expected + actual
-ED4A B7                 OR      A               ; Clear carry&nbsp;, set parity
+ED4A B7                 OR      A               ; Clear carry , set parity
 ED4B E8                 RET     PE              ; Even parity - Types match
 ED4C C3BFE3             JP      <?php bas8K("TMERR"); ?>           ; Different types - Error
 

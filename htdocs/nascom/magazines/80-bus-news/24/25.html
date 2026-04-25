@@ -38,7 +38,7 @@ E042 B7                 OR      A               ; Set flags
 E043 C25BE0             JP      NZ,<?php bas8K("TSTMEM"); ?>       ; If number - Test if RAM there
 E046 215D11             LD      HL,<?php bas8K("STLOOK"); ?>       ; Point to start of RAM
 <?php adr8K("E049"); ?> 23         <?php lbl8K("MLOOP"); ?>:  INC     HL              ; Next byte
-E04A 7C                 LD      A,H             ; Above address FFFF&nbsp;?
+E04A 7C                 LD      A,H             ; Above address FFFF ?
 E04B B5                 OR      L
 E04C CA6DE0             JP      Z,<?php bas8K("SETTOP"); ?>        ; Yes - 64K RAM
 E04F 7E                 LD      A,(HL)          ; Get contents

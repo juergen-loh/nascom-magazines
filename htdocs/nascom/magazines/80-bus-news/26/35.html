@@ -10,17 +10,17 @@ EDDA CAC1E3             JP      Z,<?php bas8K("ERROR"); ?>         ; No operand 
 EDDD DA1AF9             JP      C,<?php bas8K("ASCTFP"); ?>        ; Number - Get value
 EDE0 CD77E9             CALL    <?php bas8K("CHKLTR"); ?>          ; See if a letter
 EDE3 D222EE             JP      NC,<?php bas8K("CONVAR"); ?>       ; Letter - Find variable
-<?php adr8K("EDE6"); ?> FEAC               CP      <?php bas8K("ZPLUS"); ?>           ; "+" Token&nbsp;?
+<?php adr8K("EDE6"); ?> FEAC               CP      <?php bas8K("ZPLUS"); ?>           ; "+" Token ?
 EDE8 CAD1ED             JP      Z,<?php bas8K("OPRND"); ?>         ; Yes - Look for operand
 EDEB FE2E               CP      "."             ; "." ?
 EDED CA1AF9             JP      Z,<?php bas8K("ASCTFP"); ?>        ; Yes - Create FP number
-<?php adr8K("EDF0"); ?> FEAD               CP      <?php bas8K("ZMINUS"); ?>          ; "-" Token&nbsp;?
+<?php adr8K("EDF0"); ?> FEAD               CP      <?php bas8K("ZMINUS"); ?>          ; "-" Token ?
 EDF2 CA11EE             JP      Z,<?php bas8K("MINUS"); ?>         ; Yes - Do minus
-EDF5 FE22               CP      '"'             ; Literal string&nbsp;?
+EDF5 FE22               CP      '"'             ; Literal string ?
 EDF7 CACFF1             JP      Z,<?php bas8K("QTSTR"); ?>         ; Get string terminated by '"'
-EDFA FEAA               CP      <?php bas8K("ZNOT"); ?>            ; "NOT" Token&nbsp;?
+EDFA FEAA               CP      <?php bas8K("ZNOT"); ?>            ; "NOT" Token ?
 EDFC CA08EF             JP      Z,<?php bas8K("EVNOT"); ?>         ; Yes - Eval NOT expression
-EDFF FEA7               CP      <?php bas8K("ZFN"); ?>             ; "FN" Token&nbsp;?
+EDFF FEA7               CP      <?php bas8K("ZFN"); ?>             ; "FN" Token ?
 EE01 CA33F1             JP      Z,<?php bas8K("DOFN"); ?>          ; Yes - Do FN routine
 EE04 D6B6               SUB     <?php bas8K("ZSGN"); ?>            ; Is it a function?
 EE06 D233EE             JP      NC,<?php bas8K("FNOFST"); ?>       ; Yes - Evaluate function
@@ -52,18 +52,18 @@ EE32 C9                 RET
 <pre>
 <span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    46</span>
 
-<?php adr8K("ED92"); ?> 7A         <?php lbl8K("FOPRND"); ?>: LD      A,D             ; &lt; = &gt; found&nbsp;?
+<?php adr8K("ED92"); ?> 7A         <?php lbl8K("FOPRND"); ?>: LD      A,D             ; &lt; = &gt; found ?
 ED93 B7                 OR      A
 ED94 C2A8EE             JP      NZ,<?php bas8K("TSTRED"); ?>       ; Yes - Test for reduction
 ED97 7E                 LD      A,(HL)          ; Get operator token
 ED98 22C510             LD      (<?php bas8K("CUROPR"); ?>),HL     ; Save operator address
 ED9B D6AC               SUB     <?php bas8K("ZPLUS"); ?>           ; Operator or function?
 ED9D D8                 RET     C               ; Neither - Exit
-<?php adr8K("ED9E"); ?> FE07               CP      <?php bas8K("ZOR"); ?>+1-<?php bas8K("ZPLUS"); ?>     ; Is it + - * / ^ AND OR&nbsp;?
+<?php adr8K("ED9E"); ?> FE07               CP      <?php bas8K("ZOR"); ?>+1-<?php bas8K("ZPLUS"); ?>     ; Is it + - * / ^ AND OR ?
 EDA0 D0                 RET     NC              ; No - Exit
 EDA1 5F                 LD      E,A             ; Coded operator
 EDA2 3AAD10             LD      A,(<?php bas8K("TYPE"); ?>)        ; Get data type
-EDA5 3D                 DEC     A               ; FF = numeric&nbsp;, 00 = string
+EDA5 3D                 DEC     A               ; FF = numeric , 00 = string
 EDA6 B3                 OR      E               ; Combine with coded operator
 EDA7 7B                 LD      A,E             ; Get coded operator
 EDA8 CA06F3             JP      Z,<?php bas8K("CONCAT"); ?>        ; String concatenation

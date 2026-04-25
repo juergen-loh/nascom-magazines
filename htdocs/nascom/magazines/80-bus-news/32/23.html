@@ -21,7 +21,7 @@ F761 110000             LD      DE,0000H
 F764 CD54F8             CALL    <?php bas8K("FPBCDE"); ?>          ; Move 10 to <?php bas8K("FPREG","","","\n"); ?>
 
 <?php adr8K("F767"); ?> C1         <?php lbl8K("DIV"); ?>:    POP     BC              ; Get number from stack
-F768 D1                 POP     DE
+<?php adr8K("F768"); ?> D1                 POP     DE
 <?php adr8K("F769"); ?> CD13F8     <?php lbl8K("DVBCDE"); ?>: CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F76C CAB0E3             JP      Z,<?php bas8K("DZERR"); ?>         ; Error if division by zero
 F76F 2EFF               LD      L,-1            ; Flag subtract exponents

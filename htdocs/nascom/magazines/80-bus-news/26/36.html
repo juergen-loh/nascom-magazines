@@ -41,12 +41,12 @@ EE6F E9                 JP      (HL)            ; Jump to function
 <?php adr8K("EE70"); ?> 15         <?php lbl8K("SGNEXP"); ?>: DEC     D               ; Dee to flag negative exponent
 EE71 FEAD               CP      <?php bas8K("ZMINUS"); ?>          ; "-" token&nbsp;?
 EE73 C8                 RET     Z               ; Yes - Return
-EE74 FE2D               CP      "-"             ; "-" ASCII&nbsp;?
+EE74 FE2D               CP      "-"             ; "-" ASCII ?
 EE76 C8                 RET     Z               ; Yes - Return
 EE77 14                 INC     D               ; Inc to flag positive exponent
-EE78 FE2B               CP      "+"             ; "+" ASCII&nbsp;?
+EE78 FE2B               CP      "+"             ; "+" ASCII ?
 EE7A C8                 RET     Z               ; Yes - Return
-EE7B FEAC               CP      <?php bas8K("ZPLUS"); ?>           ; "+" token&nbsp;?
+EE7B FEAC               CP      <?php bas8K("ZPLUS"); ?>           ; "+" token ?
 EE7D C8                 RET     Z               ; Yes - Return
 EE7E 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 EE7F C9                 RET                     ; Return "NZ"
