@@ -31,7 +31,7 @@ Example of the number 35.25 in floating point:&ndash;<br><br></p>
 <tr><td colspan=3>As the bit after the point is ALWAYS &ldquo;1&rdquo; this bit can be used
 to store the sign of the number &ldquo;0&rdquo; for +ve, &ldquo;1&rdquo; for -ve</td></tr>
 <tr><td>So +35.25 is stored as</td><td colspan=2>.00001101 * 2 ^ 00000110</td></tr>
-<tr><td>Which in 24 bits is</td><td colspan=2>.000011010000000000000000 *2^ 00000110</td></tr>
+<tr><td>Which in 24 bits is</td><td colspan=2>.000011010000<?php spChar("zwsp"); ?>000000000000 *2^ 00000110</td></tr>
 <tr><td colspan=3><?php spChar("zwsp"); ?></td></tr>
 
 <tr><td colspan=3>128 is added to the exponent so that overflows and underflows
@@ -99,10 +99,10 @@ the first) line is to be executed.
 
 <tr><td><p></p></td><td><p></p></td><td colspan=2><p>
 Example:&ndash; The program:&ndash;</p>
-<pre>
-  10 <?php bas8K("FOR","ZFOR"); ?> A=1 <?php bas8K("TO","ZTO"); ?> 5:<?php bas8K("PRINT","ZPRINT"); ?> A,<?php bas8K("SQR","E11D"); ?>(1):<?php bas8K("NEXT"); ?> A
+<p style="margin-left: 1em">
+  10 <?php bas8K("FOR","ZFOR"); ?> A=1 <?php bas8K("TO","ZTO"); ?> 5:<?php spChar("zwsp"); ?><?php bas8K("PRINT","ZPRINT"); ?> A,<?php bas8K("SQR"); ?>(1):<?php spChar("zwsp"); ?><?php bas8K("NEXT"); ?> A<br>
   20 <?php bas8K("END","ZEND","","\n"); ?>
-</pre>
+</p>
 <p>is in memory, it would look like this:&ndash;
 </p></td></tr>
 <tr><td><p></p></td><td><p></p></td><td colspan=2>
@@ -125,7 +125,7 @@ Example:&ndash; The program:&ndash;</p>
 <tr><td>1109</td><td>20		</td><td>Space</td></tr>
 <tr><td>110A</td><td>41		</td><td>A</td></tr>
 <tr><td>110B</td><td>2C		</td><td>,</td></tr>
-<tr><td>110C</td><td>BA		</td><td><?php bas8K("SQR","E11D"); ?> token</td></tr>
+<tr><td>110C</td><td>BA		</td><td><?php bas8K("SQR"); ?> token</td></tr>
 <tr><td>110D</td><td>28		</td><td>(</td></tr>
 <tr><td>110E</td><td>41		</td><td>A</td></tr>
 <tr><td>110F</td><td>29		</td><td>)</td></tr>
