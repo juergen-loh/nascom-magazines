@@ -5739,6 +5739,13 @@ function lbl8K($label, $link = "")
 function bas8K($label, $target = "", $path = "", $post = "")
 {
 	if ($target == "")	$target = $label;
+
+	global $RomBasicComplete;
+	if ($RomBasicComplete) {
+		echo "<a href=\"#$target\">$label</a>$post";
+		return;
+	}
+
 	$path = "../../..$path";
 
 	$p = "";
@@ -6693,4 +6700,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-25 21:20:34 +0200 (Sa, 25. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-04-26 19:37:10 +0200 (So, 26. Apr 2026) $ -->

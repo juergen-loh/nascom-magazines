@@ -97,6 +97,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	23
+	,	5
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Aunt Aghata&rsquo;s Agony Column"

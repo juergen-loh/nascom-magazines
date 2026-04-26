@@ -65,6 +65,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	31
+	,	3
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini Galaxy 2 review"

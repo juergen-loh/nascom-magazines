@@ -9,7 +9,7 @@ EC40 E3                 EX      (SP),HL         ; Save code str" , Get pointer
 EC41 D5                 PUSH    DE              ; Save variable address
 EC42 7E                 LD      A,(HL)          ; Get next "<?php bas8K("INPUT"); ?>"/"<?php bas8K("DATA"); ?>" byte
 EC43 FE2C               CP      ","             ; Comma?
-EC45 CA65EC             JP      Z,<a href="../../../26/33/text/#ANTVLU">ANTVLU</a>        ; Yes - Get another value
+EC45 CA65EC             JP      Z,<?php bas8K("ANTVLU"); ?>        ; Yes - Get another value
 EC48 3ACD10             LD      A,(<?php bas8K("READFG"); ?>)      ; Is it <?php bas8K("READ"); ?>?
 EC4B B7                 OR      A
 EC4C C2D2EC             JP      NZ,<?php bas8K("FDTLP"); ?>        ; Yes - Find next DATA stmt

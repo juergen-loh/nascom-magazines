@@ -11,7 +11,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2025-09-20 14:53:29 +0200 (Sa, 20. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2026-04-26 19:37:10 +0200 (So, 26. Apr 2026) $ / <?php echo "$lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -376,12 +376,13 @@
 </h3>
 <p>
 	<a href="../80-bus-news/23/27/text/#article1">   Part&nbsp;1&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/24/23/text/#article1"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/25/31/text/#article1"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/26/31/text/#article1"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/31/23/text/#article1"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/32/23/text/#article1"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
-	<a href="../80-bus-news/33/23/text/#article1"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/24/23/text/#article2"> &nbsp;&nbsp;2&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/25/31/text/#article3"> &nbsp;&nbsp;3&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/26/31/text/#article4"> &nbsp;&nbsp;4&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/31/23/text/#article5"> &nbsp;&nbsp;5&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/32/23/text/#article6"> &nbsp;&nbsp;6&nbsp;&nbsp;</a>
+	<a href="../80-bus-news/33/23/text/#article7"> &nbsp;&nbsp;7&nbsp;&nbsp;</a>
+	<a href="../../rom-basic/">&nbsp;&nbsp;Complete&nbsp;&nbsp;</a>
 </p>
 </div>
 

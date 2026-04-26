@@ -72,6 +72,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	31
+	,	4
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Book Reviews"

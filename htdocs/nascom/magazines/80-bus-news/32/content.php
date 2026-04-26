@@ -58,6 +58,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	23
+	,	6
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Gemini GM860 EPROM Programmer review &ndash; describes their programming algorithm"

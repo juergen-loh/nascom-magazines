@@ -47,7 +47,7 @@ F272 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; Start of si
 F276 2AD810             LD      HL,(<?php bas8K("VAREND"); ?>)     ; End of simple variables
 F279 EB                 EX      DE,HL
 F27A CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; All simple strings done?
-F27D CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Do string arrays
+F27D CA8BF2             JP      Z,<?php bas8K("ARRLP"); ?>         ; Yes - Do string arrays
 F280 7E                 LD      A,(HL)          ; Get type of variable
 F281 23                 INC     HL
 F282 23                 INC     HL
@@ -82,7 +82,7 @@ F2A9 23                 INC     HL              ; Plus one for number of dim'ns
 F2AB 2AC510             LD      HL,(<?php bas8K("CUROPR"); ?>)     ; Get address of next array
 F2AE EB                 EX      DE,HL
 F2AF CD8AE6             CALL    <?php bas8K("CPDEHL"); ?>          ; Is this array finished?
-F2B2 CA8BF2             JP      Z,<a href="../../../31/27/text/#ARRLP">ARRLP</a>         ; Yes - Get next one
+F2B2 CA8BF2             JP      Z,<?php bas8K("ARRLP"); ?>         ; Yes - Get next one
 F2B5 01AAF2             LD      BC,<?php bas8K("GRBARY"); ?>       ; Loop until array all done
 <?php adr8K("F2B8"); ?> C5         <?php lbl8K("STPOOL"); ?>: PUSH    BC              ; Save return address
 F2B9 F680               OR      80H             ; Flag string type

@@ -40,6 +40,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	23
+	,	7
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Dave Hunt&rsquo;s Bits"

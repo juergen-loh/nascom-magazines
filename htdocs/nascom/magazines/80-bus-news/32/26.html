@@ -83,7 +83,7 @@ F92B 5F                 LD      E,A             ; Exponent of ten
 F92C 2F                 CPL
 F92D 4F                 LD      C,A             ; Before or after point flag
 <?php adr8K("F92E"); ?> CD36E8     <?php lbl8K("MANLP"); ?>:  CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
-F931 DA77F9             JP      C,<a href="../../../32/27/text/#ADDIG">ADDIG</a>         ; Digit - Add to number
+F931 DA77F9             JP      C,<?php bas8K("ADDIG"); ?>         ; Digit - Add to number
 F934 FE2E               CP      "."
 F936 CA52F9             JP      Z,<?php bas8K("DPOINT"); ?>        ; "." - Flag point
 F939 FE45               CP      "E"

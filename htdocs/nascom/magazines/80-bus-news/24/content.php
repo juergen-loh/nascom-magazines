@@ -46,6 +46,7 @@
 	,	"Carl Lloyd-Parker"
 	,	"Basic"
 	,	23
+	,	2
 	);
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"RAM-DISKS &ndash; theory and Gemini GM833 reviewed (dynamic RAM)"

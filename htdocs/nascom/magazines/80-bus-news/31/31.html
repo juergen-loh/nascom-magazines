@@ -52,7 +52,7 @@ F4E4 00                 NOP
 F4E5 21D610             LD      HL,<?php bas8K("PROGND"); ?>       ; Start of program information
 F4E8 220C0C             LD      (<?php bas8K("ARG1"); ?>),HL       ; Save for monitor save routine
 F4EB 2AD610             LD      HL,(<?php bas8K("PROGND"); ?>)     ; End of program information
-F4EE 220E0C             LD      (<a href="../../../24/23/text/#ARG2">ARG2</a>),HL       ; Save for monitor save routine
+F4EE 220E0C             LD      (<?php bas8K("ARG2"); ?>),HL       ; Save for monitor save routine
 F4F1 CD73FE             CALL    <?php bas8K("SAVE"); ?>            ; Save program to tape
 F4F4 CDD8FC             CALL    <?php bas8K("ARET"); ?>            ; Not much there!
 F4F7 E1                 POP     HL              ; Restore code string address
@@ -76,7 +76,7 @@ F50B F5                 PUSH    AF              ; Save verify flag
 F50C 2B                 DEC     HL              ; DEC 'cos <?php bas8K("GETCHR"); ?> INCs
 F50D CD36E8             CALL    <?php bas8K("GETCHR"); ?>          ; Get next character
 F510 3E00               LD      A,0             ; Any file will do
-F512 CA1CF5             JP      Z,<a href="../../../31/31/text/#ANYNAM">ANYNAM</a>        ; No name given - Any will do
+F512 CA1CF5             JP      Z,<?php bas8K("ANYNAM"); ?>        ; No name given - Any will do
 F515 CD5AED             CALL    <?php bas8K("EVAL"); ?>            ; Evaluate expression
 F518 CD95F3             CALL    <?php bas8K("GTFLNM"); ?>          ; Get file name
 F51B 1A                 LD      A,(DE)          ; Get first byte of name
