@@ -14,7 +14,7 @@ FBF8 99E99269           DEFB    099H,0E9H,092H,069H
 FBFC 10D17568           DEFB    010H,0D1H,075H,068H
 
 <?php adr8K("FC00"); ?> 214AFC     <?php lbl8K("COS"); ?>:    LD      HL,<?php bas8K("HALFPI"); ?>       ; Point to PI/2
-<?php adr8K("FC03"); ?> CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add it to <?php bas8K("FPREG","","","\n"); ?>
+<?php adr8K("FC03"); ?> CDBEF5             CALL    <?php bas8K("ADDPHL"); ?>          ; Add it to <?php bas8K("PPREG","FPREG","","\n"); ?>
 <?php adr8K("FC06"); ?> CD44F8     <?php lbl8K("SIN"); ?>:    CALL    <?php bas8K("STAKFP"); ?>          ; Put angle on stack
 FC09 014983             LD      BC,8349H        ; BCDE = 2 PI
 FC0C 11DB0F             LD      DE,0FDBH

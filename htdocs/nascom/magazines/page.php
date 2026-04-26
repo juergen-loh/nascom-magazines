@@ -375,7 +375,7 @@ function RemoveEntities($s)
 
 //---------------------------------------------------------------------------
 
-function columnStart($column, $multi/*$class*/ = "", $class = "", $style = "")
+function columnStart($column, $multi = "", $class = "", $style = "")
 {
 	if ($class == "") {
 		$class = $multi;
@@ -525,7 +525,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-04-12 08:39:28 +0200 (So, 12. Apr 2026) $ -->
+	<!-- page.php / $Date: 2026-04-26 16:43:21 +0200 (So, 26. Apr 2026) $ -->
 <?php
 	echo "\n";
 	echo "\t<title>";
