@@ -9,11 +9,11 @@
 </p></td></tr>
 <tr><td colspan=4><p>
 Variables such as AB AB$ and FN AB are all stored in the simple variable area
-of memory. The start address of this area is held in PROGND and the end address
-is held in VAREND.
+of memory. The start address of this area is held in <?php bas8K("PROGND"); ?> and the end address
+is held in <?php bas8K("VAREND"); ?>.
 </p></td></tr>
 <tr><td colspan=4><p>
-If AB=10 and AB$="TEXT&rdquo; and FN AB(XY) had been defined then the memory would
+If AB=10 and AB$=&ldquo;TEXT&rdquo; and FN AB(XY) had been defined then the memory would
 look like this
 </p></td></tr>
 
@@ -22,7 +22,7 @@ look like this
 <colgroup><col><col></colgroup>
 
 <tr><td><p>42 41</p></td><td><p>
-Name of AB in reverse (42 41 = &ldquo;B&rdquo; &ldquo;A")
+Name of AB in reverse (42 41 = &ldquo;B&rdquo; &ldquo;A&rdquo;)
 </p></td></tr>
 <tr><td><p>00 00 20 84</p></td><td><p>
 Floating point value for 10
@@ -55,10 +55,10 @@ Address where &ldquo;TEXT&rdquo; is to be found
 Name of FN AB (C1 is &ldquo;A&rdquo; with bit 7 set)
 </p></td></tr>
 <tr><td><p>LL HH</p></td><td><p>
-Address of function (After &ldquo;=")
+Address of function (After &ldquo;=&rdquo;)
 </p></td></tr>
 <tr><td><p>59 58</p></td><td><p>
-Argument name in reverse (59 58 = &ldquo;Y&rdquo; &ldquo;X")
+Argument name in reverse (59 58 = &ldquo;Y&rdquo; &ldquo;X&rdquo;)
 </p></td></tr>
 
 </table>
@@ -66,7 +66,7 @@ Argument name in reverse (59 58 = &ldquo;Y&rdquo; &ldquo;X")
 
 <tr><td colspan=4><p>
 Arrays such as AB(1,3) and AB$(3,1) are stored in the array area of memory. The
-start address of this area is held in VAREND and the end address is held in
+start address of this area is held in <?php bas8K("VAREND"); ?> and the end address is held in
 <?php bas8K("ARREND"); ?>.
 </p></td></tr>
 <tr><td colspan=4><p>
