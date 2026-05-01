@@ -1,5 +1,5 @@
 <?php
 	$link = "text";
 
-	include "page.php"
+	require "page.php";
 ?>

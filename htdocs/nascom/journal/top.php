@@ -17,7 +17,7 @@
 	$table = dirname(__FILE__) . "/gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 //	$width = 720;
 /*
 	echo "<!--\n";
@@ -29,7 +29,7 @@
 //	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2025-09-21 20:18:34 +0200 (So, 21. Sep 2025) $ -->
+	<!-- top.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 	<meta name="keywords" content="Inhaltsverzeichnis,
 		Nascom Journal, 80-Bus Journal,
@@ -53,8 +53,7 @@
 		echo " - $issueClean";
 	}
 	echo " - Inhaltsverzeichnis</title>\n";
-	echo "\t<!-- $lastModified -->\n";
-	include "$navi_body_php";
+	require "$navi_body_php";
 
 	$t00s = "<a href=\"$gHtmlRoot/nascom/journal$tail\">";		$t00e = "</a>";
 	$t80s = "<a href=\"$gHtmlRoot/nascom/journal/80$tail\">";	$t80e = "</a>";
@@ -189,7 +188,7 @@
 		<col style="text-align:right">
 	</colgroup>
 <?php
-	include "gap.php";
+	require "gap.php";
 
 //---------------------------------------------------------------------------
 

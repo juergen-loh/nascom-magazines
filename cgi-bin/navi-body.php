@@ -6696,8 +6696,10 @@ HEREDOC;
 	echo " color: #000;";
 	echo " padding: 0 15px 0;";
 	echo " background-color: #FFF\">\n";
+
+	$RomBasicClass = "";
 ?>
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-04-26 19:37:10 +0200 (So, 26. Apr 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-01 08:46:12 +0200 (Fr, 01. Mai 2026) $ -->

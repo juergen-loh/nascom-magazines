@@ -44,11 +44,11 @@
 	}
 
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2025-09-21 20:25:59 +0200 (So, 21. Sep 2025) $ -->
+	<!-- page.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{
@@ -61,10 +61,9 @@
 		$titleClean = str_replace('<br>',					' - ',	$titleClean);
 		echo "\t<title>$magazine - $titleClean</title>\n";
 	}
-	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
-	include "$navi_body_php";
+	require "$navi_body_php";
 
 /*	echo "\n";
 	echo "<table class=\"robots-nocontent\" style=\"width: 100%\">\n";
@@ -940,7 +939,7 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 //---------------------------------------------------------------------------
 
 		$imagepath = "../../";
-		include "$page.html";
+		require "$page.html";
 
 		echo "\n";
 		echo "</div></div>";
@@ -1047,7 +1046,7 @@ function columnTabEnd()		{	echo "<!-- Tabelle mit 2 Spalten: Ende --></td></tr><
 		break;
 	}
 
-	include "$navi_footer_php";
+	require "$navi_footer_php";
 
 	echo "\n";
 	echo "<!-- /page.php -->";

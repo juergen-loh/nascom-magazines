@@ -1,9 +1,9 @@
 <!-- nascom-newsletter/26/content.php -->
 <?php
 	//-----------------------------------------------------------------------
-//	include "$path/../../issue.php";
-	include "$path/../issue.php";
-	include "$path/issue.php";
+//	require "$path/../../issue.php";
+	require "$path/../issue.php";
+	require "$path/issue.php";
 
 	trMagazine($magazine, $issue, $number, $name, $offset, $path
 	,	"Contents"

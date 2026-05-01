@@ -15,7 +15,7 @@
 		exit;
 	}
 
-	include "$parMagazine/issue.php";
-	include "$parMagazine/$parIssue/issue.php";
-	include "issue.php";
+	require "$parMagazine/issue.php";
+	require "$parMagazine/$parIssue/issue.php";
+	require "issue.php";
 ?>

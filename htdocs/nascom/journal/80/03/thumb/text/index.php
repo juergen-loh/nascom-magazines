@@ -1,5 +1,5 @@
 <?php
 	$thumb	= true;
 
-	include "../../text.php"
+	require "../../text.php"
 ?>

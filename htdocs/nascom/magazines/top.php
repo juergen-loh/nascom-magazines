@@ -13,13 +13,23 @@
 	}
 	require "$include_path/global.php";
 	$table = dirname(__FILE__) . "/gap.php";
-	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
+/*	if (isset($paths)) {
+		$count = count($paths);
+//		echo "<!-- $count -->\n";
+		$pages = [];
+		for ($i = 0; $i < $count; $i++) {
+//			echo "<!-- $paths[$i] -->\n";
+			$pages[$i] = "$paths[$i]/content.php";
+		}
+	}
+//	echo "<!--";	print_r($pages);	echo "-->\n";
+*/	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 	$lang = "en";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2025-01-05 16:28:34 +0100 (So, 05. Jan 2025) $ -->
+	<!-- top.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
@@ -31,9 +41,8 @@
 	if (isset($issue)) echo " &ndash; $issue";
 	echo " &ndash; Table of Contents";
 	echo "</title>\n";
-	echo "\t<!-- $lastModified -->\n";
 
-	include "$navi_body_php";
+	require "$navi_body_php";
 
 	$naviBottom = "";
 	$naviBottom
@@ -172,7 +181,7 @@
 		<col style="text-align:right">
 	</colgroup>
 <?php
-	include "gap.php";
+	require "gap.php";
 
 //---------------------------------------------------------------------------
 
@@ -445,6 +454,21 @@ function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $
 	echo "\t</tr>\n";
 }
 
+//---------------------------------------------------------------------------
+/*
+	echo "<!--";
+	print_r($pages);
+	echo "-->\n";
+	if (isset($pages)) {
+		$count = count($pages);
+		echo "<!-- $count -->\n";
+		for ($i = 0; $i < $count; $i++) {
+			echo "<!-- $pages[$i] $tppath/gap.php -->\n";
+//			require "$pages[$i]";
+//			require "$tppath/gap.php";
+		}
+	}
+*/
 //---------------------------------------------------------------------------
 
 ?>

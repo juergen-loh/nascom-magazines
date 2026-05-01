@@ -6,5 +6,5 @@
 	$post = "text/";
 	$trLink = "text";
 
-	include "../index.php"
+	require "../index.php";
 ?>

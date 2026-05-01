@@ -1,5 +1,5 @@
 <?php
 	$thumb	= true;
 
-	include "../graphic.php"
+	require "../graphic.php";
 ?>

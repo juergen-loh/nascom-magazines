@@ -1,5 +1,5 @@
 <?php
-	include "../issue.php";
-	include "issue.php";
-	include "../../issue.php";
+	require "../issue.php";
+	require "issue.php";
+	require "../../issue.php";
 ?>

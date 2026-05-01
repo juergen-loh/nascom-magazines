@@ -6,15 +6,15 @@
 	require "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2026-03-05 15:29:12 +0100 (Do, 05. Mrz 2026) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
-	include "$navi_body_php";
+	require "$navi_body_php";
 
 function nascomplInsert($year, $issue, $page, $file)
 {
@@ -179,5 +179,5 @@ function nascomplInsert($year, $issue, $page, $file)
 	echo "</div>\n";
 //	echo "</td></tr></table>\n";
 
-	include "$navi_footer_php";
+	require "$navi_footer_php";
 ?>

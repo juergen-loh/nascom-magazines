@@ -4,16 +4,16 @@
 	$issue="Jahrgang 1984";
 	$tppath="../..";
 	$imgName="/83/03/Image-02-1.jpeg";
-	include "$tppath/top.php";
+	require "$tppath/top.php";
 
 // 1984
 
-	$path="../m1/";	include $path."content.php";	include "../../gap.php";
-	$path="../01/";	include $path."content.php";	include "../../gap.php";
-	$path="../02/";	include $path."content.php";	include "../../gap.php";
-	$path="../m2/";	include $path."content.php";	include "../../gap.php";
-	$path="../03/";	include $path."content.php";	include "../../gap.php";
-	$path="../04/";	include $path."content.php";
+	$path="../m1/";	require $path."content.php";	require "../../gap.php";
+	$path="../01/";	require $path."content.php";	require "../../gap.php";
+	$path="../02/";	require $path."content.php";	require "../../gap.php";
+	$path="../m2/";	require $path."content.php";	require "../../gap.php";
+	$path="../03/";	require $path."content.php";	require "../../gap.php";
+	$path="../04/";	require $path."content.php";
 
-	include "$tppath/bottom.php"
+	require "$tppath/bottom.php"
 ?>

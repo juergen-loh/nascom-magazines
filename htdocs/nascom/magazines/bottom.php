@@ -21,6 +21,6 @@
 
 <?php
 	bottomGap();
-	include "$navi_footer_php";
+	require "$navi_footer_php";
 ?>
 <!-- /bottom.php -->

@@ -14,15 +14,15 @@
 	.	"<a href=\"$pre../inmc-80-news/$post\">INMC 80 News</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
-	include "$tppath/top.php";
+	require "$tppath/top.php";
 
-	$path = "$ipath/01";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/02";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/03";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/04";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/05";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/06";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/07";	include "$path/content.php";
+	$path = "$ipath/01";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/02";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/03";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/04";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/05";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/06";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/07";	require "$path/content.php";
 
-	include "$tppath/bottom.php"
+	require "$tppath/bottom.php"
 ?>

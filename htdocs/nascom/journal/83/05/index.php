@@ -5,7 +5,7 @@
 	$path="";
 	$tppath="../..";
 
-	include "$tppath/top.php";
-	include "content.php";
-	include "$tppath/bottom.php";
+	require "$tppath/top.php";
+	require "content.php";
+	require "$tppath/bottom.php";
 ?>

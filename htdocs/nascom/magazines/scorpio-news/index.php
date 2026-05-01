@@ -12,17 +12,17 @@
 	.	"to the rise of IBM PC compatibles. Here ends the 8 bit era.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
-	include "$tppath/top.php";
+	require "$tppath/top.php";
 
-	$path = "$ipath/11";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/12";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/13";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/14";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/21";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/22";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/23";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/24";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/31";	include "$path/content.php";
+	$path = "$ipath/11";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/12";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/13";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/14";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/21";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/22";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/23";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/24";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/31";	require "$path/content.php";
 
-	include "$tppath/bottom.php"
+	require "$tppath/bottom.php"
 ?>

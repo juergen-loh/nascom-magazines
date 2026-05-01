@@ -6,12 +6,12 @@
 	require "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal - 80-Bus Journal</title>
-	<!-- $Date: 2025-09-21 20:25:59 +0200 (So, 21. Sep 2025) $ / <?php echo "$lastModified"; ?> -->
-<?php include "$navi_body_php";	?>
+	<!-- $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+<?php require "$navi_body_php";	?>
 
 <div class="row hyphenate">
 <div class="col-<?php echo BootstrapTier(); ?>-6">
@@ -452,4 +452,4 @@ gesammelt.
 </div>
 
 <?php	bottomGap();	?>
-<?php	include "$navi_footer_php";	?>
+<?php	require "$navi_footer_php";	?>

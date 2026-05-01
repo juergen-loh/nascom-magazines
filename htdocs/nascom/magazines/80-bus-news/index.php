@@ -15,29 +15,52 @@
 	.	"<a href=\"$pre../scorpio-news/$post\">Scorpio News</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
-	include "$tppath/top.php";
+	$paths = array(
+		"$ipath/11"
+	,	"$ipath/12"
+	,	"$ipath/13"
+	,	"$ipath/14"
 
-	$path = "$ipath/11";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/12";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/13";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/14";	include "$path/content.php";	include "$tppath/gap.php";
+	,	"$ipath/21"
+	,	"$ipath/22"
+	,	"$ipath/23"
+	,	"$ipath/24"
+	,	"$ipath/25"
+	,	"$ipath/26"
 
-	$path = "$ipath/21";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/22";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/23";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/24";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/25";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/26";	include "$path/content.php";	include "$tppath/gap.php";
+	,	"$ipath/31"
+	,	"$ipath/32"
+	,	"$ipath/33"
+	,	"$ipath/34"
+	,	"$ipath/35"
+	,	"$ipath/36"
 
-	$path = "$ipath/31";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/32";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/33";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/34";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/35";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/36";	include "$path/content.php";	include "$tppath/gap.php";
+	,	"$ipath/41"
+	,	"$ipath/42"
+	);
+	require "$tppath/top.php";
 
-	$path = "$ipath/41";	include "$path/content.php";	include "$tppath/gap.php";
-	$path = "$ipath/42";	include "$path/content.php";
+	$path = "$ipath/11";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/12";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/13";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/14";	require "$path/content.php";	require "$tppath/gap.php";
 
-	include "$tppath/bottom.php"
+	$path = "$ipath/21";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/22";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/23";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/24";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/25";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/26";	require "$path/content.php";	require "$tppath/gap.php";
+
+	$path = "$ipath/31";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/32";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/33";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/34";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/35";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/36";	require "$path/content.php";	require "$tppath/gap.php";
+
+	$path = "$ipath/41";	require "$path/content.php";	require "$tppath/gap.php";
+	$path = "$ipath/42";	require "$path/content.php";
+
+	require "$tppath/bottom.php"
 ?>

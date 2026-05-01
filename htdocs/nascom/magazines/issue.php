@@ -15,14 +15,14 @@
 		$path = "./";
 		$post = "";
 	}
-	include "$tppath/top.php";
+	require "$tppath/top.php";
 
 	if ($toctext) {
 		$path = "$parMagazine/$parIssue";
 	} else {
 		$path = ".";
 	}
-	include "$path/content.php";
+	require "$path/content.php";
 
-	include "$tppath/bottom.php"
+	require "$tppath/bottom.php"
 ?>

@@ -1,5 +1,5 @@
 <?php
 	$link = "graphic";
 
-	include "page.php"
+	require "page.php";
 ?>

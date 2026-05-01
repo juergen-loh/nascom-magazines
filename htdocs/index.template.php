@@ -11,7 +11,8 @@
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Magazines">
 	<title>Nascom Journal &ndash; 80-Bus Journal &ndash; Nascom Magazines</title>
 
-<?php include "$navi_body_php";	?>
+<?php require "$navi_body_php";	?>
+	<!-- $Date: 2025-12-23 18:53:35 +0100 (Di, 23. Dez 2025) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 <div class="row hyphenate">
 <div class="col-<?php echo BootstrapTier(); ?>-12">
@@ -52,4 +53,4 @@ Place content here.
 </div>
 
 <?php	bottomGap();	?>
-<?php	include "$include_path/navi-footer.php";	?>
+<?php	require "$include_path/navi-footer.php";	?>

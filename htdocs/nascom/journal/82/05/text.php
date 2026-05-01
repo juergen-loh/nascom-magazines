@@ -11,8 +11,8 @@
 
 	if (!isset($thumb)) $thumb = false;
 	if ($thumb) {
-		include "../../../../text.php";
+		require "../../../../text.php";
 	} else {
-		include "../../text.php";
+		require "../../text.php";
 	}
 ?>

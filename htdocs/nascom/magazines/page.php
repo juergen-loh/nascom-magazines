@@ -31,8 +31,8 @@
 		exit;
 	}
 
-	include "$magpath/issue.php";
-	include "$magpath/$issuepath/issue.php";
+	require "$magpath/issue.php";
+	require "$magpath/$issuepath/issue.php";
 	$page = (int) $pagepath;
 
 	switch ($link) {
@@ -45,7 +45,7 @@
 	}
 
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 	$lang = "en";
 
 //---------------------------------------------------------------------------
@@ -525,20 +525,19 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-04-26 16:43:21 +0200 (So, 26. Apr 2026) $ -->
+	<!-- page.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";
 	echo RemoveEntities("$magazine - $desc");
 	echo "</title>\n";
-	echo "\t<!-- $lastModified -->\n";
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 	switch ($link) {
 	case "text":
 		echo "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../../../style.css\">\n";
 	}
 
-	include "$navi_body_php";
+	require "$navi_body_php";
 
 	echo "<table class=\"style-table-zeropadding\" style=\"width: 100%\">\n";
 		echo "<tr>\n";
@@ -566,7 +565,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 //		echo "<br>";
 		echo "\n";
 		$imagepath = "../../";
-		include "$html";
+		require "$html";
 		echo "\n";
 //		echo "<br>";
 		echo "</div>\n";
@@ -804,7 +803,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	echo "<!-- Navigation bottom -->\n";
 	navi($pagepath, $link, $first, $last, $magpath, $issuepath, $thumb);
 
-	include "$navi_footer_php";
+	require "$navi_footer_php";
 	echo "\n";
 	echo "<!-- /page.php -->";
 ?>

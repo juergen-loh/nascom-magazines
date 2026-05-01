@@ -6,17 +6,17 @@
 	require "$include_path/global.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
 	$nascom = true;
-	include "$navi_head_php";
+	require "$navi_head_php";
 	$lang = "en";
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2026-04-26 19:37:10 +0200 (So, 26. Apr 2026) $ / <?php echo "$lastModified"; ?> -->
+	<!-- $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
 	</style>
-<?php include "$navi_body_php";	?>
+<?php require "$navi_body_php";	?>
 
 <?php
 	$naviBottom = "";
@@ -561,4 +561,4 @@
 </div></div>
 
 <?php	bottomGap();	?>
-<?php	include "$navi_footer_php";	?>
+<?php	require "$navi_footer_php";	?>
