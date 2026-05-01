@@ -12,17 +12,20 @@
 	.	"to the rise of IBM PC compatibles. Here ends the 8 bit era.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
+
+	$paths = array(
+		"$ipath/11"
+	,	"$ipath/12"
+	,	"$ipath/13"
+	,	"$ipath/14"
+	,	"$ipath/21"
+	,	"$ipath/22"
+	,	"$ipath/23"
+	,	"$ipath/24"
+	,	"$ipath/31"
+	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/11";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/12";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/13";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/14";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/21";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/22";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/23";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/24";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/31";	require "$path/content.php";
-
-	require "$tppath/bottom.php"
+	printPages($paths, $tppath);
+	require "$tppath/bottom.php";
 ?>

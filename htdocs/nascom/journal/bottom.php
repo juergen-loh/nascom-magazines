@@ -1,4 +1,5 @@
 <!-- bottom.php -->
+<?php echo $content;	?>
 </table>
 
 <?php	bottomGap();	?>

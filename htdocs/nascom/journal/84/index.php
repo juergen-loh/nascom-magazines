@@ -15,5 +15,5 @@
 	$path="03/";	require $path."content.php";	require "../gap.php";
 	$path="04/";	require $path."content.php";
 
-	require "$tppath/bottom.php"
+	require "$tppath/bottom.php";
 ?>

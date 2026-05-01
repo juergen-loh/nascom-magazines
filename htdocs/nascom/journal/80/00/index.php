@@ -7,5 +7,5 @@
 
 	require "$tppath/top.php";
 	require "content.php";
-	require "$tppath/bottom.php"
+	require "$tppath/bottom.php";
 ?>

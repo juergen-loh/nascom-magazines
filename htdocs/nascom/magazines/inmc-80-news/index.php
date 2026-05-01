@@ -15,13 +15,16 @@
 	.	"<a href=\"$pre../80-bus-news/$post\">80-Bus News</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
+
+	$paths = array(
+		"$ipath/01"
+	,	"$ipath/02"
+	,	"$ipath/03"
+	,	"$ipath/04"
+	,	"$ipath/05"
+	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/01";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/02";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/03";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/04";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/05";	require "$path/content.php";
-
-	require "$tppath/bottom.php"
+	printPages($paths, $tppath);
+	require "$tppath/bottom.php";
 ?>

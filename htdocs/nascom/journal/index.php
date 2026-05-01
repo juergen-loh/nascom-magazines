@@ -74,5 +74,5 @@
 
 	$path="85/m3/";	require $path."content.php"; //	require "gap.php";
 
-	require "$tppath/bottom.php"
+	require "$tppath/bottom.php";
 ?>

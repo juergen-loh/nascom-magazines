@@ -12,15 +12,18 @@
 	.	"<a href=\"$pre../micropower/$post\">Micropower</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
+
+	$paths = array(
+		"$ipath/25"
+	,	"$ipath/26"
+	,	"$ipath/31"
+	,	"$ipath/32"
+	,	"$ipath/33"
+	,	"$ipath/34"
+	,	"$ipath/35"
+	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/25";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/26";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/31";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/32";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/33";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/34";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/35";	require "$path/content.php";
-
-	require "$tppath/bottom.php"
+	printPages($paths, $tppath);
+	require "$tppath/bottom.php";
 ?>

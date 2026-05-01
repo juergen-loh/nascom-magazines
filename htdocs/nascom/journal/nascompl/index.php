@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-01 13:22:07 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 

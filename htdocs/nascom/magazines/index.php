@@ -16,67 +16,69 @@
 	.	"to the rise of IBM PC compatibles. Here ends the 8 bit era.";
 	if (!isset($ipath)) $ipath = ".";
 
+	$paths = array(
+		"$ipath/inmc-news/01"
+	,	"$ipath/inmc-news/02"
+	,	"$ipath/inmc-news/03"
+	,	"$ipath/inmc-news/04"
+	,	"$ipath/inmc-news/05"
+	,	"$ipath/inmc-news/06"
+	,	"$ipath/inmc-news/07"
+
+	,	"$ipath/inmc-80-news/01"
+	,	"$ipath/inmc-80-news/02"
+	,	"$ipath/inmc-80-news/03"
+	,	"$ipath/inmc-80-news/04"
+	,	"$ipath/inmc-80-news/05"
+
+	,	"$ipath/micropower/11"
+	,	"$ipath/micropower/12"
+	,	"$ipath/micropower/13"
+	,	"$ipath/micropower/14"
+	,	"$ipath/micropower/21"
+	,	"$ipath/micropower/22"
+	,	"$ipath/micropower/23"
+	,	"$ipath/micropower/24"
+
+	,	"$ipath/80-bus-news/11"
+	,	"$ipath/80-bus-news/12"
+	,	"$ipath/80-bus-news/13"
+	,	"$ipath/80-bus-news/14"
+	,	"$ipath/80-bus-news/21"
+	,	"$ipath/80-bus-news/22"
+	,	"$ipath/80-bus-news/23"
+	,	"$ipath/80-bus-news/24"
+	,	"$ipath/80-bus-news/25"
+	,	"$ipath/80-bus-news/26"
+	,	"$ipath/80-bus-news/31"
+	,	"$ipath/80-bus-news/32"
+	,	"$ipath/80-bus-news/33"
+	,	"$ipath/80-bus-news/34"
+	,	"$ipath/80-bus-news/35"
+	,	"$ipath/80-bus-news/36"
+	,	"$ipath/80-bus-news/41"
+	,	"$ipath/80-bus-news/42"
+
+	,	"$ipath/nascom-newsletter/25"
+	,	"$ipath/nascom-newsletter/26"
+	,	"$ipath/nascom-newsletter/31"
+	,	"$ipath/nascom-newsletter/32"
+	,	"$ipath/nascom-newsletter/33"
+	,	"$ipath/nascom-newsletter/34"
+	,	"$ipath/nascom-newsletter/35"
+
+	,	"$ipath/scorpio-news/11"
+	,	"$ipath/scorpio-news/12"
+	,	"$ipath/scorpio-news/13"
+	,	"$ipath/scorpio-news/14"
+	,	"$ipath/scorpio-news/21"
+	,	"$ipath/scorpio-news/22"
+	,	"$ipath/scorpio-news/23"
+	,	"$ipath/scorpio-news/24"
+	,	"$ipath/scorpio-news/31"
+	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/inmc-news/01";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/02";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/03";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/04";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/05";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/06";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-news/07";			require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/inmc-80-news/01";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-80-news/02";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-80-news/03";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-80-news/04";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/inmc-80-news/05";		require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/micropower/11";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/12";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/13";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/14";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/21";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/22";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/23";			require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/micropower/24";			require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/80-bus-news/11";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/12";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/13";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/14";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/21";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/22";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/23";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/24";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/25";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/26";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/31";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/32";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/33";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/34";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/35";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/36";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/41";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/80-bus-news/42";		require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/nascom-newsletter/25";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/26";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/31";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/32";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/33";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/34";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/nascom-newsletter/35";	require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/scorpio-news/11";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/12";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/13";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/14";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/21";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/22";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/23";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/24";		require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/scorpio-news/31";		require "$path/content.php";
-
+	printPages($paths, $tppath);
 	require "$tppath/bottom.php";
 ?>

@@ -19,5 +19,5 @@
 	$path="../10/";	require $path."content.php";	require "../../gap.php";
 	$path="../12/";	require $path."content.php";
 
-	require "$tppath/bottom.php"
+	require "$tppath/bottom.php";
 ?>

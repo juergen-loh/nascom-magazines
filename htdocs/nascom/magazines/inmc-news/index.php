@@ -14,15 +14,18 @@
 	.	"<a href=\"$pre../inmc-80-news/$post\">INMC 80 News</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
+
+	$paths = array(
+		"$ipath/01"
+	,	"$ipath/02"
+	,	"$ipath/03"
+	,	"$ipath/04"
+	,	"$ipath/05"
+	,	"$ipath/06"
+	,	"$ipath/07"
+	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/01";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/02";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/03";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/04";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/05";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/06";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/07";	require "$path/content.php";
-
-	require "$tppath/bottom.php"
+	printPages($paths, $tppath);
+	require "$tppath/bottom.php";
 ?>

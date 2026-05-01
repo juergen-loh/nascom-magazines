@@ -14,27 +14,30 @@
 		$gHtmlRoot = "$tppath/../../..";
 	}
 	require "$include_path/global.php";
-	$table = dirname(__FILE__) . "/gap.php";
+	$table = dirname(__FILE__) . "\gap.php";
 	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
 	$nascom = true;
 	require "$navi_head_php";
 //	$width = 720;
 /*
-	echo "<!--\n";
-	echo "table=$table\n";
-	echo "file=" . __FILE__ . "\n";
-	echo "dirname=" . dirname(__FILE__) . "\n";
-	echo "-->\n";
+	echo "<!--\n"
+	.	"\t".	"table=$table\n"
+	.	"\t".	"file=" . __FILE__ . "\n"
+	.	"\t".	"dirname=" . dirname(__FILE__) . "\n"
+	.	"\t".	"tppath=$tppath tail:$tail\n"
+	.	"-->\n";
 */
-//	echo "<!-- tppath:$tppath tail:$tail -->\n";
 ?>
 
-	<!-- top.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-01 16:23:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
-	<meta name="keywords" content="Inhaltsverzeichnis,
-		Nascom Journal, 80-Bus Journal,
-		Nascom Computer, Nascom 1, Nascom 2">
 <?php
+	echo "\t"
+	.	'<meta name="keywords" content="'
+	.		'Inhaltsverzeichnis,'
+	.		' Nascom Journal, 80-Bus Journal,'
+	.		' Nascom Computer, Nascom 1, Nascom 2">'
+	.	"\n";
 	{
 		$titleClean = $title;
 		$titleClean = str_replace('&middot;', '-',	$titleClean);
@@ -167,7 +170,6 @@
 		echo "<br>\n";
 	}
 	echo "\t</div>\n</div>\n\n";
-
 ?>
 <table
 	class="content hyphenate"
@@ -189,6 +191,7 @@
 	</colgroup>
 <?php
 	require "gap.php";
+	$content = "";
 
 //---------------------------------------------------------------------------
 
@@ -230,7 +233,7 @@ function echoShy($str)
 		case "Dreidimensionale":				$erg = "Drei&shy;dimen&shy;sionale";						break;
 		case "Druckeranschluß":					$erg = "Drucker&shy;anschluß";								break;
 		case "Druckerinterface":				$erg = "Drucker&shy;interface";								break;
-		case "EMDOS-Floppyverwaltung":			$erg = "EMDOS-Floppy&shy;ver&shy;wal&shy;tung";						break;
+		case "EMDOS-Floppyverwaltung":			$erg = "EMDOS-Floppy&shy;ver&shy;wal&shy;tung";				break;
 		case "Entfernungsberechnung":			$erg = "Ent&shy;fer&shy;nungs&shy;be&shy;rech&shy;nung";						break;
 		case "Erweiterungen":					$erg = "Er&shy;we&shy;ite&shy;run&shy;gen";					break;
 		case "Erweiterungskarte":				$erg = "Erweiterungs&shy;karte";							break;
@@ -414,13 +417,15 @@ function echoShy($str)
 		$eco = $eco." ".$erg;
 	}
 	$eco = trim($eco);
-	echo($eco);
+	return $eco;
 }
 
 //---------------------------------------------------------------------------
 
 function trJournal($path, $tail, $magazine, $title, $author, $category, $year, $issue, $page, $article=1)
 {
+	global $content;
+
 	if ($title == "") {
 		if ($category != "") {
 			$title = $category;
@@ -431,23 +436,23 @@ function trJournal($path, $tail, $magazine, $title, $author, $category, $year, $
 		}
 	}
 	$page2 = str_pad($page, 2, "0", STR_PAD_LEFT);
-	echo "\t<tr>\n";
-	echo "\t\t".'<td class="clTitle">';
+	$content .= "\t<tr>\n";
+	$content .= "\t\t".'<td class="clTitle">';
 	if ($tail == "/text/") {	// text
-		echo "<a href=\"$path$page2$tail"."#article$article\">"; echoShy($title); echo "</a>";
+		$content .= "<a href=\"$path$page2$tail"."#article$article\">". echoShy($title) ."</a>";
 	} else if ($tail == "/") {	// graphic
-		echo "<a href=\"$path$page2$tail#article\">"; echoShy($title); echo "</a>";
+		$content .= "<a href=\"$path$page2$tail#article\">". echoShy($title) ."</a>";
 	} else {					// error
-		echo "<a href=\"error/$path$page2$tail\">$title</a>";
+		$content .= "<a href=\"error/$path$page2$tail\">$title</a>";
 	}
-	echo "</td>\n";
-	echo "\t\t".'<td class="clAuthor">'; echoShy($author); echo "</td>\n";
-	echo "\t\t".'<td class="clCategory">'; echoShy($category); echo "</td>\n";
-	echo "\t\t".'<td class="clMagazine">'; echoShy($magazine); echo"</td>\n";
-	echo "\t\t".'<td class="clYear">'."$year</td>\n";
-	echo "\t\t".'<td class="clIssue">'; echoShy($issue); echo "</td>\n";
-	echo "\t\t".'<td class="clPage">'."$page</td>\n";
-	echo "\t</tr>\n";
+	$content .= "</td>\n";
+	$content .= "\t\t".'<td class="clAuthor">'. echoShy($author) ."</td>\n";
+	$content .= "\t\t".'<td class="clCategory">'. echoShy($category) ."</td>\n";
+	$content .= "\t\t".'<td class="clMagazine">'. echoShy($magazine) ."</td>\n";
+	$content .= "\t\t".'<td class="clYear">'."$year</td>\n";
+	$content .= "\t\t".'<td class="clIssue">'. echoShy($issue) ."</td>\n";
+	$content .= "\t\t".'<td class="clPage">'."$page</td>\n";
+	$content .= "\t</tr>\n";
 }
 
 //---------------------------------------------------------------------------

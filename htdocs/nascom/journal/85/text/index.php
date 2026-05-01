@@ -10,5 +10,5 @@
 
 	$path="../m3/";	require $path."content.php";
 
-	require "$tppath/bottom.php"
+	require "$tppath/bottom.php";
 ?>

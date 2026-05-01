@@ -15,6 +15,7 @@
 	.	"<a href=\"$pre../scorpio-news/$post\">Scorpio News</a>.";
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
+
 	$paths = array(
 		"$ipath/11"
 	,	"$ipath/12"
@@ -38,29 +39,8 @@
 	,	"$ipath/41"
 	,	"$ipath/42"
 	);
+
 	require "$tppath/top.php";
-
-	$path = "$ipath/11";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/12";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/13";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/14";	require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/21";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/22";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/23";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/24";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/25";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/26";	require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/31";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/32";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/33";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/34";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/35";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/36";	require "$path/content.php";	require "$tppath/gap.php";
-
-	$path = "$ipath/41";	require "$path/content.php";	require "$tppath/gap.php";
-	$path = "$ipath/42";	require "$path/content.php";
-
-	require "$tppath/bottom.php"
+	printPages($paths, $tppath);
+	require "$tppath/bottom.php";
 ?>

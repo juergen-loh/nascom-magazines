@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-01 12:21:48 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-01 13:22:07 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{
