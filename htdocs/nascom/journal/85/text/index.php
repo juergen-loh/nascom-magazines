@@ -4,11 +4,11 @@
 	$issue="Jahrgang 1985";
 	$tppath="../..";
 	$imgName="/83/03/Image-02-1.jpeg";
-	require "$tppath/top.php";
-
+	$paths = [
 // 1985
-
-	$path="../m3/";	require $path."content.php";
-
+		"../m3/"
+	];
+	require "$tppath/top.php";
+	printPages($paths, $tppath);
 	require "$tppath/bottom.php";
 ?>

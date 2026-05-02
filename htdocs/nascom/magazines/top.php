@@ -16,30 +16,22 @@
 
 	if (isset($paths)) {
 		$count = count($paths);
-//		echo "<!-- $count -->\n";
-		$pages = [];
+		$pages = ["$tppath/gap.php"];
 		for ($i = 0; $i < $count; $i++) {
-//			echo "<!-- $paths[$i]/content.php";
 			$pages[$i] = "$paths[$i]/content.php";
-/*			if (file_exists($pages[$i])) {
-				echo " does";
-			} else {
-				echo " does not";
-			}
-			echo " exist -->\n";
-*/		}
+		}
 	} else {
 		$pages = [];
 	}
 //	echo "<!--";	print_r($pages);	echo "-->\n";
 
-	httpLastModified(array_merge(get_included_files(), $pages, array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
+	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php, $table]), $lastModified);
 	$nascom = true;
 	require "$navi_head_php";
 	$lang = "en";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-01 16:23:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-01 19:53:37 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
@@ -469,14 +461,9 @@ function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $
 function printPages($paths, $tppath)
 {
 	if (isset($paths)) {
-/*		echo "<!--";
-		print_r($paths);
-		echo "-->\n";
-*/		$count = count($paths);
-//		echo "<!-- $count -->\n";
+		$count = count($paths);
 		for ($i = 0; $i < $count; $i++) {
 			$path = $paths[$i];
-//			echo "<!-- require \"$path/content.php\";	require \"$tppath/gap.php\"; -->\n";
 			require "$path/content.php";
 			if ($i < $count - 1) {
 				require "$tppath/gap.php";

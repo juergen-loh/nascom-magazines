@@ -5,7 +5,7 @@
 	$gHtmlRoot		= "../..";
 	require "$include_path/global.php";
 
-	$pages = array(
+	$pages = [
 		"../magazines/80-bus-news/23/27.html"
 	,	"../magazines/80-bus-news/23/28.html"
 	,	"../magazines/80-bus-news/23/29.html"
@@ -77,15 +77,15 @@
 	,	"../magazines/80-bus-news/33/28.html"
 	,	"../magazines/80-bus-news/33/29.html"
 	,	"../magazines/80-bus-news/33/30.html"
-	);
+	];
 
-	httpLastModified(array_merge(get_included_files(), $pages, array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
+	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
 	$nascom = true;
 	require "$navi_head_php";
 ?>
 	<meta name="keywords" content="Nascom ROM Basic 4.7, Microsoft BASIC, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom ROM Basic</title>
-	<!-- $Date: 2026-05-01 16:23:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-01 17:06:38 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<link rel="stylesheet" type="text/css" href="../magazines/80-bus-news/style.css">
 <?php require "$navi_body_php"; ?>
 

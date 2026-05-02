@@ -5,7 +5,8 @@
 	$path="../";
 	$tppath="../..";
 
+	$paths = [""];
 	require "$tppath/top.php";
-	require "content.php";
+	printPages($paths, $tppath);
 	require "$tppath/bottom.php";
 ?>

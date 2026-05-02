@@ -14,22 +14,24 @@
 		$gHtmlRoot = "$tppath/../../..";
 	}
 	require "$include_path/global.php";
-	$table = dirname(__FILE__) . "\gap.php";
-	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, $table)), $lastModified);
+
+	if (isset($paths)) {
+		$count = count($paths);
+		$pages = ["$tppath/gap.php"];
+		for ($i = 0; $i < $count; $i++) {
+			$pages[$i] = "$paths[$i]content.php";
+		}
+	} else {
+		$pages = [];
+	}
+
+	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
 	$nascom = true;
 	require "$navi_head_php";
 //	$width = 720;
-/*
-	echo "<!--\n"
-	.	"\t".	"table=$table\n"
-	.	"\t".	"file=" . __FILE__ . "\n"
-	.	"\t".	"dirname=" . dirname(__FILE__) . "\n"
-	.	"\t".	"tppath=$tppath tail:$tail\n"
-	.	"-->\n";
-*/
 ?>
 
-	<!-- top.php / $Date: 2026-05-01 16:23:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-01 19:53:37 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 <?php
 	echo "\t"
@@ -191,11 +193,10 @@
 	</colgroup>
 <?php
 	require "gap.php";
-	$content = "";
 
 //---------------------------------------------------------------------------
 
-function echoShy($str)
+function addShy($str)
 {
 	$arr = explode(" ", $str);
 	$count = count($arr);
@@ -424,8 +425,6 @@ function echoShy($str)
 
 function trJournal($path, $tail, $magazine, $title, $author, $category, $year, $issue, $page, $article=1)
 {
-	global $content;
-
 	if ($title == "") {
 		if ($category != "") {
 			$title = $category;
@@ -436,23 +435,54 @@ function trJournal($path, $tail, $magazine, $title, $author, $category, $year, $
 		}
 	}
 	$page2 = str_pad($page, 2, "0", STR_PAD_LEFT);
-	$content .= "\t<tr>\n";
-	$content .= "\t\t".'<td class="clTitle">';
+	echo "\t<tr>\n";
+	echo "\t\t".'<td class="clTitle">';
 	if ($tail == "/text/") {	// text
-		$content .= "<a href=\"$path$page2$tail"."#article$article\">". echoShy($title) ."</a>";
+//		echo "<!--text path:$path -->";
+		echo "<a href=\"$path$page2$tail#article$article\">". addShy($title) ."</a>";
 	} else if ($tail == "/") {	// graphic
-		$content .= "<a href=\"$path$page2$tail#article\">". echoShy($title) ."</a>";
+//		echo "<!--graphic path:$path -->";
+		echo "<a href=\"$path$page2$tail#article\">". addShy($title) ."</a>";
 	} else {					// error
-		$content .= "<a href=\"error/$path$page2$tail\">$title</a>";
+		echo "<a href=\"error/$path$page2$tail\">$title</a>";
 	}
-	$content .= "</td>\n";
-	$content .= "\t\t".'<td class="clAuthor">'. echoShy($author) ."</td>\n";
-	$content .= "\t\t".'<td class="clCategory">'. echoShy($category) ."</td>\n";
-	$content .= "\t\t".'<td class="clMagazine">'. echoShy($magazine) ."</td>\n";
-	$content .= "\t\t".'<td class="clYear">'."$year</td>\n";
-	$content .= "\t\t".'<td class="clIssue">'. echoShy($issue) ."</td>\n";
-	$content .= "\t\t".'<td class="clPage">'."$page</td>\n";
-	$content .= "\t</tr>\n";
+	echo "</td>\n";
+	echo "\t\t".'<td class="clAuthor">'. addShy($author) ."</td>\n";
+	echo "\t\t".'<td class="clCategory">'. addShy($category) ."</td>\n";
+	echo "\t\t".'<td class="clMagazine">'. addShy($magazine) ."</td>\n";
+	echo "\t\t".'<td class="clYear">'."$year</td>\n";
+	echo "\t\t".'<td class="clIssue">'. addShy($issue) ."</td>\n";
+	echo "\t\t".'<td class="clPage">'."$page</td>\n";
+	echo "\t</tr>\n";
+}
+
+//---------------------------------------------------------------------------
+
+function printPages($paths, $tppath)
+{
+	global $path, $evalRequire, $setpath;
+
+	if (!isset($setpath)) {
+		$setpath = !isset($path);
+	}
+	// evil eval()
+	$evalRequire = [];
+	if (isset($paths)) {
+		$count = count($paths);
+		for ($i = 0; $i < $count; $i++) {
+			$p = $paths[$i];
+			if ($setpath) {
+				// evil eval()
+				array_push($evalRequire, "\$path = \"$p\";");
+			}
+			// evil eval()
+			array_push($evalRequire, "require \"$p"."content.php\";");
+			if ($i < $count - 1) {
+				// evil eval()
+				array_push($evalRequire, "require \"$tppath/gap.php\";");
+			}
+		}
+	}
 }
 
 //---------------------------------------------------------------------------

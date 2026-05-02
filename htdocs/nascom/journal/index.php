@@ -11,68 +11,58 @@
 	.	'<a href="../magazines/">Gesamt-Inhaltsverzeichnis</a> der '
 	.	'<a href="../magazines/issues/">englischsprachigen Nascom-Magazine</a>.';
 	$tppath=".";
-	require "$tppath/top.php";
-
+	$paths = [
 // 1980
-
-	$path="80/00/";	require $path."content.php";	require "gap.php";
-	$path="80/01/";	require $path."content.php";	require "gap.php";
-	$path="80/02/";	require $path."content.php";	require "gap.php";
-	$path="80/03/";	require $path."content.php";	require "gap.php";
-	$path="80/04/";	require $path."content.php";	require "gap.php";
-	$path="80/05/";	require $path."content.php";	require "gap.php";
-	$path="80/06/";	require $path."content.php";	require "gap.php";
-
+		"80/00/"
+	,	"80/01/"
+	,	"80/02/"
+	,	"80/03/"
+	,	"80/04/"
+	,	"80/05/"
+	,	"80/06/"
 // 1981
-
-	$path="81/01/";	require $path."content.php";	require "gap.php";
-	$path="81/02/";	require $path."content.php";	require "gap.php";
-	$path="81/03/";	require $path."content.php";	require "gap.php";
-	$path="81/04/";	require $path."content.php";	require "gap.php";
-	$path="81/06/";	require $path."content.php";	require "gap.php";
-	$path="81/07/";	require $path."content.php";	require "gap.php";
-	$path="81/08/";	require $path."content.php";	require "gap.php";
-	$path="81/09/";	require $path."content.php";	require "gap.php";
-	$path="81/10/";	require $path."content.php";	require "gap.php";
-	$path="81/12/";	require $path."content.php";	require "gap.php";
-
+	,	"81/01/"
+	,	"81/02/"
+	,	"81/03/"
+	,	"81/04/"
+	,	"81/06/"
+	,	"81/07/"
+	,	"81/08/"
+	,	"81/09/"
+	,	"81/10/"
+	,	"81/12/"
 // 1982
-
-	$path="82/01/";	require $path."content.php";	require "gap.php";
-	$path="82/02/";	require $path."content.php";	require "gap.php";
-	$path="82/03/";	require $path."content.php";	require "gap.php";
-	$path="82/05/";	require $path."content.php";	require "gap.php";
-	$path="82/06/";	require $path."content.php";	require "gap.php";
-	$path="82/07/";	require $path."content.php";	require "gap.php";
-	$path="82/09/";	require $path."content.php";	require "gap.php";
-	$path="82/10/";	require $path."content.php";	require "gap.php";
-	$path="82/12/";	require $path."content.php";	require "gap.php";
-
+	,	"82/01/"
+	,	"82/02/"
+	,	"82/03/"
+	,	"82/05/"
+	,	"82/06/"
+	,	"82/07/"
+	,	"82/09/"
+	,	"82/10/"
+	,	"82/12/"
 // 1983
-
-	$path="83/01/";	require $path."content.php";	require "gap.php";
-	$path="83/02/";	require $path."content.php";	require "gap.php";
-	$path="83/03/";	require $path."content.php";	require "gap.php";
-	$path="83/04/";	require $path."content.php";	require "gap.php";
-	$path="83/05/";	require $path."content.php";	require "gap.php";
-	$path="83/06/";	require $path."content.php";	require "gap.php";
-	$path="83/07/";	require $path."content.php";	require "gap.php";
-	$path="83/09/";	require $path."content.php";	require "gap.php";
-	$path="83/11/";	require $path."content.php";	require "gap.php";
-	$path="83/12/";	require $path."content.php";	require "gap.php";
-
+	,	"83/01/"
+	,	"83/02/"
+	,	"83/03/"
+	,	"83/04/"
+	,	"83/05/"
+	,	"83/06/"
+	,	"83/07/"
+	,	"83/09/"
+	,	"83/11/"
+	,	"83/12/"
 // 1984
-
-	$path="84/m1/";	require $path."content.php";	require "gap.php";
-	$path="84/01/";	require $path."content.php";	require "gap.php";
-	$path="84/02/";	require $path."content.php";	require "gap.php";
-	$path="84/m2/";	require $path."content.php";	require "gap.php";
-	$path="84/03/";	require $path."content.php";	require "gap.php";
-	$path="84/04/";	require $path."content.php";	require "gap.php";
-
+	,	"84/m1/"
+	,	"84/01/"
+	,	"84/02/"
+	,	"84/m2/"
+	,	"84/03/"
+	,	"84/04/"
 // 1985
-
-	$path="85/m3/";	require $path."content.php"; //	require "gap.php";
-
+	,	"85/m3/"
+	];
+	require "$tppath/top.php";
+	printPages($paths, $tppath);
 	require "$tppath/bottom.php";
 ?>

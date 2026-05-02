@@ -16,7 +16,7 @@
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
 
-	$paths = array(
+	$paths = [
 		"$ipath/11"
 	,	"$ipath/12"
 	,	"$ipath/13"
@@ -25,7 +25,7 @@
 	,	"$ipath/22"
 	,	"$ipath/23"
 	,	"$ipath/24"
-	);
+	];
 
 	require "$tppath/top.php";
 	printPages($paths, $tppath);

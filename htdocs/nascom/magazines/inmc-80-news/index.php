@@ -16,13 +16,13 @@
 	if (isset($ipath)) $path = $ipath; else $path = $ipath = ".";
 	$pict = "logo.jpeg";
 
-	$paths = array(
+	$paths = [
 		"$ipath/01"
 	,	"$ipath/02"
 	,	"$ipath/03"
 	,	"$ipath/04"
 	,	"$ipath/05"
-	);
+	];
 
 	require "$tppath/top.php";
 	printPages($paths, $tppath);

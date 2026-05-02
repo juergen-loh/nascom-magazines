@@ -37,10 +37,10 @@
 	if ($thumb
 	||	$link == "graphic"
 	) {
-		httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
+		httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
 
 	} else {
-		httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php, "$page.html")), $lastModified);
+		httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php, "$page.html"]), $lastModified);
 	}
 
 	$nascom = true;
@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-01 13:22:07 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-01 16:53:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{

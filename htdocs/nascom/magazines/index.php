@@ -16,7 +16,7 @@
 	.	"to the rise of IBM PC compatibles. Here ends the 8 bit era.";
 	if (!isset($ipath)) $ipath = ".";
 
-	$paths = array(
+	$paths = [
 		"$ipath/inmc-news/01"
 	,	"$ipath/inmc-news/02"
 	,	"$ipath/inmc-news/03"
@@ -76,7 +76,7 @@
 	,	"$ipath/scorpio-news/23"
 	,	"$ipath/scorpio-news/24"
 	,	"$ipath/scorpio-news/31"
-	);
+	];
 
 	require "$tppath/top.php";
 	printPages($paths, $tppath);

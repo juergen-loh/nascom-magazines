@@ -4,7 +4,7 @@
 //	$include_path	= "../cgi-bin";
 	$gHtmlRoot		= ".";
 	require "$include_path/global.php";
-	httpLastModified(array_merge(get_included_files(), array($navi_head_php, $navi_body_php, $navi_footer_php)), $lastModified);
+	httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
 	$nascom = true;
 	require "$include_path/navi-head.php";
 ?>

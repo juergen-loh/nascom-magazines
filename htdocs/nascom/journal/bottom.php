@@ -1,5 +1,13 @@
 <!-- bottom.php -->
-<?php echo $content;	?>
+<?php
+	if (isset($evalRequire)) {
+		$count = count($evalRequire);
+		for ($i = 0; $i < $count; $i++) {
+			// evil eval()
+			eval($evalRequire[$i]);
+		}
+	}
+?>
 </table>
 
 <?php	bottomGap();	?>

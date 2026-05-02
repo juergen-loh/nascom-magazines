@@ -4,17 +4,17 @@
 	$issue="Jahrgang 1980";
 	$tppath="../..";
 	$imgName="/81/07/Image-03-1.jpeg";
-	require "$tppath/top.php";
-
+	$paths = [
 // 1980
-
-	$path="../00/";	require $path."content.php";	require "../../gap.php";
-	$path="../01/";	require $path."content.php";	require "../../gap.php";
-	$path="../02/";	require $path."content.php";	require "../../gap.php";
-	$path="../03/";	require $path."content.php";	require "../../gap.php";
-	$path="../04/";	require $path."content.php";	require "../../gap.php";
-	$path="../05/";	require $path."content.php";	require "../../gap.php";
-	$path="../06/";	require $path."content.php";
-
+		"../00/"
+	,	"../01/"
+	,	"../02/"
+	,	"../03/"
+	,	"../04/"
+	,	"../05/"
+	,	"../06/"
+	];
+	require "$tppath/top.php";
+	printPages($paths, $tppath);
 	require "$tppath/bottom.php";
 ?>
