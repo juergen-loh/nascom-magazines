@@ -61,13 +61,13 @@ function predsucc($p,$magazine,$issue)
 
 	case "inmc-news":
 		switch ($issue) {
-		case "01":										$succ = "02/00";					break;
-		case "02":	$pred = "01/00";					$succ = "03/00";					break;
-		case "03":	$pred = "02/00";					$succ = "04/00";					break;
-		case "04":	$pred = "03/00";					$succ = "05/00";					break;
-		case "05":	$pred = "04/00";					$succ = "06/00";					break;
-		case "06":	$pred = "05/00";					$succ = "07/00";					break;
-		case "07":	$pred = "06/00";					$succ = "../inmc-80-news/01/01";	break;
+		case "01":										$succ = "02/00";						break;
+		case "02":	$pred = "01/00";					$succ = "03/00";						break;
+		case "03":	$pred = "02/00";					$succ = "04/00";						break;
+		case "04":	$pred = "03/00";					$succ = "05/00";						break;
+		case "05":	$pred = "04/00";					$succ = "06/00";						break;
+		case "06":	$pred = "05/00";					$succ = "07/00";						break;
+		case "07":	$pred = "06/00";					$succ = "../inmc-80-news/01/01";		break;
 		}
 		break;
 
@@ -112,15 +112,15 @@ function predsucc($p,$magazine,$issue)
 
 	case "scorpio-news":
 		switch ($issue) {
-		case "11":	$pred = "../80-bus-news/42/01";		$succ = "12/01";							break;
-		case "12":	$pred = "11/01";					$succ = "13/01";							break;
-		case "13":	$pred = "12/01";					$succ = "14/01";							break;
-		case "14":	$pred = "13/01";					$succ = "21/01";							break;
-		case "21":	$pred = "14/01";					$succ = "22/01";							break;
-		case "22":	$pred = "21/01";					$succ = "23/01";							break;
-		case "23":	$pred = "22/01";					$succ = "24/01";							break;
-		case "24":	$pred = "23/01";					$succ = "31/01";							break;
-		case "31":	$pred = "24/01";																break;
+		case "11":	$pred = "../80-bus-news/42/01";		$succ = "12/01";						break;
+		case "12":	$pred = "11/01";					$succ = "13/01";						break;
+		case "13":	$pred = "12/01";					$succ = "14/01";						break;
+		case "14":	$pred = "13/01";					$succ = "21/01";						break;
+		case "21":	$pred = "14/01";					$succ = "22/01";						break;
+		case "22":	$pred = "21/01";					$succ = "23/01";						break;
+		case "23":	$pred = "22/01";					$succ = "24/01";						break;
+		case "24":	$pred = "23/01";					$succ = "31/01";						break;
+		case "31":	$pred = "24/01";															break;
 		}
 		break;
 
@@ -128,14 +128,14 @@ function predsucc($p,$magazine,$issue)
 
 	case "micropower":
 		switch ($issue) {
-		case "11":										$succ = "12/-1";							break;
-		case "12":	$pred = "11/-1";					$succ = "13/-1";							break;
-		case "13":	$pred = "12/-1";					$succ = "14/-1";							break;
-		case "14":	$pred = "13/-1";					$succ = "21/-1";							break;
-		case "21":	$pred = "14/-1";					$succ = "22/-1";							break;
-		case "22":	$pred = "21/-1";					$succ = "23/-1";							break;
-		case "23":	$pred = "22/-1";					$succ = "24/-1";							break;
-		case "24":	$pred = "23/-1";					$succ = "../nascom-newsletter/25/-1";		break;
+		case "11":										$succ = "12/-1";						break;
+		case "12":	$pred = "11/-1";					$succ = "13/-1";						break;
+		case "13":	$pred = "12/-1";					$succ = "14/-1";						break;
+		case "14":	$pred = "13/-1";					$succ = "21/-1";						break;
+		case "21":	$pred = "14/-1";					$succ = "22/-1";						break;
+		case "22":	$pred = "21/-1";					$succ = "23/-1";						break;
+		case "23":	$pred = "22/-1";					$succ = "24/-1";						break;
+		case "24":	$pred = "23/-1";					$succ = "../nascom-newsletter/25/-1";	break;
 		}
 		break;
 
@@ -444,10 +444,10 @@ function columnStart($column, $multi = "", $class = "", $style = "")
 function columnStartReverse($column)
 {
 	switch ($column) {
-	case 2:		echo "<!-- 2 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6 order-".BootstrapTier()."-last\">\n";	break;
-	case 4:		echo "<!-- 4 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3 order-".BootstrapTier()."-last\">\n";	break;
+	case 2:		echo "<!-- 2 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-6 order-".BootstrapTier()."-last\">\n";		break;
+	case 4:		echo "<!-- 4 columns reverse: start --><div class=\"row\"><div class=\"col-".BootstrapTier()."-3 order-".BootstrapTier()."-last\">\n";		break;
 	case 34:	echo "<!-- 4 columns reverse: start 3 --><div class=\"row\"><div class=\"col-".BootstrapTier()."-9 order-".BootstrapTier()."-last\">\n";	break;
-	default:	echo "<columnStartReverse($column)>\n";																		break;
+	default:	echo "<columnStartReverse($column)>\n";																										break;
 	}
 }
 
@@ -456,7 +456,7 @@ function columnChangeReverse($column)
 	switch ($column) {
 	case 2:		echo "<!-- 2 columns reverse: change --></div><div class=\"col-".BootstrapTier()."-6 order-".BootstrapTier()."-first\">\n";		break;
 	case 4:		echo "<!-- 4 columns reverse: change --></div><div class=\"col-".BootstrapTier()."-3 order-".BootstrapTier()."-first\">\n";		break;
-	default:	echo "<columnChangeReverse($column)>\n";																		break;
+	default:	echo "<columnChangeReverse($column)>\n";																						break;
 	}
 }
 
@@ -475,7 +475,7 @@ function columnChange($column, $class = "", $style = "")
 	case 36:	echo "<!-- 6 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-6\""/*"!>\n"*/;		break;	// 3/6
 	case 46:	echo "<!-- 6 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 4/6
 	case 56:	echo "<!-- 6 columns: change 5 --></div><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;		break;
-	case 12:	echo "<!-- 12 columns: change --></div><div class=\"col-".BootstrapTier()."-1\""/*"!>\n"*/;		break;
+	case 12:	echo "<!-- 12 columns: change --></div><div class=\"col-".BootstrapTier()."-1\""/*"!>\n"*/;			break;
 	case 212:	echo "<!-- 12 columns: change 2 --></div><div class=\"col-".BootstrapTier()."-2\""/*"!>\n"*/;		break;	// 3/12
 	case 312:	echo "<!-- 12 columns: change 3 --></div><div class=\"col-".BootstrapTier()."-3\""/*"!>\n"*/;		break;	// 3/12
 	case 412:	echo "<!-- 12 columns: change 4 --></div><div class=\"col-".BootstrapTier()."-4\""/*"!>\n"*/;		break;	// 4/12
@@ -484,9 +484,9 @@ function columnChange($column, $class = "", $style = "")
 	case 712:	echo "<!-- 12 columns: change 7 --></div><div class=\"col-".BootstrapTier()."-7\""/*"!>\n"*/;		break;	// 7/12
 	case 812:	echo "<!-- 12 columns: change 8 --></div><div class=\"col-".BootstrapTier()."-8\""/*"!>\n"*/;		break;	// 8/12
 	case 912:	echo "<!-- 12 columns: change 9 --></div><div class=\"col-".BootstrapTier()."-9\""/*"!>\n"*/;		break;	// 7/12
-	case 1012:	echo "<!-- 12 columns: change 10 --></div><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;	break;	// 10/12
-	case 1112:	echo "<!-- 12 columns: change 11 --></div><div class=\"col-".BootstrapTier()."-11\""/*"!>\n"*/;	break;	// 11/12
-	default:	echo "<columnChange($column)>\n";																		break;
+	case 1012:	echo "<!-- 12 columns: change 10 --></div><div class=\"col-".BootstrapTier()."-10\""/*"!>\n"*/;		break;	// 10/12
+	case 1112:	echo "<!-- 12 columns: change 11 --></div><div class=\"col-".BootstrapTier()."-11\""/*"!>\n"*/;		break;	// 11/12
+	default:	echo "<columnChange($column)>\n";																	break;
 	}
 	if ($style != "") {
 		echo " style=\"$style\"";
@@ -504,7 +504,7 @@ function columnEnd($column)
 	case 4:		echo "<!-- 4 columns: end --></div></div>\n";			break;
 	case 6:		echo "<!-- 6 columns: end --></div></div>\n";			break;
 	case 12:	echo "<!-- 12 columns: end --></div></div>\n";			break;
-	default:	echo "<columnEnd($column)>\n";																		break;
+	default:	echo "<columnEnd($column)>\n";							break;
 	}
 }
 
@@ -512,7 +512,8 @@ function columnEnd($column)
 
 function enterHalmos()
 {
-	echo '<span class="enter-halmos">&#x25CF;</span>';	// todo
+	// scorpio-news
+	echo '<span class="enter-halmos">&#x25CF;</span>';	// BLACK CIRCLE
 }
 
 //---------------------------------------------------------------------------
@@ -525,7 +526,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-01 17:06:38 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-03 12:44:14 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";
@@ -619,17 +620,10 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 			switch ($issuepath) {
 			case 23:	// Part 1
 				switch ($pagepath) {
-				case 27:
-				case 28:
-				case 29:
-				case 30:
-				case 31:
-				case 32:
-				case 33:
-				case 34:
+				case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34:
 					$basic8k = $link;
 					break;
-				case 35:
+						case 35:
 					$basic8k = $link;
 					$basic8kNext = "24/23";
 					$basic8kPart = 2;
@@ -643,16 +637,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "23/35";
 					$basic8kPart = 1;
 					break;
-				case 24:
-				case 25:
-				case 26:
-				case 27:
-				case 28:
-				case 29:
-				case 30:
-				case 31:
-				case 32:
-				case 33:
+				case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33:
 					$basic8k = $link;
 					break;
 				case 34:
@@ -669,12 +654,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "24/34";
 					$basic8kPart = 2;
 					break;
-				case 32:
-				case 33:
-				case 34:
-				case 35:
-				case 36:
-				case 37:
+				case 32: case 33: case 34: case 35: case 36: case 37:
 					$basic8k = $link;
 					break;
 				case 38:
@@ -691,12 +671,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "25/38";
 					$basic8kPart = 3;
 					break;
-				case 32:
-				case 33:
-				case 34:
-				case 35:
-				case 36:
-				case 37:
+				case 32: case 33: case 34: case 35: case 36: case 37:
 					$basic8k = $link;
 					break;
 				case 38:
@@ -713,16 +688,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "26/38";
 					$basic8kPart = 4;
 					break;
-				case 24:
-				case 25:
-				case 26:
-				case 27:
-				case 28:
-				case 29:
-				case 30:
-				case 31:
-				case 32:
-				case 33:
+				case 24: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33:
 					$basic8k = $link;
 					break;
 				case 34:
@@ -739,12 +705,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "31/34";
 					$basic8kPart = 5;
 					break;
-				case 24:
-				case 25:
-				case 26:
-				case 27:
-				case 28:
-				case 29:
+				case 24: case 25: case 26: case 27: case 28: case 29:
 					$basic8k = $link;
 					break;
 				case 30:
@@ -761,13 +722,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 					$basic8kPrev = "32/30";
 					$basic8kPart = 6;
 					break;
-				case 24:
-				case 25:
-				case 26:
-				case 27:
-				case 28:
-				case 29:
-				case 30:
+				case 24: case 25: case 26: case 27: case 28: case 29: case 30:
 					$basic8k = $link;
 					break;
 				}

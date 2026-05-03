@@ -1,6 +1,6 @@
 <?php DoublePageStart("DisAssemblyRomBasic"); ?>
 <pre>
-<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    14</span>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                <?php basic8kPage("PAGE    14")?></span>
 
 <?php adr8K("E38A"); ?> E5         <?php lbl8K("CHKSTK"); ?>: PUSH    HL              ; Save code string address
 E38B 2ADA10             LD      HL,(<?php bas8K("ARREND"); ?>)     ; Lowest free memory
@@ -40,7 +40,7 @@ E3BE 01                 DEFB    (LD  BC,nn)     ; Skip "LD E,<?php bas8K("TM"); 
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
-<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    15</span>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                <?php basic8kPage("PAGE    15")?></span>
 
 <?php adr8K("E3C1"); ?> CDDFE4     <?php lbl8K("ERROR"); ?>:  CALL    <?php bas8K("CLREG"); ?>           ; Clear registers and stack
 E3C4 324510             LD      (<?php bas8K("CTLOFG"); ?>),A      ; Enable output (A is 0)

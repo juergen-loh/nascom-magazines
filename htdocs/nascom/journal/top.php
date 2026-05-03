@@ -473,13 +473,13 @@ function printPages($paths, $tppath)
 			$p = $paths[$i];
 			if ($setpath) {
 				// evil eval()
-				array_push($evalRequire, "\$path = \"$p\";");
+				array_push($evalRequire, '$path = "'.$p.'";');
 			}
 			// evil eval()
-			array_push($evalRequire, "require \"$p"."content.php\";");
+			array_push($evalRequire, 'require "'.$p.'"."content.php";');
 			if ($i < $count - 1) {
 				// evil eval()
-				array_push($evalRequire, "require \"$tppath/gap.php\";");
+				array_push($evalRequire, 'require "$tppath/gap.php";');
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 <?php DoublePageStart("DisAssemblyRomBasic"); ?>
 <pre>
-<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    80</span>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                <?php basic8kPage("PAGE    80")?></span>
 
 <?php adr8K("F838"); ?> CD13F8     <?php lbl8K("ABS"); ?>:    CALL    <?php bas8K("TSTSGN"); ?>          ; Test sign of <?php bas8K("FPREG","","","\n"); ?>
 F83B F0                 RET     P               ; Return if positive
@@ -52,7 +52,7 @@ F878 C9                 RET
 </pre>
 <?php DoublePageChange(); ?>
 <pre>
-<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                PAGE    81</span>
+<span class="head">Dis-assembly of NASCOM ROM BASIC Ver 4.7                <?php basic8kPage("PAGE    81")?></span>
 
 <?php adr8K("F879"); ?> 21E610     <?php lbl8K("SIGNS"); ?>:  LD      HL,<?php bas8K("FPREG"); ?>+2      ; Point to MSB of <?php bas8K("FPREG","","","\n"); ?>
 F87C 7E                 LD      A,(HL)          ; Get MSB

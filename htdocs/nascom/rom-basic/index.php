@@ -85,7 +85,7 @@
 ?>
 	<meta name="keywords" content="Nascom ROM Basic 4.7, Microsoft BASIC, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom ROM Basic</title>
-	<!-- $Date: 2026-05-01 17:06:38 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-03 12:44:14 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<link rel="stylesheet" type="text/css" href="../magazines/80-bus-news/style.css">
 <?php require "$navi_body_php"; ?>
 
@@ -125,10 +125,10 @@ function DoublePageEnd()
 	for ($i = 0; $i < $count; $i++) {
 		require $pages[$i];
 	}
+	echo "</div>";
 
 //---------------------------------------------------------------------------
 
-echo "</div>";
 ?>
 <br>
 <?php /*	bottomGap();	*/ ?>
