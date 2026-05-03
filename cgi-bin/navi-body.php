@@ -520,8 +520,8 @@ function basic8kPage($page)
 	$disAssemblyPrefix = "$workingsPrefix   ";
 //	echo ("<!--/$page/$n/$p/$workingsPrefix/$disAssemblyPrefix/-->");
 	$workings = strpos($page, $disAssemblyPrefix) !== 0;
-	$issues = [
-					// Part 1
+	$pages = [		// Part 1
+					// The workings of Nascom ROM BASIC Ver 4.7
 -17=>	'23/35',	// 17
 		'23/35',	// 16
 		'23/34',	// 15
@@ -540,6 +540,7 @@ function basic8kPage($page)
 		'23/28',	// 2
 		'23/27',	// 1
 					// Part 2
+					// Dis-assembly of NASCOM ROM BASIC Ver 4.7
 1=>		'24/23',	// 1
 		'24/24',	// 2
 		'24/24',	// 3
@@ -653,24 +654,32 @@ function basic8kPage($page)
 	];
 	if ($workings) {
 		// The workings of Nascom ROM BASIC Ver 4.7
-		$issue = $issues[-$p];
-		$id = "pagew$p";
+		$issue = $pages[-$p];
+		$id = "work$p";
 		$prefix = $workingsPrefix;
 		
 	} else {
 		// Dis-assembly of NASCOM ROM BASIC Ver 4.7
-		$issue = $issues[$p];
-		$id = "page$p";
+		$issue = $pages[$p];
+		$id = "dis$p";
 		$prefix = $disAssemblyPrefix;
 	}
 	if ($RomBasicClass == "") {
 		// part 1-7
-		$link = "../../../../../rom-basic/#$id";
+		$link = "../../../../../rom-basic";
 	} else {
 		// complete
-		$link = "../magazines/80-bus-news/$issue/text/#$id";
+		$link = "../magazines/80-bus-news/$issue/text";
 	}
-	echo "<a href=\"$link\" id=\"$id\">$prefix$p</a>";
+	echo "<span id=\"$id\"><a href=\"$link/#$id\">$prefix$p</a></span>";
+}
+
+//---------------------------------------------------------------------------
+
+function basicAsmLst($basic8kPath)
+{
+	echo "<p>\n\tNASCOM ROM BASIC dis-assembled is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
+	echo "\tand <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
 }
 
 //---------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 	if (!isset($post)) $post = "";
 	$desc =
 		"This is an overall table of contents of "
-	.	"<a href=\"$pre"."issues/\">English Nascom magazines</a>, "
+	.	"<a href=\"{$pre}issues/\">English Nascom magazines</a>, "
 	.	"published between 1978 and 1989."
 	.	"</p>\n\t<p>"
 	.	"There is also an "

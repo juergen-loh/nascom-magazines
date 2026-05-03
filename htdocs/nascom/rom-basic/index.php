@@ -100,8 +100,9 @@ $RomBasicComplete = true;
 function DoublePageStart($class)
 {
 	global $RomBasicClass, $lang;
+
 	if ($RomBasicClass == "") {
-		echo "<div class=\"$class\" lang=\"$lang\">\n";
+		echo "<div class=\"mag-80-bus-news $class\" lang=\"$lang\">\n";
 		$RomBasicClass = $class;
 	}
 }
@@ -114,6 +115,7 @@ function DoublePageChange()
 function DoublePageEnd()
 {
 	global $RomBasicClass;
+
 	if ($RomBasicClass != "") {
 		DoublePageChange();
 	}
@@ -126,6 +128,9 @@ function DoublePageEnd()
 		require $pages[$i];
 	}
 	echo "</div>";
+
+	DoublePageChange();
+	basicAsmLst("../magazines/80-bus-news");
 
 //---------------------------------------------------------------------------
 

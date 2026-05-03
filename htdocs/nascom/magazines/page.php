@@ -746,8 +746,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 			if ($basic8kNext != null) {
 				echo "<p>\n\tGo to <a href=\"$basic8kPath/$basic8kNext/$basic8kText#page\">part $basic8kPart</a> of NASCOM ROM BASIC dis-assembled.\n</p>\n";
 			}
-			echo "<p>\n\tNASCOM ROM BASIC dis-assembled is available in <a href=\"$basic8kPath/files/8kbasic.asm\">ASM</a>\n";
-			echo "\tand <a href=\"$basic8kPath/files/8kbasic.lst\">LST</a> file format.\n</p>\n";
+			basicAsmLst($basic8kPath);
 		}
 	}
 	$naviBottom

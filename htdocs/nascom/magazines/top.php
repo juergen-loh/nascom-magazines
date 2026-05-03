@@ -142,7 +142,7 @@
 		if (isset($name)
 		&&	isset($number)
 		) {
-			$link = "https://80bus.co.uk.mirror.jloh.de/publications/magazines/$name"."$number.pdf";
+			$link = "https://80bus.co.uk.mirror.jloh.de/publications/magazines/$name$number.pdf";
 		}
 		{
 			echo "\t";
