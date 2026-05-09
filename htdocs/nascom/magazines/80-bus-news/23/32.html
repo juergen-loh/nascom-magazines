@@ -2,7 +2,7 @@
 <table>
 <colgroup><col><col><col><col></colgroup>
 
-<tr><th colspan=3><p>The workings of <span class="uppercase">Nascom</span> ROM BASIC Ver 4.7</p></th><th><p>PAGE 10</p></th></tr>
+<tr><th colspan=3><p>The workings of <span class="uppercase">Nascom</span> ROM BASIC Ver 4.7</p></th><th><p><?php basic8kPage("PAGE 10")?></p></th></tr>
 
 <tr><td colspan=4><p>
 ******** Now for the exciting bit &ndash; The ROM ********
@@ -18,7 +18,7 @@ at 1000 to 105F.
 </p></td></tr>
 
 <tr><td><p><?php bas8K("MSIZE"); ?></p></td><td><p><?php bas8K("E036"); ?></p></td><td colspan=2><p>
-Output &ldquo;Memory size&rdquo; prompt and get response from user.
+Output &ldquo;Memory size&rdquo; prompt and get response from user.<br>
 If a number is given jump to TSTMEM otherwise start at the
 beginning of RAM and test each successive byte until the end
 of RAM is found. When the end has been found jump to SETTOP.
@@ -107,7 +107,7 @@ Clear out variables and string space an reset DATA pointer.
 <table>
 <colgroup><col><col><col><col></colgroup>
 
-<tr><th colspan=3><p>The workings of <span class="uppercase">Nascom</span> ROM BASIC Ver 4.7</p></th><th><p>PAGE 11</p></th></tr>
+<tr><th colspan=3><p>The workings of <span class="uppercase">Nascom</span> ROM BASIC Ver 4.7</p></th><th><p><?php basic8kPage("PAGE 11")?></p></th></tr>
 
 <tr><td><p><?php bas8K("CLREG"); ?></p></td><td><p><?php bas8K("E4DF"); ?></p></td><td colspan=2><p>
 Reset stack to top of memory, clear out temporary strings,
@@ -136,12 +136,12 @@ Get an input line by character and save it in <?php bas8K("BUFFER"); ?>.
 </p></td></tr>
 
 <tr><td><p><?php bas8K("CPDEHL"); ?></p></td><td><p><?php bas8K("E68A"); ?></p></td><td colspan=2><p>
-Compare the DE register with the HL register returning flags:&ndash;<br>
+Compare the DE register with the HL register returning flags:&ndash;
 Z &ndash; Registers are equal, C &ndash; DE &gt; HL and NC- DE &lt;= HL
 </p></td></tr>
 
 <tr><td><p><?php bas8K("CHKSYN"); ?></p></td><td><p><?php bas8K("E690"); ?></p></td><td colspan=2><p>
-Make sure the next byte in the code string is the same as the
+Make sure the next byte in the code string is the sam as the
 byte following the &ldquo;CALL CHKSYN&rdquo;. If not &ndash; output &ldquo;?SN Error&rdquo;.
 </p></td></tr>
 
