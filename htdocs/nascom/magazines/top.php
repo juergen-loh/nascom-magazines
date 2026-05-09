@@ -31,7 +31,7 @@
 	$lang = "en";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-01 19:53:37 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-03 23:15:24 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
