@@ -5499,6 +5499,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "c&rsquo;t Text-Terminal":	$url = "https://julianehehl.de/test-ndr/mc1.htm#b3";							break;
 	case "c&rsquo;t":				$url = "https://ct.de/";														break;
 	case "Car_race.nas":			$url = "http://www.nascomhomepage.com/games/Car_race.nas";						break;
+	case "CBM 3000":				$url = "https://de.wikipedia.org/wiki/CBM-3000-Serie";							break;
 	case "Chip":					$url = "https://www.chip.de/";													break;
 	case "Circle Generators for Display Devices":	$url = "https://people.csail.mit.edu/bkph/papers/Circle_Generators_OPT.pdf";	break;
 	case "Climax":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm837.htm";				break;
@@ -5512,6 +5513,9 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Computing Today, October 1979, Page 66":	$url = "https://archive.org/details/computing-today-1979/ComputingToday197910/page/66/mode/2up";	break;
 	case "Computing Today, February 1980, Page 24":	$url = "https://archive.org/details/computing-today-1980/ComputingToday198002/page/24/mode/2up";	break;
 	case "Computing Today, October 1982, Page 46":	$url = "https://archive.org/details/computing-today-1982/ComputingToday198210/page/46/mode/2up";	break;
+	case "Conway's Game of Life":
+			if ($lang == "en")		$url = "https://$lang.wikipedia.org/wiki/Conway's_Game_of_Life";
+			else					$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";				break;
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
 	case "CP/M":					$url = "https://$lang.wikipedia.org/wiki/CP/M";									break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
@@ -5663,9 +5667,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Kornkraft Genossenschaft":$url = "https://bio-region-niederrhein.com/ueber-uns-2/karte/";					break;
 	case "Ldgold.cas":				$url = "http://www.nascomhomepage.com/mbasic/Ldgold.cas";						break;
 	case "Lichtgriffel":			$url = "https://$lang.wikipedia.org/wiki/Lichtgriffel";							break;
-	case "Conway's Game of Life":
-			if ($lang == "en")		$url = "https://$lang.wikipedia.org/wiki/Conway's_Game_of_Life";
-			else					$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";				break;
+	case "Liverpool Software Gazette":	$url = "https://80bus.co.uk.mirror.jloh.de/pages/magazines.htm";			break;
 	case "LilBeans":				$url = "http://www.21d.de/LilBeans/";											break;
 	case "LM324":					$url = "https://www.ti.com/lit/ds/symlink/lm124-n.pdf";							break;
 	case "LM741":					$url = "https://www.ti.com/lit/ds/symlink/lm741.pdf";							break;
@@ -5804,6 +5806,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "SVC":						$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm832.htm";				break;
 	case "Swinghs.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swinghs.cas";						break;
 	case "Swords.cas":				$url = "http://www.nascomhomepage.com/mbasic/Swords.cas";						break;
+	case "Tandy range":				$url = "https://en.wikipedia.org/wiki/List_of_TRS-80_and_Tandy-branded_computers";	break;
 	case "TANDY Lineprinter VI":	$url = "https://colorcomputerarchive.com/repo/Documents/Manuals/Hardware/Line%20Printer%20IV%20(Tandy).pdf";	break;
 	case "TANDY Lineprinter VIII":	$url = "http://dunfield.classiccmp.org/printer/h/lpviii.jpg";					break;
 	case "TEAC FD-55F":				$url = "https://classic.technology/teac-fd-55-series/";							break;
@@ -6878,4 +6881,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-03 23:15:24 +0200 (So, 03. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-10 17:21:53 +0200 (So, 10. Mai 2026) $ -->
