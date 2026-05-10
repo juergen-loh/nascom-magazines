@@ -1,6 +1,5 @@
 <?php
-	$issue = "2/2";
-	$number = "2-2";
+	$issue = $number = "2-2";
 	$offset = 2;
 	$first = -1;
 	$last = 37;

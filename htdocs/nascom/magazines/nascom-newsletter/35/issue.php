@@ -1,5 +1,5 @@
 <?php
-	$issue = "3/&#x200b;5&amp;6";
+	$issue = "3-&#x200b;5&amp;6";
 	$number = "3-5_6";
 	$offset = 2;
 	$first = -1;
