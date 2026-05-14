@@ -5471,7 +5471,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "80 Microcomputing":		$url = "https://archive.org/details/80-microcomputing-magazine";				break;
 	case "8080":					$url = "https://$lang.wikipedia.org/wiki/Intel_8080";							break;
 	case "8085":					$url = "https://$lang.wikipedia.org/wiki/Intel_8085";							break;
-	case "A simple technique for static relocation of absolute machine code":	$url = "https://groups.google.com/forum/?hl=de&amp;fromgroups=#!topic/comp.os.cpm/TLHgIi16yTo";	break;
+	case "A simple technique for static relocation of absolute machine code":	$url = "https://groups.google.com/g/comp.os.cpm/c/TLHgIi16yTo";	break;
 	case "A.F.T. Winfield":			$url = "https://openlibrary.org/authors/OL1347836A/A._F._T._Winfield";			break;
 	case "ABC 80":					$url = "https://$lang.wikipedia.org/wiki/ABC_80";								break;
 	case "AD7581":					$url = "https://www.analog.com/media/en/technical-documentation/data-sheets/AD7581.pdf";	break;
@@ -5491,7 +5491,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Lunar LEM Rocket":		$url = "https://www.atariarchives.org/basicgames/showpage.php?page=106";		break;
 	case "Basic-Interpreter":		$url = "https://openlibrary.org/works/OL15388892W/Basic-Interpreter";			break;
 	case "Bernd Ploss":				$url = "? https://www.eah-jena.de/scitec/personen/bernd-ploss";					break;
-	case "Blue Label Software Pascal":	$url = "https://de.wikipedia.org/wiki/Turbo_Pascal#Geschichte";				break;
+	case "Blue Label Software Pascal":	$url = "https://$lang.wikipedia.org/wiki/Turbo_Pascal#Geschichte";			break;
 	case "c&rsquo;t 2/1985":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276";	break;
 	case "c&rsquo;t 3/1985, Seite 76":	$url = "https://archive.org/details/ct-magazine-8503/page/n57/mode/2up";	break;
 	case "c&rsquo;t 4/1987":		$url = "https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12410";	break;
@@ -5499,7 +5499,7 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "c&rsquo;t Text-Terminal":	$url = "https://julianehehl.de/test-ndr/mc1.htm#b3";							break;
 	case "c&rsquo;t":				$url = "https://ct.de/";														break;
 	case "Car_race.nas":			$url = "http://www.nascomhomepage.com/games/Car_race.nas";						break;
-	case "CBM 3000":				$url = "https://de.wikipedia.org/wiki/CBM-3000-Serie";							break;
+	case "CBM 3000":				$url = "https://$lang.wikipedia.org/wiki/CBM-3000-Serie";						break;
 	case "Chip":					$url = "https://www.chip.de/";													break;
 	case "Circle Generators for Display Devices":	$url = "https://people.csail.mit.edu/bkph/papers/Circle_Generators_OPT.pdf";	break;
 	case "Climax":					$url = "https://80bus.co.uk.mirror.jloh.de/pages/gemini/gm837.htm";				break;
@@ -5514,8 +5514,8 @@ function externalLink($link, $text="", $delimiter="\n")
 	case "Computing Today, February 1980, Page 24":	$url = "https://archive.org/details/computing-today-1980/ComputingToday198002/page/24/mode/2up";	break;
 	case "Computing Today, October 1982, Page 46":	$url = "https://archive.org/details/computing-today-1982/ComputingToday198210/page/46/mode/2up";	break;
 	case "Conway's Game of Life":
-			if ($lang == "en")		$url = "https://$lang.wikipedia.org/wiki/Conway's_Game_of_Life";
-			else					$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";				break;
+			if ($lang == "de")		$url = "https://$lang.wikipedia.org/wiki/Conways_Spiel_des_Lebens";
+			else					$url = "https://$lang.wikipedia.org/wiki/Conway's_Game_of_Life";				break;
 	case "CP/M Plus":				$url = "https://$lang.wikipedia.org/wiki/CP/M#CP/M-Plus";						break;
 	case "CP/M":					$url = "https://$lang.wikipedia.org/wiki/CP/M";									break;
 	case "CQ-DL":					$url = "https://www.darc.de/nachrichten/amateurfunkmagazin-cq-dl";				break;
@@ -6881,4 +6881,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-10 17:21:53 +0200 (So, 10. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-14 18:47:44 +0200 (Do, 14. Mai 2026) $ -->
