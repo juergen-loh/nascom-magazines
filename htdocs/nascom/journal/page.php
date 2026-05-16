@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-01 16:53:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-16 16:12:36 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{
@@ -64,6 +64,52 @@
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";
 
 	require "$navi_body_php";
+
+	// Journal ------------------------------------------------------------------
+
+	function imageInsert($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageInsertA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imageInsertGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageInsertGapA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imageCenter($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageCenterA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imageCenterGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageCenterGapA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imageRight($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageRightA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imageRightGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imageRightGapA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	function imagePlain($imagename, $style="", $class="")
+	{
+		global $imagepath, $year, $issue, $page;
+		imagePlainA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+	}
+
+	// --------------------------------------------------------------------------
 
 /*	echo "\n";
 	echo "<table class=\"robots-nocontent\" style=\"width: 100%\">\n";
@@ -606,9 +652,9 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "\">";
 			if (!isset($imagepath)) $imagepath = "";
 			if ($link == "graphic") {
-				imagelink($imagepath, $imagepath . sprintf("../%02d/", $page), sprintf("%02d.gif", $page), "Seite $page"/*" von $last"*/);
+				imagelinkA($imagepath, $imagepath . sprintf("../%02d/", $page), sprintf("%02d.gif", $page), "Seite $page"/*" von $last"*/);
 			} else {
-				imagelink($imagepath, $imagepath . sprintf("../../%02d/text/", $page), sprintf("../../thumb/%02d.gif", $page), "Seite $page"/*" von $last"*/);
+				imagelinkA($imagepath, $imagepath . sprintf("../../%02d/text/", $page), sprintf("../../thumb/%02d.gif", $page), "Seite $page"/*" von $last"*/);
 			}
 			echo "</td>\n";
 

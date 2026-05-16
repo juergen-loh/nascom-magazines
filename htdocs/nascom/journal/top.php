@@ -31,7 +31,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2026-05-01 19:53:37 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 <?php
 	echo "\t"
@@ -134,7 +134,7 @@
 		echo "\t\t<h1 id=\"head\">\n\t\t\t";
 		sscanf($imgName, "/%2s/%2s/Image-%2s-%d.jpeg", $year, $issuex, $page, $idx);
 //		echo "<!-- $year, $issuex, $page -->\n";
-		imageInsert(
+		imageInsertA(
 			""
 		,	$year, $issuex, $page
 		,	$tppath.$imgName
@@ -158,7 +158,7 @@
 		echo "\t</div>\n\t<div class=\"col-4\">\n";
 //		echo "\t\t<table style=\"border: 1px solid #000;\"><tr><td style=\"padding: 0\">\n\t\t\t";
 //		echo '<a href="' . sprintf($path . "%02d$tail", $page) . '">';
-		imageRight(
+		imageRightA(
 			$path
 		,	"", $issue, $page
 		,	sprintf("thumb/%02d.gif", $page)

@@ -526,7 +526,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-03 23:15:24 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-16 15:39:11 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";
@@ -539,6 +539,64 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 	}
 
 	require "$navi_body_php";
+
+	// Magazines ----------------------------------------------------------------
+
+	function imageInsert($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageInsertA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageInsertGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageInsertGapA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageCenter($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageCenterA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageCenterGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageCenterGapA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageRight($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageRightA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageRightGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageRightGapA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imagePlain($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imagePlainA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageNoscale($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageNoscaleA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	function imageNoscaleGap($imagename, $style="", $class="")
+	{
+		global $imagepath, $magpath, $issuepath, $pagepath;
+		imageNoscaleGapA($imagepath, $magpath, $issuepath, $pagepath, $imagename, $style, $class);
+	}
+
+	// --------------------------------------------------------------------------
 
 	echo "<table class=\"style-table-zeropadding\" style=\"width: 100%\">\n";
 		echo "<tr>\n";

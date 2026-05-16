@@ -10,14 +10,14 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal - 80-Bus Journal</title>
-	<!-- $Date: 2026-05-01 17:06:38 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php require "$navi_body_php";	?>
 
 <div class="row hyphenate">
 <div class="col-<?php echo BootstrapTier(); ?>-6">
 
 <h1 id="nascomjournal" class="FirstHeading">
-<?php imageInsert("", "81", "07", "03", "journal/81/07/Image-03-1.jpeg"); echo "\n"; ?>
+<?php imageInsertA("", "81", "07", "03", "journal/81/07/Image-03-1.jpeg"); echo "\n"; ?>
 </h1>
 <p>
 Das Nascom&nbsp;Journal war eine Zeitschrift für die
@@ -38,7 +38,7 @@ wurde das Nascom&nbsp;Journal eingestellt.
 <div class="col-<?php echo BootstrapTier(); ?>-6">
 
 <h1 id="80busjournal" class="FirstHeading">
-<?php imageInsert("", "83", "03", "02", "journal/83/03/Image-02-1.jpeg"); echo "\n"; ?>
+<?php imageInsertA("", "83", "03", "02", "journal/83/03/Image-02-1.jpeg"); echo "\n"; ?>
 </h1>
 <p>
 Nach dem Ende des Nascom&nbsp;Journals

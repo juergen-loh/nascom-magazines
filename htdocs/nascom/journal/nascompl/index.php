@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="NASCOMPL, Nascom Journal, 80-Bus Journal, Nascom Computer">
 	<title>NASCOMPL</title>
-	<!-- $Date: 2026-05-01 16:53:20 +0200 (Fr, 01. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 //	echo "\t<style type=\"text/css\">a:hover { background:#fff; color: #000000; }</style>\n";
 
@@ -18,7 +18,7 @@
 
 function nascomplInsert($year, $issue, $page, $file)
 {
-//	imagelink("", "../$year/$issue/$page/", "../$year/$issue/$file", "NASCOMPL");
+//	imagelinkA("", "../$year/$issue/$page/", "../$year/$issue/$file", "NASCOMPL");
 
 	$size = 200;
 	$space = (int) ($size / 10);
@@ -50,7 +50,7 @@ function nascomplInsert($year, $issue, $page, $file)
 }
 
 	echo "<h1 id=\"head\">\n\t";
-	imageInsert("", "82", "10", "07", "../82/10/Image-07-2.jpeg");
+	imageInsertA("", "82", "10", "07", "../82/10/Image-07-2.jpeg");
 	echo "\n</h1>\n"
 ?>
 <p>

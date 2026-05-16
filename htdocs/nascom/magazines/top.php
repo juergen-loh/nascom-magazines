@@ -31,7 +31,7 @@
 	$lang = "en";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-03 23:15:24 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
@@ -110,7 +110,7 @@
 
 	if (isset($pict)) {
 		echo "\t<h1 id=\"head\">\n\t\t";
-		imageInsert(
+		imageInsertA(
 			""
 		,	$title, "", $page
 		,	sprintf("%s/%s", $path, $pict)
@@ -148,7 +148,7 @@
 			echo "\t";
 			if (isset($pict)) {
 			} else {
-				imageRight(
+				imageRightA(
 					$toctext ? "../../../" : ""	// $imagepath
 				,	""	// $year
 				,	""	// $issue
