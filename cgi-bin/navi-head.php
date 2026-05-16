@@ -9,7 +9,7 @@
 	echo "<html lang=\"$lang\">\n";
 ?>
 
-<!-- navi-head.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ -->
+<!-- navi-head.php / $Date: 2026-05-16 23:12:07 +0200 (Sa, 16. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -52,8 +52,7 @@
 
 	// infinityfree hängt ?i=1 an die URI
 	$requestUri = str_replace("?i=1", "", $requestUri);
-
-	$requestUri = preg_replace($stripChars, '', $requestUri);
+	$requestUri = preg_replace('/[^a-zA-Z0-9\-\/ ]+/', '', $requestUri);
 	
 	echo $requestUri;
 	echo "\">\n";
