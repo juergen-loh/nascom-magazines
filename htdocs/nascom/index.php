@@ -10,7 +10,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal - 80-Bus Journal</title>
-	<!-- $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-16 18:22:56 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php require "$navi_body_php";	?>
 
 <div class="row hyphenate">
@@ -265,7 +265,7 @@ erschienen. Auch dazu gibt es ein
 <a href="magazines/text/">Ge&shy;samt-In&shy;halts&shy;ver&shy;zeich&shy;nis</a>.
 <!--
 Für sie hat
-< ?php externalLink("Mike Strange"); ?> die
+<?php /*externalLink("Mike Strange");*/ ?> die
 <a href="magazines/">Inhaltsverzeichnisse</a>
 gesammelt.
 -->

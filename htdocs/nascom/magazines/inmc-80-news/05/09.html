@@ -12,7 +12,7 @@ and I thought you might be interested in my own ideas on the subject.
 The reason Mr Willmott&rsquo;s attempt to use WAIT failed is that he has
 misunderstood the effect of WAIT. It is described for various cycles (Memory
 read, Memory write, etc) on pages&nbsp;15-18 of the Z80 Technical Manual. Whenever
-/WAIT is asserted the cycle is stretched by inserting wait states until /WAIT
+<span class="nowrap">/WAIT</span> is asserted the cycle is stretched by inserting wait states until <span class="nowrap">/WAIT</span>
 goes high again. During this time all the bus signals are maintained. Thus
 while waiting for a blanking period the VRAM signal will be active, preventing
 the VDU circuitry from accessing the RAM.
@@ -35,7 +35,7 @@ period starts. I have not so far experimented with this enough to be sure it
 works, but the technique is promising.
 </p>
 <p>
-/BLANKING is a composite of two blanking signals: blanking between
+<span class="nowrap">/BLANKING</span> is a composite of two blanking signals: blanking between
 scan lines, and blanking between frames. The former lasts for quite a short
 period &ndash; I think less than the time required to access one byte. Therefore I
 have been using only the interframe blanking period, identified by the VBLANK

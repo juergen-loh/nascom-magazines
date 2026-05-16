@@ -38,14 +38,14 @@ addresses 00-07 (NASIO), address B1 (data port), address B2 (control port),
 address B3 (card reset). The B1 and B2 outputs are qualified by RD and WR before
 they are used, but the B3 output is taken straight to the RESET input of the
 IVC&rsquo;s Z80. If you look up the interrupt behaviour of the Z80 in its data sheet
-you will see that the Z80 acknowledges an interrupt by putting out an /IORQ
-signal along with an /M1, a unique signal combination that is used at no other
+you will see that the Z80 acknowledges an interrupt by putting out an <span class="nowrap">/IORQ</span>
+signal along with an <span class="nowrap">/M1</span>, a unique signal combination that is used at no other
 time. Unfortunately if the lower 8-bits of the address bus just happen to hold
 the address B3, then the IVC is reset.
 </p>
 <p>
 The cure is simple (in theory), and that is to disconnect pin 14 of IC25
-from GND, and connect the backplane /M1 signal to it via a spare inverter on the
+from GND, and connect the backplane <span class="nowrap">/M1</span> signal to it via a spare inverter on the
 board. Pin 14 is an additional enable input (active low), and with this
 modification the decode PROM will be inhibited during any cycle where M1 is low,
 thus preventing the interrupt acknowledge cycle being misinterpreted by the IVC.

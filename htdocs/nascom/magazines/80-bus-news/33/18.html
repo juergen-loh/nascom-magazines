@@ -31,7 +31,7 @@ Transparent Access &amp; ESP
 With the SVC, a hardware technique is used to achieve transparent access.
 On the face of it all that has to be done is to connect the &lsquo;display enable&rsquo;
 (or &lsquo;display active&rsquo;) signal from the display controller via a few gates to
-the Z80 /WAIT input. Thus, if the processor attempts to access the screen
+the Z80 <span class="nowrap">/WAIT</span> input. Thus, if the processor attempts to access the screen
 memory while the display is active, it is made to wait until the end of the
 display period, after which the Z80 is free to continue with its read/<?php spChar("zwsp"); ?>write
 cycle. However a problem arises when the Z80 finds, on going to access the
@@ -45,7 +45,7 @@ side of the display depending on which controller gets priority.
 <p>
 This is where ESP comes in. The arbitration circuit has to know whether
 there is time for the Z80 to complete its read/<?php spChar("zwsp"); ?>write cycle without
-interruption, or whether the /WAIT signal should be applied immediately as the
+interruption, or whether the <span class="nowrap">/WAIT</span> signal should be applied immediately as the
 display controller is about to start a new display line. Those of you who have
 followed the description so far are probably thinking &ndash; &lsquo;ah! you just generate
 or tap off an earlier version of the Display Enable signal and use that&rsquo;.

@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-16 16:12:36 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-16 18:22:56 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{
@@ -56,6 +56,7 @@
 		$titleClean = str_replace('<span class="nowrap">',	'',		$titleClean);
 		$titleClean = str_replace('</span>',				'',		$titleClean);
 		$titleClean = str_replace('&shy;',					'',		$titleClean);
+		$titleClean = str_replace('&#x200b;',				'',		$titleClean);	// zwsp
 		$titleClean = str_replace('&ndash;',				'-',	$titleClean);
 		$titleClean = str_replace('&middot;',				'-',	$titleClean);
 		$titleClean = str_replace('<br>',					' - ',	$titleClean);
