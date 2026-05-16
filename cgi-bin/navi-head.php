@@ -2,11 +2,14 @@
 	header('Content-Type: text/html; charset=utf-8');
 ?><!doctype html><?php /* DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" */ ?>
 
-<?php $lang = "de";
+<?php
+	if (!isset($lang)) {
+		$lang = "de";
+	}
 	echo "<html lang=\"$lang\">\n";
 ?>
 
-<!-- navi-head.php / $Date: 2025-09-06 18:29:07 +0200 (Sa, 06. Sep 2025) $ -->
+<!-- navi-head.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -45,7 +48,6 @@
 <?php
 //	echo "<!--\n";
 	echo "\t<link rel=\"canonical\" href=\"$gCanonicalRoot";
-	$stripChars	= '/[^a-zA-Z0-9\-\/ ]+/';
 	$requestUri = $_SERVER["REQUEST_URI"];
 
 	// infinityfree hängt ?i=1 an die URI

@@ -81,18 +81,18 @@
 
 	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
 	$nascom = true;
+	$lang = "en";
 	require "$navi_head_php";
 ?>
 	<meta name="keywords" content="Nascom ROM Basic 4.7, Microsoft BASIC, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom ROM Basic</title>
-	<!-- $Date: 2026-05-03 23:15:24 +0200 (So, 03. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<link rel="stylesheet" type="text/css" href="../magazines/80-bus-news/style.css">
 <?php require "$navi_body_php"; ?>
 
 <?php
 //---------------------------------------------------------------------------
 
-$lang = "en";
 $RomBasicComplete = true;
 
 //---------------------------------------------------------------------------

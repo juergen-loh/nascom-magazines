@@ -27,21 +27,27 @@
 
 	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php, $table]), $lastModified);
 	$nascom = true;
-	require "$navi_head_php";
 	$lang = "en";
+	require "$navi_head_php";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
 <?php
 	$titleClean = $title;
 	$titleClean = str_replace("&shy;", "", $titleClean);
-//	$titleClean = str_replace("&middot;", "", $titleClean);
 	echo "\t<title>$titleClean";
-	if (isset($issue)) echo " &ndash; $issue";
-	echo " &ndash; Table of Contents";
+
+	if (isset($issue)) {
+		$issueClean = $issue;
+		$issueClean = str_replace("&#x200b;", "", $issueClean);
+		$issueClean = str_replace($ZeroWidthSpace, "", $issueClean);
+		$issueClean = str_replace("&ndash;", "-", $issueClean);
+		echo " - $issueClean";
+	}
+	echo " - Table of Contents";
 	echo "</title>\n";
 
 	require "$navi_body_php";
@@ -189,6 +195,8 @@
 
 function echoShy($str)
 {
+	global $ZeroWidthSpace;
+
 	$arr = explode(" ", $str);
 //	$count = count($arr);
 	$eco = "";
@@ -203,7 +211,7 @@ function echoShy($str)
 		case "Assembler/Editor":			$erg = "As&shy;sem&shy;bler/Edi&shy;tor";					break;
 		case "Assemblers":					$erg = "As&shy;sem&shy;blers";								break;
 		case "Benchmarks":					$erg = "Bench&shy;marks";									break;
-		case "Blocking/&#x200b;Deblocking":	$erg = "Blo&shy;cking/De&shy;blo&shy;cking";				break;
+		case "Blocking/{$ZeroWidthSpace}Deblocking":	$erg = "Blo&shy;cking/De&shy;blo&shy;cking";	break;
 		case "Blocking/Deblocking":			$erg = "Blo&shy;cking/De&shy;blo&shy;cking";				break;
 		case "Centronics":					$erg = "Cen&shy;tro&shy;nics";								break;
 		case "Characters":					$erg = "Cha&shy;rac&shy;ters";								break;
@@ -250,7 +258,7 @@ function echoShy($str)
 		case "Intelligent":					$erg = "Intel&shy;ligent";									break;
 		case "Interfacing":					$erg = "Inter&shy;facing";									break;
 		case "Interference":				$erg = "Inter&shy;ference";									break;
-		case "International":				$erg = "In&shy;ter&shy;na&shy;tio&shy;nal";								break;
+		case "International":				$erg = "In&shy;ter&shy;na&shy;tio&shy;nal";					break;
 		case "Interpreter":					$erg = "Inter&shy;preter";									break;
 		case "Introducing":					$erg = "Intro&shy;ducing";									break;
 		case "Introduction":				$erg = "Intro&shy;duction";									break;
@@ -414,8 +422,8 @@ function echoShy($str)
 		// Default
 		default:							$erg = $value;												break;
 		}
-		$erg = str_replace("/", "/&#x200b;", $erg);
-		$erg = str_replace(".", ".&#x200b;", $erg);
+		$erg = str_replace("/", "/$ZeroWidthSpace", $erg);
+		$erg = str_replace(".", ".$ZeroWidthSpace", $erg);
 		$eco = $eco." ".$erg;
 	}
 	$eco = trim($eco);
@@ -428,6 +436,7 @@ function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $
 {
 	global $trLink;
 	global $toctext;
+
 	$pathPage = sprintf("%02d", $page);
 
 	echo "\t<tr>\n";
@@ -460,6 +469,8 @@ function trMagazine($magazine, $issue, $number, $name, $offset, $path, $topic, $
 
 function printPages($paths, $tppath)
 {
+	global $ZeroWidthSpace;
+
 	if (isset($paths)) {
 		$count = count($paths);
 		for ($i = 0; $i < $count; $i++) {

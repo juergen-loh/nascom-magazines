@@ -31,7 +31,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2026-05-16 15:07:02 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 <?php
 	echo "\t"
@@ -198,6 +198,8 @@
 
 function addShy($str)
 {
+	global $ZeroWidthSpace;
+
 	$arr = explode(" ", $str);
 	$count = count($arr);
 	$eco = "";
@@ -413,8 +415,8 @@ function addShy($str)
 		// Default	
 		default:								$erg = $value;												break;
 		}
-		$erg = str_replace("/", "/&#x200b;", $erg);
-		$erg = str_replace(".", ".&#x200b;", $erg);
+		$erg = str_replace("/", "/$ZeroWidthSpace", $erg);
+		$erg = str_replace(".", ".$ZeroWidthSpace", $erg);
 		$eco = $eco." ".$erg;
 	}
 	$eco = trim($eco);

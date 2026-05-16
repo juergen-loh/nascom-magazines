@@ -588,9 +588,11 @@ function basicAsmLst($basic8kPath)
 
 function spChar($spChar)
 {
+	global $ZeroWidthSpace;
+
 	switch ($spChar) {
 	case "zwsp":
-		echo "&#x200b;";	// zero width space
+		echo $ZeroWidthSpace;	// zero width space
 		break;
 	case "starf":
 		echo "&starf;";		// filled star
@@ -6783,4 +6785,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-16 15:15:25 +0200 (Sa, 16. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ -->

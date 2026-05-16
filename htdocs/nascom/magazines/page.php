@@ -45,8 +45,8 @@
 	}
 
 	$nascom = true;
-	require "$navi_head_php";
 	$lang = "en";
+	require "$navi_head_php";
 
 //---------------------------------------------------------------------------
 
@@ -526,7 +526,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-16 15:39:11 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";
