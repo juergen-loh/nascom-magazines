@@ -6642,6 +6642,12 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	}
 }
 
+function basAddrLink($text, $addr = "", $nl = "")
+{
+	if ($addr == "") $addr = $text;
+	echo "<a href=\"../../../../../rom-basic/#$addr\">$text</a>$nl";
+}
+
 function hline($width, $border="")
 {
 	echo "<!-- Linie"/* über ganze Spalte*/." -->";
@@ -6785,4 +6791,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-23 14:27:55 +0200 (Sa, 23. Mai 2026) $ -->

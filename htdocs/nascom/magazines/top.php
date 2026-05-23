@@ -31,20 +31,21 @@
 	require "$navi_head_php";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-23 14:27:55 +0200 (Sa, 23. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">
 <?php
 	$titleClean = $title;
-	$titleClean = str_replace("&shy;", "", $titleClean);
+	$titleClean = str_replace('&shy;',			'',		$titleClean);
+	$titleClean = str_replace($ZeroWidthSpace,	'',		$titleClean);
 	echo "\t<title>$titleClean";
 
 	if (isset($issue)) {
 		$issueClean = $issue;
-		$issueClean = str_replace("&#x200b;", "", $issueClean);
-		$issueClean = str_replace($ZeroWidthSpace, "", $issueClean);
-		$issueClean = str_replace("&ndash;", "-", $issueClean);
+		$issueClean = str_replace('&ndash;',		'-',	$issueClean);
+		$issueClean = str_replace('&#x200b;',		'',		$issueClean);
+		$issueClean = str_replace($ZeroWidthSpace,	'',		$issueClean);
 		echo " - $issueClean";
 	}
 	echo " - Table of Contents";

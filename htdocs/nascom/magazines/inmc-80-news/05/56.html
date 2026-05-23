@@ -13,7 +13,7 @@ of the routine in USRLOC at 1004H, using the M command, before calling it.
 But there is only one entry point though which the machine code routines
 must pass; however, the parameter of the USR function can be accessed from
 machine code by calling a routine called DEINT whose address is contained
-in E00B, which turns out to be located at E98BH &ndash; this provides the clue
+in E00B, which turns out to be located at <?php basAddrLink("E98B"); ?>H &ndash; this provides the clue
 as to how to differentiate between the different functions. The answer is
 to produce a jump table of addresses of the routines to be accessed from
 BASIC and use the parameter passed through DE to determine which one to
@@ -23,7 +23,7 @@ jump to.
 The ZEAP listing below shows how this can be done. The first few
 bytes poke the starting address of the jump-table routine into USRLOC; in
 this example I used 0C80. Then you collect the USR parameter from DE by
-calling E98BH, and first make sure that it is not greater than the number
+calling <?php basAddrLink("E98B"); ?>H, and first make sure that it is not greater than the number
 of subroutines available &ndash; if it is, you print an error message and return
 to BASIC. If the value contained in DE is within range, it is doubled
 (because the addresses are two bytes long) and added to the address of the

@@ -48,7 +48,7 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-23 14:27:55 +0200 (Sa, 23. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	{
@@ -56,10 +56,10 @@
 		$titleClean = str_replace('<span class="nowrap">',	'',		$titleClean);
 		$titleClean = str_replace('</span>',				'',		$titleClean);
 		$titleClean = str_replace('&shy;',					'',		$titleClean);
-		$titleClean = str_replace('$ZeroWidthSpace',		'',		$titleClean);
 		$titleClean = str_replace('&ndash;',				'-',	$titleClean);
 		$titleClean = str_replace('&middot;',				'-',	$titleClean);
 		$titleClean = str_replace('<br>',					' - ',	$titleClean);
+		$titleClean = str_replace($ZeroWidthSpace,			'',		$titleClean);
 		echo "\t<title>$magazine - $titleClean</title>\n";
 	}
 	echo "\t<meta name=\"keywords\" content=\"$magazine, Nascom Computer, Nascom 1, Nascom 2\">\n";

@@ -1,6 +1,6 @@
 <?php
 	$stripChars = '/[^a-zA-Z0-9().+\- ]+/';
-	$ZeroWidthSpace = "&ZeroWidthSpace;";
+	$ZeroWidthSpace = '<wbr>';
 
 	ini_set('html_errors', true);
 	ini_set('docref_root', '/error/');

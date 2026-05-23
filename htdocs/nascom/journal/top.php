@@ -31,7 +31,7 @@
 //	$width = 720;
 ?>
 
-	<!-- top.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-23 14:27:55 +0200 (Sa, 23. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 <?php
 	echo "\t"
@@ -42,19 +42,20 @@
 	.	"\n";
 	{
 		$titleClean = $title;
-		$titleClean = str_replace('&middot;', '-',	$titleClean);
-		$titleClean = str_replace('&ndash;', '-',	$titleClean);
-		$titleClean = str_replace('&mdash;', '-',	$titleClean);
-		$titleClean = str_replace('<br>', ' - ',	$titleClean);
+		$titleClean = str_replace('&middot;',			'-',	$titleClean);
+		$titleClean = str_replace('&ndash;',			'-',	$titleClean);
+		$titleClean = str_replace('&mdash;',			'-',	$titleClean);
+		$titleClean = str_replace('<br>',				' - ',	$titleClean);
+		$titleClean = str_replace('$ZeroWidthSpace',	'',		$titleClean);
 		echo "\t<title>$titleClean";
 	}
 	if (isset($issue)) {
 		$issueClean = $issue;
-		$issueClean = str_replace('&middot;', '-',	$issueClean);
-		$issueClean = str_replace('&ndash;', '-',	$issueClean);
-		$issueClean = str_replace('&mdash;', '-',	$issueClean);
-		$issueClean = str_replace('<br>', ' - ',	$issueClean);
-
+		$issueClean = str_replace('&middot;',			'-',	$issueClean);
+		$issueClean = str_replace('&ndash;',			'-',	$issueClean);
+		$issueClean = str_replace('&mdash;',			'-',	$issueClean);
+		$issueClean = str_replace('<br>',				' - ',	$issueClean);
+		$issueClean = str_replace('$ZeroWidthSpace',	'',		$issueClean);
 		echo " - $issueClean";
 	}
 	echo " - Inhaltsverzeichnis</title>\n";
