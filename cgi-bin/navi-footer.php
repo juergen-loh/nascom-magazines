@@ -1,5 +1,5 @@
 
-<!-- navi-footer.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- navi-footer.php / $Date: 2026-05-25 16:00:39 +0200 (Mo, 25. Mai 2026) $ -->
 
 <!--********************************************************************************-->
 
@@ -33,13 +33,15 @@
 <?php
 	if (isset($bootstrap_js)) {
 		requireJs($bootstrap_js);
+	} else if (isset($link_bootstrap_js)) {
+		linkJs("$link_bootstrap_js");
 	} else {
 //		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.js");
 //		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js");
 //		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js");
-//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.js");
+		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.js");
 //		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js");
-		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js");
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js");
 	}
 ?>
 </body>

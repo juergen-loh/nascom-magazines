@@ -37,7 +37,7 @@
 	}
 ?>
 
-<!-- navi-head.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- navi-head.php / $Date: 2026-05-25 16:00:39 +0200 (Mo, 25. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -71,15 +71,16 @@
 
 	<!--bootstrap-->
 <?php
-
-	// https://www.toptal.com/developers/cssminifier
 	if (isset($bootstrap_css)) {
 		requireCss($bootstrap_css);
+	} else if (isset($link_bootstrap_css)) {
+		linkCss("$link_bootstrap_css");
 	} else {
-//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.css");
+		// https://www.toptal.com/developers/cssminifier
+		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.css");
 //		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css");
 //		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css");
-		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css");
+//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css");
 //		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css");
 	}
 /*
@@ -89,6 +90,8 @@
 */
 	if (isset($style_css)) {
 		requireCss($style_css);
+	} else if (isset($link_style_css)) {
+		linkCss("$link_style_css");
 	} else {
 		linkCss("$gHtmlRoot/style.css");
 	}
