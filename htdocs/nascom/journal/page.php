@@ -47,9 +47,8 @@
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-25 13:41:25 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+<!-- page.php / $Date: 2026-05-25 16:26:38 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
-	echo "\n";
 	{
 		$titleClean = $title;
 		$titleClean = str_replace('<span class="nowrap">',	'',		$titleClean);

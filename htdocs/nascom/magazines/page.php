@@ -523,9 +523,8 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-25 16:22:26 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+<!-- page.php / $Date: 2026-05-25 16:26:38 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
-	echo "\n";
 	echo "\t<title>";
 	echo RemoveEntities("$magazine - $desc");
 	echo "</title>\n";
