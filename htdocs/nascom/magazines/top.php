@@ -25,13 +25,13 @@
 	}
 //	echo "<!--";	print_r($pages);	echo "-->\n";
 
-	httpLastModified(array_merge(get_included_files(), $pages, [$navi_head_php, $navi_body_php, $navi_footer_php, $table]), $lastModified);
+	httpLastModified(array_merge(get_included_files(), $pages, $included_files, [$table]), $lastModified);
 	$nascom = true;
 	$lang = "en";
 	require "$navi_head_php";
 //	$width = 720;
 ?>
-	<!-- top.php / $Date: 2026-05-23 14:27:55 +0200 (Sa, 23. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- top.php / $Date: 2026-05-25 13:41:25 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 	<meta name="keywords" content="Table of Contents,
 		Nascom Magazines, INMC News, INMC 80 News, Micropower, Nascom Newsletter, 80-Bus News, Scorpio News,
 		Nascom 1, Nascom 2">

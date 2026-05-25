@@ -4,13 +4,13 @@
 //	$include_path	= "../../cgi-bin";
 	$gHtmlRoot		= "..";
 	require "$include_path/global.php";
-	httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
+	httpLastModified(array_merge(get_included_files(), $included_files), $lastModified);
 	$nascom = true;
 	require "$navi_head_php";
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Journal - 80-Bus Journal</title>
-	<!-- $Date: 2026-05-16 18:22:56 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-05-25 13:41:25 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php require "$navi_body_php";	?>
 
 <div class="row hyphenate">

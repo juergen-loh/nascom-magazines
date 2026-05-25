@@ -7,45 +7,40 @@
 		$lang = "de";
 	}
 	echo "<html lang=\"$lang\">\n";
+
+	function requireCss($css)
+	{
+		$name = basename($css);
+		echo "<!-- $name --><style>\n";
+		require $css;
+		echo "\n</style><!-- /$name -->\n";
+	}
+
+	function linkCss($css)
+	{
+		echo "\t<link rel=\"stylesheet\" href=\"$css\">\n";
+	}
 ?>
 
-<!-- navi-head.php / $Date: 2026-05-16 23:12:07 +0200 (Sa, 16. Mai 2026) $ -->
+<!-- navi-head.php / $Date: 2026-05-25 14:42:28 +0200 (Mo, 25. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 
-<?php	if ($nascom) {	?>
-	<?php echo "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"$gHtmlRoot/nascom/nascom.ico\">\n"; ?>
-	<?php echo "<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\" sizes=\"32x32\">\n"; ?>
-	<?php echo "<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\" sizes=\"96x96\">\n"; ?>
-	<?php echo "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\">\n"; ?>
-<?php	} else { // nascom	?>
-	<?php echo "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"$gHtmlRoot/favicon.ico\">\n"; ?>
-	<?php echo "<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/apple-touch-icon.png\" sizes=\"32x32\">\n"; ?>
-	<?php echo "<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/apple-touch-icon.png\" sizes=\"96x96\">\n"; ?>
-	<?php echo "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"$gHtmlRoot/apple-touch-icon.png\">\n"; ?>
-<?php	} // nascom	?>
-
-	<!--bootstrap-->
 <?php
-	$server = preg_replace($stripChars, '', getenv('SERVER_NAME'));
+	if ($nascom) {
+		echo "\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"$gHtmlRoot/nascom/nascom.ico\">\n";
+		echo "\t<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\" sizes=\"32x32\">\n";
+		echo "\t<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\" sizes=\"96x96\">\n";
+		echo "\t<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"$gHtmlRoot/nascom/apple-touch-icon.png\">\n";
+	} else { // nascom
+		echo "\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"$gHtmlRoot/favicon.ico\">\n";
+		echo "\t<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/apple-touch-icon.png\" sizes=\"32x32\">\n";
+		echo "\t<link rel=\"icon\" type=\"image/png\" href=\"$gHtmlRoot/apple-touch-icon.png\" sizes=\"96x96\">\n";
+		echo "\t<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"$gHtmlRoot/apple-touch-icon.png\">\n";
+	} // nascom
 
-	if ($server == "t480") {
-		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.css\">\n";
-//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css\">\n";
-//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css\">\n";
-	} else {
-		// https://www.toptal.com/developers/cssminifier
-//		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css\">\n";
-		echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css\">\n";
-	}
-?>
-	<!--font awesome- ->
-	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/fontawesome.min.css\">\n"; ?>
-	<?php echo "<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/solid.min.css\">\n"; ?>
-	-->
-	<?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$gHtmlRoot/style.css\">\n"; ?>
-<?php
+	// Canonical
 //	echo "<!--\n";
 	echo "\t<link rel=\"canonical\" href=\"$gCanonicalRoot";
 	$requestUri = $_SERVER["REQUEST_URI"];
@@ -57,5 +52,30 @@
 	echo $requestUri;
 	echo "\">\n";
 //	echo "-->\n";
+?>
+
+	<!--bootstrap-->
+<?php
+
+	// https://www.toptal.com/developers/cssminifier
+	if (isset($bootstrap_css)) {
+		requireCss($bootstrap_css);
+	} else {
+//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.css");
+//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.min.css");
+//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css");
+		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css");
+//		linkCss("$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css");
+	}
+/*
+	// font awesome
+	echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/fontawesome.min.css\">\n";
+	echo "\t<link rel=\"stylesheet\" href=\"$gHtmlRoot/cdn/fontawesome/css/solid.min.css\">\n";
+*/
+	if (isset($style_css)) {
+		requireCss($style_css);
+	} else {
+		linkCss("$gHtmlRoot/style.css");
+	}
 ?>
 <!-- /navi-head.php -->

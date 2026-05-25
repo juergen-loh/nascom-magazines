@@ -37,10 +37,10 @@
 
 	switch ($link) {
 	case "text":
-		httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php, $html]), $lastModified);
+		httpLastModified(array_merge(get_included_files(), $included_files, [$html]), $lastModified);
 		break;
 	case "graphic":
-		httpLastModified(array_merge(get_included_files(), [$navi_head_php, $navi_body_php, $navi_footer_php]), $lastModified);
+		httpLastModified(array_merge(get_included_files(), $included_files), $lastModified);
 		break;
 	}
 
@@ -526,7 +526,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-16 22:18:43 +0200 (Sa, 16. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-25 13:41:25 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";

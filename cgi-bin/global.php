@@ -16,10 +16,31 @@
 		include "$redirect_php";
 	}
 
+	$server = preg_replace($stripChars, '', getenv('SERVER_NAME'));
+
+	if (!isset($requireCss)) {
+		$requireCss = true;
+	}
+
 	$gCanonicalRoot		= "https://tupel.jloh.de";
 	$navi_body_php		= "$include_path/navi-body.php";
 	$navi_head_php		= "$include_path/navi-head.php";
 	$navi_footer_php	= "$include_path/navi-footer.php";
+	$included_files		= [$navi_head_php, $navi_body_php, $navi_footer_php];
+
+	if (!$requireCss) {
+		// nix
+	} else if ($server == "t480") {
+//		$style_css			= "$document_root/style.css";
+//		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.css";
+//		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css]);
+	} else
+	{
+		// https://www.toptal.com/developers/cssminifier
+		$style_css			= "$document_root/style.min.css";
+		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.custom.min.css";
+		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css]);
+	}
 /*
 	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);
 	if ($document_root == "..") {
