@@ -1,17 +1,17 @@
 <?php columnStart(1); ?>
 <table class="useful-routines">
 <tr><td colspan=4>Routine to get next non space<br>
-                  character.C flag set if valid</td></tr>
-<tr><td></td><td>ASCII digit				</td><td>&ndash;&ndash;	</td><td><?php bas8K("E836","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Print HL in decimal		</td><td>&ndash;&ndash;	</td><td><?php bas8K("F9AD","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Amount of memory			</td><td>stored @		</td><td><?php bas8K("10DA","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Ctrl &lsquo;O&rsquo; flag	</td><td>stored @		</td><td><?php bas8K("1045","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>End of program				</td><td>stored @		</td><td><?php bas8K("10D6","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Start of text				</td><td>starts @		</td><td><?php bas8K("10F9","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Nulls						</td><td>stored @		</td><td><?php bas8K("1041","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Line length				</td><td>stored @		</td><td><?php bas8K("1042","","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Location of text			</td><td>stored @		</td><td><?php bas8K("1049","1048","/../80-bus-news"); ?></td></tr>
-<tr><td></td><td>Line buffer				</td><td>stored @		</td><td><?php bas8K("104B","104A","/../80-bus-news"); ?></td></tr>
+                  character.<?php spChar("zwsp"); ?>C flag set if valid</td></tr>
+<tr><td></td><td>ASCII digit				</td><td>&mdash;	</td><td><?php basLink("E836"); ?></td></tr>
+<tr><td></td><td>Print HL in decimal		</td><td>&mdash;	</td><td><?php basLink("F9AD"); ?></td></tr>
+<tr><td></td><td>Amount of memory			</td><td>stored @	</td><td><?php basLink("10DA"); ?></td></tr>
+<tr><td></td><td>Ctrl &lsquo;O&rsquo; flag	</td><td>stored @	</td><td><?php basLink("1045"); ?></td></tr>
+<tr><td></td><td>End of program				</td><td>stored @	</td><td><?php basLink("10D6"); ?></td></tr>
+<tr><td></td><td>Start of text				</td><td>starts @	</td><td><?php basLink("10F9"); ?></td></tr>
+<tr><td></td><td>Nulls						</td><td>stored @	</td><td><?php basLink("1041"); ?></td></tr>
+<tr><td></td><td>Line length				</td><td>stored @	</td><td><?php basLink("1042"); ?></td></tr>
+<tr><td></td><td>Location of text			</td><td>stored @	</td><td>1049</td></tr>
+<tr><td></td><td>Line buffer				</td><td>stored @	</td><td>104B</td></tr>
 </table>
 <p>
 While I was disassembling the BASIC I found a number of things that aren&rsquo;t
@@ -24,15 +24,15 @@ mode, or during an INPUT statement.
 </p>
 <p>
 Ever noticed how slow BASIC is on starting up? Take a look at locations
-<?php bas8K("FCCDH","FCCD","/../80-bus-news","\n"); ?>
-through to <?php bas8K("FCD4H","FCD4","/../80-bus-news","\n"); ?>
+<?php basLink("FCCD"); ?>H
+through to <?php basLink("FCD4"); ?>H
 these locations form a routine which is simply a delay. At this point
 I will grit my teeth and hope that I&rsquo;m right and that it is all it does.
 </p>
 <p>
 Ever wondered why you can&rsquo;t single step BASIC? It&rsquo;s because it changes the NMI
 jump vector in the workspace. If you want to single step BASIC ignore any calls to
-<?php bas8K("FEBBH","FEBB","/../80-bus-news","\n"); ?>
+<?php basLink("FEBB"); ?>H
 because that&rsquo;s where it changes. Ok so it changes the NMI jump so what does it
 change it to? It changes it to the break function, so if you can generate an NMI you
 can use it as a break key. How do I generate an NMI&nbsp;? Simple connect a push to make
