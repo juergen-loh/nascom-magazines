@@ -1,11 +1,6 @@
 <?php
 	require			( "../../SetIncludePath.php");
 	SetIncludePath	( "../..");
-	if ($_GET['link']/*$link*/ == "text") {
-		$gHtmlRoot	= "../../../../../..";
-	} else {
-		$gHtmlRoot	= "../../../../..";
-	}
 	require "$include_path/global.php";
 
 	$magpath   =                       preg_replace($stripChars, '', $_GET['magazine']);
@@ -13,6 +8,12 @@
 	$pagepath  = sprintf("%02d", (int) preg_replace($stripChars, '', $_GET['page']));
 	$link      =                       preg_replace($stripChars, '', $_GET['link']);
 	$thumb     = false;
+
+	if ($link == "text") {
+		$gHtmlRoot	= "../../../../../..";
+	} else {
+		$gHtmlRoot	= "../../../../..";
+	}
 
 	$html = "$magpath/$issuepath/$pagepath.html";
 	if (!file_exists($html)) {
@@ -522,7 +523,7 @@ function DoublePageEnd()			{	columnEnd(1);	echo('</div>');					}
 
 	echo "\n";
 ?>
-	<!-- page.php / $Date: 2026-05-25 16:00:39 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- page.php / $Date: 2026-05-25 16:22:26 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	echo "\n";
 	echo "\t<title>";

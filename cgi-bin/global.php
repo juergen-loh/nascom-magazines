@@ -18,8 +18,8 @@
 
 	$server = preg_replace($stripChars, '', getenv('SERVER_NAME'));
 
-	if (!isset($requireCss)) {
-		$requireCss = false;//true;
+	if (!isset($requireCssJs)) {
+		$requireCssJs = false;//true;
 	}
 
 	$gCanonicalRoot		= "https://tupel.jloh.de";
@@ -27,31 +27,6 @@
 	$navi_head_php		= "$include_path/navi-head.php";
 	$navi_footer_php	= "$include_path/navi-footer.php";
 	$included_files		= [$navi_head_php, $navi_body_php, $navi_footer_php];
-
-	if (!$requireCss) {
-		$link_style_css		= "$gHtmlRoot/style.min.css";
-		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css";
-		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js";
-	} else if ($server == "t480") {
-		$link_style_css		= "$gHtmlRoot/style.css";
-		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css";
-		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js";
-
-//		$style_css			= "$document_root/style.css";
-//		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.css";
-//		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.js";
-//		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
-	} else {
-		// https://www.toptal.com/developers/cssminifier
-		$link_style_css		= "$gHtmlRoot/style.min.css";
-		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css";
-		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js";
-
-		$style_css			= "$document_root/style.min.css";
-		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.custom.min.css";
-		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.min.js";
-		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
-	}
 /*
 	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);
 	if ($document_root == "..") {

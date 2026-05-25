@@ -35,9 +35,34 @@
 	{
 		echo "\t<script src=\"$js\"></script>\n";
 	}
+
+	if (!$requireCssJs) {
+		$link_style_css		= "$gHtmlRoot/style.min.css";
+		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css";
+		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js";
+	} else if ($server == "t480") {
+		$link_style_css		= "$gHtmlRoot/style.css";
+		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.css";
+		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js";
+
+//		$style_css			= "$document_root/style.css";
+//		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.css";
+//		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.js";
+//		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
+	} else {
+		// https://www.toptal.com/developers/cssminifier
+		$link_style_css		= "$gHtmlRoot/style.min.css";
+		$link_bootstrap_css	= "$gHtmlRoot/cdn/bootstrap/css/bootstrap.custom.min.css";
+		$link_bootstrap_js	= "$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js";
+
+		$style_css			= "$document_root/style.min.css";
+		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.custom.min.css";
+		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.min.js";
+		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
+	}
 ?>
 
-<!-- navi-head.php / $Date: 2026-05-25 16:00:39 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- navi-head.php / $Date: 2026-05-25 16:22:26 +0200 (Mo, 25. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
