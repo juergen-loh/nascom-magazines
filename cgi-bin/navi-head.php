@@ -8,6 +8,7 @@
 	}
 	echo "<html lang=\"$lang\">\n";
 
+	// CSS
 	function requireCss($css)
 	{
 		$name = basename($css);
@@ -20,9 +21,23 @@
 	{
 		echo "\t<link rel=\"stylesheet\" href=\"$css\">\n";
 	}
+
+	// JS
+	function requireJs($js)
+	{
+		$name = basename($js);
+		echo "<!-- $name --><script>\n";
+		require $js;
+		echo "\n</script><!-- /$name -->\n";
+	}
+
+	function linkJs($js)
+	{
+		echo "\t<script src=\"$js\"></script>\n";
+	}
 ?>
 
-<!-- navi-head.php / $Date: 2026-05-25 14:42:28 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- navi-head.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">

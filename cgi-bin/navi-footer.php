@@ -1,5 +1,5 @@
 
-<!-- navi-footer.php / $Date: 2025-09-06 18:29:07 +0200 (Sa, 06. Sep 2025) $ -->
+<!-- navi-footer.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
 
 <!--********************************************************************************-->
 
@@ -31,14 +31,15 @@
 
 	<!--bootstrap-->
 <?php
-	if ($server == "t480") {
-		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.js\"></script>\n";
-//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js\"></script>\n";
-//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js\"></script>\n";
+	if (isset($bootstrap_js)) {
+		requireJs($bootstrap_js);
 	} else {
-//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.js\"></script>\n";
-//		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js\"></script>\n";
-		echo "<script src=\"$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js\"></script>\n";
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.js");
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js");
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js");
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.js");
+//		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.js");
+		linkJs("$gHtmlRoot/cdn/bootstrap/js/bootstrap.custom.min.js");
 	}
 ?>
 </body>

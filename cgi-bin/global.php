@@ -33,13 +33,14 @@
 	} else if ($server == "t480") {
 //		$style_css			= "$document_root/style.css";
 //		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.css";
-//		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css]);
-	} else
-	{
+//		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.js";
+//		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
+	} else {
 		// https://www.toptal.com/developers/cssminifier
 		$style_css			= "$document_root/style.min.css";
 		$bootstrap_css		= "$document_root/cdn/bootstrap/css/bootstrap.custom.min.css";
-		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css]);
+		$bootstrap_js		= "$document_root/cdn/bootstrap/js/bootstrap.custom.min.js";
+		$included_files		= array_merge($included_files, [$style_css, $bootstrap_css, $bootstrap_js]);
 	}
 /*
 	$document_root = pathinfo($include_path, PATHINFO_DIRNAME);

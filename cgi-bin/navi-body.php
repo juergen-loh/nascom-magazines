@@ -3085,7 +3085,19 @@ function imageDesc84($issue, $name)
 	case "02 Image-44-3":
 	case "03 Image-45-2":
 	case "03 Image-50-1":
-	case "03 Image-50-2":	return "BASIC-Listing";
+	case "03 Image-50-2":
+	case "04 Image-32-1":
+	case "04 Image-32-2":
+	case "04 Image-32-3":
+	case "04 Image-33-1":
+	case "04 Image-33-2":
+	case "04 Image-33-3":
+	case "04 Image-34-1":
+	case "04 Image-34-2":
+	case "04 Image-34-3":
+	case "04 Image-35-1":
+	case "04 Image-35-2":
+	case "04 Image-35-3":	return "BASIC-Listing";
 
 	case "02 Image-39-1":
 	case "02 Image-39-2":
@@ -6791,4 +6803,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-25 13:41:25 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
