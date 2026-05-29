@@ -465,7 +465,7 @@ function basic8kPage($page)
 		'24/33',	// 20
 		'24/33',	// 21
 		'24/34',	// 22
-		'24/35',	// 23
+		'24/34',	// 23
 					// Part 3
 		'25/31',	// 24
 		'25/32',	// 25
@@ -559,7 +559,6 @@ function basic8kPage($page)
 		$issue = $pages[-$p];
 		$id = "work$p";
 		$prefix = $workingsPrefix;
-		
 	} else {
 		// Dis-assembly of NASCOM ROM BASIC Ver 4.7
 		$issue = $pages[$p];
@@ -567,13 +566,20 @@ function basic8kPage($page)
 		$prefix = $disAssemblyPrefix;
 	}
 	if ($RomBasicClass == "") {
-		// part 1-7
+		// 80-Bus News: Part 1-7
 		$link = "../../../../../rom-basic";
 	} else {
-		// complete
+		// Nasom ROM Basic: Complete
 		$link = "../magazines/80-bus-news/$issue/text";
 	}
-	echo "<span id=\"$id\"><a href=\"$link/#$id\">$prefix$p</a></span>";
+	$linkit = "<a href=\"$link/#$id\">$prefix$p</a>";
+	if ($workings) {
+		echo "<tr><th colspan=3><p id=\"$id\">The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>";
+		echo "$linkit</p></th></tr>\n";
+	} else {
+		echo "<span id=\"$id\" class=\"head\">Dis-assembly of NASCOM ROM BASIC Ver 4.7                ";
+		echo "$linkit</span>\n";
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -6804,4 +6810,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-29 12:41:39 +0200 (Fr, 29. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-29 23:53:00 +0200 (Fr, 29. Mai 2026) $ -->
