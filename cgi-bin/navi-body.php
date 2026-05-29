@@ -1743,6 +1743,7 @@ function imageDesc82($issue, $name)
 
 	case "02 Image-15-3":
 	case "02 Image-16-1":
+	case "09 Image-22-4":
 	case "09 Image-27-2":	return "ZEAP Z80 Assembler – Symbol Table";
 
 	case "01 Image-06-2":
@@ -6803,4 +6804,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-25 15:29:11 +0200 (Mo, 25. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-29 12:41:39 +0200 (Fr, 29. Mai 2026) $ -->
