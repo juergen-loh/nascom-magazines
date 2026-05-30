@@ -4,7 +4,7 @@
 <?php
 
 $nl = "&#32;&#10;";
-$asTitle = '~';		// ALT-Text von Bildern als TITLE sichtbar machen
+$asTitle = '\\';		// ALT-Text von Bildern als TITLE sichtbar machen
 $gWidth = 750;
 
 // Globale Funktionen
@@ -3750,11 +3750,8 @@ function imageDescInmc80News($issue, $name)
 	// 01
 	case '01 Image-01-1':	return 'INMC 80 NEWS Issue: 1';
 	case '01 Image-03-1':	return 'Dave Hunt';
-	case '01 Image-36-2':	return 'WHAT ?';
-	case '01 Image-43-2':	return 'interface software';
-	case '01 Image-46-1':	return 'WARNING~8A';
 	case '01 Image-16-3':	return 'DOTS';
-	case '01 Image-18-1':	return 'HEX~&gt;?';
+	case '01 Image-18-1':	return 'HEX&rarr;?';
 	case '01 Image-19-1':	return 'Z80 made simple';
 	case '01 Image-30-1':	return '4MHZ';
 	case '01 Image-31-1':	return 'PASCAL Notes';
@@ -6819,4 +6816,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-30 13:32:48 +0200 (Sa, 30. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-30 14:19:16 +0200 (Sa, 30. Mai 2026) $ -->
