@@ -29,7 +29,7 @@ function BootstrapTier($context = '')
 
 function imageInsertA($imagepath, $year, $issue, $page, $imagename, $style='', $class='', $append='', $link='', $target='', $scale=1, $noscale=false)
 {
-	global $magpath, $issuepath, $gWidth, $asTitle;
+	global $magpath, $issuepath, $gWidth, $asTitle, $nl;
 
 	$alt = imageDesc($year, $issue, $imagename);
 	if (isset($magpath)) {
@@ -85,7 +85,7 @@ function imageInsertA($imagepath, $year, $issue, $page, $imagename, $style='', $
 	if ($altPos) {
 		$title = substr($alt, $altPos + 1);
 		echo "title=\"$title\" ";
-		$alt = substr($alt, 0, $altPos);
+		$alt = substr($alt, 0, $altPos) . "$nl$title";
 	}
 	echo "alt=\"$alt\" ";
 	echo "width=\"$width\" height=\"$height\">";
@@ -1381,12 +1381,14 @@ function imageDesc81($issue, $name)
 	case '06 Image-05-2':	return 'Frequenztabelle';
 
 	case '06 Image-07-3':	return
-			'nesische Schriftzeichen'
-		.	'Title'
-		.	" so konnten die beiden Religionen Sonne und Mond in Antike und Neuzeit vereint werden.$nl"
-		.	" alte Basis ist beeindruckend und weiß nicht, dass wir den Regen$nl"
-		.	"lassen. Sie kämpft ungehindert darum, den Wagen wie ein Drache$nl"
-		.	"halten. Ein Ausflug zum Quellteich ist wie ein Perlennest und Tinte im Regen.";
+			"Chinesische Schriftzeichen:"
+		.	$asTitle
+		.	"Nur so konnten die beiden Religionen Sonne und Mond$nl"
+		.	"in Antike und Neuzeit vereint werden.$nl"
+		.	"Die alte Basis ist beeindruckend und weiß nicht,$nl"
+		.	"dass wir den Regen loslassen. Sie kämpft ungehindert$nl"
+		.	"darum, den Wagen wie ein Drache halten. Ein Ausflug$nl"
+		.	"zum Quellteich ist wie ein Perlennest und Tinte im Regen.";
 	case '06 Image-07-4':	return 'bonbon';
 	case '06 Image-08-2':	return 'BUGS BUGS BUGS';
 	case '06 Image-08-3':	return 'BASIC';
@@ -6817,4 +6819,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-30 07:15:28 +0200 (Sa, 30. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-30 13:32:48 +0200 (Sa, 30. Mai 2026) $ -->
