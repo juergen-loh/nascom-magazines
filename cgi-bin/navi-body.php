@@ -647,6 +647,8 @@ function spChar($spChar)
 	}
 }
 
+//---------------------------------------------------------------------------
+
 function imageDesc80($issue, $name)
 {
 	global $nl;
@@ -5835,26 +5837,27 @@ function lbl8K($label, $link = "")
 	if ($link == "") {
 		$link = $label;
 	}
-	echo "<span id=\"$link\"><a href=\"#$link\">$label</a></span>";
+	$anchor = strtoupper($link);
+	echo "<span id=\"$anchor\"><a href=\"#$anchor\">$label</a></span>";
 }
 
 function bas8K($label, $target = "", $path = "", $post = "")
 {
 	if ($target == "")	$target = $label;
+	$anchor = strtoupper($target);
 
 	global $RomBasicComplete;
 	if ($RomBasicComplete) {
-		echo "<a href=\"#$target\">$label</a>$post";
+		echo "<a href=\"#$anchor\">$label</a>$post";
 		return;
 	}
 
 	$path = "../../..$path";
 
-	$p = "";
 	$p = "-";	// Link-Fehler provozieren
-	switch ($target) {
-	// ---------------------------------- 24
+	switch ($anchor) {
 
+	// ---------------------------------- 24
 	case "0001":	case "UARTD":
 	case "0002":	case "UARTS":
 	case "0003":	case "CTRLC":
@@ -6657,15 +6660,18 @@ function bas8K($label, $target = "", $path = "", $post = "")
 	if ($p == "") {
 		echo "$label$post";
 	} else {
-		echo "<a href=\"$path/$p/text/#$target\">$label</a>$post";
+		echo "<a href=\"$path/$p/text/#$anchor\">$label</a>$post";
 	}
 }
 
 function basLink($text, $addr = "", $nl = "")
 {
 	if ($addr == "") $addr = $text;
-	echo "<a href=\"../../../../../rom-basic/#$addr\">$text</a>$nl";
+	$anchor = strtoupper($addr);
+	echo "<a href=\"../../../../../rom-basic/#$anchor\">$text</a>$nl";
 }
+
+// --------------------------------------------------------------------------
 
 function hline($width, $border="")
 {
@@ -6810,4 +6816,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-29 23:53:00 +0200 (Fr, 29. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-30 05:42:54 +0200 (Sa, 30. Mai 2026) $ -->
