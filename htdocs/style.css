@@ -1,4 +1,4 @@
-/*! style.css / $Date: 2026-05-31 12:49:38 +0200 (So, 31. Mai 2026) $
+/*! style.css / $Date: 2026-05-31 19:02:23 +0200 (So, 31. Mai 2026) $
 */
 
 html,
@@ -1363,14 +1363,24 @@ table.toolkitRam > tbody > tr > td
 	text-align: center;
 }
 
-/* https://froala.com/blog/general/how-to-switch-up-grids-by-making-5-column-bootstrap-layouts/ */
-/*
-.custom-col {
-    flex: 0 0 20%;
-    max-width: 20%;
-}
-.custom-col {
-	padding-left: 0.25em;
-	padding-right: 0.25em;
-}
+/*----------------------------*/
+
+/*	5-spaltiges Layout
+	Name ist col-sm-15, um Konflikt mit col-sm-5 von Bootstrap zu vermeiden
+	https://codepen.io/peiche/pen/BjYzaE
 */
+.col-sm-15 {
+	position: relative;
+	min-height: 1px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+@media (min-width: 576px) {
+.col-sm-15 {
+		width: 20%;
+/*		float: left;
+*/	}
+}
+
+/*----------------------------*/
