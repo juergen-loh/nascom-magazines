@@ -597,17 +597,24 @@ function spChar($spChar)
 	global $ZeroWidthSpace;
 
 	switch ($spChar) {
-	case 'zwsp':
-		echo $ZeroWidthSpace;	// zero width space
+	case 'fwsp':			// fixed width space
+//		echo '&thinsp;';
+		echo '&#x2005;';
 		break;
-	case 'starf':
-		echo '&starf;';		// filled star
+	case 'fnsp':			// fixed width non break space
+		echo '&#x202F;';
 		break;
-	case 'nbhy':
-		echo '&#x2011;';	// non breaking hyphen
+	case 'zwsp':			// zero width space
+		echo $ZeroWidthSpace;
 		break;
-	case 'bigbullet':
-		echo '&#x25cf;';	// big bullet
+	case 'starf':			// filled star
+		echo '&starf;';
+		break;
+	case 'nbhy':			// non breaking hyphen
+		echo '&#x2011;';
+		break;
+	case 'bigbullet':		// big bullet
+		echo '&#X25CF;';
 		break;
 	case 'lowast':
 		echo '*';
@@ -621,17 +628,17 @@ function spChar($spChar)
 	case 'circle2':
 		echo '&#x2781;';	// dingbat circled sans-serif digit two
 		break;
-	case 'rarr':
-		echo '&rarr;';		// right arrow
+	case 'rarr':			// right arrow
+		echo '&rarr;';
 		break;
-	case 'tlarr':
-		echo '&lsh;';		// top left arrow
+	case 'tlarr':			// top left arrow
+		echo '&lsh;';
 		break;
-	case 'vrect':
-		echo '&#9647;';		// vertical rectangle
+	case 'vrect':			// vertical rectangle
+		echo '&#9647;';
 		break;
-	case 'bell':
-		echo '&#x237e;';	// bell symbol / klingelsymbol
+	case 'bell':			// bell symbol / klingelsymbol
+		echo '&#x237E;';
 		break;
 	case 'lowast_zwsp':
 		spChar('zwsp');
@@ -6816,4 +6823,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-30 14:19:16 +0200 (Sa, 30. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-05-31 12:49:38 +0200 (So, 31. Mai 2026) $ -->

@@ -47,7 +47,7 @@
 
 	echo "\n";
 ?>
-<!-- page.php / $Date: 2026-05-25 16:26:38 +0200 (Mo, 25. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+<!-- page.php / $Date: 2026-05-31 13:02:07 +0200 (So, 31. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	{
 		$titleClean = $title;
@@ -796,14 +796,23 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 			echo "<!-- $cols";
 			if ($multi != "") echo "($multi)";
 			echo " Spalten: Start -->";
+			if ($cols == 5) {
+				$cols = 6;	// 5 Spalten funktionieren nicht mit Collapse
+			}
 			global $MultiColumn;
 			setMultiColumn($multi);
 			if ($MultiColumn == 1) {
 				echo '<div><div';
-				if ($class != "") echo "class=\"$class\"";
+				if ($class != "") echo " class=\"$class\"";
 				echo '>';
 			} else if ($cols == $MultiColumn) {
 				startMultiColumn($cols, $class);
+			} else if ($cols == 5
+			||	$cols == 5/2) {
+				// Quirk: https://froala.com/blog/general/how-to-switch-up-grids-by-making-5-column-bootstrap-layouts/
+//				echo '<div class="container-fluid">';
+				echo '<div class="row row-cols-5">';
+				echo '<div class="col">';
 			} else {
 				echo '<div class="row';
 				if ($class != "") echo " $class";
@@ -841,10 +850,17 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 		{
 			echo "<!-- $cols Spalten: Spaltenwechsel -->";
 			global $MultiColumn;
+			if ($cols == 5) {
+				$cols = 6;	// Quirk: 5 Spalten funktionieren nicht mit Collapse
+			}
 			if ($MultiColumn == 1) {
 				echo "<br>\n";
 			} else if ($cols == $MultiColumn) {
 				// nix
+			} else if ($cols == 5) {
+				// https://froala.com/blog/general/how-to-switch-up-grids-by-making-5-column-bootstrap-layouts/
+				echo '</div>';
+				echo '<div class="col">';
 			} else {
 				echo "$p1";
 //				echo "</div>";
@@ -874,9 +890,17 @@ function navi($page, $link, $first, $last, $width, $year, $issue, $thumb)
 		function columnsEnd($cols)
 		{
 			echo "<!-- $cols Spalten: Ende -->";
+			if ($cols == 5) {
+				$cols = 6;	// Quirk: 5 Spalten funktionieren nicht mit Collapse
+			}
 			global $MultiColumn;
 			if ($cols == $MultiColumn) {
 				echo '</div>';
+			} else if ($cols == 5) {
+				// https://froala.com/blog/general/how-to-switch-up-grids-by-making-5-column-bootstrap-layouts/
+				echo '</div>';
+				echo '</div>';
+//				echo '</div>';
 			} else {
 //				echo '</div>';
 				endColumn($cols);
@@ -896,8 +920,9 @@ function columnStart($column, $multi = "", $context = "", $class="")
 	case 23:	columnsStart(3/2, $multi, $context, $class);	break;	//	 2/3
 	case 4:		columnsStart(4);								break;
 	case 34:	columnsStart(4/3);								break;	//	 3/4
-	case 5:		columnsStart(6, $multi);						break;
+	case 5:		columnsStart(5, $multi);						break;
 	case 6:		columnsStart(6, $multi);						break;
+	case 25:	columnsStart(5/2);								break;	//	 2/5
 	case 26:	columnsStart(6/2);								break;	//	 2/6
 	case 56:	columnsStart(6/5);								break;	//	 5/6
 	case 12:	columnsStart(12);								break;
@@ -931,7 +956,7 @@ function columnChange($column, $p1 = "", $p2 = "", $context = "")
 	case 3:		columnsChange(3);						break;
 	case 34:	columnsChange(4/3);						break;	//	 3/4
 	case 4:		columnsChange(4);						break;
-	case 5:		columnsChange(6);						break;
+	case 5:		columnsChange(5);						break;
 	case 6:		columnsChange(6);						break;
 	case 56:	columnsChange(6/5);						break;	//	 5/6
 	case 12:	columnsChange(12);						break;
@@ -964,7 +989,7 @@ function columnEnd($column)
 	case 2:		columnsEnd(2);						break;
 	case 3:		columnsEnd(3);						break;
 	case 4:		columnsEnd(4);						break;
-	case 5:		columnsChange(6);	columnsEnd(6);	break;
+	case 5:	/*	columnsChange(5);*/	columnsEnd(5);	break;
 	case 6:		columnsEnd(6);						break;
 	case 12:	columnsEnd(12);						break;
 	default:	echo "<columnEnd($column)>\n";		break;

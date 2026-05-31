@@ -66,44 +66,48 @@ werden.
 <p>
 Einlesen des Programms unter CLD&shy;DOS:
 </p>
-<p class="first-indent">
-* System booten. Die Diskette muß den Device-Driver AT: der alten
+
+<ul class="asterisk-left">
+	<li>
+System booten. Die Diskette muß den Device-Driver AT: der alten
 CLD&shy;DOS-Version enthalten. AT: der neuen Version ist mit dem alten nicht
 identisch und arbeitet nur einseitig (Write).
-</p>
-<p class="first-indent">
-* AT: auf PORT 1 (bzw. den Port, an dem der Recorder angeschlossen
+	</li>
+	<li>
+AT: auf PORT 1 (bzw. den Port, an dem der Recorder angeschlossen
 ist) setzen.
-</p>
-<p class="first-indent">
-* Mit COPY FILE&shy;NAME = AT: das Programm auf die Diskette lesen. Den
+	</li>
+	<li>
+Mit COPY FILE&shy;NAME = AT: das Programm auf die Diskette lesen. Den
 Recorder erst einschalten, wenn die LED im Deckel des Laufwerks nicht
 mehr leuchtet! Er kann abgeschaltet werden, wenn das Zeichen EOT
 gelesen wurde und die LED wieder brennt.
-</p>
-<p class="first-indent">
-* Das Programm in den Editor laden und dort am Anfang und Ende alle
+	</li>
+	<li>
+Das Programm in den Editor laden und dort am Anfang und Ende alle
 Zeilen und Leerzeilen löschen. Es dürfen keine Zeilen mehr vorhanden
 sein, die nicht mit einer Zeilennummer anfangen!
-</p>
-<p class="first-indent">
-* Das Programm wieder auf der Diskette
+	</li>
+	<li>
+Das Programm wieder auf der Diskette
 
 <?php columnChangeJustify(2, "</p>", "<p>"); ?>
 
 abspeichern.
-</p>
-<p class="first-indent">
-* Vom CLD-Basic aus das Programm mit OLD laden. Alle Zeilen, die
+	</li>
+	<li>
+Vom CLD-Basic aus das Programm mit OLD laden. Alle Zeilen, die
 ungültige Befehle enthalten, tragen vor diesem den Vermerk *ERROR* und
 lösen beim Listen ein Bell-Zeichen aus. Sie müssen entsprechend
 geändert und an das neue Basic angepaßt werden, (Mit dem Disk-MBasic
 müßte es im Prinzip genauso gehen; ich habe es noch nicht ausprobiert).
-</p>
-<p class="first-indent">
-* Das Programm nach einem Probelauf mit Replace wieder auf der
+	</li>
+	<li>
+Das Programm nach einem Probelauf mit Replace wieder auf der
 Diskette abspeichern.
-</p>
+	</li>
+</ul>
+
 <p>
 Dieses Verfahren lohnt natürlich nur bei Programmen, die nicht zuviele
 spezielle ROM Basic-Befehle enthalten. Bei Programmen, die viel mit den
@@ -115,7 +119,7 @@ Man kann übrigens auch
 Daten vom DOS aus auf dem Band abspeichern und später wieder einlesen
 (z.B. als Backup); man muß nur ein CNTRL-D anschließen (z.B. durch COPY
 AT: = FNAME.EXT, CNTRL-D.DAT, wobei CNTRL-D.DAT durch Basic erzeugt
-wurde: OPEN &bdquo;CNTRL.DAT&ldquo; FOR WRITE AS FILE #1:PRINT#1, CHR$
+wurde: OPEN "CNTRL<?php spChar("zwsp"); ?>.DAT" FOR WRITE AS FILE #1:PRINT#1, CHR$
 (4): CLOSE #1)&nbsp;.
 </p>
 <br>
