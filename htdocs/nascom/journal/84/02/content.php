@@ -167,6 +167,14 @@
 	,	33
 	);
 	trJournal($path, $tail, $magazine
+	,	"Sinus für Grafikkarte"
+	,	"Günter Böhm"
+	,	"Basic"
+	,	$volume, $issue
+	,	33
+	,	2
+	);
+	trJournal($path, $tail, $magazine
 	,	"Centronix-Schnittstelle"
 	,	"Dieter Metzler"
 	,	"Hardware<br>"
