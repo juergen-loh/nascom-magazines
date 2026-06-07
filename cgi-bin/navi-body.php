@@ -572,7 +572,9 @@ function basic8kPage($page)
 		// Nasom ROM Basic: Complete
 		$link = "../magazines/80-bus-news/$issue/text";
 	}
-	$linkit = "<a href=\"$link/#$id\">$prefix$p</a>";
+	$linkit = "<a ";
+	if ($workings) $linkit .= "class=\"nowrap\" ";
+	$linkit .= "href=\"$link/#$id\">$prefix$p</a>";
 	if ($workings) {
 		echo "<tr><th colspan=3><p id=\"$id\">The workings of NASCOM ROM BASIC Ver 4.7</p></th><th><p>";
 		echo "$linkit</p></th></tr>\n";
@@ -6823,4 +6825,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-05-31 12:49:38 +0200 (So, 31. Mai 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-06-07 13:20:06 +0200 (So, 07. Jun 2026) $ -->
