@@ -3,14 +3,14 @@
 	$magazine = "80-Bus Journal";
 	$volume = "1984";
 	$issue = "M2";
-/*	trJournal($path, $tail, $magazine
-	,	"Mini-Ausgabe"
+	trJournal($path, $tail, $magazine
+	,	"Mini-Ausgabe Nr. 2"
 	,	""
 	,	"Titel"
 	,	$volume, $issue
 	,	1
 	);
-*/	trJournal($path, $tail, $magazine
+	trJournal($path, $tail, $magazine
 	,	"80-Bus Journal intern"
 	,	"Günter Böhm"
 	,	"Editorial"
