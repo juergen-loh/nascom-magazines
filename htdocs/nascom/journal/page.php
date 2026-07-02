@@ -47,7 +47,7 @@
 
 	echo "\n";
 ?>
-<!-- page.php / $Date: 2026-05-31 19:02:23 +0200 (So, 31. Mai 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+<!-- page.php / $Date: 2026-07-02 19:37:40 +0200 (Do, 02. Jul 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 <?php
 	{
 		$titleClean = $title;
@@ -66,10 +66,10 @@
 
 	// Journal ------------------------------------------------------------------
 
-	function imageInsert($imagename, $style="", $class="")
+	function imageInsert($imagename, $style="", $class="", $append='', $link='', $target='', $scale=1, $noscale=false)
 	{
 		global $imagepath, $year, $issue, $page;
-		imageInsertA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+		imageInsertA($imagepath, $year, $issue, $page, $imagename, $style, $class, $append, $link, $target, $scale, $noscale);
 	}
 
 	function imageInsertGap($imagename, $style="", $class="")
@@ -78,10 +78,10 @@
 		imageInsertGapA($imagepath, $year, $issue, $page, $imagename, $style, $class);
 	}
 
-	function imageCenter($imagename, $style="", $class="")
+	function imageCenter($imagename, $style="", $class="", $append='')
 	{
 		global $imagepath, $year, $issue, $page;
-		imageCenterA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+		imageCenterA($imagepath, $year, $issue, $page, $imagename, $style, $class, $append);
 	}
 
 	function imageCenterGap($imagename, $style="", $class="")
@@ -90,10 +90,10 @@
 		imageCenterGapA($imagepath, $year, $issue, $page, $imagename, $style, $class);
 	}
 
-	function imageRight($imagename, $style="", $class="")
+	function imageRight($imagename, $style="", $class="", $append='', $link='', $target='', $scale=1)
 	{
 		global $imagepath, $year, $issue, $page;
-		imageRightA($imagepath, $year, $issue, $page, $imagename, $style, $class);
+		imageRightA($imagepath, $year, $issue, $page, $imagename, $style, $class, $append, $link, $target, $scale);
 	}
 
 	function imageRightGap($imagename, $style="", $class="")
