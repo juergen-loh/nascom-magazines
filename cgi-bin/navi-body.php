@@ -1392,12 +1392,11 @@ function imageDesc81($issue, $name)
 	case '06 Image-07-3':	return
 			"Chinesische Schriftzeichen:"
 		.	$asTitle
-		.	"Nur so konnten die beiden Religionen Sonne und Mond$nl"
-		.	"in Antike und Neuzeit vereint werden.$nl"
-		.	"Die alte Basis ist beeindruckend und weiß nicht,$nl"
-		.	"dass wir den Regen loslassen. Sie kämpft ungehindert$nl"
-		.	"darum, den Wagen wie ein Drache halten. Ein Ausflug$nl"
-		.	"zum Quellteich ist wie ein Perlennest und Tinte im Regen.";
+		.	"Das duale System von Sonne und Mond, das antike und das moderne, steht am selben Ort.$nl"
+		.	"Nur das$nl"
+		.	"Der alte Kran mit seinem robusten Gestell blieb unberührt von den wechselnden Launen des Herbstes und der Pflaumenblüte.$nl"
+		.	"Niemand konnte den Himmel durchbrechen, und die Männer wetteiferten darum, den Streitwagen wie einen Drachen zu halten.$nl"
+		.	"Die Lei Yuxiangtan Tour war nicht so gut wie die von Zhu Mofu.$nl";
 	case '06 Image-07-4':	return 'bonbon';
 	case '06 Image-08-2':	return 'BUGS BUGS BUGS';
 	case '06 Image-08-3':	return 'BASIC';
@@ -6825,4 +6824,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-06-07 13:20:06 +0200 (So, 07. Jun 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-07-06 18:59:35 +0200 (Mo, 06. Jul 2026) $ -->
