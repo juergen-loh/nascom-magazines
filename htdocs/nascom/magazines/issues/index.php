@@ -12,7 +12,7 @@
 ?>
 	<meta name="keywords" content="Nascom Journal, 80-Bus Journal, Nascom Computer, Nascom 1, Nascom 2">
 	<title>Nascom Magazines</title>
-	<!-- $Date: 2026-06-04 13:17:58 +0200 (Do, 04. Jun 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
+	<!-- $Date: 2026-07-26 17:49:22 +0200 (So, 26. Jul 2026) $ / <?php echo "lastModified: $lastModified"; ?> -->
 
 	<style>
 		h2 { margin-top: 2em; }
@@ -199,9 +199,12 @@
 <p></p>
 </div>
 
+<!-- 2 Spalten: Ende --></div>
 <h1>
 	Series
 </h1>
+<!-- 2(2) Spalten: Start --><div class="style-multi-column-2">
+
 <div class="style-nowrap">
 <h2 id="lawrence">
 	Lawrence
