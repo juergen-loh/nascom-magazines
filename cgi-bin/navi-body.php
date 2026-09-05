@@ -5506,7 +5506,7 @@ function externalLink($link, $text='', $delimiter="\n")
 	case 'Exidy Sorcerer':			$url = 'https://en.wikipedia.org/wiki/Exidy_Sorcerer';							break;
 	case 'Fachhochschule Köln':		$url = 'https://www.th-koeln.de/';												break;
 	case 'FD1771':					$url = 'https://en.wikipedia.org/wiki/Western_Digital_FD1771';					break;
-	case 'FDC9229':					$url = 'https://www.cpcwiki.eu/imgs/9/97/FDC9229BT_Datasheet.pdf';				break;
+	case 'FDC9229':					$url = 'https://tomverbeure.github.io/assets/hp16500a/datasheets/FCD9229BT.pdf';break;
 	case 'Fernmeldeamt':			$url = "https://$lang.wikipedia.org/wiki/Fernmeldeamt_(Deutsche_Bundespost)";	break;
 	case 'Fernmeldehandwerker':		$url = "https://$lang.wikipedia.org/wiki/Fernmeldehandwerker";					break;
 	case 'Fernsehtechnik ohne Ballast':	$url = 'http://www.ukwfm.de/antiquariat/feb.html';							break;
@@ -5758,7 +5758,7 @@ function externalLink($link, $text='', $delimiter="\n")
 	case 'TL497':					$url = 'https://www.ti.com/lit/ds/symlink/tl494.pdf';							break;
 	case 'TMS5100':					$url = 'https://www.datasheetarchive.com/?q=tms5100';							break;
 	case 'TMS9929':					$url = 'https://www.datasheetarchive.com/?q=tms9929';							break;
-	case 'Triumph-Adler P4':		$url = 'https://forum.classic-computing.de/forum/index.php?thread/16182-alphatronic-p4/';	break;
+	case 'Triumph-Adler P4':		$url = "https://$lang.wikipedia.org/wiki/Triumph-Adler#Alphatronic_P3/P4";		break;
 	case 'TRS-80':					$url = "https://$lang.wikipedia.org/wiki/TRS-80";								break;
 	case 'TRS-80 Model III':		$url = "https://$lang.wikipedia.org/wiki/TRS-80#TRS-80_Model_III";				break;
 	case 'UCSD Pascal':				$url = "https://$lang.wikipedia.org/wiki/UCSD_Pascal";							break;
@@ -6824,4 +6824,4 @@ HEREDOC;
 
 <!--********************************************************************************-->
 
-<!-- /navi-body.php / $Date: 2026-07-06 18:59:35 +0200 (Mo, 06. Jul 2026) $ -->
+<!-- /navi-body.php / $Date: 2026-09-05 13:00:30 +0200 (Sa, 05. Sep 2026) $ -->
