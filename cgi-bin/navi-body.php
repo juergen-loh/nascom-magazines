@@ -5424,6 +5424,7 @@ function externalLink($link, $text='', $delimiter="\n")
 	case 'Basic-Interpreter':		$url = 'https://openlibrary.org/works/OL15388892W/Basic-Interpreter';			break;
 	case 'Bernd Ploss':				$url = '? https://www.eah-jena.de/scitec/personen/bernd-ploss';					break;
 	case 'Blue Label Software Pascal':	$url = "https://$lang.wikipedia.org/wiki/Turbo_Pascal#Geschichte";			break;
+	case 'BYTE November 1979':		$url = "https://archive.org/details/byte-magazine-1979-11/page/n67/mode/2up";	break;
 	case 'c&rsquo;t 2/1985':		$url = 'https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=13276';	break;
 	case 'c&rsquo;t 3/1985, Seite 76':	$url = 'https://archive.org/details/ct-magazine-8503/page/n57/mode/2up';	break;
 	case 'c&rsquo;t 4/1987':		$url = 'https://www.kultboy.com/index.php?site=kult/kultmags&km=show&id=12410';	break;
